@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680196"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717175"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
 
@@ -27,7 +27,7 @@ Kullanım & öngörüleri, Azure Multi-Factor Authentication ve self servis paro
 Aşağıdaki roller kullanım ve öngörülere erişebilir:
 
 - Genel Yönetici
-- Güvenlik okuyucusu
+- Güvenlik Okuyucusu
 - Güvenlik Yöneticisi
 - Rapor okuyucu
 
@@ -65,7 +65,7 @@ Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verile
 
 Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Name
+- Ad
 - Kullanıcı adı
 - Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
 - Etkin durum (tümü, etkin, etkin değil)
@@ -80,7 +80,7 @@ Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntıların
 
 Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Name
+- Ad
 - Kullanıcı adı
 - Özellik (tümü, kayıt, sıfırlama)
 - Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)
@@ -98,6 +98,6 @@ Rapor şu anda dış kullanıcıları dışarıda bırakacak şekilde filtrelene
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kimlik doğrulama yöntemleri kullanım raporu API 'SI ile çalışma](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Kimlik doğrulama yöntemleri kullanım raporu API 'SI ile çalışma](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [Kuruluşunuz için kimlik doğrulama yöntemlerini seçme](concept-authentication-methods.md)
 - [Birleşik kayıt deneyimi](concept-registration-mfa-sspr-combined.md)

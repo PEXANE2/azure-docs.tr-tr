@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691437"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719317"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob depolama 'da değişiklik akışını işleme (Önizleme)
 
@@ -22,15 +22,16 @@ Değişiklik akışı, bloblarda oluşan tüm değişikliklerin işlem günlükl
 Değişiklik akışı hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolama (Önizleme) içinde akışı değiştirme](storage-blob-change-feed.md).
 
 > [!NOTE]
-> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md). Değişiklik akışı işlemci kitaplığı, şu anda ve bu kitaplık genel kullanıma sunulduğunda değişiklik gösterebilir.
+> Değişiklik akışı genel önizlemededir ve sınırlı bölgelerde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md). Değişiklik akışı işlemci kitaplığı, şu anda ve bu kitaplık genel kullanıma sunulduğunda değişiklik gösterebilir.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Blob değişiklik akışı işlemci kitaplığını al
 
 1. Bir komut penceresi açın (örneğin: Windows PowerShell).
-2. Proje dizininizden **Azure. Storage. Bloblar. changefeed** NuGet paketini yükler.
+2. Proje dizininizden [ **Azure. Storage. Bloblar. changefeed** NuGet paketini](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/)yükler.
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>Kayıtları oku
 
@@ -117,7 +118,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>Kayıtların akışını işleme
 
-Değişiklik akışı kayıtlarını geldikçe işlemeyi tercih edebilirsiniz. Bkz. [Özellikler](storage-blob-change-feed.md#specifications). Her saat için değişiklikleri yoklamenizi öneririz.
+Değişiklik akışı kayıtlarını değişiklik akışına işlendiği için işlemeyi tercih edebilirsiniz. Bkz. [Özellikler](storage-blob-change-feed.md#specifications). Değişiklik olayları, ortalama olarak 60 saniyelik bir dönemdeki değişiklik akışında yayımlanır. Yoklama aralığını belirtirken bu dönemdeki yeni değişiklikleri aklınızda bulundurmanız önerilir.
 
 Bu örnek, değişiklikleri düzenli aralıklarla yoklar.  Değişiklik kayıtları varsa, bu kod bu kayıtları işler ve değişiklik akışı imlecini kaydeder. Bu işlem durdurulur ve sonra yeniden başlatılırsa, uygulama son kaldığınız yerden kayıtları işlemeye başlamak için imleci kullanabilir. Bu örnek, imleci yerel bir uygulama yapılandırma dosyasına kaydeder, ancak uygulamanız onu senaryonuz için en anlamlı hale getiren herhangi bir biçimde kaydedebilir. 
 
@@ -181,7 +182,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>Bir zaman aralığı içinde kayıtları okuma
 
-Belirli bir zaman aralığı içinde kalan kayıtları okuyabilirsiniz. Bu örnek, değişiklik akışındaki 3:00 Mart 2 2017 ve 2:00, 7 2019 Ekim, bir listeye ekleyen ve bu listeyi çağırana döndüren tüm kayıtlar boyunca yinelenir.
+Belirli bir zaman aralığı içinde kalan kayıtları okuyabilirsiniz. Bu örnek, değişiklik akışındaki 3:00 Mart 2 2020 ve 2:00, 7 2020 Ağustos 'ta, bunları bir listeye ekleyen ve sonra bu listeyi çağırana döndüren tüm kayıtlar boyunca yinelenir.
 
 ### <a name="selecting-segments-for-a-time-range"></a>Bir zaman aralığı için segmentleri seçme
 
@@ -198,8 +199,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(

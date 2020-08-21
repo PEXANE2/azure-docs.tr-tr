@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 763c02cca954f7bcd3f9763bfe45f3954dacf0a7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054060"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719453"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
@@ -51,7 +51,7 @@ Ana MFA Sunucusu çevrimdışı olsa bile alt sunucular iki aşamalı doğrulama
 
 Azure Multi-Factor Authentication için kullandığınız sunucunun aşağıdaki gereksinimleri karşıladığından emin olun:
 
-| Azure Multi-Factor Authentication Sunucusu Gereksinimleri | Description |
+| Azure Multi-Factor Authentication Sunucusu Gereksinimleri | Açıklama |
 |:--- |:--- |
 | Donanım |<li>200 MB boş sabit disk alanı</li><li>x32 veya x64 özellikli işlemci</li><li>1 GB veya daha fazla RAM</li> |
 | Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
@@ -209,7 +209,7 @@ Yeni Sunucu artık özgün yedeklenen yapılandırması ve kullanıcı verileriy
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL Protokollerini ve Şifre Paketlerini yönetme
 
-MFA Server sürüm 8.x veya üzerini yükledikten veya yükselttikten sonra kuruluşunuzda ihtiyaç duyulmaması halinde eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
+MFA Server sürüm 8.x veya üzerini yükledikten veya yükselttikten sonra kuruluşunuzda ihtiyaç duyulmaması halinde eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

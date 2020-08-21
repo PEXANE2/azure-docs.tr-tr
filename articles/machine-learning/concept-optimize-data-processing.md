@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500972"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719283"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning ile veri işlemeyi iyileştirme
 
@@ -33,9 +33,9 @@ CSV dosyaları, Excel 'de düzenleme ve okuma kolaylıdıklarından verileri iç
 
 ## <a name="pandas-dataframe"></a>Pandas dataframe
 
-[Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) genellikle veri işleme ve analiz için kullanılır. `Pandas`1 GB 'tan küçük veri boyutları için iyi işlem yapın, ancak `pandas` dosya boyutları 1 GB 'a ulaştığında veri çerçevelerinin işlenme süreleri yavaşlar. Bu yavaşlatma, depolama alanındaki verilerinizin boyutunun bir veri çerçevesindeki verilerin boyutuyla aynı olmaması nedeniyle oluşur. Örneğin, CSV dosyalarındaki veriler bir veri çerçevesinde en fazla 10 kez genişleyebilir, bu nedenle 1 GB CSV dosyası bir veri çerçevesinde 10 GB olabilir.
+[Pandas dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) genellikle veri işleme ve analiz için kullanılır. `Pandas` 1 GB 'tan küçük veri boyutları için iyi işlem yapın, ancak `pandas` dosya boyutları 1 GB 'a ulaştığında veri çerçevelerinin işlenme süreleri yavaşlar. Bu yavaşlatma, depolama alanındaki verilerinizin boyutunun bir veri çerçevesindeki verilerin boyutuyla aynı olmaması nedeniyle oluşur. Örneğin, CSV dosyalarındaki veriler bir veri çerçevesinde en fazla 10 kez genişleyebilir, bu nedenle 1 GB CSV dosyası bir veri çerçevesinde 10 GB olabilir.
 
-`Pandas`tek iş parçacıklı olduğundan, tek bir CPU 'da tek seferde bir işlem yapılır. Tek bir Azure Machine Learning işlem örneğinde iş yüklerini, dağıtılmış bir arka uç kullanarak bu [Sardaki modlarda](https://modin.readthedocs.io/en/latest/) bulunan paketlerle birlikte birden çok sanal CPU 'ya paralel hale getirmek `Pandas` .
+`Pandas` tek iş parçacıklı olduğundan, tek bir CPU 'da tek seferde bir işlem yapılır. Tek bir Azure Machine Learning işlem örneğinde iş yüklerini, dağıtılmış bir arka uç kullanarak bu [Sardaki modlarda](https://modin.readthedocs.io/en/latest/) bulunan paketlerle birlikte birden çok sanal CPU 'ya paralel hale getirmek `Pandas` .
 
 Görevlerinizi ve Gamze ile paralel hale getirmek `Modin` için [Dask](https://dask.org)Bu kod satırını olarak değiştirmeniz yeterlidir `import pandas as pd` `import modin.pandas as pd` .
 
@@ -46,6 +46,16 @@ Veri çerçeveli, makinenizde kullanılabilir RAM 'in üzerine genişliyorsa gen
 Bir çözüm, RAM 'nizin veri çerçevesini bellekte sığacak şekilde artırması. İşlem boyutunuzu ve işleme gücünün, RAM boyutunun iki katı olması önerilir. Bu nedenle, veri çerçevünüz 10 GB ise, veri çerçevesinin belleğe uygun olduğundan ve işlenebilmesi için en az 20 GB RAM içeren bir işlem hedefi kullanın. 
 
 Birden çok sanal CPU için vCPU, bir bölümün makinede her vCPU 'Nun sahip olduğu RAM 'e rahat bir şekilde sığması istediğinizi aklınızda bulundurun. Diğer bir deyişle, 16 GB RAM 4 vCPU varsa her vCPU için 2 GB veri çerçevesi isteyebilirsiniz.
+
+### <a name="local-vs-remote"></a>Yerel ve uzak
+
+Belirli Pandas dataframe komutlarının, Azure Machine Learning ile sağladığınız uzak bir sanal makineye karşı, yerel BILGISAYARıNıZ üzerinde çalışırken daha hızlı çalıştığını fark edebilirsiniz. Yerel BILGISAYARıNıZDA genellikle etkinleştirilmiş bir sayfa dosyası bulunur. Bu, fiziksel belleğe uygun olandan daha fazla sahip olmak için sabit sürücünüz RAM 'iniz uzantısı olarak kullanılıyor. Şu anda, Azure Machine Learning VM 'Ler bir sayfa dosyası olmadan çalışır, bu nedenle yalnızca fiziksel RAM olarak kullanılabilir verileri yükleyebilir. 
+
+İşlem için yoğun işler için, işlem hızlarını geliştirmek üzere daha büyük bir VM seçmenizi öneririz.
+
+Azure Machine Learning için [KULLANILABILIR VM Serisi ve boyutları](concept-compute-target.md#supported-vm-series-and-sizes) hakkında daha fazla bilgi edinin. 
+
+RAM belirtimleri için, [dv2-Dsv2 serisi](../virtual-machines/dv2-dsv2-series-memory.md) veya [NC serisi](../virtual-machines/nc-series.md)gibi karşılık gelen VM Serisi sayfalarına bakın.
 
 ### <a name="minimize-cpu-workloads"></a>CPU iş yüklerini en aza indirme
 
@@ -71,9 +81,9 @@ Aşağıdaki tabloda, kod tercihlerinize veya veri boyutuna göre Azure Machine 
 
 Deneyim veya veri boyutu | Öneri
 ------|------
-Hakkında bilginiz varsa`Pandas`| `Modin`veya `Dask` veri çerçevesi
-Tercih ediyorsanız`Spark` | `PySpark`
-1 GB 'tan küçük veriler için | `Pandas`Yerel olarak **veya** bir uzak Azure Machine Learning işlem örneği
+Hakkında bilginiz varsa `Pandas`| `Modin` veya `Dask` veri çerçevesi
+Tercih ediyorsanız `Spark` | `PySpark`
+1 GB 'tan küçük veriler için | `Pandas` Yerel olarak **veya** bir uzak Azure Machine Learning işlem örneği
 10 GB 'tan büyük veriler için| `Ray`, Veya kullanarak bir kümeye taşıma `Dask``Spark`
 
 `Dask`Azure ML işlem kümesinde, [pask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) paketiyle kümeler oluşturabilirsiniz. Ya da `Dask` bir işlem örneğinde yerel olarak çalıştırabilirsiniz.

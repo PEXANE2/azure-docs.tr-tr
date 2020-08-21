@@ -3,161 +3,202 @@ title: Windows sanal masaüstü-Azure 'da Windows 10 VM 'lerine dil paketleri y�
 description: Windows sanal masaüstü 'nde Windows 10 çoklu oturum VM 'Leri için dil paketleri nasıl yüklenir.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008772"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719163"
 ---
-# <a name="install-language-packs"></a>Dil paketlerini yükleme
+# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme
 
-Windows sanal masaüstü dağıtımlarını uluslararası olarak ayarlarken, dağıtımınızın birden çok dili desteklediğinden emin olmak iyi bir fikirdir. Kuruluşunuzun ihtiyaç duyacağı sayıda dili desteklemek için bir Windows 10 Enterprise multi-session sanal makinesi (VM) görüntüsüne dil paketleri yükleyebilirsiniz. Bu makalede, kullanıcılarınızın kendi görüntüleme dillerini seçmesini sağlayan dil paketlerini ve yakalama görüntülerini nasıl yükleyeceğiniz anlatılmaktadır.
+Windows sanal masaüstü, kullanıcılarınızın her zaman ve her yerde dağıtabileceğiniz bir hizmettir. Bu nedenle, kullanıcılarınızın Windows 10 Kurumsal Çoklu oturum görüntüsünü görüntüleyen dili özelleştirebilmesi önemlidir.
 
-Azure 'da bir sanal makine dağıtma hakkında daha fazla bilgi için [, Azure Portal ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturun](../virtual-machines/windows/create-portal-availability-zone.md).
+Kullanıcılarınızın dil ihtiyaçlarını karşılamak için kullanabileceğiniz iki yol vardır:
 
->[!NOTE]
->Bu makale, Windows 10 Enterprise çoklu oturum VM 'Leri için geçerlidir.
+- Her dil için özelleştirilmiş bir görüntüyle adanmış konak havuzları oluşturun.
+- Aynı konak havuzunda farklı dile ve yerelleştirme gereksinimlerine sahip olan kullanıcılara, ihtiyaç duydukları dili seçmesini sağlamak için görüntülerini özelleştirin.
 
-## <a name="install-a-language-pack"></a>Dil paketi yükler
+İkinci yöntem daha verimli ve ekonomik maliyetli bir yoldur. Ancak, hangi yöntemin gereksinimlerinize en uygun olduğuna karar vermek sizin için önemlidir. Bu makalede, görüntüleriniz için dillerin nasıl özelleştirileceği gösterilmektedir.
 
-Dil paketleriyle bir VM görüntüsü oluşturmak için, önce dil paketlerini bir makineye yüklemeniz ve bir görüntüsünü yakalamanız gerekir.
+## <a name="prerequisites"></a>Ön koşullar
 
-Dil paketlerini yüklemek için:
+Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini özelleştirmek üzere aşağıdaki şeylere ihtiyacınız vardır:
 
-1. Yönetici olarak oturum açın.
-2. En son Windows ve Windows Mağazası güncelleştirmelerini yüklediğinizden emin olun.
-3. **Ayarlar**  >  **zaman & dil**  >  **bölgesine**gidin.
-4. **Ülke veya bölge**altında, açılır menüden tercih ettiğiniz ülkeyi veya bölgeyi seçin.
-    Bu örnekte, aşağıdaki ekran görüntüsünde gösterildiği gibi **Fransa**seçeceğiz:
+- Windows 10 Enterprise multi-session, sürüm 1903 veya üzeri bir Azure sanal makinesi (VM)
 
-    > [!div class="mx-imgBorder"]
-    > ![Bölge sayfasının ekran görüntüsü. Şu anda seçili bölge Fransa ' dır.](media/region-page-france.png)
+- Dil ISO ve görüntünün kullandığı işletim sistemi sürümünün Istek üzerine Özellik (FOD) disk 1. Buradan indirebilirsiniz:
+     
+     - Dil ISO:
+        - [Windows 10, sürüm 1903 veya 1909 dil paketi ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10, sürüm 2004 dil paketi ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
-5. Bundan sonra **dil**' i seçin ve ardından **Dil ekle**' yi seçin. Listeden yüklemek istediğiniz dili seçin ve ardından **İleri**' yi seçin.
-6. **Dil özelliklerini yükler** penceresi açıldığında, **dil paketini yükler ve Windows görüntüleme dili olarak ayarla**etiketli onay kutusunu seçin.
-7. **Yükle**’yi seçin.
-8. Aynı anda birden çok dil eklemek için **Dil ekle**' yi seçin ve ardından 5 ve 6. adımlarda bir dil eklemek için işlemi tekrarlayın. Yüklemek istediğiniz her dil için bu işlemi tekrarlayın. Ancak, tek seferde yalnızca bir dil görüntüleme diliniz olarak ayarlayabilirsiniz.
+     - FOD disk 1 ISO:
+        - [Windows 10, sürüm 1903 veya 1909 FOD disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10, sürüm 2004 FOD disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
 
-    Hızlı bir görsel tanıtım aracılığıyla çalıştıralım. Aşağıdaki resimlerde, Fransızca ve Felemenkçe dil paketlerinin nasıl yükleneceği gösterilmektedir ve ardından, görüntüleme dili olarak Fransızca ayarlanır.
-
-    > [!div class="mx-imgBorder"]
-    > ![İşlemin başındaki dil sayfasının ekran görüntüsü. Seçilen Windows görüntüleme dili Ingilizce.](media/language-page-default.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Dil seçimi penceresinin ekran görüntüsü. Kullanıcı, Fransızca dil paketlerini bulmak için arama çubuğuna "Fransızca" girdi.](media/select-language-french.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Dil özelliklerini yüklemeyi sayfasının ekran görüntüsü. Fransızca tercih edilen dil olarak seçilidir. Seçilen seçenekler "görüntüleme dilmi ayarla", "dil paketini yükler," "konuşma tanıma" ve "el yazısı" dir.](media/install-language-features.png)
-
-    Dil Paketleriniz yüklendikten sonra dil paketlerinde dil paketlerinizin adlarının göründüğünü görmeniz gerekir.
-
-    > [!div class="mx-imgBorder"]
-    > ![Yeni dil paketlerinin yüklü olduğu dil sayfasının ekran görüntüsü. Fransızca ve Hollanda dil paketleri "tercih edilen diller" altında listelenmiştir.](media/language-page-complete.png)
-
-9. Oturumunuz oturumunuzu kapatmak isteyip istemediğinizi soran bir pencere görünürse. Oturumu kapatın ve yeniden oturum açın. Görüntüleme diliniz artık seçtiğiniz dilde olmalıdır.
-
-10.  **Denetim Masası**  >  **saat ve bölge**  >  **bölgesi**' ne gidin.
-
-11.  **Bölge** penceresi açıldığında, **Yönetim** sekmesini seçin ve ardından **Ayarları Kopyala**' yı seçin.
-
-12.  **Hoş geldiniz ekranı ve sistem hesapları** ve **Yeni Kullanıcı hesapları**etiketli onay kutularını seçin.
-
-13.  **Tamam**’ı seçin.
-
-14.  Bir pencere açılır ve oturumunuzu yeniden başlatmanızı söyleyecektir. **Şimdi yeniden Başlat**' ı seçin.
-
-15.  Oturum açtıktan sonra, **Denetim Masası**  >  **saat ve bölge**  >  **bölgesi**' ne geri dönün.
-
-16.  **Yönetim** sekmesini seçin.
-
-17.  **Sistem yerel ayarını değiştir**' i seçin.
-
-18. **Geçerli sistem yerel ayarı**altındaki açılan menüde, kullanmak istediğiniz yerel ayar dilini seçin. Bundan sonra **Tamam**' ı seçin.
-
-19. Oturumunuzu bir kez daha yeniden başlatmak için **Şimdi yeniden Başlat** ' ı seçin.
-
-Tebrikler, dil paketlerinizi yüklediniz!
-
-Devam etmeden önce, sisteminizde en son Windows ve Windows Mağazası sürümlerinin yüklü olduğundan emin olun.
-
-## <a name="sysprep"></a>Sysprep
-
-Daha sonra, görüntü yakalama işlemine hazırlamak için makinenize Sysprep uygulamanız gerekir.
-
-Makinenize Sysprep eklemek için:
-
-1. Yönetici olarak PowerShell’i açın.
-2. Doğru dizine gitmek için aşağıdaki cmdlet 'i çalıştırın:
-
-    ```powershell
-    cd Windows\System32\Sysprep
-    ```
-
-3. Sonra, aşağıdaki cmdlet 'i çalıştırın:
-
-    ```powershell
-    .\sysprep.exe
-    ```
-
-4. Sistem Hazırlama aracı penceresi açıldığında, **generalize**etiketli onay kutusunu seçin, ardından **kapatma seçenekleri** ' ne gidin ve açılan menüden **Kapat** ' ı seçin.
+- Windows dosya sunucusu sanal makinesindeki bir Azure dosya paylaşma veya dosya paylaşma
 
 >[!NOTE]
->Syprep işleminin tamamlanması birkaç dakika sürer. VM kapandığı için uzak oturumunuzun bağlantısı kesilecek.
+>Dosya paylaşımının (depo) özel görüntü oluşturmak için kullanmayı planladığınız Azure VM 'den erişilebilir olması gerekir.
 
-### <a name="resolve-sysprep-errors"></a>Sysprep hatalarını çözümle
+## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Dil paketleri ve isteğe bağlı özellikler için bir içerik deposu oluşturun
 
-Sysprep işlemi sırasında bir hata iletisi görürseniz şunları yapmanız gerekir:
+Dil paketleri ve bilgisayarlar için içerik deposu oluşturmak için:
 
-1. **C sürücüsünü** açın ve **Windows**  >  **System32 Sysprep**  >  **Panther**adresine gidip **Setuperr** dosyasını açın.
+1. Azure VM 'de, [Önkoşullar](#prerequisites)'daki bağlantılardan Windows 10 Enterprise multi-session, sürüm 1903, 1909 ve 2004 görüntüleri için Windows 10 çok dilli ISO ve fods 'yi indirin.
 
-   Hata dosyasındaki metinde, aşağıdaki görüntüde gösterildiği gibi belirli bir dil paketini kaldırmanız gerektiğini söyleyecektir. Sonraki adım için dil paketi adını kopyalayın.
+2. ISO dosyalarını sanal makineye açın ve bağlayın.
 
-   > [!div class="mx-imgBorder"]
-   > ![Setuperr dosyasının ekran görüntüsü. Paket adına sahip metin koyu mavi renkle vurgulanır.](media/setuperr-package-name.png)
+3. Dil paketi ISO dosyasına gidin ve içeriği **Localexperiencepacks** ve **x64 \\ Langpacks** klasörlerinden kopyalayıp dosya paylaşımının içeriğini yapıştırın.
 
-2. Yeni bir PowerShell penceresi açın ve dil paketini kaldırmak için adım 2 ' de kopyaladığınız paket adıyla aşağıdaki cmdlet 'i çalıştırın:
+4. **FOD ISO dosyasına**gidin, tüm içeriğini kopyalayın ve dosya paylaşımında yapıştırın.
 
-   ```powershell
-   Remove-AppxPackage <package name>
-   ```
+     >[!NOTE]
+     > Sınırlı depolamayla çalışıyorsanız, yalnızca kullanıcılarınızın ihtiyacı olan dillerin dosyalarını kopyalayın. Dosya adlarında dil kodlarına bakarak dosyaları birbirinden ayırt edebilirsiniz. Örneğin, Fransızca dosyası adında "fr-FR" koduna sahiptir. Tüm kullanılabilir dillerin dil kodlarının tüm listesi için bkz. [Windows Için kullanılabilir dil paketleri](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
-3. Cmdlet 'i yeniden çalıştırarak paketi kaldırdığınızdan emin olun `Remove-AppxPackage` . Paketi başarıyla kaldırdıysanız, kaldırmaya çalıştığınız paketin orada olmadığını belirten bir ileti görmeniz gerekir.
+     >[!IMPORTANT]
+     > Bazı diller, farklı adlandırma kurallarını izleyen uydu paketlerine dahil edilen ek yazı tiplerini gerektirir. Örneğin, Japonca yazı tipi dosya adları "Jpan" içerir.
+     >
+     > [!div class="mx-imgBorder"]
+     > ![Dosya adlarında "Jpan" dili etiketiyle Japonca dil paketlerine bir örnek.](media/language-pack-example.png)
 
-4. `sysprep.exe`Cmdlet 'i yeniden çalıştırın.
+5. Özel görüntü oluşturmak için kullanacağınız VM 'den okuma erişiminizin olması için dil içeriği depo paylaşımında izinleri ayarlayın.
 
-## <a name="capture-the-image"></a>Görüntüyü yakala
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Özel bir Windows 10 Kurumsal Çoklu oturum görüntüsünü el ile oluşturma
 
-Sisteminiz hazır olduğuna göre, diğer kullanıcıların yapılandırma işlemini yinelemek zorunda kalmadan sistem sanal makinelerini kullanmaya başlayabilmesi için bir görüntü yakalayabilirsiniz.
+Özel bir Windows 10 Kurumsal Çoklu oturum görüntüsünü el ile oluşturmak için:
 
-Bir görüntü yakalamak için:
+1. Bir Azure VM dağıtın, ardından Azure galerisine gidin ve kullanmakta olduğunuz Windows 10 Enterprise çoklu oturumunun geçerli sürümünü seçin.
+2. VM 'yi dağıttıktan sonra, RDP 'yi yerel yönetici olarak kullanarak buna bağlanın.
+3. SANAL makinenizin en son Windows güncelleştirmelerine sahip olduğundan emin olun. Gerekirse güncelleştirmeleri indirin ve VM 'yi yeniden başlatın.
+4. Dil paketine ve FOD dosya paylaşma deposuna bağlanın ve bir mektup sürücüsüne (örneğin, E sürücüsüne) bağlayın.
 
-1. Azure portal gidin ve [bir dil paketi](#install-a-language-pack) ve [Sysprep](#sysprep)yüklerken yapılandırdığınız makinenin adını seçin.
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Özel bir Windows 10 Kurumsal Çoklu oturum görüntüsünü otomatik olarak oluşturma
 
-2. **Yakala**' yı seçin.
+Dilleri otomatik bir işlem aracılığıyla yüklemeyi tercih ediyorsanız, PowerShell 'de bir betik ayarlayabilirsiniz. Windows 10 Enterprise multi-session, sürüm 2004 için Ispanyolca (Ispanya), Fransızca (Fransa) ve Çince (PRC) dil paketleri ve uydu paketleri yüklemek için aşağıdaki betik örneğini kullanabilirsiniz. Betik, dil arabirimi paketini ve tüm gerekli uydu paketlerini görüntüyle tümleştirir. Bununla birlikte, diğer dilleri yüklemek için bu betiği de değiştirebilirsiniz. Yalnızca betiği yükseltilmiş bir PowerShell oturumundan çalıştırdığınızdan emin olun, aksi takdirde çalışmaz.
 
-3. **Ad** alanına görüntünüz için bir ad girin ve aşağıdaki görüntüde gösterildiği gibi **kaynak grubu** açılır menüsünü kullanarak kaynak grubuna atayın.
+```powershell
+########################################################
+## Add Languages to running Windows Image for Capture##
+########################################################
 
-   > [!div class="mx-imgBorder"]
-   > ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
+##Disable Language Pack Cleanup##
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup"
 
-4. **Oluştur**’u seçin.
+##Set Language Pack Content Stores##
+[string]$LIPContent = "E:"
 
-5. Yakalama işleminin tamamlanabilmesi için birkaç dakika bekleyin. Görüntü hazırsa, bildirim merkezinde görüntünün yakalandığını bildiren bir ileti görmeniz gerekir.
+##Spanish##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\es-es\LanguageExperiencePack.es-es.Neutral.appx -LicensePath $LIPContent\es-es\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_es-es.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+Set-WinUserLanguageList $LanguageList -force
 
-Artık yeni görüntünüzü kullanarak bir VM dağıtabilirsiniz. VM 'yi dağıtırken, [Azure Portal bir kullanılabilirlik alanında Windows sanal makinesi oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)bölümündeki yönergeleri izlediğinizden emin olun.
+##French##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\fr-fr\LanguageExperiencePack.fr-fr.Neutral.appx -LicensePath $LIPContent\fr-fr\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_fr-fr.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~fr-fr~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("fr-fr")
+Set-WinUserLanguageList $LanguageList -force
 
-### <a name="how-to-change-display-language-for-standard-users"></a>Standart kullanıcılar için görüntüleme dilini değiştirme
+##Chinese(PRC)##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\zh-cn\LanguageExperiencePack.zh-cn.Neutral.appx -LicensePath $LIPContent\zh-cn\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_zh-cn.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Fonts-Hans-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
 
-Standart kullanıcılar, VM 'lerinde görüntüleme dilini değiştirebilir.
+>[!IMPORTANT]
+>Windows 10 Enterprise sürümleri 1903 ve 1909, `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` paket dosyası gerektirmez.
 
-Görüntüleme dilini değiştirmek için:
+Betik, yüklemeniz gereken dillerin sayısına bağlı olarak biraz zaman alabilir.
 
-1. **Dil ayarları**' na gidin. Nerede olduğunu bilmiyorsanız, başlangıç menüsündeki arama çubuğuna **dil** girebilirsiniz.
+Betiğin çalışması tamamlandıktan sonra, **Başlangıç**  >  **ayarları**  >  **zaman & dil**  >  **dili**' ne giderek dil paketlerinin doğru şekilde yüklendiğinden emin olun. Dil dosyaları varsa, her şey ayarlanır.
 
-2. Windows görüntüleme dili açılan menüsünde, görüntüleme diliniz olarak kullanmak istediğiniz dili seçin.
+İşiniz bittiğinde paylaşımın bağlantısını kesdiğinizden emin olun.
 
-3. Oturumunuzu kapatın ve yeniden oturum açın. Görüntüleme dili artık adım 2 ' de seçtiğiniz bir görünüm olmalıdır.
+## <a name="finish-customizing-your-image"></a>Görüntünüzü özelleştirmeyi tamamlama
+
+Dil paketlerini yükledikten sonra, özelleştirilmiş yansımanıza eklemek istediğiniz diğer yazılımları yükleyebilirsiniz.
+
+Görüntünüzü özelleştirmeyi tamamladıktan sonra, Sistem Hazırlama Aracı 'nı (Sysprep) çalıştırmanız gerekir.
+
+Sysprep çalıştırmak için:
+
+1. Yükseltilmiş bir komut istemi açın ve görüntüyü genelleştirmek için aşağıdaki komutu çalıştırın:  
+   
+     ```cmd
+     C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+     ```
+
+2. Sanal makineyi kapatın ve ardından [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen bir görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md)bölümündeki yönergeleri izleyerek yönetilen bir görüntüde yakalayın.
+
+3. Artık özelleştirilmiş görüntüyü Windows sanal masaüstü ana bilgisayar havuzunu dağıtmak için kullanabilirsiniz. Bir konak havuzunu dağıtmayı öğrenmek için bkz. [öğretici: Azure Portal bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
+
+## <a name="enable-languages-in-windows-settings-app"></a>Windows ayarları uygulamasında dilleri etkinleştirme
+
+Son olarak, Ayarlar menüsünde tercih edilen dillerini seçebilmeniz için dili her kullanıcının dil listesine eklemeniz gerekir.
+
+Kullanıcılarınızın yüklediğiniz dilleri seçmesini sağlamak için, Kullanıcı olarak oturum açın ve ardından, yüklü dil paketlerini diller menüsüne eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın. Bu betiği, kullanıcı oturumunda oturum açtığında etkinleştiren otomatik bir görev olarak da ayarlayabilirsiniz.
+
+```powershell
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+$LanguageList.Add("fr-fr")
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
+
+Bir Kullanıcı dil ayarlarını değiştirdikten sonra, değişikliklerin etkili olması için Windows Sanal Masaüstü oturumunda oturumu kapatıp yeniden oturum açması gerekir. 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Dil paketlerine yönelik bilinen sorunları merak ediyorsanız, bkz. [Windows 10 ' da dil paketleri ekleme, sürüm 1803 ve sonraki sürümler: bilinen sorunlar](/windows-hardware/manufacture/desktop/language-packs-known-issue).
+
+Windows 10 Enterprise çoklu oturum hakkında başka sorularınız varsa, [SSS sorusuna](windows-10-multisession-faq.md)göz atın.

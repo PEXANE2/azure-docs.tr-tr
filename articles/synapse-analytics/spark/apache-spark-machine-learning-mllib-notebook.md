@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535034"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719351"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib ve Azure SYNAPSE Analytics ile makine öğrenimi uygulaması oluşturma
 
@@ -71,7 +71,7 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 
 Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesini zorlamak mümkündür.
 
-1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Start_date ve end_date kullanımı, bir ay veri döndüren bir filtre uygular.
+1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ Aşağıdaki kodda dört işlem sınıfı verilmiştir:
 - Filtreleyiciler/hatalı değerler filtrelemeye göre kaldırılıyor.
 - Gerekli olmayan sütunların kaldırılması.
 - Bir şekilde daha verimli hale getirmek için ham verilerden türetilmiş yeni sütunların oluşturulması, bazen korleştirme olarak adlandırılır.
-- Etiketleme, ikili sınıflandırmanın (belirli bir yolculuğa sahip olacağı veya bir yolculuğa sahip olmadığı), ipucu miktarını 0 veya 1 değerine dönüştürmeye gerek vardır.
+- Etiketleme-ikili sınıflandırmadan (belirli bir yolculuğa bir ipucu olacak ya da bu bir seyahat üzerinde değil), ipucu miktarını 0 veya 1 değerine dönüştürmeniz gerekir.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri*kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins`Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya*sahiptir.
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Artık iki veri çerçevesi olduğuna göre, bir sonraki görev model formülünü oluşturmak ve bunu eğitim veri çerçevesinde çalıştırmak ve ardından test veri çerçevesine karşı doğrulamak olacaktır. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapmanız gerekir.
 
 > [!Note]
-> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve rol ataması Ekle ' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-Bu hücrenin çıktısı
+Bu hücrenin çıktısı:
 
 ```shell
 Area under ROC = 0.9779470729751403

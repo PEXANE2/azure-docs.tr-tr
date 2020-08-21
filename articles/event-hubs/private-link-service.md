@@ -3,12 +3,12 @@ title: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi öğrenin
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185477"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716800"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Event Hubs ad alanlarına erişime izin ver 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
@@ -34,7 +34,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -211,7 +211,7 @@ Dört sağlama durumu vardır:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Yönetmek istediğiniz **ad alanını** seçin.
 4. **Ağ** sekmesini seçin.
@@ -222,7 +222,7 @@ Dört sağlama durumu vardır:
 2. Onaylamak istediğiniz **Özel uç noktayı** seçin
 3. **Onayla** düğmesini seçin.
 
-    ![Görüntü](./media/private-link-service/approve-private-endpoint.png)
+    ![Özel uç noktayı Onayla](./media/private-link-service/approve-private-endpoint.png)
 4. **Bağlantıyı Onayla** sayfasında, bir açıklama ekleyin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 5. Listede, **Onaylandı**olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
@@ -230,7 +230,7 @@ Dört sağlama durumu vardır:
 
 1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da var olan bir bağlantı olup olmadığına bakılmaksızın bağlantıyı seçin ve **Reddet** düğmesine tıklayın.
 
-    ![Görüntü](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Özel uç noktayı Reddet](./media/private-link-service/private-endpoint-reject-button.png)
 2. **Bağlantıyı Reddet** sayfasında, bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 3. Listede, **reddedildi**olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
@@ -242,7 +242,7 @@ Dört sağlama durumu vardır:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
 
-Özel uç nokta kaynağının aynı alt ağı içindeki kaynakların, özel bir IP adresi üzerinden Event Hubs ad alanına bağlanıp doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
+Özel uç noktanın sanal ağı içindeki kaynakların, özel bir IP adresi üzerinden Event Hubs ad alanına bağlandığını ve doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
 
 İlk olarak, [Azure Portal Windows sanal makinesi oluşturma](../virtual-machines/windows/quick-create-portal.md) bölümündeki adımları izleyerek bir sanal makine oluşturun
 

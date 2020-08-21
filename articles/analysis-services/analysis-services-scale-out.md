@@ -4,15 +4,15 @@ description: Genişleme Azure Analysis Services sunucularını çoğaltın. Daha
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247983"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716937"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -50,7 +50,7 @@ Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzu
 
 ### <a name="synchronization-mode"></a>Eşitleme modu
 
-Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden boyanır. Yeniden doldurma aşamalarda gerçekleşir. Bunlar, belirli bir zamanda sorgular için en az bir çoğaltmanın çevrimiçi tutulduğundan emin olmak için bir kerede ayrılırlar ve iki kez eklenir (en az üç çoğaltma olduğu varsayılarak). Bazı durumlarda, bu işlem gerçekleşirken istemcilerin çevrimiçi çoğaltmalardan birine yeniden bağlanmasına gerek olabilir. (Önizleme aşamasında) **Replicasyncmode** ayarını kullanarak artık sorgu çoğaltma eşitlemesini paralel olarak belirtebilirsiniz. Paralel eşitleme aşağıdaki avantajları sağlar: 
+Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden boyanır. Yeniden doldurma aşamalarda gerçekleşir. Bunlar, belirli bir zamanda sorgular için en az bir çoğaltmanın çevrimiçi tutulduğundan emin olmak için bir kerede ayrılırlar ve iki kez eklenir (en az üç çoğaltma olduğu varsayılarak). Bazı durumlarda, bu işlem gerçekleşirken istemcilerin çevrimiçi çoğaltmalardan birine yeniden bağlanmasına gerek olabilir. **Replicasyncmode** ayarını kullanarak artık sorgu çoğaltma eşitlemesini paralel olarak belirtebilirsiniz. Paralel eşitleme aşağıdaki avantajları sağlar: 
 
 - Eşitleme zamanında önemli bir düşüş. 
 - Eşitleme işlemi sırasında çoğaltmalar genelinde verilerin tutarlı olma olasılığı yüksektir. 
@@ -61,7 +61,7 @@ Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden bo
 
 Gelişmiş özelliklerde ReplicaSyncMode ayarlamak için SSMS 'yi kullanın. Olası değerler şunlardır: 
 
-- `1`(varsayılan): aşamalar halinde tam çoğaltma veritabanı yeniden doldurma (artımlı). 
+- `1` (varsayılan): aşamalar halinde tam çoğaltma veritabanı yeniden doldurma (artımlı). 
 - `2`: İyileştirilmiş eşitleme paralel olarak. 
 
 ![RelicaSyncMode ayarı](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)

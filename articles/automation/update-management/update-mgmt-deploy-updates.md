@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a81376b284e0d1df84a69b969335c0e63999a00
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4336ba272dd83ad2a35060c1c7524a564b928484
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450886"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717702"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -18,7 +18,7 @@ Bu makalede, bir güncelleştirme dağıtımının nasıl zamanlanmakta olduğu 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın
+[Azure portalda](https://portal.azure.com) oturum açma
 
 ## <a name="schedule-an-update-deployment"></a>Güncelleştirme dağıtımı zamanlama
 
@@ -41,8 +41,10 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için:
 
 6. Ürünlerin [güncelleştirme sınıflandırmalarını](update-mgmt-view-update-assessments.md#work-with-update-classifications) belirtmek için **güncelleştirme sınıflandırmaları** bölgesini kullanın. Her ürün için desteklenen tüm güncelleştirme sınıflandırmalarının seçimini kaldırın, ancak güncelleştirme dağıtımınıza dahil olanlar.
 
-7. Dağıtım için belirli güncelleştirmeleri seçmek üzere **güncelleştirmeleri dahil et/hariç tut** bölgesini kullanın. Dahil et/hariç tut sayfası, güncelleştirmeleri, dahil etmek veya hariç tutmak için KB makalesinin KIMLIK numaralarına göre görüntüler.
-    
+    Dağıtımınız yalnızca bir seçim kümesi uygulamasa, bir sonraki adımda açıklandığı gibi, **güncelleştirmeleri dahil et/hariç tut** seçeneğini yapılandırırken, önceden seçilmiş tüm güncelleştirme sınıflandırmalarının seçimini kaldırmak gerekir. Bu, hedef makinelere yalnızca bu dağıtıma *dahil* etmek için belirttiğiniz güncelleştirmelerin yüklü olmasını sağlar.
+
+7. Seçili güncelleştirmeleri dağıtıma eklemek veya dağıtımdan dışlamak için **güncelleştirmeleri dahil et/hariç tut** bölgesini kullanın. **Dahil et/hariç tut** sayfasında, dahil etmek veya hariç tutmak istediğiniz KB makalesinin kimlik numaralarını girersiniz.
+
    > [!IMPORTANT]
    > Dışlamalar geçersiz kılmanın dahil olduğunu unutmayın. Örneğin, bir hariç tutma kuralı tanımlarsanız `*` , güncelleştirme yönetimi tüm düzeltme eklerini veya paketleri yüklemeden dışlar. Dışlanan düzeltme ekleri hala makinelerde eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
 

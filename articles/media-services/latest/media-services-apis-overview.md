@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043418"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719198"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API’leri ile geliştirme
 
@@ -86,7 +86,7 @@ Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksiniml
 
 `x-ms-long-running-operation`Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) ile işaretlenen işlemler uzun süren işlemlerdir. 
 
-Zaman uyumsuz Azure işlemlerini izlemeye ilişkin ayrıntılar için bkz. [Async Operations](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation).
+Zaman uyumsuz Azure işlemlerini izlemeye ilişkin ayrıntılar için bkz. [Async Operations](../../azure-resource-manager/management/async-operations.md).
 
 Media Services, aşağıdaki uzun süren işlemlere sahiptir:
 
@@ -113,7 +113,7 @@ Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK
+## <a name="sdks"></a>SDK’lar
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olduğu garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
@@ -154,5 +154,5 @@ Gerekli tüm değerleri almak için bkz. [erişim Azure Media Services API 'si](
 
 * [Java ile Media Services bağlanma](configure-connect-java-howto.md)
 * [.NET ile Media Services bağlanma](configure-connect-dotnet-howto.md)
-* [Node.jsMedia Services bağlanma](configure-connect-nodejs-howto.md)
+* [Node.jsMedia Services bağlanma ](configure-connect-nodejs-howto.md)
 * [Python ile Media Services bağlanma](configure-connect-python-howto.md)

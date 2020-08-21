@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044394"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718212"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory Excel biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,10 +29,10 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **Excel**olarak ayarlanmalıdır.   | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . | Yes      |
-| sheetname ayar çağırın        | Verilerin okunacağı Excel çalışma sayfası adı.                       | Yes      |
-| aralık            | Seçmeli verileri bulmak için belirtilen çalışma sayfasındaki hücre aralığı (örneğin, `A3:H5` a3 'Den H5 'e), ( `A3` a3 hücresinden başlayarak bir tablo), `A3:A3` (tek hücreli). Belirtilmemişse, ADF tüm çalışma sayfasından tablo olarak okur. | Hayır       |
+| tür             | Veri kümesinin Type özelliği **Excel**olarak ayarlanmalıdır.   | Evet      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . | Evet      |
+| sheetname ayar çağırın        | Verilerin okunacağı Excel çalışma sayfası adı.                       | Evet      |
+| aralık            | Seçmeli verileri bulmak için verilen çalışma sayfasındaki hücre aralığı, ör.:<br>-Belirtilmemiş: tüm çalışma sayfasını boş olmayan ilk satır ve sütundan tablo olarak okur<br>- `A3`: verilen hücreden başlayarak bir tabloyu okur, aşağıdaki tüm satırları ve tüm sütunları sağa dinamik olarak algılar<br>- `A3:H5`: Bu sabit aralığı tablo olarak okur<br>- `A3:A3`: Bu tek hücreyi okur | Hayır       |
 | firstRowAsHeader | Belirtilen çalışma sayfasındaki/aralıktaki ilk satırın, sütun adlarıyla üst bilgi satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır       |
 | nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | Hayır       |
 | sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
@@ -75,7 +75,7 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **ExcelSource**olarak ayarlanmalıdır. | Yes      |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **ExcelSource**olarak ayarlanmalıdır. | Evet      |
 | storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . | Hayır       |
 
 ```json
@@ -112,7 +112,7 @@ Aşağıdaki tabloda bir Excel kaynağı tarafından desteklenen özellikler lis
 | Bölüm kök yolu       | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır       | Dize                                                    | Partitionrootyolu                 |
 | Dosya listesi             | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır       | `true` veya `false`                                         | Si                          |
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma       | hayır       | Dize                                                    | rowUrlColumn                      |
-| Tamamlandıktan sonra          | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır       | Sil: `true` veya`false` <br> Geçiş`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| Tamamlandıktan sonra          | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır       | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | Son değiştirme ölçütü   | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır       | Zaman damgası                                                 | Modıfıedafter <br> modifiedBefore |
 
 ### <a name="source-example"></a>Kaynak örneği

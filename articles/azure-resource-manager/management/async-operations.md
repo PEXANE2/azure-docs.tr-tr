@@ -2,77 +2,84 @@
 title: Zaman uyumsuz işlemlerin durumu
 description: Azure 'da zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75485448"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718433"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme
+
 İşlem hızlı bir şekilde tamamlanamadığından bazı Azure REST işlemleri zaman uyumsuz olarak çalışır. Bu makalede, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz işlemlerin durumunun nasıl izleneceği açıklanır.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Zaman uyumsuz işlemler için durum kodları
+
 Zaman uyumsuz bir işlem başlangıçta bir HTTP durum kodu döndürür:
 
 * 201 (oluşturuldu)
-* 202 (kabul edildi) 
+* 202 (kabul edildi)
 
 İşlem başarıyla tamamlandığında, aşağıdakilerden birini döndürür:
 
 * 200 (TAMAM)
-* 204 (Içerik yok) 
+* 204 (Içerik yok)
 
-Yürütmekte olduğunuz işlemin yanıtlarını görmek için [REST API belgelerine](/rest/api/) bakın.
+Yürütmekte olduğunuz işlemin yanıtlarını görmek için [REST API belgelerine](/rest/api/azure/) bakın.
 
-## <a name="monitor-status-of-operation"></a>İşlemin durumunu izle
-Zaman uyumsuz REST işlemleri, işlemin durumunu belirlemede kullandığınız üst bilgi değerlerini döndürür. İnceleyecek olabilecek üç üst bilgi değeri vardır:
+201 veya 202 yanıt kodunu aldıktan sonra, işlemin durumunu izlemeye hazırsınız demektir.
 
-* `Azure-AsyncOperation`-İşlemin devam eden durumunu denetlemek için URL. İşlem bu değeri döndürürse, işlemin durumunu izlemek için her zaman kullanın (konum yerine).
-* `Location`-Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
-* `Retry-After`-Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
+## <a name="use-url-to-monitor-status"></a>Durumu izlemek için URL kullan
 
-Ancak, her zaman uyumsuz işlem bu değerlerin tümünü döndürmez. Örneğin, bir işlem için Azure-AsyncOperation üst bilgi değerini ve başka bir işlemin konum üst bilgi değerini değerlendirmeniz gerekebilir. 
+Zaman uyumsuz işlemin durumunu izlemenin iki farklı yolu vardır. Özgün talebinizden döndürülen üst bilgi değerlerini inceleyerek doğru yaklaşımı belirlersiniz. İlk olarak şunu arayın:
 
-Bir istek için herhangi bir üst bilgi değerini alarak üst bilgi değerlerini alırsınız. Örneğin, C# ' de, başlık değerini `HttpWebResponse` aşağıdaki kodla adlı bir nesneden alırsınız `response` :
+* `Azure-AsyncOperation` -İşlemin devam eden durumunu denetlemek için URL. İşlem bu değeri döndürürse, işlemin durumunu izlemek için onu kullanın.
+* `Retry-After` -Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
 
-```cs
-response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
-```
+`Azure-AsyncOperation`Üst bilgi değerlerinden biri değilse, şunu arayın:
+
+* `Location` -Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
+* `Retry-After` -Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation isteği ve yanıtı
 
-Zaman uyumsuz işlemin durumunu almak için Azure-AsyncOperation üstbilgi değerindeki URL 'ye bir GET isteği gönderin.
+`Azure-AsyncOperation`Üst bilgi değerindeki BIR URL varsa, bu URL 'ye BIR get isteği gönderin. `Retry-After`Durumu ne sıklıkta kontrol etmek için değerini kullanın. Yanıt özellikleri farklılık gösterebilir, ancak her zaman zaman uyumsuz işlemin durumunu içerir.
 
-Bu işlemden yanıt gövdesi, işlem hakkındaki bilgileri içerir. Aşağıdaki örnek, işlemden döndürülen olası değerleri gösterir:
+```json
+{
+    "status": "{status-value}"
+}
+```
+
+Aşağıdaki örnek, işlemden döndürülebilecek diğer değerleri gösterir:
 
 ```json
 {
     "id": "{resource path from GET operation}",
-    "name": "{operation-id}", 
-    "status" : "Succeeded | Failed | Canceled | {resource provider values}", 
+    "name": "{operation-id}",
+    "status" : "Succeeded | Failed | Canceled | {resource provider values}",
     "startTime": "2017-01-06T20:56:36.002812+00:00",
     "endTime": "2017-01-06T20:56:56.002812+00:00",
     "percentComplete": {double between 0 and 100 },
     "properties": {
         /* Specific resource provider values for successful operations */
     },
-    "error" : { 
+    "error" : {
         "code": "{error code}",  
-        "message": "{error description}" 
+        "message": "{error description}"
     }
 }
 ```
 
-Yalnızca `status` tüm yanıtlar için döndürülür. Hata nesnesi, durum başarısız olduğunda veya Iptal edildiğinde döndürülür. Diğer tüm değerler isteğe bağlıdır; Bu nedenle, aldığınız yanıt bu örnekteki değerden farklı görünebilir.
+Hata nesnesi, durum başarısız olduğunda veya Iptal edildiğinde döndürülür. Diğer tüm değerler isteğe bağlıdır. Aldığınız yanıt, örneğinden farklı görünebilir.
 
 ## <a name="provisioningstate-values"></a>provisioningState değerleri
 
-Kaynak oluşturan, güncelleştiren veya silen (PUT, PATCH, SIL) işlemler genellikle bir `provisioningState` değer döndürüyor. Bir işlem tamamlandığında, aşağıdaki üç değerden biri döndürülür: 
+Kaynak oluşturan, güncelleştiren veya silen (PUT, PATCH, SIL) işlemler genellikle bir `provisioningState` değer döndürüyor. Bir işlem tamamlandığında, aşağıdaki üç değerden biri döndürülür:
 
-* Başarılı oldu
+* Başarılı
 * Başarısız
 * İptal edildi
 
@@ -81,24 +88,25 @@ Diğer tüm değerler işlemin hala çalıştığını gösterir. Kaynak sağlay
 ## <a name="example-requests-and-responses"></a>Örnek istekleri ve yanıtları
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Sanal makineyi başlatın (Azure-AsyncOperation ile 202)
-Bu örnek, sanal makineler için **başlatma** işleminin durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
+
+Bu örnek, [sanal makineler için başlatma işleminin](/rest/api/compute/virtualmachines/start)durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 POST 
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2019-12-01
 ```
 
 202 durum kodunu döndürür. Üst bilgi değerleri arasında şunu görürsünüz:
 
 ```HTTP
-Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
+Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2019-12-01
 ```
 
 Bu URL 'ye başka bir istek göndererek zaman uyumsuz işlemin durumunu denetlemek için.
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
+https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2019-12-01
 ```
 
 Yanıt gövdesi işlemin durumunu içerir:
@@ -113,11 +121,11 @@ Yanıt gövdesi işlemin durumunu içerir:
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Kaynakları dağıtma (Azure ile zaman uyumsuz coperation ile 201)
 
-Bu örnekte, Azure 'a kaynak dağıtmaya yönelik **dağıtımlar** işleminin durumunun nasıl belirleneceği gösterilmektedir. İlk istek aşağıdaki biçimdedir:
+Bu örnekte, Azure 'a [kaynak dağıtmaya yönelik dağıtımlar işleminin](/rest/api/resources/deployments/createorupdate) durumunun nasıl belirleneceği gösterilmektedir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
+https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2020-06-01
 ```
 
 201 durum kodunu döndürür. Yanıtın gövdesi şunları içerir:
@@ -129,47 +137,58 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 Üst bilgi değerleri arasında şunu görürsünüz:
 
 ```HTTP
-Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2020-06-01
 ```
 
 Bu URL 'ye başka bir istek göndererek zaman uyumsuz işlemin durumunu denetlemek için.
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
+https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2020-06-01
 ```
 
 Yanıt gövdesi işlemin durumunu içerir:
 
 ```json
-{"status":"Running"}
+{
+    "status": "Running"
+}
 ```
 
 Dağıtım tamamlandığında, yanıt şunları içerir:
 
 ```json
-{"status":"Succeeded"}
+{
+    "status": "Succeeded"
+}
 ```
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>Depolama hesabı oluştur (konum ve yeniden dene ile 202)
 
-Bu örnek, depolama hesapları için **oluşturma** işleminin durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
+Bu örnek, [depolama hesapları için oluşturma işleminin](/rest/api/storagerp/storageaccounts/create)durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2019-06-01
 ```
 
 Ve istek gövdesi depolama hesabı için özellikler içerir:
 
 ```json
-{ "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
+{
+    "location": "South Central US",
+    "properties": {},
+    "sku": {
+        "name": "Standard_LRS"
+    },
+    "kind": "Storage"
+}
 ```
 
 202 durum kodunu döndürür. Üst bilgi değerleri arasında aşağıdaki iki değeri görürsünüz:
 
 ```HTTP
-Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
+Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2019-06-01
 Retry-After: 17
 ```
 
@@ -177,12 +196,12 @@ Yeniden deneme sırasında belirtilen saniye sayısını bekledikten sonra, bu U
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2019-06-01
 ```
 
 İstek hala çalışıyorsa 202 bir durum kodu alırsınız. İstek tamamlandıysa, 200 durum kodunu alır ve yanıtın gövdesi oluşturulan depolama hesabının özelliklerini içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Her REST işlemi hakkındaki belgeler için [REST API belgelerine](/rest/api/)bakın.
+* Her REST işlemi hakkındaki belgeler için [REST API belgelerine](/rest/api/azure/)bakın.
 * Kaynak Yöneticisi REST API üzerinden şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtma ve Kaynak Yöneticisi REST API](../templates/deploy-rest.md).

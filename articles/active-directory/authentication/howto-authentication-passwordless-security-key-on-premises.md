@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550645"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717005"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
@@ -48,10 +48,10 @@ Kuruluşların Ayrıca aşağıdaki yazılım gereksinimlerini karşılaması ge
 
 - Cihazların Windows 10 Insider Build 18945 veya daha yeni bir sürümü çalıştırması gerekir.
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)sürüm 1.4.32.0 veya sonraki bir sürüme sahip olmanız gerekir.
-  - Kullanılabilir Azure AD karma kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../../security/fundamentals/choose-ad-authn.md) ve [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](../hybrid/how-to-connect-install-select-installation.md).
+  - Kullanılabilir Azure AD karma kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../hybrid/choose-ad-authn.md) ve [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](../hybrid/how-to-connect-install-select-installation.md).
 - Windows Server etki alanı denetleyicileriniz aşağıdaki düzeltme eklerini yüklemiş olmalıdır:
-    - Windows Server 2016 için-https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Windows Server 2019 için-https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Windows Server 2016 için- https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Windows Server 2019 için- https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -75,7 +75,7 @@ Aşağıdaki senaryolar desteklenmez:
 Yöneticiler, şirket içi dizininizde bir Azure AD Kerberos sunucu nesnesi oluşturmak için Azure AD Connect sunucusundan PowerShell araçlarını kullanır. Kuruluşunuzda Azure AD kullanıcıları içeren her etki alanı ve orman için aşağıdaki adımları çalıştırın:
 
 1. Azure AD Connect en son sürümüne yükseltin. Yönergeler, karma ortamınızı desteklemek için Azure AD Connect zaten yapılandırmış olduğunuz varsayılır.
-1. Azure AD Connect sunucusunda, yükseltilmiş bir PowerShell istemi açın ve şuraya gidin`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Azure AD Connect sunucusunda, yükseltilmiş bir PowerShell istemi açın ve şuraya gidin `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
 1. Şirket içi Active Directory etki alanı ve Azure Active Directory kiracınızda yeni bir Azure AD Kerberos sunucu nesnesi oluşturmak için aşağıdaki PowerShell komutlarını çalıştırın.
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Bu komut, Azure AD Kerberos sunucusunun özelliklerini verir. Her şeyin iyi sı
 | ID | AD DS DC nesnesinin benzersiz KIMLIĞI. Bu KIMLIK bazen "yuva" veya "dal KIMLIĞI" olarak adlandırılır. |
 | DomainDnsName | Active Directory Etki Alanı DNS etki alanı adı. |
 | Bilgisayar hesabı | Azure AD Kerberos Sunucusu nesnesinin (DC) bilgisayar hesabı nesnesi. |
-| UserAccount | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| UserAccount | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
 | KeyVersion | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artış, çoğaltma meta verilerine ve muhtemelen büyük olasılıkla fazlasına dayanır. Örneğin, ilk *Keyversion* *192272*olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz. Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
 | KeyUpdatedOn | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının güncelleştirildiği veya oluşturulduğu tarih ve saat. |
 | KeyUpdatedFrom | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının en son güncelleştirildiği DC. |

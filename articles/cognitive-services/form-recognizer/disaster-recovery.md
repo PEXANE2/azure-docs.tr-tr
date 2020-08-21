@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903349"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718824"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
 
@@ -26,7 +26,7 @@ Copy API 'SI, bir form tanıyıcı hesabından veya diğer kullanıcılara, dest
 
 Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağımlıysa, modelinizi başka bir bölgedeki başka bir form tanıyıcı hesabına kopyalamanızı öneririz. Bölgesel bir kesinti oluşursa, modelinize kopyalandığı bölgeye erişebilirsiniz.
 
-##  <a name="prerequisites"></a>Önkoşullar
+##  <a name="prerequisites"></a>Ön koşullar
 
 1. Farklı Azure bölgelerindeki Azure kaynaklarını iki form tanıyıcı. Bunlar yoksa, Azure portal gidin ve yeni bir form tanıyıcı kaynağı oluşturun <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" " target="_blank"> Yeni bir form tanıyıcı kaynağı oluşturun <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Form tanıyıcı kaynağınızın abonelik anahtarı, uç nokta URL 'SI ve abonelik KIMLIĞI. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.
@@ -39,6 +39,9 @@ Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağı
 1. İlk &mdash; olarak, kopyalanmış modeli alacak kaynak olan hedef kaynağa bir kopya yetkilendirme isteği verirsiniz. Yeni oluşturulan hedef modelin URL 'sini geri alırsınız ve bu, kopyalanmış verileri alır.
 1. Sonra kopyalama isteğini, kopyalanacak modeli içeren kaynağı kaynak kaynağına gönderirsiniz &mdash; . İşlemin ilerlemesini izlemek için Sorgulayabileceğiniz bir URL 'YI geri alacaksınız.
 1. İşlem başarılı olana kadar ilerleme URL 'sini sorgulamak için kaynak kaynak kimlik bilgilerinizi kullanacaksınız. Yeni modelin durumunu almak için hedef kaynaktaki yeni model KIMLIĞINI de sorgulayabilirsiniz.
+
+> [!CAUTION]
+> Copy API 'SI Şu anda [oluşturulmuş özel modeller](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)Için model kimliklerini desteklemiyor. Model oluşturma, v 2.1-Preview. 1 Preview sürümündeki bir önizleme özelliğidir. 
 
 ## <a name="generate-copy-authorization-request"></a>Kopya yetkilendirme isteği oluştur
 
@@ -90,7 +93,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |Hata|Çözüm|
 |:--|:--|
-| 400/ile hatalı Istek`"code:" "1002"` | Doğrulama hatasını veya hatalı oluşturulmuş kopyalama isteğini gösterir. Genel sorunlar şunlardır: a) geçersiz veya değiştirilmiş `copyAuthorization` Yük. b) belirtecin süresi dolma değeri `expirationDateTimeTicks` ( `copyAuhtorization` Yük 24 saat için geçerlidir). c) geçersiz veya desteklenmiyor `targetResourceRegion` . d) geçersiz veya hatalı biçimlendirilmiş `targetResourceId` dize.
+| 400/ile hatalı Istek `"code:" "1002"` | Doğrulama hatasını veya hatalı oluşturulmuş kopyalama isteğini gösterir. Genel sorunlar şunlardır: a) geçersiz veya değiştirilmiş `copyAuthorization` Yük. b) belirtecin süresi dolma değeri `expirationDateTimeTicks` ( `copyAuhtorization` Yük 24 saat için geçerlidir). c) geçersiz veya desteklenmiyor `targetResourceRegion` . d) geçersiz veya hatalı biçimlendirilmiş `targetResourceId` dize.
 |
 
 ## <a name="track-copy-progress"></a>Kopyalama ilerlemesini izle

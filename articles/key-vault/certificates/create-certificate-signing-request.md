@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043892"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716121"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -59,7 +59,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
     Sertifika isteği artık başarıyla birleştirildi.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
 2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
@@ -100,7 +100,9 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini gözden geçirmek için **sertifika işlemini** görüntüleme adımına geçin.
+- **Hata türü ' belirtilen X ile son varlık sertifikasının ortak anahtarı. 509.440 sertifika içeriği belirtilen özel anahtarın ortak bölümüyle eşleşmiyor. Lütfen sertifikanın geçerli olup olmadığını denetleyin** . CSR 'yi aynı CSR isteği ile birleştirdiğimde bu hata oluşabilir. CSR her oluşturulduğunda, imzalanmış istek birleştirilirken eşleşmesi gereken özel bir anahtar oluşturur.
+    
+- Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini gözden geçirmek için **sertifika işlemini** görüntüleme adımına geçin.
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 

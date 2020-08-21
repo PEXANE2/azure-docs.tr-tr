@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2055730505b360ef8d5bf50cd83532627fb8e08
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245426"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718093"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -52,7 +52,7 @@ Aşağıdaki adımlarda, oturum açma işleminin Azure AD ile nasıl çalıştı
 1. Cloud AP sağlayıcısı, oturum anahtarıyla şifrelenmiş PRT 'yi alır. Bulut AP sağlayıcısı, cihazın özel aktarım anahtarını kullanarak oturum anahtarının şifresini çözer ve cihazın Güvenilir Platform Modülü (TPM) kullanarak oturum anahtarını korur.
 1. Cloud AP sağlayıcısı, Windows 'a başarılı bir kimlik doğrulama yanıtı döndürür. Daha sonra Kullanıcı, yeniden kimlik doğrulamasından (SSO) gerek kalmadan Windows 'un yanı sıra bulut ve şirket içi uygulamalara erişebilir.
 
-İş için Windows Hello [Planlama Kılavuzu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) , Iş Için Windows Hello dağıtımı ve göz önünde bulundurmanız gereken seçenekler hakkında kararlar almanıza yardımcı olmak için kullanılabilir.
+İş için Windows Hello [Planlama Kılavuzu](/windows/security/identity-protection/hello-for-business/hello-planning-guide) , Iş Için Windows Hello dağıtımı ve göz önünde bulundurmanız gereken seçenekler hakkında kararlar almanıza yardımcı olmak için kullanılabilir.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
 
@@ -60,7 +60,7 @@ Ayrıca, çalışanın telefonunun parolasız bir kimlik doğrulama yöntemi olm
 
 ![Microsoft Authenticator uygulamayla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için [Microsoft Authenticator uygulamayı indirip](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) yükleme bölümüne bakın.
+Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için [Microsoft Authenticator uygulamayı indirip](../user-help/user-help-auth-app-download-install.md) yükleme bölümüne bakın.
 
 Kimlik doğrulayıcı uygulamasını kullanan passwordless kimlik doğrulaması, Iş için Windows Hello ile aynı temel kalıbı izler. Azure AD 'nin kullanılan Microsoft Authenticator uygulama sürümünü bulabilmesi için, kullanıcının tanımlanması gerektiğinden çok daha karmaşıktır:
 

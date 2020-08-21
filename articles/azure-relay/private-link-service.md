@@ -3,12 +3,12 @@ title: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme hakkında bilgi edinin
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317312"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719436"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay Azure özel bağlantısıyla tümleştirin (Önizleme)
 Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) nedir?](../private-link/private-link-overview.md)
@@ -65,7 +65,7 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Ad alanı özel uç noktayla aynı dizinde olmadığından, **kaynak kimliğiyle veya diğer adla Azure kaynağına bağlan** ' ı seçerseniz, aşağıdaki adımları izleyin:
-        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Azure Relay ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek aşağıda verilmiştir:`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Azure Relay ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek aşağıda verilmiştir: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
         2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
         3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
         4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin.
@@ -160,14 +160,14 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, Azure Relay ad alanı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, Azure Relay ad alanı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Arama çubuğuna **geçiş**yazın.
 1. Yönetmek istediğiniz **ad alanını** seçin.
 1. **Ağ** sekmesini seçin.
@@ -207,7 +207,7 @@ Dört sağlama durumu vardır:
 3. Durumu **bağlı değil**olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
-Özel uç noktanın aynı alt ağı içindeki kaynakların, kendi özel IP adresi üzerinden Azure Relay ad alanına bağlandığını doğrulamanız gerekir.
+Özel uç noktanın sanal ağı içindeki kaynakların, kendi özel IP adresi üzerinden Azure Relay ad alanına bağlandığını doğrulamanız gerekir.
 
 Bu test için [Azure Portal Windows sanal makinesi oluşturma](../virtual-machines/windows/quick-create-portal.md) içindeki adımları izleyerek bir sanal makine oluşturun
 

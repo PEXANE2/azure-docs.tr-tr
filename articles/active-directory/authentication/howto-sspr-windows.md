@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035240"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717362"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows oturum açma ekranında self servis parola sıfırlamayı Azure Active Directory etkinleştirme
 
@@ -35,7 +35,7 @@ Windows oturum açma ekranından SSPR kullanımı için aşağıdaki sınırlama
 
 - Parola sıfırlama, uzak bir masaüstünden veya Hyper-V gelişmiş oturumlarından Şu anda desteklenmiyor.
 - Bazı üçüncü taraf kimlik bilgisi sağlayıcılarının bu özellikle ilgili sorunlara neden olduğu bilinmektedir.
-- [EnableLUA kayıt defteri anahtarı](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) DEĞIŞIKLIĞI aracılığıyla UAC 'nin devre dışı bırakılması, sorunlara yol açabilecek şekilde bilinmektedir.
+- [EnableLUA kayıt defteri anahtarı](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) DEĞIŞIKLIĞI aracılığıyla UAC 'nin devre dışı bırakılması, sorunlara yol açabilecek şekilde bilinmektedir.
 - Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulaması kullanılması önerilir.
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır. Bu, cihazların kuruluşun iç ağı üzerinde veya şirket içi etki alanı denetleyicisine ağ erişimi olan bir VPN üzerinde olması gerektiği anlamına gelir.
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
@@ -59,10 +59,10 @@ Oturum açma ekranında SSPR için bir Windows 10 cihazı yapılandırmak için 
 ### <a name="windows-10-prerequisites"></a>Windows 10 önkoşulları
 
 - Bir yöneticinin [Azure Portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir](tutorial-enable-sspr.md).
-- Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Windows oturum açma ekranından SSPR 'yi kullanmak için benzersiz değil, tüm kullanıcıların, parolasını sıfırlayabilmeleri için önce kimlik doğrulama iletişim bilgilerini sağlaması gerekir.
 - Ağ proxy gereksinimleri:
-    - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com` ve`ajax.aspnetcdn.com`
+    - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com`
     - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler.
 - En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
     - Azure AD'ye katılanlar
@@ -126,10 +126,10 @@ Oturum açma ekranında SSPR için bir Windows 7, 8 veya 8,1 cihazı yapılandı
 ### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 ve 8,1 önkoşulları
 
 - Bir yöneticinin [Azure Portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir](tutorial-enable-sspr.md).
-- Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Windows oturum açma ekranından SSPR 'yi kullanmak için benzersiz değil, tüm kullanıcıların, parolasını sıfırlayabilmeleri için önce kimlik doğrulama iletişim bilgilerini sağlaması gerekir.
 - Ağ proxy gereksinimleri:
-    - 443 numaralı bağlantı noktası`passwordreset.microsoftonline.com`
+    - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com`
 - Düzeltme eki uygulanan Windows 7 veya Windows 8.1 Işletim sistemi.
 - TLS 1,2, [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](/windows-server/security/tls/tls-registry-settings#tls-12)'nda bulunan kılavuzluk kullanılarak etkinleştirildi.
 - Makinenizde birden fazla 3. taraf kimlik bilgisi sağlayıcısı etkinse, kullanıcılar oturum açma ekranında birden fazla Kullanıcı profili görür.
@@ -143,7 +143,7 @@ Windows 7, 8 ve 8,1 için, oturum açma ekranında SSPR 'yi etkinleştirmek üze
 
 1. Etkinleştirmek istediğiniz Windows sürümü için uygun yükleyiciyi indirin.
 
-    Yazılım yükleyicisi, Microsoft İndirme Merkezi 'nden şu adresten edinilebilir:[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+    Yazılım yükleyicisi, Microsoft İndirme Merkezi 'nden şu adresten edinilebilir: [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Yüklemek istediğiniz makinede oturum açın ve yükleyiciyi çalıştırın.
 1. Yükleme sonrasında, bir yeniden başlatma önemle önerilir.
 1. Yeniden başlatmanın ardından, oturum açma ekranında bir kullanıcı seçin ve "parolayı unuttum mı?" seçeneğini belirleyin. parola sıfırlama iş akışını başlatmak için.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027606"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717447"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Self servis parola sıfırlama geri yazma özelliği Azure Active Directory nasıl çalışır?
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullan�
 Parola geri yazma, aşağıdaki karma kimlik modellerini kullanan ortamlarda desteklenir:
 
 * [Parola karması eşitleme](../hybrid/how-to-connect-password-hash-synchronization.md)
-* [Doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md)
+* [Doğrudan kimlik doğrulama](../hybrid/how-to-connect-pta.md)
 * [Active Directory Federation Services (Active Directory Federasyon Hizmetleri)](../hybrid/how-to-connect-fed-management.md)
 
 Parola geri yazma özelliği aşağıdaki özellikleri sağlar:
@@ -47,7 +47,7 @@ Parola geri yazma özelliği aşağıdaki özellikleri sağlar:
 SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](tutorial-enable-writeback.md)
+> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Parola geri yazma nasıl çalışır?
 
@@ -140,7 +140,7 @@ Parolalar aşağıdaki durumlarda geri yazılır:
    * Herhangi bir yönetici self servis zorla parola değiştirme işlemi, örneğin parola süre sonu.
    * [Parola sıfırlama portalından](https://passwordreset.microsoftonline.com)kaynaklanan tüm yönetici self servis parola sıfırlaması.
    * Yönetici tarafından başlatılan son kullanıcı parolası [Azure Portal](https://portal.azure.com)sıfırlandı.
-   * [MICROSOFT Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)'dan yönetici tarafından başlatılan son kullanıcı parolası sıfırlandı.
+   * [MICROSOFT Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)'dan yönetici tarafından başlatılan son kullanıcı parolası sıfırlandı.
 
 ## <a name="unsupported-writeback-operations"></a>Desteklenmeyen geri yazma işlemleri
 
@@ -149,7 +149,7 @@ Parolalar aşağıdaki durumların hiçbirinde geri yazılmadı:
 * **Desteklenmeyen Son Kullanıcı işlemleri**
    * PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sini kullanarak kendi parolalarını sıfırlayan herhangi bir son kullanıcı.
 * **Desteklenmeyen yönetici işlemleri**
-   * PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sinden yönetici tarafından başlatılan son kullanıcı parolası sıfırlanır ( [MICROSOFT Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) desteklenir).
+   * PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sinden yönetici tarafından başlatılan son kullanıcı parolası sıfırlanır ( [MICROSOFT Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) desteklenir).
    * [Microsoft 365 Yönetim merkezinden](https://admin.microsoft.com)yönetici tarafından başlatılan son kullanıcı parolası sıfırlandı.
    * Herhangi bir yönetici parola geri yazma için kendi parolasını sıfırlamak üzere parola sıfırlama aracını kullanamaz.
 
@@ -161,4 +161,4 @@ Parolalar aşağıdaki durumların hiçbirinde geri yazılmadı:
 SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](tutorial-enable-writeback.md)
+> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](./tutorial-enable-sspr-writeback.md)

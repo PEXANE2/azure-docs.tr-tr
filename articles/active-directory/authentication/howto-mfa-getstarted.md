@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641084"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717039"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
@@ -74,7 +74,7 @@ Multi-Factor Authentication [dağıtım malzemelerinden](https://www.microsoft.c
 
 Koşullu erişim ilkeleri kayıt uygulanmasını zorlar, kayıtsız kullanıcıların kaydı ilk oturum açma sırasında tamamlamaları gerekir, önemli bir güvenlik değerlendirmesi.
 
-[Azure AD kimlik koruması](../identity-protection/howto-configure-risk-policies.md) , hem bir kayıt ilkesini hem de otomatik risk algılama ve düzeltme ilkelerini Azure Multi-Factor Authentication hikayesine katkıda bulunur. İlkeler, güvenliği tehlikeye giren bir kimlik tehditleri olduğunda veya bir oturum açma, aşağıdaki [Olaylar](../reports-monitoring/concept-risk-events.md)riskli olarak kabul edildiğinde MFA gerektirirken parola değişikliklerini zorlamak için oluşturulabilir:
+[Azure AD kimlik koruması](../identity-protection/howto-identity-protection-configure-risk-policies.md) , hem bir kayıt ilkesini hem de otomatik risk algılama ve düzeltme ilkelerini Azure Multi-Factor Authentication hikayesine katkıda bulunur. İlkeler, güvenliği tehlikeye giren bir kimlik tehditleri olduğunda veya bir oturum açma, aşağıdaki [Olaylar](../identity-protection/overview-identity-protection.md)riskli olarak kabul edildiğinde MFA gerektirirken parola değişikliklerini zorlamak için oluşturulabilir:
 
 * Sızdırılan kimlik bilgileri
 * Anonim IP adreslerinden oturum açma işlemleri
@@ -151,7 +151,7 @@ Yöneticiler, kullanıcıların yöntemlerini nasıl kaydedeceğini belirlememel
 
 ### <a name="registration-with-identity-protection"></a>Kimlik koruması ile kaydolma
 
-Kuruluşunuz Azure Active Directory Kimlik Koruması kullanıyorsa, kullanıcılarınıza etkileşimli olarak oturum açtıklarında kaydolmaları için, [MFA kayıt ilkesini yapılandırın](../identity-protection/howto-mfa-policy.md) .
+Kuruluşunuz Azure Active Directory Kimlik Koruması kullanıyorsa, kullanıcılarınıza etkileşimli olarak oturum açtıklarında kaydolmaları için, [MFA kayıt ilkesini yapılandırın](../identity-protection/howto-identity-protection-configure-mfa-policy.md) .
 
 ### <a name="registration-without-identity-protection"></a>Kimlik koruması olmadan kayıt
 
@@ -165,7 +165,7 @@ Aşağıdaki adımları kullanarak, koşullu erişim ilkesi kullanıcıları Mul
 2. Koşullu erişimi kullanarak, tüm kaynaklara erişmek için bu grup için Multi-Factor Authentication 'ı zorlayın.
 3. Düzenli aralıklarla, Grup üyeliğini yeniden değerlendirin ve gruptan kaydolan kullanıcıları kaldırın.
 
-Kayıtlı ve kayıtlı olmayan Azure MFA kullanıcılarını [MSOnline PowerShell modülünü](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)kullanan PowerShell komutlarıyla belirleyebilirsiniz.
+Kayıtlı ve kayıtlı olmayan Azure MFA kullanıcılarını [MSOnline PowerShell modülünü](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)kullanan PowerShell komutlarıyla belirleyebilirsiniz.
 
 #### <a name="identify-registered-users"></a>Kayıtlı kullanıcıları tanımla
 
@@ -281,7 +281,7 @@ NPS uzantısı, [VPN](howto-mfa-nps-extension-vpn.md), [Uzak Masaüstü Ağ Geç
 
 #### <a name="implementing-your-nps-server"></a>NPS sunucunuzu uygulama
 
-Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altyapınızı Azure Multi-Factor Authentication Ile tümleştirin](howto-mfa-nps-extension.md). NPS 'YI ilk kez ayarlıyorsanız yönergeler için [ağ Ilkesi sunucusu 'na (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) bakın. Sorun giderme kılavuzu, [Azure MULTI-Factor AUTHENTICATION NPS uzantısından hata Iletilerini çözümleme](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
+Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altyapınızı Azure Multi-Factor Authentication Ile tümleştirin](howto-mfa-nps-extension.md). NPS 'YI ilk kez ayarlıyorsanız yönergeler için [ağ Ilkesi sunucusu 'na (NPS)](/windows-server/networking/technologies/nps/nps-top) bakın. Sorun giderme kılavuzu, [Azure MULTI-Factor AUTHENTICATION NPS uzantısından hata Iletilerini çözümleme](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA için kayıtlı olmayan kullanıcılar için NPS 'YI hazırlama
 
@@ -325,7 +325,7 @@ Hem Windows Güvenlik günlüğünde hem de AD FS Yönetim günlüğünde standa
 
 Her bir AD FS sunucusunda, yerel bilgisayar My deposunda, sertifika sona erme tarihini içeren OU = Microsoft AD FS Azure MFA adlı kendinden imzalı bir Azure MFA sertifikası olacaktır. Son kullanma tarihini öğrenmek için, her bir AD FS sunucuda bu sertifikanın geçerlilik süresini denetleyin.
 
-Sertifikalarınızın geçerlilik süresi dolmak üzere ise, [her bir AD FS sunucuda yeni BIR MFA sertifikası oluşturun ve doğrulayın](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Sertifikalarınızın geçerlilik süresi dolmak üzere ise, [her bir AD FS sunucuda yeni BIR MFA sertifikası oluşturun ve doğrulayın](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
 Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yönetme ayrıntıları verilmiştir. Azure MFA ile AD FS yapılandırdığınızda, `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet 'i aracılığıyla oluşturulan sertifikalar iki yıl için geçerlidir. MFA hizmetindeki ovoid kesintilerini sona ermeden önce yenilenen sertifikaları yenileyip yükler.
 
@@ -336,7 +336,7 @@ Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yö
 1. Gerekli önkoşulları karşılayın
    1. Karma senaryolar için [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dağıtma
    1. Bulut erişimi için yayımlanan şirket içi uygulamalarda [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) dağıtma
-   1. Herhangi bir RADIUS kimlik doğrulaması için [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) dağıtma
+   1. Herhangi bir RADIUS kimlik doğrulaması için [NPS](/windows-server/networking/technologies/nps/nps-top) dağıtma
    1. Kullanıcıların modern kimlik doğrulaması etkinken Microsoft Office desteklenen sürümlerine yükseltildiğinden emin olun
 1. Seçilen [kimlik doğrulama yöntemlerini](#choose-verification-options) Yapılandır
 1. [Adlandırılmış ağ konumlarınızı](../conditional-access/location-condition.md#named-locations) tanımlayın
@@ -344,7 +344,7 @@ Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yö
 1. [Koşullu erişim ilkelerinizi](#create-conditional-access-policy) yapılandırın
 1. MFA kayıt ilkenizi yapılandırma
    1. [Birleşik MFA ve SSPR](howto-registration-mfa-sspr-combined.md)
-   1. [Kimlik koruması](../identity-protection/howto-mfa-policy.md) ile
+   1. [Kimlik koruması](../identity-protection/howto-identity-protection-configure-mfa-policy.md) ile
 1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Kimin kaydolduğunu takip edin](#identify-non-registered-users)
 

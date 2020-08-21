@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565783"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719504"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
 
@@ -76,7 +76,7 @@ Bir kullanıcı için Kullanıcı başına Azure Multi-Factor Authentication dur
 
 1. Açılan pencere penceresinde seçiminizi onaylayın.
 
-Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıcılara bir dahaki sefer oturum açtıklarında kaydolmalarını istemek için bir istem görüntülendiğini söyleyin. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Son Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user.md) , kullanmaya başlamanıza yardımcı olur.
+Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıcılara bir dahaki sefer oturum açtıklarında kaydolmalarını istemek için bir istem görüntülendiğini söyleyin. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Son Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user-first-time.md) , kullanmaya başlamanıza yardımcı olur.
 
 ## <a name="change-state-using-powershell"></a>PowerShell kullanarak durumu değiştirme
 

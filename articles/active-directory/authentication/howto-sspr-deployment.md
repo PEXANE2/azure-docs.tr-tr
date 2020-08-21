@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338575"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717753"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -30,7 +30,7 @@ ms.locfileid: "84338575"
 SSPR aşağıdaki temel yeteneklere sahiptir:
 
 * Self servis, son kullanıcıların destek için yönetici veya yardım masası ile iletişime geçmeksizin, sona erdikleri veya süre dolmayan parolalarını sıfırlamasına olanak sağlar.
-* [Parola geri yazma](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) , şirket içi parolaların yönetimine ve bulut olmasına rağmen hesap kilitlemenizin çözümlenmesine izin verir.
+* [Parola geri yazma](./concept-sspr-writeback.md) , şirket içi parolaların yönetimine ve bulut olmasına rağmen hesap kilitlemenizin çözümlenmesine izin verir.
 * Parola yönetimi etkinlik raporları yöneticilere, kuruluşunuzda gerçekleşen parola sıfırlama ve kayıt etkinliği hakkında bilgi verir.
 
 Bu dağıtım kılavuzu, bir SSPR dağıtımını nasıl planlayıp test etmek istediğinizi gösterir.
@@ -42,7 +42,7 @@ SSPR 'yi eylemde hızlıca görmek ve daha sonra ek dağıtım konularını anla
 
 ## <a name="learn-about-sspr"></a>SSPR hakkında bilgi edinin
 
-SSPR hakkında daha fazla bilgi edinin. [Nasıl çalıştığını görün: Azure AD self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks).
+SSPR hakkında daha fazla bilgi edinin. [Nasıl çalıştığını görün: Azure AD self servis parola sıfırlama](./concept-sspr-howitworks.md).
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 
@@ -60,7 +60,7 @@ SSPR 'yi etkinleştirmenin başlıca avantajları şunlardır:
 
 Azure Active Directory, Kullanıcı başına lisanslanır, her kullanıcının kullandıkları özellikler için uygun bir lisans gerekir. SSPR için grup tabanlı lisans öneririz. 
 
-Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı lisanslamayı etkinleştirmek için bkz. [Azure AD self servis parola sıfırlama Için lisans gereksinimleri](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing).
+Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı lisanslamayı etkinleştirmek için bkz. [Azure AD self servis parola sıfırlama Için lisans gereksinimleri](./concept-sspr-licensing.md).
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -83,10 +83,10 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiy
 | Çevrimiçi kurslar|[Microsoft Azure Active Directory kimlikleri yönetme](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Kullanıcılarınıza modern ve korumalı bir deneyim sunmak için SSPR 'yi kullanın. Özellikle "[Azure Active Directory Kullanıcıları ve grupları yönetme](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)" modülünü inceleyin. |
 |Pluralaltim ücretli kurslar |[Kimlik ve erişim yönetimi sorunları](https://www.pluralsight.com/courses/identity-access-management-issues) Kuruluşunuzda bilmeniz için ıAM ve güvenlik sorunları hakkında bilgi edinin. Özellikle "diğer kimlik doğrulama yöntemleri" modülüne bakın.|
 | |[Microsoft Enterprise Mobility Suite Ile çalışmaya](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) başlama Şirket içi varlıkları, kimlik doğrulama, yetkilendirme, şifreleme ve güvenli bir mobil deneyimle izin verecek şekilde buluta genişletmeye yönelik en iyi yöntemleri öğrenin. Özellikle, "Microsoft Azure Active Directory Premium gelişmiş özelliklerini yapılandırma" modülüne bakın.
-|Öğreticiler |[Bir Azure AD self servis parola sıfırlama pilot kullanıma alma](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[Parola geri yazma etkinleştiriliyor](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[Windows 10 için oturum açma ekranından Azure AD parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| SSS|[Parola yönetimi hakkında sık sorulan sorular](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|Öğreticiler |[Bir Azure AD self servis parola sıfırlama pilot kullanıma alma](./tutorial-enable-sspr.md) |
+| |[Parola geri yazma etkinleştiriliyor](./tutorial-enable-sspr-writeback.md) |
+| |[Windows 10 için oturum açma ekranından Azure AD parola sıfırlama](./howto-sspr-windows.md) |
+| SSS|[Parola yönetimi hakkında sık sorulan sorular](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Çözüm mimarisi
@@ -103,7 +103,7 @@ Kullanıcılar parolayı sıfırlamak için [parola sıfırlama portalına](http
 
 * Karma kullanıcılar için SSPR, Azure AD Connect hizmeti aracılığıyla parolayı on-Prem Active Directory geri yazar. 
 
-Note: [Parola karması eşitlemesi (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) devre dışı bırakılmış kullanıcılar IÇIN, SSPR parolaları yalnızca şirket içi Active Directory depolar.
+Note: [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) devre dışı bırakılmış kullanıcılar IÇIN, SSPR parolaları yalnızca şirket içi Active Directory depolar.
 
 ### <a name="best-practices"></a>En iyi uygulamalar
 
@@ -141,9 +141,9 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 
 ### <a name="plan-a-pilot"></a>Pilot planı planlayın
 
-SSPR 'nin ilk yapılandırmasının bir test ortamında olması önerilir. Kuruluşunuzdaki kullanıcıların bir alt kümesi için SSPR 'yi etkinleştirerek bir pilot grubu ile başlayın. [Pilot Için en iyi uygulamalar](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)bölümüne bakın.
+SSPR 'nin ilk yapılandırmasının bir test ortamında olması önerilir. Kuruluşunuzdaki kullanıcıların bir alt kümesi için SSPR 'yi etkinleştirerek bir pilot grubu ile başlayın. [Pilot Için en iyi uygulamalar](../fundamentals/active-directory-deployment-plans.md)bölümüne bakın.
 
-Bir grup oluşturmak için, bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
+Bir grup oluşturmak için, bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md). 
 
 ## <a name="plan-configuration"></a>Planı yapılandırma
 
@@ -172,7 +172,7 @@ SSPR 'yi etkinleştirirken, pilot ortamda uygun bir güvenlik grubu seçin.
 
 ### <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-SSPR etkinleştirildiğinde, kullanıcılar yalnızca yöneticinin etkinleştirildiği kimlik doğrulama yöntemlerinde verileri varsa parolalarını sıfırlayabilir. Telefon, kimlik doğrulayıcı uygulama bildirimi, güvenlik soruları vb. yöntemler içerir. Daha fazla bilgi için bkz. [kimlik doğrulama yöntemleri nedir?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods).
+SSPR etkinleştirildiğinde, kullanıcılar yalnızca yöneticinin etkinleştirildiği kimlik doğrulama yöntemlerinde verileri varsa parolalarını sıfırlayabilir. Telefon, kimlik doğrulayıcı uygulama bildirimi, güvenlik soruları vb. yöntemler içerir. Daha fazla bilgi için bkz. [kimlik doğrulama yöntemleri nedir?](./concept-authentication-methods.md).
 
 Aşağıdaki kimlik doğrulama yöntemi ayarlarını yapmanızı öneririz:
 
@@ -180,7 +180,7 @@ Aşağıdaki kimlik doğrulama yöntemi ayarlarını yapmanızı öneririz:
 
 * Kuruluşunuza uygun bir düzeye **sıfırlamak için gereken yöntem sayısını** ayarlayın. Biri en az artışla ihtiyaç duyurken, ikisi de güvenlik duruşunuzu artırabilir. 
 
-Note: kullanıcının kimlik doğrulama yöntemlerinin [Azure Active Directory parola ilkelerinde ve kısıtlamalarında](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)yapılandırılmış olması gerekir.
+Note: kullanıcının kimlik doğrulama yöntemlerinin [Azure Active Directory parola ilkelerinde ve kısıtlamalarında](./concept-sspr-policy.md)yapılandırılmış olması gerekir.
 
 ### <a name="registration-settings"></a>Kayıt ayarları
 
@@ -196,11 +196,11 @@ Kuruluşunuzun daha kısa bir zaman dilimine yönelik bir iş ihtiyacı yoksa, k
 
 Sorun yaşayan kullanıcıların yardım almak için yardım masasına e-posta veya URL 'YI özelleştirmek kritik öneme sahiptir. Bu seçeneği, kullanıcılarınızın tanıdık olduğu ortak bir yardım masası e-posta adresi veya Web sayfası olarak ayarlayın. 
 
-Daha fazla bilgi için bkz. [self servis parola sıfırlama Için Azure AD Işlevselliğini özelleştirme](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization).
+Daha fazla bilgi için bkz. [self servis parola sıfırlama Için Azure AD Işlevselliğini özelleştirme](./howto-sspr-customization.md).
 
 ### <a name="password-writeback"></a>Parola geri yazma
 
-**Parola geri yazma** özelliği, [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) ile etkinleştirilir ve bulutta parola sıfırlamaları gerçek zamanlı olarak mevcut bir şirket içi dizine geri gönderilir. Daha fazla bilgi için bkz. [parola geri yazma nedir?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+**Parola geri yazma** özelliği, [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ile etkinleştirilir ve bulutta parola sıfırlamaları gerçek zamanlı olarak mevcut bir şirket içi dizine geri gönderilir. Daha fazla bilgi için bkz. [parola geri yazma nedir?](./concept-sspr-writeback.md)
 
 Aşağıdaki ayarları öneririz:
 
@@ -220,7 +220,7 @@ Yönetici hesaplarının izinleri yükseltilmiş. Şirket içi kuruluş veya etk
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Birden çok kimlik yönetimi sistemine sahip ortamlar
 
-Bazı ortamlarda birden çok kimlik yönetim sistemi vardır. Oracle ve Sitedefteri gibi şirket içi kimlik yöneticileri, parolalar için AD ile eşitleme gerektirir. Bunu, parola değiştirme bildirimi hizmeti (PCNS) gibi Microsoft Identity Manager (MıM) içeren bir araç kullanarak yapabilirsiniz. Bu daha karmaşık senaryoda daha fazla bilgi bulmak için, [bir etki alanı denetleyicisinde MIM parola değiştirme bildirimi hizmetini dağıtma](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)makalesine bakın.
+Bazı ortamlarda birden çok kimlik yönetim sistemi vardır. Oracle ve Sitedefteri gibi şirket içi kimlik yöneticileri, parolalar için AD ile eşitleme gerektirir. Bunu, parola değiştirme bildirimi hizmeti (PCNS) gibi Microsoft Identity Manager (MıM) içeren bir araç kullanarak yapabilirsiniz. Bu daha karmaşık senaryoda daha fazla bilgi bulmak için, [bir etki alanı denetleyicisinde MIM parola değiştirme bildirimi hizmetini dağıtma](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)makalesine bakın.
 
 ## <a name="plan-testing-and-support"></a>Test ve destek planlayın
 
@@ -228,7 +228,7 @@ Dağıtımın her aşamasında, ilk pilot gruplardan kuruluş genelinde, sonuçl
 
 ### <a name="plan-testing"></a>Test planı
 
-Dağıtımınızın beklendiği gibi çalıştığından emin olmak için, uygulamayı doğrulamak üzere bir dizi test çalışması planlayın. Test çalışmalarını değerlendirmek için, parolası olan yönetici olmayan bir test kullanıcısına ihtiyacınız vardır. Bir kullanıcı oluşturmanız gerekiyorsa, [Azure Active Directory yeni kullanıcı ekleme](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)bölümüne bakın.
+Dağıtımınızın beklendiği gibi çalıştığından emin olmak için, uygulamayı doğrulamak üzere bir dizi test çalışması planlayın. Test çalışmalarını değerlendirmek için, parolası olan yönetici olmayan bir test kullanıcısına ihtiyacınız vardır. Bir kullanıcı oluşturmanız gerekiyorsa, [Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md)bölümüne bakın.
 
 Aşağıdaki tablo, ilkelerinize göre beklenen sonuçları belgelemek için kullanabileceğiniz yararlı test senaryolarını içerir.
 <br>
@@ -246,7 +246,7 @@ Aşağıdaki tablo, ilkelerinize göre beklenen sonuçları belgelemek için kul
 | Windows 10 Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış cihaz kilit ekranından Kullanıcı parolasını sıfırlama| Kullanıcı, parolayı sıfırlayabilir |
 | SSPR kaydı ve kullanım verileri, neredeyse gerçek zamanlı olarak yöneticiler tarafından kullanılabilir| Denetim günlükleri aracılığıyla kullanılabilir |
 
-Ayrıca, [Azure AD self servis parola sıfırlama pilot hizmeti 'Ni tamamlamaya](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)da başvurabilirsiniz. Bu öğreticide, kuruluşunuzda SSPR 'den bir pilot sürümü kullanıma sunarak yönetici olmayan bir hesap kullanarak test edersiniz.
+Ayrıca, [Azure AD self servis parola sıfırlama pilot hizmeti 'Ni tamamlamaya](./tutorial-enable-sspr.md)da başvurabilirsiniz. Bu öğreticide, kuruluşunuzda SSPR 'den bir pilot sürümü kullanıma sunarak yönetici olmayan bir hesap kullanarak test edersiniz.
 
 ### <a name="plan-support"></a>Destek planlayın
 
@@ -289,20 +289,20 @@ Dağıtılmadan önce, aşağıdakileri yapmadiğinizden emin olun:
 
 **Artık SSPR 'yi dağıtmaya hazırsınız!**
 
-Aşağıdaki alanların yapılandırılmasına ilişkin adım adım yönergeler için bkz. [self servis parola sıfırlamayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset) .
+Aşağıdaki alanların yapılandırılmasına ilişkin adım adım yönergeler için bkz. [self servis parola sıfırlamayı etkinleştirme](./tutorial-enable-sspr.md#enable-self-service-password-reset) .
 
-1. [Kimlik doğrulama yöntemleri](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [Kimlik doğrulama yöntemleri](./concept-authentication-methods.md)
 
-1. [Kayıt ayarları](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [Kayıt ayarları](./concept-registration-mfa-sspr-combined.md)
 
 1. [Bildirim ayarları](#notifications-settings)
 
-1. [Özelleştirme ayarları](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [Özelleştirme ayarları](./howto-sspr-customization.md)
 
-1. [Şirket içi tümleştirme](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [Şirket içi tümleştirme](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>Windows 'da SSPR 'yi etkinleştirme
-Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, [Windows oturum açma ekranında kullanıcıların parolalarını sıfırlamalarını](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows) sağlayabilirsiniz
+Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, [Windows oturum açma ekranında kullanıcıların parolalarını sıfırlamalarını](./howto-sspr-windows.md) sağlayabilirsiniz
 
 ## <a name="manage-sspr"></a>SSPR 'yi Yönet
 
@@ -310,41 +310,41 @@ Azure AD, denetimler ve raporlar aracılığıyla SSPR performanstan ilgili ek b
 
 ### <a name="password-management-activity-reports"></a>Parola yönetimi etkinlik raporları 
 
-SSPR performansını ölçmek için Azure portal önceden oluşturulmuş raporları kullanabilirsiniz. Uygun şekilde lisanslandıysanız özel sorgular da oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD parola yönetimi Için raporlama seçenekleri](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)
+SSPR performansını ölçmek için Azure portal önceden oluşturulmuş raporları kullanabilirsiniz. Uygun şekilde lisanslandıysanız özel sorgular da oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD parola yönetimi Için raporlama seçenekleri](./howto-sspr-reporting.md)
 
 > [!NOTE]
->  [Genel yönetici](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)olmanız ve bu verilerin kuruluşunuz için toplanması için kabul etmeniz gerekir. Kabul etmek için, Raporlama sekmesini veya Azure portalındaki denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
+>  [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md)olmanız ve bu verilerin kuruluşunuz için toplanması için kabul etmeniz gerekir. Kabul etmek için, Raporlama sekmesini veya Azure portalındaki denetim günlüklerini en az bir kez ziyaret etmeniz gerekir. Bu durumda, veriler kuruluşunuz için toplanmaz.
 
-Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanılabilir. Kuruluşunuzun içindeki güvenlik denetimi daha uzun bekletme gerektiriyorsa, günlüklerin [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory), splunk veya arctıma gıbı bır SIEM aracına aktarılması ve kullanılması gerekir.
+Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanılabilir. Kuruluşunuzun içindeki güvenlik denetimi daha uzun bekletme gerektiriyorsa, günlüklerin [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), splunk veya arctıma gıbı bır SIEM aracına aktarılması ve kullanılması gerekir.
 
 ![SSPR raporlama ekran görüntüsü](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>Kimlik doğrulama yöntemleri-kullanım ve Öngörüler
 
-[Kullanım ve Öngörüler](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) , Azure MFA ve SSPR gibi özellikler için kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
+[Kullanım ve Öngörüler](./howto-authentication-methods-usage-insights.md) , Azure MFA ve SSPR gibi özellikler için kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-* [Self servis parola sıfırlama sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) bölümüne bakın 
+* [Self servis parola sıfırlama sorunlarını giderme](./active-directory-passwords-troubleshoot.md) bölümüne bakın 
 
-* [Parola yönetimi hakkında sık sorulan soruları](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) izleyin 
+* [Parola yönetimi hakkında sık sorulan soruları](./active-directory-passwords-faq.md) izleyin 
 
 ### <a name="helpful-documentation"></a>Faydalı belgeler
 
-* [Kimlik doğrulaması yöntemleri nelerdir?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [Kimlik doğrulaması yöntemleri nelerdir?](./concept-authentication-methods.md)
 
-* [Nasıl çalışıyor: Azure AD self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [Nasıl çalışıyor: Azure AD self servis parola sıfırlama](./concept-sspr-howitworks.md)
 
-* [Self servis parola sıfırlama için Azure AD işlevselliğini özelleştirme](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [Self servis parola sıfırlama için Azure AD işlevselliğini özelleştirme](./howto-sspr-customization.md)
 
-* [Azure Active Directory'deki parola ilkeleri ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Azure Active Directory'deki parola ilkeleri ve kısıtlamaları](./concept-sspr-policy.md)
 
-* [Parola geri yazma nedir?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [Parola geri yazma nedir?](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * SSPR 'yi dağıtmaya başlamak için bkz. [Azure AD self servis parola sıfırlamayı etkinleştirme](tutorial-enable-sspr.md)
 
-* [Azure AD parola korumasını uygulamayı deneyin](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Azure AD parola korumasını uygulamayı deneyin](./concept-password-ban-bad.md)
 
-* [Azure AD akıllı kilitleme 'yi uygulamayı düşünün](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Azure AD akıllı kilitleme 'yi uygulamayı düşünün](./howto-password-smart-lockout.md)

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419555"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718909"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Öğretici: Azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * MFA için istemde bulunan ilke koşullarını yapılandırın
 > * MFA işlemini Kullanıcı olarak test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -101,7 +101,7 @@ Koşullu erişim ilkeleri *yalnızca raporun* kullanıcıları nasıl etkilediğ
 
 Koşullu erişim ilkenizi ve Azure Multi-Factor Authentication işlemini görelim. İlk olarak, MFA gerektirmeyen bir kaynakta aşağıdaki gibi oturum açın:
 
-1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve şu konuma gidin[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
+1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve şu konuma gidin [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 1. Yönetici olmayan test Kullanıcı ile, *testuser*gibi oturum açın. MFA 'yı tamamlamanızı isteyen bir istem yoktur.
 1. Tarayıcı penceresini kapatın.
 
@@ -133,4 +133,4 @@ Bu öğreticide, seçili bir Kullanıcı grubu için koşullu erişim ilkelerini
 > * MFA işlemini Kullanıcı olarak test etme
 
 > [!div class="nextstepaction"]
-> [Self servis parola sıfırlama için parola geri yazmayı etkinleştirme (SSPR)](tutorial-enable-writeback.md)
+> [Self servis parola sıfırlama için parola geri yazmayı etkinleştirme (SSPR)](./tutorial-enable-sspr-writeback.md)

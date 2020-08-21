@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8143149332a4a493a9a4d8d4a0d403420b87f75a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653362"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719487"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication Sunucusunu Windows Server’da AD FS ile çalışacak şekilde yapılandırma
 
@@ -98,7 +98,7 @@ Web Hizmeti SDK’sını yapılandırmaya yönelik iki seçenek vardır. Birinci
 
 Bir kullanıcı adı ve parola kullanmak istemiyorsanız Web Hizmeti SDK’sını bir istemci sertifikası ile yapılandırmak için aşağıdaki adımları izleyin.
 
-1. Web Hizmeti SDK’sı çalıştıran sunucu için sertifika yetkilisinden bir istemci sertifikası alın. [İstemci sertifikalarını alma](https://technet.microsoft.com/library/cc770328.aspx) hakkında bilgi edinin.  
+1. Web Hizmeti SDK’sı çalıştıran sunucu için sertifika yetkilisinden bir istemci sertifikası alın. [İstemci sertifikalarını alma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770328(v=ws.10)) hakkında bilgi edinin.  
 2. İstemci sertifikasını Web Hizmeti SDK’sı çalıştıran sunucudaki yerel bilgisayar kişisel sertifika deposuna aktarın. Sertifika yetkilisinin genel sertifikasının Güvenilen Kök Sertifikalar sertifika deposunda olduğundan emin olun.  
 3. İstemci sertifikasının ortak ve özel anahtarlarını bir .pfx dosyasına aktarın.  
 4. Base64 biçimindeki ortak anahtarı bir .cer dosyasına aktarın.  

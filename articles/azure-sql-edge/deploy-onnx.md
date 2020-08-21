@@ -2,19 +2,18 @@
 title: ONNX ile tahmine dayalı hale getirin ve bu tahminleri yapın
 description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL Edge (Önizleme) veya Azure SQL yönetilen örneği 'ne (Önizleme) dağıtma hakkında bilgi edinin ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel tahmın etmeye çalıştırın.
 keywords: SQL Edge dağıtma
-services: sql-edge
-ms.service: sql-edge
-ms.subservice: machine-learning
+ms.prod: sql
+ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085022"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718790"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bir ONNX modeliyle tahmine dayalı dağıtım ve dağıtım yapma
 
@@ -34,7 +33,7 @@ Bu hızlı başlangıç, **scikit-** ' i öğrenin ve [Boston Muhafazası veri k
   1. **Paketleri Yönet** 'e tıklayın
   1. **Yüklü** sekmesinde, yüklü paketler listesinde aşağıdaki Python paketlerini arayın. Bu paketlerden herhangi biri yüklü değilse, **Yeni Ekle** sekmesini seçin, paketi arayın ve **yükleme**' ye tıklayın.
      - **scikit-learn**
-     - **numpy**
+     - **sayısal tuş takımı**
      - **onnxmltools**
      - **onnxruntime**
      - **pyodbc**

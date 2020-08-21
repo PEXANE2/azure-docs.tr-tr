@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117031"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717855"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
 Bu makalede, Microsoft Azure için ağ Ilkesi sunucusu (NPS) uzantısını kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı Azure Multi-Factor Authentication (MFA) ile tümleştirmeyle ilgili ayrıntılar sağlanmaktadır.
 
-Azure için ağ Ilkesi sunucusu (NPS) uzantısı, müşterilerin Azure 'un bulut tabanlı [Multi-Factor Authentication (MFA)](multi-factor-authentication.md)kullanarak arayan kullanıcının uzaktan KIMLIĞINI doğrulama HIZMETI (RADIUS) istemci kimlik doğrulamasını korumanıza olanak tanır. Bu çözüm, Kullanıcı oturum açma ve işlemlerine ikinci bir güvenlik katmanı eklemek için iki aşamalı doğrulama sağlar.
+Azure için ağ Ilkesi sunucusu (NPS) uzantısı, müşterilerin Azure 'un bulut tabanlı [Multi-Factor Authentication (MFA)](./concept-mfa-howitworks.md)kullanarak arayan kullanıcının uzaktan KIMLIĞINI doğrulama HIZMETI (RADIUS) istemci kimlik doğrulamasını korumanıza olanak tanır. Bu çözüm, Kullanıcı oturum açma ve işlemlerine ikinci bir güvenlik katmanı eklemek için iki aşamalı doğrulama sağlar.
 
 Bu makalede, Azure için NPS uzantısını kullanarak NPS altyapısını Azure MFA ile tümleştirmek için adım adım yönergeler sağlanmaktadır. Bu, bir Uzak Masaüstü Ağ Geçidi oturum açmaya çalışan kullanıcılar için güvenli doğrulama sağlar.
 
@@ -75,7 +75,7 @@ Bu bölümde, Azure MFA 'yı Uzak Masaüstü Ağ Geçidi tümleştirmadan önce 
 Yerinde çalışan bir Uzak Masaüstü Hizmetleri (RDS) altyapısına sahip olmanız gerekir. Bunu yapmazsanız, aşağıdaki hızlı başlangıç şablonunu kullanarak bu altyapıyı Azure 'da hızlıca oluşturabilirsiniz: [Uzak Masaüstü oturumu koleksiyonu dağıtımı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Sınama amacıyla el ile şirket içi bir RDS altyapısını hızlı bir şekilde oluşturmak isterseniz, bir tane dağıtmak için adımları izleyin.
-**Daha fazla bilgi edinin**: [RDS 'yi Azure hızlı başlangıç](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) ve [temel RDS altyapı dağıtımı](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ile dağıtın.
+**Daha fazla bilgi edinin**: [RDS 'yi Azure hızlı başlangıç](/windows-server/remote/remote-desktop-services/rds-in-azure) ve [temel RDS altyapı dağıtımı](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ile dağıtın.
 
 ### <a name="azure-mfa-license"></a>Azure MFA lisansı
 
@@ -89,7 +89,7 @@ NPS uzantısı, NPS rol hizmetinin yüklü olduğu Windows Server 2008 R2 SP1 ve
 
 NPS rol hizmeti, RADIUS sunucusu ve istemci işlevlerinin yanı sıra ağ erişim Ilkesi sistem durumu hizmeti sağlar. Bu rol, altyapınızdaki en az iki bilgisayara yüklenmelidir: Uzak Masaüstü Ağ Geçidi ve başka bir üye sunucu veya etki alanı denetleyicisi. Varsayılan olarak, rol Uzak Masaüstü Ağ Geçidi olarak yapılandırılmış bilgisayarda zaten mevcuttur.  NPS rolünü, etki alanı denetleyicisi veya üye sunucu gibi başka bir bilgisayara en azından de yüklemelisiniz.
 
-Windows Server 2012 veya daha eski bir NPS rol hizmetini yükleme hakkında bilgi için bkz. [NAP sistem durumu Ilkesi sunucusu yükleme](https://technet.microsoft.com/library/dd296890.aspx). NPS 'nin bir etki alanı denetleyicisine yüklenmesi önerisi dahil olmak üzere en iyi NPS yöntemlerinin açıklaması için bkz. [NPS Için En Iyi uygulamalar](https://technet.microsoft.com/library/cc771746).
+Windows Server 2012 veya daha eski bir NPS rol hizmetini yükleme hakkında bilgi için bkz. [NAP sistem durumu Ilkesi sunucusu yükleme](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). NPS 'nin bir etki alanı denetleyicisine yüklenmesi önerisi dahil olmak üzere en iyi NPS yöntemlerinin açıklaması için bkz. [NPS Için En Iyi uygulamalar](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory Şirket içi Active Directory eşitleniyor
 
@@ -109,7 +109,7 @@ Azure AD kullanıcılarınız için MFA 'yı etkinleştirmek üzere [bulutta azu
 
 Bir hesap MFA için etkinleştirildikten sonra, ikinci kimlik doğrulama faktörü için kullanılmak üzere bir güvenilen cihaz başarıyla yapılandırılana ve iki adımlı doğrulama kullanarak kimlik doğrulamasından çıkana kadar MFA ilkesi tarafından yönetilen kaynaklarda oturum açılamıyor.
 
-[Azure Multi-Factor Authentication benim Için ne anlama geldiğini](../user-help/multi-factor-authentication-end-user.md) öğrenmek için bu adımları izleyin.
+[Azure Multi-Factor Authentication benim Için ne anlama geldiğini](../user-help/multi-factor-authentication-end-user-first-time.md) öğrenmek için bu adımları izleyin.
 
 > [!IMPORTANT]
 > Uzak Masaüstü Ağ Geçidi için oturum açma davranışı, Azure Multi-Factor Authentication ile doğrulama kodu girme seçeneği sağlamaz. Telefon doğrulaması için bir kullanıcı hesabı veya anında iletme bildirimleri olan Microsoft Authenticator uygulama için yapılandırılmış olmalıdır.
@@ -250,7 +250,7 @@ Varsayılan olarak, RD Ağ Geçidi bağlantı yetkilendirme ilkeleri için merke
 1. **Iptal 'e**tıklayın.
 
 >[!NOTE]
-> Bağlantı isteği ilkesi oluşturma hakkında daha fazla bilgi için, [bağlantı isteği ilkelerini](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) aynı şekilde yapılandırma makalesini inceleyin. 
+> Bağlantı isteği ilkesi oluşturma hakkında daha fazla bilgi için, [bağlantı isteği ilkelerini](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) aynı şekilde yapılandırma makalesini inceleyin. 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS uzantısının yüklendiği sunucuda NPS 'YI yapılandırma
 
@@ -306,7 +306,7 @@ Azure MFA uzantılı NPS sunucusunun, bağlantı yetkilendirme Ilkesi (CAP) içi
 
    ![İsteğe bağlı olarak bağlantı koşullarını belirtin](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. **Tamam**’a tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
+1. **Tamam** düğmesine tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
 1. Yeni ilkenizin listenin en üstünde olduğundan, ilkenin etkin olduğundan ve erişim izni verdiğinden emin olun.
 
    ![İlkenizi listenin en üstüne taşıyın](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -378,13 +378,13 @@ AzureMFA günlüklerinden ilgili bir olay aşağıda verilmiştir:
 
 Gelişmiş sorun giderme seçeneklerini gerçekleştirmek için, NPS hizmetinin yüklü olduğu NPS veritabanı biçim günlük dosyalarına başvurun. Bu günlük dosyaları, _%systemroot%\System32\Logs_ klasöründe virgülle ayrılmış metin dosyaları olarak oluşturulur.
 
-Bu günlük dosyalarının açıklaması için bkz. [NPS veritabanı biçimi günlük dosyalarını yorumlama](https://technet.microsoft.com/library/cc771748.aspx). Bu günlük dosyalarındaki girişlerin bir elektronik tabloya veya veritabanına aktarılmadan yorumlanması zor olabilir. Günlük dosyalarını yorumlarken size yardımcı olmak için birkaç IAS ayrıştırıcılarını çevrimiçi bulabilirsiniz.
+Bu günlük dosyalarının açıklaması için bkz. [NPS veritabanı biçimi günlük dosyalarını yorumlama](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)). Bu günlük dosyalarındaki girişlerin bir elektronik tabloya veya veritabanına aktarılmadan yorumlanması zor olabilir. Günlük dosyalarını yorumlarken size yardımcı olmak için birkaç IAS ayrıştırıcılarını çevrimiçi bulabilirsiniz.
 
 Aşağıdaki görüntüde, bu tür indirilebilir bir [paylaşılan yazılım uygulamasının](https://www.deepsoftware.com/iasviewer)çıkışı gösterilmektedir.
 
 ![Örnek paylaşılan yazılım uygulaması IAS ayrıştırıcısı](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Son olarak, ek sorun giderme seçenekleri için, [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)gibi bir protokol Çözümleyicisi kullanabilirsiniz.
+Son olarak, ek sorun giderme seçenekleri için, [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)gibi bir protokol Çözümleyicisi kullanabilirsiniz.
 
 Microsoft Message Analyzer ' dan aşağıdaki görüntüde, **contoso alicec**Kullanıcı adını içeren RADIUS protokolünde filtrelenmiş ağ trafiği gösterilmektedir.
 

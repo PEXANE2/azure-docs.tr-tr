@@ -3,12 +3,12 @@ title: Azure DevTest Labs içindeki laboratuvar sanal makinelerinizdeki yönetil
 description: Bu makalede, laboratuvar sahibinin laboratuvar sanal makinelerinizde Kullanıcı tarafından atanan yönetilen kimlikleri nasıl etkinleştirebilirim gösterilmektedir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476011"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717650"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvar sanal makinelerinde Kullanıcı tarafından atanan yönetilen kimlikleri etkinleştirin
 Laboratuvar sahibi olarak, Azure DevTest Labs ' de laboratuvar sanal makinelerinizde (VM) Kullanıcı tarafından atanan Yönetilen kimlikler sağlayabilirsiniz.
@@ -25,14 +25,16 @@ Laboratuvar VM 'Leri için Kullanıcı tarafından atanmış bir yönetilen kiml
 
 1. [Aboneliğinizde Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. Laboratuvarınızın **yapılandırma ve ilkeler** sayfasına gidin.
-2. Sol menüdeki **kimlik (Önizleme)** öğesini seçin.
-3. **Sanal makine** sekmesini seçin.
-4. Önceden doldurulmuş bir açılan listeden var olan bir kimliği seçmek için **Ekle** ' yi seçin. 
+1. Sol menüdeki **kimlik (Önizleme)** öğesini seçin.
+1. **Sanal makine** sekmesini seçin.
+1. Önceden doldurulmuş bir açılan listeden var olan bir kimliği seçmek için **Ekle** ' yi seçin. 
 
-    ![Kimlik Ekle düğmesi](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Açılan listeden var olan bir **Kullanıcı tarafından yönetilen kimliği** seçin ve **Tamam**' ı seçin. 
+    > [!div class="mx-imgBorder"]
+    > ![Kimlik Ekle düğmesi](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. Açılan listeden var olan bir **Kullanıcı tarafından yönetilen kimliği** seçin ve **Tamam**' ı seçin. 
 
-    ![Kimlik Ekle](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Kimlik Ekle](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>API kullanma
 

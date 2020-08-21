@@ -3,12 +3,12 @@ title: Medya grafiği uzantısı nedir? Azure
 description: IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 09fc2b71a6188caf1bdd9b7a2ef4da287f022845
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691944"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716087"
 ---
 # <a name="media-graph-extension"></a>Medya grafiği uzantısı
 
@@ -54,7 +54,7 @@ Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
 
 ## <a name="samples"></a>Örnekler
 
-Canlı video analizi için [Jupyter Not defteri](https://jupyter.org/) örneklerimizden bazılarını kullanıma alın. Bu not defterleri size aşağıdaki adım adım yönergeler sağlar:
+Canlı video analizi için [Jupyter Not defteri](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) örneklerimizden bazılarını kullanıma alın. Bu not defterleri size aşağıdaki adım adım yönergeler sağlar:
 
 * Uzantı hizmetinin Docker kapsayıcı görüntüsü oluşturma
 * Uzantı hizmetini bir kapsayıcı olarak ve canlı video analizi kapsayıcısı ile birlikte dağıtma

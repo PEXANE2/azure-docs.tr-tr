@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144078"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716444"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>İOS 'ta sertifika tabanlı kimlik doğrulamasını Azure Active Directory
 
@@ -61,15 +61,15 @@ Aşağıdaki Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gereksinimler
 
 Azure AD 'nin bir istemci sertifikasını iptal etmek için, ADFS belirtecinin aşağıdaki talepleri olması gerekir. Azure AD, ADFS belirtecinde (veya başka bir SAML belirteci) kullanılabiliyorsa bu talepleri yenileme belirtecine ekler. Yenileme belirtecinin doğrulanması gerektiğinde, bu bilgiler iptali denetlemek için kullanılır:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`-istemci sertifikanızın seri numarasını ekleyin
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`-İstemci sertifikanızı veren için dizeyi ekleyin
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` -istemci sertifikanızın seri numarasını ekleyin
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` -İstemci sertifikanızı veren için dizeyi ekleyin
 
 En iyi uygulama olarak, kuruluşunuzun ADFS hata sayfalarını aşağıdaki bilgilerle de güncelleştirmeniz gerekir:
 
 * Microsoft Authenticator iOS üzerinde yükleme gereksinimi.
 * Kullanıcı sertifikası alma yönergeleri.
 
-Daha fazla bilgi için bkz. [AD FS oturum açma sayfasını özelleştirme](https://technet.microsoft.com/library/dn280950.aspx).
+Daha fazla bilgi için bkz. [AD FS oturum açma sayfasını özelleştirme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Office uygulamalarıyla modern kimlik doğrulaması kullanma
 

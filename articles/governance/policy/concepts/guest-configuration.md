@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685774"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717587"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 |Microsoft|Windows İstemcisi|Windows 10|
 |OpenLogic|CentOS|7,3 ve üzeri|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
-|SUSE|SLES|12 SP3 ve üzeri|
+|SUSE|SLES|12 SP3-SP5|
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
 
@@ -95,6 +95,11 @@ Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal olu�
 Azure Arc tarafından bağlanan Azure dışında bulunan düğümlerin Konuk yapılandırma hizmetine bağlantısı olması gerekir. [Azure Arc belgelerinde](../../../azure-arc/servers/overview.md)sunulan ağ ve ara sunucu gereksinimleriyle ilgili ayrıntılar.
 
 Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
+
+Özel veri merkezlerinde yay bağlantılı sunucular için aşağıdaki desenleri kullanarak trafiğe izin verin:
+
+- Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gerekir
+- Genel URL: `*.guestconfiguration.azure.com`
 
 ## <a name="managed-identity-requirements"></a>Yönetilen kimlik gereksinimleri
 
@@ -139,9 +144,12 @@ Bazı parametreler bir tamsayı değer aralığını destekler. Örneğin, en fa
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konuk yapılandırması kullanılarak yapılandırmaları uygulama
 
-Azure Ilkesinin en son özelliği makineler içindeki ayarları yapılandırır. _Windows makinelerinde saat dilimini yapılandırma_ tanımı, saat dilimini yapılandırarak makinede değişiklikler yapar.
+Yalnızca _Windows makinelerinde saat dilimini yapılandıran_ tanım, saat dilimini yapılandırarak makinede değişiklik yapar. Makinelerin içinde ayarları yapılandırmak için özel ilke tanımları desteklenmez.
 
 _Yapılandırma_ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını_da atamanız gerekir. Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
+
+> [!NOTE]
+> Yerleşik saat dilimi ilkesi, makineler içindeki ayarları yapılandırmayı destekleyen tek tanımdır ve makineler içindeki ayarları yapılandıran özel ilkeler desteklenmez.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure dışındaki makinelere ilke atama
 

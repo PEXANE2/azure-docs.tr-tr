@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904828"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718110"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -56,7 +56,7 @@ Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonu
 
     Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak, uygulamalarınızın yüksek kullanılabilirliğe sahip olduğundan [kullanılabilirlik alanları](../availability-zones/az-overview.md) yayılmış kümeleri destekler. Kullanılabilirlik Alanları ek düğüm türü planlaması ve minimum gereksinimleri gerektirir. Ayrıntılar için bkz. [kullanılabilirlik alanları arasında yayılan Service Fabric kümelerinin birincil düğüm türü Için önerilen topoloji](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-Kümenizin ilk oluşturması için düğüm türlerinin sayısını ve özelliklerini belirlerken, kümeniz dağıtıldıktan sonra her zaman, birincil olmayan düğüm türlerini ekleyebileceğiniz, değiştirebileceğinizi veya kaldıracağınızı unutmayın. [Birincil düğüm türleri, çalışan kümelerde de değiştirilebilir](service-fabric-scale-up-node-type.md) (ancak, bu işlemler üretim ortamlarında büyük bir planlama ve uyarı gerektirir).
+Kümenizin ilk oluşturması için düğüm türlerinin sayısını ve özelliklerini belirlerken, kümeniz dağıtıldıktan sonra her zaman, birincil olmayan düğüm türlerini ekleyebileceğiniz, değiştirebileceğinizi veya kaldıracağınızı unutmayın. [Birincil düğüm türleri, çalışan kümelerde de değiştirilebilir](service-fabric-scale-up-primary-node-type.md) (ancak, bu işlemler üretim ortamlarında büyük bir planlama ve uyarı gerektirir).
 
 Düğüm türü özelliklerinizi daha iyi bir şekilde dikkate almanız, düğüm türünün VM 'lerinin Azure altyapısında sahip olduğu ayrıcalıkları belirleyen dayanıklılık düzeyidir. Daha önce açıklandığı gibi, düğüm türlerinizin her biri için uygun dayanıklılık katmanını belirlemenize yardımcı olmak üzere kümeniz için seçtiğiniz VM 'lerin boyutunu ve tek tek düğüm türleri için atadığınız örnek sayısını kullanın.
 
@@ -105,7 +105,7 @@ Sıklıkla ölçeklendirmeyi düşündüğünüz durum bilgisi olan hizmetleri b
 Gümüş veya altın dayanıklılık ile düğüm türlerini yönetmek için bu önerileri izleyin:
 
 * Kümenizi ve uygulamalarınızı her zaman sağlıklı tutun ve uygulamaların tüm [hizmet çoğaltması yaşam döngüsü olaylarına](service-fabric-reliable-services-lifecycle.md) (derleme içindeki çoğaltma gibi) zamanında yanıt vermesini sağlayın.
-* VM Boyut değişikliği yapmak için daha güvenli yollar benimseyin (ölçeği artırma/azaltma). Bir sanal makine ölçek kümesinin VM boyutunun değiştirilmesi dikkatli bir planlama ve uyarı gerektirir. Ayrıntılar için bkz. [Service Fabric bir düğüm türünü ölçekleme](service-fabric-scale-up-node-type.md)
+* VM Boyut değişikliği yapmak için daha güvenli yollar benimseyin (ölçeği artırma/azaltma). Bir sanal makine ölçek kümesinin VM boyutunun değiştirilmesi dikkatli bir planlama ve uyarı gerektirir. Ayrıntılar için bkz. [Service Fabric bir düğüm türünü ölçekleme](service-fabric-scale-up-primary-node-type.md)
 * Dayanıklılık düzeyi Gold veya gümüş etkin olan herhangi bir sanal makine ölçek kümesi için en az beş düğüm sayısını koruyun. Bu eşiğin altına ölçeklendirirseniz kümeniz hata durumuna girer ve kaldırılan düğümler için durumu () el ile temizlemeniz gerekir `Remove-ServiceFabricNodeState` .
 * Dayanıklılık düzeyi gümüş veya altın sahip her sanal makine ölçek kümesi, Service Fabric kümesinde kendi düğüm türüne eşlenmelidir. Birden çok sanal makine ölçek kümesini tek bir düğüm türüyle eşlemek, Service Fabric kümesi ile Azure altyapısının düzgün çalışmasını engeller.
 * Rastgele VM örneklerini silmeyin, her zaman özelliğindeki sanal makine ölçek kümesi ölçeğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sanal makine örneğinde [yükseltme etki alanları](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) ve [hata etki alanları](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)arasında yer aldığı bir dengesbakiyinin oluşturulmasına neden vardır. Bu dengesizliği, sistem hizmet örnekleri/hizmet çoğaltmaları arasında doğru şekilde yük dengelemesi yapabilme yeteneğini olumsuz etkileyebilir.

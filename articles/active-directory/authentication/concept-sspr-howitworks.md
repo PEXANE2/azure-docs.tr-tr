@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027690"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716325"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -73,7 +73,7 @@ Kullanıcılar SSPR kullanarak parolalarını sıfırlayamaz veya değiştirebil
 Azure AD kullanarak herhangi bir uygulamada oturum açtıklarında, kullanıcının SSPR kaydını tamamlamasını gerektirme seçeneğini etkinleştirebilirsiniz. Bu iş akışı aşağıdaki uygulamaları içerir:
 
 * Office 365
-* Azure portalı
+* Azure portal
 * Erişim Paneli
 * Federasyon uygulamaları
 * Azure AD kullanarak özel uygulamalar
@@ -139,7 +139,7 @@ Kullanıcılar, self servis parola sıfırlama için kaydolurken mobil uygulamal
 >
 > Bir yöntem olarak Authenticator uygulamasını içeren SSPR ilkelerini yapılandırırken, bir yöntem gerekli olduğunda en az bir ek yöntem seçilmelidir ve iki yöntemin yapılandırılması gerektiğinde en az iki ek yöntem seçilmelidir.
 >
-> Bu gereksinim, geçerli SSPR kayıt deneyiminin kimlik doğrulayıcı uygulamasını kaydetme seçeneğini içermediği için gereklidir. Kimlik doğrulayıcı uygulamasını kaydetme seçeneği, yeni [Birleşik kayıt deneyimine](concept-registration-mfa-sspr-converged.md)dahildir.
+> Bu gereksinim, geçerli SSPR kayıt deneyiminin kimlik doğrulayıcı uygulamasını kaydetme seçeneğini içermediği için gereklidir. Kimlik doğrulayıcı uygulamasını kaydetme seçeneği, yeni [Birleşik kayıt deneyimine](./concept-registration-mfa-sspr-combined.md)dahildir.
 >
 > Yalnızca Authenticator uygulamasını (bir yöntem gerekli olduğunda) veya Doğrulayıcı uygulamasını ya da yalnızca bir ek yöntemi (iki yöntem gerektiğinde) kullanan ilkelere izin vermek, kullanıcıların, yeni Birleşik kayıt deneyimini kullanacak şekilde yapılandırılıncaya kadar SSPR için kaydolmaları engellenmiş olmasına neden olabilir.
 
@@ -191,13 +191,13 @@ Azure AD, geçerli karma bağlantınızı denetler ve Azure portal aşağıdaki 
 * Azure AD çevrimiçi ve şirket içi geri yazma istemcinizi bağlamış. Ancak, Azure AD Connect yüklü sürümü güncel değil gibi görünüyor. En son bağlantı özelliklerine ve önemli hata düzeltmelerine sahip olduğunuzdan emin olmak için [Azure AD Connect yükseltmeyi](../hybrid/how-to-upgrade-previous-version.md) düşünün.
 * Ne yazık ki, Azure AD Connect yüklü sürümü güncel olmadığından şirket içi geri yazma istemci durumunuzu denetleyemiyorum. Bağlantı durumunuzu denetlemek için [Azure AD Connect yükseltin](../hybrid/how-to-upgrade-previous-version.md) .
 * Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bağlantıyı geri yüklemek için [Azure AD Connect sorunlarını giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
-* Ne yazık ki, parola geri yazma düzgün yapılandırılmadığından şirket içi geri yazma istemcinizi bağlayamıyoruz. Bağlantıyı geri yüklemek için [parola geri yazma 'Yı yapılandırın](howto-sspr-writeback.md) .
+* Ne yazık ki, parola geri yazma düzgün yapılandırılmadığından şirket içi geri yazma istemcinizi bağlayamıyoruz. Bağlantıyı geri yüklemek için [parola geri yazma 'Yı yapılandırın](./tutorial-enable-sspr-writeback.md) .
 * Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bu, bizim sonunda geçici sorunlardan kaynaklanıyor olabilir. Sorun devam ederse, bağlantıyı geri yüklemek için [Azure AD Connect sorun giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
 
 SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](tutorial-enable-writeback.md)
+> [Öğretici: Self servis parola sıfırlama (SSPR) geri yazmayı etkinleştirme](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Parolaları şirket içi dizininize geri yazma
 
@@ -223,7 +223,7 @@ Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırma
 
 * **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: ile iş ortağınız olan kuruluşun mevcut BIR Azure AD kiracısı varsa, bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Office 365 müşterileri için ek ücret alınmaz.
 * Self Servis kaydolma ile kaydolan **Kullanıcılar** : ile iş ortağınız olan kuruluş, bir kiracıya ulaşmak için [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, parolaları kayıtlı e-posta ile sıfırlayacağız.
-* **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../b2b/what-is-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları parolalarını, davet işlemi sırasında kayıtlı olan e-posta ile de sıfırlayabilir.
+* **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../external-identities/what-is-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları parolalarını, davet işlemi sırasında kayıtlı olan e-posta ile de sıfırlayabilir.
 
 Bu senaryoyu test etmek için, https://passwordreset.microsoftonline.com Bu iş ortağı kullanıcılarından birine gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
 

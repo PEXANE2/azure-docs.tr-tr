@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/28/2020
-ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736212"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717260"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
@@ -43,9 +43,9 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4.4         | 2.3.2, 2.2.0, 2.1.0         |
-| Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 2.1.1         | 1.1                        |
+| Apache Spark           | 2.4.4         | 2.3.2.                      |
+| Apache Livy            | 0,5           | 0,4.                        |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache ambarı          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -77,10 +77,23 @@ Bu tabloda, Azure portal ve PowerShell ve .NET SDK gibi diğer dağıtım yönte
 
 | HDInsight sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |Ubuntu 16.0.4 LTS |Eylül 24, 2018 | | |Yes |Evet |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 Nisan 2017 | 31 Aralık 2020 |31 Aralık 2020 |Yes |Evet |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |Eylül 24, 2018 | | |Evet |Evet |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 Nisan 2017      | * 31 Haziran 2021 |31 Haziran 2021 |Evet |Evet |
 
-Spark 2,1, 2,2 ve Kafka 1,0 küme desteğinin süresi 30 Haziran 2020 tarihinde doluyor.
+* Belirli HDInsight 3,6 küme türleri için destek zaman çerçevesini genişlettik.
+
+| Küme Türü                    | Framework sürümü | Geçerli destek süre sonu        | Yeni destek sona erme tarihi |
+|---------------------------------|-------------------|-----------------------------------|-----------------------------|
+| HDInsight 3,6 Hadoop            | 2.7.3             | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 Spark             | 2.3               | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 Spark             | 2,2               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı          |                             |
+| HDInsight 3,6 Spark             | 2.1               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı          |                             |
+| HDInsight 3,6 Kafka             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 Kafka             | 1,0               | 30 Haziran 2020 tarihinde kullanımdan kaldırıldı.         |                             |
+| HDInsight 3,6 HBase             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 etkileşimli sorgu | 2.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 fırtınası             | 1.1               | 31 Aralık 2020                      | 30 Haziran 2021               |
+| HDInsight 3,6 ML Hizmetleri      | 9,3               | 31 Aralık 2020                      | 31 Aralık 2020                |
 
 > [!NOTE]
 > Bir küme sürümü için destek süresi dolduktan sonra, Azure portal aracılığıyla kullanılamayabilir. Bazı durumlarda, küme sürümleri, sürüm kullanımdan kaldırılması tarihine kadar Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) komutu ve .NET SDK içindeki **Sürüm** parametresi kullanılarak kullanılabilir olmaya devam eder.

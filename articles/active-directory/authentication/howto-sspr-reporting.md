@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035307"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717736"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -53,7 +53,7 @@ Azure portal deneyiminde, parola sıfırlama ve parola sıfırlama kayıt etkinl
 
 ### <a name="combined-registration"></a>Birleşik kayıt
 
-[Birleşik kaydı](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)etkinleştirdiyseniz, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
+[Birleşik kaydı](./concept-registration-mfa-sspr-combined.md)etkinleştirdiyseniz, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure portal rapor sütunlarının açıklaması
 
@@ -179,7 +179,7 @@ Aşağıdaki listede bu etkinlik ayrıntılı olarak açıklanmaktadır:
 * [SSPR hangi verileri kullanır ve kullanıcılarınız için hangi verileri doldurmanız gerekir?](howto-sspr-authenticationdata.md)
 * [Kullanıcılar hangi kimlik doğrulama yöntemlerini kullanabilir?](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR ile kullanılabilen ilke seçenekleri nelerdir?](concept-sspr-policy.md)
-* [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
+* [Parola geri yazma nedir ve neden önemlidir?](./tutorial-enable-sspr-writeback.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
 * [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)

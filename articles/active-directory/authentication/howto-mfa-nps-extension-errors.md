@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848678"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716733"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından alınan hata iletilerini çözme
 
@@ -30,8 +30,8 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **CONTACT_SUPPORT** | [Desteğe başvurun](#contact-microsoft-support)ve günlüklerin toplanması için adımlar listesinden bahsedin. , Kiracı KIMLIĞI ve Kullanıcı asıl adı (UPN) dahil olmak üzere hatadan önce ne olduğu hakkında daha fazla bilgi sağlayın. |
 | **CLIENT_CERT_INSTALL_ERROR** | İstemci sertifikasının nasıl yüklendiği veya kiracınızla ilişkili olduğu bir sorun olabilir. İstemci sertifikası sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **ESTS_TOKEN_ERROR** | İstemci sertifikası ve ADAL belirteci sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
-| **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın ve giden trafik için açık bir şekilde açık olduğunu doğrulayınhttps://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda, ve ' a ulaşabildiğinizi doğrulayın `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com/` . Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
+| **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın ve giden trafik için açık bir şekilde açık olduğunu doğrulayın https://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda, ve ' a ulaşabildiğinizi doğrulayın  `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com/` . Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
 | **Azure MFA için NPS uzantısı:** <br> Azure MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın, `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80 ve 443 bağlantı noktalarını kullanarak ve giden trafik için açık bir şekilde açık olduğunu doğrulayın. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
 | **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. altındaki anahtara sahip olduğunuzdan emin olun |
 | **REQUEST_FORMAT_ERROR** <br> Radius Isteğinde zorunlu Radius Username\ıdentifier özniteliği eksik. NPS 'nin RADIUS isteklerini aldığını doğrulama | Bu hata genellikle bir yükleme sorununu yansıtır. NPS uzantısının, RADIUS isteklerini alabilen NPS sunucularına yüklenmesi gerekir. RDG ve RRAS gibi hizmetler için bağımlılıklar olarak yüklenen NPS sunucuları RADIUS istekleri almaz. NPS uzantısı, kimlik doğrulama isteğinden ayrıntıları okuyamadığından bu tür yüklemeler ve hatalar üzerine yüklendiğinde çalışmaz. |
@@ -43,7 +43,7 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | Hata kodu | Hata iletisi | Sorun giderme adımları |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hata: userObjectSid arama başarısız oldu | Kullanıcının şirket içi Active Directory örneğinde mevcut olduğunu doğrulayın. Ormanlar arası güvenler kullanıyorsanız, daha fazla yardım için [desteğe başvurun](#contact-microsoft-support) . |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hata: alternatif LoginID araması başarısız oldu | LDAP_ALTERNATE_LOGINID_ATTRIBUTE [geçerli bir Active Directory özniteliği](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)olarak ayarlandığını doğrulayın. <br><br> LDAP_FORCE_GLOBAL_CATALOG true olarak ayarlanırsa veya LDAP_LOOKUP_FORESTS boş olmayan bir değerle yapılandırılmışsa, bir genel katalog yapılandırdığınızdan ve AlternateLoginID özniteliğinin buna eklendiğini doğrulayın. <br><br> LDAP_LOOKUP_FORESTS boş olmayan bir değerle yapılandırıldıysa değerin doğru olduğundan emin olun. Birden fazla orman adı varsa, adların boşluk değil, noktalı virgülle ayrılması gerekir. <br><br> Bu adımlar sorunu gidermezse, daha fazla yardım için [desteğe başvurun](#contact-microsoft-support) . |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hata: alternatif LoginID araması başarısız oldu | LDAP_ALTERNATE_LOGINID_ATTRIBUTE [geçerli bir Active Directory özniteliği](/windows/win32/adschema/attributes-all)olarak ayarlandığını doğrulayın. <br><br> LDAP_FORCE_GLOBAL_CATALOG true olarak ayarlanırsa veya LDAP_LOOKUP_FORESTS boş olmayan bir değerle yapılandırılmışsa, bir genel katalog yapılandırdığınızdan ve AlternateLoginID özniteliğinin buna eklendiğini doğrulayın. <br><br> LDAP_LOOKUP_FORESTS boş olmayan bir değerle yapılandırıldıysa değerin doğru olduğundan emin olun. Birden fazla orman adı varsa, adların boşluk değil, noktalı virgülle ayrılması gerekir. <br><br> Bu adımlar sorunu gidermezse, daha fazla yardım için [desteğe başvurun](#contact-microsoft-support) . |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hata: alternatif LoginID değeri boş | AlternateLoginID özniteliğinin Kullanıcı için yapılandırıldığını doğrulayın. |
 
 ## <a name="errors-your-users-may-encounter"></a>Kullanıcılarınızın karşılaşabilecekleri hatalar
@@ -81,7 +81,7 @@ Bu hatalardan biriyle karşılaşırsanız, tanılama yardımı için [desteğe 
 | ---------- | ------------- |
 | **Geçersiz parametre** | İstek null olmamalıdır |
 | **Geçersiz parametre** | ObjectID, ReplicationScope için null veya boş olmamalıdır:{0} |
-| **Geçersiz parametre** | CompanyName \{ 0} \ ' un uzunluğu izin verilen en fazla uzunluktan daha uzun{1} |
+| **Geçersiz parametre** | CompanyName \{ 0} \ ' un uzunluğu izin verilen en fazla uzunluktan daha uzun {1} |
 | **Geçersiz parametre** | UserPrincipalName null veya boş olmamalıdır |
 | **Geçersiz parametre** | Belirtilen Tenantıd doğru biçimde değil |
 | **Geçersiz parametre** | SessionID null veya boş olmamalıdır |
@@ -99,7 +99,7 @@ Kullanıcılarınız [iki adımlı doğrulamayla ilgili sorun](../user-help/mult
 
 ### <a name="health-check-script"></a>Sistem durumu denetimi betiği
 
-[Azure MFA NPS uzantısı sistem durumu denetim betiği](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) , NPS uzantısı sorunlarını giderirken temel bir sistem durumu denetimi gerçekleştirir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
+[Azure MFA NPS uzantısı sistem durumu denetim betiği](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) , NPS uzantısı sorunlarını giderirken temel bir sistem durumu denetimi gerçekleştirir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
 
 ### <a name="contact-microsoft-support"></a>Microsoft desteğine başvurma
 

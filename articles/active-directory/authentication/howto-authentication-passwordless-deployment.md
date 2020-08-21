@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81451440"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717158"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -43,9 +43,9 @@ Passwordless sayesinde parola, sizin veya bildiğiniz bir şey ile birlikte değ
 ## <a name="passwordless-authentication-methods"></a>Passwordless kimlik doğrulama yöntemleri
 Microsoft birçok senaryoyu kapsayan üç adet passwordless kimlik doğrulama seçeneği sunar. Bu yöntemler art arda kullanılabilir:
 
-- [İş Için Windows Hello](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) , kullanıcıların adanmış Windows bilgisayarlarına en iyi şekilde yöneliktir.
-- Güvenlik anahtarı ile oturum açma, [FIDO2 güvenlik anahtarları](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) ile, telefon kullanımı sınırlı olduğu durumlarda ve yüksek ayrıcalıklı kimlikler için kiosks gibi paylaşılan makinelerde oturum açan kullanıcılar için faydalıdır.
-- [Microsoft Authenticator uygulamayla](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) telefon oturumu açmak, mobil cihazlara sahip kullanıcılar için passwordless bir seçenek sağlamak için yararlıdır. Authenticator uygulaması tüm iOS veya Android telefonlarına, kullanıcıların herhangi bir platformda veya tarayıcıda oturum açmalarına izin vererek güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, ardından biyometrik verilerini veya PIN 'ini kullanarak oturum açabilirler.
+- [İş Için Windows Hello](./concept-authentication-passwordless.md) , kullanıcıların adanmış Windows bilgisayarlarına en iyi şekilde yöneliktir.
+- Güvenlik anahtarı ile oturum açma, [FIDO2 güvenlik anahtarları](./concept-authentication-passwordless.md) ile, telefon kullanımı sınırlı olduğu durumlarda ve yüksek ayrıcalıklı kimlikler için kiosks gibi paylaşılan makinelerde oturum açan kullanıcılar için faydalıdır.
+- [Microsoft Authenticator uygulamayla](./concept-authentication-passwordless.md) telefon oturumu açmak, mobil cihazlara sahip kullanıcılar için passwordless bir seçenek sağlamak için yararlıdır. Authenticator uygulaması tüm iOS veya Android telefonlarına, kullanıcıların herhangi bir platformda veya tarayıcıda oturum açmalarına izin vererek güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, ardından biyometrik verilerini veya PIN 'ini kullanarak oturum açabilirler.
 
 ### <a name="passwordless-authentication-scenarios"></a>Passwordless kimlik doğrulama senaryoları
 
@@ -59,9 +59,9 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 | **Web uygulaması oturum açma**: <br> Mobil veya Windows dışı bir cihazdan | **Evet** | **Hayır** | **Hayır** |
 | **Bilgisayar oturum açma**: <br> Windows dışı bilgisayar | **Hayır** | **Hayır** | **Hayır** |
 
-Kuruluşunuz için en iyi yöntemi seçme hakkında daha fazla bilgi için bkz. [passwordless yöntemine karar verme](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
+Kuruluşunuz için en iyi yöntemi seçme hakkında daha fazla bilgi için bkz. [passwordless yöntemine karar verme](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -72,11 +72,11 @@ Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önko
 | [Kullanıcılar Azure Multi-Factor Authentication ve SSPR için kaydoldu](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Kullanıcılar mobil cihazlarını Azure Active Directory 'e kaydetti](../devices/overview.md) | √ |   |
 | Microsoft Edge veya Mozilla Firefox gibi desteklenen bir tarayıcı kullanarak Windows 10 sürüm 1809 veya üzeri <br> (sürüm 67 veya üzeri). <br> *Microsoft, yerel destek için sürüm 1903 veya üstünü önerir*. |   | √ |
-| Uyumlu FIDO2 güvenlik anahtarları. [Microsoft tarafından sınanmış ve onaylanmış](howto-authentication-passwordless-enable.md) bir FIDO2 güvenlik cihazını veya başka BIR uyumlu FIDO2 güvenlik cihazını kullandığınızdan emin olun. |   | √ |
+| Uyumlu FIDO2 güvenlik anahtarları. [Microsoft tarafından sınanmış ve onaylanmış](./concept-authentication-passwordless.md) bir FIDO2 güvenlik cihazını veya başka BIR uyumlu FIDO2 güvenlik cihazını kullandığınızdan emin olun. |   | √ |
 
 ### <a name="prerequisites-for-windows-hello-for-business"></a>Iş için Windows Hello önkoşulları
 
-Windows Hello önkoşulları, şirket içi, karma veya yalnızca bulut yapılandırmasında dağıtım yapıp etmemediklerine oldukça bağlıdır. Daha fazla bilgi için bkz. [iş Için Windows Hello önkoşulların tam listesi](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Windows Hello önkoşulları, şirket içi, karma veya yalnızca bulut yapılandırmasında dağıtım yapıp etmemediklerine oldukça bağlıdır. Daha fazla bilgi için bkz. [iş Için Windows Hello önkoşulların tam listesi](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -93,7 +93,7 @@ Her kimlik doğrulama yöntemi için iş gereksinimlerinizi ve kullanım örnekl
 
 Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özetlenmektedir.
 
-| Alan | Description |
+| Alan | Açıklama |
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, şirket ağı içindeki veya dışındaki bir kurumsal veya kişisel cihazdan kullanılabilir. |
 | **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
@@ -132,7 +132,7 @@ Dağıtım planları sayfasında [bir pilot Için en iyi uygulamalar](https://ak
 
 Microsoft Authenticator uygulaması, Google Play veya Apple App Store 'dan ücretsiz bir indirindir. [Microsoft Authenticator uygulamasını indirme hakkında daha fazla bilgi edinin](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Kullanıcıların Microsoft Authenticator uygulamasını indirmesini sağlayabilirsiniz. ve telefonla oturum açmayı etkinleştirmek için yönergeleri izleyin. 
 
-Her iOS veya Android telefonunu güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, sonra da doğrulamak için Biyometri veya PIN kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. [Microsoft Authenticator uygulamasının nasıl çalıştığına ilişkin ayrıntılara bakın](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
+Her iOS veya Android telefonunu güçlü, passworddaha az bir kimlik bilgisine dönüştürür. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenmekte olan bir sayı ile eşleşen bir sayıyla, sonra da doğrulamak için Biyometri veya PIN kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. [Microsoft Authenticator uygulamasının nasıl çalıştığına ilişkin ayrıntılara bakın](./concept-authentication-passwordless.md#microsoft-authenticator-app).
 
 ![Doğrulayıcı uygulamasıyla oturum açın](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 
@@ -150,7 +150,7 @@ Güvenlik anahtarları ile kullanılabilen üç tür passwordless oturum açma d
 -    Desteklenen bir tarayıcıda Web Apps Azure Active Directory
 -    Azure Active Directory Birleştirilmiş Windows 10 cihazları
 -    Karma Azure Active Directory katılmış Windows 10 cihazları (Önizleme)
-     -    Hem bulut tabanlı hem de şirket içi kaynaklara erişim sağlar. Şirket içi kaynaklara erişim hakkında daha fazla bilgi için bkz. [FIDOP2 anahtarlarını kullanarak şirket içi kaynaklara yönelik SSO](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)
+     -    Hem bulut tabanlı hem de şirket içi kaynaklara erişim sağlar. Şirket içi kaynaklara erişim hakkında daha fazla bilgi için bkz. [FIDOP2 anahtarlarını kullanarak şirket içi kaynaklara yönelik SSO](./howto-authentication-passwordless-security-key-on-premises.md)
 
 **Uyumlu FIDO2 güvenlik anahtarlarını**etkinleştirmeniz gerekir. Microsoft [, FIDO2 anahtar satıcıları ile temel ortaklıklar](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)duyurmuştur.
 
@@ -164,7 +164,7 @@ Güvenlik anahtarları ile kullanılabilen üç tür passwordless oturum açma d
 -    Windows Server 2016 veya 2019 çalıştıran tam düzeltme eki uygulanmış etki alanı sunucuları.
 -    Azure AD Connect en son sürümü
 
-Gereksinimlerin tam listesi için bkz. [Windows 10 cihazlarında Azure Active Directory ile passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows#requirements).
+Gereksinimlerin tam listesi için bkz. [Windows 10 cihazlarında Azure Active Directory ile passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme](./howto-authentication-passwordless-security-key-windows.md#requirements).
 
 
 ### <a name="security-key-life-cycle"></a>Güvenlik anahtarı yaşam döngüsü
@@ -292,7 +292,7 @@ Aşağıdaki seçtiğiniz metoda hizalanmış adımları izleyin.
 
 ### <a name="required-administrative-roles"></a>Gerekli yönetim rolleri
 
-| Azure AD rolü | Description |
+| Azure AD rolü | Açıklama |
 | --- | --- |
 | Genel Yönetici|Birleşik kayıt deneyimi uygulayabilecek en az ayrıcalıklı rol. |
 | Kimlik doğrulama Yöneticisi | Kimlik doğrulama yöntemlerini uygulayabilir ve yönetebilecek en az ayrıcalıklı rol. |
@@ -320,7 +320,7 @@ Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğr
 | --- | --- |
 | Kullanıcı birleştirilmiş kayıt gerçekleştiremez. | [Birleşik kaydın](concept-registration-mfa-sspr-combined.md) etkinleştirildiğinden emin olun. |
 | Kullanıcı [güvenlik ayarlarına](https://aka.ms/mysecurityinfo)bir güvenlik anahtarı ekleyemez. | [Güvenlik anahtarlarının](howto-authentication-passwordless-security-key.md) etkinleştirildiğinden emin olun. |
-| Kullanıcı, Windows 10 oturum açma seçeneklerinde güvenlik anahtarı ekleyemez. | [Windows oturum açma güvenlik anahtarlarının oturum açmasını sağlayın](howto-authentication-passwordless-enable.md) |
+| Kullanıcı, Windows 10 oturum açma seçeneklerinde güvenlik anahtarı ekleyemez. | [Windows oturum açma güvenlik anahtarlarının oturum açmasını sağlayın](./concept-authentication-passwordless.md) |
 | **Hata iletisi**: bu tarayıcının veya IŞLETIM sisteminin FIDO2 güvenlik anahtarlarını desteklemediğini algıladık. | Passwordless FIDO2 güvenlik cihazları, Windows 10 sürüm 1809 veya üzeri sürümlerde yalnızca desteklenen tarayıcılarda (Microsoft Edge, Firefox sürüm 67) kaydedilebilir. |
 | **Hata iletisi**: Şirket ilkeniz, oturum açmak için farklı bir yöntem kullanmanızı gerektirir. | Kiracıda güvenlik anahtarlarının etkin olmadığından emin değil. |
 | Kullanıcı Windows 10 sürüm 1809 üzerinde güvenlik anahtarımı yönemedi | Sürüm 1809, FIDO2 anahtar satıcısı tarafından sağlanmış olan güvenlik anahtarı yönetim yazılımını kullanmanızı gerektirir. Destek için satıcıya başvurun. |
@@ -331,4 +331,3 @@ Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğr
 - [Azure AD 'de oturum açma için passwordless güvenlik anahtarlarını etkinleştirin](howto-authentication-passwordless-security-key.md)
 - [Microsoft Authenticator uygulamayla passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md)
 - [Kimlik doğrulama yöntemleri kullanımı & Öngörüler hakkında daha fazla bilgi edinin](howto-authentication-methods-usage-insights.md)
-

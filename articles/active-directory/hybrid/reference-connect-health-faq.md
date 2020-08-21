@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446970"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718552"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
 Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
@@ -37,9 +37,11 @@ Aşağıdaki tabloda roller ve desteklenen işletim sistemi sürümleri listelen
 
 |Rol| İşletim sistemi/sürüm|
 |--|--|
-|Active Directory Federasyon Hizmetleri (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Federasyon Hizmetleri (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | Sürüm 1.0.9125 veya üzeri|
-|Active Directory Etki Alanı Hizmetleri (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Etki Alanı Hizmetleri (AD DS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+Windows Server Çekirdeği yüklemeleri desteklenmez.
 
 Hizmet tarafından sunulan özelliklerin role ve işletim sistemine göre farklılık gösterebileceğini unutmayın. Diğer bir deyişle, tüm özellikler tüm işletim sistemi sürümleri için kullanılamayabilir. Ayrıntılar için bkz. Özellik açıklamaları.
 
@@ -69,7 +71,7 @@ Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aad
 | Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
 | Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
-|  | Eşitleme hata raporu | Yes |
+|  | Eşitleme hata raporu | Evet |
 | ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
 | EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
 

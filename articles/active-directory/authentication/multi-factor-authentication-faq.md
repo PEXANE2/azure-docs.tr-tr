@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035086"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718875"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -259,6 +259,6 @@ Bu hata için geçici bir çözüm, yönetici ile ilgili ve yönetici olmayan i�
 Sorunuz burada yanıtlanmazsa aşağıdaki destek seçenekleri mevcuttur:
 
 * [Microsoft desteği bilgi bankasında](https://support.microsoft.com) , yaygın teknik sorunların çözümlerini arayın.
-* Topluluğlardan Teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory soru-cevap&bir](https://docs.microsoft.com/answers/topics/azure-active-directory.html)soru sorun.
+* Topluluğlardan Teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory soru-cevap&bir](/answers/topics/azure-active-directory.html)soru sorun.
 * [Azure Multi-Factor Authentication sunucusu desteği](https://support.microsoft.com/oas/default.aspx?prid=14947)aracılığıyla Microsoft Professional ile iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.
 * Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamayla ilgili yardıma ihtiyacınız varsa, [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) bir destek talebi açmak için e-posta adresini kullanın.

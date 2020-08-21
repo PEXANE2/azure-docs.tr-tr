@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608926"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718705"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -59,7 +59,7 @@ Verileri Azure 'a çoğaltmaya çalışan bileşen çalışmıyor veya yanıt ve
 
    2.  Microsoft Hizmetleri MMC ek bileşenini açın (> Services. msc ' yi çalıştırın) ve "Microsoft Azure ağ geçidi hizmeti" nin çalışır durumda olup olmadığını denetleyin. Hizmet durdurulmuşsa veya çalışmıyorsa, hizmeti başlatın. Alternatif olarak, komut istemi veya PowerShell 'i açabilir ve şunları yapabilirsiniz: "net start asrgwy"
 
-3. Azure geçişi gereci ile önbellek depolama hesabı arasındaki bağlantı sorunlarını denetleyin: 
+3. Azure geçiş gereci ve gereç depolama hesabı arasındaki bağlantı sorunlarını denetleyin: 
 
     Azure geçişi gereci AzCopy indirdikten sonra aşağıdaki komutu çalıştırın:
     
@@ -149,7 +149,7 @@ Olası nedenler şunlardır:
     
       1. AzCopy [indirin](https://go.microsoft.com/fwlink/?linkid=2138966)
         
-      2. Kaynak grubundaki gereç depolama hesabını bulun. Depolama hesabı, migrategwsa öğesine benzeyen bir ada sahiptir \* \* \* \* \* \* \* \* \* \* . Bu, Yukarıdaki komutta [account] parametresinin değeridir.
+      2. Kaynak grubundaki gereç depolama hesabını bulun. Depolama hesabı, migratelsa benzer bir ada sahiptir \* \* \* \* \* \* \* \* \* \* . Bu, Yukarıdaki komutta [account] parametresinin değeridir.
         
       3. Azure portal depolama hesabınızı arayın. Arama yapmak için kullandığınız aboneliğin, depolama hesabının oluşturulduğu abonelik (hedef abonelik) olduğundan emin olun. Blob hizmeti bölümünde kapsayıcılar ' a gidin. + Kapsayıcı ' ya tıklayın ve bir kapsayıcı oluşturun. Genel erişim düzeyini varsayılan seçili değere bırakın.
         
@@ -226,7 +226,7 @@ _Hata Iletisi: bir iç hata oluştu. [Hata iletisi]_
 
 Aşağıdaki bölümde, yaygın olarak görülen bazı VMware hataları ve bunların nasıl azaltılacağını listelenmektedir.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Hata Iletisi: bir iç hata oluştu. [Sunucu bağlantıyı reddetti]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Hata Iletisi: bir iç hata oluştu. [Sunucu bağlantıyı reddetti]
 
 Sorun bilinen bir VMware sorunudur ve VDDK 6,7 ' de gerçekleşir. Azure geçişi gereci üzerinde çalışan ağ geçidi hizmetini durdurmanız, [VMware KB 'den bir güncelleştirme indirmeniz](https://go.microsoft.com/fwlink/?linkid=2138889)ve Ağ Geçidi hizmetini yeniden başlatmanız gerekir.
 
@@ -240,33 +240,33 @@ Ağ Geçidi hizmetini başlatma adımları:
 1. Windows + R tuşlarına basın, Services. msc ' yi açın. "Ağ geçidi hizmeti" Microsoft Azure sağ tıklayın ve başlatın.
 2. Alternatif olarak, komut istemi veya PowerShell 'i açabilir ve şunları yapabilirsiniz: net start asrgwy.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Hata Iletisi: bir iç hata oluştu. [' Geçersiz bir anlık görüntü yapılandırması algılandı. ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Hata Iletisi: bir iç hata oluştu. [' Geçersiz bir anlık görüntü yapılandırması algılandı. ']
 
 Birden çok diske sahip bir sanal makineniz varsa, sanal makineden bir diski kaldırırsanız bu hatayla karşılaşabilirsiniz. Bu sorunu düzeltmek için, [Bu VMware makalesindeki](https://go.microsoft.com/fwlink/?linkid=2138890)adımlara bakın.
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Hata Iletisi: bir iç hata oluştu. [Anlık görüntü askıda üret]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Hata Iletisi: bir iç hata oluştu. [Anlık görüntü askıda üret]
 
 Bu sorun, anlık görüntü oluşturma askıda olduğunda oluşur. Bu sorun oluştuğunda, %95 veya %99 ' de anlık görüntü oluşturma görevi durduruluyor ' u görebilirsiniz. Bu sorunu aşmak için bu [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) 'ye başvurun.
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hata Iletisi: bir iç hata oluştu. [VM 'ler üzerinde diskler birleştirme başarısız oldu _[nedenler]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hata Iletisi: bir iç hata oluştu. [VM 'ler üzerinde diskler birleştirme başarısız oldu _[nedenler]_]
 
 Diskleri çoğaltma döngüsünün sonunda birleştirdiğimiz zaman, işlem başarısız olur. Sorunu çözmek için uygun _nedeni_ seçerek [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) ' deki yönergeleri izleyin.
 
 VMware anlık görüntüsüne yönelik işlemler – disk oluşturma, silme veya birleştirme işlemi başarısız olduğunda aşağıdaki hatalar oluşur. Hataları düzeltmek için sonraki bölümdeki yönergeleri izleyin:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Hata Iletisi: bir iç hata oluştu. [Başka bir görev zaten devam ediyor]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Hata Iletisi: bir iç hata oluştu. [Başka bir görev zaten devam ediyor]
 
 Bu sorun, arka planda çalışan çakışan sanal makine görevleri olduğunda veya vCenter Server bir görev zaman aşımına uğrarsa oluşur. Aşağıdaki [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138891)' de belirtilen çözümü izleyin.
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Hata Iletisi: bir iç hata oluştu. [Geçerli durumda işleme izin verilmiyor]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Hata Iletisi: bir iç hata oluştu. [Geçerli durumda işleme izin verilmiyor]
 
 Bu sorun, vCenter Server Yönetim aracılarının çalışmayı durdurması durumunda oluşur. Bu sorunu çözmek için, aşağıdaki [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138971)' deki çözünürlüğe bakın.
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hata Iletisi: bir iç hata oluştu. [Anlık görüntü disk boyutu geçersiz]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hata Iletisi: bir iç hata oluştu. [Anlık görüntü disk boyutu geçersiz]
 
 Bu, anlık görüntü tarafından belirtilen disk boyutunun sıfır olduğu bilinen bir VMware sorunudur. [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972)'de verilen çözümü izleyin.
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hata Iletisi: bir iç hata oluştu. [Bellek ayırma başarısız oldu. Bellek yetersiz.]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hata Iletisi: bir iç hata oluştu. [Bellek ayırma başarısız oldu. Bellek yetersiz.]
 
 Bu, NFC ana bilgisayar arabelleğinin belleği tükendiğinde gerçekleşir. Bu sorunu çözmek için VM 'yi (COMPUTE vMotion), ücretsiz kaynakları olan farklı bir konağa taşımanız gerekir.
 

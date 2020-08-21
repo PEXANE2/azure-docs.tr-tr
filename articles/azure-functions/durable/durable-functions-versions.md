@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705801"
+ms.locfileid: "88719419"
 ---
 # <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
 
@@ -46,7 +46,7 @@ Bu bölümde, yeni özelliklerden yararlanmak için mevcut sürüm 1. x Dayanık
 
 Dayanıklı İşlevler bağlamaları uzantısının en son 2. x sürümünü projenize yükler.
 
-#### <a name="javascript-and-python"></a>JavaScript ve Python
+#### <a name="javascript-python-and-powershell"></a>JavaScript, Python ve PowerShell
 
 Dayanıklı İşlevler 2. x [Azure işlevleri Uzantı paketi](../functions-bindings-register.md#extension-bundles)'nin 2. x sürümünde kullanılabilir.
 

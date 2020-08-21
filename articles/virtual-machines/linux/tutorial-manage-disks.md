@@ -1,26 +1,20 @@
 ---
 title: Öğretici - Azure CLI ile Azure disklerini yönetme
 description: Bu öğreticide, Azure CLI kullanarak sanal makineler için Azure diskleri oluşturup yönetmeyi öğrenirsiniz
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 48d9c51c5d008bf652e782573c891cb0e0580f8c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ebb3883304584570759ea02a2de7187efcdaf26
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831320"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718688"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Öğretici - Azure CLI ile Azure disklerini yönetme
 
@@ -49,20 +43,19 @@ Uygulamaları yüklemek ve verileri depolamak için başka veri diskleri ekleneb
 
 ## <a name="vm-disk-types"></a>VM disk türleri
 
-Azure, standart ve Premium olmak üzere iki tür disk sağlar.
+Azure iki disk türü sağlar.
 
-### <a name="standard-disk"></a>Standart disk
+**Standart diskler** - HDD’ler ile desteklenir ve uygun maliyetli bir depolama sağlarken iyi bir performans da sunar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
 
-Standart Depolama, HDD’ler ile desteklenir ve yüksek performans sunarken uygun maliyetli depolama sağlar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
+**Premium diskler** -SSD tabanlı, yüksek performanslı ve düşük gecikmeli disk tarafından desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. [Boyut adında](../vm-naming-conventions.md) **S** olan VM boyutları genellikle Premium depolamayı destekler. Örneğin, DS serisi, DSv2 serisi, GS serisi ve FS Serisi VM 'Ler Premium depolamayı destekler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin, disk boyutu 64 GB 'den büyükse ancak 128 GB 'den küçükse, disk türü P10 olur. 
 
-### <a name="premium-disk"></a>Premium disk
+<br>
 
-Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Premium Depolama, DS serisi, DSv2 serisi, GS serisi ve FS-serisi VM'lerini destekler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin disk boyutu 128 GB’den azsa disk türü P10’dur. Disk boyutu 129 GB ile 512 GB arasında ise boyut P20’dir. 512 GB’ın üstündeki diskler P30 boyutundadır.
-
-### <a name="premium-disk-performance"></a>Premium disk performansı
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../sizes.md).
+Standart depolamanın aksine bir Premium Depolama diski sağladığınızda, bu diskin kapasitesi, ıOPS ve aktarım hızı garanti edilir. Örneğin, bir P50 diski oluşturursanız, Azure bu disk için 4.095 GB depolama kapasitesi, 7.500 ıOPS ve 250 MB/sn aktarım hızı sağlar. Uygulamanız, kapasite ve performansın tümünü veya bir bölümünü kullanabilir. Premium SSD diskler, önceki tabloda% 99,9 ' de açıklanan düşük tek basamaklı milisaniyelik gecikme süreleri ve hedef ıOPS ve aktarım hızı sağlamak üzere tasarlanmıştır.
+
+Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin, Standard_GS5 VM’ye 64 veri diski eklenebilir. Bu disklerin her biri P30 olarak boyutlandırılırsa, en fazla 80.000 IOPS’ye ulaşılabilir. VM başına maksimum IOPS hakkında ayrıntılı bilgi için bkz. [VM türleri ve boyutları](../sizes.md).
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 

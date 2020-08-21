@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680204"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716427"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 'de sertifika tabanlı kimlik doğrulamayı Azure Active Directory
 
@@ -54,8 +54,8 @@ Federasyon sunucusunun yapılandırılması gerekir.
 
 İstemci sertifikasını iptal etmek için Azure Active Directory için, ADFS belirtecinin aşağıdaki talepleri olması gerekir:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(İstemci sertifikasının seri numarası)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(İstemci sertifikasını veren için dize)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (İstemci sertifikasının seri numarası)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (İstemci sertifikasını veren için dize)
 
 Azure Active Directory, bu talepleri ADFS belirtecinde (veya başka bir SAML belirteci) varsa yenileme belirtecine ekler. Yenileme belirtecinin doğrulanması gerektiğinde, bu bilgiler iptali denetlemek için kullanılır.
 
@@ -64,7 +64,7 @@ En iyi uygulama olarak, kuruluşunuzun ADFS hata sayfalarını aşağıdaki bilg
 * Android 'e Microsoft Authenticator yükleme gereksinimi.
 * Kullanıcı sertifikası alma yönergeleri.
 
-Daha fazla bilgi için bkz. [AD FS oturum açma sayfalarını özelleştirme](https://technet.microsoft.com/library/dn280950.aspx).
+Daha fazla bilgi için bkz. [AD FS oturum açma sayfalarını özelleştirme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 Bazı Office uygulamaları (modern kimlik doğrulaması etkinleştirilmiş), istekleri için Azure AD 'ye '*Prompt = Login*' gönderin. Varsayılan olarak, Azure AD '*wauth = usernamepassworduri*' olarak ADFS 'e istekte bulunan '*Prompt = Login*' değerini çevirir (ADFS 'Nin U/P kimlik doğrulamasını yapması ister) ve '*wyeni = 0*' (ADFS 'in SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması yapması istenir). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirmeniz gerekir. Federal etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını '*Disabled*' olarak ayarlayın.
 Bu görevi gerçekleştirmek için [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:

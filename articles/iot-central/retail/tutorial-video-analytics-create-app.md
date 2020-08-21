@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038452"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719181"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central bir video Analytics-nesne ve hareket algılama uygulaması oluşturma
 
@@ -45,9 +45,9 @@ Bu öğreticilerde, çeşitli yapılandırma dosyalarını güncelleştirir ve k
 Bu dosyaların kopyalarını kaydetmek için yerel makinenizde *LVA-yapılandırma* adlı bir klasör oluşturun. Ardından, aşağıdaki bağlantıların her birine sağ tıklayın ve dosyayı *LVA-yapılandırma* klasörüne kaydetmek Için **farklı kaydet** ' i seçin:
 
 - [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
-- [Üzerindedeployment.amd64.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
-- [ÜzerindeLvaEdgeGatewayDcm.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [Üzerindestate.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [ Üzerindedeployment.amd64.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
+- [ ÜzerindeLvaEdgeGatewayDcm.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
+- [ Üzerindestate.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
 
 > [!NOTE]
 > GitHub deposu, **Lvaedgegatewaymodule** ve **lvaYolov3** IoT Edge modüllerinin kaynak kodunu da içerir. Kaynak kodla çalışma hakkında daha fazla bilgi için bkz. [LVA Gateway modüllerini oluşturma](tutorial-video-analytics-build-module.md).
@@ -98,7 +98,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 Yeni bir video analizi uygulaması oluşturmak için:
 
-1. **Video analizi-nesne ve hareket algılama** uygulama şablonunu seçin. Bu şablon, öğreticide kullanılan cihazların cihaz şablonlarını içerir. Şablon, videoyu izlemek için bir operatör panosu da sağlar.
+1. **Video analizi-nesne ve hareket algılama** uygulama şablonunu seçin. Bu şablon, öğreticide kullanılan cihazların cihaz şablonlarını içerir. Şablon, operatörlerin, kameraları izleme ve yönetme gibi görevleri gerçekleştirmek için kullanabileceği örnek panolar içerir.
 
 1. İsteğe bağlı olarak, kolay bir **uygulama adı**seçin. Bu uygulama, Northwind Traders adlı kurgusal bir perakende mağazayı temel alır. Öğretici, *Northwind Traders video analizi* **uygulama adını** kullanır.
 
@@ -245,12 +245,12 @@ Cihaz şablonu bir cihaz yetenek modeli içermelidir. **LVA Edge Gateway** sayfa
 
 **LVA Edge Gateway** cihaz şablonunda, **modüller/LVA sınır ağ geçidi modülü**altında **ilişkiler**' i seçin. **+ Ilişki Ekle** ' yi seçin ve aşağıdaki iki ilişkiyi ekleyin:
 
-|Görünen Ad               |Adı          |Hedef |
+|Görünen Ad               |Ad          |Hedef |
 |-------------------------- |------------- |------ |
 |LVA Edge hareket algılayıcısı   |Varsayılanı kullan   |LVA Edge hareket algılayıcısı cihazı |
 |LVA Edge nesne algılayıcısı   |Varsayılanı kullan   |LVA Edge nesne algılayıcısı cihazı |
 
-Ardından **Kaydet**’i seçin.
+Sonra **Kaydet**'i seçin.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="İlişki Ekle":::
 

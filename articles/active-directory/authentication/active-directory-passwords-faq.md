@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051292"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716342"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
 Aşağıda, self servis parola sıfırlama ile ilgili tüm şeyler için sık sorulan bazı sorular (SSS) verilmiştir.
 
-Burada yanıtlanmayan Azure Active Directory (Azure AD) ve self servis parola sıfırlama (SSPR) hakkında genel bir sorunuz varsa, [Azure Active Directory Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-active-directory.html)hakkında yardım almak için topluluğa soru sorabilirsiniz. Topluluk üyeleri; mühendisler, ürün yöneticileri, MVP 'ler ve BT uzmanlarına yönelik BT profesyonellerini içerir.
+Burada yanıtlanmayan Azure Active Directory (Azure AD) ve self servis parola sıfırlama (SSPR) hakkında genel bir sorunuz varsa, [Azure Active Directory Için Microsoft Q&soru sayfası](/answers/topics/azure-active-directory.html)hakkında yardım almak için topluluğa soru sorabilirsiniz. Topluluk üyeleri; mühendisler, ürün yöneticileri, MVP 'ler ve BT uzmanlarına yönelik BT profesyonellerini içerir.
 
 Bu SSS aşağıdaki bölümlere ayrılır:
 
@@ -197,7 +197,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   >
 * **S: şirket içi parolasının süresi dolarsa Kullanıcılarım Office portalında bilgilendirilir mi?**
 
-  > Y **:** Evet, bu, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanıyorsanız bugün mümkündür. AD FS kullanıyorsanız, [parola ilkesi taleplerini AD FS Ile gönderme](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) makalesindeki yönergeleri izleyin. Parola karması eşitlemesi kullanıyorsanız, bu, bugün mümkün değildir. Şirket içi dizinlerden parola ilkelerini eşitliyoruz, bu nedenle bulut deneyimlerine süre sonu bildirimleri göndermemiz mümkün değildir. Her iki durumda da, [parolalarının, PowerShell aracılığıyla kullanım süresini dolacak olan kullanıcılara bildirimde bulunur](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > Y **:** Evet, bu, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanıyorsanız bugün mümkündür. AD FS kullanıyorsanız, [parola ilkesi taleplerini AD FS Ile gönderme](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) makalesindeki yönergeleri izleyin. Parola karması eşitlemesi kullanıyorsanız, bu, bugün mümkün değildir. Şirket içi dizinlerden parola ilkelerini eşitliyoruz, bu nedenle bulut deneyimlerine süre sonu bildirimleri göndermemiz mümkün değildir. Her iki durumda da, [parolalarının, PowerShell aracılığıyla kullanım süresini dolacak olan kullanıcılara bildirimde bulunur](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **S: kullanıcıların parolalarını değiştirmelerini engelleyebilir miyim?**
@@ -243,7 +243,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 
 * **S: parola geri yazma, arka planda nasıl çalışır?**
 
-  > Y **:** Parola geri yazma özelliğini etkinleştirdiğinizde ve verilerin sistem aracılığıyla şirket içi ortamınıza geri nasıl akacağını öğrenmek için [parola geri yazma özelliğinin nasıl çalıştığını](howto-sspr-writeback.md) öğrenin.
+  > Y **:** Parola geri yazma özelliğini etkinleştirdiğinizde ve verilerin sistem aracılığıyla şirket içi ortamınıza geri nasıl akacağını öğrenmek için [parola geri yazma özelliğinin nasıl çalıştığını](./tutorial-enable-sspr-writeback.md) öğrenin.
   >
   >
 * **S: parola geri yazma ne kadar sürer? Parola karması eşitlemesine benzer bir eşitleme gecikmesi var mı?**
@@ -273,7 +273,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   >
 * **S: parola geri yazma güvenli mi?  Korsanın izinsiz sürmemesi için nasıl emin olabilirim?**
 
-  > Y **:** Evet, parola geri yazma güvenli. Parola geri yazma hizmeti tarafından uygulanan birden çok güvenlik katmanı hakkında daha fazla bilgi edinmek için [parola geri yazma genel bakış](howto-sspr-writeback.md) makalesindeki [parola geri yazma güvenliği](concept-sspr-writeback.md#password-writeback-security) bölümüne bakın.
+  > Y **:** Evet, parola geri yazma güvenli. Parola geri yazma hizmeti tarafından uygulanan birden çok güvenlik katmanı hakkında daha fazla bilgi edinmek için [parola geri yazma genel bakış](./tutorial-enable-sspr-writeback.md) makalesindeki [parola geri yazma güvenliği](concept-sspr-writeback.md#password-writeback-security) bölümüne bakın.
   >
   >
 
@@ -286,7 +286,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 * [SSPR hangi verileri kullanır ve kullanıcılarınız için hangi verileri doldurmanız gerekir?](howto-sspr-authenticationdata.md)
 * [Kullanıcılar hangi kimlik doğrulama yöntemlerini kullanabilir?](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR ile kullanılabilen ilke seçenekleri nelerdir?](concept-sspr-policy.md)
-* [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
+* [Parola geri yazma nedir ve neden önemlidir?](./tutorial-enable-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
 * [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 35842520b26d3a98342660244295e26e934e7d3c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848495"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717379"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -50,7 +50,7 @@ NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmışt
 
 ### <a name="licenses"></a>Lisanslar
 
-Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](multi-factor-authentication.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
+Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](./concept-mfa-howitworks.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
 
 ### <a name="software"></a>Yazılım
 
@@ -106,7 +106,7 @@ NPS sunucusu Azure Active Directory bağlanır ve MFA isteklerinin kimliğini do
 1. Sunucunuzda Sunucu Yöneticisi hızlı başlangıç menüsünde **rol ve Özellik Ekleme Sihirbazı** ' nı açın.
 2. Yükleme türü için **rol tabanlı veya özellik tabanlı yükleme** ' yi seçin.
 3. **Ağ İlkesi ve erişim Hizmetleri** sunucu rolünü seçin. Bu rolü çalıştırmak için gerekli özellikleri bilgilendirebilen bir pencere açılır.
-4. Onay sayfasına kadar sihirbaza devam edin. **Yükle**'yi seçin.
+4. Onay sayfasına kadar sihirbaza devam edin. **Yükle**’yi seçin.
 
 Artık NPS için tasarlanmış bir sunucunuz olduğuna göre, bu sunucuyu VPN çözümünün gelen RADIUS isteklerini işleyecek şekilde de yapılandırmanız gerekir.
 
@@ -290,7 +290,7 @@ Kullanıcılarınız eklenirken bu anahtarı oluşturmayı ve yanlış olarak ay
 
 NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımlarını gerçekleştirmek için aşağıdaki komut dosyası kullanılabilir.
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -365,7 +365,7 @@ Geçerli bir sertifikanız olup olmadığını denetlemek için, MMC kullanarak 
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL Protokollerini ve Şifre Paketlerini yönetme
 
-Kuruluşunuz tarafından gerektirmedikleri takdirde, daha eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
+Kuruluşunuz tarafından gerektirmedikleri takdirde, daha eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl gerçekleştirileceği hakkında bilgiler [AD FS için SSL/TLS Protokollerini ve Şifre Paketlerini Yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesine bakın
 
 ### <a name="additional-troubleshooting"></a>Ek sorun giderme
 
@@ -373,7 +373,7 @@ Ek sorun giderme kılavuzu ve olası çözümler, [Azure MULTI-Factor AUTHENTICA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows Server 'da ağ Ilkesi sunucusu 'na genel bakış ve yapılandırma](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [Windows Server 'da ağ Ilkesi sunucusu 'na genel bakış ve yapılandırma](/windows-server/networking/technologies/nps/nps-top)
 
 - Oturum açmak için alternatif kimlikleri yapılandırın veya [Multi-Factor Authentication IÇIN NPS uzantısının gelişmiş yapılandırma seçeneklerinde](howto-mfa-nps-extension-advanced.md) iki adımlı doğrulama gerçekleştirmemelidir.
 
