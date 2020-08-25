@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
 ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391902"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Öğretici: Tablo API’sini kullanarak Azure Cosmos DB’yi sorgulama
@@ -83,7 +83,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
-Tarih saat özelliklerindeki sorgular, Azure Cosmos DB Tablo API'si yürütüldüğünde hiçbir veri döndürmez. Azure Tablo depolama, tarih değerlerini Tick ile birlikte depolarken, Azure Cosmos DB Tablo API'si `_ts` özelliği kullanır. `_ts`Özelliği, bir OData filtresi olmayan ikinci bir ayrıntı düzeyi düzeyidir. Bu nedenle, zaman damgası özelliklerindeki sorgular Azure Cosmos DB tarafından engellenir. Geçici bir çözüm olarak, özel bir tarih saat veya uzun veri türü özelliği tanımlayabilir ve tarih değerini istemciden ayarlayabilirsiniz.
+Tarih saat özelliklerindeki sorgular, Azure Cosmos DB Tablo API'si yürütüldüğünde hiçbir veri döndürmez. Azure Tablo depolama, tarih değerlerini Tick ile birlikte depolarken, Azure Cosmos DB Tablo API'si  `_ts` özelliği kullanır. `_ts`Özelliği, bir OData filtresi olmayan ikinci bir ayrıntı düzeyi düzeyidir. Bu nedenle, zaman damgası özelliklerindeki sorgular Azure Cosmos DB tarafından engellenir. Geçici bir çözüm olarak, özel bir tarih saat veya uzun veri türü özelliği tanımlayabilir ve tarih değerini istemciden ayarlayabilirsiniz.
 
 ## <a name="query-by-using-linq"></a>LINQ kullanarak sorgulama 
 İlgili OData sorgu ifadelerine çeviri yapan LINQ kullanarak da sorgulama yapabilirsiniz. Aşağıda, .NET SDK kullanılarak sorgu derlemeye ilişkin bir örnek verilmiştir:

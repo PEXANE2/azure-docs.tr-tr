@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75639029"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Öğretici: Tek başına kümenizi temizleme
@@ -36,7 +36,7 @@ Serinin dördüncü kısmında öğrenecekleriniz:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y` İstendiğinde, Çıktınıza, kendi IP adreslerinizin yerini alarak aşağıdaki gibi görünür:
+5. `Y`İstendiğinde, Çıktınıza, kendı IP adreslerinizin yerini alarak aşağıdaki gibi görünür:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -54,11 +54,11 @@ Serinin dördüncü kısmında öğrenecekleriniz:
 1. AWS hesabınızda oturum açın.
 2. EC2 Konsolu'na gidin.
 3. Öğreticinin birinci bölümünde oluşturduğunuz üç düğümü seçin.
-4. **Eylemler** > **örneği durum** > **Sonlandır**' a tıklayın.
+4. **Eylemler**  >  **örneği durum**  >  **Sonlandır**' a tıklayın.
 
 ## <a name="clean-up-azure-resources"></a>Azure kaynaklarını Temizleme
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. **Sanal makineler** bölümüne gidin.
 3. Öğreticinin bir parçası olarak oluşturduğunuz üç düğüm için onay kutularını seçin.
 4. **Sil**' e tıklayın.

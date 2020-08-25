@@ -4,13 +4,13 @@ description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824996"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783850"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Çalışma alanı tabanlı Application Insights kaynakları (Önizleme)
 
@@ -27,7 +27,7 @@ Yeni deneyimi test etmek için [Azure Portal](https://portal.azure.com)oturum a�
 
 Zaten mevcut bir Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturma belgelerine başvurun](../learn/quick-create-workspace.md).
 
-Genel Önizleme **çalışma alanı tabanlı kaynaklar şu anda Batı ABD 2, Doğu ABD ve Orta Güney ABD ile sınırlıdır.**
+**Çalışma alanı tabanlı kaynaklar şu anda tüm ticari bölgelerde ve Azure Kamu 'da kullanılabilir**
 
 Kaynağınız oluşturulduktan sonra **genel bakış** bölmesinde ilgili çalışma alanı bilgilerini görürsünüz:
 
@@ -53,10 +53,10 @@ Kod tabanlı uygulama izleme için, yalnızca uygun Application Insights SDK 's�
 Kod tabanlı izleme için bir Application Insights SDK 'Sı ayarlamaya yönelik ayrıntılı belgeler için dile/çerçeveye özgü belgelere başvurun:
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core](./asp-net-core.md)
+- [ASP.NET Core ](./asp-net-core.md)
 - [Modern konsol uygulamaları & arka plan görevleri (.NET/.NET Core)](./worker-service.md)
 - [Klasik konsol uygulamaları (.NET)](./console.md) 
-- [Java](./java-get-started.md?tabs=maven)
+- [Java ](./java-get-started.md?tabs=maven)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -79,7 +79,7 @@ Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle
  az extension add -n application-insights
 ```
 
-Komutu çalıştırmazsanız `az extension add` , şu durumlarda bir hata iletisi görürsünüz:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Komutu çalıştırmazsanız `az extension add` , şu durumlarda bir hata iletisi görürsünüz: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Artık Application Insights kaynağınız oluşturmak için aşağıdakileri çalıştırabilirsiniz:
 
@@ -184,6 +184,14 @@ Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](/cli/az
 }
 
 ```
+
+## <a name="new-capabilities"></a>Yeni özellikler
+
+Çalışma alanı tabanlı Application Insights, aşağıdakiler dahil olmak üzere Azure Izleyici 'nin tüm en son özellikleri avantajlarından yararlanmanızı sağlar:
+
+* [Müşteri tarafından yönetilen anahtarlar (CMK)](../platform/customer-managed-keys.md) , yalnızca erişiminiz olan şifreleme anahtarlarıyla verileriniz için bekleyen şifreleme sağlar.
+* [Azure özel bağlantı](../platform/private-link-security.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir.
+* [Profil Oluşturucu Için kendi depolama alanınızı (BYOS) getirin ve Snapshot Debugger](./profiler-bring-your-own-storage.md) , bekleyen şifreleme ilkesi, ömür yönetimi ilkesi ve Application Insights Profiler ve Snapshot Debugger ilişkili tüm veriler için ağ erişimi üzerinde tam denetim sağlar. 
 
 ## <a name="modifying-the-associated-workspace"></a>İlişkili çalışma alanını değiştirme
 

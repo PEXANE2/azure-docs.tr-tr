@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75430727"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Geliştirici portalı sayfalarının stilini özelleştirme
@@ -37,7 +37,7 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -45,7 +45,7 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
 
 ## <a name="customize-the-developer-portal"></a>Geliştirici Portalını Özelleştirme
 
-1. **Genel Bakış**’ı seçin.
+1. **Genel bakış**'ı seçin.
 2. **Genel bakış** penceresinin en üstündeki **Geliştirici Portalı (eski)** düğmesine tıklayın.
 3. Ekranın sol üst tarafında, iki boya fırçasından oluşan bir simge görürsünüz. Portal özelleştirme menüsünü açmak için bu simgenin üzerine gelin.
 
@@ -55,11 +55,11 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
     **Stilleri**’i kullanarak özelleştirebileceğiniz tüm öğeler sayfada görüntülenir
 5. **Geliştirici portalı görünümünü özelleştirmek için değişken değerleri değiştirin:** alanında "headings-color" değerini girin.
 
-    Sayfada ** \@başlıklar-Color** öğesi görünür. Bu değişken metnin rengini denetler.
+    Sayfada ** \@ başlıklar-Color** öğesi görünür. Bu değişken metnin rengini denetler.
 
     ![stili özelleştir](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Başlıklar-Color değişkeninin alanına tıklayın. ** \@** 
+6. ** \@ Başlıklar-Color** değişkeninin alanına tıklayın. 
     
     Renk seçici açılır menüsü açılır.
 7. Renk seçici açılır menüsünden yeni bir renk seçin.

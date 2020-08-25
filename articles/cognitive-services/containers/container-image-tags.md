@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584612"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722577"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -35,13 +35,29 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 
 ## <a name="computer-vision"></a>Görüntü İşleme
 
-[Görüntü işleme][cv-containers] kapsayıcı görüntüsü `containerpreview.azurecr.io` kapsayıcı kayıt defterinde bulunabilir. Depo içinde bulunur `microsoft` ve olarak adlandırılır `cognitive-services-read` . Tam kapsayıcı görüntü adı, olur `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
+[Görüntü işleme][cv-containers] okuma OCR kapsayıcı görüntüsü `containerpreview.azurecr.io` kapsayıcı kayıt defterinde bulunabilir. Depo içinde bulunur `microsoft` ve olarak adlandırılır `cognitive-services-read` . Tam kapsayıcı görüntü adı, olur `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 
 | Resim etiketleri                    | Notlar |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | • Kapsayıcı için bellek kullanımını daha da azaltın. |
+|                                          | • Çoklu pods kurulumu için dış önbellek gereklidir. Örneğin, önbelleği önbelleğe alma için ayarlama Reddır. |
+|                                          | • Redsıs Cache ayarlandığında ve ResultExpirationPeriod = 0 olduğunda sonuçlarda sorun giderme sorunu yok.  |
+|                                          | • 26MB için istek gövdesi boyut sınırlamasını kaldır. Kapsayıcı artık >26MB dosyalarını kabul edebilir.  |
+|                                          | • Konsol günlüğüne zaman damgası ve derleme sürümü ekleyin.  |
+| `1.1.013050001-amd64-preview`            | * Sistemin tanınma sonuçlarını temizlemesi gerektiğinde belirtmek için ReadEngineConfig: ResultExpirationPeriod kapsayıcı başlatma yapılandırması eklendi. |
+|                                          | Ayar saat cinsinden ve varsayılan değer 48hr ' dir.   |
+|                                          |   Bu ayar, özellikle kapsayıcı bellek içi depolama kullanılırken sonuç depolamaya yönelik bellek kullanımını azaltabilir.  |
+|                                          |    * Örnek 1. ReadEngineConfig: ResultExpirationPeriod = 1, sistem, işlemden sonraki tanınma sonucunu 1hr olarak temizler.   |
+|                                          |    * Örnek 2. ReadEngineConfig: ResultExpirationPeriod = 0, sistem, sonuç alımı sonrasında tanınma sonucunu temizler.  |
+|                                          | Sisteme geçersiz görüntü biçimi geçirildiğinde 500 Iç sunucu hatası düzeltildi. Şimdi 400 hatası döndürür:   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |

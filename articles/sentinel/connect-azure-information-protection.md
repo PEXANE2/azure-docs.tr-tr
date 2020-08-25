@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559131"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794434"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection verileri bağlama
 
@@ -35,7 +35,7 @@ Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seç
     
     Çalışma alanını değiştirirseniz, Azure Information Protection için yeni raporlama verileri artık Azure Sentinel için kullandığınız çalışma alanında depolanır ve geçmiş veriler Azure Sentinel 'de kullanılamaz. Ayrıca, önceki çalışma alanı özel sorgular, uyarılar veya REST API 'Ler için yapılandırılmışsa, Azure Information Protection için kullanmaya devam etmek istiyorsanız bunların Azure Sentinel çalışma alanı için yeniden yapılandırılması gerekir. Azure Information Protection kullanan istemciler ve hizmetler için yeniden yapılandırma gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kiracınız için aşağıdaki Azure AD yönetici rollerinden biri: 
     - Azure Information Protection Yöneticisi
@@ -57,15 +57,17 @@ Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seç
 
 Azure Information Protection için bir Log Analytics çalışma alanı yapılandırmadıysanız veya Azure Information Protection günlüğe kaydetme bilgilerini depolayan çalışma alanını değiştirmeniz gerekiyorsa aşağıdaki yönergeleri kullanın.
 
-1. Azure Sentinel 'de **veri bağlayıcıları**' nı ve ardından **Azure Information Protection (Önizleme)**' yi seçin.
+1. Azure Sentinel 'de **veri bağlayıcıları**  >  **Azure Information Protection (Önizleme)** öğesini seçin.
 
 2. **Bağlayıcı sayfasını aç**' ı seçin.
 
-3. **Analiz yapılandırma (Önizleme)** dikey penceresinde, şu anda Azure Sentinel için kullanmakta olduğunuz çalışma alanını seçin. Farklı bir çalışma alanı seçerseniz Azure Information Protection raporlama verileri Azure Sentinel tarafından kullanılamaz.
+3. **Yapılandırma**altında **Azure Information Protection günlüklerini bağla**' yı seçin.
 
-4. Bir çalışma alanı seçtiğinizde **Tamam** ' ı seçin ve bağlayıcı **durumu** şimdi **bağlı**olarak değişir.
+4. **Analiz yapılandırma (Önizleme)** dikey penceresinde, şu anda Azure Sentinel için kullandığınız çalışma alanını seçin. Farklı bir çalışma alanı seçerseniz Azure Information Protection raporlama verileri Azure Sentinel tarafından kullanılamaz.
 
-5. Azure Information Protection rapor verileri, seçilen çalışma alanındaki **InformationProtectionLogs_CL** tablosunda depolanır. 
+5. Bir çalışma alanı seçtikten sonra **Tamam**' ı seçin. Bağlayıcı **durumu** **bağlı**olarak değişir.
+
+6. Azure Information Protection rapor verileri, seçilen çalışma alanındaki **InformationProtectionLogs_CL** tablosunda depolanır. 
     
     Bu raporlama verileri için Azure Izleyici 'de ilgili şemayı kullanmak için, **ınformationprotectionevents**' i arayın. Bu olay işlevleri hakkında daha fazla bilgi için, Azure Information Protection belgelerindeki [olay işlevleri Için kolay şema başvurusu](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) bölümüne bakın.
 

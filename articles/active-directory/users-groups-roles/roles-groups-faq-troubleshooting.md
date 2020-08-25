@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208186"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798304"
 ---
-# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rol sorunlarını giderme
+# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rollerle ilgili sorunları giderme
 
 Azure Active Directory (Azure AD) içindeki gruplara rol atamaya yönelik bazı yaygın sorular ve sorun giderme ipuçları aşağıda verilmiştir.
 
@@ -40,8 +40,8 @@ Y **: Kullanıcı**, rol atanabilir bir grup yoluyla Dizin okuyucuyu alabilir. R
 
 Y **:** Kullanıcı, rol atanabilir bir grubun sahibi olabilir. Ayrıcalık yükselmesine engel olmak için rol atanabilir grupların sahiplerini koruyoruz. Bir grup Contoso_Security_Admins güvenlik yöneticisi rolüne atanırsa, Bob 'un Grup sahibi ve Gamze 'nin kuruluşta parola Yöneticisi olduğu durumlarda bu örnek olabilir. Bu koruma yoksa, Gamze Bob 'un kimlik bilgilerini sıfırlayabilir ve kimliğini alabilir. Bundan sonra, Çiğdem, kuruluştaki bir güvenlik yöneticisi olmak üzere Grup Contoso_Security_Admins grubuna belirtmemiş veya herkes ekleyebilir. Bir kullanıcının grup sahibi olup olmadığını öğrenmek için, kullanıcının sahip olduğu nesnelerin listesini alın ve herhangi bir grubun ıastifbletorole değerini doğru olarak ayarlayıp görmediğinden emin olmanız gerekir. Yanıt Evet ise, bu kullanıcı korunur ve davranış tasarıma göre yapılır. Sahip olunan nesneleri almak için şu belgeleri inceleyin:
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [OwnedObjects listesini Listele](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [OwnedObjects listesini Listele](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **S:** Azure AD rollerine atanabilecek gruplar üzerinde bir erişim incelemesi oluşturabilir miyim (özellikle, ısastifbletorole özelliği true olarak ayarlanan gruplar)?  
 

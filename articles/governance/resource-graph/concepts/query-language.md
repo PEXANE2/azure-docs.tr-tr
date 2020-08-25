@@ -1,14 +1,14 @@
 ---
 title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
-ms.date: 08/03/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541830"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723443"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -93,7 +93,7 @@ Bu sorgu önce paylaşılan sorguyu kullanır ve ardından `limit` sonuçları d
 
 ## <a name="supported-kql-language-elements"></a>Desteklenen KQL dil öğeleri
 
-Kaynak Grafiği tüm KQL [veri türlerini](/azure/kusto/query/scalar-data-types/), [skaler işlevleri](/azure/kusto/query/scalarfunctions), [skaler işleçleri](/azure/kusto/query/binoperators)ve [toplama işlevlerini](/azure/kusto/query/any-aggfunction)destekler. Belirli [tablolu işleçler](/azure/kusto/query/queries) , bazılarının farklı davranışları olan kaynak Graph tarafından desteklenir.
+Kaynak Grafiği bir KQL [veri türleri](/azure/kusto/query/scalar-data-types/), [skaler işlevler](/azure/kusto/query/scalarfunctions), [skaler işleçler](/azure/kusto/query/binoperators)ve [toplama işlevlerinin](/azure/kusto/query/any-aggfunction)bir alt kümesini destekler. Belirli [tablolu işleçler](/azure/kusto/query/queries) , bazılarının farklı davranışları olan kaynak Graph tarafından desteklenir.
 
 ### <a name="supported-tabulartop-level-operators"></a>Desteklenen tablolu/en üst düzey işleçler
 
@@ -105,15 +105,15 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[ayrı](/azure/kusto/query/distinctoperator) |[Belirli bir diğer ad için farklı değerleri göster](../samples/starter.md#distinct-alias-values) | |
 |[genişletmeyi](/azure/kusto/query/extendoperator) |[Sanal makineleri işletim sistemi türüne göre sayma](../samples/starter.md#count-os) | |
 |[ayrılma](/azure/kusto/query/joinoperator) |[Abonelik adı olan Anahtar Kasası](../samples/advanced.md#join) |Birleşim türleri desteklenir: [ınnerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [soltouter](/azure/kusto/query/joinoperator#left-outer-join). `join`Tek bir sorgudaki 3 sınırı. Yayın katılımı gibi özel JOIN stratejilerine izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
-|[sınırlı](/azure/kusto/query/limitoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı`take` |
+|[sınırlı](/azure/kusto/query/limitoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı `take` |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Eski işleç yerine kullanın `mv-expand` . _RowLimit_ en fazla 400. Varsayılan değer 128 ' dir. |
 |[MV-Genişlet](/azure/kusto/query/mvexpandoperator) |[Belirli yazma konumlarına sahip Cosmos DB listeleyin](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ en fazla 400. Varsayılan değer 128 ' dir. |
-|[siparişi](/azure/kusto/query/orderoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) |Eş anlamlısı`sort` |
+|[siparişi](/azure/kusto/query/orderoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) |Eş anlamlısı `sort` |
 |[Proje](/azure/kusto/query/projectoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) | |
 |[Proje-dışarıda](/azure/kusto/query/projectawayoperator) |[Sütunları sonuçlardan kaldır](../samples/advanced.md#remove-column) | |
-|[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) |Eş anlamlısı`order` |
+|[düzenine](/azure/kusto/query/sortoperator) |[Ada göre sıralanan kaynakları Listele](../samples/starter.md#list-resources) |Eş anlamlısı `order` |
 |[ölçütü](/azure/kusto/query/summarizeoperator) |[Azure kaynaklarını sayma](../samples/starter.md#count-resources) |Yalnızca Basitleştirilmiş ilk sayfa |
-|[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı`limit` |
+|[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı `limit` |
 |[top](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
 |[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_. `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
 |[olmadığı](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
@@ -124,7 +124,7 @@ Kaynakları bir sorgu tarafından döndürülen aboneliklerin kapsamı, kaynak g
 REST API ve diğer tüm SDK 'larda, kaynak dahil edilecek aboneliklerin listesi, isteğin bir parçası olarak açıkça tanımlanmalıdır.
 
 Bir **Önizleme**olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Yönetim grubu veya abonelik listesi tanımlanmadıysa, sorgu kapsamı kimliği doğrulanmış kullanıcının erişebileceği tüm kaynaklardır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır.
-Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId`, ile aynı anda kullanılamaz `subscriptions` .
+Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId` , ile aynı anda kullanılamaz `subscriptions` .
 
 Örnek: ' myMG ' KIMLIĞIYLE ' My Management Group ' adlı Yönetim grubu hiyerarşisinde tüm kaynakları sorgulayın.
 
@@ -147,7 +147,7 @@ Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde
 
 Ya da dahil olanlar gibi bazı özellik adları, `.` `$` sorgunun sarmalanması veya kaçışlanması ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
 
-- `.`-Özellik adını şu şekilde kaydırın:`['propertyname.withaperiod']`
+- `.` -Özellik adını şu şekilde kaydırın: `['propertyname.withaperiod']`
   
   OData özelliğini sarmalayan örnek sorgu _. tür_:
 
@@ -155,7 +155,7 @@ Ya da dahil olanlar gibi bazı özellik adları, `.` `$` sorgunun sarmalanması 
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-Özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
+- `$` -Özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
 
   - **Bash** - `\`
 

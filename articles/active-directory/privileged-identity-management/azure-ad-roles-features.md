@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256637"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784020"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için yönetim özellikleri
 
@@ -56,7 +56,7 @@ Kullanıcı tarafından başlatılan eylemlerin her ikisi de genel yönetici vey
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Müşteriler, Azure AD kuruluşunun güncelleştirilmiş sürümüne sahip olduğunda, mevcut Graph API 'SI çalışmayı durdurur. [Azure Kaynak rolleri için Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)kullanmak için geçiş yapmanız gerekir. Azure AD rollerini bu API kullanarak yönetmek için imzayla değiştirin `/azureResources` `/aadroles` ve IÇIN dizin kimliğini kullanın `resourceId` .
+Müşteriler, Azure AD kuruluşunun güncelleştirilmiş sürümüne sahip olduğunda, mevcut Graph API 'SI çalışmayı durdurur. [Azure Kaynak rolleri için Graph API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)kullanmak için geçiş yapmanız gerekir. Azure AD rollerini bu API kullanarak yönetmek için imzayla değiştirin `/azureResources` `/aadroles` ve IÇIN dizin kimliğini kullanın `resourceId` .
 
 Önceki API 'yi kullanan tüm müşterilerine ulaşmak için en iyi zamanı öğrendiğimiz ve bu değişiklik hakkında daha fazla bilgi sahibi olmak için en iyi şekilde çalıştık. Azure AD kuruluşunuz yeni sürüme taşınmışsa ve hala eski API 'ye bağımlıysa, tarihinde ekibe ulaşın pim_preview@microsoft.com .
 

@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611441"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762428"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -55,7 +55,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
 - AWS sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -379,7 +379,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 **Cevap:** Şu anda bu iş akışı için değerlendirme içeri aktarmayı desteklemiyoruz. Geçici bir çözüm olarak, değerlendirmeyi dışarı aktarabilir ve ardından çoğaltmayı etkinleştir adımı sırasında VM önerisini el ile seçebilirsiniz.
   
 **Soru:** AWS VM 'lerimi bulmaya çalışırken "BIOS GUID 'SI getirilemedi" hatasını alıyorum   
-**Cevap:** AWS VM 'Leri için desteklenen işletim sistemlerini gözden geçirin.  
+**Cevap:** Her zaman kimlik doğrulama için kök oturum açma kullanın, herhangi bir sözde Kullanıcı değil. AWS VM 'Leri için desteklenen işletim sistemlerini de gözden geçirin.  
 
 **Soru:** Çoğaltma durumum ilerlemiyor    
 **Cevap:** Çoğaltma gerecinizin gereksinimleri karşılayıp karşılamadığını denetleyin. Çoğaltma gereci TCP bağlantı noktası 9443 ve HTTPS 443 veri aktarımı için gerekli bağlantı noktalarını etkinleştirdiğinizden emin olun. Aynı projeye bağlı çoğaltma gerecinin eski bir sürümü olmadığından emin olun.   

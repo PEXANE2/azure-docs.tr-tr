@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266228"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798984"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını indirme ve yükleme
 
 >[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [Azure Active Directory için yönetim belgelerindeki](https://docs.microsoft.com/azure/active-directory)Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
+>Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [Azure Active Directory için yönetim belgelerindeki](../index.yml)Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
 >
 > Hesabınızda oturum açarken sorun yaşıyorsanız, yardım için [Microsoft hesabı oturum açma](https://support.microsoft.com/help/12429) konusunda bilgi için bkz..  Ayrıca, Microsoft hesabı oturum açmaya çalıştığınızda ["bu Microsoft hesabı yok"](https://support.microsoft.com/help/13811) iletisini aldığınızda yapılacaklar hakkında daha fazla bilgi edinebilirsiniz.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492165"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722730"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Öğretici: Azure Active Directory Domain Services ' de şirket içi etki alanına giden bir orman güveni oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -128,7 +128,7 @@ Aşağıdaki yaygın senaryolar, orman güveninin kullanıcıları ve kaynaklara
 
 Yönetilen etki alanına katılmış Windows Server sanal makinenizin olması gerekir. Şirket içi kullanıcılarınızın bir sanal makinede kimlik doğrulaması yapabilmeleri için bu sanal makineyi kullanın. Gerekirse, [bir Windows sanal makinesi oluşturun ve yönetilen etki alanına ekleyin][join-windows-vm].
 
-1. [Azure ve azure](https://docs.microsoft.com/azure/bastion/bastion-overview) AD DS yönetici kimlik bilgilerinizle Azure AD DS kaynak ormanına katılmış WINDOWS Server VM 'sine bağlanın.
+1. [Azure ve azure](../bastion/bastion-overview.md) AD DS yönetici kimlik bilgilerinizle Azure AD DS kaynak ormanına katılmış WINDOWS Server VM 'sine bağlanın.
 1. Bir komut istemi açın ve `whoami` Şu anda kimliği doğrulanmış kullanıcının ayırt edici adını göstermek için komutunu kullanın:
 
     ```console
@@ -150,7 +150,7 @@ Azure AD DS kaynak ormanına katılmış Windows Server VM 'sini kullanarak, kul
 
 #### <a name="enable-file-and-printer-sharing"></a>Dosya ve yazıcı paylaşımını etkinleştir
 
-1. [Azure ve azure](https://docs.microsoft.com/azure/bastion/bastion-overview) AD DS yönetici kimlik bilgilerinizle Azure AD DS kaynak ormanına katılmış WINDOWS Server VM 'sine bağlanın.
+1. [Azure ve azure](../bastion/bastion-overview.md) AD DS yönetici kimlik bilgilerinizle Azure AD DS kaynak ormanına katılmış WINDOWS Server VM 'sine bağlanın.
 
 1. **Windows ayarları**' nı açın ve **Ağ ve Paylaşım Merkezi**' ni arayıp seçin.
 1. **Gelişmiş paylaşım ayarlarını değiştir** seçeneğini belirleyin.

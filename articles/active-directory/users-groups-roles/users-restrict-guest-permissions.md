@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8cba89abd65844d238120726572481457f27cb
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706174"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798440"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory 'de Konuk erişim izinlerini (Önizleme) kısıtlama
 
@@ -54,7 +54,7 @@ Mevcut Azure portal denetimlerinde Konuk Kullanıcı izinleri için değişiklik
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Microsoft Graph API 'siyle güncelleştirme
 
-Azure AD kuruluşunuzda Konuk izinlerini yapılandırmak için yeni bir Microsoft Graph API ekledik. Herhangi bir izin düzeyi atamak için aşağıdaki API çağrıları yapılabilir. Burada kullanılan Guestuserroleıd değeri, en kısıtlı Konuk Kullanıcı ayarını gösterir. Konuk izinlerini ayarlamak için Microsoft Graph kullanma hakkında daha fazla bilgi için bkz. [Authorizationpolicy kaynak türü](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+Azure AD kuruluşunuzda Konuk izinlerini yapılandırmak için yeni bir Microsoft Graph API ekledik. Herhangi bir izin düzeyi atamak için aşağıdaki API çağrıları yapılabilir. Burada kullanılan Guestuserroleıd değeri, en kısıtlı Konuk Kullanıcı ayarını gösterir. Konuk izinlerini ayarlamak için Microsoft Graph kullanma hakkında daha fazla bilgi için bkz. [Authorizationpolicy kaynak türü](/graph/api/resources/authorizationpolicy).
 
 ### <a name="configuring-for-the-first-time"></a>İlk kez yapılandırma
 
@@ -168,5 +168,5 @@ Bu özellik için herhangi bir lisans gereksinimi var mı? | Hayır, bu özellik
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure AD 'de mevcut Konuk izinleri hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../fundamentals/users-default-permissions.md).
-- Konuk erişimini kısıtlamak için Microsoft Graph API yöntemlerini görmek için bkz. [Authorizationpolicy kaynak türü](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+- Konuk erişimini kısıtlamak için Microsoft Graph API yöntemlerini görmek için bkz. [Authorizationpolicy kaynak türü](/graph/api/resources/authorizationpolicy).
 - Bir kullanıcının tüm erişimini iptal etmek için bkz. [Azure AD 'de Kullanıcı erişimini Iptal etme](users-revoke-access.md).

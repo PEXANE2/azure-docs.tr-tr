@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 1e66774d4239bdad6c8af426a28af6081bb0da3c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137663"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782184"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>İki sınıf önceden artırılmış karar ağacı modülü
 
@@ -22,9 +22,11 @@ Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıkla
 
 Bu modülü, bir makine öğrenimi modeli oluşturmak için, artırılmış karar ağaçları algoritmasına dayalı olarak kullanın. 
 
-Artırılmış bir karar ağacı, ikinci ağacın ilk ağacın hatalarını düzelttiğinde, üçüncü ağaç birinci ve ikinci ağaçların hatalarını düzelttiğinde ve benzeri bir öğrenme yöntemidir.  Tahmine dayalı olarak, tahminleri bir araya getiren tüm ağaçları temel alır.
+Artırılmış bir karar ağacı, ikinci ağacın ilk ağacın hatalarını düzelttiğinde, üçüncü ağaç birinci ve ikinci ağaçların hatalarını düzelttiğinde ve benzeri bir öğrenme yöntemidir. Tahmine dayalı olarak, tahminleri bir araya getiren tüm ağaçları temel alır.
   
 Genellikle, düzgün şekilde yapılandırıldığında, çok çeşitli makine öğrenimi görevlerinde en iyi performansa sahip olmanın en kolay yöntemi olan, artırılmış karar ağaçları vardır. Bununla birlikte, bunlar aynı zamanda daha fazla bellek yoğun öğrenipden biridir ve geçerli uygulama bellekte her şeyi barındırır. Bu nedenle, artırılmış bir karar ağacı modeli, bazı doğrusal öğrenipalların işleyebileceği büyük veri kümelerini işleyemeyebilir.
+
+Bu modül tabanlı bir LightGBM algoritması.
 
 ## <a name="how-to-configure"></a>Yapılandırma
 

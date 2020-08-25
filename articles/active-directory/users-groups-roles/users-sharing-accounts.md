@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164232"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798406"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
 
@@ -59,7 +59,7 @@ Hesap paylaşımını etkinleştiren Azure AD özellikleri şunlardır:
 * Parola çoklu oturum açma Aracısı
 * [Grup ataması](groups-self-service-management.md)
 * Özel parola uygulamaları
-* [Uygulama kullanımı panosu/raporları](../active-directory-passwords-get-insights.md)
+* [Uygulama kullanımı panosu/raporları](../authentication/howto-sspr-reporting.md)
 * Son Kullanıcı erişim portalları
 * [Uygulama proxy 'si](../manage-apps/application-proxy.md)
 * [Active Directory marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Bir hesabı paylaşmak üzere Azure AD 'yi kullanmak için şunları yapmanız g
 * Uygulamayı parola çoklu oturum açma (SSO) için yapılandırma
 * [Grup tabanlı atamayı](groups-saasapps.md) kullanın ve paylaşılan bir kimlik bilgisi girme seçeneğini belirleyin
 
-Ayrıca, Multi-Factor Authentication (MFA) ile paylaşılan hesabınızı daha güvenli hale getirebilirsiniz ( [Azure AD ile uygulamaların güvenliğini sağlama](../authentication/concept-mfa-whichversion.md)hakkında daha fazla bilgi edinin) ve [Azure AD self servis](groups-self-service-management.md) Grup Yönetimi 'ni kullanarak uygulamaya kimlerin erişebileceğini yönetme yeteneği atayabilirsiniz.
+Ayrıca, Multi-Factor Authentication (MFA) ile paylaşılan hesabınızı daha güvenli hale getirebilirsiniz ( [Azure AD ile uygulamaların güvenliğini sağlama](../authentication/concept-mfa-howitworks.md)hakkında daha fazla bilgi edinin) ve [Azure AD self servis](groups-self-service-management.md) Grup Yönetimi 'ni kullanarak uygulamaya kimlerin erişebileceğini yönetme yeteneği atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Active Directory’de Uygulama Yönetimi](../manage-apps/what-is-application-management.md)
-* [Koşullu erişimle uygulamaları koruma](../active-directory-conditional-access-azure-portal.md)
+* [Koşullu erişimle uygulamaları koruma](../conditional-access/overview.md)
 * [Self Servis Grup Yönetimi/SSAA](groups-self-service-management.md)

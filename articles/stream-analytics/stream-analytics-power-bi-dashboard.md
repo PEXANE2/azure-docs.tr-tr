@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314229"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794301"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -20,7 +20,7 @@ Azure Stream Analytics, önde gelen iş zekası araçlarından birini [Microsoft
 
 Bu makale Stream Analytics [gerçek zamanlı sahtekarlık algılama](stream-analytics-real-time-fraud-detection.md) öğreticisiyle devam etmektedir. Bu öğreticide oluşturulan iş akışını oluşturur ve bir akış analizi işi tarafından algılanan sahte telefon çağrılarını görselleştirebilmeniz için Power BI bir çıktı ekler. 
 
-Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA) izleyebilirsiniz.
+Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA)  izleyebilirsiniz.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -39,7 +39,10 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
 2. Sol menüde, **iş topolojisi**altında **çıktılar** ' i seçin. Ardından **+ Ekle** ' yi seçin ve açılan menüden **Power BI** seçin.
 
-3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Ardından formu aşağıdaki bilgilerle doldurun ve **Yetkilendir**'i seçin:
+3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Daha sonra formu aşağıdaki ayrıntılarla doldurup Power BI bağlanmak için kendi Kullanıcı Kimliğinizi kullanmak üzere **Yetkilendir** ' i seçin (belirteç 90 gün için geçerlidir). 
+
+>[!NOTE]
+>Üretim işleri için, [Power BI için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimlik kullanmak](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)üzere bağlanmanız önerilir.
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
@@ -110,7 +113,7 @@ Bu bölüm isteğe bağlıdır, ancak önerilir.
 
     * Komut Istemi 'ni açın.
     * telcogenerator.exe ve değiştirilen telcodatagen.exe.config dosyalarının bulunduğu klasöre gidin.
-    * Şu komutu çalıştırın:
+    * Aşağıdaki komutu çalıştırın:
 
        `telcodatagen.exe 1000 .2 2`
 
@@ -230,3 +233,4 @@ Yetkilendirme Power BI ile yenilendikten sonra, sorunun çözümlendiğini yans�
 * [Stream Analytics çıkışları](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics yönetim REST API başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747280"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798508"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi bir oturum açma isteminden ayarlama
 
 İş veya okul hesabınızda oturum açtıktan hemen sonra güvenlik bilgilerinizi ayarlamanız istenirse, bu adımları izleyebilirsiniz.
 
-Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadıysanız görürsünüz. Daha önce güvenlik bilgilerinizi ayarladıysanız ancak değişiklik yapmak istiyorsanız, çeşitli Yöntem tabanlı nasıl yapılır makalelerindeki adımları izleyebilirsiniz. Daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış ekleme veya güncelleştirme](security-info-add-update-methods-overview.md).
+Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadıysanız görürsünüz. Daha önce güvenlik bilgilerinizi ayarladıysanız ancak değişiklik yapmak istiyorsanız, çeşitli Yöntem tabanlı nasıl yapılır makalelerindeki adımları izleyebilirsiniz. Daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış ekleme veya güncelleştirme](./security-info-setup-auth-app.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

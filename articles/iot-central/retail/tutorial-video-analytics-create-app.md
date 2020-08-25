@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719181"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762786"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central bir video Analytics-nesne ve hareket algılama uygulaması oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Edge ağ geçidi cihazı için bir cihaz şablonu oluşturma
 > * IoT Central uygulamanıza bir ağ geçidi cihazı ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici serisini tamamlayabilmeniz için şunlar gerekir:
 
@@ -40,7 +40,7 @@ Bu öğretici serisini tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="initial-setup"></a>İlk kurulum
 
-Bu öğreticilerde, çeşitli yapılandırma dosyalarını güncelleştirir ve kullanırsınız. Bu dosyaların ilk sürümleri [LVA-Gateway](https://github.com/Azure/live-video-analytics) GitHub deposunda bulunur. Depo Ayrıca, dağıttığınız hizmetlerden yapılandırma değerlerini kaydetmek için indirmeniz ve kullanmanız için bir karalama yazı metni dosyası içerir.
+Bu öğreticilerde, çeşitli yapılandırma dosyalarını güncelleştirir ve kullanırsınız. Bu dosyaların ilk sürümleri [LVA-Gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) GitHub deposunda bulunur. Depo Ayrıca, dağıttığınız hizmetlerden yapılandırma değerlerini kaydetmek için indirmeniz ve kullanmanız için bir karalama yazı metni dosyası içerir.
 
 Bu dosyaların kopyalarını kaydetmek için yerel makinenizde *LVA-yapılandırma* adlı bir klasör oluşturun. Ardından, aşağıdaki bağlantıların her birine sağ tıklayın ve dosyayı *LVA-yapılandırma* klasörüne kaydetmek Için **farklı kaydet** ' i seçin:
 
@@ -245,7 +245,7 @@ Cihaz şablonu bir cihaz yetenek modeli içermelidir. **LVA Edge Gateway** sayfa
 
 **LVA Edge Gateway** cihaz şablonunda, **modüller/LVA sınır ağ geçidi modülü**altında **ilişkiler**' i seçin. **+ Ilişki Ekle** ' yi seçin ve aşağıdaki iki ilişkiyi ekleyin:
 
-|Görünen Ad               |Ad          |Hedef |
+|Görünen Ad               |Name          |Hedef |
 |-------------------------- |------------- |------ |
 |LVA Edge hareket algılayıcısı   |Varsayılanı kullan   |LVA Edge hareket algılayıcısı cihazı |
 |LVA Edge nesne algılayıcısı   |Varsayılanı kullan   |LVA Edge nesne algılayıcısı cihazı |

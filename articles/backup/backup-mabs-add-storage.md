@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Modern Yedekleme Alanı kullanma
 description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu makalede, yedekleme sunucusu yüklemenizin nasıl yükseltileceği açıklanır.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513719"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762445"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -18,7 +18,7 @@ Azure Backup Sunucusu v2 ve üzeri, %50 depolama tasarrufu sağlayan Modern Yede
 > Modern Yedekleme Alanı kullanmak için Windows Server 2019 üzerinde Windows Server 2016 veya v3 üzerinde Backup Server v2 veya v3 ' i çalıştırmanız gerekir.
 > Yedekleme sunucusu v2 'yi Windows Server 'ın önceki bir sürümünde çalıştırırsanız, Azure Backup Sunucusu Modern Yedekleme Alanı avantajlarından yararlanabilir. Bunun yerine, yedekleme sunucusu v1 ile çalıştığı için iş yüklerini korur. Daha fazla bilgi için yedekleme sunucusu sürüm [koruması matrisine](backup-mabs-protection-matrix.md)bakın.
 >
-> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için lütfen "[katmanlı depolama Ile MB ayarlama" ADLı](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
+> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için "[katmanlı depolama Ile MB ayarlama" ADLı](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
 
 ## <a name="volumes-in-backup-server"></a>Yedekleme sunucusundaki birimler
 

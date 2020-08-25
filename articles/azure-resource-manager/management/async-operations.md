@@ -2,14 +2,14 @@
 title: Zaman uyumsuz işlemlerin durumu
 description: Azure 'da zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718433"
+ms.locfileid: "88723461"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme
 
@@ -31,7 +31,7 @@ Yürütmekte olduğunuz işlemin yanıtlarını görmek için [REST API belgeler
 
 201 veya 202 yanıt kodunu aldıktan sonra, işlemin durumunu izlemeye hazırsınız demektir.
 
-## <a name="use-url-to-monitor-status"></a>Durumu izlemek için URL kullan
+## <a name="url-to-monitor-status"></a>Durumu izlemek için URL
 
 Zaman uyumsuz işlemin durumunu izlemenin iki farklı yolu vardır. Özgün talebinizden döndürülen üst bilgi değerlerini inceleyerek doğru yaklaşımı belirlersiniz. İlk olarak şunu arayın:
 
@@ -45,7 +45,9 @@ Zaman uyumsuz işlemin durumunu izlemenin iki farklı yolu vardır. Özgün tale
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation isteği ve yanıtı
 
-`Azure-AsyncOperation`Üst bilgi değerindeki BIR URL varsa, bu URL 'ye BIR get isteği gönderin. `Retry-After`Durumu ne sıklıkta kontrol etmek için değerini kullanın. Yanıt özellikleri farklılık gösterebilir, ancak her zaman zaman uyumsuz işlemin durumunu içerir.
+`Azure-AsyncOperation`Üst bilgi değerindeki BIR URL varsa, bu URL 'ye BIR get isteği gönderin. `Retry-After`Durumu ne sıklıkta kontrol etmek için değerini kullanın. İşlemin durumunu gösteren bir yanıt nesnesi alacaksınız. URL ile işlemin durumu denetlenirken farklı bir yanıt döndürülür `Location` . Konum URL 'sindeki yanıt hakkında daha fazla bilgi için bkz. [depolama hesabı oluşturma (konum ile 202 ve yeniden deneme-sonrası)](#create-storage-account-202-with-location-and-retry-after).
+
+Yanıt özellikleri farklılık gösterebilir, ancak her zaman zaman uyumsuz işlemin durumunu içerir.
 
 ```json
 {

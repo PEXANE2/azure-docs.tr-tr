@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307293"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783272"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub'ınızda X.509 güvenliğini ayarlama
 
@@ -49,6 +49,9 @@ Sertifikalarınızı almak için aşağıdaki yollarla seçim yapabilirsiniz:
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509.440 CA sertifikalarını IoT Hub 'ınıza kaydetme
 
 Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini nasıl ekleyeceğiniz gösterilir.
+
+> [!NOTE]
+> Bir IoT Hub 'ına kaydedilenebilir en fazla X. 509.952 CA sertifikası sayısı 25 ' tir. Daha fazla bilgi için bkz. [Azure IoT Hub kotaları ve azaltma](iot-hub-devguide-quotas-throttling.md).
 
 1. Azure Portal, IoT Hub 'ınıza gidin ve hub için **ayar**  >  **sertifikaları** ' nı seçin.
 

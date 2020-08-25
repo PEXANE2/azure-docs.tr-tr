@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dd97932d0aaa89373636a60e793f531cda18abdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091445"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762394"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Hizmetiniz için bir Spring Cloud config Server örneği ayarlama
 
@@ -110,8 +110,8 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 | Özellik                           | Gerekli         | Özellik                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Hayır             | Verilen bir ada sahip git deposu ayarlarından oluşan bir harita. |
-| `repos."uri"`                      | Evet açık`repos` | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
-| `repos."name"`                     | Evet açık`repos` | Git deposunda tanımlanabilmesi için bir ad, yalnızca varsa _gereklidir_ `repos` . Örneğin, *Ekip-A*, *Takım-B*. |
+| `repos."uri"`                      | Evet açık `repos` | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
+| `repos."name"`                     | Evet açık `repos` | Git deposunda tanımlanabilmesi için bir ad, yalnızca varsa _gereklidir_ `repos` . Örneğin, *Ekip-A*, *Takım-B*. |
 | `repos."pattern"`                  | Hayır             | Bir uygulama adıyla eşleşen dizeler dizisi. Her bir model için, `{application}/{profile}` joker karakterleri ile biçimini kullanın. |
 | `repos."default-label"`            | Hayır             | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `repos."search-paths`"             | Hayır             | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
@@ -146,14 +146,14 @@ Yapılandırma dosyalarınız bir depoya kaydedildiğinden artık Azure Spring C
 
     * **Temel kimlik doğrulaması**: **varsayılan depo** bölümünde, **URI** kutusunda, depo URI 'sini yapıştırın ve ardından **kimlik doğrulaması** ("kurşun kalem" simgesi) düğmesini seçin. **Kimlik doğrulamasını Düzenle** bölmesinde, **kimlik doğrulama türü** aşağı açılan listesinde, **http Basic**' i seçin ve ardından Kullanıcı adınızı ve parolanızı/belirtecinizi girerek Azure yay bulutuna erişim izni verin. **Tamam**' ı seçin ve ardından **Uygula** ' yı seçerek yapılandırma sunucusu örneğinizi ayarlamayı tamamlayın.
 
-    ![Kimlik doğrulama bölmesini Düzenle](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    ![Kimlik doğrulama bölmesini Düzenle temel kimlik doğrulaması](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
     > GitHub gibi bazı git deposu sunucuları, **temel kimlik doğrulaması**için bir *Kişisel belirteç* veya parola gibi bir *erişim belirteci*kullanır. Bu tür bir belirteci, hiçbir zaman dolmayacağı için Azure Spring Cloud 'da parola olarak kullanabilirsiniz. Ancak Bitbucket ve Azure DevOps gibi diğer git deposu sunucuları için *erişim belirtecinin* süresi bir veya iki saat içinde dolar. Bu, Azure Spring Cloud ile bu depo sunucularını kullandığınızda seçeneğinin önemli olmadığı anlamına gelir.
 
     * **SSH**: **varsayılan depo** bölümünde, **URI** kutusunda, depo URI 'sini yapıştırın ve ardından **kimlik doğrulaması** ("kurşun kalem" simgesi) düğmesini seçin. **Kimlik doğrulamasını Düzenle** bölmesinde, **kimlik doğrulama türü** aşağı açılan listesinde **SSH**' ı seçin ve ardından **özel anahtarınızı**girin. İsteğe bağlı olarak, **ana bilgisayar anahtarınızı** ve **ana bilgisayar anahtarı algoritmanızı**belirtin. Yapılandırma sunucusu deponuza ortak anahtarınızı eklediğinizden emin olun. **Tamam**' ı seçin ve ardından **Uygula** ' yı seçerek yapılandırma sunucusu örneğinizi ayarlamayı tamamlayın.
 
-    ![Kimlik doğrulama bölmesini Düzenle](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+    ![Kimlik doğrulama bölmesini Düzenle SSH kimlik doğrulaması](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>Model deposu
 
@@ -182,6 +182,48 @@ spring:
 
 YAML dosyanızdaki bilgiler Azure portal görüntülenmelidir. Son 'a **Uygula** ' yı seçin. 
 
+## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>Azure yay bulut yapılandırması için Azure Repos kullanma
+
+Azure yay bulutu, genel olan, SSH ile güvenliği sağlanmış veya HTTP temel kimlik doğrulaması kullanılarak güvenliği sağlanmış git depolarına erişebilir. Azure Repos ile kolayca oluşturulması ve yönetilmesi daha kolay olduğundan, bu son seçeneği kullanacağız.
+
+### <a name="get-repo-url-and-credentials"></a>Depo URL 'sini ve kimlik bilgilerini al
+1. Projenizin Azure Repos portalında "Kopyala" düğmesine tıklayın:
+
+    ![Kopyala düğmesi](media/spring-cloud-tutorial-config-server/clone-button.png)
+
+1. Metin kutusundan kopya URL 'sini kopyalayın. Bu URL genellikle şu biçimde olacaktır:
+
+    ```Text
+    https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    `https://`Dahil olmak üzere ve öncesinde her şeyi kaldırın `dev.azure.com` `@` . Elde edilen URL şu biçimde olmalıdır:
+
+    ```Text
+    https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    Bu URL 'YI sonraki bölümde kullanmak üzere kaydedin.
+
+1. "Git kimlik bilgileri oluştur" düğmesine tıklayın. Bir Kullanıcı adı ve parola görüntülenir. Bunları sonraki bölümde kullanmak üzere kaydedin.
+
+
+### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Git deposuna erişmek için Azure Spring Cloud’u yapılandırma
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+
+1. Azure yay bulutuna **genel bakış** sayfasına gidin.
+
+1. Yapılandırılacak hizmeti seçin.
+
+1. Hizmet sayfasının sol bölmesinde, **Ayarlar**' ın altında, **yapılandırma sunucusu** sekmesini seçin. daha önce oluşturduğumuz depoyu yapılandırın:
+   - Önceki bölümden kaydettiğiniz depo URL 'sini ekleyin
+   - Tıklayın `Authentication` ve seçin `HTTP Basic`
+   - __Kullanıcı adı__ , önceki bölümden kaydedilen kullanıcı adıdır
+   - __Parola__ , önceki bölümden kaydedilen paroladır
+   - "Uygula" düğmesine tıklayın ve işlemin başarılı olmasını bekleyin
+
+   ![Spring Cloud config server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
 ## <a name="delete-your-app-configuration"></a>Uygulama yapılandırmanızı silme
 

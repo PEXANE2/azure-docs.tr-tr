@@ -10,10 +10,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 566307581b49922b9d47936f64beea73715f63ba
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86028414"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak App Service uygulaması oluşturma ve özel uç nokta dağıtma
@@ -34,7 +34,7 @@ Herhangi bir kaynak oluşturabilmeniz için önce Web uygulamasını, sanal ağ�
 az group create --name myResourceGroup --location francecentral 
 ```
 
-## <a name="create-an-app-service-plan"></a>App Service Planı Oluşturma
+## <a name="create-an-app-service-plan"></a>App Service Planı oluşturma
 
 Web uygulamanızı barındırmak için bir App Service planı oluşturmanız gerekir.
 [Az appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)komutuyla bir App Service planı oluşturun.

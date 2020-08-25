@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb2ad8e6d37190d0473f3f9f4af7738edd3b27f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475218"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798423"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory Kullanıcı erişimini iptal etme
 
@@ -38,7 +38,7 @@ Erişim belirteçleri ve yenileme belirteçleri, genellikle kalın istemci uygul
 
 Azure AD daha sonra yetkilendirme ilkelerini yeniden değerlendirin. Kullanıcı hala yetkilendirilirse, Azure AD yeni bir erişim belirteci yayınlar ve belirteci yeniler.
 
-Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, Office 365 uygulamalarına [sürekli erişim değerlendirmesi](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) getirmek için etkin bir şekilde çalışır ve bu da neredeyse gerçek zamanlı olarak erişim belirteçlerinin doğrulanması sağlanmasına yardımcı olur.  
+Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, Office 365 uygulamalarına [sürekli erişim değerlendirmesi](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) getirmek için etkin bir şekilde çalışır ve bu da neredeyse gerçek zamanlı olarak erişim belirteçlerinin doğrulanması sağlanmasına yardımcı olur.  
 
 ## <a name="session-tokens-cookies"></a>Oturum belirteçleri (tanımlama bilgileri)
 
@@ -60,13 +60,13 @@ Tarayıcı tabanlı çoğu uygulama, erişim ve yenileme belirteçleri yerine ot
 
 Active Directory yönetici olarak şirket içi ağınıza bağlanın, PowerShell 'i açın ve aşağıdaki işlemleri gerçekleştirin:
 
-1. Active Directory kullanıcıyı devre dışı bırakın. [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps)öğesine bakın.
+1. Active Directory kullanıcıyı devre dışı bırakın. [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)öğesine bakın.
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Active Directory kullanıcının parolasını iki kez sıfırlayın. [Set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)bölümüne bakın.
+1. Active Directory kullanıcının parolasını iki kez sıfırlayın. [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)bölümüne bakın.
 
     > [!NOTE]
     > Bir kullanıcının parolasını iki kez değiştirme nedeni, özellikle de şirket içi parola çoğaltmasında gecikme olması durumunda karma geçişi riskini hafifletmektir. Bu hesabı güvenli bir şekilde kabul ediyorsanız, parolayı yalnızca bir kez sıfırlayabilirsiniz.
@@ -83,18 +83,18 @@ Active Directory yönetici olarak şirket içi ağınıza bağlanın, PowerShell
 
 Azure Active Directory yönetici olarak PowerShell ' i açın, çalıştırın ``Connect-AzureAD`` ve aşağıdaki işlemleri gerçekleştirin:
 
-1. Azure AD 'de kullanıcıyı devre dışı bırakın. [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)öğesine bakın.
+1. Azure AD 'de kullanıcıyı devre dışı bırakın. [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)öğesine bakın.
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Kullanıcının Azure AD yenileme belirteçlerini iptal edin. [Revoke-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)öğesine başvurun.
+1. Kullanıcının Azure AD yenileme belirteçlerini iptal edin. [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)öğesine başvurun.
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Kullanıcının cihazlarını devre dışı bırakın. [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)öğesine başvurun.
+1. Kullanıcının cihazlarını devre dışı bırakın. [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)öğesine başvurun.
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -102,9 +102,9 @@ Azure Active Directory yönetici olarak PowerShell ' i açın, çalıştırın `
 
 ## <a name="optional-steps"></a>İsteğe bağlı adımlar
 
-- [Intune tarafından yönetilen uygulamalardan kurumsal verileri silme](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe).
+- [Intune tarafından yönetilen uygulamalardan kurumsal verileri silme](/mem/intune/apps/apps-selective-wipe).
 
-- [Şirkete ait cihazları Sil cihazı fabrika varsayılan ayarlarına sıfırlıyor](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe).
+- [Şirkete ait cihazları Sil cihazı fabrika varsayılan ayarlarına sıfırlıyor](/mem/intune/remote-actions/devices-wipe).
 
 > [!NOTE]
 > Bir silme işleminden sonra cihazdaki veriler kurtarılamaz.

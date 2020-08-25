@@ -3,12 +3,12 @@ title: Azure Backup aracısında sorun giderme
 description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilmesinde nasıl sorun giderileceği hakkında bilgi edinebilirsiniz.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564121"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763516"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -238,15 +238,15 @@ Veri kaynağını korumak için gereken yeterli gölge kopya depolama alanı yok
 
 - Yükseltilmiş komut isteminden geçerli gölge depolama alanını kontrol edin:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Aşağıdaki komutu kullanarak gölge depolama alanını yükseltin:<br/>
+- Aşağıdaki komutu kullanarak gölge depolama alanını arttırın:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Önbellek klasörüne erişimi engelleyen başka bir işlem veya virüsten koruma yazılımı
 
 Sunucusunda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler için virüsten koruma taramasına gereken dışlama kurallarını ekleyin:  
 
-- Karalama klasörü. Varsayılan konumu`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-- Konumundaki bin klasörü`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
+- Karalama klasörü. Varsayılan konumu `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- Konumundaki bin klasörü `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,25 +258,25 @@ Bu bölümde, MARS Aracısı kullanılırken karşılaştığınız yaygın hata
 
 Hata iletisi | Önerilen eylem
 --|--
-Microsoft Azure Kurtarma Hizmetleri Aracısı, karalama konumunda depolanmış yedekleme sağlama toplamına erişemedi | Bu sorunu çözmek için, aşağıdaki işlemleri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Karalama konumu dosyalarını kilitleyen bir virüsten koruma veya başka bir işlem olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve MARS Aracısı tarafından erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Kurtarma Hizmetleri Aracısı, karalama konumunda depolanmış yedekleme sağlama toplamına erişemedi | Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve sunucuyu yeniden başlatın <br/> - [Karalama konumu dosyalarını kilitleyen bir virüsten koruma veya başka bir işlem olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve MARS Aracısı tarafından erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Hata iletisi | Önerilen eylem
 --|--
-Microsoft Azure Kurtarma Hizmetleri Aracısı, VHD’yi başlatmak için karalama konumuna erişemedi | Bu sorunu çözmek için, aşağıdaki işlemleri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Virüsten koruma veya diğer işlemlerin karalama konumu dosyalarını kilitlemesinin olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve MARS Aracısı tarafından erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Kurtarma Hizmetleri Aracısı, VHD’yi başlatmak için karalama konumuna erişemedi | Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve sunucuyu yeniden başlatın <br/> - [Virüsten koruma veya diğer işlemlerin karalama konumu dosyalarını kilitlemesinin olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve MARS Aracısı tarafından erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Hata iletisi | Önerilen eylem
 --|--
-Karalama klasörünün bulunduğu birimde yetersiz depolama nedeniyle yedekleme başarısız oldu | Bu sorunu çözmek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/>- [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
+Karalama klasörünün bulunduğu birimde yetersiz depolama nedeniyle yedekleme başarısız oldu | Bu sorunu çözmek için aşağıdaki adımları doğrulayıp işlemi yeniden deneyin:<br/>- [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Hata iletisi | Önerilen eylem
 --|--
-Dosyadaki değişiklikler bulunamadı. Bunun çeşitli nedenleri olabilir. Lütfen işlemi yeniden deneyin | Bu sorunu çözmek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/> - [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
+Dosyadaki değişiklikler bulunamadı. Bunun çeşitli nedenleri olabilir. Lütfen işlemi yeniden deneyin | Bu sorunu çözmek için aşağıdaki adımları doğrulayıp işlemi yeniden deneyin:<br/> - [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2180451a1d0c377af1e6c3e7377e64d9cb62ef8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 243bc48f7e84951c78ecab3e7f5ee47a85a538bf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732064"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798831"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory 'de PowerShell kullanarak kaynak kapsamıyla özel roller atama
 
-Bu makalede, Azure Active Directory (Azure AD) içinde kuruluş genelinde bir kapsamda rol atamasının nasıl oluşturulacağı açıklanır. Kuruluş genelindeki kapsamda rol atama, Azure AD kuruluşunda erişim sağlar. Tek bir Azure AD kaynağının kapsamıyla bir rol ataması oluşturmak için, bkz. [nasıl özel rol oluşturma ve kaynak kapsamında atama](roles-create-custom.md). Bu makale, [Azure Active Directory PowerShell sürüm 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülünü kullanır.
+Bu makalede, Azure Active Directory (Azure AD) içinde kuruluş genelinde bir kapsamda rol atamasının nasıl oluşturulacağı açıklanır. Kuruluş genelindeki kapsamda rol atama, Azure AD kuruluşunda erişim sağlar. Tek bir Azure AD kaynağının kapsamıyla bir rol ataması oluşturmak için, bkz. [nasıl özel rol oluşturma ve kaynak kapsamında atama](roles-create-custom.md). Bu makale, [Azure Active Directory PowerShell sürüm 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülünü kullanır.
 
 Azure AD yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](directory-assign-admin-roles.md).
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-Rolü bir kullanıcı yerine bir hizmet sorumlusuna atamak için, [Get-AzureADMSServicePrincipal cmdlet 'ini](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0)kullanın.
+Rolü bir kullanıcı yerine bir hizmet sorumlusuna atamak için, [Get-AzureADMSServicePrincipal cmdlet 'ini](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0)kullanın.
 
 ## <a name="operations-on-roledefinition"></a>RoleDefinition üzerinde işlemler
 

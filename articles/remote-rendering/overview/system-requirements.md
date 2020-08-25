@@ -1,18 +1,18 @@
 ---
-title: Sistem Gereksinimleri
+title: Sistem gereksinimleri
 description: Azure uzaktan Işleme için sistem gereksinimlerini listeler
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300615"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798474"
 ---
-# <a name="system-requirements"></a>Sistem Gereksinimleri
+# <a name="system-requirements"></a>Sistem gereksinimleri
 
 > [!IMPORTANT]
 > **Azure uzaktan işleme** Şu anda genel önizleme aşamasındadır.
@@ -24,7 +24,7 @@ Bu bölümde, *Azure uzaktan işleme* (ARR) ile çalışmak için en düşük si
 
 * Windows 10 sürüm 1903 veya üzeri.
 * Güncel grafik sürücüleri.
-* İsteğe bağlı: uzaktan işlenmiş içeriğin yerel önizlemesini (örneğin Unity) kullanmak istiyorsanız, h265 Hardware video kod çözücüsü.
+* İsteğe bağlı: uzaktan işlenmiş içeriğin yerel önizlemesini (örneğin Unity) kullanmak istiyorsanız, [h265 Hardware video kod çözücüsü](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).
 
 > [!IMPORTANT]
 > Windows Update her zaman en son GPU sürücülerini teslim etmez, en son sürücüler için GPU üreticinizin Web sitesini kontrol edin:
@@ -52,7 +52,7 @@ Daha yeni sürümlerde gecikme süresi bakımından önemli iyileştirmeler oldu
 1. **Microsoft Store**başlatın.
 1. Sağ üst köşedeki **"..."** düğmesine tıklayın.
 1. **İndirmeler ve Güncelleştirmeler '** i seçin.
-1. **Cihaz üreticisinden HEVC video uzantıları**listesinde arama yapın.
+1. **Cihaz üreticisinden HEVC video uzantıları**listesinde arama yapın. Bu öğe güncelleştirmeler altında listelenmiyorsa, en son sürüm zaten yüklüdür.
 1. Listelenen codec bileşeninin en az sürüm **1.0.21821.0**olduğundan emin olun.
 1. **Güncelleştirmeleri al** düğmesine tıklayın ve yüklemesinin tamamlanmasını bekleyin.
 
@@ -74,7 +74,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * **Windows SDK 10.0.18362.0** [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **GIT** [(İndir)](https://git-scm.com/downloads)
-* İsteğe bağlı: bir masaüstü bılgısayar üzerindeki sunucudan video akışını görüntülemek Için **HEVC video uzantılarına** [(Microsoft Store bağlantı)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)ihtiyacınız vardır.
+* İsteğe bağlı: bir masaüstü bılgısayar üzerindeki sunucudan video akışını görüntülemek Için **HEVC video uzantılarına** [(Microsoft Store bağlantı)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)ihtiyacınız vardır. Depodaki güncelleştirmeleri denetleyerek en son sürümün yüklü olduğundan emin olun.
 
 ## <a name="unity"></a>Unity
 

@@ -6,18 +6,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/31/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a216714939dc45fd1b220f24414a527969ab7fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a506f59d3f2d331e4c7680565f3c110b9cd12956
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029605"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799187"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portalı kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
@@ -45,11 +45,11 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 
 ## <a name="specify-a-key"></a>Bir anahtar belirtin
 
-Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, depolama hesabıyla ilişkilendirilecek bir anahtar belirtme fırsatına sahip olacaksınız. Ayrıca Azure Storage 'ın müşteri tarafından yönetilen anahtarı otomatik olarak döndürüp döndürmeyeceğini veya anahtarı el ile döndürüp döndürmeyeceğini belirtebilirsiniz.
+Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, depolama hesabıyla ilişkilendirilecek bir anahtar belirtme fırsatına sahip olacaksınız. Ayrıca, Azure Storage 'ın müşteri tarafından yönetilen anahtarı en son sürüme otomatik olarak güncelleştirip güncelleştirmeyeceğini veya anahtar sürümünü el ile güncelleştirip güncelleştirmeyeceğinizi belirtebilirsiniz.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Anahtar kasasından anahtar belirtme
 
-Bir anahtar kasasından müşteri tarafından yönetilen bir anahtar seçtiğinizde, anahtarın otomatik olarak dönüşü otomatik olarak etkinleştirilir. Anahtar sürümünü el ile yönetmek için, bunun yerine anahtar URI 'sini belirtin ve anahtar sürümünü dahil edin. Daha fazla bilgi için bkz. [URI olarak anahtar belirtme](#specify-a-key-as-a-uri).
+Anahtar kasasından müşteri tarafından yönetilen bir anahtar seçtiğinizde, anahtar sürümünün otomatik güncelleştirilmesi etkinleştirilir. Anahtar sürümünü el ile yönetmek için, bunun yerine anahtar URI 'sini belirtin ve anahtar sürümünü dahil edin. Daha fazla bilgi için bkz. [URI olarak anahtar belirtme](#specify-a-key-as-a-uri).
 
 Anahtar kasasından bir anahtar belirtmek için şu adımları izleyin:
 
@@ -64,7 +64,12 @@ Anahtar kasasından bir anahtar belirtmek için şu adımları izleyin:
 
 ### <a name="specify-a-key-as-a-uri"></a>URI olarak bir anahtar belirtin
 
-Anahtar URI 'sini belirttiğinizde, müşteri tarafından yönetilen anahtarın otomatik döndürmesini etkinleştirmek için anahtar sürümünü atlayın. Anahtar URI 'sine anahtar sürümünü eklerseniz, otomatik döndürme etkin değildir ve anahtar sürümünü kendiniz yönetmeniz gerekir. Anahtar sürümünü güncelleştirme hakkında daha fazla bilgi için bkz. [anahtar sürümünü el ile güncelleştirme](#manually-update-the-key-version).
+Azure depolama, şifreleme için kullanılan müşteri tarafından yönetilen anahtarı, en son anahtar sürümünü kullanacak şekilde otomatik olarak güncelleştirebilir. Müşteri tarafından yönetilen anahtar Azure Key Vault döndürüldüğünde, Azure depolama, şifreleme için anahtarın en son sürümünü otomatik olarak kullanmaya başlayacaktır.
+
+> [!NOTE]
+> Bir anahtarı döndürmek için Azure Key Vault ' de anahtarın yeni bir sürümünü oluşturun. Azure depolama Azure Key Vault anahtarın döndürmesini işlemez, bu nedenle anahtarınızı el ile döndürmeniz veya bir zamanlamaya göre döndürmek için bir işlev oluşturmanız gerekecektir.
+
+Anahtar URI 'sini belirttiğinizde, en son anahtar sürümüne otomatik güncelleştirme sağlamak için URI 'den anahtar sürümünü atlayın. Anahtar URI 'sine anahtar sürümünü eklerseniz, otomatik güncelleştirme etkin değildir ve anahtar sürümünü kendiniz yönetmeniz gerekir. Anahtar sürümünü güncelleştirme hakkında daha fazla bilgi için bkz. [anahtar sürümünü el ile güncelleştirme](#manually-update-the-key-version).
 
 Bir anahtarı URI olarak belirtmek için şu adımları izleyin:
 
@@ -74,25 +79,25 @@ Bir anahtarı URI olarak belirtmek için şu adımları izleyin:
     ![Anahtar Kasası anahtar URI 'sini gösteren ekran görüntüsü](media/storage-encryption-keys-portal/portal-copy-key-identifier.png)
 
 1. Depolama hesabınız için **şifreleme anahtarı** ayarları ' nda **anahtar URI 'si girin** seçeneğini belirleyin.
-1. Kopyaladığınız URI 'yi **anahtar URI** alanına yapıştırın. Otomatik döndürmeyi etkinleştirmek için URI 'den anahtar sürümünü atlayın.
+1. Kopyaladığınız URI 'yi **anahtar URI** alanına yapıştırın. Anahtar sürümünün otomatik güncelleştirilmesini sağlamak için URI 'den anahtar sürümünü atlayın.
 
    ![Anahtar URI 'sini girmeyi gösteren ekran görüntüsü](./media/storage-encryption-keys-portal/portal-specify-key-uri.png)
 
 1. Anahtar kasasını içeren aboneliği belirtin.
 1. Yaptığınız değişiklikleri kaydedin.
 
-Anahtarı belirttikten sonra, Azure portal otomatik anahtar dönüşünün etkinleştirilip etkinleştirilmeyeceğini gösterir ve şu anda şifreleme için kullanımda olan anahtar sürümünü görüntüler.
+Anahtarı belirttikten sonra Azure portal, anahtar sürümünün otomatik güncelleştirilmesinin etkinleştirilip etkinleştirilmeyeceğini belirtir ve şu anda şifreleme için kullanımda olan anahtar sürümü görüntüler.
 
-:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Müşteri tarafından yönetilen anahtarların otomatik dönüşünün etkin olduğunu gösteren ekran görüntüsü":::
+:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Anahtar sürümünün etkinleştirildiği otomatik güncelleştirmeyi gösteren ekran görüntüsü":::
 
 ## <a name="manually-update-the-key-version"></a>Anahtar sürümünü el ile güncelleştirme
 
-Varsayılan olarak, Azure depolama, önceki bölümlerde açıklandığı gibi, müşteri tarafından yönetilen anahtarları sizin için otomatik olarak döndürür. Anahtar sürümünü kendiniz yönetmeyi seçerseniz, anahtarın yeni bir sürümünü oluşturduğunuz her seferinde depolama hesabı için belirtilen anahtar sürümünü güncelleştirmeniz gerekir.
+Varsayılan olarak, Key Vault müşterinin yönettiği bir anahtarın yeni bir sürümünü oluşturduğunuzda, Azure depolama, önceki bölümlerde açıklandığı gibi, müşteri tarafından yönetilen anahtarlarla şifreleme için otomatik olarak yeni sürümü kullanır. Anahtar sürümünü kendiniz yönetmeyi seçerseniz, anahtarın yeni bir sürümünü oluşturduğunuz her seferinde depolama hesabıyla ilişkili anahtar sürümünü güncelleştirmeniz gerekir.
 
 Yeni anahtar sürümünü kullanmak üzere depolama hesabını güncelleştirmek için şu adımları izleyin:
 
 1. Depolama hesabınıza gidin ve **şifreleme** ayarlarını görüntüleyin.
-1. Yeni anahtar sürümünün URI 'sini girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.
+1. Anahtarın yeni sürümü için URI girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.
 1. Yaptığınız değişiklikleri kaydedin.
 
 ## <a name="switch-to-a-different-key"></a>Farklı bir anahtara geç

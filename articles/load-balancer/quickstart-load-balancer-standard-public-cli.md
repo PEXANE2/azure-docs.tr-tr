@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 08/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: 95f8466944d4131b3356f44d65171bf1b6cc7a82
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: b437bfa205833594c9e76c6f0d8ff1923f51f117
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640812"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762740"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
@@ -57,114 +57,6 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-
-## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-
-Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
-
-[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
-
-* **Mypublicıp**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
-* **Myresourcegrouplb**içinde.
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard
-```
-
-Bölge 1 ' de gereksiz bir genel IP adresi oluşturmak için:
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard \
-    --zone 1
-```
-
-## <a name="create-standard-load-balancer"></a>Standart yük dengeleyici oluştur
-
-Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
-
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
-
-### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
-
-[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
-
-* **Myloadbalancer**adlı.
-* **Myön uç**adlı bir ön uç Havuzu.
-* **Mybackendpool**adlı bir arka uç Havuzu.
-* Önceki adımda oluşturduğunuz **Mypublicıp** genel IP adresiyle ilişkili. 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Standard \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
-
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
-
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
-
-[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
-
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
-
-Yük dengeleyici kuralı şunları tanımlar:
-
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
-* Gerekli kaynak ve hedef bağlantı noktası. 
-
-[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
-
-* Adlandırılmış **Myhttprule**
-* Ön **uç**havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını**kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması**kullanılıyor.
-* Protokol **TCP**.
-* Ön uç IP adresini kullanarak giden kaynak ağ adresi çevirisini (SNAT) etkinleştirin.
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe \
-    --disable-outbound-snat true 
-```
-
 ## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
@@ -174,7 +66,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 [Az Network VNET Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
 
 * **Myvnet**adında.
+* **10.1.0.0/16**adres ön eki.
 * **Mybackendsubnet**adlı alt ağ.
+* **10.1.0.0/24**alt ağ ön eki.
 * **Myresourcegrouplb** kaynak grubunda.
 * **Eastus**konumu.
 
@@ -183,7 +77,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
@@ -208,7 +104,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * **Mynsgrutahttp**adında.
 * Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
 * Kaynak grubu **Myresourcegrouplb**.
-* Protokol **TCP**.
+* Protokol **(*)**.
 * Yön **gelen**.
 * Kaynak **(*)**.
 * Hedef **(*)**.
@@ -221,7 +117,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -242,7 +138,6 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
 * Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
 
@@ -251,9 +146,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -261,8 +154,6 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Kaynak grubu **Myresourcegrouplb**.
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
   az network nic create \
@@ -270,9 +161,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -281,7 +170,6 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
 * Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
   az network nic create \
@@ -289,9 +177,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
@@ -412,6 +298,161 @@ runcmd:
     --no-wait
 ```
 VM 'Lerin dağıtılması birkaç dakika sürebilir.
+
+## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
+
+Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
+
+[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
+
+* **Mypublicıp**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
+* **Myresourcegrouplb**içinde.
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard
+```
+
+Bölge 1 ' de gereksiz bir genel IP adresi oluşturmak için:
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard \
+    --zone 1
+```
+
+## <a name="create-standard-load-balancer"></a>Standart yük dengeleyici oluştur
+
+Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
+
+  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
+  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
+  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
+  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+
+### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
+
+[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+
+* **Myloadbalancer**adlı.
+* **Myön uç**adlı bir ön uç Havuzu.
+* **Mybackendpool**adlı bir arka uç Havuzu.
+* Önceki adımda oluşturduğunuz **Mypublicıp** genel IP adresiyle ilişkili. 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Standard \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
+
+Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
+
+Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
+
+[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
+
+* Sanal makinelerin sistem durumunu izler.
+* Adlandırılmış **Myhealtharaştırma**.
+* Protokol **TCP**.
+* İzleme **bağlantı noktası 80**.
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
+
+Yük dengeleyici kuralı şunları tanımlar:
+
+* Gelen trafik için ön uç IP yapılandırması.
+* Trafiği almak için arka uç IP Havuzu.
+* Gerekli kaynak ve hedef bağlantı noktası. 
+
+[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+
+* Adlandırılmış **Myhttprule**
+* Ön **uç**havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
+* **80 numaralı bağlantı noktasını**kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
+* Sistem durumu araştırması **Myhealtharaştırması**kullanılıyor.
+* Protokol **TCP**.
+* Ön uç IP adresini kullanarak giden kaynak ağ adresi çevirisini (SNAT) etkinleştirin.
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe \
+    --disable-outbound-snat true 
+```
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
+
+[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+
+#### <a name="vm1"></a>VM1
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM1** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM2** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM3** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 
 ## <a name="create-outbound-rule-configuration"></a>Giden kuralı yapılandırması oluştur
 Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 'yi yapılandırır. 
@@ -598,102 +639,6 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-
-## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-
-Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
-
-[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
-
-* **Mypublicıp**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
-* **Myresourcegrouplb**içinde.
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Basic
-```
-
-## <a name="create-basic-load-balancer"></a>Temel yük dengeleyici oluşturma
-
-Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
-
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
-
-### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
-
-[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
-
-* **Myloadbalancer**adlı.
-* **Myön uç**adlı bir ön uç Havuzu.
-* **Mybackendpool**adlı bir arka uç Havuzu.
-* Önceki adımda oluşturduğunuz **Mypublicıp** genel IP adresiyle ilişkili. 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Basic \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
-
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
-
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
-
-[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
-
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
-
-Yük dengeleyici kuralı şunları tanımlar:
-
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
-* Gerekli kaynak ve hedef bağlantı noktası. 
-
-[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
-
-* Adlandırılmış **Myhttprule**
-* Ön **uç**havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını**kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması**kullanılıyor.
-* Protokol **TCP**.
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
-```
-
 ## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
@@ -703,7 +648,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 [Az Network VNET Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
 
 * **Myvnet**adında.
+* **10.1.0.0/16**adres ön eki.
 * **Mybackendsubnet**adlı alt ağ.
+* **10.1.0.0/24**alt ağ ön eki.
 * **Myresourcegrouplb** kaynak grubunda.
 * **Eastus**konumu.
 
@@ -712,7 +659,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
@@ -737,7 +686,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * **Mynsgrutahttp**adında.
 * Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
 * Kaynak grubu **Myresourcegrouplb**.
-* Protokol **TCP**.
+* Protokol **(*)**.
 * Yön **gelen**.
 * Kaynak **(*)**.
 * Hedef **(*)**.
@@ -750,7 +699,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -771,7 +720,6 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
 * Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
 
@@ -780,9 +728,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -791,17 +737,14 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
 * Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM2 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -810,17 +753,14 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 * Sanal ağ **\**sanal ağı 'nda.
 * Alt ağda **Mybackendsubnet**.
 * Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool**Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM3 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
@@ -918,8 +858,7 @@ Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](https://docs.micros
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --availability-set myAvSet \
-    --no-wait
-    
+    --no-wait 
 ```
 #### <a name="vm2"></a>VM2
 * **MyVM2**adlı.
@@ -962,6 +901,151 @@ Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](https://docs.micros
 ```
 VM 'Lerin dağıtılması birkaç dakika sürebilir.
 
+
+## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
+
+Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
+
+[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
+
+* **Mypublicıp**adlı standart bölge YEDEKLI genel IP adresi oluşturun.
+* **Myresourcegrouplb**içinde.
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Basic
+```
+
+## <a name="create-basic-load-balancer"></a>Temel yük dengeleyici oluşturma
+
+Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
+
+  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
+  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
+  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
+  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+
+### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
+
+[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+
+* **Myloadbalancer**adlı.
+* **Myön uç**adlı bir ön uç Havuzu.
+* **Mybackendpool**adlı bir arka uç Havuzu.
+* Önceki adımda oluşturduğunuz **Mypublicıp** genel IP adresiyle ilişkili. 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Basic \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
+
+Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
+
+Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
+
+[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
+
+* Sanal makinelerin sistem durumunu izler.
+* Adlandırılmış **Myhealtharaştırma**.
+* Protokol **TCP**.
+* İzleme **bağlantı noktası 80**.
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
+
+Yük dengeleyici kuralı şunları tanımlar:
+
+* Gelen trafik için ön uç IP yapılandırması.
+* Trafiği almak için arka uç IP Havuzu.
+* Gerekli kaynak ve hedef bağlantı noktası. 
+
+[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+
+* Adlandırılmış **Myhttprule**
+* Ön **uç**havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
+* **80 numaralı bağlantı noktasını**kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
+* Sistem durumu araştırması **Myhealtharaştırması**kullanılıyor.
+* Protokol **TCP**.
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe
+```
+
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
+
+[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+
+
+#### <a name="vm1"></a>VM1
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM1** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM2** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* Arka uç adres havuzunda **Mybackendpool**.
+* Kaynak grubu **Myresourcegrouplb**.
+* Ağ arabirimi **myNicVM3** ve **ipconfig1**ile ilişkili.
+* Yük dengeleyici **Myloadbalancer**ile ilişkili.
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 ---
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme

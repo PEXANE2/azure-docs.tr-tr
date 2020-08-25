@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75649942"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Öğretici: Azure özel sağlayıcılarıyla kaynak ekleme
 
 Bu öğreticide, Microsoft. CustomProviders/Association kaynak türü ile Azure Resource Manager API 'yi genişleten özel bir kaynak sağlayıcısı Azure 'a dağıtırsınız. Öğreticide, özel sağlayıcı örneğinin bulunduğu kaynak grubunun dışındaki mevcut kaynakların nasıl genişletileceği gösterilmektedir. Bu öğreticide, özel kaynak sağlayıcısı bir Azure Logic App tarafından desteklenir, ancak herhangi bir genel API uç noktasını kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
@@ -209,7 +209,7 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 Özel sağlayıcı altyapısını dağıtalım. Önceki şablonu kopyalayın, kaydedin ve dağıtın ya da Azure portal kullanarak altyapıyı uygulayın ve dağıtın.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 2. **Tüm hizmetlerde** **Şablonlar** arayın veya ana arama kutusunu kullanarak:
 
@@ -225,7 +225,7 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 5. Bu makalenin "kaynak ekleme ile çalışmaya başlama" bölümünde JSON şablonunda kopyalama yaparak Kaynak Yöneticisi şablonu oluşturun:
 
-   ![Kaynak Yöneticisi şablonu oluşturma](media/tutorial-resource-onboarding/templatesarmtemplate.png)
+   ![Resource Manager şablonu oluşturma](media/tutorial-resource-onboarding/templatesarmtemplate.png)
 
 6. Şablonu oluşturmak için **Ekle** ' yi seçin. Yeni şablon görünmezse **Yenile**' yi seçin.
 
@@ -237,7 +237,7 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
    | Ayar adı | Gerekli mi? | Açıklama |
    | ------------ | -------- | ----------- |
-   | Konum | Yes | Şablondaki kaynakların konumu. |
+   | Konum | Evet | Şablondaki kaynakların konumu. |
    | Mantıksal uygulama adı | Hayır | Mantıksal uygulamanın adı. |
    | Özel kaynak sağlayıcısı adı | Hayır | Özel kaynak sağlayıcısı adı. |
    | Özel kaynak sağlayıcısı kimliği | Hayır | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
@@ -287,5 +287,5 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure özel sağlayıcılar hakkında sorularınız varsa, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt `azure-custom-providers` almak için etiketi ekleyin!
+Azure özel sağlayıcılar hakkında sorularınız varsa, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. `azure-custom-providers`Hızlı bir yanıt almak için etiketi ekleyin!
 

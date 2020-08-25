@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116708"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722914"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)
 
@@ -61,7 +61,7 @@ Hayır. NTLM veya Kerberos aracılığıyla kullanıcıların kimliğini doğrul
 Ancak, Parola karması eşitleme için Azure AD Connect kullanıyorsanız, Parola karması değerleri Azure AD 'de depolandığından Azure AD Domain Services kullanabilirsiniz.
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services Aboneliğimde birden çok sanal ağda kullanılabilir yapabilir miyim?
-Hizmetin kendisi bu senaryoyu doğrudan desteklemez. Yönetilen etki alanınız tek seferde yalnızca bir sanal ağda kullanılabilir. Ancak, diğer sanal ağlara Azure AD Domain Services göstermek için birden çok sanal ağ arasında bağlantı yapılandırabilirsiniz. Daha fazla bilgi için bkz. VPN ağ geçitleri veya [sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md) [kullanarak Azure 'da sanal ağları bağlama](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) .
+Hizmetin kendisi bu senaryoyu doğrudan desteklemez. Yönetilen etki alanınız tek seferde yalnızca bir sanal ağda kullanılabilir. Ancak, diğer sanal ağlara Azure AD Domain Services göstermek için birden çok sanal ağ arasında bağlantı yapılandırabilirsiniz. Daha fazla bilgi için bkz. VPN ağ geçitleri veya [sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md) [kullanarak Azure 'da sanal ağları bağlama](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) .
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell 'i kullanarak Azure AD Domain Services etkinleştirebilir miyim?
 Evet. Daha fazla bilgi için bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md).
@@ -73,14 +73,14 @@ Evet, Kaynak Yöneticisi şablonu kullanarak Azure AD Domain Services yönetilen
 Hayır. Azure AD Domain Services tarafından belirtilen etki alanı, yönetilen bir etki alanıdır. Bu etki alanı için etki alanı denetleyicileri sağlamanız, yapılandırmanız veya başka bir şekilde yönetmeniz gerekmez. Bu yönetim etkinlikleri, Microsoft tarafından bir hizmet olarak sağlanır. Bu nedenle, yönetilen etki alanı için ek etki alanı denetleyicileri (salt okuma-yazma veya salt okuma) ekleyemezsiniz.
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Konuk kullanıcıların dizinme Azure AD Domain Services kullanmasına davet edilebilir mi?
-Hayır. Azure [AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) davet Işlemi KULLANıLARAK Azure AD dizininize davet edilen konuk kullanıcılar Azure AD Domain Services yönetilen etki alanınız ile eşitlenir. Ancak, bu kullanıcıların parolaları Azure AD dizininizde depolanmaz. Bu nedenle Azure AD Domain Services, bu kullanıcılar için NTLM ve Kerberos karmalarını yönetilen etki alanınız içinde eşitlememe yolu yoktur. Bu tür kullanıcılar oturum açamaz veya bilgisayarları yönetilen etki alanına katılamaz.
+Hayır. Azure [AD B2B](../active-directory/external-identities/what-is-b2b.md) davet Işlemi KULLANıLARAK Azure AD dizininize davet edilen konuk kullanıcılar Azure AD Domain Services yönetilen etki alanınız ile eşitlenir. Ancak, bu kullanıcıların parolaları Azure AD dizininizde depolanmaz. Bu nedenle Azure AD Domain Services, bu kullanıcılar için NTLM ve Kerberos karmalarını yönetilen etki alanınız içinde eşitlememe yolu yoktur. Bu tür kullanıcılar oturum açamaz veya bilgisayarları yönetilen etki alanına katılamaz.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Mevcut bir Azure AD Domain Services yönetilen etki alanını farklı bir aboneliğe, kaynak grubuna, bölgeye veya sanal ağa taşıyabilir miyim?
 Hayır. Azure AD Domain Services yönetilen bir etki alanı oluşturduktan sonra, yönetilen etki alanını farklı bir kaynak grubuna, sanal ağa, aboneliğe vb. taşıyamazsınız. Yönetilen etki alanını dağıtırken en uygun aboneliği, kaynak grubunu, bölgeyi ve sanal ağı seçin.
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Yüksek kullanılabilirlik seçenekleri dahil Azure AD Domain Services mi?
 
-Evet. Her Azure AD Domain Services yönetilen etki alanı iki etki alanı denetleyicisi içerir. Bu etki alanı denetleyicilerini yönetmeyin veya bunlara bağlanamazsınız, yönetilen hizmetin bir parçasıdır. Kullanılabilirlik Alanları destekleyen bir bölgeye Azure AD Domain Services dağıtırsanız, etki alanı denetleyicileri bölgeler arasında dağıtılır. Kullanılabilirlik Alanları desteklemeyen bölgelerde, etki alanı denetleyicileri kullanılabilirlik kümeleri arasında dağıtılır. Bu dağıtım üzerinde yapılandırma seçenekleriniz veya yönetim denetiminiz yok. Daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik seçenekleri](../virtual-machines/windows/availability.md).
+Evet. Her Azure AD Domain Services yönetilen etki alanı iki etki alanı denetleyicisi içerir. Bu etki alanı denetleyicilerini yönetmeyin veya bunlara bağlanamazsınız, yönetilen hizmetin bir parçasıdır. Kullanılabilirlik Alanları destekleyen bir bölgeye Azure AD Domain Services dağıtırsanız, etki alanı denetleyicileri bölgeler arasında dağıtılır. Kullanılabilirlik Alanları desteklemeyen bölgelerde, etki alanı denetleyicileri kullanılabilirlik kümeleri arasında dağıtılır. Bu dağıtım üzerinde yapılandırma seçenekleriniz veya yönetim denetiminiz yok. Daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik seçenekleri](../virtual-machines/availability.md).
 
 ## <a name="administration-and-operations"></a>Yönetim ve işlemler
 
@@ -148,7 +148,7 @@ Azure AD Domain Services, Azure için ücretsiz denemeye dahildir. [Azure 'un ü
 Hayır. Azure AD Domain Services yönetilen bir etki alanını etkinleştirdikten sonra, yönetilen etki alanını silinceye kadar hizmet seçtiğiniz sanal ağınız içinde kullanılabilir. Hizmeti duraklatmanın bir yolu yoktur. Faturalandırma, yönetilen etki alanını silene kadar saatlik olarak devam eder.
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Azure AD Domain Services bir DR olayı için başka bir bölgeye yük devreder miyim?
-Hayır. Azure AD Domain Services Şu anda coğrafi olarak yedekli bir dağıtım modeli sağlamıyor. Azure bölgesindeki tek bir sanal ağla sınırlıdır. Birden çok Azure bölgesini kullanmak istiyorsanız, Azure IaaS VM 'lerinde Active Directory Etki Alanı denetleyicilerinizi çalıştırmanız gerekir. Mimari Kılavuzu için bkz. Şirket [içi Active Directory etki alanınızı Azure 'A genişletme](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Hayır. Azure AD Domain Services Şu anda coğrafi olarak yedekli bir dağıtım modeli sağlamıyor. Azure bölgesindeki tek bir sanal ağla sınırlıdır. Birden çok Azure bölgesini kullanmak istiyorsanız, Azure IaaS VM 'lerinde Active Directory Etki Alanı denetleyicilerinizi çalıştırmanız gerekir. Mimari Kılavuzu için bkz. Şirket [içi Active Directory etki alanınızı Azure 'A genişletme](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite 'in (EMS) bir parçası olarak Azure AD Domain Services alabilir miyim? Azure AD Domain Services kullanmak için Azure AD Premium ihtiyacım var mı?
 Hayır. Azure AD Domain Services, Kullandıkça Öde Azure hizmetidir ve EMS 'nin bir parçası değildir. Azure AD Domain Services, tüm Azure AD sürümleriyle (ücretsiz ve Premium) kullanılabilir. Kullanıma bağlı olarak saatlik olarak faturalandırılırsınız.

@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 985fbc70f15c0806c45ae43d62995590e10b1bb2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167037"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798933"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
@@ -107,7 +107,7 @@ Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz.
 
 Şu araçlardan veya SDK 'Lardan birini kullanarak depolama hesabınızda bir kapsayıcı oluşturun:
 
-|Araçlar|SDK’lar|
+|Araçlar|SDK|
 |---|---|
 |[Azure Depolama Gezgini](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
@@ -153,6 +153,15 @@ Windows veya Linux sisteminizde bir dizin oluşturun ve ardından depolama hesab
    - `<storage-account-name>`Bu komutta görünen yer tutucuyu depolama hesabınızın adıyla değiştirin.  
 
    - `<container-name>`Yer tutucusunu kapsayıcının adıyla değiştirin.
+
+3. Yazma izinlerine ihtiyacınız varsa, Windows 'un paylaşıma bağlanmak için kullandığı varsayılan UID ve GID 'yi değiştirmeniz gerekebilir. Bunu yapmak için aşağıdaki PowerShell komutlarını yönetici olarak çalıştırın:
+
+   ```
+   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
+   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
+   ```
+   
+   - NFS istemci hizmetini yeniden başlatın veya bu değişikliği yaptıktan sonra sunucuyu yeniden başlatın.
 
 ---
 

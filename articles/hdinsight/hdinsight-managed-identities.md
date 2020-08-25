@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408932"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749848"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 'ta Yönetilen kimlikler
 
@@ -25,7 +25,9 @@ Yönetilen kimlikler Azure AD etki alanı hizmetlerine erişmek veya gerektiğin
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight Yönetilen kimlik uygulama
 
-Azure HDInsight 'ta, Yönetilen kimlikler kümenin her bir düğümünde sağlanır. Ancak, bu kimlik bileşenleri yalnızca HDInsight hizmeti tarafından kullanılabilir. Şu anda HDInsight küme düğümlerinde yüklü yönetilen kimlikleri kullanarak erişim belirteçleri oluşturmak için desteklenen bir yöntem yoktur. Bazı Azure hizmetlerinde, Yönetilen kimlikler erişim belirteçleri almak için kullanabileceğiniz bir uç nokta ile uygulanır. Diğer Azure hizmetleriyle etkileşim kurmak için belirteçleri kullanın.
+Azure HDInsight 'ta Yönetilen kimlikler yalnızca, iç bileşenler için HDInsight hizmeti tarafından kullanılabilir. Şu anda, dış hizmetlere erişim için HDInsight küme düğümlerinde yüklü yönetilen kimlikleri kullanarak erişim belirteçleri oluşturmak için desteklenen bir yöntem yoktur. İşlem VM 'Leri gibi bazı Azure hizmetlerinde, Yönetilen kimlikler erişim belirteçleri almak için kullanabileceğiniz bir uç nokta ile uygulanır. Bu uç nokta, HDInsight düğümlerinde Şu anda kullanılamıyor.
+
+Analiz işlerine (örn. SCALA işleri) gizli dizileri/parolalar yerleştirmekten kaçınmak için uygulamalarınızı önyüklemeniz gerekiyorsa, betik eylemlerini kullanarak kendi sertifikalarınızı küme düğümlerine alabilir ve ardından bu sertifikayı bir erişim belirtecine (örneğin, Azure Keykasası 'na erişmek için) kullanabilirsiniz.
 
 ## <a name="create-a-managed-identity"></a>Yönetilen kimlik oluşturma
 
