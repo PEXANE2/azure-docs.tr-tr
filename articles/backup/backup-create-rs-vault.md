@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757753"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827367"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -37,7 +37,7 @@ Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nas�
    - [Coğrafi](../storage/common/storage-redundancy.md) ve [Yerel](../storage/common/storage-redundancy.md) artıklık hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
->Geçerli çözüm, anlık görüntü tabanlı olduğundan ve kasaya aktarılan bir veri olmadığından, kasa için depolama çoğaltma ayarları Azure dosya paylaşımının yedeğine uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
+>Kasa için depolama çoğaltma ayarları, geçerli çözüm bağlı olduğu ve kasaya aktarılan bir veri olmadığı için Azure dosya paylaşma yedeklemesi için uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
 
 ## <a name="set-cross-region-restore"></a>Çapraz bölge geri yüklemeyi ayarla
 

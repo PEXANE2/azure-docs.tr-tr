@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763125"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827350"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -60,7 +60,7 @@ Bu adımların, istenen sonuçlara ulaşmak için yukarıda bahsedilen sırayla 
 Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzere Kurtarma Hizmetleri kasasının kimliğini doğrulamak için sistem tarafından atanan yönetilen kimliği kullanır. Kurtarma Hizmetleri kasanızda yönetilen kimliği etkinleştirmek için aşağıda bahsedilen adımları izleyin.
 
 >[!NOTE]
->Etkinleştirildikten sonra, yönetilen kimlik devre dışı bırakılmamalıdır (geçici olarak bile). Yönetilen kimliğin devre dışı bırakılması tutarsız davranışa yol açabilir.
+>Etkinleştirildikten sonra, yönetilen kimlik devre dışı **bırakılmamalıdır (** geçici olarak bile). Yönetilen kimliğin devre dışı bırakılması tutarsız davranışa yol açabilir.
 
 1. Kurtarma Hizmetleri kasasına gidin-> **kimliği**
 
@@ -138,7 +138,7 @@ Aşağıdaki adımları kullanarak, PowerShell aracılığıyla geçici silme ve
 > - Yukarıda belirtilen tüm adımlar başarıyla tamamlandı:
 >   - Kurtarma Hizmetleri kasasının yönetilen kimliği etkinleştirildi ve gerekli izinler atandı
 >   - Azure Key Vault, geçici silme ve Temizleme koruması etkin
-> - CMK şifrelemesini etkinleştirmek istediğiniz kurtarma hizmetleri kasasında korunan veya kendisine kayıtlı öğe yok
+> - CMK şifrelemesini etkinleştirmek istediğiniz kurtarma hizmetleri kasasında korunan veya kendisine kayıtlı **öğe yok**
 
 Yukarıdaki bir kez başarılı olduktan sonra, kasanızın şifreleme anahtarını seçmeye devam edin.
 
@@ -240,7 +240,7 @@ Hayır, CMK şifreleme yalnızca yeni kasaların etkinleştirilebilmesi için et
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Bir öğeyi kasayma korumaya çalıştım, ancak başarısız oldu ve kasa hala onunla korunan herhangi bir öğe içermiyor. Bu kasa için CMK şifrelemesini etkinleştirebilir miyim?
 
-Hayır, kasadaki herhangi bir öğeyi geçmişteki bir şekilde korumaya yönelik herhangi bir girişimde bulunulmamalıdır.
+Hayır, kasadaki herhangi bir öğeyi geçmişteki bir şekilde korumak için hiçbir girişimde bulunulmamalıdır.
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>CMK şifrelemesini kullanan bir kasam var. Kasaya korunan yedekleme öğeleri olsa bile daha sonra platforma yönetilen anahtarlar kullanılarak şifrelemeye dönebilir miyim?
 
@@ -252,7 +252,7 @@ Hayır, bu makalede yalnızca yedekleme verilerinin şifrelenmesi anlatılmaktad
 
 ### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>Bu makaledeki adımlardan birini kaçırdım ve veri kaynağınızı korudum. CMK şifrelemesini kullanmaya devam edebilir miyim?
 
-Makaledeki adımları takip etmez ve öğeleri korumaya devam etmek, kasada müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi kullanamayacak şekilde yol açabilir. Bu nedenle, öğeleri korumaya devam etmeden önce [Bu denetim listesine](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) başvurmanız önerilir.
+Makaledeki adımları takip etmez ve öğeleri korumaya devam etmek, kasada müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi kullanmamıza yol açabilir. Bu nedenle, öğeleri korumaya devam etmeden önce [Bu denetim listesine](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) başvurmanız önerilir.
 
 ### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>CMK-Encryption kullanarak yedeklemelerimin maliyetine eklensin mi?
 

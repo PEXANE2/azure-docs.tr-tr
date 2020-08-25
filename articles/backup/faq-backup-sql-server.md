@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762853"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827248"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -30,7 +30,7 @@ Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomat
 - Geri yükleme sırasında veritabanının üzerine yazmayı seçerseniz, bir sonraki günlük/değişiklik yedeklemesi başarısız olur ve bunun yerine tam yedekleme tetiklenir.
 - Veritabanı kurtarma modelindeki değişiklik nedeniyle günlük zincirlerinin sıfırlanması için tam yedeklemenin gerekli olduğu durumlarda, bir sonraki zamanlamaya göre bir tam otomatik olarak tetiklenir.
 
-Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir; Ancak, bunu devre dışı bırakmak isterseniz aşağıdaki işlemleri gerçekleştirin:
+Otomatik olarak, bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir. Ancak, devre dışı bırakmak isterseniz aşağıdaki adımları gerçekleştirin:
 
 - SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya ** üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
 - **ExtensionSettingsOverrides.js**, *{"EnableAutoHealer": false}* olarak ayarlayın.
@@ -56,7 +56,7 @@ DefaultBackupTasksThreshold varsayılan değeri **20**' dir.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>İkincil bir çoğaltmadan tam yedekleme çalıştırabilir miyim?
 
-SQL kısıtlamalarına göre, Ikincil çoğaltmada yalnızca tam yedeklemeyi Kopyala ' yı çalıştırabilirsiniz; Ancak tam yedeklemeye izin verilmez.
+SQL kısıtlamalarına göre, Ikincil çoğaltmada yalnızca tam yedeklemeyi Kopyala ' yı çalıştırabilirsiniz. Ancak, tam yedeklemeye izin verilmez.
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Şirket içi kullanılabilirlik gruplarını koruyabilir miyim?
 
@@ -92,7 +92,7 @@ Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **si
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Korunduktan sonra veritabanının adını değiştirdiğimde, davranış ne olur?
 
-Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, bu durum veritabanı bulunamamıştır ve yedeklemelerle başarısız olursa hizmet bu durumu işler.
+Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanı bulunmazsa ve yedeklemelerle başarısız olarak değerlendirir.
 
 Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkin olması durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: aa16952d2b2dff6f69abfc37090a9e00b7d48a27
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751121"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823913"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama
 
@@ -23,14 +23,14 @@ Bu hızlı başlangıçta, iş kartlarında ilgili bilgileri ayıklamak ve tanı
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Bir iş kartının görüntüsünün URL 'SI. Bu hızlı başlangıç için [örnek bir görüntü](../media/business-card-english.jpg) kullanabilirsiniz.
+- Bir iş kartının görüntüsü. Bu hızlı başlangıç için [örnek bir görüntü](../media/business-card-english.jpg) kullanabilirsiniz.
 
 > [!NOTE]
-> Bu hızlı başlangıç, URL tarafından erişilen bir uzak iş kartı görüntüsünü kullanır. Bunun yerine yerel dosyaları kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)bakın.
+> Bu hızlı başlangıçta yerel bir dosya kullanılır. URL tarafından erişilen bir uzak iş kartı görüntüsünü kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)bakın.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak **[Iş kartını çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
-1. `<your business card URL>`Bir iş kartı GÖRÜNTÜSÜNÜN URL adresiyle değiştirin.
+1. `<path to your business card>`Yerel form belgenizin yoluyla değiştirin.
 1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
     ```python
@@ -54,7 +54,7 @@ Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini k
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
     
     headers = {

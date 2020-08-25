@@ -1,6 +1,6 @@
 ---
-title: Sertifikayı Azure Key Vault dışarı aktar
-description: Sertifikayı Azure Key Vault dışarı aktar
+title: Sertifikaları Azure Key Vault dışarı aktarma
+description: Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin.
 services: key-vault
 author: sebansal
 tags: azure-key-vault
@@ -10,34 +10,49 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: afab65b22d9487f30da458346bf143a557bec0d8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588901"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827520"
 ---
-# <a name="export-certificate-from-azure-key-vault"></a>Sertifikayı Azure Key Vault dışarı aktar
+# <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
-Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza ve uygulamalar için güvenli iletişimleri etkinleştirmenize olanak tanır. Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
+Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin. Sertifikaları Azure CLı, Azure PowerShell veya Azure portal kullanarak dışarı aktarabilirsiniz. Azure App Service sertifikalarını dışarı aktarmak için Azure portal de kullanabilirsiniz.
 
-## <a name="about-azure-key-vault-certificate"></a>Azure Anahtar Kasası sertifikası hakkında
+## <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
-### <a name="composition-of-certificate"></a>Sertifika oluşturma
-Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir anahtar ve gizli dizi da oluşturulur. Key Vault anahtarı, anahtar işlemlerine izin verir ve Key Vault gizli dizi, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)
+Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanır. Ayrıca, uygulamalar için güvenli iletişimler da sunar. Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) .
 
-### <a name="exportable-or-non-exportable-keys"></a>Dışarı aktarılabilir veya dışarı aktarılabilir olmayan anahtarlar
-Bir Key Vault sertifikası oluşturulduğunda, bu, özel anahtarla birlikte adreslenebilir gizli kümesinden PFX veya ped biçiminde alınabilir. Sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu göstermelidir. İlke dışa aktarılabilir olduğunu gösteriyorsa, özel anahtar, gizli dizi olarak alındığında değerin bir parçası değildir.
+### <a name="composition-of-a-certificate"></a>Sertifika oluşturma
 
-İki tür anahtar, sertifikalarla birlikte desteklenir – RSA veya RSA HSM. Dışarı aktarılabilir yalnızca RSA ile kullanılabilir, RSA HSM tarafından desteklenmez. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)
+Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir *anahtar* ve *gizli* dizi oluşturulur. Key Vault anahtar, anahtar işlemlerine izin verir. Key Vault parolası, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir. Daha fazla bilgi için [bir sertifikanın kompozisyonunu](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) ziyaret edin.
 
-Azure Key Vault içinde depolanan sertifika, Azure CLı, PowerShell veya Portal kullanılarak aktarılabilir.
+### <a name="exportable-and-non-exportable-keys"></a>Dışarı aktarılabilir ve dışarı aktarılamayan anahtarlar
+
+Bir Key Vault sertifikası oluşturulduktan sonra, özel anahtarla adreslenebilir gizli alanından alabilirsiniz. PFX veya pek biçimindeki sertifikayı alın.
+
+- **Dışarı aktarılabilir**: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
+- **Dışarı aktarılabilir**değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
+
+Key Vault iki tür anahtarı destekler:
+
+- **RSA**: dışarı aktarılabilir
+- **HSM RSA**: dışarı aktarılabilir olmayan
+
+Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) .
+
+## <a name="export-stored-certificates"></a>Depolanan sertifikaları dışarı aktar
+
+Azure CLı, Azure PowerShell veya Azure portal kullanarak depolanan sertifikaları Azure Key Vault dışa aktarabilirsiniz.
 
 > [!NOTE]
-> Anahtar kasasında içeri aktarırken yalnızca bir sertifikanın parolasını gerektirdiğini unutmayın. Key Vault ilişkili parolayı kaydetmeyebilir, bu nedenle sertifikayı dışarı aktardığınızda parola boş olur.
+> Sertifikayı anahtar kasasında içeri aktardığınızda yalnızca bir sertifika parolası gerektir. Key Vault ilişkili parolayı kaydetmez. Sertifikayı dışa aktardığınızda parola boştur.
 
-## <a name="exporting-certificate-using-cli"></a>CLı kullanarak sertifikayı dışarı aktarma
-Aşağıdaki komut, bir Key Vault sertifikasının **Genel bölümünü** indirmeniz için izin verir.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bir Key Vault sertifikasının **ortak bölümünü** Indirmek IÇIN Azure CLI 'de aşağıdaki komutu kullanın.
 
 ```azurecli
 az keyvault certificate download --file
@@ -48,11 +63,10 @@ az keyvault certificate download --file
                                  [--vault-name]
                                  [--version]
 ```
-Örnekler ve parametre tanımları için [burada görüntüleyin](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)
 
+Daha fazla bilgi için [örnekleri ve parametre tanımlarını](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) görüntüleyin.
 
-
-Tüm sertifikayı (örneğin, **kompozisyonunun ortak ve özel kısmı**) indirmek isterseniz, sertifika gizli olarak indirilerek gerçekleştirilebilir.
+Tüm sertifikayı (hem ortak hem de özel bölümlerinin) indirmek isterseniz, sertifikayı gizli olarak indirin.
 
 ```azurecli
 az keyvault secret download –file {nameofcert.pfx}
@@ -63,12 +77,12 @@ az keyvault secret download –file {nameofcert.pfx}
                             [--vault-name]
                             [--version]
 ```
-Parametre tanımları için [burada görüntüleyin](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)
 
+Daha fazla bilgi için bkz. [parametre tanımları](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download).
 
-## <a name="exporting-certificate-using-powershell"></a>PowerShell kullanarak sertifikayı dışarı aktarma
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Bu komut, ContosoKV01 adlı anahtar kasasından TestCert01 adlı sertifikayı alır. Sertifikayı pfx dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar, Secretıd 'ye erişir ve sonra içeriği bir PFX dosyası olarak kaydeder.
+**ContosoKV01**adlı anahtar kasasından **TestCert01** adlı sertifikayı almak için Azure PowerShell ' de bu komutu kullanın. Sertifikayı PFX dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar **Secretıd**'ye erişir ve sonra IÇERIĞI bir PFX dosyası olarak kaydeder.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
@@ -81,26 +95,25 @@ $protectedCertificateBytes = $certCollection.Export([System.Security.Cryptograph
 $pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
 [System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
 ```
-Bu işlem, tüm sertifika zincirini özel anahtarla dışa aktarır ve bu sertifika parola korumalı olur.
-Komut ve parametreler hakkında daha fazla bilgi için ```Get-AzKeyVaultCertificate``` bkz. [örnek 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)
 
-## <a name="exporting-certificate-using-portal"></a>Portalı kullanarak sertifikayı dışarı aktarma
+Bu komut, tüm sertifika zincirini özel anahtarla dışa aktarır. Sertifika, parola korumalı.
+**Get-azkeyvaultcertificate** komutu ve parametreleri hakkında daha fazla bilgi için bkz. [Get-azkeyvaultcertificate-örnek 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0).
 
-Portalda, sertifika dikey penceresinde bir sertifika oluştururken/içeri aktardığınızda, sertifikanın başarıyla oluşturulduğunu belirten bir bildirim alırsınız. Sertifikayı seçtiğinizde, geçerli sürüme tıklayabilirsiniz ve indirme seçeneğini görürsünüz.
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
+Azure portal sertifika dikey penceresinde bir sertifikayı oluşturduktan/içeri aktardıktan sonra **, sertifikanın başarıyla** oluşturulduğunu belirten bir bildirim alırsınız. İndirme seçeneğini görmek için sertifikayı ve geçerli sürümü seçin.
 
-"CER biçiminde Indir" veya "PFX/ped biçiminde Indir" düğmesine tıklayarak sertifikayı indirebilirsiniz.
-
+Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde indir**' i seçin.
 
 ![Sertifika indirme](../media/certificates/quick-create-portal/current-version-shown.png)
 
+**Azure App Service sertifikalarını dışarı aktarma**
 
-## <a name="exporting-app-service-certificate-from-key-vault"></a>Anahtar kasasından App Service Sertifikası dışarı aktarılıyor
+Azure App Service sertifikalar, SSL sertifikaları satın almanın kolay bir yoludur. Bunları portalın içinden Azure uygulamalarına atayabilirsiniz. Ayrıca bu sertifikaları portaldan başka bir yerde kullanılacak PFX dosyaları olarak dışarı aktarabilirsiniz. İçeri aktardıktan sonra App Service sertifikaları **gizli**dizileri altında bulunur.
 
-Azure App Service sertifikalar, SSL sertifikaları satın almanın ve bunları portalın içinden Azure uygulamalarına atayan kolay bir yol sağlar. Bu sertifikalar, başka bir yerde kullanılacak PFX dosyaları olarak portaldan da aktarılabilir.
-İçeri aktarıldıktan sonra, App Service sertifikaları gizli dizileri **altında**bulunabilir.
+Daha fazla bilgi için [Azure App Service sertifikaları dışarı aktarma](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)adımlarına bakın.
 
-App Service sertifikalarını dışa aktarma adımları için [buradan okuyun](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)
+---
 
 ## <a name="read-more"></a>Daha fazla bilgi edinin
 * [Çeşitli sertifika dosyası türleri ve tanımları](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

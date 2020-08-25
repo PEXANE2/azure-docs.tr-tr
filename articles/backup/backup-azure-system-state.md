@@ -3,12 +3,12 @@ title: Windows sistem durumunu Azure 'a yedekleme
 description: Windows Server bilgisayarlarının sistem durumunu Azure 'a nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263053"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824471"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows sistem durumunu Azure 'a yedekleme
 
@@ -98,7 +98,7 @@ Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek içi
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
 > [!NOTE]
-> Azure portal üzerinden yedeklemeyi etkinleştirme olanağı henüz mevcut değildir. Windows Server sistem durumunu yedeklemek için Microsoft Azure Kurtarma Hizmetleri aracısını kullanın.
+> Azure portal aracılığıyla yedeklemenin etkinleştirilmesi mümkün değildir. Windows Server sistem durumunu yedeklemek için Microsoft Azure Kurtarma Hizmetleri aracısını kullanın.
 >
 
 1. İndirilenler klasöründen (veya diğer kayıtlı konumdan) **MARSagentinstaller.exe** dosyasını bulun ve dosyaya çift tıklayın.
@@ -116,7 +116,7 @@ Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek içi
    * Şifreleme parolasını güvenli bir konuma kaydedin.
 
      > [!NOTE]
-     > Parolayı kaybeder veya unutursanız Microsoft, yedekleme verilerini kurtarmanıza yardımcı olamaz. Dosyayı güvenli bir konuma kaydedin. Bu dosya, bir yedeklemeyi geri yüklemek için gereklidir.
+     > Parolayı kaybeder veya unutursanız, Microsoft, yedekleme verilerini kurtarmaya yardımcı olamaz. Dosyayı güvenli bir konuma kaydedin. Bir yedeklemeyi geri yüklemek gereklidir.
      >
      >
 

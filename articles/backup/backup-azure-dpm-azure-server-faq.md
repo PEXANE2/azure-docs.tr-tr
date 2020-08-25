@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) ve DPM (Data Pr
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522938"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827214"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Sunucusu ve DPM-SSS
 
@@ -65,7 +65,7 @@ Evet, öğe özgün SharePoint sitesine kurtarılabilir.
 
 ### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>SharePoint, SQL AlwaysOn kullanılarak yapılandırıldıysa bir SharePoint veritabanını özgün konuma kurtarabilir miyim?
 
-SharePoint veritabanları SQL AlwaysOn 'da yapılandırıldığı için, kullanılabilirlik grubu kaldırılmadığı takdirde bunlar değiştirilemez. Sonuç olarak, DPM bir veritabanını özgün konumuna geri yükleyemezsiniz. SQL Server bir veritabanını başka bir SQL Server örneğine kurtarabilirsiniz.
+SharePoint veritabanları SQL AlwaysOn 'da yapılandırıldığı için, kullanılabilirlik grubu kaldırılmadığı takdirde bunlar değiştirilemez. Sonuç olarak, DPM bir veritabanını özgün konumuna geri yükleyemiyor. SQL Server bir veritabanını başka bir SQL Server örneğine kurtarabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

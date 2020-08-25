@@ -3,12 +3,12 @@ title: MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 381df40dfe4149b2f43dc22bb2186ec1f17b0515
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538641"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825911"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
 
@@ -53,7 +53,7 @@ Bir yedekleme ilkesi oluşturmak için:
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. **Yedeklenecek öğeleri seçin** sayfasında **İleri**' yi seçin.
-1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Sonra **İleri**’yi seçin.
+1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Ardından **İleri**’yi seçin.
 
     * Bir yedekleme çekilirken bir kurtarma noktası oluşturulur.
     * Ortamınızda oluşturulan kurtarma noktası sayısı yedekleme zamanlamanıza bağlıdır.
@@ -65,7 +65,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
         ![Haftalık yedekleme zamanlaması ayarlama](./media/backup-configure-vault/week-schedule.png)
 
-1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Sonra **İleri**’yi seçin.
+1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Ardından **İleri**’yi seçin.
 
     * Bekletme ayarları hangi kurtarma noktalarının depolanacağını ve ne kadar süreyle depolanacağını belirtir.
     * Günlük bekletme ayarı için, günlük bekletme için belirtilen zamanda, en son kurtarma noktasının belirtilen gün sayısı boyunca tutulacaksınız. Ya da her ayın 30. gününde oluşturulan kurtarma noktasının 12 ay boyunca depolanması gerektiğini göstermek için bir aylık bekletme ilkesi belirtebilirsiniz.

@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757209"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827401"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -214,7 +214,7 @@ Evet. Azure'daki veriler beklemedeyken şifrelenir.
 - Şirket içi yedekleme için, beklemedeyken şifreleme özelliği Azure'a yedekleme yaparken sağladığınız parola kullanılarak sağlanır.
 - Azure VM'leri için, veriler Depolama Hizmeti Şifrelemesi (SSE) kullanılarak beklemedeyken şifrelenir.
 
-Microsoft herhangi bir noktada yedekleme verilerinin şifresini çözmez.
+Microsoft, herhangi bir noktada yedekleme verilerinin şifresini çözmez.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Yedekleme verilerini şifrelemek için kullanılan şifreleme anahtarının en düşük uzunluğu nedir?
 
@@ -222,7 +222,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı tarafından kullanılan şi
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Şifreleme anahtarını kaybedersem ne olur? Verileri kurtarabilir miyim? Microsoft verileri kurtarabilir mi?
 
-Yedekleme verilerini şifrelemek için kullanılan anahtar yalnızca sizin sitenizde bulunur. Microsoft, Azure üzerinde anahtarın bir kopyasını tutmaz ve anahtara erişim sahibi değildir. Anahtarı kaybetmeniz durumunda Microsoft yedekleme verilerini kurtaramaz.
+Yedekleme verilerini şifrelemek için kullanılan anahtar yalnızca sizin sitenizde bulunur. Microsoft, Azure 'da bir kopya bulundurmaz ve anahtara hiçbir erişimi yoktur. Anahtarı kaybetmeniz durumunda Microsoft yedekleme verilerini kurtaramaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

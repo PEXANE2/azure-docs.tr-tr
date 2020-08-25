@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086600"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827231"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlükleri ve ölçümleri
 
@@ -115,17 +115,17 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
   - Durum: olası değerler *sağlıklı*, *düşürülmüş*, *sağlıksız*.
   - Neden: güvenlik duvarının ilgili durumunun nedenini gösterir. 
 
-     SNAT bağlantı noktaları %95 > kullanılırsa, tükendikleri kabul edilir ve durum =**düşürülmüş** ve Reason =**SNAT bağlantı noktası**ile sistem durumu %50 olur. Güvenlik Duvarı, işleme trafiğinin ve mevcut bağlantıların etkilenmemesini önler. Bununla birlikte, yeni bağlantılar zaman zaman kurulamayabilir.
+     SNAT bağlantı noktaları %95 > kullanılırsa, tükendikleri kabul edilir ve durum =**düşürülmüş** ve Reason =**SNAT bağlantı noktası**ile sistem durumu %50 olur. Güvenlik duvarı, trafiği işlemeye devam eder ve var olan bağlantılar bu durumdan etkilenmez. Ancak yeni bağlantılar aralıklı olarak kurulamayabilir.
 
      SNAT bağlantı noktaları %95 < kullanılırsa, güvenlik duvarı sağlıklı olarak değerlendirilir ve sistem durumu %100 olarak gösterilir.
 
-     Hiçbir SNAT bağlantı noktası kullanımı bildirilmezse, sistem durumu %0 olarak gösterilir. 
+     SNAT bağlantı noktası kullanımı bildirilmezse sistem durumu %0 olarak gösterilir. 
 
 - **SNAT bağlantı noktası kullanımı** -güvenlik duvarı tarafından kullanılan SNAT bağlantı noktalarının yüzdesi.
 
     Birim: yüzde
 
-   Güvenlik duvarınızdan daha fazla genel IP adresi eklediğinizde, daha fazla SNAT bağlantı noktası kullanılabilir ve bu, SNAT bağlantı noktası kullanımını azaltır. Ayrıca, güvenlik duvarı farklı nedenlerle (örneğin, CPU veya aktarım hızı) ek SNAT bağlantı noktaları da kullanılabilir hale gelir. Bu nedenle, belirli bir SNAT bağlantı noktası kullanımı yüzdesi, yalnızca hizmetin ölçeği değiştiğinden, genel IP adresi eklemeden kapatılabilir. Güvenlik duvarınızdaki bağlantı noktalarını artırmak için kullanılabilen genel IP adresi sayısını doğrudan kontrol edebilirsiniz. Ancak, güvenlik duvarı ölçeklendirmeyi doğrudan kontrol edebilirsiniz. Şu anda, SNAT bağlantı noktaları yalnızca ilk beş genel IP adresi için eklenmiştir.   
+   Güvenlik duvarınıza daha fazla genel IP adresi eklediğinizde kullanıma sunulan SNAT bağlantı noktası sayısı artar ve SNAT bağlantı noktası kullanımı azalır. Ayrıca farklı nedenlerden dolayı (CPU veya aktarım hızı gibi) güvenlik duvarının ölçeği genişletildiğinde de ek SNAT bağlantı noktaları kullanıma sunulur. Bu nedenle, belirli bir SNAT bağlantı noktası kullanımı yüzdesi, yalnızca hizmetin ölçeği değiştiğinden, genel IP adresi eklemeden kapatılabilir. Güvenlik duvarınızdaki bağlantı noktalarını artırmak için kullanılabilen genel IP adresi sayısını doğrudan kontrol edebilirsiniz. Ancak, güvenlik duvarı ölçeklendirmeyi doğrudan kontrol edebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

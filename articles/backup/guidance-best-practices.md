@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757600"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825588"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -108,7 +108,7 @@ Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulunduru
 
 * Uzun süreli saklama:
   * Planlanmış (uyumluluk gereksinimleri)-verilerin geçerli zamandan itibaren gerekli yıllar olduğunu biliyorsanız, uzun süreli saklama kullanın.
-  * Plansız (isteğe bağlı gereksinim)-önceden bilmiyorsanız, belirli özel bekletme ayarları ile isteğe bağlı olarak kullanabilirsiniz (Bu özel bekletme ayarları ilke ayarlarından etkilenmez).
+  * Plansız (isteğe bağlı gereksinim)-önceden bilmiyorsanız, belirli özel bekletme ayarlarıyla isteğe bağlı olarak kullanabilirsiniz (Bu özel saklama ayarları ilke ayarlarından etkilenmez).
 
 * Özel saklama ile isteğe bağlı yedekleme-yedekleme ilkesi aracılığıyla zamanlanmamış bir yedekleme yapmanız gerekiyorsa, isteğe bağlı yedekleme kullanabilirsiniz. Bu, zamanlanmış yedeğine uymayan veya ayrıntılı yedekleme (örneğin, zamanlanan yedeklemenin günde yalnızca bir yedeklemeye izin verdiğinden) yedeklemeleri almak için yararlı olabilir. Zamanlanan ilkede tanımlanan bekletme ilkesinin isteğe bağlı yedeklemeler için uygulanmadığını unutmayın.
 
@@ -247,13 +247,13 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
 
 * Azure Backup, e-posta yoluyla hatalara, uyarılara ve kritik işlemlere yönelik **olarak yerleşik bir uyarı** bildirim mekanizması sağlar. Bir uyarı oluşturulduğunda bildirilecek tek e-posta adreslerini veya dağıtım listelerini belirtebilirsiniz. Ayrıca, her bir uyarı için bildirim almayı veya saatlik bir özette grupları seçip bildirim almayı seçebilirsiniz.
   * Bu uyarılar, hizmet tarafından tanımlanır ve sınırlı senaryolar için destek sağlar. yedekleme/geri yükleme hatalarıyla, verileri koruma ve verileri silme ile korumayı durdurma ve bu şekilde devam eder. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Verileri silme ile korumayı durdur gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmetleri Kasası için bildirimler yapılandırılmadığı halde bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilere e-posta gönderilir.
+  * Verileri silme ile korumayı durdur gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmetleri Kasası için **Bildirimler yapılandırılmadığı halde** bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilere e-posta gönderilir.
   * Belirli iş yükleri yüksek sıklıkta başarısız olabilir (örneğin, her 15 dakikada bir SQL Server). Her bir başarısızlık durumunda oluşan uyarılarla başa çıkılamamasını engellemek için uyarılar birleştirilir. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Yerleşik uyarılar özelleştirilemiyor ve Azure portal tanımlanan e-postalarda kısıtlanıyor.
 
 * **Özel uyarılar** (örneğin, başarılı işlerin uyarıları) oluşturmanız gerekiyorsa Log Analytics kullanın. Azure Izleyici 'de, bir Log Analytics çalışma alanında kendi uyarılarınızı oluşturabilirsiniz. Hibrit iş yükleri (DPM/MABS) Ayrıca, LA 'ya veri gönderebilir ve Azure Backup tarafından desteklenen iş yükleri arasında ortak uyarılar sağlamak için LA 'yı kullanabilir.
 
-* Ayrıca, yerleşik kurtarma hizmetleri Kasası **etkinlik günlükleri**aracılığıyla da bildirim alabilirsiniz; Ancak, sınırlı senaryoları destekler ve zamanlanan yedekleme gibi işlemler için uygun değildir ve bu da, etkinlik günlükleriyle daha iyi olan kaynak günlükleriyle daha iyi bir şekilde hizalanır. Bu sınırlamalar hakkında daha fazla bilgi edinmek ve Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak üzere Log Analytics çalışma alanını nasıl kullanabileceğinizi öğrenmek için bu [makaleye](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)bakın.
+* Ayrıca, yerleşik kurtarma hizmetleri Kasası **etkinlik günlükleri**aracılığıyla da bildirim alabilirsiniz. Ancak, sınırlı senaryoları destekler ve zamanlanan yedekleme gibi işlemler için uygun değildir ve bu da, etkinlik günlükleriyle daha iyi olan kaynak günlükleriyle daha iyi bir şekilde hizalanır. Bu sınırlamalar hakkında daha fazla bilgi edinmek ve Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak üzere Log Analytics çalışma alanını nasıl kullanabileceğinizi öğrenmek için bu [makaleye](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

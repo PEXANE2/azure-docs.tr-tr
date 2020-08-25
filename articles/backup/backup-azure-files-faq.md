@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382721"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824738"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -36,7 +36,7 @@ Yedeklemeye çalışırken, BT içindeki dosya paylaşımlarını bulacak bir de
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Dosya paylaşımının yedeklemesini yapılandırmak için kasayı neden değiştiremiyorum?
 
-Depolama hesabı zaten bir kasaya kaydedilmişse veya depolama hesabındaki diğer dosya paylaşımları bir kasa kullanılarak korunuyorsa, bir depolama hesabındaki tüm dosya paylaşımları yalnızca aynı kasa tarafından korunabilecek şekilde değiştirme seçeneği verilmemiş demektir. Kasayı değiştirmek istediğiniz durumlarda, bağlı kasadan [depolama hesabındaki tüm dosya paylaşımlarının korumasını durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , depolama hesabının [kaydını](manage-afs-backup.md#unregister-a-storage-account) kaldırmanız ve ardından koruma için farklı bir kasa seçmeniz gerekir.
+Depolama hesabı zaten bir kasaya kaydedilmişse veya depolama hesabındaki diğer dosya paylaşımları bir kasa kullanılarak korunuyorsa, bunu değiştirme seçeneği verilmemiş demektir. Bir depolama hesabındaki tüm dosya paylaşımları yalnızca aynı kasa tarafından korunabilir. Kasayı değiştirmek istiyorsanız, bağlı kasadan [depolama hesabındaki tüm dosya paylaşımlarının korumasını durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , depolama hesabının [kaydını](manage-afs-backup.md#unregister-a-storage-account) kaldırmanız ve ardından koruma için farklı bir kasa seçmeniz gerekir.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya Paylaşımlarımı yedeklemediğim kasayı değiştirebilir miyim?
 
@@ -97,13 +97,13 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 |Bekletme türü |Zamanla |Bekletme  |
 |---------|---------|---------|
-|Günlük    |    Her gün 8 saat    |  100 gün       |
+|Günlük olarak    |    Her gün 8 saat    |  100 gün       |
 
 #### <a name="new-policy-modified-p1"></a>Yeni Ilke [değiştirilmiş P1]
 
 | Bekletme türü | Zamanla                       | Bekletme |
 | -------------- | ------------------------------ | --------- |
-| Günlük          | Her gün 9 saat              | 50 gün   |
+| Günlük olarak          | Her gün 9 saat              | 50 gün   |
 | Haftalık         | Pazar günü saat 9 ' da              | 3 hafta   |
 | Aylık olarak        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
 | Yıllık         | Üçüncü Pazar günü saat 9 ' da | 4 yıl   |
@@ -131,14 +131,14 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 
 | Bekletme türü | Zamanla           | Bekletme |
 | -------------- | ------------------ | --------- |
-| Günlük          | Her gün 8 saat | 50 gün   |
+| Günlük olarak          | Her gün 8 saat | 50 gün   |
 | Haftalık         | Pazartesi günü 8 saat  | 3 hafta   |
 
 #### <a name="new-policy-modified-p2"></a>Yeni Ilke [Modified P2]
 
 | Bekletme türü | Zamanla               | Bekletme |
 | -------------- | ---------------------- | --------- |
-| Günlük          | Her gün 9 saat     | 10 gün   |
+| Günlük olarak          | Her gün 9 saat     | 10 gün   |
 | Haftalık         | Pazartesi günü saat 9 ' da      | 2 hafta   |
 | Aylık olarak        | Son Pazartesi günü saat 9 ' da | 2 ay  |
 

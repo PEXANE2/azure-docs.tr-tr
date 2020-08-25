@@ -3,12 +3,12 @@ title: REST API ile Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için REST API kullanmayı öğrenin
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757141"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824874"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak Azure dosya paylaşma 'yı yedekleme
 
@@ -175,7 +175,7 @@ URI için değişkenleri aşağıdaki şekilde ayarlayın:
    Bizim örneğimizde, *Storagecontainer; Depo AzureFiles; testvault2*
 
 >[!NOTE]
-> Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini sabit kodlamayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi gelecekte değişirse API çağrısı başarısız olur.
+> Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini sabit kodmayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi gelecekte değişirse API çağrısı başarısız olur.
 
 <br>
 
@@ -373,7 +373,7 @@ Bizim örneğimizde, korumak istediğimiz dosya paylaşımının KIMLIĞI:
 Ya da koruma kapsayıcısının ve korunabilir öğe yanıtlarının **ad** özniteliğine başvurabilirsiniz.
 
 >[!NOTE]
->Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini veya korumalı öğe adı biçimini sabit kodlamayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi veya korunan öğe adı biçimi gelecekte değişirse API çağrısı başarısız olur.
+>Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini veya korumalı öğe adı biçimini sabit kodmayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi veya korunan öğe adı biçimi gelecekte değişirse API çağrısı başarısız olur.
 
 <br>
 

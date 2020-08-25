@@ -3,12 +3,12 @@ title: Güvenlik denetimleri
 description: Azure Backup hizmetinde kullanılan güvenlik denetimleri hakkında bilgi edinin. Bu denetimler hizmetin güvenlik açıklarını engellemesine, algılamasına ve yanıt vermesine yardımcı olur.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4a59ab0edeeba480475ac593d2721f95c7b5f48a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371728"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827299"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure Backup için güvenlik denetimleri
 
@@ -37,7 +37,7 @@ Bu makalede, Azure Backup yerleşik olarak bulunan güvenlik denetimleri Belgele
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler
 |---|---|--|--|
-| Kimlik Doğrulaması| Yes | Kimlik doğrulaması Azure Active Directory. |  |
+| Kimlik Doğrulama| Yes | Kimlik doğrulaması Azure Active Directory. |  |
 | Yetkilendirme| Yes | Oluşturulan müşteri ve Azure yerleşik rolleri kullanılır. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Veri koruma
