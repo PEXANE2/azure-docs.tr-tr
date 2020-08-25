@@ -4,15 +4,15 @@ description: Azure dosya paylaşımlarında bilinen performans sorunlarını gid
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009282"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782379"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -20,9 +20,9 @@ Bu makalede, Azure dosya paylaşımlarıyla ilgili bazı yaygın sorunlar listel
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Yüksek gecikme süresi, düşük aktarım hızı ve genel performans sorunları
 
-### <a name="cause-1-share-experiencing-throttling"></a>Neden 1: daraltma ile paylaşma
+### <a name="cause-1-share-was-throttled"></a>Neden 1: paylaşma daraltıldı
 
-Premium paylaşımdaki varsayılan kota 100 GiB 'dir ve bu da 100 temel ıOPS (bir saat için en fazla ' 300 e kadar veri bloğu) sağlar. Sağlama ve ıOPS ile ilişkisi hakkında daha fazla bilgi için, planlama kılavuzunun [sağlanan paylaşımlar](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) bölümüne bakın.
+Bir dosya paylaşımının ıOPS, giriş veya çıkış sınırlarına ulaşıldığında istekler azaltılır. Standart ve Premium dosya paylaşımlarının sınırlarını anlamak için bkz. [dosya paylaşımı ve dosya ölçeği hedefleri](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
 
 Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
@@ -47,7 +47,8 @@ Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölç
 
 ### <a name="solution"></a>Çözüm
 
-- Paylaşımınızda daha yüksek bir kota belirterek sağlanan kapasiteyi yükseltin.
+- Standart bir dosya paylaşımı kullanıyorsanız, depolama hesabınızda [büyük dosya paylaşımlarını](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) etkinleştirin. Büyük dosya paylaşımları, paylaşım başına 10.000 ıOPS 'ye kadar destekler.
+- Premium dosya paylaşma kullanıyorsanız, ıOPS sınırını artırmak için sağlanan dosya paylaşımının boyutunu artırın. Daha fazla bilgi edinmek için bkz. Azure dosyaları Planlama Kılavuzu 'ndaki [Premium dosya paylaşımlarının sağlamasını anlama](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) bölümü.
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>Neden 2: meta veri/ad alanı ağır iş yükü
 

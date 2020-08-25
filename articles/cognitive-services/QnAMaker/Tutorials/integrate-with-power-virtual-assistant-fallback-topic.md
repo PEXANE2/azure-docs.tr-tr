@@ -4,16 +4,16 @@ description: Bu öğreticide, etkin öğrenme ile bilgi Bankalarınızın kalite
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84635396"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Öğretici: bilgi tabanınızı Power Virtual Agents 'e ekleme
 Bilgi tabanınızdan yanıt sağlamak için bir [Power Virtual Agents](https://powervirtualagents.microsoft.com/) bot oluşturun ve genişletin.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -214,9 +214,9 @@ Son aracı tuvali aşağıda verilmiştir.
     |--|--|--|
     |1|Hello|Konuşmaya başla|
     |2|Depolama saatleri|Örnek konu. Bu, sizin için sizin için herhangi bir ek iş olmadan yapılandırılır.|
-    |3|Yes|Yanıt olarak`Did that answer your question?`|
-    |4|Mükemmel|Yanıt olarak`Please rate your experience.`|
-    |5|Yes|Yanıt olarak`Can I help with anything else?`|
+    |3|Evet|Yanıt olarak `Did that answer your question?`|
+    |4|Mükemmel|Yanıt olarak `Please rate your experience.`|
+    |5|Evet|Yanıt olarak `Can I help with anything else?`|
     |6|Sorgu tahminleri için üretilen iş performansını nasıl geliştirebilirim?|Bu soru, yanıt vermek için metin bilgi tabanınızı gönderen geri dönüş eylemini tetikler. Ardından Yanıt gösterilir. tek tek eylemler için yeşil onay işaretleri her bir eylem için başarıyı gösterir.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Başarılı eylemler için yeşil onay işaretlerini gösteren tuval ile sohbet bot ekran görüntüsü.":::
@@ -229,7 +229,7 @@ Aracıyı okulunuzun veya kuruluşunuzun tüm üyeleri için kullanılabilir hal
 
 1. Tanıtım Web sitesinde botunuzu deneyin ( **Yayımla**altındaki bağlantıyı arayın).
 
-    Bot 'unuzla yeni bir Web sayfası açılır. Bot 'a aynı test sorusunu sorun:`How can I improve the throughput performance for query predictions?`
+    Bot 'unuzla yeni bir Web sayfası açılır. Bot 'a aynı test sorusunu sorun: `How can I improve the throughput performance for query predictions?`
 
     > [!div class="mx-imgBorder"]
     > ![Son aracı tuvalinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)

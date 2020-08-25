@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84708695"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak bir SQL Server örneğindeki Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne geçirme
@@ -25,7 +25,7 @@ ms.locfileid: "84708695"
 
 Bu makale, T-SQL söz dizimini kullanarak SQL Server şirket içi Windows kullanıcılarınızı ve gruplarınızı Azure SQL yönetilen örneği 'ne geçirme sürecinde size kılavuzluk ediyor.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -314,7 +314,7 @@ SQL yönetilen örneği üzerinde geçiş işlemini gerçekleştirmek için ALTE
 
 Daha önce ALTER USER söz dizimini kullanarak Azure AD oturum açma bilgilerine eşlenmiş kullanıcıyı kullanarak SQL yönetilen örneği için kimlik doğrulamasını test edin.
 
-1. Azure SQL yönetilen örnek aboneliğinizi şu şekilde kullanarak Federasyon VM 'de oturum açın`aadsqlmi\testUser1`
+1. Azure SQL yönetilen örnek aboneliğinizi şu şekilde kullanarak Federasyon VM 'de oturum açın `aadsqlmi\testUser1`
 1. SQL Server Management Studio (SSMS) kullanarak, veritabanına bağlanarak **Active Directory tümleşik** kimlik doğrulaması kullanarak SQL yönetilen Örneğinizde oturum açın `migration` .
     1. Ayrıca, testUser1@aadsqlmi.net SSMS seçeneği **Active Directory – UNIVERSAL with MFA desteğiyle**kimlik bilgilerini kullanarak da oturum açabilirsiniz. Ancak, bu durumda çoklu oturum açma mekanizmasını kullanamazsınız ve bir parola yazmanız gerekir. SQL yönetilen örneğiniz üzerinde oturum açmak için bir Federasyon VM 'si kullanmanız gerekmez.
 1. Rol üyesi **Seç**bölümünde, tablodan seçim yapabilirsiniz `test`
@@ -325,8 +325,8 @@ Daha önce ALTER USER söz dizimini kullanarak Azure AD oturum açma bilgilerine
 
 Bir Windows grubunun üyesini kullanarak bir SQL yönetilen örneği için kimlik doğrulaması testi `migration` . Kullanıcının `aadsqlmi\testGroupUser` geçişten önce gruba eklenmiş olması gerekir `migration` .
 
-1. Azure SQL yönetilen örnek aboneliğinizi şu şekilde kullanarak Federasyon VM 'de oturum açın`aadsqlmi\testGroupUser`
-1. SSMS 'yi **Active Directory tümleşik** kimlik doğrulamasıyla kullanma, Azure SQL yönetilen örnek sunucusuna ve veritabanına bağlanma`migration`
+1. Azure SQL yönetilen örnek aboneliğinizi şu şekilde kullanarak Federasyon VM 'de oturum açın `aadsqlmi\testGroupUser`
+1. SSMS 'yi **Active Directory tümleşik** kimlik doğrulamasıyla kullanma, Azure SQL yönetilen örnek sunucusuna ve veritabanına bağlanma `migration`
     1. Ayrıca, testGroupUser@aadsqlmi.net SSMS seçeneği **Active Directory – UNIVERSAL with MFA desteğiyle**kimlik bilgilerini kullanarak da oturum açabilirsiniz. Ancak, bu durumda çoklu oturum açma mekanizmasını kullanamazsınız ve bir parola yazmanız gerekir. SQL yönetilen Örneğinizde oturum açmak için bir Federasyon VM 'si kullanmanız gerekmez.
 1. Rolün bir parçası olarak `db_owner` Yeni bir tablo oluşturabilirsiniz.
 

@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85297950"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
 Bu makalede, [Azure statik Web Apps](overview.md)bir [Hugo](https://gohugo.io/) Web uygulaması oluşturma ve dağıtma gösterilmektedir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web uygulamasıdır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -98,10 +98,10 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 ### <a name="create-the-application"></a>Uygulama oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
-1. **Kaynak oluştur ' a** tıklayın
-1. **Statik Web Apps** ara
-1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın
-1. **Oluştur** 'a tıklayın
+1. **Kaynak oluştur** seçeneğine tıklayın
+1. **Statik Web Uygulamaları** için arama yapın
+1. **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
+1. **Oluştur** seçeneğine tıklayın
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
 
@@ -131,7 +131,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandırma ayarlarını eklersiniz. Aşağıdaki ayarlar GitHub eylemi iş akışı dosyasını yapılandırır.
 
-1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
+1. Derleme yapılandırmasını düzenlemek için **İleri: Derleme >** düğmesine tıklayın
 
 1. _Uygulama konumunu_ olarak ayarlayın **/** .
 
@@ -139,7 +139,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 

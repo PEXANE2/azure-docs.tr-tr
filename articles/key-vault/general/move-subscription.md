@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585819"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782728"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault başka bir aboneliğe taşıma
 
@@ -51,7 +51,7 @@ Kuruluşunuz, abonelik düzeyinde uygulama veya dışlamaları olan Azure Ilkesi
 
 Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneliğiniz için ilke atamalarından ve taşıdığınız aboneliğin yanı sıra uyuşmazlıkların bulunmadığından emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Katılımcı düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği.
 * Katılımcı düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek.
@@ -59,7 +59,9 @@ Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneli�
 
 ## <a name="procedure"></a>Yordam
 
-### <a name="initial-steps-moving-key-vault"></a>İlk adımlar (Key Vault taşınıyor)
+İstiyorsanız 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Key Vault aynı kiracı içinde yeni bir aboneliğe taşıma
 
 1. Azure portalında oturum açma
 2. Anahtar kasanıza gidin
@@ -70,9 +72,9 @@ Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneli�
 7. Kaynakları taşıma hakkında uyarı bildirimi
 8. "Tamam" ı seçin
 
-### <a name="additional-steps-post-move"></a>Ek adımlar (taşıma sonrası)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Anahtar kasasını yeni bir Kiracıdaki bir aboneliğe taşıdıysanız ek adımlar
 
-Anahtar kasanızı yeni aboneliğe taşıdığınıza göre, kiracı KIMLIĞINI güncelleştirmeniz ve eski erişim ilkelerini kaldırmanız gerekir. PowerShell ve Azure CLı 'deki bu adımlarla ilgili öğreticiler aşağıda verilmiştir.
+Anahtar kasanızı yeni bir Kiracıdaki bir aboneliğe taşıdıysanız, kiracı KIMLIĞINI el ile güncelleştirmeniz ve eski erişim ilkelerini kaldırmanız gerekir. PowerShell ve Azure CLı 'deki bu adımlarla ilgili öğreticiler aşağıda verilmiştir. PowerShell kullanıyorsanız, geçerli seçili kapsamınızın dışındaki kaynakları görmenizi sağlamak için aşağıda belgelenen Clear-AzContext komutunu çalıştırmanız gerekebilir. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

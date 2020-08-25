@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: fbcbf1be29031596201774ae5ebb40cb1a3b89a2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85113458"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Öğretici: Xamarin ve Azure Cosmos DB ile mobil uygulamalar oluşturun
@@ -70,7 +70,7 @@ Xamarin projelerinizde şemasız veriler üzerinde dil ile tümleşik sorgular k
         Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
     }
 ```
-### <a name="add-users"></a>Kullanıcı ekleme
+### <a name="add-users"></a>Kullanıcı ekle
 Birçok başlangıç örneğinde olduğu gibi, indirdiğiniz Azure Cosmos DB örneğinde de uygulamanın kodunda sabit olarak kodlanmış bir ana anahtar kullanılarak hizmette kimlik doğrulama gerçekleştirilir. Bu varsayılan yöntem, yerel öykünücünüz dışında bir yerde çalıştırmak istediğiniz uygulamalar için iyi bir seçenek değildir. Yetkisiz bir kullanıcı ana anahtarı elde ederse Azure Cosmos DB hesabınızdaki tüm veriler tehlikeye girebilir. Bunun yerine, uygulamanızın yalnızca oturum açmış kullanıcı kayıtlarına erişmesini istersiniz. Azure Cosmos DB, geliştiricilerin bir koleksiyon, bir bölüm anahtarına göre gruplandırılmış belgeler ya da belirli bir belgede uygulama okuma veya okuma/yazma izni vermesini sağlar. 
 
 Yapılacaklar listesi uygulamasını çok kullanıcılı bir yapılacaklar listesi uygulaması olarak değiştirmek için aşağıdaki adımları izleyin: 

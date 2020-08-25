@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84706452"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL yönetilen örneği 'nde güvenlik
@@ -27,7 +27,7 @@ Azure SQL yönetilen örneği, en son SQL Server (Enterprise Edition) veritaban�
 - Rol tabanlı Üyelikler ve izinlerle yetkilendirmeyi kullanma
 - Güvenlik özelliklerini etkinleştir
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -136,7 +136,7 @@ Oturumu `sysadmin` sunucu rolüne eklemek için:
     GO
     ```
 
-    Aşağıdaki örnek, `sysadmin` oturum açma için sunucu rolünü verirnativeuser@aadsqlmi.onmicrosoft.com
+    Aşağıdaki örnek, `sysadmin` oturum açma için sunucu rolünü verir nativeuser@aadsqlmi.onmicrosoft.com
 
     ```sql
     ALTER SERVER ROLE sysadmin ADD MEMBER [nativeuser@aadsqlmi.onmicrosoft.com]
@@ -195,7 +195,7 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
 
 1. SQL Server Management Studio yeni bir sorgu penceresi açın.
 
-    Bu örnek, Azure AD 'de _mygroup_ adlı bir grup olduğunu varsayar. Aşağıdaki komutu yürütün:
+    Bu örnek, Azure AD 'de _mygroup_ adlı bir grup olduğunu varsayar. Şu kodu yürütün:
 
     ```sql
     USE master
@@ -239,7 +239,7 @@ Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı al
     GO
     ```
 
-    Aşağıdaki örnek, bob@aadsqlmi.net oturum açma işleminden bir kullanıcı oluştururbob@aadsqlmi.net:
+    Aşağıdaki örnek, bob@aadsqlmi.net oturum açma işleminden bir kullanıcı oluşturur bob@aadsqlmi.net:
 
     ```sql
     USE MyMITestDB

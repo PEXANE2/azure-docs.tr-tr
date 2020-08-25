@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118823"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
@@ -118,7 +118,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
    > [!NOTE]
    > Önceki .NET SDK sürümü hakkında bilginiz varsa *, hüküm ve* *belge*hakkında bilgi sahibi olabilirsiniz. Azure Cosmos DB birden çok API modelini desteklediğinden, .NET SDK 'nın 3,0 sürümü genel terimler *kapsayıcısını* ve *öğesini*kullanır. *Kapsayıcı* bir koleksiyon, grafik veya tablo olabilir. Bir *öğe* bir belge, Kenar/köşe veya satır olabilir ve bir kapsayıcı içindeki içeriktir. Daha fazla bilgi için bkz. [Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md).
 
-1. [Azure Portal](https://portal.azure.com)açın. Azure Cosmos DB hesabınızı bulun ve ardından **anahtarlar**' ı seçin.
+1. [Azure portalını](https://portal.azure.com) açın. Azure Cosmos DB hesabınızı bulun ve ardından **anahtarlar**' ı seçin.
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure portal Azure Cosmos DB anahtarları al":::
 

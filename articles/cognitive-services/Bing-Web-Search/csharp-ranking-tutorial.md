@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85609444"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C 'de konsol uygulama arama istemcisi oluşturma #
@@ -27,7 +27,7 @@ Bu öğreticide nasıl yapılacağı gösterilmektedir:
 - Bing Web Araması API'si basit bir sorgu yapın
 - Sorgu sonuçlarını dereceli sırada görüntüle
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyle birlikte izlemek için şunlar gerekir:
 
@@ -275,7 +275,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 Bu yöntem:
 
 - `rankingResponse`Yanıtın içerdiği gruplar üzerinde döngüler
-- Her bir gruptaki öğeleri çağırarak görüntüler`DisplaySpecificResults(...)`
+- Her bir gruptaki öğeleri çağırarak görüntüler `DisplaySpecificResults(...)`
 
 **Program.cs**içinde aşağıdaki iki yöntemi ekleyin:
 

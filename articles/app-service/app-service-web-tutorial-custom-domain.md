@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190079"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782320"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "88190079"
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * CNAME kaydı kullanarak alt etki alanını (örneğin, `www.contoso.com`) eşleme
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Varsayılan URL'yi özel bir dizine yeniden yönlendirme
 > * Etki alanı eşlemesini betiklerle otomatikleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -47,7 +47,7 @@ Bu öğreticiyi tamamlamak için:
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-### <a name="sign-in-to-azure"></a>Azure’da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure Portal](https://portal.azure.com)'ı açın ve Azure hesabınızla oturum açın.
 
@@ -83,7 +83,7 @@ App Service planı **F1** katmanında değilse, **Ölçeği artır** sayfasını
 
 Ücretsiz olmayan katmanlardan birini seçin (**D1**, **B1**, **B2**, **B3** veya **Üretim** kategorisindeki herhangi bir katmanı). Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**'ya tıklayın.
+**Uygula**’ya tıklayın.
 
 ![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -127,7 +127,7 @@ Dışında başka bir alt etki alanınız varsa `www` , alt etki `www` alanını
 
 Bir alt etki alanını uygulamanın varsayılan etki alanı adına eşleyin ( `<app-name>.azurewebsites.net` , burada `<app-name>` uygulamanızın adıdır). Alt etki alanı için bir CNAME eşlemesi oluşturmak için `www` iki kayıt oluşturun:
 
-| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| Kayıt türü | Konak | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid.www` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -199,7 +199,7 @@ Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları*
 
 Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kayıt oluşturun:
 
-| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| Kayıt türü | Konak | Değer | Yorumlar |
 | - | - | - |
 | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |
@@ -207,7 +207,7 @@ Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kay�
 > [!NOTE]
 > `www.contoso.com`Önerilen [CNAME kaydı](#map-a-cname-record)yerine bir kayıt kullanarak bir alt etki alanı (gibi) eklemek için BIR kayıt ve txt kaydımızda aşağıdaki tablo gibi görünmesi gerekir:
 >
-> | Kayıt türü | Ana bilgisayar | Değer |
+> | Kayıt türü | Konak | Değer |
 > | - | - | - |
 > | A | `www` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 > | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
@@ -264,7 +264,7 @@ Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfan�
 
 `*`Uygulamanın varsayılan etki alanı adına ( `<app-name>.azurewebsites.net` , uygulamanızın adıdır) bir joker karakter adı eşleyin `<app-name>` . Joker karakter adını eşlemek için iki kayıt oluşturun:
 
-| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
+| Kayıt türü | Konak | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-domain-verification-id) | App Service, `asuid` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -277,7 +277,7 @@ CNAME eklendiğinde, DNS kayıtları sayfası aşağıdaki örnekte gösterildi�
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>Uygulamada CNAME kaydı eşlemesini etkinleştirme
 
-Artık joker karakter adıyla eşleşen herhangi bir alt etki alanı ekleyebilirsiniz (örneğin, `sub1.contoso.com` ve `sub2.contoso.com` her ikisi de eşleşir `*.contoso.com` ).
+Artık joker karakter adıyla eşleşen herhangi bir alt etki alanını (örneğin,, `sub1.contoso.com` `sub2.contoso.com` ve `*.contoso.com` her ikisi de `*.contoso.com` ) ekleyebilirsiniz.
 
 Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
 
@@ -341,7 +341,7 @@ Sayfanın en altında, kök sanal dizin `/` varsayılan olarak `site\wwwroot` di
 
 Özel etki alanlarının yönetimini, [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/) kullanarak betiklerle otomatik hale getirebilirsiniz. 
 
-### <a name="azure-cli"></a>Azure CLI’si 
+### <a name="azure-cli"></a>Azure CLI 
 
 Aşağıdaki komut, App Service uygulamasına özel bir DNS adı yapılandırır. 
 

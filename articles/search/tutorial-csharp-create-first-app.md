@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85261469"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
 Azure Bilişsel Arama kullanarak bir dizinden arama sonuçlarını sorgulamak ve sunmak için bir Web arabirimi oluşturmayı öğrenin. Bu öğretici, bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir dizinle başlar. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Geliştirme ortamı kurma
 > * Model veri yapıları
 > * Web sayfası oluşturma
 > * Yöntemleri tanımlama
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
 Ayrıca, bir arama çağrısının ne olduğunu de öğreneceksiniz. Geliştirileceği koddaki anahtar deyimler aşağıdaki birkaç satırda kapsüllenir.
 
@@ -504,9 +504,9 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
     Arama için zaman uyumsuz çağrı (**model. resultList = await _indexClient.Documstalar. SearchAsync &lt; otel &gt; (model. searchtext, Parameters);**), bu öğretici ve uygulamanın her şeyi ile ilgilidir. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
 
-Şimdi gerçeği.
+Şimdi gerçeği bulalım.
 
-### <a name="test-the-app"></a>Uygulamayı test edin
+### <a name="test-the-app"></a>Uygulamayı test etme
 
 Şimdi uygulamanın doğru şekilde çalıştığını kontrol edelim.
 

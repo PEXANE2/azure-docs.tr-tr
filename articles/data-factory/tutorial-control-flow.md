@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85513313"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
-* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. Veritabanını havuz veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümüne bakın.
+* Azure SQL Veritabanı. Veritabanını havuz veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümüne bakın.
 * Visual Studio. Bu makalede Visual Studio 2019 kullanılmaktadır.
 * Azure .NET SDK. [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/)indirin ve yükleyin.
 
@@ -65,7 +65,7 @@ Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. 
    Tamika|Walsh
    ```
 
-1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **BLOB kapsayıcıları** ' na sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin.
+1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları**'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur**'u seçin.
 1. Yeni kapsayıcıyı adlandırın *adfv2branch* ve *input.txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma<a name="create-visual-studio-project"></a>
@@ -236,7 +236,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu blob veri kümesi, önceki adımda desteklenen Azure depolama bağlı hizmetini ifade eder. Blob veri kümesi, kopyalanacak Blobun konumunu açıklar: *FolderPath* ve *filename*.
 
-*FolderPath*için parametrelerin kullanımına dikkat edin. `sourceBlobContainer`parametrenin adı ve ifadesi işlem hattı çalıştırmasında geçirilen değerlerle değiştirilmiştir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
+*FolderPath*için parametrelerin kullanımına dikkat edin. `sourceBlobContainer` parametrenin adı ve ifadesi işlem hattı çalıştırmasında geçirilen değerlerle değiştirilmiştir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Havuz Azure blobu için veri kümesi oluşturma
 
@@ -336,7 +336,7 @@ E-posta göndermeyi tetiklemek için, [Logic Apps](../logic-apps/logic-apps-over
 
 Bu JSON içeriği, `EmailRequest` önceki bölümde oluşturduğunuz sınıfla hizalanır.
 
-Bir eylemi ekleyin `Office 365 Outlook – Send an email` . **E-posta gönder** eylemi için, istek **gövdesi** JSON şemasında geçirilen özellikleri kullanarak e-postayı nasıl biçimlendirmek istediğinizi özelleştirin. İşte bir örnek:
+Bir eylemi ekleyin `Office 365 Outlook – Send an email` . **E-posta gönder** eylemi için, istek **gövdesi** JSON şemasında geçirilen özellikleri kullanarak e-postayı nasıl biçimlendirmek istediğinizi özelleştirin. Aşağıda bir örnek verilmiştir:
 
 ![Logic App Designer-e-posta eylemi gönder](media/tutorial-control-flow/customize-send-email-action.png)
 

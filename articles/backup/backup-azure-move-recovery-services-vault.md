@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650922"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755747"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -50,12 +50,12 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portal kullanın
 
-Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için
+Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
-   ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeyi seçin. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
 
@@ -84,7 +84,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
-    ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeyi seçin. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
 

@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84608443"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Öğretici: Azure Stack Edge 'i bağlama, ayarlama ve etkinleştirme 
@@ -22,14 +22,14 @@ Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge c
 
 Kurulum ve etkinleştirme işleminin tamamlanması 20 dakika sürebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Fiziksel bir cihaza bağlanma
 > * Fiziksel cihazı ayarlama ve etkinleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -134,7 +134,7 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
 6. Sol bölmede **bulut ayarları**' nı seçin ve ardından Azure Portal Azure Stack Edge hizmeti ile cihazınızı etkinleştirin.
     
     1. **Etkinleştirme anahtarı** kutusuna Azure Stack Edge için [etkinleştirme anahtarını al](azure-stack-edge-deploy-prep.md#get-the-activation-key) bölümünde aldığınız etkinleştirme anahtarını girin.
-    2. **Apply** (Uygula) seçeneğini belirleyin.
+    2. **Uygula**’yı seçin.
        
         ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 

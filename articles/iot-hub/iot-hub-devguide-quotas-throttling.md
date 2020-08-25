@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335571"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782575"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -111,7 +111,8 @@ IoT Hub diğer işlem sınırlarını zorlar:
 | Otomatik cihaz ve modül yapılandırması<sup>1</sup> | ücretli SKU hub 'ı başına 100 yapılandırma. Ücretsiz SKU hub 'ı başına 20 yapılandırma. |
 | IoT Edge otomatik dağıtımlar<sup>1</sup> | Dağıtım başına 50 modül. ücretli SKU hub 'ı başına 100 dağıtım (katmanlı dağıtımlar dahil). Ücretsiz SKU hub 'ı başına 10 dağıtım. |
 | TWINS<sup>1</sup> | İstenen özelliklerin ve bildirilen özellikler bölümlerinin en büyük boyutu 32 KB 'dir. En büyük etiket boyutu 8 KB 'tır. |
-| Paylaşılan erişim ilkeleri | En fazla paylaşılan erişim ilkesi sayısı 16 ' dır |
+| Paylaşılan erişim ilkeleri | En fazla paylaşılan erişim ilkesi sayısı 16 ' dır. |
+| CA sertifikaları | Kaydedilenebilir en fazla X. 509.440 CA sertifikası sayısı 25 ' tir. |
 
 <sup>1</sup> Bu özellik IoT Hub temel katmanında kullanılamaz. Daha fazla bilgi için bkz. [doğru IoT Hub seçme](iot-hub-scaling.md).
 

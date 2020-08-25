@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84661000"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
@@ -100,7 +100,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
 1. **Kapsayıcılar** penceresinde, yeni bir tane oluşturmak Için **+ kapsayıcı** ' yı seçin.
 
-1. **Yeni kapsayıcı** penceresinde, **Ad** bölümüne **adftutorial** adını girin. Ardından **Oluştur**'u seçin.
+1. **Yeni kapsayıcı** penceresinde, **Ad** bölümüne **adftutorial** adını girin. Ardından **Oluştur**’u seçin.
 
 1. Kapsayıcılar listesinde, az önce oluşturduğunuz **adföğreticisi** ' ni seçin.
 
@@ -130,7 +130,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum**bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları (örneğin, Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, görüntüde gösterildiği gibi **Data Factory** sayfasını görürsünüz:
 
@@ -159,7 +159,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
 1. **Integration Runtime kurulum** iletişim kutusunda, **Şirket içinde barındırılan**' i seçin ve ardından **devam**' ı seçin.
 
-1. Ad alanına **TutorialIntegrationRuntime**girin. Ardından **Oluştur**'u seçin.
+1. Ad alanına **TutorialIntegrationRuntime**girin. Ardından **Oluştur**’u seçin.
 
 1. Ayarlar için, **Bu bilgisayarın hızlı kurulumunu başlatmak üzere buraya tıklayın ' ı**seçin. Bu işlem, tümleştirme çalışma zamanını makinenize yükler ve Data Factory’ye kaydeder. Alternatif olarak, el ile kurulum seçeneğini kullanarak yükleme dosyasını indirip çalıştırabilir ve anahtarı kullanarak tümleştirme çalışma zamanını kaydedebilirsiniz.
     ![Tümleştirme çalışma zamanı kurulumu](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
@@ -186,7 +186,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
  
     ![Yeni bağlı hizmet (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
-1. Bağlı hizmet oluşturulduktan sonra, SqlServerDataset için **Özellikleri ayarla** sayfasına geri dönebilirsiniz. Aşağıdaki adımları uygulayın:
+1. Bağlı hizmet oluşturulduktan sonra, SqlServerDataset için **Özellikleri ayarla** sayfasına geri dönebilirsiniz. Aşağıdaki adımları izleyin:
 
     a. **Bağlı hizmet** bölümünde **SqlServerLinkedService**’i gördüğünüzü onaylayın.
 

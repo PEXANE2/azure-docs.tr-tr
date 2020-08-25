@@ -4,10 +4,10 @@ description: Azure Lab Services ile laboratuvar hesabı ayarlamayı, laboratuvar
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445075"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Öğretici: Azure Lab Services ile bir laboratuvar hesabı ayarlama
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturma
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. Kategorilerden **DevOps** ' **Categories**u seçin. Ardından **Laboratuvar Hizmetleri**' ni seçin. `*` **Laboratuvar Hizmetleri**' nin yanında Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm hizmetler-> Laboratuvar Hizmetleri](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -38,7 +38,7 @@ Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nası
     4. **Konum**için, laboratuvar hesabını oluşturmak istediğiniz bir konum/bölge seçin. 
 
         ![Laboratuvar hesabı-temel bilgiler sayfası](./media/tutorial-setup-lab-account/lab-account-basics-page.png)
-    5. **İncele ve oluştur**’u seçin.
+    5. **Gözden geçir + oluştur**’u seçin.
     6. Özeti gözden geçirin ve **Oluştur**' u seçin. 
 
         ![Gözden geçir + oluştur-> oluştur](./media/tutorial-setup-lab-account/create-button.png)    

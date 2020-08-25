@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85563636"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak hub Sanal ağınızı güvenli hale getirme
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Güvenlik duvarını test etme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
@@ -58,7 +58,7 @@ Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönl
 Bu yolların nasıl oluşturulduğunu görmek için [Yolları Oluşturma](#create-the-routes) bölümüne bakın.
 
 >[!NOTE]
->Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
+>Azure Güvenlik Duvarı internete bağlı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 >
 >Azure Güvenlik Duvarı, zorlamalı tüneli destekleyecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](../firewall/forced-tunneling.md).
 
@@ -100,7 +100,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     Hedef türü, **IP adresi** seçin<br>
     Hedef için **10.6.0.0/16** yazın
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 2. **Gözden geçir + oluştur**' u seçin.
 3. Ayrıntıları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -231,7 +231,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **GW-hub** ağ geçidini seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. Bağlantı adı, **hub-Onpree**yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-onpred**öğesini seçin.
@@ -242,7 +242,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. ILT- **hibrit-test** kaynak grubunu açın ve **GW-onprea** Gateway ' i seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. Bağlantı adı, **Onpree-hub**' ı yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-hub**' ı seçin.
@@ -262,7 +262,7 @@ Artık hub ve bağlı bileşen sanal ağlarını eşler.
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **VNET hub** sanal ağını seçin.
 2. Sol sütunda, eşlemeler ' i **seçin.**
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad**Için **hubtokol**yazın.
 5. **Sanal ağ**için **VNET-bağlı bileşen** ' i seçin
 6. Sanal ağ hub 'ından VNet hub 'ına eşleme adı için **Spoketohub**yazın.
@@ -289,14 +289,14 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum**Için **(US) Doğu ABD)** seçeneğini belirleyin.
-9. **Oluştur**'u seçin.
+9. **Oluştur**’u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
-12. **Add (Ekle)** seçeneğini belirleyin.
+12. **Ekle**’yi seçin.
 13. Yol adı için, uzak **bileşene**yazın.
 14. Adres ön eki için **10.6.0.0/16**yazın.
 15. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
@@ -316,15 +316,15 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-5. **Oluştur**'u seçin.
+5. **Oluştur**’u seçin.
 6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum**Için **(US) Doğu ABD)** seçeneğini belirleyin.
 4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**’yi seçin.
 5. Yol adı için, **Tohub**yazın.
 6. Adres ön eki için **0.0.0.0/0**yazın.
 7. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
