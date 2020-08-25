@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77426369"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -145,8 +145,8 @@ Cihaz şablonunu görüntülemek için:
 
 Aşağıdakileri özelleştirmeyi deneyin:
 1. Cihaz şablonu menüsünden **Özelleştir** 'e gidin
-2. `Odor meter` Telemetri türünü bulun
-3. İçin **görünen adını güncelleştirme** `Odor meter``Odor level`
+2. `Odor meter`Telemetri türünü bulun
+3. İçin **görünen adını** güncelleştirme `Odor meter``Odor level`
 4. Ayrıca, ölçüm birimini Güncelleştir ' i veya *Minimum değer* ve *en büyük değeri* ayarla ' yı deneyebilirsiniz
 5. Değişiklikleri **Kaydet** 
 
@@ -185,7 +185,7 @@ IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazla
 
      ![Cihaz 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. **Bulut özellikleri** sekmesine giderek `Bin full alert threshold` değeri `95` olarak `100`güncelleştirme yapmayı deneyin. 
+3. **Bulut özellikleri** sekmesine giderek değeri olarak güncelleştirme yapmayı deneyin `Bin full alert threshold` `95` `100` . 
 * **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun. 
 
 > [!NOTE]
@@ -210,9 +210,9 @@ Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar o
 
      ![Bin tam uyarısı](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. Koşulu `Bin full alert` `Fill level is greater than or equal to Bin full alert threshold`olduğunda denetler **Condition** .
+ 3. `Bin full alert`Koşulu olduğunda denetler **Condition** `Fill level is greater than or equal to Bin full alert threshold` .
 
-    , `Bin full alert threshold` `Connected waste bin` Cihaz şablonunda tanımlanan bir *bulut özelliğidir* . 
+    , `Bin full alert threshold` Cihaz şablonunda tanımlanan bir *bulut özelliğidir* `Connected waste bin` . 
 
 Şimdi bir e-posta eylemi oluşturalım.
 

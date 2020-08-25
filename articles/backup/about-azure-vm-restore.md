@@ -3,12 +3,12 @@ title: Azure sanal makine geri yükleme işlemi hakkında
 description: Azure Backup hizmetinin Azure sanal makinelerini nasıl geri yüklediği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a604e146dbe387675e9ed82030639921cfc03167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067463"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761398"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM geri yükleme hakkında
 
@@ -46,12 +46,6 @@ Bu makalede, [Azure Backup hizmetinin](./backup-overview.md) Azure sanal makinel
 | [Belirli dosyaları VM içinde geri yükleme](./backup-azure-restore-files-from-vm.md) | Geri yükleme noktası ' nı seçin, dosyalar ' ı seçin ve yedeklenen VM ile aynı (veya uyumlu) işletim sistemine geri yükleyin. |  Geri yüklenecek belirli dosyaları biliyorsanız, tüm VM 'yi geri yüklemek yerine bu seçeneği kullanın. |
 | [Şifrelenmiş bir VM 'yi geri yükleme](./backup-azure-vms-encryption.md) | Portaldan, diskleri geri yükleyin ve ardından VM 'yi oluşturmak için PowerShell 'i kullanın | <li> [Azure Active Directory (AAD) ile şifrelenmiş VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [AAD olmadan şifrelenen VM](../virtual-machines/windows/disk-encryption-windows.md) <li> [Aad *olmadan* ' ye GEÇIRILMIŞ ve *AAD ile* şifrelenen VM](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [Çapraz bölge geri yükleme](./backup-azure-arm-restore-vms.md#cross-region-restore) | Yeni bir VM oluşturma veya diskleri ikincil bir bölgeye geri yükleme (Azure eşleştirilmiş bölge) | <li> **Tam kesinti**: çapraz bölge geri yükleme özelliğiyle, İkincil bölgedeki verileri kurtarmak için bir bekleme süresi yoktur. Azure 'un bir kesinti bildirmemesine karşın, ikincil bölgede geri yükleme işlemini başlatabilirsiniz. <li> **Kısmi kesinti**: Azure Backup, yedeklenen verilerinizi ve hatta ağ içinde, yedeklenen verilerle ilişkili Azure Backup ve depolama kümelerini depolayan belirli depolama kümelerinde kapalı kalma süresi oluşabilir. Çapraz bölge geri yükleme ile ikincil bölgede yedeklenen verilerin bir çoğaltmasını kullanarak ikincil bölgede geri yükleme gerçekleştirebilirsiniz. <li> **Kesinti yok**: ikincil bölge verileriyle denetim veya uyumluluk amaçlarıyla iş sürekliliği ve olağanüstü durum kurtarma (BCDR) detaylarını gerçekleştirebilirsiniz. Bu, iş sürekliliği ve olağanüstü durum kurtarma detaylarının birincil bölgesinde tam veya kısmi bir kesinti olmasa bile, yedeklenen verileri ikincil bölgede geri yüklemeyi gerçekleştirmenize olanak tanır.  |
-
-------
-
-
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

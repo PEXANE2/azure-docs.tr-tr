@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 08/24/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: afa9c6a508e0215b905a39a430cb64161575b748
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3054180f65a7d65300067edadee5e9507bb92414
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796179"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -77,7 +77,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `nonce` | Dize | Belirteç yeniden yürütme saldırılarına karşı korumak için kullanılan benzersiz bir tanımlayıcı. Kaynağınız, yeniden oynacak şekilde korumak için bu değeri kaydedebilir. |
 | `alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir, örneğin, "RS256" |
 | `kid` | Dize | Bu belirteci imzalamak için kullanılan ortak anahtar için parmak izini belirtir. Hem v 1.0 hem de v 2.0 erişim belirteçlerine yayılmıştır. |
-| `x5t` | Dize | Aynı (kullanımda ve değerde) olarak çalışır `kid` . `x5t`, uyumluluk amacıyla yalnızca v 1.0 erişim belirteçlerine yayılan eski bir taleptür. |
+| `x5t` | Dize | Aynı (kullanımda ve değerde) olarak çalışır `kid` . `x5t` , uyumluluk amacıyla yalnızca v 1.0 erişim belirteçlerine yayılan eski bir taleptür. |
 
 ### <a name="payload-claims"></a>Yük talepleri
 
@@ -104,13 +104,13 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, `groupMembershipClaims` [uygulama bildiriminin](reference-app-manifest.md)özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br>`hasgroups`Dolaylı izin ile talebi kullanma hakkında ayrıntılı bilgi için aşağıdaki talebe bakın `groups` . <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, bir fazla kullanım talebi, Kullanıcı için grupların listesini içeren Microsoft Graph uç noktasını gösteren talep kaynaklarına eklenir. |
 | `hasgroups` | Boole | Varsa, her zaman `true` kullanıcının en az bir grupta olduğunu belirten. `groups`Tam gruplar TALEBI URI PARÇASıNı URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını () belirleyebilmek için Microsoft Graph API 'sini kullanması gerektiğini belirtir `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. Cwts için, talep yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak `groups` . <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
-| `sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Belirteç bir kaynağa erişmek için kullanıldığında ve veritabanı tablolarında anahtar olarak kullanılabilecek gibi, güvenli bir şekilde yetkilendirme denetimleri gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD 'nin sorun verdiği belirteçlerde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. Bununla birlikte, bir ikili tanımlayıcı, belirli bir uygulama KIMLIĞI için benzersizdir. Bu nedenle, tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya istenmeyebilir. Ayrıca bkz `oid` . talep (bir Kiracıdaki uygulamalar arasında aynı kalır). |
+| `sub` | Dize | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Belirteç bir kaynağa erişmek için kullanıldığında ve veritabanı tablolarında anahtar olarak kullanılabilecek gibi, güvenli bir şekilde yetkilendirme denetimleri gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD 'nin sorun verdiği belirteçlerde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. Bununla birlikte, bir ikili tanımlayıcı, belirli bir uygulama KIMLIĞI için benzersizdir. Bu nedenle, tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya istenmeyebilir. Ayrıca bkz `oid` . talep (bir Kiracıdaki uygulamalar arasında aynı kalır). |
 | `oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity platformunda bir nesne için sabit tanımlayıcı. Ayrıca, kimlik doğrulama denetimlerini güvenli bir şekilde ve veritabanı tablolarında anahtar olarak gerçekleştirmek için de kullanılabilir. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, talepteki aynı değer de alınır `oid` . Bu nedenle, `oid` Microsoft Graph gibi Microsoft çevrimiçi hizmetler sorguları yaparken kullanılabilir. Microsoft Graph, bu KIMLIĞI `id` verilen [Kullanıcı hesabının](/graph/api/resources/user)özelliği olarak döndürür. `oid`Birden çok uygulamanın kullanıcıları ilişkilendirme olanağı sağladığından, `profile` Bu talebi alabilmesi için kapsam gereklidir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. |
 | `tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eder. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad` . `profile`Bu talebi alabilmesi için kapsam gereklidir. |
 | `unique_name` | Dize | Yalnızca v 1.0 belirteçlerinde bulunur. Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmalıdır. |
 | `uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Kaynaklar bu talebi kullanmaz. |
 | `rh` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Kaynaklar bu talebi kullanmamalıdır. |
-| `ver` | Dize, `1.0` ya da`2.0` | Erişim belirtecinin sürümünü gösterir. |
+| `ver` | Dize, `1.0` ya da `2.0` | Erişim belirtecinin sürümünü gösterir. |
 
 **Gruplar fazla kullanım talebi**
 

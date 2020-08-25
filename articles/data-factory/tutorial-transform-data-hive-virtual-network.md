@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: bf696b79215843e392fcf510e35cc410ff9902a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81409214"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
@@ -34,7 +34,7 @@ Bu öğreticide, Azure PowerShell kullanarak Azure Sanal Ağ’daki bir HDInsigh
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -186,7 +186,7 @@ Tercih ettiğiniz düzenleyiciyi kullanarak bir JSON dosyası oluşturun, Azure 
 }
 ```
 
-** &lt;AccountName&gt; ve &lt;accountkey&gt; ** değerlerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin.
+** &lt; AccountName &gt; ve &lt; Accountkey &gt; ** değerlerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin.
 
 ### <a name="hdinsight-linked-service"></a>HDInsight bağlı hizmeti
 
@@ -221,7 +221,7 @@ Bağlı hizmet tanımında aşağıdaki özelliklerin değerlerini güncelleşti
 
 - **Kullanıcı adı**. Kümeyi oluştururken belirttiğiniz küme oturum açma kullanıcı adı. 
 - **parola**. Kullanıcının parolası.
-- **clusterUri**. HDInsight kümenizin URL 'sini şu biçimde belirtin: `https://<clustername>.azurehdinsight.net`.  Bu makalede, kümeye internet üzerinden erişebildiğiniz varsayılır. Örneğin, `https://clustername.azurehdinsight.net` konumundaki kümeye bağlanabilirsiniz. Bu adres, İnternet'ten erişimi kısıtlamak için ağ güvenlik grupları (NSG) veya kullanıcı tanımlı yollar (UDR) kullandıysanız kullanılabilir olmayan ortak ağ geçidi kullanır. Data Factory’nin işleri Azure Sanal Ağdaki HDInsight kümelerine gönderebilmesi için Azure Sanal Ağınızı URL’nin HDInsight tarafından kullanılan ağ geçidine ait özel IP adresine çözümlenebileceği şekilde yapılandırmanız gerekir.
+- **clusterUri**. HDInsight kümenizin URL 'sini şu biçimde belirtin: `https://<clustername>.azurehdinsight.net` .  Bu makalede, kümeye internet üzerinden erişebildiğiniz varsayılır. Örneğin, `https://clustername.azurehdinsight.net` konumundaki kümeye bağlanabilirsiniz. Bu adres, İnternet'ten erişimi kısıtlamak için ağ güvenlik grupları (NSG) veya kullanıcı tanımlı yollar (UDR) kullandıysanız kullanılabilir olmayan ortak ağ geçidi kullanır. Data Factory’nin işleri Azure Sanal Ağdaki HDInsight kümelerine gönderebilmesi için Azure Sanal Ağınızı URL’nin HDInsight tarafından kullanılan ağ geçidine ait özel IP adresine çözümlenebileceği şekilde yapılandırmanız gerekir.
 
   1. Azure portalından, HDInsight’ın içinde bulunduğu Sanal Ağı açın. Adı `nic-gateway-0` ile başlayan ağ arabirimini açın. Özel IP adresini not edin. Örneğin, 10.6.0.15. 
   2. Azure sanal ağınızda DNS sunucusu varsa, HDInsight kümesi `https://<clustername>.azurehdinsight.net` URL’sinin `10.6.0.15` hedefine çözümlenebilmesi için DNS kaydını güncelleştirin. Bu, önerilen yaklaşımdır. Azure Sanal Ağınızda bir DNS sunucusu yoksa, şunun gibi bir giriş ekleyerek şirket içinde barındırılan tümleştirme çalışma zamanı düğümleri olarak kaydedilmiş tüm VM’lerin ana bilgisayar dosyalarını (C:\Windows\System32\drivers\etc) düzenleyerek bu sorunu geçici olarak çözebilirsiniz: 

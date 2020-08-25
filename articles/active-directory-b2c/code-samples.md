@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181167"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
@@ -46,7 +46,7 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 
 | Örnek | Açıklama |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). MSAL. js kullanılarak Azure AD B2C kimlik doğrulaması gerçekleştirilir. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Bir Web API’sini çağıran tek sayfalı uygulama (SPA). Azure AD B2C, MSAL.js kullanılarak kimlik doğrulaması gerçekleştirilir. |
 
 ## <a name="saml-test-application"></a>SAML test uygulaması
 

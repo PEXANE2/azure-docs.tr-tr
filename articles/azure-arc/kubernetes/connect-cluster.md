@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080499"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723750"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -61,8 +61,8 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 
 Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının/giden URL 'Lerin çalışması gerekir.
 
-* 443 numaralı bağlantı noktasında TCP-->`https://:443`
-* 9418 numaralı bağlantı noktasında TCP-->`git://:9418`
+* 443 numaralı bağlantı noktasında TCP--> `https://:443`
+* 9418 numaralı bağlantı noktasında TCP--> `git://:9418`
 
 | Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -72,6 +72,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 | `https://github.com`, git://github.com                                                                         | Örnek giler depoları GitHub üzerinde barındırılır. Yapılandırma Aracısı, belirttiğiniz git uç noktasına bağlantı gerektirir. |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager belirteçleri getirmek ve güncelleştirmek için gereklidir                                                                                    |
 | `https://azurearcfork8s.azurecr.io`                                                                            | Azure Arc aracıları için kapsayıcı görüntülerini çekmek için gereklidir                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Sistem tarafından atanan yönetilen kimlik sertifikalarını çekmek için gereklidir                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydedin:
 
@@ -113,7 +114,7 @@ eastus      AzureArcTest
 
 Sonra, Kubernetes kümemizi Azure 'a bağlayacağız. İçin iş akışı `az connectedk8s connect` aşağıdaki gibidir:
 
-1. Kubernetes kümenize bağlantıyı doğrulama: `KUBECONFIG` , `~/.kube/config` veya ile`--kube-config`
+1. Kubernetes kümenize bağlantıyı doğrulama: `KUBECONFIG` , `~/.kube/config` veya ile `--kube-config`
 1. Held 3 kullanarak Kubernetes için Azure Arc aracılarını `azure-arc` ad alanına dağıtma
 
 ```console
@@ -174,7 +175,7 @@ Ayrıca, bu kaynağı [Azure Portal](https://portal.azure.com/)görüntüleyebil
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>Giden proxy sunucusu kullanarak bağlanma
 
-Kümeniz giden bir proxy sunucusunun arkasındaysa, Azure CLı ve Arc etkin Kubernetes aracılarının isteklerini giden ara sunucu aracılığıyla yönlendirmesi gerekir. Aşağıdaki yapılandırma şu şekilde elde etmenize yardımcı olur:
+Kümeniz giden bir proxy sunucusunun arkasındaysa, Azure CLı ve Arc etkin Kubernetes aracılarının isteklerini giden ara sunucu aracılığıyla yönlendirmesi gerekir. Aşağıdaki yapılandırma şunları sunar:
 
 1. `connectedk8s`Şu komutu çalıştırarak makinenizde yüklü olan uzantının sürümünü denetleyin:
 
@@ -182,7 +183,7 @@ Kümeniz giden bir proxy sunucusunun arkasındaysa, Azure CLı ve Arc etkin Kube
     az -v
     ```
 
-    `connectedk8s`Aracıları giden proxy ile kurmak için >= 0.2.3 uzantı sürümüne ihtiyacınız vardır. Makinenizde sürüm < 0.2.3 varsa, uzantınızın en son sürümünü almak için [güncelleştirme adımlarını](#before-you-begin) izleyin.
+    `connectedk8s`Giden ara sunucu ile aracıları ayarlamak için >= 0.2.3 uzantı sürümüne ihtiyacınız vardır. Makinenizde sürüm < 0.2.3 varsa, uzantınızın en son sürümünü almak için [güncelleştirme adımlarını](#before-you-begin) izleyin.
 
 2. Azure CLı için gereken ortam değişkenlerini ayarlayın:
 

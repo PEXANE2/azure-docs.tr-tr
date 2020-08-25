@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836913"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723579"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -24,7 +24,7 @@ Azure form tanıyıcı, form belgelerinden metin, anahtar/değer çiftleri ve ta
 
 Form tanıyıcı aşağıdaki hizmetlerden oluşur:
 * **Özel modeller** -formlardan anahtar/değer çiftlerini ve tablo verilerini ayıklayın. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
-* **Önceden oluşturulmuş makbuz modeli** -önceden oluşturulmuş bir model kullanarak ABD satış makbuzlarından verileri ayıklayın.
+* **Önceden oluşturulmuş modeller** -önceden oluşturulmuş modeller kullanarak benzersiz form türlerinden veri ayıklayın. Şu anda kullanılabilir, satış alındıları ve iş kartları için Ingilizce olarak önceden oluşturulmuş modellerdir.
 * **Düzen API 'si** -metin ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Etiketli verilerle eğitedığınızda, model, sağladığınız etiketli formla
 
 Form tanıyıcı, yazdırılan ve el yazısı metin öğelerinin beklenen boyutlarını ve konumlarını öğrenmek için [Düzen API](#layout-api) 'sini kullanır. Ardından, belgelerde anahtar/değer ilişkilendirmelerini öğrenmek için Kullanıcı tarafından belirtilen etiketleri kullanır. Yeni bir modeli eğitmek ve model doğruluğunu artırmak için gerektiğinde daha fazla etiketli veri eklemek için aynı türden beş el ile etiketlenmiş beş form kullanmanızı öneririz.
 
-## <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
+## <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
-Form tanıyıcı Ayrıca &mdash; , restoranlar, gaz istasyonları, perakende vb. ([örnek alış irsaliyesi](./media/contoso-receipt-small.png)) tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için bir model içerir. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler ve toplam miktar gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur.
+Form tanıyıcı ayrıca benzersiz form türleri için önceden oluşturulmuş modeller içerir.
+### <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
+Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur. 
+
+![örnek alındısı](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>Önceden oluşturulmuş Iş kartları modeli
+Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve telefon numarası gibi bilgileri, iş kartlarından Ingilizce olarak ayıklamanızı sağlar. 
+
+![örnek iş kartı](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Düzen API 'SI
 
@@ -90,7 +99,7 @@ Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.d
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
+### <a name="prebuilt"></a>Önceden oluşturulmuş
 
 Makbuz modeli için giriş gereksinimleri biraz farklıdır.
 

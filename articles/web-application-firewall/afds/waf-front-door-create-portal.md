@@ -8,24 +8,24 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "79475850"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Öğretici: Azure ön kapıda Azure portal kullanarak Web uygulaması güvenlik duvarı ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve Azure ön kapısının bir ön uç konağına uygulama işlemi gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
 > * Ön uç konakla ilişkilendirin
 > * WAF kurallarını yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: ön kapı profili oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun. 
 
@@ -79,5 +79,5 @@ Azure tarafından yönetilen varsayılan kural kümesi varsayılan olarak etkind
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Web uygulaması güvenlik duvarı](../overview.md)
-> hakkında bilgi edinin[Azure ön kapısı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)
+> [Azure Web uygulaması güvenlik duvarı](../overview.md) 
+>  hakkında bilgi edinin [Azure ön kapısı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)

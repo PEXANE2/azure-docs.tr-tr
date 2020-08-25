@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure kaynaklarınız için özel iş kuralların�
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86044626"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
@@ -350,7 +350,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 }
 ```
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod**için _Tüm_ değeri kullanacağız.
 

@@ -1,18 +1,22 @@
 ---
 title: Kavramlar-ağ bağlantısı
-description: Azure VMware çözümünde (AVS), ağ ve bağlantı durumları hakkında bilgi edinin
+description: Azure VMware çözümünde önemli yönleri ve ağ ve bağlantı durumlarını kullanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3420f6aa61ced7632175f3e12edda9de72639517
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214108"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750572"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Çözümü (AVS) Önizlemesi ağ ve ara bağlantı kavramları
+# <a name="azure-vmware-solution-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Çözüm önizleme ağı ve karşılıklı bağlantı kavramları
 
-Azure VMware çözümünüz (AVS) özel bulutları ve şirket içi ortamlar ya da Azure 'daki sanal ağlar arasındaki ağ bağlantısı, özel bulutunuzun erişimine ve kullanılmasına olanak tanır. Bu makalede, ağ ve karşılıklı bağlantı temelini oluşturan bazı önemli kavramlar ele alınacaktır.
+Azure VMware çözümü (AVS), şirket içi ve Azure tabanlı ortamların veya kaynakların kullanıcıları ve uygulamaları için erişilebilen bir VMware özel bulut ortamı sunar. Azure ExpressRoute ve VPN bağlantıları gibi hizmetler bağlantı sağlar. Bu hizmetler, hizmetleri etkinleştirmek için belirli ağ adresi aralıkları ve güvenlik duvarı bağlantı noktaları gerektirir.  
+
+Özel bir bulut dağıtımında, yönetim, sağlama ve vMotion için özel ağlar oluşturulur. Bunlar vCenter ve NSX-T Yöneticisi ve sanal makine vMotion veya dağıtımına erişim için kullanılır. Tüm özel ağlara Azure 'daki VNet 'ten veya şirket içi ortamlarından erişilebilir. ExpressRoute Global Reach, özel bulutları şirket içi ortamlara bağlamak için kullanılır ve bu bağlantı aboneliğinizde bir ExpressRoute devresine sahip VNet gerektirir.
+
+Ayrıca, özel bir bulut dağıtımında Internet ve Azure hizmetlerine erişim sağlanır ve üretim ağlarında VM 'Lerin bunları kullanabilmesi için sağlanır.  Varsayılan olarak, internet erişimi yeni özel bulutlar için devre dışıdır ve herhangi bir zamanda etkinleştirilebilir veya devre dışı bırakılabilir.
 
 Karşılıklı bağlantı üzerinde yararlı bir perspektif, iki tür AVS özel bulut uygulaması olarak dikkate alınmaktadır:
 
@@ -20,49 +24,23 @@ Karşılıklı bağlantı üzerinde yararlı bir perspektif, iki tür AVS özel 
 
 1. Şirket içinde [**tam ve özel bulut bağlantısı**](#on-premises-interconnectivity) , şirket ıçı ve AVS özel bulutları arasında birbirine bağlantı dahil olmak üzere yalnızca temel Azure uygulamasını genişletir.
  
-Gereksinimler ve aşağıdaki bölümlerde açıklanan iki tür AVS özel bulut bağlantısı uygulaması hakkında daha fazla bilgi edinebilirsiniz.
+Bu makalede, gereksinimler ve sınırlamalar dahil olmak üzere ağ ve bağlantı kurmaya yönelik birkaç temel kavram ele alınacaktır. Ayrıca, iki tür AVS özel bulut bağlantısı uygulaması ile daha fazla bilgi ele alınacaktır. Bu makale, ağınızı AVS ile düzgün çalışacak şekilde yapılandırmak için bilmeniz gereken bilgileri sağlar.
 
 ## <a name="avs-private-cloud-use-cases"></a>AVS özel bulut kullanım örnekleri
 
 AVS özel bulutları için kullanım örnekleri şunları içerir:
-- buluttaki yeni VMware VM iş yükleri
+- Buluttaki yeni VMware VM iş yükleri
 - VM iş yükü buluta gömülmüş (yalnızca şirket içi-AVS 'ye)
 - Buluta VM iş yükü geçişi (yalnızca şirket içi-AVS 'ye)
 - Olağanüstü durum kurtarma (AVS 'ye veya Şirket içinden AVS 'ye AVS)
 - Azure hizmetleri kullanımı
 
- AVS hizmeti için tüm kullanım örnekleri, şirket içi ve özel bulut bağlantısı ile etkinleştirilir. 
-
-## <a name="virtual-network-and-expressroute-circuit-requirements"></a>Sanal ağ ve ExpressRoute devre gereksinimleri
- 
-Aboneliğinizdeki bir sanal ağdan bağlantı oluşturduğunuzda, ExpressRoute bağlantı hattı eşleme yoluyla oluşturulur, bir yetkilendirme anahtarı ve Azure portal isteğiniz bir eşleme KIMLIĞI kullanır. Eşleme, özel bulutunuz ile sanal ağ arasında özel, bire bir bağlantıdır.
-
-> [!NOTE] 
-> ExpressRoute bağlantı hattı, özel bir bulut dağıtımının bir parçası değildir. Şirket içi ExpressRoute bağlantı hattı, bu belgenin kapsamı dışındadır. Özel bulutunuzun şirket içi bağlantısına ihtiyacınız varsa, mevcut ExpressRoute devrelerinizi kullanabilir veya Azure portal bir tane satın alabilirsiniz.
-
-Özel bir bulut dağıtımında, vCenter ve NSX-T Yöneticisi için IP adresleri alırsınız. Bu yönetim arabirimlerine erişmek için aboneliğinizdeki bir sanal ağda ek kaynaklar oluşturmanız gerekir. Bu kaynakları oluşturma ve öğreticilerde ExpressRoute özel eşlemesi oluşturma yordamlarını bulabilirsiniz.
-
-Özel bulut mantıksal ağı, önceden sağlanmış NSX-T ile gelir. Katman 0 ağ geçidi ve Katman 1 ağ geçidi sizin için önceden sağlanmış. Bir segment oluşturabilir ve var olan katman 1 ağ geçidine iliştirebilir veya tanımladığınız yeni bir katman 1 ağ geçidine iliştirebilirsiniz. NSX-T mantıksal ağ bileşenleri, iş yükleri arasında Doğu Batı bağlantısı sağlar ve ayrıca Internet ve Azure hizmetlerine yönelik Kuzey-Güney bağlantısını sağlar. 
-
-## <a name="routing-and-subnet-requirements"></a>Yönlendirme ve alt ağ gereksinimleri
-
-Yönlendirme, her özel bulut dağıtımı için otomatik olarak sağlanan ve varsayılan olarak etkinleştirilen Sınır Ağ Geçidi Protokolü (BGP) tabanlıdır. AVS özel bulutları için, aşağıdaki tabloda gösterildiği gibi, alt ağlar için en az/22 önek uzunluğu CıDR ağ adres blokları ile özel bulut ağ adres alanları planlamanız gerekir. Adres bloğu, aboneliğinizdeki ve şirket içi ağlardaki diğer sanal ağlarda kullanılan adres bloklarıyla çakışmamalıdır. Bu adres bloğu, yönetim, sağlama ve vMotion ağları içinde otomatik olarak sağlanır.
-
-Örnek `/22` CIDR ağ adresi bloğu:  `10.10.0.0/22`
-
-Alt ağlar:
-
-| Ağ kullanımı             | Alt ağ | Örnek        |
-| ------------------------- | ------ | -------------- |
-| Özel bulut yönetimi  | `/24`  | `10.10.0.0/24` |
-| vMotion ağı           | `/24`  | `10.10.1.0/24` |
-| VM iş yükleri              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute eşlemesi      | `/24`  | `10.10.3.8/30` |
-
+> [!TIP]
+> AVS hizmeti için tüm kullanım örnekleri, şirket içi ve özel bulut bağlantısı ile etkinleştirilir.
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure sanal ağ bağlantısı
 
-Sanal ağda özel bulut uygulamasına, AVS özel bulutunuzu yönetebilir, özel bulutunuzda iş yüklerini tüketebilir ve ExpressRoute bağlantısı üzerinden Azure hizmetlerine erişebilirsiniz. 
+Sanal ağda özel bulut uygulamasına, Azure VMware çözümünüz özel bulutunuzu yönetebilir, özel bulutunuzda iş yüklerini tüketebilir ve ExpressRoute bağlantısı üzerinden Azure hizmetlerine erişebilirsiniz. 
 
 Aşağıdaki diyagramda, özel bir bulut dağıtımı sırasında belirlenen temel ağ bağlantısı gösterilmektedir. Azure 'daki bir sanal ağ ile özel bir bulut arasındaki mantıksal, ExpressRoute tabanlı ağı gösterir. Interconnectivity, birincil kullanım örneklerinin üçünü yerine getirir:
 * Azure aboneliğinizdeki VM 'lerden erişilebilen ve şirket içi sistemlerinizden değil, vCenter Server ve NSX-T yöneticisine gelen erişim. 
@@ -73,22 +51,24 @@ Aşağıdaki diyagramda, özel bir bulut dağıtımı sırasında belirlenen tem
 
 ## <a name="on-premises-interconnectivity"></a>Şirket içi karşılıklı bağlantı
 
-Sanal ağda ve şirket içinde tam özel bulut uygulamasına, şirket içi ortamlarınızdaki AVS özel bulutlarınıza erişebilirsiniz. Bu uygulama, önceki bölümde açıklanan temel uygulamanın bir uzantısıdır. Temel uygulama gibi, bir ExpressRoute bağlantı hattı gerekir, ancak bu uygulamayla birlikte Şirket içi ortamlarından Azure 'daki özel buluta bağlanmak için kullanılır. 
+Sanal ağda ve şirket içinde tam özel bulut uygulamasına, şirket içi ortamlarınızdaki Azure VMware çözümünüz özel bulutlarınıza erişebilirsiniz. Bu uygulama, önceki bölümde açıklanan temel uygulamanın bir uzantısıdır. Temel uygulama gibi, bir ExpressRoute bağlantı hattı gerekir, ancak bu uygulamayla birlikte Şirket içi ortamlarından Azure 'daki özel buluta bağlanmak için kullanılır. 
 
 Aşağıdaki diyagramda, şirket içi ile özel bulut bağlantısı, aşağıdaki kullanım durumlarını sağlar:
 * Etkin/soğuk çapraz vCenter vMotion
-* Şirket Içinden AVS 'ye özel bulut yönetimi erişimi
+* Şirket Içinden Azure VMware çözümüne özel bulut yönetimi erişimi
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Sanal ağ ve şirket içi tam özel bulut bağlantısı" border="false":::
 
 Özel bulutunuzun tam bağlantısı için, ExpressRoute Global Reach etkinleştirin ve sonra Azure portal Global Reach için bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI isteyin. Yetkilendirme anahtarı ve eşleme KIMLIĞI, aboneliğinizdeki bir ExpressRoute bağlantı hattı ile yeni özel bulutunuz için ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için kullanılır. Bağlantı kurulduktan sonra, iki ExpressRoute devre dışı, şirket içi ortamlarınızla özel bulutunuz arasında ağ trafiğini yönlendirir.  Yetkilendirme anahtarını ve eşleme KIMLIĞINI isteme ve kullanma yordamlarına yönelik bir [özel buluta eşleme Global Reach için bir ExpressRoute oluşturma öğreticisine](tutorial-expressroute-global-reach-private-cloud.md) bakın.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Bir sonraki adım, [özel bulut depolaması kavramlarını](concepts-storage.md)öğrenecekti.
+- [Ağ bağlantısı konuları ve gereksinimleri](tutorial-network-checklist.md)hakkında daha fazla bilgi edinin. 
+- [Özel bulut depolama kavramları](concepts-storage.md)hakkında bilgi edinin.
+
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
+

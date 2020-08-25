@@ -6,10 +6,10 @@ ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86056900"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Öğretici: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma (Genel önizleme)
@@ -43,7 +43,7 @@ Ek kaynaklar:
 * [Azure Dağıtım Yöneticisi REST API başvurusu](/rest/api/deploymentmanager/).
 * [Öğretici: Azure dağıtım Yöneticisi 'da sistem durumu denetimi kullanın](./deployment-manager-tutorial-health-check.md).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -197,7 +197,7 @@ Kullanıcı tarafından atanmış yönetilen bir kimlik oluşturmanız ve abonel
     * **Rol**: yapıt dağıtımını (web uygulamaları ve depolama hesapları) tamamlamak için yeterli izinleri verin. Bu öğreticideki **Katkıda Bulunanı** seçin. Gerçekte, izinleri asgari seviyeyle sınırlamak istersiniz.
     * **Erişimi atama hedefi**: **Kullanıcı Tarafından Atanmış Yönetilen Kimlik** öğesini seçin.
     * Öğreticide daha önce oluşturduğunuz kullanıcı tarafından atanmış yönetilen kimliği seçin.
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="create-the-service-topology-template"></a>Hizmet topolojisi şablonunu oluşturma
 
@@ -334,7 +334,7 @@ Azure PowerShell şablonları dağıtmak için kullanılabilir.
     Bu betiği, [yapıtları hazırlama](#prepare-the-artifacts) betiğini çalıştırmanızdan farklı bir PowerShell oturumundan çalıştırırsanız, **$resourceGroupName** ve **$FilePath**dahil olmak üzere ilk olarak değişkenleri yeniden doldurmanız gerekir.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment`zaman uyumsuz bir çağrıdır. Başarı iletisi yalnızca dağıtımın başarıyla başladığını gösterir. Dağıtımı doğrulamak için, bu yordamın adım 2 ve adım 4 ' e bakın.
+    > `New-AzResourceGroupDeployment` zaman uyumsuz bir çağrıdır. Başarı iletisi yalnızca dağıtımın başarıyla başladığını gösterir. Dağıtımı doğrulamak için, bu yordamın adım 2 ve adım 4 ' e bakın.
 
 2. Azure portalı kullanarak hizmet topolojisinin ve temel kaynakların başarıyla oluşturulduğunu doğrulayın:
 
@@ -427,7 +427,7 @@ Azure PowerShell şablonları dağıtmak için kullanılabilir.
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 2. Piyasaya çıkarma dağıtımı tarafından oluşturulan yeni kaynak gruplarındaki yeni oluşturulan web uygulamalarına gidin.
 3. Web uygulamasını bir web tarayıcıda açın. Index.html dosyasında konumu ve sürümü doğrulayın.
 

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82202783"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Mantıksal Uygulamayı API olarak içeri aktarma
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 > -   Azure portalında API’yi test etme
 > -   Geliştirici portalında API’yi test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 -   Aboneliğinizde bir HTTP uç noktası sunan bir mantıksal uygulama olduğundan emin olun. Daha fazla bilgi için, [http uç noktaları ile iş akışlarını tetikleme](../logic-apps/logic-apps-http-endpoint.md)

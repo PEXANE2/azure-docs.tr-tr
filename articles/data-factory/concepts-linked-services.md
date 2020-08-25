@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338133"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796417"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory'de bağlı hizmetler
 
@@ -68,20 +68,20 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-name | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-tür | Bağlı hizmetin türü. Örneğin: Azure Storage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Evet |
-typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için, bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Evet |
+name | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+tür | Bağlı hizmetin türü. Örneğin: AzureBlobStorage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Yes |
+typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için [bağlayıcıya genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesine bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Yes |
 connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır
 
 ## <a name="linked-service-example"></a>Bağlı hizmet örneği
 
-Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün Azure Storage olarak ayarlandığından emin olun. Azure depolama bağlı hizmetinin tür özellikleri bir bağlantı dizesi içerir. Data Factory hizmeti, çalışma zamanında veri deposuna bağlanmak için bu bağlantı dizesini kullanır.
+Aşağıdaki bağlı hizmet bir Azure Blob depolama bağlı hizmetidir. Türün Azure Blob depolama olarak ayarlandığından emin olun. Azure Blob depolama bağlı hizmetinin tür özellikleri bir bağlantı dizesi içerir. Data Factory hizmeti, çalışma zamanında veri deposuna bağlanmak için bu bağlantı dizesini kullanır.
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },

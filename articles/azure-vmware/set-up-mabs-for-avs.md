@@ -3,12 +3,12 @@ title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079545"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750625"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
@@ -56,7 +56,7 @@ Azure VMware çözümü için Azure Backup Sunucusu ayarlamak için aşağıdaki
 
 Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.
 
-:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="AVS dağıtım mimarisi" border="false":::
+:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır." border="false":::
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Azure Backup Sunucusu ortamı önkoşulları
 
@@ -140,23 +140,23 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını d
 
 1. Sol taraftaki menüden **tüm hizmetler**' i seçin.
 
-   ![Tüm hizmetleri seçin](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![Sol taraftaki menüden tüm hizmetler ' i seçin.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. **Tüm hizmetler** Iletişim kutusunda **Kurtarma Hizmetleri** ' ni girin ve listeden **Kurtarma Hizmetleri kasaları** ' nı seçin.
 
-   ![Kurtarma Hizmetleri kasalarını girin ve seçin](../backup/media/backup-create-rs-vault/all-services.png)
+   ![Kurtarma Hizmetleri kasalarını girin ve seçin.](../backup/media/backup-create-rs-vault/all-services.png)
 
    Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
 
 1. **Kurtarma Hizmetleri kasaları** panosunda **Ekle**' yi seçin.
 
-   ![Kurtarma Hizmetleri Kasası ekleme](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
+   ![Kurtarma Hizmetleri Kasası ekleyin.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
    **Kurtarma Hizmetleri Kasası** iletişim kutusu açılır.
 
 1. **Ad**, **abonelik**, **kaynak grubu**ve **konum**için değerler girin.
 
-   ![Kurtarma Hizmetleri kasasını yapılandırma](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
+   ![Kurtarma Hizmetleri kasasını yapılandırın.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Ad**: kasayı tanımlamak için bir kolay ad girin. Ad, Azure aboneliğine özgü olmalıdır. En az iki tane 50 karakterden oluşan bir ad belirtin. Ad bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içermelidir.
    - **Abonelik**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğin üyesiyseniz, bu adı görürsünüz. Hangi aboneliğin kullanılacağı konusunda emin değilseniz, varsayılan (önerilen) aboneliği kullanın. Yalnızca iş veya okul hesabınızın birden fazla Azure aboneliğiyle ilişkilendirilmesi durumunda birden çok seçenek vardır.
@@ -165,11 +165,11 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını d
 
 1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
 
-   ![Kurtarma Hizmetleri kasasını oluşturma](../backup/media/backup-create-rs-vault/click-create-button.png)
+   ![Kurtarma Hizmetleri kasasını oluşturun.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
    Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızın oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
 
-   ![Yedekleme kasaları listesini yenileme](../backup/media/backup-create-rs-vault/refresh-button.png)
+   ![Backup kasaları listesini yenileyin.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
 ## <a name="set-storage-replication"></a>Depolama çoğaltmasını ayarla
 
@@ -184,7 +184,7 @@ Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama (varsayılan) v
 
 1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
-   ![Yeni kasa için depolama yapılandırmasını ayarla](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+   ![Yeni kasa için depolama yapılandırmasını ayarlayın.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>Yazılım paketini indirme ve yükleme
 
@@ -206,15 +206,15 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
    Seçilen kasa panosu açılır.
 
-   ![Kasa panosunu aç](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+   ![Seçilen kasa panosu açılır.](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
    **Ayarlar** seçeneği varsayılan olarak açılır. Kapalıysa, açmak için **Ayarlar** ' ı seçin.
 
-   ![Kasa ayarları seçeneğini aç](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
+   ![Ayarlar seçeneği varsayılan olarak açılır. Kapalıysa, açmak için ayarlar ' ı seçin.](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
 1. **Başlangıç Sihirbazı 'nı** açmak için **Yedekle** ' yi seçin.
 
-   ![Yedekleme Başlarken Sihirbazı 'nı açar](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![Başlangıç Sihirbazı 'nı açmak için yedekle ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. Açılan pencerede şunları yapın:
 
@@ -241,7 +241,7 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
    > [!NOTE]
    > Tüm dosyaları aynı klasöre indirmeniz gerekir. Dosyaların karşıdan yükleme boyutu 3 GB 'tan büyük olduğundan, indirmenin tamamlanması 60 dakika sürebilir. 
 
-   ![Indirme merkezinde dosya seçme](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+   ![İndirme sayfasında, tüm dosyalar ' ı seçin ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
 ### <a name="extract-the-software-package"></a>Yazılım paketini Ayıkla
 
@@ -256,9 +256,9 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. Ayıklama işlemini başlatmak için **Ayıkla** ' yı seçin.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
+   ![Ayıklama işlemini başlatmak için Ayıkla ' yı seçin.](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-1. Ayıklandıktan sonra **setup.exeyürütme** seçeneğini belirleyip **son**' u seçin.
+1. Ayıklandıktan sonra **setup.exeyürütme ** seçeneğini belirleyip **son**' u seçin.
 
 > [!TIP]
 > setup.exe dosyasını, yazılım paketini ayıkladığınız klasörden de bulabilirsiniz.
@@ -267,17 +267,17 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. **Yükleme**altındaki kurulum penceresinde, Kurulum Sihirbazı 'nı açmak için **Microsoft Azure Backup** ' yi seçin.
 
-   ![Microsoft Azure Backup Kurulum Sihirbazı yükleme düğmesi](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
+   ![Yükleme altındaki kurulum penceresinde, Kurulum Sihirbazı 'nı açmak için Microsoft Azure Backup ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. **Karşılama** ekranında, **önkoşul denetimleri** sayfasına devam etmek için **İleri** ' yi seçin.
 
 1. Azure Backup Sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını belirlemek için **yeniden denetle** ' yi seçin. Başarıyla karşılanırsa, **İleri**' yi seçin.
 
-   ![Azure Backup Sunucusu önkoşul denetimi](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ Azure Backup Sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını belirlemek için yeniden denetle ' yi seçin. Başarıyla karşılanırsa, Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. Azure Backup Sunucusu yükleme paketi, gerekli olan uygun SQL Server ikilileriyle birlikte sunulur. Yeni bir Azure Backup Sunucusu yüklemesi başlattığınızda, **Bu kurulum ile yeni SQL Server örneğini yükleme** seçeneğini belirleyin. Sonra **Denetle ve yüklensin '** i seçin.
 
-   ![Azure Backup Sunucusu SQL Server denetimi](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
+   ![Azure Backup Sunucusu yükleme paketi, gerekli olan uygun SQL Server ikilileriyle birlikte sunulur.](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
    > Kendi SQL Server örneğinizi kullanmak istiyorsanız desteklenen SQL Server sürümleri SQL Server 2014 SP1 veya üzeri, 2016 ve 2017. Tüm SQL Server sürümleri Standard veya Enterprise 64-bit olmalıdır. Azure Backup Sunucusu uzak bir SQL Server örneğiyle çalışmıyor. Azure Backup Sunucusu tarafından kullanılan örnek yerel olmalıdır. Azure Backup Sunucusu için mevcut bir SQL Server örneğini kullanıyorsanız, kurulum yalnızca SQL Server *adlandırılan örneklerin* kullanımını destekler.
@@ -321,18 +321,18 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
    > [!NOTE]
    > Azure 'a yedekleme için karalama konumu gereklidir. Karalama konumunun, buluta yedeklenmek üzere planlandığı verilerin en az %5 ' i olduğundan emin olun. Disk koruması için, yükleme tamamlandıktan sonra ayrı disklerin yapılandırılması gerekir. Depolama havuzları hakkında daha fazla bilgi için bkz. [depolama havuzlarını ve Disk depolamayı yapılandırma](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
-   ![Microsoft Azure Backup kurulum yükleme ayarları](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
+   ![Microsoft Azure Backup Server dosyalarının yüklenmesi için bir konum belirtin ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
 1. Kısıtlı yerel kullanıcı hesapları için güçlü bir parola sağlayın ve **İleri**' yi seçin.
 
-   ![Microsoft Azure Backup kurulum güvenlik ayarları](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
+   ![Kısıtlı yerel kullanıcı hesapları için güçlü bir parola sağlayın ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 1. Güncelleştirmeleri denetlemek için Microsoft Update kullanmak isteyip istemediğinizi seçin ve **İleri**' yi seçin.
 
    > [!NOTE]
    > Windows ve Azure Backup Sunucusu gibi diğer ürünler için güvenlik ve önemli güncelleştirmeler sunan Microsoft Update Windows Update yeniden yönlendirmenizi öneririz.
 
-   ![Microsoft Azure Backup kurulum Microsoft Update kabul etme](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   ![Güncelleştirmeleri denetlemek için Microsoft Update kullanmak isteyip istemediğinizi seçin ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 1. **Ayarların özetini**gözden geçirin ve **yükler**' i seçin.
 
@@ -352,7 +352,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
    Microsoft Azure Kurtarma Hizmetleri Aracısı kurulumu bittikten sonra, yükleme adımı SQL Server ve Azure Backup Sunucusu bileşenleri için yükleme ve yapılandırmaya gider.
 
-   ![Microsoft Azure Backup kurulum yüklemesi](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+   ![Microsoft Azure Kurtarma Hizmetleri Aracısı kurulumu bittikten sonra, yükleme adımı SQL Server ve Azure Backup Sunucusu bileşenleri için yükleme ve yapılandırmaya gider.](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 1. Yükleme adımı tamamlandıktan sonra **Kapat**' ı seçin.
 

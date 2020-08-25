@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506337"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723172"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure PowerShell kullanarak bir şirket içi etki alanına Azure Active Directory Domain Services kaynak ormanı ve giden orman güveni oluşturma
 
@@ -102,7 +102,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
 1. Betiği için gereken aşağıdaki parametreleri gözden geçirin `New-AzureAaddsForest` . Önkoşul **Azure PowerShell** ve **Azure AD PowerShell** modüllerine de sahip olduğunuzdan emin olun. Uygulama ve şirket içi bağlantı sağlamak için sanal ağ gereksinimlerini planladığınızdan emin olun.
 
-    | Adı                         | Betik parametresi          | Açıklama |
+    | Ad                         | Betik parametresi          | Açıklama |
     |:-----------------------------|---------------------------|:------------|
     | Abonelik                 | *-Azuyeniden gönderilirken Scriptionıd*    | Azure AD DS faturalandırma için kullanılan abonelik KIMLIĞI. [Get-AzureRMSubscription][Get-AzureRMSubscription] cmdlet 'ini kullanarak Aboneliklerin listesini alabilirsiniz. |
     | Kaynak Grubu               | *-aaddsResourceGroupName* | Yönetilen etki alanı ve ilişkili kaynaklar için kaynak grubunun adı. |
@@ -112,7 +112,7 @@ Yönetilen bir etki alanı kaynak ormanı oluşturmak için `New-AzureAaddsFores
 
     `New-AzureAaddsForest`Bu kaynaklar zaten mevcut değilse betik Azure sanal ağını ve azure AD DS alt ağını oluşturabilir. Komut dosyası, belirtildiğinde, isteğe bağlı olarak iş yükü alt ağlarını oluşturabilir:
 
-    | Adı                              | Betik parametresi                  | Açıklama |
+    | Ad                              | Betik parametresi                  | Açıklama |
     |:----------------------------------|:----------------------------------|:------------|
     | Sanal ağın adı              | *-Aaddsvbir ağ adı*                  | Yönetilen etki alanı için sanal ağın adı.|
     | Adres alanı                     | *-Aaddsvnetcıdraddressspace*      | CıDR gösteriminde sanal ağın adres aralığı (sanal ağ oluşturuluyoruz).|
@@ -148,15 +148,15 @@ Başlamadan önce, [ağ konularını ve önerileri](tutorial-create-forest-trust
 
 1. Azure VPN veya Azure ExpressRoute bağlantısı kullanarak şirket içi ağınız ile Azure arasında karma bağlantı oluşturun. Karma ağ yapılandırması bu belge kapsamının ötesinde ve ortamınızda zaten var olabilir. Belirli senaryolar hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-    * [Azure siteden sıteye VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Azure ExpressRoute 'A genel bakış](/azure/expressroute/expressroute-introduction).
+    * [Azure siteden sıteye VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+    * [Azure ExpressRoute 'A genel bakış](../expressroute/expressroute-introduction.md).
 
     > [!IMPORTANT]
     > Bağlantıyı, yönetilen etki alanının sanal ağına doğrudan oluşturursanız, ayrı bir ağ geçidi alt ağı kullanın. Yönetilen etki alanının alt ağında ağ geçidini oluşturmayın.
 
 1. Yönetilen bir etki alanını yönetmek için bir yönetim sanal makinesi oluşturun, onu yönetilen etki alanına ekleyin ve gerekli AD DS yönetim araçlarını yüklersiniz.
 
-    Yönetilen etki alanı kaynak ormanı dağıtılırken, [bir Windows Server VM oluşturun](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) , ardından gerekli yönetim araçlarını yüklemek için [çekirdek AD DS yönetim araçlarını yükler](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm) . Etki alanı başarıyla dağıtıldıktan sonra aşağıdaki adımlardan birine kadar yönetim sanal makinesini yönetilen etki alanına katılmayı bekleyin.
+    Yönetilen etki alanı kaynak ormanı dağıtılırken, [bir Windows Server VM oluşturun](./join-windows-vm.md) , ardından gerekli yönetim araçlarını yüklemek için [çekirdek AD DS yönetim araçlarını yükler](./tutorial-create-management-vm.md) . Etki alanı başarıyla dağıtıldıktan sonra aşağıdaki adımlardan birine kadar yönetim sanal makinesini yönetilen etki alanına katılmayı bekleyin.
 
 1. Şirket içi ağınız ve Azure sanal ağı arasındaki ağ bağlantısını doğrulayın.
 
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Şimdi aşağıdaki bilgileri komut dosyasına girin:
 
-| Adı                               | Betik parametresi     | Açıklama |
+| Ad                               | Betik parametresi     | Açıklama |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS etki alanı adı            | *-ManagedDomainFqdn* | Yönetilen etki alanının FQDN 'SI (örneğin, *aaddscontoso.com* ) |
 | Şirket içi AD DS etki alanı adı      | *-TrustFqdn*         | *OnPrem.contoso.com* gibi güvenilir ormanın FQDN 'si |
@@ -260,7 +260,7 @@ Yönetilen etki alanı kaynak etki alanına katılmış Windows Server sanal mak
 1. Uzak Masaüstü ve yönetilen etki alanı yönetici kimlik bilgilerinizi kullanarak yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'sine bağlanın. Ağ Düzeyinde Kimlik Doğrulama (NLA) hatası alırsanız, kullandığınız kullanıcı hesabının bir etki alanı kullanıcı hesabı olmadığını kontrol edin.
 
     > [!TIP]
-    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](https://docs.microsoft.com/azure/bastion/bastion-overview) kullanabilirsiniz.
+    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](../bastion/bastion-overview.md) kullanabilirsiniz.
 
 1. Bir komut istemi açın ve `whoami` Şu anda kimliği doğrulanmış kullanıcının ayırt edici adını göstermek için komutunu kullanın:
 
@@ -286,7 +286,7 @@ Yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'sini kull
 1. Uzak Masaüstü ve yönetilen etki alanı yönetici kimlik bilgilerinizi kullanarak yönetilen etki alanı kaynak ormanına katılmış Windows Server VM 'sine bağlanın. Ağ Düzeyinde Kimlik Doğrulama (NLA) hatası alırsanız, kullandığınız kullanıcı hesabının bir etki alanı kullanıcı hesabı olmadığını kontrol edin.
 
     > [!TIP]
-    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](https://docs.microsoft.com/azure/bastion/bastion-overview) kullanabilirsiniz.
+    > Azure AD Domain Services ' a katılmış sanal makinelerinize güvenli bir şekilde bağlanmak için, desteklenen Azure bölgelerinde [Azure savunma ana bilgisayarı hizmetini](../bastion/bastion-overview.md) kullanabilirsiniz.
 
 1. **Windows ayarları**' nı açın ve **Ağ ve Paylaşım Merkezi**' ni arayıp seçin.
 1. **Gelişmiş paylaşım ayarlarını değiştir** seçeneğini belirleyin.

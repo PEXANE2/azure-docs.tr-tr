@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81010503"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>V12 .NET istemci kitaplıklarını kullanan Azure depolama örnekleri
@@ -23,7 +23,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 :::row:::
    :::column span="":::
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage 2. örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="azure-files-samples"></a>Azure dosyaları örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="queue-samples"></a>Kuyruk örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 :::row:::
    :::column span="":::
@@ -335,5 +335,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 
 * Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
 * Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
-* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* JavaScript/Node.js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

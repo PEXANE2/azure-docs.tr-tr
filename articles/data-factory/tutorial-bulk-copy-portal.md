@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
 ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86081647"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
@@ -49,7 +49,7 @@ Bu senaryoda, Azure SQL veritabanı 'nda Azure SYNAPSE Analytics 'e (eski adıyl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
 * **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. 
 * **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
@@ -75,7 +75,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenl
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure Portal](https://portal.azure.com)gidin. 
+1. [Azure portalına](https://portal.azure.com) gidin. 
 1. Azure Portal menüsünün solunda, **kaynak**  >  **Analizi**oluştur  >  **Data Factory**' u seçin. 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni Veri Fabrikası** sayfasında **ad**için **ADFTutorialBulkCopyDF** girin. 
@@ -94,7 +94,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenl
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 1. **Sürüm** için **V2**'yi seçin.
 1. Data factory için **konum** seçin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
    
 1. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede açmak için **Author & Monitor** (Oluştur ve İzle) kutucuğuna tıklayın.
@@ -151,7 +151,7 @@ Bu adımda, Azure SQL veritabanı 'nda veritabanınızı veri fabrikasına bağl
      
     f. Belirtilen bilgileri kullanarak veritabanınızın bağlantısını test etmek için **Bağlantıyı Sına**' ya tıklayın.
      
-    örneğin: **Oluştur**'a tıklayın.
+    örneğin: **Oluştur**’a tıklayın.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Hazırlama Azure Depolama bağlı hizmetini oluşturma
 Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için PolyBase’i etkinleştiren geçici bir hazırlama alanı olarak kullanırsınız.
@@ -163,7 +163,7 @@ Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için
     a. **Ad** için **AzureStorageLinkedService** adını girin.                                                 
     b. **Depolama hesabı adı**Için **Azure depolama hesabınızı** seçin.
     
-    c. **Oluştur**'a tıklayın.
+    c. **Oluştur**’a tıklayın.
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri kümelerini oluşturacaksınız. 
@@ -181,7 +181,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
     ![Yeni veri kümesi menüsü](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve ardından **devam**' a tıklayın. 
     
-1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **azuressqldatabasedataset**adını girin. **Bağlı hizmet**altında **Azuressqldatabaselinkedservice**' i seçin. Ardından **Tamam**'a tıklayın.
+1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **azuressqldatabasedataset**adını girin. **Bağlı hizmet**altında **Azuressqldatabaselinkedservice**' i seçin. Daha sonra, **Tamam**'a tıklayın.
 
 1. **Bağlantı** sekmesine geçin, **tablo**için herhangi bir tablo seçin. Bu tablo işlevsiz bir tablodur. İşlem hattını oluştururken kaynak veri kümesinde bir sorgu belirtirsiniz. Sorgu, veritabanınızdaki verileri ayıklamak için kullanılır. Alternatif olarak, **Düzenle** onay kutusunu tıklatabilir ve tablo adı olarak **dbo. dummyName** yazabilirsiniz. 
  
@@ -190,7 +190,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
 
 1. Sol bölmedeki **+ (artı)** düğmesine ve **Veri Kümesi**'ne tıklayın. 
 1. **Yeni veri kümesi** penceresinde **Azure SYNAPSE Analytics (eskı adıyla SQL DW)** öğesini seçin ve ardından **devam**' a tıklayın.
-1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **Azuresqldwdataset**adını girin. **Bağlı hizmet**altında **Azuresqldwlinkedservice**öğesini seçin. Ardından **Tamam**'a tıklayın.
+1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **Azuresqldwdataset**adını girin. **Bağlı hizmet**altında **Azuresqldwlinkedservice**öğesini seçin. Daha sonra, **Tamam**'a tıklayın.
 1. **Parametreler** sekmesine geçin, **+ Yeni**'ye tıklayın ve parametre adı olarak **DWTableName** girin. **+ Yeni** ' ye tekrar tıklayın ve parametre adı Için **dwschema** yazın. Bu adı sayfadan kopyalayıp yapıştırırsanız *Dwtablename* ve *dwschema*sonunda **boşluk karakteri** bulunmadığından emin olun. 
 1. **Bağlantı** sekmesine geçin, 
 

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593283"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları çalıştırma
@@ -43,7 +43,7 @@ ACR oturum açma sunucusunun adını almak için [az acr list][az-acr-list] komu
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-İlk öğreticide kopyalanan git deposundaki örnek bildirim dosyasında oturum açma sunucusu adı olarak *microsoft* kullanılmıştır. Kopyalanmış *Azure-oylama-App-redsıs* dizininde olduğunuzdan emin olun, ardından bildirim dosyasını şöyle `vi`bir metin düzenleyicisiyle açın:
+İlk öğreticide kopyalanan git deposundaki örnek bildirim dosyasında oturum açma sunucusu adı olarak *microsoft* kullanılmıştır. Kopyalanmış *Azure-oylama-App-redsıs* dizininde olduğunuzdan emin olun, ardından bildirim dosyasını şöyle bir metin düzenleyicisiyle açın `vi` :
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
@@ -65,7 +65,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Dosyayı kaydedin ve kapatın. İçinde `vi`, kullanın `:wq`.
+Dosyayı kaydedin ve kapatın. İçinde `vi` , kullanın `:wq` .
 
 ## <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
@@ -90,7 +90,7 @@ service "azure-vote-front" created
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
-İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
+İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu bağımsız değişkeniyle birlikte kullanın `--watch` .
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -102,7 +102,7 @@ Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gös
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` `kubectl` izleme işlemini durdurmak için kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` izleme işlemini durdurmak için kullanın `kubectl` . Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s

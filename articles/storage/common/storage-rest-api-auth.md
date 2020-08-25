@@ -10,18 +10,18 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905389"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724175"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Paylaşılan anahtar yetkilendirmesi ile REST API işlemlerini çağırma
 
 Bu makalede, yetkilendirme üstbilgisinin nasıl ayarlanacağı dahil olmak üzere Azure depolama REST API 'Lerinin nasıl çağrılacağını gösterilmektedir. REST hakkında hiçbir şey bilen bir geliştiricinin görünüm noktasından yazılmıştır ve bir REST çağrısının nasıl yapılacağını fikir vermez. Bir REST işleminin nasıl çağrılacağını öğrendikten sonra, diğer Azure depolama REST işlemlerini kullanmak için bu bilgilerden yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Örnek uygulama, bir depolama hesabı için blob kapsayıcıları listeler. Bu makaledeki kodu denemek için aşağıdaki öğeler gereklidir:
 
@@ -65,7 +65,7 @@ REST API çağrısı, istemci tarafından yapılan bir istekten ve hizmet taraf�
 
 **Istek yöntemi**: get. Bu fiil, istek nesnesinin bir özelliği olarak belirttiğiniz HTTP yöntemidir. Bu fiil için diğer değerler, aradığınız API 'ye bağlı olarak HEAD, PUT ve DELETE ' i içerir.
 
-**İstek URI 'si**: `https://myaccount.blob.core.windows.net/?comp=list` .İstek URI 'SI BLOB depolama hesabı uç noktasından `http://myaccount.blob.core.windows.net` ve kaynak dizeden oluşturulur `/?comp=list` .
+**İstek URI 'si**: `https://myaccount.blob.core.windows.net/?comp=list` .İstek URI 'SI BLOB depolama hesabı uç noktasından `https://myaccount.blob.core.windows.net` ve kaynak dizeden oluşturulur `/?comp=list` .
 
 [URI parametreleri](/rest/api/storageservices/List-Containers2#uri-parameters): listcontainers çağrılırken kullanabileceğiniz ek sorgu parametreleri vardır. Bu parametrelerin birkaç ikisi, filtreleme için kullanılan çağrı (saniye cinsinden) ve *ön ek*için *zaman aşımındır* .
 

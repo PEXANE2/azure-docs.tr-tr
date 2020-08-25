@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033651"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750194"
 ---
 # <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
 
@@ -51,7 +51,7 @@ Bir Orchestration işlevine daha fazla iş verildiğinde (örneğin, bir yanıt 
 > Yeniden yürütme deseninin doğru ve güvenilir bir şekilde çalışması için Orchestrator işlev kodu *belirleyici*olmalıdır. Orchestrator işlevlerine yönelik kod kısıtlamaları hakkında daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) konusu.
 
 > [!NOTE]
-> Orchestrator işlevi günlük iletilerini yayar, yeniden yürütme davranışı yinelenen günlük iletilerinin oluşturulmasına neden olabilir. Bu davranışın neden olduğu ve geçici olarak nasıl çalışılacağı hakkında daha fazla bilgi edinmek için [günlüğe kaydetme](durable-functions-diagnostics.md#logging) konusuna bakın.
+> Orchestrator işlevi günlük iletilerini yayar, yeniden yürütme davranışı yinelenen günlük iletilerinin oluşturulmasına neden olabilir. Bu davranışın neden oluştuğu ve geçici olarak nasıl çalışılacağı hakkında daha fazla bilgi edinmek için [günlüğe kaydetme](durable-functions-diagnostics.md#app-logging) konusuna bakın.
 
 ## <a name="orchestration-history"></a>Düzenleme geçmişi
 
@@ -124,7 +124,7 @@ Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha 
 
 Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
 
-| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Name             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Ad             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -348,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="getweather-activity"></a>`GetWeather`Etkinlik
+#### <a name="getweather-activity"></a>`GetWeather` Etkinlik
 
 ```javascript
 module.exports = async function (context, location) {
@@ -376,7 +376,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     # ...
 
 ```
-#### <a name="getweather-activity"></a>`GetWeather`Etkinlik
+#### <a name="getweather-activity"></a>`GetWeather` Etkinlik
 
 ```python
 from collections import namedtuple

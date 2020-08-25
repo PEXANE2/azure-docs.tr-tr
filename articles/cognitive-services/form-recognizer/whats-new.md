@@ -9,25 +9,49 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272955"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724141"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
 Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirmeleri, düzeltmeler ve belge güncelleştirmeleriyle güncel kalmak için bu makaleyi kullanın.
 
-> [!NOTE]
-> Form tanıyıcı için hızlı başlangıç ve kılavuzlar, belirtilmediği takdirde her zaman API 'nin en son sürümünü kullanır.
+## <a name="august-2020"></a>Ağustos 2020
+
+### <a name="new-features"></a>Yeni özellikler
+
+**Form tanıyıcı v 2.1 Genel önizlemesi kullanıma sunuldu.** Aşağıdaki özellikler dahil olmak üzere v 2.1-Preview. 1 yayımlandı: 
+
+
+- **REST API başvuru kullanılabilir** - [v 2.1-Preview. 1 başvurusunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) görüntüleyin 
+- **İngilizce 'nin yanı sıra desteklenen yeni diller**şunlardır: `Layout` ve için `Train Custom Model` : İngilizce (en), Çince (Basitleştirilmiş) (zh-zh), Felemenkçe (nl), Fransızca (fr), Almanca (de), İtalyanca (It), Portekizce (PT) ve İspanyolca (es).
+- **Onay kutusu/seçim işareti algılama** – form tanıyıcı, onay kutuları ve radyo düğmeleri gibi seçim işaretlerinin algılanmasını ve ayıklanmasını destekler. Seçim işaretleri ' de ayıklanır `Layout` ve artık, `Train Custom Model`  -  seçim işaretleri için anahtar değer çiftlerini ayıklamak üzere _etiketlerle eğitme_ ' de etiketleyebilir ve eğitebilirsiniz. 
+- **Model oluşturma** , birden çok modelin tek bir model kimliğiyle oluşturulmasına ve çağrılmasına izin verir. Bir belge, oluşturulmuş bir model kimliğiyle analiz edilecek şekilde gönderildiğinde, ilk olarak doğru özel modele yönlendirmek için bir sınıflandırma adımı yapılır. Model oluşturma, `Train Custom Model`  -  _etiketlerle eğitebilir_.
+- **Model adı** daha kolay yönetim ve izleme için özel modellerinize kolay bir ad ekleyin.
+- Ingilizce, dil iş kartlarında ortak alanların ayıklanması için **Iş kartları için önceden oluşturulmuş yeni model** .
+- **Önceden oluşturulmuş alındılar Için yeni yerel ayarlar** en-US, destek artık en-au, en-CA, en-GB, en-ın için kullanılabilir
+- İçin **kalite iyileştirmeleri** `Layout` , `Train Custom Model`  -  _Etiketler olmadan eğitme_ ve _etiketlerle eğitme_.
+
+
+**v 2.0** aşağıdaki güncelleştirmeyi içerir:
+-   NET, Python, Java ve JavaScript için [istemci kitaplıkları](quickstarts/client-library.md) genel kullanılabilirliği olarak girilmiş. 
+
+
+GitHub 'da **yeni örnekler** mevcuttur. 
+- [Bilgi ayıklama Tarifimlerini-Forms PlayBook](https://github.com/microsoft/knowledge-extraction-recipes-forms) , gerçek form tanıyıcı müşteri görevlendirmelerinden en iyi uygulamaları toplar ve bu projeleri geliştirmede kullanılan kullanılabilir kod örnekleri, Yapılacaklar listeleri ve örnek işlem hatları sağlar. 
+- [Akıllı bilgi noktası](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) formu tanıyıcı örneği, `Analyze Receipt` Etiketler olmadan tümleştirme ve `Train Custom Model`  -  _eğitme_yöntemini gösterir.
+
+
 
 ## <a name="july-2020"></a>Temmuz 2020
 
 ### <a name="new-features"></a>Yeni özellikler
 * **v 2.0 başvurusu kullanılabilir** [V 2.0 API başvurusunu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ve [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)ve [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)için güncelleştirilmiş SDK 'ları görüntüleyin.
-* **Tablo geliştirmeleri ve ayıklama geliştirmeleri** , özellikle, Etiketler olmadan özel eğitime göre tablo üst bilgilerini ve yapılarını öğrenme özelliği olan doğruluk geliştirmelerini ve tablo dışlamalarını içerir. 
+* **Tablo geliştirmeleri ve ayıklama geliştirmeleri** , özellikle, _Etiketler olmadan özel eğitime_göre tablo üst bilgilerini ve yapılarını öğrenme özelliği olan doğruluk geliştirmelerini ve tablo dışlamalarını içerir. 
 * **Para birimi desteği** Genel para birimi sembollerini algılama ve ayıklama.
 * **Azure gov** Form tanıyıcı artık Azure gov 'de de kullanılabilir.
 * **Gelişmiş güvenlik özellikleri**: 
@@ -39,7 +63,7 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 ### <a name="new-features"></a>Yeni özellikler
 * **Istemci SDK 'Larına Copymodel API 'si eklendi** Artık bir abonelikten diğerine model kopyalamak için istemci SDK 'larını kullanabilirsiniz. Bu özellikle ilgili genel bilgiler için bkz. [yedekleme ve kurtarma modelleri](./disaster-recovery.md) .
-* **Azure Active Directory tümleştirme** Artık SDK 'larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak için AAD kimlik bilgilerinizi kullanabilirsiniz.
+* **Azure Active Directory tümleştirme** Artık SDK 'larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak için Azure AD kimlik bilgilerinizi kullanabilirsiniz.
 * **SDK 'ya özgü değişiklikler** Bu, hem küçük özellik eklemeleri hem de son değişiklikleri içerir. Daha fazla bilgi için bkz. SDK changelog.
   * [C# SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Python SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -72,11 +96,11 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 * **Etiketleme Için değer türleri** Artık etiketettiğiniz değer türlerini, tanıyıcı örnek etiketleme aracı ile belirtebilirsiniz. Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
   * `string`
-    * Varsayılan, `no-whitespaces` ,`alphanumeric`
+    * Varsayılan, `no-whitespaces` , `alphanumeric`
   * `number`
-    * varsayılanını`currency`
+    * varsayılanını `currency`
   * `date` 
-    * Varsayılan, `dmy` , `mdy` ,`ymd`
+    * Varsayılan, `dmy` , `mdy` , `ymd`
   * `time`
   * `integer`
 

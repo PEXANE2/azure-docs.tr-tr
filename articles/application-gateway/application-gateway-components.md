@@ -2,17 +2,17 @@
 title: Application Gateway bileşenleri
 description: Bu makale, bir uygulama ağ geçidinde çeşitli bileşenler hakkında bilgi sağlar
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.author: absha
-ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.author: surmb
+ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088096"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723325"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -69,9 +69,9 @@ Daha fazla bilgi için bkz. [Application Gateway Için özel hata sayfaları](cu
 
 - **Temel**. Bu tür bir dinleyici, uygulama ağ geçidinin IP adresine tek bir DNS eşlemesinin bulunduğu tek bir etki alanı sitesini dinler. Bu dinleyici yapılandırması, bir uygulama ağ geçidinin arkasında tek bir site barındırdığınızda gereklidir.
 
-- **Çok**siteli. Aynı uygulama ağ geçidinde birden fazla Web uygulaması için ana bilgisayar adına veya etki alanı adına dayalı yönlendirmeyi yapılandırmak istediğinizde bu dinleyici yapılandırması gerekir. Bir Application Gateway 'e en fazla 100 + web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç etki alanı, contoso.com, fabrikam.com ve adatum.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet [çok siteli dinleyici](multiple-site-overview.md) oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
+- **Çok**siteli. Aynı uygulama ağ geçidinde birden fazla Web uygulaması için ana bilgisayar adına veya etki alanı adına dayalı yönlendirmeyi yapılandırmak istediğinizde bu dinleyici yapılandırması gerekir. Bir uygulama ağ geçidine 100'den fazla web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin contoso.com, fabrikam.com ve adatum.com olmak üzere üç etki alanı, uygulama ağ geçidinin IP adresine işaret eder. Üç adet [çok siteli dinleyici](multiple-site-overview.md) oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
 
-    Ayrıca, çok siteli bir dinleyicide joker karakter ana bilgisayar adlarını ve dinleyici başına en fazla 5 ana bilgisayar adını tanımlayabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+    Ayrıca çoklu site dinleyicisinde joker karakter ana bilgisayar adı tanımlayabilir ve bunu dinleyici başına en fazla 5 ana bilgisayar adı için yapabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
     Çok siteli bir dinleyicinin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Azure Portal kullanarak Application Gateway çoklu site barındırma](create-multiple-sites-portal.md)bölümüne bakın.
 
@@ -99,7 +99,7 @@ Yeniden yönlendirme hedefini başka bir dinleyici olacak şekilde seçebilirsin
 
 Daha fazla bilgi için bkz. [Application Gateway uygulamanızdaki trafiği yeniden yönlendirme](redirect-overview.md).
 
-### <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
+### <a name="rewrite-http-headers-and-url"></a>HTTP üst bilgilerini ve URL’sini yeniden yazma
 
 Yeniden yazma kurallarını kullanarak, HTTP (S) isteği ve yanıt üst bilgilerini ekleyebilir, kaldırabilir veya güncelleştirebilir, istek ve yanıt paketleri uygulama ağ geçidi aracılığıyla istemci ile arka uç havuzları arasında hareket edebilir.
 
@@ -140,7 +140,7 @@ Bir uygulama ağ geçidi, trafiğe izin veriliyorsa Azure ExpressRoute veya VPN 
 
 Farklı istek türleri için farklı arka uç havuzları oluşturabilirsiniz. Örneğin, genel istekler için bir arka uç havuzu oluşturun ve daha sonra uygulamanız için mikro hizmetlere istekler için bir arka uç havuzu oluşturun.
 
-## <a name="health-probes"></a>Durum yoklamaları
+## <a name="health-probes"></a>Sistem durumu araştırmaları
 
 Varsayılan olarak, bir uygulama ağ geçidi, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve sağlıksız olanları otomatik olarak kaldırır. Ardından, sağlıksız örnekleri izler ve kullanılabilir hale geldiğinde ve sistem durumu araştırmalarına yanıt verdiklerinde yeniden sağlıklı arka uç havuzuna ekler.
 

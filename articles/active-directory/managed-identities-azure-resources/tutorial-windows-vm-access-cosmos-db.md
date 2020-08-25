@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82583067"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -34,14 +34,14 @@ Bu öğreticide, Cosmos DB'ye erişmek amacıyla, Windows sanal makinesi (VM) i�
 > * Windows VM’nin sistem tarafından atanan yönetilen kimliğini kullanarak erişim belirteci alma ve Azure Resource Manager çağrısı yapma
 > * Cosmos DB çağrıları yapmak için Azure Resource Manager'dan erişim anahtarları alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - [Azure PowerShell](/powershell/azure/install-az-ps) en son sürümünü yükler
 
 
-## <a name="enable"></a>Etkinleştirme
+## <a name="enable"></a>Etkinleştir
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -59,7 +59,7 @@ Henüz Cosmos DB hesabınız yoksa, bir hesap oluşturun. Bu adımı atlayabilir
 3. Cosmos DB hesabı için daha sonra kullanacağınız bir **Kimlik** girin.  
 4. **API** olarak "SQL" ayarlanmalıdır. Bu öğreticide açıklanan yaklaşım varolan diğer API türleriyle kullanılabilir, ama bu öğreticideki adımlar SQL API'ye yöneliktir.
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.  Cosmos DB'nin kullanılabileceği **Konum**'u seçin.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 ### <a name="create-a-collection"></a>Koleksiyon oluşturma 
 
@@ -204,6 +204,6 @@ Bu CLI komutu koleksiyon hakkındaki ayrıntıları döndürür:
 Bu öğreticide Cosmos DB'ye erişmek için Windows VM sistem tarafından atanan kimliğini kullanmayı öğrendiniz.  Cosmos DB hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB'ye genel bakış](/azure/cosmos-db/introduction)
+>[Azure Cosmos DB genel bakış](/azure/cosmos-db/introduction)
 
 

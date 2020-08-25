@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82207896"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: portalı kullanarak Azure Load Balancer bağlantı noktası iletmeyi yapılandırma
@@ -38,22 +38,22 @@ Bu öğreticide, Azure Load Balancer bağlantı noktası iletmeyi ayarlarsınız
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com).
+Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
 
 İlk olarak, VM 'Ler üzerinden trafik yükünü dengeleyebilir ortak bir standart yük dengeleyici oluşturun. Standart yük dengeleyici yalnızca standart bir genel IP adresini destekler. Standart yük dengeleyici oluşturduğunuzda, yük dengeleyici ön ucu olarak yapılandırılan ve varsayılan olarak **Loadbalancerön uç** olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturursunuz. 
 
-1. Ekranın sol üst kısmında **kaynak** > **ağ** > **Load Balancer**oluştur ' a tıklayın.
+1. Ekranın sol üst kısmında **kaynak**  >  **ağ**  >  **Load Balancer**oluştur ' a tıklayın.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegrouplb* yazın.|
-    | Adı                   | *myLoadBalancer*                                   |
-    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | **Ortak**seçeneğini belirleyin.                                        |
+    | Name                   | *myLoadBalancer*                                   |
+    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
@@ -74,21 +74,21 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroupLB (mevcut kaynak grubunu Seç) |
-| **\<sanal ağ-adı>** | myVNet          |
-| **\<bölge adı>**          | Batı Avrupa      |
-| **\<IPv4-adres-alanı>**   | 10.3.0.0 \ 16          |
-| **\<alt ağ-adı>**          | myBackendSubnet        |
-| **\<alt ağ-adres aralığı>** | 10.3.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLB (mevcut kaynak grubunu Seç) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | West Europe      |
+| **\<IPv4-address-space>**   | 10.3.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>VM oluşturma ve bunları yük dengeleyici arka uç havuzuna ekleme
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Windows Server 2016 Datacenter**' u seçin. 
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 Datacenter**' u seçin. 
    
 1. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: açılır ve **myresourcegrouplb**' ı seçin.
+   - **Abonelik**  >  **Kaynak grubu**: açılır ve **Myresourcegrouplb**' ı seçin.
    - **Sanal makine adı**: *MyVM1*yazın.
    - **Bölge**: **Batı Avrupa**seçin. 
    - **Kullanıcı adı**: *azureuser*yazın.
@@ -112,16 +112,16 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
    
 1. VM 'yi, oluşturduğunuz bir yük dengeleyici arka uç havuzuna ekleyin:
    
-   1. **Yük Dengeleme** > altında**Bu sanal makineyi var olan bir yük dengeleme çözümünün arkasına yerleştirin**, **Evet**' i seçin. 
+   1. **Yük Dengeleme**altında  >  **Bu sanal makineyi var olan bir yük dengeleme çözümünün arkasına yerleştirin**, **Evet**' i seçin. 
    1. **Yük dengeleme seçenekleri**için, açılır ve **Azure yük dengeleyici**' ni seçin. 
    1. **Yük dengeleyici seçin**için, açılır ve **myloadbalancer**' ı seçin. 
    1. **Bir arka uç havuzu seçin**altında **Yeni oluştur**' u seçin, sonra *mybackendpool*yazın ve **Oluştur**' u seçin. 
    
    ![Sanal ağ oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
    
-1. **Yönetim** sekmesini seçin veya **İleri** > **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
+1. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
    
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
    
 1. Ayarları gözden geçirin ve doğrulamanın başarılı olması durumunda **Oluştur**' u seçin. 
 
@@ -153,7 +153,7 @@ VM 'Ler için gelen internet (HTTP) bağlantılarına izin veren bir ağ güvenl
    - **Ad**: *Myhttprule*yazın. 
    - **Açıklama**: tür *http 'ye izin ver*. 
    
-1. **Add (Ekle)** seçeneğini belirleyin. 
+1. **Ekle**’yi seçin. 
    
    ![NSG kuralı oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    
@@ -192,7 +192,7 @@ Yük dengeleyicinin VM durumunu izlemesine izin vermek için, bir sistem durumu 
    - **Ad**: *myhealtharaştırması*yazın.
    - **Protokol**: açılır ve **http**' yi seçin. 
    - **Bağlantı noktası**: *80*yazın. 
-   - **Yol**: varsayılan */* URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
+   - **Yol**: */* varsayılan URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
    - **Aralık**: *15*yazın. Aralık, yoklama denemeleri arasındaki saniye sayısıdır.
    - **Sağlıksız eşik**: tür *2*. Bu değer, bir VM 'nin sağlıksız olduğu kabul edilmeden önce oluşan ardışık yoklama hatalarının sayısıdır.
    

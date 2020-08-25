@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236196"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724005"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak birden çok Web sitesini barındırmak için bir uygulama ağ geçidi oluşturma ve yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -78,7 +78,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="VNet oluştur":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Başka bir VNet oluştur":::
 
 3. **İleri ' yi seçin: Backenler**.
 
@@ -156,14 +156,14 @@ Arka uç hedefleri eklemek için şunları yapmanız gerekir:
 
     - **Kaynak grubu**: kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
     - **Sanal makine adı**: sanal makinenin adı Için *contosovm* girin.
-    - **Kullanıcı**adı: Yönetici Kullanıcı adı için *azureuser* girin.
-    - **Parola**: *Azure123456 girin!* Yönetici parolası için.
-4. Diğer varsayılanları kabul edin ve ardından **İleri: diskler**' i seçin.  
-5. **Diskler** sekmesi varsayılan değerlerini kabul edin ve ardından İleri ' yi seçin **: ağ**.
-6. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet**olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim**' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
-7. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı**olarak ayarlayın. Diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
-8. **Gözden geçir + oluştur** sekmesinde ayarları gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur**' u seçin.
-9. Devam etmeden önce sanal makine oluşturma işleminin tamamlanmasını bekleyin.
+    - **Kullanıcı**adı: Yönetici Kullanıcı adı için bir ad girin.
+    - **Parola**: yönetici için bir parola girin.
+1. Diğer varsayılanları kabul edin ve ardından **İleri: diskler**' i seçin.  
+2. **Diskler** sekmesi varsayılan değerlerini kabul edin ve ardından İleri ' yi seçin **: ağ**.
+3. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet**olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim**' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
+4. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı**olarak ayarlayın. Diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
+5. **Gözden geçir + oluştur** sekmesinde ayarları gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur**' u seçin.
+6. Devam etmeden önce sanal makine oluşturma işleminin tamamlanmasını bekleyin.
 
 ### <a name="install-iis-for-testing"></a>Test için IIS 'yi yükler
 
@@ -173,7 +173,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Özel uzantıyı yükleme](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın: 
+2. Sanal makineye IIS yüklemek için şu komutu çalıştırın: <konum için kaynak grubu bölgenizi değiştirin \> : 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -184,7 +184,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
+      -Location <location>
     ```
 
 3. İkinci bir sanal makine oluşturun ve daha önce tamamladığınız adımları kullanarak IIS 'yi yükleyebilirsiniz. Sanal makine adı ve **set-Azvmexgeri** cmdlet 'Inin **VMName** ayarı için *fabrikamVM* kullanın.

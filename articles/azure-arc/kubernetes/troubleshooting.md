@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc etkin Kubernetes kümeleriyle ilgili yaygın sorunları giderme.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725593"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723682"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc etkin Kubernetes sorunlarını giderme (Önizleme)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Tüm pods 'Ler `STATUS` olarak göstermelidir `Running` ve ya `READY` da olmalıdır `3/3` `2/2` . Günlükleri getirin ve döndürülen veya döndüren Pod 'leri `Error` tanıtın `CrashLoopBackOff` .
+Tüm pods 'Ler `STATUS` olarak göstermelidir `Running` ve ya `READY` da olmalıdır `3/3` `2/2` . Günlükleri getirin ve döndürülen veya döndüren Pod 'leri `Error` tanıtın `CrashLoopBackOff` . Bu yığınların herhangi biri durumunda kalırsa, `Pending` küme düğümlerinde kaynakların yetersiz olması olabilir. [Kümenizin ölçeğini](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) ölçeklendirmek, bu yığınların duruma geçmesi için bu FID 'leri alır `Running` .
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>Kubernetes kümeme Azure 'a bağlanamıyor
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Kubernetes kümelerini Azure yaya bağlama
 
 Kümelerin Azure 'a bağlanması için hem Azure aboneliğine hem de `cluster-admin` hedef kümeye erişime sahip olmanız gerekir. Kümeye ulaşılamadığından veya izinleri yetersizse, ekleme başarısız olur.
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
@@ -116,7 +114,7 @@ az k8sconfiguration create <parameters> --debug
 ### <a name="create-source-control-configuration"></a>Kaynak denetimi yapılandırması oluştur
 Microsoft. Kubernetes/connectedCluster kaynağında katkıda bulunan rolü, Microsoft. KubernetesConfiguration/sourceControlConfiguration kaynağı oluşturmak için gereklidir ve yeterlidir.
 
-### <a name="configuration-remains-pending"></a>Yapılandırma kalır`Pending`
+### <a name="configuration-remains-pending"></a>Yapılandırma kalır `Pending`
 
 ```console
 kubectl -n azure-arc logs -l app.kubernetes.io/component=config-agent -c config-agent
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>İzleme
+
+Kapsayıcılar için Azure Izleyici, DaemonSet 'in ayrıcalıklı modda çalıştırılmasını gerektirir. İzleme için kurallı bir Kubernetes kümesini başarılı bir şekilde ayarlamak için aşağıdaki komutu çalıştırın:
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

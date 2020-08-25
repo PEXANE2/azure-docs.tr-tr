@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78402838"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirin
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: Kaynak kodu teslim ettiğinizde bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirme
 
 [Hızlı bir göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR görevleri, kaynak kodu bir git deposuna kaydederken buluttaki otomatik Docker kapsayıcı görüntüsü derlemelerini destekler. ACR görevleri için desteklenen git bağlamları, genel veya özel GitHub veya Azure depoları içerir.
 
@@ -42,7 +42,7 @@ ACR Görevlerinin işleme durumunu okumasını etkinleştirmek ve bir depoda web
 
 İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -65,7 +65,7 @@ az acr task create \
 > [!IMPORTANT]
 > Önizlemede daha önce `az acr build-task` komutuyla görev oluşturduysanız [az acr task][az-acr-task] komutuyla bu görevleri yeniden oluşturmanız gerekebilir.
 
-Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden tarafından `--file` belirtilen Dockerfile, görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
+Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden tarafından belirtilen Dockerfile, `--file` görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
 
 Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı aşağıdakilere benzer:
 

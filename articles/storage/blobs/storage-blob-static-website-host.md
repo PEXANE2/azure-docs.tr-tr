@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78330404"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -21,13 +21,13 @@ ms.locfileid: "78330404"
 
 Bu öğreticide, Azure depolama 'ya statik bir Web sitesi derleyip dağıtmayı öğreneceksiniz. İşiniz bittiğinde, kullanıcıların herkese açık bir şekilde erişebileceği statik bir Web siteniz olur. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Statik Web sitesi barındırmayı yapılandırma
 > * Merhaba Dünya web sitesi dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -55,8 +55,8 @@ Başlamak için [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Depolama hesabınızı bulun ve hesaba genel bakış ' ı görüntüleyin.
 1. Statik Web siteleri için yapılandırma sayfasını göstermek üzere **statik Web sitesi** ' ni seçin.
 1. Depolama hesabı için statik Web sitesi barındırmayı etkinleştirmek üzere **etkin** ' i seçin.
-1. **Dizin belgesi adı** alanında *index. html*' nin varsayılan dizin sayfasını belirtin. Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
-1. **Hata belgesi yolu** alanında, *404. html*' nin varsayılan hata sayfasını belirtin. Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
+1. **Dizin belgesi adı** alanında, *index.html*' nin varsayılan dizin sayfasını belirtin. Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
+1. **Hata belgesi yolu** alanında, *404.html*' nin varsayılan hata sayfasını belirtin. Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
 1. **Kaydet**’e tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
 
     ![Depolama hesabı için statik Web sitesi barındırmayı etkinleştirme](media/storage-blob-static-website-host/enable-static-website-hosting.png)
@@ -70,18 +70,18 @@ Sonra, Visual Studio Code sahip bir Merhaba Dünya Web sayfası oluşturun ve Az
 
     ![Klasörü Visual Studio Code açın](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. *Mywebsite* klasöründe varsayılan dizin dosyasını oluşturun ve *index. html*olarak adlandırın.
+1. *Mywebsite* klasöründe varsayılan dizin dosyasını oluşturun ve *index.html*olarak adlandırın.
 
     ![Visual Studio Code varsayılan dizin dosyasını oluşturun](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
-1. Düzenleyicide *index. html* dosyasını açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
+1. Düzenleyicide *index.html* 'yi açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
 
     ```
     <h1>Hello World!</h1>
     ```
 
-1. Varsayılan hata dosyasını oluşturun ve *404. html*olarak adlandırın.
-1. Düzenleyicide *404. html* dosyasını açın, aşağıdaki metni dosyaya yapıştırın ve kaydedin:
+1. Varsayılan hata dosyasını oluşturun ve *404.html*olarak adlandırın.
+1. Düzenleyicide *404.html* 'yi açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
 
     ```
     <h1>404</h1>

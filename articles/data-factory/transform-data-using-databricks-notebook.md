@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81418992"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory’de Databricks Not Defteri etkinliği ile bir Databricks not defteri çalıştırma
@@ -40,7 +40,7 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/ingest-prepare-and-transform-using-azure-databricks-and-data-factory/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
   - **Azure Databricks çalışma alanı**. [Bir Databricks çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) veya var olanı kullanın. Azure Databricks çalışma alanınızda bir Python not defteri oluşturun. Ardından, not defterini yürütün ve Azure Data Factory kullanarak parametreleri not defterine geçirin.
 
@@ -54,7 +54,7 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 
 1.  **Yeni veri fabrikası** bölmesinde **Ad** altına **ADFTutorialDataFactory** girin.
 
-    Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** \<adınız\>ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](https://docs.microsoft.com/azure/data-factory/naming-rules) makalesini inceleyin.
+    Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** \<yourname\> ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](https://docs.microsoft.com/azure/data-factory/naming-rules) makalesini inceleyin.
 
     ![Yeni veri fabrikası için bir ad belirtin](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -116,13 +116,13 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
     
     1.  **Çalışanlar** alanına **2** yazın.
     
-    1.  **Son**’u seçin
+    1.  **Son** ' u seçin
 
         ![Bağlı hizmet oluşturmayı tamamlayın](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1.  **+** (Artı) düğmesini seçin ve ardından menüde işlem **hattı** ' nı seçin.
+1.  **+**(Artı) düğmesini seçin ve ardından menüde Işlem **hattı** ' nı seçin.
 
     ![Yeni işlem hattı oluşturma düğmeleri](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -179,9 +179,9 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
        ![Parametre ekleme](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Parametreyi **girdi** olarak adlandırın ve değeri ifade ** \@ardışık düzeni (). Parameters. Name**olarak sağlayın.
+    b.  Parametreyi **girdi** olarak adlandırın ve değeri ifade ** \@ ardışık düzeni (). Parameters. Name**olarak sağlayın.
 
-1.  İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama penceresini kapatmak için ** \> ** (sağ ok) düğmesini seçin.
+1.  İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama penceresini kapatmak için **\>\>** (sağ ok) düğmesini seçin.
 
     ![İşlem hattını doğrulama](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 

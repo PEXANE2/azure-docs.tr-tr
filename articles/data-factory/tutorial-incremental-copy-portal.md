@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86082667"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
@@ -64,7 +64,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 
@@ -171,7 +171,7 @@ END
         Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
 7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı, Azure SQL yönetilen örneği vb.) ve işlemler (HDInsight, vb.) başka bölgelerde olabilir.
-8. **Oluştur**'a tıklayın.      
+8. **Oluştur**’a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -205,7 +205,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
 
         ![Yeni bağlı hizmet penceresi](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. **Son**'u seçin.
+    8. **Son**’u seçin.
 9. **Bağlantı** sekmesinde **[dbo] öğesini seçin. [ Tablo için su marktable]** . **Table** Tablodaki verilerin önizlemesini yapmak istiyorsanız **Veri önizlemesini görüntüle**’ye tıklayın.
 
     ![Filigran veri kümesi - bağlantı ayarları](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
@@ -218,7 +218,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 13. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın.
 14. **Özellikleri ayarla** penceresinde, **ad**için **sourceDataset** girin. **Bağlı hizmet** için **AzureSqlDatabaseLinkedService** hizmetini seçin.
 15. **[Dbo] öğesini seçin. [ Tablo için data_source_table]** . Bu öğreticinin sonraki bölümlerinde, bu veri kümesinde bir sorgu belirtirsiniz. Bu sorgu, bu adımda belirttiğiniz tablodan önceliklidir.
-16. **Son**'u seçin.
+16. **Son**’u seçin.
 17. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak işlem hattı düzenleyicisine geçin. **Arama** etkinliğinin özellikler penceresinde **Kaynak Veri Kümesi** alanı için **SourceDataset** seçeneğinin belirlendiğinden emin olun.
 18. **Sorgu Kullan** alanı için **Sorgu**’yu seçin ve aşağıdaki sorguyu girin: **data_source_table** tablosundan yalnızca en yüksek **LastModifytime** değerini seçersiniz. Lütfen **yalnızca ilk satırı**da seçtiğinizden emin olun.
 
@@ -273,7 +273,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     1. **Saklı yordam adı**için **usp_write_watermark**' yi seçin.
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **Parametreyi içeri aktar**’a tıklayın ve parametreler için aşağıdaki değerleri girin:
 
-        | Name | Tür | Değer |
+        | Ad | Tür | Değer |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Dize | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

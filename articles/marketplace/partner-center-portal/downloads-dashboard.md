@@ -1,20 +1,20 @@
 ---
-title: Iş Ortağı Merkezi 'nde Microsoft ticari Market Analytics 'teki panoyu indirir
+title: Microsoft Commercial Market Analytics 'te panoyu indirir Iş Ortağı Merkezi-Azure Marketi
 description: Market teklifleriniz için indirme isteklerine erişme hakkında bilgi edinin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
+ms.topic: article
+ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245681"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750309"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde İndirilenler Panosu
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te panoyu indirir
 
 Bu makalede, Iş Ortağı Merkezi 'nde Indirmeler panosu hakkında bilgi sağlanmaktadır. Bu Pano, son 30 güne ait indirme isteklerinizin bir listesini görüntüler.
 
@@ -25,7 +25,31 @@ Indirmeler panosuna erişmek için ticari Market altında **[analiz](https://par
 
 ## <a name="downloads-dashboard"></a>İndirmeler panosu
 
-**Çözümle** menüsünün **indirmeler** panosu, müşteri veya sipariş verilerini 1000 ' den fazla satırı içeren indirmelere yönelik istekleri görüntüler. Bu veri İndirmeleri 30 gün boyunca kullanıma sunulacaktır ve sonra kaldırılır.
+**Çözümle** menüsünün **indirmeler** panosu, müşteri veya sipariş verilerini 1000 ' den fazla satırı içeren indirmelere yönelik istekleri görüntüler.
+
+1000 ' den fazla veri satırı içeren bir indirme isteğinde bulunduğunda, **indirmeler** panosuna bağlantı içeren bir açılır bildirim alırsınız. Bu veri İndirmeleri 30 günlük bir dönemde kullanıma sunulacaktır ve sonra kaldırılır.
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Ticari Market Analytics raporlarının yaşam süresini dışa aktarma
+
+Indirmeler sayfasında, Son Kullanıcı şunları yapabilir:
+
+- Ticari Market Analytics raporlarının yaşam süresini CSV ve TSV biçiminde dışarı aktarma.
+- Herhangi bir tarih aralığı için ticari Market Analytics raporlarının dışa aktarılması.
+- 6 veya 12 aylık süre için ticari Market Analytics raporlarının dışa aktarılması.
+
+Analiz raporlarının ömür dışa aktarma özelliği için destek:
+
+| Rapor | Ömür dışa aktarma | Tarih temelinde herhangi bir süre |
+| - | - | - |
+| Siparişler | ![Yeşil onay işareti](media/check-green-yes.png) | ![Yeşil onay işareti](media/check-green-yes.png) |
+| Müşteriler | ![Yeşil onay işareti](media/check-green-yes.png) | ![Yeşil onay işareti](media/check-green-yes.png) |
+| Market öngörüleri | ![Yeşil onay işareti](media/check-green-yes.png) | ![Yeşil onay işareti](media/check-green-yes.png) |
+| Kullanım | ![Siyah X işareti](media/check-black-no.png) | En fazla bir yıl |
+|
+
+Kullanıcılar Indirmeler bölümünde raporların zaman uyumsuz indirilerini zamanlayabilir:
+
+[![Indirmeler bölümünden raporların zaman uyumsuz indirilemesini zamanlama](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

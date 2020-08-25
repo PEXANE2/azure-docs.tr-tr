@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc
 ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82117140"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme 
@@ -24,11 +24,11 @@ Azure Batch, kullanım başına ödeme temelinde bulut ölçekli işleme özelli
 
 Bu öğreticide, ışın izleme işleyicisi [Arnold](https://www.autodesk.com/products/arnold/overview)'ı kullanarak Batch ile bir 3ds Max sahnesini işleyeceksiniz. Batch havuzu, önceden yüklenen grafikler ve kullandığın kadar öde lisansı sağlayan işleme uygulamalar içeren bir Azure Marketi resmi kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
 
-Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif &copy; hakkı Autodesk, Inc.)
+Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif hakkı &copy; Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,7 +91,7 @@ az storage container create \
     --name scenefiles
 ```
 
-`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örneğin:
+`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örnek:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -296,7 +296,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
-Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örneğin:
+Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örnek:
 
 ```azurecli-interactive
 az batch task list \
@@ -304,7 +304,7 @@ az batch task list \
     --output table
 ```
 
-Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örneğin:
+Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örnek:
 
 ```azurecli-interactive
 az batch task show \
@@ -312,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Görevler, işlem düğümlerinde *dragon0002. jpg* - *dragon0007. jpg* adlı çıkış dosyalarını oluşturur ve bunları depolama hesabınızda *iş-myrenderjob* kapsayıcısına yükler. Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örneğin:
+Görevler, işlem düğümlerinde *dragon0002.jpg*dragon0007.jpgadlı çıktı dosyaları oluşturur  -  *dragon0007.jpg* ve bunları Depolama hesabınızdaki *iş-myrenderjob* kapsayıcısına yükler. Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örnek:
 
 ```azurecli-interactive
 az storage blob download-batch \

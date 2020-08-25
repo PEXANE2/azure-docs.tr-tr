@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 34b15ea0752bf013d2b1e5c3a7434ff009e2d80a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612784"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761347"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -80,7 +80,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 ## <a name="management-support"></a>Yönetim desteği
 
-**Konuda** | **Ayrıntılar**
+**Sorun** | **Ayrıntılar**
 --- | ---
 **Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.

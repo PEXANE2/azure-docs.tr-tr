@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586580"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783952"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -43,8 +43,8 @@ Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstit
 Azure AD dizininden veya etki alanındaki kullanıcıların kimlik doğrulaması, kimlik doğrulama türüne bağlıdır. Bağlı kuruluşların kimlik doğrulama türleri şunlardır:
 
 - Azure AD
-- [Doğrudan federasyon](../b2b/direct-federation.md)
-- [Bir kerelik geçiş kodu](../b2b/one-time-passcode.md) (etki alanı)
+- [Doğrudan federasyon](../external-identities/direct-federation.md)
+- [Bir kerelik geçiş kodu](../external-identities/one-time-passcode.md) (etki alanı)
 
 Bağlı bir kuruluşun nasıl ekleneceğini gösteren bir gösterim için aşağıdaki videoyu izleyin:
 
@@ -79,7 +79,7 @@ Dış bir Azure AD dizini veya etki alanını bağlı bir kuruluş olarak ekleme
 1. Azure AD dizinini veya etki alanını eklemek için **Ekle** ' yi seçin. Şu anda, bağlı kuruluşa göre yalnızca bir Azure AD dizini veya etki alanı ekleyebilirsiniz.
 
     > [!NOTE]
-    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD iş 'ten iş (B2B) izin verme veya reddetme listesi tarafından engellenmediği takdirde, bu etki alanları, dizinle ilişkili tüm alt etki alanlarından Azure AD 'deki kullanıcıları içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../b2b/allow-deny-list.md).
+    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD iş 'ten iş (B2B) izin verme veya reddetme listesi tarafından engellenmediği takdirde, bu etki alanları, dizinle ilişkili tüm alt etki alanlarından Azure AD 'deki kullanıcıları içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../external-identities/allow-deny-list.md).
 
 1. Azure AD dizinini veya etki alanını ekledikten sonra **Seç**' i seçin.
 
@@ -89,7 +89,7 @@ Dış bir Azure AD dizini veya etki alanını bağlı bir kuruluş olarak ekleme
 
 1. **Sponsorlar** sekmesini seçin ve ardından bu bağlı kuruluş için isteğe bağlı sponsorlar ekleyin.
 
-    Sponsorlar, dizininizde bulunan ve bu bağlı kuruluşla ilişki için iletişim noktası olan iç veya dış kullanıcılardır. İç sponsorlar, dizininizdeki üye kullanıcılardır. Dış sponsorlar, daha önce davet edilmiş ve dizininizde zaten olan bağlı kuruluştan Konuk kullanıcılardır. Bu bağlı kuruluştaki kullanıcılar bu erişim paketine erişim isteğinde bulunduğunda, sponsorlar olarak kullanılabilir. Bir konuk kullanıcıyı dizininize davet etme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../b2b/add-users-administrator.md).
+    Sponsorlar, dizininizde bulunan ve bu bağlı kuruluşla ilişki için iletişim noktası olan iç veya dış kullanıcılardır. İç sponsorlar, dizininizdeki üye kullanıcılardır. Dış sponsorlar, daha önce davet edilmiş ve dizininizde zaten olan bağlı kuruluştan Konuk kullanıcılardır. Bu bağlı kuruluştaki kullanıcılar bu erişim paketine erişim isteğinde bulunduğunda, sponsorlar olarak kullanılabilir. Bir konuk kullanıcıyı dizininize davet etme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../external-identities/add-users-administrator.md).
 
     **Ekle/Kaldır**' ı seçtiğinizde, içinde iç veya dış sponsorları seçebileceğiniz bir bölme açılır. Bölmesinde, dizininizdeki kullanıcıların ve grupların filtrelenmemiş bir listesi görüntülenir.
 
@@ -134,9 +134,9 @@ Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı k
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Bağlı bir kuruluşu program aracılığıyla yönetme
 
-Ayrıca Microsoft Graph kullanarak bağlı kuruluşlar oluşturabilir, listeleyebilir, güncelleştirebilir ve silebilirsiniz. Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [connectedorganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) nesnelerini yönetmek ve bunlar için sponsorları ayarlamak üzere API 'yi çağırabilir.
+Ayrıca Microsoft Graph kullanarak bağlı kuruluşlar oluşturabilir, listeleyebilir, güncelleştirebilir ve silebilirsiniz. Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [connectedorganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) nesnelerini yönetmek ve bunlar için sponsorları ayarlamak üzere API 'yi çağırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dış kullanıcılara yönelik idare erişimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [Dış kullanıcılara yönelik idare erişimi](./entitlement-management-external-users.md)
 - [Dizininizde bulunmayan kullanıcılar için erişimi yönetir](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

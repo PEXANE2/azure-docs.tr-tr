@@ -16,10 +16,10 @@ ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81254028"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
@@ -36,7 +36,7 @@ Azure CDN varsayılan olarak CDN uç noktası ana bilgisayar adı üzerinde HTTP
 
 - Eksiksiz sertifika yönetimi kullanılabilir: Sizin için tüm sertifika tedariki ve yönetimi gerçekleştirilir. Sertifikalar sona ermeden önce otomatik olarak sağlanır ve yenilenir. Bu da sertifika süre sonu nedeniyle hizmette yaşanabilecek kesinti risklerini ortadan kaldırır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Özel etki alanınızda HTTPS protokolünü etkinleştirme.
 > - Yönetilen CDN sertifikasını kullanma 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Etki alanını doğrulama
 > - Özel etki alanınızda HTTPS protokolünü devre dışı bırakma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
@@ -128,7 +128,7 @@ Azure CDN’ye, Azure Key Vault hesabınızdaki sertifikalara (gizli dizi) eriş
 
     ![Yeni erişim ilkesi oluşturma](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. **Sorumlu seçin** alanında **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** araması yapın ve **Microsoft.Azure.Cdn**'yi seçin. **Seç**' e tıklayın.
+2. **Sorumlu seçin** alanında **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** araması yapın ve **Microsoft.Azure.Cdn**'yi seçin. **Seç**’e tıklayın.
 
     ![Erişim ilkesi ayarları](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
@@ -178,7 +178,7 @@ Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez.
 
 CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise CDN uç noktası ana bilgisayar adınız olduğu aşağıdaki biçimde olmalıdır:
 
-| Adı            | Tür  | Değer                 |
+| Ad            | Tür  | Değer                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -194,7 +194,7 @@ Otomatik doğrulama genellikle birkaç saat sürer. Etki alanınızı 24 saat i�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Özel etki alanı, CDN uç noktanızla eşlenmedi
 
 >[!NOTE]
->**Akamai ' dan Azure CDN**kullanıyorsanız, otomatik etki alanı doğrulamasını etkinleştirmek IÇIN aşağıdaki CNAME ayarlanmalıdır. "_acme-Challenge. &lt;özel etki alanı&gt; konak adı-> CNAME &lt;-> özel&gt;etki alanı konak adı. ak-Acme-Challenge.azureedge.net "
+>**Akamai ' dan Azure CDN**kullanıyorsanız, otomatik etki alanı doğrulamasını etkinleştirmek IÇIN aşağıdaki CNAME ayarlanmalıdır. "_acme-Challenge. &lt; Özel etki alanı konak adı &gt; -> CNAME-> &lt; özel etki alanı konak adı &gt; . ak-Acme-Challenge.azureedge.net "
 
 CNAME kayıt girişi cdnverify alt etki alanını içeriyorsa, bu adımdaki yönergelerin geri kalanını izleyin.
 
@@ -206,7 +206,7 @@ webmaster@&lt;etki-alanı-adınız.com&gt;
 hostmaster@&lt;etki-alanı-adınız.com&gt;  
 postmaster@&lt;.com&gt;  
 
-Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, izin verilenler listesine verification@digicert.com ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
+Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, verification@digicert.com izin verilenler listesine ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
     
 ![Etki alanı doğrulama e-postası](./media/cdn-custom-ssl/domain-validation-email.png)
 

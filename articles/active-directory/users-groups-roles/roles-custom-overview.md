@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828668"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795601"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 'de özel yönetici rolleri (Önizleme)
 
@@ -46,7 +46,7 @@ Aşağıda, Azure AD 'nin bir yönetim kaynağına erişiminizin olup olmadığ�
 
 1. Durumunuza bağlı olarak, Azure AD aşağıdaki eylemlerden birini alır:
 
-    - Kullanıcının erişim belirtecindeki [wids talebine](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) göre Kullanıcı rolü üyeliklerini değerlendirir.
+    - Kullanıcının erişim belirtecindeki [wids talebine](../develop/access-tokens.md) göre Kullanıcı rolü üyeliklerini değerlendirir.
     - Kullanıcı için, doğrudan veya grup üyeliği aracılığıyla, eylemin alındığı kaynağa uygulanan tüm rol atamalarını alır.
 
 1. Azure AD, API çağrısındaki eylemin kullanıcının bu kaynak için sahip olduğu rollere dahil edilip edilmediğini belirler.
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte, Ch
 
 Güvenlik sorumlusu, Azure AD kaynaklarına erişim atanacak kullanıcıyı temsil eder. *Kullanıcı* , Azure Active Directory bir kullanıcı profiline sahip kişidir.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Rol
 
 Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, güncelleştirme ve silme gibi Azure AD kaynaklarında gerçekleştirilebilecek işlemleri listeler. Azure AD 'de iki tür rol vardır:
 

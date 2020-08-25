@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80673699"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: tek bir AD orman ortamını buluta federasyona ekleme
@@ -27,10 +27,10 @@ ms.locfileid: "80673699"
 
 Aşağıdaki öğreticide, Federasyon kullanarak karma kimlik ortamı oluşturma işleminde size yol gösterilir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
-- Bir [Azure aboneliği](https://azure.microsoft.com/free)
+- [Azure aboneliği](https://azure.microsoft.com/free)
 - - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
 - Windows Server 2016 kopyası
 - Doğrulanmakta olabilecek [özel bir etki alanı](../../active-directory/fundamentals/add-custom-domain.md)
@@ -46,12 +46,12 @@ Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 Karma kimlik ortamınızı çalışır duruma getirmek için gereken ilk şey, şirket içi Active Directory sunucusu olarak kullanılacak bir sanal makine oluşturmaktır.  
 
 >[!NOTE]
->Ana makinenizde PowerShell 'de hiç bir komut dosyası çalıştırmadıysanız, betikleri çalıştırmadan önce PowerShell 'de Evet ' `Set-ExecutionPolicy remotesigned` i çalıştırmanız gerekir.
+>Ana makinenizde PowerShell 'de hiç bir komut dosyası çalıştırmadıysanız `Set-ExecutionPolicy remotesigned` , betikleri çalıştırmadan önce PowerShell 'de Evet ' i çalıştırmanız gerekir.
 
 Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
 ```powershell
 #Declare variables
@@ -96,8 +96,8 @@ Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi y�
 Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve uzak sunucu yönetim araçları 'nı yüklemeniz gerekir.   Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Komutunu `Set-ExecutionPolicy remotesigned` çalıştırın ve tüm [A] için Evet deyin.  Enter tuşuna basın.
-3. Aşağıdaki komut dosyasını çalıştırın.
+2. Komutunu çalıştırın `Set-ExecutionPolicy remotesigned` ve tüm [A] için Evet deyin.  Enter tuşuna basın.
+3. Aşağıdaki betiği çalıştırın.
 
 ```powershell
 #Declare variables
@@ -133,7 +133,7 @@ Restart-Computer
 VM 'nin oluşturulduğuna ve yeniden adlandırıldığına ve statik bir IP adresine sahip olduğumuz için artık Active Directory Domain Services yükleyip yapılandırabiliriz.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
 ```powershell 
 #Declare variables
@@ -163,7 +163,7 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 Artık Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu hesap, şirket içi AD ortamımızda oluşturulur ve ardından Azure AD ile eşitlenir.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
 ```powershell 
 #Declare variables
@@ -187,7 +187,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 Artık, AD FS tarafından kullanılacak bir TLS/SSL sertifikası oluşturacağız.  Bu, otomatik olarak imzalanan bir sertifika olur ve yalnızca test amaçlıdır.  Microsoft, bir üretim ortamında kendinden imzalı bir sertifika kullanılmasını önermez. Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
 ```powershell 
 #Declare variables
@@ -212,7 +212,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD 'de Genel yönetici oluşturma
 Artık bir Azure AD kiracımız olduğuna göre, genel yönetici hesabı oluşturacağız.  Bu hesap Azure AD Connect yüklemesi sırasında Azure AD bağlayıcı hesabı oluşturmak için kullanılır.  Azure AD Bağlayıcısı hesabı, Azure AD 'ye bilgi yazmak için kullanılır.   Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
-1.  **Yönet** bölümünde **Kullanıcılar**’ı seçin.</br>
+1.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.</br>
 ![Oluşturma](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
 3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. Ayrıca, **Dizin rolünü** **genel yönetici** olarak değiştirmek isteyeceksiniz. İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
@@ -240,7 +240,7 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 2. **AzureADConnect.msi** öğesine gidin ve çift tıklayın.
 3. Hoş Geldiniz ekranında, lisans koşullarını kabul ettiğinizi belirten kutuyu seçin ve **Devam**'a tıklayın.  
 4. Hızlı Ayarlar ekranında, **Özelleştir**' e tıklayın.  
-5. Gerekli bileşenleri Install ekranında. **Install**'a tıklayın.  
+5. Gerekli bileşenleri Install ekranında. **Yükle**'ye tıklayın.  
 6. Kullanıcı oturum açma ekranında **AD FS Federasyon** ' ı seçin ve **İleri**' ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed1.png)
 
@@ -255,11 +255,11 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 9. Etki alanı yöneticisi kimlik bilgileri sayfasında, contoso\Administrator Kullanıcı adını ve parolasını girin ve Ileri ' ye tıklayın **.**
 10. AD FS grubu ekranında, **Yeni bir AD FS grubu Yapılandır** ' ın seçili olduğundan emin olun.
 11. **Federasyon sunucularında yüklü bir sertifika kullan** ' ı seçin ve ardından **görüntüle**' ye tıklayın.
-12. Arama kutusuna DC1 yazın ve bulunduğunda seçin.  **Tamam**'a tıklayın.
+12. Arama kutusuna DC1 yazın ve bulunduğunda seçin.  **Tamam**’a tıklayın.
 13. **Sertifika dosyası** açılır listesinden, yukarıda oluşturduğum sertifikayı **ADFS.contoso.com** seçin.  **İleri**’ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed2.png)
 
-1. AD FS sunucusu ekranında, **Araştır** ' a tıklayın ve arama kutusuna DC1 yazın ve bulunduğunda bunu seçin.  **Tamam**'a tıklayın.  **İleri**’ye tıklayın.
+1. AD FS sunucusu ekranında, **Araştır** ' a tıklayın ve arama kutusuna DC1 yazın ve bulunduğunda bunu seçin.  **Tamam**’a tıklayın.  **İleri**’ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed3.png)
 
 1. Web uygulaması ara sunucusu ekranında, **İleri**' ye tıklayın.
@@ -276,14 +276,14 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 
 1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
 2. Sol tarafta **Azure Active Directory** ' yi seçin.
-3. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-4. Kiracı ![eşitleme yaptığımız yeni kullanıcıları gördiğinizi doğrulayın](media/tutorial-password-hash-sync/synch1.png)
+3. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
+4. Kiracı eşitleme yaptığımız yeni kullanıcıları gördiğinizi doğrulayın ![](media/tutorial-password-hash-sync/synch1.png)
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1. Buraya gidin[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: (user@domain.onmicrosoft.com). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
-   ![Doğrulama](media/tutorial-password-hash-sync/verify1.png)
+1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
+   ![Doğru](media/tutorial-password-hash-sync/verify1.png)
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

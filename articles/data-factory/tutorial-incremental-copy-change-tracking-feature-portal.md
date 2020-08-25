@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
 ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86085829"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme Azure portal
@@ -69,7 +69,7 @@ Bu öğreticide, aşağıdaki iki işlemi gerçekleştiren iki işlem hattı olu
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
@@ -177,7 +177,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 4. **Sürüm** için **V2 (Önizleme)** öğesini seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**'a tıklayın.      
+7. **Oluştur**’a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -418,7 +418,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     2. **Parametreyi içeri aktar**’ı seçin.
     3. **Saklı yordam parametreleri** bölümünde, parametreler için aşağıdaki değerleri belirtin:
 
-        | Name | Tür | Değer |
+        | Ad | Tür | Değer |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Dize | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489529"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762411"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -19,7 +19,7 @@ Bu belgede zaten bir Azure VM 'de yüklü bir SAP HANA veritabanınız olduğunu
 
 > [!div class="checklist"]
 >
-> * Kurtarma hizmetleri kasası oluşturma
+> * Kurtarma Hizmetleri kasası oluşturma
 > * SAP HANA örneğini kaydedin ve üzerinde veritabanlarını bulun
 > * SAP HANA veritabanında yedeklemeyi etkinleştir
 > * İsteğe bağlı yedekleme tetikleyin
@@ -30,7 +30,7 @@ Bu belgede zaten bir Azure VM 'de yüklü bir SAP HANA veritabanınız olduğunu
 
 CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm xx. xxx. x veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
+## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 Kurtarma Hizmetleri Kasası, Azure VM 'Leri ya da SQL veya HANA veritabanları gibi Azure VM 'lerde çalışan iş yükleri gibi korunan her kaynak için yedekleme verilerini depolayan bir mantıksal kapsayıcıdır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
 
@@ -150,7 +150,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2
 
 ## <a name="trigger-an-on-demand-backup"></a>İsteğe bağlı yedekleme tetikleyin
 
-Yukarıdaki bölümde zamanlanmış bir yedeklemenin nasıl yapılandırılacağı ayrıntılandığında, bu bölüm isteğe bağlı bir yedeklemenin tetiklenmesi ile ilgilidir. Bunu yapmak için [az Backup Protection Backup-Now](/cli/azure/backup/protection#az-backup-protection-backup-now) cmdlet 'ini kullanırız.
+Yukarıdaki bölümde, zamanlanmış bir yedeklemenin nasıl yapılandırılacağı ayrıntılandığında, bu bölüm isteğe bağlı bir yedeklemenin tetiklenmesi hakkında konuşur. Bunu yapmak için [az Backup Protection Backup-Now](/cli/azure/backup/protection#az-backup-protection-backup-now) cmdlet 'ini kullanırız.
 
 >[!NOTE]
 > İsteğe bağlı bir yedeklemenin bekletme ilkesi, veritabanı için temeldeki bekletme ilkesine göre belirlenir.

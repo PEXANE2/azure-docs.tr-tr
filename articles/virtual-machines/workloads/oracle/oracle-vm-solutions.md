@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690349"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723425"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -118,7 +118,7 @@ Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçiri
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle gerçek uygulama kümesi (Oracle RAC)
 
-Oracle gerçek uygulama kümesi (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü = parti yazılımına ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
+Oracle gerçek uygulama kümesi (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü taraf yazılımlara ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
 

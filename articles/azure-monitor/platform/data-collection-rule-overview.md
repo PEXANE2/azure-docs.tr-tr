@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640744"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723869"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -28,7 +28,7 @@ Bir veri toplama kuralı aşağıdaki bileşenleri içerir.
 
 | Bileşen | Açıklama |
 |:---|:---|
-| Veri kaynakları | Kendi biçimi ve kendi verilerini açığa çıkaran yöntemi olan, izleme verilerinin benzersiz kaynağı. Bir veri kaynağına örnek olarak Windows olay günlüğü, performans sayaçları ve Syslog dahildir. Her veri kaynağı, aşağıda açıklandığı gibi belirli bir veri kaynağı türüyle eşleşir. |
+| Veri kaynakları | Kendi biçimi ve verilerini gösterme yöntemi ile, izleme verilerinin benzersiz kaynağı. Bir veri kaynağına örnek olarak Windows olay günlüğü, performans sayaçları ve Syslog dahildir. Her veri kaynağı, aşağıda açıklandığı gibi belirli bir veri kaynağı türüyle eşleşir. |
 | Akışlar | Tek bir tür olarak dönüştürülecek ve şemaya ayarlanacak bir veri kaynakları kümesini açıklayan benzersiz tanıtıcı. Her veri kaynağı bir veya daha fazla akış gerektirir ve birden çok veri kaynağı tarafından bir akış kullanılabilir. Akıştaki tüm veri kaynakları ortak bir şemayı paylaşır. Aynı Log Analytics çalışma alanında birden çok tabloya belirli bir veri kaynağı göndermek istediğinizde, örneğin birden çok akışı kullanın. |
 | Hedefler | Verilerin gönderilmesi gereken hedef kümesi. Log Analytics çalışma alanı, Azure Izleyici ölçümleri ve Azure Event Hubs sayılabilir. | 
 | Veri akışları | Hangi akışların hangi hedeflere gönderilmesi gerektiğini gösteren tanım. | 
@@ -44,7 +44,7 @@ Her veri kaynağının bir veri kaynağı türü vardır. Her tür, her veri kay
 |:---|:---|
 | uzantı | VM Uzantısı tabanlı veri kaynağı |
 | performanceCounters | Hem Windows hem de Linux için performans sayaçları |
-| syslog | Linux sanal makinesinde Syslog olayları |
+| syslog | Linux 'ta Syslog olayları |
 | windowsEventLogs | Windows olay günlüğü |
 
 
@@ -54,14 +54,14 @@ Aşağıdaki tabloda, her bir veri toplama kuralı için geçerli olan sınırla
 | Sınır | Değer |
 |:---|:---|
 | Maksimum veri kaynağı sayısı | 10 |
-| Performans için en fazla sayaç belirticileri | 100 |
-| SysLog 'da maksimum tesis adları | 20 |
-| Olay günlüğüne en fazla XPath sorgusu | 100 |
-| En fazla veri akışı | 10 |
-| En fazla veri akışı | 10 |
+| Performans sayacında en fazla sayaç tanımlayıcısı sayısı | 100 |
+| Syslog 'da maksimum tesis adı sayısı | 20 |
+| Olay günlüğündeki en fazla XPath sorgusu sayısı | 100 |
+| Maksimum veri akışı sayısı | 10 |
+| En fazla veri akışı sayısı | 10 |
 | En fazla uzantı sayısı | 10 |
 | Uzantı ayarlarının en büyük boyutu | 32 KB |
-| Maksimum Log Analytics çalışma alanı | 10 |
+| Maksimum Log Analytics çalışma alanı sayısı | 10 |
 
 
 ## <a name="create-a-dcr"></a>DCR oluşturma
@@ -83,8 +83,7 @@ Aşağıdaki örnek veri toplama kuralı, Azure Yönetim aracısına sahip sanal
   - Cron tesisinden hata ayıklama, kritik ve acil durum olaylarını toplar.
   - Syslog tesisinden uyarı, kritik ve acil durum olaylarını toplar.
 - Hedefler
-  - Tüm verileri, merkezileştirme Teamworkspace adlı bir Log Analytics çalışma alanına gönderir.
-  - Geçerli abonelikteki Azure Izleyici ölçümlerine performans verileri gönderir.
+  - Tüm verileri, merkezileştirme çalışma alanı adlı bir Log Analytics çalışma alanına gönderir.
 
 ```json
 {
@@ -157,7 +156,7 @@ Aşağıdaki örnek veri toplama kuralı, Azure Yönetim aracısına sahip sanal
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],

@@ -10,15 +10,27 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 6223a45c9bc61d7349ec62fa8aa37f907b2cf3b7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 182cf54f58b4fbb8b80fb4ff9d7c1a9c1e353470
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538757"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723920"
 ---
 # <a name="language-support-for-form-recognizer"></a>Form tanıyıcı için dil desteği
 
 Bu makalede, form tanıyıcı (Önizleme) hizmeti tarafından desteklenen insan dilleri listelenir.
 
-* İngilizce
+
+|Dil| Dil kodu | Form tanıyıcı v 2.0 | Form tanıyıcı v 2.1 genel önizleme *|
+|:-----|:----:|:-----:|:---:|:---:|
+|ve | `zh-Hans`| | ✔ |
+|Felemenkçe | `nl` | |✔ |
+|İngilizce | `en` |✔ |
+|Fransızca | `fr` | |✔ |
+|Almanca | `de` | |✔ |
+|İtalyanca | `it` | |✔ |
+|Portekizce | `pt` | |✔ |
+|İspanyolca | `es` | |✔ |
+
+* Form tanıyıcı v 2.1 Genel önizlemesi, ve için bu dilleri destekler `Analyze Layout` `Train Custom Model` (etiketlerle_eğitme_ ve _Etiketler olmadan eğitme_) işlemleri. `Analyze Receipt` ve `Analyze Business Card` yalnızca İngilizce olarak desteklenir.

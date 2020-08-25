@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593385"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) bir uygulamayı güncelleştirme
@@ -50,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Dosyayı kaydedin ve kapatın. İçinde `vi`, kullanın `:wq`.
+Dosyayı kaydedin ve kapatın. İçinde `vi` , kullanın `:wq` .
 
 ## <a name="update-the-container-image"></a>Kapsayıcı görüntüsünü güncelleştirme
 

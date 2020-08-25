@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d94e19753a93d2682043d7b67b867325067cee5d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711519"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762309"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure portal kullanarak Azure DDoS koruması standardını yönetme
 
@@ -39,12 +39,12 @@ DDoS koruma planı, aboneliklerde DDoS koruma standardı etkin olan bir sanal a�
 
 1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
 2. *DDoS*araması yapın. Ara sonuçlarda **DDoS koruma planı** göründüğünde, bunu seçin.
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. Kendi değerlerinizi girin veya seçin ya da aşağıdaki örnek değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
 
     |Ayar        |Değer                                              |
     |---------      |---------                                          |
-    |Adı           | myDdosProtectionPlan                              |
+    |Ad           | myDdosProtectionPlan                              |
     |Abonelik   | Aboneliğinizi seçin.                         |
     |Kaynak grubu | **Yeni oluştur** ' u seçin ve *myresourcegroup* girin |
     |Konum       | Doğu ABD                                           |
@@ -57,7 +57,7 @@ DDoS koruma planı, aboneliklerde DDoS koruma standardı etkin olan bir sanal a�
 
     | Ayar         | Değer                                                        |
     | ---------       | ---------                                                    |
-    | Adı            | myVirtualNetwork                                             |
+    | Ad            | myVirtualNetwork                                             |
     | Abonelik    | Aboneliğinizi seçin.                                    |
     | Kaynak grubu  | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
     | Konum        | Doğu ABD                                                      |
@@ -81,8 +81,7 @@ Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bi
 ## <a name="disable-ddos-for-a-virtual-network"></a>Sanal ağ için DDoS 'ı devre dışı bırakma
 
 1. Portalın üst kısmındaki **kaynakları, hizmetleri ve belgeleri arayın kutusuna** Için DDoS koruması standardını devre dışı bırakmak istediğiniz sanal ağın adını girin. Arama sonuçlarında sanal ağın adı göründüğünde seçin.
-2. **Ayarlar**altında **DDoS koruması**' nı seçin.
-3. **DDoS koruma planı** altında **temel** ' yı seçin ve ardından **Kaydet**' i seçin.
+2. **DDoS koruma standardı altında**seçin, **devre dışı bırak**' ı seçin.
 
 **Komutlar** 
 - Azure CLı: [az Network DDoS-Protection Delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
@@ -107,7 +106,7 @@ Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etki
 
     |Ayar                  |Değer                                                                                               |
     |---------                |---------                                                                                           |
-    |Adı                     | myDdosAlert                                                                                        |
+    |Ad                     | myDdosAlert                                                                                        |
     |Abonelik             | Uyarılarını almak istediğiniz genel IP adresini içeren aboneliği seçin.        |
     |Kaynak grubu           | Uyarılarını almak istediğiniz genel IP adresini içeren kaynak grubunu seçin.      |
     |Kaynak                 | Uyarıları almak istediğiniz genel IP adresini içeren genel IP adresini seçin. DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları ve Azure VPN Gateway dışında [Azure hizmetleri Için sanal ağda](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)listelenen Kaynak Yöneticisi (klasik değil) aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.                   |
@@ -192,7 +191,7 @@ Saldırı risk azaltma akış günlükleri, etkin bir DDoS saldırısı sırası
     - **Bir depolama hesabına arşivleme**: veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Bir olay hub 'ına akış**: günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Log Analytics gönder**: günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-1. Azure Analytics panosu 'nda akış günlüğü verilerini görüntülemek için, örnek panoyu şuradan içeri aktarabilirsinizhttps://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Azure Analytics panosu 'nda akış günlüğü verilerini görüntülemek için, örnek panoyu şuradan içeri aktarabilirsiniz https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Akış günlükleri aşağıdaki alanlara sahip olur: 
 - Kaynak IP

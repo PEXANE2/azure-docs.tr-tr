@@ -16,17 +16,17 @@ ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81259893"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme
 
 Azure depolama hesabınızı Azure Content Delivery Network (CDN) ile tümleştirdikten sonra, özel bir etki alanı ekleyebilir ve özel blob depolama uç noktanız için bu etki alanında HTTPS’yi etkinleştirebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlamadan önce, ilk olarak Azure depolama hesabınızı Azure CDN ile tümleştirmeniz gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Azure CDN ile bir Azure depolama hesabını tümleştirme](cdn-create-a-storage-account-with-cdn.md).
 

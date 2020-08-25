@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 674bbf968b42f66a4c421aec6653881c8fd52a8b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f254b50f196b4087080162755eee4397da5a9940
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439573"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761789"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 
@@ -41,7 +41,6 @@ Azure Backup, SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler. Bu 
 >Azure Backup, bir Azure VM 'de çalışan bir SAP HANA Veritabanının yedeklenmesinde gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.
 >
 >İlkeyi gerektiği şekilde el ile değiştirin.
-
 
 > [!NOTE]
 > Artık Azure portal HANA yerel istemcilerinden (SAP HANA Studio/kokpit/DBA kokpiti) tetiklenen [yedekleme ve geri yükleme](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) işlerini (aynı makineye) izleyebilirsiniz.

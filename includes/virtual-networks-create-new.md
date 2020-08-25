@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78244965"
 ---
 ## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
@@ -29,8 +29,8 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik     | Azure aboneliğinizi seçin                                  |
     | Kaynak Grubu   | **Yeni oluştur**' u seçin, girin ve **\<resource-group-name>** Tamam ' ı seçin ya da mevcut bir **\<resource-group-name>** temel parametre seçin. |
     | **Örnek ayrıntıları** |                                                                 |
-    | Name             | Girmesini**\<virtual-network-name>**                                    |
-    | Bölge           | Seçin**\<region-name>** |
+    | Name             | Girmesini **\<virtual-network-name>**                                    |
+    | Region           | Seçin **\<region-name>** |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -38,7 +38,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
-    | IPv4 adres alanı | Girmesini**\<IPv4-address-space>** |
+    | IPv4 adres alanı | Girmesini **\<IPv4-address-space>** |
 
 5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
 
@@ -46,11 +46,11 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
-    | Alt ağ adı | Girmesini**\<subnet-name>** |
-    | Alt ağ adres aralığı | Girmesini**\<subnet-address-range>**
+    | Alt ağ adı | Girmesini **\<subnet-name>** |
+    | Alt ağ adres aralığı | Girmesini **\<subnet-address-range>**
 
 7. **Kaydet**’i seçin.
 
 8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
 
-9. **Oluştur**'u seçin.
+9. **Oluştur**’u seçin.
