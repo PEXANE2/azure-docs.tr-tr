@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277596"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816771"
 ---
 # <a name="read-and-write-spatial-data"></a>Uzamsal verileri okuma ve yazma
 
@@ -150,9 +150,15 @@ Aşağıdaki kod, iyi bilinen metinleri okumayı ve okumayı ve geri yazmayı g�
 GML, genellikle diğer XML belirtimlerine uzantı olarak kullanılan bir uzamsal XML dosya belirtimidir. GeoJSON verileri, işlevi kullanılarak GML etiketleriyle XML olarak yazılabilir `atlas.io.core.GmlWriter.write` . GML içeren XML, işlevi kullanılarak okunabilir `atlas.io.core.GmlReader.read` . Read işlevinin iki seçeneği vardır:
 
 - `isAxisOrderLonLat`Seçenek-"enlem, Boylam" veya "boylam, enlem" koordinatlarının eksen sırası veri kümeleri arasında farklılık gösterebilir ve her zaman iyi tanımlı değildir. Varsayılan olarak, GML okuyucu koordinat verileri "enlem, Boylam" olarak okur, ancak bu seçeneğin true olarak ayarlanması bunu "boylam, enlem" olarak okuyacaktır.
-- `propertyTypes`Seçenek-bu seçenek, anahtarın veri kümesindeki bir özelliğin adı olduğu bir anahtar değer arama tablosudur. Değer, ayrıştırılırken değeri dönüştürmek için nesne türüdür. Desteklenen tür değerleri şunlardır: `string` , `number` , `boolean` , ve `date` . Bir özellik arama tablosunda değilse veya tür tanımlanmamışsa, özelliği bir dize olarak ayrıştırılacaktır.
+- `propertyTypes`Seçenek-bu seçenek, anahtarın veri kümesindeki bir özelliğin adı olduğu bir anahtar değer arama tablosudur. Değer, ayrıştırılırken değeri dönüştürmek için nesne türüdür. Desteklenen tür değerleri şunlardır: `string` , `number` , `boolean` , ve  `date` . Bir özellik arama tablosunda değilse veya tür tanımlanmamışsa, özelliği bir dize olarak ayrıştırılacaktır.
 
 `atlas.io.read`İşlevi, giriş VERILERININ XML olduğunu algıladığında işlevi varsayılan olarak görür `atlas.io.core.GmlReader.read` , ancak veriler diğer destek uzamsal XML biçimlerinden biri değildir.
+
+, `GmlReader` Aşağıdaki SRID 'lerin birine sahip olan koordinatları ayrıştıracaktır:
+
+- EPSG: 4326 (tercih edilen)
+- EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674 muhtemelen küçük bir kenar boşluğu olabilir.
+- EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

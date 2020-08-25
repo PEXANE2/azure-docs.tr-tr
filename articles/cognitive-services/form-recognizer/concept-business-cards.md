@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757923"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799290"
 ---
-# <a name="business-card-concepts"></a>İş kartı kavramları
+# <a name="business-card-concepts"></a>Kartvizit kavramları
 
 Azure form tanıyıcısı, önceden oluşturulmuş modellerinden birini kullanarak iş kartlarından anahtar değer çiftlerini çözümleyebilir ve ayıklayabilir. İş kartı API 'SI, önemli bilgileri Ingilizce olarak iş kartlarımızdan ayıklamak için Iş kartımızda güçlü optik karakter tanıma (OCR) yeteneklerini birleştirir. Kişisel iletişim bilgilerini, şirket adını, iş başlığını ve daha fazlasını ayıklar. Önceden oluşturulmuş Iş kartı API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır. 
 
@@ -70,7 +70,7 @@ Iş kartı API 'SI Ayrıca Iş kartından tanınan tüm metni döndürür. Bu OC
 
 **Durum** alanı **başarılı** DEĞERINE sahip olduğunda, JSON yanıtı iş kartı anlama ve metin tanıma sonuçlarını içerir. İş kartı anlama sonucu, her değerin ayıklanan metin, normalleştirilmiş değer, sınırlama kutusu, güvenirlik ve karşılık gelen Word öğelerini içerdiği adlandırılmış alan değerlerinin bir sözlüğü olarak düzenlenmiştir. Metin tanıma sonucu, metin, sınırlayıcı kutusu ve güvenle bilgi içeren bir satır ve sözcük hiyerarşisi olarak düzenlenir.
 
-![Contoso smample sonuçları](./media/business-card-results.png)
+![örnek iş kartı çıkışı](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Örnek JSON çıkışı
 
@@ -90,8 +90,8 @@ Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanı
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,

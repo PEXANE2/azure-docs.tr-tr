@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509119"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815190"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -52,9 +52,10 @@ Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 | Olağandışı yolculuk | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. |
 | Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). |
 | Bilinmeyen oturum açma özellikleri | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın. |
-| Kötü amaçlı yazılım bağlı IP adresi | Kötü amaçlı yazılımdan bağlantılı IP adresinden oturum açın |
-| Sızdırılan kimlik bilgileri | Bu risk algılama, kullanıcının geçerli kimlik bilgilerinin sızdırdığını belirtir |
-| Azure AD tehdit bilgileri | Microsoft 'un dahili ve dış tehdit bilgileri kaynakları, bilinen bir saldırı modelini tanımladı |
+| Kötü amaçlı yazılım bağlı IP adresi | Kötü amaçlı yazılımdan bağlantılı bir IP adresinden oturum açın. |
+| Sızdırılan kimlik bilgileri | Bu risk algılama, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. |
+| Parola spreyi | Birden çok Kullanıcı adı, Birleşik bir deneme yanılma sırasında ortak parolaları kullanarak saldırıya uğradığını gösterir. |
+| Azure AD tehdit bilgileri | Microsoft 'un dahili ve dış tehdit bilgileri kaynakları, bilinen bir saldırı modelini tanımladı. |
 
 Bu riskler hakkında daha fazla ayrıntı ve bunların hesaplanmaları, makalede [risk](concept-identity-protection-risks.md)altında bulunabilir.
 

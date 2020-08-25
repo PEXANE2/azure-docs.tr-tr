@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653146"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815581"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 
@@ -19,7 +19,7 @@ Azure Cosmos DB için SYNAPSE bağlantısı, Azure Cosmos DB ' de işletimsel ve
 
 
 > [!IMPORTANT]
-> Azure SYNAPSE bağlantısını kullanmak için Azure Cosmos hesabınızı & Azure SYNAPSE Analytics çalışma alanına yukarıdaki desteklenen bölgelerden birinde sağladığınızdan emin olun. Desteklenen bölgelerin listesi için bkz. [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/). 
+> Azure SYNAPSE bağlantısını kullanmak için, desteklenen bölgelerden birinde Azure SYNAPSE Analytics çalışma alanı & Azure Cosmos hesabınızı sağladığınızdan emin olun. Azure SYNAPSE bağlantısı şu anda şu Azure bölgelerinde sunulmaktadır: ABD Orta Batı, Doğu ABD, Batı ABD2, Kuzey Avrupa, Batı Avrupa, Orta Güney ABD, Güneydoğu Asya, Avustralya Doğu, Doğu U2, UK Güney.
 
 Azure Cosmos DB için SYNAPSE bağlantısıyla analitik sorgular çalıştırmak için aşağıdaki adımları kullanın:
 

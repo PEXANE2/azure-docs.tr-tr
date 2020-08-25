@@ -10,22 +10,22 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f6d128ace64f7c100a974883bff82435a496be97
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026670"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815462"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Ubuntu Veri Bilimi Sanal Makinesi oluşturma
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Ubuntu 18,04 Veri Bilimi Sanal Makinesi nasıl oluşturacağınız gösterilmektedir. Veri bilimi sanal makineleri, bir veri bilimi ve makine öğrenimi çerçeveleri ve araçları paketiyle önceden yüklenmiş bulut tabanlı sanal makinelerdir. GPU destekli işlem kaynaklarına dağıtıldığında, tüm araçlar ve kitaplıklar GPU 'YU kullanacak şekilde yapılandırılır. 
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Ubuntu 18,04 Veri Bilimi Sanal Makinesi nasıl oluşturacağınız gösterilmektedir. Veri bilimi sanal makineleri, bir veri bilimi ve makine öğrenimi çerçeveleri ve araçları paketiyle önceden yüklenmiş bulut tabanlı sanal makinelerdir. GPU destekli işlem kaynaklarına dağıtıldığında, tüm araçlar ve kitaplıklar GPU 'YU kullanacak şekilde yapılandırılır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
 
@@ -37,7 +37,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Bu makale için tam şablon burada görüntülenemeyecek kadar uzun. Tüm şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). DSVM 'nin özelliklerini tanımlayan bölüm burada gösterilmektedir:
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/) alınmıştır. Bu makale için tam şablon burada görüntülenemeyecek kadar uzun. Tüm şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). DSVM 'nin özelliklerini tanımlayan bölüm burada gösterilmektedir:
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
 
@@ -74,8 +74,8 @@ Yukarıdaki komutu çalıştırdığınızda şunu girin:
 
 Veri Bilimi Sanal Makinesi görmek için:
 
-1. https://portal.azure.com kısmına gidin.
-1. Giriş yapın.
+1. [Azure Portal](https://portal.azure.com) git
+1. Oturum açın.
 1. Az önce oluşturduğunuz kaynak grubunu seçin.
 
 Kaynak grubunun bilgilerini görürsünüz:

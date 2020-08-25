@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287094"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815955"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
 Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure haritalar Oluşturucu 'da oluşturulan ınkapıların işlemesini sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
@@ -35,10 +35,8 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
 *Azure Maps ınkapısı* modülünün genel olarak barındırılan Azure Content Delivery Network sürümünü kullanmak IÇIN, HTML dosyasının öğesinde aşağıdaki JavaScript ve stil sayfası başvurularına başvurun `<head>` :
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  Ya da *Azure Maps ınkapıl* modülünü de indirebilirsiniz. *Azure Maps ınkapısı* modülü, Azure Maps hizmetlerine erişmek için bir istemci kitaplığı içerir. *Inkapısı* modülünü yüklemek ve Web uygulamanıza yüklemek için aşağıdaki adımları izleyin.  
@@ -46,15 +44,14 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
   1. [Azure-Maps-ınkapısı paketini](https://www.npmjs.com/package/azure-maps-indoor)yükler.
   
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
   2. HTML dosyasının öğesindeki *Azure Maps ınkapısı* modül JavaScript ve stil sayfasına başvurun `<head>` :
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>Map nesnesinin örneğini oluşturma
@@ -148,11 +145,11 @@ Bu örnek, Web uygulamanızda *Azure Maps ınkapısı* modülünü nasıl kullan
 3. HTML üstbilgisinde *Azure Maps ınkapısı* modülü JavaScript ve stil sayfası stillerine başvurun.
 
 4. *Harita nesnesi*başlatın. *Map nesnesi* aşağıdaki seçenekleri destekler:
-    - `Subscription key`Azure haritalar birincil abonelik anahtarınız.
-    - `center`ınkapıeşlem merkezi konumunuz için bir enlem ve Boylam tanımlar. `center`İçin bir değer sağlamak istemiyorsanız, için bir değer girin `bounds` . Biçim şöyle görünmelidir `center` : [-122,13315, 47,63637].
-    - `bounds`, tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [# Batı, # Güney, # Doğu, # Kuzey].
-    - `style`arka planın rengini ayarlamanıza olanak sağlar. Beyaz bir arka planı göstermek için `style` "boş" olarak tanımlayın.
-    - `zoom`Haritanız için en düşük ve en yüksek yakınlaştırma düzeylerini belirtmenize olanak tanır.
+    - `Subscription key` Azure haritalar birincil abonelik anahtarınız.
+    - `center` ınkapıeşlem merkezi konumunuz için bir enlem ve Boylam tanımlar. `center`İçin bir değer sağlamak istemiyorsanız, için bir değer girin `bounds` . Biçim şöyle görünmelidir `center` : [-122,13315, 47,63637].
+    - `bounds` , tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [# Batı, # Güney, # Doğu, # Kuzey].
+    - `style` arka planın rengini ayarlamanıza olanak sağlar. Beyaz bir arka planı göstermek için `style` "boş" olarak tanımlayın.
+    - `zoom` Haritanız için en düşük ve en yüksek yakınlaştırma düzeylerini belirtmenize olanak tanır.
 
 5. Sonra, *ınkapılı yönetici* modülünü oluşturun. *Azure Maps ınkapısı* atayın `tilesetId` ve isteğe bağlı olarak öğesini ekleyin `statesetId` .
 

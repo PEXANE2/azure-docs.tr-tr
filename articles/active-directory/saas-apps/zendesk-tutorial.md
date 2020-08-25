@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546081"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Öğretici: Zendesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -41,7 +41,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Zendesk, **SP** tarafından başlatılan SSO 'yu destekler
 * Zendesk [ **Otomatik** Kullanıcı sağlamayı destekler](zendesk-provisioning-tutorial.md)
-* Zendesk 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zendesk 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Galeriden Zendesk ekleme
 
@@ -54,7 +54,7 @@ Zendesk 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden, y
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Zendesk** yazın.
 1. Sonuçlar panelinden **Zendesk** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>Zendesk için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Zendesk için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Zendesk ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Zendesk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -149,50 +149,29 @@ Bu bölümde, Zendesk 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 1. Zendesk 'i el ile kurmak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Zendesk şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. **Yönetici**' ye tıklayın.
+1. **Zendesk Yönetim merkezinde** **güvenlik** sekmesinde **güvenlik ayarları** ' na tıklayın.
 
-1. Sol gezinti bölmesinde **Ayarlar**' a ve ardından **güvenlik**' e tıklayın.
+    ![Güvenlik](./media/zendesk-tutorial/settings.png "Güvenlik")
 
-1. **Güvenlik** sayfasında, aşağıdaki adımları gerçekleştirin:
+1. **Çoklu oturum açma** sayfasına gidin ve **SAML**'da **Düzenle** ' ye tıklayın.
 
-    ![Güvenlik](./media/zendesk-tutorial/ic773089.png "Güvenlik")
+    ![Güvenlik](./media/zendesk-tutorial/saml-sso.png "Güvenlik")
 
-    ![Çoklu oturum açma](./media/zendesk-tutorial/ic773090.png "Çoklu oturum açma")
+1. **SSO** sayfasında aşağıdaki adımları gerçekleştirin.
 
-    a. **Yönetici & aracılar** sekmesine tıklayın.
+    ![Çoklu oturum açma](./media/zendesk-tutorial/saml-configuration.png "Çoklu oturum açma")
 
-    b. **Çoklu oturum açma (SSO) ve SAML**' ı seçin ve ardından **SAML**' yi seçin.
+    a. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. **Sertifika parmak izi** metin kutusunda, Azure Portal kopyaladığınız sertifikanın **parmak izi** değerini yapıştırın.
 
-    d. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    c. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-    e. **Sertifika parmak izi** metin kutusunda, Azure Portal kopyaladığınız sertifikanın **parmak izi** değerini yapıştırın.
-
-    f. **Kaydet**’e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
 ### <a name="create-zendesk-test-user"></a>Zendesk test kullanıcısı oluşturma
 
 Bu bölümün amacı Zendesk 'te Britta Simon adlı bir Kullanıcı oluşturmaktır. Zendesk, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamayı destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](Zendesk-provisioning-tutorial.md) .
-
-**Kullanıcı el ile oluşturmanız gerekiyorsa lütfen aşağıdaki adımları gerçekleştirin:**
-
-> [!NOTE]
-> **Son Kullanıcı** hesapları, oturum açılırken otomatik olarak sağlanır. Oturum açmadan önce, **Aracı** ve **yönetici** hesaplarının **Zendesk** 'te el ile sağlanması gerekir.
-
-1. **Zendesk** kiracınızda oturum açın.
-
-2. **Müşteri listesi** sekmesini seçin.
-
-3. **Kullanıcı** sekmesini seçin ve **Ekle**' ye tıklayın.
-
-    ![Kullanıcı ekle](./media/zendesk-tutorial/ic773632.png "Kullanıcı ekleme")
-4. Sağlamak istediğiniz mevcut bir Azure AD hesabının **adını** ve **e-postasını** yazın ve ardından **Kaydet**' e tıklayın.
-
-    ![Yeni kullanıcı](./media/zendesk-tutorial/ic773633.png "Yeni kullanıcı")
-
-> [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için Zendesk tarafından sunulan diğer bir Zendesk Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

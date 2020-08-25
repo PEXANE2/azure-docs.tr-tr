@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 98d7566d5e9339ea2ac5d81d91f1d9f8ace5b0f4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719731"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816074"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdaki verilerin Azure IoT Central neden gösterilmediğini sorun giderme
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Cihazınızın gönderdiği Telemetriyi izlemek için aşağıdaki komutu kullanın:
 
 ```cmd/bash
-az iot central app monitor-events -n <app-id> -d <device-name>
+az iot central app monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz IoT Central başarıyla bağlanırsa aşağıdakine benzer bir çıktı görürsünüz:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Cihazınızın IoT Central ile birlikte değişiminde olan özellik güncelleştirmelerini izlemek için aşağıdaki Önizleme komutunu kullanın:
 
 ```cmd/bash
-az iot central app monitor-properties -n <app-id> -d <device-name>
+az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz, özellik güncelleştirmelerini başarıyla gönderirse aşağıdakine benzer bir çıktı görürsünüz:
@@ -108,7 +108,7 @@ Terminalinizde herhangi bir veri görünmüyorsa, büyük olasılıkla cihazın�
 Verileriniz izleyicisinde görünmüyorsa, aşağıdaki komutu çalıştırarak cihazınızın sağlama durumunu kontrol edin:
 
 ```cmd/bash
-az iot central app device registration-info -n <app-id> -d <device-id>
+az iot central app device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Aşağıdaki çıktıda, bağlantısı engellenen bir cihaz örneği gösterilmektedir:
@@ -133,7 +133,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
 | - | - | - |
-| Oluşturulamadı | Anında tanınabilir sorun yoktur. | N/A |
+| Oluşturulamadı | Anında tanınabilir sorun yoktur. | YOK |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
 | Engellendi | Cihazın IoT Central 'e bağlanması engellendi. | Cihazın IoT Central uygulamasına bağlanması engellendi. IoT Central cihaz engelini kaldırın ve yeniden deneyin. Daha fazla bilgi için bkz. [Cihazları engelleme](concepts-get-connected.md#device-status-values). |
 | Durumdaki | Cihaz onaylanmadı. | Cihaz IoT Central uygulamasına bağlanacak şekilde onaylanmadı. IoT Central cihazı onaylayın ve yeniden deneyin. Daha fazla bilgi için bkz. [cihazları onaylama](concepts-get-connected.md#connect-without-registering-devices) |
@@ -178,13 +178,13 @@ Sorununuzla ilgili hangi kategorilerin olduğunu saptamak için senaryonuz için
 - Telemetriyi doğrulamak için Önizleme komutunu kullanın:
 
     ```cmd/bash
-    az iot central app validate-messages -n <app-id> -d <device-name>
+    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Özellik güncelleştirmelerini doğrulamak için Önizleme komutunu kullanın
 
     ```cmd/bash
-    az iot central app validate-properties -n <app-id> -d <device-name>
+    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 - Bir GUI kullanmayı tercih ediyorsanız, bir şeyin modellendirilmediğinden bakmak için IoT Central **ham veri** görünümünü kullanın. **Ham veri** görünümü, cihazın hatalı biçimlendirilmiş JSON gönderip göndermediğini algılamaz.

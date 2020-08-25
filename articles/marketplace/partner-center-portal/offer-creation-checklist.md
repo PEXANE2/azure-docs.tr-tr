@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c72d4d4f77ecf0bcad2b521650fd8ff7612fb604
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799931"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815360"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma denetim listesi
 
@@ -23,8 +23,8 @@ SaaS teklifi oluşturma işlemi sizi birden çok sayfaya götürür.  Bu makaled
 
 Sağlamanız veya belirtmeniz gereken öğeler aşağıda belirtilmiştir.  Bazı alanların isteğe bağlı olması veya varsayılan değerlere sahip olması, istediğiniz gibi değiştirebilmeniz gerekir.  Burada listelenen sırayla bu bölümler üzerinde çalışmanız gerekmez.
 
-| **Öğe**    | **Amaç**  |
-| :---------- | :-------------------|
+| Öğe | Amaç |
+| ---------- | -------------------|
 | [**Yeni teklif kalıcı**](#new-offer-modal) | Teklif kimliği bilgilerini toplar.  |
 | [Teklif kurulum sayfası](#offer-setup-page) | Temel özellikleri kullanmayı ve teklifinizi Microsoft aracılığıyla nasıl satmayı seçmenizi sağlar.  |
 | [Özellikler sayfası](#properties-page) | Teklifinizi Pazar konumlarına, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü gruplamak için kullanılan kategorileri ve endüstrileri tanımlayın. |
@@ -33,76 +33,82 @@ Sağlamanız veya belirtmeniz gereken öğeler aşağıda belirtilmiştir.  Baz�
 | [Teknik yapılandırma sayfası](#technical-configuration-page)  |  Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Market tarafından teklifinizi bağlamak için kullanılan teknik ayrıntıları (giriş sayfası URL 'SI, bağlantı Web kancası URL 'SI, Azure AD kiracı KIMLIĞI ve Azure AD uygulama KIMLIĞI) tanımlayın.  Bu parametrelerin SaaS karşılama ve Market ölçülen faturalandırma API 'Leri ile doğru bir şekilde tümleştirileceği için gereklidir.|
 | [**Yeni plan kalıcı**](#plan-identity-modal) | Plan kimlik bilgilerini toplar.  |
 | [Plan listeleme sayfası](#plan-listing-page)  | Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir. Planı Market 'te listelemek için kullanılan ayrıntıları tanımlayın.  |
-| [Fiyatlandırma & kullanılabilirliği sayfasını planlayın](#plan-pricing--availability-page)  | Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Teklifinizin her bir planı (sürümü) için iş özelliklerini (fiyatlandırma modeli), hedef kitleyi ve Pazar kullanılabilirliğini toplar.  |
+| [Fiyatlandırma ve kullanılabilirlik sayfası planı](#plan-pricing-and-availability-page)  | Yalnızca teklifi Microsoft üzerinden satmayı seçerseniz kullanılabilir.  Teklifinizin her bir planı (sürümü) için iş özelliklerini (fiyatlandırma modeli), hedef kitleyi ve Pazar kullanılabilirliğini toplar.  |
 | [Test sürücü listeleme sayfası](#test-drive-listing-page)  | Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanılabilir. Market 'teki test sürücüsünü listelemek için kullanılan ayrıntıları tanımlayın.  |
 | Sınama sürücüsü teknik yapılandırma sayfası  | Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanılabilir. Müşterilerin satın alma işlemine geçmeden önce teklifinizi denemesini sağlayacak tanıtım (veya "test sürücüsü") için teknik ayrıntıları tanımlayın.  |
 | [İnceleme ve yayımlama sayfası](#review-and-publish-page)  | Yayımlamak istediğiniz değişiklikleri seçin, her sayfanın durumuna bakın ve sertifika ekibine not sağlayın.  |
+|
 
 ## <a name="new-offer-modal"></a>Yeni teklif kalıcı
 
 Sunabileceğiniz bilgilerin ilk parçaları teklifiniz için bir KIMLIK ve diğer addır.
 
-| **Alan adı**    | **Notlar**   |  
-| :---------------- | :-----------| 
+| Alan adı | Notlar |  
+| ---------------- | -----------|
 | Teklif Kimliği  | Gerekli, oluşturulduktan sonra değiştirilemez. Maksimum 50 karakter ve yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. |
-| Teklif diğer adı  | Gereklidir. |
+| Teklif diğer adı  | Gerekli |
+|
 
 ## <a name="offer-setup-page"></a>Teklif kurulum sayfası
 
-Teklif kurulumu sayfası, farklı kanalları kabul edebilir ve ücretlerinizi satıyor ve test sürücüsü ve müşteri adayları gibi önemli özelliklerin kullanımını bildirebileceğiniz yerdir. 
+Teklif kurulumu sayfası, farklı kanalları kabul edebilir ve ücretlerinizi satıyor ve test sürücüsü ve müşteri adayları gibi önemli özelliklerin kullanımını bildirebileceğiniz yerdir.
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------|  
-| Microsoft üzerinden satımek istiyor musunuz?  | Gereklidir. Varsayılan: Evet |
+| Alan adı | Notlar |
+| ---------------- | -----------|  
+| Microsoft üzerinden satımek istiyor musunuz?  | Gereklidir. Varsayılan: Evet. |
 | Potansiyel müşterilerin teklif listesi ile nasıl etkileşime geçmesini istiyorsunuz? (Eyleme çağrı)  | Microsoft üzerinden satılırken gereklidir. Varsayılan: ücretsiz deneme, Seçenekler: "Şimdi al", "ücretsiz deneme", "benimle Iletişim kurma". |
 | Deneme URL 'SI  | Müşterilerin teklif listesi ile etkileşim kurması için "ücretsiz deneme" seçilirse gereklidir. |
-| Teklif URL 'SI  | Müşterilerin teklif listesi ile etkileşim kurması için "Şimdi al" seçildiyse gereklidir |
+| Teklif URL 'SI  | Müşterilerin teklif listesi ile etkileşim kurması için "Şimdi al" seçildiyse gereklidir. |
 | Kanallar  | İsteğe bağlı. Varsayılan: CSP (satıcı) kanalına kabul edilmedi.  |
 | Test Sürüşü | İsteğe bağlı. Varsayılan: etkin bir test sürücüsü yok.  |
 | Test sürücüsünün türü | Bir sınama sürücüsü etkinleştirildiyse gereklidir. Varsayılan: hiçbiri seçili değil. Seçenekler: Azure Resource Manager, Iş Merkezi için Dynamics 365, müşteri katılımı için Dynamics 365, Işlemler için Dynamics 365, mantıksal uygulama, Power BI.  |
-| Müşteri adayları-bir CRM sistemine bağlanma | Microsoft üzerinden satılırken veya liste "bana başvur" olarak sunulduğunda gereklidir. Varsayılan: hiçbir CRM sistemi bağlanmadı. CRM seçenekleri: Azure tablosu, Azure blobu, Dynamics CRM Online, HTTPs ' uç noktası, Marketo, Salesforce  |
+| Müşteri adayları-bir CRM sistemine bağlanma | Microsoft üzerinden satılırken veya liste "bana başvur" olarak sunulduğunda gereklidir. Varsayılan: hiçbir CRM sistemi bağlanmadı. CRM seçenekleri: Azure tablosu, Azure blobu, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce.  |
+|
 
 ## <a name="properties-page"></a>Özellikler sayfası
 
-Özellikler sayfası, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımladığınız yerdir. Bu sayfada teklif hakkında tam ve doğru ayrıntıları sağladığınızdan emin olun, böylece uygun şekilde görüntülenir ve doğru müşteri kümesine sunulur. 
+Özellikler sayfası, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımladığınız yerdir. Bu sayfada teklif hakkında tam ve doğru ayrıntıları sağladığınızdan emin olun, böylece uygun şekilde görüntülenir ve doğru müşteri kümesine sunulur.
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------|  
+| Alan adı | Notlar |
+| ---------------- | -----------|  
 | Kategori ve alt kategori | Gerekli 1 ve en fazla 3. Varsayılan: hiçbiri seçili değil. |
 | Sektörler ve alt sektör | İsteğe bağlı. Her L1 sektöründe maksimum 2 L1 sektörleri ve maksimum 2 alt sektör, varsayılan: hiçbiri seçilmedi |
 | Uygulama sürümü  | İsteğe bağlı. Varsayılan: yok. |
-| Standart Sözleşme kullan  | İsteğe bağlı. Varsayılan: seçili değil.  | |
+| Standart Sözleşme kullan  | İsteğe bağlı. Varsayılan: seçili değil.  |
 | Kullanım koşulları  | Standart Sözleşme seçilmemişse gereklidir.  |
+|
 
 ## <a name="offer-listing-page"></a>Teklif listesi sayfası
 
-Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerken göreceği metin ve görüntüleri sağladığınız yerdir. 
+Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerken göreceği metin ve görüntüleri sağladığınız yerdir.
 
-| **Alan adı**    | **Notlar**   |
-| :---------------- | :-----------|
-| Ad  | Gerekli, en fazla 50 karakter. |
+| Alan adı | Notlar |
+| ---------------- | -----------|
+| Name  | Gerekli, en fazla 50 karakter. |
 | Özet  | Gerekli, en fazla 100 karakter. |
 | Açıklama  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Anahtar sözcükleri ara  | İsteğe bağlı, önerilen, en fazla 3 anahtar sözcük. |
-| Gizlilik ilkesi URL 'SI  | Gereklidir. |
-| CSP program pazarlama malzemeleri URL 'SI  | İsteğe bağlı. |
-| Faydalı bağlantılar başlığı + URL  | İsteğe bağlı. |
+| Gizlilik ilkesi URL 'SI  | Gerekli |
+| CSP program pazarlama malzemeleri URL 'SI  | İsteğe Bağlı |
+| Faydalı bağlantılar başlığı + URL  | İsteğe Bağlı |
 | Destekleyici belgeler başlık + dosya  | Gerekli, en az 1 ve en fazla 3. PDF dosyası biçimi olmalıdır. |
 | Ekran görüntüleri  | Gerekli, en az 1 ekran görüntüsü ve en fazla 5; dört veya daha fazla önerilir. PNG biçiminde 1280 X 720 olmalıdır. |
-| Mağaza logoları (küçük, orta, büyük)  | Büyük logo (216 x 216) gereklidir. İş Ortağı Merkezi, küçük (48 x 48 piksel) ve Orta (90 x 90 piksel) boyut logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları farklı görüntülerle değiştirebilirsiniz. Logolar, PNG biçiminde olmalıdır. |
+| Mağaza logoları (küçük, orta, büyük)  | Büyük logo (216 x 216 ile 350 x 350 piksel) gereklidir. İş Ortağı Merkezi, küçük (48 x 48 px) ve Orta (90 x 90 px) logosu oluşturmak için bunu kullanacaktır. İsterseniz bunları daha sonra farklı görüntülerle değiştirebilirsiniz. Logolar, PNG biçiminde olmalıdır. |
 | Videolar adı + URL + küçük resim  | İsteğe bağlı, önerilen, en fazla 4 video. Küçük resim, PNG biçiminde 1280 x 720 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 | Kişiler (CSP programı, mühendislik, destek)  | Mühendislik ve destek ilgili kişisi gerekli (ad, e-posta ve telefon numarası); CSP programı isteğe bağlı, ancak önerilir. |
-| Destek URL 'SI  | Gereklidir. |
+| Destek URL 'SI  | Gerekli |
+|
 
 ## <a name="preview-page"></a>Önizleme sayfası
 
-Önizleme sayfası, teklifin, canlı olmadan önce tüm gereksinimlerinizi karşıladığından emin olmak için, teklif önizlemeye erişim sağlamak için hedef kitleyi belirlediğiniz yerdir. 
+Önizleme sayfası, teklifin, canlı olmadan önce tüm gereksinimlerinizi karşıladığından emin olmak için, teklif önizlemeye erişim sağlamak için hedef kitleyi belirlediğiniz yerdir.
 
-| **Alan adı**    | **Notlar**   |
-| :---------------- | :-----------|
+| Alan adı | Notlar |
+| ---------------- | -----------|
 | AAD/MSA e-postası + açıklama | El ile girilmişse, en az 1 ve en fazla 10, bir CSV dosyası karşıya yüklüyorsanız 20 ' ye kadar, gereklidir. |
+|
 
 ## <a name="technical-configuration-page"></a>Teknik yapılandırma sayfası
 
@@ -111,36 +117,39 @@ Teknik yapılandırma sayfası, Microsoft tarafından teklifinizi bağlamak içi
 > [!NOTE]
 > Transactable teklifleri için bir giriş sayfası oluşturmanız gerekir ve uygulamanızın çoklu oturum açma (SSO) ile Azure AD kimlik doğrulamasını kullanması gerekir. Daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](../azure-ad-saas.md).
 
-| **Alan adı**    | **Notlar**   |  
-| :---------------- | :-----------| 
+| Alan adı | Notlar |  
+| ---------------- | -----------| 
 | Giriş sayfası URL 'SI | Microsoft üzerinden satılırken gereklidir. |
 | Bağlantı Web kancası | Microsoft üzerinden satılırken gereklidir. |
 | Azure AD kiracı kimliği | Microsoft üzerinden satılırken gereklidir. |
 | Azure AD uygulama KIMLIĞI | Microsoft üzerinden satılırken gereklidir. |
+|
 
 ## <a name="plan-identity-modal"></a>Kimlik planlaması kalıcı
 
 Sağladığınız ilk bilgi parçaları, planınız için bir ad ve bir KIMLIK. Microsoft ile satımamaya karar verdiyseniz Bu sayfa sizin için görünür değildir.
 
-| **Alan adı**    | **Notlar**   |  
-| :---------------- | :-----------| 
+| Alan adı | Notlar |  
+| ---------------- | -----------|
 | Plan KIMLIĞI  | Microsoft üzerinden satılırken gereklidir. Oluşturulduktan sonra değiştirilemez. Maksimum 50 karakter ve yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. |
 | Plan Adı  | Microsoft üzerinden satılırken gereklidir. Teklifteki tüm planlar genelinde benzersiz olmalıdır. En fazla 50 karakter. |
+|
 
 ## <a name="plan-listing-page"></a>Plan listeleme sayfası
 
 Plan listeleme sayfası, müşterilerin planı Market 'te görüntülerken göreceği metni sağladığınız yerdir. Microsoft ile satımamaya karar verdiyseniz Bu sayfa sizin için görünür değildir.
 
-| **Alan adı**    | **Notlar**   |  
-| :---------------- | :-----------| 
-| Plan açıklaması   | Microsoft üzerinden satılırken gereklidir. En fazla 500 karakter. | |
+| Alan adı | Notlar |  
+| ---------------- | -----------|
+| Plan açıklaması   | Microsoft üzerinden satılırken gereklidir. En fazla 500 karakter. |
+|
 
-## <a name="plan-pricing--availability-page"></a>Fiyatlandırma & kullanılabilirliği sayfasını planlayın
+## <a name="plan-pricing-and-availability-page"></a>Fiyatlandırma ve kullanılabilirlik sayfası planı
 
 Fiyatlandırma ve kullanılabilirlik planı sayfası, teklifinizin her bir planı (sürümü) için iş özelliklerini, kitleyi ve Pazar kullanılabilirliğini tanımladığınız yerdir. Microsoft ile satımamaya karar verdiyseniz Bu sayfa sizin için görünür değildir.
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------| 
+| Alan adı | Notlar |
+| ---------------- | -----------|
 | Pazar kullanılabilirliği  | Gerekli, en az 1 ve en fazla 141. |
 | Fiyatlandırma modeli  | Gereklidir. Varsayılan: düz fiyat. Seçenekler: Kullanıcı başına düz fiyat. |
 | En düşük ve en yüksek koltuk  | İsteğe bağlı, yalnızca bilgisayar tabanlı fiyatlandırma modeli seçilirse kullanılabilir. |
@@ -148,22 +157,25 @@ Fiyatlandırma ve kullanılabilirlik planı sayfası, teklifinizin her bir plan�
 | Fiyat  | Aylık faturalandırma dönemi seçilmişse, ayda bir aylık USD gereklidir; yıllık faturalandırma şartı seçilirse yıl başına ABD Doları. |
 | Hedef kitle planlayın  | İsteğe bağlı. Varsayılan: genel plan. Seçenekler: ortak, kiracı KIMLIĞINE göre özel |
 | Kısıtlanmış plan hedef kitlesi (kiracı KIMLIĞI + açıklama)  | Özel plan seçilmişse gereklidir. El ile girilmişse, en az 1 ve en fazla 10 Kiracı kimliği. CSV dosyası içeri aktarırsanız Max 20000. |
+|
 
 ## <a name="test-drive-listing-page"></a>Test sürücü listeleme sayfası
 
 Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanılabilir. Market 'teki test sürücüsünü listelemek için kullanılan ayrıntıları tanımlayın.
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------| 
-| Açıklama  | Gereklidir. |
+| Alan adı | Notlar |
+| ---------------- | -----------|
+| Açıklama  | Gerekli |
 | Kullanıcı El Ile adı + dosyası  | Gerekli, en fazla 1 belge. PDF biçiminde olmalıdır. |
 | Video adı, URL + küçük resim  | İsteğe bağlı, önerilir. Küçük resim, JPGP veya PNG biçiminde 533 x 324 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
+|
 
 ## <a name="review-and-publish-page"></a>İnceleme ve yayımlama sayfası
 
-| **Alan adı**    | **Notlar**   | 
-| :---------------- | :-----------| 
-| Sertifika notları  | İsteğe bağlı. |
+| Alan adı | Notlar |
+| ---------------- | -----------|
+| Sertifika notları  | İsteğe Bağlı |
+|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

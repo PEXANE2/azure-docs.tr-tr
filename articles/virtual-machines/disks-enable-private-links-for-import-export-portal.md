@@ -4,18 +4,18 @@ description: Şu anda önizleme aşamasında olan Azure portal yönetilen diskle
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135853"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815870"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtlama
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Özel bağlantılarla yönetilen disklere yönelik içeri/dışarı aktarma erişimini kısıtlamak için Azure portal kullanın
 
 Yönetilen diskler için özel bağlantılar desteği şu anda önizlemededir ve yönetilen disklerin içeri ve dışarı aktarılmasını, yalnızca Azure sanal ağınızda gerçekleşmeleri için kısıtlayabilmenizi sağlar. Eklenmemiş yönetilen diskler ve anlık görüntüler için, verileri bölgesel genişletme, olağanüstü durum kurtarma ve adli analiz için verileri okumak üzere diğer bölgelere aktarmaya yönelik bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturabilirsiniz. Ayrıca, VHD 'yi şirket içi diskinizdeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Sanal ağı ve yönetilen disklerdeki istemciler arasındaki ağ trafiği, Microsoft omurga ağı üzerinde yalnızca sanal ağ ve özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'te pozlamayı ortadan kaldırır.
 
@@ -46,7 +46,7 @@ Disklerinizin bağlı olduğu sanal makınenın sanal ağını de yüklemeniz ge
 
 1. Yeni bir disk erişim kaynağı oluşturmak için **+ Ekle** ' yi seçin.
 1. Oluştur dikey penceresinde aboneliğinizi, bir kaynak grubunu seçin, bir ad girin ve bir bölge seçin.
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
@@ -83,7 +83,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
     > Seçilen alt ağ için etkin bir ağ güvenlik grubunuz (NGS) varsa, bu yalnızca bu alt ağdaki özel uç noktalar için devre dışı bırakılır. Bu alt ağdaki diğer kaynakların NSG zorlaması olmaya devam edecektir.
 
 1. Uygun alt ağı seçin
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Özel uç nokta oluşturma iş akışı, üçüncü dikey pencerenin ekran görüntüsü. Sanal ağ ve alt ağ vurgulandı.":::
 
@@ -100,5 +100,5 @@ Artık yönetilen diskinizi içeri/dışarı aktarırken kullanabileceğiniz öz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel bağlantılar için SSS](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Özel bağlantılar için SSS](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Yönetilen anlık görüntüleri, PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak verme/kopyalama](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

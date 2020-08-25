@@ -1,6 +1,6 @@
 ---
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi-Azure CLı
-description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Yönetilen disklerinizin şifrelenebilmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz.
+description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Kendi anahtarlarınız ile şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilir veya yönetilen disklerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarlara güvenebilirsiniz.
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449160"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816907"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
 
@@ -80,7 +80,7 @@ Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [CLI](disks-enable-host-based-encryption-cli.md) veya [Azure Portal](disks-enable-host-based-encryption-portal.md)ile konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirin.
-- [CLI](disks-enable-double-encryption-at-rest-cli.md) veya [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)ile yönetilen diskler için bekleyen çift şifrelemeyi etkinleştirin.
-- [CLI](disks-enable-customer-managed-keys-cli.md) veya [Azure Portal](disks-enable-customer-managed-keys-portal.md)yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirin.
+- [CLI](disks-enable-host-based-encryption-cli.md) veya [Azure Portal](../disks-enable-host-based-encryption-portal.md)ile konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirin.
+- [CLI](disks-enable-double-encryption-at-rest-cli.md) veya [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md)ile yönetilen diskler için bekleyen çift şifrelemeyi etkinleştirin.
+- [CLI](disks-enable-customer-managed-keys-cli.md) veya [Azure Portal](../disks-enable-customer-managed-keys-portal.md)yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirin.
 - [Azure Key Vault nedir?](../../key-vault/general/overview.md)

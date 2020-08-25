@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797930"
+ms.locfileid: "88814459"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
@@ -48,8 +48,8 @@ Aşağıdaki tabloda, Azure depolama şifrelemesi için anahtar yönetim seçene
 | Şifreleme/şifre çözme işlemleri | Azure | Azure | Azure |
 | Desteklenen Azure depolama hizmetleri | Tümü | BLOB depolama, Azure dosyaları<sup>1, 2</sup> | Blob depolama |
 | Anahtar depolama | Microsoft anahtar deposu | Azure Key Vault | Müşterinin kendi anahtar deposu |
-| Anahtar döndürme sorumluluğu | Microsoft | Customer | Customer |
-| Anahtar denetimi | Microsoft | Customer | Customer |
+| Anahtar döndürme sorumluluğu | Microsoft | Müşteri | Müşteri |
+| Anahtar denetimi | Microsoft | Müşteri | Müşteri |
 
 <sup>1</sup> müşteri tarafından yönetilen anahtarları kuyruk depolama ile kullanmayı destekleyen bir hesap oluşturma hakkında bilgi için, bkz. [kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)oluşturma.<br />
 <sup>2</sup> müşteri tarafından yönetilen anahtarları tablo depolama ile kullanmayı destekleyen bir hesap oluşturma hakkında bilgi için bkz. [tablolar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
@@ -68,7 +68,7 @@ Azure depolama kaynak sağlayıcısı 'nı kullanarak bir depolama hesabı için
 Bir şifreleme kapsamı oluşturduktan sonra, bir kapsayıcı veya blob oluşturmak için bu şifreleme kapsamının bir istekte belirtebilirsiniz. Şifreleme kapsamı oluşturma hakkında daha fazla bilgi için bkz. [şifreleme kapsamları oluşturma ve yönetme (Önizleme)](../blobs/encryption-scope-manage.md).
 
 > [!NOTE]
-> Önizleme sırasında Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) hesapları ile şifreleme kapsamları desteklenmez.
+> Önizleme sırasında Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) ve Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) hesapları ile şifreleme kapsamları desteklenmez.
 
 > [!IMPORTANT]
 > Şifreleme kapsamları önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.

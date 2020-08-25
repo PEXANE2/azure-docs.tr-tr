@@ -3,17 +3,17 @@ title: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kull
 description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifrelemeyi öğrenin.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566208"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815930"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
 Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure 'da (işletim sistemi ve veri diskleri) yönetilen disklerde depolanan verilerinizi otomatik olarak buluta kalıcı hale getirerek varsayılan olarak şifreler. Azure 'da [disk şifrelemesi](../virtual-machines/windows/disk-encryption.md) hakkında daha fazla bilgi edinin. 
 
-DevTest Labs içinde, bir laboratuvarın parçası olarak oluşturulan tüm işletim sistemi diskleri ve veri diskleri, platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Ancak, bir laboratuar sahibi olarak, kendi anahtarlarınızı kullanarak laboratuvar sanal makine işletim sistemi disklerini şifrelemeyi tercih edebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, laboratuvar işletim sistemi disklerindeki verileri şifrelemek için kullanılacak **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme (SSE) hakkında daha fazla bilgi edinmek ve diğer yönetilen disk şifreleme türleri hakkında daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Ayrıca bkz. [müşteri tarafından yönetilen anahtarları kullanmayla ilgili kısıtlamalar](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+DevTest Labs içinde, bir laboratuvarın parçası olarak oluşturulan tüm işletim sistemi diskleri ve veri diskleri, platform tarafından yönetilen anahtarlar kullanılarak şifrelenir. Ancak, bir laboratuar sahibi olarak, kendi anahtarlarınızı kullanarak laboratuvar sanal makine işletim sistemi disklerini şifrelemeyi tercih edebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, laboratuvar işletim sistemi disklerindeki verileri şifrelemek için kullanılacak **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme (SSE) hakkında daha fazla bilgi edinmek ve diğer yönetilen disk şifreleme türleri hakkında daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Ayrıca bkz. [müşteri tarafından yönetilen anahtarları kullanmayla ilgili kısıtlamalar](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
 
 ## <a name="pre-requisites"></a>Ön koşullar
 
-1. Bir disk şifreleme ayarladıysanız, bir [Key Vault ve bir disk şifreleme kümesi ayarlamak](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)için bu makaleyi izleyin. Disk şifreleme kümesi için aşağıdaki gereksinimleri dikkate alın: 
+1. Bir disk şifreleme ayarladıysanız, bir [Key Vault ve bir disk şifreleme kümesi ayarlamak](../virtual-machines/disks-enable-customer-managed-keys-portal.md)için bu makaleyi izleyin. Disk şifreleme kümesi için aşağıdaki gereksinimleri dikkate alın: 
 
     - Disk şifreleme kümesinin **laboratuvarınız ile aynı bölgede ve abonelikte**olması gerekir. 
     - Laboratuvar işletim sistemi disklerini şifrelemek için kullanılacak disk şifreleme kümesine en az bir **okuyucu düzeyinde erişime** sahip olduğunuzdan emin olun. 

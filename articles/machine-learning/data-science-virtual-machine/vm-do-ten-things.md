@@ -10,30 +10,29 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 82e7cd67da6b64788d597e84c723d797138ac608
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848545"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815938"
 ---
-# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
+# <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi ile veri bilimi
 
 Windows Veri Bilimi Sanal Makinesi (DSVM), veri keşif ve modelleme görevlerini gerçekleştirebileceğiniz, güçlü bir veri bilimi geliştirme ortamıdır. Ortam, şirket içi, bulut veya Karma dağıtımlar için analizinizi kullanmaya başlamanıza olanak sağlayan çeşitli popüler veri analizi araçlarıyla önceden oluşturulup paketlenmiştir. 
 
-DSVM, Azure hizmetleriyle yakından birlikte çalışmaktadır. Azure SQL veri ambarı, Azure Data Lake, Azure depolama veya Azure Cosmos DB Azure 'da zaten depolanmış olan verileri okuyabilir ve işleyebilir. Ayrıca, Azure Machine Learning ve Azure Data Factory gibi diğer analiz araçlarından de faydalanabilir.
+DSVM, Azure hizmetleriyle yakından birlikte çalışmaktadır. Azure 'da, Azure Synapse (eski adıyla SQL DW), Azure Data Lake, Azure depolama veya Azure Cosmos DB daha önce depolanan verileri okuyabilir ve işleyebilir. Ayrıca, Azure Machine Learning gibi diğer analiz araçlarından de faydalanabilir.
 
 Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetleriyle etkileşim kurmak için DSVM 'nizi nasıl kullanacağınızı öğreneceksiniz. DSVM 'de yapabileceğiniz bazı şeyler aşağıda verilmiştir:
 
-- Microsoft Machine Learning Server ve Python kullanarak DSVM 'de yerel olarak veri araştırma ve modeller geliştirme.
 - Bir Jupyter Not defteri kullanarak, Python 2, Python 3 ve Microsoft R kullanarak bir tarayıcıda verilerinize denemeler yapın. (Microsoft R, bir R 'nin performans için tasarlanan kurumsal kullanıma yönelik bir sürümüdür.)
-- İstemci uygulamaların modellerinize basit bir Web hizmeti arabirimi kullanarak erişebilmesi için, R ve Python ile oluşturulan modelleri Azure Machine Learning.
+- Microsoft Machine Learning Server ve Python kullanarak DSVM 'de yerel olarak veri araştırma ve modeller geliştirme.
 - Azure portal veya PowerShell 'i kullanarak Azure kaynaklarınızı yönetin.
 - DSVM 'niz üzerinde bir Azure dosya paylaşımından bağlanabilir sürücü olarak depolama alanınızı genişletin ve büyük ölçekli veri kümelerini/kodları tüm ekibiniz üzerinde paylaşabilirsiniz.
 - GitHub kullanarak kodu ekibinizle paylaşabilirsiniz. Önceden yüklenmiş Git istemcilerini kullanarak deponuza erişin: git Bash ve git GUI.
-- Azure Blob depolama, Azure Data Lake, Azure Cosmos DB, Azure SQL veri ambarı ve Azure SQL veritabanı gibi Azure verilerine ve analiz hizmetlerine erişin.
+- Azure Blob depolama, Azure Cosmos DB, Azure Synapse (eski adıyla SQL DW) ve Azure SQL veritabanı gibi Azure verilerine ve analiz hizmetlerine erişin.
 - DSVM 'de önceden yüklenmiş Power BI Desktop örneğini kullanarak raporlar ve bir pano oluşturun ve bunları buluta dağıtın.
-- DSVM 'nizi projenizin ihtiyaçlarını karşılayacak şekilde dinamik olarak ölçeklendirin.
+
 - Sanal makinenize ek araçlar yükler.   
 
 > [!NOTE]
@@ -41,7 +40,7 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliğine ihtiyacınız vardır. [Ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Azure portal bir Veri Bilimi Sanal Makinesi sağlamaya yönelik yönergeler, [sanal makine oluşturma](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)bölümünde bulunabilir.
@@ -49,20 +48,6 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Microsoft Machine Learning Server ile verileri araştırma ve modeller geliştirme
-Veri analizinizi DSVM üzerinde doğrudan yapmak için R ve Python gibi dilleri kullanabilirsiniz.
-
-R için, başlangıç menüsünde veya masaüstünde bulunan RStudio gibi bir IDE kullanabilirsiniz. İsterseniz Visual Studio için R Araçları de kullanabilirsiniz. Microsoft, ölçeklenebilir analizleri etkinleştirmek ve paralel öbekli çözümlemede izin verilen bellek boyutundan daha büyük verileri analiz etmek üzere açık kaynaklı CRAN R 'nin üzerine ek kitaplıklar sağladı. 
-
-Python için, Visual Studio için Python Araçları (PTV) uzantısının önceden yüklenmiş olduğu Visual Studio Community Edition gibi bir IDE kullanabilirsiniz. Varsayılan olarak, PTV 'lerde yalnızca Python 3,6, kök Conda ortamı yapılandırılır. Anaconda Python 2,7 ' i etkinleştirmek için aşağıdaki adımları uygulayın:
-
-1. **Araçlar**  >  **Python araçları**  >  **Python ortamları**' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
-1. Anaconda Python 2,7 için bir açıklama verin ve ortam ön eki yolunu **c:\anaconda\envs\python2** olarak ayarlayın.
-1. Ortamı kaydetmek için **Otomatik Algıla**  >  **Uygula** ' yı seçin.
-
-Python ortamları oluşturma hakkında daha fazla bilgi için bkz. [PTV belgeleri](https://aka.ms/ptvsdocs) .
-
-Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya**  >  **Yeni**  >  **Proje**  >  **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır**' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](https://aka.ms/ptvsdocs)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="use-jupyter-notebooks"></a>Jupyter not defterlerini kullanma
 Jupyter Notebook, veri araştırması ve modelleme için tarayıcı tabanlı bir IDE sağlar. Bir Jupyter not defterinde Python 2, Python 3 veya R (açık kaynak ve Microsoft R Server) kullanabilirsiniz.
@@ -83,114 +68,22 @@ Jupyıter 'ı başlattıktan sonra, `/notebooks` DSVM 'ye önceden paketlenmiş 
 
 Not defteri 'nde olduğunuzda verilerinizi inceleyebilir, modeli oluşturabilir ve kitaplıkları tercih ettiğiniz kitaplıkları kullanarak test edebilirsiniz.
 
-## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak modelleri eğitme ve dağıtma
-Modelinizi oluşturup doğruladıktan sonra, bir sonraki adım genellikle üretime dağıtılır. Bu adım, istemci uygulamalarınızın gerçek zamanlı veya toplu işlem modu temelinde model tahminleri çağırmasına olanak sağlar. Azure Machine Learning, R veya Python 'da oluşturulmuş bir modeli kullanıma sunmaya yönelik bir mekanizma sağlar.
+## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Microsoft Machine Learning Server ile verileri araştırma ve modeller geliştirme
+Veri analizinizi DSVM üzerinde doğrudan yapmak için R ve Python gibi dilleri kullanabilirsiniz.
 
-Modelinizi Azure Machine Learning ' de çalıştırdığınızda bir Web hizmeti gösterilir. İstemcilerin giriş parametrelerini geçiren ve çıkış olarak modelden tahmin alabilen REST çağrıları yapmasına olanak sağlar.
+R için, başlangıç menüsünde veya masaüstünde bulunan RStudio gibi bir IDE kullanabilirsiniz. İsterseniz Visual Studio için R Araçları de kullanabilirsiniz. Microsoft, ölçeklenebilir analizleri etkinleştirmek ve paralel öbekli çözümlemede izin verilen bellek boyutundan daha büyük verileri analiz etmek üzere açık kaynaklı CRAN R 'nin üzerine ek kitaplıklar sağladı. 
 
-### <a name="build-and-operationalize-python-models"></a>Python modellerini derleme ve operationleştir
-Aşağıda, bir Python Jupyter not defterinde geliştirilen ve Scikit-öğren kitaplığı kullanarak basit bir model oluşturan kod parçacığı verilmiştir:
+Python için, Visual Studio için Python Araçları (PTV) uzantısının önceden yüklenmiş olduğu Visual Studio Community Edition gibi bir IDE kullanabilirsiniz. Varsayılan olarak, PTV 'lerde yalnızca Python 3,6, kök Conda ortamı yapılandırılır. Anaconda Python 2,7 ' i etkinleştirmek için aşağıdaki adımları uygulayın:
 
-```python
-# IRIS classification
-from sklearn import datasets
-from sklearn import svm
-clf = svm.SVC()
-iris = datasets.load_iris()
-X, y = iris.data, iris.target
-clf.fit(X, y)
-```
+1. **Araçlar**  >  **Python araçları**  >  **Python ortamları**' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
+1. Anaconda Python 2,7 için bir açıklama verin ve ortam ön eki yolunu **c:\anaconda\envs\python2** olarak ayarlayın.
+1. Ortamı kaydetmek için **Otomatik Algıla**  >  **Uygula** ' yı seçin.
 
-Azure Machine Learning için Python modellerinizi dağıtmak için kullanılan yöntem, modelin tahminini bir işleve sarmalar ve önceden yüklenmiş Azure Machine Learning Python kitaplığı tarafından belirtilen özniteliklerle düzenler. Öznitelikleri Azure Machine Learning çalışma alanı KIMLIĞINIZI, API anahtarını ve giriş ve dönüş parametrelerini gösterir.  
+Python ortamları oluşturma hakkında daha fazla bilgi için bkz. [PTV belgeleri](https://aka.ms/ptvsdocs) .
 
-```python
-from azureml import services
-@services.publish(workspaceid, auth_token)
-@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
-@services.returns(int)  # 0, or 1, or 2
-def predictIris(sep_l, sep_w, pet_l, pet_w):
-    inputArray = [sep_l, sep_w, pet_l, pet_w]
+Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya**  >  **Yeni**  >  **Proje**  >  **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır**' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](https://aka.ms/ptvsdocs)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
 
 
-return clf.predict(inputArray)
-```
-
-İstemci artık Web hizmetine çağrı yapabilir. Kullanışlı sarmalayıcılar REST API isteklerini oluşturur. Web hizmetini kullanmak için örnek kod aşağıda verilmiştir:
-
-```python
-# Consume through web service URL and keys
-from azureml import services
-@services.service(url, api_key)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(float)
-def IrisPredictor(sep_l, sep_w, pet_l, pet_w):
-pass
-
-IrisPredictor(3,2,3,4)
-```
-
-### <a name="build-and-operationalize-r-models"></a>R modellerini derleme ve operationleştir
-Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Adımlar şunlardır:
-
-1. Çalışma alanı KIMLIĞINIZI ve kimlik doğrulama belirtecinizi sağlamak için dosyada bir settings.jsoluşturun. 
-2. Modelin tahmin işlevi için bir sarmalayıcı yazın.
-3. ```publishWebService```İşlev sarmalayıcısında geçirilecek Azure Machine Learning kitaplığındaki çağrısı.  
-
-Azure Machine Learning bir modeli bir Web hizmeti olarak ayarlamak, derlemek, yayımlamak ve kullanmak için aşağıdaki yordamı ve kod parçacıklarını kullanın.
-
-#### <a name="set-up"></a>Kurulum
-
-Giriş dizininiz altında adlı bir dizin altında dosya settings.jsoluşturun ```.azureml``` . Azure Machine Learning çalışma alanınızdan parametreleri girin.
-
-Dosya yapısında settings.jsaşağıda verilmiştir:
-
-```json
-{"workspace":{
-"id"                  : "ENTER YOUR AZUREML WORKSPACE ID",
-"authorization_token" : "ENTER YOUR AZUREML AUTH TOKEN"
-}}
-```
-
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>R 'de model oluşturun ve Azure Machine Learning yayımlayın
-
-```r
-library(AzureML)
-ws <- workspace(config="~/.azureml/settings.json")
-
-if(!require("lme4")) install.packages("lme4")
-library(lme4)
-set.seed(1)
-train <- sleepstudy[sample(nrow(sleepstudy), 120),]
-m <- lm(Reaction ~ Days + Subject, data = train)
-
-# Define a prediction function to publish based on the model:
-sleepyPredict <- function(newdata){
-        predict(m, newdata=newdata)
-}
-
-ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
-```
-
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Azure Machine Learning dağıtılan modeli tüketme
-Modeli bir istemci uygulamasından kullanmak için, yayımlanan Web hizmetini ada göre aramak üzere Azure Machine Learning kitaplığını kullanın. `services`Uç noktayı öğrenmek için API çağrısını kullanın. Daha sonra `consume` işlevi çağırır ve tahmin edilecek veri çerçevesini geçirmeniz yeterlidir.
-
-Azure Machine Learning Web hizmeti olarak yayınlanan modeli kullanmak için aşağıdaki kodu kullanın:
-
-```r
-library(AzureML)
-library(lme4)
-ws <- workspace(config="~/.azureml/settings.json")
-
-s <-  services(ws, name = "sleepy lm")
-s <- tail(s, 1) # use the last published function, in case of duplicate function names
-
-ep <- endpoints(ws, s)
-
-# Try this out, and compare with raw data
-ans = consume(ep, sleepstudy)$ans
-```
-
-[Machine Learning studio 'de R paketleri](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning)hakkında daha fazla bilgi görüntüleyin.
 
 ## <a name="manage-azure-resources"></a>Azure kaynaklarını yönetme
 DSVM yalnızca, sanal makinede analiz çözümünüzü yerel olarak oluşturmanıza izin vermez. Ayrıca, Azure bulut platformunda hizmetlere erişmenize de olanak tanır. Azure, DSVM 'nizden yönetebileceğiniz ve erişebileceğiniz çeşitli işlem, depolama, veri analizi ve diğer hizmetler sağlar.
@@ -255,7 +148,7 @@ git clone https://github.com/Azure/DataScienceVM.git
 
 Visual Studio 'da aynı kopyalama işlemini gerçekleştirebilirsiniz. Aşağıdaki ekran görüntüsünde, Visual Studio 'da git ve GitHub araçlarına nasıl erişebileceğiniz gösterilmektedir:
 
-![GitHub bağlantısı görüntülenirken Visual Studio ekran görüntüsü](./media/vm-do-ten-things/VSGit.PNG)
+![GitHub bağlantısı görüntülenirken Visual Studio ekran görüntüsü](./media/vm-do-ten-things/VSGit.png)
 
 Github.com ' de bulunan kaynaklardan GitHub deponuzla çalışmak için git kullanma hakkında daha fazla bilgi edinebilirsiniz. Tek [sayfa](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) kullanışlı bir başvurudur.
 
@@ -263,7 +156,7 @@ Github.com ' de bulunan kaynaklardan GitHub deponuzla çalışmak için git kull
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir bulut depolama hizmetidir. Bu bölümde, blob depolamaya verileri nasıl taşıyacağınız ve bir Azure Blob 'da depolanan verilere erişim açıklanmaktadır.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun.
 
@@ -305,12 +198,6 @@ Ayrıca, Azure Depolama Gezgini kullanarak sanal makinenizde yerel dosyadaki ver
 
 * Bir kapsayıcıya veri yüklemek için hedef kapsayıcıyı seçin ve **karşıya yükle** düğmesini seçin. ![ Azure Depolama Gezgini 'de karşıya yükle düğmesinin ekran görüntüsü](./media/vm-do-ten-things/storage-accounts.png)
 * **Dosyalar** kutusunun sağ tarafındaki üç nokta (**...**) simgesini seçin, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve karşıya yükleme Işlemini başlatmak için **karşıya yükle** ' yi seçin. ![ Dosyaları karşıya yükle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
-
-#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Azure Blob 'dan veri okuma: Machine Learning okuyucu modülü
-
-Azure Machine Learning Studio, blob 'ınızdan verileri okumak için verileri Içeri aktarma modülünü kullanabilirsiniz.
-
-![Machine Learning Studio veri alma modülünün ekran görüntüsü](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure blobundan verileri okuma: Python ODBC
 
@@ -362,97 +249,13 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 Veriler veri çerçevesi olarak okundu:
 
-![İlk 10 veri satırı ekran görüntüsü](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![İlk 10 veri satırı ekran görüntüsü](./media/vm-do-ten-things/IPNB_data_readin.png)
 
-### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage, büyük veri analizi iş yükleri için hiper ölçekli bir depodur ve Hadoop Dağıtılmış Dosya Sistemi (bir) ile uyumludur. Hadoop, Spark ve Azure Data Lake Analytics ile birlikte kullanılır. Bu bölümde, Azure Data Lake Analytics kullanarak Azure Data Lake Storage verileri nasıl taşıyabileceğinizi ve analizi nasıl çalıştıracağınızı öğreneceksiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) ve veritabanları
+Azure SYNAPSE Analytics (eski adıyla SQL DW), kurumsal sınıf SQL Server deneyimine sahip bir hizmet olarak elastik bir veri ambarıdır.
 
-* Azure Data Lake Analytics örneğinizi [Azure Portal](https://portal.azure.com)oluşturun.
-
-   ![Azure portal Data Lake Analytics örneği oluşturma ekran görüntüsü](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
-
-* [Visual Studio eklentisi için Azure Data Lake ve Stream Analytics araçları](https://www.microsoft.com/download/details.aspx?id=49504) , sanal makinede Visual Studio Community Edition 'da zaten yüklüdür. Visual Studio 'Yu başlattıktan ve Azure aboneliğinizde oturum açtıktan sonra, Visual Studio 'nun sol bölmesinde Azure veri analizi hesabınızı ve depolamayı görmeniz gerekir.
-
-   ![Visual Studio 'da Data Lake Araçları eklentisinin ekran görüntüsü](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
-
-#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>Data Lake bir VM 'den veri taşıma: Azure Data Lake Gezgini
-
-[Data Lake Storage sanal makinenizde yerel dosyalardaki verileri karşıya yüklemek](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)Için Azure Data Lake Gezginini kullanabilirsiniz.
-
-Ayrıca, [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)kullanarak Azure Data Lake veri taşınmanızı oluşturmak için bir veri işlem hattı da oluşturabilirsiniz. [Bu makale](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) , veri işlem hatlarını oluşturma adımlarında size kılavuzluk eder.
-
-#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>Azure blobundan Data Lake verileri okuma: U-SQL
-
-Verileriniz Azure Blob depolama alanında yer alıyorsa, bir U-SQL sorgusunda Azure blobundan doğrudan veri okuyabilirsiniz. U-SQL sorgunuzu oluşturmadan önce, BLOB depolama hesabınızın Azure Data Lake örneğinize bağlı olduğundan emin olun. Azure portal gidin, Azure Data Lake Analytics panonuzu bulun, **veri kaynağı Ekle**' yi seçin, **Azure Storage**depolama türünü seçin ve Azure depolama hesabınızın adını ve anahtarını takın. Daha sonra depolama hesabında depolanan verilere başvurabilirsiniz.
-
-![Veri kaynağı Ekle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
-
-Visual Studio 'da blob depolamadaki verileri okuyabilir, verileri işleyebilir, mühendisler ve elde edilen verileri Azure Data Lake ya da Azure Blob depolama alanına gönderebilirsiniz. Blob depolamadaki verilere başvurduğunuzda, **wasb://** kullanın. Azure Data Lake verilere başvurduğunuzda, **swbhdfs://** kullanın.
-
-Visual Studio 'da aşağıdaki U-SQL sorgularını kullanabilirsiniz:
-
-```usql
-@a =
-    EXTRACT medallion string,
-            hack_license string,
-            vendor_id string,
-            rate_code string,
-            store_and_fwd_flag string,
-            pickup_datetime string,
-            dropoff_datetime string,
-            passenger_count int,
-            trip_time_in_secs double,
-            trip_distance double,
-            pickup_longitude string,
-            pickup_latitude string,
-            dropoff_longitude string,
-            dropoff_latitude string
-
-    FROM "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Input Data File Name>"
-    USING Extractors.Csv();
-
-@b =
-    SELECT vendor_id,
-    COUNT(medallion) AS cnt_medallion,
-    SUM(passenger_count) AS cnt_passenger,
-    AVG(trip_distance) AS avg_trip_dist,
-    MIN(trip_distance) AS min_trip_dist,
-    MAX(trip_distance) AS max_trip_dist,
-    AVG(trip_time_in_secs) AS avg_trip_time
-    FROM @a
-    GROUP BY vendor_id;
-
-OUTPUT @b   
-TO "swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
-USING Outputters.Csv();
-
-OUTPUT @b   
-TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
-USING Outputters.Csv();
-```
-
-Sorgunuz sunucuya gönderildikten sonra, bir diyagram işinizin durumunu gösterir.
-
-![İş durumu diyagramının ekran görüntüsü](./media/vm-do-ten-things/USQL_Job_Status.PNG)
-
-#### <a name="query-data-in-data-lake-u-sql"></a>Data Lake sorgu verileri: U-SQL
-
-Veri kümesi Azure Data Lake alındıktan sonra, verileri sorgulamak ve araştırmak için [U-SQL dilini](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) kullanabilirsiniz. U-SQL dili T-SQL ile benzerdir, ancak kullanıcıların özelleştirilmiş modüller ve Kullanıcı tanımlı işlevler yazabilmesi için C# ' deki bazı özellikleri birleştirir. Önceki adımda betikleri kullanabilirsiniz.
-
-Sorgu sunucuya gönderildikten sonra, tripdata_summary.CSV Azure Data Lake Gezgini 'nde görünür. Dosyaya sağ tıklayarak verilerin önizlemesini yapabilirsiniz.
-
-![Data Lake Explorer 'da CSV dosyasının ekran görüntüsü](./media/vm-do-ten-things/USQL_create_summary.png)
-
-Dosya bilgileri görüntülenir:
-
-![Dosya Özet bilgisinin ekran görüntüsü](./media/vm-do-ten-things/USQL_tripdata_summary.png)
-
-### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL veri ambarı ve veritabanları
-Azure SQL veri ambarı, kurumsal sınıf SQL Server deneyimine sahip bir hizmet olarak elastik bir veri ambarıdır.
-
-[Bu makaledeki](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)yönergeleri IZLEYEREK Azure SQL veri Ambarınızı sağlayabilirsiniz. SQL veri Ambarınızı sağlamadıktan sonra, SQL veri ambarı içindeki verileri kullanarak veri yükleme, araştırma ve Modelleme işlemleri yapmak için [Bu](../team-data-science-process/sqldw-walkthrough.md) Kılavuzu kullanabilirsiniz.
+[Bu makaledeki](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)yönergeleri Izleyerek Azure SYNAPSE Analytics sağlayabilirsiniz. SQL veri Ambarınızı sağlamadıktan sonra, SQL veri ambarı içindeki verileri kullanarak veri yükleme, araştırma ve Modelleme işlemleri yapmak için [Bu](../team-data-science-process/sqldw-walkthrough.md) Kılavuzu kullanabilirsiniz.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB, buluttaki bir NoSQL veritabanıdır. Bunu, JSON gibi belgelerle çalışmak ve belgeleri depolamak ve sorgulamak için kullanabilirsiniz.
@@ -502,13 +305,12 @@ Veri modelini kullanarak raporlar ve görselleştirmeler oluşturmaya başlayabi
 Uygulamanızın ihtiyaçlarını karşılamak için DSVM 'nin ölçeğini değiştirebilir ve azaltabilirsiniz. Sanal makineyi akşam veya hafta sonları üzerinde kullanmanız gerekmiyorsa, [Azure Portal](https://portal.azure.com)VM 'yi kapatabilirsiniz.
 
 > [!NOTE]
-> VM 'deki işletim sistemi için yalnızca kapalı düğmesini kullanırsanız işlem ücretlerine tabi olursunuz.  
+> VM 'deki işletim sistemi için yalnızca kapalı düğmesini kullanırsanız işlem ücretlerine tabi olursunuz. Bunun yerine, Azure portal veya Cloud Shell kullanarak DSVM 'nizi serbest bırakın.
 > 
 > 
 
 Büyük ölçekli analizler oluşturmanız ve daha fazla CPU, bellek veya disk kapasitesi yapmanız gerekebilir. Bu durumda, CPU çekirdekleri, ayrıntılı öğrenme için GPU tabanlı örnekler, bellek kapasitesi ve işlem ve budgetary ihtiyaçlarınızı karşılayan disk türleri (katı hal sürücüleri dahil) açısından bir sanal makine boyutu seçimi bulabilirsiniz. VM 'lerin tam listesi, saatlik işlem fiyatlandırmasıyla birlikte [Azure sanal makineler fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/) sayfasında kullanılabilir.
 
-Benzer şekilde, VM işleme kapasitesi için ihtiyacınız olan işlem ağır bir şekilde azalmayabilir. (Örneğin: bir Hadoop veya Spark kümesine büyük bir iş yükü taşıdınız.) Daha sonra [Azure Portal](https://portal.azure.com) kümenin ölçeğini değiştirebilir ve sanal makine örneğinizin ayarlarına gidebilirsiniz. 
 
 ## <a name="add-more-tools"></a>Daha fazla araç ekleyin
 DSVM 'de önceden yerleşik olarak bulunan araçlar birçok ortak veri analizi ihtiyaçlarını ele alabilir. Ortamlarınızı tek tek yükleyip yapılandırmanız gerekmiyorsa bu size zaman kazandırır. Yalnızca kullandığınız kaynaklar için ödeme yaptığınız için de paradan tasarruf etmenizi sağlar.
@@ -526,7 +328,7 @@ Framework tabanlı örneklere ek olarak, DSVM 'de doğrulanan kapsamlı bir izle
 
 - [Ses Için derin öğrenme](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Bu öğreticide, [kentsel sesler veri kümesinde](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)ses olayı algılaması için derin öğrenme modelinin nasıl eğeceği gösterilmektedir. Ayrıca, ses verileriyle çalışma hakkında genel bakış sağlar.
 
-- [Metin belgelerinin sınıflandırılması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: hiyerarşik dikkat ağı ve uzun kısa dönem belleğı (lstm) ağı. Bu sinir Networks, metin belgelerinin sınıflandırılmasında derin öğrenme için keras API 'sini kullanır. Keras, en popüler derin öğrenme çerçevelerinin üçüne (Microsoft Cognitive Toolkit, TensorFlow ve Ano) önde bir ön ucu.
+- [Metin belgelerinin sınıflandırılması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: hiyerarşik dikkat ağı ve uzun kısa dönem belleğı (lstm) ağı. Bu sinir Networks, metin belgelerinin sınıflandırılmasında derin öğrenme için keras API 'sini kullanır. 
 
 ## <a name="summary"></a>Özet
 Bu makalede, Microsoft Veri Bilimi Sanal Makinesi 'de yapabileceğiniz bazı şeyler açıklanmaktadır. DSVM 'yi etkin bir analiz ortamı yapmak için yapabileceğiniz çok daha fazla şey vardır.

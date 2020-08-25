@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757158"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763465"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -215,7 +215,7 @@ vgchange –a y  <volume-group-name>
 
 ##### <a name="listing-logical-volumes-within-volume-groups"></a>Birim grupları içindeki mantıksal birimleri listeleme
 
-Betiğiyle ilgili benzersiz, etkin olan sanal grupların listesini aldıktan sonra, bu birim gruplarında bulunan mantıksal birimler aşağıdaki komutu kullanılarak listelenebilir.
+Betiğiyle ilgili benzersiz, etkin olan sanal grupların listesini aldıktan sonra, bu birim gruplarında bulunan mantıksal birimler aşağıdaki komut kullanılarak listelenebilir.
 
 ```bash
 #!/bin/bash

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815989"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -30,7 +30,7 @@ Bu adım adım kılavuzda, Azure Active Directory (Azure AD) kuruluşunuzda Priv
 >
 > : heavy_check_mark: **Microsoft şunları öneriyor**
 >
-> Bunlar genel önerilerdir ve yalnızca belirli kurumsal gereksinimleriniz için geçerlidir.
+> Bunlar genel önerilerdir ve yalnızca belirli kurumsal gereksinimleriniz için uygulandıklarında uygulamanız gerekir.
 
 ## <a name="learn-about-privileged-identity-management"></a>Privileged Identity Management hakkında bilgi edinin
 
@@ -117,9 +117,9 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 | Ad ve e-posta | **BT Destek Yöneticisi/Yardım Masası**<br/>BT destek kuruluşundan, bu değişikliğin bir yardım masası perspektifinden desteklenebilirliği hakkında giriş sağlayabilen bir temsilcisidir. | R/ı |
 | Pilot kullanıcılar için ad ve e-posta | **Azure rolü kullanıcıları**<br/>Ayrıcalıklı kimlik yönetiminin uygulandığı Kullanıcı grubu. Privileged Identity Management uygulandıktan sonra rollerinin nasıl etkinleşeceğimizi bilmeleri gerekir. | I |
 
-### <a name="enable-privileged-identity-management"></a>Privileged Identity Management etkinleştir
+### <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
 
-Planlama işleminin bir parçası olarak, [Privileged Identity Management](pim-getting-started.md) makalemizi izleyerek Privileged Identity Management ilk olarak kabul etmeniz ve etkinleştirmeniz gerekir. Privileged Identity Management etkinleştirilmesi, dağıtımınıza yardımcı olmak üzere özel olarak tasarlanan bazı özelliklere erişmenizi sağlar.
+Planlama işleminin bir parçası olarak, [Privileged Identity Management](pim-getting-started.md) makalemizi izleyerek Privileged Identity Management hazırlamanız gerekir. Privileged Identity Management, dağıtımınıza yardımcı olmak üzere özel olarak tasarlanan bazı özelliklere erişmenizi sağlar.
 
 Amacınız Azure kaynakları için Privileged Identity Management dağıtmaktır, [Privileged Identity Management makalesinde yönetmek için bulma Azure kaynaklarını](pim-resource-roles-discover-resources.md) izlemeniz gerekir. Yalnızca aboneliklerin ve yönetim gruplarının sahipleri bu kaynakları bulabilir ve Privileged Identity Management üzerine ekleyebilir. Eklendi olduktan sonra, PıM işlevselliği yönetim grubu, abonelik, kaynak grubu ve kaynak dahil tüm düzeylerde sahipler için kullanılabilir. Azure kaynaklarınız için Privileged Identity Management dağıtmaya çalışan bir genel yöneticisiyseniz, [tüm Azure aboneliklerini yönetmek için erişimi](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , dizinde bulunan tüm Azure kaynaklarına erişim sağlamak üzere yükseltebilir. Ancak, Privileged Identity Management ile kaynaklarını yönetmeden önce, abonelik sahiplerinizin her birinden onay almanızı tavsiye ederiz.
 

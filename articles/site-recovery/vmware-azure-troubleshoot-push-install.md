@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185222"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816210"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility hizmeti anında yükleme sorunlarını giderme
 
@@ -129,6 +129,28 @@ Hatayı gidermek için:
 ## <a name="connectivity-failure-errorid-95523"></a>Bağlantı hatası (errorID: 95523)
 
 Bu hata, kaynak makinenin bulunduğu ağ bulunamadığında, silinmiş veya artık kullanılamadığı durumlarda oluşur. Hatayı çözmek için tek yol, ağın mevcut olduğundan emin olmak içindir.
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>Kaynak makinedeki ağ paylaşılan klasörlerine erişimi denetle (errorID: 95105, 95523)
+
+Sanal makinenizde ağ paylaşılan klasörlerinin, belirtilen kimlik bilgileri kullanılarak Işlem sunucusu 'ndan (PS) uzaktan erişilebilir olup olmadığını doğrulayın. Erişimi onaylamak için: 
+
+1. Işlem sunucusu makinenizde oturum açın.
+2. Dosya Gezgini'ni açın. Adres çubuğunda yazın `\\<SOURCE-MACHINE-IP>\C$` ve ENTER ' a tıklayın.
+
+    ![Klasörü PS 'de aç](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. Dosya Gezgini, kimlik bilgilerini ister. Kullanıcı adını ve parolayı girip Tamam ' a tıklayın. <br><br/>
+
+    ![Kimlik bilgilerini belirtin](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > Kaynak makine etki alanına katılmış ise, Kullanıcı adıyla birlikte etki alanı adını belirtin `<domainName>\<username>` . Kaynak makine iş grubsunsam yalnızca Kullanıcı adını sağlayın.
+
+4. Bağlantı başarılı olursa, kaynak makinenin klasörleri Işlem sunucusundan uzaktan görünür olur.
+
+    ![Kaynak makineden görünür klasörler](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+Bağlantı başarısız olursa, lütfen tüm önkoşulların karşılanıp karşılanmadığını kontrol edin.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Dosya ve yazıcı paylaşım hizmetleri denetimi (errorID: 95105 & 95106)
 
@@ -260,7 +282,7 @@ Mobility Aracısı kaynak makineye kopyalandığında, en az 100 MB boş alan ge
 
 ## <a name="low-system-resources"></a>Düşük sistem kaynakları
 
-Bu sorun, sistem kullanılabilir belleğin düşük olması durumunda oluşur ve Mobility hizmeti yüklemesi için bellek ayıramayabilir. Yüklemenin devam edebilmesi ve başarıyla tamamlanabilmesi için yeterli bellek boşaldığınızdan emin olun.
+Bu sorun için görülen olası hata kimlikleri 95572 ve 95573 ' dir. Bu sorun, sistem kullanılabilir belleğin düşük olması durumunda oluşur ve Mobility hizmeti yüklemesi için bellek ayıramayabilir. Yüklemenin devam edebilmesi ve başarıyla tamamlanabilmesi için yeterli bellek boşaldığınızdan emin olun.
 
 ## <a name="vss-installation-failures"></a>VSS yükleme sorunları
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336931"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815819"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -113,7 +113,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
     h. **Dağıtım modu**için **artımlı** ' ı seçin.
 
     > [!WARNING]
-    > **Dağıtım modu**için **Tamam** ' ı seçerseniz, hedef kaynak grubundaki tüm kaynaklar da dahil olmak üzere, Kaynak Yöneticisi şablonunda tanımlanmamış olan kaynaklar silinebilir.
+    > Tüm dağıtım modunda, kaynak grubunda bulunan ancak yeni Kaynak Yöneticisi şablonunda belirtilmeyen kaynaklar **silinir**. Daha fazla bilgi için lütfen [Azure Resource Manager dağıtım modlarına](../azure-resource-manager/templates/deployment-modes.md) başvurun
 
     ![Data Factory üretim dağıtımı](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -165,7 +165,7 @@ Gizli dizileri ele almanın iki yolu vardır:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines aracısına izin verme
 
-Doğru izinler ayarlanmamışsa Azure Key Vault görev erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutunu içeren. ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Ya da asıl KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. `Get`ve `List` gereken en düşük izinlerdir.
+Doğru izinler ayarlanmamışsa Azure Key Vault görev erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutunu içeren. ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Ya da asıl KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. `Get` ve `List` gereken en düşük izinlerdir.
 
 ### <a name="updating-active-triggers"></a>Etkin tetikleyiciler güncelleştiriliyor
 
@@ -305,7 +305,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>İşlem hatları
+#### <a name="pipelines"></a>Pipelines
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
@@ -630,7 +630,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 
 -   Şu anda Bitbucket üzerinde projeler barındıramıyoruz.
 
-## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a>Örnek ön ve dağıtım sonrası betiği
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Örnek ön ve dağıtım sonrası betiği
 
 Aşağıdaki örnek betik, dağıtımdan önce Tetikleyicileri durdurmak ve daha sonra yeniden başlatmak için kullanılabilir. Betik Ayrıca kaldırılan kaynakları silmek için kod içerir. Betiği bir Azure DevOps git deposuna kaydedin ve sürüm 4. * kullanarak bir Azure PowerShell görevi aracılığıyla buna başvurun.
 

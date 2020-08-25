@@ -4,12 +4,12 @@ description: Özel uç noktaları kullanarak bir Azure Batch hesabına özel ola
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004249"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814119"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch hesapları ile özel uç noktaları kullanma
 
@@ -19,7 +19,8 @@ Varsayılan olarak, [Azure Batch hesapları](accounts.md) ortak bir uç noktaya 
 
 Özel bağlantı, kullanıcıların sanal ağ içinden veya eşlenen herhangi bir sanal ağdan bir Azure Batch hesabına erişmesini sağlar. Özel bağlantıyla eşlenen kaynaklara, VPN veya [Azure ExpressRoute](../expressroute/expressroute-introduction.md)aracılığıyla özel eşleme üzerinden şirket içinde de erişilebilir. [Otomatik veya el ile onay yöntemini](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)kullanarak, özel bağlantıyla yapılandırılmış bir Azure Batch hesabına bağlanabilirsiniz.
 
-Azure Batch ' de özel bağlantı desteği şu anda şu Azure bölgelerinde sunulmaktadır: Orta Batı ABD, Batı ABD 2, Doğu ABD, Orta Güney ABD, US Gov Virginia, US Gov Arizona, Doğu Asya, Fransa ve UK Güney.
+> [!IMPORTANT]
+> Azure Batch ' de özel bağlantı desteği şu anda şu Azure bölgelerinde sunulmaktadır: Orta ABD, Orta Kuzey ABD, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2, Doğu Asya, Fransa Orta, UK Güney, Kuzey Avrupa, Batı Avrupa, Japonya Doğu, Japonya Batı, Avustralya Doğu ve tüm US Gov ve US DoD alanları.
 
 Bu makalede özel bir Batch hesabı oluşturma ve özel bir uç nokta kullanarak erişim adımları açıklanır.
 

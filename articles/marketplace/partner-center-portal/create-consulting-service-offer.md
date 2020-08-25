@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606153"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814273"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -101,7 +101,7 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - Analiz
     - Uygulama modernleştirme
     - Arşiv
-    - Yapay Zeka ve Makine Öğrenmesi
+    - Yapay Zeka + Makine Öğrenmesi
     - Backup
     - Büyük Veri
     - Veri platformu
@@ -160,7 +160,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 8. Ekran görüntüleri/videolar
 9. Belgeler
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -209,15 +209,14 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki piksel boyutlarının her birinde teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** bir logo oluşturmak için bunu kullanacaktır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
 
-- **Küçük (48 x 48)**
-- **Büyük (216 x 216)**
+- **Büyük** (216 x 216-350 x 350 px, gereklidir)
+- **Küçük** (48 x 48 piksel, isteğe bağlı)
 
-Tüm logolar gereklidir ve Market listesindeki farklı yerlerde kullanılır.
+Bu amblemler, listede farklı yerlerde kullanılır.
 
--   Küçük logo (48 x 48 piksel) Azure Marketi arama sonuçlarında ve Microsoft AppSource ana sayfa ve arama sonuçları sayfasında görünür. 
--   Büyük logo (216 x 216 ve 350 x 350 piksel arasında), Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 

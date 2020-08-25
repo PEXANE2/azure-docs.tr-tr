@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069798"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816754"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Spot VM 'Ler ve ölçek kümeleri için hata iletileri
 
@@ -31,11 +31,11 @@ Spot VM 'Leri ve ölçek kümelerini kullanırken alacağınız bazı olası hat
 | Maxpricechangenotallodilimforallocatedvms | ' ' Sanal makinesi {0} Şu anda ayrıldığınızda en yüksek fiyat değişikliğine izin verilmez. Lütfen serbest bırakın ve yeniden deneyin. | En fazla fiyata değişiklik yapabilmeniz için VM 'yi serbest bırakın. |
 | MaxPriceChangeNotAllowed | En fazla fiyat değişikliğine izin verilmez. | Bu VM için en yüksek fiyatı değiştiremezsiniz. |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Azure spot, bu API sürümü için desteklenmiyor. | API sürümünün 2019-03-01 olması gerekir. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot, bu VM boyutu için desteklenmiyor {0} . | Başka bir VM boyutu seçin. Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  En yüksek fiyat yalnızca Azure spot sanal makineler için desteklenir. | Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
+| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot, bu VM boyutu için desteklenmiyor {0} . | Başka bir VM boyutu seçin. Daha fazla bilgi için bkz. [sanal makineleri spot](./spot-vms.md). |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  En yüksek fiyat yalnızca Azure spot sanal makineler için desteklenir. | Daha fazla bilgi için bkz. [sanal makineleri spot](./spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makinesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine kimlikleri için hata ayrıntılarını kontrol edin. | Spot VM 'Leri taşıyamazsınız. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makine ölçek kümesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine ölçek kümesi kimlikleri için hata ayrıntılarını kontrol edin. | Nokta ölçeği kümesi örneklerini taşıyamazsınız. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Azure spot sanal makinesi, VM düzenleme modu ile sanal makine ölçek kümesinde desteklenmez. | Spot örnekleri kullanmak için Orchestration modunu sanal makine ölçek kümesine ayarlayın. |
 
 
-**Sonraki adımlar** Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md).
+**Sonraki adımlar** Daha fazla bilgi için bkz. [sanal makineleri spot](./spot-vms.md).

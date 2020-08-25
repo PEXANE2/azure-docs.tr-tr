@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742921"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816006"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
 
@@ -38,9 +38,7 @@ Daha fazla bilgi için bkz. [Privileged Identity Management kullanılacak lisans
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD rolleri için PıM 'yi hazırlama
 
-Dizininiz için Privileged Identity Management etkinleştirildikten sonra, Azure AD rollerini yönetmek için Privileged Identity Management hazırlayabilirsiniz.
-
-Azure AD rolleri için aşağıdaki sırayla hazırlanmanız için önerdiğimiz görevler şunlardır:
+Azure AD rollerini yönetmek için Privileged Identity Management hazırlamanızı önerdiğimiz görevler şunlardır:
 
 1. [Azure AD rol ayarlarını yapılandırın](pim-how-to-change-default-settings.md).
 1. [Uygun atamalar sunun](pim-how-to-add-role-to-user.md).
@@ -48,9 +46,7 @@ Azure AD rolleri için aşağıdaki sırayla hazırlanmanız için önerdiğimiz
 
 ## <a name="prepare-pim-for-azure-roles"></a>Azure rolleri için PıM 'yi hazırlama
 
-Dizininiz için Privileged Identity Management etkinleştirdikten sonra, bir abonelikte Azure kaynak erişimi için Azure rollerini yönetmeye Privileged Identity Management hazırlanabilirsiniz.
-
-Azure rollerine hazırlanmanız için önerdiğimiz görevler sırayla aşağıda verilmiştir:
+Bir abonelik için Azure rollerini yönetmek üzere Privileged Identity Management hazırlamanız için önerdiğimiz görevler şunlardır:
 
 1. [Azure kaynaklarını bulma](pim-resource-roles-discover-resources.md)
 1. [Azure rol ayarlarını yapılandırın](pim-resource-roles-configure-role-settings.md).
@@ -82,15 +78,15 @@ Privileged Identity Management açmayı kolaylaştırmak için Azure portal pano
 
     ![Tüm hizmetlerde Azure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Privileged Identity Management hızlı başlangıcı ' nı seçin.
+1. **Hızlı başlangıç**Privileged Identity Management seçin.
 
-1. Privileged Identity Management hızlı başlangıç dikey penceresini panoya sabitlemek için **panoya sabitle dikey penceresini** işaretleyin.
+1. Privileged Identity Management **hızlı başlangıç** sayfasını panoya sabitlemek için **Dikey pencereyi panoya sabitle ' yi** seçin.
 
-    ![Privileged Identity Management dikey pencereyi panoya sabitlemek için raptiye simgesi](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Privileged Identity Management sayfasını panoya sabitlemek için raptiye simgesi](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Azure panosu 'nda şöyle bir kutucuk göreceksiniz:
 
-    ![Panoda Privileged Identity Management hızlı başlangıç kutucuğu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Panoda hızlı başlangıç kutucuğunu Privileged Identity Management](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

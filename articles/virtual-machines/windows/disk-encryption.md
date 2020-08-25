@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448925"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815598"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell için Azure Disk Depolama sunucu tarafı şifrelemesi
 
 Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure yönetilen disklerinde (işletim sistemi ve veri diskleri) depolanan verilerinizi buluta kalıcı hale getirerek varsayılan olarak otomatik olarak şifreler. 
 
@@ -84,8 +84,8 @@ Herhangi bir şifreleme algoritması, uygulama veya anahtarla ilişkili riskten 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PowerShell](disks-enable-host-based-encryption-powershell.md) veya [Azure Portal](disks-enable-host-based-encryption-portal.md)ile konaktaki şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirin.
-- [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) veya [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)ile yönetilen diskler için bekleyen çift şifrelemeyi etkinleştirin.
-- [PowerShell](disks-enable-customer-managed-keys-powershell.md) veya [Azure Portal](disks-enable-customer-managed-keys-portal.md)yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirin.
+- [PowerShell](disks-enable-host-based-encryption-powershell.md) veya [Azure Portal](../disks-enable-host-based-encryption-portal.md)ile konaktaki şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirin.
+- [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) veya [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md)ile yönetilen diskler için bekleyen çift şifrelemeyi etkinleştirin.
+- [PowerShell](disks-enable-customer-managed-keys-powershell.md) veya [Azure Portal](../disks-enable-customer-managed-keys-portal.md)yönetilen diskler için müşteri tarafından yönetilen anahtarları etkinleştirin.
 - [Müşteri tarafından yönetilen anahtarlarla şifrelenmiş diskler oluşturmak için Azure Resource Manager şablonlarını keşfet](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Azure Key Vault nedir?](../../key-vault/general/overview.md)

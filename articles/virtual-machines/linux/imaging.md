@@ -1,6 +1,6 @@
 ---
 title: Azure için Linux görüntüleri oluşturmaya genel bakış
-description: Linux VM görüntülerinizi getirme veya Azure 'da kullanmak üzere yeni görüntüler oluşturma konusuna genel bakış.
+description: Linux VM görüntülerinizi getirme veya Azure 'da kullanmak üzere yeni görüntüler oluşturma.
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502189"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815309"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -25,7 +25,7 @@ Bu makale, görüntü karar noktaları ve gereksinimleri hakkında konuşacak, t
 ## <a name="difference-between-managed-disks-and-images"></a>Yönetilen diskler ve görüntüler arasındaki fark
 
 
-Azure, bir VHD 'yi platforma getirmenize, [yönetilen disk](../windows/faq-for-disks.md#managed-disks)olarak kullanmanıza veya bir görüntü kaynağı olarak kullanmanıza olanak tanır. 
+Azure, bir VHD 'yi platforma getirmenize, [yönetilen disk](../faq-for-disks.md#managed-disks)olarak kullanmanıza veya bir görüntü kaynağı olarak kullanmanıza olanak tanır. 
 
 Azure yönetilen diskler tek VHD 'lardır. Mevcut bir VHD 'yi alabilir ve bundan yönetilen bir disk oluşturabilir ya da sıfırdan boş bir yönetilen disk oluşturabilirsiniz. Diski VM 'ye ekleyerek yönetilen disklerden VM 'Ler oluşturabilirsiniz, ancak yalnızca bir VM 'ye sahip bir VHD kullanabilirsiniz. Herhangi bir işletim sistemi özelliğini değiştiremezsiniz; Azure yalnızca VM 'yi açmayı ve bu diski kullanmaya başlamasını dener. 
 
@@ -58,7 +58,7 @@ Bunlar, görüntü oluşturmaya yönelik [önkoşullardır](./create-upload-gene
 ### <a name="specialized-images"></a>Özel görüntüler
 Bunlar tamamen yapılandırılmış ve VM ve özel parametre gerektirmeyen görüntülerdir, platform yalnızca VM 'yi açık duruma getirin, VM 'nin aynı VNET 'te DNS çakışmalarını önlemek için konak içinde benzersizlik tanıtıcısı gerekir. 
 
-Bu görüntüler için sağlama aracıları gerekli değildir, ancak uzantı işleme özelliklerine sahip olmak isteyebilirsiniz. Linux aracısını yükleyebilir, ancak sağlama seçeneğini devre dışı bırakabilirsiniz. Bir sağlama aracısına gerek duymasa bile, görüntü Azure görüntüleri için [önkoşulları](./create-upload-generic.md) karşılamalıdır.
+Bu görüntüler için sağlama aracıları gerekli değildir, ancak uzantı işleme özelliklerine sahip olmak isteyebilirsiniz. Linux aracısını yükleyebilir, ancak sağlama seçeneğini devre dışı bırakabilirsiniz. Bir sağlama aracısına gerek duymasa bile, görüntü Azure görüntüleri için [önkoşulları](./create-upload-generic.md)  karşılamalıdır.
 
 
 ## <a name="image-storage-options"></a>Görüntü depolama seçenekleri

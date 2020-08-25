@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963674"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816039"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -117,7 +117,14 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
 > [!IMPORTANT]
 > Erişim uç noktasını yalnızca ıSE oluşturma sırasında seçebilir ve bu seçeneği daha sonra değiştiremezsiniz.
 
-* **İç**: özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve bunlara erişebilirsiniz. Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya ıSE 'nin sanal ağına bağlı bir sanal ağ içinde (örneğin, eşleme veya bir sanal özel ağ) bulunabilir.
+* **İç**: özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve bunlara erişebilirsiniz.
+
+  > [!IMPORTANT]
+  > Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Aksi takdirde, mantıksal uygulamanızın çalıştırma geçmişini görüntülemeye çalıştığınızda, "beklenmeyen hata" ifadesini içeren bir hata alırsınız. Alınamadı ".
+  >
+  > ![Azure depolama eylem hatası, güvenlik duvarı üzerinden trafik gönderememesine neden oldu](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya eşleme veya sanal özel ağ aracılığıyla ıSE 'nin sanal ağına bağlı bir sanal ağ içinde bulunabilir. 
 
 * **Dış**: genel uç noktaları, *sanal ağınızın dışından*Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 

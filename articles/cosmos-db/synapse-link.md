@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034187"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814399"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -27,7 +27,7 @@ Aşağıdaki görüntüde Azure Cosmos DB ve Azure SYNAPSE Analytics ile Azure S
 
 :::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Azure Cosmos DB ile Azure SYNAPSE Analytics tümleştirmesi için mimari diyagramı" border="false":::
 
-## <a name="benefits"></a><a id="synapse-link-benefits"></a>Larından
+## <a name="benefits"></a><a id="synapse-link-benefits"></a> Larından
 
 Geleneksel olarak çalışan iş yüklerinin performansına etkisini en aza indirerek büyük işletimsel veri kümelerini analiz etmek için, Azure Cosmos DB 'deki işletimsel veriler ayıklama-Dönüştür-yükle (ETL) işlem hatları tarafından ayıklanıp işlenir. ETL işlem hatları, çok operasyonel karmaşıklığa yol açmış birçok veri hareketi katmanı ve işlem iş yüklerinizde performans etkisi gerektirir. Ayrıca, işletimsel verileri kaynak zamanından çözümleme gecikmesini de artırır.
 
@@ -105,7 +105,7 @@ Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkı
 
 SYNAPSE bağlantısı aşağıdaki durumlarda önerilir:
 
-* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örneğin:
+* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örnek:
 
   * Azure Cosmos DB işletimsel verilerinize doğrudan ayrı bağlayıcılar kullanarak analiz veya bı çalıştırıyorsanız veya
 

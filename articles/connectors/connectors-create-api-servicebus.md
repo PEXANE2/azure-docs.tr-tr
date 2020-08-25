@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461643"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815765"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -77,6 +77,9 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
    Tüm Service Bus Tetikleyicileri *uzun yoklama* tetikleyicilerinde bulunur. Bu açıklama, tetikleyicinin tetiklendiği anlamına gelir, tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
 
    Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya daha fazla ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
+
+    > [!NOTE]
+    > Otomatik tamamlama tetikleyicisi bir iletiyi otomatik olarak tamamlar, ancak tamamlama yalnızca sonraki tetikleyici çalıştırmasında gerçekleştirilir. Bu davranış, mantıksal uygulamanızın tasarımını etkileyebilir. Örneğin, otomatik tamamlama tetikleyicisini iletileri her dakikada denetlemek üzere ayarlarsanız, ancak kilit süresi Service Bus tarafında 30 saniyeye ayarlanırsa, bu ileti tamamlandığında oluşan "kilit süresi dolduğunda" başarısızlığından kaynaklanır. Kilit süresini yoklama aralığından daha uzun bir değere ayarlamanız gerekir.
 
 1. Tetikleyiciniz ilk kez Service Bus ad alanına bağlanıyorsa, mantıksal uygulama Tasarımcısı sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 

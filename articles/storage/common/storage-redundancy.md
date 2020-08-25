@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034473"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814527"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -24,7 +24,7 @@ Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok
 Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verirken, düşük maliyetler ve daha yüksek kullanılabilirlik ve dayanıklılık arasındaki avantajları göz önünde bulundurun. Hangi artıklık seçeneğini belirlemenizi gerektiğine yardımcı olan faktörler şunlardır:  
 
 - Verileriniz birincil bölgede nasıl çoğaltılır
-- Verilerinizin birincil bölgeye coğrafi olarak uzaktaki ikinci bir konuma çoğaltılıp çoğaltılmayacağı, bölgesel olağanüstü durumlara karşı koruma
+- Verilerinizin birincil bölgeye coğrafi olarak uzaktaki ikinci bir bölgeye çoğaltılıp çoğaltılmayacağı, bölgesel olağanüstü durumlara karşı koruma
 - Birincil bölge herhangi bir nedenle kullanılamaz duruma gelirse, uygulamanızın ikincil bölgedeki çoğaltılan verilere okuma erişimi gerektirip gerektirmediğini belirtir
 
 ## <a name="redundancy-in-the-primary-region"></a>Birincil bölgedeki artıklık
@@ -64,8 +64,8 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
 | Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu | Yalnızca Premium blok Blobları |
-| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu | Yalnızca Premium dosya paylaşımları |
+| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
+| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -83,9 +83,9 @@ Azure depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek 
 - **Coğrafi olarak yedekli depolama (GRS)** , LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 - **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 
-GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil konum içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
+GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil bölge içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
 
-GRS veya GZRS ile ikincil konumdaki veriler, ikincil bölgede bir yük devretme işlemi olmadıkça okuma veya yazma erişimi için kullanılamaz. İkincil konuma okuma erişimi için, depolama hesabınızı Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [İkincil bölgedeki verilere okuma erişimi](#read-access-to-data-in-the-secondary-region).
+GRS veya GZRS ile ikincil bölgedeki veriler, ikincil bölgede bir yük devretme işlemi olmadıkça okuma veya yazma erişimi için kullanılamaz. İkincil bölgeye okuma erişimi için, depolama hesabınızı Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [İkincil bölgedeki verilere okuma erişimi](#read-access-to-data-in-the-secondary-region).
 
 Birincil bölge kullanılamaz duruma gelirse, ikincil bölgeye yük devretmek için seçim yapabilirsiniz. Yük devretme tamamlandıktan sonra, ikincil bölge birincil bölge olur ve verileri okuyabilir ve yazabilirsiniz. Olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek ve ikincil bölgeye yük devretmeyi öğrenmek için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
 
@@ -196,4 +196,4 @@ Azure depolama, Döngüsel artıklık denetimleri (CRCs) kullanılarak depolanan
 - [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
 - [Depolama hesabı için artıklık seçeneğini değiştirme](redundancy-migration.md)
 - [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)
-- [Olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md)
+- [Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme](storage-disaster-recovery-guidance.md)

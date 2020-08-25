@@ -8,31 +8,29 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/17/2020
+ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078117"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816227"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure 'da Ubuntu Veri Bilimi Sanal Makinesi veri bilimi
 
-Bu kılavuzda, Linux Veri Bilimi Sanal Makinesi (DSVM) kullanarak çeşitli yaygın veri bilimi görevlerinin nasıl tamamlanacağı gösterilmektedir. Linux DSVM, Azure 'da kullanılabilen ve veri analizi ve makine öğrenimi için yaygın olarak kullanılan bir araç koleksiyonuyla önceden yüklenmiş bir sanal makine görüntüsüdür. Temel yazılım bileşenleri, [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md)bölümünde yer verilir. DSVM görüntüsü, her bir aracının tek tek yüklenip yapılandırılması gerekmeden veri bilimi 'ni dakikalar içinde kullanmaya başlamanızı kolaylaştırır. Gerekirse DSVM 'yi kolayca ölçeklendirebilirsiniz ve kullanımda olmadığında durdurabilirsiniz. DSVM kaynağı esnek ve uygun maliyetli bir yöntemdir.
-
-Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedir?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) bölümünde açıklanan adımları izleyin. Ekip veri bilimi süreci, veri bilimcilerinin ekiplerin akıllı uygulamalar oluşturma yaşam döngüsüyle etkili bir şekilde işbirliği yapmasına yardımcı olan veri bilimi için sistematik bir yaklaşımdır. Veri bilimi işlemi, veri bilimi için bir kişi tarafından izlenen yinelemeli bir çerçeve de sağlar.
+Bu izlenecek yol, Ubuntu Veri Bilimi Sanal Makinesi (DSVM) kullanarak birkaç ortak veri bilimi görevinin nasıl tamamlandığını gösterir. Ubuntu DSVM, Azure 'da bulunan ve veri analizi ve makine öğrenimi için yaygın olarak kullanılan bir araç koleksiyonuyla önceden yüklenmiş bir sanal makine görüntüsüdür. Temel yazılım bileşenleri [Ubuntu veri bilimi sanal makinesi sağlama](./dsvm-ubuntu-intro.md)bölümünde yer verilir. DSVM görüntüsü, her bir aracının tek tek yüklenip yapılandırılması gerekmeden veri bilimi 'ni dakikalar içinde kullanmaya başlamanızı kolaylaştırır. Gerekirse DSVM 'yi kolayca ölçeklendirebilirsiniz ve kullanımda olmadığında durdurabilirsiniz. DSVM kaynağı esnek ve uygun maliyetli bir yöntemdir.
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
-* [**Linux veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](dsvm-ubuntu-intro.md#x2go).
+
+* [**Ubuntu veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Ubuntu veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
+* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
 * Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` bayrağını değiştirin `about:config` . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak ayarlamayı düşünün `False` . [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
-* **Azure Machine Learning hesabı**. Henüz bir hesabınız yoksa, [Azure Machine Learning giriş sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.
 
 ## <a name="download-the-spambase-dataset"></a>Spambase veri kümesini indirin
 
@@ -228,7 +226,7 @@ Kalan bölümler, Linux DSVM 'de yüklü olan araçların bazılarını nasıl k
 * Jupi Terhub
 * Rattle
 * PostgreSQL ve SQUIRREL SQL
-* SQL Server veri ambarı
+* Azure Synapse Analytics (eski adı SQL DW)
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -286,31 +284,6 @@ clf = svm.SVC()
 clf.fit(X, y)
 ```
 
-Modeli Azure Machine Learning için yayımlamak için:
-
-```Python
-# Publish the model.
-workspace_id = "<workspace-id>"
-workspace_token = "<workspace-token>"
-from azureml import services
-@services.publish(workspace_id, workspace_token)
-@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-@services.returns(int) # 0 or 1
-def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-    return clf.predict(inputArray)
-
-# Get some info about the resulting model.
-predictSpam.service.url
-predictSpam.service.api_key
-
-# Call the model
-predictSpam.service(1, 1, 1)
-```
-
-> [!NOTE]
-> Bu seçenek yalnızca Python 2,7 için kullanılabilir. Henüz Python 3,5 ' de desteklenmemektedir. Çalıştırmak için **/Anaconda/bin/python2.7**kullanın.
-
 ### <a name="jupyterhub"></a>Jupi Terhub
 
 DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://adresinden yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın \<DSVM DNS name or IP address\> : 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
@@ -334,7 +307,6 @@ DSVM 'de birden çok örnek Not defteri zaten yüklü:
 
 * Örnek Python Not defterleri:
   * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
-  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
 * Örnek R Not Defteri:
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
@@ -508,7 +480,7 @@ Yerel sunucuyla bağlantı kurmak için:
 1. Kullanıcı adınızı ve parolanızı girin.
 1. **Tamam**’ı seçin.
 1. **Bağlantı** penceresini açmak Için, **istenmeyen posta veritabanı** diğer adına çift tıklayın.
-1. **Bağlan**'ı seçin.
+1. **Bağlan**’ı seçin.
 
 Bazı sorguları çalıştırmak için:
 
@@ -532,9 +504,9 @@ Yüksek *3B* görünüşe sahip e-postaların çoğu istenmeyen postalardır. Bu
 
 Makine öğrenimini bir PostgreSQL veritabanında depolanan verileri kullanarak yapmak istiyorsanız, [Madlib](https://madlib.incubator.apache.org/)kullanmayı düşünün.
 
-### <a name="sql-data-warehouse"></a>SQL Veri Ambarı
+### <a name="azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (eski adı SQL DW)
 
-Azure SQL veri ambarı, hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Daha fazla bilgi için bkz. [Azure SQL veri ambarı nedir?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SYNAPSE Analytics, hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Veri ambarına bağlanmak ve tabloyu oluşturmak için bir komut isteminden aşağıdaki komutu çalıştırın:
 
@@ -567,8 +539,4 @@ GO
 
 Ayrıca, SQUIRREL SQL kullanarak da sorgulama yapabilirsiniz. SQL Server JDBC sürücüsünü kullanarak PostgreSQL 'e benzer adımları izleyin. JDBC sürücüsü/usr/share/Java/jdbcdrivers/sqljdbc42.jar klasöründedir.
 
-## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'daki veri bilimi sürecini oluşturan görevler boyunca size kılavuzluk eden makalelere genel bir bakış için bkz. [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
-
-Belirli senaryolar için ekip veri bilimi Işlemindeki adımları gösteren uçtan uca izlenecek yolların açıklaması için, bkz. [Team Data Science Process izlenecek yolları](../team-data-science-process/walkthroughs.md). İzlenecek yollar Ayrıca akıllı bir uygulama oluşturmak için bulut ve şirket içi araçların ve hizmetlerin bir iş akışında veya işlem hattına nasıl birleştirileceğini gösterir.

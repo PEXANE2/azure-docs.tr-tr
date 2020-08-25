@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 13c54b548a507043fda7ff230cf7641c26f471d1
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b7c41d96e9817c548dbf52d4e56a78df4a88d696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724086"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815768"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -221,7 +221,7 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > [!NOTE]
 > Tarih biçimlendirme için şu kurallara bakın:
 > 
-> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
+> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örnek:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -265,7 +265,7 @@ Bu özellik şu anda v 2.1 sürümünde kullanılabilir. Önizleme.
 
 Model oluşturma ile, tek bir model KIMLIĞIYLE en fazla 100 model oluşturabilirsiniz. Bu oluşturulmuş model KIMLIĞIYLE çözümle çağırdığınızda, form tanıyıcı önce gönderdiğiniz formu sınıflandırır, en iyi eşleşen modeliyle eşleştirir ve ardından bu modelin sonuçlarını döndürür. Bu, gelen formlar çeşitli şablonlardan birine ait olduğunda faydalıdır.
 
-Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (iki ok) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılan pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
+Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılan pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model oluşturma UX görünümü.":::
 
@@ -296,7 +296,7 @@ Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıc
 
 ### <a name="resume-a-project"></a>Projeyi sürdürür
 
-Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıklayın. Sonra blob Storage bağlantısını seçin ve projenizin *. vott* dosyasını seçin. Uygulama, güvenlik belirtecine sahip olduğundan projenin tüm ayarlarını yükler.
+Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıklayın. Sonra blob Storage bağlantısını seçin ve projenizin *. fott* dosyasını seçin. Uygulama, güvenlik belirtecine sahip olduğundan projenin tüm ayarlarını yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

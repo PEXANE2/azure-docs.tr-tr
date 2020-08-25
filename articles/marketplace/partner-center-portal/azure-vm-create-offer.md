@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166714"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816533"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -249,16 +249,17 @@ Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm gör�
 
 #### <a name="azure-marketplace-logos"></a>Azure Market logoları
 
-Aşağıdaki dört resim boyutlarıyla teklifinizin logosunun PNG dosyalarını sağlayın:
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** ve **Orta ölçekli** bir amblem oluşturmak için bunu kullanacaktır. İsterseniz bunları daha sonra farklı görüntülerle değiştirebilirsiniz.
 
-- **Küçük** (48 &times; 48 piksel)
-- **Orta** (90 &times; 90 piksel)
-- **Büyük** (216 &times; 216 piksel)
-- **Geniş** (255 &times; 115 piksel)
+- **Büyük** (216 x 216-350 x 350 px, gereklidir)
+- **Orta** (90 x 90 piksel, isteğe bağlı)
+- **Küçük** (48 x 48 piksel, isteğe bağlı)
 
-Dört logo de gereklidir ve çeşitli Azure Market listelerinde görüntülenir.
+Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -403,7 +404,7 @@ Kullanım tabanlı aylık faturalandırılan bir plan için aşağıdaki üç fi
 
 Müşterilerinize bir aylık veya üç aylık *ücretsiz deneme sürümü* sunabilirsiniz.
 
-#### <a name="visibility"></a>Görünürlük
+#### <a name="visibility"></a>Görüş Mesafesi
 
 Her planı herkese görünür olacak şekilde veya yalnızca önceden seçilmiş bir kitleye tasarlayabilirsiniz. Azure abonelik kimliklerini kullanarak bu kısıtlanmış hedef kitlelere üyelik atayın.
 

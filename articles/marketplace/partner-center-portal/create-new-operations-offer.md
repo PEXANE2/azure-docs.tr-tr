@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606102"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817009"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
@@ -21,7 +21,7 @@ Bu konuda, yeni bir Dynamics 365 for Operations teklifinin nasıl oluşturulduğ
 Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 >[!NOTE]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
+> Bir teklif yayımlandıktan sonra, teklifte yapılan düzenlemeler yalnızca yayın teklifini yeniden gönderdikten sonra Iş Ortağı Merkezi 'nde ve çevrimiçi mağazada güncelleştirilir.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
@@ -193,12 +193,16 @@ Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görünt�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunu iki piksel boyutunda sağlar:
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** bir logo oluşturmak için bunu kullanacaktır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
 
-- **Küçük** (48 x 48)
-- **Büyük** (216 x 216)
+- **Büyük** (216 x 216-350 x 350 px, gereklidir)
+- **Küçük** (48 x 48 piksel, isteğe bağlı)
+
+Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

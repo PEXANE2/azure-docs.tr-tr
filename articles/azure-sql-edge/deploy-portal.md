@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233253"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816873"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge 'i dağıtma (Önizleme) 
 
@@ -22,7 +22,7 @@ Azure SQL Edge (Önizleme), IoT ve Azure IoT Edge dağıtımları için iyileşt
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * [Azure portalında](https://portal.azure.com/) oturum açın.
 * [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
 * Azure portal bir [IoT Edge cihazı](../iot-edge/how-to-register-device-portal.md)kaydedin.
@@ -114,9 +114,114 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
 12. **İleri**’ye tıklayın.
 13. **Gönder**' e tıklayın.
 
-Bu hızlı başlangıçta, bir IoT Edge cihazında SQL Edge modülü dağıttınız.
+## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanma
+
+Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd**Azure SQL Edge komut satırı aracını kullanır.
+
+> [!NOTE]
+> sqlcmd Aracı, SQL Edge kapsayıcıları 'nın ARM64 sürümünde kullanılamaz.
+
+1. `docker exec -it`Çalışan kapsayıcının içinde etkileşimli bir bash kabuğu başlatmak için komutunu kullanın. Aşağıdaki örnekte, `azuresqledge` `Name` IoT Edge modülünüzün parametresi tarafından belirtilen addır.
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. Kapsayıcının içindeyken sqlcmd ile yerel olarak bağlanın. Sqlcmd, varsayılan olarak yolda değildir, bu nedenle tam yolu belirtmeniz gerekir.
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > Komut satırında parolayı, girmeniz istenecek şekilde atlayabilirsiniz.
+
+3. Başarılı olursa bir **sqlcmd** komut istemine almalısınız: `1>` .
+
+## <a name="create-and-query-data"></a>Veri oluşturma ve sorgulama
+
+Aşağıdaki bölümler, yeni bir veritabanı oluşturmak, veri eklemek ve basit bir sorgu çalıştırmak için **sqlcmd** ve Transact-SQL ' i kullanma konusunda size rehberlik sağlar.
+
+### <a name="create-a-new-database"></a>Yeni veritabanı oluşturma
+
+Aşağıdaki adımlar adlı yeni bir veritabanı oluşturur `TestDB` .
+
+1. **Sqlcmd** komut isteminde, bir test veritabanı oluşturmak Için aşağıdaki Transact-SQL komutunu yapıştırın:
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. Bir sonraki satırda, sunucunuzdaki tüm veritabanlarının adını döndürmek için bir sorgu yazın:
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>Veri ekleme
+
+Sonra yeni bir tablo oluşturun `Inventory` ve iki yeni satır ekleyin.
+
+1. **Sqlcmd** komut isteminde bağlamı yeni `TestDB` veritabanına geçir:
+
+   ```sql
+   USE TestDB
+   ```
+
+2. Adlı yeni tablo oluştur `Inventory` :
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. Yeni tabloya veri ekle:
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. `GO`Önceki komutları yürütmek için yazın:
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>Verileri seçme
+
+Şimdi tablodaki verileri döndürmek için bir sorgu çalıştırın `Inventory` .
+
+1. **Sqlcmd** komut isteminde, `Inventory` miktardan 152 ' den büyük olan tablodaki satırları döndüren bir sorgu girin:
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. Komutu yürütün:
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>Sqlcmd komut isteminden çıkın
+
+1. **Sqlcmd** oturumunuzu sonlandırmak için şunu yazın `QUIT` :
+
+   ```sql
+   QUIT
+   ```
+
+2. Kapsayıcıda etkileşimli komut isteminden çıkmak için yazın `exit` . Etkileşimli bash kabuğu 'ndan çıktıktan sonra Kapsayıcınız çalışmaya devam eder.
+
+## <a name="connect-from-outside-the-container"></a>Kapsayıcının dışından Bağlan
+
+SQL bağlantılarını destekleyen herhangi bir harici Linux, Windows veya macOS aracından Azure SQL Edge Örneğinizde SQL sorgularını bağlanabilir ve çalıştırabilirsiniz. Dışından bir SQL Edge kapsayıcısına bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'e bağlanma ve sorgulama](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+
+Bu hızlı başlangıçta, bir IoT Edge cihazında SQL Edge modülü dağıttınız. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [SQL Edge 'de ONNX ile Machine Learning ve yapay zeka](onnx-overview.md).
 - [IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md).
+- [Azure SQL Edge 'de veri akışı](stream-data.md)

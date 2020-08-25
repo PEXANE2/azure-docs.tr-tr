@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388127"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816091"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -47,11 +47,7 @@ Bu makale, oturum açma raporuna genel bir bakış sunar.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Oturum açma etkinliğine erişebilmek için hangi Azure AD lisansınızın olması gerekir?
 
-- Oturum açma Etkinliği raporu [Azure AD 'nin tüm sürümlerinde](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)kullanılabilir.
-
-- API kullanarak oturum açma verilerine erişmek istiyorsanız kiracınızda ilişkili bir [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) lisansı olması gerekir.
-
-
+Oturum açma Etkinliği raporu [Azure AD 'nin tüm sürümlerinde](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) kullanılabilir ve ayrıca Microsoft Graph API aracılığıyla da erişilebilir.
 
 ## <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
 
@@ -128,7 +124,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 **Konum** -bağlantının başlatıldığı konum:
 
-- Şehir
+- City
 
 - Eyalet/Il
 
@@ -146,7 +142,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 ![İstemci uygulama filtresi](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern kimlik doğrulaması|Description|
+|Name|Modern kimlik doğrulaması|Açıklama|
 |---|:-:|---|
 |Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
 |Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|

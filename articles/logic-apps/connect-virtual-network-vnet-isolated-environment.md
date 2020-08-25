@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b1290a17c93043ffbedb7a641e1a0afad6ae79d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/25/2020
+ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066478"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816669"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -37,9 +37,9 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
 * [Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Rest için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlama](../logic-apps/customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
   > [!IMPORTANT]
   > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
@@ -94,6 +94,8 @@ ISE 'nizin erişilebilir olduğundan ve bu ıSE 'deki mantıksal uygulamaların 
 
   [NSG güvenlik kurallarını](../virtual-network/security-overview.md#security-rules)ayarlarken, hem **TCP** hem *de* **UDP** protokollerini kullanmanız gerekir, aksi **durumda her protokol** için ayrı kurallar oluşturmanız gerekmez. NSG güvenlik kuralları, bu bağlantı noktalarına erişmesi gereken IP adresleri için açmanız gereken bağlantı noktalarını anlatmaktadır. Bu uç noktalar arasındaki tüm güvenlik duvarlarının, yönlendiricilerin veya diğer öğelerin bu IP adresleriyle erişilebilir olan bağlantı noktalarını da tutduğundan emin olun.
 
+* Internet 'e yönelik trafiği yeniden yönlendirmek için güvenlik duvarınız aracılığıyla Zorlamalı tünel ayarlarsanız, [ek Zorlamalı tünel gereksinimlerini](#forced-tunneling)gözden geçirin.
+
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>ISE'niz tarafından kullanılan ağ bağlantı noktaları
@@ -141,6 +143,26 @@ Ayrıca, [App Service ortamı (Ao)](../app-service/environment/intro.md)için gi
 
 * Azure Güvenlik Duvarı dışında bir güvenlik duvarı gereci kullanıyorsanız, güvenlik duvarınızı App Service Ortamı için gereken [Güvenlik Duvarı Tümleştirme bağımlılıklarında](../app-service/environment/firewall-integration.md#dependencies) listelenen *Tüm* kurallarla ayarlamanız gerekir.
 
+<a name="forced-tunneling"></a>
+
+#### <a name="forced-tunneling-requirements"></a>Zorlamalı tünel gereksinimleri
+
+Güvenlik duvarınız aracılığıyla [Zorlamalı tünel](../firewall/forced-tunneling.md) ayarlarsanız veya kullanıyorsanız, Ise 'niz için ek dış bağımlılıklara izin vermeniz gerekir. Zorlamalı tünel, giden ağ trafiğini incelemenize ve denetlemenize olanak sağlamak için internet 'e göre, sanal özel ağınız (VPN) veya bir Sanal Gereç gibi belirli bir sonraki atlama için Internet 'e bağlanan trafiği yeniden yönlendirmenizi sağlar.
+
+Genellikle, tüm ıSE giden bağımlılık trafiği, ıSE ile sağlanan sanal IP adresi (VIP) üzerinden geçer. Bununla birlikte, trafik yönlendirmeyi ya da ıSE 'den değiştirirseniz, sonraki atlamalarını ayarlayarak güvenlik duvarınızdaki aşağıdaki giden bağımlılıklara izin vermeniz gerekir `Internet` . Azure Güvenlik Duvarı 'nı kullanıyorsanız, [App Service ortamı güvenlik duvarınızı ayarlamak için yönergeleri](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)izleyin.
+
+Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız başarısız olur ve dağıtılan ıSE çalışmanız çalışmayı durduruyor:
+
+* [Yönetim adreslerini App Service Ortamı](../app-service/environment/management-addresses.md)
+
+* [Azure API Management adresleri](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+
+* [Azure Traffic Manager yönetim adresleri](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+
+* [ISE bölgesinin gelen ve giden adreslerini Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+
+* Bu hizmetlere bir güvenlik duvarı üzerinden trafik gönderemediğinden Azure SQL, depolama, Service Bus ve Olay Hub 'ı için hizmet uç noktalarını etkinleştirmeniz gerekir.
+
 <a name="create-environment"></a>
 
 ## <a name="create-your-ise"></a>ISE'nizi oluşturun
@@ -151,7 +173,7 @@ Ayrıca, [App Service ortamı (Ao)](../app-service/environment/intro.md)için gi
 
 1. **Tümleştirme hizmeti ortamları** bölmesinde **Ekle**' yi seçin.
 
-   !["Tümleştirme hizmeti ortamları" nı bulun ve seçin](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
+   ![Tümleştirme hizmeti ortamı oluşturmak için "Ekle" yi seçin](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
 1. Ortamınız için bu ayrıntıları girin ve ardından **gözden geçir + oluştur**' u seçin. Örneğin:
 

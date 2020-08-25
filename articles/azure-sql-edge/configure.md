@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551991"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816890"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge 'i yapılandırma (Önizleme)
 
@@ -157,6 +157,60 @@ Azure SQL Edge 'in önceki CTP, kök kullanıcılar olarak çalışacak şekilde
   - Kapsayıcı `*"User": "user_name | user_id*` oluşturma seçenekleri altında anahtar-değer çifti Ekle öğesini belirtmek için kapsayıcı oluşturma seçeneklerini güncelleştirin. Lütfen user_name veya user_id, Docker konağından gerçek user_name veya user_id değiştirin. 
   - Dizin/bağlama birimi üzerindeki izinleri değiştirin.
 
+## <a name="persist-your-data"></a>Verilerinizi kalıcı hale getirme
+
+Kapsayıcısını ve ile yeniden başlatsanız bile, Azure SQL Edge yapılandırması değişiklikleriniz ve veritabanı dosyalarınız kapsayıcıda kalıcı hale getirilir `docker stop` `docker start` . Ancak, kapsayıcıyı ile kaldırırsanız `docker rm` , kapsayıcıdaki her şey Azure SQL Edge ve veritabanlarınız dahil olmak üzere silinir. Aşağıdaki bölümde, ilişkili kapsayıcılar silinse bile veritabanı dosyalarınızı kalıcı hale getirmek için **veri birimlerinin** nasıl kullanılacağı açıklanmaktadır.
+
+> [!IMPORTANT]
+> Azure SQL Edge için, Docker 'da veri kalıcılığını anlamanız kritik öneme sahiptir. Bu bölümdeki tartışmaya ek olarak, [Docker kapsayıcılarındaki verileri yönetme](https://docs.docker.com/engine/tutorials/dockervolumes/)hakkında Docker 'ın belgelerine bakın.
+
+### <a name="mount-a-host-directory-as-data-volume"></a>Konak dizinini veri birimi olarak bağlama
+
+İlk seçenek, ana bilgisayarınızda bir dizini bir veri birimi olarak kapsayıcınıza bağlamasıdır. Bunu yapmak için, `docker run` bayrağıyla komutunu kullanın `-v <host directory>:/var/opt/mssql` . Bu, verilerin kapsayıcı yürütmeler arasında geri yüklenmesine izin verir.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+Bu teknik Ayrıca, ana bilgisayardaki dosyaları Docker dışında paylaşmanıza ve görüntülemenize olanak sağlar.
+
+> [!IMPORTANT]
+> **Windows üzerinde Docker** için konak birimi eşlemesi Şu anda tüm dizin eşlemesini desteklemiyor `/var/opt/mssql` . Ancak, ana bilgisayar makineniz gibi bir alt dizini eşleyebilirsiniz `/var/opt/mssql/data` .
+
+> [!IMPORTANT]
+> Azure SQL Edge görüntüsüyle **Mac üzerinde Docker** için konak birimi eşlemesi Şu anda desteklenmiyor. Bunun yerine veri birimi kapsayıcıları kullanın. Bu kısıtlama `/var/opt/mssql` dizine özeldir. Bağlı bir dizinden okuma sorunsuz çalışıyor. Örneğin, Mac üzerinde-v ' y i kullanarak bir konak dizini bağlayabilir ve konakta bulunan bir. bak dosyasından bir yedeklemeyi geri yükleyebilirsiniz.
+
+### <a name="use-data-volume-containers"></a>Veri birimi kapsayıcıları kullanma
+
+İkinci seçenek, bir veri birimi kapsayıcısı kullanmaktır. Parametresi ile bir konak dizini yerine bir birim adı belirterek bir veri birimi kapsayıcısı oluşturabilirsiniz `-v` . Aşağıdaki örnek, **sqlvolume**adlı bir paylaşılan veri birimi oluşturur.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> Bu teknik, Çalıştır komutunda örtük olarak bir veri birimi oluşturmak için daha eski Docker sürümleriyle çalışmaz. Bu durumda, Docker belgelerinde belirtilen açık adımları kullanın, [bir veri birimi kapsayıcısı oluşturup bağlama](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container).
+
+Bu kapsayıcıyı durdurup kaldırsanız bile, veri hacmi devam ettirir. `docker volume ls`Komutunu komutuyla görüntüleyebilirsiniz.
+
+```bash
+docker volume ls
+```
+
+Daha sonra aynı birim adına sahip başka bir kapsayıcı oluşturursanız, yeni kapsayıcı birimde bulunan aynı Azure SQL Edge verilerini kullanır.
+
+Bir veri birimi kapsayıcısını kaldırmak için `docker volume rm` komutunu kullanın.
+
+> [!WARNING]
+> Veri birimi kapsayıcısını silerseniz, kapsayıcıdaki tüm Azure SQL Edge verileri *kalıcı olarak* silinir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852234"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816312"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -248,14 +248,12 @@ Oluşturulan makine öğrenimi modellerini bir Web hizmeti arabirimine sarmalaya
 
 Ayrıca, modellerinizi VM 'de R veya Python 'da oluşturabilir ve ardından bunları Azure Machine Learning üretim ortamında dağıtabilirsiniz. Bu işlevselliği etkinleştirmek için R (**azureml**) ve Python (**azureml**) kitaplıklarını yükledik.
 
-R ve Python 'da modellerin Azure Machine Learning içine nasıl dağıtılacağı hakkında bilgi için, bkz. [veri bilimi sanal makinesi üzerinde yapabileceğiniz on şey](vm-do-ten-things.md).
-
 > [!NOTE]
 > Bu yönergeler Veri Bilimi Sanal Makinesi Windows sürümü için yazılmıştır. Ancak, modelleri Azure Machine Learning için dağıtma hakkında bilgi sağlayan bilgiler Linux VM için geçerlidir.
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bunlara
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu güncelleştirmeler şunlardır:
 
 * **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
 * **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
@@ -342,7 +340,7 @@ Artık bir sekme kümesiyle birlikte bir grafik arabirimi açılır. Örnek bir 
 1. **Risk** seçeneğini belirleyin ve iki **risk (birikmeli)** performans grafiğini göstermek için **Yürüt** ' ü seçin.
 1. Önceki işlemler için oluşturulan R kodunu göstermek üzere **günlük** sekmesini seçin.
    (Rattle 'in geçerli sürümündeki bir hata nedeniyle **#** Bu günlüğü, günlüğün metninde **dışarı aktar** önüne bir karakter eklemeniz gerekir.)
-1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *. *Ana klasöre R.
+1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *. * Ana klasöre R.
 
 Rattle ve R 'den çıkabilirsiniz. Artık oluşturulan R betiğini değiştirebilirsiniz. Ya da, komut dosyasını olduğu gibi kullanın ve Rattle Kullanıcı arabiriminde yapılan her şeyi yinelemek için dilediğiniz zaman çalıştırın. Özellikle R 'deki yeni başlayanlar için bu, bir basit grafik arabiriminde analiz ve makine öğrenimini hızlı bir şekilde yapmanın bir yoludur. böylece, değiştirmek veya öğrenmek için R 'de otomatik olarak kod oluşturma.
 

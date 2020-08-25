@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960002"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816703"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
@@ -23,7 +23,7 @@ Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, kulla
 Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında önemli ölçüde azaltılan bir fiyatla sunulur. Fiyatlandırma ayrıntıları için bkz. [Batch fiyatlandırması](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> Artık [tek örnekli VM 'ler](../virtual-machines/linux/spot-vms.md) ve [VM Ölçek Kümeleri](../virtual-machine-scale-sets/use-spot.md)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
+> Artık [tek örnekli VM 'ler](../virtual-machines/spot-vms.md) ve [VM Ölçek Kümeleri](../virtual-machine-scale-sets/use-spot.md)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
 >
 > Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir. 
 >

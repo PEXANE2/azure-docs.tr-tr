@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642223"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816414"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 PowerShell 'de bir PowerShell profili kavramı vardır. PowerShell profilleri hakkında bilgi sahibi değilseniz, bkz. [profiller hakkında](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-PowerShell Işlevlerinde, işlev uygulaması başladığında profil betiği yürütülür. İşlev uygulamaları ilk dağıtıldığında ve kullanıldıktan sonra başlar ([soğuk başlatma](#cold-start)).
+PowerShell Işlevlerinde, profil betiği, ilk dağıtıldığında ve etkinleştirildikten sonra, uygulamada PowerShell çalışan örneği başına bir kez yürütülür ([soğuk başlar](#cold-start). Eşzamanlılık etkinleştirildiğinde, [PSWorkerInProcConcurrencyUpperBound](#concurrency) değeri ayarlanarak profil betiği oluşturulan her çalışma alanı için çalıştırılır.
 
 Visual Studio Code ve Azure Functions Core Tools gibi araçları kullanarak bir işlev uygulaması oluşturduğunuzda, sizin için varsayılan bir değer `profile.ps1` oluşturulur. Varsayılan profil, [temel araçlar GitHub deposunda](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) tutulur ve şunları içerir:
 
@@ -417,7 +417,10 @@ Yeni bir PowerShell işlevleri projesi oluşturduğunuzda, Azure [ `Az` modülü
 requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanın ardından güncelleştirilmiş modüller yüklenir.
 
 > [!NOTE]
-> Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com 'e erişim gerektirir. Yerel olarak çalışırken, gerekli güvenlik duvarı kurallarını ekleyerek çalışma zamanının bu URL 'ye erişebildiğinizden emin olun. 
+> Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com 'e erişim gerektirir. Yerel olarak çalışırken, gerekli güvenlik duvarı kurallarını ekleyerek çalışma zamanının bu URL 'ye erişebildiğinizden emin olun.
+
+> [!NOTE]
+> Yönetilen bağımlılıklar Şu anda, lisansı etkileşimli olarak kabul ederek ya da çağrılırken anahtar sağlayarak kullanıcının bir lisansı kabul etmesini gerektiren modülleri desteklemez `-AcceptLicense` `Install-Module` .
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
@@ -435,6 +438,7 @@ Işlevlerde `PSModulePath` iki yol içerir:
 
 * `Modules`İşlev uygulamanızın kökünde bulunan bir klasör.
 * `Modules`PowerShell dil çalışanı tarafından denetlenen bir klasörün yolu.
+
 
 ### <a name="function-app-level-modules-folder"></a>İşlev uygulama düzeyi `Modules` klasörü
 
@@ -502,17 +506,22 @@ Varsayılan olarak, Işlevler PowerShell çalışma zamanı tek seferde yalnızc
 * Aynı anda çok sayıda çağırma gerçekleştirmeye çalışırken.
 * Aynı işlev uygulaması içindeki diğer işlevleri çağıran işlevlere sahip olduğunuzda.
 
-Aşağıdaki ortam değişkenini bir tamsayı değerine ayarlayarak bu davranışı değiştirebilirsiniz:
+İş yükü türüne bağlı olarak keşfedebileceğiniz birkaç eşzamanlılık modeli vardır:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Arttırın ```FUNCTIONS_WORKER_PROCESS_COUNT``` . Bu, belirli CPU ve bellek yükünü sunan aynı örnek içindeki birden çok işlemde işlev etkinleştirmeleri işlemesini sağlar. Genel olarak, g/ç ile bağlantılı işlevler bu ek yükün altına düşmeyecektir. CPU ile bağlantılı işlevler için etki önemli olabilir.
 
-Bu ortam değişkenini İşlev Uygulaması [uygulama ayarlarında](functions-app-settings.md) ayarlarsınız.
+* ```PSWorkerInProcConcurrencyUpperBound```Uygulama ayarı değerini artırın. Bu, CPU ve bellek yükünü önemli ölçüde azaltan aynı işlem içinde birden çok çalışma alanı oluşturulmasına olanak sağlar.
+
+Bu ortam değişkenlerini, işlev uygulamanızın [uygulama ayarlarında](functions-app-settings.md) ayarlarsınız.
+
+Kullanım durumunuza bağlı olarak, Dayanıklı İşlevler ölçeklenebilirliği önemli ölçüde iyileştirebilir. Daha fazla bilgi için bkz. [dayanıklı işlevler uygulama desenleri](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+
+>[!NOTE]
+> "İstekler kullanılabilir çalışma alanları nedeniyle sıraya alındı" uyarısı alabilir, lütfen bunun bir hata olmadığını unutmayın. İleti, isteklerin sıraya alındığını ve önceki istekler tamamlandığında işleneceğini size söylecektir.
 
 ### <a name="considerations-for-using-concurrency"></a>Eşzamanlılık kullanma konuları
 
-PowerShell, varsayılan olarak _tek bir iş parçacıklı_ betik dilidir. Ancak, aynı işlemde birden fazla PowerShell çalışma alanı kullanılarak eşzamanlılık eklenebilir. Oluşturulan çalışma alanları miktarı PSWorkerInProcConcurrencyUpperBound uygulama ayarıyla eşleşir. Aktarım hızı, seçilen planda kullanılabilir olan CPU ve bellek miktarından etkilenecek.
+PowerShell, varsayılan olarak _tek bir iş parçacıklı_ betik dilidir. Ancak, aynı işlemde birden fazla PowerShell çalışma alanı kullanılarak eşzamanlılık eklenebilir. Oluşturulan çalışma alanları miktarı ```PSWorkerInProcConcurrencyUpperBound``` uygulama ayarıyla eşleşir. Aktarım hızı, seçilen planda kullanılabilir olan CPU ve bellek miktarından etkilenecek.
 
 Azure PowerShell, size fazla yazma işleminden tasarruf etmenize yardımcı olmak için bazı _işlem düzeyi_ bağlamlar ve durumları kullanır. Ancak, işlev uygulamanızda eşzamanlılık özelliğini açıp durumu değiştirme eylemlerini çağırdığınızda, yarış koşullarına sahip olabilirsiniz. Bir çağrı belirli bir duruma bağlı olduğundan ve diğer çağrının durumu değiştiğinden, bu yarış durumlarının hata ayıklaması zordur.
 
