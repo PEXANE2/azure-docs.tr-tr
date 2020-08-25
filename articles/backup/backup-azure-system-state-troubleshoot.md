@@ -4,12 +4,12 @@ description: Bu makalede, şirket içi Windows Server 'lar için sistem durumu y
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513863"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763397"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -17,7 +17,7 @@ Bu makalede, sistem durumu yedeklemesini kullanırken içinde karşılaşabilece
 
 ## <a name="basic-troubleshooting"></a>Temel sorun giderme
 
-Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğrulamayı gerçekleştirmenizi öneririz:
+Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğrulama adımlarını gerçekleştirmenizi öneririz:
 
 - [Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [MARS aracısı ile Azure arasında ağ bağlantısı sağlandığından emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -42,7 +42,7 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
+Azure Backup sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server Yedekleme yüklendiğini doğrulama
 
@@ -56,7 +56,7 @@ Get-WindowsFeature Windows-Server-Backup
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>Yöntem 1: PowerShell kullanarak Windows Server Yedekleme yüklemesi
 
-PowerShell kullanarak Windows Server Yedekleme yüklemek için aşağıdaki komutu çalıştırın:
+PowerShell kullanarak Windows Server Yedekleme yüklemek için şu komutu çalıştırın:
 
   ```powershell
   Install-WindowsFeature -Name Windows-Server-Backup
@@ -77,16 +77,16 @@ Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıd
 3. Sunucu havuzundan bir sunucu seçin ve **İleri**' ye tıklayın. Sunucu rolünde, varsayılan seçimi bırakın ve **İleri**' ye tıklayın.
 4. **Özellikler** sekmesinde **Windows Server yedekleme** ' yi seçin ve **İleri**' ye tıklayın.
 
-    ![özellikler](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![Özellikler penceresini seçin](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. **Onay** sekmesinde, yükleme işlemini başlatmak için **yükleme** ' ye tıklayın.
 6. **Sonuçlar** sekmesinde, Windows Server yedekleme özelliği Windows sunucunuza başarıyla yüklendi.
 
-    ![sonuç](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Yükleme sonuçları](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Sistem birimi bilgileri izni
 
-Yerel SISTEMIN Windows 'un yüklü olduğu birimde bulunan **sistem birimi bilgileri** klasöründe tam denetime sahip olduğundan emin olun. Genellikle bu, **C:\Sistem birimi bilgileri**. Yukarıdaki izinler doğru ayarlanmamışsa Windows Server yedekleme başarısız olabilir
+Yerel SISTEMIN Windows 'un yüklü olduğu birimde bulunan **sistem birimi bilgileri** klasöründe tam denetime sahip olduğundan emin olun. Genellikle bu, **C:\Sistem birimi bilgileri**. Yukarıdaki izinler doğru ayarlanmamışsa Windows Server yedekleme başarısız olabilir.
 
 ### <a name="dependent-services"></a>Bağımlı hizmetler
 
@@ -113,7 +113,7 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki adımları ger�
 
     - Bu hatayla başarısız olursa, önkoşulların 1. adımında belirtildiği gibi Windows Server Yedekleme özelliğini sunucu makinesine yeniden yükleyin.
 
-  - Yükseltilmiş komut isteminden aşağıdaki komutu çalıştırarak WSB yedeğinin düzgün çalıştığından emin olun:
+  - Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırarak WSB yedeğinin düzgün çalıştığından emin olun:
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 

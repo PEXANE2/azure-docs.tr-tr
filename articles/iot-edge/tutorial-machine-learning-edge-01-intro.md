@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74106499"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Öğretici: Azure Machine Learning ve IoT Edge kullanarak uçtan uca bir çözüm
@@ -74,7 +74,7 @@ Aşağıdaki resimde, bu öğreticide izlediğimiz kaba adımlar gösterilmekted
 
 1. **Modeli koruyun ve daraltın**. Model dağıtıldıktan sonra çalışmamız yapılmaz. Birçok durumda, verileri toplamaya ve verileri düzenli aralıklarla buluta yüklemeye devam etmek istiyoruz. Daha sonra bu verileri, modelimizi yeniden eğitmek ve iyileştirmek için kullanabiliriz. daha sonra IoT Edge için yeniden dağıtırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için, kaynak oluşturma haklarınız olan bir Azure aboneliğine erişmeniz gerekir. Bu öğreticide kullanılan hizmetlerden bazıları Azure ücretlerine tabi olacaktır. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/offers/ms-azr-0044p/)kullanmaya başlamanızı sağlayabilirsiniz.
 

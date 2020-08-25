@@ -1,15 +1,15 @@
 ---
 title: Blok zinciri uygulaması oluşturma-Azure blok zinciri çalışma ekranı
 description: Azure blok zinciri çalışma ekranı önizlemesi için bir blok zinciri uygulaması oluşturma öğreticisi.
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073115"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784037"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri için blok zinciri uygulaması oluşturma çalışma ekranı
 
@@ -40,7 +40,7 @@ Uygulama dosyalarını oluşturmak için adımları izleyin veya [örneği GitHu
 
 ## <a name="configuration-file"></a>Yapılandırma dosyası
 
-Yapılandırma meta verileri, blok zinciri uygulamasının üst düzey iş akışlarını ve etkileşim modelini tanımlar. Yapılandırma meta verileri, blok zinciri uygulamasının iş akışı aşamalarını ve etkileşim modelini temsil eder.
+Yapılandırma meta verileri, blok zinciri uygulamasının üst düzey iş akışlarını ve etkileşim modelini tanımlar. Yapılandırma meta verileri, blok zinciri uygulamasının iş akışı aşamalarını ve etkileşim modelini temsil eder. Yapılandırma dosyalarının içerikleri hakkında daha fazla bilgi için bkz. [Azure blok zinciri Iş akışı yapılandırma başvurusu](configuration.md).
 
 1. En sevdiğiniz düzenleyicide adlı bir dosya oluşturun `HelloBlockchain.json` .
 2. Blok zinciri uygulamasının yapılandırmasını tanımlamak için aşağıdaki JSON öğesini ekleyin.
@@ -208,11 +208,9 @@ Yapılandırma dosyasının başlangıcında uygulama adı ve açıklaması dahi
 
 Uygulama rolleri bölümü, blok zinciri uygulamasına davranabilir veya katılabilen kullanıcı rollerini tanımlar. İşlevlere göre ayrı roller kümesi tanımlarsınız. İstek-yanıt senaryosunda, bir istek sahibinin işlevselliği, yanıtları üreten bir varlık olarak istek ve Yanıtlayıcı veren bir varlık olarak bir farklılık vardır.
 
-### <a name="workflows"></a>İş akışları
+### <a name="workflows"></a>İş Akışları
 
 İş akışları, sözleşmenin bir veya daha fazla aşamasını ve eylemini tanımlar. İstek-yanıt senaryosunda, iş akışının ilk aşaması (durum) bir istek sahibi (rol) istek (işlev) göndermek için bir eylem (geçiş) alır. Sonraki aşama (durum) bir yanıtlayanın (rol) yanıt göndermek için bir eylem (geçiş) alır (işlev). Bir uygulamanın iş akışı, bir sözleşmenin akışını betimleyen özellikleri, işlevleri ve durumları içerebilir.
-
-Yapılandırma dosyalarının içerikleri hakkında daha fazla bilgi için bkz. [Azure blok zinciri Iş akışı yapılandırma başvurusu](configuration.md).
 
 ## <a name="smart-contract-code-file"></a>Akıllı sözleşme kod dosyası
 

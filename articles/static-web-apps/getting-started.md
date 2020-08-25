@@ -1,22 +1,22 @@
 ---
 title: 'Hızlı başlangıç: Azure statik Web Apps ilk statik Web uygulamanızı oluşturma'
-description: Tercih ettiğiniz ön uç çerçevesiyle Azure statik Web Apps örneği oluşturmayı öğrenin.
+description: Azure statik Web Apps web sitesi oluşturmayı öğrenin.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565919"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752455"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
 
-Azure Statik Web Uygulamaları, uygulamaları bir GitHub deposundan derleyerek web sitelerini bir üretim ortamında yayımlar. Bu hızlı başlangıçta, bir GitHub deposundan tercih ettiğiniz ön uç çerçevesini kullanarak bir Web uygulaması oluşturacaksınız.
+Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, Azure statik Web uygulamalarına Visual Studio Code uzantısını kullanarak bir Web uygulaması dağıtırsınız.
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
@@ -24,153 +24,97 @@ Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azur
 
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Visual Studio Code için Azure statik Web Apps uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
 
-## <a name="create-a-repository"></a>Depo oluşturma
+[!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-Bu makalede yeni bir depo oluşturmanızı kolaylaştırmak için GitHub şablon depoları kullanılmaktadır. Şablonlar özelliği, farklı ön uç çerçevelerle oluşturulmuş başlangıç uygulamalarıdır.
+[!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-# <a name="angular"></a>[Angular](#tab/angular)
-
-- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
-  - https://github.com/staticwebdev/angular-basic/generate
-- Deponuzu **-First-static-Web-App** olarak adlandırın
-
-# <a name="react"></a>[React](#tab/react)
-
-- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
-  - https://github.com/staticwebdev/react-basic/generate
-- Deponuzu **-First-static-Web-App** olarak adlandırın
-
-# <a name="vue"></a>[Vue](#tab/vue)
-
-- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
-  - https://github.com/staticwebdev/vue-basic/generate
-- Deponuzu **-First-static-Web-App** olarak adlandırın
-
-# <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
-
-- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
-  - https://github.com/staticwebdev/vanilla-basic/generate
-- Deponuzu **-First-static-Web-App** olarak adlandırın
-
-> [!NOTE]
-> Azure statik Web Apps, bir Web uygulaması oluşturmak için en az bir HTML dosyası gerektirir. Bu adımda oluşturduğunuz depo, tek bir _index.html_ dosyası içerir.
-
----
-
-**Şablondan depo oluştur** düğmesine tıklayın.
-
-:::image type="content" source="media/getting-started/create-template.png" alt-text="Şablondan depo oluştur":::
+Daha sonra, Visual Studio Code açın ve **dosya > klasöre** giderek, yeni bir düzenleyicide makinenize Klonladığınız depoyu açın.
 
 ## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
 
-Artık depo oluşturulduktan sonra, Azure portal statik bir Web uygulaması oluşturabilirsiniz.
+1. Visual Studio Code içinde, Azure uzantıları penceresini açmak için etkinlik çubuğundan Azure logosu ' nu seçin.
 
-- [Azure Portal](https://portal.azure.com) gidin
-- **Kaynak oluştur** seçeneğine tıklayın
-- **Statik Web Uygulamaları** için arama yapın
-- **Statik Web Uygulamaları (Önizleme)** seçeneğine tıklayın
-- **Oluştur** seçeneğine tıklayın
+    :::image type="content" source="media/getting-started/extension-azure-logo.png" alt-text="Azure logosu":::
 
-### <a name="basics"></a>Temel bilgiler
+    > [!NOTE]
+    > Azure ve GitHub oturum açma gereklidir. Azure 'da önceden oturum açmadıysanız ve Visual Studio Code 'den GitHub 'da, uzantı oluşturma işlemi sırasında her ikisinde de oturum açmanızı ister.
 
-Yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
+1. Farenizi _statik Web Apps_ etiketinin üzerine getirin ve **artı işaretini**seçin.
 
-:::image type="content" source="media/getting-started/basics-tab.png" alt-text="Temel bilgiler sekmesi":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Uygulama adı":::
 
-- _Azure aboneliğinizi_ seçin
-- Yeni bir _kaynak grubu_ seçin veya oluşturun
-- Uygulamanın **-First-static-Web-App**' i adlandırın.
-  - Geçerli karakterler şunlardır: `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-`.
-- Size en yakın _bölgeyi_ seçin
-- **Ücretsiz** _SKU 'yu_ seçin
-- **GitHub ile Oturum Aç** düğmesine tıklayın ve GitHub ile kimliğinizi doğrulayın
+1. Pageç, düzenleyicinin en üstünde açılır ve uygulamanızı ad vermenizi ister.
 
-GitHub ile oturum açtıktan sonra depo bilgilerini girin.
+    **My-First-static-Web-App** yazın ve **ENTER**tuşuna basın.
 
-:::image type="content" source="media/getting-started/repository-details.png" alt-text="Depo ayrıntıları":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Statik Web uygulaması oluşturma":::
 
-- Tercih ettiğiniz _kuruluşu_ seçin
-- _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
-- _Dal_ açılan listesinden **ana öğe** seçin
-- Derleme yapılandırmasını düzenlemek için **İleri: Derleme >** düğmesine tıklayın
+1. **Ana** dalı seçin ve **ENTER**tuşuna basın.
 
-:::image type="content" source="media/getting-started/next-build-button.png" alt-text="Sonraki derleme düğmesi":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Dal adı":::
 
-> [!NOTE]
->  Herhangi bir depo görmüyorsanız, GitHub 'da Azure statik Web Apps yetkilendirmeniz gerekebilir. [GitHub giriş sayfasına](https://github.com) gidin ve açılan menüyü açmak için hesap yansımanıza tıklayın. **Ayarlar**' a ve ardından **uygulamalar > yetkili OAuth uygulamaları Azure statik Web Apps >** ve son olarak **izin ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
+1. **/** Uygulama kodu için konum olarak öğesini seçin ve **ENTER**tuşuna basın.
 
-### <a name="build"></a>Oluşturma
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Uygulama kodu konumu":::
 
-Ardından, tercih ettiğiniz ön uç çerçevesine özgü yapılandırma ayrıntılarını ekleyin.
+1. Uzantı, uygulamanızdaki API 'nin konumunu arıyor. Bu makale bir API uygulamaz.
 
-# <a name="angular"></a>[Angular](#tab/angular)
+    **Şimdilik atla** ' yı seçin ve **ENTER**tuşuna basın.
 
-- **/** _Uygulama konumu_ kutusuna girin
-- _API konum_ kutusundan varsayılan değeri temizle
-- _Uygulama yapıt konumu_ kutusuna **dağ/angular-temel** girin
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API konumu":::
 
-# <a name="react"></a>[React](#tab/react)
+1. Uygulamanızdaki üretim için dosyaların oluşturulduğu konumu seçin.
 
-- **/** _Uygulama konumu_ kutusuna girin
-- _API konum_ kutusundan varsayılan değeri temizle
-- _Uygulama yapıtı konum_ kutusunda **derlemeyi** girin
+    # <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
 
-# <a name="vue"></a>[Vue](#tab/vue)
+    Kutuyu temizleyin ve **ENTER**tuşuna basın.
 
-- **/** _Uygulama konumu_ kutusuna girin
-- _API konum_ kutusundan varsayılan değeri temizle
-- _Uygulama yapıtı konum_ kutusuna **Dist** girin
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Uygulama dosyaları yolu":::
 
-# <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
+    # <a name="angular"></a>[Angular](#tab/angular)
 
-- **/** _Uygulama konumu_ kutusuna girin
-- _API konum_ kutusundan varsayılan değeri temizle
-- _Uygulama yapıtı konum_ kutusundan varsayılan değeri temizle
+    **Dist/angular-temel** yazın ve **ENTER**tuşuna basın.
 
----
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular uygulama dosyaları yolu":::
 
-**Gözden geçir ve oluştur** düğmesine tıklayın.
+    # <a name="react"></a>[React](#tab/react)
 
-:::image type="content" source="media/getting-started/review-create.png" alt-text="İnceleme oluştur düğmesi":::
+    **Oluştur** yazın ve **ENTER**tuşuna basın.
 
-Uygulamayı oluşturduktan sonra bu değerleri değiştirmek için [iş akışı dosyasını](github-actions-workflow.md)düzenleyebilirsiniz.
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Uygulama dosyaları yoluna tepki verme":::
 
-### <a name="review--create"></a>Gözden geçirme ve oluşturma
+    # <a name="vue"></a>[Vue](#tab/vue)
 
-İstek doğruladıktan sonra, uygulamayı oluşturmaya devam edebilirsiniz.
+    **Dist** yazın ve **ENTER**tuşuna basın.
 
-**Oluştur** düğmesine tıklayın
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue uygulama dosyaları yolu":::
 
-:::image type="content" source="media/getting-started/create-button.png" alt-text="Oluştur düğmesi":::
+    ---
 
-Kaynak oluşturulduktan sonra **Kaynağa Git** düğmesine tıklayın
+1. Size en yakın konumu seçin ve **ENTER**tuşuna basın.
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="Kaynağa git düğmesi":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Kaynak konumu":::
 
-## <a name="view-the-website"></a>Web sitesini görüntüleme
+1. Uygulama oluşturulduktan sonra Visual Studio Code bir onay bildirimi gösterilir.
 
-Statik uygulama dağıtmanın iki yönü vardır. Bunların ilki uygulamanızı oluşturan temel alınan Azure kaynaklarının sağlanmasıdır. İkincisi de, uygulamanızı derleyip yayımlayan GitHub Actions iş akışıdır.
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Oluşturulma onayı":::
 
-Yeni statik sitenize gidebilmeniz için önce dağıtım derlemesinin çalıştırılması gerekir.
+1. Visual Studio Code Gezgin penceresinde, _statik Web Apps_ bölümüne dönüp **üretime** sağ tıklayıp **portalda aç** ' ı seçerek Azure Portal uygulamayı görüntüleyin.
 
-Statik Web Apps genel bakış penceresinde web uygulamanızla etkileşime başlamanıza yardımcı olacak bir dizi bağlantı görüntülenir.
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Portalı aç":::
 
-:::image type="content" source="media/getting-started/overview-window.png" alt-text="Genel bakış penceresi":::
-
-1. "GitHub eylemlerinizin durumunu denetlemek için buraya tıklayın" ifadesini içeren başlığa tıkladığınızda sizi deponuza karşı çalışan GitHub eylemlerine götürür. Dağıtım işinin tamamlandığını doğruladıktan sonra, oluşturulan URL aracılığıyla Web sitenize gidebilirsiniz.
-
-2. GitHub eylemleri iş akışı tamamlandıktan sonra, Web sitesini yeni sekmede açmak için _URL_ bağlantısına tıklayabilirsiniz.
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam edemeyecekinizde, Azure statik Web Apps örneğini aşağıdaki adımlarla silebilirsiniz:
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz, Azure statik Web Apps örneğini uzantı aracılığıyla silebilirsiniz.
 
-1. [Azure portalı](https://portal.azure.com) açın
-1. En üst arama çubuğundan **My-First-Web-static-App** araması yapın
-1. Uygulama adına tıklayın
-1. **Sil** düğmesine tıklayın
-1. Silme eylemini onaylamak için **Evet** ' e tıklayın
+Visual Studio Code Gezgin penceresinde _statik Web Apps_ bölümüne dönüp, **ilk-statik-Web-uygulaması** ' na sağ tıklayın ve **Sil**' i seçin.
+
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Uygulamayı Sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658237"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752018"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure'da hangi disk türleri kullanılabilir?
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 | Ayrıntı | Ultra disk | Premium SSD | Standart SSD | Standart HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Disk türü   |SSD   |SSD   |SSD   |HDD   |
-|Senaryo   |[SAP HANA](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, az kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişim   |
+|Senaryo   |[SAP HANA](workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, az kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişim   |
 |En büyük disk boyutu   |65.536 gibibayt (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
 |En yüksek işleme hızı   |2.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maks. IOPS   |160.000    |20.000   |6.000   |2.000   |
@@ -62,7 +62,7 @@ Ultra disklerin bazı önemli özellikleri şunlardır:
 
 ### <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 Ultra diskler kullanmaya başlamak istiyorsanız, konudaki makalemize bakın: [Azure Ultra diskleri kullanma](disks-enable-ultra-ssd.md).
@@ -71,10 +71,10 @@ Ultra diskler kullanmaya başlamak istiyorsanız, konudaki makalemize bakın: [A
 
 Azure Premium SSD 'ler, giriş/çıkış (GÇ) yoğun iş yükleri ile sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Premium Depolama disklerinin hız ve performansından yararlanmak için, mevcut VM disklerini Premium SSD 'Ler 'e geçirebilirsiniz. Premium SSD 'Ler, görev açısından kritik üretim uygulamaları için uygundur. Premium SSD 'Ler, yalnızca Premium Depolama ile uyumlu olan VM serileri ile kullanılabilir.
 
-Windows için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için, Premium Depolama ile uyumlu olan boyutlar dahil, bkz. [WINDOWS VM boyutları](~/articles/virtual-machines/windows/sizes.md). Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için, bkz. [LINUX VM boyutları](~/articles/virtual-machines/linux/sizes.md). Bu makalelerden herhangi birinden, Premium Depolama ile uyumlu olup olmadığını öğrenmek için her bir VM boyutu makalesini denetlemeniz gerekir.
+Windows veya Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sanal makineler Için boyutlar](sizes.md). Linux için Azure 'daki tek tek VM türleri ve boyutları hakkında daha fazla bilgi edinmek için, hangi boyutlarda Premium Depolama ile uyumlu olduğu da dahil olmak üzere bkz. [Azure 'da sanal makine boyutları](sizes.md). Bu makalelerden herhangi birinden, Premium Depolama ile uyumlu olup olmadığını öğrenmek için her bir VM boyutu makalesini denetlemeniz gerekir.
 
 ### <a name="disk-size"></a>Disk boyutu
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Standart depolamanın aksine bir Premium Depolama diski sağladığınızda, bu diskin kapasitesi, ıOPS ve aktarım hızı garanti edilir. Örneğin, bir P50 diski oluşturursanız, Azure bu disk için 4.095 GB depolama kapasitesi, 7.500 ıOPS ve 250 MB/sn aktarım hızı sağlar. Uygulamanız, kapasite ve performansın tümünü veya bir bölümünü kullanabilir. Premium SSD diskler, önceki tabloda% 99,9 ' de açıklanan düşük tek basamaklı milisaniyelik gecikme süreleri ve hedef ıOPS ve aktarım hızı sağlamak üzere tasarlanmıştır.
 
@@ -82,7 +82,7 @@ Standart depolamanın aksine bir Premium Depolama diski sağladığınızda, bu 
 
 P30 ' den küçük Premium SSD boyutları artık disk patlaması sunar ve disk başına ıOPS 'yi 3.500 ve bant genişliğine kadar en fazla 170 Mbps olacak şekilde alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Krediler, disk trafiği sağlanan performans hedefinin altındaysa otomatik olarak bir patlama demetini içinde biriktirilir ve trafik hedefin ötesinde en fazla patlama sınırına kadar, krediler otomatik olarak tüketilir. En fazla patlama sınırı, ' den tüketmek üzere patlama kredileriniz olsa bile, disk ıOPS & bant genişliği üst sınırını tanımlar. Disk patlaması, GÇ desenlerinin öngörülemeyen değişikliklerinde daha iyi tolerans sağlar. Çıkmanız gerekirse trafiği olan işletim sistemi diski önyüklemesi ve uygulamaları için en iyi şekilde yararlanabilirsiniz.    
 
-Bir kullanıcı eylemi gerekmeden, varsayılan olarak geçerli disk boyutlarının yeni dağıtımları üzerinde, disk patlaması desteği etkinleştirilecek. Geçerli boyutlardaki mevcut diskler için, iki seçenekten birini kullanarak gereksiz bir şekilde etkinleştirebilirsiniz: diski ayırma ve yeniden bağlama ya da bağlı VM 'yi durdurup yeniden başlatma. Disk, en yüksek veri bloğu sınırı olan 30 dakikalık bir sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. Azure disklerinde ne kadar iş çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Premium SSD burdımı](~/articles/virtual-machines/linux/disk-bursting.md). 
+Bir kullanıcı eylemi gerekmeden, varsayılan olarak geçerli disk boyutlarının yeni dağıtımları üzerinde, disk patlaması desteği etkinleştirilecek. Geçerli boyutlardaki mevcut diskler için, iki seçenekten birini kullanarak gereksiz bir şekilde etkinleştirebilirsiniz: diski ayırma ve yeniden bağlama ya da bağlı VM 'yi durdurup yeniden başlatma. Disk, en yüksek veri bloğu sınırı olan 30 dakikalık bir sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. Azure disklerinde ne kadar iş çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Premium SSD burdımı](linux/disk-bursting.md). 
 
 ### <a name="transactions"></a>İşlemler
 
@@ -93,7 +93,7 @@ Premium SSD 'Ler için, 256 kıb aktarım hızına eşit veya daha küçük olan
 Azure Standart SSD 'ler, düşük ıOPS düzeylerinde tutarlı performans gerektiren iş yükleri için optimize edilmiş uygun maliyetli bir depolama seçeneğidir. Standart SSD, özellikle de şirket içinde HDD çözümlerinizde çalışan iş yüklerinin farkıyla ilgili sorunlarla karşılaşırsanız, buluta taşımak isteyen kişiler için iyi bir giriş düzeyi deneyimi sunmaktadır. Standart HDD 'ler ile karşılaştırıldığında, standart SSD 'Ler daha iyi kullanılabilirlik, tutarlılık, güvenilirlik ve gecikme süresi sağlar. Standart SSD 'Ler, Web sunucuları, düşük ıOPS uygulama sunucuları, hafif kullanılan kurumsal uygulamalar ve geliştirme/test iş yükleri için uygundur. Standart HDD 'ler gibi tüm Azure sanal makinelerinde standart SSD 'ler de mevcuttur.
 
 ### <a name="disk-size"></a>Disk boyutu
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 Standart SSD 'ler, tek basamaklı milisaniyelik gecikme süreleri ve ıOPS ve aktarım hızı, önceki tabloda %99 ' de tanımlanan sınırlara kadar bir süre sağlamak üzere tasarlanmıştır. Gerçek ıOPS ve aktarım hızı bazen trafik desenlerine bağlı olarak farklılık gösterebilir. Standart SSD 'Ler, daha düşük gecikme süresine sahip HDD disklerinden daha tutarlı performans sağlayacaktır.
 
@@ -106,7 +106,7 @@ Standart SSD 'Ler için, 256 kıb aktarım hızına eşit veya daha küçük ola
 Azure Standart HDD 'Ler, gecikme süresine duyarlı iş yükleri çalıştıran VM 'Ler için güvenilir, düşük maliyetli disk desteği sunar. Standart depolama ile, veriler sabit disk sürücülerinde (HDD 'Ler) depolanır. Standart HDD disklerin gecikmesi, ıOPS ve verimlilik, SSD tabanlı disklere kıyasla daha geniş farklılık gösterebilir. Standart HDD diskler, 10ms altında yazma gecikmeleri ve g/ç işlemleri için 20 MS 'nin altında okuma gecikmeleri sunacak şekilde tasarlanmıştır, ancak gerçek performans, GÇ boyutu ve iş yükü düzenine göre farklılık gösterebilir. VM 'lerle çalışırken geliştirme/test senaryoları ve daha az kritik iş yükleri için standart HDD disklerini kullanabilirsiniz. Standart HDD 'ler tüm Azure bölgelerinde kullanılabilir ve tüm Azure VM 'Leri ile kullanılabilir.
 
 ### <a name="disk-size"></a>Disk boyutu
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>İşlemler
 
@@ -139,7 +139,7 @@ Anlık görüntüler hakkında daha fazla bilgi için [yönetilen diske genel ba
 Azure VM 'Leri, Ultra disklerle uyumlu olup olmadığını gösterebilir. Bir ultra disk uyumlu VM, performansı iyileştirmek ve gecikme süresini azaltmak için işlem VM örneği ve blok depolama ölçek birimi arasında ayrılmış bant genişliği kapasitesini ayırır. Bu özelliği sanal makineye eklemek, yalnızca bir ultra disk iliştirmeden VM 'de Ultra disk özelliğini etkinleştirdiyseniz uygulanan bir rezervasyon ücretine neden olur. Ultra disk uyumlu VM 'ye bir ultra disk eklendiğinde, bu ücret uygulanmaz. Bu ücret, VM 'de sağlanan vCPU başına. 
 
 > [!Note]
-> [Kısıtlanmış çekırdek VM boyutları](~/articles/virtual-machines/linux/constrained-vcpu.md)için, rezervasyon ücreti, kısıtlı çekirdekler değil, gerçek vCPU sayısına dayanır. Standard_E32 8s_v3 için, ayırma ücreti 32 çekirdekleri temel alır. 
+> [Kısıtlanmış çekırdek VM boyutları](constrained-vcpu.md)için, rezervasyon ücreti, kısıtlı çekirdekler değil, gerçek vCPU sayısına dayanır. Standard_E32 8s_v3 için, ayırma ücreti 32 çekirdekleri temel alır. 
 
 Ultra disk fiyatlandırma ayrıntıları için [Azure diskleri fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/managed-disks/) bakın.
 

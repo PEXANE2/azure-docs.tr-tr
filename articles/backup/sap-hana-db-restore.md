@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503600"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763295"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 
@@ -161,7 +161,7 @@ Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için **
         chown -R <SID>adm:sapsys <directory>
         ```
 
-    1. Sonraki komut kümesini şu şekilde Çalıştır`<SID>adm`
+    1. Sonraki komut kümesini şu şekilde Çalıştır `<SID>adm`
 
         ```bash
         su - <sid>adm
@@ -175,9 +175,9 @@ Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için **
 
         Yukarıdaki komutta:
 
-        * `<DataFileDir>`-tam yedeklemeleri içeren klasör
-        * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
-        * `<PathToPlaceCatalogFile>`-Katalog dosyasının oluşturulduğu klasör yerleştirilmesi gerekir
+        * `<DataFileDir>` -tam yedeklemeleri içeren klasör
+        * `<LogFilesDir>` -günlük yedeklemelerini içeren klasör
+        * `<PathToPlaceCatalogFile>` -Katalog dosyasının oluşturulduğu klasör yerleştirilmesi gerekir
 
     1. Yeni oluşturulan katalog dosyasını HANA Studio aracılığıyla geri yükleyin veya bu yeni oluşturulan katalogla HDBSQL restore sorgusunu çalıştırın. HDBSQL sorguları aşağıda listelenmiştir:
 
@@ -191,12 +191,12 @@ Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için **
         RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
         ```
 
-        * `<DatabaseName>`-Geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
-        * `<Timestamp>`-Zaman içindeki noktaya geri yükleme için tam zaman damgası
-        * `<DatabaseName@HostName>`-Backup 'ın geri yükleme için kullanıldığı veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmesi gerekmez.
+        * `<DatabaseName>` -Geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
+        * `<Timestamp>` -Zaman içindeki noktaya geri yükleme için tam zaman damgası
+        * `<DatabaseName@HostName>` -Backup 'ın geri yükleme için kullanıldığı veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmesi gerekmez.
         * `<PathToGeneratedCatalogInStep3>`- **C adımında** oluşturulan katalog dosyasının yolu
-        * `<DataFileDir>`-tam yedeklemeleri içeren klasör
-        * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
+        * `<DataFileDir>` -tam yedeklemeleri içeren klasör
+        * `<LogFilesDir>` -günlük yedeklemelerini içeren klasör
         * `<BackupIdFromJsonFile>`- **C adımında** ayıklanan **BackupID**
 
     * Belirli bir tam veya değişiklik yedeklemesine geri yüklemek için:
@@ -207,12 +207,12 @@ Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için **
         RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
         ```
 
-        * `<DatabaseName>`-geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
-        * `<Timestamp>`-zaman içinde nokta geri yükleme 'nin tam zaman damgası
-        * `<DatabaseName@HostName>`-geri yükleme için yedekleme kullanılan veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmemesi gerekir.
+        * `<DatabaseName>` -geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
+        * `<Timestamp>` -zaman içinde nokta geri yükleme 'nin tam zaman damgası
+        * `<DatabaseName@HostName>` -geri yükleme için yedekleme kullanılan veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmemesi gerekir.
         * `<PathToGeneratedCatalogInStep3>`- **C adımında** oluşturulan katalog dosyasının yolu
-        * `<DataFileDir>`-tam yedeklemeleri içeren klasör
-        * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
+        * `<DataFileDir>` -tam yedeklemeleri içeren klasör
+        * `<LogFilesDir>` -günlük yedeklemelerini içeren klasör
         * `<BackupIdFromJsonFile>`- **C adımında** ayıklanan **BackupID**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Belirli bir zaman noktasına geri yükleme

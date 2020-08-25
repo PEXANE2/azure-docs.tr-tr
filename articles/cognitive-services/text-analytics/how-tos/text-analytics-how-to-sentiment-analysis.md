@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/18/2020
 ms.author: aahi
 ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84141254"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
@@ -23,13 +23,13 @@ Metin Analizi API'si Yaklaşım Analizi özelliği metni değerlendirir ve her t
 
 Bir yaklaşım analiz isteği gönderdikten sonra, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür.
 
-Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../text-analytics-supported-languages.md).
+Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [desteklenen diller](../text-analytics-supported-languages.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Sürümler ve Özellikler Yaklaşım Analizi
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Öne çıkan özelliği                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
+| Özellik                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Tek ve toplu istekler için Yöntemler    | X                     | X                                 |
 | Yaklaşım puanları ve etiketleme             | X                     | X                                 |
@@ -57,7 +57,7 @@ Fikrinizi araştırma, 3,1-Preview. 1 ' den başlayarak Yaklaşım Analizi bir �
 
 Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personel daha kolay değildi" gibi bir otel hakkında geri bildirim bırakırsa, feedback araştırma, metindeki yönleri ve bunlarla ilişkili ek ve duyguları bulur:
 
-| Nitelik | İzi    | Yaklaşım |
+| Görünüş | İzi    | Yaklaşım |
 |--------|------------|-----------|
 | Oda   | alanları      | pozitif  |
 | personeli  | değişikliklerinden | negatif  |
@@ -68,7 +68,7 @@ Sonuçlarınızda dikkatli araştırma elde etmek için, `opinionMining=true` ba
 
 ### <a name="preparation"></a>Hazırlık
 
-Yaklaşım analizi, üzerinde çalışmak üzere daha az miktarda metin verdiğiniz zaman daha yüksek kalitede bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
+Yaklaşım analizi, üzerinde çalışmak üzere daha az miktarda metin verdiğiniz zaman daha yüksek kalitede bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları almak için, girişleri buna göre yeniden yapılandırmayı göz önünde bulundurun.
 
 Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
 

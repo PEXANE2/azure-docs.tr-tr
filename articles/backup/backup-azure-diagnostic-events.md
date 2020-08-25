@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612631"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763533"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -29,7 +29,7 @@ Azure Backup aşağıdaki tanılama olaylarını sağlar. Her olay, belirli bir 
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-[Eski Event](#legacy-event) AzureBackupReport kullanıyorsanız, en erken yukarıdaki olayları kullanmaya geçmeniz önerilir.
+Hala [eski Event](#legacy-event) AzureBackupReport kullanıyorsanız, yukarıdaki olayları kullanmaya geçiş yapmanızı öneririz.
 
 Daha fazla bilgi için bkz. [Azure Backup tanılama olayları Için veri modeli](./backup-azure-reports-data-model.md).
 

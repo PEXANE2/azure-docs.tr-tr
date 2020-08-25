@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84680329"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
@@ -21,13 +21,13 @@ ms.locfileid: "84680329"
 1. Varsayılan değeri (bir GUID) ile değiştirin `api` ve ardından **Kaydet**' i seçin. Tam URI gösterilir ve biçiminde olmalıdır `https://your-tenant-name.onmicrosoft.com/api` . Web uygulamanız API için bir erişim belirteci istediğinde, bu URI 'yi API için tanımladığınız her bir kapsamın ön eki olarak eklemesi gerekir.
 1. **Bu API tarafından tanımlanan kapsamlar**altında **Kapsam Ekle**' yi seçin.
 1. API 'ye okuma erişimini tanımlayan bir kapsam oluşturmak için aşağıdaki değerleri girin, ardından **Kapsam Ekle**' yi seçin:
-    1. **Kapsam adı**:`demo.read`
-    1. **Yönetici onayı görünen adı**:`Read access to demo API`
-    1. **Yönetici onay açıklaması**:`Allows read access to the demo API`
+    1. **Kapsam adı**: `demo.read`
+    1. **Yönetici onayı görünen adı**: `Read access to demo API`
+    1. **Yönetici onay açıklaması**: `Allows read access to the demo API`
 1. **Kapsam Ekle**' yi SEÇIN, API 'ye yazma erişimini tanımlayan bir kapsam eklemek için aşağıdaki değerleri girin ve ardından **Kapsam Ekle**' yi seçin:
-    1. **Kapsam adı**:`demo.write`
-    1. **Yönetici onayı görünen adı**:`Write access to demo API`
-    1. **Yönetici onay açıklaması**:`Allows write access to the demo API`
+    1. **Kapsam adı**: `demo.write`
+    1. **Yönetici onayı görünen adı**: `Write access to demo API`
+    1. **Yönetici onay açıklaması**: `Allows write access to the demo API`
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 

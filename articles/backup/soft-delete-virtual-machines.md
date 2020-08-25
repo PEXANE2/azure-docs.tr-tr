@@ -4,12 +4,12 @@ description: Sanal makinelerin geçici silme işlemlerini yedeklemelerin daha g�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503549"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763703"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
 
@@ -38,7 +38,7 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
    ![Azure portal ekran görüntüsü, geçici silme durumunda VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Kasada geçici olarak silinen yedekleme öğeleri varsa, kasa bu anda silinemez. Lütfen yedekleme öğeleri kalıcı olarak silindikten sonra kasa silme işlemini deneyin ve kasada geçici olarak silinmiş durumda bir öğe yok.
+   > Kasada geçici olarak silinen yedekleme öğeleri varsa, kasa bu anda silinemez. Yedekleme öğeleri kalıcı olarak silindikten sonra kasayı silmeyi deneyin ve kasada geçici olarak silinmiş durumda bir öğe yok.
 
 4. Geçici olarak silinen VM 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen VM 'yi seçin ve sonra **silmeyi geri al**seçeneğini belirleyin.
 
@@ -110,7 +110,7 @@ Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' olarak döndürülec
 ## <a name="soft-delete-for-vms-using-rest-api"></a>REST API kullanarak VM 'Ler için geçici silme
 
 - [Burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedekleri silin.
-- Kullanıcı bu silme işlemlerini geri almayı istiyorsa, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)bahsedilen adımlara bakın.
+- Kullanıcı bu silme işlemlerini geri almayı istiyorsa, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)bahsedilen adımlara bakın.
 
 ## <a name="how-to-disable-soft-delete"></a>Geçici silme devre dışı bırakma
 

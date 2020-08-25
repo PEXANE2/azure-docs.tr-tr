@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84310011"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
@@ -31,7 +31,7 @@ Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar pane
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Hiçbiri
+- Yok
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 

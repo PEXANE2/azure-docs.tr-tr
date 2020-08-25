@@ -2,18 +2,18 @@
 title: Konuma göre Microsoft Azure Stack Edge güç kablosu teknik belirtimleri | Microsoft Docs
 description: Azure Stack Edge güç larınızın teknik belirtimleri hakkında bilgi edinin.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: v-grpr
-ms.openlocfilehash: 2fb28bcb1edb9a18b4d1628e211f87f2c772ef80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664658"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783986"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge güç kablosu belirtimleri
 

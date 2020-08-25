@@ -3,13 +3,15 @@ title: Azure Kubernetes Service (AKS) üzerinde GPU 'ları kullanma
 description: Azure Kubernetes Service (AKS) üzerinde yüksek performanslı işlem veya grafik kullanımı yoğun iş yükleri için GPU 'ları nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213187"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749144"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
@@ -117,6 +119,65 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>AKS özel GPU görüntüsünü kullanma (Önizleme)
+
+Bu adımlara alternatif olarak, AKS, [Kubernetes Için NVIDIA cihaz eklentisini][nvidia-github]zaten içeren tam olarak yapılandırılmış bir aks görüntüsü sağlar.
+
+> [!WARNING]
+> Yeni AKS özel GPU görüntüsünü kullanarak kümeler için, NVıDıA cihaz eklentisi Daemon kümesini el ile yüklememelisiniz.
+
+
+Özelliği kaydedin `GPUDedicatedVHDPreview` :
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Aks-Preview CLı uzantısını yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Yeni kümelerde AKS özel GPU görüntüsünü kullanma (Önizleme)
+
+Kümeyi, küme oluşturulduğunda, AKS özel GPU görüntüsünü kullanacak şekilde yapılandırın. `--aks-custom-headers`AKS özel GPU görüntüsünü kullanmak için yeni KÜMENIZDEKI GPU Aracısı düğümlerinin bayrağını kullanın.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Normal AKS görüntülerini kullanarak bir küme oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . Ayrıca, aşağıdaki gibi daha özelleştirilmiş GPU düğüm havuzları eklemeyi de seçebilirsiniz.
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>Mevcut kümelerde AKS özel GPU görüntüsünü kullanma (Önizleme)
+
+AKS özel GPU görüntüsünü kullanmak için yeni bir düğüm havuzu yapılandırın. `--aks-custom-headers`AKS özel GPU görüntüsünü kullanmak için yeni düğüm havuzunuzdaki GPU Aracısı düğümlerinin bayrak bayrağını kullanın.
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Normal AKS görüntülerini kullanarak bir düğüm havuzu oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . 
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>GPU 'Ların zamanlanabilen olduğunu onaylayın
 

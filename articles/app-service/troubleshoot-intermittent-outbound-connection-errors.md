@@ -6,13 +6,13 @@ manager: barbkess
 ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447918"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763567"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -52,7 +52,7 @@ SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerini
 
 Farklı çözüm yığınına göre bağlantı havuzu uygulama bağlantılarının bir koleksiyonu aşağıda verilmiştir.
 
-#### <a name="node"></a>Düğüm
+#### <a name="node"></a>Node
 
 Varsayılan olarak, NodeJS bağlantıları etkin tutulmaz. Aşağıda, bunların nasıl uygulanacağını gösteren örnekler içeren bağlantı havuzlaması için popüler veritabanları ve paketler verilmiştir.
 
@@ -120,7 +120,7 @@ Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlay
 * Bir [Yük testi](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) , gerçek dünya verilerinin kararlı bir besleme hızında benzetimini yapmanız gerekir. Uygulamaları ve işlevleri gerçek dünya stres altında test etmek, SNAT bağlantı noktası tükenmesi sorunlarını önceden tanımlayabilir ve çözümleyebilir.
 * Arka uç hizmetlerinin yanıtları hızlıca döndürebildiğini doğrulayın. Azure SQL veritabanı ile ilgili sorun giderme performansı sorunlarını [gidermek için akıllı içgörüler Azure SQL veritabanı performans sorunlarını giderme](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)makalesini inceleyin.
 * App Service planını daha fazla örneğe ölçeklendirin. Ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure App Service bir uygulamayı ölçeklendirme](https://docs.microsoft.com/azure/app-service/manage-scale-up). Bir App Service planındaki her çalışan örneğine bir dizi SNAT bağlantı noktası ayrılır. Kullanımınızı daha fazla örneğe yaydıysanız, benzersiz bir uzak uç nokta başına önerilen 100 giden bağlantı sınırının altında her örnek için SNAT bağlantı noktası kullanımını alabilirsiniz.
-* Tek bir giden IP adresi tahsis ettiğiniz ve bağlantı ve SNAT bağlantı noktalarının sınırları çok daha yüksek olduğu [App Service ortamı (Ao)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)' a geçmeyi göz önünde bulundurun.
+* Tek bir giden IP adresi tahsis ettiğiniz ve bağlantı ve SNAT bağlantı noktalarının sınırları çok daha yüksek olduğu [App Service ortamı (Ao)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)' a geçmeyi göz önünde bulundurun. Bir ASO 'da, örnek başına SNAT bağlantı noktası sayısı, [Azure yük dengeleyici ön tahsisi tablosuna](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) dayalıdır. örneğin, 1-50 çalışan örneklerine sahip bir Aken, örnek başına 1024 ' den fazla ayrılmış bağlantı noktasına sahip olsa da, 51-100 çalışan örneklerine sahıp bir Ao, örnek başına 512 preallocation Port 'a sahiptir.
 
 Sınırlar, çalışanlarınızın boyutuna göre ayarlandığından, giden TCP sınırlarının çözülmesini daha kolay hale getirir. Sınır, [VM 'Ler arası sayısal sınırlara göre sınırları görebilir-TCP bağlantıları](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 

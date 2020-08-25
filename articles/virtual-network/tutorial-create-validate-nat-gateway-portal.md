@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84417846"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
@@ -83,7 +83,7 @@ Ayrıca, bu VM 'yi ortak IP olmadan oluşturabilir ve bir alıştırma olarak ge
 
 4. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve **Oluştur**' a tıklayın.
 
@@ -105,7 +105,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
     | ------- | ----- |
     | IP sürümü | **IPv4** seçin.
     | SKU | **Standart**' ı seçin.
-    | Name | **Mypublicipsource**girin. |
+    | Ad | **Mypublicipsource**girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Myresourcegroupnat**öğesini seçin. |
     | Konum | **Doğu ABD 2**’yi seçin.|
@@ -147,7 +147,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
    - **Sanal ağ**: **myresourcegroupnat**  >  **myvnetsource**öğesini seçin.
    - **Alt ağ adı**: **mysubnetsource**seçeneğinin yanındaki kutuyu seçin.
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -200,7 +200,7 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 4. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 

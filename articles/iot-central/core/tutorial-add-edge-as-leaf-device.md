@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84417605"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Central IoT Edge cihaz oluşturma
 > * Bir Linux sanal makinesine sanal bir IoT Edge cihazı dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Özel uygulama **> özel uygulama** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md) hızlı başlangıcı ' nı doldurun.
 
@@ -36,7 +36,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için etkin bir Azure aboneliğin
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-IoT Edge bildirim dosyasını GitHub 'dan indirin. Aşağıdaki bağlantıya sağ tıklayıp **Bağlantıyı farklı kaydet**' i seçin: [environmentalsensormanifest. JSON](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+IoT Edge bildirim dosyasını GitHub 'dan indirin. Aşağıdaki bağlantıya sağ tıklayın ve sonra **Bağlantıyı farklı kaydet**' i seçin: [EnvironmentalSensorManifest.js](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
 
 ## <a name="create-device-template"></a>Cihaz şablonu oluştur
 
@@ -50,7 +50,7 @@ IoT Edge bildiriminden bir cihaz şablonu oluşturmak için:
 
 1. **Şablon türü seç** sayfasında **Azure IoT Edge** kutucuğunu seçin. Ardından **İleri: Özelleştir**' i seçin.
 
-1. **Azure IoT Edge dağıtım bildirimini karşıya yükle** sayfasında, cihaz şablonu adı olarak *çevresel algılayıcı Edge cihazını* girin. Daha önce indirdiğiniz **Environmentalsensormanifest. JSON** ' ı karşıya yüklemek için **Gözden** geçirme ' yi seçin. Sonra Ileri ' yi seçin **: İnceleme**.
+1. **Azure IoT Edge dağıtım bildirimini karşıya yükle** sayfasında, cihaz şablonu adı olarak *çevresel algılayıcı Edge cihazını* girin. Ardından, daha önce indirdiğinizEnvironmentalSensorManifest.jskarşıya yüklemek için, **Gözden** geçirme ** '** yi seçin. Sonra Ileri ' yi seçin **: İnceleme**.
 
 1. **İnceleme** sayfasında **Oluştur**' u seçin.
 
@@ -140,11 +140,11 @@ IoT Edge cihazını Bu öğreticide daha sonra dağıtırken, cihazın IoT Centr
 
 1. **Cihaz** sayfasında, oluşturduğunuz aygıtı seçin.
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan**’ı seçin.
 
 1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı**, **cihaz kimliği**ve **birincil anahtarı**bir yere unutmayın. Bu değerleri daha sonra kullanırsınız.
 
-1. **Kapat**'ı seçin.
+1. **Kapat**’ı seçin.
 
 Artık, bir IoT Edge cihazının bağlanmasını sağlamak için IoT Central uygulamanızı yapılandırmayı tamamladınız.
 
@@ -152,7 +152,7 @@ Artık, bir IoT Edge cihazının bağlanmasını sağlamak için IoT Central uyg
 
 Bu öğreticide, bir IoT Edge cihazının benzetimini yapmak için Azure 'da oluşturulan Azure IoT Edge özellikli bir Linux VM kullanırsınız. Azure aboneliğinizde IoT Edge özellikli VM oluşturmak için şunu tıklatın:
 
-[![Iotedge-VM-Deploy için Azure 'a dağıtma düğmesi](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+[![iotedge-vm-deploy için Azure Düğmesini dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 **Özel dağıtım** sayfasında:
 
@@ -228,7 +228,7 @@ Sanal makinede IoT Edge yapılandırmak için, IoT Central uygulamanıza kaydolm
     ```
 
     > [!TIP]
-    > Önünde boşluk olmadığından emin olun`provisioning:`
+    > Önünde boşluk olmadığından emin olun `provisioning:`
 
 1. `{scope_id}`Daha önce bir notunuz yaptığınız **kimlik kapsamıyla** değiştirin.
 

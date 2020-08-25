@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522853"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763499"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | İşlem | Hata ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Geri Yükleme | **Hata kodu**: CBPServerRegisteredVaultDontMatchWithCurrent/kasa kimlik bilgileri hatası: 100110 <br/> <br/>**Hata iletisi**: özgün ve dış DPM sunucularının aynı kasaya kayıtlı olması gerekir | **Neden**: Bu sorun, dış DPM kurtarma seçeneğini kullanarak dosyaları özgün sunucudan alternatif sunucuya geri yüklemeye çalışırken ve Kurtarılmakta olan sunucu ve verilerin yedeklendiği orijinal sunucu aynı kurtarma hizmeti kasasıyla ilişkilendirilmediğinde oluşur.<br/> <br/>**Geçici çözüm** Bu sorunu çözmek için hem özgün hem de alternatif sunucunun aynı kasaya kayıtlı olduğundan emin olun.|
+| Geri Yükleme | **Hata kodu**: CBPServerRegisteredVaultDontMatchWithCurrent/kasa kimlik bilgileri hatası: 100110 <br/> <br/>**Hata iletisi**: özgün ve dış DPM sunucularının aynı kasaya kayıtlı olması gerekir | **Neden**: Bu sorun, dış DPM kurtarma seçeneğini kullanarak dosyaları özgün sunucudan alternatif sunucuya geri yüklemeye çalışırken ve Kurtarılmakta olan sunucu ve verilerin yedeklendiği orijinal sunucu aynı kurtarma hizmetleri kasasıyla ilişkilendirilmediğinde oluşur.<br/> <br/>**Geçici çözüm** Bu sorunu çözmek için hem özgün hem de alternatif sunucunun aynı kasaya kayıtlı olduğundan emin olun.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM için çevrimiçi kurtarma noktası oluşturma işleri başarısız oluyor
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Koruma gruplarını yapılandırma | DPM, korumalı bilgisayardaki (korunan bilgisayar adı) uygulama bileşenini numaralandıramadı. | İlgili veri kaynağı/bileşen düzeyindeki koruma grubunu yapılandırma kullanıcı arabirimi ekranında **Yenile** ' yi seçin. |
 | Koruma gruplarını yapılandırma | Koruma yapılandırılamıyor | Korumalı sunucu bir SQL Server ise, [Bu makalede](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)açıklandığı gibi korunan bilgisayardaki sistem hesabına (NTAuthority\System adlı) sysadmin rolü izinlerinin sağlandığını doğrulayın.
 | Koruma gruplarını yapılandırma | Bu koruma grubu için depolama havuzunda yeterli boş alan yok. | Depolama havuzuna eklenen diskler [bir bölüm içermemelidir](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Disklerde var olan tüm birimleri silin. Ardından bunları depolama havuzuna ekleyin.|
-| İlke değişikliği |Yedekleme ilkesi değiştirilemedi. Hata: geçerli işlem, [0x29834] iç hizmet hatası nedeniyle başarısız oldu. Lütfen bir süre geçtikten sonra işlemi yeniden deneyin. Sorun devam ederse, Microsoft desteğine başvurun. | **Sağlamak**<br/>Bu hata üç koşulda oluşur: güvenlik ayarları etkinleştirildiğinde, daha önce belirtilen minimum değerlerin altındaki saklama aralığını azaltmaya çalıştığınızda ve desteklenmeyen bir sürümdayken. (Desteklenmeyen sürümler Microsoft Azure Backup Server Version 2.0.9052 ve Azure Backup Sunucusu Update 1 ' dir.) <br/>**Önerilen eylem:**<br/> İlkeyle ilgili güncelleştirmelerle devam etmek için, belirtilen en düşük bekletme döneminin üzerindeki saklama süresini ayarlayın. (En düşük saklama süresi günlük için yedi gün, haftalık dört hafta, aylık veya yıllık yılda bir yıl için üç hafta) <br><br>İsteğe bağlı olarak, başka bir tercih edilen yaklaşım yedekleme aracısını güncelleştirmek ve tüm güvenlik güncelleştirmelerinden yararlanmak için Azure Backup Sunucusu. |
+| İlke değişikliği |Yedekleme ilkesi değiştirilemedi. Hata: geçerli işlem, [0x29834] iç hizmet hatası nedeniyle başarısız oldu. Lütfen bir süre geçtikten sonra işlemi yeniden deneyin. Sorun devam ederse, Microsoft desteğine başvurun. | **Sağlamak**<br/>Bu hata üç koşulda oluşur: güvenlik ayarları etkinleştirildiğinde, daha önce belirtilen minimum değerlerin altındaki saklama aralığını azaltmaya çalıştığınızda ve desteklenmeyen bir sürümdayken. (Desteklenmeyen sürümler Microsoft Azure Backup Server Version 2.0.9052 ve Azure Backup Sunucusu Update 1 ' den daha düşüktür.) <br/>**Önerilen eylem:**<br/> İlkeyle ilgili güncelleştirmelerle devam etmek için, belirtilen en düşük bekletme döneminin üzerindeki saklama süresini ayarlayın. (En düşük saklama süresi günlük için yedi gün, haftalık dört hafta, aylık veya yıllık yılda bir yıl için üç hafta) <br><br>İsteğe bağlı olarak, başka bir tercih edilen yaklaşım yedekleme aracısını güncelleştirmek ve tüm güvenlik güncelleştirmelerinden yararlanmak için Azure Backup Sunucusu. |
 
 ## <a name="backup"></a>Backup
 

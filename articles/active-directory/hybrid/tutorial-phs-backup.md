@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "64919000"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Öğretici: Azure AD Connect AD FS için bir yedekleme olarak e-s ayarlama
@@ -29,7 +29,7 @@ Aşağıdaki öğreticide, Parola karması eşitlemesini yedekleme olarak ayarla
 >[!NOTE]
 >Azure AD Connect sunucusuna erişiminiz yok veya sunucunun internet erişimi yok durumunda, Azure AD tarafında yapılan değişikliklere yardımcı olmak için [Microsoft desteği](https://support.microsoft.com/en-us/contactus/) başvurabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğretici [öğreticiye dayanır: tek BIR ad ormanı ortamını buluta Federasyonun](tutorial-federation.md) ve bu öğreticiyi denemeden önce bir önkoşul vardır.  Bu öğreticiyi tamamlamadıysanız, bu belgedeki adımları denemeden önce bunu yapın.
 
 >[!IMPORTANT]

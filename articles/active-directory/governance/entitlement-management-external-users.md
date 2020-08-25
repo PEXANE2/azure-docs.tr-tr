@@ -16,26 +16,26 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338207"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783867"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
-Azure AD Yetkilendirme Yönetimi, kuruluşunuzun dışındaki kişilerle işbirliği yapmak için [Azure AD işletmeden işletmeye (B2B)](../b2b/what-is-b2b.md) kullanır. Azure AD B2B ile dış kullanıcılar kendi giriş dizinlerinde kimlik doğrular, ancak dizininizde bir temsili vardır. Dizininizdeki Gösterim, kullanıcıya kaynaklarınıza erişim atanmasına olanak sağlar.
+Azure AD Yetkilendirme Yönetimi, kuruluşunuzun dışındaki kişilerle işbirliği yapmak için [Azure AD işletmeden işletmeye (B2B)](../external-identities/what-is-b2b.md) kullanır. Azure AD B2B ile dış kullanıcılar kendi giriş dizinlerinde kimlik doğrular, ancak dizininizde bir temsili vardır. Dizininizdeki Gösterim, kullanıcıya kaynaklarınıza erişim atanmasına olanak sağlar.
 
 Bu makalede, dış kullanıcılara erişimi yönetmek için belirtebileceğiniz ayarlar açıklanmaktadır.
 
 ## <a name="how-entitlement-management-can-help"></a>Yetkilendirme Yönetimi nasıl yardımcı olabilir
 
-[Azure AD B2B](../b2b/what-is-b2b.md) davet deneyimini kullanırken, kaynak dizininize getirmek istediğiniz dış konuk kullanıcıların e-posta adreslerini zaten bilmeniz ve ile çalışmanız gerekir. Bu, daha küçük veya kısa süreli bir proje üzerinde çalışırken ve tüm katılımcıları zaten öğrendiğinizde harika bir şekilde çalışır, ancak birlikte çalışmak istediğiniz çok sayıda kullanıcınız varsa veya katılımcılar zaman içinde değişiyorlarsa yönetimi daha zordur.  Örneğin, başka bir kuruluşla çalışıyor ve bu kuruluşla tek bir iletişim noktasına sahip olabilirsiniz, ancak bu kuruluştan daha fazla ek kullanıcının da erişime ihtiyacı olacaktır.
+[Azure AD B2B](../external-identities/what-is-b2b.md) davet deneyimini kullanırken, kaynak dizininize getirmek istediğiniz dış konuk kullanıcıların e-posta adreslerini zaten bilmeniz ve ile çalışmanız gerekir. Bu, daha küçük veya kısa süreli bir proje üzerinde çalışırken ve tüm katılımcıları zaten öğrendiğinizde harika bir şekilde çalışır, ancak birlikte çalışmak istediğiniz çok sayıda kullanıcınız varsa veya katılımcılar zaman içinde değişiyorlarsa yönetimi daha zordur.  Örneğin, başka bir kuruluşla çalışıyor ve bu kuruluşla tek bir iletişim noktasına sahip olabilirsiniz, ancak bu kuruluştan daha fazla ek kullanıcının da erişime ihtiyacı olacaktır.
 
 Yetkilendirme Yönetimi sayesinde, belirttiğiniz kuruluşların kullanıcılarının bir erişim paketini kendi kendinize isteyebilmesini sağlayan bir ilke tanımlayabilirsiniz. Onayın gerekli olup olmadığını ve erişim için bir sona erme tarihi belirtebilirsiniz. Onay gerekiyorsa, dış kuruluştan bir veya daha fazla kullanıcıyı bir veya daha fazla kullanıcı için bir veya daha fazla kullanıcıyı kendi kuruluşlarından hangi dış kullanıcıların erişmesi gerektiğini öğrendiklerinden, bunları onaylayan olarak belirleyebilirsiniz. Erişim paketini yapılandırdıktan sonra, erişim paketinin bağlantısını dış kuruluşta kişi kişiniz (sponsor) gönderebilirsiniz. Bu iletişim, dış kuruluştaki diğer kullanıcılarla paylaşabilir ve bu bağlantıyı, erişim paketini istemek için kullanabilir. Bu kuruluştan, dizininizden zaten davet edilmiş olan kullanıcılar da bu bağlantıyı kullanabilir.
 
-Bir istek onaylandığında, Yetkilendirme Yönetimi kullanıcıya gerekli erişimi sağlayacak ve bu kullanıcılar zaten dizininizden değilse kullanıcıyı davet edebilir. Azure AD, bunlar için otomatik olarak bir B2B Konuk hesabı oluşturur. Bir yöneticinin daha önce hangi kuruluşların işbirliği için izin verileceğini sınırlı olabileceğini, diğer kuruluşlara yönelik olarak bir [B2B izin verme veya reddetme listesi](../b2b/allow-deny-list.md) ayarlanmasına izin vermek veya engellemek için  Kullanıcıya izin verilenler veya engellenenler listesi tarafından izin verilmezse, bunlar davet edilmeyecektir.
+Bir istek onaylandığında, Yetkilendirme Yönetimi kullanıcıya gerekli erişimi sağlayacak ve bu kullanıcılar zaten dizininizden değilse kullanıcıyı davet edebilir. Azure AD, bunlar için otomatik olarak bir B2B Konuk hesabı oluşturur. Bir yöneticinin daha önce hangi kuruluşların işbirliği için izin verileceğini sınırlı olabileceğini, diğer kuruluşlara yönelik olarak bir [B2B izin verme veya reddetme listesi](../external-identities/allow-deny-list.md) ayarlanmasına izin vermek veya engellemek için  Kullanıcıya izin verilenler veya engellenenler listesi tarafından izin verilmezse, bunlar davet edilmeyecektir.
 
 Dış kullanıcının en son sonsuza kadar erişimini istemediğiniz için ilkede 180 gün gibi bir sona erme tarihi belirtirsiniz. 180 gün sonra, erişimleri genişletilmemişse, Yetkilendirme Yönetimi ilgili erişim paketiyle ilişkili tüm erişimi kaldırır. Varsayılan olarak, Yetkilendirme Yönetimi üzerinden davet edilen kullanıcının başka bir erişim paketi ataması yoksa, son atamalarını kaybederlerse, Konuk hesabının 30 gün boyunca oturum açması engellenir ve daha sonra kaldırılır. Bu, gereksiz hesapların uzamasını önler. Aşağıdaki bölümlerde açıklandığı gibi, bu ayarlar yapılandırılabilir.
 
@@ -57,7 +57,7 @@ Aşağıdaki diyagram ve adımlar, dış kullanıcılara bir erişim paketine er
 
 1. İstek, [teslim durumuna](entitlement-management-process.md)geçer.
 
-1. B2B davet işlemini kullanarak, dizininizde bir Konuk Kullanıcı hesabı (Bu örnekte**Istek sahibi a (konuk)** ) oluşturulur. Bir [izin verilenler listesi veya reddetme listesi](../b2b/allow-deny-list.md) tanımlanmışsa, liste ayarı uygulanır.
+1. B2B davet işlemini kullanarak, dizininizde bir Konuk Kullanıcı hesabı (Bu örnekte**Istek sahibi a (konuk)** ) oluşturulur. Bir [izin verilenler listesi veya reddetme listesi](../external-identities/allow-deny-list.md) tanımlanmışsa, liste ayarı uygulanır.
 
 1. Konuk kullanıcıya erişim paketindeki tüm kaynaklara erişim atanır. Azure AD 'de ve diğer Microsoft Online Services ya da bağlı SaaS uygulamalarına yapılan değişikliklerin yapılması biraz zaman alabilir. Daha fazla bilgi için bkz. [değişiklikler uygulandığında](entitlement-management-access-package-resources.md#when-changes-are-applied).
 
@@ -84,8 +84,8 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 - Konuklarınızın dizininize diğer konukları davet etmesini sağlamak, Konuk davetlerini yetkilendirme yönetiminin dışında gerçekleşebileceği anlamına gelir. Konukların yalnızca doğru şekilde yönetilen davetlere izin vermek için **Hayır** 'a **davet edebilmeleri** önerilir.
 - B2B izin verilenler listesini kullanıyorsanız, Yetkilendirme Yönetimi 'ni kullanarak ortak hale getirmek istediğiniz etki alanının listeye eklendiğinden emin olmanız gerekir. Alternatif olarak, B2B reddetme listesini kullanıyorsanız, ortak hale getirmek istediğiniz herhangi bir etki alanının listeye eklenmemiş olduğundan emin olmanız gerekir.
 - **Tüm kullanıcılar** için bir yetkilendirme yönetimi ilkesi oluşturursanız (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar), sahip olduğunuz tüm B2B izin verme veya reddetme listesi ayarları öncelikli olur. Bu nedenle, bir tane kullanıyorsanız, bu ilkeye dahil etmek istediğiniz etki alanlarını izin verilenler listenize dahil ettiğinizden emin olun ve reddetme listesi kullanıyorsanız bunları reddetme listenizden dışlayabilirsiniz.
-- **Tüm kullanıcıları** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) içeren bir yetkilendirme yönetimi ilkesi oluşturmak istiyorsanız, öncelikle dizininiz için bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
-- Azure AD B2B dış işbirliği ayarları hakkında daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../b2b/delegate-invitations.md).
+- **Tüm kullanıcıları** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) içeren bir yetkilendirme yönetimi ilkesi oluşturmak istiyorsanız, öncelikle dizininiz için bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
+- Azure AD B2B dış işbirliği ayarları hakkında daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../external-identities/delegate-invitations.md).
 
     ![Azure AD dış işbirliği ayarları](./media/entitlement-management-external-users/collaboration-settings.png)
 
@@ -97,17 +97,17 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>SharePoint Online dış paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize SharePoint Online siteleri eklemek istiyorsanız, kuruluş düzeyinde dış paylaşım ayarınızdaki **herkesin** (oturum açma gerektirmez) veya **yeni ve mevcut konuklarınızın** (konukların oturum açması veya bir doğrulama kodu sağlaması gerekir) ayarlanmış olduğundan emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Dış kullanıcılara yönelik erişim paketlerinize SharePoint Online siteleri eklemek istiyorsanız, kuruluş düzeyinde dış paylaşım ayarınızdaki **herkesin** (oturum açma gerektirmez) veya **yeni ve mevcut konuklarınızın** (konukların oturum açması veya bir doğrulama kodu sağlaması gerekir) ayarlanmış olduğundan emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Yetkilendirme Yönetimi dışında herhangi bir dış paylaşımı kısıtlamak istiyorsanız, dış paylaşım ayarını **var olan konuklara**ayarlayabilirsiniz. Daha sonra, yalnızca Yetkilendirme Yönetimi üzerinden davet edilen yeni kullanıcılar bu sitelere erişim kazanabilecektir. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Yetkilendirme Yönetimi dışında herhangi bir dış paylaşımı kısıtlamak istiyorsanız, dış paylaşım ayarını **var olan konuklara**ayarlayabilirsiniz. Daha sonra, yalnızca Yetkilendirme Yönetimi üzerinden davet edilen yeni kullanıcılar bu sitelere erişim kazanabilecektir. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Site düzeyi ayarlarının konuk erişimi (daha önce listelenen seçenek seçimlerini de) etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [site için dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+- Site düzeyi ayarlarının konuk erişimi (daha önce listelenen seçenek seçimlerini de) etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [site için dış Paylaşımı açma veya kapatma](/sharepoint/change-external-sharing-site).
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Microsoft 365 Grubu Paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize Microsoft 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Dış kullanıcılara yönelik erişim paketlerinize Microsoft 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft 365 gruplarına konuk erişimini yönetme](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Dış kullanıcıların SharePoint Online sitesine ve bir Microsoft 365 grubuyla ilişkili kaynaklara erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Dış kullanıcıların SharePoint Online sitesine ve bir Microsoft 365 grubuyla ilişkili kaynaklara erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - PowerShell 'de dizin düzeyinde Microsoft 365 Gruplar için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 

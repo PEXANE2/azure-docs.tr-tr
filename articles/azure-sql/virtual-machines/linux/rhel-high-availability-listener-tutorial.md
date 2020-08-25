@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84343776"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
@@ -57,11 +57,11 @@ Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availabilit
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
+   | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç** |
    | **Sanal ağ** |Oluşturulan varsayılan sanal ağ **VM1VNET**olarak adlandırılmalıdır. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. Varsayılan değer **VM1Subnet**olmalıdır.|
-   | **IP adresi ataması** |**Se** |
+   | **IP adresi ataması** |**Static** |
    | **Özel IP adresi** |`virtualip`Kümede oluşturulan IP adresini kullanın. |
    | **Abonelik** |Kaynak grubunuz için kullanılan aboneliği kullanın. |
    | **Kaynak grubu** |SQL Server örneklerinin bulunduğu kaynak grubunu seçin. |
@@ -98,13 +98,13 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
+   | **Ad** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
    | **Protokol** |**TCP** |
-   | **Bağ** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
-   | **Interval** |*5* |
-   | **Sağlıksız durum eşiği** |*2* |
+   | **Bağlantı noktası** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
+   | **Aralık** |*5* |
+   | **İyi durumda olmayan durum eşiği** |*2* |
 
-4.  **Tamam**'a tıklayın. 
+4.  **Tamam** düğmesine tıklayın. 
 
 5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
@@ -127,18 +127,18 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
+   | **Ad** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
    | **Protokol** |**TCP** |
-   | **Bağ** |*1433* |
+   | **Bağlantı noktası** |*1433* |
    | **Arka uç bağlantı noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
    | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
-   | **Oturum kalıcılığı** |**Yok** |
+   | **Oturum kalıcılığı** |**Hiçbiri** |
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
    | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
    :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
 
-4. **Tamam**'a tıklayın. 
+4. **Tamam** düğmesine tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.
@@ -176,7 +176,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
 
     ```output
     Location Constraints:

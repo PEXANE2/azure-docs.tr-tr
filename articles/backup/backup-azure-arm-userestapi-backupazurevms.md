@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 48b5a8c596ec5b23d2962acb9c1f95a1d5aafbc0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761687"
+ms.locfileid: "88762887"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -445,9 +445,9 @@ Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamla
 |202 kabul edildi     |         |     Kabul edildi    |
 
 > [!IMPORTANT]
-> Yanlışlıkla silme senaryolarına karşı korunmak için, kurtarma hizmetleri Kasası için bir [geçici silme özelliği](use-restapi-update-vault-properties.md#soft-delete-state) bulunur. Kasanın geçici silme durumu etkin olarak ayarlandıysa, silme işlemi verileri hemen silmez. 14 gün boyunca tutulur ve sonra kalıcı olarak temizlenir. Bu 14 günlük dönem için müşteri, depolama için ücretlendirilmez. Silme işlemini geri almak için [geri al-Sil bölümüne](#undo-the-stop-protection-and-delete-data)bakın.
+> Yanlışlıkla silme senaryolarına karşı korunmak için, kurtarma hizmetleri Kasası için bir [geçici silme özelliği](use-restapi-update-vault-properties.md#soft-delete-state) bulunur. Kasanın geçici silme durumu etkin olarak ayarlandıysa, silme işlemi verileri hemen silmez. 14 gün boyunca tutulur ve sonra kalıcı olarak temizlenir. Bu 14 günlük dönem için müşteri, depolama için ücretlendirilmez. Silme işlemini geri almak için [geri al-Sil bölümüne](#undo-the-deletion)bakın.
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>Korumayı durdurma ve verileri silme işlemini geri alma
+### <a name="undo-the-deletion"></a>Silmeyi geri al
 
 Yanlışlıkla silmenin geri alınması, yedekleme öğesinin oluşturulmasına benzer. Silme işlemini geri aldıktan sonra, öğe korunur ancak gelecekteki yedeklemeler tetiklenmez.
 

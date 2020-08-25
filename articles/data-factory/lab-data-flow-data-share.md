@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85252687"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
@@ -176,7 +176,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. İşlem hattı tuvalinin Etkinlikler bölmesinde **taşıma ve dönüştürme** Accordion ' ı açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
     ![Portal](media/lab-data-flow-data-share/dataflow1.png)
-1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**'a tıklayın.
+1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam** düğmesine tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/dataflow2.png)
 1. Dönüştürme mantığınızı oluşturacağınız veri akışı tuvaline yönlendirilirsiniz. Genel sekmesinde, veri akışınızı ' Joinandadggregatedata ' olarak adlandırın.
@@ -372,7 +372,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![Veri kümesi ekle](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. **İleri** Seç
+1. **İleri**’yi seçin
 
 1. *Wwtaxidata*öğesini genişletin. *Boston vergi verileri*' ni genişletin. Dosya düzeyinde paylaşılacağını fark edebilirsiniz. 
 
@@ -382,7 +382,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
 1. Eklenmiş veri kümelerini gözden geçirin. Veri paylaşımınıza bir SQL tablosu ve bir ADLSGen2 klasörü eklemiş olmanız gerekir. 
 
-1. **Devam et** 'i seçin
+1. **Devam**'ı seçin
 
 1. Bu ekranda, veri paylaşımınıza alıcı ekleyebilirsiniz. Eklediğiniz alıcılara veri paylaşımınıza davetiye gönderilir. Bu laboratuvarın amacı için 2 e-posta adresi eklemeniz gerekir:
 
@@ -396,7 +396,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
 1. *Yinelenme* açılan listesini kullanarak **anlık görüntü zamanlamasını** denetleyin ve verilerinizin saatlik olarak yenilenmesini yapılandırın.  
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     Artık etkin bir veri paylaşımınız var. Veri paylaşma oluştururken veri sağlayıcısı olarak neleri görebileceğinize ilişkin incelemeye izin verir. 
 

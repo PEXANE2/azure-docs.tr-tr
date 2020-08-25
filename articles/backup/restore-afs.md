@@ -3,12 +3,12 @@ title: Azure dosya paylaşımlarını geri yükleme
 description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761857"
+ms.locfileid: "88762835"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
@@ -59,7 +59,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
     ![Geri yükleme noktası seç](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >Varsayılan olarak, **geri yükleme noktası seç** bölmesi son 30 günden geri yükleme noktalarını listeler. Belirli bir süre içinde oluşturulan geri yükleme noktalarına bakmak isterseniz, lütfen uygun **başlangıç saatini** ve **bitiş saatini** seçip **Yenile** düğmesine tıklayın.
+    >Varsayılan olarak, **geri yükleme noktası seç** bölmesi son 30 günden geri yükleme noktalarını listeler. Belirli bir süre içinde oluşturulan geri yükleme noktalarına bakmak isterseniz, uygun **başlangıç saatini** ve **bitiş saatini** seçerek aralığı belirtin ve **Yenile** düğmesine tıklayın.
 
 1. Sonraki adım **geri yükleme konumunu**seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
 

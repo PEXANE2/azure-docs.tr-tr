@@ -4,10 +4,10 @@ description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85315611"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
@@ -16,7 +16,7 @@ Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetley
 
 Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlere ayıran Azure Stream Analytics veri akışını gerçek zamanlı olarak okur ve sonra geçersiz olarak etiketlenen işlemleri görsel olarak tanımlamak için Power BI kullanırsınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Olay hub’ı oluşturma
@@ -180,7 +180,7 @@ Artık olay hub'ınıza veri akışını başlatabilirsiniz. Bu verileri bir Pow
 
    ![Yeni bir Azure Stream Analytics işi oluşturma işleminin gösterildiği ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**'a tıklayın. 
+    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**’a tıklayın. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -314,7 +314,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    **İleri**’ye tıklayın.
 
-10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Uygula**'ya tıklayın. Kutucuk, panonuza kaydedilir.
+10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Uygula**’ya tıklayın. Kutucuk, panonuza kaydedilir.
 
     ![Pano kutucuğu için başlık ve alt başlık belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -322,7 +322,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
     > Örnek uygulamayı ve veri akışını Olay Hub 'ına çalıştırdığınızda, bu kutucukta bulunan sayı hızlı bir şekilde değişir (her saniye). Bunun nedeni, Stream Analytics sorgusunun değeri **her saniye**güncelleyen şeydir. Son birkaç dakika içinde toplamı görmek için sorguyu 3 dakikalık bir pencereye güncelleştirin. 
 11. Başka bir görselleştirme ekleyin. İlk birkaç adımı tekrarlayın:
 
-    * **Kutucuk Ekle**'ye tıklayın.
+    * **Kutucuk Ekle**’ye tıklayın.
     * **Özel Akış Verileri**'ni seçin. 
     * **İleri**’ye tıklayın.
     * Veri kümenizi seçin ve **İleri**'ye tıklayın. 

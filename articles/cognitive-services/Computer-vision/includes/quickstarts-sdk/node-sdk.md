@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d025057cf8992e1dc54a0fd4a07814c7cbb13d3
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841786"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748850"
 ---
 <a name="HOLTop"></a>
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org/) geçerli sürümü
@@ -208,9 +208,9 @@ Yardımcı işlevi tanımlayın `describeType` :
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
+## <a name="extract-text-ocr-with-read"></a>Okuma ile metin (OCR) Ayıkla
 
-Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir.
+Görüntü İşleme, görüntüdeki görünür metni ayıklayabilir ve bir karakter akışına dönüştürebilir. Bu örnek, okuma işlemlerini kullanır.
 
 > [!NOTE]
 > Ayrıca, yerel görüntüden metin okuyabilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 'daki örnek koda bakın.
@@ -221,17 +221,17 @@ Metin ayıklamak istediğiniz görüntülerin URL 'SI başvurusunu kaydedin.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>Tanıma API 'sini çağırma
+### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
 
-Aşağıdaki kodu ekleyerek `recognizeText` verilen görüntüler için işlevini çağırır.
+`readTextFromURL`Verilen görüntüler için ve işlevlerini çağıran aşağıdaki kodu ekleyin `readTextFromFile` .
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-İşlevi tanımlayın `recognizeText` . Bu, istemci nesnesinde, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatan **Recognizetext** yöntemini çağırır. Ardından, sonuçlar döndürülünceye kadar işlemi tek saniyelik aralıklarla denetlemek için işlem KIMLIğINI kullanır. Ardından ayıklanan sonuçları döndürür.
+`readTextFromURL`Ve işlevlerini tanımlayın `readTextFromFile` . Bu, bir işlem KIMLIĞI döndüren ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem Başlatan istemci nesnesindeki **Read** ve **readInStream** yöntemlerini çağırır. Ardından, sonuçlar döndürülünceye kadar işlem durumunu denetlemek için işlem KIMLIĞINI kullanırlar. Sonra ayıklanan sonuçları döndürür.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Ardından, `printRecText` bir tanıma işleminin sonuçlarını konsola yazdıran yardımcı işlevini tanımlayın.
+Ardından, `printRecText` okuma işlemlerinin sonuçlarını konsola yazdıran yardımcı işlevini tanımlayın.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
