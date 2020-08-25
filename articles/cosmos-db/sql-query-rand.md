@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff098da778221868b0eddc17c426d2bf36eec0fe
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302228"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794342"
 ---
 # <a name="rand-azure-cosmos-db"></a>S_SAYI_ÜRET (Azure Cosmos DB)
  [0, 1) öğesinden rastgele oluşturulan sayısal değeri döndürür.
@@ -29,7 +29,8 @@ RAND ()
 
 ## <a name="remarks"></a>Açıklamalar
 
-  `RAND`belirleyici olmayan bir işlevdir. Yinelenen çağrıları `RAND` aynı sonuçları döndürmez.
+  `RAND` belirleyici olmayan bir işlevdir. Yinelenen çağrıları `RAND` aynı sonuçları döndürmez. Bu sistem işlevi dizinden yararlanmayacak.
+
 
 ## <a name="examples"></a>Örnekler
   
@@ -44,10 +45,6 @@ SELECT RAND() AS rand
 ```json
 [{"rand": 0.87860053195618093}]  
 ``` 
-
-## <a name="remarks"></a>Açıklamalar
-
-Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

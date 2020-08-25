@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84986720"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Örnek: Gerçek Zamanlı Videoları Analiz Etme
@@ -201,7 +201,7 @@ namespace VideoFrameConsoleApplication
 
 Bu örneği kullanmaya başlamak için şu adımları izleyin:
 
-1. Bir [Azure hesabı](https://azure.microsoft.com/free/cognitive-services/)oluşturun. Zaten varsa, bir sonraki adıma geçebilirsiniz.
+1. [Azure hesabı](https://azure.microsoft.com/free/cognitive-services/) oluşturun. Zaten varsa, bir sonraki adıma geçebilirsiniz.
 2. Anahtarınızı ve uç noktanızı almak için Azure portal Görüntü İşleme ve yüz için kaynaklar oluşturun. Kurulum sırasında ücretsiz katmanı (F0) seçtiğinizden emin olun.
    - [Görüntü İşleme](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
    - [Yüz](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Kaynaklar dağıtıldıktan sonra, her kaynak için anahtarınızı ve uç noktayı toplamak için **Kaynağa Git** ' e tıklayın. 

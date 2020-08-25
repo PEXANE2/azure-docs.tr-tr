@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73241201"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Storm Apache Hadoop ini yazma
@@ -21,7 +21,7 @@ Bu öğreticide, HDInsight üzerinde Apache Storm tarafından kullanılan, Apach
 
 Bu belgede kullanılan örnek topoloji, HDInsight üzerinde fırtınası ile birlikte gelen bileşenlere bağımlıdır. Diğer Apache Storm kümeleriyle birlikte kullanıldığında, değişikliğin Azure Data Lake Storage çalışmasını gerektirebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kümeyi betik eylemiyle yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Çıktı verilerini görüntüle
 > * Topolojiyi durdurma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
 
@@ -38,11 +38,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, `wasb://` `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için Azure depolama için olacaktır. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://`.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` .  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Örnek yapılandırma
 
-Aşağıdaki YAML, örnekte yer alan `resources/writetohdfs.yaml` dosyanın bir alıntısıdır. Bu dosya, Apache Storm için [Flox](https://storm.apache.org/releases/current/flux.html) çerçevesini kullanarak fırtınası topolojisini tanımlar.
+Aşağıdaki YAML, `resources/writetohdfs.yaml` örnekte yer alan dosyanın bir alıntısıdır. Bu dosya, Apache Storm için [Flox](https://storm.apache.org/releases/current/flux.html) çerçevesini kullanarak fırtınası topolojisini tanımlar.
 
 ```yaml
 components:
@@ -101,23 +101,23 @@ bolts:
 Bu YAML aşağıdaki öğeleri tanımlar:
 
 * `syncPolicy`: Dosyaların dosya sistemine ne zaman senkronize/boşaltımı olduğunu tanımlar. Bu örnekte, her 1000 tanımlama grubu.
-* `fileNameFormat`: Dosyalar yazılırken kullanılacak yolu ve dosya adı modelini tanımlar. Bu örnekte, yol çalışma zamanında bir filtre kullanılarak sağlanır ve dosya uzantısı `.txt`.
-* `recordFormat`: Yazılan dosyaların dahili biçimini tanımlar. Bu örnekte, alanlar `|` karakter ile sınırlandırılmıştır.
+* `fileNameFormat`: Dosyalar yazılırken kullanılacak yolu ve dosya adı modelini tanımlar. Bu örnekte, yol çalışma zamanında bir filtre kullanılarak sağlanır ve dosya uzantısı `.txt` .
+* `recordFormat`: Yazılan dosyaların dahili biçimini tanımlar. Bu örnekte, alanlar karakter ile sınırlandırılmıştır `|` .
 * `rotationPolicy`: Dosyaların ne zaman döndürüleceğini tanımlar. Bu örnekte, hiçbir döndürme gerçekleştirilmez.
-* `hdfs-bolt`: Önceki bileşenleri `HdfsBolt` sınıf için yapılandırma parametreleri olarak kullanır.
+* `hdfs-bolt`: Önceki bileşenleri sınıf için yapılandırma parametreleri olarak kullanır `HdfsBolt` .
 
-Flox çerçevesi hakkında daha fazla bilgi için bkz [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)..
+Flox çerçevesi hakkında daha fazla bilgi için bkz [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) ..
 
 ## <a name="configure-the-cluster"></a>Kümeyi yapılandırma
 
-Varsayılan olarak, HDInsight üzerindeki fırtınası, Azure depolama ile iletişim kurmak `HdfsBolt` için kullanılan bileşenleri veya fırtınası sınıfınData Lake Storage. Bu bileşenleri kümenizdeki fırtınası `extlib` dizinine eklemek için aşağıdaki betik eylemini kullanın:
+Varsayılan olarak, HDInsight üzerindeki fırtınası, `HdfsBolt` Azure depolama ile iletişim kurmak için kullanılan bileşenleri veya fırtınası sınıfınData Lake Storage. Bu bileşenleri kümenizdeki fırtınası dizinine eklemek için aşağıdaki betik eylemini kullanın `extlib` :
 
 | Özellik | Değer |
 |---|---|
 |Betik türü |-Özel|
 |Bash betiği URI 'SI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Düğüm türleri |Nimbus, Gözetmen|
-|Parametreler |Hiçbiri|
+|Parametreler |Yok|
 
 Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eylemleri kullanarak HDInsight kümelerini özelleştirme](./../hdinsight-hadoop-customize-cluster-linux.md) belgesi.
 
@@ -131,29 +131,29 @@ Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eyleml
     mvn compile package
     ```
 
-    Derleme ve paketleme tamamlandığında adlı bir dosya içeren adlı `target`yeni bir dizin vardır. `StormToHdfs-1.0-SNAPSHOT.jar` Bu dosya derlenen topolojiyi içerir.
+    Derleme ve paketleme tamamlandığında adlı bir dosya içeren adlı yeni bir dizin vardır `target` `StormToHdfs-1.0-SNAPSHOT.jar` . Bu dosya derlenen topolojiyi içerir.
 
 ## <a name="deploy-and-run-the-topology"></a>Topolojiyi dağıtma ve çalıştırma
 
-1. Topolojiyi HDInsight kümesine kopyalamak için aşağıdaki komutu kullanın. Kümenin `CLUSTERNAME` adıyla değiştirin.
+1. Topolojiyi HDInsight kümesine kopyalamak için aşağıdaki komutu kullanın. `CLUSTERNAME`Kümenin adıyla değiştirin.
 
     ```cmd
     scp target\StormToHdfs-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
     ```
 
-1. Karşıya yükleme tamamlandıktan sonra, SSH kullanarak HDInsight kümesine bağlanmak için aşağıdakileri kullanın. Kümenin `CLUSTERNAME` adıyla değiştirin.
+1. Karşıya yükleme tamamlandıktan sonra, SSH kullanarak HDInsight kümesine bağlanmak için aşağıdakileri kullanın. `CLUSTERNAME`Kümenin adıyla değiştirin.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Bağlandıktan sonra aşağıdaki komutu kullanarak adlı `dev.properties`bir dosya oluşturun:
+1. Bağlandıktan sonra aşağıdaki komutu kullanarak adlı bir dosya oluşturun `dev.properties` :
 
     ```bash
     nano dev.properties
     ```
 
-1. `dev.properties` Dosyanın içeriği olarak aşağıdaki metni kullanın. [URI şemanız](../hdinsight-hadoop-linux-information.md#URI-and-scheme)temelinde gereken şekilde gözden geçirin.
+1. Dosyanın içeriği olarak aşağıdaki metni kullanın `dev.properties` . [URI şemanız](../hdinsight-hadoop-linux-information.md#URI-and-scheme)temelinde gereken şekilde gözden geçirin.
 
     ```
     hdfs.write.dir: /stormdata/
@@ -168,7 +168,7 @@ Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eyleml
     storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
     ```
 
-    Bu komut, bu komutu kümenin Nimbus düğümüne göndererek, Flox çerçevesini kullanarak topolojiyi başlatır. Topoloji, jar 'e dahil edilen `writetohdfs.yaml` dosya tarafından tanımlanır. `dev.properties` Dosya bir filtre olarak geçirilir ve dosyada bulunan değerler topoloji tarafından okunabilir.
+    Bu komut, bu komutu kümenin Nimbus düğümüne göndererek, Flox çerçevesini kullanarak topolojiyi başlatır. Topoloji, `writetohdfs.yaml` jar 'e dahil edilen dosya tarafından tanımlanır. `dev.properties`Dosya bir filtre olarak geçirilir ve dosyada bulunan değerler topoloji tarafından okunabilir.
 
 ## <a name="view-output-data"></a>Çıktı verilerini görüntüle
 

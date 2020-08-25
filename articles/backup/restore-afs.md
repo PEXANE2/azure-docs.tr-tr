@@ -3,12 +3,12 @@ title: Azure dosya paylaşımlarını geri yükleme
 description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503651"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761857"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
@@ -66,7 +66,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
     * **Özgün konum**: dosya paylaşımının tamamını özgün kaynakla aynı konuma geri yükleyin.
     * **Alternatif konum**: dosya paylaşımının tamamını alternatif bir konuma geri yükleyin ve özgün dosya paylaşımının olduğu gibi tutun.
 
-#### <a name="restore-to-the-original-location"></a>Özgün konuma geri yükleme
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>Özgün konuma geri yükleme (tam paylaşma kurtarması)
 
 1. **Kurtarma hedefi**olarak **özgün konum** ' u seçin ve çakışmalar varsa, **Çakışma** durumunda ilgili seçeneği seçerek, çakışmalar olup olmayacağını veya üzerine yaz ' ı seçin.
 
@@ -74,7 +74,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Başlamak için geri yükle 'yi seçin](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Alternatif bir konuma geri yükleme
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Alternatif bir konuma geri yükleme (tam paylaşma kurtarması)
 
 1. **Kurtarma hedefi**olarak **alternatif konum** ' u seçin.
 1. Yedeklenen içeriği **depolama hesabı** açılır listesinden geri yüklemek istediğiniz hedef depolama hesabını seçin.
@@ -106,7 +106,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
     * **Özgün konum**: seçili dosya veya klasörleri özgün kaynakla aynı dosya paylaşımında geri yükleyin.
     * **Alternatif konum**: seçili dosya veya klasörleri alternatif bir konuma geri yükleyin ve özgün dosya paylaşma içeriğini olduğu gibi tutun.
 
-#### <a name="restore-to-the-original-location"></a>Özgün konuma geri yükleme
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>Özgün konuma geri yükleme (öğe düzeyinde kurtarma)
 
 1. **Kurtarma hedefi**olarak **özgün konum** ' u seçin ve **Çakışmalar söz konusu olduğunda, çakışmalar söz konusu** olduğunda ilgili seçeneği belirleyip, çakışmalar varsa üzerine yaz ' ı seçin.
 
@@ -125,7 +125,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Başlamak için geri yükle 'yi seçin](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Alternatif bir konuma geri yükleme
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Alternatif bir konuma geri yükleme (öğe düzeyinde kurtarma)
 
 1. **Kurtarma hedefi**olarak **alternatif konum** ' u seçin.
 1. Yedeklenen içeriği **depolama hesabı** açılır listesinden geri yüklemek istediğiniz hedef depolama hesabını seçin.

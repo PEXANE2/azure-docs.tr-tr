@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2020
+ms.date: 08/24/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115739"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794680"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -37,7 +37,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 
 | Hesap türü               | v 1.0 belirteçleri | v 2.0 belirteçleri |
 |----------------------------|-------------|-------------|
-| Kişisel Microsoft hesabı | Yok         | Desteklenir   |
+| Kişisel Microsoft hesabı | YOK         | Desteklenir   |
 | Azure AD hesabı           | Desteklenir   | Desteklenir   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 ve v 2.0 isteğe bağlı talepler kümesi
@@ -59,8 +59,8 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 | `verified_secondary_email` | Kullanıcının SecondaryAuthoritativeEmail kaynağı   | JWT        |           |        |
 | `vnet`                     | VNET tanımlayıcı bilgileri. | JWT        |           |      |
 | `fwd`                      | IP adresi.| JWT    |   | İstek sunan istemcinin özgün IPv4 adresini ekler (sanal ağ içinde) |
-| `ctry`                     | Kullanıcının ülkesi/bölgesi | JWT |  | Azure AD, varsa `ctry` isteğe bağlı talebi döndürür ve talebin DEĞERI fr, JP, SZ vb. gibi standart iki harfli bir ülke/bölge kodudur. |
-| `tenant_ctry`              | Kaynak kiracının ülkesi/bölgesi | JWT | | |
+| `ctry`                     | Kullanıcının ülkesi/bölgesi | JWT |  | Azure AD, varsa `ctry` isteğe bağlı talebi döndürür ve alanın DEĞERI fr, JP, SZ gibi standart bir iki harfli ülke/bölge kodudur. |
+| `tenant_ctry`              | Kaynak kiracının ülkesi | JWT | | Bir `ctry` yönetici tarafından kiracı düzeyinde ayarlananların dışında.  Ayrıca, standart iki harfli bir değer olmalıdır. |
 | `xms_pdl`             | Tercih edilen veri konumu   | JWT | | Çoklu coğrafi kiracılar için, tercih edilen veri konumu, kullanıcının bulunduğu coğrafi bölgeyi gösteren üç harfli koddur. Daha fazla bilgi için, [tercih edilen veri konumu hakkında Azure AD Connect belgelerine](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)bakın.<br/>Örneğin: `APC` Asya Pasifik için. |
 | `xms_pl`                   | Kullanıcı tarafından tercih edilen dil  | JWT ||Ayarlanmışsa kullanıcının tercih ettiği dil. Konuk erişim senaryolarında, ana kiracılarından kaynaklıdır. Biçimlendirilen LL-CC ("en-US"). |
 | `xms_tpl`                  | Kiracının tercih ettiği dil| JWT | | Ayarlanırsa, kaynak kiracının tercih edilen dili. Biçimlendirildim ("en"). |
@@ -98,7 +98,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | Yukarıdaki gibi, karma işaretlerinin ( `#` ) alt çizgi () ile değiştirilmeleri dışında, `_` Örneğin`foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Yukarıdaki gibi, karma işaretlerinin ( `#` ) alt çizgi () ile değiştirilmeleri dışında, `_` Örneğin `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Ek özellikler örneği
 
@@ -137,7 +137,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
 
@@ -216,9 +216,9 @@ Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantılar�
 
 Uygulama bildirimini kullanarak dizin uzantısı isteğe bağlı taleplerini yapılandırırken, uzantının tam adını kullanın (biçiminde: `extension_<appid>_<attributename>` ). `<appid>`Talep isteyen UYGULAMANıN kimliğiyle eşleşmesi gerekir.
 
-JWT içinde bu talepler şu ad biçimiyle yayınlanacaktır: `extn.<attributename>` .
+JWT içinde bu talepler şu ad biçimiyle yayınlanacaktır:  `extn.<attributename>` .
 
-SAML belirteçlerinde Bu talepler aşağıdaki URI biçimiyle alınacaktır:`http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+SAML belirteçlerinde Bu talepler aşağıdaki URI biçimiyle alınacaktır: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
 ## <a name="configuring-groups-optional-claims"></a>Grupları yapılandırma isteğe bağlı talepler
 

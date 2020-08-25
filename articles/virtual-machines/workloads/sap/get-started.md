@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/18/2020
+ms.date: 08/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603841"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749675"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -88,6 +88,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 08/21/2020: i ve II türünde HLı birimler için kullanılabilir işletim sistemi olarak, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) yeni işletim sistemi sürümü ekleniyor
 - 08/18/2020: [RHEL üzerinde ANF ile SAP HANA ölçeği Için ha](./sap-hana-high-availability-netapp-files-red-hat.md) sürümü
 - 08/17/2020: SAP NetWeaver sistemlerini Şirket içinden Azure 'a taşımak için Azure Site Recovery kullanma hakkında bilgi ekleyin. [Azure sanal makineler planlama ve uygulama için, SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: [IBM DB2 Azure sanal makineleri için disk yapılandırma önerisi, SAP Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

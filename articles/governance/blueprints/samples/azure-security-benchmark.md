@@ -4,10 +4,10 @@ description: Azure Güvenlik Karşılaştırması şema örneğine genel bakış
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84740382"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Azure Güvenlik kıyaslaması şeması örneği
@@ -99,7 +99,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Description|
+|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |Azure Güvenlik kıyaslama önerilerini denetleme ve belirli destekleyici VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan dışlanan kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |Azure Güvenlik kıyaslama önerilerini denetleme ve belirli destekleyici VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil olması gereken kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|

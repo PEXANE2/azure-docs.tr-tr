@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054281"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749616"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -94,7 +94,7 @@ Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluştu
 | Azure kaynağı                          | Açıklama |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
-| Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/public-ip-addresses.md). |
 | Azure Standart yük dengeleyici            | Azure AD DS, ağ adresi çevirisi (NAT) ve Yük Dengeleme (Güvenli LDAP ile kullanıldığında) için standart bir SKU yük dengeleyici kullanır. Azure yük dengeleyiciler hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) |
 | Ağ adresi çevirisi (NAT) kuralları | Azure AD DS, yük dengeleyici üzerinde üç NAT kuralı oluşturup, güvenli HTTP trafiği için bir kural ve güvenli PowerShell uzaktan iletişim için iki kural kullanır. |
 | Yük dengeleyici kuralları                     | Yönetilen bir etki alanı, TCP bağlantı noktası 636 üzerinde güvenli LDAP için yapılandırıldığında, trafiği dağıtmak için bir yük dengeleyicide üç kural oluşturulur ve kullanılır. |
@@ -104,7 +104,7 @@ Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluştu
 
 ## <a name="network-security-groups-and-required-ports"></a>Ağ güvenlik grupları ve gerekli bağlantı noktaları
 
-Bir [ağ güvenlik grubu (NSG)](../virtual-network/virtual-networks-nsg.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir yönetilen etki alanını dağıtırken bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
+Bir [ağ güvenlik grubu (NSG)](../virtual-network/security-overview.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir yönetilen etki alanını dağıtırken bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
 
 Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak üzere aşağıdaki ağ güvenlik grubu kuralları gereklidir. Yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 

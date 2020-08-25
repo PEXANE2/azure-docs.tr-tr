@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565664"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761704"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -311,7 +311,7 @@ public class QueueTriggerDemo {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `QueueTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok| Olarak ayarlanmalıdır `queueTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm**| yok | Yalnızca *function.js* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -363,7 +363,7 @@ Sıra iletisine [queuemessage](/python/api/azure-functions/azure.functions.queue
 
 Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` * üzerindefunction.js*özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
@@ -408,7 +408,7 @@ Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davran�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yazma kuyruğu depolama iletileri (çıkış bağlaması)](./functions-bindings-storage-blob-output.md)
+- [BLOB depolama iletilerini yazma (çıkış bağlama)](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

@@ -4,10 +4,10 @@ description: Bu öğreticide, standartları zorlamak, maliyetleri denetlemek, g�
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84781137"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
@@ -428,7 +428,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
    :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Girişim tanımı sayfasından tanım atama" border="false":::
 
-   Ayrıca, seçilen satıra sağ tıklayıp bir bağlamsal menü için satırın sonundaki üç nokta simgesini de seçebilirsiniz. Sonra da **Ata**’yı seçebilirsiniz.
+   Ayrıca, seçilen satıra sağ tıklayıp bir bağlamsal menü için satırın sonundaki üç nokta simgesini de seçebilirsiniz. Ardından **ata**' yı seçin.
 
    :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Girişim için alternatif seçenekler" border="false":::
 
@@ -469,7 +469,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 Belirli bir konum gerektirecek bir ilke girişimi atadıktan sonra, farklı bir konumda oluşturulan tüm kaynaklar reddedilir. Bu bölümde, tek bir kaynak grubunda dışlama oluşturarak, bir kaynak oluşturmak için reddedilen isteği çözmeye adım adım ilerleyerek. Dışlama, bu kaynak grubundaki ilkenin (veya girişim) zorlanmasını önler. Aşağıdaki örnekte, hariç tutulan kaynak grubunda herhangi bir konuma izin verilir. Dışlama bir aboneliğe, bir kaynak grubuna veya tek tek kaynaklara uygulanabilir.
 
-Atanan bir ilke veya girişim tarafından engellenen dağıtımlar, dağıtım tarafından hedeflenen kaynak grubunda görüntülenebilir: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin, sonra başarısız dağıtımın **dağıtım adını** seçin. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı belirlemek için başarısız ' ı seçin **. Dağıtım Genel Bakış sayfasında Ayrıntılar->için buraya tıklayın** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. **Hata ayrıntıları** ' nın altında, ilgili Ilke nesnelerinin GUID 'leri vardır.
+Atanan bir ilke veya girişim tarafından engellenen dağıtımlar, dağıtım tarafından hedeflenen kaynak grubunda görüntülenebilir: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin, sonra başarısız dağıtımın **dağıtım adını** seçin. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı belirlemek için başarısız ' ı seçin **. Dağıtım Genel Bakış sayfasında Ayrıntılar->için buraya tıklayın ** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. **Hata ayrıntıları** ' nın altında, ilgili Ilke nesnelerinin GUID 'leri vardır.
 
 :::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Dağıtım ilke ataması tarafından reddedildi" border="false":::
 

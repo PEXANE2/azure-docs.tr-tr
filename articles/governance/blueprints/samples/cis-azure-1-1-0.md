@@ -4,10 +4,10 @@ description: CIS Microsoft Azure Foundations Benchmark şeması örneğine genel
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84740310"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel geçişleri kıyaslama şeması örneği
@@ -99,7 +99,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-|Yapıt adı|Yapıt türü|Parametre adı|Description|
+|Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
 |Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|

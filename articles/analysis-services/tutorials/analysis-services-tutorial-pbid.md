@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73572328"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
@@ -23,7 +23,7 @@ Bu öğreticide, Power BI Desktop'u kullanarak sunucunuzdaki örnek adventurewor
 > * Power BI Desktop kullanarak bağlanma
 > * Temel bir rapor oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sunucunuza [örnek adventureworks model veritabanını ekleyin](../analysis-services-create-sample-model.md).
 - Örnek adventureworks model veritabanı üzerinde [*okuma*](../analysis-services-server-admins.md) izinlerine sahip olun.
@@ -43,7 +43,7 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 
 ## <a name="connect-in-power-bi-desktop"></a>Power BI Desktop'ta bağlanma
 
-1. Power BI Desktop, **veri** > Al**Azure** > **Azure Analysis Services veritabanı**' na tıklayın.
+1. Power BI Desktop, **veri al**  >  **Azure**  >  **Azure Analysis Services veritabanı**' na tıklayın.
 
    ![Veri Al penceresinde Bağlan düğmesi](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 
    ![Görsel öğeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. **Alanlar** > **Internet Sales** tablosunda, **Internet satışları toplamı** ve **kenar boşluğu** ölçüleri ' ni seçin. **Ürün Kategorisi** tablosunda **Ürün Kategorisi Adı**'nı seçin.
+5. **Alanlar**  >  **Internet Sales** tablosunda, **Internet satışları toplamı** ve **kenar boşluğu** ölçüleri ' ni seçin. **Ürün Kategorisi** tablosunda **Ürün Kategorisi Adı**'nı seçin.
 
    ![Raporun tamamı](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 

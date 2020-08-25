@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85251167"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>SQL Server içindeki birden çok tablodan verileri, Azure portal kullanarak Azure SQL veritabanındaki bir veritabanına artımlı olarak yükleme
@@ -254,7 +254,7 @@ END
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
 7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-8. **Oluştur**'a tıklayın.      
+8. **Oluştur**’a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -410,7 +410,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
 
     ![ForEach etkinliği - ayarlar](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
-1. İşlem hattında **ForEach** etkinliği zaten seçili değilse bunu seçin. **Düzenle (Kalem simgesi)** düğmesine tıklayın.
+1. İşlem hattında **ForEach** etkinliği zaten seçili değilse bunu seçin. **Düzenle (kurşun kalem simgesi)** düğmesine tıklayın.
 
 1. **Etkinlikler** araç kutusunda **Genel**’i genişletin, **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın ve **Ad** için **LookupOldWaterMarkActivity** girin.
 
@@ -477,7 +477,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Name | Tür | Değer | 
+        | Ad | Tür | Değer | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

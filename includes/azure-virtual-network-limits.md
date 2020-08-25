@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 832abd0d8a5b7fad126359edcc7de5019560a82f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82095890"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748825"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager
 Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
@@ -23,8 +23,8 @@ Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Re
 
 | Kaynak | Sınır | 
 | --- | --- |
-| Sanal ağlar |1000 |
-| Sanal ağ başına alt ağ sayısı |3,000 |
+| Sanal ağlar |1.000 |
+| Sanal ağ başına alt ağ |3.000 |
 | Sanal ağ başına sanal ağ eşlemesi |500 |
 | [Sanal ağ başına sanal ağ geçitleri (VPN ağ geçitleri)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [Sanal ağ başına sanal ağ geçitleri (ExpressRoute ağ geçitleri)](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
@@ -37,9 +37,9 @@ Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Re
 | [Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
 | Ağ arabirim kartları |65.536 |
 | Ağ Güvenlik Grupları |5.000 |
-| NSG başına NSG kuralları |1000 |
+| NSG başına NSG kuralları |1.000 |
 | Bir güvenlik grubundaki kaynak veya hedef için belirtilen IP adresleri ve aralıklar |4.000 |
-| Uygulama güvenliği grupları |3,000 |
+| Uygulama güvenliği grupları |3.000 |
 | IP yapılandırması başına uygulama güvenlik grupları, NIC başına |20 |
 | Uygulama güvenlik grubu başına IP yapılandırması |4.000 |
 | Bir ağ güvenlik grubunun tüm güvenlik kuralları dahilinde belirtilenebilir uygulama güvenlik grupları |100 |
@@ -67,7 +67,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 
 | Kaynak                                | Sınır         |
 |-----------------------------------------|-------------------------------|
-| Yük dengeleyiciler                          | 1000                         |
+| Yük dengeleyiciler                          | 1.000                         |
 | Kaynak başına kurallar                      | 1.500                         |
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                           |
 | Ön uç IP yapılandırması              | 600                           |
@@ -83,7 +83,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 
 | Kaynak                                | Sınır        |
 |-----------------------------------------|------------------------------|
-| Yük dengeleyiciler                          | 1000                        |
+| Yük dengeleyiciler                          | 1.000                        |
 | Kaynak başına kurallar                      | 250                          |
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                          |
 | Ön uç IP yapılandırması              | 200                          |
@@ -100,7 +100,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Sanal ağ başına özel IP adresi |4.096 |4.096 |
 | Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |
 | Ağ güvenlik grupları (NSG 'ler) |200 |200 |
-| NSG başına NSG kuralları |1000 |1000 |
+| NSG başına NSG kuralları |200 |1.000 |
 | Kullanıcı tanımlı yol tabloları |200 |200 |
 | Yol tablosu başına Kullanıcı tanımlı yollar |400 |400 |
 | Genel IP adresleri (dinamik) |500 |500 |

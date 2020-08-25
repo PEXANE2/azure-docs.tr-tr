@@ -89,6 +89,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: DDOS Protection güvenlik temeli
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Event Grid güvenlik temeli
+      href: ../../event-grid/security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute güvenlik temeli

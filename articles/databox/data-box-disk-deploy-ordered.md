@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84266534"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk sıralama
@@ -41,7 +41,7 @@ Dağıtmadan önce, Data Box hizmeti ve Data Box Disk için aşağıdaki yapıla
 Başlamadan önce aşağıdakilerden emin olun:
 
 * Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınızın olması gerekir. İstemci bilgisayarınızda:
-  * Desteklenen bir [işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)çalıştırın.
+  * [Desteklenen bir işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırılmalıdır.
   * Windows istemciyse diğer [gerekli yazılımlar](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) yüklenmiş olmalıdır.  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk sipariş etme
@@ -57,7 +57,7 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
 
    ![Azure Data Box arama 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. **Oluştur**' a tıklayın.
+2. **Oluştur**’a tıklayın.
 
 3. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'ya tıklayın.
 

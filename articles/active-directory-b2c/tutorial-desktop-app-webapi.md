@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: bir masaüstü uygulamasından Node. js web API 'sine erişim Izni verme"
-description: Bir Node. js web API 'sini korumak ve bir .NET masaüstü uygulamasından çağırmak için Active Directory B2C kullanma öğreticisi.
+title: "Öğretici: masaüstü uygulamasından Node.js Web API 'sine erişim Izni verme"
+description: Node.js Web API 'sini korumak ve bir .NET masaüstü uygulamasından çağırmak için Active Directory B2C kullanma hakkında öğretici.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84298865"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Öğretici - Azure Active Directory B2C kullanarak bir masaüstü uygulamasından Node.js web API'sine erişim izni verme
 
-Bu öğreticide, ayrıca Azure AD B2C tarafından korunan bir Windows Presentation Foundation (WPF) masaüstü uygulamasından Azure Active Directory B2C (Azure AD B2C) tarafından korunan bir Node. js web API 'sinin nasıl çağrılacağını gösterir.
+Bu öğreticide, Azure AD B2C tarafından da korunan bir Windows Presentation Foundation (WPF) masaüstü uygulamasından Azure Active Directory B2C (Azure AD B2C) tarafından korunan Node.js Web API 'sinin nasıl çağrılacağını gösterir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Web API 'sine izin verme
 > * Uygulamayı kullanmak için örneği güncelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticideki adımları ve önkoşulları doldurun [: yerel bir masaüstü istemcisinde kullanıcıların kimliğini doğrulama](tutorial-desktop-app.md).
 
@@ -51,7 +51,7 @@ Yerel bir istemci uygulamasından korumalı bir Web API 'SI çağırmak için, k
 
 Önkoşul öğreticisinde, *nativeapp1*adlı bir yerel istemci uygulaması kaydettiniz. Aşağıdaki adımlarda, yerel uygulama kaydı, önceki bölümde *webapi1* için kullanıma sunulacak API kapsamları ile yapılandırılır. Bu, masaüstü uygulamasının, Web API 'sinin kaynakları doğrulamak ve kaynaklarına kapsamlı erişimi sağlamak için kullanabileceği Azure AD B2C bir erişim belirteci almasına olanak tanır. Hem masaüstü uygulamasını hem de Web API kodu örneklerini öğreticide daha sonra yapılandırıp çalıştırırsınız.
 
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
@@ -92,16 +92,16 @@ Bu makalenin bir önkoşulu içinde, Azure AD B2C kiracınızdaki bir Kullanıc�
     1. Değişkenin değerini, `ApiScopes` **demo. Read** kapsamını tanımladığınızda daha önce kaydettiğiniz değerle değiştirin.
     1. Değişkenin değerini, `ApiEndpoint` kiracınızdaki Web API 'sini (örneğin, *webapi1*) kaydettiğinizde daha önce KAYDETTIĞINIZ **yeniden yönlendirme URI** 'siyle değiştirin.
 
-    İşte bir örnek:
+    Aşağıda bir örnek verilmiştir:
 
     ```csharp
     public static string[] ApiScopes = { "https://contosob2c.onmicrosoft.com/api/demo.read" };
     public static string ApiEndpoint = "http://localhost:5000";
     ```
 
-### <a name="get-and-update-the-nodejs-api-sample"></a>Node. js API örneğini edinme ve güncelleştirme
+### <a name="get-and-update-the-nodejs-api-sample"></a>Node.js API örneğini edinme ve güncelleştirme
 
-Daha sonra, GitHub 'dan Node. js web API kodu örneğini alın ve Azure AD B2C kiracınızda kayıtlı olan Web API 'sini kullanmak üzere yapılandırın.
+Sonra, GitHub 'dan Node.js Web API kodu örneğini alın ve Azure AD B2C kiracınızda kaydettiğiniz Web API 'sini kullanmak üzere yapılandırın.
 
 GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) veya örnek web uygulamasını kopyalayın.
 
@@ -128,7 +128,7 @@ Node.js web API’si örneği API’ye yapılan çağrıları korumak için Azur
 
 ## <a name="run-the-samples"></a>Örnekleri çalıştırma
 
-### <a name="run-the-nodejs-web-api"></a>Node. js web API 'sini çalıştırma
+### <a name="run-the-nodejs-web-api"></a>Node.js Web API 'sini çalıştırma
 
 1. Bir Node.js komut istemi başlatın.
 2. Node.js örneğini içeren dizine değiştirin. Örneğin `cd c:\active-directory-b2c-javascript-nodejs-webapi`

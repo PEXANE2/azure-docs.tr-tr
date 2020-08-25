@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905219"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749029"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -88,9 +88,9 @@ Yönlendirme ile yapmak zorunda olan ölçümler:
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| Iletime yönlendirildi | Yönlendirilen iletiler (Önizleme) | Count | Toplam | Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirilen ileti sayısı. | Çalışmasını <br>Sonuç |
-| RoutingFailureRate | Yönlendirme hatası oranı (Önizleme) | Yüzde | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirildikleri için hataya neden olan olayların yüzdesi. | Çalışmasını <br>Sonuç |
-| RoutingLatency | Yönlendirme gecikmesi (Önizleme) | Mayacak | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine gönderildiğinde bir olay arasında geçen süre. | Çalışmasını <br>Sonuç |
+| Iletime yönlendirildi | Yönlendirilen iletiler (Önizleme) | Count | Toplam | Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirilen ileti sayısı. | Uç nokta türü, <br>Sonuç |
+| RoutingFailureRate | Yönlendirme hatası oranı (Önizleme) | Yüzde | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine yönlendirildikleri için hataya neden olan olayların yüzdesi. | Uç nokta türü, <br>Sonuç |
+| RoutingLatency | Yönlendirme gecikmesi (Önizleme) | Mayacak | Ortalama | Azure dijital TWINS 'den, Olay Hub 'ı, Service Bus veya Event Grid gibi bir uç nokta Azure hizmetine gönderildiğinde bir olay arasında geçen süre. | Uç nokta türü, <br>Sonuç |
 
 ## <a name="dimensions"></a>Boyutlar
 
@@ -100,7 +100,7 @@ Boyutlar ölçümler hakkında daha fazla ayrıntı belirlemenize yardımcı olu
 | --- | --- |
 | Kimlik Doğrulaması | OAuth |
 | İşlem (API Istekleri için) | Microsoft. DigitalTwins/digitaltwıns/DELETE, <br>Microsoft. DigitalTwins/digitaltwıns/Write, <br>Microsoft. DigitalTwins/digitaltwıns/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventrotalar/Write, <br>Microsoft. DigitalTwins/eventrotalar/DELETE, <br>Microsoft. DigitalTwins/modeller/okuma, <br>Microsoft. DigitalTwins/modeller/Write, <br>Microsoft. DigitalTwins/modeller/silme, <br>Microsoft. DigitalTwins/sorgu/eylem |
-| İşlem (yönlendirme için) | Event Grid <br>Olay Hub 'ı, <br>Service Bus |
+| Uç nokta türü | Event Grid <br>Olay Hub 'ı, <br>Service Bus |
 | Protokol | HTTPS |
 | Sonuç | Başarılı <br>Hata |
 | Durum Kodu | 200, 404, 500 vb. |

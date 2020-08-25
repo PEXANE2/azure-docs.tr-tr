@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
 ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84660929"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
@@ -128,7 +128,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum**bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri Fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda/bölgelerde olabilir.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi bittikten sonra, resimde gösterildiği gibi **Veri Fabrikası** sayfası görüntülenir.
 
@@ -141,7 +141,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    ![Başlarken sayfası](./media/doc-common-process/get-started-page.png)
 
-1. Veri Kopyalama aracının **Özellikler** sayfasında, **Görev adı** bölümüne **CopyFromOnPremSqlToAzureBlobPipeline** adını girin. Ardından **İleri**' yi seçin. Veri Kopyalama aracı, bu alan için belirttiğiniz ada sahip bir işlem hattı oluşturur.
+1. Veri Kopyalama aracının **Özellikler** sayfasında, **Görev adı** bölümüne **CopyFromOnPremSqlToAzureBlobPipeline** adını girin. Sonra **İleri**’yi seçin. Veri Kopyalama aracı, bu alan için belirttiğiniz ada sahip bir işlem hattı oluşturur.
   ![Görev adı](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. **Kaynak veri deposu** sayfasında **Yeni bağlantı oluştur**'a tıklayın.
@@ -154,7 +154,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    ![Tümleştirme çalışma zamanı oluşturma](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. **Integration Runtime kurulum** iletişim kutusunda, **ad**' ın altında, **TutorialIntegrationRuntime**girin. Ardından **Oluştur**'u seçin.
+1. **Integration Runtime kurulum** iletişim kutusunda, **ad**' ın altında, **TutorialIntegrationRuntime**girin. Ardından **Oluştur**’u seçin.
 
 1. **Integration Runtime kurulum** iletişim kutusunda, **Bu bilgisayar için hızlı kurulumu başlatmak Için buraya tıklayın ' ı**seçin. Bu işlem, tümleştirme çalışma zamanını makinenize yükler ve Data Factory’ye kaydeder. Alternatif olarak, el ile kurulum seçeneğini kullanarak yükleme dosyasını indirip çalıştırabilir ve anahtarı kullanarak tümleştirme çalışma zamanını kaydedebilirsiniz.
 
@@ -199,9 +199,9 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    c. **Depolama hesabı adı** bölümünde, açılan listeden depolama hesabınızı seçin.
 
-   d. **Son**'u seçin.
+   d. **Son**’u seçin.
 
-1. **Hedef veri deposu** Iletişim kutusunda **Azure Blob Storage** ' ın seçili olduğundan emin olun. Ardından **İleri**' yi seçin.
+1. **Hedef veri deposu** Iletişim kutusunda **Azure Blob Storage** ' ın seçili olduğundan emin olun. Sonra **İleri**’yi seçin.
 
 1. **Çıkış dosyasını veya klasörünü seçin** iletişim kutusunda, **Klasör yolu** bölümüne **adftutorial/fromonprem** yolunu girin. Ön koşulların bir parçası olarak **adftutorial** kapsayıcısını oluşturdunuz. Çıkış klasörü yoksa (bu örnekte **fromonprem**), Data Factory tarafından otomatik olarak oluşturulur. Blob depolamaya ve onun kapsayıcılarına/klasörlerine gitmek için de **Araştır** düğmesini kullanabilirsiniz. **Dosya adı** bölümünde değer belirtmezseniz varsayılan olarak kaynaktaki ad (bu örnekte **dbo.emp**) kullanılır.
 

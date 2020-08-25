@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 67b041476ecc5b5da389ab1377025a94675fc42a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078895"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794543"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -112,6 +112,28 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 ![El ile ölçek ayarla][14]
 
 **Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet**' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
+
+## <a name="route-traffic-to-healthy-instances-app-service"></a>Trafiği sağlıklı örneklere yönlendir (App Service)
+
+Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme**altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet**’e tıklayın.
+
+### <a name="health-check-path"></a>Sistem durumu denetim yolu
+
+Yol, 200 ve 299 (dahil) arasında bir durum kodu ile iki dakika içinde yanıt vermelidir. Yol iki dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Sitede HTTP**s** etkinse, HEALTHCHECK, http**s** 'yi kabul eder ve bu protokolü kullanarak isteği gönderir.
+
+Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
+
+### <a name="behavior"></a>Davranış
+
+Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. Sağlıksız örnek, yük dengeleyici dönüşünün dışında bırakılacak. Ayrıca, ölçeği büyütme veya küçültme sırasında, yeni örneklerin istekler için hazır olduğundan emin olmak için App Service sistem durumu Denetim yolunu ping yapar.
+
+Kalan sağlıklı örnekler daha fazla yük yaşayabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır.
+
+Bir örnek bir saat için sağlıksız kalırsa, yeni örnekle birlikte değişir. En fazla bir örnek, App Service plan başına günde en fazla üç örnek olacak şekilde saat başına değiştirilmeyecektir.
+
+### <a name="monitoring"></a>İzleme
+
+Uygulamanızın sistem durumu Denetim yolunu sağladıktan sonra, Azure Izleyici 'yi kullanarak sitenizin sistem durumunu izleyebilirsiniz. Portaldaki **sistem durumu denetimi** dikey penceresinde, üst araç çubuğundan **ölçümler** ' e tıklayın. Bu, sitenin geçmiş sistem durumunu görebileceğiniz ve yeni bir uyarı kuralı oluşturabileceğiniz yeni bir dikey pencere açar. Sitelerinizi izleme hakkında daha fazla bilgi için [bkz. Azure izleyici Kılavuzu](../../app-service/web-sites-monitor.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

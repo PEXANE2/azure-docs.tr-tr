@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84219156"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Öğretici: verileri Azure Data Box kopyalamak için veri kopyalama hizmetini kullanma (Önizleme)
@@ -51,7 +51,7 @@ NAS cihazına bağlandıktan sonra, bir sonraki adım verilerinizi kopyalayacağ
 * Veri kopyası hizmeti okurken veri değiştiriliyorsa, verilerin başarısızlıklarını veya bozulmasını görebilirsiniz.
 
 > [!IMPORTANT]
-> Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
+> Data Box'ın verilerinizi Azure Depolama'ya aktardığını onaylayana kadar kaynak verilerinizin bir kopyasına sahip olduğunuzdan emin olun.
 
 Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir:
 
@@ -64,9 +64,9 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
     
     |Alan                          |Değer    |
     |-------------------------------|---------|
-    |**İş adı**                       |İş için 230 karakterden daha az benzersiz bir ad. İş adında Bu karakterlere izin verilmez: \<, \> ,,, \| \? \* , \\ , \: , \/ ve\\\.         |
+    |**İş adı**                       |İş için 230 karakterden daha az benzersiz bir ad. İş adında Bu karakterlere izin verilmez: \<, \> ,,, \| \? \* , \\ , \: , \/ ve \\\.         |
     |**Kaynak konumu**                |Veri kaynağına ilişkin SMB yolunu şu biçimde belirtin: `\\<ServerIPAddress>\<ShareName>` veya `\\<ServerName>\<ShareName>` .        |
-    |**Nitelen**                       |`\\<DomainName><UserName>`Veri kaynağına erişmek için biçimdeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
+    |**Kullanıcı adı**                       |`\\<DomainName><UserName>`Veri kaynağına erişmek için biçimdeki Kullanıcı adı. Bir yerel yönetici bağlanıyorsa, açık güvenlik izinleri gerekecektir. Klasöre sağ tıklayın, **Özellikler** ' i seçin ve ardından **güvenlik**' i seçin. Bu, **güvenlik** sekmesine yerel yönetici eklemesi gerekir.       |
     |**Parola**                       |Veri kaynağına erişmek için parola.           |
     |**Hedef depolama hesabı**    |Verileri listeden karşıya yüklemek için hedef depolama hesabını seçin.         |
     |**Hedef türü**       |Listeden hedef depolama türünü seçin: **Blok Blobu**, **Sayfa Blobu**veya **Azure dosyaları**.        |
@@ -119,9 +119,9 @@ Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız
 6. İş devam ederken, **verileri Kopyala** sayfasında:
 
     - **Durum** sütununda kopyalama işinin durumunu görüntüleyebilirsiniz. Durum şu olabilir:
-        - **Çalışıyor**
-        - **Başaramadı**
-        - **Başarılı oldu**
+        - **Çalışma**
+        - **Başarısız**
+        - **Başarılı**
         - **Duraklatılıyor**
         - **Duraklatıldı**
         - **İptal Ediliyor**

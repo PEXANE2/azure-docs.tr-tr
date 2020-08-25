@@ -9,21 +9,21 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84809571"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Öğretici: .NET 'te Azure depolama kuyrukları ile çalışma
 
 Azure kuyruk depolama, dağıtılmış bir uygulamanın bileşenleri arasında iletişimi etkinleştirmek için bulut tabanlı kuyruklar uygular. Her kuyruk, bir gönderen bileşeni tarafından eklenebilen ve bir alıcı bileşeni tarafından işlenen iletilerin bir listesini tutar. Bir kuyruk ile uygulamanız, talebi karşılamak için hemen ölçeklendirebilir. Bu makalede, Azure depolama kuyruğu ile çalışmaya yönelik temel adımlar gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> - Azure Storage hesabı oluşturma
+> - Azure depolama hesabı oluşturma
 > - Uygulama oluşturma
 > - Azure istemci kitaplıklarını ekleme
 > - Zaman uyumsuz kod desteği ekle
@@ -32,7 +32,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > - İletileri sıradan çıkarma
 > - Boş bir kuyruğu silme
 > - Komut satırı bağımsız değişkenlerini denetle
-> - Uygulamayı derleme ve çalıştırma
+> - Uygulamayı derleyin ve çalıştırın
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 - [.NET Core SDK](https://dotnet.microsoft.com/download) sürüm 3,1 veya üstünü indirin ve yükleyin.
 - Geçerli bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
+## <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
 İlk olarak, bir Azure depolama hesabı oluşturun. Depolama hesabı oluşturmaya yönelik adım adım kılavuz için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) hızlı başlangıcı. Bu, önkoşullardan ücretsiz bir Azure hesabı oluşturduktan sonra gerçekleştirdiğiniz ayrı bir adımdır.
 
@@ -239,7 +239,7 @@ Kuyruktan ileti almak için yeni bir yöntem oluşturun. İleti başarıyla alı
 
 ## <a name="delete-an-empty-queue"></a>Boş bir kuyruğu silme
 
-Projenin sonunda oluşturduğunuz kaynaklara ihtiyacınız olup olmadığını belirlemek için en iyi uygulamadır. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Sıra varsa ancak boşsa, kullanıcıyı silmek isteyip istemediğini sorar.
+Projenin sonunda oluşturduğunuz kaynaklara ihtiyacınız olup olmadığını belirlemek için en iyi uygulamadır. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Sıra varsa ancak boşsa, kullanıcıyı silmek isteyip istemediğini sorar.
 
 1. Boş kuyruğu silmek için bir istem eklemek **üzere, yeniden** alma yöntemini genişletin.
 
@@ -286,7 +286,7 @@ Bu proje için kod listesinin tamamı aşağıda verilmiştir.
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 1. Proje dizinindeki komut satırından, projeyi derlemek için aşağıdaki DotNet komutunu çalıştırın.
 
@@ -300,7 +300,7 @@ Bu proje için kod listesinin tamamı aşağıda verilmiştir.
    dotnet run First queue message
    ```
 
-   Bu çıkışı görmelisiniz:
+   Şu çıkışı görmelisiniz:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message

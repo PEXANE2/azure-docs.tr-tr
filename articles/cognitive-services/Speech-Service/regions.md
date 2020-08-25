@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782543"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749304"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
 Konuşma hizmeti, uygulamanızın sesi metne dönüştürmesini, konuşma çevirisi gerçekleştirmesini ve metni konuşmaya dönüştürmeyi sağlar. Hizmet, konuşma SDK 'Sı ve REST API 'Leri için benzersiz uç noktalara sahip birden çok bölgede kullanılabilir.
 
-Tüm bölgeler için konuşma deneyiminize özel yapılandırma gerçekleştirmeye yönelik konuşma portalı buradan edinilebilir:https://speech.microsoft.com
+Tüm bölgeler için konuşma deneyiminize özel yapılandırma gerçekleştirmeye yönelik konuşma portalı buradan edinilebilir: https://speech.microsoft.com
 
-Konuşma hizmetinizin etkinleştirmeleri için, çağrının aboneliğinizin bölgesiyle eşleştiğinden emin olun.
+Bölgeleri düşünürken aşağıdaki noktaları göz önünde bulundurun:
+
+* Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, `westus` bir konuşma yapılandırması oluştururken gibi bölge tanımlayıcısı sağlarsınız.
+* Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
+* Bölge için oluşturulan anahtarlar yalnızca o bölgede geçerlidir. Bunları diğer bölgelerle birlikte kullanmaya çalışmak, kimlik doğrulama hatalarına neden olur.
 
 ## <a name="speech-sdk"></a>Konuşma SDK'sı
 
@@ -32,7 +36,7 @@ Konuşma hizmetinizin etkinleştirmeleri için, çağrının aboneliğinizin bö
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Konuşmadan metne, metinden konuşmaya ve çeviri
 
-Konuşma özelleştirme portalı şurada bulunabilir:https://speech.microsoft.com
+Konuşma özelleştirme portalı şurada bulunabilir: https://speech.microsoft.com
 
 Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**için şu bölgelerde kullanılabilir:
 
@@ -44,20 +48,20 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**iç
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Bölge           | Bölge tanımlayıcısı |
+| Genel bölge | Region           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
-| Asya          | Doğu Asya        | `eastasia`           |
-| Asya          | Güneydoğu Asya   | `southeastasia`      |
+| Asia          | Doğu Asya        | `eastasia`           |
+| Asia          | Güneydoğu Asya   | `southeastasia`      |
 | Avustralya     | Doğu Avustralya   | `australiaeast`      |
-| Avrupa        | Kuzey Avrupa     | `northeurope`        |
-| Avrupa        | Batı Avrupa      | `westeurope`         |
+| Europe        | Kuzey Avrupa     | `northeurope`        |
+| Europe        | West Europe      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
 | Kuzey Amerika | Doğu ABD 2        | `eastus2`            |
 | Kuzey Amerika | Orta Güney ABD | `southcentralus`     |
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
+| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
@@ -65,13 +69,13 @@ Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-r
 
 [Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
 
-| Bölge         | Bölge tanımlayıcısı |
+| Region         | Bölge tanımlayıcısı |
 | -------------- | -------------------- |
 | Batı ABD        | `westus`             |
 | Batı ABD 2      | `westus2`            |
 | Doğu ABD        | `eastus`             |
 | Doğu ABD 2      | `eastus2`            |
-| Batı Avrupa    | `westeurope`         |
+| West Europe    | `westeurope`         |
 | Kuzey Avrupa   | `northeurope`        |
 | Güneydoğu Asya | `southeastasia`      |
 

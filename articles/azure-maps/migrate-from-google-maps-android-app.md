@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83747430"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps 'tan Android uygulaması geçirme
@@ -52,7 +52,7 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  Google Maps ** \_ \_ API. xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
+1.  Google Maps  ** \_ \_api.xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
     
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -182,7 +182,7 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
         > Azure Haritalar Android SDK düzenli olarak yükseltilir ve geliştirilir. En son Azure haritaları sürüm numarasını almak için [Android eşleme ile çalışmaya başlama denetimini](how-to-use-android-map-control-library.md) görebilirsiniz. Ayrıca, kodunuzun her zaman en son sürümü göstermesi için "0,2" olan sürüm numarasını "0 +" olarak ayarlayabilirsiniz.
     
     4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın.
-3. Ana etkinliğe bir harita parçası ekleyin (kaynak \> düzeni \> etkinliği \_ Main. xml):
+3. Ana etkinliğe bir harita parçası ekleyin (kaynaklar \> Düzen \> etkinliği \_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -495,7 +495,7 @@ mapControl.onReady(map -> {
 <center>
 
 ![sarı raptiye resmi](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW \_ raptiye. png</center>
+YLW \_pushpin.png</center>
 
 Her iki örnekte de yukarıdaki görüntü, uygulamalar kaynaklarının çizilebilir klasörüne eklenir.
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Bir kutucuk katmanı, diğer herhangi bir katmanda benzer bir şekilde haritaya eklenebilir. X, y ve zoom yer tutucuları olan biçimli bir URL; `{x}`, `{y}` `{z}` sırasıyla katmana nerede erişacaklarını bildirmek için kullanılır. Ayrıca, Azure haritalar 'daki döşeme katmanları `{quadkey}` , `{bbox-epsg-3857}` ve `{subdomain}` yer tutucuları destekler. Kutucuk katmanını yarı şeffaf hale getirmek için 0,8 opaklık değeri kullanılır. Opaklık ve saydamlık, benzer olmasına karşın ters çevrilmiş değerler kullanır. Her iki seçenek arasında dönüştürmek için, değerlerini bir sayıdan çıkarın.
 
 > [!TIP]
-> Azure haritalar 'da, temel harita katmanları dahil olmak üzere diğer katmanların altında katmanları işlemek kullanışlı olur. Ayrıca, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add`Yöntemi, aşağıdaki yeni katmanın ekleneceği katmanın kimliği olan ikinci bir parametreyi alır. Harita etiketlerinin altına bir kutucuk katmanı eklemek için aşağıdaki kod kullanılabilir:`map.layers.add(myTileLayer, "labels");`
+> Azure haritalar 'da, temel harita katmanları dahil olmak üzere diğer katmanların altında katmanları işlemek kullanışlı olur. Ayrıca, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add`Yöntemi, aşağıdaki yeni katmanın ekleneceği katmanın kimliği olan ikinci bir parametreyi alır. Harita etiketlerinin altına bir kutucuk katmanı eklemek için aşağıdaki kod kullanılabilir: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

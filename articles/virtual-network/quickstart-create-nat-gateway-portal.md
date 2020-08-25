@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84711417"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma
@@ -30,7 +30,7 @@ Tercih ederseniz, [Azure CLI](quickstart-create-nat-gateway-cli.md)'yi kullanara
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
@@ -68,14 +68,14 @@ Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye 
 3. **Ağ** sekmesinde aşağıdakilerin seçili olduğundan emin olun:
    - **Sanal ağ**: **myvnet**
    - **Alt ağ**: **mysubnet**
-   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU**için **Standart** ' ı seçin.  **Tamam**'a tıklayın.
+   - **Ortak ıp** > **Yeni oluştur**' u seçin.  **Genel IP adresi oluştur** penceresinde **ad** alanına **Mypublicipvm** yazın ve **SKU**için **Standart** ' ı seçin.  **Tamam** düğmesine tıklayın.
    - **NIC ağ güvenlik grubu**: **temel**öğesini seçin.
    - **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin.
    - **Gelen bağlantı noktalarını seçin**: **SSH** 'yi Onayla seçili.
 
 4. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
 
-5. **İncele ve oluştur**’u seçin. 
+5. **Gözden geçir + oluştur**’u seçin. 
 
 6. Ayarları gözden geçirin ve **Oluştur**' a tıklayın.
 
@@ -97,7 +97,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
     | ------- | ----- |
     | IP sürümü | **IPv4** seçin.
     | SKU | **Standart**' ı seçin.
-    | Name | **Mypublicıp**girin. |
+    | Ad | **Mypublicıp**girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Myresourcegroupnat**öğesini seçin. |
     | Konum | **Doğu ABD 2**’yi seçin.|
@@ -139,7 +139,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
    - **Sanal ağ**: **myresourcegroupnat**  >  **myvnet**öğesini seçin.
    - **Alt ağ adı**: **mysubnet öğesinin**yanındaki kutuyu seçin.
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 

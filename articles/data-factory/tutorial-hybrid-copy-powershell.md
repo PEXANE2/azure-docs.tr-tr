@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 6eec9c197f0bc17a5237a05e198b12cb769da89d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84194575"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Öğretici: SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
@@ -299,7 +299,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     f. Kullanıcı adını girin.
 
-    g. Kullanıcı adıyla ilişkili parolayı girin.
+    örneğin: Kullanıcı adıyla ilişkili parolayı girin.
 
     h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Sına**’yı seçin.  
     ![Bağlantı başarılı oldu](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)

@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84235031"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
@@ -35,7 +35,7 @@ Azure Stream Analytics işi, uç olarak ayarlanan barındırma ortamı ile oluş
    -----|-----
    Olay serileştirme biçimi|JSON
    Encoding|UTF-8
-   Olay sıkıştırma türü|Hiçbiri
+   Olay sıkıştırma türü|Yok
 
 2. **Çıktıyı**oluşturmak Için **+ Ekle** ' ye tıklayın ve SQL veritabanı ' nı seçin. Aşağıdaki bilgileri kullanarak Ayrıntılar bölümünü girin.
 
@@ -77,7 +77,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
    _Alan_|_Değer_
    -------|-------
-   Adı|Kayıt defteri adı
+   Ad|Kayıt defteri adı
    Adres|Oturum açma sunucusu
    User Name|Kullanıcı adı
    Parola|Parola
