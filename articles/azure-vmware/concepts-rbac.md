@@ -1,28 +1,28 @@
 ---
 title: Kavramlar-rol tabanlı erişim denetimi (RBAC)
-description: Azure VMware çözümü (AVS) için rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
+description: Azure VMware çözümü için rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8628c88c300ef8ed271f5e06a8e8dfae40231fec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9e83f0442953f59d02c42514a8550301ea947b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660902"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752258"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution-avs"></a>Azure VMware çözümü (AVS) için rol tabanlı erişim denetimi (RBAC)
+# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için rol tabanlı erişim denetimi (RBAC)
 
-VCenter ve ESXi şirket içi dağıtımında, yöneticinin vCenter hesabına erişimi vardır administrator@vsphere.local ve atanmış ek Active Directory (ad) kullanıcıları/grupları olabilir. Ancak, bir Azure VMware Çözüm (AVS) dağıtımında yöneticinin yönetici kullanıcı hesabına erişimi yoktur, ancak AD kullanıcıları ve grupları vCenter üzerinde CloudAdmin rolüne atayabilir.  Ayrıca, AVS özel bulut kullanıcısının kümeler, konaklar, veri depoları ve dağıtılmış sanal anahtarlar gibi Microsoft tarafından desteklenen ve yönetilen belirli yönetim bileşenlerine erişme veya bunları yapılandırma izni yoktur.
+VCenter ve ESXi şirket içi dağıtımında, yöneticinin vCenter hesabına erişimi vardır administrator@vsphere.local ve atanmış ek Active Directory (ad) kullanıcıları/grupları olabilir. Ancak, bir Azure VMware Çözüm dağıtımında yöneticinin yönetici kullanıcı hesabına erişimi yoktur, ancak vCenter üzerinde CloudAdmin rolüne AD kullanıcıları ve grupları atayabilir.  Ayrıca, Azure VMware çözümü özel bulut kullanıcısının, Microsoft tarafından desteklenen ve yönetilen, kümeler, konaklar, veri depoları ve dağıtılmış sanal anahtarlar gibi belirli yönetim bileşenlerine erişme veya bunları yapılandırma izni yoktur.
 
 
-AVS 'de vCenter, yerleşik CloudAdmin rolüne atanan cloudadmin adlı yerleşik bir yerel kullanıcıya sahiptir. Yerel cloudadmin kullanıcısı AD 'de ek kullanıcılar kurmak için kullanılır. Genel olarak CloudAdmin rolü, özel bulutunuzda (sanal makineler, kaynak havuzları, veri depoları ve ağlar) iş yükleri oluşturma ve yönetme ayrıcalığına sahiptir. AVS 'deki CloudAdmin rolünde, diğer VMware bulut çözümlerinden farklı olan belirli bir vCenter ayrıcalıkları kümesi vardır.   
+Azure VMware çözümünde, vCenter yerleşik CloudAdmin rolüne atanan cloudadmin adlı yerleşik bir yerel kullanıcıya sahiptir. Yerel cloudadmin kullanıcısı AD 'de ek kullanıcılar kurmak için kullanılır. Genel olarak CloudAdmin rolü, özel bulutunuzda (sanal makineler, kaynak havuzları, veri depoları ve ağlar) iş yükleri oluşturma ve yönetme ayrıcalığına sahiptir. Azure VMware çözümünde CloudAdmin rolünde, diğer VMware bulut çözümlerinden farklı olan belirli bir vCenter ayrıcalıkları kümesi vardır.   
 
 > [!NOTE]
-> AVS Şu anda vCenter veya AVS portalında özel roller sunmaz. 
+> Azure VMware çözümü Şu anda vCenter veya Azure VMware Çözüm portalında özel roller sunmaz. 
 
-## <a name="avs-cloudadmin-role-on-vcenter"></a>VCenter üzerinde AVS CloudAdmin rolü
+## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter 'da Azure VMware Çözüm CloudAdmin rolü
 
-AVS özel bulut vCenter 'unuzda AVS CloudAdmin rolüne verilen ayrıcalıkları görüntüleyebilirsiniz.
+Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware çözümünüz özel bulut vCenter ' da görebilirsiniz.
 
 1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi**' ne gidin.
 1. **Access Control**altında **Roller**' i seçin.
@@ -30,7 +30,7 @@ AVS özel bulut vCenter 'unuzda AVS CloudAdmin rolüne verilen ayrıcalıkları 
 
    :::image type="content" source="media/rbac-cloudadmin-role-privileges.png" alt-text="VSphere Istemcisinde CloudAdmin rol ayrıcalıklarını görüntüleme":::
 
-AVS 'deki CloudAdmin rolü vCenter üzerinde aşağıdaki ayrıcalıklara sahiptir. Her ayrıcalık hakkında ayrıntılı bir açıklama için [VMware ürün belgelerine](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) bakın.
+Azure VMware çözümünde CloudAdmin rolü vCenter üzerinde aşağıdaki ayrıcalıklara sahiptir. Her ayrıcalık hakkında ayrıntılı bir açıklama için [VMware ürün belgelerine](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) bakın.
 
 | Privilege | Açıklama |
 | --------- | ----------- |

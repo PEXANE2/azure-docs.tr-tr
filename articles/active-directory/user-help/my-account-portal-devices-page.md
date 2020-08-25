@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422496"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798219"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
@@ -27,7 +27,7 @@ ms.locfileid: "87422496"
 - Artık sahip olmadığınız, kaybedilmiş veya çalınmış olan cihazları devre dışı bırakın.
 
 >[!Important]
->Bu makale, bir iş veya okul hesabına bağlı cihaz bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınızla ilgili cihaz yönetimi hakkında bilgi arayan bir yöneticiyseniz, [cihaz kimlikleri belgelerine](https://docs.microsoft.com/azure/active-directory/devices/index)bakın.
+>Bu makale, bir iş veya okul hesabına bağlı cihaz bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınızla ilgili cihaz yönetimi hakkında bilgi arayan bir yöneticiyseniz, [cihaz kimlikleri belgelerine](../devices/index.yml)bakın.
 
 ## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
 
@@ -68,7 +68,7 @@ Cihazınızın oturumunuzu kilitlediyseniz veya önemli bir hata varsa, başka b
 
 Bağlı cihazlarınızı görüntüledikten sonra şunları yapabilirsiniz:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntülemek veya yönetmek için seçin.
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md)görüntülemek veya yönetmek için seçin.
 
 - [Kuruluşları](my-account-portal-organizations-page.md)görüntüleyin ve yönetin.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655265"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760609"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -34,7 +34,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 * [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]
 * [VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma](../articles/virtual-machines/linux/scheduled-events.md)
 * [Her uygulama katmanını ayrı kullanılabilirlik kümelerine yapılandırma]
-* [Yük Dengeleyiciyi kullanılabilirlik kümeleri ile birleştirme]
+* [Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme]
 * [Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma
@@ -110,7 +110,7 @@ Kullanılabilirlik alanları arasında yük dengelemeye yönelik bir öğretici 
 
 <!-- Link references -->
 [Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Yük Dengeleyiciyi kullanılabilirlik kümeleri ile birleştirme]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]: #use-managed-disks-for-vms-in-an-availability-set
 [Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma]: #use-availability-zones-to-protect-from-datacenter-level-failures

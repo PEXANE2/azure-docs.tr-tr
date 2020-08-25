@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498234"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798610"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory 'de temsilci yönetimi
 
@@ -60,7 +60,7 @@ Yöneticiler tarafından yürütülen Active Directory görevlerini ve bunların
 Her görev sıklık, önem ve zorluk açısından değerlendirilmelidir. Bu ölçütler, görev tanımının önemli yönlerinden biri, bir iznin temsilci olarak oluşturulup oluşturulmayacağını yönettiğinden,
 
 * Düzenli olarak yaptığınız görevler, sınırlı risk taşır ve tamamen tamamlanmak için çok iyi bir adaydır.
-* Nadiren yaptığınız, ancak kuruluş genelinde harika bir etkiye sahip olan ve yetkilendirmeden önce yüksek yetenek seviyelerinin çok dikkatli bir şekilde düşünülmesini gerektiren görevler. Bunun yerine, [bir hesabı gerekli rolüne geçici olarak yükseltebilir](../active-directory-privileged-identity-management-configure.md) veya görevi yeniden atayabilirsiniz.
+* Nadiren yaptığınız, ancak kuruluş genelinde harika bir etkiye sahip olan ve yetkilendirmeden önce yüksek yetenek seviyelerinin çok dikkatli bir şekilde düşünülmesini gerektiren görevler. Bunun yerine, [bir hesabı gerekli rolüne geçici olarak yükseltebilir](../privileged-identity-management/pim-configure.md) veya görevi yeniden atayabilirsiniz.
 
 ## <a name="delegate-app-administration"></a>Uygulama yönetimi temsilcisi
 
@@ -110,7 +110,7 @@ Ayrıcalıklı hesapların denetimini alan saldırganlar büyük ölçüde zarar
 
 ## <a name="elevate-privilege-temporarily"></a>Ayrıcalığı geçici olarak yükselt
 
-Çoğu günlük etkinlikler için, tüm kullanıcılar genel yönetici haklarına ihtiyaç duymamalıdır ve bunların tümünün genel yönetici rolüne kalıcı olarak atanmamalıdır. Kullanıcılar genel yönetici izinlerine ihtiyaç duyduklarında, Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) 'de rol atamasını kendi hesaplarına veya alternatif bir yönetim hesabına etkinleştirmeleri gerekir.
+Çoğu günlük etkinlikler için, tüm kullanıcılar genel yönetici haklarına ihtiyaç duymamalıdır ve bunların tümünün genel yönetici rolüne kalıcı olarak atanmamalıdır. Kullanıcılar genel yönetici izinlerine ihtiyaç duyduklarında, Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 'de rol atamasını kendi hesaplarına veya alternatif bir yönetim hesabına etkinleştirmeleri gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

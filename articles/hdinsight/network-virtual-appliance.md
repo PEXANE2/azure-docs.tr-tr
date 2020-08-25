@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 805be8d5c9ab4f6316251adbb9bce3e99f4fa01d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086679"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751730"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight 'ta ağ sanal gereç yapılandırma
 
@@ -30,7 +30,7 @@ Azure Güvenlik Duvarı, yaygın olarak karşılaşılan birçok önemli senaryo
 
 İsteğe bağlı olarak, aşağıdaki hizmet uç noktalarından birini veya daha fazlasını etkinleştirerek, NVA 'yi atlayarak elde edebilirsiniz. Bu seçenek, maliyetten tasarruf etmek için büyük miktarlarda veri aktarımı ve ayrıca performans iyileştirmeleri için yararlı olabilir. 
 
-| **Uç Nokta** |
+| **Uç Noktası** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -38,7 +38,7 @@ Azure Güvenlik Duvarı, yaygın olarak karşılaşılan birçok önemli senaryo
 
 ### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
 
-| **Uç Nokta** | **Ayrıntılar** |
+| **Uç Noktası** | **Ayrıntılar** |
 |---|---|
 | [Burada](hdinsight-management-ip-addresses.md) Yayınlanan IP 'ler | Bu IP 'Ler HDInsight denetim yerini alır ve asimetrik yönlendirmeyi önlemek için UDR 'ye eklenmelidir |
 | AAD-DS özel IP 'Leri | Yalnızca ESP kümeleri için gereklidir|
@@ -47,9 +47,9 @@ Azure Güvenlik Duvarı, yaygın olarak karşılaşılan birçok önemli senaryo
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları
 
 > [!Important]
-> Aşağıdaki liste, en önemli FQDN 'lerin çoğunu sağlar. [Bu dosyada](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA 'nizi yapılandırmak için FQDN 'lerin (çoğunlukla Azure depolama ve Azure Service Bus) tüm listesini alabilirsiniz. Bu bağımlılıklar, HDInsight denetim düzlemi işlemleri tarafından bir kümeyi başarıyla oluşturmak için kullanılır.
+> Aşağıdaki liste yalnızca, işletim sistemi ve güvenlik düzeltme ekleri veya küme oluşturulduktan sonra ve küme işlemlerinin ömrü boyunca sertifika doğrulamaları için gerekebilecek birkaç FQDN sağlar. [Bu dosyada](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA 'nizi yapılandırmak Için, FQDN bağımlılıklarının (çoğunlukla Azure depolama ve Azure Service Bus) listesini alabilirsiniz. Bu bağımlılıklar, HDInsight kaynak sağlayıcısı (RP) tarafından kümeleri oluşturmak ve izlemek/yönetmek için kullanılır. Bunlar telemetri/tanılama günlüklerini, sağlama meta verilerini, kümeyle ilgili konfigürasyonları, betikleri, ARM şablonlarını vb. içerir. FQDN bağımlılığı listesi, gelecekteki HDIngisht güncelleştirmeleri serbest bırakılması ile değiştirilebilir.
 
-| **Uç Nokta**                                                          |
+| **Uç Noktası**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

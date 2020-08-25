@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795431"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory kiracı silme
 
@@ -85,7 +85,7 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
    ![Aboneliği silmek için bağlantıyı Sil](./media/directory-delete-howto/delete-command.png)
 
-6. Aboneliği silmek için **aboneliği Sil** ' i seçin ve hüküm ve koşulları kabul edin. Tüm veriler, üç gün içinde kalıcı olarak silinir. Fikrinizi değiştirirseniz, üç günlük dönemde [aboneliği yeniden etkinleştirebilirsiniz](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) .
+6. Aboneliği silmek için **aboneliği Sil** ' i seçin ve hüküm ve koşulları kabul edin. Tüm veriler, üç gün içinde kalıcı olarak silinir. Fikrinizi değiştirirseniz, üç günlük dönemde [aboneliği yeniden etkinleştirebilirsiniz](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) .
   
    ![hüküm ve koşulları dikkatle okuyun](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,18 +97,18 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Silmeyi engelleyen bir deneme aboneliğine sahibim
 
-Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır; bireysel kullanıcılar, Azure AD kuruluşunuzda kimlik doğrulaması için bir Konuk Kullanıcı da oluşturan Office 365 aracılığıyla kaydolabilir. Bu self servis ürünleri, ürünler kuruluştan tamamen silinene kadar, veri kaybını önlemek için Dizin silmelerini engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
+Microsoft Power BI, Rights Management Hizmetleri, Microsoft Power Apps veya Dynamics 365 gibi [self servis kaydolma ürünleri](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) vardır; bireysel kullanıcılar, Azure AD kuruluşunuzda kimlik doğrulaması için bir Konuk Kullanıcı da oluşturan Office 365 aracılığıyla kaydolabilir. Bu self servis ürünleri, ürünler kuruluştan tamamen silinene kadar, veri kaybını önlemek için Dizin silmelerini engeller. Yalnızca Azure AD yöneticisi tarafından, kullanıcının tek tek kaydolup kaydolmadığını veya ürünün atandığını de silinebilirler.
 
 Nasıl atandıklarından bağımsız olarak iki tür self servis kaydolma ürünü vardır: 
 
 * Kuruluş düzeyinde atama: bir Azure AD yöneticisi, ürünü kuruluşun tamamına atar ve bir Kullanıcı, bireysel olarak lisanslansalar bile bu kuruluştan yararlanarak hizmeti bu kuruluş düzeyi atama ile etkin bir şekilde kullanabilir.
 * Kullanıcı düzeyi atama: Self Servis kaydolma sırasında bireysel bir Kullanıcı, ürünü yönetici olmadan kendilerine atar. Kuruluş, bir yönetici tarafından yönetildikten sonra (bkz. [yönetilmeyen bir kuruluşun yöneticisini](domains-admin-takeover.md)inceleyin), yönetici, ürünü self servis kaydolma olmadan doğrudan kullanıcılara atayabilir.  
 
-Self Servis kaydolma ürününün silinmesine başladığınızda, eylem verileri kalıcı olarak siler ve hizmete tüm Kullanıcı erişimini kaldırır. Teklifin tek tek veya kuruluş düzeyinde atandığı herhangi bir kullanıcının, oturum açması veya mevcut verilere erişmesi engellenir. [Microsoft Power BI panoları](https://docs.microsoft.com/power-bi/service-export-to-pbix) veya [Rights Management Services ilke yapılandırması](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)gibi self servis kaydolma ürünüyle veri kaybını engellemek isterseniz, verilerin yedeklenip başka bir yerde kaydedildiğinden emin olun.
+Self Servis kaydolma ürününün silinmesine başladığınızda, eylem verileri kalıcı olarak siler ve hizmete tüm Kullanıcı erişimini kaldırır. Teklifin tek tek veya kuruluş düzeyinde atandığı herhangi bir kullanıcının, oturum açması veya mevcut verilere erişmesi engellenir. [Microsoft Power BI panoları](/power-bi/service-export-to-pbix) veya [Rights Management Services ilke yapılandırması](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)gibi self servis kaydolma ürünüyle veri kaybını engellemek isterseniz, verilerin yedeklenip başka bir yerde kaydedildiğinden emin olun.
 
-Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla bilgi için bkz. [kullanılabilir self servis programları](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
+Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla bilgi için bkz. [kullanılabilir self servis programları](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)
+Deneme sürümü Office 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değildir), aşağıdaki tabloya bakın. Office 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. [office 365 for Business aboneliğim sona erdiğinde verilere ne olur?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)
 
 Ürün durumu | Veriler | Verilere erişim
 ------------- | ---- | --------------
@@ -143,4 +143,4 @@ Azure AD portalında hemen silinmek üzere Microsoft Power BI veya Azure Rights 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory Belgeleri](https://docs.microsoft.com/azure/active-directory/)
+[Azure Active Directory belgeleri](../index.yml)

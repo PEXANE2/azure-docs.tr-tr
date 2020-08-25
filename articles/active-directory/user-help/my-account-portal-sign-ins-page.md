@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543250"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798134"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Oturum açma etkinliklerim sayfasından son oturum açma etkinliğinizi görüntüleyin ve arayın
 
@@ -72,7 +72,7 @@ Olağan dışı etkinlik olarak işaretlenen oturum açma işlemleri, **oturum a
 
 Son oturum açma etkinliğinizi görüntüledikten sonra şunları yapabilirsiniz:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md)görüntüleyin veya yönetin.
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 

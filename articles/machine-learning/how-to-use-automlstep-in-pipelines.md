@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7eac92a3d438c6a9ee67ae5d5b06829f3ef77528
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510258"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754932"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,12 @@ Bir işlem hattındaki otomatikleştirilen ML bir nesne tarafından temsil edili
 
 Öğesinin birkaç alt sınıfları vardır `PipelineStep` . ' A ek olarak, `AutoMLStep` Bu makalede bir `PythonScriptStep` veri hazırlığı ve modeli kaydetmek için bir diğeri görüntülenir.
 
-İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, `Dataset` nesneleriyle birlikte. Adımlar _arasında_ veri taşımak için tercih edilen yöntem nesneleriyle birlikte bulunur `PipelineData` . İle birlikte kullanılabilmesi için `AutoMLStep` `PipelineData` nesnenin bir nesnesine dönüştürülmesi gerekir `PipelineOutputTabularDataset` . Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
+İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, `Dataset` nesneleriyle birlikte. Adımlar _arasında_ veri taşımak ve büyük olasılıkla veri çıkışını çalıştırmaların içinden kaydetmek için, tercih edilen yol `OutputFileDatasetConfig` nesneleriyle birlikte bulunur. Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
+
+> [!NOTE]
+>`OutputFileDatasetConfig`Ve `OutputTabularDatasetConfig` sınıfları deneysel önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
+>
+>Daha fazla bilgi için bkz. https://aka.ms/azuremlexperimental.
 
 , `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
 
@@ -145,7 +150,7 @@ Taban çizgisi Titanic veri kümesi, bazı değerler eksik olan karma sayısal v
 - Kategorik verileri tamsayılara Dönüştür
 - Kullanmayı planlamadığımız bırakma sütunları
 - Verileri eğitim ve test kümelerine bölme
-- Dönüştürülen verileri `PipelineData` çıkış yollarına yaz
+- Dönüştürülen verileri `OutputFileDatasetConfig` çıkış yollarına yaz
 
 ```python
 %%writefile dataprep.py
@@ -215,7 +220,7 @@ Yukarıdaki kod parçacığı, Titanic verileri için veri hazırlama işleminin
 
 `prepare_`Yukarıdaki kod parçacığındaki çeşitli işlevler, giriş veri kümesindeki ilgili sütunu değiştirir. Bu işlevler, bir Pandas nesnesine değiştirildikten sonra veriler üzerinde çalışır `DataFrame` . Her durumda, eksik veriler temsili rastgele veriler veya "bilinmiyor" belirten kategorik veriler ile doldurulur. Metin tabanlı kategorik veriler, tamsayılarla eşlenir. Daha uzun süre gerekli olmayan sütunlar üzerine yazılır veya bırakılır. 
 
-Kod, veri hazırlama işlevlerini tanımladıktan sonra kod, veri değişkenini ayrıştırır. Bu, verilerimizi yazmak istediğimizden oluşan yoldur. (Bu değerler `PipelineData` , bir sonraki adımda ele edilecek nesneler tarafından belirlenir.) Kod, kayıtlı öğesini alır `'titanic_cs'` `Dataset` , bir Pandas 'e dönüştürür `DataFrame` ve çeşitli veri hazırlama işlevlerini çağırır. 
+Kod, veri hazırlama işlevlerini tanımladıktan sonra kod, veri değişkenini ayrıştırır. Bu, verilerimizi yazmak istediğimizden oluşan yoldur. (Bu değerler `OutputFileDatasetConfig` , bir sonraki adımda ele edilecek nesneler tarafından belirlenir.) Kod, kayıtlı öğesini alır `'titanic_cs'` `Dataset` , bir Pandas 'e dönüştürür `DataFrame` ve çeşitli veri hazırlama işlevlerini çağırır. 
 
 `output_path`Tam nitelikli olduğundan, işlev `os.makedirs()` dizin yapısını hazırlamak için kullanılır. Bu noktada, `DataFrame.to_csv()` Çıkış verilerini yazmak için kullanabilirsiniz, ancak Parquet dosyaları daha etkilidir. Bu verimlilik büyük olasılıkla bu tür küçük bir veri kümesiyle ilgisizdir, ancak **Pyarrow** paketinin `from_pandas()` ve işlevlerinin kullanılması, `write_table()` yalnızca birkaç tuş vuruşu kullanmaktır `to_csv()` .
 
@@ -223,28 +228,25 @@ Parquet dosyaları aşağıda ele alınan otomatik ML adımı tarafından yerel 
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Veri hazırlama işlem hattı adımını ( `PythonScriptStep` ) yazın
 
-Yukarıda açıklanan veri hazırlama kodu, işlem `PythonScripStep` hattı ile kullanılacak bir nesneyle ilişkilendirilmelidir. Parquet veri hazırlama çıktısının yazıldığı yol bir nesne tarafından oluşturulur `PipelineData` . Daha önce hazırlanan kaynakları,, ve gibi, `ComputeTarget` `RunConfig` `'titanic_ds' Dataset` belirtimi gerçekleştirmek için kullanılır.
+Yukarıda açıklanan veri hazırlama kodu, işlem `PythonScripStep` hattı ile kullanılacak bir nesneyle ilişkilendirilmelidir. Parquet veri hazırlama çıktısının yazıldığı yol bir nesne tarafından oluşturulur `OutputFileDatasetConfig` . Daha önce hazırlanan kaynakları,, ve gibi, `ComputeTarget` `RunConfig` `'titanic_ds' Dataset` belirtimi gerçekleştirmek için kullanılır.
 
 ```python
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
 
-prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
-prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
+prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=["--output_path", prepped_data_path],
-    inputs=[titanic_ds.as_named_input("titanic_ds")],
-    outputs=[prepped_data_path],
+    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
     allow_reuse=True
 )
 ```
 
-`prepped_data_path`Nesne türündedir `PipelineOutputFileDataset` . `arguments`Ve bağımsız değişkenlerinde belirtildiğine dikkat edin `outputs` . Önceki adımı gözden geçirdikten sonra, veri hazırlama kodunda bağımsız değişkenin değeri, `'--output_path'` Parquet dosyasının yazıldığı dosya yolu olduğunu görürsünüz. 
+`prepped_data_path`Nesne `OutputFileDatasetConfig` bir dizine işaret eden türdür.  Parametresinde belirtildiğine dikkat edin `arguments` . 
 
 ## <a name="train-with-automlstep"></a>Oto Mlstep ile eğitme
 
@@ -252,50 +254,33 @@ Bir otomatik ML ardışık düzen adımını yapılandırma sınıfı ile yapıl
 
 ### <a name="send-data-to-automlstep"></a>Verileri buraya gönder `AutoMLStep`
 
-Bir ML ardışık düzeninde, giriş verileri bir `Dataset` nesne olmalıdır. En yüksek performanslı yol, giriş verilerini nesne biçiminde sağlamaktır `PipelineOutputTabularDataset` . Nesne gibi, veya üzerinde bu türde bir nesne `parse_parquet_files()` oluşturun `parse_delimited_files()` `PipelineOutputFileDataset` `prepped_data_path` .
+Bir ML ardışık düzeninde, giriş verileri bir `Dataset` nesne olmalıdır. En yüksek performanslı yol, giriş verilerini nesne biçiminde sağlamaktır `OutputTabularDatasetConfig` . Nesnesi gibi, üzerinde ile bu türde bir nesne oluşturun `read_delimited_files()` `OutputFileDatasetConfig` `prepped_data_path` .
 
 ```python
-# type(prepped_data_path) == PipelineOutputFileDataset
-# type(prepped_data) == PipelineOutputTabularDataset
-prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
+# type(prepped_data_path) == OutputFileDatasetConfig
+# type(prepped_data) == OutputTabularDatasetConfig
+prepped_data = prepped_data_path.read_delimited_files()
 ```
 
-Yukarıdaki kod parçacığı, `PipelineOutputTabularDataset` `PipelineOutputFileDataset` veri hazırlama adımının çıktısından yüksek performanslı bir durum oluşturur.
-
-Diğer bir seçenek `Dataset` de çalışma alanında kayıtlı nesneleri kullanmaktır:
-
-```python
-prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
-```
-
-İki tekniği karşılaştırma:
-
-| Teknik | Avantajlar ve dezavantajları | 
-|-|-|
-|`PipelineOutputTabularDataset`| Daha yüksek performans | 
-|| Doğal yol `PipelineData` | 
-|| İşlem hattı çalıştırıldıktan sonra veriler kalıcı değil |
-|| [Tekniği gösteren not defteri `PipelineOutputTabularDataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
-| Kaydedilmeyecek `Dataset` | Düşük performans |
-| | Birçok şekilde oluşturulabilir | 
-| | Veriler devam ettirir ve çalışma alanı boyunca görünür |
-| | [Kayıtlı tekniği gösteren not defteri `Dataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+Yukarıdaki kod parçacığı, `OutputTabularDatasetConfig` `OutputFileDatasetConfig` veri hazırlama adımının çıktısından yüksek performanslı bir durum oluşturur.
 
 ### <a name="specify-automated-ml-outputs"></a>Otomatik ML çıkışları belirtin
 
-Çıkışları, `AutoMLStep` daha yüksek performanslı modelin ve bu modelin kendisi için nihai ölçüm puanlarından oluşur. Bu çıktıları daha fazla ardışık düzen adımlarında kullanmak için, `PipelineData` nesneleri bunları alacak şekilde hazırlayın.
+Çıkışları, `AutoMLStep` daha yüksek performanslı modelin ve bu modelin kendisi için nihai ölçüm puanlarından oluşur. Bu çıktıları daha fazla ardışık düzen adımlarında kullanmak için, `OutputFileDatasetConfig` nesneleri bunları alacak şekilde hazırlayın.
 
 ```python
+
 from azureml.pipeline.core import TrainingOutput
 
 metrics_data = PipelineData(name='metrics_data',
-                           datastore=datastore,
-                           pipeline_output_name='metrics_output',
-                           training_output=TrainingOutput(type='Metrics'))
+                            datastore=datastore,
+                            pipeline_output_name='metrics_output',
+                            training_output=TrainingOutput(type='Metrics'))
+
 model_data = PipelineData(name='best_model_data',
-                           datastore=datastore,
-                           pipeline_output_name='model_output',
-                           training_output=TrainingOutput(type='Model'))
+                          datastore=datastore,
+                          pipeline_output_name='model_output',
+                          training_output=TrainingOutput(type='Model'))
 ```
 
 Yukarıdaki kod parçacığında `PipelineData` ölçümler ve model çıktısı için iki nesne oluşturulur. Her birinin adı, daha önce alınan varsayılan veri deposuna atanır ve kaynağından özel ile ilişkilendirilir `type` `TrainingOutput` `AutoMLStep` . `pipeline_output_name`Bu nesnelere atandığımız için `PipelineData` , değerleri yalnızca bireysel ardışık düzen adımından değil, işlem hattından bir bütün olarak değil, "işlem hattı sonuçlarını inceleme" bölümünde açıklanacaktır. 
@@ -341,7 +326,7 @@ Kod parçacığında ile yaygın olarak kullanılan bir deyim gösterilmektedir 
 - `path` ve `debug_log` hata ayıklama bilgilerinin yazılacağı projenin ve yerel bir dosyanın yolunu açıklama 
 - `compute_target` daha önce tanımlanan, `compute_target` Bu örnekte ucuz BIR CPU tabanlı makinedir. Oto ml 'nin derin öğrenme tesislerini kullanıyorsanız, işlem hedefini GPU tabanlı olacak şekilde değiştirmek isteyebilirsiniz
 - `featurization` , olarak ayarlanır `auto` . Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) bölümünde bulunabilir 
-- `training_data``PipelineOutputTabularDataset`veri hazırlama adımının çıktılarından yapılan nesnelere ayarlanır 
+- `training_data``OutputTabularDatasetConfig`veri hazırlama adımının çıktılarından yapılan nesnelere ayarlanır 
 - `label_column_name` tahmin etmek için ilgilendiğiniz sütunu belirtir 
 
 , `AutoMLStep` `AutoMLConfig` Ve, `PipelineData` ölçümleri ve model verilerini tutmak için oluşturulan nesneler olan ve ' ı alır. 

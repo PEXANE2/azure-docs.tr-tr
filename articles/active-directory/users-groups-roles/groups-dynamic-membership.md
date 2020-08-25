@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213796"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797114"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -114,7 +114,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | postalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
 | preferredLanguage |ISO 639-1 kodu |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Herhangi bir dize değeri veya *null* |(User. sipProxyAddress-EQ "değer") |
-| durum |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
+| state |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
 | streetAddress |Herhangi bir dize değeri veya *null* |(User. streetAddress-EQ "değer") |
 | surname |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
 | telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
@@ -135,7 +135,7 @@ Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurall
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
-| Operatör | Syntax |
+| İşleç | Syntax |
 | --- | --- |
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Uzantı özellikleri ve özel uzantı özellikleri
 
-Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. [Uzantı öznitelikleri](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) şirket Içi WINDOWS Server ad 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
+Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. [Uzantı öznitelikleri](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) şirket Içi WINDOWS Server ad 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Özel uzantı özellikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) şirket Içi WINDOWS Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve şu biçimdedir `user.extension_[GUID]_[Attribute]` :
+[Özel uzantı özellikleri](../hybrid/how-to-connect-sync-feature-directory-extensions.md) şirket Içi WINDOWS Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve şu biçimdedir `user.extension_[GUID]_[Attribute]` :
 
 * [GUID], Azure AD 'de özelliği oluşturan uygulama için Azure AD 'de benzersiz tanıtıcıdır
 * [Attribute], oluşturulduğu şekliyle özelliğin adıdır
@@ -393,7 +393,7 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (device.sysTıtemlabels-"M365Managed" içerir)
 
 > [!Note]  
-> Cihazlar için dinamik gruplar oluştururken Devicesahiplik için, "Şirket" değerine eşit değeri ayarlamanız gerekir. Intune 'da cihaz sahipliği, şirket yerine temsil edilir. Daha fazla ayrıntı için [Ownertypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) öğesine bakın. 
+> Cihazlar için dinamik gruplar oluştururken Devicesahiplik için, "Şirket" değerine eşit değeri ayarlamanız gerekir. Intune 'da cihaz sahipliği, şirket yerine temsil edilir. Daha fazla ayrıntı için [Ownertypes](/intune/reports-ref-devices#ownertypes) öğesine bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

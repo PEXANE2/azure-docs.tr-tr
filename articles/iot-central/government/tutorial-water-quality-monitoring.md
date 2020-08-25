@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82024481"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırma.
 > * Beyaz etiketleme kullanarak uygulama markalamasını özelleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliğinizin olması önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
@@ -231,7 +231,7 @@ Azure IoT Central işleri sayesinde, güncelleştirmeleri cihaz veya bulut özel
 
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
-1.  > **Uygulamanızı Özelleştir** **' i seçin**.
+1. Uygulamanızı **Özelleştir ' i seçin**  >  **Customize your application**.
 1. **Uygulama logosu**altında, logo olarak karşıya yüklenecek görüntüyü seçmek için **Değiştir** ' i seçin.
 1. Tarayıcı **simgesinde**, tarayıcı sekmelerinde görüntülenen görüntüyü seçmek için **Değiştir** ' i seçin.
 1. **Tarayıcı renkleri**altında, varsayılan değerleri HTML onaltılık renk kodlarıyla değiştirebilirsiniz.
@@ -241,7 +241,7 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
 ### <a name="update-the-application-image"></a>Uygulama görüntüsünü güncelleştirme
 
-1. **Yönetim** > **uygulaması ayarlarını**seçin.
+1. **Yönetim**  >  **uygulaması ayarlarını**seçin.
 
 1. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini kullanın.
 

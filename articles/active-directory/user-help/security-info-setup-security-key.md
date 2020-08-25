@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744425"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797675"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlayın
 
@@ -158,13 +158,13 @@ Güvenlik anahtarınız için yeni bir güvenlik anahtarı PIN kodu oluşturabil
 
 ## <a name="additional-security-info-methods"></a>Ek güvenlik bilgileri yöntemleri
 
-Bir güvenlik anahtarını kaydetmek için, en az bir ek güvenlik doğrulama yöntemine kaydolmalısınız. Daha fazla bilgi için [genel bakış bölümüne](security-info-add-update-methods-overview.md) bakın. 
+Bir güvenlik anahtarını kaydetmek için, en az bir ek güvenlik doğrulama yöntemine kaydolmalısınız. Daha fazla bilgi için [genel bakış bölümüne](./security-info-setup-auth-app.md) bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Passwordless doğrulama yöntemleri hakkında daha fazla bilgi için [Microsoft 'un Azure AD 'de FIDO2 güvenlik anahtarlarının genel önizlemesine başlayan, passwordless oturum açma](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogunu etkinleştiren veya [Microsoft Authenticator App ne olduğunu](user-help-auth-app-overview.md) ve [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello) makalelerini okuyun.
 
-- [Microsoft uyumlu güvenlik anahtarları](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)hakkında daha ayrıntılı bilgi için.
+- [Microsoft uyumlu güvenlik anahtarları](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)hakkında daha ayrıntılı bilgi için.
 
 - Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
 

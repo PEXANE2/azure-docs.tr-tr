@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798185"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Kuruluşlar sayfasından bağlı kuruluşları yönetin
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422461"
 - **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
 >[!Important]
->Bu makale, bir iş veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Bu makale, bir iş veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
@@ -61,7 +61,7 @@ Ana kuruluşunuz olmayan herhangi bir kuruluştan ayrılırsanız.
 
 Kuruluşları görüntüledikten sonra şunları yapabilirsiniz:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md)görüntüleyin veya yönetin.
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 

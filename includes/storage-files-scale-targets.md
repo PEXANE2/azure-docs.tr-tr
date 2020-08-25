@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: ae431d27af4a1717a32e348ba852f9b2b9fe9331
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87451204"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760597"
 ---
 | Kaynak | Standart dosya paylaşımları | Premium dosya paylaşımları |
 |----------|---------------|------------------------------------------|
@@ -17,7 +17,7 @@ ms.locfileid: "87451204"
 | Dosya paylaşımının en büyük boyutu | 100 TiB *, 5 TiB | 100 TiB |
 | Dosya paylaşımındaki bir dosyanın en büyük boyutu | 1 TiB | 4 TiB |
 | Dosya paylaşımındaki en fazla dosya sayısı | Sınır yok | Sınır yok |
-| Paylaşma başına maksimum ıOPS | 10.000 ıOPS *, 1.000 ıOPS | 100.000 ıOPS |
+| Paylaşma başına maksimum ıOPS | 100ms 'de 10.000 ıOPS *, 1.000 ıOPS veya 100 isteği | 100.000 ıOPS |
 | Dosya paylaşma başına en fazla depolanan erişim ilkesi sayısı | 5 | 5 |
 | Tek bir dosya paylaşımının hedef performansı | en fazla 300 MIB/sn *, en fazla 60 MIB/sn,  | Bkz. Premium dosya paylaşma giriş ve çıkış değerleri|
 | Tek bir dosya paylaşımında maksimum çıkış | Bkz. standart dosya paylaşma hedef işleme | En fazla 6.204 MIB/sn |
@@ -27,4 +27,4 @@ ms.locfileid: "87451204"
 | En fazla nesne (Dizin ve dosya) adı uzunluğu | 2.048 karakter | 2.048 karakter |
 | En fazla yol adı bileşeni (\A\B\C\D yolunda her bir bir bileşendir) | 255 karakter | 255 karakter |
 
-\*Standart dosya paylaşımlarında varsayılan değer 5 TiB 'dir ve standart dosya paylaşımlarının ölçeğini 100 TiB 'ye kadar artırma hakkında daha fazla bilgi için bkz. [büyük dosya paylaşımlarını etkinleştirme ve oluşturma](../articles/storage/files/storage-files-how-to-create-large-file-share.md) .
+\* Standart dosya paylaşımlarında varsayılan değer 5 TiB 'dir ve standart dosya paylaşımlarının ölçeğini 100 TiB 'ye kadar artırma hakkında daha fazla bilgi için bkz. [büyük dosya paylaşımlarını etkinleştirme ve oluşturma](../articles/storage/files/storage-files-how-to-create-large-file-share.md) .

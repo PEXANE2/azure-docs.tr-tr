@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 26531e80292a53400671ac3507b47371c1fbbcad
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566174"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796825"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Hızlı başlangıç: Unity örneğini masaüstüne dağıtma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 >* Örneği bir BILGISAYARA dağıtma
 >* Örneği bir bılgısayarda çalıştırın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta örnek projeyi hızlı başlangıç konumundan dağıtacağız [: Unity ile model işleme](render-model.md).
 
@@ -57,7 +57,7 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. Yapılandırmayı **Release** ve **x86**olarak değiştirin.
 1. Hata ayıklayıcı modunu **yerel makineye**değiştirin. \
   ![Çözüm yapılandırması](./media/unity-deploy-config-pc.png)
-1. Çözümü oluşturun (F7).
+1. Çözümü derleyin.
 
 ## <a name="launch-the-sample-project"></a>Örnek projeyi başlatma
 

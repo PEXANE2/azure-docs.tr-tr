@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727203"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797998"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory LinkedIn hesabı bağlantılarını tümleştirin
 
@@ -33,14 +33,14 @@ Kuruluşunuzdaki kullanıcıların bazı Microsoft uygulamaları dahilinde Linke
 > * Bu ayar, Almanya 'da sağlanan Azure AD kuruluşları için varsayılan olarak kapalıdır. Ayarın Microsoft Bulut Almanya kullanan müşteriler için kullanılamaz olduğunu unutmayın.
 > * Bu ayar, Fransa 'da sağlanan kuruluşlar için varsayılan olarak kapalıdır.
 >
-> Kuruluşunuz için LinkedIn hesabı bağlantıları etkinleştirildikten sonra, Kullanıcı adına şirket verilerine erişen uygulamalara izin verdikten sonra hesap bağlantıları çalışır. Kullanıcı izin ayarı hakkında daha fazla bilgi için, bkz. [kullanıcının bir uygulamaya erişimini kaldırma](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+> Kuruluşunuz için LinkedIn hesabı bağlantıları etkinleştirildikten sonra, Kullanıcı adına şirket verilerine erişen uygulamalara izin verdikten sonra hesap bağlantıları çalışır. Kullanıcı izin ayarı hakkında daha fazla bilgi için, bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../manage-apps/methods-for-removing-user-access.md).
 
 ## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>Azure portal LinkedIn hesabı bağlantılarını etkinleştirin
 
 Tüm kuruluşunuzdan yalnızca kuruluşunuzdaki seçili kullanıcılara kadar, yalnızca erişim sağlamak istediğiniz kullanıcılar için LinkedIn hesap bağlantılarını etkinleştirebilirsiniz.
 
 1. Azure AD kuruluş için genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/) oturum açın.
-1. **Kullanıcıları**seçin.
+1. **Kullanıcılar**’ı seçin.
 1. **Kullanıcılar** sayfasında, **Kullanıcı ayarları**' nı seçin.
 1. **LinkedIn hesap bağlantıları**altında, kullanıcıların bazı Microsoft uygulamalarında LinkedIn bağlantılarına erişmek için hesaplarını bağlanmasına izin verin. Kullanıcılar hesaplarını bağlamaya izin verene kadar veri paylaşılmaz.
 
@@ -71,7 +71,7 @@ Kullanıcı grubunu seçme seçeneğine sahip kullanıcıların listesini belirt
 1. LinkedIn hesap bağlantıları için seçilen kullanıcıların CSV dosyasını oluşturun.
 1. Yönetici hesabınızla Microsoft 365 oturum açın.
 1. PowerShell’i başlatın.
-1. Çalıştırarak Azure AD modülünü yüklemeyi`Install-Module AzureAD`
+1. Çalıştırarak Azure AD modülünü yüklemeyi `Install-Module AzureAD`
 1. Şu betiği çalıştırın:
 
   ``` PowerShell
@@ -94,7 +94,7 @@ Grubu Azure AD Yönetim Merkezi 'ndeki LinkedIn hesap bağlantıları ayarında 
 1. Aşağıdaki ayarla bir Grup İlkesi nesnesi oluşturun: **Kullanıcı Yapılandırması**  >  **Yönetim Şablonları**  >  **Microsoft Office 2016**  >  **çeşitli**  >  **Office uygulamalarında LinkedIn özelliklerini gösterir**.
 1. **Etkin** veya **devre dışı**seçeneğini belirleyin.
   
-   Durum | Efekt
+   Durum | Etki
    ------ | ------
    **Etkin** | Office 2016 seçeneklerinde **Office uygulamalarında LinkedIn özelliklerini göster** ayarı etkinleştirilmiştir. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanabilir.
    **Devre dışı** | Office 2016 seçeneklerinde **LinkedIn özelliklerini Office uygulamalarında göster** ayarı devre dışıdır ve son kullanıcılar bu ayarı değiştiremezler. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanamaz.

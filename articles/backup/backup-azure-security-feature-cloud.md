@@ -3,12 +3,12 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538845"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763448"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
@@ -69,7 +69,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. [Geçici silme özelliğini devre dışı bırakmak](#enabling-and-disabling-soft-delete)için adımları izleyin.
 
@@ -136,7 +136,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
 
-1. İlk olarak, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)bahsedilen adımlarla silme işlemlerini geri alın.
+1. İlk olarak, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)bahsedilen adımlarla silme işlemlerini geri alın.
 2. Ardından, [burada](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)bahsedilen adımları kullanarak REST API kullanarak geçici silme işlevini devre dışı bırakın.
 3. Ardından, [burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedeklemeleri silin.
 

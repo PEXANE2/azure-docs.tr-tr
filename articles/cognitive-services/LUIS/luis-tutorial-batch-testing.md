@@ -4,10 +4,10 @@ description: Bu öğreticide, Language Understanding (LUSıS) uygulamanızın ka
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681639"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
@@ -24,7 +24,7 @@ Batch test gereksinimleri:
 
 Bu öğreticiden başka bir uygulama kullanırken, uygulamanıza zaten eklenmiş olan örnek utbotları *kullanmayın.*
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]

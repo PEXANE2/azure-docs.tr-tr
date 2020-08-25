@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565829"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751038"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Power Apps hesabı](http://make.powerapps.com)
 
@@ -72,9 +72,9 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
 1. Aşağı kaydırın. Istekler ' de, arama hizmetinize bir sorgu isteği yapılandırmak için **örnekten + Içeri aktar** ' ı seçin:
 
-   * Fiili seçin`GET`
+   * Fiili seçin `GET`
 
-   * URL için, arama dizininiz için bir örnek sorgu girin ( `search=*` tüm belgeler ' i döndürür, `$select=` alanlar seçmenizi sağlar). API sürümü gereklidir. Tam olarak belirtilen URL şöyle görünebilir:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
+   * URL için, arama dizininiz için bir örnek sorgu girin ( `search=*` tüm belgeler ' i döndürür, `$select=` alanlar seçmenizi sağlar). API sürümü gereklidir. Tam olarak belirtilen URL şöyle görünebilir: `https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * Üst bilgiler için yazın `Content-Type` . 
 
@@ -92,7 +92,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
 1. *Seçim*için: `HotelName,Description,Address/City` **varsayılan değer**olarak ayarla, **gerekli** ayarını *false*olarak ayarlayın ve **görünürlüğü** *hiçbiri*olarak ayarlayın.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Sürüm parametresi meta verileri" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Parametre meta verilerini seçin" border="true":::
 
 1. *Api sürümü*için: `2020-06-30` **varsayılan değer**olarak ayarlayın, *true*olarak ayarlayın **required** ve **görünürlüğü** *iç*olarak ayarlayın.  
 
@@ -162,7 +162,7 @@ Bu görev için bir [sorgu API 'si anahtarına](search-security-api-keys.md#find
 
 1. Sağ üst köşedeki **Düzenle** ' yi seçin.
 
-1. 4 seçeneğini belirleyin **. **Test sayfasını açmak için test edin.
+1. 4 seçeneğini belirleyin **. ** Test sayfasını açmak için test edin.
 
 1. Test Işleminde **+ Yeni bağlantı**' ya tıklayın.
 
@@ -250,7 +250,7 @@ Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir g
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

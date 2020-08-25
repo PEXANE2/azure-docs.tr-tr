@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82233219"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak GitHub deposu için bir CI/CD işlem hattı oluşturma
 
 Azure DevOps Starter, Azure 'da sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak için basitleştirilmiş bir işlem sunar. Mevcut kodunuzu ve git deponuzu getirebilir veya örnek bir uygulama seçebilirsiniz.
 
-Yapacaklarınız:
+Şunları yapacaksınız:
 
 > [!div class="checklist"]
 > * CI/CD işlem hattı oluşturmak için DevOps Starter 'ı kullanma
@@ -43,7 +43,7 @@ Yapacaklarınız:
 
 Azure DevOps Starter, Azure Pipelines içinde bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. Azure DevOps Starter Ayrıca seçtiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -97,7 +97,7 @@ Azure DevOps Starter, Azure Pipelines bir CI/CD işlem hattını otomatik olarak
 
    ![Azure Pipelines yapılar sayfası](_img/azure-devops-project-github/pipelinesbuildpage.png)
 
-1. **Yapılar** sayfasının sağ üst köşesinde, geçerli derlemeyi değiştirmek için **Düzenle** ' yi, yeni bir derleme eklemek için **kuyruğu** veya dikey üç nokta düğmesini (**&#8942;**) seçerek daha fazla seçenek içeren bir menüyü açabilirsiniz. **Düzenle**' yi seçin.
+1. **Yapılar** sayfasının sağ üst köşesinde, geçerli derlemeyi değiştirmek için **Düzenle** ' yi, yeni bir derleme eklemek için **kuyruğu** veya dikey üç nokta düğmesini (**&#8942;**) seçerek daha fazla seçenek içeren bir menüyü açabilirsiniz. **Düzenle**’yi seçin.
 
 1. Derleme, depodan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için yayımlama çıkışları gibi çeşitli görevleri yapar. Sağ tarafta, **ad**' ın altında, derleme işlem hattı adını daha açıklayıcı bir şekilde değiştirin. **& kuyruğu kaydet**' i seçin ve ardından **Kaydet**' i seçin. Bir açıklama girin ve sonra yeniden **Kaydet** ' i seçin.
 

@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983314"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798389"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>İki öğeli doğrulama yönteminizi ve ayarlarını değiştirin
 
@@ -31,10 +31,10 @@ ms.locfileid: "85983314"
 
 ## <a name="using-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasını kullanma
 
-Kuruluşunuz, iki öğeli doğrulamanızı açma ve yönetme hakkında belirli adımlar sağladıysa, önce bu yönergeleri izlemelisiniz. Aksi takdirde, güvenlik doğrulama yöntemi ayarlarınıza [ek güvenlik doğrulama](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) sayfasından ulaşabilirsiniz.
+Kuruluşunuz, iki öğeli doğrulamanızı açma ve yönetme hakkında belirli adımlar sağladıysa, önce bu yönergeleri izlemelisiniz. Aksi takdirde, güvenlik doğrulama yöntemi ayarlarınıza [ek güvenlik doğrulama](./multi-factor-authentication-end-user-first-time.md) sayfasından ulaşabilirsiniz.
 
 >[!Note]
->Ekranınızda gördüğünüz özellikler, bu makalede ele alınanlara uymuyor, yöneticinizin **güvenlik bilgileri (Önizleme)** deneyimini kapatmış olması veya kuruluşunuzun kendi özel portalınızı sağlamasıdır. Yeni güvenlik bilgileri deneyimi hakkında daha fazla bilgi için bkz. [güvenlik bilgisi (Önizleme) genel bakış](user-help-security-info-overview.md). Kuruluşunuzun özel portalı hakkında daha fazla bilgi için kuruluşunuzun yardım masasına başvurmanız gerekir.
+>Ekranınızda gördüğünüz özellikler, bu makalede ele alınanlara uymuyor, yöneticinizin **güvenlik bilgileri (Önizleme)** deneyimini kapatmış olması veya kuruluşunuzun kendi özel portalınızı sağlamasıdır. Yeni güvenlik bilgileri deneyimi hakkında daha fazla bilgi için bkz. [güvenlik bilgisi (Önizleme) genel bakış](./security-info-setup-signin.md). Kuruluşunuzun özel portalı hakkında daha fazla bilgi için kuruluşunuzun yardım masasına başvurmanız gerekir.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasına ulaşmak için
 
@@ -75,7 +75,7 @@ Kullanmakta olduğunuz varsayılan güvenlik doğrulama yöntemini değiştirmek
 
     - **Uygulamadan doğrulama kodunu kullan**: kimlik doğrulayıcı uygulamanızı, iş veya okul hesabınızdan gelen isteme yazdığınız bir doğrulama kodu almak için kullanacaksınız.
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="add-or-change-your-phone-number"></a>Telefon numaranızı ekleme veya değiştirme
 
@@ -90,7 +90,7 @@ Kullanmakta olduğunuz varsayılan güvenlik doğrulama yöntemini değiştirmek
 
 1. **Alternatif kimlik doğrulama telefonu** seçeneğinin yanındaki kutuyu işaretleyin ve ardından birincil cihazınıza erişemiyorsanız telefon görüşmeleri alacağınız bir ikincil telefon numarası yazın.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına yeni bir hesap ekleme
 
@@ -106,7 +106,7 @@ Microsoft Authenticator uygulamasında iş veya okul hesabınızı zaten ayarlad
 
     Bilgilerinizi doğrulamak için Microsoft Authenticator uygulama aracılığıyla bir bildirimi onaylamanız istenecektir.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasından hesabınızı veya cihazınızı silme
 
@@ -116,7 +116,7 @@ Microsoft Authenticator uygulamasından hesabınızı silebilir ve cihazınızı
 
 1. **Ek güvenlik doğrulama** sayfasının **nasıl yanıt vermesini istiyorsunuz?** bölümünde, **kimlik doğrulayıcı uygulaması ayarla** düğmesini seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasından hesabınızı silmek için
 

@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını yönetme ve izleme
 description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritabanlarının nasıl yönetileceği ve izleneceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659594"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756325"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
 
@@ -16,15 +16,11 @@ Bu makalede, bir Azure sanal makinesinde (VM) çalışan ve [Azure Backup](backu
 
 SQL Server veritabanınız için henüz yedeklemeleri yapılandırmadıysanız bkz. [Azure VM 'lerinde SQL Server veritabanlarını yedekleme](backup-azure-sql-database.md)
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Portalda el ile yedekleme işlerini izleme
+## <a name="monitor-backup-jobs-in-the-portal"></a>Portalda yedekleme işlerini izleme
 
-Azure Backup, **yedekleme işleri** portalındaki tüm el ile tetiklenen işleri gösterir. Bu portalda gördüğünüz işler veritabanı bulma ve kaydetme, yedekleme ve geri yükleme işlemlerini içerir.
+Azure Backup, Portal 'daki **yedekleme işleri** altında tüm zamanlanmış ve isteğe bağlı işlemleri, çok sık olabileceğinizden bu yana zamanlanan günlük yedeklemeleri hariç gösterir. Bu portalda gördüğünüz işler veritabanı bulma ve kayıt, yedeklemeyi yapılandırma ve yedekleme ve geri yükleme işlemlerini içerir.
 
 ![Yedekleme işleri portalı](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> **Yedekleme işleri** portalında zamanlanmış yedekleme işleri gösterilmez. Sonraki bölümde açıklandığı gibi zamanlanmış yedekleme işlerini izlemek için SQL Server Management Studio kullanın.
->
 
 Izleme senaryoları hakkında daha fazla bilgi için [Azure izleyici kullanarak](backup-azure-monitoring-use-azuremonitor.md)Azure Portal ve izleme ' [de izleme](backup-azure-monitoring-built-in-monitor.md) ' ye gidin.  
 
@@ -162,7 +158,7 @@ Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM uzantıyı yeniden Kaydet
 
-Bazen, VM 'deki iş yükü uzantısı bir veya başka bir nedenden dolayı etkilenebilir. Bu gibi durumlarda, VM 'de tetiklenen tüm işlemler başarısız olur. Ardından, uzantıyı VM 'de yeniden kaydetmeniz gerekebilir. **Yeniden kaydet** işlemi, devam etmek için VM 'de iş yükü yedekleme uzantısını yeniden yükler. Bu seçeneği, kurtarma hizmeti kasasında **Yedekleme altyapısı** altında bulabilirsiniz.
+Bazen, VM 'deki iş yükü uzantısı bir nedenle veya başka bir nedenden dolayı etkilenebilir. Bu gibi durumlarda, VM 'de tetiklenen tüm işlemler başarısız olur. Ardından, uzantıyı VM 'de yeniden kaydetmeniz gerekebilir. **Yeniden kaydet** işlemi, devam etmek için VM 'de iş yükü yedekleme uzantısını yeniden yükler. Bu seçeneği, kurtarma hizmetleri kasasındaki **Yedekleme altyapısı** altında bulabilirsiniz.
 
 ![Yedekleme altyapısı altındaki korumalı sunucular](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

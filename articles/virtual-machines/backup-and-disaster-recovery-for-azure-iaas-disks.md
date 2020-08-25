@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: eef2af8b48bba7408a887947c20f8c9407f8a4da
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658267"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754982"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS diskleri için yedekleme ve olağanüstü durum kurtarma
 
@@ -48,7 +48,7 @@ Bu mimaride, Azure, IaaS diskleri için sürekli olarak kurumsal düzeyde dayan�
 
 İşlem konağında veya depolama platformunda yerelleştirilmiş donanım hataları bazen, VM kullanılabilirliği için [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) kapsamındaki VM 'nin geçici kullanım dışı kalması ile sonuçlanabilir. Azure ayrıca Azure Premium SSD 'leri kullanan tek VM örnekleri için sektör lideri bir SLA sağlar.
 
-Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](~/articles/virtual-machines/windows/manage-availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
+Bir disk veya VM 'nin geçici olarak KULLANILAMAMASINDAN dolayı uygulama iş yüklerinin kapalı kalma süresini korumak için, müşteriler [kullanılabilirlik kümelerini](windows/manage-availability.md)kullanabilir. Bir kullanılabilirlik kümesindeki iki veya daha fazla sanal makine uygulama için artıklık sağlar. Azure daha sonra bu VM 'Leri ve diskleri farklı güç, ağ ve sunucu bileşenleriyle ayrı hata etki alanlarında oluşturur.
 
 Bu ayrı hata etki alanları nedeniyle, yerelleştirilmiş donanım arızaları genellikle aynı anda küme içinde birden çok VM 'yi etkilemez. Ayrı hata etki alanlarının olması, uygulamanız için yüksek kullanılabilirlik sağlar. Yüksek kullanılabilirlik gerektiğinde kullanılabilirlik kümelerini kullanmak iyi bir uygulama olarak kabul edilir. Sonraki bölümde olağanüstü durum kurtarma yönü ele alınmaktadır.
 
@@ -97,24 +97,24 @@ IaaS uygulama verileri sorunları başka bir olasılık. Fiyatlandırma bilgiler
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>Olağanüstü durum kurtarma çözümü: Azure Backup 
 
-[Azure Backup](https://azure.microsoft.com/services/backup/) YEDEKLEMELER ve Dr için kullanılır ve yönetilmeyen disklerin yanı sıra [yönetilen disklerle](~/articles/virtual-machines/managed-disks-overview.md) de birlikte kullanılabilir. Zaman tabanlı yedeklemeler, kolay VM geri yükleme ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturabilirsiniz.
+[Azure Backup](https://azure.microsoft.com/services/backup/) YEDEKLEMELER ve Dr için kullanılır ve yönetilmeyen disklerin yanı sıra [yönetilen disklerle](managed-disks-overview.md) de birlikte kullanılabilir. Zaman tabanlı yedeklemeler, kolay VM geri yükleme ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturabilirsiniz.
 
-[Premium SSD](~/articles/virtual-machines/disks-types.md)'leri, [yönetilen diskleri](~/articles/virtual-machines/managed-disks-overview.md)veya [yerel olarak yedekli depolama](~/articles/storage/common/storage-redundancy-lrs.md) seçeneğiyle diğer disk TÜRLERINI kullanırsanız, düzenli olarak gerçekleştirilen Dr yedeklemeleri yapmak özellikle önemlidir. Azure Backup, verileri kurtarma hizmetleri kasasında uzun süreli saklama için depolar. Yedekleme kurtarma hizmetleri Kasası için [coğrafi olarak yedekli depolama](~/articles/storage/common/storage-redundancy-grs.md) seçeneğini belirleyin. Bu seçenek, yedeklemelerin bölgesel felaketlerden korunması için farklı bir Azure bölgesine çoğaltılmasını sağlar.
+[Premium SSD](disks-types.md)'leri, [yönetilen diskleri](managed-disks-overview.md)veya [yerel olarak yedekli depolama](../storage/common/storage-redundancy.md#locally-redundant-storage) seçeneğiyle diğer disk TÜRLERINI kullanırsanız, düzenli olarak gerçekleştirilen Dr yedeklemeleri yapmak özellikle önemlidir. Azure Backup, verileri kurtarma hizmetleri kasasında uzun süreli saklama için depolar. Yedekleme kurtarma hizmetleri Kasası için [coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md#geo-redundant-storage) seçeneğini belirleyin. Bu seçenek, yedeklemelerin bölgesel felaketlerden korunması için farklı bir Azure bölgesine çoğaltılmasını sağlar.
 
 Yönetilmeyen diskler için, IaaS diskleri için yerel olarak yedekli depolama türünü kullanabilir, ancak kurtarma hizmetleri Kasası için coğrafi olarak yedekli depolama seçeneğiyle Azure Backup etkinleştirildiğinden emin olabilirsiniz.
 
 > [!NOTE]
-> Yönetilmeyen diskleriniz için [coğrafi olarak yedekli depolama](~/articles/storage/common/storage-redundancy-grs.md) veya [Okuma Erişimli Coğrafi olarak yedekli depolama](~/articles/storage/common/storage-redundancy.md) seçeneğini KULLANıRSANıZ, yedekleme ve Dr için yine de tutarlı anlık görüntüler gerekir. [Azure Backup](https://azure.microsoft.com/services/backup/) veya [tutarlı anlık görüntüleri](#alternative-solution-consistent-snapshots)kullanın.
+> Yönetilmeyen diskleriniz için [coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md#geo-redundant-storage) veya [Okuma Erişimli Coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)  seçeneğini KULLANıRSANıZ, yedekleme ve Dr için yine de tutarlı anlık görüntüler gerekir. [Azure Backup](https://azure.microsoft.com/services/backup/) veya [tutarlı anlık görüntüleri](#alternative-solution-consistent-snapshots)kullanın.
 
  Aşağıdaki tablo, DR için kullanılabilen çözümlerin bir özetidir.
 
 | Senaryo | Otomatik çoğaltma | DR çözümü |
 | --- | --- | --- |
-| Premium SSD diskler | Yerel ([yerel olarak yedekli depolama](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Yönetilen diskler | Yerel ([yerel olarak yedekli depolama](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Yönetilmeyen yerel olarak yedekli depolama diskleri | Yerel ([yerel olarak yedekli depolama](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Yönetilmeyen coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([coğrafi olarak yedekli depolama](~/articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
-| Yönetilmeyen Okuma Erişimli Coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([Okuma Erişimli Coğrafi olarak yedekli depolama](~/articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
+| Premium SSD diskler | Yerel ([yerel olarak yedekli depolama](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Yönetilen diskler | Yerel ([yerel olarak yedekli depolama](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Yönetilmeyen yerel olarak yedekli depolama diskleri | Yerel ([yerel olarak yedekli depolama](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Yönetilmeyen coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md#geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
+| Yönetilmeyen Okuma Erişimli Coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([Okuma Erişimli Coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
 
 Yüksek kullanılabilirlik, Azure Backup birlikte bir kullanılabilirlik kümesinde yönetilen diskler kullanılarak en iyi şekilde karşılanır. Yönetilmeyen diskler kullanıyorsanız, DR için Azure Backup kullanmaya devam edebilirsiniz. Azure Backup kullandıysanız ve daha sonraki bir bölümde açıklandığı gibi [tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots)almak, yedekleme ve Dr için alternatif bir çözümdür.
 
@@ -127,19 +127,19 @@ Uygulama veya altyapı seviyeleri için yüksek kullanılabilirlik, yedekleme ve
 
 ### <a name="using-azure-backup"></a>Azure Backup’ı kullanma 
 
-[Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) , Windows veya Linux çalıştıran sanal makinelerinizi Azure kurtarma hizmetleri kasasına yedekleyebilir. İş açısından kritik verilerin yedeklenmesi ve geri yüklenmesi, verileri üreten uygulamalar çalışırken iş açısından kritik verilerin yedeklenmesi gereken bir olgusuna göre karmaşıktır. 
+[Azure Backup](../backup/backup-azure-vms-introduction.md) , Windows veya Linux çalıştıran sanal makinelerinizi Azure kurtarma hizmetleri kasasına yedekleyebilir. İş açısından kritik verilerin yedeklenmesi ve geri yüklenmesi, verileri üreten uygulamalar çalışırken iş açısından kritik verilerin yedeklenmesi gereken bir olgusuna göre karmaşıktır. 
 
-Bu sorunu gidermek için, Azure Backup Microsoft iş yükleri için uygulamayla tutarlı yedeklemeler sağlar. Verilerin depolamaya doğru yazıldığından emin olmak için birim gölge hizmetini kullanır. Linux sanal makinelerinde, Linux 'un Windows durumunda olduğu gibi birim gölge hizmeti ile eşdeğer olmadığından, varsayılan yedekleme tutarlılığı modu dosya bakımından tutarlı yedeklemededir. Linux makineleri için bkz. [Azure Linux VM 'Lerinin uygulamayla tutarlı yedeklemesi](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+Bu sorunu gidermek için, Azure Backup Microsoft iş yükleri için uygulamayla tutarlı yedeklemeler sağlar. Verilerin depolamaya doğru yazıldığından emin olmak için birim gölge hizmetini kullanır. Linux sanal makinelerinde, Linux 'un Windows durumunda olduğu gibi birim gölge hizmeti ile eşdeğer olmadığından, varsayılan yedekleme tutarlılığı modu dosya bakımından tutarlı yedeklemededir. Linux makineleri için bkz. [Azure Linux VM 'Lerinin uygulamayla tutarlı yedeklemesi](../backup/backup-azure-linux-app-consistent.md).
 
 ![Azure Backup akışı][1]
 
 Azure Backup zamanlanan saatte bir yedekleme işi başlattığında, sanal makinede yüklü olan yedekleme uzantısının bir zaman noktaya anlık görüntü almak için bu uzantıyı tetikler. Bir anlık görüntü, sanal makinedeki disklerin kapatılmasını gerektirmeden tutarlı bir anlık görüntüsünü almak için birim gölge hizmeti ile eşgüdümle birlikte getirilir. VM 'deki yedekleme uzantısı tüm disklerin tutarlı bir anlık görüntüsünü almadan önce tüm yazmaları temizler. Anlık görüntüyü aldıktan sonra veriler, yedekleme kasasına Azure Backup tarafından aktarılır. Yedekleme işlemini daha verimli hale getirmek için hizmet, son yedeklemeden sonra yalnızca değiştirilen veri bloklarını tanımlar ve aktarır.
 
-Geri yüklemek için, kullanılabilir yedeklemeleri Azure Backup aracılığıyla görüntüleyebilir ve sonra geri yükleme başlatabilirsiniz. [Azure Portal](https://portal.azure.com/)aracılığıyla, [PowerShell kullanarak](~/articles/backup/backup-azure-vms-automation.md)veya [Azure CLI](/cli/azure/)kullanarak Azure yedeklemeleri oluşturabilir ve geri yükleyebilirsiniz.
+Geri yüklemek için, kullanılabilir yedeklemeleri Azure Backup aracılığıyla görüntüleyebilir ve sonra geri yükleme başlatabilirsiniz. [Azure Portal](https://portal.azure.com/)aracılığıyla, [PowerShell kullanarak](../backup/backup-azure-vms-automation.md)veya [Azure CLI](/cli/azure/)kullanarak Azure yedeklemeleri oluşturabilir ve geri yükleyebilirsiniz.
 
 ### <a name="steps-to-enable-a-backup"></a>Yedeklemeyi etkinleştirme adımları
 
-[Azure Portal](https://portal.azure.com/)kullanarak sanal makinelerinizin yedeklerini etkinleştirmek için aşağıdaki adımları kullanın. Tam senaryonuza bağlı olarak bazı farklılıklar vardır. Tüm ayrıntılar için [Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) belgelerine bakın. Azure Backup Ayrıca [yönetilen disklere sahip VM 'leri destekler](https://azure.microsoft.com/blog/azure-managed-disk-backup/).
+[Azure Portal](https://portal.azure.com/)kullanarak sanal makinelerinizin yedeklerini etkinleştirmek için aşağıdaki adımları kullanın. Tam senaryonuza bağlı olarak bazı farklılıklar vardır. Tüm ayrıntılar için [Azure Backup](../backup/backup-azure-vms-introduction.md) belgelerine bakın. Azure Backup Ayrıca [yönetilen disklere sahip VM 'leri destekler](https://azure.microsoft.com/blog/azure-managed-disk-backup/).
 
 1.  Bir VM için kurtarma hizmetleri Kasası oluşturma:
 
@@ -151,11 +151,11 @@ Geri yüklemek için, kullanılabilir yedeklemeleri Azure Backup aracılığıyl
 
 1.  Yedekleme ilkesini yapılandırın ve aynı kullanıcı arabiriminden VM 'yi seçin.
 
-1.  Yedekleme aracısının VM 'de yüklü olduğundan emin olun. VM 'niz bir Azure Galeri görüntüsü kullanılarak oluşturulduysa, yedekleme Aracısı zaten yüklüdür. Aksi halde (özel bir görüntü kullanıyorsanız), [sanal MAKINEYE VM aracısını yüklemek](~/articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent)için yönergeleri kullanın.
+1.  Yedekleme aracısının VM 'de yüklü olduğundan emin olun. VM 'niz bir Azure Galeri görüntüsü kullanılarak oluşturulduysa, yedekleme Aracısı zaten yüklüdür. Aksi halde (özel bir görüntü kullanıyorsanız), [sanal MAKINEYE VM aracısını yüklemek](../backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent)için yönergeleri kullanın.
 
 1.  Önceki adımlar tamamlandıktan sonra yedekleme, yedekleme ilkesinde belirtildiği şekilde düzenli aralıklarla çalışır. Gerekirse, ilk yedeklemeyi Azure portal kasa panosundan el ile tetikleyebilirsiniz.
 
-Betikleri kullanarak Azure Backup otomatikleştirmek için [VM yedeklemesi Için PowerShell cmdlet 'leri](~/articles/backup/backup-azure-vms-automation.md)bölümüne bakın.
+Betikleri kullanarak Azure Backup otomatikleştirmek için [VM yedeklemesi Için PowerShell cmdlet 'leri](../backup/backup-azure-vms-automation.md)bölümüne bakın.
 
 ### <a name="steps-for-recovery"></a>Kurtarma adımları
 
@@ -165,17 +165,17 @@ Bir VM 'yi onarmanız veya yeniden oluşturmanız gerekiyorsa, sanal makineyi ka
 
 -   Diskleri geri yükleyebilir ve ardından geri yüklenen VM 'yi özelleştirmek ve yeniden oluşturmak için sanal makine şablonunu kullanabilirsiniz.
 
-Daha fazla bilgi için, [sanal makineleri geri yüklemek üzere Azure Portal kullanma](~/articles/backup/backup-azure-arm-restore-vms.md)yönergelerine bakın. Bu belge, birincil veri merkezinde olağanüstü bir durum oluşursa, coğrafi olarak yedekli yedekleme kasasını kullanarak, yedeklenen VM 'Leri eşleştirilmiş bir veri merkezine geri yüklemeye yönelik belirli adımları açıklamaktadır. Bu durumda Azure Backup, geri yüklenen sanal makineyi oluşturmak için ikincil bölgeden Işlem hizmeti 'ni kullanır.
+Daha fazla bilgi için, [sanal makineleri geri yüklemek üzere Azure Portal kullanma](../backup/backup-azure-arm-restore-vms.md)yönergelerine bakın. Bu belge, birincil veri merkezinde olağanüstü bir durum oluşursa, coğrafi olarak yedekli yedekleme kasasını kullanarak, yedeklenen VM 'Leri eşleştirilmiş bir veri merkezine geri yüklemeye yönelik belirli adımları açıklamaktadır. Bu durumda Azure Backup, geri yüklenen sanal makineyi oluşturmak için ikincil bölgeden Işlem hizmeti 'ni kullanır.
 
-Ayrıca, [geri yüklenen disklerden yeni bir sanal makine oluşturmak](~/articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)için PowerShell kullanabilirsiniz.
+Ayrıca, [geri yüklenen disklerden yeni bir sanal makine oluşturmak](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)için PowerShell kullanabilirsiniz.
 
 ## <a name="alternative-solution-consistent-snapshots"></a>Alternatif çözüm: tutarlı anlık görüntüler
 
 Azure Backup kullandıysanız, anlık görüntüler kullanarak kendi yedekleme mekanizmanızı uygulayabilirsiniz. Bir VM tarafından kullanılan tüm diskler için tutarlı anlık görüntüler oluşturma ve ardından bu anlık görüntüleri başka bir bölgeye çoğaltma karmaşıktır. Bu nedenle Azure, yedekleme hizmetini özel bir çözüm derlemeden daha iyi bir seçenek olarak kullanmayı kabul eder.
 
-Diskler için Okuma Erişimli Coğrafi olarak yedekli depolama/coğrafi olarak yedekli depolama kullanırsanız, anlık görüntüler otomatik olarak ikincil bir veri merkezine çoğaltılır. Diskler için yerel olarak yedekli depolama kullanırsanız, verileri kendiniz çoğaltmanız gerekir. Daha fazla bilgi için bkz. [Artımlı anlık görüntülerle Azure YÖNETILMEYEN VM disklerini yedekleme](~/articles/virtual-machines/windows/incremental-snapshots.md).
+Diskler için Okuma Erişimli Coğrafi olarak yedekli depolama/coğrafi olarak yedekli depolama kullanırsanız, anlık görüntüler otomatik olarak ikincil bir veri merkezine çoğaltılır. Diskler için yerel olarak yedekli depolama kullanırsanız, verileri kendiniz çoğaltmanız gerekir. Daha fazla bilgi için bkz. [Artımlı anlık görüntülerle Azure YÖNETILMEYEN VM disklerini yedekleme](windows/incremental-snapshots.md).
 
-Anlık görüntü, zaman içinde belirli bir noktadaki bir nesnenin gösterimidir. Bir anlık görüntü, tuttuğu verilerin artımlı boyutu için faturalandırılır. Daha fazla bilgi için bkz. [BLOB anlık görüntüsü oluşturma](~/articles/storage/blobs/storage-blob-snapshots.md).
+Anlık görüntü, zaman içinde belirli bir noktadaki bir nesnenin gösterimidir. Bir anlık görüntü, tuttuğu verilerin artımlı boyutu için faturalandırılır. Daha fazla bilgi için bkz. [BLOB anlık görüntüsü oluşturma](../storage/blobs/snapshots-overview.md).
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>VM çalışırken anlık görüntü oluşturma
 
@@ -187,9 +187,9 @@ Bu durumdan kaçınmak için, yedekleme işleminin aşağıdaki adımları uygul
 
 1.  Bekleyen tüm yazmaları temizler.
 
-1.  Tüm diskler için [bir blob anlık görüntüsü oluşturun](~/articles/storage/blobs/storage-blob-snapshots.md) .
+1.  Tüm diskler için [bir blob anlık görüntüsü oluşturun](../storage/blobs/snapshots-manage-dotnet.md) .
 
-SQL Server gibi bazı Windows uygulamaları, uygulamayla tutarlı yedeklemeler oluşturmak için bir birim gölge hizmeti aracılığıyla eşgüdümlü bir yedekleme mekanizması sağlar. Linux 'ta, diskleri koordine etmek için *fsfreeze* gibi bir araç kullanabilirsiniz. Bu araç, uygulamayla tutarlı anlık görüntüler olmadan dosya ile tutarlı yedeklemeler sağlar. Bu işlem karmaşıksa, bu yordamı zaten uygulayan [Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) veya üçüncü taraf bir yedekleme çözümünü kullanmayı düşünmelisiniz.
+SQL Server gibi bazı Windows uygulamaları, uygulamayla tutarlı yedeklemeler oluşturmak için bir birim gölge hizmeti aracılığıyla eşgüdümlü bir yedekleme mekanizması sağlar. Linux 'ta, diskleri koordine etmek için *fsfreeze* gibi bir araç kullanabilirsiniz. Bu araç, uygulamayla tutarlı anlık görüntüler olmadan dosya ile tutarlı yedeklemeler sağlar. Bu işlem karmaşıksa, bu yordamı zaten uygulayan [Azure Backup](../backup/backup-azure-vms-introduction.md) veya üçüncü taraf bir yedekleme çözümünü kullanmayı düşünmelisiniz.
 
 Önceki işlem, sanal makinenin belirli bir zaman noktası görünümünü temsil eden tüm VM diskleri için eşgüdümlü bir anlık görüntü koleksiyonu ile sonuçlanır. Bu, VM için bir yedekleme geri yükleme noktasıdır. Düzenli yedeklemeler oluşturmak için işlemi zamanlanan aralıklarda yineleyebilirsiniz. Anlık görüntüleri DR için başka bir bölgeye kopyalama adımları için bkz. [yedeklemeleri başka bir bölgeye kopyalama](#copy-the-snapshots-to-another-region) .
 
@@ -201,7 +201,7 @@ Tutarlı yedeklemeler oluşturmaya yönelik başka bir seçenek de sanal makiney
 
 1. Yalnızca birkaç saniye süren her bir sanal sabit sürücü blobunun anlık görüntüsünü oluşturun.
 
-    Anlık görüntü oluşturmak için, [PowerShell](~/articles/storage/common/storage-powershell-guide-full.md), [Azure depolama REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/)veya [.NET için depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/hh488361.aspx)gibi Azure depolama istemci kitaplıklarından birini kullanabilirsiniz.
+    Anlık görüntü oluşturmak için, [PowerShell](https://docs.microsoft.com/powershell/module/az.storage), [Azure depolama REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/)veya [.NET için depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/hh488361.aspx)gibi Azure depolama istemci kitaplıklarından birini kullanabilirsiniz.
 
 1. Sanal makineyi başlatın ve kapalı kalma süresini sonlandırır. Genellikle tüm işlem birkaç dakika içinde tamamlanır.
 
@@ -218,13 +218,13 @@ Diskleriniz için coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi
 
 Yerel olarak yedekli depolama kullanırsanız, anlık görüntüyü oluşturduktan hemen sonra anlık görüntüleri farklı bir depolama hesabına kopyalamanız gerekir. Kopyalama hedefi, farklı bir bölgedeki yerel olarak yedekli bir depolama hesabı olabilir ve bu, kopyanın uzak bir bölgeye yerleştirilmesiyle sonuçlanır. Ayrıca, anlık görüntüyü aynı bölgedeki bir Okuma Erişimli Coğrafi olarak yedekli depolama hesabına kopyalayabilirsiniz. Bu durumda, anlık görüntü geç uzak ikincil bölgeye çoğaltılır. Kopyalama ve çoğaltma işlemi tamamlandıktan sonra yedeklemeniz birincil sitede olağanüstü bir şekilde korunur.
 
-Artımlı anlık görüntülerinizi DR için verimli bir şekilde kopyalamak için [Artımlı anlık görüntülerle Azure YÖNETILMEYEN VM disklerini yedekleme](~/articles/virtual-machines/windows/incremental-snapshots.md)bölümündeki yönergeleri gözden geçirin.
+Artımlı anlık görüntülerinizi DR için verimli bir şekilde kopyalamak için [Artımlı anlık görüntülerle Azure YÖNETILMEYEN VM disklerini yedekleme](windows/incremental-snapshots.md)bölümündeki yönergeleri gözden geçirin.
 
 ![Artımlı anlık görüntülerle Azure yönetilmeyen VM disklerini yedekleme][2]
 
 ### <a name="recovery-from-snapshots"></a>Anlık görüntülerden kurtarma
 
-Anlık görüntü almak için yeni bir blob oluşturmak üzere kopyalayın. Anlık görüntüyü birincil hesaptan kopyalıyorsanız, anlık görüntüyü anlık görüntünün temel blobuna kopyalayabilirsiniz. Bu işlem, diski anlık görüntüye geri döndürür. Bu işlem, anlık görüntüyü yükseltme olarak bilinir. Anlık görüntü yedeklemesini ikincil bir hesaptan kopyalıyorsanız, Okuma Erişimli Coğrafi olarak yedekli depolama hesabı söz konusu olduğunda, bir birincil hesaba kopyalamanız gerekir. [PowerShell kullanarak](~/articles/storage/common/storage-powershell-guide-full.md) veya AZCopy yardımcı programını kullanarak bir anlık görüntüyü kopyalayabilirsiniz. Daha fazla bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+Anlık görüntü almak için yeni bir blob oluşturmak üzere kopyalayın. Anlık görüntüyü birincil hesaptan kopyalıyorsanız, anlık görüntüyü anlık görüntünün temel blobuna kopyalayabilirsiniz. Bu işlem, diski anlık görüntüye geri döndürür. Bu işlem, anlık görüntüyü yükseltme olarak bilinir. Anlık görüntü yedeklemesini ikincil bir hesaptan kopyalıyorsanız, Okuma Erişimli Coğrafi olarak yedekli depolama hesabı söz konusu olduğunda, bir birincil hesaba kopyalamanız gerekir. [PowerShell kullanarak](https://docs.microsoft.com/powershell/module/az.storage) veya AZCopy yardımcı programını kullanarak bir anlık görüntüyü kopyalayabilirsiniz. Daha fazla bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
 
 Birden çok diski olan VM 'Ler için, aynı Eşgüdümlü geri yükleme noktasının parçası olan tüm anlık görüntüleri kopyalamanız gerekir. Anlık görüntüleri yazılabilir VHD bloblarına kopyaladıktan sonra, sanal makine şablonunu kullanarak VM 'nizi yeniden oluşturmak için Blobları kullanabilirsiniz.
 
@@ -232,7 +232,7 @@ Birden çok diski olan VM 'Ler için, aynı Eşgüdümlü geri yükleme noktası
 
 ### <a name="sql-server"></a>SQL Server
 
-Bir VM 'de çalışan SQL Server, SQL Server veritabanınızı Azure Blob depolama alanına veya bir dosya paylaşımında yedeklemek için kendi yerleşik özelliklerine sahiptir. Depolama hesabı coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama ise, bu yedeklemelere, daha önce açıklanan kısıtlamalara sahip bir olağanüstü durum durumunda depolama hesabının ikincil veri merkezinde erişebilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için Yedekleme ve geri yükleme](~/articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). [SQL Server AlwaysOn kullanılabilirlik grupları](~/articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) , yedekleme ve geri yükleme özelliklerine ek olarak veritabanlarının ikincil çoğaltmalarını de koruyabilir. Bu özellik olağanüstü durum kurtarma süresini önemli ölçüde azaltır.
+Bir VM 'de çalışan SQL Server, SQL Server veritabanınızı Azure Blob depolama alanına veya bir dosya paylaşımında yedeklemek için kendi yerleşik özelliklerine sahiptir. Depolama hesabı coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama ise, bu yedeklemelere, daha önce açıklanan kısıtlamalara sahip bir olağanüstü durum durumunda depolama hesabının ikincil veri merkezinde erişebilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için Yedekleme ve geri yükleme](../azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). [SQL Server AlwaysOn kullanılabilirlik grupları](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) , yedekleme ve geri yükleme özelliklerine ek olarak veritabanlarının ikincil çoğaltmalarını de koruyabilir. Bu özellik olağanüstü durum kurtarma süresini önemli ölçüde azaltır.
 
 ## <a name="other-considerations"></a>Diğer önemli noktalar
 
@@ -257,11 +257,11 @@ Coğrafi olarak yedekli depolama ve Okuma Erişimli Coğrafi olarak yedekli depo
 
 Önemli bir kesinti olması için Azure ekibi, coğrafi Yük devretme tetikleyip birincil DNS girdilerini ikincil depolamaya işaret etmek üzere değiştirebilir. Bu noktada, coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama etkinse, ikincil olarak kullanılan bölgedeki verilere erişebilirsiniz. Diğer bir deyişle, depolama hesabınız coğrafi olarak yedekli depolama ise ve bir sorun varsa ikincil depolamaya yalnızca coğrafi Yük devretme varsa erişebilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Depolama kesintisi oluşursa yapmanız gerekenler](~/articles/storage/common/storage-disaster-recovery-guidance.md).
+Daha fazla bilgi için bkz. [Azure Depolama kesintisi oluşursa yapmanız gerekenler](../storage/common/storage-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. [Artımlı anlık görüntülerle Azure yönetilmeyen sanal makine disklerini yedekleme](./linux/incremental-snapshots.md).
+Bkz. [Artımlı anlık görüntülerle Azure yönetilmeyen sanal makine disklerini yedekleme](linux/incremental-snapshots.md).
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

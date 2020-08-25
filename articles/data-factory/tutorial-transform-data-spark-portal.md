@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81409256"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +71,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     if __name__ == "__main__":
         main()
     ```
-1. * &lt;StorageAccountName&gt; * ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+1. * &lt; StorageAccountName &gt; * ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 1. Azure Blob depolama alanında henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 1. **Spark** adlı bir klasör oluşturun.
 1. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -93,7 +93,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
       
    ![“Yeni veri fabrikası” bölmesi](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** &lt;adınız&gt;ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** &lt; adınız &gt; ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
@@ -159,7 +159,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    f. **Hizmet sorumlusu anahtarı** için anahtarı girin. 
    
-   g. **Kaynak grubu** için veri fabrikası oluştururken kullandığınız kaynak grubunun aynısını seçin. Spark kümesi bu kaynak grubunda oluşturulur. 
+   örneğin: **Kaynak grubu** için veri fabrikası oluştururken kullandığınız kaynak grubunun aynısını seçin. Spark kümesi bu kaynak grubunda oluşturulur. 
    
    h. **İşletim sistemi türü** seçeneğini genişletin.
    
@@ -167,7 +167,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    j. Kullanıcı için **Küme parolası** girin. 
    
-   k. **Son**' u seçin. 
+   k. **Son**’u seçin. 
 
    ![HDInsight bağlı hizmet ayarları](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -176,7 +176,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. **+** (Artı) düğmesini seçin ve ardından menüde işlem **hattı** ' nı seçin.
+1. **+**(Artı) düğmesini seçin ve ardından menüde Işlem **hattı** ' nı seçin.
 
    ![Yeni işlem hattı oluşturma düğmeleri](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
 1. **Etkinlikler** araç kutusunda **HDInsight**’ı genişletin. **Etkinlikler** araç kutusundan **Spark** etkinliğini işlem hattı tasarımcısının yüzeyine sürükleyin. 
@@ -199,7 +199,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    c. **adftutorial/spark/script** klasörüne göz atın, **WordCount_Spark.py** dosyasını seçin ve **Son**’a tıklayın.      
 
-1. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama penceresini **>>** kapatmak için (sağ ok) düğmesini seçin. 
+1. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. **>>** Doğrulama penceresini kapatmak için (sağ ok) düğmesini seçin. 
     
    !["Doğrula" düğmesi](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. **Tümünü Yayımla**. Data Factory kullanıcı arabirimi, varlıkları (bağlı hizmetler ve işlem hattı) Azure Data Factory hizmetinde yayımlar. 
@@ -233,7 +233,7 @@ adftutorial kapsayıcısının spark/otuputfiles/wordcount klasöründe çıktı
 
 ![Çıkış dosyasının konumu](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örneğin: 
+Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örnek: 
 
 ```
 (u'This', 1)

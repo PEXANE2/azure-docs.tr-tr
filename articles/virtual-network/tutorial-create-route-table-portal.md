@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86079658"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyle yardımcı olan sanal makinelerdir. Bu öğretici, **Windows Server 2016 Datacenter**kullandığınızı varsayar. İsterseniz farklı bir işletim sistemi seçebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 1. **Güvenlik**  >  **Windows Server 2016 Datacenter**' ı seçin.
 
@@ -53,14 +53,14 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
     | **Proje ayrıntıları** | Abonelik | Aboneliğinizi seçin. |
     | | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*girin ve **Tamam**' ı seçin. |
     | **Örnek ayrıntıları** | Sanal makine adı | *Myvmnva*girin. |
-    | | Bölge | **Doğu ABD (ABD)** seçin. |
+    | | Region | **Doğu ABD (ABD)** seçin. |
     | | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil**' i seçin. |
     | | Görüntü | **Windows Server 2016 Datacenter**' ı seçin. |
     | | Boyut | Varsayılan **Standart DS1 v2**'yi koruyun. |
     | **Yönetici hesabı** | Kullanıcı adı | Seçtiğiniz bir kullanıcı adını girin. |
     | | Parola | Seçtiğiniz bir parolayı girin, en az 12 karakter uzunluğunda olmalıdır ve [tanımlanan karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılayın. |
     | | Parolayı Onayla | Parolayı yeniden girin. |
-    | **Gelen bağlantı noktası kuralları** | Ortak gelen bağlantı noktaları | **Hiçbiri**seçin. |
+    | **Gelen bağlantı noktası kuralları** | Genel gelen bağlantı noktaları | **Hiçbiri**seçin. |
     | **Tasarruf edin** | Zaten bir Windows Server lisansınız var mı? | Seçim **No**. |
 
     ![Temel bilgiler, sanal makine oluşturma Azure portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
@@ -101,14 +101,14 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
         | Ayar | Değer |
         | ------- | ----- |
-        | Adı | *mynvastorageaccount* |
+        | Ad | *mynvastorageaccount* |
         | Hesap türü | **Depolama (genel amaçlı v1)** |
         | Performans | **Standart** |
         | Çoğaltma | **Yerel olarak yedekli depolama (LRS)** |
     
     1. İletişim kutusundan çıkmak için **Tamam ' ı** seçin.
 
-    1. **İncele ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasına götürülürsünüz ve Azure yapılandırmanızı doğrular.
+    1. **Gözden geçir + oluştur**’u seçin. **Gözden geçir + oluştur** sayfasına götürülürsünüz ve Azure yapılandırmanızı doğrular.
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
@@ -118,7 +118,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. Arama kutusuna *yol tablosu*girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
 
@@ -128,7 +128,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *myRouteTablePublic* |
+    | Ad | *myRouteTablePublic* |
     | Abonelik | Aboneliğiniz |
     | Kaynak grubu | **myResourceGroup** |
     | Konum | **ABD Doğu ABD** |
@@ -136,7 +136,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     ![Yol tablosu oluşturma, Azure portal](./media/tutorial-create-route-table-portal/create-route-table.png)
 
-5. **Oluştur**'u seçin.
+5. **Oluştur**’u seçin.
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
@@ -207,7 +207,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 | --- | ------- | ----- |
 | Temel Bilgiler | Kaynak grubu | **myResourceGroup** |
 | | Sanal makine adı | *myVmPublic* |
-| | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
+| | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
 | | Gelen bağlantı noktalarını seçin | **RDP** |
 | Ağ | Sanal ağ | **myVirtualNetwork** |
 | | Alt ağ | **Ortak (10.0.0.0/24)** |
@@ -220,7 +220,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 | --- | ------- | ----- |
 | Temel Bilgiler | Kaynak grubu | **myResourceGroup** |
 | | Sanal makine adı | *myVmPrivate* |
-| | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
+| | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
 | | Gelen bağlantı noktalarını seçin | **RDP** |
 | Ağ | Sanal ağ | **myVirtualNetwork** |
 | | Alt ağ | **Özel (10.0.1.0/24)** |

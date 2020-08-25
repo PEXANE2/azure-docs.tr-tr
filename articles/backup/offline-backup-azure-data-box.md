@@ -3,12 +3,12 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091037"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761568"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
@@ -259,13 +259,13 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı kiracınızda sizin için b
 
 Sorununuzun daha önce açıklananla aynı olup olmadığını görmek için aşağıdaki adımlardan birini yapın.
 
-#### <a name="step-1"></a>1\. Adım
+#### <a name="step-1-of-verification"></a>Doğrulama 1. adım
 
 Çevrimdışı yedeklemeyi yapılandırdığınız zaman MAB konsolunda aşağıdaki hata iletisinin görünüp göründüğünü denetleyin.
 
 ![Geçerli Azure hesabı için çevrimdışı yedekleme ilkesi oluşturulamıyor](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>2. Adım
+#### <a name="step-2-of-verification"></a>Doğrulama adım 2
 
 1. Yükleme yolundaki **geçici** klasörü açın. Varsayılan Temp klasörü yolu, *C:\Program Files\Microsoft Azure Recovery Services*SSIS \ temp ' dir. *Cbuicurr* dosyasını bulun ve dosyayı açın.
 
@@ -275,11 +275,11 @@ Sorununuzun daha önce açıklananla aynı olup olmadığını görmek için aş
 
 Bu sorunu çözmeye yönelik bir geçici çözüm olarak, aşağıdaki adımları uygulayın ve ilke yapılandırmasını yeniden deneyin.
 
-#### <a name="step-1"></a>1\. Adım
+#### <a name="step-1-of-workaround"></a>Geçici çözüm 1. adım
 
 İçeri veya dışarı aktarma işi oluşturulan abonelikte yönetici erişimine sahip farklı bir hesap kullanarak MAB Kullanıcı arabiriminde görünen PowerShell 'de oturum açın.
 
-#### <a name="step-2"></a>2. Adım
+#### <a name="step-2-of-workaround"></a>Adım 2/çözüm
 
 Başka hiçbir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı silin. **Azure Portal**  >  **Azure Active Directory**  >  **uygulama kayıtları**' yı seçin.
 

@@ -1,35 +1,35 @@
 ---
 title: Sık sorulan sorular
-description: Azure VMware çözümü (AVS) ile ilgili bazı yaygın soruların yanıtlarını sağlar.
+description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cffa31bb66adfde2af24ab2542322479639ed9dd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872336"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752186"
 ---
-# <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizleme hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-vmware-solution-preview"></a>Azure VMware Çözüm önizlemesi hakkında sık sorulan sorular
 
-Azure VMware çözümü (AVS) hakkında sık sorulan sorular için yanıtlar.
+Azure VMware çözümü hakkında sık sorulan sorular için yanıtlar.
 
 ## <a name="general"></a>Genel
 
-**Azure VMware çözümü (AVS) nedir?**
+**Azure VMware çözümü nedir?**
 
-Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. AVS, VMware 'nin yazılım tanımlı veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. AVS çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
+Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. Azure VMware çözümü, VMware 'nin yazılım tanımlı veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. Azure VMware çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
 
-## <a name="avs-service"></a>AVS hizmeti
+## <a name="azure-vmware-solution-service"></a>Azure VMware çözüm hizmeti
 
-**AVS bugün nerede mevcuttur?**
+**Azure VMware çözümü bugün kullanılabilir mi?**
 
 Hizmet yeni bölgelere sürekli ekleniyor, bu nedenle daha fazla ayrıntı için [en son hizmet kullanılabilirliği bilgilerini](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) görüntüleyin. 
 
-**Bir Azure VMware çözümü (AVS) örneğinde çalışan iş yükleri Azure hizmetleriyle tüketiliyor veya tümleştirilmesine neden olabilir?**
+**Azure VMware Çözüm örneğinde çalışan iş yükleri Azure hizmetleriyle tüketiliyor veya tümleştirilmesine neden olabilir?**
 
-Tüm Azure Hizmetleri, AVS çözüm müşterileri tarafından kullanılabilir. Belirli hizmetler için performans ve kullanılabilirlik sınırlamaları, büyük/küçük harfe göre değinilmesi gerekecektir.
+Tüm Azure hizmetleri Azure VMware Çözüm müşterileri tarafından kullanılabilir. Belirli hizmetler için performans ve kullanılabilirlik sınırlamaları, büyük/küçük harfe göre değinilmesi gerekecektir.
 
 **Özel bulut kaynaklarını yönetmek için şu anda kullandığım araçları kullanıyorum?**
 
@@ -37,13 +37,13 @@ Evet. Azure portal dağıtım ve bir dizi yönetim işlemi için kullanılır. v
 
 **Şirket içi vCenter 'um ile özel bir bulutu yönetebilir miyim?**
 
-Başlatma sırasında, AVS şirket içi ve özel bulut ortamlarında tek bir yönetim deneyimini desteklemez. Özel bulut kümeleri, özel bir bulutta vCenter ve NSX Yöneticisi yerel ile yönetilir.
+Başlatma sırasında Azure VMware çözümü, şirket içi ve özel bulut ortamlarında tek bir yönetim deneyimini desteklemez. Özel bulut kümeleri, özel bir bulutta vCenter ve NSX Yöneticisi yerel ile yönetilir.
 
 **Şirket içinde çalışan VNET paketini kullanabilir miyim?** 
 
 Belirli tümleştirmeler ve kullanım durumları, büyük/küçük harf esasına göre değerlendirilebilir.
 
-**VSphere sanal makinelerini şirket içi ortamlardan AVS özel bulutlarına geçirebilir miyim?**
+**Şirket içi ortamlardan vSphere VM 'lerini Azure VMware Çözüm özel bulutlarına geçirebilir miyim?**
 
 Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/article/210695) karşılanıyorsa VM 'leri özel bir buluta TAŞıMAK için VM geçişi ve vMotion kullanılabilir.
 
@@ -89,7 +89,7 @@ Her ESXi konağında, 15,2 TB 'lik kapasite katmanı ve 3,2 TB NVMe önbellek ka
 
 **Her ESXi konağında kullanılabilir ağ bant genişliği miktarı nedir?**
 
-Her ESXi Konağı, ESXi sistem trafiği için sağlanan iki NIC ve iş yükü trafiği için sağlanan iki NIC ile 4 25 Gbps NIC ile yapılandırılır. 
+Her ESXi ana bilgisayarı Azure VMware çözümü, ESXi sistem trafiği için sağlanan iki NIC ve iş yükü trafiği için sağlanan iki NIC ile 4 25 Gbps NIC ile yapılandırılır. 
 
 **Veriler, bekleyen vSAN veri depoları üzerinde mi depolanıyor?**
 
@@ -111,13 +111,13 @@ Evet, kümeler en düşük ve en fazla ESXi ana bilgisayarı sayısı arasında 
 
 **Deneme kümeleri nedir?**
 
-Deneme kümeleri, AVS özel bulutlarının bir aylık değerlendirmesi için kullanılan üç ana bilgisayar kümelerinden biridir.
+Deneme kümeleri, Azure VMware Çözüm özel bulutlarının bir aylık değerlendirmesi için kullanılan üç ana bilgisayar kümeleridir.
 
 **Deneme kümeleri için yüksek kaliteli Konakları kullanabilir miyim?**
 
 Hayır. Yüksek kaliteli ESXi Konakları üretim kümelerinde kullanılmak üzere ayrılmıştır.
 
-## <a name="avs-and-vmware-software"></a>AVS ve VMware yazılımı
+## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware çözümü ve VMware yazılımı
 
 **Özel bulutlarda VMware yazılımının hangi sürümleri kullanılıyor?**
 
@@ -125,7 +125,7 @@ Hayır. Yüksek kaliteli ESXi Konakları üretim kümelerinde kullanılmak üzer
 
 **Özel bulutlar VMware NSX kullanıyor mu?**
 
-Evet, NSX-T 2,5, AVS özel bulutlarında yazılım tanımlı ağ için kullanılır.
+Evet, NSX-T 2,5, Azure VMware Çözüm özel bulutlarında yazılım tanımlı ağ için kullanılır.
 
 **VMware NSX-V ' y I özel bir bulutta kullanabilir miyim?**
 
@@ -147,9 +147,9 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 **Şirket içi ortamlarla özel bulutlar eklemek için hangi ağ IP adresi planlaması gerekir?**
 
-Bir AVS özel bulutu dağıtmak için özel bir ağ/22 adres alanı gerekir. Bu özel adres alanı, bir abonelikteki diğer sanal ağlarla veya şirket içi ağlarla çakışmamalıdır.
+Bir Azure VMware çözümü özel bulutu dağıtmak için özel bir ağ/22 adres alanı gerekir. Bu özel adres alanı, bir abonelikteki diğer sanal ağlarla veya şirket içi ağlarla çakışmamalıdır.
  
-**Şirket içi ortamlardan bir AVS özel bulutuna mi bağlanmak Nasıl yaparım??**
+**Şirket içi ortamlardan Azure VMware Çözüm özel bulutuna Nasıl yaparım? mı bağlanacak?**
 
 Hizmete iki yöntemden birini kullanabilirsiniz: 
 
@@ -170,7 +170,7 @@ Evet. İnternet 'e yönelik VM erişimini kısıtlayan bir güvenlik duvarı olu
 
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar
 
-**Yeni AVS özel bulutum ile hangi hesapları ve ayrıcalıkları alabilirim?**
+**Yeni Azure VMware çözümü özel bulutum ile hangi hesapları ve ayrıcalıkları alabilirim?**
 
 NSX-T Manager 'da vCenter ve yönetici erişimi içindeki bir cloudadmin kullanıcısı için kimlik bilgileri sağlıyoruz. Ayrıca, Azure Active Directory birleştirmek için kullanılabilecek bir CloudAdmin grubu da vardır. Daha fazla bilgi için bkz. [erişim ve kimlik kavramları](concepts-identity.md).
 
@@ -191,19 +191,19 @@ NSX-T üzerinde tam yönetici ayrıcalıklarına sahip olacaksınız ve şirket 
 
 ## <a name="billing-and-support"></a>Faturalandırma ve destek
 
-**AVS 'nin önizlemesi boyunca nasıl faturalandırılırım?**
+**Azure VMware çözümünün önizlemesi sırasında nasıl faturalandırılırım**
 
-Önizleme süresince AVS için faturalandırma, Kullandıkça Öde esasına göre aylık olarak yapılır. Ek Seçenekler genel kullanıma sunulacaktır.
+Önizleme sırasında Azure VMware çözümü için faturalandırma, Kullandıkça Öde temelinde aylık olarak yapılır. Ek Seçenekler genel kullanıma sunulacaktır.
 
-**AVS 'nin önizlemesi sırasında fiyatlandırma nasıl yapılandırılır?**
+**Azure VMware çözümünün önizlemesi sırasında fiyatlandırma nasıl yapılandırılır?**
 
 Fiyatlandırma hakkında genel sorular için bkz. Azure VMware Çözüm [fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-vmware) sayfası. Önizleme fiyatlandırması istek üzerine alınabilir, hesap ekibinize başvurun veya satış ile iletişim kurmak için fiyatlandırma sayfasındaki bağlantıyı izleyin.
 
-**AVS 'yi destekliyor mu?**
+**Azure VMware çözümünü kimler destekler?**
 
-AVS desteği Microsoft tarafından dağıtılır. Göz önünde olmak üzere, önizleme kılavuzlarımıza göre 9-5 PM PST iş saati Pazartesi-Cuma sürecinde destek sağlayacağız. [Bu bağlantıdan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) bir destek bileti yükseltebilirsiniz
+Azure VMware çözümü desteği Microsoft tarafından dağıtılır. Göz önünde olmak üzere, önizleme kılavuzlarımıza göre 9-5 PM PST iş saati Pazartesi-Cuma sürecinde destek sağlayacağız. [Bu bağlantıdan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) bir destek bileti yükseltebilirsiniz
 
-**AVS özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?**
+**Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?**
 
 Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
@@ -229,7 +229,7 @@ Bir [destek isteği göndererek](..\azure-portal\supportability\how-to-create-az
 1. Destek bileti açıklamasında, Ayrıntılar sekmesinde şunları sağlayın:
    - Ek düğüm sayısı   
    - Düğüm SKU 'SU
-   - Bölge
+   - Region
 
    > [!NOTE] 
    > Varsayılan olarak, en az dört düğüm verilecektir.

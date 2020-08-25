@@ -8,24 +8,24 @@ ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
 ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82608822"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Öğretici: Azure CDN Azure portal kullanarak bir WAF ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve bunu Azure Content Delivery Network (CDN) üzerindeki bir uç noktaya uygulama işlemi gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
 > * Bunu bir CDN uç noktasıyla ilişkilendirin. Bir WAF ilkesini, yalnızca Microsoft SKU 'su **Azure CDN standardında** barındırılan uç noktalarla ilişkilendirebilirsiniz.
 > * WAF kurallarını yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: bir Azure CDN profili ve uç noktası oluşturma](../../cdn/cdn-create-new-endpoint.md)bölümündeki yönergeleri izleyerek bir Azure CDN profili ve uç noktası oluşturun. 
 
@@ -50,7 +50,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | CDN profili              | CDN profili adınızı seçin.|
-    | Uç Nokta           | Uç noktanızın adını seçin ve ardından **Ekle**' yi seçin.|
+    | Uç Noktası           | Uç noktanızın adını seçin ve ardından **Ekle**' yi seçin.|
     
     > [!NOTE]
     > Uç nokta bir WAF ilkesiyle ilişkiliyse gri görüntülenir. Önce ilgili ilkeden bitiş noktasını kaldırmalı ve ardından uç noktayı yeni bir WAF ilkesiyle yeniden ilişkilendirmeniz gerekir.

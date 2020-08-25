@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142528"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796570"
 ---
 # <a name="features"></a>Özellikler
 
@@ -21,78 +21,78 @@ FHıR için Azure API 'SI, Azure için Microsoft FHıR sunucusunun tam olarak y�
 
 ## <a name="fhir-version"></a>FHıR sürümü
 
-Desteklenen en son sürüm:`4.0.1`
+Desteklenen en son sürüm: `4.0.1`
 
-Şu anda desteklenen önceki sürümler şunlardır:`3.0.2`
+Şu anda desteklenen önceki sürümler şunlardır: `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
 | API                            | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| read                           | Evet       | Evet       | Evet       |                                                     |
-| vread                          | Evet       | Evet       | Evet       |                                                     |
-| update                         | Evet       | Evet       | Evet       |                                                     |
-| iyimser kilitleme ile güncelleştirme | Evet       | Evet       | Evet       |                                                     |
-| Güncelleştirme (koşullu)           | Evet       | Evet       | Evet       |                                                     |
+| read                           | Yes       | Yes       | Yes       |                                                     |
+| vread                          | Yes       | Yes       | Yes       |                                                     |
+| update                         | Yes       | Yes       | Yes       |                                                     |
+| iyimser kilitleme ile güncelleştirme | Yes       | Yes       | Yes       |                                                     |
+| Güncelleştirme (koşullu)           | Yes       | Yes       | Yes       |                                                     |
 | düzeltmesi                          | Hayır        | Hayır        | Hayır        |                                                     |
-| delete                         | Evet       | Evet       | Evet       |                                                     |
+| delete                         | Yes       | Yes       | Yes       |                                                     |
 | Sil (koşullu)           | Hayır        | Hayır        | Hayır        |                                                     |
-| oluşturmaya                         | Evet       | Evet       | Evet       | Her iki GÖNDERI/PUT desteği                               |
-| oluştur (koşullu)           | Evet       | Evet       | Evet       |                                                     |
+| oluşturmaya                         | Yes       | Yes       | Yes       | Her iki GÖNDERI/PUT desteği                               |
+| oluştur (koşullu)           | Yes       | Yes       | Yes       |                                                     |
 | search                         | Kısmi   | Kısmi   | Kısmi   | Aşağıya bakın                                           |
-| zincirleme arama                 | Hayır        | Evet       | Hayır        |                                           |
+| zincirleme arama                 | Hayır        | Yes       | Hayır        |                                           |
 | ters zincirleme arama         | Hayır        | Hayır        | Hayır        |                                            |
-| özellikler                   | Evet       | Evet       | Evet       |                                                     |
-| toplu iş                          | Evet       | Evet       | Evet       |                                                     |
-| işlem                    | Hayır        | Evet       | Hayır        |                                                     |
-| geçmiş                        | Evet       | Evet       | Evet       |                                                     |
-| Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self`ve `next` desteklenir                     |
+| özellikler                   | Yes       | Yes       | Yes       |                                                     |
+| toplu iş                          | Yes       | Yes       | Yes       |                                                     |
+| işlem                    | Hayır        | Yes       | Hayır        |                                                     |
+| geçmiş                        | Yes       | Yes       | Yes       |                                                     |
+| Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self` ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Ara
 
 Tüm arama parametresi türleri desteklenir. 
 
 | Arama parametresi türü | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-----------------------|-----------|-----------|-----------|---------|
-| Sayı                | Evet       | Evet       | Evet       |         |
-| Tarih/Tarih saat         | Evet       | Evet       | Evet       |         |
-| Dize                | Evet       | Evet       | Evet       |         |
-| Belirteç                 | Evet       | Evet       | Evet       |         |
-| Başvuru             | Evet       | Evet       | Evet       |         |
-| Bileşik             | Evet       | Evet       | Evet       |         |
-| Miktar              | Evet       | Evet       | Evet       |         |
-| URI                   | Evet       | Evet       | Evet       |         |
+| Sayı                | Yes       | Yes       | Yes       |         |
+| Tarih/Tarih saat         | Yes       | Yes       | Yes       |         |
+| Dize                | Yes       | Yes       | Yes       |         |
+| Belirteç                 | Yes       | Yes       | Yes       |         |
+| Başvuru             | Yes       | Yes       | Yes       |         |
+| Bileşik             | Yes       | Yes       | Yes       |         |
+| Miktar              | Yes       | Yes       | Yes       |         |
+| URI                   | Yes       | Yes       | Yes       |         |
 | Spec               | Hayır        | Hayır        | Hayır        |         |
 
 
 | Değiştiriciler             | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-----------------------|-----------|-----------|-----------|---------|
-|`:missing`             | Evet       | Evet       | Evet       |         |
-|`:exact`               | Evet       | Evet       | Evet       |         |
-|`:contains`            | Evet       | Evet       | Evet       |         |
-|`:text`                | Evet       | Evet       | Evet       |         |
-|`:in`simgesinde          | Hayır        | Hayır        | Hayır        |         |
-|`:below`simgesinde       | Hayır        | Hayır        | Hayır        |         |
-|`:above`simgesinde       | Hayır        | Hayır        | Hayır        |         |
-|`:not-in`simgesinde      | Hayır        | Hayır        | Hayır        |         |
-|`:[type]`başvurunun  | Hayır        | Hayır        | Hayır        |         |
-|`:below`kullanılmamışsa         | Evet       | Evet       | Evet       |         |
+|`:missing`             | Yes       | Yes       | Yes       |         |
+|`:exact`               | Yes       | Yes       | Yes       |         |
+|`:contains`            | Yes       | Yes       | Yes       |         |
+|`:text`                | Yes       | Yes       | Yes       |         |
+|`:in` simgesinde          | Hayır        | Hayır        | Hayır        |         |
+|`:below` simgesinde       | Hayır        | Hayır        | Hayır        |         |
+|`:above` simgesinde       | Hayır        | Hayır        | Hayır        |         |
+|`:not-in` simgesinde      | Hayır        | Hayır        | Hayır        |         |
+|`:[type]` başvurunun  | Hayır        | Hayır        | Hayır        |         |
+|`:below` kullanılmamışsa         | Yes       | Yes       | Yes       |         |
 |`:not`                 | Hayır        | Hayır        | Hayır        |         |
-|`:above`kullanılmamışsa         | Hayır        | Hayır        | Hayır        | Sorun [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` kullanılmamışsa         | Hayır        | Hayır        | Hayır        | Sorun [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Ortak arama parametresi | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
 |-------------------------| ----------| ----------| ----------|---------|
-| `_id`                   | Evet       | Evet       | Evet       |         |
-| `_lastUpdated`          | Evet       | Evet       | Evet       |         |
-| `_tag`                  | Evet       | Evet       | Evet       |         |
-| `_profile`              | Evet       | Evet       | Evet       |         |
-| `_security`             | Evet       | Evet       | Evet       |         |
+| `_id`                   | Yes       | Yes       | Yes       |         |
+| `_lastUpdated`          | Yes       | Yes       | Yes       |         |
+| `_tag`                  | Yes       | Yes       | Yes       |         |
+| `_profile`              | Yes       | Yes       | Yes       |         |
+| `_security`             | Yes       | Yes       | Yes       |         |
 | `_text`                 | Hayır        | Hayır        | Hayır        |         |
 | `_content`              | Hayır        | Hayır        | Hayır        |         |
-| `_list`                 | Hayır        | Evet       | Evet       |         |
+| `_list`                 | Yes       | Yes       | Yes       |         |
 | `_has`                  | Hayır        | Hayır        | Hayır        |         |
-| `_type`                 | Evet       | Evet       | Evet       |         |
+| `_type`                 | Yes       | Yes       | Yes       |         |
 | `_query`                | Hayır        | Hayır        | Hayır        |         |
 
 | İşlemleri ara       | Desteklenen-PaaS | Desteklenen-OSS (SQL) | Desteklenen-OSS (Cosmos DB) | Yorum |
@@ -100,10 +100,10 @@ Tüm arama parametresi türleri desteklenir.
 | `_filter`               | Hayır        | Hayır        | Hayır        |         |
 | `_sort`                 | Hayır        | Hayır        | Hayır        |         |
 | `_score`                | Hayır        | Hayır        | Hayır        |         |
-| `_count`                | Evet       | Evet       | Evet       |         |
-| `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count`desteklenir |
-| `_include`              | Hayır        | Evet       | Hayır        |         |
-| `_revinclude`           | Hayır        | Evet       | Hayır        | Dahil edilen öğeler 100 ile sınırlıdır. |
+| `_count`                | Yes       | Yes       | Yes       |         |
+| `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count` desteklenir |
+| `_include`              | Hayır        | Yes       | Hayır        |         |
+| `_revinclude`           | Hayır        | Yes       | Hayır        | Dahil edilen öğeler 100 ile sınırlıdır. |
 | `_contained`            | Hayır        | Hayır        | Hayır        |         |
 | `_elements`             | Hayır        | Hayır        | Hayır        |         |
 

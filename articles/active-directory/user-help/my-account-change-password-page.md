@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422529"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798202"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Parola değiştirme sayfasında iş veya okul hesabınızın parolasını değiştirme
 
 **Hesabım portalının** **parola değiştirme** sayfası, iş veya okul hesabınız için mevcut bir parolayı güncelleştirmenize yardımcı olur, bu da parolayı hatırladığınızı ve hesabınızı kilitsiz olmadığınız varsayılır. Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya kuruluşunuzda hiç parola alınmadıysa, parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz.
 
 >[!Important]
->Bu makale, mevcut bir iş veya okul hesabı için bilinen bir parolayı güncelleştirmeye çalışan kullanıcılara yöneliktir. Xbox, hotmail veya Outlook.com gibi kişisel bir hesaba ulaşmaya çalışan bir kullanıcı varsa, [Microsoft hesabı makalesinde oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içindeki önerileri deneyin. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı test etme hakkında daha fazla bilgi bulmaya çalışan bir yöneticisiyseniz, bkz. [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
+>Bu makale, mevcut bir iş veya okul hesabı için bilinen bir parolayı güncelleştirmeye çalışan kullanıcılara yöneliktir. Xbox, hotmail veya Outlook.com gibi kişisel bir hesaba ulaşmaya çalışan bir kullanıcı varsa, [Microsoft hesabı makalesinde oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içindeki önerileri deneyin. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı test etme hakkında daha fazla bilgi bulmaya çalışan bir yöneticisiyseniz, bkz. [self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md).
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Parolayı Değiştir sayfasından bir parolayı güncelleştirin
 
@@ -45,7 +45,7 @@ ms.locfileid: "87422529"
 
 Parolanızı değiştirdikten sonra şunları yapabilirsiniz:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md)görüntüleyin veya yönetin.
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 
