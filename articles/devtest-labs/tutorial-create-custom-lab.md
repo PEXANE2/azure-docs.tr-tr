@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure portal kullanarak Azure DevTest Labs bir lab
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85476572"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Öğretici: Azure DevTest Labs kullanarak bir laboratuvar ayarlama
@@ -25,7 +25,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-a-lab"></a>Laboratuvar oluşturma
 Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bir laboratuvar oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki ana menüden **Kaynak oluştur**’u (listenin en üstünde) seçin, **Geliştirici araçları**’nın üzerine gelin ve **DevTest Labs** seçeneğine tıklayın. 
 
     ![Yeni DevTest Laboratuvarı menüsü](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -34,11 +34,11 @@ Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bi
     2. **Abonelik** alanına, laboratuvarı oluşturmak istediğiniz aboneliği seçin. 
     3. **Kaynak grubu** için, **Yeni oluştur**’u seçip kaynak grubu için bir ad girin. 
     4. **Konum** alanında, laboratuvarın oluşturulmasını istediğiniz konumu/bölgeyi seçin. 
-    5. **Oluştur**'u seçin. 
+    5. **Oluştur**’u seçin. 
     6. **Panoya sabitle**’yi seçin. Laboratuvarı oluşturduktan sonra laboratuvar, panoda gösterilir. 
 
         ![DevTest Labs laboratuvar bölümü oluşturma](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
-2. Bildirimlere bakarak laboratuvarın başarıyla oluşturulduğunu doğrulayın. **Kaynağa Git**' i seçin.  
+2. Bildirimlere bakarak laboratuvarın başarıyla oluşturulduğunu doğrulayın. **Kaynağa git**’i seçin.  
 
     ![Bildirim](./media/tutorial-create-custom-lab/creation-notification.png)
 3. Laboratuvarınız için **DevTest Lab** sayfasını görtığınızdan emin olun. 
@@ -84,7 +84,7 @@ Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bi
     2. Eklemek istediğiniz **kullanıcıyı** seçin. 
     3. **Kaydet**’i seçin.
 
-        ![Kullanıcı ekle](./media/tutorial-create-custom-lab/add-user.png)
+        ![Kullanıcı ekleme](./media/tutorial-create-custom-lab/add-user.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Sonraki öğreticide, bir laboratuvar kullanıcısının laboratuvardaki bir sanal makineyi nasıl talep edebileceği ve bu sanal makineye nasıl bağlanabileceği gösterilmektedir. Bu öğreticiyi uygulamak istemiyorsanız ve bu öğreticinin parçası olarak oluşturulan kaynakları temizlemek istiyorsanız aşağıdaki adımları izleyin: 

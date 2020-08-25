@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: CI/CD işlem hattıyla tümleştirme
-      href: integrate-ci-cd-pipeline.md
+    - name: CI/CD işlem hattı tümleştirmesi
+      items:
+        - name: Azure Pipelines kullanarak gönderme
+          href: push-kv-devops-pipeline.md
+        - name: GitHub Actions kullanarak gönderme
+          href: concept-github-action.md
+        - name: Dışarı aktarılan yapılandırmayı kullanarak proje oluşturma
+          href: integrate-ci-cd-pipeline.md
     - name: Helm kullanarak Kubernetes dağıtımıyla tümleştirme
       href: integrate-kubernetes-deployment-helm.md
 - name: Örnekler
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: Özellik yönetimi
       href: concept-feature-management.md
-    - name: GitHub Actions kullanarak eşitleme
-      href: concept-github-action.md
     - name: Olay işleme
       href: concept-app-configuration-event.md
     - name: Güvenlik

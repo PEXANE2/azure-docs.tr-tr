@@ -4,10 +4,10 @@ description: Bu öğreticide daha az örnek Aralık sağlarken amacı ve varlık
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86039509"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: tahminleri geliştirmek için ortak desen şablonu söylenişi biçimleri ekleme
@@ -33,7 +33,7 @@ LUSıS uygulamasında depolanan iki tür utterde vardır:
 
 Şablon utinlerini bir desen olarak eklemek, bir amaca göre daha az örnek elde etmenizi sağlar.
 
-Bir model metin eşleştirme ve makine öğrenmesinin birleşimi olarak uygulanır.  Bu şablon, tarzda verilen örnek söyleyeni sağlar. Bu, bir amaç için ne kadar uygun olduğunu daha iyi anlayabilirsiniz.
+Desen, metin eşleştirmesi ile makine öğrenmesinin bir birleşimi olarak uygulanır.  Desendeki şablon ifadesi amaçtaki örnek ifadeyle birlikte LUIS hizmetinin amaca uygun konuşmaları anlamasını kolaylaştırır.
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>Örnek uygulamayı ve kopyayı yeni sürüme aktar
 
@@ -193,7 +193,7 @@ Bu ikinci tarayıcı penceresini açık bırakın. Öğreticide daha sonra bir k
 ## <a name="template-utterances"></a>Konuşma şablonları
 Insan kaynakları konu etki alanının doğası gereği, kuruluşlardaki çalışan ilişkilerini sormanın bazı yaygın yolları vardır. Örneğin:
 
-|Konuşmalar|
+|İfadeler|
 |--|
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
@@ -204,8 +204,8 @@ Bu amaç için bazı konuşma şablonu örnekleri şunlardır:
 
 |Konuşma şablonu örnekleri|söz dizimini anlamı|
 |--|--|
-|`Who does {EmployeeListEntity} report to[?]`|değiştirilebilir`{EmployeeListEntity}`<br>Yoksay`[?]`|
-|`Who reports to {EmployeeListEntity}[?]`|değiştirilebilir`{EmployeeListEntity}`<br>Yoksay`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|değiştirilebilir `{EmployeeListEntity}`<br>Yoksay `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|değiştirilebilir `{EmployeeListEntity}`<br>Yoksay `[?]`|
 
 `{EmployeeListEntity}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı sözdizimi, `[?]` , kelime veya [noktalama](luis-reference-application-settings.md#punctuation-normalization) işareti isteğe bağlıdır. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
 
@@ -249,7 +249,7 @@ Bir düzenin bir söylenişi ile eşleşmesi için, _ilk_ olarak, bir desen içi
 
 Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zamanı uç noktasında eğitin, yayımlar ve sorgular.
 
-1. **Eğitim**' i seçin. Eğitim tamamlandıktan sonra **Yayımla** ' yı seçin ve **Üretim** yuvasını seçin ve **bitti**' yi seçin.
+1. **Eğit**'i seçin. Eğitim tamamlandıktan sonra **Yayımla** ' yı seçin ve **Üretim** yuvasını seçin ve **bitti**' yi seçin.
 
 1. Yayımlama işlemi tamamlandıktan sonra, tarayıcı sekmelerini uç nokta URL 'SI sekmesine geri geçirin.
 
@@ -489,7 +489,7 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Yalnızca b
 
 1. Sol gezinti panelinden **Entities** (Varlıklar) öğesini seçin.
 
-1. **+ Oluştur**' u seçin, adı girin `FormName` ve **model. herhangi bir** tür olarak seçin. **Oluştur**'u seçin.
+1. **+ Oluştur**' u seçin, adı girin `FormName` ve **model. herhangi bir** tür olarak seçin. **Oluştur**’u seçin.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any kullanan bir desen ekleme
 

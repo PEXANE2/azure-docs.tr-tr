@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85360529"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Öğretici: temel Active Directory ortamı
@@ -26,7 +26,7 @@ Bu öğreticide, temel bir Active Directory ortamı oluşturma işlemi adım ad�
 Hibrit kimlik senaryolarının çeşitli yönlerini test etmek için öğreticide oluşturduğunuz ortamı kullanabilirsiniz ve bazı öğreticiler için bir önkoşul olacaktır.  Zaten mevcut bir Active Directory ortamınız varsa bunu alternatif olarak kullanabilirsiniz.  Bu bilgiler, hiç bir şey başlatmayan bireyler için sağlanır.
 
 Bu öğreticiden oluşur
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 Karma kimlik ortamınızı çalışır duruma getirmek için yapmanız gereken ilk şey, şirket içi Active Directory sunucusu olarak kullanılacak bir sanal makine oluşturmaktır.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell
     #Declare variables
@@ -90,7 +90,7 @@ Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi y�
 Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve uzak sunucu yönetim araçları 'nı yüklemeniz gerekir.   Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell
     #Declare variables
@@ -126,7 +126,7 @@ Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce b
 VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip olduğunuza göre, devam edip Active Directory Domain Services yükleyip yapılandırabilirsiniz.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell 
     #Declare variables
@@ -157,7 +157,7 @@ VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip 
 Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu hesap, şirket içi AD ortamımızda oluşturulur ve ardından Azure AD ile eşitlenir.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell 
     # Filename:    4_CreateUser.ps1
@@ -199,9 +199,9 @@ Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu h
 1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
 2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
 3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
-4. **Oluştur**'u seçin.</br>
+4. **Oluştur**’u seçin.</br>
 ![Oluşturma](media/tutorial-single-forest/create1.png)</br>
-5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**'u seçin. Dizininiz oluşturulur.
+5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
 6. Bu tamamlandığında, dizini yönetmek için **buraya** tıklayın bağlantısına tıklayın.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD 'de Genel yönetici oluşturma
@@ -223,7 +223,7 @@ Yalnızca ek bir sunucu gerekiyorsa, **sanal makine oluşturma** adımını baş
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell
     # Filename:    1_CreateVM_CP.ps1
@@ -277,7 +277,7 @@ Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi y�
 Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve uzak sunucu yönetim araçları 'nı yüklemeniz gerekir.   Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell
     # Filename:    2_ADPrep_CP.ps1
@@ -327,7 +327,7 @@ Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce b
 VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip olduğunuza göre, devam edip Active Directory Domain Services yükleyip yapılandırabilirsiniz.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell
     # Filename:    3_InstallAD_CP.ps1
@@ -373,7 +373,7 @@ VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip 
 Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu hesap, şirket içi AD ortamımızda oluşturulur ve ardından Azure AD ile eşitlenir.  Şunları yapın:
 
 1. PowerShell ıSE 'yi yönetici olarak açın.
-2. Aşağıdaki komut dosyasını çalıştırın.
+2. Aşağıdaki betiği çalıştırın.
 
     ```powershell 
     # Filename:    4_CreateUser_CP.ps1

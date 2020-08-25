@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76834697"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ağlar arasında bir iletişim sorununu tanılama
@@ -45,13 +45,13 @@ Betiğin bir VPN ağ geçidi oluşturması yaklaşık bir saat sürer. Kalan ad�
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-network-watcher"></a>Ağ İzleyicisini etkinleştirme
 
 Doğu ABD bölgesinde etkinleştirilmiş bir ağ izleyicisi zaten varsa [Ağ geçidi tanılama](#diagnose-a-gateway) bölümüne atlayın.
 
-1. Portalda **Tüm hizmetler**’i seçin. **Filtre kutusu**’na *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
+1. Portalda **Tüm hizmetler**’i seçin. **Filtre kutusu**’na *Ağ İzleyicisi* yazın. Sonuçlarda **Ağ İzleyicisi** göründüğünde seçin.
 2. **Bölgeler**’i seçip genişletin ve sonra aşağıdaki resimde gösterildiği gibi **Doğu ABD**’nin sağındaki **...** öğesini seçin:
 
     ![Ağ İzleyicisini etkinleştirme](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)

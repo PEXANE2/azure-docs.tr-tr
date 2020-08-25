@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73890403"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
@@ -96,7 +96,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="create-the-stream-analytics-job"></a>Stream Analytics işi oluşturma
 
-1. [Azure Portal](https://portal.azure.com) **kaynak** > oluştur**nesnelerin interneti** > **Stream Analytics işi**' ni seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak oluştur**  >  **nesnelerin interneti**  >  **Stream Analytics işi**' ni seçin.
 
 2. İş için aşağıdaki bilgileri girin.
 
@@ -162,7 +162,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
-1. **İş Topolojisi**'nin altında **Sorgu**'yu seçin.
+1. **Iş topolojisi**altında **sorgu**' yı seçin.
 
 2. `[YourInputAlias]` değerini işin giriş diğer adıyla değiştirin. Bu öğreticide **contosoinputs** kullanılır.
 
@@ -176,7 +176,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
-Stream Analytics işinde**Şimdi** > **Başlat Başlat**' **ı seçin.** >  İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
+Stream Analytics işinde **Start**  >  **Şimdi**  >  **Başlat Başlat**' ı seçin. İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
 
 Power BI raporunu ayarlamak için verilere ihtiyacınız vardır; bu nedenle, cihazı oluşturup cihaz simülasyon uygulamasını çalıştırdıktan sonra Power BI'ı ayarlarsınız.
 
@@ -280,7 +280,7 @@ Bu öğreticinin her iki bölümünde da oluşturduğunuz tüm Azure kaynakları
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLı kullanarak kaynakları Temizleme
 
-Kaynak grubunu kaldırmak için [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın. `$resourceGroup`Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
+Kaynak grubunu kaldırmak için [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın. `$resourceGroup` Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Kaynakları temizlemek için PowerShell 'i kullanma
 
-Kaynak grubunu kaldırmak için [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın. `$resourceGroup`Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
+Kaynak grubunu kaldırmak için [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın. `$resourceGroup` Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

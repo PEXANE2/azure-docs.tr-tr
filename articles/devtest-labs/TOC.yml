@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: İlke ve zamanlamalar ayarlama
           href: devtest-lab-set-lab-policy.md
+        - name: "Laboratuvar kimliğini yapılandırma\_"
+          href: configure-lab-identity.md
         - name: Uzak masaüstü ağ geçidi kullanmak için bir laboratuvar yapılandırma
           href: configure-lab-remote-desktop-gateway.md
         - name: Laboratuvarda duyuru yayınlama
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Laboratuvarınızı ölçeklendirme
           href: devtest-lab-scale-lab.md
-        - name: Laboratuvar VM’leri için yönetilen kimlikleri etkinleştirme
-          href: enable-managed-identities-lab-vms.md
         - name: Sanal makine temellerini yönetme
           items:
             - name: Azure Market görüntülerini yapılandırma
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: Başka bir laboratuvardan sanal makineleri içeri aktarma
           href: import-virtual-machines-from-another-lab.md
+        - name: Laboratuvar VM’leri için yönetilen kimlikleri etkinleştirme
+          href: enable-managed-identities-lab-vms.md
     - name: Ortamları laboratuvarda kullanma
       items:
         - name: Ortam oluşturma

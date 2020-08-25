@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828515"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782949"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -80,6 +80,10 @@ Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyd
 
 ### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
 Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query/log-query-overview.md).
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki verileri silebilir miyim?
+Veriler, [bekletme dönemine](platform/manage-cost-storage.md#change-the-data-retention-period)göre çalışma alanından kaldırılır. Gizlilik veya uyumluluk nedenleriyle belirli verileri silebilirsiniz. Daha fazla bilgi için bkz. [özel verileri dışarı ve silme](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Log Analytics çalışma alanı nedir?
 Azure Izleyici tarafından toplanan tüm günlük verileri Log Analytics çalışma alanında depolanır. Çalışma alanı aslında çeşitli kaynaklardan günlük verilerinin toplandığı bir kapsayıcıdır. Tüm izleme verileriniz için tek bir Log Analytics çalışma alanınız olabilir veya birden çok çalışma alanı için gereksinimlere sahip olabilirsiniz. Bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](platform/design-logs-deployment.md).
@@ -171,7 +175,7 @@ Veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı 
 - **Uyarı koşulunu tanımlayın**: Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** 
    - **Sinyal adı**: *özel günlük araması*
-   - **Arama sorgusu**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Arama sorgusu**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Uyarı mantığı**: **Based on** *sonuç sayısına*ve *şundan büyük*bir **koşula** göre **eşik değeri** *0*
    - **Temelinde değerlendirilen**: **süresi (dakika)** *30*, **Sıklık (dakika)** *10*
 - **Uyarı ayrıntılarını tanımlama** 
@@ -371,7 +375,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 * Bir gerçek Kullanıcı, sitenizi farklı tarayıcılarda kullanıyorsa ya da özel/veya farklı makinelere göz atmak veya farklı makineler kullanmak için birden çok kez sayılır.
 * Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](app/api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
 
-### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Application Insights her şeyi etkinleştirmem gerekir mi?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Application Insights her şeyi etkinleştirmem gerekir mi?
 | Görmeniz gereken | Nasıl alınır? | Neden istediğiniz |
 | --- | --- | --- |
 | Kullanılabilirlik grafikleri |[Web testleri](app/monitor-web-app-availability.md) |Web uygulamanızın çalışıyor olduğunu öğrenin |
@@ -430,9 +434,9 @@ SDK 'larımızı kullanmanızı ve [SDK API](app/api-custom-events-metrics.md)'s
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Bir intranet Web sunucusunu izleyebilir miyim?
 
 Evet, ancak güvenlik duvarı özel durumları ya da ara sunucu yeniden yönlendirmeleri ile hizmetlerimize giden trafiğe izin vermeniz gerekir.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- Applicationıdprovider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- Applicationıdprovider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Hizmetlerin ve IP adreslerinin tam listesini [burada](app/ip-addresses.md)gözden geçirin.
@@ -714,7 +718,7 @@ Bu, birkaç nedenden dolayı oluşabilir.  Veri koleksiyonunda bir boşluk oldu�
 Evet, bağımlılık aracısını yükledikten sonra abonelikleri, kaynak grubunu, sanal makine ölçek kümelerini ve bulut hizmetlerini temel alan grupları göstermek için VM 'lerden bilgi topladık.  Hizmet Eşlemesi kullanıyorsanız ve makine grupları oluşturduysanız, bunlar da görüntülenir.  Siz görüntülemekte olduğunuz çalışma alanı için oluşturduysanız, bilgisayar grupları gruplar filtresinde da görünür. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Nasıl yaparım? toplam Performans grafiklerinde 95. yüzdebirlik satırını neyin yönlendirdiğini görmek için ayrıntılara bakın.
-Varsayılan olarak, liste, en düşük 5 ' lik değere sahip makineleri gösteren kullanılabilir bellek grafiği dışında, seçili ölçüm için en yüksek 95. yüzdebirlik değerini içeren VM 'Leri gösterecek şekilde sıralanır.  Grafiğe tıklandığında, uygun ölçüm seçili olan **Ilk N liste** görünümü açılır.
+Varsayılan olarak, liste, en düşük 5 ' lik değere sahip makineleri gösteren kullanılabilir bellek grafiği dışında, seçili ölçüm için en yüksek 95. yüzdebirlik değerini içeren VM 'Leri gösterecek şekilde sıralanır.  Grafiğe tıklandığında, uygun ölçüm seçili olan **Ilk N liste**  görünümü açılır.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Harita özelliği farklı VNET 'lerde ve alt ağlarda yinelenen IP 'Leri nasıl işler?
 IP aralıklarını VM 'Ler veya alt ağlar ve sanal makine ölçek kümeleri arasında çoğaltdıysanız, VM'ler için Azure İzleyici eşlemenin yanlış bilgileri görüntülemesine neden olabilir. Bu bilinen bir sorundur ve bu deneyimi geliştirme seçeneklerini araştırıyoruz.

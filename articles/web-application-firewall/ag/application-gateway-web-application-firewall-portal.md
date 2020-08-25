@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74049230"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturma
@@ -244,7 +244,7 @@ WAF özelleştirmeleri ve ayarları, WAF Ilkesi olarak adlandırılan ayrı bir 
 
 Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu uygulamayı yüklediniz. Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![Uygulama ağ GEÇIDI genel IP adresini Kaydet](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini Kaydet](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
    Ya da, **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 1. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.

@@ -8,10 +8,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86135472"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM'lerini Kullanılabilirlik Alanlarına taşıma
@@ -85,7 +85,7 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 
 1. Azure portal **sanal makineler**' i seçin ve kullanılabilirlik alanları taşımak istediğiniz VM 'yi seçin.
 2. **İşlemler** menüsünden **Olağanüstü durum kurtarma** seçeneğini belirleyin.
-3. **Olağanüstü durum kurtarma**  >  **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin. Bu bölgenin Kullanılabilirlik Alanları [desteklediğinden](../availability-zones/az-region.md) emin olun.
+3. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin. Bu bölgenin Kullanılabilirlik Alanları [desteklediğinden](../availability-zones/az-region.md) emin olun.
 
     ![Hedef bölgenin seçimi](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -110,7 +110,7 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 
 ## <a name="test-the-configuration"></a>Yapılandırmayı test etme
 
-1. Sanal makine menüsünde **olağanüstü durum kurtarma**' yı seçin.
+1. Sanal makine menüsünde  **olağanüstü durum kurtarma**' yı seçin.
 2. **Yük devretme testi** simgesini seçin.
 3. Yük **devretme testi**bölümünde, yük devretme için kullanılacak bir kurtarma noktası seçin:
 
@@ -129,7 +129,7 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Hedef bölgeye gidin ve onaylayın
 
-1.  Sanal makine menüsünde **olağanüstü durum kurtarma**' yı seçin.
+1.  Sanal makine menüsünde  **olağanüstü durum kurtarma**' yı seçin.
 2. **Yük devretme** simgesini seçin.
 3. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin. 
 4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz. 

@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85851265"
 ---
 # <a name="transform-and-protect-your-api"></a>API’nizi dönüştürme ve koruma
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![İlkeler](./media/transform-api/api-management-management-console.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 -   [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -50,7 +50,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üst bilgilerinin nasıl gizleneceği gösterilmektedir. Bu örnekte, aşağıdaki üst bilgiler HTTP yanıtında silinir:
 
--   **X-Destekleyen:**
+-   **X-Powered-By**
 -   **X-AspNet-Sürümü**
 
 ### <a name="test-the-original-response"></a>Özgün yanıtı test etme

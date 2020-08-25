@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82195120"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight 'ta Power BI kullanarak Apache Spark verileri çözümleme
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="verify-the-data"></a>Verileri doğrulama
 
-[Önceki öğreticide](apache-spark-load-data-run-query.md) oluşturduğunuz `hvac` [Jupyter Notebook](https://jupyter.org/) tablo oluşturmak için kod içerir. Bu tablo, konumundaki `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`tüm HDInsight Spark KÜMELERINDE kullanılabilen CSV dosyasını temel alır. Verileri doğrulamak için aşağıdaki yordamı kullanın.
+[Önceki öğreticide](apache-spark-load-data-run-query.md) oluşturduğunuz [Jupyter Notebook](https://jupyter.org/) tablo oluşturmak için kod içerir `hvac` . Bu tablo, konumundaki tüm HDInsight Spark kümelerinde kullanılabilen CSV dosyasını temel alır `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv` . Verileri doğrulamak için aşağıdaki yordamı kullanın.
 
 1. Jupyter not defterinden aşağıdaki kodu yapıştırın ve sonra **SHIFT + ENTER** tuşuna basın. Kod, tabloların varlığını doğrular.
 
@@ -44,7 +44,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     SHOW TABLES
     ```
 
-    Çıkış aşağıdakine benzer olacaktır:
+    Çıktı şuna benzer:
 
     ![Spark’ta tabloları gösterme](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
 
@@ -57,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     SELECT * FROM hvac LIMIT 10
     ```
 
-    Çıkış aşağıdakine benzer olacaktır:
+    Çıktı şuna benzer:
 
     ![Spark içinde hvac tablosunun satırlarını gösterme](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
 
@@ -67,29 +67,29 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu bölümde Power BI kullanarak, Spark kümesi verilerinden görselleştirme, rapor ve panolar oluşturacaksınız.
 
-### <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop'ta rapor oluşturma
+### <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop’ta rapor oluşturma
 
 Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanmak, kümeden veri yüklemek ve bu verileri temel alarak basit bir görselleştirme oluşturmaktır.
 
-1. Power BI Desktop’ı açın. Açılırsa başlangıç giriş ekranını kapatın.
+1. Power BI Desktop'ı açın. Açılırsa başlangıç giriş ekranını kapatın.
 
-2. **Giriş** sekmesinde, **verileri** > **daha fazla al..**. ' a gidin.
+2. **Giriş** sekmesinde, **verileri**  >  **daha fazla al..**. ' a gidin.
 
     ![HDInsight 'tan Power BI Desktop veri alın Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark bı 'dan Power BI veri al")
 
-3. Arama `Spark` kutusuna girin, **Azure HDInsight Spark**öğesini seçin ve ardından **Bağlan**' ı seçin.
+3. `Spark`Arama kutusuna girin, **Azure HDInsight Spark**öğesini seçin ve ardından **Bağlan**' ı seçin.
 
     ![Apache Spark bı 'dan Power BI veri al](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark bı 'dan Power BI veri al")
 
-4. Sunucu metin kutusuna küme URL 'nizi (biçimde `mysparkcluster.azurehdinsight.net`) girin. **Server**
+4. `mysparkcluster.azurehdinsight.net` **Sunucu** metın kutusuna küme URL 'nizi (biçimde) girin.
 
-5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Sonra **Tamam**’ı seçin.
+5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Ardından **Tamam**’ı seçin.
 
     Spark ile herhangi bir veri bağlantısı modunu kullanabilirsiniz. DirectQuery kullanırsanız, değişiklikler tüm veri kümesi yenilenmeden raporlara yansıtılır. Verileri içeri aktarırsanız, değişiklikleri görmek için veri kümesini yenilemeniz gerekir. DirectQuery’nin nasıl ve ne zaman kullanılacağı hakkında daha fazla bilgi için bkz. [Power BI’da DirectQuery kullanma](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
 6. HDInsight oturum açma hesabı bilgilerini girin ve **Bağlan**' ı seçin. Varsayılan hesap adı *admin*’dir.
 
-7. `hvac` Tabloyu seçin, verilerin önizlemesini görmek için bekleyin ve sonra **Yükle**' yi seçin.
+7. Tabloyu seçin `hvac` , verilerin önizlemesini görmek için bekleyin ve sonra **Yükle**' yi seçin.
 
     ![Spark kümesi Kullanıcı adı ve parolası](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark kümesi Kullanıcı adı ve parolası")
 
@@ -117,13 +117,13 @@ Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanma
 
         ![alan grafiği](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "alan grafiği")
 
-9. **Dosya** > **Kaydet**' e gidin, dosyanın adını `BuildingTemperature` girin ve ardından **Kaydet**' i seçin.
+9. **Dosya**  >  **Kaydet**' e gidin, dosyanın adını girin ve `BuildingTemperature` ardından **Kaydet**' i seçin.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Raporu Power BI Hizmetinde yayımlama (isteğe bağlı)
 
 Power BI hizmeti, raporları ve panoları kuruluşunuzda paylaşmanıza olanak tanır. Bu bölümde, ilk olarak veri kümesini ve raporu yayımlayacaksınız. Ardından, raporu bir panoya sabitleyeceksiniz. Panolar genellikle bir rapordaki verilerin bir alt kümesine odaklanmak için kullanılır. Raporunuzda yalnızca bir görselleştirmeniz var, ancak bu adımlar arasında gezinmek hala faydalı.
 
-1. Power BI Desktop’ı açın.
+1. Power BI Desktop'ı açın.
 
 1. **Giriş** sekmesinde **Yayımla**' yı seçin.
 
@@ -149,7 +149,7 @@ Power BI hizmeti, raporları ve panoları kuruluşunuzda paylaşmanıza olanak t
 
     ![Spark kümesinde oturum açma](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Spark kümesinde oturum açma")
 
-1. Sol bölmede çalışma > **alanı** > **Raporlarım** **' e gidin**ve ardından **buildingsıcaklık**' ı seçin.
+1. Sol **bölmede çalışma**  >  **alanı**  >  **Raporlarım**' e gidin ve ardından **buildingsıcaklık**' ı seçin.
 
     ![Sol bölmedeki raporlar altında listelenen rapor](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Sol bölmedeki raporlar altında listelenen rapor")
 
@@ -161,7 +161,7 @@ Power BI hizmeti, raporları ve panoları kuruluşunuzda paylaşmanıza olanak t
 
     ![Power BI hizmeti raporla](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI hizmeti raporla")
 
-1. "Yeni Pano" yı seçin, adı `Building temperature`girin ve **sabitle**' yi seçin.
+1. "Yeni Pano" yı seçin, adı girin `Building temperature` ve **sabitle**' yi seçin.
 
     ![Yeni panoya sabitle](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Yeni panoya sabitle")
 

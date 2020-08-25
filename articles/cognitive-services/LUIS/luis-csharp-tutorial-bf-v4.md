@@ -4,10 +4,10 @@ description: C# kullanarak, dil anlama (LUIS) ile tümleşik bir sohbet robotu o
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.openlocfilehash: b9da1d1fecbb251ebf27833cc381eb658a9df46b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445908"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: C 'de Language Understanding etkinleştirilmiş bir Web uygulaması bot kullanın #
@@ -31,7 +31,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kulla
 
 1. [Azure portalda](https://portal.azure.com)**Yeni kaynak oluştur**'u seçin.
 
-1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**'u seçin.
+1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**’u seçin.
 
 1. **Robot Hizmeti**'nde gerekli bilgileri sağlayın:
 
@@ -56,7 +56,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kulla
     |SDK dili|Robotun programlama dili|**C#**|
     |Hecesi|Robot türü|**Temel robot**|
 
-1. **Oluştur**'u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-csharp-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
+1. **Oluştur**’u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-csharp-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
 
     > [!div class="mx-imgBorder"]
     > [![Web uygulaması robotu oluşturma](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
@@ -74,7 +74,7 @@ Bot hizmeti oluşturma işlemi, amaçlar ve örnek dıklarla yeni bir LUO uygula
 |Kitap kolu|`Travel to Paris`|
 |İptal|`bye`|
 |Gethava durumu|`what's the weather like?`|
-|Hiçbiri|Uygulamanın etki alanı dışındaki her şey.|
+|Yok|Uygulamanın etki alanı dışındaki her şey.|
 
 ## <a name="test-the-bot-in-web-chat"></a>Web sohbetinde bot 'ı test etme
 
@@ -321,7 +321,7 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 
     [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. **Evet**' i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
+1. **Evet**’i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
 1. Bot öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
     [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)

@@ -14,10 +14,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86119336"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
@@ -36,7 +36,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Başarısız komut dosyasında hata ayıkla
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -335,7 +335,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 1. **Azscripts** sonekine sahip depolama hesabını seçin.
 1. **Dosya paylaşımları** kutucuğunu seçin. **Azscripts** klasörünü görürsünüz.  Klasör, dağıtım betiği yürütme dosyalarını içerir.
-1. **Azscripts**seçin. İki foldersL **azscriptınput** ve **azscriptoutput**görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Hata iletisini **üzerindeexecutionresult.js**görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
+1. **Azscripts**seçin. İki foldersL **azscriptınput** ve **azscriptoutput**görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Hata iletisini ** üzerindeexecutionresult.js**görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
 
 **Write-Output1** satırını kaldırın ve şablonu yeniden dağıtın.
 

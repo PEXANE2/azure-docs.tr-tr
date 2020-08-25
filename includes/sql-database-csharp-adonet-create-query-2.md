@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86544458"
 ---
 ## <a name="c-program-example"></a>C# program örneği
@@ -48,7 +48,7 @@ C# programı mantıksal olarak bir. cs dosyasıdır ve her bir bloğun anlaşıl
         - *CB. DataSource*
         - *CB. UserID*
         - *CB. Parolayı*
-        - *TialCatalogcb.Ini*
+        - * TialCatalogcb.Ini*
 
 1. *System.Data.dll* bütünleştirilmiş koda başvurulduğunu doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesinde **Başvurular** düğümünü genişletin.
 

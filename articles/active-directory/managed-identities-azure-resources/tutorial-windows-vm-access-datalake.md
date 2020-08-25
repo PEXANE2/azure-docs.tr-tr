@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure Data Lake Store erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
+title: Öğretici `:` Azure Data Lake Store erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
 description: Windows VM sistem tarafından atanan yönetilen kimliğini kullanarak Azure Data Lake Store'a erişme işlemini gösteren öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75977874"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Öğretici: Azure Data Lake Store'a erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -38,7 +38,7 @@ Bu öğreticide, Azure Data Lake Store'a erişmek amacıyla, Windows sanal makin
 
 
 
-## <a name="enable"></a>Etkinleştirme
+## <a name="enable"></a>Etkinleştir
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -55,12 +55,12 @@ Data Lake Store'unuzda yeni bir klasör oluşturun ve VM sistem tarafından atan
 3. Komut çubuğunda **Veri Gezgini**'ne tıklayın.
 4. Data Lake Store’un kök klasörü seçilidir.  Komut çubuğunda **Erişim**’e tıklayın.
 5. **Ekle**'ye tıklayın.  **Seç** alanına VM'nizin adını girin (örneğin, **DevTestVM**).  Arama sonuçları arasından VM'nizi tıklayarak seçin, ardından **Seç**'e tıklayın.
-6. **Izinleri Seç**' e tıklayın.  **Okuma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Yalnızca erişim izni** olarak ekleyin.  **Tamam**'a tıklayın.  İzin başarıyla eklenmiş olmalıdır.
+6. **Izinleri Seç**' e tıklayın.  **Okuma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Yalnızca erişim izni** olarak ekleyin.  **Tamam**’a tıklayın.  İzin başarıyla eklenmiş olmalıdır.
 7. **Erişim** dikey penceresini kapatın.
-8. Bu öğretici için, yeni bir klasör oluşturun.  Komut çubuğunda **Yeni Klasör**'e tıklayın ve yeni klasöre bir ad verin (örneğin, **TestFolder**).  **Tamam**'a tıklayın.
+8. Bu öğretici için, yeni bir klasör oluşturun.  Komut çubuğunda **Yeni Klasör**'e tıklayın ve yeni klasöre bir ad verin (örneğin, **TestFolder**).  **Tamam**’a tıklayın.
 9. Oluşturduğunuz klasöre tıklayın, sonra da komut çubuğunda **Erişim**’e tıklayın.
 10. 5. adımdaki gibi **Ekle**’ye tıklayın, **Seç** alanına VM’nizin adını girin, bunu seçin ve **Seç**’e tıklayın.
-11. 6. adımdaki gibi **İzin Seç**’e tıklayın, **Okuma**, **Yazma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Erişim izni girdisi ve varsayılan erişim girdisi** olarak ekleyin.  **Tamam**'a tıklayın.  İzin başarıyla eklenmiş olmalıdır.
+11. 6. adımdaki gibi **İzin Seç**’e tıklayın, **Okuma**, **Yazma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Erişim izni girdisi ve varsayılan erişim girdisi** olarak ekleyin.  **Tamam**’a tıklayın.  İzin başarıyla eklenmiş olmalıdır.
 
 VM sistem tarafından atanan yönetilen kimliği artık oluşturduğunuz klasördeki dosyalar üzerinde tüm işlemleri gerçekleştirebilir.  Data Lake Store'a erişimi yönetme hakkında daha fazla bilgi için [Data Lake Store’da Erişim Denetimi](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) makalesini okuyun.
 
@@ -76,7 +76,7 @@ Bu öğreticide, REST istekleri göndermek için PowerShell kullanarak Data Lake
 1. Portalda, **Sanal Makineler**'e ve Windows VM’nize gidin, **Genel Bakış**'ta **Bağlan**'a tıklayın.
 2. Windows VM 'yi oluştururken eklediğiniz **Kullanıcı adınızı** ve **parolanızı** girin. 
 3. Sanal makineyle bir **Uzak Masaüstü bağlantısı** oluşturduğunuza göre, uzak oturumda **PowerShell** ' i açın. 
-4. PowerShell’in `Invoke-WebRequest` komutunu kullanarak, Azure kaynakları için yönetilen kimliği uç noktasına Azure Data Lake Store için erişim belirteci alma isteğinde bulunun.  Data Lake Store için kaynak tanımlayıcısı `https://datalake.azure.net/`.  Data Lake kaynak tanımlayıcısında tam eşleştirme yapar ve sonundaki eğik çizgi önemlidir.
+4. PowerShell’in `Invoke-WebRequest` komutunu kullanarak, Azure kaynakları için yönetilen kimliği uç noktasına Azure Data Lake Store için erişim belirteci alma isteğinde bulunun.  Data Lake Store için kaynak tanımlayıcısı `https://datalake.azure.net/` .  Data Lake kaynak tanımlayıcısında tam eşleştirme yapar ve sonundaki eğik çizgi önemlidir.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}

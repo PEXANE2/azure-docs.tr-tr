@@ -4,10 +4,10 @@ description: 'Öğretici: bir SQL veri ambarına veri geçirmek için Azure Even
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86117568"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
@@ -33,7 +33,7 @@ Bu makalede, aşağıdaki adımları uygulayın:
 > * Olay Hub 'ına veri gönderen uygulamayı çalıştırın.
 > * Veri ambarında geçirilen verileri görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -81,7 +81,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
         ```
     2. **ENTER**tuşuna basın. 
 
-        Örnek aşağıda verilmiştir:
+        Aşağıda bir örnek verilmiştir:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp
@@ -201,7 +201,7 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 
 ## <a name="publish-the-azure-functions-app"></a>Azure İşlevleri uygulamasını yayımlama
 
-1. Visual Studio’yu başlatın.
+1. Visual Studio 'Yu başlatın.
 2. Önkoşulların bir parçası olarak [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) 'Dan Indirdiğiniz **Eventhubscaptureeventgriddemo. sln** çözümünü açın.
 3. Çözüm Gezgini’nde **FunctionEGDWDumper**’a sağ tıklayın ve **Yayımla**’yı seçin.
 

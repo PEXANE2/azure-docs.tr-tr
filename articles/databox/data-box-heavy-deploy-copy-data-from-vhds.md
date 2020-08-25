@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77471338"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
+1. [Öğretici: Azure Data Box Heavy’yi ayarlama](data-box-heavy-deploy-set-up.md) bölümünü tamamladınız.
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. Yüksek hızlı bir ağa bağlanırsınız. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
 4. Şunu gözden geçirdiniz:
@@ -77,7 +77,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'a tıklayın.
+2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam** düğmesine tıklayın.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -116,7 +116,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -126,7 +126,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Aşağıdaki örnek, NFS aracılığıyla bir Data Box veya Data Box Heavy paylaşıma nasıl bağlanılacağını gösterir. Data Box veya Data Box Heavy cihaz IP 'si `169.254.250.200`, paylaşımın `mydbmdrg1_MDisk` ubuntuvm 'ye, bağlama noktasına bağlanır. `/home/databoxubuntuhost/databox`
+    Aşağıdaki örnek, NFS aracılığıyla bir Data Box veya Data Box Heavy paylaşıma nasıl bağlanılacağını gösterir. Data Box veya Data Box Heavy cihaz IP 'si `169.254.250.200` , paylaşımın `mydbmdrg1_MDisk` ubuntuVM 'ye, bağlama noktasına bağlanır `/home/databoxubuntuhost/databox` .
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 

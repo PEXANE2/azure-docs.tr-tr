@@ -7,10 +7,10 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85963861"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Öğretici: Azure Işlevleri 'ni kullanarak bir Batch işi tetikleyin
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Işlevleri 'ni kullanarak bir toplu işi nasıl tetikleye
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Batch Explorer kullanarak bir Batch havuzu ve toplu iş oluşturma
 
@@ -72,8 +72,8 @@ Bu bölümde, giriş kapsayıcınıza her dosya yüklendiğinde OCR toplu işini
     1. Bir depolama hesabı istendiğinde, Batch hesabınıza bağladığınız depolama hesabını kullanın.
     1. **Çalışma zamanı yığını**için .net ' i seçin. Batch .NET SDK 'sının yararlanmak Için C# ' de işlevimizi yazacağız.
 1. Blob ile tetiklenen işlev oluşturulduktan sonra, [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) Işlevindeki GitHub 'dan ve ' ı kullanın [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) .
-    * `run.csx`, giriş blobu kapsayıcınıza yeni bir blob eklendiğinde çalıştırılır.
-    * `function.proj`Işlev kodunuzda dış kitaplıkları listeler, örneğin Batch .NET SDK.
+    * `run.csx` , giriş blobu kapsayıcınıza yeni bir blob eklendiğinde çalıştırılır.
+    * `function.proj` Işlev kodunuzda dış kitaplıkları listeler, örneğin Batch .NET SDK.
 1. Dosya işlevindeki değişkenlerin yer tutucu değerlerini `Run()` `run.csx` yığın ve depolama kimlik bilgilerinizi yansıtacak şekilde değiştirin. Batch ve Storage hesabı kimlik bilgilerinizi Batch hesabınızın **anahtarlar** bölümündeki Azure Portal bulabilirsiniz.
     * Batch hesabınızın **anahtarlar** bölümündeki Azure Portal Batch ve Storage hesabı kimlik bilgilerinizi alın. 
 

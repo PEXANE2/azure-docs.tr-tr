@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure Resource Manager erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
+title: Öğretici `:` Azure Resource Manager erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
 description: Windows VM üzerinde bir kullanıcı tarafından atanan yönetilen kimliği kullanarak Azure Resource Manager'a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75977848"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager erişmek için Windows VM üzerinde kullanıcı tarafından atanan yönetilen kimlik kullanma
@@ -43,7 +43,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Azure portal'da oturum açma](https://portal.azure.com)
+- [Azure portalda oturum açın](https://portal.azure.com)
 
 - [Windows sanal makinesi oluşturma](/azure/virtual-machines/windows/quick-create-portal)
 
@@ -55,7 +55,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 - Bu makaledeki kullanıcı tarafından atanan kimlik işlemlerini gerçekleştirmek için `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` komutunu çalıştırarak `Az.ManagedServiceIdentity` modülünün yayın öncesi sürümünü yükleyin.
 
 
-## <a name="enable"></a>Etkinleştirme
+## <a name="enable"></a>Etkinleştir
 
 Kullanıcı tarafından atanan bir kimliğe dayalı bir senaryo için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
@@ -129,7 +129,7 @@ CanDelegate: False
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğumuz VM'den çalışacaksınız.
 
-1. Azure portal şurada oturum açın:[https://portal.azure.com](https://portal.azure.com)
+1. Azure portal şurada oturum açın: [https://portal.azure.com](https://portal.azure.com)
 
 2. Portalda, **Sanal Makineler**'e ve Windows sanal makinesine gidin, ardından **Genel Bakış**'ta **Bağlan**'a tıklayın.
 
@@ -137,7 +137,7 @@ Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğumuz VM'den �
 
 4. Sanal makineyle bir **Uzak Masaüstü bağlantısı** oluşturduğunuza göre, uzak oturumda **PowerShell** ' i açın.
 
-5. PowerShell’in `Invoke-WebRequest` komutunu kullanarak, Azure kaynakları için yönetilen kimliği uç noktasına Azure Resource Manager için erişim belirteci alma isteğinde bulunun.  `client_id` Değer, Kullanıcı tarafından atanan yönetilen kimliği oluşturduğunuzda döndürülen değerdir.
+5. PowerShell’in `Invoke-WebRequest` komutunu kullanarak, Azure kaynakları için yönetilen kimliği uç noktasına Azure Resource Manager için erişim belirteci alma isteğinde bulunun.  `client_id`Değer, Kullanıcı tarafından atanan yönetilen kimliği oluşturduğunuzda döndürülen değerdir.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}

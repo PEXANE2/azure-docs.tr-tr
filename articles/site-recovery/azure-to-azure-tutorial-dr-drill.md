@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.custom: mvc
 ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76166188"
 ---
 # <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Azure VM 'Leri için ikincil bir bölgeye olağanüstü durum kurtarma ayrıntısı çalıştırma
@@ -29,7 +29,7 @@ Bu öğretici, bir Azure VM için yük devretme testiyle bir Azure bölgesinden 
 
 Bu öğreticiyi uygulamadan önce aşağıdaki öğeleri kontrol edin:
 
-- Yük devretme testi çalıştırmadan önce VM 'nin özelliklerini denetleyerek olağanüstü durum kurtarma için yapılandırıldığından emin olmanızı öneririz. Çoğaltma ve yük devretme özelliklerini görüntülemek için VM 'nin **işlemler** > **olağanüstü durum kurtarma** > **özelliklerine** gidin.
+- Yük devretme testi çalıştırmadan önce VM 'nin özelliklerini denetleyerek olağanüstü durum kurtarma için yapılandırıldığından emin olmanızı öneririz. **Operations**  >  **Disaster Recovery**  >  Çoğaltma ve yük devretme özelliklerini görüntülemek için VM 'nin işlemler olağanüstü durum kurtarma**özelliklerine** gidin.
 - Çoğaltmayı etkinleştirdiğinizde ayarlanmış olan varsayılan ağı değil, **Yük devretme testi için ayrı bir Azure VM ağı kullanmanızı öneririz**.
 - Her NIC için kaynak ağ yapılandırmanıza bağlı olarak, bir olağanüstü durum kurtarma detayına geçmeden önce **işlem ve ağdaki** test yük devretmesi ayarları altındaki her bir NIC 'ye Iliştirilecek **alt ağ**, **özel IP adresi**, **genel IP**, **ağ güvenlik grubu**veya **yük dengeleyici** belirtebilirsiniz.
 
@@ -37,7 +37,7 @@ Bu öğreticiyi uygulamadan önce aşağıdaki öğeleri kontrol edin:
 
 Bu örnek, bir kurtarma hizmetleri kasasının VM yük devretme testi yapmak için nasıl kullanılacağını gösterir.
 
-1. Bir kasa seçin ve **korunan öğeler** > **çoğaltılan öğeler** ' e gidin ve bir VM seçin.
+1. Bir kasa seçin ve **korunan öğeler**  >  **çoğaltılan öğeler** ' e gidin ve bir VM seçin.
 1. Yük **devretme testi**bölümünde, yük devretme için kullanılacak bir kurtarma noktası seçin:
    - **En son**: Site Recovery tüm verileri işler ve en düşük RTO (kurtarma süresi hedefi) sağlar.
    - **En son işlenen**: VM yükü, Site Recovery tarafından işlenen en son kurtarma noktasına devredilir. Zaman damgası gösterilir. Bu seçenekle, verileri işlemek için bir zaman harcanması gerekmez, bu nedenle düşük bir RTO sağlar.
@@ -48,7 +48,7 @@ Bu örnek, bir kurtarma hizmetleri kasasının VM yük devretme testi yapmak iç
    > [!NOTE]
    > Sınama yük devretmesi ayarları çoğaltılan öğe için önceden yapılandırıldıysa, bir Azure sanal ağı seçmek için açılan menü görünür olmaz.
 
-1. Yük devretmeyi başlatmak için **Tamam**' ı seçin. Kasadan ilerlemeyi izlemek için **izleme** > **Site Recovery işleri** ' ne gidin ve **Yük devretme testi** işini seçin.
+1. Yük devretmeyi başlatmak için **Tamam**' ı seçin. Kasadan ilerlemeyi izlemek için **izleme**  >  **Site Recovery işleri** ' ne gidin ve **Yük devretme testi** işini seçin.
 1. Yük devretme işlemi tamamlandıktan sonra, çoğaltma Azure VM Azure portal **sanal makinelerinde**görüntülenir. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
 1. Yük devretme testi sırasında oluşturulan sanal makineleri silmek için, çoğaltılan öğe veya kurtarma planında **Yük devretme testini temizle** ' yi seçin. **Notlar**’da, yük devretme testiyle ilişkili gözlemlerinizi kaydedin ve saklayın.
 

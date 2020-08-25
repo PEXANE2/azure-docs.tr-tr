@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77565587"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: bağlı cihazlarınızı toplu olarak yönetme
@@ -99,7 +99,7 @@ Bu öğreticide daha sonra, tüm üyelerin bellenimini güncelleştiren bir ciha
 
 Cihaz belleniminin ilk sürümü 1.0.0 'dir. Yeni üretici yazılımının daha yüksek bir sürüm numarası olmalıdır.
 
-1. VS Code **Firmwareota. ino** dosyasını açın ve ' `currentFirmwareVersion` den `1.0.0` ' a değiştirin: `1.0.1`
+1. VS Code **Firmwareota. ino** dosyasını açın ve ' den ' a değiştirin `currentFirmwareVersion` `1.0.0` `1.0.1` :
 
     ![Bellenim sürümünü değiştir](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -107,7 +107,7 @@ Cihaz belleniminin ilk sürümü 1.0.0 'dir. Yeni üretici yazılımının daha 
 
     ![Cihaz derleme](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
-    VS Code derlenen dosyayı projedeki `.build` klasöre kaydeder. Ayarlarınıza bağlı olarak, VS Code gezgin görünümündeki `.build` klasörü gizleyebilir.
+    VS Code derlenen dosyayı `.build` projedeki klasöre kaydeder. Ayarlarınıza bağlı olarak, VS Code `.build` Gezgin görünümündeki klasörü gizleyebilir.
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>CRC değeri oluştur ve üretici yazılımı dosya boyutunu hesapla
 
@@ -135,7 +135,7 @@ Yeni bellenim dosyanızı bulutta barındırmak için Azure depolama hesabınız
 
 ### <a name="build-and-upload-the-original-firmware-to-the-iot-devkit-device"></a>Özgün üretici yazılımını IoT DevKit cihazına derleyin ve karşıya yükleyin
 
-1. VS Code **Firmwareota. ino** dosyasını açın ve `currentFirmwareVersion` geri doğru olarak `1.0.0`değiştirin:
+1. VS Code **Firmwareota. ino** dosyasını açın ve `currentFirmwareVersion` geri doğru olarak değiştirin `1.0.0` :
 
     ![Sürüm 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -153,7 +153,7 @@ Yeni bellenim dosyanızı bulutta barındırmak için Azure depolama hesabınız
 
 Cihaz yapılandırması, cihazlarınızın istenen durumunu belirtir. Genellikle, geliştirici Azure portal, yapılandırmayı **IoT cihaz yapılandırma** sayfasında [oluşturur](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) . Cihaz yapılandırması, cihazlarınızın istenen durumunu ve bir dizi ölçümü belirten bir JSON belgesidir.
 
-Aşağıdaki yapılandırmayı yerel makinenizde **bellenim-Update. JSON** adlı dosya olarak kaydedin. , Ve `YOURPACKAGESIZE` yer `YOURCHECKSUM`tutucuları, daha önce bir notcuı yaptığınız değerlerle değiştirin: `YOURSTRORAGEACCOUNTNAME`
+Aşağıdaki yapılandırmayı yerel makinenizde **firmware-update.js** adlı dosya olarak kaydedin. `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM` Ve `YOURPACKAGESIZE` yer tutucuları, daha önce bir notcuı yaptığınız değerlerle değiştirin:
 
 ```json
 {
@@ -210,7 +210,7 @@ Bu bölümde, cihaz yapılandırmasını uzaktan Izleme çözüm hızlandırıc�
 
     ![Yeni paket](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. **Yeni paket** panelinde, yapılandırma türü olarak paket türü ve **üretici yazılımı** olarak **cihaz yapılandırması** ' nı seçin. Yerel makinenizde **bellenim-Update. JSON** dosyasını bulmak Için, **Araştır** ' a tıklayın ve ardından **karşıya yükle**' ye tıklayın:
+1. **Yeni paket** panelinde, yapılandırma türü olarak paket türü ve **üretici yazılımı** olarak **cihaz yapılandırması** ' nı seçin. Yerel makinenizde dosya **firmware-update.js** bulmak Için, **Araştır** ' a tıklayın ve ardından **karşıya yükle**' ye tıklayın:
 
     ![Paketi karşıya yükle](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -228,10 +228,10 @@ Bu bölümde, IoT DevKit cihazlarınıza cihaz yapılandırmasını uygulayan bi
 
     |Seçenek|Değer|
     |---|---|
-    |Adı|Üretici yazılımı güncelleştirmesini dağıtma|
+    |Ad|Üretici yazılımı güncelleştirmesini dağıtma|
     |Paket türü|Cihaz Yapılandırması|
     |Yapılandırma türü|Üretici yazılımı|
-    |Paket|bellenim-Update. JSON|
+    |Paket|Üzerinde firmware-update.js|
     |Cihaz grubu|IoT DevKit cihazları|
     |Öncelik|10|
 

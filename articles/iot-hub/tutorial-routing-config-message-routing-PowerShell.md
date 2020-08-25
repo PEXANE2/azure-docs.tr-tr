@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084432"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure PowerShell kullanma
@@ -26,7 +26,7 @@ ms.locfileid: "74084432"
 
 Bu öğreticinin ikinci bölümünde, IoT Hub iletileri göndermek için bir Visual Studio uygulaması indirip çalıştırırsınız. İndirmenin, Azure Resource Manager şablonu ve parametreler dosyasının yanı sıra Azure CLı ve PowerShell betikleri içeren bir klasör vardır. 
 
-Tamamlanmış betiği görüntülemek istiyorsanız, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. Master. zip dosyasını ayıklayın. Azure CLı betiği, **iothub_routing_psh. ps1**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
+Tamamlanmış betiği görüntülemek istiyorsanız, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Azure CLı betiği,/iot-hub/Tutorials/Routing/SimulatedDevice/resources/olarak **iothub_routing_psh.ps1**.
 
 ## <a name="create-your-resources"></a>Kaynaklarınızı oluşturun
 
@@ -148,7 +148,7 @@ Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tar
 
 **EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
 
-**EndpointType**: Bu alan bitiş noktası türüdür. Bu `azurestoragecontainer`değer, `eventhub` `servicebusqueue`, veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre olarak `azurestoragecontainer`ayarlayın.
+**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer,, veya olarak `azurestoragecontainer` ayarlanmalıdır `eventhub` `servicebusqueue` `servicebustopic` . Burada amacınıza göre olarak ayarlayın `azurestoragecontainer` .
 
 **SubscriptionID**: Bu alan, Azure hesabınız için SubscriptionID olarak ayarlanır.
 
@@ -156,13 +156,13 @@ Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tar
 
 **ContainerName**: Bu alan, depolama hesabındaki, verilerin yazılacağı kapsayıcının adıdır.
 
-**Kodlama**: bu alanı ya `AVRO` `JSON`da olarak ayarlayın. Bu, depolanan verilerin biçimini belirler. Varsayılan değer AVRO ' dir.
+**Kodlama**: bu alanı ya da olarak `AVRO` ayarlayın `JSON` . Bu, depolanan verilerin biçimini belirler. Varsayılan değer AVRO ' dir.
 
 **RouteName**: Bu alan, ayarladığınız yolun adıdır. 
 
-**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Depolamaya yönlendirilmekte olan iletilerin sorgu koşulu `level="storage"`.
+**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Depolamaya yönlendirilmekte olan iletilerin sorgu koşulu `level="storage"` .
 
-**etkin**: Bu alan varsayılan olarak `true`, ileti yolunun oluşturulduktan sonra etkinleştirilmesi gerektiğini gösterir.
+**etkin**: Bu alan varsayılan olarak `true` , ileti yolunun oluşturulduktan sonra etkinleştirilmesi gerektiğini gösterir.
 
 Bu betiği kopyalayın ve Cloud Shell pencerenize yapıştırın.
 
@@ -208,7 +208,7 @@ Add-AzIotHubRoute `
 
 ### <a name="route-to-a-service-bus-queue"></a>Service Bus kuyruğuna yönlendirme
 
-Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Service Bus sırasının bağlantı dizesini almak için, doğru haklara sahip bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki betik adlı `sbauthrule`Service Bus kuyruğu için bir yetkilendirme kuralı oluşturur ve haklarını olarak `Listen Manage Send`ayarlar. Bu yetkilendirme kuralı kurulduktan sonra, kuyruğa yönelik bağlantı dizesini almak için bu ayarı kullanabilirsiniz.
+Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Service Bus sırasının bağlantı dizesini almak için, doğru haklara sahip bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki betik adlı Service Bus kuyruğu için bir yetkilendirme kuralı oluşturur `sbauthrule` ve haklarını olarak ayarlar `Listen Manage Send` . Bu yetkilendirme kuralı kurulduktan sonra, kuyruğa yönelik bağlantı dizesini almak için bu ayarı kullanabilirsiniz.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -236,11 +236,11 @@ $sbqkey = Get-AzServiceBusKey `
 
 **EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
 
-**EndpointType**: Bu alan bitiş noktası türüdür. Bu `azurestoragecontainer`değer, `eventhub` `servicebusqueue`, veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre olarak `servicebusqueue`ayarlayın.
+**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer,, veya olarak `azurestoragecontainer` ayarlanmalıdır `eventhub` `servicebusqueue` `servicebustopic` . Burada amacınıza göre olarak ayarlayın `servicebusqueue` .
 
 **RouteName**: Bu alan, ayarladığınız yolun adıdır. 
 
-**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulu `level="critical"`.
+**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulu `level="critical"` .
 
 Service Bus kuyruğu için ileti yönlendirmenin Azure PowerShell aşağıda verilmiştir.
 

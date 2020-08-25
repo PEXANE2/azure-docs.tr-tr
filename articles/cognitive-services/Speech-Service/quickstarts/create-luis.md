@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
 ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391613"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
@@ -35,7 +35,7 @@ LUSıS üç tür anahtar kullanır:
 |--------|-------|
 |Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
 |Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
-|Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
+|Uç Noktası |Belirli bir Lua uygulamasına erişim yetkisi verir|
 
 Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 

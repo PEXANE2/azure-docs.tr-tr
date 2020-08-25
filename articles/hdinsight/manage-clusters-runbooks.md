@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75553516"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Öğretici: Azure Otomasyonu ile Azure HDInsight kümeleri oluşturma
@@ -60,13 +60,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     | Özellik | Değer |
     | --- | --- |
-    | Adı | `cluster-password` |
+    | Ad | `cluster-password` |
     | Kullanıcı adı | `admin` |
     | Parola | `SECURE_PASSWORD` |
     | Parolayı onayla | `SECURE_PASSWORD` |
 
 1. **Oluştur**’u seçin.
-1. Kullanıcı adı `sshuser` ve seçtiğiniz bir parolayla aynı işlemi `ssh-password` tekrarlayın. **Oluştur**’u seçin. Bu kimlik bilgisi, kümenizin SSH parolasını deposıdır.
+1. `ssh-password`Kullanıcı adı `sshuser` ve seçtiğiniz bir parolayla aynı işlemi tekrarlayın. **Oluştur**’u seçin. Bu kimlik bilgisi, kümenizin SSH parolasını deposıdır.
 
     ![kimlik bilgisi oluşturma](./media/manage-clusters-runbooks/create-credentials.png)
 
@@ -74,7 +74,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Işlem Otomasyonu**altında **runbook 'ları** seçin.
 1. **Runbook oluştur**' u seçin.
-1. **Runbook oluştur** panelinde, runbook için gibi `hdinsight-cluster-create`bir ad girin. **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
+1. **Runbook oluştur** panelinde, runbook için gibi bir ad girin `hdinsight-cluster-create` . **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
 1. **Oluştur**’u seçin.
 
     ![Runbook oluştur](./media/manage-clusters-runbooks/create-runbook.png)
@@ -130,7 +130,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Işlem Otomasyonu**altında **runbook 'ları** seçin.
 1. **Runbook oluştur**' u seçin.
-1. **Runbook oluştur** panelinde, runbook için gibi `hdinsight-cluster-delete`bir ad girin. **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
+1. **Runbook oluştur** panelinde, runbook için gibi bir ad girin `hdinsight-cluster-delete` . **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
 1. **Oluştur**’u seçin.
 1. **PowerShell runbook 'Unu Düzenle** ekranına aşağıdaki kodu girin ve **Yayımla**' yı seçin:
 
@@ -153,7 +153,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ### <a name="create-a-cluster"></a>Küme oluşturma
 
 1. **Işlem Otomasyonu**altında **runbook 'ları** seçerek Otomasyon hesabınızın runbook 'larının listesini görüntüleyin.
-1. Küme `hdinsight-cluster-create`oluşturma runbook 'unuzu oluştururken kullandığınız adı seçin.
+1. `hdinsight-cluster-create`Küme oluşturma runbook 'unuzu oluştururken kullandığınız adı seçin.
 1. Runbook 'u hemen yürütmek için **Başlat** ' ı seçin. Ayrıca, runbook 'ları düzenli aralıklarla çalışacak şekilde zamanlayabilirsiniz. Bkz. [Azure Otomasyonu 'nda Runbook zamanlama](../automation/shared-resources/schedules.md)
 1. Betik için gerekli parametreleri girin ve **Tamam**' ı seçin. Bu, **clustername** parametresinde belirttiğiniz ada sahip yeni bir HDInsight kümesi oluşturur.
 
@@ -161,7 +161,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ### <a name="delete-a-cluster"></a>Küme silme
 
-Oluşturduğunuz `hdinsight-cluster-delete` runbook 'u seçerek kümeyi silin. **Başlat**' ı seçin, **clustername** parametresini girip sselect **Tamam**' ı seçin.
+Oluşturduğunuz runbook 'u seçerek kümeyi silin `hdinsight-cluster-delete` . **Başlat**' ı seçin, **clustername** parametresini girip sselect **Tamam**' ı seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

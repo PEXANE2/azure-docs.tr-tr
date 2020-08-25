@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79533190"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
@@ -41,9 +41,9 @@ Bu öğreticide şunları yaptınız:
 
 Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi**seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Blok zinciri ekleme Veri Yöneticisi](./media/data-manager-cosmosdb/add-instance.png)
 
@@ -51,7 +51,7 @@ Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işle
 
     Ayar | Örnek | Açıklama
     --------|---------|------------
-    Adı | myizleyici | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin.
+    Ad | myizleyici | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin.
     İşlem düğümü | myblockchainmember | Ön koşul içinde oluşturduğunuz Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümünü seçin.
     Bağlantı adı | cosmosdb | Blok zinciri işlem verilerinin gönderildiği giden bağlantıya ilişkin benzersiz bir ad girin.
     Olay Kılavuzu uç noktası | myTopic | Önkoşul bölümünde oluşturduğunuz bir olay Kılavuzu konusu seçin. Note: blok zinciri Veri Yöneticisi örneği ve olay Kılavuzu konusu aynı abonelikte olmalıdır.
@@ -76,7 +76,7 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
     Sözleşme ABı, panoya kopyalanır.
 
-1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindeabi.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
@@ -88,11 +88,11 @@ Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodun
 
     Bytecode, panoya kopyalanır.
 
-1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindebytecode.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Aşağıdaki örnek, VS Code düzenleyicide açık olan *ABI. JSON* ve *bytecode. JSON* dosyalarını gösterir. Dosyalarınız benzer görünmelidir.
+Aşağıdaki örnek, VS Code düzenleyicide açık olan dosyalar üzerinde *abi.js* ve *bytecode.js* gösterir. Dosyalarınız benzer görünmelidir.
 
-![ABI. JSON ve bytecode. JSON dosyaları örneği](./media/data-manager-cosmosdb/contract-files.png)
+![Dosyalar üzerinde abi.jsve bytecode.jsörnek](./media/data-manager-cosmosdb/contract-files.png)
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>Sözleşme ABı ve bytecode URL 'SI oluştur
 
@@ -110,7 +110,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Adı  | Kapsayıcıya bir ad verin. Örneğin, *smartcontract* |
+    | Ad  | Kapsayıcıya bir ad verin. Örneğin, *smartcontract* |
     | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
 
 1. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
@@ -119,7 +119,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
     ![Blobu karşıya yükle](./media/data-manager-cosmosdb/upload-blobs.png)
 
-    **Karşıya yükle**' yi seçin.
+    **Karşıya Yükle**’yi seçin.
 
 #### <a name="generate-url"></a>URL Oluştur
 
@@ -138,7 +138,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
 1. Örnek listesinden Blockzincirine Veri Yöneticisi örneğinizi seçin.
 1. **Blok zinciri uygulamaları**' nı seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Blok zinciri uygulaması ekleme](./media/data-manager-cosmosdb/add-application.png)
 
@@ -146,7 +146,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
     Ayar | Açıklama
     --------|------------
-    Adı | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
+    Ad | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
     Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
     Sözleşme bytecode 'u | Bytecode dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
 
@@ -174,7 +174,7 @@ Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabi
     | Ayar | Açıklama
     |---------|-------------|
     | Veritabanı Kimliği | Yeni veritabanının adı olarak **blok zinciri-verileri** girin. |
-    | Aktarım hızı | Aktarım hızını saniyede **400** istek BIRIMI (ru/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.|
+    | Aktarım hızı | Aktarım hızını saniyede **400** istek BIRIMI (ru/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz.|
     | Kapsayıcı Kimliği | Yeni kapsayıcının adı olarak **iletileri** girin. |
     | Bölüm anahtarı | Bölüm anahtarı olarak **/MessageType** kullanın. |
 
@@ -235,7 +235,7 @@ Her işlem için Cosmos DB bir belge oluşturmak için bir eylem ekleyin. İleti
     İfade, iletinin veri bölümünü alır ve KIMLIĞI bir zaman damgası değerine ayarlar.
 
 1. **Yeni parametre Ekle** ' yi seçin ve **bölüm anahtarı değeri**' ni seçin.
-1. **Bölüm anahtarı değerini** olarak `"@{triggerBody()['data']['MessageType']}"`ayarlayın. Değer çift tırnak işareti içine alınmalıdır.
+1. **Bölüm anahtarı değerini** olarak ayarlayın `"@{triggerBody()['data']['MessageType']}"` . Değer çift tırnak işareti içine alınmalıdır.
 
     ![Cosmos DB ayarlarla Logic Apps tasarımcı](./media/data-manager-cosmosdb/create-action.png)
 

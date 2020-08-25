@@ -43,7 +43,7 @@
         - name: Lisanslar
           href: concept-mfa-licensing.md
         - name: Office 365 için MFA
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: SSS
           href: multi-factor-authentication-faq.md
     - name: Parolasız kimlik doğrulaması
@@ -87,7 +87,7 @@
         - name: Dizin Federasyonu
           items:
             - name: Windows Server 2016 AD FS Bağdaştırıcısı
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: Federasyon Hizmetleri
               href: multi-factor-authentication-get-started-adfs.md
             - name: AD FS kullanma
@@ -119,7 +119,7 @@
         - name: Parolasız telefonla oturum açma
           href: howto-authentication-passwordless-phone.md
         - name: İş İçin Windows Hello
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: Güvenlik bilgileri kaydı
       items:
         - name: Birleşik kaydı etkinleştirme
@@ -220,7 +220,7 @@
 - name: Başvuru
   items:
     - name: MFA kullanıcı kılavuzu
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: Kod örnekleri
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell cmdlet’leri
@@ -234,7 +234,7 @@
     - name: Azure geri bildirim forumu
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Hizmet güncelleştirmeleri

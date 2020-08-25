@@ -7,10 +7,10 @@ ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79082821"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
@@ -33,7 +33,7 @@ Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağını
 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="open-metrics-explorer-and-select-a-scope"></a>Ölçüm Gezgini 'ni açın ve bir kapsam seçin
 Ölçüm Gezgini 'ni Azure Izleyici menüsünden ya da Azure portal bir kaynağın menüsünden açabilirsiniz. Kullandığınız seçenekten bağımsız olarak tüm kaynakların ölçümleri kullanılabilir. 

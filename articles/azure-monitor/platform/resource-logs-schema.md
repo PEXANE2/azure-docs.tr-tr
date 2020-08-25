@@ -4,12 +4,12 @@ description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318292"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782133"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -23,7 +23,7 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 
 ## <a name="top-level-common-schema"></a>Üst düzey ortak şema
 
-| Ad | Gerekli/İsteğe Bağlı | Açıklama |
+| Name | Gerekli/İsteğe Bağlı | Açıklama |
 |---|---|---|
 | time | Gerekli | Olayın zaman damgası (UTC). |
 | resourceId | Gerekli | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
@@ -58,12 +58,13 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | PostgreSQL için Azure Veritabanı | [PostgreSQL için Azure veritabanı günlükleri](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Veri Gezgini | [Azure Veri Gezgini günlükleri](/azure/data-explorer/using-diagnostic-logs) |
 | Bilişsel Hizmetler | [Azure bilişsel hizmetler için günlüğe kaydetme](../../cognitive-services/diagnostic-logging.md) |
-| Container Kayıt Defteri | [Azure Container Registry için günlüğe kaydetme](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Container Registry | [Azure Container Registry için günlüğe kaydetme](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN için Azure günlükleri](../../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Günlüğe kaydetme Azure Cosmos DB](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Azure Izleyici 'yi kullanarak veri fabrikalarını izleme](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics için günlüklere erişme](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store için günlüklere erişme](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Databricks | [Azure Databricks'te tanılama günlüğü](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs günlükleri](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Şema kullanılamıyor. |
 | Azure Güvenlik Duvarı | Şema kullanılamıyor. |
@@ -76,7 +77,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure 'da Power BI Embedded için günlüğe kaydetme](/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
-| Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Ara |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |

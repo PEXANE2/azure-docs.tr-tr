@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424780"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748806"
 ---
 | Kaynak | Sınır |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "84424780"
 | Kaynak grubu başına kaynaklar, kaynak türü başına |800-bazı kaynak türleri 800 sınırını aşabilir. [Kaynak grubu başına 800 örnek için sınırlı kaynaklara](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)bakın. |
 | Dağıtım geçmişinde kaynak grubu başına dağıtımlar |800<sup>1</sup> |
 | Dağıtım başına kaynaklar |800 |
-| Benzersiz kapsam başına yönetim kilitleri |20 |
+| Benzersiz [kapsam](../articles/azure-resource-manager/management/overview.md#understand-scope) başına yönetim kilitleri  |20 |
 | Kaynak veya kaynak grubu başına etiket sayısı |50 |
 | Etiket anahtarı uzunluğu |512 |
 | Etiket değeri uzunluğu |256 |

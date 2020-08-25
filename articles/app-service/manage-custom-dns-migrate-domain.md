@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535698"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782218"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
 
@@ -29,7 +29,7 @@ Bu nasıl yapılır:
 
 ## <a name="bind-the-domain-name-preemptively"></a>Preemptively etki alanı adını bağlama
 
-Özel bir etki alanı preemptively bağladığınızda, DNS kayıtlarınızda herhangi bir değişiklik yapmadan önce aşağıdakilerin her ikisini de gerçekleştirirsiniz:
+Özel bir etki alanı preemptively bağladığınızda, var olan DNS kayıtlarınızda herhangi bir değişiklik yapmadan önce aşağıdakilerin her ikisini de gerçekleştirirsiniz:
 
 - Etki alanı sahipliğini doğrulama
 - Uygulamanız için etki alanı adını etkinleştirin
@@ -38,26 +38,24 @@ Bu nasıl yapılır:
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
+### <a name="get-domain-verification-id"></a>Etki alanı doğrulama KIMLIĞINI al
+
+[Etki alanı doğrulama kimliğini al](app-service-web-tutorial-custom-domain.md#get-domain-verification-id)' da bulunan adımları izleyerek uygulamanızın etki alanı doğrulama kimliğini alın.
+
 ### <a name="create-domain-verification-record"></a>Etki alanı doğrulama kaydı oluştur
 
-Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı _awverify 'ten eşlenir. &lt; alt etki alanı>_ _ &lt; appname>. azurewebsites.net_. 
-
-İhtiyacınız olan TXT kaydı, geçirmek istediğiniz DNS kaydına bağlıdır. Örnekler için aşağıdaki tabloya bakın ( `@` genellikle kök etki alanını temsil eder):
+Etki alanı sahipliğini doğrulamak için, etki alanı doğrulaması için bir TXT kaydı ekleyin. TXT kaydı için ana bilgisayar adı, eşlemek istediğiniz DNS kayıt türünün türüne bağlıdır. Aşağıdaki tabloya bakın ( `@` genellikle kök etki alanını temsil eder):
 
 | DNS kaydı örneği | TXT ana bilgisayar | TXT değeri |
 | - | - | - |
-| \@Asıl | _awverify_ | _&lt;AppName>. azurewebsites.net_ |
-| www (Sub) | _awverify. www_ | _&lt;AppName>. azurewebsites.net_ |
-| \*liyorsa | _awverify.\*_ | _&lt;AppName>. azurewebsites.net_ |
+| \@ Asıl | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| www (Sub) | _asuıd. www_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \* liyorsa | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
 
 DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türünü aklınızda bulabilirsiniz. App Service CNAME ve bir kayıtlardan eşleştirmeleri destekler.
 
 > [!NOTE]
-> Cloudparlaması gibi bazı sağlayıcılar için `awverify.*` geçerli bir kayıt değildir. `*`Yalnızca bunun yerine kullanın.
-
-> [!NOTE]
 > Joker karakter `*` kayıtları, var olan CNAME kaydı ile alt etki alanlarını doğrulamaz. Her alt etki alanı için açıkça bir TXT kaydı oluşturmanız gerekebilir.
-
 
 ### <a name="enable-the-domain-for-your-app"></a>Uygulamanız için etki alanını etkinleştirin
 
@@ -69,7 +67,7 @@ DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türün�
 
 ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-TXT kaydını eklediğiniz tam etki alanı adını (örneğin,) yazın `www.contoso.com` . Joker bir etki alanı ( \* . contoso.com gibi) için joker karakterle eşleşen herhangi BIR DNS adını kullanabilirsiniz. 
+Geçirmek istediğiniz tam etki alanı adını yazın; örneğin,, veya gibi, oluşturduğunuz TXT kaydına karşılık gelir `contoso.com` `www.contoso.com` `*.contoso.com` .
 
 **Doğrula**'yı seçin.
 
@@ -111,7 +109,7 @@ Etki alanı sağlayıcınızın DNS kayıtları sayfasında yeniden eşlemek iç
 
 `contoso.com`Kök etki alanı örneği için, bir veya CNAME kaydını aşağıdaki tabloda yer alan örneklerle yeniden eşleyin: 
 
-| FQDN örneği | Kayıt türü | Ana bilgisayar | Değer |
+| FQDN örneği | Kayıt türü | Konak | Değer |
 | - | - | - | - |
 | contoso.com (kök) | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 | www \. contoso.com (Sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |
@@ -121,7 +119,7 @@ Ayarlarınızı kaydedin.
 
 DNS sorguları, DNS yayma gerçekleştirildikten hemen sonra App Service uygulamanıza çözümlenmelidir.
 
-## <a name="active-domain-in-azure"></a>Azure 'da etkin etki alanı
+## <a name="migrate-domain-from-another-app"></a>Başka bir uygulamadan etki alanı geçirme
 
 Azure 'da bir etkin özel etki alanını abonelikler arasında veya aynı abonelik içinde geçirebilirsiniz. Ancak, kapalı kalma süresi olmayan bir geçiş, kaynak uygulama gerektirir ve hedef uygulamaya belirli bir zamanda aynı özel etki alanı atanır. Bu nedenle, iki uygulamanın aynı dağıtım birimine (dahili bir web alanı olarak da bilinir) dağıtılmadığından emin olmanız gerekir. Bir etki alanı adı, her dağıtım biriminde yalnızca bir uygulamaya atanabilir.
 

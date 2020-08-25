@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262781"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761517"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -195,8 +195,8 @@ Evet, portaldan aynı yedekleme ilkesiyle ilişkilendirilebilen 100 VM sınırla
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Yedeklemelerim için bekletme ayarlarını nasıl görüntüleyebilirim?
 
-Şu anda, bekletme ayarlarını, VM 'ye atanan yedekleme ilkesini temel alarak bir yedekleme öğesi (VM) düzeyinde görüntüleyebilirsiniz. 
+Şu anda, bekletme ayarlarını, VM 'ye atanan yedekleme ilkesini temel alarak bir yedekleme öğesi (VM) düzeyinde görüntüleyebilirsiniz.
 
 Yedeklemeleriniz için bekletme ayarlarını görüntülemenin bir yolu, Azure portal VM 'niz için yedekleme öğesi [panosuna](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) gitmeye yöneliktir. Yedekleme ilkesinin bağlantısına tıkladığınızda, VM ile ilişkili günlük, haftalık, aylık ve yıllık bekletme noktalarının saklama süresini görüntülemenize yardımcı olur.
 
-Ayrıca, tek bir cam bölmesinde tüm VM 'lerinizin bekletme ayarlarını görüntülemek için [yedekleme Gezgini](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) ' ni de kullanabilirsiniz. Herhangi bir kurtarma hizmetleri kasasından yedekleme Gezgini ' ne gidin, **yedekleme öğeleri** sekmesine gidin ve Gelişmiş görünümü seçerek her bir VM için ayrıntılı bekletme bilgilerini görüntüleyin.  
+Ayrıca, tek bir cam bölmesinde tüm VM 'lerinizin bekletme ayarlarını görüntülemek için [yedekleme Gezgini](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) ' ni de kullanabilirsiniz. Herhangi bir kurtarma hizmetleri kasasından yedekleme Gezgini ' ne gidin, **yedekleme öğeleri** sekmesine gidin ve Gelişmiş görünümü seçerek her bir VM için ayrıntılı bekletme bilgilerini görüntüleyin.

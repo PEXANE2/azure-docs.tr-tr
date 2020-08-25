@@ -8,15 +8,15 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80058595"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>CLı kullanarak özel bir etki alanını App Service uygulamayla eşleme
 
-Bu örnek betik, App Service içinde ilgili kaynaklarıyla bir uygulama oluşturur ve ardından onunla eşlenir `www.<yourdomain>` .
+Bu örnek betik, App Service içinde ilgili kaynaklarıyla bir uygulama oluşturur ve ardından `www.<yourdomain>` onunla eşlenir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

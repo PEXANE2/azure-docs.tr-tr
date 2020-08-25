@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "78186208"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak yerel masaüstü istemcisinde kullanıcıların kimliğini doğrulama
@@ -52,8 +52,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 
 Uygulamayı Azure AD B2C kiracınızla çalışacak şekilde güncelleştirmek ve varsayılan demo kiracısında olanlar yerine Kullanıcı akışlarını çağırmak için:
 
-1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü`active-directory-b2c-wpf.sln`() açın.
-2. **Active-Directory-B2C-WPF** projesinde, *app.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun. Azure AD B2C `{your-tenant-name}` kiracı adınızla ve `{application-ID}` daha önce kaydettiğiniz uygulama kimliğiyle değiştirin.
+1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü ( `active-directory-b2c-wpf.sln` ) açın.
+2. **Active-Directory-B2C-WPF** projesinde, *app.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun. `{your-tenant-name}`Azure AD B2C kiracı adınızla ve `{application-ID}` daha önce KAYDETTIĞINIZ uygulama kimliğiyle değiştirin.
 
     ```csharp
     private static readonly string Tenant = "{your-tenant-name}.onmicrosoft.com";
@@ -89,7 +89,7 @@ Kullanıcı artık e-posta adreslerini kullanarak oturum açabilir ve masaüstü
 
 ![WPF Masaüstü uygulamasının alt bölmesinde gösterilen belirteç ayrıntıları](./media/tutorial-desktop-app/desktop-app-01-post-signin.png)
 
-**API çağır** düğmesini seçerseniz bir **hata iletisi** görüntülenir. Bu hatayla karşılaşırsınız, çünkü geçerli durumunda uygulama tanıtım kiracısı tarafından korunan bir API 'ye erişmeye çalışıyor `fabrikamb2c.onmicrosoft.com`. Erişim belirteciniz yalnızca Azure AD B2C kiracınız için geçerli olduğundan, API çağrısı bu nedenle yetkilendirilmemiş.
+**API çağır** düğmesini seçerseniz bir **hata iletisi** görüntülenir. Bu hatayla karşılaşırsınız, çünkü geçerli durumunda uygulama tanıtım kiracısı tarafından korunan bir API 'ye erişmeye çalışıyor `fabrikamb2c.onmicrosoft.com` . Erişim belirteciniz yalnızca Azure AD B2C kiracınız için geçerli olduğundan, API çağrısı bu nedenle yetkilendirilmemiş.
 
 Kendi kiracınızda korumalı bir Web API 'sini kaydetmek ve **API çağırma** işlevini etkinleştirmek için sonraki öğreticiye geçin.
 
@@ -105,4 +105,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Sonra, **API 'Yi çağır** düğme işlevselliğini ETKINLEŞTIRMEK için WPF Masaüstü uygulamasına kendi Azure AD B2C kiracınızda kayıtlı BIR Web API 'sine erişim izni verin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir masaüstü uygulamasından Node. js web API 'sine erişim Izni verme >](tutorial-desktop-app-webapi.md)
+> [Öğretici: masaüstü uygulamasından bir Node.js Web API 'sine erişim Izni verme >](tutorial-desktop-app-webapi.md)

@@ -4,10 +4,10 @@ description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya y�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86105821"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure İşlevleri’ni kullanarak sunucusuz kod dağıtma
 > * Event Grid’de bir Blob depolama olayı aboneliği oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -269,9 +269,9 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     
     ![Azure portalında işlevden olay aboneliği oluşturma](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Ayar      | Önerilen değer  | Description                                        |
+    | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
-    | **Adı** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. |
+    | **Ad** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. |
     | **Konu türü** | Depolama hesapları | Depolama hesabı olay sağlayıcısını seçin. |
     | **Abonelik** | Azure aboneliğiniz | Varsayılan olarak, geçerli Azure aboneliğiniz seçili durumdadır. |
     | **Kaynak grubu** | myResourceGroup | **Var olanı kullan**’ı seçin ve bu öğreticide kullandığınız kaynak grubunu belirleyin. |
@@ -279,7 +279,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     | **Sistem konu adı** | ımatoragesyıstopic | Sistem konusu için bir ad belirtin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md). |    
     | **Olay türleri** | Oluşturulan blob | **Oluşturulan blob** dışındaki tüm türlerin işaretini kaldırın. Yalnızca `Microsoft.Storage.BlobCreated` türündeki olaylar işleve geçirilir. |
     | **Uç nokta türü** | otomatik oluşturulmuş | **Azure işlevi**olarak önceden tanımlanmış. |
-    | **Uç Nokta** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |
+    | **Uç Noktası** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |
 
 1. **Filtreler** sekmesine geçin ve aşağıdaki işlemleri yapın:
     1. **Konu filtrelemeyi etkinleştir** seçeneğini belirleyin.

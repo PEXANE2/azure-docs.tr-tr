@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0726edae7c5f44fae7f573559d561e7ef5773e71
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85801316"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
@@ -474,7 +474,7 @@ Yazıcı modülü için bir bağlama daha eklememiz gerekiyor. Bu bağ, IoT Edge
 
 #### <a name="update-the-module-configuration"></a>Modül yapılandırmasını güncelleştirme
 
-1. deployment.template.jsdosya **üzerinde** açın.
+1. deployment.template.jsdosya ** üzerinde** açın.
 
 1. `Binds`Kapsayıcı dizinini (/App/iotconfig), cihazdaki yerel dizine (/etc/ıotedge) işaret eden parametreye ikinci bir satır ekleyerek avroFileWriter için modül tanımını değiştirin.
 
@@ -744,7 +744,7 @@ Oluşturma başarıyla tamamlandıktan sonra, yayımlanan modüllerimizi gözden
 
 Çözümünüzde modülleri oluşturup yapılandırdık, şimdi de modülleri IoT Edge cihaza dağıtacağız.
 
-1. Visual Studio Code, config klasöründeki dosya **üzerindekideployment.amd64.js** sağ tıklayın.
+1. Visual Studio Code, config klasöründeki dosya ** üzerindekideployment.amd64.js** sağ tıklayın.
 
 1. **Tek cihaz Için dağıtım oluştur**seçeneğini belirleyin.
 

@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: Sık karşılaşılan dağıtım hatalarını giderme
           href: load-balancer-common-deployment-errors.md
-        - name: Yaygın giden bağlantı sorunlarını çözme
+        - name: Yaygın giden bağlantı sorunlarını giderme
           href: troubleshoot-outbound-connection.md
+        - name: Kaynak durumu ve gelen bağlantı kullanılabilirlik sorunlarını giderme
+          href: troubleshoot-rhc.md
 - name: Başvuru
   items:
     - name: Kod örnekleri

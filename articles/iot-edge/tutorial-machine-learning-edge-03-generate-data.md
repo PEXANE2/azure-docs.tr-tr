@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76722401"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
@@ -67,9 +67,9 @@ Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiri
 
    ![VS Code geri yükleme istemi](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-   Bu bildirimleri alamazsanız Visual Studio Code kapatın, içindeki `C:\source\IoTEdgeAndMlSample\DeviceHarness`bin ve obj dizinlerini silin, Visual Studio Code açın ve devicebandı klasörünü yeniden açın.
+   Bu bildirimleri alamazsanız Visual Studio Code kapatın, içindeki bin ve obj dizinlerini silin `C:\source\IoTEdgeAndMlSample\DeviceHarness` , Visual Studio Code açın ve Devicebandı klasörünü yeniden açın.
 
-1. Bir derleme, **CTRL** + **vardiyası** + **B**veya **Terminal** > **çalıştırma oluşturma görevi**tetikleyerek ortamınızın düzgün şekilde ayarlandığını doğrulayın.
+1. Bir derleme, **CTRL**  +  **vardiyası**  +  **B**veya **Terminal**  >  **çalıştırma oluşturma görevi**tetikleyerek ortamınızın düzgün şekilde ayarlandığını doğrulayın.
 
 1. Çalıştırılacak derleme görevini seçmeniz istenir. **Oluştur**' u seçin.
 
@@ -77,7 +77,7 @@ Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiri
 
    ![Derleme başarılı çıkış iletisi](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Bu derlemeyi varsayılan derleme görevi yap > **varsayılan derleme görevini Yapılandır...** seçeneğini belirleyerek ve istemden **Oluştur** **seçeneğini belirleyerek yapabilirsiniz**.
+1. Bu derlemeyi varsayılan derleme görevi yap **Terminal**  >  **varsayılan derleme görevini Yapılandır...** seçeneğini belirleyerek ve istemden **Oluştur** seçeneğini belirleyerek yapabilirsiniz.
 
 ## <a name="connect-to-iot-hub-and-run-deviceharness"></a>IoT Hub Bağlan ve Devicebir şekilde Çalıştır
 
@@ -85,7 +85,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code 'de Azure 'da oturum açın
 
-1. Komut `Ctrl + Shift + P` paletini açarak veya**komut paletini** **görüntüleyerek** > Visual Studio Code Azure aboneliğinizde oturum açın.
+1. Komut paletini açarak `Ctrl + Shift + P` veya **View**  >  **komut paletini**görüntüleyerek Visual Studio Code Azure aboneliğinizde oturum açın.
 
 1. **Azure: oturum aç** komutunu arayın.
 
@@ -105,7 +105,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 ### <a name="run-the-deviceharness-project"></a>Devicebir projeyi Çalıştır
 
-1. Visual Studio Code terminalini açmak için**terminali** **görüntüle** > ' yi seçin.
+1. **View**  >  Visual Studio Code terminalini açmak için**terminali** görüntüle ' yi seçin.
 
    Bir istem görmüyorsanız, ENTER tuşuna basın.
 
@@ -145,7 +145,7 @@ IoT Hub 'ınıza yeni gönderdiğimiz veriler, önceki makalede oluşturduğumuz
 
 1. Depolama hesabı Gezgininde **Depolama Gezgini (Önizleme)** öğesini seçin.
 
-1. Depolama Gezgini 'nde **BLOB kapsayıcıları** ' nı `devicedata`seçin.
+1. Depolama Gezgini 'nde **BLOB kapsayıcıları** ' nı seçin `devicedata` .
 
 1. İçerik bölmesinde, IoT Hub 'ın adının ardından yıl, ay, gün ve saat temelinde klasöre tıklayın. Verilerin yazıldığı süreyi temsil eden birkaç klasör görürsünüz.
 

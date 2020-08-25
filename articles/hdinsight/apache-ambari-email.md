@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80082317"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma
@@ -48,7 +48,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="configure-ambari-e-mail-notification"></a>Ambarı e-posta bildirimini yapılandırma
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
 1. **Eylemler** açılan listesinden **Bildirimleri Yönet**' i seçin.
 
@@ -60,9 +60,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     |Özellik |Açıklama |
     |---|---|
-    |Adı|Bildirim için bir ad girin.|
+    |Ad|Bildirim için bir ad girin.|
     |Gruplar|İstediğiniz şekilde yapılandırın.|
-    |Severity|İstediğiniz şekilde yapılandırın.|
+    |Önem Derecesi|İstediğiniz şekilde yapılandırın.|
     |Açıklama|İsteğe bağlı.|
     |Yöntem|**E-postada**bırakın.|
     |E-posta|Bildirimleri alacak e-postaları virgülle ayırarak belirtin.|

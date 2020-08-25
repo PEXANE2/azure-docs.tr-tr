@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73044654"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
@@ -28,15 +28,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * Kurumsal Güvenlik Paketi bir [HDInsight HBase kümesi](apache-domain-joined-configure-using-azure-adds.md)oluşturun.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 
-1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. HBase kümenizin `<ClusterName>` adına değiştirmeyi unutmayın.
+1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. `<ClusterName>`HBase kümenizin adına değiştirmeyi unutmayın.
 
     > [!NOTE]  
     > Ranger kimlik bilgileri Hadoop kümesi kimlik bilgileriyle aynı değildir. Tarayıcıların ön belleğe alınmış Hadoop kimlik bilgilerini kullanmasını önlemek için Ranger Yönetici Arabirimine yeni bir InPrivate tarayıcı penceresinden bağlanın.
@@ -59,7 +59,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     hbase shell
     ```
 
-2. İki sütunlu ailelerle bir `Customers` HBase tablosu oluşturun: `Name` ve `Contact`.
+2. İki sütunlu ailelerle bir HBase tablosu oluşturun `Customers` : `Name` ve `Contact` .
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -95,7 +95,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 **Sales_user1** ve **Marketing_user1**için bir Ranger ilkesi oluşturun.
 
-1. **Ranger Yönetici Arabirimini** açın. **HBase**altındaki ** \<clustername>_hbase** öğesine tıklayın.
+1. **Ranger Yönetici Arabirimini** açın. **HBase**altında ** \<ClusterName> _hbase** ' ye tıklayın.
 
    ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
@@ -117,8 +117,8 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
    Konu adında şu joker karakterler bulunabilir:
 
-   * `*`sıfır veya daha fazla karakter örneğini gösterir.
-   * `?`tek karakteri gösterir.
+   * `*` sıfır veya daha fazla karakter örneğini gösterir.
+   * `?` tek karakteri gösterir.
 
    ![Apache Ranger ilkesi satışları oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
@@ -145,7 +145,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
 
-**Sales_user1** , yapılandırılan Ranger ilkelerine bağlı olarak, hem `Name` hem `Contact` de sütun ailelerindeki sütunlara ilişkin tüm verileri görüntüleyebilir. **Marketing_user1** yalnızca `Contact` sütun ailesindeki verileri görüntüleyebilir.
+**Sales_user1** , yapılandırılan Ranger ilkelerine bağlı olarak, hem `Name` hem de sütun ailelerindeki sütunlara ilişkin tüm verileri görüntüleyebilir `Contact` . **Marketing_user1** yalnızca `Contact` sütun ailesindeki verileri görüntüleyebilir.
 
 ### <a name="access-data-as-sales_user1"></a>Verilere sales_user1 göre erişin
 
@@ -161,14 +161,14 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    kinit sales_user1
    ```
 
-2. HBase kabuğunu açın ve tabloyu `Customers`tarayın.
+2. HBase kabuğunu açın ve tabloyu tarayın `Customers` .
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Satış kullanıcısının, `Name` sütun ailesindeki iki sütun ve `Contact` sütun ailesindeki beş `Customers` sütun dahil olmak üzere tablonun tüm sütunlarını görüntüleyebildiğine dikkat edin.
+3. Satış kullanıcısının `Customers` , sütun ailesindeki iki sütun ve `Name` sütun ailesindeki beş sütun dahil olmak üzere tablonun tüm sütunlarını görüntüleyebildiğine dikkat edin `Contact` .
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -203,14 +203,14 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    kinit marketing_user1
    ```
 
-1. HBase kabuğunu açın ve tabloyu `Customers`tarayın:
+1. HBase kabuğunu açın ve tabloyu tarayın `Customers` :
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-1. Pazarlama kullanıcısının yalnızca `Contact` sütun ailesinin beş sütununu görüntüleyebildiğine dikkat edin.
+1. Pazarlama kullanıcısının yalnızca sütun ailesinin beş sütununu görüntüleyebildiğine dikkat edin `Contact` .
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -235,11 +235,11 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Üstteki **arama** kutusuna **HDInsight**yazın. 
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**' e tıklayın. **Evet**' e tıklayın.
+1. **Sil**'e tıklayın. **Evet**' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

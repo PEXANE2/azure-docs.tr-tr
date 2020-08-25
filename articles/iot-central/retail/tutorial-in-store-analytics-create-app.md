@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000255"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
@@ -146,7 +146,7 @@ Uygulamanıza bir RuuviTag cihaz şablonu eklemek için:
 
 1. Azure IoT cihaz kataloğunda **Ruuvitag** algılayıcı cihaz şablonunu bulun ve seçin. 
 
-1. **İleri ' yi seçin: Özelleştir**.
+1. **Sonraki: Özelleştir**’i seçin.
 
     ![Azure IoT Central RuuviTag algılayıcı cihaz şablonu](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
@@ -179,9 +179,9 @@ RuuviTag cihaz şablonunun yerleşik arabirimlerini özelleştirmek için:
 
 1. Özellik listesinde kaydırma yapın ve `humidity` telemetri türünü bulun. Bu, düzenlenebilir **görünen ad** değeri *nem*olan satır öğesidir.
 
-Aşağıdaki adımlarda, RuuviTag algılayıcılar `humidity` için telemetri türünü özelleştirirsiniz. İsteğe bağlı olarak, diğer telemetri türlerinden bazılarını özelleştirin.
+Aşağıdaki adımlarda, `humidity` RuuviTag algılayıcılar için telemetri türünü özelleştirirsiniz. İsteğe bağlı olarak, diğer telemetri türlerinden bazılarını özelleştirin.
 
-`humidity` Telemetri türü için aşağıdaki değişiklikleri yapın:
+`humidity`Telemetri türü için aşağıdaki değişiklikleri yapın:
 
 1. Satır için şema ayrıntılarını genişletmek üzere **genişletme** denetimini seçin.
 
@@ -244,15 +244,15 @@ Bir kural oluşturmak için:
 
 1. **Kurallar**' ı seçin.
 
-1. **+ Yeni**seçeneğini belirleyin.
+1. **+ Yeni** seçeneğini belirleyin.
 
 1. Kuralın adı olarak *nem düzeyini* girin. 
 
 1. **Kapsamlardaki**RuuviTag cihaz şablonunu seçin. Tanımladığınız kural, bu şablona dayalı tüm sensörler için geçerlidir. İsteğe bağlı olarak, kuralı yalnızca sensörların tanımlı bir alt kümesine uygulayacak bir filtre oluşturabilirsiniz. 
 
-1. Telemetri `Relative humidity` olarak seçin **Telemetry**. Bu, önceki bir adımda özelleştirdiğiniz cihaz özelliğidir.
+1. `Relative humidity` **Telemetri**olarak seçin. Bu, önceki bir adımda özelleştirdiğiniz cihaz özelliğidir.
 
-1. Işleç `Is greater than` olarak seçin **Operator**. 
+1. `Is greater than` **İşleç**olarak seçin. 
 
 1. Ortamınız için, **değer**olarak tipik bir büyük erimli ıntıl nem düzeyi girin. Örneğin *65*yazın. Bir RuuviTag gerçek veya benzetim algılayıcısı bu değeri aşarsa, kuralınız için bir koşul ayarlarsınız. Ortamınızdaki normal nem aralığına göre değeri yukarı veya aşağı ayarlamanız gerekebilir.  
 

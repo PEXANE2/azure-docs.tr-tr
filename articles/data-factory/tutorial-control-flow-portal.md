@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86077669"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim kurmak için başka mekanizmalar kullanabilirsiniz; içindekiler tablosunda "Hızlı Başlangıçlar" bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
@@ -93,7 +93,7 @@ Mantıksal Uygulama Tasarımcısı’nda İstek aşağıdaki gibi görünmelidir
 
 ![Mantıksal Uygulama tasarımcısı - istek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-**E-posta Gönder** eylemi için, isteğin Gövde JSON şemasında geçirilen özellikleri kullanarak e-posta biçimini özelleştirin. Örnek aşağıda verilmiştir:
+**E-posta Gönder** eylemi için, isteğin Gövde JSON şemasında geçirilen özellikleri kullanarak e-posta biçimini özelleştirin. Aşağıda bir örnek verilmiştir:
 
 ![Mantıksal Uygulama tasarımcısı - e-posta gönderme eylemi](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Hata e-postası iş akışı
-Aynı adımları izleyerek başka bir **CopyFailEmail** Logic Apps iş akışı oluşturun. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Örnek aşağıda verilmiştir:
+Aynı adımları izleyerek başka bir **CopyFailEmail** Logic Apps iş akışı oluşturun. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Aşağıda bir örnek verilmiştir:
 
 ![Mantıksal Uygulama tasarımcısı - hata e-postası iş akışı](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -151,7 +151,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**'a tıklayın.      
+7. **Oluştur**’a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)

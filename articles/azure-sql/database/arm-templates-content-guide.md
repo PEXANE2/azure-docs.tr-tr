@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
 ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85983648"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Resource Manager şablonları
@@ -27,7 +27,7 @@ Azure Resource Manager şablonları, altyapınızı kod olarak tanımlamanızı 
 
 Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
-|Bağlantı |Description|
+|Bağlantı |Açıklama|
 |---|---|
 | [SQL Veritabanı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Bu Azure Resource Manager şablonu, Azure SQL veritabanı 'nda tek bir veritabanı oluşturur ve sunucu düzeyinde IP güvenlik duvarı kurallarını yapılandırır. |
 | [Sunucu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Bu Azure Resource Manager şablonu, Azure SQL veritabanı için bir sunucu oluşturur. |
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablon
 
 Aşağıdaki tabloda, Azure SQL yönetilen örneği için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
-|Bağlantı|Description|
+|Bağlantı|Açıklama|
 |---|---|
 | [Yeni bir VNet 'te SQL yönetilen örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Bu Azure Resource Manager şablonu, sanal ağda yeni bir yapılandırılmış Azure sanal ağı ve yönetilen örnek oluşturur. |
 | [SQL yönetilen örneği için ağ ortamı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Bu dağıtım, yönetilen örneklerinize ve diğer kaynakları yerleştirebileceğiniz (örneğin, VM 'Ler, App Service ortamları, vb.) bir tane olmak üzere iki alt ağ içeren yapılandırılmış bir Azure sanal ağı oluşturacak. Bu şablon, yönetilen örnekleri dağıtabileceğiniz, düzgün şekilde yapılandırılmış bir ağ ortamı oluşturacak. |

@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82692435"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Bir depolama hesabı için aktarım hızı ve gecikme süresi ölçümlerini doğrulama
@@ -39,7 +39,7 @@ Aşağıdaki ölçümler size uygulamanın gecikme süresi ve aktarım hızına 
 |Ölçüm|Tanım|
 |---|---|
 |**Başarı E2E Gecikme Süresi**|Bir depolama hizmetine yapılan başarılı isteklerin veya belirtilen API işleminin ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|
-|**Başarı Sunucu Gecikme Süresi**|Azure Depolama tarafından gerçekleştirilen başarılı bir isteği işlemek için kullanılan ortalama süre. Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez. |
+|**Başarı sunucusu gecikmesi**|Azure Depolama tarafından gerçekleştirilen başarılı bir isteği işlemek için kullanılan ortalama süre. Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez. |
 |**İşlemler**|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız istekleri ve hata üreten istekleri içerir. Örnekte, blok boyutu 100 MB olarak ayarlanmıştır. Bu durumda her 100 MB’lık blok bir işlem olarak değerlendirilir.|
 |**Giriş**|Giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir. |
 |**Çıkış**|Çıkış verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz. |

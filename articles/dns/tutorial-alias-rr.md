@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76939258"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Öğretici: Bölge kaynak kaydına başvurmak için diğer ad kaydı oluşturma
@@ -57,8 +57,8 @@ Bölgedeki kaynak kaydına işaret eden bir diğer ad kaydı oluşturun.
 
 ## <a name="test-the-alias-record"></a>Diğer ad kaydını test etme
 
-1. Sık kullandığınız nslookup aracını başlatın. Bir seçenek, öğesine [https://network-tools.com/nslook](https://network-tools.com/nslook)gözatmanızı sağlar.
-2. A kayıtları için sorgu türünü ayarlayın ve **test.\<etki alanınızın adı\>** için arama yapın. Yanıt **10.10.10.10** olacaktır.
+1. Sık kullandığınız nslookup aracını başlatın. Bir seçenek, öğesine gözatmanızı sağlar [https://network-tools.com/nslook](https://network-tools.com/nslook) .
+2. Bir kayıt için sorgu türünü ayarlayın ve test ' i arayın **. \<your domain name\> ** Yanıt **10.10.10.10** olacaktır.
 3. Azure portalında **server** A kaydını **10.11.11.11** olarak değiştirin.
 4. Birkaç dakika bekleyin ve ardından **test** kaydı için nslookup aracını yeniden kullanın. Yanıt **10.11.11.11** olacaktır.
 

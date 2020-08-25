@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: ace11adbaaeebd3101ac621f44408e27ba7d18ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "67849579"
 ---
 ## <a name="related-topics"></a>İlgili konular
 
 * [API içeri aktarma sınırlamaları](../articles/api-management/api-management-api-import-restrictions.md)
-* [Openapı belirtimini içeri aktarma](../articles/api-management/import-api-from-oas.md)
+* [OpenAPI Belirtimini içeri aktarma](../articles/api-management/import-api-from-oas.md)
 * [SOAP API’sini içeri aktarma](../articles/api-management/import-soap-api.md)
 * [SOAP API'sini içeri aktarma ve REST’e dönüştürme](../articles/api-management/restify-soap-api.md)
 * [Azure API uygulamalarını içeri aktarma](../articles/api-management/import-api-app-as-api.md)

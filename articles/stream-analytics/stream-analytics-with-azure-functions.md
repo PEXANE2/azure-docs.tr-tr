@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
 ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77589462"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
@@ -52,7 +52,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 1. İşlevler belgesinin [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) bölümüne bakın. Bu bölümde, CSharp dilini kullanarak Azure Işlevlerinde bir işlev uygulaması ve [http ile tetiklenen bir işlev](../azure-functions/functions-create-first-azure-function.md#create-function)oluşturma işlemi adım adım açıklanmaktadır.  
 
-2. **run.csx** işlevine göz atın. Aşağıdaki kodla güncelleştirin. **"\<Redsıs bağlantı dizesi için Azure önbelleğiniz buraya\>** , önceki bölümde aldığınız redo birincil bağlantı dizesi için Azure önbelleği ile değiştirin. 
+2. **run.csx** işlevine göz atın. Aşağıdaki kodla güncelleştirin. **" \<your Azure Cache for Redis connection string goes here\> "** Değerini, önceki bölümde aldığınız redo birincil bağlantı dizesi için Azure önbelleği ile değiştirin. 
 
     ```csharp
     using System;
@@ -140,7 +140,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 1. Stream Analytics işinizi Azure portalında açın.  
 
-2. İşlevinize göz atın ve **genel bakış** > **çıkışları** > **Ekle**' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi**’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
+2. İşlevinize göz atın ve **genel bakış**  >  **çıkışları**  >  **Ekle**' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi**’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
 
    |**Özellik adı**|**Açıklama**|
    |---|---|
@@ -167,7 +167,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Komut satırında aşağıdaki komutu çalıştırarak telcodatagen. exe uygulamasını başlatın. Komut biçimini `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`kullanır.  
+5. Komut satırında aşağıdaki komutu çalıştırarak telcodatagen.exe uygulamasını başlatın. Komut biçimini kullanır `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]` .  
    
    ```cmd
    telcodatagen.exe 1000 0.2 2

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
 ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73161786"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure 'da bir özetleme Cloud Foundry kümesi oluşturma
@@ -64,7 +64,7 @@ Daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma]
 
     > [!NOTE]
     >
-    > Kendi uygulama giriş sayfanızı ve tanımlayıcı URI 'nizi (örneğin, http\:/www\.contoso.com) seçin.
+    > Kendi uygulama giriş sayfanızı ve tanımlayıcı URI 'nizi (örneğin, http \: /www contoso.com) seçin \. .
 
 4. Yeni uygulama KIMLIĞINIZLE bir hizmet sorumlusu oluşturun.
 

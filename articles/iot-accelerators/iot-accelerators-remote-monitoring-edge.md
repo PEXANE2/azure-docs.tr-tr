@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "66117695"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Öğretici: uzaktan Izleme çözümü hızlandırıcısına sahip olan anormallikleri Algıla
@@ -83,7 +83,7 @@ Bir cihazı uzaktan Izleme çözüm hızlandırıcısında IoT Hub 'ına kaydett
     | İş     | Etiketler  |
     | İş Adı | AddEdgeTag |
     | Anahtar     | Izeilpompa |
-    | Değer   | E     |
+    | Değer   | Y     |
     | Tür    | Metin  |
 
     [![Etiket ekle](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
@@ -96,10 +96,10 @@ Bir cihazı uzaktan Izleme çözüm hızlandırıcısında IoT Hub 'ına kaydett
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı    | OilPumps |
+    | Ad    | OilPumps |
     | Alan   | Tags. ısoilpompa |
     | İşleç | = Eşittir |
-    | Değer    | E |
+    | Değer    | Y |
     | Tür     | Metin |
 
     [![Cihaz grubu oluştur](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
@@ -243,7 +243,7 @@ Daha sonra, Edge cihazınızda çalıştırılacak modülleri tanımlayan bir Io
 
 1. Ana **IoT Edge** sayfasında, **IoT Edge dağıtımlar**' a tıklayın. Bir dağıtım listesinde **yağ-pompa-cihazını** görebilirsiniz.
 
-1. **Yağ-pompa-cihaz** dağıtımına ve ardından **IoT Edge bildirimi indir**' e tıklayın. Dosyayı, yerel makinenizde uygun bir konuma **yağ-pompa-Device. JSON** olarak kaydedin. Bu öğreticinin sonraki bölümünde bu dosyanın olması gerekir.
+1. **Yağ-pompa-cihaz** dağıtımına ve ardından **IoT Edge bildirimi indir**' e tıklayın. Dosyayı **oil-pump-device.js** olarak yerel makinenizde uygun bir konuma kaydedin. Bu öğreticinin sonraki bölümünde bu dosyanın olması gerekir.
 
 Artık bir paket olarak uzaktan Izleme çözümüne içeri aktarmak için bir IoT Edge bildirimi oluşturdunuz. Genellikle, geliştirici IoT Edge modüller ve bildirim dosyası oluşturur.
 
@@ -255,11 +255,11 @@ Bu bölümde, uç bildirimini uzaktan Izleme çözümünde bir paket olarak içe
 
     [![Yeni paket](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. **Yeni paket** panelinde, paket türü olarak **Edge bildirimi** ' ni seçin, yerel makinenizde **yağ-pompa-Device. JSON** dosyasını bulmak için, **Araştır** ' a tıklayın ve **karşıya yükle**' ye tıklayın:
+1. **Yeni paket** panelinde, paket türü olarak **Edge bildirimi** ' ni seçin, yerel makinenizde dosya **oil-pump-device.js** bulmak için, **Araştır** ' a tıklayın ve **karşıya yükle**' ye tıklayın:
 
     [![Paketi karşıya yükle](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    Paket listesi artık **yağ-pompa-Device. JSON** paketini içerir.
+    Paket listesi artık paketteki **oil-pump-device.js** içerir.
 
 Sonraki bölümde, paketini Edge cihazınıza uygulayan bir dağıtım oluşturursunuz.
 
@@ -275,9 +275,9 @@ Sonraki bölümde, paketini Edge cihazınıza uygulayan bir dağıtım oluşturu
 
     | Seçenek | Değer |
     | ------ | ----- |
-    | Adı   | Oilbaldevices |
+    | Ad   | Oilbaldevices |
     | Paket türü | Edge bildirimi |
-    | Paket | petrol-pompa-Device. JSON |
+    | Paket | Üzerinde oil-pump-device.js |
     | Cihaz grubu | OilPumps |
     | Öncelik | 10 |
 

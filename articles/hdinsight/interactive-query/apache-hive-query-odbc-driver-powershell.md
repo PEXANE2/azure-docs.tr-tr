@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73494327"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
 Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları gösterilmektedir.
 
-1. Windows 'da,**Windows Yönetim Araçları** > **ODBC veri kaynakları (32 bit)/(64 bit)** **Başlat** > ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
+1. Windows 'da, **Start**  >  **Windows Yönetim Araçları**  >  **ODBC veri kaynakları (32 bit)/(64 bit)** Başlat ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
 
     ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
 

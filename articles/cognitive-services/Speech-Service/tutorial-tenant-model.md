@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391222"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
@@ -55,14 +55,14 @@ Kiracı model örneğini devre dışı bırakmak için:
 
 Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure Portal](https://aka.ms/azureportal) oturum açın.
+1. [Azure portalında](https://aka.ms/azureportal) oturum açın.
 1. **Kaynak oluştur**’u seçin.
 1. **Arama** kutusuna **konuşma**yazın.
 1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
 1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunlardan emin olun:
    * **Konum** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82561688"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Bağlan, ayarla, etkinleştir Azure Data Box Gateway
@@ -41,7 +41,7 @@ Data Box Gateway yapılandırmadan ve ayarlamadan önce, aşağıdakileri yaptı
 
 1. Bir tarayıcı penceresi açın ve cihazın yerel Web Kullanıcı arabirimine şu adresten erişin:
    
-   https:\//ip-Address-of-Network-Interface
+   https: \/ /ip-Address-of-Network-Interface
    
    Önceki öğreticide belirtilen bağlantı URL 'sini kullanın. Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz.
 
@@ -88,7 +88,7 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
    
    **Web proxy** sayfasında, şunları yapın:
    
-   1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS URL 'Leri desteklenmez.
+   1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number` . HTTPS URL 'Leri desteklenmez.
    2. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
    3. Kimlik doğrulaması kullanıyorsanız, bir **Kullanıcı adı** ve **parola**girin.
    4. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
@@ -109,7 +109,7 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
     1. **Saat dilimi** açılan listesinde, cihazın dağıtıldığı coğrafi konuma karşılık gelen saat dilimini seçin.
         Cihazınızın varsayılan saat dilimi PST ' dir. Cihazınız zamanlanan tüm işlemler için bu saat dilimini kullanır.
 
-    2. Cihazınız için bir **BIRINCIL NTP sunucusu** belirtin veya varsayılan değerini kabul edin `time.windows.com`.   
+    2. Cihazınız için bir **BIRINCIL NTP sunucusu** belirtin veya varsayılan değerini kabul edin `time.windows.com` .   
         Ağınızın, NTP trafiğini veri merkezinizden İnternete geçirilmesine izin vermesini sağlayın.
 
     3. İsteğe bağlı olarak, **IKINCIL NTP sunucusu** kutusuna cihazınız için bir ikincil sunucu girin.

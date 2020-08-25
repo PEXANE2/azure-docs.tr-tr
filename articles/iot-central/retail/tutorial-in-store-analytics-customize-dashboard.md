@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000122"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
@@ -127,7 +127,7 @@ Kullanılmayan kutucukları kaldırdıktan sonra, düzenlenmiş bir düzen oluş
 
 Kalan kutucukları yeniden düzenlemek için:
 
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 
 1. **İskişüretici yazılımı** kutucuğunu seçin ve yukarı **doğru pil kutucuğunun sağına** sürükleyin.
 
@@ -146,13 +146,13 @@ Bu bölümde, [IoT Central Azure 'da yerleşik bir Analytics uygulaması oluştu
 
 RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek için:
 
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 
-1. Cihaz `RuuviTag` şablonu listesinde **öğesini** seçin. 
+1. `RuuviTag` **Cihaz şablonu listesinde öğesini** seçin. 
 
-1. İki Ruuvıtag sensörlerinden birinin **cihaz örneğini** seçin. Örnek contoso deposunda, Bölge 1 için telemetri `Zone 1 Ruuvi` kutucuğu oluşturmayı seçin. 
+1. İki Ruuvıtag sensörlerinden birinin **cihaz örneğini** seçin. Örnek contoso deposunda, `Zone 1 Ruuvi` bölge 1 için telemetri kutucuğu oluşturmayı seçin. 
 
-1. Telemetri `Relative humidity` listesinden `temperature` ve ' **Telemetry** ı seçin. Bunlar, kutucukta her bölge için görüntülenen telemetri öğeleridir.
+1. `Relative humidity` `temperature` **Telemetri** listesinden ve ' ı seçin. Bunlar, kutucukta her bölge için görüntülenen telemetri öğeleridir.
 
 1. **Birleştir**' i seçin. 
 
@@ -178,7 +178,7 @@ RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek i
 
 Yalnızca iki kullanıma alma bölgesi için telemetri göstermek üzere **kişiler trafik** kutucuğunu düzenlemek için:
 
-1. **Düzenle**' yi seçin. 
+1. **Düzenle**’yi seçin. 
 
 1. **Kişiler trafik** kutucuğunda **Yapılandır** ' ı seçin.
 
@@ -201,11 +201,11 @@ Uygulama işleçleri cihazları yönetmek ve durumu izlemek için panoyu kullan�
 
 Her RuuviTag için bir özellik kutucuğu eklemek için:
 
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 
-1. Cihaz `RuuviTag` şablonu listesinde **öğesini** seçin. 
+1. `RuuviTag` **Cihaz şablonu listesinde öğesini** seçin. 
 
-1. İki Ruuvıtag sensörlerinden birinin **cihaz örneğini** seçin. Örnek contoso deposunda, Bölge 1 için telemetri `Zone 1 Ruuvi` kutucuğu oluşturmayı seçin. 
+1. İki Ruuvıtag sensörlerinden birinin **cihaz örneğini** seçin. Örnek contoso deposunda, `Zone 1 Ruuvi` bölge 1 için telemetri kutucuğu oluşturmayı seçin. 
 
 1. **Yazılım sürümü > Özellikler**' i seçin.
 
@@ -230,9 +230,9 @@ Uygulama işletmenleri, komutları çalıştırarak cihazları yönetmek için p
 
 Ağ geçidini yeniden başlatmak için bir komut kutucuğu eklemek için:
 
-1. **Düzenle**' yi seçin. 
+1. **Düzenle**’yi seçin. 
 
-1. Cihaz `C500` şablonu listesinde **öğesini** seçin. Bu, Rigado C500 ağ geçidi şablonudur. 
+1. `C500` **Cihaz şablonu listesinde öğesini** seçin. Bu, Rigado C500 ağ geçidi şablonudur. 
 
 1. **Cihaz örneğindeki**ağ geçidi örneğini seçin.
 

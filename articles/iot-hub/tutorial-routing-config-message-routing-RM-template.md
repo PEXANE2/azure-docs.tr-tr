@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084400"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure Resource Manager şablonu kullanma
@@ -30,7 +30,7 @@ ms.locfileid: "74084400"
 
 Bu öğreticinin ikinci bölümünde, IoT Hub iletileri göndermek için bir Visual Studio uygulaması indirip çalıştırırsınız. Bu indirmenin, Azure CLı ve PowerShell betikleri ile birlikte Azure Resource Manager şablonu ve parametreleri dosyasını içeren bir klasör vardır.
 
-Devam edin ve [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) şimdi indirin. Master. zip dosyasını ayıklayın. Kaynak Yöneticisi şablonu ve parametreler dosyası, **template_iothub. JSON** ve **template_iothub_parameters. JSON**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
+Devam edin ve [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) şimdi indirin. master.zip dosyasını sıkıştırmayı açın. Kaynak Yöneticisi şablonu ve parametreler dosyası, ** üzerindetemplate_iothub.js** ve üzerinde **template_iothub_parameters.js**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
 
 ## <a name="create-your-resources"></a>Kaynaklarınızı oluşturun
 
@@ -92,7 +92,7 @@ Bu değerler şablonda kullanılır ve genellikle parametrelerden türetilir.
 
 ### <a name="resources-storage-account-and-container"></a>Kaynaklar: depolama hesabı ve kapsayıcı
 
-Oluşturulan ilk kaynak depolama hesabıdır ve iletilerin yönlendirildiği kapsayıcı ile birlikte. Kapsayıcı, depolama hesabı altındaki bir kaynaktır. Depolama hesabı için `dependsOn` bir yan tümcesine sahiptir ve depolama hesabının kapsayıcının öncesinde oluşturulmasını gerektirir.
+Oluşturulan ilk kaynak depolama hesabıdır ve iletilerin yönlendirildiği kapsayıcı ile birlikte. Kapsayıcı, depolama hesabı altındaki bir kaynaktır. `dependsOn`Depolama hesabı için bir yan tümcesine sahiptir ve depolama hesabının kapsayıcının öncesinde oluşturulmasını gerektirir.
 
 Bu bölümün şöyle görünmesi aşağıda verilmiştir:
 
@@ -149,7 +149,7 @@ Oluşturulan ikinci kaynak, iletilerin yönlendirildiği Service Bus kuyruğu il
 }
 ```
 
-Bu bölüm Service Bus kuyruğu oluşturur. Betiğin bu bölümünde, ad alanının kuyruktan `dependsOn` önce oluşturulmasını sağlayan bir yan tümce vardır.
+Bu bölüm Service Bus kuyruğu oluşturur. Betiğin bu bölümünde, `dependsOn` ad alanının kuyruktan önce oluşturulmasını sağlayan bir yan tümce vardır.
 
 ```json
 {
@@ -167,7 +167,7 @@ Bu bölüm Service Bus kuyruğu oluşturur. Betiğin bu bölümünde, ad alanın
 
 ### <a name="resources-iot-hub-and-message-routing"></a>Kaynaklar: IoT Hub ve ileti yönlendirme
 
-Depolama hesabı ve Service Bus kuyruğu oluşturuldığına göre, iletileri bunlara yönlendiren IoT Hub oluşturursunuz. RM şablonu, Service Bus `dependsOn` kaynakları ve depolama hesabı oluşturulmadan önce hub 'ı oluşturmayı denememesi için yan tümceleri kullanır. 
+Depolama hesabı ve Service Bus kuyruğu oluşturuldığına göre, iletileri bunlara yönlendiren IoT Hub oluşturursunuz. RM şablonu, `dependsOn` Service Bus kaynakları ve depolama hesabı oluşturulmadan önce hub 'ı oluşturmayı denememesi için yan tümceleri kullanır. 
 
 IoT Hub bölümünün ilk bölümü aşağıda verilmiştir. Şablonun bu bölümü bağımlılıkları ayarlar ve özelliklerle başlar.
 
@@ -195,7 +195,7 @@ Sonraki bölüm, IoT Hub için ileti yönlendirme yapılandırması bölümüdü
 
 Kuyruğun bağlantı dizesini oluşturmak için, satır içi alınan Queueauthorizationkurallarını Resourcedıd öğesine ihtiyacınız vardır. Depolama hesabı için bağlantı dizesi oluşturmak üzere birincil depolama anahtarını alır ve bağlantı dizesinin biçiminde kullanırsınız.
 
-Uç nokta yapılandırması Ayrıca BLOB biçimini veya `AVRO` `JSON`olarak ayarladığınız yerdir.
+Uç nokta yapılandırması Ayrıca BLOB biçimini veya olarak ayarladığınız yerdir `AVRO` `JSON` .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -231,7 +231,7 @@ Uç nokta yapılandırması Ayrıca BLOB biçimini veya `AVRO` `JSON`olarak ayar
 
 Bu sonraki bölüm, uç noktalara ileti yolları içindir. Her uç nokta için bir küme bulunur, bu nedenle Service Bus kuyruğu ve diğeri depolama hesabı kapsayıcısı için bir tane vardır.
 
-Depolamaya `level="storage"`yönlendirilmekte olan iletilerin sorgu koşulunun ve Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulunun olduğunu unutmayın `level="critical"`.
+Depolamaya yönlendirilmekte olan iletilerin sorgu koşulunun `level="storage"` ve Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulunun olduğunu unutmayın `level="critical"` .
 
 ```json
 "routes": [
@@ -303,7 +303,7 @@ Bu JSON, Hub için varsayılan bilgileri ve SKU 'YU içeren IoT Hub bölümünü
 
 ### <a name="resources-service-bus-queue-authorization-rules"></a>Kaynaklar: Service Bus kuyruğu yetkilendirme kuralları
 
-Service Bus kuyruğu yetkilendirme kuralı, Service Bus sırasının bağlantı dizesini almak için kullanılır. Service Bus ad alanı `dependsOn` ve Service Bus sırasından önce oluşturulmadığından emin olmak için bir yan tümce kullanır.
+Service Bus kuyruğu yetkilendirme kuralı, Service Bus sırasının bağlantı dizesini almak için kullanılır. `dependsOn`Service Bus ad alanı ve Service Bus sırasından önce oluşturulmadığından emin olmak için bir yan tümce kullanır.
 
 ```json
 {

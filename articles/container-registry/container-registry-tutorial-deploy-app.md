@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74456109"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
@@ -37,18 +37,18 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 
 [Azure portalında](https://portal.azure.com) oturum açın ve önceki öğreticide oluşturduğunuz kayıt defterine gidin.
 
-**Depolar** > **ACR-HelloWorld**' i seçin, ardından **Etiketler** altındaki **v1** etiketine sağ tıklayıp **Web uygulamasına dağıt**' ı seçin:
+**Depolar**  >  **ACR-HelloWorld**' i seçin, ardından **Etiketler** altındaki **v1** etiketine sağ tıklayıp **Web uygulamasına dağıt**' ı seçin:
 
 ![Azure portalında uygulama hizmetine dağıtma][deploy-app-portal-01]
 
-"Web uygulamasına dağıt" seçeneği devre dışı bırakılırsa kayıt defteri yönetici kullanıcısını ilk öğreticinin [Kapsayıcı kayıt defteri oluşturma](container-registry-tutorial-prepare-registry.md#create-a-container-registry) bölümünde anlatılan şekilde etkinleştirememiş olabilirsiniz. Yönetici kullanıcıyı Azure Portal **ayarları** > **erişim tuşları** bölümünde etkinleştirebilirsiniz.
+"Web uygulamasına dağıt" seçeneği devre dışı bırakılırsa kayıt defteri yönetici kullanıcısını ilk öğreticinin [Kapsayıcı kayıt defteri oluşturma](container-registry-tutorial-prepare-registry.md#create-a-container-registry) bölümünde anlatılan şekilde etkinleştirememiş olabilirsiniz. Yönetici kullanıcıyı Azure Portal **ayarları**  >  **erişim tuşları** bölümünde etkinleştirebilirsiniz.
 
 "Web uygulamasında dağıt"ı seçtikten sonra görüntülenen **Kapsayıcılar için Web App** bölümünde, her bir ayar için aşağıdaki değerleri belirtin:
 
 | Ayar | Değer |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-westus` biçimini kullanıyoruz. |
-| **Kaynak grubu** | **Mevcut olanı kullan** > `myResourceGroup` |
+| **Kaynak Grubu** | **Mevcut olanı kullan** > `myResourceGroup` |
 | **Uygulama hizmeti planı/konumu** | **Batı ABD** bölgesinde `plan-westus` adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |
@@ -81,7 +81,7 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 | Ayar | Değer |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-eastus` biçimini kullanıyoruz. |
-| **Kaynak grubu** | **Mevcut olanı kullan** > `myResourceGroup` |
+| **Kaynak Grubu** | **Mevcut olanı kullan** > `myResourceGroup` |
 | **Uygulama hizmeti planı/konumu** | **Doğu ABD** bölgesinde `plan-eastus` adlı yeni bir plan oluşturun. |
 | **Görüntü** | `acr-helloworld:v1` |
 | **İşletim sistemi** | Linux |

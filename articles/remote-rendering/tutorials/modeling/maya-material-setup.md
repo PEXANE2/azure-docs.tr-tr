@@ -6,16 +6,16 @@ ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85373259"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Öğretici: Maya 'de fiziksel tabanlı işleme malzemeleri ayarlama
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >

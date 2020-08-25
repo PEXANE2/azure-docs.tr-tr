@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82582879"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Öğretici: Grup üyelerini otomatik olarak ekleme veya kaldırma
@@ -31,11 +31,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Gruba konuk kullanıcıların erişmesi için iş ortağına özgü özelliklere yönelik lisans atama
 > * Bonus: Üye kullanıcılarınızın yalnızca içeriden erişilebilen sitelere erişimini yönetme gibi işlemler gerçekleştirmek için konuk kullanıcıları kaldırarak **Tüm kullanıcılar** grubunun güvenliğini sağlama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu özellik, kuruluşun genel yöneticisi olarak sizin için bir Azure AD Premium lisansı gerektirir. Bir tane yoksa, Azure AD 'de **Lisans** > **ürünlerini** > **dene/satın al**' ı seçin.
+Bu özellik, kuruluşun genel yöneticisi olarak sizin için bir Azure AD Premium lisansı gerektirir. Bir tane yoksa, Azure AD 'de **Lisans**  >  **ürünlerini**  >  **dene/satın al**' ı seçin.
 
 Dinamik gruplara üye olarak ekleyeceğiniz kullanıcılara lisans atamanıza gerek yoktur. Yalnızca kuruluştaki tüm kullanıcıları kapsayacak olan en düşük Azure AD Premium P1 lisans sayısına ihtiyaç duyarsınız. 
 
@@ -43,14 +43,14 @@ Dinamik gruplara üye olarak ekleyeceğiniz kullanıcılara lisans atamanıza ge
 
 Öncelikle tamamı tek bir iş ortağı şirketinize ait olan konuk kullanıcılar için bir grup oluşturmanız gerekir. Bu kullanıcılar özel lisansa ihtiyaç duyduğundan bu amaca yönelik bir grup oluşturmak daha etkili olacaktır.
 
-1. Azure portal (https://portal.azure.com) kuruluşunuzun genel yöneticisi olan bir hesapla) oturum açın.
-2. **Azure Active Directory** > **Groups**gruplar > **Yeni Grup**' u seçin.
+1. Azure portal ( https://portal.azure.com) kuruluşunuzun genel yöneticisi olan bir hesapla) oturum açın.
+2. **Azure Active Directory**  >  **gruplar**  >  **Yeni Grup**' u seçin.
    ![Yeni bir grup başlatmak için komutu seçin](./media/groups-dynamic-tutorial/new-group.png)
 3. **Grup** dikey penceresinde:
   
    * Grup türü olarak **güvenlik** ' i seçin.
-   * Grubun `Guest users Contoso` adını ve açıklamasını girin.
-   * **Üyelik türünü** **Dinamik Kullanıcı**olarak değiştirin.
+   * `Guest users Contoso`Grubun adını ve açıklamasını girin.
+   * **Üyelik türü** değerini **Dinamik Kullanıcı** olarak değiştirin.
    
 4. **Sahipler** ' i seçin ve istediğiniz sahipleri bulmak Için **sahip Ekle** dikey penceresinde arama yapın. Seçime eklemek için istediğiniz sahibe tıklayın.
 5. **Sahipler Ekle** dikey penceresini kapatmak için **Seç** ' e tıklayın.  
@@ -89,10 +89,10 @@ Yönetim planınız, tüm konuk kullanıcılarınızı şirketlerine göre grupl
 **Konuk kullanıcılar grubunu kaldırmak için**
 
 1. Kuruluşunuzun genel yöneticisi olan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > **grupları**' nı seçin. **Guest users Contoso** grubunu, üç noktayı (...) ve ardından **Sil**'i seçin. Grubu sildiğinizde atanmış olan lisanslar kaldırılır.
+2. **Azure Active Directory**  >  **grupları**' nı seçin. **Guest users Contoso** grubunu, üç noktayı (...) ve ardından **Sil**'i seçin. Grubu sildiğinizde atanmış olan lisanslar kaldırılır.
 
 **Tüm Kullanıcılar grubunu geri yüklemek için**
-1. **Azure Active Directory** > **grupları**' nı seçin. Grubu açmak için **Tüm kullanıcılar** grubunun adını seçin.
+1. **Azure Active Directory**  >  **grupları**' nı seçin. Grubu açmak için **Tüm kullanıcılar** grubunun adını seçin.
 1. **Dinamik üyelik kuralları**'nı seçin, kural metninin tamamını silin ve **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

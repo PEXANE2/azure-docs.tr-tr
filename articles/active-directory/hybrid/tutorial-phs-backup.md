@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "64919000"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Öğretici: Azure AD Connect AD FS için bir yedekleme olarak e-s ayarlama
@@ -61,7 +61,7 @@ Bu aşamada, Parola karması eşitlemesine nasıl geçiş yapılacağını göst
 1. Masaüstünde oluşturulan Azure AD Connect simgesine çift tıklayın
 2.  **Yapılandır**'a tıklayın.
 3.  **Kullanıcı oturumunu Değiştir** ' i seçin ve **İleri**' ye tıklayın.
-![Değiştir](media/tutorial-phs-backup/backup2.png)</br>
+![Değişebilir](media/tutorial-phs-backup/backup2.png)</br>
 4.  Genel yöneticiniz için Kullanıcı adını ve parolayı girin.  Bu hesap, önceki [öğreticide oluşturulmuştur.](tutorial-federation.md#create-a-global-administrator-in-azure-ad)
 5.  **Kullanıcı oturum açma** ekranında **Parola karması eşitleme** ' yi seçin ve **Kullanıcı hesaplarını dönüştürme** kutusuna bir onay işareti koyun.  
 6.  Varsayılan **olarak çoklu oturum açmayı etkinleştir** ' i seçili bırakın ve **İleri**' ye tıklayın.
@@ -72,9 +72,9 @@ Bu aşamada, Parola karması eşitlemesine nasıl geçiş yapılacağını göst
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1. Buraya gidin[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: (user@domain.onmicrosoft.com). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
-   ![Doğrulama](media/tutorial-password-hash-sync/verify1.png)</br>
+1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
+   ![Doğru](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Federasyona geri dönün
 Şimdi, Federasyona nasıl geri geçiş yapılacağını göstereceğiz.  Bunu yapmak için aşağıdakileri yapın:
@@ -91,7 +91,7 @@ Bu aşamada, Parola karması eşitlemesine nasıl geçiş yapılacağını göst
 10. Yapılandırma tamamlandıktan sonra **İleri**' ye tıklayın.
 ![Yapılandırma](media/tutorial-phs-backup/backup4.png)</br>
 11. **Federasyon bağlantısını doğrula** ekranında **Doğrula**' ya tıklayın.  Bunun başarıyla tamamlanabilmesi için DNS kayıtlarını (bir ve AAAA kayıtları ekleyin) yapılandırmanız gerekebilir.
-![Doğrulama](media/tutorial-phs-backup/backup5.png)</br>
+![Doğru](media/tutorial-phs-backup/backup5.png)</br>
 12. **Çıkış**'a tıklayın.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>AD FS ve Azure güvenini sıfırlayın
@@ -108,9 +108,9 @@ Artık AD FS ve Azure arasındaki güveni sıfırlamamız gerekir.
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1.  Buraya gidin[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: (user@domain.onmicrosoft.com). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
-![Doğrulama](media/tutorial-password-hash-sync/verify1.png)
+1.  Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
+![Doğru](media/tutorial-password-hash-sync/verify1.png)
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

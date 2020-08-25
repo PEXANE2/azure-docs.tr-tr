@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743788"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782745"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management ' de Konuk kullanıcıları davet edin ve Azure Kaynak rolleri atayın
 
@@ -45,7 +45,7 @@ Aşağıda, kuruluşunuza konukları davet etmeye yönelik birkaç örnek verilm
 
 ## <a name="how-does-collaboration-using-b2b-guests-work"></a>B2B konukları kullanarak işbirliği nasıl çalışır?
 
-B2B işbirliği kullandığınızda, bir dış kullanıcıyı kuruluşunuza Konuk olarak davet edebilirsiniz. Konuk, kuruluşunuzda bir kullanıcı olarak yönetilebilir, ancak bir konuğun Azure AD kuruluşunuzda değil, kendi ana kuruluşunda kimlik doğrulaması yapmak gerekir. Bu, konuğun artık ev kuruluşuna erişimi yoksa kuruluşunuza erişimi kaybetmemesi anlamına gelir. Örneğin, Konuk organizasyonlarını bırakırsa, herhangi bir şey yapmanıza gerek kalmadan Azure AD 'de paylaştığınız kaynaklara erişimi otomatik olarak kaybeder. B2B işbirliği hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md).
+B2B işbirliği kullandığınızda, bir dış kullanıcıyı kuruluşunuza Konuk olarak davet edebilirsiniz. Konuk, kuruluşunuzda bir kullanıcı olarak yönetilebilir, ancak bir konuğun Azure AD kuruluşunuzda değil, kendi ana kuruluşunda kimlik doğrulaması yapmak gerekir. Bu, konuğun artık ev kuruluşuna erişimi yoksa kuruluşunuza erişimi kaybetmemesi anlamına gelir. Örneğin, Konuk organizasyonlarını bırakırsa, herhangi bir şey yapmanıza gerek kalmadan Azure AD 'de paylaştığınız kaynaklara erişimi otomatik olarak kaybeder. B2B işbirliği hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi nedir?](../external-identities/what-is-b2b.md).
 
 ![Konuk kullanıcının kendi giriş dizininde kimlik doğrulamasının nasıl yapıldığını gösteren diyagram](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
@@ -166,4 +166,4 @@ Konukların neler yaptığını izlemek için Denetim günlüklerini görüntül
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Privileged Identity Management Azure AD yönetici rolleri atama](pim-how-to-add-role-to-user.md)
-- [Azure AD B2B işbirliğinde Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md)
+- [Azure AD B2B işbirliğinde Konuk Kullanıcı erişimi nedir?](../external-identities/what-is-b2b.md)
