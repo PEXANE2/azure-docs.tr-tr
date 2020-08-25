@@ -1,16 +1,16 @@
 ---
 title: Kavramlar-kimlik ve erişim
-description: Azure VMware çözümünün (AVS) kimlik ve erişim kavramları hakkında bilgi edinin
+description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740960"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750577"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware çözümü (AVS) kimlik kavramları
+# <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
 Bir vCenter Server ve NSX-T Yöneticisi, özel bir bulut dağıtıldığında temin edilir. Özel bulut yazılım tanımlı ağını genişletmek üzere sanal makine iş yüklerini ve NSX-T yöneticisini yönetmek için vCenter 'ı kullanın.
 
@@ -33,7 +33,7 @@ CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmi
 |  ESX Aracısı Yöneticisi       |  --  |         --       |  Microsoft tüm işlemleri yapar.  |
 |  Klasör                  |  Bir CloudAdmin kullanıcısının tüm klasör ayrıcalıkları vardır.     |  --  |  --  |
 |  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global.SysTıtemtag         |                  |    |
-|  Ana bilgisayar                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
+|  Konak                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
 |  InventoryService        |  InventoryService. etiketleme      |        --          |  --  |
 |  Ağ                 |  Network. assign    |                  |  Microsoft, diğer tüm ağ işlemlerini yapar.  |
 |  İzinler             |  --  |        --       |  Microsoft tüm Izin işlemlerini yapar.  |

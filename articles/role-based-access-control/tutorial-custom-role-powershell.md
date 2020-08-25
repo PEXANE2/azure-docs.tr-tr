@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735598"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma
 
 [Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemine ait her şeyi görüntülemesine olanak sağlar ve destek biletlerini de açabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel rol oluşturma
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -221,7 +221,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Özel rolünüzü `PSRoleDefintion` güncelleştirmek için nesnesini kullanmak üzere, önce rolü almak için [Get-azroledefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
+1. `PSRoleDefintion`Özel rolünüzü güncelleştirmek için nesnesini kullanmak üzere, önce rolü almak Için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu kullanın.
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"

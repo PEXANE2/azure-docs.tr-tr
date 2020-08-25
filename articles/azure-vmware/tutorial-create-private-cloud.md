@@ -1,28 +1,28 @@
 ---
 title: Öğretici-Azure 'da vSphere kümesi dağıtma
-description: Azure VMWare çözümünü (AVS) kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
+description: Azure VMWare çözümünü kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 4f3b33ea401c62124ae5f8a4c881d86d2f19b40c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079426"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750486"
 ---
-# <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Öğretici: Azure 'da AVS özel bulutu dağıtma
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
-Azure VMware çözümü (AVS), Azure 'da bir vSphere kümesi dağıtmanıza olanak tanır. En düşük ilk dağıtım üç ana bilgisayar. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
+Azure VMware çözümü, Azure 'da bir vSphere kümesi dağıtmanıza olanak tanır. En düşük ilk dağıtım üç ana bilgisayar. Küme başına en fazla 16 ana bilgisayar için, ek konaklar tek seferde eklenebilir. 
 
-AVS, başlatma sırasında özel bulutunuzu şirket içi vCenter ile yönetmenize izin vermediğinden, yerel bir vCenter örneğine ek yapılandırma ve bağlantı, sanal ağ ve daha fazlası gereklidir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
+Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter ile yönetmenize izin vermediğinden, yerel bir vCenter örneğine ek yapılandırma ve bağlantı, sanal ağ ve daha fazlası gereklidir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * AVS özel bulutu oluşturma
+> * Azure VMware çözümü özel bulutu oluşturma
 > * Özel bulutun dağıtıldığını doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri.
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-AVS 'yi kullanmak için, öncelikle kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.
+Azure VMware çözümünü kullanmak için, öncelikle kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.
 
 ```
 azurecli-interactive
@@ -42,9 +42,9 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
 
 ## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
-[Azure Portal](#azure-portal) kullanarak veya [Azure CLı](#azure-cli)kullanarak bir AVS özel bulutu oluşturabilirsiniz.
+[Azure Portal](#azure-portal) kullanarak veya [Azure CLI](#azure-cli)kullanarak bir Azure VMware çözümü özel bulutu oluşturabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -57,14 +57,14 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
    | **Abonelik** | Dağıtım için kullanmayı planladığınız abonelik.|
    | **Kaynak grubu** | Özel bulut kaynaklarınızın kaynak grubu. |
    | **Konum** | **Doğu ABD**gibi bir konum seçin.|
-   | **Kaynak adı** | AVS özel bulutunuzun adı. |
+   | **Kaynak adı** | Azure VMware çözümünüz özel bulutunuzun adı. |
    | **SKU** | Şu SKU değerini seçin: AV36 |
    | **Bilgisayarlarınızı** | Özel bulut kümesine eklenecek ana bilgisayar sayısı. Varsayılan değer, dağıtımdan sonra ortaya çıkarılan veya düşürülen 3 ' dir.  |
    | **vCenter yönetici parolası** | Bir bulut Yöneticisi parolası girin. |
    | **NSX-T Yöneticisi parolası** | NSX-T yönetici parolası girin. |
    | **Adres bloğu** | Özel bulut için CıDR ağı için bir IP adresi bloğu girin, örneğin, 10.175.0.0/22. |
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="özel bulut oluşturma" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Temel bilgiler sekmesinde, alanlar için değerler girin." border="true":::
 
 1. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. Sonraki ekranda, girilen bilgileri doğrulayın. Bilgilerin tümü doğru ise **Oluştur**' u seçin.
 
@@ -73,11 +73,11 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
 
 1. Dağıtımın başarılı olduğunu doğrulayın. Oluşturduğunuz kaynak grubuna gidin ve özel bulutunuzu seçin.  Dağıtım tamamlandığında **başarılı** durumunu görürsünüz. 
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Dağıtılan özel bulutu doğrula" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Dağıtımın başarılı olduğunu doğrulayın." border="true":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal yerine, bir AVS özel bulutu oluşturmak için Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz. Ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış olan ücretsiz etkileşimli bir kabuktur. 
+Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz. Ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış olan ücretsiz etkileşimli bir kabuktur. 
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
@@ -99,7 +99,7 @@ Bir kaynak grubu adı, özel bulut için bir ad, bir konum, küme boyutu belirti
 | Özellik  | Açıklama  |
 | --------- | ------------ |
 | **-g** (kaynak grubu adı)     | Özel bulut kaynaklarınız için kaynak grubunun adı.        |
-| **-n** (özel bulut adı)     | AVS özel bulutunuzun adı.        |
+| **-n** (özel bulut adı)     | Azure VMware çözümünüz özel bulutunuzun adı.        |
 | **--konum**     | Özel bulutunuz için kullanılan konum.         |
 | **--küme-boyut**     | Kümenin boyutu. En küçük değer 3 ' dir.         |
 | **--Ağ-bloğu**     | Özel bulutunuz için kullanılacak CıDR IP adresi ağ bloğu. Adres bloğu, aboneliğinizdeki ve şirket içi ağlardaki diğer sanal ağlarda kullanılan adres bloklarıyla çakışmamalıdır.        |
@@ -112,7 +112,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-a-private-cloud-azure-portal"></a>Özel bulutu silme (Azure portal)
 
-Artık ihtiyacınız olmayan bir AVS özel bulutunuz varsa, bunu silebilirsiniz. Özel bir bulutu sildiğinizde, tüm bileşenleriyle birlikte tüm kümeler silinir.
+Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Özel bir bulutu sildiğinizde, tüm bileşenleriyle birlikte tüm kümeler silinir.
 
 Bunu yapmak için, Azure portal özel buluta gidin ve **Sil**' i seçin. Onay sayfasında, özel bulutun adını doğrulayın ve **Evet**' i seçin.
 
@@ -124,7 +124,7 @@ Bunu yapmak için, Azure portal özel buluta gidin ve **Sil**' i seçin. Onay sa
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * AVS özel bulutu oluşturma
+> * Azure VMware çözümü özel bulutu oluşturma
 > * Dağıtılan özel bulut doğrulandı
 
 Özel bulut kümeleriniz için yerel yönetim ayarlamanın bir parçası olarak özel bulutunuz ile kullanmak üzere bir sanal ağ oluşturmayı öğrenmek için bir sonraki öğreticiye geçin.

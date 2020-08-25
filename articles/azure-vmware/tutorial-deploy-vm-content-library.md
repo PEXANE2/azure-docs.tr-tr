@@ -1,16 +1,16 @@
 ---
-title: "Öğretici: Azure VMware çözümünde (AVS) VM 'Leri dağıtmak için bir içerik kitaplığı oluşturma"
-description: Bu Azure VMware çözümü (AVS) öğreticisinde, bir AVS özel bulutu 'nda VM dağıtmak için bir içerik kitaplığı oluşturun.
+title: 'Öğretici: Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma'
+description: Bu Azure VMware Çözüm öğreticisinde, bir Azure VMware Çözüm özel bulutu 'nda bir VM dağıtmak için bir içerik kitaplığı oluşturacaksınız.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612801"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750543"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Öğretici: Azure VMware çözümünde (AVS) VM 'Leri dağıtmak için bir içerik kitaplığı oluşturma
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Öğretici: Azure VMware çözümünde VM dağıtmak için bir içerik kitaplığı oluşturma
 
 İçerik kitaplığı, içeriği kitaplık öğeleri biçiminde depolar ve yönetir. Tek bir kitaplık öğesi, sanal makineleri (VM 'Ler) dağıtmak için kullandığınız bir veya daha fazla dosyadan oluşur. 
  
@@ -22,7 +22,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için NSX-T mantıksal anahtar segmenti ve yönetilen bir DHCP hizmeti gereklidir.  Ayrıntılar için bkz. [Azure VMware çözümünde DHCP 'yi yönetme (AVS) önizleme](manage-dhcp.md) .
+Bu öğreticiyi tamamlayabilmeniz için NSX-T mantıksal anahtar segmenti ve yönetilen bir DHCP hizmeti gereklidir.  Ayrıntılar için bkz. [Azure VMware Çözüm ÖNIZLEMESINDE DHCP 'yi yönetme](manage-dhcp.md) .
 
 ## <a name="create-a-content-library"></a>İçerik kitaplığı oluşturma
 

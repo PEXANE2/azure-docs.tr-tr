@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77472680"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723271"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Depolama’daki tanılama verilerini depolama ve görüntüleme
-Tanılama verileri, Microsoft Azure depolama öykünücüsüyle veya Azure depolama 'ya aktarmadığınız takdirde kalıcı olarak depolanmaz. Depolama alanındaki bir kez, kullanılabilir araçlardan biri ile görüntülenebilir.
+Tanılama verileri, Microsoft Azure Depolama Öykünücüsü veya Azure depolama alanına aktarmadığınız takdirde kalıcı olarak depolanmaz. Depolama alanındaki bir kez, kullanılabilir araçlardan biri ile görüntülenebilir.
 
 ## <a name="specify-a-storage-account"></a>Bir depolama hesabı belirtin
 ServiceConfiguration. cscfg dosyasında kullanmak istediğiniz depolama hesabını belirtirsiniz. Hesap bilgileri bir yapılandırma ayarında bağlantı dizesi olarak tanımlanır. Aşağıdaki örnekte, Visual Studio 'da yeni bir bulut hizmeti projesi için oluşturulan varsayılan bağlantı dizesi gösterilmektedir:

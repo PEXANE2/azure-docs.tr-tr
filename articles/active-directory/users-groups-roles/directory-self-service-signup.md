@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192712"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795362"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kaydolma nedir?
 
@@ -64,7 +64,7 @@ Yukarıdaki koşullar doğru ise, ana dizinde bir üye Kullanıcı oluşturulur 
 Flow ve PowerApps deneme sürümü oturum açma bilgileri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Mevcut kullanıcılarımın Power BI'ı kullanmaya başlamasını nasıl önleyebilirim?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Kuruluşunuzda Flow ile ilgili soru-cevap](https://docs.microsoft.com/flow/organization-q-and-a)
+* [Kuruluşunuzda Flow ile ilgili soru-cevap](/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Denetimler birlikte nasıl çalışır?
 Bu iki parametre, self servis kaydolma üzerinde daha kesin denetim tanımlamak için birlikte kullanılabilir. Örneğin, aşağıdaki komut, kullanıcıların Self Servis kaydolma gerçekleştirmesine izin verir, ancak yalnızca bu kullanıcıların Azure AD 'de zaten bir hesabı varsa (diğer bir deyişle, bir e-posta doğrulanan hesabı olması gereken kullanıcılar self servis kaydolma işlemini gerçekleştiremez):

@@ -2,13 +2,13 @@
 title: Uygulama şeması tanımı
 description: LUO uygulaması veya ' de temsil edilir `.json` `.lu` ve tüm amaçları, varlıkları, örnek utbotları, özellikleri ve ayarları içerir.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/22/2020
+ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684353"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756797"
 ---
 # <a name="app-schema-definition"></a>Uygulama şeması tanımı
 
@@ -55,12 +55,30 @@ Uygulamayı içeri ve dışarı aktardığınızda, veya seçeneklerinden birini
   "tokenizerVersion": "1.0.0",
   "patternAnyEntities": [],
   "regex_entities": [],
-  "phraselists": [],
+  "phraselists": [
+  ],
   "regex_features": [],
   "patterns": [],
   "settings": []
 }
 ```
+
+| öğesi                  | Yorum                              |
+|--------------------------|--------------------------------------|
+| "hiyerarşik Öğeler": [],     | Kullanım dışı, [makine öğrenimi varlıklarını](luis-concept-entity-types.md)kullanın.   |
+| "bileşik siteler": [],        | Kullanım dışı, [makine öğrenimi varlıklarını](luis-concept-entity-types.md)kullanın. [Bileşik varlık](reference-entity-composite.md) başvurusu. |
+| "closedLists": [],       | Birincil olarak varlıklara özellikler olarak kullanılan [varlık başvurusunu listeleyin](reference-entity-list.md) .    |
+| "VersionId": "0,1",      | LUSıS uygulamasının sürümü.|
+| "ad": "örnek-uygulama",   | LUSıS uygulamasının adı. |
+| "desc": "",              | LUIS uygulamasının isteğe bağlı açıklaması.  |
+| "kültür": "en-US",      | Uygulamanın [dili](luis-language-support.md) , önceden oluşturulmuş varlıklar, makine öğrenimi ve Simgeleştirici gibi temel özellikleri etkiler.  |
+| "tokenizerVersion": "1.0.0", | [Belirteç ayırıcı](luis-language-support.md#tokenization)  |
+| "patternAnyEntities": [],   | [Pattern.any varlığı](reference-entity-pattern-any.md)    |
+| "regex_entities": [],    |  [Normal ifade varlığı](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [Tümcecik listeleri (özellik)](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  Kullanım dışı, [makine öğrenimi varlıklarını](luis-concept-entity-types.md)kullanın. |
+| "desenler": [],          |  Desenler, [desen sözdizimi](reference-pattern-syntax.md) ile [tahmin doğruluğunu geliştirir](luis-concept-patterns.md)   |
+| "Ayarlar": []           | [Uygulama ayarları](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>Sürüm 6. x
 

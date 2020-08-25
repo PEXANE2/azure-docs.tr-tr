@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 42364e791711258e42883bdfcd658ba2c45ecd28
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220329"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723155"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure bulut çözümü sağlayıcıları için Azure Active Directory Domain Services dağıtımı ve yönetimi
 
 Azure bulut çözümü sağlayıcıları (CSP), Microsoft Iş ortakları için bir programdır ve çeşitli Microsoft bulut hizmetleri için bir lisans kanalı sağlar. Azure CSP, iş ortaklarının satışları yönetmesine, fatura ilişkisine sahip olmasını, teknik ve faturalandırma desteği sağlamasını ve müşterinin tek iletişim noktası olmasını sağlar. Ayrıca, Azure CSP, bir self servis portalı ve eşlik eden API 'Ler dahil olmak üzere tam bir araç kümesi sağlar. Bu araçlar, CSP iş ortaklarının Azure kaynaklarını kolayca sağlamanıza ve yönetmesine ve müşterilere ve aboneliklerine yönelik faturalandırma sağlamasına imkan tanır.
 
-[Iş Ortağı Merkezi portalı](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) , tüm Azure CSP iş ortaklarının giriş noktasıdır ve zengin müşteri yönetim özellikleri, otomatikleştirilmiş işleme ve daha fazlasını sağlar. Azure CSP iş ortakları, Web tabanlı bir kullanıcı arabirimi veya PowerShell ve çeşitli API çağrıları kullanarak Iş Ortağı Merkezi özelliklerini kullanabilir.
+[Iş Ortağı Merkezi portalı](/azure/cloud-solution-provider/overview/partner-center-overview) , tüm Azure CSP iş ortaklarının giriş noktasıdır ve zengin müşteri yönetim özellikleri, otomatikleştirilmiş işleme ve daha fazlasını sağlar. Azure CSP iş ortakları, Web tabanlı bir kullanıcı arabirimi veya PowerShell ve çeşitli API çağrıları kullanarak Iş Ortağı Merkezi özelliklerini kullanabilir.
 
 Aşağıdaki diyagramda, CSP modelinin yüksek düzeyde nasıl çalıştığı gösterilmektedir. Contoso 'da bir Azure Active Directory (Azure AD) kiracısı vardır. Azure CSP aboneliklerinde kaynakları dağıtan ve yöneten CSP ile bir iş ortaklığı vardır. Contoso ayrıca doğrudan contoso 'da faturalandırılan normal (doğrudan) Azure aboneliklerine sahip olabilir.
 
@@ -33,7 +33,7 @@ CSP iş ortağının kiracısında üç özel aracı grubu vardır- *yönetici* 
 
 CSP iş ortağı Contoso için bir Azure CSP aboneliği sağlarken, yönetici aracıları grubu bu abonelik için sahip rolüne atanır. Sonuç olarak, CSP ortağının yönetim aracıları, contoso adına sanal makineler, sanal ağlar ve Azure AD Domain Services gibi Azure kaynaklarını sağlamak için gerekli ayrıcalıklara sahiptir.
 
-Daha fazla bilgi için bkz. [Azure CSP genel bakış](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
+Daha fazla bilgi için bkz. [Azure CSP genel bakış](/azure/cloud-solution-provider/overview/azure-csp-overview)
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Azure AD DS Azure CSP aboneliğinde kullanmanın avantajları
 

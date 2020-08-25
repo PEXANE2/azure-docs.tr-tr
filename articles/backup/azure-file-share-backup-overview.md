@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7441157d6346eefc256e9e7c29f9bb1fa5c13b79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c57537519888138698e9add1a687e0018d330cfa
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289519"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757889"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -42,9 +42,9 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
     >[!NOTE]
     >Yedekleme hizmeti depolama hesabınızın parçası olan anlık görüntüleri oluşturup yönettiğinden ve yedeklemeler kasaya aktarılmadığından, dosya paylaşma verileri yedekleme hizmetine aktarılmaz.
 
-6. Azure dosya paylaşma içeriğini (tek tek dosyalar veya tam paylaşma) kaynak dosya paylaşımında bulunan anlık görüntülerden geri yükleyebilirsiniz. İşlem tetiklendikten sonra, anlık görüntü URL 'SI meta veri deposundan alınır ve veriler listelenir ve kaynak anlık görüntüsünden seçtiğiniz hedef dosya paylaşımında aktarılır. 
+6. Azure dosya paylaşma içeriğini (tek tek dosyalar veya tam paylaşma) kaynak dosya paylaşımında bulunan anlık görüntülerden geri yükleyebilirsiniz. İşlem tetiklendikten sonra, anlık görüntü URL 'SI meta veri deposundan alınır ve veriler listelenir ve kaynak anlık görüntüsünden seçtiğiniz hedef dosya paylaşımında aktarılır.
 
-7. Azure Dosya Eşitleme kullanıyorsanız, yedekleme hizmeti Azure Dosya Eşitleme hizmetine geri yüklenen dosyaların yollarını gösterir ve ardından bu dosyalarda bir arka plan değişikliği algılama işlemini tetikler. Değiştirilen tüm dosyalar sunucu uç noktasına eşitlenir. Bu işlem, Azure dosya paylaşımının özgün geri yükleme ile paralel olarak gerçekleşir. 
+7. Azure Dosya Eşitleme kullanıyorsanız, yedekleme hizmeti Azure Dosya Eşitleme hizmetine geri yüklenen dosyaların yollarını gösterir ve ardından bu dosyalarda bir arka plan değişikliği algılama işlemini tetikler. Değiştirilen tüm dosyalar sunucu uç noktasına eşitlenir. Bu işlem, Azure dosya paylaşımının özgün geri yükleme ile paralel olarak gerçekleşir.
 
 8. Yedekleme ve geri yükleme işi izleme verileri Azure Backup Izleme hizmetine gönderilir. Bu, dosya paylaşımlarınız için bulut yedeklemelerini tek bir panoda izlemenize olanak sağlar. Ayrıca, yedekleme durumu etkileniyorsa uyarıları veya e-posta bildirimlerini de yapılandırabilirsiniz. E-postalar Azure e-posta hizmeti aracılığıyla gönderilir.
 

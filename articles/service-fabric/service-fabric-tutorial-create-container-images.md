@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252779"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
@@ -31,7 +31,7 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Kapsayıcılara Sahip bir Service Fabric Uygulaması Derleme ve Çalıştırma](service-fabric-tutorial-package-containers.md)
 > * [Service Fabric’de yük devretme ve ölçeklendirme nasıl işlenir?](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Service Fabric için ayarlanan Linux geliştirme ortamı. Linux ortamınızı ayarlamak için [buradaki](service-fabric-get-started-linux.md) yönergeleri izleyin.
 * Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
@@ -98,7 +98,7 @@ Bir Azure Container Registry dağıtırken önce bir kaynak grubuna ihtiyaç duy
 az group create --name <myResourceGroup> --location westus
 ```
 
-**az acr create** komutuyla Azure Container kayıt defteri oluşturun. \<acrName> değerini, aboneliğiniz altında oluşturmak istediğiniz kapsayıcı kayıt defteriyle değiştirin. Bu ad, alfasayısal karakterler içermeli ve benzersiz olmalıdır.
+**az acr create** komutuyla Azure Container kayıt defteri oluşturun. \<acrName>Aboneliğiniz altında oluşturmak istediğiniz kapsayıcı kayıt defterinin adıyla değiştirin. Bu ad, alfasayısal karakterler içermeli ve benzersiz olmalıdır.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -126,7 +126,7 @@ Mevcut görüntülerin listesini görüntülemek için [docker images](https://d
 docker images
 ```
 
-Çıktı:
+Çıkış:
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
@@ -156,7 +156,7 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 Etiketledikten sonra, işlemi doğrulamak için ‘docker images’ komutunu çalıştırın.
 
-Çıktı:
+Çıkış:
 
 ```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
@@ -186,7 +186,7 @@ Azure Container Registry’nize gönderilen görüntülerin listesini döndürme
 az acr repository list --name <acrName> --output table
 ```
 
-Çıktı:
+Çıkış:
 
 ```output
 Result

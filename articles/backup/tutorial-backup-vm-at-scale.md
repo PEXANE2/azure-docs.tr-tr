@@ -4,12 +4,12 @@ description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263427"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757515"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
@@ -136,7 +136,7 @@ Kurtarma Hizmetleri kasaları için yedeklemeyi etkinleştirdiniz, ancak bir ilk
 
 1. Bağlam menüsünde **Şimdi yedekle** seçeneğine tıklayın.
 
-    ![Bağlam menüsü](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Bağlam menüsü-Şimdi yedekle ' yi seçin](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Şimdi Yedekle menüsü açılır.
 
@@ -166,7 +166,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu öğretic
 
 1. **Yedekleme öğeleri** menüsünde, bağlam menüsünü açmak için üç nokta simgesini seçin.
 
-    ![Bağlam menüsü](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![Yedekleme öğeleri menüsünde bağlam menüsünü açın](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. Bağlam menüsünde yedeklemeyi **Durdur** ' u seçerek Yedeklemeyi Durdur menüsünü açın.
 

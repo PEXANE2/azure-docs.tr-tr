@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86118928"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
@@ -31,9 +31,9 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu güncelleştirme ve yeniden dağıtma
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -83,8 +83,8 @@ Bu depo, *uzak depo*olarak adlandırılır. Aynı projenin geliştiricilerin her
 
 Şablonları oluşturmak yerine şablonları indirebilir ve **Createwebapp** klasörüne kaydedebilirsiniz.
 
-* Ana şablon:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Bağlantılı şablon:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Ana şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Bağlantılı şablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Hem klasör adı hem de dosya adları ardışık düzende oldukları için kullanılır.  Bu adları değiştirirseniz, işlem hattında kullanılan adları güncelleştirmeniz gerekir.
 
@@ -120,14 +120,14 @@ Sonraki yordama geçebilmeniz için bir DevOps organizasyonu gerekir.  Bir tane 
 
     ![Azure DevOps Azure Resource Manager Azure Pipelines Azure DevOps projesi oluşturma](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. **New project** (Yeni proje) öğesini seçin. Herhangi bir projeniz yoksa, proje oluştur sayfası otomatik olarak açılır.
+1. **Yeni proje**'yi seçin. Herhangi bir projeniz yoksa, proje oluştur sayfası otomatik olarak açılır.
 1. Aşağıdaki değerleri girin:
 
     * **Proje adı**: bir proje adı girin. Öğreticinin en başından itibaren seçtiğiniz proje adını kullanabilirsiniz.
     * **Sürüm denetimi**: **Git**' i seçin. **Sürüm denetimini**görmek için **Gelişmiş** ' i genişletmeniz gerekebilir.
 
     Diğer özellikler için varsayılan değeri kullanın.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Azure 'a projeler dağıtmak için kullanılan bir hizmet bağlantısı oluşturun.
 
@@ -142,7 +142,7 @@ Azure 'a projeler dağıtmak için kullanılan bir hizmet bağlantısı oluştur
     * **Kaynak grubu**: boş bırakın.
     * **Bağlantı adı**: bir bağlantı adı girin. Örneğin, **Azurermpipeline-Conn**. Bu adı yazın, işlem hattınızı oluştururken adın olması gerekir.
     * **Tüm işlem hatları için erişim Izni verin**. seçildiğinde
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
@@ -182,7 +182,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines adımı](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
     Görev hakkında daha fazla bilgi için bkz. [Azure Kaynak grubu dağıtım görevi](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)ve [Azure Resource Manager şablonu Dağıtım görevi](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 

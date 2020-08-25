@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82086666"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
@@ -24,20 +24,20 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x veya üzeri](https://nodejs.org/download)
+* [Node.js 10.15. x veya üzeri](https://nodejs.org/download)
 * [Git 2.10. x veya üzeri](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza python.exe ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Windows 'da, Node-JP modülü için yüklü bir C++ derleyicisi gereklidir. MSBuild araçlarını kullanabilirsiniz:
 
-* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın`npm config set msvs_version 2017 -g`
+* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın `npm config set msvs_version 2017 -g`
 * Visual Studio 2019 yüklüyse, NPM için MS derleme araçları yolunu ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Aksi takdirde, tek başına VS Build araçlarını kullanarak `npm install --global windows-build-tools` yükseltilmiş bir *yönetici olarak çalıştır* komut kabuğu ' nu kullanın.
 
@@ -49,7 +49,7 @@ Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya
 
 1. VS Code komut paletinden **Azure blok Zinciri: New Solidity Project**' i seçin.
 1. **Temel proje oluştur**seçeneğini belirleyin.
-1. Adlı `HelloBlockchain` yeni bir klasör oluşturun ve **Yeni proje yolu**' nu seçin.
+1. Adlı yeni bir klasör oluşturun `HelloBlockchain` ve **Yeni proje yolu**' nu seçin.
 
 Azure blok zinciri geliştirme seti sizin için yeni bir Solidity projesi oluşturur ve başlatır. Temel proje, örnek bir **Helloblockzincirine** akıllı sözleşme ve Azure blok zinciri hizmeti 'nde Consortium üyelemenize dağıtmak için gereken tüm dosyaları içerir. Projenin oluşturulması birkaç dakika sürebilir. Azure blok zinciri için çıktıyı seçerek VS Code 'ın Terminal panelinde ilerleme durumunu izleyebilirsiniz.
 
@@ -106,7 +106,7 @@ SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **Requ
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, *blok zinciri üye önkoşulu oluştur* hızlı başlangıcı ' nda `myResourceGroup` oluşturduğunuz kaynak grubunu silerek kaynakları silebilirsiniz.
+Artık gerekli değilse, `myResourceGroup` *blok zinciri üye önkoşulu oluştur* hızlı başlangıcı ' nda oluşturduğunuz kaynak grubunu silerek kaynakları silebilirsiniz.
 
 Kaynak grubunu silmek için:
 

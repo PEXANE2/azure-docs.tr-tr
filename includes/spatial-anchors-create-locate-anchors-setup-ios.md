@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: e7e3a31663e6c166b912ba20166ba0f0f769008a
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "83006405"
 ---
 ## <a name="setting-up-the-library"></a>Kitaplığı ayarlama
 
-Oturumunuzun `Start()` ortam verilerini işlemesini sağlamak için öğesini çağırın.
+`Start()`Oturumunuzun ortam verilerini işlemesini sağlamak için öğesini çağırın.
 
-Oturumunuz tarafından oluşturulan olayları işlemek için, oturumunuzun `delegate` özelliğini görünümü gibi bir nesne olarak ayarlayın. Bu nesnenin `SSCCloudSpatialAnchorSessionDelegate` protokolü uygulaması gerekir.
+Oturumunuz tarafından oluşturulan olayları işlemek için, `delegate` oturumunuzun özelliğini görünümü gibi bir nesne olarak ayarlayın. Bu nesnenin protokolü uygulaması gerekir `SSCCloudSpatialAnchorSessionDelegate` .

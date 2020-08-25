@@ -3,12 +3,12 @@ title: IoT Edge kotaları üzerinde canlı video analizi-Azure
 description: Bu makalede, IoT Edge kotaları ve sınırlamaları hakkında canlı video analizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091819"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750234"
 ---
 # <a name="quotas-and-limitations"></a>Kotalar ve sınırlamalar
 
@@ -36,21 +36,23 @@ Modül başına en fazla 50 Graf topolojisi (Graphtopologyıset aracılığıyla
    * Grafik topolojisi başına yalnızca bir RTSP kaynağına izin verilir.
 * Çerçeve hızı filtre işlemcisi
    * RTSP kaynağı veya hareket algılama işlemcisinden hemen aşağı akış olmalıdır.
-   * Bir HTTP uzantısı işlemcisinin aşağı akış sürümü kullanılamaz.
+   * HTTP veya gRPC uzantı işlemcisinin aşağı akış sürümü kullanılamaz.
    * Hareket algılama işlemcisinden yukarı akış olamaz.
 * HTTP uzantısı işlemcisi
+   * Grafik topolojisi başına en çok bir işlemci olabilir.
+* gRPC uzantı işlemcisi
    * Grafik topolojisi başına en çok bir işlemci olabilir.
 * Hareket algılama işlemcisi
    * RTSP kaynağından hemen aşağı akış olmalıdır.
    * Grafik topolojisi başına en çok bir işlemci olabilir.
-   * Bir HTTP uzantısı işlemcisinin aşağı akış sürümü kullanılamaz.
+   * HTTP veya gRPC uzantı işlemcisinin aşağı akış sürümü kullanılamaz.
 * Sinyal kapısı işlemcisi
    * RTSP kaynağından hemen aşağı akış olmalıdır.
 * Varlık havuzu 
    * RTSP kaynağı veya sinyal kapısı işlemcisinden hemen aşağı akış olmalıdır.
 * Dosya havuzu
    * Sinyal kapısı işlemcisinden hemen aşağı akış olmalıdır.
-   * HTTP uzantısı işlemcisinin veya hareket algılama işlemcisinin hemen bir aşağı akış yapılamaz
+   * Bir HTTP veya gRPC uzantı işlemcisinin veya hareket algılama işlemcisinin hemen bir yönündeki olamaz
 * IoT Hub havuzu
    * IoT Hub bir kaynağın hemen bir aşağı akış olamaz.
 

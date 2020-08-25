@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187151"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762462"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -131,7 +131,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
     ![İlk çevrimiçi çoğaltma seçin](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > Özelliğin önizleme aşamasında olduğundan, **Microsoft 'un disklerini kullanarak Aktarım** seçme seçeneği mabs v3 için kullanılamaz. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)MABS v3 için bu özelliği kullanmak istiyorsanız lütfen bizden bize ulaşın.
+    > Özelliğin önizleme aşamasında olduğundan, **Microsoft 'un disklerini kullanarak Aktarım** seçme seçeneği mabs v3 için kullanılamaz. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)MABS v3 için bu özelliği kullanmak istiyorsanız, bizden bize ulaşın.
 
 12. İstendiğinde, Azure aboneliğinde sahip erişimi olan kullanıcı kimlik bilgilerini kullanarak Azure 'da oturum açın. Başarılı bir oturum açma işleminden sonra aşağıdaki ekran görüntülenir:
 
@@ -143,10 +143,10 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
      > İlk kez oturum açma normalden daha uzun sürer. Azure PowerShell modülü arka planda yüklenir ve Azure AD uygulaması da kaydedilir.
      >
      >  - Aşağıdaki PowerShell modülleri yüklendi:<br>
-          -Azurerd. Profile *5.8.3*<br>
-          -Azurerd. Resources *6.7.3*<br>
-          -Azurerd. Storage *5.2.0*<br>
-          -Azure. Storage *4.6.1*<br>
+          -Azurerd. Profile     *5.8.3*<br>
+          -Azurerd. Resources   *6.7.3*<br>
+          -Azurerd. Storage     *5.2.0*<br>
+          -Azure. Storage       *4.6.1*<br>
      >  - Azure AD uygulaması *AzureOfflineBackup_ \<object GUID of the user> *olarak kaydedilir.
 
 13. Data Box diskinizin açılacağı, bağlandığı ve kilidinin bulunduğu doğru veri kutusu sırasını seçin. **İleri**’yi seçin.
@@ -215,7 +215,7 @@ Azure PowerShell cmdlet 'inde bilinen bir kod hatası nedeniyle çevrimdışı y
 
 Hatanın Yukarıdaki [sorundan](#issue) dolayı olduğundan emin olmak için aşağıdaki adımlardan birini gerçekleştirin:
 
-#### <a name="step-1"></a>1\. Adım
+#### <a name="step-1"></a>1. Adım
 
 Çevrimdışı yedeklemeyi yapılandırma sırasında DPM/MABS konsolunda aşağıdaki hata iletisini görüp görmenizi denetleyin:
 
@@ -258,9 +258,9 @@ Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve ilke yapılandı
     > - `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *Currentuserıd*adlı kayıt defteri yoluna gidin.
 
 6. Yukarıdaki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, **2. noktada** verdiğiniz sertifikanın parmak Izini girip **Tamam**' ı seçin.
-7. Parmak izi değerini almak için, sertifikaya çift tıklayın, ardından **Ayrıntılar** ' ı seçin ve ardından parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi** ' ni seçin ve değeri kopyalayın.
+7. Parmak izi değerini almak için, sertifikaya çift tıklayın, ardından **Ayrıntılar**  ' ı seçin ve ardından parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi** ' ni seçin ve değeri kopyalayın.
 
-   ![Sertifika](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![Parmak izi değeri](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

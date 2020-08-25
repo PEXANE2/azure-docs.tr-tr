@@ -13,12 +13,12 @@ ms.date: 01/04/2019
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747401"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799409"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Kişisel cihazınızı kuruluşunuzun ağına kaydetme
 Kuruluşunuzun ağına kişisel cihazınızı (genellikle telefon veya tablet) kaydedin. Cihazınız kaydolduktan sonra kuruluşunuzun kısıtlanmış kaynaklarına erişebilir.
@@ -31,9 +31,9 @@ Cihazınızı kuruluşunuzun ağına kaydederken aşağıdaki eylemler gerçekle
 
 - Windows cihazınızı kuruluşunuzun ağına kaydeder.
 
-- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri](user-help-security-info-overview.md)aracılığıyla iki adımlı doğrulama ayarlamanız istenebilir.
+- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri](./security-info-setup-signin.md)aracılığıyla iki adımlı doğrulama ayarlamanız istenebilir.
 
-- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, Microsoft Intune gibi mobil cihaz yönetimine otomatik olarak kaydolmuş olabilirsiniz. Microsoft Intune kaydolma hakkında daha fazla bilgi için bkz. [cihazınızı Intune 'A kaydetme](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, Microsoft Intune gibi mobil cihaz yönetimine otomatik olarak kaydolmuş olabilirsiniz. Microsoft Intune kaydolma hakkında daha fazla bilgi için bkz. [cihazınızı Intune 'A kaydetme](/intune-user-help/enroll-your-device-in-intune-all).
 
 - İş veya okul hesabınızın Kullanıcı adı ve parolasını kullanarak oturum açma işlemine geçebilirsiniz.
 
@@ -70,6 +70,3 @@ Ayarlarınıza bakarak kaydolduğunuzdan emin olabilirsiniz.
 Kişisel cihazınızı kuruluşunuzun ağına kaydettikten sonra, kaynaklarınızın çoğuna erişebilmelisiniz.
 
 - Kuruluşunuz iş cihazınıza katılmayı istiyorsa, bkz. [iş cihazınızı kuruluşunuzun ağına ekleme](user-help-join-device-on-network.md).
-
-
-

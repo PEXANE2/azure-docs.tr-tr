@@ -2,17 +2,17 @@
 title: Azure Application Gateway uçtan uca TLS 'yi etkinleştirme
 description: Bu makale, uçtan uca TLS desteğine Application Gateway bir genel bakıştır.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962110"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723308"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
@@ -30,7 +30,7 @@ Application Gateway, ağ geçidinde TLS sonlandırmasını destekler, bu da akı
 TLS sonlandırmayı yapılandırmak için Application Gateway bir TLS/SSL sertifikasının, bir simetrik anahtarı TLS/SSL protokolü belirtimine göre türemesini sağlamak için dinleyiciye eklenmesi gerekir. Daha sonra simetrik anahtar, ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. TLS/SSL sertifikasının kişisel bilgi değişimi (PFX) biçiminde olması gerekir. Bu dosya biçimi, trafiğin şifrelemesini ve şifresini çözmeyi gerçekleştirmek üzere uygulama ağ geçidi için gereken özel anahtarı dışarı aktarma olanağı sağlar.
 
 > [!IMPORTANT] 
-> Lütfen dinleyicide bulunan sertifikanın tüm Sertifika zincirinin karşıya yüklenmesini gerektirdiğini unutmayın. 
+> Dinleyicide bulunan sertifika, güven zincirini oluşturmak için tüm Sertifika zincirinin (CA 'dan kök sertifika, hammaddeleri ve yaprak sertifika) yüklenmesini gerektirir. 
 
 
 > [!NOTE] 

@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252757"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeoman'ı kullanarak kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma
@@ -25,7 +25,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon ol
 > * Uygulamayı dağıtma ve çalıştırma
 > * Uygulamayı temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici serisinin [1. Bölümünde](service-fabric-tutorial-create-container-images.md) oluşturulup Azure Container Registry’ye gönderilen kapsayıcı görüntüleri kullanılır.
 * Linux geliştirme ortamı [ayarlanmıştır](service-fabric-tutorial-create-container-images.md).
@@ -60,7 +60,7 @@ Service Fabric, Yeoman şablon oluşturucu kullanarak terminalden uygulama oluş
     ```
 2. Uygulamanıza bir ad vermek için lütfen “TestContainer” yazın
 3. Uygulama hizmetinize bir ad vermek için lütfen “azurevotefront” yazın.
-4. Ön uç deposu için ACR’deki kapsayıcı görüntüsü yolu sağlayın. Örnek: “\<acrName>.azurecr.io/azure-vote-front:v1”. \<acrName> alanı, önceki öğreticide kullanılan değerle aynı olmalıdır.
+4. Ön uç deposu için ACR 'de kapsayıcı görüntüsü yolunu sağlayın (örneğin, ' \<acrName> . azurecr.io/Azure-Vote-Front:v1 '). \<acrName>Alan, önceki öğreticide kullanılan değerle aynı olmalıdır.
 5. Komutlar bölümünü boş bırakmak için Enter tuşuna basın.
 6. Örnek sayısı olarak 1 belirtin.
 
@@ -83,7 +83,7 @@ Aşağıda yo komutunu çalıştırmanın girişi ve çıktısı gösterilmekted
 Yeoman kullanılarak oluşturulmuş olan bir uygulamaya başka bir kapsayıcı hizmeti eklemek için aşağıdaki adımları uygulayın:
 
 1. Dizini bir düzey değiştirerek **TestContainer** dizinine gidin. Örnek: *./TestContainer*
-2. `yo azuresfcontainer:AddService` öğesini çalıştırın
+2. `yo azuresfcontainer:AddService` komutunu çalıştırın
 3. Hizmete “azurevoteback” adını verin
 4. Redis için kapsayıcı görüntüsü yolunu sağlayın: “alpine:redis”
 5. Komutlar bölümünü boş bırakmak için Enter tuşuna basın
@@ -272,11 +272,11 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 ./install.sh
 ```
 
-Bir tarayıcı açın ve http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer adresinde Service Fabric Explorer gidin. Uygulamalar düğümünü genişletin ve uygulamanızın türü için bir giriş ve örnek için başka bir giriş olduğuna dikkat edin.
+Bir tarayıcı açın ve http:/containertestcluster.eastus.cloudapp.azure.com:19080/Explorer adresinde Service Fabric Explorer gidin \/ . Uygulamalar düğümünü genişletin ve uygulamanızın türü için bir giriş ve örnek için başka bir giriş olduğuna dikkat edin.
 
 ![Service Fabric Explorer][sfx]
 
-Çalışan uygulamaya bağlanmak için bir Web tarayıcısı açın ve küme URL 'sine gidin-örneğin, http:\//containertestcluster.eastus.cloudapp.Azure.com:80. Web kullanıcı arabiriminde Voting (Oylama) uygulamasını görmeniz gerekir.
+Çalışan uygulamaya bağlanmak için bir Web tarayıcısı açın ve küme URL 'sine gidin-örneğin, http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. Web kullanıcı arabiriminde Voting (Oylama) uygulamasını görmeniz gerekir.
 
 ![votingapp][votingapp]
 

@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80985448"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ altyapısı oluşturma.
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
@@ -38,14 +38,14 @@ Bu öğreticide örnek olarak contoso.com etki alanı kullanılmaktadır ancak s
 İlk olarak, web sunucularınızı içine yerleştirmek için bir sanal ağ ve alt ağ oluşturun.
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Portalda sol üst köşeden **Kaynak oluştur**'u seçin. Arama kutusuna *kaynak grubu* yazın ve **RG-DNS-Alias-pip** adlı bir kaynak grubu oluşturun.
-3. **Kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+3. **Kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
 4. **VNet-Server** adlı bir sanal ağ oluşturun. Bunu **RG-DNS-Alias-pip** kaynak grubunun içine yerleştirin ve alt ağı **SN-Web** olarak adlandırın.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Web sunucusu sanal makinesi oluşturma
-1. **Kaynak** > oluştur**Windows Server 2016 VM**' yi seçin.
+1. **Kaynak oluştur**  >  **Windows Server 2016 VM**' yi seçin.
 2. Ad için **Web-01** girin ve VM’yi **RG-DNS-Alias-TM** kaynak grubuna yerleştirin. Kullanıcı adı ve parola girip **Tamam**'ı seçin.
 3. **Boyut** için 8 GB RAM'e sahip bir SKU seçin.
-4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin. Genel gelen bağlantı noktaları için **http** > **https** > **RDP (3389)** öğesini seçin ve ardından **Tamam**' ı seçin.
+4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin. Genel gelen bağlantı noktaları için **http**  >  **https**  >  **RDP (3389)** öğesini seçin ve ardından **Tamam**' ı seçin.
 5. **Özet** sayfasında **Oluştur**'u seçin.
 
 Bu işlemin tamamlanması birkaç dakika sürer. Sanal makine, bağlı bir NIC 'e sahip olacak ve bu, Web-01-IP adlı bir temel dinamik genel IP 'ye sahip olacaktır. Ortak IP, sanal makine her yeniden başlatıldığında değişecektir.

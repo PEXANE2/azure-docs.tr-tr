@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "83006483"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>Bulut uzamsal bağlayıcısını bulma
@@ -18,4 +18,4 @@ Daha önce kaydedilen bir bulut uzamsal çıpası, Azure uzamsal Tutturucuların
 
 Bulut uzamsal bağlayıcılarını tanımlayıcıya göre konumlandırdıysanız, bulut uzamsal bağlantı tanımlayıcısını uygulamanızın arka uç hizmetinde depolamak ve bunu düzgün şekilde doğrulayabilecek tüm cihazların erişimine açık hale getirmek isteyeceksiniz. Buna bir örnek için bkz. [öğretici: cihaz genelinde uzamsal bağlayıcıları paylaşma](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
 
-Bir `AnchorLocateCriteria` nesne örneği oluşturun, aradığınız tanımlayıcıları ayarlayın ve öğesini sağlayarak oturumdaki `CreateWatcher` yöntemi çağırın. `AnchorLocateCriteria`
+Bir nesne örneği oluşturun `AnchorLocateCriteria` , aradığınız tanımlayıcıları ayarlayın ve öğesini `CreateWatcher` sağlayarak oturumdaki yöntemi çağırın `AnchorLocateCriteria` .

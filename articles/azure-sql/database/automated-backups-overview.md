@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921954"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756733"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -36,14 +36,12 @@ Bir veritabanını geri yüklediğinizde, hizmet hangi tam, fark ve işlem günl
 
 ### <a name="backup-storage-redundancy"></a>Yedekleme depolama yedekliliği
 
-> [!IMPORTANT]
-> Yedeklemeler için yapılandırılabilir depolama yedekliği Şu anda yalnızca SQL yönetilen örneği için kullanılabilir ve yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
+Varsayılan olarak, SQL veritabanı ve SQL yönetilen örneği, [eşleştirilmiş bir bölgeye](../../best-practices-availability-paired-regions.md)çoğaltılan coğrafi olarak YEDEKLI (RA-GRS) [depolama Blobları](../../storage/common/storage-redundancy.md) içinde verileri depolar. Bu, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı korunmaya yardımcı olur ve bir olağanüstü durum durumunda sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanır. 
 
-Yedekleme depolama yedekliliği yapılandırma seçeneği, yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) veya coğrafi olarak yedekli (RA-GRS) [depolama Blobları](../../storage/common/storage-redundancy.md)arasında seçim yapmak için esneklik sağlar. Depolama artıklığı mekanizmaları, geçici donanım arızası, ağ veya güç kesintileri ya da büyük doğal felaketler dahil, planlı ve plansız olaylardan korunmak üzere verilerinizin birden çok kopyasını depolar. Bu özellik şu anda yalnızca SQL yönetilen örneği için kullanılabilir.
+SQL yönetilen örneği, verilerinizin yönetilen örneğinizin dağıtıldığı bölge içinde kalmasını sağlamak için depolama artıklarını yerel olarak yedekli (LRS) veya bölgesel olarak yedekli (ZRS) depolama Blobları olarak değiştirme özelliğini tanıtır. Depolama artıklığı mekanizmaları, geçici donanım arızası, ağ veya güç kesintileri ya da büyük doğal felaketler dahil, planlı ve plansız olaylardan korunmak üzere verilerinizin birden çok kopyasını depolar. 
 
-RA-GRS depolama Blobları, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı korunmak ve bir olağanüstü durum durumunda sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanımak için [eşleştirilmiş bir bölgeye](../../best-practices-availability-paired-regions.md) çoğaltılır. 
+Yedekleme depolama yedekliliği yapılandırma seçeneği, bir SQL yönetilen örneği için LRS, ZRS veya RA-GRS depolama Blobları arasında seçim yapmak için esneklik sağlar. Yönetilen örnek oluşturma işlemi sırasında yedekleme depolama yedekliliği yapılandırma kaynak sağlandığında, artık depolama yedekliği değiştirilemez. (Bölge yedekli depolama (ZRS) Şu anda yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir).
 
-Tersine, LRS ve ZRS depolama Blobları, verilerinizin SQL veritabanınızın veya SQL yönetilen örneğinizin dağıtıldığı bölge içinde kalmasını güvence altına aldığından emin olur. Bölgesel olarak yedekli depolama (ZRS) Şu anda yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir).
 
 > [!IMPORTANT]
 > SQL yönetilen örneği 'nde yapılandırılan yedekleme yedekliliği, uzun vadeli yedeklemeler (LTR) için kullanılan zaman içinde nokta geri yükleme (ıNR) ve uzun süreli bekletme yedeklemeleri için kullanılan kısa süreli yedekleme bekletme ayarlarına uygulanır.
@@ -116,7 +114,7 @@ Bir veritabanı için maksimum veri boyutuna kadar yedekleme depolama tüketimi 
 - Geçici sonuçları ve/veya geçici verileri depolamak için uygulama mantığınızdaki kalıcı tablolar yerine TempDB kullanın.
 - Mümkün olduğunda yerel olarak yedekli yedekleme depolaması kullanın (örneğin geliştirme ve test ortamları)
 
-## <a name="backup-retention"></a>Yedekleri bekletme
+## <a name="backup-retention"></a>Yedekleme dosyası saklama
 
 Tüm yeni, geri yüklenen ve kopyalanmış veritabanları için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, en son 7 gün içinde varsayılan olarak veri için yeterli yedeklemeler sağlar. Hiper ölçekli veritabanları hariç olmak üzere, 1-35 gün aralığında her etkin veritabanı için [yedekleme saklama süresini değiştirebilirsiniz](#change-the-pitr-backup-retention-period) . [Yedekleme depolama tüketimi](#backup-storage-consumption)bölümünde açıklandığı gibi, ınvr 'yi etkinleştirmek için depolanan yedeklemeler saklama süresinden daha eski olabilir. Yalnızca Azure SQL yönetilen örneği için, 0-35 gün aralığında bir veritabanı silindikten sonra, yedek saklama oranını ayarlamak mümkündür. 
 
@@ -194,7 +192,7 @@ Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi 
 
 ## <a name="encrypted-backups"></a>Şifrelenmiş yedeklemeler
 
-Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil olmak üzere Rest 'de otomatik olarak şifrelenir. Azure SQL 'deki tüm yeni veritabanları, TDE varsayılan olarak etkin ile yapılandırılır. TDE hakkında daha fazla bilgi için bkz. SQL [veritabanı & SQL yönetilen örneği saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil olmak üzere Rest 'de otomatik olarak şifrelenir. Azure SQL 'deki tüm yeni veritabanları, TDE varsayılan olarak etkin ile yapılandırılır. TDE hakkında daha fazla bilgi için bkz. SQL  [veritabanı & SQL yönetilen örneği saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Yedekleme bütünlüğü
 

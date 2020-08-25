@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117888"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798372"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -42,7 +42,7 @@ Tüm yapılandırmaları Oku | Uygulama Yöneticisi |
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Azure AD B2C dizinleri oluşturma | Konuk olmayan tüm kullanıcılar ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Azure AD B2C dizinleri oluşturma | Konuk olmayan tüm kullanıcılar ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | 
 B2C uygulamaları oluşturma | Genel Yönetici | 
 Kurumsal uygulamalar oluşturma | Bulut Uygulaması Yöneticisi | Uygulama Yöneticisi
 B2C ilkeleri oluşturun, okuyun, güncelleştirin ve silin | B2C ıEF Ilke Yöneticisi | 
@@ -54,7 +54,7 @@ Kaydolma Kullanıcı akışı oluşturun, okuyun, güncelleştirin ve silin |Dı
 Kullanıcı özniteliklerini oluşturma, okuma, güncelleştirme ve silme | Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi | 
 Kullanıcı oluşturun, okuyun, güncelleştirin ve silin | Kullanıcı Yöneticisi
 Tüm yapılandırmaları Oku | Genel okuyucu | 
-B2C denetim günlüklerini oku | Genel okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+B2C denetim günlüklerini oku | Genel okuyucu ([bkz. belgeler](../../active-directory-b2c/faq.md)) | 
 
 > [!NOTE]
 > Azure AD B2C küresel okuyucular Azure AD Genel yöneticileriyle aynı izinlere sahip değildir. Azure AD B2C genel yönetici ayrıcalıklarına sahipseniz, bir Azure AD dizini değil, bir Azure AD B2C dizininde olduğunuzdan emin olun.
@@ -64,7 +64,7 @@ B2C denetim günlüklerini oku | Genel okuyucu ([bkz. belgeler](https://docs.mic
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Şirket markası yapılandırma | Genel Yönetici | 
-Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md))
 
 ## <a name="company-properties"></a>Şirket özellikleri
 
@@ -92,25 +92,25 @@ Kesintisiz çoklu oturum açma | Karma kimlik yöneticisi  |
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Hizmet ekleme veya silme | Sahip ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Eşitleme hatasına düzeltmeleri Uygula | Katkıda bulunan ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Sahip
-Bildirimleri yapılandırma | Katkıda bulunan ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Sahip
-Ayarları yapılandırma | Sahip ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Eşitleme bildirimlerini yapılandırma | Katkıda bulunan ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Sahip
-ADFS güvenlik raporlarını oku | Güvenlik okuyucusu | Katkıda bulunan, sahip
-Tüm yapılandırmaları Oku | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
-Okuma Eşitleme hataları | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
-Eşitleme hizmetlerini oku | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
-Ölçümleri ve uyarıları görüntüleme | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
-Ölçümleri ve uyarıları görüntüleme | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
-Eşitleme hizmeti ölçümlerini ve uyarılarını görüntüleme | Okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Katkıda bulunan, sahip
+Hizmet ekleme veya silme | Sahip ([bkz. belgeler](../hybrid/how-to-connect-health-operations.md)) | 
+Eşitleme hatasına düzeltmeleri Uygula | Katkıda bulunan ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Sahip
+Bildirimleri yapılandırma | Katkıda bulunan ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Sahip
+Ayarları yapılandırma | Sahip ([bkz. belgeler](../hybrid/how-to-connect-health-operations.md)) | 
+Eşitleme bildirimlerini yapılandırma | Katkıda bulunan ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Sahip
+ADFS güvenlik raporlarını oku | Güvenlik Okuyucusu | Katkıda bulunan, sahip
+Tüm yapılandırmaları Oku | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
+Okuma Eşitleme hataları | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
+Eşitleme hizmetlerini oku | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
+Ölçümleri ve uyarıları görüntüleme | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
+Ölçümleri ve uyarıları görüntüleme | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
+Eşitleme hizmeti ölçümlerini ve uyarılarını görüntüleme | Okuyucu ([bkz. belgeler](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Katkıda bulunan, sahip
 
 ## <a name="custom-domain-names"></a>Özel etki alanı adları
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Etki alanlarını yönetme | Genel Yönetici | 
-Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Etki Alanı Hizmetleri
 
@@ -126,8 +126,8 @@ Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Cihazı devre dışı bırak | Bulut Cihaz Yöneticisi | 
 Cihazı Etkinleştir | Bulut Cihaz Yöneticisi | 
-Temel yapılandırmayı oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-BitLocker anahtarlarını oku | Güvenlik okuyucusu | Parola Yöneticisi, Güvenlik Yöneticisi
+Temel yapılandırmayı oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | 
+BitLocker anahtarlarını oku | Güvenlik Okuyucusu | Parola Yöneticisi, Güvenlik Yöneticisi
 
 ## <a name="enterprise-applications"></a>Kurumsal uygulamalar
 
@@ -136,18 +136,18 @@ Görev | En az ayrıcalıklı rol | Ek roller
 Temsilci atanan izinlerin onayı | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
 Uygulama izinlerinin onayı Microsoft Graph dahil değildir | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
 Microsoft Graph için uygulama izinlerine onay | Ayrıcalıklı rol yöneticisi | 
-Kendi verilerine erişen uygulamalara onay | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Kendi verilerine erişen uygulamalara onay | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | 
 Kurumsal uygulama oluştur | Bulut uygulaması Yöneticisi | Uygulama Yöneticisi
 Uygulama proxy 'Sini yönetme | Uygulama Yöneticisi | 
 Kullanıcı ayarlarını yönetme | Genel Yönetici | 
-Bir grubun veya uygulamanın okuma erişimi incelemesi | Güvenlik okuyucusu | Güvenlik Yöneticisi, Kullanıcı Yöneticisi
-Tüm yapılandırmaları Oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Kurumsal uygulama atamalarını güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
-Kurumsal uygulama sahiplerini güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
-Kurumsal uygulama özelliklerini güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
-Kurumsal uygulama sağlamayı Güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
-Kurumsal uygulama Self Servis güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
-Çoklu oturum açma özelliklerini güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Bir grubun veya uygulamanın okuma erişimi incelemesi | Güvenlik Okuyucusu | Güvenlik Yöneticisi, Kullanıcı Yöneticisi
+Tüm yapılandırmaları Oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | 
+Kurumsal uygulama atamalarını güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Kurumsal uygulama sahiplerini güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Kurumsal uygulama özelliklerini güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Kurumsal uygulama sağlamayı Güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Kurumsal uygulama Self Servis güncelleştirme | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
+Çoklu oturum açma özelliklerini güncelleştir | Kurumsal uygulama sahibi ([belgelere bakın](../fundamentals/users-default-permissions.md)) | Bulut uygulaması Yöneticisi, uygulama Yöneticisi
 
 ## <a name="entitlement-management"></a>Yetkilendirme yönetimi
 Görev | En az ayrıcalıklı rol | Ek roller
@@ -165,13 +165,13 @@ Grup oluşturma | Grup Yöneticisi | Kullanıcı yöneticisi
 Bir grup veya uygulama için erişim gözden geçirmesi oluşturma, güncelleştirme veya silme | Kullanıcı yöneticisi | 
 Grup süre sonunu yönetme | Kullanıcı yöneticisi | 
 Grup ayarlarını yönetme | Grup Yöneticisi | Kullanıcı Yöneticisi | 
-Tüm yapılandırmayı oku (gizli üyelik hariç) | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Tüm yapılandırmayı oku (gizli üyelik hariç) | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md))
 Gizli üyeliği oku | Grup üyesi | Grup sahibi, parola Yöneticisi, Exchange Yöneticisi, SharePoint Yöneticisi, takımlar Yöneticisi, Kullanıcı Yöneticisi
 Gizli üyelikle grupların üyeliğini oku | Yardım Masası Yöneticisi | Kullanıcı Yöneticisi, takımlar Yöneticisi
 Lisansı iptal et | Lisans yöneticisi | Kullanıcı yöneticisi
-Grup üyeliğini Güncelleştir | Grup sahibi ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Kullanıcı yöneticisi
-Grup sahiplerini güncelleştirme | Grup sahibi ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Kullanıcı yöneticisi
-Güncelleştirme grubu özellikleri | Grup sahibi ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Kullanıcı yöneticisi
+Grup üyeliğini Güncelleştir | Grup sahibi ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | Kullanıcı yöneticisi
+Grup sahiplerini güncelleştirme | Grup sahibi ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | Kullanıcı yöneticisi
+Güncelleştirme grubu özellikleri | Grup sahibi ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | Kullanıcı yöneticisi
 Grubu silme | Grup Yöneticisi | Kullanıcı yöneticisi
 
 ## <a name="identity-protection"></a>Kimlik Koruması
@@ -185,16 +185,16 @@ Kullanıcı risk ilkesini yapılandırma ve etkinleştirme veya devre dışı b�
 Haftalık özetleri yapılandırma | Güvenlik Yöneticisi| 
 Tüm risk algılamalarını kapat | Güvenlik Yöneticisi | 
 Güvenlik açığı 'nı onarın veya kapatın | Güvenlik Yöneticisi | 
-Tüm yapılandırmaları Oku | Güvenlik okuyucusu | 
-Tüm risk algılamalarını okuyun | Güvenlik okuyucusu | 
-Güvenlik açıklarını okuyun | Güvenlik okuyucusu | 
+Tüm yapılandırmaları Oku | Güvenlik Okuyucusu | 
+Tüm risk algılamalarını okuyun | Güvenlik Okuyucusu | 
+Güvenlik açıklarını okuyun | Güvenlik Okuyucusu | 
 
 ## <a name="licenses"></a>Lisanslar
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Lisans atama | Lisans yöneticisi | Kullanıcı yöneticisi
-Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md))
 Lisansı iptal et | Lisans yöneticisi | Kullanıcı yöneticisi
 Abonelik deneyin veya satın alın | Faturalama yöneticisi | 
 
@@ -274,8 +274,8 @@ Rol üyeliklerini görüntüleme | Güvenlik okuyucusu |
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Rol atamalarını yönetme | Ayrıcalıklı rol yöneticisi | 
-Azure AD rolünün okuma erişimi incelemesi  | Güvenlik okuyucusu | Güvenlik Yöneticisi, ayrıcalıklı rol yöneticisi
-Tüm yapılandırmaları Oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Azure AD rolünün okuma erişimi incelemesi  | Güvenlik Okuyucusu | Güvenlik Yöneticisi, ayrıcalıklı rol yöneticisi
+Tüm yapılandırmaları Oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md)) | 
 
 ## <a name="security---authentication-methods"></a>Güvenlik-kimlik doğrulama yöntemleri
 
@@ -318,16 +318,16 @@ Olay durumunu güncelleştir | Güvenlik yöneticisi |
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Tüm yapılandırmaları Oku | Güvenlik okuyucusu | 
-Riskli oturum açma işlemlerini okuyun | Güvenlik okuyucusu | 
+Tüm yapılandırmaları Oku | Güvenlik Okuyucusu | 
+Riskli oturum açma işlemlerini okuyun | Güvenlik Okuyucusu | 
 
 ## <a name="security---users-flagged-for-risk"></a>Güvenlik-risk için işaretlenen kullanıcılar
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Tüm olayları kapatabilirsiniz. | Güvenlik Yöneticisi | 
-Tüm yapılandırmaları Oku | Güvenlik okuyucusu | 
-Risk için işaretlenen kullanıcıları okuyun | Güvenlik okuyucusu | 
+Tüm yapılandırmaları Oku | Güvenlik Okuyucusu | 
+Risk için işaretlenen kullanıcıları okuyun | Güvenlik Okuyucusu | 
 
 ## <a name="users"></a>Kullanıcılar
 
@@ -342,7 +342,7 @@ Kullanıcıları silme | Kullanıcı yöneticisi |
 Sınırlı yöneticilerin yenileme belirteçlerini geçersiz kılar (bkz. belgeler) | Kullanıcı yöneticisi | 
 Yönetici olmayanlar için yenileme belirteçlerini geçersiz kıl (belgelere bakın) | Parola yöneticisi | Kullanıcı yöneticisi
 Ayrıcalıklı yöneticilerin yenileme belirteçlerini geçersiz kıl (belgelere bakın) | Ayrıcalıklı kimlik doğrulama Yöneticisi | 
-Temel yapılandırmayı oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
+Temel yapılandırmayı oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](../fundamentals/users-default-permissions.md) | 
 Sınırlı yöneticiler için parolayı sıfırlama (bkz. belgeler) | Kullanıcı yöneticisi | 
 Yönetici olmayanlar parolasını sıfırlama (belgelere bakın) | Parola yöneticisi | Kullanıcı yöneticisi
 Ayrıcalıklı yöneticilerin parolasını sıfırlama | Ayrıcalıklı kimlik doğrulama Yöneticisi | 

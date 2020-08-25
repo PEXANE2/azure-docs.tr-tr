@@ -2,18 +2,18 @@
 title: Sipariş Azure Data Box öğretici | Microsoft Docs
 description: Bu öğreticide, şirket içi verileri Azure 'a aktarmanıza ve Azure Data Box nasıl sipariş alabileceğinizi sağlayan bir karma çözüm olan Azure Data Box hakkında bilgi edinin.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.author: v-grpr
-ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: twooley
+ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926374"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783578"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -89,7 +89,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 
 **Azure Data Box CLı uzantısını yükler**
 
-Azure Data Box CLı komutlarını kullanabilmeniz için, uzantıyı yüklemeniz gerekir. Azure CLı uzantıları, henüz çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar. Uzantılar hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+Azure Data Box CLı komutlarını kullanabilmeniz için, uzantıyı yüklemeniz gerekir. Azure CLI uzantıları, henüz temel CLI’nın parçası olarak gönderilmeyen deneysel ve ön sürüm komutlarına erişmenize olanak sağlar. Uzantılar hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
 Azure Data Box uzantısını yüklemek için şu komutu çalıştırın: `az extension add --name databox` :
 
@@ -322,7 +322,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
    |çıkış-o| Çıkış biçimini ayarlar.  İzin verilen değerler: JSON, jsonc, None, Table, TSV, YAML, yamlc. Varsayılan değer JSON ' dır. | --output "JSON" |
-   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
+   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
 2. Tercih ettiğiniz veya terminalin komut isteminde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) komutunu kullanın.
@@ -509,7 +509,7 @@ Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az 
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
    |çıkış-o| Çıkış biçimini ayarlar.  İzin verilen değerler: JSON, jsonc, None, Table, TSV, YAML, yamlc. Varsayılan değer JSON ' dır. | --output "JSON" |
-   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
+   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
    Çıktı biçimi "Tablo" olarak ayarlanan komuta bir örnek aşağıda verilmiştir:
@@ -550,7 +550,7 @@ Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `az databox jo
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
    |çıkış-o| Çıkış biçimini ayarlar.  İzin verilen değerler: JSON, jsonc, None, Table, TSV, YAML, yamlc. Varsayılan değer JSON ' dır. | --output "JSON" |
-   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
+   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
    Çıktı biçimi "Tablo" olarak ayarlanan komuta bir örnek aşağıda verilmiştir:
@@ -580,7 +580,7 @@ Aşağıdaki tabloda, için parametre bilgileri gösterilmektedir `az databox jo
 Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob)komutunu çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
 > [!NOTE]
-> `Get-AzDataBoxJob`hem tek hem de birden çok siparişi görüntülemek için kullanılır. Fark, tek siparişler için sipariş adını belirtmektir.
+> `Get-AzDataBoxJob` hem tek hem de birden çok siparişi görüntülemek için kullanılır. Fark, tek siparişler için sipariş adını belirtmektir.
 
    ```azurepowershell
     Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
@@ -671,7 +671,7 @@ Azure Data Box sırayı iptal etmek için [az databox Job Cancel](https://docs.m
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
    |çıkış-o| Çıkış biçimini ayarlar.  İzin verilen değerler: JSON, jsonc, None, Table, TSV, YAML, yamlc. Varsayılan değer JSON ' dır. | --output "JSON" |
-   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
+   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
    Çıktıyı içeren komuta bir örnek aşağıda verilmiştir:
@@ -708,7 +708,7 @@ Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox J
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
    |çıkış-o| Çıkış biçimini ayarlar.  İzin verilen değerler: JSON, jsonc, None, Table, TSV, YAML, yamlc. Varsayılan değer JSON ' dır. | --output "JSON" |
-   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu<string>|
+   |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
 Çıktıyı içeren komuta bir örnek aşağıda verilmiştir:

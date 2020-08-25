@@ -3,14 +3,14 @@ title: Dayanıklı İşlevler tanılama-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısıyla ilgili sorunları tanılamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081823"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750727"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'de Tanılama
 
@@ -28,7 +28,7 @@ Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayını
 
 * **hubname**: düzenleyiclerinizin çalıştığı görev hub 'ının adı.
 * **appname**: işlev uygulamasının adı. Aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda bu alan faydalıdır.
-* **slotname**: geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](../functions-deployment-slots.md) . Bu alan, ayarlarınızı yönetmek için dağıtım yuvalarından yararlandığınızda yararlıdır.
+* **slotname**: geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](../functions-deployment-slots.md) . Bu alan, ayarlarınızı yönetmek için dağıtım yuvaları kullandığınızda yararlı olur.
 * **fonksiyonadı**: Orchestrator veya Activity işlevinin adı.
 * **FunctionType**: **Orchestrator** veya **Activity**gibi işlevin türü.
 * **InstanceId**: Orchestration ÖRNEĞININ benzersiz kimliği.
@@ -88,7 +88,7 @@ Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek 
 
 #### <a name="functions-20"></a>İşlevler 2,0
 
-```javascript
+```json
 {
     "extensions": {
         "durableTask": {
@@ -103,9 +103,9 @@ Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek 
 
 ### <a name="single-instance-query"></a>Tek örnekli sorgu
 
-Aşağıdaki sorgu, bir [Merhaba sıra](durable-functions-sequence.md) işlevi düzenleme işlevinin tek bir örneği için geçmiş izleme verilerini gösterir. [Application Insights sorgu dili (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)kullanılarak yazılmıştır. Yalnızca *mantıksal* yürütme yolunun gösterilmesi için yeniden yürütme yürütmesini filtreler. Olaylar, `timestamp` `sequenceNumber` aşağıdaki sorguda gösterildiği gibi ve arasında sıralama yaparak sıralanabilir:
+Aşağıdaki sorgu, bir [Merhaba sıra](durable-functions-sequence.md) işlevi düzenleme işlevinin tek bir örneği için geçmiş izleme verilerini gösterir. [Kusto sorgu dili](/azure/data-explorer/kusto/query/)kullanılarak yazılmıştır. Yalnızca *mantıksal* yürütme yolunun gösterilmesi için yeniden yürütme yürütmesini filtreler. Olaylar, `timestamp` `sequenceNumber` aşağıdaki sorguda gösterildiği gibi ve arasında sıralama yaparak sıralanabilir:
 
-```AIQL
+```kusto
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
 let start = datetime(2018-03-25T09:20:00);
 traces
@@ -124,13 +124,13 @@ traces
 
 Sonuç, yürütme süresi tarafından artan düzende sıralanan etkinlik işlevleri dahil olmak üzere Orchestration yürütme yolunu gösteren izleme olaylarının bir listesidir.
 
-![Application Insights sorgu](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Tek örnekli sıralı sorgu Application Insights](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
 ### <a name="instance-summary-query"></a>Örnek Özet sorgusu
 
 Aşağıdaki sorgu, belirli bir zaman aralığında çalıştırılan tüm düzenleme örneklerinin durumunu görüntüler.
 
-```AIQL
+```kusto
 let start = datetime(2017-09-30T04:30:00);
 traces
 | where timestamp > start and timestamp < start + 1h
@@ -148,13 +148,61 @@ traces
 
 Sonuç, örnek kimliklerinin ve bunların geçerli çalışma zamanı durumlarının bir listesidir.
 
-![Application Insights sorgu](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Tek örnekli sorgu Application Insights](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="durable-task-framework-logging"></a>Dayanıklı görev çerçevesi günlüğü
+
+Dayanıklı uzantı günlükleri, düzenleme mantığınızın davranışını anlamak için kullanışlıdır. Ancak, bu Günlükler her zaman çerçeve düzeyinde performans ve güvenilirlik sorunlarını ayıklamak için yeterli bilgi içermez. Dayanıklı uzantının **v 2.3.0** 'den başlayarak, temel dayanıklı görev çerçevesi (DTFx) tarafından oluşturulan Günlükler de koleksiyon için kullanılabilir.
+
+DTFx tarafından oluşturulan günlüklere baktığınızda, DTFx altyapısının iki bileşenden oluştuğunu anlamak önemlidir: çekirdek dağıtım altyapısı ( `DurableTask.Core` ) ve desteklenen birçok depolama sağlayıcısından biri (dayanıklı işlevler `DurableTask.AzureStorage` Varsayılan olarak kullanır).
+
+* **Durabletask. Core**: düzenleme yürütmesi ve düşük düzeyli zamanlama hakkındaki bilgileri içerir.
+* **Durabletask. AzureStorage**: iç düzenleme durumunu depolamak ve getirmek için kullanılan iç kuyruklar, Bloblar ve depolama tabloları dahil olmak üzere Azure depolama yapıtlarıyla ilgili bilgiler içerir.
+
+`logging/logLevel`İşlev uygulamanızın dosya **host.js** bölümünü güncelleştirerek bu günlükleri etkinleştirebilirsiniz. Aşağıdaki örnek, ve ' den her ikisinin de uyarı ve hata günlüklerinin nasıl etkinleştirileceğini gösterir `DurableTask.Core` `DurableTask.AzureStorage` :
+
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "logLevel": {
+      "DurableTask.AzureStorage": "Warning",
+      "DurableTask.Core": "Warning"
+    }
+  }
+}
+```
+
+Application Insights etkinse, bu Günlükler koleksiyona otomatik olarak eklenir `trace` . Bunları, kusto sorgularını kullanarak diğer günlüklere arama yaptığınız şekilde de arayabilirsiniz `trace` .
+
+> [!NOTE]
+> Üretim uygulamaları için `DurableTask.Core` `DurableTask.AzureStorage` filtreyi kullanarak etkinleştirmeniz ve günlüklemeniz önerilir `"Warning"` . Gibi daha yüksek ayrıntı filtreleri `"Information"` , performans sorunlarını gidermek için çok yararlıdır. Ancak, bu günlük olayları yüksek hacimdir ve Application Insights veri depolama maliyetlerini önemli ölçüde artırabilir.
+
+Aşağıdaki kusto sorgusu, DTFx günlüklerinin nasıl sorgulanacağını gösterir. Sorgunun en önemli bölümü, `where customerDimensions.Category startswith "DurableTask"` sonuçları ve kategorilerindeki günlüklere filtreleyerek bu yana olur `DurableTask.Core` `DurableTask.AzureStorage` .
+
+```kusto
+traces
+| where customDimensions.Category startswith "DurableTask"
+| project
+    timestamp,
+    severityLevel,
+    Category = customDimensions.Category,
+    EventId = customDimensions.EventId,
+    message,
+    customDimensions
+| order by timestamp asc 
+```
+Sonuç, dayanıklı görev çerçevesi günlük sağlayıcıları tarafından yazılan bir Günlükler kümesidir.
+
+![Application Insights DTFx sorgu sonuçları](./media/durable-functions-diagnostics/app-insights-dtfx.png)
+
+Hangi günlük olaylarının kullanılabildiği hakkında daha fazla bilgi için bkz. [GitHub 'Da dayanıklı görev çerçevesi yapılandırılmış günlük belgeleri](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Core/Logging#durabletaskcore-logging).
+
+## <a name="app-logging"></a>Uygulama günlüğü
 
 Doğrudan bir Orchestrator işlevinden Günlükler yazarken Orchestrator yeniden yürütme davranışının aklınızda tutulması önemlidir. Örneğin, aşağıdaki Orchestrator işlevini göz önünde bulundurun:
 
-### <a name="precompiled-c"></a>Ön derlenmiş C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -172,24 +220,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="c-script"></a>C# betiği
-
-```csharp
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -204,6 +235,26 @@ module.exports = df.orchestrator(function*(context){
     context.log("Done!");
 });
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
 
 Elde edilen günlük verileri aşağıdaki örnek çıkışa benzer bir şekilde görünür:
 
@@ -223,9 +274,9 @@ Done!
 > [!NOTE]
 > Günlük, F1, F2 ve F3 çağrısı yaparken, bu *işlevlerin yalnızca ilk* kez karşılaştığı zaman adlandırıldığını unutmayın. Yeniden yürütme sırasında gerçekleşen sonraki çağrılar atlanır ve çıktılar Orchestrator mantığına yeniden yürütülür.
 
-Yalnızca yeniden denenmesiz yürütme oturumu açmak istiyorsanız, yalnızca ise, günlüğe kaydedilecek koşullu bir ifade yazabilirsiniz `IsReplaying` `false` . Yukarıdaki örneği, ancak bu kez yeniden yürütme denetimlerini göz önünde bulundurun.
+Yalnızca yeniden denenmeyen yürütmeler üzerinde Günlükler yazmak istiyorsanız, yalnızca "yeniden oynama" bayrağı ise günlüğe bir koşullu ifade yazabilirsiniz `false` . Yukarıdaki örneği, ancak bu kez yeniden yürütme denetimlerini göz önünde bulundurun.
 
-#### <a name="precompiled-c"></a>Ön derlenmiş C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -243,40 +294,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="c"></a>C#
-
-```cs
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    if (!context.IsReplaying) log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    if (!context.IsReplaying) log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    if (!context.IsReplaying) log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
-
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.orchestrator(function*(context){
-    if (!context.df.isReplaying) context.log("Calling F1.");
-    yield context.df.callActivity("F1");
-    if (!context.df.isReplaying) context.log("Calling F2.");
-    yield context.df.callActivity("F2");
-    if (!context.df.isReplaying) context.log("Calling F3.");
-    yield context.df.callActivity("F3");
-    context.log("Done!");
-});
-```
-
-Dayanıklı İşlevler 2,0 ' den başlayarak, .NET Orchestrator işlevlerinin yeniden `ILogger` yürütme sırasında günlük deyimlerini otomatik olarak filtreleyen bir oluşturma seçeneği de vardır. Bu otomatik filtreleme API kullanılarak yapılır `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` .
+Dayanıklı İşlevler 2,0 ' den başlayarak, .NET Orchestrator işlevlerinin yeniden `ILogger` yürütme sırasında günlük deyimlerini otomatik olarak filtreleyen bir oluşturma seçeneği de vardır. Bu otomatik filtreleme, [ıdurableorchestrationcontext. CreateReplaySafeLogger (ILogger)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.durablecontextextensions.createreplaysafelogger) API 'si kullanılarak yapılır.
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,6 +313,49 @@ public static async Task Run(
 }
 ```
 
+> [!NOTE]
+> Önceki C# örnekleri Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    if (!context.df.isReplaying) context.log("Calling F1.");
+    yield context.df.callActivity("F1");
+    if (!context.df.isReplaying) context.log("Calling F2.");
+    yield context.df.callActivity("F2");
+    if (!context.df.isReplaying) context.log("Calling F3.");
+    yield context.df.callActivity("F3");
+    context.log("Done!");
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    if not context.is_replaying:
+        logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    if not context.is_replaying:
+        logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    if not context.is_replaying:
+        logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Daha önce bahsedilen değişikliklerle, günlük çıktısı aşağıdaki gibidir:
 
 ```txt
@@ -304,14 +365,11 @@ Calling F3.
 Done!
 ```
 
-> [!NOTE]
-> Önceki C# örnekleri Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
-
 ## <a name="custom-status"></a>Özel durum
 
-Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum HTTP durumu sorgu API 'SI veya API 'si ile sağlanır `IDurableOrchestrationClient.GetStatusAsync` . Özel düzenleme durumu Orchestrator işlevleri için daha zengin izleme imkanı sunar. Örneğin, Orchestrator işlev kodu `IDurableOrchestrationContext.SetCustomStatus` uzun süre çalışan bir işlemin ilerlemesini güncelleştirme çağrılarını içerebilir. Web sayfası veya diğer dış sistem gibi bir istemci, daha zengin ilerleme bilgileri için HTTP durum sorgusu API 'Lerini düzenli aralıklarla sorgulayabilir. Aşağıdaki bir örnek `IDurableOrchestrationContext.SetCustomStatus` aşağıda verilmiştir:
+Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu özel durum daha sonra [http durum sorgu API 'si](durable-functions-http-api.md#get-instance-status) veya DILE özgü API çağrıları aracılığıyla dış istemciler tarafından görülebilir. Özel düzenleme durumu Orchestrator işlevleri için daha zengin izleme imkanı sunar. Örneğin, Orchestrator işlev kodu uzun süre çalışan bir işlemin ilerlemesini güncelleştirmek için "özel durum ayarla" API 'sini çağırabilir. Web sayfası veya diğer dış sistem gibi bir istemci, daha zengin ilerleme bilgileri için HTTP durum sorgusu API 'Lerini düzenli aralıklarla sorgulayabilir. Orchestrator işlevindeki özel durum değerini ayarlamaya yönelik örnek kod aşağıda verilmiştir:
 
-### <a name="precompiled-c"></a>Ön derlenmiş C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SetStatusTest")]
@@ -330,7 +388,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 > [!NOTE]
 > Önceki C# örneği Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -346,10 +404,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    # ...do work...
+
+    # update the status of the orchestration with some arbitrary data
+    custom_status = {'completionPercentage': 90.0, 'status': 'Updating database records'}
+    context.set_custom_status(custom_status)
+    # ...do more work...
+
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Düzenleme çalışırken, dış istemciler şu özel durumu getirebilir:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/instance123
+GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 ```
 
@@ -379,7 +459,7 @@ Azure Işlevleri, işlev kodu doğrudan hata ayıklamayı destekler ve aynı des
 * **Durduruluyor ve başlatılıyor**: dayanıklı işlevlerde iletiler hata ayıklama oturumları arasında kalır. Kalıcı bir işlev yürütülürken hata ayıklamayı durdurur ve yerel ana bilgisayar işlemini sonlandırabilirsiniz, bu işlev gelecekteki bir hata ayıklama oturumunda otomatik olarak yeniden çalıştırılabilir. Bu davranış, beklenmediği zaman kafa karıştırıcı olabilir. Bu davranışı önlemek için, hata ayıklama oturumları arasındaki [iç depolama sıralarındaki](durable-functions-perf-and-scale.md#internal-queue-triggers) tüm iletileri temizleme işlemi bir tekniktir.
 
 > [!TIP]
-> Orchestrator işlevlerinde kesme noktaları ayarlarken, yalnızca yeniden yürütmeye yönelik yürütmeyi bölmek istiyorsanız, yalnızca ise kesintiye uğramayan koşullu bir kesme noktası ayarlayabilirsiniz `IsReplaying` `false` .
+> Orchestrator işlevlerinde kesme noktaları ayarlarken, yalnızca yeniden denenmeyen yürütmeyi bölmek istiyorsanız, yalnızca "yeniden yürütme" değeri ise kesen bir koşullu kesme noktası ayarlayabilirsiniz `false` .
 
 ## <a name="storage"></a>Depolama
 

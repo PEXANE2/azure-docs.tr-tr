@@ -3,12 +3,12 @@ title: Azure CLı ile Azure dosya paylaşımlarını yedekleme
 description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki Azure dosya paylaşımlarını nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 273c8fadc25ed60ba9fb57ec69bda0b59f155f87
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514450"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763278"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLı ile Azure dosya paylaşımlarını yedekleme
 
@@ -16,7 +16,7 @@ Azure komut satırı arabirimi (CLı), Azure kaynaklarını yönetmek için bir 
 
 Bu öğreticinin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekleştirmeyi öğreneceksiniz:
 
-* Kurtarma hizmetleri kasası oluşturma
+* Kurtarma Hizmetleri kasası oluşturma
 * Azure dosya paylaşımları için yedeklemeyi etkinleştir
 * Dosya paylaşımları için isteğe bağlı yedekleme tetikleyin
 
@@ -24,9 +24,9 @@ Bu öğreticinin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekle�
 
 CLI'yı yerel ortamda yüklemek ve kullanmak için Azure CLI sürüm 2.0.18 veya üzeri çalıştırmanız gerekir. CLı sürümünü bulmak için `run az --version` . Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma
+## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-Kurtarma hizmeti Kasası, tüm yedekleme öğelerinde birleştirilmiş bir görünüm ve yönetim özelliği sunan bir varlıktır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
+Kurtarma Hizmetleri Kasası, tüm yedekleme öğelerinde birleştirilmiş bir görünüm ve yönetim özelliği sunan bir varlıktır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
 
 Kurtarma Hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyin:
 

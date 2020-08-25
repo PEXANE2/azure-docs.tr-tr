@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82571003"
 ---
 # <a name="tutorial-install-azure-stack-edge"></a>Öğretici: Azure Stack Edge 'i yükler
@@ -22,14 +22,14 @@ Bu öğreticide, Azure Stack Edge fiziksel cihazının nasıl yükleneceği aç�
 
 Yüklemenin tamamlanması iki saat sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cihazı kutusundan çıkarma
 > * Cihaza raf bağlama
 > * Cihazın kablolarını bağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Fiziksel bir cihazı yükleme önkoşulları şunlardır:
 
@@ -86,7 +86,7 @@ Cihaz, standart 19 inç bir rafa yüklenmiş olmalıdır. Cihazınızı standart
 > Azure Stack Edge cihazlarının uygun işlemler için rafa bağlı olması gerekir.
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Başlamadan önce güvenlik, ortam ve mevzuat bilgi kitapçığlarınızın güvenlik yönergelerini okuyun. Bu broşür cihazla birlikte gönderilmiştir.
 - Dolap kutusu alt kısmına en yakın olan ayrılan alana rayları yüklemeye başlayın.

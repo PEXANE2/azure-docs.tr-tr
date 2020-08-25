@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745727"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799494"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
 Potansiyel olarak kısıtlanmış kaynaklara erişebilmek için, iş sahibi Windows 10 cihazınızı kuruluşunuzun ağına katın.
@@ -27,9 +27,9 @@ Windows 10 cihazınızı kuruluşunuzun ağına katlarken aşağıdaki eylemler 
 
 - Windows, cihazınızı kuruluşunuzun ağına kaydeder ve kişisel hesabınızı kullanarak kaynaklarınıza erişmenize olanak tanır. Cihazınız kaydedildikten sonra Windows, cihazınızı ağa birleştirir. böylece, kuruluşunuzun Kullanıcı adını ve parolasını kullanarak oturum açabilir ve Kısıtlanmış kaynaklara erişebilirsiniz.
 
-- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri](user-help-security-info-overview.md)aracılığıyla iki adımlı doğrulama ayarlamanız istenebilir.
+- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri](./security-info-setup-signin.md)aracılığıyla iki adımlı doğrulama ayarlamanız istenebilir.
 
-- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, Microsoft Intune gibi mobil cihaz yönetimine otomatik olarak kaydolmuş olabilirsiniz. Microsoft Intune kaydolma hakkında daha fazla bilgi için bkz. [cihazınızı Intune 'A kaydetme](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- İsteğe bağlı olarak, kuruluşunuzun seçeneklerine bağlı olarak, Microsoft Intune gibi mobil cihaz yönetimine otomatik olarak kaydolmuş olabilirsiniz. Microsoft Intune kaydolma hakkında daha fazla bilgi için bkz. [cihazınızı Intune 'A kaydetme](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Kurumsal hesabınızla otomatik oturum açmayı kullanarak oturum açma işlemine geçebilirsiniz.
 
@@ -91,7 +91,7 @@ Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı 
 
     ![Mobil Bildirim ekranı](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Kuruluşunuzun ekranı olduğundan **emin olun** , doğru olduğundan emin olmak için bilgileri gözden geçirin ve ardından **Birleştir**' i seçin.
+7. Kuruluşunuzun ekranı olduğundan  **emin olun** , doğru olduğundan emin olmak için bilgileri gözden geçirin ve ardından **Birleştir**' i seçin.
 
     ![Bunun kuruluşunuzun doğrulama ekranı olduğundan emin olun](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
@@ -115,4 +115,4 @@ Cihazınızı kuruluşunuzun ağına katdıktan sonra iş veya okul hesabı bilg
 
 - Kuruluşunuz telefon gibi kişisel cihazınızı kaydetmenizi istiyorsa, bkz. [Kişisel cihazınızı kuruluşunuzun ağına kaydetme](user-help-register-device-on-network.md).
 
-- Kuruluşunuz Microsoft Intune kullanılarak yönetiliyorsa ve kayıt, oturum açma veya Intune ile ilgili diğer sorunlar hakkında sorularınız varsa, bkz. [Intune Kullanıcı Yardım içeriği](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Kuruluşunuz Microsoft Intune kullanılarak yönetiliyorsa ve kayıt, oturum açma veya Intune ile ilgili diğer sorunlar hakkında sorularınız varsa, bkz. [Intune Kullanıcı Yardım içeriği](/intune-user-help/use-managed-devices-to-get-work-done).

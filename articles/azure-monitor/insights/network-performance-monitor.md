@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326095"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798916"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -37,8 +37,10 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki bağlantıyı, aşağıdaki bölgelerden birinde barındırılan bir çalışma alanından izleyebilir:
 * Kuzey Avrupa
-* Batı Avrupa
+* West Europe
+* İsviçre Kuzey
 * Orta Fransa
+* Güney Afrika Kuzey
 * Orta Kanada
 * Batı ABD
 * Orta Batı ABD
@@ -56,8 +58,9 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Güney UK
 * Doğu Asya
 * Güney Kore - Orta
-* Central India
+* Orta Hindistan
 * ABD devleti Virginia
+* ABD devleti Arizona
 * Çin Doğu 2
 
 
@@ -158,7 +161,7 @@ Bir aracısının yüklü olduğu tüm düğümler **düğümler** sekmesinde li
 
 1. İzlemek veya izlemeyi durdurmak istediğiniz düğümleri seçin veya temizleyin. 
 2. **İzleme Için kullan**' ı seçin veya uygun şekilde temizleyin. 
-3. **Kaydet**'i seçin. 
+3. **Kaydet**’i seçin. 
 
 
 İstediğiniz özellikleri yapılandırın:

@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489444"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757362"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir Azure VM 'de SAP HANA veritabanlarını yönetme
 
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Daha sonra, SAP HANA örneğiniz üzerinde bulunan tüm veritabanlarını listelemek için [az Backup korunabilir-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 'ini kullanın. Ancak bu liste, yedeklemenin zaten yapılandırıldığı veritabanlarını dışlar. Yedeklenecek veritabanı bulunduğunda, [SAP HANA veritabanında yedeklemeyi etkinleştir](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)' e başvurun.
+Daha sonra, SAP HANA örneğiniz üzerinde bulunan tüm veritabanlarını listelemek için [az Backup korunabilir-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 'ini kullanın. Ancak bu liste, yedeklemenin zaten yapılandırıldığı veritabanlarını dışlar. Yedeklenecek veritabanı bulunduğunda,  [SAP HANA veritabanında yedeklemeyi etkinleştir](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)' e başvurun.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \

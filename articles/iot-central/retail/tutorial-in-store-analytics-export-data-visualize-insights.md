@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81000108"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -42,7 +42,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları yönetmek için bir kaynak grubu oluşturmanız gerekir. Kaynak grubu, **Mağaza Analytics-checkout** IoT Central uygulaması ile aynı konumda olmalıdır. Kaynak grubu oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
 1. **Abonelik**için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.
@@ -179,11 +179,11 @@ Aşağıdaki adımlarda Azure portal mantıksal uygulamayı nasıl oluşturacağ
     * **Olay Hub 'ı adı**' nda **Mağaza-telemetri**' i seçin.
     * **İçerik türü**' nde **uygulama/JSON**' ı seçin.
     * **Aralığı** üç ve **Sıklık** olarak saniye olarak ayarlayın
-1. Mantıksal uygulamanızı kaydetmek için **Kaydet** ' i seçin.
+1. **Kaydet**’i seçerek mantıksal uygulamanızı kaydedin.
 
 Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü**' nü seçin:
 
-1. Aşağıdaki `"actions": {},` JSON ile değiştirin. İki yer `[YOUR RUUVITAG DEVICE ID 1]` tutucuyu ve `[YOUR RUUVITAG DEVICE ID 2]` Iki ruuvitag cihazlarınızdan not ettiğiniz kimliklerle değiştirin:
+1. `"actions": {},`AŞAĞıDAKI JSON ile değiştirin. İki yer tutucuyu `[YOUR RUUVITAG DEVICE ID 1]` ve `[YOUR RUUVITAG DEVICE ID 2]` Iki RuuviTag cihazlarınızdan not ettiğiniz kimliklerle değiştirin:
 
     ```json
     "actions": {
@@ -384,7 +384,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
     * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Bölge 1 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![bölge 1 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Bölge 1 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ bölge 1 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
 1. **Bölge 2 ortamı** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
@@ -396,7 +396,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
     * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
-    Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.  **Bölge 2 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![bölge 2 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.  **Bölge 2 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ bölge 2 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. **Sahiplik** eylemini seçin ve ardından **arabirim kimliğiyle anahtar** eylemini seçin.
 1. **Iyi zaman arabirimi** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
@@ -409,7 +409,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Iyi saat 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **DwellTime1**öğesini seçin.
     * **Diyi zaman 2** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla bilgi** 'yi seçin. Ardından **DwellTime2**öğesini seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Iyi zaman arabirimi** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Iyi zaman arabirimi** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![ sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. **Kişi sayısı arabirim** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
@@ -421,7 +421,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Sıra uzunluğu 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count1**öğesini seçin.
     * **Sıra uzunluğu 2** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count2**öğesini seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Kişi sayısı arabirim** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Kişi sayısı arabirim** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![ sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
 Mantıksal uygulama otomatik olarak çalışır. Her çalıştırmanın durumunu görmek için Azure portal mantıksal uygulamanın **genel bakış** sayfasına gidin:
 

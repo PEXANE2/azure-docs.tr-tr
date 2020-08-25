@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190508"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757294"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -121,6 +121,18 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK yüklemesi bir özel durumla başarısız oluyor: Modulenotfounyıl: ' ruamel ' veya ' ımporterror: ' ruamel. YAML ' adlı modül yok**
+   
+   Bu sorun, Python için Azure Machine Learning SDK 'sının yayınlanan tüm sürümleri için Conda temel ortamındaki en son PIP ortamında Python için Azure Machine Learning SDK 'nın yüklenmesiyle (>20.1.1) ile karşılaştı. Aşağıdaki geçici çözümlere başvurun:
+
+    * Conda temel ortamına Python SDK yüklemeden kaçının, bunun yerine Conda ortamınızı oluşturun ve SDK 'Yı yeni oluşturulan kullanıcı ortamına yüklemeniz gerekir. En son PIP, bu yeni Conda ortamında çalışmalıdır.
+
+    * Conda temel ortamından geçiş yapmak istediğiniz Docker 'da görüntü oluşturmak için lütfen Docker dosyasında PIP<= 20.1.1 öğesini sabitleyin.
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **Paketler yüklenirken databricks hatası**
 
     Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil` çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:

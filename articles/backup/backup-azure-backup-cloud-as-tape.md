@@ -3,12 +3,12 @@ title: Bant altyapınızı değiştirme
 description: Azure Backup Azure 'da verileri yedeklemeve geri yüklemenize olanak tanıyan bant benzeri semantiğini nasıl sağladığını öğrenin
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 71bfa86611b3a63fa6a28f60f80608b394cab5a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514195"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757243"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun vadeli depolama alanınızı teypten Azure bulutuna taşıma
 
@@ -64,7 +64,7 @@ Toplam kurtarma noktası sayısı 56 ' dir.
 
 Önceki ekranda **Değiştir** 'e tıkladığınızda müşteriler bekletme zamanlamalarını belirtirken daha fazla esneklik sağlar.
 
-![Değiştir](./media/backup-azure-backup-cloud-as-tape/modify.png)
+![Ilke penceresini Değiştir](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

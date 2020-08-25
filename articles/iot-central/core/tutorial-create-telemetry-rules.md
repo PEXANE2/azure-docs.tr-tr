@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80999055"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturma ve bildirim ayarlama
@@ -23,16 +23,16 @@ Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central kullanabilirsin
 
 Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen cihaz telemetrisi belirtilen eşiği aştığında bir kural tetiklenir.
 
-Bu öğreticide, sanal bir ortam algılayıcısı cihazındaki sıcaklık 70&deg; F 'yi aştığında bir e-posta göndermek için bir kural oluşturacaksınız.
+Bu öğreticide, sanal bir ortam algılayıcısı cihazındaki sıcaklık 70 F 'yi aştığında bir e-posta göndermek için bir kural oluşturacaksınız &deg; .
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Kural oluşturma
 > * E-posta eylemi ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-simulated-device.md) , birlikte çalışmak üzere **mxyonga IoT devkit** cihaz şablonunu oluşturun.
 
@@ -46,7 +46,7 @@ Bir telemetri kuralı oluşturmak için, cihaz şablonu en az bir telemetri değ
 
     ![Henüz kural yok](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
 
-1. Yeni **+** bir kural eklemek için seçin.
+1. **+** Yeni bir kural eklemek için seçin.
 
 1. Kuralı tanımlamak için _sıcaklık izleyicisini_ girin ve ENTER 'a basın.
 
@@ -56,7 +56,7 @@ Bir telemetri kuralı oluşturmak için, cihaz şablonu en az bir telemetri değ
 
 ### <a name="configure-the-rule-conditions"></a>Kural koşullarını yapılandırma
 
-Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklığın 70&deg; F 'yi aşması durumunda tetiklemesi kuralını yapılandırırsınız.
+Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklığın 70 F 'yi aşması durumunda tetiklemesi kuralını yapılandırırsınız &deg; .
 
 1. **Telemetri** açılan menüsünde **sıcaklık** ' ı seçin.
 
@@ -71,7 +71,7 @@ Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklığ�
 
      ![Toplama koşulu](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
-**+ Koşul**' i seçerek bir kurala birden çok koşul ekleyebilirsiniz. Birden çok koşul belirtildiğinde kuralın tetiklenmesi için tüm koşulların karşılanması gerekir. Her koşul örtük `AND` bir yan tümce ile birleştirilir. Birden çok koşuldan oluşan zaman toplamayı kullanıyorsanız, tüm telemetri değerlerinin toplanması gerekir.
+**+ Koşul**' i seçerek bir kurala birden çok koşul ekleyebilirsiniz. Birden çok koşul belirtildiğinde kuralın tetiklenmesi için tüm koşulların karşılanması gerekir. Her koşul örtük bir `AND` yan tümce ile birleştirilir. Birden çok koşuldan oluşan zaman toplamayı kullanıyorsanız, tüm telemetri değerlerinin toplanması gerekir.
 
 ### <a name="configure-actions"></a>Eylemleri yapılandırma
 

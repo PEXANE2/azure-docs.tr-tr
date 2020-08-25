@@ -3,12 +3,12 @@ title: PowerShell kullanarak DPM iş yüklerini yedekleme
 description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Backup dağıtmayı ve yönetmeyi öğrenin
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538862"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762751"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -47,7 +47,7 @@ Aşağıdaki kurulum ve kayıt görevleri PowerShell ile otomatikleştirilebilir
 * Ağ ayarları
 * Şifreleme ayarları
 
-## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
+## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size yol açabilir. Kurtarma Hizmetleri Kasası, bir yedekleme kasasından farklı.
 
@@ -177,7 +177,7 @@ DPM sunucusu, kurtarma hizmetleri kasasıyla kaydedildikten sonra varsayılan ab
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Tüm değişiklikler bu yerel PowerShell nesnesine yapılır ```$setting``` ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses subscriptionsetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. ```–Commit```Değişikliklerin kalıcı olduğundan emin olmak için bayrağını kullanmanız gerekir. Bu ayarlar, uygulanmamışsa Azure Backup uygulanmaz ve kullanılmaz.
+Tüm değişiklikler bu yerel PowerShell nesnesine yapılır ```$setting```  ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses subscriptionsetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. ```–Commit```Değişikliklerin kalıcı olduğundan emin olmak için bayrağını kullanmanız gerekir. Bu ayarlar, uygulanmamışsa Azure Backup uygulanmaz ve kullanılmaz.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -321,12 +321,12 @@ Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -TimesOfDay 
 Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-Yukarıdaki örnekte, ```$onlineSch``` GFS şemasında koruma grubu için var olan çevrimiçi koruma zamanlamasını içeren, dört öğe içeren bir dizidir:
+Yukarıdaki örnekte, ```$onlineSch``` GFS şemasında koruma grubu için mevcut çevrimiçi koruma zamanlamasını içeren bir dizidir:
 
-1. ```$onlineSch[0]```günlük zamanlamayı içerir
-2. ```$onlineSch[1]```Haftalık zamanlamayı içerir
-3. ```$onlineSch[2]```aylık zamanlamayı içerir
-4. ```$onlineSch[3]```yıllık zamanlamayı içerir
+1. ```$onlineSch[0]``` günlük zamanlamayı içerir
+2. ```$onlineSch[1]``` Haftalık zamanlamayı içerir
+3. ```$onlineSch[2]``` aylık zamanlamayı içerir
+4. ```$onlineSch[3]``` yıllık zamanlamayı içerir
 
 Bu nedenle, haftalık zamanlamayı değiştirmeniz gerekiyorsa, ' a başvurmanız gerekir ```$onlineSch[1]``` .
 
@@ -354,8 +354,8 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 Bir veri kaynağı için tüm kurtarma noktalarının listesini almak için [Get-DPMRecoveryPoint](/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) cmdlet 'ini kullanabilirsiniz. Bu örnekte şunları göndereceğiz:
 
-* DPM sunucusundaki tüm PTE 'leri getirin ve bir dizide depolanan```$PG```
-* uygulamasına karşılık gelen veri kaynaklarını alın```$PG[0]```
+* DPM sunucusundaki tüm PTE 'leri getirin ve bir dizide depolanan ```$PG```
+* uygulamasına karşılık gelen veri kaynaklarını alın ```$PG[0]```
 * bir veri kaynağı için tüm kurtarma noktalarını alın.
 
 ```powershell

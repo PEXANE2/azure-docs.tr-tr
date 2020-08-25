@@ -6,25 +6,23 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976821"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799256"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
 Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta verilerini alma için yetenekler sağlayan, tam olarak yönetilen bir bulut hizmetidir. Geliştiriciler hizmeti REST API 'Leri aracılığıyla kullanabilir. Hizmette uygulanan kavramların anlaşılmasına, geliştiricilerin **Azure Veri Kataloğu**ile başarıyla tümleştirileceği önemli bir öneme sahiptir.
 
-## <a name="key-concepts"></a>Önemli kavramlar
+## <a name="key-concepts"></a>Önemli kavramlar 
 **Azure Veri Kataloğu** kavramsal modeli, dört temel kavrama dayalıdır: **Katalog**, **Kullanıcılar**, **varlıklar**ve **ek açıklamalar**.
 
 ![Azure Veri Kataloğu kavramsal model çizimi](./media/data-catalog-developer-concepts/concept2.png)
 
-*Şekil 1-Azure Veri Kataloğu Basitleştirilmiş kavramsal model*
-
 ### <a name="catalog"></a>Katalog
-Bir **Katalog** , kuruluşun depoladığı tüm meta veriler için en üst düzey kapsayıcıdır. Azure hesabı başına bir **katalogda** izin verilir. Kataloglar bir Azure aboneliğine bağlıdır, ancak bir hesap birden çok aboneliğe sahip olsa bile, belirli bir Azure hesabı için yalnızca bir **Katalog** oluşturulabilir.
+Bir **Katalog** , bir kuruluşun depoladığı tüm meta veriler için en üst düzey kapsayıcıdır. Azure hesabı başına bir **katalogda** izin verilir. Kataloglar bir Azure aboneliğine bağlıdır, ancak bir hesap birden çok aboneliğe sahip olsa bile, belirli bir Azure hesabı için yalnızca bir **Katalog** oluşturulabilir.
 
 Bir katalog, **kullanıcıları** ve **varlıkları**içerir.
 
@@ -49,7 +47,7 @@ Bir **varlık** adından, konumundan ve türünden, daha fazla açıklama içere
 ### <a name="annotations"></a>Ek Açıklamalar
 Ek açıklamalar, varlıklar hakkındaki meta verileri temsil eden öğelerdir.
 
-Ek açıklamaların örnekleri açıklama, Etiketler, şema, belgeler, vb. Varlık türleri ve ek açıklama türlerinin tam listesi varlık nesne modeli bölümünde bulunur.
+Ek açıklamaların örnekleri açıklama, Etiketler, şema, belgeler, vb. Varlık türlerinin ve ek açıklama türlerinin tam listesi için [varlık nesne modeli bölümüne](#asset-object-model) bakın.
 
 ## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>Crowdkaynağını belirleme ek açıklamaları ve Kullanıcı perspektifi (önemli çeşitlilikte)
 Azure Veri Kataloğu 'nun önemli bir yönü, sistemdeki meta verilerin listesini oluşturmayı destekler. Wiki yaklaşımından farklı olarak, yalnızca bir sorun ve son yazıcı olduğunda Azure Veri Kataloğu modeli, birden çok OPTA 'ın sistemde yan yana canlı çalışmasına izin verir.
@@ -76,27 +74,27 @@ UX daha sonra birleşiminin nasıl görüntüleneceğini seçebilir. Görüntül
 Temel kavramlar bölümünde sunulan **Azure Veri Kataloğu** nesne modeli, varlıklar veya ek açıklamalar içerebilen öğeleri içerir. Öğelerin özellikleri vardır, bu, isteğe bağlı veya gerekli olabilir. Bazı özellikler tüm öğeler için geçerlidir. Bazı özellikler tüm varlıklar için geçerlidir. Bazı özellikler yalnızca belirli varlık türlerine uygulanır.
 
 ### <a name="system-properties"></a>Sistem özellikleri
-<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>kimlik</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>tür</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
+<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>ID</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>tür</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
 
 ### <a name="common-properties"></a>Ortak özellikler
 Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için geçerlidir.
 
 <table>
-<tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Boole</td><td>Öğenin verilerinin bir kaynak sistemden (SQL Server veritabanı, Oracle Database gibi) veya bir kullanıcı tarafından yazılmış olup olmadığını gösterir.</td></tr>
+<tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
+<tr><td>fromSourceSystem</td><td>Boole</td><td>Öğelerin verilerinin bir kaynak sistemden türetildiğini (SQL Server veritabanı, Oracle Database) veya bir kullanıcı tarafından yazılmış olduğunu gösterir.</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>Ortak kök özellikleri
 <p>
 Bu özellikler tüm kök varlık türleri için geçerlidir.
 
-<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>name</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz kimliği (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının kimliği. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
+<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>name</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz KIMLIĞI (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının KIMLIĞI. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Ortak tekil olmayan ek açıklama özellikleri
 Bu özellikler, tekil olmayan ek açıklama türleri (varlık başına birden fazla olmasına izin verilen ek açıklamalar) için geçerlidir.
 
 <table>
-<tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
+<tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
 <tr><td>anahtar</td><td>Dize</td><td>Geçerli koleksiyonda ek açıklamayı benzersiz bir şekilde tanımlayan Kullanıcı tarafından belirtilen anahtar. Anahtar uzunluğu 256 karakteri aşamaz.</td></tr>
 </table>
 
@@ -171,14 +169,14 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 <tr><td></td><td>Nesne</td><td>string</td><td>Veri kaynağındaki nesne türünü açıklar. Örneğin: tablo, SQL Server için görüntüleyin.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protokol</td><td>string</td><td>Gereklidir. Veri kaynağıyla iletişim kurmak için kullanılan bir protokolü açıklar. Örneğin: SQl Server için "tds", Oracle için "Oracle" vb. Şu anda desteklenen protokollerin listesi için <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">veri kaynağı başvuru belirtimi-DSL yapısına</a> bakın.</td></tr>
+<tr><td></td><td>protokol</td><td>string</td><td>Gereklidir. Veri kaynağıyla iletişim kurmak için kullanılan bir protokolü açıklar. Örneğin: `tds` SQL Server için, `oracle` Oracle vb. Şu anda desteklenen protokollerin listesi için [veri kaynağı başvuru belirtimi-DSL yapısına](data-catalog-dsr.md) bakın.</td></tr>
 <tr><td></td><td>adres</td><td>Sözlük &lt; dizesi, nesne&gt;</td><td>Gereklidir. Adres, başvurulmakta olan veri kaynağını tanımlamak için kullanılan protokole özgü bir veri kümesidir. Belirli bir protokol kapsamındaki adres verileri, protokolü bilmeden anlamlı olduğu anlamına gelir.</td></tr>
 <tr><td></td><td>kimlik doğrulaması</td><td>string</td><td>İsteğe bağlı. Veri kaynağıyla iletişim kurmak için kullanılan kimlik doğrulama düzeni. Örneğin: Windows, OAuth, vb.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Sözlük &lt; dizesi, nesne&gt;</td><td>İsteğe bağlı. Bir veri kaynağına bağlanma hakkında ek bilgiler.</td></tr>
 
-<tr><td>SecurityPrincipal</td><td></td><td></td><td>Arka uç, yayımlama sırasında AAD 'ye yönelik olarak belirtilen özelliklerin doğrulanmasını gerçekleştirmez.</td></tr>
+<tr><td>SecurityPrincipal</td><td></td><td></td><td>Arka uç, yayımlama sırasında Azure Active Directory tarafından belirtilen özelliklerin doğrulanmasını gerçekleştirmez.</td></tr>
 <tr><td></td><td>'le</td><td>string</td><td>Kullanıcının benzersiz e-posta adresi. ObjectID sağlanmazsa veya "lastRegisteredBy" özelliği bağlamında, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
-<tr><td></td><td>Uzantının</td><td>Guid</td><td>Kullanıcı veya güvenlik grubu AAD kimliği. İsteğe bağlı. UPN sağlanmamışsa, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
+<tr><td></td><td>Uzantının</td><td>Guid</td><td>Kullanıcı veya güvenlik grubu Azure Active Directory kimliği. İsteğe bağlı. UPN sağlanmamışsa, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
 <tr><td></td><td>firstName</td><td>string</td><td>Kullanıcının ilk adı (görüntüleme amaçları için). İsteğe bağlı. Yalnızca "lastRegisteredBy" özelliği bağlamında geçerlidir. "Roles", "Permissions" ve "experts" için güvenlik sorumlusu sağlanarak belirtilemiyor.</td></tr>
 <tr><td></td><td>lastName</td><td>string</td><td>Kullanıcının Soyadı (görüntüleme amaçları için). İsteğe bağlı. Yalnızca "lastRegisteredBy" özelliği bağlamında geçerlidir. "Roles", "Permissions" ve "experts" için güvenlik sorumlusu sağlanarak belirtilemiyor.</td></tr>
 
@@ -186,7 +184,7 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 <tr><td></td><td>name</td><td>string</td><td>Sütunun veya özniteliğin adı.</td></tr>
 <tr><td></td><td>tür</td><td>string</td><td>sütunun veya özniteliğin veri türü. Izin verilen türler, varlığın veri sourceType bağımlıdır.  Yalnızca türlerin bir alt kümesi desteklenir.</td></tr>
 <tr><td></td><td>'In</td><td>int</td><td>Sütun veya öznitelik için izin verilen uzunluk üst sınırı. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
-<tr><td></td><td>duyarlılık</td><td>byte</td><td>Sütun veya öznitelik için duyarlık. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
+<tr><td></td><td>duyarlık</td><td>byte</td><td>Sütun veya öznitelik için duyarlık. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
 <tr><td></td><td>IsNullable</td><td>Boole</td><td>Sütunun null değere sahip olmasına izin verilip verilmeyeceğini belirtir. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
 <tr><td></td><td>ifade</td><td>string</td><td>Değer hesaplanmış bir sütunsiyse, bu alan değeri ifade eden ifadeyi içerir. Veri kaynağından türetilir. Yalnızca bazı kaynak türleri için geçerlidir.</td></tr>
 
@@ -199,13 +197,11 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 <tr><td></td><td>STDSAPMA </td><td>double</td><td>Veri kümesi için standart sapma</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>Veri kümesindeki null değer sayısı</td></tr>
 <tr><td></td><td>distinctCount  </td><td>int</td><td>Veri kümesindeki farklı değerlerin sayısı</td></tr>
-
-
 </table>
 
 ## <a name="asset-identity"></a>Varlık kimliği
 Azure Veri Kataloğu, varlık kimliğini oluşturmak için, kataloğun içindeki varlığı ele almak için kullanılan "adres" özellik çantasından "protokol" ve kimlik özelliklerini kullanır.
-Örneğin, "tds" protokolünün kimlik özellikleri "sunucu", "veritabanı", "şema" ve "nesne" vardır. Protokolün ve kimlik özelliklerinin birleşimleri SQL Server tablo varlığının kimliğini oluşturmak için kullanılır.
+Örneğin, tablo veri akışı (TDS) protokolünde kimlik özellikleri "sunucu", "veritabanı", "şema" ve "nesne" bulunur. Protokolün ve kimlik özelliklerinin birleşimleri SQL Server tablo varlığının kimliğini oluşturmak için kullanılır.
 Azure Veri Kataloğu, [veri kaynağı başvuru belirtimi-DSL yapısında](data-catalog-dsr.md)listelenen çeşitli yerleşik veri kaynağı protokolleri sağlar.
 Desteklenen protokoller kümesi programlı olarak genişletilebilir (veri kataloğuna REST API başvuruya bakın). Kataloğun yöneticileri, özel veri kaynağı protokollerini kaydedebilir. Aşağıdaki tabloda, özel bir protokolü kaydetmek için gereken özellikler açıklanmaktadır.
 
@@ -217,7 +213,7 @@ Desteklenen protokoller kümesi programlı olarak genişletilebilir (veri katalo
 <tr><td></td><td>ad alanı</td><td>string</td><td>Protokolün ad alanı. Ad alanı 1 ile 255 karakter uzunluğunda olmalıdır ve noktayla (.) ayrılmış bir veya daha fazla boş olmayan parçalar içermelidir. Her bölüm 1 ile 255 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf ve rakam içermelidir.</td></tr>
 <tr><td></td><td>name</td><td>string</td><td>Protokolün adı. Ad 1 ile 255 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf, rakam ve tire (-) karakteri içermelidir.</td></tr>
 <tr><td></td><td>ıdentityproperties</td><td>Datasourceprotocolidentityözelliği []</td><td>Kimlik özelliklerinin listesi, en az bir tane içermesi gerekir, ancak 20 ' den fazla özellik içermemelidir. Örneğin: "sunucu", "veritabanı", "şema", "nesne", "tds" protokolünün kimlik özelliklerdir.</td></tr>
-<tr><td></td><td>ıdentitysets</td><td>DataSourceProtocolIdentitySet []</td><td>Kimlik kümelerinin listesi. Geçerli varlığın kimliğini temsil eden kimlik özelliklerinin kümelerini tanımlar. En az bir tane içermeli, 20 ' den fazla küme içermelidir. Örneğin: {"sunucu", "veritabanı", "şema" ve "nesne"}, SQL Server tablo varlığının kimliğini tanımlayan "tds" protokolü için bir kimlik kümesidir.</td></tr>
+<tr><td></td><td>ıdentitysets</td><td>DataSourceProtocolIdentitySet []</td><td>Kimlik kümelerinin listesi. Geçerli varlığın kimliğini temsil eden kimlik özelliklerinin kümelerini tanımlar. En az bir tane içermeli, 20 ' den fazla küme içermelidir. Örneğin: {"sunucu", "veritabanı", "şema" ve "nesne"}, SQL Server tablo varlığının kimliğini tanımlayan TDS protokolü için bir kimlik kümesidir.</td></tr>
 
 <tr><td>Datasourceprotocolidentityözelliği</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>string</td><td>Özelliğin adı. Ad 1 ile 100 karakter uzunluğunda olmalı, bir harfle başlamalı ve yalnızca harf ve rakam içermelidir.</td></tr>
@@ -234,7 +230,6 @@ Desteklenen protokoller kümesi programlı olarak genişletilebilir (veri katalo
 ## <a name="roles-and-authorization"></a>Roller ve yetkilendirme
 Microsoft Azure Veri Kataloğu, varlıklar ve ek açıklamaların CRUD işlemleri için yetkilendirme özellikleri sağlar.
 
-## <a name="key-concepts"></a>Önemli kavramlar
 Azure Veri Kataloğu iki yetkilendirme mekanizması kullanır:
 
 * Rol tabanlı yetkilendirme
@@ -254,7 +249,6 @@ Değişiklik sahibi ChangeVisibility ViewPermissions</td></tr><tr><td>Katılımc
 > 
 > **Sil** hakkı bir öğe ve altındaki alt öğeler veya tek öğe için geçerlidir. Örneğin, bir varlığı silmek söz konusu varlık için ek açıklamaları da siler.
 > 
-> 
 
 ### <a name="permissions"></a>İzinler
 İzin, erişim denetimi girdilerinin listesidir. Her erişim denetimi girişi, bir güvenlik sorumlusu için haklar kümesi atar. İzinler yalnızca bir varlık üzerinde (yani, kök öğe) belirtilebilir ve varlık ve tüm alt öğeleri için geçerlidir.
@@ -273,7 +267,6 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
 > 
 > Katalogda bir öğe oluşturulduğunda varsayılan olarak kimliği doğrulanmış **Kullanıcı olarak ayarlanır** . Öğe herkes tarafından güncelleştirilebilse, **katkıda bulunanlar** , &lt; &gt; öğe ilk yayımlandığında **Roller** özelliğinde Everyone özel güvenlik sorumlusu olarak ayarlanmalıdır (aşağıdaki örneğe bakın). **Katkıda bulunan** değiştirilemez ve bir öğenin yaşam süresi boyunca aynı kalır (hatta **yönetici** veya **sahip** , **katkıda**bulunanı değiştirme hakkına sahip değildir). **Katkıda** bulunanı açık ayarı için desteklenen tek değer &lt; Herkes &gt; : **katkıda bulunan** yalnızca bir öğeyi veya herkesi oluşturan bir kullanıcı olabilir &lt; &gt; .
 > 
-> 
 
 ### <a name="examples"></a>Örnekler
 **&lt;Bir öğeyi yayımlarken katkıda bulunan herkese ayarlayın &gt; .**
@@ -282,7 +275,6 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
 
 > [!NOTE]
 > Bazı HTTP istemci uygulamaları, sunucudan bir 302 'e yanıt olarak istekleri otomatik olarak yeniden verebilir, ancak genellikle kimlik doğrulama üst bilgilerini istekten çıkar. Azure Veri Kataloğu 'na istek yapmak için yetkilendirme üst bilgisi gerektiğinden, Azure Veri Kataloğu tarafından belirtilen yeniden yönlendirme konumuna bir istek yeniden verilirken yetkilendirme üstbilgisinin hala sağlandığından emin olmanız gerekir. Aşağıdaki örnek kod, .NET HttpWebRequest nesnesini kullanarak gösterir.
-> 
 > 
 
 **Gövde**
@@ -350,3 +342,6 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
 > [!NOTE]
 > PUT içinde, gövdede bir öğe yükü belirtmek için gerekli değildir: PUT, yalnızca rolleri ve/veya izinleri güncelleştirmek için kullanılabilir.
 > 
+
+## <a name="next-steps"></a>Sonraki adımlar
+[Azure Veri Kataloğu REST API başvurusu](/rest/api/datacatalog/)

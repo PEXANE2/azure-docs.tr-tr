@@ -1,18 +1,18 @@
 ---
 title: Şirket içi ortamlar için özel bir buluta
-description: Bu Azure VMware çözümü (AVS) öğreticisinde, bir AVS 'de özel buluta yönelik ExpressRoute Global Reach eşleme oluşturursunuz.
+description: Bu Azure VMware Çözüm öğreticisinde, Azure VMware çözümünde özel bir buluta ExpressRoute Global Reach eşleme oluşturacaksınız.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101917"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750455"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
-ExpressRoute Global Reach şirket içi ortamınızı özel bulutlarınıza bağlar. ExpressRoute Global Reach bağlantısı, özel bir bulut ExpressRoute devresi ve şirket içi ortamlarınızla mevcut bir ExpressRoute bağlantısı arasında oluşturulur.  Azure CLı ve PowerShell ile ExpressRoute Global Reach yapılandırmaya yönelik yönergeler vardır ve şirket içi ortamlar arasında bir Azure VMware çözümü (AVS) özel bulutuna ExpressRoute Global Reach eşlemesini yapılandırmanıza yardımcı olmak için belirli Ayrıntılar ve örneklerle [CLI komutlarını](../expressroute/expressroute-howto-set-global-reach-cli.md) genişlettik.   
+ExpressRoute Global Reach şirket içi ortamınızı özel bulutlarınıza bağlar. ExpressRoute Global Reach bağlantısı, özel bir bulut ExpressRoute devresi ve şirket içi ortamlarınızla mevcut bir ExpressRoute bağlantısı arasında oluşturulur.  Azure CLı ve PowerShell ile ExpressRoute Global Reach yapılandırmaya yönelik yönergeler vardır ve şirket içi ortamlar arasındaki Azure VMware Çözüm özel bulutuna yönelik ExpressRoute Global Reach eşlemeyi yapılandırmanıza yardımcı olmak için belirli Ayrıntılar ve örneklerle [CLI komutlarını](../expressroute/expressroute-howto-set-global-reach-cli.md) genişlettik.   
 
 ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasında bağlantıyı etkinleştirmeden önce, [farklı Azure aboneliklerinde bağlantının nasıl etkinleştirileceği](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)hakkındaki belgeleri gözden geçirin.  [Azure 'dan özel bulut ağını yapılandırırken](tutorial-configure-networking.md) kullandığınız ExpressRoute bağlantı hattı, ExpressRoute ağ geçitlerine veya Global Reach kullanarak diğer ExpressRoute devrelerine eşler için yetkilendirme anahtarları oluşturmanızı ve kullanmanızı gerektirir. ExpressRoute bağlantı hattı tarafından zaten bir yetkilendirme anahtarı kullandınız ve şirket içi ExpressRoute bağlantı hattını kullanarak ikinci bir tane oluşturabilirsiniz.
 
@@ -26,26 +26,26 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Özel bulut ExpressRoute devresi için, _devre 2_için bir yetkilendirme anahtarı oluşturun
 > * Şirket içinden özel bulut ExpressRoute Global Reach eşlemeyi etkinleştirmek için, _1. devrenin_ aboneliğindeki Cloud Shell Azure CLI 'yi kullanın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 - ExpressRoute devresine sahip bir Azure sanal ağı (VNet) içindeki bir ExpressRoute bağlantı hattı ile özel bir bulut – bu, eşleme yordamlarının perspektifinden _devre 2_ ' dir.
 - Şirket içi ortamları Azure 'a bağlamak için kullanılan ayrı, çalışan bir ExpressRoute devresi, bu, eşleme yordamlarının perspektifinden _devre 1_ ' dir.
 - ExpressRoute Global Reach eşlemesi için/29 çakışmayan bir [ağ adresi bloğu](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) .
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>AVS özel bulutu 'nda bir ExpressRoute yetkilendirme anahtarı oluşturma
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>Azure VMware Çözüm özel bulutu 'nda bir ExpressRoute yetkilendirme anahtarı oluşturma
 
 1. Özel buluta **genel bakış**' da, Yönet altında **bağlantı > ExpressRoute > yetkilendirme anahtarı iste**' yi seçin.
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
 
 2. Yetkilendirme anahtarı için bir ad girin ve **Oluştur**' u seçin. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Yeni bir yetkilendirme anahtarı oluşturmak için Oluştur ' a tıklayın.":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Yeni bir yetkilendirme anahtarı oluşturmak için Oluştur ' a tıklayın. ":::
 
    Yeni anahtar oluşturulduktan sonra, özel bulut için yetkilendirme anahtarları listesinde görünür. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Yeni yetkilendirme anahtarının, özel bulut için anahtarlar listesinde göründüğünü doğrulayın.":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Yeni yetkilendirme anahtarının, özel bulut için anahtarlar listesinde göründüğünü doğrulayın. ":::
 
 3. Yetkilendirme anahtarını ve ExpressRoute KIMLIĞINI/29 adres bloğunu birlikte bir yere unutmayın. Eşlemeyi tamamlayabilmeniz için bir sonraki adımda kullanacaksınız. 
 
