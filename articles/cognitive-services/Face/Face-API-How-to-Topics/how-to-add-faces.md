@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76169822"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Bir kişilik grubuna yüz ekleme
@@ -28,7 +28,7 @@ Aşağıdaki kod birkaç değişken bildirir ve yüz ekleme isteklerini zamanlam
 - `PersonCount`, toplam kişi sayısıdır.
 - `CallLimitPerSecond`, abonelik katmanına göre saniyedeki maksimum çağrı sayısıdır.
 - `_timeStampQueue`, istek zaman damgalarını kaydetmek için kullanılan bir Kuyruktur.
-- `await WaitCallLimitPerSecondAsync()`sonraki isteği göndermek için geçerli olana kadar bekler.
+- `await WaitCallLimitPerSecondAsync()` sonraki isteği göndermek için geçerli olana kadar bekler.
 
 ```csharp
 const int PersonCount = 10000;
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>2. Adım: API çağrısını yetkilendirme
 
-Bir istemci kitaplığı kullandığınızda, abonelik anahtarınızı **Faceclient** sınıfının oluşturucusuna geçirmeniz gerekir. Örneğin:
+Bir istemci kitaplığı kullandığınızda, abonelik anahtarınızı **Faceclient** sınıfının oluşturucusuna geçirmeniz gerekir. Örnek:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(

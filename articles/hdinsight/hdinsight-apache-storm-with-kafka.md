@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85963538"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Kafka ile Apache Storm kullanma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Topolojileri durdurma
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kafka konuları oluşturmayı bilme. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](./kafka/apache-kafka-get-started.md) belgesine bakın.
 
@@ -366,7 +366,7 @@ streams:
 
 Proje, topolojilerin kullandığı parametreleri geçirmek için kullanılan `dev.properties` adlı bir dosya içerir. Bu dosya şu özellikleri tanımlar:
 
-| dev.properties dosyası | Description |
+| dev.properties dosyası | Açıklama |
 | --- | --- |
 | `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) , Kafka kümesi için barındırır. |
 | `kafka.broker.hosts` | Kafka aracısı konakları (çalışan düğümleri). |

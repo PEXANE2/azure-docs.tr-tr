@@ -1,5 +1,5 @@
 ---
-title: Azure Storage Services 'a bağlanma
+title: Azure depolama hizmetlerine bağlanma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning ile eğitim sırasında Azure depolama hizmetlerine güvenli bir şekilde bağlanmak için veri depolarını nasıl kullanacağınızı öğrenin
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, devx-track-python
-ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, contperfq1, devx-track-python
+ms.openlocfilehash: c5200214946b52ce974a8b7557e38eb57481028a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852540"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783000"
 ---
-# <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
+# <a name="connect-to-azure-storage-services"></a>Azure depolama hizmetlerine bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı**öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](#studio) kullanabilirsiniz.

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85318633"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET uygulamanızı ve Azure SQL veritabanı kodunuzu dağıtın
@@ -44,7 +44,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca Azure SQL veritabanı gibi tercih ettiğiniz Azure aboneliğinde Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -66,7 +66,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 1. Azure abonelik hizmetlerinizi seçin. İsteğe bağlı olarak, ek Azure yapılandırma ayarlarını görüntülemek ve **veritabanı sunucusu oturum açma ayrıntıları** bölümünde Kullanıcı adını belirlemek için **Değiştir**' i seçebilirsiniz. Bu öğreticinin sonraki adımları için kullanıcı adınısaklayın. Bu isteğe bağlı adımı gerçekleştirirseniz, **bitti**' yi seçmeden önce Azure yapılandırma alanından çıkın.
  
-1. **Done** (Bitti) öğesini seçin. Birkaç dakika sonra işlem tamamlanır ve DevOps başlangıç panosu Azure portal açılır. Ayrıca, panoda doğrudan Azure portal **tüm kaynaklardan** da gidebilirsiniz. Sağ tarafta, çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
+1. **Bitti**'yi seçin. Birkaç dakika sonra işlem tamamlanır ve DevOps başlangıç panosu Azure portal açılır. Ayrıca, panoda doğrudan Azure portal **tüm kaynaklardan** da gidebilirsiniz. Sağ tarafta, çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
     
 ## <a name="examine-the-ci-pipeline"></a>CI işlem hattını inceleme
 
@@ -76,7 +76,7 @@ DevOps Starter, Azure Repos içinde tam bir CI/CD işlem hattını otomatik olar
 
 1. **Durum** alanını işaret edin ve ardından üç nokta (...) simgesini seçin. Bir menü, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli seçenekleri görüntüler.
 
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 
 1. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 

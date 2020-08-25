@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure Data Lake Store erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
+title: Öğretici `:` Azure Data Lake Store erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
 description: Linux VM sistem tarafından atanan yönetilen kimliğini kullanarak Azure Data Lake Store'a erişme işlemini gösteren öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75888524"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Öğretici: Azure Data Lake Store'a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -28,13 +28,13 @@ ms.locfileid: "75888524"
 
 Bu öğreticide, Azure Data Lake Store erişmek için bir Linux sanal makinesi (VM) için sistem tarafından atanan yönetilen kimliğin nasıl kullanılacağı gösterilmektedir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Data Lake Store'a VM'niz için erişim verme.
 > * Azure Data Lake Store'a erişmek için VM'nin sistem tarafından atanan yönetilen kimliğini kullanarak bir erişim belirteci alın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -48,19 +48,19 @@ Data Lake Store'da yeni bir klasör oluşturun ve Linux VM sistem tarafından at
 2. Kullanmak istediğiniz Data Lake Store örneğini seçin.
 3. Komut çubuğunda **Veri Gezgini**'ni seçin.
 4. Data Lake Store örneğinin kök klasörü seçilidir. Komut çubuğunda **Erişim**'i seçin.
-5. **Add (Ekle)** seçeneğini belirleyin.  **Seç** kutusuna VM'nizin adını girin (örneğin, **DevTestVM**). Arama sonuçları arasından VM'nizi seçin ve ardından **Seç**'e tıklayın.
-6. **Izinleri Seç**' e tıklayın.  **Okuma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Yalnızca erişim izni** olarak ekleyin. **Tamam ' ı**seçin.  İzin başarıyla eklenmiş olmalıdır.
+5. **Ekle**’yi seçin.  **Seç** kutusuna VM'nizin adını girin (örneğin, **DevTestVM**). Arama sonuçları arasından VM'nizi seçin ve ardından **Seç**'e tıklayın.
+6. **Izinleri Seç**' e tıklayın.  **Okuma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Yalnızca erişim izni** olarak ekleyin. **Tamam**'ı seçin.  İzin başarıyla eklenmiş olmalıdır.
 7. **Erişim** bölmesini kapatın.
-8. Bu öğretici için, yeni bir klasör oluşturun. Komut çubuğunda **Yeni Klasör**'ü seçin ve yeni klasöre bir ad verin (örneğin, **TestFolder**).  **Tamam ' ı**seçin.
+8. Bu öğretici için, yeni bir klasör oluşturun. Komut çubuğunda **Yeni Klasör**'ü seçin ve yeni klasöre bir ad verin (örneğin, **TestFolder**).  **Tamam**'ı seçin.
 9. Oluşturduğunuz klasörü seçin ve sonra da komut çubuğunda **Erişim**'e seçin.
 10. 5. adıma benzer biçimde, **Ekle**'yi seçin. **Seç** kutusuna VM'nizin adını girin. Arama sonuçları arasından VM'nizi seçin ve ardından **Seç**'e tıklayın.
-11. 6. adıma benzer biçimde, **İzin Seç**'i seçin. **Okuma**, **Yazma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Erişim izni girdisi ve varsayılan erişim girdisi** olarak ekleyin. **Tamam ' ı**seçin.  İzin başarıyla eklenmiş olmalıdır.
+11. 6. adıma benzer biçimde, **İzin Seç**'i seçin. **Okuma**, **Yazma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Erişim izni girdisi ve varsayılan erişim girdisi** olarak ekleyin. **Tamam**'ı seçin.  İzin başarıyla eklenmiş olmalıdır.
 
 Azure kaynakları için yönetilen kimlikler artık oluşturduğunuz klasördeki dosyalar üzerinde tüm işlemleri gerçekleştirebilir. Data Lake Store'a erişimi yönetme hakkında daha fazla bilgi için bkz. [Data Lake Store’da Erişim Denetimi](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma 
 
-Bu bölüm, bir erişim belirtecinin nasıl alınacağını ve Data Lake Store dosya sisteminin nasıl çağrılacağını gösterir. Azure Data Lake Store, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder. Data Lake Store dosya sisteminde kimliği doğrulamak için, Azure AD tarafından verilen bir erişim belirtecini Data Lake Store dosya sistemi uç noktanıza gönderirsiniz. Erişim belirteci yetkilendirme üst bilgisi içinde, "Bearer \<ACCESS_TOKEN_VALUE\>" biçimindedir.  Data Lake Store'da Azure AD kimlik doğrulaması desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory kullanarak Data Lake Store ile kimlik doğrulaması yapma](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+Bu bölüm, bir erişim belirtecinin nasıl alınacağını ve Data Lake Store dosya sisteminin nasıl çağrılacağını gösterir. Azure Data Lake Store, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder. Data Lake Store dosya sisteminde kimliği doğrulamak için, Azure AD tarafından verilen bir erişim belirtecini Data Lake Store dosya sistemi uç noktanıza gönderirsiniz. Erişim belirteci, "taşıyıcı" biçimindeki bir yetkilendirme üst bilgisinde bulunur \<ACCESS_TOKEN_VALUE\> .  Data Lake Store'da Azure AD kimlik doğrulaması desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory kullanarak Data Lake Store ile kimlik doğrulaması yapma](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
 
 Bu öğreticide, REST istekleri yapmak üzere cURL kullanarak Data Lake Store dosya sistemi için REST API'de kimlik doğrulaması yaparsınız.
 
@@ -71,7 +71,7 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsan�
 
 1. Portalda Linux VM'nizi bulun. **Genel Bakış**'ta **Bağlan**'ı seçin.  
 2. Tercih ettiğiniz SSH istemcisini kullanarak VM'ye bağlanın. 
-3. Terminal penceresinde, Data Lake Store dosya sisteminin erişim belirtecini almak için cURL'yi kullanarak yerel Azure kaynakları için yönetilen kimlikler uç noktasına bir istek gönderin. Data Lake Store için kaynak tanımlayıcısı `https://datalake.azure.net/`.  Kaynak tanımlayıcısına sondaki eğik çizgiyi eklemek önemlidir.
+3. Terminal penceresinde, Data Lake Store dosya sisteminin erişim belirtecini almak için cURL'yi kullanarak yerel Azure kaynakları için yönetilen kimlikler uç noktasına bir istek gönderin. Data Lake Store için kaynak tanımlayıcısı `https://datalake.azure.net/` .  Kaynak tanımlayıcısına sondaki eğik çizgiyi eklemek önemlidir.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

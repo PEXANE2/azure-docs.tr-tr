@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini s
 ms.date: 05/06/2020
 ms.topic: tutorial
 ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85969652"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
@@ -23,7 +23,7 @@ Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
 > - Yeni kaynak grubunu İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -151,9 +151,9 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
 
      Bu bölümde tanımlanan parametreler, tanımlandıkları yapıt için geçerlidir. Şema atama sırasında tanımlandıklarından, bu parametreler [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini değer sütununda gördüğünüz **değere** ayarlayın.
 
-     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Description|
+     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |RGtoLock kaynak grubu|Kaynak grubu|Name|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
+     |RGtoLock kaynak grubu|Kaynak grubu|Ad|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
      |RGtoLock kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|Şema kilitlerini uygulamak için yeni kaynak grubunun konumunu tanımlar.|
      |StorageAccount|Resource Manager şablonu|storageAccountType (StorageAccount)|Standard_GRS|Depolama SKU 'SU. Varsayılan değer _Standard_LRS_.|
 

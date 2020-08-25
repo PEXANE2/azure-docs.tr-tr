@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76169777"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Örnek: büyük ölçekli özelliği kullanın
@@ -67,7 +67,7 @@ Tüm yüzleri ve kişileri PersonGroup 'tan yeni LargePersonGroup 'a ekleyin. Da
 | Sil | Sil |
 | Al | Al |
 | Liste | Liste |
-| Güncelleştirme | Güncelleştirme |
+| Güncelleştir | Güncelleştir |
 | - | Eğitim |
 | - | Eğitim Durumunu Alma |
 
@@ -199,7 +199,7 @@ Eğitme işlemi, [bulgulara benzer](https://westus.dev.cognitive.microsoft.com/d
 
 | Yüzler veya kişiler için ölçeklendirin | Tahmini eğitim süresi |
 |:---:|:---:|
-| 1000 | 1-2 sn |
+| 1.000 | 1-2 sn |
 | 10,000 | 5-10 sn |
 | 100.000 | 1-2 dk |
 | 1.000.000 | 10-30 dk |
@@ -208,9 +208,9 @@ Büyük ölçekli özelliği daha iyi kullanmak için aşağıdaki stratejileri 
 
 ### <a name="step-31-customize-time-interval"></a>Adım 3,1: Saat aralığını özelleştirme
 
-İçinde `TrainLargeFaceList()`gösterildiği gibi, sonsuz eğitim durum denetimi sürecini geciktirmek için milisaniye cinsinden bir zaman aralığı vardır. Daha fazla yüz içeren LargeFaceList için, büyük bir aralık kullanıldığında çağrı sayıları ve maliyeti azaltılır. Largeçok yönlü listesinin beklenen kapasitesine göre zaman aralığını özelleştirin.
+İçinde gösterildiği gibi `TrainLargeFaceList()` , sonsuz eğitim durum denetimi sürecini geciktirmek için milisaniye cinsinden bir zaman aralığı vardır. Daha fazla yüz içeren LargeFaceList için, büyük bir aralık kullanıldığında çağrı sayıları ve maliyeti azaltılır. Largeçok yönlü listesinin beklenen kapasitesine göre zaman aralığını özelleştirin.
 
-Aynı strateji LargePersonGroup için de geçerlidir. Örneğin, 1.000.000 kişi ile bir LargePersonGroup 'u eğitedığınızda, `timeIntervalInMilliseconds` 1 dakikalık bir aralık olan 60.000 olabilir.
+Aynı strateji LargePersonGroup için de geçerlidir. Örneğin, 1.000.000 kişi ile bir LargePersonGroup 'u eğitedığınızda, `timeIntervalInMilliseconds` 1 dakikalık bir Aralık olan 60.000 olabilir.
 
 ### <a name="step-32-small-scale-buffer"></a>Adım 3,2: küçük ölçekli arabellek
 
@@ -231,7 +231,7 @@ Bu sorunu azaltmak için, yalnızca yeni eklenen girişler için arabellek olara
 
 Oldukça uzun bir gecikme kabul edilebilir ise, yeni verileri ekledikten sonra eğitme işlemini tetiklemeniz gerekmez. Bunun yerine Eğitim işlemi, ana mantıktan ayrılabilir ve düzenli olarak tetiklenebilir. Bu strateji, kabul edilebilir gecikme süresine sahip dinamik senaryolar için uygundur. Bu, tren sıklığını daha fazla azaltmak için statik senaryolara uygulanabilir.
 
-Şuna benzer bir `TrainLargePersonGroup` işlev olduğunu varsayalım `TrainLargeFaceList`. İçinde [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) `System.Timers` sınıfını çağırarak bir largepersongroup 'ta tek başına eğitimin tipik bir uygulamasıdır:
+`TrainLargePersonGroup`Şuna benzer bir işlev olduğunu varsayalım `TrainLargeFaceList` . İçinde sınıfını çağırarak bir LargePersonGroup 'ta tek başına eğitimin tipik bir uygulamasıdır [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) `System.Timers` :
 
 ```csharp
 private static void Main()

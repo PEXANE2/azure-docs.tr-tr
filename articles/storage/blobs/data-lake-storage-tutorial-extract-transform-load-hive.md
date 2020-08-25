@@ -9,10 +9,10 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045306"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Apache Hive kullanarak verileri dönüştürün.
 > * Sqoop kullanarak verileri Azure SQL veritabanı 'na yükleyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 2. Sayfada aşağıdaki değerleri seçin:
 
-   | Name | Değer |
+   | Ad | Değer |
    | --- | --- |
    | Yıl Filtresi |2013 |
    | Dönem Filtresi |Ocak |
@@ -58,7 +58,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
    
    Diğer tüm alanları temizleyin.
 
-3. **Download** (İndir) seçeneğini belirleyin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
+3. **İndir**'i seçin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
 ## <a name="extract-and-upload-the-data"></a>Verileri ayıklama ve karşıya yükleme
 
@@ -122,7 +122,7 @@ Bu bölümde, bir Apache Hive işini çalıştırmak için Beeline kullanırsın
 
 Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir Apache Hive tablosuna aktarırsınız.
 
-1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden,     **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
 
    ```bash
    nano flightdelays.hql
@@ -226,7 +226,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
 
 Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 2. **SQL veritabanlarını**seçin.
 
@@ -300,7 +300,7 @@ Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunuc
 
 ## <a name="export-and-load-the-data"></a>Verileri dışarı ve yükleme
 
-Önceki bölümlerde, dönüştürülen verileri konumda kopyaladınız `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
+Önceki bölümlerde, dönüştürülen verileri konumda kopyaladınız  `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
 
 1. Sqoop’un SQL veritabanınızı görebildiğini doğrulamak için aşağıdaki komutu kullanın:
 

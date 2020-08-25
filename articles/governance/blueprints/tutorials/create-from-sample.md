@@ -4,10 +4,10 @@ description: Bu öğreticide, iki kaynak grubu ayarlayan ve her biri için bir r
 ms.date: 03/25/2020
 ms.topic: tutorial
 ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80677084"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
@@ -23,7 +23,7 @@ Aşağıdaki öğreticide, Azure şemaları hizmetinin farklı yönlerini göste
 > - Atama için dağıtılan kaynakları İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -96,14 +96,14 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. İçin `{Your ID}`, Azure kullanıcı hesabınızı seçin.
+     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. İçin `{Your ID}` , Azure kullanıcı hesabınızı seçin.
 
      |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |ProdRG kaynak grubu|Kaynak grubu|Adı|Üretim RG|İlk kaynak grubunun adını tanımlar.|
+     |ProdRG kaynak grubu|Kaynak grubu|Name|Üretim RG|İlk kaynak grubunun adını tanımlar.|
      |ProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|İlk kaynak grubunun konumunu ayarlar.|
      |Katılımcı|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İlk kaynak grubu içinde _katkıda_ bulunan rol atamasını hangi kullanıcı veya gruba veririm tanımlar.|
-     |PreProdRG kaynak grubu|Kaynak grubu|Adı|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
+     |PreProdRG kaynak grubu|Kaynak grubu|Name|Ön üretim RG|İkinci kaynak grubunun adını tanımlar.|
      |PreProdRG kaynak grubu|Kaynak grubu|Konum|Batı ABD|İkinci kaynak grubunun konumunu ayarlar.|
      |Sahip|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _sahip_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
      |Okuyucular|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _Okuyucular_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
@@ -144,7 +144,7 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 1. Reddetme atamasını seçin, ardından sol taraftaki **Izinleri reddedildi** sayfasını seçin.
 
-   Reddetme ataması **\*** , ve **eylem** yapılandırmasıyla tüm işlemleri engellemektedir, ancak **NotActions**aracılığıyla ** \*/Read** 'i dışlayarak okuma erişimine izin verir.
+   Reddetme ataması, ve eylem yapılandırmasıyla tüm işlemleri engellemektedir **\*** , **Action** ancak **NotActions**aracılığıyla ** \* /Read** 'i dışlayarak okuma erişimine izin verir.
 
 1. Azure portal içerik haritasında, **ön üretim RG-Access Control (IAM)** seçeneğini belirleyin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için _Preüretim RG_ adını girin ve bölmenin altındaki **Sil** ' i seçin.
 

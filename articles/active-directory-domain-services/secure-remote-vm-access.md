@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 7ba64ac6d33f96979a05de383ffc02dd757fc906
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 462e0ff8ef8baadf40ba81ed2ae137d8904fbf7a
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223423"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722526"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de sanal makinelere uzaktan erişimi güvenli hale getirme
 
@@ -32,7 +32,7 @@ Bu makalede, Azure AD DS 'de RDS 'yi yapılandırma ve isteğe bağlı olarak Az
 
 ![Uzak Masaüstü Hizmetleri (RDS) genel bakış](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -120,6 +120,6 @@ Kullanıcı oturum açma güvenliğini sağlama hakkında daha fazla bilgi için
 [concepts-mfa]: ../active-directory/authentication/concept-mfa-howitworks.md
 
 <!-- EXTERNAL LINKS -->
-[deploy-remote-desktop]: https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure
-[rd-web-client]: https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin
-[rds-high-availability]: https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-plan-high-availability
+[deploy-remote-desktop]: /windows-server/remote/remote-desktop-services/rds-deploy-infrastructure
+[rd-web-client]: /windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin
+[rds-high-availability]: /windows-server/remote/remote-desktop-services/rds-plan-high-availability

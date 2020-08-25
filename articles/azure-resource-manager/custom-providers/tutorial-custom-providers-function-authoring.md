@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75650026"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Özel sağlayıcılar için yeniden bir uç nokta yazar
@@ -35,13 +35,13 @@ Bu öğreticide, işlev uygulamasını özel sağlayıcınız için bir yeniden 
 
 Yeniden oluşturulmuş bir hizmet oluştururken oluşturulan kaynakları depolamanız gerekir. Azure Tablo depolaması için verileriniz için bölüm ve satır anahtarları oluşturmanız gerekir. Özel sağlayıcılar için, verilerin özel sağlayıcıya bölümlenmesi gerekir. Özel sağlayıcıya gelen bir istek gönderildiğinde, özel sağlayıcı `x-ms-customproviders-requestpath` üst bilgiyi giden istekleri uç noktaya ekler.
 
-Aşağıdaki örnek, özel bir `x-ms-customproviders-requestpath` kaynak için bir üst bilgi gösterir:
+Aşağıdaki örnek, `x-ms-customproviders-requestpath` özel bir kaynak için bir üst bilgi gösterir:
 
 ```
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-Örneğin `x-ms-customproviders-requestpath` başlığına bağlı olarak, aşağıdaki tabloda gösterildiği gibi, depolama Için *Partitionkey* ve *rowkey* parametrelerini oluşturabilirsiniz:
+Örneğin `x-ms-customproviders-requestpath` başlığına bağlı olarak, aşağıdaki tabloda gösterildiği gibi, depolama Için *partitionkey* ve *rowkey* parametrelerini oluşturabilirsiniz:
 
 Parametre | Şablon | Açıklama
 ---|---|---
@@ -62,7 +62,7 @@ public class CustomResource : TableEntity
 ## <a name="support-custom-provider-restful-methods"></a>Özel sağlayıcı yeniden deneme yöntemlerini destekleme
 
 > [!NOTE]
-> Kodu doğrudan bu öğreticiden kopyalamadıysanız, yanıt içeriği `Content-Type` üstbilgiyi ayarlayan GEÇERLI bir JSON olmalıdır. `application/json`
+> Kodu doğrudan bu öğreticiden kopyalamadıysanız, yanıt içeriği üstbilgiyi ayarlayan geçerli bir JSON olmalıdır `Content-Type` `application/json` .
 
 Veri bölümlemesini ayarladığınıza göre, özel kaynaklar ve özel eylemler için temel CRUD ve tetikleme yöntemlerini oluşturun. Özel sağlayıcılar proxy olarak davrandığı için, Restize uç noktasının istek ve yanıtı modellemek ve işlemesi gerekir. Aşağıdaki kod parçacıkları, temel yeniden gerçekleştirilen işlemlerin nasıl işleneceğini gösterir.
 
@@ -138,13 +138,13 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 ---|---|---
 **ada** | {myCustomResourceName} | Özel kaynağın adı
 **türüyle** | Microsoft. CustomProviders/resourceProviders/{resourceTypeName} | Kaynak türü ad alanı
-**numarasını** | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | Kaynak KIMLIĞI
+**id** | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | Kaynak KIMLIĞI
 
 Özellikleri eklemenin yanı sıra, JSON belgesini Azure Tablo depolama alanına da kaydettiniz.
 
 ### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
-Özel sağlayıcılar için, GET istekleri aracılığıyla özel bir kaynak alınır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . GET istekleri için uç nokta, önceden oluşturulmuş `x-ms-customproviders-requestpath` kaynağı döndürmek için üst bilgisini kullanır.
+Özel sağlayıcılar için, GET istekleri aracılığıyla özel bir kaynak alınır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . GET istekleri için uç nokta, `x-ms-customproviders-requestpath` önceden oluşturulmuş kaynağı döndürmek için üst bilgisini kullanır.
 
 Mevcut kaynakları almak için aşağıdaki **RetrieveCustomResource** yöntemini ekleyin:
 
@@ -177,7 +177,7 @@ Azure 'da kaynaklar, yeniden bir model izler. Kaynak oluşturan istek URL 'SI, b
 
 ### <a name="remove-a-custom-resource"></a>Özel bir kaynağı kaldırma
 
-Özel sağlayıcılar için, SILME istekleri aracılığıyla özel bir kaynak kaldırılır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir SILME isteği için uç nokta, zaten oluşturulan `x-ms-customproviders-requestpath` kaynağı silmek için üst bilgisini kullanır.
+Özel sağlayıcılar için, SILME istekleri aracılığıyla özel bir kaynak kaldırılır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir SILME isteği için uç nokta, `x-ms-customproviders-requestpath` zaten oluşturulan kaynağı silmek için üst bilgisini kullanır.
 
 Mevcut kaynakları kaldırmak için aşağıdaki **Removeccustomresource** metodunu ekleyin:
 
@@ -210,7 +210,7 @@ Azure 'da kaynaklar, yeniden bir model izler. Bir kaynak oluşturan istek URL 'S
 
 ### <a name="list-all-custom-resources"></a>Tüm özel kaynakları Listele
 
-Özel sağlayıcılar için, koleksiyon GET isteklerini kullanarak var olan özel kaynakların bir listesini sıralayabilirsiniz. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir GET istekleri koleksiyonu için, uç nokta, önceden oluşturulmuş `x-ms-customproviders-requestpath` kaynakları numaralandırmak üzere üst bilgisini kullanır.
+Özel sağlayıcılar için, koleksiyon GET isteklerini kullanarak var olan özel kaynakların bir listesini sıralayabilirsiniz. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir GET istekleri koleksiyonu için, uç nokta, `x-ms-customproviders-requestpath` önceden oluşturulmuş kaynakları numaralandırmak üzere üst bilgisini kullanır.
 
 Mevcut kaynakları numaralandırmak için aşağıdaki **Enumerateallcustomresources** metodunu ekleyin:
 
@@ -251,7 +251,7 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 > [!NOTE]
 > RowKey Querykarşılaştırmaları. GreaterThan ve Querykarşılaştırmaları. LessThan dizeler için bir "StartsWith" sorgusu gerçekleştirmeye yönelik Azure Tablo depolama söz dizeleridir.
 
-Tüm mevcut kaynakları listelemek için, özel sağlayıcı bölümünüzün altında kaynakların mevcut olmasını sağlayan bir Azure Tablo depolama sorgusu oluşturun. Sorgu daha sonra satır anahtarının aynı `{myResourceType}` değerle başlayacağını denetler.
+Tüm mevcut kaynakları listelemek için, özel sağlayıcı bölümünüzün altında kaynakların mevcut olmasını sağlayan bir Azure Tablo depolama sorgusu oluşturun. Sorgu daha sonra satır anahtarının aynı değerle başlayacağını denetler `{myResourceType}` .
 
 ## <a name="integrate-restful-operations"></a>Yeniden takip eden işlemleri tümleştirin
 
@@ -338,7 +338,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 }
 ```
 
-Güncelleştirilmiş **Run** yöntemi artık Azure Tablo Depolaması Için eklediğiniz *TableStorage* giriş bağlamasını içerir. Yöntemin ilk bölümü `x-ms-customproviders-requestpath` üstbilgiyi okur ve BIR kaynak kimliği olarak değeri ayrıştırmak `Microsoft.Azure.Management.ResourceManager.Fluent` için kitaplığı kullanır. `x-ms-customproviders-requestpath` Üst bilgi özel sağlayıcı tarafından gönderilir ve gelen isteğin yolunu belirtir.
+Güncelleştirilmiş **Run** yöntemi artık Azure Tablo Depolaması Için eklediğiniz *TableStorage* giriş bağlamasını içerir. Yöntemin ilk bölümü `x-ms-customproviders-requestpath` üstbilgiyi okur ve `Microsoft.Azure.Management.ResourceManager.Fluent` BIR kaynak kimliği olarak değeri ayrıştırmak için kitaplığı kullanır. `x-ms-customproviders-requestpath`Üst bilgi özel sağlayıcı tarafından gönderilir ve gelen isteğin yolunu belirtir.
 
 Ayrıştırılmış kaynak KIMLIĞI ' ni kullanarak, özel kaynakları aramak veya depolamak üzere veri için **partitionkey** ve **rowkey** değerlerini oluşturabilirsiniz.
 

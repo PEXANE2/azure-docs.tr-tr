@@ -15,15 +15,15 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76834697"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ağlar arasında bir iletişim sorununu tanılama
 
-Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ İzleyicisi'nin VPN tanılama özelliği ile bir sanal ağ geçidi sorununu tanılama
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VPN tanılamayı kullanmak için çalışır durumda bir VPN ağ geçidinizin olması gerekir. Tanılamak için mevcut bir VPN ağ geçidiniz yoksa, bir [PowerShell betiği](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kullanarak bir tane dağıtabilirsiniz. PowerShell betiğini şuradan çalıştırabilirsiniz:
 - **Yerel bir PowerShell yüklemesi**: betik Azure PowerShell `Az` modülünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.

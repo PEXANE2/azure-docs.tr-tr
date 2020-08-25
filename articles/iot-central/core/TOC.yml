@@ -163,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: Canlı sohbeti açma/kapatma
               href: howto-show-hide-chat.md
+    - name: Sorun giderme
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: Başvuru
   items:
     - name: Azure CLI

@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84712522"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Öğretici: İzleme çözümünüze bağlı cihazlarla sorunları algılama
@@ -54,7 +54,7 @@ Bir soğutucu cihazın basıncı 150 PSI seviyesinin üzerine çıktığında uy
 | Ayar          | Değer                                 |
 | ---------------- | ------------------------------------- |
 | Kural adı        | Soğutucu uyarısı                       |
-| Description      | Soğutucu basıncı 150 PSI seviyesinin üzerine çıktı |
+| Açıklama      | Soğutucu basıncı 150 PSI seviyesinin üzerine çıktı |
 | Cihaz grubu     | **Soğutucular** cihaz grubu             |
 | Hesaplama      | Anında                               |
 | Koşul 1 Alanı| basınç                              |
@@ -77,7 +77,7 @@ Son beş dakika içinde cihaz içindeki ortalama nem oranı %80'den fazla olan v
 | Ayar          | Değer                                 |
 | ---------------- | ------------------------------------- |
 | Kural adı        | Soğutucuda kritik nem ve sıcaklık    |
-| Description      | Nem ve sıcaklık kritik düzeyde |
+| Açıklama      | Nem ve sıcaklık kritik düzeyde |
 | Cihaz grubu     | **Soğutucular** cihaz grubu             |
 | Hesaplama      | Ortalama                               |
 | Süre      | 5                                     |

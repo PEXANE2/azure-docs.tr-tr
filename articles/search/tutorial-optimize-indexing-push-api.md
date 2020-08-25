@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 08/21/2020
+ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079220"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749467"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
 
@@ -154,7 +154,7 @@ DataGenerator dg = new DataGenerator();
 List<Hotel> hotels = dg.GetHotels(100000, "large");
 ```
 
-Bu örnekte test için iki adet otel boyutu mevcuttur: **küçük** ve **büyük**.
+Bu örnekte test için iki adet otel boyutu mevcuttur: **küçük** ve  **büyük**.
 
 Dizinlerinizin şeması, dizin oluşturma hızları üzerinde önemli bir etkiye sahip olabilir. Bu etki nedeniyle, bu öğreticiyi çalıştırdıktan sonra bu sınıfı amaçlanan Dizin şemanıza uygun veri oluşturacak şekilde dönüştürmek mantıklı olur.
 
@@ -382,7 +382,7 @@ Ayrıca, dizinleri silmek için portalını de kullanabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

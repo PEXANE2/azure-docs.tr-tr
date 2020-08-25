@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220278"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749626"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için Kullanıcı profili eşitlemesini desteklemek üzere Azure Active Directory Domain Services yapılandırma
 
-SharePoint Server, Kullanıcı profillerini eşitlemeye yönelik bir hizmet içerir. Bu özellik, Kullanıcı profillerinin merkezi bir konumda depolanmasına ve birden çok SharePoint sitesi ve çiftlerine erişilebilir olmasını sağlar. SharePoint Server Kullanıcı profili hizmetini yapılandırmak için, Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanında uygun izinlere sahip olmanız gerekir. Daha fazla bilgi için bkz. [SharePoint Server 'da Kullanıcı profili eşitleme](https://technet.microsoft.com/library/hh296982.aspx).
+SharePoint Server, Kullanıcı profillerini eşitlemeye yönelik bir hizmet içerir. Bu özellik, Kullanıcı profillerinin merkezi bir konumda depolanmasına ve birden çok SharePoint sitesi ve çiftlerine erişilebilir olmasını sağlar. SharePoint Server Kullanıcı profili hizmetini yapılandırmak için, Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanında uygun izinlere sahip olmanız gerekir. Daha fazla bilgi için bkz. [SharePoint Server 'da Kullanıcı profili eşitleme](/SharePoint/administration/user-profile-service-administration).
 
 Bu makalede, Azure AD DS 'nin SharePoint Server Kullanıcı profili eşitleme hizmeti 'ne izin vermek üzere nasıl yapılandırılacağı gösterilmektedir.
 
@@ -71,7 +71,7 @@ Azure AD DS Yönetim sanal makinenizde aşağıdaki adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SharePoint Server 'da profil eşitleme için Active Directory Domain Services Izinleri verme](https://technet.microsoft.com/library/hh296982.aspx)
+Daha fazla bilgi için bkz. [SharePoint Server 'da Kullanıcı profili eşitlemesini yönetme](/SharePoint/administration/manage-profile-synchronization).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

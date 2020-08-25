@@ -12,17 +12,17 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78186208"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak yerel masaüstü istemcisinde kullanıcıların kimliğini doğrulama
 
 Bu öğreticide, bir Windows Presentation Foundation (WPF) masaüstü uygulamasında Kullanıcı oturumu açmak ve kullanıcılara kaydolmak için Azure Active Directory B2C (Azure AD B2C) nasıl kullanılacağı gösterilmektedir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yerel istemci uygulamasını ekleme
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 - **.Net masaüstü geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' ü yükler.
@@ -61,7 +61,7 @@ Uygulamayı Azure AD B2C kiracınızla çalışacak şekilde güncelleştirmek v
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. İlke adı değişkenlerini, önkoşulların bir parçası olarak oluşturduğunuz Kullanıcı akışlarının adlarıyla güncelleştirin. Örneğin:
+3. İlke adı değişkenlerini, önkoşulların bir parçası olarak oluşturduğunuz Kullanıcı akışlarının adlarıyla güncelleştirin. Örnek:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";

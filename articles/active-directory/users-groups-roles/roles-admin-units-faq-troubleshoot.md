@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db710385448ed3cdd54e3cbe692ea8b610741af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b48bebe6aa5f9862d5f51fea257c4b7f3057639b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732251"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794471"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD yönetim birimleri: sorun giderme ve SSS
 
-Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
+Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz. Ortak görevlere yönelik örnek PowerShell betikleri için bkz. [çalışma, yönetim birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -67,9 +67,9 @@ Y **:** Hayır, iç içe geçmiş yönetim birimleri desteklenmez.
 
 **S: PowerShell ve Graph API desteklenen yönetim birimleri var mı?**
 
-**Y:** Evet. [PowerShell cmdlet belgeleri](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview) ve [örnek betiklerdeki](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)yönetim birimleri için destek bulacaksınız. 
+**Y:** Evet. [PowerShell cmdlet belgeleri](/powershell/module/Azuread/?view=azureadps-2.0-preview) ve [örnek betiklerdeki](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)yönetim birimleri için destek bulacaksınız. 
 
-Microsoft Graph ' de [Yönetimtiveunit kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit) için destek bulun.
+Microsoft Graph ' de [Yönetimtiveunit kaynak türü](/graph/api/resources/administrativeunit?view=graph-rest-beta) için destek bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

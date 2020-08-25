@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614144"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
@@ -23,7 +23,7 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 > * Visual Studio 'da bir yayın tanımı oluşturun Takım Gezgini
 > * Uygulamayı otomatik olarak dağıtma ve yükseltme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -42,7 +42,7 @@ Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin i
 
 Derleme oluşturabilmeniz için uygulama kaynak dosyalarınızı Azure DevOps 'daki bir takım projesi ile paylaşabilirsiniz.
 
-Visual Studio 'nun sağ alt köşesindeki durum çubuğunda **kaynak denetimine** -> Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
+**Add to Source Control**  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
@@ -62,7 +62,7 @@ Azure DevOps sürüm tanımı, bir kümeye uygulama paketi dağıtan bir iş ak�
 
 ### <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
-Yeni takım projenizi, bir Web tarayıcısında ve https://dev.azure.com kuruluşunuzu seçerek ve ardından yeni proje ' ye tıklayarak açın. 
+Yeni takım projenizi https://dev.azure.com , bir Web tarayıcısında ve kuruluşunuzu seçerek ve ardından yeni proje ' ye tıklayarak açın. 
 
 Sol panelde **ardışık düzen** seçeneğini belirleyin ve ardından **Yeni işlem hattı**' na tıklayın.
 
@@ -134,7 +134,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 ![Tetikleyici etkinleştirme][enable-trigger]
 
-Bir yayını el ile oluşturmak için **+** -> **Create a Release** -> **yayın** oluştur oluştur ' u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
+**+ Release**  ->  Bir yayını el ile oluşturmak için + yayın**Oluştur oluştur**' u seçin  ->  **Create** . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 

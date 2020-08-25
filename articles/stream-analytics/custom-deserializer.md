@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75443688"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Stream Analytics için özel .NET seri hale Getiricileri
@@ -20,7 +20,7 @@ Azure Stream Analytics [üç veri biçimi için yerleşik desteğe](stream-analy
 
 Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Protokol arabelleği için özel bir seri hale getirici oluşturun.
@@ -28,9 +28,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Stream Analytics işinizi özel seri hale getirici 'yi kullanacak şekilde yapılandırın.
 > * Özel seri hale getirici 'yi test etmek için Stream Analytics işinizi yerel olarak çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 * [Visual studio 2017](https://www.visualstudio.com/downloads/) veya [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/)' ü yükler. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmiyor.
 
@@ -63,7 +63,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
 
 ## <a name="configure-a-stream-analytics-job"></a>Stream Analytics işi yapılandırma
 
-1. **Jobconfig. JSON**öğesine çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
+1. **ÜzerindeJobConfig.js**çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
@@ -74,7 +74,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    |Özel kod depolama ayarları depolama hesabı|Depolama hesabınızı < >|
    |Özel kod depolama ayarları kapsayıcısı|Depolama kapsayıcınızı < >|
 
-2. **Girişler**altında **Input. JSON**öğesine çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
+2. **Girişler**altında **Input.jsaçık**' a çift tıklayın. Aşağıdaki ayarlar dışında varsayılan konfigürasyonları kullanın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
@@ -85,9 +85,9 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    |Kapsayıcı|Depolama kapsayıcınızı < >|
    |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
    |Kaynak|ASA projesi başvurusundan veya CodeBehind 'ten yükleme|
-   |CSharp derleme adı|Prototipbufdeserializer. dll|
+   |CSharp derleme adı|ProtobufDeserializer.dll|
    |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
-   |Olay sıkıştırma türü|Hiçbiri|
+   |Olay sıkıştırma türü|Yok|
 
 3. Aşağıdaki sorguyu **Script. aşama QL** dosyasına ekleyin.
 
@@ -95,14 +95,14 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    SELECT * FROM Input
    ```
 
-4. [Örnek prototip giriş dosyasını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)indirin. **Girişler** klasöründe, **Input. JSON** öğesine sağ tıklayın ve **yerel giriş Ekle**' yi seçin. Ardından **local_Input. JSON** öğesine çift tıklayın ve aşağıdaki ayarları yapılandırın:
+4. [Örnek prototip giriş dosyasını](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)indirin. **Girişler** klasöründe **Input.jsüzerinde** sağ tıklayın ve **yerel giriş Ekle**' yi seçin. Ardından, ** üzerindelocal_Input.js** çift tıklayın ve aşağıdaki ayarları yapılandırın:
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
-   |Girdi Diğer Adı|Girdi|
+   |Girdi Diğer Adı|Giriş|
    |Kaynak Türü|Veri Akışı|
    |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
-   |CSharp derleme adı|Prototipbufdeserializer. dll|
+   |CSharp derleme adı|ProtobufDeserializer.dll|
    |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
    |Yerel giriş dosyası yolu|İndirilen örnek prototipme giriş dosyasının dosya yolunu <>|
 

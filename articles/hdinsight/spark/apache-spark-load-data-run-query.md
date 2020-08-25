@@ -9,22 +9,22 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
 ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77198897"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgular çalıştırma
 
 Bu öğreticide, bir CSV dosyasından bir veri çerçevesi oluşturmayı ve etkileşimli Spark SQL sorgularını Azure HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesinde çalıştırmayı öğreneceksiniz. Spark’ta dataframe, adlandırılmış sütunlar halinde düzenlenmiş, dağıtılmış bir veri koleksiyonudur. Dataframe kavramsal olarak, ilişkisel bir veritabanındaki tabloya veya R/Python’daki veri çerçevesine eşdeğerdir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir csv dosyasından dataframe oluşturma
 > * Dataframe üzerinde sorgular çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluşturma](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -32,13 +32,13 @@ HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluştu
 
 Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar.
 
-1. Spark kümenizin adıyla `https://SPARKCLUSTER.azurehdinsight.net/jupyter` değiştirerek `SPARKCLUSTER` URL 'yi düzenleyin. Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
+1. `https://SPARKCLUSTER.azurehdinsight.net/jupyter`Spark kümenizin adıyla değiştirerek URL 'yi düzenleyin `SPARKCLUSTER` . Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
-2. Jupyter Web sayfasından **Yeni** > **pyspark** ' ı seçerek bir not defteri oluşturun.
+2. Jupyter Web sayfasından **Yeni**  >  **pyspark** ' ı seçerek bir not defteri oluşturun.
 
    ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 
-   Yeni bir not defteri oluşturulur ve başlıksız (`Untitled.ipynb`) adıyla açılır.
+   Yeni bir not defteri oluşturulur ve başlıksız () adıyla açılır `Untitled.ipynb` .
 
     > [!NOTE]  
     > PySpark çekirdeği kullanılarak not defteri oluşturmak için, ilk kod hücresini çalıştırdığınızda sizin için otomatik olarak `spark` oturumu oluşturulur. Belirtik şekilde bir oturum oluşturmanız gerekmez.
@@ -60,7 +60,7 @@ Uygulamalar, Azure depolama veya Azure Data Lake Storage gibi uzak depolamada bu
 
     ![Etkileşimli Spark SQL sorgusunun durumu](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Etkileşimli Spark SQL sorgusunun durumu")
 
-1. Döndürülen oturum kimliği ' ni aklınızda yapın. Yukarıdaki resimden oturum kimliği 0 ' dır. İsterseniz, `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` burada clustername adlı konuma giderek oturum ayrıntılarını alabilirsiniz; burada clustername, Spark Kümenizin adı, kimlik ise oturum kimliği numarasıdır.
+1. Döndürülen oturum kimliği ' ni aklınızda yapın. Yukarıdaki resimden oturum kimliği 0 ' dır. İsterseniz, burada CLUSTERNAME adlı konuma giderek oturum ayrıntılarını alabilirsiniz; `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` burada clustername, Spark Kümenizin adı, kimlik ise oturum kimliği numarasıdır.
 
 1. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun.
 
@@ -89,9 +89,9 @@ Tablo oluşturulduktan sonra veriler üzerinde etkileşimli bir sorgu çalışt�
 
     ![Etkileşimli Spark Sorgu sonucunun alan grafiği](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Etkileşimli Spark Sorgu sonucunun alan grafiği")
 
-3. Not defteri menü çubuğundan **Dosya** > **kaydetme ve denetim noktası**' na gidin.
+3. Not defteri menü çubuğundan **Dosya**  >  **kaydetme ve denetim noktası**' na gidin.
 
-4. [Sonraki öğreticiyi](apache-spark-use-bi-tools.md) şimdi başlatıyorsanız, not defterini açık bırakın. Aksi takdirde, küme kaynaklarını serbest bırakmak için Not defterini kapatın: Not defteri menü çubuğundan **Dosya** >  **Kapat ve Durdur**' a gidin.
+4. [Sonraki öğreticiyi](apache-spark-use-bi-tools.md) şimdi başlatıyorsanız, not defterini açık bırakın. Aksi takdirde, küme kaynaklarını serbest bırakmak için Not defterini kapatın: Not defteri menü çubuğundan **Dosya**  >   **Kapat ve Durdur**' a gidin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
