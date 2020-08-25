@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136346"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826778"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -20,7 +20,7 @@ ms.locfileid: "88136346"
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
+|   Ülke/bölge adı               |   ISO-2   |   Para Birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -50,7 +50,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Kanada                              | CA        | CAD          |
 | Cayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
-| Arasında\**                            | CN        | Yok          |
+| Arasında\**                            | CN        | YOK          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
 | Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          |
@@ -166,18 +166,25 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Zimbabve                            | ZW        | USD          |
 |   |   |   |
 
-\*Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
+\* Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
 
 \** Yalnızca ücretsiz ve KLG VM görüntüleri.
 
 ## <a name="how-we-convert-currency"></a>Para birimini dönüştürme
 
-Tüm ücretli teklif türleri için ISV 'Ler ABD Doları cinsinden fiyatları girme veya fiyatları yerel para birimine yükleme seçeneğine sahiptir. USD cinsinden girilen fiyatlar, sayfa kaydedildiğinde otomatik olarak yerel para birimine dönüştürülür. Iş Ortağı Merkezi 'nin kullandığı ücretler günlük olarak güncelleştirilir. ISV 'Ler fiyatları dışa aktarabilir ve dönüştürülen eşdeğerleri gözden geçirebilir.
+Tüm ücretli teklif türleri için ABD Doları cinsinden fiyatları girme veya fiyatları yerel para birimine yükleme seçeneğiniz vardır. USD cinsinden girilen fiyatlar, sayfa kaydedildiğinde otomatik olarak yerel para birimine dönüştürülür. Iş Ortağı Merkezi 'nin kullandığı ücretler günlük olarak güncelleştirilir. Fiyatları dışa aktarabilir ve dönüştürülen eşdeğerleri inceleyebilirsiniz.
 
 Yayımlamadan önce herhangi bir fiyatı ayarlamak için, fiyatlandırma elektronik tablosunu dışarı aktarın, değiştirin ve değişikliklerle karşıya yükleyin.
 
 > [!NOTE]
 > Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez. Fiyatları yayımlamadan önce fiyatların doğru olduğundan emin olmak için, fiyatlandırma elektronik tablosunu dışarı aktarın ve her pazardaki fiyatları gözden geçirin.
+
+Teklifin fiyatı, her zaman müşterilerine yerel para birimiyle gösterilir. Iş Ortağı Merkezi 'nde seçtiğiniz fiyat, Iş Ortağı Merkezi 'nde fiyatı kaydettiğiniz zaman Döviz kura göre yerel müşteri para birimine dönüştürülür. Teklifinizi yeniden yayımlaymadığınız takdirde, çevrimiçi mağazalardaki müşterilere gösterilen fiyat değişmez.
+
+Microsoft, müşterilerden gelen ödemeleri yerel para birimiyle alır ve sizi yerel para biriminizde ödemez. Microsoft, satın alma gününün Döviz ücretini kullanarak müşterinin yerel para birimini yerel para birimine dönüştürür.
+
+> [!NOTE]
+> Microsoft, Microsoft hazine Exchange fiyatını kullanarak teklif fiyatlarını dönüştürür.
 
 ## <a name="retrieving-currency-information-by-api"></a>API 'ye göre para birimi bilgilerini alma
 
@@ -189,7 +196,7 @@ Belirli teklif türleri için fiyat girme hakkında daha fazla bilgi için şu m
 - [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)
 - [Azure sanal makine teklifi oluşturma](partner-center-portal/azure-vm-create-offer.md)
 - [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)
-- [PowerApps teklifi & müşteri katılımı için Dynamics 365 oluşturun](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations teklifi oluşturma](partner-center-portal/create-new-operations-offer.md)
 - [Dynamics 365 Business Central teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)
 - [IoT Edge modül teklifi oluşturma](partner-center-portal/azure-iot-edge-module-creation.md)

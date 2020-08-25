@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652789"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824041"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -94,10 +94,10 @@ Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler ö
 
 **Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
@@ -134,7 +134,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 
 1. Bir Azure VM için yedeklemeyi etkinleştirdiğinizde, belirttiğiniz zamanlamaya göre bir yedekleme çalışır.
 1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.
-    - Windows VM 'Leri için VMSnapshot uzantısı yüklenir.
+    - Windows VM'lerine VMSnapshot uzantısı yüklenir.
     - Linux VM 'Leri için VMSnapshot Linux uzantısı yüklenir.
 1. Uzantı, depolama düzeyinde bir anlık görüntü alır.
     - Çalıştıran Windows VM 'Leri için, VM 'nin uygulamayla tutarlı bir anlık görüntüsünü almak üzere Windows Birim Gölge Kopyası Hizmeti (VSS) ile yedekleme koordinatları. Varsayılan olarak, yedekleme tam VSS yedeklemeleri alır. Yedekleme, uygulamayla tutarlı bir anlık görüntü alacağından, dosya ile tutarlı bir anlık görüntü alır.
@@ -143,7 +143,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 1. Anlık görüntü alındıktan sonra veriler kasaya aktarılır.
     - Yalnızca son yedeklemeden bu yana değiştirilen veri blokları.
     - Veriler şifrelenmedi. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri yedekleyebilir.
-    - Anlık görüntü verileri hemen kasaya kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam Yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten daha az olacaktır.
+    - Anlık görüntü verileri kasaya hemen kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten az olacaktır.
 1. Veriler kasaya gönderildikten sonra bir kurtarma noktası oluşturulur. Varsayılan olarak, anlık görüntüler silinmeden önce iki gün boyunca tutulur. Bu özellik bu anlık görüntülerden geri yükleme işlemine izin verir ve bu sayede geri yükleme sürelerini kapatır. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Bkz. [Azure Backup Instant Restore özelliği](./backup-instant-restore-capability.md).
 
 Azure VM 'lerinizi yedeklemek için internet bağlantısına açık bir şekilde izin vermeniz gerekmez.

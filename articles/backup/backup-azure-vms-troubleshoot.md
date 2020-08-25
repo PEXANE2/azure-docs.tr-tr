@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763312"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826249"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -26,9 +26,9 @@ Bu bölümde, Azure sanal makinesinin yedekleme işlemi hatası ele alınmaktad�
 * Başka bir yedekleme hizmetinin çalışmadığını doğrulayın.
   * Anlık görüntü uzantısı sorunları olmadığından emin olmak için, [yeniden yüklemeyi zorlamak üzere uzantıları kaldırın ve sonra yedeklemeyi yeniden deneyin](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md).
 * VM 'nin internet bağlantısı olduğunu doğrulayın.
-  * Başka bir yedekleme hizmetinin çalışmadığını denetleyin.
+  * Başka bir yedekleme hizmetinin çalışmadığından emin olun.
 * `Services.msc` **Windows Azure Konuk Aracısı** hizmetinin **çalıştığından**emin olun. **Windows Azure Konuk Aracısı** hizmeti eksikse, [bir kurtarma hizmetleri kasasındaki Azure VM 'lerinden yedekleme](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)konumundan yüklemesi yapın.
-* **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup 'tan kaynaklanır. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
+* **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup 'tan kaynaklanabilir. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
   * Olay kaynağında veya iletisinde bir giriş **yedeğiyle** ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
   * Azure Backup çalışıyorsa, sorun büyük olasılıkla başka bir yedekleme çözümüyle birlikte olur.
   * Azure Backup 'ın sorunsuz çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu bir Olay Görüntüleyicisi hatası 517 örneği aşağıda verilmiştir:<br>
@@ -71,7 +71,7 @@ VM başarısız durumda olduğu için yedekleme işlemi başarısız oldu. Başa
 Hata kodu: UserErrorFsFreezeFailed <br/>
 Hata iletisi: dosya sistemiyle tutarlı bir anlık görüntü almak için VM 'nin bir veya daha fazla bağlama noktası dondurulamıyor.
 
-* Dosya sistemi durumunun temizlenmediği cihazları, **umorekıt** komutunu kullanarak çıkarın.
+* Dosya sistemi durumunun temizlenmediği cihazların, **umorekıt** komutunu kullanarak bağlantısını çıkarın.
 * **Fsck** komutunu kullanarak bu cihazlarda bir dosya sistemi tutarlılık denetimi çalıştırın.
 * Cihazları yeniden bağlayın ve yedekleme işlemini yeniden deneyin.</ol>
 
@@ -167,12 +167,12 @@ Hata iletisi: eklenen bazı diskler için anlık görüntü sınırı aşıldı�
 
 Anlık görüntü sınırı, eklenen bazı diskler için aşıldığı için başarısız oldu. Aşağıdaki sorun giderme adımlarını tamamlayıp işlemi yeniden deneyin.
 
-* Disk blobu silme-gerekli olmayan anlık görüntüler. Disk blobu silmediğinden dikkatli olun, yalnızca anlık görüntü Blobları silinmelidir.
-* VM disk depolaması hesaplarında geçici silme etkinse, mevcut anlık görüntülerin herhangi bir zamanda izin verilen en yüksek sayıdan küçük olması gibi geçici silme bekletmesini yapılandırın.
+* Disk blobu silme-gerekli olmayan anlık görüntüler. Disk bloblarını silmemeye dikkat edin. Yalnızca anlık görüntü Blobları silinmelidir.
+* VM disk depolaması hesaplarında geçici silme etkinse, mevcut anlık görüntülerin herhangi bir zamanda izin verilen en yüksek sayıdan küçük olması için geçici silme bekletmesini yapılandırın.
 * Azure Site Recovery, yedeklenen VM 'de etkinleştirilmişse aşağıdaki adımları gerçekleştirin:
 
   * **İsanysnapshotfailed** değerinin/etc/Azure/vmbackup.conf içinde false olarak ayarlandığından emin olun
-  * Azure Site Recovery, yedekleme işlemini çakışmayacak şekilde farklı bir zamanda zamanlayın.
+  * Farklı bir zamanda Azure Site Recovery zamanlayın, bu nedenle yedekleme işlemini çakışmaz.
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>Extensionfailedtimeoutvmnetworktimeout-yetersiz VM kaynakları nedeniyle anlık görüntü işlemi başarısız oldu
 

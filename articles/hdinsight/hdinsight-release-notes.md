@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826829"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -75,4 +75,4 @@ Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsigh
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Azure portal bir Azure HDInsight kümesi oluşturmaya çalışırken ve ortak anahtar SSH kimlik doğrulaması türünü kullanarak, kullanıcılar **gözden geçir + oluştur**' a tıkladıklarında bir hata yaşar. Portaldaki hata "SSH kullanıcı adından üç ardışık karakter içermemelidir." Bu sorun giderilmekte; Ancak, bu hatayla karşılaşırsanız, geçici çözüm ARM şablonuyla bir küme oluşturur. 
+Azure portalında bir sorun düzeltildi ve bu, kullanıcıların bir Azure HDInsight kümesini ortak anahtarın SSH kimlik doğrulaması türünü kullanarak oluşturduklarında hata yaşar. Kullanıcılar **gözden geçir + oluştur**' u tıkladığında, "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alırlar. Bu sorun düzeltildi, ancak düzeltilen görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcı önbelleğinizi yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktır. 

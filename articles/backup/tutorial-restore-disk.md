@@ -4,14 +4,14 @@ description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl g
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141355"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824453"
 ---
-# <a name="restore-a-vm-with-azure-cli"></a>Azure CLı ile VM 'yi geri yükleme
+# <a name="restore-a-vm-with-azure-cli"></a>Azure CLI ile bir VM’yi geri yükleme
 
 Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yüklediğinizde, tüm sanal makineyi veya tek tek dosyaları geri yükleyebilirsiniz. Bu makalede, CLI kullanarak tam bir sanal makinenin nasıl geri yükleneceği açıklanmaktadır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -27,7 +27,7 @@ Disk geri yüklemek ve kurtarılmış bir VM oluşturmak üzere PowerShell kulla
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.18 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla bir sanal makineyi silme ve kurtarma işleminin benzetimini yapmak için, bir kurtarma noktasındaki diskten bir sanal makine oluşturursunuz. Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
@@ -88,7 +88,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     ```
 
     > [!WARNING]
-    > Target-Resource-Group sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Müşteriler, yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajına sahip olur. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, hedef-kaynak grubu parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, yönetilmeyen disk parametresini geri yükle parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
+    > **Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Müşteriler, yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajına sahip olur. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,7 +101,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     --restore-as-unmanaged-disk
     ```
 
-Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yükler ve ' anlık ' geri yükleme işlevini etkilemez. CLı 'nın gelecek sürümlerinde, hedef kaynak grubu parametresini veya ' yönetilmeyen--------------------------
+Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yükler ve ' anlık ' geri yükleme işlevini etkilemez. CLı 'nın gelecek sürümlerinde, **hedef-kaynak-grup** parametresi veya **yönetilmeyen** ----------------------
 
 ### <a name="unmanaged-disks-restore"></a>Yönetilmeyen diskler geri yükleme
 
@@ -224,7 +224,7 @@ az backup job show \
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Bu nedenle, yukarıdaki örnekteki şablon adı ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` ve kapsayıcı adı```myVM-daa1931199fd4a22ae601f46d8812276```
+Bu nedenle, yukarıdaki örnekteki şablon adı ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` ve kapsayıcı adı ```myVM-daa1931199fd4a22ae601f46d8812276```
 
 Şimdi bu kapsayıcı ve şablon için SAS belirtecini [burada](../azure-resource-manager/templates/secure-template-with-sas-token.md?tabs=azure-cli#provide-sas-token-during-deployment) açıklandığı gibi alın
 

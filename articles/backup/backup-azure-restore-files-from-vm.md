@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763465"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827146"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -87,7 +87,7 @@ Diskler kaldırıldıktan sonra bir ileti alırsınız. Diskleri kaldırabilmeni
 Linux 'ta, kurtarma noktası bağlantısı kapatıldıktan sonra, işletim sistemi ilgili bağlama yollarını otomatik olarak kaldırmaz. Bağlama yolları "yalnız," birimleri olarak bulunur ve görünür, ancak dosyalara erişirken/yazarken bir hata oluşturur. Bunlar el ile kaldırılabilirler. Betiği çalıştırıldığında, önceki kurtarma noktalarından mevcut olan tüm birimleri tanımlar ve izin üzerine temizler.
 
 > [!NOTE]
-> Gerekli dosyalar geri yüklendikten sonra bağlantı kapalı olduğundan emin olun. Özellikle, komut dosyasının yürütüldüğü makinenin da yedekleme için yapılandırıldığı senaryoda bu önemlidir. Bağlantının hala açık olması durumunda, sonraki yedekleme "UserErrorUnableToOpenMount" hatası ile başarısız olabilir. Bu durum, bağlı sürücülerin/birimlerin kullanılabilir olduğu varsayıcağından ve erişilen depolama (örneğin, Iscsı hedef sunucusu) kullanılamadığından başarısız olabileceği için oluşur. Bağlantı temizliği bu sürücüleri/birimleri kaldırır, bu nedenle yedekleme sırasında kullanılamaz.
+> Gerekli dosyalar geri yüklendikten sonra bağlantı kapalı olduğundan emin olun. Özellikle, komut dosyasının yürütüldüğü makinenin da yedekleme için yapılandırıldığı senaryoda bu önemlidir. Bağlantı hala açıksa, sonraki yedekleme "UserErrorUnableToOpenMount" hatasıyla başarısız olabilir. Bu durum, bağlı sürücülerin/birimlerin kullanılabilir olduğu varsayıcağından ve erişilen depolama, diğer bir deyişle, Iscsı hedef sunucusu kullanılabilir durumda olmadığı için başarısız olabilir. Bağlantı temizliği bu sürücüleri/birimleri kaldırır, bu nedenle yedekleme sırasında kullanılamaz.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Betiği çalıştırmak için doğru makineyi seçme
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> ' Mount-a ' kullanmayın. Bu komut '/etc/fstab ' içinde açıklanan tüm cihazları takar. Bu, yinelenen cihazların bağlı olabileceği anlamına gelebilir. Veriler kalıcı olmayan komut dosyası tarafından oluşturulan cihazlara yönlendirilebilir ve bu nedenle veri kaybına neden olabilir.
+> ' Mount-a ' kullanmayın. Bu komut '/etc/fstab ' içinde açıklanan tüm cihazları takar. Bu, yinelenen cihazların bağlı olabileceği anlamına gelebilir. Veriler, verileri kalıcı hale getiremeyen bir komut dosyası tarafından oluşturulan cihazlara yönlendirilebilir ve bu nedenle veri kaybına neden olabilir.
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için
 

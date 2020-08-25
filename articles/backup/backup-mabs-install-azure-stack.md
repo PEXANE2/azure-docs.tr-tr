@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263070"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827016"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -228,7 +228,7 @@ Azure Backup Sunucusu kodu Data Protection Manager paylaşır. Azure Backup Sunu
 4. Microsoft Azure Backup sunucu SQL Server gerektiriyor. Azure Backup Sunucusu yükleme paketi, uygun SQL Server ikilileriyle paketlenmiş olarak sunulur. Kendi SQL yüklemenizi kullanmak istiyorsanız, bunu yapabilirsiniz. Ancak önerilen seçim, yükleyicinin SQL Server yeni bir örneğini eklemesine izin verir. Seçtiğiniz ortamınızda çalıştığından emin olmak için **Denetle ve yüklensin**' i seçin.
 
    > [!NOTE]
-   > Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örnek yerel olmalıdır.
+   > Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmaz. Azure Backup Sunucusu tarafından kullanılan örnek yerel olmalıdır.
    >
 
     ![Azure Backup Sunucusu-SQL ayarları](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)

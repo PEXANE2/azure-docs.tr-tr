@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763686"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825469"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -251,7 +251,7 @@ Hata Iletisi: kurtarma noktasına karşılık gelen Azure dosya paylaşımının
 - Kurtarma için kullanmaya çalıştığınız kurtarma noktasına karşılık gelen dosya paylaşımının anlık görüntüsünün hala mevcut olduğundan emin olun.
 
   >[!NOTE]
-  >Azure Backup tarafından oluşturulan bir dosya paylaşımının anlık görüntüsünü silerseniz, ilgili kurtarma noktaları kullanılamaz hale gelir. Garantili kurtarmanın güvence altına almak için anlık görüntüleri silmemesini öneririz.
+  >Azure Backup tarafından oluşturulan bir dosya paylaşımının anlık görüntüsünü silerseniz, ilgili kurtarma noktaları kullanılamaz hale gelir. Güvence altına almak için anlık görüntüleri silmediğimiz için önerilir.
 
 - Verilerinizi kurtarmak için başka bir geri yükleme noktası seçmeyi deneyin.
 

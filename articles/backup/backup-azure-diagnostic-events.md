@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763533"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826676"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -110,7 +110,7 @@ Yeni tablolardaki verileri kullanmak üzere tüm özel sorgularınızı geçiren
 > AzureBackupReport olayı *yalnızca* Azure tanılama modunda desteklenir. *Bu olaya yönelik verileri kaynağa özgü modda göndermeye çalışırsanız, hiçbir veri Log Analytics çalışma alanına akmaz.*
 
 > [!NOTE]
-> **Azure tanılama** veya **kaynağa özgü** geçiş geçişi yalnızca Kullanıcı **Log Analytics gönder**' i seçerse görünür. Bir depolama hesabına veya bir olay hub 'ına veri göndermek için, Kullanıcı gerekli hedefi seçer ve herhangi bir ek giriş olmadan istenen olaylardan herhangi biri için onay kutularını seçer. Bundan sonra, eski Event AzureBackupReport ileri ' yi seçmenizi öneririz.
+> **Azure tanılama** veya **kaynağa özgü** geçiş geçişi yalnızca Kullanıcı **Log Analytics gönder**' i seçerse görünür. Bir depolama hesabına veya bir olay hub 'ına veri göndermek için, Kullanıcı gerekli hedefi seçer ve herhangi bir ek giriş olmadan istenen olaylardan herhangi biri için onay kutularını seçer. Daha sonra, eski Event AzureBackupReport ileri ' yi seçememenizi öneririz.
 
 ## <a name="send-azure-site-recovery-events-to-log-analytics"></a>Azure Site Recovery olaylarını Log Analytics gönder
 

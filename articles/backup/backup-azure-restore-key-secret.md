@@ -3,12 +3,12 @@ title: Şifrelenmiş VM için Key Vault anahtarı & gizliliğini geri yükleme
 description: PowerShell kullanarak Azure Backup Key Vault anahtarı ve gizli anahtarı geri yüklemeyi öğrenin
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 2323ca17dad214d3797b65285e8c79c4140ce240
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649576"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827095"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifreli VM’ler için Key Vault anahtarını ve parolasını geri yükleme
 
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * $Secretname değeri, $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl çıktısına başvurarak ve gizli dizileri/örn. çıktı gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli ad ise B3284AAA-daaa-4AAA-B393-60CAA848AAAA
+> * $Secretname değeri, $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl ' nin çıktısına başvurarak elde edilebilir ve gizli dizileri sonrasında metin kullanıyor/Örneğin, çıkış gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli dizi adı B3284AAA-daaa-4AAA-B393-60CAA848AAAA
 > * DiskEncryptionKeyFileName etiketinin değeri, gizli adıyla aynıdır.
 >
 >
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * $Secretname değeri, $rp 1 ' in çıktısına başvurarak elde edilebilir. KeyAndSecretDetails. SecretUrl ve gizli dizileri/örn. çıktı gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli ad B3284AAA-daaa-4AAA-B393-60CAA848AAAA
+> * $Secretname değeri, $rp 1 ' in çıktısına başvurarak elde edilebilir. KeyAndSecretDetails. SecretUrl ve gizli dizileri sonra metin kullanma/örneğin, çıkış gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli dizi adı B3284AAA-daaa-4AAA-B393-60CAA848AAAA
 > * DiskEncryptionKeyFileName etiketinin değeri gizli adı ile aynı.
 > * Node Encryptionkeyencryptionkeyurl değeri, anahtarları geri yükledikten ve [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) cmdlet 'i kullanılarak anahtar kasasından elde edilebilir
 >

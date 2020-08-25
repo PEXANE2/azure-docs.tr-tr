@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261948"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826319"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -89,7 +89,7 @@ Kasa için bir yedekleme ilkesi yapılandırın.
      !["Sanal makine seçin" bölmesi](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Kasadaki aynı bölgedeki ve abonelikteki tüm VM 'Ler, yedeklemeyi yapılandırmak için kullanılabilir. Yedeklemeyi yapılandırırken, bu VM 'lerde gerekli izne sahip olmadığınız halde sanal makine adına ve kaynak grubuna gidebilirsiniz. VM 'niz geçici olarak silinmiş durumdaysa, bu listede görünür olmayacaktır. VM 'yi yeniden korumanız gerekiyorsa, geçici silme süresinin dolmasını veya geçici olarak silinen listeden VM 'yi geri silmeyi beklemeniz gerekir. Daha fazla bilgi için bkz. [VM 'ler için geçici silme makalesi](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
+    > Kasadaki aynı bölgedeki ve abonelikteki tüm VM 'Ler, yedeklemeyi yapılandırmak için kullanılabilir. Yedeklemeyi yapılandırırken, bu VM 'lerde gerekli izne sahip olmadığınız halde sanal makine adına ve kaynak grubuna gidebilirsiniz. VM 'niz geçici olarak silinmiş durumdaysa, bu listede görünmez. VM 'yi yeniden korumanız gerekiyorsa, geçici silme süresinin dolmasını veya geçici olarak silinen listeden VM 'yi geri silmeyi beklemeniz gerekir. Daha fazla bilgi için bkz. [VM 'ler için geçici silme makalesi](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. **Yedekleme**'de **yedeklemeyi etkinleştir**' i seçin. Bu, ilkeyi kasaya ve VM 'lere dağıtır ve yedekleme uzantısını Azure VM 'de çalışan VM aracısına kurar.
 

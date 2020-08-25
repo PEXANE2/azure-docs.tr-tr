@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205943"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826795"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure portalındaki klavye kısayolları
 
@@ -52,6 +52,10 @@ Bu makalede Azure portal her yerde çalışan klavye kısayolları listelenmekte
 |**Tüm kaynaklara** git|G + A |
 |**Kaynak gruplarına** gidin|G + R |
 |Sol kenar çubuğu öğesini bu konumda aç |G + sayı|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Azure portal belirli sayfalar için klavye kısayolları
+
+- [Azure Kaynak Grafı Gezgini](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,19 +3,19 @@ title: SQL Server veritabanlarını Azure 'a yedekleme
 description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Makalede kurtarma SQL Server de açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: edcc77c98737b9f4e76ade0471d273f5e0070969
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826931"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
 [Azure Backup](backup-overview.md) , Azure VM 'lerinde çalışan SQL Server yedeklemek için akış tabanlı, özel bir çözüm sunar. Bu çözüm, Azure Backup sıfır altyapı yedeklemesi, uzun süreli saklama ve merkezi yönetim avantajlarıyla birlikte hizalanır. Buna ek olarak, SQL Server için aşağıdaki avantajları da sağlar:
 
 1. Tüm Yedekleme türlerini destekleyen iş yükü uyumlu yedeklemeler-tam, değişiklik ve günlük
-2. en sık kullanılan günlük yedeklemeleri ile 15 dakikalık RPO (kurtarma noktası hedefi)
+2. sık kullanılan günlük yedeklemeleri ile 15 dakikalık RPO (kurtarma noktası hedefi)
 3. Bir saniyede en çok bir noktaya kurtarma
 4. Ayrı veritabanı düzeyinde yedekleme ve geri yükleme
 
@@ -27,7 +27,7 @@ Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'le
 
 * Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad uzantısı tarafından bir iş yükü yedekleme uzantısı yükler `AzureBackupWindowsWorkload` .
 * Bu uzantı, bir düzenleyici ve SQL eklentisi içerir. Düzenleyici, yedekleme, yedekleme ve geri yükleme gibi çeşitli işlemler için iş akışlarını tetiklemeden sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
-* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı oluşturur `NT SERVICE\AzureWLBackupPluginSvc` . Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. `NT SERVICE\AzureWLBackupPluginSvc`Hesap bir [sanal hizmet hesabıdır](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Backup `NT AUTHORITY\SYSTEM` , veritabanı bulma/sorgulama hesabından yararlanır, bu nedenle bu HESABıN SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatasıyla karşılaşabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
+* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı oluşturur `NT SERVICE\AzureWLBackupPluginSvc` . Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. `NT SERVICE\AzureWLBackupPluginSvc`Hesap bir [sanal hizmet hesabıdır](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Backup `NT AUTHORITY\SYSTEM` , veritabanı bulma/sorgulama için hesabı kullanır, bu nedenle bu HESABıN SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatasıyla karşılaşabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
 * Seçili veritabanlarında korumayı Yapılandır ' ı etkinleştirdikten sonra, yedekleme hizmeti düzenleyiciyi yedekleme zamanlamaları ve diğer ilke ayrıntıları ile ayarlar; bu da uzantının yerel olarak VM 'de önbelleğe alınır.
 * Zamanlanan zamanda, düzenleyici eklenti ile iletişim kurar ve VDı kullanarak SQL Server 'dan yedekleme verilerini akışa başlar.  
 * Eklenti, verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumu gereksinimini ortadan kaldırır. Veriler, depolama hesaplarında Azure Backup hizmeti tarafından şifrelenir ve depolanır.

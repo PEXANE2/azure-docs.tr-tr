@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763380"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826455"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -96,7 +96,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Kullanılacak depolama yedekliliği türünü belirtin; [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanabilirsiniz. Aşağıdaki örnek, testkasası için-BackupStorageRedundancy seçeneğinin Geoyedekli olarak ayarlandığını gösterir.
+3. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanabilirsiniz. Aşağıdaki örnek, testkasası için-BackupStorageRedundancy seçeneğinin Geoyedekli olarak ayarlandığını gösterir.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Koruma ilkesini tanımladıktan sonra yine de bir öğe için ilkeyi etkinleştirmeniz gerekir. Korumayı etkinleştirmek için [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) komutunu kullanın. Korumayı etkinleştirmek için iki nesne gerekir-öğe ve ilke. İlke kasayla ilişkilendirildikten sonra, yedekleme iş akışı, ilke zamanlamasında tanımlanan zamanda tetiklenir.
 
 > [!IMPORTANT]
-> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere PS kullanılırken, tek bir ilkenin onunla ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Şu anda, PS istemcisi 100 'den fazla VM olup olmadığını açıkça engellemez, ancak bu denetim gelecekte eklenmek üzere planlanmaktadır.
+> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere PowerShell 'i kullanırken, tek bir ilkenin kendisiyle ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Şu anda, 100 ' den fazla VM varsa, ancak gelecekte bu denetim eklenmek üzere planlandığından PowerShell istemcisi açıkça engellenmez.
 
 Aşağıdaki örnekler, NewPolicy ilkesini kullanarak V2VM öğesi için korumayı etkinleştirir. Örnekler, VM 'nin şifrelenme ve ne tür şifreleme türü temel alınarak farklılık gösterir.
 
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>Anlık geri yükleme anlık görüntü bekletmesini yapılandırma
 
 > [!NOTE]
-> Az PS Version 1.6.0 onlıyanlarından biri, PowerShell kullanarak ilke içinde anlık geri yükleme anlık görüntü saklama süresini güncelleştirebilir
+> Azure PowerShell sürüm 1.6.0 onde, birisi PowerShell kullanarak ilke içinde anlık geri yükleme anlık görüntü bekletme süresini güncelleştirebilir
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Varsayılan değer 2 olacaktır, Kullanıcı değeri en az 1, en fazla 5 olacak şekilde ayarlayabilir. Haftalık yedekleme ilkeleri için, dönem 5 olarak ayarlanır ve değiştirilemez.
+Varsayılan değer 2 olacaktır, Kullanıcı değeri en az 1 ve en fazla 5 olacak şekilde ayarlayabilir. Haftalık yedekleme ilkeleri için, dönem 5 olarak ayarlanır ve değiştirilemez.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Anlık görüntü bekletme sırasında Azure Backup kaynak grubu oluşturuluyor
 
 > [!NOTE]
-> Azure PS sürüm 3.7.0 ve sonraki sürümlerde, bir diğeri anlık görüntüleri depolamak için oluşturulmuş kaynak grubunu oluşturabilir ve düzenleyebilir.
+> Azure PowerShell sürüm 3.7.0 onde, bir diğeri anlık görüntüleri depolamak için oluşturulmuş kaynak grubunu oluşturabilir ve düzenleyebilir.
 
 Kaynak grubu oluşturma kuralları ve diğer ilgili ayrıntılar hakkında daha fazla bilgi edinmek için, [sanal makineler için Azure Backup kaynak grubuna](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines) bakın.
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>Verileri tutma
 
-Kullanıcı korumayı durdurmayı istiyorsa, [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS cmdlet 'ini kullanabilirler. Bu, zamanlanmış yedeklemeleri durdurur, ancak şu anda yedeklenene kadar yedeklenen veriler sürekli olarak korunur.
+Korumayı durdurmak isterseniz, [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell cmdlet 'ini kullanabilirsiniz. Bu, zamanlanmış yedeklemeleri durdurur, ancak şu anda yedeklenene kadar yedeklenen veriler sürekli olarak korunur.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 Hangi yönetilen disklerin geri yükleneceği RG 'yi belirtmek için **Targetresourcegroupname** ek parametresini sağlayın.
 
 > [!IMPORTANT]
-> Önemli performans geliştirmeleriyle sonuçlandığından yönetilen diskleri geri yüklemek için **Targetresourcegroupname** parametresinin kullanılması önemle önerilir. Bu parametre verilmezse, müşteriler anlık geri yükleme işlevlerinden yararlanabilir ve geri yükleme işlemi daha yavaş karşılaştırılacaktır. Amaç yönetilen diskleri yönetilmeyen diskler olarak geri yüklemek için bu parametreyi girmeyin ve-RestoreAsUnmanagedDisks parametresini sağlayarak bu parametreyi sağlamaktan yararlanın. -RestoreAsUnmanagedDisks parametresi az PS 3.7.0 onlılar 'tan kullanılabilir. Gelecek sürümlerde, doğru geri yükleme deneyimi için bu parametrelerden birini sağlamak zorunlu olacaktır
+> Önemli performans geliştirmeleriyle sonuçlandığından yönetilen diskleri geri yüklemek için **Targetresourcegroupname** parametresinin kullanılması önemle önerilir. Bu parametre verilmezse, anlık geri yükleme işlevlerinden faydalanabilirsiniz ve geri yükleme işlemi daha yavaş karşılaştırılacaktır. Amaç, yönetilen diskleri yönetilmeyen diskler olarak geri yüklemek için bu parametreyi sağlamaktan sonra, parametresini sağlayarak amaç seçimini yapın `-RestoreAsUnmanagedDisks` . `-RestoreAsUnmanagedDisks`Parametresi Azure PowerShell 3.7.0 onenlerden kullanılabilir. Gelecek sürümlerde, doğru geri yükleme deneyimi için bu parametrelerden birini sağlamak zorunlu olacaktır.
 >
 >
 
@@ -529,8 +529,8 @@ Diskleri geri yükledikten sonra, sanal makineyi diskten oluşturup yapılandır
 > [!NOTE]
 >
 > 1. AzureAz modülü 3.0.0 veya üzeri gereklidir. <br>
-> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION**eylemini gerçekleştirme izni olması gerekir. Rolünüzde bu izin yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md). <br>
-> 3. Diskleri geri yükledikten sonra, artık yeni bir VM oluşturmak için doğrudan kullanabileceğiniz bir dağıtım şablonu edinebilirsiniz. Yönetilen/yönetilmeyen VM 'Ler oluşturmak için şifrelenen/şifrelenmemiş VM 'ler için başka farklı PS cmdlet 'leri yok.<br>
+> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION**eylemini gerçekleştirme izni olması gerekir. Rolünüzün bu izni yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md). <br>
+> 3. Diskleri geri yükledikten sonra, artık yeni bir VM oluşturmak için doğrudan kullanabileceğiniz bir dağıtım şablonu edinebilirsiniz. Şifrelenmiş/şifrelenmemiş olan yönetilen/yönetilmeyen VM 'Ler oluşturmak için farklı PowerShell cmdlet 'lerinin olması gerekmez.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Dağıtım şablonunu kullanarak VM oluşturma

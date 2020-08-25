@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905610"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824959"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -187,7 +187,7 @@ catch (RequestFailedException e)
 
 Önizleme sırasında kullanmayla ilgili ek sınırlamalar vardır `JOIN` .
 * İfadesinde hiçbir alt sorgu desteklenmez `FROM` .
-* `OUTER JOIN`semantikler desteklenmez, yani ilişkinin sıfır sıralaması varsa, tüm "satır" çıkış sonuç kümesinden kaldırılır.
+* `OUTER JOIN` semantikler desteklenmez, yani ilişkinin sıfır sıralaması varsa, tüm "satır" çıkış sonuç kümesinden kaldırılır.
 * Önizleme süresince grafik çapraz geçiş derinliği `JOIN` sorgu başına beş düzey ile kısıtlıdır.
 * `JOIN`İşlem kaynağı kısıtlanmış: sorgu, sorgunun başladığı TWINS 'i bildirmelidir.
 
@@ -222,7 +222,6 @@ Azure dijital TWINS ile sorgulama için bazı ipuçları aşağıda verilmiştir
         AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
         ```
 * Özellik adları ve değerleri büyük/küçük harfe duyarlıdır, bu nedenle modellerdeki tanımlı tam adları kullanın. Özellik adları yanlış yazılmıştır veya yanlış bir şekilde ayarlandıysa, sonuç kümesi hiçbir hata döndürülmeden boştur.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873645"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827435"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -39,7 +39,7 @@ Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kulla
 
 Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün çalışması için gerekli hizmetleri sağlar.
 
-| **Konak adı** | **Amaç** |
+| **Ana bilgisayar adı** | **Amaç** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Eğitim kümeleri |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -57,12 +57,13 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **mcr.microsoft.com** | Temel Docker görüntüleri için Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | Yalnızca Azure Container Registry sanal ağın arkasında ise gereklidir. Bu yapılandırmada, Microsoft ortamından aboneliğinizdeki ACR örneğine özel bir bağlantı oluşturulur. Azure Machine Learning çalışma alanınız için ACR sunucu adını kullanın. |
 | **\*. notebooks.azure.net** | Azure Machine Learning Studio 'daki Not defterleri için gereklidir. |
+| **graph.windows.net** | Not defterleri için gerekli |
 
 ## <a name="python-hosts"></a>Python Konakları
 
 Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliştirme, eğitim ve dağıtım sırasında gereklidir. 
 
-| **Konak adı** | **Amaç** |
+| **Ana bilgisayar adı** | **Amaç** |
 | ---- | ---- |
 | **anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
 | **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
@@ -75,9 +76,18 @@ Bu bölümdeki konaklar R paketleri yüklemek için kullanılır. Geliştirme, e
 > [!IMPORTANT]
 > Dahili olarak, Azure Machine Learning için R SDK, Python paketlerini kullanır. Bu nedenle, güvenlik duvarı üzerinden Python konaklarına da izin vermelisiniz.
 
-| **Konak adı** | **Amaç** |
+| **Ana bilgisayar adı** | **Amaç** |
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN paketleri yüklenirken kullanılır. |
+
+## <a name="azure-government-region"></a>Azure Kamu bölgesi
+
+Azure Kamu bölgeleri için gerekli URL 'Ler.
+
+| **Ana bilgisayar adı** | **Amaç** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | US-Arizona bölgesi |
+| **usgovvirginia.api.ml.azure.us** | ABD-Virginia bölgesi |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

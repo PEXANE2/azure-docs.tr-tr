@@ -3,12 +3,12 @@ title: Sistem durumunu bir Windows sunucusuna geri yükleme
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263444"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827112"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -88,7 +88,7 @@ Bu adımlarda kullanılan terminoloji şunları içerir:
 6. Yedekleme sunucusunu seçin bölmesinde, görünen makineler listesinden *kaynak makineyi* seçin.
 7. Kurtarma modunu seçin bölmesinde **sistem durumu** ' nu seçin ve **İleri**' yi seçin.
 
-    ![Ara](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Arayın](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **Birim ve tarih seçin** bölmesinde takvimde, bir kurtarma noktası seçin. Herhangi bir kurtarma noktasından dilediğiniz zaman geri yükleyebilirsiniz. **Kalın yazı** tarihi, en az bir kurtarma noktasının kullanılabilirliğini gösterir. Bir tarih seçtiğinizde, birden fazla kurtarma noktası varsa, **zaman** açılan menüsünde belirli bir kurtarma noktasını seçin.
 
@@ -154,7 +154,7 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
     ![geri yükleme sistem durumu dosyalarını Başlat](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >Geri yüklemeyi DSRM modunda gerçekleştiriyorsanız **sunucu seçeneğini otomatik olarak yeniden Başlat** ' ı seçmeyin.
+    >Geri yüklemeyi DSRM modunda gerçekleştirmezseniz **sunucu seçeneğini otomatik olarak yeniden Başlat** ' ı seçmeyin.
 
 1. Bir geri yüklemeyi başarıyla tamamladıktan sonra, sunucuyu normal modda yeniden başlatmanız gerekir. Bir komut istemi açın ve şunu yazın: `bcdedit /deletevalue safeboot`
 1. Sunucuyu yeniden başlatın.

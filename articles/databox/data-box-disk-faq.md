@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649423"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826149"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -56,13 +56,13 @@ A.  Data Box disklerinin Şu anda kullanılabilir olduğunu görmek için [bölg
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>S. Data Box Diskleri ile hangi bölgelerde veri depolayabilirim?
 A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve Japonya 'daki tüm bölgeler için desteklenir. Yalnızca Azure genel bulut bölgeleri desteklenir. Azure Kamu veya diğer bağımsız bulutlar desteklenmez.
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>S. Sevkiyat sırasında Data Box Disk çapraz ülke/bölge kenarlıkları olacak mı?
-A. Data Box Disk, hedefle aynı ülke/bölge içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB) ' deki ve disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu emirlerdir.
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>S. Data Box Diskleri ile hangi bölgelerde veri depolayabilirim?
+A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve Japonya 'daki tüm bölgeler için desteklenir. Yalnızca Azure genel bulut bölgeleri desteklenir. Azure Kamu veya diğer bağımsız bulutlar desteklenmez.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>S. Şirket içi kaynaklı verileri bir ülkede/bölgede farklı bir ülkede/bölgede bulunan bir Azure bölgesine nasıl aktarabilirim?
-A. Data Box Disk, yalnızca aynı bölgedeki (ticari sınır) veri alımını destekler. Diğer tüm durumlarda, ek işlem yapmanız gerekebilir. 
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>S. Farklı bir ülkede yer alan bir Azure bölgesine tek bir ülkede/bölgede yer alan mevcut kaynak verilerini nasıl içeri aktarabilirim?
+A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alımı destekler ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), Data Box disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu siparişler içindir.
 
-Örneğin, Kanada 'da bir Azure WestUS depolama hesabına geçmek istediğiniz şirket içi verileriniz varsa, bunu aşağıdaki şekilde gerçekleştirebilirsiniz:
+Örneğin, Kanada 'daki konumunuzda verileri bir Azure WestUS depolama hesabına taşımak isterseniz, bunu aşağıdaki şekilde elde edebilirsiniz:
 
 ### <a name="option-1"></a>1. Seçenek: 
 

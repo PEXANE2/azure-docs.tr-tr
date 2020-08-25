@@ -3,12 +3,12 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763601"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826081"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
@@ -52,7 +52,7 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 
 > [!NOTE]
 >
-> Bu ilkenin aynı anda 200 ' den fazla VM 'ye atanması önerilir. İlke 200 ' den fazla VM 'ye atanırsa, bu, yedeklemenin zamanlama tarafından belirtilenden birkaç saat sonra tetiklendiğine neden olabilir.
+> Bu ilkenin aynı anda 200 ' den fazla VM 'ye atanması önerilir. İlke 200 ' den fazla VM 'ye atanırsa bu, yedeklemenin zamanlama tarafından belirtilenden birkaç saat sonra tetiklenmesi ile sonuçlanabilir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

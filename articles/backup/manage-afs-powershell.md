@@ -3,19 +3,19 @@ title: Azure dosya paylaşma yedeklemelerini PowerShell ile yönetme
 description: Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için PowerShell 'in nasıl kullanılacağını öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb400c25ca6b1deebaef6af6fe4b322951dfcdcc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538602"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826761"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure dosya paylaşma yedeklemelerini PowerShell ile yönetme
 
 Bu makalede, Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için Azure PowerShell nasıl kullanılacağı açıklanır.
 
 > [!WARNING]
-> AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Daha fazla ayrıntı için bu değişikliğin gereksinimini seviyelendirme [bölümüne](backup-azure-afs-automation.md#important-notice-backup-item-identification) bakın.
+> AFS yedeklemeleri için PowerShell sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Daha fazla ayrıntı için bu değişikliğin gereksinimini seviyelendirme [bölümüne](backup-azure-afs-automation.md#important-notice-backup-item-identification) bakın.
 
 ## <a name="modify-the-protection-policy"></a>Koruma ilkesini değiştirme
 

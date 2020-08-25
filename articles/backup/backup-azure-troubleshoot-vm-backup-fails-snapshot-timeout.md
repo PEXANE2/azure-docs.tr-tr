@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755377"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826062"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -119,7 +119,7 @@ Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyark
 Önerilen eylem:<br>
 Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizleme işlemini tetiklemek için işlemi yeniden deneyin.
 > [!NOTE]
-> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_ `<Geo>` _ `<number>` örn: AzureBackupRG_northeurope_1
+> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemeniz önerilir. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_ `<Geo>` _ `<number>` . Örneğin: *AzureBackupRG_northeurope_1*
 
 **1. Adım: [kilidi geri yükleme noktası kaynak grubundan kaldırma](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. Adım: [geri yükleme noktası koleksiyonunu Temizleme](#clean_up_restore_point_collection)**<br>
@@ -297,7 +297,7 @@ Geri yükleme noktalarını temizlemek için yöntemlerden birini izleyin:<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırarak geri yükleme noktası koleksiyonunu Temizleme
 
-Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri yükleme noktalarının otomatik olarak temizlendiğinden emin olur. Bu isteğe bağlı işlemin ilk kez başarısız olmasını bekler; Ancak, geri yükleme noktalarını el ile silmek yerine otomatik temizlemeyi sağlayacaktır. Temizleme işleminden sonra, bir sonraki zamanlanmış yedeklemeniz başarılı olmalıdır.
+Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu eylem geri yükleme noktalarının otomatik olarak temizlendiğinden emin olur. Bu isteğe bağlı işlemin ilk kez başarısız olmasını bekler. Ancak, geri yükleme noktalarını el ile silmek yerine otomatik temizlemeyi sağlayacaktır. Temizleme işleminden sonra, bir sonraki zamanlanmış yedeklemeniz başarılı olmalıdır.
 
 > [!NOTE]
 > İsteğe bağlı yedeklemeyi tetiklemenin birkaç saati sonrasında otomatik temizleme gerçekleşecektir. Zamanlanmış yedeğiniz hala başarısız olursa, [burada](#clean-up-restore-point-collection-from-azure-portal)listelenen adımları kullanarak geri yükleme noktası koleksiyonunu el ile silmeyi deneyin.
@@ -320,4 +320,4 @@ Kaynak grubundaki kilit nedeniyle temizlenmediği geri yükleme noktaları kolek
 6. Yedekleme işlemini yeniden deneyin.
 
 > [!NOTE]
- >Kaynağın (RP koleksiyonu) çok sayıda geri yükleme noktası varsa, bunları portaldan silmek zaman aşımına uğrayabilir ve başarısız olabilir. Bu, tüm geri yükleme noktalarının, belirlenen sürede silinmediği ve işlemin zaman aşımına uğraydığı bilinen bir CRP sorunudur; ancak silme işlemi genellikle 2 veya 3 yeniden denemeden sonra başarılı olur.
+ >Kaynağın (RP koleksiyonu) çok sayıda geri yükleme noktası varsa, bunları portaldan silmek zaman aşımına uğrayabilir ve başarısız olabilir. Bu, tüm geri yükleme noktalarının, belirlenen sürede silinmediği ve işlemin zaman aşımına uğraydığı bilinen bir CRP sorunudur. Ancak, silme işlemi genellikle iki veya üç yeniden denemeden sonra başarılı olur.

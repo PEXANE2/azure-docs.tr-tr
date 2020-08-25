@@ -4,12 +4,12 @@ description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güven
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826914"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup kullanan karma yedeklemeleri korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -20,14 +20,14 @@ Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları h
 - **Kurtarma**. Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar; bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur.
 
 > [!NOTE]
-> Hizmet olarak altyapı (IaaS) VM yedeklemesi kullanıyorsanız güvenlik özellikleri etkinleştirilmemelidir. Bu özellikler IaaS VM yedeklemesi için henüz kullanılamaz, bu yüzden etkinleştirmenin etkinleştirilmesi herhangi bir etkiye sahip olmayacaktır. Güvenlik özellikleri yalnızca kullanıyorsanız etkinleştirilmelidir: <br/>
+> Hizmet olarak altyapı (IaaS) VM yedeklemesi kullanıyorsanız güvenlik özellikleri etkinleştirilmemelidir. Bu özellikler IaaS VM yedeklemesi için henüz mevcut değildir, bu nedenle bunların etkinleştirilmesi herhangi bir etkiye sahip olmayacaktır. Güvenlik özellikleri yalnızca kullanıyorsanız etkinleştirilmelidir: <br/>
 >
 > - **Azure Backup Aracısı**. En düşük aracı sürümü 2.0.9052. Bu özellikleri etkinleştirdikten sonra kritik işlemleri gerçekleştirmek için bu aracı sürümüne yükseltmeniz gerekir. <br/>
 > - **Azure Backup sunucusu**. Azure Backup Sunucusu güncelleştirme 1 ile en düşük Azure Backup aracı sürümü 2.0.9052. <br/>
 > - **System Center Data Protection Manager**. Data Protection Manager 2012 R2 UR12 veya Data Protection Manager 2016 UR2 ile en düşük Azure Backup Agent sürümü 2.0.9052. <br/>
 
 > [!NOTE]
-> Bu özellikler yalnızca kurtarma hizmetleri Kasası için kullanılabilir. Yeni oluşturulan tüm kurtarma hizmetleri kasaları, varsayılan olarak etkinleştirilen bu özelliklere sahiptir. Mevcut kurtarma hizmetleri kasaları için, kullanıcılar aşağıdaki bölümde bahsedilen adımları kullanarak bu özellikleri etkinleştirir. Özellikler etkinleştirildikten sonra, tüm kurtarma hizmetleri aracı bilgisayarları, Azure Backup Sunucusu örnekleri ve kasaya kayıtlı Data Protection Manager sunucuları için geçerlidir. Bu ayarın etkinleştirilmesi tek seferlik bir işlemdir ve bu özellikleri etkinleştirdikten sonra devre dışı bırakılamaz.
+> Bu özellikler yalnızca kurtarma hizmetleri Kasası için kullanılabilir. Yeni oluşturulan tüm kurtarma hizmetleri kasaları, varsayılan olarak etkinleştirilen bu özelliklere sahiptir. Mevcut kurtarma hizmetleri kasaları için, kullanıcılar aşağıdaki bölümde bahsedilen adımları kullanarak bu özellikleri etkinleştirir. Özellikler etkinleştirildikten sonra, tüm kurtarma hizmetleri aracı bilgisayarları, Azure Backup Sunucusu örnekleri ve kasaya kayıtlı Data Protection Manager sunucuları için geçerlidir. Bu ayarın etkinleştirilmesi tek seferlik bir işlemdir ve bunları etkinleştirdikten sonra bu özellikleri devre dışı bırakamıyoruz.
 >
 
 ## <a name="enable-security-features"></a>Güvenlik özelliklerini etkinleştir

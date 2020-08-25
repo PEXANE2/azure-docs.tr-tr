@@ -3,12 +3,12 @@ title: PowerShell kullanarak DPM iş yüklerini yedekleme
 description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Backup dağıtmayı ve yönetmeyi öğrenin
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762751"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825979"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -69,7 +69,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Kullanılacak depolama yedekliliği türünü belirtin; [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanabilirsiniz. Aşağıdaki örnek, Testkasası için-BackupStorageRedundancy seçeneğinin Geoyedekli olarak ayarlandığını gösterir.
+4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanabilirsiniz. Aşağıdaki örnek, Testkasası için-BackupStorageRedundancy seçeneğinin Geoyedekli olarak ayarlandığını gösterir.
 
    > [!TIP]
    > Çoğu Azure Backup cmdlet’i, girdi olarak Kurtarma Hizmetleri kasasını gerektirir. Bu nedenle, Yedekleme Kurtarma Hizmetleri kasasının bir değişkende depolanması uygundur.
@@ -177,7 +177,7 @@ DPM sunucusu, kurtarma hizmetleri kasasıyla kaydedildikten sonra varsayılan ab
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Tüm değişiklikler bu yerel PowerShell nesnesine yapılır ```$setting```  ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses subscriptionsetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. ```–Commit```Değişikliklerin kalıcı olduğundan emin olmak için bayrağını kullanmanız gerekir. Bu ayarlar, uygulanmamışsa Azure Backup uygulanmaz ve kullanılmaz.
+Tüm değişiklikler bu yerel PowerShell nesnesine yapılır ```$setting```  ve ardından tam nesne DPM 'ye kaydedilir ve [set-Dpmcses subscriptionsetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) cmdlet 'ini kullanarak bunları kaydetmek için Azure Backup. ```–Commit```Değişikliklerin kalıcı olduğundan emin olmak için bayrağını kullanmanız gerekir. Ayarlar uygulanmayacaksa Azure Backup uygulanmaz ve kullanılmaz.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -262,7 +262,7 @@ Her DPM Aracısı, üzerinde yüklü olduğu sunucudaki veri kaynaklarının lis
 3. Sunucudaki tüm veri kaynaklarının listesini getirir.
 4. Bir veya daha fazla veri kaynağı seçin ve koruma grubuna ekleyin
 
-DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 'i ile elde edilir. Bu örnekte, yalnızca yedekleme için *ProductionServer01* adlı PS 'yi filtreleyecek ve yapılandıracağız.
+DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 'i ile elde edilir. Bu örnekte, PowerShell 'i yalnızca *ProductionServer01* adlı yedekleme için filtreleyecek ve yapılandıracağız.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

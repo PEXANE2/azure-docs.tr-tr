@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514568"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823973"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -139,7 +139,7 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
     - **Özgün örneğe kurtar**: Özgün örneğe kurtardığınızda, özgün VHD silinir. MABS, VHD 'yi ve diğer yapılandırma dosyalarını Hyper-V VSS yazıcı kullanarak özgün konuma kurtarır. Kurtarma işleminin sonunda, sanal makineler yüksek oranda kullanılabilir olarak kalır.
         Kurtarma için kaynak grubunun mevcut olması gerekir. Mevcut değilse, başka bir konuma kurtarın ve ardından sanal makineyi yüksek oranda kullanılabilir hale getirin.
 
-    - **Sanal makine olarak herhangi bir konağa kurtar**: mabs, korumalı bir Hyper-v sanal makinesinin işlemci mimarisinden bağımsız olarak farklı bir Hyper-v konağına sorunsuz bir şekilde kurtarılmasını sağlayan alternatif konum kurtarmayı (ALR) destekler. Küme düğümüne kurtarılan Hyper-V sanal makineleri yüksek oranda kullanılabilir olmaz. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
+    - **Sanal makine olarak herhangi bir konağa kurtar**: mabs, korumalı bir Hyper-v sanal makinesinin işlemci mimarisinden bağımsız olarak farklı bir Hyper-v konağına sorunsuz bir şekilde kurtarılmasını sağlayan alternatif konum kurtarmayı (ALR) destekler. Bir küme düğümüne kurtarılan Hyper-V sanal makineleri yüksek oranda kullanılabilir olmaz. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
 
     - **Ağ klasörüne kopyala**: Mabs, Hyper-V sanal makinelerinin ana bilgisayar düzeyindeki yedeğinden dosya, klasör, birim ve sanal sabit diskleri (VHD), bir ağ paylaşımında veya mabs korumalı sunucusundaki bir birime öğe düzeyinde kurtarmanıza olanak sağlayan öğe düzeyinde kurtarmayı (ILR) destekler. Öğe düzeyinde kurtarma gerçekleştirmek için MABS koruma aracısının Konuk içinde yüklü olması gerekmez. Bu seçeneği işaretlerseniz, Kurtarma Sihirbazı, hedefi ve hedef yolunu tanımlamak için size ek bir ekran sunar.
 

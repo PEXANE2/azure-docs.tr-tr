@@ -3,12 +3,12 @@ title: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 description: Azure Backup ile bir Azure VM oluşturduğunuzda yedeklemenin nasıl etkinleştirileceğini açıklar.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586707"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825962"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -60,11 +60,11 @@ Yedekleme hizmeti, geri yükleme noktası koleksiyonunu (RPC) depolamak için VM
 1. RG varsayılan adını kullanabilir veya Şirket gereksinimlerinize göre düzenleyebilirsiniz.
 2. VM yedekleme ilkesi oluşturma sırasında RG Name modelini girdi olarak sağlarsınız. RG adı şu biçimde olmalıdır: `<alpha-numeric string>* n <alpha-numeric string>` . ' n ', (1 ' den başlayarak) bir tamsayı ile değiştirilmiştir ve ilk RG dolduğunda ölçeği genişletmek için kullanılır. Bir RG bugün en fazla 600 RPC olabilir.
               ![İlke oluştururken ad seçin](./media/backup-during-vm-creation/create-policy.png)
-3. Bu model, aşağıdaki RG adlandırma kurallarını izlemelidir ve Toplam uzunluk izin verilen maksimum RG ad uzunluğunu aşmamalıdır.
+3. Düzenin aşağıdaki RG adlandırma kurallarına uymalıdır ve Toplam uzunluk izin verilen maksimum RG ad uzunluğunu aşmamalıdır.
     1. Kaynak grubu adları yalnızca alfasayısal karakter, nokta, alt çizgi, kısa çizgi ve parantezlere izin verir. Nokta ile bitmemelidir.
     2. Kaynak grubu adları, RG ve suffix 'un adı da dahil olmak üzere en fazla 74 karakter içerebilir.
 4. İkincisi, `<alpha-numeric-string>` ' n ' sonra isteğe bağlı iken zorunludur. Bu, yalnızca özelleştirilmiş bir ad vermeniz durumunda geçerlidir. Herhangi bir metin kutusunda hiçbir şey girmezseniz, varsayılan ad kullanılır.
-5. Gerektiğinde ilkeyi değiştirerek RG 'nin adını düzenleyebilirsiniz. Ad deseninin değişmesi durumunda yeni bir RG yeni RPs oluşturulur. Ancak, eski RPs 'Ler hala eski RG 'de yer alır ve RP koleksiyonu kaynak taşımayı desteklemediği için taşınmaz. Bu süre sonunda, noktaların süre dolduğunda RPs atık olarak toplanır.
+5. Gerektiğinde ilkeyi değiştirerek RG 'nin adını düzenleyebilirsiniz. Ad deseninin değişmesi durumunda yeni bir RG yeni RPs oluşturulur. Ancak, eski RPs 'Ler hala eski RG 'de yer alır ve RP koleksiyonu kaynak taşımayı desteklemediğinden taşınmayacaktır. Bu süre sonunda, noktaların süre dolduğunda RPs atık olarak toplanır.
 ![İlkeyi değiştirirken adı Değiştir](./media/backup-during-vm-creation/modify-policy.png)
 6. Yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemeniz önerilir.
 

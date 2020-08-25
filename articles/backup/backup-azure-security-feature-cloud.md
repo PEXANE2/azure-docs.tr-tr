@@ -3,12 +3,12 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763448"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826982"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
@@ -29,7 +29,7 @@ Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesini
 
 Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silme ve yeniden koruma (örneğin, bir test ortamında) için gereken 14 gün bekleyemez. Yalnızca kasa sahibi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korunan öğelerin gelecekteki tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliği devre dışı bırakmadan önce geçici olarak silinen durumunda bulunan yedekleme verileri, 14 günlük süre boyunca geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
 
- Geçici silme devre dışı bırakıldığında, özelliğin SQL Server ve SAP HANA iş yükleri dahil olmak üzere tüm iş yükleri türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, [SQL Server/SAP HANA önizlemesi](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) bir abonelik için etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBS için geçici silme devre dışı bırakılması mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
+ Geçici silme devre dışı bırakıldığında, özelliğin SQL Server ve SAP HANA iş yükleri dahil olmak üzere tüm iş yükleri türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, [SQL Server/SAP HANA önizlemesi](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) bir abonelik için etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBS için geçici silme devre dışı bırakmak mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal kullanarak geçici silme devre dışı bırakılıyor
 
@@ -44,9 +44,9 @@ Geçici silme devre dışı bırakmak için şu adımları izleyin:
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>Azure PowerShell kullanarak geçici silme devre dışı bırakılıyor
 
 > [!IMPORTANT]
-> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
+> Azure PowerShell kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü en az 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
 
-Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS cmdlet 'ini kullanın.
+Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PowerShell cmdlet 'ini kullanın.
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable

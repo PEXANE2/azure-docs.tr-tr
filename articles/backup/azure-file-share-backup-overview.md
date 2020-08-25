@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c57537519888138698e9add1a687e0018d330cfa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757889"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823889"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -40,7 +40,7 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 5. Azure Backup Zamanlayıcı, belirtilen ilkeye göre yedeklemeleri zamanlanan saatte tetikler. Bu işin bir parçası olarak dosya paylaşımının anlık görüntüsü dosya paylaşma API 'SI kullanılarak oluşturulur. Meta veri deposunda yalnızca anlık görüntü URL 'SI depolanır.
 
     >[!NOTE]
-    >Yedekleme hizmeti depolama hesabınızın parçası olan anlık görüntüleri oluşturup yönettiğinden ve yedeklemeler kasaya aktarılmadığından, dosya paylaşma verileri yedekleme hizmetine aktarılmaz.
+    >Yedekleme hizmeti depolama hesabınızın parçası olan anlık görüntüleri oluşturup yönettiğinden ve yedeklemeler kasaya aktarılmadığından, dosya paylaşımının verileri yedekleme hizmetine aktarılmaz.
 
 6. Azure dosya paylaşma içeriğini (tek tek dosyalar veya tam paylaşma) kaynak dosya paylaşımında bulunan anlık görüntülerden geri yükleyebilirsiniz. İşlem tetiklendikten sonra, anlık görüntü URL 'SI meta veri deposundan alınır ve veriler listelenir ve kaynak anlık görüntüsünden seçtiğiniz hedef dosya paylaşımında aktarılır.
 

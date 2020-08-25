@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612665"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827316"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -161,7 +161,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 
     > [!WARNING]
     > Şifreleme parolası size aittir ve Microsoft bunun üzerinde görünürlük sahibi değildir.
-    > Parola kaybolursa veya unuttuysanız; Microsoft, yedekleme verilerini kurtarmaya yardımcı olamaz.
+    > Parola kaybolur veya unuttuysanız, Microsoft, yedekleme verilerini kurtarmaya yardımcı olamaz.
 
 7. DPM sunucusunu kasaya kaydetmek için **Kaydet** ' i seçin.
 

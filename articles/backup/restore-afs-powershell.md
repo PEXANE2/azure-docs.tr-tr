@@ -3,12 +3,12 @@ title: Azure dosyalarını PowerShell ile geri yükleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538556"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826506"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile geri yükleme
 
@@ -17,7 +17,7 @@ Bu makalede, Azure PowerShell kullanılarak [Azure Backup](backup-overview.md) h
 Dosya paylaşımının tamamını veya paylaşımdaki belirli dosyaları geri yükleyebilirsiniz. Özgün konuma veya alternatif bir konuma geri yükleyebilirsiniz.
 
 > [!WARNING]
-> AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Daha fazla bilgi için bu değişiklik için gereksinimin ana hattı oluşturma [bölümüne](backup-azure-afs-automation.md#important-notice-backup-item-identification) bakın.
+> AFS yedeklemeleri için PowerShell sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Daha fazla bilgi için bu değişiklik için gereksinimin ana hattı oluşturma [bölümüne](backup-azure-afs-automation.md#important-notice-backup-item-identification) bakın.
 
 >[!NOTE]
 >Azure Backup artık, PowerShell kullanarak birden çok dosya veya klasörü özgün veya alternatif konuma geri yüklemeyi desteklemektedir. Hakkında bilgi edinmek için belgenin [Bu bölümüne](#restore-multiple-files-or-folders-to-original-or-alternate-location) bakın.

@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763550"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826371"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -210,7 +210,7 @@ Geri yükleme işi uzun süredir çalışan bir işlem olduğundan, [REST API be
 
 ### <a name="restore-disks"></a>Diskleri geri yükleme
 
-Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("vmconfig.json") yapılandırması, belirtilen depolama hesabında depolanır. [Yukarıda](#restore-operations)açıklandığı gibi, geri yükleme diskleri için ilgili istek gövdesi aşağıda verilmiştir.
+Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, diskleri seçilen bir depolama hesabına geri yükleyebilir ve bu disklerden bir VM 'yi gereksinimlere göre oluşturabilirsiniz. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler, Ayrıca, yedeklenen VM 'nin ("vmconfig.jsüzerinde") yapılandırılması, belirtilen depolama hesabında depolanır. [Yukarıda](#restore-operations)açıklandığı gibi, geri yükleme diskleri için ilgili istek gövdesi aşağıda verilmiştir.
 
 #### <a name="create-request-body"></a>İstek gövdesi oluştur
 

@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755271"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826863"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -89,7 +89,7 @@ Yedeklemeleriniz için anahtar faturalandırma parametrelerini görüntülemek i
    ![Kullanım sekmesi](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> DPM iş yükleri için, kullanıcılar, kurtarma hizmetleri Kasası **genel bakış** sekmesinde gösterilen toplu kullanım değeriyle karşılaştırıldığında, raporlarda gösterilen kullanım değerleri arasında bir hafif fark (DPM sunucusu BAŞıNA 20 MB) görebilirler. Bu fark, yedekleme için kaydedilen her DPM sunucusunun, raporlama için yapıt olarak ortaya çıkmış olan ilişkili bir ' Metadata ' veri kaynağına sahip olması açısından hesaba göre belirlenir.
+> DPM iş yükleri için, kullanıcılar, kurtarma hizmetleri Kasası **genel bakış** sekmesinde gösterilen toplu kullanım değeriyle karşılaştırıldığında, raporlarda gösterilen kullanım değerleri arasında bir hafif fark (DPM sunucusu BAŞıNA 20 MB) görebilirler. Bu fark, yedekleme için kaydedilen her DPM sunucusunun, raporlama için yapıt olarak ortaya çıkan ilişkili bir ' Metadata ' veri kaynağına sahip olması açısından hesaba göre belirlenir.
 
 ##### <a name="jobs"></a>İşler
 

@@ -3,12 +3,12 @@ title: VM bölmesinden bir SQL Server VM yedekleme
 description: Bu makalede, VM bölmesinden Azure sanal makinelerinde SQL Server veritabanlarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755254"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827486"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM bölmesinden bir SQL Server yedekleme
 
@@ -67,7 +67,7 @@ SQL Server VM yedeklemeyi VM 'deki **yedekleme** bölmesinden etkinleştirebilir
     ![Yedekleme öğelerinde yedeklenen veritabanlarına bakın](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 
 >[!NOTE]
->Yedekleme, daha sonra korunan sanal makineye eklenebilecek yeni SQL Server örneklerinden hiçbirinde otomatik olarak yapılandırılmamıştır. Yeni eklenen örneklerde yedeklemeyi yapılandırmak için, VM 'nin kayıtlı olduğu kasaya gitmeniz ve [burada](backup-sql-server-database-azure-vms.md)listelenen adımları izlemeniz gerekir.
+>Yedekleme, daha sonra korunan sanal makineye eklenebilecek yeni SQL Server örneklerinden hiçbirinde otomatik olarak yapılandırılmaz. Yeni eklenen örneklerde yedeklemeyi yapılandırmak için, VM 'nin kayıtlı olduğu kasaya gitmeniz ve [burada](backup-sql-server-database-azure-vms.md)listelenen adımları izlemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve b
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 2fa35ed5e03ad174407e4c82fb5d4bbe69ee8131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497820"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826401"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
 
@@ -29,10 +29,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Name  |Gerekli  |Tür  |Description  |
+|Name  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |properties     |   Doğru      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
-|tags     |         | Nesne        |  Kaynak etiketleri       |
+|etiketler     |         | Nesne        |  Kaynak etiketleri       |
 
 İstek gövdesindeki tanımlarının tüm listesi için, [yedekleme ilkesi REST API belgesine](/rest/api/backup/protectionpolicies/createorupdate)bakın.
 
@@ -137,7 +137,7 @@ Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](../az
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve ardından bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |    [Koruma PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  Tamam       |
 |202 kabul edildi     |         |     Kabul edildi    |

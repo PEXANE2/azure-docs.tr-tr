@@ -4,12 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763482"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827197"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -83,7 +83,7 @@ Uyarı önem derecesine bağlı olarak, uyarılar üç tür halinde tanımlanabi
 ## <a name="notification-for-backup-alerts"></a>Yedekleme uyarıları için bildirim
 
 > [!NOTE]
-> Bildirimin yapılandırması yalnızca Azure portal aracılığıyla yapılabilir. PS/CLı/REST API/Azure Resource Manager şablon desteği desteklenmez.
+> Bildirimin yapılandırması yalnızca Azure portal aracılığıyla yapılabilir. PS/CLı/REST API/Azure Resource Manager şablonu desteği desteklenmez.
 
 Bir uyarı ortaya çıktığında kullanıcılara bildirilir. Azure Backup, e-posta ile yerleşik bir bildirim mekanizması sağlar. Tek tek e-posta adreslerini veya bir uyarı oluşturulduğunda bildirilecek dağıtım listelerini belirtebilir. Ayrıca, her bir uyarı için bildirim almayı veya saatlik bir özette grupları seçip bildirim almayı seçebilirsiniz.
 

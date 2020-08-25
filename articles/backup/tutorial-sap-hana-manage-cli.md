@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 03e3f7450fd7282acde7988550df404656021961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757362"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824177"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir Azure VM 'de SAP HANA veritabanlarını yönetme
 
@@ -119,7 +119,7 @@ SAP HANA veritabanının korunmasını birkaç yolla durdurabilirsiniz:
 
 Kurtarma noktalarından ayrıldığınızda bu ayrıntıları göz önünde bulundurun:
 
-* Tüm kurtarma noktaları süresiz olarak kalır, tüm ayıklama, verileri sakla ile korumayı durdurma sırasında durdurulur.
+* Tüm kurtarma noktaları süresiz olarak kalır ve tüm ayıklama, verileri koruyarak koruma durdurma sırasında durdurulur.
 * Korumalı örnek ve tüketilen depolama alanı için ücretlendirilirsiniz.
 * Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur.
 

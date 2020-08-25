@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049459"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826710"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -53,7 +53,7 @@ Bugün Azure Backup, e-posta ile uyarıların gönderilmesini sağlar. Bu uyarı
 
 İzleme hakkında daha fazla bilgi edinmek için [Azure izleyici kullanarak](./backup-azure-monitoring-use-azuremonitor.md)Azure Portal ve izleme ' [de izleme](./backup-azure-monitoring-built-in-monitor.md) ' ye gidin.
 
-## <a name="management-operations"></a>Yönetim Işlemleri
+## <a name="management-operations"></a>Yönetim İşlemleri
 
 Azure Backup, yedeklenen bir SAP HANA veritabanının yönetimini desteklediği çok sayıda yönetim işlemi ile kolay hale getirir. Bu işlemler aşağıdaki bölümlerde daha ayrıntılı bir şekilde ele alınmıştır.
 
@@ -171,7 +171,7 @@ SAP HANA veritabanının korunmasını birkaç yolla durdurabilirsiniz:
 
 Kurtarma noktalarından ayrıldığınızda bu ayrıntıları göz önünde bulundurun:
 
-* Tüm kurtarma noktaları süresiz olarak kalır, tüm ayıklama, verileri sakla ile korumayı durdurma sırasında durdurulur.
+* Tüm kurtarma noktaları süresiz olarak kalır ve tüm ayıklama, verileri koruyarak koruma durdurma sırasında durdurulur.
 * Korumalı örnek ve tüketilen depolama alanı için ücretlendirilirsiniz. Daha fazla bilgi için bkz. [Azure Backup fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/).
 * Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur.
 

@@ -4,12 +4,12 @@ description: Sanal makinelerin geçici silme işlemlerini yedeklemelerin daha g�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763703"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826489"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
 
@@ -62,13 +62,13 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Azure PowerShell kullanarak VM 'Ler için geçici silme
 
 > [!IMPORTANT]
-> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
+> Azure PowerShell kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü en az 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
 
 Azure portal için yukarıda özetlenen şekilde, adımların sırası Azure PowerShell kullanılırken de aynıdır.
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell kullanarak yedekleme öğesini silme
 
-[Devre dışı bırakma-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS cmdlet 'ini kullanarak yedekleme öğesini silin.
+[Devre dışı bırak-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell cmdlet 'ini kullanarak yedekleme öğesini silin.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS cmdlet 'ini kullanarak geri alma silme işlemini gerçekleştirin.
+Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell cmdlet 'ini kullanarak geri alma silme işlemini gerçekleştirin.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

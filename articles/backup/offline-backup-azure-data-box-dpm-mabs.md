@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762462"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824568"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -60,7 +60,7 @@ Aşağıdakilerden emin olun:
 - Çevrimdışı yedekleme ilkesini gerçekleştirmeyi amaçlayan Kullanıcı, Azure aboneliğinin sahibi olmalıdır.
 - Verilerin hazırlanması gereken Data Box işi ve kurtarma hizmetleri Kasası aynı aboneliklerde kullanılabilir olmalıdır.
     > [!NOTE]
-    > Hedef depolama hesabının ve kurtarma hizmetleri kasasının aynı bölgede olması önerilir. Ancak, bu zorunlu değildir.
+    > Hedef depolama hesabının ve kurtarma hizmetleri kasasının aynı bölgede olması önerilir. Ancak bu zorunlu değildir.
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box cihazı sıralama ve alma
 
@@ -131,7 +131,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
     ![İlk çevrimiçi çoğaltma seçin](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > Özelliğin önizleme aşamasında olduğundan, **Microsoft 'un disklerini kullanarak Aktarım** seçme seçeneği mabs v3 için kullanılamaz. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)MABS v3 için bu özelliği kullanmak istiyorsanız, bizden bize ulaşın.
+    > **Microsoft 'un sahip olduğu diskleri kullanarak Aktarım** seçme seçeneği, özelliğin önizleme aşamasında olduğundan mabs v3 için kullanılamaz. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)MABS v3 için bu özelliği kullanmak istiyorsanız, bizden bize ulaşın.
 
 12. İstendiğinde, Azure aboneliğinde sahip erişimi olan kullanıcı kimlik bilgilerini kullanarak Azure 'da oturum açın. Başarılı bir oturum açma işleminden sonra aşağıdaki ekran görüntülenir:
 
@@ -234,7 +234,7 @@ Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve ilke yapılandı
 2. Başka bir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı **Azure portal > Azure Active Directory > uygulama kayıtları**silin.
 
    > [!NOTE]
-   > Uygulamanın `AzureOfflineBackup_<Azure User Id>` başka bir çevrimdışı dengeli dağıtım olup olmadığını ve ayrıca bu uygulamaya bağımlı başka bir sunucu olmadığını denetleyin. Ortak anahtarlar bölümünde **ayarlar > anahtarlar** ' a gidin, başka bir **ortak anahtar** eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın:
+   > Uygulamanın `AzureOfflineBackup_<Azure User Id>` başka bir çevrimdışı dengeli dağıtım olup olmadığını ve aynı zamanda bu uygulamaya bağımlı başka bir sunucu olmadığını denetleyin. Ortak anahtarlar bölümü altındaki **ayarlar > anahtarlar** ' a gidin. Başka hiçbir **ortak anahtar** eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın:
    >
    > ![Ortak anahtarlar](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

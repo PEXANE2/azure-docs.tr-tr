@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup Server (MABS) v3 için bilinen 
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032570"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826625"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup sunucusu için sürüm notları
 
@@ -78,7 +78,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 **Geçici çözüm**: rdl dosyalarını değiştirmek için aşağıdaki adımları izleyin:
 
 1. MABS makinesinde SQL Reporting Services Web portalı URL 'sini açın.
-1. Web portalı URL 'sinde, DPMReports klasörü şu biçimde bulunur**`DPMReports_<GUID>`**
+1. Web portalı URL 'sinde, DPMReports klasörü şu biçimde bulunur **`DPMReports_<GUID>`**
 
     >[!NOTE]
     >Bu adlandırma kuralına sahip her zaman yalnızca bir klasör vardır. MABS önceki bir sürümden yükseltilirse, başka bir eski klasör de olabilir, ancak bunu açamazsınız.
@@ -95,7 +95,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 
 1. Yeni sayfada, dosyaları en son rapor dosyalarıyla değiştirmek için **Değiştir** seçeneğini belirleyin.
 
-    En son rapor dosyaları yolda bulunabilir`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    En son rapor dosyaları yolda bulunabilir `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     Örnek: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
