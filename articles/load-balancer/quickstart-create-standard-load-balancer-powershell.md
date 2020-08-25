@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: bdacd752ab549d0caed4d3579ac8d0c3b2606477
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925728"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815326"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
 Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure PowerShell kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell yerel olarak veya Azure Cloud Shell yüklendi
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 ```
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Seçenek 1 (varsayılan): ortak yük dengeleyici oluşturma (Standart SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standart SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
@@ -219,7 +219,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Sanal ağ ve Azure savunma Konağı oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun:
 
@@ -228,16 +228,13 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 * **Mybackendsubnet**adlı alt ağ.
 * **10.0.0.0/16**sanal ağı.
 * Alt ağ **10.0.0.0/24**.
-* Savunma alt ağı **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
-$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
-$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
@@ -246,35 +243,10 @@ $vpfx = '10.0.0.0/16'
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
-## Create Bastion subnet config ##
-$bassubnetConfig =
-New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
-
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
 ```
-[Yeni aztasyon](/powershell/module/az.network/new-azbastion)ile savunma konağını oluşturun:
-
-* Adlandırılmış **Mybastionhost**.
-* **Mybastionıp**genel IP 'si.
-
-```azurepowershell-interactive
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$bas = 'myBastionHost'
-$basip = 'myBastionIP'
-$all = 'Static'
-$sku 'Standard'
-
-## Create public IP address for Bastion host ##
-$baspubip = 
-New-AzPublicIPAddress -ResourceGroupName $rg -Name $basip -Location $loc -AllocationMethod $all -Sku $sku
-
-## Create the bastion host using the $vnet variable from previous step ##
-New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $baspubip -VirtualNetwork $vnet
-```
-Savunma konağının sanal ağa dağıtılması birkaç dakika sürer.
 
 ### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
 Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu oluşturun.
@@ -285,7 +257,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 * **Mynsgrutahttp**adında.
 * HTTP 'ye **Izin ver**açıklaması.
 * **Allow**erişimi.
-* Protokol **TCP**.
+* Protokol **(*)**.
 * Yön **gelen**.
 * Öncelik **2000**.
 * **Internet**kaynağı.
@@ -298,7 +270,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 $rnm = 'myNSGRuleHTTP'
 $des = 'Allow HTTP'
 $acc = 'Allow'
-$pro = 'Tcp'
+$pro = '*'
 $dir = 'Inbound'
 $pri = '2000'
 $spfx = 'Internet'
@@ -596,6 +568,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 ```azurepowershell-interactive
 ## Variables for the command ##
 $fen = 'myFrontEndOutbound'
+$lbn = 'myLoadBalancer'
 
 ## Get the load balancer configuration  and apply the frontend config##
 Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFrontendIPConfig -Name $fen -PublicIpAddress $publicIP | Set-AzLoadBalancer
@@ -734,7 +707,7 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 
 ```
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. seçenek: ortak yük dengeleyici oluşturma (temel SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
@@ -885,7 +858,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Sanal ağ ve Azure savunma Konağı oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun:
 
@@ -894,16 +867,13 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 * **Mybackendsubnet**adlı alt ağ.
 * **10.0.0.0/16**sanal ağı.
 * Alt ağ **10.0.0.0/24**.
-* Savunma alt ağı **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
-$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
-$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
@@ -912,31 +882,9 @@ $vpfx = '10.0.0.0/16'
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
-## Create Bastion subnet config ##
-$bassubnetConfig =
-New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
-
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
-```
-[Yeni aztasyon](/powershell/module/az.network/new-azbastion)ile savunma konağını oluşturun:
-
-* Adlandırılmış **Mybastionhost**.
-* **Mybastionıp**genel IP 'si.
-
-```azurepowershell-interactive
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$bas = 'myBastionHost'
-$basip = 'myBastionIP'
-
-## Create public IP address for Bastion host ##
-$basip = 
-New-AzPublicIPAddress -ResourceGroupName $rg -Location $loc
-
-## Create the bastion host using the $vnet variable from previous step ##
-New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $basip -VirtualNetwork $vnet
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
 ```
 
 ### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
@@ -948,7 +896,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 * **Mynsgrutahttp**adında.
 * HTTP 'ye **Izin ver**açıklaması.
 * **Allow**erişimi.
-* Protokol **TCP**.
+* Protokol **(*)**.
 * Yön **gelen**.
 * Öncelik **2000**.
 * **Internet**kaynağı.
@@ -961,7 +909,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 $rnm = 'myNSGRuleHTTP'
 $des = 'Allow HTTP'
 $acc = 'Allow'
-$pro = 'Tcp'
+$pro = '*'
 $dir = 'Inbound'
 $pri = '2000'
 $spfx = 'Internet'
@@ -1236,49 +1184,72 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ## <a name="install-iis"></a>IIS yükleme
 
-1. Azure portalında [oturum açın](https://portal.azure.com).
+Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
 
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, **myresourcegrouplb** kaynak grubunda bulunan **myVM1** ' yi seçin.
+Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server ' ı çalıştırır ve ardından Default.htm sayfasını, sanal makinenin ana bilgisayar adını gösterecek şekilde güncelleştirir:
 
-3. **Genel bakış** sayfasında **Bağlan** **' ı ve**sonra da ' yi seçin.
+### <a name="vm1"></a>VM1 
 
-4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM1'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
 
-5. **Bağlan**'ı seçin.
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
-6. Sunucu masaüstünde **Windows Yönetim Araçları**  >  **Windows PowerShell**' e gidin.
+### <a name="vm2"></a>VM2 
 
-7. PowerShell penceresinde aşağıdaki komutları çalıştırın:
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM2'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
 
-    * IIS sunucusunu yükler
-    * Varsayılan iisstart.htm dosyasını Kaldır
-    * VM 'nin adını görüntüleyen yeni bir iisstart.htm dosyası ekleyin:
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
-   ```powershell
-    
-    # install IIS server role
-     Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # remove default htm file
-     Remove-Item  C:\inetpub\wwwroot\iisstart.htm
-    
-    # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
-   ```
-8. **MyVM1**ile savunma oturumunu kapatın.
+### <a name="vm3"></a>VM3
 
-9. **MyVM2** ve **MYVM3**' de IIS ve güncelleştirilmiş iisstart.htm dosyasını yüklemek için 1 ile 8 arasındaki adımları yineleyin.
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM3'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
+
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-1. Azure portal, **genel bakış** ekranında yük dengeleyici IÇIN genel IP adresini bulun. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından **mypublicıp**' yi seçin.
+Yük dengeleyicinin genel IP adresini almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) kullanın:
 
-2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
+```azurepowershell-interactive
+  ## Variables for command. ##
+  $rg = 'myResourceGroupLB'
+  $ipn = 'myPublicIP'
+    
+  Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
+```
+
+Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
 
    ![IIS Web sunucusu](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 Yük dengeleyicinin trafiği üç VM 'ye dağıtmasını görmek için, her bir sanal makinenin IIS Web sunucusunun varsayılan sayfasını özelleştirebilir ve sonra Web tarayıcınızı istemci makinesinden yenileyebilirsiniz.
-
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -1303,5 +1274,5 @@ Bu hızlı başlangıçta
 Azure Load Balancer hakkında daha fazla bilgi edinmek için [Azure Load Balancer nedir?](load-balancer-overview.md) ve [sık sorulan sorular Load Balancer](load-balancer-faqs.md).
 
 * [Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
-* Azure savunma hakkında daha fazla bilgi için bkz. [Azure](https://docs.microsoft.com/azure/bastion/bastion-overview)savunma nedir?.
+
 

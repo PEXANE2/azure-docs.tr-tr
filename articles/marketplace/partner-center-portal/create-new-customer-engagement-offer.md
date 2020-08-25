@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606132"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817043"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -140,7 +140,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Açıklama
 8. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -197,12 +197,16 @@ Teklifinizin logolarını ve görüntülerini sağlayın. Tüm görüntülerin P
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunu üç piksel boyutunda sağlayın:
-- **Küçük** (gerekli; 48 x 48)
-- **Büyük** (gerekli; 216 x 216)
-- **Geniş** (isteğe bağlı; 255 x 115)
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** bir logo oluşturmak için bunu kullanacaktır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
+
+- **Büyük** (216 x 216-350 x 350 px, gereklidir)
+- **Küçük** (48 x 48 piksel, isteğe bağlı)
+
+Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

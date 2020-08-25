@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 45e091fe1ed77a4efc90d426b1d9a2842ae00175
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: aa16952d2b2dff6f69abfc37090a9e00b7d48a27
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88725452"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751121"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama
 
@@ -89,7 +89,7 @@ Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini k
 `202 (Success)`Komut dosyasının konsola yazdırabileceği bir **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki dize `operations/` Işlem kimliğidir.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults{operationID}
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>İş kartı sonuçlarını al
@@ -127,12 +127,124 @@ while n_try < n_tries:
 1. `python`Örneği çalıştırmak için komutunu yeniden kullanın. Örneğin, `python form-recognizer-businesscards.py`.
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
-
-Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderilecek yanıtları yazdırır. Daha sonra, ayıklanan metin verilerini JSON biçiminde yazdıracaktır. `"recognitionResults"`Alan, iş kartından ayıklanan her metin satırını içerir ve `"understandingResults"` alan, iş kartının en ilgili bölümleri için anahtar/değer bilgilerini içerir.
-
 ![Contoso şirketinden bir iş kartı](../media/business-card-english.jpg)
 
-`"recognitionResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"understandingResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada, vergi, toplam, ticari adres vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+Bu örnek, form tanıyıcı tarafından döndürülen JSON çıkışını gösterir. Bu örnekler örneğin okunabilirliğini için kesildi.
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-06-04T08:19:29Z",
+    "lastUpdatedDateTime": "2020-06-04T08:19:35Z",
+    "analyzeResult": {
+        "version": "2.1.1",
+        "readResults": [
+            {
+                "page": 1,
+                "angle": -17.0956,
+                "width": 4032,
+                "height": 3024,
+                "unit": "pixel"
+            }
+        ],
+        "documentResults": [
+            {
+                "docType": "prebuilt:businesscard",
+                "pageRange": [
+                    1,
+                    1
+                ],
+                "fields": {
+                    "ContactNames": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "object",
+                                "valueObject": {
+                                    "FirstName": {
+                                        "type": "string",
+                                        "valueString": "Avery",
+                                        "text": "Avery",
+                                        "boundingBox": [
+                                            703,
+                                            1096,
+                                            1134,
+                                            989,
+                                            1165,
+                                            1109,
+                                            733,
+                                            1206
+                                        ],
+                                        "page": 1
+                                },
+                                "text": "Dr. Avery Smith",
+                                "boundingBox": [
+                                    419.3,
+                                    1154.6,
+                                    1589.6,
+                                    877.9,
+                                    1618.9,
+                                    1001.7,
+                                    448.6,
+                                    1278.4
+                                ],
+                                "confidence": 0.993
+                            }
+                        ]
+                    },
+                    "Emails": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "avery.smith@contoso.com",
+                                "text": "avery.smith@contoso.com",
+                                "boundingBox": [
+                                    2107,
+                                    934,
+                                    2917,
+                                    696,
+                                    2935,
+                                    764,
+                                    2126,
+                                    995
+                                ],
+                                "page": 1,
+                                "confidence": 0.99
+                            }
+                        ]
+                    },
+                    "Websites": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "https://www.contoso.com/",
+                                "text": "https://www.contoso.com/",
+                                "boundingBox": [
+                                    2121,
+                                    1002,
+                                    2992,
+                                    755,
+                                    3014,
+                                    826,
+                                    2143,
+                                    1077
+                                ],
+                                "page": 1,
+                                "confidence": 0.995
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderilecek yanıtları yazdırır. `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada şirket adı, adı, soyadı, telefon vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

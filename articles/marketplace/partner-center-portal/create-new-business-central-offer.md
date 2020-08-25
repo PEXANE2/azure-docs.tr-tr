@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606139"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817060"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central teklifi oluşturma
 
@@ -134,7 +134,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 9. Açıklama
 10. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -182,16 +182,16 @@ Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en 
 
 ### <a name="marketplace-images"></a>Market görüntüleri
 
-Teklifinizin logolarını ve görüntülerini sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. 
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** bir logo oluşturmak için bunu kullanacaktır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **Büyük** (216 x 216-350 x 350 px, gereklidir)
+- **Küçük** (48 x 48 piksel, isteğe bağlı)
 
-Teklif logonuzu iki boyutta karşıya yükleyin:
-
-* **Küçük** (48 x 48 piksel)
-* **Büyük** (216 x 216 piksel)
+Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.

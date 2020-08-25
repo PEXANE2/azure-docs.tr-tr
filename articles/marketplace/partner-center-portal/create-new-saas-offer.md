@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604751"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817026"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS teklifi oluşturma
 
@@ -282,18 +282,19 @@ Bu alan gereklidir.
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
-- **Görüntüler**  – logo görüntülerini png biçiminde karşıya yükle:
+- **Görüntüler** (gerekli): teklifinizin logo görüntülerinin Market genelinde görünebileceği birden çok yer vardır. **Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** ve **Orta ölçekli** bir amblem oluşturmak için bunu kullanacaktır. İsterseniz bunları daha sonra farklı görüntülerle değiştirebilirsiniz.
 
-  - **Küçük** (48 x 48 piksel, gereklidir)
-  - **Orta** (90 x 90 piksel, gereklidir)
-  - **Büyük** (216 x 216 piksel, gereklidir)
-  - **Geniş** (255 x 115 piksel) (isteğe bağlı)
+  - **Büyük** (216 x 216-350 x 350 px, gereklidir)
+  - **Orta** (90 x 90 piksel, isteğe bağlı)
+  - **Küçük** (48 x 48 piksel, isteğe bağlı)
+  
+  Bu amblemler, listede farklı yerlerde kullanılır:
 
-   Bu üç logo boyutu, çevrimiçi mağazalardaki farklı yerlerde kullanılır:
+   - Büyük logo, Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
+   - Orta logo, Microsoft Azure yeni bir kaynak oluşturduğunuzda görüntülenir.
+   - Küçük logo Azure Marketi arama sonuçlarında Microsoft AppSource ve ana sayfa ve arama sonuçları sayfasında görünür.
 
-   -   Küçük logo (48 x 48 piksel) Azure Marketi arama sonuçlarında ve Microsoft AppSource ana sayfa ve arama sonuçları sayfasında görünür. 
-   -   Orta logo (90 x 90 piksel) Microsoft Azure içinde yeni bir kaynak oluşturduğunuzda görüntülenir.
-   -   Büyük logo (216 x 216 ve 350 x 350 piksel arasında), Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 - **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.

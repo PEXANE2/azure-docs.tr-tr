@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85297950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797726"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
 Bu makalede, [Azure statik Web Apps](overview.md)bir [Hugo](https://gohugo.io/) Web uygulaması oluşturma ve dağıtma gösterilmektedir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web uygulamasıdır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).

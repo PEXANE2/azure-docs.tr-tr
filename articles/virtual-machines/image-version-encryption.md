@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245562"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816499"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,13 +23,13 @@ Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarl
 
 Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, görüntünüz için kullanmak üzere bir disk şifrelemesi ayarlamış olmanız gerekir.
 
-- Yalnızca müşteri tarafından yönetilen bir anahtar kullanmak için bkz. [Azure Portal](./windows/disks-enable-customer-managed-keys-portal.md) veya [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)'i kullanarak, **müşteri tarafından yönetilen anahtarları sunucu tarafı şifrelemesiyle etkinleştirme** .
+- Yalnızca müşteri tarafından yönetilen bir anahtar kullanmak için bkz. [Azure Portal](./disks-enable-customer-managed-keys-portal.md) veya [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)'i kullanarak, **müşteri tarafından yönetilen anahtarları sunucu tarafı şifrelemesiyle etkinleştirme** .
 
-- Hem platform tarafından yönetilen hem de müşteri tarafından yönetilen anahtarları (Çift şifreleme için) kullanmak için bkz. [Azure Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) veya [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)kullanarak **rest 'te çift şifrelemeyi etkinleştirme** .
+- Hem platform tarafından yönetilen hem de müşteri tarafından yönetilen anahtarları (Çift şifreleme için) kullanmak için bkz. [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) veya [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)kullanarak **rest 'te çift şifrelemeyi etkinleştirme** .
     > [!IMPORTANT]
     > Azure portal erişmek için bu bağlantıyı kullanmanız gerekir [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) . Rest 'te Çift şifreleme, bağlantıyı kullanmadan Genel Azure portal Şu anda görünür değil.
 
@@ -113,7 +113,7 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>VM oluşturma
+### <a name="create-a-vm"></a>VM oluştur
 
 Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) bir VM oluşturma ile aynıdır, genişletilmiş parametre kümesini kullanmanız ve `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` VM yapılandırmasına eklemeniz gerekir.
 

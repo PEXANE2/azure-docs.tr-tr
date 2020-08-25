@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752343"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797794"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -369,7 +369,7 @@ Geçici bir çözüm olarak dizin/dosya düzeyi izinlerini yapılandırmak için
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Hata: "Dizin hizmeti göreli bir tanımlayıcı ayıramadı"
 
-Bu hatası, RID Yöneticisi FSMO rolünü tutan bir etki alanı denetleyicisi kullanılamıyorsa veya etki alanından kaldırılmışsa ve yedekten geri yüklenirse meydana gelebilir.  Tüm etki alanı denetleyicilerinin çalıştığını ve kullanılabilir olduğunu doğrulayın.
+Bu hata, RID Yöneticisi FSMO rolünü tutan bir etki alanı denetleyicisi kullanılamıyorsa veya etki alanından kaldırılmışsa ve yedekten geri yüklenirse meydana gelebilir.  Tüm etki alanı denetleyicilerinin çalıştığını ve kullanılabilir olduğunu doğrulayın.
 
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Hata: "Hiçbir ad verilmediğinden konum parametreleri bağlanamıyor"
 

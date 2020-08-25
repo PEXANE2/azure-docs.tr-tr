@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422393"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798151"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Kuruluşunuzun gizlilikle ilgili verilerinizi nasıl kullandığını görüntüleme
 
@@ -42,7 +42,7 @@ Kuruluşunuzun verilerinizi nasıl kullandığını, **Hesap** portalının **Ay
 
 Kuruluşunuzun verilerinizi nasıl kullandığını görüntüledikten sonra şunları yapabilirsiniz:
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md)görüntüleyin veya yönetin.
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 

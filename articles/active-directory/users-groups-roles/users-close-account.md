@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374585"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798338"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Yönetilmeyen bir Azure AD kuruluşunda iş veya okul hesabınızı kapatın
 
@@ -32,9 +32,9 @@ Yönetilmeyen bir kuruluştaki kullanıcılar genellikle self servis kaydolma s�
 
 Hesabınızı kapatabilmeniz için önce aşağıdaki öğeleri onaylamanız gerekir:
 
-* Yönetilmeyen bir Azure AD kuruluşunun kullanıcısı olduğunuzdan emin olun. Yönetilen bir kuruluşa aitseniz hesabınızı kapatamazsınız. Yönetilen bir kuruluşa aitseniz ve hesabınızı kapatmak istiyorsanız yöneticinize başvurmanız gerekir. Yönetilmeyen bir kuruluşa ait olup olmadığınızı belirleme hakkında daha fazla bilgi için bkz. [kullanıcıyı yönetilmeyen kiracıdan silme](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Yönetilmeyen bir Azure AD kuruluşunun kullanıcısı olduğunuzdan emin olun. Yönetilen bir kuruluşa aitseniz hesabınızı kapatamazsınız. Yönetilen bir kuruluşa aitseniz ve hesabınızı kapatmak istiyorsanız yöneticinize başvurmanız gerekir. Yönetilmeyen bir kuruluşa ait olup olmadığınızı belirleme hakkında daha fazla bilgi için bkz. [kullanıcıyı yönetilmeyen kiracıdan silme](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
-* Tutmak istediğiniz tüm verileri kaydedin. Dışarı aktarma isteği gönderme hakkında daha fazla bilgi için bkz. [yönetilmeyen kiracılar için sistem tarafından oluşturulan günlüklere erişme ve dışarı aktarma](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
+* Tutmak istediğiniz tüm verileri kaydedin. Dışarı aktarma isteği gönderme hakkında daha fazla bilgi için bkz. [yönetilmeyen kiracılar için sistem tarafından oluşturulan günlüklere erişme ve dışarı aktarma](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 
 > [!WARNING]
 > Hesabınızı kapatmak geri alınamaz. Hesabınızı kapattığınızda tüm kişisel veriler kaldırılır. Hesabınıza ve hesabınızla ilişkili verilerinize artık erişemeyecektir.
@@ -56,5 +56,5 @@ Yönetilmeyen bir iş veya okul hesabını kapatmak için şu adımları izleyin
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory için self servis kaydolma nedir?](directory-self-service-signup.md)
-- [Yönetilmeyen Kiracıdan kullanıcıyı silme](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [Yönetilmeyen Kiracılar için sistem tarafından oluşturulan günlüklere erişme ve bu günlükleri dışarı aktarma](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [Yönetilmeyen Kiracıdan kullanıcıyı silme](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [Yönetilmeyen Kiracılar için sistem tarafından oluşturulan günlüklere erişme ve bu günlükleri dışarı aktarma](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

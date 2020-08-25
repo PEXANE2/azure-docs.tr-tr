@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183216"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798321"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -33,7 +33,7 @@ Bu örneği göz önünde bulundurun: contoso, kişilerin Azure AD kuruluşunda 
 Grubun üyelerinin role erişiminin olmasını istemiyorsanız Azure AD Privileged Identity Management kullanabilirsiniz... Bir Azure AD rolünün uygun bir üyesi olarak bir grup atayın. Grubun her üyesi, grubun atandığı rol için atamasının etkinleştirilmesini sağlar. Daha sonra, kendi rol atamasını sabit bir süre için etkinleştirebilir.
 
 > [!Note]
-> Azure AD rolüne PıM aracılığıyla bir grup atayabilmek için Privileged Identity Management 'ın güncelleştirilmiş sürümünde olmanız gerekir. Azure AD kuruluşunuz Privileged Identity Management API 'den yararlandığından, PıM 'nin eski sürümünde olabilirsiniz. Lütfen pim_preview@microsoft.com kuruluşunuzu taşımak ve API 'nizi güncelleştirmek için diğer ada ulaşın. [PIM 'de Azure AD rolleri ve özellikleri](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features)hakkında daha fazla bilgi edinin.
+> Azure AD rolüne PıM aracılığıyla bir grup atayabilmek için Privileged Identity Management 'ın güncelleştirilmiş sürümünde olmanız gerekir. Azure AD kuruluşunuz Privileged Identity Management API 'den yararlandığından, PıM 'nin eski sürümünde olabilirsiniz. Lütfen pim_preview@microsoft.com kuruluşunuzu taşımak ve API 'nizi güncelleştirmek için diğer ada ulaşın. [PIM 'de Azure AD rolleri ve özellikleri](../privileged-identity-management/azure-ad-roles-features.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Bir role atamak için özel bir grup oluşturmayı zorlıyoruz
 
@@ -65,7 +65,7 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
   - PıM portalında, (bir veya daha fazla grup ve doğrudan) bir atamaya göre kaç yöntemden bağımsız olarak **rollerim** yalnızca bir rol ataması gösterebilir.
 - *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.  
 - Exchange Yönetim Merkezi, rol üyeliğini henüz grup aracılığıyla tanımıyor, ancak PowerShell cmdlet 'i çalışacaktır.
-- Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. [Birleşik duyarlılık etiketleme platformuna geçiş](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
+- Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. [Birleşik duyarlılık etiketleme platformuna geçiş](/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
 
 Bu sorunları düzeltiyoruz.
 

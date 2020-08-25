@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611832"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757498"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -125,7 +125,7 @@ Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gös
 >[!NOTE]
 > Altında farklı bir SSFS dosyası kümesine sahip olduğunuzdan emin olun `/usr/sap/{SID}/home/.hdb/` . Bu yolda yalnızca bir klasör olmalıdır.
 
-## <a name="create-a-recovery-service-vault"></a>Kurtarma hizmeti Kasası oluşturma
+## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolayan bir varlıktır. Kurtarma Hizmetleri Kasası, korunan sanal makinelerle ilişkili yedekleme ilkelerini de içerir.
 

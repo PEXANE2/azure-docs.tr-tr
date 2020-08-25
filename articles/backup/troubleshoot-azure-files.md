@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524497"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763686"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Backup hizmetini kullanarak yedeklemeyi yapılandırırken ve
   >Bir depolama hesabındaki tüm dosya paylaşımları yalnızca bir kurtarma hizmetleri Kasası altında korunabilir. Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için [bu betiği](scripts/backup-powershell-script-find-recovery-services-vault.md) kullanabilirsiniz.
 
 - Dosya paylaşımının desteklenmeyen depolama hesaplarında bulunmadığından emin olun. Desteklenen depolama hesaplarını bulmak için [Azure dosya paylaşma yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) başvurabilirsiniz.
-- Lütfen depolama hesabı adı ve kaynak grubu adının Birleşik uzunluğunun, klasik depolama hesapları durumunda yeni depolama hesapları ve 77 karakter olması durumunda 84 karakteri aşmadığından emin olun. 
+- Depolama hesabı adı ve kaynak grubu adının Birleşik uzunluğunun, yeni depolama hesapları 77 ve klasik depolama hesapları olması durumunda 84 karakteri aşmadığından emin olun.
 - Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verme seçeneğinin etkin olduğundan emin olmak için depolama hesabının güvenlik duvarı ayarlarını kontrol edin.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Portal durumlarında hata oluştu, depolama hesaplarını bulma işlemi başarısız oldu

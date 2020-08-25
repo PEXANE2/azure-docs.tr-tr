@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc,seoapr2020
+ms.custom: contperfq1
 ms.topic: overview
-ms.date: 04/17/2020
-ms.openlocfilehash: e933d48a60a01bdbf00205a389778b9a3befeede
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/21/2020
+ms.openlocfilehash: 2cbe0b520156e77308f61a725937ac415cb80473
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188234"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756954"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Spark nedir?
 
@@ -108,3 +108,4 @@ HDInsight 'ta Apache Spark hakkında daha fazla bilgi edinmek için aşağıdaki
 Bu genel bakışta, Azure HDInsight'ta Apache Spark ile ilgili bazı temel bilgiler edindiniz. HDInsight Spark kümesi oluşturmayı ve bazı Spark SQL sorgularını çalıştırmayı öğrenin:
 
 * [HDInsight 'ta Apache Spark kümesi oluşturma](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [Spark işlerini performans için iyileştirin](apache-spark-perf.md)
