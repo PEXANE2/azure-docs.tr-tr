@@ -9,17 +9,17 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74011358"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Öğretici: Web uygulaması erişimini geliştiren bir uygulama ağ geçidi oluşturma
 
 Web uygulaması erişimini iyileştirmeye yönelik bir BT yöneticisiyseniz, uygulama ağ geçidinizin, müşteri taleplerine göre ölçeklendirilmesi ve birden çok kullanılabilirlik alanını yaymak için iyileştirebilirler. Bu öğretici, Azure Application Gateway özelliklerini yapılandırmanıza yardımcı olur: otomatik ölçeklendirme, bölge artıklığı ve ayrılmış VIP 'ler (statik IP). Azure PowerShell cmdlet 'lerini ve Azure Resource Manager dağıtım modelini kullanarak sorunu çözebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Otomatik olarak imzalanan sertifika oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

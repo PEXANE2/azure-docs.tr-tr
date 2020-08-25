@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611866"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755377"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -175,7 +175,7 @@ Disk boyutu 32 TB 'den büyük olan bir VM yedeklenirken yedekleme işlemi başa
 
 Sürmekte olan bir yedekleme işi olduğundan son yedekleme işiniz başarısız oldu. Geçerli iş bitene kadar yeni bir yedekleme işi başlatamazsınız. Başka bir yedekleme işlemini tetiklemeden veya planlamadan önce sürmekte olan yedekleme işleminin tamamlandığından emin olun. Yedekleme işlerinin durumunu denetlemek için aşağıdaki adımları uygulayın:
 
-1. Azure portal oturum açın, **tüm hizmetler**' i seçin. Kurtarma Hizmetleri yazın ve **Kurtarma Hizmetleri kasaları**' nı seçin. Kurtarma hizmetleri kasalarının listesi görünür.
+1. Azure portal oturum açın, **tüm hizmetler**' i seçin. Kurtarma Hizmetleri yazın ve **Kurtarma Hizmetleri kasaları**' nı seçin. Kurtarma Hizmetleri kasalarının listesi görünür.
 2. Kurtarma Hizmetleri kasaları listesinden yedeklemenin yapılandırıldığı bir kasa seçin.
 3. Kasa panosu menüsünde **yedekleme işleri** ' ni seçin, tüm yedekleme işlerini görüntüler.
    - Devam eden bir yedekleme işi varsa işlemin tamamlanmasını bekleyin veya yedekleme işini iptal edin.

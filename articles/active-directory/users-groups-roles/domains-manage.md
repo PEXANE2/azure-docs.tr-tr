@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c58086a163bf558ffdc71e51e55d296e8d4d25e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728597"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795346"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
 
@@ -71,9 +71,9 @@ Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Az
 
 ### <a name="forcedelete-option"></a>ForceDelete seçeneği
 
-[Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "" gibi özel etki alanı adındaki tüm başvuruları user@contoso.com "." gibi ilk varsayılan etki alanı adı ile güncelleştirir user@contoso.onmicrosoft.com . 
+[Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "" gibi özel etki alanı adındaki tüm başvuruları user@contoso.com "." gibi ilk varsayılan etki alanı adı ile güncelleştirir user@contoso.onmicrosoft.com . 
 
-Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
+Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
 
 * Office 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
 * Başka bir müşteri kuruluşu adına bir iş ortağıysanız
@@ -110,11 +110,11 @@ Koşulların herhangi birinin karşılanmadığını fark ederseniz, başvurular
 
 Azure Active Directory etki alanı adları için birçok yönetim görevi Microsoft PowerShell kullanılarak veya Microsoft Graph API kullanılarak programlı bir şekilde tamamlanabilir.
 
-* [Azure AD 'de etki alanı adlarını yönetmek için PowerShell kullanma](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Etki alanı kaynak türü](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
+* [Azure AD 'de etki alanı adlarını yönetmek için PowerShell kullanma](/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [Etki alanı kaynak türü](/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel etki alanı adı ekleme](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [Azure AD 'de özel bir etki alanı adı üzerinde Exchange Yönetim Merkezi 'nde Exchange posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceMicrosoft Graph API ile özel bir etki alanı adını silme](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
+* [Azure AD 'de özel bir etki alanı adı üzerinde Exchange Yönetim Merkezi 'nde Exchange posta etkin güvenlik gruplarını kaldırma](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
+* [ForceMicrosoft Graph API ile özel bir etki alanı adını silme](/graph/api/domain-forcedelete?view=graph-rest-beta)

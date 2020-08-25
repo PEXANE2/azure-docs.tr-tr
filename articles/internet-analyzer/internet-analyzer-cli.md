@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74184276"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLı kullanarak Internet çözümleyici testi oluşturma (Önizleme)
@@ -38,19 +38,19 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
 ## <a name="profile-and-test-creation"></a>Profil ve test oluşturma
 1. **Önizlemeye katılmak nasıl yaparım?** , [Azure Internet Çözümleyicisi hakkında SSS](internet-analyzer-faq.md)bölümündeki yönergeleri izleyerek Internet Çözümleyicisi önizleme erişimi alın.
 2. [Azure CLI 'Yı yükler](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-3. Bir CLı `login` oturumu başlatmak için komutunu çalıştırın:
+3. `login`BIR CLI oturumu başlatmak için komutunu çalıştırın:
     ```azurecli-interactive
     az login
     ```
 
     CLı varsayılan tarayıcınızı açabildiğinden, bunu yapılır ve bir Azure oturum açma sayfası yükler.
-    Aksi takdirde, konumunda https://aka.ms/devicelogin bir tarayıcı sayfası açın ve terminalinizde görünen yetkilendirme kodunu girin.
+    Aksi takdirde, konumunda bir tarayıcı sayfası açın https://aka.ms/devicelogin ve terminalinizde görünen yetkilendirme kodunu girin.
 
 4. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
 
 5. Internet Çözümleyicisi Genel önizlemesine erişim izni verilen abonelik KIMLIĞINIZI seçin.
 
-    Oturum açtıktan sonra, Azure hesabınızla ilişkili Aboneliklerin listesini görürsünüz. İle `isDefault: true` abonelik bilgileri, oturum açtıktan sonra şu anda etkinleştirilmiş olan aboneliğdir. Başka bir abonelik seçmek için, abone KIMLIĞIYLE [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Oturum açtıktan sonra, Azure hesabınızla ilişkili Aboneliklerin listesini görürsünüz. İle abonelik bilgileri, `isDefault: true` oturum açtıktan sonra şu anda etkinleştirilmiş olan aboneliğdir. Başka bir abonelik seçmek için, abone KIMLIĞIYLE [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     [Azure CLI ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) bölümünde ayrıntılı bir şekilde ele alınan etkileşimsiz olarak oturum açma yöntemleri mevcuttur.
 
@@ -79,7 +79,7 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Yukarıdaki komutta, her ikisinin de `www.contoso.com` `www.microsoft.com` özel yollar altında tek piksellik görüntüyü ([Trans. gif](https://fpc.msedge.net/apc/trans.gif)) barındırdığı varsayılır. Bir nesne yolu açıkça belirtilmemişse, Internet çözümleyici varsayılan olarak nesne yolu `/apc/trans.gif` olarak kullanılır. Bu, önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırmakta olduğu yerdir. Ayrıca şemanın (https/http) belirtilmesi gerekmez; Internet çözümleyici yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
+    Yukarıdaki komutta, her ikisinin de `www.contoso.com` `www.microsoft.com` özel yollar altında tek piksellik görüntüyü ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) barındırdığı varsayılır. Bir nesne yolu açıkça belirtilmemişse, Internet çözümleyici `/apc/trans.gif` Varsayılan olarak nesne yolu olarak kullanılır. Bu, önceden yapılandırılmış uç noktaların tek piksellik görüntüyü barındırmakta olduğu yerdir. Ayrıca şemanın (https/http) belirtilmesi gerekmez; Internet çözümleyici yalnızca HTTPS uç noktalarını destekler, bu nedenle HTTPS kabul edilir.
 
 11. Yeni test Internet Çözümleyicisi profili altında görünmelidir:
     ```azurecli-interactive

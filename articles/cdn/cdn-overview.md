@@ -3,7 +3,7 @@ title: İçerik teslim ağı (CDN) nedir? - Azure | Microsoft Docs
 description: Azure Content Delivery Network’ün (CDN) ne olduğunu ve yüksek bant genişliği içeriği teslimi gerçekleştirmek için nasıl kullanılacağını öğrenin.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260470"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783832"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure’da içerik teslim ağı nedir?
-İçerik teslim ağı (CDN), kullanıcılara etkili bir şekilde web içeriği teslim edebilen dağıtılmış bir sunucu ağıdır. CDN’ler gecikme süresini en aza indirmek için, önbelleğe alınmış içerikleri son kullanıcılara yakın olan bulunma noktası (POP) konumlarındaki uç sunucularda depolar. 
+İçerik teslim ağı (CDN), kullanıcılara etkili bir şekilde web içeriği teslim edebilen dağıtılmış bir sunucu ağıdır. CDNs ', gecikme süresini en aza indirmek için son kullanıcılara yakın olan ara sunucu (POP) konumlarında önbelleğe alınmış içerik depolar. 
 
 Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar. Azure CDN, CDN POP’ları kullanarak çeşitli ağ iyileştirmelerinden yararlanarak, önbelleğe alınamayan dinamik içeriği hızlandırabilir. Örneğin, Sınır Ağ Geçidi Protokolü’nü (BGP) atlamak için rota iyileştirmesi.
 
@@ -38,7 +38,7 @@ Geçerli CDN düğümü konumlarının listesi için bkz. [Azure CDN POP konumla
 ## <a name="how-it-works"></a>Nasıl çalışır?
 ![CDN'ye Genel Bakış](./media/cdn-overview/cdn-overview.png)
 
-1. Kullanıcı (Gamze), _ &lt;uç nokta adı&gt;_. azureedge.NET gibi özel bir etki alanı adına sahip bir URL kullanarak bir dosya (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
+1. Kullanıcı (Gamze), _ &lt; uç nokta adı &gt; _. azureedge.NET gibi özel bir etki alanı adına sahip bir URL kullanarak bir dosya (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
     
 2. Bulunma noktasındaki uç sunucuların önbelleğinde dosya mevcut değilse bulunma noktası, kaynak sunucudan dosyayı ister. Kaynak sunucu; bir Azure Web App, Azure Bulut Hizmeti, Azure Depolama hesabı veya genel olarak erişilebilen herhangi bir web sunucusu olabilir.
    

@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/02/2020
 ms.author: sbowles
 ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85918739"
 ---
 # <a name="example-identify-faces-in-images"></a>Örnek: görüntülerdeki yüzeyleri tanımla
@@ -26,7 +26,7 @@ Bu örnek şunları gösterir:
 - Bir kişilik grubu oluşturma. Bu PersonGroup, bilinen kişilerin bir listesini içerir.
 - Her kişiye yüz atama. Bu yüzeyler, kişileri tanımlamak için temel olarak kullanılır. Yüzlerin açık ve tamamen görünümlerini kullanmanızı öneririz. Fotoğraf KIMLIĞI bir örnektir. İyi bir fotoğraf kümesi, farklı pozlar, giyme renkleriyle veya ince stillerde aynı kişinin yüzlerini içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın ve anahtarınızı kopyalayın.
@@ -99,7 +99,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>Adım 2,2: yüzeyleri algılama ve bunları doğru kişiye kaydetme
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a> Adım 2,2: yüzeyleri algılama ve bunları doğru kişiye kaydetme
 HTTP istek gövdesinde görüntü dosyası ile [Yüz - Algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API’sine bir “POST” web isteği gönderilerek algılama gerçekleştirilir. İstemci kitaplığını kullandığınızda, algılama algılaması aracılığıyla yüz tanıma işlemi yapılır. FaceClient sınıfının zaman uyumsuz yöntemleri.
 
 Algılanan her yüz için, [Persongroup kişisine](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) çağrı yapın ve doğru kişiye eklemek Için yüz ekleyin.

@@ -2,17 +2,17 @@
 title: Azure Data Box Gateway serisi cihaza güncelleştirme yüklemeyi | Microsoft Docs
 description: Azure Data Box Gateway serisi cihaz için Azure portal ve yerel Web Kullanıcı arabirimini kullanarak güncelleştirmelerin nasıl uygulanacağını açıklar.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4c17488a875484b2d3dc0e7e8e1045ce8ea75cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85802475"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783884"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Azure Data Box Gateway güncelleştirin
 
@@ -63,7 +63,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
     ![Güncelleştirmeden sonra yazılım sürümü](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**'yi seçin.
+    Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**’yi seçin.
   
     ![Güncelleştirmeden sonra yazılım sürümü](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -116,7 +116,7 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
 
    ![Katalogda arama](./media/data-box-gateway-apply-updates/download-update-2.png)
 
-3. **Download** (İndir) seçeneğini belirleyin. İndirmek için, aygıt yazılım güncelleştirmesine karşılık gelen *SoftwareUpdatePackage.exe* adlı tek bir dosya vardır. Dosyayı yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
+3. **İndir**'i seçin. İndirmek için, aygıt yazılım güncelleştirmesine karşılık gelen *SoftwareUpdatePackage.exe* adlı tek bir dosya vardır. Dosyayı yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 
    ![Katalogda arama](./media/data-box-gateway-apply-updates/download-update-3.png)
 
@@ -139,7 +139,7 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
    ![cihaz güncelleştirme](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. **Uygula**’yı seçin.
+3. **Apply** (Uygula) seçeneğini belirleyin.
 
    ![cihaz güncelleştirme](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

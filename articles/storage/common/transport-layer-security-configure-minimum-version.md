@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533385"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755917"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
@@ -338,6 +338,10 @@ TLS 1,2 ' den daha az bir TLS sürümüne yönelik reddetme etkisi olan bir ilke
 Aşağıdaki görüntüde, bir reddetme etkisi olan bir ilke en düşük TLS sürümünün TLS 1,2 olarak ayarlanmasını gerektirdiğinde, en düşük TLS sürümü TLS 1,0 (yeni bir hesap için varsayılan) olarak ayarlanmış bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
+
+## <a name="network-considerations"></a>Ağ konuları
+
+İstemci, depolama hesabına bir istek gönderdiğinde, istemci herhangi bir isteği işlemeden önce depolama hesabının genel uç noktasıyla bir bağlantı kurar. Bağlantı kurulduktan sonra minimum TLS sürümü ayarı denetlenir. İstek, bu ayar tarafından belirtilenden daha eski bir TLS sürümü kullanıyorsa bağlantı başarılı olmaya devam eder, ancak istek sonunda başarısız olur. Azure depolama için genel uç noktalar hakkında daha fazla bilgi için bkz. [Kaynak URI sözdizimi](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,17 +8,17 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85961107"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
 Bu makalede, örnek perakende verileri Azure Cosmos DB aktarmak için yerleşik jupi Not defterlerinin nasıl kullanılacağı açıklanır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB Magic komutlarının nasıl kullanılacağını göreceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Cosmos hesabını oluştururken Not defteri desteğini etkinleştir](enable-notebooks.md)
 

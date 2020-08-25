@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418925"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795233"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
-`id_tokens`, bir [OpenID Connect](v2-protocols-oidc.md) (OIDC) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
+`id_tokens` , bir [OpenID Connect](v2-protocols-oidc.md) (OIDC) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
 
 ## <a name="using-the-id_token"></a>İd_token kullanma
 
@@ -31,7 +31,7 @@ KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrula
 
 ## <a name="claims-in-an-id_token"></a>İd_token talepler
 
-`id_tokens`, [Jwts](https://tools.ietf.org/html/rfc7519) (JSON Web belirteçleri), yani bir üst bilgi, yük ve imza kısmından oluşur. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm JWT talepleri v 1.0 ve v 2.0 belirteçlerinde görünür.
+`id_tokens` , [Jwts](https://tools.ietf.org/html/rfc7519) (JSON Web belirteçleri), yani bir üst bilgi, yük ve imza kısmından oluşur. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm JWT talepleri v 1.0 ve v 2.0 belirteçlerinde görünür.
 
 ### <a name="v10"></a>v1.0
 
@@ -51,7 +51,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Description |
+|İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
@@ -62,7 +62,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, `groups` kullanıcıdan kullanıcının adı hakkında bilgi talep edebilir.
 
-|İste | Biçimlendir | Description |
+|İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
 |`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. `id_tokens`' De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 |`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0` .  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -80,7 +80,7 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity sistemindeki bir nesne için sabit tanımlayıcı. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, talepteki aynı değer de alınır `oid` . Microsoft Graph, bu KIMLIĞI `id` verilen kullanıcı hesabının özelliği olarak döndürür. `oid`Birden çok uygulamanın kullanıcıları ilişkilendirme olanağı sağladığından, `profile` Bu talebi almak için kapsamın olması gerekir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. `oid`Talep BIR GUID 'dir ve yeniden kullanılamaz. |
 |`roles`| Dizeler dizisi | Oturum açan kullanıcıya atanan roller kümesi. |
 |`rh` | Donuk dize |Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
-|`sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Konu, belirli bir uygulama KIMLIĞI için benzersiz bir tanımlayıcıdır. Tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya olmayabilir. |
+|`sub` | Dize | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Konu, belirli bir uygulama KIMLIĞI için benzersiz bir tanımlayıcıdır. Tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya olmayabilir. |
 |`tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eden bir GUID. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad` . `profile`Kapsam bu talebi almak için gereklidir. |
 |`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 'da verilir `id_tokens` . |
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
@@ -89,8 +89,8 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 > [!NOTE]
 > V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm, istenen bitiş noktasına göre belirlenir. Mevcut uygulamalar muhtemelen Azure AD uç noktasını kullanırken, yeni uygulamalar v 2.0 "Microsoft Identity platform" uç noktasını kullanmalıdır.
 >
-> - v 1.0: Azure AD uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: Microsoft Identity platform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 1.0: Azure AD uç noktaları: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: Microsoft Identity platform uç noktaları: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Bir kullanıcıyı güvenilir bir şekilde tanımlamak için talepler kullanma (konu ve nesne KIMLIĞI)
 

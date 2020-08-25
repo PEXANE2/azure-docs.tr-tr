@@ -16,17 +16,17 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f8020ec2561bf06716db0720a7ec4292f36eb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034131"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783204"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle konuk erişimini yönetme
 
 
-Azure Active Directory (Azure AD) ile [Azure AD B2B özelliğini](../b2b/what-is-b2b.md)kullanarak kurumsal sınırlar genelinde işbirliğini kolayca etkinleştirebilirsiniz. Diğer kiracılardan Konuk kullanıcılar Yöneticiler veya [diğer kullanıcılar](../b2b/what-is-b2b.md)tarafından [davet](../b2b/add-users-administrator.md) edilebilir. Bu özellik, Microsoft hesapları gibi sosyal kimlikler için de geçerlidir.
+Azure Active Directory (Azure AD) ile [Azure AD B2B özelliğini](../external-identities/what-is-b2b.md)kullanarak kurumsal sınırlar genelinde işbirliğini kolayca etkinleştirebilirsiniz. Diğer kiracılardan Konuk kullanıcılar Yöneticiler veya [diğer kullanıcılar](../external-identities/what-is-b2b.md)tarafından [davet](../external-identities/add-users-administrator.md) edilebilir. Bu özellik, Microsoft hesapları gibi sosyal kimlikler için de geçerlidir.
 
 Ayrıca, konuk kullanıcıların uygun erişime sahip olmasını da kolayca sağlayabilirsiniz. Konukların kendilerine veya bir karar veren bir erişim gözden geçirimine katılmasını ve konukilerin erişimini çözmesini (ya da attest) isteyebilirsiniz. Gözden geçirenler, Azure AD önerilerine dayanarak her kullanıcının erişiminin devam edip etmemesine yönelik girişler ekleyebilir. Erişim gözden geçirmesi tamamlandığında, değişiklikler yapabilir ve artık ihtiyaç duyulmayacak konuklara erişimi kaldırabilirsiniz.
 
@@ -120,10 +120,3 @@ Bazı kuruluşlarda, konuklar grup üyeliklerinin farkında olmayabilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma](create-access-review.md)
-
-
-
-
-
-
-

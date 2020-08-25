@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503608"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749093"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -22,8 +22,8 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |Notlar |
 |---------|---------|---------|---------|
-|Azure SQL Veritabanı      |   Yes      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SYNAPSE Analytics (SQL DW)      |   Yes      |   Yes       |<sup>[2](#azprovider)</sup>|
+|Azure SQL Veritabanı      |   Evet      |    Evet      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SYNAPSE Analytics (SQL DW)      |   Evet      |   Evet       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Depolama Alanı      |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup> |
 |Azure Tablo Depolama     |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Evet        |  Hayır        |<sup>[1](#tab1400a)</sup> |
@@ -61,17 +61,17 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 |OData Akışı      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |ODBC sorgusu     | Evet | Hayır |  |
 |OLE DB     |   Evet | Hayır |  |
-|Oracle  | Yes  |Yes  | <sup>[9](#oracle)</sup> |
+|Oracle  | Evet  |Evet  | <sup>[9](#oracle)</sup> |
 |PostgreSQL Veritabanı   | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Nesneleri|  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Raporları |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |SAP HANA     |  Evet | Hayır |  |
 |SAP Business Warehouse    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |SharePoint Listesi      |   Evet | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|SQL Server veri ambarı |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server veri ambarı |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase Veritabanı     |  Evet | Hayır |  |
-|Teradata | Yes  | Yes  | <sup>[(](#teradata)</sup> |
+|Teradata | Evet  | Evet  | <sup>[(](#teradata)</sup> |
 |TXT dosyası  |Evet | Hayır |  |
 |XML tablosu    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 | | | |
@@ -120,7 +120,7 @@ Bulut veri kaynakları için:
 
 ## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
 
-Bellek içi modu, Azure SQL veritabanı, Azure Synapse (eski adıyla SQL veri ambarı), Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
+Bellek içi modu, Azure SQL veritabanı, Azure Synapse (eski adıyla SQL veri ambarı), Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablolu modeller için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için Power Query kullanarak kimlik bilgilerini ayarlayın.
 
 OAuth kimlik bilgileriyle doğrudan sorgu modu desteklenmez.
 

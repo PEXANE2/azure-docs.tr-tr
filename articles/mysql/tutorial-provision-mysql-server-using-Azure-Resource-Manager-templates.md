@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74771109"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucusu sağlama
@@ -76,27 +76,27 @@ Bir MySQL için Azure veritabanı sunucusuna yönelik JSON şablonu başvurusunu
 }
 ```
 Bu istekte, özelleştirilmesi gereken değerler şunlardır:
-+   `name`-MySQL sunucunuzun adını belirtin (etki alanı adı olmadan).
-+   `location`-MySQL sunucunuz için geçerli bir Azure veri merkezi bölgesi belirtin. Örneğin, westus2.
-+   `properties/version`-Dağıtılacak MySQL sunucu sürümünü belirtin. Örneğin, 5,6 veya 5,7.
-+   `properties/administratorLogin`-Sunucu için MySQL yönetici oturum açma bilgilerini belirtin. Yönetici oturum açma adı azure_superuser, admin, administrator, root, guest veya public olamaz.
-+   `properties/administratorLoginPassword`-Yukarıda belirtilen MySQL yönetici kullanıcısının parolasını belirtin.
-+   `properties/sslEnforcement`-SslEnforcement etkinleştirmek/devre dışı bırakmak için etkin/devre dışı öğesini belirtin.
-+   `storageProfile/storageMB`-Sunucu için gereken en fazla sağlanan depolama boyutunu megabayt cinsinden belirtin. Örneğin, 5120.
-+   `storageProfile/backupRetentionDays`-İstenen yedekleme saklama süresini gün olarak belirtin. Örneğin, 7. 
-+   `storageProfile/geoRedundantBackup`-Coğrafi DR gereksinimlerine bağlı olarak etkin/devre dışı olarak belirleyin.
-+   `sku/tier`-Dağıtım için temel, Generalamacını veya Memoryoptıılanmış katmanı belirtin.
-+   `sku/capacity`-VCore kapasitesini belirtin. Olası değerler arasında 2, 4, 8, 16, 32 veya 64 vardır.
-+   `sku/family`-Sunucu dağıtımı için donanım oluşturmayı seçmek üzere 5. nesil belirtin.
-+   `sku/name`-TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Her bölge ve katman için geçerli değerleri anlamak üzere [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
-+   `resources/properties/virtualNetworkSubnetId`-Azure MySQL sunucusunun yerleştirilmesi gereken VNet 'teki alt ağın Azure tanıtıcısını belirtin. 
-+   `tags(optional)`-İsteğe bağlı Etiketler, faturalandırmayla ilgili kaynakları kategorize etmek için kullanacağınız anahtar değer çiftleridir.
++   `name` -MySQL sunucunuzun adını belirtin (etki alanı adı olmadan).
++   `location` -MySQL sunucunuz için geçerli bir Azure veri merkezi bölgesi belirtin. Örneğin, westus2.
++   `properties/version` -Dağıtılacak MySQL sunucu sürümünü belirtin. Örneğin, 5,6 veya 5,7.
++   `properties/administratorLogin` -Sunucu için MySQL yönetici oturum açma bilgilerini belirtin. Yönetici oturum açma adı azure_superuser, admin, administrator, root, guest veya public olamaz.
++   `properties/administratorLoginPassword` -Yukarıda belirtilen MySQL yönetici kullanıcısının parolasını belirtin.
++   `properties/sslEnforcement` -SslEnforcement etkinleştirmek/devre dışı bırakmak için etkin/devre dışı öğesini belirtin.
++   `storageProfile/storageMB` -Sunucu için gereken en fazla sağlanan depolama boyutunu megabayt cinsinden belirtin. Örneğin, 5120.
++   `storageProfile/backupRetentionDays` -İstenen yedekleme saklama süresini gün olarak belirtin. Örneğin, 7. 
++   `storageProfile/geoRedundantBackup` -Coğrafi DR gereksinimlerine bağlı olarak etkin/devre dışı olarak belirleyin.
++   `sku/tier` -Dağıtım için temel, Generalamacını veya Memoryoptıılanmış katmanı belirtin.
++   `sku/capacity` -VCore kapasitesini belirtin. Olası değerler arasında 2, 4, 8, 16, 32 veya 64 vardır.
++   `sku/family` -Sunucu dağıtımı için donanım oluşturmayı seçmek üzere 5. nesil belirtin.
++   `sku/name` -TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Her bölge ve katman için geçerli değerleri anlamak üzere [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
++   `resources/properties/virtualNetworkSubnetId` -Azure MySQL sunucusunun yerleştirilmesi gereken VNet 'teki alt ağın Azure tanıtıcısını belirtin. 
++   `tags(optional)` -İsteğe bağlı Etiketler, faturalandırmayla ilgili kaynakları kategorize etmek için kullanacağınız anahtar değer çiftleridir.
 
 Kuruluşunuz için Azure veritabanı dağıtımlarını otomatik hale getirmek üzere bir Azure Resource Manager şablonu oluşturmak istiyorsanız, ilk olarak Azure hızlı başlangıç GitHub galerisinde örnek [Azure Resource Manager şablonundan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) başlayıp üzerine inşa edilecek. 
 
 Azure Resource Manager şablonlarına yeni başladıysanız ve denemek istiyorsanız aşağıdaki adımları izleyerek başlayabilirsiniz:
 +   Örnek [Azure Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) Azure hızlı başlangıç galerisinden kopyalayın veya indirin.  
-+   Tercihinize göre parametre değerlerini güncelleştirmek için azuredeploy. Parameters. JSON öğesini değiştirin ve dosyayı kaydedin. 
++   Tercihinize göre parametre değerlerini güncelleştirmek için azuredeploy.parameters.js' u değiştirin ve dosyayı kaydedin. 
 +   Aşağıdaki komutları kullanarak Azure MySQL sunucusunu oluşturmak için Azure CLı 'yi kullanın
 
 Bu öğreticide kod bloklarını çalıştırmak için tarayıcıda Azure Cloud Shell kullanabilir ya da kendi bilgisayarınıza Azure CLI yükleyebilirsiniz.

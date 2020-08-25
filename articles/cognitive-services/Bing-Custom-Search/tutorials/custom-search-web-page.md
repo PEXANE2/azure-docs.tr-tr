@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85921944"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
@@ -32,7 +32,7 @@ Ele alınan görevler şunlardır:
 > - Sabitlenmiş girişleri ekleme
 > - Özel aramayı bir web sayfasıyla tümleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Bir anahtar almak için Azure portal [Bing özel arama bir kaynak oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) .
 - Visual Studio 2017 veya sonraki bir sürümü yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz.

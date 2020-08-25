@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75371947"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Büyük miktarda rastgele verileri paralel şekilde Azure Depolama’ya yükleme
@@ -30,7 +30,7 @@ Azure blob depolama, verilerinizi depolamak için ölçeklenebilir bir hizmet sa
 
 Blob kullanan yüksek performanslı bir uygulama tasarlarken [bölüm adlandırma](../blobs/storage-performance-checklist.md#partitioning) , potansiyel olarak önemli bir faktördür. 4 MIB 'den büyük veya buna eşit blok boyutları için [yüksek aktarım hızı blok Blobları](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) kullanılır ve bölüm adlandırma performansı etkilemez. 4 MiB 'den küçük blok boyutları için Azure depolama, ölçek ve yük dengelemek için Aralık tabanlı bölümleme şeması kullanır. Bu yapılandırma, benzer adlandırma kurallarına veya ön eklere sahip dosyaların aynı bölüme gideceği anlamına gelir. Bu mantık, dosyaların yüklendiği kapsayıcının adını içerir. Bu öğreticide, rastgele oluşturulan içerik ve adlar için GUID’e sahip olan dosyaları kullanırsınız. Bunlar daha sonra rastgele adlarla beş farklı kapsayıcıya yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamış olmanız gerekir: [Ölçeklenebilir uygulama için sanal makine ve depolama hesabı oluşturma][previous-tutorial].
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>Bağlantı dizesini yapılandırma
 
-Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. Önceki öğreticide oluşturduğunuz sanal makinede oturum açın. Bir **Komut İstemini** yönetici olarak açın ve `/m` anahtarıyla `setx` komutunu çalıştırın. Bu komut bir makine ayarı ortam değişkenini kaydeder. Bu ortam değişkeni, **Komut İstemi** yeniden yükleninceye kadar kullanılamaz. ** \<StorageConnectionString\> ** öğesini aşağıdaki örnekte değiştirin:
+Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. Önceki öğreticide oluşturduğunuz sanal makinede oturum açın. Bir **Komut İstemini** yönetici olarak açın ve `/m` anahtarıyla `setx` komutunu çalıştırın. Bu komut bir makine ayarı ortam değişkenini kaydeder. Bu ortam değişkeni, **Komut İstemi** yeniden yükleninceye kadar kullanılamaz. **\<storageConnectionString\>** Aşağıdaki örnekte değiştirin:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m

@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75613950"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi yükleme ve oluşturma
@@ -30,7 +30,7 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 
 Service Fabric, tek başına Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar.  Yerel bilgisayarınıza [kurulum paketini indirin](https://go.microsoft.com/fwlink/?LinkId=730690).  Başarıyla indirildiğinde, sanal makinenize RDP bağlantısı üzerinden kopyalayın ve masaüstüne yapıştırın.
 
-ZIP dosyasını seçin ve bağlam menüsünü açın ve **Tümünü** > **Ayıkla Ayıkla**' yı seçin.  Dosyaları ayıkladığınızda, masaüstünde zip dosya adı ile aynı olan bir klasör oluşturursunuz.
+ZIP dosyasını seçin ve bağlam menüsünü açın ve **Tümünü**Ayıkla Ayıkla ' yı seçin  >  **Extract**.  Dosyaları ayıkladığınızda, masaüstünde zip dosya adı ile aynı olan bir klasör oluşturursunuz.
 
 Daha ayrıntılı bilgi için [kurulum paketinin içeriğine](service-fabric-cluster-standalone-package-contents.md) bakın.
 
@@ -120,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer’ı getirme
 
-Artık,\/http:/localhost:19080/Explorer/index.html veya uzaktan http:\//<*ipaddressofamachine*>:19080/Explorer/index.html ile bir makineden yalnızca Service Fabric Explorer ile kümeye bağlanabilirsiniz.
+Artık, http: \/ /localhost: 19080/Explorer/index.html ve http: \/ /< *ipaddressofamachine*>:19080/Explorer/index.html ile uzaktan bir makineden yalnızca Service Fabric Explorer ile kümeye bağlanabilirsiniz.
 
 ## <a name="add-and-remove-nodes"></a>Düğüm ekleme ve kaldırma
 

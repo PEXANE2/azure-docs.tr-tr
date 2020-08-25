@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85987332"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure PowerShell örnekleri
@@ -32,7 +32,7 @@ PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici 
 
 Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
-|Bağlantı|Description|
+|Bağlantı|Açıklama|
 |---|---|
 |**Tek veritabanları ve elastik havuzlar oluşturma ve yapılandırma**||
 | [Tek bir veritabanı oluşturma ve sunucu düzeyinde güvenlik duvarı kuralı yapılandırma](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği tek bir veritabanı oluşturur ve sunucu düzeyinde bir IP güvenlik duvarı kuralı yapılandırır. |
@@ -64,7 +64,7 @@ Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell 
 
 Aşağıdaki tabloda, Azure SQL yönetilen örneği için örnek Azure PowerShell betiklerin bağlantıları yer almaktadır.
 
-|Bağlantı|Description|
+|Bağlantı|Açıklama|
 |---|---|
 |**Yönetilen örnekleri oluşturma ve yapılandırma**||
 | [Yönetilen örnek oluşturma ve yönetme](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Bu PowerShell betiği, Azure PowerShell kullanarak yönetilen bir örnek oluşturmayı ve yönetmeyi gösterir. |

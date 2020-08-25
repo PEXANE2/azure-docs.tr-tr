@@ -17,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74186364"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
 
-Sanal ağ hizmet uç noktaları bazı Azure hizmet uç noktalarına ağ erişimini bir sanal ağ alt ağı ile sınırlamanıza olanak tanır. Ayrıca, kaynaklara internet erişimini de kaldırabilirsiniz. Hizmet uç noktaları, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar, böylece Azure hizmetlerine erişmek için sanal ağınızın özel adres alanını kullanabilirsiniz. Hizmet uç noktaları aracılığıyla Azure kaynaklarına gönderilen trafik her zaman Microsoft Azure omurga ağı üzerinde kalır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Sanal ağ hizmet uç noktaları bazı Azure hizmet uç noktalarına ağ erişimini bir sanal ağ alt ağı ile sınırlamanıza olanak tanır. Ayrıca, kaynaklara internet erişimini de kaldırabilirsiniz. Hizmet uç noktaları, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar, böylece Azure hizmetlerine erişmek için sanal ağınızın özel adres alanını kullanabilirsiniz. Hizmet uç noktaları aracılığıyla Azure kaynaklarına gönderilen trafik her zaman Microsoft Azure omurga ağı üzerinde kalır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Alt ağ ile sanal ağ oluşturma
@@ -51,16 +51,16 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
    |Ayar|Değer|
    |----|----|
-   |Adı| myVirtualNetwork |
+   |Ad| myVirtualNetwork |
    |Adres alanı| 10.0.0.0/16|
-   |Abonelik| Aboneliğinizi seçme|
+   |Abonelik| Aboneliğinizi seçin|
    |Kaynak grubu | **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
    |Konum| **Doğu ABD** seçin |
-   |Alt Ağ Adı| Ortak|
+   |Alt Ağ Adı| Genel|
    |Alt Ağ Adresi aralığı| 10.0.0.0/24|
    |DDoS koruması| Temel|
    |Hizmet uç noktaları| Devre dışı|
-   |Güvenlik duvarı| Devre dışı|
+   |Güvenlik Duvarı| Devre dışı|
 
    ![Sanal ağınızla ilgili temel bilgileri girin](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
@@ -77,7 +77,7 @@ Hizmet uç noktaları her hizmet ve her alt ağ için etkinleştirilir. Alt ağ 
 
     |Ayar|Değer|
     |----|----|
-    |Adı| Özel |
+    |Ad| Özel |
     |Adres aralığı| 10.0.1.0/24|
     |Hizmet uç noktaları| **Hizmetler** altında **Microsoft.Storage** öğesini seçin|
 
@@ -94,14 +94,14 @@ Varsayılan olarak, alt ağdaki tüm VM'ler tüm kaynaklarla iletişim kurabilir
 
     |Ayar|Değer|
     |----|----|
-    |Adı| myNsgPrivate |
-    |Abonelik| Aboneliğinizi seçme|
+    |Ad| myNsgPrivate |
+    |Abonelik| Aboneliğinizi seçin|
     |Kaynak grubu | **Mevcut olanı kullan**’ı seçin ve *myResourceGroup* seçeneğini belirleyin.|
     |Konum| **Doğu ABD** seçin |
 
 4. Ağ güvenlik grubu oluşturulduktan sonra portalın üst kısmındaki **Kaynak, hizmet ve belgeleri arayın** kutusuna *myNsgPrivate* ifadesini girin. Arama sonuçlarında **myNsgPrivate** göründüğünde seçin.
 5. **AYARLAR** altında **Giden güvenlik kuralları**’nı seçin.
-6. **+ Ekle** öğesini seçin.
+6. **+ Ekle**'yi seçin.
 7. Azure Depolama hizmetine giden iletişime izin veren bir kural oluşturun. Aşağıdaki bilgileri girin veya seçin ve ardından **Ekle** seçeneğini belirleyin:
 
     |Ayar|Değer|
@@ -111,10 +111,10 @@ Varsayılan olarak, alt ağdaki tüm VM'ler tüm kaynaklarla iletişim kurabilir
     |Hedef | **Hizmet Etiketi**’ni seçin|
     |Hedef hizmet etiketi | **Depolamayı** seçin|
     |Hedef bağlantı noktası aralıkları| * |
-    |Protokol|Herhangi biri|
+    |Protokol|Herhangi bir|
     |Eylem|İzin Ver|
     |Öncelik|100|
-    |Adı|İzin Ver-Depolama-Tümü|
+    |Ad|İzin Ver-Depolama-Tümü|
 
 8. İnternet bağlantısını reddeden başka bir giden güvenlik kuralı oluşturun. Bu kural, giden İnternet iletişimine izin veren tüm ağ güvenlik gruplarında varsayılan kuralı geçersiz kılar. Aşağıdaki değerleri kullanarak 5-7 arasındaki adımları tekrar tamamlayın:
 
@@ -125,25 +125,25 @@ Varsayılan olarak, alt ağdaki tüm VM'ler tüm kaynaklarla iletişim kurabilir
     |Hedef | **Hizmet Etiketi**’ni seçin|
     |Hedef hizmet etiketi| **İnternet**’i seçin|
     |Hedef bağlantı noktası aralıkları| * |
-    |Protokol|Herhangi biri|
+    |Protokol|Herhangi bir|
     |Eylem|Reddet|
     |Öncelik|110|
-    |Adı|Deny-Internet-All|
+    |Name|Deny-Internet-All|
 
 9. **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin.
-10. **+ Ekle** öğesini seçin.
+10. **+ Ekle**'yi seçin.
 11. Herhangi bir yerden alt ağa yönelik Uzak Masaüstü Protokolü (RDP) trafiğine izin veren bir gelen güvenlik kuralı oluşturun. Kural, internetten gelen tüm trafiği engelleyen bir varsayılan güvenlik kuralını geçersiz kılar. Daha sonraki bir adımda bağlantının test edilebilmesi için uzak masaüstü bağlantılarına izin verilir. **AYARLAR** bölümünde **Gelen güvenlik kuralları**'nı seçin, **+Ekle** seçeneğini belirleyip aşağıdaki değerleri girin ve ardından **Ekle**'yi seçin:
 
     |Ayar|Değer|
     |----|----|
-    |Kaynak| Herhangi biri |
+    |Kaynak| Herhangi bir |
     |Kaynak bağlantı noktası aralıkları| * |
     |Hedef | **VirtualNetwork** öğesini seçin|
     |Hedef bağlantı noktası aralıkları| 3389 |
-    |Protokol|Herhangi biri|
+    |Protokol|Herhangi bir|
     |Eylem|İzin Ver|
     |Öncelik|120|
-    |Adı|İzin Ver-RDP-Tümü|
+    |Name|İzin Ver-RDP-Tümü|
 
 12. **AYARLAR** altında **Alt ağlar**’ı seçin.
 13. **+ İlişkilendir**’i seçin
@@ -162,11 +162,11 @@ Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla
 
     |Ayar|Değer|
     |----|----|
-    |Adı| Yalnızca sayı ve küçük harfler kullanarak tüm Azure konumlarında benzersiz olan 3-24 karakter uzunluğunda bir ad girin.|
+    |Ad| Yalnızca sayı ve küçük harfler kullanarak tüm Azure konumlarında benzersiz olan 3-24 karakter uzunluğunda bir ad girin.|
     |Hesap türü|StorageV2 (genel amaçlı v2)|
     |Konum| **Doğu ABD** seçin |
     |Çoğaltma| Yerel olarak yedekli depolama (LRS)|
-    |Abonelik| Aboneliğinizi seçme|
+    |Abonelik| Aboneliğinizi seçin|
     |Kaynak grubu | **Mevcut olanı kullan**’ı seçin ve *myResourceGroup* seçeneğini belirleyin.|
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Depolama hesabında dosya paylaşımı oluşturma
@@ -217,7 +217,7 @@ Bir depolama hesabına ağ erişimini test etmek için her alt ağa bir VM dağ�
 
    |Ayar|Değer|
    |----|----|
-   |Adı| myVmPublic|
+   |Ad| myVmPublic|
    |Kullanıcı adı|Seçtiğiniz bir kullanıcı adını girin.|
    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
    |Abonelik| Aboneliğinizi seçin.|

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078183"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783833"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -59,7 +59,7 @@ Azure AD denetim günlüklerini arşivleme, bir Azure aboneliğinde Azure Izleyi
 
 ## <a name="view-events-for-an-access-package"></a>Erişim paketi için olayları görüntüleme  
 
-Bir erişim paketinin olaylarını görüntülemek için, temel alınan Azure izleyici çalışma alanına erişiminizin olması gerekir (bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) ) ve aşağıdaki rollerden biri: 
+Bir erişim paketinin olaylarını görüntülemek için, temel alınan Azure izleyici çalışma alanına erişiminizin olması gerekir (bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) ) ve aşağıdaki rollerden biri: 
 
 - Genel yönetici  
 - Güvenlik yöneticisi  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Sorguyu Log Analytics çalışma alanına gönder
 Son olarak, bir çalışma alanı tanımlandıktan sonra, bu çalışma alanına bir kusto sorgusu göndermek için [Invoke-Azoperationalınsightsquery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) komutunu kullanabilirsiniz. Bu sorgular [kusto sorgu dilinde](https://docs.microsoft.com/azure/kusto/query/)yazılır.
+) komutunu kullanabilirsiniz. Bu sorgular [kusto sorgu dilinde](/azure/kusto/query/)yazılır.
  
 Örneğin, Log Analytics çalışma alanından denetim olay kayıtlarının tarih aralığını, PowerShell cmdlet 'leri ile birlikte kullanarak, şunun gibi bir sorgu gönderebilmeniz için alabilirsiniz:
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar:
-- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/platform/workbooks-overview.md)

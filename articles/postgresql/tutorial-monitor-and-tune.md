@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74774746"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Öğretici: PostgreSQL için Azure veritabanı 'nı Izleme ve ayarlama-tek sunucu
@@ -32,7 +32,7 @@ PostgreSQL sürüm 9.6 veya 10’un yüklü olduğu bir PostgreSQL için Azure V
 ## <a name="enabling-data-collection"></a>Veri koleksiyonunu etkinleştirme
 [Query Store](concepts-query-store.md), sorguların geçmişini toplar ve sunucunuzdaki istatistikleri bekler ve sunucunuzdaki **azure_sys** veritabanında saklar. Bu tercihli bir özelliktir. Etkinleştirmek için:
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 

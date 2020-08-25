@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604089"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783612"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -180,7 +180,7 @@ Kuruluşunuzun kaynaklarını Azure AD ile tümleştirdikten sonra (örneğin, k
 
 * [Çoklu oturum açma Için Azure AD ile tümleştirilmiş uygulamalar](../manage-apps/what-is-application-management.md) (SaaS, iş kolu gibi).
 
-* Grup [üyeliği](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) (Microsoft ekipleri dahil olmak üzere Azure AD ile eşitlenmiş veya Azure AD 'de veya Office 365 ' de oluşturulmuştur).
+* Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Microsoft ekipleri dahil olmak üzere Azure AD ile eşitlenmiş veya Azure AD 'de veya Office 365 ' de oluşturulmuştur).
 
 * Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/entitlement-management-overview.md) .
 
@@ -246,7 +246,7 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
 | **İnceleme sıklığı**| Aylık olarak |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
-| **Uyarıyı**| Diğer ad Dynamics-PMS gözden geçirmesinden önce 24 saat e-posta<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
+| **Bildirim**| Diğer ad Dynamics-PMS gözden geçirmesinden önce 24 saat e-posta<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
 |**Otomatik eylemler**| Kullanıcıları güvenlik grubundan Dynamics-Access ' ten kaldırarak 90 gün içinde etkileşimli oturum açma olmayan herhangi bir hesaptan erişimi kaldırın. <p>*Zaman çizelgesi içinde incelenmeyen eylemler gerçekleştirin.* |
 | **El ile gerçekleştirilen eylemler**| Gözden geçirenler, istenirse otomatik eylem öncesinde kaldırma onayı gerçekleştirebilir. |
@@ -389,7 +389,7 @@ Erişim incelemeleri bir grubun üyeleri veya bir uygulamaya atanmış kullanıc
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Azure AD ve Azure Kaynak rollerinin incelenmesi Planlanın
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , KURULUŞLARıN Azure AD 'de kaynaklara ayrıcalıklı erişimi nasıl yöneteceğini basitleştirir. Bu, hem [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) hem de [Azure kaynakları](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) ' nda ayrıcalıklı rollerin listesini korur ve dizinin genel güvenliğini artırır.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , KURULUŞLARıN Azure AD 'de kaynaklara ayrıcalıklı erişimi nasıl yöneteceğini basitleştirir. Bu, hem [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) hem de [Azure kaynakları](../../role-based-access-control/built-in-roles.md) ' nda ayrıcalıklı rollerin listesini korur ve dizinin genel güvenliğini artırır.
 
 Erişim gözden geçirmeleri, gözden geçirenlerin kullanıcıların hala bir rolde olması gerekip gerekmediğini kanıtlarına izin verir. Erişim paketlerine yönelik erişim gözden geçirmeleri gibi, Azure AD rolleri ve Azure kaynağı için yapılan incelemeler, PıM yönetici kullanıcı deneyimiyle tümleşiktir. Aşağıdaki rol atamalarını düzenli olarak gözden geçirmenizi öneririz:
 
@@ -452,9 +452,9 @@ Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
 | Nasıl yapılır makaleleri | Açıklama |
 | - | - |
- [Erişim Incelemeleri oluşturma](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
-| [Erişiminizi kendi kendinize gözden geçirin](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
-| [Erişim gözden geçirmesini tamamlar](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Erişim gözden geçirmesini görüntüleme ve sonuçları uygulama |
+ [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
+| [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
+| [Erişim gözden geçirmesini tamamlar](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Erişim gözden geçirmesini görüntüleme ve sonuçları uygulama |
 
 
 ### <a name="review-azure-resource-roles"></a>Azure Kaynak rollerini gözden geçirme
@@ -467,14 +467,14 @@ Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
 | Nasıl yapılır makaleleri| Açıklama |
 | - | -|
-| [Erişim Incelemeleri oluşturma](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
-| [Erişiminizi kendi kendinize gözden geçirin](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
-| [Erişim gözden geçirmesini tamamlar](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Erişim gözden geçirmesini görüntüleme ve sonuçları uygulama |
+| [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
+| [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
+| [Erişim gözden geçirmesini tamamlar](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Erişim gözden geçirmesini görüntüleme ve sonuçları uygulama |
 
 
 ## <a name="use-the-access-reviews-api"></a>Erişim gözden geçirmeleri API 'sini kullanma
 
-Yeniden görüntülenebilen kaynaklarla etkileşim kurmak ve bunları yönetmek için bkz. [Graph API yöntemleri](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) ve [rol ve uygulama izni yetkilendirme denetimleri](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) . Microsoft Graph API 'sindeki erişim gözden geçirmeleri yöntemleri hem uygulama hem de Kullanıcı bağlamları için kullanılabilir. Uygulama bağlamında betikleri çalıştırırken, API 'yi (hizmet ilkesi) çalıştırmak için kullanılan hesaba, erişim gözden geçirmeleri bilgilerini sorgulamak için "AccessReview. Read. All" izninin verilmesi gerekir.
+Yeniden görüntülenebilen kaynaklarla etkileşim kurmak ve bunları yönetmek için bkz. [Graph API yöntemleri](/graph/api/resources/accessreviews-root?view=graph-rest-beta) ve [rol ve uygulama izni yetkilendirme denetimleri](/graph/api/resources/accessreviews-root?view=graph-rest-beta) . Microsoft Graph API 'sindeki erişim gözden geçirmeleri yöntemleri hem uygulama hem de Kullanıcı bağlamları için kullanılabilir. Uygulama bağlamında betikleri çalıştırırken, API 'yi (hizmet ilkesi) çalıştırmak için kullanılan hesaba, erişim gözden geçirmeleri bilgilerini sorgulamak için "AccessReview. Read. All" izninin verilmesi gerekir.
 
 Erişim gözden geçirmeleri için Graph API kullanarak otomatikleştirilmesi için popüler erişim gözden geçirmeleri görevleri şunlardır:
 
@@ -519,4 +519,3 @@ Aşağıdaki ilgili teknolojiler hakkında bilgi edinin.
 
 * [Azure AD Privileged Identity Management nedir?](../privileged-identity-management/pim-configure.md)
 
- 

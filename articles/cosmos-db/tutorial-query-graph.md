@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.reviewer: sngun
 ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74870182"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Öğretici: Gremlin kullanarak Azure Cosmos DB Gremlin API’yi sorgulama
@@ -24,7 +24,7 @@ Bu makale aşağıdaki görevleri kapsar:
 > [!div class="checklist"]
 > * Gremlin ile verileri sorgulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu sorguların çalışması için bir Azure Cosmos DB hesabınız ve kapsayıcıda graf verileriniz olmalıdır. Bunlardan biri yok mu? Bir hesap oluşturmak ve veritabanınızı doldurmak için [5 dakikalık hızlı başlangıç](create-graph-dotnet.md) veya [geliştirici öğreticisini](tutorial-query-graph.md) tamamlayın. [Gremlin konsolunu](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) veya sık kullandığınız Gremlin sürücüsünü kullanarak aşağıdaki sorguları çalıştırabilirsiniz.
 
@@ -44,7 +44,7 @@ Gremlin’in `has` ve `hasLabel` etiketlerini kullanarak filtreler gerçekleşti
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
-## <a name="projection"></a>Yansıtma
+## <a name="projection"></a>Projeksiyon
 
 `values` adımını kullanarak sorgu sonuçlarında belirli özellikleri yansıtabilirsiniz:
 

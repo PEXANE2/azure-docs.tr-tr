@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "70067936"
 ---
 # <a name="mock-api-responses"></a>Sahne API yanıtları
@@ -27,7 +27,7 @@ Arka uç API'leri bir APIM API’sine aktarılabilir veya el ile oluşturulup y�
 + İlk olarak API cephesi tasarlanıp arka uç uygulaması daha sonra geldiğinde. Veya arka uç paralel olarak geliştirildiğinde.
 + Arka uç geçici olarak çalışır durumda olmadığında veya ölçeklenemediğinde.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Test API’si oluşturma 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Sahte işlem yanıtı](./media/mock-api-responses/mock-api-responses01.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.

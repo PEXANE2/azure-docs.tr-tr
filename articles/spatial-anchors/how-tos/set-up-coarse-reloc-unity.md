@@ -9,10 +9,10 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76548263"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>C 'de kaba yeniden yerelleştirme kullanarak Tutturucular oluşturma ve bulma #
@@ -27,11 +27,11 @@ ms.locfileid: "76548263"
 
 Azure uzamsal bağlantıları, cihaz üzerinde ilişki oluşturabilir ve algılayıcı verilerini, oluşturduğunuz tutturucularla konumlamayı sağlayabilir. Bu veriler, cihazınızın yakınında yer olup olmadığını hızlı bir şekilde tespit etmek için de kullanılabilir. Daha fazla bilgi için bkz. [kaba yeniden yerelleştirme](../concepts/coarse-reloc.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
-- C# hakkında temel bilgiler.
+- Temel C# bilgisi.
 - [Azure uzamsal Tutturucuların genel bakış](../overview.md)bölümünü okuyun.
 - [5 dakikalık hızlı](../index.yml)başlangıçlardan biri tamamlandı.
 - [Oluşturma ve bağlantıları bulma ile nasıl yapılacağını](../create-locate-anchors-overview.md)okuyun.

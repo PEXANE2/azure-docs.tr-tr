@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74007858"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure AD günlüklerini bir Azure depolama hesabında arşivleme
 
 Bu öğreticide bir Azure depolama hesabına Azure Active Directory (Azure AD) günlüğü yönlendirme amacıyla Azure İzleyici tanılama ayarlarını yapmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
@@ -38,9 +38,9 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Günlükleri Azure depolama hesabında arşivleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
-2. **Azure Active Directory** > **Activity**etkinlik > **Denetim günlükleri**' ni seçin. 
+2. **Azure Active Directory**  >  **etkinlik**  >  **Denetim günlükleri**' ni seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin. 
 

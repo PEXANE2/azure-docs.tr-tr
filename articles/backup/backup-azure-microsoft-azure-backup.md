@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612342"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756019"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -101,7 +101,7 @@ Depolama çoğaltma ayarını düzenlemek için:
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
    * Yazmaya başladığınızda liste, girdinize göre filtrelenir. **Kurtarma Hizmetleri kasalarını**gördüğünüzde, bunu seçin.
 
-     ![Kurtarma Hizmetleri Kasası oluşturma 1. adım](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Kurtarma Hizmetleri Kasası oluşturma adımı 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Kurtarma Hizmetleri kasalarının listesi görünür.
    * Kurtarma Hizmetleri kasalarının listesinden bir kasa seçin.
@@ -143,7 +143,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
     ![İndirme Merkezi 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Tüm dosyaların karşıdan yükleme boyutu > 3G olduğundan, 10 Mbps bir indirme bağlantısında, indirme işleminin tamamlanması 60 dakika kadar sürebilir.
+    Tüm dosyaların karşıdan yükleme boyutu > 3 GB olduğundan, 10 Mbps bir indirme bağlantısında indirme işleminin tamamlanması 60 dakika sürebilir.
 
 ### <a name="extracting-the-software-package"></a>Yazılım paketi ayıklanıyor
 

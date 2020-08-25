@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85833511"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
@@ -106,7 +106,7 @@ Müşterilerden başka bir soru, sunucusu tarafından anlaşmalı şifre listesi
 > [!WARNING]
 > SChannel 'nin anlayamediği şifre paketi için yanlış değerler ayarlandıysa, sunucunuza yönelik tüm TLS iletişimleri çalışmayı durdurabilir. Böyle bir durumda, *Frontendsslciphersuiteorder* girişini **clustersettings** 'ten kaldırmalı ve varsayılan şifre paketi ayarlarına geri dönmek için güncelleştirilmiş Kaynak Yöneticisi şablonunu göndermeniz gerekir.  Lütfen bu işlevselliği dikkatle kullanın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 Azure hızlı başlangıç Kaynak Yöneticisi şablonu sitesi, [bir App Service ortamı oluşturmak](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)için temel tanımına sahip bir şablon içerir.
 
 <!-- LINKS -->

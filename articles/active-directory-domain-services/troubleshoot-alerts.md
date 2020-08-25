@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222981"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722594"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Genel uyarılar ve çözümler
 
@@ -106,7 +106,7 @@ Azure AD DS, etkin bir abonelik gerektirir ve farklı bir aboneliğe taşınamaz
 
 Azure AD DS, etkin bir abonelik gerektirir. Yönetilen etki alanının ilişkili olduğu Azure aboneliği etkin değilse, aboneliği yeniden etkinleştirmek için yenilemeniz gerekir.
 
-1. [Azure aboneliğinizi yenileyin](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Azure aboneliğinizi yenileyin](../cost-management-billing/manage/subscription-disabled.md).
 2. Abonelik yenilendiğinde bir Azure AD DS bildirimi, yönetilen etki alanını yeniden etkinleştirmenizi sağlar.
 
 Yönetilen etki alanı yeniden etkinleştirildiğinde, yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
@@ -162,7 +162,7 @@ Bu hata kurtarılamaz. Uyarıyı çözmek için, [mevcut yönetilen etki alanın
 
 Yönetilen bir etki alanının kaynaklarını yönetmek ve oluşturmak için otomatik olarak oluşturulan bazı hizmet sorumluları kullanılır. Bu hizmet sorumlularından birine yönelik erişim izinleri değiştirilirse etki alanı kaynakları doğru bir şekilde yönetemez. Aşağıdaki adımlarda, bir hizmet sorumlusu için erişim izinlerini nasıl anlayacağınızı ve daha sonra sağlayacağınızı gösterilmektedir:
 
-1. [Rol tabanlı erişim denetimi ve Azure Portal uygulamalara erişim verme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)hakkında bilgi edinin.
+1. [Rol tabanlı erişim denetimi ve Azure Portal uygulamalara erişim verme](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.
 2. KIMLIĞI *abba844e-bc0e-44b0-947a-dc74e5d09022* olan hizmet sorumlusunun sahip olduğu erişimi gözden geçirin ve daha önceki bir tarihte reddedilen erişimi verin.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: yönetilen etki alanında yeterli IP adresi yok
@@ -276,7 +276,7 @@ Yönetilen etki alanının yapılandırmasındaki sorunları belirten uyarılar 
 
 Azure AD DS, etkin bir abonelik gerektirir. Yönetilen etki alanının ilişkili olduğu Azure aboneliği etkin değilse, aboneliği yeniden etkinleştirmek için yenilemeniz gerekir.
 
-1. [Azure aboneliğinizi yenileyin](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Azure aboneliğinizi yenileyin](../cost-management-billing/manage/subscription-disabled.md).
 2. Abonelik yenilendiğinde bir Azure AD DS bildirimi, yönetilen etki alanını yeniden etkinleştirmenizi sağlar.
 
 Yönetilen etki alanı yeniden etkinleştirildiğinde, yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.

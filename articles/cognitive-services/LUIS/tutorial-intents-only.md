@@ -4,10 +4,10 @@ description: Bu öğreticideki söylenişi (metin) temelinde bir kullanıcının
 ms.topic: tutorial
 ms.date: 05/05/2020
 ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85959868"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için bir LUSıS uygulaması derleme
@@ -55,7 +55,7 @@ Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılmas
 
 1. Bir kullanıcının sormasını beklediğinizi bu amaca birkaç örnek ekleyin:
 
-    |`OrderPizza`örnek söyleyceler|
+    |`OrderPizza` örnek söyleyceler|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -75,7 +75,7 @@ Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılmas
 
 1. Amacı oluşturun `Greeting` ve aşağıdaki örnek söyleyeni ekleyin. Bu, bir kullanıcının yeni bir pizza siparişi konuşmasıyla başlayıp kullanmadığını belirleme amacınızı belirlemektir.
 
-    |`Greeting`örnek söyleyceler|
+    |`Greeting` örnek söyleyceler|
     |--|
     |`Hi`|
     |`Hello`|
@@ -85,7 +85,7 @@ Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılmas
 
 1. Amacı oluşturun `Confirm` ve aşağıdaki örnek söyleyeni ekleyin. Bu, bir kullanıcının sıralamayı ve sipariş ayrıntılarını kabul edip etmeyeceğini belirleme amacınızı belirlemektir.
 
-    |`Confirm`örnek söyleyceler|
+    |`Confirm` örnek söyleyceler|
     |--|
     |`Go ahead`|
     |`ok`|

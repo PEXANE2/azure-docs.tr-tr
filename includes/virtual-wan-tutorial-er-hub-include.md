@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,10 +9,10 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6f910dbe91ed8e1cb65eefa6dfc48c72a689bf25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73491595"
 ---
 1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
@@ -24,7 +24,7 @@ ms.locfileid: "73491595"
     **Proje ayrıntıları**
 
    * Bölge (daha önce konum olarak adlandırılır)
-   * Adı
+   * Name
    * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir.
 4. **ExpressRoute sekmesini**seçin.
 

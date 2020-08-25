@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "71121931"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Spark işlem bağlamında R kullanma
 
 Bu öğreticide, Azure HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin kullanılmasına yönelik adım adım bir giriş sunulmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek verileri yerel depolamaya indirme
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bileşik XDF dosyalarını kullan
 > * XDF 'u CSV 'ye Dönüştür
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü**için **ml Hizmetleri**' ni seçin.
 
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Spark için işlem bağlamı oluşturma
 
-Çalışan düğümlerinde veri yüklemek ve çözümlemeler çalıştırmak için, komut dosyanızı işlem bağlamını [Rxspark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark)olarak ayarlarsınız. Bu bağlamda, R işlevleri işleri yönetmek için yerleşik gereksinim olmadan iş yükünü tüm çalışan düğümlerine otomatik olarak dağıtır. Spark işlem bağlamı, Spark işlem bağlamını `RxSpark` oluşturmak `rxSparkConnect()` için veya kullanılarak oluşturulur ve yerel bir işlem bağlamına dönmek `rxSparkDisconnect()` için kullanır. RStudio ' da aşağıdaki kodu girin:
+Çalışan düğümlerinde veri yüklemek ve çözümlemeler çalıştırmak için, komut dosyanızı işlem bağlamını [Rxspark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark)olarak ayarlarsınız. Bu bağlamda, R işlevleri işleri yönetmek için yerleşik gereksinim olmadan iş yükünü tüm çalışan düğümlerine otomatik olarak dağıtır. Spark işlem bağlamı, `RxSpark` `rxSparkConnect()` Spark işlem bağlamını oluşturmak için veya kullanılarak oluşturulur ve `rxSparkDisconnect()` yerel bir işlem bağlamına dönmek için kullanır. RStudio ' da aşağıdaki kodu girin:
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>Doğrusal bir modeli sığdırma
 
-1. `airDS` Veri kaynağınızı kullanarak doğrusal bir modele uydurmak Için [Rxlinmod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) işlevini kullanın. RStudio ' da aşağıdaki kodu girin:
+1. Veri kaynağınızı kullanarak doğrusal bir modele uydurmak için [Rxlinmod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) işlevini kullanın `airDS` . RStudio ' da aşağıdaki kodu girin:
 
     ```R
     system.time(
@@ -241,13 +241,13 @@ rxSetComputeContext(mySparkCluster)
     Condition number: 1 
     ```
 
-    Sonuçlar, belirtilen dizindeki tüm CSV dosyalarını kullanarak tüm verileri, 6.000.000 gözlemlerinizi işlemişseniz olduğunu gösterir. Belirttiğiniz `cube = TRUE`için, haftanın her günü için tahmini bir katsayı (kesme noktası değil) vardır.
+    Sonuçlar, belirtilen dizindeki tüm CSV dosyalarını kullanarak tüm verileri, 6.000.000 gözlemlerinizi işlemişseniz olduğunu gösterir. Belirttiğiniz `cube = TRUE` için, haftanın her günü için tahmini bir katsayı (kesme noktası değil) vardır.
 
 ## <a name="use-composite-xdf-files"></a>Bileşik XDF dosyalarını kullan
 
 Gördüğünüz gibi, doğrudan Hadoop üzerinde R ile CSV dosyalarını analiz edebilirsiniz. Ancak, verileri daha verimli bir biçimde depoluyaparsanız analizini daha hızlı yapabilirsiniz. R XDF dosya biçimi etkilidir, ancak tek bir dosyayı tek bir bir (Bu, yükleme durumundan yüklemeye değişir ancak genellikle 64 MB veya 128 MB olur.) 
 
-Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) kullandığınızda, InData gibi bir `RxTextData` veri kaynağı `AirDS` ve `RxXdfData` dosya sistemi dosyası, bir bir dosya kaynağı olarak bir bir sunucusu, çıkışdosyası bağımsız değişkeni olarak bir. Daha sonra `RxXdfData` nesneyi sonraki R analizlerde veri bağımsız değişkeni olarak kullanabilirsiniz.
+Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) kullandığınızda, `RxTextData` InData gibi bir veri kaynağı ve dosya sistemi dosyası, bir bir dosya kaynağı olarak bir bir sunucusu `AirDS` `RxXdfData` , çıkışdosyası bağımsız değişkeni olarak bir. Daha sonra `RxXdfData` nesneyi sonraki R analizlerde veri bağımsız değişkeni olarak kullanabilirsiniz.
 
 1. Bir `RxXdfData` nesne tanımlayın. RStudio ' da aşağıdaki kodu girin:
 
@@ -265,7 +265,7 @@ Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımpor
     numRowsToRead = -1
     ```
 
-1. Kullanarak `rxImport`verileri içeri aktarın. RStudio ' da aşağıdaki kodu girin:
+1. Kullanarak verileri içeri aktarın `rxImport` . RStudio ' da aşağıdaki kodu girin:
 
     ```R
     rxImport(inData = airDS,
@@ -300,9 +300,9 @@ Bir bileşik XDF dosyaları kümesi oluşturmak için Hadoop üzerinde [Rxımpor
 
 Analiz çalıştırırken CSV dosyalarınızı daha fazla verimlilik için XDF dosya biçimine dönüştürdüyseniz, ancak şimdi verilerinizi CSV 'ye dönüştürmek istiyorsanız [Rxdatastep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep)kullanarak bunu yapabilirsiniz.
 
-CSV dosyalarının bir klasörünü oluşturmak için, önce dosya bağımsız değişkeni `RxTextData` olarak bir dizin adı kullanarak bir nesne oluşturun. Bu nesne, CSV dosyalarının oluşturulacağı klasörü temsil eder. Bu dizin, `rxDataStep`çalıştırdığınızda oluşturulur. Ardından, `RxTextData` `outFile` bağımsız değişkeninde bu nesnenin üzerine gelin `rxDataStep`. Oluşturulan her CSV, dizin adına göre ve ardından bir sayı ile adlandırılır.
+CSV dosyalarının bir klasörünü oluşturmak için, önce `RxTextData` Dosya bağımsız değişkeni olarak bir dizin adı kullanarak bir nesne oluşturun. Bu nesne, CSV dosyalarının oluşturulacağı klasörü temsil eder. Bu dizin, çalıştırdığınızda oluşturulur `rxDataStep` . Ardından, `RxTextData` bağımsız değişkeninde bu nesnenin üzerine gelin `outFile` `rxDataStep` . Oluşturulan her CSV, dizin adına göre ve ardından bir sayı ile adlandırılır.
 
-Lojistik regresyon ve tahmin gerçekleştirdikten sonra, yeni CSV dosyalarının tahmin edilen değerler ve fazlalıklar `airDataXdf` içermesi için gerileme ve tahmin gerçekleştirdikten sonra, bir CSV dosyaları klasörünü, bileşik XDF 'ınızdan RStudio ' da aşağıdaki kodu girin:
+`airDataXdf`Lojistik regresyon ve tahmin gerçekleştirdikten sonra, yenı csv dosyalarının tahmin edilen değerler ve fazlalıklar içermesi için gerileme ve tahmin gerçekleştirdikten sonra, BIR CSV dosyaları klasörünü, bileşik XDF 'ınızdan RStudio ' da aşağıdaki kodu girin:
 
 ```R
 airDataCsvDir <- file.path(bigDataDirRoot,"AirDataCSV2012")
@@ -312,11 +312,11 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvDS)
 
 Bu adım yaklaşık 2,5 dakika içinde tamamlanmalıdır.
 
-Giriş `rxDataStep` bileşik XDF dosyasındaki her XDFD dosyası IÇIN bir CSV dosyası yazdı. Bu,, işlem bağlamı olarak `RxSpark`ayarlandığında bileşik XDF dosyalarından CSV dosyalarını, "' ye yazma için varsayılan davranıştır.
+`rxDataStep`Giriş bileşik XDF dosyasındaki her XDFD dosyası için BIR CSV dosyası yazdı. Bu,, işlem bağlamı olarak ayarlandığında bileşik XDF dosyalarından CSV dosyalarını, "' ye yazma için varsayılan davranıştır `RxSpark` .
 
 ### <a name="in-a-local-context"></a>Yerel bağlamda
 
-Alternatif olarak, analizlerinizi gerçekleştirmeyi tamamladıktan `local` sonra, içindeki `RxTextData` iki bağımsız değişkenin avantajlarından yararlanmak için işlem içeriğiniz olarak ' a geçiş yaparak, CI: `createFileSet` ve ' `rowsPerOutFile`a CSV dosyalarını yazarken biraz daha fazla denetim imkanı sağlayabilirsiniz. ' I ' `createFileSet` a ayarladığınızda, bir CSV dosyaları klasörü belirttiğiniz dizine yazılır. `TRUE` `FALSE`' A ayarladığınızda `createFileSet` , tek bir CSV dosyası yazılır. Olduğunda `rowsPerOutFile` `createFileSet` , her CSV dosyasına yazılacak satır sayısını göstermek için ikinci bağımsız değişkenini bir tamsayıya ayarlayabilirsiniz `TRUE`.
+Alternatif olarak, analizlerinizi gerçekleştirmeyi tamamladıktan sonra, içindeki iki bağımsız değişkenin avantajlarından yararlanmak için işlem içeriğiniz olarak ' a geçiş yaparak, `local` `RxTextData` CI: ve ' a CSV dosyalarını yazarken biraz daha fazla denetim imkanı sağlayabilirsiniz `createFileSet` `rowsPerOutFile` . `createFileSet` `TRUE` ' I ' a ayarladığınızda, bir CSV dosyaları klasörü belirttiğiniz dizine yazılır. `createFileSet` `FALSE` ' A ayarladığınızda, tek bir CSV dosyası yazılır. `rowsPerOutFile`Olduğunda, her CSV dosyasına yazılacak satır sayısını göstermek için ikinci bağımsız değişkenini bir tamsayıya ayarlayabilirsiniz `createFileSet` `TRUE` .
 
 RStudio ' da aşağıdaki kodu girin:
 
@@ -329,7 +329,7 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 
 Bu adım yaklaşık 10 dakika içinde tamamlanmalıdır.
 
-Bir `RxSpark` işlem bağlamı kullandığınızda `createFileSet` varsayılan olarak `TRUE` ' dir ve `rowsPerOutFile` etkisizdir. Bu nedenle, tek bir CSV oluşturmak veya dosya başına satır sayısını özelleştirmek istiyorsanız, bir `rxDataStep` `local` işlem bağlamında gerçekleştirin (veriler yine de devam edebilir).
+Bir `RxSpark` işlem bağlamı kullandığınızda `createFileSet` Varsayılan olarak ' dir `TRUE` ve `rowsPerOutFile` etkisizdir. Bu nedenle, tek bir CSV oluşturmak veya dosya başına satır sayısını özelleştirmek istiyorsanız, `rxDataStep` bir `local` işlem bağlamında gerçekleştirin (veriler yine de devam edebilir).
 
 ## <a name="final-steps"></a>Son adımlar
 
@@ -363,7 +363,7 @@ Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Azure HDInsight Machine Learning Hizmetleri kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
 * [Hadoop üzerinde Spark için R Işlevleri](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

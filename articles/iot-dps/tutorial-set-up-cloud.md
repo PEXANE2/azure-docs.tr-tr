@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74976732"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Öğretici: IoT Hub cihaz sağlama hizmeti ile cihaz sağlama için bulut kaynaklarını yapılandırma
 
-Bu öğretici, IoT Hub Cihazı Sağlama Hizmeti kullanılarak otomatik cihaz sağlama için bulutun nasıl ayarlanacağını gösterir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, IoT Hub Cihazı Sağlama Hizmeti kullanılarak otomatik cihaz sağlama için bulutun nasıl ayarlanacağını gösterir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
-> * IoT hub oluşturma
+> * IoT hub’ı oluşturma
 > * IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 > * Cihaz Sağlama Hizmeti’nde ayırma ilkesini ayarlama
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Cihaz Sağlama Hizmeti örneği oluşturma ve kimlik kapsamını alma
 
@@ -45,20 +45,20 @@ Yeni bir Cihaz Sağlama Hizmeti örneği oluşturmak için şu adımları izleyi
     
    | Ayar       | Önerilen değer | Açıklama | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Adı** | Herhangi bir benzersiz ad | -- | 
+   | **Ad** | Herhangi bir benzersiz ad | -- | 
    | **Abonelik** | Aboneliğiniz  | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |   
 
    ![Portalda Cihaz Sağlama hizmeti ile ilgili temel bilgileri girin](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. **Oluştur**' a tıklayın. Birkaç dakika sonra Cihaz Sağlama Hizmeti örneği oluşturulur ve **Genel bakış** sayfası görüntülenir.
+5. **Oluştur**’a tıklayın. Birkaç dakika sonra Cihaz Sağlama Hizmeti örneği oluşturulur ve **Genel bakış** sayfası görüntülenir.
 
 6. Yeni hizmet örneğinin **Genel bakış** sayfasındaki **Kimlik kapsamı** değerini daha sonra kullanmak üzere kopyalayın. Bu değer, kayıt kimliklerini belirlemek için kullanılır ve kayıt kimliğinin benzersiz olduğuna dair bir garanti sağlar.
 
 7. **Hizmet uç noktası** değerini de daha sonra kullanmak üzere kopyalayın. 
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -116,7 +116,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
-> * IoT hub oluşturma
+> * IoT hub’ı oluşturma
 > * IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 > * Cihaz Sağlama Hizmeti’nde ayırma ilkesini ayarlama
 

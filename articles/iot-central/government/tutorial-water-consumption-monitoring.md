@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77122077"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Öğretici: Azure IoT Central su tüketim izleme uygulaması oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırma.
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -136,8 +136,8 @@ Cihaz şablonunu görüntülemek için:
 Cihaz şablonunu özelleştirmek için:
 
 1. **Cihaz şablonları** menüsünde **Özelleştir** ' e gidin.
-1. `Temperature` Telemetri türünü bulun.
-1. **Görünen adını** `Temperature` olarak `Reported temperature`güncelleştirin.
+1. `Temperature`Telemetri türünü bulun.
+1. **Görünen adını** `Temperature` olarak güncelleştirin `Reported temperature` .
 1. Ölçüm birimini güncelleştirin veya **en küçük değeri** ve **en büyük değeri**ayarlayın.
 1. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
@@ -169,7 +169,7 @@ Azure IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal c
 
 ### <a name="view-the-devices"></a>Cihazları görüntüleme
 
-1. Sol bölmedeki **cihazlar** > **tüm cihazlar** ' ı seçin.
+1. Sol bölmedeki **cihazlar**  >  **tüm cihazlar** ' ı seçin.
 
    ![Tüm cihazlar bölmesi](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
@@ -204,7 +204,7 @@ Oluşturduğunuz su tüketim izleme uygulamasının üç önceden yapılandırı
 
      ![Yüksek pH uyarısı](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` Kural, koşula `Acidity (pH)` `greater than` karşı denetlenecek şekilde yapılandırılır `Max flow threshold`. Maksimum akış eşiği, **akıllı vana** cihaz şablonunda tanımlanan bir bulut özelliğidir. Değeri `Max flow threshold` cihaz örneği başına ayarlanır.
+    `High flow alert`Kural, koşula karşı denetlenecek şekilde yapılandırılır `Acidity (pH)` `greater than` `Max flow threshold` . Maksimum akış eşiği, **akıllı vana** cihaz şablonunda tanımlanan bir bulut özelliğidir. Değeri `Max flow threshold` cihaz örneği başına ayarlanır.
 
 Şimdi bir e-posta eylemi oluşturalım.
 
@@ -237,14 +237,14 @@ Azure IoT Central, işler cihaz veya bulut Özellik güncelleştirmelerini birde
 
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
-1.  > **Uygulamanızı Özelleştir** **' i seçin**.
+1. Uygulamanızı **Özelleştir ' i seçin**  >  **Customize your application**.
 1. **Uygulama logosu**olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini seçin.
 1. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini seçin.
 1. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
 
    ![Uygulama logosu, tarayıcı simgesi ve tarayıcı renkleri için seçimler](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. Ayrıca, uygulama görüntülerini **Yönetim** > **uygulama ayarları**' nı seçerek değiştirebilirsiniz. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini seçin.
+1. Ayrıca, uygulama görüntülerini **Yönetim**  >  **uygulama ayarları**' nı seçerek değiştirebilirsiniz. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini seçin.
 1. Son olarak, uygulamanın sağ üst köşesindeki **Ayarlar** simgesini seçerek **Temayı** da değiştirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

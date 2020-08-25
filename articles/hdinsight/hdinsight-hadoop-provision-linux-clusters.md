@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873611"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749879"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, bir HDInsight kümesi kurmak için kullanabileceğiniz far
 
 Bu makalede, bir HDInsight kümesi oluşturabileceğiniz [Azure Portal](https://portal.azure.com)kurulum işlemi adım adım açıklanmaktadır.
 
-## <a name="basics"></a>Temel bilgiler
+## <a name="basics"></a>Temel Bilgiler
 
 ![HDInsight oluşturma seçenekleri özel hızlı](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -63,7 +63,7 @@ HDInsight kümesi adları aşağıdaki kısıtlamalara sahiptir:
 * Tüm abonelikler genelinde tüm Azure için küme adlandırma kapsamı. Bu nedenle, küme adı Dünya genelinde benzersiz olmalıdır.
 * İlk altı karakter bir sanal ağ içinde benzersiz olmalıdır
 
-#### <a name="region"></a>Bölge
+#### <a name="region"></a>Region
 
 Küme konumunu açık bir şekilde belirtmeniz gerekmez: küme, varsayılan depolamayla aynı konumda. Desteklenen bölgelerin listesi için [HDInsight fiyatlandırması](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)üzerindeki **bölge** açılan listesini seçin.
 
@@ -97,13 +97,13 @@ HDInsight kümeleri ile, küme oluşturma sırasında iki kullanıcı hesabını
 
 HTTP Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
-* İzin verilen özel karakterler: `_` ve`@`
+* İzin verilen özel karakterler: `_` ve `@`
 * Karakterlere izin verilmiyor: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ boşluk
 * En fazla uzunluk: 20
 
 SSH Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
-* İzin verilen özel karakterler: `_` ve`@`
+* İzin verilen özel karakterler: `_` ve `@`
 * Karakterlere izin verilmiyor: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ boşluk
 * En fazla uzunluk: 64
 * Ayrılmış adlar: Hadoop, kullanıcılar, Oozie, Hive, mapred, ambarı-qa, Zookeeper, tez, bir, Sqoop, Yarn, hcat, AMS, HBase, fırtınası, yönetici, yönetici, Kullanıcı, Kullanıcı1, test, kullanıcı2, test1, User3, admin1, 1, 123, a, ACTUser, adm, Admin2, ASPNET, Backup, Console, David, Guest, John, Owner, root, Server, SQL, support, support_388945a0, sys, test2, test3, User4, user5, Spark
@@ -133,6 +133,9 @@ Yapılandırma sırasında, varsayılan depolama uç noktası için bir Azure de
 
 > [!IMPORTANT]
 > Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, depolama hesabınızı kullanırken hatalara neden olabilir ve önerilmez. Güvenli aktarım özelliği zaten etkin olan bir depolama hesabı kullanılarak yeni bir küme oluşturulması daha iyidir.
+
+> [!Note]  
+> Azure HDInsight, Azure depolama 'da depolanan verilerinizi bir bölgeden diğerine otomatik olarak aktarılmaz, taşımaz veya kopyalamaz.
 
 ### <a name="metastore-settings"></a>Meta veri deposu ayarları
 

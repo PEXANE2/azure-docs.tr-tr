@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145778"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783340"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -45,9 +45,9 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 * Bir erişim paketiyle yönetmek istediğiniz kaynağa önceden atanmış kullanıcılar varsa, kullanıcıların erişim paketine uygun ilkeyle atandığından emin olun. Örneğin zaten grupta kullanıcıları olan bir erişim paketine grup eklemek isteyebilirsiniz. Gruptaki söz konusu kullanıcılara sürekli erişim gerekiyorsa, gruba erişimi kaybetmemeleri için erişim paketlerine yönelik uygun bir ilkeye sahip olmaları gerekir. Erişim paketini atamak için kullanıcıların bu kaynağı içeren erişim paketini istemelerini sağlayabilir veya onları doğrudan erişim paketine atayabilirsiniz. Daha fazla bilgi için bkz. [bir erişim paketi Için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md).
 
-* Ekibin bir üyesini kaldırdığınızda, Microsoft 365 gruptan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Ekibin bir üyesini kaldırdığınızda, Microsoft 365 gruptan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](/microsoftteams/office-365-groups#group-membership).
 
-* Dizininizin birden çok coğrafi bölge için yapılandırılmadığından emin olun. Yetkilendirme yönetimi şu anda SharePoint Online için birden çok coğrafi konumu desteklemiyor. SharePoint Online sitelerinin yetkilendirme yönetimiyle idare edilmesi için varsayılan coğrafi konumda yer almaları gerekir. Daha fazla bilgi için bkz. [OneDrive ve SharePoint Online 'Daki çok coğrafi bölge özellikleri](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Dizininizin birden çok coğrafi bölge için yapılandırılmadığından emin olun. Yetkilendirme yönetimi şu anda SharePoint Online için birden çok coğrafi konumu desteklemiyor. SharePoint Online sitelerinin yetkilendirme yönetimiyle idare edilmesi için varsayılan coğrafi konumda yer almaları gerekir. Daha fazla bilgi için bkz. [OneDrive ve SharePoint Online 'Daki çok coğrafi bölge özellikleri](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Erişim paketleri
 
@@ -69,7 +69,7 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 * Henüz dizininizde yer almayan bir kullanıcı erişim paketi istemek için Erişimim portalında oturum açarsa, kurumsal hesabını kullanarak kimliğini doğruladığından emin olun. Kurumsal hesap kaynak dizinindeki bir hesap olabileceği gibi, erişim paketinin ilkelerinden birine eklenmiş olan dizindeki bir hesap da olabilir. Kullanıcının hesabı kurumsal hesap değilse veya kimlik doğrulaması yaptığı dizin ilkeye eklenmemişse, kullanıcı erişim paketini görmez. Daha fazla bilgi için bkz. [bir erişim paketine erişim isteme](entitlement-management-request-access.md).
 
-* Kullanıcının kaynak dizininde oturum açması engellenirse Erişimim portalında erişim isteyemez. Kullanıcının erişim isteyebilmesi için önce kullanıcının profilinden oturum açma engelini kaldırmanız gerekir. Oturum açma bloğunu kaldırmak için, Azure portal **Azure Active Directory**, **Kullanıcılar**' a, Kullanıcı ' ya ve ardından **profil**' e tıklayın. **Ayarlar** bölümünü düzenleyin ve blok olarak **oturum aç '** a **değiştirin.** Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../fundamentals/active-directory-users-profile-azure-portal.md).  Kullanıcının bir [kimlik koruma ilkesi](../identity-protection/howto-unblock-user.md)nedeniyle engellenip engellenmediğini da denetleyebilirsiniz.
+* Kullanıcının kaynak dizininde oturum açması engellenirse Erişimim portalında erişim isteyemez. Kullanıcının erişim isteyebilmesi için önce kullanıcının profilinden oturum açma engelini kaldırmanız gerekir. Oturum açma bloğunu kaldırmak için, Azure portal **Azure Active Directory**, **Kullanıcılar**' a, Kullanıcı ' ya ve ardından **profil**' e tıklayın. **Ayarlar** bölümünü düzenleyin ve blok olarak **oturum aç '** a **değiştirin.** Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../fundamentals/active-directory-users-profile-azure-portal.md).  Kullanıcının bir [kimlik koruma ilkesi](../identity-protection/howto-identity-protection-remediate-unblock.md)nedeniyle engellenip engellenmediğini da denetleyebilirsiniz.
 
 * Erişim portalındaki bir kullanıcı hem istek sahibi hem de onaylayan ise, **onaylar** sayfasında erişim paketi isteklerini görmez. Bu davranış bilerek ayarlanmıştır çünkü kullanıcı kendi isteğini onaylayamaz. İstediği erişim paketinin ilkede yapılandırılmış ek onaylayanları bulunduğundan emin olun. Daha fazla bilgi için bkz. [bir erişim paketi Için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md).
 

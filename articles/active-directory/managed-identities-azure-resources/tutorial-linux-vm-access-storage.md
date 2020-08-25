@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure depolama 'ya erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
+title: Öğretici `:` Azure depolama 'ya erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Depolama'ya erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75971928"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Öğretici: Azure Depolama’ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
@@ -37,7 +37,7 @@ Bu öğreticide Azure Depolama'ya erişmek amacıyla bir Linux sanal makinesi (V
 > [!NOTE]
 > Azure Depolama için Azure Active Directory kimlik doğrulaması genel önizlemeye sunuldu.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -55,7 +55,7 @@ Bu bölümde bir depolama hesabı oluşturursunuz.
 3. **Ad**’ın altında, depolama hesabı için bir ad girin.  
 4. **Dağıtım modeli** ve **Hesap türü**, **Kaynak yöneticisi** ve **Depolama (genel amaçlı v1)** olarak ayarlanmalıdır. 
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**’a tıklayın.
 
     ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -64,7 +64,7 @@ Bu bölümde bir depolama hesabı oluşturursunuz.
 Dosyalar blob depolama alanı gerektirdiğinden dosyasının depolanacağı bir blob kapsayıcısı oluşturmanız gerekir. Ardından yeni depolama hesabındaki blob kapsayıcısına bir dosya yükleyin.
 
 1. Yeni oluşturulan depolama hesabınıza geri gidin.
-2. **Blob Hizmeti**’nin altında, **Kapsayıcılar**’a tıklayın.
+2. **BLOB hizmeti**altında **kapsayıcılar**' a tıklayın.
 3. Sayfanın üstündeki **+ Kapsayıcı** seçeneğine tıklayın.
 4. **Yeni kapsayıcı**’nın altında, kapsayıcı için bir ad girin ve **Genel erişim düzeyi**’nin altında varsayılan değeri değiştirmeyin.
 
@@ -89,7 +89,7 @@ Azure depolama blobundaki verileri almak için VM’nin yönetilen kimliğini ku
 6. Ardından, uygun aboneliğin **Abonelik**’te listelendiğinden emin olun ve sonra **Kaynak Grubu**’nu **Tüm kaynak grupları** olarak ayarlayın.  
 7. **Seçin**’in altında, VM'nizi belirleyin ve ardından **Kaydet**’e tıklayın.
 
-    ![İzin atama](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![İzinler atama](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Erişim belirteci alma ve bu belirteci Azure Depolama’yı çağırmak için kullanma
 
@@ -121,4 +121,4 @@ Aşağıdaki adımları tamamlamak için, daha önce oluşturulmuş olan VM’de
 Bu öğreticide Azure Depolama’ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliğini etkinleştirmeyi öğrendiniz.  Azure Depolama hakkında daha fazla bilgi için bkz:
 
 > [!div class="nextstepaction"]
-> [Azure depolama](/azure/storage/common/storage-introduction)
+> [Azure Depolama](/azure/storage/common/storage-introduction)

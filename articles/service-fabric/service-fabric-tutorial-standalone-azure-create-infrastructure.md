@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614018"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
@@ -25,7 +25,7 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Örneklerden birinde oturum açma
 > * Service Fabric örneğini hazırlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Henüz bir hesabınız yoksa, bir hesap oluşturmak için [Azure Portal](https://portal.azure.com) gidin.
 
@@ -51,10 +51,10 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
    ![SF-gelen][sf-inbound]
 
-   * RDP `3389`ve ICMP için bağlantı noktası (temel bağlantı).
-   * Service Fabric `19000-19003`için bağlantı noktaları.
-   * Service Fabric `19080-19081`için bağlantı noktaları.
-   * Web `8080`tarayıcısı istekleri için bağlantı noktası.
+   * `3389`RDP ve ICMP için bağlantı noktası (temel bağlantı).
+   * `19000-19003`Service Fabric için bağlantı noktaları.
+   * `19080-19081`Service Fabric için bağlantı noktaları.
+   * `8080`Web tarayıcısı istekleri için bağlantı noktası.
 
    > [!TIP]
    > Service Fabric’te sanal makinelerinizi birbirine bağlamak için, altyapınızı barındıran VM’lerin aynı kimlik bilgilerine sahip olması gerekir.  Tutarlı kimlik bilgileri elde etmenin iki yaygın yolu vardır: tümünü aynı etki alanına eklemek veya her sanal makinede aynı yönetici parolasını ayarlamak. Neyse ki, Azure aynı **sanal ağ** üzerindeki tüm sanal makinelerin kolayca bağlanmasına izin verir. bu nedenle, tüm örneklerimizi aynı ağ üzerinde sunduğunuzdan emin olun.

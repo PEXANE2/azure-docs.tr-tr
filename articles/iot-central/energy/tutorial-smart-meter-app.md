@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77016009"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
@@ -29,8 +29,8 @@ Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı öl
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Ön koşullar
-- Hiçbiri
+## <a name="prerequisites"></a>Önkoşullar
+- Yok
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı sayaç izleme uygulaması oluşturma 

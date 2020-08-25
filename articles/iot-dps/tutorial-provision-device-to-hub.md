@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74975049"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub 'ına cihaz sağlama
@@ -24,7 +24,7 @@ ms.locfileid: "74975049"
 > * Cihazı başlatın
 > * Cihaz kayıtlı olduğunu doğrulayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı yapılandırdığınızdan emin olun.
 
@@ -42,7 +42,7 @@ Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’n
       [![Portalda TPM için kayıt bilgileri](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 tabanlı cihazlar için şunlar gerekir:
-    - *.pem* veya *.cer* dosyası şeklinde [X.509 yongasına ya da simülasyonuna düzenlenen sertifika](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx). Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı*kullanmanız gerekir. 
+    - *.pem* veya *.cer* dosyası şeklinde [X.509 yongasına ya da simülasyonuna düzenlenen sertifika](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx). Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına  *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı*kullanmanız gerekir. 
 
       [![Portalda X. 509.440 kanıtlama için bireysel kayıt ekleme](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
