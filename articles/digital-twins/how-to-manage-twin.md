@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587608"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796961"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 Bu çağrı, ikizi verilerini JSON dizesi olarak döndürür. 
 
-> [!TIP]
-> İle ikizi aldığınızda yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin` .
+İle ikizi aldığınızda yalnızca en az bir kez ayarlanmış olan özellikler döndürülür `GetDigitalTwin` .
+
+>[!TIP]
+>`displayName`Bir ikizi için, model meta verilerinin bir parçası olduğundan, ikizi örneği için veri alınırken gösterilmez. Bu değeri görmek için [modelden geri](how-to-manage-model.md#retrieve-models)alabilirsiniz.
 
 Tek bir API çağrısını kullanarak birden çok TWINS almak için, sorgu API 'SI örneklerine bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 
@@ -164,7 +166,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
 * `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı
-* Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
+* Bir bölümdeki diğer özellikler `$metadata` . Bu güncelleştirmeler şunlardır:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 

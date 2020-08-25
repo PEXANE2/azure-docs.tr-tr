@@ -13,12 +13,12 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2be68a858773dd4e76126ba6cd04ad98a2fd6a06
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313447"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751451"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
 
@@ -30,7 +30,7 @@ Neredeyse tüm OAuth 2,0 ve OpenID Connect akışlarında, Exchange 'e dahil edi
 
 ![OAuth 2,0 rollerinin gösterildiği diyagram](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Yetkilendirme sunucusu** , Microsoft Identity platform uç noktasıdır ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim verme ve iptal etme ve belirteçleri verme konusunda sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde işler.
+* **Yetkilendirme sunucusu** , Microsoft Identity platform uç noktasıdır ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim verme ve iptal etme ve belirteçleri verme konusunda sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkileri ile yapılan her şeyi güvenli bir şekilde işler.
 * **Kaynak sahibi** genellikle Son Kullanıcı olur. Bu, verilerin sahibi olan ve istemcilerin bu verilere veya kaynağa erişmesine izin veren bir güce sahip olan taraftır.
 * **OAuth istemcisi** , uygulama kimliğiyle tanımlanan uygulamanız. OAuth istemcisi genellikle son kullanıcının etkileşime girdiği tarafdır ve yetkilendirme sunucusundan belirteçler ister. İstemciye kaynak sahibi tarafından kaynağa erişim izni verilmesi gerekir.
 * Kaynak **sunucu** , kaynağın veya verilerin bulunduğu yerdir. OAuth Istemcisini güvenli şekilde doğrulamak ve yetkilendirmek için yetkilendirme sunucusuna güvenir ve bir kaynağa erişimin verilmesini sağlamak için taşıyıcı erişim belirteçlerini kullanır.

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 03477fa46aaec04c0563ed38b085605dce5b87a1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120839"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751749"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 - GPU ve alan-programlanabilir kapı dizileri (FPGA) gibi __donanım hızlandırma__ seçenekleri.
 
 > [!IMPORTANT]
-> Küme ölçeklendirme, Azure Machine Learning SDK aracılığıyla sağlanmaz. Bir AKS kümesindeki düğümleri ölçeklendirme hakkında daha fazla bilgi için bkz. [AKS kümesindeki düğüm sayısını ölçeklendirme](../aks/scale-cluster.md).
+> Küme ölçeklendirme, Azure Machine Learning SDK aracılığıyla sağlanmaz. Bir AKS kümesindeki düğümleri ölçeklendirme hakkında daha fazla bilgi için bkz. 
+- [AKS kümesindeki düğüm sayısını el ile ölçeklendirme](../aks/scale-cluster.md)
+- [AKS 'de küme otomatik Scaler 'ı ayarlama](../aks/cluster-autoscaler.md)
 
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlamak için iki yol vardır:
 
@@ -43,7 +45,7 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 > [!IMPORTANT]
 > Web hizmetine dağıtım yapmadan önce yerel olarak hata ayıklamanızı öneririz. Daha fazla bilgi için bkz. [yerel olarak hata ayıklama](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
-> Ayrıca, Azure Machine Learning- [Yerel not defterine dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) ' ya başvurabilirsiniz
+> Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -55,9 +57,9 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 
 - Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlandığı varsayılır:
 
-    * `ws`-Çalışma alanınıza ayarlayın.
-    * `model`-Kayıtlı modelinize ayarlanır.
-    * `inference_config`-Modelin çıkarım yapılandırmasına ayarlayın.
+    * `ws` -Çalışma alanınıza ayarlayın.
+    * `model` -Kayıtlı modelinize ayarlanır.
+    * `inference_config` -Modelin çıkarım yapılandırmasına ayarlayın.
 
     Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
@@ -65,9 +67,16 @@ AKS kümesi ve AML çalışma alanı farklı kaynak gruplarında olabilir.
 
 - Temel bir Load Balancer (BLB) yerine kümenizde dağıtılan bir Standart Load Balancer (SLB) gerekiyorsa, AKS portalında/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına ekleyin.
 
-- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML DENETIM düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın.
+- Genel IP 'nin oluşturulmasını kısıtlayan bir Azure Ilkeniz varsa, AKS kümesi oluşturma işlemi başarısız olur. AKS, [çıkış trafiği](https://docs.microsoft.com/azure/aks/limit-egress-traffic)için genel bir IP gerektirir. Bu makalede, bazı FQDN 'leri hariç genel IP aracılığıyla kümeden çıkış trafiğini kilitleme kılavuzu da sağlanmaktadır. Genel IP 'yi etkinleştirmenin 2 yolu vardır:
+  - Küme, varsayılan olarak BLB veya SLB ile oluşturulan genel IP 'yi kullanabilir veya
+  - Küme, genel bir IP olmadan oluşturulabilir ve ardından bir genel IP, [burada](https://docs.microsoft.com/azure/aks/egress-outboundtype) belgelenen Kullanıcı tanımlı bir yol ile bir güvenlik duvarıyla yapılandırılır 
+  
+  AML denetim düzlemi bu genel IP ile iletişim kurmadı. Dağıtımlar için AKS denetim düzlemiyle konuşuyor. 
 
-__Authpolanmış IP aralıkları yalnızca Standart Load Balancer ile kullanılabilir.__
+- [API sunucusuna erişim için yetkilendirilmiş BIR IP aralığı etkin](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)olan bir aks kümesi eklerseniz, aks kümesi için AML CONTOL düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde ınleþlek kapsayan Pod dağıtır. API sunucusuna erişim olmadan, ıncallpods dağıtılamıyor. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) kullanın.
+
+
+  Authpolanmış IP aralıkları yalnızca Standart Load Balancer ile kullanılabilir.
  
  - İşlem adı bir çalışma alanı içinde benzersiz OLMALıDıR
    - Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
@@ -76,10 +85,6 @@ __Authpolanmış IP aralıkları yalnızca Standart Load Balancer ile kullanıla
    - Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz
    
  - Modelleri GPU düğümlerine veya FPGA düğümlerine (ya da belirli bir SKU) dağıtmak istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 
@@ -290,7 +295,7 @@ Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kayna
     1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
 1. Daraltılmış proje dosyanızı işlem düğümündeki geçici depolamaya indirme
 1. Proje dosyasının sıkıştırması kaldırılıyor
-1. Yürütülen işlem düğümü`python <entry script> <arguments>`
+1. Yürütülen işlem düğümü `python <entry script> <arguments>`
 1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
 1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma işlemi (Kubernetes ile Ilgilidir)
 
@@ -409,7 +414,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa, şunu kullanın[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa, şunu kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -439,7 +444,7 @@ print(token)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

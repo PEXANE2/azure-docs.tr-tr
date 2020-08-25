@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185426"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751691"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Bir çalışma alanına bağlanmak için SDK 'Yı kullanma hakkında daha fazla 
 ---
 
 
-## <a name="register-your-model"></a><a id="registermodel"></a>Modelinizi kaydetme
+## <a name="register-your-model"></a><a id="registermodel"></a> Modelinizi kaydetme
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -218,12 +218,12 @@ Bir çıkarım yapılandırması, modelinizi içeren Web hizmeti ayarlamayı aç
 
 name: project_environment
 dependencies:
-    - python=3.6.2
-    - scikit-learn=0.20.0
-    - pip:
-        # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
+- python=3.6.2
+- scikit-learn=0.22.1
+- pip:
+ # You must list azureml-defaults as a pip dependency
+ - azureml-defaults>=1.0.45
+ - inference-schema[numpy-support]
 ```
 
 > [!IMPORTANT]
@@ -350,19 +350,19 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
 | Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
 
 
-### <a name="batch-inference"></a><a id="azuremlcompute"></a>Toplu çıkarım
+### <a name="batch-inference"></a><a id="azuremlcompute"></a> Toplu çıkarım
 Azure Machine Learning Işlem hedefleri Azure Machine Learning tarafından oluşturulur ve yönetilir. Bunlar, Azure Machine Learning işlem hatlarından toplu tahmin için kullanılabilirler.
 
 Azure Machine Learning Işlem ile Batch çıkarımı hakkında yönergeler için bkz. [Batch öngörülerini çalıştırma](tutorial-pipeline-batch-scoring-classification.md).
 
-### <a name="iot-edge-inference"></a><a id="iotedge"></a>IoT Edge çıkarımı
+### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge çıkarımı
 Kenara dağıtım desteği önizleme aşamasındadır. Daha fazla bilgi için bkz. [Azure Machine Learning IoT Edge modül olarak dağıtma](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="delete-resources"></a>Kaynakları silme
@@ -371,7 +371,7 @@ Kenara dağıtım desteği önizleme aşamasındadır. Daha fazla bilgi için bk
 
 Dağıtılan bir Web hizmetini silmek için kullanın `az ml service <name of webservice>` .
 
-Çalışma alanınızdan kayıtlı bir modeli silmek için şunu kullanın`az ml model delete <model id>`
+Çalışma alanınızdan kayıtlı bir modeli silmek için şunu kullanın `az ml model delete <model id>`
 
 [Bir Web hizmetini silme](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) ve [bir modeli silme](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)hakkında daha fazla bilgi edinin.
 
@@ -392,7 +392,7 @@ Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/p
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

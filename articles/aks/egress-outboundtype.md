@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214229"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796978"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkış listesini Kullanıcı tanımlı bir yol ile özelleştirme
 
@@ -19,7 +19,7 @@ AKS kümesinden çıkış, belirli senaryolara uyacak şekilde özelleştirilebi
 
 Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA) arkasına oturmasının gerekli olduğu gibi özel ağ senaryolarını desteklemek için bir kümenin çıkış yolunun nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure CLı sürüm 2.0.81 veya üzeri
 * `2020-01-01`Veya daha büyük API sürümü
 
@@ -32,7 +32,7 @@ Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA)
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS 'deki giden türlere genel bakış
 
-AKS kümesi, `outboundType` yük dengeleyici veya Kullanıcı tanımlı yönlendirme türünde benzersiz bir şekilde özelleştirilebilir.
+AKS kümesi, veya türünde benzersiz bir şekilde özelleştirilebilir `outboundType` `loadBalancer` `userDefinedRouting` .
 
 > [!IMPORTANT]
 > Giden türü yalnızca kümenizin çıkış trafiğini etkiler. Daha fazla bilgi için bkz. giriş [denetleyicilerini ayarlama](ingress-basic.md).
@@ -62,7 +62,11 @@ Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan bir ağ topol
 
 AKS kümesi, standart yük dengeleyici (SLB) mimarisi kullanılmadıklarında, açık çıkış oluşturmanız gerektiğinden, daha önce yapılandırılmış bir alt ağa sahip mevcut bir sanal ağa dağıtılmalıdır. Bu şekilde, Bu mimaride bir güvenlik duvarı, ağ geçidi, ara sunucu veya ağ adresi çevirisi (NAT) 'nin standart yük dengeleyiciye veya gerecine atanan bir genel IP tarafından yapılmasına izin vermek için bu mimarinin çıkış trafiğini açıkça göndermesi gerekir.
 
-AKS kaynak sağlayıcısı standart yük dengeleyici (SLB) dağıtır. Yük dengeleyici hiçbir kurala göre yapılandırılmaz ve [bir kural yerleştirilene kadar ücretlendirilmez](https://azure.microsoft.com/pricing/details/load-balancer/). AKS, SLB ön ucu için otomatik olarak genel bir IP adresi sağlamaz veya yük dengeleyici arka uç havuzunu **otomatik olarak yapılandırır** .
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>UserDefinedRouting ile yük dengeleyici oluşturma
+
+Giden UDR türünde AKS kümeleri, yalnızca ' loadBalancer ' türündeki ilk Kubernetes hizmeti dağıtıldığında standart yük dengeleyici (SLB) alır. Yük dengeleyici *gelen* istekler için genel bir IP adresi ve *gelen* istekler için bir arka uç havuzu ile yapılandırılır. Gelen kuralları Azure bulut sağlayıcısı tarafından yapılandırılır, ancak giden **genel IP adresi veya giden kuralları** , giden bir UDR türüne sahip olma sonucu olarak yapılandırılmaz. UDR 'niz çıkış trafiği için tek kaynak olmaya devam eder.
+
+Azure yük dengeleyiciler [, bir kural yerleştirilene kadar ücretlendirilmez](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Bir kümeyi UDR ve Azure Güvenlik duvarının giden türüyle dağıtma
 
@@ -70,9 +74,7 @@ Kullanıcı tanımlı bir yol kullanarak giden türü olan bir kümenin uygulama
 
 > [!IMPORTANT]
 > UDR 'nin giden türü, yol tablosundaki NVA 'nın (ağ sanal gereç) 0.0.0.0/0 ve sonraki atlama hedefi için bir yol olmasını gerektirir.
-> Yol tablosunun varsayılan bir 0.0.0.0/0 olması zaten Internet 'e ait bir genel IP 'ye sahip olmadığı için, bu yolun yalnızca bu yolu eklemeniz durumunda çıkış sağlayamayacak. AKS, Internet 'e işaret eden bir 0.0.0.0/0 yolu oluşturmayacağını doğrular, bunun yerine NVA veya Gateway, vb. olur.
-> 
-> Bir UDR 'nin giden türü kullanılırken *, yük dengeleyici türünde bir* hizmet yapılandırılmadığı takdirde yük DENGELEYICI genel IP adresi oluşturulmaz.
+> Yol tablosunun varsayılan bir 0.0.0.0/0 olması zaten Internet 'e ait bir genel IP 'ye sahip olmadığı için, bu yolun yalnızca bu yolu eklemeniz durumunda çıkış sağlayamayacak. AKS, Internet 'e işaret eden bir 0.0.0.0/0 yolu oluşturmayacağını doğrular, bunun yerine NVA veya Gateway, vb. olur. Bir UDR 'nin giden türü kullanılırken, *loadbalancer* türünde bir hizmet yapılandırılmadığı takdirde **gelen istekler** IÇIN yük dengeleyici genel IP adresi oluşturulmaz. Giden **istekler** için genel bir IP adresi, giden bir UDR türü ayarlandıysa aks tarafından hiçbir zaman oluşturulmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

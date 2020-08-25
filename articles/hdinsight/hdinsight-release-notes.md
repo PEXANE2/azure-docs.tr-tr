@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/21/2020
+ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036598"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751461"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -72,3 +72,7 @@ JIRAs 'nin altında HBase için yeniden bağlantı noktası verilmiştir:
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+Azure portal bir Azure HDInsight kümesi oluşturmaya çalışırken ve ortak anahtar SSH kimlik doğrulaması türünü kullanarak, kullanıcılar **gözden geçir + oluştur**' a tıkladıklarında bir hata yaşar. Portaldaki hata "SSH kullanıcı adından üç ardışık karakter içermemelidir." Bu sorun giderilmekte; Ancak, bu hatayla karşılaşırsanız, geçici çözüm ARM şablonuyla bir küme oluşturur. 

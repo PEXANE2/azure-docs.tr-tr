@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83747496"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Web hizmetini Google Maps 'tan geçirme
@@ -24,7 +24,7 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yol tarifleri              | [Yolu](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Yönergeler              | [Yol](https://docs.microsoft.com/rest/api/maps/route)                                     |
 | Uzaklık matrisi         | [Yol matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
 | Coğrafi Kodlama               | [Ara](https://docs.microsoft.com/rest/api/maps/search)                                   |
 | Konum arama           | [Ara](https://docs.microsoft.com/rest/api/maps/search)                                   |
@@ -67,9 +67,9 @@ Aşağıdaki tabloda, Google Maps API parametreleri Azure haritalar 'daki karş�
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` ve `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality`-City/Town<br/>`municipalitySubdivision`– Komşuları, alt/süper şehir<br/>`countrySubdivision`-Eyalet veya il<br/>`countrySecondarySubdivision`-İlçe<br/>`countryTertiarySubdivision`-District<br/>`countryCode`-iki harfli ülke/bölge kodu |
-| `key`                       | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` -City/Town<br/>`municipalitySubdivision` – Komşuları, alt/süper şehir<br/>`countrySubdivision` -Eyalet veya il<br/>`countrySecondarySubdivision` -İlçe<br/>`countryTertiarySubdivision` -District<br/>`countryCode` -iki harfli ülke/bölge kodu |
+| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `region`                    | `countrySet`                       |
 
 Arama hizmetinin nasıl kullanılacağına ilişkin bir örnek [burada](how-to-search-for-address.md)belgelenmiştir. [Arama için en iyi yöntemleri](how-to-use-best-practices-for-search.md)gözden geçirdiğinizden emin olun.
@@ -91,10 +91,10 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 
 | Google Maps API parametresi   | Karşılaştırılabilir Azure Maps API parametresi   |
 |-----------------------------|---------------------------------------|
-| `key`                       | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Yok*     |
+| `location_type`             | *N/A*     |
 | `result_type`               | `entityType`    |
 
 [Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
@@ -138,11 +138,11 @@ Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Yok*                               |
+| `fields`                  | *N/A*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Yok*                               |
-| `key`                     | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `inputtype`               | *N/A*                               |
+| `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `locationbias`            | `lat``lon`ve`radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
 
 ### <a name="nearby-search"></a>Yakındaki arama
@@ -153,18 +153,18 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi  |
 |---------------------------|--------------------------------------|
-| `key`                       | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `keyword`                   | `categorySet` ve `brandSet`        |
-| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
-| `maxprice`                  | *Yok*                               |
-| `minprice`                  | *Yok*                               |
+| `maxprice`                  | *N/A*                               |
+| `minprice`                  | *N/A*                               |
 | `name`                      | `categorySet` ve `brandSet`        |
-| `opennow`                   | *Yok*                               |
+| `opennow`                   | *N/A*                               |
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Yok*                               |
-| `type`                      | `categorySet –`Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
+| `rankby`                    | *N/A*                               |
+| `type`                      | `categorySet –` Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
 
 ## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
 
@@ -191,9 +191,9 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `arrival_time`                | `arriveAt`                          |
 | `avoid`                        | `avoid`                            |
 | `departure_time`              | `departAt`                          |
-| `destination`                  | `query`– biçimde koordinatları`"lat0,lon0:lat1,lon1…."`  |
-| `key`                          | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                     | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.   |
+| `destination`                  | `query` – biçimde koordinatları `"lat0,lon0:lat1,lon1…."`  |
+| `key`                          | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                     | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.   |
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
@@ -236,17 +236,17 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi  |
 |---------------------------|--------------------------------------|
 | `center`                    | `center`                           |
-| `format`                    | `format`– URL yolunun bir parçası olarak belirtilir. Şu anda yalnızca PNG destekleniyor. |
-| `key`                       | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
-| `maptype`                   | `layer`ve `style` – [desteklenen harita stilleri](supported-map-styles.md) belgelerine bakın. |
+| `format`                    | `format` – URL yolunun bir parçası olarak belirtilir. Şu anda yalnızca PNG destekleniyor. |
+| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `maptype`                   | `layer` ve `style` – [desteklenen harita stilleri](supported-map-styles.md) belgelerine bakın. |
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın.  |
-| `scale`                     | *Yok*                              |
-| `size`                      | `width`ve `height` – boyutu 8192x8192 olabilir. |
-| `style`                     | *Yok*                              |
-| `visible`                   | *Yok*                              |
+| `scale`                     | *N/A*                              |
+| `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
+| `style`                     | *N/A*                              |
+| `visible`                   | *N/A*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -278,14 +278,14 @@ Ek stiller eklemek için, URL 'nin `markers` parametrelerini farklı bir stille 
 
 `optionName:value` \| Bu "optionName1: değer1 \| optionName2: değer2" gibi kanal () karakterleriyle ayrılmış birden çok stil içeren, biçimiyle işaret stilleri ekleyin. Seçenek adları ve değerleri, iki nokta üst üste (:)) ayrılır. Google Maps 'ta stil işaretçileri için aşağıdaki stil seçeneğini kullanın:
 
-- `color`– Varsayılan işaret simgesinin rengi. 24 bit onaltılı renk ( `0xrrggbb` ) veya aşağıdaki değerlerden biri olabilir; `black` , `brown` , `green` , `purple` , `yellow` , `blue` , `gray` , `orange` `red` `white` ,,.
-- `label`– Simgenin üstünde görüntülenecek tek bir büyük harf alfasayısal karakter.
-- `size`-İşaretin boyutu. `tiny`, Veya olabilir `mid` `small` .
+- `color` – Varsayılan işaret simgesinin rengi. 24 bit onaltılı renk ( `0xrrggbb` ) veya aşağıdaki değerlerden biri olabilir; `black` , `brown` , `green` , `purple` , `yellow` , `blue` , `gray` , `orange` `red` `white` ,,.
+- `label` – Simgenin üstünde görüntülenecek tek bir büyük harf alfasayısal karakter.
+- `size` -İşaretin boyutu. `tiny`, Veya olabilir `mid` `small` .
 
 Google Maps 'teki özel simgeler için aşağıdaki stil seçenekleri adlarını kullanın:
 
-- `anchor`– Simge resminin koordinatya nasıl hizalanacağını belirtir. Bir piksel (x, y) değeri veya aşağıdaki değerlerden biri olabilir; `top`, `bottom` , `left` , `right` , `center` , `topleft` , `topright` , `bottomleft` veya `bottomright` .
-- `icon`– Simge resmine işaret eden bir URL.
+- `anchor` – Simge resminin koordinatya nasıl hizalanacağını belirtir. Bir piksel (x, y) değeri veya aşağıdaki değerlerden biri olabilir; `top`, `bottom` , `left` , `right` , `center` , `topleft` , `topright` , `bottomleft` veya `bottomright` .
+- `icon` – Simge resmine işaret eden bir URL.
 
 Örneğin, haritaya Boylam:-110, Enlem: 45 olan kırmızı, orta ölçekli bir işaret ekleyelim:
 
@@ -311,21 +311,21 @@ Azure haritalar 'da, PIN konumunun "Boylam Enlem" biçiminde olması gerekir. Go
 
 `iconType`Oluşturulacak PIN türünü belirtir. Aşağıdaki değerlere sahip olabilir:
 
-- `default`– Varsayılan pin simgesi.
-- `none`– Simge gösterilmez, yalnızca Etiketler işlenir.
-- `custom`– Özel bir simgenin kullanılacağını belirtir. Simgenin sonuna işaret eden bir URL, `pins` PIN konum bilgileri sonrasında parametrenin sonuna eklenebilir.
-- `{udid}`– Azure Maps veri depolama platformunda depolanan bir simgenin benzersiz veri KIMLIĞI (UDıD).
+- `default` – Varsayılan pin simgesi.
+- `none` – Simge gösterilmez, yalnızca Etiketler işlenir.
+- `custom` – Özel bir simgenin kullanılacağını belirtir. Simgenin sonuna işaret eden bir URL, `pins` PIN konum bilgileri sonrasında parametrenin sonuna eklenebilir.
+- `{udid}` – Azure Maps veri depolama platformunda depolanan bir simgenin benzersiz veri KIMLIĞI (UDıD).
 
 Biçim ile PIN stilleri ekleyin `optionNameValue` . Birden çok stili kanal ( \| ) karakterleriyle ayırın. Örneğin: `iconType|optionName1Value1|optionName2Value2`. Seçenek adları ve değerleri ayrılmamış. Stil işaretçileri için aşağıdaki stil seçenek adlarını kullanın:
 
-- `al`– İşaretin opaklığını (Alpha) belirtir. 0 ile 1 arasında bir sayı seçin.
-- `an`– PIN bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
-- `co`– PIN rengi. 24 bit onaltılık renk belirtin: `000000` için `FFFFFF` .
-- `la`– Etiket bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
-- `lc`– Etiketin rengi. 24 bit onaltılık renk belirtin: `000000` için `FFFFFF` .
-- `ls`– Etiketin piksel cinsinden boyutu. 0 ' dan büyük bir sayı seçin.
-- `ro`– Simgeyi döndürmek için derece cinsinden bir değer. -360 ile 360 arasında bir sayı seçin.
-- `sc`– Pin simgesi için bir ölçek değeri. 0 ' dan büyük bir sayı seçin.
+- `al` – İşaretin opaklığını (Alpha) belirtir. 0 ile 1 arasında bir sayı seçin.
+- `an` – PIN bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
+- `co` – PIN rengi. 24 bit onaltılık renk belirtin: `000000` için `FFFFFF` .
+- `la` – Etiket bağlayıcısını belirtir. X ve y piksel değerlerini "x y" biçiminde belirtin.
+- `lc` – Etiketin rengi. 24 bit onaltılık renk belirtin: `000000` için `FFFFFF` .
+- `ls` – Etiketin piksel cinsinden boyutu. 0 ' dan büyük bir sayı seçin.
+- `ro` – Simgeyi döndürmek için derece cinsinden bir değer. -360 ile 360 arasında bir sayı seçin.
+- `sc` – Pin simgesi için bir ölçek değeri. 0 ' dan büyük bir sayı seçin.
 
 Her PIN konumu için etiket değerlerini belirtin. Bu yaklaşım, konum listesindeki tüm işaretçilere tek bir etiket değeri uygulamaktan daha etkilidir. Etiket değeri birden çok karakterden oluşan bir dize olabilir. Bir stil veya konum değeri olarak yanlış alınana emin olmak için dizeyi tek tırnak işaretleriyle sarın.
 
@@ -365,10 +365,10 @@ Yol konumları `latitude1,longitude1|latitude2,longitude2|…` biçimiyle belirt
 
 Biçim ile yol stilleri ekleyin `optionName:value` ve birden çok stili kanal ( \| ) karakterleriyle ayırın. Ve seçenek adları ve değerlerini iki noktayla ayırın (:). Şöyle: `optionName1:value1|optionName2:value2` . Aşağıdaki stil seçenek adları, Google Maps içindeki yollara stil eklemek için kullanılabilir:
 
-- `color`– Yolun veya Çokgen anahattının rengi. 24 bit onaltılı renk ( `0xrrggbb` ), 32 bit onaltılı renk ( `0xrrggbbbaa` ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
-- `fillColor`– Yol alanını (çokgen) dolduracak olan renk. 24 bit onaltılı renk ( `0xrrggbb` ), 32 bit onaltılı renk ( `0xrrggbbbaa` ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
-- `geodesic`– Yolun, dünya eğriliği takip eden bir çizgi olması gerekip gerekmediğini gösterir.
-- `weight`– Yol çizgisinin piksel cinsinden kalınlığı.
+- `color` – Yolun veya Çokgen anahattının rengi. 24 bit onaltılı renk ( `0xrrggbb` ), 32 bit onaltılı renk ( `0xrrggbbbaa` ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
+- `fillColor` – Yol alanını (çokgen) dolduracak olan renk. 24 bit onaltılı renk ( `0xrrggbb` ), 32 bit onaltılı renk ( `0xrrggbbbaa` ) veya aşağıdaki değerlerden biri olabilir: siyah, kahverengi, yeşil, mor, sarı, mavi, gri, turuncu, kırmızı, beyaz.
+- `geodesic` – Yolun, dünya eğriliği takip eden bir çizgi olması gerekip gerekmediğini gösterir.
+- `weight` – Yol çizgisinin piksel cinsinden kalınlığı.
 
 URL parametresindeki koordinatlar arasındaki haritaya kırmızı çizgi geçirgenliği ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, satırda %50 opaklık ve dört piksel kalınlığı bulunur. Koordinatlar Boylam:-110, Enlem: 45 ve Boylam:-100, Enlem: 50.
 
@@ -392,12 +392,12 @@ Azure haritalar, yol konumlarına geldiğinde, koordinatların "Boylam Enlem" bi
 
 Biçim ile yol stilleri ekleyin `optionNameValue` . Birden çok stili kanal ( \| ) karakterleriyle ayırın (bunun gibi `optionName1Value1|optionName2Value2` ). Seçenek adları ve değerleri ayrılmamış. Azure haritalar 'daki stil yolları için aşağıdaki stil seçenek adlarını kullanın:
 
-- `fa`-Poligonları işlerken kullanılan Fill Color geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
-- `fc`-Bir çokgenin alanını işlemek için kullanılan Fill Color.
-- `la`– Çizgiler ve çokgenler ana hattı işlenirken kullanılan çizgi rengi geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
-- `lc`– Çizgileri oluşturmak için kullanılan çizgi rengi ve çokgenler ana hattı.
-- `lw`– Çizginin piksel cinsinden genişliği.
-- `ra`– Ölçümlerde bir daire yarıçapı belirtir.
+- `fa` -Poligonları işlerken kullanılan Fill Color geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
+- `fc` -Bir çokgenin alanını işlemek için kullanılan Fill Color.
+- `la` – Çizgiler ve çokgenler ana hattı işlenirken kullanılan çizgi rengi geçirgenliği (Alpha). 0 ile 1 arasında bir sayı seçin.
+- `lc` – Çizgileri oluşturmak için kullanılan çizgi rengi ve çokgenler ana hattı.
+- `lw` – Çizginin piksel cinsinden genişliği.
+- `ra` – Ölçümlerde bir daire yarıçapı belirtir.
 
 URL parametresinde, koordinatlar arasına kırmızı çizgi geçirgenliği ve piksel kalınlığı ekleyin. Aşağıdaki örnekte, satır %50 opaklık ve dört piksellik bir kalınlığa sahiptir. Koordinatlar şu değerlere sahiptir: Boylam:-110, Enlem: 45 ve Boylam:-100, Enlem: 50.
 
@@ -425,11 +425,11 @@ Bu tablo, Google Maps API parametrelerine benzer Azure Maps API parametreleri il
 | `arrivial_time`                | `arriveAt`                           |
 | `avoid`                        | `avoid`                              |
 | `depature_time`                | `departAt`                           |
-| `destinations`                 | `destination`– istek SONRASı gövdesinin coğrafi JSON olarak belirleyin. |
-| `key`                          | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
-| `language`                     | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.  |
+| `destinations`                 | `destination` – istek SONRASı gövdesinin coğrafi JSON olarak belirleyin. |
+| `key`                          | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
+| `language`                     | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `mode`                         | `travelMode`                         |
-| `origins`                      | `origins`– istek SONRASı gövdesinin coğrafi JSON olarak belirleyin.  |
+| `origins`                      | `origins` – istek SONRASı gövdesinin coğrafi JSON olarak belirleyin.  |
 | `region`                       | *Yok* : Bu özellik, coğrafi kodlama ile ilgilidir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın. |
 | `traffic_model`                | *Yok* – yalnızca gelen trafik verilerinin parametresiyle kullanılması gerekiyorsa belirtilebilir `traffic` . |
 | `transit_mode`                 | *N/A* -aktarım tabanlı uzaklık matrisleri Şu anda desteklenmiyor.  |
@@ -451,8 +451,8 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi   |
 |---------------------------|---------------------------------------|
-| `key`                       | `subscription-key`– Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri.       |
-| `language`                  | `language`– [Desteklenen diller](supported-languages.md) belgesine bakın.    |
+| `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri.       |
+| `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.    |
 | `location`                  | `query`             |
 | `timestamp`                 | `timeStamp`         |
 
@@ -468,7 +468,7 @@ Azure Maps, bu API 'ye ek olarak çeşitli saat dilimi API 'Leri sağlar. Bu API
 
 Azure Maps, istemci kitaplıklarını aşağıdaki programlama dilleri için sağlar:
 
-- JavaScript, TypeScript, Node. js – [belge](how-to-use-services-module.md) \| [NPM paketi](https://www.npmjs.com/package/azure-maps-rest)
+- JavaScript, TypeScript, Node.js – [belge](how-to-use-services-module.md) \| [NPM paketi](https://www.npmjs.com/package/azure-maps-rest)
 
 Bu açık kaynaklı istemci kitaplıkları diğer programlama dillerine yöneliktir:
 

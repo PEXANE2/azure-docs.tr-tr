@@ -8,16 +8,16 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83835878"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure İzleyici Uyarıları ile olaylara yanıt verme
 Azure İzleyici'deki uyarılar, Log Analytics deponuzdaki önemli bilgileri belirleyebilir. Bunlar düzenli aralıklarla otomatik olarak günlük aramaları çalıştıran uyarı kuralları tarafından oluşturulur. Günlük aramasının sonuçları belirli ölçütlerle eşleşirse bir uyarı kaydı oluşturulur ve kayıt otomatik bir yanıt gerçekleştirmek için yapılandırılabilir.  Bu öğretici, [Log Analytics verilerinin panolarını oluşturma ve paylaşma](tutorial-logs-dashboards.md) öğreticisinin devamı niteliğindedir.   
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uyarı kuralı oluşturma

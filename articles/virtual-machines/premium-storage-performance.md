@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0e0f6df04eda45af04659edc2010e8d68b013892
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701624"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751496"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -31,16 +31,16 @@ Bu makale, Azure Premium depolamada uygulama performansını iyileştirmek için
 Premium depolamada çalışan iş yükleri yüksek performansa duyarlı olduğundan, bu yönergeleri özellikle Premium Depolama için sağladık. Uygun yerlerde örnek sağladık. Ayrıca, bu yönergelerin bazılarını standart depolama diskleriyle IaaS VM 'lerinde çalışan uygulamalar için de uygulayabilirsiniz.
 
 > [!NOTE]
-> Bazen bir disk performans sorunu gibi görünen durum aslında ağ performans sorununa neden olur. Bu durumlarda, [ağ performansınızı](~/articles/virtual-network/virtual-network-optimize-network-bandwidth.md)iyileştirebilmelisiniz.
+> Bazen bir disk performans sorunu gibi görünen durum aslında ağ performans sorununa neden olur. Bu durumlarda, [ağ performansınızı](../virtual-network/virtual-network-optimize-network-bandwidth.md)iyileştirebilmelisiniz.
 >
 > Diskinizin kıyaslanmaya bakıyorsanız, bir diski sınama hakkında makalelerimize bakın:
 >
-> * Linux için: [Azure disk depolama uygulamanızı kıyaslama](./linux/disks-benchmarks.md)
-> * Windows için: [diski sınama](./windows/disks-benchmarks.md).
+> * Linux için: [Azure disk depolama uygulamanızı kıyaslama](linux/disks-benchmarks.md)
+> * Windows için: [diski sınama](windows/disks-benchmarks.md).
 >
-> VM 'niz hızlandırılmış ağı destekliyorsa etkinleştirildiğinden emin olun. Etkinleştirilmemişse, hem [Windows](~/articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) hem de [Linux](~/articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)üzerinde zaten dağıtılmış VM 'lerde etkinleştirebilirsiniz.
+> VM 'niz hızlandırılmış ağı destekliyorsa etkinleştirildiğinden emin olun. Etkinleştirilmemişse, hem [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) hem de [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)üzerinde zaten dağıtılmış VM 'lerde etkinleştirebilirsiniz.
 
-Başlamadan önce Premium Storage 'a yeni başladıysanız, ilk olarak [IaaS VM 'leri Için Azure disk türünü seçin](./linux/disks-types.md) ve [Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik hedeflerini](~/articles/storage/blobs/scalability-targets-premium-page-blobs.md)okuyun.
+Başlamadan önce Premium Storage 'a yeni başladıysanız, ilk olarak [IaaS VM 'leri Için Azure disk türünü seçin](disks-types.md) ve [Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik hedeflerini](../storage/blobs/scalability-targets-premium-page-blobs.md)okuyun.
 
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -62,7 +62,7 @@ Yüksek ölçekli bir VM 'ye Premium Depolama diski iliştirirseniz, Azure bu di
 
 Aşağıdaki formülde gösterildiği gibi, üretilen iş ve ıOPS arasında bir ilişki vardır.
 
-![IOPS ve aktarım hızı ilişkisi](~/articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![IOPS ve aktarım hızı ilişkisi](linux/media/premium-storage-performance/image1.png)
 
 Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en*iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
 
@@ -144,7 +144,7 @@ Bu bölümde, uygulama performansınızı iyileştirmek için ne kadar ihtiyacı
 
 Aşağıdaki tabloda, performans faktörleri ve ıOPS 'yi, aktarım hızını ve gecikmeyi iyileştirmek için gereken adımlar özetlenmektedir. Bu Özetteki bölümlerde her bir faktör daha ayrıntılı olarak açıklanır.
 
-VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ıOPS, aktarım hızı ve gecikme süresi hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](~/articles/virtual-machines/linux/sizes.md) veya [Windows VM boyutları](~/articles/virtual-machines/windows/sizes.md).
+VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ıOPS, aktarım hızı ve gecikme süresi hakkında daha fazla bilgi için bkz. [Azure 'da sanal makine boyutları](sizes.md).
 
 | | **IOPS** | **İşleme hızı** | **Gecikme süresi** |
 | --- | --- | --- | --- |
@@ -206,7 +206,7 @@ Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işleti
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Yerel SSD = 224 GB |32 |576 GB |50.000 ıOPS <br> saniyede 512 MB |4.000 ıOPS ve 33 MB/saniye |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Yerel SSD = 896 GB |64 |4224 GB |80.000 ıOPS <br> saniyede 2.000 MB |5.000 ıOPS ve 50 MB/saniye |
 
-Tüm kullanılabilir Azure VM boyutlarının tüm listesini görüntülemek için [WINDOWS VM boyutları](~/articles/virtual-machines/windows/sizes.md) veya [Linux VM boyutları](~/articles/virtual-machines/linux/sizes.md)' na bakın. İstenen uygulama performansı gereksinimlerinize uyan ve ölçeklendirebilen bir VM boyutu seçin. Buna ek olarak, VM boyutlarını seçerken önemli noktalara göz atın.
+Tüm kullanılabilir Azure VM boyutlarının listesini görüntülemek için, [Azure 'da sanal makineler Için boyutlara](sizes.md) bakın. İstenen uygulama performansı gereksinimlerinize uyan ve ölçeklendirebilen bir VM boyutu seçin. Buna ek olarak, VM boyutlarını seçerken önemli noktalara göz atın.
 
 *Ölçek sınırları*  
 VM başına en fazla ıOPS sınırı ve disk başına her ikisi birbirinden farklıdır. Uygulamanın ıOPS 'yi VM sınırları içinde ve ona bağlı olan Premium disklere yönlendirdiğinden emin olun. Aksi takdirde, uygulama performansı azaltma deneyimidir.
@@ -238,7 +238,7 @@ Linux 'u Premium Depolama ile çalıştırırken, yüksek performans sağlamak i
 
 Azure Premium Depolama, gereksinimlerinize en uygun olanı seçebilmeniz için çeşitli boyutlarda bir boyut sunar. Her disk boyutunun ıOPS, bant genişliği ve depolama için farklı ölçek sınırı vardır. Uygulama gereksinimlerine ve yüksek ölçekli VM boyutuna bağlı olarak doğru Premium Depolama diski boyutunu seçin. Aşağıdaki tabloda, disklerin boyutları ve özellikleri gösterilmektedir. P4, P6, P15, P60, P70 ve P80 boyutları şu anda yalnızca yönetilen diskler için desteklenmektedir.
 
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Kaç disk seçtiğiniz disk boyutuna bağlıdır. Uygulamanızın gereksinimini karşılamak için tek bir P50 disk veya birden çok P10 diski kullanabilirsiniz. Seçim yaparken aşağıda listelenen hesaba göz atın.
 
@@ -279,7 +279,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
@@ -353,14 +353,14 @@ Windows 'ta, diskleri birleştirmek için depolama alanlarını kullanabilirsini
 
 Önemli: Sunucu Yöneticisi Kullanıcı arabirimini kullanarak, şeritli bir birim için toplam sütun sayısını 8 ' e kadar ayarlayabilirsiniz. Sekiz ' dan fazla disk iliştirirken, birimi oluşturmak için PowerShell kullanın. PowerShell 'i kullanarak, sütun sayısını disk sayısına eşit olarak ayarlayabilirsiniz. Örneğin, tek bir Stripe kümesinde 16 disk varsa; *New-VirtualDisk* PowerShell cmdlet 'Inin *numberofcolumns* parametresinde 16 sütun belirtin.
 
-Linux 'ta, disk birleştirmek için MDADDM yardımcı programını kullanın. Linux 'ta diskleri şeritleme hakkında ayrıntılı adımlar için [bkz. Linux 'Ta yazılım RAID yapılandırma](~/articles/virtual-machines/linux/configure-raid.md).
+Linux 'ta, disk birleştirmek için MDADDM yardımcı programını kullanın. Linux 'ta diskleri şeritleme hakkında ayrıntılı adımlar için [bkz. Linux 'Ta yazılım RAID yapılandırma](linux/configure-raid.md).
 
 *Şerit boyutu*  
 Disk şeridi oluşturma bölümünde önemli bir yapılandırma, şerit boyutudur. Şerit boyutu veya blok boyutu, uygulamanın dizili bir birimde adresebilen en küçük veri öbektir. Yapılandırdığınız Stripe boyutu, uygulamanın türüne ve istek düzenine bağlıdır. Yanlış Stripe boyutunu seçerseniz, GÇ hizalanmasına neden olabilir ve bu da uygulamanızın performansının düşmesine yol açar.
 
 Örneğin, uygulamanız tarafından oluşturulan bir GÇ isteği disk Stripe boyutundan büyükse, depolama sistemi bu dosyayı birden fazla diskte dizili birim sınırlarına yazar. Bu verilere erişmek için zaman olduğunda, isteği tamamlaması için birden fazla Stripe biriminde arama yapmak gerekir. Bu davranışın birikimli etkisi önemli performans düşüşüne neden olabilir. Öte yandan, GÇ istek boyutu Stripe boyutundan küçükse ve doğası halinde rastgele ise, GÇ istekleri aynı disk üzerinde bir performans sorununa neden olabilir ve sonuç olarak GÇ performansını düşürür.
 
-Uygulamanızın çalıştırıldığı iş yükünün türüne bağlı olarak uygun bir şerit boyutu seçin. Rastgele küçük GÇ istekleri için daha küçük bir şerit boyutu kullanın. Öte yandan, büyük sıralı GÇ istekleri için daha büyük bir şerit boyutu kullanır. Premium depolama alanında çalıştırdığınız uygulamanın Stripe boyut önerilerini bulun. SQL Server için, OLTP iş yükleri için 64 KB 'lık şeritli boyut ve veri ambarı iş yükleri için 256 KB yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server için En Iyi performans uygulamaları](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
+Uygulamanızın çalıştırıldığı iş yükünün türüne bağlı olarak uygun bir şerit boyutu seçin. Rastgele küçük GÇ istekleri için daha küçük bir şerit boyutu kullanın. Öte yandan, büyük sıralı GÇ istekleri için daha büyük bir şerit boyutu kullanır. Premium depolama alanında çalıştırdığınız uygulamanın Stripe boyut önerilerini bulun. SQL Server için, OLTP iş yükleri için 64 KB 'lık şeritli boyut ve veri ambarı iş yükleri için 256 KB yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server için En Iyi performans uygulamaları](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > Bir DS serisi VM 'de en fazla 32 Premium Depolama diski ve bir GS serisi VM 'de 64 Premium Depolama diski ekleyebilirsiniz.
@@ -414,15 +414,15 @@ Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre 
 
 Diskinizin kıyaslanmaya bakıyorsanız, bir diski sınama hakkında makalelerimize bakın:
 
-* Linux için: [Azure disk depolama uygulamanızı kıyaslama](./linux/disks-benchmarks.md)
-* Windows için: [diski sınama](./windows/disks-benchmarks.md).
+* Linux için: [Azure disk depolama uygulamanızı kıyaslama](linux/disks-benchmarks.md)
+* Windows için: [diski sınama](windows/disks-benchmarks.md).
 
 Kullanılabilir disk türleri hakkında daha fazla bilgi edinin:
 
-* Linux için: [bir disk türü seçin](./linux/disks-types.md)
-* Windows için: [bir disk türü seçin](./windows//disks-types.md)
+* Linux için: [bir disk türü seçin](disks-types.md)
+* Windows için: [bir disk türü seçin](disks-types.md)
 
 SQL Server kullanıcılar için SQL Server performans En Iyi yöntemleri hakkında makaleleri okuyun:
 
-* [Azure sanal makineler 'de SQL Server için En Iyi performans uygulamaları](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Azure sanal makineler 'de SQL Server için En Iyi performans uygulamaları](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure Premium Depolama, Azure VM 'de SQL Server için en yüksek performansı sağlar](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

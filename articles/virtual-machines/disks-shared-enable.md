@@ -4,16 +4,16 @@ description: Birden çok VM arasında paylaşabileceğiniz bir Azure yönetilen 
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f6b34cd93dcfabee2974bea5cf57258527df94d7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701659"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752025"
 ---
 # <a name="enable-shared-disk"></a>Paylaşılan diski etkinleştirme
 
@@ -21,21 +21,21 @@ Bu makalede, Azure yönetilen diskler için paylaşılan diskler özelliğinin n
 
 Paylaşılan diskler etkinleştirilmiş yönetilen diskler hakkında kavramsal bilgiler arıyorsanız, bkz:
 
-* Linux için: [Azure Paylaşılan diskleri](./linux/disks-shared.md)
+* Linux için: [Azure Paylaşılan diskleri](linux/disks-shared.md)
 
-* Windows için: [Azure paylaşılan diskler](./windows/disks-shared.md)
+* Windows için: [Azure paylaşılan diskler](windows/disks-shared.md)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-[!INCLUDE [virtual-machines-disks-shared-limitations](~/includes/virtual-machines-disks-shared-limitations.md)]
+[!INCLUDE [virtual-machines-disks-shared-limitations](../../includes/virtual-machines-disks-shared-limitations.md)]
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Paylaşılan diskler çeşitli işletim sistemlerini destekler. Desteklenen işletim sistemleri için kavramsal makalenin [Windows](~/articles/virtual-machines/windows/disks-shared.md#windows) ve [Linux](~/articles/virtual-machines/linux/disks-shared.md#linux) bölümlerine bakın.
+Paylaşılan diskler çeşitli işletim sistemlerini destekler. Desteklenen işletim sistemleri için kavramsal makalenin [Windows](windows/disks-shared.md#windows) ve [Linux](linux/disks-shared.md#linux) bölümlerine bakın.
 
 ## <a name="disk-sizes"></a>Disk boyutları
 
-[!INCLUDE [virtual-machines-disks-shared-sizes](~/includes/virtual-machines-disks-shared-sizes.md)]
+[!INCLUDE [virtual-machines-disks-shared-sizes](../../includes/virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Paylaşılan diskleri dağıtma
 
@@ -147,7 +147,7 @@ Aşağıdaki şablonu kullanmadan önce,,,,,, `[parameters('dataDiskName')]` `[r
 İle paylaşılan bir disk dağıttıktan sonra `maxShares>1` , diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
 
 > [!NOTE]
-> Bir ultra disk dağıtıyorsanız, gerekli gereksinimlerle eşleştiğinden emin olun. Ayrıntılar için bkz. Ultra disk makalesinin [PowerShell](~/articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) veya [CLI](~/articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) bölümü.
+> Bir ultra disk dağıtıyorsanız, gerekli gereksinimlerle eşleştiğinden emin olun. Ayrıntılar için bkz. Ultra disk makalesinin [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) veya [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) bölümü.
 
 ```azurepowershell-interactive
 

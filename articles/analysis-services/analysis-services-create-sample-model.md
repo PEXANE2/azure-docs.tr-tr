@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83697512"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
@@ -22,7 +22,7 @@ Bu öğreticide, sunucunuza örnek Adventure Works tablolu model veritabanını 
 > * Sunucuya tamamlanmış bir örnek tablolu veri modeli ekleme 
 > * SSMS ile modele bağlanma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -73,6 +73,6 @@ Bu adımlarda, SSMS kullanarak sunucudan modelin nasıl silineceği açıklanır
 Bu öğreticide, sunucunuza temel bir örnek model eklemeyi öğrendiniz. Artık bir model veritabanınız olduğuna göre, SQL Server Management Studio'dan bu veritabanına bağlanabilir ve kullanıcı rollerini ekleyebilirsiniz. Daha fazla bilgi edinmek için sonraki öğreticiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma](tutorials/analysis-services-tutorial-roles.md)
+> [Öğretici: Sunucu yönetici ve kullanıcı rollerini yapılandırma](tutorials/analysis-services-tutorial-roles.md)
 
 

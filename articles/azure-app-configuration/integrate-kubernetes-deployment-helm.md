@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
 ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83725678"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Held kullanarak Kubernetes dağıtımıyla tümleştirin
@@ -23,7 +23,7 @@ Yayın işlemi sırasında, HELI uygulamayı çalıştırmak için uygun yapıla
 
 Held çalıştırırken komut satırına ek YAML tabanlı yapılandırma dosyaları sağlayarak *values. YAML* içinde depolanan değerleri geçersiz kılabilirsiniz. Azure Uygulama yapılandırması, yapılandırma değerlerinin YAML dosyalarına verilmesini destekler. Bu dışarı aktarma özelliğinin dağıtımınız ile tümleştirilmesi, Kubernetes uygulamalarınızın uygulama yapılandırmasında depolanan yapılandırma değerlerinden yararlanmasını sağlar.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Held kullanarak Kubernetes 'e uygulama dağıttığınızda uygulama yapılandırmasındaki değerleri kullanın.
 > * Uygulama yapılandırmasındaki bir Key Vault başvurusunu temel alarak bir Kubernetes gizli dizisi oluşturun.

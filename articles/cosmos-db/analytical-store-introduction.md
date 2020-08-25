@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037108"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795873"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
@@ -123,7 +123,7 @@ Analitik depolama sistemi analitik işlem sisteminden ayrıldıktan sonra, Azure
 > [!NOTE]
 > Yalnızca SYNAPSE Analytics çalışma zamanını kullanarak analitik depodan okuyabilirsiniz. Verileri işlem deponuza bir hizmet katmanı olarak geri yazabilirsiniz.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a>Fiyat
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Fiyat
 
 Analitik mağaza, ücretlendirilebilen tüketim tabanlı bir fiyatlandırma modeli izler:
 
@@ -134,17 +134,17 @@ Analitik mağaza, ücretlendirilebilen tüketim tabanlı bir fiyatlandırma mode
 * Analitik okuma işlemleri: SYNAPSE Analytics Spark ve SQL sunucusuz çalışma süreleriyle analitik depoya karşı gerçekleştirilen okuma işlemleri.
 
 > [!NOTE]
-> Azure Cosmos DB analitik mağaza, 30 Ağustos 2020 ' a kadar tüm ücretlerden ücretsiz olarak sunulmaktadır.
+> Azure Cosmos DB analitik depolama Şu anda herhangi bir ücretden ücretsiz olarak genel önizlemede kullanılabilir.
 
 Analitik mağaza fiyatlandırması, işlem Mağazası fiyatlandırma modelinden ayrıdır. Analitik depoda sağlanan RUs kavramı yoktur. Analitik mağaza için fiyatlandırma modeliyle ilgili tüm ayrıntılar için bkz. [Azure Cosmos DB fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 Azure Cosmos DB kapsayıcısında analitik depolamayı etkinleştirmek üzere yüksek düzeyde bir maliyet tahmini almak için, [Azure Cosmos DB kapasite planlayıcısını](https://cosmos.azure.com/capacitycalculator/) kullanabilir ve analitik depolama ve yazma işlemleri maliyetlerinizin bir tahminini alabilirsiniz. Analitik okuma işlemleri, analiz iş yükü özelliklerine bağlıdır, ancak üst düzey bir tahmin olarak, analitik depoda 1 TB 'lık verilerin taranması genellikle 130.000 analitik okuma işlemlerine neden olur ve maliyeti $0,065 ile sonuçlanır.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analitik yaşam süresi (TTL)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analitik yaşam süresi (TTL)
 
 Analiz TTL değeri, bir kapsayıcı için verilerin analiz deponuzda ne kadar süreyle tutulacağını belirtir. 
 
-İşletimsel verileri ekleme, güncelleştirme, silme, işlem TTL yapılandırmasından bağımsız olarak, işlem deposundan otomatik olarak analitik depoya eşitlenir. Bu işletimsel verileri analitik depoda bekletme, aşağıda belirtildiği gibi, kapsayıcı düzeyindeki analitik TTL değeri tarafından denetlenebilir:
+Analitik depo etkinleştirilmişse, işlem TTL yapılandırmasından bağımsız olarak, işlem verileri ekleme, güncelleştirme ve silme işlemi, işlemsel depodan analitik depoya otomatik olarak eşitlenir. Bu işletimsel verileri analitik depoda bekletme, aşağıda belirtildiği gibi, kapsayıcı düzeyindeki analitik TTL değeri tarafından denetlenebilir:
 
 Bir kapsayıcıda analitik TTL, özelliği kullanılarak ayarlanır `AnalyticalStoreTimeToLiveInSeconds` :
 
@@ -152,7 +152,7 @@ Bir kapsayıcıda analitik TTL, özelliği kullanılarak ayarlanır `AnalyticalS
 
 * Varsa ve değer "-1" olarak ayarlandıysa, analitik mağaza verilerin işlem deposunda saklanması ne olursa olsun tüm geçmiş verilerini korur. Bu ayar, analitik deponun işletimsel verilerinizin sonsuz bir şekilde bekletildiğini belirtir
 
-* Varsa ve değer bazı pozitif bir sayıya ayarlanırsa "n": öğelerin, işlem deposunda son değiştirilme zamanından sonraki "n" saniye içinde süresi dolacak. Bu ayar, işlemsel depodaki verilerin saklama zamanından bağımsız olarak, işletimsel verilerinizi analitik depoda sınırlı bir süre boyunca saklamak istiyorsanız yararlanılabilir olabilir.
+* Varsa ve değer bazı pozitif bir sayıya ayarlanırsa "n": öğelerin, işlem deposunda son değiştirilme zamanından sonraki "n" saniye içinde süresi dolacak. İşlemsel depodaki verilerin saklanması ne olursa olsun, işletimsel verilerinizi analitik depoda sınırlı bir süre boyunca saklamak isterseniz, bu ayar yararlanılabilir olabilir
 
 Dikkat edilmesi gereken bazı noktalar:
 *   Analitik depo bir analitik TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncelleştirilebilen olabilir. 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008806"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752090"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -81,17 +81,17 @@ AKS Ubuntu 16,04 görüntüsüyle düğüm havuzları oluşturmak istiyorsanız,
 
 Kapsayıcı çalışma zamanı, kapsayıcıları yürüten ve bir düğümdeki kapsayıcı görüntülerini yöneten yazılımdır. Çalışma zamanı,, Linux veya Windows üzerinde kapsayıcıları çalıştırmak için, özel sys çağrıları veya işletim sistemi (OS) işlevine özgü işlevselliğin sağlanmasına yardımcı olur. Bugün AKS, kapsayıcı çalışma zamanı olarak [Moby](https://mobyproject.org/) (yukarı akış Docker) kullanıyor. 
     
-![Docker CRı](media/cluster-configuration/docker-cri.png)
+![Docker CRı 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/), kapsayıcıları yürütmek ve bir düğümdeki görüntüleri yönetmek için gereken minimum işlev kümesini sağlayan bir [OCI](https://opencontainers.org/) (açık kapsayıcı girişimi) ile uyumlu bir çekirdek kapsayıcı çalışma zamanı. , Mart 2017 ' de Cloud Native COMPUTE Foundation 'a (CNCF) [bağlandı](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . AKS 'in bugün kullandığı güncel Moby sürümü, `containerd` yukarıda gösterildiği gibi, üzerine kurulmuştur ve üzerinde yerleşiktir. 
+[`Containerd`](https://containerd.io/) , kapsayıcıları yürütmek ve bir düğümdeki görüntüleri yönetmek için gereken minimum işlev kümesini sağlayan bir [OCI](https://opencontainers.org/) (açık kapsayıcı girişimi) ile uyumlu bir çekirdek kapsayıcı çalışma zamanı. , Mart 2017 ' de Cloud Native COMPUTE Foundation 'a (CNCF) [bağlandı](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . AKS 'in bugün kullandığı güncel Moby sürümü, `containerd` yukarıda gösterildiği gibi, üzerine kurulmuştur ve üzerinde yerleşiktir. 
 
 Bir containerd tabanlı düğüm ve düğüm havuzları ile konuşmak yerine, `dockershim` kubelet, `containerd` DOCKER cri uygulamasıyla karşılaştırıldığında akıştaki ek atlamaları kaldırarak doğrudan CRI (container Runtime Interface) eklentisi aracılığıyla konuşuyor. Bu nedenle, daha iyi Pod başlangıç gecikmesi ve daha az kaynak (CPU ve bellek) kullanımı görürsünüz.
 
 `containerd`AKS düğümleri için kullanarak, Pod başlangıç gecikmesi artar ve kapsayıcı çalışma zamanına göre düğüm kaynak tüketimi azalır. Bu geliştirmeler, kubelet 'in, `containerd` Moby/Docker mimarisi kuı eklentisini kullanarak doğrudan CRI eklentisi aracılığıyla konuştukça, bu yeni mimari tarafından etkinleştirilir `dockershim` ve bu `containerd` sayede akışta ek atlamaları vardır.
 
-![Docker CRı](media/cluster-configuration/containerd-cri.png)
+![Docker CRı 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd`AKS 'deki Kubernetes 'in her bir GA sürümünde ve v 1,10 üzerindeki her yukarı akış Kubernetes sürümünde çalışarak, tüm Kubernetes ve AKS özelliklerini destekler.
+`Containerd` AKS 'deki Kubernetes 'in her bir GA sürümünde ve v 1,10 üzerindeki her yukarı akış Kubernetes sürümünde çalışarak, tüm Kubernetes ve AKS özelliklerini destekler.
 
 > [!IMPORTANT]
 > `containerd`AKS üzerinde genel kullanıma sunulduğunda, yeni kümelerde kapsayıcı çalışma zamanı için varsayılan ve tek seçeneği kullanılabilir. Moby nodepools ve kümelerini kullanmaya devam edebilirsiniz, ancak bu, destek düşene kadar desteklenen eski sürümlerde. 
@@ -159,14 +159,14 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 Moby (Docker) çalışma zamanı ile düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
 
 
-### <a name="containerd-limitationsdifferences"></a>`Containerd`sınırlamalar/farklar
+### <a name="containerd-limitationsdifferences"></a>`Containerd` sınırlamalar/farklar
 
 * `containerd`Kapsayıcı çalışma zamanı olarak kullanmak için, temel işletim sistemi görüntünüz olarak AKS Ubuntu 18,04 kullanmanız gerekir.
 * Docker araç takımı düğümlerde hala mevcut olsa da, Kubernetes `containerd` kapsayıcı çalışma zamanı olarak kullanır. Bu nedenle, Moby/Docker düğümlerde Kubernetes tarafından oluşturulan kapsayıcıları yönetmediğinden Docker komutlarını (gibi `docker ps` ) veya Docker API 'sini kullanarak Kapsayıcılarınızı görüntüleyemez veya bunlarla etkileşime giremezseniz.
 * İçin `containerd` , [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) Kubernetes düğümlerinde (örneğin,) pods, kapsayıcılar ve kapsayıcı görüntüleri **sorunlarını gidermeye** yönelik Docker CLI yerine değiştirme CLI olarak kullanmanızı öneririz `crictl ps` . 
    * Docker CLı 'nin bütün işlevlerini sağlamaz. Yalnızca sorun gidermeye yöneliktir.
-   * `crictl`, pods gibi kavramların yanı sıra mevcut olan kapsayıcıların daha fazla Kubernetes görünümünü sunar.
-* `Containerd`standartlaştırılmış günlük biçimini kullanarak günlük kaydı yapar `cri` (Şu anda Docker 'ın JSON sürücüsünden aldığınız verilerden farklıdır). Günlük çözümünüzün `cri` günlük biçimini desteklemesi gerekir ( [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-enable-new-cluster.md)gibi)
+   * `crictl` , pods gibi kavramların yanı sıra mevcut olan kapsayıcıların daha fazla Kubernetes görünümünü sunar.
+* `Containerd` standartlaştırılmış günlük biçimini kullanarak günlük kaydı yapar `cri` (Şu anda Docker 'ın JSON sürücüsünden aldığınız verilerden farklıdır). Günlük çözümünüzün `cri` günlük biçimini desteklemesi gerekir ( [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-enable-new-cluster.md)gibi)
 * Artık Docker altyapısına erişemez veya Docker- `/var/run/docker.sock` ın-Docker (Dintıd) kullanabilirsiniz.
   * Şu anda Docker altyapısından uygulama günlükleri veya izleme verileri ayıklandıysanız, lütfen bunun yerine [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-enable-new-cluster.md) gibi bir şey kullanın. Ayrıca AKS, kararsızlığa neden olabilecek aracı düğümlerinde bant dışı komutların çalıştırılmasını desteklemez.
   * Moby/Docker kullanırken, görüntülerin oluşturulması ve yukarıdaki yöntemler aracılığıyla Docker altyapısının doğrudan kullanılmasıyla kesinlikle önerilmez. Kubernetes, bu tüketilen kaynakların tamamen farkında değildir ve bu yaklaşımlar [burada](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) [ve burada ayrıntılı olarak ayrıntılı](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)bir şekilde ortaya bulunur.
@@ -236,7 +236,7 @@ Normal Gen1 düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayar
 
 ## <a name="ephemeral-os-preview"></a>Kısa ömürlü işletim sistemi (Önizleme)
 
-Varsayılan olarak, bir Azure sanal makinesi için işletim sistemi diski, sanal makinenin başka bir konağa yeniden konumlandırılması gereken veri kaybını önlemek için Azure depolama 'ya otomatik olarak çoğaltılır. Ancak, kapsayıcılar yerel durumunun kalıcı olmasını sağlayacak şekilde tasarlanmadığından, bu davranış, daha yavaş düğüm sağlama ve daha düşük okuma/yazma gecikme süresi dahil olmak üzere bazı dezavantajları sağlarken sınırlı bir değer sunar.
+Varsayılan olarak, bir Azure sanal makinesi için işletim sistemi diski, sanal makinenin başka bir konağa yeniden konumlandırılması gereken veri kaybını önlemek için Azure depolama 'ya otomatik olarak çoğaltılır. Ancak, kapsayıcılar yerel durumunun kalıcı olmasını sağlayacak şekilde tasarlanmadığından, bu davranış, daha yavaş düğüm sağlama ve daha yüksek okuma/yazma gecikme süresi dahil olmak üzere bazı dezavantajları sağlarken sınırlı bir değer sunar.
 
 Bunun aksine, kısa ömürlü işletim sistemi diskleri yalnızca, geçici bir disk gibi yalnızca ana makine üzerinde depolanır. Bu, daha hızlı okuma/yazma gecikmesi sağlar ve daha hızlı düğüm ölçekleme ve küme yükseltmeleriyle birlikte.
 

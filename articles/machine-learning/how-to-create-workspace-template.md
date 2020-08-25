@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192336"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751705"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -165,158 +165,50 @@ Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md
 
 > [!IMPORTANT]
 > Bu şablonu kullanmadan önce aboneliğinizin karşılaması gereken bazı özel gereksinimler vardır:
->
-> * __Azure Machine Learning__ uygulaması Azure aboneliğiniz için __katkıda bulunan__ olmalıdır.
 > * Şifreleme anahtarı içeren bir Azure Key Vault var olmalıdır.
-> * __Azure Cosmos DB__ uygulamasına __Get__, __Wrap__ve __sarmalama__ erişimini sağlayan Azure Key Vault bir erişim ilkeniz olması gerekir.
 > * Azure Key Vault, Azure Machine Learning çalışma alanını oluşturmayı planladığınız bölgede olmalıdır.
+> * Azure Key Vault KIMLIĞINI ve şifreleme anahtarının URI 'sini belirtmeniz gerekir.
 
-__Azure Machine Learning uygulamayı katkıda bulunan olarak eklemek için__aşağıdaki komutları kullanın:
+__To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:    
 
-1. Azure hesabınızda oturum açın ve abonelik KIMLIĞINIZI alın. Bu abonelik, Azure Machine Learning çalışma alanınızı içeren bir aynı olmalıdır.  
+1. Key Vault KIMLIĞI almak için aşağıdaki komutu kullanın:  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > Başka bir abonelik seçmek için komutunu kullanın `az account set -s <subscription name or ID>` ve geçiş yapılacak abonelik adını veya kimliğini belirtin. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > Başka bir abonelik seçmek için komutunu kullanın `Az-SetContext -SubscriptionId <subscription ID>` ve geçiş yapılacak abonelik adını veya kimliğini belirtin. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
-
-    ---
-
-1. Azure Machine Learning uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    Bu komut, GUID olan nesne KIMLIĞINI döndürür.
-
-1. Aboneliğinize katkıda bulunan nesne KIMLIĞINI eklemek için aşağıdaki komutu kullanın. `<object-ID>`Hizmet sorumlusunun nesne kimliğiyle değiştirin. `<subscription-ID>`Azure aboneliğinizin adı veya kimliğiyle değiştirin:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. Mevcut bir Azure Key Vault bir anahtar oluşturmak için aşağıdaki komutlardan birini kullanın. `<keyvault-name>`Anahtar kasasının adıyla değiştirin. `<key-name>`Anahtar için kullanılacak adla değiştirin:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-__Anahtar kasasına bir erişim ilkesi eklemek için aşağıdaki komutları kullanın__:
+    Bu komut şuna benzer bir değer döndürür `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .  
 
-1. Azure Cosmos DB uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
+1. Müşteri tarafından yönetilen anahtar için URI değerini almak üzere aşağıdaki komutu kullanın:    
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    Bu komut, GUID olan nesne KIMLIĞINI döndürür. Daha sonra Kaydet
+    Bu komut şuna benzer bir değer döndürür `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` . 
 
-1. İlkeyi ayarlamak için aşağıdaki komutu kullanın. `<keyvault-name>`Varolan Azure Key Vault adıyla değiştirin. `<object-ID>`Önceki ADıMDAN GUID ile değiştirin:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-__To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:
-
-1. Key Vault KIMLIĞI almak için aşağıdaki komutu kullanın:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    Bu komut şuna benzer bir değer döndürür `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
-
-1. Müşteri tarafından yönetilen anahtar için URI değerini almak üzere aşağıdaki komutu kullanın:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    Bu komut şuna benzer bir değer döndürür `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
-Yukarıdaki adımları başarılı bir şekilde tamamladıktan sonra, şablonunuzu normalde yaptığınız gibi dağıtın. Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için aşağıdaki parametreleri ayarlayın:
+Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için, şablonu dağıttığınızda aşağıdaki parametreleri ayarlayın:
 
 * **Encryption_status** **etkin**.
 * **cmk_keyvault** `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
@@ -648,7 +540,7 @@ New-AzResourceGroupDeployment `
    * Bölge: kaynakların oluşturulacağı Azure bölgesini seçin.
    * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konum: kaynakların oluşturulacağı konumu seçin.
-1. __İncele ve oluştur__’u seçin.
+1. __Gözden geçir + oluştur__’u seçin.
 1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__' u seçin.
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).

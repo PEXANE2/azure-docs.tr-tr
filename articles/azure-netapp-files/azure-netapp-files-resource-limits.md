@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006681"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752303"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -31,10 +31,10 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 
 |  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
-|  NetApp hesabı başına birim sayısı   |    500     |   Yes   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
+|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Evet   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
+|  Abonelik başına birim sayısı   |    500     |   Evet   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
 |  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
 |  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
@@ -44,11 +44,11 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
 |  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
 |  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 
-## <a name="maxfiles-limits"></a>Maxfiles limitleri<a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Maxfiles limitleri <a name="maxfiles"></a> 
 
 Azure NetApp Files birimlerde *maxfiles*adlı bir sınır vardır. Maxfiles sınırı, bir birimin içerebileceği dosya sayısıdır. Bir Azure NetApp Files birimi için maxfiles limiti, birimin boyutuna (Kota) göre dizinlenir. Bir birim için maxfiles sınırı, sağlanan birim boyutu başına 20.000.000 dosya hızında artar veya azalır. 
 
@@ -64,7 +64,7 @@ Hizmet, bir birimin sağlanan boyutuna bağlı olarak maxfiles sınırını dina
 
 Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz.
 
-## <a name="request-limit-increase"></a>İstek sınırı artışı<a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>İstek sınırı artışı <a name="limit_increase"></a> 
 
 Yukarıdaki tablodan ayarlanabilir sınırları artırmak için bir Azure destek isteği oluşturabilirsiniz. 
 
@@ -80,7 +80,7 @@ Azure portal gezinti düzleminden:
 4. Ayrıntılar sekmesinde:
     1. Açıklama kutusunda, ilgili kaynak türü için aşağıdaki bilgileri sağlayın:
 
-        |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışı nedeni       |
+        |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışının nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Hesap |  *Abonelik kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |

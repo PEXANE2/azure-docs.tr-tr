@@ -3,18 +3,18 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: VMware tarafından Azure 'da VMware çözümünde Azure VMware yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906998"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752283"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü (AVS) önizleme özel bulut ve küme kavramları
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Çözüm önizleme özel bulut ve küme kavramları
 
-Azure VMware çözümü (AVS), Azure 'da VMware tabanlı özel bulutlar sunar. Özel bulutlar adanmış çıplak konaklar kümelerinden oluşturulmuştur ve Azure portal aracılığıyla dağıtılır ve yönetilir. Özel bulutlarda kümeler VMware vSphere, vCenter, vSAN ve NSX yazılımıyla birlikte sağlanır. AVS özel bulut donanımı ve yazılım dağıtımları, Azure 'da tamamen tümleşiktir ve otomatikleştirilir.
+Azure VMware çözümü, Azure 'da VMware tabanlı özel bulutlar sunar. Özel bulutlar adanmış çıplak konaklar kümelerinden oluşturulmuştur ve Azure portal aracılığıyla dağıtılır ve yönetilir. Özel bulutlarda kümeler VMware vSphere, vCenter, vSAN ve NSX yazılımıyla birlikte sağlanır. Azure VMware çözümü özel bulut donanımı ve yazılım dağıtımları, Azure 'da tamamen tümleşiktir ve otomatikleştirilir.
 
-Azure abonelikleri, AVS özel bulutlar, vSAN kümeleri ve konaklar arasında mantıksal bir ilişki vardır. Diyagramda, tek bir Azure aboneliğindeki iki özel bulut gösterilir. Özel bulutlar, her biri kendi özel bulutuyla birlikte bir geliştirme ve üretim ortamını temsil eder. Bu özel bulutların her birinde iki küme vardır. Bir geliştirme ortamının olası en düşük ihtiyaçlarını göstermek için, daha düşük kapasite Konakları olan küçük kümeler kullanılır. Bu kavramların tümü aşağıdaki bölümlerde açıklanmıştır.
+Azure abonelikleri, Azure VMware çözümü özel bulutlar, vSAN kümeleri ve konaklar arasında mantıksal bir ilişki vardır. Diyagramda, tek bir Azure aboneliğindeki iki özel bulut gösterilir. Özel bulutlar, her biri kendi özel bulutuyla birlikte bir geliştirme ve üretim ortamını temsil eder. Bu özel bulutların her birinde iki küme vardır. Bir geliştirme ortamının olası en düşük ihtiyaçlarını göstermek için, daha düşük kapasite Konakları olan küçük kümeler kullanılır. Bu kavramların tümü aşağıdaki bölümlerde açıklanmıştır.
 
 ![Bir müşteri aboneliğinde iki özel bulutun görüntüsü](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ Portal veya API aracılığıyla küme oluşturur, siler ve ölçeklendirebilirs
 
 ## <a name="hosts"></a>Ana bilgisayarlar
 
-Hiper yakınsama, çıplak altyapı düğümleri, AVS özel bulut kümelerinde kullanılır. Konağın RAM, CPU ve disk kapasiteleri aşağıdaki tabloda verilmiştir. 
+Hiper yakınsama, çıplak altyapı düğümleri Azure VMware Çözüm özel bulut kümelerinde kullanılır. Konağın RAM, CPU ve disk kapasiteleri aşağıdaki tabloda verilmiştir. 
 
 | Ana Bilgisayar Türü              |             CPU             |   RAM (GB)   |  vSAN NVMe önbellek katmanı (TB, RAW)  |  vSAN SSD kapasite katmanı (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,7 +44,7 @@ Kümeleri derlemek veya ölçeklendirmek için kullanılan konaklar, yalıtılm�
 
 ## <a name="vmware-software-versions"></a>VMware yazılım sürümleri
 
-AVS özel bulut kümelerinde kullanılan VMware yazılımının geçerli yazılım sürümleri şunlardır:
+Azure VMware çözümü özel bulut kümelerinde kullanılan VMware yazılımının geçerli yazılım sürümleri şunlardır:
 
 | Yazılım              |    Sürüm   |
 | :---                  |     :---:    |
@@ -55,16 +55,16 @@ AVS özel bulut kümelerinde kullanılan VMware yazılımının geçerli yazıl�
 
 Özel buluttaki herhangi bir yeni küme için, yazılımın sürümü şu anda özel bulutta çalışmakta olan ile eşleşmeyecektir. Bir müşteri aboneliğinde yeni bir özel bulut için, yazılım yığınının en son sürümü yüklenir.
 
-AVS platformu yazılımının genel yükseltme ilkeleri ve işlemleri, yükseltmeler kavramları belgesinde açıklanır.
+Azure VMware çözüm platformu yazılımının genel yükseltme ilkeleri ve işlemleri, yükseltmeler kavramları belgesinde açıklanır.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Konak bakımı ve yaşam döngüsü yönetimi
 
 Konak bakımı ve yaşam döngüsü yönetimi, özel bulut kümelerinin kapasitesine veya performansına etkilenmeden yapılır. Otomatik ana bilgisayar bakımı örnekleri, bellenim yükseltmeleri ve donanım onarımı ya da değişikliği içerir.
 
-Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. AVS özel bulutunuzun Yöneticisi olarak ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler gibi NSX-T SDN yapılandırmasından sorumlusunuz.
+Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. Azure VMware Çözüm özel bulutunuzun Yöneticisi olarak ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler gibi NSX-T SDN yapılandırmasından sorumludur.
 
 > [!IMPORTANT]
-> Bir AVS Yöneticisi NSX-T Edge veya Katman-0 ağ geçidi yapılandırmasını değiştirmemelidir. Bu durum hizmet kaybına neden olabilir.
+> Azure VMware Çözüm Yöneticisi NSX-T Edge veya Katman-0 ağ geçidinin yapılandırmasını değiştirmemelidir. Bu durum hizmet kaybına neden olabilir.
 
 ## <a name="backup-and-restoration"></a>Yedekleme ve geri yükleme
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475796"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795907"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 'de yönetim birimleri yönetimi (Önizleme)
 
@@ -47,8 +47,8 @@ Yönetim birimlerinin kullanılması için her yönetim birimi Yöneticisi için
 Bu önizleme sürümünde, yönetim birimlerini Azure portal, PowerShell cmdlet 'lerini ve betikleri veya Microsoft Graph kullanarak yönetebilirsiniz. Ayrıntılar için belgelerimize başvurabilirsiniz:
 
 - [Yönetim birimlerine roller oluşturma, kaldırma, doldurma ve ekleme](roles-admin-units-manage.md): nasıl yapılır yordamlarını doldurun
-- [Yönetici birimleriyle çalışma](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): PowerShell kullanarak yönetim birimleriyle çalışma
-- [Yönetim birimi grafik desteği](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
+- [Yönetici birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): PowerShell kullanarak yönetim birimleriyle çalışma
+- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-beta): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
 
 ### <a name="planning-your-administrative-units"></a>Yönetim birimlerinizi planlama
 

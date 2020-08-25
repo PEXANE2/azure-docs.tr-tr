@@ -1,14 +1,14 @@
 ---
 title: Sanal makinelerin olağanüstü durum kurtarmasını tamamlanma
-description: Bu makalede, AVS kullanılarak sanal makinelerin olağanüstü durum kurtarmasının nasıl tamamlanacağı gösterilmektedir
+description: Bu makalede, Azure VMware çözümü kullanılarak sanal makinelerin olağanüstü durum kurtarmasının nasıl tamamlanacağı gösterilmektedir
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749945"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752273"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware çözümünü kullanarak sanal makinelerin olağanüstü durum kurtarmasını tamamlanma
 
@@ -46,7 +46,7 @@ Kaynak sitede **vSphere istemcisinde** oturum açın ve **HCX eklentisine**eriş
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="VM 'leri koru seçeneğini belirleyin" border="true":::
 
-Açılan pencerede kaynağı ve uzak siteleri seçin, bu durumda uzak site, AVS özel bulutu olmalıdır.
+Açılan pencerede kaynağı ve uzak siteleri seçin, bu durumda uzak site Azure VMware Çözüm özel bulutu olmalıdır.
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="VM 'Leri koruma penceresi" border="true":::
 
@@ -56,7 +56,7 @@ Gerekirse, varsayılan çoğaltma seçeneklerini belirleyin:
 
 - **Quiescence etkinleştir:** Uzak siteyle tutarlı bir kopya eşitlendiğinden emin olmak için sanal makineyi duraklatır.
 
-- **Hedef depolama alanı:** Korunan VM 'ler için uzak veri deposunu seçin. Bir AVS özel bulutu 'nda bu seçim vSAN veri deposu olmalıdır.
+- **Hedef depolama alanı:** Korunan VM 'ler için uzak veri deposunu seçin. Azure VMware Çözüm özel bulutu 'nda bu seçim vSAN veri deposu olmalıdır.
 
 - **Işlem kapsayıcısı:** Uzak vSphere kümesi veya kaynak havuzu.
 
@@ -95,7 +95,7 @@ Sanal makine açık olduğunda, uzak siteye eşitleme işlemini başlatır.
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>Sanal makinelerin bir test kurtarmalarını doldurun
 
-Uzak sitede, AVS özel bulutu olan **vSphere istemcisinde** oturum açın. **HCX eklentisi**Içinde, olağanüstü durum kurtarma alanında, işlemler menüsünü göstermek için HERHANGI bir VM 'deki dikey üç nokta simgesini seçin. **Test kurtarma VM 'yi**seçin.
+Azure VMware çözümü özel bulutu olan uzak sitede **vSphere istemcisinde** oturum açın. **HCX eklentisi**Içinde, olağanüstü durum kurtarma alanında, işlemler menüsünü göstermek için HERHANGI bir VM 'deki dikey üç nokta simgesini seçin. **Test kurtarma VM 'yi**seçin.
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="Test kurtarma VM 'sini seçin" border="true":::
 
@@ -105,7 +105,7 @@ Yeni pencerede, test seçeneklerini belirleyin. Sanal makinenin farklı durumlar
 
 **Teste**tıkladıktan sonra kurtarma işlemi başlar.
 
-Sınama kurtarma işlemi tamamlandığında, yeni VM, AVS özel bulutu vCenter ' ta denetlenebilir.
+Sınama kurtarma işlemi tamamlandığında, yeni VM Azure VMware çözümü özel bulut vCenter ' da denetlenebilir.
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="kurtarma işlemini denetle" border="true":::
 
@@ -115,7 +115,7 @@ Son olarak, VM üzerinde test yapıldıktan veya üzerinde çalışan herhangi b
 
 ## <a name="recover-virtual-machines"></a>Sanal makineleri kurtarma
 
-Uzak sitede, AVS özel bulutu olan **vSphere istemcisinde** oturum açın ve **HCX eklentisine**erişin.
+Azure VMware çözümü özel bulutu olan uzak sitede **vSphere istemcisinde** oturum açın ve **HCX eklentisine**erişin.
 
 Kurtarma senaryosunda, bu örnek için kullanılan sanal makine grubu.
 
@@ -131,7 +131,7 @@ Kurtarma işlemi tamamlandıktan sonra, yeni VM 'Ler uzak vCenter Server envante
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>Sanal makinelerde ters çoğaltmayı tamamlar
 
-AVS özel bulutunuzda **vSphere istemcisinde** oturum açın ve **HCX eklentisine**erişin.
+Azure VMware çözümünüz özel bulutunuzda **vSphere istemcisinde** oturum açın ve **HCX eklentisine**erişin.
 Ters çoğaltmaya başlamadan önce kaynak sitedeki özgün sanal makinelerin kapalı olması gerekir. Sanal makineler kapalıyken işlem başarısız olur.
 
 Kaynak siteye geri çoğaltılacak sanal makineleri listeden seçin, **Eylemler** menüsünü açın ve **ters**' yı seçin. Açılır pencerede çoğaltmayı başlatmak için **ters** ' ye tıklayın.

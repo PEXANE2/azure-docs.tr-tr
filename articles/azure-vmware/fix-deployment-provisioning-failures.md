@@ -1,18 +1,18 @@
 ---
 title: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
-description: AVS dağıtımı veya sağlama hatalarıyla ilgili bir hizmet isteği sağlamak için Azure VMware çözümünüz (AVS) özel bulutunuzda gereken bilgileri alma.
+description: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili bir hizmet isteği için Azure VMware Çözüm özel bulutunuzda gereken bilgileri alma.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514586"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752227"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
 
-Bu makalede, Azure portal bir hizmet isteği (SR) açarak özel bulutunuzda Azure VMware çözümü (AVS) dağıtımı veya sağlama hatalarıyla ilgili nasıl yardım alabileceğinizi öğreneceksiniz. Ancak, Azure portal bazı önemli bilgileri toplamanız gerekir. Çoğu durumda, şunlar gerekir:
+Bu makalede, Azure portal bir hizmet isteği (SR) açarak özel bulutunuzda Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili nasıl yardım alabileceğinizi öğreneceksiniz. Ancak, Azure portal bazı önemli bilgileri toplamanız gerekir. Çoğu durumda, şunlar gerekir:
 
 - Bağıntı KIMLIĞI (başarısız olan dağıtım)
 - ExpressRoute bağlantı hattı KIMLIĞI (özel bulut ExpressRoute devresi ile var olan bir özel bulutu ölçeklendirmeye veya eşe yönelik olarak
@@ -27,7 +27,7 @@ Bağıntı KIMLIĞI vurgulanmış şekilde, başarısız bir özel bulut dağıt
 
 Hizmet isteğine dahil etmek için bu bağıntı KIMLIĞINI kopyalayın ve kaydedin. Ayrıntılar için bu makalenin sonundaki [destek Isteğinizi oluşturma](#create-your-support-request) bölümüne bakın.
 
-Hata, ön doğrulama aşamasında oluşursa, özel bir bulut dağıtılmadan önce bir bağıntı KIMLIĞI oluşturulmaz. Bu durumda, yalnızca AVS özel bulutu oluştururken kullandığınız bilgileri sağlayabilirsiniz, örneğin:
+Hata, ön doğrulama aşamasında oluşursa, özel bir bulut dağıtılmadan önce bir bağıntı KIMLIĞI oluşturulmaz. Bu durumda, aşağıdakiler de dahil olmak üzere Azure VMware çözümü özel bulutu oluştururken kullandığınız bilgileri sağlamanız yeterlidir:
 
 - Konum
 - Kaynak grubu
@@ -53,7 +53,7 @@ Bildirimler ' de, **etkinlik günlüğünde daha fazla olay**seçin.
 
 Ardından, başarısız dağıtımı ve onun bağıntı KIMLIĞINI bulmak için kaynak adını veya kaynağı oluştururken kullandığınız başka bir benzersiz bilgi parçasını arayın. Aşağıdaki örnek, bir özel bulut kaynağında (PC03) arama sonuçlarını gösterir.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Geçmiş başarısız AVS dağıtımlarını bulun.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Geçmiş Azure VMware Çözüm dağıtımlarını bulma işlemi başarısız oldu.":::
  
 Başarısız dağıtımın işlem adını seçmek, ayrıntıları içeren bir pencere açar. JSON sekmesini seçin ve Bağıntıkimliği ' ı arayın. SR 'ye kopyalayın ve ekleyin. 
  
@@ -63,7 +63,7 @@ Belki de özel bir buluta sahipsiniz ve özel Cloud ExpressRoute bağlantı hatt
 
 Portalda özel bir bulutu görüntülerken **bağlantı > ExpressRoute** ' ı seçin ve **ExpressRoute kimliğini** panonuza kopyalayın.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Bir ExpressRoute KIMLIĞI toplayın."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute KIMLIĞINI panoya kopyalayın."::: 
  
 ExpressRoute KIMLIĞINI yeni destek isteğindeki ilgili alana yapıştırın. Daha fazla bilgi için aşağıdaki bölüme bakın, [destek Isteğinizi oluşturun](#create-your-support-request).
  
@@ -74,11 +74,11 @@ ExpressRoute KIMLIĞINI yeni destek isteğindeki ilgili alana yapıştırın. Da
 
 Destek isteğinizi oluşturma konusunda genel yönergeler için bkz. [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
-Aşağıda, AVS dağıtımı veya sağlama hatalarıyla ilgili bir SR oluşturmaya özgü ek rehberlik verilmiştir.
+Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili bir SR oluşturmaya özgü ek rehberlik aşağıda verilmiştir.
 
 1. **Yardım** simgesini ve ardından **+ Yeni destek isteği**' ni seçin.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Bir ExpressRoute KIMLIĞI toplayın.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="SR 'niz için bir ExpressRoute KIMLIĞI toplayın.":::
 
 2. Tüm gerekli alanları ve **temel bilgiler** sekmesinde doldurabilirsiniz:
 
