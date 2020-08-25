@@ -1,18 +1,18 @@
 ---
 title: Kavramlar-depolama
-description: Azure VMware Çözüm (AVS) önizleme özel bulutlarındaki anahtar depolama özellikleri hakkında bilgi edinin.
+description: Azure VMware Çözüm önizleme özel bulutlarındaki anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604125"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752216"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware çözümü (AVS) önizleme depolama kavramları
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Çözüm önizleme depolama kavramları
 
-AVS özel bulutlar, VMware vSAN ile yerel, küme genelinde depolama sağlar. Bir kümedeki her bir konaktaki tüm yerel depolama birimi bir vSAN veri deposunda kullanılır ve varsayılan olarak, bekleyen veri şifrelemesi kullanılabilir ve etkinleştirilir. Azure depolama kaynaklarını kullanarak özel bulutlarınızın depolama özelliklerini genişletebilirsiniz.
+Azure VMware çözümü özel bulutları, VMware vSAN ile yerel, küme genelinde depolama sağlar. Bir kümedeki her bir konaktaki tüm yerel depolama birimi bir vSAN veri deposunda kullanılır ve varsayılan olarak, bekleyen veri şifrelemesi kullanılabilir ve etkinleştirilir. Azure depolama kaynaklarını kullanarak özel bulutlarınızın depolama özelliklerini genişletebilirsiniz.
 
 ## <a name="vsan-clusters"></a>vSAN kümeleri
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266262"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795992"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Ek doğrulama sayfası nedir?
 
@@ -33,7 +33,7 @@ Kuruluşunuz, oturum açtığınızda size söylediğinizden emin olmak için ek
 İki öğeli doğrulama kötü amaçlı korsanların sizin için hazır olmasını durdurmaya yardımcı olabilir. Parolanız olsa bile, ODD 'ler cihazınıza de sahip olmalardır.
 
 >[!Important]
->Çalışanlarınız veya diğer kullanıcılar için iki öğeli doğrulamanın nasıl kullanılacağına ilişkin bilgi arayan bir yöneticiyseniz, [Azure Active Directory kimlik doğrulama belgelerine](https://docs.microsoft.com/azure/active-directory/authentication/)bakın. Bu makale, bir iş veya okul hesabıyla iki öğeli doğrulama kullanmaya çalışan kullanıcılara yöneliktir (örneğin, alain@contoso.com ).
+>Çalışanlarınız veya diğer kullanıcılar için iki öğeli doğrulamanın nasıl kullanılacağına ilişkin bilgi arayan bir yöneticiyseniz, [Azure Active Directory kimlik doğrulama belgelerine](../authentication/index.yml)bakın. Bu makale, bir iş veya okul hesabıyla iki öğeli doğrulama kullanmaya çalışan kullanıcılara yöneliktir (örneğin, alain@contoso.com ).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmayacağına karar veriyor musunuz?
 
@@ -60,7 +60,7 @@ Kuruluşunuz iki öğeli doğrulamayı etkinleştirdikten sonra, her oturum aç�
 
 2. **Ek güvenlik doğrulaması** sayfasında, iş veya okul hesabınızda oturum açarken söylediğinizi doğrulamak için kullanılacak iki öğeli doğrulama yöntemini seçin. Şunları seçebilirsiniz:
 
-    | İletişim yöntemi | Description |
+    | İletişim yöntemi | Açıklama |
     | --- | --- |
     | Mobil uygulama | <ul><li>**Doğrulama için bildirim alın.** Bu seçenek, Smartphone veya tabletinizdeki kimlik doğrulayıcı uygulamasına bir bildirim gönderir. Bildirimi görüntüleyin ve mümkünse, uygulamada **kimlik doğrulaması** ' nı seçin. Çalışmanız veya okulunuz, kimlik doğrulamasından önce bir PIN girmenizi gerektirebilir.</li><li>**Doğrulama kodunu kullanın.** Bu modda uygulama, her 30 saniyede bir doğrulama kodu oluşturur. Oturum açma ekranında en güncel doğrulama kodunu girin.<br>Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir.</li></ul> |
     | Kimlik doğrulama telefonu | <ul><li>**Telefon araması** , sağladığınız telefon numarasına otomatik bir sesli çağrı koyar. Çağrıyı yanıtlayın ve kimlik doğrulaması için telefon tuş takımındaki kare tuşuna (#) basın.</li><li>**Kısa mesaj** , doğrulama kodu içeren bir kısa mesaj sonlandırır. Metinde istemden sonra, metin iletisini yanıtlayın ya da oturum açma arabirimine sunulan doğrulama kodunu girin.</li></ul> |

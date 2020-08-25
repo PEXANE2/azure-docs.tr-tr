@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 192e939d21cae3b67cafe190e32e7202cd8bdb20
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 03e9f99301444032d867bc1c2f854c807380844e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429665"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797743"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Gatsby sitesi yayımlama
 
 Bu makalede, bir [Gatsby](https://gatsbyjs.org) Web uygulamasının nasıl oluşturulacağı ve [Azure statik Web Apps](overview.md)nasıl dağıtılacağı gösterilir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenizi sağlayan yeni bir statik Web Apps sitedir (ilişkili GitHub eylemleriyle birlikte).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
@@ -128,7 +128,7 @@ Sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapılandır
 
    :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Derleme ayarları":::
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 

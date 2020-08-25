@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e3ed41ad3038cf66d61c25292ebad55c2b5e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731706"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798287"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 hizmetleri için yönetici rolleri
 
@@ -29,21 +29,21 @@ Microsoft 365 tüm ürünler Azure AD 'de Yönetim rolleriyle yönetilebilir. Ba
 
 Microsoft 365 hizmeti | Rol içeriği | API içeriği
 ---------------------- | ------------------ | -----------------
-Office 365 ve Microsoft 365 iş planlarındaki yönetici rolleri | [Office 365 yönetici rolleri](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Kullanılamaz
-Azure Active Directory (Azure AD) ve Azure AD Kimlik Koruması| [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Exchange Online| [Exchange rol tabanlı erişim denetimi](https://docs.microsoft.com/exchange/understanding-role-based-access-control-exchange-2013-help) |  [Exchange için PowerShell](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Rol atamalarını getir](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD yönetici rolleri](directory-assign-admin-roles.md)<br>[Office 365 ' de SharePoint yönetici rolü hakkında](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Takımlar/Skype Kurumsal | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Güvenlik & Uyumluluk Merkezi (Office 365 Gelişmiş tehdit koruması, Exchange Online koruması, Information Protection) | [Office 365 yönetici rolleri](https://docs.microsoft.com/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Rol atamalarını getir](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-Güvenli puan | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Uyumluluk Yöneticisi | [Uyumluluk Yöneticisi rolleri](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Kullanılamaz
-Azure Information Protection | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [Rol tabanlı erişim denetimi](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API başvurusu](https://docs.microsoft.com/cloud-app-security/api-tokens) 
-Azure Gelişmiş Tehdit Koruması | [Azure ATP rol grupları](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | Kullanılamaz
-Windows Defender Gelişmiş Tehdit Koruması | [Windows Defender ATP rol tabanlı erişim denetimi](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Kullanılamaz
-Privileged Identity Management | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Intune | [Intune rol tabanlı erişim denetimi](https://docs.microsoft.com/intune/role-based-access-control) | [Graph API](https://docs.microsoft.com/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
-Yönetilen masaüstü | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Office 365 ve Microsoft 365 iş planlarındaki yönetici rolleri | [Office 365 yönetici rolleri](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Kullanılamaz
+Azure Active Directory (Azure AD) ve Azure AD Kimlik Koruması| [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Exchange Online| [Exchange rol tabanlı erişim denetimi](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [Exchange için PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Rol atamalarını getir](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
+SharePoint Online | [Azure AD yönetici rolleri](directory-assign-admin-roles.md)<br>[Office 365 ' de SharePoint yönetici rolü hakkında](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Takımlar/Skype Kurumsal | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Güvenlik & Uyumluluk Merkezi (Office 365 Gelişmiş tehdit koruması, Exchange Online koruması, Information Protection) | [Office 365 yönetici rolleri](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Rol atamalarını getir](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
+Güvenli puan | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Uyumluluk Yöneticisi | [Uyumluluk Yöneticisi rolleri](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Kullanılamaz
+Azure Information Protection | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Microsoft Cloud App Security | [Rol tabanlı erişim denetimi](/cloud-app-security/manage-admins) | [API başvurusu](/cloud-app-security/api-tokens) 
+Azure Gelişmiş Tehdit Koruması | [Azure ATP rol grupları](/azure-advanced-threat-protection/atp-role-groups) | Kullanılamaz
+Windows Defender Gelişmiş Tehdit Koruması | [Windows Defender ATP rol tabanlı erişim denetimi](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Kullanılamaz
+Privileged Identity Management | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Intune | [Intune rol tabanlı erişim denetimi](/intune/role-based-access-control) | [Graph API](/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[Rol atamalarını getir](/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
+Yönetilen masaüstü | [Azure AD yönetici rolleri](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Rol atamalarını getir](/graph/api/directoryrole-list?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

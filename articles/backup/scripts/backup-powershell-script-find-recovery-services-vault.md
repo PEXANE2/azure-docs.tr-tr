@@ -3,12 +3,12 @@ title: PowerShell betiği-depolama hesabı için kasa bulma
 description: Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için bir Azure PowerShell betiği kullanmayı öğrenin.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 56e1b1bc1b9d46abecfbdc4b98385a0349711aab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1e12f1472b8141d06a1b3c1c9049e057f100d0e4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648726"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757532"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Bir depolama hesabının kaydedildiği kurtarma hizmetleri kasasını bulmak için PowerShell betiği
 
@@ -62,7 +62,7 @@ Aşağıdaki örnek, *afsaccount* depolama hesabının kaydedildiği kurtarma hi
 .\FindRegisteredStorageAccount.ps1 -ResourceGroupName AzureFiles -StorageAccountName afsaccount -SubscriptionId ef4ad5a7-c2c0-4304-af80-af49f49af3d1
 ```
 
-## <a name="output"></a>Çıkış
+## <a name="output"></a>Çıktı
 
 Çıktı, depolama hesabının kaydedildiği kurtarma hizmetleri kasasının tüm yolunu görüntüler. Örnek çıktı aşağıdaki gibidir:
 

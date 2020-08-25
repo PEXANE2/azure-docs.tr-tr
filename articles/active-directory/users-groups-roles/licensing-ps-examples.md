@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025226"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797692"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
@@ -39,7 +39,7 @@ Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.az
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
 ```
-Çıktı:
+Çıkış:
 ```
 SkuPartNumber
 -------------
@@ -55,7 +55,7 @@ Microsoft Graph aynı verileri almak için aşağıdaki örneği kullanın.
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
-Çıktı:
+Çıkış:
 ```
 HTTP/1.1 200 OK
 {
@@ -92,7 +92,7 @@ Get-MsolGroup -All | Where {$_.Licenses} | Select `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
 ```
 
-Çıktı:
+Çıkış:
 ```
 ObjectId                             DisplayName              Licenses
 --------                             -----------              --------
@@ -146,7 +146,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
 ```
 
 
-Çıktı:
+Çıkış:
 ```
 GroupName         GroupId                              GroupLicenses       TotalUserCount LicensedUserCount LicenseErrorCount
 ---------         -------                              -------------       -------------- ----------------- -----------------
@@ -165,7 +165,7 @@ Lisansları atanmayan bazı kullanıcıları içeren grupları bulmak için:
 ```powershell
 Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
-Çıktı:
+Çıkış:
 ```
 ObjectId                             DisplayName             GroupType Description
 --------                             -----------             --------- -----------
@@ -175,7 +175,7 @@ Microsoft Graph aynı verileri almak için aşağıdakileri kullanın
 ```
 GET https://graph.microsoft.com/v1.0/groups?$filter=hasMembersWithLicenseErrors+eq+true
 ```
-Çıktı:
+Çıkış:
 ```
 HTTP/1.1 200 OK
 {
@@ -219,7 +219,7 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
            @{Name="LicenseError";Expression={$_.IndirectLicenseErrors | Where {$_.ReferencedObjectId -eq $groupId} | Select -ExpandProperty Error}}
 ```
 
-Çıktı:
+Çıkış:
 
 ```powershell
 ObjectId                             DisplayName      License Error
@@ -233,7 +233,7 @@ Microsoft Graph aynı verileri almak için aşağıdakileri kullanın:
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
 ```
 
-Çıktı:
+Çıkış:
 ```powershell
 HTTP/1.1 200 OK
 {
@@ -271,7 +271,7 @@ Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {
     }  
 ```
 
-Çıktı:
+Çıkış:
 
 ```powershell
 UserName         UserId                               GroupId                              LicenseError
@@ -378,7 +378,7 @@ Get-MsolUser -All | where {$_.isLicensed -eq $true -and $_.Licenses.AccountSKUID
     @{Name="AssignedFromGroup";Expression={(UserHasLicenseAssignedFromGroup $_ $skuId)}}
 ```
 
-Çıktı:
+Çıkış:
 
 ```powershell
 ObjectId                             SkuId       AssignedDirectly AssignedFromGroup
@@ -394,7 +394,7 @@ Grafik, sonucu göstermek için basit bir yönteme sahip değil, ancak bu API 'd
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
 ```
 
-Çıktı:
+Çıkış:
 
 ```powershell
 HTTP/1.1 200 OK
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Grup lisanslarına sahip kullanıcılar için doğrudan lisansları kaldırma
 
-Bu betiğin amacı, bir gruptan zaten aynı lisansı paylaşan kullanıcılardan gereksiz doğrudan lisansları kaldıralmaktır; Örneğin, [grup tabanlı lisanslamanın](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)bir parçası olarak.
+Bu betiğin amacı, bir gruptan zaten aynı lisansı paylaşan kullanıcılardan gereksiz doğrudan lisansları kaldıralmaktır; Örneğin, [grup tabanlı lisanslamanın](./licensing-groups-migrate-users.md)bir parçası olarak.
 > [!NOTE]
 > İlk olarak, kaldırılacak olan doğrudan lisansların, devralınan lisanslardan daha fazla hizmet işlevselliği etkinleştirmediğinden emin olmak önemlidir. Aksi takdirde, doğrudan lisansın kaldırılması, kullanıcılara yönelik hizmetlere ve verilere erişimi devre dışı bırakabilir. Şu anda, devralınan lisanslar vs Direct aracılığıyla hangi hizmetlerin etkinleştirildiği PowerShell aracılığıyla denetlenmesi mümkün değildir. Betikte, bilinen en düşük hizmet düzeyini, gruplardan devralındığını ve kullanıcıların, hizmetlere erişimi beklenmedik bir şekilde kaybetmediğinden emin olmak için bu hizmetleri belirttik.
 
@@ -607,7 +607,7 @@ Get-MsolGroupMember -All -GroupObjectId $groupId | Get-MsolUser -ObjectId {$_.Ob
 #END: executing the script
 ```
 
-Çıktı:
+Çıkış:
 
 ```powershell
 UserId                               OperationResult

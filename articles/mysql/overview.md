@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206411"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763669"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>MySQL için Azure Veritabanı nedir?
 
@@ -37,6 +37,9 @@ Bu makalede, ayrıntıları keşfetmeye yönelik bağlantılarla birlikte, MySQL
 Azure CLI örnekleri için bkz:
 
 - [MySQL için Azure Veritabanı’na yönelik Azure CLI örnekleri](sample-scripts-azure-cli.md)
+
+## <a name="automated-patching"></a>Otomatik düzeltme eki uygulama
+Hizmet, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygular. Düzeltme eki uygulama, temel alınan donanım, işletim sistemi ve veritabanı altyapısı için güvenlik ve yazılım güncelleştirmelerini içerir. MySQL altyapısı için, ikincil sürüm yükseltmeleri otomatik ve düzeltme eki uygulama sürümünün bir parçası olarak dahil edilmiştir. Topluluk bir ikincil sürüm yayınlarsa, hizmet için test döngüsünün bir parçası olarak otomatik olarak tümleştirilir. İkincil sürümün testi, MySQL için bazı kurallı iş yükleri üzerinde gerçekleştirilir. MySQL altyapısının ikincil sürüm sürümü güvenilirlik (kilitlenme yok), kullanılabilirlik, güvenlik ve performans için değerlendirilir. Tüm alt sürümler hizmette üretime yayınlanmaz, ancak hata düzeltmelerinin ve yeni artımlı değerin önemi temel alınarak evaluted. Bu, yeni artımlı değer arasındaki doğru dengeyi ve kararlılık için sistemdeki değişkenleri en aza indirmenizi sağlar. Düzeltme için gereken kullanıcı eylemi veya yapılandırma ayarları yoktur. Düzeltme eki uygulama, yükün önem derecesine göre hizmet tarafından yönetilmektedir. Genel olarak, hizmet sürekli tümleştirme ve yayının bir parçası olarak aylık yayın zamanlamasını izler. Kullanıcılar, olaydan önce yaklaşan bakım 72 saati hakkında bildirim almak için [Planlı bakım bildirimine](concepts-monitoring.md) abone olabilir.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Saniyeler içinde performansı ve ölçeği ayarlama
 MySQL için Azure veritabanı hizmeti, birkaç hizmet katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman, hafiften ağıra kadar tüm iş yüklerini desteklemek üzere farklı performans ve özellikler getirir. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-service-tiers.md) .

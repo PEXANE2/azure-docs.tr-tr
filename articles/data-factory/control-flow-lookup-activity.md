@@ -3,22 +3,23 @@ title: Azure Data Factory 'de arama etkinliği
 description: Bir dış kaynaktan bir değer aramak için arama etkinliğini nasıl kullanacağınızı öğrenin. Bu çıkışa, izleyen etkinlikler tarafından daha fazla başvuru yapılabilir.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: linda33wj
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418010"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795890"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Arama etkinliği, Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Aşağıdaki senaryoda kullanın:
@@ -36,25 +37,24 @@ Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinli�
 
 ```json
 {
-    "name": "LookupActivity",
-    "type": "Lookup",
-    "typeProperties": {
-        "source": {
-            "type": "<source type>"
-            <additional source specific properties (optional)>
+    "name":"LookupActivity",
+    "type":"Lookup",
+    "typeProperties":{
+        "source":{
+            "type":"<source type>"
         },
-        "dataset": { 
-            "referenceName": "<source dataset name>",
-            "type": "DatasetReference"
+        "dataset":{
+            "referenceName":"<source dataset name>",
+            "type":"DatasetReference"
         },
-        "firstRowOnly": false
+        "firstRowOnly":<true or false>
     }
 }
 ```
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Name | Description | Tür | Gerekli mi?
+Ad | Açıklama | Tür | Gerekli mi?
 ---- | ----------- | ---- | --------
 veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
 kaynak | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
@@ -66,23 +66,24 @@ yalnızca FirstRow | Yalnızca ilk satırın mi yoksa tüm satırların mi dönd
 > * **Yapı** veri kümesi tanımlarında desteklenmiyor. Metin biçimli dosyalar için, sütun adını sağlamak üzere üst bilgi satırını kullanın.
 > * Arama kaynağınız bir JSON dosyası ise, `jsonPathDefinition` JSON nesnesini yeniden şekillendirme ayarı desteklenmez. Tüm nesneler alınacaktır.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Sonraki bir etkinliğin arama etkinliği sonucunu kullanın
+## <a name="use-the-lookup-activity-result"></a>Arama etkinliği sonucunu kullanın
 
 Arama sonucu, `output` etkinlik çalıştırma sonucunun bölümünde döndürülür.
 
-* **, `firstRowOnly` `true` (Varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin stilini kullanın `@{activity('MyLookupActivity').output.firstRow.TableName}` .
+* **, `firstRowOnly` `true` (Varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin stilini kullanın  `@{activity('LookupActivity').output.firstRow.table` .
 
     ```json
     {
         "firstRow":
         {
             "Id": "1",
-            "TableName" : "Table1"
+            "schema":"dbo",
+            "table":"Table1"
         }
     }
     ```
 
-* **, `firstRowOnly` Olarak `false` ayarlandığında **, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir dizi altında görüntülenir `value` . Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value`Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value` . Dizideki öğelere erişmek için `value` şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . `@{activity('lookupActivity').output.value[0].tablename}` bunun bir örneğidir.
+* **, `firstRowOnly` Olarak `false` ayarlandığında **, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir dizi altında görüntülenir `value` . Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value`Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value` . Dizideki öğelere erişmek için `value` şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . `@{activity('lookupActivity').output.value[0].schema}` bunun bir örneğidir.
 
     ```json
     {
@@ -90,23 +91,26 @@ Arama sonucu, `output` etkinlik çalıştırma sonucunun bölümünde döndürü
         "value": [
             {
                 "Id": "1",
-                "TableName" : "Table1"
+                "schema":"dbo",
+                "table":"Table1"
             },
             {
                 "Id": "2",
-                "TableName" : "Table2"
+                "schema":"dbo",
+                "table":"Table2"
             }
         ]
     } 
     ```
 
-### <a name="copy-activity-example"></a>Kopyalama etkinliği örneği
-Bu örnekte, kopyalama etkinliği verileri Azure SQL veritabanı örneğiniz içindeki bir SQL tablosundan Azure Blob depolama alanına kopyalar. SQL tablosunun adı, blob depolamada bir JSON dosyasında depolanır. Arama etkinliği çalışma zamanında tablo adını arar. JSON bu yaklaşım kullanılarak dinamik olarak değiştirilir. İşlem hatlarını veya veri kümelerini yeniden dağıtmanız gerekmez. 
+## <a name="example"></a>Örnek
+
+Bu örnekte, işlem hattı iki etkinlik içerir: **arama** ve **kopyalama**. Kopyalama etkinliği, verileri Azure SQL veritabanı örneğiniz içindeki bir SQL tablosundan Azure Blob depolama alanına kopyalar. SQL tablosunun adı, blob depolamada bir JSON dosyasında depolanır. Arama etkinliği çalışma zamanında tablo adını arar. JSON bu yaklaşım kullanılarak dinamik olarak değiştirilir. İşlem hatlarını veya veri kümelerini yeniden dağıtmanız gerekmez. 
 
 Bu örnek yalnızca ilk satır için arama gösterir. Tüm satırları aramak ve sonuçları ForEach etkinliğiyle zincirlemek için [Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama](tutorial-bulk-copy.md)içindeki örneklere bakın.
 
+
 ### <a name="pipeline"></a>İşlem hattı
-Bu işlem hattı iki etkinlik içerir: arama ve kopyalama. 
 
 - Arama etkinliği, Azure Blob depolama alanındaki bir konuma başvuran **Lookupdataset**öğesini kullanacak şekilde yapılandırılmıştır. Arama etkinliği, SQL tablosunun adını bu konumdaki bir JSON dosyasından okur. 
 - Kopyalama etkinliği, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. **SourceDataset** 'teki **TableName** özelliği, arama etkinliğinin çıktısını kullanacak şekilde yapılandırılmıştır. Kopyalama etkinliği, verileri SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum **Sinkdataset** özelliği tarafından belirtilir. 
@@ -119,161 +123,241 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
             {
                 "name": "LookupActivity",
                 "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource"
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
                     },
-                    "dataset": { 
-                        "referenceName": "LookupDataset", 
-                        "type": "DatasetReference" 
-                    }
+                    "dataset": {
+                        "referenceName": "LookupDataset",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": true
                 }
             },
             {
                 "name": "CopyActivity",
                 "type": "Copy",
-                "typeProperties": {
-                    "source": { 
-                        "type": "SqlSource", 
-                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.firstRow.tableName}" 
-                    },
-                    "sink": { 
-                        "type": "BlobSink" 
+                "dependsOn": [
+                    {
+                        "activity": "LookupActivity",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
                     }
-                },                
-                "dependsOn": [ 
-                    { 
-                        "activity": "LookupActivity", 
-                        "dependencyConditions": [ "Succeeded" ] 
-                    }
-                 ],
-                "inputs": [ 
-                    { 
-                        "referenceName": "SourceDataset", 
-                        "type": "DatasetReference" 
-                    } 
                 ],
-                "outputs": [ 
-                    { 
-                        "referenceName": "SinkDataset", 
-                        "type": "DatasetReference" 
-                    } 
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "select * from [@{activity('LookupActivity').output.firstRow.schema}].[@{activity('LookupActivity').output.firstRow.table}]",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SourceDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schemaName": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "tableName": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SinkDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schema": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "table": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
                 ]
             }
-        ]
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-08-17T10:48:25Z"
     }
 }
 ```
 
 ### <a name="lookup-dataset"></a>Arama veri kümesi
-**Arama** veri kümesi, **AzureStorageLinkedService** türü tarafından belirtilen Azure depolama Arama klasöründeki **sourcetable.js** dosyası. 
+
+**Arama** veri kümesi, **AzureBlobStorageLinkedService** türü tarafından belirtilen Azure depolama Arama klasöründeki **sourcetable.js** dosyası. 
 
 ```json
 {
     "name": "LookupDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "lookup",
-            "fileName": "sourcetable.json",
-            "format": {
-                "type": "JsonFormat",
-                "filePattern": "SetOfObjects"
-            }
-        },
         "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
+            "referenceName": "AzureBlobStorageLinkedService",
             "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "sourcetable.json",
+                "container": "lookup"
+            }
         }
     }
 }
 ```
 
 ### <a name="source-dataset-for-copy-activity"></a>Kopyalama etkinliği için **kaynak** veri kümesi
+
 **Kaynak** veri KÜMESI, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. Kopyalama etkinliği, verileri bu SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum, **Havuz** veri kümesi tarafından belirtilir. 
 
 ```json
 {
     "name": "SourceDataset",
     "properties": {
-        "type": "AzureSqlTable",
-        "typeProperties":{
-            "tableName": "@{activity('LookupActivity').output.firstRow.tableName}"
-        },
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "AzureSqlDatabase",
             "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schemaName": {
+                "type": "string"
+            },
+            "tableName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": {
+                "value": "@dataset().schemaName",
+                "type": "Expression"
+            },
+            "table": {
+                "value": "@dataset().tableName",
+                "type": "Expression"
+            }
         }
     }
 }
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Kopyalama etkinliği için **Havuz** veri kümesi
-Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klasöründe **filebylookup.csv** dosyasına kopyalar. Dosya, **AzureStorageLinkedService** özelliği tarafından belirtilir. 
+
+Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klasöründe **filebylookup.csv** dosyasına kopyalar. Dosya, **AzureBlobStorageLinkedService** özelliği tarafından belirtilir. 
 
 ```json
 {
     "name": "SinkDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "csv",
-            "fileName": "filebylookup.csv",
-            "format": {
-                "type": "TextFormat"                                                                    
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schema": {
+                "type": "string"
+            },
+            "table": {
+                "type": "string"
             }
         },
-        "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
-            "type": "LinkedServiceReference"
-        }
-    }
-}
-```
-
-### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
-Bu depolama hesabı, SQL tablolarının adlarıyla birlikte JSON dosyasını içerir. 
-
-```json
-{
-    "properties": {
-        "type": "AzureStorage",
+        "annotations": [],
+        "type": "DelimitedText",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
-        }
-    },
-        "name": "AzureStorageLinkedService"
-}
-```
-
-### <a name="azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti
-Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir. 
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
-        }
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@{dataset().schema}_@{dataset().table}.csv",
+                    "type": "Expression"
+                },
+                "container": "csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
     }
 }
 ```
 
 ### <a name="sourcetablejson"></a>Üzerinde sourcetable.js
 
+Dosyasında **sourcetable.js** için aşağıdaki iki tür biçimi kullanabilirsiniz.
+
 #### <a name="set-of-objects"></a>Nesne kümesi
 
 ```json
 {
-  "Id": "1",
-  "tableName": "Table1"
+   "Id":"1",
+   "schema":"dbo",
+   "table":"Table1"
 }
 {
-   "Id": "2",
-  "tableName": "Table2"
+   "Id":"2",
+   "schema":"dbo",
+   "table":"Table2"
 }
 ```
 
@@ -283,11 +367,13 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
 [ 
     {
         "Id": "1",
-        "tableName": "Table1"
+        "schema":"dbo",
+        "table":"Table1"
     },
     {
         "Id": "2",
-        "tableName": "Table2"
+        "schema":"dbo",
+        "table":"Table2"
     }
 ]
 ```

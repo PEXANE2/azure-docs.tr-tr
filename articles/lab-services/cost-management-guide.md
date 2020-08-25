@@ -5,147 +5,161 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604589"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797641"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services için maliyet yönetimi
 
-Maliyet yönetimi iki farklı alana ayrılabilir: maliyet tahmini ve maliyet analizi.  Laboratuvarın ilk yapısının beklenen bütçeye sığmasını sağlamak için laboratuvar ayarlanırken maliyet tahmini gerçekleşir.  Maliyet Analizi genellikle ayın sonunda, maliyetleri analiz etmek ve sonraki ay için gerekli eylemleri belirlemede oluşur.
+Azure Lab Services için maliyet yönetimi iki farklı alana ayrılabilir: maliyet tahmini ve maliyet analizi. Maliyet tahmini, laboratuvarın ilk yapısının beklenen bütçeye sığmasını sağlamak üzere Laboratuvarı ayarlarken oluşur. Maliyet Analizi genellikle ayın sonunda, sonraki ay için gerekli eylemleri belirlemede oluşur.
 
 ## <a name="estimate-the-lab-costs"></a>Laboratuvar maliyetlerini tahmin etme
 
-Her laboratuvar panosunda, laboratuvarın ay için maliyeti olan kabaca bir tahmin sunan bir **maliyetler & faturalandırma** bölümü vardır.  Maliyet tahmini, en fazla kullanıcı sayısı ile saat başına tahmini maliyet kadar olan saat kullanımını özetler.  [Zamanlama](how-to-create-schedules.md)dahil olmak üzere laboratuvarın en doğru tahminini sağlamak için, pano tahmini maliyeti yansıtır.  
+Her laboratuvar panosunda, laboratuvarın ay için maliyeti olan kabaca bir tahmin sunan bir **maliyetler & faturalandırma** bölümü vardır. Maliyet tahmini, en fazla kullanıcı sayısı ile saat başına tahmini maliyet kadar olan saat kullanımını özetler. En doğru tahmini sağlamak için, [zamanlama](how-to-create-schedules.md)dahil olmak üzere Laboratuvarı ayarlayın. Pano tahmini maliyeti yansıtır. 
 
-Bu tahmin olası tüm maliyetlerden olmayabilir, dahil olmayan birkaç kaynak vardır.  Şablon hazırlama maliyeti, maliyet tahminine uygun değildir.  Şablonu oluşturmak için gereken süre miktarının önemli ölçüde farklılık gösterebilir. Şablonu çalıştırmanın maliyeti, saat başına genel laboratuvar maliyetiyle aynıdır. Tüm [paylaşılan görüntü Galerisi](how-to-use-shared-image-gallery.md) ücretleri laboratuvar panosuna dahil değildir, çünkü Galeri birden çok laboratuvarda paylaşılabilir.  Son olarak, laboratuvar Oluşturucu başlatıldığında bir makine bu tahmine dahil edildiğinde tahakkuk eden saatler.
+Bu tahmin, olası tüm maliyetleri gösteremeyebilir. Birkaç kaynak dahil değildir:
 
-> [!div class="mx-imgBorder"]
-> ![Pano maliyeti tahmini](./media/cost-management-guide/dashboard-cost-estimation.png)
-
-## <a name="analyze-previous-months-usage"></a>Önceki ayların kullanımını çözümle
-
-Maliyet analizi, laboratuvara yönelik ayarlamaları belirlemede yardımcı olması için önceki ayların kullanımını gözden geçirmeye yöneliktir.  Geçmişte maliyetlerin dökümü, [abonelik maliyeti analizi](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)' nde bulunabilir.  Azure portal, üst arama alanına "abonelikler" yazabilir, ardından abonelikler seçeneğini belirleyebilirsiniz.  
+- Şablon hazırlama maliyeti. Şablonu oluşturmak için gereken süre miktarının önemli ölçüde farklılık gösterebilir. Şablonu çalıştırma maliyeti, saat başına genel laboratuvar maliyetiyle aynıdır. 
+- Bir galeri birden çok laboratuvar arasında paylaşılabilmesi için tüm [paylaşılan görüntü Galerisi](how-to-use-shared-image-gallery.md) maliyetleri. 
+- Laboratuvar oluşturucusunun bir sanal makineyi (VM) başlattığında oluşan saatler.
 
 > [!div class="mx-imgBorder"]
-> ![Abonelik arama](./media/cost-management-guide/subscription-search.png)
+> ![Pano maliyeti tahminini gösteren ekran görüntüsü.](./media/cost-management-guide/dashboard-cost-estimation.png)
 
-Gözden geçirilecek belirli bir abonelik seçin.
+## <a name="analyze-the-previous-months-usage"></a>Önceki ayın kullanımını çözümle
 
-> [!div class="mx-imgBorder"]
-> ![Abonelik seçimi](./media/cost-management-guide/subscription-select.png)
-
- **Maliyet yönetimi**altındaki sol bölmede "maliyet analizi" ni seçin.
+Maliyet analizi, laboratuvara ilgili herhangi bir ayarlamayı belirlemenize yardımcı olmak için önceki ayın kullanımını gözden geçirmeye yöneliktir. Önceki maliyetlerin dökümünü [abonelik maliyeti analizinde](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)bulabilirsiniz. Azure portal, arama kutusuna **abonelikler** girebilir ve ardından **abonelikler** seçeneğini belirleyebilirsiniz. 
 
 > [!div class="mx-imgBorder"]
-> ![Abonelik maliyeti Analizi](./media/cost-management-guide/subscription-cost-analysis.png)
+> ![Arama kutusunu ve abonelikler seçeneğini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-search.png)
 
-Bu Pano, bir zamanlamaya göre farklı dosya türlerine dışarı aktarma özelliği de dahil olmak üzere derinlemesine maliyet analizine izin verir.  Maliyet yönetiminin çok fazla özelliği vardır, bkz. [maliyet yönetimi faturalandırmaya genel bakış](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)
+Gözden geçirmek istediğiniz belirli bir abonelik seçin.
 
-Kaynak türüne göre filtreleme: `microsoft.labservices/labaccounts` yalnızca laboratuvar hizmetleriyle ilişkili maliyeti gösterir.
+> [!div class="mx-imgBorder"]
+> ![Abonelik seçimini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-select.png)
+
+Maliyet **yönetimi**altında sol bölmede **Maliyet Analizi** ' ni seçin.
+
+> [!div class="mx-imgBorder"]
+> ![Bir grafikteki abonelik maliyeti analizini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-cost-analysis.png)
+
+Bu Pano, bir zamanlamaya göre farklı dosya türlerine dışarı aktarma özelliği de dahil olmak üzere, derinlemesine maliyet analizine izin verir. Daha fazla bilgi için bkz. [maliyet yönetimi + faturalandırma genel bakış](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+
+Kaynak türüne göre filtre uygulayabilirsiniz. Kullanmak `microsoft.labservices/labaccounts` , yalnızca laboratuvar hizmetleriyle ilişkili maliyeti gösterir.
 
 ## <a name="understand-the-usage"></a>Kullanımı anlayın
 
-Maliyet analizinin bir örneği aşağıda verilmiştir.
+Aşağıdaki ekran görüntüsü, maliyet analizine bir örnektir.
 
 > [!div class="mx-imgBorder"]
-> ![Abonelik maliyeti Analizi](./media/cost-management-guide/cost-analysis.png)
+> ![Bir abonelik için örnek maliyet analizini gösteren ekran görüntüsü.](./media/cost-management-guide/cost-analysis.png)
 
-Varsayılan olarak, altı sütun vardır: kaynak, kaynak türü, konum, kaynak grubu adı, Etiketler, maliyet.  Kaynak sütunu, laboratuvar hesabı, laboratuvar adı ve VM hakkındaki bilgileri içerir.  Laboratuvar hesabı/laboratuvar adı/varsayılan olan satırlar, laboratuvarın ikinci ve üçüncü satırlarda görünebilen maliyetlidir.  Kullanılan VM 'Lerin laboratuvar hesabı/laboratuvar adı/varsayılan/VM adı altında bir maliyeti olacaktır.  Bu örnekte, her ikisi de "aaalab/dockerlab" ile başlayarak ikinci satıra sahip ilk satırı eklemek, "aaalab" Laboratuvar hesabında "dockerlab" Laboratuvarı için toplam maliyeti size verecektir.
+Varsayılan olarak, altı sütun vardır: **kaynak**, **kaynak türü**, **konum**, **kaynak grubu adı**, **Etiketler**ve **Maliyet**. **Kaynak** sütunu, laboratuvar hesabı, laboratuvar adı ve VM hakkındaki bilgileri içerir. Laboratuvar hesabı, laboratuvar adı ve varsayılan (ikinci ve üçüncü satırlar) gösteren satırlar, laboratuvarın maliyetlidir. Kullanılan VM 'Ler, laboratuvar hesabı, laboratuvar adı, varsayılan ve VM adını gösteren satırlar için görebileceğiniz bir maliyettir. 
 
-Paylaşılan görüntü Galerisi bilgilerini almak için kaynak türünü olarak değiştirin `Microsoft.Compute/Galleries` , bu da görüntü galerisinin genel maliyetini verir.  Görüntü paylaşma galerileri, galerinin nerede depolandığına bağlı olarak maliyetlerde görünmeyebilir.
+Bu örnekte, ilk ve ikinci satırları ekleme (her ikisi de **aaalab/dockerlab**ile başlar), "aaalab" Laboratuvar hesabında "dockerlab" Laboratuvarı için toplam maliyet sağlar.
+
+Görüntü galerisinin genel maliyetini almak için kaynak türünü olarak değiştirin `Microsoft.Compute/Galleries` . Bir paylaşılan görüntü Galerisi, galerinin nerede depolandığına bağlı olarak maliyetlerde görünmeyebilir.
 
 > [!NOTE]
-> Paylaşılan görüntü Galerisi laboratuvar hesabına bağlıdır.  Bu, birden çok laboratuvarın aynı görüntüyü kullanabileceği anlamına gelir.
+> Bir paylaşılan görüntü Galerisi laboratuvar hesabına bağlıdır. Bu, birden çok laboratuvarın aynı görüntüyü kullanabileceği anlamına gelir.
 
-## <a name="separating-costs"></a>Maliyetleri ayırma
+## <a name="separate-the-costs"></a>Maliyetleri ayırın
 
-Bazı üniversiteler, laboratuvar hesabı ve kaynak grubunu farklı sınıfları birbirinden ayıran şekilde kullandı.  Her sınıfın kendi laboratuvar hesabı ve kaynak grubu olacaktır. Maliyet Analizi bölmesinde, sınıf için uygun kaynak grubu adına sahip kaynak grubu adına dayanan bir filtre ekleyin ve yalnızca söz konusu sınıfa ait maliyetler görünür olur.  Bu, maliyetleri görüntülerken farklı sınıflar arasında daha net bir geri alma olanağı sağlar.  Maliyet analizinin [zamanlanan dışa aktarma](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) özelliği, her sınıfın maliyetlerinin ayrı dosyalarda indirilebilmelerine izin verir.
+Bazı üniversiteler, bir laboratuvar hesabı ve kaynak grubunu, sınıfları ayırmanın yolları olarak kullandı. Her sınıfın kendi laboratuvar hesabı ve kaynak grubu vardır. 
 
-## <a name="managing-costs"></a>Maliyetleri yönetme
+Maliyet Analizi bölmesinde, kaynak grubu adına temel alan, sınıf için uygun kaynak grubu adıyla bir filtre ekleyin. Daha sonra, yalnızca bu sınıfa ait maliyetler görünür olur. Bu, maliyetleri görüntülerken sınıflar arasında daha net bir geri alma olanağı sağlar. Her sınıfın maliyetlerini ayrı dosyalarda indirmek için maliyet analizinin [zamanlanan dışa aktarma](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) özelliğini kullanabilirsiniz.
 
-Sınıfın türüne bağlı olarak, makineyi kullanarak bir öğrenci olmadan VM 'Lerin çalıştığını azaltmak için maliyetleri yönetmenin yolları vardır.
+## <a name="manage-costs"></a>Maliyetleri yönetme
 
-### <a name="maximize-cost-control-with-auto-shutdown-settings"></a>Otomatik kapalı ayarlarla maliyet denetimini en üst düzeye çıkar
+Sınıfın türüne bağlı olarak, bir öğrenci olmadan çalışan sanal makinelerin örneklerini azaltmak için maliyetleri yönetmenin yolları vardır.
 
-Otomatik olarak kapatılacak maliyet denetimi özellikleri, laboratuvarların içindeki sanal makine kullanım saatlerinin harcanmasını engellemenizi sağlar. Aşağıdaki üç otomatik kapatılma ve bağlantı kesme özelliğinin birleşimi, kullanıcıların sanal makinelerini yanlışlıkla bırakması için gereken durumların çoğunu yakalar:
+### <a name="automatic-shutdown-settings-for-cost-control"></a>Maliyet denetimi için otomatik kapatılma ayarları
+
+Otomatik olarak kapalı özellikler, laboratuvarlarda harcanan VM kullanım saatlerini engellemenizi sağlar. Aşağıdaki ayarlar, kullanıcıların sanal makinelerini yanlışlıkla terk ettiği durumların çoğunu yakalar:
 
 > [!div class="mx-imgBorder"]
-> ![Abonelik maliyeti Analizi](./media/cost-management-guide/auto-shutdown-disconnect.png)
+> ![Üç otomatik kapatılma ayarını gösteren ekran görüntüsü.](./media/cost-management-guide/auto-shutdown-disconnect.png)
 
-Bu ayarlar hem laboratuvar hesabı düzeyinde hem de laboratuvar düzeyinde yapılandırılabilir. Ayarlar laboratuvar hesabı düzeyinde etkinleştirilmişse, laboratuvar hesabı içindeki tüm laboratuvarlara uygulanır. Tüm yeni laboratuvar hesapları için bu ayarlar varsayılan olarak açıktır. 
+Bu ayarları hem laboratuvar hesabı düzeyinde hem de laboratuvar düzeyinde yapılandırabilirsiniz. Bunları laboratuvar hesabı düzeyinde etkinleştirirseniz laboratuvar hesabı içindeki tüm laboratuvarlara uygulanır. Tüm yeni laboratuvar hesapları için bu ayarlar varsayılan olarak açıktır. 
 
-#### <a name="details-about-auto-shutdown-settings"></a>Otomatik kapatmalar ayarları hakkında ayrıntılar
+#### <a name="automatically-disconnect-users-from-virtual-machines-that-the-os-deems-idle"></a>İşletim sisteminin boşta kaldığı sanal makinelerle kullanıcıların bağlantısını otomatik olarak keser
 
-* İşletim sisteminin boşta kaldığı sanal makinelerle kullanıcıların bağlantısını otomatik olarak keser (yalnızca Windows).
+> [!NOTE]
+> Bu ayar yalnızca Windows sanal makineler için kullanılabilir.
 
-    > [!NOTE]
-    > Bu ayar yalnızca Windows sanal makineler için kullanılabilir.
+**Sanal makineler boşta kaldığında kullanıcıların bağlantısını kes** ayarı açık olduğunda, Windows işletim sistemi oturumun (şablon sanal makineler dahil) boşta kalması durumunda kullanıcının laboratuvardaki makinelerle bağlantısı kesilir. [Boştaki Windows işletim sistemi tanımı](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) iki ölçüt kullanır: 
 
-    Ayar açık olduğunda, Windows işletim sistemi oturumun (şablon sanal makineler dahil) boşta kalması durumunda kullanıcının laboratuvardaki makinelerle bağlantısı kesilir. [Boştaki Windows işletim sistemi tanımı](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) iki ölçüt kullanır: 
+* Kullanıcı devamsızlığı: klavye veya fare girişi yok.
+* Kaynak tüketiminin bulunmaması: tüm işlemciler ve tüm diskler belirli bir süre için boşta değildi.
 
-    * Kullanıcı devamsızlığı – klavye veya fare girişi yok.
-    * Kaynak tüketiminin bulunmaması – tüm işlemciler ve tüm diskler belirli bir zaman için boşta kaldı
+Kullanıcılar, bağlanmadan önce VM 'de şöyle bir ileti görür: 
 
-    Kullanıcılar, bağlantısı kesilmeden önce sanal makine içinde şöyle bir ileti görür: 
+> [!div class="mx-imgBorder"]
+> ![Bir oturumun zaman sınırının üzerinde boşta olduğunu ve bağlantısının kesileceğini belirten bir uyarı iletisi gösteren ekran görüntüsü.](./media/cost-management-guide/idle-timer-expired.png)
+ 
+Kullanıcının bağlantısı kesildiğinde sanal makine çalışmaya devam eder. Kullanıcı oturum açarken sanal makineye yeniden bağlanırsa, Windows veya açık olan veya bağlantısı kesilmeye başlamadan önce kaydedilmemiş olan dosyalar burada kalır. Bu durumda, sanal makine çalıştığından, hala etkin ve tahakkuk eden maliyet olarak sayılır. 
+ 
+Bağlantısı kesilen boşta Windows sanal makinelerini otomatik olarak kapatmak için, **sanal makineler boşta kaldığında kullanıcıların bağlantısını kesme** bileşimini kullanın ve **kullanıcıların ayarları kesildiğinde sanal makineleri kapatın** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Abonelik maliyeti Analizi](./media/cost-management-guide/idle-timer-expired.png)
-    
-    Kullanıcının bağlantısı kesildiğinde sanal makine çalışmaya devam eder. Kullanıcı oturum açarak Kullanıcı sanal makineye yeniden bağlanırsa, Windows veya bağlantıyı kesmeden önce açık ya da kaydedilmemiş çalışmadaki dosyalar burada kalır. Bu durumda, sanal makine çalıştığından, hala etkin ve tahakkuk eden maliyet olarak sayılır. 
-    
-    Bağlantısı kesilen boşta olan Windows sanal makinelerini otomatik olarak kapatmak için, **sanal makineler boşta kaldığında kullanıcıların bağlantısını kesme** bileşimini kullanın ve **Kullanıcılar ayarların bağlantısını kestikten sonra sanal makineleri kapatın** .
+Örneğin, ayarları aşağıdaki gibi yapılandırırsanız:
+ 
+* **Sanal makineler boşta kaldığında kullanıcıların bağlantısını kesin**: boşta durumu algılandıktan 15 dakika sonra.
+* **Kullanıcıların bağlantısı kesildiğinde sanal makineleri kapat**: kullanıcının bağlantısı kesildikten 5 dakika sonra.
+ 
+Windows sanal makineleri, Kullanıcı bunları kullanmayı durdurduktan sonra 20 dakika sonra otomatik olarak kapatılır. 
+ 
+> [!div class="mx-imgBorder"]
+> ![Otomatik VM kapatmasıyla sonuçlanan ayarların birleşimini gösteren diyagram.](./media/cost-management-guide/vm-idle-diagram.png)
 
-    Örneğin, ayarları aşağıdaki gibi yapılandırırsanız:
-    
-    * Sanal makineler boşta kaldığında kullanıcıların bağlantısını keser – boşta durumu algılandıktan 15 dakika sonra.
-    * Kullanıcıların bağlantısı kesildikten sonra, sanal makineleri kapat – kullanıcının bağlantısı kesildiğinde 5 dakika.
-    
-    Windows sanal makineleri, Kullanıcı bunları kullanmayı durdurduktan sonra 20 dakika otomatik olarak kapanacak. 
-    
-    > [!div class="mx-imgBorder"]
-    > ![Abonelik maliyeti Analizi](./media/cost-management-guide/vm-idle-diagram.png)
-* Kullanıcıların bağlantısı kesildiğinde sanal makineleri otomatik olarak kapat (Windows & Linux).
-    
-    Bu ayar hem Windows hem de Linux sanal makinelerini destekler. Bu ayar açık olduğunda, otomatik olarak kapatmadan önce Şu durumlarda gerçekleşir:
-    
-    * Windows için Uzak Masaüstü (RDP) bağlantısının bağlantısı kesildi.
-    * Linux için SSH bağlantısının bağlantısı kesilir.
-    
-    > [!NOTE]
-    > Yalnızca [belirli bir Linux dağıtımları ve Linux sürümleri](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) desteklenir.
-    
-    Sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini belirtebilirsiniz. 
-* Başlatılan ancak kullanıcılar bağlanmadığında sanal makineleri otomatik olarak kapat.
-     
-    Laboratuvar içinde, bir Kullanıcı bir sanal makine başlatabilir ancak bu sunucuya hiçbir şekilde bağlanmayabilir. Örneğin:
-    
-    * Laboratuvardaki bir zamanlama, bir sınıf oturumu için tüm sanal makineleri başlatır, ancak bazı öğrenciler makinelere bağlanamaz ve bunlara bağlanmazlar.  
-    * Bir Kullanıcı bir sanal makineyi başlatır, ancak bağlanmayı unutur. 
-    
-    "Kullanıcılar bağlanmayan sanal makineleri kapat" ayarı, bu durumları yakalar ve sanal makineleri otomatik olarak kapatır.  
-    
+#### <a name="automatically-shut-down-virtual-machines-when-users-disconnect"></a>Kullanıcıların bağlantısı kesildiğinde sanal makineleri otomatik olarak kapat
+ 
+**Kullanıcıların bağlantısı kesildiğinde sanal makineleri kapat** ayarı hem Windows hem de Linux sanal makinelerini destekler. Bu ayar açık olduğunda, otomatik olarak kapatmadan önce Şu durumlarda gerçekleşir:
+ 
+* Windows için Uzak Masaüstü (RDP) bağlantısının bağlantısı kesilir.
+* Linux için bir SSH bağlantısının bağlantısı kesilir.
+ 
+> [!NOTE]
+> Yalnızca [belirli bir Linux dağıtımları ve Linux sürümleri](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) desteklenir.
+ 
+Sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini belirtebilirsiniz. 
+
+#### <a name="automatically-shut-down-virtual-machines-that-are-started-but-users-dont-connect"></a>Başlatılan ancak kullanıcılar bağlanmadığında sanal makineleri otomatik olarak kapat
+ 
+Bir laboratuvarda Kullanıcı bir sanal makine başlatabilir, ancak bu sunucuya hiçbir şekilde bağlanmayabilir. Örnek:
+ 
+* Laboratuvardaki bir zamanlama, bir sınıf oturumu için tüm sanal makineleri başlatır, ancak bazı öğrenciler makinelere bağlanmayın ve bunlara bağlanmayın. 
+* Bir Kullanıcı bir sanal makine başlatır ancak bağlanmayı unutur. 
+ 
+**Kullanıcılar bağlanmayan sanal makineleri kapat** ayarı bu durumları yakalar ve sanal makineleri otomatik olarak kapatır. 
+ 
 Bağlantı kesildiğinde VM 'lerin otomatik olarak kapatılmasını yapılandırma ve etkinleştirme hakkında bilgi için şu makalelere bakın:
 
 * [Laboratuvar hesabı için sanal makinelerin otomatik olarak kapatılmasını yapılandırın](how-to-configure-lab-accounts.md)
 * [Laboratuvar için sanal makinelerin otomatik olarak kapatılmasını yapılandırma](how-to-enable-shutdown-disconnect.md)
 
-### <a name="quota-vs-scheduled-time"></a>Kota ile zamanlanan süre
+### <a name="scheduled-time-vs-quota-time"></a>Zamanlanan saat ile kota süresi
 
-[Kota süresini](classroom-labs-concepts.md#quota) ve [zamanlanan süreyi](classroom-labs-concepts.md#schedules) anlamak, laboratuvar sahibinin Laboratuvarı, Mesleme ve öğrencilerinin ihtiyaçlarına daha iyi uyacak şekilde yapılandırmasına izin verir.  Zamanlanan saat, tüm öğrenci VM 'lerinin başlatıldığı ve bağlanabileceği bir zaman kümesidir.  Yaygın olarak zamanlanan, tüm öğrenciler kendi sanal makinesine sahip olacağı ve bu durumda, sınıf saatleri gibi gün içinde bir ayarlanan sürede en çok bir zaman olan meslem 'nin yönlerini takip eden durumlarda kullanılır.  Bu durumda, bir öğrenci VM 'de oturum açmasa bile tüm öğrenci VM 'lerinin başlatıldığı ve maliyet tahakkuk etmeleriyse.  Kota süresi her öğrenciye, her öğrenciye tahsis ettikleri ve genellikle bağımsız bir birleştirme için kullanılan süredir. Sanal makineler, öğrenci VM 'yi başlatana kadar başlatılmaz.  
+[Zamanlanan saat](classroom-labs-concepts.md#schedules) ve [Kota süresini](classroom-labs-concepts.md#quota) anlamak, bir laboratuvarı, Mesleme ve öğrencilerin ihtiyaçlarını daha iyi karşılayacak şekilde yapılandırmanıza yardımcı olur. 
 
-Laboratuvar, kota süresi, zamanlanan süre veya her ikisinin birleşimini kullanabilir. Bir sınıfa zamanlanan süre gerekmiyorsa, VM 'lerin en etkili kullanımı için yalnızca kota süresi kullanın.
+Zamanlanan saat, tüm öğrenci VM 'lerinin başlatıldığı ve bağlantı için kullanılabildiği bir zaman kümesidir. Zamanlanan saat genellikle tüm öğrenciler kendi sanal makinelerine sahip olduğunda ve gün içinde bir ayarlanan süre (sınıf saatleri gibi) için professlı 'in yönlerini izlediğinin yaygın olarak kullanılır. Bu durumda, bir öğrenciye bir VM 'de oturum açmasa bile, tüm öğrenci VM 'lerinin başlatıldığı ve ücretden tahakkuk etmemelerdir. 
 
-### <a name="scheduled-event---stop-only"></a>Zamanlanan olay-yalnızca durdur
+Kota süresi her öğrenciye kullanım için ayrılır ve genellikle bağımsız bir studying için kullanılır. Sanal makineler, öğrenciye başlamadan önce başlatılmaz. 
 
-Zamanlamada, yalnızca durdur olay türünü ekleyebilirsiniz, bu, belirli bir zamanda tüm makineleri durdurur.  Bazı laboratuvar sahipleri, bir öğrenci kullanmakta oldukları VM 'yi kapatmayı unutursa maliyet ve kota kullanımını azaltmak için her gün için yalnızca durdur olayı ayarladı.  Bu olay türünün alt tarafı, öğrenci VM 'yi kullanıyor olsa bile tüm VM 'Lerin kapanacaktır.
+Laboratuvar, kota süresi veya zamanlanan zaman ya da her ikisinin birleşimini kullanabilir. Bir sınıfa zamanlanan süre gerekmiyorsa, VM 'lerin en etkili kullanımı için yalnızca kota süresi kullanın.
+
+### <a name="scheduled-event-stop-only"></a>Zamanlanan olay: yalnızca durdur
+
+Zamanlamada, belirli bir zamanda tüm makineleri durduracak bir yalnızca durdurma olay türü ekleyebilirsiniz. Bazı laboratuvar sahipleri, bir öğrenci kullanmakta oldukları VM 'yi kapatmayı unutursa maliyet ve kota kullanımını azaltmak için her gün için yalnızca bir durdurma olayı ayarladı. Bu olay türünün dezavantajı, bir öğrenci VM kullanıyor olsa bile tüm VM 'Lerin kapatılmasını sağlar.
 
 ### <a name="other-costs-related-to-labs"></a>Laboratuvarlarla ilgili diğer maliyetler 
 
-Laboratuvar hizmetlerine eklenmeyen ancak laboratuvar hizmetine bağlı olabilecek maliyetler vardır.  Paylaşılan görüntü Galerisi laboratuvarlara bağlanabilir, ancak Laboratuvar Hizmetleri maliyetlerinde gösterilmez ve maliyetleri vardır.  Genel maliyetleri devam ettirmede yardımcı olması için, görüntülerin depolama maliyetini devralma olduğundan, kullanılmayan görüntüleri Galeriden kaldırmanız gerekir.  Laboratuvarlar bir laboratuvar kaldırıldığında sanal ağ (VNet) ile diğer Azure kaynaklarına bağlantılara sahip olabilir VNet 'i ve diğer kaynakları kaldırmanız gerekir.
+Bazı maliyetler laboratuvar hizmetlerine alınmaz, ancak bir laboratuvar hizmetine bağlanabilir. Paylaşılan bir görüntü galerisini laboratuvara bağlayabilirsiniz, ancak Laboratuvar Hizmetleri maliyetlerinde gösterilmez ve maliyetleri vardır. Genel maliyetleri daha düşük tutmaya yardımcı olmak için, görüntülerin devralınan bir depolama maliyeti olduğundan, kullanılmayan görüntüleri Galeriden kaldırmanız gerekir. 
+
+Laboratuvarların bir sanal ağ üzerinden diğer Azure kaynaklarıyla bağlantıları olabilir. Bir laboratuvar kaldırıldığında, sanal ağı ve diğer kaynakları kaldırmanız gerekir.
 
 ## <a name="conclusion"></a>Sonuç
 
-Bundan sonra, Yukarıdaki bilgiler Kullanım maliyetlerini daha iyi anlamak ve araçların daha fazla maliyet sağlamak için nasıl kullanılacağını daha iyi anlamanızı sağlar.
+Bu makaledeki bilgiler, kullanım maliyetlerini azaltmanıza yardımcı olabilecek araçlar hakkında daha iyi bir anlayışa vermiş.

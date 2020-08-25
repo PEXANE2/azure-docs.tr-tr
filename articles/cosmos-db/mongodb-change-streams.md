@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036717"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798899"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
 
@@ -21,26 +21,6 @@ Azure Cosmos DB, MongoDB için API 'sinde bulunan [akış](change-feed.md) deste
 
 > [!NOTE]
 > Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
-
-## <a name="current-limitations"></a>Geçerli sınırlamalar
-
-Değişiklik akışları kullanılırken aşağıdaki sınırlamalar geçerlidir:
-
-* `operationType`Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
-* `insert`, `update` Ve `replace` işlemler türleri şu anda destekleniyor. 
-* Silme işlemi veya diğer olaylar henüz desteklenmiyor.
-
-Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match Stage, $project Stage ve fullDocument seçenekleri gereklidir.
-
-Azure Cosmos DB SQL API 'sindeki değişiklik akışının aksine, değişiklik akışlarını kullanmak için ayrı bir [değişiklik akışı Işlemci kitaplığı](change-feed-processor.md) veya bir kiralama kapsayıcısı gereksinimi yoktur. Şu anda değişiklik akışlarını işlemek için [Azure işlevleri tetikleyicilerinin](change-feed-functions.md) desteği yoktur.
-
-## <a name="error-handling"></a>Hata işleme
-
-Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri desteklenir:
-
-* **Http hata kodu 16500** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
-
-* **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. Özelliği, `operationType` Çıkış belgesinde hata yerine döndürülmediğinden `operationType Invalidate` `NamespaceNotFound` hata döndürülür.
 
 ## <a name="examples"></a>Örnekler
 
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 Değişiklik akışları kullanılırken aşağıdaki sınırlamalar geçerlidir:
 
 * `operationType`Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
-* `insert`, `update` Ve `replace` işlemler türleri şu anda destekleniyor. Silme işlemi veya diğer olaylar henüz desteklenmiyor.
+* `insert`, `update` Ve `replace` işlemler türleri şu anda destekleniyor. Ancak, silme işlemi veya diğer olaylar henüz desteklenmemektedir.
 
 Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match Stage, $project Stage ve fullDocument seçenekleri gereklidir.
+
+Azure Cosmos DB SQL API 'sindeki değişiklik akışının aksine, değişiklik akışlarını kullanmak için ayrı bir [değişiklik akışı Işlemci kitaplığı](change-feed-processor.md) veya bir kiralama kapsayıcısı gereksinimi yoktur. Şu anda değişiklik akışlarını işlemek için [Azure işlevleri tetikleyicilerinin](change-feed-functions.md) desteği yoktur.
 
 ## <a name="error-handling"></a>Hata işleme
 
 Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri desteklenir:
 
-* **Http hata kodu 429** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
+* **Http hata kodu 16500** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
 
 * **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. Özelliği, `operationType` Çıkış belgesinde hata yerine döndürülmediğinden `operationType Invalidate` `NamespaceNotFound` hata döndürülür.
 

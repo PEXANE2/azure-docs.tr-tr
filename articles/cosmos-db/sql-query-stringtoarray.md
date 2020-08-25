@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b00fe7a515d1d27ce9be2ab62a96c719d5e045a5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302925"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798593"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Bir diziye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
@@ -33,7 +33,7 @@ StringToArray(<str_expr>)
   Dizi ifadesi veya tanımsız döndürür. 
   
 ## <a name="remarks"></a>Açıklamalar
-  İç içe geçmiş dize değerleri, geçerli JSON olması için çift tırnaklarla yazılmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)
+  İç içe geçmiş dize değerleri, geçerli JSON olması için çift tırnaklarla yazılmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/). Bu sistem işlevi dizinden yararlanmayacak.
   
 ## <a name="examples"></a>Örnekler
   
@@ -90,10 +90,6 @@ Sonuç kümesini burada bulabilirsiniz.
 ```json
 [{}]
 ```
-
-## <a name="remarks"></a>Açıklamalar
-
-Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

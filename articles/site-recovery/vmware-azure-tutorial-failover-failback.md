@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86131994"
 ---
 # <a name="fail-over--vmware-vms"></a>VMware VM 'lerini devreder
@@ -65,7 +65,7 @@ Yük devretmeyi çalıştırmadan önce VM 'Lerin [Azure gereksinimlerini](vmwar
 ## <a name="run-a-failover-to-azure"></a>Azure'a yük devretme işlemini çalıştırma
 
 1. **Ayarlar**  >  **çoğaltılan öğeler**' de, yük devretmek istediğiniz VM 'yi seçin ve ardından **Yük devretme**' yı seçin.
-2. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
+2. **Yük devretme** kısmında, yük devredeceğiniz bir **Kurtarma Noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
    * **Varsayılan**: Bu seçenekte öncelikle Site Recovery’ye gönderilen tüm veriler işlenir. Yük devretmeden sonra oluşturulan Azure VM, yük devretme tetiklendiğinde Site Recovery çoğaltılan tüm verilere sahip olduğundan en düşük kurtarma noktası hedefini (RPO) sağlar.
    * **En son işlenen**: Bu seçenek VM 'yi Site Recovery tarafından işlenen en son kurtarma noktasına devreder. İşlenmemiş verileri işlemek için zaman harcanmadığından, bu seçenek düşük bir RTO (kurtarma süresi hedefi) sağlar.
    * **En son uygulamayla tutarlı**: Bu seçenek VM 'yi, Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder.

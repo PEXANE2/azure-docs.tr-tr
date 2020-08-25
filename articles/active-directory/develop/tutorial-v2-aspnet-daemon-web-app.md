@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83641114"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıların oturum açması için OWIN OpenID Connect ara yazılımını kullanır.
 
-Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs` . Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs`Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
+Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs` . Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs` Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
 
 >[!NOTE]
 > Microsoft Identity platformu ' na yeni başladıysanız, [.NET Core Daemon hızlı](quickstart-v2-netcore-daemon.md)başlangıç ile başlamanız önerilir.
@@ -113,17 +113,17 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
      İkiden fazla yeniden yönlendirme URI 'si varsa, uygulama başarıyla oluşturulduktan sonra bunları daha sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
-1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Ardından:
+1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Sonra:
    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
    - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
 1. **Kaydet**’i seçin.
-1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Ardından:
+1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Sonra:
 
    1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli**anahtarı),
    1. **1 yılda**, **2 yıl içinde**bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
    1. **Ekle** düğmesini seçin.
    1. Anahtar değeri göründüğünde güvenli bir konuma kopyalayın ve kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir. Bu bir kez daha gösterilmez veya başka yollarla alınabilir.
-1. Uygulama için sayfa listesinde, **API izinleri**' ni seçin. Ardından:
+1. Uygulama için sayfa listesinde, **API izinleri**' ni seçin. Sonra:
    1. **İzin ekleyin** düğmesini seçin.
    1. **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun.
    1. **Yaygın olarak kullanılan Microsoft API 'leri** bölümünde **Microsoft Graph**' yi seçin.
@@ -140,7 +140,7 @@ Projeleri yapılandırmak için Visual Studio 'da çözümü açın.
 
 Kurulum betiklerini kullandıysanız, sizin için aşağıdaki değişiklikler uygulanmış olur.
 
-1. **UserSync\Web.config** dosyasını açın.
+1. **UserSync\Web.Config** dosyasını açın.
 1. Uygulama anahtarı 'nı bulun **: ClientID**. Mevcut değeri, Azure portal kopyalanmış olan **DotNet-Web-Daemon-v2** UYGULAMASıNıN uygulama kimliğiyle değiştirin.
 1. Uygulama anahtarı 'nı bulun **: ClientSecret**. Mevcut değeri, Azure portal **DotNet-Web-Daemon-v2** uygulamasının oluşturulması sırasında kaydettiğiniz anahtarla değiştirin.
 
@@ -187,7 +187,7 @@ Bu örnek için ilgili kod aşağıdaki dosyalardır:
    - Microsoft. Identity. Client
 1. **App_Start** klasöründe:
    1. **Startup.auth.cs**adlı bir sınıf oluşturun.
-   1. Kaldırın **. **Ad alanı adından App_Start.
+   1. Kaldırın **. ** Ad alanı adından App_Start.
    1. **Başlangıç** sınıfının kodunu, örnek uygulamanın aynı dosyasındaki kodla değiştirin.
    Tüm sınıf tanımını aldığınızdan emin olun. Tanım, **ortak sınıf başlatmasının** **genel kısmi sınıf başlatması** olarak değişir.
 1. **Startup.auth.cs**Içinde, Visual Studio IntelliSense tarafından önerilen **using** deyimlerini ekleyerek eksik başvuruları çözün.
@@ -232,7 +232,7 @@ Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir ta
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>DotNet-Web-Daemon-v2 için Azure AD kiracı uygulaması kaydını güncelleştirme
 
-1. [Azure portalına](https://portal.azure.com) geri dönün.
+1. [Azure Portal](https://portal.azure.com)geri dönün.
 1. Sol bölmede **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin.
 1. **DotNet-Web-Daemon-v2** uygulamasını seçin.
 1. Uygulamanızın **kimlik doğrulama** sayfasında, **oturum kapatma URL 'si** alanlarını hizmetinizin adresiyle güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: 3614fac027dd32ab5f5d70f5835432ac3b9b512d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/21/2020
+ms.custom: contperfq1
+ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207739"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755101"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Beeline istemcisini Apache Hive ile kullanma
 
@@ -25,7 +25,7 @@ Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdı
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Kümenizin birincil depolama alanı için URI düzenine dikkat edin. Örneğin, `wasb://` Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümenizin birincil depolama alanı için URI düzenine dikkat edin. Örneğin,  `wasb://` Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
 * Seçenek 1: bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar.
 

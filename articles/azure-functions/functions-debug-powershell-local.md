@@ -1,17 +1,17 @@
 ---
 title: PowerShell Azure Işlevlerini yerel olarak hata ayıklama
-description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
+description: Yerel olarak çalışırken PowerShell işlevlerinin hatalarını ayıklamayı öğrenin.
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642240"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799375"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 

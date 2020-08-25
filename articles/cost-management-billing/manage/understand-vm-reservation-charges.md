@@ -4,14 +4,14 @@ description: Azure Ayrılış VM Örneği indiriminin çalıştırılan sanal ma
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018391"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192224"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure rezervasyon indirimini sanal makinelere uygulama
 
@@ -56,11 +56,15 @@ Windows VM örneklerini çalıştırırken altyapı maliyetlerini karşılamak i
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Farklı boyutlara indirim uygulanabilir
 
-Ayrılmış VM Örneği satın alırken **En iyi duruma getir**: **örnek boyutu esnekliği**'ni seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Ayrılmış VM Örneği satın alırken **Örnek boyutu esnekliği için en iyi duruma getirilmiş**’i seçtiğinizde, indirim kapsamı seçtiğiniz VM boyutuna uygulanır. Ayrıca, aynı serideki örnek boyutu esnekliği grubundaki diğer VM’lerin boyutlarına da uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Yalnızca eşleşen ServiceType için indirim uygulanır
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Premium depolama VM’leri premium olmayan indirimlerden yararlanamaz
 
-Rezervasyon indirimi yalnızca `AdditionalInfo` alanındaki `ServiceType` değerinin satın alınan rezervasyonla eşleştiği VM kullanımına uygulanır. Rezervasyon indirimi uygulamasında VM'ler için kullanılan ölçüm yoksayılır ve yalnızca `ServiceType` değerlendirilir. VM'yi hangi hizmet türü için satın aldığınızı bilmelisiniz. Premium olmayan depolama VM rezervasyonunu premium depolama rezervasyonuyla (veya tersine) değiştirebilirsiniz.
+Bir örneği aşağıda verilmiştir. Beş adet Standard_D1 VM için bir rezervasyon satın aldığınızı düşünün. Rezervasyon indirimi yalnızca Standard_D1 VM’lere veya aynı örnek ailesindeki diğer VM’lere uygulanır. İndirim Standard_DS1 VM’sine veya DS1 örnek boyutu esnekliği grubundaki diğer boyutlara uygulanmaz.
+
+Rezervasyon indirimi uygulamasında VM’ler için kullanılan ölçüm yoksayılır ve yalnızca ServiceType değerlendirilir. VM’leriniz için örnek esnekliği grubu/serisi bilgilerini belirlemek için `AdditionalInfo` kapsamındaki `ServiceType` değerine göz atın. Değerler, CSV uzantılı kullanım dosyanızda yer alır.
+
+Satın aldıktan sonra rezervasyonun örnek esnekliği grubu/serisi doğrudan değiştirilemez. Ancak, bir örnek esnekliği grubundaki/serisindeki VM rezervasyonunu bir başkasındakiyle *değiştirebilirsiniz*.
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>VM rezervasyon indirimlerini alan hizmetler
 

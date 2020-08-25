@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923790"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257441"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ Cihazı Çin'de iade ediyorsanız aşağıdaki adımları uygulayın.
 
 ### <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Japonya, Singapur, Güney Kore, Batı Avrupa veya Hindistan’da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında otomatik gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
+US Government, Japonya, Singapur, Güney Kore, Batı Avrupa, Güney Afrika veya Hindistan’da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında otomatik gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
 
 1. Azure portalında siparişinizin **Genel Bakış** dikey penceresine gidin. **Teslim almayı zamanla** seçeneğini belirlediğinizde gösterilen yönergeleri izleyin. Siparişi teslim etme sırasında kullanılacak Yetkilendirme kodunu görmeniz gerekir.
 

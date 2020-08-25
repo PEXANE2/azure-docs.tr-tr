@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701647"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752067"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Azure diskleri ayırma ile maliyetleri azaltma
 
@@ -31,7 +31,7 @@ Disk için bir ayırma, disk SKU 'SU başına yapılır. Sonuç olarak, ayırma 
 Örneğin, 2 TiB sağlanan depolama kapasitesi olan bir P40 disk ayırdığınızı varsayalım. Ayrıca yalnızca iki P30 disk ayıradığınızı varsayın. Bu durumda P40 ayırması P30 tüketimini hesaba almaz ve P30 disklerinde Kullandıkça Öde tarifesine göre ödeme yaparsınız.
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>Satın alma konusunda dikkat edilmesi gerekenler
 
@@ -55,7 +55,7 @@ Nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı yeni rezerv
 
 ## <a name="buy-a-disk-reservation"></a>Disk ayırması satın alma
 
-[Azure Portal](https://portal.azure.com/)üzerinden Azure disk depolama ayırmaları satın alabilirsiniz. Rezervasyon için ön ya da aylık ödemeler için ödeme yapabilirsiniz. Aylık ödemeler ile satın alma hakkında daha fazla bilgi için bkz. [aylık ödemeler Ile satın alma rezervasyonları](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md).
+[Azure Portal](https://portal.azure.com/)üzerinden Azure disk depolama ayırmaları satın alabilirsiniz. Rezervasyon için ön ya da aylık ödemeler için ödeme yapabilirsiniz. Aylık ödemeler ile satın alma hakkında daha fazla bilgi için bkz. [aylık ödemeler Ile satın alma rezervasyonları](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments).
 
 Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
 
@@ -103,5 +103,5 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Rezervasyon indiriminizin Azure Disk Depolama'ya nasıl uygulandığını anlama](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Rezervasyon indiriminizin Azure Disk Depolama'ya nasıl uygulandığını anlama](../cost-management-billing/reservations/understand-disk-reservations.md)

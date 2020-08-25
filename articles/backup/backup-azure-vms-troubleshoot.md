@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761772"
+ms.locfileid: "88763312"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -44,7 +44,7 @@ Azure sanal makinelerinde yedekleme hatalarıyla ilgili yaygın sorunlar aşağ�
 Hata kodu: Vmrestorepointınternalerror
 
 Yedekleme sırasında **Olay Görüntüleyicisi uygulama günlüklerinde** **Hatalı uygulama adı ** iletisi görüntülenir. IaaSBcdrExtension.exedaha sonra, VM 'de yapılandırılan virüsten koruma, yedekleme uzantısının yürütülmesini kısıtlamaktadır.
-Bu sorunu çözmek için, virüsten koruma yapılandırmasındaki dizinlerin altına çıkarın ve yedekleme işlemini yeniden deneyin.
+Bu sorunu çözmek için, virüsten koruma yapılandırmasındaki aşağıdaki dizinleri dışlayın ve yedekleme işlemini yeniden deneyin.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -93,8 +93,8 @@ Windows hizmeti **com+ sistem** uygulamasındaki bir sorun nedeniyle yedekleme i
 * Hizmeti yeniden başlatmazsanız, aşağıdaki adımları izleyerek **Dağıtılmış işlem Düzenleyicisi** hizmeti 'ni yeniden yükleyin:
   * MSDTC hizmetini durdurun
   * Komut istemini (cmd) açın
-  * "Msdtc-uninstall" komutunu çalıştır
-  * "MSDTC-install" komutunu çalıştır
+  * `msdtc -uninstall` komutunu çalıştırın
+  * `msdtc -install` komutunu çalıştırın
   * MSDTC hizmetini başlatın
 * Windows hizmeti **com+ sistem uygulamasını**başlatın. **Com+ sistem uygulaması** başladıktan sonra Azure Portal bir yedekleme işi tetikleyin.</ol>
 

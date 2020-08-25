@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681825"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
@@ -21,7 +21,7 @@ HDInsight’ta Apache Kafka Üretici ve Tüketici API’lerini kullanmayı öğr
 
 Kafka Üretici API’si, uygulamaların Kafka kümesine veri akışları göndermesine olanak tanır. Kafka Tüketici API’si, uygulamaların kümeden veri akışları okumasına olanak tanır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ön koşullar
@@ -135,7 +135,7 @@ Bu adımı atlamak isterseniz, önceden oluşturulmuş jar dosyaları dışında
     mvn clean package
     ```
 
-    Bu komut, `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı dosyayı içeren `target` adlı bir dizin oluşturur. ESP kümeleri için dosya,`kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
+    Bu komut, `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı dosyayı içeren `target` adlı bir dizin oluşturur. ESP kümeleri için dosya, `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. Dosyayı HDInsight kümenize kopyalamak için aşağıdaki komutu girin `kafka-producer-consumer-1.0-SNAPSHOT.jar` . İstendiğinde, SSH kullanıcısının parolasını girin.
 

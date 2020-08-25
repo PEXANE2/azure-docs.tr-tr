@@ -4,21 +4,21 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/16/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089405"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756818"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
-Azure depolama, verilerinizi buluta kalıcı hale geldiğinde otomatik olarak şifreler. Azure depolama şifrelemesi, verilerinizi korur ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
+Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Azure depolama şifrelemesi, verilerinizi korur ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur.
 
 ## <a name="about-azure-storage-encryption"></a>Azure depolama şifrelemesi hakkında
 
@@ -48,8 +48,8 @@ Aşağıdaki tabloda, Azure depolama şifrelemesi için anahtar yönetim seçene
 | Şifreleme/şifre çözme işlemleri | Azure | Azure | Azure |
 | Desteklenen Azure depolama hizmetleri | Tümü | BLOB depolama, Azure dosyaları<sup>1, 2</sup> | Blob depolama |
 | Anahtar depolama | Microsoft anahtar deposu | Azure Key Vault | Müşterinin kendi anahtar deposu |
-| Anahtar döndürme sorumluluğu | Microsoft | Müşteri | Müşteri |
-| Anahtar denetimi | Microsoft | Müşteri | Müşteri |
+| Anahtar döndürme sorumluluğu | Microsoft | Customer | Customer |
+| Anahtar denetimi | Microsoft | Customer | Customer |
 
 <sup>1</sup> müşteri tarafından yönetilen anahtarları kuyruk depolama ile kullanmayı destekleyen bir hesap oluşturma hakkında bilgi için, bkz. [kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)oluşturma.<br />
 <sup>2</sup> müşteri tarafından yönetilen anahtarları tablo depolama ile kullanmayı destekleyen bir hesap oluşturma hakkında bilgi için bkz. [tablolar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).

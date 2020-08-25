@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422428"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798168"
 ---
 # <a name="what-is-the-my-account-portal"></a>Hesabım portalı nedir?
 
@@ -33,11 +33,11 @@ Hesabım **portalı,** kuruluşunuzun verilerinizi nasıl kullandığını gör�
 ![Hesabım portalı, genel bakış sayfası](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Bu makale, güvenlik bilgilerini, cihaz bilgilerini, parolayı, bağlı kuruluşları, dil ayarlarını, gizliliği veya önceki oturum açma bilgilerini güncelleştirmek için Hesabım portalına ulaşmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınız için kimlik doğrulaması ve diğer Azure Active Directory (Azure AD) özelliklerinin nasıl kullanılacağına ilişkin bilgi isteyen bir yöneticiyseniz, [Yöneticiler Için Azure AD belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın.
+>Bu makale, güvenlik bilgilerini, cihaz bilgilerini, parolayı, bağlı kuruluşları, dil ayarlarını, gizliliği veya önceki oturum açma bilgilerini güncelleştirmek için Hesabım portalına ulaşmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınız için kimlik doğrulaması ve diğer Azure Active Directory (Azure AD) özelliklerinin nasıl kullanılacağına ilişkin bilgi isteyen bir yöneticiyseniz, [Yöneticiler Için Azure AD belgelerine](../index.yml)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Güvenlik bilgilerinizi](user-help-security-info-overview.md) görüntülemek veya yönetmek için seçin
+- [Güvenlik bilgilerinizi](./security-info-setup-signin.md) görüntülemek veya yönetmek için seçin
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md) görüntüleme veya yönetme
 

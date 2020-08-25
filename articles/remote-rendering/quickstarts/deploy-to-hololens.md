@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557041"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796808"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Hızlı başlangıç: Unity örneğini HoloLens 'e dağıtma
 
@@ -44,7 +44,7 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. Yapılandırmayı **Release** ve **ARM64** olarak değiştirme
 1. Hata ayıklayıcı modunu **uzak makineye** değiştirme\
     ![Çözüm yapılandırması](media/unity-deploy-config.png)
-1. Çözümü oluşturma (F7)
+1. Çözümü derleme
 1. ' Hızlı başlangıç ' projesi için *özellikler > hata ayıklama* sayfasına gidin
     1. Yapılandırma *sürümünün* etkin olduğundan emin olun
     1. Hata ayıklayıcıyı **uzak makineye** *başlatılacak şekilde* ayarla

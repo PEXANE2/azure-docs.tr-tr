@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 08/14/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 577c184f78c5784b29db7562f3c33a3cb7518f0c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1d84d25e5605ede064ddc853a4249ba49d59513d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142052"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257752"
 ---
 ::: zone target="docs"
 
@@ -352,7 +352,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Data Box’ı Japonya, Singapur, Güney Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
+Data Box’ı US Government, Japonya, Singapur, Güney Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
 
 1. Bu adım başarıyla tamamlandıktan sonra Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında gösterilen Yetkilendirme kodunu not alın.
 2. Cihazı kapatın ve kabloları çıkarın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.

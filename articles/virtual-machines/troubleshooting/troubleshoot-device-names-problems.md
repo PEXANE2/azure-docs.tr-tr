@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084401"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756835"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM cihaz adı değişikliklerinde sorun giderme
 
@@ -42,7 +42,7 @@ Bu sorun, Linux 'ta cihaz taramanın zaman uyumsuz olarak gerçekleşmesi için 
 
 Bu sorunu çözmek için kalıcı adlandırma kullanın. Kalıcı adlandırma kullanmanın dört yolu vardır: dosya sistemi etiketi, UUID, KIMLIĞE göre veya yola göre. Azure Linux VM 'Leri için dosya sistemi etiketi veya UUID kullanmanızı öneririz.
 
-Çoğu dağıtım, `fstab` **nofail** veya **nobootwaıt** parametrelerini sağlar. Bu parametreler, disk başlangıç sırasında takılamazsa sistemin önyüklemesine olanak tanır. Bu parametreler hakkında daha fazla bilgi için dağıtım belgelerinize bakın. Bir veri diski eklediğinizde bir UUID kullanmak üzere Linux VM yapılandırma hakkında bilgi için, bkz. [Yeni diski bağlamak Için LINUX VM 'ye bağlanma](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+Çoğu dağıtım, `fstab` **nofail** veya **nobootwaıt** parametrelerini sağlar. Bu parametreler, disk başlangıç sırasında takılamazsa sistemin önyüklemesine olanak tanır. Bu parametreler hakkında daha fazla bilgi için dağıtım belgelerinize bakın. Bir veri diski eklediğinizde bir UUID kullanmak üzere Linux VM yapılandırma hakkında bilgi için, bkz. [Yeni diski bağlamak Için LINUX VM 'ye bağlanma](../linux/add-disk.md#format-and-mount-the-disk).
 
 Azure Linux Aracısı bir VM 'ye yüklendiğinde, aracı/dev/disk/Azure yolu altında bir sembolik bağlantı kümesi oluşturmak için Uıdev kurallarını kullanır. Uygulamalar ve betikler, VM 'ye bağlı diskleri tanımlamak için udev kurallarını disk türü ve disk LUN 'Ları ile birlikte kullanır.
 

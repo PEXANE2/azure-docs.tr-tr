@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741180"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799443"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
 
@@ -33,11 +33,11 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 > [!Important]
 > Microsoft Authenticator uygulama, iki öğeli doğrulama kullanan herhangi bir hesapla birlikte çalışarak, zaman tabanlı bir kerelik parola (TOTP) standartlarını destekler.
 >
->Bu makale, Microsoft Authenticator uygulamasını bir güvenlik doğrulama yöntemi olarak indirmeye ve kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için kimlik doğrulayıcı uygulamasını kullanarak parolasız oturum açma 'yı nasıl etkinleştireceğinizi öğrenmek için bir yöneticiyseniz, [Microsoft Authenticator App (Önizleme) ile parolasız oturum açmayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)makalesine bakın.
+>Bu makale, Microsoft Authenticator uygulamasını bir güvenlik doğrulama yöntemi olarak indirmeye ve kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için kimlik doğrulayıcı uygulamasını kullanarak parolasız oturum açma 'yı nasıl etkinleştireceğinizi öğrenmek için bir yöneticiyseniz, [Microsoft Authenticator App (Önizleme) ile parolasız oturum açmayı etkinleştirme](../authentication/howto-authentication-passwordless-phone.md)makalesine bakın.
 
 ## <a name="terminology"></a>Terminoloji
 
-| Terim|Description|
+| Terim|Açıklama|
 | ----|-----------|
 | İki öğeli doğrulama | Bir parola ve PIN gibi özellikle yalnızca iki doğrulama bilgisi parçasını kullanmanızı gerektiren bir doğrulama işlemi. Microsoft Authenticator uygulaması hem standart iki öğeli doğrulamayı hem de passwordless oturum açmayı destekler. |
 | Çok faktörlü kimlik doğrulaması (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
@@ -71,7 +71,7 @@ Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız 
 
 ## <a name="in-this-section"></a>Bu bölümde
 
-| Makale | Description |
+| Makale | Açıklama |
 | ------ | ------------ |
 | [Uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) | Android ve iOS çalıştıran cihazlar için Microsoft Authenticator uygulamasının nereden ve nasıl alınacağını ve yükleneceğini açıklar. |
 | [İş veya okul hesaplarınızı ekleyin](user-help-auth-app-add-work-school-account.md) | Çeşitli iş veya okul ve kişisel hesaplarınızın Microsoft Authenticator uygulamasına nasıl ekleneceğini açıklar. |
