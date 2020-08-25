@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209470"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799069"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -211,7 +211,7 @@ Grup tabanlı lisanslama kullanıyorsanız, aşağıdaki sınırlamalar ve bilin
 
 - Lisanslar büyük bir grup (örneğin, 100.000 Kullanıcı) için atandığında veya değiştirildiğinde performansı etkileyebilir. Özellikle, Azure AD Otomasyonu tarafından oluşturulan değişiklikler hacmi, Azure AD ile şirket içi sistemler arasında Dizin eşitlemesinin performansını olumsuz yönde etkileyebilir.
 
-- Kullanıcılarınızın üyeliklerini yönetmek için dinamik grupları kullanıyorsanız kullanıcının grubun bir parçası olduğunu doğrulayın. Bu durum lisans atama için gereklidir. Aksi takdirde dinamik grubun [üyelik kuralı işleme durumunu denetleyin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
+- Kullanıcılarınızın üyeliklerini yönetmek için dinamik grupları kullanıyorsanız kullanıcının grubun bir parçası olduğunu doğrulayın. Bu durum lisans atama için gereklidir. Aksi takdirde dinamik grubun [üyelik kuralı işleme durumunu denetleyin](./groups-create-rule.md).
 
 - Bazı yüksek yük durumlarında, mevcut lisanslarla gruplar veya üyelik değişiklikleri için lisans değişikliklerinin işlenmesi uzun zaman alabilir. Değişikliklerinizin, 60K kullanıcıları veya daha az grup boyutunu işlemek için 24 saatten uzun sürmek istiyorsanız lütfen araştırmamızı sağlamak için [bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) . 
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792005"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799341"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme
 
@@ -144,6 +144,22 @@ Kullanıcı erişimi yönetici rolü atamasını kendinize veya kök kapsamdaki 
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>Genel yönetici için erişimi yükseltme
+
+Azure CLı kullanarak genel yöneticiye erişimi yükseltmek için aşağıdaki temel adımları kullanın.
+
+1. Bu uç noktayı çağırmak için [az Rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) komutunu kullanın `elevateAccess` . Bu, size kök kapsamda () Kullanıcı erişimi yönetici rolü verir `/` .
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. Yükseltilmiş erişim sırasında yapmanız gereken değişiklikleri yapın.
+
+    Rol atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md).
+
+1. Yükseltilmiş erişiminizi kaldırmak için adımları sonraki bir bölümde gerçekleştirin.
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Kök kapsamda rol atamasını listeleyin (/)
 
@@ -275,7 +291,7 @@ Bir kullanıcı için tüm reddetme atamalarını kök kapsamda ( `/` ) listeley
     ```
         
     >[!NOTE] 
-    >Bir dizin yöneticisinin birçok ataması olmaması gerekir. önceki sorgu çok fazla atama döndürürse, yalnızca dizin kapsamı düzeyindeki tüm atamaları sorgulayabilir ve sonra sonuçları filtreleyebilirsiniz:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Bir dizin yöneticisinin birçok ataması olmaması gerekir. önceki sorgu çok fazla atama döndürürse, yalnızca dizin kapsamı düzeyindeki tüm atamaları sorgulayabilir ve sonra sonuçları filtreleyebilirsiniz: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
 1. Önceki çağrılar, rol atamalarının bir listesini döndürür. Kapsamın bulunduğu rol atamasını `"/"` ve `roleDefinitionId` 1. adımda bulduğunuz rol adı kimliği ile biter ve `principalId` Dizin yöneticisinin ObjectID ile eşleşen rolü bulun. 
     

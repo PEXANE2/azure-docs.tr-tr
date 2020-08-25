@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737640"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757821"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
 
@@ -43,7 +44,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
     * Serileştirme/seri kaldırma ek yükü ekler.
     * Yüksek GC ek yükü.
     * Tüm kod üretimini keser.
-* **RDD**
+* **RDD'ler**
     * Yeni bir özel RDD oluşturmanız gerekmedikçe, RDDs kullanmanız gerekmez.
     * Catalyst aracılığıyla sorgu iyileştirmesi yok.
     * Tamamen aşamalı kod üretimi yok.
@@ -77,7 +78,7 @@ Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yere
     * Bellek içi ve SSD önbelleği kullanır.
 
 * Yerel olarak (önerilir)
-    * `hdfs://mycluster`Yolun.
+    * `hdfs://mycluster` Yolun.
     * SSD önbelleği kullanır.
     * Önbelleğe alınmış veriler, kümeyi sildiğinizde, önbellek yeniden oluşturması gerekmeden kaybedilir.
 
@@ -86,7 +87,7 @@ Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yere
 Spark işleri dağıtılır, bu nedenle en iyi performans için uygun veri serileştirme önem taşır.  Spark için iki serileştirme seçeneği vardır:
 
 * Java serileştirme varsayılandır.
-* `Kryo`serileştirme daha yeni bir biçimdir ve Java 'dan daha hızlı ve daha küçük seri hale getirme oluşmasına neden olabilir.  `Kryo`, sınıfları programınıza kaydetmenizi gerektirir ve henüz tüm serileştirilebilir türleri desteklemez.
+* `Kryo` serileştirme daha yeni bir biçimdir ve Java 'dan daha hızlı ve daha küçük seri hale getirme oluşmasına neden olabilir.  `Kryo` , sınıfları programınıza kaydetmenizi gerektirir ve henüz tüm serileştirilebilir türleri desteklemez.
 
 ## <a name="use-bucketing"></a>Gruplandırmayı kullanma
 

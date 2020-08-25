@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6f5e05e9bfea6b14e46bbde8d17fba2d2a3b7b07
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c689b31f73d732dda37b64793f988febc409e6da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429501"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797964"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye VuePress sitesi yayımlama
 
 Bu makalede, [Azure Azure statik Web Apps](overview.md)bir [vuepress](https://vuepress.vuejs.org/) Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web Apps uygulamasıdır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure statik Web Apps ayarlama
 > - VuePress uygulamasını Azure 'a dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/).
 - GitHub hesabı. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://github.com/join).
@@ -153,7 +153,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
    :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Derleme ayarları":::
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 

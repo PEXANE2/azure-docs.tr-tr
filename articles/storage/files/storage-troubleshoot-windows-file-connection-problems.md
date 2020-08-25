@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927224"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752343"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -364,6 +364,16 @@ Windows ACL 'Leri bağlı bir dosya paylaşımında dosya Gezgini ile yapıland�
 ### <a name="solution"></a>Çözüm
 
 Geçici bir çözüm olarak dizin/dosya düzeyi izinlerini yapılandırmak için [ıacl 'ler aracını](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) kullanmanızı öneririz. 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>JOIN-AzStorageAccountForAuth cmdlet 'ini çalıştırma hatası
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Hata: "Dizin hizmeti göreli bir tanımlayıcı ayıramadı"
+
+Bu hatası, RID Yöneticisi FSMO rolünü tutan bir etki alanı denetleyicisi kullanılamıyorsa veya etki alanından kaldırılmışsa ve yedekten geri yüklenirse meydana gelebilir.  Tüm etki alanı denetleyicilerinin çalıştığını ve kullanılabilir olduğunu doğrulayın.
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Hata: "Hiçbir ad verilmediğinden konum parametreleri bağlanamıyor"
+
+Bu hata büyük olasılıkla Join-AzStorageAccountforAuth komutundaki bir söz dizimi hatasından tetiklenmiştir.  Yanlış yazım veya sözdizimi hataları için komutu denetleyin ve AzFilesHybrid modülünün en son sürümünün yüklü olduğunu doğrulayın https://github.com/Azure-Samples/azure-files-samples/releases) .  
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

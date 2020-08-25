@@ -2,14 +2,14 @@
 title: Sanal ağ kullanma senaryoları
 description: Azure sanal ağına kapsayıcı grupları dağıtmaya yönelik senaryolar, kaynaklar ve sınırlamalar.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259535"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797878"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Sanal ağ senaryoları ve kaynakları
 
@@ -42,6 +42,8 @@ Bir Azure sanal ağına dağıtılan kapsayıcı grupları, şunun gibi senaryol
 * Bir sanal ağa dağıtılan bir kapsayıcı grubunda [yönetilen bir kimlik](container-instances-managed-identity.md) kullanamazsınız.
 * Bir sanal ağa dağıtılan bir kapsayıcı grubunda, bir veya daha fazla [araştırma](container-instances-liveness-probe.md) veya [hazırlık araştırması](container-instances-readiness-probe.md) etkinleştiremezsiniz.
 * Dahil edilen ek ağ kaynakları nedeniyle, bir sanal ağ dağıtımları genellikle standart bir kapsayıcı örneği dağıtmaktan daha yavaştır.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>Nereden dağıtılır
 

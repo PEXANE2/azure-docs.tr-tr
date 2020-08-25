@@ -4,12 +4,12 @@ description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güven
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 03bbcef2ce408a1b1f5e2c2d909728d3ed8e7e19
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611254"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757039"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup kullanan karma yedeklemeleri korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -39,7 +39,7 @@ Bir kurtarma hizmetleri Kasası oluşturuyorsanız, tüm güvenlik özelliklerin
 
     ![Azure portal tarayıcı seçeneğinin ekran görüntüsü](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    Kurtarma hizmetleri kasalarının listesi görünür. Bu listeden bir kasa seçin. Seçilen kasa panosu açılır.
+    Kurtarma Hizmetleri kasalarının listesi görünür. Bu listeden bir kasa seçin. Seçilen kasa panosu açılır.
 3. Kasa altında görünen öğelerin listesinden, **Ayarlar**' ın altında **Özellikler**' i seçin.
 
     ![Kurtarma Hizmetleri Kasası seçeneklerinin ekran görüntüsü](./media/backup-azure-security-feature/vault-list-properties.png)

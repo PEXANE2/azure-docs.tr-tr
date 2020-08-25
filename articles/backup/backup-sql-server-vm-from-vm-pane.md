@@ -3,12 +3,12 @@ title: VM bölmesinden bir SQL Server VM yedekleme
 description: Bu makalede, VM bölmesinden Azure sanal makinelerinde SQL Server veritabanlarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227498"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755254"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM bölmesinden bir SQL Server yedekleme
 
@@ -62,7 +62,7 @@ SQL Server VM yedeklemeyi VM 'deki **yedekleme** bölmesinden etkinleştirebilir
 
     ![Yedekleme hazırlığı hazır değil](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. Yedeklenmiş SQL Server VM yapmanız gereken daha fazla işlem veya izleme için ilgili kurtarma hizmeti kasasına gidin. Bu kasada yedeklenen tüm veritabanlarını görmek için **yedekleme öğeleri** ' ne gidin ve isteğe bağlı yedekleme ve geri yükleme gibi işlemleri tetikleyin. Benzer şekilde, koruma, yedekleme ve geri yükleme gibi işlemlere karşılık gelen işleri [izlemek](manage-monitor-sql-database-backup.md) Için **yedekleme işleri** ' ne gidin.
+8. Yedeklenmiş SQL Server VM yapmanız gereken daha fazla işlem veya izleme için, ilgili kurtarma hizmetleri kasasına gidin. Bu kasada yedeklenen tüm veritabanlarını görmek için **yedekleme öğeleri** ' ne gidin ve isteğe bağlı yedekleme ve geri yükleme gibi işlemleri tetikleyin. Benzer şekilde, koruma, yedekleme ve geri yükleme gibi işlemlere karşılık gelen işleri [izlemek](manage-monitor-sql-database-backup.md) Için **yedekleme işleri** ' ne gidin.
 
     ![Yedekleme öğelerinde yedeklenen veritabanlarına bakın](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

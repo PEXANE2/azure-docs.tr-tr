@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741958"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798049"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
@@ -33,7 +33,7 @@ Web tabanlı **My Apps** portalından iş veya okul hesabınızı kullanarak şu
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Bu içerik, Uygulamalarım kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+> Bu içerik, Uygulamalarım kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](../manage-apps/index.yml)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="supported-browsers"></a>Desteklenen tarayıcılar
 
@@ -59,7 +59,7 @@ Bu uzantı şunları yapmanıza yardımcı olur:
 
 - Son **kullanılan** bölümde kullandığınız son uygulamalara bakın.
 
-- [Uygulama proxy 'si](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)ile uzak sırada Iç şirket URL 'lerini kullanın.
+- [Uygulama proxy 'si](../manage-apps/application-proxy.md)ile uzak sırada Iç şirket URL 'lerini kullanın.
 
 ### <a name="to-download-and-install-the-extension"></a>Uzantıyı indirmek ve yüklemek için
 

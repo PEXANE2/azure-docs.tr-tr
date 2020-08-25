@@ -3,12 +3,12 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612682"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763601"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 

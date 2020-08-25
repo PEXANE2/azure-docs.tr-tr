@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128061"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799358"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
@@ -33,7 +33,7 @@ Media Services [akış uç NOKTASıNDA](streaming-endpoint-concept.md)CDN 'nin e
 
 Bu konu, [CDN tümleştirmesini](#enable-azure-cdn-integration)etkinleştirmeyi tartışır. Ayrıca, önceden getirme (etkin önbelleğe alma) ve [kaynak-yardım CDN-önceden getirme](#origin-assist-cdn-prefetch) kavramını da açıklar.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * [Akış uç noktası](streaming-endpoint-concept.md) `hostname` ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
 * İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturun.
@@ -47,7 +47,7 @@ Bu konu, [CDN tümleştirmesini](#enable-azure-cdn-integration)etkinleştirmeyi 
 
 CDN etkinken bir akış uç noktası sağlandıktan sonra, akış uç noktasını CDN uç noktası ile eşlemek için DNS güncelleştirme işlemi yapılmadan önce Media Services tanımlı bir bekleme süresi vardır.
 
-Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış uç noktanızın **durdurulmuş** durumda olması gerekir. Azure CDN tümleştirmenin etkinleştirilmesi ve değişikliklerin tüm CDN pop 'larda etkin olması iki saate kadar sürebilir. Ancak, akış uç noktasından kesintiler olmadan akış uç noktanızı ve akışı başlatabilirsiniz. Tümleştirme tamamlandıktan sonra, akış CDN 'den dağıtılır. Sağlama süresi boyunca, akış uç noktanız **Başlangıç** durumunda olur ve performans düşüklüğü gözlemleyebilirsiniz.
+Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış uç noktanızın **durdurulmuş** durumda olması gerekir. Akış uç noktası başlatıldıktan sonra, Azure CDN tümleştirmenin etkinleştirilmesi ve değişikliklerin tüm CDN pop 'larda etkin olması iki saate kadar sürebilir. Ancak, akış uç noktasından kesintiler olmadan akış uç noktanızı ve akışı başlatabilirsiniz. Tümleştirme tamamlandıktan sonra, akış CDN 'den dağıtılır. Sağlama süresi boyunca, akış uç noktanız **Başlangıç** durumunda olur ve performans düşüklüğü gözlemleyebilirsiniz.
 
 Standart akış uç noktası oluşturulduğunda, standart Verizon ile varsayılan olarak yapılandırılır. REST API 'Lerini kullanarak Premium Verizon veya standart Akamai sağlayıcılarını yapılandırabilirsiniz.
 

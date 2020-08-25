@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266109"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799035"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Kendi parolanızı sıfırlamak için doğrulama yöntemi bilgilerinizi kaydedin
 
@@ -26,7 +26,7 @@ ms.locfileid: "84266109"
 Bilgilerinizi kaydedebilmeniz ve kendi parolanızı sıfırlayabilmeniz için yöneticinizin bu özelliği açmanız gerekir. **Parolamı unuttum** seçeneğini görmüyorsanız, yöneticiniz kuruluşunuzun özelliğini etkinleştirmemiş demektir. Bunun yanlış olduğunu düşünüyorsanız yardım için yardım masasına başvurun.
 
 >[!Important]
->Bu makale, self servis parola sıfırlama için kaydolma kullanmaya çalışan kullanıcılara yöneliktir. Bu, kendi iş veya okul parolanızı (gibi alain@contoso.com ) yöneticinizin yardım 'ına gerek kalmadan sıfırlayabilmeniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Bu makale, self servis parola sıfırlama için kaydolma kullanmaya çalışan kullanıcılara yöneliktir. Bu, kendi iş veya okul parolanızı (gibi alain@contoso.com ) yöneticinizin yardım 'ına gerek kalmadan sıfırlayabilmeniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](../authentication/howto-sspr-deployment.md).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Parola sıfırlama doğrulama yönteminizi ayarlama
 

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118434"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757940"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Azure depolama için Gelişmiş tehdit koruması yapılandırma
 
@@ -32,6 +32,17 @@ Azure Storage için Gelişmiş tehdit koruması Şu anda BLOB depolama, Azure do
 Azure Blob depolama API 'Leri ve Data Lake Storage API 'Lerini kullanarak işlemleri Data Lake Storage için etkinleştirilmiş hiyerarşik ad alanları içeren hesaplar. Azure dosya paylaşımları SMB üzerinden işlemleri destekler.
 
 Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+
+Aşağıdaki listede, Azure depolama için Gelişmiş tehdit koruması kullanılabilirliği özetlenmektedir:
+
+- Yayın durumu:
+  - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
+  - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme SMB ve REST işlemlerini destekler)
+  - Azure Data Lake Storage 2. (Önizleme)
+- Larının<br>
+    Ticari bulutlar ✔<br>
+    ✔ US Gov<br>
+    ✘ Çin gov, diğer gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama
 

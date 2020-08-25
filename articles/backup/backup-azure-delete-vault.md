@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652840"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757226"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -303,7 +303,7 @@ Kurtarma Hizmetleri kasasını silme hakkında [daha fazla bilgi edinin](/powers
 > [!NOTE]
 > Şu anda Azure Backup CLı yalnızca Azure VM yedeklemelerini yönetmeyi destekler, bu nedenle kasayı silmek için aşağıdaki komut yalnızca kasa Azure VM yedeklemeleri içeriyorsa işe yarar. Kasa, Azure VM 'lerinden farklı türde herhangi bir yedekleme öğesi içeriyorsa Azure Backup CLı kullanarak bir kasayı silemezsiniz.
 
-Mevcut kurtarma hizmetleri kasasını silmek için aşağıdakileri yapın:
+Mevcut kurtarma hizmetleri kasasını silmek için aşağıdaki adımları gerçekleştirin:
 
 - Korumayı durdurmak ve yedekleme verilerini silmek için
 
@@ -357,13 +357,13 @@ ARMClient komutu hakkında daha fazla bilgi için bkz. [ARMCLIENT Benioku](https
 1. Abonelik KIMLIĞINIZI, kaynak grubu adını ve kasa adını kullanarak aşağıdaki komutu çalıştırın. Hiçbir bağımlılığı yoksa, aşağıdaki komutu çalıştırdığınızda kasa silinir:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
 2. Kasa boş değilse şu hata iletisini alırsınız: *Bu kasada mevcut kaynaklar olduğundan kasa silinemez.* Bir kasadaki korumalı bir öğeyi veya kapsayıcıyı kaldırmak için aşağıdaki komutu çalıştırın:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
 3. Azure portal kasanın silindiğinden emin olun.

@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604405"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812878"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 |:--- |:--- |:--- |:--- |
 | 1 | Müşteri adayı hedefi | Yapılandırılmış bir lider hedefi vardır.| Tek bir ticari Iş ortağı (OCP) kataloğunda, iş ortağı çözümü sekmesinde da listelenen lider hedefi CRM bilgileri bulunur. |
 | 2 | Teklif başlığı | Çözüm teklifini kısaca açıklar. İş ortağının Web sitesinde çözümün çevrimiçi promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
-| 3 | Logo | Logo doğru şekilde görüntülenir. | Logo doğru şekilde görüntülenir. |
+| 3 | Logo | Logo doğru şekilde görüntülenir.  | Logo doğru şekilde görüntülenir.  |
 | 4 |  Teklif açıklaması | <ul><li> 2-3 paragraf içerir.</li><li>Çözüm sunumu, bir bakışta kolayca anlaşılır.</li><li>Yazım ve dil bilgisi hataları ücretsizdir.</li><li>Kapsamlıdır ve hedef kitleyi, Kullanıcı türü ve neden değerli (değer teklifi) yakalar.</li><li>, Anlaşılması kolay olan kısa cümleler içeren paragrafın bulunduğu bir biçimde görüntülenir.</li></ul> | <ul><li> Hedef sektör ana hatlarıyla özetlenmiştir (ilgiliyse).</li><li>Her paragraf başlığının, önemli avantajları vurgulamak için, uygun olduğunda ve madde işaretleri kullanan içeriği özetleyerek tek bir cümle veya ifade içeren iyi stil biçimlendirme. Amaç, okuyucunun sunumu kolay görünüm biçiminde bir bakışta anlaması için ve uzun paragrafları okumak zorunda değildir.</li><li>Her paragraf arasında boşluk vardır. Bir araba broşürü gibi okur. Yani, bu kapsamlı bir öneme sahiptir ve sunumu teknik bir jargolmadan yalnızca açıklar. | 
 | 5 | Kategoriler ve endüstriler | <ul><li>Kategoriler ve alt kategoriler teklif özelliklerine uymalıdır </li><li>Teklif olanaklarınız için uygun olmayan kategorileri/alt kategorileri seçmeyin. </li></ul> | <ul><li>Birincil ve ikincil kategori dahil olmak üzere en fazla iki kategori seçin (isteğe bağlı).</li><li>Her birincil ve/veya ikincil kategori için en fazla iki alt kategori seçin. Alt kategori seçilmezse, teklifiniz seçili kategoride keşfedilebilir olmaya devam eder.</li></ul> |
 | 6 | Görüntüler | <ul><li>Görüntü gereksinimleri Iş Ortağı Merkezi ' nde listelenir.</li><li>Ekran görüntüsüne eklenen metin okunabilir ve görüntü açık olur. | Çözüm teklifi bir bakışta kolayca anlaşılır. |
@@ -53,7 +53,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 4 | Çevrimiçi mağaza ayrıntıları: teklif Özeti | Uygulamanızın arama sayfasında görünür ve en fazla 100 karakter vardır. | |
 | 5 | Çevrimiçi mağaza ayrıntıları: Industries | Sektörler (maks. 2): uygulamanızın en iyi hizalandığı ve için geçerli olduğu endüstrileri seçin. | |
 | 6 | Teklif açıklaması | <ul><li>,,,, \<p> \<em> \<ul> \<li> \<ol> Ve üst bilgi etiketleri dahil basit HTML 'ye izin verilir. En çok, 3000 karakter.</li><li>2-3 paragraf içerir.</li><li>Çözüm sunumu, bir bakışta kolayca anlaşılır.</li><li>Açıklama kapsamlıdır ve hedef kitleyi, Kullanıcı türü ve neden değerli (değer teklifi) yakalar.</li><li>, Anlaşılması kolay olan kısa cümleler olan paragraf anlatım biçimindedir. | <ul><li>Hedef sektör ana hatlarıyla özetlenmiştir (ilgiliyse).</li><li>Her paragraf başlığının, önemli avantajları vurgulamak için, uygun olduğunda ve madde işaretleri kullanan içeriği özetleyerek tek bir cümle veya ifade içeren iyi stil biçimlendirme. Amaç, okuyucunun sunumu kolay görünüm biçiminde bir bakışta anlaması için ve paragrafları okumak zorunda değildir.</li><li>Her paragraf arasında boşluk vardır. Bir araba broşürü gibi okur. Yani, bu kapsamlı bir öneme sahiptir ve sunumu teknik bir jargolmadan yalnızca açıklar. | 
-| 7 | Pazarlama yapıtları | Amblemler doğru şekilde görüntülenir. | <ul><li>Amblemler: küçük (48 x 48 piksel), Orta (90 x 90 piksel) ve büyük (216 x 216 ve 350 x 350 piksel) gereklidir.</li><li>Ekran görüntüsü (Max. 5): gerektirir. 1280x720 piksel çözünürlüğe sahip PNG resmi. |
+| 7 | Pazarlama yapıtları | Amblemler doğru şekilde görüntülenir. | <ul><li>Amblemler: küçük (48 x 48 px, isteğe bağlı), Orta (90 x 90 px, isteğe bağlı) ve büyük (216 x 216, 350 x 350 px, gerekli).</li><li>Ekran görüntüsü (Max. 5): gerektirir. 1280x720 piksel çözünürlüğe sahip PNG resmi. |
 | 8 | Kategoriler ve endüstriler | <ul><li>Kategoriler çözüm sunumu özelliklerine göre eşleşir.</li><li>Açılır pencerede en az bir öğe seçin.</li><li>Çözümün sığmayan kategorileri seçmeyin.</li><li>En iyi sektör veya tüm sektörler (en iyi sektörler yoksa) seçildi. | En çok, varsa 3 kategori seçildi. |
 | 9 | Müşteri adayı yönetimi | Müşteri adaylarınızın depolanacağı sistemi seçin. CRM sisteminizi bağlamak için [müşteri adaylarını öğrenin](./partner-center-portal/commercial-marketplace-get-customer-leads.md) bölümüne bakın. |  |
 | 10 | Kişiler: çözüm desteği ve yardım | <ul><li>Mühendislik İletişim adı: uygulamanızın mühendislik kişisinin adı. Bu kişi, Microsoft 'tan teknik iletişimler alır.</li><li>Mühendislik iletişim e-postası: uygulamanızın mühendislik kişisinin e-posta adresi.</li><li>Mühendislik kişileri telefonu: mühendislik kişisinin telefon numarası. [ISO telefon numarası gösterimleri](https://en.wikipedia.org/wiki/E.123) desteklenir.</li><li>Destek iletişim adı: uygulamanızın destek kişisinin adı. Bu kişi, Microsoft 'tan destek ile ilgili iletişimler alır.</li><li>Destek iletişim e-postası: uygulamanıza yönelik destek kişisinin e-posta adresi.</li><li>Destek iletişim telefonu: destek kişisinin telefon numarası. [ISO telefon numarası gösterimleri](https://en.wikipedia.org/wiki/E.123) desteklenir.</li><li>Destek URL 'SI: destek sayfanızın URL 'SI. | <ul><li>Tüm destek yöntemleri listelenmiştir.</li><li>Ücretli destek, *deneme* veya *test sürüşü* süresince ücretsiz sunulmaktadır. |
@@ -66,7 +66,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 |:--- |:--- |:--- |:--- |
 |1 |Teklif ayarları | <ul><li>Teklif KIMLIĞI: maks. 50 karakter.</li><li>Yayımcı KIMLIĞI: açılan listeden seçin.</li><li>Ad: maks. 50 karakter. | Açıklamada zaten bulunan başlık stilini yansıtır. Uzun başlıklar kullanmaktan kaçının. |
 | 2 | Planlar | İş ortağı yeni planlar seçer.| Başlık, açıklamada zaten bulunan başlık stilini yansıtır. Uzun başlıklar kullanmaktan kaçının.  |
-| 3 | Market yapıtları | Amblemler doğru şekilde görüntülenir. |<ul><li>Amblemler: küçük (48 x 48 piksel), Orta (90 x 90 piksel) ve büyük (216 x 216 ve 350 x 350 piksel) gereklidir.</li><li>Ekran görüntüsü (Max. 5): gerektirir. 1280 x 720 piksel çözünürlüğe sahip PNG resmi.|
+| 3 | Market yapıtları | Amblemler doğru şekilde görüntülenir. |<ul><li>Amblemler: küçük (48 x 48 px, isteğe bağlı), Orta (90 x 90 px, isteğe bağlı) ve büyük (216 x 216, 350 x 350 px, gerekli).</li><li>Ekran görüntüsü (Max. 5): gerektirir. 1280 x 720 piksel çözünürlüğe sahip PNG resmi.|
 | 4 | Müşteri adayı yönetimi |<ul><li>Müşteri adayı yönetimi: müşteri adaylarınızın depolanacağı sistemi seçin.</li><li>CRM sisteminizi bağlamak için [müşteri adaylarını öğrenin](./partner-center-portal/commercial-marketplace-get-customer-leads.md) bölümüne bakın. | |
 |||
 

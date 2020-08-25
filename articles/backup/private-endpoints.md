@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654710"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762921"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -192,7 +192,7 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 ## <a name="adding-dns-records"></a>DNS kayıtları ekleme
 
 >[!NOTE]
-> Tümleşik bir DNS bölgesi kullanıyorsanız bu adım gerekli değildir. Ancak, kendi Azure Özel DNS bölgenizi oluşturduysanız veya özel bir özel DNS bölgesi kullanıyorsanız, lütfen girişlerin bu bölümde açıklandığı şekilde yapıldığından emin olun.
+> Tümleşik bir DNS bölgesi kullanıyorsanız bu adım gerekli değildir. Ancak, kendi Azure Özel DNS bölgenizi oluşturduysanız veya özel bir özel DNS bölgesi kullanıyorsanız, bu bölümde açıklandığı gibi girişlerin yapıldığından emin olun.
 
 Kasa için isteğe bağlı özel DNS bölgesi ve özel uç noktaları oluşturduktan sonra DNS kayıtlarınızı DNS bölgenize eklemeniz gerekir. Bunu el ile ya da bir PowerShell betiği kullanarak yapabilirsiniz. Bunun yalnızca yedekleme DNS bölgeniz için yapılması gerekir, Bloblar ve kuyruklar için otomatik olarak güncelleştirilir.
 
@@ -239,7 +239,7 @@ Bu, Özel uç noktanıza ait her FQDN için Özel DNS bölgenize giriş yapmanı
 VNet 'iniz için oluşturulan özel uç noktalar onaylandığında, yedeklemelerinizi gerçekleştirmek ve geri yüklemek için bunları kullanmaya başlayabilirsiniz.
 
 >[!IMPORTANT]
->Lütfen devam etmeden önce belgede belirtilen tüm adımları başarıyla tamamladığınızdan emin olun. Bu durumda, aşağıdaki denetim listesindeki adımları tamamlamış olmanız gerekir:
+>Devam etmeden önce belgede belirtilen tüm adımları başarıyla tamamladığınızdan emin olun. Bu durumda, aşağıdaki denetim listesindeki adımları tamamlamış olmanız gerekir:
 >
 >1. (Yeni) bir kurtarma hizmetleri Kasası oluşturuldu
 >1. Sistem tarafından atanan yönetilen kimliği kullanmak için kasa etkinleştirildi

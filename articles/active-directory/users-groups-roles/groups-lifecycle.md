@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fb3113b02d20355e3ac9ede593bf8fc4136461
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705971"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799307"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -110,7 +110,7 @@ Geri yüklemekte olduğunuz grup belgeler, SharePoint siteleri veya diğer kalı
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Microsoft 365 grubu sona erme tarihi alma
 
-Kullanıcıların, sona erme tarihi ve son yenilenme tarihi de dahil olmak üzere Grup ayrıntılarını görüntüleyebilecekleri erişim paneline ek olarak, bir Microsoft 365 grubunun sona erme tarihi Microsoft Graph REST API Beta 'dan alınabilir. bir grup özelliği olarak expirationDateTime, Microsoft Graph Beta 'da etkinleştirildi. Bu, bir GET isteğiyle alınabilir. Daha fazla ayrıntı için lütfen [Bu örneğe](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)bakın.
+Kullanıcıların, sona erme tarihi ve son yenilenme tarihi de dahil olmak üzere Grup ayrıntılarını görüntüleyebilecekleri erişim paneline ek olarak, bir Microsoft 365 grubunun sona erme tarihi Microsoft Graph REST API Beta 'dan alınabilir. bir grup özelliği olarak expirationDateTime, Microsoft Graph Beta 'da etkinleştirildi. Bu, bir GET isteğiyle alınabilir. Daha fazla ayrıntı için lütfen [Bu örneğe](/graph/api/group-get?view=graph-rest-beta#example)bakın.
 
 > [!NOTE]
 > Erişim panelinde grup üyeliklerini yönetmek için, "erişim panelindeki gruplara erişimi kısıtla" ayarı, Azure Active Directory gruplar genel ayarında "Hayır" olarak ayarlanmalıdır.
@@ -172,7 +172,7 @@ Azure AD kuruluşunuzda Microsoft 365 gruplarının süre sonu ayarlarını yap�
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-İlkeyi daha ayrıntılı şekilde yapılandırmak için aşağıdaki cmdlet 'ler kullanılabilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
+İlkeyi daha ayrıntılı şekilde yapılandırmak için aşağıdaki cmdlet 'ler kullanılabilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

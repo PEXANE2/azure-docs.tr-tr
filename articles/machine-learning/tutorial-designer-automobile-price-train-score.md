@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290282"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812995"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 1. İşlem kaynağı için bir ad girin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
     > [!NOTE]
     > İşlem kaynağının oluşturulması yaklaşık beş dakika sürer. Kaynak oluşturulduktan sonra yeniden kullanabilir ve gelecekteki çalıştırmalar için bu bekleme süresini atlayabilirsiniz.
@@ -104,13 +104,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsiniz.
 
-1. **Otomobil fiyat verileri (ham)** modülünü seçin.
-
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + günlük**' i seçin.
-
-1. Verileri görselleştirmek için grafik simgesini seçin.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Alternatif metin burada.":::
+1. **Otomobil fiyat verileri (ham)** öğesine sağ tıklayın ve **Görselleştir**' i seçin.
 
 1. Her biri hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunları seçin.
 
@@ -291,9 +285,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. İlk olarak, regresyon modeli tarafından oluşturulan tahmine göz atın.
 
-1. Çıktısını görüntülemek için **puan modeli** modülünü seçin.
-
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![ Görselleştir simgesini seçin ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) .
+1. **Puan modeli** modülüne sağ tıklayın ve çıktısını görüntülemek Için **Görselleştir** ' i seçin.
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
@@ -303,9 +295,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 Eğitim modelinin test veri kümesinde ne kadar iyi gerçekleştirildiğini görmek için **modeli değerlendir** ' i kullanın.
 
-1. Çıktısını görüntülemek için **modeli değerlendir** modülünü seçin.
-
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **çıktılar + günlükler** > grafik simgesi ![ Görselleştir simgesini seçin ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) .
+1. **Modeli değerlendir** modülünü sağ tıklatın ve çıktısını görüntülemek Için **Görselleştir** ' i seçin.
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 

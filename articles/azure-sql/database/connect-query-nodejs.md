@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript 
-ms.openlocfilehash: 8c2df57f56ad30c6cf6a2ac84a32baa79ea91955
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript
+ms.openlocfilehash: c079d9bad15de6dac93cd9be23631786673bd009
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384761"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756393"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Node.js kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, bir veritabanına bağlanmak ve verileri sorgulamak i
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
+Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)|
   |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) | [Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) |
+  |Verileri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) | [Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) |
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma| [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma|
   |||
 
@@ -149,7 +149,7 @@ Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Oluşturduğunu
           console.log("%s\t%s", column.metadata.colName, column.value);
         });
       });
-      
+
       connection.execSql(request);
     }
     ```

@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717587"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756699"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -111,25 +111,16 @@ Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etk
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
-Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** ilke tanımları, her makinede denetim gerçekleştirmeye yönelik bağımlılıkları yönetir.
+Konuk yapılandırma ilkeleri **Auditınotexists** efektini kullanır. Tanım atandığında, bir arka uç hizmeti Azure Kaynak sağlayıcısındaki tüm gereksinimlerin yaşam döngüsünü otomatik olarak işler `Microsoft.GuestConfiguration` .
 
-**Deployifnotexists** ilke tanımı, aşağıdaki öğeleri doğrular ve düzeltir:
+Tüm gereksinimler makinede karşılanana kadar **Auditınotexists** ilkeleri uyumluluk sonuçlarını döndürmez. [Gereksinimler, Azure sanal makineleri için bölüm dağıtma gereksinimleri](#deploy-requirements-for-azure-virtual-machines) bölümünde açıklanmaktadır
 
-- Makineye değerlendirmek için bir yapılandırma atandığını doğrulayın. Şu anda bir atama yoksa, atamayı alın ve makineyi şu şekilde hazırlayın:
-  - [Yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) kullanarak makinede kimlik doğrulama
-  - **Microsoft. GuestConfiguration** uzantısının en son sürümünü yükleme
-  - Gerekirse [doğrulama araçlarını](#validation-tools) ve bağımlılıklarını yükleme
+> [!IMPORTANT]
+> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir.
+>
+> El ile bir adım gereklidir. İlke girişimlerini daha önce kategoride atadıysanız `Guest Configuration` , ilke atamasını silin ve yeni tanımı atayın. Konuk yapılandırma ilkeleri aşağıdaki gibi bir ad düzenine sahiptir: `Audit <Windows/Linux> machines that <non-compliant condition>`
 
-**Deployifnotexists** ataması uyumlu değilse, bir [Düzeltme görevi](../how-to/remediate-resources.md#create-a-remediation-task) kullanılabilir.
-
-**Deployifnotexists** ataması uyumluysa, **auditınotexists** ilke ataması, Konuk atamasının uyumlu veya uyumsuz olduğunu belirler. Doğrulama Aracı, sonuçları Konuk yapılandırma istemcisine sağlar. İstemci, sonuçları Konuk yapılandırması kaynak sağlayıcısı aracılığıyla kullanılabilir hale getiren konuk uzantısına iletir.
-
-Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcıları **karmaşık ancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
-
-> [!NOTE]
-> **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
-
-Konuk yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılmak üzere tanımları gruplamak için bir girişimde bulunur. Preview adlı yerleşik girişim _ \[ \] : Linux ve Windows makineler içindeki denetim parolası güvenliği_ 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Auditınotexists** çiftleri ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
+Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcısı **karmaşıkancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
 

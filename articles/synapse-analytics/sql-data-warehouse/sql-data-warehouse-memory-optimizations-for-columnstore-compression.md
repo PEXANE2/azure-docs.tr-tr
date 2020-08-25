@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85a9c758f46150c422b55c6ac5cf7e62a429c74f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211668"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797777"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Columnstore için satır grubu kalitesini en üst düzeye çıkarma
 
@@ -74,6 +74,9 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
 select *
 from cte;
 ```
+
+>[!TIP]
+> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 Trim_reason_desc, satır grubu 'un kırpıldığını söyler (trim_reason_desc = NO_TRIM kırpma olmadığını ve satır grubunu en iyi kaliteden olduğunu gösterir). Aşağıdaki kırpma nedenleri rowgroup 'un zamanından önce kırpılmasını gösterir:
 

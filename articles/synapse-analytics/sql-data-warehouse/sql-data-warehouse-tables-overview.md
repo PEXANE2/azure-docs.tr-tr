@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f4cf9e2d02030021d3092629731fcd8b77566907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798576"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tablo tasarlama
 
@@ -46,7 +46,7 @@ SQL havuzundaki tabloların organizasyonunu göstermek için, tablo adlarına ö
 
 | WideWorldImportersDW tablosu  | Tablo türü | SQL havuzu |
 |:-----|:-----|:------|:-----|
-| Şehir | Boyut | wwi. DimCity |
+| City | Boyut | wwi. DimCity |
 | Sipariş verme | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
@@ -65,7 +65,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 Geçici bir tablo yalnızca oturum süresince bulunur. Diğer kullanıcıların geçici sonuçları görmesini ve ayrıca Temizleme gereksinimini azaltmasını engellemek için geçici bir tablo kullanabilirsiniz.  
 
-Geçici tablolar, hızlı performans sunmak için yerel depolamayı kullanır.  Daha fazla bilgi için bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md).
+Geçici tablolar, hızlı performans sunmak için yerel depolamayı kullanır.  Daha fazla bilgi için bkz.  [geçici tablolar](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Dış tablo
 
@@ -294,6 +294,9 @@ SELECT *
 FROM size
 ;
 ```
+
+>[!TIP]
+> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Tablo alanı Özeti
 

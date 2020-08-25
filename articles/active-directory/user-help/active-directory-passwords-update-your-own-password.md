@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266126"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799052"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
-İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Bilgilerinizi ayarlayabilmeniz ve [kendi parolanızı sıfırlayabilmeniz](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)için yöneticinizin bu özelliği açmanız gerekir.
+İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Bilgilerinizi ayarlayabilmeniz ve [kendi parolanızı sıfırlayabilmeniz](./active-directory-passwords-reset-register.md)için yöneticinizin bu özelliği açmanız gerekir.
 
-Parolanızı biliyorsanız ve değiştirmek istiyorsanız, bu makalenin [parola adımlarınızı değiştirme](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) başlıklı bölüme bakın.
+Parolanızı biliyorsanız ve değiştirmek istiyorsanız, bu makalenin [parola adımlarınızı değiştirme](#how-to-change-your-password) başlıklı bölüme bakın.
 
 >[!Important]
->Bu makale, unutulan veya bilinmeyen bir iş veya okul hesabı parolasını sıfırlama kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Bu makale, unutulan veya bilinmeyen bir iş veya okul hesabı parolasını sıfırlama kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](../authentication/howto-sspr-deployment.md).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Bir iş veya okul hesabı için parolanızı sıfırlama veya kilidini açma
 
@@ -164,6 +164,6 @@ Aşağıda bazı yaygın hata durumları ve çözümleri verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik [bilgileri (Önizleme) genel bakış](user-help-security-info-overview.md) makalesindeki güvenlik bilgileri hakkında bilgi edinin.
+- Güvenlik [bilgileri (Önizleme) genel bakış](./security-info-setup-signin.md) makalesindeki güvenlik bilgileri hakkında bilgi edinin.
 
 - Xbox, hotmail.com veya outlook.com gibi bir kişisel hesaba geri dönmek istiyorsanız, [Microsoft hesabı makalesinde oturum](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)açarken önerilerini deneyin.

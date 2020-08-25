@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079341"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757260"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası oluşturma
 
@@ -38,13 +38,13 @@ Aşağıdaki üstbilgiler gereklidir:
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-|Name  |Gerekli  |Tür  |Description  |
+|Ad  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
 |isteyin     |         |  [İsteyin](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Her Azure kaynağı için benzersiz sistem tanımlayıcısını tanımlar     |
-|tags     |         | Nesne        |     Kaynak etiketleri    |
+|etiketler     |         | Nesne        |     Kaynak etiketleri    |
 
 Kasa adı ve kaynak grubu adının PUT URI 'sinde sağlandığını unutmayın. İstek gövdesi konumu tanımlar.
 
@@ -66,7 +66,7 @@ Aşağıdaki örnek gövde, "Batı ABD" içinde bir kasa oluşturmak için kulla
 
 Bir kurtarma hizmetleri Kasası oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)      | Tamam        |
 |201 oluşturuldu     | [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Oluşturulan      |

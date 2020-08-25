@@ -1,21 +1,21 @@
 ---
 title: Azure CLı kullanarak Linux sanal makinesine veri diski ekleme
 description: Azure CLı ile Linux VM 'nize kalıcı bir veri diski eklemeyi öğrenin
-author: roygara
-manager: twooley
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 06/13/2018
-ms.author: rogarana
+ms.date: 08/20/2020
+ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 1791d33627f04f69d10916c8ff0a154f7d8b967b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9d04e28c4af462719644deca4c4aa0e3aa94fa16
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502835"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757736"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM'ye disk ekleme
+
 Bu makalede, VM 'niz bakım veya yeniden boyutlandırma nedeniyle yeniden sağlansa bile verilerinizi koruyabilmeniz için sanal makinenize kalıcı bir disk nasıl iliştirilebileceğiniz gösterilmektedir.
 
 
@@ -42,129 +42,72 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Yeni diski bağlamak için Linux VM 'ye bağlanma
+## <a name="format-and-mount-the-disk"></a>Diski biçimlendirme ve bağlama
 
-Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçimlendirmek ve bağlamak üzere sanal makinenize SSH. Daha fazla bilgi için bkz. [Azure’da Linux ile SSH kullanma](mac-create-ssh-keys.md). Aşağıdaki örnek, *mypublicdns.westus.cloudapp.Azure.com* Kullanıcı adı Ile genel DNS girişi olan bir VM 'ye bağlanır *azureuser*:
+Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçimlendirmek ve bağlamak üzere sanal makinenize SSH. Daha fazla bilgi için bkz. [Azure’da Linux ile SSH kullanma](mac-create-ssh-keys.md). Aşağıdaki örnek, *10.123.123.25* Kullanıcı adı Ile genel IP adresi olan bir VM 'ye bağlanır *azureuser*:
 
 ```bash
-ssh azureuser@mypublicdns.westus.cloudapp.azure.com
+ssh azureuser@10.123.123.25
 ```
 
-Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
+### <a name="find-the-disk"></a>Diski bulma
+
+Sanal makinenize bağlandıktan sonra diski bulmanız gerekir. Bu örnekte, `lsblk` diskleri listelemek için kullandık. 
 
 ```bash
-dmesg | grep SCSI
+lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
 ```
 
 Çıktı aşağıdaki örneğe benzer:
 
 ```bash
-[    0.294784] SCSI subsystem initialized
-[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
-[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
-[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
-[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+sda     0:0:0:0      30G
+├─sda1             29.9G /
+├─sda14               4M
+└─sda15             106M /boot/efi
+sdb     1:0:1:0      14G
+└─sdb1               14G /mnt
+sdc     3:0:0:0      50G
 ```
+
+`sdc`50G olduğundan, istediğimiz disk burada. Tek başına boyutu temel alan diskte emin değilseniz, portalda VM sayfasına gidebilir, **diskler**' i seçebilir ve **veri diskleri**altındaki disk için LUN numarasını kontrol edebilirsiniz. 
+
+
+### <a name="format-the-disk"></a>Diski biçimlendirme
+
+Diski ile biçimlendirin `parted` ; disk boyutu 2 tebibayt (Tib) veya daha büyükse, GPT bölümlendirme kullanmanız gerekir, bu durumda Ise MBR veya GPT bölümlemesini kullanabilirsiniz. 
 
 > [!NOTE]
-> Kendi oluşturduğunuz en son Fdisk sürümlerini kullanmanız veya uygulamanız için uygun olması önerilir.
+> Sizin için uygun olan en son sürümü kullanmanız önerilir `parted` .
+> Disk boyutu 2 tebibayt (Tib) veya daha büyükse, GPT bölümlendirme kullanmanız gerekir. Disk boyutu 2 TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz.  
 
-Burada, *SDC* , istediğimiz disktir. Diski ile bölümlemek `parted` , disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda MBR veya GPT bölümlendirme kullanabilirsiniz. MBR bölümlemeyi kullanıyorsanız, kullanabilirsiniz `fdisk` . Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, `fdisk` */dev/SDC*üzerinde işlemi başlatır:
 
-```bash
-sudo fdisk /dev/sdc
-```
-
-Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, `p` birincil bölüm için de seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
+Aşağıdaki örnek `parted` `/dev/sdc` , ilk veri diskinin genellikle çoğu VM 'de olacağı, üzerinde kullanır. `sdc`Diskinizin doğru seçeneği ile değiştirin. Ayrıca, [XFS](https://xfs.wiki.kernel.org/) FileSystem kullanarak biçimlendirme de yapılır.
 
 ```bash
-Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
-Building a new DOS disklabel with disk identifier 0x2a59b123.
-Changes will remain in memory only, until you decide to write them.
-After that, of course, the previous content won't be recoverable.
-
-Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
-
-Command (m for help): n
-Partition type:
-   p   primary (0 primary, 0 extended, 4 free)
-   e   extended
-Select (default p): p
-Partition number (1-4, default 1): 1
-First sector (2048-10485759, default 2048):
-Using default value 2048
-Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
-Using default value 10485759
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
-Bölüm tablosunu yazarak `p` ve ardından `w` tabloyu diske yazmak ve çıkmak için kullanarak yazdırın. Çıkış aşağıdaki örneğe benzer görünmelidir:
+[`partprobe`](https://linux.die.net/man/8/partprobe)Çekirdeğin yeni bölüm ve FileSystem 'ın farkında olduğundan emin olmak için yardımcı programını kullanın. Kullanım hatası `partprobe` , blkıd veya lslbk komutlarının yeni FileSystem IÇIN UUID 'yi hemen döndürmemesine neden olabilir.
 
-```bash
-Command (m for help): p
 
-Disk /dev/sdc: 5368 MB, 5368709120 bytes
-255 heads, 63 sectors/track, 652 cylinders, total 10485760 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk identifier: 0x2a59b123
+### <a name="mount-the-disk"></a>Diski bağlama
 
-   Device Boot      Start         End      Blocks   Id  System
-/dev/sdc1            2048    10485759     5241856   83  Linux
-
-Command (m for help): w
-The partition table has been altered!
-
-Calling ioctl() to re-read partition table.
-Syncing disks.
-```
-Çekirdeği güncelleştirmek için aşağıdaki komutu kullanın:
-```
-partprobe 
-```
-
-Şimdi, komutunu kullanarak bölüme bir dosya sistemi yazın `mkfs` . Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
-
-```bash
-sudo mkfs -t ext4 /dev/sdc1
-```
-
-Çıktı aşağıdaki örneğe benzer:
-
-```bash
-mke2fs 1.42.9 (4-Feb-2014)
-Discarding device blocks: done
-Filesystem label=
-OS type: Linux
-Block size=4096 (log=2)
-Fragment size=4096 (log=2)
-Stride=0 blocks, Stripe width=0 blocks
-327680 inodes, 1310464 blocks
-65523 blocks (5.00%) reserved for the super user
-First data block=0
-Maximum filesystem blocks=1342177280
-40 block groups
-32768 blocks per group, 32768 fragments per group
-8192 inodes per group
-Superblock backups stored on blocks:
-    32768, 98304, 163840, 229376, 294912, 819200, 884736
-Allocating group tables: done
-Writing inode tables: done
-Creating journal (32768 blocks): done
-Writing superblocks and filesystem accounting information: done
-```
-
-Şimdi, kullanarak dosya sistemini bağlamak için bir dizin oluşturun `mkdir` . Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
+Şimdi, kullanarak dosya sistemini bağlamak için bir dizin oluşturun `mkdir` . Aşağıdaki örnek şurada bir dizin oluşturur `/datadrive` :
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount`Daha sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
+`mount`Daha sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek, `/dev/sdc1` bölümü `/datadrive` bağlama noktasına bağlar:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
+
+### <a name="persist-the-mount"></a>Bağlama devam ettir
 
 Sürücünün yeniden başlatma işleminden sonra otomatik olarak yeniden takıldığından emin olmak için, */etc/fstab* dosyasına eklenmesi gerekir. Ayrıca, */etc/fstab* içinde, yalnızca cihaz adı (örneğin, */dev/sdc1*) yerine, sürücüye başvurmak Için UUID 'Nin (evrensel olarak benzersiz tanımlayıcı) kullanılması önemle tavsiye edilir. Önyükleme sırasında işletim sistemi bir disk hatası algılarsa, UUID'nin kullanılması belirlenen konuma yanlış diskin bağlanmasını önler. Bundan sonra kalan veri diskleri aynı cihaz kimliklerine atanabilir. Yeni sürücünün UUID'sini bulmak için `blkid` yardımcı programını kullanın:
 
@@ -186,14 +129,16 @@ sudo blkid
 Sonra, */etc/fstab* dosyasını bir metin düzenleyicisinde şu şekilde açın:
 
 ```bash
-sudo vi /etc/fstab
+sudo nano /etc/fstab
 ```
 
-Bu örnekte, önceki adımlarda oluşturulan */dev/sdc1* cihazının UUID değerini ve */datadrive*bağlama noktasını kullanın. */Etc/fstab* dosyasının sonuna aşağıdaki satırı ekleyin:
+Bu örnekte, `/dev/sdc1` önceki adımlarda oluşturulan cihaz IÇIN UUID değerini ve ' nin bağlama noktasını kullanın `/datadrive` . Aşağıdaki satırı dosyanın sonuna ekleyin `/etc/fstab` :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
+
+Bu örnekte, nano düzenleyicisini kullanıyoruz, bu yüzden dosyayı düzenleme işiniz bittiğinde `Ctrl+O` dosyayı yazmak ve `Ctrl+X` düzenleyiciden çıkmak için kullanın.
 
 > [!NOTE]
 > Daha sonra fstab düzenlemeden bir veri diskinin kaldırılması, sanal makinenin önyüklenememesine neden olabilir. Çoğu dağıtım, *nofail* ve/veya *nobootwaıt* fstab seçeneklerini sağlar. Bu seçenekler, disk önyükleme zamanında takılamazsa bile sistemin önyüklenmesine izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.

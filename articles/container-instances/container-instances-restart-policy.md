@@ -2,13 +2,13 @@
 title: Bir kez çalıştır görevi için yeniden başlatma ilkesi
 description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tamamlama için çalışan görevleri yürütmek üzere Azure Container Instances nasıl kullanacağınızı öğrenin.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261343"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798950"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle kapsayıcılı görevleri çalıştırma
 
@@ -27,6 +27,8 @@ Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-conta
 | `Always` | Kapsayıcı grubundaki kapsayıcılar her zaman yeniden başlatılır. Bu, kapsayıcı oluşturulurken yeniden başlatma ilkesi belirtilmezse uygulanan **varsayılan** ayardır. |
 | `Never` | Kapsayıcı grubundaki kapsayıcılar hiçbir zaman yeniden başlatılmaz. Kapsayıcılar en fazla bir kez çalışır. |
 | `OnFailure` | Kapsayıcı grubundaki kapsayıcılar yalnızca kapsayıcıda yürütülen işlem başarısız olduğunda (sıfır olmayan çıkış kodu ile sonlandırıldığında) yeniden başlatılır. Kapsayıcılar en az bir kez çalıştırılır. |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>Yeniden başlatma ilkesi belirtin
 
@@ -75,7 +77,7 @@ az container show \
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-Çıktı:
+Çıkış:
 
 ```bash
 [('the', 990),

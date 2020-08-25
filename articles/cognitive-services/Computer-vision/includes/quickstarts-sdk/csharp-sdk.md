@@ -9,18 +9,18 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d35b7309a161d790131b0040b9ebf113a3c061fc
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ebeea9cd6e928a9d9d77a8475cee774f3d33b28e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186344"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752976"
 ---
 <a name="HOLTop"></a>
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [.NET Core SDK](https://dotnet.microsoft.com/download/)en son sürümü.
@@ -211,7 +211,7 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
-Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Metin tanıma hakkında daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](../../concept-recognizing-text.md#read-api) kavramsal belgesi. Bu bölümdeki kod, `BatchReadFileUrl` görüntüdeki metni algılamak ve ayıklamak için istemci nesnesini kullanan yöntemini tanımlar.
+Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Metin tanıma hakkında daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](../../concept-recognizing-text.md#read-api) kavramsal belgesi. Bu bölümdeki kod, [okuma 3,0 için en son görüntü işleme SDK sürümünü](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) kullanır ve bir yöntemi tanımlar, bu, `BatchReadFileUrl` görüntüdeki metni algılamak ve ayıklamak için istemci nesnesini kullanır.
 
 Yöntemine yöntem çağrısını ekleyin `Main` .
 

@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741936"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798032"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
 
@@ -28,7 +28,7 @@ Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri gerçekle�
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+>Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](../manage-apps/index.yml)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
 
@@ -58,7 +58,7 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
     ![İnceleme ayrıntılarını gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Yöneticiyseniz ve kuruluşunuzun gruplara ve uygulamalara erişimini incelemeye izin verildiyse, farklı bir sayfa görürsünüz. Kuruluşunuz için grupları veya uygulamaları gözden geçirme hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleriyle gruplara veya uygulamalara erişimi gözden geçirme](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Yöneticiyseniz ve kuruluşunuzun gruplara ve uygulamalara erişimini incelemeye izin verildiyse, farklı bir sayfa görürsünüz. Kuruluşunuz için grupları veya uygulamaları gözden geçirme hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleriyle gruplara veya uygulamalara erişimi gözden geçirme](../governance/perform-access-review.md).
 
 6. Erişiminizi **kaldırmak için, erişiminizi korumak Için** **Evet** ' i seçin.
 

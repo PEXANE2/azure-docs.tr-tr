@@ -3,10 +3,8 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Konuşma tanıma hizmeti nedir?
+    - name: Konuşma tanıma hizmetine genel bakış
       href: overview.md
-    - name: Konuşma tanıma hizmetini ücretsiz olarak deneyin
-      href: get-started.md
     - name: Dil ve ses desteği
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130197"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797828"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Azure Cosmos DB için Azure Izleyici, [Azure izleyici 'nin çalışma kitapları
 > [!NOTE]
 > Kapsayıcılar oluştururken, aynı ada ancak büyük küçük harflere sahip iki kapsayıcı oluşturmadığınızdan emin olun. Bunun nedeni, Azure platformunun bazı bölümlerinin büyük/küçük harfe duyarlı olmaması ve bu nedenle, bu tür adlara sahip kapsayıcılar ve telemetri ve eylemlerin karışmasına ve çakışmasına neden olabilir.
 
-## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a>Azure Cosmos DB portalından toplanan verileri izleme
+## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a> Azure Cosmos DB portalından toplanan verileri izleme
 
 Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Cosmos DB tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
 
@@ -64,7 +64,7 @@ Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, iste
 
 :::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Genel Bakış sayfası":::
 
-## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Ölçüm verileri çözümleniyor
+## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Ölçüm verileri çözümleniyor
 
 Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama](cosmos-db-azure-monitor-metrics.md) .
 
@@ -73,7 +73,7 @@ Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu 
 * CollectionName
 * DatabaseName
 * OperationType
-* Bölge
+* Region
 * Durum
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
@@ -104,7 +104,7 @@ Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **Oper
 
 :::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Uygulama bölme filtresi ekle":::
 
-## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Günlük verileri çözümleniyor
+## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a> Günlük verileri çözümleniyor
 
 Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır. Azure Cosmos DB, verileri aşağıdaki tablolarda depolar.
 
@@ -147,7 +147,7 @@ Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabil
     | summarize count() by Resource
     ```
 
-## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a>Program aracılığıyla Azure Cosmos DB izleme
+## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a> Program aracılığıyla Azure Cosmos DB izleme
 
 Portalda kullanılabilen hesap düzeyi ölçümleri, hesap depolama kullanımı ve toplam istek gibi SQL API 'Leri aracılığıyla kullanılamaz. Ancak, SQL API 'Lerini kullanarak koleksiyon düzeyinde kullanım verilerini alabilirsiniz. Koleksiyon düzeyindeki verileri almak için aşağıdakileri yapın:
 
@@ -158,14 +158,16 @@ Portalda kullanılabilen hesap düzeyi ölçümleri, hesap depolama kullanımı 
 Ek ölçümlere erişmek için [Azure izleyici SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.Insights)kullanın. Kullanılabilir Ölçüm tanımları, şu çağırarak alınabilir:
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01
 ```
 
-Tek tek ölçümleri almak için sorgular aşağıdaki biçimi kullanır:
+Bireysel ölçümleri almak için aşağıdaki biçimi kullanın:
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metrics?timespan={StartTime}/{EndTime}&interval={AggregationInterval}&metricnames={MetricName}&aggregation={AggregationType}&`$filter={Filter}&api-version=2018-01-01
 ```
+
+Daha fazla bilgi için bkz. [Azure izleme REST API](../azure-monitor/platform/rest-api-walkthrough.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

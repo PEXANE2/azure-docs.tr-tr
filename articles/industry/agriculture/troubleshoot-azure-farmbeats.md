@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497072"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797947"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats sorunlarını giderme
 
-Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır. Daha fazla yardım için [destek Forumumuzu](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) veya bize e-posta ile iletişim kurun farmbeatssupport@microsoft.com .
+Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır. Ek Yardım için [soru-cevap destek forumu](https://aka.ms/farmbeatssupport) veya bize e-posta&başvurun farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Nisan sırasında Farmtts yüklediyseniz ve işleriniz boş bir hata iletisiyle başarısız oluyorsa, yüklemeniz kritik sistem durumu ve güvenlik kuruluşları için destek önceliklendirmesine yönelik herhangi bir Batch kotası ayrılmamış olabilir. Daha fazla bilgi için [buraya](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) bakın. İşleri başarıyla çalıştırmak için Batch hesabına ayrılacak VM 'Leri istemeniz gerekir.

@@ -3,12 +3,12 @@ title: MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
 description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma Hizmetleri (MARS) aracısına sahip bir Windows Server veya Windows bilgisayara geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263410"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757090"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
 
@@ -72,7 +72,7 @@ Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsan�
 
 9. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' **ı seçin.** Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
 
-    ![Veri Kurtarma Sihirbazı 'nın dosyalara gözatmasına ve kurtarmaya yönelik ekran görüntüsü (aynı makineye geri yükle)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Verileri kurtar sihirbazının ekran görüntüsü ve kurtarma dosyaları sayfası (aynı makineye geri yükle)-kurtarma birimi çıkarma bağlantısını onayla](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Çıkar ' ı seçmezseniz kurtarma birimi, bağlanalındığı zamandan itibaren 6 saat boyunca **takılmış olarak kalır**. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.

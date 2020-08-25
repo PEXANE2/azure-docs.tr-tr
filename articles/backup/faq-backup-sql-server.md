@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090986"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762853"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -32,7 +32,7 @@ Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomat
 
 Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir; Ancak, bunu devre dışı bırakmak isterseniz aşağıdaki işlemleri gerçekleştirin:
 
-- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya **üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
+- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya ** üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
 - **ExtensionSettingsOverrides.js**, *{"EnableAutoHealer": false}* olarak ayarlayın.
 - Değişikliklerinizi kaydedin ve dosyayı kapatın.
 - SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
@@ -41,7 +41,7 @@ Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak
 
 Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
 
-1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya *üzerindeExtensionSettingsOverrides.js* oluşturun.
+1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya * üzerindeExtensionSettingsOverrides.js* oluşturun.
 2. *ExtensionSettingsOverrides.js* dosyadaki **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
@@ -52,7 +52,7 @@ DefaultBackupTasksThreshold varsayılan değeri **20**' dir.
  Bu yöntem, yedek uygulamanın büyük miktarda kaynak tükettiği durumlarda, SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) , gelen uygulama ISTEKLERININ kullanabileceği CPU, fiziksel GÇ ve bellek miktarına yönelik sınırları belirtmenin daha genel bir yoludur.
 
 > [!NOTE]
-> UX 'de, herhangi bir zamanda daha fazla yedekleme yapabilirsiniz, ancak yukarıdaki örneğe göre, 5 ' in bir kayan penceresinde işlenir.
+> UX 'de, belirli bir zamanda devam edebilir ve çok sayıda yedekleme zamanlayabilirsiniz. Ancak, yukarıdaki örneğe göre, 5 ' in bir kayan penceresinde işlenir.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>İkincil bir çoğaltmadan tam yedekleme çalıştırabilir miyim?
 

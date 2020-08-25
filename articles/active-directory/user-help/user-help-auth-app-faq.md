@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423635"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799477"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -64,6 +64,6 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 
 - İki aşamalı doğrulama hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [hesabı iki adımlı doğrulama Için ayarlama](multi-factor-authentication-end-user-first-time.md)
 
-- Güvenlik bilgileri hakkında daha fazla bilgi edinmek istiyorsanız bkz. [güvenlik bilgileri (Önizleme) genel bakış](user-help-security-info-overview.md)
+- Güvenlik bilgileri hakkında daha fazla bilgi edinmek istiyorsanız bkz. [güvenlik bilgileri (Önizleme) genel bakış](./security-info-setup-signin.md)
 
 - Sorunuz burada yanıtlanmamışsa, görüşlerinizi öğrenmek istiyoruz. Sorunuzu göndermek ve topluluktan yardım almak veya bu sayfada bir yorum bırakmak için [Microsoft Authenticator uygulama forumuna](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) gidin.

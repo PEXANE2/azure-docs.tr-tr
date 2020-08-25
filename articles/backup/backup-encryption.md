@@ -4,12 +4,12 @@ description: Azure Backup ' deki şifreleme özelliklerinin, yedekleme verilerin
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586656"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763652"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup'ta şifreleme
 
@@ -27,7 +27,7 @@ Azure Backup iki düzeyde şifreleme içerir:
   - **Azure sanal makine yedeklemesi**: Azure Backup [platform tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)kullanılarak şifrelenmiş disklere sahip VM 'lerin yedeklenmesini ve size ait ve sizin tarafınızdan yönetilen [müşteri tarafından yönetilen anahtarları](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) destekler. Ayrıca, işletim sistemi veya veri disklerinin [Azure disk şifrelemesi](backup-azure-vms-encryption.md#encryption-support-using-ade)kullanılarak şifrelendiği Azure sanal makinelerinizi da yedekleyebilirsiniz. ADE, Konuk içi şifrelemeyi gerçekleştirmek için Windows VM 'Leri için BitLocker ve Linux VM 'Ler için DM-Crypt kullanır.
 
 >[!NOTE]
->Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2, ABD Orta Güney, US Gov Arizona ve ABD GOV Virginia bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, lütfen [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2, ABD Orta Güney, US Gov Arizona ve ABD GOV Virginia bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

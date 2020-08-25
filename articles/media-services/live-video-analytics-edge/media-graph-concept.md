@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690689"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798848"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -83,7 +83,7 @@ HTTP uzantısı işlemci düğümü, kendi IoT Edge modülünüzü bir medya gra
 
 #### <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
 
-GRPC uzantısı işlemci düğümü, kodu çözülmüş video çerçevelerini giriş olarak alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir gRPC uç noktasına geçirir. Ayrıca, düğüm, gRPC uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici içerir. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
+GRPC uzantısı işlemci düğümü, kodu çözülmüş video çerçevelerini giriş olarak alır ve bu çerçeveleri modülünüzün açığa çıkarılan bir [GRPC](terminology.md#grpc) uç noktasına geçirir. Ayrıca, düğüm, gRPC uç noktasına geçmeden önce video çerçevelerini ölçeklendirmeye ve kodlamaya yönelik yerleşik bir görüntü biçimlendirici içerir. Scaler, görüntü en boy oranının korunmasıyla, doldurulmuş veya esneme yönelik seçeneklere sahiptir. Görüntü Kodlayıcısı JPEG, PNG veya BMP biçimlerini destekler.
 
 #### <a name="signal-gate-processor"></a>Sinyal kapısı işlemcisi  
 
@@ -105,7 +105,7 @@ Bir IoT Hub ileti havuzu düğümü, olayları IoT Edge hub 'a yayımlamanıza o
 
 ## <a name="rules-on-the-use-of-nodes"></a>Düğümlerin kullanımıyla ilgili kurallar
 
-Bir medya grafiğinde farklı düğümlerin nasıl kullanılabileceği hakkında ek kurallar için bkz. [Kotalar](quotas-limitations.md#limitations-on-graph-topologies-at-preview) .
+Farklı düğümlerin bir medya grafiğinde nasıl kullanılabileceği hakkında ek kurallar için bkz. [grafik topolojileriyle ilgili sınırlamalar](quotas-limitations.md#limitations-on-graph-topologies-at-preview) .
 
 ## <a name="scenarios"></a>Senaryolar
 

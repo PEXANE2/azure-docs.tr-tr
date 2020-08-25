@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656962"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757617"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 
-Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma.
+Bir kurtarma hizmetleri kasasında basit bir zamanlanmış günlük yedekleme oluşturun.
 
 1. Sol taraftaki menüden **Sanal makineler**'i seçin.
 2. Listeden yedekleyeceğiniz sanal makineyi seçin. Örnek VM hızlı başlangıç komutlarını kullandıysanız VM'nin adı *myVM*, kaynak grubunun adı ise *myResourceGroup* olacaktır.

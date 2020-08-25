@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608867"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757906"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
 
@@ -82,7 +82,7 @@ Hesabınızın **ölçümler** bölmesine gözatarken, **genel bakış** sekmesi
 Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olarak belirli performans özellikleri sunar:
 
 - **Kullanılabilirlik**: sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
-- **Gecikme süresi**: sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Nokta okuma işlemleri, tek bir öğeyi KIMLIĞE ve bölüm anahtarı değerine göre getirmeye devam ediyor.
+- **Gecikme süresi**: sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
 - **Buristimsuz**: sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
 
 > [!NOTE]
@@ -93,5 +93,5 @@ Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olarak be
 Aşağıdaki makalelerle sunucusuz ile çalışmaya başlayın:
 
 - [Azure Cosmos DB'de İstek birimleri](request-units.md)
-- [Sağlanan aktarım hızı ve sunucusuz arasında seçim yapın](throughput-serverless.md)
+- [Sağlanan aktarım hızı ile sunucusuz sistem arasında tercih yapın](throughput-serverless.md)
 - [Azure Cosmos DB’de modeli fiyatlandırma](how-pricing-works.md)

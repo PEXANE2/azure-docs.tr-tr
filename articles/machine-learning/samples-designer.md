@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318836"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812946"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları (Önizleme)
 
@@ -46,7 +46,7 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
    1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
 
-   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet**'i seçin.
+   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet**’i seçin.
 
    1. Bir işlem hattı çalıştırması göndermek için tuvalin en üstünde **Gönder** ' i seçin.
 
@@ -55,9 +55,9 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
 1. İşlem hattı çalışmaya başladıktan sonra, daha fazla bilgi edinmek için işlem hattını gözden geçirebilir ve her bir modülün çıktısını görüntüleyebilirsiniz. Modül çıkışlarını görüntülemek için aşağıdaki adımları kullanın:
 
-   1. Tuvalde bir modül seçin.
+   1. Tuvalde çıktısını görmek istediğiniz modüle sağ tıklayın.
+   1. **Görselleştir**' i seçin.
 
-   1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler**' i seçin. ![ ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) Her modülün sonucunu görmek için grafik simgesi Görselleştir simgesini seçin. 
 
    En yaygın makine öğrenimi senaryolarından bazıları için örnekleri başlangıç noktaları olarak kullanın.
 

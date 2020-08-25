@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749144"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757651"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
@@ -158,12 +158,12 @@ Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı k
 az extension update --name aks-preview
 ```
 
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Yeni kümelerde AKS özel GPU görüntüsünü kullanma (Önizleme)
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Yeni kümelerde AKS özel GPU görüntüsünü kullanma (Önizleme)    
 
 Kümeyi, küme oluşturulduğunda, AKS özel GPU görüntüsünü kullanacak şekilde yapılandırın. `--aks-custom-headers`AKS özel GPU görüntüsünü kullanmak için yeni KÜMENIZDEKI GPU Aracısı düğümlerinin bayrağını kullanın.
 
 ```azure-cli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
 Normal AKS görüntülerini kullanarak bir küme oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . Ayrıca, aşağıdaki gibi daha özelleştirilmiş GPU düğüm havuzları eklemeyi de seçebilirsiniz.
@@ -178,6 +178,12 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```
 
 Normal AKS görüntülerini kullanarak bir düğüm havuzu oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` . 
+
+> [!NOTE]
+> GPU SKU 'nuzun 2. nesil sanal makineler gerekiyorsa, şunları yapabilirsiniz:
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>GPU 'Ların zamanlanabilen olduğunu onaylayın
 

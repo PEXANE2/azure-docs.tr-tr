@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533453"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757549"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 
@@ -31,9 +31,9 @@ Günümüzde destekdiğimiz yedekleme ve geri yükleme senaryolarını görünt�
 
 ![Yedekleme mimarisi diyagramı](./media/sap-hana-db-about/backup-architecture.png)
 
-* Yedekleme işlemi, Azure 'da [bir kurtarma hizmetleri Kasası oluşturarak](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) başlar. Bu kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolamak için kullanılacaktır.
+* Yedekleme işlemi, Azure 'da [bir kurtarma hizmetleri Kasası oluşturarak](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault) başlar. Bu kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolamak için kullanılacaktır.
 * SAP HANA Server çalıştıran Azure VM kasayla kaydedilir ve yedeklenecek veritabanları [bulunur.](./tutorial-backup-sap-hana-db.md#discover-the-databases) Azure Backup hizmetinin veritabanlarını bulmasına olanak tanımak için, bir [preregistration betiğinin](https://aka.ms/scriptforpermsonhana) , bir kök kullanıcı olarak Hana sunucusunda çalıştırılması gerekir.
-* Bu betik, **AZUREWLBACKUPHANAUSER** DB kullanıcısı ve **hdbuserstore**'da aynı ada sahip karşılık gelen bir anahtar oluşturur. Betiğin ne yaptığını hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
+* Bu betik, **AZUREWLBACKUPHANAUSER** DB kullanıcısı ve **hdbuserstore**'da aynı ada sahip karşılık gelen bir anahtar oluşturur. Betiğin ne yaptığını hakkında daha fazla bilgi edinmek için  [ön kayıt betiğinin ne olduğunu](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
 * Azure Backup hizmeti artık, kayıtlı SAP HANA sunucusuna **Hana için Azure Backup eklentisini** yüklüyor.
 * Preregistration betiği tarafından oluşturulan **AZUREWLBACKUPHANAUSER** DB kullanıcısı, tüm yedekleme ve geri yükleme işlemlerini GERÇEKLEŞTIRMEK üzere **Hana için Azure Backup eklentisi** tarafından kullanılır. Bu betiği çalıştırmadan SAP HANA DBs için yedeklemeyi yapılandırmaya çalışırsanız, şu hatayı alabilirsiniz: **Usererrorhanascriptnotrun**.
 * Bulunan veritabanlarında [yedeklemeyi yapılandırmak](./tutorial-backup-sap-hana-db.md#configure-backup) için gerekli yedekleme ilkesini seçin ve yedeklemeleri etkinleştirin.

@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654166"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757158"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -68,7 +68,7 @@ Betiğin başarıyla çalıştığından emin olmak için [erişim gereksinimler
 
 Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harfle bulunmayabilir. Ancak, birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E: `\` )" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':) olarak iliştirilebilir `\` . Dosyalarınız veya klasörünüzü bulana kadar betik çıktısında bahsedilen tüm birimlere göz atabilirsiniz.  
 
-   ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Bağlı kurtarma birimleri](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Linux için
 
@@ -302,7 +302,7 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişimi olduğundan emin olun:
 
 - `download.microsoft.com`
-- Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
+- Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmetleri kasasının bulunduğu bölgeyi ifade eder)
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure ortak bölgeleri için)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure Çin 21Vianet için)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure ABD kamu için)
@@ -332,7 +332,7 @@ Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda di
     - İşletim sisteminin WS 2012 veya daha yüksek olduğundan emin olun.
     - Kayıt defteri anahtarlarının geri yükleme sunucusunda aşağıda önerildiği şekilde ayarlandığından ve sunucuyu yeniden başlattığınızdan emin olun. GUID 'nin yanındaki sayı 0001-0005 aralığında değişebilir. Aşağıdaki örnekte, 0,0004. Parametreler bölümüne kadar kayıt defteri anahtarı yolunda ilerleyin.
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![Kayıt defteri anahtarı değişiklikleri](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda di
 
 - Geri yükleme sunucusu bir Linux sanal makinesi ise:
   - /Etc/IDL/SCC \ dosya \ dosya & lt; 1} dosyasında, ayarı şu şekilde değiştirin:
-    - Node. Conn [0]. Timeo. noop_out_timeout = 5 ila Node. Conn [0]. Timeo. noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5`  Hedef `node.conn[0].timeo.noop_out_timeout = 30`
 - Yukarıdaki değişikliği yaptıktan sonra betiği yeniden çalıştırın. Bu değişikliklerle dosya kurtarmanın başarılı olması oldukça önemlidir.
 - Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük disklerle bu işlem önemli ölçüde zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika beklemeniz ve sonra çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
 - Dosya kurtarmasından sonra, portala geri dönüp birimleri takabileceğiniz kurtarma noktaları için **diskleri** çıkar ' ı seçtiğinizden emin olun. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.

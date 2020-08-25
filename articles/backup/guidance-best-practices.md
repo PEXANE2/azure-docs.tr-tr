@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650885"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757600"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -48,7 +48,7 @@ Azure Backup çeşitli iş yükleri (Şirket içi ve bulut) için veri koruması
 
 ### <a name="management-plane"></a>Yönetim düzlemi
 
-* **Erişim denetimi** – kurtarma hizmeti Kasası, yönetim olanakları sağlar ve Azure Portal, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir RBAC sınırıdır.
+* **Erişim denetimi** – kurtarma hizmetleri Kasası, yönetim olanakları sağlar ve Azure Portal, SDK, CLI ve hatta REST API 'leri aracılığıyla erişilebilir. Ayrıca, yalnızca yetkili yedekleme yöneticilerine yönelik yedeklemelere erişimi kısıtlama seçeneği sunan bir RBAC sınırıdır.
 
 * **İlke yönetimi** – her bir kasada yer alan Azure Backup ilkeler, yedeklemelerin ne zaman tetiklenmesi gerektiğini ve ne kadar süreyle tutulacağını tanımlar. Ayrıca, bu ilkeleri yönetebilir ve birden çok öğe arasında uygulayabilirsiniz.
 
@@ -131,7 +131,7 @@ Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulunduru
   * Belirli kurtarma noktalarını seçmeli olarak silemezsiniz.
   * Zamanlanmış yedeklemeyi tamamen devre dışı bırakıp veri kaynağını korumalı bir durumda tutabilirsiniz. İlkeyle yapılandırabileceğiniz en az sıklıkta, haftalık olarak zamanlanmış bir yedekleme yapmanız gerekir. Bir alternatif, yedekleme gerçekleştirmek istediğiniz her seferinde verileri koruma ve korumayı etkinleştirme ile korumayı durdurmak, isteğe bağlı bir yedekleme yapmak ve ardından korumayı kapatmak, ancak yedekleme verilerini korur. [Daha fazla bilgi edinin](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Yedekleme verilerinizi korumanıza ve işinizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olmak için Azure Backup, önemli veri ve sistemlerinizde bilinçli saldırılarına ve uygunsuz kullanım için gizlilik, bütünlük ve kullanılabilirlik sağlar. Azure Backup çözümünüz için aşağıdaki güvenlik yönergelerini göz önünde bulundurun:
 
@@ -247,7 +247,7 @@ Bir yedekleme kullanıcısı veya Yöneticisi olarak, tüm yedekleme çözümler
 
 * Azure Backup, e-posta yoluyla hatalara, uyarılara ve kritik işlemlere yönelik **olarak yerleşik bir uyarı** bildirim mekanizması sağlar. Bir uyarı oluşturulduğunda bildirilecek tek e-posta adreslerini veya dağıtım listelerini belirtebilirsiniz. Ayrıca, her bir uyarı için bildirim almayı veya saatlik bir özette grupları seçip bildirim almayı seçebilirsiniz.
   * Bu uyarılar, hizmet tarafından tanımlanır ve sınırlı senaryolar için destek sağlar. yedekleme/geri yükleme hatalarıyla, verileri koruma ve verileri silme ile korumayı durdurma ve bu şekilde devam eder. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Verileri silme ile korumayı durdur gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmeti Kasası için bildirimler yapılandırılmadığı halde bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilere e-posta gönderilir.
+  * Verileri silme ile korumayı durdur gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmetleri Kasası için bildirimler yapılandırılmadığı halde bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilere e-posta gönderilir.
   * Belirli iş yükleri yüksek sıklıkta başarısız olabilir (örneğin, her 15 dakikada bir SQL Server). Her bir başarısızlık durumunda oluşan uyarılarla başa çıkılamamasını engellemek için uyarılar birleştirilir. [Daha fazla bilgi edinin](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Yerleşik uyarılar özelleştirilemiyor ve Azure portal tanımlanan e-postalarda kısıtlanıyor.
 

@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761483"
+ms.locfileid: "88763550"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -31,7 +31,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Yanıtlar
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       Tamam  |
 
@@ -115,11 +115,16 @@ X-Powered-By: ASP.NET
 
 Kurtarma noktası `{name}` Yukarıdaki yanıttaki alanla tanımlanır.
 
-## <a name="restore-disks"></a>Diskleri geri yükleme
+## <a name="restore-operations"></a>Geri yükleme işlemleri
 
-Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("vmconfig.json") yapılandırması, belirtilen depolama hesabında depolanır.
+[İlgili geri yükleme noktasını](#select-recovery-point)seçtikten sonra geri yükleme işlemini tetiklemeye devam edin.
 
-Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](/rest/api/backup/restores/trigger)bakın.
+***Yedekleme öğesindeki tüm geri yükleme işlemleri aynı *Post* API 'siyle gerçekleştirilir. Geri yükleme senaryolarıyla yalnızca istek gövdesi değişir.***
+
+> [!IMPORTANT]
+> Çeşitli geri yükleme seçenekleri ve bunların bağımlılıklarıyla ilgili tüm ayrıntılar [burada](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)belirtilmiştir. Lütfen bu işlemleri tetiklemeden önce gözden geçirin.
+
+Geri yükleme işlemlerinin tetiklenmesi bir *Post* isteğidir. API hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](/rest/api/backup/restores/trigger)bakın.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -127,45 +132,19 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 `{containerName}`Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)oluşturulur. `{fabricName}` , `{recoveryPointId}` `{name}` [yukarıda](#example-response)belirtilen kurtarma noktasının alanı olan "Azure" dır.
 
-### <a name="create-request-body"></a>İstek gövdesi oluştur
+Kurtarma noktası alındıktan sonra ilgili geri yükleme senaryosu için istek gövdesini oluşturacağız. Aşağıdaki bölümlerde her senaryonun istek gövdesi ana hatlarıyla verilmiştir.
 
-Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
+- [Diskleri geri yükleme](#restore-disks)
+- [Diskleri Değiştir](#replace-disks-in-a-backed-up-virtual-machine)
+- [Yeni bir sanal makine olarak geri yükle](#restore-as-another-virtual-machine)
 
-|Ad  |Tür  |Description  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>Geri yükleme yanıtı
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
-
-#### <a name="example-request"></a>Örnek istek
-
-Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özellikleri tanımlar.
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>Yanıt
-
-Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
+Herhangi bir geri yükleme işleminin tetiklenmesi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Kabul edildi    |
 
@@ -227,15 +206,90 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
+Geri yükleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
 
-Uzun süre çalışan iş tamamlandıktan sonra, yedeklenen sanal makinenin ("VMConfig.jsüzerinde") diskleri ve yapılandırması, belirtilen depolama hesabında mevcut olacaktır.
+### <a name="restore-disks"></a>Diskleri geri yükleme
 
-## <a name="restore-as-another-virtual-machine"></a>Başka bir sanal makine olarak geri yükle
+Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("vmconfig.json") yapılandırması, belirtilen depolama hesabında depolanır. [Yukarıda](#restore-operations)açıklandığı gibi, geri yükleme diskleri için ilgili istek gövdesi aşağıda verilmiştir.
 
-Kurtarma noktasını [seçin](#select-recovery-point) ve kurtarma noktasındaki verilerle başka bir Azure sanal makinesi oluşturmak için aşağıda belirtildiği gibi istek gövdesini oluşturun.
+#### <a name="create-request-body"></a>İstek gövdesi oluştur
 
-Aşağıdaki istek gövdesi, bir sanal makine geri yüklemesi tetiklemek için gereken özellikleri tanımlar.
+Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
+
+|Ad  |Tür  |Açıklama  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
+
+##### <a name="example-request"></a>Örnek istek
+
+Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özellikleri tanımlar.
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+[Yukarıda](#responses)açıklandığı gibi yanıtı izlerken ve uzun süre çalışan iş tamamlandıktan sonra, diskler ve yedeklenen sanal makinenin ("VMConfig.jsüzerinde") yapılandırması belirtilen depolama hesabında mevcut olacaktır.
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Yedeklenen bir sanal makinede bulunan diskleri değiştirme
+
+Diskleri geri yükleme, kurtarma noktasından diskler oluşturduğunda, diskleri Değiştir, yedeklenen VM 'nin geçerli disklerinin kurtarma noktasındaki disklerle yerini alır. [Yukarıda](#restore-operations)açıklandığı gibi, diskleri değiştirmeye yönelik ilgili istek gövdesi aşağıda verilmiştir.
+
+#### <a name="create-request-body"></a>İstek gövdesi oluştur
+
+Azure VM yedeğinden bir disk değişikliği tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
+
+|Ad  |Tür  |Açıklama  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
+
+#### <a name="example-request"></a>Örnek istek
+
+Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özellikleri tanımlar.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>Başka bir sanal makine olarak geri yükle
+
+[Yukarıda](#restore-operations)açıklandığı gibi, aşağıdaki istek gövdesi bir sanal makine geri yüklemesi tetiklemek için gereken özellikleri tanımlar.
 
 ```json
 {
@@ -271,7 +325,7 @@ Aşağıdaki istek gövdesi, bir sanal makine geri yüklemesi tetiklemek için g
 }
 ```
 
-Yanıt, [diskleri geri yüklemek için yukarıda açıklanacak](#response)şekilde işlenmelidir.
+Yanıt, [diskleri geri yüklemek için yukarıda açıklanacak](#responses)şekilde işlenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

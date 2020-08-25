@@ -3,18 +3,18 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553096"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757209"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
 Bu makale, Azure Backup hizmeti hakkındaki yaygın sorulara yanıtlar sunar.
 
-## <a name="recovery-services-vault"></a>Kurtarma hizmetleri kasası
+## <a name="recovery-services-vault"></a>Kurtarma Hizmetleri kasası
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Her bir Azure aboneliği için oluşturulan kasaların sayısına yönelik herhangi bir sınır var mıdır?
 
@@ -108,7 +108,7 @@ Boyut sınırları şöyledir:
 İşletim sistemi/makine | Veri kaynağının boyut sınırı
 --- | ---
 Windows 8 veya üzeri | 54.400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support)

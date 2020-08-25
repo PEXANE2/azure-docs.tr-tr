@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563585"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797709"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Öğretici: bir Jekyll sitesini Azure statik Web Apps önizleme 'ye yayımlama
 
 Bu makalede, bir [Jekyıll](https://jekyllrb.com/) Web uygulamasının nasıl oluşturulacağı ve [azure Azure statik Web Apps](overview.md)nasıl dağıtılacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -132,7 +132,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
-### <a name="review-and-create"></a>Gözden geçirme ve oluşturma
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 

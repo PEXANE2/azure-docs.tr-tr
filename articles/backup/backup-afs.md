@@ -3,12 +3,12 @@ title: Azure portal Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: e0d9edbcb89dbdcac51893eb720da880a150bc7b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532707"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757804"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme
 
@@ -21,7 +21,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Dosya paylaşma bölmesinden yedeklemeyi yapılandırma
 * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure dosya paylaşma anlık görüntü tabanlı yedekleme çözümü hakkında [bilgi edinin](azure-file-share-backup-overview.md) .
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
@@ -31,7 +31,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasından yedeklemeyi yapılandırma
 
-Aşağıdaki adımlarda, kurtarma hizmeti Kasası bölmesinden birden çok dosya paylaşımı için yedeklemeyi nasıl yapılandırabileceğiniz açıklanmaktadır:
+Aşağıdaki adımlarda, kurtarma hizmetleri Kasası bölmesinden birden çok dosya paylaşımı için yedeklemeyi nasıl yapılandırabileceğiniz açıklanmaktadır:
 
 1. [Azure Portal](https://portal.azure.com/), dosya paylaşımının yedeklemesini yapılandırmak için kullanmak Istediğiniz kurtarma hizmetleri kasasını açın.
 
@@ -123,11 +123,11 @@ Aşağıdaki adımlarda, ilgili dosya paylaşımı bölmesinden ayrı dosya payl
 
 1. Kurtarma Hizmetleri Kasası seçimi için aşağıdakilerden birini yapın:
 
-    * Zaten bir kasanız varsa, **var olan** kurtarma hizmeti kasasını Seç radyo düğmesini seçin ve kasa adı açılan menüsünden mevcut **kasalardan** birini seçin.
+    * Zaten bir kasanız varsa, **var olan** kurtarma hizmetleri Kasası Seç radyo düğmesini seçin ve kasa adı açılan menüsünde mevcut **kasalardan** birini seçin.
 
        ![Mevcut kasayı seçin](./media/backup-afs/select-existing-vault.png)
 
-    * Kasanız yoksa, yeni kurtarma hizmeti Kasası **Oluştur** radyo düğmesini seçin. Kasa için bir ad belirtin. Dosya paylaşımıyla aynı bölgede oluşturulur. Varsayılan olarak, kasa dosya paylaşımıyla aynı kaynak grubunda oluşturulur. Farklı bir kaynak grubu seçmek istiyorsanız, **kaynak türü** açılan listesini aşağıdan **Yeni bağlantı oluştur** ' u seçin ve kaynak grubu için bir ad belirtin. Devam etmek için **Tamam**'ı seçin.
+    * Kasanız yoksa, yeni kurtarma hizmetleri Kasası **Oluştur** radyo düğmesini seçin. Kasa için bir ad belirtin. Dosya paylaşımıyla aynı bölgede oluşturulur. Varsayılan olarak, kasa dosya paylaşımıyla aynı kaynak grubunda oluşturulur. Farklı bir kaynak grubu seçmek istiyorsanız, **kaynak türü** açılan listesini aşağıdan **Yeni bağlantı oluştur** ' u seçin ve kaynak grubu için bir ad belirtin. Devam etmek için **Tamam**'ı seçin.
 
        ![Yeni kasa oluştur](./media/backup-afs/create-new-vault.png)
 
