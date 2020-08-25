@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 5ebb3883304584570759ea02a2de7187efcdaf26
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718688"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757682"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Öğretici - Azure CLI ile Azure disklerini yönetme
 
@@ -50,6 +50,7 @@ Azure iki disk türü sağlar.
 **Premium diskler** -SSD tabanlı, yüksek performanslı ve düşük gecikmeli disk tarafından desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. [Boyut adında](../vm-naming-conventions.md) **S** olan VM boyutları genellikle Premium depolamayı destekler. Örneğin, DS serisi, DSv2 serisi, GS serisi ve FS Serisi VM 'Ler Premium depolamayı destekler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin, disk boyutu 64 GB 'den büyükse ancak 128 GB 'den küçükse, disk türü P10 olur. 
 
 <br>
+
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
@@ -112,16 +113,17 @@ Sanal makine ile bir SSH bağlantısı oluşturun. Örnek IP adresini, sanal mak
 ssh 10.101.10.10
 ```
 
-`fdisk` ile diski bölümlendirin.
+`parted` ile diski bölümlendirin.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-`mkfs` komutu kullanarak dosya sistemini bölüme yazın.
+`mkfs` komutu kullanarak dosya sistemini bölüme yazın. `partprobe`İşletim sisteminin değişikliğin farkında olması için kullanın.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 İşletim sisteminde erişilebilir olması için yeni diski bağlayın.
@@ -130,18 +132,19 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Disk artık *datadrive* bağlama noktası üzerinden erişilebilir, `df -h` komutunu çalıştırarak bunu doğrulayabilirsiniz.
+Diske artık, `/datadrive` komutu çalıştırılarak doğrulanamayan bağlama noktası üzerinden erişilebilir `df -h` .
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-Çıktı, */datadrive* konumuna bağlanan yeni sürücüyü gösterir.
+Çıktı, üzerine takılan yeni sürücüyü gösterir `/datadrive` .
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -157,11 +160,22 @@ Bu durumda çıktı sürücünün UUID’sini, `/dev/sdc1`, görüntüler.
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-*/etc/fstab* dosyasına aşağıdakine benzer bir satır ekleyin.
+> [!NOTE]
+> **/Etc/fstab** dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
+
+`/etc/fstab`Dosyayı bir metin düzenleyicisinde şu şekilde açın:
+
+```bash
+sudo nano /etc/fstab
+```
+
+*/Etc/fstab* dosyasına benzer bir satır ekleyerek UUID değerini kendi değerlerinizle değiştirin.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+Dosyayı düzenleme işiniz bittiğinde, `Ctrl+O` dosyayı yazmak ve düzenleyiciden çıkmak için öğesini kullanın `Ctrl+X` .
 
 Artık disk yapılandırıldığında göre SSH oturumunu kapatabilirsiniz.
 
@@ -175,7 +189,7 @@ Bir disk anlık görüntüsü aldığınızda, Azure diskin belirli bir noktadak
 
 ### <a name="create-snapshot"></a>Anlık görüntü oluşturma
 
-Sanal makine diski anlık görüntüsü oluşturmadan önce diskin kimliği veya adı gerekir. Disk KIMLIĞINI döndürmek için [az VM Show](/cli/azure/vm#az-vm-show) komutunu kullanın. Bu örnekte sonraki adımda kullanılabilmesi için disk kimliği bir değişken içinde saklanır.
+Anlık görüntü oluşturmadan önce diskin KIMLIĞI veya adı gerekir. Disk KIMLIĞINI [göstermek için az VM Show](/cli/azure/vm#az-vm-show) ' i kullanın. Bu örnekte sonraki adımda kullanılabilmesi için disk kimliği bir değişken içinde saklanır.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -185,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Artık sanal makinenin kimliğine sahip olduğunuza göre aşağıdaki komut, diskin anlık görüntüsünü oluşturabilir.
+Artık KIMLIĞINIZ olduğuna göre, diskin anlık görüntüsünü oluşturmak için [az Snapshot Create](/cli/azure/snapshot#az-snapshot-create) kullanın.
 
 ```azurecli-interactive
 az snapshot create \
@@ -196,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Anlık görüntüden disk oluşturma
 
-Bu anlık görüntü daha sonra, sanal makineyi yeniden oluşturmak için kullanılabilen bir disk e dönüştürülebilir.
+Bu anlık görüntü daha sonra, sanal makineyi yeniden oluşturmak için kullanılabilecek [az disk Create](/cli/azure/disk#az-disk-create)kullanılarak bir diske dönüştürülebilir.
 
 ```azurecli-interactive
 az disk create \
@@ -207,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Sanal makineyi anlık görüntüden geri yükleme
 
-Sanal makineyi kurtarma işlemini gösterebilmemiz için varolan sanal makineyi silin.
+Sanal makine kurtarmayı göstermek için [az VM Delete](/cli/azure/vm#az-vm-delete)kullanarak var olan sanal makineyi silin.
 
 ```azurecli-interactive
 az vm delete \
@@ -229,7 +243,7 @@ az vm create \
 
 Tüm veri disklerinin sanal makineye yeniden eklenmesi gerekir.
 
-Öncelikle [az disk list](/cli/azure/disk#az-disk-list) komutunu kullanarak veri diski adını bulun. Bu örnek, diskin adını *datadisk* adlı bir değişkene yerleştirir ve bu değişkeni sonraki adımda kullanabilirsiniz.
+[Az disk List](/cli/azure/disk#az-disk-list) komutunu kullanarak veri diski adını bulun. Bu örnek `datadisk` , bir sonraki adımda kullanılan adlı bir değişkende diskin adını koyar.
 
 ```azurecli-interactive
 datadisk=$(az disk list \

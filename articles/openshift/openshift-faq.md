@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497588"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816244"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -65,25 +65,9 @@ Azure Red Hat OpenShift 4. x kümelerinde altyapı düğümleri Şu anda kullan�
 
 Azure Red Hat OpenShift 3,11 kümelerinde altyapı düğümleri varsayılan olarak dahil edilir.
 
-## <a name="upgrades"></a>Güncelleştirmelerini
+## <a name="how-do-i-handle-cluster-upgrades"></a>Nasıl yaparım? küme yükseltmeleri mi?
 
-###  <a name="what-is-the-general-upgrade-process"></a>Genel yükseltme işlemi nedir?
-
-Düzeltme ekleri kümenize otomatik olarak uygulanır. Kümenizde düzeltme eki yükseltmeleri almak için herhangi bir işlem gerçekleştirmeniz gerekmez.
-
-Yükseltme çalıştırmak, çalıştırmak için güvenli bir işlemdir ve küme hizmetlerini kesintiye uğramamalıdır. Birleşik Microsoft-Red Hat ekibi, yeni sürümler kullanılabilir olduğunda veya ortak güvenlik açıkları ve Etkilenmeler çok önemli olduğunda yükseltme işlemini tetikleyebilir. Kullanılabilir güncelleştirmeler bir hazırlama ortamında test edilir ve ardından üretim kümelerine uygulanır. Aşağıdaki en iyi yöntemler, kesinti olmaması için en az düzeyde güvence sağlanmasına yardımcı
-
-Planlı bakım, müşteriyle birlikte önceden kullanılamaz. Bakımla ilgili bildirimler, e-posta yoluyla gönderilebilir.
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Azure Red Hat OpenShift bakım işlemi nedir?
-
-Azure Red Hat OpenShift: yükseltmeler ve bulut sağlayıcısı tarafından başlatılan bakım için iki tür bakım vardır.
-- Yükseltmeler, yazılım yükseltmeleri ve genel güvenlik açıklarını ve Etkilenmeler içerir.
-- Bulut sağlayıcısı tarafından başlatılan bakımda ağ, depolama ve bölgesel kesintiler bulunur. Bakım, bulut sağlayıcısına bağımlıdır ve sağlayıcı tarafından sağlanan güncelleştirmelere dayanır.
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Acil durum ile planlanmış bakım pencereleri hakkında ne olacak?
-
-İki tür bakım arasında ayrım yapmıyoruz. Takımlarımız 24/7/365 kullanılabilir ve geleneksel olarak zamanlanan "saat dışı" bakım pencerelerini kullanmıyor.
+Yükseltmeler, bakım ve desteklenen sürümler hakkında daha fazla bilgi için bkz. [destek yaşam döngüsü kılavuzu](support-lifecycle.md).
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Ana bilgisayar işletim sistemi ve OpenShift yazılımı nasıl güncelleştirilir?
 
@@ -157,7 +141,7 @@ Müşteri ve bireysel proje yöneticileri, nesneleri kullanarak proje başına t
 
 ### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikteki sanal bir ağa eşdüzey olarak erişmeye çalışıyorum ancak VNet CıDR hatası alamadı.
 
-Sanal ağı olan abonelikte, `Microsoft.ContainerService` sağlayıcıyı aşağıdaki komutla kaydettiğinizden emin olun:`az provider register -n Microsoft.ContainerService --wait`
+Sanal ağı olan abonelikte, `Microsoft.ContainerService` sağlayıcıyı aşağıdaki komutla kaydettiğinizden emin olun: `az provider register -n Microsoft.ContainerService --wait`
 
 ### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Özel VNet üzerinde dağıtım için IP aralıklarını belirtebilir, eşlendikten sonra diğer kurumsal VNET 'ler ile çakışıyor önleyebilirsiniz.
 

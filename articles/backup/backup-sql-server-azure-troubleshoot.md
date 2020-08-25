@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660162"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756920"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -24,7 +24,7 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 
 Bir kurtarma hizmetleri Kasası oluşturup yapılandırdıktan sonra, veritabanlarının keşfedilmesinden ve yedeklemenin yapılandırılması iki adımlı bir işlemdir.<br>
 
-![sql](./media/backup-azure-sql-database/sql.png)
+![Yedekleme hedefi-Azure VM 'de SQL Server](./media/backup-azure-sql-database/sql.png)
 
 Yedekleme yapılandırması sırasında, SQL sanal makinesi ve örnekleri **VM 'Lerde bulma** ve **yedekleme yapılandırma** (yukarıdaki görüntüye bakın) ' in içinde görünmediğine dikkat edin:
 

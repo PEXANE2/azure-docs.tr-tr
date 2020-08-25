@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355344"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799273"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science süreci nedir?
 
@@ -26,7 +26,7 @@ Bu makalede, TDSP ve ana bileşenlerine ilişkin bir genel bakış sunulmaktadı
 
 ## <a name="key-components-of-the-tdsp"></a>TDSP 'nin önemli bileşenleri
 
-TDSP hads aşağıdaki anahtar bileşenleri:
+TDSP aşağıdaki önemli bileşenlere sahiptir:
 
 - **Veri bilimi yaşam döngüsü** tanımı
 - **Standartlaştırılmış bir proje yapısı**
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bu roller (dikey eksende) için yaşam döngüsünün (
 
 Tüm projelerin bir dizin yapısını paylaşmasını ve proje belgeleri için şablon kullanmasını sağlamak, takım üyelerinin projelerle ilgili bilgileri bulmasını kolaylaştırır. Tüm kod ve belgeler, Ekip işbirliğini sağlamak için git, TFS veya alt sürüm gibi bir sürüm denetim sisteminde (VC) depolanır. Jira, R, ve Azure DevOps gibi çevik bir proje izleme sisteminde bulunan görevleri ve özellikleri izlemek, kodun tek tek özellikler için daha yakından izlenmesine olanak tanır. Bu tür izleme ekiplerin daha iyi maliyet tahminleri almasına de olanak sağlar. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC üzerinde her proje için ayrı bir depo oluşturulmasını önerir. Tüm projelerin standartlaştırılmış yapısı, kuruluş genelinde kurumsal bilgi oluşturmaya yardımcı olur.
 
-Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örnekler arasında şunlar yer almaktadır:
+Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
 
 - projenin iş sorununu ve kapsamını belgeleyici bir proje
 - ham verilerin yapısını ve istatistiklerini belgelemek için veri raporları
@@ -87,7 +87,7 @@ Dizin yapısı [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate)'dan
 TDSP, paylaşılan analizler ve depolama altyapısını yönetmeye yönelik öneriler sağlar:
 
 - veri kümelerini depolamak için bulut dosya sistemleri 
-- veritabanları
+- veritabanlarında
 - büyük veri (SQL veya Spark) kümeleri 
 - Machine Learning hizmeti 
 
