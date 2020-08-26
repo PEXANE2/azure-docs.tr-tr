@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78669235"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864895"
 ---
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
 Her istek bir yetkilendirme üst bilgisi gerektirir. Bu tabloda, her bir hizmet için hangi üstbilgilerin desteklendiği gösterilmektedir:
 
@@ -20,25 +20,25 @@ Her istek bir yetkilendirme üst bilgisi gerektirir. Bu tabloda, her bir hizmet 
 | Ocp-Apim-Subscription-Key | Yes | Hayır |
 | Yetkilendirme: taşıyıcı | Yes | Yes |
 
-`Ocp-Apim-Subscription-Key` Üstbilgiyi kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örneğin:
+`Ocp-Apim-Subscription-Key`Üstbilgiyi kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örnek:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-`Authorization: Bearer` Üst bilgisini kullanırken `issueToken` uç noktaya istek yapmanız gerekir. Bu istekte, abonelik anahtarınızı 10 dakikalık geçerli bir erişim belirteci için değiş tokuş edersiniz. Sonraki birkaç bölümde, bir belirteci nasıl alabileceğinizi ve bir belirteç kullanacağınızı öğreneceksiniz.
+`Authorization: Bearer`Üst bilgisini kullanırken uç noktaya istek yapmanız gerekir `issueToken` . Bu istekte, abonelik anahtarınızı 10 dakikalık geçerli bir erişim belirteci için değiş tokuş edersiniz. Sonraki birkaç bölümde, bir belirteci nasıl alabileceğinizi ve bir belirteç kullanacağınızı öğreneceksiniz.
 
 ### <a name="how-to-get-an-access-token"></a>Erişim belirteci alma
 
-Erişim belirteci almak için, `issueToken` `Ocp-Apim-Subscription-Key` ve abonelik anahtarınızı kullanarak uç noktaya bir istek yapmanız gerekir.
+Erişim belirteci almak için, `issueToken` ve abonelik anahtarınızı kullanarak uç noktaya bir istek yapmanız gerekir `Ocp-Apim-Subscription-Key` .
 
-`issueToken` Uç nokta şu biçimdedir:
+`issueToken`Uç nokta şu biçimdedir:
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Bu `<REGION_IDENTIFIER>` tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
+`<REGION_IDENTIFIER>`Bu tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
@@ -46,7 +46,7 @@ Erişim belirteci isteğinizi oluşturmak için bu örnekleri kullanın.
 
 #### <a name="http-sample"></a>HTTP örneği
 
-Bu örnek, belirteç almak için basit bir HTTP isteğidir. Konuşma `YOUR_SUBSCRIPTION_KEY` hizmeti abonelik anahtarınızla değiştirin. Aboneliğiniz Batı ABD bölgede değilse, `Host` üstbilgiyi bölgenizin ana bilgisayar adıyla değiştirin.
+Bu örnek, belirteç almak için basit bir HTTP isteğidir. `YOUR_SUBSCRIPTION_KEY`Konuşma hizmeti abonelik anahtarınızla değiştirin. Aboneliğiniz Batı ABD bölgede değilse, `Host` üstbilgiyi bölgenizin ana bilgisayar adıyla değiştirin.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -60,7 +60,7 @@ Yanıtın gövdesi JSON Web Token (JWT) biçimindeki erişim belirtecini içerir
 
 #### <a name="powershell-sample"></a>PowerShell örneği
 
-Bu örnek, bir erişim belirteci almak için basit bir PowerShell betiğtir. Konuşma `YOUR_SUBSCRIPTION_KEY` hizmeti abonelik anahtarınızla değiştirin. Aboneliğinizle eşleşen bölge için doğru uç noktayı kullandığınızdan emin olun. Bu örnek şu anda Batı ABD olarak ayarlanmıştır.
+Bu örnek, bir erişim belirteci almak için basit bir PowerShell betiğtir. `YOUR_SUBSCRIPTION_KEY`Konuşma hizmeti abonelik anahtarınızla değiştirin. Aboneliğinizle eşleşen bölge için doğru uç noktayı kullandığınızdan emin olun. Bu örnek şu anda Batı ABD olarak ayarlanmıştır.
 
 ```powershell
 $FetchTokenHeader = @{
@@ -79,10 +79,10 @@ $OAuthToken
 
 #### <a name="curl-sample"></a>Kıvrımlı örnek
 
-Kıvrımlı, Linux 'ta (ve Linux için Windows alt sisteminde) kullanılabilen bir komut satırı aracıdır. Bu kıvrımlı komut, erişim belirtecinin nasıl alınacağını gösterir. Konuşma `YOUR_SUBSCRIPTION_KEY` hizmeti abonelik anahtarınızla değiştirin. Aboneliğinizle eşleşen bölge için doğru uç noktayı kullandığınızdan emin olun. Bu örnek şu anda Batı ABD olarak ayarlanmıştır.
+Kıvrımlı, Linux 'ta (ve Linux için Windows alt sisteminde) kullanılabilen bir komut satırı aracıdır. Bu kıvrımlı komut, erişim belirtecinin nasıl alınacağını gösterir. `YOUR_SUBSCRIPTION_KEY`Konuşma hizmeti abonelik anahtarınızla değiştirin. Aboneliğinizle eşleşen bölge için doğru uç noktayı kullandığınızdan emin olun. Bu örnek şu anda Batı ABD olarak ayarlanmıştır.
 
 ```console
-curl -v -X POST
+curl -v -X POST \
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
  -H "Content-Length: 0" \
@@ -91,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>C# örneği
 
-Bu C# sınıfı, erişim belirtecinin nasıl alınacağını gösterir. Sınıfı örneklediğinizde konuşma hizmeti abonelik anahtarınızı geçirin. Aboneliğiniz Batı ABD bölgede değilse, değerini aboneliğinizin bölgesiyle eşleşecek `FetchTokenUri` şekilde değiştirin.
+Bu C# sınıfı, erişim belirtecinin nasıl alınacağını gösterir. Sınıfı örneklediğinizde konuşma hizmeti abonelik anahtarınızı geçirin. Aboneliğiniz Batı ABD bölgede değilse, değerini `FetchTokenUri` aboneliğinizin bölgesiyle eşleşecek şekilde değiştirin.
 
 ```csharp
 public class Authentication
@@ -149,7 +149,7 @@ def get_token(subscription_key):
 
 ### <a name="how-to-use-an-access-token"></a>Erişim belirteci kullanma
 
-Erişim belirtecinin, `Authorization: Bearer <TOKEN>` üst bilgi olarak hizmete gönderilmesi gerekir. Her erişim belirteci 10 dakika için geçerlidir. Her zaman yeni bir belirteç alabilirsiniz, ancak ağ trafiğini ve gecikmesini en aza indirmek için dokuz dakika boyunca aynı belirteci kullanmanızı öneririz.
+Erişim belirtecinin, üst bilgi olarak hizmete gönderilmesi gerekir `Authorization: Bearer <TOKEN>` . Her erişim belirteci 10 dakika için geçerlidir. Her zaman yeni bir belirteç alabilirsiniz, ancak ağ trafiğini ve gecikmesini en aza indirmek için dokuz dakika boyunca aynı belirteci kullanmanızı öneririz.
 
 Metinden konuşmaya REST API örnek bir HTTP isteği aşağıda verilmiştir:
 

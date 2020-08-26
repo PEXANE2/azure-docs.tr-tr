@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531933"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856127"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -64,7 +64,7 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
 Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights ortamına konuk erişimi sağlamak için aşağıdaki adımları izleyin.
 
-1. Azure portal gidin, **Azure Active Directory**' e tıklayın, **genel bakış** sekmesinde aşağı kaydırın ve ardından **Konuk Kullanıcı**' yı seçin.
+1. Azure portal gidin,  **Azure Active Directory**' e tıklayın, **genel bakış** sekmesinde aşağı kaydırın ve ardından **Konuk Kullanıcı**' yı seçin.
 
     [![Veri erişimi Ilkeleri ' ni seçin ve ardından + davet et](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
@@ -106,7 +106,7 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights o
 
 1. Yönetici, [ortam URL](time-series-insights-parameterized-urls.md) 'sini konularıyla paylaşır.
 
-1. Konuk Kullanıcı, davet etmek için kullandığınız e-posta adresine kaydolduktan sonra daveti kabul ettiğinde, Azure portal yönlendirilir. 
+1. Konuk Kullanıcı, davet etmek için kullandığınız e-posta adresine kaydolduktan sonra daveti kabul ettiğinde, Azure portal yönlendirilir.
 
 1. Konuk artık yönetici tarafından belirtilen ortam URL 'sini kullanarak paylaşılan ortama erişebilir. Anında erişim için bu URL 'YI Web tarayıcısına girebilirler.
 
@@ -114,14 +114,14 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights o
 
     [![İnsights.azure.com üzerinde seçimi avatar](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    Konuk kullanıcı yönetici kiracısını seçtikten sonra, paylaşılan Azure Time Series Insights ortamını seçme olanağına sahip olur.
 
-    Konuk kullanıcı yönetici kiracısını seçtikten sonra, paylaşılan Azure Time Series Insights ortamını seçme olanağına sahip olur. 
-    
     Artık, **Adım 5**' te size sağladıkları rolle ilişkili tüm yetenekler vardır.
 
     [![Konuk Kullanıcı açılan kutudan Azure kiracınızı seçer](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * Azure Active Directory uygulama kaydı adımları için [kimlik doğrulaması ve yetkilendirmeyi](time-series-insights-authentication-and-authorization.md) okuyun.
 
-* [Ortamınızı Azure Time Series Insights Gen2 Explorer 'da](./time-series-insights-update-explorer.md)görüntüleyin.
+* [Azure TIME SERIES INSIGHTS TSI Gezgini ' nde ortamınızı](./time-series-insights-update-explorer.md)görüntüleyin.

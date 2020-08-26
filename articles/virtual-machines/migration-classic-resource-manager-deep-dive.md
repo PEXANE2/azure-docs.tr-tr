@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513206"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855911"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış
 
@@ -33,7 +33,7 @@ Azure klasik dağıtım modelinden Azure Resource Manager dağıtım modeline ge
 
 Veri düzlemi, klasik dağıtım modeliyle Kaynak Yöneticisi yığınları arasında aynıdır. Bunun farkı, geçiş işlemi sırasında Microsoft 'un kaynakları klasik dağıtım modelinden Kaynak Yöneticisi yığınında dönüştürmektir. Sonuç olarak, Kaynak Yöneticisi yığınında kaynaklarınızı yönetmek için yeni araçlar, API 'Ler ve SDK 'Lar kullanmanız gerekir.
 
-![Yönetim/Denetim düzlemi ve veri düzlemi arasındaki farkı gösteren diyagram](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Yönetim/Denetim düzlemi ve veri düzlemi arasındaki farkı gösteren diyagram](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Geçişe başlamadan önce:
 
 Geçiş iş akışı aşağıdaki gibidir:
 
-![Geçiş iş akışını gösteren diyagram](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Geçiş iş akışını gösteren diyagram](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > Aşağıdaki bölümlerde açıklanan işlemler ıdempotent. Desteklenmeyen bir özellik veya yapılandırma hatası dışında bir sorununuz varsa, hazırlama, durdurma veya işleme işlemini yeniden deneyin. Azure, eylemi yeniden dener.
@@ -94,17 +94,17 @@ Azure daha sonra, kaynak geçişi için Kaynak Yöneticisi için klasik dağıt�
 Hazırlama işlemi tamamlandıktan sonra, hem klasik dağıtım modelinde hem de Kaynak Yöneticisi Kaynakları görselleştirme seçeneğiniz vardır. Azure platformu, klasik dağıtım modelindeki her bulut hizmeti için `cloud-service-name>-Migrated` deseninde bir kaynak grubu adı oluşturur.
 
 > [!NOTE]
-> Geçirilen kaynaklar için oluşturulan bir kaynak grubunun adını seçmek mümkün değildir (yani, "-geçirilmiş"). Geçiş tamamlandıktan sonra, kaynakları istediğiniz herhangi bir kaynak grubuna taşımak için Azure Resource Manager taşıma özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](~/articles/resource-group-move-resources.md).
+> Geçirilen kaynaklar için oluşturulan bir kaynak grubunun adını seçmek mümkün değildir (yani, "-geçirilmiş"). Geçiş tamamlandıktan sonra, kaynakları istediğiniz herhangi bir kaynak grubuna taşımak için Azure Resource Manager taşıma özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Aşağıdaki iki ekran görüntüsü başarılı bir hazırlama işleminden sonra sonucu gösterir. İlki, özgün bulut hizmetini içeren bir kaynak grubu gösterir. İkinci bir, eşdeğer Azure Resource Manager kaynaklarını içeren yeni "-geçirilmiş" kaynak grubunu gösterir.
 
-![Orijinal bulut hizmetini gösteren ekran görüntüsü](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Orijinal bulut hizmetini gösteren ekran görüntüsü](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Hazırlama işleminde Azure Resource Manager kaynaklarını gösteren ekran görüntüsü](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Hazırlama işleminde Azure Resource Manager kaynaklarını gösteren ekran görüntüsü](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 Hazırlama aşamasının tamamlanmasından sonra kaynaklarınızın gerisinde bir bakış aşağıda verilmiştir. Veri düzledeki kaynağın aynı olduğunu unutmayın. Hem yönetim düzlemi (klasik dağıtım modeli) hem de denetim düzlemi (Kaynak Yöneticisi) ile temsil edilir.
 
-![Hazırlama aşamasının diyagramı](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Hazırlama aşamasının diyagramı](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > Klasik dağıtım modelindeki bir sanal ağda olmayan VM 'Ler, geçişin bu aşamasında durdurulur ve serbest bırakılır.
@@ -124,7 +124,7 @@ Herhangi bir sorun yaşarsanız dilediğiniz zaman geçişi durdurabilir ve klas
 ### <a name="abort"></a>Durdurma
 Bu, değişikliklerinizi klasik dağıtım modeline dönüştürmek ve geçişi durdurmak istiyorsanız isteğe bağlı bir adımdır. Bu işlem kaynaklarınızın Kaynak Yöneticisi meta verilerini siler (hazırlama adımında oluşturulur). 
 
-![Durdurma adımının diyagramı](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Durdurma adımının diyagramı](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ Doğrulama adımını tamamladıktan sonra geçişi işleyebilirsiniz. Kaynaklar
 >
 >
 
-![Tamamlama adımının diyagramı](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Tamamlama adımının diyagramı](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Geçiş akış çizelgesi
 
 Geçişe nasıl devam edeceğine gösteren bir akış çizelgesi aşağıda verilmiştir:
 
-![Geçiş adımlarını gösteren ekran görüntüsü](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Geçiş adımlarını gösteren ekran görüntüsü](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Kaynak Yöneticisi kaynaklara klasik dağıtım modelinin çevirisi
 Aşağıdaki tabloda, klasik dağıtım modelini ve kaynakların Kaynak Yöneticisi gösterimlerini bulabilirsiniz. Diğer özellikler ve kaynaklar şu an desteklenmemektedir.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81007844"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864754"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama istek dosyasını oluşturma
 
@@ -95,7 +95,7 @@ Yeni yaklaşım, [APNs Için belirteç tabanlı (http/2) kimlik doğrulaması](h
     **Yeni sertifika oluştur** ekranı görüntülenir.
 
     > [!NOTE]
-    > Bu öğretici geliştirme sertifikası kullanır. Aynı işlem üretim sertifika kaydedildiğinde de kullanılır. Bildirimleri gönderirken aynı sertifika türünü kullandığınızdan kesinlikle emin olun.
+    > Bu öğretici, uygulamanızın benzersiz bir cihaz belirteci oluşturmak için kullandığı bir geliştirme sertifikası kullanır. Aynı işlem üretim sertifika kaydedildiğinde de kullanılır. Bildirimleri gönderirken aynı sertifika türünü kullandığınızdan kesinlikle emin olun.
 
 3. **Dosya Seç**' i seçin, Ilk görevden CSR dosyasını kaydettiğiniz konuma gidin ve ardından bu sertifikayı yüklemek için sertifika adına çift tıklayın. Daha sonra **Devam** seçeneğini belirleyin.
 
@@ -211,7 +211,7 @@ Bu bölümde,. p12 Push Sertifikası veya belirteç tabanlı kimlik doğrulamas�
 **Bildirim hizmetleri**altında **Apple (APNs)** öğesini seçin ve ardından [Notification Hubs için sertifika oluşturma](#creating-a-certificate-for-notification-hubs) bölümünde seçtiğiniz yaklaşıma göre ilgili adımları izleyin.  
 
 > [!NOTE]
-> Yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız **uygulama modu** için **üretimi** kullanın.
+> Uygulamanızı Uygulama Mağazası veya geçici dağıtım profiliyle derleyebilir, **uygulama modu**için **üretimi** kullanın. Bu, cihazınızın uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermesini sağlar.
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>SEÇENEK 1:. p12 anında iletme sertifikası kullanma
 

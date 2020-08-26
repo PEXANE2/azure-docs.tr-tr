@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135819"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855803"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
@@ -123,31 +123,17 @@ Azure Izleyici 'de kullanıma sunulan çok boyutlu ölçümler aracılığıyla 
 
 Genel kullanılabilirlik aşamasında NAT veri yolu en az% 99,9 kullanılabilir.
 
-
 ## <a name="pricing"></a>Fiyatlandırma
 
-NAT Gateway iki ayrı ölçü ile faturalandırılır:
-
-| Ölçüm | Fiyat |
-| --- | --- |
-| Kaynak saatleri | $0.045/saat |
-| İşlenen veri | $0.045/GB |
-
-Bir NAT ağ geçidi kaynağının bulunduğu süre için kaynak saatleri hesapları.
-Bir NAT ağ geçidi kaynağı tarafından işlenen tüm trafik için veri işleme hesapları.
+Fiyatlandırma ayrıntıları için bkz. [sanal ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Sanal ağ NAT ve NAT ağ geçidi kaynağı tüm Azure genel bulut [bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
-
-## <a name="support"></a>Destek
-
-NAT, normal destek kanalları aracılığıyla desteklenir.
+Sanal ağ NAT ve NAT ağ geçidi kaynağı tüm Azure bulutlar [bölgelerinin](https://azure.microsoft.com/global-infrastructure/regions/)tüm bölgelerde kullanılabilir.
 
 ## <a name="suggestions"></a>Öneriler
 
 Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri önerin ve oylayın.
-
 
 ## <a name="limitations"></a>Sınırlamalar
 

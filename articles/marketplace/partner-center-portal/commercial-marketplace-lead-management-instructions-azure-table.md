@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120849"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855754"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
@@ -28,19 +28,19 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
     1. **Yeni** bölmesinde **depolama** ' yı seçin. **Öne çıkan** bir liste sağ tarafta görüntülenir.
     1. Hesap oluşturmaya başlamak için **depolama hesabı** ' nı seçin. [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)bölümündeki yönergeleri izleyin.
 
-        ![Azure depolama hesabı oluşturma adımları](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Azure depolama hesabı oluşturma adımları.":::
 
         Depolama hesapları hakkında daha fazla bilgi için bkz. [Hızlı Başlangıç Öğreticisi](../../storage/index.yml). Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Depolama Hesabınız sağlanana kadar bekleyin. Bu işlem genellikle birkaç dakika sürer. 
+1. Depolama Hesabınız sağlanana kadar bekleyin. Bu işlem genellikle birkaç dakika sürer.
 
 ## <a name="create-a-table-in-your-storage-account"></a>Depolama hesabınızda bir tablo oluşturun
 
-1. Azure portal **ana** sayfasından, depolama hesabınıza erişmek için **Tüm kaynaklarınızı göster** ' i seçin. Ayrıca, Azure portal sol menü çubuğundan **tüm kaynaklar** ' ı da seçebilirsiniz.
+1. Azure portal **ana** sayfasında, depolama hesabınıza erişmek için **Tüm kaynaklarınızı gör** ' ü seçin. Ayrıca, Azure portal sol menü çubuğundan **tüm kaynaklar** ' ı da seçebilirsiniz.
 
-    ![Azure depolama hesabınıza erişin](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure depolama hesabınıza erişin.":::
 
-1. Depolama hesabı bölmesinizden **erişim anahtarları** ' nı seçin ve anahtar için **bağlantı dizesi** değerini kopyalayın. Azure Market teklifiniz için müşteri adaylarını almak üzere Yayımlama portalında sağlamanız gereken **depolama hesabı bağlantı dizesi** değeri olduğundan bu değeri kaydedin. 
+1. Depolama hesabı bölmesinizden **erişim anahtarları** ' nı seçin ve anahtar için **bağlantı dizesi** değerini kopyalayın. Azure Market teklifiniz için müşteri adaylarını almak üzere Yayımlama portalında sağlamanız gereken **depolama hesabı bağlantı dizesi** değeri olduğundan bu değeri kaydedin.
 
     Bağlantı dizesine bir örnek aşağıda verilmiştir.
 
@@ -48,13 +48,14 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure depolama anahtarı.":::
+
 
 1. Depolama hesabı bölmesinizden **Tablolar**' ı seçin ve tablo oluşturmak Için **+ tablo** ' yı seçin. Tablonuz için bir ad girin ve **Tamam**' ı seçin. Müşteri adayları alındığında e-posta bildirimleri almak üzere bir akış yapılandırmak istiyorsanız bu değeri kaydedin.
 
     ![Azure tabloları](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    Depolama tablonuzdaki verileri görmek için [Azure Depolama Gezgini](https://archive.codeplex.com/?p=azurestorageexplorer) veya başka bir aracı kullanabilirsiniz. Azure tablosundaki verileri de dışarı aktarabilirsiniz. 
+    Depolama tablonuzdaki verileri görmek için [Azure Depolama Gezgini](https://archive.codeplex.com/?p=azurestorageexplorer) veya başka bir aracı kullanabilirsiniz. Azure tablosundaki verileri de dışarı aktarabilirsiniz.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Seçim Lider bildirimleri almak için güç otomatikleştirmesini kullanma
 
@@ -66,12 +67,12 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
 1. Power otomatikleştir hesabınızda oturum açın.
 1. Sol taraftaki çubukta **Akışlarım**' ı seçin.
-1. Üstteki çubukta **+ Yeni**' yi seçin. 
+1. Üstteki çubukta **+ Yeni**' yi seçin.
 1. Açılan listede **+ zamanlandı**' i seçin (boş).
 
    ![Akışlarım + zamanlandığı--boş](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-1. **Zamanlanan akış oluştur** penceresinde, **yineleme**için, sıklık için Aralık ve **saat** için **1** ' i seçin. Ayrıca, isterseniz akışa bir ad verin. **Oluştur**'u seçin.
+1. **Zamanlanan akış oluştur** penceresinde, **yineleme**için, sıklık için Aralık ve **saat** için **1** ' i seçin. Ayrıca, isterseniz akışa bir ad verin. **Oluştur**’u seçin.
 
    >[!NOTE]
    >Bu örnek bir saatlik aralığı kullansa da, iş gereksinimleriniz için en iyi aralığı ve sıklığı seçebilirsiniz.
@@ -90,7 +91,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
     ![Geçmiş zaman aralığını ayarla](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >Her adımın doğru yapılandırıldığını doğrulamak için akışınızı dilediğiniz zaman kontrol edebilirsiniz. **Akışınızı denetlemek için akış menü** çubuğundan **Flow denetleyicisi** ' ni seçin.
 
    Sonraki adımlarda, tablonuza bağlanır ve yeni müşteri adaylarını işlemek için işleme mantığını ayarlarsınız.
@@ -111,7 +112,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
      ![Varlıkları al penceresi](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Filtre sorgusu**: Bu kutuyu seçin ve bu işlevi kutuya yapıştırın:`Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Filtre sorgusu**: Bu kutuyu seçin ve bu işlevi kutuya yapıştırın: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Varlıkları al, filtre sorgusu kutusu](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -123,7 +124,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
 
 1. **Koşul** penceresinde, **bir değer seçin**' i seçin. Ardından açılır pencerede **ifade** ' ı seçin.
 
-1. `length(body('Get_entities')?['value'])` **FX** kutusuna yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin. 
+1. `length(body('Get_entities')?['value'])` **FX** kutusuna yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin.
 
 1. Koşulu ayarlamayı tamamlaması için:
     1. Aşağı açılan listeden **büyüktür** ' i seçin.
@@ -134,7 +135,7 @@ Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri oto
    Sonraki birkaç adımda, koşulun sonucuna göre gerçekleştirilecek eylemi ayarlarsınız:
 
    * Koşul **Hayır**olarak çözümlenirse, hiçbir şey yapmayın.
-   * Koşul **Evet ise**, bir e-posta göndermek için Office 365 hesabınızı bağlayan bir eylem tetikleyin. 
+   * Koşul **Evet ise**, bir e-posta göndermek için Office 365 hesabınızı bağlayan bir eylem tetikleyin.
 
 1. **Evet ise** **Eylem Ekle** ' yi seçin.
 

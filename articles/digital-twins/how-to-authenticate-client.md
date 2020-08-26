@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589376"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855972"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -25,7 +25,7 @@ Bu makaledeki örnek kodda iki yaklaşım vardır. Tercih ettiğiniz dile bağl�
 
 Azure dijital TWINS için API 'Ler ve SDK 'lar hakkında daha fazla bilgi için [*bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk olarak, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-scripted.md)bölümünde kurulum adımlarını doldurun. Bu, bir Azure dijital TWINS örneğiniz olduğundan, kullanıcılarınızın erişim izinlerine sahip olduğundan ve istemci uygulamaları için izinler ayarlamış olduğunuzdan emin olur. Tüm bu kurulumdan sonra, istemci uygulama kodunu yazmaya hazırsınızdır.
 
@@ -39,18 +39,19 @@ Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine iht
 
 Seçtiğiniz araçlara bağlı olarak, Visual Studio Paket Yöneticisi 'ni veya komut satırı aracını kullanarak paketleri dahil edebilirsiniz `dotnet` . 
 
-.NET SDK ile kimlik doğrulaması yapmak için, [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığında tanımlanmış kimlik bilgileri alma yöntemlerinden birini kullanın.
-
-Yaygın olarak kullanılan ikisi şunlardır: 
-* [Interactivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet). Bu yöntem etkileşimli uygulamalara yöneliktir ve kimlik doğrulaması için bir Web tarayıcısı getirir.
-* [Managedıdentitycredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet). Bu yöntem, [yönetilen kimliklere (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ihtiyacınız olan durumlarda (örneğin, Azure işlevleriyle çalışırken) harika bir şekilde çalışır. 
-
 Ayrıca şu using deyimleri de gereklidir:
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+.NET SDK ile kimlik doğrulaması yapmak için, [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığında tanımlanmış kimlik bilgileri alma yöntemlerinden birini kullanın. Yaygın olarak kullanılan iki (aynı uygulamada bile):
+
+* [Interactivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) etkileşimli uygulamalara yöneliktir ve kimliği DOĞRULANMıŞ bir SDK istemcisi oluşturmak için kullanılabilir
+* [Managedıdentitycredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) , yönetilen KIMLIKLER (MSI) gerektiren durumlarda harika çalışır ve Azure işlevleri ile çalışmaya yönelik iyi bir adaydır.
+
+### <a name="interactivebrowsercredential-method"></a>Interactivebrowsercredential yöntemi
+[Interactivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemi etkileşimli uygulamalara yöneliktir ve kimlik doğrulaması için bir Web tarayıcısı getirir.
 
 Kimlik doğrulamalı bir SDK istemcisi oluşturmak üzere etkileşimli tarayıcı kimlik bilgilerini kullanmak için şu kodu ekleyin:
 
@@ -79,7 +80,9 @@ try
 >[!NOTE]
 > İstemci KIMLIĞI, kiracı KIMLIĞI ve örnek URL 'sini yukarıda gösterildiği gibi doğrudan koda yerleştirebileceğiniz sürece, kodunuzun bu değerleri bir yapılandırma dosyası veya ortam değişkeniyle alması iyi bir fikirdir.
 
-Azure işlevinde, yönetilen kimlik bilgilerini şöyle kullanabilirsiniz:
+### <a name="managedidentitycredential-method"></a>Managedıdentitycredential yöntemi
+ [Managedıdentitycredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) yöntemi, [YÖNETILEN kimliklere (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ihtiyacınız olan durumlarda (örneğin, Azure işlevleri ile çalışırken) harika bir şekilde çalışır.
+Bir Azure işlevinde, aşağıdaki gibi yönetilen kimlik bilgilerini kullanabilirsiniz:
 
 ```csharp
 ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
@@ -101,7 +104,7 @@ Ayrıca, bir işlevde kimlik doğrulamasını kullanmak için şunları unutmay�
 
 Bu bölümde, bu durumda nasıl kimlik doğrulaması yapılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 İlk olarak, [*nasıl yapılır: Azure dijital TWINS için özel*](how-to-create-custom-sdks.md)SDK 'lar oluşturma adımlarını kullanarak, oto Rest ile özel SDK oluşturma adımlarını tamamlamalısınız.
 

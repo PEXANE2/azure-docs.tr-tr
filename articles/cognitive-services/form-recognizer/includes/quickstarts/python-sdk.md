@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: b7ee606ab17171c5f2fcf20d94ff18de8b05b773
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b178a0b347888f22d9a3c0ee88a203e377cb15be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753007"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864722"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -22,7 +22,7 @@ ms.locfileid: "88753007"
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
@@ -30,6 +30,27 @@ ms.locfileid: "88753007"
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+
+## <a name="object-model"></a>Nesne modeli 
+
+Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `form_recognizer_client` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `form_training_client` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+`form_recognizer_client` için işlem sağlar:
+
+ * Özel formlarınızı tanımak için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor. 
+ * Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma. 
+ * Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak, genel alanları Makbuzlardan tanıyor.
+
+### <a name="formtrainingclient"></a>Formtraıningclient
+`form_training_client` için işlem sağlar:
+
+* Özel modellerinizde bulunan tüm alanları ve değerleri tanımak için özel modelleri eğitme. Eğitim veri kümesi oluşturma hakkında daha ayrıntılı bir açıklama için, [etiketli model eğitiminde hizmetin belgelerine](#train-a-model-without-labels) bakın.
+* Özel modellerinizi etiketleyerek belirttiğiniz belirli alanları ve değerleri tanımak için özel modelleri eğitme. Eğitim veri kümesine etiket uygulama hakkında daha ayrıntılı bir açıklama için, [etiketli model eğitiminde hizmetin belgelerine](#train-a-model-with-labels) bakın.
+* Hesabınızda oluşturulan modelleri yönetme.
+* Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
+
+Modellerin Ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool) gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabileceğini lütfen unutmayın.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -112,7 +133,7 @@ for cell in table.cells:
     print("Confidence score: {}\n".format(cell.confidence))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Table found on page 1:
@@ -158,7 +179,7 @@ for receipt in result:
             print("{}: {} has confidence {}".format(name, field.value, field.confidence))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 ReceiptType: Itemized has confidence 0.659
@@ -228,7 +249,7 @@ for doc in model.training_documents:
     print("Document errors: {}".format(doc.errors))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -304,7 +325,7 @@ for doc in model.training_documents:
     print("Document errors: {}".format(doc.errors))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -346,9 +367,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 > [!IMPORTANT]
 > Bu senaryoyu uygulamak için, KIMLIĞINI aşağıdaki yönteme geçirebilmeniz için zaten bir model eğitilmeniz gerekir. [Modeli eğitme](#train-a-model-without-labels) bölümüne bakın.
 
-BAŞ <<<<<<< `begin_recognize_custom_forms_from_url` yöntemi kullanacaksınız. Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
-= = = = = = = **Begin_recognize_custom_forms_from_url** yöntemini kullanırsınız. Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
->>>>>>> 4c76de6b4e93d2a4669953300c5686837b3be13c
+`begin_recognize_custom_forms_from_url`Yöntemini kullanacaksınız. Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 
 ```python
 # Model ID from when you trained your model.
@@ -369,7 +388,7 @@ for recognized_form in result:
         ))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Önceki örnekteki modeli kullanarak aşağıdaki çıktı sağlanır.
 
@@ -407,7 +426,7 @@ print("Our account has {} custom models, and we can have at most {} custom model
 ))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Our account has 5 custom models, and we can have at most 5000 custom models
@@ -430,7 +449,7 @@ for model in custom_models:
     print(model.model_id)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, sınama hesabı için bir örnek çıktıdır.
 
@@ -457,7 +476,7 @@ print("Training started on: {}".format(custom_model.training_started_on))
 print("Training completed on: {}".format(custom_model.training_completed_on))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, önceki örnekte oluşturulan özel modelin örnek çıktıdır.
 
@@ -483,7 +502,7 @@ except ResourceNotFoundError:
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı `python` hızlı başlangıç dosyanızdaki komutla çalıştırın.
+Bu komutla bu hızlı başlangıçta okuduğunuz herhangi bir işlev ile uygulamayı dilediğiniz zaman çalıştırabilirsiniz:
 
 ```console
 python quickstart-file.py

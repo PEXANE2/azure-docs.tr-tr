@@ -1,5 +1,5 @@
 ---
-title: Uçtan uca çözüme bağlanma
+title: 'Öğretici: uçtan uca bir çözümü bağlama'
 titleSuffix: Azure Digital Twins
 description: Cihaz verileri tarafından yönetilen uçtan uca bir Azure dijital TWINS çözümü oluşturmaya yönelik öğretici.
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f4155c479151c5af64049e0cf9a6a1c4dc4a553
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827393"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855895"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
 Ortamınızdaki canlı veriler tarafından yönetilen tam uçtan uca bir çözüm kurmak için, Azure dijital TWINS örneğinizi cihaz ve verilerin yönetimi için diğer Azure hizmetlerine bağlayabilirsiniz.
 
@@ -455,7 +455,5 @@ Son olarak, yerel makinenizden indirdiğiniz proje örnek klasörünü silin.
 Bu öğreticide, canlı cihaz verileri tarafından yürütülen Azure dijital TWINS 'i gösteren bir uçtan uca senaryo oluşturdunuz.
 
 Daha sonra, öğreticide birlikte çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini arayarak başlayın:
-* [*Kavramlar: özel modeller*](concepts-models.md)
-
-Veya, nasıl yapılır makalelerini başlatarak bu öğreticideki süreçler hakkında daha ayrıntılı bilgi sahibi olun:
-* [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Kavramlar: özel modeller*](concepts-models.md)

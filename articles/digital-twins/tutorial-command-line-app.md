@@ -1,5 +1,5 @@
 ---
-title: Örnek bir istemci uygulamasıyla temel kavramları inceleme
+title: 'Öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma'
 titleSuffix: Azure Digital Twins
 description: Örnek bir komut satırı uygulaması kullanarak Azure dijital TWINS SDK 'larını keşfetmeye yönelik öğretici
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 58013ba84e1ede36ed54284af4d20b943d63436f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986281"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855865"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Örnek bir istemci uygulamasıyla Azure dijital TWINS 'i keşfet
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
 Bu öğreticide, bir Azure dijital TWINS örneğiyle etkileşim kurmak için bir komut satırı istemci uygulaması uygulayan örnek bir uygulama tanıtılmıştır. İstemci uygulaması, [*öğretici: istemci uygulaması kodu*](tutorial-code.md)olarak yazılmış birine benzer.
 
@@ -314,12 +314,5 @@ Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.
 Bu öğreticide, örnekle etkileşimde bulunmak üzere bir örnek ve bir istemci uygulaması ayarlayarak Azure dijital TWINS ile çalışmaya başladıysanız. Azure dijital TWINS 'i incelemek, modeller, dijital WINS 'leri ve ilişkiler oluşturmak için istemci uygulamasını kullandınız. Ayrıca, Azure dijital TWINS 'in bir ortam hakkında ne tür sorular yanıtlayabileceklerini öğrenmek için çözümde bazı sorgular da çalıştırdınız.
 
 Veri odaklı, uçtan uca bir senaryoyu tamamlamaya yönelik örnek komut satırı uygulamasını diğer Azure hizmetleriyle birlikte kullanmak için sonraki öğreticiye geçin:
-
 > [!div class="nextstepaction"]
 > [*Öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)
-
-Ya da öğreticide çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini aramaya başlayın:
-* [*Kavramlar: özel modeller*](concepts-models.md)
-
-Ayrıca, nasıl yapılır makalelerini başlatarak bu öğreticideki işlemlere daha ayrıntılı bir şekilde gidebilirsiniz:
-* [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)

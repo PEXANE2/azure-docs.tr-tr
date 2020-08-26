@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587574"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855889"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -63,7 +63,7 @@ Veri düzlemi API 'Lerini kullanmak için:
 Azure Digital Twins .NET (C#) SDK 'Sı, .NET için Azure SDK 'sının bir parçasıdır. Açık kaynaktır ve Azure dijital TWINS veri düzlemi API 'Lerini temel alır.
 
 > [!NOTE]
-> SDK tasarımı hakkında ayrıntılı bilgi için bkz. [Azure SDK 'ları için genel tasarım ilkeleri](https://azure.github.io/azure-sdk/general_introduction.html) ve belirli [.net tasarım yönergeleri](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+> SDK tasarımı hakkında daha fazla bilgi için bkz. [Azure SDK 'ları için genel tasarım ilkeleri](https://azure.github.io/azure-sdk/general_introduction.html) ve belirli [.net tasarım yönergeleri](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
 SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** Package (sürüm 1.1.1) gerekecektir.
 
@@ -143,7 +143,7 @@ Bu örnek uygulama kodundan izlenecek yol için [*öğreticiye bakın: istemci u
 
 #### <a name="serialization-helpers"></a>Serileştirme yardımcıları
 
-Daha önce açıklandığı gibi, temel SDK yöntemleri ikizi verilerini JSON olarak döndürür. Ancak SDK, serileştirme için yardımcı sınıflar da içerir. Bu yardımcı işlevler, temel bilgilere erişim için hızlı bir şekilde ikizi verileri oluşturmanıza veya seri durumdan çıkarabilmenizi sağlar.
+Serileştirme yardımcıları, temel bilgilere erişim için hızlı bir şekilde ikizi verileri oluşturmak veya seri durumdan çıkarmak amacıyla SDK içinde kullanılabilen yardımcı işlevlerdir. Core SDK yöntemleri varsayılan olarak JSON olarak ikizi verisi döndürdüğü için, ikizi verilerini daha fazla bölmek üzere bu yardımcı sınıfları kullanmak yararlı olabilir.
 
 Kullanılabilir yardımcı sınıfları şunlardır:
 * `BasicDigitalTwin`: Bir Digital ikizi 'ın temel verilerini temsil eder
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>Bir ilişki oluşturma
 
-Sınıfını kullanarak `BasicDigitalTwin` , bir ikizi örneğinde ilişki oluşturmaya yönelik verileri de hazırlayacaksınız:
+Sınıfını kullanarak `BasicRelationship` , bir ikizi örneğinde ilişki oluşturmaya yönelik verileri de hazırlayacaksınız:
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

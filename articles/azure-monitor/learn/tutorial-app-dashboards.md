@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829688"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856025"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights’ı kullanarak özel KPI panoları oluşturma
 
@@ -40,6 +40,9 @@ Bu öğreticiyi tamamlamak için:
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-new-dashboard"></a>Yeni pano oluşturma
+> [!WARNING]
+> Application Insights kaynağınızı, farklı bir kaynak grubuna veya aboneliğe taşırsanız, eski kutucukları kaldırarak ve yeni konumdaki aynı Application Insights kaynağından yeni kutucukları sabitleyerek panoyu el ile güncelleştirmeniz gerekir. 
+
 Tek bir pano çeşitli uygulamalardan, kaynak gruplarından ve aboneliklerden gelen kaynakları içerebilir.  Uygulamanız için yeni bir pano oluşturarak öğreticiyi kullanamaya başlayın.  
 
 1. Pano bölmesinde **Yeni Pano**' yı seçin.

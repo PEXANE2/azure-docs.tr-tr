@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: e651b02bf72ced58b6cba637a68ace3258514176
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdb3bd034d93e623037be9fa0721a805924af5c3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405604"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864926"
 ---
-Rol atamasını başarıyla ayarladığınızı kontrol etmenin bir yolu, [Azure Portal](https://portal.azure.com)Azure Digital TWINS örneği için rol atamalarını görüntüleyeyöneliktir. Portalın [Azure dijital TWINS örnekleri](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda arama yapabilir) ve denetlemek istediğiniz örneğin adını seçebilirsiniz. 
+Rol atamasını başarıyla ayarladığınızı kontrol etmenin bir yolu, [Azure Portal](https://portal.azure.com)Azure Digital TWINS örneği için rol atamalarını görüntüleyeyöneliktir. Azure portal Azure dijital TWINS örneğinize gidin ( [Azure dijital TWINS örnekleri](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) sayfasında arayabilir veya Portal arama çubuğunda adını arayabilirsiniz).
 
 Daha sonra, *erişim denetimi (IAM)* altında atanan tüm rolleri rol atamaları > görüntüleyin. Kullanıcının bir *Azure dijital TWINS sahibi (Önizleme)* rolüyle listede gösterilmesi gerekir. 
 

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475677"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856052"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
@@ -127,10 +127,10 @@ Cihazın, `{"__t": "c"}` öğenin bir bileşene başvurduğunu göstermek için 
 
 Cihaz bildirilen bir özellik göndererek özelliği aldığını onaylamasını sağlamalıdır. Bildirilen özellik şunları içermelidir:
 
-- `value`-cihazın aldığı değer.
-- `ac`-bir HTTP durum kodu kullanan bir bildirim kodu.
-- `av`-istenen özelliğin öğesine başvuran bir bildirim sürümü `$version` .
-- `ad`-isteğe bağlı bir bildirim açıklaması.
+- `value` -özelliğin gerçek değeri (genellikle alınan değer, ancak cihaz farklı bir değer raporlama kararı verebilir).
+- `ac` -bir HTTP durum kodu kullanan bir bildirim kodu.
+- `av` -istenen özelliğin öğesine başvuran bir bildirim sürümü `$version` .
+- `ad` -isteğe bağlı bir bildirim açıklaması.
 
 ### <a name="sample-no-component-writable-property"></a>Örnek bileşen yazılabilir özelliği yok
 
