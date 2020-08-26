@@ -4,15 +4,16 @@ description: Azure rezervasyonu satın almanıza yardımcı olan önemli noktala
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287631"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686216"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -71,7 +72,7 @@ Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon sat�
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
 - [Veri Gezgini](/azure/data-explorer/pricing-reserved-capacity)
-- [Disk Depolama](../../virtual-machines/linux/disks-reserved-capacity.md)
+- [Disk Depolama](../../virtual-machines/disks-reserved-capacity.md)
 - [Ayrılmış Konak](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Yazılım planları](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Depolama](../../storage/blobs/storage-blob-reserved-capacity.md)

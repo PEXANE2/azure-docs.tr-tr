@@ -4,15 +4,16 @@ description: Bu makale hangi rezervasyonu satın almanız gerektiğini saptaman�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759911"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684754"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Satın alınacak rezervasyonu saptama
 
@@ -38,7 +39,7 @@ Uygun sanal makine kullanımını içerecek şekilde daraltmak için, kullanım 
 
 Günlük kullanımı 24 saatten az olan kaynakları yoksayın.
 
-Örnek boyutu ailesi düzeyinde analiz etmek isterseniz, örnek boyutu esneklik değerlerini [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) adresinden alabilirsiniz. Analiz etmek için değerleri verilerle birleştirin. Örnek boyutu esnekliği hakkında daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Örnek boyutu ailesi düzeyinde analiz etmek isterseniz, örnek boyutu esneklik değerlerini [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) adresinden alabilirsiniz. Analiz etmek için değerleri verilerle birleştirin. Örnek boyutu esnekliği hakkında daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Azure Synapse Analytics ayrılmış örneği satın alımı için kullanımı analiz etme
 

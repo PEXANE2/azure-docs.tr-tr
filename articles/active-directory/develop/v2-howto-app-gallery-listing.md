@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271252"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891870"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -61,7 +61,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 6. Microsoft iş ortağı ağı ' na katın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -98,7 +98,7 @@ OAuth 2,0, yetkilendirme için [sektör standardı](https://oauth.net/2/) bir pr
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2,0 veya WS-beslenir
 
-SAML, Web uygulamaları için çok büyük ve yaygın olarak benimsenmiş, çoklu oturum açma standardıdır. Azure 'un SAML kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure 'un SAML protokolünü nasıl kullandığı](active-directory-saml-protocol-reference.md). 
+SAML, Web uygulamaları için çok büyük ve yaygın olarak benimsenmiş, [Çoklu oturum açma standardıdır](https://www.oasis-open.org/standards#samlv2.0) . Azure 'un SAML kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure 'un SAML protokolünü nasıl kullandığı](active-directory-saml-protocol-reference.md). 
 
 Web Hizmetleri Federasyonu (WS-beslenir), .NET platformu kullanılarak geliştirilen Web uygulamaları için genellikle kullanılan bir [sektör standardıdır](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) .
 

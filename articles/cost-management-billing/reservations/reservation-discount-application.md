@@ -4,15 +4,16 @@ description: Bu makale ayrılmış örnek indirimlerinin genel olarak nasıl uyg
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: cd09bb7bde759c543b066070c5d2450404949610
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1c038e896a9f9fc65c3b2201b3e763e966285c56
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627118"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684686"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
@@ -38,7 +39,7 @@ Bir rezervasyon satın aldığınızda, indirim aynı boyut grubundaki özniteli
 
 Hizmet planları:
 
-- Ayrılmış VM Örnekleri: Rezervasyonu satın alırken **Örnek boyutu esnekliği için iyileştirilmiş**'i seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Ayrılmış VM Örnekleri: Rezervasyonu satın alırken **Örnek boyutu esnekliği için iyileştirilmiş**'i seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 - Azure Depolama ayrılmış kapasitesi: Standart Azure Depolama hesapları için aylık 100 TiB veya 1 PiB boyutlu birimler halinde ayrılmış kapasite satın alabilirsiniz. Azure Depolama ayrılmış kapasitesini destekleyen bölgeler hakkında bilgi için bkz. [Blok blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/). Azure Depolama ayrılmış kapasitesi tüm erişim katmanları (sık erişimli, seyrek erişimli ve arşiv) ve tüm çoğaltma yapılandırmaları (LRS, GRS veya ZRS) ile kullanılabilir.
 - SQL Veritabanı ayrılmış kapasitesi: İndirim kapsamı, seçtiğiniz performans katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure rezervasyonu indiriminin nasıl uygulandığını anlama](understand-reservation-charges.md).
 - Azure Cosmos DB ayrılmış kapasitesi: İndirim kapsamı, sağlanan aktarım hızına göre değişir. Daha fazla bilgi için bkz. [Azure Cosmos DB rezervasyon indiriminin nasıl uygulandığını anlama](understand-cosmosdb-reservation-charges.md).
