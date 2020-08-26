@@ -4,14 +4,14 @@ description: Canlı bir siteye zaten atanmış olan özel bir DNS etki alanı ad
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782218"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871403"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
 
@@ -59,31 +59,27 @@ DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türün�
 
 ### <a name="enable-the-domain-for-your-app"></a>Uygulamanız için etki alanını etkinleştirin
 
-[Azure Portal](https://portal.azure.com), uygulama sayfasının sol gezinti bölmesinde **özel etki alanları**' nı seçin. 
+1. [Azure Portal](https://portal.azure.com), uygulama sayfasının sol gezinti bölmesinde **özel etki alanları**' nı seçin. 
 
-![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**Özel etki alanları** sayfasında, **+** **konak adı Ekle**' nin yanındaki simgeyi seçin.
+1. **Özel etki alanları** sayfasında **özel etki alanı Ekle**' yi seçin.
 
-![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Geçirmek istediğiniz tam etki alanı adını yazın; örneğin,, veya gibi, oluşturduğunuz TXT kaydına karşılık gelir `contoso.com` `www.contoso.com` `*.contoso.com` .
+1. Geçirmek istediğiniz tam etki alanı adını yazın; örneğin,, veya gibi, oluşturduğunuz TXT kaydına karşılık gelir `contoso.com` `www.contoso.com` `*.contoso.com` . **Doğrula**'yı seçin.
 
-**Doğrula**'yı seçin.
+    **Özel etki alanı Ekle** düğmesi etkinleştirilir. 
 
-**Konak adı ekle** düğmesi etkinleştirilir. 
+1. **Ana bilgisayar adı kayıt türünün** GEÇIRMEK istediğiniz DNS kayıt türüne ayarlandığından emin olun. **Konak adı ekle**'yi seçin.
 
-**Ana bilgisayar adı kayıt türünün** GEÇIRMEK istediğiniz DNS kayıt türüne ayarlandığından emin olun.
+    ![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-**Konak adı ekle**'yi seçin.
+    Yeni konak adının uygulamanın **Özel etki alanları** sayfasına yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
 
-![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Yeni konak adının uygulamanın **Özel etki alanları** sayfasına yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
-
-![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-Özel DNS adınız artık Azure uygulamanızda etkinleştirilmiştir. 
+    Özel DNS adınız artık Azure uygulamanızda etkinleştirilmiştir. 
 
 ## <a name="remap-the-active-dns-name"></a>Etkin DNS adını yeniden eşleyin
 
@@ -96,8 +92,6 @@ Yapılacak tek şey, etkin DNS kaydınızı App Service göstermek için yeniden
 Bir CNAME kaydını yeniden eşleştirçalışıyorsanız, bu bölümü atlayın. 
 
 Bir kaydı yeniden eşlemek için, **özel etki alanları** sayfasında gösterilen App Service UYGULAMANıN dış IP adresine sahip olmanız gerekir.
-
-Sağ üst köşedeki **X** ' i seçerek **konak adı Ekle** sayfasını kapatın. 
 
 **Özel etki alanları** sayfasında, uygulamanın IP adresini kopyalayın.
 

@@ -5,12 +5,12 @@ description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu v
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386937"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871233"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
 
@@ -31,7 +31,8 @@ Bir AKS kümesinin kimlik bilgilerini güncellemek istediğinizde aşağıdakile
 * Mevcut hizmet sorumlusu için kimlik bilgilerini güncelleştirin.
 * Yeni bir hizmet sorumlusu oluşturun ve kümeyi bu yeni kimlik bilgilerini kullanacak şekilde güncelleştirin. 
 
-> ! WARNING *Yeni* bir hizmet sorumlusu oluşturmayı seçerseniz, bu kimlik bilgilerini kullanmak için büyük bir aks kümesini güncelleştirme işleminin tamamlanması uzun zaman alabilir.
+> [!WARNING]
+> *Yeni* bir hizmet sorumlusu oluşturmayı seçerseniz, bu kimlik bilgilerini kullanmak için büyük bir aks kümesini güncelleştirme işleminin tamamlanması uzun zaman alabilir.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Hizmet sorumlunun sona erme tarihini denetleyin
 

@@ -10,12 +10,12 @@ ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814527"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871165"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -64,8 +64,8 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
 | Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
-| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
+| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
+| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).

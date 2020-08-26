@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747631"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869822"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
@@ -44,7 +44,7 @@ REST API kullanarak, bu istek için kullanılan JSON dosyasının çıkış böl
 
 ![İstemci kapsayıcısı](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob içerebilir. Yukarıdaki örnekte, "06000000" adlı klasörde bulunan ve aşağıdaki içeriklerle tek bir blob vardır:
+Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob içerebilir. Yukarıdaki örnekte, "06000000" etiketli bir klasörde aşağıdaki içeriğe sahip tek bir blob vardır:
 
 ![Blob içeriği](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Örnek
 
-[Azure portalı](stream-analytics-quick-create-portal.md) hızlı başlangıç kılavuzuna Azure Stream Analytics bir depolama hesabı, bir kaynak grubu, Stream Analytics işi ve bir giriş kaynağı oluşturun. [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)'da da bulunan hızlı başlangıç kılavuzunda kullanılan örnek verileri kullanın.
+[Azure Stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) hızlı başlangıç kılavuzuna göre bir depolama hesabı, bir kaynak grubu, Stream Analytics işi ve bir giriş kaynağı oluşturun. [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)'da da bulunan hızlı başlangıç kılavuzunda kullanılan örnek verileri kullanın.
 
 Aşağıdaki yapılandırmayla bir blob çıkış havuzu oluşturun:
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706384"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871454"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL yönetilen örneğine bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ SQL yönetilen örneği kendi sanal ağında özel IP adreslerine sahip olduğun
 
 Sanal ağları bağlamak için iki seçenek vardır:
 
-- [Azure VPN eşlemesi](../../virtual-network/virtual-network-peering-overview.md)
+- [Azure VNet eşlemesi](../../virtual-network/virtual-network-peering-overview.md)
 - VNet-VNet VPN Gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle bağlantı perspektifinden, eşlenmiş bir sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlarla sınırlıdır.  
@@ -63,7 +63,7 @@ Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle b
 
 ## <a name="connect-the-developer-box"></a>Geliştirici kutusunu bağlama
 
-Geliştirici kutusunu SQL yönetilen örneğine bağlamak de mümkündür. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir, bu nedenle geliştirici kutudan erişebilmek için öncelikle geliştirici kutusu ve SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bunu yapmak için yerel Azure sertifika kimlik doğrulamasını kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırın. Daha fazla bilgi için bkz. Şirket [içi bir bilgisayardan Azure SQL yönetilen örneğine bağlanmak için Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md).
+Geliştirici kutusunu SQL yönetilen örneğine bağlamak de mümkündür. SQL yönetilen örneğine yalnızca özel bir IP adresi üzerinden erişilebilir, bu nedenle geliştirici kutudan erişebilmek için öncelikle geliştirici kutusu ve SQL yönetilen örnek sanal ağı arasında bir bağlantı oluşturmanız gerekir. Bunu yapmak için yerel Azure sertifika kimlik doğrulamasını kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırın. Daha fazla bilgi için bkz. Şirket  [içi bir bilgisayardan Azure SQL yönetilen örneğine bağlanmak için Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>VNet eşlemesi ile bağlanma
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037159"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871250"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile verileri aktarma 
 
@@ -306,7 +306,8 @@ Bir dosya paylaşımının içeriğini başka bir dosya paylaşımıyla eşzaman
 >
 > |Senaryo|Bayrak|
 > |---|---|
-> |İndirme sırasında ne kadar kesin MD5 karmalarının doğrulanması gerektiğini belirtin.|**--Check-MD5** = \[ NoCheck \| LogOnly \| failiffarklı \| failiffarklıentormissing yok\]|
+> |Erişim denetim listelerini (ACL 'Ler) dosyalarla birlikte kopyalayın.|**--Preserve-SMB-izinleri** = \[ doğru \| yanlış\]|
+> |SMB Özellik bilgilerini dosyalarla birlikte kopyalayın.|**--Preserve-SMB-Info** = \[ doğru \| yanlış\]|
 > |Dosyaları bir düzene göre hariç tutun.|**--exclude-Path**|
 > |Eşitleme ile ilgili günlük girdilerinizi ne kadar ayrıntılı olarak istediğinizi belirtin.|**--günlük düzeyi** = \[ Uyarı \| hatası \| bilgisi \| yok\]|
 > 

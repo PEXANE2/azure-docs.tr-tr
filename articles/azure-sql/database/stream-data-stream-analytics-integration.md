@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345368"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869873"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
 
@@ -31,9 +31,9 @@ Kullanıcılar artık gerçek zamanlı akış verilerini doğrudan Azure SQL ver
 - Önizleme verileri ile ilgili ek kullanım kolaylığı: seçili tablo bağlamında olaylar kaynağından (Olay Hub/IoT Hub) gelen verileri önizleyin
 
 > [!IMPORTANT]
-> Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
+> Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/sql-database-output.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
@@ -43,14 +43,14 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 ## <a name="configure-stream-analytics-integration"></a>Stream Analytics tümleştirmesini yapılandırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Akış verilerinizi almak istediğiniz veritabanına gidin. **Stream Analytics (Önizleme)** öğesini seçin.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
 3. Akış verilerinizi bu veritabanına alma işlemini başlatmak için **Oluştur** ' u seçin ve akış işinize bir ad verin ve ardından **İleri: giriş**' i seçin.
 
-    ![Stream Analytics işi oluştur](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![Stream Analytics iş temel bilgilerini yapılandırma](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. Olaylarınızın kaynak ayrıntılarını girin ve ardından **İleri: çıkış**' ı seçin.
 
@@ -64,7 +64,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
       Buradan oluşturduğunuz her yeni Azure Stream Analytics işi için bir tüketici grubu ve ilke oluşturmanızı öneririz. Tüketici grupları yalnızca beş eşzamanlı okuyucu sağlar; bu nedenle her iş için adanmış bir tüketici grubu sağlanması bu sınırı aşmaktan kaynaklanan hatalardan kaçınacaktır. Adanmış bir ilke, diğer kaynakları etkilemeden anahtarınızı döndürmenize veya izinleri iptal etmenize olanak tanır.
 
-     ![Stream Analytics işi oluştur](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Stream Analytics iş çıktısını yapılandırma](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. Akış verilerinizi almak istediğiniz tabloyu seçin. İşiniz bittiğinde **Oluştur**' u seçin.
 

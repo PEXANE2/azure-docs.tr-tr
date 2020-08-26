@@ -1,68 +1,87 @@
-### YamlMime:Landing
-title: Azure Arc
-summary: Azure Arc, Azure Resource Manager'ın özelliklerini Linux ve Windows sunucularına, ayrıca tüm şirket içi, çoklu bulut ve uç altyapılarında Kubernetes kümelerine genişletir. Ayrıca Azure Arc ile müşteriler Azure veri hizmetlerine her yerde çalıştırabilir; her zaman güncel veri özellikleri, saniyeler içinde dağıtım (saatler yerine) ve her altyapıda dinamik ölçeklenebilirlik gibi bulut yeniliklerinin avantajlarından yararlanabilir.
+### YamlMime:Hub
+title: Azure Arc belgeleri
+summary: Şirket içinde, uçta ve çok bulutlu ortamda karmaşık ve dağıtılmış ortamları basitleştirin.
+brand: azure
 metadata:
   title: Azure Arc
-  description: Azure'da şirket içi makineleri yönetmeyi öğrenin
-  author: mgoedtel
+  description: Şirket içinde, uçta ve çok bulutlu ortamda karmaşık ve dağıtılmış ortamlara kaynakları dağıtmayı öğrenin. Azure Arc her yerde Azure hizmetlerinin dağıtımına olanak tanır ve Azure yönetimini herhangi bir altyapıyı içerecek şekilde yaygınlaştırır.
   ms.service: azure-arc
-  ms.topic: landing-page
-  ms.date: 08/13/2020
+  ms.topic: hub-page
+  author: MGoedtel
   ms.author: magoedte
-  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.date: 08/21/2020
+  ms.openlocfilehash: 961d8b892841f2d8761053279f053afe3b859798
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212773"
-landingContent:
-- title: Azure Arc hakkında
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763361"
+highlightedContent:
+  items:
+  - title: Azure Arc özellikli sunucular (önizleme)
+    itemType: overview
+    url: ./servers/overview.md
+  - title: Azure Arc özellikli Kubernetes (önizleme)
+    itemType: overview
+    url: ./kubernetes/overview.md
+  - title: Azure Arc hakkında
+    itemType: overview
+    url: https://azure.microsoft.com/en-us/services/azure-arc
+productDirectory:
+  title: Azure Arc özellikli hizmetler
+  summary: Hizmetleri her yerde nasıl çalıştırabileceğinizi görün.
+  items:
+  - title: Azure Arc özellikli sunucular
+    imageSrc: ./media/manage-450-machines-azure-arc.svg
     links:
-    - text: Azure Arc nedir?
-      url: https://aka.ms/Azure-Arc-Info
-- title: Azure Arc özellikli sunucuları kullanarak makineleri Azure’a bağlama
-  linkLists:
-  - linkListType: overview
+    - url: ./servers/onboard-portal.md
+      text: Makineleri Azure portalından Azure Arc’a bağlama
+    - url: ./servers/onboard-service-principal.md
+      text: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
+    - url: ./servers/onboard-dsc.md
+      text: PowerShell DSC ile makineleri Azure’a bağlama
+    - url: ./servers/index.yml
+      text: Daha fazlasını göster...
+  - title: Azure Arc özellikli Kubernetes
+    imageSrc: ./media/containers-101-kubernetes-services.svg
     links:
-    - text: Azure Arc özellikli sunucular nedir?
-      url: ./servers/overview.md
-  - linkListType: quickstart
+    - url: ./kubernetes/connect-cluster.md
+      text: Kümeye bağlanma
+    - url: ./kubernetes/use-gitops-connected-cluster.md
+      text: GitOps kullanarak yapılandırmaları dağıtma
+    - url: ./kubernetes/index.yml
+      text: Daha fazlasını göster...
+conceptualContent:
+  title: başlarken
+  items:
+  - title: Azure Arc özellikli sunucular (önizleme)
     links:
-    - text: Azure Arc özellikli sunucular aracısını etkinleştirme
-      url: ./servers/learn/quick-enable-hybrid-vm.md
-  - linkListType: how-to-guide
+    - url: ./servers/learn/quick-enable-hybrid-vm.md
+      itemType: get-started
+      text: Azure Arc özellikli sunucular aracısını etkinleştirme
+    - url: ./servers/learn/tutorial-enable-vm-insights.md
+      itemType: tutorial
+      text: VM'ler için Azure İzleyici ile karma bir makineyi izleme
+    - url: ./servers/policy-samples.md
+      itemType: learn
+      text: Azure İlkesi kullanarak giriş denetimi ilkeleri
+    - url: ./servers/manage-vm-extensions.md
+      itemType: how-to-guide
+      text: Azure VM uzantılarını yönetme ve kullanma
+  - title: Azure Arc özellikli Kubernetes (önizleme)
     links:
-    - text: Makineleri Azure portalından Azure Arc’a bağlama
-      url: ./servers/onboard-portal.md
-    - text: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
-      url: ./servers/onboard-service-principal.md
-    - text: PowerShell DSC ile makineleri Azure’a bağlama
-      url: ./servers/onboard-dsc.md
-    - text: Azure VM uzantılarını yönetme ve kullanma
-      url: ./servers/manage-vm-extensions.md
-- title: Azure Arc kullanarak Kubernetes kümelerini Azure’a bağlama
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Arc özellikli Kubernetes nedir?
-      url: ./kubernetes/overview.md
-  - linkListType: quickstart
-    links:
-    - text: Kümeye bağlanma
-      url: ./kubernetes/connect-cluster.md
-  - linkListType: how-to-guide
-    links:
-    - text: GitOps kullanarak yapılandırmaları dağıtma
-      url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: GitOps kullanarak Helm chart’ları dağıtma
-      url: ./kubernetes/use-gitops-with-helm.md
-    - text: Azure İlkesi’ni kullanarak GitOps uygulama
-      url: ./kubernetes/use-azure-policy.md
-    - text: Kapsayıcılar için Azure İzleyici kullanarak izleme
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
-    - text: Azure İlkesi kullanarak giriş denetimi ilkeleri
-      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-    - text: Azure IoT Edge iş yüklerini dağıtma
-      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - url: ./kubernetes/use-gitops-with-helm.md
+      itemType: deploy
+      text: GitOps kullanarak Helm chart’ları dağıtma
+    - url: ./kubernetes/use-azure-policy.md
+      itemType: how-to-guide
+      text: Azure İlkesi’ni kullanarak GitOps uygulama
+    - url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+      itemType: tutorial
+      text: Kapsayıcılar için Azure İzleyici kullanarak izleme
+    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
+      itemType: learn
+      text: Azure İlkesi kullanarak giriş denetimi ilkeleri
+    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+      itemType: deploy
+      text: Azure IoT Edge iş yüklerini dağıtma

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e7dca6f74145d1ea50c5a9bfc57b52e1cbdfcab3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84141254"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869839"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -49,7 +49,7 @@ Etiketler `positive` , ve ' dir `negative` `neutral` . Belge düzeyinde yaklaş�
 | Belgede en az bir `negative` cümle ve en az bir `positive` cümle vardır.    | `mixed`                 |
 | Belgedeki tüm tümceler `neutral` .                                                  | `neutral`               |
 
-Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her belge veya tümce içindeki güven puanları 1 ' e kadar bir ekler.
+Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her tümce içindeki güven puanları (belge değil) 1 ' e kadar bir ekler.
 
 ### <a name="opinion-mining"></a>Görüşün madenciliği
 

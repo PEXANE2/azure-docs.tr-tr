@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 8/20/2020
 ms.author: allensu
-ms.openlocfilehash: ed6c60b4f66361e87f67f3c64bb60846b2df757b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817838"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870483"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN uç noktası çoklu kaynak
 
@@ -66,6 +66,7 @@ Bir veya daha fazla kaynak grubu kurun ve varsayılan bir kaynak grubu seçin. H
 
    | Ayar           | Değer                                                                 |
    |-------------------|-----------------------------------------------------------------------|
+   | Adı        | Kaynak için bir ad girin.        |
    | Kaynak türü | **Depolama**, **bulut hizmeti**, **Web uygulaması**veya **özel başlangıç**seçin.                                   |
    | Çıkış noktası konağı        | Kaynak ana bilgisayar adını seçin veya girin.  Açılan listede, önceki ayarda belirttiğiniz türün tüm kullanılabilir kaynakları listelenir. Kaynak türü olarak **özel kaynak** ' ı seçtiyseniz, müşteri kaynak sunucunuzun etki alanını girin. |
    | Kaynak barındırma üst bilgisi    | Her istekle göndermek Azure CDN istediğiniz ana bilgisayar üst bilgisini girin veya varsayılan ' ı bırakın.                        |
@@ -114,6 +115,34 @@ Birkaç çıkış ve bir kaynak grubu olduktan sonra, kaynakları farklı grupla
 2. Kaynak grubundan bir kaynağı kaldırmak için, kaynak yanındaki çöp kutusu simgesini seçin ve **Kaydet**' i seçin:
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Kaynak grubu silme kaynağını güncelleştir" border="true":::
+
+## <a name="override-origin-group-with-rules-engine"></a>Kural altyapısı ile kaynak grubunu geçersiz kıl
+
+Standart kurallar altyapısını kullanarak trafiğin farklı kaynak gruplarına nasıl dağıtıldığını özelleştirin.
+
+Trafiği, istek URL 'sini temel alarak farklı bir gruba dağıtın.
+
+1. CDN uç noktanıza **Ayarlar**altında **kurallar altyapısı** ' nı seçin:
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Kural altyapısı" border="true":::
+
+2. **+ Kural Ekle**' yi seçin.
+
+3. **Adda**kural için bir ad girin.
+
+4. **+ Koşul**' ı seçin ve **URL yolu**' nu seçin.
+
+5. **Operatör** açılır penceresinde **içerir**' i seçin.
+
+6. **Değer**alanına **/Images**yazın.
+
+7. **+ Eylem Ekle**' yi seçin ve **kaynak grubu geçersiz kılma**' yı seçin.
+
+8. **Kaynak grubu**' nda, açılan kutuda kaynak grubunu seçin.
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Kural altyapısı koşulları" border="true":::
+
+URL yolu **/Images**içeriyorsa tüm gelen istekler için, istek eylem bölümündeki **(myorigingroup)** kaynak grubuna atanır. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Bu makalede, uç nokta çoklu kaynak Azure CDN etkinleştirdiniz.

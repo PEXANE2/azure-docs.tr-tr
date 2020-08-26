@@ -4,23 +4,25 @@ description: Blob verilerini kapsayıcı veya blob düzeyinde yalıtmak için bi
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/04/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564155"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870264"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
 
-Şifreleme kapsamları (Önizleme), tek bir blob veya kapsayıcı düzeyinde şifrelemeyi yönetmenizi sağlar. Bir şifreleme kapsamı, blob verilerini bir depolama hesabı içindeki güvenli bir kuşşda yalıtır. Aynı depolama hesabında bulunan ancak farklı müşterilere ait olan veriler arasında güvenli sınırlar oluşturmak için şifreleme kapsamlarını kullanabilirsiniz. Şifreleme kapsamları hakkında daha fazla bilgi için bkz. [BLOB depolama (Önizleme) Için şifreleme kapsamları](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
+Şifreleme kapsamları (Önizleme), tek bir blob veya kapsayıcı düzeyinde şifrelemeyi yönetmenizi sağlar. Şifreleme kapsamı, blob verilerini bir depolama hesabındaki güvenli bir kuşatmada yalıtır. Aynı depolama hesabında bulunan ancak farklı müşterilere ait olan veriler arasında güvenli sınırlar oluşturmak için şifreleme kapsamlarını kullanabilirsiniz. Şifreleme kapsamları hakkında daha fazla bilgi için bkz. [BLOB depolama (Önizleme) Için şifreleme kapsamları](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
 
 Bu makalede, bir şifreleme kapsamının nasıl oluşturulacağı gösterilmektedir. Ayrıca bir blob veya kapsayıcı oluştururken bir şifreleme kapsamının nasıl gösterileceğini gösterir.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Şifreleme kapsamı oluşturma
 

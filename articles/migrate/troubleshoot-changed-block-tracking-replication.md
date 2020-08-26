@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796944"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871198"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -30,13 +30,36 @@ Sanal makineleriniz için çoğaltma durumunu izlemek üzere aşağıdaki adıml
 
   1. Azure portal Azure geçişi ' nde sunucular sayfasına gidin.
   2. Sunucu geçiş kutucuğunda "sunucuları çoğaltma" seçeneğine tıklayarak "makineler çoğaltılıyor" sayfasına gidin.
-  3. Durum, sağlık, son eşitleme saati vb. gibi ek bilgilerle birlikte çoğaltma sunucularının bir listesini görürsünüz. Sistem durumu sütunu, sanal makinenin geçerli çoğaltma durumunu gösterir. Sağlık sütunundaki bir ' CriticalHandle ' veya ' Warning ' değeri, genellikle VM için önceki çoğaltma döngüsünün başarısız olduğunu gösterir. Daha fazla ayrıntı edinmek için VM 'ye sağ tıklayın ve "hata ayrıntıları" nı seçin. Hata ayrıntıları sayfası hata hakkındaki bilgileri ve sorun giderme hakkında ek ayrıntıları içerir. Ayrıca, VM için Olaylar sayfasına gitmek üzere kullanılabilecek bir "son olaylar" bağlantısı görürsünüz.
+  3. Durum, sağlık, son eşitleme saati vb. gibi ek bilgilerle birlikte çoğaltma sunucularının bir listesini görürsünüz. Sistem durumu sütunu, sanal makinenin geçerli çoğaltma durumunu gösterir. Sağlık sütunundaki bir ' Critical ' veya ' Warning ' değeri, genellikle VM için önceki çoğaltma döngüsünün başarısız olduğunu gösterir. Daha fazla ayrıntı edinmek için VM 'ye sağ tıklayın ve "hata ayrıntıları" nı seçin. Hata ayrıntıları sayfası hata hakkındaki bilgileri ve sorun giderme hakkında ek ayrıntıları içerir. Ayrıca, VM için Olaylar sayfasına gitmek üzere kullanılabilecek bir "son olaylar" bağlantısı görürsünüz.
   4. VM için önceki çoğaltma çevrimi başarısızlıklarını görmek üzere "son olaylar" a tıklayın. Olaylar sayfasında, sanal makine için "çoğaltma çevrimi başarısız oldu" veya "disk için çoğaltma çevrimi başarısız oldu" türündeki en son olayı bulun.
   5. Hatanın olası nedenlerini ve önerilen düzeltme adımlarını anlamak için olaya tıklayın. Sorunu gidermek için belirtilen bilgileri kullanın ve hatayı düzeltin.
     
 ## <a name="common-replication-errors"></a>Ortak çoğaltma hataları
 
 Bu bölümde, yaygın hatalardan bazıları ve bunların nasıl giderebileceğiniz açıklanır.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>VM çoğaltılmaya çalışılırken Key Vault işlemi başarısız oldu
+
+**Hata:** "Key Vault işlemi başarısız oldu. İşlem: yönetilen depolama hesabını yapılandırın, Key Vault: Anahtar Kasası adı, depolama hesabı: depolama hesabı adı şu hatayla başarısız oldu: "
+
+**Hata:** "Key Vault işlemi başarısız oldu. İşlem: paylaşılan erişim imzası tanımı oluştur, Key Vault: Anahtar Kasası adı, depolama hesabı: depolama hesabı adı şu hatayla başarısız oldu: "
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+Bu hata tipik olarak, Key Vault için Kullanıcı erişim Ilkesi, şu anda oturum açmış olan kullanıcıya depolama hesaplarını yapılandırmak için gerekli izinleri vermediğinden, Key Vault yönetilmek üzere bu hata oluşur. Anahtar kasasında Kullanıcı erişim ilkesini denetlemek için, Anahtar Kasası portalındaki Ana kasa sayfasına gidin ve erişim ilkeleri ' ni seçin. 
+
+Portal anahtar kasasını oluşturduğunda, depolama hesaplarını Key Vault yönetilecek şekilde yapılandırmak için şu anda oturum açmış olan kullanıcıya izin veren bir Kullanıcı erişim ilkesi de ekler. Bu iki nedenden dolayı başarısız olabilir
+
+- Oturum açmış olan Kullanıcı, müşteriler Azure kiracısında (CSP aboneliği ve oturum açmış kullanıcının iş ortağı Yöneticisi) bir uzak sorumlusunda bulunur. Bu durumda geçici çözüm olarak, anahtar kasasının silinmesi, portaldan oturum açması ve müşteriler kiracısından (uzak sorumlu değil) bir kullanıcı hesabıyla oturum açması ve işlemi yeniden denemesi gerekir. CSP iş ortağı genellikle müşteriler Azure Active Directory kiracının kullanabilecekleri bir kullanıcı hesabına sahip olur. Müşteriler Azure Active Directory kiracısında kendi kendine yeni bir kullanıcı hesabı oluşturamazlar, portalda yeni kullanıcı olarak oturum açın ve ardından çoğaltma işlemini yeniden deneyin. Kullanılan hesap, kaynak grubundaki hesaba (proje kaynak grubunu geçir) sahip ya da katkıda bulunan + Kullanıcı erişimi Yöneticisi izinleri vermelidir
+
+- Bunun gerçekleşebileceği diğer durumlar, bir Kullanıcı (Kullanıcı1) başlangıçta çoğaltmayı ayarlamaya ve bir hatayla karşılaşmaya çalıştığında, ancak Anahtar Kasası zaten oluşturulmuştur (ve Kullanıcı erişim ilkesi bu kullanıcıya uygun şekilde atanır). Artık sonraki bir noktada, farklı bir Kullanıcı (kullanıcı2) çoğaltma ayarlamaya çalışır, ancak anahtar kasasında kullanıcı2 öğesine karşılık gelen bir Kullanıcı erişim ilkesi olmadığından, yönetilen depolama hesabını yapılandırma veya SAS tanımı oluşturma işlemi başarısız olur.
+
+**Çözüm**: Bu soruna geçici bir çözüm olarak, Anahtar Kasası verme kullanıcı2 için, yönetilen depolama hesabını yapılandırma ve SAS tanımları oluşturma konusunda bir Kullanıcı erişim ilkesi oluşturun. Kullanıcı2 bu Azure PowerShell aşağıdaki cmdlet 'leri kullanarak yapabilir:
+
+$userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Numarasını
+
+Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectID $userPrincipalId-PermissionsToStorage Get, List, DELETE, set, Update, RegenerateKey, getsas, listsas, deletesas, setsas, kurtarma, yedekleme, geri yükleme, Temizleme
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 

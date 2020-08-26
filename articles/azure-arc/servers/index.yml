@@ -1,0 +1,32 @@
+### YamlMime:Landing
+title: Azure Arc Sunucuları (önizleme)
+summary: Azure Arc Sunucuları
+metadata:
+  title: Azure Arc Sunucuları
+  description: Azure'da şirket içi makineleri yönetmeyi öğrenin
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763836"
+landingContent:
+- title: Azure Arc özellikli sunucuları kullanarak makineleri Azure’a bağlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc özellikli sunucular nedir?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Makineleri Azure portalından Azure Arc’a bağlama
+      url: onboard-portal.md
+    - text: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
+      url: onboard-service-principal.md
+    - text: PowerShell DSC ile makineleri Azure’a bağlama
+      url: onboard-dsc.md
