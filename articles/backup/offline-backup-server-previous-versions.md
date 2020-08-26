@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) i
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM 'nin önceki sürümleri ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826608"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890102"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
 
@@ -203,7 +203,7 @@ En yakın Azure veri merkezine gönderilen SATA sürücüleri hazırlamak için 
 
 1. Azure 'a aktarmaya hazırlamak istediğiniz bağlı disk için sondaki iki nokta olmadan sürücü harfini girin. İstendiğinde, sürücünün biçimlendirmesi için onay sağlayın.
 
-    Araç daha sonra diski hazırlamaya ve yedekleme verilerini kopyalamaya başlar. Belirtilen disk, yedekleme verileri için yeterli alana sahip değilse araç tarafından istendiğinde ek diskler eklemeniz gerekebilir. <br/>
+    Araç daha sonra diski hazırlamaya ve yedekleme verilerini kopyalamaya başlar. Sunulan disk, yedekleme verileri için yeterli alana sahip değilse araç tarafından istendiğinde ek diskler eklemeniz gerekebilir. <br/>
 
     Araç başarıyla tamamlandıktan sonra, verdiğiniz bir veya daha fazla disk Azure 'a gönderim için hazırlanır. "Çevrimdışı Yedeklemeyi Başlat" bölümünde iş akışı sırasında verdiğiniz ada sahip bir içeri aktarma işi de Azure 'da oluşturulur. Son olarak, araç, disklerin sevk edilmesi gereken Azure veri merkezine sevkiyat adresini görüntüler.
 

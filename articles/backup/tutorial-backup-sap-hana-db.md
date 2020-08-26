@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ebda6eec0f2e0866a13f04859c491662a8f9ca43
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 65f2a7ba51fcf811e36839d3998902ba37a90fc4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825656"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890000"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -105,7 +105,7 @@ Azure VM üzerinde çalışan bir SAP HANA veritabanını yedeklerken, VM 'deki 
 * Azure Backup sunucularıyla giden ağ bağlantı denetimlerini ve Azure Active Directory ve Azure depolama gibi bağımlı hizmetleri gerçekleştirir.
 * [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Kullanıcı anahtarı, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve ön kayıt betiği başarıyla çalıştıktan sonra Kullanıcı anahtarı silinebilir.
 * AZUREWLBACKUPHANAUSER bu gerekli roller ve izinler atanır:
-  * VERITABANı YÖNETICISI (MDC söz konusu olduğunda) ve yedekleme YÖNETICISI (SDC durumunda): geri yükleme sırasında yeni veritabanları oluşturmak için.
+  * VERITABANı YÖNETICISI (MDC söz konusu olduğunda) ve yedekleme YÖNETICISI (SDC söz konusu olduğunda): geri yükleme sırasında yeni veritabanları oluşturmak için.
   * Katalog okuma: yedekleme kataloğunu okumak için.
   * SAP_INTERNAL_HANA_SUPPORT: birkaç özel tabloya erişmek için.
 * Betik, tüm işlemleri (veritabanı sorguları, geri yükleme işlemleri, yedek yapılandırma ve çalıştırma) işlemek üzere HANA yedekleme eklentisi için AZUREWLBACKUPHANAUSER için **hdbuserstore** öğesine bir anahtar ekler.

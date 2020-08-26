@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871556"
+ms.locfileid: "88890901"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -99,7 +99,7 @@ Oluşturulması gereken iki zorunlu DNS bölgesi vardır:
 
 ### <a name="optional-dns-zone"></a>İsteğe bağlı DNS bölgesi
 
-Müşteriler, hizmet iletişimi için özel uç noktalarını Azure Backup için özel DNS bölgeleriyle tümleştirmeyi tercih edebilir (Özel uç noktalar oluşturma bölümünde ele alınmıştır). Özel DNS bölgesi ile tümleştirme istemiyorsanız, kendi DNS sunucunuzu kullanmayı veya ayrı bir DNS bölgesi oluşturmayı tercih edebilirsiniz. Bu, önceki bölümde ele alınan iki zorunlu özel DNS bölgesine ek niteliğindedir.
+Özel uç noktalarınızı, hizmet iletişimi için Azure Backup özel DNS bölgeleriyle tümleştirmeyi seçebilirsiniz (örneğin [, yedekleme Için özel uç noktalar oluşturma ve kullanma](#creating-and-using-private-endpoints-for-backup)bölümünde anlatılmıştır). Özel DNS bölgesi ile tümleştirme istemiyorsanız, kendi DNS sunucunuzu kullanmayı veya ayrı bir DNS bölgesi oluşturmayı tercih edebilirsiniz. Bu, önceki bölümde ele alınan iki zorunlu özel DNS bölgesine ek niteliğindedir.
 
 Azure 'da ayrı bir özel DNS bölgesi oluşturmak isterseniz, zorunlu DNS bölgeleri oluşturmak için kullanılan adımları kullanarak aynı işlemleri yapabilirsiniz. Adlandırma ve abonelik ayrıntıları aşağıda paylaşılır:
 

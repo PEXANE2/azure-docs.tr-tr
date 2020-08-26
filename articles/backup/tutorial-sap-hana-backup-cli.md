@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çal�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 505c4502281f4d32e1e28d913ed5a040e533cfb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbf50a9b1fa33e86777c25dcbeee9681aa2dda62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824330"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890612"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[Az Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'i, korunan veritabanında çalışan veya çalışmakta olan tüm yedekleme işlerini (zamanlanmış veya isteğe bağlı) listeler; Kaydet, yedeklemeyi yapılandırma, yedekleme verilerini silme gibi diğer işlemlere ek olarak.
+[Az Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'i, kayıt, yedeklemeyi yapılandırma ve yedekleme verilerini silme gibi diğer işlemlere ek olarak, çalışmakta olan veya korunan veritabanında çalışmakta olan tüm yedekleme işlerini (zamanlanmış veya isteğe bağlı) listeler.
 
 >[!NOTE]
 >Azure Backup, bir Azure VM 'de çalışan bir SAP HANA Veritabanının yedeklenmesinde gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.

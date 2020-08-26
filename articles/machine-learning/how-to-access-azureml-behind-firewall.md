@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827435"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889949"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -24,9 +24,9 @@ Bu makalede, Azure Güvenlik Duvarı 'nı Azure Machine Learning çalışma alan
 
 Bu belgedeki bilgiler [Azure Güvenlik Duvarı](../firewall/tutorial-firewall-deploy-portal.md)kullanımı temel alınarak, diğer güvenlik duvarı ürünleriyle de kullanabilmeniz gerekir. Güvenlik duvarınız üzerinden iletişime izin verme hakkında sorularınız varsa, lütfen kullandığınız güvenlik duvarının belgelerine başvurun.
 
-## <a name="network-rules"></a>Ağ kuralları
+## <a name="application-rules"></a>Uygulama kuralları
 
-Güvenlik duvarınızda, bu makaledeki adreslere ve adreslere yönelik trafiğe izin veren bir ağ kuralı oluşturun.
+Güvenlik duvarınızda, bu makaledeki adreslere ve adreslere giden trafiğe izin veren bir _uygulama kuralı_ oluşturun.
 
 > [!TIP]
 > Ağ kuralı eklenirken, __Protokolü__ herhangi bir ve bağlantı noktası olarak ayarlayın `*` .

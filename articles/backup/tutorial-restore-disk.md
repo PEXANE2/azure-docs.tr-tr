@@ -4,12 +4,12 @@ description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl g
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824453"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890731"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI ile bir VM’yi geri yükleme
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Sanal makine diskini geri yükleme
 
 > [!IMPORTANT]
-> Yönetilen disk geri yükleme dahil olmak üzere hızlı geri yükleme avantajlarından yararlanmak için az CLı Version 2.0.74 veya üzeri kullanılması önemle önerilir. Kullanıcı her zaman en son sürümü kullanıyorsa, bu en iyisidir.
+> Yönetilen disk geri yükleme dahil olmak üzere hızlı geri yükleme avantajlarından yararlanmak için az CLı Version 2.0.74 veya üzeri kullanılması önemle önerilir. En son sürümü her zaman kullanıyorsanız bu en iyisidir.
 
 ### <a name="managed-disk-restore"></a>Yönetilen disk geri yükleme
 
@@ -88,7 +88,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     ```
 
     > [!WARNING]
-    > **Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Müşteriler, yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajına sahip olur. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
+    > **Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajını elde edersiniz. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -105,7 +105,7 @@ Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen disk
 
 ### <a name="unmanaged-disks-restore"></a>Yönetilmeyen diskler geri yükleme
 
-Yedeklenen sanal makinede, yönetilmeyen diskler varsa ve diskleri kurtarma noktasından geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Kullanıcı tüm yönetilmeyen diskleri tek bir yere geri yüklemeyi istiyorsa, söz konusu depolama hesabı da bu disklere yönelik hazırlama konumu olarak da kullanılabilir.
+Yedeklenen sanal makinede, yönetilmeyen diskler varsa ve diskleri kurtarma noktasından geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Tüm yönetilmeyen diskleri tek bir yere geri yüklemek isterseniz, verilen depolama hesabı da bu disklere yönelik hazırlama konumu olarak da kullanılabilir.
 
 Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
 

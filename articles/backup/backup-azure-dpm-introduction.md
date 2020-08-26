@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827316"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890816"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -90,7 +90,7 @@ Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal g�
 - Kasa kimlik bilgileri yalnızca kayıt iş akışı sırasında kullanılır.
 - Kasa kimlik bilgileri dosyasının güvenli ve güvenliği aşılmış olduğundan emin olmak sizin sorumluluğunuzdadır.
   - Kimlik bilgileri denetimi kaybolursa, diğer makineleri kasaya kaydetmek için kasa kimlik bilgileri kullanılabilir.
-  - Ancak, yedekleme verileri müşteriye ait bir parola kullanılarak şifrelenir, bu nedenle mevcut yedekleme verilerinin güvenliği tehlikeye alınamaz.
+  - Ancak, yedekleme verileri size ait bir parola kullanılarak şifrelenir, bu nedenle mevcut yedekleme verilerinin güvenliği tehlikeye alınamaz.
 - Dosyanın DPM sunucusundan erişilebilen bir konuma kaydedildiğinden emin olun. Dosya paylaşımında/SMB 'de depolanıyorsa, erişim izinleri olup olmadığını denetleyin.
 - Kasa kimlik bilgilerinin süresi 48 sonra dolar. Yeni kasa kimlik bilgilerini gerektiği kadar birçok kez indirebilirsiniz. Ancak kayıt iş akışı sırasında yalnızca en son kasa kimlik bilgisi dosyası kullanılabilir.
 - Azure Backup hizmeti sertifikanın özel anahtarını bilmez ve özel anahtar portalda veya hizmette kullanılamaz.

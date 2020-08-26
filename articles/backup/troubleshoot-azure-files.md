@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825469"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889818"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Backup hizmetini kullanarak yedeklemeyi yapılandırırken ve
   >Bir depolama hesabındaki tüm dosya paylaşımları yalnızca bir kurtarma hizmetleri Kasası altında korunabilir. Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için [bu betiği](scripts/backup-powershell-script-find-recovery-services-vault.md) kullanabilirsiniz.
 
 - Dosya paylaşımının desteklenmeyen depolama hesaplarında bulunmadığından emin olun. Desteklenen depolama hesaplarını bulmak için [Azure dosya paylaşma yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) başvurabilirsiniz.
-- Depolama hesabı adı ve kaynak grubu adının Birleşik uzunluğunun, yeni depolama hesapları 77 ve klasik depolama hesapları olması durumunda 84 karakteri aşmadığından emin olun.
+- Depolama hesabı adı ve kaynak grubu adının Birleşik uzunluğunun, yeni depolama hesapları ve klasik depolama hesaplarında 77 karakter olması durumunda 84 karakteri aşmadığından emin olun.
 - Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verme seçeneğinin etkin olduğundan emin olmak için depolama hesabının güvenlik duvarı ayarlarını kontrol edin.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Portal durumlarında hata oluştu, depolama hesaplarını bulma işlemi başarısız oldu
@@ -300,7 +300,7 @@ Hata Iletisi: geri yükleme noktası anlık görüntülerini içeren ilişkili d
 Yedeklenen dosya paylaşımının silinip silinmediğini denetleyin. Geçici olarak silinmiş durumdaysa, geçici silme bekletme döneminin daha fazla olup olmadığını ve geri kurtarılamamış olduğunu kontrol edin. Bu durumda, tüm anlık görüntülerinizi kalıcı olarak kaybedersiniz ve verileri kurtaramayacaksınız.
 
 >[!NOTE]
-> Yedeklenen dosya paylaşımının silinmesini veya geçici olarak silinmiş durumda olup olmadığını, tüm geri yükleme noktalarınızın kaybedilmesini önlemek için geçici silme bekletme süresi bitmeden önce geri silmeyi öneririz.
+> Yedeklenen dosya paylaşımının silinmesini veya geçici olarak silinmiş durumda olup olmadığını, tüm geri yükleme noktalarınızın kaybolmasını önlemek için geçici silme bekletme süresi bitmeden önce silmeyi geri almayı öneririz.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-Azure dosya paylaşma geçici olarak silinmiş durumda olduğundan yedekleme başarısız oldu
 

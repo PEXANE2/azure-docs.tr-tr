@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükseltme
 description: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl yükselteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 1f4fd5074b0c6195742935e0cf0e742a00a3549e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827333"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890243"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükseltme
 
@@ -31,7 +31,7 @@ Azure Backup Aracısı ve Azure Backup sunucusu yüklemeleri için:
 
     ![MARS aracısının yüklü olduğu sunucu listesi](./media/upgrade-mars-agent/protected-servers.png)
 
-1. Azure Backup Aracısı sürümü sütununu, MARS Aracısı yüklemelerinin **Aracı sürümü** sütununa veya Azure Backup sunucusu yüklemeleri Için **Azure Backup Aracısı sürümü** sütununa tıklayarak sıralayın.
+1. MARS aracı yüklemeleri için **Aracı sürümü** sütununu veya Azure Backup sunucusu yüklemeleri Için **Azure Backup Aracısı sürümü** sütununu seçerek Azure Backup Aracısı sürümü sütununu sıralayın.
 
 1. Önceki adımda, 2.0.9083.0 ' den daha düşük sürümler veya boşluk olarak listelenen aracı sürümlerinden Azure Backup aracılarıyla birlikte sunucu listesi sunulacaktır. Bunlar, Azure Backup aracılarının güncellenmesi gereken sunuculardır.
 
@@ -39,13 +39,13 @@ Azure Backup Aracısı ve Azure Backup sunucusu yüklemeleri için:
 
 Azure Backup aracısının güncelleştirilmesi gereken sunucuları tanımladıktan sonra, tanımlanan her sunucu (Azure Backup sunucusu veya MARS Aracısı kullanarak) için aşağıdaki adımları gerçekleştirin. Aşağıdaki adımları uygulamadan önce [Azure Backup aracısının en son sürümünü indirin](https://aka.ms/azurebackup_agent) .
 
-1. Azure Backup Aracısına 2.0.9083.0 veya Blank 'tan daha düşük bir satıra tıklayın. Bu, sunucu ayrıntısı ekranını açar.
+1. Azure Backup Aracısına 2.0.9083.0 veya Blank 'tan daha düşük bir satır seçin. Bu, sunucu ayrıntısı ekranını açar.
 
     ![Güncel olmayan aracı sürümlerine sahip korumalı sunucular](./media/upgrade-mars-agent/old-agent-version.png)
 
     ![Güncel olmayan aracı sürümlerine sahip Azure Backup sunucuları](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
-1. Sunucuya bağlanmak için bir Uzak Masaüstü bağlantı dosyası almak veya sunucunuzdaki Uzak Masaüstü bağlantısı aracılığıyla sunucuya doğrudan bağlanmak için **Bağlan** ' a tıklayın.
+1. Sunucuya bağlanmak için bir Uzak Masaüstü bağlantı dosyası almak veya sunucunuzdaki Uzak Masaüstü bağlantısı aracılığıyla sunucuya doğrudan bağlanmak için **Bağlan** ' ı seçin.
 
     ![Uzak Masaüstü bağlantısı ile sunucuya bağlanma](./media/upgrade-mars-agent/connect-to-server.png)
 
@@ -57,7 +57,7 @@ Azure Backup aracısının güncelleştirilmesi gereken sunucuları tanımladık
 1. Sunucunuzun veya sunucunuzun proxy 'sinin internet erişimi sınırlı ise, sunucu/ara sunucu üzerindeki güvenlik duvarı ayarlarının, kullanmakta olduğunuz Azure bulutuna uygun URL 'ye izin verecek şekilde yapılandırıldığından emin olun:
 
     Azure bulutu | URL
-    -- | ---
+    --- | ---
     Azure bulutu (genel) |   `https://login.windows.net`
     Azure Çin 21Vianet bulutu   | `https://login.chinacloudapi.cn`
     Azure ABD kamu bulutu |   `https://login.microsoftonline.us`
@@ -71,9 +71,9 @@ Azure Backup aracısının güncelleştirilmesi gereken sunucuları tanımladık
 
     ![Microsoft Azure Kurtarma Hizmetleri Aracısı Yükseltme Sihirbazı](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. **İleri**’ye tıklayın.
+1. **İleri**’yi seçin.
 
-1. **Yükselt**’e tıklayın.
+1. **Yükseltme**' yi seçin.
 
     ![Microsoft Azure Kurtarma Hizmetleri aracısının yüklenmesi](./media/upgrade-mars-agent/upgrade-installation.png)
 
@@ -85,7 +85,7 @@ System Center Data Protection Manager (SC DPM) sunucularına Azure Backup aracı
 
 1. SC DPM sunucunuzda yönetici olarak oturum açın.
 2. DPM konsolunu açın.
-3. Konsolun sol alt gezinti bölmesinde **Yönetim** ' e tıklayın.
+3. Konsolun sol alt gezinti bölmesinde **Yönetim** ' i seçin.
 4. Sol gezinti çubuğunda görüntülenen bilgiler içinde Azure Backup Aracısı sürüm bilgilerini arayın.
 5. Sürüm 2.0.9083.0 'den düşükse, en son Azure Backup Aracısı yükleyicisini indirin ve Azure Backup aracısını güncelleştirmek için DPM sunucusunda yükleyiciyi çalıştırın.
 

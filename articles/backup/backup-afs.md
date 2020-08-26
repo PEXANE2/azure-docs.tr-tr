@@ -3,12 +3,12 @@ title: Azure portal Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757804"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890357"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme
 
@@ -21,7 +21,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Dosya paylaşma bölmesinden yedeklemeyi yapılandırma
 * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure dosya paylaşma anlık görüntü tabanlı yedekleme çözümü hakkında [bilgi edinin](azure-file-share-backup-overview.md) .
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
@@ -132,7 +132,7 @@ Aşağıdaki adımlarda, ilgili dosya paylaşımı bölmesinden ayrı dosya payl
        ![Yeni kasa oluştur](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >Depolama hesabı bir kasaya kayıtlıysa veya korumaya çalıştığınız dosya paylaşımını barındıran depolama hesabı içinde birkaç korumalı paylaşım varsa, kurtarma hizmetleri kasasının adı önceden doldurulur ve [daha fazla bilgi edinin](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
+      >Depolama hesabı bir kasayla kayıtlıysa veya korumaya çalıştığınız dosya paylaşımını barındıran depolama hesabı içinde birkaç korumalı paylaşım varsa, kurtarma hizmetleri kasasının adı önceden doldurulur ve [daha fazla bilgi edinin](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
 
 1. **Yedekleme ilkesi** seçimi için aşağıdakilerden birini yapın:
 

@@ -3,12 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757277"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890085"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 
@@ -36,7 +36,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Daha sonra SATA sürücüler en yakın Azure veri merkezine gönderilir.
 > * Yedekleme verilerinin Azure 'a yüklenmesi tamamlandıktan sonra, Azure Backup yedekleme verileri yedekleme kasasına kopyalanır ve artımlı yedeklemeler zamanlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -115,7 +115,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
      > [!IMPORTANT]
      > Kaynak bilgisayar bir sanal makinedir, kopya bilgisayar olarak farklı bir fiziksel sunucu veya istemci makine kullanılması zorunludur.
 
-1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Şu komutu çalıştırın:
+1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Aşağıdaki komutu çalıştırın:
 
     ```console
     .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
@@ -136,7 +136,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
 
     ![Azure oturum açma ekranı](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    Araç daha sonra diski hazırlamaya ve yedekleme verilerini kopyalamaya başlar. Belirtilen disk, yedekleme verileri için yeterli alana sahip değilse araç tarafından istendiğinde ek diskler eklemeniz gerekebilir. <br/>
+    Araç daha sonra diski hazırlamaya ve yedekleme verilerini kopyalamaya başlar. Sunulan disk, yedekleme verileri için yeterli alana sahip değilse araç tarafından istendiğinde ek diskler eklemeniz gerekebilir. <br/>
 
     Aracın başarıyla yürütülmesinin sonunda, komut istemi üç bilgi sağlar:
     * Verdiğiniz bir veya daha fazla disk, Azure 'a gönderim için hazırlandı.

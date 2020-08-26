@@ -4,12 +4,12 @@ description: Sanal makinelerin geçici silme işlemlerini yedeklemelerin daha g�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826489"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889835"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
 
@@ -110,7 +110,7 @@ Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' olarak döndürülec
 ## <a name="soft-delete-for-vms-using-rest-api"></a>REST API kullanarak VM 'Ler için geçici silme
 
 - [Burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedekleri silin.
-- Kullanıcı bu silme işlemlerini geri almayı istiyorsa, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)bahsedilen adımlara bakın.
+- Bu silme işlemlerini geri almak istiyorsanız [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)bahsedilen adımlara bakın.
 
 ## <a name="how-to-disable-soft-delete"></a>Geçici silme devre dışı bırakma
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287231"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890923"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -52,7 +52,7 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 > Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + Web 'de:
-    + [Azure Machine Learning Studio](https://ml.azure.com) 
+    + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning Designer (Önizleme)](concept-designer.md) -yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir.
 + Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)olan herhangi bir Python ortamında.
 + [R (Önizleme) için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
@@ -87,9 +87,9 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 > [!WARNING]
 > Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>Çalışma alanı oluşturma
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> Çalışma alanı oluşturma
 
-Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](overview-what-is-azure-ml.md#sku)ile oluşturulup oluşturulmayacağını siz karar verirsiniz. Sürüm, çalışma alanında kullanılabilen özellikleri belirler. Enterprise Edition, diğer özelliklerin yanı sıra [Azure Machine Learning tasarımcı](concept-designer.md) ve [otomatik makine öğrenimi denemeleri](tutorial-first-experiment-automated-ml.md)oluşturma Studio sürümüne erişmenizi sağlar.  Daha ayrıntılı bilgi ve fiyatlandırma bilgileri için bkz. [Azure Machine Learning fiyatlandırması](https://azure.microsoft.com/pricing/details/machine-learning/).
+Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](overview-what-is-azure-ml.md#sku)ile oluşturulup oluşturulmayacağını siz karar verirsiniz. Sürüm, çalışma alanında kullanılabilen özellikleri belirler. Enterprise Edition, diğer özelliklerin yanı sıra [Azure Machine Learning tasarımcı](concept-designer.md) ve [otomatik makine öğrenimi denemeleri](tutorial-first-experiment-automated-ml.md)oluşturma Studio sürümüne erişmenizi sağlar.  Daha fazla bilgi ve fiyatlandırma bilgileri için bkz. [Azure Machine Learning fiyatlandırması](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Çalışma alanı oluşturmanın birden çok yolu vardır:  
 
@@ -101,11 +101,11 @@ Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](over
 > [!NOTE]
 > Çalışma alanı adı büyük/küçük harfe duyarlıdır.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Enterprise Edition 'a yükseltme
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Enterprise Edition 'a yükseltme
 
 Azure portal kullanarak [çalışma alanınızı temel kurumsal sürüme yükseltebilirsiniz](how-to-manage-workspace.md#upgrade) . Enterprise Edition çalışma alanını temel bir sürüm çalışma alanına indirgeyemezsiniz. 
 
-## <a name="associated-resources"></a><a name="resources"></a>İlişkili kaynaklar
+## <a name="associated-resources"></a><a name="resources"></a> İlişkili kaynaklar
 
 Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından kullanılan çeşitli Azure kaynaklarını otomatik olarak oluşturur:
 
@@ -117,8 +117,16 @@ Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından
 > [!NOTE]
 > Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
 
+### <a name="azure-storage-account"></a>Azure depolama hesabı
+
+Varsayılan olarak, çalışma alanıyla oluşturulan Azure depolama hesabı genel amaçlı bir v1 hesabıdır. [Genel amaçlı v2 depolama hesabına yükseltme](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) makalesindeki adımları izleyerek çalışma alanı oluşturulduktan sonra bunu genel amaçlı v2 'ye yükseltebilirsiniz.
+
 > [!IMPORTANT]
-> Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
+> Genel amaçlı v2 'ye yükselttikten sonra depolama hesabında hiyerarşik ad alanını etkinleştirmeyin.
+
+Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanları desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

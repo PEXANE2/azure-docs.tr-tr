@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826371"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889660"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -19,7 +19,7 @@ Herhangi bir geri yükleme işlemi için, bunlardan önce ilgili kurtarma noktas
 
 ## <a name="select-recovery-point"></a>Kurtarma noktası seçin
 
-Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma noktası REST API](/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Tüm ilgili değerleri olan basit bir *Get* işlemidir.
+Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma noktası REST API](/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Bu, tüm ilgili değerleri içeren basit bir *Get* işlemidir.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13

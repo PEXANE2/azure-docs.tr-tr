@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 08f5829eb624f13be44bba633f3188d8d9876058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547469"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,12 +32,12 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Çoklu oturum açmayı etkinleştirmek için Microsoft Azure Active Directory hesabınızı Atlaseli JIRA sunucusu ile kullanın. Bu sayede, tüm kuruluşunuz kullanıcıları JIRA uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-- JIRA Core ve Software 6,4 for 8.11.0 veya JIRA Service Desk 3,0 to 4.8.0 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
+- JIRA Core ve Software 6,4 for 8.11.0 veya JIRA Service Desk 3,0 to 4.11.1 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
 - JıRA sunucusu HTTPS etkin
 - Aşağıdaki bölümde, JIRA eklentisinin desteklenen sürümlerinin bahsedildiğini aklınızda bulabilirsiniz.
 - JıRA sunucusuna, kimlik doğrulaması için özellikle Azure AD oturum açma sayfasında internet 'ten erişilebilir ve bu belirteci Azure AD 'den alabilmelidir
@@ -59,7 +59,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 ## <a name="supported-versions-of-jira"></a>Desteklenen JIRA sürümleri
 
 * JIRA Core ve Software: 6,4 ile 8.11.0
-* JIRA Service Desk 3.0.0 to 4.8.0
+* JIRA Service Desk 3.0.0 to 4.11.1
 * JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](jira52microsoft-tutorial.md) 'yı tıklatın
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827248"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890565"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -68,7 +68,7 @@ Azure Backup kurtarma hizmetleri Kasası, kasala aynı bölgedeki tüm düğüml
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Başarılı yedekleme işleri sonucunda uyarı oluşturulur mu?
 
-Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](backup-azure-monitoring-built-in-monitor.md)belgelenmiştir. Ancak, bu işlemleri başarılı işler için bile izleyebilirsiniz, [Azure izleyici 'yi kullanarak izlemeyi](backup-azure-monitoring-use-azuremonitor.md)kullanabilirsiniz.
+Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](backup-azure-monitoring-built-in-monitor.md)belgelenmiştir. Ancak, başarılı işler için bile uyarıları almak istiyorsanız, [Izlemeyi Azure izleyici 'yi kullanarak](backup-azure-monitoring-use-azuremonitor.md)kullanabilirsiniz.
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Yedekleme Işleri menüsünde zamanlanmış yedekleme işlerini görebilir miyim?
 
@@ -94,7 +94,7 @@ Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **si
 
 Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanı bulunmazsa ve yedeklemelerle başarısız olarak değerlendirir.
 
-Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkin olması durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
+Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik koruma etkinse, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Neden yeniden korunan bir örnek için eklenen bir veritabanını göremiyorum?
 

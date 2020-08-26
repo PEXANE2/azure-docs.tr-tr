@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM kullanarak bir Exchange Server 'ı Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827418"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889728"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM ile Azure Backup’a Exchange sunucusu yedekleme
 
@@ -32,7 +32,7 @@ Devam etmeden önce, iş yüklerini korumak için Microsoft Azure Backup kullanm
 * Aracı ve kasa kimlik bilgileri DPM sunucusuna indirildi.
 * Aracı DPM sunucusuna yüklenir.
 * Kasa kimlik bilgileri, DPM sunucusunu kaydetmek için kullanıldı.
-* Exchange 2016 ' i koruyorsanız DPM 2012 R2 UR9 veya üzeri sürümüne yükseltin
+* Exchange 2016 ' i koruyorsanız DPM 2012 R2 UR9 veya sonraki bir sürüme yükseltin.
 
 ## <a name="dpm-protection-agent"></a>DPM koruma Aracısı
 
@@ -83,10 +83,10 @@ DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izley
 11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' ye tıklayın.
 12. DPM sunucusunun ilk çoğaltmayı oluşturma zamanını seçin ve ardından **İleri**' ye tıklayın.
 13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' ye tıklayın.
-14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örnek:
+14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örneğin:
 
     ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örnek:
+15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örneğin:
 
     ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

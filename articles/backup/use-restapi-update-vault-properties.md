@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827265"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890051"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -17,7 +17,7 @@ Bu makalede, Azure kurtarma hizmetleri kasasında REST API kullanarak yedeklemey
 
 ## <a name="soft-delete-state"></a>Geçici silme durumu
 
-Korunan bir öğenin yedeklerini silmek, izlenmesi gereken önemli bir işlemdir. Yanlışlıkla silinmelere karşı korunmak için, Azure kurtarma hizmetleri kasasının geçici silme yeteneği vardır. Bu özellik, gerekirse silinen yedeklemeleri, silme sonrasında bir süre içinde geri yüklemesine olanak tanır.
+Korunan bir öğenin yedeklerini silmek, izlenmesi gereken önemli bir işlemdir. Yanlışlıkla silinmelere karşı korunmak için, Azure kurtarma hizmetleri kasasının geçici silme yeteneği vardır. Bu özellik, gerekirse silinen yedeklemeleri, silinme sonrasında bir süre içinde geri yüklemenize olanak sağlar.
 
 Ancak bu özelliğin gerekmediği senaryolar vardır. Azure kurtarma hizmetleri Kasası, içinde yedekleme öğeleri varsa, hatta geçici olarak silinenler silinemez. Bu, kasanın hemen silinmesi gerektiğinde bir sorun oluşturabilir. Örneğin: dağıtım işlemleri genellikle aynı iş akışındaki oluşturulan kaynakları temizler. Dağıtım bir kasa oluşturabilir, bir öğe için yedeklemeleri yapılandırabilir, test geri yükleme yapabilir ve sonra yedekleme öğelerini ve kasasını silmeye devam edebilir. Kasa silme işlemi başarısız olursa, tüm dağıtım başarısız olabilir. Geçici silme işleminin devre dışı bırakılması, hemen silmeyi güvence altına almanın tek yoludur.
 
@@ -83,7 +83,7 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
 Daha fazla ayrıntı için [REST API belgelerine](/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Name  |Gerekli  |Tür  |Açıklama  |
+|Ad  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |

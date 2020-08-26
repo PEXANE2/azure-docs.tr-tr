@@ -4,15 +4,15 @@ description: Bazı yaygın App Service senaryolarından bazıları için Azure R
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517714"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891054"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service için Azure Resource Manager Şablonlar
 
@@ -20,7 +20,7 @@ Aşağıdaki tabloda, Azure App Service için Azure Resource Manager şablonlar�
 
 App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Web kaynak türleri](/azure/templates/microsoft.web/allversions).
 
-| Uygulama dağıtma | Description |
+| Uygulama dağıtma | Açıklama |
 |-|-|
 | [App Service planı ve temel Linux uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Linux için yapılandırılmış bir App Service uygulaması dağıtır. |
 | [App Service planı ve temel Windows uygulaması](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Windows için yapılandırılmış bir App Service uygulamasını dağıtır. |
@@ -44,6 +44,7 @@ App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi e
 | [Azure SQL veritabanı 'nda veritabanı içeren uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Temel hizmet düzeyinde Azure SQL veritabanı 'nda bir App Service uygulaması ve veritabanı dağıtır. |
 | [BLOB depolama bağlantısı olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Azure Blob depolama bağlantı dizesiyle bir App Service uygulaması dağıtır. Bundan sonra, uygulamadan BLOB depolama alanını kullanabilirsiniz. |
 | [Redsıs için Azure önbelleği olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Redsıs için Azure önbelleği ile bir App Service uygulaması dağıtır. |
+| [Arka uç WebApp 'e bağlı uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| VNet ekleme ve özel uç nokta ile güvenli bir şekilde bağlı iki Web uygulaması (ön uç ve arka uç) dağıtır. |
 |**App Service Ortamı**| **Açıklama** |
 | [App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Sanal ağınızda bir App Service ortamı v2 oluşturur. |
 | [ILB adresli bir App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Sanal ağınızda özel bir iç yük dengeleyici adresine sahip App Service ortamı v2 oluşturur. |
