@@ -510,6 +510,8 @@
           href: unique-keys.md
         - name: İşlemler ve iyimser eşzamanlılık denetimi
           href: database-transactions-optimistic-concurrency.md
+        - name: Ekler
+          href: attachments.md
     - name: Akışı değiştirme
       items:
         - name: Değişiklik akışına genel bakış

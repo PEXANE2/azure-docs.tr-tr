@@ -68,6 +68,8 @@
           href: cdn-restrict-access-by-country.md
         - name: Dosyaları sıkıştırarak performansı geliştirme
           href: cdn-improve-performance.md
+        - name: Uç nokta çoklu kaynak
+          href: endpoint-multiorigin.md
         - name: Önbelleğe alma davranışını denetleme
           items:
             - name: Önbelleğe alma davranışını önbelleğe alma kurallarını kullanarak denetleme

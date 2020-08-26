@@ -195,7 +195,7 @@
     - name: Genel Bakış
       href: ../managed-disks-overview.md
     - name: SSS
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: Depolama alanı kaynaklarını silerken karşılaşılan hatalar
       href: storage-resource-deletion-errors.md
     - name: Klasik depolama alanı kaynaklarını silerken karşılaşılan hatalar

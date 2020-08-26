@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine yedekleme çözümünü kullanarak 
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757447"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824755"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure sanal makineleri için seçmeli disk yedekleme ve geri yükleme
 
@@ -190,7 +190,7 @@ Bu komutları çalıştırdığınızda görürsünüz `"diskExclusionProperties
 
 ## <a name="using-powershell"></a>PowerShell’i kullanma
 
-Azure PS sürüm 3.7.0 veya üstünü kullandığınızdan emin olun.
+Azure PowerShell sürüm 3.7.0 veya üstünü kullandığınızdan emin olun.
 
 ### <a name="enable-backup-with-powershell"></a>PowerShell ile yedeklemeyi etkinleştir
 
@@ -277,7 +277,7 @@ Seçmeli disk geri yükleme, seçmeli diskler yedekleme özelliğini etkinleşti
 - Seçmeli disk geri yükleme yalnızca disk dışlama yeteneği etkinleştirildikten sonra oluşturulan kurtarma noktaları için desteklenir.
 - Disk **dışlama ayarı olan** yedeklemeler yalnızca **disk geri yükleme** seçeneğini destekler. **VM geri yükleme** veya mevcut geri yükleme seçeneklerini **değiştirme** bu durumda desteklenmez.
 
-![VM 'yi geri yükleme ve varolanı değiştirme seçeneği geri yükleme işlemi sırasında kullanılamaz](./media/selective-disk-backup-restore/options-not-available.png)
+![VM 'yi geri yükleme ve varolanı değiştirme seçeneği geri yükleme işlemi sırasında kullanılamıyor](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>Sınırlamalar
 

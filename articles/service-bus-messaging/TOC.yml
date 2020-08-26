@@ -117,6 +117,8 @@
           href: network-security.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Bölgeler arasında taşıma
+      href: move-across-regions.md
     - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
       href: deprecate-service-bus-management.md
     - name: Ad alanı oluşturma

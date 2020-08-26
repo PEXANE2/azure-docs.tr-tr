@@ -88,6 +88,8 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights ile tümleştirme
           href: how-to-integrate-time-series-insights.md
+        - name: Logic Apps ile tümleştirme
+          href: how-to-integrate-logic-apps.md
     - name: Sorun giderme
       items:
         - name: Ölçümleri Azure İzleyici’de görüntüleme

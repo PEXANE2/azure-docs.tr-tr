@@ -41,6 +41,10 @@
           href: tutorial-alias-rr.md
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Genel DNS
       items:
         - name: Bölgeler ve kayıtlar

@@ -282,7 +282,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot VM'ler
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçici diski olmayan Azure VM’leri
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM boyutlarını adlandırma kuralları
@@ -879,15 +879,15 @@
             - name: Konakta şifrelemeyi etkinleştirme - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: Konakta şifrelemeyi etkinleştirme - Portal
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - Portal
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme - Portal
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçiş ve dönüştürme
           items:
             - name: Standart ve Premium arasında disk dönüştürme
@@ -911,7 +911,7 @@
         - name: Kullanıma açılmamış diskleri bulma - Portal
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Disklerle ilgili SSS
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Ağı yönetme
       href: ps-common-network-ref.md
       items:
