@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035987"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855226"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows İşletim Sistemi][Logo_Windows] Windows
 >
 
 [Azure iç yük dengeleyiciyi][load-balancer-multivip-overview]kullanarak birden çok sanal IP adresini yönetebilirsiniz. 
@@ -61,6 +61,7 @@ _**Şekil 1:** İki kümede dağıtılan SAP yoks/SCS örneği ve SOFS_
 > * Farklı SAP SID 'Lerine ait farklı SAP Küresel ana bilgisayarları dosya paylaşımları aynı SOFS kümesini paylaşmalıdır.
 > * Her veritabanı yönetim sistemi (DBMS) SID 'sinin kendi adanmış WSFC kümesi olmalıdır.
 > * Bir SAP sistem SID 'sine ait SAP uygulama sunucularının kendi ayrılmış VM 'lerine sahip olması gerekir.
+> * Aynı kümedeki sıraya alma çoğaltması sunucusu 1 ve sıraya alma çoğaltma sunucusu 2 ' nin karışımı desteklenmez.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Dosya paylaşımıyla SAP ASCS/SCS çoklu SID mimarisi
 

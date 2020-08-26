@@ -4,12 +4,12 @@ description: Düğüm türü ekleyerek bir Service Fabric kümesini ölçeklendi
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056763"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854617"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Düğüm türü ekleyerek Service Fabric kümesi birincil düğüm türünü büyütme
 Bu makalede, kümeye ek bir düğüm türü ekleyerek bir Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.
@@ -43,7 +43,7 @@ $resourceGroupName = "myResourceGroup"
 $location = "WestUS"
 
 New-AzResourceGroup `
-    -Name $resourceGroupName
+    -Name $resourceGroupName `
     -Location $location
 ```
 3. Şablon dosyalarındaki parametre değerlerini girin. 
@@ -56,7 +56,7 @@ $parameterFilePath = "C:\AzureDeploy.Parameters.json"
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
+    -TemplateParameterFile $parameterFilePath
 ```
 
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Kümeye yeni bir birincil düğüm türü ekleyin

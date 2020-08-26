@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513276"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854327"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda yönetilen diskleri kullanma
 
@@ -263,7 +263,7 @@ REST API belirtimleriyle ilgili tam bilgileri bulmak için lütfen [yönetilen d
 * Yönetilen diskler kullanan tam şablonlar için aşağıdaki Azure hızlı başlangıç deposu bağlantılarını ziyaret edin.
     * [Yönetilen disk ile Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Yönetilen disk ile Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* Yönetilen diskler hakkında daha fazla bilgi edinmek için [Azure yönetilen diskler genel bakış](~/articles/virtual-machines/windows/managed-disks-overview.md) belgesini ziyaret edin.
+* Yönetilen diskler hakkında daha fazla bilgi edinmek için [Azure yönetilen diskler genel bakış](managed-disks-overview.md) belgesini ziyaret edin.
 * [Microsoft. COMPUTE/virtualMachines şablon başvuru](/azure/templates/microsoft.compute/virtualmachines) belgesini ziyaret ederek, sanal makine kaynakları için şablon başvuru belgelerini gözden geçirin.
 * [Microsoft. COMPUTE/Disks şablon başvuru](/azure/templates/microsoft.compute/disks) belgesini ziyaret ederek disk kaynakları için şablon başvuru belgelerini gözden geçirin.
 * Azure sanal makine ölçek kümelerinde yönetilen diskleri kullanma hakkında daha fazla bilgi için [Ölçek kümeleri ile veri disklerini kullanma](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) belgesini ziyaret edin.

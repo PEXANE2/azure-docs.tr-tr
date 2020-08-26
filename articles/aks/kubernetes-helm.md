@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: zarhoads
-ms.openlocfilehash: 6ee99eee02e874208106d39c6442f54f59f95dad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05d0166724e586fa79e58e2e74fb583b45d0cc6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361617"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852867"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Held ile mevcut uygulamaları kurma
 
@@ -46,12 +46,13 @@ version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6
 
 ## <a name="install-an-application-with-helm-v3"></a>Held v3 ile uygulama yükler
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>Resmi Held kararlı grafikler deposunu ekleme
+### <a name="add-helm-repositories"></a>Held depoları ekleme
 
-Resmi Held kararlı grafikler deposunu eklemek için [helmrepo][helm-repo-add] komutunu kullanın.
+Resmi Held kararlı grafiklerini ve giriş *-NGINX* depolarını eklemek için [helmrepo][helm-repo-add] komutunu kullanın.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 ```
 
 ### <a name="find-helm-charts"></a>Held grafiklerini bulma
@@ -123,6 +124,7 @@ Aşağıdaki örnekte başarılı bir depo güncelleştirmesi gösterilmektedir:
 $ helm repo update
 
 Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "ingress-nginx" chart repository
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈
 ```
@@ -132,7 +134,7 @@ Update Complete. ⎈ Happy Helming!⎈
 Held ile grafik yüklemek için [HELI install][helm-install-command] komutunu kullanın ve bir sürüm adı ve yüklenecek grafiğin adını belirtin. Bir Helm grafiğinin yükleme işlemini görmek için Helm grafiğini kullanarak temel bir NGINX dağıtımı yükleyelim.
 
 ```console
-helm install my-nginx-ingress stable/nginx-ingress \
+helm install my-nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
@@ -140,7 +142,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
 Aşağıdaki sıkıştırılmış örnek çıktısı, helk grafiği tarafından oluşturulan Kubernetes kaynaklarının dağıtım durumunu gösterir:
 
 ```console
-$ helm install my-nginx-ingress stable/nginx-ingress \
+$ helm install my-nginx-ingress ingress-nginx/ingress-nginx \
 >     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
 >     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
@@ -153,23 +155,23 @@ TEST SUITE: None
 NOTES:
 The nginx-ingress controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller'
 ...
 ```
 
 `kubectl get services`Hizmetinizin *dış IP* 'sini almak için komutunu kullanın.
 
 ```console
-kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 ```
 
-Örneğin, aşağıdaki komut *My-NGINX-ingress-Controller* hizmeti IÇIN *dış IP* 'yi gösterir:
+Örneğin, aşağıdaki komut *My-NGINX-ingress-ingress-NGINX-Controller* hizmeti IÇIN *dış IP* 'yi gösterir:
 
 ```console
-$ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+$ kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 
-NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
+NAME                                        TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)                      AGE   SELECTOR
+my-nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.2.237   <EXTERNAL-IP>    80:31380/TCP,443:32239/TCP   72s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=my-nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 ### <a name="list-releases"></a>Sürümleri Listele

@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.date: 08/25/2020
+ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163977"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855094"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -64,7 +64,7 @@ Geçmiş verileri içeri aktarmak için akış işlem hattının kullanılması 
 
 ## <a name="event-source-timestamp"></a>Olay kaynağı zaman damgası
 
-Bir olay kaynağını yapılandırırken zaman damgası KIMLIĞI özelliği sağlamanız istenir. Zaman damgası özelliği zaman içindeki olayları izlemek için kullanılır. [sorgu API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) ve Azure Time Series Insights Gen2 Explorer 'da dizi çizmek için $event. $TS olarak kullanılacak süredir. Oluşturma zamanında hiçbir özellik sağlanmazsa veya bir olayda Timestamp özelliği eksikse, olayın IoT Hub veya Olay Hub 'Ları sıraya alınan süre varsayılan olarak kullanılır. Zaman damgası özellik değerleri UTC olarak depolanır.
+Bir olay kaynağını yapılandırırken zaman damgası KIMLIĞI özelliği sağlamanız istenir. Zaman damgası özelliği, olayları zamana göre izlemek için kullanılır. [sorgu API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) ve Azure Time Series Insights TSI Gezgininde dizi çizmek için $event. $TS. Oluşturma zamanında hiçbir özellik sağlanmazsa veya bir olayda Timestamp özelliği eksikse, olayın IoT Hub veya Olay Hub 'Ları sıraya alınan süre varsayılan olarak kullanılır. Zaman damgası özellik değerleri UTC olarak depolanır.
 
 Genel olarak, kullanıcılar zaman damgası özelliğini özelleştirmeyi ve algılayıcı ya da etiketin varsayılan Merkez sıraya alma süresini kullanmak yerine okumayı oluşturduğu zamanı kullanması için kabul edecektir. Bu özellikle, cihazlarda aralıklı bağlantı kaybı olduğunda ve bir toplu işlem gecikmeli ileti Azure Time Series Insights Gen2 'e iletildiğinde gereklidir.
 

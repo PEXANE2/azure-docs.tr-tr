@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512019"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855387"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal kullanarak ölçekli IoT Edge modüllerini dağıtın
 
@@ -61,7 +61,7 @@ Dağıtım oluşturmak için beş adım vardır. Aşağıdaki bölümler her bir
 
 ### <a name="step-2-modules"></a>2. Adım: modüller
 
-Bir dağıtıma en fazla 30 modül ekleyebilirsiniz. Modül olmadan bir dağıtım oluşturursanız, hedef cihazlardan tüm geçerli modüller kaldırılır.
+Bir dağıtıma en çok 50 modül ekleyebilirsiniz. Modül olmadan bir dağıtım oluşturursanız, hedef cihazlardan tüm geçerli modüller kaldırılır.
 
 Dağıtımlarda, IoT Edge Aracısı ve IoT Edge hub modülleri için ayarları yönetebilirsiniz. İki çalışma zamanı modülünü yapılandırmak için **çalışma zamanı ayarları** ' nı seçin. Katmanlı dağıtımda, çalışma zamanı modülleri dahil edilmez, bu nedenle yapılandırılamaz.
 
@@ -139,7 +139,7 @@ Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgiler
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örneğin:
+   Örnek:
 
    ```sql
    SELECT deviceId FROM devices

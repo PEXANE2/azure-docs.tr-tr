@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554103"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile Palo Alto Networks-admin kullanıcı arabirimine tümleştirme, aş
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Palo Alto Networks-admin kullanıcı arabirimine göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -43,6 +43,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Palo Alto Networks-yönetici kullanıcı arabirimi **SP** tarafından başlatılan SSO 'yu destekler
 * Palo Alto ağları-yönetici kullanıcı ARABIRIMI **, tam zamanında** Kullanıcı sağlamasını destekler
+* Palo Alto Networks-admin kullanıcı arabirimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Galeriden Palo Alto Networks-admin kullanıcı arabirimine ekleme
 
@@ -55,8 +56,7 @@ Palo Alto Networks-admin kullanıcı arabirimini Azure AD 'ye tümleştirmeyi ya
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Palo Alto Networks-admin kullanıcı arabirimini** yazın.
 1. Sonuçlar panelinden **Palo Alto Networks-admin kullanıcı arabirimini** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 Bu bölümde, **B. Simon**adlı bir test kullanıcısına bağlı olarak, Palo Alto Networks-admin kullanıcı ARABIRIMINDEKI Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Palo Alto Networks-admin kullanıcı ARABIRIMINDEKI ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
@@ -111,11 +111,14 @@ Azure AD çoklu oturum açmayı Palo Alto Networks-admin kullanıcı arabirimine
 
 1. Yukarıdaki ' a ek olarak, Palo Alto Networks-admin kullanıcı arabirimi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | --- | --- |
     | username | User. UserPrincipalName |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > _Adminrole_ değeri, adım 9 ' da belirtildiği gibi, **Palo Alto ağlarında** yapılandırılan rol adıyla aynı olmalıdır. 
 
     > [!NOTE]
     > Öznitelikler hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
@@ -272,5 +275,3 @@ Erişim panelinde Palo Alto Networks-admin kullanıcı arabirimi kutucuğuna tı
 - [Azure AD ile Palo Alto Networks-admin kullanıcı arabirimini deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle Palo Alto ağları-yönetici kullanıcı arabirimini koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

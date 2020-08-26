@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 08/24/2020
+ms.date: 08/25/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e8f980c8802bce1f2f6ee4375b67abc12e8bc649
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 914f267edd5a8168fc11af7186e322c306718a4a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797896"
+ms.locfileid: "88852630"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -54,7 +54,8 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |NetworkRuleHit ölçümünde protokol boyutu eksik|ApplicationRuleHit metrik, filtreleme tabanlı protokole izin veriyor, ancak ilgili NetworkRuleHit ölçümünde bu yetenek yok.|Bir düzelme araştırılır.|
 |64000 ve 65535 arasındaki bağlantı noktalarıyla NAT kuralları desteklenmez|Azure Güvenlik Duvarı, ağ ve uygulama kurallarında 1-65535 aralığında bulunan tüm bağlantı noktalarına izin verir, ancak NAT kuralları yalnızca 1-63999 aralığındaki bağlantı noktalarını destekler.|Bu geçerli bir kısıtlamadır.
 |Yapılandırma güncelleştirmeleri ortalama beş dakika sürebilir|Bir Azure Güvenlik Duvarı yapılandırma güncelleştirmesi ortalama üç ila beş dakika sürebilir ve paralel güncelleştirmeler desteklenmez.|Bir düzelme araştırılır.|
-|Azure Güvenlik Duvarı, HTTPS ve MSSQL trafiğini filtrelemek için SNı TLS üst bilgilerini kullanır|Tarayıcı veya sunucu yazılımı sunucu adı göstergesi (SNı) uzantısını desteklemiyorsa, Azure Güvenlik Duvarı üzerinden bağlanamazsınız.|Tarayıcı veya sunucu yazılımı SNı desteklemiyorsa, bağlantıyı bir uygulama kuralı yerine bir ağ kuralı kullanarak kontrol edebilirsiniz. SNı 'yi destekleyen yazılımlar için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication) .
+|Azure Güvenlik Duvarı, HTTPS ve MSSQL trafiğini filtrelemek için SNı TLS üst bilgilerini kullanır|Tarayıcı veya sunucu yazılımı sunucu adı göstergesi (SNı) uzantısını desteklemiyorsa, Azure Güvenlik Duvarı üzerinden bağlanamazsınız.|Tarayıcı veya sunucu yazılımı SNı desteklemiyorsa, bağlantıyı bir uygulama kuralı yerine bir ağ kuralı kullanarak kontrol edebilirsiniz. SNı 'yi destekleyen yazılımlar için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication) .|
+|Özel DNS (Önizleme) zorlamalı tünelleme ile çalışmıyor|Zorlamalı tünel etkinleştirilirse, özel DNS (Önizleme) çalışmaz.|Bir düzelme araştırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

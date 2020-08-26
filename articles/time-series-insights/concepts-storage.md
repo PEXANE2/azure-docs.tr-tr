@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 77616afa95b61d5a0ca726db0d66734fc57133f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495372"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855122"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
@@ -24,7 +24,7 @@ Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda iki Azure kaynağ
 * Normal veri depolama için yapılandırılabilen bir Azure Time Series Insights Gen2 ortamı.
 * Soğuk veri depolaması için bir Azure depolama hesabı.
 
-Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md)aracılığıyla kullanılabilir. Isınma depoluıza Azure Time Series Insights Gen2 ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
+Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights TSI Explorer](./time-series-insights-update-explorer.md)aracılığıyla kullanılabilir. Isınma depoluıza Azure Time Series Insights Gen2 ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
 
 Azure Time Series Insights Gen2, soğuk mağaza verilerinizi [Parquet dosya biçiminde](#parquet-file-format-and-folder-structure)Azure Blob depolamaya kaydeder. Azure Time Series Insights Gen2 bu soğuk depolama verilerini özel olarak yönetir, ancak doğrudan standart Parquet dosyaları olarak okumanız için kullanılabilir.
 
@@ -58,7 +58,7 @@ Sorgu performansı ve veri kullanılabilirliği sağlamak için, Azure Time Seri
 
 #### <a name="accessing-cold-store-data"></a>Soğuk mağaza verilerine erişme
 
-[Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md) ve [zaman serisi sorgu API 'lerinde](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk Store 'Da depolanan Parquet dosyalarından de erişebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
+[Azure TIME SERIES INSIGHTS TSI Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgu API 'lerinde](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk Store 'Da depolanan Parquet dosyalarından de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
 
 Verilere doğrudan Azure Storage hesabınızdan erişmek için, Azure Time Series Insights Gen2 verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet dosyasının oluşturulma zamanına göre, `PT=Time` [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
 
@@ -82,17 +82,17 @@ Azure Time Series Insights Gen2, verilerinizin kopyalarını aşağıdaki gibi d
 
   `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
 
-Klasöründeki blob adlarında bulunan zaman damgası, `PT=Time` olayların zaman damgasına değil, Azure Time Series Insights Gen2 için veri varış süresine karşılık gelir.
+Klasördeki blob adlarındaki zaman damgası, `PT=Time` olayların zaman damgasına değil, Azure Time Series Insights Gen2 için varış zamanına karşılık gelir.
 
-`PT=TsId`Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir. Yeniden bölümleme sırasında bazı olaylar birden fazla blobda bulunabilir. Bu klasördeki Blobların adlandırılmasının sağlanması garanti edilmez. 
+`PT=TsId`Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir. Yeniden bölümleme sırasında bazı olaylar birden fazla blobda bulunabilir. Bu klasördeki Blobların adlandırılmasının sağlanması garanti edilmez.
 
-Genel olarak, Parquet dosyaları aracılığıyla verilere doğrudan erişmeniz gerekiyorsa `PT=Time` klasörünü kullanın.  Gelecekteki işlevler, klasöre verimli erişim sağlayacak `PT=TsId` . 
+Genel olarak, Parquet dosyaları aracılığıyla verilere doğrudan erişmeniz gerekiyorsa `PT=Time` klasörünü kullanın.  Gelecekteki işlevler, klasöre verimli erişim sağlayacak `PT=TsId` .
 
 > [!NOTE]
 >
-> * `<YYYY>`dört basamaklı bir yıl gösterimine eşlenir.
-> * `<MM>`iki basamaklı bir ay gösterimiyle eşlenir.
-> * `<YYYYMMDDHHMMSSfff>`dört basamaklı yıl ( `YYYY` ), iki basamaklı ay (), iki basamaklı gün (), iki basamaklı `MM` `DD` saat ( `HH` ), iki basamaklı dakika ( `MM` ), iki basamaklı saniye ( `SS` ) ve üç basamaklı milisaniyelik ( `fff` ) ile zaman damgası gösterimine eşler.
+> * `<YYYY>` dört basamaklı bir yıl gösterimine eşlenir.
+> * `<MM>` iki basamaklı bir ay gösterimiyle eşlenir.
+> * `<YYYYMMDDHHMMSSfff>` dört basamaklı yıl ( `YYYY` ), iki basamaklı ay (), iki basamaklı gün (), iki basamaklı `MM` `DD` saat ( `HH` ), iki basamaklı dakika ( `MM` ), iki basamaklı saniye ( `SS` ) ve üç basamaklı milisaniyelik ( `fff` ) ile zaman damgası gösterimine eşler.
 
 Azure Time Series Insights Gen2 olayları, aşağıdaki gibi, Parquet dosya içeriklerine eşlenir:
 

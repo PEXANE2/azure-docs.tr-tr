@@ -7,17 +7,19 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 219a41874f4bb4a5b7773c5726638fce6b90f200
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: d6a388e9abb476ff280c35f81fbce966af80c534
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724192"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855568"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
+
 MySQL için Azure veritabanı, MySQL Server için Azure veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>1. Adım: SSL sertifikası alma
+
 MySQL için Azure veritabanı sunucusu ile SSL üzerinden iletişim kurmak için gereken sertifikayı indirin [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ve sertifika dosyasını yerel sürücünüze kaydedin (Bu öğreticide c:\ssl kullanılır).
 **Microsoft Internet Explorer ve Microsoft Edge için:** İndirme tamamlandıktan sonra, sertifikayı BaltimoreCyberTrustRoot. CRT. ped olarak yeniden adlandırın.
 
@@ -28,20 +30,22 @@ Bağımsız bulutlarda bulunan sunucular için sertifikalar için aşağıdaki b
 Belirli programlama dili bağlantı dizeleri için lütfen aşağıdaki [örnek koda](howto-configure-ssl.md#sample-code) bakın.
 
 ### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>SSL üzerinde MySQL çalışma ekranı kullanarak sunucuya bağlanma
-MySQL çalışma ekranı 'nı SSL üzerinden güvenli bir şekilde bağlanacak şekilde yapılandırın. 
 
-1. Yeni bağlantı kur iletişim kutusunda **SSL** sekmesine gidin. 
+MySQL çalışma ekranı 'nı SSL üzerinden güvenli bir şekilde bağlanacak şekilde yapılandırın.
+
+1. Yeni bağlantı kur iletişim kutusunda **SSL** sekmesine gidin.
 
 1. **SSL kullan** alanını "gerektir" olarak güncelleştirin.
 
-1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped**dosyasının konumunu girin. 
-    
-    ![SSL yapılandırmasını Kaydet](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped**dosyasının konumunu girin.
+
+   ![SSL yapılandırmasını Kaydet](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
 Mevcut bağlantılar için, bağlantı simgesine sağ tıklayıp Düzenle ' yi seçerek SSL 'yi bağlayabilirsiniz. Ardından **SSL** sekmesine gidin ve sertifika dosyasını bağlayın.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>SSL üzerinde MySQL CLı kullanarak sunucuya bağlanma
-SSL sertifikasını bağlamak için başka bir yöntem de aşağıdaki komutları yürüterek MySQL komut satırı arabirimini kullanmaktır. 
+
+SSL sertifikasını bağlamak için başka bir yöntem de aşağıdaki komutları yürüterek MySQL komut satırı arabirimini kullanmaktır.
 
 ```bash
 mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
@@ -50,46 +54,60 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 > [!NOTE]
 > Windows üzerinde MySQL komut satırı arabirimini kullanırken bir hata alabilirsiniz `SSL connection error: Certificate signature check failed` . Bu gerçekleşirse, `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametreleri ile değiştirin `--ssl` .
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. Adım: Azure 'da SSL bağlantıları zorlama 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. Adım: Azure 'da SSL bağlantıları zorlama
+
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+
 Azure portal kullanarak MySQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
-![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
+
+![MySQL için Azure veritabanı 'nda SSL bağlantılarını zorlamak için Azure portal ekran görüntüsü](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+
 Azure CLı 'de sırasıyla etkin veya devre dışı değerler kullanarak **SSL zorlama** parametresini etkinleştirebilir veya devre dışı bırakabilirsiniz.
+
 ```azurecli-interactive
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="step-4-verify-the-ssl-connection"></a>4. Adım: SSL bağlantısını doğrulama
+
 SSL kullanarak MySQL sunucunuza bağlandığınızı doğrulamak için MySQL **Status** komutunu yürütün:
+
 ```dos
 mysql> status
 ```
-Çıktıyı inceleyerek bağlantının şifrelendiğini onaylayın; bu, şunu göstermelidir:  **SSL: kullanımdaki ŞIFRE AES256-SHA** 
+
+Çıktıyı inceleyerek bağlantının şifrelendiğini onaylayın; bu, şunu göstermelidir:  **SSL: kullanımdaki ŞIFRE AES256-SHA**
 
 ## <a name="sample-code"></a>Örnek kod
+
 Uygulamanızdan SSL üzerinden MySQL için Azure veritabanı 'na güvenli bir bağlantı kurmak için aşağıdaki kod örneklerine bakın:
 
 MySQL için Azure veritabanı hizmeti tarafından desteklenen [uyumlu sürücüler](concepts-compatibility.md) listesine bakın.
 
 ### <a name="php"></a>PHP
+
 ```php
 $conn = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL) ; 
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL);
 mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
 if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
+
 ### <a name="php-using-pdo"></a>PHP (PDO kullanarak)
+
 ```phppdo
 $options = array(
     PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
 );
 $db = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'username@mydemoserver', 'yourpassword', $options);
 ```
+
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
+
 ```python
 try:
     conn = mysql.connector.connect(user='myadmin@mydemoserver',
@@ -102,6 +120,7 @@ except mysql.connector.Error as err:
 ```
 
 ### <a name="python-pymysql"></a>Python (PyMySQL)
+
 ```python
 conn = pymysql.connect(user='myadmin@mydemoserver',
                        password='yourpassword',
@@ -111,6 +130,7 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
 ```
 
 ### <a name="django-pymysql"></a>Docgo (PyMySQL)
+
 ```python
 DATABASES = {
     'default': {
@@ -128,6 +148,7 @@ DATABASES = {
 ```
 
 ### <a name="ruby"></a>Ruby
+
 ```ruby
 client = Mysql2::Client.new(
         :host     => 'mydemoserver.mysql.database.azure.com',
@@ -139,6 +160,7 @@ client = Mysql2::Client.new(
 ```
 
 ### <a name="golang"></a>Golang
+
 ```go
 rootCertPool := x509.NewCertPool()
 pem, _ := ioutil.ReadFile("/var/www/html/BaltimoreCyberTrustRoot.crt.pem")
@@ -147,26 +169,28 @@ if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
 }
 mysql.RegisterTLSConfig("custom", &tls.Config{RootCAs: rootCertPool})
 var connectionString string
-connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
+connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')
 db, _ := sql.Open("mysql", connectionString)
 ```
+
 ### <a name="java-mysql-connector-for-java"></a>Java (Java için MySQL Bağlayıcısı)
+
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
     " -keystore truststore "+
-    " -trustcacerts " + 
+    " -trustcacerts " +
     " -storepass password -noprompt ";
 String genKey = " -genkey -keyalg rsa " +
     " -alias mysqlClientCertificate -keystore keystore " +
-    " -storepass password123 -keypass password " + 
+    " -storepass password123 -keypass password " +
     " -dname CN=MS ";
 sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
-# use the generated keystore and truststore 
+# use the generated keystore and truststore
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -177,23 +201,25 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
+
 ### <a name="java-mariadb-connector-for-java"></a>Java (Java için MariaDB Bağlayıcısı)
+
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
     " -keystore truststore "+
-    " -trustcacerts " + 
+    " -trustcacerts " +
     " -storepass password -noprompt ";
 String genKey = " -genkey -keyalg rsa " +
     " -alias mysqlClientCertificate -keystore keystore " +
-    " -storepass password123 -keypass password " + 
+    " -storepass password123 -keypass password " +
     " -dname CN=MS ";
 sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
-# use the generated keystore and truststore 
+# use the generated keystore and truststore
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -206,6 +232,7 @@ conn = DriverManager.getConnection(url, properties);
 ```
 
 ### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
+
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {
@@ -223,4 +250,5 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [MySQL Için Azure veritabanı bağlantı kitaplıklarını](concepts-connection-libraries.md) izleyen çeşitli uygulama bağlantı seçeneklerini gözden geçirin

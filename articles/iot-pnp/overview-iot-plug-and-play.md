@@ -9,14 +9,14 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855622"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi nedir?
+# <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak Çalıştır Önizlemesi nedir?
 
 IoT Tak ve Kullan önizlemesi, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin temel tarafında, bir cihazın, yeteneklerini IoT Tak ve Kullan özellikli bir uygulamaya tanıtmak için kullandığı bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir dizi öğe olarak yapılandırılmıştır:
 
@@ -61,6 +61,10 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 
 > [!Important]
 > IoT Tak ve Kullan cihazların WebSockets üzerinden MQTT veya MQTT kullanması gerekir. AMQP veya HTTP gibi diğer protokoller IoT Tak ve Kullan cihazları uygulamak için geçerli değildir.
+
+## <a name="device-certification"></a>Cihaz Sertifikası
+
+[Iot Tak ve kullan Cihaz Sertifikası programı](howto-certify-device.md) , bir cihazın IoT Tak ve kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 

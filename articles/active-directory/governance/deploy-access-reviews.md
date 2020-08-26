@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783612"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853018"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -283,7 +283,7 @@ Dış kimliklere aşağıdaki eylemlerden biri aracılığıyla şirket kaynakla
 
 * Azure AD 'de veya bir Azure aboneliğinde ayrıcalıklı bir rol atandı
 
-Bkz. [örnek komut dosyası](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). Betik, kiracıya davet edilen dış kimliklerin kullanıldığını gösterir. Azure AD 'de dış kullanıcının grup üyeliğini, rol atamalarını ve uygulama atamalarını görebilirsiniz. Betik, Azure AD dışında herhangi bir atamayı göstermez, örneğin, SharePoint kaynaklarına doğrudan hak ataması, grupların kullanılmadan kullanılamaz.
+Bkz. [örnek komut dosyası](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). Betik, kiracıya davet edilen dış kimliklerin kullanıldığını gösterir. Azure AD 'de dış kullanıcının grup üyeliğini, rol atamalarını ve uygulama atamalarını görebilirsiniz. Betik, Azure AD dışında herhangi bir atamayı göstermez, örneğin, SharePoint kaynaklarına doğrudan hak ataması, grupların kullanılmadan kullanılamaz.
 
 Gruplar veya uygulamalar için bir erişim Incelemesi oluştururken, gözden geçirenin yalnızca erişim izni olan herkese veya yalnızca Konuk kullanıcılara odaklanmasına izin verebilirsiniz. Yalnızca Konuk kullanıcılar ' ı seçerek, gözden geçirenlere kaynağa erişimi olan Azure AD B2B 'dan gelen dış kimliklerin odaklanmış bir listesi verilir.
 

@@ -13,26 +13,26 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982964"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854441"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows İşletim Sistemi][Logo_Windows] Windows
 >
 
 Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirliğe sahip SAP Ass/SCS yüklemesi ve DBMS 'nin temelidir.
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -40,7 +40,7 @@ Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçir
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 'da Windows Server Yük Devretme Kümelemesi
 
-Çıplak veya özel bulut dağıtımlarıyla karşılaştırıldığında, Azure sanal makineleri, Windows Server Yük Devretme Kümelemesi 'ni yapılandırmak için ek adımlar gerektirir. Bir küme oluşturduğunuzda, SAP ASCS/SCS örneği için birkaç IP adresi ve sanal konak adı ayarlamanız gerekir.
+Azure sanal makineleri ile Windows Server Yük Devretme Kümelemesi ek yapılandırma adımları gerektirir. Bir küme oluşturduğunuzda, SAP ASCS/SCS örneği için birkaç IP adresi ve sanal konak adı ayarlamanız gerekir.
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure 'da ad çözümlemesi ve küme sanal ana bilgisayar adı
 
@@ -52,7 +52,7 @@ Azure Load Balancer hizmeti, Azure için bir *iç yük dengeleyici* sağlar. İ�
 
 ![Şekil 1: Azure 'da paylaşılan disk olmadan Windows Yük Devretme Kümelemesi yapılandırması][sap-ha-guide-figure-1001]
 
-_**Şekil 1:** Azure 'da paylaşılan disk olmadan Windows Server Yük Devretme Kümelemesi yapılandırması_
+_Azure 'da paylaşılan disk olmadan Windows Server Yük Devretme Kümelemesi yapılandırması_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>Küme paylaşılan diskleriyle SAP yoks/SCS HA
 Windows 'da SAP ASCS/SCS örneği SAP Merkezi Hizmetleri, SAP ileti sunucusu, sıraya alma sunucusu süreçler ve SAP Küresel Ana bilgisayar dosyalarını içerir. SAP Küresel Ana bilgisayar dosyaları tüm SAP sistemi için merkezi dosyaları depolar.
@@ -73,30 +73,104 @@ SAP ASCS/SCS örneği aşağıdaki bileşenlere sahiptir:
 
 ![Şekil 2: bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma][sap-ha-guide-figure-8001]
 
-_**Şekil 2:** Bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma_
+_Bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma_
 
 Yüksek kullanılabilirliğe sahip bir ayarda SAP ASCS/SCS örneklerini kümelerinolursunuz. SAP ASCS/SCS ve SAP Küresel Ana bilgisayar dosyalarını yerleştirmek için *Kümelenmiş Paylaşılan diskleri* (örneğimizde sürücü S) kullanıyoruz.
 
 ![Şekil 3: paylaşılan disk ile SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8002]
 
-_**Şekil 3:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
+_Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
-> [!IMPORTANT]
-> Bu iki bileşen aynı SAP yoks/SCS örneği altında çalışır:
->* Aynı, \<ASCS/SCS virtual host name> SAP iletisi ve sıraya alma sunucu işlemlerine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için de kullanılır.
->* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.
->
 
+Sıraya alma sunucusu çoğaltma 1 mimarisi ile:
+* Aynı, \<ASCS/SCS virtual host name> SAP iletisi ve sıraya alma sunucu işlemlerine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için de kullanılır.
+* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.  
+
+Sıraya alma sunucusu çoğaltma 2 mimarisi: 
+* Aynı \<ASCS/SCS virtual host name> şekilde, SAP ileti sunucusu işlemine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için de kullanılır.
+* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.
+* \<ERS virtual host name>Sıraya alma sunucusu işlemine erişmek için ayrı  
 
 ![Şekil 4: paylaşılan disk ile SAP yoks/SCS HA mimarisi][sap-ha-guide-figure-8003]
 
-_**Şekil 4:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
+_Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>Paylaşılan disk ve sıraya alma çoğaltma sunucusu 
+
+1. Paylaşılan disk, sıraya alma çoğaltma sunucusu (ERS) örneği olan sıraya alma sunucusu çoğaltma 1 mimarisiyle desteklenir.   
+
+   - kümelenmemiş
+   - kullanılan `localhost` ad
+   - , küme düğümlerinin her birinde yerel disklerde dağıtılır
+
+2. Paylaşılan disk Ayrıca, sıraya alma çoğaltma sunucusu 2 (ERS2) örneği olan sıraya alma sunucusu çoğaltma 2 mimarisi ile desteklenir:  
+
+   - kümelenmiş
+   - adanmış sanal/ağ ana bilgisayar adını kullanır
+   - , (A) SCS IP adresine ek olarak Azure Iç Load Balancer üzerinde yapılandırılacak sanal ana bilgisayar adının IP adresine ihtiyacı vardır
+   - kümelenmiş düğümlerin her birinde **yerel disklerde** dağıtılır, bu nedenle paylaşılan disk gerekmez
+
+   > [!TIP]
+   > Sıraya alma çoğaltma sunucusu 1 ve 2 (ERS1 ve ERS2) hakkında daha fazla bilgiye buradan ulaşabilirsiniz:  
+   > [Microsoft yük devretme kümesinde sıraya alma çoğaltma sunucusu](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [Yük devretme kümesi ortamlarında yeni sıraya alma çoğaltıcı](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>SAP iş yükleri için Azure 'da paylaşılan disk seçenekleri
+
+Azure 'da bir Windows Yük devretme kümesinde paylaşılan disk için iki seçenek vardır:
+
+- Azure [paylaşılan diskler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) -özelliği, aynı anda birden çok VM 'ye Azure yönetilen disk iliştirmeye olanak tanır. 
+- Küme paylaşılan depolama benzetimi yapan yansıtılmış bir depolama alanı oluşturmak için 3. taraf yazılım [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster) kullanma. 
+
+Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin:
+
+**SAP iş yükleri için Azure Paylaşılan disk**
+- Azure yönetilen diskini, bakımını yapmak ve çalıştırmak için ek yazılım gerekmeden aynı anda birden çok VM 'ye eklemenize olanak tanır 
+- Tek bir depolama kümesinde tek bir Azure Paylaşılan diskle birlikte çalışır. Bu, SAP çözümünüzün güvenilirliğini etkiler.
+- Şu anda desteklenen tek dağıtım, kullanılabilirlik kümesindeki Azure Paylaşılan Premium diskdir. Azure Paylaşılan disk, bölgesel dağıtımında desteklenmiyor.     
+- Aynı anda gerekli sayıda VM 'ye iliştirilebilmek için [Premium SSD aralıklarında](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) belirtilen minimum disk boyutuyla Azure Premium disk 'i sağlamayı unutmayın (genellikle sap ascs Windows Yük devretme kümesi için 2). 
+- Azure Paylaşılan Ultra disk, kullanılabilirlik kümesi veya bölgesel dağıtımında dağıtımı desteklemediğinden SAP iş yükleri için desteklenmez.  
+ 
+**HARFI**
+- SIOS çözümü iki disk arasında gerçek zamanlı zaman uyumlu veri çoğaltması sağlar
+- İki yönetilen diskle çalışan SIOS çözümü ile, kullanılabilirlik kümelerini veya kullanılabilirlik bölgelerini kullanıyorsanız, yönetilen diskler farklı depolama kümelerine göre çalışır. 
+- Kullanılabilirlik bölgelerinde dağıtım destekleniyor
+- Ek olarak satın almanız gereken üçüncü taraf yazılım yükleme ve işletim sistemlerini gerektirir
+
+### <a name="shared-disk-using-azure-shared-disk"></a>Azure Paylaşılan disk kullanarak paylaşılan disk
+
+Microsoft, paylaşılan bir disk seçeneği ile SAP Ass/SCS yüksek kullanılabilirliğini uygulamak için kullanılabilen [Azure Paylaşılan diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)sunmaktadır.
+
+#### <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
+
+Şu anda Azure Premium SSD disklerini SAP ASCS/SCS örneği için Azure Paylaşılan diski olarak kullanabilirsiniz. Şu kısıtlamalar Şu anda yerinde:
+
+-  [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
+-  Premium SSD disklere sahip [Azure Paylaşılan disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
+-  Azure Paylaşılan disk değeri [MAXSHARES](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
+-  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)dağıtılması gerekir.   
+   PPG olmadan Azure Paylaşılan disk ile kullanılabilirlik kümesi 'nde Windows kümesi VM 'Leri dağıtabilirsiniz, ancak sanal makineler ve depolama katmanı arasında daha düşük gecikme süresi elde etmek için PPG, Azure Paylaşılan disklerinin ve küme VM 'lerinin fiziksel yakınlığını kapatacaktır.    
+
+Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrıntı için lütfen Azure Paylaşılan disk belgelerinin [kısıtlama](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) bölümünü dikkatle inceleyin.
+
+> [!IMPORTANT]
+> SAP ASCS/SCS Windows Yük devretme kümesini Azure Paylaşılan disk ile dağıttığınızda, dağıtımınızın tek bir depolama kümesinde tek bir paylaşılan diskle birlikte çalışır durumda olacağını unutmayın. Azure Paylaşılan diskinin dağıtıldığı depolama kümesiyle ilgili sorunlar durumunda SAP ASCS/SCS örneğiniz etkilenebilir.    
+
+> [!TIP]
+> SAP dağıtımınızı planlarken önemli noktalar için [Azure Planlama Kılavuzu 'Nda SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) ve [SAP Iş yükleri için Azure depolama Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ' nu gözden geçirin.
+
+### <a name="supported-os-versions"></a>Desteklenen işletim sistemi sürümleri
+
+Hem Windows Server 2016 hem de 2019 desteklenir (en son veri merkezi görüntülerini kullanın).
+
+**Windows Server 2019 Datacenter**kullanmanızı kesinlikle öneririz; örneğin:
+- Windows 2019 yük devretme kümesi hizmeti Azure ile uyumlu
+- Azure Schedule olaylarını izleyerek Azure ana bilgisayar bakımı ve geliştirilmiş deneyimle ilgili tümleştirme ve tanıma özellikleri eklendi.
+- Dağıtılmış ağ adı (varsayılan seçenektir) kullanılabilir. Bu nedenle, küme ağ adı için ayrılmış bir IP adresine sahip olmanız gerekmez. Ayrıca, Azure Iç Load Balancer bu IP adresini yapılandırmaya gerek yoktur. 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Azure 'da SIOS Dataman ile paylaşılan diskler
 
-Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği için küme paylaşılan depolama gerekir.
-
-Küme paylaşılan depolama alanını taklit eden yansıtılmış bir depolama alanı oluşturmak için üçüncü taraf yazılım SIOS Dataman kümesi sürümünü kullanabilirsiniz. SIOS çözümü gerçek zamanlı zaman uyumlu veri çoğaltması sağlar.
+Paylaşılan disk için başka bir seçenek de, küme paylaşılan depolama benzetimi yapan yansıtılmış bir depolama alanı oluşturmak için üçüncü taraf yazılım SIOS Dataman küme sürümünü kullanmaktır. SIOS çözümü gerçek zamanlı zaman uyumlu veri çoğaltması sağlar.
 
 Bir küme için paylaşılan disk kaynağı oluşturmak için:
 
@@ -108,7 +182,7 @@ Bir küme için paylaşılan disk kaynağı oluşturmak için:
 
 ![Şekil 5: Azure 'da SIOS Dataman ile Windows Server Yük Devretme Kümelemesi yapılandırması][sap-ha-guide-figure-1002]
 
-_**Şekil 5:** Azure 'da SIOS Dataman ile Windows Yük Devretme Kümelemesi yapılandırması_
+_Azure 'da SIOS Dataman ile Windows Yük Devretme Kümelemesi yapılandırması_
 
 > [!NOTE]
 > SQL Server gibi bazı DBMS ürünleriyle yüksek kullanılabilirlik için paylaşılan disklere ihtiyacınız yoktur. SQL Server AlwaysOn, DBMS verilerini ve günlük dosyalarını bir küme düğümünün yerel diskinden başka bir küme düğümünün yerel diskine çoğaltır. Bu durumda, Windows küme yapılandırmasına paylaşılan bir disk gerekmez.

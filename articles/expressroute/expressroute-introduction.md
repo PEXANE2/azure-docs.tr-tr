@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 09/18/2019
+ms.date: 08/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607114"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852940"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute nedir?
 ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
@@ -111,6 +111,10 @@ Size en uygun faturalama modelini seçin. Aşağıda listelenen faturalama model
 
 ## <a name="faq"></a>SSS
 ExpressRoute hakkında sık sorulan sorular için bkz. [ExpressRoute SSS](expressroute-faqs.md).
+
+## <a name="whats-new"></a><a name="new"></a>Yenilikler nelerdir?
+
+RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) sayfasında en son ExpressRoute özelliği güncelleştirmelerini görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md) hakkında bilgi edinin.

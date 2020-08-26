@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 56328500c1c220a04b3e2219c145ad5db0e07ff7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817863"
+ms.locfileid: "88854507"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 için destek yaşam döngüsü
 
@@ -97,9 +97,9 @@ Portalda veya Azure CLı ile bir Azure Red Hat OpenShift kümesi dağıttığın
 
 |OCP sürümü|Yukarı akış yayını|Azure Red Hat OpenShift genel kullanılabilirliği|Yaşam sonu|
 |-|-|-|-|
-|4.3|23 Ocak 2020|28 Nisan 2020|2 Ağustos 2020|
-|4.4|5 Mayıs 2020|29 Temmuz 2020|4,6 GA|
-|4,5|13 Temmuz 2020|28 Eylül 2020|4,7 GA
+|4.3|Şubat 2020|Mayıs 2020|Ağustos 2020|
+|4.4|Mayıs 2020|Ağustos 2020|4,6 GA|
+|4,5|Temmuz 2020|2020 Ekim|4,7 GA
 |4.6|* Erken S4, 2020|* Geç S4, 2020|4,8 GA|
 
 \*_Bekleyen yukarı akış Yayın tarihi onayı._

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751496"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855543"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -230,7 +230,7 @@ Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dö
 
 *Linux distros*  
 
-Azure Premium Depolama ile Windows ve Linux çalıştıran VM 'Ler için aynı performans düzeyine sahip olursunuz. Linux kaldırmalarının pek çok türünü destekliyoruz ve listenin tamamını [burada](~/articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)görebilirsiniz. Farklı iş yüklerinin farklı türleri için daha uygun olduğunu unutmamak önemlidir. İş yükünüzün üzerinde çalıştığı bir değere göre farklı düzeylerde performans göreceksiniz. Linux Distro 'lara 'yi uygulamanızla test edin ve en iyi şekilde çalışacak olanı seçin.
+Azure Premium Depolama ile Windows ve Linux çalıştıran VM 'Ler için aynı performans düzeyine sahip olursunuz. Linux kaldırmalarının pek çok türünü destekliyoruz ve listenin tamamını [burada](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)görebilirsiniz. Farklı iş yüklerinin farklı türleri için daha uygun olduğunu unutmamak önemlidir. İş yükünüzün üzerinde çalıştığı bir değere göre farklı düzeylerde performans göreceksiniz. Linux Distro 'lara 'yi uygulamanızla test edin ve en iyi şekilde çalışacak olanı seçin.
 
 Linux 'u Premium Depolama ile çalıştırırken, yüksek performans sağlamak için gerekli sürücülerle ilgili en son güncelleştirmeleri denetleyin.
 

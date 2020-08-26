@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 47582f941c314933baf378478b1380cb8316935b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066619"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854535"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
@@ -27,8 +27,8 @@ Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri 
 - Blob geçici silme, tek bir Blobun yanlışlıkla silinmeye veya üzerine yazılmasına karşı koruma sağlamak için. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md).
 - Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma (Önizleme). Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
 
-> [!IMPORTANT]
-> Bir depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
+> [!WARNING]
+> Depolama hesabını silme işlemi geri alınamaz. Geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz. Bir depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>Kapsayıcı geçici silme nasıl kullanılır?
 

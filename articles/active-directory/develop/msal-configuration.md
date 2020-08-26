@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027062"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854911"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
 
@@ -35,7 +35,7 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 | `client_id` | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
 | `redirect_uri`   | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
 | `authorities` | Listele\<Authority> | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
-| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
+| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT` , `BROWSER` , `WEBVIEW` |
 | `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
 | `logging` | LoggingConfiguration | Hayır | Günlüğe kaydetme ayrıntı düzeyini belirtir. İsteğe bağlı yapılandırmalara, `pii_enabled` bir Boolean değer alan ve,,, `log_level` `ERROR` `WARNING` `INFO` veya alan `VERBOSE` . |
 
@@ -58,7 +58,7 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
@@ -88,7 +88,7 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Tür | Hedef kitle | Kiracı Kimliği | Authority_Url | Sonuç uç noktası | Notlar |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`, hesabın nerede olduğu, kiracı diğer adıdır. Örneğin, belirli bir Azure Active Directory kiracı veya Microsoft hesabı sistemi. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` , hesabın nerede olduğu, kiracı diğer adıdır. Örneğin, belirli bir Azure Active Directory kiracı veya Microsoft hesabı sistemi. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Yalnızca contoso.com içinde bulunan hesaplar bir belirteç alabilir. Doğrulanmış etki alanı veya kiracı GUID 'SI, kiracı KIMLIĞI olarak kullanılabilir. |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Bu uç noktayla yalnızca Azure Active Directory hesapları kullanılabilir. Microsoft hesapları, kuruluşların üyesi olabilir. Bir kuruluştaki kaynak için Microsoft hesabı kullanarak bir belirteç almak için, belirteci istediğiniz kuruluş kiracısını belirtin. |
 | AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Bu uç noktayı yalnızca Microsoft hesapları kullanabilir. |
@@ -103,7 +103,7 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri türü  | Gerekli | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` ,`B2C` |
+| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` , `B2C` |
 | `audience` | Nesne | Hayır | Yalnızca Type = olduğunda geçerlidir `AAD` . Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
 | `authority_url` | Dize | Yes | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
 | `default` | boolean | Yes | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
@@ -112,7 +112,7 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
 | `tenant_id` | Dize | Yes | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
@@ -157,7 +157,7 @@ Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
 
 Uygulamanızda aynı anda kaç tane hesap kullanılabileceğini belirtir. Olası değerler şunlardır:
 
-- `MULTIPLE`Varsayılanını
+- `MULTIPLE` Varsayılanını
 - `SINGLE`
 
 `PublicClientApplication`Bu ayarla eşleşmeyen bir hesap modunu kullanarak oluşturma, özel durum oluşmasına neden olur.

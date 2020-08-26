@@ -11,14 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541133"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855271"
 ---
-# <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances model dağıtma
+# <a name="deploy-a-model-to-azure-container-instances"></a>Modeli Azure Container Instances’a dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Container Instances (ACI) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Azure Container Instances kullanın:
@@ -31,7 +31,7 @@ ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bk
 > [!IMPORTANT]
 > Web hizmetine dağıtılmadan önce yerel olarak hata ayıklaması önerilir, daha fazla bilgi için bkz. [yerel olarak hata ayıklama](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
-> Ayrıca, Azure Machine Learning- [Yerel not defterine dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) ' ya başvurabilirsiniz
+> Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,9 +43,9 @@ ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bk
 
 - Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlandığı varsayılır:
 
-    * `ws`-Çalışma alanınıza ayarlayın.
-    * `model`-Kayıtlı modelinize ayarlanır.
-    * `inference_config`-Modelin çıkarım yapılandırmasına ayarlayın.
+    * `ws` -Çalışma alanınıza ayarlayın.
+    * `model` -Kayıtlı modelinize ayarlanır.
+    * `inference_config` -Modelin çıkarım yapılandırmasına ayarlayın.
 
     Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
@@ -56,8 +56,9 @@ ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bk
 Azure Container Instances bir modeli dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
 > [!NOTE]
-> * ACI, yalnızca 1 GB boyutunda <küçük modeller için uygundur. 
-> * Daha büyük modellerin geliştirme ve test için tek düğümlü AKS 'leri kullanmanızı öneririz.
+> * ACI yalnızca boyutu 1 GB 'ın altında olan küçük modeller için uygundur. 
+> * Geliştirme ve test daha büyük modeller için tek düğümlü AKS kullanılması önerilir.
+> * Dağıtılacak model sayısı, dağıtım başına 1.000 modellerle sınırlıdır (kapsayıcı başına). 
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
@@ -102,7 +103,7 @@ Bkz. [vs Code modellerinizi dağıtma](tutorial-train-deploy-image-classificatio
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

@@ -9,14 +9,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: dbb20d5331275f73945a4ad2ba3f428a3e415797
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 78e2bd80b689394b654a85ea913c618c08120091
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681762"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854019"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java’dan Kuyruk depolama kullanma
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak yaygın senaryolar için nasıl kod yapılacağı gösterilir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Senaryolar, sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silmeyi** içerir. Sıra **oluşturma** ve **silme** için kod de ele alınmıştır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 

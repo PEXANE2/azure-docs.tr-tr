@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799543"
+ms.locfileid: "88853927"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
 
@@ -26,7 +26,7 @@ Yalnızca verilerinizin değil, Azure Cosmos DB ile verilerinizin yedekleri çok
 
 * Azure Cosmos DB, bu yedeklemeleri Azure Blob depolamada depolar, ancak gerçek veriler yerel olarak Azure Cosmos DB içinde bulunur.
 
-*  Düşük gecikme süresini garantilemek için, yedeğinizin anlık görüntüsü, mevcut yazma bölgesiyle aynı bölgedeki (veya çok yöneticili bir yapılandırmaya sahip olması durumunda, yazma bölgelerinden **biri** ) Azure Blob depolama alanında depolanır. Bölgesel olağanüstü duruma karşı dayanıklılık için, Azure Blob depolamada bulunan yedekleme verilerinin her bir anlık görüntüsü, coğrafi olarak yedekli depolama (GRS) aracılığıyla başka bir bölgeye çoğaltılır. Yedeklemenin çoğaltılacağı bölge, kaynak bölgeinizi ve kaynak bölgeyle ilişkili bölgesel çiftin temel alır. Daha fazla bilgi edinmek için [coğrafi olarak yedekli Azure bölgeleri çiftlerinin listesine](../best-practices-availability-paired-regions.md) bakın. Bu yedeklemeye doğrudan erişemezsiniz. Azure Cosmos DB takım, bir destek isteğiyle istek yaptığınızda yedeklemenizi geri yükler.
+* Düşük gecikme süresini garantilemek için, yedeğinizin anlık görüntüsü, mevcut yazma bölgesiyle aynı bölgedeki (veya çok yöneticili bir yapılandırmaya sahip olması durumunda, yazma bölgelerinden **biri** ) Azure Blob depolama alanında depolanır. Bölgesel olağanüstü duruma karşı dayanıklılık için, Azure Blob depolamada bulunan yedekleme verilerinin her bir anlık görüntüsü, coğrafi olarak yedekli depolama (GRS) aracılığıyla başka bir bölgeye çoğaltılır. Yedeklemenin çoğaltılacağı bölge, kaynak bölgeinizi ve kaynak bölgeyle ilişkili bölgesel çiftin temel alır. Daha fazla bilgi edinmek için [coğrafi olarak yedekli Azure bölgeleri çiftlerinin listesine](../best-practices-availability-paired-regions.md) bakın. Bu yedeklemeye doğrudan erişemezsiniz. Azure Cosmos DB takım, bir destek isteğiyle istek yaptığınızda yedeklemenizi geri yükler.
 
    Aşağıdaki görüntüde, Batı ABD ' deki üç birincil fiziksel bölüm içeren bir Azure Cosmos kapsayıcısının Batı ABD ' de uzak Azure Blob depolama hesabında nasıl yedeklenebileceği ve ardından Doğu ABD ' e nasıl çoğaltıldığı gösterilmektedir:
 
@@ -42,15 +42,15 @@ SQL API hesaplarıyla Azure Cosmos DB, aşağıdaki yaklaşımlardan birini kull
 
 * Tam yedeklemeler veya artımlı değişiklikler için verileri düzenli aralıklarla okumak üzere Azure Cosmos DB [değişiklik akışını](change-feed.md) kullanın ve kendi depolama alanınızı saklayın.
 
-## <a name="backup-interval-and-retention-period"></a>Yedekleme aralığı ve bekletme süresi
+## <a name="modify-the-backup-interval-and-retention-period"></a>Yedekleme aralığını ve bekletme süresini değiştirme
 
-Azure Cosmos DB her 4 saatte bir ve herhangi bir zamanda verilerinizin bir yedeğini otomatik olarak alır, en son iki yedek saklanır. Bu yapılandırma varsayılan seçenektir ve ek bir maliyet olmadan sunulur. Varsayılan yedekleme aralığı ve bekletme döneminin yeterli olmadığı iş yükleriniz varsa, bunları değiştirebilirsiniz. Bu değerleri Azure Cosmos hesap oluşturma sırasında veya hesap oluşturulduktan sonra değiştirebilirsiniz. Yedekleme yapılandırması Azure Cosmos hesap düzeyinde ayarlanır ve her hesapta yapılandırmanız gerekir. Bir hesap için yedekleme seçeneklerini yapılandırdıktan sonra, bu hesap içindeki tüm kapsayıcılara uygulanır. Şu anda bu yedekleme seçeneklerini yalnızca Azure portal ' dan değiştirebilirsiniz.
+Azure Cosmos DB her 4 saatte bir ve herhangi bir zamanda verilerinizin bir yedeğini otomatik olarak alır, en son iki yedek saklanır. Bu yapılandırma varsayılan seçenektir ve ek bir maliyet olmadan sunulur. Azure Cosmos hesap oluşturma sırasında veya hesap oluşturulduktan sonra varsayılan yedekleme aralığını ve saklama süresini değiştirebilirsiniz. Yedekleme yapılandırması Azure Cosmos hesap düzeyinde ayarlanır ve her hesapta yapılandırmanız gerekir. Bir hesap için yedekleme seçeneklerini yapılandırdıktan sonra, bu hesap içindeki tüm kapsayıcılara uygulanır. Şu anda bu yedekleme seçeneklerini yalnızca Azure portal ' dan değiştirebilirsiniz.
 
 Verilerinizi yanlışlıkla silmiş veya bozdıysanız, **verileri geri yüklemek için bir destek isteği oluşturmadan önce, hesabınız için yedekleme bekletmesini en az yedi güne artırdığınızdan emin olun. Bu olayın 8 saat içinde bekletmenin artırılması en iyisidir.** Bu şekilde, Azure Cosmos DB ekibin hesabınızı geri yüklemek için yeterli zaman vardır.
 
 Mevcut bir Azure Cosmos hesabının varsayılan yedekleme seçeneklerini değiştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın
+1. Azure portal oturum açın [.](https://portal.azure.com/)
 1. Azure Cosmos hesabınıza gidin ve **yedekleme & geri yükleme** Bölmesi ' ni açın. Yedekleme aralığını ve yedekleme saklama süresini gereken şekilde güncelleştirin.
 
    * **Yedekleme aralığı** -Azure Cosmos DB, verilerinizin yedeğini alma girişiminde bulunan zaman aralığıdır. Yedekleme, sıfır olmayan bir süre sürer ve bazı durumlarda aşağı akış bağımlılıkları nedeniyle başarısız olabilir. Azure Cosmos DB, yapılandırılan aralıkta yedeklemeyi en iyi şekilde dener, ancak yedeklemenin bu zaman aralığında tamamlanmasını garanti etmez. Bu değeri saat veya dakika olarak yapılandırabilirsiniz. Yedekleme aralığı 1 saatten az ve 24 saatten fazla olamaz. Bu aralığı değiştirdiğinizde, yeni Aralık son yedeklemenin alındığı zamandan itibaren yürürlüğe girer.

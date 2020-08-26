@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 652c5b7c2df4e1f8bd379390451886914628505d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258543"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854978"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
 
@@ -53,14 +53,14 @@ Uygulamayı Azure'a dağıtmak için, uygulamayı çalıştıracak bir Service F
 #!/bin/bash
 
 # Variables
-ResourceGroupName="containertestcluster" 
-ClusterName="containertestcluster" 
-Location="eastus" 
-Password="q6D7nN%6ck@6" 
-Subject="containertestcluster.eastus.cloudapp.azure.com" 
-VaultName="containertestvault" 
-VmPassword="Mypa$$word!321"
-VmUserName="sfadminuser"
+ResourceGroupName='containertestcluster' 
+ClusterName='containertestcluster' 
+Location='eastus' 
+Password='q6D7nN%6ck@6' 
+Subject='containertestcluster.eastus.cloudapp.azure.com' 
+VaultName='containertestvault' 
+VmPassword='Mypa$$word!321'
+VmUserName='sfadminuser'
 
 # Login to Azure and set the subscription
 az login
@@ -108,7 +108,7 @@ Mozilla Firefox, Ubuntu 16,04 ' de varsayılan tarayıcıdır. Sertifikayı Fire
     ./install.sh
     ```
 
-3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta şu biçimdedir: **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; Örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta şu biçimdedir:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; Örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Şimdi oylama uygulama türü ve oluşturduğunuz örnek için bir girdi olduğunu görmek için **uygulamalar** düğümünü genişletin.
 

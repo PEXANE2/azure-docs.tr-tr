@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0b1914755ff0435318ab970aa6dc6e5e039d581
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024065"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855671"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanları için şablon örnekleri Kaynak Yöneticisi
 Bu makalede, Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -21,8 +21,8 @@ Bu makalede, Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak v
 
 ## <a name="template-references"></a>Şablon başvuruları
 
-- [Microsoft. Operationalınsights çalışma alanları](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces) 
-- [Microsoft. Operationalınsights çalışma alanları/veri kaynakları](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
+- [Microsoft. Operationalınsights çalışma alanları](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces) 
+- [Microsoft. Operationalınsights çalışma alanları/veri kaynakları](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/datasources)
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 Aşağıdaki örnek yeni bir boş Log Analytics çalışma alanı oluşturur.
@@ -35,7 +35,7 @@ Aşağıdaki örnek yeni bir boş Log Analytics çalışma alanı oluşturur.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "workspaceName": {
@@ -112,7 +112,7 @@ Aşağıdaki örnek yeni bir boş Log Analytics çalışma alanı oluşturur.
       {
           "type": "Microsoft.OperationalInsights/workspaces",
           "name": "[parameters('workspaceName')]",
-          "apiVersion": "2020-03-01-preview",
+          "apiVersion": "2020-08-01",
           "location": "[parameters('location')]",
           "properties": {
               "sku": {
@@ -134,7 +134,7 @@ Aşağıdaki örnek yeni bir boş Log Analytics çalışma alanı oluşturur.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -164,7 +164,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows olayları](../platf
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "workspaceName": {
@@ -177,13 +177,13 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows olayları](../platf
   "resources": [
   {
       "type": "Microsoft.OperationalInsights/workspaces",
-      "apiVersion": "2020-03-01-preview",
+      "apiVersion": "2020-08-01",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "resources": [
         {
           "type": "datasources",
-          "apiVersion": "2020-03-01-preview",
+          "apiVersion": "2020-08-01",
           "name": "WindowsEventsSystem",
           "dependsOn": [
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
@@ -203,7 +203,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows olayları](../platf
         },
         {
           "type": "datasources",
-          "apiVersion": "2020-03-01-preview",
+          "apiVersion": "2020-08-01",
           "name": "WindowsEventsApplication",
           "dependsOn": [
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
@@ -235,7 +235,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows olayları](../platf
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -259,7 +259,7 @@ Aşağıdaki örnek, [Syslog olaylarının](../platform/data-sources-syslog.md) 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -277,14 +277,14 @@ Aşağıdaki örnek, [Syslog olaylarının](../platform/data-sources-syslog.md) 
     },
     "resources": [
     {
-        "apiVersion": "2020-03-01-preview",
+        "apiVersion": "2020-08-01",
         "type": "Microsoft.OperationalInsights/workspaces",
         "name": "[parameters('workspaceName')]",
         "location": "[parameters('location')]",
         "resources": [
             {
                 "type": "datasources",
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "name": "SyslogKern",
                 "dependsOn": [
                     "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
@@ -322,7 +322,7 @@ Aşağıdaki örnek, [Syslog olaylarının](../platform/data-sources-syslog.md) 
             },
             {
                 "type": "datasources",
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "name": "SyslogDaemon",
                 "dependsOn": [
                     "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
@@ -350,7 +350,7 @@ Aşağıdaki örnek, [Syslog olaylarının](../platform/data-sources-syslog.md) 
                 }
             },
             {
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "type": "datasources",
                 "name": "SyslogCollection",
                 "dependsOn": [
@@ -373,7 +373,7 @@ Aşağıdaki örnek, [Syslog olaylarının](../platform/data-sources-syslog.md) 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -397,7 +397,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows performans sayaçla
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -415,13 +415,13 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows performans sayaçla
     },
     "resources": [
     {
-        "apiVersion": "2020-03-01-preview",
+        "apiVersion": "2020-08-01",
         "type": "Microsoft.OperationalInsights/workspaces",
         "name": "[parameters('workspaceName')]",
         "location": "[parameters('location')]",
         "resources": [
           {
-            "apiVersion": "2020-03-01-preview",
+            "apiVersion": "2020-08-01",
             "type": "datasources",
             "name": "WindowsPerfMemoryAvailableBytes",
             "dependsOn": [
@@ -436,7 +436,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows performans sayaçla
             }
           },
           {
-            "apiVersion": "2020-03-01-preview",
+            "apiVersion": "2020-08-01",
             "type": "datasources",
             "name": "WindowsPerfMemoryPercentageBytes",
             "dependsOn": [
@@ -451,7 +451,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows performans sayaçla
             }
           },
           {
-            "apiVersion": "2020-03-01-preview",
+            "apiVersion": "2020-08-01",
             "type": "datasources",
             "name": "WindowsPerfProcessorPercentage",
             "dependsOn": [
@@ -476,7 +476,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [Windows performans sayaçla
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -501,7 +501,7 @@ Aşağıdaki örnek, [Linux performans sayaçlarının](../platform/data-sources
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -519,13 +519,13 @@ Aşağıdaki örnek, [Linux performans sayaçlarının](../platform/data-sources
     },
     "resources": [
     {
-        "apiVersion": "2020-03-01-preview",
+        "apiVersion": "2020-08-01",
         "type": "Microsoft.OperationalInsights/workspaces",
         "name": "[parameters('workspaceName')]",
         "location": "[parameters('location')]",
         "resources": [
             {
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "type": "datasources",
                 "name": "LinuxPerformanceLogicalDisk",
                 "dependsOn": [
@@ -559,7 +559,7 @@ Aşağıdaki örnek, [Linux performans sayaçlarının](../platform/data-sources
                 }
             },
             {
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "type": "datasources",
                 "name": "LinuxPerformanceProcessor",
                 "dependsOn": [
@@ -590,7 +590,7 @@ Aşağıdaki örnek, [Linux performans sayaçlarının](../platform/data-sources
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -616,7 +616,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [özel Günlükler](../platf
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "workspaceName": {
@@ -634,13 +634,13 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [özel Günlükler](../platf
   },
   "resources": [
   {
-      "apiVersion": "2020-03-01-preview",
+      "apiVersion": "2020-08-01",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "resources": [
         {
-            "apiVersion": "2020-03-01-preview",
+            "apiVersion": "2020-08-01",
             "type": "dataSources",
             "name": "[concat(parameters('workspaceName'), 'armlog_timedelimited')]",
             "dependsOn": [
@@ -687,7 +687,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [özel Günlükler](../platf
             }
         },
         {
-          "apiVersion": "2020-03-01-preview",
+          "apiVersion": "2020-08-01",
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), 'armlog_newline')]",
           "dependsOn": [
@@ -740,7 +740,7 @@ Aşağıdaki örnek, mevcut bir çalışma alanına [özel Günlükler](../platf
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
@@ -761,7 +761,7 @@ Aşağıdaki örnek, [IIS günlüklerinin](../platform/data-sources-iis-logs.md)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
@@ -780,12 +780,12 @@ Aşağıdaki örnek, [IIS günlüklerinin](../platform/data-sources-iis-logs.md)
     "resources": [
     {
         "type": "Microsoft.OperationalInsights/workspaces",
-        "apiVersion": "2020-03-01-preview",
+        "apiVersion": "2020-08-01",
         "name": "[parameters('workspaceName')]",
         "location": "[parameters('location')]",
         "resources": [
             {
-                "apiVersion": "2020-03-01-preview",
+                "apiVersion": "2020-08-01",
                 "type": "datasources",
                 "name": "IISLog",
                 "dependsOn": [
@@ -807,7 +807,7 @@ Aşağıdaki örnek, [IIS günlüklerinin](../platform/data-sources-iis-logs.md)
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {

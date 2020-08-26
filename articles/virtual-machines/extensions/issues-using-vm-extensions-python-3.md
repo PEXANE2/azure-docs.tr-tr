@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82120788"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852605"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>Python 3 etkin Linux Azure sanal makineleri sistemlerinde VM uzantıları kullanma sorunları
 
@@ -28,7 +28,7 @@ ms.locfileid: "82120788"
 >
 > **Python 2. x** ' i yüklemeden önce, Python 2. x ' in uzun süreli destek sorusunu, özellikle de güvenlik güncelleştirmelerini alma yeteneğini göz önünde bulundurun. Ürün olarak, bahsedilen uzantının bazıları dahil, **python 3,8** desteğiyle güncelleştirme yaparken Python 2. x kullanımını sona erdirmelisiniz.
 
-Bazı Linux dağıtımları Python 3,8 ' ye geçti ve `/usr/bin/python` Python için eski giriş noktasını tamamen kaldırdı. Bu geçiş, belirli sanal makine (VM) uzantılarının aşağıdaki koşullara göre otomatik dağıtımını etkiler:
+Bazı Linux dağıtımları Python 3,8 ' ye geçti ve `/usr/bin/python` Python için eski giriş noktasını tamamen kaldırdı. Bu geçiş, belirli sanal makine (VM) uzantılarının bu iki koşuldan birini kullanıma hazır, otomatik olarak dağıtımını etkiler:
 
 - Hala Python 3. x desteğine geçiş yapan uzantılar
 - Eski giriş noktasını kullanan uzantılar `/usr/bin/python`
@@ -43,50 +43,52 @@ Bazı Linux dağıtımları Python 3,8 ' ye geçti ve `/usr/bin/python` Python i
 
 ## <a name="resolution"></a>Çözüm
 
-Daha önce özette açıklanan bilinen etkilenen senaryolarda uzantıları dağıtmaya başlamadan önce aşağıdaki genel önerileri göz önünde bulundurun:
+Daha önce özette açıklanan bilinen etkilenen senaryolara uzantılar dağıtılmadan önce bu genel önerileri göz önünde bulundurun:
 
-1.  Uzantıyı dağıtılmadan önce, `/usr/bin/python` Linux dağıtım satıcısı tarafından sunulan yöntemi kullanarak oluşturmaksızın 'i yeniden devreye sokun.
+1. Uzantıyı dağıtılmadan önce, `/usr/bin/python` Linux dağıtım satıcısı tarafından sunulan yöntemi kullanarak oluşturmaksızın 'i yeniden devreye sokun.
 
-    - Örneğin, **Python 2,7**için şunu kullanın:`sudo apt update && sudo apt install python-is-python2`
+   - Örneğin, **Python 2,7**için şunu kullanın: `sudo apt update && sudo apt install python-is-python2`
 
-2.  Bu sorunu gösteren bir örnek zaten dağıttıysanız, yukarıda bahsedilen komutları çalıştırmak için **VM dikey** penceresinde **Çalıştır komut** işlevini kullanın. Run komutu uzantısının kendisi Python 3,8 ' e geçiş işleminden etkilenmez.
+1. Bu öneri Azure müşterilerine yöneliktir ve Azure Stack desteklenmez:
 
-3.  Yeni bir örnek dağıtıyorsanız ve sağlama zamanında bir uzantı ayarlamanız gerekiyorsa, yukarıda bahsedilen paketleri yüklemek için **Cloud-init** Kullanıcı verilerini kullanın.
+   - Bu sorunu gösteren bir örnek zaten dağıttıysanız, yukarıda bahsedilen komutları çalıştırmak için VM dikey penceresinde Çalıştır komut işlevini kullanın. Run komutu uzantısının kendisi Python 3,8 ' e geçiş işleminden etkilenmez.
 
-    Örneğin, Python 2,7 için:
+1. Yeni bir örnek dağıtıyorsanız ve sağlama zamanında bir uzantı ayarlamanız gerekiyorsa, yukarıda bahsedilen paketleri yüklemek için **Cloud-init** Kullanıcı verilerini kullanın.
 
-    ```
-    # create cloud-init config
-    cat > cloudinitConfig.json <<EOF
-    #cloud-config
-    package_update: true
+   Örneğin, Python 2,7 için:
+
+   ```python
+   # create cloud-init config
+   cat > cloudinitConfig.json <<EOF
+   #cloud-config
+   package_update: true
     
-    runcmd:
-    - sudo apt update
-    - sudo apt install python-is-python2 
-    EOF
-    
-    # create VM
-    az vm create \
-        --resource-group <resourceGroupName> \
-        --name <vmName> \
-        --image <Ubuntu 20.04 Image URN> \
-        --admin-username azadmin \
-        --ssh-key-value "<sshPubKey>" \
-        --custom-data ./cloudinitConfig.json
-    ```
+   runcmd:
+   - sudo apt update
+   - sudo apt install python-is-python2 
+   EOF
 
-4.  Kuruluşunuzun ilke yöneticileri, uzantıların sanal makinelere dağıtılması gerektiğini tespit ederseniz, sağlama sırasında uzantı desteğini devre dışı bırakabilirsiniz:
+   # create VM
+   az vm create \
+       --resource-group <resourceGroupName> \
+       --name <vmName> \
+       --image <Ubuntu 20.04 Image URN> \
+       --admin-username azadmin \
+       --ssh-key-value "<sshPubKey>" \
+       --custom-data ./cloudinitConfig.json
+   ```
 
-    - REST API
+1. Kuruluşunuzun ilke yöneticileri, uzantıların sanal makinelere dağıtılması gerektiğini tespit ederseniz, sağlama sırasında uzantı desteğini devre dışı bırakabilirsiniz:
 
-      Bu özellikle bir VM dağıtabilmeniz durumunda uzantıları devre dışı bırakmak ve etkinleştirmek için:
+   - REST API
 
-      ```
-        "osProfile": {
-          "allowExtensionOperations": false
-        },
-      ```
+     Bu özellikle bir VM dağıtabilmeniz durumunda uzantıları devre dışı bırakmak ve etkinleştirmek için:
+
+     ```python
+       "osProfile": {
+         "allowExtensionOperations": false
+       },
+     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

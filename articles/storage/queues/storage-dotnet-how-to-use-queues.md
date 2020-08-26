@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fa99acda5f1c8edac3026961c426257bb74d92
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808828"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853668"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
 
@@ -27,7 +27,7 @@ Bu öğreti, Azure kuyruk depolama kullanarak bazı genel senaryolar için .NET 
 
 **Tahmini tamamlanma süresi:** 45 dakika
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [.NET için Azure Storage ortak istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
@@ -49,7 +49,7 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 
 1. **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin
 2. **Platform**  >  **pencerelerini** seçin
-3. **Konsol Uygulaması (.NET Framework)** öğesini seçin
+3. **Konsol uygulaması Seç (.NET Framework)**
 4. **İleri**’yi seçin
 5. **Proje adı** alanına uygulamanız için bir ad girin
 6. **Oluştur**’u seçin
@@ -116,7 +116,7 @@ Depolama hizmetlerine erişim için uç noktaları ve kimlik bilgilerini yapıla
 
 Örnek kodun, depolama hesabınıza erişim için yetki vermesi gerekir. Yetki vermek için, depolama hesabınızın kimlik bilgilerini bir bağlantı dizesi şeklinde uygulamaya sağlarsınız. Depolama hesabınızın kimlik bilgilerini görüntülemek için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Depolama hesabınızı bulun.
 3. Depolama hesabına genel bakışın **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Hesap erişim anahtarlarınız ve her bir anahtar için tam bağlantı dizesi görüntülenir.
 4. **key1** bölümünde **Bağlantı dizesi** değerini bulun ve **Kopyala** düğmesine tıklayarak bağlantı dizesini kopyalayın. Sonraki adımda bir ortam değişkenine bağlantı dizesini ekleyeceksiniz.
@@ -154,6 +154,8 @@ Azurite depolama öykünücüsünü hedeflemek için, iyi bilinen hesap adı ve 
 ```
 
 ### <a name="add-using-directives"></a>Using yönergeleri ekleme
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Aşağıdaki `using` yönergelerini `Program.cs` dosyasının üst tarafına ekleyin:
 

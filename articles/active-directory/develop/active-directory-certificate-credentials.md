@@ -13,16 +13,16 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163671"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853377"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
-Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0 [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
+Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0  [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
 
 Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir [JSON Web Token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) onaysıdır.
 
@@ -36,13 +36,13 @@ Onaylama işlemlerini hesaplamak için, çok sayıda JWT kitaplığı tercih ett
 | --- | --- |
 | `alg` | **RS256** olmalıdır |
 | `typ` | **JWT** olmalıdır |
-| `x5t` | Bir Base64 dize değeri olarak kodlanmış X. 509.440 sertifika karması (sertifikanın SHA-1 *parmak izi*olarak da bilinir). Örneğin, bir X. 509.440 sertifikası karması verildiğinde `84E05C1D98BCE3A5421D225B140B36E86A3D5534` `x5t` talep olacaktır `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
+| `x5t` | X. 509.440 sertifika karmasıdır (sertifikanın SHA-1 *parmak izi*olarak da bilinir), Base64 dizesi değeri olarak kodlanan onaltılık gösterimi. Örneğin, (onaltılı) bir X. 509.440 sertifikası karması verildiğinde `84E05C1D98BCE3A5421D225B140B36E86A3D5534` , `x5t` talep `hOBcHZi846VCHSJbFAs26Go9VTQ=` (base64) olacaktır. |
 
 ### <a name="claims-payload"></a>Talepler (yük)
 
 | Parametre |  Açıklamalar |
 | --- | --- |
-| `aud` | Hedef kitle:`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `aud` | Hedef kitle: `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
 | `exp` | Sona erme tarihi: belirtecin süresi dolduğunda tarih. Süre, belirteç geçerliliği sona erene kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. Kısa bir süre sonu saati ile 10 dakika arasında bir saat kullanmanızı öneririz.|
 | `iss` | Veren: client_id (istemci hizmetinin*uygulama (istemci) kimliği* ) olmalıdır |
 | `jti` | GUID: JWT KIMLIĞI |
@@ -103,8 +103,8 @@ Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgisini
 
 Sertifikayı tutan bir sertifika varsa şunları hesaplamanız gerekir:
 
-- `$base64Thumbprint`-Base64 kodlu sertifika karmasının değeri
-- `$base64Value`-Base64 kodlamalı sertifika ham verileri değeri
+- `$base64Thumbprint` -Base64 kodlu sertifika karmasının değeri
+- `$base64Value` -Base64 kodlamalı sertifika ham verileri değeri
 
 Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız gerekir ( `$keyId` ).
 

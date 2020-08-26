@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760915"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855319"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -124,6 +124,7 @@ ms.locfileid: "87760915"
 [sap-ha-guide-figure-3044]:./media/virtual-machines-shared-sap-high-availability-guide/3044-data-keeper-synchronous-mirroring-for-SAP-gui.png
 [sap-ha-guide-figure-3045]:./media/virtual-machines-shared-sap-high-availability-guide/3045-replicated-disk-by-data-keeper-in-wsfc.png
 [sap-ha-guide-figure-3046]:./media/virtual-machines-shared-sap-high-availability-guide/3046-dns-entry-sap-ascs-virtual-name-ip.png
+[sap-ha-guide-figure-3046-ers2]:./media/virtual-machines-shared-sap-high-availability-guide/3046-dns-entry-sap-ers2-virtual-name-ip.png
 [sap-ha-guide-figure-3047]:./media/virtual-machines-shared-sap-high-availability-guide/3047-dns-manager.png
 [sap-ha-guide-figure-3048]:./media/virtual-machines-shared-sap-high-availability-guide/3048-default-cluster-probe-port.png
 [sap-ha-guide-figure-3049]:./media/virtual-machines-shared-sap-high-availability-guide/3049-cluster-probe-port-after.png
@@ -146,7 +147,10 @@ ms.locfileid: "87760915"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır.
+Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır. [Mimari kılavuzunda açıklandığı gibi: Küme Paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümeleme][sap-high-availability-guide-wsfc-shared-disk]küme paylaşılan *diski*için iki alternatif vardır:
+
+- [Azure paylaşılan diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -156,26 +160,23 @@ Yüklemeye başlamadan önce şu belgeleri gözden geçirin:
 
 * [SAP Ass/SCS örneği için Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-Bu makaledeki DBMS kurulumunu açıklamamız, çünkü ayarlar kullandığınız DBMS sistemine bağlı olarak değişir. DBMS ile ilgili yüksek kullanılabilirliğe sahip olan sorunların, Azure için farklı DBMS satıcılarının desteklediği işlevlere değinilmesi gerektiğini varsaydık. Oracle veritabanları için SQL Server ve Oracle Data Guard için AlwaysOn veya veritabanı yansıtma örnekleri verilmiştir. Bu makalede kullandığımız senaryoda, DBMS 'ye daha fazla koruma ekliyoruz.
+Bu makaledeki DBMS kurulumunu açıklamamız, çünkü ayarlar kullandığınız DBMS sistemine bağlı olarak değişir. DBMS ile ilgili yüksek kullanılabilirliğe sahip olan sorunların, Azure için farklı DBMS satıcılarının desteklediği işlevlere değinilmesi gerektiğini varsaydık. Oracle veritabanları için SQL Server ve Oracle Data Guard için AlwaysOn veya veritabanı yansıtma örnekleri verilmiştir. DBMS için yüksek kullanılabilirlik senaryoları Bu makalede ele alınmıyor.
 
 Farklı DBMS Hizmetleri, Azure 'daki kümelenmiş SAP Ass veya SCS yapılandırmasıyla etkileşen özel önemli noktalar yoktur.
 
 > [!NOTE]
-> SAP NetWeaver ABAP Systems, Java sistemleri ve ABAP + Java sistemlerinin yükleme yordamları neredeyse aynıdır. En önemli fark, SAP ABAP sisteminin bir ASCS örneğine sahip olması gerektiğidir. SAP Java sisteminde bir SCS örneği vardır. SAP ABAP + Java sisteminde bir ASCS örneği ve aynı Microsoft yük devretme kümesi grubunda çalışan bir SCS örneği vardır. Her SAP NetWeaver yükleme yığını için herhangi bir yükleme farkı açıkça bahsedilir. Diğer tüm parçaların aynı olduğunu varsayabilirsiniz.  
->
->
+> SAP NetWeaver ABAP Systems, Java sistemleri ve ABAP + Java sistemlerinin yükleme yordamları neredeyse aynıdır. En önemli fark, SAP ABAP sisteminin bir ASCS örneğine sahip olması gerektiğidir. SAP Java sisteminde bir SCS örneği vardır. SAP ABAP + Java sisteminde bir ASCS örneği ve aynı Microsoft yük devretme kümesi grubunda çalışan bir SCS örneği vardır. Her SAP NetWeaver yükleme yığını için herhangi bir yükleme farkı açıkça bahsedilir. Adımların geri kalanının aynı olduğunu varsayabilirsiniz.  
 
 ## <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle SAP 'yi yükler
 
 > [!IMPORTANT]
-> Sayfa dosyanızı, SIOS veri akışı yansıtılmış birimlerine yerleştirdiğinizden emin olun. Dataman yansıtılmış birimleri desteklemez. Sayfa dosyanızı, varsayılan olan bir Azure sanal makinesinin geçici sürücüsünde bırakabilirsiniz. Henüz orada yoksa, Windows sayfa dosyasını Azure sanal makinenizin D sürücüsüne taşıyın.
->
->
+> Paylaşılan disk sunmak için SIOS kullanırsanız, sayfa dosyanızı SIOS veri kullanımı yansıtılmış birimlerine yerleştirmeyin. Sayfa dosyanızı, varsayılan olan bir Azure sanal makinesinin geçici sürücüsünde bırakabilirsiniz. Henüz orada yoksa, Windows sayfa dosyasını Azure sanal makinenizin D sürücüsüne taşıyın.  
+
 
 SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek şu görevleri içerir:
 
 * Kümelenmiş SAP ASCS/SCS örneği için bir sanal ana bilgisayar adı oluşturun.
-* SAP ilk küme düğümünü yükler.
+* İlk küme düğümüne SAP 'yi yükler.
 * ASCS/SCS örneğinin SAP profilini değiştirin.
 * Araştırma bağlantı noktası ekleyin.
 * Windows Güvenlik Duvarı araştırma bağlantı noktasını açın.
@@ -185,246 +186,276 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 1. Windows DNS Yöneticisi 'nde, yoks/SCS örneğinin sanal ana bilgisayar adı için bir DNS girişi oluşturun.
 
    > [!IMPORTANT]
-   > ASCS/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır ( \<SID\> -lb-ascs).  
-   >
-   >
-
-   Sanal SAP ASCS/SCS ana bilgisayar adının (PR1-ascs-SAP) IP adresi Azure Load Balancer (PR1-lb-ascs) IP adresiyle aynıdır.
-
+   > ASCS/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır.  
+   
+   
    ![Şekil 1: SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama][sap-ha-guide-figure-3046]
 
-   _**Şekil 1:** SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlayın_
+   _SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlayın_
 
-2. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi**  >  **etki alanı**' nı seçin.
+2. Ayrıca kümelenmiş örnek olan yeni SAP sıraya alma çoğaltma sunucusu 2 ' yi kullanıyorsa, DNS 'de ERS2 için bir sanal ana bilgisayar adı da ayırmanız gerekir. 
+
+   > [!IMPORTANT]
+   > ERS2 örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız ikinci IP adresi olmalıdır.    
+   
+   
+   ![Şekil 1A: SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama][sap-ha-guide-figure-3046-ers2]
+
+   _SAP ERS2 kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama_
+
+
+3. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi**  >  **etki alanı**' nı seçin.
 
    ![Şekil 2: SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi][sap-ha-guide-figure-3047]
 
-   _**Şekil 2:** SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi_
+   _SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi_
 
-### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>SAP ilk küme düğümünü yükler
+### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> SAP ilk küme düğümünü yükler
 
-1. Küme düğümü A 'da ilk küme düğümü seçeneğini yürütün. Örneğin, PR1-ascs-0 * ana bilgisayarında.
-2. Azure iç yük dengeleyici için varsayılan bağlantı noktalarını tutmak üzere şunları seçin:
+1. Küme düğümü A 'da ilk küme düğümü seçeneğini yürütün. şunu seçin:
 
    * **ABAP sistemi**: **ascs** örnek numarası **00**
    * **Java sistemi**: **SCS** örnek numarası **01**
    * **ABAP + Java sistemi**: **Ass** örnek numarası **00** ve **SCS** örnek numarası **01**
 
-   ABAP Ass örneği için 00 dışındaki örnek numaralarını ve Java SCS örneği için 01 ' i kullanmak için, önce Azure iç yük dengeleyici varsayılan Yük Dengeleme kurallarını değiştirin. Daha fazla bilgi için bkz. [Azure iç yük dengeleyici IÇIN Ass/SCS varsayılan Yük Dengeleme kurallarını değiştirme][sap-ha-guide-8.9].
+   
+   > [!IMPORTANT]
+   > Azure iç yük dengeleyici Yük Dengeleme kurallarında (temel SKU kullanılıyorsa) yapılandırmanın ve seçili SAP örnek numaralarının eşleşmesi gerektiğini unutmayın.
 
-Sonraki birkaç görev standart SAP yükleme belgelerinde açıklanmamıştır.
+2. Tanımlanan SAP yükleme yordamını izleyin. "Ilk küme düğümü" yükleme başlatma seçeneğinde, "küme paylaşılan disk" öğesini yapılandırma seçeneği olarak seçmek için emin olun.
 
-> [!NOTE]
+> [!TIP]
 > SAP yükleme belgeleri, ilk ASCS/SCS küme düğümünün nasıl yükleneceğini açıklar.
->
->
 
-### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>ASCS/SCS örneğinin SAP profilini değiştirme
 
-İlk olarak, yeni bir profil parametresi ekleyin. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' deki sorun senaryosundan bahsedin. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde iki değişiklik de sunuyoruz. İkinci bir adımda, `keep_alive` bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
 
-YOKS/SCS örneğinin SAP profilini değiştirmek için:
+### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> ASCS/SCS örneğinin SAP profilini değiştirme
 
-1. ENSA1 kullanılıyorsa, bu profile parametresini SAP ASCS/SCS örnek profiline ekleyin.
+Sıraya alma çoğaltma sunucusu 1 varsa, aşağıda açıklandığı gibi SAP profili parametresi ekleyin `enque/encni/set_so_keepalive` . Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. SAP parametresi ERS2 için gerekli değildir. 
+
+1. ERS1 kullanılıyorsa, bu profile parametresini SAP ASCS/SCS örnek profiline ekleyin.
 
    ```
    enque/encni/set_so_keepalive = true
    ```
-   Örneğimizde yol şu şekilde olur:
-
-   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
-
-   Örneğin, SAP SCS örnek profiline ve karşılık gelen yola:
-
-   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
    
-   Hem ENSA1 hem de ENSA2 için, `keepalive` işletim sistemi PARAMETRELERININ SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)' de açıklandığı gibi ayarlandığından emin olun.   
+   Hem ERS1 hem de ERS2 için, `keepalive` işletim sistemi PARAMETRELERININ SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)' de açıklandığı gibi ayarlandığından emin olun.   
 
-2. Değişiklikleri uygulamak için SAP ASCS/SCS örneğini yeniden başlatın.
+2. SAP profili parametre değişikliklerini uygulamak için SAP ASCS/SCS örneğini yeniden başlatın.
 
-### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Araştırma bağlantı noktası ekle
+### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> Araştırma bağlantı noktası ekle
 
 Tüm küme yapılandırmasının Azure Load Balancer ile çalışmasını sağlamak için iç yük dengeleyicinin araştırma işlevini kullanın. Azure iç yük dengeleyici, genellikle katılan sanal makineler arasında eşit olarak gelen iş yükünü dağıtır.
 
- Ancak, yalnızca bir örnek etkin olduğundan, bazı küme yapılandırmalarında bu çalışmaz. Diğer örnek pasif ve iş yükünün hiçbirini kabul edemiyor. Araştırma işlevselliği, Azure iç yük dengeleyicinin yalnızca etkin bir örneğe iş atarken çalışmasına yardımcı olur. Araştırma işlevselliğiyle, iç yük dengeleyici hangi örneklerin etkin olduğunu algılayabilir ve sonra yalnızca örneği iş yüküne hedefleyebilir.
+Ancak, yalnızca bir örnek etkin olduğundan, bazı küme yapılandırmalarında bu çalışmaz. Diğer örnek pasif ve iş yükünün hiçbirini kabul edemiyor. Bir araştırma işlevselliği, Azure iç yük dengeleyicinin hangi Örneğin etkin olduğunu algılayarak ve yalnızca etkin örneği hedeflemeye yardımcı olur.  
 
-Araştırma bağlantı noktası eklemek için:
+> [!IMPORTANT]
+> Bu örnek yapılandırmada, **Probeport** 620**NR**olarak ayarlanır. **00** NUMARALı BIR SAP ascs örneği için 620**00**' dır. Yapılandırmayı SAP örnek numaralarınız ve SAP SID 'niz ile eşleşecek şekilde ayarlamanız gerekecektir.
 
-1. Aşağıdaki PowerShell komutunu çalıştırarak geçerli **Probeport** değerini kontrol edin:
+Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü küme VM 'lerinden birinde çalıştırın:
 
+- SAP ASC/SCS örneği söz konusu olduğunda 
    ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID SID -ProbePort 62000
    ```
 
-   Komutu küme yapılandırmasındaki sanal makinelerden biri içinden yürütün.
-
-2. Bir yoklama bağlantı noktası tanımlayın. Varsayılan yoklama bağlantı noktası numarası 0 ' dır. Örneğimizde araştırma bağlantı noktası 62000 ' i kullanıyoruz.
-
-   ![Şekil 3: küme yapılandırma araştırması bağlantı noktası varsayılan olarak 0 ' dır][sap-ha-guide-figure-3048]
-
-   _**Şekil 3:** Varsayılan küme yapılandırma araştırması bağlantı noktası 0 ' dır_
-
-   Bağlantı noktası numarası SAP Azure Resource Manager şablonlarında tanımlanmıştır. Bağlantı noktası numarasını PowerShell 'e atayabilirsiniz.
-
-   SAP IP küme kaynağı için yeni bir ProbePort değeri ayarlamak için \<SID\> , ortamınız Için PowerShell değişkenlerini güncelleştirmek üzere aşağıdaki PowerShell betiğini çalıştırın:
-
+- ERS2 kullanıyorsanız, kümelenmiş. Kümelenmemiş olduğundan, ERS1 için araştırma bağlantı noktasını yapılandırmaya gerek yoktur.  
    ```powershell
-   $SAPSID = "PR1"      # SAP <SID>
-   $ProbePort = 62000   # ProbePort of the Azure internal load balancer
-
-   Clear-Host
-   $SAPClusterRoleName = "SAP $SAPSID"
-   $SAPIPresourceName = "SAP $SAPSID IP"
-   $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
-   $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
-   $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
-   $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
-   $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
-   $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
-   $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
-
-   $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
-
-   Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
-   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-
-   Write-Host
-   Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
-   Write-Host
-   Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
-   Write-Host
-
-   $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
-
-   Write-Host
-
-   $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
-
-   if($ActivateChanges -eq "yes"){
-   Write-Host
-   Write-Host "Activating changes..." -ForegroundColor Cyan
-
-   Write-Host
-   write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
-   Stop-ClusterResource -Name $SAPIPresourceName
-   sleep 5
-
-   Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
-   Start-ClusterGroup -Name $SAPClusterRoleName
-
-   Write-Host "New ProbePort parameter is active." -ForegroundColor Green
-   Write-Host
-
-   Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
-   Write-Host
-   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-   }else
-   {
-   Write-Host "Changes are not activated."
-   }
+   Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID SID -ProbePort 62001 -IsSAPERSClusteredInstance $True
    ```
 
-   SAP \<SID\> Küme rolünü çevrimiçine geçirdikten sonra, **probeport** değerinin yeni değere ayarlandığını doğrulayın.
-
+ İşlevin kodu `Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource` şöyle görünür:
    ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+    function Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource {
+    
+    <#
+    .SYNOPSIS 
+    Set-AzureLoadBalancerHealthProbePortOnSAPClusterIPResource will set a new Azure Load Balancer Health Probe Port on 'SAP $SAPSID IP' cluster resource.
+    
+    .DESCRIPTION
+    Set-AzureLoadBalancerHealthProbePortOnSAPClusterIPResource will set a new Azure Load Balancer Health Probe Port on 'SAP $SAPSID IP' cluster resource.
+    It will also restart SAP Cluster group (default behavior), to activate the changes. 
+    
+    You need to run it on one of the SAP ASCS/SCS Windows cluster nodes.
+    
+    Expectation is that SAP group is installed with official SWPM installation tool, which will set default expected naming convention for:
+    - SAP Cluster Group:               'SAP $SAPSID'
+    - SAP Cluster IP Address Resource: 'SAP $SAPSID IP' 
+    
+    .PARAMETER SAPSID 
+    SAP SID - 3 characters staring with letter.
+    
+    .PARAMETER ProbePort 
+    Azure Load Balancer Health Check Probe Port.
+    
+    .PARAMETER RestartSAPClusterGroup 
+    Optional parameter. Default value is '$True', so SAP cluster group will be restarted to activate the changes.
+    
+    .PARAMETER IsSAPERSClusteredInstance 
+    Optional parameter.Default value is '$False'.
+    If set to $True , then handle clsutered new SAP ERS2 instance.
+    
+    
+    .EXAMPLE 
+    # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 
+    
+    .EXAMPLE 
+    # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP'. SAP cluster group 'SAP AB1' IS NOT restarted, therefore changes are NOT active.
+    # To activate the changes you need to manualy restart 'SAP AB1' cluster group.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 -RestartSAPClusterGroup $False
+    
+    .EXAMPLE 
+    # Set probe port to 62001, on SAP cluster resource 'SAP AB1 ERS IP'. SAP cluster group 'SAP AB1 ERS' IS restarted, to activate the changes.
+    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 -IsSAPERSClusteredInstance $True
+    
+    #> 
+    
+        [CmdletBinding()]
+        param(
+            
+            [Parameter(Mandatory=$True)]
+            [ValidateNotNullOrEmpty()]  
+            [ValidateLength(3,3)]      
+            [string]$SAPSID,
+                  
+            [Parameter(Mandatory=$True)]
+            [ValidateNotNullOrEmpty()]        
+            [int] $ProbePort,
+    
+            [Parameter(Mandatory=$False)] 
+            [bool] $RestartSAPClusterGroup = $True,
+    
+            [Parameter(Mandatory=$False)] 
+            [bool] $IsSAPERSClusteredInstance = $False
+        )
+    
+        BEGIN{}
+        
+        PROCESS{
+            try{                                      
+                
+                if($IsSAPERSClusteredInstance){
+                    #Handle clustered SAP ERS Instance
+                    $SAPClusterRoleName = "SAP $SAPSID ERS"
+                    $SAPIPresourceName = "SAP $SAPSID ERS IP"            
+                }else{
+                    #Handle clustered SAP ASCS/SCS Instance
+                    $SAPClusterRoleName = "SAP $SAPSID"
+                    $SAPIPresourceName = "SAP $SAPSID IP"
+                }
+    
+                $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
+                $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
+                $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
+                $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
+                $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
+                $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
+                $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
+    
+                $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
+                Write-Output "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" 
+    
+                Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+    
+                Write-Output " "
+                Write-Output "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." 
+                Write-Output " "
+                Write-Output "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." 
+                Write-Output " "
+    
+                $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
+    
+                Write-Output " "
+                    
+                if($RestartSAPClusterGroup){
+                    Write-Output ""
+                    Write-Output "Activating changes..." 
+    
+                    Write-Output " "
+                    Write-Output "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..."
+                    Stop-ClusterResource -Name $SAPIPresourceName
+                    sleep 5
+    
+                    Write-Output "Starting SAP cluster role '$SAPClusterRoleName' ..."
+                    Start-ClusterGroup -Name $SAPClusterRoleName
+    
+                    Write-Output "New ProbePort parameter is active." 
+                    Write-Output " "
+    
+                    Write-Output "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" 
+                    Write-Output " " 
+                    Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+                }else
+                {
+                    Write-Output "SAP cluster role '$SAPClusterRoleName' is not restarted, therefore changes are not activated."
+                }   
+            }
+            catch{
+               Write-Error  $_.Exception.Message
+           }
+        }
+        END {}
+    }
 
    ```
-   Betik çalıştıktan sonra, değişiklikleri etkinleştirmek için SAP küme grubunu yeniden başlatmanız istenir.
 
-   ![Şekil 4: yeni değeri ayarladıktan sonra küme bağlantı noktasını araştırma][sap-ha-guide-figure-3049]
+### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows Güvenlik Duvarı araştırma bağlantı noktasını açın
 
-   _**Şekil 4:** Yeni değeri ayarladıktan sonra küme bağlantı noktasını araştırma_
-
-### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>Windows Güvenlik Duvarı araştırma bağlantı noktasını açın
-
-Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırması bağlantı noktası açın. Windows Güvenlik Duvarı araştırması bağlantı noktasını açmak için aşağıdaki betiği kullanın. Ortamınız için PowerShell değişkenlerini güncelleştirin.
+Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırması bağlantı noktası açın. Windows Güvenlik Duvarı araştırması bağlantı noktasını açmak için aşağıdaki betiği kullanın. Ortamınız için PowerShell değişkenlerini güncelleştirin.  
+ERS2 kullanıyorsanız, ERS2 araştırma bağlantı noktası için güvenlik duvarı bağlantı noktasını da açmanız gerekir.  
 
   ```powershell
-  $ProbePort = 62000   # ProbePort of the Azure internal load balancer
-
-  New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
+    $ProbePort = 62000   # ProbePort of the Azure internal load balancer
+    New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**Probeport** **62000**olarak ayarlanır. Şimdi, \\ \ascsha-clsap\sapmnt dosya paylaşımında, assha-DBAS gibi diğer konaklardan erişebilirsiniz.
-
-## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Veritabanı örneğini yükler
+## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Veritabanı örneğini yükler
 
 Veritabanı örneğini yüklemek için SAP yükleme belgelerinde açıklanan işlemi izleyin.
 
-## <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>İkinci küme düğümünü yükler
+## <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> İkinci küme düğümünü yükler
 
 İkinci kümeyi yüklemek için, SAP yükleme kılavuzunda açıklanan adımları izleyin.
 
-## <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>SAP ERS Windows hizmeti örneğinin başlangıç türünü değiştirme
+## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP birincil uygulama sunucusunu yükler
 
-SAP 'nin Windows hizmeti başlangıç türünü, her iki küme düğümünde da **Otomatik (Gecikmeli başlatma)** olarak değiştirin.
+PAS 'yi barındırmak için belirlediğiniz sanal makinede birincil uygulama sunucusu (PAS) örneği \<SID\> -dı-0 ' yı yükler. Azure üzerinde hiçbir bağımlılık yoktur. SIOS kullanıyorsanız, hiçbir veri ve özel ayar yoktur.
 
-![Şekil 5: SAP ERS örneğinin hizmet türünü Gecikmeli otomatik olarak değiştirme][sap-ha-guide-figure-3050]
+## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP ek uygulama sunucusunu yükler
 
-_**Şekil 5:** SAP ERS örneği için hizmet türünü Gecikmeli otomatik olarak değiştirme_
+SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. 
 
-## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>SAP birincil uygulama sunucusunu yükler
+## <a name="test-the-sap-ascsscs-instance-failover"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> SAP ASCS/SCS örneği yük devretmesini test etme
 
-PAS 'yi barındırmak için belirlediğiniz sanal makinede birincil uygulama sunucusu (PAS) örneği \<SID\> -dı-0 ' yı yükler. Azure üzerinde hiçbir bağımlılık yoktur. Veri ve özel ayar yok.
+Seviyelendirilmiş yük devretme testleri için SAP Ass 'nin A düğümünde etkin olduğunu varsaytık.  
 
-## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>SAP ek uygulama sunucusunu yükler
+1. SAP sisteminin A düğümünden A düğümüne başarılı bir şekilde yük devredebildiğini doğrulayın \<SID\> a küme düğümünden b KÜMESINE SAP kümesi grubu yük devretmesi başlatmak için şu seçeneklerden birini seçin:
+    - Yük Devretme Kümesi Yöneticisi  
+    - Yük devretme kümesi PowerShell
 
-SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin, \<SID\> -dı-1 ile \<SID\> -dı- &lt; n &gt; .
+    ```powershell
+    $SAPSID = "PR1"     # SAP <SID>
+ 
+    $SAPClusterGroup = "SAP $SAPSID"
+    Move-ClusterGroup -Name $SAPClusterGroup
 
-> [!NOTE]
-> Bu, yüksek kullanılabilirliğe sahip SAP NetWeaver sisteminin yüklenmesini sonlandırır. Sonra, yük devretme testi ile devam edin.
->
+    ```
 
-
-## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>SAP ASCS/SCS örneği yük devretme ve SIOS çoğaltmasını test etme
-Yük Devretme Kümesi Yöneticisi ve SIOS Dataman yönetimi ve yapılandırma aracını kullanarak SAP yoks/SCS örneği yük devretmesini ve SIOS disk çoğaltmasını test etmek ve izlemek kolaydır.
-
-### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS örneği, küme düğümü A 'da çalışıyor
-
-SAP PR1 küme grubu, A küme düğümü üzerinde çalışıyor. Örneğin, PR1-ascs-0 üzerinde. SAP PR1 küme grubunun bir parçası olan paylaşılan disk sürücüsüne göre ' yi küme düğümüne atayın. YOKS/SCS örneği de disk sürücü S kullanır. 
-
-![Şekil 6: Yük Devretme Kümesi Yöneticisi: SAP \< SID \> küme grubu, A kümesi düğümünde çalışıyor][sap-ha-guide-figure-5000]
-
-_**Şekil 6:** Yük Devretme Kümesi Yöneticisi: SAP \<SID\> küme grubu A kümesi düğümünde çalışıyor_
-
-SIOS Verilerlik yönetimi ve yapılandırma aracında, paylaşılan disk verilerinin, A küme düğümü üzerindeki kaynak birim sürücüsünden, B küme düğümü üzerindeki hedef birim sürücüsüne zaman uyumlu olarak çoğaltıldığından emin olabilirsiniz. Örneğin, PR1-ascs-0 [10.0.0.40] öğesinden PR1-ascs-1 [10.0.0.41] arasında çoğaltılır.
-
-![Şekil 7: SIOS \ veri ve Içinde yerel birimi küme düğümü A 'yı küme düğümüne çoğaltma B][sap-ha-guide-figure-5001]
-
-_**Şekil 7:** Jımdataman 'da yerel birimi küme düğümü A 'yı küme düğümüne çoğaltma B_
-
-### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>A düğümünden B düğümüne yük devretme
-
-1. A kümesi düğümünden B kümesine SAP küme grubunun yük devretmesini başlatmak için şu seçeneklerden birini seçin \<SID\> :
-   - Yük Devretme Kümesi Yöneticisi  
-   - Yük devretme kümesi PowerShell
-
-   ```powershell
-   $SAPSID = "PR1"     # SAP <SID>
-
-   $SAPClusterGroup = "SAP $SAPSID"
-   Move-ClusterGroup -Name $SAPClusterGroup
-
-   ```
 2. Windows Konuk işletim sisteminin içindeki küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.  
 3. Azure portal küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.  
 4. Azure PowerShell kullanarak küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.
 
-   Yük devretmeden sonra SAP \<SID\> küme grubu B kümesi düğümünde çalışır. Örneğin, PR1-ascs-1 üzerinde çalışıyor.
+5. Doğrulama
+   - Yük devretmeden sonra, SAP \<SID\> küme grubunun B küme düğümünde çalıştığını doğrulayın. 
 
-   ![Şekil 8: Yük Devretme Kümesi Yöneticisi, SAP \< SID \> kümesi grubu B kümesi düğümünde çalışıyor][sap-ha-guide-figure-5002]
+      ![Şekil 8: Yük Devretme Kümesi Yöneticisi, SAP \< SID \> kümesi grubu B kümesi düğümünde çalışıyor][sap-ha-guide-figure-5002]
 
-   _**Şekil 8**: yük devretme KÜMESI YÖNETICISI, SAP \<SID\> kümesi grubu B kümesi düğümünde çalışıyor_
+      _Yük Devretme Kümesi Yöneticisi, SAP \<SID\> kümesi grubu B kümesi düğümünde çalışıyor_
 
-   Paylaşılan disk artık B küme düğümüne takıyor. SIOS Verilerman, küme düğümü B 'deki kaynak birim sürücüsünden verileri, A küme düğümü üzerindeki hedef birim sürücüsüne çoğaltmakta. Örneğin, PR1-ascs-1 [10.0.0.41] öğesinden PR1-ascs-0 [10.0.0.40] arasında çoğaltılıyor.
+   - Yük devretmeden sonra paylaşılan diskin B küme düğümüne takılı olduğundan emin olun. 
+   - Yük devretmenin ardından, SIOS kullanıyorsanız, SIOS veri tutan özelliğinin, küme düğümü B 'deki kaynak birim sürücüsünden gelen verileri, A küme düğümü üzerinde hedef birim sürücüleri olarak çoğaltmakta olduğunu doğrulayın. 
 
-   ![Şekil 9: SIOS Dataman yerel birimi B küme düğümünden A 'ya çoğaltır][sap-ha-guide-figure-5003]
+      ![Şekil 9: SIOS Dataman yerel birimi B küme düğümünden A 'ya çoğaltır][sap-ha-guide-figure-5003]
 
-   _**Şekil 9:** SIOS Dataman, yerel birimi B küme düğümünden A kümesine çoğaltır_
+      _SIOS Dataman, yerel birimi B küme düğümünden A kümesine çoğaltır_

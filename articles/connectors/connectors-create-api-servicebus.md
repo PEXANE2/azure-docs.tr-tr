@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815765"
+ms.locfileid: "88853305"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -85,23 +85,23 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
    1. Bağlantınız için bir ad girin ve Service Bus ad alanınızı seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![Bağlantı adı sağlayan ve Service Bus ad alanını seçen ekran görüntüsü](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       Bunun yerine bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. Bağlantı dizeniz yoksa, [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
 
    1. Service Bus ilkenizi seçin ve **Oluştur**' u seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![Service Bus ilkesi seçmeyi gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. Kuyruk veya konu gibi istediğiniz mesajlaşma varlığını seçin. Bu örnek için Service Bus kuyruğunuzu seçin.
    
-      ![Service Bus kuyruğu seçin](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![Service Bus kuyruğu seçmeyi gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. Seçtiğiniz Tetikleyiciniz için gerekli bilgileri sağlayın. Eyleme diğer kullanılabilir özellikleri eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz özellikleri seçin.
 
    Bu örneğin tetikleyicisi için, kuyruğu denetleme sıklığını ve yoklama aralığını seçin.
 
-   ![Yoklama aralığını ayarla](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Service Bus tetikleyicisinde yoklama aralığı ayarlamayı gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    Kullanılabilir Tetikleyiciler ve özellikler hakkında daha fazla bilgi için bağlayıcının [başvuru sayfasına](/connectors/servicebus/)bakın.
 
@@ -123,29 +123,29 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
    Bu örnek için **Ileti gönder** eylemini seçin.
 
-   ![Service Bus eylemi seçin](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![Service Bus eyleminin seçildiğinin gösterildiği ekran görüntüsü](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. Eyleminiz Service Bus ad alanına ilk kez bağlanıyorsa, Logic App Designer sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 
    1. Bağlantınız için bir ad girin ve Service Bus ad alanınızı seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![Bir bağlantı adı ve Service Bus ad alanı seçme gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       Bunun yerine bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. Bağlantı dizeniz yoksa, [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
 
    1. Service Bus ilkenizi seçin ve **Oluştur**' u seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Service Bus ilkesi seçme ve Oluştur düğmesini seçme gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. Kuyruk veya konu gibi istediğiniz mesajlaşma varlığını seçin. Bu örnek için Service Bus kuyruğunuzu seçin.
 
-      ![Service Bus kuyruğu seçin](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Service Bus kuyruğu seçmeyi gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. Seçtiğiniz eyleminiz için gerekli ayrıntıları sağlayın. Eyleme diğer kullanılabilir özellikleri eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz özellikleri seçin.
 
    Örneğin, eyleme eklemek için **içerik** ve **içerik türü** özelliklerini seçin. Ardından, göndermek istediğiniz iletinin içeriğini belirtin.
 
-   ![İleti içeriğini ve ayrıntılarını sağlayın](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![İleti içerik türünü ve ayrıntılarını sağlamayı gösteren ekran görüntüsü](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    Kullanılabilir eylemler ve özellikleri hakkında daha fazla bilgi için bağlayıcının [başvuru sayfasına](/connectors/servicebus/)bakın.
 

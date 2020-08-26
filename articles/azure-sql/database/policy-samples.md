@@ -7,15 +7,15 @@ author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 4f3a417eca837778f2222d92d09b191082c8b195
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b86dd714bdd7f28ba5946e23c21b601e3336211c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276201"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855288"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Ilkesi yerleşik tanımları
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu sayfa, Azure SQL veritabanı ve SQL yönetilen örneği için [Azure ilkesi](../../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 

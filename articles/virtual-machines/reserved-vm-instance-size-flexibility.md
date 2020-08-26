@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658279"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855502"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği
 
-Ayrılmış bir sanal makine örneği satın aldığınızda, örnek boyutu esnekliği veya kapasite önceliği için iyileştirmeden seçim yapabilirsiniz. Ayrılmış VM örnekleri için en iyileştirme ayarını ayarlama veya değiştirme hakkında daha fazla bilgi için bkz. [ayrılmış VM örnekleri için optimizasyon ayarını değiştirme](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+Ayrılmış bir sanal makine örneği satın aldığınızda, örnek boyutu esnekliği veya kapasite önceliği için iyileştirmeden seçim yapabilirsiniz. Ayrılmış VM örnekleri için en iyileştirme ayarını ayarlama veya değiştirme hakkında daha fazla bilgi için bkz. [ayrılmış VM örnekleri için optimizasyon ayarını değiştirme](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 
 Örnek boyutu esnekliği için en iyi duruma getirilmiş ayrılmış bir sanal makine örneğiyle, satın aldığınız rezervasyon aynı örnek boyutu esneklik grubundaki sanal makineler (VM) boyutlarına uygulanabilir. Örneğin, Standard_DS5_v2 gibi DSv2 serisinde listelenen bir VM boyutu için bir ayırma satın alırsanız, rezervasyon iskontosu aynı örnek boyutu esneklik grubunda listelenen diğer dört boyuta de uygulanabilir:
 
@@ -52,4 +52,4 @@ Bu dosyayı programlama yoluyla kullanabilmeniz için dosya URL 'sini ve şemay�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Azure ayırmaları](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)nelerdir.
+Daha fazla bilgi için bkz. [Azure ayırmaları](../cost-management-billing/reservations/save-compute-costs-reservations.md)nelerdir.

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697906"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853865"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
 
@@ -58,7 +58,7 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine çağrılar `acquireToken()` ), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException`bir dizi nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` bir dizi nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
 - Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.
@@ -76,7 +76,7 @@ Intune Şirket Portalı yüklenip etkin aracı olarak çalışıyorsa ve Microso
 
 Aracıda uyumlu bir yeniden yönlendirme URI 'SI kaydetmeniz gerekir. Aracının yeniden yönlendirme URI 'sinin uygulamanızın paket adının yanı sıra, uygulamanızın imzasının Base64 kodlamalı gösterimini içermesi gerekir.
 
-Yeniden yönlendirme URI 'sinin biçimi:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+Yeniden yönlendirme URI 'sinin biçimi: `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
 Uygulamanızın imzalama anahtarlarını kullanarak Base64 URL kodlamalı imzanızı oluşturun. Hata ayıklama imzalama anahtarlarınızı kullanan bazı örnek komutlar aşağıda verilmiştir:
 
@@ -122,3 +122,12 @@ MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden,
 
 - Kullanıcıdan Microsoft Authenticator uygulaması ve Intune Şirket Portalı için güç iyileştirmesini devre dışı vermesini isteyin.
 - Kullanıcıdan izin vermesini isteyin `"READ_CONTACTS"`
+
+## <a name="verifying-broker-integration"></a>Aracı tümleştirmesi doğrulanıyor
+
+Aracı tümleştirmesi 'nin çalıştığını hemen temizlemeyebilir, ancak aşağıdakileri denetlemek için aşağıdaki adımları kullanabilirsiniz:
+
+1. Android cihazınızda, aracıyı kullanarak bir istek doldurun.
+1. Android cihazınızdaki Ayarlar ' da, kimlik doğrulamasından geçen hesaba karşılık gelen yeni oluşturulan bir hesabı arayın. Hesap *iş hesabı*türünde olmalıdır.
+
+Testi yinelemek istiyorsanız, hesabı ayarlardan kaldırabilirsiniz.

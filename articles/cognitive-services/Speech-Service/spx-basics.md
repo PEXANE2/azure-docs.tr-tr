@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590226"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854895"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -31,10 +31,18 @@ Bu bölümde, genellikle ilk kez test ve deneme için yararlı olan birkaç teme
 spx
 ```
 
-**Ayrıca bkz** . komut parametrelerinin sağında listelenen yardım konuları. Ayrıca konuları anahtar sözcüğe göre de arayabilirsiniz. Örneğin, konuşma CLı örnekleri hakkındaki Yardım konularının listesini görmek için aşağıdaki komutu girin:
+Dikkat: komut parametrelerinin sağında listelenen yardım konuları **bölümüne bakın** . Alt komutlar hakkında ayrıntılı yardım almak için bu komutları girebilirsiniz.
+
+Yardım konularını anahtar sözcüğe göre arayabilirsiniz. Örneğin, konuşma CLı kullanım örneklerinin bir listesini görmek için aşağıdaki komutu girin:
 
 ```shell
 spx help find --topics "examples"
+```
+
+Recognize komutuna yönelik seçenekleri görmek için aşağıdaki komutu girin:
+
+```shell
+spx help recognize
 ```
 
 Şimdi, aşağıdaki komutu çalıştırarak varsayılan mikrofonunuzu kullanarak bazı konuşma tanıma işlemleri gerçekleştirmek için konuşma hizmetini kullanın.

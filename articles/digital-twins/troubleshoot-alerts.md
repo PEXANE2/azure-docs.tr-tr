@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1b296cd942e36817da2832467ab603ebd833f825
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910380"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854844"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure dijital TWINS sorunlarını giderme: uyarılar
 
@@ -28,13 +28,17 @@ Azure dijital TWINS örneğiniz için uyarıların nasıl etkinleştirileceği a
 
 2. Menüden **Uyarı** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçin.
 
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü. Henüz hiç uyarı yapılandırılmadı" lightbox="media/troubleshoot-alerts/alerts-pre.png":::
-
 3. Aşağıdaki *Uyarı kuralı oluştur* sayfasında, koşulları, tetiklenecek eylemleri ve uyarı ayrıntılarını belirlemek için istemleri takip edebilirsiniz.     
-    * **Kapsam** ayrıntıları, örneğinizin ayrıntıları ile otomatik olarak doldurulur.
-    * Uyarı tetikleyicilerini ve yanıtlarını özelleştirmek için **koşul** ve **eylem grubu** ayrıntılarını tanımlayacaksınız.
+    * **Kapsam** ayrıntıları, örneğinizin ayrıntıları ile otomatik olarak doldurulmalıdır
+    * Uyarı tetikleyicilerini ve yanıtlarını özelleştirmek için **koşul** ve **eylem grubu** ayrıntılarını tanımlayacaksınız
+    * **Uyarı kuralı ayrıntıları** bölümünde, _Uyarı kuralı adı_, _Açıklama (isteğe bağlı)_ girin. Uyarının, oluşturulduktan hemen sonra etkin hale gelmesini istiyorsanız, _oluşturulduktan sonra uyarı kuralını etkinleştir_ onay kutusunu seçebilirsiniz.
+    * Eklediğiniz bazı koşullara ve eylemlere göre, ilgili açılan kutudan kaynak grubuna ve _önem derecesine_ sahip _Uyarı kuralını kaydet_ ' i seçmeniz gerekir.
 
-    :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Kapsam, koşul ve eylem grubu için bölümlerle uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+4. Uyarı kuralınızı oluşturmak için _Uyarı kuralı oluştur_ düğmesini seçin.
+
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Kapsam, koşul ve eylem grubu için bölümlerle uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+
+:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Uyarı kuralı oluşturma uyarı kuralı ayrıntıları bölümünü gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
 
 Bu alanları doldurmaya yönelik kılavuzlu bir anlatım için bkz. [*Microsoft Azure uyarılara genel bakış*](../azure-monitor/platform/alerts-overview.md). Aşağıda, adımların Azure dijital TWINS için nasıl görüneceğine ilişkin bazı örnekler verilmiştir.
 

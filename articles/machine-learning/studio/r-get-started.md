@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431965"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854835"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 [Veri kümesini](#loading)yüklerken veri kümelerini yükleme konusunda zaten tartışıldık. Önceki bölümde gösterilen R betiğini oluşturup sınadıktan sonra şunları yapın:
 
-1. R betiğini bir dosyasına kaydedin. R dosyası. Komut dosyası dosyamı "simpleçiz" olarak çağırdım. R ". İçeriği burada bulabilirsiniz.
+1. R betiğini bir dosyasına kaydedin. R dosyası. Komut dosyası dosyamı "simpleçiz" olarak çağırdım. R ". İşte bu dosya:
 
    ```r
    ## Only one of the following two lines should be used
@@ -250,7 +250,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. `source()` [R betik modülünün yürütülmesi][execute-r-script] için kod penceresine ZIP dosya adınızı içeren işlevi yazın. Yazdığım durumda `source("src/simpleplot.R")` .  
 
-1. **Kaydet**' i seçtiğinizden emin olun.
+1. **Kaydet**’i seçtiğinizden emin olun.
 
 Bu adımlar tamamlandıktan sonra, deneme çalıştırıldığında [r betiği Yürüt][execute-r-script] , ZIP dosyasındaki r betiğini yürütür. Bu noktada, denemenizin Şekil 5 ' i gibi görünmesi gerekir.
 
@@ -570,11 +570,11 @@ Her şey çalışıyor gibi görünüyor. Veri Çerçevemizdeki beklenen değerl
 
 Bu bölümde, veri Çerçevemizin sütunlarındaki bazı sütunlarımızda bazı basit dönüştürmeler gerçekleştireceğiz. R dili neredeyse rastgele değer dönüşümlerini destekler. Aşağıda [daha fazla okumada](#appendixb) başvurular kapsamlı örnekler içerir.
 
-Veri Çerçevemizin özetlerindeki değerlere baktığınızda, burada tek bir şey görmeniz gerekir. California 'da üretilmiş mılden daha fazla dondurma mı? Hayır, bu durum hiçbir şey olmadığı için değildir, bu olgu gibi üzgün bir ABD Birimler farklı. Fiyat ABD Sterlini ' de yer alıyor, Milk, 1 M ABD libre cinsindendir, dondurma 1.000 ABD galon birimlerinde ve cotsat Cheese, 1.000 ABD libre cinsindendir. Her galon 6,5 Sterlini yaklaşık olarak% libre ağırldığında, bu değerleri, hepsi de eşit birimlerde olan 1.000 libre olacak şekilde dönüştürmek için çarpmaları kolayca yapabiliriz.
+Veri Çerçevemizin özetlerindeki değerlere baktığınızda, burada tek bir şey görmeniz gerekir. California 'da üretilmiş mılden daha fazla dondurma mı? Hayır, bu durum hiçbir şey olmadığı için değildir, bu olgu gibi üzgün bir ABD Birimler farklı. Fiyat ABD Sterlini ' de yer alıyor, Milk, 1 M ABD libre cinsindendir, dondurma 1.000 ABD galon birimlerinde ve cotsat Cheese, 1.000 ABD libre cinsindendir. Her galon 6,5 Sterlini yaklaşık olarak% libre ağırldığında, bu değerleri dönüştürmek için çarpmaları kolayca yapabiliriz. bu nedenle, hepsi 1.000 libre olan eşit birimlerde bulunur.
 
 Tahmin modelimiz için, bu verilerin eğilimi ve dönemsel olarak ayarlanması için bir çarpma modeli kullanıyoruz. Bir günlük dönüştürmesi, bu işlemi basitleştirecek doğrusal bir model kullanmamızı sağlar. Günlük dönüşümünü, çarpanın uygulandığı aynı işleve uygulayabiliriz.
 
-Aşağıdaki kodda yeni bir işlev tanımladım `log.transform()` ve sayısal değerleri içeren satırlara uygularsınız. R `Map()` işlevi, `log.transform()` işlevi veri çerçevesinin seçili sütunlarına uygulamak için kullanılır. `Map()`, işlevine benzerdir, `apply()` ancak işlev için birden fazla bağımsız değişken listesine izin verir. Çarpanların listesinin, işleve ikinci bağımsız değişkeni sağladığı unutulmamalıdır `log.transform()` . Bu `na.omit()` işlev, veri çerçevesinde eksik veya tanımsız değerlere sahip olmadığından emin olmak için Temizleme işlemi olarak kullanılır.
+Aşağıdaki kodda yeni bir işlev tanımladım `log.transform()` ve sayısal değerleri içeren satırlara uygularsınız. R `Map()` işlevi, `log.transform()` işlevi veri çerçevesinin seçili sütunlarına uygulamak için kullanılır. `Map()` , işlevine benzerdir, `apply()` ancak işlev için birden fazla bağımsız değişken listesine izin verir. Çarpanların listesinin, işleve ikinci bağımsız değişkeni sağladığı unutulmamalıdır `log.transform()` . Bu `na.omit()` işlev, veri çerçevesinde eksik veya tanımsız değerlere sahip olmadığından emin olmak için Temizleme işlemi olarak kullanılır.
 
 ```r
 log.transform <- function(invec, multiplier = 1) {
@@ -773,7 +773,7 @@ Bu değişkenler arasındaki ilişkilerde bazı tek görünümlü yapı mevcuttu
 
 ### <a name="correlation-analysis"></a>Bağıntı analizi
 
-Bağıntı analizini gerçekleştirmek için, değişkenleri aynı şekilde ve standartlaştırmanız gerekir. Yalnızca `scale()` değişkenleri ortalar ve ölçeklendirilen R işlevini kullanabiliriz. Bu işlev iyi şekilde daha hızlı çalıştırılabilir. Bununla birlikte, R 'de savunma programı 'nın bir örneğini göstermek istiyorum.
+Bağıntı analizini gerçekleştirmek için, değişkenleri aynı şekilde ve standartlaştırmanız gerekir. Yalnızca `scale()` değişkenleri ortalar ve ölçeklendirilen R işlevini kullanabiliriz. Bu işlev iyi şekilde daha hızlı çalıştırılabilir. Bununla birlikte, R 'de savunma programlamasına bir örnek göstermek istiyorum.
 
 `ts.detrend()`Aşağıda gösterilen işlev bu işlemlerin her ikisini de gerçekleştirir. Aşağıdaki iki kod satırı verileri de eğilim olarak belirleyip değerleri standartlaştırır.
 
@@ -828,7 +828,7 @@ Değer dönüşümlerindeki savunma programlamanın bir örneğini zaten tartı�
 
 Serbest bırakma için kullanılan doğrusal gerileme bir zaman serisi gerilemesi olduğunu unutmayın. Öngörücüsü değişkeni bir zaman serisi nesnesidir.  
 
-`ts.detrend()`Tanımlandıktan sonra, veri Çerçevemizdeki ilgilendiğiniz değişkenlere uygularsınız. Kullanılarak oluşturulan sonuç listesini `lapply()` veri verisi çerçevesine vermemiz gerekir `as.data.frame()` . ' In savunma konuları nedeniyle `ts.detrend()` , değişkenlerden birini işleyememesi başkalarının doğru işlemesini engellemez.  
+`ts.detrend()`Tanımlandıktan sonra, veri Çerçevemizdeki ilgilendiğiniz değişkenlere uyguladık. Kullanılarak oluşturulan sonuç listesini `lapply()` veri verisi çerçevesine vermemiz gerekir `as.data.frame()` . ' In savunma konuları nedeniyle `ts.detrend()` , değişkenlerden birini işleyememesi başkalarının doğru işlemesini engellemez.  
 
 Kodun son satırı, ikili bir dağınık terçiz oluşturur. R kodunu çalıştırdıktan sonra, dağınık terçizimin sonuçları şekil 17 ' de gösterilir.
 
@@ -1338,7 +1338,7 @@ RStudio oldukça iyi belgelenmiştir. İşte, başlamanızı sağlamak için RSt
 Bu R programlama öğreticisi, Azure Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki tanıtım mevcuttur:
 
 * [Yeni başlayanlar Için R](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Ile Emmanuel paradne, başlamak için iyi bir yerdir.  
-* W ile [R 'ye giriş](https://cran.r-project.org/doc/manuals/R-intro.html) . N. Venables et. diğerleri, Biraz daha derinliğe gider.
+* W ile [R 'ye giriş](https://cran.r-project.org/doc/manuals/R-intro.html) . N. Venables et al. biraz daha derinliğe gider.
 
 R üzerinde başlamanıza yardımcı olabilecek birçok kitap vardır. İşte yararlı buldum.
 
@@ -1355,7 +1355,8 @@ R ile Paul Cowpertwaıt ve Andrew Metcalfe ile kitap **giriş zaman serisi** , z
 Harika internet kaynakları aşağıda verilmiştir:
 
 * Veri kampı, video dersleri ve kodlama alıştırmaları ile tarayıcınızın rahatlığını R. En son R teknikleri ve paketleri hakkında etkileşimli öğreticiler vardır. Ücretsiz [etkileşimli R öğreticisini](https://www.datacamp.com/courses/introduction-to-r)alın.
-* Program aracılığıyla [kesin kılavuz olan R programlama hakkında bilgi edinin](https://www.programiz.com/r-programming) .
+* DataMentor adresinden [tanımlayıcı kılavuz olan R programlama hakkında bilgi edinin](https://www.datamentor.io/r-programming/) .
+* [R CODER](https://r-coder.com/). Yeni başlayanlar için ayrıntılı R öğreticileri ve ücretsiz R kursu.
 * Clarkson University 'ten Kelly siyaha kadar hızlı bir [R öğreticisi](https://www.cyclismo.org/tutorial/R/) .
 * [Veri becerilerinizi geliştirmek Için en üstteki R dil kaynaklarında](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)listelenen 60 R kaynağı vardır.
 

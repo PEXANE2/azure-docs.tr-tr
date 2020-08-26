@@ -2,17 +2,20 @@
 title: SAS belirteci ile güvenli bir şekilde şablon dağıtın
 description: Bir SAS belirteci ile korunan Azure Resource Manager şablonuyla Azure 'a kaynak dağıtın. Azure PowerShell ve Azure CLı gösterir.
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80156404"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855667"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>SAS belirteci ile özel ARM şablonu dağıtma
 
-Azure Resource Manager (ARM) şablonunuz bir depolama hesabında bulunuyorsa, genel olarak ortaya çıkarmamak için şablona erişimi kısıtlayabilirsiniz. Şablon için bir paylaşılan erişim imzası (SAS) belirteci oluşturarak ve dağıtım sırasında bu belirteci sağlayarak güvenli bir şablona erişirsiniz. Bu makalede, bir SAS belirteci ile şablon dağıtmak için Azure PowerShell veya Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır.
+Azure Resource Manager şablonunuz (ARM şablonu) bir depolama hesabında bulunuyorsa, genel kullanıma sunulmamak için şablona erişimi kısıtlayabilirsiniz. Şablon için bir paylaşılan erişim imzası (SAS) belirteci oluşturarak ve dağıtım sırasında bu belirteci sağlayarak güvenli bir şablona erişirsiniz. Bu makalede, bir SAS belirteci ile şablon dağıtmak için Azure PowerShell veya Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır.
+
+> [!IMPORTANT]
+> Şablonunuzun bir SAS belirteciyle güvenliğini sağlamak yerine, [şablon](template-specs.md)özelliklerini kullanmayı düşünün. Şablon özellikleri sayesinde şablonlarınızı kuruluşunuzdaki diğer kullanıcılarla paylaşabilir ve Azure RBAC aracılığıyla şablonlara erişimi yönetebilirsiniz.
 
 ## <a name="create-storage-account-with-secured-container"></a>Güvenli kapsayıcı ile depolama hesabı oluşturma
 
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Aşağıdaki örnek, Cloud Shell Bash ortamıyla birlikte çalışmaktadır. Diğer ortamlar, SAS belirtecinin sona erme zamanını oluşturmak için farklı bir sözdizimi gerektirebilir.
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

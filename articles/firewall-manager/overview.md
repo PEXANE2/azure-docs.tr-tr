@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590413"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855045"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -86,7 +86,7 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Özel trafik filtrelemesi etkinken dal trafiğine dallan|Özel trafik filtrelemesi etkinleştirildiğinde dal trafiğine dallan desteklenmez. |Araştırma.<br><br>Şube bağlantısı, çok önemli ise özel trafiğin güvenliğini sağlayın.|
 |Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
 |Toplu IP adresi ekleme başarısız oluyor|Birden çok genel IP adresi eklerseniz, güvenli Merkez güvenlik duvarı başarısız durumuna geçer.|Daha küçük genel IP adresi artışlarını ekleyin. Örneğin, bir seferde 10 ekleyin.|
-|Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|DNS proxy/özel DNS (Önizleme), Güvenlik Duvarı Yönetim NIC 'sinin yapılandırıldığı senaryolarda çalışmaz. Bu, güvenli Merkez dağıtımlarını ve zorlamalı tünelin etkinleştirildiği durumları içerir.|Araştırma bölümünde çözüm.|
+|Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|Özel DNS (Önizleme), zorunlu tünelleme etkin olan güvenli hub dağıtımları ve hub sanal ağ dağıtımları içinde çalışmaz.|Araştırma bölümünde çözüm.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,15 +2,15 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 08/21/2020
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 23b93f507ef6abe19a0202b28afa31d28490b2b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa21fb99ac5ab24674bf5d4b62fd3fca98de632
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80151329"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853650"
 ---
 ## <a name="what-is-queue-storage"></a>Kuyruk depolama nedir?
 
@@ -22,13 +22,11 @@ Azure Kuyruk hizmeti aşağıdaki bileşenleri içerir:
 
 ![Azure Kuyruk hizmeti bileşenleri](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir: http:// `<storage account>` . Queue.Core.Windows.net/`<queue>`
-  
-    Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:  
-  
-    `http://myaccount.queue.core.windows.net/incoming-orders`
-
 * **Depolama hesabı:** Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesapları hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../articles/storage/common/storage-account-overview.md).
 * **Kuyruk:** Kuyrukta bir dizi ileti vardır. Tüm iletiler bir kuyrukta olmalıdır. Kuyruk adının tamamen küçük harfli olması gerektiğini unutmayın. Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 * **İleti:** İleti, biçimi ne olursa olsun en çok 64 KB büyüklüktedir. Bir iletinin kuyrukta kalabileceği en uzun süre 7 gündür. Sürüm 2017-07-29 veya üzeri için, en fazla yaşam süresi herhangi bir pozitif sayı veya iletinin süresinin dolmadığını belirten-1 olabilir. Bu parametre atlanırsa, varsayılan yaşam süresi yedi gündür.
+* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir: http:// `<storage account>` . Queue.Core.Windows.net/`<queue>`
 
+    Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:
+
+    `http://myaccount.queue.core.windows.net/incoming-orders`

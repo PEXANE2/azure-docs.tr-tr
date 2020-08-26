@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 075bd2d4743a33b189d1c76c69dfd0a9d99b80dd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658306"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852477"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure 'da sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
@@ -21,11 +21,11 @@ ms.locfileid: "88658306"
 
 ## <a name="antimalware"></a>Kötü amaçlı yazılımdan koruma
 
-Bulut ortamları için modern tehdit yatay, uyumluluk ve güvenlik gereksinimlerini karşılamak üzere etkili koruma sağlamak için basıncını artırarak dinamik bir deneyimdir. [Azure Için Microsoft Antimalware](~/articles/security/fundamentals/antimalware.md) , virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan ücretsiz bir gerçek zamanlı koruma özelliğidir. Uyarılar, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeyi veya VM 'niz üzerinde çalışmayı denediğinde sizi bilgilendirmek üzere yapılandırılabilir. Linux veya Windows Server 2008 çalıştıran VM 'lerde desteklenmez.
+Bulut ortamları için modern tehdit yatay, uyumluluk ve güvenlik gereksinimlerini karşılamak üzere etkili koruma sağlamak için basıncını artırarak dinamik bir deneyimdir. [Azure Için Microsoft Antimalware](../security/fundamentals/antimalware.md) , virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan ücretsiz bir gerçek zamanlı koruma özelliğidir. Uyarılar, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeyi veya VM 'niz üzerinde çalışmayı denediğinde sizi bilgilendirmek üzere yapılandırılabilir. Linux veya Windows Server 2008 çalıştıran VM 'lerde desteklenmez.
 
 ## <a name="azure-security-center"></a>Azure Güvenlik Merkezi
 
-[Azure Güvenlik Merkezi](~/articles/security-center/security-center-intro.md) , sanal makinelerinizdeki tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
+[Azure Güvenlik Merkezi](../security-center/security-center-intro.md) , sanal makinelerinizdeki tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
 
 Güvenlik Merkezi 'nin tam zamanında erişimi, sanal makinelerinize gelen trafiği kilitlemek ve gerektiğinde sanal makinelere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltmak için VM dağıtımınız genelinde uygulanabilir. Tam zamanında etkin olduğunda ve bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının VM 'ye yönelik hangi izinlere sahip olduğunu denetler. Doğru izinlere sahip olmaları durumunda istek onaylanır ve Güvenlik Merkezi, ağ güvenlik gruplarını (NSG 'ler), seçilen bağlantı noktalarına sınırlı bir süre boyunca gelen trafiğe izin verecek şekilde otomatik olarak yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. 
 
@@ -41,37 +41,37 @@ Azure yönetilen diskler, buluta kalıcı hale geldiğinde verilerinizi varsayı
 
 Yönetilen diskinizin şifrelenmesi için platform tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınızı kullanarak şifrelemeyi yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, yönetilen disklerdeki tüm verileri şifrelemek ve şifrelerini çözmek için kullanılacak *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. 
 
-Sunucu tarafı şifreleme hakkında daha fazla bilgi edinmek için, [Windows](~/articles/virtual-machines/windows/disk-encryption.md) veya [Linux](~/articles/virtual-machines/linux/disk-encryption.md)makalelerine bakın.
+Sunucu tarafı şifreleme hakkında daha fazla bilgi edinmek için, [Windows](windows/disk-encryption.md) veya [Linux](linux/disk-encryption.md)makalelerine bakın.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
-Gelişmiş [WINDOWS VM](~/articles/virtual-machines/windows/disk-encryption-overview.md) ve [Linux VM](~/articles/virtual-machines/linux/disk-encryption-overview.md) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Windows VM 'lerinde sanal diskler, Rest 'de BitLocker kullanılarak şifrelenir. Linux VM 'lerinde sanal diskler, dm-crypt kullanılarak Rest 'te şifrelenir. 
+Gelişmiş [WINDOWS VM](windows/disk-encryption-overview.md) ve [Linux VM](linux/disk-encryption-overview.md) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Windows VM 'lerinde sanal diskler, Rest 'de BitLocker kullanılarak şifrelenir. Linux VM 'lerinde sanal diskler, dm-crypt kullanılarak Rest 'te şifrelenir. 
 
 Azure 'da sanal diskleri şifrelemek için ücret alınmaz. Şifreleme anahtarları yazılım korumasını kullanarak Azure Key Vault depolanır veya anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) içeri aktarabilir veya oluşturabilirsiniz. Bu şifreleme anahtarları, VM 'nize bağlı sanal diskleri şifrelemek ve şifrelerini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini koruyabilir ve kullanımlarını denetleyebilir. Azure Active Directory hizmet sorumlusu, VM 'Ler açık ve kapalı olduğu için bu şifreleme anahtarlarını vermek üzere güvenli bir mekanizma sağlar.
 
 ## <a name="key-vault-and-ssh-keys"></a>Key Vault ve SSH anahtarları
 
-Gizlilikler ve sertifikalar, kaynak olarak modellenebilir ve [Key Vault](~/articles/key-vault/key-vault-whatis.md)tarafından sağlanabilecek. [Windows VM](~/articles/virtual-machines/windows/key-vault-setup.md) 'ler için anahtar kasalarını ve [Linux sanal MAKINELERI](~/articles/virtual-machines/linux/key-vault-setup.md)için Azure clı 'yi oluşturmak üzere Azure PowerShell kullanabilirsiniz. Şifreleme için anahtarlar da oluşturabilirsiniz.
+Gizlilikler ve sertifikalar, kaynak olarak modellenebilir ve [Key Vault](../key-vault/general/basic-concepts.md)tarafından sağlanabilecek. [Windows VM](windows/key-vault-setup.md) 'ler için anahtar kasalarını ve [Linux sanal MAKINELERI](linux/key-vault-setup.md)için Azure clı 'yi oluşturmak üzere Azure PowerShell kullanabilirsiniz. Şifreleme için anahtarlar da oluşturabilirsiniz.
 
-Anahtar Kasası erişim ilkeleri anahtarlar, gizlilikler ve sertifikalara ayrı ayrı izinler verir. Örneğin, bir kullanıcıya parolalar için herhangi bir izin vermeden yalnızca anahtarlar için erişim verebilirsiniz. Ancak, anahtar, parola veya sertifikalara erişim izni kasa düzeyinde verilir. Diğer bir deyişle, [Anahtar Kasası erişim ilkesi](~/articles/key-vault/key-vault-secure-your-key-vault.md) nesne düzeyindeki izinleri desteklemez.
+Anahtar Kasası erişim ilkeleri anahtarlar, gizlilikler ve sertifikalara ayrı ayrı izinler verir. Örneğin, bir kullanıcıya parolalar için herhangi bir izin vermeden yalnızca anahtarlar için erişim verebilirsiniz. Ancak, anahtar, parola veya sertifikalara erişim izni kasa düzeyinde verilir. Diğer bir deyişle, [Anahtar Kasası erişim ilkesi](../key-vault/general/secure-your-key-vault.md) nesne düzeyindeki izinleri desteklemez.
 
-VM 'lere bağlandığınızda, üzerinde oturum açmak için daha güvenli bir yol sağlamak üzere ortak anahtar şifrelemeyi kullanmanız gerekir. Bu işlem, bir Kullanıcı adı ve parola yerine kendi kimlik doğrulaması için güvenli kabuk (SSH) komutunu kullanan ortak ve özel anahtar değişimini içerir. Parolalar, özellikle de Web sunucuları gibi Internet 'e yönelik VM 'lerde, deneme yanılma saldırılarına karşı savunmasız kalır. Secure Shell (SSH) anahtar çifti ile, kimlik doğrulaması için SSH anahtarları kullanan bir [Linux sanal makinesi](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) oluşturabilir ve oturum açmak için parola gereksinimini ortadan kaldırabilirsiniz. [WINDOWS VM](~/articles/virtual-machines/linux/ssh-from-windows.md) 'den Linux sanal makinesine bağlanmak için SSH anahtarlarını da kullanabilirsiniz.
+VM 'lere bağlandığınızda, üzerinde oturum açmak için daha güvenli bir yol sağlamak üzere ortak anahtar şifrelemeyi kullanmanız gerekir. Bu işlem, bir Kullanıcı adı ve parola yerine kendi kimlik doğrulaması için güvenli kabuk (SSH) komutunu kullanan ortak ve özel anahtar değişimini içerir. Parolalar, özellikle de Web sunucuları gibi Internet 'e yönelik VM 'lerde, deneme yanılma saldırılarına karşı savunmasız kalır. Secure Shell (SSH) anahtar çifti ile, kimlik doğrulaması için SSH anahtarları kullanan bir [Linux sanal makinesi](linux/mac-create-ssh-keys.md) oluşturabilir ve oturum açmak için parola gereksinimini ortadan kaldırabilirsiniz. [WINDOWS VM](linux/ssh-from-windows.md) 'den Linux sanal makinesine bağlanmak için SSH anahtarlarını da kullanabilirsiniz.
 
 ## <a name="managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikler
 
 Bulut uygulamaları oluştururken yaygın olarak karşılaşılan bir zorluk, bulut hizmetlerinde kimlik doğrulaması yapmak için kodunuzda bulunan kimlik bilgilerinin yönetimidir. Kimlik bilgilerinin güvenlik altında tutulması önemli bir görevdir. İdeal olan kimlik bilgilerinin geliştirici iş istasyonlarında asla gösterilmemesi ve kaynak denetimine kaydedilmemesidir. Azure Key Vault kimlik bilgilerini, gizli dizileri ve diğer anahtarları güvenle depolamak için bir yol sağlar, ama bunları alabilmek için kodunuzun Key Vault'ta kimlik doğrulaması yapması gerekir. 
 
-Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizmetleri bu sorunu çözer. Bu özellik, Azure hizmetlerine Azure AD üzerinde otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği kullanarak, Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri olmadan kimlik doğrulaması yapabilirsiniz.  Bir VM üzerinde çalışan kodunuz, yalnızca VM içinden erişilebilen iki uç noktasından belirteç isteyebilir. Bu hizmet hakkında daha ayrıntılı bilgi için [Azure kaynaklarına yönelik yönetilen kimlikler](~/articles/active-directory/managed-identities-azure-resources/overview.md) genel bakış sayfasını gözden geçirin.   
+Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizmetleri bu sorunu çözer. Bu özellik, Azure hizmetlerine Azure AD üzerinde otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği kullanarak, Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri olmadan kimlik doğrulaması yapabilirsiniz.  Bir VM üzerinde çalışan kodunuz, yalnızca VM içinden erişilebilen iki uç noktasından belirteç isteyebilir. Bu hizmet hakkında daha ayrıntılı bilgi için [Azure kaynaklarına yönelik yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) genel bakış sayfasını gözden geçirin.   
 
 ## <a name="policies"></a>İlkeler
 
-[Azure ilkeleri](~/articles/azure-policy/azure-policy-introduction.md) , kuruluşunuzun [Windows VM](~/articles/virtual-machines/windows/policy.md) 'Leri ve [Linux VM 'leri](~/articles/virtual-machines/linux/policy.md)için istenen davranışı tanımlamak üzere kullanılabilir. Bir kuruluş, ilkeleri kullanarak kuruluş genelinde çeşitli kuralları ve kuralları zorunlu kılabilir. İstenen davranışın uygulanması, kuruluşun başarısına katkıda bulunmaya karşın riski azaltmaya yardımcı olabilir.
+[Azure ilkeleri](../governance/policy/overview.md) , kuruluşunuzun [Windows VM](./windows/policy.md) 'Leri ve [Linux VM 'leri](./linux/policy.md)için istenen davranışı tanımlamak üzere kullanılabilir. Bir kuruluş, ilkeleri kullanarak kuruluş genelinde çeşitli kuralları ve kuralları zorunlu kılabilir. İstenen davranışın uygulanması, kuruluşun başarısına katkıda bulunmaya karşın riski azaltmaya yardımcı olabilir.
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](~/articles/role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](https://docs.microsoft.com/cli/azure/role)veya[Azure POWERSHELL](~/articles/role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](~/articles/role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](https://docs.microsoft.com/cli/azure/role)veya[Azure POWERSHELL](../role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Linux](~/articles/security/fundamentals/overview.md) veya [Windows](~/articles/virtual-machines/windows/tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.
+- [Linux](../security/fundamentals/overview.md) veya [Windows](windows/tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.
 

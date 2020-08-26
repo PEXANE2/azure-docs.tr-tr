@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782847"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852152"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -178,6 +178,7 @@ Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım de
 |`enable_dnn`|[Tahmini DNNs 'Leri etkinleştirin]().||
 |`time_series_id_column_names`|Aynı zaman damgasına sahip birden çok satırı olan verilerdeki zaman serisini benzersiz şekilde tanımlamak için kullanılan sütun adları. Zaman serisi tanımlayıcıları tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)bakın.||
 |`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Gecikme bir liste veya tek tamsayı olarak temsil edilir. Bağımsız değişkenler ve bağımlı değişken arasındaki ilişki, varsayılan olarak birbiriyle eşleşmediği veya ilişkilendirilemiyor durumunda gecikme kullanılmalıdır. ||
+|`feature_lags`| Belirlenen özellikler, ayarlandığında otomatik ML tarafından otomatik olarak kararilir `target_lags` ve olarak `feature_lags` ayarlanır `auto` . Özellik lags özelliğinin etkinleştirilmesi doğruluğu artırmaya yardımcı olabilir. Özellik lags varsayılan olarak devre dışıdır. ||
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* <= eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin. [Hedef sıralı pencere toplama](#target-rolling-window-aggregation)hakkında daha fazla bilgi edinin.||
 
 

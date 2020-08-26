@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192278"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853283"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
@@ -78,8 +78,8 @@ Azure SignalR hizmeti kaynaklarının genel bakış dikey penceresinde, sizin i�
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Hizmet modunun anlamı nedir `Default` / `Serverless` / `Classic` ? Nasıl seçebilirim?
 
 Mod
-* `Default` mod, hub sunucusu **gerektiriyor** . Hub için kullanılabilir sunucu bağlantısı yoksa, istemci bu hub 'a bağlanmaya çalışır.
-* `Serverless` mod hiçbir sunucu bağlantısına izin **vermiyor** , yani tüm sunucu bağlantılarını reddeder, tüm istemcilerin sunucusuz modda olması gerekir.
+* `Default` mod, hub sunucusu *gerektiriyor* . Bu modda, Azure SignalR istemci trafiğini bağlı hub sunucusu bağlantılarına yönlendirir. Azure SignalR bağlı bir hub sunucusunu denetler. Bağlı bir hub sunucusu bulunamazsa, Azure SignalR gelen istemci bağlantılarını reddeder. Ayrıca, bağlantılı istemcileri doğrudan Azure SignalR üzerinden yönetmek için bu modda **Yönetim API 'sini** de kullanabilirsiniz.
+* `Serverless` mod hiçbir sunucu bağlantısına izin *vermiyor* , yani tüm sunucu bağlantılarını reddeder. Tüm istemciler sunucusuz modda olmalıdır. İstemciler Azure SignalR 'ye bağlanır ve kullanıcılar, genellikle Merkez LOGI 'yi işlemek için **Azure işlevi** gibi sunucusuz teknolojiler kullanır. Azure SignalR 'nin sunucusuz modunu kullanan [basit bir örneğe](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) bakın.
 * `Classic` mod, karışık bir durum. Hub 'ın sunucu bağlantısı olduğunda, yeni istemci hub sunucusuna yönlendirilir, aksi takdirde istemci sunucusuz moduna girer.
 
   Bu durum bir sorun oluşmasına neden olabilir, örneğin, tüm sunucu bağlantıları bir süre boyunca kaybedildiğinden, bazı istemciler hub sunucusu 'na yönlendirme yerine sunucusuz moda girer.

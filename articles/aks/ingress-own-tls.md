@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde kendi sertifikalarınız�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0254b8746c757d98ee98e4815dc53b22d5014765
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272816"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855688"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service'te (AKS) HTTPS giriş denetleyicisi oluşturma ve kendi TLS sertifikalarınızı kullanma
 
@@ -27,7 +27,7 @@ Aşağıdakileri de yapabilirsiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede NGıNX giriş denetleyicisini yüklemek için [Held 3][helm] kullanılmaktadır. Held 'nin en son sürümünü kullandığınızdan ve *kararlı* Helu deposuna erişiminizin olduğundan emin olun. Yükseltme yönergeleri için, bkz. [hela Install docs][helm-install]. Held 'yi yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][use-helm].
+Bu makalede NGıNX giriş denetleyicisini yüklemek için [Held 3][helm] kullanılmaktadır. Held 'nin en son sürümünü kullandığınızdan ve giriş *-NGINX* Held deposuna erişiminizin olduğundan emin olun. Yükseltme yönergeleri için, bkz. [hela Install docs][helm-install]. Held 'yi yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][use-helm].
 
 Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
@@ -47,11 +47,11 @@ Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması ger
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -63,17 +63,16 @@ Yükleme sırasında, giriş denetleyicisi için bir Azure genel IP adresi oluş
 Genel IP adresini almak için `kubectl get service` komutunu kullanın.
 
 ```console
-kubectl get service -l app=nginx-ingress --namespace ingress-basic
+kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 ```
 
 IP adresinin hizmete atanması birkaç dakika sürer.
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-nginx-ingress-controller         LoadBalancer   10.0.61.144    EXTERNAL_IP   80:30386/TCP,443:32276/TCP   6m2s
-nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 Dağıtımı test etmek için son adımda kullanıldığından, bu genel IP adresini bir yere unutmayın.

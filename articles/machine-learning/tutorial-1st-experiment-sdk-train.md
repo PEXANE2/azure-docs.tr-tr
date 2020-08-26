@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
-ms.date: 02/10/2020
+ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852710"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854921"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -43,21 +43,24 @@ Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanı
 
 1. [Bir kısım](tutorial-1st-experiment-sdk-setup.md#open)içinde gösterildiği gibi, klasörünüzde **-1. deneme-SDK-tren. ipynb öğreticisini** açın.
 
-
-> [!Warning]
-> Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici için **gereken tüm kod ve verileri** içeren Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* .
+Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici için **gereken tüm kod ve verileri** içeren Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* .
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 
-> [!Important]
-> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
->
-> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
-> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
+<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
 
-Sınıfını içeri aktarın `Workspace` ve `config.json` Bu işlevi kullanarak abonelik bilgilerinizi `from_config().` Varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` . Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
+> [!TIP]
+> Öğretici içeriği _-1. deneme-SDK-eğitme. ipynb_. Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
+
+Sınıfını içeri aktarın `Workspace` ve `config.json` Bu işlevi kullanarak abonelik bilgilerinizi `from_config().` Varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` . Bu Not defterini çalışma alanınızdaki bir bulut Not defteri sunucusunda çalıştırıyorsanız, dosya otomatik olarak kök dizinde olur.
+
+Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir. Ayrıca, Kullanıcı ile bağlantılı birden fazla kiracı varsa, aşağıdaki satırları eklemeniz gerekir:
+```
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
+```
 
 ```python
 from azureml.core import Workspace
@@ -105,16 +108,16 @@ alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for alpha in alphas:
     run = experiment.start_logging()
     run.log("alpha_value", alpha)
-
+    
     model = Ridge(alpha=alpha)
     model.fit(X=X_train, y=y_train)
     y_pred = model.predict(X=X_test)
     rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
     run.log("rmse", rmse)
-
+    
     model_name = "model_alpha_" + str(alpha) + ".pkl"
     filename = "outputs/" + model_name
-
+    
     joblib.dump(value=model, filename=filename)
     run.upload_file(name=model_name, path_or_stream=filename)
     run.complete()
@@ -133,7 +136,7 @@ Eğitim tamamlandıktan sonra, `experiment` Studio 'da deneme için bir bağlant
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Studio 'da eğitim sonuçlarını görüntüleme
 
@@ -162,7 +165,7 @@ for run in experiment.get_runs():
     # each logged metric becomes a key in this returned dict
     run_rmse = run_metrics["rmse"]
     run_id = run_details["runId"]
-
+    
     if minimum_rmse is None:
         minimum_rmse = run_rmse
         minimum_rmse_runid = run_id
@@ -172,15 +175,15 @@ for run in experiment.get_runs():
             minimum_rmse_runid = run_id
 
 print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
+print("Best run_id rmse: " + str(minimum_rmse))    
 ```
-
 ```output
 Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
 Best run_id rmse: 57.234760283951765
 ```
 
 Deneme nesnesiyle birlikte oluşturucuyu kullanarak bireysel çalıştırmayı getirmek için en iyi çalıştırma KIMLIĞINI kullanın `Run` . Sonra `get_file_names()` Bu çalıştırınızdan yüklenebilecek tüm dosyaları görmek için çağırın. Bu durumda, yalnızca eğitim sırasında her çalıştırma için bir dosya karşıya yüklenir.
+
 
 ```python
 from azureml.core import Run
@@ -194,9 +197,11 @@ print(best_run.get_file_names())
 
 `download()`Çalıştır nesnesinde, indirilecek model dosyası adını belirterek çağırın. Varsayılan olarak, bu işlev geçerli dizine indirir.
 
+
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
+<!-- nbend -->
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

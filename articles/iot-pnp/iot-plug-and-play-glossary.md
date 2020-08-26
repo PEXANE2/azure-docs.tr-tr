@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475473"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854209"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
 
@@ -54,6 +54,10 @@ Bir bağlantı dizesi, bir uç noktaya bağlanmak için gereken bilgileri kapsü
 
 - Cihaz bağlantı dizeleri IoT Hub 'ındaki cihaza yönelik uç noktalara bağlanmak için [ıot Tak ve kullan cihazları](#iot-plug-and-play-device) etkinleştirir. Bir cihazdaki istemci kodu, IoT Hub ile güvenli bir bağlantı kurmak için bağlantı dizesini kullanır.
 - IoT Hub bağlantı dizeleri, bir IoT Hub 'ında hizmete yönelik uç noktalara güvenli bir şekilde bağlanmak için arka uç çözümlerini ve araçlarını etkinleştirir. Bu çözümler ve araçlar, IoT Hub 'ını ve ona bağlı olan cihazları yönetir.
+
+## <a name="device-certification"></a>Cihaz Sertifikası
+
+IoT Tak ve Kullan cihaz Sertifikası programı, bir cihazın IoT Tak ve Kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 
 ## <a name="device-model"></a>Cihaz modeli
 

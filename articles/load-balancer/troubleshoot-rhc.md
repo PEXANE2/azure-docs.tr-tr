@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719755"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855260"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Kaynak durumu, ön uç ve arka uç kullanılabilirliği sorunlarını giderme 
 
@@ -30,6 +30,9 @@ Veri yolu kullanılabilirlik ölçümü, yük dengeleme ve gelen NAT kuralları 
 
 ## <a name="health-probe-status"></a>Sistem durumu yoklama durumu
 Durum araştırma durumu ölçümü, sistem durumu araştırmasıyla tanımlanan protokolün ping işlemi tarafından oluşturulur. Bu ping, arka uç havuzundaki her örneğe ve sistem durumu araştırmasına tanımlanan bağlantı noktasına gönderilir. HTTP ve HTTPS araştırmaları için, başarılı bir ping HTTP 200 OK yanıtı gerektirir, ancak TCP araştırmaları ile tüm yanıtlar başarılı olarak kabul edilir. Her bir araştırmanın ardışık başarısı veya başarısızlığı, arka uç örneğinin sağlıklı olup olmadığını ve arka uç havuzunun atandığı Yük Dengeleme kuralları için trafik alıp alamayacağını belirler. Veri yolu kullanılabilirliğine benzer şekilde, örnekleme aralığı sırasında ortalama başarılı/toplam ping isteği bildiren ortalama toplamayı kullanırız. Bu durum araştırma durumu değeri, ön uç ile trafik göndermeden arka uç örneklerinizi inceleyerek yük dengeleyicinizden yalıtılmış arka uç durumunu belirtir.
+
+>[!IMPORTANT]
+>Durum araştırma durumu bir dakika temelinde örneklenir. Bu, aksi takdirde sabit bir değerde küçük dalgalanmalara yol açabilir. Örneğin, biri araştırılan ve bir araştırılan iki arka uç örneği varsa, sistem durumu araştırma hizmeti sağlıklı örnek için 7 örnek ve sağlıksız örnek için 6 alabilir. Bu, bir dakikalık zaman aralığı için 46,15 olarak gösterilen daha önceden sabit bir 50 değerine neden olur. 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>Düşürülmüş ve kullanılamayan yük dengeleyicileri tanılayın
 [Kaynak sistem durumu makalesinde](load-balancer-standard-diagnostics.md#resource-health-status)özetlenen şekilde, düşürülmüş bir yük dengeleyici, %25 ila %90 veri yolu kullanılabilirliği arasında ve kullanılamayan bir yük dengeleyici, iki dakikalık bir dönem boyunca %25 ' ten az veri yolu kullanılabilirliğiyle biridir. Bu adımlar, yapılandırdığınız sistem durumu araştırma durumunda veya veri yolu kullanılabilirliği uyarılarında gördüğünüz hatayı araştırmak için de alınabilir. Kaynak sistem durumumuzu denetlediğimiz ve yük dengeleyicimizi %0 ' ın bir veri yolu kullanılabilirliği ile kullanılamaz hale getireceğimizi keşfettireceğiz; hizmetimiz çalışmıyor.

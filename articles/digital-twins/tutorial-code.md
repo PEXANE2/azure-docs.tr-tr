@@ -1,5 +1,5 @@
 ---
-title: Bir istemci uygulaması kodlama
+title: 'Öğretici: istemci uygulamasını kodlayın'
 titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK 'SıNı kullanarak bir istemci uygulaması için en düşük kodu yazma öğreticisi.
 author: baanders
@@ -7,18 +7,25 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 282c506f509adce4c616615e8b8e3580166052e6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723478"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854677"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Leri ile kodlama
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
 Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanılarak Azure dijital TWINS hizmetine karşı programlama hakkında bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!div class="checklist"]
+> * Projeyi ayarla
+> * Proje kodu ile çalışmaya başlama   
+> * Kod örneğini doldurun
+> * Kaynakları temizleme
+> * Sonraki adımlar
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -561,7 +568,3 @@ Bu öğreticide, sıfırdan bir .NET konsol istemci uygulaması oluşturdunuz. B
 
 > [!div class="nextstepaction"]
 > [*Öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md)
-
-Bu öğreticide, nasıl yapılır makalelerinde daha fazla yönetim işlemi öğrenerek ya da öğreticide çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini aramaya başladığınızda bu öğreticide yazdığınız koda da eklenebilir.
-* [*Nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)
-* [*Kavramlar: özel modeller*](concepts-models.md)

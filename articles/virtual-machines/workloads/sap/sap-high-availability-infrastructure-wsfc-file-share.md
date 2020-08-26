@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855378"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
 
@@ -57,11 +57,7 @@ ms.locfileid: "83201662"
 [sap-ascs-high-availability-multi-sid-wsfc]:sap-ascs-high-availability-multi-sid-wsfc.md
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-[sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]:sap-high-availability-infrastructure-wsfc-shared-disk.md#47d5300a-a830-41d4-83dd-1a0d1ffdbe6a
-[sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e
-[sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30
-[sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]:sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e
-[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c
+[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]:sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c
 [sap-high-availability-installation-wsfc-file-share]:sap-high-availability-installation-wsfc-file-share.md
@@ -228,7 +224,7 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 **Tablo 1**: yoks/SCS kümesi
 
-| HıZLı\<SID> | SAP ASCS/SCS örnek numarası |
+| HıZLı \<SID> | SAP ASCS/SCS örnek numarası |
 | --- | --- |
 | PR1 | 00 |
 
@@ -250,19 +246,11 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 Azure altyapısını hazırlamak için aşağıdakileri yapın:
 
-* [Altyapıyı mimari Şablonlar 1, 2 ve 3 Için hazırlayın][sap-high-availability-infrastructure-wsfc-shared-disk].
+* [VM 'Leri dağıtın][sap-high-availability-infrastructure-wsfc-shared-disk].
 
-* [Bir Azure sanal ağı oluşturun][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
+* [SAP Ass Için Azure yük dengeleyici oluşturma ve yapılandırma][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
 
-* [Gereklı DNS IP adreslerini ayarlayın][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
-
-* [SAP sanal makineleri için STATIK IP adresleri ayarlayın][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
-
-* [Azure iç yük dengeleyici için bir STATIK IP adresi ayarlayın][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
-
-* [Azure iç yük dengeleyici için varsayılan yoks/SCS Yük Dengeleme kurallarını ayarlayın][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
-
-* [Azure iç yük dengeleyici IÇIN ASCS/SCS varsayılan Yük Dengeleme kurallarını değiştirin][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+* [Sıraya alma çoğaltma sunucusu 2 (ERS2) kullanılıyorsa, ERS2 için Azure Load Balancer yapılandırmasını gerçekleştirin ][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]. 
 
 * [Windows sanal makinelerini etki alanına ekleyin][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 

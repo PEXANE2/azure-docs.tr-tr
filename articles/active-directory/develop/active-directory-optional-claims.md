@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794680"
+ms.locfileid: "88853581"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -54,7 +54,6 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 | `auth_time`                | Kullanıcının en son kimlik doğrulamasının süresi. Bkz. OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Kaynak kiracının bölgesi | JWT        |           | |
 | `sid`                      | Oturum başına Kullanıcı oturumu kapatma için kullanılan oturum KIMLIĞI. | JWT        |  Kişisel ve Azure AD hesapları.   |         |
-| `platf`                    | Cihaz platformu    | JWT        |           | Cihaz türünü doğrulayabileceği yönetilen cihazlarla kısıtlıdır.|
 | `verified_primary_email`   | Kullanıcının açık olan Yauthcumtativee-postalarından kaynaklandırılmış      | JWT        |           |         |
 | `verified_secondary_email` | Kullanıcının SecondaryAuthoritativeEmail kaynağı   | JWT        |           |        |
 | `vnet`                     | VNET tanımlayıcı bilgileri. | JWT        |           |      |

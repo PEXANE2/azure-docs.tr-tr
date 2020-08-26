@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192033"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854722"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -28,6 +28,7 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 * `2020-07-01`V3 için model sürümü `/keyphrases` ve şunları `/pii` `/languages` ekleyen uç noktalar:
     * Adlandırılmış varlık tanıma için ek kamu ve ülkeye özgü [varlık kategorileri](named-entity-types.md?tabs=personal) .
 * Artık yayımlanan [veri sınırlarını](concepts/data-limits.md)aşan v3 API istekleri IÇIN bir HTTP 400 hatası döndürülür. 
+* Bir sapmayı döndüren uç noktalar artık `stringIndexType` , döndürülen `offset` ve `length` değerleri desteklenen bir [dize Dizin düzeniyle](concepts/text-offsets.md)eşleşecek şekilde ayarlayan isteğe bağlı parametreyi destekler.
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>Sistem durumu kapsayıcısı Ağustos güncelleştirmeleri için Metin Analizi
 
@@ -191,7 +192,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 * [Metin Analizi API'si nedir?](overview.md)  
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
-* [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

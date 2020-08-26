@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300326"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852702"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway tasarımı
 
@@ -27,6 +27,8 @@ Siteden Siteye (S2S) VPN ağ geçidi bağlantısı, IPSec/IKE (IKEv1 veya IKEv2)
 
 ![Azure VPN Gateway Siteden Siteye bağlantı örneği](./media/design/vpngateway-site-to-site-connection-diagram.png)
 
+VPN Gateway, tek bir genel IP kullanarak etkin bekleme modunda veya iki genel IP kullanan etkin-etkin modda yapılandırılabilir. Etkin bekleme modunda, bir IPSec tüneli etkin ve diğer tünel bekleme durumunda. Bu kurulumda trafik etkin tünelden akar ve bu tünelle ilgili bir sorun oluşursa trafik bekleme tünelinden geçer. Etkin-etkin modda VPN Gateway ayarlamak, her iki tünelde aynı anda veri akışı ile her iki IPSec tünellerinin de aynı anda etkin olması *önerilir* . Etkin-etkin moddan daha fazla avantaj, müşterilerin daha yüksek bir deneyime sahip olması.
+
 ### <a name="multi-site"></a><a name="Multi"></a>Çok siteli
 
 Bu türden bir bağlantı, Siteden Siteye bağlantının bir çeşididir. Sanal ağ geçidinizden genellikle birden fazla şirket içi siteye bağlanan birden fazla VPN bağlantısı oluşturursunuz. Birden fazla bağlantıyla çalışırken Yol Tabanlı VPN türü (klasik sanal ağlar ile çalışırken “dinamik ağ geçidi” adıyla kullanılır) kullanmanız gerekir. Her sanal ağın yalnızca bir VPN ağ geçidi olabileceğinden, ağ geçidi boyunca tüm bağlantılar mevcut bant genişliğini paylaşır. Bu bağlantı türü genellikle "çok siteli" bağlantı olarak adlandırılır.
@@ -37,7 +39,7 @@ Bu türden bir bağlantı, Siteden Siteye bağlantının bir çeşididir. Sanal 
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="point-to-site-vpn"></a><a name="P2S"></a>Noktadan Siteye VPN
+## <a name="point-to-site-vpn"></a><a name="P2S"></a>Noktadan siteye VPN
 
 Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisayardan sanal ağınıza güvenli bir bağlantı oluşturmanıza olanak sağlar. P2S bağlantısı, istemci bilgisayardan başlatılarak oluşturulur. Bu çözüm, Azure sanal ağlarına uzak bir konumdan (örneğin, evden veya bir konferanstan) bağlanmak isteyen uzaktan çalışan kişiler için kullanışlıdır. P2S VPN ayrıca, bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda S2S VPN yerine kullanabileceğiniz yararlı bir çözümüdür.
 

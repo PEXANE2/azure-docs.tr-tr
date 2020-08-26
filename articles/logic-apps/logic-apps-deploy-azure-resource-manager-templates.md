@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827503"
+ms.locfileid: "88855600"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonu oluşturma
 
@@ -119,7 +119,9 @@ Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilm
 
 ## <a name="authorize-oauth-connections"></a>OAuth bağlantılarını yetkilendir
 
-Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-vs-authorization.md)için geçerli erişim belirteçleri oluşturmak üzere ön kimlik doğrulama yetkisi olan OAuth bağlantıları yetkilendirmeniz veya kullanmanız gerekir. Birkaç öneri aşağıda verilmiştir:
+Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışabilir, ancak [kimlik bilgilerinizi](../active-directory/develop/authentication-vs-authorization.md)doğrulamaya yönelik geçerli erişim belirteçleri oluşturmak için, önceden yetkilendirme yetkisi olan OAuth bağlantıları yetkilendirmeniz veya kullanmanız gerekir. Ancak, API bağlantısı kaynaklarını yalnızca bir kez dağıtmanız ve kimlik doğrulaması yapmanız yeterlidir, yani bağlantı bilgilerini güncelleştirmeniz gerekmediği takdirde bu bağlantı kaynaklarını sonraki dağıtımlarda eklemeniz gerekmez. Sürekli tümleştirme ve sürekli dağıtım işlem hattı kullanıyorsanız, yalnızca güncelleştirilmiş Logic Apps kaynakları dağıtır ve her seferinde bağlantıları yeniden Yetkilendir.
+
+Yetkilendirme bağlantılarını işlemek için birkaç öneri aşağıda verilmiştir:
 
 * Ön kimlik doğrulama, API bağlantısı kaynaklarını aynı bölgedeki Logic Apps genelinde Yetkilendir ve paylaşır. API bağlantıları, Logic Apps 'ten bağımsız olarak Azure kaynakları olarak mevcuttur. Mantıksal uygulamalar API bağlantı kaynakları üzerinde bağımlılıklara sahip olsa da, API bağlantı kaynakları Logic Apps üzerinde bağımlılıklara sahip değildir ve bağımlı Logic Apps 'i sildikten sonra kalır. Ayrıca Logic Apps, diğer kaynak gruplarında bulunan API bağlantılarını kullanabilir. Ancak, Logic App Designer, yalnızca mantıksal uygulamalarınızla aynı kaynak grubunda API bağlantıları oluşturulmasını destekler.
 

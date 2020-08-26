@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219241"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855639"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Metin Analizi API'si çıkışındaki metin uzaklıkları
 
-Çok dilli ve Emoji desteği, grapheme olarak adlandırılan tek bir görüntülenen karakteri temsil etmek için birden fazla [kod noktası](https://wikipedia.org/wiki/Code_point) kullanan Unicode kodlamalara yol açmıştır. Örneğin, 🌷 👍 gibi emojıs, şekli kaplama tonu gibi görsel özniteliklerde ek karakterlerle oluşturmak için birkaç karakteri kullanabilir. Benzer şekilde, Hintçe kelime `अनुच्छेद` beş harf ve üç Birleşik işaret olarak kodlanır.
+Çok dilli ve Emoji desteği, grapheme olarak adlandırılan tek bir görüntülenen karakteri temsil etmek için birden fazla [kod noktası](https://wikipedia.org/wiki/Code_point) kullanan Unicode kodlamalara yol açmıştır. Örneğin, 🌷 gibi emojıs, 👍 şekli kaplama tonu gibi görsel özniteliklerde ek karakterlerle oluşturmak için birkaç karakteri kullanabilir. Benzer şekilde, Hintçe kelime `अनुच्छेद` beş harf ve üç Birleşik işaret olarak kodlanır.
 
 Olası çok dilli ve Emoji kodlamaları farklı uzunluklarıyla, Metin Analizi API'si yanıttaki uzaklıkları döndürebilir.
 
@@ -40,10 +40,20 @@ Uzaklıklar, .NET [substring ()](https://docs.microsoft.com/dotnet/api/system.st
 
 Metin Analizi API'si kolaylık sağlamak için bu metinsel öğeleri de döndürür.
 
+## <a name="offsets-in-api-version-31-preview"></a>API sürümündeki uzaklıklar 3,1-Önizleme
+
+API sürümü 3,1-Preview. 1 ' den başlayarak, bir fark döndüren tüm Metin Analizi API'si uç noktaları parametresini destekleyecektir `stringIndexType` . Bu parametre, `offset` `length` API çıkışındaki ve özniteliklerini istenen dize yineleme düzeniyle eşleşecek şekilde ayarlar. Şu anda üç türü destekliyoruz:
+
+1. `textElement_v8` (varsayılan): [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) standardına göre tanımlanan şekilde, graphemes üzerinde dolaşır
+2. `unicodeCodePoint`: Python 3 için varsayılan düzen olan [Unicode kod noktalarını](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)yineleme
+3. `utf16CodeUnit`: [UTF-16 kod birimleri](https://unicode.org/faq/utf_bom.html#UTF16)üzerinde yineleme yapın, JavaScript, Java ve .NET için varsayılan düzen
+
+İstenen, `stringIndexType` tercih edilen programlama ortamıyla eşleşiyorsa, alt dize ayıklama standart alt dize veya dilim yöntemleri kullanılarak yapılabilir. 
+
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Yaklaşım analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Dili algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)
