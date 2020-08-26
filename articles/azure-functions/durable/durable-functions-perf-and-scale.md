@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033590"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853700"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler'de pe ve ölçek (Azure İşlevleri)
 
@@ -48,7 +48,7 @@ Denetim kuyrukları çeşitli düzenleme yaşam döngüsü ileti türlerini içe
 
 Dayanıklı görev uzantısı, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular. Bir ileti bulunduğunda, çalışma zamanı hemen başka bir iletiyi denetler; hiçbir ileti bulunamadığında, yeniden denemeden önce bir süre bekler. Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak 30 saniye olacak şekilde en fazla bekleme süresine ulaşana kadar artar.
 
-En fazla yoklama gecikmesi `maxQueuePollingInterval` [dosyadakihost.js](../functions-host-json.md#durabletask)özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
+En fazla yoklama gecikmesi `maxQueuePollingInterval` [ dosyadakihost.js](../functions-host-json.md#durabletask)özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
 
 > [!NOTE]
 > Azure işlevleri tüketim ve Premium planlarında çalışırken, [Azure Işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) her bir denetimi ve iş öğesi kuyruğunu her 10 saniyede bir yoklamaya çalışır. Bu ek yoklama, işlev uygulaması örneklerinin ne zaman etkinleştireceğinize karar vermek ve ölçek kararları almak için gereklidir. Yazma sırasında, bu 10 saniyelik Aralık sabittir ve yapılandırılamaz.
@@ -224,6 +224,10 @@ Bu ayarın farkında olması için iki olası kenarı vardır:
 Örnek olarak, `durableTask/extendedSessionIdleTimeoutInSeconds` 30 saniye olarak ayarlandıysa, 1 saniyeden kısa bir süre içinde çalışan kısa süreli bir Orchestrator veya varlık işlevi bölümü 30 saniye boyunca belleği kaplar. Ayrıca `durableTask/maxConcurrentOrchestratorFunctions` , daha önce bahsedilen kotanın üzerinde de sayılır, bu da diğer Orchestrator veya varlık işlevlerinin çalışmasını engelleyebilir.
 
 Orchestrator ve Entity işlevlerinde genişletilmiş oturumların belirli etkileri, sonraki bölümlerde açıklanmıştır.
+
+> [!NOTE]
+> Genişletilmiş oturumlar Şu anda yalnızca C# veya F # gibi .NET dillerinde desteklenmektedir. `extendedSessionsEnabled` `true` Diğer platformlar için ayarı, etkinlik ve düzenleme tetiklemeli işlevleri yürütme gibi sessiz bir şekilde başarısız olma gibi çalışma zamanı sorunlarına yol açabilir.
+
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator işlevi yeniden yürütme
 

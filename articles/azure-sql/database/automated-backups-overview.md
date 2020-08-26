@@ -5,18 +5,18 @@ description: Azure SQL veritabanı ve Azure SQL yönetilen örneği, birkaç dak
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756733"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853212"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -46,7 +46,14 @@ Yedekleme depolama yedekliliği yapılandırma seçeneği, bir SQL yönetilen ö
 > [!IMPORTANT]
 > SQL yönetilen örneği 'nde yapılandırılan yedekleme yedekliliği, uzun vadeli yedeklemeler (LTR) için kullanılan zaman içinde nokta geri yükleme (ıNR) ve uzun süreli bekletme yedeklemeleri için kullanılan kısa süreli yedekleme bekletme ayarlarına uygulanır.
 
+
+> [!NOTE]
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda Güneydoğu Asya Azure bölgesindeki belirli müşteriler için sınırlı özel önizleme olarak sunulmaktadır. Bu özel önizlemede kayıt için değerlendirilmek isterseniz, lütfen iletişim kurun [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
+
+Veri koruma kurallarınız, yedeklemelerinizin uzun süre (10 yıla kadar) kullanılabilmesini gerektiriyorsa, hem tek hem de havuza alınmış veritabanları için [uzun süreli saklama](long-term-retention-overview.md) yapılandırabilirsiniz.
+
 ### <a name="backup-usage"></a>Yedekleme kullanımı
+
 
 Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
 

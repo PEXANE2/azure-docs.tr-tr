@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 30b90b89300d6ca63255a000c7a6f7723f648056
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118782"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855414"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -225,7 +225,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
 
 1. Projenize [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) ve [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet paketlerini ekleyin. Varsa Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet paketini kaldırın.
 
-2. ' Deki kodu `ConfigureServices` , ve yöntemlerini kullanacak şekilde güncelleştirin `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` .
+2. ' Deki kodu `ConfigureServices` , ve yöntemlerini kullanacak şekilde güncelleştirin `AddMicrosoftIdentityWebAppAuthentication` `AddMicrosoftIdentityUI` .
 
    ```c#
    public class Startup
@@ -234,7 +234,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
+     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -259,20 +259,20 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
    ```
 
 Yukarıdaki kodda:
-- `AddMicrosoftWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
+- `AddMicrosoftIdentityWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
   - Kimlik doğrulama hizmetini ekler.
   - Yapılandırma dosyasını okuma seçeneklerini yapılandırır (burada "AzureAD" bölümünden)
   - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platform uç noktası olmasını sağlayacak şekilde yapılandırır.
   - Belirtecin vereni doğrular.
   - Ada karşılık gelen taleplerin `preferred_username` kimlik belirtecindeki talepten eşlenmesini sağlar.
 
-- Yapılandırma nesnesine ek olarak, çağrılırken yapılandırma bölümünün adını belirtebilirsiniz `AddMicrosoftWebAppAuthentication` . Varsayılan olarak, bu `AzureAd` .
+- Yapılandırma nesnesine ek olarak, çağrılırken yapılandırma bölümünün adını belirtebilirsiniz `AddMicrosoftIdentityWebAppAuthentication` . Varsayılan olarak, bu `AzureAd` .
 
-- `AddMicrosoftWebAppAuthentication`, gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
+- `AddMicrosoftIdentityWebAppAuthentication` , gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
 
 - `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturum açma ve oturum kapatma işlemek için varsayılan bir denetleyici sağlar.
 
-Microsoft. Identity. Web ' de Web uygulamaları oluşturmanıza nasıl olanak tanıyan hakkında daha fazla ayrıntı bulabilirsiniz.<https://aka.ms/ms-id-web/webapp>
+Microsoft. Identity. Web ' de Web uygulamaları oluşturmanıza nasıl olanak tanıyan hakkında daha fazla ayrıntı bulabilirsiniz. <https://aka.ms/ms-id-web/webapp>
 
 > [!WARNING]
 > Şu anda Microsoft. Identity. Web, Azure AD ve dış oturum açma sağlayıcısı kullanılırken **bireysel kullanıcı hesaplarının** (uygulama içi kullanıcı hesaplarını depolayan) senaryoyu desteklemez. Ayrıntılar için bkz. [Azuread/Microsoft-Identity-Web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
