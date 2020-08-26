@@ -1,0 +1,51 @@
+- name: Azure Arc özellikli sunucular için belgeler
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Arc özellikli sunucular hakkında
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Azure Arc özellikli sunucular aracısını etkinleştirme
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: Öğreticiler
+  items:
+    - name: Uyumluluğu değerlendirmek için ilke atama
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: Makineyi izleme
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      items:
+        - name: Arc özellikli sunucular
+          href: policy-samples.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik
+      items:
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Azure Arc’a bağlanma
+      items:
+        - name: Bağlı Makine aracısına genel bakış
+          href: agent-overview.md
+        - name: Makineleri Azure portalından Azure Arc’a bağlama
+          href: onboard-portal.md
+        - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
+          href: onboard-service-principal.md
+        - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
+          href: onboard-dsc.md
+    - name: Yönetme
+      items:
+        - name: Azure VM uzantılarını yönetme ve kullanma
+          href: manage-vm-extensions.md
+        - name: Aracıyı yönetme
+          href: manage-agent.md
+    - name: Sorun giderme
+      items:
+        - name: Aracı bağlantı sorunları
+          href: troubleshoot-agent-onboard.md

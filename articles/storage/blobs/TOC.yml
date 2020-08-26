@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Depolama Gezgini erişilebilirliği
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Depolama forumu
+        - name: Microsoft Q&A üzerinde Azure Depolama
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow üzerinde Azure Depolama
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Blob depolama fiyatlandırması
+        - name: Blok blobları fiyatlandırması
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: Sayfa blobları fiyatlandırması
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure fiyatlandırma hesaplayıcısı
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Videolar

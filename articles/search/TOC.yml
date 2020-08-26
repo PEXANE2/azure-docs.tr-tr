@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: Eş zamanlı güncelleştirmeleri tanımlama
           href: search-howto-concurrency.md
-    - name: Azure verilerini alma
+    - name: Yalnızca Azure'a özgü verileri alma
       items:
         - name: Dizin oluşturucuları yapılandırma
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Veritabanı
               href: search-howto-managed-identities-sql.md
-    - name: Yapay zeka kullanarak alma
+    - name: Becerileri kullanma (AI)
       items:
         - name: Bilişsel Hizmetler kaynağı iliştirme
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Dizin alanlarına eşleme
               href: cognitive-search-output-field-mapping.md
-            - name: Görüntülerdeki bilgileri ayıklama
+            - name: Görüntü dosyalarını işleme
               href: cognitive-search-concept-image-scenarios.md
             - name: Önbellek (artımlı) zenginleştirme
               href: search-howto-incremental-index.md

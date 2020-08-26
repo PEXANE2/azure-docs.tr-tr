@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053482"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869465"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -32,12 +32,12 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |---------------|-------------------|---|
 |Sık erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Seyrek erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
-|Olaylar|Genel kullanıma sunuldu|Önizleme|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
+|Ekinlikler|Genel kullanıma sunuldu|Önizleme|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
 |Ölçümler (klasik)|Genel kullanıma sunuldu|Desteklenmez|[Azure Storage Analytics ölçümleri (klasik)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure İzleyicisi'nde ölçümler|Genel kullanıma sunuldu|Önizleme|[Azure İzleyici’de Azure Depolama ölçümleri](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB depolama PowerShell komutları|Genel kullanıma sunuldu|Önizleme|[Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme](storage-quickstart-blobs-powershell.md)|
 |BLOB depolama Azure CLı komutları|Genel kullanıma sunuldu|Önizleme|[Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme](storage-quickstart-blobs-cli.md)|
-|BLOB depolama API 'Leri|Genel kullanıma sunuldu|Önizleme|[Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12](storage-quickstart-blobs-dotnet.md)<br>[Hızlı başlangıç: Java V12 SDK ile Blobları yönetme](storage-quickstart-blobs-java.md)<br>[Hızlı başlangıç: Python V12 SDK ile Blobları yönetme](storage-quickstart-blobs-python.md)<br>[Hızlı başlangıç: Node.jsiçindeki JavaScript V12 SDK ile Blobları yönetme](storage-quickstart-blobs-nodejs.md)|
+|BLOB depolama API 'Leri|Genel kullanıma sunuldu|Önizleme|[Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12](storage-quickstart-blobs-dotnet.md)<br>[Hızlı başlangıç: Java V12 SDK ile Blobları yönetme](storage-quickstart-blobs-java.md)<br>[Hızlı başlangıç: Python V12 SDK ile Blobları yönetme](storage-quickstart-blobs-python.md)<br>[Hızlı başlangıç: Node.jsiçindeki JavaScript V12 SDK ile Blobları yönetme ](storage-quickstart-blobs-nodejs.md)|
 |Tanılama günlükleri|Genel kullanıma sunuldu|Önizleme <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure Depolama analizi günlüğü](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Arşiv erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Yaşam döngüsü yönetim ilkeleri|Genel kullanıma sunuldu|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
@@ -53,6 +53,7 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |Hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob kapsayıcı ACL 'SI|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Kapsayıcı ACL 'sini ayarla](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Özel etki alanları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)|
+|Şifreleme kapsamları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Şifreleme kapsamları oluşturma ve yönetme (Önizleme)](encryption-scope-manage.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> Premium Blok Blob depolama hesapları için, tanılama günlükleri (klasik) Azure Portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirin.</div><br>
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566310"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871573"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -48,7 +48,7 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak veya yönetilen ba�
 
   Bağlayıcılar, standart ya da kurumsal olarak sınıflandırılır. [Kurumsal bağlayıcılar](#enterprise-connectors) , ek bir MALIYET için SAP, IBM MQ ve IBM 3270 gibi kurumsal sistemlere erişim sağlar. Bağlayıcının standart veya kurumsal olduğunu anlamak için, [Bağlayıcılar genel bakış](/connectors)altındaki her bağlayıcının başvuru sayfasındaki Teknik ayrıntılara bakın.
 
-  Ayrıca, bazı bağlayıcılar birden çok kategori içerebilse de, bu kategorileri kullanarak bağlayıcılar tanımlayabilirsiniz. Örneğin, SAP bir kurumsal bağlayıcı ve şirket içi bağlayıcıdır:
+  Ayrıca, bazı bağlayıcılar birden fazla kategoride yer değiştirebilse de, bu kategorileri kullanarak bağlayıcıları tanımlayabilirsiniz. Örneğin, SAP bir kurumsal bağlayıcı ve şirket içi bağlayıcıdır:
 
   | Kategori | Açıklama |
   |----------|-------------|
@@ -68,7 +68,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 
 | Etiketle | Örnek | Açıklama |
 |-------|---------|-------------|
-| **ÇEKIRDEĞIN** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
+| **ÇEKIRDEĞIN** | ![Örnek çekırdek Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |
 | Etiket yok | ![Örnek çok kiracılı bağlayıcı](./media/apis-list/example-multi-tenant-connector.png) | **Temel** veya **Ise** etiketi olmayan diğer tüm bağlayıcılar, kullanmaya devam edebilmeniz için genel, çok kiracılı Logic Apps hizmetinde çalıştırın. |
 |||
@@ -81,13 +81,13 @@ Logic Apps, zamanlama tabanlı iş akışları oluşturabilmek, mantıksal uygul
 
 | Ad | Açıklama |
 |------|-------------|
-| [![API simge ][schedule-icon]<br> **zamanlaması**][schedule-doc] | - [ **Yineleme** tetikleyicisiyle][schedule-recurrence-doc]temel ve gelişmiş zamanlamalara değişen bir mantıksal uygulamayı belirtilen bir yinelenme üzerinde çalıştırın. <br>- [ **Kayan pencere** tetikleyicisiyle][schedule-sliding-window-doc]sürekli öbeklerdeki verileri işlemek için gereken bir mantıksal uygulamayı çalıştırın. <br>- [ **Gecikme** eylemini][schedule-delay-doc]kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <br>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar [ **ertele** ][schedule-delay-until-doc]tamamlanana kadar duraklatın. |
-| [![API simgesi ][batch-icon]<br> **Batch**][batch-doc] | - **Batch iletileri** tetikleyicisiyle toplu olarak ileti işleme. <br>- **Batch 'e Ileti gönder** eylemine sahip mevcut toplu iş tetikleyicilerine sahip Logic Apps 'i çağırın. |
-| [![API simgesi ][http-icon]<br> **http**][http-doc] | HTTP tetikleyicileri ve eylemleriyle HTTP veya HTTPS uç noktalarını çağırma. Http [+ Swagger][http-swagger-doc] ve [http + Web kancasını][http-webhook-doc]içeren diğer http yerleşik Tetikleyicileri ve eylemleri. |
-| [![API simgesi ][http-request-icon]<br> **isteği**][http-request-doc] | -Mantıksal uygulamanızı diğer uygulamalardan veya hizmetlerden çağrılabilir, Event Grid Kaynak olaylarında tetikleyin veya **istek** tetikleyicisiyle Azure Güvenlik Merkezi uyarılarına yönelik yanıtlara karşı tetikleyin. <br>- **Yanıt** eylemiyle bir uygulamaya veya hizmete yanıt gönderin. |
-| [![API simgesi ][azure-api-management-icon]<br> **Azure API <br> yönetimi**][azure-api-management-doc] | Azure API Management ile yönettiğiniz ve yayımladığınız API'leriniz tarafından tanımlanan tetikleyicileri ve eylemleri çağırın. |
-| [![API simgesi ][azure-app-services-icon]<br> **Azure uygulama <br> Hizmetleri**][azure-app-services-doc] | Azure App Service üzerinde barındırılan Azure API uygulamalarını veya web uygulamalarını çağırın. Bu uygulamalar tarafından tanımlanan Tetikleyiciler ve Eylemler, Swagger dahil edildiğinde diğer birinci sınıf Tetikleyicileri ve eylemleri gibi görünür. |
-| [![API simgesi ][azure-logic-apps-icon]<br> **Azure Logic <br> Apps**][nested-logic-app-doc] | **İstek** tetikleyicisiyle başlayan diğer mantıksal uygulamaları çağırın. |
+| [![Yerleşik bağlayıcı ][schedule-icon]<br> **zamanlamasını** zamanla][schedule-doc] | - [ **Yineleme** tetikleyicisiyle][schedule-recurrence-doc]temel ve gelişmiş zamanlamalara değişen bir mantıksal uygulamayı belirtilen bir yinelenme üzerinde çalıştırın. <br>- [ **Kayan pencere** tetikleyicisiyle][schedule-sliding-window-doc]sürekli öbeklerdeki verileri işlemek için gereken bir mantıksal uygulamayı çalıştırın. <br>- [ **Gecikme** eylemini][schedule-delay-doc]kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <br>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar [ **ertele** ][schedule-delay-until-doc]tamamlanana kadar duraklatın. |
+| [![Batch yerleşik bağlayıcı ][batch-icon]<br> **toplu işi**][batch-doc] | - **Batch iletileri** tetikleyicisiyle toplu olarak ileti işleme. <br>- **Batch 'e Ileti gönder** eylemine sahip mevcut toplu iş tetikleyicilerine sahip Logic Apps 'i çağırın. |
+| [![HTTP yerleşik Bağlayıcısı ][http-icon]<br> **http**][http-doc] | HTTP tetikleyicileri ve eylemleriyle HTTP veya HTTPS uç noktalarını çağırma. Http [+ Swagger yerleşik bağlayıcı][http-swagger-doc] ve [http + Web kancasını][http-webhook-doc]içeren diğer http yerleşik Tetikleyicileri ve eylemleri. |
+| [![Yerleşik bağlayıcı ][http-request-icon]<br> **isteği** iste][http-request-doc] | -Mantıksal uygulamanızı diğer uygulamalardan veya hizmetlerden çağrılabilir, Event Grid Kaynak olaylarında tetikleyin veya **istek** tetikleyicisiyle Azure Güvenlik Merkezi uyarılarına yönelik yanıtlara karşı tetikleyin. <br>- **Yanıt** eylemiyle bir uygulamaya veya hizmete yanıt gönderin. |
+| [![Azure API Management yerleşik bağlayıcı ][azure-api-management-icon]<br> **Azure API <br> yönetimi**][azure-api-management-doc] | Azure API Management ile yönettiğiniz ve yayımladığınız API'leriniz tarafından tanımlanan tetikleyicileri ve eylemleri çağırın. |
+| [![Azure Uygulama Hizmetleri yerleşik Bağlayıcısı ][azure-app-services-icon]<br> **Azure uygulama <br> Hizmetleri**][azure-app-services-doc] | Azure App Service üzerinde barındırılan Azure API uygulamalarını veya web uygulamalarını çağırın. Bu uygulamalar tarafından tanımlanan Tetikleyiciler ve Eylemler, Swagger dahil edildiğinde diğer birinci sınıf Tetikleyicileri ve eylemleri gibi görünür. |
+| [![Azure Logic Apps yerleşik bağlayıcı ][azure-logic-apps-icon]<br> **Azure Logic <br> Apps**][nested-logic-app-doc] | **İstek** tetikleyicisiyle başlayan diğer mantıksal uygulamaları çağırın. |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>Logic Apps 'ten kod çalıştırma
@@ -96,8 +96,8 @@ Logic Apps, mantıksal uygulamanızın iş akışında kendi kodunuzu çalışt�
 
 | Ad | Açıklama |
 |------|-------------|
-| [![API simgesi ][azure-functions-icon]<br> **Azure işlevleri**][azure-functions-doc] | Mantıksal uygulamalarınızdan özel kod parçacıkları (C# veya Node.js) çalıştıran Azure işlevlerini çağırın. |
-| [![API simgesi ][inline-code-icon]<br> **satır içi kod**][inline-code-doc] | Mantıksal uygulamalarınızdan JavaScript kod parçacıklarını ekleyin ve çalıştırın. |
+| [![Azure Işlevleri yerleşik bağlayıcı ][azure-functions-icon]<br> **Azure işlevleri**][azure-functions-doc] | Mantıksal uygulamalarınızdan özel kod parçacıkları (C# veya Node.js) çalıştıran Azure işlevlerini çağırın. |
+| [![Satır içi kod yerleşik bağlayıcı ][inline-code-icon]<br> **satır kodu**][inline-code-doc] | Mantıksal uygulamalarınızdan JavaScript kod parçacıklarını ekleyin ve çalıştırın. |
 |||
 
 ### <a name="control-workflow"></a>Denetim iş akışı
@@ -106,12 +106,12 @@ Logic Apps mantıksal uygulamanızın iş akışındaki eylemleri yapılandırma
 
 | Ad | Açıklama |
 |------|-------------|
-| [![Yerleşik simge ][condition-icon]<br> **koşulu**][condition-doc] | Koşulu değerlendirin ve koşulun doğru veya yanlış olduğunu temel alarak farklı eylemleri çalıştırın. |
-| [![][for-each-icon]<br>**Her biri Için** yerleşik simge][for-each-doc] | Bir dizideki her öğe için aynı eylemleri gerçekleştirin. |
-| [![Yerleşik simge ][scope-icon]<br> **kapsamı**][scope-doc] | Kapsamdaki eylemlerin çalışmasını bitirdikten sonra kendi durumlarını içeren, eylemleri *kapsamlara*gruplandırın. |
-| [![Yerleşik simge ][switch-icon]<br> **anahtarı**][switch-doc] | Eylemleri, varsayılan durum dışında benzersiz değerler atanmış *durumlarına*göre gruplandırın. Yalnızca atanmış değeri bir ifade, nesne veya belirteçten sonuçla eşleşen bu durumu çalıştırın. Hiçbir eşleşme yoksa, varsayılan durumu çalıştırın. |
-| [![Yerleşik simge ][terminate-icon]<br> **Sonlandır**][terminate-doc] | Etkin bir şekilde çalışan mantıksal uygulama iş akışını durdurun. |
-| [![Yerleşik simgeye ][until-icon]<br> **kadar**][until-doc] | Belirtilen koşul doğru olana veya bir durum değiştirilene kadar eylemleri tekrarlayın. |
+| [![Koşul yerleşik eylem ][condition-icon]<br> **koşulu**][condition-doc] | Koşulu değerlendirin ve koşulun doğru veya yanlış olduğunu temel alarak farklı eylemleri çalıştırın. |
+| [![][for-each-icon]<br>**Her biri için** her bir yerleşik eylem için][for-each-doc] | Bir dizideki her öğe için aynı eylemleri gerçekleştirin. |
+| [![Kapsam yerleşik eylem ][scope-icon]<br> **kapsamı**][scope-doc] | Kapsamdaki eylemlerin çalışmasını bitirdikten sonra kendi durumlarını içeren, eylemleri *kapsamlara*gruplandırın. |
+| [![Yerleşik eylem ][switch-icon]<br> **anahtarını** Değiştir][switch-doc] | Eylemleri, varsayılan durum dışında benzersiz değerler atanmış *durumlarına*göre gruplandırın. Yalnızca atanmış değeri bir ifade, nesne veya belirteçten sonuçla eşleşen bu durumu çalıştırın. Hiçbir eşleşme yoksa, varsayılan durumu çalıştırın. |
+| [![Yerleşik eylemi Sonlandır ][terminate-icon]<br> **Sonlandır**][terminate-doc] | Etkin bir şekilde çalışan mantıksal uygulama iş akışını durdurun. |
+| [![Sürece yerleşik eyleme kadar ][until-icon]<br> **Until**][until-doc] | Belirtilen koşul doğru olana veya bir durum değiştirilene kadar eylemleri tekrarlayın. |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>Verileri yönetme veya işleme
@@ -120,9 +120,9 @@ Logic Apps, veri çıktıları ve biçimleri ile çalışmaya yönelik yerleşik
 
 | Ad | Açıklama |
 |------|-------------|
-| [![Yerleşik simge ][data-operations-icon]<br> **veri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur**: çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur**: JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur**: JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele**: ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir**: dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır**: iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin**: öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
-| ![Yerleşik simge][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle**: belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür**: kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman**: geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al**: geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al**: geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren**: zaman damgasından bir dizi zaman birimi çıkar. |
-| [![Yerleşik simge ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle**: bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle**: bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma**: bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni**: bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat**: bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni**: var olan bir değişkene farklı bir değer atayın. |
+| [![Veri Işlemleri yerleşik eylem ][data-operations-icon]<br> **verileri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur**: çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur**: JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur**: JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele**: ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir**: dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır**: iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin**: öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
+| ![Tarih saat yerleşik eylemi][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle**: belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür**: kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman**: geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al**: geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al**: geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren**: zaman damgasından bir dizi zaman birimi çıkar. |
+| [![Değişkenler yerleşik eylem ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle**: bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle**: bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma**: bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni**: bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat**: bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni**: var olan bir değişkene farklı bir değer atayın. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -133,18 +133,18 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 | Ad | Açıklama |
 |------|-------------|
-| [![API simgesi ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Logic Apps’te en yaygın kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. |
-| [![API simgesi ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kayıtları yönetebilmeniz, saklı yordamları çalıştırabilmeniz veya sorgular gerçekleştirebilmeniz için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. |
-| [![API simgesi ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. |
-| [![API simgesi ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için Office 365 e-posta hesabınıza bağlanın. |
-| [![API simgesi ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosya ve klasörlerle çalışabilmeniz için SSH kullanarak İnternet 'ten erişebileceğiniz SFTP sunucularına bağlanın. |
-| [![API simgesi ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. |
-| [![API simgesi ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc] | Kuyrukları ve iletileri oluşturabilmeniz ve yönetebilmeniz için Azure depolama hesabınıza bağlanın. |
-| [![API simgesi ][ftp-icon]<br> **FTP**][ftp-doc] | Dosya ve klasörlerle çalışabilmeniz için internet 'ten erişebileceğiniz FTP sunucularına bağlanın. |
-| [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc] | Dosya oluşturup yönetebilmek için şirket içi dosya paylaşımınıza bağlanın. |
-| [![API simgesi ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Olayları bir olay hub 'ı aracılığıyla tüketin ve yayımlayın. Örneğin, Event Hubs ile mantıksal uygulamanızdan çıkış alın ve ardından söz konusu çıkışı gerçek zamanlı bir analiz sağlayıcısına gönderin. |
-| [![API simgesi ][azure-event-grid-icon]<br> **Azure olay** <br> **Kılavuzu**][azure-event-grid-doc] | Örneğin, Azure kaynakları veya üçüncü taraf kaynakları değiştiğinde Event Grid tarafından yayımlanan olayları izleyin. |
-| [![API simgesi ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kayıtlar, işler, nesneler ve daha fazlası gibi öğeleri oluşturup yönetebilmeniz için Salesforce hesabınıza bağlanın. |
+| [![Azure Service Bus Managed Connector ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Logic Apps’te en yaygın kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. |
+| [![SQL Server Managed Connector ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kayıtları yönetebilmeniz, saklı yordamları çalıştırabilmeniz veya sorgular gerçekleştirebilmeniz için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. |
+| [![Azure Blob depolama yönetilen Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. |
+| [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için Office 365 e-posta hesabınıza bağlanın. |
+| [![SFTP-SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosya ve klasörlerle çalışabilmeniz için SSH kullanarak İnternet 'ten erişebileceğiniz SFTP sunucularına bağlanın. |
+| [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. |
+| [![Azure kuyrukları yönetilen bağlayıcı ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc] | Kuyrukları ve iletileri oluşturabilmeniz ve yönetebilmeniz için Azure depolama hesabınıza bağlanın. |
+| [![FTP yönetilen Bağlayıcısı ][ftp-icon]<br> **FTP**][ftp-doc] | Dosya ve klasörlerle çalışabilmeniz için internet 'ten erişebileceğiniz FTP sunucularına bağlanın. |
+| [![Dosya sistemi tarafından yönetilen bağlayıcı ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc] | Dosya oluşturup yönetebilmek için şirket içi dosya paylaşımınıza bağlanın. |
+| [![Azure Event Hubs Managed Connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Olayları bir olay hub 'ı aracılığıyla tüketin ve yayımlayın. Örneğin, Event Hubs ile mantıksal uygulamanızdan çıkış alın ve ardından söz konusu çıkışı gerçek zamanlı bir analiz sağlayıcısına gönderin. |
+| [![Azure Event Grid yönetilen bağlayıcı ][azure-event-grid-icon]<br> **Azure olay** <br> **Kılavuzu**][azure-event-grid-doc] | Örneğin, Azure kaynakları veya üçüncü taraf kaynakları değiştiğinde Event Grid tarafından yayımlanan olayları izleyin. |
+| [![Salesforce yönetilen bağlayıcı ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kayıtlar, işler, nesneler ve daha fazlası gibi öğeleri oluşturup yönetebilmeniz için Salesforce hesabınıza bağlanın. |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 :::row:::
     :::column:::
-        [![API simgesi ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+        [![BizTalk Server Bağlayıcısı ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
+        [![Dosya sistemi Bağlayıcısı ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![DB2 Bağlayıcısı ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API simgesi ][mysql-icon]<br> **MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][sharepoint-server-icon]<br> **SharePoint <br> sunucusu**][sharepoint-server-doc]
+        [![Informix Bağlayıcısı ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![MySQL Bağlayıcısı ][mysql-icon]<br> **MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][teradata-icon]<br> **Teradata**][teradata-doc]
+        [![Oracle DB Bağlayıcısı ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL Bağlayıcısı ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![SharePoint Server Bağlayıcısı ][sharepoint-server-icon]<br> **SharePoint <br> sunucusu**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server Bağlayıcısı ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata bağlayıcı ][teradata-icon]<br> **Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ Logic Apps, Azure 'da Enterprise Integration Pack (EıP) aracılığıyla kullan
 
 :::row:::
     :::column:::
-        [![API simgesi ][as2-icon]<br> **AS2 <br> kod çözme**][as2-doc]
+        [![AS2 kod çözme eylemi ][as2-icon]<br> **AS2 <br> kod çözme**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][as2-icon]<br> **AS2 <br> kodlaması**][as2-doc]
+        [![AS2 Encoding eylemi ][as2-icon]<br> **AS2 <br> kodlama**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][edifact-icon]<br> **ediolgu <br> kod çözme**][edifact-decode-doc]
+        [![EDIOLGU kod çözme eylemi ][edifact-icon]<br> **ediolgu <br> kod çözme**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][edifact-icon]<br> **ediolgu <br> kodlaması**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API simgesi ][flat-file-decode-icon]<br> **düz dosya <br> kodu çözme**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][flat-file-encode-icon]<br> **düz dosya <br> kodlaması**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][integration-account-icon]<br> **tümleştirme <br> hesabı**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][liquid-icon]<br> **likit** <br> **dönüşümler**][json-liquid-transform-doc]
+        [![EDIOLGU kodlama eylemi ][edifact-icon]<br> **ediolgu <br> kodlaması**][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API simgesi ][x12-icon]<br> **x12 <br> kod çözme**][x12-decode-doc]
+        [![Düz dosya kod çözme eylemi ][flat-file-decode-icon]<br> **düz dosya <br> kodu çözme**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][x12-icon]<br> **x12 <br> kodlaması**][x12-encode-doc]
+        [![Düz dosya kodlama eylemi ][flat-file-encode-icon]<br> **düz dosya <br> kodlaması**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][xml-transform-icon]<br> **XML** <br> **dönüşümleri**][xml-transform-doc]
+        [![Tümleştirme hesabı eylem ][integration-account-icon]<br> **tümleştirme <br> hesabı**][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][xml-validate-icon]<br> **XML <br> doğrulaması**][xml-validate-doc]
+        [![Sıvı dönüştürmeleri eylem ][liquid-icon]<br> **sıvı** <br> **dönüştürmeleri**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12 kod çözme eylemi ][x12-icon]<br> **x12 <br> kod çözme**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 Encoding eylemi ][x12-icon]<br> **x12 <br> kodlama**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![XML dönüşümler eylem ][xml-transform-icon]<br> **XML** <br> **dönüşümleri**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML doğrulama eylemi ][xml-validate-icon]<br> **XML <br> doğrulaması**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ Logic Apps, SAP ve IBM MQ gibi kurumsal sistemlere erişmek için bu kurumsal ba
 
 :::row:::
     :::column:::
-        [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![IBM 3270 Bağlayıcısı ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![MQ Bağlayıcısı ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![SAP Bağlayıcısı ][sap-icon]<br> **SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ Logic Apps, SAP ve IBM MQ gibi kurumsal sistemlere erişmek için bu kurumsal ba
 
 :::row:::
     :::column:::
-        [![API simgesi ][as2-icon]<br> **AS2**][as2-doc]
+        [![AS2 ıSE Bağlayıcısı ][as2-icon]<br> **AS2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-automation-icon]<br> **Azure <br> Otomasyonu**][azure-automation-doc]
+        [![Azure Otomasyonu ıSE Bağlayıcısı ][azure-automation-icon]<br> **Azure <br> Otomasyonu**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc]
+        [![Azure Blob Storage ıSE Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API simgesi ][azure-event-hubs-icon]<br> **Azure olay <br> hub 'ları**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][azure-event-grid-icon]<br> **Azure olay <br> Kılavuzu**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][azure-file-storage-icon]<br> **Azure dosya <br> depolama**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][azure-key-vault-icon]<br> **Azure anahtar <br> Kasası**][azure-key-vault-doc]
+        [![Azure Cosmos DB ıSE Bağlayıcısı ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API simgesi ][azure-monitor-logs-icon]<br> **Azure izleyici <br> günlükleri**][azure-monitor-logs-doc]
+        [![Azure Event Hubs ıSE Bağlayıcısı ][azure-event-hubs-icon]<br> **Azure olay <br> hub 'ları**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
+        [![Azure Event Grid ıSE Bağlayıcısı ][azure-event-grid-icon]<br> **Azure olay <br> Kılavuzu**][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc]
+        [![Azure dosya depolama ıSE Bağlayıcısı ][azure-file-storage-icon]<br> **Azure dosya <br> depolama**][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][azure-table-storage-icon]<br> **Azure Tablo <br> depolama**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API simgesi ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][edifact-icon]<br> **ediolgu**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API simgesi ][ftp-icon]<br> **FTP**][ftp-doc]
+        [![Azure Key Vault ıSE Bağlayıcısı ][azure-key-vault-icon]<br> **Azure anahtar <br> Kasası**][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API simgesi ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![Azure Izleyici günlükleri ıSE Bağlayıcısı ][azure-monitor-logs-icon]<br> **Azure izleyici <br> günlükleri**][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![Azure Service Bus ıSE Bağlayıcısı ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![Azure SQL veri ambarı ıSE Bağlayıcısı ][azure-sql-data-warehouse-icon]<br> **Azure SQL veri <br> ambarı**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![Azure Tablo depolama ıSE Bağlayıcısı ][azure-table-storage-icon]<br> **Azure Tablo <br> depolama**][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API simgesi ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc]
+        [![Azure Kuyrukları ıSE Bağlayıcısı ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][smtp-icon]<br> **SMTP**][smtp-doc]
+        [![EDIOLGU ıSE Bağlayıcısı ][edifact-icon]<br> **ediolgu**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![Dosya sistemi ıSE Bağlayıcısı ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API simgesi ][x12-icon]<br> **x12**][x12-doc]
+        [![FTP ıSE Bağlayıcısı ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ıSE Bağlayıcısı ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ıSE Bağlayıcısı ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ıSE Bağlayıcısı ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ıSE Bağlayıcısı ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ıSE Bağlayıcısı ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP ıSE Bağlayıcısı ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server ıSE Bağlayıcısı ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ıSE Bağlayıcısı ][x12-icon]<br> **x12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,7 +410,7 @@ Kuruluşunuz Azure Logic Apps bağlayıcılarını kullanarak belirli kaynaklara
 
 ## <a name="get-ready-for-deployment"></a>Dağıtıma hazırlanın
 
-Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlantılar kendi kaynak tanımlarıyla ayrı Azure kaynaklarıdır. Bu bağlantı kaynağı tanımlarını gözden geçirmek için, [Azure Portal kullanarak mantıksal uygulamanızın kaynak grubunu inceleyebilir](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) veya [Azure 'Dan mantıksal uygulamanızı Visual Studio 'ya indirebilir](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
+Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlantılar kendi kaynak tanımlarıyla ayrı Azure kaynaklarıdır. Bu bağlantı kaynağı tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

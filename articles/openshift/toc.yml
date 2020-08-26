@@ -97,6 +97,8 @@
       href: supported-resources.md
     - name: Azure Red Hat OpenShift 4.3 için desteklenen kaynaklar
       href: support-policies-v4.md
+    - name: Azure Red Hat OpenShift 4 için destek yaşam döngüsü
+      href: support-lifecycle.md
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Azure Red Hat OpenShift 4.3 belgeleri

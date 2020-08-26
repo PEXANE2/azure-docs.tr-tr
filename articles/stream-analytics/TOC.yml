@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: IoT Edge üzerinde iş çalıştırma
           href: stream-analytics-edge.md
+        - name: Azure Stack üzerinde iş çalıştırma
+          href: on-azure-stack.md
         - name: Ücretli geçiş algılayıcısı veri analizi
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: Yüksek frekanslı alım-satım

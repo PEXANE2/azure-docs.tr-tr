@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592160"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869890"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
@@ -28,7 +28,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Yüz Tanıma](./face/index.yml)
 * [Kişiselleştirme](./personalizer/index.yml)
 
-## <a name="vision"></a>Vision
+## <a name="vision"></a>Görsel
 
 * [Görüntü İşleme](./computer-vision/language-support.md)
 * [Form Tanıma (Önizleme)](./form-recognizer/language-support.md)
@@ -37,11 +37,11 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 
 ## <a name="language"></a>Dil
 
-* [Tam Ekran Okuyucu (Önizleme)](./immersive-reader/language-support.md)
+* [Tam Ekran Okuyucu](./immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
 * [Soru-Cevap Oluşturucu](./qnamaker/overview/languages-supported.md)
 * [Metin Analizi](./text-analytics/text-analytics-supported-languages.md)
-* [Translator](./translator/languages.md)
+* [Çevirmen](./translator/languages.md)
 
 ## <a name="speech"></a>Konuşma
 

@@ -4,12 +4,12 @@ description: Azure sanal ağına kapsayıcı grupları dağıtmaya yönelik sena
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797878"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870774"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Sanal ağ senaryoları ve kaynakları
 
@@ -80,6 +80,7 @@ Aşağıdaki diyagramda, Azure Container Instances için temsilci atanmış bir 
 * Azure CLı ile dağıtım örnekleri için bkz. [Azure sanal ağ 'da kapsayıcı örnekleri dağıtma](container-instances-vnet.md).
 * Bir Kaynak Yöneticisi şablonu kullanarak yeni bir sanal ağ, alt ağ, ağ profili ve kapsayıcı grubu dağıtmak için bkz. [VNET Ile Azure Kapsayıcı grubu oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 ).
+* Bir kapsayıcı örneği oluşturmak için [Azure Portal](container-instances-quickstart-portal.md) kullanırken, **ağ** sekmesinden yeni veya bir sanal ağ için ayarlar da sağlayabilirsiniz.
 
 
 <!-- IMAGES -->

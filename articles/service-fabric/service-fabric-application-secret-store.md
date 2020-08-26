@@ -3,16 +3,19 @@ title: Azure Service Fabric merkezi gizli dizi deposu
 description: Bu makalede, Azure Service Fabric 'da merkezi gizlilikler deposunun nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197759"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869764"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 'da merkezi gizlilikler Mağazası 
 Bu makalede, Service Fabric uygulamalarında gizli diziler oluşturmak için Azure Service Fabric 'da merkezi gizlilikler deposunun (CSS) nasıl kullanılacağı açıklanır. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir.
 
+  > [!NOTE] 
+  > İlk kez, SF sürüm 7,1 ' den önce CSS 'yi etkinleştirirken. CU3, etkinleştirme başarısız olabilir ve CSS, Windows kimliği doğrulanmış bir kümede etkinleştirilirse, kalıcı olarak sağlıksız bir durumda kalabilir. CSS herhangi bir kümede etkinleştirilir, ancak `EncryptionCertificateThumbprint` yanlış olarak veya karşılık gelen sertifika yüklü değil veya düğümler ÜZERINDE ACL 'ye bağlı değil. Windows auth kümesi için lütfen 7,1 'e katılın. Devam etmeden önce CU3. Diğer kümeler için lütfen bu ınvaryantları çift işaretleyin veya 7,1 üzerine gelin. CU3.
+  
 ## <a name="enable-central-secrets-store"></a>Merkezi gizli dizi deposunu etkinleştir
 CSS 'yi etkinleştirmek için aşağıdaki betiği küme yapılandırmanıza ekleyin `fabricSettings` . CSS için bir küme sertifikası dışında bir sertifika kullanmanızı öneririz. Şifreleme sertifikasının tüm düğümlerde yüklü olduğundan ve `NetworkService` sertifikanın özel anahtarı için okuma iznine sahip olduğundan emin olun.
   ```json

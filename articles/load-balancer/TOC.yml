@@ -16,6 +16,8 @@
       href: quickstart-load-balancer-standard-public-template.md
     - name: İç yük dengeleyici oluşturma - Portal
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: İç yük dengeleyici oluşturma - Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: Öğreticiler
   items:

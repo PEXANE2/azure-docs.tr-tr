@@ -3,12 +3,12 @@ title: Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinle�
 description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvarın sahibi olarak tüm laboratuar sanal makinelerine erişimi bir tarayıcıdan sağlayabilir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272360"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870502"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir 
 DevTest Labs, sanal makinelerinize bir tarayıcıdan bağlanmanızı sağlayan [Azure](../bastion/index.yml)savunma ile tümleşir. Önce laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmeniz gerekir.
@@ -19,14 +19,12 @@ Bir laboratuvarın sahibi olarak, tüm Laboratuvar sanal makinelerine bir taray�
 Bu makalede, laboratuvar sanal makinelerinde tarayıcı bağlantısının nasıl etkinleştirileceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar 
-Mevcut laboratuvarınızın sanal ağında bir savunma ana bilgisayarı dağıtın **(veya)** laboratuvarınızı yapılandırılmış bir sanal ağla bağlayın. 
-
-Bir savunma konağını sanal bir ağa dağıtmayı öğrenmek için bkz. [Azure savunma Konağı oluşturma](../bastion/bastion-create-host-portal.md). Savunma konağını oluştururken, laboratuvarın sanal ağını seçin. 
-
-İlk olarak, AzureBastionSubnet 'de savunma kaynakları oluşturulmasına izin vermediğinden, savunma sanal ağında ikinci bir alt ağ oluşturmanız gerekir. 
+- Mevcut laboratuvarınızın sanal ağında bir savunma ana bilgisayarı dağıtın **(veya)** laboratuvarınızı yapılandırılmış bir sanal ağla bağlayın.
+Bir savunma konağını sanal bir ağa dağıtmayı öğrenmek için bkz.  [Azure savunma Konağı oluşturma](../bastion/bastion-create-host-portal.md). Savunma konağını oluştururken, laboratuvarın sanal ağını seçin. 
+- Laboratuvar kullanıcısının, savunma ana bilgisayarında ve yapılandırılmış bir sanal ağda **okuyucu** rolüne sahip olması gerekir. 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Savunma sanal ağında ikinci bir alt ağ oluşturun
-Azure savunma alt ağında laboratuvar VM 'Leri oluşturamazsınız. Aşağıdaki görüntüde gösterildiği gibi, savunma sanal ağı içinde başka bir alt ağ oluşturun:
+İlk olarak, AzureBastionSubnet 'de savunma kaynakları oluşturulmasına izin vermediğinden, savunma sanal ağında ikinci bir alt ağ oluşturmanız gerekir. Aşağıdaki görüntüde gösterildiği gibi, savunma sanal ağı içinde başka bir alt ağ oluşturun:
 
 ![Azure savunma sanal ağı 'nda ikinci alt ağ](./media/connect-virtual-machine-through-browser/second-subnet.png)
 
@@ -50,7 +48,7 @@ Azure savunma alt ağında laboratuvar VM 'Leri oluşturamazsınız. Aşağıdak
     ![Alt ağda VM oluşturmayı etkinleştirme](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. **Sanal makine oluşturma seçeneğinde kullan '** ı seçin. 
 1. Araç çubuğunda **Kaydet**’i seçin. 
-1. Laboratuvar için eski bir sanal ağınız varsa, **...* seçeneğini belirleyerek kaldırın.  ve **kaldırın**. 
+1. Laboratuvar için eski bir sanal ağınız varsa, **...*  seçeneğini belirleyerek kaldırın.  ve **kaldırın**. 
 
 ## <a name="enable-browser-connection"></a>Tarayıcı bağlantısını etkinleştir 
 

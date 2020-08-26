@@ -1,19 +1,22 @@
 ---
 title: Azure Key Vault’u Kubernetes ile tümleştirme
 description: Bu öğreticide, Kubernetes pods 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSı) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve gizli dizileri alırsınız.
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685893"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869193"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
+
+> [!IMPORTANT]
+> CSı sürücüsü, Azure teknik desteği tarafından desteklenmeyen açık kaynaklı bir projem. Lütfen sayfanın en altındaki GitHub bağlantısında, CSı sürücüsüyle ilgili tüm geri bildirimleri ve sorunları bildirin Key Vault tümleştirme. Bu araç, kullanıcıların kümelere kendi kendine yüklenmesi ve topluluğumuza geri bildirim toplaması için sağlanır.
 
 Bu öğreticide, gizli dizileri Kubernetes pods 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSı) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve gizli dizi bilgileri alabilirsiniz.
 

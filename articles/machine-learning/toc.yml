@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: Makine öğrenmesi işlem hattı YAML başvurusu
       href: reference-pipeline-yaml.md
+    - name: Bağımsız bulut eşliği
+      href: reference-machine-learning-cloud-parity.md
 - name: Kaynaklar
   items:
     - name: Sürüm notları

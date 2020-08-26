@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565562"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871471"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -269,17 +269,7 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 ### <a name="view-resource-definitions"></a>Kaynak tanımlarını görüntüle
 
-Bir Azure Kaynak grubundaki tüm kaynakların kaynak tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md), bu, genellikle dağıtıma HAZIRAN geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur veya Azure Portal şu adımları uygulayın:
-
-1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
-
-1. Mantıksal uygulamanızı, bağlantılarınızı ve diğer kaynaklarınızı içeren Azure kaynak grubunu bulun.
-
-1. Kaynak grubu araç çubuğunda **genel bakış**' ı seçin ve ardından kaynak grubundaki tüm kaynakları seçin.
-
-1. Kaynak grubu araç çubuğunda, **Ayarlar**' ın altında, **şablonu dışarı aktar**' ı seçin.
-
-   Portal seçtiğiniz kaynakların tanımlarını gösterir. Daha fazla bilgi için bkz. [Azure Portal bir şablona tek ve çoklu kaynak dışarı aktarma](../azure-resource-manager/templates/export-template-portal.md).
+Bir Azure Kaynak grubundaki tüm kaynakların kaynak tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
 
 Şablon kaynakları ve öznitelikleri hakkında genel bilgi için şu konulara bakın:
 
@@ -338,10 +328,10 @@ Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
 | `state` | Evet | Dize | Mantıksal uygulamanızın dağıtım sırasındaki durumu, mantıksal uygulamanızın `Enabled` etkin olduğu ve mantıksal uygulamanızın etkin olmadığı `Disabled` anlamına gelir. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
-| `integrationAccount` | No | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |
+| `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |
 | `definition` | Yes | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında nesne, `parameters` mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
-| `parameters` | No | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, `$connections` çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir nesnesi içerir. |
-| `accessControl` | No | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, `$connections` çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir nesnesi içerir. |
+| `accessControl` | Hayır | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
 Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özgü şablon kaynak bilgileri için bkz. [Microsoft. Logic Resource Types](/azure/templates/microsoft.logic/allversions).
@@ -584,7 +574,7 @@ Mantıksal uygulama Tasarımcısı 'nın iş akışı Tanım parametrelerini do�
 
 ## <a name="connection-resource-definitions"></a>Bağlantı kaynak tanımları
 
-Mantıksal uygulamanız [yönetilen bağlayıcılar](../connectors/apis-list.md)kullanarak diğer hizmetlere ve sisteme bağlantı oluşturup kullandığında, şablonunuzun `resources` nesnesi bu bağlantılara ait kaynak tanımlarını içerir.
+Mantıksal uygulamanız [yönetilen bağlayıcılar](../connectors/apis-list.md)kullanarak diğer hizmetlere ve sisteme bağlantı oluşturup kullandığında, şablonunuzun `resources` nesnesi bu bağlantılara ait kaynak tanımlarını içerir. Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlantılar kendi kaynak tanımlarıyla ayrı Azure kaynaklarıdır. Bu bağlantı kaynağı tanımlarını gözden geçirmek için, [mantıksal uygulamanızı Azure 'Dan Visual Studio 'ya indirin](../logic-apps/manage-logic-apps-with-visual-studio.md). Bu, en kolay dağıtım için hazırlamış geçerli bir parametreli mantıksal uygulama şablonu oluşturmanın en kolay yoludur.
 
 ```json
 {

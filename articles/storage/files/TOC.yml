@@ -296,12 +296,12 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure Dosya Eşitleme yayın notları
       href: storage-files-release-notes.md
-    - name: Azure Depolama forumu
-      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
+    - name: Microsoft Q&A üzerinde Azure Depolama
+      href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
     - name: Stack Overflow üzerinde Azure Depolama
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Azure depolama fiyatlandırması
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure Dosyalar fiyatlandırması
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Azure fiyatlandırma hesaplayıcısı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videolar

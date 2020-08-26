@@ -5,14 +5,14 @@ keywords: uygulama hizmeti, azure app service, etki alanı eşlemesi, etki alan�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bbf8eb507e534c938ab98eb6a354e1051592fd8e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782320"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871063"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "88782320"
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * CNAME kaydı kullanarak alt etki alanını (örneğin, `www.contoso.com`) eşleme
@@ -138,38 +138,34 @@ CNAME ve TXT kayıtlarını ekledikten sonra, DNS kayıtları sayfası aşağıd
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure'da CNAME kaydı eşlemesini etkinleştirme
 
-Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
+1. Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
 
-![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Uygulamanın **Özel etki alanları** sayfasında, tam özel DNS adını (`www.contoso.com`) listeye ekleyin.
+1. Uygulamanın **Özel etki alanları** sayfasında, tam özel DNS adını (`www.contoso.com`) listeye ekleyin.
 
-**+** **Özel etki alanı Ekle**' nin yanındaki simgeyi seçin.
+1. **Özel etki alanı ekle**'yi seçin.
 
-![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-CNAME kaydı eklediğiniz tam etki alanı adını (örneğin, `www.contoso.com`) yazın.
+1. CNAME kaydı eklediğiniz tam etki alanı adını (örneğin, `www.contoso.com`) yazın.
 
-**Doğrula**'yı seçin.
+1. **Doğrula**'yı seçin. **Özel etki alanı Ekle** sayfası gösterilir.
 
-**Özel etki alanı Ekle** sayfası gösterilir.
+1. **Ana bilgisayar adı kayıt türünün** **CNAME (www \. example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun. **Özel etki alanı ekle**'yi seçin.
 
-**Ana bilgisayar adı kayıt türünün** **CNAME (www \. example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun.
+    ![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-**Özel etki alanı ekle**'yi seçin.
+    Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
 
-![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
+    > [!NOTE]
+    > Özel etki alanınız için bir uyarı etiketi, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki alanınız için herhangi bir HTTPS isteğinin gönderileceği ve hata ya da uyarı alacağı anlamına gelir. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
 
-![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
 
-> [!NOTE]
-> Özel etki alanınız için **güvenli olmayan** bir etiket, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki ALANıNA ait HTTPS istekleri alacak ve hata ya da uyarı verecek. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
-
-Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
-
-![Doğrulama hatası](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![Doğrulama hatası](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -223,33 +219,29 @@ Kayıtlar eklendiğinde, DNS kayıtları sayfası aşağıdaki örnekte gösteri
 
 Azure Portal'da uygulamanın **Özel etki alanları** sayfasında dönün ve tam özel DNS adını (örneğin, `contoso.com`) listeye ekleyin.
 
-**+** **Özel etki alanı Ekle**' nin yanındaki simgeyi seçin.
+1. **Özel etki alanı ekle**'yi seçin.
 
-![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-A kaydını yapılandırdığınız tam etki alanı adını (örneğin, `contoso.com`) yazın.
+1. A kaydını yapılandırdığınız tam etki alanı adını (örneğin, `contoso.com`) yazın. 
 
-**Doğrula**'yı seçin.
+1. **Doğrula**'yı seçin. **Özel etki alanı Ekle** sayfası gösterilir.
 
-**Özel etki alanı Ekle** sayfası gösterilir.
+1. **Konak adı kayıt türü**'nün **A kaydı (example.com)** olarak ayarlandığından emin olun. **Özel etki alanı ekle**'yi seçin.
 
-**Konak adı kayıt türü**'nün **A kaydı (example.com)** olarak ayarlandığından emin olun.
+    ![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-**Özel etki alanı ekle**'yi seçin.
+    Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
 
-![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![A kaydı eklenir](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
-
-![A kaydı eklenir](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
-
-> [!NOTE]
-> Özel etki alanınız için **güvenli olmayan** bir etiket, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki ALANıNA ait HTTPS istekleri alacak ve hata ya da uyarı verecek. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
-
-Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
-
-![Doğrulama hatası](./media/app-service-web-tutorial-custom-domain/verification-error.png)
-
+    > [!NOTE]
+    > Özel etki alanınız için bir uyarı etiketi, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki alanınız için herhangi bir HTTPS isteğinin gönderileceği ve hata ya da uyarı alacağı anlamına gelir. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
+    
+    Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
+    
+    ![Doğrulama hatası](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    
 <a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Joker karakter etki alanını eşleme
@@ -279,33 +271,31 @@ CNAME eklendiğinde, DNS kayıtları sayfası aşağıdaki örnekte gösterildi�
 
 Artık joker karakter adıyla eşleşen herhangi bir alt etki alanını (örneğin,, `sub1.contoso.com` `sub2.contoso.com` ve `*.contoso.com` her ikisi de `*.contoso.com` ) ekleyebilirsiniz.
 
-Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
+1. Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
 
-![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Özel etki alanı menüsü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**+** **Özel etki alanı Ekle**' nin yanındaki simgeyi seçin.
+1. **Özel etki alanı ekle**'yi seçin.
 
-![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Joker karakter etki alanıyla (örneğin, `sub1.contoso.com`) eşleşen bir tam etki alanı adı yazın ve **Doğrula**'yı seçin.
+1. Joker karakter etki alanıyla (örneğin, `sub1.contoso.com`) eşleşen bir tam etki alanı adı yazın ve **Doğrula**'yı seçin.
 
-**Özel etki alanı Ekle** düğmesi etkinleştirilir.
+    **Özel etki alanı Ekle** düğmesi etkinleştirilir.
 
-**Ana bilgisayar adı kayıt türünün** **CNAME kaydı (www \. example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun.
+1. **Ana bilgisayar adı kayıt türünün** **CNAME kaydı (www \. example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun. **Özel etki alanı ekle**'yi seçin.
 
-**Özel etki alanı ekle**'yi seçin.
+    ![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-![Uygulamaya DNS adı ekleme](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
 
-Yeni özel etki alanının uygulamanın **özel etki alanları** sayfasında yansıtılması biraz zaman alabilir. Verileri güncelleştirmek için tarayıcıyı yenilemeyi deneyin.
+1. **+** Joker karakter etki alanıyla eşleşen başka bir özel etki alanı eklemek için simgeyi tekrar seçin. Örneğin, `sub2.contoso.com` ekleyin.
 
-**+** Joker karakter etki alanıyla eşleşen başka bir özel etki alanı eklemek için simgeyi tekrar seçin. Örneğin, `sub2.contoso.com` ekleyin.
+    ![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
-![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
-
-> [!NOTE]
-> Özel etki alanınız için bir **Not güvenli** etiketi, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki alanınız için HERHANGI bir https isteğinin gönderileceği ve hata veya uyarı alacağı anlamına gelir. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
-
+    > [!NOTE]
+    > Özel etki alanınız için bir uyarı etiketi, henüz bir TLS/SSL sertifikasına bağlanmamış ve tarayıcıya bağlı olarak bir tarayıcıdan özel etki alanınız için herhangi bir HTTPS isteğinin gönderileceği ve hata ya da uyarı alacağı anlamına gelir. TLS bağlama eklemek için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
+    
 ## <a name="test-in-browser"></a>Tarayıcıda test
 
 Daha önce yapılandırılmış olan DNS adlarına (örneğin, `contoso.com`,  `www.contoso.com`, `sub1.contoso.com` ve `sub2.contoso.com`) göz atın.

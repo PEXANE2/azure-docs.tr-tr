@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749675"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871386"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -88,7 +88,10 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
-- 08/21/2020: i ve II türünde HLı birimler için kullanılabilir işletim sistemi olarak, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) yeni işletim sistemi sürümü ekleniyor
+- 08/25/2020: [wsfc ve paylaşılan disk Ile SAP ascs/SCS Için ha kılavuzunda](./sap-high-availability-guide-wsfc-shared-disk.md)değişiklik yaparken, wsfc ve paylaşılan DISK [Ile SAP ascs/SCS için Azure altyapısını hazırlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ve Azure PAYLAŞıLAN DISK ve belge SAP ERS2 mimarisini kullanma seçeneğini göstermek için [wsfc ve PAYLAŞıLAN disk Ile SAP NW ha 'yı yükledikten](./sap-high-availability-guide-wsfc-shared-disk.md) sonra
+- 08/25/2020: [wsfc ve Azure Paylaşılan disk Ile SAP yoks/SCS için çok DÜZEYLI ha kılavuzunun](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) yayını
+- 08/25/2020: [wsfc ve Azure NetApp Files (SMB) Ile SAP ASCS/SCS Için ha kılavuzunda](./high-availability-guide-windows-netapp-files-smb.md)değiştirme wsfc ve [dosya paylaşımıyla](./sap-high-availability-infrastructure-wsfc-file-share.md)SAP yoks/SCS, wsfc ve [paylaşılan disk](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) ile SAP yoks/SCS için çok düzeyli ha Kılavuzu, wsfc ve paylaşılan disk ile SAP yoks/SCS IÇIN çok [düzeyli ha Kılavuzu ve WFC](./sap-ascs-ha-multi-sid-wsfc-file-share.md) ve paylaşılan disk ile SAP 
+- 08/21/2020: I ve II türünde HLı birimler için kullanılabilir işletim sistemi olarak, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) yeni işletim sistemi sürümü ekleniyor
 - 08/18/2020: [RHEL üzerinde ANF ile SAP HANA ölçeği Için ha](./sap-hana-high-availability-netapp-files-red-hat.md) sürümü
 - 08/17/2020: SAP NetWeaver sistemlerini Şirket içinden Azure 'a taşımak için Azure Site Recovery kullanma hakkında bilgi ekleyin. [Azure sanal makineler planlama ve uygulama için, SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: [IBM DB2 Azure sanal makineleri için disk yapılandırma önerisi, SAP Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

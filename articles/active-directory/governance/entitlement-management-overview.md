@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c43281ac213137d4a2ef39e76b3f13ffdad746
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783901"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871216"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -38,7 +39,7 @@ Kurumsal kuruluşlar, çalışanların şu gibi kaynaklara erişimini yönetirke
 - Kullanıcılar sahip olmaları gereken erişimi bilmiyor olabilir ve olsalar bile, erişimleri onaylamak için doğru bireyleri bulmaya zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
 
 - Başka bir kişi, diğer kuruluş dizinlerindeki tüm kişilerin davet etmesini sağlayabilmesi için
 - Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini sürekli olarak yönetmeyi anımsayabilir
@@ -54,7 +55,10 @@ Yetkilendirme yönetiminin bazı özellikleri şunlardır:
 - Yönetici olmayanların erişim paketleri oluşturma yeteneğini temsil edin. Bu erişim paketleri kullanıcıların isteyebileceği kaynakları içerir ve temsilci erişim paketi yöneticileri, kullanıcıların isteyebileceği, erişimleri onaylaması gereken ve erişimin ne zaman sona ermeyeceği kurallarla ilke tanımlayabilir.
 - Kullanıcıları erişim isteğinde bulunan bağlı kuruluşları seçin.  Dizininizde henüz olmayan bir Kullanıcı erişim isteğinde bulunduğunda ve onaylanırsa, otomatik olarak dizininize davet edilir ve erişim atanır.  Erişiminin süresi dolmuşsa, başka bir erişim paketi ataması yoksa, dizininizdeki B2B hesabı otomatik olarak kaldırılabilir.
 
-[İlk erişim paketinizi oluşturmak için öğreticimize](entitlement-management-access-package-first.md)başlamanızı sağlayabilirsiniz. Ayrıca, [Genel senaryoları](entitlement-management-scenarios.md)okuyabilir veya aşağıdakiler dahil olmak üzere videoları izleyebilirsiniz.
+>[!NOTE]
+>Yetkilendirme yönetimini denemeye hazırsanız, [ilk erişim paketinizi oluşturmak için öğreticimize](entitlement-management-access-package-first.md)başlamanızı sağlayabilirsiniz.
+
+Ayrıca, [Genel senaryoları](entitlement-management-scenarios.md)okuyabilir veya aşağıdakiler dahil olmak üzere videoları izleyebilirsiniz.
 
 - [Kuruluşunuzda Azure AD yetkilendirme yönetimi nasıl dağıtılır](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [Azure AD Yetkilendirme Yönetimi kullanımını izleme ve ölçeklendirme](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -71,7 +75,7 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır.
 - SaaS uygulamaları ve Federasyon/çoklu oturum açma ve/veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamalarına atama
 - SharePoint Online sitelerinin üyeliği
 
-Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
+Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
 
 - Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslama](../users-groups-roles/licensing-groups-assign.md) 'yi yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak kullanıcılara Azure kaynaklarını yönetmeye yönelik erişim izni verebilirsiniz.
@@ -99,10 +103,10 @@ Aşağıdaki diyagramda, yetkilendirme yönetiminde farklı öğelerin bir örne
 
 ## <a name="when-should-i-use-access-packages"></a>Erişim paketlerini ne zaman kullanmalıyım?
 
-Erişim paketleri, erişim atama için diğer mekanizmaların yerini alır.  Bunlar, aşağıdakiler gibi durumlarda en uygun durumlardır:
+Erişim paketleri, erişim atama için diğer mekanizmaların yerini alır.  Bunlar, şu gibi durumlarda en uygun durumlardır:
 
 - Çalışanların belirli bir görev için zamana sınırlı erişim gerekir.  Örneğin, tüm çalışanların Exchange Online posta kutusuna sahip olduğundan emin olmak için grup tabanlı lisanslama ve dinamik bir grup kullanabilirsiniz ve daha sonra çalışanların başka bir bölümden Departman kaynaklarını okumak gibi ek erişime ihtiyacı olan durumlar için erişim paketleri kullanabilirsiniz.
-- Erişimin bir çalışanın Yöneticisi veya diğer belirlenen bireyler tarafından onaylanması gerekir.
+- Bir çalışanın yöneticisinin veya diğer belirlenen kişilerin onayını gerektiren erişim.
 - Departmanlar, kaynakları katılımsız olarak kendi erişim ilkelerini yönetmek ister.  
 - İki veya daha fazla kuruluş bir proje üzerinde işbirliği sağlar ve sonuç olarak, bir kuruluştan birden çok kullanıcının başka bir kuruluşun kaynaklarına erişmek için Azure AD B2B aracılığıyla getirilmesi gerekir.
 
@@ -149,7 +153,7 @@ Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir
 - Katalog Oluşturucu, Katalog sahibi ve erişim paketi Yöneticisi gibi yönetim görevlerinin yetkilendirilmiş olduğu kullanıcılar için lisans gerekmez.
 - Erişim paketleri talep edebilen ancak erişim paketi **istemeyen** konukları için lisans gerekmez. **not**
 
-Üye kullanıcılarınız (çalışanlar) için satın aldığınız her ücretli Azure AD Premium P2 lisansı için, Azure AD B2B kullanarak 5 adede kadar Konuk kullanıcıya davet edebilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../external-identities/licensing-guidance.md).
+Üye kullanıcılarınız (çalışanlar) için satın aldığınız her ücretli Azure AD Premium P2 lisansı için, Azure AD B2B kullanarak beş adede kadar Konuk kullanıcıya davet edebilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../external-identities/licensing-guidance.md).
 
 Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074053"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871488"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 'da Windows VM 'Leri için zaman eşitleme
 
@@ -60,7 +60,7 @@ Varsayılan olarak, Windows işletim sistemi VM görüntüleri W32Time için iki
 - Time.windows.com adresinden bilgi alan NtpClient sağlayıcısı.
 - Konak saatini VM 'Lerle iletişim kurmak ve bakım için VM duraklatıldıktan sonra düzeltmeler yapmak için kullanılan Vmictimessync hizmeti. Azure Konakları, doğru zaman saklamak için Microsoft 'a ait stratum 1 cihazlarını kullanır.
 
-W32Time, zaman sağlayıcısını aşağıdaki öncelik sırasına göre tercih eder: katman düzeyi, kök gecikmesi, kök dağılımı, zaman değeri. Çoğu durumda, time.windows.com, daha düşük bir sınır bildirdiğinden, W32Time ana bilgisayara yönelik olarak tercih edebilir. 
+W32Time, zaman sağlayıcısını aşağıdaki öncelik sırasına göre tercih eder: katman düzeyi, kök gecikmesi, kök dağılımı, zaman değeri. Çoğu durumda, bir Azure VM üzerindeki W32Time, her iki zaman kaynağını da karşılaştırmak için, değerlendirme nedeniyle ana bilgisayar süresini tercih edebilir. 
 
 Etki alanına katılmış makinelerde, etki alanının kendisi zaman eşitleme hiyerarşisi oluşturur, ancak orman kökünün hala herhangi bir yerden zaman sürilmesi gerekir ve aşağıdaki noktalar doğru kalmaya devam eder.
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 Görebileceğiniz çıktı ve ne anlama gelir:
     
-- **Time.Windows.com** -varsayılan yapılandırmada w32time, Time.Windows.com 'ten zaman alabilir. Zaman eşitleme kalitesi, internet bağlantısına bağlıdır ve paket gecikmelerinden etkilenir. Bu, varsayılan kurulumun olağan çıktıdır.
-- **VM IC zaman eşitleme sağlayıcısı** -VM, zaman konaktan eşitleniyor. Bu, genellikle yalnızca konak zaman eşitlemesini tercih ediyorsanız veya NtpServer Şu anda kullanılabilir durumda değilse oluşur. 
+- **Time.Windows.com** -varsayılan yapılandırmada w32time, Time.Windows.com 'ten zaman alabilir. Zaman eşitleme kalitesi, internet bağlantısına bağlıdır ve paket gecikmelerinden etkilenir. Bu, fiziksel bir makineye alacağınız olağan çıktıdır.
+- **VM IC zaman eşitleme sağlayıcısı**  -VM, zaman konaktan eşitleniyor. Bu, Azure üzerinde çalışan bir sanal makineye alacağınız olağan çıktıdır. 
 - *Etki alanı sunucunuz* -geçerli makine bir etki alanında ve etki alanı zaman eşitleme hiyerarşisini tanımlar.
 - *Diğer bir sunucu* -W32Time, başka bir sunucudan saati almak üzere açık bir şekilde yapılandırılmıştır. Zaman eşitleme kalitesi, bu zamana sunucu kalitesine bağlıdır.
 - **Yerel CMOS saat** saati zaman uyumsuz. W32Time 'ın yeniden başlatmanın ardından başlaması yeterli zaman yoksa veya yapılandırılan tüm zaman kaynakları kullanılabilir olmadığında bu çıktıyı alabilirsiniz.
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-W32Time 'nin yeni yoklama aralıklarını kullanabilmesi için, NtpServers bunları kullanarak işaretlenir. Sunucularla, bu mekanizmayı geçersiz kılabilecek 0x1 bitflag maskesi ile açıklanacaksa ve W32Time, bunun yerine SpecialPollInterval kullanır. Belirtilen NTP sunucularının 0x8 bayrağını kullanıyor veya hiç bayrak bulunmadığından emin olun:
+W32Time 'nin yeni yoklama aralıklarını kullanabilmesi için, NtpServers bunları kullanılarak işaretlenmesi gerekir. Sunucularla, bu mekanizmayı geçersiz kılabilecek 0x1 bitflag maskesi ile açıklanacaksa ve W32Time, bunun yerine SpecialPollInterval kullanır. Belirtilen NTP sunucularının 0x8 bayrağını kullanıyor veya hiç bayrak bulunmadığından emin olun:
 
 Kullanılan NTP sunucuları için hangi bayrakların kullanıldığını kontrol edin.
 
@@ -173,6 +173,6 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 Zaman eşitleme hakkında daha fazla ayrıntı için bağlantılar aşağıda verilmiştir:
 
 - [Windows Zaman Hizmeti Araçları ve Ayarları](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [Windows Server 2016 geliştirmeleri](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 geliştirmeleri ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Windows Server 2016 için doğru saat](/windows-server/networking/windows-time-service/accurate-time)
 - [Windows Saat hizmetini yüksek doğruluk ortamları için yapılandırmak üzere sınır desteği](/windows-server/networking/windows-time-service/support-boundary)

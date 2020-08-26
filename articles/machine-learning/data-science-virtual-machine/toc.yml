@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: Linux Veri Bilimi Sanal Makinesi kullanma
       href: linux-dsvm-walkthrough.md
-    - name: Otomatik ölçeklendirilmiş Veri Bilimi Sanal Makinesi havuzu oluşturma
-      href: dsvm-pools.md
-    - name: Active Directory ile tümleştirme
-      href: dsvm-common-identity.md
-    - name: Kaynak erişim kimlik bilgilerini koruma
-      href: dsvm-secure-access-keys.md
+    - name: Azure Machine Learning ile tümleştirme
+      items:
+        - name: Denemeleri İzleme
+          href: how-to-track-experiments.md
+    - name: Kurumsal kılavuz
+      items:
+        - name: Otomatik ölçeklendirilmiş Veri Bilimi Sanal Makinesi havuzu oluşturma
+          href: dsvm-pools.md
+        - name: Active Directory ile tümleştirme
+          href: dsvm-common-identity.md
+        - name: Kaynak erişim kimlik bilgilerini koruma
+          href: dsvm-secure-access-keys.md
 - name: Kaynaklar
   items:
     - name: Microsoft Soru-Cevap soru sayfası

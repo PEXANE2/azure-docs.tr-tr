@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688360"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870213"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -70,7 +70,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 
 | Sürüm 10 | Sürüm 11 eşdeğeri |
 |------------|-----------------------|
-| [Dizin oluşturma](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [Searchındex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
+| [İndeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [Searchındex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
 | [Alan](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [X](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [Itemerror](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
@@ -153,6 +153,8 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
    using Azure.Search.Documents.Indexes.Models;
    using Azure.Search.Documents.Models;
    ```
+
+1. JSON serileştirme gerektiren sınıflar için `using Newtonsoft.Json` ile değiştirin `using System.Text.Json.Serialization` .
 
 1. İstemci kimlik doğrulama kodunu gözden geçirin. Önceki sürümlerde, API anahtarını (örneğin, [SearchServiceClient. Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) özelliği) ayarlamak için istemci nesnesindeki özellikleri kullanırsınız. Geçerli sürümde, anahtarı kimlik bilgileri olarak geçirmek için [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) sınıfını kullanın, böylece gerekırse, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilirsiniz.
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285212"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869448"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -143,13 +143,17 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örnek: `*.jpg;*.pdf;exactName`
 
-**--** eşitleme için yardım yardım.
+**--**    eşitleme için yardım yardım.
 
 **--Include-Attributes** dizesi (yalnızca Windows), öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örnek: `A;S;R`
 
 **--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örnek: `*.jpg;*.pdf;exactName`
 
 **--günlük düzeyi** dize, günlük dosyası, kullanılabilir düzeyler: `INFO` (tüm istekler ve yanıtlar), `WARNING` (yavaş yanıtlar), `ERROR` (yalnızca başarısız istekler) ve `NONE` (çıktı günlüğü yok) için günlük ayrıntı düzeyini tanımlar. (varsayılan `INFO` ). 
+
+**--Preserve-SMB-Info**     Varsayılan olarak false.SMB kullanan kaynaklar (Windows ve Azure dosyaları) arasında SMB Özellik bilgilerini (son yazma saati, oluşturma saati, öznitelik bitleri) korur.Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin, include-model) hem dosya hem de klasörler için geçerlidir.Klasörler için aktarılan bilgiler, klasörler için korunmayan son yazma zamanı dışında dosyalar için de aynıdır.
+
+**--Preserve-SMB-izinleri**     Varsayılan olarak false., Aware kaynakları (Windows ve Azure dosyaları) arasında SMB ACL 'Lerini korur.Bu bayrak, salt dosya filtresi belirtilmediği takdirde (örneğin,) hem dosya hem de klasörler için geçerlidir  `include-pattern` .
 
 **--PUT-MD5**     Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
 

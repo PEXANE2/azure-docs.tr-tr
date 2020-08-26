@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525424"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869227"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -49,7 +49,7 @@ Tam görüntü listesi için `az vm image list --publisher redhat --all` Azure C
 
 ### <a name="images-connected-to-non-eus-repositories"></a>DUYMSUZ depolara bağlı görüntüler
 
-Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda en son RHEL alt sürümüne yükseltilecektir `sudo yum update` . Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update` , BIR rhel 7,7 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
+Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda en son RHEL alt sürümüne yükseltilecektir `sudo yum update` . Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update` , BIR rhel 7,8 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
 
 EUS depolarından bağlantılı olan görüntüler SKU 'da küçük bir sürüm numarası içermez. SKU, URN 'deki üçüncü öğedir (görüntünün tam adı). Örneğin, aşağıdaki tüm görüntüler EUS depolarından ekli olarak sunulur:
 

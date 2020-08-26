@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: Modül hataları ve sorun giderme
   href: designer-error-codes.md
+- name: Graph arama sorgusu söz dizimi
+  href: graph-search-syntax.md

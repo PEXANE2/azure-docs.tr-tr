@@ -12,6 +12,11 @@
   items:
     - name: Sanal Makineler’e yönelik çözümler
       href: virtual-machine-solutions.md
+- name: Nasıl Yapılır
+  expanded: true
+  items:
+    - name: Fortanix Enclave Manager
+      href: how-to-fortanix-enclave-manager.md
 - name: Kaynaklar
   expanded: true
   items:

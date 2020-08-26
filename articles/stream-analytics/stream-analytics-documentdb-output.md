@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848050"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870842"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Çıktıyı Azure Cosmos DB Azure Stream Analytics  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi yöntemleri içerir.
@@ -95,7 +95,7 @@ Event Hubs gelen olay hızı Azure Cosmos DB kapsayıcılardan (20.000 ru) en fa
 
 ![Azure Cosmos DB ölçümleri karşılaştırması](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-1,2 ile Stream Analytics, azaltma veya hız sınırlandırmasından çok az sayıda yeniden gönderme işlemi ile Azure Cosmos DB, kullanılabilir üretilen iş hızının yüzde 100 ' ü kullanarak daha akıllı bir işlem olur. Bu, kapsayıcıda aynı anda çalışan sorgular gibi diğer iş yükleri için daha iyi bir deneyim sağlar. Stream Analytics, saniyede 1.000 ile 10.000 ileti için bir havuz olarak Azure Cosmos DB nasıl ölçeklendirebileceğiniz hakkında bilgi edinmek istiyorsanız, [Bu Azure örnek projesini](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)deneyin.
+1,2 ile Stream Analytics, azaltma veya hız sınırlandırmasından çok az sayıda yeniden gönderme işlemi ile Azure Cosmos DB, kullanılabilir üretilen iş hızının yüzde 100 ' ü kullanarak daha akıllı bir işlem olur. Bu, kapsayıcıda aynı anda çalışan sorgular gibi diğer iş yükleri için daha iyi bir deneyim sağlar. Stream Analytics, saniyede 1.000 ile 10.000 ileti için bir havuz olarak Azure Cosmos DB nasıl ölçeklendirebileceğiniz hakkında bilgi edinmek istiyorsanız,  [Bu Azure örnek projesini](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)deneyin.
 
 Azure Cosmos DB çıkışının üretilen işi 1,0 ve 1,1 ile aynıdır. Uyumluluk düzeyi 1,2 ' i Azure Cosmos DB Stream Analytics kullanmanızı *kesinlikle öneririz* .
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506231"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869683"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management bir ayrıcalıklı erişim grubu (Önizleme) için uygunluk atayın
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM), Azure A
 
 Bir kullanıcının bir ayrıcalıklı erişim grubunun üyesi veya sahibi olmasını uygun hale getirmek için bu adımları izleyin.
 
-1. [Ayrıcalıklı rol yönetici](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolü izinleriyle Azure Portal [Privileged Identity Management](https://portal.azure.com/) için oturum açın.
+1. [Azure AD 'de](https://aad.portal.azure.com) genel yönetici veya grup sahibi Izinleriyle oturum açın.
+1. **Gruplar** ' ı seçin ve ardından yönetmek istediğiniz rol atanabilir grubu seçin. Listede arama yapabilir veya filtre uygulayabilirsiniz.
 
-    Privileged Identity Management yönetmek için başka bir yöneticiye erişim verme hakkında daha fazla bilgi için bkz. [Privileged Identity Management yönetmek için diğer yöneticilere erişim verme](pim-how-to-give-access-to-pim.md).
+    ![PıM içinde yönetilecek rol atanabilir bir grup bulun](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. **Azure AD Privileged Identity Management**açın.
+1. Grubu açın ve **ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
 
-1. **Ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
-
-1. Bir grup adı arayabilir ve yönetmek istediğiniz grubu seçmek üzere listeyi filtrelemek için **grup türünü** kullanabilirsiniz.
-
-    ![Yönetilecek ayrıcalıklı erişim gruplarının listesi](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. **Yönet**altında **atamalar**' ı seçin.
+    ![Privileged Identity Management deneyimini açın](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. **Atama Ekle**' yi seçin.
 
@@ -77,21 +72,20 @@ Bir kullanıcının bir ayrıcalıklı erişim grubunun üyesi veya sahibi olmas
 
 Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımları izleyin.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. [Azure AD 'de](https://aad.portal.azure.com) genel yönetici veya grup sahibi Izinleriyle oturum açın.
+1. **Gruplar** ' ı seçin ve ardından yönetmek istediğiniz rol atanabilir grubu seçin. Listede arama yapabilir veya filtre uygulayabilirsiniz.
 
-1. **Ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
+    ![PıM içinde yönetilecek rol atanabilir bir grup bulun](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Bir grup adı arayabilir ve yönetmek istediğiniz grubu seçmek üzere listeyi filtrelemek için **grup türünü** kullanabilirsiniz.
+1. Grubu açın ve **ayrıcalıklı erişim (Önizleme)** seçeneğini belirleyin.
 
-    ![Yönetilecek ayrıcalıklı erişim gruplarının listesi](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. **Yönet**altında **atamalar**' ı seçin.
+    ![Privileged Identity Management deneyimini açın](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Güncelleştirmek veya kaldırmak istediğiniz rolü seçin.
 
 1. **Uygun roller** veya **etkin roller** sekmelerinde rol atamasını bulun.
 
-    ![Rol atamasını güncelleştirme veya kaldırma](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![Rol atamasını güncelleştirme veya kaldırma](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. Rol atamasını güncelleştirmek veya kaldırmak için **Güncelleştir** ' i veya **Kaldır** ' ı seçin.
 

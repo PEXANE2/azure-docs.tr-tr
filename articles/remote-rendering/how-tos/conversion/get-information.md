@@ -1,20 +1,40 @@
 ---
-title: Dönüştürülmüş bir model hakkında bilgi alma
-description: Tüm model dönüştürme parametrelerinin açıklaması
+title: Dönüştürmeler hakkında bilgi alın
+description: Dönüştürmeler hakkında bilgi alın
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509306"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870298"
 ---
-# <a name="get-information-about-a-converted-model"></a>Dönüştürülmüş bir model hakkında bilgi alma
+# <a name="get-information-about-conversions"></a>Dönüştürmeler hakkında bilgi alın
 
-Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketimine yöneliktir. Ancak, bir işleme oturumu başlatmadan bir modelle ilgili bilgilere erişmek istediğinizde bazı zamanlar olabilir. Bu nedenle, dönüştürme hizmeti çıkış kapsayıcısındaki arrAsset dosyasının yanına bir JSON dosyası koyar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı, dönüştürülmüş varlığın yanında adlı bir dosya içerir `buggy.info.json` `buggy.arrAsset` . Kaynak modeli, dönüştürülmüş model ve dönüştürmenin kendisi hakkında bilgiler içerir.
+## <a name="information-about-a-conversion-the-result-file"></a>Bir dönüştürme hakkında bilgi: sonuç dosyası
+
+Dönüştürme hizmeti bir varlığı dönüştürdüğünde, herhangi bir sorunun özetini "sonuç dosyasına" yazar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı adlı bir dosya içerir `buggy.result.json` .
+
+Sonuç dosyası, dönüştürme sırasında oluşan tüm hataları ve uyarıları listeler ve bir sonuç Özeti verir; bu, veya ' den biridir `succeeded` `failed` `succeeded with warnings` .
+Sonuç dosyası, her birinin,,, ve ' den biri olan dize özelliğine sahip olan bir JSON dizisi olarak yapılandırılır `warning` `error` `internal warning` `internal error` `result` . En fazla bir hata (veya) olacaktır, `error` `internal error` her zaman bir tane olur `result` .
+
+## <a name="example-result-file"></a>Örnek *sonuç* dosyası
+
+Aşağıdaki örnek, bir arrAsset başarıyla oluşturulan bir dönüştürmeyi açıklar. Ancak eksik bir doku olduğundan, elde edilen arrAsset istenen şekilde olmayabilir.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Dönüştürülen model hakkında bilgi: bilgi dosyası
+
+Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketimine yöneliktir. Ancak, bir işleme oturumu başlatmadan bir modelle ilgili bilgilere erişmek istediğinizde bazı zamanlar olabilir. Bu iş akışını desteklemek için, dönüştürme hizmeti çıkış kapsayıcısındaki arrAsset dosyasının yanına bir JSON dosyası koyar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı, dönüştürülmüş varlığın yanında adlı bir dosya içerir `buggy.info.json` `buggy.arrAsset` . Kaynak modeli, dönüştürülmüş model ve dönüştürmenin kendisi hakkında bilgiler içerir.
 
 ## <a name="example-info-file"></a>Örnek *bilgi* dosyası
 
@@ -124,6 +144,11 @@ Bu bölüm, dönüştürülmüş varlık tarafından hesaplanan bilgileri kayded
 * `numMeshPartsInstanced`: ArrAsset içinde yeniden kullanılan kafeslerin sayısı.
 * `recenteringOffset`: `recenterToOrigin` [Conversionsettings](configure-model-conversion.md) seçeneği etkin olduğunda, bu değer dönüştürülen modeli özgün konumuna geri taşıyabilecek çevirmadır.
 * `boundingBox`: Modelin sınırları.
+
+## <a name="deprecated-features"></a>Kullanım dışı bırakılan özellikler
+
+Dönüştürme hizmeti dosyaları `stdout.txt` ve `stderr.txt` Çıkış kapsayıcısına yazar ve bunlar uyarı ve hataların tek kaynağıdır.
+Bu dosyalar artık kullanım dışıdır. Bunun yerine lütfen bu amaçla [sonuç dosyalarını](#information-about-a-conversion-the-result-file) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

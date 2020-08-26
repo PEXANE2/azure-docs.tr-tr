@@ -3,12 +3,12 @@ title: Azure Service Fabric kümesinde sertifikaları yönetme
 description: Yeni sertifikaların nasıl ekleneceğini, sertifikanın nasıl aktarılacağını ve bir Service Fabric kümesinden veya bir kümeden sertifika nasıl kaldırılacağını açıklar.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658378"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869771"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure'da Service Fabric kümesine sertifika ekleme veya kaldırma
 Service Fabric X. 509.440 sertifikalarını nasıl kullandığını ve [küme güvenliği senaryolarını](service-fabric-cluster-security.md)nasıl öğrendiğini öğrenmeniz önerilir. Devam etmeden önce, bir küme sertifikasının ne olduğunu ve ne kullanıldığını anlamalısınız.
@@ -179,7 +179,7 @@ Kaynak Yöneticisi şablonu parametre dosyanızı düzenleyin, secCertificateThu
 
 ```
 
-### <a name="deploy-the-template-to-azure"></a>Şablonu Azure 'a dağıtma
+### <a name="deploy-the-template-to-azure"></a>Şablonu Azure’a dağıtma
 
 - Şimdi şablonunuzu Azure 'a dağıtmaya hazırsınız. Bir Azure PS sürüm 1 + komut istemi açın.
 - Azure hesabınızda oturum açın ve belirli Azure aboneliğini seçin. Bu, birden fazla Azure aboneliğine erişimi olan katlara yönelik önemli bir adımdır.
@@ -260,7 +260,7 @@ Küme sertifikalarına ek olarak, bir Service Fabric kümesinde yönetim işleml
 
 İki tür istemci sertifikası ekleyebilirsiniz-yönetici veya salt okunurdur. Bunlar daha sonra, kümedeki yönetici işlemlerine ve sorgu işlemlerine erişimi denetlemek için kullanılabilir. Varsayılan olarak, küme sertifikaları izin verilen yönetici sertifikaları listesine eklenir.
 
-herhangi bir sayıda istemci sertifikası belirtebilirsiniz. Her ekleme/silme işlemi Service Fabric kümesinde bir yapılandırma güncelleştirmesine neden olur
+Herhangi bir sayıda istemci sertifikası belirtebilirsiniz. Her ekleme/silme işlemi Service Fabric kümesinde bir yapılandırma güncelleştirmesine neden olur.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Portal aracılığıyla istemci sertifikaları ekleme-yönetici veya salt okuma
