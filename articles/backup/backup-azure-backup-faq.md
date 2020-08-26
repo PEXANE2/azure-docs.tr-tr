@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827401"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892771"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -26,7 +26,7 @@ Kasa başına en fazla 1000 Azure Sanal makinesi kaydedebilirsiniz. Microsoft Az
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Bir kasada kaç veri kaynağı/öğe korunabilir?
 
-Bir kasada tüm iş yüklerinde (IaaS VM, SQL, AFS vb.) en fazla 2000 veri kaynağı/öğe koruyabilirsiniz.
+Kasadaki tüm iş yüklerinde en fazla 2000 veri kaynağı/öğe koruyabilirsiniz (IaaS VM, SQL, AFS gibi).
 Örneğin, kasadaki 500 VM 'Leri ve 400 Azure dosya paylaşımlarını zaten koruduysanız, yalnızca bu anda en fazla 1100 SQL veritabanı koruyabilirsiniz.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Kasa başına kaç ilke oluşturabilirim?

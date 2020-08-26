@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825197"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892193"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -113,10 +113,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
-**Azure VM’leri** | ![Yes][green] | ![Yes][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
+**Azure VM’leri** | ![Evet][green] | ![Evet][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -129,7 +129,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 **Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -145,14 +145,14 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 ## <a name="cross-region-restore"></a>Çapraz bölge geri yükleme
 
-Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlendirin ve müşterilere verileri ikincil bir bölgeye geri yüklemek için tam denetim sağlayan çapraz bölge geri yükleme özelliğini ekledi. Bu özelliği yapılandırmak için [çapraz bölge geri yüklemeyi ayarla makalesini](backup-create-rs-vault.md#set-cross-region-restore)ziyaret edin. Bu özellik aşağıdaki yönetim türleri için desteklenir:
+Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçlendirin ve verileri ikincil bir bölgeye geri yüklemek için tam denetim sağlayan çapraz bölge geri yükleme özelliğini ekledi. Bu özelliği yapılandırmak için [çapraz bölge geri yüklemeyi ayarla makalesini](backup-create-rs-vault.md#set-cross-region-restore)ziyaret edin. Bu özellik aşağıdaki yönetim türleri için desteklenir:
 
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | YOK               |
-| SQL/SAP HANA          | Hayır                                                           | YOK               |
-| 'Nın                    | Hayır                                                           | YOK               |
+| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
+| SQL/SAP HANA          | Hayır                                                           | Yok               |
+| 'Nın                    | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

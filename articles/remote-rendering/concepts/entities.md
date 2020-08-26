@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac0bf539cc345f326027f4707b7b50204e2b7850
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509211"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893060"
 ---
 # <a name="entities"></a>Varlıklar
 
@@ -18,7 +18,7 @@ Bir *varlık* , boşluk alanındaki taşınabilir bir nesneyi temsil eder ve uza
 
 ## <a name="entity-properties"></a>Varlık özellikleri
 
-Varlıkların bir konum, döndürme ve ölçeğe göre tanımlanan bir dönüşümü vardır. Kendilerine ait varlıkların herhangi bir observable işlevselliği yoktur. Bunun yerine, davranış, varlıklara eklenen bileşenler aracılığıyla eklenir. Örneğin, bir [CutPlaneComponent](../overview/features/cut-planes.md) iliştirmek varlığın konumunda kesilmiş bir düzlem oluşturacaktır.
+Varlıkların bir konum, döndürme ve ölçeğe göre tanımlanan bir dönüşümü vardır. Kendilerine ait varlıkların herhangi bir observable işlevselliği yoktur. Bunun yerine, davranış, varlıklara eklenen bileşenler aracılığıyla eklenir. Örneğin, bir [CutPlaneComponent](../overview/features/cut-planes.md)  iliştirmek varlığın konumunda kesilmiş bir düzlem oluşturacaktır.
 
 Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen sıradüzenli dönüşümüdür. Örneğin, birden çok varlık paylaşılan bir üst varlığa alt öğe olarak eklendiğinde, bu varlıkların tümü uyum içinde taşınabilir, döndürülebilir ve üst varlığın dönüşümü değiştirilerek ölçekleniyor.
 
@@ -46,7 +46,7 @@ ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
     if (auto entityRes = session->Actions()->CreateEntity())
     {
         entity = entityRes.value();
-        entity->Position(Double3{ 1, 2, 3 });
+        entity->SetPosition(Double3{ 1, 2, 3 });
         return entity;
     }
     return entity;
@@ -72,7 +72,7 @@ CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType(ObjectType::CutPlaneComponent)->as<CutPlaneComponent>();
 
 // or alternatively:
-ApiHandle<CutPlaneComponent> cutplane = *entity->FindComponentOfType<CutPlaneComponent>();
+ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType<CutPlaneComponent>();
 ```
 
 ### <a name="querying-transforms"></a>Dönüşümler sorgulanıyor
@@ -90,8 +90,8 @@ Quaternion rotation = entity.Rotation;
 
 ```cpp
 // local space transform of the entity
-Double3 translation = *entity->Position();
-Quaternion rotation = *entity->Rotation();
+Double3 translation = entity->GetPosition();
+Quaternion rotation = entity->GetRotation();
 ```
 
 
@@ -124,11 +124,11 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
 ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
 metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
     {
-        if (query->IsRanToCompletion())
+        if (query->GetIsRanToCompletion())
         {
-            ApiHandle<ObjectMetaData> metaData = *query->Result();
+            ApiHandle<ObjectMetaData> metaData = query->GetResult();
             ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
-            int64_t intValue = *entry->AsInt64();
+            int64_t intValue = *entry->GetAsInt64();
 
             // ...
         }

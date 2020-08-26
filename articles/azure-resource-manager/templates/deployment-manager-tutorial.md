@@ -2,15 +2,15 @@
 title: Şablonları dağıtmak için Azure Dağıtım Yöneticisi kullanma
 description: Azure kaynaklarını dağıtmak için Azure Dağıtım Yöneticisi ile Kaynak Yöneticisi şablonlarını nasıl kullanacağınızı öğrenin.
 author: mumian
-ms.date: 12/04/2019
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7d0979a52b4762ec4cc2fa82f507e8ce2b083c9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 49465f05b5484dfd358136866b67ce35f789799f
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870697"
+ms.locfileid: "88892941"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Öğretici: Azure Deployment Manager’ı Resource Manager şablonlarıyla kullanma (Genel önizleme)
 

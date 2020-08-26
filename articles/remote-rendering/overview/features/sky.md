@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c040c909225deb92594853ad18814a6e8e94b57
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83759124"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892839"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
@@ -25,7 +25,7 @@ Azure uzaktan Işleme, gerçekçi aydınlatma hesaplamaları için *fiziksel tab
 
 Aşağıdaki görüntüler, farklı yüzeylerin yalnızca gök dokuyla aydınlatma sonuçlarını gösterir:
 
-| Kablık  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
+| Kablık  | 0                                        | 0.25                                          | 0.5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
 | Metal olmayan  | ![Dielectric0](media/dielectric-0.png)   | ![Yeşilpointpark](media/dielectric-0.25.png)  | ![Yeşilpointpark](media/dielectric-0.5.png)  | ![Yeşilpointpark](media/dielectric-0.75.png)  | ![Yeşilpointpark](media/dielectric-1.png)  |
 | Metal      | ![Yeşilpointpark](media/metallic-0.png)  | ![Yeşilpointpark](media/metallic-0.25.png)    | ![Yeşilpointpark](media/metallic-0.5.png)    | ![Yeşilpointpark](media/metallic-0.75.png)    | ![Yeşilpointpark](media/metallic-1.png)    |
@@ -75,17 +75,17 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
     ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
 
     skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
-    {
-        if (res->IsRanToCompletion())
         {
-            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
-            settings->SkyReflectionTexture(*res->Result());
-        }
-        else
-        {
-            printf("Texture loading failed!");
-        }
-    });
+            if (res->GetIsRanToCompletion())
+            {
+                ApiHandle<SkyReflectionSettings> settings = session->Actions()->GetSkyReflectionSettings();
+                settings->SetSkyReflectionTexture(res->GetResult());
+            }
+            else
+            {
+                printf("Texture loading failed!");
+            }
+        });
 }
 
 ```

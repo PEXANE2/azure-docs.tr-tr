@@ -3,12 +3,12 @@ title: Azure VM yedeklemelerini yönetme ve izleme
 description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: cbe0ccef9df27af032cf849b302f6a6211383fe8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532044"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892176"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -29,7 +29,7 @@ Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak
 
 Kasa panosunda VM 'Leri görüntülemek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Sol taraftaki menüden **tüm hizmetler**' i seçin.
 
     ![Tüm hizmetleri seçin](./media/backup-azure-manage-vms/select-all-services.png)
@@ -63,7 +63,7 @@ Kasa panosunda VM 'Leri görüntülemek için:
 
 Var olan bir yedekleme ilkesini değiştirmek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
 2. **> yedekleme Ilkelerini Yönet**' den **Azure sanal makinesi**türü için yedekleme ilkesini seçin.
 3. **Değiştir** ' i seçin ve ayarları değiştirin.
 
@@ -71,7 +71,7 @@ Var olan bir yedekleme ilkesini değiştirmek için:
 
 Bir yedekleme ilkesini yönetmek için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
 2. **Yedekleme öğeleri** kutucuğunda **Azure sanal makine**' yi seçin.
 
     ![Yedekleme öğeleri kutucuğunu aç](./media/backup-azure-manage-vms/azure-virtual-machine.png)
@@ -188,7 +188,7 @@ Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir
 
 * Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi, yalnızca başarısız olan isteğe bağlı yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez).
 * Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
-* Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı uygun olan yedekleme fiyatlandırmasına göre ücretlendirildiği için, kullanıcılar birincil veri kaynağının artık mevcut olmadığı yedekleme öğelerini silmek için tavsiye edilir.
+* Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı uygun olan yedekleme fiyatlandırmasına göre ücretlendirildiği için, birincil veri kaynağının artık mevcut olmadığı yedekleme öğelerini silmeniz önerilir. Bu, silme kaynakları için yedekleme öğesi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

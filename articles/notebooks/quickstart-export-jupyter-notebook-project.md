@@ -1,22 +1,23 @@
 ---
-title: Azure Notebooks önizlemeden Jupyter Not defteri projesini dışarı aktarma
-description: Jupyter Not defteri projesini hızlıca dışarı aktarın.
+title: Azure Notebooks önizlemesinden bir Jupyter Notebook projesi dışarı aktarma
+description: Jupyter Notebook projesini hızlıca dışarı aktarın.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832041"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892108"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir Jupyter Not defteri projesini dışarı aktarma
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede Jupyter Notebook projesi dışarı aktarma
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Bu hızlı başlangıçta, diğer Jupyter Not defteri çözümlerinde kullanmak üzere bir Azure Notebooks projesi indirirsiniz. 
+Bu hızlı başlangıçta, diğer Jupyter Notebook çözümlerinde kullanmak üzere bir Azure Notebooks projesi indirirsiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
+
 Mevcut bir Azure Notebooks projesi.
 
 ## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks projesi dışarı aktarma

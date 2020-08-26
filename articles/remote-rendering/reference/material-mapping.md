@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893111"
 ---
 # <a name="material-mapping-for-model-formats"></a>Model biçimleri için malzeme eşleme
 
@@ -101,29 +101,30 @@ Yukarıdaki eşleme, çok sayıda varsayımlar nedeniyle, malzeme dönüştürme
 Aşağıda kullanılan bazı tanımlar:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Yeşil ∗ 0,7154 + `Specular` . Mavi ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse` . Kırmızı<sup>2</sup> + 0,587 * `Diffuse` . Yeşil<sup>2</sup> + 0,114 * `Diffuse` . Mavi<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular` . Kırmızı<sup>2</sup> + 0,587 * `Specular` . Yeşil<sup>2</sup> + 0,114 * `Specular` . Mavi<sup>2</sup>
-* `SpecularStrength`= Max ( `Specular` . Kırmızı, `Specular` . Yeşil, `Specular` . Ma
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 +  `Specular` . Yeşil ∗ 0,7154 + `Specular` . Mavi ∗ 0,0721
+* `DiffuseBrightness` = 0,299 * `Diffuse` . Kırmızı<sup>2</sup> + 0,587 * `Diffuse` . Yeşil<sup>2</sup> + 0,114 * `Diffuse` . Mavi<sup>2</sup>
+* `SpecularBrightness` = 0,299 * `Specular` . Kırmızı<sup>2</sup> + 0,587 * `Specular` . Yeşil<sup>2</sup> + 0,114 * `Specular` . Mavi<sup>2</sup>
+* `SpecularStrength` = Max ( `Specular` . Kırmızı, `Specular` . Yeşil, `Specular` . Ma
 
 Specularyoğunluğu formülü [buradan](https://en.wikipedia.org/wiki/Luma_(video))elde edilir.
 Parlaklık formülü bu [belirtimde](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)açıklanmıştır.
 
 ### <a name="roughness"></a>Kablık
 
-`Roughness`, `Specular` ve `ShininessExponent` [Bu formül](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)kullanılarak hesaplanır. Bu formül, Phong yansımalı üsünden bağımsız bir şekilde bir yaklaşık olarak oluşur:
+`Roughness` , `Specular` ve `ShininessExponent` [Bu formül](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)kullanılarak hesaplanır. Bu formül, Phong yansımalı üsünden bağımsız bir şekilde bir yaklaşık olarak oluşur:
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
 ### <a name="metalness"></a>Metalness
 
-`Metalness`, ' dan hesaplanır `Diffuse` ve `Specular` [gltf belirtiminde bu formül](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)kullanılarak kullanılır.
+`Metalness` , ' dan hesaplanır `Diffuse` ve `Specular` [gltf belirtiminde bu formül](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)kullanılarak kullanılır.
 
 Buradaki fikir denklemi çözeceğiz: AX<sup>2</sup> + BX + C = 0.
 Temel olarak, dielektrik yüzeyleri, hafif bir şekilde ışığın %4 ' i etrafında yansıtmaktadır ve geri kalan dağıtılmış olur. Metalik yüzeyler, dağıtılmış bir şekilde hiçbir ışık göstermez, ancak tamamen yansımalı bir şekilde yansıtır.
 Parlak plastik ve parlak metalik yüzeyleri ayırt etmenin bir yolu olmadığından, bu formülün bazı dezavantajları vardır. Yüzeyde birçok zaman metalik özelliklerine sahip olduğunu varsayıyoruz ve bu nedenle parlak plastik/lastik yüzeyleri beklendiği gibi görünmeyebilir.
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -138,12 +139,12 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`, ve ' den hesaplanır `Diffuse` `Specular` `Metalness` .
+`Albedo` , ve ' den hesaplanır `Diffuse` `Specular` `Metalness` .
 
 Metalness bölümünde açıklandığı gibi, dielektrik yüzeyleri ışığın %4 ' i etrafında yansıtır.  
 Buradaki fikir, `Dielectric` `Metal` `Metalness` bir faktör olarak değer kullanan renkler arasında ve renklerle daha erken enterpoladır. Metalness ise `0.0` , yansımalı öğesine bağlı olarak, koyu bir renk (yansımalı ise yüksekse) veya dağıtma değişmez (herhangi bir yansımalı yoksa) olur. Metalness büyük bir değer ise, bir daha sonra yansımalı renk yerine, dağıtma rengi kaybolacaktır.
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 
@@ -153,13 +154,13 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`Yukarıdaki formül tarafından hesaplandı, ancak alfa kanalı ek hesaplamalar gerektiriyor. FBX biçimi saydamlık ile ilgilidir ve bunu tanımlamanın birçok yolu vardır. Farklı içerik araçları farklı yöntemler kullanır. Buradaki fikir, bunları tek bir formülde birleştirmenizde yarar vardır. Bazı varlıkları yanlışlıkla saydam olarak gösteriliyor, ancak ortak bir şekilde oluşturulmadıysa.
+`AlbedoRGB` Yukarıdaki formül tarafından hesaplandı, ancak alfa kanalı ek hesaplamalar gerektiriyor. FBX biçimi saydamlık ile ilgilidir ve bunu tanımlamanın birçok yolu vardır. Farklı içerik araçları farklı yöntemler kullanır. Buradaki fikir, bunları tek bir formülde birleştirmenizde yarar vardır. Bazı varlıkları yanlışlıkla saydam olarak gösteriliyor, ancak ortak bir şekilde oluşturulmadıysa.
 
 Bu,, `TransparentColor` `TransparencyFactor` ,, ' den hesaplanır `Opacity` :
 
 `Opacity`tanımlanmışsa, bunu doğrudan kullanın: `AlbedoAlpha`  =  `Opacity` Else  
 `TransparencyColor`tanımlanmışsa `AlbedoAlpha` = 1,0-(( `TransparentColor` . Kırmızı + `TransparentColor` . Yeşil + `TransparentColor` . Mavi)/3,0) else  
-Eğer `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+Eğer `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 Son `Albedo` rengin, ile birleştiren dört kanalı vardır `AlbedoRGB` `AlbedoAlpha` .
 

@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827384"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892295"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -129,7 +129,7 @@ Depolama çoğaltma ayarını düzenlemek için:
     **Yedeklemeyi kullanmaya** başlama Sihirbazı, Iş yüklerini Azure 'a yedeklemek Için **altyapıyı hazırla** seçeneğini değiştirir.
 
    > [!NOTE]
-   > Yalnızca dosyaları ve klasörleri yedeklemek istiyorsanız, Azure Backup Aracısı 'nı kullanmanızı ve makalenin kılavuzunu takip etmenizi öneririz. [önce dosya ve klasörleri yedekleme konusuna bakmanız](./backup-windows-with-mars-agent.md)önerilir. Dosya ve klasörlerden daha fazlasını koruyacaksanız veya gelecekte koruma ihtiyaçlarını genişletmeyi planlıyorsanız, bu iş yüklerini seçin.
+   > Yalnızca dosyaları ve klasörleri yedeklemek istiyorsanız, Azure Backup Aracısı 'nı kullanmanızı ve makalenin kılavuzunu takip etmenizi öneririz. [önce dosya ve klasörleri yedekleme konusuna bakmanız](./backup-windows-with-mars-agent.md)önerilir. Dosya ve klasörlerden daha fazlasını koruyorsanız veya gelecekte koruma ihtiyaçlarını genişletmeyi planlıyorsanız, bu iş yüklerini seçin.
    >
    >
 

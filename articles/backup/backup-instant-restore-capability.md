@@ -4,17 +4,17 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825860"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892635"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
 > [!NOTE]
-> Kullanıcılardan gelen geri bildirimlere bağlı olarak, Azure Stack işlevlerle karışıklık azaltmak için **VM yedekleme yığını v2** 'Yi **anında geri yüklemeye** yeniden adlandırdık.
+> Kullanıcılardan gelen geri bildirimlere bağlı olarak, Azure Stack işlevlerle karışıklık azaltmak için **VM yedekleme yığını v2** 'Yi **anında geri yükleme** olarak yeniden adlandırdık.
 > Tüm Azure Backup kullanıcıları artık **anında geri yüklemeye**yükseltildi.
 
 Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini sağlar:
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Her ilke için varsayılan anlık görüntü bekletme iki güne ayarlanır. Kullanıcı değeri en az 1 ve en fazla beş gün olarak değiştirebilir. Haftalık ilkeler için, anlık görüntü bekletme beş güne sabitlenmiştir.
+Her ilke için varsayılan anlık görüntü bekletme iki güne ayarlanır. Değeri en az 1 ve en fazla beş gün olacak şekilde değiştirebilirsiniz. Haftalık ilkeler için, anlık görüntü bekletme beş güne sabitlenmiştir.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

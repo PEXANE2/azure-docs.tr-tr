@@ -3,12 +3,12 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824058"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892244"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 
@@ -20,9 +20,9 @@ Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmas
 
 ## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
-* İlke, belirli bir abonelikteki tüm kurtarma hizmetleri kasalarına (veya aboneliğin içindeki bir kaynak grubuna) tek seferde uygulanabilir. İlkeyi atayan kullanıcının, ilkenin atandığı aboneliğe ' Owner ' erişimi olması gerekir.
+* İlke, belirli bir abonelikteki tüm kurtarma hizmetleri kasalarına (veya aboneliğin içindeki bir kaynak grubuna) tek seferde uygulanabilir. İlkeyi atayan kullanıcının, ilkenin atandığı aboneliğe **sahip** erişimi olması gerekir.
 
-* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe ' Reader ', ' katkıda bulunan ' veya ' Owner ' erişimi olması gerekir.
+* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe **okuyucu**, **katkıda bulunan** veya **sahip** erişiminin olması gerekir.
 
 * Yönetim grubu kapsamı şu anda desteklenmiyor.
 

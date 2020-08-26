@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320689"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893160"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Pod güvenliği için en iyi uygulamalar
 
@@ -42,7 +42,7 @@ Pod güvenlik bağlamı, işlemlere ve hizmetlere erişim için ek yetenekler ve
 Aşağıdaki örnek Pod YAML bildirimi, güvenlik bağlamı ayarlarını belirlemek için ayarlar:
 
 * Pod, Kullanıcı KIMLIĞI *1000* ve grup kimliği *2000* ' nin bir parçası olarak çalışır
-* Kullanım ayrıcalıkları yükseltilemedi`root`
+* Kullanım ayrıcalıkları yükseltilemedi `root`
 * Linux yeteneklerinin ağ arabirimlerine ve konağın gerçek zamanlı (donanım) saate erişmesine izin verir
 
 ```yaml
@@ -85,7 +85,7 @@ Aşağıdaki [ilişkili AKS açık kaynak projeleri][aks-associated-projects] , 
 
 Azure kaynakları için yönetilen bir kimlik, bir pod 'ın kendisini destekleyen, depolama veya SQL gibi Azure hizmetlerinde kimlik doğrulamasını sağlar. Pod 'a Azure Active Directory kimlik doğrulaması yapan bir Azure kimliği atanır ve bir dijital belirteç alırlar. Bu dijital belirteç, Pod 'ın hizmete erişme yetkisi olup olmadığını denetleyen ve gerekli eylemleri gerçekleştiren diğer Azure hizmetlerine sunulabilir. Bu yaklaşım, örneğin veritabanı bağlantı dizeleri için gizli dizi gerekmediği anlamına gelir. Pod yönetilen kimliği için Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-![Azure 'da Pod yönetilen kimliği için Basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Azure 'da Pod yönetilen kimliği için Basitleştirilmiş iş akışı":::
 
 Yönetilen bir kimlikle, uygulama kodunuzun Azure depolama gibi bir hizmete erişmek için kimlik bilgilerini içermesi gerekmez. Her pod kendi kimliğiyle kimlik doğruladığında, erişimi denetleyebilir ve gözden geçirebilirsiniz. Uygulamanız diğer Azure hizmetleriyle bağlanıyorsa, kimlik bilgilerinin yeniden kullanımını ve etkilenme riskini sınırlamak için Yönetilen kimlikler kullanın.
 
@@ -97,7 +97,7 @@ Pod Identity projesi kullanılması, Azure hizmetlerini desteklemeye karşı kim
 
 Uygulamalar bir kimlik bilgisine ihtiyaç duyduklarında, dijital kasada iletişim kurar, en son gizli içeriği alır ve ardından gerekli hizmete bağlanır. Azure Key Vault bu dijital kasa olabilir. Pod tarafından yönetilen kimlikleri kullanarak Azure Key Vault bir kimlik bilgisi almaya yönelik Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-![Pod yönetilen kimliği kullanarak Key Vault kimlik bilgisini almak için Basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Pod yönetilen kimliği kullanarak Key Vault kimlik bilgisini almak için Basitleştirilmiş iş akışı":::
 
 Key Vault ile kimlik bilgileri, depolama hesabı anahtarları veya sertifikalar gibi gizli dizileri depolar ve düzenli olarak döndürebilirsiniz. [Gizli dizi için Azure Key Vault sağlayıcısını](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)kullanarak bir aks kümesiyle Azure Key Vault tümleştirebilirsiniz. Gizli dizileri deposunun CSı sürücüsü, AKS kümesinin gizli içeriği Key Vault 'tan yerel olarak almasını ve yalnızca istekte bulunan Pod 'e güvenli bir şekilde sağlamasını sağlar. Gizli dizileri, AKS çalışan düğümlerine bağlamak için küme işleçle birlikte çalışın. Key Vault erişim istemek ve gizli dizi depolama CSı sürücüsü aracılığıyla gereken gizli içeriği almak için pod tarafından yönetilen bir kimlik kullanabilirsiniz.
 

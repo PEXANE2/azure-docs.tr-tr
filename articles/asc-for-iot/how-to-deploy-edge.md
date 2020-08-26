@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c646c750cb54228211fadb0a4f6733d495e9219
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311274"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892074"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -47,7 +47,7 @@ IoT Edge için bir IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni dağ
     - Aşağıdaki komutu çalıştırarak Sestd 'nin etkin olduğunu doğrulayın:
 
     `sudo systemctl status auditd`<br>
-    - Beklenen yanıt:`active (running)`
+    - Beklenen yanıt: `active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Azure portal kullanarak dağıtım
 
@@ -93,9 +93,21 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımınızı tamamlamaya 
 
 1. **Modül Ikizi ayarları** sekmesinde, aşağıdaki yapılandırmayı ekleyin:
 
-    ``` json
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
-    ```
+   Module Ikizi özelliği:
+   
+   ``` json
+     "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
+   ```
+
+   Module Ikizi Özellik Içeriği: 
+
+   ```json
+     {
+
+     }
+   ```
+    
+   Aracıyı yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik aracılarını yapılandırma](https://docs.microsoft.com/azure/asc-for-iot/how-to-agent-configuration).
 
 1. **Güncelleştir**’i seçin.
 
@@ -165,7 +177,7 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
 
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
 
-   | Name | GÖRÜNTÜ |
+   | Ad | GÖRÜNTÜ |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

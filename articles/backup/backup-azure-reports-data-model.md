@@ -3,12 +3,12 @@ title: Azure Backup tanılama olayları için veri modeli
 description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları göndermenin kaynağa özgü moda başvurdadır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538879"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892533"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
 
@@ -16,7 +16,7 @@ ms.locfileid: "86538879"
 
 Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkında bilgiler sağlar.
 
-| **Alan**                         | **Veri Türü** | **Açıklama**                                              |
+| **Alan**                         | **Veri türü** | **Açıklama**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                        | Metin          | Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI. |
 | OperationName                     | Metin          | Bu alan, geçerli işlem-Backupıtem, BackupItemAssociation veya ProtectedContainer adını temsil eder. |
@@ -53,11 +53,11 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 | ProtectedContainerWorkloadType    | Metin          | Yedeklenen korumalı kapsayıcının türü. Örneğin, ıaasvmcontainer |
 | ProtectionGroupName               | Metin          | Yedekleme öğesinin korunan koruma grubunun adı, SC DPM ve varsa MABS için |
 | ResourceGroupName                 | Metin          | Toplanmakta olan veriler için kaynağın kaynak grubu (örneğin, kurtarma hizmetleri Kasası) |
-| SchemaVersion                     | Metin          | Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| SchemaVersion                     | Metin          | Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
 | SecondaryBackupProtectionState    | Metin          | Yedekleme öğesi için ikincil korumanın etkinleştirilip etkinleştirilmediği  |
 | Durum                             | Metin          | Yedekleme öğesi nesnesinin durumu. Örneğin, etkin, silindi |
 | StorageReplicationType            | Metin          | Kasa için depolama çoğaltma türü. Örneğin, Geoyedekli |
-| SubscriptionId                    | Metin          | Verilerin toplandığı kaynağın abonelik tanımlayıcısı (örneğin, kurtarma hizmetleri Kasası) |
+| kaynak grubundaki                    | Metin          | Verilerin toplandığı kaynağın abonelik tanımlayıcısı (örneğin, kurtarma hizmetleri Kasası) |
 | VaultName                         | Metin          | Kasanın adı                                            |
 | VaultTags                         | Metin          | Kasa kaynağıyla ilişkili Etiketler                    |
 | Vaultuniqueıd                     | Metin          | Kasanın benzersiz tanımlayıcısı                             |
@@ -67,7 +67,7 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 
 Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| **Alan**                      | **Veri Türü** | **Açıklama**                                              |
+| **Alan**                      | **Veri türü** | **Açıklama**                                              |
 | :----------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Metin          | Verilerin toplandığı kaynak için benzersiz tanımlayıcı. Örneğin, bir kurtarma hizmetleri Kasası kaynak KIMLIĞI |
 | OperationName                  | Metin          | Geçerli işlemin adı. Örneğin, uyarı            |
@@ -97,7 +97,7 @@ Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
-| **Alan**                      | **Veri Türü** | **Açıklama**                                              |
+| **Alan**                      | **Veri türü** | **Açıklama**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Metin          | Verilerin toplandığı kaynak için benzersiz tanımlayıcı. Örneğin, bir kurtarma hizmetleri Kasası kaynak KIMLIĞI |
 | OperationName                  | Metin          | İşlemin adı, örneğin Protectedınstance         |
@@ -116,7 +116,7 @@ Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
 Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| **Alan**                      | **Veri Türü** | **Açıklama**                                              |
+| **Alan**                      | **Veri türü** | **Açıklama**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Metin          | Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
 | OperationName                  | Metin          | Bu alan geçerli işlemin adını temsil eder-Iş    |
@@ -147,7 +147,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| **Alan**                       | **Veri Türü**  | **Açıklama**                                              |
+| **Alan**                       | **Veri türü**  | **Açıklama**                                              |
 | ------------------------------- | -------------- | ------------------------------------------------------------ |
 | ResourceId                      | Metin           | Verilerin toplandığı kaynak için benzersiz tanımlayıcı. Örneğin, bir kurtarma hizmetleri Kasası kaynak KIMLIĞI |
 | OperationName                   | Metin           | İşlemin adı, örneğin, Ilke veya Poliyassociation |
@@ -162,15 +162,15 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | Diffbackupdayısoftheweek         | Metin           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri için haftanın günleri |
 | DiffBackupFormat                | Metin           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemelerinin biçimi   |
 | DiffBackupRetentionDuration     | Ondalık Sayı | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri bekletme süresi |
-| DiffBackupTime                  | Zaman           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi     |
+| DiffBackupTime                  | Süre           | Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi     |
 | LogBackupFrequency              | Ondalık Sayı | SQL için günlük yedeklemeleri sıklığı                            |
 | LogBackupRetentionDuration      | Ondalık Sayı | Azure VM yedeklemesi 'nde SQL için günlük yedeklemeleri bekletme süresi |
-| MonthlyRetentionDaysOfTheMonth  | Metin           | Aylık bekletme yapılandırıldığında ayın haftası.  Örneğin, Ilk, son, vb. |
+| MonthlyRetentionDaysOfTheMonth  | Metin           | Aylık bekletme yapılandırıldığında ayın haftası.  Örneğin, Ilk, son |
 | MonthlyRetentionDaysOfTheWeek   | Metin           | Aylık saklama için seçilen haftanın günleri              |
 | MonthlyRetentionDuration        | Metin           | Yapılandırılan yedeklemeler için aylık toplam bekletme süresi    |
 | MonthlyRetentionFormat          | Metin           | Aylık saklama için yapılandırma türü. Örneğin günlük tabanlı, haftalık için haftalık |
 | MonthlyRetentionTimes           | Metin           | Aylık bekletmenin yapılandırıldığı tarih ve saat           |
-| MonthlyRetentionWeeksOfTheMonth | Metin           | Aylık bekletme yapılandırıldığında ayın haftası.   Örneğin, Ilk, son, vb. |
+| MonthlyRetentionWeeksOfTheMonth | Metin           | Aylık bekletme yapılandırıldığında ayın haftası.   Örneğin, Ilk, son |
 | PolicyName                      | Metin           | Tanımlanan ilkenin adı                                   |
 | Policyuniqueıd                  | Metin           | İlkeyi tanımlamak için benzersiz KIMLIK                             |
 | PolicyTimeZone                  | Metin           | Günlüklerde Ilke saat alanlarının belirtildiği saat dilimi |
@@ -196,7 +196,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| **Alan**                      | **Veri Türü** | **Açıklama**                                              |
+| **Alan**                      | **Veri türü** | **Açıklama**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Metin          | Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
 | OperationName                  | Metin          | Bu alan geçerli işlemin adını temsil eder-depolama alanı veya StorageAssociation |

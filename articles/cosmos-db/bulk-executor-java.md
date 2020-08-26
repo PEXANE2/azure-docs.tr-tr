@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309163"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892618"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
@@ -183,7 +183,8 @@ Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu ö
    |int getNumberOfDocumentsUpdated ()  |   Toplu güncelleştirme API 'SI çağrısına sağlanan belgelerden başarıyla güncelleştirilmiş toplam belge sayısı.      |
    |Double Gettotalrequestunitstüketilen () |  Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimi (RU).       |
    |Süre getTotalTimeTaken ()  |   Yürütmeyi tamamlamaya yönelik toplu güncelleştirme API çağrısı tarafından alınan toplam süre.      |
-   |\<Exception>GetErrors () listesini   |       Toplu güncelleştirme API 'SI çağrısına sağlanan toplu iş dışında bazı belgeler eklenmeden başarısız olursa hata listesini alır.      |
+   |\<Exception>GetErrors () listesini   |       Güncelleştirme işlemiyle ilgili işlemsel veya ağ sorunlarının listesini alır.      |
+   |\<BulkUpdateFailure>Getfailedupdates () listesini   |       Hatalara yönelik belirli özel durumlarla birlikte tamamlanmayan güncelleştirmelerin listesini alır.|
 
 3. Toplu güncelleştirme uygulamasını hazırlayın, ' MVN Clean Package ' komutunu kullanarak kaynaktan komut satırı aracını oluşturun. Bu komut hedef klasörde bir jar dosyası oluşturur:  
 
