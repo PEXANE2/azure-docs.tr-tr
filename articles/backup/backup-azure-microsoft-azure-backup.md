@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756019"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827384"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -170,7 +170,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     >[!NOTE]
     >Kendi SQL Server 'nizi kullanmak istiyorsanız desteklenen SQL Server sürümleri SQL Server 2014 SP1 veya üzeri, 2016 ve 2017.  Tüm SQL Server sürümleri Standard veya Enterprise 64-bit olmalıdır.
-    >Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örneğin yerel olması gerekir. MABS için mevcut bir SQL Server kullanıyorsanız, MABS kurulumu yalnızca SQL Server 'ın *adlandırılmış örneklerinin* kullanılmasını destekler.
+    >Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmaz. Azure Backup Sunucusu tarafından kullanılan örneğin yerel olması gerekir. MABS için mevcut bir SQL Server kullanıyorsanız, MABS kurulumu yalnızca SQL Server 'ın *adlandırılmış örneklerinin* kullanılmasını destekler.
 
     ![Azure Backup Sunucusu-SQL denetimi](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -343,7 +343,7 @@ MABS 'yi yükseltmek için aşağıdaki adımları kullanın:
 
    > [!NOTE]
    >
-   > SQL örneğiniz yükseltilirken çıkmayın, çıkılıyor SQL Raporlama örneğini kaldırır ve MABS 'i yeniden yükseltme girişimi başarısız olur.
+   > SQL örneğiniz yükseltilirken çıkmayın. Çıkarken SQL Raporlama örneği kaldırılacak ve MABS 'i yeniden yükseltme girişimi başarısız olur.
 
    > [!IMPORTANT]
    >

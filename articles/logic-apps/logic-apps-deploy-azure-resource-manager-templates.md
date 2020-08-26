@@ -3,16 +3,16 @@ title: Mantıksal uygulama şablonları dağıtma
 description: Azure Logic Apps için oluşturulan Azure Resource Manager şablonlarını dağıtmayı öğrenin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501517"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827503"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonu oluşturma
 
@@ -31,7 +31,7 @@ Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan
 
 Mantıksal uygulama şablonunu Azure 'a otomatik olarak dağıtmak için, aşağıdaki **Azure 'A dağıt** düğmesini seçebilirsiniz ve bu, Azure Portal oturumunuzu açar ve mantıksal uygulamanız hakkında bilgi ister. Daha sonra mantıksal uygulama şablonunda veya parametrelerde gerekli değişiklikleri yapabilirsiniz.
 
-[![Azure’a dağıtma](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Azure’a dağıt](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Örneğin, Azure portal oturum açtıktan sonra aşağıdaki bilgiler istenir:
 
@@ -119,13 +119,18 @@ Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilm
 
 ## <a name="authorize-oauth-connections"></a>OAuth bağlantılarını yetkilendir
 
-Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-vs-authorization.md)için geçerli erişim belirteçleri oluşturmak üzere herhangi bir OAuth bağlantısını yetkilendirmelisiniz. OAuth bağlantıları yetkilendirebileceğiniz yollar şunlardır:
+Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-vs-authorization.md)için geçerli erişim belirteçleri oluşturmak üzere ön kimlik doğrulama yetkisi olan OAuth bağlantıları yetkilendirmeniz veya kullanmanız gerekir. Birkaç öneri aşağıda verilmiştir:
 
-* Otomatikleştirilmiş dağıtımlar için, her OAuth bağlantısı için onay sağlayan bir komut dosyası kullanabilirsiniz. Aşağıda, [Logicappconnectionauth](https://github.com/logicappsio/LogicAppConnectionAuth) projesinde GitHub 'da örnek bir betik verilmiştir.
+* Ön kimlik doğrulama, API bağlantısı kaynaklarını aynı bölgedeki Logic Apps genelinde Yetkilendir ve paylaşır. API bağlantıları, Logic Apps 'ten bağımsız olarak Azure kaynakları olarak mevcuttur. Mantıksal uygulamalar API bağlantı kaynakları üzerinde bağımlılıklara sahip olsa da, API bağlantı kaynakları Logic Apps üzerinde bağımlılıklara sahip değildir ve bağımlı Logic Apps 'i sildikten sonra kalır. Ayrıca Logic Apps, diğer kaynak gruplarında bulunan API bağlantılarını kullanabilir. Ancak, Logic App Designer, yalnızca mantıksal uygulamalarınızla aynı kaynak grubunda API bağlantıları oluşturulmasını destekler.
 
-* OAuth bağlantılarını el ile yetkilendirmek için, mantıksal uygulama tasarımcısında Azure portal veya Visual Studio 'da mantıksal uygulamanızı açın. Tasarımcıda gerekli tüm bağlantıları yetkilendirin.
+  > [!NOTE]
+  > API bağlantılarını paylaşmayı düşünüyorsanız, çözümünüzün [olası azaltma sorunlarını işleyebileceği](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)konusunda emin olun. Kısıtlama, bağlantı düzeyinde gerçekleşir, bu nedenle birden çok Logic Apps genelinde aynı bağlantının yeniden kullanılabilmesi, azaltma sorunlarını ortadan kaldırmak için potansiyelini artırabilir.
 
-Bağlantıları yetkilendirmek için bir Azure Active Directory (Azure AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) kullanıyorsanız, [mantıksal uygulama şablonunuzda hizmet sorumlusu parametrelerini belirtmeyi](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)öğrenin.
+* Senaryonuz, çok faktörlü kimlik doğrulaması gerektiren hizmetler ve sistemler içermiyorsa, bir PowerShell betiği kullanarak her bir OAuth bağlantısı için, etkin tarayıcı oturumlarına sahip olan ve önceden sağlanmış olan bir sanal makinede normal bir kullanıcı hesabı olarak çalışır. Örneğin, [Logic Apps GitHub deposunda Logicappconnectionauth projesi](https://github.com/logicappsio/LogicAppConnectionAuth)tarafından verilen örnek betiği yeniden amaçlandırın sağlayabilirsiniz.
+
+* Mantıksal uygulamanızı mantıksal uygulama tasarımcısında Azure portal veya Visual Studio 'da açarak, OAuth bağlantılarını el ile yetkilendirin.
+
+* Bağlantıları yetkilendirmek için bir Azure Active Directory (Azure AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) kullanıyorsanız, [mantıksal uygulama şablonunuzda hizmet sorumlusu parametrelerini belirtmeyi](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

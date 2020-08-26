@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816125"
+ms.locfileid: "88825265"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -49,7 +49,7 @@ Gün başına yedeklemeler (DPM/MABS aracılığıyla) | Gün başına iki zaman
 Aylık/yıllık yedekleme| Azure VM Uzantısı ile yedeklenirken desteklenmez. Yalnızca günlük ve haftalık desteklenir.<br/><br/> İlkeyi aylık/yıllık Bekletme dönemi için günlük/haftalık yedeklemeleri koruyacak şekilde ayarlayabilirsiniz.
 Otomatik saat ayarlaması | Desteklenmez.<br/><br/> Azure Backup, bir VM yedeklenirken gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.<br/><br/>  İlkeyi gerektiği şekilde el ile değiştirin.
 [Karma yedekleme için güvenlik özellikleri](./backup-azure-security-feature.md) |Güvenlik özelliklerini devre dışı bırakma desteklenmiyor.
-Makine süresi değişmiş olan VM 'yi yedekleme | Desteklenmez.<br/><br/> Makine saati, bu VM için yedeklemeyi etkinleştirdikten sonra gelecek tarih-saat olarak değiştirilirse; Ancak, zaman değişikliği geri döndürülse bile başarılı yedekleme garanti edilmez.
+Makine süresi değişmiş olan VM 'yi yedekleme | Desteklenmez.<br/><br/> Makine saati, bu VM için yedeklemeyi etkinleştirdikten sonra gelecek bir tarih-saat olarak değiştirilirse, zaman değişikliği geri döndürülse bile, başarılı yedekleme garantisi garanti edilmez.
 [Sanal makine ölçek kümelerinde](../virtual-machine-scale-sets/overview.md) Azure VM 'leri | [Düzenleme modu](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) 3 olarak ayarlanan VM 'ler için yedekleme ve geri yükleme desteklenir. <br><br>Kullanılabilirlik kümeleri desteklenmez.
 
 ## <a name="operating-system-support-windows"></a>İşletim sistemi desteği (Windows)

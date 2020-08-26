@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009231"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825452"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -33,7 +33,7 @@ Bir depolama hesabı ayarlamak için:
 
 2. Arama çubuğunda **depolama hesabı** araması yapın.
 
-3. **+ Ekle**' yi seçin.
+3. **+Ekle**’yi seçin.
 
 4. **Depolama hesabı oluşturma** sayfasına aşağıdaki bilgileri girin:
 
@@ -102,7 +102,7 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 
      Aynı yönergeleri izleyerek kullanıcılara FSLogix profilleri için gerekli izinleri atayın. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
@@ -127,7 +127,7 @@ UNC yolunu buradan edinebilirsiniz:
 
 5. URI 'yi kopyaladıktan sonra, UNC olarak değiştirmek için aşağıdaki işlemleri yapın:
 
-    - Kaldır `https://` ve Değiştir`\\`
+    - Kaldır `https://` ve Değiştir `\\`
     - Eğik çizgiyi `/` ters eğik çizgiyle değiştirin `\` .
     - [Azure dosya paylaşımında](#create-an-azure-file-share) oluşturduğunuz dosya PAYLAŞıMıNıN adını UNC sonuna ekleyin.
 
@@ -151,15 +151,15 @@ NTFS izinlerinizi yapılandırmak için:
 
 1. Etki alanına katılmış bir VM 'de bir komut istemi açın.
 
-2. Azure dosya paylaşımını bağlamak ve sürücü harfi atamak için şu cmdlet'i çalıştırın: 
+2. Azure dosya paylaşımından bağlamak ve bir sürücü harfi atamak için aşağıdaki komutu çalıştırın:
 
-     ```powershell
+     ```cmd
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. Azure dosya paylaşımının erişim izinlerini gözden geçirmek için aşağıdaki cmdlet 'i çalıştırın:
+3. Azure dosya paylaşımının erişim izinlerini gözden geçirmek için aşağıdaki komutu çalıştırın:
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -167,9 +167,9 @@ NTFS izinlerinizi yapılandırmak için:
 
     Hem *NT Authorıty\authenticated Users* hem de *builtin\users* , varsayılan olarak belirli izinlere sahiptir. Bu varsayılan izinler, bu kullanıcıların diğer kullanıcıların profil kapsayıcılarını okumasına izin verir. Ancak, [profil kapsayıcıları ve Office kapsayıcıları ile kullanım için depolama Izinlerini yapılandırma](/fslogix/fslogix-storage-config-ht) bölümünde açıklanan izinler, kullanıcıların diğerlerinin profil kapsayıcılarını okumasına izin vermez.
 
-4. Windows sanal masaüstü kullanıcılarınızın, diğer kullanıcılardan profil kapsayıcısına erişimi engellediği sırada kendi profil kapsayıcıları oluşturmalarına izin vermek için aşağıdaki cmdlet 'leri çalıştırın.
+4. Windows sanal masaüstü kullanıcılarınızın kendi profil kapsayıcınızı oluşturmalarına izin vermek için aşağıdaki komutları çalıştırın ve diğer kullanıcılardan profil kapsayıcılarına erişimi engelleriz.
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -181,7 +181,7 @@ NTFS izinlerinizi yapılandırmak için:
 
      Örnek:
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -212,7 +212,7 @@ Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 6. VM’yi yeniden başlatın.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 FSLogix yükledikten ve yapılandırdıktan sonra, konak havuzundaki bir uygulama grubuna veya masaüstüne atanmış bir kullanıcı hesabıyla oturum açarak dağıtımınızı test edebilirsiniz. Oturum açmak için kullandığınız kullanıcı hesabının dosya paylaşımında izni olduğundan emin olun.
 

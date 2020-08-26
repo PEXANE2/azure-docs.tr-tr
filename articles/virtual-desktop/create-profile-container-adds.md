@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007718"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825622"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
@@ -71,7 +71,7 @@ Kullanıcılara erişim izinleri atamak için:
 
 6. Hedef Azure Active Directory kimliği için bir ad veya e-posta adresi seçin.
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="get-the-storage-account-access-key"></a>Depolama hesabı erişim anahtarını al
 
@@ -96,7 +96,7 @@ Depolama hesabı erişim anahtarını almak için:
 
 6. VM 'de oturum açtıktan sonra yönetici olarak bir komut istemi çalıştırın.
 
-7. Şu komutu çalıştırın:
+7. Aşağıdaki komutu çalıştırın:
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -113,19 +113,25 @@ Depolama hesabı erişim anahtarını almak için:
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Kullanıcıya Azure dosya paylaşımının tam erişimini sağlamak için aşağıdaki komutu çalıştırın.
+8. Windows sanal masaüstü kullanıcılarınızın diğer kullanıcılardan profil kapsayıcılarına erişimi engellediği sırada kendi profil kapsayıcısını oluşturmalarına izin vermek için aşağıdaki komutları çalıştırın.
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - `<mounted-drive-letter>`Kullanıcının kullanmasını istediğiniz sürücünün harfiyle değiştirin.
-    - `<user-email>`Oturum ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
+    - `<mounted-drive-letter>`Sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
+    - `<user-email>`Paylaşıma erişmesi gereken kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
     Örnek:
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>Profil kapsayıcısı oluşturma
