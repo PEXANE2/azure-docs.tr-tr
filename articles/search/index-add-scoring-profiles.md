@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029952"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935934"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine puanlama profilleri ekleme
 
@@ -64,7 +64,7 @@ ms.locfileid: "87029952"
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
- Bu sorgu, ' Inn ' terimini arar ve geçerli konumda geçirir. Bu sorgunun gibi diğer parametreleri içerdiğine dikkat edin `scoringParameter` . Sorgu parametreleri, [Azure Bilişsel Arama REST API&#41;&#40;arama belgelerinde ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)açıklanmıştır.  
+ Bu sorgu, ' Inn ' terimini arar ve geçerli konumda geçirir. Bu sorgunun gibi diğer parametreleri içerdiğine dikkat edin `scoringParameter` . Sorgu parametreleri, [Azure Bilişsel Arama REST API&#41;&#40;arama belgelerinde ](/rest/api/searchservice/Search-Documents)açıklanmıştır.  
 
  Puanlama profilinin daha ayrıntılı bir örneğini gözden geçirmek için [örnek](#bkmk_ex) ' e tıklayın.  
 
@@ -82,7 +82,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
  Relet tabanlı sıralama, Puanlama profilleri aracılığıyla da uygulanır. Geçmişte kullandığınız arama sonuçları sayfalarını fiyata, tarihe, derecelendirmeye veya ilgiye göre sıralamanıza izin veren şekilde değerlendirin. Azure Bilişsel Arama 'de, Puanlama profilleri ' ilgi ' seçeneğini sürücüdür. İlgi tanımı sizin tarafınızdan denetlenir, iş hedeflerine ve teslim etmek istediğiniz arama deneyimi türüne göre belirlenir.  
 
-##  <a name="example"></a><a name="bkmk_ex"></a>Örneğinde  
+##  <a name="example"></a><a name="bkmk_ex"></a> Örneğinde  
  Daha önce belirtildiği gibi, özelleştirilmiş Puanlama bir dizin şemasında tanımlanan bir veya daha fazla Puanlama profili aracılığıyla uygulanır.  
 
  Bu örnekte, iki Puanlama profili (,) olan bir dizinin şeması `boostGenre` gösterilmektedir `newAndHighlyRated` . Bir sorgu parametresi olarak profil içeren bu dizine yönelik herhangi bir sorgu, sonuç kümesini Puanlama için profili kullanır.  
@@ -157,18 +157,18 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
  Bu konuda belirtilen [şablonla](#bkmk_template) başlayın.  
 
- Bir ad sağlayın. Puanlama profilleri isteğe bağlıdır, ancak bir tane eklerseniz ad gereklidir. Alanlar için adlandırma kurallarını izlediğinizden emin olun (bir harfle başlar, özel karakterleri ve ayrılmış kelimeleri önler). Listenin tamamı için bkz. [Azure Bilişsel Arama&#41;&#40;adlandırma kuralları](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .  
+ Bir ad sağlayın. Puanlama profilleri isteğe bağlıdır, ancak bir tane eklerseniz ad gereklidir. Alanlar için adlandırma kurallarını izlediğinizden emin olun (bir harfle başlar, özel karakterleri ve ayrılmış kelimeleri önler). Listenin tamamı için bkz. [Azure Bilişsel Arama&#41;&#40;adlandırma kuralları ](/rest/api/searchservice/naming-rules) .  
 
  Puanlama profili gövdesi ağırlıklı alanlar ve işlevlerden oluşturulur.  
 
 |||  
 |-|-|  
 |**Çizgi**|Bir alana göreli ağırlık atayan ad-değer çiftlerini belirtin. [Örnekte](#bkmk_ex), albümbaşlık, tarz ve artistName alanları sırasıyla 1,5, 5 ve 2 ' dir. Tarzı neden diğerlerinden çok daha yüksek maliyetli? Arama, biraz hogenou olan veriler üzerinde yürütülmüştür (' de ' tarz ' ile ilgili olduğu gibi `musicstoreindex` ), göreli ağırlıklarla daha büyük bir varyans olması gerekebilir. Örneğin, `musicstoreindex` ' Rock ' içinde hem bir tarz hem de özdeş phrased tarzı açıklamalarıyla birlikte görünür. Tarz 'ın tarz açıklamasına göre daha yüksek bir değere sahip olmasını istiyorsanız, tarz alanı için çok daha yüksek bir göreli ağırlık gerekir.|  
-|**İşlevler**|Belirli bağlamlar için ek hesaplamalar gerektiğinde kullanılır. Geçerli değerler `freshness` ,, `magnitude` `distance` ve `tag` . Her işlevin benzersiz parametreleri vardır.<br /><br /> -   `freshness`bir öğenin yeni mi yoksa eski mi olduğunu artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca alanlarla birlikte kullanılabilir `datetime` (EDM. Veri Timesapmayı). `boostingDuration`Özniteliğin yalnızca işleviyle kullanıldığını unutmayın `freshness` .<br />-   `magnitude`bir sayısal değerin yüksek veya düşük olduğu bir değere göre artırmak istediğinizde kullanılmalıdır. Bu işlevi çağıran senaryolar, kar marjına, en yüksek fiyata, en düşük fiyata veya bir indirme sayısına göre yükseltme içerir. Bu işlev yalnızca Double ve Integer alanları ile kullanılabilir.<br />     Bu işlev için, `magnitude` ters deseninin (örneğin, daha yüksek fiyatlı öğelerden daha fazlasını artırmak için) (örneğin, daha fazla fiyatlandırıltı olan öğelerden daha fazla) isterseniz aralığı ters çevirebilirsiniz. $100 ile $1 arasında bir dizi fiyat verildiğinde, `boostingRangeStart` `boostingRangeEnd` düşük fiyatlı öğeleri artırmak için 100 ve 1 ' de ayarlanır.<br />-   `distance`yakınlığa veya coğrafi konuma göre artırmak istediğinizde kullanılmalıdır. Bu işlev, yalnızca alanlarla birlikte kullanılabilir `Edm.GeographyPoint` .<br />-   `tag`belgeler ve arama sorguları arasında ortak olan etiketlere göre artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca ve alanları ile kullanılabilir `Edm.String` `Collection(Edm.String)` .<br /><br /> **İşlevleri kullanma kuralları**<br /><br /> İşlev türü ( `freshness` , `magnitude` , `distance` ), `tag` küçük harf olmalıdır.<br /><br /> İşlevler null veya boş değerler içeremez. Özellikle, FieldName eklerseniz, onu bir şeye ayarlamanız gerekir.<br /><br /> İşlevler yalnızca filtrelenebilir alanlara uygulanabilir. Filtrelenebilir alanlar hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> İşlevler, yalnızca bir dizinin alanlar koleksiyonunda tanımlanan alanlara uygulanabilir.|  
+|**İşlevler**|Belirli bağlamlar için ek hesaplamalar gerektiğinde kullanılır. Geçerli değerler `freshness` ,, `magnitude` `distance` ve `tag` . Her işlevin benzersiz parametreleri vardır.<br /><br /> -   `freshness` bir öğenin yeni mi yoksa eski mi olduğunu artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca alanlarla birlikte kullanılabilir `datetime` (EDM. Veri Timesapmayı). `boostingDuration`Özniteliğin yalnızca işleviyle kullanıldığını unutmayın `freshness` .<br />-   `magnitude` bir sayısal değerin yüksek veya düşük olduğu bir değere göre artırmak istediğinizde kullanılmalıdır. Bu işlevi çağıran senaryolar, kar marjına, en yüksek fiyata, en düşük fiyata veya bir indirme sayısına göre yükseltme içerir. Bu işlev yalnızca Double ve Integer alanları ile kullanılabilir.<br />     Bu işlev için, `magnitude` ters deseninin (örneğin, daha yüksek fiyatlı öğelerden daha fazlasını artırmak için) (örneğin, daha fazla fiyatlandırıltı olan öğelerden daha fazla) isterseniz aralığı ters çevirebilirsiniz. $100 ile $1 arasında bir dizi fiyat verildiğinde, `boostingRangeStart` `boostingRangeEnd` düşük fiyatlı öğeleri artırmak için 100 ve 1 ' de ayarlanır.<br />-   `distance` yakınlığa veya coğrafi konuma göre artırmak istediğinizde kullanılmalıdır. Bu işlev, yalnızca alanlarla birlikte kullanılabilir `Edm.GeographyPoint` .<br />-   `tag` belgeler ve arama sorguları arasında ortak olan etiketlere göre artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca ve alanları ile kullanılabilir `Edm.String` `Collection(Edm.String)` .<br /><br /> **İşlevleri kullanma kuralları**<br /><br /> İşlev türü ( `freshness` , `magnitude` , `distance` ), `tag` küçük harf olmalıdır.<br /><br /> İşlevler null veya boş değerler içeremez. Özellikle, FieldName eklerseniz, onu bir şeye ayarlamanız gerekir.<br /><br /> İşlevler yalnızca filtrelenebilir alanlara uygulanabilir. Filtrelenebilir alanlar hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> İşlevler, yalnızca bir dizinin alanlar koleksiyonunda tanımlanan alanlara uygulanabilir.|  
 
- Dizin tanımlandıktan sonra, Dizin şemasını karşıya yükleyerek ve ardından belgeler ile dizini oluşturun. Bu işlemler hakkında yönergeler için bkz. [azure Bilişsel Arama&#41;REST API dizin oluşturma &#40;](https://docs.microsoft.com/rest/api/searchservice/create-index) ve Azure &#40;bilişsel arama REST API Için [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . Dizin oluşturulduktan sonra, arama verileriyle birlikte çalışan işlevsel bir Puanlama profiline sahip olmanız gerekir.  
+ Dizin tanımlandıktan sonra, Dizin şemasını karşıya yükleyerek ve ardından belgeler ile dizini oluşturun. Bu işlemler hakkında yönergeler için bkz. [azure Bilişsel Arama&#41;REST API dizin oluşturma &#40;](/rest/api/searchservice/create-index) ve Azure &#40;bilişsel arama REST API Için [belge ekleme, güncelleştirme veya silme ](/rest/api/searchservice/addupdate-or-delete-documents) . Dizin oluşturulduktan sonra, arama verileriyle birlikte çalışan işlevsel bir Puanlama profiline sahip olmanız gerekir.  
 
-##  <a name="template"></a><a name="bkmk_template"></a>Şablonlarını  
+##  <a name="template"></a><a name="bkmk_template"></a> Şablonlarını  
  Bu bölümde, Puanlama profillerinin sözdizimi ve şablonu gösterilmektedir. Özniteliklerin açıklamaları için sonraki bölümde [dizin öznitelikleri başvurusuna](#bkmk_indexref) bakın.  
 
 ```  
@@ -222,7 +222,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 . . .  
 ```  
 
-##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a>Dizin öznitelikleri başvurusu  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a> Dizin öznitelikleri başvurusu  
 
 > [!NOTE]  
 >  Puanlama işlevi yalnızca filtrelenebilir alanlara uygulanabilir.  
@@ -238,20 +238,20 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 |`fieldname`|Puanlama işlevleri için gereklidir. Puanlama işlevi yalnızca dizinin alan koleksiyonunun parçası olan ve filtrelenebilir olan alanlara uygulanabilir. Bunlara ek olarak, her bir işlev türü ek kısıtlamalar getirir (yeniliği DateTime alanları, tamsayı veya çift alanlarla büyüklüğü ve konum alanlarıyla mesafe) sağlar. Her işlev tanımı için yalnızca tek bir alan belirtebilirsiniz. Örneğin, aynı profilde iki kez büyüklük kullanmak için, her bir alan için bir tane olmak üzere iki tanım büyüklüğü dahil etmeniz gerekir.|  
 |`interpolation`|Puanlama işlevleri için gereklidir. Aralığın başından aralığın sonuna kadar olan puanının arttığı eğimi tanımlar. Geçerli değerler doğrusal (varsayılan), sabit, Ikinci dereceden ve Logaritmik ' i içerir. Ayrıntılar için bkz. [enterpolasyonlarını ayarlama](#bkmk_interpolation) .|  
 |`magnitude`|Büyüklük Puanlama işlevi, sayısal bir alan için değer aralığına göre rantısallar değiştirmek için kullanılır. Bunun en yaygın kullanım örneklerinden bazıları şunlardır:<br /><br /> -   **Yıldız derecelendirmeleri:** "Yıldız derecelendirmesi" alanı içindeki değere göre Puanlama değiştirin. İki öğe ilgili olduğunda, öncelikle daha yüksek derecelendirme olan öğe görüntülenir.<br />-   **Kenar boşluğu:** İki belge uygun olduğunda, bir satıcı önce daha yüksek kenar boşluklarına sahip olan belgeleri artırmak isteyebilir.<br />-   **Tıklama sayısı:** Ürünlerin veya sayfaların eylemleri arasında tıklama işlemlerini izleyen uygulamalarda, en fazla trafiği almak için olan öğeleri artırmak üzere büyüklük kullanabilirsiniz.<br />-   **İndirme sayısı:** İndirme işlemleri izleyen uygulamalar için, büyüklük işlevi en çok indirmelere sahip öğeleri artırmanıza olanak tanır.|  
-|`magnitude`&#124;`boostingRangeStart`|Aralığın puanlanması için başlangıç değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 1 olur. %50 üzerindeki kenar boşlukları için bu 50 olacaktır.|  
-|`magnitude`&#124;`boostingRangeEnd`|Büyüklük puanlanması gereken aralığın bitiş değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 4 olur.|  
-|`magnitude`&#124;`constantBoostBeyondRange`|Geçerli değerler true veya false (varsayılan) şeklindedir. True olarak ayarlandığında, tam artırma, aralığın üst ucundan daha yüksek olan hedef alan için bir değer olan belgelere uygulanmaya devam edecektir. False ise, bu işlevin artışı aralığın dışında kalan hedef alan için bir değere sahip belgelere uygulanmaz.|  
+|`magnitude` &#124; `boostingRangeStart`|Aralığın puanlanması için başlangıç değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 1 olur. %50 üzerindeki kenar boşlukları için bu 50 olacaktır.|  
+|`magnitude` &#124; `boostingRangeEnd`|Büyüklük puanlanması gereken aralığın bitiş değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 4 olur.|  
+|`magnitude` &#124; `constantBoostBeyondRange`|Geçerli değerler true veya false (varsayılan) şeklindedir. True olarak ayarlandığında, tam artırma, aralığın üst ucundan daha yüksek olan hedef alan için bir değer olan belgelere uygulanmaya devam edecektir. False ise, bu işlevin artışı aralığın dışında kalan hedef alan için bir değere sahip belgelere uygulanmaz.|  
 |`freshness`|Yenilik Puanlama işlevi, alanlardaki değerlere göre öğelerin derecelendirme puanlarını değiştirmek için kullanılır `DateTimeOffset` . Örneğin, son tarihi daha eski öğelerden daha yüksek bir öğe olabilir.<br /><br /> Ayrıca, gelecekteki tarihlerle birlikte takvim olayları gibi öğeleri derecelendirmek de mümkündür. bu öğeler, gelecekte de daha fazla öğeden daha fazla derecelendirilir.<br /><br /> Geçerli hizmet sürümünde, aralığın bir sonu geçerli saate göre düzeltilecektir. Diğer son, ' a göre geçmişte bir zaman olur `boostingDuration` . Gelecekte bir zaman aralığını artırmak için negatif bir değer kullanın `boostingDuration` .<br /><br /> En yüksek ve en düşük aralıktan yükseltme yaptığı oran, Puanlama profiline uygulanan enterpolasyon tarafından belirlenir (aşağıdaki şekle bakın). Uygulanan yükseltme faktörünü tersine çevirmek için 1 ' den küçük bir artırma faktörü seçin.|  
-|`freshness`&#124;`boostingDuration`|Belirli bir belge için yükseltme durdurulacak süre sonu süresini ayarlar. Sözdizimi ve örnekler için aşağıdaki bölümde bulunan [boostingDuration ayarlama](#bkmk_boostdur) bölümüne bakın.|  
+|`freshness` &#124; `boostingDuration`|Belirli bir belge için yükseltme durdurulacak süre sonu süresini ayarlar. Sözdizimi ve örnekler için aşağıdaki bölümde bulunan [boostingDuration ayarlama](#bkmk_boostdur) bölümüne bakın.|  
 |`distance`|Uzaklık Puanlama işlevi, bir başvuru coğrafi konumuyla ne kadar yakın ve ne kadar ilerleeceğine göre belgelerin Puanını etkilemek için kullanılır. Başvuru konumu, bir parametresindeki sorgunun parçası olarak ( `scoringParameterquery` dize seçeneği kullanılarak) bir Lon, Lat bağımsız değişkeni olarak verilir.|  
-|`distance`&#124;`referencePointParameter`|Başvuru konumu olarak kullanılacak sorgularda geçirilecek bir parametre. `scoringParameter`bir sorgu parametresidir. Sorgu parametrelerinin açıklamaları için bkz. [Azure Bilişsel Arama &#40;arama belgeleri REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
-|`distance`&#124;`boostingDistance`|Yükseltme aralığının bittiği başvuru konumundan kilometre cinsinden mesafeyi gösteren bir sayı.|  
+|`distance` &#124; `referencePointParameter`|Başvuru konumu olarak kullanılacak sorgularda geçirilecek bir parametre. `scoringParameter` bir sorgu parametresidir. Sorgu parametrelerinin açıklamaları için bkz. [Azure Bilişsel Arama &#40;arama belgeleri REST API&#41;](/rest/api/searchservice/Search-Documents) .|  
+|`distance` &#124; `boostingDistance`|Yükseltme aralığının bittiği başvuru konumundan kilometre cinsinden mesafeyi gösteren bir sayı.|  
 |`tag`|Etiket Puanlama işlevi, belge ve arama sorgularında etiketlere göre belgelerin Puanını etkilemek için kullanılır. Arama sorgusuyla ortak etiketlerin bulunduğu belgeler de artıralınacaktır. Arama sorgusunun etiketleri, her arama isteğinde bir Puanlama parametresi olarak sağlanır ( `scoringParameterquery` dize seçeneği kullanılarak).|  
-|`tag`&#124;`tagsParameter`|Belirli bir istek için etiketleri belirtmek üzere sorgulara geçirilecek bir parametre. `scoringParameter`bir sorgu parametresidir. Sorgu parametrelerinin açıklamaları için bkz. [Azure Bilişsel Arama &#40;arama belgeleri REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
+|`tag` &#124; `tagsParameter`|Belirli bir istek için etiketleri belirtmek üzere sorgulara geçirilecek bir parametre. `scoringParameter` bir sorgu parametresidir. Sorgu parametrelerinin açıklamaları için bkz. [Azure Bilişsel Arama &#40;arama belgeleri REST API&#41;](/rest/api/searchservice/Search-Documents) .|  
 |`functionAggregation`|İsteğe bağlı. Yalnızca işlevler belirtildiğinde geçerlidir. Geçerli değerler şunlardır: Sum (varsayılan), ortalama, minimum, maksimum ve Firsteþleþen. Arama puanı, birden çok işlev dahil olmak üzere birden çok değişkenden hesaplanan tek değerdir. Bu öznitelik, tüm işlevlerin tümünün, temel belge puanına uygulanan tek bir toplam Boost içinde nasıl birleştirildiğini gösterir. Taban puanı, belgeden ve Arama sorgusundan hesaplanan [tf-IDF](http://www.tfidf.com/) değerine göre belirlenir.|  
 |`defaultScoringProfile`|Bir arama isteği yürütürken, Puanlama profili belirtilmemişse, varsayılan Puanlama kullanılır (yalnızca[tf-IDF](http://www.tfidf.com/) ).<br /><br /> Varsayılan bir Puanlama profili adı buradan ayarlanabilir, bu, arama isteğinde belirli bir profil verilmediğinde Azure Bilişsel Arama bu profili kullanmasına neden olur.|  
 
-##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Enterpolasyonlarını ayarla  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Enterpolasyonlarını ayarla  
  Ara değer, Puanlama için kullanılan eğim şeklini ayarlamanıza olanak sağlar. Puanlama yüksek ve düşük olduğundan, eğim her zaman azalabilir, ancak ilişkilendirme, aşağı doğru eğim eğrisini belirler. Aşağıdaki enterpolasyonda kullanılabilir:  
 
 | İlişkilendirme | Açıklama |  
@@ -263,10 +263,10 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
  ![Grafik üzerinde sabit, doğrusal, karesel, log10 çizgileri](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>BoostingDuration 'ı ayarlama  
- `boostingDuration`, işlevinin bir özniteliğidir `freshness` . Belirli bir belge için yükseltme durdurulacak bir süre sonu dönemi ayarlamak için bunu kullanırsınız. Örneğin, 10 günlük promosyon dönemi için bir ürün satırını veya markasını artırmak üzere, bu belgeler için 10 günlük dönemi "P10D" olarak belirtmeniz gerekir.  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a> BoostingDuration 'ı ayarlama  
+ `boostingDuration` , işlevinin bir özniteliğidir `freshness` . Belirli bir belge için yükseltme durdurulacak bir süre sonu dönemi ayarlamak için bunu kullanırsınız. Örneğin, 10 günlük promosyon dönemi için bir ürün satırını veya markasını artırmak üzere, bu belgeler için 10 günlük dönemi "P10D" olarak belirtmeniz gerekir.  
 
- `boostingDuration`XSD "dayTimeDuration" değeri (ISO 8601 Duration değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için model: "P [nD] [T [nH] [nM] [nS]]".  
+ `boostingDuration` XSD "dayTimeDuration" değeri (ISO 8601 Duration değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için model: "P [nD] [T [nH] [nM] [nS]]".  
 
  Aşağıdaki tabloda birkaç örnek verilmiştir.  
 
@@ -281,6 +281,6 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [REST API Başvurusu](https://docs.microsoft.com/rest/api/searchservice/)   
-+ [Dizin API 'SI oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-+ [Azure Bilişsel Arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST API başvurusu](/rest/api/searchservice/)   
++ [Dizin API 'SI oluştur](/rest/api/searchservice/create-index)   
++ [Azure Bilişsel Arama .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

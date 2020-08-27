@@ -4,12 +4,12 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109629"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928930"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -38,6 +38,7 @@ Tablo, Azure 'da gerçekleştirmeniz gereken görevleri özetler. Yönergeler ta
 **Azure geçişi projesi oluşturma** | Azure geçişi projesi, Azure geçiş araçları, Microsoft araçları ve üçüncü taraf teklifleriyle değerlendirmeleri ve geçişleri yönetmek ve yönetmek için merkezi bir konum sağlar. | Azure hesabınız, projenin bulunduğu kaynak grubunda katkıda bulunan veya sahip izinlerine ihtiyaç duyuyor.
 **Gereci Kaydet** | Azure geçişi, Hyper-V VM 'lerini bulup değerlendirmek için hafif bir Azure geçiş gereci kullanır. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration). | Gereci kaydettirmek için Azure hesabınızın Azure aboneliğinde katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure AD uygulaması oluşturma** | Gereci kaydederken Azure geçişi, Gereç ve Azure geçişi üzerinde çalışan aracılar arasındaki iletişim için kullanılan bir Azure Active Directory (Azure AD) uygulaması oluşturur. | Azure hesabınızın Azure AD uygulamaları oluşturmak için izinleri olması gerekir.
+**Anahtar kasası oluşturma** | Key Vault, Gereç kaydının bir parçası olarak oluşturulur ve yapılandırması sırasında gereç üzerinde indirilen sertifikanın yönetimi için kullanılır.| Azure geçişi 'nin Key Vault oluşturmasına izin vermek için Azure hesabınızın, Azure geçişi projesinin bulunduğu kaynak grubunda katkıda bulunan izinleri olması gerekir.
 **VM oluşturma** | Kaynak grubunda ve sanal ağda VM oluşturma ve Azure yönetilen diskine yazma izinlerine sahip olmanız gerekir. | Azure hesabınızın, sanal makine katılımcısı rolüne ihtiyacı vardır.
 
 
@@ -81,6 +82,7 @@ Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 #### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama
 
 Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+
 
 ### <a name="assign-azure-account-permissions"></a>Azure hesabı izinleri atama
 

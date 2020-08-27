@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488962"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935407"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilişsel bir beceri oluşturma
 
@@ -21,7 +21,7 @@ Beceri, büyük ölçekli metin veya resim dosyalarından bilgi ve yapı çıkar
 
 Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -29,7 +29,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-+ [BLOB depolama alanı](https://docs.microsoft.com/azure/storage/blobs/)olan bir Azure depolama hesabı.
++ [BLOB depolama alanı](../storage/blobs/index.yml)olan bir Azure depolama hesabı.
 
 > [!NOTE]
 > Bu hızlı başlangıç Ayrıca AI için Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i de kullanır. İş yükü çok küçük olduğu için bilişsel hizmetler, en fazla 20 işlem için ücretsiz işleme için arka planda dokunduğunda. Bu, ek bir bilişsel hizmetler kaynağı oluşturmak zorunda kalmadan bu Alıştırmayı tamamlayabilmeniz anlamına gelir.
@@ -40,7 +40,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
 1. Farklı türlerden oluşan küçük bir dosya kümesini içeren [örnek verileri indirin](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). Dosyaları sıkıştırmayı açın.
 
-1. [Bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    + Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin. 
 
@@ -169,11 +169,11 @@ Diğer önemli bir kavram, yeteneklerin içerik türlerini üzerinde çalışmas
 
 Çıktı bir arama dizinine yönlendirilir ve dizininizdeki tek tek alanlar sırasında oluşturulan ad-değer çiftleri arasında bir eşleme vardır. Dahili olarak portal, [ek açıklamalar](cognitive-search-concept-annotations-syntax.md) ayarlar ve işlemlerin sırasını ve genel akışı oluşturan bir [beceri kümesini](cognitive-search-defining-skillset.md) tanımlar. Bu adımlar portalda gizlenir, ancak kod yazmaya başladığınızda bu kavramlar önemli hale gelir.
 
-Son olarak, dizini sorgulayarak içeriği doğrulayabildiğini öğrendiniz. Son olarak, Azure Bilişsel Arama 'in sağladığı, [basit](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) veya [tam genişletilmiş sorgu söz dizimini](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)kullanarak sorgulayabilmeniz için aranabilir bir dizindir. Zenginleştirilmiş alanlar içeren bir dizin de diğerlerine benzer. Standart veya [özel çözümleyiciler](search-analyzers.md), [Puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [eş anlamlı](search-synonyms.md), çok [yönlü filtreler](search-filters-facets.md), coğrafi arama veya diğer Azure bilişsel arama özelliklerini birleştirmek istiyorsanız, kesinlikle bunu yapabilirsiniz.
+Son olarak, dizini sorgulayarak içeriği doğrulayabildiğini öğrendiniz. Son olarak, Azure Bilişsel Arama 'in sağladığı, [basit](/rest/api/searchservice/simple-query-syntax-in-azure-search) veya [tam genişletilmiş sorgu söz dizimini](/rest/api/searchservice/lucene-query-syntax-in-azure-search)kullanarak sorgulayabilmeniz için aranabilir bir dizindir. Zenginleştirilmiş alanlar içeren bir dizin de diğerlerine benzer. Standart veya [özel çözümleyiciler](search-analyzers.md), [Puanlama profilleri](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [eş anlamlı](search-synonyms.md), çok [yönlü filtreler](search-filters-facets.md), coğrafi arama veya diğer Azure bilişsel arama özelliklerini birleştirmek istiyorsanız, kesinlikle bunu yapabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -184,7 +184,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 Portal, .NET SDK veya REST API kullanarak becerileri oluşturabilirsiniz. Daha ayrıntılı bilgi için Postman ve daha fazla örnek veri kullanarak REST API deneyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: REST API 'Leri kullanarak JSON Bloblarından metin ve yapı ayıklama](cognitive-search-tutorial-blob.md)
+> [Öğretici: REST API 'Leri kullanarak JSON Bloblarından metin ve yapı ayıklama ](cognitive-search-tutorial-blob.md)
 
 > [!Tip]
 > Bu alıştırmayı yinelemek veya farklı bir AI zenginleştirme Kılavuzu denemek istiyorsanız, portaldaki Dizin oluşturucuyu silin. Dizin oluşturucunun silinmesi, bilişsel hizmetler işleme için ücretsiz günlük işlem sayacını yeniden sıfır olarak sıfırlar.

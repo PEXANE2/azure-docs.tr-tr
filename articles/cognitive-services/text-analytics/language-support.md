@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986177"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932976"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -27,7 +27,7 @@ ms.locfileid: "87986177"
 
 | Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü başlatılıyor: |              Notlar |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Basitleştirilmiş Çince    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh`Ayrıca kabul edildi |
+| Basitleştirilmiş Çince    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` Ayrıca kabul edildi |
 | Geleneksel Çince   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Danca               |     `da`      |     ✓      |            |                            |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |            |                            |                    |
@@ -39,13 +39,13 @@ ms.locfileid: "87986177"
 | İtalyanca               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japonca              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Korece                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |            |                            |                    |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
 | Lehçe                |     `pl`      |     ✓      |            |                            |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt`Ayrıca kabul edildi |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` Ayrıca kabul edildi |
 | Rusça               |     `ru`      |     ✓      |            |                            |                    |
 | İspanyolca               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | İsveççe               |     `sv`      |     ✓      |            |                            |                    |
-| Türkçe               |     `tr`      |     ✓      |            |                            |                    |
+| Türkçe               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Görüşme madenciliği (v 3.1-yalnızca Önizleme)
 
@@ -64,7 +64,7 @@ ms.locfileid: "87986177"
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arapça                |     `ar`      |     ✓      |            |                                 |                    |
 | Çekçe                 |     `cs`      |     ✓      |            |                                 |                    |
-| Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |            |                                 | `zh`Ayrıca kabul edildi |
+| Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |            |                                 | `zh` Ayrıca kabul edildi |
 | Geleneksel Çince   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Danca                |     `da`      |     ✓      |            |                                 |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |            |                                 |                    |
@@ -77,9 +77,9 @@ ms.locfileid: "87986177"
 | İtalyanca               |     `it`      |     ✓      |            |                                 |                    |
 | Japonca              |     `ja`      |     ✓      |            |                                 |                    |
 | Korece                |     `ko`      |     ✓      |            |                                 |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb`Ayrıca kabul edildi |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` Ayrıca kabul edildi |
 | Lehçe                |     `pl`      |     ✓      |            |                                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt`Ayrıca kabul edildi |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt` Ayrıca kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Rusça              |     `ru`      |     ✓      |            |                                 |                    |
 | İspanyolca               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
@@ -98,9 +98,9 @@ ms.locfileid: "87986177"
 | İtalyanca               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Japonca              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Korece                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb`Ayrıca kabul edildi |
+| Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` Ayrıca kabul edildi |
 | Lehçe                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt`Ayrıca kabul edildi |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Rusça               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | İspanyolca               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -115,7 +115,7 @@ ms.locfileid: "87986177"
 
 #### <a name="language-detection"></a>[Dil Algılama](#tab/language-detection)
 
-Metin Analizi API'si, çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir.  Dil Algılama, bir dilin "betiğini" döndürür. Örneğin, "bir köpek var" ifadesi için `en` yerine döndürülür `en-US` . Tek özel durum, dil algılama yeteneğinin döndürdüğü `zh_CHS` veya bir `zh_CHT` komut dosyasını verilen metin olarak belirleyebileceği yalnızca Çince 'dir. Belirli bir betiğin bir Çince belge için belirlenemediği durumlarda, yalnızca döndürülür `zh` .
+Metin Analizi API'si, çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir.  Dil Algılama, bir dilin "betiğini" döndürür. Örneğin, "bir köpek var" ifadesi için  `en` yerine döndürülür  `en-US` . Tek özel durum, dil algılama yeteneğinin döndürdüğü `zh_CHS` veya bir `zh_CHT` komut dosyasını verilen metin olarak belirleyebileceği yalnızca Çince 'dir. Belirli bir betiğin bir Çince belge için belirlenemediği durumlarda, yalnızca döndürülür `zh` .
 
 Bu özellik için dillerin tam listesini yayımlamadık, ancak çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerini algılayabilir. 
 

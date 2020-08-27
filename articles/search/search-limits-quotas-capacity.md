@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749475"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926873"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -44,8 +44,8 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 | Dizin başına en fazla karmaşık koleksiyon alanı |40 |40 |40 |40 |40 |40 |40 |40 |
 | Belge başına tüm karmaşık koleksiyonlardaki en fazla öğe &nbsp; <sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Karmaşık alanların en büyük derinliği |10 |10 |10 |10 |10 |10 |10 |10 |
-| Dizin başına maksimum [Öneri araçları](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
-| Dizin başına maksimum [Puanlama profili](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |100 |100 |
+| Dizin başına maksimum [Öneri araçları](/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
+| Dizin başına maksimum [Puanlama profili](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |100 |100 |
 | Profil başına en fazla işlev |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Aralık 2017 ' den önce oluşturulan temel hizmetler, dizinlerde alt limitlere (15 yerine 5) sahip olmalıdır. Temel katman, dizin başına 100 alan için alt sınıra sahip tek SKU.
@@ -58,7 +58,7 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 2018 Ekim itibariyle, hiçbir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan tüm yeni hizmetler için hiçbir belge sayısı sınırı yoktur. Ekim 2018 ' den önce oluşturulan eski hizmetler belge sayısı sınırlarına tabi olmaya devam edebilir.
 
-Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST API hizmeti Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)' ı kullanın. Belge limitleri, yanıt olarak, `null` hiçbir sınır belirtilmediğini gösterecek şekilde yansıtılır.
+Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST API hizmeti Istatistiklerini al](/rest/api/searchservice/get-service-statistics)' ı kullanın. Belge limitleri, yanıt olarak, `null` hiçbir sınır belirtilmediğini gösterecek şekilde yansıtılır.
 
 > [!NOTE]
 > Hizmet tarafından uygulanan bir belge sınırı olmasa da, temel, S1, S2 ve S3 Arama hizmetlerinde Dizin başına yaklaşık 24.000.000.000 belge sınırı vardır. S3 HD için parça sınırı, dizin başına 2.000.000.000 belgelerdir. Karmaşık bir koleksiyondaki her öğe, parça sınırları bakımından ayrı bir belge olarak sayılır.
@@ -78,15 +78,15 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 | Kaynak | Ücretsiz &nbsp; <sup>1</sup> | Temel &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |N/A |10 |10 |
-| En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |N/A |10 |10 |
-| En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |N/A |10 |10 |
-| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |N/A |Sınır yok |Sınır yok |
+| En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
+| En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
+| En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
+| Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yok |Sınır yok |Sınır yok |
 | En düşük zamanlama | 5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika | 5 dakika |
-| En fazla çalışma süresi| 1-3 dakika |24 saat |24 saat |24 saat |24 saat |N/A  |24 saat |24 saat |
-| Beceri <sup>5</sup> ile Dizin oluşturucular için en fazla çalışma süresi | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |N/A  |2 saat |2 saat |
-| Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 &nbsp; milyon |8 &nbsp; milyon |16 &nbsp; milyon |N/A |4 &nbsp; milyon |4 &nbsp; milyon |
+| En fazla çalışma süresi| 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
+| Beceri <sup>5</sup> ile Dizin oluşturucular için en fazla çalışma süresi | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
+| Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 &nbsp; milyon |8 &nbsp; milyon |16 &nbsp; milyon |Yok |4 &nbsp; milyon |4 &nbsp; milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -120,7 +120,7 @@ Depolama için Iyileştirilmiş Katmanlar (L1 ve L2) için, standart katmanlarda
 
 ## <a name="data-limits-ai-enrichment"></a>Veri limitleri (AI zenginleştirme)
 
-[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md), [dil algılama](cognitive-search-skill-language-detection.md)ve [kişisel bilgi algılama](cognitive-search-skill-pii-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md), [dil algılama](cognitive-search-skill-language-detection.md)ve [kişisel bilgi algılama](cognitive-search-skill-pii-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](/dotnet/api/system.string.length) . Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
 
 ## <a name="throttling-limits"></a>Azaltma sınırları
 
@@ -141,7 +141,7 @@ Bir dizinle ilgili işlemler için statik hız isteği sınırları:
 * $orderby yan tümcesindeki maksimum 32 alan
 * En fazla arama terimi boyutu, UTF-8 ile kodlanmış metnin 32.766 bayttır (32 KB eksi 2 bayt)
 
-<sup>1</sup> Azure bilişsel arama 'de, bir isteğin GÖVDESI 16 MB üst sınırına tabidir. Bu, başka bir şekilde (alan oluşturma ve kısıtlamalar hakkında daha fazla bilgi için bkz. [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) )
+<sup>1</sup> Azure bilişsel arama 'de, bir isteğin GÖVDESI 16 MB üst sınırına tabidir. Bu, başka bir şekilde (alan oluşturma ve kısıtlamalar hakkında daha fazla bilgi için bkz. [desteklenen veri türleri](/rest/api/searchservice/supported-data-types) )
 
 ## <a name="api-response-limits"></a>API yanıt limitleri
 * Arama sonuçları sayfası başına döndürülen en fazla 1000 belge

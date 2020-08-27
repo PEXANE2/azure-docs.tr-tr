@@ -1,21 +1,21 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545135"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930817"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2 kimliğe erişim izinleri atama
+## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
 Kimlik tabanlı kimlik doğrulaması ile Azure dosyaları kaynaklarına erişmek için bir kimlik (Kullanıcı, Grup veya hizmet sorumlusu), paylaşma düzeyinde gerekli izinlere sahip olmalıdır. Bu işlem, belirli bir kullanıcının dosya paylaşımında sahip olduğu erişim türünü belirttiğiniz Windows paylaşma izinlerinin belirtilmesine benzer. Bu bölümdeki kılavuzda, bir kimliğe bir dosya paylaşımının okuma, yazma veya silme izinlerinin nasıl atanacağı gösterilmektedir. 
 
@@ -35,7 +35,9 @@ Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kull
 
 Genel öneri, bir Kullanıcı ve kimlik grubunu temsil eden bir AD grubuna yüksek düzeyde erişim yönetimi için paylaşma düzeyi iznini kullanmak ve ardından dizin/dosya düzeyinde ayrıntılı erişim denetimi için NTFS izinlerinden faydalanır. 
 
-#### <a name="azure-portal"></a>Azure portal
+### <a name="assign-an-azure-role-to-an-ad-identity"></a>Bir AD kimliğine Azure rolü atama
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure rolü atamak için aşağıdaki adımları izleyin:
 
 1. Azure portal dosya paylaşımınıza gidin veya [bir dosya paylaşma oluşturun](../articles/storage/files/storage-how-to-create-file-share.md).
@@ -44,7 +46,7 @@ Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure
 4. **Rol ataması Ekle** dikey penceresinde, **rol** listesinden uygun yerleşik rolü (depolama dosyası veri SMB paylaşma okuyucusu, depolama dosya veri SMB paylaşma katılımcısı) seçin. Varsayılan ayarda **erişime ata erişimi** bırakın: **Azure AD kullanıcısı, Grup veya hizmet sorumlusu**. Hedef Azure AD kimliğini ada veya e-posta adresine göre seçin.
 5. Rol atama işlemini gerçekleştirmek için **Kaydet** ' i seçin.
 
-#### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağını göstermektedir. PowerShell ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-powershell.md).
 
@@ -59,7 +61,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
   
 Aşağıdaki CLı 2,0 komutunda, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağı gösterilmektedir. Azure CLı ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../articles/role-based-access-control/role-assignments-cli.md). 
 
@@ -69,8 +71,10 @@ Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu d
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
+---
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3 SMB üzerinde NTFS izinlerini yapılandırma 
+## <a name="configure-ntfs-permissions-over-smb"></a>SMB üzerinde NTFS izinlerini yapılandırma
+
 RBAC ile paylaşma düzeyi izinleri atadıktan sonra, kök, dizin veya dosya düzeyinde uygun NTFS izinleri atamanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak paylaşma düzeyi izinleri düşünün. NTFS izinleri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde davranır.
 
 Azure dosyaları, tüm NTFS temel ve gelişmiş izinleri kümesini destekler. Windows Dosya Gezgini 'ni kullanarak veya Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak bir Azure dosya PAYLAŞıMıNDAKI dizin ve dosyalarda NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
@@ -108,6 +112,7 @@ Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, lütfen [Windo
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows Dosya Gezgini ile NTFS izinlerini yapılandırma
+
 Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini 'ni kullanın.
 
 1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler**' i seçin.
@@ -120,6 +125,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 9.    **Uygula**’yı seçin.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Iacl 'lerle NTFS izinlerini yapılandırma
+
 Kök dizin dahil olmak üzere, dosya paylaşımındaki tüm dizin ve dosyalara tam izinler vermek için aşağıdaki Windows komutunu kullanın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```
@@ -128,7 +134,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 NTFS izinlerini ve desteklenen farklı türlerdeki izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Etki alanına katılmış bir VM 'den dosya paylaşma bağlama
 
 Aşağıdaki işlem, dosya paylaşımınızın ve erişim izninizin doğru ayarlandığını ve bir Azure dosya paylaşımının etki alanına katılmış bir VM 'den erişebileceğini doğrular. Paylaşılan düzeyi Azure rolü atamasının etkili bir zaman alabilir olduğunu unutmayın. 
 

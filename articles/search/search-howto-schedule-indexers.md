@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 4a78c85918725533df8c616e598afbd2ad84bdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038520"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935832"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
@@ -84,7 +84,7 @@ REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsini
 
 İsteğe bağlı **StartTime** , zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından**bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.
 
-Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz zaman bir Dizin Oluşturucu çalıştırabilirsiniz. Dizin oluşturucular çalıştırma ve Dizin Oluşturucu zamanlamalarını ayarlama hakkında daha fazla bilgi için, REST API başvurusunda [Dizin oluşturucuyu çalıştırma](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [Dizin](https://docs.microsoft.com/rest/api/searchservice/get-indexer)Oluşturucu ve [güncelleştirme dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/update-indexer) inceleyin.
+Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz zaman bir Dizin Oluşturucu çalıştırabilirsiniz. Dizin oluşturucular çalıştırma ve Dizin Oluşturucu zamanlamalarını ayarlama hakkında daha fazla bilgi için, REST API başvurusunda [Dizin oluşturucuyu çalıştırma](/rest/api/searchservice/run-indexer), [Dizin](/rest/api/searchservice/get-indexer)Oluşturucu ve [güncelleştirme dizin oluşturucuyu](/rest/api/searchservice/update-indexer) inceleyin.
 
 <a name="dotNetSdk"></a>
 
@@ -110,10 +110,10 @@ Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizini k
 
 **StartTime** parametresi geçmişteki bir zamana ayarlanabilir. Bu durumda, ilk yürütme, dizin oluşturucunun verilen **StartTime**bu yana sürekli olarak çalışıyor olması halinde zamanlanır.
 
-Zamanlama, [ındexingschedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
+Zamanlama, [ındexingschedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
 
-.NET SDK, [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) sınıfını ve **IIndexersOperations** arabiriminden Yöntemler uygulayan [Indexers](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) özelliğini kullanarak Dizin Oluşturucu işlemlerini denetlemenizi sağlar. 
+.NET SDK, [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) sınıfını ve **IIndexersOperations** arabiriminden Yöntemler uygulayan [Indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) özelliğini kullanarak Dizin Oluşturucu işlemlerini denetlemenizi sağlar. 
 
-Bir dizin oluşturucuyu, [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)veya [Runwithhttpmessagesasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) yöntemlerinden birini kullanarak dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.
+Bir dizin oluşturucuyu, [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)veya [Runwithhttpmessagesasync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) yöntemlerinden birini kullanarak dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.
 
-Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760320"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935866"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. belgeleri dizine ekleme
 
@@ -22,7 +22,7 @@ ms.locfileid: "87760320"
 > Azure Data Lake Storage 2. desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)doldurarak önizlemelere erişim isteğinde bulabilirsiniz. [REST API sürüm 2020-06-30-önizleme](search-api-preview.md) ve Portal bu özelliği sunmaktadır. Şu anda .NET SDK desteği yok.
 
 
-Bir Azure depolama hesabı ayarlarken, [hiyerarşik ad alanını](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)etkinleştirme seçeneğiniz vardır. Bu, bir hesaptaki içerik koleksiyonunun bir Dizin hiyerarşisinde ve iç içe yerleştirilmiş alt dizinlerde düzenlenmesine olanak sağlar. Hiyerarşik ad alanını etkinleştirerek [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)etkinleştirirsiniz.
+Bir Azure depolama hesabı ayarlarken, [hiyerarşik ad alanını](../storage/blobs/data-lake-storage-namespace.md)etkinleştirme seçeneğiniz vardır. Bu, bir hesaptaki içerik koleksiyonunun bir Dizin hiyerarşisinde ve iç içe yerleştirilmiş alt dizinlerde düzenlenmesine olanak sağlar. Hiyerarşik ad alanını etkinleştirerek [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md)etkinleştirirsiniz.
 
 Bu makalede, Azure Data Lake Storage 2. olan belgeleri dizine almaya nasıl başlacağınız açıklanır.
 
@@ -44,9 +44,9 @@ Data Lake Storage 2. içerik dizini oluşturma, Azure Blob depolamada dizin olu�
 
 ## <a name="access-control"></a>Erişim denetimi
 
-Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
+Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](../storage/blobs/data-lake-storage-access-control.md) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
 
-Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik kırpması](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)uygulamak için uygulama geliştiricisinin üzerine gelir.
+Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik kırpması](./search-security-trimming-for-azure-search.md)uygulamak için uygulama geliştiricisinin üzerine gelir.
 
 ## <a name="change-detection"></a>Değişiklik algılama
 

@@ -10,12 +10,13 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650282"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936835"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: C kullanarak Bing Varlık Arama REST API arama isteği gönderme #
 
@@ -24,7 +25,7 @@ Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görünt
 Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 
@@ -32,7 +33,7 @@ Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan
 
    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
    2. **NuGet Paketlerini Yönet**' i seçin.
-   3. *Newtonsoft. JSON*öğesini arayıp seçin ve ardından paketi yükler.
+   3. Araması yapın ve * üzerindeNewtonsoft.Js*seçin ve ardından paketi yükler.
 
 - Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 

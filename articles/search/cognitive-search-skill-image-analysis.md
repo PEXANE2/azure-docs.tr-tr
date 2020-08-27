@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080830"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936053"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
 
-**Görüntü analizi** özelliği, görüntü içeriğine göre zengin bir görsel özellikler kümesini ayıklar. Örneğin, bir görüntüden açıklamalı alt yazı oluşturabilir, Etiketler oluşturabilir veya ünlüleri ve yer işaretlerini tanımlayabilir. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. 
+**Görüntü analizi** özelliği, görüntü içeriğine göre zengin bir görsel özellikler kümesini ayıklar. Örneğin, bir görüntüden açıklamalı alt yazı oluşturabilir, Etiketler oluşturabilir veya ünlüleri ve yer işaretlerini tanımlayabilir. Bu beceri bilişsel hizmetler 'de [görüntü işleme](../cognitive-services/computer-vision/home.md) tarafından sunulan makine öğrenimi modellerini kullanır. 
 
 > [!NOTE]
 > Küçük birimler (20 işlem altında) Azure Bilişsel Arama ücretsiz olarak yürütülebilir, ancak daha büyük iş yükleri faturalanabilir bilişsel [Hizmetler kaynağı iliştirmesini](cognitive-search-attach-cognitive-services.md)gerektirir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -35,7 +35,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `defaultLanguageCode` |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *es* -İspanyolca <br/> *ja* -Japonca <br/> *PT* -Portekizce <br/> *zh* -Basitleştirilmiş Çince|
-| `visualFeatures` |    Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (Ayrıca, kcy içeriği olarak da bilinir) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>   *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır. *Color* ve *ImageType* görsel özelliklerinin kullanım dışı olduğuna, ancak bu işlevselliğe [özel bir yetenek](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)aracılığıyla erişilebildiğinden emin olun.|
+| `visualFeatures` |    Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (Ayrıca, kcy içeriği olarak da bilinir) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](../cognitive-services/computer-vision/category-taxonomy.md)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>  *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır. *Color* ve *ImageType* görsel özelliklerinin kullanım dışı olduğuna, ancak bu işlevselliğe [özel bir yetenek](./cognitive-search-custom-skill-interface.md)aracılığıyla erişilebildiğinden emin olun.|
 | `details` | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar. </li></ul> |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -333,7 +333,7 @@ Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış
             "targetFieldName": "celebrities"
         }
 ```
-##  <a name="sample-input"></a>Örnek giriş
+##  <a name="sample-input"></a>Örnek girdi
 
 ```json
 {
@@ -542,4 +542,4 @@ Aşağıdaki hata durumlarında hiçbir öğe ayıklanmaz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Dizin Oluşturucu Oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Dizin Oluşturucu Oluşturma (REST)](/rest/api/searchservice/create-indexer)

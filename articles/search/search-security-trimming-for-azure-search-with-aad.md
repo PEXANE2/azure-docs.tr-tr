@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b8fd25e209316e828e234b4c64c8b2a2152de6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080493"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928590"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory kimliklerini kullanarak Azure Bilişsel Arama sonuçlarını kırpmasına yönelik güvenlik filtreleri
 
@@ -30,7 +30,7 @@ Bu makale aşağıdaki görevleri kapsar:
 > [!NOTE]
 > Bu makaledeki örnek kod parçacıkları C# dilinde yazılmıştır. Tam kaynak kodunu [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)'da bulabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Bilişsel Arama dizininizin, belgeye okuma erişimi olan grup kimliklerinin listesini depolamak için bir [güvenlik alanı](search-security-trimming-for-azure-search.md) olmalıdır. Bu kullanım örneği, güvenli kılınabilir bir öğe (örneğin, bir okul uygulaması) ve bu öğeye kimlerin erişimi olduğunu belirten bir güvenlik alanı (Admissions personeli) arasında bire bir yazışma olduğunu varsayar.
 
@@ -40,7 +40,7 @@ Uygulamanız Ayrıca, aşağıdaki yordamda açıklandığı gibi AAD ile kayıt
 
 ### <a name="register-your-application-with-aad"></a>Uygulamanızı AAD ile kaydetme
 
-Bu adım, Kullanıcı ve grup hesaplarının oturum açma işlemlerini kabul etmek amacıyla uygulamanızı AAD ile tümleştirir. Kuruluşunuzda bir AAD yöneticisi değilseniz, aşağıdaki adımları gerçekleştirmek için [Yeni bir kiracı oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) gerekebilir.
+Bu adım, Kullanıcı ve grup hesaplarının oturum açma işlemlerini kabul etmek amacıyla uygulamanızı AAD ile tümleştirir. Kuruluşunuzda bir AAD yöneticisi değilseniz, aşağıdaki adımları gerçekleştirmek için [Yeni bir kiracı oluşturmanız](../active-directory/develop/quickstart-create-new-tenant.md) gerekebilir.
 
 1. [**Uygulama kayıt portalı**](https://apps.dev.microsoft.com)  >   **yakınsanmış**uygulama uygulama Ekle ' ye gidin  >  **Add an app**.
 2. Uygulamanız için bir ad girin ve ardından **Oluştur**' a tıklayın. 
@@ -63,7 +63,7 @@ Ancak, mevcut kullanıcılarınız yoksa güvenlik sorumlularını oluşturmak i
 
 Kullanıcı ve grup üyeliği, özellikle büyük kuruluşlarda çok akıcı olabilir. Kullanıcı ve grup kimliklerini oluşturan kodun, kuruluş üyeliğindeki değişiklikleri çekmek için genellikle yeterince çalıştırması gerekir. Benzer şekilde, Azure Bilişsel Arama dizininiz izin verilen kullanıcı ve kaynakların geçerli durumunu yansıtmak için benzer bir güncelleştirme zamanlaması gerektirir.
 
-### <a name="step-1-create-aad-group"></a>1. Adım: [AAD grubu](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) oluşturma 
+### <a name="step-1-create-aad-group"></a>1. Adım: [AAD grubu](/graph/api/group-post-groups?view=graph-rest-1.0) oluşturma 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>2. Adım: [AAD kullanıcısı](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) oluşturma
+### <a name="step-2-create-aad-user"></a>2. Adım: [AAD kullanıcısı](/graph/api/user-post-users?view=graph-rest-1.0) oluşturma
 ```csharp
 User user = new User()
 {
@@ -98,9 +98,9 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>4. Adım: Grup tanımlayıcılarını önbelleğe alma
-İsteğe bağlı olarak, ağ gecikmesini azaltmak için Kullanıcı grubu ilişkilendirmelerini önbelleğe alarak, bir arama isteği verildiğinde, gruplar önbellekten döndürülür ve AAD 'ye gidiş dönüş kaydedilir. Birden çok kullanıcıya sahip tek bir http isteği göndermek ve önbelleği oluşturmak için [AAD Batch API 'sini](https://developer.microsoft.com/graph/docs/concepts/json_batching) kullanabilirsiniz.
+İsteğe bağlı olarak, ağ gecikmesini azaltmak için Kullanıcı grubu ilişkilendirmelerini önbelleğe alarak, bir arama isteği verildiğinde, gruplar önbellekten döndürülür ve AAD 'ye gidiş dönüş kaydedilir. Birden çok kullanıcıya sahip tek bir http isteği göndermek ve önbelleği oluşturmak için [AAD Batch API 'sini](/graph/json-batching) kullanabilirsiniz.
 
-Microsoft Graph, yüksek hacimli istekleri işlemek için tasarlanmıştır. İstek sayısı ortaya çıkarsa, Microsoft Graph HTTP durum kodu 429 ile başarısız olur. Daha fazla bilgi için bkz. [Microsoft Graph azaltma](https://developer.microsoft.com/graph/docs/concepts/throttling).
+Microsoft Graph, yüksek hacimli istekleri işlemek için tasarlanmıştır. İstek sayısı ortaya çıkarsa, Microsoft Graph HTTP durum kodu 429 ile başarısız olur. Daha fazla bilgi için bkz. [Microsoft Graph azaltma](/graph/throttling).
 
 ## <a name="index-document-with-their-permitted-groups"></a>Belge, izin verilen gruplarıyla dizin oluştur
 
@@ -138,7 +138,7 @@ Güvenlik kırpma amacıyla, dizindeki güvenlik alanındaki değerler, arama so
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>1. Adım: kullanıcının grup tanımlayıcılarını alma
 
-Kullanıcının grupları zaten önbelleğe alınmamışsa veya önbelleğin süresi dolmuşsa, [gruplar](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) isteğini yayınlayın
+Kullanıcının grupları zaten önbelleğe alınmamışsa veya önbelleğin süresi dolmuşsa, [gruplar](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) isteğini yayınlayın
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

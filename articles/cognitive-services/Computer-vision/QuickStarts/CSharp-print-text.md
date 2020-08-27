@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-dotnet
+ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209184"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928199"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Hızlı başlangıç: Görüntü İşleme 2,0 REST API OCR işlemini ve C 'yi kullanarak metin Ayıkla #
 
@@ -25,7 +25,7 @@ ms.locfileid: "88209184"
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API [OCR işlemi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) özelliğini kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız. Bu işlemle, yazdırılan metni görüntüde algılayabilir ve tanınan karakterleri makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır

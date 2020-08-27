@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: b47fd90a3fc92234d95ddc9d9f4f14b5af67d757
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924969"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926714"
 ---
-Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız NuGet konsolunda öğesini çalıştırın `Install-Package Microsoft.CognitiveServices.Speech` .
+Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -41,7 +42,7 @@ Kodunuzda başvurabilmeniz için [konuşma SDK 'Sı NuGet paketini](https://aka.
 
 1. **Yeni projenizi yapılandırın** penceresinde, **Proje adı**alanına *HelloWorld* girin, **konum**bölümünde dizin yolunu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
-1. Visual Studio menü çubuğunda **Araçlar** > ' ı seçin ve Visual Studio yükleyicisi açan araçlar**ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
+1. Visual Studio menü çubuğunda **Araçlar**' ı seçin ve  >  Visual Studio yükleyicisi açan araçlar**ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
 
 1. **.Net masaüstü geliştirme** iş yükünün kullanılabilir olup olmadığını denetleyin. İş yükü yüklenmemişse, yanındaki onay kutusunu işaretleyin ve ardından yüklemeyi başlatmak için **Değiştir** ' i seçin. İndirmesi ve yüklenmesi birkaç dakika sürebilir.
 
@@ -57,7 +58,7 @@ Kodunuzda başvurabilmeniz için [konuşma SDK 'Sı NuGet paketini](https://aka.
 
    ![NuGet Paket Yöneticisi](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve ' **`nuget.org`** nin seçili olduğundan emin olun.
+1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve ' nin seçili olduğundan emin olun **`nuget.org`** .
 
 1. Sol üst köşede, **Araştır**' ı seçin.
 
@@ -75,7 +76,7 @@ Kodunuzda başvurabilmeniz için [konuşma SDK 'Sı NuGet paketini](https://aka.
 
 Konsol uygulamasını derlemek ve çalıştırmak için bilgisayarınızın mimarisiyle eşleşen bir platform yapılandırması oluşturun.
 
-1. Menü çubuğundan **derleme** > **Configuration Manager**' yi seçin. **Configuration Manager** iletişim kutusu görüntülenir.
+1. Menü çubuğundan **derleme**  >  **Configuration Manager**' yi seçin. **Configuration Manager** iletişim kutusu görüntülenir.
 
    ![Configuration Manager iletişim kutusu](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

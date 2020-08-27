@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/02/2020
-ms.openlocfilehash: 51422be944d514de398d4bfa424679e2f6d531b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534762"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924274"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıç, AI için Azure Bilişsel Arama, Azure Blob depolama ve 
 
 1. [HotelReviews_Free.csvindirin ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
 
-1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
+1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
 
    **StorageV2 (genel amaçlı v2)** hesap türünü seçin.
 
@@ -50,7 +50,7 @@ Bu hızlı başlangıç, AI için Azure Bilişsel Arama, Azure Blob depolama ve 
 
     ![Azure Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob kapsayıcısını oluşturma")
 
-1. Bu kaynakla neredeyse tamamladınız, ancak bu sayfalardan çıkmadan önce, **erişim tuşları** sayfasını açmak için sol gezinti bölmesindeki bir bağlantıyı kullanın. Blob depolamadan veri almak için bir bağlantı dizesi alın. Bir bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. Bu kaynakla neredeyse tamamladınız, ancak bu sayfalardan çıkmadan önce, **erişim tuşları** sayfasını açmak için sol gezinti bölmesindeki bir bağlantıyı kullanın. Blob depolamadan veri almak için bir bağlantı dizesi alın. Bir bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 1. Hala portalda Azure Bilişsel Arama ' ye geçin. [Yeni bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Bu alıştırma için ücretsiz bir hizmet kullanabilirsiniz.
 
@@ -172,7 +172,7 @@ Sonraki adım, uygulanacak geliştirmeleri ve sonuçların depolanacağı bilgi 
 
 İki büyük üst düzey nesne vardır: `skills` ve `knowledgeStore` . Nesne içindeki her nesne `skills` bir zenginleştirme hizmetidir. Her bir zenginleştirme hizmeti `inputs` ve ' dir `outputs` . , `LanguageDetectionSkill` Bir çıkışına sahiptir `targetName` `Language` . Bu düğümün değeri, diğer yeteneklerin çoğu tarafından giriş olarak kullanılır. Kaynak `document/Language` . Bir düğümün başka birine girdi olarak çıkışını kullanma yeteneği, `ShaperSkill` verilerin bilgi deposunun tablolarına nasıl akacağını belirten daha da daha da açık bir hale gelir.
 
-`knowledge_store`Nesnesi, Postman değişkeni aracılığıyla depolama hesabına bağlanır `{{storage-connection-string}}` . `knowledge_store`bilgi deposundaki geliştirilmiş belge ve tablolar ile sütunlar arasında bir eşleme kümesi içerir. 
+`knowledge_store`Nesnesi, Postman değişkeni aracılığıyla depolama hesabına bağlanır `{{storage-connection-string}}` . `knowledge_store` bilgi deposundaki geliştirilmiş belge ve tablolar ile sütunlar arasında bir eşleme kümesi içerir. 
 
 Beceri oluşturmak için Postman 'daki **Gönder** düğmesini seçerek isteği yerleştirin:
 
@@ -306,7 +306,7 @@ Beceri oluşturmak için Postman 'daki **Gönder** düğmesini seçerek isteği 
 
 Son adım, Dizin oluşturucuyu oluşturmaktır. Dizin Oluşturucu verileri okur ve beceri etkinleştirir. Postman 'da **Dizin oluşturma Isteği oluştur** ' u seçin ve ardından gövdesini gözden geçirin. Dizin oluşturucunun tanımı, zaten oluşturduğunuz diğer birkaç kaynağa başvurur: veri kaynağı, dizin ve beceri. 
 
-`parameters/configuration`Nesnesi, dizin oluşturucunun verileri nasıl geri gediğini denetler. Bu durumda, giriş verileri, üst bilgi satırı ve virgülle ayrılmış değerler içeren tek bir belgedir. Belge anahtarı belge için benzersiz bir tanımlayıcıdır. Kodlamadan önce belge anahtarı kaynak belgenin URL 'sidir. Son olarak, dil kodu, yaklaşım ve anahtar ifadeler gibi beceri çıkış değerleri belgedeki konumlarına eşlenir. İçin tek bir değer olsa da `Language` , `Sentiment` dizisindeki her öğeye uygulanır `pages` . `Keyphrases`dizideki her öğeye de uygulanan bir dizidir `pages` .
+`parameters/configuration`Nesnesi, dizin oluşturucunun verileri nasıl geri gediğini denetler. Bu durumda, giriş verileri, üst bilgi satırı ve virgülle ayrılmış değerler içeren tek bir belgedir. Belge anahtarı belge için benzersiz bir tanımlayıcıdır. Kodlamadan önce belge anahtarı kaynak belgenin URL 'sidir. Son olarak, dil kodu, yaklaşım ve anahtar ifadeler gibi beceri çıkış değerleri belgedeki konumlarına eşlenir. İçin tek bir değer olsa da `Language` , `Sentiment` dizisindeki her öğeye uygulanır `pages` . `Keyphrases` dizideki her öğeye de uygulanan bir dizidir `pages` .
 
 `api-key`Ve `Content-type` üst bilgilerini ayarladıktan ve isteğin gövdesinin aşağıdaki kaynak koda benzediğini doğruladıktan sonra Postman 'da **Gönder** ' i seçin. Postman öğesine bir PUT isteği gönderir `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` . Azure Bilişsel Arama Dizin oluşturucuyu oluşturur ve çalıştırır. 
 

@@ -19,21 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201397"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935798"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Bilişsel Arama OData tam metin arama işlevleri- `search.ismatch` ve`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Bilişsel Arama OData tam metin arama işlevleri- `search.ismatch` ve `search.ismatchscoring`
 
-Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) bağlamında tam metin aramayı destekler `search.ismatch` `search.ismatchscoring` . Bu işlevler, tam metin aramasını `search` , yalnızca [Arama API](https://docs.microsoft.com/rest/api/searchservice/search-documents)'sinin en üst düzey parametresini kullanarak mümkün olmayan şekilde kesin Boole filtrelemeleri ile birleştirmenize olanak tanır.
+Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) bağlamında tam metin aramayı destekler `search.ismatch` `search.ismatchscoring` . Bu işlevler, tam metin aramasını `search` , yalnızca [Arama API](/rest/api/searchservice/search-documents)'sinin en üst düzey parametresini kullanarak mümkün olmayan şekilde kesin Boole filtrelemeleri ile birleştirmenize olanak tanır.
 
 > [!NOTE]
-> `search.ismatch`Ve `search.ismatchscoring` Işlevleri yalnızca [Arama API 'sindeki](https://docs.microsoft.com/rest/api/searchservice/search-documents)filtrelerde desteklenir. Bunlar, [öneri](https://docs.microsoft.com/rest/api/searchservice/suggestions) veya [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
+> `search.ismatch`Ve `search.ismatchscoring` Işlevleri yalnızca [Arama API 'sindeki](/rest/api/searchservice/search-documents)filtrelerde desteklenir. Bunlar, [öneri](/rest/api/searchservice/suggestions) veya [otomatik tamamlama](/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve işlevlerinin dilbilgisini tanımlar `search.ismatchscoring` :
 
@@ -73,10 +73,10 @@ Parametreler aşağıdaki tabloda tanımlanmıştır:
 | --- | --- | --- |
 | `search` | `Edm.String` | Arama sorgusu ( [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) Lucene sorgu sözdiziminde). |
 | `searchFields` | `Edm.String` | Arama yapılacak aranabilir alanların virgülle ayrılmış listesi; dizindeki tüm aranabilir alanları varsayılan olarak belirler. [fielded search](query-lucene-syntax.md#bkmk_fields) `search` Parametresinde, alan araması kullanılırken, Lucene sorgusunda alan belirticileri bu parametrede belirtilen tüm alanları geçersiz kılar. |
-| `queryType` | `Edm.String` | `'simple'`veya `'full'` ; Varsayılan olarak olur `'simple'` . Parametrede hangi sorgu dilinin kullanıldığını belirtir `search` . |
-| `searchMode` | `Edm.String` | `'any'`ya `'all'` da varsayılan olarak olur `'any'` . `search`Belgeyi eşleşme olarak saymak için parametresindeki arama terimlerinin herhangi birinin veya tümünün eşleşmesi gerekip gerekmediğini gösterir. Parametresindeki [Lucene Boolean işleçleri](query-lucene-syntax.md#bkmk_boolean) kullanıldığında `search` , bu parametre üzerinden öncelikli olur. |
+| `queryType` | `Edm.String` | `'simple'` veya `'full'` ; Varsayılan olarak olur `'simple'` . Parametrede hangi sorgu dilinin kullanıldığını belirtir `search` . |
+| `searchMode` | `Edm.String` | `'any'` ya `'all'` da varsayılan olarak olur `'any'` . `search`Belgeyi eşleşme olarak saymak için parametresindeki arama terimlerinin herhangi birinin veya tümünün eşleşmesi gerekip gerekmediğini gösterir. Parametresindeki [Lucene Boolean işleçleri](query-lucene-syntax.md#bkmk_boolean) kullanıldığında `search` , bu parametre üzerinden öncelikli olur. |
 
-Yukarıdaki parametrelerin tümü, [Arama API 'sindeki karşılık gelen arama isteği parametrelerine](https://docs.microsoft.com/rest/api/searchservice/search-documents)eşdeğerdir.
+Yukarıdaki parametrelerin tümü, [Arama API 'sindeki karşılık gelen arama isteği parametrelerine](/rest/api/searchservice/search-documents)eşdeğerdir.
 
 `search.ismatch`İşlevi, `Edm.Boolean` Boolean [mantıksal işleçlerini](search-query-odata-logical-operators.md)kullanarak diğer filtre alt ifadeleriyle onu oluşturmanıza olanak sağlayan türünde bir değer döndürür.
 
@@ -96,7 +96,7 @@ Hem `search.ismatch` hem de `search.ismatchscoring` işlevleri aynı filtre ifad
 
 ## <a name="examples"></a>Örnekler
 
-"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
+"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
 
 ```odata-filter-expr
     search.ismatchscoring('waterfront')
@@ -133,4 +133,4 @@ Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit 
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

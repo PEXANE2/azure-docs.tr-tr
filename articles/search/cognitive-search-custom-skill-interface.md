@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891242"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935424"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzenine özel bir yetenek ekleme
 
@@ -168,5 +168,5 @@ Bu makalede, özel bir yeteneğin bir beceri ile tümleştirilmesi için gereken
 + [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

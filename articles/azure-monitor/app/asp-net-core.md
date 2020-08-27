@@ -2,13 +2,14 @@
 title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Docs
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518093"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936529"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -30,7 +31,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -105,7 +106,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örneğin:
+    Örnek:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -471,5 +472,5 @@ En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakı
 * Bir özel durum oluştuğunda kaynak kodu ve değişkenlerin durumunu görmek için [bir anlık görüntü koleksiyonu yapılandırın](./snapshot-debugger.md) .
 * Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](./api-custom-events-metrics.md) .
 * Uygulamanızı dünyanın her yerindeki sürekli denetlemek için [kullanılabilirlik testlerini](./monitor-web-app-availability.md) kullanın.
-* [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection)
+* [ASP.NET Core'da Bağımlılık Ekleme](/aspnet/core/fundamentals/dependency-injection)
 

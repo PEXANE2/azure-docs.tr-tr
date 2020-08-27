@@ -3,12 +3,12 @@ title: Olay Işleyicisi ana bilgisayarı 'nı kullanarak olayları alma-Azure Ev
 description: Bu makalede, Azure Event Hubs 'daki olay Işleyicisi ana bilgisayarı açıklanmaktadır. Bu, denetim noktası oluşturma, kiralama ve okuma olaylarının paralel olarak yönetilmesini basitleştirir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002531"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936189"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
@@ -43,7 +43,7 @@ Bunun için kendi çözümünüzü oluşturmak yerine, Event Hubs bu işlevselli
 
 ## <a name="ieventprocessor-interface"></a>Ieventprocessor arabirimi
 
-İlk olarak, uygulamaları kullanan [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arabirimini uygular ve bu dört yöntem Içerir: [openAsync, CloseAsync, Processerrorasync ve ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Bu arabirim, Event Hubs gönderdiği olayları tüketmek için gerçek kodu içerir. Aşağıdaki kodda basit bir uygulama gösterilmektedir:
+İlk olarak, uygulamaları kullanan  [ıeventprocessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) arabirimini uygular ve bu dört yöntem Içerir: [openAsync, CloseAsync, Processerrorasync ve ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Bu arabirim, Event Hubs gönderdiği olayları tüketmek için gerçek kodu içerir. Aşağıdaki kodda basit bir uygulama gösterilmektedir:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -192,10 +192,10 @@ Dönemi olan bir alıcı oluşturduğunuz ve sonra aynı tüketici grubunda dön
 Artık olay Işlemcisi konağını öğrenolduğunuza göre Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - Event Hubs kullanmaya başlayın
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

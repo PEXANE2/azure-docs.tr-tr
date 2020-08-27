@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936087"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
 
-**Varlık tanıma** yeteneği, metinden farklı türlerdeki varlıkları ayıklar. Bu beceri bilişsel hizmetler 'de [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sunulan makine öğrenimi modellerini kullanır.
+**Varlık tanıma** yeteneği, metinden farklı türlerdeki varlıkları ayıklar. Bu beceri bilişsel hizmetler 'de [metin analizi](../cognitive-services/text-analytics/overview.md) tarafından sunulan makine öğrenimi modellerini kullanır.
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -29,7 +29,7 @@ ms.locfileid: "85080850"
 Microsoft. yetenekler. Text. Entityrecognitionbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
@@ -40,7 +40,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 | `categories`    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
 | `defaultLanguageCode` |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Tüm diller için tüm varlık kategorileri desteklenmez; Aşağıdaki nota bakın.|
 | `minimumPrecision` | 0 ile 1 arasında bir değer. Güven puanı ( `namedEntities` çıktıda) bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur. |
-| `includeTypelessEntities` | `true`Geçerli kategorilere uymayan iyi bilinen varlıkları tanımak istiyorsanız olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer`false` |
+| `includeTypelessEntities` | `true`Geçerli kategorilere uymayan iyi bilinen varlıkları tanımak istiyorsanız olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer `false` |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -53,7 +53,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 > [!NOTE]
-> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](../cognitive-services/text-analytics/language-support.md).  
 
 | Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
@@ -97,7 +97,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
     ]
   }
 ```
-##    <a name="sample-input"></a>Örnek giriş
+##    <a name="sample-input"></a>Örnek girdi
 
 ```json
 {
@@ -187,7 +187,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 }
 ```
 
-Bu yeteneğin çıktılarındaki varlıklar için döndürülen uzaklıklardan doğrudan [Metin Analizi API'si](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)döndürüldüğünü unutmayın. Bu, özgün dizede dizin haline getirmek için kullanıyorsanız, doğru içeriği ayıklamak üzere .net Içindeki [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını kullanmanız gerekir.  [Daha fazla ayrıntı burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Bu yeteneğin çıktılarındaki varlıklar için döndürülen uzaklıklardan doğrudan [Metin Analizi API'si](../cognitive-services/text-analytics/overview.md)döndürüldüğünü unutmayın. Bu, özgün dizede dizin haline getirmek için kullanıyorsanız, doğru içeriği ayıklamak üzere .net Içindeki [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını kullanmanız gerekir.  [Daha fazla ayrıntı burada bulunabilir.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Hata durumları
 Belge için dil kodu desteklenmiyorsa bir hata döndürülür ve hiçbir varlık ayıklanmaz.

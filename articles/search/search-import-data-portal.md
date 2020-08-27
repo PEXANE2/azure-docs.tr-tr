@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321390"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935220"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Bilişsel Arama için veri içeri aktarma Sihirbazı
 
@@ -68,19 +68,19 @@ Sihirbazı çalıştırmadan önce bu tek tablo veya görünüm oluşturmanız g
 | [**Azure SQL veritabanı veya SQL yönetilen örneği**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Hizmet adı, okuma iznine sahip bir veritabanı kullanıcısının kimlik bilgileri ve veritabanı adı, sayfa üzerinde ya da ADO.NET bağlantı dizesi aracılığıyla belirtilebilir. Özellikleri görüntülemek veya özelleştirmek için bağlantı dizesini seçin. <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir.|
 | **Azure VM’lerde SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için bağlantıyı şifreleyen yerel depoya daha önce bir sertifika yüklemiş olmanız gerekir. Yönergeler için bkz. [Azure bilişsel arama SQL VM bağlantısı](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Hesap, veritabanı ve bağlantı gereklidir. Koleksiyondaki tüm belgeler dizine dahil edilir. Satır kümesini düzleştirmek veya filtrelemek için bir sorgu tanımlayabilir veya sorguyu boş bırakabilirsiniz. Bu sihirbazda bir sorgu gerekli değildir.|
-| [**Azure Blob Depolama**](search-howto-indexing-azure-blob-storage.md) |Depolama hesabı ve bir kapsayıcı gereklidir. İsteğe bağlı olarak, gruplandırma amacıyla blob adlarından önce bir sanal adlandırma kuralı varsa adın sanal dizin kısmını kapsayıcı altındaki bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Blob Depolama Dizini Oluşturma](search-howto-indexing-azure-blob-storage.md). |
-| [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
+| [**Azure Blob depolama**](search-howto-indexing-azure-blob-storage.md) |Depolama hesabı ve bir kapsayıcı gereklidir. İsteğe bağlı olarak, gruplandırma amacıyla blob adlarından önce bir sanal adlandırma kuralı varsa adın sanal dizin kısmını kapsayıcı altındaki bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Blob Depolama Dizini Oluşturma](search-howto-indexing-azure-blob-storage.md). |
+| [**Azure Tablo Depolama**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Sihirbaz çıkışı
 
-Sihirbaz, arka planda aşağıdaki nesneleri oluşturur, yapılandırır ve çağırır. Sihirbaz çalıştıktan sonra, çıktısını Portal sayfalarında bulabilirsiniz. Hizmetinizin Genel Bakış sayfasında Dizin, Dizin oluşturucular, veri kaynakları ve becerileri listeleri vardır. Dizin tanımları portalda tam JSON olarak görüntülenebilir. Diğer tanımlarda, belirli nesneleri almak için [REST API](https://docs.microsoft.com/rest/api/searchservice/) kullanabilirsiniz.
+Sihirbaz, arka planda aşağıdaki nesneleri oluşturur, yapılandırır ve çağırır. Sihirbaz çalıştıktan sonra, çıktısını Portal sayfalarında bulabilirsiniz. Hizmetinizin Genel Bakış sayfasında Dizin, Dizin oluşturucular, veri kaynakları ve becerileri listeleri vardır. Dizin tanımları portalda tam JSON olarak görüntülenebilir. Diğer tanımlarda, belirli nesneleri almak için [REST API](/rest/api/searchservice/) kullanabilirsiniz.
 
 | Nesne | Açıklama | 
 |--------|-------------|
-| [Veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
-| [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 
-| [Beceri](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Görüntü dosyalarından bilgi çözümleme ve ayıklama da dahil olmak üzere içeriği işleme, dönüştürmeye ve şekillendirmeye yönelik bir dizi yönergedir. Çok basit ve sınırlı yapılar haricinde, zenginleştirme sağlayan bilişsel hizmetler kaynağına bir başvuru içerir. İsteğe bağlı olarak, bir bilgi deposu tanımı da içerebilir.  | 
-| [Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Bir veri kaynağı, hedef dizin, isteğe bağlı bir beceri, isteğe bağlı zamanlama ve hata elde etme ve Base-64 kodlaması için isteğe bağlı yapılandırma ayarları belirleyen bir yapılandırma nesnesi. |
+| [Veri Kaynağı](/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
+| [Dizin oluşturma](/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 
+| [Beceri](/rest/api/searchservice/create-skillset) | Görüntü dosyalarından bilgi çözümleme ve ayıklama da dahil olmak üzere içeriği işleme, dönüştürmeye ve şekillendirmeye yönelik bir dizi yönergedir. Çok basit ve sınırlı yapılar haricinde, zenginleştirme sağlayan bilişsel hizmetler kaynağına bir başvuru içerir. İsteğe bağlı olarak, bir bilgi deposu tanımı da içerebilir.  | 
+| [Dizin Oluşturucu](/rest/api/searchservice/create-indexer)  | Bir veri kaynağı, hedef dizin, isteğe bağlı bir beceri, isteğe bağlı zamanlama ve hata elde etme ve Base-64 kodlaması için isteğe bağlı yapılandırma ayarları belirleyen bir yapılandırma nesnesi. |
 
 
 ## <a name="how-to-start-the-wizard"></a>Sihirbazı başlatma
@@ -103,7 +103,7 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 
 1. Alan listesi tamamlansın mı? Eksik örneklemenin bulunduğu yeni alanlar ekleyin ve bir arama deneyimine değer eklememe veya bir [filtre ifadesinde](search-query-odata-filter.md) veya [Puanlama profilinde](index-add-scoring-profiles.md)kullanılmayacak olan her türlü değeri kaldırın.
 
-1. Veri türü gelen veriler için uygun mu? Azure Bilişsel Arama, [varlık veri modeli (EDM) veri türlerini](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
+1. Veri türü gelen veriler için uygun mu? Azure Bilişsel Arama, [varlık veri modeli (EDM) veri türlerini](/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
 
 1. *Anahtar*olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için olabilir `metadata-storage-path` . Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler**altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
 

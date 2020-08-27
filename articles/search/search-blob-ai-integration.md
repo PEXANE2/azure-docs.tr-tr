@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73496429"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936750"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>BLOB depolama verilerini anlamak için AI kullanma
 
@@ -112,7 +112,7 @@ Azure depolama 'da bir bilgi deposunda iki bildirim bulunur: bir blob kapsayıc�
 
 Farklı yollarla bilişsel hizmetler 'i birleştirme ve senaryo için mevcut bilişsel hizmet olmadığı durumlar için özel yetenekler yazma dahil olmak üzere, Azure depolama 'daki verilerden en iyi şekilde yararlanmak için, AI zenginleştirmesiyle ilgili çok daha fazla şey vardır. Aşağıdaki bağlantıları izleyerek daha fazla bilgi edinebilirsiniz.
 
-+ [Azure portal (Azure Blob depolama) ile Blobları karşıya yükleme, indirme ve listeleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Azure portal (Azure Blob depolama) ile Blobları karşıya yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [Blob Dizin oluşturucuyu ayarlama (Azure Bilişsel Arama)](search-howto-indexing-azure-blob-storage.md) 
 + [AI zenginleştirme genel bakış (Azure Bilişsel Arama)](cognitive-search-concept-intro.md) 
 + [Beceri oluşturma (Azure Bilişsel Arama)](cognitive-search-defining-skillset.md)

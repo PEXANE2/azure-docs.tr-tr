@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 522cf801e7c1bfdd3ed1f452c123a2db701c0c42
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84983623"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936359"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Örnek: C ile görüntü işleme uygulamasını araştırma #
 
@@ -28,7 +28,7 @@ Optik karakter tanıma (OCR) gerçekleştirmek, akıllı kırpılan küçük res
 > * Örnek uygulamayı çalıştırın ve çeşitli senaryolar gerçekleştirmek için onunla etkileşime geçin
 > * Örnek uygulamayla birlikte sunulan çeşitli senaryoları inceleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Örnek uygulamayı araştırmadan önce, aşağıdaki önkoşulları karşılatığınızdan emin olun:
 

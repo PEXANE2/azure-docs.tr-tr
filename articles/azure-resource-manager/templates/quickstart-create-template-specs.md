@@ -2,15 +2,15 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: aaceac9fccf21074732c4b6c4b3e72cc09552a65
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924334"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936393"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
@@ -23,13 +23,13 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://az
 > [!NOTE]
 > Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [bekleme listesine kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
 >
-> Bekleme listesinden onay aldıktan sonra, Preview PowerShell modülünü yükleme yönergelerini alacaksınız.
+> Bekleme listesinden onay aldıktan sonra, Preview PowerShell modülünü ve önizleme CLı modülünü yükleme yönergelerini alacaksınız.
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon belirtimi, **Microsoft. resources/Templatespec**adlı yeni bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
+Şablon belirtimi, **Microsoft. resources/Templatespec**adlı yeni bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
 
-PowerShell ile ARM şablonu komutuna bir parametre olarak geçirilir. ARM şablonuyla, şablon belirtimi içinde paketlenecek ARM şablonu, şablon belirtimi tanımına katıştırılır.
+PowerShell ve CLı ile ARM şablonu komutuna bir parametre olarak geçirilir. ARM şablonuyla, şablon belirtimi içinde paketlenecek ARM şablonu, şablon belirtimi tanımına katıştırılır.
 
 Bu seçenekler aşağıda gösterilmiştir.
 
@@ -37,144 +37,169 @@ Bu seçenekler aşağıda gösterilmiştir.
 
 1. PowerShell ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
-   :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
 1. Şablon belirtimini içeren yeni bir kaynak grubu oluşturun.
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name templateSpecRG `
-     -Location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name templateSpecRG `
+      -Location westus2
+    ```
 
 1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec**adını verirsiniz.
 
-   ```powershell
-   New-AzTemplateSpec `
-     -ResourceGroupName templateSpecRG `
-     -Name storageSpec `
-     -Version "1.0" `
-     -Location westus2 `
-     -TemplateJsonFile "c:\Templates\azuredeploy.json"
-   ```
+    ```azurepowershell
+    New-AzTemplateSpec `
+      -Name storageSpec `
+      -Version "1.0" `
+      -ResourceGroupName templateSpecRG `
+      -Location westus2 `
+      -TemplateJsonFile "c:\Templates\azuredeploy.json"
+    ```
 
-# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+1. CLı ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+1. Şablon belirtimini içeren yeni bir kaynak grubu oluşturun.
+
+    ```azurecli
+    az group create \
+      --name templateSpecRG \
+      --location westus2
+    ```
+
+1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec**adını verirsiniz.
+
+    ```azurecli
+    az template-specs create \
+      --name storageSpec \
+      --version "1.0" \
+      --resource-group templateSpecRG \
+      --location "westus2" \
+      --template-file "c:\Templates\azuredeploy.json"
+    ```
+
+# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
 
 1. Şablon belirtimini oluşturmak için ARM şablonu kullandığınızda, şablon kaynak tanımına katıştırılır. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**olarak yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
-   > [!NOTE]
-   > Katıştırılmış şablonda, sol köşeli ayraçlara ikinci bir sol köşeli ayraç konulmalıdır. `[[`Yerine kullanın `[` .
+    > [!NOTE]
+    > Katıştırılmış şablonda, sol köşeli ayraçlara ikinci bir sol köşeli ayraç konulmalıdır. `[[`Yerine kullanın `[` .
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {},
-       "functions": [],
-       "variables": {},
-       "resources": [
-           {
-               "type": "Microsoft.Resources/templateSpecs",
-               "apiVersion": "2019-06-01-preview",
-               "name": "storageSpec",
-               "location": "westus2",
-               "properties": {
-                   "displayName": "Storage template spec"
-               },
-               "tags": {},
-               "resources": [
-                   {
-                       "type": "versions",
-                       "apiVersion": "2019-06-01-preview",
-                       "name": "1.0",
-                       "location": "westus2",
-                       "dependsOn": [ "storageSpec" ],
-                       "properties": {
-                           "template": {
-                               "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                               "contentVersion": "1.0.0.0",
-                               "parameters": {
-                                   "storageAccountType": {
-                                       "type": "string",
-                                       "defaultValue": "Standard_LRS",
-                                       "allowedValues": [
-                                           "Standard_LRS",
-                                           "Standard_GRS",
-                                           "Standard_ZRS",
-                                           "Premium_LRS"
-                                       ],
-                                       "metadata": {
-                                           "description": "Storage Account type"
-                                       }
-                                   },
-                                   "location": {
-                                       "type": "string",
-                                       "defaultValue": "[[resourceGroup().location]",
-                                       "metadata": {
-                                           "description": "Location for all resources."
-                                       }
-                                   }
-                               },
-                               "variables": {
-                                   "storageAccountName": "[[concat('store', uniquestring(resourceGroup().id))]"
-                               },
-                               "resources": [
-                                   {
-                                       "type": "Microsoft.Storage/storageAccounts",
-                                       "apiVersion": "2019-04-01",
-                                       "name": "[[variables('storageAccountName')]",
-                                       "location": "[[parameters('location')]",
-                                       "sku": {
-                                           "name": "[[parameters('storageAccountType')]"
-                                       },
-                                       "kind": "StorageV2",
-                                       "properties": {}
-                                   }
-                               ],
-                               "outputs": {
-                                   "storageAccountName": {
-                                       "type": "string",
-                                       "value": "[[variables('storageAccountName')]"
-                                   }
-                               }
-                           }
-                       },
-                       "tags": {}
-                   }
-               ]
-           }
-       ],
-       "outputs": {}
-   }
-   ```
+    ```json
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "functions": [],
+      "variables": {},
+      "resources": [
+        {
+          "type": "Microsoft.Resources/templateSpecs",
+          "apiVersion": "2019-06-01-preview",
+          "name": "storageSpec",
+          "location": "westus2",
+          "properties": {
+            "displayName": "Storage template spec"
+          },
+          "tags": {},
+          "resources": [
+            {
+              "type": "versions",
+              "apiVersion": "2019-06-01-preview",
+              "name": "1.0",
+              "location": "westus2",
+              "dependsOn": [ "storageSpec" ],
+              "properties": {
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {
+                    "storageAccountType": {
+                      "type": "string",
+                      "defaultValue": "Standard_LRS",
+                      "allowedValues": [
+                        "Standard_LRS",
+                        "Standard_GRS",
+                        "Standard_ZRS",
+                        "Premium_LRS"
+                      ],
+                      "metadata": {
+                        "description": "Storage Account type"
+                      }
+                    },
+                    "location": {
+                      "type": "string",
+                      "defaultValue": "[[resourceGroup().location]",
+                      "metadata": {
+                        "description": "Location for all resources."
+                      }
+                    }
+                  },
+                  "variables": {
+                    "storageAccountName": "[[concat('store', uniquestring(resourceGroup().id))]"
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[[variables('storageAccountName')]",
+                      "location": "[[parameters('location')]",
+                      "sku": {
+                        "name": "[[parameters('storageAccountType')]"
+                      },
+                      "kind": "StorageV2",
+                      "properties": {}
+                    }
+                  ],
+                  "outputs": {
+                    "storageAccountName": {
+                      "type": "string",
+                      "value": "[[variables('storageAccountName')]"
+                    }
+                  }
+                }
+              },
+              "tags": {}
+            }
+          ]
+        }
+      ],
+      "outputs": {}
+    }
+    ```
 
 1. Yeni bir kaynak grubu oluşturmak için Azure CLı veya PowerShell kullanın.
 
-   ```azurecli
-   az group create \
-     --name templateSpecRG \
-     --location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name templateSpecRG `
+      -Location westus2
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name templateSpecRG `
-     -Location westus2
-   ```
+    ```azurecli
+    az group create \
+      --name templateSpecRG \
+      --location westus2
+    ```
 
 1. Azure CLı veya PowerShell ile şablonunuzu dağıtın.
 
-   ```azurecli
-   az deployment group create \
-     --name templateSpecRG \
-     --template-file "c:\Templates\azuredeploy.json"
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -ResourceGroupName templateSpecRG `
+      -TemplateFile "c:\Templates\azuredeploy.json"
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -ResourceGroupName templateSpecRG `
-     -TemplateFile "c:\Templates\azuredeploy.json"
-   ```
+    ```azurecli
+    az deployment group create \
+      --name templateSpecRG \
+      --template-file "c:\Templates\azuredeploy.json"
+    ```
 
 ---
 
@@ -186,92 +211,128 @@ Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılma
 
 1. Yeni depolama hesabını içerecek bir kaynak grubu oluşturun.
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name storageRG `
-     -Location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name storageRG `
+      -Location westus2
+    ```
 
 1. Şablon belirtiminin kaynak KIMLIĞINI alın.
 
-   ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
-   ```
+    ```azurepowershell
+    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
+    ```
 
 1. Şablon belirtimini dağıtın.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -TemplateSpecId $id `
-     -ResourceGroupName storageRG
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -TemplateSpecId $id `
+      -ResourceGroupName storageRG
+    ```
 
 1. Bir ARM şablonunda yaptığınız gibi parametreleri tam olarak sağlarsınız. Şablon belirtimini depolama hesabı türü için bir parametre ile yeniden dağıtın.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -TemplateSpecId $id `
-     -ResourceGroupName storageRG `
-     -StorageAccountType Standard_GRS
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -TemplateSpecId $id `
+      -ResourceGroupName storageRG `
+      -storageAccountType Standard_GRS
+    ```
 
-# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+1. Yeni depolama hesabını içerecek bir kaynak grubu oluşturun.
+
+    ```azurecli
+    az group create \
+      --name storageRG \
+      --location westus2
+    ```
+
+1. Şablon belirtiminin kaynak KIMLIĞINI alın.
+
+    ```azurecli
+    id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+    ```
+
+    > [!NOTE]
+    > Şablon spec kimliği alma ve ardından bunu Windows PowerShell 'de bir değişkene atama konusunda bilinen bir sorun vardır.
+
+1. Şablon belirtimini dağıtın.
+
+    ```azurecli
+    az deployment group create \
+      --resource-group storageRG \
+      --template-spec $id
+    ```
+
+1. Bir ARM şablonunda yaptığınız gibi parametreleri tam olarak sağlarsınız. Şablon belirtimini depolama hesabı türü için bir parametre ile yeniden dağıtın.
+
+    ```azurecli
+    az deployment group create \
+      --resource-group storageRG \
+      --template-spec $id \
+      --parameters storageAccountType='Standard_GRS'
+    ```
+
+# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
 
 1. Aşağıdaki şablonu kopyalayın ve **storage.js**adlı bir dosyaya yerel olarak kaydedin.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {},
-       "functions": [],
-       "variables": {},
-       "resources": [
-           {
-               "type": "Microsoft.Resources/deployments",
-               "apiVersion": "2020-06-01",
-               "name": "demo",
-               "properties": {
-                   "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
-                   },
-                   "parameters": {
-                   },
-                   "mode": "Incremental"
-               }
-           }
-       ],
-       "outputs": {}
-   }
-   ```
+    ```json
+       {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "functions": [],
+      "variables": {},
+      "resources": [
+        {
+          "type": "Microsoft.Resources/deployments",
+          "apiVersion": "2020-06-01",
+          "name": "demo",
+          "properties": {
+            "templateLink": {
+              "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+            },
+            "parameters": {
+            },
+            "mode": "Incremental"
+          }
+        }
+      ],
+      "outputs": {}
+    }
+    ```
 
 1. Depolama hesabı için yeni bir kaynak grubu oluşturmak üzere Azure CLı veya PowerShell 'i kullanın.
 
-   ```azurecli
-   az group create \
-     --name storageRG \
-     --location westus2
-   ```
+    ```azurepowershell
+    New-AzResourceGroup `
+      -Name storageRG `
+      -Location westus2
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroup `
-     -Name storageRG `
-     -Location westus2
-   ```
+    ```azurecli
+    az group create \
+      --name storageRG \
+      --location westus2
+    ```
 
 1. Azure CLı veya PowerShell ile şablonunuzu dağıtın.
 
-   ```azurecli
-   az deployment group create \
-     --name storageRG \
-     --template-file "c:\Templates\storage.json"
-   ```
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -ResourceGroupName storageRG `
+      -TemplateFile "c:\Templates\storage.json"
+    ```
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-     -ResourceGroupName storageRG `
-     -TemplateFile "c:\Templates\storage.json"
-   ```
+    ```azurecli
+    az deployment group create \
+      --name storageRG \
+      --template-file "c:\Templates\storage.json"
+    ```
 
 ---
 

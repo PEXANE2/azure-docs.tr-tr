@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852795"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936138"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Örnek: Python kullanarak özel bir yetenek oluşturma
 
@@ -26,12 +26,12 @@ Bu Azure Bilişsel Arama Beceri örneğinde, Python ve Visual Studio Code kullan
 
 + Özel bir yeteneğin uygulanması gereken giriş/çıkış arabirimine giriş için [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) gözden geçirin.
 
-+ Ortamınızı ayarlayın. [Bu öğreticiyi](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) , Visual Studio Code ve Python uzantıları kullanarak sunucusuz Azure işlevini ayarlamaya yönelik uçtan uca izliyoruz. Öğretici, aşağıdaki araçların ve bileşenlerin yüklenmesine kılavuzluk eden bir yol gösterir: 
++ Ortamınızı ayarlayın. [Bu öğreticiyi](/azure/python/tutorial-vs-code-serverless-python-01) , Visual Studio Code ve Python uzantıları kullanarak sunucusuz Azure işlevini ayarlamaya yönelik uçtan uca izliyoruz. Öğretici, aşağıdaki araçların ve bileşenlerin yüklenmesine kılavuzluk eden bir yol gösterir: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Visual Studio Code için Azure İşlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
@@ -270,5 +270,5 @@ Tebrikler! İlk özel becerinizi oluşturdunuz. Artık kendi özel işlevsellikl
 + [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

@@ -2,15 +2,16 @@
 title: Azure Application Insights ile ilgili sorunları ve özel durumları tanılama
 description: ASP.NET uygulamalarından gelen özel durumları, istek telemetriyle birlikte yakalayın.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321369"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936512"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile Web uygulamalarınızda özel durumları tanılama
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile web uygulamalarınızda özel durumları tanılama
 Canlı Web uygulamanızdaki özel durumlar [Application Insights](./app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.
 
 ## <a name="set-up-exception-reporting"></a>Özel durum raporlamayı ayarlama
@@ -91,7 +92,7 @@ Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı aç
 * [Microsoft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)öğesini çağırmak için uygulamanıza kod ekleyin. POST verilerini ileti parametresine gönderin. İzin verilen boyut sınırı vardır. bu nedenle yalnızca gerekli verileri göndermeye çalışırsınız.
 * Başarısız bir isteği araştırdığınızda, ilişkili izlemeleri bulun.
 
-## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Özel durumları ve ilgili tanılama verilerini yakalama
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Özel durumları ve ilgili tanılama verilerini yakalama
 İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](./javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
 Seçenekleriniz şunlardır:

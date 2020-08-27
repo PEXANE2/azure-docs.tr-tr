@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544650"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935594"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Kaynak kullanımını öğrenmek için modelinizin profilini yapın
 
@@ -36,6 +36,9 @@ Modelinizin profilini oluşturmanız için şunlar gerekir:
 
 > [!IMPORTANT]
 > Bu noktada, yalnızca istek verilerinin dize olmasını bekleyen hizmetlerin profilini oluşturmayı destekliyoruz, örneğin: dize serileştirilmiş JSON, metin, dize serileştirilmiş görüntü, vb. Veri kümesinin (dize) her satırının içeriği HTTP isteğinin gövdesine konur ve Puanlama için modeli kapsüllemek için hizmete gönderilir.
+
+> [!IMPORTANT]
+> Yalnızca ChinaEast2 ve USGovArizona bölgesinde 2 adede kadar CPU profili oluşturmayı destekliyoruz.
 
 Aşağıda, gelen istek verilerinin serileştirilmiş JSON içermesini bekleyen bir hizmetin profilini oluşturmak için bir giriş veri kümesi nasıl oluşturabileceğiniz hakkında bir örnek verilmiştir. Bu durumda, aynı istek verisi içeriğine sahip bir veri kümesi tabanlı 100 örnekleri oluşturduk. Gerçek dünyada senaryolarda, özellikle model kaynak kullanımınız/davranışı girişe bağımlıysa, çeşitli girişler içeren daha büyük veri kümeleri kullanmanızı öneririz.
 
@@ -127,9 +130,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
-* [Web hizmetini Güncelleştir](how-to-deploy-update-web-service.md)
+* [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

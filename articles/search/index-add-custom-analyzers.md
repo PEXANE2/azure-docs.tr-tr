@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9f8b02d8821c76b2a7766f35244834934db1d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511407"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935917"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına özel çözümleyiciler ekleme
 
@@ -51,9 +51,9 @@ ms.locfileid: "86511407"
 
  Çözümleyici tanımı, bir ad, tür, bir veya daha fazla karakter filtresi, en fazla bir Simgeleştirici ve simgeleştirme sonrası işleme için bir veya daha fazla belirteç filtresi içerir. Karakter dosyasıları simgeleştirme öncesinde uygulanır. Belirteç filtreleri ve karakter filtreleri soldan sağa uygulanır.
 
- , `tokenizer_name` Bir Tokenizer 'ın adıdır `token_filter_name_1` ve `token_filter_name_2` belirteç filtrelerinin adlarıdır ve `char_filter_name_1` `char_filter_name_2` karakter filtrelerinin adlarıdır (bkz. geçerli değerler için belirteç [Filtreleyicileri](#Tokenizers), [belirteç filtreleri](#TokenFilters) ve karakter filtreleri tabloları).
+ , `tokenizer_name` Bir Tokenizer 'ın adıdır `token_filter_name_1`  ve `token_filter_name_2` belirteç filtrelerinin adlarıdır ve `char_filter_name_1` `char_filter_name_2` karakter filtrelerinin adlarıdır (bkz. geçerli değerler için belirteç [Filtreleyicileri](#Tokenizers), [belirteç filtreleri](#TokenFilters) ve karakter filtreleri tabloları).
 
-Çözümleyici tanımı, daha büyük dizinin bir parçasıdır. Dizinin geri kalanı hakkında bilgi için bkz. [Dizin oluşturma API 'si](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Çözümleyici tanımı, daha büyük dizinin bir parçasıdır. Dizinin geri kalanı hakkında bilgi için bkz. [Dizin oluşturma API 'si](/rest/api/searchservice/create-index) .
 
 ```
 "analyzers":(optional)[
@@ -133,7 +133,7 @@ Karakter filtreleri, simgeler ve belirteç filtreleri için tanımlar, yalnızca
 
 ## <a name="test-custom-analyzers"></a>Özel Çözümleyicileri test et
 
-Bir çözümleyici 'nin metin olarak belirteçlere nasıl bölüneceğini görmek için [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) **Test çözümleyici işlemini** kullanabilirsiniz.
+Bir çözümleyici 'nin metin olarak belirteçlere nasıl bölüneceğini görmek için [REST API](/rest/api/searchservice/test-analyzer) **Test çözümleyici işlemini** kullanabilirsiniz.
 
 **İstek**
 ```
@@ -302,7 +302,7 @@ Aşağıdaki tabloda, Apache Lucene kullanılarak uygulanan simgeleyiciler, Luce
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**Açıklama ve Seçenekler**|  
 |-|-|-|  
-|[Klasik](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Çoğu Avrupa dilinde belgeyi işlemeye uygun, dilbilgisi tabanlı Simgeleştirici.<br /><br /> **Seçenekler**<br /><br /> maxTokenLength (tür: int)-en büyük belirteç uzunluğu. Varsayılan: 255, en fazla: 300. Uzunluk üst sınırından daha uzun belirteçler bölünür.|  
+|[klasik](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Çoğu Avrupa dilinde belgeyi işlemeye uygun, dilbilgisi tabanlı Simgeleştirici.<br /><br /> **Seçenekler**<br /><br /> maxTokenLength (tür: int)-en büyük belirteç uzunluğu. Varsayılan: 255, en fazla: 300. Uzunluk üst sınırından daha uzun belirteçler bölünür.|  
 |[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Bir kenara ait girişi, verilen boyut (lar) ın n-gram sayısına göre simgeleştirir.<br /><br /> **Seçenekler**<br /><br /> minGram (tür: int)-varsayılan: 1, maksimum: 300.<br /><br /> maxGram (tür: int)-varsayılan: 2, maksimum: 300. MinGram 'dan büyük olmalıdır.<br /><br /> belirteçlerde saklanacak tokenChars (tür: dize dizisi)-karakter sınıfları. İzin verilen değerler: <br />"Letter", "digit", "Whitespace", "noktalama", "Symbol". Varsayılan olarak boş bir dizi-tüm karakterleri tutar. |  
 |[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Tüm girişi tek bir belirteç olarak yayar.<br /><br /> **Seçenekler**<br /><br /> maxTokenLength (tür: int)-en büyük belirteç uzunluğu. Varsayılan: 256, en fazla: 300. Uzunluk üst sınırından daha uzun belirteçler bölünür.|  
 |[harfin](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(tür yalnızca seçenekler kullanılabilir olduğunda geçerlidir)  |Metni mektupsız böler. 255 karakterden uzun belirteçler bölünür.|  
@@ -331,7 +331,7 @@ Aşağıdaki tabloda, Apache Lucene kullanılarak uygulanan belirteç filtreleri
 |[yokıifolding](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html)|AsciiFoldingTokenFilter|İlk 127 ASCII karakterden ("temel Latin" Unicode bloğu) olmayan alfabetik, sayısal ve sembolik Unicode karakterlerini, varsa ASCII eşdeğerlerine dönüştürür.<br /><br /> **Seçenekler**<br /><br /> Preserveorijinali (tür: bool)-true Ise, özgün belirteç tutulur. Varsayılan değer false.|  
 |[cjk_bigram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/cjk/CJKBigramFilter.html)|CjkBigramTokenFilter|StandardTokenizer 'dan oluşturulan CJK terimlerin bıgram sayısını oluşturur.<br /><br /> **Seçenekler**<br /><br /> ignoreScripts (tür: dize dizisi)-yoksayılacak betikler. İzin verilen değerler şunlardır: "Han", "Hiragana", "Katakana", "Hangul". Varsayılan değer boş bir liste.<br /><br /> Outputunigram (Type: bool)-hem unigram hem de bigram için her zaman çıkış yapmak istiyorsanız true olarak ayarlayın. Varsayılan değer false.|  
 |[cjk_width](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/cjk/CJKWidthFilter.html)|(tür yalnızca seçenekler kullanılabilir olduğunda geçerlidir)  |CJK genişlik farklarını normalleştirir. Tam genişlik ASCII varyantlarını eşdeğer temel Latin ve yarı genişlikte katakana çeşitlerine eşit kana ile katlayın. |  
-|[Klasik](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(tür yalnızca seçenekler kullanılabilir olduğunda geçerlidir)  |Ingilizce sahip olan ve kısaltmalardan oluşan noktaları ortadan kaldırır. |  
+|[klasik](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(tür yalnızca seçenekler kullanılabilir olduğunda geçerlidir)  |Ingilizce sahip olan ve kısaltmalardan oluşan noktaları ortadan kaldırır. |  
 |[common_grams](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/commongrams/CommonGramsFilter.html)|CommonGramTokenFilter|Dizin oluşturma sırasında sık karşılaşılan koşullar için bigram oluşturun. Tek terimler hala dizine eklenmiş bir şekilde dizinlenir.<br /><br /> **Seçenekler**<br /><br /> commonWords (tür: dize dizisi)-ortak sözcükler kümesi. Varsayılan değer boş bir liste. Gereklidir.<br /><br /> IgnoreCase (tür: bool)-true Ise, eşleşme büyük/küçük harfe duyarsızdır. Varsayılan değer false.<br /><br /> queryMode (tür: bool)-çoklu gram oluşturur ve ardından ortak bir sözcük gelen ortak kelimeleri ve tek terimleri kaldırır. Varsayılan değer false.|  
 |[dictionary_decompounder](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/compound/DictionaryCompoundWordTokenFilter.html)|DictionaryDecompounderTokenFilter|Birçok Germanic dilinde bulunan Bileşik sözcüklerin çıkarılması.<br /><br /> **Seçenekler**<br /><br /> Sözcük türü (tür: dize dizisi)-eşleştirilecek sözcüklerin listesi. Varsayılan değer boş bir liste. Gereklidir.<br /><br /> minWordSize (tür: int)-bu alma sonrasında yalnızca daha uzun sözcükler işlenir. Varsayılan değer 5 ' tir.<br /><br /> minSubwordSize (tür: int)-yalnızca bundan daha uzun alt sözcükler silinir. Varsayılan değer 2 ' dir.<br /><br /> maxSubwordSize (tür: int)-yalnızca bundan kısa olan alt sözcükler silinir. Varsayılan değer 15’tir.<br /><br /> onlyLongestMatch (Type: bool)-çıktıyı yalnızca en uzun eşleşen alt sözcük ekleyin. Varsayılan değer false.|  
 |[edgeNGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter.html)|EdgeNGramTokenFilterV2|Verilen boyut (ler) in önüne veya bir giriş belirtecinin arkasına kadar olan n-gram üretir.<br /><br /> **Seçenekler**<br /><br /> minGram (tür: int)-varsayılan: 1, maksimum: 300.<br /><br /> maxGram (tür: int)-varsayılan: 2, maksimum 300. MinGram 'dan büyük olmalıdır.<br /><br /> SIDE (tür: dize)-n-gram öğesinin hangi tarafına oluşturulacağını belirtir. İzin verilen değerler: "ön", "geri" |  
@@ -372,6 +372,6 @@ Aşağıdaki tabloda, Apache Lucene kullanılarak uygulanan belirteç filtreleri
 
 
 ## <a name="see-also"></a>Ayrıca bkz.  
- [Azure Bilişsel Arama REST API 'Leri](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure Bilişsel Arama REST API 'Leri](/rest/api/searchservice/)   
  [Azure Bilişsel Arama > örneklerde çözümleyiciler](search-analyzers.md#examples)    
- [Azure Bilişsel Arama REST API &#40;dizin oluşturma&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Azure Bilişsel Arama REST API &#40;dizin oluşturma&#41;](/rest/api/searchservice/create-index)

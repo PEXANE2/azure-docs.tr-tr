@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080022"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935951"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Adlandırılmış varlık tanıma bilişsel yeteneği
 
@@ -32,7 +32,7 @@ ms.locfileid: "85080022"
 Microsoft. yetenekler. Text. Namedentityrecognitionbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
@@ -41,7 +41,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"` , `"Location"` , `"Organization"` . Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
-|defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir:`de, en, es, fr, it`|
+|defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `de, en, es, fr, it`|
 | minimumPrecision  | 0 ile 1 arasında bir sayı. Duyarlık bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur.|
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -81,7 +81,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
     ]
   }
 ```
-##  <a name="sample-input"></a>Örnek giriş
+##  <a name="sample-input"></a>Örnek girdi
 
 ```json
 {

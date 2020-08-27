@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290671"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935985"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
 
@@ -39,7 +39,7 @@ Bu öğretici Azure Bilişsel Arama ve Azure depolama hizmetlerini kullanır.
 
 * 19 dosyadan oluşan [örnek verileri indirin](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19) .
 
-* [Bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+* [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin.
    
@@ -258,5 +258,5 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> Becerileri hakkında daha [fazla bilgi edinin](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets) 
->  [Artımlı zenginleştirme ve önbelleğe alma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> Becerileri hakkında daha [fazla bilgi edinin](./cognitive-search-working-with-skillsets.md) 
+>  [Artımlı zenginleştirme ve önbelleğe alma hakkında daha fazla bilgi edinin](./cognitive-search-incremental-indexing-conceptual.md)

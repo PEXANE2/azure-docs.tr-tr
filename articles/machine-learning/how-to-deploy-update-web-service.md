@@ -5,12 +5,12 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 66c53c7485041ec9abaf72396efcfa3325a13732
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0c2811b6bed3d02a9689f3b9e49a4c3888dff6c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799932"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935577"
 ---
 # <a name="update-a-deployed-web-service"></a>Dağıtılmış bir Web hizmetini güncelleştirme
 
@@ -62,6 +62,7 @@ service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s).
 service.update(models=[new_model], inference_config=inference_config)
+service.wait_for_deployment(show_output=True)
 print(service.state)
 print(service.get_logs())
 ```
@@ -88,7 +89,7 @@ Daha fazla bilgi için, [az ml Service Update](https://docs.microsoft.com/cli/az
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

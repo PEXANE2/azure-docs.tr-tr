@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 description: Azure Işlevleri, çalışma zamanının birden çok sürümünü destekler. Azure 'da barındırılan bir işlev uygulamasının çalışma zamanı sürümünü belirtmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830878"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926584"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 
@@ -27,7 +27,7 @@ Yeni bir sürüm herkese açık olduğunda, portalda bir istem bu sürüme kadar
 
 Aşağıdaki tabloda, `FUNCTIONS_EXTENSION_VERSION` otomatik güncelleştirmeleri etkinleştirmek için her ana sürüm için değerler gösterilmektedir:
 
-| Ana sürüm | `FUNCTIONS_EXTENSION_VERSION`deeri |
+| Ana sürüm | `FUNCTIONS_EXTENSION_VERSION` deeri |
 | ------------- | ----------------------------------- |
 | 3.x  | `~3` |
 | 2.x  | `~2` |
@@ -42,19 +42,16 @@ Aşağıdaki tabloda, `FUNCTIONS_EXTENSION_VERSION` otomatik güncelleştirmeler
 > [!IMPORTANT]
 > Çalışma zamanı sürümü ayarı tarafından belirlendiği halde `FUNCTIONS_EXTENSION_VERSION` , ayarı doğrudan değiştirip Azure Portal bu değişikliği yapmanız gerekir. Bunun nedeni, portalın yaptığınız değişiklikleri doğrulaması ve ilgili diğer değişiklikleri gerekli hale getirir.
 
-### <a name="from-the-azure-portal"></a>Azure portalından
+# <a name="portal"></a>[Portal](#tab/portal)
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
 > Azure portal kullanarak, zaten işlevleri bulunan bir işlev uygulamasının çalışma zamanı sürümünü değiştiremezsiniz.
 
-### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Azure CLı 'dan
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Ayrıca, Azure CLı 'dan ' i görüntüleyebilir ve ayarlayabilirsiniz `FUNCTIONS_EXTENSION_VERSION` .
-
->[!NOTE]
->Diğer ayarlar çalışma zamanı sürümünden etkilenbileceğinden, portalda sürümü değiştirmelisiniz. Portal, çalışma zamanı sürümlerini değiştirdiğinizde Node.js sürümü ve çalışma zamanı yığını gibi diğer gerekli güncelleştirmeleri otomatik olarak yapar.  
+Ayrıca, Azure CLı 'dan ' i görüntüleyebilir ve ayarlayabilirsiniz `FUNCTIONS_EXTENSION_VERSION` .  
 
 Azure CLı 'yı kullanarak, [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutuyla geçerli çalışma zamanı sürümünü görüntüleyin.
 
@@ -93,16 +90,36 @@ Bu kodda, öğesini `<function_app>` işlev uygulamanızın adıyla değiştirin
 `FUNCTIONS_EXTENSION_VERSION`İşlev uygulamasındaki ayarı [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutuyla güncelleştirebilirsiniz.
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group <my_resource_group> \
---settings FUNCTIONS_EXTENSION_VERSION=<version>
+az functionapp config appsettings set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--settings FUNCTIONS_EXTENSION_VERSION=<VERSION>
 ```
 
-`<function_app>`İşlev uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , işlev uygulamanız için kaynak grubunun adıyla değiştirin. Ayrıca, `<version>` 1. x çalışma zamanının veya `~2` sürüm 2. x için geçerli bir sürümle değiştirin.
+`<FUNCTION_APP>`İşlev uygulamanızın adıyla değiştirin. Ayrıca `<RESOURCE_GROUP>` , işlev uygulamanız için kaynak grubunun adıyla değiştirin. Ayrıca, öğesini `<VERSION>` belirli bir sürümle veya, ya da ile değiştirin `~3` `~2` `~1` .
 
 Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+Azure Işlevleri çalışma zamanını denetlemek için aşağıdaki cmdlet 'i kullanın: 
+
+```powershell
+Get-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>"
+```
+
+`<FUNCTION_APP>`İşlev uygulamanızın adıyla değiştirin `<RESOURCE_GROUP>` . Ayarın geçerli değeri, `FUNCTIONS_EXTENSION_VERSION` karma tablosunda döndürülür.
+
+Işlevler çalışma zamanını değiştirmek için aşağıdaki betiği kullanın:
+
+```powershell
+Update-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE_GROUP>" -AppSetting @{"FUNCTIONS_EXTENSION_VERSION" = "<VERSION>"} -Force
+```
+
+Daha önce olduğu gibi, `<FUNCTION_APP>` işlev uygulamanızın adıyla ve `<RESOURCE_GROUP>` kaynak grubunun adıyla değiştirin. Ayrıca, ya da gibi `<VERSION>` belirli bir sürüm veya ana sürümle değiştirin `~2` `~3` . `FUNCTIONS_EXTENSION_VERSION`Döndürülen karma tablosunda ayarının güncelleştirilmiş değerini doğrulayabilirsiniz. 
+
+---
+
+İşlev uygulaması, uygulama ayarında değişiklik yapıldıktan sonra yeniden başlatılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,26 +9,26 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076409"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936716"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Yönetim SDK 'sının sürümlerini yükseltme
 
 Bu makalede, arama hizmetlerinin sağlanması veya sağlanması, kapasiteyi ayarlamak ve API anahtarlarını yönetmek için kullanılan Azure Search .NET Yönetim SDK 'sının birbirini izleyen sürümlerine nasıl geçiş yapılacağı açıklanır.
 
-Yönetim SDK 'Ları, yönetim REST API 'nin belirli bir sürümünü hedeflemelidir. Kavramlar ve işlemler hakkında daha fazla bilgi için bkz. [Arama Yönetimi (REST)](https://docs.microsoft.com/rest/api/searchmanagement/).
+Yönetim SDK 'Ları, yönetim REST API 'nin belirli bir sürümünü hedeflemelidir. Kavramlar ve işlemler hakkında daha fazla bilgi için bkz. [Arama Yönetimi (REST)](/rest/api/searchmanagement/).
 
 ## <a name="versions"></a>Sürümler
 
 | SDK sürümü | Karşılık gelen REST API sürümü | Özellik ekleme veya davranış değişikliği |
 |-------------|--------------------------------|-------------------------------------|
-| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-Version = 2019-10-01 | Kullanılabilirlik geliştirmeleri. [Liste sorgu anahtarlarında](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) Son değişiklik (Get kullanımdan kaldırılmıştır). |
-| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-Version = 2019-10-01 | Kullanılabilirlik geliştirmeleri. [Liste sorgu anahtarlarında](/rest/api/searchmanagement/querykeys/listbysearchservice) Son değişiklik (Get kullanımdan kaldırılmıştır). |
+| [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
 
 ## <a name="how-to-upgrade"></a>Yükseltme
 
@@ -48,21 +48,21 @@ Sürüm 3,0, IP aralıklarına erişimi kısıtlayarak ve isteğe bağlı olarak
 
 | API | Kategori| Ayrıntılar |
 |-----|--------|------------------|
-| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP güvenlik duvarı | Bir hizmet uç noktasına erişimi izin verilen IP adresleri listesine kısıtlama. Bkz. kavramlar ve Portal yönergeleri için [IP güvenlik duvarını yapılandırma](service-configure-firewall.md) . |
-| [Paylaşılan özel bağlantı kaynağı](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Özel Bağlantı | Bir arama hizmeti tarafından kullanılacak paylaşılan bir özel bağlantı kaynağı oluşturun.  |
-| [Özel uç nokta bağlantıları](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Özel Bağlantı | Özel uç nokta aracılığıyla bir arama hizmetine bağlantılar oluşturun ve yönetin. Kavramlar ve Portal yönergeleri için [Özel uç nokta oluşturma](service-create-private-endpoint.md) konusuna bakın.|
-| [Özel bağlantı kaynakları](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Özel Bağlantı | Özel bir uç noktası bağlantısına sahip bir arama hizmeti için, aynı sanal ağda kullanılan tüm hizmetlerin bir listesini alın. Arama Çözümünüz Azure veri kaynaklarından (Azure Storage, Cosmos DB, Azure SQL) çekenler veya bilişsel hizmetler veya Key Vault kullanıyorsa, bu kaynakların tümünde sanal ağda uç noktalar olmalıdır ve bu API bir liste döndürmelidir. |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Özel Bağlantı | Bu, oluşturma veya güncelleştirme hizmeti istekleri üzerindeki bir özelliktir. Devre dışı bırakıldığında, özel bağlantı tek erişim modülüdir. |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP güvenlik duvarı | Bir hizmet uç noktasına erişimi izin verilen IP adresleri listesine kısıtlama. Bkz. kavramlar ve Portal yönergeleri için [IP güvenlik duvarını yapılandırma](service-configure-firewall.md) . |
+| [Paylaşılan özel bağlantı kaynağı](/rest/api/searchmanagement/sharedprivatelinkresources) | Özel Bağlantı | Bir arama hizmeti tarafından kullanılacak paylaşılan bir özel bağlantı kaynağı oluşturun.  |
+| [Özel uç nokta bağlantıları](/rest/api/searchmanagement/privateendpointconnections) | Özel Bağlantı | Özel uç nokta aracılığıyla bir arama hizmetine bağlantılar oluşturun ve yönetin. Kavramlar ve Portal yönergeleri için [Özel uç nokta oluşturma](service-create-private-endpoint.md) konusuna bakın.|
+| [Özel bağlantı kaynakları](/rest/api/searchmanagement/privatelinkresources/) | Özel Bağlantı | Özel bir uç noktası bağlantısına sahip bir arama hizmeti için, aynı sanal ağda kullanılan tüm hizmetlerin bir listesini alın. Arama Çözümünüz Azure veri kaynaklarından (Azure Storage, Cosmos DB, Azure SQL) çekenler veya bilişsel hizmetler veya Key Vault kullanıyorsa, bu kaynakların tümünde sanal ağda uç noktalar olmalıdır ve bu API bir liste döndürmelidir. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Özel Bağlantı | Bu, oluşturma veya güncelleştirme hizmeti istekleri üzerindeki bir özelliktir. Devre dışı bırakıldığında, özel bağlantı tek erişim modülüdir. |
 
 ### <a name="breaking-changes"></a>Yeni değişiklikler
 
-Artık bir [liste sorgu anahtarları](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) ISTEğI için Al ' i kullanamazsınız. Önceki sürümlerde, bu yayında Al veya postala ' yı kullanabilirsiniz. bu sürümde, tüm yayınlar ileri taşınır, yalnızca GÖNDERI desteklenir. 
+Artık bir [liste sorgu anahtarları](/rest/api/searchmanagement/querykeys/listbysearchservice) ISTEğI için Al ' i kullanamazsınız. Önceki sürümlerde, bu yayında Al veya postala ' yı kullanabilirsiniz. bu sürümde, tüm yayınlar ileri taşınır, yalnızca GÖNDERI desteklenir. 
 
 ## <a name="upgrade-to-20"></a>2,0 sürümüne yükselt
 
 Azure Search .NET Yönetim SDK 'sının 2. sürümü küçük bir yükseltmedir, bu nedenle kodunuzun değiştirilmesi yalnızca en az çaba gerektirir. SDK 'nın üzerinde yapılan değişiklikler, SDK 'nın kullanılabilirliğini geliştirmek için kesinlikle istemci tarafı değişikliklerdir. Bu değişiklikler şunları içerir:
 
-* `Services.CreateOrUpdate`ve zaman uyumsuz sürümleri artık sağlamayı otomatik olarak `SearchService` yoklamıştır ve hizmet sağlama tamamlanana kadar geri dönmez. Bu, sizi bir tür yoklama kodu yazmak zorunda kalmanızı sağlar.
+* `Services.CreateOrUpdate` ve zaman uyumsuz sürümleri artık sağlamayı otomatik olarak `SearchService` yoklamıştır ve hizmet sağlama tamamlanana kadar geri dönmez. Bu, sizi bir tür yoklama kodu yazmak zorunda kalmanızı sağlar.
 
 * Hizmet sağlamayı hala el ile yoklamak istiyorsanız yeni `Services.BeginCreateOrUpdate` yöntemini veya zaman uyumsuz sürümlerinden birini kullanabilirsiniz.
 

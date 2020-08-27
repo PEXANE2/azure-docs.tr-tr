@@ -4,12 +4,12 @@ description: Fiziksel sunucu değerlendirmesi için bir Azure geçişi gereci ay
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b4e875a81c92f74cd7d2db96cf1c313157297eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331789"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923591"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
@@ -26,21 +26,29 @@ Azure geçişi gereci hakkında [daha fazla bilgi edinin](migrate-appliance.md) 
 ## <a name="appliance-deployment-steps"></a>Gereç dağıtım adımları
 
 Gereci kurmak için şunları yapın:
+- Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
 - Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
 - Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
 - Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi ile kaydedin.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
 
-## <a name="download-the-installer-script"></a>Yükleyici betiğini indir
+### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-Gereç için daraltılmış dosyayı indirin.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
+3. **1: Azure geçişi proje anahtarı oluşturma**' da, Azure geçiş gereci için fiziksel veya sanal sunucu keşfi için ayarladığınız bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
+1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
-3. Sıkıştırılmış dosyayı indirmek için **İndir** ' e tıklayın.
+### <a name="download-the-installer-script"></a>Yükleyici betiğini indir
 
-    ![VM 'yi indir](./media/tutorial-assess-physical/download-appliance.png)
+**2: Azure geçişi yükleme gereci indirin**ve **İndir**' e tıklayın.
 
+   ![Bulma makineleri için seçimler](./media/tutorial-assess-physical/servers-discover.png)
+
+
+   ![Anahtar oluştur seçimleri](./media/tutorial-assess-physical/generate-key-physical.png)
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -49,22 +57,10 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Kamu Bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  En son gereç sürümünü ve karma değerlerini doğrulayın:
+    - Genel bulut için örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
+    - Kamu Bulutu için örnek kullanım: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  En son gereç sürümünü ve karma değerleri [ayarlarını](./tutorial-assess-physical.md#verify-security)doğrulayın.
  
-    - Genel bulut için:
-
-        **Senaryo** | **İndirme*** | **Karma değeri**
-        --- | --- | ---
-        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-    - Azure Kamu için:
-
-        **Senaryo** | **İndirme*** | **Karma değeri**
-        --- | --- | ---
-        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
 Yükleyici betiği şunları yapar:
@@ -84,8 +80,12 @@ Betiği aşağıdaki gibi çalıştırın:
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasör olarak değiştirin.
 4. Aşağıdaki komutu çalıştırarak **AzureMigrateInstaller.ps1** adlı betiği çalıştırın:
 
-    - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
-    - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+    - Genel bulut için: 
+    
+        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
+    - Azure Kamu için: 
+    
+        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 
     Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır.
 
@@ -97,48 +97,58 @@ Herhangi bir sorun yaşıyorsanız, sorun giderme için C:\ProgramData\Microsoft
 
 Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-## <a name="configure-the-appliance"></a>Gereci yapılandırma
+### <a name="configure-the-appliance"></a>Gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 
-1. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
+1. Gereç ile bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
    Alternatif olarak, uygulama kısayoluna tıklayarak uygulamayı masaüstünden açabilirsiniz.
-2. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
-    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
-    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
+2. **Lisans koşullarını**kabul edin ve üçüncü taraf bilgilerini okuyun.
+1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
+    - **Bağlantı**: uygulama, sunucunun internet erişimi olup olmadığını denetler. Sunucu bir proxy kullanıyorsa:
+        - Proxy 'yi **Ayarla** ' ya tıklayın ve proxy adresini (form http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında) belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
-    - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
-    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler.
+        - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
+    - **Zaman eşitleme**: Saat doğrulandı. Sunucu bulmanın düzgün çalışması için gereç saatinin internet ile eşitlenmiş olması gerekir.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
-    - Kullanıcı adınızla ve parolanızla oturum açın.
-    - PIN ile oturum açma desteklenmez.
-3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
-4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
-5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-6. **Kaydet**’e tıklayın.
+1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
+1. **Oturum**aç ' a tıklayın. Yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açar. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+1. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+   
+   PIN ile oturum açma desteklenmez.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün. 
+4. Günlüğe kaydetme için kullanılan Azure Kullanıcı hesabının, anahtar üretimi sırasında oluşturulan Azure kaynakları üzerinde doğru [izinleri](tutorial-prepare-physical.md) varsa, Gereç kaydı başlatılır.
+1. Gereç başarıyla kaydedildikten sonra, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
 
 
 ## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
 
-Gerecden fiziksel sunuculara bağlanın ve bulmayı başlatın.
+Şimdi, gerecden keşfedilecek fiziksel sunuculara bağlanın ve bulmayı başlatın.
 
-1. Gerecin sunucuları keşfetme için kullanacağı hesap kimlik bilgilerini belirtmek için **kimlik bilgileri ekle** ' ye tıklayın.  
-2. **Işletim sistemini**, kimlik bilgileri için kolay bir adı ve Kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
-Her biri Windows ve Linux sunucuları için bir kimlik bilgileri kümesi ekleyebilirsiniz.
-4. Sunucuya bağlanmak için sunucu **Ekle**' ye tıklayın ve sunucu ayrıntılarını BELIRTIN-FQDN/IP adresi ve kimlik bilgilerinin kolay adı (satır başına bir giriş).
-3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
-    - Bir sunucu için doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
-    - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
-4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
+1. **1. Adım: Windows ve Linux fiziksel veya sanal sunucularının bulunması için kimlik bilgilerini sağlayın**, kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, bir Windows veya Linux sunucusu Için **Kullanıcı adı** ve **parola** ekleyin. **Kaydet**'e tıklayın.
+1. Aynı anda birden çok kimlik bilgisi eklemek istiyorsanız, kaydetmek için **daha fazla Ekle** ' ye tıklayın ve daha fazla kimlik bilgisi ekleyin. Fiziksel sunucular bulma için birden çok kimlik bilgisi desteklenir.
+1. **2. Adım: fiziksel veya sanal sunucu ayrıntılarını sağlayın**sayfasında **bulma kaynağı Ekle** ' ye tıklayarak sunucu **IP adresini/FQDN** 'yi ve sunucuya bağlanacak kimlik bilgileri için kolay adı belirtin.
+1. **Tek seferde tek bir öğe ekleyebilir** veya tek bir go içinde **birden fazla öğe ekleyebilirsiniz** . Ayrıca, **Içeri aktarma CSV**aracılığıyla sunucu ayrıntılarını sağlamak için bir seçenek de vardır.
 
-Bu, bulmayı başlatır. Bulunan VM 'lerin meta verilerinde Azure portal görünmesi 15 dakika sürer.
+    ![Keşif kaynağı ekleme seçimleri](./media/tutorial-assess-physical/add-discovery-source-physical.png)
+
+    - **Tek öğe Ekle**' yi seçerseniz, işletim sistemi türünü seçebilir, kimlik bilgileri için kolay ad belirtebilir, sunucu **IP adresi/FQDN** ekleyebilir ve **Kaydet**' e tıklayabilirsiniz.
+    - **Birden çok öğe Ekle**' yi seçerseniz, metin kutusunda kimlik bilgileri için kolay ada sahip sunucu **IP adresi/FQDN** belirterek, bir kerede birden çok kayıt ekleyebilirsiniz. Eklenen kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
+    - **CSV 'Yi Içeri aktar** ' ı _(varsayılan olarak seçilidir)_ seçerseniz, bir CSV şablon dosyası Indirebilir, dosyayı sunucu **IP adresi/FQDN** ve kimlik bilgileri için kolay ad ile doldurabilirsiniz. Sonra dosyayı gereç içine aktarır, dosyadaki kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
+
+1. Kaydet ' e tıkladığınızda, Gereç eklenen sunucularla bağlantıyı doğrulamayı dener ve tablodaki **doğrulama durumunu** her bir sunucuya göre gösterir.
+    - Sunucu için doğrulama başarısız olursa, tablonun durum sütununda **doğrulama** ' ya tıklayarak hatayı gözden geçirin. Sorunu düzeltin ve tekrar doğrulayın.
+    - Bir sunucuyu kaldırmak için **Sil**' e tıklayın.
+1. Keşfi başlatmadan önce sunucularla bağlantı **yeniden doğrulayabilirsiniz** .
+1. Başarıyla doğrulanan sunucuları bulmayı **başlatmak için bulmayı Başlat**' a tıklayın. Bulma işlemi başarılı bir şekilde başlatıldıktan sonra, tablodaki her bir sunucu için bulma durumunu denetleyebilirsiniz.
+
+
+Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinin Azure portal görünmesi yaklaşık 2 dakika sürer.
 
 ## <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 

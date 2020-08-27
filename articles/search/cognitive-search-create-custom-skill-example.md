@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113809"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935492"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
 Bu örnekte, bir Web API 'SI özel yeteneği oluşturmayı öğrenin. Bu beceri konumları, genel rakamları ve kuruluşları kabul eder ve bunların açıklamalarını döndürür. Örnek, [Bing varlık arama API'si](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) özel beceri arabirimini uygulayan şekilde kaydırmak Için bir [Azure işlevi](https://azure.microsoft.com/services/functions/) kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Özel bir yeteneğin uygulaması gereken giriş/çıkış arabirimini bilmiyorsanız [özel beceri arabirimi](cognitive-search-custom-skill-interface.md) makalesi hakkında bilgi edinin.
 
@@ -481,5 +481,5 @@ Tebrikler! İlk özel becerinizi oluşturdunuz. Artık kendi özel işlevsellikl
 + [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

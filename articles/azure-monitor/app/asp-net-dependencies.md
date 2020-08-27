@@ -2,13 +2,14 @@
 title: Azure Application Insights bağımlılık Izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321386"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936546"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -16,9 +17,9 @@ ms.locfileid: "87321386"
 
 ## <a name="automatically-tracked-dependencies"></a>Otomatik olarak izlenen bağımlılıklar
 
-.NET ve .NET Core için Application Insights SDK 'Ları `DependencyTrackingTelemetryModule` , otomatik olarak bağımlılıkları toplayan bir telemetri modülüdür. Bu bağımlılık koleksiyonu, bağlantılı resmi belgelere göre yapılandırıldığında [ASP.net](./asp-net.md) ve [ASP.NET Core](./asp-net-core.md) uygulamaları için otomatik olarak etkinleştirilir. `DependencyTrackingTelemetryModule`, [Bu](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet paketi olarak sevk edilir ve NuGet paketlerinden ya da ya da ya da herhangi biri kullanılırken otomatik olarak getirilir `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
+.NET ve .NET Core için Application Insights SDK 'Ları `DependencyTrackingTelemetryModule` , otomatik olarak bağımlılıkları toplayan bir telemetri modülü olan ile birlikte gelir. Bu bağımlılık koleksiyonu, bağlantılı resmi belgelere göre yapılandırıldığında [ASP.net](./asp-net.md) ve [ASP.NET Core](./asp-net-core.md) uygulamaları için otomatik olarak etkinleştirilir. `DependencyTrackingTelemetryModule` , [Bu](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet paketi olarak sevk edilir ve NuGet paketlerinden ya da ya da ya da herhangi biri kullanılırken otomatik olarak getirilir `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
 
- `DependencyTrackingTelemetryModule`Şu anda aşağıdaki bağımlılıkları otomatik olarak izler:
+ `DependencyTrackingTelemetryModule` Şu anda aşağıdaki bağımlılıkları otomatik olarak izler:
 
 |Bağımlılıklar |Ayrıntılar|
 |---------------|-------|
@@ -122,7 +123,7 @@ Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığın
 * Bağımlılık çağrılarını denetlemek için yavaş veya başarısız olan isteklerden öğesine tıklayın.
 * [Analiz](#logs-analytics) , bağımlılık verilerini sorgulamak için kullanılabilir.
 
-## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Yavaş istekleri tanılama
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> Yavaş istekleri tanılama
 
 Her istek olayı, uygulamanız isteği işlerken bağımlılık çağrıları, özel durumlar ve izlenen diğer olaylarla ilişkilendirilir. Bu nedenle, bazı istekler hatalı çalışıyorsa, bir bağımlılıktan yavaş yanıt olup olmadığını öğrenebilirsiniz.
 
@@ -195,7 +196,19 @@ Burada, başarısız bağımlılık sayısını görebileceksiniz. Alt tablodaki
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Otomatik bağımlılık toplayıcı raporu bağımlılıklara nasıl çağrı başarısız oldu?*
 
-* Başarısız bağımlılık çağrılarında ' success ' alanı false olarak ayarlanmalıdır. `DependencyTrackingTelemetryModule`rapor etmez `ExceptionTelemetry` . Bağımlılık için tam veri modeli [burada](data-model-dependency-telemetry.md)açıklanmıştır.
+* Başarısız bağımlılık çağrılarında ' success ' alanı false olarak ayarlanmalıdır. `DependencyTrackingTelemetryModule` rapor etmez `ExceptionTelemetry` . Bağımlılık için tam veri modeli [burada](data-model-dependency-telemetry.md)açıklanmıştır.
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Bağımlılık telemetrimin alma gecikmesini hesaplamak Nasıl yaparım? mi?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Nasıl yaparım? bağımlılık çağrısının başlatıldığı saati belirlemektir mi?*
+
+Log Analytics sorgu görünümü ' nde, `timestamp` bağımlılık çağrısı yanıtı alındıktan hemen sonra gerçekleşen trackdependency () çağrısının başlatıldığı süre temsil eder. Bağımlılık çağrısının başladığı saati hesaplamak için, `timestamp` bağımlılık çağrısının kaydedilmesini alıp çıkarabilirsiniz `duration` .
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık kaynaktır. [Resmi GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)deposunda kodu okuyun ve katkıda bulunun veya sorunları raporla.

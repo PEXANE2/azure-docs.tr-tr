@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214027"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935373"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI zenginleştirilmiş alanları aranabilir bir dizinle eşleme
 
@@ -32,7 +32,7 @@ Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş 
 * Bir beceri yok ancak Cosmos DB veritabanından karmaşık bir tür dizinleniyor. Bu karmaşık türdeki bir düğüme ulaşmak ve dizininizdeki bir alanla eşlemek istersiniz.
 
 > [!NOTE]
-> Son zamanlarda çıkış alanı eşlemelerinde işlevleri eşleme işlevlerini etkinleştirdik. Eşleme işlevleri hakkında daha fazla bilgi için bkz. [alan eşleme işlevleri](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
+> Son zamanlarda çıkış alanı eşlemelerinde işlevleri eşleme işlevlerini etkinleştirdik. Eşleme işlevleri hakkında daha fazla bilgi için bkz. [alan eşleme işlevleri](./search-indexer-field-mappings.md#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanma
 

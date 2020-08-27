@@ -3,12 +3,13 @@ title: Sohbet bot 'ta kişiselleştirici kullanma-kişiselleştirici
 description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirici döngüsüyle bir C# .NET Chat bot 'ı özelleştirin.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131676"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935662"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma
 
@@ -191,7 +192,7 @@ Web sitesini çalışır durumda tutun çünkü öğretici, bot 'ın ne yaptığ
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Bot öykünücüsünde bot 'ı kullanma
 
 1. Yazarak menüyü görmeyi isteyin `I would like to see the menu` . Sohbet bot öğeleri görüntüler.
-1. Bir öğeyi öykünücüyü girerek bir öğe önermesine olanak sağlamak için `Please suggest a drink for me.` , tam JSON 'u görebilmeniz için, sohbet penceresinde derecelendirme isteğini ve yanıtı görüntüler. Ve bot, şunun gibi bir öneri sağlar`How about Latte?`
+1. Bir öğeyi öykünücüyü girerek bir öğe önermesine olanak sağlamak için `Please suggest a drink for me.` , tam JSON 'u görebilmeniz için, sohbet penceresinde derecelendirme isteğini ve yanıtı görüntüler. Ve bot, şunun gibi bir öneri sağlar `How about Latte?`
 1. Bu, kişiselleştirici tarafından kullanılan en üst dereceli seçimi kabul ettiğiniz anlamına gelir `I like it.` . öykünücü, sohbet penceresinde yeniden ödül isteği 1 ' i ve yanıt olarak görüntüler, böylece tam JSON 'yi görebilirsiniz. `That’s great! I’ll keep learning your preferences over time.`Ve bot ile yanıt verir`Would you like to get a new suggestion or reset the simulated context to a new day?`
 
     `no`' İ seçimle karşılaşırsanız, 0 ' ın ödül puanı kişiselleştiriciye gönderilir.
@@ -201,9 +202,9 @@ Web sitesini çalışır durumda tutun çünkü öğretici, bot 'ın ne yaptığ
 
 .NET çözümü basit bir bot Framework sohbet bot. Kişiselleştirici ile ilgili kod şu klasörleridir:
 * `/samples/ChatbotExample/Bots`
-    * `PersonalizerChatbot.cs`bot ve kişiselleştirici arasındaki etkileşimin dosyası
-* `/samples/ChatbotExample/ReinforcementLearning`-kişiselleştirici modeli için eylemleri ve özellikleri yönetir
-* `/samples/ChatbotExample/Model`-kişiselleştirici eylemleri ve özellikleri için ve Lua amaçları için dosyalar
+    * `PersonalizerChatbot.cs` bot ve kişiselleştirici arasındaki etkileşimin dosyası
+* `/samples/ChatbotExample/ReinforcementLearning` -kişiselleştirici modeli için eylemleri ve özellikleri yönetir
+* `/samples/ChatbotExample/Model` -kişiselleştirici eylemleri ve özellikleri için ve Lua amaçları için dosyalar
 
 ### <a name="personalizerchatbotcs---working-with-personalizer"></a>PersonalizerChatbot.cs-kişiselleştirici ile çalışma
 

@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dee6b0b1635880fb50b8d35f1f91ad2bce569cff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74158184"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928488"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Hızlı başlangıç: ASP.NET ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -24,7 +25,7 @@ Bu hızlı başlangıçta, benzer bir [sohbet odası uygulaması](./signalr-quic
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
@@ -62,7 +63,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
 
 1. Birincil bağlantı dizesini seçerek kopyalayın.
 
-1. Şimdi Web. config dosyasında bağlantı dizesini ayarlayın.
+1. Şimdi web.config dosyasında bağlantı dizesini ayarlayın.
 
     ```xml
     <configuration>
@@ -73,7 +74,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
     </configuration>
     ```
 
-1. *Startup.cs*' de, çağırmak `MapSignalR()`yerine, uygulamanın kendi kendine bir `MapAzureSignalR({your_applicationName})` SignalR barındırmak yerine hizmete bağlanmasını sağlamak için bağlantı dizesini çağırmanız ve geçirmeniz gerekir. Uygulamanızın `{YourApplicationName}` adıyla değiştirin. Bu ad, bu uygulamayı diğer uygulamalarınızdan ayırt etmek için benzersiz bir addır. Değer `this.GetType().FullName` olarak ' i kullanabilirsiniz.
+1. *Startup.cs*' de, çağırmak yerine `MapSignalR()` , `MapAzureSignalR({your_applicationName})` uygulamanın kendi kendine bir SignalR barındırmak yerine hizmete bağlanmasını sağlamak için bağlantı dizesini çağırmanız ve geçirmeniz gerekir. `{YourApplicationName}`Uygulamanızın adıyla değiştirin. Bu ad, bu uygulamayı diğer uygulamalarınızdan ayırt etmek için benzersiz bir addır. Değer olarak ' i kullanabilirsiniz `this.GetType().FullName` .
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -92,7 +93,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
     Bu değişiklikler dışında, diğer her şey aynı kalır, iş mantığını yazmak için zaten bildiğiniz hub arabirimini kullanmaya devam edebilirsiniz.
 
     > [!NOTE]
-    > Uygulamada, bir uç nokta `/signalr/negotiate` Azure SignalR HIZMETI SDK 'sı tarafından anlaşmaya sunuldu. İstemciler bağlanmayı ve bağlantı dizesinde tanımlanan hizmet uç noktasına yeniden yönlendirmeyi denediğinde, özel bir anlaşma yanıtı döndürür.
+    > Uygulamada, bir uç nokta `/signalr/negotiate` Azure SignalR hizmeti SDK 'sı tarafından anlaşmaya sunuldu. İstemciler bağlanmayı ve bağlantı dizesinde tanımlanan hizmet uç noktasına yeniden yönlendirmeyi denediğinde, özel bir anlaşma yanıtı döndürür.
 
 1. Projeyi hata ayıklama modunda çalıştırmak için **F5** tuşuna basın. Uygulamanın yerel olarak çalıştığını görebilirsiniz. Bir SignalR çalışma zamanını uygulamanın kendisi için barındırmak yerine artık Azure SignalR hizmetine bağlanır.
 

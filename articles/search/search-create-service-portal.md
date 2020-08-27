@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554031"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927128"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -41,7 +41,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 
@@ -96,7 +96,7 @@ Azure Bilişsel Arama çoğu bölgede kullanılabilir. Desteklenen bölgelerin l
 
  AI zenginleştirme kullanıyorsanız, arama hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
 
- İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
+ İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](../best-practices-availability-paired-regions.md#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
 
 ### <a name="recommendations"></a>Öneriler
 
@@ -160,7 +160,7 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 
 Müşterilerin çoğu yalnızca bir hizmet kullansa da, işletim gereksinimleri arasında aşağıdakiler yer alıyorsa hizmet yedekliliği gerekebilir:
 
-+ [İş sürekliliği ve olağanüstü durum kurtarma (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Azure Bilişsel Arama, kesinti durumunda anlık yük devretme sağlamaz.
++ [İş sürekliliği ve olağanüstü durum kurtarma (BCDR)](../best-practices-availability-paired-regions.md). Azure Bilişsel Arama, kesinti durumunda anlık yük devretme sağlamaz.
 
 + [Çok kiracılı mimariler](search-modeling-multitenant-saas-applications.md) bazen iki veya daha fazla hizmet için çağrı yapılır.
 

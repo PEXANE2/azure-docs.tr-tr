@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387158"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928573"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
 
@@ -109,20 +109,20 @@ Sınıf tabanlı modelin kullanmasını istediğiniz tüm işlevlerin **Serverle
 
 ### <a name="define-hub-method"></a>Hub yöntemini tanımla
 
-Tüm **hub yöntemlerinin bir** özniteliğe sahip olması `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması **gerekir** . Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
+Tüm **hub yöntemlerinin bir**  özniteliğe sahip olması `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması **gerekir** . Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
 
 Varsayılan olarak, `category=messages` Yöntem adı dışında aşağıdaki adlardan biridir:
 
-* **OnConnected**: olarak kabul edilir`category=connections, event=connected`
-* **OnConnected**: olarak değerlendirildi`category=connections, event=disconnected`
+* **OnConnected**: olarak kabul edilir `category=connections, event=connected`
+* **OnConnected**: olarak değerlendirildi `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>Parametre bağlama deneyimi
 
 Sınıf tabanlı modelde, `[SignalRParameter]` Tüm bağımsız değişkenler varsayılan olarak olarak işaretlendiğinden, `[SignalRParameter]` aşağıdaki durumlardan biri dışında, bu gerekli değildir:
 
 * Bağımsız değişken bir bağlama özniteliği tarafından tasarlanmalıdır.
-* Bağımsız değişkenin türü `ILogger` veya`CancellationToken`
-* Bağımsız değişken özniteliğe göre düzenlenmiş`[SignalRIgnore]`
+* Bağımsız değişkenin türü `ILogger` veya `CancellationToken`
+* Bağımsız değişken özniteliğe göre düzenlenmiş `[SignalRIgnore]`
 
 ### <a name="negotiate-experience-in-class-based-model"></a>Sınıf tabanlı modelde anlaşma deneyimi
 
@@ -218,8 +218,8 @@ JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Nego
 
 Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken `Host` CORS 'yi etkinleştirmek için *local.settings.js* bölümüne bir bölüm ekleyebilirsiniz. `Host`Bölümünde iki özellik ekleyin:
 
-* `CORS`-istemci uygulamanın kaynağı olan temel URL 'YI girin
-* `CORSCredentials`-Bunu `true` "withCredentials" isteklerine izin verecek şekilde ayarlayın
+* `CORS` -istemci uygulamanın kaynağı olan temel URL 'YI girin
+* `CORSCredentials` -Bunu `true` "withCredentials" isteklerine izin verecek şekilde ayarlayın
 
 Örnek:
 

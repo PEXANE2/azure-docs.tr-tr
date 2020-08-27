@@ -3,12 +3,12 @@ title: Azure Kamu 'da Azure geçiş gereci ayarlama
 description: Azure Kamu 'da Azure geçiş gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 993c25d7b2c580df47b61c836b885ed6379e8640
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ffea966c58909ecaab0da13a4204295ecb193895
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612274"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936801"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Kamu 'da gereç ayarlama 
 
@@ -19,7 +19,7 @@ Bir Azure Kamu bulutundaki VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucul
 > Şablonu kullanarak bir gereci dağıtma seçeneği (VMware VM 'Leri ve Hyper-V VM 'Leri için) Azure Kamu 'da desteklenmez.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 
@@ -51,7 +51,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
     **Algoritma** | **İndir** | **SHA256**
     --- | --- | ---
-    VMware (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+    VMware (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140337) | 31b1bfdd4fc29b3eb923c7c6e7a898af79b7cac0404426,18809def2284188
 
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
@@ -71,8 +71,10 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
-5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: 
+    
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
+1. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 
 ### <a name="verify-access"></a>Erişimi doğrulama
 
@@ -103,7 +105,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
     **Senaryo** | **İndir** | **SHA256**
     --- | --- | ---
-    Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+    Hyper-V (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
 
           
 
@@ -124,8 +126,10 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
-5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: 
+
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
+1. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 
 ### <a name="verify-access"></a>Erişimi doğrulama
 
@@ -156,7 +160,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
     **Senaryo** | **İndirme*** | **Karma değeri**
     --- | --- | ---
-    Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
+    Fiziksel (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140338) | 1545f9ce8874cedef6347c1a1332f8b5eabd6811a017440a2382525fb0430309
           
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
@@ -176,8 +180,10 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
-5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: 
+
+    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+1. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 
 ### <a name="verify-access"></a>Erişimi doğrulama
 

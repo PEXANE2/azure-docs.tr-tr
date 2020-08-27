@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canlı video analizine genel bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060461"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934302"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -100,13 +100,32 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
    ```
 Modül tarafından yayılan olaylar [IoT Edge hub 'ına](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)gönderilir ve oradan başka hedeflere yönlendirilebilir. 
 
+### <a name="timestamps-in-analytic-events"></a>Analitik olaylardaki zaman damgaları
+Yukarıda belirtildiği gibi, video analizinin bir parçası olarak oluşturulan olaylar kendileriyle ilişkili bir zaman damgasına sahiptir. Canlı videoyu grafik topolojinizin bir parçası olarak [kaydettiyse](video-recording-concept.md) bu zaman damgası, Kaydedilen videoda belirli bir olayın oluştuğu yeri bulmanıza yardımcı olur. Aşağıda, bir analitik olaydaki zaman damgasının, bir [Azure Media Service](terminology.md#asset)varlığına kaydedilen videonun zaman çizelgesine eşlenme yönergeleri verilmiştir.
+
+İlk olarak, `eventTime` değeri ayıklayın. Kaydın uygun bir bölümünü almak için bu değeri bir [zaman aralığı filtresinde](playback-recordings-how-to.md#time-range-filters) kullanın. Örneğin, 30 saniye önce başlayan `eventTime` ve daha sonra sona erecek bir video getirmek isteyebilirsiniz. Yukarıdaki örnekte, `eventTime` 2020-05-12T23:33:09.381 z olduğunda, +/-30 saniye penceresi için BIR HLS bildirimi isteği aşağıdaki gibi görünür:
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+Yukarıdaki URL, medya çalma listeleri için URL 'Leri içeren, bu şekilde adlandırılan [ana çalma listesini](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)döndürür. Medya çalma listesi aşağıdaki gibi girdileri içerir:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+Yukarıdaki girişte Giriş, bir zaman damgası değeri ile başlayan bir video parçasının kullanılabilir olduğunu bildiriyor `143039375031270` . `timestamp`Analitik olaydaki değer, medya çalma listesiyle aynı zaman ölçeğini kullanır ve ilgili video parçasını tanımlamak ve doğru çerçeveye arama yapmak için kullanılabilir.
+
+Daha fazla bilgi için, HLS 'de kare doğru arama hakkında birçok [makaleyi](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) okuyabilirsiniz.
+
 ## <a name="controlling-events"></a>Olayları denetleme
 
 IoT Edge modülündeki canlı video analizi tarafından yayımlanan işletimsel ve Tanılama olaylarını denetlemek için, aşağıdaki modül ikizi özelliklerini [Modül IKIZI JSON şeması](module-twin-configuration-schema.md)'nda belgelendiği şekilde kullanabilirsiniz.
 
-`diagnosticsEventsOutputName`– modülden tanılama olayları almak için bu özellik için dahil etme ve sağlama (any) değeri. Bunu atlayın veya modülün Tanılama olaylarını yayımlamasını durdurmak için boş bırakın.
+`diagnosticsEventsOutputName` – modülden tanılama olayları almak için bu özellik için dahil etme ve sağlama (any) değeri. Bunu atlayın veya modülün Tanılama olaylarını yayımlamasını durdurmak için boş bırakın.
    
-`operationalEventsOutputName`– modülden işlem olaylarını almak için bu özellik için dahil etme ve sağlama (any) değeri. Modülün işlemsel olayları yayımlamasını durdurmak için bunu atlayın veya boş bırakın.
+`operationalEventsOutputName` – modülden işlem olaylarını almak için bu özellik için dahil etme ve sağlama (any) değeri. Modülün işlemsel olayları yayımlamasını durdurmak için bunu atlayın veya boş bırakın.
    
 Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi gibi düğümler tarafından oluşturulur ve bunları IoT Edge hub 'ına göndermek için IoT Hub havuzu kullanılır. 
 
@@ -143,7 +162,7 @@ IoT Hub üzerinden gözlemlendiği her olayın, aşağıda açıklandığı gibi
 |---|---|---|---|
 |ileti kimliği |sistemin |guid|  Benzersiz olay KIMLIĞI.|
 |konu başlığı| applicationProperty |string|    Media Services hesabının yolunu Azure Resource Manager.|
-|subject|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
+|Konu|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
 |eventTime| applicationProperty|    string| Olayın oluşturulduğu zaman.|
 |eventType| applicationProperty |string|    Olay türü tanımlayıcısı (aşağıya bakın).|
 |body|body  |object|    Belirli olay verileri.|
@@ -161,7 +180,7 @@ Grafikle ilişkili Azure Medya hizmeti hesabını temsil eder.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>subject
+#### <a name="subject"></a>Konu
 
 Olayı yayan varlık:
 
@@ -184,7 +203,7 @@ Olay türleri bir ad alanına aşağıdaki şemaya göre atanır:
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
-|İşlemdeki    |Kaynak işleminin bir parçası olarak oluşturulan olaylar.|
+|Operasyonel    |Kaynak işleminin bir parçası olarak oluşturulan olaylar.|
 
 Olay türleri her bir olay sınıfına özeldir.
 

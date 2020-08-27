@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172112"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936240"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -37,7 +37,7 @@ AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayab
 
 AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturum başlatırken daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![Bölüm anahtarları](./media/event-hubs-features/partition_keys.png)
 
 Event Hubs aynı bölüm anahtarı değerini paylaşan tüm olayların sırayla ve aynı bölüme iletilmesini sağlar. Bölüm anahtarlarının yayımcı ilkeleriyle birlikte kullanılması durumunda yayımcı kimliğinin ve bölüm anahtarı değerinin eşleşmesi gerekir. Aksi takdirde bir hata oluşur.
 
@@ -86,13 +86,13 @@ Aşağıdaki örneklerde, Tüketici grubu URI kuralı gösterilmektedir:
 
 Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs mimarisi](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>Akış uzaklıkları
 
 *Uzaklık* bir olayın bölüm içindeki konumudur. Uzaklığı istemci tarafındaki bir imleç olarak düşünebilirsiniz. Uzaklık, olayın bayt cinsinden numaralandırılmasıdır. Bu uzaklık, olay tüketicisinin (okuyucu) olay akışında olayları okumaya başlamak istediği bir noktayı belirtmesini sağlar. Uzaklığı bir zaman damgası veya bir uzaklık değeri olarak belirtebilirsiniz. Tüketiciler, kendi uzaklık değerlerini Event Hubs hizmetinin dışında saklamaktan sorumludur. Bir bölüm içinde her olay bir uzaklık içerir.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Bölüm boşluğu](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Denetim noktası oluşturma
 
@@ -104,7 +104,7 @@ Bir okuyucunun bölüm bağlantısı kesilirse yeniden bağlandığında ilgili 
 > Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) veya  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>Ortak tüketici görevleri
@@ -138,10 +138,10 @@ Uzaklığın yönetilmesi sizin sorumluluğunuzdadır.
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
 - Event Hubs kullanmaya başlayın
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084101"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935849"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama ile aynı Demitedmetin ayrıştırma modunu ve BLOB Dizin oluşturucularını kullanarak CSV bloblarını dizin oluşturma
 
@@ -32,7 +32,7 @@ Bu makalede, ayrıştırma modunu ayarlayarak CSV bloblarını bir Azure Bilişs
 > Birden çok arama belgesini bir Azure blobundan çıkarmak için [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md) içindeki Dizin Oluşturucu yapılandırma önerilerini izleyin.
 
 ## <a name="setting-up-csv-indexing"></a>CSV dizinlemeyi ayarlama
-CSV bloblarını indekslemek için, bir Dizin Oluşturucu `delimitedText` [oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer) isteğinde ayrıştırma moduyla bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin:
+CSV bloblarını indekslemek için, bir Dizin Oluşturucu `delimitedText` [oluşturma](/rest/api/searchservice/create-indexer) isteğinde ayrıştırma moduyla bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin:
 
 ```http
     {
@@ -42,14 +42,14 @@ CSV bloblarını indekslemek için, bir Dizin Oluşturucu `delimitedText` [oluş
     }
 ```
 
-`firstLineContainsHeaders`Her Blobun ilk (boş olmayan) satırın üstbilgiler içerdiğini belirtir.
+`firstLineContainsHeaders` Her Blobun ilk (boş olmayan) satırın üstbilgiler içerdiğini belirtir.
 Blob 'lar bir başlangıç üst bilgisi satırı içermiyorsa, üst bilgiler Dizin Oluşturucu yapılandırmasında belirtilmelidir: 
 
 ```http
 "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 ```
 
-Yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz `delimitedTextDelimiter` . Örneğin:
+Yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz `delimitedTextDelimiter` . Örnek:
 
 ```http
 "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
@@ -98,4 +98,3 @@ Dizinleyic
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
 Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin.
-

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935458"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
@@ -49,14 +49,14 @@ Aşağıdaki diyagramda bir kuramsal zenginleştirme işlem hattı gösterilmekt
 ![Kuramsal bir zenginleştirme işlem hattı](media/cognitive-search-defining-skillset/sample-skillset.png "Kuramsal bir zenginleştirme işlem hattı")
 
 
-İşlem hattında istediğiniz kadar fikir sahibi olduktan sonra, bu adımları sağlayan beceri ifade edebilirsiniz. İşlev, Dizin Oluşturucu tanımınızı Azure Bilişsel Arama yüklediğinizde beceri ifade edilir. Dizin oluşturucuyu karşıya yükleme hakkında daha fazla bilgi edinmek için bkz. [Dizin Oluşturucu-belgeler](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+İşlem hattında istediğiniz kadar fikir sahibi olduktan sonra, bu adımları sağlayan beceri ifade edebilirsiniz. İşlev, Dizin Oluşturucu tanımınızı Azure Bilişsel Arama yüklediğinizde beceri ifade edilir. Dizin oluşturucuyu karşıya yükleme hakkında daha fazla bilgi edinmek için bkz. [Dizin Oluşturucu-belgeler](/rest/api/searchservice/create-indexer).
 
 
 Diyagramda *belge çözme* adımı otomatik olarak gerçekleşir. Esas olarak, Azure Bilişsel Arama iyi bilinen dosyaların nasıl açılacağını bilir ve her belgeden ayıklanan metni içeren bir *içerik* alanı oluşturur. Beyaz kutular yerleşik zenginler ve noktalı "Bing Varlık Arama" kutusu oluşturmakta olduğunuz özel bir zengini temsil eder. Gösterildiği gibi, beceri üç yetenek içerir.
 
 ## <a name="skillset-definition-in-rest"></a>Beceri tanımı REST
 
-Bir beceri bir yetenek dizisi olarak tanımlanır. Her beceri, girişlerinin kaynağını ve üretilen çıktıların adını tanımlar. [Create beceri REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak, önceki diyagrama karşılık gelen bir beceri tanımlayabilirsiniz: 
+Bir beceri bir yetenek dizisi olarak tanımlanır. Her beceri, girişlerinin kaynağını ve üretilen çıktıların adını tanımlar. [Create beceri REST API](/rest/api/searchservice/create-skillset)kullanarak, önceki diyagrama karşılık gelen bir beceri tanımlayabilirsiniz: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -281,4 +281,4 @@ Zenginleştirilmiş belgeleri, hiyerarşik ilişkileri korunan tablolar olarak v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık enzenginleştirme işlem hattı ve becerileri hakkında bilgi sahibi olduğunuza göre, [bir beceri içindeki ek açıklamaların nasıl başvurulacağını](cognitive-search-concept-annotations-syntax.md) veya [bir dizindeki alanlara çıktıların nasıl eşlenilmeye](cognitive-search-output-field-mapping.md)devam edin. 
+Artık enzenginleştirme işlem hattı ve becerileri hakkında bilgi sahibi olduğunuza göre, [bir beceri içindeki ek açıklamaların nasıl başvurulacağını](cognitive-search-concept-annotations-syntax.md) veya [bir dizindeki alanlara çıktıların nasıl eşlenilmeye](cognitive-search-output-field-mapping.md)devam edin.

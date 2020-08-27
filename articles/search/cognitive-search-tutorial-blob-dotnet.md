@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b5b27e201242f87e15af780bc26328dbdc5eb7fc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705903"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935968"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bu C# öğreticisinde, resimlerde optik karakter tanıma (OCR) uygulayın ve sorgularda, modellerinizde ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için doğal dil işleme gerçekleştirin.
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Azure Blob depolamada uygulama dosyaları ve görüntüleriyle başlayın.
@@ -30,7 +30,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -127,7 +127,7 @@ Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygu
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-[Azure bilişsel arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir. Ayrıca, http ve JSON ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyip yönetebilir ve sorguları yürütmenize imkan tanır. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
+[Azure bilişsel arama .NET SDK](/dotnet/api/overview/azure/search) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir. Ayrıca, http ve JSON ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyip yönetebilir ve sorguları yürütmenize imkan tanır. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
 
 Bu proje için NuGet paketinin 9 veya sonraki bir sürümünü yüklemelisiniz `Microsoft.Azure.Search` .
 
@@ -680,7 +680,7 @@ Ayırt eden başvuruyu çözümlemek için aşağıdaki using ifadesini ekleyin.
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-Dizin tanımlama hakkında daha fazla bilgi edinmek için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Dizin tanımlama hakkında daha fazla bilgi edinmek için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-4-create-and-run-an-indexer"></a>4. Adım: Dizin Oluşturucu oluşturma ve çalıştırma
 
@@ -905,7 +905,7 @@ catch (Exception e)
 }
 ```
 
-Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak, [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) özelliği aracılığıyla birden çok alan döndürebilirsiniz.
+Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak, [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) özelliği aracılığıyla birden çok alan döndürebilirsiniz.
 
 <a name="reset"></a>
 
