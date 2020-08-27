@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552521"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935084"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu isteklerini izleme
 
@@ -39,7 +39,7 @@ Sorguların milisaniye cinsinden yürütülmesi yaygındır, bu nedenle yalnızc
 | Toplama Türü | Açıklama |
 |------------------|-------------|
 | Ortalama | Sorgu yürütmenin gerçekleştiği bir dakika içinde ortalama saniye sayısı.|
-| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Bir dakika içinde saniyede kayıtlı en yüksek arama sorgusu sayısı. |
 | Minimum | Bir dakika içinde saniyede kaydedilen arama sorgularının en düşük sayısı.  |
 | Toplam | Dakika içinde yürütülen tüm sorguların toplamı.  |
@@ -57,7 +57,7 @@ Hizmet genelinde, sorgu performansı arama gecikmesi (bir sorgunun tamamlandığ
 | Toplama Türü | Gecikme süresi | 
 |------------------|---------|
 | Ortalama | Milisaniye cinsinden ortalama sorgu süresi. | 
-| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Örnekteki en uzun çalışan sorgu. | 
 | Minimum | Örnekteki en kısa çalışan sorgu.  | 
 | Toplam | Örnekteki tüm sorguların, Aralık içinde yürütülerek toplam yürütme süresi (bir dakika).  |
@@ -85,7 +85,7 @@ Kısıtlanmış sorguları onaylamak için, **Kısıtlanmış arama sorguları**
 | Toplama Türü | Azaltma |
 |------------------|-----------|
 | Ortalama | Aralık içinde bırakılan sorguların yüzdesi. |
-| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Aralık içinde bırakılan sorguların yüzdesi.|
 | Minimum | Aralık içinde bırakılan sorguların yüzdesi. |
 | Toplam | Aralık içinde bırakılan sorguların yüzdesi. |
@@ -100,7 +100,7 @@ Aşağıdaki ekran görüntüsünde, ilk sayı sayı (veya günlüğe gönderile
 
 Geçerli sayılara hızlı bir şekilde bakmak için, hizmet Genel Bakış sayfasındaki **izleme** sekmesine üç ölçüm (**arama gecikme süresi**, **saniye başına arama sorguları (arama birimi başına)**, kısıtlı **arama sorguları yüzdesi**), toplama türünü değiştirme seçeneğiyle birlikte saat, gün ve hafta cinsinden ölçülen sabit aralıklar arasında gösterilir.
 
-Daha derin araştırma için, **izleme** menüsünden Ölçüm Gezgini 'ni açın, böylece eğilimleri ve anormallikleri araştırmak üzere verileri katmanlaştırabilir, yakınlaştırabilir ve görselleştirebilirsiniz. [Ölçüm grafiği oluşturma hakkında bu öğreticiyi](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)tamamlayarak Ölçüm Gezgini hakkında daha fazla bilgi edinin.
+Daha derin araştırma için, **izleme** menüsünden Ölçüm Gezgini 'ni açın, böylece eğilimleri ve anormallikleri araştırmak üzere verileri katmanlaştırabilir, yakınlaştırabilir ve görselleştirebilirsiniz. [Ölçüm grafiği oluşturma hakkında bu öğreticiyi](../azure-monitor/learn/tutorial-metrics-explorer.md)tamamlayarak Ölçüm Gezgini hakkında daha fazla bilgi edinin.
 
 1. Izleme bölümünde **, ölçüm ' i seçerek ölçüm** Gezgini ' ni arama hizmetinize ayarlanmış kapsam ile açın.
 

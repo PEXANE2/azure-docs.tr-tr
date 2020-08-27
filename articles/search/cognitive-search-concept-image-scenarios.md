@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838267"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935526"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
 
@@ -42,7 +42,7 @@ Resim normalleştirmesini kapatamaz. Görüntüler üzerinde yineleme yapan yete
 
 Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. [OCR becerisi](cognitive-search-skill-ocr.md) , İngilizce dışındaki diller için maksimum genişlik ve yükseklik 4200 ve ingilizce için 10000 ' i destekler.  Maksimum sınırları artırırsanız, Beceri tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
 
-Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft.com/rest/api/searchservice/create-indexer) ımageaction öğesini belirtirsiniz:
+Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](/rest/api/searchservice/create-indexer) ımageaction öğesini belirtirsiniz:
 
 ```json
 {
@@ -64,7 +64,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 |--------------------|-----------------------------------------|
 | veriler               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
 | genişlik              | Normalleştirilmiş resmin piksel cinsinden genişliği. |
-| yükseklik             | Normalleştirilmiş resmin piksel cinsinden yüksekliği. |
+| boy             | Normalleştirilmiş resmin piksel cinsinden yüksekliği. |
 | originalWidth      | Normalleştirme yapmadan önce resmin orijinal genişliği. |
 | originalHeight      | Normalleştirme yapmadan önce resmin orijinal yüksekliği. |
 | rotationFromOriginal |  Normalleştirilmiş görüntüyü oluşturmak için oluşan derece saat yönünde döndürme. 0 derece ve 360 derece arasında bir değer. Bu adım, kamera veya tarayıcı tarafından oluşturulan görüntüden meta verileri okur. Genellikle 90 derecenin katları. |
@@ -214,7 +214,7 @@ Yardımcı olarak, normalleştirilmiş koordinatları özgün koordinat alanına
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.
-+ [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Dizin Oluşturucu oluştur (REST)](/rest/api/searchservice/create-indexer)
 + [Görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)
 + [OCR becerisi](cognitive-search-skill-ocr.md)
 + [Metin birleştirme yeteneği](cognitive-search-skill-textmerger.md)

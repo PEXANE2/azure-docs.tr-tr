@@ -2,15 +2,16 @@
 title: Azure Application Insights-bağımlılık otomatik koleksiyonu | Microsoft Docs
 description: Application Insights bağımlılıkları otomatik olarak toplayıp görselleştirin
 ms.topic: reference
+ms.custom: devx-track-dotnet
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324191"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936444"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
 
@@ -23,8 +24,8 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Çekirdeği | 1.1 + |
-| <b>İletişim kitaplıkları</b> |
+| ASP.NET Core | 1.1 + |
+| <b> İletişim kitaplıkları</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
 | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0-en son kararlı sürüm. (Aşağıdaki nota bakın.)
@@ -43,8 +44,8 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | [Tomcat](https://tomcat.apache.org/) | 7, 8 | 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
-| <b>Uygulama çerçeveleri</b> |  |
-| [Spring](https://spring.io/) | 3,0 |
+| <b>Uygulama çerçeveleri </b> |  |
+| [Spring](https://spring.io/) | 3.0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java Servlet | 3.1 + |
 | <b>İletişim kitaplıkları</b> |  |

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083568"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935322"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Hizmet panosundaki bölümler, kaç Dizin, Dizin Oluşturucu ve veri kaynağı o
 
 ![Dizin, Dizin oluşturucular ve veri kaynakları listesi](media/search-get-started-portal/tiles-indexers-datasources.png)
 
-## <a name="create-an-index-and-load-data"></a><a name="create-index"></a>Dizin oluşturma ve veri yükleme
+## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Dizin oluşturma ve veri yükleme
 
 Arama sorguları aranabilir veriler, meta veriler ve arama davranışlarını iyileştiren ek yapılar içeren bir [*dizin*](search-what-is-an-index.md) kullanır.
 
@@ -136,11 +136,11 @@ Puanlama profilleri ve CORS seçenekleri gibi diğer yapılar herhangi bir nokta
 
 Dizin tasarımı sırasında düzenleme yapabileceğiniz ve yapamayacağınız alanları kavramak için birkaç dakikanızı ayırarak dizin tanımı seçeneklerini görüntüleyin. Gri renkli seçenekler, bir değerin değiştirme veya silme işlemleri için uygun olmadığını gösterir. 
 
-## <a name="query-using-search-explorer"></a><a name="query-index"></a>Arama Gezgini 'ni kullanarak sorgulama
+## <a name="query-using-search-explorer"></a><a name="query-index"></a> Arama Gezgini 'ni kullanarak sorgulama
 
 Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kullanarak sorgulayabileceğiniz bir arama dizinine sahipsiniz. Bu sayfada rastgele sorgu dizelerini test etmek için kullanabileceğiniz bir arama kutusu bulunur.
 
-**Arama Gezgini** yalnızca [REST API isteklerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)işleyecek şekilde donatılmıştır, ancak hem [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) hem de [tam Lucene sorgu ayrıştırıcısı](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)için sözdizimi kabul eder, ayrıca arama belgesinde bulunan tüm arama parametreleri ve [Arama belgesi REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) işlemleri.
+**Arama Gezgini** yalnızca [REST API isteklerini](/rest/api/searchservice/search-documents)işleyecek şekilde donatılmıştır, ancak hem [basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search) hem de [tam Lucene sorgu ayrıştırıcısı](/rest/api/searchservice/lucene-query-syntax-in-azure-search)için sözdizimi kabul eder, ayrıca arama belgesinde bulunan tüm arama parametreleri ve [Arama belgesi REST API](/rest/api/searchservice/search-documents#bkmk_examples) işlemleri.
 
 > [!TIP]
 > Aşağıdaki adımlar, 6m08s ' de [Azure bilişsel arama genel bakış videosu ' ne](https://channel9.msdn.com/Events/Connect/2016/138)gösterilmiştir.
@@ -164,7 +164,7 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 ### <a name="simple-query-with-top-n-results"></a>İlk N sonucu içeren basit sorgu
 
-#### <a name="example-string-query-searchspa"></a>Örnek (dize sorgusu):`search=spa`
+#### <a name="example-string-query-searchspa"></a>Örnek (dize sorgusu): `search=spa`
 
 * **Arama** parametresi, tam metin araması için bir anahtar sözcük arama girişi yapmak için kullanılır, bu durumda, belgedeki aranabilir herhangi bir alanda *Spa* 'yı içeren kişiler için otel verileri döndürür.
 
@@ -172,7 +172,7 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 * Belgeler, dizinde "alınabilir" olarak işaretlenmiş tüm alanlardan oluşur. Portalda Dizin özniteliklerini görüntülemek için, **dizinler** listesinde *oteller-Sample* ' a tıklayın.
 
-#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Örnek (parametreli sorgu):`search=spa&$count=true&$top=10`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Örnek (parametreli sorgu): `search=spa&$count=true&$top=10`
 
 * **&** Simge, herhangi bir sırada belirtilebilen arama parametrelerini eklemek için kullanılır.
 
@@ -188,7 +188,7 @@ Bing veya Google aramasında yapabileceklerinize benzer şekilde hüküm ve ifad
 
 * **$filter** parametresi, sağladığınız ölçütlerle eşleşen sonuçları döndürür. Bu durumda, 4 ' ten büyük derecelendirmeler.
 
-* Filtre söz dizimi bir OData yapısıdır. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+* Filtre söz dizimi bir OData yapısıdır. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> Sorguyu modelleme
 
@@ -207,7 +207,7 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 * Yalnızca filtrelenebilir alanlardan görünüm oluşturulabilir. Yalnızca getirilebilir alanlar sonuçlarda döndürülebilir.
 
-* *Derecelendirme* alanı çift duyarlıklı kayan nokta ve gruplama kesin değere göre yapılır. Aralığa göre gruplandırma hakkında daha fazla bilgi için (örneğin, "3 yıldız derecelendirmesi," "4 yıldız derecelendirmesi" vb.), bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* *Derecelendirme* alanı çift duyarlıklı kayan nokta ve gruplama kesin değere göre yapılır. Aralığa göre gruplandırma hakkında daha fazla bilgi için (örneğin, "3 yıldız derecelendirmesi," "4 yıldız derecelendirmesi" vb.), bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](./search-faceted-navigation.md#filter-based-on-a-range).
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Arama sonuçlarını vurgulama
@@ -240,11 +240,11 @@ Bu örnek şimdi "Seattle" ile eşleşmeleri içeren belgeleri geri döndürüyo
 
 Belirsiz arama ve joker karakter araması, arama sonucunu etkiler. Bu sorgu biçimlerinde dilbilimsel analiz gerçekleştirilmez. Benzer ve joker karakter aramasını kullanmadan önce, [tam metin aramasının Azure bilişsel arama 'de nasıl çalıştığını](search-lucene-query-architecture.md#stage-2-lexical-analysis) gözden geçirin ve sözcük temelli analize yönelik özel durumlar hakkındaki bölümü bulun.
 
-Tam sorgu ayrıştırıcısı tarafından etkinleştirilen sorgu senaryoları hakkında daha fazla bilgi için bkz. [Azure bilişsel arama 'de Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+Tam sorgu ayrıştırıcısı tarafından etkinleştirilen sorgu senaryoları hakkında daha fazla bilgi için bkz. [Azure bilişsel arama 'de Lucene sorgu söz dizimi](/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> Jeo-uzamsal aramayı deneme
 
-Koordinat içeren bir alanda [edm.GeographyPoint veri türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) aracılığıyla jeo-uzamsal arama desteklenir. Coğrafi arama, [OData söz dizimini filtrele](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) seçeneğinde belirtilen bir tür filtredir.
+Koordinat içeren bir alanda [edm.GeographyPoint veri türü](/rest/api/searchservice/supported-data-types) aracılığıyla jeo-uzamsal arama desteklenir. Coğrafi arama, [OData söz dizimini filtrele](/rest/api/searchservice/odata-expression-syntax-for-azure-search) seçeneğinde belirtilen bir tür filtredir.
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Örnek (coğrafi koordinat filtreleri): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Arama uygulamanız "yakınımda bul" özelliği içeriyorsa ya da harita navigas
 
 Bu öğretici, Azure Bilişsel Arama Azure portal kullanılarak hızlı bir giriş sağlamıştır.
 
-**Verileri içeri aktar** sihirbazını kullanarak arama dizini oluşturmayı öğrendiniz. [Dizin oluşturucuların](search-indexer-overview.md) yanı sıra [yayımlanmış dizinler için desteklenen değişiklikler](https://docs.microsoft.com/rest/api/searchservice/update-index) gibi dizin tasarımıyla ilgili temel iş akışı hakkında bilgi edindiniz.
+**Verileri içeri aktar** sihirbazını kullanarak arama dizini oluşturmayı öğrendiniz. [Dizin oluşturucuların](search-indexer-overview.md) yanı sıra [yayımlanmış dizinler için desteklenen değişiklikler](/rest/api/searchservice/update-index) gibi dizin tasarımıyla ilgili temel iş akışı hakkında bilgi edindiniz.
 
 Azure portalda **Arama gezginini** kullanarak filtreler, sonuç vurgulama, belirsiz arama ve coğrafi arama gibi önemli özelliklerin gösterildiği örneklerle temel sorgu söz dizimini öğrendiniz.
 
@@ -264,7 +264,7 @@ Ayrıca, portalda Dizin, Dizin oluşturucular ve veri kaynaklarını bulmayı de
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -280,4 +280,4 @@ Bir tarayıcıda çalışan kullanıma yönelik bir Web uygulaması oluşturmak 
 Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76294346"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936325"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Denetleme işlerini tanımlama ve kullanma (.NET)
 
@@ -26,7 +27,7 @@ Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevler
 - İncelemeyi izleme ve son durumunu alma
 - İnceleme sonuçlarını geri çağırma URL 'sine gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 

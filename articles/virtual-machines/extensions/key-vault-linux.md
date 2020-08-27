@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936206"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -80,12 +80,12 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | tür | KeyVaultForLinux | string |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | Linux üzerinde yok sayılır | string |
 | Linkonyenilemeye | yanlış | boolean |
@@ -130,6 +130,8 @@ Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine k
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell dağıtımı
+> [!WARNING]
+> PowerShell istemcileri genellikle `\` `"` üzerinde settings.js, akvvm_service hata vererek başarısız olmasına neden olacak. `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sanal makine ölçek kümesine dağıtmak için kullanılabilir. 
 

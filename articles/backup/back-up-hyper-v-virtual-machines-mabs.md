@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823973"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892822"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -149,7 +149,7 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
     - Ağınızı yapılandırdıysanız, **Donanım anlık görüntüleri kullanan SAN tabanlı kurtarmayı etkinleştir**'i seçin.
     - Kurtarma işlemi tamamlandığında e-posta bildirimleri gönderilmesini istiyorsanız, **Kurtarma tamamlandığında bir e-posta gönder**'i seçin ve e-posta adreslerini girin.
 
-6. Özet ekranında, tüm ayrıntıların doğru olduğundan emin olun. Ayrıntılar doğru değilse veya bir değişiklik yapmak istiyorsanız, **Geri**'ye tıklayın. Ayarlardan memnunsanız, kurtarma işlemini başlatmak için **Kurtar**'a tıklayın.
+6. Özet ekranında, tüm ayrıntıların doğru olduğundan emin olun. Ayrıntılar doğru değilse veya bir değişiklik yapmak istiyorsanız, **Geri**'ye tıklayın. Ayarları karşıladıysanız kurtarma işlemini başlatmak için **kurtar** ' ı tıklatın.
 
 7. **Kurtarma Durumu** ekranı kurtarma işi hakkında bilgi sağlar.
 

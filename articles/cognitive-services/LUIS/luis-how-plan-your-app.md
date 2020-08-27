@@ -3,12 +3,12 @@ title: Uygulamanızı planlayın-LUSıS
 description: İlgili uygulama amaçlarını ve varlıklarını ana hatlarıyla oluşturun ve ardından Language Understanding akıllı hizmetler (LUU) içinde uygulama planlarınızı oluşturun.
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340241"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892924"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>LUSıS uygulama şemanızı konu etki alanı ve veri ayıklama ile planlayın
 
@@ -64,7 +64,7 @@ Sözcük seçimini göz önünde bulundurarak ancak farklı sonuçlara sahip ola
 
 İki ayrı amaç olması yerine, Machine Learning varlığıyla tek bir amaç oluşturun `FlightAction` . Machine Learning varlığı, eylemin ayrıntılarını hem zamanlama hem de iptal etme isteği ve kaynak ya da hedef konum için ayıklamalıdır.
 
-`FlightAction`Varlık, makine öğrenimi varlığı ve alt varlıkların aşağıdaki suedo şemasında yapılandırılır:
+`FlightAction`Varlık, makine öğrenimi varlığı ve alt varlıkların aşağıdaki sözde şemasında yapılandırılır:
 
 * Fışıklı TAction
     * Eylem

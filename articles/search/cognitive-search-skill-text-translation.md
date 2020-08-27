@@ -8,20 +8,20 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080075"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924703"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Metin çevirisi Bilişsel Beceri
 
-Metin **çevirisi** becerisi metni değerlendirir ve her kayıt için belirtilen hedef dile çevrilen metni döndürür. Bu beceri bilişsel hizmetler 'de bulunan [Translator metin çevirisi API'si v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) 'ı kullanır.
+Metin **çevirisi** becerisi metni değerlendirir ve her kayıt için belirtilen hedef dile çevrilen metni döndürür. Bu beceri bilişsel hizmetler 'de bulunan [Translator metin çevirisi API'si v 3.0](../cognitive-services/translator/reference/v3-0-translate.md) 'ı kullanır.
 
 Bu özellik, belgelerinizin tümünün tek bir dilde olmaması beklendiğinde yararlıdır, bu durumda, arama için dizin oluşturmadan önce metni tek bir dile normalleştirilemeyebilirsiniz.  Aynı zamanda birden çok dilde aynı metnin kopyalarının olmasını isteyebileceğiniz yerelleştirme kullanım durumları için de kullanışlıdır.
 
-[Translator metin çevirisi API'si v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) , bölgesel olmayan bir bilişsel hizmettir, yani verilerinizin Azure bilişsel arama veya bağlı bilişsel hizmetler kaynağınız ile aynı bölgede kalması garanti edilmez.
+[Translator metin çevirisi API'si v 3.0](../cognitive-services/translator/reference/v3-0-reference.md) , bölgesel olmayan bir bilişsel hizmettir, yani verilerinizin Azure bilişsel arama veya bağlı bilişsel hizmetler kaynağınız ile aynı bölgede kalması garanti edilmez.
 
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
@@ -32,7 +32,7 @@ Bu özellik, belgelerinizin tümünün tek bir dilde olmaması beklendiğinde ya
 Microsoft. yetenekler. Text. Translationbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Verileri metin çevirisi yeteneklerine göndermeden önce bölmeniz gerekirse, [metin bölme becerisinin](cognitive-search-skill-textsplit.md)kullanımını göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](/dotnet/api/system.string.length) . Verileri metin çevirisi yeteneklerine göndermeden önce bölmeniz gerekirse, [metin bölme becerisinin](cognitive-search-skill-textsplit.md)kullanımını göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
@@ -40,17 +40,17 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Girişler                | Açıklama |
 |---------------------|-------------|
-| defaultToLanguageCode | Istenir Kendisine açık olarak belirtmeyen belgeler için belgeleri içine çevirecek dil kodu. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)görüntüleyin. |
-| defaultFromLanguageCode | Seçim Özel olarak kimden dilini belirtmeyen belgeler için belge çeviren dil kodu.  DefaultFromLanguageCode belirtilmemişse, kimden dilini saptamak için Translator Metin Çevirisi API'si tarafından sunulan otomatik dil algılama kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)görüntüleyin. |
-| müported | Seçim FromLanguageCode girişi ya da defaultFromLanguageCode parametresi sağlanmıyorsa ve otomatik dil algılama başarısız olduğunda belgelerin çevrilme dil kodu.  Bir dil için bir dil belirtilmemişse, Ingilizce (en), dilden Itibaren bu şekilde kullanılacaktır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)görüntüleyin. |
+| defaultToLanguageCode | Istenir Kendisine açık olarak belirtmeyen belgeler için belgeleri içine çevirecek dil kodu. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md)görüntüleyin. |
+| defaultFromLanguageCode | Seçim Özel olarak kimden dilini belirtmeyen belgeler için belge çeviren dil kodu.  DefaultFromLanguageCode belirtilmemişse, kimden dilini saptamak için Translator Metin Çevirisi API'si tarafından sunulan otomatik dil algılama kullanılır. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md)görüntüleyin. |
+| müported | Seçim FromLanguageCode girişi ya da defaultFromLanguageCode parametresi sağlanmıyorsa ve otomatik dil algılama başarısız olduğunda belgelerin çevrilme dil kodu.  Bir dil için bir dil belirtilmemişse, Ingilizce (en), dilden Itibaren bu şekilde kullanılacaktır. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md)görüntüleyin. |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
 | Giriş adı     | Açıklama |
 |--------------------|-------------|
 | metin | Çevrilecek metin.|
-| toLanguageCode    | Metnin çevrilmesi gereken dili belirten dize. Bu giriş belirtilmemişse, metni çevirmek için defaultToLanguageCode kullanılır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) görün|
-| fromLanguageCode  | Metnin geçerli dilini gösteren bir dize. Bu parametre belirtilmemişse, metni çevirmek için defaultFromLanguageCode (veya defaultFromLanguageCode sağlanmazsa otomatik dil algılama) kullanılır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) görün|
+| toLanguageCode    | Metnin çevrilmesi gereken dili belirten dize. Bu giriş belirtilmemişse, metni çevirmek için defaultToLanguageCode kullanılır. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md) görün|
+| fromLanguageCode  | Metnin geçerli dilini gösteren bir dize. Bu parametre belirtilmemişse, metni çevirmek için defaultFromLanguageCode (veya defaultFromLanguageCode sağlanmazsa otomatik dil algılama) kullanılır. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md) görün|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
@@ -91,7 +91,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
   }
 ```
 
-##  <a name="sample-input"></a>Örnek giriş
+##  <a name="sample-input"></a>Örnek girdi
 
 ```json
 {

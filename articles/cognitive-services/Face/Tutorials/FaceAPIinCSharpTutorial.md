@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: d5d16181eb4dda08f002587545f99fab757b6b0e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 13bbb5e006f725ff0b75a5b86aee414f84a80dcf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586435"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936308"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Öğretici: bir görüntüde yüz verileri göstermek için bir Windows Presentation Framework (WPF) uygulaması oluşturma
 
@@ -37,7 +38,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.

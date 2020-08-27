@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319057"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935509"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme
 
@@ -29,7 +29,7 @@ Yerleşik yetenekler şu kategorilere ayrılır:
 
 ![Zenginleştirme ardışık düzen diyagramı](./media/cognitive-search-intro/cogsearch-architecture.png "zenginleştirme ardışık düzenine genel bakış")
 
-Azure Bilişsel Arama 'daki yerleşik yetenekler, Bilişsel Hizmetler API'si: [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) ve [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)'de önceden eğitilen makine öğrenimi modellerini temel alır. İçerik işleme sırasında bu kaynaklardan yararlanmak istiyorsanız bilişsel hizmetler kaynağı ekleyebilirsiniz.
+Azure Bilişsel Arama 'daki yerleşik yetenekler, Bilişsel Hizmetler API'si: [görüntü işleme](../cognitive-services/computer-vision/index.yml) ve [metin analizi](../cognitive-services/text-analytics/overview.md)'de önceden eğitilen makine öğrenimi modellerini temel alır. İçerik işleme sırasında bu kaynaklardan yararlanmak istiyorsanız bilişsel hizmetler kaynağı ekleyebilirsiniz.
 
 Doğal dil ve görüntü işleme, veri alma aşaması sırasında, Azure Bilişsel Arama 'te aranabilir bir dizinde belge kompozisyonunun bir parçası haline gelmesine neden olacak şekilde uygulanır. Verilerin bir Azure veri kümesi olarak kaynağı oluşturulur ve ardından ihtiyacınız olan [yerleşik becerileri](cognitive-search-predefined-skills.md) kullanarak bir dizin oluşturma işlem hattı üzerinden gönderilir.  
 
@@ -57,9 +57,9 @@ Yerleşik yetenekler kullanılarak derlenen bir [beceri](cognitive-search-defini
 
 ### <a name="more-about-custom-skills"></a>Özel yetenekler hakkında daha fazla bilgi
 
-Özel yetenekler, formları tanıma gibi daha karmaşık senaryoları veya özel [Beceri Web arabirimine](cognitive-search-custom-skill-interface.md)sağladığınız ve kaydırabileceğiniz bir modeli kullanarak özel varlık algılamayı destekleyebilir. Özel yeteneklerin çeşitli örnekleri, [form tanıyıcı](/azure/cognitive-services/form-recognizer/overview), [Bing varlık arama API'si](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)tümleştirmesi ve [özel varlık tanıma](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)içerir.
+Özel yetenekler, formları tanıma gibi daha karmaşık senaryoları veya özel [Beceri Web arabirimine](cognitive-search-custom-skill-interface.md)sağladığınız ve kaydırabileceğiniz bir modeli kullanarak özel varlık algılamayı destekleyebilir. Özel yeteneklerin çeşitli örnekleri, [form tanıyıcı](../cognitive-services/form-recognizer/overview.md), [Bing varlık arama API'si](./cognitive-search-create-custom-skill-example.md)tümleştirmesi ve [özel varlık tanıma](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)içerir.
 
-## <a name="steps-in-an-enrichment-pipeline"></a>Bir zenginleştirme ardışık düzeninde bulunan adımlar<a name="enrichment-steps"></a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Bir zenginleştirme ardışık düzeninde bulunan adımlar <a name="enrichment-steps"></a>
 
 Bir zenginleştirme işlem hattı, [*Dizin oluşturucular*](search-indexer-overview.md)temel alır. Dizin oluşturucular, belge çözme için dizin ve veri kaynağınız arasındaki alan eşlemelerine göre bir dizini doldurur. Artık, Özellikleri Dizin oluşturucular, kesme ve zenginleştirmenin tanımladığınız beceri (ler) e göre belgeleri. Dizin oluşturulduktan sonra, [Azure bilişsel arama tarafından desteklenen tüm sorgu türleri](search-query-overview.md)aracılığıyla arama istekleri aracılığıyla içeriğe erişebilirsiniz.  Dizin oluşturuculardan yeni olduğunuzda, bu bölüm adımlarda size yol gösterir.
 
@@ -83,7 +83,7 @@ Dahili olarak, işlem hattı zenginleştirilmiş bir belge koleksiyonu oluşturu
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Zenginleştirmelerin kaydedileceği bir knowledgeStore öğesi ekleme
 
-[Arama Rest api-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) `knowledgeStore` , becerileri ' i, zenginleştirmeleri 'in nasıl depolandığını tanımlayan bir Azure depolama bağlantısı ve projeksiyonu sağlayan bir tanım ile genişletiyor. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu](knowledge-store-concept-intro.md).
+[Arama Rest api-Version = 2020-06-30](/rest/api/searchservice/) `knowledgeStore` , becerileri ' i, zenginleştirmeleri 'in nasıl depolandığını tanımlayan bir Azure depolama bağlantısı ve projeksiyonu sağlayan bir tanım ile genişletiyor. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>3. Adım: arama dizini ve sorgu tabanlı erişim
 
@@ -99,13 +99,13 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 
 1. Azure Kaynak verilerinizi bir temsili örneğine alt küme haline koyun. Dizin oluşturma zaman alır, bu nedenle küçük, temsili bir veri kümesiyle başlar ve sonra çözüm malarınız kadar artımlı olarak oluşturun.
 
-1. Veri alımı için bir bağlantı dizesi sağlamak üzere Azure Bilişsel Arama 'de bir [veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) oluşturun.
+1. Veri alımı için bir bağlantı dizesi sağlamak üzere Azure Bilişsel Arama 'de bir [veri kaynağı nesnesi](/rest/api/searchservice/create-data-source) oluşturun.
 
-1. Zenginleştirme adımları ile bir [beceri](https://docs.microsoft.com/rest/api/searchservice/create-skillset) oluşturun.
+1. Zenginleştirme adımları ile bir [beceri](/rest/api/searchservice/create-skillset) oluşturun.
 
-1. [Dizin şemasını](https://docs.microsoft.com/rest/api/searchservice/create-index)tanımlayın. *Alanlar* koleksiyonu, kaynak verilerden alanlar içerir. Ayrıca, zenginleştirme sırasında oluşturulan içerikler için oluşturulan değerleri tutmak üzere ek alanlar da saplama yapmanız gerekir.
+1. [Dizin şemasını](/rest/api/searchservice/create-index)tanımlayın. *Alanlar* koleksiyonu, kaynak verilerden alanlar içerir. Ayrıca, zenginleştirme sırasında oluşturulan içerikler için oluşturulan değerleri tutmak üzere ek alanlar da saplama yapmanız gerekir.
 
-1. Veri kaynağına, beceri ve dizine başvuran [Dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) tanımlayın.
+1. Veri kaynağına, beceri ve dizine başvuran [Dizin oluşturucuyu](/rest/api/searchservice/create-indexer) tanımlayın.
 
 1. Dizin Oluşturucu içinde *Outputfieldmappings*ekleyin. Bu bölüm, Beceri (adım 3 ' te) çıktısını Dizin şemasındaki (adım 4 ' te) giriş alanlarına eşler.
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510873"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935475"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
@@ -54,7 +54,7 @@ Bu durumda, Dizin oluşturucudan hataları yok saymasını söylemek isteyebilir
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>İpucu 4: beceri sorunlarını belirlemek ve çözmek için hata ayıklama oturumlarını kullanma 
 
-Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri kaydedebilirsiniz. Bu [, belgeleri okuyan](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)bir önizleme özelliğidir. Kavramlar ve Başlarken hakkında daha fazla bilgi için bkz. [hata ayıklama oturumları](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri kaydedebilirsiniz. Bu [, belgeleri okuyan](./cognitive-search-debug-session.md)bir önizleme özelliğidir. Kavramlar ve Başlarken hakkında daha fazla bilgi için bkz. [hata ayıklama oturumları](./cognitive-search-tutorial-debug-sessions.md).
 
 Tek bir belgede çalışan hata ayıklama oturumları, daha karmaşık zenginleştirme işlem hatlarını tekrarlayarak oluşturmanız için harika bir yoldur.
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146182"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934931"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
 Bu makalede, toplam eşleşen belge sayısı, sayfalandırılmış sonuçlar, sıralanmış sonuçlar ve isabet vurgulu terimler ile geri gelen bir sorgu yanıtının nasıl alınacağı açıklanmaktadır.
 
-Bir yanıtın yapısı, sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'da [Documentsearchresult sınıfında](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) [Arama belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Bir yanıtın yapısı, sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'da [Documentsearchresult sınıfında](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) [Arama belgesi](/rest/api/searchservice/Search-Documents) .
 
 ## <a name="result-composition"></a>Sonuç oluşturma
 
@@ -47,9 +47,9 @@ Farklı sayıda eşleşen belge döndürmek için `$top` `$skip` sorgu isteğine
 
 + `$count=true`Bir dizin içindeki toplam eşleşen belge sayısının sayısını almak için ekleyin.
 
-+ İlk 15 eşleşen belge kümesini ve toplam eşleşme sayısını döndürün:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ İlk 15 eşleşen belge kümesini ve toplam eşleşme sayısını döndürün: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ İkinci kümeyi döndürün, sonraki 15 ' i almak için ilk 15 ' i atlayarak: `$top=15&$skip=15` . Üçüncü 15 kümesi için aynısını yapın:`$top=15&$skip=30`
++ İkinci kümeyi döndürün, sonraki 15 ' i almak için ilk 15 ' i atlayarak: `$top=15&$skip=15` . Üçüncü 15 kümesi için aynısını yapın: `$top=15&$skip=30`
 
 Temel alınan dizin değiştirilirken sayfalandırılmış sorguların sonuçlarının kararlı olmaması garanti edilmez. Sayfalama `$skip` , her bir sayfa için değerini değiştirir, ancak her sorgu bağımsızdır ve sorgu zamanında dizinde olduğu gibi verilerin geçerli görünümü üzerinde çalışır (başka bir deyişle, bir genel amaçlı veritabanında bulunanlar gibi, sonuçların önbelleğe alınması veya anlık görüntüsü yoktur).
  
@@ -98,7 +98,7 @@ Başka bir seçenek de [özel bir Puanlama profili](index-add-scoring-profiles.m
 
 ## <a name="hit-highlighting"></a>İsabet vurgulama
 
-İsabet vurgulama, bir sonuçla eşleşen terimlere uygulanan metin biçimlendirmesine (kalın veya sarı vurgular gibi) başvurur, bu da eşleştirmeyi daha kolay hale getirir. [Sorgu isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)isabet vurgulama yönergeleri verilmiştir. 
+İsabet vurgulama, bir sonuçla eşleşen terimlere uygulanan metin biçimlendirmesine (kalın veya sarı vurgular gibi) başvurur, bu da eşleştirmeyi daha kolay hale getirir. [Sorgu isteğinde](/rest/api/searchservice/search-documents)isabet vurgulama yönergeleri verilmiştir. 
 
 İsabet vurgulamasını etkinleştirmek için, `highlight=[comma-delimited list of string fields]` vurgulamayı hangi alanların vurgulakullanacağınızı belirtmek için ekleyin. Vurgulama, bir açıklama alanı gibi daha uzun içerik alanları için yararlıdır, burada eşleşme hemen belirgin değildir. Yalnızca **arama için aranabilir** olan alan tanımları, isabet vurgulama için geçerlidir.
 

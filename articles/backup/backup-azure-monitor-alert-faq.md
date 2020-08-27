@@ -4,12 +4,12 @@ description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup ha
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 2112a439585e6b111614e728dbc4a1a5eb4ee3d2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827180"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892567"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 
@@ -38,7 +38,7 @@ Bir LA çalışma alanı oluşturduktan sonra, verileri en fazla 2 yıl tutmayı
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA çalışma alanını yapılandırdıktan sonra raporlardaki tüm verilerimi görüyorum mi?
 
- Tanılama ayarlarını yapılandırdıktan sonra oluşturulan tüm veriler, LA çalışma alanına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra, raporlara gönderilir.
+ Tanılama ayarlarını yapılandırdıktan sonra oluşturulan tüm veriler, LA çalışma alanına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra raporlara gönderilir.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasaların ve aboneliklerde görüntüleyebilir miyim?
 

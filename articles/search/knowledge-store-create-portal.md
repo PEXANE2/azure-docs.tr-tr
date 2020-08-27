@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924376"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
 
@@ -31,7 +31,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-+ [BLOB depolama alanı](https://docs.microsoft.com/azure/storage/blobs/)olan bir Azure depolama hesabı.
++ [BLOB depolama alanı](../storage/blobs/index.yml)olan bir Azure depolama hesabı.
 
 > [!NOTE]
 > Bu hızlı başlangıç Ayrıca AI için Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i de kullanır. İş yükü çok küçük olduğu için bilişsel hizmetler, en fazla 20 işlem için ücretsiz işleme için arka planda dokunduğunda. Bu, ek bir bilişsel hizmetler kaynağı oluşturmak zorunda kalmadan bu Alıştırmayı tamamlayabilmeniz anlamına gelir.
@@ -42,7 +42,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
 1. [HotelReviews_Free.csvindirin ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
 
-1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
+1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
 
    + **StorageV2 (genel amaçlı v2)** hesap türünü seçin.
 
@@ -56,7 +56,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
     ![Azure Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob kapsayıcısını oluşturma")
 
-1. BLOB depolama sayfalarından çıkmadan önce, sol gezinti bölmesindeki bir bağlantıyı kullanarak **erişim tuşları** sayfasını açın. Blob depolamadan veri almak için bir bağlantı dizesi alın. Bir bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. BLOB depolama sayfalarından çıkmadan önce, sol gezinti bölmesindeki bir bağlantıyı kullanarak **erişim tuşları** sayfasını açın. Blob depolamadan veri almak için bir bağlantı dizesi alın. Bir bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 Artık **veri alma** Sihirbazı 'na taşımaya hazırsınız.
 

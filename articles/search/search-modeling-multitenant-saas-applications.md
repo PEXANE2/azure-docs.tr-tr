@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230766"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935033"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
 
@@ -119,7 +119,7 @@ Bilişsel Arama Azure 'da çok kiracılı senaryolar modellenmesini sağlayan yu
 
 Kiracı başına hizmet ve kiracı başına Dizin modelleri yeterince küçük kapsamlar değilse, bir dizini modelleyebilir ve daha da fazla ayrıntı düzeyi elde edebilirsiniz.
 
-Tek bir dizinin farklı istemci uç noktaları için farklı davranması için, bir dizine, olası her istemci için belirli bir değeri atayan bir alan eklenebilir. Bir istemcinin bir dizini sorgulamak veya değiştirmek için Azure Bilişsel Arama her çağırdığında, istemci uygulamasındaki kod, sorgu sırasında Azure Bilişsel Arama [filtre](https://msdn.microsoft.com/library/azure/dn798921.aspx) özelliğini kullanarak bu alan için uygun değeri belirtir.
+Tek bir dizinin farklı istemci uç noktaları için farklı davranması için, bir dizine, olası her istemci için belirli bir değeri atayan bir alan eklenebilir. Bir istemcinin bir dizini sorgulamak veya değiştirmek için Azure Bilişsel Arama her çağırdığında, istemci uygulamasındaki kod, sorgu sırasında Azure Bilişsel Arama [filtre](./query-odata-filter-orderby-syntax.md) özelliğini kullanarak bu alan için uygun değeri belirtir.
 
 Bu yöntem ayrı kullanıcı hesaplarının işlevselliğini, farklı izin düzeylerini ve hatta tamamen ayrı uygulamaları elde etmek için kullanılabilir.
 
@@ -132,4 +132,3 @@ Bu yöntem ayrı kullanıcı hesaplarının işlevselliğini, farklı izin düze
 Azure Bilişsel Arama birçok uygulama için etkileyici bir seçimdir. Çok kiracılı uygulamalar için çeşitli tasarım düzenlerini değerlendirirken, Azure Bilişsel Arama en iyi şekilde her boyuttaki uygulama iş yüklerine ve mimarilerine sığması için [çeşitli fiyatlandırma katmanlarını](https://azure.microsoft.com/pricing/details/search/) ve ilgili [hizmet sınırlarını](search-limits-quotas-capacity.md) göz önünde bulundurun.
 
 Azure Bilişsel Arama ve çoklu kiracı senaryolarıyla ilgili herhangi bir soru, öğesine yönlendirilebilir azuresearch_contact@microsoft.com .
-

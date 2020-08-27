@@ -3,14 +3,14 @@ title: Azure Kubernetes hizmetinde Azure AD kullanma
 description: Azure Kubernetes hizmetinde (AKS) Azure AD 'yi nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661070"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88937005"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -35,19 +35,21 @@ AKS tarafından yönetilen Azure Active Directory tümleştirme, [aks 'in destek
 * AKS tarafından yönetilen Azue AD tümleştirmesi için RBAC özellikli olmayan kümeler desteklenmez
 * AKS tarafından yönetilen Azure AD tümleştirmesi ile ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure CLı sürüm 2.9.0 veya üzeri
-* Minimum [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) sürümü ile kubectl
+* Azure CLı sürüm 2.11.0 veya üzeri
+* En düşük [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) veya [kubelogin](https://github.com/Azure/kubelogin) sürümü ile kubectl
+* Held, en [helm](https://github.com/helm/helm)düşük held 3,3 sürümünü kullanıyorsanız.
 
 > [!Important]
-> Kubectl 'yi minimum 1,18 sürümü ile kullanmanız gerekir
+> Kubectl 'yi minimum 1.18.1 veya kubelogin sürümü ile kullanmanız gerekir. Doğru sürümü kullanmıyorsanız, kimlik doğrulama sorunları olduğunu fark edeceksiniz.
 
-Kubectl 'yi yüklemek için aşağıdaki komutları kullanın:
+Kubectl ve kubelogin yüklemek için aşağıdaki komutları kullanın:
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 Diğer işletim sistemleri için [Bu yönergeleri](https://kubernetes.io/docs/tasks/tools/install-kubectl/) kullanın.

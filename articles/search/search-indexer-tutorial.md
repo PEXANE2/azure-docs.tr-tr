@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 28aadb60703f32e486ed2de3e44b23758c57d3ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86045459"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935135"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure SQL verilerinin dizinini oluştur
 
 Azure Bilişsel Arama 'te arama dizinine göndererek Azure SQL veritabanı 'ndan aranabilir verileri ayıklamak için bir [Dizin Oluşturucu](search-indexer-overview.md) yapılandırın. 
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Azure SQL veritabanı 'na bağlanan bir veri kaynağı oluşturma
@@ -29,7 +29,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -144,7 +144,7 @@ public string HotelName { get; set; }
 
 Ana program, bir istemci, dizin, veri kaynağı ve Dizin Oluşturucu oluşturma mantığını içerir. Kod, bu programı birden çok kez çalıştırabileceğiniz varsayımıyla, aynı adı taşıyan kaynakları denetler ve siler.
 
-Veri kaynağı nesnesi, Azure SQL 'in yerleşik [değişiklik algılama özelliklerinden](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) yararlanmak için [kısmi veya artımlı dizin oluşturma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) da dahIl olmak üzere Azure SQL veritabanı kaynaklarına özgü ayarlarla yapılandırılır. Azure SQL 'deki demo oteller veritabanının **IsDeleted**adlı "geçici silme" sütunu vardır. Bu sütun veritabanında true olarak ayarlandığında, Dizin Oluşturucu ilgili belgeyi Azure Bilişsel Arama dizininden kaldırır.
+Veri kaynağı nesnesi, Azure SQL 'in yerleşik [değişiklik algılama özelliklerinden](/sql/relational-databases/track-changes/about-change-tracking-sql-server) yararlanmak için [kısmi veya artımlı dizin oluşturma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) da dahIl olmak üzere Azure SQL veritabanı kaynaklarına özgü ayarlarla yapılandırılır. Azure SQL 'deki demo oteller veritabanının **IsDeleted**adlı "geçici silme" sütunu vardır. Bu sütun veritabanında true olarak ayarlandığında, Dizin Oluşturucu ilgili belgeyi Azure Bilişsel Arama dizininden kaldırır.
 
   ```csharp
   Console.WriteLine("Creating data source...");

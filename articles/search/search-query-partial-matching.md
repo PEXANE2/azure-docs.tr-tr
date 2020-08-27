@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260993"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935781"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (joker karakter, Regex, desenler)
 
@@ -51,7 +51,7 @@ Parçalar veya desenler ya da özel karakterler üzerinde arama yapmanız gerekt
 + Dizin oluşturma ve test etme
 
 > [!TIP]
-> Çözümleyiciler değerlendirmek, sık sık dizin yeniden oluşturma gerektiren yinelemeli bir işlemdir. Bu adımı Postman, [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index), [Dizin silme](https://docs.microsoft.com/rest/api/searchservice/delete-index),[belge yükleme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)ve [belge arama](https://docs.microsoft.com/rest/api/searchservice/search-documents)için REST API 'leri kullanarak daha kolay hale getirebilirsiniz. Yükleme belgeleri için, istek gövdesi test etmek istediğiniz küçük bir temsili veri kümesi (örneğin, telefon numarası veya ürün kodu içeren bir alan) içermelidir. Aynı Postman koleksiyonundaki bu API 'lerle, bu adımları hızla geçebilirsiniz.
+> Çözümleyiciler değerlendirmek, sık sık dizin yeniden oluşturma gerektiren yinelemeli bir işlemdir. Bu adımı Postman, [Dizin oluşturma](/rest/api/searchservice/create-index), [Dizin silme](/rest/api/searchservice/delete-index),[belge yükleme](/rest/api/searchservice/addupdate-or-delete-documents)ve [belge arama](/rest/api/searchservice/search-documents)için REST API 'leri kullanarak daha kolay hale getirebilirsiniz. Yükleme belgeleri için, istek gövdesi test etmek istediğiniz küçük bir temsili veri kümesi (örneğin, telefon numarası veya ürün kodu içeren bir alan) içermelidir. Aynı Postman koleksiyonundaki bu API 'lerle, bu adımları hızla geçebilirsiniz.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Farklı senaryolar için yinelenen alanlar
 
@@ -85,7 +85,7 @@ Tam terim belirteçleri üreten bir çözümleyici seçerken, aşağıdaki çöz
 | [boşlu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Yalnızca boşluklardan ayrılır. Tireler veya diğer karakterleri içeren koşullar tek bir belirteç olarak değerlendirilir. |
 | [özel çözümleyici](index-add-custom-analyzers.md) | Önerilen Özel bir çözümleyici oluşturma, hem belirteç ayırıcı hem de Token filtresi belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel çözümleyici, hangi simgeleyiciler ve belirteç filtrelerini kullanacağınızı seçmenizi sağlar. <br><br>Önerilen birleşim, [küçük harfli bir belirteç filtresiyle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) [Simgeleştirici anahtar kelimedir](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) . Tek başına, önceden tanımlanmış [anahtar sözcük Çözümleyicisi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) büyük/küçük harf, sorguların başarısız olmasına neden olabilir. Özel çözümleyici, size küçük harfli belirteç filtresi eklemek için bir mekanizma sağlar. |
 
-Postman gibi bir Web API test aracı kullanıyorsanız, simgeleştirilmiş çıktıyı incelemek için [Test ÇÖZÜMLEYICISI Rest çağrısını](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) ekleyebilirsiniz.
+Postman gibi bir Web API test aracı kullanıyorsanız, simgeleştirilmiş çıktıyı incelemek için [Test ÇÖZÜMLEYICISI Rest çağrısını](/rest/api/searchservice/test-analyzer) ekleyebilirsiniz.
 
 Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir dizin ve tire ya da kısmi terim içeren bir alan verildiğinde, hangi belirteçlerin yayınlandığını görmek için belirli koşullara göre çeşitli çözümleyiciler deneyebilirsiniz.  
 
@@ -160,7 +160,7 @@ Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir 
 
 Yerleşik veya önceden tanımlanmış çözümleyiciler `analyzer` , dizinde ek yapılandırma gerekmeden, bir alan tanımının bir özelliğinde ad ile belirtilebilir. Aşağıdaki örnek, `whitespace` bir alanı üzerinde çözümleyiciyi nasıl ayarlayabileceğinizi gösterir. 
 
-Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -222,19 +222,19 @@ Aşağıdaki örnek, Simgeleştirici ve küçük harfli bir belirteç filtresi a
 
 Önceki bölümlerde Logic açıklanmaktadır. Bu bölüm, çözümünüzü sınarken çağırmanız gereken her API aracılığıyla yapmanız gereken adımları uygulayın. Daha önce belirtildiği gibi, Postman gibi etkileşimli bir Web testi aracı kullanırsanız, bu görevleri hızlıca izleyebilirsiniz.
 
-+ [Dizini Sil](https://docs.microsoft.com/rest/api/searchservice/delete-index) , yeniden oluşturabilmeniz için aynı ada sahip var olan bir dizini kaldırır.
++ [Dizini Sil](/rest/api/searchservice/delete-index) , yeniden oluşturabilmeniz için aynı ada sahip var olan bir dizini kaldırır.
 
-+ [Create INDEX](https://docs.microsoft.com/rest/api/searchservice/create-index) , çözümleyici tanımları ve çözümleyici belirtimine sahip alanlar da dahil olmak üzere arama hizmetinizde dizin yapısı oluşturur.
++ [Create INDEX](/rest/api/searchservice/create-index) , çözümleyici tanımları ve çözümleyici belirtimine sahip alanlar da dahil olmak üzere arama hizmetinizde dizin yapısı oluşturur.
 
-+ [Yükleme belgeleri](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) , dizininizdeki ve aranabilir içeriğin yanı sıra aynı yapıya sahip belgeleri içeri aktarır. Bu adımdan sonra, dizininiz sorgu veya test için hazırlanıyor.
++ [Yükleme belgeleri](/rest/api/searchservice/addupdate-or-delete-documents) , dizininizdeki ve aranabilir içeriğin yanı sıra aynı yapıya sahip belgeleri içeri aktarır. Bu adımdan sonra, dizininiz sorgu veya test için hazırlanıyor.
 
-+ [Test Çözümleyicisi](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) , [bir çözümleyici seçin](#choose-an-analyzer)bölümünde tanıtılmıştır. Koşulların nasıl simgeleştirilmiş olduğunu anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
++ [Test Çözümleyicisi](/rest/api/searchservice/test-analyzer) , [bir çözümleyici seçin](#choose-an-analyzer)bölümünde tanıtılmıştır. Koşulların nasıl simgeleştirilmiş olduğunu anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
 
-+ [Arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) , joker ve normal ifadeler için [basit söz dizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulacağını açıklar.
++ [Arama belgeleri](/rest/api/searchservice/search-documents) , joker ve normal ifadeler için [basit söz dizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulacağını açıklar.
 
   "+ 1 (425) 703-6214" üzerinde bir eşleşme bulmak için "3-6214" sorgulaması gibi kısmi terim sorguları için, basit söz dizimini kullanabilirsiniz: `search=3-6214&queryType=simple` .
 
-  "Num" veya "" alfasayısal "ile eşleşen bir eşleşme bulmak için sayısal olarak sorgu ve sonek sorguları için, tam Lucene söz dizimini ve bir normal ifadeyi kullanın:`search=/.*num.*/&queryType=full`
+  "Num" veya "" alfasayısal "ile eşleşen bir eşleşme bulmak için sayısal olarak sorgu ve sonek sorguları için, tam Lucene söz dizimini ve bir normal ifadeyi kullanın: `search=/.*num.*/&queryType=full`
 
 ## <a name="tune-query-performance"></a>Sorgu performansını ayarlama
 
@@ -287,5 +287,5 @@ Bu makalede, çözümleyicilerin her ikisi de sorgu sorunlarına katkıda bulunm
 
 + [Dil çözümleyicileri](search-language-support.md)
 + [Azure Bilişsel Arama metin işleme için çözümleyiciler](search-analyzers.md)
-+ [Metin API 'sini çözümleme (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Metin API 'sini çözümleme (REST)](/rest/api/searchservice/test-analyzer)
 + [Tam metin aramasının nasıl çalıştığı (sorgu mimarisi)](search-lucene-query-architecture.md)

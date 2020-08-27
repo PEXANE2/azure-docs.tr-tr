@@ -3,13 +3,13 @@ title: Özel olaylar ve ölçümler için API Application Insights | Microsoft D
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, Web sayfasına veya hizmete birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366881"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936580"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -59,7 +59,7 @@ Bir örneğini al `TelemetryClient` (Web sayfalarındaki JavaScript hariç):
 
 [.Net/.NET Core uygulamaları için ASP.NET Core uygulamalar ve http olmayan/çalışan](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) için, [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) `TelemetryClient` ilgili belgelerde açıklandığı gibi bağımlılık ekleme kapsayıcısından bir örnek almanız önerilir.
 
-AzureFunctions v2 + veya Azure WebJobs v3 + kullanıyorsanız, bu belgeyi izleyin:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+AzureFunctions v2 + veya Azure WebJobs v3 + kullanıyorsanız, bu belgeyi izleyin: https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -204,8 +204,8 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 Telemetri, `customMetrics` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackMetric(..)` .
 
-* `valueSum`-Bu, ölçümlerin toplamıdır. Ortalama değeri almak için, öğesini ayırın `valueCount` .
-* `valueCount`-Bu çağrıda toplanmış ölçüm sayısı `trackMetric(..)` .
+* `valueSum` -Bu, ölçümlerin toplamıdır. Ortalama değeri almak için, öğesini ayırın `valueCount` .
+* `valueCount` -Bu çağrıda toplanmış ölçüm sayısı `trackMetric(..)` .
 
 ## <a name="page-views"></a>Sayfa görünümleri
 
@@ -825,7 +825,7 @@ Dikkat edin:
 * CustomDimensions veya Customölçüler JSON öğesinden bir değeri ayıkladığınızda, dinamik türe sahiptir ve bu nedenle veya ' i atamalısınız `tostring` `todouble` .
 * [Örnekleme](./sampling.md)olasılığa yönelik bir hesap almak için, kullanmanız gerekir `sum(itemCount)` `count()` .
 
-## <a name="timing-events"></a><a name="timed"></a>Zamanlama olayları
+## <a name="timing-events"></a><a name="timed"></a> Zamanlama olayları
 
 Bazen bir eylem gerçekleştirmek için ne kadar sürdüğünü grafik yapmak isteyebilirsiniz. Örneğin, kullanıcıların bir oyunun seçeneklerini düşünmek için ne kadar süreceğine öğrenmek isteyebilirsiniz. Bunun için ölçüm parametresini kullanabilirsiniz.
 
@@ -972,7 +972,7 @@ applicationInsights.setup()
     .start();
 ```
 
-Başlatma sonrasında bu toplayıcıları devre dışı bırakmak için yapılandırma nesnesini kullanın:`applicationInsights.Configuration.setAutoCollectRequests(false)`
+Başlatma sonrasında bu toplayıcıları devre dışı bırakmak için yapılandırma nesnesini kullanın: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="developer-mode"></a><a name="debug"></a>Geliştirici modu
 
@@ -1001,7 +1001,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>Seçili özel telemetri için izleme anahtarı ayarlanıyor
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> Seçili özel telemetri için izleme anahtarı ayarlanıyor
 
 *C#*
 
@@ -1011,7 +1011,7 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dinamik izleme anahtarı
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dinamik izleme anahtarı
 
 Geliştirme, test ve üretim ortamlarından Telemetriyi karışmamak için, ortama bağlı olarak [ayrı Application Insights kaynakları oluşturabilir](./create-new-resource.md) ve anahtarlarını değiştirebilirsiniz.
 

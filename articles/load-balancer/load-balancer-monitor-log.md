@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448844"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935611"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel Temel Yük Dengeleyici için Azure İzleyici günlükleri
 
@@ -29,7 +29,7 @@ Temel yük dengeleyiciler yönetmek ve sorunlarını gidermek için Azure 'da fa
 * **Durum araştırma günlükleri:** Bu günlüğü, sistem durumu araştırma hataları nedeniyle yük dengeleyiciden istek almamış arka uç havuzunuzdaki örnek sayısı gibi, sistem durumu araştırmanız tarafından algılanan sorunları görüntülemek için kullanabilirsiniz. Bu günlük, durum araştırma durumunda bir değişiklik olduğunda yazılır.
 
 > [!IMPORTANT]
-> **Durum araştırma olay günlükleri Şu anda işlevsel değildir ve [Azure Load Balancer bilinen sorunlarda](whats-new.md#known-issues)listelenmiştir.** Azure Izleyici günlükleri Şu anda yalnızca genel temel yük dengeleyiciler için geçerlidir. Günlükler yalnızca Kaynak Yöneticisi dağıtım modelinde dağıtılan kaynaklar için kullanılabilir. Klasik dağıtım modelinde kaynaklar için günlük kullanamazsınız. Dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi dağıtımı ve klasik dağıtımı anlama](../azure-resource-manager/management/deployment-models.md).
+> **Durum araştırma olay günlükleri Şu anda işlevsel değildir ve [Azure Load Balancer bilinen sorunlarda](whats-new.md#known-issues)listelenmiştir.** Günlükler yalnızca Kaynak Yöneticisi dağıtım modelinde dağıtılan kaynaklar için kullanılabilir. Klasik dağıtım modelinde kaynaklar için günlük kullanamazsınız. Dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi dağıtımı ve klasik dağıtımı anlama](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Günlü kaydını etkinleştir
 

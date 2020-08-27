@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
-ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056831"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934591"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -60,7 +61,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Description | Gerekli/Isteğe bağlı |
+|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -155,7 +156,7 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 
 Öbekli aktarım ( `Transfer-Encoding: chunked` ), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API kısmi veya geçici sonuçlar sağlamıyor.
 
-Bu kod örneği, öbekte nasıl ses gönderileceğini gösterir. Yalnızca ilk öbek, ses dosyasının üst bilgisini içermelidir. `request`, `HttpWebRequest` uygun REST uç noktasına bağlı bir nesnedir. `audioFile`diskteki bir ses dosyasının yoludur.
+Bu kod örneği, öbekte nasıl ses gönderileceğini gösterir. Yalnızca ilk öbek, ses dosyasının üst bilgisini içermelidir. `request` , `HttpWebRequest` uygun REST uç noktasına bağlı bir nesnedir. `audioFile` diskteki bir ses dosyasının yoludur.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);

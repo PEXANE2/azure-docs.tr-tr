@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021894"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936631"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021894"
 
 Serbest bir metin alanı gibi bazı durumlarda, yalnızca doğru [dil Çözümleyicisi](index-add-language-analyzers.md) ' ni seçerek arama sonuçları iyileştirecektir. Ancak telefon numaralarını, URL 'Leri veya e-postaları doğru şekilde aramak gibi bazı senaryolar özel çözümleyiciler kullanımını gerektirebilir.
 
-Bu öğretici, Postman ve Azure Bilişsel Arama [REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice/) kullanarak şunları sağlar:
+Bu öğretici, Postman ve Azure Bilişsel Arama [REST API 'lerini](/rest/api/searchservice/) kullanarak şunları sağlar:
 
 > [!div class="checklist"]
 > * Çözümleyicilerin nasıl çalıştığını açıklayın
@@ -201,7 +201,7 @@ Bu sorgu **, dört beklenen üç sonuç döndürür,** ancak aynı zamanda **iki
 }
 ```
 
-Daha sonra, herhangi bir biçimlendirme olmadan bir numara arayalım`4255550100`
+Daha sonra, herhangi bir biçimlendirme olmadan bir numara arayalım `4255550100`
 
 ```http
 GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic-index/docs?api-version=2019-05-06&search=4255550100
@@ -225,7 +225,7 @@ Bu sonuçların kafa karıştırıcı olduğunu fark ederseniz, tek başına siz
 
 ## <a name="4---debug-search-results"></a>4-hata ayıklama arama sonuçları
 
-Bu arama sonuçlarını anlamak için, çözümleyicilerin nasıl çalıştığını anlamak önemlidir. Buradan, [metin ANALIZI API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 'sini kullanarak varsayılan çözümleyici 'yi test edebilir ve ardından ihtiyaçlarınızı karşılayan bir çözümleyici oluşturabilirsiniz.
+Bu arama sonuçlarını anlamak için, çözümleyicilerin nasıl çalıştığını anlamak önemlidir. Buradan, [metin ANALIZI API](/rest/api/searchservice/test-analyzer) 'sini kullanarak varsayılan çözümleyici 'yi test edebilir ve ardından ihtiyaçlarınızı karşılayan bir çözümleyici oluşturabilirsiniz.
 
 ### <a name="how-analyzers-work"></a>Çözümleyiciler nasıl çalışır?
 
@@ -260,7 +260,7 @@ Sorgu terimleri, ters dizininizdeki koşullara eşleşmezse sonuçlar döndürü
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Metin analizi API 'sini kullanarak test Çözümleyicisi
 
-Azure Bilişsel Arama, metinleri nasıl işleyeceğini anlamak için çözümleyicilerin test etmenizi sağlayan bir [metin analizi API 'si](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) sağlar.
+Azure Bilişsel Arama, metinleri nasıl işleyeceğini anlamak için çözümleyicilerin test etmenizi sağlayan bir [metin analizi API 'si](/rest/api/searchservice/test-analyzer) sağlar.
 
 Aşağıdaki istek kullanılarak metin analizi API 'SI çağrılır:
 
@@ -404,7 +404,7 @@ Bu senaryo için bu filtrelerden birini kullanmaya gerek duymuz, ancak telefon n
 
 [NGram_v2 belirteç filtresi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html) belirteçleri, ve parametrelerine göre belirli bir boyutun n-gram ' lerine böler `minGram` `maxGram` .
 
-Telefon çözümleyici için, `minGram` `3` kullanıcıların aramasını beklediğimiz en kısa alt dize olduğundan, olarak ayarlandık. `maxGram`, uzantılar da `20` dahil olmak üzere tüm telefon numaralarının tek bir n-gram içine sığması için olarak ayarlanır.
+Telefon çözümleyici için, `minGram` `3` kullanıcıların aramasını beklediğimiz en kısa alt dize olduğundan, olarak ayarlandık. `maxGram` , uzantılar da `20` dahil olmak üzere tüm telefon numaralarının tek bir n-gram içine sığması için olarak ayarlanır.
 
  N-gram talihsiz yan etkisi, bazı yanlış pozitif sonuçlar döndürülmeyecektir. 7. adımda, n-gram belirteç filtresi içermeyen aramalar için ayrı bir çözümleyici oluşturarak bu adımı düzeltireceğiz.
 

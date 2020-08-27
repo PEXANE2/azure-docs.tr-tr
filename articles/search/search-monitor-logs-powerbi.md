@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060316"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935118"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Bilişsel Arama günlüklerini ve ölçümlerini Power BI ile görselleştirin
-[Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-what-is-azure-search) , arama hizmetinize ilişkin işlem günlüklerini ve hizmet ölçümlerini bir Azure depolama hesabında depolamanıza olanak tanır. Bu sayfa, bu bilgileri bir Power BI şablonu uygulaması aracılığıyla görselleştirmenize ilişkin yönergeler sağlar. Uygulama arama, dizin oluşturma, Işlemler ve hizmet ölçümleri hakkında bilgiler de dahil olmak üzere arama hizmetiniz hakkında ayrıntılı öngörüler sağlar.
+[Azure bilişsel arama](./search-what-is-azure-search.md) , arama hizmetinize ilişkin işlem günlüklerini ve hizmet ölçümlerini bir Azure depolama hesabında depolamanıza olanak tanır. Bu sayfa, bu bilgileri bir Power BI şablonu uygulaması aracılığıyla görselleştirmenize ilişkin yönergeler sağlar. Uygulama arama, dizin oluşturma, Işlemler ve hizmet ölçümleri hakkında bilgiler de dahil olmak üzere arama hizmetiniz hakkında ayrıntılı öngörüler sağlar.
 
 Azure Bilişsel Arama Power BI şablon uygulamasını bulabilirsiniz: [Power BI Apps marketi](https://appsource.microsoft.com/marketplace/apps)'nde **günlükleri ve ölçümleri analiz edin** .
 
@@ -23,7 +23,7 @@ Azure Bilişsel Arama Power BI şablon uygulamasını bulabilirsiniz: [Power BI 
 
 1. Arama hizmetiniz için ölçüm ve kaynak günlüğünü etkinleştirme:
 
-    1. Günlükleri arşivleyebileceğiniz mevcut bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) oluşturun veya bunu yapın
+    1. Günlükleri arşivleyebileceğiniz mevcut bir [Azure depolama hesabı](../storage/common/storage-account-create.md) oluşturun veya bunu yapın
     1. Azure portal Azure Bilişsel Arama hizmetinize gidin
     1. Sol sütundaki Izleme bölümü altında **Tanılama ayarları** ' nı seçin.
 
@@ -98,8 +98,8 @@ Verilerinizi göremiyorsanız, bu sorun giderme adımlarını izleyin:
 1. Veri kümesinin yenileme işlemi devam ettiğinden emin olun. Yenileme durumu göstergesi yukarıdaki 8. adımda gösterilmiştir. Yenileme işlemi devam ediyorsa, raporu açmak ve yenilemek için yenileme tamamlanana kadar bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Bilişsel Arama hakkında daha fazla bilgi](https://docs.microsoft.com/azure/search/)
+[Azure Bilişsel Arama hakkında daha fazla bilgi](./index.yml)
 
-[Power BI nedir?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Power BI nedir?](/power-bi/fundamentals/power-bi-overview)
 
-[Power BI hizmetinde tasarımcılara yönelik temel kavramlar](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Power BI hizmetinde tasarımcılara yönelik temel kavramlar](/power-bi/service-basic-concepts)

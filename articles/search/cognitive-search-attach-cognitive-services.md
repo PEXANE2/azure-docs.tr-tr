@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564438"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924986"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir beceri bilişsel hizmetler kaynağı iliştirme 
 
@@ -37,7 +37,7 @@ Azure Bilişsel Arama, görüntü analizi ve optik karakter tanıma (OCR), doğa
 
 ## <a name="same-region-requirement"></a>Aynı bölge gereksinimi
 
-Azure Bilişsel Arama ve Azure bilişsel hizmetler 'in aynı bölgede mevcut olması gerekir. Aksi takdirde, çalışma zamanında bu iletiyi alırsınız:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Azure Bilişsel Arama ve Azure bilişsel hizmetler 'in aynı bölgede mevcut olması gerekir. Aksi takdirde, çalışma zamanında bu iletiyi alırsınız: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Bir hizmeti bölgeler arasında taşımanın bir yolu yoktur. Bu hatayı alırsanız, Azure Bilişsel Arama ile aynı bölgede yeni bir bilişsel hizmetler kaynağı oluşturmanız gerekir.
 
@@ -170,5 +170,5 @@ Tümünü bir araya getirmek için, açıklanan beceri bu türdeki 1.000 PDF bel
 ## <a name="next-steps"></a>Sonraki adımlar
 + [Azure Bilişsel Arama fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/search/)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

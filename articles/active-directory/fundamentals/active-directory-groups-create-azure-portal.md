@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 69367da8a732f383222836442406a495bf82a0db
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797670"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892601"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory kullanarak temel Grup oluşturma ve üye ekleme
 Azure Active Directory (Azure AD) portalını kullanarak temel bir grup oluşturabilirsiniz. Bu makalenin amaçları doğrultusunda, kaynak sahibi (yönetici) tarafından tek bir kaynağa temel bir grup eklenir ve bu grup, o kaynağa erişmesi gereken belirli üyeleri (çalışanlar) içerir. Dinamik üyelikler ve kural oluşturma da dahil olmak üzere daha karmaşık senaryolar için bkz. [Azure Active Directory kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
@@ -28,7 +28,7 @@ Birkaç grup ve üyelik türü vardır. Aşağıdaki bilgiler, bir grup oluştur
 
 ### <a name="group-types"></a>Grup türleri:
 - **Güvenlik**. Bir kullanıcı grubu için paylaşılan kaynaklara üye ve bilgisayar erişimini yönetmek için kullanılır. Örneğin, belirli bir güvenlik ilkesi için bir güvenlik grubu oluşturabilirsiniz. Böylece, her üyeye ayrı ayrı izin eklemek zorunda kalmadan aynı anda tüm üyelere bir dizi izin verebilirsiniz. Bir güvenlik grubu, sahipleri olarak kullanıcıları, cihazları, grupları ve hizmet sorumlularını üye, kullanıcılar ve hizmet sorumluları olarak içerebilir. Kaynaklara erişimi yönetme hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları ile kaynaklara erişimi yönetme](active-directory-manage-groups.md).
-- **Office 365**. Üyelerin paylaşılan posta kutusuna, takvime, takvime, dosyalara, SharePoint sitesine vb.’ye erişmesini sağlayarak işbirliği fırsatları sunar. Bu seçenek, kuruluşunuzun dışındaki kişilerin de gruba erişmesini sağlar. Office 365 Grubu yalnızca üyeleri olarak kullanıcıları içerebilir. Hem kullanıcılar hem de hizmet sorumluları bir Office 365 grubunun sahipleri olabilir. Office 365 Grupları hakkında daha fazla bilgi için bkz. [Office 365 Grupları hakkında bilgi edinin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Microsoft 365**. Üyelerin paylaşılan posta kutusuna, takvime, takvime, dosyalara, SharePoint sitesine vb.’ye erişmesini sağlayarak işbirliği fırsatları sunar. Bu seçenek, kuruluşunuzun dışındaki kişilerin de gruba erişmesini sağlar. Bir Microsoft 365 Grubu yalnızca üyeleri olarak kullanıcıları içerebilir. Hem kullanıcılar hem de hizmet sorumluları Microsoft 365 grubunun sahipleri olabilir. Office 365 grupları hakkında daha fazla bilgi için bkz. [Microsoft 365 grupları hakkında bilgi edinin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Üyelik türleri:
 - **Atanan.** Bu grubun üyesi olacak ve benzersiz izinlere sahip olacak şekilde belirli kullanıcıları eklemenize olanak sağlar. Bu makalenin amaçları doğrultusunda, bu seçeneği kullanıyoruz.
@@ -77,7 +77,7 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz. Temel
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Grup hoş geldiniz e-postasını aç veya kapat
 
-Herhangi bir yeni Office 365 Grubu oluşturulduğunda, dinamik veya statik üyeliğe bakılmaksızın, gruba eklenen tüm kullanıcılara bir hoş geldiniz bildirimi gönderilir. Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, kuruluştaki tüm dinamik grup kuralları olası üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)'de devre dışı bırakabilirsiniz. 
+Yeni Microsoft 365 Grubu oluşturulduğunda, dinamik veya statik üyelikle, gruba eklenen tüm kullanıcılara bir hoş geldiniz bildirimi gönderilir. Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, kuruluştaki tüm dinamik grup kuralları olası üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)'de devre dışı bırakabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

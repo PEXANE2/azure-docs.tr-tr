@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806820"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935016"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
@@ -59,7 +59,7 @@ Portalda Izleme ve kullanım sekmelerinde bulunan bilgileri almak için aşağı
 
 ### <a name="activity-logs-and-service-health"></a>Etkinlik günlükleri ve hizmet durumu
 
-Portaldaki [**etkinlik günlüğü**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) sayfası, Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
+Portaldaki [**etkinlik günlüğü**](../azure-monitor/platform/activity-log.md#view-the-activity-log) sayfası, Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
 
 Ortak girişler, API anahtarlarına yönelik başvuruları, *yönetici anahtarı al* ve *sorgu anahtarları*al gibi genel bilgilendirme bildirimleri içerir. Bu etkinlikler, yönetici anahtarı (nesneleri oluştur veya Sil) veya sorgu anahtarı kullanılarak yapılan istekleri gösterir, ancak isteği kendisi göstermez. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
 
@@ -75,13 +75,13 @@ Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre olu�
  "Katman sınırlarına göre kullanım durumu")
 
 > [!NOTE]
-> Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Depolama uyarılarını almak için, kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren [bir özel çözüm](../azure-monitor/insights/solutions-creating.md) oluşturmanız gerekir.
+> Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi, Azure Izleyici 'de **AzureMetrics** tablosunda toplanmaz veya günlüğe kaydedilmez. Depolama uyarılarını almak için, kodunuzun depolama boyutunu denetlediği ve yanıtı işleyen kaynakla ilgili bildirimleri gösteren [bir özel çözüm](../azure-monitor/insights/solutions.md) oluşturmanız gerekir.
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Azure Izleyici ile eklenti izleme
 
-Azure Bilişsel Arama dahil olmak üzere birçok hizmet, ek uyarılar, ölçümler ve günlük Tanılama verileri için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/) ile tümleşir. 
+Azure Bilişsel Arama dahil olmak üzere birçok hizmet, ek uyarılar, ölçümler ve günlük Tanılama verileri için [Azure izleyici](../azure-monitor/index.yml) ile tümleşir. 
 
 Veri toplama ve depolama üzerinde denetim istiyorsanız arama hizmeti için [Tanılama günlüğünü etkinleştirin](search-monitor-logs.md) . Azure Izleyici tarafından yakalanan günlüğe kaydedilen olaylar **AzureDiagnostics** tablosunda depolanır ve sorgular ve dizin oluşturma ile ilgili işletimsel verilerden oluşur.
 
@@ -107,4 +107,4 @@ Bu bilgileri $filter parametresini içeren sorgu dizesinden ayrı olarak günlü
 Azure Izleyici ile akıcı olma, Azure Bilişsel Arama gibi kaynaklar dahil olmak üzere tüm Azure hizmetleri hakkında daha fazla bakış için gereklidir. Azure Izleyici hakkında bilgi sahibi değilseniz kaynaklarla ilgili makaleleri gözden geçirme süresini göz atın. Öğreticilere ek olarak, aşağıdaki makale başlamak için iyi bir yerdir.
 
 > [!div class="nextstepaction"]
-> [Azure Izleyici ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Azure İzleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md)

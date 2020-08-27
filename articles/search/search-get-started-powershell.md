@@ -9,31 +9,31 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b95880c8cdda67f895615f9a3ba8daf3ab5e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506014"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935900"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > 
 
-Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
+Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
-+ Sıralı ve etkileşimli adımlar için [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) kullanarak [PowerShell 5,1 veya sonraki bir sürümü](https://github.com/PowerShell/PowerShell).
++ Sıralı ve etkileşimli adımlar için [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) kullanarak [PowerShell 5,1 veya sonraki bir sürümü](https://github.com/PowerShell/PowerShell).
 
 + Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
@@ -85,7 +85,7 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
-Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu adım için kullanılır.
+Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](/rest/api/searchservice/create-index) , bu adım için kullanılır.
 
 Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki alanlardan biri `Edm.String` belge kimliği için *anahtar* olarak atanmalıdır.
 
@@ -179,7 +179,7 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
 
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği kullanın. Bu görevin REST API [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği kullanın. Bu görevin REST API [belge ekleme, güncelleştirme veya silme](/rest/api/searchservice/addupdate-or-delete-documents).
 
 1. Karşıya yüklemek istediğiniz belgeleri içeren **$Body** bir nesne oluşturmak için bu örneği PowerShell 'e yapıştırın. 
 
@@ -281,7 +281,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Sonuçlar aşağıdaki örneğe benzer görünmelidir. 201 için bir [durum kodu](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)görmeniz gerekir.
+    Sonuçlar aşağıdaki örneğe benzer görünmelidir. 201 için bir [durum kodu](/rest/api/searchservice/HTTP-status-codes)görmeniz gerekir.
 
     ```
     {
@@ -317,7 +317,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Bu adımda, [belgeleri ara API 'sini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilir.
+Bu adımda, [belgeleri ara API 'sini](/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilir.
 
 Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri **$** karakterleri içerir ve tüm dize tek tırnak içine alınmış olursa kaçış zorunluluğunu atlayabilirsiniz.
 

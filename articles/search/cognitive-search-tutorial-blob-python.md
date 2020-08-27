@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dfa105b7af146086da6b72dd55f6fe679832f44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845060"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936036"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için Python ve AI kullanma
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bir işlem hattı resimleri işleyebilir, ancak sorgular, modeller ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için, bu Python öğreticisi metne odaklanır, dil algılama ve doğal dil işleme uygulanıyor.
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için Python ve [arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice/) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için Python ve [arama REST API 'lerini](/rest/api/searchservice/) kullanır:
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
@@ -163,7 +163,7 @@ Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI i
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
 
-[Veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
+[Veri kaynağı nesnesi](/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
 
 Aşağıdaki betikte,-BLOB-RESOURCE-CONNECTION-STRING yer tutucusunu, önceki adımda oluşturduğunuz Blobun bağlantı dizesiyle değiştirin. Kapsayıcının yer tutucu metnini değiştirin. Ardından, adlı bir veri kaynağı oluşturmak için betiği çalıştırın `cogsrch-py-datasource` .
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 İstek, başarıyı onaylayan 201 durum kodunu döndürmelidir.
 
-Dizin tanımlama hakkında daha fazla bilgi edinmek için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Dizin tanımlama hakkında daha fazla bilgi edinmek için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-4-create-and-run-an-indexer"></a>4. Adım: Dizin Oluşturucu oluşturma ve çalıştırma
 
-[Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , işlem hattını sürücüler. Şimdiye kadar oluşturduğunuz üç bileşen (veri kaynağı, Beceri, dizin) bir dizin oluşturucunun girdileri olur. Azure Bilişsel Arama dizin oluşturucunun oluşturulması, tüm işlem hattının hareket halinde yer aldığı olaydır. 
+[Dizin Oluşturucu](/rest/api/searchservice/create-indexer) , işlem hattını sürücüler. Şimdiye kadar oluşturduğunuz üç bileşen (veri kaynağı, Beceri, dizin) bir dizin oluşturucunun girdileri olur. Azure Bilişsel Arama dizin oluşturucunun oluşturulması, tüm işlem hattının hareket halinde yer aldığı olaydır. 
 
 Bu nesneleri bir dizin oluşturucuda birlikte bağlamak için alan eşlemelerini tanımlamanız gerekir.
 
@@ -512,7 +512,7 @@ Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yaln�
 
 Ek alanlar için yineleyin: `content` , `languageCode` , `keyPhrases` , ve `organizations` Bu alıştırmada. Virgülle ayrılmış bir liste kullanarak `$select` aracılığıyla birden fazla alan döndürebilirsiniz.
 
-Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizesini kullanabilirsiniz. Daha fazla bilgi için bkz. [REST API kullanarak sorgu](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizesini kullanabilirsiniz. Daha fazla bilgi için bkz. [REST API kullanarak sorgu](/rest/api/searchservice/search-documents).
 
 <a name="reset"></a>
 

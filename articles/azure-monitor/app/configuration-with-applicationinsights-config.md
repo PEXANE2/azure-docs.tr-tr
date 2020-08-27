@@ -3,13 +3,14 @@ title: ApplicationInsights.config başvurusu-Azure | Microsoft Docs
 description: Veri toplama modüllerini etkinleştirin veya devre dışı bırakın ve performans sayaçlarını ve diğer parametreleri ekleyin.
 ms.topic: conceptual
 ms.date: 05/22/2019
+ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: ec446190cd589eb511a7a905faeb5f29f31e7d69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310489"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934812"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.
@@ -65,22 +66,22 @@ HTTP isteklerinin [yanıt süresini ve sonuç kodunu](../../azure-monitor/app/as
 * [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet paketi
 
 ### <a name="exception-tracking"></a>Özel durum izleme
-`ExceptionTrackingTelemetryModule`Web uygulamanızdaki işlenmemiş özel durumları izler. Bkz. [arızalar ve özel durumlar][exceptions].
+`ExceptionTrackingTelemetryModule` Web uygulamanızdaki işlenmemiş özel durumları izler. Bkz. [arızalar ve özel durumlar][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet paketi
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-gözlemlenen görev özel durumlarını izler
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`-çalışan rolleri, Windows Hizmetleri ve konsol uygulamaları için işlenmemiş özel durumları izler.
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -gözlemlenen görev özel durumlarını izler
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -çalışan rolleri, Windows Hizmetleri ve konsol uygulamaları için işlenmemiş özel durumları izler.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet paketi.
 
 ### <a name="eventsource-tracking"></a>EventSource Izleme
-`EventSourceTelemetryModule`Application Insights, izleme olarak için EventSource olaylarını yapılandırmanızı sağlar. EventSource olaylarını izleme hakkında daha fazla bilgi için bkz. [EventSource olaylarını kullanma](./asp-net-trace-logs.md#use-eventsource-events).
+`EventSourceTelemetryModule` Application Insights, izleme olarak için EventSource olaylarını yapılandırmanızı sağlar. EventSource olaylarını izleme hakkında daha fazla bilgi için bkz. [EventSource olaylarını kullanma](./asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>ETW olay Izleme
-`EtwCollectorTelemetryModule`ETW sağlayıcılarındaki olayları, izleme olarak Application Insights gönderilmek üzere yapılandırmanıza olanak tanır. ETW olaylarını izleme hakkında daha fazla bilgi için bkz. [ETW olaylarını kullanma](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
+`EtwCollectorTelemetryModule` ETW sağlayıcılarındaki olayları, izleme olarak Application Insights gönderilmek üzere yapılandırmanıza olanak tanır. ETW olaylarını izleme hakkında daha fazla bilgi için bkz. [ETW olaylarını kullanma](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
@@ -94,8 +95,8 @@ Microsoft. ApplicationInsights paketi SDK 'nın [temel API](/dotnet/api/microsof
 ## <a name="telemetry-channel"></a>Telemetri kanalı
 [Telemetri kanalı](telemetry-channels.md) , Application Insights hizmetine telemetri arabelleğini ve aktarımını yönetir.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`, Web uygulamaları için varsayılan kanaldır. Bellekte verileri arabelleğe alır ve daha güvenilir telemetri teslimi için yeniden deneme mekanizmaları ve yerel disk depolama alanı kullanır.
-* `Microsoft.ApplicationInsights.InMemoryChannel`, başka bir kanal yapılandırılmamışsa kullanılan hafif bir telemetri kanaldır. 
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` , Web uygulamaları için varsayılan kanaldır. Bellekte verileri arabelleğe alır ve daha güvenilir telemetri teslimi için yeniden deneme mekanizmaları ve yerel disk depolama alanı kullanır.
+* `Microsoft.ApplicationInsights.InMemoryChannel` , başka bir kanal yapılandırılmamışsa kullanılan hafif bir telemetri kanaldır. 
 
 ## <a name="telemetry-initializers-aspnet"></a>Telemetri başlatıcıları (ASP.NET)
 Telemetri başlatıcıları, her telemetri öğesiyle birlikte gönderilen bağlam özelliklerini ayarlar.
@@ -104,23 +105,23 @@ Bağlam özelliklerini ayarlamak için [kendi başlatıcılarınızı yazabilirs
 
 Standart başlatıcıların tümü Web veya WindowsServer NuGet paketleri tarafından ayarlanır:
 
-* `AccountIdTelemetryInitializer`AccountId özelliğini ayarlar.
-* `AuthenticatedUserIdTelemetryInitializer`Kimlik doğrulayan Teduserıd özelliğini JavaScript SDK 'Sı tarafından ayarlanmış olarak ayarlar.
+* `AccountIdTelemetryInitializer` AccountId özelliğini ayarlar.
+* `AuthenticatedUserIdTelemetryInitializer` Kimlik doğrulayan Teduserıd özelliğini JavaScript SDK 'Sı tarafından ayarlanmış olarak ayarlar.
 * `AzureRoleEnvironmentTelemetryInitializer``RoleName` `RoleInstance` `Device` Azure çalışma zamanı ortamından ayıklanan bilgilerle tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.
 * `BuildInfoConfigComponentVersionTelemetryInitializer``Version` `Component` Tüm telemetri öğeleri için bağlam özelliğini `BuildInfo.config` MS Build tarafından üretilen dosyadan ayıklanan değerle güncelleştirir.
 * `ClientIpHeaderTelemetryInitializer``Ip` `Location` isteğin HTTP üstbilgisine göre tüm telemetri öğelerinin bağlamının Updates özelliği `X-Forwarded-For` .
 * `DeviceTelemetryInitializer``Device`Tüm telemetri öğeleri için bağlamın aşağıdaki özelliklerini güncelleştirir.
-  * `Type`"PC" olarak ayarlandı
-  * `Id`, Web uygulamasının çalıştığı bilgisayarın etki alanı adına ayarlanır.
-  * `OemName`, `Win32_ComputerSystem.Manufacturer` WMI kullanılarak alandan ayıklanan değere ayarlanır.
-  * `Model`, `Win32_ComputerSystem.Model` WMI kullanılarak alandan ayıklanan değere ayarlanır.
-  * `NetworkType`, öğesinden ayıklanan değere ayarlanır `NetworkInterface` .
-  * `Language`, adına ayarlanır `CurrentCulture` .
+  * `Type` "PC" olarak ayarlandı
+  * `Id` , Web uygulamasının çalıştığı bilgisayarın etki alanı adına ayarlanır.
+  * `OemName` , `Win32_ComputerSystem.Manufacturer` WMI kullanılarak alandan ayıklanan değere ayarlanır.
+  * `Model` , `Win32_ComputerSystem.Model` WMI kullanılarak alandan ayıklanan değere ayarlanır.
+  * `NetworkType` , öğesinden ayıklanan değere ayarlanır `NetworkInterface` .
+  * `Language` , adına ayarlanır `CurrentCulture` .
 * `DomainNameRoleInstanceTelemetryInitializer``RoleInstance` `Device` Tüm telemetri öğeleri için bağlam özelliğini, Web uygulamasının çalıştığı bilgisayarın etki alanı adı ile güncelleştirir.
 * `OperationNameTelemetryInitializer``Name`, `RequestTelemetry` `Name` `Operation` http yöntemine ve ASP.NET MVC denetleyicisinin adlarına ve isteği işlemek için çağrılan eyleme göre tüm telemetri öğelerinin bağlamı ve özelliğinin özelliğini günceller.
-* `OperationIdTelemetryInitializer`ya da `OperationCorrelationTelemetryInitializer` `Operation.Id` otomatik olarak oluşturulan bir istek işlenirken izlenen tüm telemetri öğelerinin bağlam özelliğini güncelleştirir `RequestTelemetry.Id` .
+* `OperationIdTelemetryInitializer` ya da `OperationCorrelationTelemetryInitializer` `Operation.Id` otomatik olarak oluşturulan bir istek işlenirken izlenen tüm telemetri öğelerinin bağlam özelliğini güncelleştirir `RequestTelemetry.Id` .
 * `SessionTelemetryInitializer``Id` `Session` `ai_session` kullanıcının tarayıcısında çalışan ApplicationInsights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değere sahip tüm telemetri öğeleri için bağlam özelliğini güncelleştirir.
-* `SyntheticTelemetryInitializer`ya da `SyntheticUserAgentTelemetryInitializer` `User` `Session` `Operation` bir kullanılabilirlik testi veya arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../platform/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
+* `SyntheticTelemetryInitializer` ya da `SyntheticUserAgentTelemetryInitializer` `User` `Session` `Operation` bir kullanılabilirlik testi veya arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../platform/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
 
     `<Filters>`İsteklerin tanımlayıcı özelliklerini ayarla.
 * `UserTelemetryInitializer``Id` `AcquisitionDate` `User` `ai_user` kullanıcının tarayıcısında çalıştırılan Application Insights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değerler içeren tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.

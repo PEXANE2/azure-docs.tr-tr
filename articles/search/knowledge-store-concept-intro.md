@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230783"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924308"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi deposu
 
@@ -21,7 +21,7 @@ Bilgi deposu, bağımsız analiz veya aşağı akış işleme için bir [AI zeng
 
 Daha önce bilişsel becerileri kullandıysanız, *becerileri* bir belgeyi bir dizi enzenginleştirme aracılığıyla taşıyabileceğinizi zaten anlarsınız. Sonuç, bir arama dizini veya bir bilgi deposundaki projeksiyonlar olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı işlem hattının çarpımlarından oluşur; aynı girdilerden türetilmiş, ancak aynı şekilde yapılandırılmış, depolanmış ve çok farklı yollarla kullanılan çıktının sonucu.
 
-Azure [depolama](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Tablo depolama, Azure Blob depolama ya da her ikisi de fiziksel olarak bir bilgi deposu. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
+Azure [depolama](../storage/common/storage-account-overview.md), Azure Tablo depolama, Azure Blob depolama ya da her ikisi de fiziksel olarak bir bilgi deposu. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
 
 
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
@@ -39,7 +39,7 @@ Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 
 + Arama dışındaki [analiz ve raporlama araçlarında](#tools-and-apps) zenginleştirilmiş belgeler kullanın. Power Query ile Power BI etkileyici bir seçimdir, ancak Azure depolama 'ya bağlanabilecek herhangi bir araç veya uygulama, oluşturduğunuz bir bilgi deposundan çekebilirsiniz.
 
-+ Adımlarda ve beceri tanımlarında hata ayıklama sırasında bir AI dizin oluşturma işlem hattını daraltın. Bilgi deposu, bir AI dizin oluşturma işlem hattında bir beceri tanımının çarpımını gösterir. Bu sonuçları daha iyi bir beceri tasarlamak için kullanabilirsiniz, çünkü tam olarak neyin nasıl göründüğünü görebilirsiniz. Bir bilgi deposunun içeriğini görüntülemek için Azure Storage 'da [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) kullanabilirsiniz.
++ Adımlarda ve beceri tanımlarında hata ayıklama sırasında bir AI dizin oluşturma işlem hattını daraltın. Bilgi deposu, bir AI dizin oluşturma işlem hattında bir beceri tanımının çarpımını gösterir. Bu sonuçları daha iyi bir beceri tasarlamak için kullanabilirsiniz, çünkü tam olarak neyin nasıl göründüğünü görebilirsiniz. Bir bilgi deposunun içeriğini görüntülemek için Azure Storage 'da [Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) kullanabilirsiniz.
 
 + Verileri yeni formlara şekillendirin. Yeniden şekillendirme becerileri içinde ortaklaşa bulunur, ancak nokta bir beceri artık bu özelliği sağlayabiliriz. Azure Bilişsel Arama 'de [beceri başına mil](cognitive-search-skill-shaper.md) bu görevi kapsayacak şekilde genişletildi. Yeniden şekillendirme, ilişkileri korurken verilerin amaçlanan kullanımı ile hizalanan bir projeksiyon tanımlamanızı sağlar.
 
@@ -84,7 +84,7 @@ Ancak, birden çok `table` - `object` - `file` projeksiyonun kümesi oluşturmak
 
 ## <a name="requirements"></a>Gereksinimler 
 
-[Azure depolama alanı](https://docs.microsoft.com/azure/storage/) gereklidir. Fiziksel depolama alanı sağlar. BLOB depolama, tablo depolama veya her ikisini de kullanabilirsiniz. BLOB depolama, genellikle çıkış aşağı akış işlemlerine giderken, genellikle zenginleştirilmiş belgeler için kullanılır. Tablo depolama, genellikle analiz ve raporlama için kullanılan, zenginleştirilmiş belgelerin dilimlerine yöneliktir.
+[Azure depolama alanı](../storage/index.yml) gereklidir. Fiziksel depolama alanı sağlar. BLOB depolama, tablo depolama veya her ikisini de kullanabilirsiniz. BLOB depolama, genellikle çıkış aşağı akış işlemlerine giderken, genellikle zenginleştirilmiş belgeler için kullanılır. Tablo depolama, genellikle analiz ve raporlama için kullanılan, zenginleştirilmiş belgelerin dilimlerine yöneliktir.
 
 [Beceri](cognitive-search-working-with-skillsets.md) gereklidir. `knowledgeStore`Tanımı içerir ve zenginleştirilmiş bir belgenin yapısını ve birleşimini belirler. Boş bir beceri kullanarak bilgi deposu oluşturamazsınız. Beceri içinde en az bir beceriye sahip olmanız gerekir.
 
@@ -130,16 +130,16 @@ Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhan
 
 + Raporlama ve analiz için [Power BI](knowledge-store-connect-power-bi.md) . 
 
-+ Daha fazla düzenleme için [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) .
++ Daha fazla düzenleme için [Azure Data Factory](../data-factory/index.yml) .
 
 <a name="kstore-rest-api"></a>
 
 ## <a name="api-reference"></a>API başvurusu
 
-REST API sürüm `2020-06-30` , becerileri üzerinde ek tanımlar aracılığıyla bilgi deposu sağlar. Başvuruya ek olarak, API 'Leri çağırma hakkında ayrıntılı bilgi için bkz. [Postman kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md) .
+REST API sürüm `2020-06-30` , becerileri üzerinde ek tanımlar aracılığıyla bilgi deposu sağlar. Başvuruya ek olarak, API 'Leri çağırma hakkında ayrıntılı bilgi için bkz.  [Postman kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md) .
 
-+ [Beceri oluşturma (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Güncelleştirme beceri (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
++ [Beceri oluşturma (api-Version = 2020-06-30)](/rest/api/searchservice/create-skillset)
++ [Güncelleştirme beceri (api-Version = 2020-06-30)](/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
