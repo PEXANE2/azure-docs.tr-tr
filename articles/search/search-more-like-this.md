@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd6b64f118460a115963ed0bf105641d80334348
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552242"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934999"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure Bilişsel Arama moreLikeThis (Önizleme)
 
 > [!IMPORTANT] 
 > Bu özellik şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2020-06-30-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
-`moreLikeThis=[key]`, belge anahtarı tarafından belirtilen belgeye benzer belgeleri bulan [arama belgeleri API 'sindeki](https://docs.microsoft.com/rest/api/searchservice/search-documents) bir sorgu parametresidir. İle bir arama isteği yapıldığında `moreLikeThis` , bu belgenin en iyi şekilde betimleyen, belirtilen belgeden ayıklanan arama terimleriyle bir sorgu oluşturulur. Oluşturulan sorgu daha sonra arama isteğini yapmak için kullanılır. Varsayılan olarak, tüm aranabilir alanların içeriği, parametresini kullanarak belirttiğiniz tüm kısıtlı alanlar olarak değerlendirilir `searchFields` . `moreLikeThis`Parametresi, arama parametresiyle birlikte kullanılamaz `search=[string]` .
+`moreLikeThis=[key]` , belge anahtarı tarafından belirtilen belgeye benzer belgeleri bulan [arama belgeleri API 'sindeki](/rest/api/searchservice/search-documents) bir sorgu parametresidir. İle bir arama isteği yapıldığında `moreLikeThis` , bu belgenin en iyi şekilde betimleyen, belirtilen belgeden ayıklanan arama terimleriyle bir sorgu oluşturulur. Oluşturulan sorgu daha sonra arama isteğini yapmak için kullanılır. Varsayılan olarak, tüm aranabilir alanların içeriği, parametresini kullanarak belirttiğiniz tüm kısıtlı alanlar olarak değerlendirilir `searchFields` . `moreLikeThis`Parametresi, arama parametresiyle birlikte kullanılamaz `search=[string]` .
 
 Varsayılan olarak, en üst düzey aranabilir alanların içeriği göz önünde bulundurululur. Bunun yerine belirli alanları belirtmek istiyorsanız `searchFields` parametresini kullanabilirsiniz. 
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
 
 ### <a name="apply-filters"></a>Filtreleri uygulama
 
-`MoreLikeThis`, gibi diğer ortak sorgu parametreleriyle birleştirilebilir `$filter` . Örneğin, sorgu yalnızca kategorisi ' bütçe ' olan ve derecelendirmeyi 3,5 ' den yüksek olan oteller ile kısıtlanabilir:
+`MoreLikeThis` , gibi diğer ortak sorgu parametreleriyle birleştirilebilir `$filter` . Örneğin, sorgu yalnızca kategorisi ' bütçe ' olan ve derecelendirmeyi 3,5 ' den yüksek olan oteller ile kısıtlanabilir:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview
