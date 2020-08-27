@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420864"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917899"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Node.js Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -30,7 +30,7 @@ Bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Node.js
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
 
@@ -130,7 +130,7 @@ Değeri, `[SERVICE_NAME]` arama hizmetinizin adıyla değiştirin. `[ADMIN_KEY]`
 
 ## <a name="1---create-index"></a>1-Dizin oluşturma 
 
-Üzerinde bir dosya **hotels_quickstart_index.js**oluşturun.  Bu dosya, Azure Bilişsel Arama 'nin bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her bir alan ile tanımlanır `name` ve belirtilmiş olur `type` . Her alan Ayrıca, Azure Bilişsel Arama alan üzerinde arama, filtreleme, sıralama ve model kullanıp kullanamayacağını belirten bir dizi dizin özniteliklerine sahiptir. Alanların çoğu basit veri türleridir, ancak bazıları `AddressType` dizininiz içinde zengin veri yapıları oluşturmanıza imkan tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [dizin öznitelikleri](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)hakkında daha fazla bilgi edinebilirsiniz. 
+Üzerinde bir dosya **hotels_quickstart_index.js**oluşturun.  Bu dosya, Azure Bilişsel Arama 'nin bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her bir alan ile tanımlanır `name` ve belirtilmiş olur `type` . Her alan Ayrıca, Azure Bilişsel Arama alan üzerinde arama, filtreleme, sıralama ve model kullanıp kullanamayacağını belirten bir dizi dizin özniteliklerine sahiptir. Alanların çoğu basit veri türleridir, ancak bazıları `AddressType` dizininiz içinde zengin veri yapıları oluşturmanıza imkan tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](/rest/api/searchservice/supported-data-types) ve [dizin öznitelikleri](./search-what-is-an-index.md#index-attributes)hakkında daha fazla bilgi edinebilirsiniz. 
 
 **hotels_quickstart_index.js** için aşağıdakini ekleyin veya [dosyayı indirin](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
@@ -346,8 +346,8 @@ static throwOnHttpError(response) {
 Son olarak, Azure Bilişsel Arama dizinini algılamaya, silmeye ve oluşturmaya yönelik yöntemleri ekleyin. Bu yöntemlerin hepsi aynı yapıya sahiptir:
 
 * İsteğin oluşturulacağı uç noktayı alın.
-* İsteği uygun uç nokta, HTTP fiili, API anahtarı ve uygunsa bir JSON gövdesi ile oluşturun. `indexExistsAsync()`ve `deleteIndexAsync()` BIR JSON gövdesi yoktur, ancak bunu `createIndexAsync(definition)` yapar.
-* `await`isteğin yanıtı.  
+* İsteği uygun uç nokta, HTTP fiili, API anahtarı ve uygunsa bir JSON gövdesi ile oluşturun. `indexExistsAsync()` ve `deleteIndexAsync()` BIR JSON gövdesi yoktur, ancak bunu `createIndexAsync(definition)` yapar.
+* `await` isteğin yanıtı.  
 * Yanıtın durum kodu üzerinde işlem yapın.
 * Uygun bir değer (Boolean, `this` veya sorgu sonuçları) için bir Promise döndürün. 
 
@@ -610,7 +610,7 @@ Programını ile yeniden çalıştırın `node index.js` . Adım 1 ' de gördü�
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Azure portal arama hizmetinize **genel bakış** bölümünde **dizinler** sekmesine dönün. Dizininiz artık dört belge içerir ve bir miktar depolama alanı tüketir (UI 'nin dizinin temel durumunu düzgün bir şekilde yansıtması birkaç dakika sürebilir). **Arama Gezgini**'ne alınacak dizin adına tıklayın. Bu sayfa, veri sorgularıyla denemeler yapmanıza olanak sağlar. Bir sorgu dizesinde arama yapmayı deneyin `*&$count=true` ve tüm belgelerinizi ve sonuç sayısını geri almanız gerekir. Sorgu dizesiyle deneyin `historic&highlight=Description&$filter=Rating gt 4` ve etiketlerin "geçmiş" kelimesiyle birlikte tek bir belgeyi geri almanız gerekir `<em></em>` . [Azure bilişsel arama 'de bir sorgu oluşturma](https://docs.microsoft.com/azure/search/search-query-overview)hakkında daha fazla bilgi edinin. 
+Azure portal arama hizmetinize **genel bakış** bölümünde **dizinler** sekmesine dönün. Dizininiz artık dört belge içerir ve bir miktar depolama alanı tüketir (UI 'nin dizinin temel durumunu düzgün bir şekilde yansıtması birkaç dakika sürebilir). **Arama Gezgini**'ne alınacak dizin adına tıklayın. Bu sayfa, veri sorgularıyla denemeler yapmanıza olanak sağlar. Bir sorgu dizesinde arama yapmayı deneyin `*&$count=true` ve tüm belgelerinizi ve sonuç sayısını geri almanız gerekir. Sorgu dizesiyle deneyin `historic&highlight=Description&$filter=Rating gt 4` ve etiketlerin "geçmiş" kelimesiyle birlikte tek bir belgeyi geri almanız gerekir `<em></em>` . [Azure bilişsel arama 'de bir sorgu oluşturma](./search-query-overview.md)hakkında daha fazla bilgi edinin. 
 
 **index.js** açıp üst kısımdaki Bu kodu ekleyerek bu sorguları kodda yeniden oluşturun:
 

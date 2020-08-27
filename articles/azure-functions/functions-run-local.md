@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505725"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929507"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -37,9 +37,9 @@ Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yer
 
 + **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
 
-Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
+Belirli bir bilgisayara yalnızca bir temel araçlar sürümü yükleyebilirsiniz. Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için Azure CLı 'ye bağımlıdır. Bu, Azure CLı 'yı Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için [yerel olarak kurmanız](/cli/azure/install-azure-cli) gerektiği anlamına gelir. 
 
@@ -257,20 +257,21 @@ Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile 
 
   ![Bağlantı dizesini Depolama Gezgini Kopyala](./media/functions-run-local/storage-explorer.png)
 
-+ Azure 'dan bağlantı dizesini aşağıdaki komutlardan biriyle indirmek için temel araçları kullanın:
++ Azure 'dan gelen bağlantı dizesini aşağıdaki komutlardan biriyle indirmek için proje kökünden temel araçları kullanın:
 
   + Var olan bir işlev uygulamasından tüm ayarları indir:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + Belirli bir depolama hesabı için bağlantı dizesini al:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure 'da henüz oturum açmadıysanız bunu yapmanız istenir.
+    Azure 'da henüz oturum açmadıysanız bunu yapmanız istenir. Bu komutlar dosyadaki local.settings.jsvar olan ayarların üzerine yazar. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>İşlev oluşturma
 
@@ -332,7 +333,7 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri mümkün. Başlat komutu, Proje dilinize bağlı olarak farklılık gösterir.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 ```
 func start --build

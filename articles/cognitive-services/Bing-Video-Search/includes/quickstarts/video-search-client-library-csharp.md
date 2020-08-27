@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d50a8e2c9d0263616b25e25958be6a6f0fb7fe1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289759"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929287"
 ---
 C# için Bing Video Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) 'da ek ek açıklamalar ve özelliklerle bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://visualstudio.microsoft.com/downloads/)sürümü.
 * [NuGet paketi olarak](https://www.nuget.org/packages/Newtonsoft.Json/)kullanılabilen JSON.NET Framework.
@@ -45,7 +46,7 @@ Bing Video Arama istemci kitaplığını projenize eklemek için, Visual Studio 
     using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
     ```
 
-2. Abonelik anahtarınızla yeni `ApiKeyServiceClientCredentials` bir nesne oluşturup oluşturucuyu çağırarak istemciyi örneğini oluşturun.
+2. `ApiKeyServiceClientCredentials`Abonelik anahtarınızla yeni bir nesne oluşturup oluşturucuyu çağırarak istemciyi örneğini oluşturun.
 
     ```csharp
     var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
@@ -59,7 +60,7 @@ Bing Video Arama istemci kitaplığını projenize eklemek için, Visual Studio 
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Herhangi bir sonuç döndürülürse, ile `videoResults.Value[0]`birinciden yararlanın. Ardından videonun KIMLIĞINI, başlığını ve URL 'sini yazdırın.
+2. Herhangi bir sonuç döndürülürse, ile birinciden yararlanın `videoResults.Value[0]` . Ardından videonun KIMLIĞINI, başlığını ve URL 'sini yazdırın.
 
     ```csharp
     if (videoResults.Value.Count > 0)

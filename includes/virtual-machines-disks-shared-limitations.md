@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88809841"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944410"
 ---
 Paylaşılan disklerin etkinleştirilmesi yalnızca disk türlerinin bir alt kümesi tarafından kullanılabilir. Şu anda yalnızca Ultra diskler ve Premium SSD 'Ler, Paylaşılan diskleri etkinleştirebilir. Paylaşılan diskleri olan her yönetilen disk, disk türüne göre düzenlenmiş aşağıdaki sınırlamalara tabidir:
 
@@ -50,10 +50,15 @@ Paylaşılan Premium SSD 'ler yalnızca aşağıdaki bölgelerde desteklenir:
 - Batı ABD 2
 - Orta Batı ABD
 - Orta Güney ABD
-- Central US
+- Orta Kuzey ABD
+- Orta ABD
+- Batı Avrupa
+- Kuzey Avrupa
 - Güney Kore - Orta
 - Orta Kanada
 - Doğu Kanada
+- Doğu Japonya
+- Batı Japonya
 - US Gov Virginia
 - US Gov Arizona
 
