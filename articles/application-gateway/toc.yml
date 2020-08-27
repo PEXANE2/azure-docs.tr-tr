@@ -1,12 +1,10 @@
-- name: Application Gateway Belgeleri
+- name: Application Gateway belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Uygulama ağ geçitleri hakkında
       href: overview.md
-    - name: Yenilikler
-      href: whats-new.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Uygulama Ağ Geçidi Oluşturma - Portal
@@ -104,7 +102,7 @@
           href: tutorial-manage-web-traffic-cli.md
     - name: İç yük dengeleyicisi yapılandırma
       items:
-        - name: Azure portalı
+        - name: Azure portal
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md

@@ -4,7 +4,7 @@
   items:
     - name: Azure Güvenlik Duvarı Yöneticisi nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Güvenli sanal merkez - ARM şablonu
@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: Birden çok genel IP dağıtma - PowerShell
       href: multiple-public-ip-powershell.md
+    - name: Kural hiyerarşisi belirleme
+      href: rule-hierarchy.md
 - name: Başvuru
   items:
     - name: Azure CLI

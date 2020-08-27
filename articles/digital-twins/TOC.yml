@@ -6,6 +6,10 @@
       href: overview.md
     - name: Önceki sürüme göre farklılıklar
       href: overview-differences.md
+- name: Hızlı Başlangıç
+  items:
+    - name: Örnek bir senaryoyu inceleme
+      href: quickstart-adt-explorer.md
 - name: Öğreticiler
   items:
     - name: Bir istemci uygulaması kodlama
@@ -76,6 +80,8 @@
       items:
         - name: IoT Hub’dan telemetri alma
           href: how-to-ingest-iot-hub-data.md
+        - name: Logic Apps ile tümleştirme
+          href: how-to-integrate-logic-apps.md
     - name: Bağlantı çıkışı
       items:
         - name: Uç noktaları ve yolları yönetme
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights ile tümleştirme
           href: how-to-integrate-time-series-insights.md
-        - name: Logic Apps ile tümleştirme
-          href: how-to-integrate-logic-apps.md
     - name: Sorun giderme
       items:
         - name: Ölçümleri Azure İzleyici’de görüntüleme

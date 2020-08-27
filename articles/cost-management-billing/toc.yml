@@ -4,7 +4,7 @@
   items:
     - name: Maliyet Yönetimi ve Faturalandırma nedir?
       href: cost-management-billing-overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Maliyet analizini başlatın
@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: Ek abonelikler oluşturma
               href: manage/create-subscription.md
+            - name: Program aracılığıyla abonelik oluşturma
+              href: manage/programmatically-create-subscription.md
+            - name: EA abonelikleri oluşturmak için erişim izni verme
+              href: manage/grant-access-to-create-subscription.md
             - name: Abonelik bilgilerini dışarı aktarma
               href: manage/export-subscriptions.md
             - name: Kredi kartını değiştirme

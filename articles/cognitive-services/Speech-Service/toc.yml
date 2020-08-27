@@ -520,17 +520,11 @@
           href: speech-container-faq.md
 - name: Konuşma SDK'sı
   items:
-    - name: Genel Bakış
-      items:
-        - name: Konuşma SDK'sı hakkında
-          href: speech-sdk.md
-        - name: Senaryo kullanılabilirliği
-          href: scenario-availability.md
-    - name: Hızlı Başlangıç
-      items:
-        - name: Konuşma SDK'sını Ayarlama
-          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-          href: quickstarts/setup-platform.md
+    - name: Konuşma SDK'sına genel bakış
+      href: speech-sdk.md
+    - name: Konuşma SDK'sını Ayarlama
+      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+      href: quickstarts/setup-platform.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Günlü kaydını etkinleştir

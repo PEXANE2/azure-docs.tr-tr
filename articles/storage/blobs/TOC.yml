@@ -739,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop Dosya Sistemi CLI
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: ACL’leri özyinelemeli olarak belirleme
+              href: recursive-access-control-lists.md
         - name: Sorgu
           items:
             - name: Sorgu hızlandırmayla veri filtreleme
