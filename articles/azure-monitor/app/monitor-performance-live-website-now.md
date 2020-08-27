@@ -3,12 +3,13 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923832"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -39,10 +40,10 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| **Özel durumları & istekleri** |Yes |Yes |
-| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Yes |
+| **Özel durumları & istekleri** |Evet |Evet |
+| **[Daha ayrıntılı özel durumlar](./asp-net-exceptions.md)** | |Evet |
 | **[Bağımlılık tanılama](./asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| **[Sistem performans sayaçları](./performance-counters.md)** |Yes |Yes |
+| **[Sistem performans sayaçları](./performance-counters.md)** |Evet |Evet |
 | **[Özel telemetri için API][api]** |Evet |Hayır |
 | **[İzleme günlüğü tümleştirmesi](./asp-net-trace-logs.md)** |Evet |Hayır |
 | **[Sayfa görüntüleme & Kullanıcı verileri](./javascript.md)** |Evet |Hayır |
@@ -140,7 +141,7 @@ Bu sorunu [burada](https://github.com/Microsoft/ApplicationInsights-Home/issues/
   
 ### <a name="detailed-logs"></a>Ayrıntılı günlükler
 
-* Varsayılan olarak Durum İzleyicisi şu adreste tanılama günlüklerini çıktısını alacak:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Varsayılan olarak Durum İzleyicisi şu adreste tanılama günlüklerini çıktısını alacak: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * Ayrıntılı günlükleri çıkarmak için yapılandırma dosyasını değiştirin `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` ve `<add key="TraceLevel" value="All" />` öğesine ekleyin `appsettings` .
 Ardından Durum izleyicisini yeniden başlatın.
@@ -243,7 +244,7 @@ Hangi uygulamaların izlenmekte olduğunu öğrenin:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: Bir web uygulamasının IIS'deki adı.
-* `-InstrumentationKey`(İsteğe bağlı.) Uygulama telemetrinin gönderildiği kaynağı değiştirmek için bunu kullanın.
+* `-InstrumentationKey` (İsteğe bağlı.) Uygulama telemetrinin gönderildiği kaynağı değiştirmek için bunu kullanın.
 * Bu cmdlet:
   * Adlandırılmış uygulamaları SDK'nin bu makineye en son indirilen sürümüne yükseltir. (Yalnızca `SdkState==EnabledAfterDeployment` ise çalışır)
   * İzleme anahtarını sağlarsanız, adlandırılmış uygulama, telemetriyi bu anahtarla kaynağa göndermek için yeniden yapılandırılır. (`SdkState != Disabled` ise çalışır)
@@ -303,7 +304,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
  * Bağımlılık çağrıları (.NET 4.5); bağımlılık çağrılarındaki dönüş değerleri (.NET 4.6).
  * Özel durum yığın izleme değerleri.
 
-[Daha fazla bilgi](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
+[Daha fazla bilgi edinin](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 

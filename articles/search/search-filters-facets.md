@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084220"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923135"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir model filtresi oluşturma 
 
@@ -38,12 +38,12 @@ Modeller, tek değer alanları ve koleksiyonlar üzerinden hesaplanabilir. Çok 
 
 Özniteliği öğesini olarak ayarlayarak, dizin oluşturduğunuzda alan temelinde, her zaman bir alan temelinde etkinleştirilir `facetable` `true` . Ayrıca, `filterable` `true` arama uygulamanızın, son kullanıcının seçtiği modellerle ilgili alanlara filtre yapabilmesi için, bu tür alanlar için özniteliğini genellikle olarak ayarlamanız gerekir. 
 
-REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek olan herhangi bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) varsayılan olarak olarak işaretlenir `facetable` :
+REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek olan herhangi bir [alan türü](/rest/api/searchservice/supported-data-types) varsayılan olarak olarak işaretlenir `facetable` :
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Sayısal alan türleri: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Sayısal alan türleri: `Edm.Int32` , `Edm.Int64` , `Edm.Double`
 + Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya `Collection(Edm.Double)` )
 
 Çok `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` yönlü gezinmede veya alanlarını kullanamazsınız. Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
@@ -77,11 +77,11 @@ Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindek
 ```
 
 > [!Note]
-> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable`Ve öznitelikleri,,,, `facetable` `category` `tags` `parkingIncluded` `smokingAllowed` ve `rating` alanlarına açıkça eklenir. Uygulamada, `filterable` ve `facetable` REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
+> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](./search-get-started-powershell.md)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable`Ve öznitelikleri,,,, `facetable` `category` `tags` `parkingIncluded` `smokingAllowed` ve `rating` alanlarına açıkça eklenir. Uygulamada, `filterable` ve `facetable` REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
 
 ## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
-Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
+Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](./search-get-started-dotnet.md#1---create-an-index) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
 
 ## <a name="add-facet-filters-to-a-query"></a>Bir sorguya model filtreleri ekleme
 
@@ -107,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Kullanıcı gibi bir koleksiyon alanı için bir model değerine tıklarsa `tags` , örneğin, "Pool" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır:`$filter=tags/any(t: t eq 'pool')`
+Kullanıcı gibi bir koleksiyon alanı için bir model değerine tıklarsa `tags` , örneğin, "Pool" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>İpuçları ve geçici çözümler
 
@@ -124,5 +124,5 @@ Bu, yaygın olarak kullanılan bir kullanım durumu olsa da, model Gezinti yapı
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Azure Bilişsel Arama filtreler](search-filters.md)
-+ [Dizin REST API oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Dizin REST API oluştur](/rest/api/searchservice/create-index)
++ [Belgelerde Arama REST API'si](/rest/api/searchservice/search-documents)

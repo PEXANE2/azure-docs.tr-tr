@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763499"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893026"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -95,7 +95,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | İşlem | Hata ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Aracıları korumalı sunuculara iletme | Üzerinde DPM Aracı Düzenleyicisi hizmetindeki bir iletişim hatası nedeniyle Aracı işlemi başarısız oldu \<ServerName> . | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları gerçekleştirin**: <ul><li> Güvenilmeyen bir etki alanından bilgisayar iliştirirken, [Bu adımları](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)izleyin. <br> VEYA </li><li> Güvenilen bir etki alanından bir bilgisayar iliştiriyorsanız, [Bu blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)özetlenen adımları kullanarak sorun giderin. <br>VEYA</li><li> Sorun giderme adımı olarak virüsten koruma 'yı devre dışı bırakmayı deneyin. Sorunu giderirse, virüsten koruma ayarlarını [Bu makalede](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)önerildiği şekilde değiştirin.</li></ul> |
+| Aracıları korumalı sunuculara iletme | Üzerinde DPM Aracı Düzenleyicisi hizmetindeki bir iletişim hatası nedeniyle Aracı işlemi başarısız oldu \<ServerName> . | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları gerçekleştirin**: <ul><li> Güvenilmeyen bir etki alanından bir bilgisayar iliştiriyorsanız, [Bu adımları](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)izleyin. <br> VEYA </li><li> Güvenilen bir etki alanından bir bilgisayar iliştirdiyseniz, [Bu blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)açıklanan adımları kullanarak sorun giderin. <br>VEYA</li><li> Sorun giderme adımı olarak virüsten koruma 'yı devre dışı bırakmayı deneyin. Sorunu giderirse, virüsten koruma ayarlarını [Bu makalede](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)önerildiği şekilde değiştirin.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Kurulum, kayıt defteri meta verilerini güncelleştiremedi
 

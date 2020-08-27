@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027639"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918834"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Konuşma SDK 'sını kullanarak bir istemci uygulamasıyla tümleştirme
 
@@ -24,7 +25,7 @@ Bu makalede, bir UWP uygulamasında çalışan konuşma SDK 'sından yayımlanm�
 - Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
 - Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir Evrensel Windows Platformu (UWP) istemci uygulaması oluşturun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Özel bir komutlar uygulaması oluşturmadıysanız, hızlı başlangıçlardan sonra bunu yapabilirsiniz:
 > [!div class = "checklist"]
@@ -302,7 +303,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
     > 1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **güncelleştirmeler** ' i seçin 
     > 1. Güncelleştirme listesinde **Microsoft. netcore. üniversalwindowsplatform** görürseniz, **Microsoft. Netcore. üniversalwindowsplatform** ' ı en yeni sürüme güncelleştirin
 
-1. Aşağıdaki kodu ' ın yöntem gövdesine ekleyin`InitializeDialogServiceConnector`
+1. Aşağıdaki kodu ' ın yöntem gövdesine ekleyin `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -319,7 +320,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
 1. Dize, `YourApplicationId` `YourSpeechSubscriptionKey` `YourServiceRegion` konuşma aboneliğiniz ve [bölgeniz](regions.md) için, ve değerlerini kendi değerlerinizle değiştirin
 
-1. Aşağıdaki kod parçacığını, öğesinin Yöntem gövdesinin sonuna ekleyin`InitializeDialogServiceConnector`
+1. Aşağıdaki kod parçacığını, öğesinin Yöntem gövdesinin sonuna ekleyin `InitializeDialogServiceConnector`
 
    ```csharp
    //

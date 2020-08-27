@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 101fd5298482f2f92e2a3fa4284d6e3fe94989a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905790"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923237"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 
-[.NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)9,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 10 ' u kullanacak şekilde yükseltmenize yardımcı olur.
+[.NET SDK 'sının](/dotnet/api/overview/azure/search)9,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 10 ' u kullanacak şekilde yükseltmenize yardımcı olur.
 
 Azure Search, sürüm 10 ' da Azure Bilişsel Arama olarak yeniden adlandırıldı, ancak ad alanları ve paket adları değiştirilmez. SDK 'nın önceki sürümleri (9,0 ve öncesi), eski adı kullanmaya devam eder. SDK 'yı kullanma hakkında daha fazla bilgi için örnekler de dahil olmak üzere [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md)konusuna bakın.
 
@@ -35,13 +35,13 @@ Sürüm 10, çeşitli özellikler ve hata düzeltmeleri sunarak REST API sürüm
 Azure Bilişsel Arama .NET SDK 'sının sürüm 10 ' un bu güncelleştirmelerle REST API hedeflendiği `2019-05-06` :
 
 * İki yeni becerinin tanıtımı- [koşullu yetenek](cognitive-search-skill-conditional.md) ve [metin çeviri yeteneği](cognitive-search-skill-text-translation.md).
-* [Tek tek beceri](cognitive-search-skill-shaper.md) girişleri, iç içe bağlamlardan birleştirmeye uyum sağlayacak şekilde yeniden yapılandırılmış. Daha fazla bilgi için bu [örnek JSON tanımına](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)bakın.
+* [Tek tek beceri](cognitive-search-skill-shaper.md) girişleri, iç içe bağlamlardan birleştirmeye uyum sağlayacak şekilde yeniden yapılandırılmış. Daha fazla bilgi için bu [örnek JSON tanımına](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts)bakın.
 * İki yeni [alan eşleme işlevinin](search-indexer-field-mappings.md)eklenmesi:
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [URL kod çözme](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* Belirli durumlarda, [Dizin Oluşturucu yürütme durumunda](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) görüntülenen hatalar ve uyarılar hata ayıklamada yardımcı olan ek ayrıntılara sahip olabilir. `IndexerExecutionResult`, bu davranışı yansıtacak şekilde güncelleştirildi.
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [URL kod çözme](./search-indexer-field-mappings.md#urldecode-function)
+* Belirli durumlarda, [Dizin Oluşturucu yürütme durumunda](/rest/api/searchservice/get-indexer-status) görüntülenen hatalar ve uyarılar hata ayıklamada yardımcı olan ek ayrıntılara sahip olabilir. `IndexerExecutionResult` , bu davranışı yansıtacak şekilde güncelleştirildi.
 * Bir [beceri](cognitive-search-defining-skillset.md) içinde tanımlanan bireysel yetenekler, isteğe bağlı olarak bir özellik belirtilerek belirlenebilir `name` .
-* `ServiceLimits`[karmaşık türlerin](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) sınırlarını gösterir ve `IndexerExecutionInfo` ilgili Dizin Oluşturucu sınırlarını/kotalarını gösterir.
+* `ServiceLimits`[karmaşık türlerin](./search-howto-complex-data-types.md) sınırlarını gösterir ve `IndexerExecutionInfo` ilgili Dizin Oluşturucu sınırlarını/kotalarını gösterir.
 
 <a name="UpgradeSteps"></a>
 
@@ -139,13 +139,13 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`bir ad atanır `#1` , atanır `WebApiSkill` `#2` , `ShaperSkill` atanır `#3` ve bu şekilde devam eder.
+`SentimentSkill` bir ad atanır `#1` , atanır `WebApiSkill` `#2` , `ShaperSkill` atanır `#3` ve bu şekilde devam eder.
 
 Becerileri özel bir ad ile belirlemeyi seçerseniz, istemcilerinizin tüm örneklerini öncelikle SDK 'nın 10. sürümüne güncelleştirdiğinizden emin olun. Aksi takdirde, SDK 'nın eski bir sürümünü kullanan bir istemcinin `null` `Name` bir beceri özelliğini kullanmasını ve istemcinin varsayılan adlandırma düzenine geri dönmesine neden olduğu bir olasılık vardır.
 
 ## <a name="details-about-errors-and-warnings"></a>Hatalar ve uyarılar hakkındaki ayrıntılar
 
-`ItemError`ve `ItemWarning` bir Dizin Oluşturucu yürütmesi sırasında oluşan hataların ve uyarıların ayrıntılarını kapsülleyen modeller, dizin oluşturucuda hata ayıklamaya yardımcı olmak için amaca yönelik üç yeni özellik içerecek şekilde değiştirilmiştir. Bu özellikler şunlardır:
+`ItemError` ve `ItemWarning` bir Dizin Oluşturucu yürütmesi sırasında oluşan hataların ve uyarıların ayrıntılarını kapsülleyen modeller, dizin oluşturucuda hata ayıklamaya yardımcı olmak için amaca yönelik üç yeni özellik içerecek şekilde değiştirilmiştir. Bu özellikler şunlardır:
 
 - `Name`: Hatanın kaynaklandığı kaynağın adı. Örneğin, ekli beceri belirli bir yeteneğe başvurabilir.
 - `Details`: Hata veya uyarı hakkında ek ayrıntılı ayrıntılar.
@@ -159,4 +159,3 @@ Becerileri özel bir ad ile belirlemeyi seçerseniz, istemcilerinizin tüm örne
 - Beceri başına Biçimlendiricideki değişiklikler yeni veya mevcut kod üzerinde en olası etkiye sahiptir. Bir sonraki adım olarak, giriş yapısını gösteren bu örneği yeniden ziyaret ettiğinizden emin olun: [Shaper for YETENEĞI JSON tanımı örneği](cognitive-search-skill-shaper.md)
 - [AI zenginleştirme ' ye Genel Bakış ' a](cognitive-search-concept-intro.md)gidin.
 - SDK 'daki geri bildirimlerinize hoş geldiniz. Sorunlarla karşılaşırsanız [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)hakkında yardım almak için bize danışabilirsiniz. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun oluşturabilirsiniz. Sorun başlığınız "[Azure Bilişsel Arama]" ile öneklediğinizden emin olun.
-

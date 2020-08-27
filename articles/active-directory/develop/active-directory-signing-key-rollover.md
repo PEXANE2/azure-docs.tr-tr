@@ -8,26 +8,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115603"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948139"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarı geçişi
-Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platform tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platform kullanan tüm uygulamaların, anahtar geçişi işlemini programlı bir şekilde işleyebilmesi veya düzenli bir el ile geçiş işlemi kurabilmesi gerekir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
+Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platform tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platform kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
 
 ## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarlarına genel bakış
-Microsoft Identity platform, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartları üzerinde oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde işe yarar: Microsoft Identity platform ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Microsoft Identity platform kullanan bir uygulamada oturum açtığında, Microsoft Identity platform Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Microsoft Identity platformu tarafından imzalanır. Belirtecin geçerli olduğunu ve Microsoft Identity platformundan geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-beslikli [Federasyon meta veri belgesinde](../azuread-dev/azure-ad-federation-metadata.md)bulunan Microsoft Identity platform tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
+Microsoft Identity platform, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartları üzerinde oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde işe yarar: Microsoft Identity platform ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Microsoft Identity platform kullanan bir uygulamada oturum açtığında, Microsoft Identity platform Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Microsoft Identity platformu tarafından imzalanır. Belirtecin geçerli olduğunu ve Microsoft Identity platformundan geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-beslikli [Federasyon meta veri belgesinde](../azuread-dev/azure-ad-federation-metadata.md)bulunan Microsoft Identity platform tarafından kullanıma sunulan ortak anahtarları kullanarak belirtecin imzasını doğrulaması gerekir.
 
-Güvenlik nedeniyle, Microsoft Identity platformunun imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Microsoft Identity platformu ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir şekilde bir anahtar geçişi olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.
+Güvenlik nedeniyle, Microsoft Identity platformunun imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Bu anahtar arasında hiçbir küme veya garantili zaman yok. Microsoft Identity platformu ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir geçiş olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.  Güncelleştirmelerin her 24 saatte bir denetlenmesi, bilinmeyen bir anahtar tanımlayıcısıyla bir belirteç ile karşılaşılırsa, kısıtlı (en fazla beş dakikada bir) anahtar belgenin hemen yenilenmesini içeren en iyi uygulamadır. 
 
-OpenID Connect bulgu belgesinde ve Federasyon meta verileri belgesinde her zaman bir geçerli anahtar mevcuttur. Uygulamanız, belgede belirtilen anahtarlardan herhangi birini kullanmaya hazırlanmalıdır, çünkü bir anahtar yakında alınabilir, diğeri de bunun yerini alır ve bu şekilde devam eder.
+OpenID Connect bulgu belgesinde ve Federasyon meta verileri belgesinde her zaman bir geçerli anahtar mevcuttur. Uygulamanız, belgede belirtilen anahtarların herhangi birini ve tümünü kullanmak üzere hazırlanmalıdır, çünkü bir anahtar yakında alınabilir, diğeri de bunun yerini alır ve benzeri olabilir.  Yeni platformları, yeni bulutları veya yeni kimlik doğrulama protokollerini desteklediğimiz için, mevcut anahtarların sayısı Microsoft Identity platformunun iç mimarisine göre zaman içinde değişebilir. Her ne kadar, JSON yanıtında anahtarların sırası veya sunuldukları sıra, uygulamanıza açık olarak düşünülmelidir. 
+
+Yalnızca tek bir imzalama anahtarını destekleyen veya imzalama anahtarlarında el ile güncelleştirme gerektiren uygulamalar, doğal olarak daha az güvenlidir ve güvenilirdir.  Diğer en iyi yöntemler arasında her zaman güncel imzalama anahtarlarını kullandıklarından emin olmak için [Standart kitaplıkları](reference-v2-libraries.md) kullanacak şekilde güncelleştirilmeleri gerekir. 
 
 ## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Uygulamanızın etkilenip etkilendiğine ve bunun ne yapacaklarınızın nasıl değerlendirilecektir
 Uygulamanızın anahtar rollover 'ı nasıl işleyeceği, uygulamanın türü veya kimlik protokolünün ve kitaplığın kullanıldığı değişkenlere bağlıdır. Aşağıdaki bölümler, en yaygın uygulama türlerinin anahtar rollover tarafından etkilenip etkilenmediğini değerlendirir ve uygulamanın otomatik geçişi desteklemek veya anahtarı el ile güncelleştirmek için nasıl güncellenebileceğine ilişkin yönergeler sağlar.
@@ -58,7 +60,7 @@ Masaüstü veya mobil tarafından bu kategoriye giren ve bu nedenle geçiş tara
 ### <a name="web-applications--apis-accessing-resources"></a><a name="webclient"></a>Kaynaklara erişen web uygulamaları/API 'Ler
 Yalnızca kaynaklara erişen uygulamalar (ör. Microsoft Graph, Keykasası, Outlook API ve diğer Microsoft API 'Leri) genellikle yalnızca bir belirteç alıp kaynak sahibine geçiş yapın. Hiçbir kaynağı korumadıklarından, belirteci incelemeyin ve bu nedenle düzgün bir şekilde imzalandığından emin olmak zorunda değildir.
 
-Yalnızca uygulama akışını kullanan Web uygulamaları ve Web API 'Leri (istemci kimlik bilgileri/istemci sertifikası), bu kategoriye girer ve bu nedenle geçiş tarafından etkilenmemektedir.
+Belirteçleri istemek için yalnızca uygulama akışını (istemci kimlik bilgileri/istemci sertifikası) kullanan Web uygulamaları ve Web API 'Leri bu kategoriye girer ve bu nedenle geçiş tarafından etkilenmemektedir.
 
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Kaynakları koruyan ve Azure Uygulama Hizmetleri kullanılarak oluşturulan Web uygulamaları/API 'Leri
 Azure Uygulama Hizmetleri ' kimlik doğrulama/yetkilendirme (EasyAuth) işlevselliğinde, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten var.
@@ -148,7 +150,7 @@ Visual Studio 2013 ' de Web API şablonu kullanarak bir Web API uygulaması olu�
 
 Kimlik doğrulamasını el ile yapılandırdıysanız, kendi anahtar bilgilerini otomatik olarak güncelleştirmek üzere Web API 'nizi nasıl yapılandıracağınızı öğrenmek için aşağıdaki yönergeleri izleyin.
 
-Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](/previous-versions/dotnet/framework/security/json-web-token-handler) nasıl kullanacağınızı gösterir. Kod parçacığı, bir veritabanı, yapılandırma dosyası veya başka bir yerde olup olmadığı gibi, Microsoft Identity platform 'dan gelecek belirteçleri doğrulamak için anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
+Aşağıdaki kod parçacığı, Federasyon meta veri belgesinden en son anahtarları nasıl alınacağını ve sonra belirteci doğrulamak için [JWT belirteci işleyicisini](https://msdn.microsoft.com/library/dn205065.aspx) nasıl kullanacağınızı gösterir. Kod parçacığı, bir veritabanı, yapılandırma dosyası veya başka bir yerde olup olmadığı gibi, Microsoft Identity platform 'dan gelecek belirteçleri doğrulamak için anahtarı kalıcı hale getiren kendi önbelleğe alma mekanizmanızı kullanacağınızı varsayar.
 
 ```
 using System;
@@ -239,7 +241,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Kaynakları koruyan ve Visual Studio 2012 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Microsoft Identity Platform) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
+Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygulamanızı yapılandırmak için kimlik ve erişim aracını kullanmışsınızdır. Bu, [doğrulama verenin ad kayıt defteri 'ni (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)de kullanıyor olabilirsiniz. HAVR, güvenilir kimlik sağlayıcıları (Microsoft Identity Platform) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlarla ilgili bilgilerin korunmasından sorumludur. VINR Ayrıca dizininizle ilişkili en son Federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek ve uygulamayı yeni anahtarı gerektiği gibi kullanacak şekilde güncelleştirerek bir Web.config dosyasında depolanan anahtar bilgilerini otomatik olarak güncelleştirmeyi kolaylaştırır.
 
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenecek yol belgelerinden birini kullanarak oluşturduysanız, anahtar aktarma mantığı projenize zaten dahil edilmiştir. Aşağıdaki kodun projenizde zaten var olduğunu fark edeceksiniz. Uygulamanızda zaten bu mantık yoksa, eklemek ve düzgün çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
@@ -288,14 +290,14 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
 WıF v 1.0 üzerinde bir uygulama oluşturduysanız, yeni bir anahtar kullanmak için uygulamanızın yapılandırmasını otomatik olarak yenilemek üzere bir sağlanmayan mekanizma yoktur.
 
 * *En kolay yol* WıF SDK ' da bulunan FedUtil aracı 'nı kullanın. Bu, en son meta veri belgesini alabilir ve yapılandırmanızı güncelleştirebilir.
-* Uygulamanızı, sistem ad alanında yer alan en yeni WıF sürümünü içeren .NET 4,5 ' a güncelleştirin. Daha sonra, uygulama yapılandırmasının otomatik güncelleştirmelerini gerçekleştirmek için [doğrulama verenin adı kayıt defterini (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) kullanabilirsiniz.
+* Uygulamanızı, sistem ad alanında yer alan en yeni WıF sürümünü içeren .NET 4,5 ' a güncelleştirin. Daha sonra, uygulama yapılandırmasının otomatik güncelleştirmelerini gerçekleştirmek için [doğrulama verenin adı kayıt defterini (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) kullanabilirsiniz.
 * Bu kılavuz belgesinin sonundaki yönergelere göre el ile geçiş gerçekleştirin.
 
 Yapılandırmanızı güncelleştirmek için FedUtil kullanma yönergeleri:
 
 1. Visual Studio 2008 veya 2010 için geliştirme makinenizde WıF v 1.0 SDK 'nın yüklü olduğunu doğrulayın. Henüz yüklemediyseniz, [buradan indirebilirsiniz](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
 2. Visual Studio 'da çözümü açın ve ardından geçerli projeye sağ tıklayıp **Federasyon meta verilerini Güncelleştir**' i seçin. Bu seçenek kullanılamıyorsa, FedUtil ve/veya WıF v 1.0 SDK yüklü değildir.
-3. Komut isteminde, Federasyon meta verilerinizi güncelleştirmeye başlamak için **Güncelleştir** ' i seçin. Uygulamanın barındırıldığı sunucu ortamına erişiminiz varsa, isteğe bağlı olarak FedUtil 'nin [Otomatik meta veri güncelleştirme zamanlayıcısını](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))kullanabilirsiniz.
+3. Komut isteminde, Federasyon meta verilerinizi güncelleştirmeye başlamak için **Güncelleştir** ' i seçin. Uygulamanın barındırıldığı sunucu ortamına erişiminiz varsa, isteğe bağlı olarak FedUtil 'nin [Otomatik meta veri güncelleştirme zamanlayıcısını](https://msdn.microsoft.com/library/ee517272.aspx)kullanabilirsiniz.
 4. Güncelleştirme işlemini gerçekleştirmek için **son** ' a tıklayın.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Diğer kitaplıkları kullanan veya desteklenen protokollerden herhangi birini uygulayan Web uygulamaları/API 'Leri, kaynakları koruyan
