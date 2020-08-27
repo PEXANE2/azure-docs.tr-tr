@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958448"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve TLS/SSL sertifikası sorunlarını giderme
 
@@ -131,7 +131,7 @@ Bir alt etki alanı atamak için uygulamaya yeni bir ana bilgisayar adı ekleyem
 #### <a name="solution"></a>Çözüm
 
 - Uygulamaya bir ana bilgisayar adı ekleme izinlerinizin olduğundan emin olmak için abonelik Yöneticisi ile görüşün.
-- Daha fazla alt etki alanı gerekiyorsa, etki alanı barındırmayı Azure etki alanı adı hizmeti (DNS) olarak değiştirmenizi öneririz. Azure DNS kullanarak, uygulamanıza 500 ana bilgisayar adı ekleyebilirsiniz. Daha fazla bilgi için bkz. alt [etki alanı ekleme](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Daha fazla alt etki alanı gerekiyorsa, etki alanı barındırmayı Azure etki alanı adı hizmeti (DNS) olarak değiştirmenizi öneririz. Azure DNS kullanarak, uygulamanıza 500 ana bilgisayar adı ekleyebilirsiniz. Daha fazla bilgi için bkz. alt [etki alanı ekleme](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
 
 ### <a name="dns-cant-be-resolved"></a>DNS çözümlenemiyor
 
@@ -310,7 +310,7 @@ Evet. Azure portal özel etki alanları ve TLS dikey penceresine eriştiğinizde
 
 **Bir etki alanını bir abonelikten başka bir aboneliğe aktarabilir miyim?**
 
-[Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 'ini kullanarak bir etki alanını başka bir aboneliğe/kaynak grubuna taşıyabilirsiniz.
+[Move-AzResource](/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 'ini kullanarak bir etki alanını başka bir aboneliğe/kaynak grubuna taşıyabilirsiniz.
 
 **Şu anda Azure App Service bir uygulaması yoksa özel etki alanım 'ı nasıl yönetebilirim?**
 

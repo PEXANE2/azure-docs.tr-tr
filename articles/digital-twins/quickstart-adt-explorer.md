@@ -1,5 +1,5 @@
 ---
-title: Örnek senaryoyu keşfet
+title: Örnek bir senaryoyu inceleme
 titleSuffix: Azure Digital Twins
 description: Önceden oluşturulmuş bir senaryoyu görselleştirmek ve araştırmak için ADT Explorer örneğini kullanın.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88894395"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959822"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -170,7 +170,7 @@ Bu bölümde, önceden oluşturulmuş bir grafiğe bağlı olan önceden oluştu
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Dosya Seçicisi kutusunda, *istemci/örnekler* klasörüne tekrar gidin ve _**buildingScenario.xlsx**_ elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. Tamam 'a basın.
+Dosya Seçicisi kutusunda *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* klasörüne gidin ve _**buildingScenario.xlsx**_ elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. Tamam 'a basın.
 
 Birkaç saniye sonra, ADT Gezgini yüklenecek Grafiğin önizlemesini görüntüleyen bir *Içeri aktarma* görünümü açar.
 

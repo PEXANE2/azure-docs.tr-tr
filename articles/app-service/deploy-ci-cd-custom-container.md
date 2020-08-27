@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b168328f64f599de109dbd0a5bd95c0a26f5f902
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083236"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961865"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Kapsayıcılar için Web App ile sürekli dağıtım
 
@@ -55,7 +55,7 @@ Web kancası URL 'sini kopyalayın. Docker Hub için Web kancası eklemek için 
 
 ## <a name="automate-with-cli"></a>CLı ile otomatikleştirin
 
-Azure CLı kullanarak CI/CD 'yi yapılandırmak için, Web kancası URL 'sini oluşturmak için [az WebApp Deployment Container config](https://docs.microsoft.com/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) komutunu çalıştırın. URL, DockerHub 'ınızı veya Azure Container Registry yapılandırmak için kullanılabilir.
+Azure CLı kullanarak CI/CD 'yi yapılandırmak için, Web kancası URL 'sini oluşturmak için [az WebApp Deployment Container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) komutunu çalıştırın. URL, DockerHub 'ınızı veya Azure Container Registry yapılandırmak için kullanılabilir.
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true

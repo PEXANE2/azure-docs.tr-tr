@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811704"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962137"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service
 
@@ -20,11 +20,11 @@ Kodunuzda sertifika kullanmaya yönelik bu yaklaşım, uygulamanızın **temel**
 
 TLS/SSL sertifikalarınızı App Service yönettiğinizde, sertifikaları ve uygulama kodunuzu ayrı olarak koruyabilir ve hassas verilerinizi koruyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
-- [App Service uygulaması oluşturma](/azure/app-service/)
+- [App Service uygulaması oluşturma](./index.yml)
 - [Uygulamanıza bir sertifika ekleyin](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>Parmak izini bulma
@@ -164,4 +164,4 @@ Node.js, PHP, Python, Java veya Ruby içindeki bir dosyadan bir TLS/SSL sertifik
 * [Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS'yi zorunlu tutma](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 zorlama](configure-ssl-bindings.md#enforce-tls-versions)
-* [SSS: sertifikalar App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [SSS: sertifikalar App Service](./faq-configuration-and-management.md)

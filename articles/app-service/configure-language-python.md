@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: 7515fe7b7e3d2a9d0f1e0497aa226ceb3e6be16c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085459"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961644"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -21,7 +21,7 @@ App Service dağıtım altyapısı sanal bir ortamı otomatik olarak etkinleşti
 Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Python geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, ilk olarak [Python hızlı](quickstart-python.md) başlangıcı ve [Python 'U PostgreSQL öğreticisiyle](tutorial-python-postgresql-app.md) izlemelisiniz.
 
 > [!NOTE]
-> Linux Şu anda App Service ' de Python uygulamalarını çalıştırmak için önerilen seçenektir. Windows seçeneği hakkında bilgi için, [App Service Windows üzerinde Python](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service)konusuna bakın.
+> Linux Şu anda App Service ' de Python uygulamalarını çalıştırmak için önerilen seçenektir. Windows seçeneği hakkında bilgi için, [App Service Windows üzerinde Python](/visualstudio/python/managing-python-on-azure-app-service)konusuna bakın.
 >
 
 ## <a name="show-python-version"></a>Python sürümünü göster
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
-1. `pip install -r requirements.txt` komutunu çalıştırın.
+1. `pip install -r requirements.txt` öğesini çalıştırın.
 1. Deponun kökünde *Manage.py* bulunursa, *Manage.py collectstatic*' i çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` olarak ayarlandıysa `true` , bu adım atlanır.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 

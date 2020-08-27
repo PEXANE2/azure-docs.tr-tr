@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 65f2a7ba51fcf811e36839d3998902ba37a90fc4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 063cd04ecfc67d5f0f761bb0159ab80dcff40030
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890000"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958822"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -36,7 +36,9 @@ Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin ol
   * Varsayılan **hdbuserstore**içinde mevcut olmalıdır. Varsayılan değer `<sid>adm` SAP HANA yüklendiği hesaptır.
   * MDC için anahtar, **nameserver**SQL bağlantı noktasını göstermelidir. SDC söz konusu olduğunda, **dizin sunucusunun** SQL bağlantı noktasını işaret etmelidir
   * Kullanıcı eklemek ve silmek için kimlik bilgilerine sahip olmalıdır
+  * Ön kayıt betiği başarıyla çalıştırıldıktan sonra bu anahtarın silinebileceğini unutmayın
 * Kök kullanıcı olarak, HANA 'nın yüklü olduğu sanal makinede SAP HANA yedekleme yapılandırma betiğini (ön kayıt betiği) çalıştırın. [Bu betik](https://aka.ms/scriptforpermsonhana) , yedekleme IÇIN hazırlanma Hana sistemini alır. Ön kayıt betiği hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
+* HANA kurulumlarınız özel uç noktalar kullanıyorsa, [ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) *-sn* veya *--Skip-Network-denetimler* parametresiyle çalıştırın.
 
 >[!NOTE]
 >Preregistration betiği, RHEL (7,4, 7,6 ve 7,7) üzerinde çalışan SAP HANA iş yükleri için **COMPAT-unixODBC234** ve rhel 8,1 Için **unixODBC** 'yi yüklüyor. [Bu paket, SAP Solutions (RPMs) deposu için RHEL for SAP HANA (RHEL 7 Server) Güncelleştirme Hizmetleri ' nde bulunur](https://access.redhat.com/solutions/5094721).  Bir Azure Marketi RHEL görüntüsü için deponun **rhuı-RHEL-SAP-HANA-for-RHEL-7-Server-rhuı-E4s-RPMS**olması gerekir.
@@ -103,7 +105,7 @@ Azure VM üzerinde çalışan bir SAP HANA veritabanını yedeklerken, VM 'deki 
 
 * Komut dosyası, Linux dağılıcmanıza bağlı olarak, Azure Backup aracısının gerektirdiği gerekli paketleri de yüklüyor veya güncelleştirir.
 * Azure Backup sunucularıyla giden ağ bağlantı denetimlerini ve Azure Active Directory ve Azure depolama gibi bağımlı hizmetleri gerçekleştirir.
-* [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Kullanıcı anahtarı, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve ön kayıt betiği başarıyla çalıştıktan sonra Kullanıcı anahtarı silinebilir.
+* [Önkoşulların](#prerequisites)bir parçası olarak listelenen Kullanıcı anahtarını kullanarak Hana sisteminizde oturum açar. Kullanıcı anahtarı, HANA sisteminde bir yedek Kullanıcı (AZUREWLBACKUPHANAUSER) oluşturmak için kullanılır ve **ön kayıt betiği başarıyla çalıştıktan sonra Kullanıcı anahtarı silinebilir**.
 * AZUREWLBACKUPHANAUSER bu gerekli roller ve izinler atanır:
   * VERITABANı YÖNETICISI (MDC söz konusu olduğunda) ve yedekleme YÖNETICISI (SDC söz konusu olduğunda): geri yükleme sırasında yeni veritabanları oluşturmak için.
   * Katalog okuma: yedekleme kataloğunu okumak için.

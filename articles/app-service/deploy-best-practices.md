@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081060"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961882"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 
@@ -127,7 +127,7 @@ Betiğinizdeki ile oturum açın `az login --service-principal` , ana bilgisayar
 
 ### <a name="java"></a>Java
 
-JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve War uygulamaları için [wardeploy/](deploy-zip.md#deploy-war-file) API kullanın. Jenkins kullanıyorsanız, bu API 'Leri doğrudan dağıtım aşamasınca kullanabilirsiniz. Daha fazla bilgi için [Bu makaleye](../jenkins/execute-cli-jenkins-pipeline.md)bakın.
+JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve War uygulamaları için [wardeploy/](deploy-zip.md#deploy-war-file) API kullanın. Jenkins kullanıyorsanız, bu API 'Leri doğrudan dağıtım aşamasınca kullanabilirsiniz. Daha fazla bilgi için [Bu makaleye](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)bakın.
 
 ### <a name="node"></a>Node
 
@@ -149,7 +149,7 @@ Kapalı kalma süresini engellemek için her zaman yerel önbelleği [dağıtım
 
 App Service planınız kullanılabilir CPU veya belleğin %90 ' den fazla kullanılıyorsa, temeldeki sanal makinede dağıtımınızı işleme sorunu olabilir. Bu durumda, dağıtımı gerçekleştirmek için örnek sayınız geçici olarak ölçeklendirin. Dağıtım tamamlandıktan sonra, örnek sayısını önceki değerine döndürebilirsiniz.
 
-En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](https://docs.microsoft.com/azure/app-service/overview-diagnostics) ' yı ziyaret ederek kaynağına özgü eyleme dönüştürülebilir en iyi yöntemleri bulabilirsiniz.
+En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](./overview-diagnostics.md) ' yı ziyaret ederek kaynağına özgü eyleme dönüştürülebilir en iyi yöntemleri bulabilirsiniz.
 
 - [Azure Portal](https://portal.azure.com)Web uygulamanıza gidin.
 - App Service Tanılama ' yı açan sol gezinmede **sorunları Tanıla ve çöz** ' e tıklayın.

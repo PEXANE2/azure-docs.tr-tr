@@ -4,18 +4,18 @@ description: Azure App Service işletim sistemi ve çalışma zamanlarını, uyg
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961525"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
 Bu makalede, [App Service](overview.md)işletim sistemi veya yazılımla ilgili belirli sürüm bilgilerini nasıl alacağınız gösterilmektedir. 
 
-App Service, işletim sistemi ve uygulama yığınının Azure tarafından yönetilebilmesi anlamına gelen bir hizmet olarak platform; yalnızca uygulamanızı ve verilerini yönetirsiniz. [Azure sanal makinelerde](https://docs.microsoft.com/azure/virtual-machines/)işletim sistemi ve uygulama yığını üzerinde daha fazla denetim bulabilirsiniz. Göz önünde bulundurularak, bunun gibi daha fazla bilgi edinmek için App Service bir kullanıcı olarak yararlı olur.
+App Service, işletim sistemi ve uygulama yığınının Azure tarafından yönetilebilmesi anlamına gelen bir hizmet olarak platform; yalnızca uygulamanızı ve verilerini yönetirsiniz. [Azure sanal makinelerde](../virtual-machines/index.yml)işletim sistemi ve uygulama yığını üzerinde daha fazla denetim bulabilirsiniz. Göz önünde bulundurularak, bunun gibi daha fazla bilgi edinmek için App Service bir kullanıcı olarak yararlı olur.
 
 -   İşletim sistemi güncelleştirmeleri nasıl ve ne zaman uygulanır?
 -   App Service önemli güvenlik açıklarına karşı Düzeltme Eki (sıfır gün gibi) nedir?
@@ -25,7 +25,7 @@ Güvenlik nedenleriyle, güvenlik bilgilerinin belirli özellikleri yayımlanmaz
 
 ## <a name="how-and-when-are-os-updates-applied"></a>İşletim sistemi güncelleştirmeleri nasıl ve ne zaman uygulanır?
 
-Azure, App Service kaynaklarını çalıştıran fiziksel sunucular ve konuk sanal makineler (VM) olmak üzere iki düzeyde işletim sistemi düzeltme eki uygulamayı yönetir. Her ikisi de aylık olarak güncelleştirilir. Bu, aylık [Düzeltme Eki Salı](https://technet.microsoft.com/security/bulletins.aspx) zamanlamaya göre hizalanır. Bu güncelleştirmeler, Azure hizmetlerinin yüksek kullanılabilirlik SLA 'sını garanti eden bir şekilde otomatik olarak uygulanır. 
+Azure, App Service kaynaklarını çalıştıran fiziksel sunucular ve konuk sanal makineler (VM) olmak üzere iki düzeyde işletim sistemi düzeltme eki uygulamayı yönetir. Her ikisi de aylık olarak güncelleştirilir. Bu, aylık [Düzeltme Eki Salı](/security-updates/) zamanlamaya göre hizalanır. Bu güncelleştirmeler, Azure hizmetlerinin yüksek kullanılabilirlik SLA 'sını garanti eden bir şekilde otomatik olarak uygulanır. 
 
 Güncelleştirmelerin nasıl uygulandığı hakkında ayrıntılı bilgi için bkz. [Demystifying The Magic in app SERVICE OS Updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
@@ -55,7 +55,7 @@ Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) y
 
 ### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 
-Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve gibi `package.json` ) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
+Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve gibi `package.json` ) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -86,7 +86,7 @@ Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalış
 | Java sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `java -version` |  
 
 > [!NOTE]  
-> `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` ["KB" yamaları](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna erişim, kilitlenir.
+> `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` ["KB" yamaları](/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna erişim, kilitlenir.
 >
 >
 

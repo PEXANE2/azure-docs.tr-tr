@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987044"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958669"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
@@ -153,7 +153,7 @@ Aşağıdaki örnek, Web API 'SI için bir erişim belirteci isteğine yönelik 
 ```
 
 > [!NOTE]
-> Yukarıdaki erişim belirteci, mikro Osft Graph için v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirteç biçiminin erişilmekte olan **kaynağı** temel aldığı ve bunu istemek için kullanılan uç noktalarla ilgisiz olmasından kaynaklanır. Microsoft Graph, v 1.0 belirteçlerini kabul edecek şekilde ayarlanır. bu nedenle, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Diğer uygulamalar, v 2.0-biçim belirteçleri, v 1.0-biçim belirteçleri, hatta özel veya şifreli belirteç biçimleri istediğini gösterebilir.  Hem v 1.0 hem de v 2.0 uç noktaları, belirteç biçimi oluşturabilir. bu şekilde kaynak, belirtecin istemci tarafından nasıl veya nerede istendiğine bakılmaksızın her zaman doğru belirteç biçimini alabilir. 
+> Yukarıdaki erişim belirteci, Microsoft Graph için v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirteç biçiminin erişilmekte olan **kaynağı** temel aldığı ve bunu istemek için kullanılan uç noktalarla ilgisiz olmasından kaynaklanır. Microsoft Graph, v 1.0 belirteçlerini kabul edecek şekilde ayarlanır. bu nedenle, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Diğer uygulamalar, v 2.0-biçim belirteçleri, v 1.0-biçim belirteçleri, hatta özel veya şifreli belirteç biçimleri istediğini gösterebilir.  Hem v 1.0 hem de v 2.0 uç noktaları, belirteç biçimi oluşturabilir. bu şekilde kaynak, belirtecin istemci tarafından nasıl veya nerede istendiğine bakılmaksızın her zaman doğru belirteç biçimini alabilir. 
 >
 > Yalnızca uygulamalar erişim belirteçlerine bakmalıdır. İstemcilerin bunları incebir şekilde incelemesi **gerekir** . Kodunuzda diğer uygulamalar için erişim belirteçleri incelenirken, bu uygulama belirteçlerinin biçimini değiştirdiğinde veya şifrelemeyi başlattığında uygulamanızın beklenmedik bir şekilde bozmasına neden olur. 
 

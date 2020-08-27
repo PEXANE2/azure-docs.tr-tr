@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080941"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958942"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Hizmet uç noktaları ile Application Gateway tümleştirme
 Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma gerektiren App Service üç çeşidi vardır. Çeşitlemeler, çok kiracılı, Iç Load Balancer (ıLB) App Service Ortamı (Ao) ve dış Ao olarak da bilinen normal App Service içerir. Bu makalede, bunu App Service (çok kiracılı) ile yapılandırma ve ıLB ve dış Ao hakkındaki konuları tartışacak.
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-App Service Ortamı hakkında daha fazla bilgi için bkz. [App Service ortamı belgeleri](https://docs.microsoft.com/azure/app-service/environment).
+App Service Ortamı hakkında daha fazla bilgi için bkz. [App Service ortamı belgeleri](/azure/app-service/environment).
 
 Web uygulamanızı daha güvenli hale getirmek için [Azure Web uygulaması güvenlik duvarı belgelerinde](../../web-application-firewall/ag/ag-overview.md)Application Gateway Web uygulaması güvenlik duvarı ile ilgili bilgiler bulabilirsiniz.

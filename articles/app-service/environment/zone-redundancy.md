@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100057"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961576"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service ortamları için kullanılabilirlik alanı desteği
 
@@ -77,7 +77,7 @@ Aşağıdaki örnek ARM şablon parçacığı, ıLB ATıCı 'in bölge 2 ' ye sa
     ]
 ```
 
-Uygulamalar diliminizi gereksiz hale getirmek için iki bölgesel ILB ases dağıtmanız gerekir. İki bölgesel ILB ases, ayrı kullanılabilirlik bölgelerinde olmalıdır. Daha sonra uygulamalarınızı her bir ıLB ASE 'ye dağıtmanız gerekir. Uygulamalarınız oluşturulduktan sonra bir yük dengeleme çözümü yapılandırmanız gerekir. Önerilen çözüm, bölgesel ILB ASE 'lerin yukarı akış [Application Gateway yedekli bir bölge](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) dağıtmaktır. 
+Uygulamalar diliminizi gereksiz hale getirmek için iki bölgesel ILB ases dağıtmanız gerekir. İki bölgesel ILB ases, ayrı kullanılabilirlik bölgelerinde olmalıdır. Daha sonra uygulamalarınızı her bir ıLB ASE 'ye dağıtmanız gerekir. Uygulamalarınız oluşturulduktan sonra bir yük dengeleme çözümü yapılandırmanız gerekir. Önerilen çözüm, bölgesel ILB ASE 'lerin yukarı akış [Application Gateway yedekli bir bölge](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) dağıtmaktır. 
 
 ## <a name="in-region-data-residency"></a>Bölge veri yerleşimi bölümünde ##
 
@@ -90,5 +90,3 @@ Müşteriler, aşağıdaki adımları izleyerek bir App Service Ortamı verileri
 1. [Kaynak Gezgini](https://resources.azure.com)kullanarak App Service ortamı ARM kaynağına gidin.  ASEs *sağlayıcılar/Microsoft. Web/hostingEnvironments*altında listelenmiştir.
 2. ARM JSON sözdiziminin görünümünde bir *bölgeler* özelliği varsa ve bu, "1", "2" veya "3" değerine sahip tek DEĞERLI bir JSON dizisi içeriyorsa, ASE bölge tarafından dağıtılır ve müşteri verileri aynı bölgede kalır.
 2. Bir *bölgeler* özelliği yoksa veya özelliğin daha önce belirtildiği gibi geçerli bir bölge değeri yoksa, Ao, bölge dışı olarak dağıtılır ve müşteri verileri, aynı bölgede özel olarak depolanmaz.
-
-

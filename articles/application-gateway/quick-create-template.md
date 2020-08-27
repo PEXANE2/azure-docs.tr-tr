@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak doğrudan web trafiği'
 titleSuffix: Azure Application Gateway
-description: Bir arka uç havuzundaki sanal makinelere Web trafiğini yönlendiren bir Azure Application Gateway oluşturmak için Kaynak Yöneticisi şablonunu nasıl kullanacağınızı öğrenin.
+description: Bu hızlı başlangıçta, bir arka uç havuzundaki sanal makinelere Web trafiğini yönlendiren bir Azure Application Gateway oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğreneceksiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705954"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961695"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Hızlı başlangıç: Azure Application Gateway ARM şablonuyla doğrudan web trafiği
 
@@ -58,7 +58,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+   [![Azure’a dağıt](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun, sanal makine yöneticisinin Kullanıcı adını ve parolasını yazın.
 3. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.

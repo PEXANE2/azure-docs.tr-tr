@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211887"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961593"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -52,7 +52,7 @@ Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, `az webapp identity
 
 - Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 - Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
-- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz. 
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz. 
 
 Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kimlik atama işleminde size kılavuzluk eder:
 
@@ -109,7 +109,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
-2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın:
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın:
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
-2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -347,7 +347,7 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > | kaynak      | İsteğin sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak `resource` .                                                                                                                               |
 > | token_type    | Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür Ftaşıyıcı ' dır. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Bu yanıt, [Azure AD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
+Bu yanıt, [Azure AD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
 
 ### <a name="rest-protocol-examples"></a>REST protokol örnekleri
 

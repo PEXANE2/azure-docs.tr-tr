@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170012"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962035"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
@@ -29,7 +29,7 @@ Yüksek düzeyde ayrılmış mikro hizmetlerden oluşan, yinelenebilirlik ve tah
 Bu öğreticide, aşağıdaki araçları kullanacaksınız. Araçlarla ilgili kapsamlı bir tartışma olmadığından, uçtan uca senaryoya giriş yapacağım ve yalnızca her birine kısa bir giriş ve bu konuda daha fazla bilgi bulabilirsiniz. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager şablonları (JSON)
-Azure App Service bir uygulama oluşturduğunuzda, örneğin, Azure Resource Manager kaynak grubunun tamamını bileşen kaynaklarıyla oluşturmak için bir JSON şablonu kullanır. [Azure Marketi](/azure/marketplace) 'ndeki karmaşık bir şablon, veritabanı, depolama hesapları, App Service planı, uygulamanın kendisi, uyarı kuralları, uygulama ayarları, otomatik ölçeklendirme ayarları ve daha fazlasını içerebilir ve tüm bu şablonlar PowerShell üzerinden kullanılabilir. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)
+Azure App Service bir uygulama oluşturduğunuzda, örneğin, Azure Resource Manager kaynak grubunun tamamını bileşen kaynaklarıyla oluşturmak için bir JSON şablonu kullanır. [Azure Marketi](../marketplace/index.yml) 'ndeki karmaşık bir şablon, veritabanı, depolama hesapları, App Service planı, uygulamanın kendisi, uyarı kuralları, uygulama ayarları, otomatik ölçeklendirme ayarları ve daha fazlasını içerebilir ve tüm bu şablonlar PowerShell üzerinden kullanılabilir. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Visual Studio için Azure SDK 2,6
 En yeni SDK, JSON düzenleyicisinde Kaynak Yöneticisi şablonu desteğiyle iyileştirmeler içerir. Bunu, sıfırdan hızlı bir şekilde bir kaynak grubu şablonu oluşturmak veya var olan bir JSON şablonunu (indirilen Galeri şablonu gibi) açmak, parametreler dosyasını doldurmak ve hatta kaynak grubunu doğrudan bir Azure Kaynak grubu çözümünden dağıtmak için kullanabilirsiniz.
@@ -39,12 +39,12 @@ Daha fazla bilgi için bkz. [Visual Studio Için Azure SDK 2,6](https://azure.mi
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 veya üzeri
 Sürüm 0.8.0 ' den başlayarak Azure PowerShell yüklemesi, Azure modülüne ek olarak Azure Resource Manager modülünü içerir. Bu yeni modül, kaynak gruplarının dağıtımını betiğe olanak sağlar.
 
-Daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](../powershell-azure-resource-manager.md)
+Daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Manager
 Bu [Önizleme Aracı](https://resources.azure.com) , aboneliğinizdeki tüm kaynak gruplarının JSON tanımlarını ve bireysel kaynakları araştırmanıza olanak sağlar. Araçta, bir kaynağın JSON tanımlarını düzenleyebilir, kaynakların tüm hiyerarşisini silebilir ve yeni kaynaklar oluşturabilirsiniz.  Bu araçta kullanıma hazır olan bilgiler, şablon yazma için çok yararlıdır, çünkü belirli bir kaynak türü için ayarlamanız gereken özellikleri, doğru değerleri vb. gösterir. Kaynak grubunuzu [Azure portalında](https://portal.azure.com/)da oluşturabilir, ardından kaynak grubunu şablonlarınıza yardımcı olması için gezgın aracında JSON tanımlarını inceleyebilirsiniz.
 
-### <a name="deploy-to-azure-button"></a>Azure 'a dağıt düğmesi
+### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi
 Kaynak denetimi için GitHub kullanıyorsanız, BENIOKU 'nize bir [Azure 'A dağıtım düğmesi](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) koyabilirsiniz. Bu, Azure 'a bir anahtar dağıtımı Kullanıcı arabirimi sağlayan MD. Bunu herhangi bir basit uygulama için yapabilmeniz mümkün olsa da, depo kökündeki bir azuredeploy.jsdosyaya yerleştirerek bir kaynak grubunun tamamını dağıtmaya olanak tanımak için bunu genişletebilirsiniz. Kaynak grubu şablonunu içeren bu JSON dosyası, kaynak grubu oluşturmak için Azure 'a dağıt düğmesine göre kullanılacaktır. Bir örnek için, bu öğreticide kullanacağınız [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) örneğine bakın.
 
 ## <a name="get-the-sample-resource-group-template"></a>Örnek kaynak grubu şablonunu al
@@ -137,8 +137,8 @@ Uygulama ayarları, iç içe geçmiş bir kaynak olarak da tanımlanır.
 
 `properties`İçin öğesinde `config/appsettings` , biçiminde iki uygulama ayarı vardır `"<name>" : "<value>"` .
 
-* `PROJECT`, Azure dağıtımına bir çoklu proje Visual Studio çözümünde hangi projenin kullanılacağını söyleyen bir [kudu ayarıdır](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) . Kaynak denetiminin nasıl yapılandırıldığını daha sonra göstereceğiz, ancak ToDoApp kodu çok projeli bir Visual Studio çözümünde olduğundan, bu ayara ihtiyacımız var.
-* `clientUrl`yalnızca uygulama kodunun kullandığı bir uygulama ayarıdır.
+* `PROJECT` , Azure dağıtımına bir çoklu proje Visual Studio çözümünde hangi projenin kullanılacağını söyleyen bir [kudu ayarıdır](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) . Kaynak denetiminin nasıl yapılandırıldığını daha sonra göstereceğiz, ancak ToDoApp kodu çok projeli bir Visual Studio çözümünde olduğundan, bu ayara ihtiyacımız var.
+* `clientUrl` yalnızca uygulama kodunun kullandığı bir uygulama ayarıdır.
 
 ##### <a name="connection-strings"></a>Bağlantı dizeleri
 Bağlantı dizeleri de iç içe geçmiş bir kaynak olarak tanımlanır.
@@ -157,7 +157,7 @@ Kaynak denetimi ayarları, iç içe geçmiş kaynak olarak da tanımlanır. Azur
 
 ![Kaynak denetimi ayarlarının JSON kodunda iç içe geçmiş kaynak olarak nasıl tanımlandığını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`ve `branch` oldukça sezgisel olmalıdır ve git deposuna ve yayımlanacak dalın adına işaret etmelidir. Bunlar, giriş parametrelerine göre tanımlanır. 
+`RepoUrl` ve `branch` oldukça sezgisel olmalıdır ve git deposuna ve yayımlanacak dalın adına işaret etmelidir. Bunlar, giriş parametrelerine göre tanımlanır. 
 
 `dependsOn`Öğesinde, uygulama kaynağının yanı sıra ve ' a `sourcecontrols/web` bağlı olarak da değişir `config/appsettings` `config/connectionstrings` . Bunun nedeni, bir kez `sourcecontrols/web` yapılandırıldıktan sonra Azure dağıtım işleminin uygulama kodunu otomatik olarak dağıtmayı, derlemeyi ve başlatmasını deneyecektir. Bu nedenle, bu bağımlılığı eklemek uygulamanın, uygulama kodu çalıştırılmadan önce gerekli uygulama ayarlarına ve bağlantı dizelerine erişimi olduğundan emin olmanıza yardımcı olur. 
 
@@ -213,7 +213,7 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
     
     ![Yeni projenizin nasıl dağıtılacağını gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Henüz yapmadıysanız Azure hesabınızda oturum açın.
-14. Aboneliğinizde var olan bir kaynak grubu seçin veya yeni bir tane oluşturun, **üzerindeazuredeploy.js**seçin ve ardından **parametreleri Düzenle**' ye tıklayın.
+14. Aboneliğinizde var olan bir kaynak grubu seçin veya yeni bir tane oluşturun, ** üzerindeazuredeploy.js**seçin ve ardından **parametreleri Düzenle**' ye tıklayın.
     
     ![Dosyadaki azuredeploy.jsparametrelerin nasıl düzenleneceğini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
@@ -254,7 +254,7 @@ DevOps 'da, yinelenebilirlik ve öngörülebilirlik, mikro hizmetlerden oluşan 
 * [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager şablon Işlevleri](../azure-resource-manager/templates/template-functions.md)
 * [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure PowerShell’i Azure Resource Manager ile kullanma](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure PowerShell’i Azure Resource Manager ile kullanma](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Azure 'da kaynak grubu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

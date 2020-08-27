@@ -1,17 +1,17 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme
+title: Kimlik doğrulaması ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271031"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962834"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -31,7 +31,7 @@ Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web b
 > [!NOTE]
 > Bu özelliği etkinleştirmek, [https 'yi zorlamak](configure-ssl-bindings.md#enforce-https)için App Service yapılandırma ayarından bağımsız olarak, uygulamanıza yönelik **Tüm** güvenli olmayan http isteklerinin otomatik olarak https 'ye yönlendirilmesini sağlar. Gerekirse, `requireHttps` [kimlik doğrulama ayarları yapılandırma dosyasındaki](app-service-authentication-how-to.md#configuration-file-reference)ayarı aracılığıyla bunu devre dışı bırakabilirsiniz, ancak bundan böyle hiçbir güvenlik BELIRTECININ güvenli olmayan http bağlantıları üzerinden iletilmemesini sağlamak için dikkatli olmanız gerekir.
 
-Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).
+Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](/previous-versions/azure/app-service-mobile/app-service-mobile-auth).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -52,7 +52,7 @@ Modül, uygulama kodınızdan ayrı olarak çalışır ve uygulama ayarları kul
 
 ### <a name="on-containers"></a>Kapsayıcılar üzerinde
 
-Kimlik doğrulama ve yetkilendirme modülü, uygulama kodınızdan yalıtılmış ayrı bir kapsayıcıda çalışır. [Amelçi deseninin](https://docs.microsoft.com/azure/architecture/patterns/ambassador)bilindiğinin kullanılması, Windows 'da olduğu gibi benzer işlevleri gerçekleştirmek üzere gelen trafikle etkileşime girer. İşlem içinde çalıştırılmadığından, belirli dil çerçeveleri ile doğrudan tümleştirme mümkün değildir; Ancak, uygulamanızın ihtiyaç duyacağı ilgili bilgiler, aşağıda açıklandığı gibi istek üstbilgileri kullanılarak geçirilir.
+Kimlik doğrulama ve yetkilendirme modülü, uygulama kodınızdan yalıtılmış ayrı bir kapsayıcıda çalışır. [Amelçi deseninin](/azure/architecture/patterns/ambassador)bilindiğinin kullanılması, Windows 'da olduğu gibi benzer işlevleri gerçekleştirmek üzere gelen trafikle etkileşime girer. İşlem içinde çalıştırılmadığından, belirli dil çerçeveleri ile doğrudan tümleştirme mümkün değildir; Ancak, uygulamanızın ihtiyaç duyacağı ilgili bilgiler, aşağıda açıklandığı gibi istek üstbilgileri kullanılarak geçirilir.
 
 ### <a name="userapplication-claims"></a>Kullanıcı/uygulama talepleri
 
@@ -150,7 +150,7 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 [Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)  
-[Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](containers/tutorial-auth-aad.md)  
+[Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 App Service kimlik doğrulaması [ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md) 
  [Azure AppService EasyAuth (3. taraf)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
  .NET Core tümleştirmesi [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -171,8 +171,8 @@ Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

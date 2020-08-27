@@ -2,13 +2,13 @@
 title: Şablon belirtimini bağlantılı şablon olarak dağıtma
 description: Bağlı bir dağıtımda var olan bir şablon belirtimini dağıtmayı öğrenin.
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: dd1bb00c1cfd737478a8d5f6ebffdb57e5e1640e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918392"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959213"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtma (Önizleme)
 
@@ -130,7 +130,7 @@ id = $(az template-specs show --name $templateSpecName --resource-group $resourc
 ```
 
 > [!NOTE]
-> Şablon spec kimliği alma ve ardından bunu Windows PowerShell 'de bir değişkene atama konusunda bilinen bir sorun vardır.
+> Şablon spec KIMLIĞI alma ve bunu Windows PowerShell 'de bir değişkene atama ile ilgili bilinen bir sorun vardır.
 
 ---
 

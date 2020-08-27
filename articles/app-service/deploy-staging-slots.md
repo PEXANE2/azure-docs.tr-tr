@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236752"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962171"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standa
 
 6. Yuvanın kaynak sayfasında Uygulama URL 'sini seçin. Dağıtım yuvası kendi ana bilgisayar adına sahiptir ve ayrıca canlı bir uygulamadır. Dağıtım yuvasına genel erişimi sınırlandırmak için bkz. [IP kısıtlamaları Azure App Service](app-service-ip-restrictions.md).
 
-Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının içeriği yoktur. Örneğin, [Bu yuvaya git ile yayımlayabilirsiniz](app-service-deploy-local-git.md). Yuvaya farklı bir depo dalından veya farklı bir depodan dağıtım yapabilirsiniz.
+Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının içeriği yoktur. Örneğin, [Bu yuvaya git ile yayımlayabilirsiniz](./deploy-local-git.md). Yuvaya farklı bir depo dalından veya farklı bir depodan dağıtım yapabilirsiniz.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının i�
 
 1. [Yerel önbellek](overview-local-cache.md) etkinse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek yerel önbellek başlatmayı tetikleyin. Her örnek herhangi bir HTTP yanıtı döndürene kadar bekleyin. Yerel önbellek başlatma, her örnekte başka bir yeniden başlatmaya neden olur.
 
-1. [Otomatik takas](#Auto-Swap) [özel ısınma](#Warm-up)ile etkinleştirilirse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek [uygulama başlatma](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) tetikleyin.
+1. [Otomatik takas](#Auto-Swap) [özel ısınma](#Warm-up)ile etkinleştirilirse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek [uygulama başlatma](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) tetikleyin.
 
     `applicationInitialization`Belirtilmezse, her örnekteki kaynak yuvasının uygulama köküne BIR http isteği tetikleyin. 
     
@@ -222,7 +222,7 @@ Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps
 
 ## <a name="monitor-a-swap"></a>Değiştirme izleme
 
-[Değiştirme işleminin](#AboutConfiguration) tamamlanmasını uzun sürerse, [etkinlik günlüğündeki](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)değiştirme işlemi hakkında bilgi edinebilirsiniz.
+[Değiştirme işleminin](#AboutConfiguration) tamamlanmasını uzun sürerse, [etkinlik günlüğündeki](../azure-monitor/platform/platform-logs-overview.md)değiştirme işlemi hakkında bilgi edinebilirsiniz.
 
 Portalın kaynak sayfasında, sol bölmede **etkinlik günlüğü**' nü seçin.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarıyla otomatikleştirin
 
-[Azure Resource Manager şablonlar](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. Kaynak Yöneticisi şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
+[Azure Resource Manager şablonlar](../azure-resource-manager/templates/overview.md) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. Kaynak Yöneticisi şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
 
 - `buildVersion`: Bu, yuvada dağıtılan uygulamanın geçerli sürümünü temsil eden bir String özelliğidir. Örneğin: "v1", "1.0.0.1" veya "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: Bu, yuvanın ne olması gerektiğini belirten bir String özelliğidir `buildVersion` . TargetBuildVersion geçerli değere eşit değilse `buildVersion` , bu, belirtilen yuvayı bularak değiştirme işlemini tetikler `buildVersion` .

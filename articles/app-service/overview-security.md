@@ -5,16 +5,16 @@ keywords: Azure App Service, Web uygulaması, mobil uygulama, API uygulaması, i
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080309"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961508"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service güvenlik
 
-Bu makalede, [Azure App Service](overview.md) Web uygulamanızın, mobil uygulamanızın arka UCUNUN, API uygulamanızın ve [işlev uygulamanızın](/azure/azure-functions/)güvenliğinin sağlanmasına nasıl yardımcı olduğu gösterilmektedir. Ayrıca, yerleşik App Service özellikleriyle uygulamanızı nasıl daha güvenli hale kullanabileceğinizi gösterir.
+Bu makalede, [Azure App Service](overview.md) Web uygulamanızın, mobil uygulamanızın arka UCUNUN, API uygulamanızın ve [işlev uygulamanızın](../azure-functions/index.yml)güvenliğinin sağlanmasına nasıl yardımcı olduğu gösterilmektedir. Ayrıca, yerleşik App Service özellikleriyle uygulamanızı nasıl daha güvenli hale kullanabileceğinizi gösterir.
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
@@ -43,7 +43,7 @@ App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler
 
 Varsayılan olarak, App Service uygulamanız internet 'ten gelen tüm IP adreslerinden gelen istekleri kabul eder, ancak bu erişimi, IP adreslerinin küçük bir alt kümesiyle sınırlayabilirsiniz. Windows üzerinde App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).
 
-Windows üzerinde App Service için _web.config_yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP \<dynamicIpSecurity> güvenliği ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Windows üzerinde App Service için _web.config_yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP \<dynamicIpSecurity> güvenliği ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>İstemci kimlik doğrulaması ve yetkilendirme
 
@@ -55,7 +55,7 @@ App Service kimlik doğrulaması ve yetkilendirme, Azure Active Directory, Micro
 
 Bir arka uç hizmetinde kimlik doğrulanırken App Service, gereksinimlerinize bağlı olarak iki farklı mekanizma sağlar:
 
-- **Hizmet kimliği** -uygulamanın kimliğini kullanarak uzak kaynakta oturum açın. App Service, [Azure SQL veritabanı](/azure/sql-database/) veya [Azure Key Vault](/azure/key-vault/)gibi diğer hizmetlerle kimlik doğrulamak için kullanabileceğiniz bir [yönetilen kimliği](overview-managed-identity.md)kolayca oluşturmanıza olanak tanır. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme](app-service-web-tutorial-connect-msi.md).
+- **Hizmet kimliği** -uygulamanın kimliğini kullanarak uzak kaynakta oturum açın. App Service, [Azure SQL veritabanı](/azure/sql-database/) veya [Azure Key Vault](../key-vault/index.yml)gibi diğer hizmetlerle kimlik doğrulamak için kullanabileceğiniz bir [yönetilen kimliği](overview-managed-identity.md)kolayca oluşturmanıza olanak tanır. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme](app-service-web-tutorial-connect-msi.md).
 - **Adına (OBO)** -Kullanıcı adına uzak kaynaklara erişim yetkisi alın. Kimlik doğrulama sağlayıcısı olarak Azure Active Directory, App Service uygulamanız [Microsoft Graph API 'si](../active-directory/develop/microsoft-graph-intro.md) veya App Service BIR uzak API uygulaması gibi uzak bir hizmette temsilci olarak oturum açma işlemi gerçekleştirebilir. Bu yaklaşımın uçtan uca bir öğreticisi için bkz. [kimlik doğrulaması ve kullanıcıların Azure App Service içinde uçtan uca yetki verme](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Uzak kaynaklara bağlantı
@@ -70,13 +70,13 @@ Bu durumların her birinde, App Service güvenli bağlantılar oluşturmanız i�
 
 ### <a name="azure-resources"></a>Azure kaynakları
 
-Uygulamanız [SQL veritabanı](https://azure.microsoft.com/services/sql-database/) ve [Azure depolama](/azure/storage/)gibi Azure kaynaklarına bağlanıyorsa, bağlantı Azure 'da kalır ve ağ sınırlarının dışına geçmez. Bununla birlikte, bağlantı Azure 'daki paylaşılan ağ üzerinden geçer, her zaman bağlantınızın şifrelendiğinden emin olun. 
+Uygulamanız [SQL veritabanı](https://azure.microsoft.com/services/sql-database/) ve [Azure depolama](../storage/index.yml)gibi Azure kaynaklarına bağlanıyorsa, bağlantı Azure 'da kalır ve ağ sınırlarının dışına geçmez. Bununla birlikte, bağlantı Azure 'daki paylaşılan ağ üzerinden geçer, her zaman bağlantınızın şifrelendiğinden emin olun. 
 
 Uygulamanız bir [App Service ortamda](environment/intro.md)barındırılıyorsa, [sanal ağ hizmet uç noktalarını kullanarak desteklenen Azure hizmetlerine bağlanmanız](../virtual-network/virtual-network-service-endpoints-overview.md)gerekir.
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Bir Azure sanal ağı içindeki kaynaklar
 
-Uygulamanız, [sanal ağ tümleştirmesiyle](web-sites-integrate-with-vnet.md)bir [Azure sanal ağındaki](/azure/virtual-network/) kaynaklara erişebilir. Tümleştirme, Noktadan siteye VPN kullanan bir sanal ağ ile oluşturulur. Uygulama daha sonra özel IP adreslerini kullanarak sanal ağdaki kaynaklara erişebilir. Bununla birlikte, Noktadan siteye bağlantı, hala Azure 'daki paylaşılan ağlara geçer. 
+Uygulamanız, [sanal ağ tümleştirmesiyle](web-sites-integrate-with-vnet.md)bir [Azure sanal ağındaki](../virtual-network/index.yml) kaynaklara erişebilir. Tümleştirme, Noktadan siteye VPN kullanan bir sanal ağ ile oluşturulur. Uygulama daha sonra özel IP adreslerini kullanarak sanal ağdaki kaynaklara erişebilir. Bununla birlikte, Noktadan siteye bağlantı, hala Azure 'daki paylaşılan ağlara geçer. 
 
 Kaynak bağlantınızı Azure 'daki paylaşılan ağlardan tamamen yalıtmak için uygulamanızı bir [App Service ortamda](environment/intro.md)oluşturun. App Service ortamı her zaman ayrılmış bir sanal ağa dağıtıldığı için, sanal ağ içindeki uygulamanız ve kaynaklarınız arasındaki bağlantı tamamen yalıtılmıştır. App Service ortamındaki ağ güvenliğinin diğer yönleri için bkz. [ağ yalıtımı](#network-isolation).
 
@@ -92,14 +92,14 @@ Veritabanları gibi şirket içi kaynaklara üç yolla güvenle erişebilirsiniz
 
 Kodunuzda veya yapılandırma dosyalarınızda veritabanı kimlik bilgileri, API belirteçleri ve özel anahtarlar gibi uygulama gizli dizileri depolamayın. Yaygın olarak kabul edilen yaklaşım, bunlara seçtiğiniz dilde standart bir model kullanılarak [ortam değişkenleri](https://wikipedia.org/wiki/Environment_variable) olarak erişiyor. App Service, ortam değişkenlerini tanımlamanın yolu [uygulama ayarlarından](configure-common.md#configure-app-settings) (ve özellikle .NET uygulamaları, [bağlantı dizeleri](configure-common.md#configure-connection-strings)için) yapılır. Uygulama ayarları ve bağlantı dizeleri Azure 'da şifrelenir ve uygulama başlatıldığında yalnızca uygulamanızın işlem belleğine eklenmeden önce şifresi çözülür. Şifreleme anahtarları düzenli olarak döndürülür.
 
-Alternatif olarak, gelişmiş gizlilikler yönetimi için App Service uygulamanızı [Azure Key Vault](/azure/key-vault/) tümleştirebilirsiniz. [Key Vault yönetilen bir kimlikle](../key-vault/tutorial-web-application-keyvault.md)App Service uygulamanız, ihtiyacınız olan gizli bilgilere güvenli bir şekilde erişebilir.
+Alternatif olarak, gelişmiş gizlilikler yönetimi için App Service uygulamanızı [Azure Key Vault](../key-vault/index.yml) tümleştirebilirsiniz. [Key Vault yönetilen bir kimlikle](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)App Service uygulamanız, ihtiyacınız olan gizli bilgilere güvenli bir şekilde erişebilir.
 
 ## <a name="network-isolation"></a>Ağ yalıtımı
 
-**Yalıtılmış** fiyatlandırma katmanı hariç tüm katmanlar, uygulamalarınızı App Service paylaşılan ağ altyapısında çalıştırır. Örneğin, genel IP adresleri ve ön uç yük dengeleyiciler diğer kiracılar ile paylaşılır. **Yalıtılmış** katman, uygulamalarınızı adanmış bir [App Service ortamı](environment/intro.md)içinde çalıştırarak tamamen ağ yalıtımı sağlar. Bir App Service ortamı, kendi [Azure sanal ağı](/azure/virtual-network/)Örneğinizde çalışır. Şunları yapmanızı sağlar: 
+**Yalıtılmış** fiyatlandırma katmanı hariç tüm katmanlar, uygulamalarınızı App Service paylaşılan ağ altyapısında çalıştırır. Örneğin, genel IP adresleri ve ön uç yük dengeleyiciler diğer kiracılar ile paylaşılır. **Yalıtılmış** katman, uygulamalarınızı adanmış bir [App Service ortamı](environment/intro.md)içinde çalıştırarak tamamen ağ yalıtımı sağlar. Bir App Service ortamı, kendi [Azure sanal ağı](../virtual-network/index.yml)Örneğinizde çalışır. Şunları yapmanızı sağlar: 
 
 - Özel ön uçlarla, özel bir ortak uç nokta aracılığıyla uygulamalarınıza yönelik olarak sunma.
 - Yalnızca Azure sanal ağınızın içinden erişime izin veren iç yük dengeleyici (ıLB) kullanarak iç uygulama sunar. ILB, özel alt ağınızdan, internet 'ten uygulamalarınızın toplam yalıtımını sağlayan bir IP adresine sahiptir.
 - [Web uygulaması güvenlik duvarı (WAF) arkasında BIR ıLB kullanın](environment/integrate-with-application-gateway.md). WAF, DDoS koruması, URI filtrelemesi ve SQL ekleme engellemesi gibi herkese yönelik uygulamalarınız için kurumsal düzeyde koruma sunar.
 
-Daha fazla bilgi için bkz. [Azure App Service ortamlara giriş](environment/intro.md). 
+Daha fazla bilgi için bkz. [Azure App Service ortamlara giriş](environment/intro.md).

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961729"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux’ta Azure App Service hakkında SSS
 
@@ -35,7 +35,7 @@ Tüm Docker dosyalarını [GitHub](https://github.com/azure-app-service)üzerind
 | Java SE         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | PM2 yapılandırma dosyası veya betik dosyanız                                |
-| .NET Core       | derlenmiş DLL adı olarak`dotnet <myapp>.dll`                                 |
+| .NET Core       | derlenmiş DLL adı olarak `dotnet <myapp>.dll`                                 |
 | Ruby            | uygulamanızı başlatmak istediğiniz Ruby betiği                     |
 
 Bu komutlar veya betikler, yerleşik Docker kapsayıcısı başlatıldıktan sonra, ancak uygulama kodunuz başlatılmadan önce yürütülür.
@@ -122,7 +122,7 @@ Veya dahil olmak üzere tam kayıt defteri URL 'sini sağlayın `http://` `https
 
 **Özel kayıt defteri seçeneğinde görüntü adının biçimi nedir?**
 
-Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak için `docker-custom-image-name` [ `az` komut satırı aracını](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
+Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak için `docker-custom-image-name` [ `az` komut satırı aracını](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
 
 **Özel kapsayıcı Görüntümdeki birden fazla bağlantı noktasını kullanıma alabilir miyim?**
 
@@ -130,7 +130,7 @@ Birden fazla bağlantı noktasının sunulmasını desteklemiyoruz.
 
 **Kendi depolama alanım 'ı getirebilir miyim?**
 
-Evet, [kendi depolama alanınızı getir](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) önizleme aşamasındadır.
+Evet, [kendi depolama alanınızı getir](./configure-connect-to-azure-storage.md) önizleme aşamasındadır.
 
 **Özel kapsayıcımın dosya sistemine ya da SCM sitesinden çalışan işlemlerine neden gözatamıyorum?**
 

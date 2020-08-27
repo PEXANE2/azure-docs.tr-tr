@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: portalı kullanarak doğrudan web trafiği'
 titleSuffix: Azure Application Gateway
-description: Web trafiğini bir arka uç havuzundaki sanal makinelere yönlendiren bir Azure Application Gateway oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
+description: Bu hızlı başlangıçta, Web trafiğini bir arka uç havuzundaki sanal makinelere yönlendiren bir Azure Application Gateway oluşturmak için Azure portal nasıl kullanacağınızı öğreneceksiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/21/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779423"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961967"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı, [Azure PowerShell](quick-create-powershell.md) veya [A
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +40,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan sekmeleri kullanarak oluşturacaksınız.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 
 2. **Ağ** ' ı seçin ve ardından **öne çıkan** listede **Application Gateway** ' yi seçin.
 
@@ -145,7 +145,7 @@ Bunu yapmak için şunları yapmanız gerekir:
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 

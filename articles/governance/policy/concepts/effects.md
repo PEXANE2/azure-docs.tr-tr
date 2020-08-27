@@ -1,14 +1,14 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544732"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958771"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -19,7 +19,7 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [Ekle](#append)
 - [Denetle](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Reddetme](#deny)
+- [Reddet](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
 - [Değiştir](#modify)
@@ -43,7 +43,7 @@ Kaynak oluşturma veya güncelleştirme istekleri önce Azure Ilkesi tarafından
 
 Kaynak sağlayıcı Kaynak Yöneticisi modundaki bir istek için bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eylemi gerekip gerekmediğini belirlemeyi değerlendirir.
 
-## <a name="append"></a>Ekleme
+## <a name="append"></a>Ekle
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
@@ -479,14 +479,33 @@ EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetim
 
 ## <a name="modify"></a>Değiştir
 
-Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. `mode`Hedef kaynak bir kaynak grubu değilse, bir değiştirme ilkesi her zaman _dizinli_ olarak ayarlanmalıdır. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa özellikler veya Etiketler eklemek, güncelleştirmek veya kaldırmak için kullanılır.
+Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+
+Aşağıdaki işlemler değiştirme tarafından desteklenir:
+
+- Kaynak etiketlerini ekleyin, değiştirin veya kaldırın. Etiketler için, `mode` hedef kaynak bir kaynak grubu değilse, bir değiştirme Ilkesi _dizinli_ olarak ayarlanmalıdır.
+- `identity.type`Sanal makineler ve sanal makine ölçek kümelerinin yönetilen kimlik türü () değerini ekleyin veya değiştirin.
+- Belirli diğer adların (Önizleme) değerlerini ekleyin veya değiştirin.
+  - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` komutunu kullanma
+    Azure PowerShell ' de, değiştirme ile kullanılabilecek diğer adların bir listesini almak için.
 
 > [!IMPORTANT]
-> Şu anda yalnızca etiketleriyle kullanım için değiştirin. Etiketleri yönetiyorsanız, Değiştir yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme yeteneği sağlar. Bununla birlikte, yönetilen bir kimlik oluşturabilebilmeniz durumunda ekleme önerilir.
+> Etiketleri yönetiyorsanız, değişiklik olarak ekle yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme olanağı sağlar. Ancak, yönetilen bir kimlik oluşturmadıysanız veya değiştirme henüz kaynak özelliği için diğer adı desteklemiyorsa, ekleme önerilir.
 
 ### <a name="modify-evaluation"></a>Değerlendirmeyi Değiştir
 
-Değişiklik, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. İlke kuralının **IF** koşulu karşılandığında, bir kaynaktaki ekleme veya güncelleştirme etiketlerini değiştirme.
+Değişiklik, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. İlke kuralının **IF** koşulu karşılandığında değiştirme işlemleri, istek içeriğine uygulanır. Her değiştirme işlemi, ne zaman uygulanacağını belirleyen bir koşul belirtebilir. _False_ olarak değerlendirilen koşullara sahip işlemler atlanır.
+
+Bir diğer ad belirtildiğinde, değiştirme işleminin istek içeriğini kaynak sağlayıcının reddetmesine neden olacak şekilde değiştirmemesini sağlamak için aşağıdaki ek denetimler gerçekleştirilir:
+
+- Diğer adın eşlendiği özelliği isteğin API sürümünde ' değiştirilebilir ' olarak işaretlenir.
+- Değiştirme işlemindeki belirteç türü, isteğin API sürümündeki özelliğin beklenen belirteç türüyle eşleşiyor.
+
+Bu denetimlerden biri başarısız olursa, ilke değerlendirmesi belirtilen **conflictEffect**geri döner.
+
+> [!IMPORTANT]
+> Diğer adları içeren tanımların değiştirilmesi, eşlenen özelliğin ' değiştirilebilir ' olmadığı API sürümlerini kullanarak başarısız istekleri önlemek için _Denetim_ **Çakışma efektini** kullanır. Aynı diğer ad API sürümleri arasında farklı davrandığı takdirde, koşullu değiştirme işlemleri her bir API sürümü için kullanılan değiştirme işlemini tespit etmek için kullanılabilir.
 
 Değişiklik efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, **IF** koşulunu uyumlu değil olarak karşılayan herhangi bir kaynağı işaretler.
 
@@ -498,7 +517,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
   - Bu özellik, abonelik tarafından erişilebilen rol tabanlı erişim denetimi rol KIMLIĞIYLE eşleşen bir dize dizisi içermelidir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
   - Tanımlanan rol, [katkıda bulunan](../../../role-based-access-control/built-in-roles.md#contributor) rolüne verilen tüm işlemleri içermelidir.
 - **conflictEffect** (isteğe bağlı)
-  - Birden fazla ilke tanımının aynı özelliği değiştirdiği, olayda hangi ilke tanımının "wins" olduğunu belirler.
+  - Hangi ilke tanımının birden fazla ilke tanımının aynı özelliği değiştirdiğine veya belirtilen diğer ad üzerinde değişiklik işleminin çalışmadığını belirler.
     - Yeni veya güncelleştirilmiş kaynaklar için, _reddetme_ ile ilke tanımı öncelik kazanır. _Denetim_ tüm **işlemleri**atlayarak ilke tanımları. Birden fazla ilke tanımı _reddederse_, istek çakışma olarak reddedilir. Tüm ilke tanımlarında _Denetim_varsa, çakışan ilke tanımlarının **işlemlerinden** hiçbiri işlenir.
     - Mevcut kaynaklar için, birden fazla ilke tanımı _reddederse_, uyumluluk durumu _Çakışma_olur. Bir veya daha az ilke tanımı _reddederse_, her atama _uyumlu olmayan_bir uyumluluk durumu döndürür.
   - Kullanılabilir değerler: _Denetim_, _reddetme_, _devre dışı_.
@@ -513,6 +532,9 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
     - **değer** (isteğe bağlı)
       - Etiketi ayarlanacak değer.
       - **Işlem** _addorreplace_ veya _Add_ise bu özellik gereklidir.
+    - **koşul** (isteğe bağlı)
+      - _Doğru_ veya _yanlış_olarak değerlendirilen [ilke işlevleriyle](./definition-structure.md#policy-functions) bir Azure ilke dili ifadesi içeren bir dize.
+      - Aşağıdaki Ilke işlevlerini desteklemez: `field()` , `resourceGroup()` , `subscription()` .
 
 ### <a name="modify-operations"></a>İşlemleri değiştirme
 
@@ -548,9 +570,9 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 |İşlem |Açıklama |
 |-|-|
-|addOrReplace |Etiket, farklı bir değerle zaten mevcut olsa bile, kaynağa tanımlı etiketi ve değeri ekler. |
-|Ekle |Kaynağa tanımlı etiketi ve değeri ekler. |
-|Kaldır |Tanımlanan etiketi kaynaktan kaldırır. |
+|addOrReplace |Özellik veya etiket farklı bir değerle zaten var olsa bile, tanımlı özelliği veya etiketi ve değeri kaynağa ekler. |
+|Ekle |Kaynağa tanımlı özelliği veya etiketi ve değeri ekler. |
+|Kaldır |Kaynaktaki tanımlı özelliği veya etiketi kaldırır. |
 
 ### <a name="modify-examples"></a>Örnekleri Değiştir
 
@@ -593,6 +615,28 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+Örnek 3: bir depolama hesabının blob ortak erişimine izin vermediğinden, değiştirme işleminin yalnızca API sürümü daha büyük veya ' 2019-04-01 ' değerine eşit olan istekler değerlendirilirken uygulanmasını sağlayın:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

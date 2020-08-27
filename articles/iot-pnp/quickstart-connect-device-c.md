@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352974"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959298"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Hızlı başlangıç: Linux veya Windows üzerinde çalışan bir örnek IoT Tak ve Kullan önizleme cihaz uygulamasını IoT Hub 'ye bağlama (C)
 
@@ -117,7 +117,10 @@ Dahil edilen örnek kodu oluşturmak için cihaz SDK 'sını kullanın:
 
 IoT Hub 'ınıza telemetri gönderen bir IoT Tak ve Kullan cihazının benzetimini yapan SDK 'da örnek uygulamayı çalıştırmak için:
 
-Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **IOTHUB_DEVICE_CONNECTION_STRING** adlı bir ortam değişkeni oluşturun.
+Örnek, IoT Hub 'ınıza bağlanmak üzere bir bağlantı dizesi kullanacak şekilde yapılandırmak için iki ortam değişkeni oluşturun:
+
+- Değer ile **IOTHUB_DEVICE_SECURITY_TYPE**`"connectionString"`
+- Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **IOTHUB_DEVICE_CONNECTION_STRING** .
 
 _CMake_ klasöründen, yürütülebilir dosyayı içeren klasöre gidin ve çalıştırın:
 

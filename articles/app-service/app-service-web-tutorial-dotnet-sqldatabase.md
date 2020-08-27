@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: fd7f860eb6e18edeb2096c12102e74c7446d050f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213769"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962256"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Öğretici: Azure SQL veritabanı ile ASP.NET uygulamasını Azure 'a dağıtma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -71,14 +71,14 @@ Uygulama, veritabanıyla bağlantı kurmak için bir veritabanı bağlamı kulla
 
 Yayımlama, ASP.NET uygulamanızı Azure 'da çalıştırmak için gereken tüm Azure kaynaklarını oluşturmanıza yardımcı olan **oluştur App Service** iletişim kutusunu açar.
 
-### <a name="sign-in-to-azure"></a>Azure’da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 **App Service Oluştur** iletişim kutusunda **Hesap ekle**’ye tıklayın ve ardından Azure aboneliğinizde oturum açın. Bir Microsoft hesabında zaten oturum açtıysanız hesabın Azure aboneliğinizi barındırdığından emin olun. Oturum açtığınız Microsoft hesabında Azure aboneliğiniz yoksa, doğru hesabı eklemek için tıklayın.
 
 > [!NOTE]
 > Zaten oturum açtıysanız **Oluştur** öğesini henüz seçmeyin.
 
-![Azure’da oturum açma](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+![Azure'da oturum açma](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Web uygulaması adını yapılandırma
 
@@ -133,7 +133,7 @@ Bir veritabanı oluşturmadan önce, [mantıksal BIR SQL Server](../azure-sql/da
 
    ![Sunucu oluştur](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-4. **Tamam**’a tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
+4. **Tamam** düğmesine tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı oluşturma
 
@@ -199,7 +199,7 @@ Burada sorgu çalıştırma, görünümler ve saklı yordamlar oluşturma gibi d
 
 Azure 'da veritabanınızı ve uygulamanızı güncelleştirmek için Visual Studio 'daki tanıdık araçları kullanabilirsiniz. Bu adımda, veritabanı şemanızda değişiklik yapmak ve bunu Azure'a yayımlamak için Entity Framework'te Code First Migrations'ı kullanırsınız.
 
-Entity Framework Code First Migrations'ı kullanma hakkında daha fazla bilgi için bkz. [MVC 5 Kullanarak Entity Framework 6 Code First ile Çalışmaya Başlama](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+Entity Framework Code First Migrations'ı kullanma hakkında daha fazla bilgi için bkz. [MVC 5 Kullanarak Entity Framework 6 Code First ile Çalışmaya Başlama](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### <a name="update-your-data-model"></a>Veri modelinizi güncelleştirme
 
@@ -419,4 +419,4 @@ Daha fazla kaynak:
 Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -6,25 +6,25 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085495"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961350"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>App Service bir Ruby on rayın uygulaması oluşturun
 
-[Linux üzerinde Azure App Service](overview.md#app-service-on-linux) , Linux işletim sistemini kullanarak yüksek düzeyde ölçeklenebilir, kendini yayama bir Web barındırma hizmeti sağlar. Bu hızlı başlangıç öğreticisinde, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde App Service bir Ruby on rayın uygulamasının nasıl dağıtılacağı gösterilmektedir.
+[Linux üzerinde Azure App Service](overview.md#app-service-on-linux) , Linux işletim sistemini kullanarak yüksek düzeyde ölçeklenebilir, kendini yayama bir Web barındırma hizmeti sağlar. Bu hızlı başlangıç öğreticisinde, [Cloud Shell](../cloud-shell/overview.md)kullanılarak Linux üzerinde App Service bir Ruby on rayın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
 > [!NOTE]
-> Ruby geliştirme yığını şu anda yalnızca Ruby on Rails'i desteklemektedir. Sinatra gibi farklı bir platform kullanmak istiyorsanız veya desteklenmeyen bir Ruby sürümü kullanmak istiyorsanız, [bunu özel bir kapsayıcıda çalıştırmanız](containers/quickstart-docker-go.md)gerekir.
+> Ruby geliştirme yığını şu anda yalnızca Ruby on Rails'i desteklemektedir. Sinatra gibi farklı bir platform kullanmak istiyorsanız veya desteklenmeyen bir Ruby sürümü kullanmak istiyorsanız, [bunu özel bir kapsayıcıda çalıştırmanız](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux)gerekir.
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2,6 veya üstünü yükler</a>
 * <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>

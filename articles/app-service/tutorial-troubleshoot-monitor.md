@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084677"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959026"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Öğretici: Azure Izleyici ile App Service uygulamasında sorun giderme
 
@@ -18,9 +18,9 @@ ms.locfileid: "88084677"
 > Azure Izleyici App Service ile tümleştirme [Önizleme](https://aka.ms/appsvcblog-azmon)aşamasındadır.
 >
 
-Bu öğreticide, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)kullanarak [App Service](overview.md) uygulamasının nasıl giderileceği gösterilmektedir. Örnek uygulama, belleği tüketmeye yönelik kodu içerir ve HTTP 500 hatalarına neden olur, böylece Azure Izleyici 'yi kullanarak sorunu tanılayabilir ve giderebilirsiniz. İşiniz bittiğinde, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)Ile tümleştirilmiş Linux üzerinde App Service üzerinde çalışan bir örnek uygulamanız olacaktır.
+Bu öğreticide, [Azure izleyici](../azure-monitor/overview.md)kullanarak [App Service](overview.md) uygulamasının nasıl giderileceği gösterilmektedir. Örnek uygulama, belleği tüketmeye yönelik kodu içerir ve HTTP 500 hatalarına neden olur, böylece Azure Izleyici 'yi kullanarak sorunu tanılayabilir ve giderebilirsiniz. İşiniz bittiğinde, [Azure izleyici](../azure-monitor/overview.md)Ile tümleştirilmiş Linux üzerinde App Service üzerinde çalışan bir örnek uygulamanız olacaktır.
 
-[Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) , bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
+[Azure izleyici](../azure-monitor/overview.md) , bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -33,12 +33,12 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 - [Azure aboneliği](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
 
-Tanılama ayarları, belirli Azure hizmetleri için Azure Izleyici günlüklerine yönelik ölçümleri, günlük sorguları kullanılarak diğer izleme verileriyle analiz edilmek üzere toplamak için kullanılabilir. Bu öğreticide, Web sunucusunu ve standart çıkış/hata günlüklerini etkinleştirirsiniz. Günlük türlerinin ve açıklamalarının tüm listesi için bkz. [desteklenen günlük türleri](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) .
+Tanılama ayarları, belirli Azure hizmetleri için Azure Izleyici günlüklerine yönelik ölçümleri, günlük sorguları kullanılarak diğer izleme verileriyle analiz edilmek üzere toplamak için kullanılabilir. Bu öğreticide, Web sunucusunu ve standart çıkış/hata günlüklerini etkinleştirirsiniz. Günlük türlerinin ve açıklamalarının tüm listesi için bkz. [desteklenen günlük türleri](./troubleshoot-diagnostic-logs.md#supported-log-types) .
 
 AppServiceConsoleLogs (Standart çıkış/hata) ve AppServiceHTTPLogs (Web sunucusu günlükleri) için Tanılama ayarları oluşturmak üzere aşağıdaki komutları çalıştırın. _\<app-name>_ Ve _\<workspace-name>_ değerlerini değerlerinizle değiştirin. 
 
 > [!NOTE]
-> İlk iki komut `resourceID` ve `workspaceID` , komutta kullanılacak değişkenlerdir `az monitor diagnostic-settings create` . Bu komutla ilgili daha fazla bilgi için bkz. [Azure CLI kullanarak tanılama ayarları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) .
+> İlk iki komut `resourceID` ve `workspaceID` , komutta kullanılacak değişkenlerdir `az monitor diagnostic-settings create` . Bu komutla ilgili daha fazla bilgi için bkz. [Azure CLI kullanarak tanılama ayarları oluşturma](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ Azure portal, Log Analytics çalışma alanınızı seçin.
 
 ### <a name="log-queries"></a>Günlük sorguları
 
-Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Günlük sorgularını hem AppServiceHTTPLogs hem de AppServiceConsoleLogs içindeki günlükleri tanımlamak için kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) bölümüne bakın.
+Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Günlük sorgularını hem AppServiceHTTPLogs hem de AppServiceConsoleLogs içindeki günlükleri tanımlamak için kullanırsınız. Günlük sorguları hakkında daha fazla bilgi için [günlük sorgusuna genel bakış](../azure-monitor/log-query/log-query-overview.md) bölümüne bakın.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs 'u günlük sorgusuyla görüntüleme
 
@@ -186,7 +186,7 @@ HTTP 500s ve standart hatalarını tanımladığınıza göre, bu iletiler aras�
 >
 > - 500 hata için HTTPLogs filtrelerini filtreler
 > - Konsol günlüklerini sorgular
-> - İçindeki tabloları birleştirir`TimeGenerated`
+> - İçindeki tabloları birleştirir `TimeGenerated`
 >
 
 Aşağıdaki sorguyu çalıştırın:
@@ -268,7 +268,7 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 > * Günlükler Log Analytics gönderildi
 > * Web uygulaması hatalarını tanımlamak ve sorunlarını gidermek için kullanılan günlük sorguları
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight 'ta uygulama günlüklerini çözümleme](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

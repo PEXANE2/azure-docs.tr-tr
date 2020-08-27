@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962018"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -815,7 +815,7 @@ Konak Web uygulamasının birden çok örneği olduğunda bile bir işlevin yaln
 
 ## <a name="filters"></a>Filtreler
 
-İşlev filtreleri (Önizleme), Web Işleri yürütme işlem hattını kendi mantığınızla özelleştirmek için bir yol sağlar. Filtreler [ASP.NET Core filtreye](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)benzerdir. Bunları, işlevleriniz veya sınıflarınıza uygulanan bildirim temelli öznitelikler olarak uygulayabilirsiniz. Daha fazla bilgi için bkz. [Işlev filtreleri](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+İşlev filtreleri (Önizleme), Web Işleri yürütme işlem hattını kendi mantığınızla özelleştirmek için bir yol sağlar. Filtreler [ASP.NET Core filtreye](/aspnet/core/mvc/controllers/filters)benzerdir. Bunları, işlevleriniz veya sınıflarınıza uygulanan bildirim temelli öznitelikler olarak uygulayabilirsiniz. Daha fazla bilgi için bkz. [Işlev filtreleri](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
@@ -833,7 +833,7 @@ Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Catego
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Yok        | 6 |
+|Hiçbiri        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir şekilde filtreleyebilirsiniz [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Örneğin, `Error` diğer her şey için yalnızca ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 

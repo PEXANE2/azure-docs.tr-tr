@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159992"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959009"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için uygulama performansı SSS
 
@@ -32,15 +32,15 @@ Yavaş uygulama performansına birçok etken katkıda bulunabilir. Ayrıntılı 
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Yüksek CPU tüketim senaryosunda sorun Nasıl yaparım? mi?
 
-Bazı yüksek CPU tüketimi senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, yüksek CPU tüketimine hatalı bir döngü veya bir kodlama uygulaması neden olmuş olabilir. Artan CPU tüketiminin tetiklenmesi hakkında öngörüler elde etmek iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Daha fazla bilgi için bkz. [Web Apps için yüksek CPU tüketimi için döküm dosyası yakalama ve çözümleme](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+Bazı yüksek CPU tüketimi senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, yüksek CPU tüketimine hatalı bir döngü veya bir kodlama uygulaması neden olmuş olabilir. Artan CPU tüketiminin tetiklenmesi hakkında öngörüler elde etmek iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Daha fazla bilgi için bkz. [Web Apps için yüksek CPU tüketimi için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Yüksek bellek tüketim senaryosunda sorun Nasıl yaparım?.
 
-Bazı yüksek bellek tüketim senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, koddaki bir hata bellek sızıntısına neden olabilir. Kodlama uygulaması da bellek tüketimini artırabilir.Yüksek bellek tüketiminin tetiklenmesi hakkında öngörü almak iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Azure Site uzantısı galerisinden kilitlenme tanılayıcı, her iki adımı da etkili bir şekilde gerçekleştirebilir. Daha fazla bilgi için bkz. [Web Apps için aralıklı yüksek bellek için döküm dosyası yakalama ve çözümleme](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+Bazı yüksek bellek tüketim senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, koddaki bir hata bellek sızıntısına neden olabilir. Kodlama uygulaması da bellek tüketimini artırabilir.Yüksek bellek tüketiminin tetiklenmesi hakkında öngörü almak iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Azure Site uzantısı galerisinden kilitlenme tanılayıcı, her iki adımı da etkili bir şekilde gerçekleştirebilir. Daha fazla bilgi için bkz. [Web Apps için aralıklı yüksek bellek için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell kullanarak App Service Web uygulamalarını otomatikleştirin Nasıl yaparım??
 
-App Service Web uygulamalarını yönetmek ve korumak için PowerShell cmdlet 'lerini kullanabilirsiniz. Blog gönderimizde, [PowerShell kullanarak Azure App Service içinde barındırılan Web uygulamalarını otomatikleştirin](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), ortak görevleri otomatikleştirmek için Azure Resource Manager tabanlı PowerShell cmdlet 'lerinin nasıl kullanılacağını anlatmaktadır. Blog gönderisinin ayrıca çeşitli Web Apps yönetim görevleri için örnek kodları vardır. Tüm App Service Web Apps cmdlet 'lerinin açıklamaları ve sözdizimi için bkz. [az. Web siteleri](/powershell/module/az.websites).
+App Service Web uygulamalarını yönetmek ve korumak için PowerShell cmdlet 'lerini kullanabilirsiniz. Blog gönderimizde, [PowerShell kullanarak Azure App Service içinde barındırılan Web uygulamalarını otomatikleştirin](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way), ortak görevleri otomatikleştirmek için Azure Resource Manager tabanlı PowerShell cmdlet 'lerinin nasıl kullanılacağını anlatmaktadır. Blog gönderisinin ayrıca çeşitli Web Apps yönetim görevleri için örnek kodları vardır. Tüm App Service Web Apps cmdlet 'lerinin açıklamaları ve sözdizimi için bkz. [az. Web siteleri](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Web uygulamamın olay Günlüklerimi görüntülemek Nasıl yaparım? mı?
 
@@ -81,7 +81,7 @@ Web uygulamanız için işlem düzeyi bilgileri görüntülemek üzere iki seçe
 * Web uygulaması portalda durduruldu.
 * Web uygulaması, ücretsiz veya paylaşılan bir ölçek hizmeti planına uygulanabilecek bir kaynak kotası sınırına ulaştı.
 
-Hataya neyin neden olduğunu görmek ve sorunu çözmek için [Web Apps: "hata 403 – Bu Web uygulaması durduruldu"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)bölümündeki adımları izleyin.
+Hataya neyin neden olduğunu görmek ve sorunu çözmek için [Web Apps: "hata 403 – Bu Web uygulaması durduruldu"](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped)bölümündeki adımları izleyin.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Çeşitli App Service planlarına yönelik kotalar ve sınırlar hakkında nereden daha fazla bilgi edinebilirim?
 
@@ -167,7 +167,7 @@ WebJobs, arka plan işlemesi için tasarlanmıştır. WebJob 'ta istediğiniz ka
 
 Önceki bir [Kestrel sürümü](https://github.com/aspnet/KestrelHttpServer/issues/1182) ile ilgili bilinen bir sorun, App Service içinde barındırılan ASP.NET Core 1,0 uygulamasının zaman zaman yanıt vermeyi durdurmasına neden olabilir. Şu iletiyi de görebilirsiniz: "belirtilen CGI uygulaması bir hatayla karşılaştı ve sunucu işlemi sonlandırdı."
 
-Bu sorun Kestrel Version 1.0.2 içinde düzeltilmiştir. Bu sürüm ASP.NET Core 1.0.3 güncelleştirmesine dahildir. Bu sorunu çözmek için, Kestrel 1.0.2 kullanmak üzere uygulama bağımlılıklarınızı güncelleştirdiğinizden emin olun. Alternatif olarak, [App Service Web Apps 'te 1,0 yavaş performans sorunları ASP.NET Core](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)blog postasında açıklanan iki geçici çözüm de kullanabilirsiniz.
+Bu sorun Kestrel Version 1.0.2 içinde düzeltilmiştir. Bu sürüm ASP.NET Core 1.0.3 güncelleştirmesine dahildir. Bu sorunu çözmek için, Kestrel 1.0.2 kullanmak üzere uygulama bağımlılıklarınızı güncelleştirdiğinizden emin olun. Alternatif olarak, [App Service Web Apps 'te 1,0 yavaş performans sorunları ASP.NET Core](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites)blog postasında açıklanan iki geçici çözüm de kullanabilirsiniz.
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Günlük dosyalarımı Web uygulamamın dosya yapısında bulamıyorum. Bunları nasıl bulabilirim?
@@ -188,4 +188,4 @@ Web uygulamanızdaki giden bağlantılar hakkında daha fazla bilgi için bkz. [
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Nasıl yaparım? App Service Web uygulamamda uzaktan hata ayıklama yapmak için Visual Studio 'Yu kullanın mi?
 
-Visual Studio 'Yu kullanarak Web uygulamanızda hata ayıklamanın nasıl yapılacağını gösteren ayrıntılı bir anlatım için, bkz. [App Service Web uygulamanızda uzaktan hata ayıklama](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+Visual Studio 'Yu kullanarak Web uygulamanızda hata ayıklamanın nasıl yapılacağını gösteren ayrıntılı bir anlatım için, bkz. [App Service Web uygulamanızda uzaktan hata ayıklama](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app).

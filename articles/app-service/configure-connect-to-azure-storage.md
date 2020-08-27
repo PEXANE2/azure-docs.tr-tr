@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077263"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962868"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Azure depolama 'nın App Service bir kapsayıcıdan ağ paylaşma olarak erişme
 
@@ -27,7 +27,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="container-windows"
 
@@ -77,7 +77,7 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 [Azure depolama hesabınızı, dosya paylaşımınızı ve dizininizi](#prerequisites)oluşturduktan sonra uygulamanızı Azure Storage ile yapılandırabilirsiniz.
 
-Azure dosya paylaşımından App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureFiles olmalıdır.
+Azure dosya paylaşımından App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureFiles olmalıdır.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -91,7 +91,7 @@ Bunu, bir Azure dosya paylaşımıyla bağlantılı olmasını istediğiniz diğ
 
 [Azure depolama hesabınızı, dosya paylaşımınızı ve dizininizi](#prerequisites)oluşturduktan sonra uygulamanızı Azure Storage ile yapılandırabilirsiniz.
 
-Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu örnekte AzureFiles kullanılır. Bağlama yolu ayarı, Azure depolama 'dan bağlamak istediğiniz klasöre karşılık gelir. '/' Olarak ayarlanması, tüm Azure depolama alanını takar.
+Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu örnekte AzureFiles kullanılır. Bağlama yolu ayarı, Azure depolama 'dan bağlamak istediğiniz klasöre karşılık gelir. '/' Olarak ayarlanması, tüm Azure depolama alanını takar.
 
 
 > [!CAUTION]

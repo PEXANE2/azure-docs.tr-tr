@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170809"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958335"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service 'de "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" HTTP hatalarında sorun giderme
 "502 hatalı Ağ Geçidi" ve "503 hizmeti kullanılamıyor" uygulamanızda [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)barındırılan yaygın hatalardır. Bu makale, bu hataları gidermenize yardımcı olur.
@@ -33,7 +33,7 @@ Bu sorun genellikle uygulama düzeyi sorunlarından kaynaklanır, örneğin:
 Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 1. [Uygulama davranışını gözlemleyin ve izleyin](#observe)
-2. [Veri toplama](#collect)
+2. [Verileri toplama](#collect)
 3. [Sorunu azaltma](#mitigate)
 
 [App Service](overview.md) her adımda çeşitli seçenekler sunar.
@@ -42,7 +42,7 @@ Sorun giderme üç farklı göreve sıralı sırayla ayrılabilir:
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. uygulama davranışını gözlemleyin ve izleyin
 #### <a name="track-service-health"></a>Hizmet durumunu izleme
-Her bir hizmet kesintisi veya performans düşüşü olduğunda Microsoft Azure publicleştirir. Hizmetin sistem durumunu [Azure portalında](https://portal.azure.com/)izleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet durumunu izleme](../monitoring-and-diagnostics/insights-service-health.md).
+Her bir hizmet kesintisi veya performans düşüşü olduğunda Microsoft Azure publicleştirir. Hizmetin sistem durumunu [Azure portalında](https://portal.azure.com/)izleyebilirsiniz. Daha fazla bilgi için bkz. [hizmet durumunu izleme](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a> Uygulamanızı izleme
 Bu seçenek, uygulamanızda herhangi bir sorun olup olmadığını bulmanıza olanak sağlar. Uygulamanızın dikey penceresinde **İstekler ve hatalar** kutucuğuna tıklayın. **Ölçüm** dikey penceresi, ekleyebileceğiniz tüm ölçümleri gösterir.
@@ -60,7 +60,7 @@ Uygulamanız için izlemek isteyebileceğiniz bazı ölçümler şunlardır
 Daha fazla bilgi için bkz.
 
 * [Azure App Service uygulamaları izleme](web-sites-monitor.md)
-* [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md)
 
 <a name="collect"></a>
 
@@ -108,5 +108,4 @@ Bu çoğunlukla, tek seferlik sorunlardan kurtulmanın en kolay yoludur. [Azure 
 
  ![502 hatalı ağ geçidi ve 503 hizmeti için HTTP hatalarını gidermek üzere uygulamayı yeniden Başlat](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Uygulamanızı Azure PowerShell kullanarak da yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure PowerShell'i Azure Resource Manager ile kullanma](../powershell-azure-resource-manager.md).
-
+Uygulamanızı Azure PowerShell kullanarak da yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure PowerShell'i Azure Resource Manager ile kullanma](../azure-resource-manager/management/manage-resources-powershell.md).

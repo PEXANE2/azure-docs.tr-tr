@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612495"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959070"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
 
@@ -20,7 +20,7 @@ Bu makalede, Visual Studio 2019 kullanarak bir Azure WebJobs SDK projesi oluştu
 
 Bu makalede, Web Işlerinin bir .NET Core konsol uygulaması olarak nasıl dağıtılacağı gösterilir. Web Işlerini .NET Framework konsol uygulaması olarak dağıtmak için bkz. [WebJobs as .NET Framework konsol Apps](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Yalnızca .NET Framework destekleyen WebJobs SDK sürüm 2. x ile ilgileniyorsanız, bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](/visualstudio/install/) . Zaten Visual Studio 'Ya sahipseniz ancak iş yükünüz yoksa, araçları **ve özellikleri almak > araçlar**' ı seçerek iş yükünü ekleyin.
 
@@ -184,7 +184,7 @@ Sürüm 3. x ile başlayarak, Web Işleri SDK 'Sı tarafından gerekli olan depo
 
    `QueueTrigger`Özniteliği, adlı Azure depolama kuyruğuna yeni bir ileti yazıldığında çalışma zamanına bu işlevi çağırmasını söyler `queue` . Kuyruk iletisinin içeriği, parametresindeki Yöntem koduna sağlanır `message` . Yöntemin gövdesi, tetikleyici verilerini işletiğinizin yerdir. Bu örnekte, kod yalnızca iletiyi günlüğe kaydeder.
 
-   `message`Parametrenin bir dize olması gerekmez. Ayrıca, bir JSON nesnesine, bir bayt dizisine veya [Cloudqueuemessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) nesnesine de bağlanabilirsiniz. [Bkz. kuyruk tetikleyicisi kullanımı](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Her bağlama türünün (kuyruklar, Bloblar veya tablolar gibi), bağlayabileceğiniz farklı parametre türleri kümesi vardır.
+   `message`Parametrenin bir dize olması gerekmez. Ayrıca, bir JSON nesnesine, bir bayt dizisine veya [Cloudqueuemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) nesnesine de bağlanabilirsiniz. [Bkz. kuyruk tetikleyicisi kullanımı](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Her bağlama türünün (kuyruklar, Bloblar veya tablolar gibi), bağlayabileceğiniz farklı parametre türleri kümesi vardır.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -280,7 +280,7 @@ Bu bölümde, projeyi yerel olarak oluşturup çalıştırın ve bir kuyruk ilet
 
    İşlevinde özniteliğini kullandığınız için `QueueTrigger` `ProcessQueueMessage` WEJOBS SDK çalışma zamanı, başlatıldığında kuyruk iletilerini dinler. *Queue* adlı kuyrukta yeni bir kuyruk iletisi bulur ve işlevi çağırır.
 
-   [Sıra yoklaması üstel geri](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)alma nedeniyle, çalışma zamanının iletiyi bulması ve işlevi çağırması 2 dakika kadar sürebilir. Bu bekleme süresi, [geliştirme modunda](webjobs-sdk-how-to.md#host-development-settings)çalıştırılarak azaltılabilir.
+   [Sıra yoklaması üstel geri](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)alma nedeniyle, çalışma zamanının iletiyi bulması ve işlevi çağırması 2 dakika kadar sürebilir. Bu bekleme süresi, [geliştirme modunda](webjobs-sdk-how-to.md#host-development-settings)çalıştırılarak azaltılabilir.
 
    Konsol çıktısı şuna benzer:
 
@@ -444,7 +444,7 @@ Dağıtım sırasında, işlevlerinizin çalıştırılacağı bir App Service �
 1. **Kuyruk** sayfasını yenileyin ve yeni Ileti, Azure 'da çalışan işlev tarafından işlendiği için kaybolur.
 
    > [!TIP]
-   > Azure 'da test ederken, bir kuyruk tetikleyicisi işlevinin hemen çağrıldığından emin olmak için [geliştirme modunu](webjobs-sdk-how-to.md#host-development-settings) kullanın ve [sıra yoklaması üstel geri](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)alma nedeniyle gecikmelerden kaçının.
+   > Azure 'da test ederken, bir kuyruk tetikleyicisi işlevinin hemen çağrıldığından emin olmak için [geliştirme modunu](webjobs-sdk-how-to.md#host-development-settings) kullanın ve [sıra yoklaması üstel geri](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)alma nedeniyle gecikmelerden kaçının.
 
 ### <a name="view-logs-in-application-insights"></a>Günlükleri Application Insights görüntüle
 

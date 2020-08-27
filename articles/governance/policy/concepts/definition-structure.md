@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547809"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958788"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -113,7 +113,7 @@ Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samp
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve önizleme aşamasında girişimleri desteklemez.
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 İsteğe bağlı `metadata` özelliği, ilke tanımıyla ilgili bilgileri depolar. Müşteriler, ' de kuruluşları için yararlı olan özellikleri ve değerleri tanımlayabilir `metadata` . Ancak, Azure Ilkesi tarafından ve yerleşik olarak kullanılan bazı _ortak_ özellikler vardır.
 
@@ -651,6 +651,13 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
+
+  > [!NOTE]
+  > [Değiştirme](./effects.md#modify) efektiyle kullanılabilecek diğer adları bulmak için aşağıdaki komutu kullanın:
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
 
 - Azure CLI
 

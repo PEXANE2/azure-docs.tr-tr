@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 228e6f144a1d6e3d0fc4f8fd8cb35c6f4e989ee9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085525"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961474"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
 > [!NOTE]
 > Çok Kapsayıcılı önizleme aşamasındadır.
 
-[Kapsayıcılar için Web App](overview.md#app-service-on-linux), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu hızlı başlangıçta, bir Docker Compose yapılandırması kullanılarak [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) kapsayıcılar için Web App için çok kapsayıcılı bir uygulamanın (Önizleme) nasıl dağıtılacağı gösterilmektedir.
+[Kapsayıcılar için Web App](overview.md#app-service-on-linux), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu hızlı başlangıçta, bir Docker Compose yapılandırması kullanılarak [Cloud Shell](../cloud-shell/overview.md) kapsayıcılar için Web App için çok kapsayıcılı bir uygulamanın (Önizleme) nasıl dağıtılacağı gösterilmektedir.
 
 Bu hızlı başlangıcı Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 veya üzeri) ile yerel olarak da çalıştırabilirsiniz. 
 

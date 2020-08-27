@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962120"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bir ZIP veya WAR dosyası ile Azure App Service uygulamanızı dağıtma
 
@@ -31,9 +31,9 @@ WAR dosya dağıtımı, Java Web uygulamanızı çalıştırmak için [War](http
 > [!NOTE]
 > Kullanırken `ZipDeploy` , dosyalar yalnızca, zaman damgaları zaten dağıtıldıklarıyla eşleşmezse kopyalanır. Çıkışları önbelleğe alan bir yapı işlemi kullanarak bir ZIP oluşturmak daha hızlı dağıtımlar oluşmasına neden olabilir. Daha fazla bilgi için bkz. [bir zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki adımları tamamlayabilmeniz için [bir App Service uygulaması oluşturun](/azure/app-service/)veya başka bir öğretici için oluşturduğunuz uygulamayı kullanın.
+Bu makaledeki adımları tamamlayabilmeniz için [bir App Service uygulaması oluşturun](./index.yml)veya başka bir öğretici için oluşturduğunuz uygulamayı kullanın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

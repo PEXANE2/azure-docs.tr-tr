@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: d9d8694c8ac81352ab36f3d610f02f3751090b27
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120601"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959417"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -121,7 +121,7 @@ Bu değişiklikler, DMİ git 'in herhangi bir üretim ortamında çalıştırıl
 ## <a name="create-postgres-database-in-azure"></a>Azure 'da Postgres veritabanı oluşturma
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
 `db-up`Azure CLI için uzantıyı yükler:
 
@@ -184,7 +184,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 <!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
 <!-- No it doesn't. az webapp up doesn't respect --resource-group -->
 - Zaten mevcut değilse [kaynak grubunu](../azure-resource-manager/management/overview.md#terminology) oluşturun. (Bu komutta veritabanını daha önce oluşturduğunuz kaynak grubunu kullanırsınız.)
-- Mevcut değilse, temel fiyatlandırma katmanında (B1) *docgopostgres-öğretici-plan* [App Service planını](overview-hosting-plans.md) oluşturun. `--plan`ve `--sku` isteğe bağlıdır.
+- Mevcut değilse, temel fiyatlandırma katmanında (B1) *docgopostgres-öğretici-plan* [App Service planını](overview-hosting-plans.md) oluşturun. `--plan` ve `--sku` isteğe bağlıdır.
 - Yoksa App Service uygulamasını oluşturun.
 - Zaten etkinleştirilmemişse, uygulama için varsayılan günlüğü etkinleştirin.
 - Derleme Otomasyonu etkinken ZIP dağıtımını kullanarak depoyu karşıya yükleyin.
@@ -414,7 +414,7 @@ Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
 > [!NOTE]
 > Ayrıca, konumundaki tarayıcıdan günlük dosyalarını inceleyebilirsiniz `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 >
-> `az webapp up`Varsayılan günlük kaydını etkinleştirir. Performans nedenleriyle, bu günlüğe kaydetme bir süre sonra devre dışı bırakır, ancak yeniden çalıştırdığınızda her seferinde geri döner `az webapp up` . El ile açmak için aşağıdaki komutu çalıştırın:
+> `az webapp up` Varsayılan günlük kaydını etkinleştirir. Performans nedenleriyle, bu günlüğe kaydetme bir süre sonra devre dışı bırakır, ancak yeniden çalıştırdığınızda her seferinde geri döner `az webapp up` . El ile açmak için aşağıdaki komutu çalıştırın:
 >
 > ```azurecli
 > az webapp log config --docker-container-logging filesystem

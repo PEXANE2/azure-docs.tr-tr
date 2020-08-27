@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065446"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962239"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Özel uç nokta ve VNet tümleştirmesiyle güvenli bir şekilde bağlanan iki Web uygulaması oluşturma
 
-Bu makalede, aşağıdaki adımları izleyerek iki Web uygulaması (ön uç ve arka uç) güvenli bir şekilde bağlamak için [Özel uç nokta](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) ve bölgesel [VNET tümleştirmesinin](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) örnek kullanımı gösterilmektedir:
+Bu makalede, aşağıdaki adımları izleyerek iki Web uygulaması (ön uç ve arka uç) güvenli bir şekilde bağlamak için [Özel uç nokta](../networking/private-endpoint.md) ve bölgesel [VNET tümleştirmesinin](../web-sites-integrate-with-vnet.md) örnek kullanımı gösterilmektedir:
 - VNet dağıtma
 - Tümleştirme için ilk alt ağ oluşturma
 - Özel uç nokta için ikinci alt ağ oluşturun, ağ ilkelerini devre dışı bırakmak için belirli bir parametre ayarlamanız gerekir
 - PremiumV2 türünde bir App Service planı dağıtın, Özel uç nokta özelliği için gereken en düşük SKU
-- Özel DNS bölgesini kullanmak için belirli uygulama ayarlarıyla ön uç Web uygulamasını oluşturun, [daha fazla ayrıntı](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- Özel DNS bölgesini kullanmak için belirli uygulama ayarlarıyla ön uç Web uygulamasını oluşturun, [daha fazla ayrıntı](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Ön uç Web uygulamasını tümleştirme alt ağına bağlama
 - Arka uç Web uygulaması oluşturma
 - Web uygulaması için özel bağlantı bölgesinin adı ile DNS özel bölgesini oluşturma privatelink.azurewebsites.net
@@ -31,7 +31,7 @@ Bu makalede, aşağıdaki adımları izleyerek iki Web uygulaması (ön uç ve a
 
 ## <a name="how-to-use-terraform-in-azure"></a>Azure 'da terrayform kullanma
 
-Azure ile terrayform kullanmayı öğrenmek için [Azure belgelerine](https://docs.microsoft.com/azure/developer/terraform/) gidin.
+Azure ile terrayform kullanmayı öğrenmek için [Azure belgelerine](/azure/developer/terraform/) gidin.
 
 ## <a name="the-complete-terraform-file"></a>Tüm terrayform dosyası
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/developer/terraform/)
+> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/developer/terraform/)

@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dea07e8a2dd0f70c714c6213408db9264bd30750
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48ef1344a76444af23fd462175a8087af2724d3e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961950"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, App Service bir özel sertifika veya ortak sertifika oluşturma, karşıya yükleme veya içeri aktarma işlemlerinin nasıl yapılacağı gösterilir. 
 
-Sertifika, App Service uygulamanıza veya [işlev uygulamanıza](https://docs.microsoft.com/azure/azure-functions/)eklendikten sonra [özel bir DNS adının güvenliğini](configure-ssl-bindings.md) sağlayabilir veya [uygulama kodunuzda kullanabilirsiniz](configure-ssl-certificate-in-code.md).
+Sertifika, App Service uygulamanıza veya [işlev uygulamanıza](../azure-functions/index.yml)eklendikten sonra [özel bir DNS adının güvenliğini](configure-ssl-bindings.md) sağlayabilir veya [uygulama kodunuzda kullanabilirsiniz](configure-ssl-certificate-in-code.md).
 
 Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçenekler listelenmektedir:
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 |-|-|
 | App Service yönetilen ücretsiz sertifika oluşturma (Önizleme) | Yalnızca `www` [özel etki](app-service-web-tutorial-custom-domain.md) alanınızı veya App Service herhangi bir çıplak etki alanını güvenli hale getirmeniz gerekiyorsa kullanımı kolay olan özel bir sertifika. |
 | App Service sertifikası satın alma | Azure tarafından yönetilen özel bir sertifika. Otomatik sertifika yönetiminin basitliğini ve yenileme ve dışa aktarma seçeneklerinin esnekliğini birleştirir. |
-| Key Vault bir sertifikayı içeri aktar | [PKCS12 sertifikalarınızı](https://wikipedia.org/wiki/PKCS_12)yönetmek için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) kullanıyorsanız faydalıdır. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
+| Key Vault bir sertifikayı içeri aktar | [PKCS12 sertifikalarınızı](https://wikipedia.org/wiki/PKCS_12)yönetmek için [Azure Key Vault](../key-vault/index.yml) kullanıyorsanız faydalıdır. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
-- [App Service uygulaması oluşturun](/azure/app-service/).
+- [App Service uygulaması oluşturun](./index.yml).
 - Yalnızca ücretsiz sertifika: bir alt etki alanını (örneğin, `www.contoso.com` ) [CNAME kaydıyla](app-service-web-tutorial-custom-domain.md#map-a-cname-record)App Service eşleştirin.
 
 ## <a name="private-certificate-requirements"></a>Özel sertifika gereksinimleri
@@ -135,7 +135,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 ![App Service sertifikası Key Vault depolamayı yapılandırma](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olan bir Azure hizmetidir. Bu, App Service sertifikaları için tercih edilen depolardır.
+[Key Vault](../key-vault/general/overview.md) , bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olan bir Azure hizmetidir. Bu, App Service sertifikaları için tercih edilen depolardır.
 
 **Key Vault durum** sayfasında, yeni bir kasa oluşturmak veya mevcut bir kasayı seçmek Için **Key Vault deposu** ' na tıklayın. Yeni bir kasa oluşturmayı seçerseniz, kasayı yapılandırmanıza ve Oluştur ' a tıklaetmenize yardımcı olması için aşağıdaki tabloyu kullanın. App Service uygulamanızla aynı abonelik ve kaynak grubu içinde yeni Key Vault oluşturun.
 
@@ -252,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 Sorulduğunda bir dışarı aktarma parolası tanımlayın. Daha sonra App Service için TLS/SSL sertifikanızı karşıya yüklerken bu parolayı kullanacaksınız.
 
-Sertifika isteğinizi oluşturmak için IIS veya _Certreq.exe_ kullandıysanız, sertifikayı yerel makinenize yükleyin ve sonra [sertifikayı PFX’e aktarın](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
+Sertifika isteğinizi oluşturmak için IIS veya _Certreq.exe_ kullandıysanız, sertifikayı yerel makinenize yükleyin ve sonra [sertifikayı PFX’e aktarın](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
 ### <a name="upload-certificate-to-app-service"></a>Sertifikayı App Service karşıya yükle
 
@@ -331,9 +331,9 @@ Yenileme işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. Eşitleme iş
 
 ### <a name="export-certificate"></a>Sertifikayı dışarı aktarma
 
-Bir App Service Sertifikası [Key Vault gizli](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)dizi olduğundan, bunun bir PFX kopyasını dışarı aktarabilir ve diğer Azure hizmetleri veya Azure dışında kullanabilirsiniz.
+Bir App Service Sertifikası [Key Vault gizli](../key-vault/general/about-keys-secrets-certificates.md)dizi olduğundan, bunun bir PFX kopyasını dışarı aktarabilir ve diğer Azure hizmetleri veya Azure dışında kullanabilirsiniz.
 
-App Service Sertifikası PFX dosyası olarak dışarı aktarmak için, [Cloud Shell](https://shell.azure.com)aşağıdaki komutları çalıştırın. Ayrıca, [Azure CLI 'yi yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli)yerel olarak da çalıştırabilirsiniz. Yer tutucuları [App Service sertifikayı](#start-certificate-order)oluştururken kullandığınız adlarla değiştirin.
+App Service Sertifikası PFX dosyası olarak dışarı aktarmak için, [Cloud Shell](https://shell.azure.com)aşağıdaki komutları çalıştırın. Ayrıca, [Azure CLI 'yi yüklediyseniz](/cli/azure/install-azure-cli)yerel olarak da çalıştırabilirsiniz. Yer tutucuları [App Service sertifikayı](#start-certificate-order)oluştururken kullandığınız adlarla değiştirin.
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -380,4 +380,4 @@ Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış
 * [HTTPS'yi zorunlu tutma](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 zorlama](configure-ssl-bindings.md#enforce-tls-versions)
 * [Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service](configure-ssl-certificate-in-code.md)
-* [SSS: sertifikalar App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [SSS: sertifikalar App Service](./faq-configuration-and-management.md)

@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763567"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958244"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
-Bu makale, [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)aralıklı bağlantı hatalarını ve ilgili performans sorunlarını gidermenize yardımcı olur. Bu konu, kaynak adresi ağ çevirisi (SNAT) bağlantı noktalarının tükenmesi ve sorun giderme yöntemleri hakkında daha fazla bilgi sağlayacaktır. Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Bu makale, [Azure App Service](./overview.md)aralıklı bağlantı hatalarını ve ilgili performans sorunlarını gidermenize yardımcı olur. Bu konu, kaynak adresi ağ çevirisi (SNAT) bağlantı noktalarının tükenmesi ve sorun giderme yöntemleri hakkında daha fazla bilgi sağlayacaktır. Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -32,23 +32,23 @@ Azure App Service üzerinde barındırılan uygulamalar ve Işlevler aşağıdak
 Aşağıdaki sınırların birine ulaştığından, bu belirtilerin önemli bir nedeni, uygulama örneğinin dış uç noktaya yeni bir bağlantı açabilmesine yol açmalarıdır:
 
 * TCP bağlantıları: yapılabilecek giden bağlantı sayısı için bir sınır vardır. Bu, kullanılan çalışan boyutuyla ilişkilidir.
-* SNAT bağlantı noktaları: Azure ['Daki giden bağlantılarda](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)anlatıldığı gibi Azure, genel IP adresi alanında Azure dışındaki uç noktalarıyla iletişim kurmak için kaynak ağ adresi ÇEVIRISI (SNAT) ve bir Load Balancer (müşterilere gösterilmez) kullanır. Azure App Service üzerindeki her örneğe başlangıçta önceden ayrılmış **128** SNAT bağlantı noktası numarası verilir. Bu sınır, aynı konağa ve bağlantı noktası birleşimine yönelik bağlantıların açılmasını etkiler. Uygulamanız adres ve bağlantı noktası birleşimlerinin karışımına bağlantı oluşturursa, SNAT bağlantı noktalarınızı kullanamazsınız. SNAT bağlantı noktaları, aynı adrese ve bağlantı noktası birleşimine yinelenen çağrılar olduğunda kullanılır. Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir. Azure ağ yükü dengeleyici geri kazanır, yalnızca 4 dakika bekledikten sonra, kapalı bağlantılardan gelen SNAT bağlantı noktasıdır.
+* SNAT bağlantı noktaları: Azure ['Daki giden bağlantılarda](../load-balancer/load-balancer-outbound-connections.md)anlatıldığı gibi Azure, genel IP adresi alanında Azure dışındaki uç noktalarıyla iletişim kurmak için kaynak ağ adresi ÇEVIRISI (SNAT) ve bir Load Balancer (müşterilere gösterilmez) kullanır. Azure App Service üzerindeki her örneğe başlangıçta önceden ayrılmış **128** SNAT bağlantı noktası numarası verilir. Bu sınır, aynı konağa ve bağlantı noktası birleşimine yönelik bağlantıların açılmasını etkiler. Uygulamanız adres ve bağlantı noktası birleşimlerinin karışımına bağlantı oluşturursa, SNAT bağlantı noktalarınızı kullanamazsınız. SNAT bağlantı noktaları, aynı adrese ve bağlantı noktası birleşimine yinelenen çağrılar olduğunda kullanılır. Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir. Azure ağ yükü dengeleyici geri kazanır, yalnızca 4 dakika bekledikten sonra, kapalı bağlantılardan gelen SNAT bağlantı noktasıdır.
 
 Uygulamalar veya işlevler hızlı bir şekilde yeni bir bağlantı açtığında, 128 bağlantı noktasının önceden ayrılmış kotasını hızlıca tüketebilirler. Daha sonra, yeni bir SNAT bağlantı noktası kullanılabilir hale gelene kadar, ek SNAT bağlantı noktalarını dinamik olarak ayırarak veya geri kazanılan bir SNAT bağlantı noktasının yeniden kullanılmasını engellenecektir. Yeni bağlantılar oluşturamadığı için engellenen uygulamalar veya işlevler, bu makalenin **Belirtiler** bölümünde anlatılan bir veya daha fazla sorunu yaşamaya başlar.
 
 ## <a name="avoiding-the-problem"></a>Sorunu önleme
 
-Hedef, hizmet uç noktalarını destekleyen bir Azure hizmeti ise, [Bölgesel VNET tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) ve hizmet uç noktalarını veya özel uç noktaları kullanarak SNAT bağlantı noktası tükenmesi sorunlarından kaçınabilirsiniz. Bölgesel VNet tümleştirmesi kullandığınızda ve hizmet uç noktalarını tümleştirme alt ağına yerleştirdiğinizde, bu hizmetlere giden trafik giden trafiği giden SNAT bağlantı noktası kısıtlamalarına sahip olmaz. Benzer şekilde, bölgesel VNet tümleştirmesi ve özel uç noktalar kullanırsanız, o hedefe giden bir SNAT bağlantı noktası sorununuz olmayacaktır. 
+Hedef, hizmet uç noktalarını destekleyen bir Azure hizmeti ise, [Bölgesel VNET tümleştirmesi](./web-sites-integrate-with-vnet.md) ve hizmet uç noktalarını veya özel uç noktaları kullanarak SNAT bağlantı noktası tükenmesi sorunlarından kaçınabilirsiniz. Bölgesel VNet tümleştirmesi kullandığınızda ve hizmet uç noktalarını tümleştirme alt ağına yerleştirdiğinizde, bu hizmetlere giden trafik giden trafiği giden SNAT bağlantı noktası kısıtlamalarına sahip olmaz. Benzer şekilde, bölgesel VNet tümleştirmesi ve özel uç noktalar kullanırsanız, o hedefe giden bir SNAT bağlantı noktası sorununuz olmayacaktır. 
 
 SNAT bağlantı noktası sorununun önlenmeleri, yeni bağlantıların kaldı aynı konak ve bağlantı noktasına oluşturulmasını önleme anlamına gelir.
 
-SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerinin giden bağlantılarının** [sorun çözme bölümünde](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) ele alınmıştır. Bu stratejilerin, Azure App Service 'te barındırılan uygulamalar ve işlevler için geçerlidir.
+SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerinin giden bağlantılarının** [sorun çözme bölümünde](../load-balancer/load-balancer-outbound-connections.md) ele alınmıştır. Bu stratejilerin, Azure App Service 'te barındırılan uygulamalar ve işlevler için geçerlidir.
 
 ### <a name="modify-the-application-to-use-connection-pooling"></a>Uygulamayı bağlantı havuzunu kullanacak şekilde değiştirme
 
-* Havuz HTTP bağlantıları için, [HttpClientFactory Ile havuz http bağlantıları](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)' nı gözden geçirin.
-* SQL Server bağlantı havuzu oluşturma hakkında daha fazla bilgi için [SQL Server bağlantı havuzunu inceleyin (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
-* Entity Framework uygulamalarıyla havuzlamayı uygulamak için [DbContext havuzunu](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)gözden geçirin.
+* Havuz HTTP bağlantıları için, [HttpClientFactory Ile havuz http bağlantıları](/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)' nı gözden geçirin.
+* SQL Server bağlantı havuzu oluşturma hakkında daha fazla bilgi için [SQL Server bağlantı havuzunu inceleyin (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
+* Entity Framework uygulamalarıyla havuzlamayı uygulamak için [DbContext havuzunu](/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)gözden geçirin.
 
 Farklı çözüm yığınına göre bağlantı havuzu uygulama bağlantılarının bir koleksiyonu aşağıda verilmiştir.
 
@@ -105,22 +105,22 @@ Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlay
 
 ### <a name="modify-the-application-to-reuse-connections"></a>Bağlantıyı yeniden kullanmak için uygulamayı değiştirme
 
-*  Azure işlevlerinde bağlantıları yönetme hakkında ek işaretçiler ve örnekler için, [Azure işlevlerinde bağlantıları yönetme](https://docs.microsoft.com/azure/azure-functions/manage-connections)konusunu gözden geçirin.
+*  Azure işlevlerinde bağlantıları yönetme hakkında ek işaretçiler ve örnekler için, [Azure işlevlerinde bağlantıları yönetme](../azure-functions/manage-connections.md)konusunu gözden geçirin.
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>Uygulamayı daha az agresif yeniden deneme mantığını kullanacak şekilde değiştirin
 
-* Ek rehberlik ve örnekler için [yeniden deneme modelini](https://docs.microsoft.com/azure/architecture/patterns/retry)inceleyin.
+* Ek rehberlik ve örnekler için [yeniden deneme modelini](/azure/architecture/patterns/retry)inceleyin.
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Giden boşta kalma zaman aşımını sıfırlamak için keepcanlı tutmayı kullanın
 
-* Node.js uygulamalar için keepcanlı uygulamayı uygulamak için, [düğüm uygulamamın aşırı giden çağrılar yapmasını](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)inceleyin.
+* Node.js uygulamalar için keepcanlı uygulamayı uygulamak için, [düğüm uygulamamın aşırı giden çağrılar yapmasını](./app-service-web-nodejs-best-practices-and-troubleshoot-guide.md#my-node-application-is-making-excessive-outbound-calls)inceleyin.
 
 ### <a name="additional-guidance-specific-to-app-service"></a>App Service özgü ek rehberlik:
 
-* Bir [Yük testi](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) , gerçek dünya verilerinin kararlı bir besleme hızında benzetimini yapmanız gerekir. Uygulamaları ve işlevleri gerçek dünya stres altında test etmek, SNAT bağlantı noktası tükenmesi sorunlarını önceden tanımlayabilir ve çözümleyebilir.
-* Arka uç hizmetlerinin yanıtları hızlıca döndürebildiğini doğrulayın. Azure SQL veritabanı ile ilgili sorun giderme performansı sorunlarını [gidermek için akıllı içgörüler Azure SQL veritabanı performans sorunlarını giderme](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)makalesini inceleyin.
-* App Service planını daha fazla örneğe ölçeklendirin. Ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure App Service bir uygulamayı ölçeklendirme](https://docs.microsoft.com/azure/app-service/manage-scale-up). Bir App Service planındaki her çalışan örneğine bir dizi SNAT bağlantı noktası ayrılır. Kullanımınızı daha fazla örneğe yaydıysanız, benzersiz bir uzak uç nokta başına önerilen 100 giden bağlantı sınırının altında her örnek için SNAT bağlantı noktası kullanımını alabilirsiniz.
-* Tek bir giden IP adresi tahsis ettiğiniz ve bağlantı ve SNAT bağlantı noktalarının sınırları çok daha yüksek olduğu [App Service ortamı (Ao)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)' a geçmeyi göz önünde bulundurun. Bir ASO 'da, örnek başına SNAT bağlantı noktası sayısı, [Azure yük dengeleyici ön tahsisi tablosuna](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) dayalıdır. örneğin, 1-50 çalışan örneklerine sahip bir Aken, örnek başına 1024 ' den fazla ayrılmış bağlantı noktasına sahip olsa da, 51-100 çalışan örneklerine sahıp bir Ao, örnek başına 512 preallocation Port 'a sahiptir.
+* Bir [Yük testi](/azure/devops/test/load-test/app-service-web-app-performance-test) , gerçek dünya verilerinin kararlı bir besleme hızında benzetimini yapmanız gerekir. Uygulamaları ve işlevleri gerçek dünya stres altında test etmek, SNAT bağlantı noktası tükenmesi sorunlarını önceden tanımlayabilir ve çözümleyebilir.
+* Arka uç hizmetlerinin yanıtları hızlıca döndürebildiğini doğrulayın. Azure SQL veritabanı ile ilgili sorun giderme performansı sorunlarını [gidermek için akıllı içgörüler Azure SQL veritabanı performans sorunlarını giderme](../azure-sql/database/intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)makalesini inceleyin.
+* App Service planını daha fazla örneğe ölçeklendirin. Ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure App Service bir uygulamayı ölçeklendirme](./manage-scale-up.md). Bir App Service planındaki her çalışan örneğine bir dizi SNAT bağlantı noktası ayrılır. Kullanımınızı daha fazla örneğe yaydıysanız, benzersiz bir uzak uç nokta başına önerilen 100 giden bağlantı sınırının altında her örnek için SNAT bağlantı noktası kullanımını alabilirsiniz.
+* Tek bir giden IP adresi tahsis ettiğiniz ve bağlantı ve SNAT bağlantı noktalarının sınırları çok daha yüksek olduğu [App Service ortamı (Ao)](./environment/using-an-ase.md)' a geçmeyi göz önünde bulundurun. Bir ASO 'da, örnek başına SNAT bağlantı noktası sayısı, [Azure yük dengeleyici ön tahsisi tablosuna](../load-balancer/load-balancer-outbound-connections.md#snatporttable) dayalıdır. örneğin, 1-50 çalışan örneklerine sahip bir Aken, örnek başına 1024 ' den fazla ayrılmış bağlantı noktasına sahip olsa da, 51-100 çalışan örneklerine sahıp bir Ao, örnek başına 512 preallocation Port 'a sahiptir.
 
 Sınırlar, çalışanlarınızın boyutuna göre ayarlandığından, giden TCP sınırlarının çözülmesini daha kolay hale getirir. Sınır, [VM 'Ler arası sayısal sınırlara göre sınırları görebilir-TCP bağlantıları](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
@@ -138,7 +138,7 @@ Uygulamanın nedenini hızlı bir şekilde tespit etmek için yeterince bilginiz
 
 ### <a name="find-snat-port-allocation-information"></a>SNAT bağlantı noktası ayırma bilgilerini bul
 
-SNAT bağlantı noktası ayırma bilgilerini bulmak için [App Service tanılamayı](https://docs.microsoft.com/azure/app-service/overview-diagnostics) kullanabilir ve bir App SERVICE sitesinin SNAT bağlantı noktası ayırma ölçüsünü gözlemleyebilirsiniz. SNAT bağlantı noktası ayırma bilgilerini bulmak için aşağıdaki adımları izleyin:
+SNAT bağlantı noktası ayırma bilgilerini bulmak için [App Service tanılamayı](./overview-diagnostics.md) kullanabilir ve bir App SERVICE sitesinin SNAT bağlantı noktası ayırma ölçüsünü gözlemleyebilirsiniz. SNAT bağlantı noktası ayırma bilgilerini bulmak için aşağıdaki adımları izleyin:
 
 1. App Service tanılama 'ya erişmek için, App Service Web uygulamanıza veya [Azure portal](https://portal.azure.com/)App Service ortamı gidin. Sol gezinti bölmesinde **Tanıla ve sorunları çöz**' ü seçin.
 2. Kullanılabilirlik ve performans kategorisi seçin
@@ -168,11 +168,11 @@ SNAT bağlantı noktaları tükenirse, WebJobs 'lar SQL veritabanı 'na bağlana
 
 Tüm SNAT bağlantı noktaları aşağıdaki koşullara göre yayımlanacaksa ve davranış tasarıma göre olduğu için, tüm Azure ayarlarını, kullanılan SNAT bağlantı noktalarını daha erken yayımlanacak şekilde değiştiremezsiniz.
  
-* Sunucu veya istemci FINACK gönderirse, [SNAT bağlantı noktası](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release) 240 saniye sonra serbest bırakılır.
+* Sunucu veya istemci FINACK gönderirse, [SNAT bağlantı noktası](../load-balancer/load-balancer-outbound-connections.md) 240 saniye sonra serbest bırakılır.
 * Bir RST görülüyorsa, SNAT bağlantı noktası 15 saniye sonra serbest bırakılır.
 * Boşta kalma zaman aşımına ulaşılmışsa, bağlantı noktası serbest bırakılır.
  
 ## <a name="additional-information"></a>Ek bilgiler
 
 * [App Service ile SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
-* [Azure App Service 'de yavaş uygulama performansı sorunlarını giderme](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)
+* [Azure App Service 'de yavaş uygulama performansı sorunlarını giderme](./troubleshoot-performance-degradation.md)

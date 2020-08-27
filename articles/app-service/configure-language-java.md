@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 30d5fa329131cdfd380a84843b3ba202b2e22e39
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5d94da91428da2270e0f690df4dcd43ae43d8597
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080139"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961661"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -31,8 +31,8 @@ Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavra
 
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
-- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
-- . Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
+- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#deploy-war-file)bakın.
+- . Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#rest)bakın.
 
 FTP kullanarak. war veya. jar 'nizi dağıtmayın. FTP aracı başlangıç betiklerini, bağımlılıklarını veya diğer çalışma zamanı dosyalarını karşıya yüklemek üzere tasarlanmıştır. Web uygulamalarını dağıtmak için en iyi seçenek değildir.
 
@@ -56,7 +56,7 @@ Daha fazla bilgi için lütfen [Jcmd komut başvurusuna](https://docs.oracle.com
 
 #### <a name="analyze-jfr-files"></a>Dosyaları analiz etme `.jfr`
 
-JFR dosyanızı yerel makinenize indirmek için [FTPS](deploy-ftp.md) 'yi kullanın. JFR dosyasını çözümlemek için, [Zulu görevi denetimini](https://www.azul.com/products/zulu-mission-control/)indirip yükleyin. Zulu dili görev denetimi yönergeleri için [Azul belgelerine](https://docs.azul.com/zmc/) ve [yükleme yönergelerine](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
+JFR dosyanızı yerel makinenize indirmek için [FTPS](deploy-ftp.md) 'yi kullanın. JFR dosyasını çözümlemek için, [Zulu görevi denetimini](https://www.azul.com/products/zulu-mission-control/)indirip yükleyin. Zulu dili görev denetimi yönergeleri için [Azul belgelerine](https://docs.azul.com/zmc/) ve [yükleme yönergelerine](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
 
 ### <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
 
@@ -68,7 +68,7 @@ Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](troubleshoot-diagn
 
 Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */LogFiles/Application/* dizininde bulabilirsiniz.
 
-Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](/azure/application-insights/app-insights-java-trace-logs)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
+Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](../azure-monitor/app/java-trace-logs.md)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
 
 
 ## <a name="customization-and-tuning"></a>Özelleştirme ve ayarlama
@@ -100,9 +100,9 @@ Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi
 
 Tek bir uygulama çalıştıran geliştiriciler App Service planında bir dağıtım yuvası ile, aşağıdaki seçenekleri kullanabilir:
 
-- B1 ve S1 örnekleri:`-Xms1024m -Xmx1024m`
-- B2 ve S2 örnekleri:`-Xms3072m -Xmx3072m`
-- B3 ve S3 örnekleri:`-Xms6144m -Xmx6144m`
+- B1 ve S1 örnekleri: `-Xms1024m -Xmx1024m`
+- B2 ve S2 örnekleri: `-Xms3072m -Xmx3072m`
+- B3 ve S3 örnekleri: `-Xms6144m -Xmx6144m`
 
 Uygulama yığını ayarlarını ayarladığınızda, en iyi bellek ayırmayı bulmak için App Service planı ayrıntılarınızı gözden geçirin ve birden çok uygulama ve dağıtım yuvası ihtiyaçlarına sahip olmak üzere birden fazla uygulama ve dağıtım yuvası
 
@@ -144,7 +144,7 @@ Tomcat uygulamalarının performansını artırmak için, App Service dağıtım
 
 ## <a name="secure-applications"></a>Uygulamaları güvenli hale getirme
 
-App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](/azure/security/security-paas-applications-using-app-services) uygulamaları kümesine sahiptir.
+App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](../security/fundamentals/paas-applications-using-app-services.md) uygulamaları kümesine sahiptir.
 
 ### <a name="authenticate-users-easy-auth"></a>Kullanıcıların kimliğini doğrulama (kolay kimlik doğrulaması)
 
@@ -172,7 +172,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Kullanıcıları imzalamak için `/.auth/ext/logout` yolunu kullanın. Diğer eylemleri gerçekleştirmek için lütfen [App Service kimlik doğrulaması ve yetkilendirme kullanımı](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)hakkındaki belgelere bakın. Ayrıca, Tomcat [Httpservletrequest arabiriminde](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri için resmi belgeler vardır. Aşağıdaki servlet yöntemleri App Service yapılandırmanıza göre de alınır:
+Kullanıcıları imzalamak için `/.auth/ext/logout` yolunu kullanın. Diğer eylemleri gerçekleştirmek için lütfen [App Service kimlik doğrulaması ve yetkilendirme kullanımı](./app-service-authentication-how-to.md)hakkındaki belgelere bakın. Ayrıca, Tomcat [Httpservletrequest arabiriminde](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri için resmi belgeler vardır. Aşağıdaki servlet yöntemleri App Service yapılandırmanıza göre de alınır:
 
 ```java
 public boolean isSecure()
@@ -235,7 +235,7 @@ Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucular
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Tomcat 'i Java veritabanı bağlantısı (JDBC) veya Java Kalıcılık API 'SI (JPA) kullanacak şekilde yapılandırmak için, önce başlangıçta `CATALINA_OPTS` Tomcat tarafından okunan ortam değişkenini özelleştirin. Bu değerleri [App Service Maven eklentisindeki](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)bir uygulama ayarı aracılığıyla ayarlayın:
 
@@ -321,7 +321,7 @@ Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www
 
 Ana sürüm güncelleştirmeleri, Windows için Azure App Service yeni çalışma zamanı seçenekleri aracılığıyla sağlanacaktır. Müşteriler, App Service dağıtımını yapılandırarak ve ana güncelleştirmenin ihtiyaçlarını karşıladığından sorumlu olduğundan, bu yeni Java sürümlerine güncelleştirir.
 
-Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak üç ayda bir düzeltme eki uygulanır. Azure 'da Java hakkında daha fazla bilgi için lütfen [Bu destek belgesine](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)bakın.
+Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak üç ayda bir düzeltme eki uygulanır. Azure 'da Java hakkında daha fazla bilgi için lütfen [Bu destek belgesine](/azure/developer/java/fundamentals/java-jdk-long-term-support)bakın.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
@@ -343,14 +343,14 @@ Azure [tarafından desteklenen Azul Zulu JDK](https://www.azul.com/downloads/azu
 
 ### <a name="runtime-support"></a>Çalışma zamanı desteği
 
-Geliştiriciler, [tam destek planına](https://azure.microsoft.com/support/plans/)sahip olmaları durumunda Azul Zulu JDKs ile ilgili [bir sorunu](/azure/azure-portal/supportability/how-to-create-azure-support-request) , Azure desteği aracılığıyla açabilir.
+Geliştiriciler, [tam destek planına](https://azure.microsoft.com/support/plans/)sahip olmaları durumunda Azul Zulu JDKs ile ilgili [bir sorunu](../azure-portal/supportability/how-to-create-azure-support-request.md) , Azure desteği aracılığıyla açabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu konuda, Windows üzerinde Azure App Service için desteklenen Java çalışma zamanı açıklaması sağlanmaktadır.
 
 - Web uygulamalarını barındırma hakkında daha fazla bilgi için Azure App Service [App Service genel bakış](overview.md)bölümüne bakın.
-- Azure 'da Java hakkında daha fazla bilgi için bkz. [Java Için Azure Geliştirme Merkezi](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Azure 'da Java hakkında daha fazla bilgi için bkz. [Java Için Azure Geliştirme Merkezi](/java/azure/?view=azure-java-stable).
 
 ::: zone-end
 
@@ -366,8 +366,8 @@ Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Jav
 
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
-- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
-- Java & görüntülerinde. jar dosyalarını dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
+- . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#deploy-war-file)bakın.
+- Java & görüntülerinde. jar dosyalarını dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#rest)bakın.
 
 FTP kullanarak. war veya. jar 'nizi dağıtmayın. FTP aracı başlangıç betiklerini, bağımlılıklarını veya diğer çalışma zamanı dosyalarını karşıya yüklemek üzere tasarlanmıştır. Web uygulamalarını dağıtmak için en iyi seçenek değildir.
 
@@ -390,9 +390,9 @@ Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](troubleshoot-diagn
 Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */Home/LogFiles/Application/* dizininde bulabilirsiniz.
 
 >[!NOTE]
->Yerel App Service dosya sistemine kaydetme, 12 saat sonra yalnızca Windows tabanlı uygulama hizmetleri için geçerli olacak şekilde devre dışı bırakılmaktadır. Linux tabanlı uygulama hizmetleri için Azure Blob depolama günlüğü, yalnızca [Azure izleyici (Önizleme)](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) kullanılarak yapılandırılabilir 
+>Yerel App Service dosya sistemine kaydetme, 12 saat sonra yalnızca Windows tabanlı uygulama hizmetleri için geçerli olacak şekilde devre dışı bırakılmaktadır. Linux tabanlı uygulama hizmetleri için Azure Blob depolama günlüğü, yalnızca [Azure izleyici (Önizleme)](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) kullanılarak yapılandırılabilir 
 
-Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](/azure/application-insights/app-insights-java-trace-logs)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
+Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](../azure-monitor/app/java-trace-logs.md)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
 
 ### <a name="troubleshooting-tools"></a>Sorun giderme araçları
 
@@ -439,7 +439,7 @@ Daha fazla bilgi için lütfen [Jcmd komut başvurusuna](https://docs.oracle.com
 
 ### <a name="analyzing-recordings"></a>Kayıtlar çözümleniyor
 
-JFR dosyanızı yerel makinenize indirmek için [FTPS](deploy-ftp.md) 'yi kullanın. JFR dosyasını çözümlemek için, [Zulu görevi denetimini](https://www.azul.com/products/zulu-mission-control/)indirip yükleyin. Zulu dili görev denetimi yönergeleri için [Azul belgelerine](https://docs.azul.com/zmc/) ve [yükleme yönergelerine](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
+JFR dosyanızı yerel makinenize indirmek için [FTPS](deploy-ftp.md) 'yi kullanın. JFR dosyasını çözümlemek için, [Zulu görevi denetimini](https://www.azul.com/products/zulu-mission-control/)indirip yükleyin. Zulu dili görev denetimi yönergeleri için [Azul belgelerine](https://docs.azul.com/zmc/) ve [yükleme yönergelerine](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
 
 ## <a name="customization-and-tuning"></a>Özelleştirme ve ayarlama
 
@@ -470,9 +470,9 @@ Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi
 
 Tek bir uygulama çalıştıran geliştiriciler App Service planında bir dağıtım yuvası ile, aşağıdaki seçenekleri kullanabilir:
 
-- B1 ve S1 örnekleri:`-Xms1024m -Xmx1024m`
-- B2 ve S2 örnekleri:`-Xms3072m -Xmx3072m`
-- B3 ve S3 örnekleri:`-Xms6144m -Xmx6144m`
+- B1 ve S1 örnekleri: `-Xms1024m -Xmx1024m`
+- B2 ve S2 örnekleri: `-Xms3072m -Xmx3072m`
+- B3 ve S3 örnekleri: `-Xms6144m -Xmx6144m`
 
 Uygulama yığını ayarlarını ayarladığınızda, en iyi bellek ayırmayı bulmak için App Service planı ayrıntılarınızı gözden geçirin ve birden çok uygulama ve dağıtım yuvası ihtiyaçlarına sahip olmak üzere birden fazla uygulama ve dağıtım yuvası
 
@@ -520,7 +520,7 @@ Tomcat uygulamalarının performansını artırmak için, App Service dağıtım
 
 ## <a name="secure-applications"></a>Uygulamaları güvenli hale getirme
 
-Linux için App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](/azure/security/security-paas-applications-using-app-services) uygulamaları kümesine sahiptir.
+Linux için App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](../security/fundamentals/paas-applications-using-app-services.md) uygulamaları kümesine sahiptir.
 
 ### <a name="authenticate-users-easy-auth"></a>Kullanıcıların kimliğini doğrulama (kolay kimlik doğrulaması)
 
@@ -548,7 +548,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Kullanıcıları imzalamak için `/.auth/ext/logout` yolunu kullanın. Diğer eylemleri gerçekleştirmek için lütfen [App Service kimlik doğrulaması ve yetkilendirme kullanımı](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)hakkındaki belgelere bakın. Ayrıca, Tomcat [Httpservletrequest arabiriminde](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri için resmi belgeler vardır. Aşağıdaki servlet yöntemleri App Service yapılandırmanıza göre de alınır:
+Kullanıcıları imzalamak için `/.auth/ext/logout` yolunu kullanın. Diğer eylemleri gerçekleştirmek için lütfen [App Service kimlik doğrulaması ve yetkilendirme kullanımı](./app-service-authentication-how-to.md)hakkındaki belgelere bakın. Ayrıca, Tomcat [Httpservletrequest arabiriminde](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri için resmi belgeler vardır. Aşağıdaki servlet yöntemleri App Service yapılandırmanıza göre de alınır:
 
 ```java
 public boolean isSecure()
@@ -583,7 +583,7 @@ Varsayılan olarak, [App Service Linux 'a yüklenen](configure-ssl-certificate.m
 Java anahtar deposundaki sertifikalarla JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen seçtiğiniz JDBC sürücünüz için belgelere bakın.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
-- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
@@ -668,7 +668,7 @@ Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucular
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Tomcat 'i Java veritabanı bağlantısı (JDBC) veya Java Kalıcılık API 'SI (JPA) kullanacak şekilde yapılandırmak için, önce başlangıçta `CATALINA_OPTS` Tomcat tarafından okunan ortam değişkenini özelleştirin. Bu değerleri [App Service Maven eklentisindeki](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)bir uygulama ayarı aracılığıyla ayarlayın:
 
@@ -831,7 +831,7 @@ Bu konuyla ilgili daha fazla bilgi için lütfen veri erişimi ve [externalized 
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Redin 'i Tomcat ile oturum önbelleği olarak kullanma
 
-Tomcat 'i [redsıs Için Azure önbelleği](/azure/azure-cache-for-redis/)gibi bir dış oturum deposu kullanacak şekilde yapılandırabilirsiniz. Bu, bir kullanıcı uygulamanızın başka bir örneğine aktarıldığında (örneğin, otomatik ölçeklendirme, yeniden başlatma veya yük devretme gerçekleştiğinde) Kullanıcı oturumu durumunu korumanıza olanak sağlar.
+Tomcat 'i [redsıs Için Azure önbelleği](../azure-cache-for-redis/index.yml)gibi bir dış oturum deposu kullanacak şekilde yapılandırabilirsiniz. Bu, bir kullanıcı uygulamanızın başka bir örneğine aktarıldığında (örneğin, otomatik ölçeklendirme, yeniden başlatma veya yük devretme gerçekleştiğinde) Kullanıcı oturumu durumunu korumanıza olanak sağlar.
 
 Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) uygulaması kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki adımlarda bu işlem Özet [oturum Yöneticisi kullanılarak açıklanmıştır: redin-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) örnek olarak.
 
@@ -883,7 +883,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 
     Bu dosya, uygulamanız için oturum Yöneticisi uygulamasını belirtir ve yapılandırır. Bu, önceki adımda ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
 
-3. Oturum yöneticisinin JAR dosyasını App Service örneğine yüklemek için FTP 'yi kullanın, bu dosyayı */Home/Tomcat/lib* dizinine koyarak yükleyin. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+3. Oturum yöneticisinin JAR dosyasını App Service örneğine yüklemek için FTP 'yi kullanın, bu dosyayı */Home/Tomcat/lib* dizinine koyarak yükleyin. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](./deploy-ftp.md).
 
 4. App Service örneğiniz için [oturum benzeşimi tanımlama bilgisini](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) devre dışı bırakın. Bunu uygulamanızda gezinerek Azure portal yapabilir ve sonra, **yapılandırma > genel ayarları ARR benzeşimi >** seçeneğini **devre dışı**olarak ayarlayabilirsiniz. Alternatif olarak, aşağıdaki komutu kullanabilirsiniz:
 

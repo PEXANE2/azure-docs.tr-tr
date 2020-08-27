@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690264"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959162"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -153,7 +153,7 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 * , SCıM protokolünün Bölüm 3.4.2 göre, kullanıcının KIMLIĞE ve yöneticiye göre sorgulanmasını destekler.  
 * , SCıM protokolünün Bölüm 3.4.2 göre grupların KIMLIĞE ve üyeye göre sorgulanmasını destekler.  
 * Azure AD 'nin uygulamanıza kimlik doğrulaması ve yetkilendirmesi için tek bir taşıyıcı belirtecini kabul eder.
-* , Bir kullanıcının geçici olarak silinmesini `active=false` ve kullanıcıyı geri yüklemeyi destekler `active=true` .
+* , Bir kullanıcının geçici olarak silinmesini `active=false` ve kullanıcıyı geri yüklemeyi destekler `active=true` (Kullanıcı nesnesi, kullanıcının etkin olup olmadığına bakılmaksızın bir istekte döndürülmelidir). Kullanıcının döndürülmediği tek zaman, uygulamadan kalıcı olarak silinir. 
 
 Azure AD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken bu genel yönergeleri izleyin:
 

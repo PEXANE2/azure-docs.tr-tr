@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213569"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962902"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -44,7 +44,7 @@ Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişke
 Uygulama ayarları her zaman (REST-REST) depolandığında şifrelenir.
 
 > [!NOTE]
-> Uygulama ayarları, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](/azure/key-vault/) de çözülebilir.
+> Uygulama ayarları, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](../key-vault/index.yml) de çözülebilir.
 
 ### <a name="show-hidden-values"></a>Gizli değerleri göster
 
@@ -115,7 +115,7 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 Bağlantı dizeleri her zaman (REST-REST) depolandığında şifrelenir.
 
 > [!NOTE]
-> Bağlantı dizeleri, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](/azure/key-vault/) de çözülebilir.
+> Bağlantı dizeleri, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](../key-vault/index.yml) de çözülebilir.
 
 ### <a name="show-hidden-values"></a>Gizli değerleri göster
 
@@ -258,7 +258,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalı]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’ta hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

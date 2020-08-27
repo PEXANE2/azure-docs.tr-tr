@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077450"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962154"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -120,7 +120,7 @@ Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Direct
 1. **Yeniden yönlendirme URI 'si**içinde **ortak istemci (mobil & Masaüstü)** öğesini seçin ve URL 'yi yazın `<app-url>/.auth/login/aad/callback` . Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > Microsoft Store bir uygulama için, bunun yerine URI olarak [paket SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 'sini kullanın.
+    > Microsoft Store bir uygulama için, bunun yerine URI olarak [paket SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 'sini kullanın.
 1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan sonra, **uygulama (istemci) kimliği**değerini kopyalayın.
 1. **API izinleri**Seç  >  **Add a permission**  >  **API 'lerim**izin Ekle.

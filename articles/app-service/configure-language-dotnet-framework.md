@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211874"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961712"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET uygulaması yapılandırma
 
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
-ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örnek:
+ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel hata iletisiyle değiştirilmiştir. Ayrıntılı özel durum sayfasını App Service göstermek için *Web.config* dosyasını açın ve öğesini `<customErrors mode="Off"/>` öğesinin altına ekleyin `<system.web>` . Örneğin:
 
 ```xml
 <system.web>
@@ -95,7 +95,7 @@ Güncelleştirilmiş *Web.config*uygulamanızı yeniden dağıtın. Artık aynı
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örnek: 
+[System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace)kullanarak uygulama kodunuzda tanılama iletileri ekleyebilirsiniz. Örneğin: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

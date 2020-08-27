@@ -6,14 +6,17 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 9dd4067d066362f5842b504971afbc59fd0717a3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d10b36047959299f5b66da5fb16beef8a591a983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212210"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962851"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Işlevleri için Microsoft Graph bağlamaları
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Bu makalede, Azure Işlevlerinde Microsoft Graph Tetikleyicileri ve bağlamaları yapılandırma ve bunlarla nasıl çalışılacağı açıklanmaktadır. Bunlarla, [Microsoft Graph](https://developer.microsoft.com/graph)veri, öngörü ve olaylarla çalışmak Için Azure işlevlerini kullanabilirsiniz.
 
@@ -38,6 +41,9 @@ Kimlik doğrulama belirteci giriş bağlaması, [Microsoft. Azure. WebJobs. Exte
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>Uzantıları ayarlama
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 _Bağlama uzantıları_aracılığıyla Microsoft Graph bağlamaları kullanılabilir. Bağlama uzantıları, Azure Işlevleri çalışma zamanına yönelik isteğe bağlı bileşenlerdir. Bu bölümde Microsoft Graph ve Auth belirteci uzantılarının nasıl ayarlanacağı gösterilmektedir.
 
@@ -71,6 +77,9 @@ Azure portal kullanıyorsanız, uzantıyı yüklemek için istemde bir uyarı g�
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Kimlik doğrulama belirteci
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Kimlik doğrulama belirteci girişi bağlama, belirli bir kaynak için bir Azure AD belirteci alır ve bu dizeyi bir dize olarak kodunuza sağlar. Kaynak, uygulamanın izinlere sahip olduğu herhangi bir olabilir. 
 
@@ -209,7 +218,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan bir kimlik doğrulama belirteci girişi bağlama kullanma](#token-input-code).|
-|**tür**| yok |Gerekli-olarak ayarlanmalıdır `token` .|
+|**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `token` .|
 |**Görünüm**| yok |Gerekli-olarak ayarlanmalıdır `in` .|
 |**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code> -Yalnızca [http tetikleyicisiyle]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code> -Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz <code>userId</code> . özelliği.</li><li><code>userFromToken</code> -Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz <code>userToken</code> . özelliği.</li><li><code>clientCredentials</code> -İşlev uygulamasının kimliğini kullanır.</li></ul>|
 |**UserID**|**UserID**  |Yalnızca _kimlik_ olarak ayarlandıysa, gereklidir `userFromId` . Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
@@ -229,6 +238,9 @@ Belirteç her zaman bir dize olarak kod olarak sunulur.
 
 <a name="excel-input"></a>
 ## <a name="excel-input"></a>Excel girişi
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Excel tablo girişi bağlama, OneDrive 'da depolanan bir Excel tablosunun içeriğini okur.
 
@@ -344,7 +356,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Required-Excel tablosu için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo girişi bağlama kullanma](#excel-input-code).|
-|**tür**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
+|**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
 |**Görünüm**| yok |Gerekli-olarak ayarlanmalıdır `in` .|
 |**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code> -Yalnızca [http tetikleyicisiyle]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code> -Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz <code>userId</code> . özelliği.</li><li><code>userFromToken</code> -Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz <code>userToken</code> . özelliği.</li><li><code>clientCredentials</code> -İşlev uygulamasının kimliğini kullanır.</li></ul>|
 |**UserID**|**UserID**  |Yalnızca _kimlik_ olarak ayarlandıysa, gereklidir `userFromId` . Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
@@ -538,6 +550,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 <a name="onedrive-input"></a>
 ## <a name="file-input"></a>Dosya girişi
 
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 OneDrive dosya girişi bağlama, OneDrive 'da depolanan bir dosyanın içeriğini okur.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
@@ -681,6 +696,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 <a name="onedrive-output"></a>
 ## <a name="file-output"></a>Dosya çıktısı
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 OneDrive dosyası çıkış bağlaması, OneDrive 'da depolanan bir dosyanın içeriğini değiştirir.
 
@@ -829,6 +847,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Outlook çıktısı
 
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Outlook ileti çıkış bağlaması Outlook aracılığıyla bir posta iletisi gönderir.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
@@ -951,7 +972,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**tür**| yok |Gerekli-olarak ayarlanmalıdır `outlook` .|
+|**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `outlook` .|
 |**Görünüm**| yok |Gerekli-olarak ayarlanmalıdır `out` .|
 |**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code> -Yalnızca [http tetikleyicisiyle]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code> -Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz <code>userId</code> . özelliği.</li><li><code>userFromToken</code> -Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz <code>userToken</code> . özelliği.</li><li><code>clientCredentials</code> -İşlev uygulamasının kimliğini kullanır.</li></ul>|
 |**UserID**|**UserID**  |Yalnızca _kimlik_ olarak ayarlandıysa, gereklidir `userFromId` . Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
@@ -979,6 +1000,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 ## <a name="webhooks"></a>Web Kancaları
 
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Web kancaları Microsoft Graph olaylara tepki verir. Web kancalarını desteklemek için, _Web kancası aboneliklerini_oluşturmak, yenilemek ve bunlara yanıt vermek için işlevleri gereklidir. Tüm Web kancası çözümü aşağıdaki bağlamaların birleşimini gerektirir:
 - [Microsoft Graph Web kancası tetikleyicisi](#webhook-trigger) , gelen bir Web kancasına tepki vermenize olanak tanır.
 - [Microsoft Graph Web kancası abonelik girişi bağlama](#webhook-input) , mevcut abonelikleri listeetmenize ve isteğe bağlı olarak bunları yenilemenize olanak tanır.
@@ -993,6 +1017,9 @@ Web kancaları hakkında daha fazla bilgi için bkz. [Microsoft Graph Web kancal
 
 
 ## <a name="webhook-trigger"></a>Web kancası tetikleyicisi
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Microsoft Graph Web kancası tetikleyicisi, bir işlevin Microsoft Graph gelen bir Web kancasına tepki vermesini sağlar. Bu tetikleyicinin her örneği bir Microsoft Graph kaynak türüne tepki gösterebilir.
 
@@ -1096,7 +1123,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhook` .|
 |**Görünüm**| yok |Gerekli-olarak ayarlanmalıdır `trigger` .|
-|**Kaynak**|**ResourceType**|Gerekli-bu işlevin Web kancalarına yanıt vermesi gereken grafik kaynağı. Aşağıdaki değerlerden biri olabilir:<ul><li><code>#Microsoft.Graph.Message</code> -Outlook iletilerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.DriveItem</code> -OneDrive kök öğelerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Contact</code> -Outlook 'ta kişisel kişilerde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Event</code> -Outlook Takvim öğelerinde yapılan değişiklikler.</li></ul>|
+|**Kaynak**|**Kaynak**|Gerekli-bu işlevin Web kancalarına yanıt vermesi gereken grafik kaynağı. Aşağıdaki değerlerden biri olabilir:<ul><li><code>#Microsoft.Graph.Message</code> -Outlook iletilerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.DriveItem</code> -OneDrive kök öğelerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Contact</code> -Outlook 'ta kişisel kişilerde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Event</code> -Outlook Takvim öğelerinde yapılan değişiklikler.</li></ul>|
 
 > [!Note]
 > Bir işlev uygulamasının yalnızca belirli bir değere göre kaydedilmiş bir işlevi olabilir `resourceType` .
@@ -1112,6 +1139,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 <a name="webhook-input"></a>
 ## <a name="webhook-input"></a>Web kancası girişi
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Microsoft Graph Web kancası giriş bağlaması, bu işlev uygulaması tarafından yönetilen Aboneliklerin listesini almanıza olanak sağlar. Bağlama, işlev uygulaması depolamadan okurken uygulamanın dışından oluşturulan diğer abonelikleri yansıtmaz.
 
@@ -1264,6 +1294,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 ## <a name="webhook-output"></a>Web kancası çıkışı
 
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
+
 Web kancası aboneliği çıkış bağlaması, Microsoft Graph Web kancası abonelikleri oluşturmanıza, silmesine ve yenilemesine olanak tanır.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
@@ -1387,7 +1420,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**tür**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|
+|**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|
 |**Görünüm**| yok |Gerekli-olarak ayarlanmalıdır `out` .|
 |**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code> -Yalnızca [http tetikleyicisiyle]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code> -Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz <code>userId</code> . özelliği.</li><li><code>userFromToken</code> -Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz <code>userToken</code> . özelliği.</li><li><code>clientCredentials</code> -İşlev uygulamasının kimliğini kullanır.</li></ul>|
 |**UserID**|**UserID**  |Yalnızca _kimlik_ olarak ayarlandıysa, gereklidir `userFromId` . Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
@@ -1407,6 +1440,9 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 <a name="webhook-examples"></a>
 ## <a name="webhook-subscription-refresh"></a>Web kancası aboneliği yenileme
+
+> [!IMPORTANT]
+> Microsoft Graph önizleme bağlamaları artık kullanım dışıdır. Azure Işlevleri ile Microsoft Graph kullanma hakkında ayrıntılı bilgi edinmek için lütfen [Microsoft Graph öğretici Ile Azure Işlevleri oluşturun](https://docs.microsoft.com/graph/tutorials/azure-functions) .
 
 Abonelikleri yenilemek için iki yaklaşım vardır:
 

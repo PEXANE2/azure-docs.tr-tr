@@ -4,16 +4,16 @@ description: Etkinlik günlükleri aracılığıyla kaynak olaylarını nasıl a
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5c84891187c540c0b24162cf5c8c7f96e9e731a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649063"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962307"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Azure App Service kaynak olaylarını al
 
-Azure App Service kaynaklarınızın durumunu ve sistem durumunu izlemek için yerleşik araçlar sağlar. Kaynak olayları, temel Web uygulaması kaynaklarınız üzerinde yapılan tüm değişiklikleri anlamanıza yardımcı olur ve gerekli işlemleri gerçekleştirin. Olay örnekleri şunlardır: örneklerin ölçeklendirilmesi, uygulama ayarlarına yönelik güncelleştirmeler, Web uygulamasının yeniden başlatılması ve çok daha fazlası. Bu makalede, [Azure etkinlik günlüklerini](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) görüntülemeyi ve App Service Web uygulamanız ile ilgili kaynak olaylarını izlemek için [Event Grid](https://docs.microsoft.com/azure/event-grid/) etkinleştirmeyi öğreneceksiniz.
+Azure App Service kaynaklarınızın durumunu ve sistem durumunu izlemek için yerleşik araçlar sağlar. Kaynak olayları, temel Web uygulaması kaynaklarınız üzerinde yapılan tüm değişiklikleri anlamanıza yardımcı olur ve gerekli işlemleri gerçekleştirin. Olay örnekleri şunlardır: örneklerin ölçeklendirilmesi, uygulama ayarlarına yönelik güncelleştirmeler, Web uygulamasının yeniden başlatılması ve çok daha fazlası. Bu makalede, [Azure etkinlik günlüklerini](../azure-monitor/platform/activity-log.md#view-the-activity-log) görüntülemeyi ve App Service Web uygulamanız ile ilgili kaynak olaylarını izlemek için [Event Grid](../event-grid/index.yml) etkinleştirmeyi öğreneceksiniz.
 
 > [!NOTE]
 > Event Grid ile tümleştirme App Service **önizlemededir**. [Daha fazla ayrıntı için duyuruyu görüntüleyin.](https://aka.ms/app-service-event-grid-announcement)
@@ -33,17 +33,17 @@ Azure etkinlik günlükleri gibi App Service Ayrıntılar için:
 
 Azure etkinlik günlükleri Azure portal, PowerShell, REST API veya CLı kullanılarak sorgulanabilir. Günlükleri bir depolama hesabına, Olay Hub 'ına ve Log Analytics gönderebilirsiniz. Ayrıca, bunları Power BI analiz edebilir veya kaynak olaylarında güncel kalmasını sağlamak için uyarılar oluşturabilirsiniz.
 
-[Azure etkinlik günlüğü olaylarını görüntüleyin ve alın.](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+[Azure etkinlik günlüğü olaylarını görüntüleyin ve alın.](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 ## <a name="ship-activity-logs-to-event-grid"></a>Etkinlik günlüklerini Event Grid gönder
 
-Etkinlik günlükleri Kullanıcı tabanlı olsa da, hem kullanıcı eylemlerini hem de otomatik olayları günlüğe kaydeden App Service (Önizleme) ile yeni bir [Event Grid](https://docs.microsoft.com/azure/event-grid/) tümleştirme vardır. Event Grid, bir işleyiciyi, söylemi olaylara tepki verecek şekilde yapılandırabilirsiniz. Event Grid’i örneğin bir blob depolama kapsayıcısına eklenen her yeni fotoğrafta görüntü analizini çalıştıracak sunucusuz bir işlev tetiklemek için kullanabilirsiniz.
+Etkinlik günlükleri Kullanıcı tabanlı olsa da, hem kullanıcı eylemlerini hem de otomatik olayları günlüğe kaydeden App Service (Önizleme) ile yeni bir [Event Grid](../event-grid/index.yml) tümleştirme vardır. Event Grid, bir işleyiciyi, söylemi olaylara tepki verecek şekilde yapılandırabilirsiniz. Event Grid’i örneğin bir blob depolama kapsayıcısına eklenen her yeni fotoğrafta görüntü analizini çalıştıracak sunucusuz bir işlev tetiklemek için kullanabilirsiniz.
 
 Ayrıca Event Grid’i Logic Apps ile birlikte kullanarak kod yazmadan her yerden veri işleyebilirsiniz. Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Event Grid’i örneğin bir blob depolama kapsayıcısına eklenen her yeni fotoğrafta görüntü analizini çalıştıracak sunucusuz bir işlev tetiklemek için kullanabilirsiniz.
 
-[Azure App Service olaylar için özellikleri ve şemayı görüntüleyin.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
+[Azure App Service olaylar için özellikleri ve şemayı görüntüleyin.](../event-grid/event-schema-app-service.md)
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service Izleme](web-sites-monitor.md)
 * [Visual Studio 'da Azure App Service sorunlarını giderme](troubleshoot-dotnet-visual-studio.md)

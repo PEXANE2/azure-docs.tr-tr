@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212873"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959910"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio kullanarak Web Işleri geliştirme ve dağıtma
 
@@ -53,9 +53,9 @@ Bir projeyi kendi başına WebJob olarak dağıtın veya Web projesini her dağ�
 
 ![Web projesine yönelik WebJob projesi bağlantısını gösteren diyagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-[Azure geliştirme iş yüküyle](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)visual Studio 2017 veya visual Studio 2019 ' ü yükler.
+[Azure geliştirme iş yüküyle](/visualstudio/install/install-visual-studio#step-4---choose-workloads)visual Studio 2017 veya visual Studio 2019 ' ü yükler.
 
 ### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> Mevcut bir konsol uygulaması projesi için Web Işleri dağıtımını etkinleştir
 

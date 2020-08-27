@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327353"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961984"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -54,11 +54,11 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabi
 
 ### <a name="overview-workbook"></a>Genel Bakış çalışma kitabı
 
-Seçili abonelik için **genel bakış** çalışma kitabında tablo, abonelik içinde gruplanmış 10 depolama hesabı için etkileşimli depolama ölçümlerini ve hizmet kullanılabilirliği durumunu görüntüler. Aşağıdaki açılan listelerden seçtiğiniz seçeneklere göre sonuçlara filtre uygulayabilirsiniz:
+Seçili abonelik için **genel bakış** çalışma kitabında tablo, abonelik içinde gruplanmış 5 adede kadar depolama hesabına yönelik etkileşimli depolama ölçümlerini ve hizmet kullanılabilirliği durumunu görüntüler. Aşağıdaki açılan listelerden seçtiğiniz seçeneklere göre sonuçlara filtre uygulayabilirsiniz:
 
 * **Abonelikler** -yalnızca depolama hesaplarına sahip abonelikler listelenir.  
 
-* **Depolama hesapları** -varsayılan olarak, 10 depolama hesabı önceden seçilmiştir. Kapsam seçicideki tüm veya birden çok depolama hesabı seçerseniz, en fazla 200 depolama hesabı döndürülür. Örneğin, üç abonelik üzerinde seçtiğiniz toplam 573 depolama hesabınız varsa, yalnızca 200 hesapları görüntülenir. 
+* **Depolama hesapları** -varsayılan olarak 5 depolama hesabı önceden seçilmiştir. Kapsam seçicideki tüm veya birden çok depolama hesabı seçerseniz, en fazla 200 depolama hesabı döndürülür. Örneğin, üç abonelik üzerinde seçtiğiniz toplam 573 depolama hesabınız varsa, yalnızca 200 hesapları görüntülenir. 
 
 * **Zaman aralığı** -varsayılan olarak, yapılan ilgili seçimlere göre son 4 saati bilgileri görüntüler.
 

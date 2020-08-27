@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212843"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962205"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -84,7 +84,7 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 1. Tasarımcının alt kısmındaki **yeni adım**' a tıklayın, eylemler arama kutusuna **Gmail** yazın ve **e-posta gönder (v2)** seçeneğini belirleyin.
     
     > [!TIP]
-    > SendGrid, MailChimp, Office 365 ve SalesForce gibi diğer tür Tümleştirmeler için arama yapabilirsiniz. Daha fazla bilgi için bkz. [Logic Apps belgeleri](https://docs.microsoft.com/azure/logic-apps/).
+    > SendGrid, MailChimp, Office 365 ve SalesForce gibi diğer tür Tümleştirmeler için arama yapabilirsiniz. Daha fazla bilgi için bkz. [Logic Apps belgeleri](../logic-apps/index.yml).
 1. **Gmail** Iletişim kutusunda **oturum aç** ' ı seçin ve e-postayı göndermek istediğiniz Gmail hesabında oturum açın.
 
     ![E-posta göndermek istediğiniz Gmail hesabında oturum açmak için kullandığınız Gmail iletişim kutusunu gösteren ekran görüntüsü.](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ Bir örnek görmek için aşağıdaki tercih edilen dil/çerçeve sekmesine tık
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
+ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritaba
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
+ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,13 +199,13 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Bu kod, tanıtım basitliği için yazılmıştır. Uygulamada, `HttpClient` her istek için bir nesne örneği oluşturmayın. Dayanıklı [http istekleri uygulamak Için ıhttpclientfactory kullanma](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzundaki yönergeleri izleyin.
+> Bu kod, tanıtım basitliği için yazılmıştır. Uygulamada, `HttpClient` her istek için bir nesne örneği oluşturmayın. Dayanıklı [http istekleri uygulamak Için ıhttpclientfactory kullanma](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzundaki yönergeleri izleyin.
 
 Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](tutorial-dotnetcore-sqldb-app.md), öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz `Todo` .
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örnek:
+Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
 
 ```javascript
 // Requires npm install --save axios
@@ -232,7 +232,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da bir Node.js 
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örnek:
+PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örneğin:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -264,7 +264,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da BIR php ve M
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örnek:
+Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örneğin:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -295,7 +295,7 @@ Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de PostgreSQL
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örnek:
+Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örneğin:
 
 ```ruby
 clnt = JSONClient.new

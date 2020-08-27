@@ -1,18 +1,18 @@
 ---
 title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636317"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958754"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
-Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, **Düzeltme**aracılığıyla uyumlu bir duruma yerleştirilebilir. Düzeltme, Azure **ilkesini, bu** atamanın bir yönetim grubuna, aboneliğe, bir kaynak grubuna veya tek bir kaynağa bağlı olup olmadığına bakılmaksızın, mevcut kaynaklarınızda atanan ilkenin etiket **işlemlerini** çalıştırmak üzere karşılaştırarak gerçekleştirilir. Bu makalede, Azure Ilkesini anlamak ve düzeltmeyi gerçekleştirmek için gereken adımlar gösterilir.
+Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, **Düzeltme**aracılığıyla uyumlu bir duruma yerleştirilebilir. Düzeltme, Azure Ilkesini, bu atamanın bir yönetim grubuna, aboneliğe, bir kaynak grubuna veya tek bir kaynağa bağlı olup olmadığına bakılmaksızın, mevcut kaynaklarınızın **dağıtım** ilkesi veya atanan ilkenin **değiştirme işlemlerini** çalıştırmak üzere karşılaştırarak gerçekleştirilir. Bu makalede, Azure Ilkesini anlamak ve düzeltmeyi gerçekleştirmek için gereken adımlar gösterilir.
 
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliğinin nasıl çalıştığı
 

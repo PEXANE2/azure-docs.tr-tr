@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816074"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958108"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdaki verilerin Azure IoT Central neden gösterilmediğini sorun giderme
 
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>Terminal çıkışını yorumlama
-
 Terminalinizde veriler görünürse, veriler IoT Central uygulamanız olarak bu duruma gelir.
 
 Birkaç dakika sonra herhangi bir veri görünmüyorsa, `Enter` `return` çıktının takılı olması durumunda klavyenizdeki veya tuşuna basmayı deneyin.
@@ -133,7 +131,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
 | - | - | - |
-| Oluşturulamadı | Anında tanınabilir sorun yoktur. | YOK |
+| Oluşturulamadı | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
 | Engellendi | Cihazın IoT Central 'e bağlanması engellendi. | Cihazın IoT Central uygulamasına bağlanması engellendi. IoT Central cihaz engelini kaldırın ve yeniden deneyin. Daha fazla bilgi için bkz. [Cihazları engelleme](concepts-get-connected.md#device-status-values). |
 | Durumdaki | Cihaz onaylanmadı. | Cihaz IoT Central uygulamasına bağlanacak şekilde onaylanmadı. IoT Central cihazı onaylayın ve yeniden deneyin. Daha fazla bilgi için bkz. [cihazları onaylama](concepts-get-connected.md#connect-without-registering-devices) |
@@ -187,8 +185,6 @@ Sorununuzla ilgili hangi kategorilerin olduğunu saptamak için senaryonuz için
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- Bir GUI kullanmayı tercih ediyorsanız, bir şeyin modellendirilmediğinden bakmak için IoT Central **ham veri** görünümünü kullanın. **Ham veri** görünümü, cihazın hatalı biçimlendirilmiş JSON gönderip göndermediğini algılamaz.
-
 `uamqp`Bir komutu ilk kez çalıştırdığınızda kitaplığı yüklemeniz istenebilir `validate` .
 
 Aşağıdaki çıktı, Validate komutundan örnek hata ve uyarı iletilerini gösterir:
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Ham veri görünümünün ekran görüntüsü":::
+Bir GUI kullanmayı tercih ediyorsanız, bir şeyin modellendirilmediğinden bakmak için IoT Central **ham veri** görünümünü kullanın. **Ham veri** görünümü, cihazın hatalı biçimlendirilmiş JSON gönderip göndermediğini algılamaz.
 
-### <a name="interpreting-terminal-output"></a>Terminal çıkışını yorumlama
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Ham veri görünümünün ekran görüntüsü":::
 
 Sorunu tespit ettiğinizde cihaz bellenimini güncelleştirmeniz veya daha önce Modellenmemiş verileri modelleyen yeni bir cihaz şablonu oluşturmanız gerekebilir.
 
@@ -215,9 +211,6 @@ Verileri doğru şekilde modelleyen yeni bir şablon oluşturmayı seçerseniz, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzu kullanarak sorun gideremez ve sorunu düzeltemedi bir destek bileti açın. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir:
-
-- [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [Birleşik Devletler kamu Azure portal](https://portal.azure.us/)
+Daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir [Azure destek bileti](https://portal.azure.com/#create/Microsoft.Support)dosyası da oluşturabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure IoT desteği ve yardım seçenekleri](../../iot-fundamentals/iot-support-help.md).

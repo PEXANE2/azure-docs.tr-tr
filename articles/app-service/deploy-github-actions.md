@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080292"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962579"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
@@ -36,7 +36,7 @@ Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 
 # <a name="user-level-credentials"></a>[Kullanıcı düzeyi kimlik bilgileri](#tab/userlevel)
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
+[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -75,7 +75,7 @@ Daha sonra dosyanın içeriğine ihtiyacınız olacak.
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1
@@ -89,7 +89,7 @@ Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure otu
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Gizli dizi adını gibi verin `azureWebAppPublishProfile` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `publish-profile` Azure Web uygulaması dağıtma eyleminin girişi için gizli anahtarı kullanın. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `publish-profile` Azure Web uygulaması dağıtma eyleminin girişi için gizli anahtarı kullanın. Örneğin:
     
 ```yaml
 - uses: azure/webapps-deploy@v2

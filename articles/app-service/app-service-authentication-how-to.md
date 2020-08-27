@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272323"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962477"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -146,7 +146,7 @@ App Service, özel üstbilgiler kullanarak Kullanıcı taleplerini uygulamanıza
 
 Herhangi bir dilde veya çerçevede yazılan kod, bu üst bilgilerden ihtiyaç duymakta olan bilgileri alabilir. ASP.NET 4,6 uygulamaları için, **ClaimsPrincipal** otomatik olarak uygun değerlerle ayarlanır. Ancak ASP.NET Core, App Service Kullanıcı taleplerini tümleştiren bir kimlik doğrulama ara yazılımı sağlamaz. Geçici bir çözüm için bkz. [Maximerouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Uygulamanız için [belirteç deposu](overview-authentication-authorization.md#token-store) etkinleştirilmişse, ' i çağırarak kimliği doğrulanmış kullanıcı hakkında ek ayrıntılar da alabilirsiniz `/.auth/me` . Mobile Apps Server SDK 'Ları, bu verilerle çalışmak için yardımcı yöntemler sağlar. Daha fazla bilgi için bkz. [azure Mobile Apps Node.js SDK 'sını kullanma](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)ve [Azure Mobile Apps için .net arka uç sunucu SDK 'sı ile çalışma](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Uygulamanız için [belirteç deposu](overview-authentication-authorization.md#token-store) etkinleştirilmişse, ' i çağırarak kimliği doğrulanmış kullanıcı hakkında ek ayrıntılar da alabilirsiniz `/.auth/me` . Mobile Apps Server SDK 'Ları, bu verilerle çalışmak için yardımcı yöntemler sağlar. Daha fazla bilgi için bkz. [azure Mobile Apps Node.js SDK 'sını kullanma](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)ve [Azure Mobile Apps için .net arka uç sunucu SDK 'sı ile çalışma](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Uygulama kodundaki belirteçleri al
 
@@ -489,7 +489,7 @@ Platform kimlik doğrulama ara yazılımı 'nın geçerli sürümünü, Azure CL
 
 ##### <a name="from-the-azure-cli"></a>Azure CLı 'dan
 
-Azure CLı 'yı kullanarak, [az WebApp auth Show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
+Azure CLı 'yı kullanarak, [az WebApp auth Show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ Ayrıca, uygulamanın üzerinde çalıştığı geçerli ara yazılım sürümü
 
 #### <a name="update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü güncelleştirme
 
-Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
+Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,7 +530,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>`Uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , uygulamanızın kaynak grubu adıyla değiştirin. Ayrıca, `<version>` 1. x çalışma zamanının geçerli bir sürümüyle veya `~1` en son sürüm ile değiştirin. Sürüm notlarını farklı çalışma zamanı sürümlerinde bulabilirsiniz [buraya] ( https://github.com/Azure/app-service-announcements) sabitlenemeyecek sürümü belirlemenize yardımcı olmak için).
 
-Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](https://docs.microsoft.com/cli/azure/install-azure-cli) da kullanabilirsiniz.
+Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

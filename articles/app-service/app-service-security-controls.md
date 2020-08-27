@@ -5,12 +5,12 @@ author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b0c336d9d9c463a7ed7acf42eaf292ecce4f1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93e5123e5b61c9013177f7f3c908578b68da52d6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831158"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962936"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service için güvenlik denetimleri
 
@@ -48,8 +48,8 @@ Bu makalede, Azure App Service yerleşik olarak bulunan güvenlik denetimleri Be
 |---|---|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Web sitesi dosya içeriği, bekleyen içeriği otomatik olarak şifreleyen Azure Storage 'da depolanır. <br><br>Müşteri tarafından sağlanan gizlilikler bekleyen bir şekilde şifrelenir. Gizlilikler, App Service yapılandırma veritabanlarında depolanırken Rest 'te şifrelenir.<br><br>Yerel olarak bağlı diskler isteğe bağlı olarak, Web siteleri tarafından geçici depolama olarak kullanılabilir (D:\Local ve% TMP%). Yerel olarak bağlı diskler, bekleyen olarak şifrelenmez. | [Bekleyen veri için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md)
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteriler, Key Vault içinde uygulama gizli dizilerini depolamayı ve çalışma zamanında bunları almayı seçebilir. | [App Service ve Azure Işlevleri için Key Vault başvurularını kullanma (Önizleme)](app-service-key-vault-references.md)
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Müşteriler, Web sitelerini gelen trafik için HTTPS 'yi gerektirecek ve kullanacak şekilde yapılandırabilir.  | [Yalnızca HTTPS Azure App Service oluşturma](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (blog gönderisi)
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Müşteriler, Web sitelerini gelen trafik için HTTPS 'yi gerektirecek ve kullanacak şekilde yapılandırabilir.  | [Yalnızca HTTPS Azure App Service oluşturma](/archive/blogs/benjaminperkins/how-to-make-an-azure-app-service-https-only) (blog gönderisi)
 | Şifrelenmiş API çağrıları| Evet | App Service yapılandırmak için yönetim çağrıları, HTTPS üzerinden [Azure Resource Manager](../azure-resource-manager/index.yml) çağrıları aracılığıyla gerçekleşir. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

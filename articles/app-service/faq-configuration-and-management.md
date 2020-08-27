@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160009"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962358"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -65,7 +65,7 @@ Web uygulamanız için sunucu saat dilimini ayarlamak için:
     * Değer = *istediğiniz saat dilimi*
 3. **Kaydet**’i seçin.
 
-Windows üzerinde çalışan uygulama hizmetleri için, kabul edilen değerler için [varsayılan saat dilimleri](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) makalesindeki **saat dilimi** sütununa bakın. Linux üzerinde çalışan uygulama hizmetleri için, [TZ veritabanı adını](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) saat dilimi değeri olarak ayarlayın. Aşağıda, TZ veritabanı adı örneği verilmiştir: Amerika/adak.
+Windows üzerinde çalışan uygulama hizmetleri için, kabul edilen değerler için [varsayılan saat dilimleri](/windows-hardware/manufacture/desktop/default-time-zones) makalesindeki **saat dilimi** sütununa bakın. Linux üzerinde çalışan uygulama hizmetleri için, [TZ veritabanı adını](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) saat dilimi değeri olarak ayarlayın. Aşağıda, TZ veritabanı adı örneği verilmiştir: Amerika/adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Sürekli Web Işleriniz neden bazen başarısız oluyor?
 
@@ -147,7 +147,7 @@ Bu durum, bu yana Karma Bağlantı Yöneticisi düzeltilen bir sorun nedeniyle o
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Nasıl yaparım? URL yeniden yazma kuralı eklensin mi?
 
-URL yeniden yazma kuralı eklemek için, **Wwwroot** klasöründe ilgili yapılandırma girişleriyle bir web.config dosyası oluşturun. Daha fazla bilgi için bkz. [Azure Uygulama Hizmetleri: URL yeniden yazmayı anlama](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+URL yeniden yazma kuralı eklemek için, **Wwwroot** klasöründe ilgili yapılandırma girişleriyle bir web.config dosyası oluşturun. Daha fazla bilgi için bkz. [Azure Uygulama Hizmetleri: URL yeniden yazmayı anlama](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service gelen trafiği denetlemek Nasıl yaparım??
 
@@ -222,7 +222,7 @@ Bu sorunu çözmek için aşağıdaki koşullardan hiçbirinin doğru olmadığ�
 * Hatalı bir ağ güvenlik grubu, bir App Service Ortamı ağ bağlantısı gereksinimlerini engeller.
 * Zorlamalı tünel açık.
 
-Daha fazla bilgi için bkz. [Yeni bir Azure App Service ortamı dağıtma (oluşturma) hakkında sık karşılaşılan sorunlar](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+Daha fazla bilgi için bkz. [Yeni bir Azure App Service ortamı dağıtma (oluşturma) hakkında sık karşılaşılan sorunlar](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>App Service planımı Neden silemiyorum?
 
@@ -286,7 +286,7 @@ Azure 'da Web Apps kullanarak yeni bir Web sitesi oluşturduğunuzda, sitenize v
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service hangi .NET sürümü sürümünün yüklendiğini Nasıl yaparım?.
 
-App Service yüklenen Microsoft .NET sürümünü bulmanın en hızlı yolu, kudu konsolunu kullanmaktır. Kudu konsoluna portaldan veya App Service uygulamanızın URL 'sini kullanarak erişebilirsiniz. Ayrıntılı yönergeler için bkz. [App Service yüklü .NET sürümünü belirleme](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+App Service yüklenen Microsoft .NET sürümünü bulmanın en hızlı yolu, kudu konsolunu kullanmaktır. Kudu konsoluna portaldan veya App Service uygulamanızın URL 'sini kullanarak erişebilirsiniz. Ayrıntılı yönergeler için bkz. [App Service yüklü .NET sürümünü belirleme](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Otomatik ölçeklendirme beklenen şekilde çalışmıyor mu?
 

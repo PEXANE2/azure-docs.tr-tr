@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: d8889297267c2c583ac4b5bdcd4ff442ec3ef047
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 01855fa7920a4e04cff9fa178083d094142d59d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495599"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960930"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLı kullanarak sürekli dağıtım ile App Service uygulaması oluşturma
 
 Bu örnek betik, ilgili kaynaklarıyla App Service bir uygulama oluşturur ve sonra Azure DevOps deposundan sürekli dağıtımı ayarlar. Bu örnekte şunlar gereklidir:
 
 * İçin yönetici izinlerine sahip olduğunuz uygulama kodu ile bir Azure DevOps deposu.
-* Azure DevOps kuruluşunuz için bir [Kişisel Erişim Belirteci (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts).
+* Azure DevOps kuruluşunuz için bir [Kişisel Erişim Belirteci (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,6 +49,6 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek App Service CLI betik örnekleri, [Azure App Service belgelerinde](../samples-cli.md) bulunabilir.

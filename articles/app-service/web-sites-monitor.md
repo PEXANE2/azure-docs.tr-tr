@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079680"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959800"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -152,14 +152,14 @@ Kotaları bulmak için, **Ayarlar**  >  **Kotalar**' ı seçin. Grafik üzerinde
 
 Bu grafiklerin herhangi birine tıkladığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri Sorgulayabileceğiniz ve çok daha birçok Ölçüm görünümü uygulanır. 
 
-Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../azure-monitor/platform/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Uyarılar ve otomatik ölçeklendirme
-Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../azure-monitor/platform/alerts-classic-portal.md).
 
 Temel veya daha yüksek App Service planlarında barındırılan App Service uygulamalar otomatik ölçeklendirmeyi destekler. Otomatik ölçeklendirme ile App Service planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilen örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulamanın aşırı sağlandığı durumlarda tasarruf etmenize de yardımcı olabilir.
 
-Otomatik ölçeklendirme hakkında daha fazla bilgi için [How to scale](../monitoring-and-diagnostics/insights-how-to-scale.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
+Otomatik ölçeklendirme hakkında daha fazla bilgi için [How to scale](../azure-monitor/platform/autoscale-get-started.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

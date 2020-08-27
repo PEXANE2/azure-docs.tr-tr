@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 882188c638c77fa0055f1c2d2e664d97a4fe9359
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213711"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962273"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -37,11 +37,11 @@ ms.locfileid: "88213711"
 > * Azure AD kimlik doğrulaması kullanarak Visual Studio 'dan SQL veritabanı 'na bağlanma
 
 > [!NOTE]
->Azure AD kimlik doğrulaması, şirket içi Active Directory (AD DS) [Tümleşik Windows kimlik doğrulamasından](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) _farklıdır_ . AD DS ve Azure AD, tamamen farklı kimlik doğrulama protokolleri kullanır. Daha fazla bilgi için bkz. [Azure AD Domain Services belgeleri](https://docs.microsoft.com/azure/active-directory-domain-services/).
+>Azure AD kimlik doğrulaması, şirket içi Active Directory (AD DS) [Tümleşik Windows kimlik doğrulamasından](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) _farklıdır_ . AD DS ve Azure AD, tamamen farklı kimlik doğrulama protokolleri kullanır. Daha fazla bilgi için bkz. [Azure AD Domain Services belgeleri](../active-directory-domain-services/index.yml).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile Azure 'da bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğretici: Azure App Service IÇINDE ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md). Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
 
@@ -83,7 +83,7 @@ Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygu
 
 ### <a name="macos-client"></a>macOS istemcisi
 
-Mac için Visual Studio Azure AD kimlik doğrulamasıyla tümleştirilmiştir. Ancak, daha sonra kullanacağınız [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) KITAPLıĞı Azure CLI 'dan belirteçleri kullanabilir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için öncelikle yerel makinenize [Azure CLI yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli) gerekir.
+Mac için Visual Studio Azure AD kimlik doğrulamasıyla tümleştirilmiştir. Ancak, daha sonra kullanacağınız [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) KITAPLıĞı Azure CLI 'dan belirteçleri kullanabilir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için öncelikle yerel makinenize [Azure CLI yüklemeniz](/cli/azure/install-azure-cli) gerekir.
 
 Azure CLı yerel makinenize yüklendikten sonra Azure AD kullanıcısını kullanarak aşağıdaki komutla Azure CLı 'da oturum açın:
 

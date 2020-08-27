@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: b6d8a73dd4f4e7c1a1e430b6f5ea494ed51d20c0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211699"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961491"
 ---
 # <a name="app-service-overview"></a>App Service’e genel bakış
 
@@ -28,15 +28,15 @@ App Service temel özelliklerinden bazıları aşağıda verilmiştir:
 * **Yönetilen üretim ortamı** -otomatik [düzeltme eklerini App Service ve işletim sistemi ve dil](overview-patch-os-runtime.md) çerçevelerini sizin için korur. Harika uygulamalar yazmaya ve Azure 'un platformu hakkında endişelenmenize zaman harcaın.
 * **Kapsayıcılama ve Docker** -uygulamanızı yeniden renklendirme ve App Service özel bir Windows veya Linux kapsayıcısı barındırın. Docker Compose ile çok Kapsayıcılı uygulamalar çalıştırın. Docker becerilerinizi doğrudan App Service geçirin.
 * **DevOps iyileştirmesi** - Azure DevOps, GitHub, BitBucket, Docker Hub veya Azure Container Registry ile [sürekli tümleştirme ve dağıtım](deploy-continuous-deployment.md) ayarlayın. [Test ve hazırlık ortamları](deploy-staging-slots.md) aracılığıyla güncelleştirmeleri yükseltin. [Azure PowerShell](/powershell/azure/) veya [platformlar arası komut satırı arabirimi (CLI)](/cli/azure/install-azure-cli) kullanarak uygulamalarınızı App Service’de yönetin.
-* **Yüksek kullanılabilirlik ile küresel ölçeklendirme** - El ile veya otomatik olarak ölçek [artırabilir](manage-scale-up.md) veya [genişletebilirsiniz](../monitoring-and-diagnostics/insights-how-to-scale.md). Uygulamalarınızı Microsoft'un küresel veri merkezi altyapılarının herhangi bir yerinde barındırın. App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/)’sı yüksek kullanılabilirlik taahhüt eder.
+* **Yüksek kullanılabilirlik ile küresel ölçeklendirme** - El ile veya otomatik olarak ölçek [artırabilir](manage-scale-up.md) veya [genişletebilirsiniz](../azure-monitor/platform/autoscale-get-started.md). Uygulamalarınızı Microsoft'un küresel veri merkezi altyapılarının herhangi bir yerinde barındırın. App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/)’sı yüksek kullanılabilirlik taahhüt eder.
 * **SaaS platformları ve şirket için veri bağlantıları** - Kurumsal sistemler (SAP gibi), SaaS hizmetleri (Salesforce gibi) ve İnternet hizmetleri (Facebook gibi) için 50’den fazla [bağlayıcı](../connectors/apis-list.md) arasından seçim yapın. [Karma Bağlantılar](app-service-hybrid-connections.md)’ı ve [Azure Sanal Ağlar](web-sites-integrate-with-vnet.md)’ı kullanarak şirket içi verilere erişin.
 * **Güvenlik ve uyumluluk** - App Service [ISO, SOC ve PCI uyumludur](https://www.microsoft.com/en-us/trustcenter). [Azure Active Directory](configure-authentication-provider-aad.md), [Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md)veya [Microsoft hesabı](configure-authentication-provider-microsoft.md)kullanıcıların kimliğini doğrulayın. [IP adresi kısıtlamaları](app-service-ip-restrictions.md) oluşturun ve [hizmet kimliklerini yönetin](overview-managed-identity.md).
 * **Uygulama şablonları** - [Azure Market](https://azure.microsoft.com/marketplace/)’teki WordPress, Joomla ve Drupal’i de içeren kapsamlı uygulama şablonu listesinden seçiminizi yapın.
 * Visual **Studio ve Visual Studio Code tümleştirme** temelli Araçlar Visual Studio ve oluşturma, dağıtma ve hata ayıklama işini kolaylaştırır Visual Studio Code.
 * **API ve mobil Özellikler** -App Service, daha fazla API senaryosu Için, YENIDEN anahtar cors desteği sağlar ve kimlik doğrulama, çevrimdışı veri eşitleme, anında iletme bildirimleri ve daha fazlasını etkinleştirerek mobil uygulama senaryolarını basitleştirir.
-* **Sunucusuz kod** - Açıkça altyapı sağlamanıza veya yönetmenize gerek kalmadan isteğe bağlı olarak bir kod parçacığı veya betik çalıştırın ve yalnızca kodunuzun gerçekte kullandığı işlem süresi (bkz. [Azure İşlevleri](/azure/azure-functions/)) için ücret ödeyin.
+* **Sunucusuz kod** - Açıkça altyapı sağlamanıza veya yönetmenize gerek kalmadan isteğe bağlı olarak bir kod parçacığı veya betik çalıştırın ve yalnızca kodunuzun gerçekte kullandığı işlem süresi (bkz. [Azure İşlevleri](../azure-functions/index.yml)) için ücret ödeyin.
 
-App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Azure yay-bulut hizmeti](/azure/spring-cloud/) veya [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)göz önünde bulundurun.  Kodunuzun çalıştırıldığı VM 'Ler üzerinde daha fazla denetime ihtiyacınız varsa, [Azure sanal makinelerini](https://azure.microsoft.com/documentation/services/virtual-machines/)göz önünde bulundurun. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](overview-compare.md).
+App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Azure yay-bulut hizmeti](../spring-cloud/index.yml) veya [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)göz önünde bulundurun.  Kodunuzun çalıştırıldığı VM 'Ler üzerinde daha fazla denetime ihtiyacınız varsa, [Azure sanal makinelerini](https://azure.microsoft.com/documentation/services/virtual-machines/)göz önünde bulundurun. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>Linux’ta App Service
 
@@ -44,7 +44,7 @@ App Service, Web uygulamalarını desteklenen uygulama yığınları için yerel
 
 ### <a name="built-in-languages-and-frameworks"></a>Yerleşik diller ve çerçeveler
 
-Linux üzerinde App Service, bir dizi dile özgü yerleşik görüntüyü destekler. Kodunuzu dağıtmanız yeterlidir. Desteklenen diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Uygulamanızın gerektirdiği çalışma zamanı yerleşik resimlerde desteklenmiyorsa, özel bir kapsayıcı ile dağıtabilirsiniz.
+Linux üzerinde App Service, bir dizi dile özgü yerleşik görüntüyü destekler. Kodunuzu dağıtmanız yeterlidir. Desteklenen diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Uygulamanızın gerektirdiği çalışma zamanı yerleşik resimlerde desteklenmiyorsa, özel bir kapsayıcı ile dağıtabilirsiniz.
 
 ### <a name="limitations"></a>Sınırlamalar
 

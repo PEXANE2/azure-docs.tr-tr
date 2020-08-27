@@ -10,19 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a3067972dc42db6644006e33797fc44c2f494693
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182706"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961253"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+> Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Aynı zamanda IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
@@ -235,13 +235,13 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Java ile Azure SQL veritabanı 'na bağlanma](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Java ile Azure SQL veritabanı 'na bağlanma](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Java ile MySQL için Azure DB 'ye bağlanma](/azure/mysql/connect-java)
+> [Java ile MySQL için Azure DB 'ye bağlanma](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [Java ile PostgreSQL için Azure DB 'ye bağlanma](/azure/postgresql/connect-java)
+> [Java ile PostgreSQL için Azure DB 'ye bağlanma](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Java geliştiricileri için Azure kaynakları](/java/azure/)
@@ -250,7 +250,7 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 > [Java uygulamasını yapılandırma](configure-language-java.md)
 
 > [!div class="nextstepaction"]
-> [Jenkins ile CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [Jenkins ile CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)
