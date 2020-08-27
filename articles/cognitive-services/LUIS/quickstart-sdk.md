@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: Language Understanding (LUSıS) istemci kitaplıkl
 description: Bu hızlı başlangıç ile LUSıS istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 ms.topic: quickstart
 ms.date: 08/13/2020
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c66635c1b690200d8f792b2d3f267686ff0bb5f5
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6c21fc4fa826c018cd4070962ed278bbe4540979
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934744"
 ---
 # <a name="quickstart-language-understanding-luis-client-library"></a>Hızlı başlangıç: Language Understanding (LUSıS) istemci kitaplığı
 

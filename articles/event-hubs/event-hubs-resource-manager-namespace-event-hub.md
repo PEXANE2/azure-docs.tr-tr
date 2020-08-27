@@ -4,12 +4,12 @@ description: "Hızlı başlangıç: Azure Resource Manager şablonları kullanar
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: dbec62c182fe804ba45cae2f9e40c189b9bc0279
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e6da5fbe3c0e269f5ceb2c3627df27ccf0e3b30b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641135"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933860"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak bir olay hub 'ı oluşturma
 
@@ -92,10 +92,10 @@ Write-Host "Press [ENTER] to continue ..."
 
 Bu makalede bir Event Hubs ad alanı ve ad alanında bir olay hub 'ı oluşturdunuz. Olay Hub 'ından olay alma (veya) olayları gönderme hakkında adım adım yönergeler için, bkz. **olayları gönderme ve alma** öğreticileri:
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 982073c77a7e876611f753c716f55c50df8b0817
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208795"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935169"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -31,8 +31,8 @@ Dizin oluşturucularını isteğe bağlı olarak veya her beş dakikada bir çal
 Dizin oluşturucuları aşağıdaki yaklaşımlarla oluşturabilir ve yönetebilirsiniz:
 
 * [Portal > verileri Içeri aktarma Sihirbazı](search-import-data-portal.md)
-* [Hizmet REST API'si](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [Hizmet REST API'si](/rest/api/searchservice/Indexer-operations)
+* [.NET SDK](/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 Başlangıçta, yeni bir dizin oluşturucu bir önizleme özelliği olarak duyurulur. Önizleme özellikleri API'lere (REST ve .NET) eklenir ve ardından genel kullanıma açık hale geldiklerinde portala entegre edilir. Yeni bir dizin oluşturucuyu değerlendiriyorsanız kod yazmayı planlamanız gerekir.
 
@@ -51,7 +51,7 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 * [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL veritabanı ve SQL yönetilen örneği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Sanal Makinelerde SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure sanal makineler 'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="indexer-stages"></a>Dizin Oluşturucu aşamaları
@@ -95,24 +95,24 @@ Sonraki görüntüde, Dizin Oluşturucu aşamaları için bir örnek Dizin Oluş
 Dizin oluşturucular veri kaynağına özgü özellikler sunabilir. Bu bakımdan, dizin oluşturucu veya veri kaynağı yapılandırmasının bazı boyutları dizin oluşturucu türüne göre farklılık gösterir. Bununla birlikte, tüm dizin oluşturucuların temel birleşimi ve gereksinimleri aynıdır. Tüm dizin oluşturucularda ortak olan adımlar aşağıda ele alınmıştır.
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
-Bir dizin *Oluşturucu veri kaynağı nesnesinden veri* kaynağı bağlantısı edinir. Veri kaynağı tanımı, bir bağlantı dizesi ve muhtemelen kimlik bilgileri sağlar. Kaynağı oluşturmak için [Create Datasource](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API veya [DataSource sınıfını](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) çağırın.
+Bir dizin *Oluşturucu veri kaynağı nesnesinden veri* kaynağı bağlantısı edinir. Veri kaynağı tanımı, bir bağlantı dizesi ve muhtemelen kimlik bilgileri sağlar. Kaynağı oluşturmak için [Create Datasource](/rest/api/searchservice/create-data-source) REST API veya [DataSource sınıfını](/dotnet/api/microsoft.azure.search.models.datasource) çağırın.
 
 Veri kaynakları, bunları kullanan dizin oluşturuculardan bağımsız olarak yapılandırılır ve yönetilir. Bu da bir veri kaynağının, bir seferde birden çok dizin yüklemek amacıyla birden çok dizin oluşturucu tarafından kullanılabileceği anlamına gelir.
 
 ### <a name="step-2-create-an-index"></a>2. Adım: Dizin oluşturma
-Dizin oluşturucu veri alımıyla ilgili bazı görevleri otomatikleştirir, ancak dizin oluşturma genellikle bu görevlerden biri değildir. Bir önkoşul olarak dış veri kaynağınızdaki alanlarla eşleşen alanlara sahip önceden tanımlı bir dizininiz olmalıdır. Alanların ad ve veri türüyle eşleşmesi gerekir. Dizini yapılandırma hakkında daha fazla bilgi için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) veya [Dizin sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Alan ilişkilendirmelerinde yardım için bkz. [Azure bilişsel arama Dizin oluşturucularda alan eşlemeleri](search-indexer-field-mappings.md).
+Dizin oluşturucu veri alımıyla ilgili bazı görevleri otomatikleştirir, ancak dizin oluşturma genellikle bu görevlerden biri değildir. Bir önkoşul olarak dış veri kaynağınızdaki alanlarla eşleşen alanlara sahip önceden tanımlı bir dizininiz olmalıdır. Alanların ad ve veri türüyle eşleşmesi gerekir. Dizini yapılandırma hakkında daha fazla bilgi için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/Create-Index) veya [Dizin sınıfı](/dotnet/api/microsoft.azure.search.models.index). Alan ilişkilendirmelerinde yardım için bkz. [Azure bilişsel arama Dizin oluşturucularda alan eşlemeleri](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Dizin oluşturucular sizin için dizin oluşturamasa da, portaldaki **Verileri içeri aktarma** sihirbazı bu işlem için size yardımcı olabilir. Çoğu durumda, sihirbaz, kaynaktaki mevcut meta verilerden dizin şeması çıkarsayarak, sihirbaz etkin olduğunda satır içinde düzenleyebileceğiniz geçici bir dizin şeması sunar. Hizmet için sihirbaz oluşturulduğunda, portalda yapılabilecek ayrıntılı düzenlemeler, genellikle yeni alanlar eklemeyle sınırlıdır. Sihirbaz dizin oluşturmak için uygun olsa da, düzenlemek için uygun değildir. Uygulama yaparak öğrenmek için, [portal kılavuzundaki](search-get-started-portal.md) adımları izleyin.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3. Adım: Dizin oluşturucuyu oluşturma ve zamanlama
-Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte getiren bir yapıdır. Gerekli öğeler bir veri kaynağı ve dizin içerir. İsteğe bağlı öğeler bir zamanlama ve alan eşlemeleri içerir. Alan eşleme yalnızca kaynak alanları ve dizin alanları açıkça karşılık geliyorsa isteğe bağlıdır. Dizin oluşturucuyu yapılandırma hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte getiren bir yapıdır. Gerekli öğeler bir veri kaynağı ve dizin içerir. İsteğe bağlı öğeler bir zamanlama ve alan eşlemeleri içerir. Alan eşleme yalnızca kaynak alanları ve dizin alanları açıkça karşılık geliyorsa isteğe bağlıdır. Dizin oluşturucuyu yapılandırma hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>Dizin oluşturucuyu isteğe bağlı olarak çalıştır
 
-Dizin oluşturma zamanlaması yaygın olsa da, [Çalıştır komutu](https://docs.microsoft.com/rest/api/searchservice/run-indexer)kullanılarak bir Dizin Oluşturucu da isteğe bağlı olarak çağrılabilir:
+Dizin oluşturma zamanlaması yaygın olsa da, [Çalıştır komutu](/rest/api/searchservice/run-indexer)kullanılarak bir Dizin Oluşturucu da isteğe bağlı olarak çağrılabilir:
 
 ```http
 POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
@@ -128,7 +128,7 @@ Dizin Oluşturucu durumunu portalda veya Dizin Oluşturucu durumunu Al API 'SI a
 
 ## <a name="get-indexer-status"></a>Dizin Oluşturucu durumunu al
 
-Bir dizin oluşturucunun durum ve yürütme geçmişini [Get Indexer durum komutuyla](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)alabilirsiniz:
+Bir dizin oluşturucunun durum ve yürütme geçmişini [Get Indexer durum komutuyla](/rest/api/searchservice/get-indexer-status)alabilirsiniz:
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30

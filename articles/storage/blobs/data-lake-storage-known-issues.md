@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056088"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923747"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -60,9 +60,9 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK 'lar, PowerShell ve Azure CLı 'da dosya sistemi desteği
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama desteği
 
-- Get ve set ACL işlemleri şu anda özyinelemeli değil.
+Üst dizinden alt öğelere yinelemeli olarak ACL değişiklikleri uygulama özelliği [genel önizlemeye](recursive-access-control-lists.md)sunuldu. Bu özelliğin geçerli sürümünde PowerShell, .NET SDK ve Python SDK kullanarak ACL değişikliklerini uygulayabilirsiniz. Java SDK, Azure CLı, Azure portal veya Azure Depolama Gezgini için destek henüz kullanılamamaktadır.
 
 <a id="known-issues-tools"></a>
 
@@ -96,7 +96,7 @@ Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md)
 
 ### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
+Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örnek:
 
 ```powershell
 #To login

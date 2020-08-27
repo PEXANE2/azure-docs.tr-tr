@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146128"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934897"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yanlış yazım ve yazım hatalarını düzeltmek için belirsiz arama
 
@@ -82,7 +82,7 @@ Sonuçlar belirsiz olduğunda, [isabet vurgulaması](search-pagination-page-layo
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Örnek 1: tam terimle belirsiz arama
 
-Arama belgesinde bir alanda aşağıdaki dizenin bulunduğunu varsayın `"Description"` :`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Arama belgesinde bir alanda aşağıdaki dizenin bulunduğunu varsayın `"Description"` : `"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 "Özel" üzerinde benzer bir aramayla başlayın ve Açıklama alanına isabet vurgusu ekleyin:
 
@@ -136,5 +136,5 @@ Bu genişletilmiş örneğin noktası, isabet vurgulamanın belirsiz sonuçlara 
 
 + [Tam metin aramasının Azure Bilişsel Arama 'da nasıl çalıştığı (sorgu ayrıştırma mimarisi)](search-lucene-query-architecture.md)
 + [Arama Gezgini](search-explorer.md)
-+ [.NET 'te sorgulama](search-query-dotnet.md)
-+ [REST 'te sorgulama](search-create-index-rest-api.md)
++ [.NET 'te sorgulama](./search-get-started-dotnet.md)
++ [REST 'te sorgulama](./search-get-started-powershell.md)

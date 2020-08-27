@@ -2,13 +2,14 @@
 title: Azure Application Insights Batch 'i izleme
 description: Azure Application Insights kitaplığı kullanarak Azure Batch .NET uygulamasını nasıl ayarlayacağınızı öğrenin.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723621"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933571"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
 
@@ -22,7 +23,7 @@ Bu makaleye eşlik eden kod içeren örnek bir C# çözümü [GitHub](https://gi
 > Alternatif olarak, Batch çözümünüzü Batch Explorer VM performans sayaçları gibi Application Insights verileri görüntüleyecek şekilde yapılandırın. [Batch Explorer](https://github.com/Azure/BatchExplorer) , Azure Batch uygulamaları oluşturmaya, hata ayıklamanıza ve izlemenize yardımcı olan ücretsiz, zengin özellikli, tek başına bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. Batch Explorer Application Insights verileri etkinleştirmeye yönelik hızlı adımlar için [Batch-Insights](https://github.com/Azure/batch-insights) deposuna bakın. 
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)
 
 * [Batch hesabı ve bağlı depolama hesabı](batch-account-create-portal.md)
@@ -56,9 +57,9 @@ Kodunuzu işaretlemek için çözümünüzün bir Application Insights [Telemetr
 Ayrıca TopNWords.cs dosyasına izleme anahtarını da ekleyin.
 
 TopNWords.cs ' deki örnek, Application Insights API 'sinden aşağıdaki [izleme çağrılarını](../azure-monitor/app/api-custom-events-metrics.md) kullanır:
-* `TrackMetric()`-Bir işlem düğümünün gerekli metin dosyasını indirmek için ne kadar süreyle sürdüğünü izler.
-* `TrackTrace()`-Kodunuza hata ayıklama çağrıları ekler.
-* `TrackEvent()`-Yakalanacak ilginç olayları izler.
+* `TrackMetric()` -Bir işlem düğümünün gerekli metin dosyasını indirmek için ne kadar süreyle sürdüğünü izler.
+* `TrackTrace()` -Kodunuza hata ayıklama çağrıları ekler.
+* `TrackEvent()` -Yakalanacak ilginç olayları izler.
 
 Bu örnek, özellikle özel durum işlemenin dışında bırakır. Bunun yerine Application Insights, hata ayıklama deneyimini önemli ölçüde geliştiren işlenmemiş özel durumları otomatik olarak raporlar. 
 

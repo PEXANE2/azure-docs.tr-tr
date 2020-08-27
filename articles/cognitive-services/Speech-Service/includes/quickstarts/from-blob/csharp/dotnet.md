@@ -4,14 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 8c63c979300af4c180751b3824def0cb974ee186
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 750ce2d19334f549242c37494a11a1f683469f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400890"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926158"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -25,15 +26,15 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
 1. Visual Studio 2019 ' i başlatın.
-2. Projenizi yükleyin ve açın `Program.cs`.
+2. Projenizi yükleyin ve açın `Program.cs` .
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft. JSON öğesine bir başvuru ekleyin
+## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft.Jsiçin bir başvuru ekleyin
 
 1. Çözüm Gezgini, **HelloWorld** projesine sağ tıklayın ve ardından NuGet Paket Yöneticisi ' ni görüntülemek Için **NuGet Paketlerini Yönet** ' i seçin.
-1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve ' **`nuget.org`** nin seçili olduğundan emin olun.
+1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve ' nin seçili olduğundan emin olun **`nuget.org`** .
 1. Sol üst köşede, **Araştır**' ı seçin.
-1. Arama kutusuna *Newtonsoft. JSON* yazın ve **ENTER**' u seçin.
-1. Arama sonuçlarından [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) paketini seçin ve ardından en son kararlı sürümü yüklemek için **yükler** ' i seçin.
+1. Arama kutusuna *newtonsoft.js* yazın ve **ENTER**' u seçin.
+1. Arama sonuçlarından, paketteki [**Newtonsoft.Js**](https://www.nuget.org/packages/Newtonsoft.Json) seçin ve ardından en son kararlı sürümü yüklemek için **yüklenir** ' i seçin.
 1. Yüklemeyi başlatmak için tüm anlaşmaları ve lisansları kabul edin.
    Paket yüklendikten sonra, **Paket Yöneticisi konsol** penceresinde bir onay görüntülenir.
 
@@ -84,7 +85,7 @@ class Program
 REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.
 İsteklerin ve yanıtların yönetimini kolaylaştırmak için, JSON 'u serileştirmek/seri durumdan çıkarmak için kullanmak üzere birkaç sınıf tanımlayacağız.
 
-Devam edin ve bildirimlerini daha sonra `TranscribeAsync`yerleştirin.
+Devam edin ve bildirimlerini daha sonra yerleştirin `TranscribeAsync` .
 
 ```csharp
 public class ModelIdentity
@@ -187,7 +188,7 @@ public class TranscriptionDefinition
 
 ## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
 İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu içine `TranscribeAsync`ekleyin.
+Bu kodu içine ekleyin `TranscribeAsync` .
 
 ```csharp
 var client = new HttpClient
@@ -202,7 +203,7 @@ var client = new HttpClient
 ```
 
 ## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu öğesine `TranscribeAsync`ekleyin.
+Ardından, döküm isteğini oluşturacağız. Bu kodu öğesine ekleyin `TranscribeAsync` .
 
 ```csharp
 var transcriptionDefinition =
@@ -294,7 +295,7 @@ Console.ReadKey();
 
 ## <a name="display-the-transcription-results"></a>Döküm sonuçlarını görüntüleme
 Hizmet başarıyla tamamlandığında, sonuçlar durum yanıtından elde ettiğimiz başka bir URL 'de depolanır. Burada, bu sonuçları okumadan ve serisini kaldırmadan önce geçici bir dosyaya indirmek için bir istek yaptık.
-Sonuçlar yüklendikten sonra bunları konsola yazdırabiliriz. `case "Succeeded":` Etiketine aşağıdaki kodu ekleyin.
+Sonuçlar yüklendikten sonra bunları konsola yazdırabiliriz. Etiketine aşağıdaki kodu ekleyin `case "Succeeded":` .
 
 ```csharp
 completed = true;
@@ -551,8 +552,8 @@ namespace BatchClient
 
 Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
-1. **Kodu derleyin** -Visual Studio menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
-2. **Uygulamanızı başlatın** -menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya **F5**tuşuna basın.
+1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution**' ı seçin.
+2. **Uygulamanızı başlatın** -menü çubuğundan hata **Debug**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin veya **F5**tuşuna basın.
 3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

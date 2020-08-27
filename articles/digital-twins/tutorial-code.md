@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 282c506f509adce4c616615e8b8e3580166052e6
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854677"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923713"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -55,7 +55,7 @@ Ardından, Azure dijital TWINS ile çalışmak için gereken iki bağımlılığ
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 İlk bağımlılık, [.net Için Azure IoT Digital ikizi istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)' dır. İkinci bağımlılık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
@@ -426,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -539,24 +538,7 @@ namespace minimal
  
 Bu öğreticide kullanılan örnek, bir sonraki öğreticide yeniden kullanılabilir, [*öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfedebilir*](tutorial-command-line-app.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, burada ayarladığınız Azure dijital TWINS örneğini koruyabilirsiniz.
  
-Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
-
-[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu ve Azure dijital TWINS örneğini kaldırır.
-
-> [!IMPORTANT]
-> Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
-
-Bir Azure Cloud Shell açın ve kaynak grubunu ve içerdiği her şeyi silmek için aşağıdaki komutu çalıştırın.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azure Active Directory Uygulama kaydını silin:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Son olarak, yerel makinenizde oluşturduğunuz proje klasörünü silin.
 

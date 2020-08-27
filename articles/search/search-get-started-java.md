@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6ac8638efc09efe6d74f634c4042346d738d44ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327540"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924206"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87327540"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -571,7 +571,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `hotels.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `hotels.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın,  **Dosya**' yı seçin ve ardından dosya adını girin.
 1. Aşağıdaki otel belgelerini dosyaya ekleyin.
 
     ```json

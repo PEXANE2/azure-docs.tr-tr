@@ -3,12 +3,13 @@ title: Veri değişikliği-LUSıS
 description: Verilerin Language Understanding tahminlerden önce nasıl değiştirilebileceğinizi öğrenin (LUSıS)
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872257"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934676"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Söylenişi verilerini tahmine göre veya tahmin sırasında değiştirme
 LUO, tahmine göre veya tahmin sırasında zaman içinde değişiklik yapmak için yollar sağlar. Bunlar, [yazımı düzeltmeyi](luis-tutorial-bing-spellcheck.md)ve önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md)için saat dilimi sorunlarını düzeltmeyi içerir.
@@ -30,7 +31,7 @@ Uç nokta, yazım düzeltmelerinin çalışması için iki params gerektirir:
 
 |Param|Değer|
 |--|--|
-|`spellCheck`|boole|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing yazım denetimi API'si v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) uç noktası anahtarı|
 
 [Bing yazım denetimi API'si v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) bir hata algıladığında, orijinal söylenişi ve düzeltilen söylenişi, uç noktadan tahmine göre birlikte döndürülür.
@@ -80,7 +81,7 @@ Bir LUSıS uygulaması önceden oluşturulmuş [datetimeV2](luis-reference-prebu
 V3 'de, `datetimeReference` saat dilimi sapmasını belirler. [V3 tahminleri](luis-migration-api-v3.md#v3-post-body)hakkında daha fazla bilgi edinin.
 
 ### <a name="v2-prediction-api-to-alter-timezone"></a>Saat dilimini değiştirmek için v2 tahmin API 'SI
-Zaman dilimi, kullanıcının saat dilimine API sürümüne göre `timezoneOffset` parametresi kullanılarak uç noktaya eklenerek düzeltilir. Parametrenin değeri, zaman değiştirmek için dakika cinsinden pozitif veya negatif bir sayı olmalıdır.
+Zaman dilimi, kullanıcının saat dilimine `timezoneOffset` API sürümüne göre parametresi kullanılarak uç noktaya eklenerek düzeltilir. Parametrenin değeri, zaman değiştirmek için dakika cinsinden pozitif veya negatif bir sayı olmalıdır.
 
 #### <a name="v2-prediction-daylight-savings-example"></a>V2 tahmini gün ışığından yararlanma örneği
 Gün ışığından yararlanma süresini ayarlamak için döndürülen önceden oluşturulmuş datetimeV2 gerekiyorsa, [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) sorgusu için dakika cinsinden bir +/-değeri ile QueryString parametresini kullanmanız gerekir.

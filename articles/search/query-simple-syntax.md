@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07364e20cc11abc52ad9b308eb5daed8a65c146
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255339"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923390"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit sorgu söz dizimi
 
@@ -21,7 +21,7 @@ Azure Bilişsel Arama iki adet Lucene tabanlı sorgu dili uygular: [basit sorgu 
 
 Basit ayrıştırıcı daha esnektir ve kusursuz bir şekilde oluşturulmuş olmasa bile bir isteği yorumlamaya çalışır. Bu esneklik nedeniyle, Azure Bilişsel Arama 'de sorgular için varsayılan değer budur. 
 
-Basit sözdizimi, `search` aynı arama BELGELERI API 'sinin [$Filter ifadeler](search-filters.md) parametresi için kullanılan [OData sözdizimi](query-odata-filter-orderby-syntax.md) ile karıştırılmamalıdır, [arama belgelerinin](https://docs.microsoft.com/rest/api/searchservice/search-documents)parametresi için geçirilen sorgu ifadeleri için kullanılır. `search`Ve `$filter` parametrelerinin farklı sözdizimi vardır ve sorgu oluşturma, kaçış dizeleri vb. için kendi kuralları vardır.
+Basit sözdizimi, `search` aynı arama BELGELERI API 'sinin [$Filter ifadeler](search-filters.md) parametresi için kullanılan [OData sözdizimi](query-odata-filter-orderby-syntax.md) ile karıştırılmamalıdır, [arama belgelerinin](/rest/api/searchservice/search-documents)parametresi için geçirilen sorgu ifadeleri için kullanılır. `search`Ve `$filter` parametrelerinin farklı sözdizimi vardır ve sorgu oluşturma, kaçış dizeleri vb. için kendi kuralları vardır.
 
 Basit ayrıştırıcı [Apache Lucene basit sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) sınıfına dayansa da, Azure bilişsel arama uygulama belirsiz aramayı dışlar. [Benzer arama](search-query-fuzzy.md) veya başka gelişmiş sorgu formlarına ihtiyacınız varsa, bunun yerine alternatif [tam Lucene sorgu söz dizimini](query-lucene-syntax.md) göz önünde bulundurun.
 
@@ -43,7 +43,7 @@ Alan gruplama benzerdir, ancak gruplamayı tek bir alanla kapsamlara sahiptir. �
 
 ### <a name="escaping-search-operators"></a>Kaçış arama işleçleri  
 
-Basit sözdiziminde, arama işleçleri şu karakterleri içerir:`+ | " ( ) ' \`  
+Basit sözdiziminde, arama işleçleri şu karakterleri içerir: `+ | " ( ) ' \`  
 
 Bu karakterlerden herhangi biri dizindeki bir belirtecin parçasıysa, sorguda tek bir ters eğik çizgi () ekleyerek onu kaçış `\` . Örneğin, tüm terim simgeleştirme için özel bir çözümleyici kullandığınızı varsayın ve dizininiz "merkezlerini + otel" dizesini içerir. Bu belirteçle tam eşleşme almak için bir kaçış karakteri ekleyin:  `search=luxury\+hotel` . 
 
@@ -66,11 +66,11 @@ Güvenli olmayan karakterler ``" ` < > # % { } | \ ^ ~ [ ]`` . Ayrılan karakter
 
 Bazı durumlarda, ' ❤ ' emoji veya ' € ' işareti gibi özel bir karakter aramak isteyebilirsiniz. Bu durumda, kullandığınız çözümleyicinin bu karakterleri filtrelemez olduğundan emin olun.  Standart çözümleyici, özel karakterlerin çoğunu yok saydığı için dizininizdeki belirteçleri olmaz.
 
-Bu nedenle ilk adım, bu öğe belirteçlerini göz önünde bulundurmanız gereken bir çözümleyici kullandığınızdan emin olmak olacaktır. Örneğin, "Whitespace" Çözümleyicisi, boşluk ile ayrılmış karakter dizilerini belirteç olarak kabul eder, bu nedenle "❤" dizesi belirteç olarak değerlendirilir. Ayrıca, Microsoft Ingilizce Çözümleyicisi ("en. Microsoft") gibi bir çözümleyici, "€" dizesini belirteç olarak dikkate alır. Belirli bir sorgu için ürettiği belirteçleri görmek üzere [bir Çözümleyicisi test](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) edebilirsiniz.
+Bu nedenle ilk adım, bu öğe belirteçlerini göz önünde bulundurmanız gereken bir çözümleyici kullandığınızdan emin olmak olacaktır. Örneğin, "Whitespace" Çözümleyicisi, boşluk ile ayrılmış karakter dizilerini belirteç olarak kabul eder, bu nedenle "❤" dizesi belirteç olarak değerlendirilir. Ayrıca, Microsoft Ingilizce Çözümleyicisi ("en. Microsoft") gibi bir çözümleyici, "€" dizesini belirteç olarak dikkate alır. Belirli bir sorgu için ürettiği belirteçleri görmek üzere [bir Çözümleyicisi test](/rest/api/searchservice/test-analyzer) edebilirsiniz.
 
 Unicode karakterler kullanılırken, simgenin sorgu URL 'sinde doğru bir şekilde atlanacağından emin olun (örneğin, "❤" için çıkış sırasını kullanır `%E2%9D%A4+` ). Postman bu çeviriyi otomatik olarak yapar.
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Sorgu boyutu sınırları
+###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Sorgu boyutu sınırları
 
  Azure Bilişsel Arama 'e gönderebilmeniz için sorguların boyutuyla ilgili bir sınır vardır. Özellikle, en fazla 1024 yan tümce (ve, veya ile ayrılmış ifadeler) olabilir. Ayrıca, bir sorgudaki her bir terimin boyutunda yaklaşık 32 KB 'lik bir sınır vardır. Uygulamanız program aracılığıyla arama sorguları oluşturursa, bu şekilde, sınırsız boyut sorguları oluşturmamasını sağlayan bir şekilde tasarlamayı öneririz.  
 
@@ -78,25 +78,25 @@ Unicode karakterler kullanılırken, simgenin sorgu URL 'sinde doğru bir şekil
 
 Eşleşen belgelerin bulunduğu bir dizi zengin ölçüt kümesi oluşturmak için bir sorgu dizesinde Boole işleçleri (ve, veya DEĞIL) ekleyebilirsiniz. 
 
-### <a name="and-operator-"></a>AND işleci`+`
+### <a name="and-operator-"></a>AND işleci `+`
 
 AND işleci bir artı işareti. Örneğin, `wifi + luxury` hem hem de içeren belgeler için arama `wifi` yapılır `luxury` .
 
-### <a name="or-operator-"></a>OR işleci`|`
+### <a name="or-operator-"></a>OR işleci `|`
 
 OR işleci dikey bir çubuk veya boru karakterdir. Örneğin, ya `wifi | luxury` da ya da içeren belgeleri arar `wifi` `luxury` .
 
 <a name="not-operator"></a>
 
-### <a name="not-operator--"></a>NOT işleci`-`
+### <a name="not-operator--"></a>NOT işleci `-`
 
 NOT işleci eksi işareti. Örneğin, `wifi –luxury` ve/veya olmayan belgeler için arama yapılır `wifi` `luxury` .
 
 Sorgu isteğindeki **searchMode** PARAMETRESI, Not işleci olan bir terimin, sorgudaki diğer koşullara sahip olup olmadığını denetler ( `+` diğer koşullarda hiçbir veya işleci olmadığı varsayılarak `|` ). Geçerli değerler `any` veya içerir `all` .
 
-`searchMode=any`sorgu geri çekmeyi daha fazla sonuç ekleyerek artırır ve varsayılan `-` olarak "veya Not" olarak yorumlanır. Örneğin, `wifi -luxury` terimi ya da terimi içermeyen belgelerle eşleşir `wifi` `luxury` .
+`searchMode=any` sorgu geri çekmeyi daha fazla sonuç ekleyerek artırır ve varsayılan `-` olarak "veya Not" olarak yorumlanır. Örneğin, `wifi -luxury` terimi ya da terimi içermeyen belgelerle eşleşir `wifi` `luxury` .
 
-`searchMode=all`sorguların hassasiyetini daha az sonuç ekleyerek artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` terimi içeren belgelerle eşleştirecektir `wifi` ve "merkezlerini" terimini içermemelidir. Bu, operatör için daha sezgisel bir davranış ile yapılır `-` . Bu nedenle, `searchMode=all` `searchMode=any` aramalarını geri çağırmak yerine duyarlık için optimize etmek istiyorsanız yerine kullanmanız gerekir *ve* kullanıcılarınız, `-` aramalardaki işleci sıklıkla kullanır.
+`searchMode=all` sorguların hassasiyetini daha az sonuç ekleyerek artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` terimi içeren belgelerle eşleştirecektir `wifi` ve "merkezlerini" terimini içermemelidir. Bu, operatör için daha sezgisel bir davranış ile yapılır `-` . Bu nedenle, `searchMode=all` `searchMode=any` aramalarını geri çağırmak yerine duyarlık için optimize etmek istiyorsanız yerine kullanmanız gerekir *ve* kullanıcılarınız, `-` aramalardaki işleci sıklıkla kullanır.
 
 Bir **searchMode** ayarı üzerinde karar verirken, çeşitli uygulamalardaki sorgular için Kullanıcı etkileşimi düzenlerini göz önünde bulundurun. Bilgi arayan kullanıcıların, daha fazla yerleşik gezinti yapılarına sahip olan e-ticaret sitelerinin aksine, bir sorguya işleç ekleme olasılığı yüksektir.
 
@@ -110,7 +110,7 @@ Filtrelere benzer şekilde, ön ek sorgusu tam eşleşme arar. Bu nedenle, hiçb
 
 Sonek veya bir terimin sonuna veya ortasına karşı eşleştirme gibi diğer joker karakter çeşitleri için, [joker karakter arama için tam Lucene sözdizimini](query-lucene-syntax.md#bkmk_wildcard)kullanın.
 
-## <a name="phrase-search-"></a>Tümcecik arama`"`
+## <a name="phrase-search-"></a>Tümcecik arama `"`
 
 Terim arama bir veya daha fazla terim için, koşulların herhangi birinin eşleşme olarak kabul edildiği bir sorgudur. Tümcecik araması, tırnak işaretleri içine alınmış tam bir tümceciktir `" "` . Örneğin, `Roach Motel` (tırnak işareti olmadan) `Roach` herhangi bir sırada ve/veya herhangi bir yerde bulunan belgeleri arar `Motel` , `"Roach Motel"` (tırnak işareti içeren) yalnızca bu tümceciği içeren belgelerle ve bu sırayla eşleşir (sözcük temelli analiz hala geçerlidir).
 
@@ -119,6 +119,6 @@ Terim arama bir veya daha fazla terim için, koşulların herhangi birinin eşle
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
 + [Basit arama için sorgu örnekleri](search-query-simple-examples.md)
 + [Tam Lucene Search için sorgu örnekleri](search-query-lucene-examples.md)
-+ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Belgelerde Arama REST API'si](/rest/api/searchservice/Search-Documents)
 + [Lucene sorgu söz dizimi](query-lucene-syntax.md)
-+ [OData ifadesi söz dizimi](query-odata-filter-orderby-syntax.md) 
++ [OData ifadesi söz dizimi](query-odata-filter-orderby-syntax.md)

@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: devx-track-python
-ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843633"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933367"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -34,7 +34,7 @@ Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerin
 
 ## <a name="example"></a>Örnek
 
-Bir örneğe göz atalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
+Bir örneğe bakalım. Hisse senedi fiyatları adlı bir uygulama, hisse senedi adlı bir dış API kullanarak bir stokun geçerli pazar fiyatını gösterir. Hisse senedi fiyatları uygulaması, kullanarak istemci Web tarayıcısının açtığı hisse senedi sayfası adlı bir sayfa içerir `GET /Home/Stock` . Uygulama, HTTP çağrısını kullanarak hisse senedi API 'sini sorgular `GET /api/stock/value` .
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -210,11 +210,11 @@ Bu özellik ' de bulunur `Microsoft.ApplicationInsights.JavaScript` . Varsayıla
 
 | Application Insights                   | OpenTracing                                        |
 |------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span`kullanılarak`span.kind = server`                    |
-| `Dependency`                           | `Span`kullanılarak`span.kind = client`                    |
+| `Request`, `PageView`                  | `Span` kullanılarak `span.kind = server`                    |
+| `Dependency`                           | `Span` kullanılarak `span.kind = client`                    |
 | `Id``Request`ve`Dependency`     | `SpanId`                                            |
 | `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference`türündeki `ChildOf` (üst yayılma)     |
+| `Operation_ParentId`                   | `Reference` türündeki `ChildOf` (üst yayılma)     |
 
 Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md).
 
@@ -309,11 +309,11 @@ Kullanarak günlük verilerini dışa aktarabilirsiniz `AzureLogHandler` . Daha 
 Zaman içinde, .NET telemetri ve tanılama günlüklerini ilişkilendirmek için çeşitli yollar tanımladı:
 
 - `System.Diagnostics.CorrelationManager`[LogicalOperationStack ve ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)'nin izlenmesine izin verir.
-- `System.Diagnostics.Tracing.EventSource`ve Windows için olay Izleme (ETW) [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metodunu tanımlar.
+- `System.Diagnostics.Tracing.EventSource` ve Windows için olay Izleme (ETW) [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metodunu tanımlar.
 - `ILogger`[günlük kapsamlarını](/aspnet/core/fundamentals/logging#log-scopes)kullanır.
 - Windows Communication Foundation (WCF) ve HTTP dağıtımı "geçerli" bağlam yayma.
 
-Ancak bu yöntemler otomatik dağıtılmış izleme desteğini etkinleştirmedi. `DiagnosticSource`, otomatik makine çapraz bağıntısını destekler. .NET kitaplıkları, `DiagnosticSource` http gibi bir aktarım aracılığıyla bağıntı bağlamının otomatik makine çapraz olarak yayılmasını destekler ve bunlara izin verir.
+Ancak bu yöntemler otomatik dağıtılmış izleme desteğini etkinleştirmedi. `DiagnosticSource` , otomatik makine çapraz bağıntısını destekler. .NET kitaplıkları, `DiagnosticSource` http gibi bir aktarım aracılığıyla bağıntı bağlamının otomatik makine çapraz olarak yayılmasını destekler ve bunlara izin verir.
 
 İçindeki [etkinlik Kullanıcı Kılavuzu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , `DiagnosticSource` etkinliklerin izlenmesi hakkında temel bilgileri açıklar.
 

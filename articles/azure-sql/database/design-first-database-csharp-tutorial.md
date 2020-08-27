@@ -4,18 +4,18 @@ description: ADO.NET kullanarak C# ile Azure SQL veritabanı 'nda ilk ilişkisel
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 057ffcdc8a21567e909d768236e454ee10036115
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 055dbdcf936cc55dcad288d216d765f4e1bf789d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84216553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932449"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET 'de ilişkisel veritabanı tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) veya sonraki bir sürümünü yükleme.
 

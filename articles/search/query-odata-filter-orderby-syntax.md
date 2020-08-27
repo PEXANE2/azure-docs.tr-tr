@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165218"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923407"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>`$filter` `$orderby` `$select` Azure bilişsel arama için OData diline genel bakış
 
@@ -91,25 +91,25 @@ Bu örnekte, Aralık değişkeni `room` `room/Type` alan yolunda görünür. Bu 
 
 ### <a name="using-field-paths"></a>Alan yollarını kullanma
 
-Alan yolları [Azure BILIŞSEL arama REST API](https://docs.microsoft.com/rest/api/searchservice/)'lerinin birçok parametresi için kullanılır. Aşağıdaki tabloda, kullanılabilecekleri tüm konumlar ve kullanımları üzerinde kısıtlamalar listelenmiştir:
+Alan yolları [Azure BILIŞSEL arama REST API](/rest/api/searchservice/)'lerinin birçok parametresi için kullanılır. Aşağıdaki tabloda, kullanılabilecekleri tüm konumlar ve kullanımları üzerinde kısıtlamalar listelenmiştir:
 
 | API | Parametre adı | Kısıtlamalar |
 | --- | --- | --- |
-| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Hiçbiri |
-| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Yalnızca **aranabilir** alanlara başvurabilir |
-| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`ne `queryType` zaman`full` | Yalnızca **aranabilir** alanlara başvurabilir |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Yalnızca çok **yönlü tablo** alanlarına başvurabilir |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Yalnızca **aranabilir** alanlara başvurabilir |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Yalnızca **aranabilir** alanlara başvurabilir |
-| [Öner](https://docs.microsoft.com/rest/api/searchservice/suggestions) ve [AutoComplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Yalnızca bir [öneri aracı](index-add-suggesters.md) parçası olan alanlara başvurabilir |
-| [Arama](https://docs.microsoft.com/rest/api/searchservice/search-documents), [önerme](https://docs.microsoft.com/rest/api/searchservice/suggestions)ve [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
-| [Arama](https://docs.microsoft.com/rest/api/searchservice/search-documents) ve [önerme](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Yalnızca **sıralanabilir** alanlara başvurabilir |
-| [Arama](https://docs.microsoft.com/rest/api/searchservice/search-documents), [önerme](https://docs.microsoft.com/rest/api/searchservice/suggestions)ve [arama](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Yalnızca **alınabilir** alanlara başvurabilir |
+| Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Hiçbiri |
+| Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Yalnızca **aranabilir** alanlara başvurabilir |
+| Dizin [Oluştur](/rest/api/searchservice/create-index) veya [Güncelleştir](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
+| [Ara](/rest/api/searchservice/search-documents) | `search` ne `queryType` zaman `full` | Yalnızca **aranabilir** alanlara başvurabilir |
+| [Ara](/rest/api/searchservice/search-documents) | `facet` | Yalnızca çok **yönlü tablo** alanlarına başvurabilir |
+| [Ara](/rest/api/searchservice/search-documents) | `highlight` | Yalnızca **aranabilir** alanlara başvurabilir |
+| [Ara](/rest/api/searchservice/search-documents) | `searchFields` | Yalnızca **aranabilir** alanlara başvurabilir |
+| [Öner](/rest/api/searchservice/suggestions) ve [AutoComplete](/rest/api/searchservice/autocomplete) | `searchFields` | Yalnızca bir [öneri aracı](index-add-suggesters.md) parçası olan alanlara başvurabilir |
+| [Arama](/rest/api/searchservice/search-documents), [önerme](/rest/api/searchservice/suggestions)ve [otomatik tamamlama](/rest/api/searchservice/autocomplete) | `$filter` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
+| [Arama](/rest/api/searchservice/search-documents) ve [önerme](/rest/api/searchservice/suggestions) | `$orderby` | Yalnızca **sıralanabilir** alanlara başvurabilir |
+| [Arama](/rest/api/searchservice/search-documents), [önerme](/rest/api/searchservice/suggestions)ve [arama](/rest/api/searchservice/lookup-document) | `$select` | Yalnızca **alınabilir** alanlara başvurabilir |
 
 ## <a name="constants"></a>Sabitler
 
-OData içindeki sabitler, belirli bir [varlık veri modeli](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) türünün sabit değerlerdir. Azure Bilişsel Arama desteklenen türlerin listesi için bkz. [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) . Koleksiyon türü sabitleri desteklenmez.
+OData içindeki sabitler, belirli bir [varlık veri modeli](/dotnet/framework/data/adonet/entity-data-model) (EDM) türünün sabit değerlerdir. Azure Bilişsel Arama desteklenen türlerin listesi için bkz. [desteklenen veri türleri](/rest/api/searchservice/supported-data-types) . Koleksiyon türü sabitleri desteklenmez.
 
 Aşağıdaki tabloda, Azure Bilişsel Arama tarafından desteklenen her bir veri türü için sabitler örnekleri gösterilmektedir:
 
@@ -243,6 +243,6 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 - [Azure Bilişsel Arama çok yönlü gezinme](search-faceted-navigation.md)
 - [Azure Bilişsel Arama filtreler](search-filters.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene sorgu söz dizimi](query-lucene-syntax.md)
 - [Azure Bilişsel Arama basit sorgu söz dizimi](query-simple-syntax.md)

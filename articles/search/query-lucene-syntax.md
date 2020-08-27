@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891105"
+ms.locfileid: "88923458"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama Lucene sorgu söz dizimi
 
 Özelleştirilmiş sorgu formları için zengin [Lucene sorgu ayrıştırıcı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimine göre Azure bilişsel arama karşı sorgular yazabilirsiniz: joker karakter, benzer arama, yakınlık araması, normal ifadeler birkaç örnektir. Lucene sorgu ayrıştırıcısı sözdiziminin büyük bir bölümü [azure bilişsel arama ' de](search-lucene-query-architecture.md), deyimler aracılığıyla Azure bilişsel arama oluşturulan *Aralık aramaları* dışında bir şekilde uygulanır `$filter` . 
 
 > [!NOTE]
-> Full Lucene sözdizimi, bu API 'nin [$Filter](search-filters.md) parametresi Için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır, [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri için kullanılır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
+> Full Lucene sözdizimi, bu API 'nin [$Filter](search-filters.md) parametresi Için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır, [arama belgeleri](/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri için kullanılır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
 
 ## <a name="invoke-full-parsing"></a>Tam ayrıştırmayı çağır
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri Azure bilişsel arama 'de sorgu oluşturma](search-query-lucene-examples.md). Sorgu parametrelerinin tam olarak belirlenmesi hakkında daha fazla bilgi için bkz. [arama belgeleri &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri Azure bilişsel arama 'de sorgu oluşturma](search-query-lucene-examples.md). Sorgu parametrelerinin tam olarak belirlenmesi hakkında daha fazla bilgi için bkz. [arama belgeleri &#40;Azure Bilişsel Arama REST API&#41;](/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
 >  Azure Bilişsel Arama [basit sorgu söz dizimini](query-simple-syntax.md)da destekler, basit ve güçlü bir sorgu dili, doğrudan anahtar sözcük araması için kullanılabilir.  
@@ -139,7 +139,7 @@ Bir **searchMode** ayarı üzerinde karar verirken, çeşitli uygulamalardaki so
 
 Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız, bu durumda alanda iki ayrı sanatçı aramak istiyorsanız, tırnak işaretleri içine birden çok dize yerleştirdiğinizden emin olun `artists` .  
 
-İçinde belirtilen alanın `fieldName:searchExpression` bir alan olması gerekir `searchable` .  Dizin özniteliklerinin alan tanımlarında nasıl kullanıldığına ilişkin ayrıntılar için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) .  
+İçinde belirtilen alanın `fieldName:searchExpression` bir alan olması gerekir `searchable` .  Dizin özniteliklerinin alan tanımlarında nasıl kullanıldığına ilişkin ayrıntılar için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index) .  
 
 > [!NOTE]
 > Kullanılabilir arama ifadelerini kullanırken, `searchFields` her bir alan arama ifadesinde açık olarak belirtilmiş bir alan adı olduğundan, parametresini kullanmanız gerekmez. Ancak, `searchFields` bazı parçaların belirli bir alan kapsamında bulunduğu bir sorgu çalıştırmak istiyorsanız parametresini kullanmaya devam edebilirsiniz ve REST birçok alana uygulanabilir. Örneğin, sorgu `search=genre:jazz NOT history&searchFields=description` `jazz` yalnızca `genre` alanla eşleşirken alanla eşleşir `NOT history` `description` . Her zaman ' de belirtilen alan adı, `fieldName:searchExpression` `searchFields` Bu örnekte bu nedenle parametreye dahil etmemiz gerekmediğimiz parametreye göre öncelik alır `genre` `searchFields` .
@@ -202,6 +202,6 @@ Azure Bilişsel Arama metin sorguları için sıklık tabanlı Puanlama ([tf-ıD
 
 + [Basit arama için sorgu örnekleri](search-query-simple-examples.md)
 + [Tam Lucene Search için sorgu örnekleri](search-query-lucene-examples.md)
-+ [Belgelerde ara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Belgelerde ara](/rest/api/searchservice/Search-Documents)
 + [Filtreler ve sıralama için OData ifade sözdizimi](query-odata-filter-orderby-syntax.md)   
-+ [Azure Bilişsel Arama basit sorgu söz dizimi](query-simple-syntax.md)   
++ [Azure Bilişsel Arama basit sorgu söz dizimi](query-simple-syntax.md)

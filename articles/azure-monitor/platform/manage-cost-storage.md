@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184661"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933673"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme    
 
@@ -64,7 +64,7 @@ Henüz Azure Izleyici günlüklerini kullanmıyorsanız, Log Analytics kullanman
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Kullanımınız ve Tahmini maliyetlerinizi anlayın
 
-Azure Izleyici günlüklerini şimdi kullanıyorsanız, maliyetlerin en son kullanım desenlerine göre büyük olasılıkla ne olduğunu anlamak kolaydır. Bunu yapmak için, veri kullanımını gözden geçirmek ve çözümlemek üzere **Log Analytics kullanımı ve tahmini maliyetleri** kullanın. Bu, her bir çözüm tarafından ne kadar veri toplandığını, ne kadar veri tutulup tutulmadığını ve dahil edilen miktarın ötesinde ek bir bekletme miktarına göre maliyetlerinizin bir tahminini gösterir.
+Azure Izleyici günlüklerini şimdi kullanıyorsanız, maliyetlerin en son kullanım desenlerine göre büyük olasılıkla ne olduğunu anlamak kolaydır. Bunu yapmak için, veri kullanımını gözden geçirmek ve çözümlemek üzere  **Log Analytics kullanımı ve tahmini maliyetleri** kullanın. Bu, her bir çözüm tarafından ne kadar veri toplandığını, ne kadar veri tutulup tutulmadığını ve dahil edilen miktarın ötesinde ek bir bekletme miktarına göre maliyetlerinizin bir tahminini gösterir.
 
 ![Kullanım ve tahmini maliyetler](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -135,7 +135,7 @@ Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar s
 Çalışma alanınız için varsayılan saklama alanını ayarlamak için 
  
 1. Azure portal, çalışma alanınızdan sol bölmeden **kullanım ve tahmini maliyetler** ' i seçin.
-2. **Kullanım ve tahmini maliyetler** sayfasında, sayfanın üst kısmından **veri bekletme** ' ye tıklayın.
+2. **Kullanım ve tahmini maliyetler** sayfasının üst kısmındaki **Veri Saklama**'yı seçin.
 3. Bölmede kaydırıcıyı kullanarak gün sayısını artırın veya azaltın ve ardından **Tamam**'a tıklayın.  *Ücretsiz* katmanınız varsa, veri saklama süresini değiştiremeyeceksiniz ve bu ayarı denetlemek için ücretli katmana yükseltmeniz gerekir.
 
     ![Çalışma alanı verilerini bekletme ayarını değiştir](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -199,7 +199,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Günlük veri hacminin maksimum sayısını yönetin
 
-Bir günlük Cap yapılandırabilir ve çalışma alanınız için günlük alımı sınırlayabilirsiniz, ancak amacınız günlük sınıra ulaşmamak zorunda kalacağından dikkatli olabilirsiniz.  Aksi takdirde, günün geri kalanı için veri kaybedersiniz. Bu, işlevleri çalışma alanında kullanılabilir olan güncel verilere bağlı olabilecek diğer Azure hizmetlerini ve çözümlerini etkileyebilir.  Sonuç olarak BT hizmetlerini destekleyen sistem durumu koşullarında uyarıları gözlemleme ve alma beceriniz etkilenir.  Günlük üst sınır, yönetilen kaynaklarınızdan veri hacminde **beklenmedik bir artış** yönetmek ve sınırınızı dahilinde kalmak ya da çalışma alanınız için plansız ücretleri sınırlamak istediğinizde kullanılmak üzere tasarlanmıştır. Her gün bir çalışma alanında karşılanabilmesi için günlük üst sınır ayarlamak uygun değildir.
+Bir günlük Cap yapılandırabilir ve çalışma alanınız için günlük alımı sınırlayabilirsiniz, ancak amacınız günlük sınıra ulaşmamak zorunda kalacağından dikkatli olabilirsiniz.  Aksi takdirde, günün geri kalanı için veri kaybedersiniz. Bu, işlevleri çalışma alanında kullanılabilir olan güncel verilere bağlı olabilecek diğer Azure hizmetlerini ve çözümlerini etkileyebilir.  Sonuç olarak BT hizmetlerini destekleyen sistem durumu koşullarında uyarıları gözlemleme ve alma beceriniz etkilenir.  Günlük üst sınır, yönetilen kaynaklarınızdan veri hacminde **beklenmedik bir artış** yönetmek ve sınırınızı dahilinde kalmak ya da çalışma alanınız için plansız ücretleri sınırlamak istediğinizde kullanılmak üzere tasarlanmıştır. Çalışma alanında her gün ulaşılan bir günlük üst sınır ayarlamak uygun olmaz.
 
 Her çalışma alanı günlük Cap günün farklı bir saatine uygulanır. Sıfırlama saati, **günlük uç** sayfasında gösterilir (aşağıya bakın). Bu sıfırlama saati yapılandırılamaz. 
 
@@ -432,7 +432,7 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 + **AzureDiagnostics** veri türü
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-## <a name="tips-for-reducing-data-volume"></a>Veri hacmi azaltma ipuçları
+## <a name="tips-for-reducing-data-volume"></a>Veri hacmini azaltmaya yönelik ipuçları
 
 Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 
@@ -604,7 +604,7 @@ Veri toplama durdurulduğunda OperationStatus değeri **Uyarı** olur. Veri topl
 |Neden koleksiyonun durması| Çözüm| 
 |-----------------------|---------|
 |Çalışma alanınızın günlük tepesine ulaşıldı|Koleksiyonun otomatik olarak yeniden başlatılmasını bekleyin veya en fazla günlük veri birimini yönetme bölümünde açıklanan günlük veri birimi sınırını artırın. Günlük uç sıfırlama zamanı, **günlük uç** sayfasında gösterilir. |
-| Çalışma alanınız [veri alma birimi oranına](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) ulaştı | 500 MB (sıkıştırılmış) için varsayılan bir alım birimi hız eşiği, yaklaşık **6 GB/dak** sıkıştırması bulunan çalışma alanları için geçerlidir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Bu eşik, [Tanılama ayarları](diagnostic-settings.md), [Veri Toplayıcı API 'si](data-collector-api.md) veya aracıları kullanılarak Azure kaynaklarından gönderilen tüm veriler için geçerlidir. Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınızda arttırmayı isteyebilirsiniz. Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun. Alma birimi oranı eşiğin %80 ' i oranında ulaştı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Alım birimi oranına ulaşıldı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| Çalışma alanınız [veri alma birimi oranına](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) ulaştı | 500 MB (sıkıştırılmış) için varsayılan bir alım birimi hız eşiği, yaklaşık **6 GB/dak** sıkıştırması bulunan çalışma alanları için geçerlidir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Bu eşik, [Tanılama ayarları](diagnostic-settings.md), [Veri Toplayıcı API 'si](data-collector-api.md) veya aracıları kullanılarak Azure kaynaklarından gönderilen tüm veriler için geçerlidir. Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınızda arttırmayı isteyebilirsiniz. Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfırdan büyük sonuç sayısına, 5 dakikalık değerlendirme süresine ve 5 dakikalık sıklık temelinde, uyarı mantığı ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun. Alma birimi oranı eşiğin %80 ' i oranında ulaştı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Alım birimi oranına ulaşıldı: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |Eski ücretsiz fiyatlandırma katmanının günlük sınırına ulaşıldı |Koleksiyonun otomatik olarak yeniden başlatılmasını veya ücretli bir fiyatlandırma katmanına geçiş yapmak için aşağıdaki güne kadar bekleyin.|
 |Azure aboneliği şu nedenlerle askıya alınmış durumda:<br> Ücretsiz deneme süresi sona erdi<br> Azure Pass 'nin süre geçti<br> Aylık harcama sınırına ulaşıldı (örneğin, bir MSDN veya Visual Studio aboneliği)|Ücretli aboneliğe dönüştürme<br> Limiti Kaldır veya sınır sıfırlanana kadar bekle|
 

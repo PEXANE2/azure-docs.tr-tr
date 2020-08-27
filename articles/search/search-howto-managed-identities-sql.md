@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553147"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924138"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısı kurma
 
@@ -44,7 +44,7 @@ Sistem tarafından atanan bir yönetilen kimlik etkinleştirildiğinde Azure, ar
 
 Sonraki adımda veritabanına bağlanırken, arama hizmetinize veritabanına erişim izni vermek için veritabanına Yönetici erişimi olan bir Azure Active Directory (Azure AD) hesabıyla bağlanmanız gerekir.
 
-Azure AD hesabı yöneticinize veritabanına erişim sağlamak için [buradaki](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) yönergeleri izleyin.
+Azure AD hesabı yöneticinize veritabanına erişim sağlamak için [buradaki](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database) yönergeleri izleyin.
 
 ### <a name="3---assign-the-search-service-permissions"></a>3-arama hizmeti izinlerini atama
 
@@ -97,9 +97,9 @@ Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verir
 
 ### <a name="5---create-the-data-source"></a>5-veri kaynağını oluşturma
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak BIR Azure SQL veritabanından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak BIR Azure SQL veritabanından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak bir veri kaynağı oluştururken, veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
+[REST API](/rest/api/searchservice/create-data-source)kullanarak bir veri kaynağı oluştururken, veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
 
 * **ad** , arama hizmetinizin içindeki veri kaynağının benzersiz adıdır.
 * **tür**`azuresql`
@@ -109,7 +109,7 @@ Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verir
         * *İlk Katalog | Veritabanı =**veritabanı adı**; RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.SQL/Servers/**SQL Server adınız**/; Bağlantı zaman aşımı =**bağlantı zaman aşımı uzunluğu**;*
 * **kapsayıcı** , dizin oluşturmak istediğiniz tablonun veya görünümün adını belirtir.
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak BIR Azure SQL veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:
+[REST API](/rest/api/searchservice/create-data-source)kullanarak BIR Azure SQL veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index)
+Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index)
 
 ### <a name="7---create-the-indexer"></a>7-Dizin oluşturucuyu oluşturma
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 Bu Dizin Oluşturucu her iki saatte bir çalışır (zamanlama aralığı "PT2H" olarak ayarlanır). Her 30 dakikada bir dizin oluşturucu çalıştırmak için, aralığı "PT30M" olarak ayarlayın. Desteklenen en kısa Aralık 5 dakikadır. Zamanlama isteğe bağlıdır-atlanırsa, Dizin Oluşturucu yalnızca bir kez oluşturulduğunda çalışır. Ancak, bir dizin oluşturucuyu dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.   
 
-Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluştur](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluştur](/rest/api/searchservice/create-indexer).
 
 Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Dizin Oluşturucu istemcinin sunucuya erişmesine izin verilmediğini bildiren veri kaynağına bağlanmayı denediğinde hata alırsanız, [yaygın Dizin Oluşturucu hatalarına](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting)göz atın.
+Dizin Oluşturucu istemcinin sunucuya erişmesine izin verilmediğini bildiren veri kaynağına bağlanmayı denediğinde hata alırsanız, [yaygın Dizin Oluşturucu hatalarına](./search-indexer-troubleshooting.md)göz atın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202299"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932772"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -34,12 +34,12 @@ Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu i
 
 Dizin bir tek veya birden çok belge yüklemek için şu API'leri kullanabilirsiniz:
 
-+ [Belge Ekleme, Güncelleştirme veya Silme (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 Şu an portal aracılığıyla veri gönderme için hiçbir araç desteği yoktur.
 
-Her metodolojiye giriş için bkz. [hızlı başlangıç: PowerShell veya C# hızlı başlangıç kullanarak azure bilişsel arama dizini oluşturma](search-create-index-rest-api.md) [: .NET SDK kullanarak Azure bilişsel arama dizini oluşturma](search-get-started-dotnet.md).
+Her metodolojiye giriş için bkz. [hızlı başlangıç: PowerShell veya C# hızlı başlangıç kullanarak azure bilişsel arama dizini oluşturma](./search-get-started-powershell.md) [: .NET SDK kullanarak Azure bilişsel arama dizini oluşturma](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -61,7 +61,7 @@ REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdel
 
 ### <a name="formulate-your-query"></a>Sorgunuzu düzenleme
 
-[REST API kullanarak dizininizi aramanın](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) iki yolu bulunur. Bu yollardan biri, sorgu parametrelerinizin istek gövdesindeki bir JSON nesnesinde tanımlanacağı bir HTTP POST isteği göndermektir. Diğer yol ise sorgu parametrelerinizin istek URL'si içinde tanımlanacağı bir HTTP GET isteği göndermektir. POST, sorgu parametrelerinin boyutu açısından GET'ten daha [esnek sınırlara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) sahiptir. Bu nedenle, GET'i kullanmanın daha kullanışlı olduğu özel durumlar olmadığı sürece POST kullanmanızı öneririz.
+[REST API kullanarak dizininizi aramanın](/rest/api/searchservice/Search-Documents) iki yolu bulunur. Bu yollardan biri, sorgu parametrelerinizin istek gövdesindeki bir JSON nesnesinde tanımlanacağı bir HTTP POST isteği göndermektir. Diğer yol ise sorgu parametrelerinizin istek URL'si içinde tanımlanacağı bir HTTP GET isteği göndermektir. POST, sorgu parametrelerinin boyutu açısından GET'ten daha [esnek sınırlara](/rest/api/searchservice/Search-Documents) sahiptir. Bu nedenle, GET'i kullanmanın daha kullanışlı olduğu özel durumlar olmadığı sürece POST kullanmanızı öneririz.
 
 Hem GÖNDERI hem de GET için, istek URL 'sinde *hizmet adınızı*, *Dizin adınızı*ve bir *API sürümünü* sağlamanız gerekir. 
 

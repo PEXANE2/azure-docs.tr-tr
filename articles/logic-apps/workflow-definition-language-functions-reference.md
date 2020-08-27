@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875464"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932959"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -102,7 +102,7 @@ Koleksiyonlar, genellikle diziler, dizeler ve bazen sözlüklerle çalışmak i�
 
 | Koleksiyon işlevi | Görev |
 | ------------------- | ---- |
-| [şunu içerir](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
+| [vardır](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını kontrol edin. |
 | [adı](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
 | [imin](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
@@ -127,7 +127,7 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
@@ -509,7 +509,7 @@ Bu örnek, `status` çalışma zamanında Twitter eyleminden özellik değerini 
 actions('Get_user').outputs.body.status
 ```
 
-Ve şu sonucu döndürür:`"Succeeded"`
+Ve şu sonucu döndürür: `"Succeeded"`
 
 <a name="add"></a>
 
@@ -539,7 +539,7 @@ Bu örnek, belirtilen sayıları ekler:
 add(1, 1.5)
 ```
 
-Ve şu sonucu döndürür:`2.5`
+Ve şu sonucu döndürür: `2.5`
 
 <a name="addDays"></a>
 
@@ -571,7 +571,7 @@ Bu örnek, belirtilen zaman damgasına 10 gün ekler:
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-25T00:00:0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-25T00:00:0000000Z"`
 
 *Örnek 2*
 
@@ -581,7 +581,7 @@ Bu örnek, belirtilen zaman damgasından beş gün çıkartır:
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-10T00:00:0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
@@ -613,7 +613,7 @@ Bu örnek, belirtilen zaman damgasına 10 saat ekler:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T10:00:0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T10:00:0000000Z"`
 
 *Örnek 2*
 
@@ -623,7 +623,7 @@ Bu örnek, belirtilen zaman damgasından beş saati çıkarır:
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T10:00:0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -655,7 +655,7 @@ Bu örnek, belirtilen zaman damgasına 10 dakika ekler:
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T00:20:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T00:20:00.0000000Z"`
 
 *Örnek 2*
 
@@ -665,7 +665,7 @@ Bu örnek, belirtilen zaman damgasından beş dakika çıkarır:
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T00:15:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
@@ -796,7 +796,7 @@ Bu örnek, belirtilen zaman damgasına 10 saniye ekler:
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T00:00:10.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T00:00:10.0000000Z"`
 
 *Örnek 2*
 
@@ -806,7 +806,7 @@ Bu örnek, beş saniyeyi belirtilen zaman damgasına çıkartır:
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T00:00:25.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
@@ -840,7 +840,7 @@ Bu örnek, belirtilen zaman damgasına bir gün ekler:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-02T00:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-01-02T00:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -850,11 +850,11 @@ Bu örnek, belirtilen zaman damgasına bir gün ekler:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür:`"Tuesday, January 2, 2018"`
+Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür: `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
-### <a name="and"></a>reservedStorageGb
+### <a name="and"></a>ve
 
 Tüm ifadelerin doğru olup olmadığını denetleyin.
 Tüm ifadeler doğru olduğunda true, en az bir ifade false olduğunda false döndürün.
@@ -934,7 +934,7 @@ Bu örnek, "Hello" dizesinden bir dizi oluşturur:
 array('hello')
 ```
 
-Ve şu sonucu döndürür:`["hello"]`
+Ve şu sonucu döndürür: `["hello"]`
 
 <a name="base64"></a>
 
@@ -967,7 +967,7 @@ Bu örnek, "Hello" dizesini Base64 kodlamalı bir dizeye dönüştürür:
 base64('hello')
 ```
 
-Ve şu sonucu döndürür:`"aGVsbG8="`
+Ve şu sonucu döndürür: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
@@ -1035,7 +1035,7 @@ Bu örnek, "aGVsbG8 =" Base64 kodlamalı dizeyi yalnızca bir dizeye dönüştü
 base64ToString('aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür:`"hello"`
+Ve şu sonucu döndürür: `"hello"`
 
 <a name="binary"></a>
 
@@ -1120,7 +1120,7 @@ Ve şu sonucu döndürür:
 
 ### <a name="bool"></a>bool
 
-Bir değer için Boolean sürümünü döndürün.
+Değerin Boole sürümünü döndürün.
 
 ```
 bool(<value>)
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Evet | Herhangi bir | Dönüştürülecek değer |
+| <*deeri*> | Evet | Herhangi bir | Boole değerine dönüştürülecek değer. |
 |||||
+
+`bool()`Bir nesneyle kullanıyorsanız, nesnesinin değeri Boolean 'a dönüştürülebileceği bir dize veya tamsayı olmalıdır.
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | Belirtilen değer için Boolean sürümü |
+| `true` veya `false` | Boole | Belirtilen değerin Boole sürümü. |
 ||||
 
-*Örnek*
+*Çıkışlar*
 
-Bu örnekler, belirtilen değerleri Boole değerlerine dönüştürür:
+Bu örnekler için desteklenen farklı giriş türlerini gösterir `bool()` :
 
-```
-bool(1)
-bool(0)
-```
-
-Ve şu sonuçları döndürür:
-
-* İlk örnek:`true`
-* İkinci örnek:`false`
+| Giriş değeri | Tür | Döndürülen değer |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Tamsayı | `true` |
+| `bool(0)` | Tamsayı    | `false` |
+| `bool(-1)` | Tamsayı | `true` |
+| `bool('true')` | Dize | `true` |
+| `bool('false')` | Dize | `false` |
 
 <a name="coalesce"></a>
 
@@ -1183,9 +1183,9 @@ coalesce(null, null, null)
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`true`
-* İkinci örnek:`"hello"`
-* Üçüncü örnek:`null`
+* İlk örnek: `true`
+* İkinci örnek: `"hello"`
+* Üçüncü örnek: `null`
 
 <a name="concat"></a>
 
@@ -1215,7 +1215,7 @@ Bu örnek, "Hello" ve "World" dizelerini birleştirir:
 concat('Hello', 'World')
 ```
 
-Ve şu sonucu döndürür:`"HelloWorld"`
+Ve şu sonucu döndürür: `"HelloWorld"`
 
 <a name="contains"></a>
 
@@ -1293,7 +1293,7 @@ Bu örnek, bir zaman damgasını belirtilen saat dilimine dönüştürür:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-01T00:00:00.0000000"`
+Ve şu sonucu döndürür: `"2018-01-01T00:00:00.0000000"`
 
 *Örnek 2*
 
@@ -1303,7 +1303,7 @@ Bu örnek, bir zaman damgasını belirtilen saat dilimine ve biçime dönüştü
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür:`"Monday, January 1, 2018"`
+Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
@@ -1336,7 +1336,7 @@ Bu örnek, kaynak saat dilimini hedef saat dilimine dönüştürür:
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-01T00:00:00.0000000"`
+Ve şu sonucu döndürür: `"2018-01-01T00:00:00.0000000"`
 
 *Örnek 2*
 
@@ -1346,7 +1346,7 @@ Bu örnek, saat dilimini belirtilen saat dilimine ve biçime dönüştürür:
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür:`"Monday, January 1, 2018"`
+Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
@@ -1378,7 +1378,7 @@ Bu örnek, bir zaman damgasını UTC 'ye dönüştürür:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-01T08:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-01-01T08:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -1388,7 +1388,7 @@ Bu örnek, bir zaman damgasını UTC 'ye dönüştürür:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür:`"Monday, January 1, 2018"`
+Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
@@ -1419,7 +1419,7 @@ Bu örnek, bu girişlerden bir dizi oluşturur:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-Ve şu sonucu döndürür:`["h", "e", "l", "l", "o"]`
+Ve şu sonucu döndürür: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
@@ -1449,7 +1449,7 @@ Bu örnek, "Hello" dizesi için bir veri URI 'SI oluşturur:
 dataUri('hello')
 ```
 
-Ve şu sonucu döndürür:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+Ve şu sonucu döndürür: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
@@ -1516,7 +1516,7 @@ Bu örnek, bu veri URI 'SI için bir dize oluşturur:
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür:`"hello"`
+Ve şu sonucu döndürür: `"hello"`
 
 <a name="dayOfMonth"></a>
 
@@ -1546,7 +1546,7 @@ Bu örnek, bu zaman damgasından ayın gününün numarasını döndürür:
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür:`15`
+Ve şu sonucu döndürür: `15`
 
 <a name="dayOfWeek"></a>
 
@@ -1576,7 +1576,7 @@ Bu örnek, bu zaman damgasından Haftanın gününün numarasını döndürür:
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür:`4`
+Ve şu sonucu döndürür: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1606,7 +1606,7 @@ Bu örnek, bu zaman damgasından yılın gün sayısını döndürür:
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür:`74`
+Ve şu sonucu döndürür: `74`
 
 <a name="decodeBase64"></a>
 
@@ -1680,7 +1680,7 @@ Bu örnek, bu dizedeki kaçış karakterlerinin kodunu kodu çözülmüş sürü
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-Ve şu sonucu döndürür:`"https://contoso.com"`
+Ve şu sonucu döndürür: `"https://contoso.com"`
 
 <a name="div"></a>
 
@@ -1705,7 +1705,7 @@ div(<dividend>, <divisor>)
 
 *Örnek 1*
 
-Her iki örnek de bu değeri tamsayı türüyle döndürür:`2`
+Her iki örnek de bu değeri tamsayı türüyle döndürür: `2`
 
 ```
 div(10,5)
@@ -1714,7 +1714,7 @@ div(11,5)
 
 *Örnek 2*
 
-Her iki örnek de float türü ile bu değeri döndürür:`2.2`
+Her iki örnek de float türü ile bu değeri döndürür: `2.2`
 
 ```
 div(11,5.0)
@@ -1752,7 +1752,7 @@ Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 encodeUriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür:`"http%3A%2F%2Fcontoso.com"`
+Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1821,7 +1821,7 @@ Bu örnek, "Hello World" dizesinin "World" dizesiyle bitip bitmediğini denetler
 endsWith('hello world', 'world')
 ```
 
-Ve şu sonucu döndürür:`true`
+Ve şu sonucu döndürür: `true`
 
 *Örnek 2*
 
@@ -1831,11 +1831,11 @@ Bu örnek, "Hello World" dizesinin "Universe" dizesiyle bitip bitmediğini denet
 endsWith('hello world', 'universe')
 ```
 
-Ve şu sonucu döndürür:`false`
+Ve şu sonucu döndürür: `false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>eşittir
 
 Değerlerin, ifadelerin veya nesnelerin eşit olup olmadığını denetleyin.
 Her ikisi de eşdeğer olduğunda true, eşdeğer olmadığında false döndürün.
@@ -1900,8 +1900,8 @@ first(createArray(0, 1, 2))
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`"h"`
-* İkinci örnek:`0`
+* İlk örnek: `"h"`
+* İkinci örnek: `0`
 
 <a name="float"></a>
 
@@ -1932,7 +1932,7 @@ Bu örnek, bu kayan nokta numarası için bir dize sürümü oluşturur:
 float('10.333')
 ```
 
-Ve şu sonucu döndürür:`10.333`
+Ve şu sonucu döndürür: `10.333`
 
 <a name="formatDateTime"></a>
 
@@ -1963,7 +1963,7 @@ Bu örnek, bir zaman damgasını belirtilen biçime dönüştürür:
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T12:00:00"`
+Ve şu sonucu döndürür: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
@@ -1994,7 +1994,7 @@ Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "k
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-Ve bir dizideki konu metnini döndürür, örneğin:`["Hello world"]`
+Ve bir dizideki konu metnini döndürür, örneğin: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
@@ -2026,7 +2026,7 @@ Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "k
 formDataValue('Send_an_email', 'Subject')
 ```
 
-Ve konu metnini bir dize olarak döndürür, örneğin:`"Hello world"`
+Ve konu metnini bir dize olarak döndürür, örneğin: `"Hello world"`
 
 <a name="formatNumber"></a>
 
@@ -2113,7 +2113,7 @@ Bu örnek, bu zaman damgasına beş gün ekler:
 getFutureTime(5, 'Day')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-06T00:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-06T00:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -2124,7 +2124,7 @@ Bu örnek beş gün ekler ve sonucu "D" biçimine dönüştürür:
 getFutureTime(5, 'Day', 'D')
 ```
 
-Ve şu sonucu döndürür:`"Tuesday, March 6, 2018"`
+Ve şu sonucu döndürür: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
@@ -2157,7 +2157,7 @@ Bu örnek, zaman damgasından beş gün çıkartır:
 getPastTime(5, 'Day')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-27T00:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-01-27T00:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -2168,7 +2168,7 @@ Bu örnek beş günü çıkarır ve sonucu "D" biçimine dönüştürür:
 getPastTime(5, 'Day', 'D')
 ```
 
-Ve şu sonucu döndürür:`"Saturday, January 27, 2018"`
+Ve şu sonucu döndürür: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
@@ -2204,8 +2204,8 @@ greater('apple', 'banana')
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`true`
-* İkinci örnek:`false`
+* İlk örnek: `true`
+* İkinci örnek: `false`
 
 <a name="greaterOrEquals"></a>
 
@@ -2241,8 +2241,8 @@ greaterOrEquals('apple', 'banana')
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`true`
-* İkinci örnek:`false`
+* İlk örnek: `true`
+* İkinci örnek: `false`
 
 <a name="guid"></a>
 
@@ -2278,7 +2278,7 @@ Bu örnek, aynı GUID 'i, kısa çizgi ile ayrılmış ve parantez içine alınm
 guid('P')
 ```
 
-Ve şu sonucu döndürür:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+Ve şu sonucu döndürür: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
@@ -2341,7 +2341,7 @@ Bu örnek, "Hello World" dizesindeki "World" alt dizesi için başlangıç dizin
 indexOf('hello world', 'world')
 ```
 
-Ve şu sonucu döndürür:`6`
+Ve şu sonucu döndürür: `6`
 
 <a name="int"></a>
 
@@ -2371,7 +2371,7 @@ Bu örnek, "10" dizesi için bir tamsayı sürümü oluşturur:
 int('10')
 ```
 
-Ve şu sonucu döndürür:`10`
+Ve şu sonucu döndürür: `10`
 
 <a name="item"></a>
 
@@ -2555,7 +2555,7 @@ Bu örnek, bu dizeyi JSON değerine dönüştürür:
 json('[1, 2, 3]')
 ```
 
-Ve şu sonucu döndürür:`[1, 2, 3]`
+Ve şu sonucu döndürür: `[1, 2, 3]`
 
 *Örnek 2*
 
@@ -2627,7 +2627,7 @@ Bu örnek, bu diziler genelinde ortak öğeleri bulur:
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-Ve *yalnızca* şu öğeler içeren bir dizi döndürür:`[1, 2]`
+Ve *yalnızca* şu öğeler içeren bir dizi döndürür: `[1, 2]`
 
 <a name="join"></a>
 
@@ -2658,7 +2658,7 @@ Bu örnek, bu dizideki tüm öğelerden belirtilen karakteri sınırlayıcı ola
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-Ve şu sonucu döndürür:`"a.b.c"`
+Ve şu sonucu döndürür: `"a.b.c"`
 
 <a name="last"></a>
 
@@ -2692,8 +2692,8 @@ last(createArray(0, 1, 2, 3))
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`"d"`
-* İkinci örnek:`3`
+* İlk örnek: `"d"`
+* İkinci örnek: `3`
 
 <a name="lastindexof"></a>
 
@@ -2772,7 +2772,7 @@ length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-Ve şu sonucu döndürür:`4`
+Ve şu sonucu döndürür: `4`
 
 <a name="less"></a>
 
@@ -2808,8 +2808,8 @@ less('banana', 'apple')
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`true`
-* İkinci örnek:`false`
+* İlk örnek: `true`
+* İkinci örnek: `false`
 
 <a name="lessOrEquals"></a>
 
@@ -2845,8 +2845,8 @@ lessOrEquals('apply', 'apple')
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`true`
-* İkinci örnek:`false`
+* İlk örnek: `true`
+* İkinci örnek: `false`
 
 <a name="listCallbackUrl"></a>
 
@@ -2901,7 +2901,7 @@ max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-Ve şu sonucu döndürür:`3`
+Ve şu sonucu döndürür: `3`
 
 <a name="min"></a>
 
@@ -2934,7 +2934,7 @@ min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-Ve şu sonucu döndürür:`1`
+Ve şu sonucu döndürür: `1`
 
 <a name="mod"></a>
 
@@ -2966,7 +2966,7 @@ Bu örnek, ilk sayıyı ikinci sayıya böler:
 mod(3, 2)
 ```
 
-Ve şu sonucu döndürür:`1`
+Ve şu sonucu döndürür: `1`
 
 <a name="mul"></a>
 
@@ -3000,8 +3000,8 @@ mul(1.5, 2)
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`2`
-* İkinci örnek`3`
+* İlk örnek: `2`
+* İkinci örnek `3`
 
 <a name="multipartBody"></a>
 
@@ -3221,7 +3221,7 @@ Bu örnek, belirtilen parametre için değeri alır:
 parameters('fullName')
 ```
 
-Ve şu sonucu döndürür:`"Sophia Owen"`
+Ve şu sonucu döndürür: `"Sophia Owen"`
 
 <a name="rand"></a>
 
@@ -3252,7 +3252,7 @@ Bu örnek, en büyük değer hariç, belirtilen aralıktan rastgele bir tamsayı
 rand(1, 5)
 ```
 
-Ve sonuç olarak şu numaralardan birini döndürür: `1` , `2` , `3` veya`4`
+Ve sonuç olarak şu numaralardan birini döndürür: `1` , `2` , `3` veya `4`
 
 <a name="range"></a>
 
@@ -3283,7 +3283,7 @@ Bu örnek, belirtilen dizinden başlayan ve belirtilen sayıda tamsayı içeren 
 range(1, 4)
 ```
 
-Ve şu sonucu döndürür:`[1, 2, 3, 4]`
+Ve şu sonucu döndürür: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
@@ -3315,7 +3315,7 @@ Bu örnek "eski" dizesinde "eski" alt dizesini bulur ve "Old" öğesini "New" il
 replace('the old string', 'old', 'new')
 ```
 
-Ve şu sonucu döndürür:`"the new string"`
+Ve şu sonucu döndürür: `"the new string"`
 
 <a name="removeProperty"></a>
 
@@ -3656,7 +3656,7 @@ Bu örnek, belirtilen dizinin önüne 0 olan bir öğeyi, 0 sayısını kaldır�
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-Ve bu diziyi kalan öğelerle birlikte döndürür:`[1,2,3]`
+Ve bu diziyi kalan öğelerle birlikte döndürür: `[1,2,3]`
 
 <a name="split"></a>
 
@@ -3687,7 +3687,7 @@ Bu örnek, belirtilen karakteri sınırlayıcı olarak belirtilen dizeden alt di
 split('a_b_c', '_')
 ```
 
-Ve sonuç olarak bu diziyi döndürür:`["a","b","c"]`
+Ve sonuç olarak bu diziyi döndürür: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 
@@ -3718,7 +3718,7 @@ Bu örnek, bu zaman damgası için günün başlangıcını bulur:
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T00:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
@@ -3749,7 +3749,7 @@ Bu örnek, bu zaman damgası için saatin başlangıcını bulur:
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-15T13:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
@@ -3780,7 +3780,7 @@ Bu örnek, bu zaman damgası için ayın başlangıcını döndürür:
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-01T00:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-03-01T00:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -3790,7 +3790,7 @@ Bu örnek, bu zaman damgası için belirtilen biçimdeki ayın başlangıcını 
 startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
 ```
 
-Ve şu sonucu döndürür:`"2018-03-01"`
+Ve şu sonucu döndürür: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3823,7 +3823,7 @@ Bu örnek, "Hello World" dizesinin "Hello" alt dizesiyle başlatılıp başlatı
 startsWith('hello world', 'hello')
 ```
 
-Ve şu sonucu döndürür:`true`
+Ve şu sonucu döndürür: `true`
 
 *Örnek 2*
 
@@ -3833,7 +3833,7 @@ Bu örnek, "Hello World" dizesinin "Greetings" alt dizesiyle başlatılıp başl
 startsWith('hello world', 'greetings')
 ```
 
-Ve şu sonucu döndürür:`false`
+Ve şu sonucu döndürür: `false`
 
 <a name="string"></a>
 
@@ -3867,7 +3867,7 @@ Bu örnek, bu sayının dize sürümünü oluşturur:
 string(10)
 ```
 
-Ve şu sonucu döndürür:`"10"`
+Ve şu sonucu döndürür: `"10"`
 
 *Örnek 2*
 
@@ -3877,7 +3877,7 @@ Bu örnek, belirtilen JSON nesnesi için bir dize oluşturur ve \\ çift tırnak
 string( { "name": "Sophie Owen" } )
 ```
 
-Ve şu sonucu döndürür:`"{ \\"name\\": \\"Sophie Owen\\" }"`
+Ve şu sonucu döndürür: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
@@ -3908,7 +3908,7 @@ Bu örnek, ikinci sayıyı ilk sayıdan çıkartır:
 sub(10.3, .3)
 ```
 
-Ve şu sonucu döndürür:`10`
+Ve şu sonucu döndürür: `10`
 
 <a name="substring"></a>
 
@@ -3941,7 +3941,7 @@ Bu örnek, 6 dizininden başlayarak belirtilen dizeden beş karakterlik bir alt 
 substring('hello world', 6, 5)
 ```
 
-Ve şu sonucu döndürür:`"world"`
+Ve şu sonucu döndürür: `"world"`
 
 <a name="subtractFromTime"></a>
 
@@ -3975,7 +3975,7 @@ Bu örnek, bir günü bu zaman damgasından çıkarır:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-Ve şu sonucu döndürür:`"2018-01-01T00:00:00:0000000Z"`
+Ve şu sonucu döndürür: `"2018-01-01T00:00:00:0000000Z"`
 
 *Örnek 2*
 
@@ -3985,7 +3985,7 @@ Bu örnek, bir günü bu zaman damgasından çıkarır:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-Ve isteğe bağlı "D" biçimini kullanarak bu sonucu döndürür:`"Monday, January, 1, 2018"`
+Ve isteğe bağlı "D" biçimini kullanarak bu sonucu döndürür: `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
@@ -4020,8 +4020,8 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 Ve şu sonuçları döndürür:
 
-* İlk örnek:`"abc"`
-* İkinci örnek:`[0, 1, 2]`
+* İlk örnek: `"abc"`
+* İkinci örnek: `[0, 1, 2]`
 
 <a name="ticks"></a>
 
@@ -4071,7 +4071,7 @@ Bu örnek, bu dizeyi küçük harfe dönüştürür:
 toLower('Hello World')
 ```
 
-Ve şu sonucu döndürür:`"hello world"`
+Ve şu sonucu döndürür: `"hello world"`
 
 <a name="toUpper"></a>
 
@@ -4101,7 +4101,7 @@ Bu örnek, bu dizeyi büyük harfe dönüştürür:
 toUpper('Hello World')
 ```
 
-Ve şu sonucu döndürür:`"HELLO WORLD"`
+Ve şu sonucu döndürür: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
@@ -4170,7 +4170,7 @@ Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "fee
 triggerFormDataMultiValues('feedUrl')
 ```
 
-Ve bu diziyi örnek bir sonuç olarak döndürür:`["http://feeds.reuters.com/reuters/topNews"]`
+Ve bu diziyi örnek bir sonuç olarak döndürür: `["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4201,7 +4201,7 @@ Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "fee
 triggerFormDataValue('feedUrl')
 ```
 
-Ve bu dizeyi örnek sonuç olarak döndürür:`"http://feeds.reuters.com/reuters/topNews"`
+Ve bu dizeyi örnek sonuç olarak döndürür: `"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4268,7 +4268,7 @@ Bu örnek, "Merhaba Dünya" dizesinden öndeki ve sondaki boşlukları kaldırı
 trim(' Hello World  ')
 ```
 
-Ve şu sonucu döndürür:`"Hello World"`
+Ve şu sonucu döndürür: `"Hello World"`
 
 <a name="union"></a>
 
@@ -4300,7 +4300,7 @@ Bu örnek, bu koleksiyonlardaki *Tüm* öğeleri alır:
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-Ve şu sonucu döndürür:`[1, 2, 3, 10, 101]`
+Ve şu sonucu döndürür: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
@@ -4332,7 +4332,7 @@ Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 uriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür:`"http%3A%2F%2Fcontoso.com"`
+Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4397,7 +4397,7 @@ Bu örnek, bu URI kodlu dize için kodu çözülmüş dize sürümünü oluştur
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-Ve şu sonucu döndürür:`"https://contoso.com"`
+Ve şu sonucu döndürür: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
@@ -4427,7 +4427,7 @@ Bu örnek, `host` Bu URI için değeri bulur:
 uriHost('https://www.localhost.com:8080')
 ```
 
-Ve şu sonucu döndürür:`"www.localhost.com"`
+Ve şu sonucu döndürür: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
@@ -4457,7 +4457,7 @@ Bu örnek, `path` Bu URI için değeri bulur:
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür:`"/catalog/shownew.htm"`
+Ve şu sonucu döndürür: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
@@ -4487,7 +4487,7 @@ Bu örnek, `path` `query` Bu URI için ve değerlerini bulur:
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür:`"/catalog/shownew.htm?date=today"`
+Ve şu sonucu döndürür: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
@@ -4517,7 +4517,7 @@ Bu örnek, `port` Bu URI için değeri döndürür:
 uriPort('http://www.localhost:8080')
 ```
 
-Ve şu sonucu döndürür:`8080`
+Ve şu sonucu döndürür: `8080`
 
 <a name="uriQuery"></a>
 
@@ -4547,7 +4547,7 @@ Bu örnek, `query` Bu URI için değeri döndürür:
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür:`"?date=today"`
+Ve şu sonucu döndürür: `"?date=today"`
 
 <a name="uriScheme"></a>
 
@@ -4577,7 +4577,7 @@ Bu örnek, `scheme` Bu URI için değeri döndürür:
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür:`"http"`
+Ve şu sonucu döndürür: `"http"`
 
 <a name="utcNow"></a>
 
@@ -4611,7 +4611,7 @@ Bu örnekte geçerli zaman damgası alınır:
 utcNow()
 ```
 
-Ve şu sonucu döndürür:`"2018-04-15T13:00:00.0000000Z"`
+Ve şu sonucu döndürür: `"2018-04-15T13:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -4622,7 +4622,7 @@ Bu örnekte, isteğe bağlı "D" biçimini kullanarak geçerli zaman damgası al
 utcNow('D')
 ```
 
-Ve şu sonucu döndürür:`"Sunday, April 15, 2018"`
+Ve şu sonucu döndürür: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
@@ -4653,7 +4653,7 @@ Bu örnek, bu değişken için tamsayı değerini alır:
 variables('numItems')
 ```
 
-Ve şu sonucu döndürür:`20`
+Ve şu sonucu döndürür: `20`
 
 <a name="workflow"></a>
 
@@ -4781,7 +4781,7 @@ Eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir `<name></na
 
 `xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Sonuç şöyledir:`Gala`
+Sonuç şöyledir: `Gala`
 
 *Örnek 3*
 
@@ -4789,7 +4789,7 @@ Sonuç şöyledir:`Gala`
 
 `xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-Sonuç şöyledir:`Honeycrisp`
+Sonuç şöyledir: `Honeycrisp`
 
 *Örnek 4*
 
@@ -4801,7 +4801,7 @@ Bu örnek, `'//name[@expired]'` özniteliği olan tüm öğeleri bulmak Için XP
 
 `xpath(xml(parameters('items')), '//name[@expired]')`
 
-Sonuç şöyledir:`[ Gala, Honeycrisp ]`
+Sonuç şöyledir: `[ Gala, Honeycrisp ]`
 
 *Örnek 5*
 
@@ -4813,7 +4813,7 @@ Bu örnek, `'//name[@expired = 'true']'` özniteliği olan tüm öğeleri bulmak
 
 `xpath(xml(parameters('items')), '//name[@expired = 'true']')`
 
-Sonuç şöyledir:`[ Gala ]`
+Sonuç şöyledir: `[ Gala ]`
 
 *Örnek 6*
 
@@ -4828,7 +4828,7 @@ Bu örnek XPath ifadesinde geçirilir, `'//name[price>35]'` ,,,, tüm öğeleri 
 
 `xpath(xml(parameters('items')), '//name[price>35]')`
 
-Sonuç şöyledir:`Honeycrisp`
+Sonuç şöyledir: `Honeycrisp`
 
 *Örnek 7*
 
@@ -4840,7 +4840,7 @@ Bu örnek, düğümle eşleşen düğümleri bulur `<count></count>` ve bu düğ
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-Sonuç şöyledir:`30`
+Sonuç şöyledir: `30`
 
 *Örnek 8*
 
@@ -4863,9 +4863,9 @@ Düğüm ile eşleşen sonuç düğümü aşağıdadır `<location></location>` 
 > Örneğin, bir ifadeyi JSON dizesi olarak serileştirçalıştığınızda kaçış karakterleri kullanmanız gerekir. 
 > Ancak, mantıksal uygulama Tasarımcısı veya ifade Düzenleyicisi 'nde çalışıyorsanız, ters eğik çizgi karakteri temel alınan tanıma göre otomatik olarak eklendiğinden, çift tırnak işaretini atlamanız gerekmez, örneğin:
 > 
-> * Kod görünümü:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Kod görünümü: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * İfade Düzenleyicisi:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * İfade Düzenleyicisi: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 *Örnek 9*
 
@@ -4873,7 +4873,7 @@ Düğüm ile eşleşen sonuç düğümü aşağıdadır `<location></location>` 
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Sonuç şöyledir:`Paris`
+Sonuç şöyledir: `Paris`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

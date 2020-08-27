@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
-ms.openlocfilehash: 85c4d5b57c8f249213a044d7231f313f6882f231
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63e7522c3dce48307bc5407071703ced4e8cd815
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241153"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925449"
 ---
 > [!div class="nextstepaction"]
 > [GitHub 'da C# örneklerini keşfet](https://aka.ms/speech/github-csharp)

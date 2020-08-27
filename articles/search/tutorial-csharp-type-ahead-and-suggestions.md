@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dd93ef68b0e0e7ac465584eaecb3b4c8a0c39476
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420609"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934948"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
@@ -145,7 +145,7 @@ Kullanıcıya alternatifler sağlamanın en basit durumu ile başlayalım: bir �
  
     ![Benzer şekilde true olarak ayarlanmış "PA" yazıldığında](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    İlgileniyorsanız, [bilişsel arama Azure 'Daki Lucene sorgu söz dizimi](https://docs.microsoft.com/azure/search/query-lucene-syntax) , benzer aramalarda ayrıntılı olarak kullanılan mantığı açıklamaktadır.
+    İlgileniyorsanız, [bilişsel arama Azure 'Daki Lucene sorgu söz dizimi](./query-lucene-syntax.md) , benzer aramalarda ayrıntılı olarak kullanılan mantığı açıklamaktadır.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Önerilere vurgulama ekleyin
 
@@ -244,7 +244,7 @@ Kullanıcıya alternatifler sağlamanın en basit durumu ile başlayalım: bir �
 
     Öneriler için yaptığımız gibi otomatik tamamlama aramasında "SG" adlı aynı *öneri aracı* işlevini kullandığımızda (yalnızca otel adlarını otomatik tamamlamayı denememiz gerekir) dikkat edin.
 
-    Bir dizi **AutocompleteMode** ayarı vardır ve **Onetermwithcontext**kullandık. Ek seçeneklerin açıklaması için [otomatik tamamlama API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 'sine bakın.
+    Bir dizi **AutocompleteMode** ayarı vardır ve **Onetermwithcontext**kullandık. Ek seçeneklerin açıklaması için [otomatik tamamlama API](/rest/api/searchservice/autocomplete) 'sine bakın.
 
 4. Uygulamayı çalıştırın. Açılan listede görüntülenen seçenek aralığının tek sözcüklerdir. "Re" ile başlayan sözcükleri yazmayı deneyin. Daha fazla harf yazıldığında seçenek sayısının nasıl azaldığına dikkat edin.
 
@@ -464,5 +464,3 @@ Sonraki öğreticide, tek bir tıklama ile aramaları daraltmak için modelleri 
 
 > [!div class="nextstepaction"]
 > [C# öğreticisi: gezintiye yardımcı olması için modelleri kullanma-Azure Bilişsel Arama](tutorial-csharp-facets.md)
-
-

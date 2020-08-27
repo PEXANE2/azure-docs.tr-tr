@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2211dbe8a5e336ec10562bb8a66ed0e8cc2a9e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208761"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935186"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -30,7 +30,7 @@ Alan eşlemelerinin yararlı olduğu bazı durumlar:
 * Verilerinizi Base64 olarak kodlamanız veya kodu çözmelisiniz. Alan eşlemeleri, Base64 kodlaması ve kod çözme işlevleri dahil olmak üzere çeşitli **eşleme işlevlerini**destekler.
 
 > [!NOTE]
-> Dizin oluşturucularda alan eşlemeleri, veri alanlarını dizin alanlarıyla eşlemenin basit bir yoludur. bu sayede, hafif veri dönüştürme özelliği de vardır. Daha karmaşık veriler, dizini oluşturmak için kullanılan bir biçime yeniden şekillendirmek üzere ön işleme gerektirebilir. Göz önünde bulundurmanız gerekebilecek bir seçenek [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+> Dizin oluşturucularda alan eşlemeleri, veri alanlarını dizin alanlarıyla eşlemenin basit bir yoludur. bu sayede, hafif veri dönüştürme özelliği de vardır. Daha karmaşık veriler, dizini oluşturmak için kullanılan bir biçime yeniden şekillendirmek üzere ön işleme gerektirebilir. Göz önünde bulundurmanız gerekebilecek bir seçenek [Azure Data Factory](../data-factory/index.yml).
 
 ## <a name="set-up-field-mappings"></a>Alan eşlemelerini ayarlama
 
@@ -47,7 +47,7 @@ Alan eşlemeleri `fieldMappings` , Dizin Oluşturucu tanımının dizisine eklen
 
 ## <a name="map-fields-using-the-rest-api"></a>REST API kullanarak alanları eşleme
 
-[Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API isteği kullanarak yeni bir Dizin Oluşturucu oluştururken alan eşlemeleri ekleyebilirsiniz. Var olan bir dizin oluşturucunun alan eşlemelerini [güncelleştirme Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/update-indexer) API isteği kullanarak yönetebilirsiniz.
+[Create Indexer](/rest/api/searchservice/create-Indexer) API isteği kullanarak yeni bir Dizin Oluşturucu oluştururken alan eşlemeleri ekleyebilirsiniz. Var olan bir dizin oluşturucunun alan eşlemelerini [güncelleştirme Dizin Oluşturucu](/rest/api/searchservice/update-indexer) API isteği kullanarak yönetebilirsiniz.
 
 Örneğin, kaynak alanı farklı bir ada sahip bir hedef alanla eşleme aşağıda verilmiştir:
 
@@ -80,7 +80,7 @@ Kaynak alana, birden çok alan eşlemesinde başvurulabilir. Aşağıdaki örnek
 
 ## <a name="map-fields-using-the-net-sdk"></a>.NET SDK kullanarak alanları eşleme
 
-.NET SDK 'da, özelliklere [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
+.NET SDK 'da, özelliklere [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
 
 Özelliği doğrudan ayarlayarak Dizin Oluşturucuyu veya daha yenisini oluştururken alan eşlemelerini belirtebilirsiniz `Indexer.FieldMappings` .
 
@@ -125,7 +125,7 @@ Giriş dizesinin *URL güvenli* Base64 kodlamasını gerçekleştirir. Girişin 
 
 #### <a name="example---document-key-lookup"></a>Örnek-belge anahtarı arama
 
-Azure Bilişsel Arama belge anahtarında yalnızca URL güvenli karakterler görünebilir (çünkü müşterilerin [Arama API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 'sini kullanarak belgeyi ele alabilmesi gerekir). Anahtarınızın kaynak alanı URL güvenli olmayan karakterler içeriyorsa, `base64Encode` Bu işlevi dizin oluşturma sırasında dönüştürmek için kullanabilirsiniz. Ancak, bir belge anahtarı (dönüştürme öncesinde ve sonrasında) 1.024 karakterden daha uzun olamaz.
+Azure Bilişsel Arama belge anahtarında yalnızca URL güvenli karakterler görünebilir (çünkü müşterilerin [Arama API](/rest/api/searchservice/lookup-document) 'sini kullanarak belgeyi ele alabilmesi gerekir). Anahtarınızın kaynak alanı URL güvenli olmayan karakterler içeriyorsa, `base64Encode` Bu işlevi dizin oluşturma sırasında dönüştürmek için kullanabilirsiniz. Ancak, bir belge anahtarı (dönüştürme öncesinde ve sonrasında) 1.024 karakterden daha uzun olamaz.
 
 Arama zamanında kodlanmış anahtarı aldığınızda, `base64Decode` Bu işlevi kullanarak özgün anahtar değerini alabilir ve kaynak belgeyi almak için kullanabilirsiniz.
 
@@ -200,10 +200,10 @@ Azure Bilişsel Arama iki farklı Base64 kodlaması destekler. Aynı alanı kodl
 
 Azure Bilişsel Arama, URL güvenli Base64 kodlamasını ve normal Base64 kodlamasını destekler. Dizin oluşturma sırasında Base64 kodlamalı bir dize, daha sonra aynı kodlama seçenekleriyle yeniden oluşturulmalıdır, aksi takdirde sonuç orijinalle eşleşmez.
 
-`useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` Sırasıyla kodlama ve kod çözme parametreleri olarak ayarlanmışsa `true` `base64Encode` [HttpServerUtility. urltokenencoding](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) gibi davranır ve `base64Decode` [HttpServerUtility. urltokenşifre çözme](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)gibi davranır.
+`useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` Sırasıyla kodlama ve kod çözme parametreleri olarak ayarlanmışsa `true` `base64Encode` [HttpServerUtility. urltokenencoding](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) gibi davranır ve `base64Decode` [HttpServerUtility. urltokenşifre çözme](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8)gibi davranır.
 
 > [!WARNING]
-> `base64Encode`Anahtar değerleri üretmek için kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerindeki karakterlerle ilgili kısıtlamaların tamamına yönelik [&#40;Azure Bilişsel Arama&#41;adlandırma kuralları ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) ' na bakın.
+> `base64Encode`Anahtar değerleri üretmek için kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerindeki karakterlerle ilgili kısıtlamaların tamamına yönelik [&#40;Azure Bilişsel Arama&#41;adlandırma kuralları ](/rest/api/searchservice/naming-rules) ' na bakın.
 
 Azure Bilişsel Arama .NET kitaplıkları, yerleşik kodlama sağlayan tam .NET Framework kabul eder. `useHttpServerUtilityUrlTokenEncode`Ve `useHttpServerUtilityUrlTokenDecode` seçenekleri bu yerleşik işlevlerden yararlanır. .NET Core veya başka bir çerçeve kullanıyorsanız, bu seçenekleri, `false` çerçevesinin kodlama ve kod çözme işlevlerini doğrudan olarak ayarlamayı ve çağırmayı öneririz.
 
@@ -214,7 +214,7 @@ Aşağıdaki tabloda, dizenin farklı Base64 kodlamaları karşılaştırılmakt
 | Doldurma ile Base64 | `MDA+MDA/MDA=` | URL-güvenli karakterler kullanın ve doldurmayı kaldırın | Standart Base64 karakterlerini kullanın ve doldurma ekleyin |
 | Doldurma olmadan Base64 | `MDA+MDA/MDA` | URL kullanımı güvenli karakterler | Standart Base64 karakterlerini kullan |
 | URL-doldurma ile güvenli Base64 | `MDA-MDA_MDA=` | Doldurmayı kaldır | Doldurma Ekle |
-| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Yok | Yok |
+| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Hiçbiri | Hiçbiri |
 
 <a name="extractTokenAtPositionFunction"></a>
 

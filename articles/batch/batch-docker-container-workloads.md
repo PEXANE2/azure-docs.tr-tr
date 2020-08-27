@@ -3,13 +3,13 @@ title: Kapsayıcı iş yükleri
 description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı ve ölçeklendirmeyi öğrenin. Kapsayıcı görevlerinin çalıştırılmasını destekleyen bir işlem düğümleri havuzu oluşturun.
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: a26582572302f670010f3038147687b47feef84a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726732"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933554"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 
@@ -21,7 +21,7 @@ Kapsayıcı kavramları ve bir Batch havuzu ve işi oluşturma hakkında bilgi s
 
 Kapsayıcıları kullanmak, uygulamaları çalıştırmak için bir ortamı ve bağımlılıkları yönetmek zorunda kalmadan Batch görevleri çalıştırmanın kolay bir yolunu sunar. Kapsayıcılar, uygulamaları birçok farklı ortamda çalışabilen hafif, taşınabilir ve kendi kendine yeterli birimler olarak dağıtır. Örneğin, bir kapsayıcıyı yerel olarak derleyin ve test edin, sonra kapsayıcı görüntüsünü Azure 'da veya başka bir yerde bir kayıt defterine yükleyin. Kapsayıcı dağıtım modeli, uygulamanızın çalışma zamanı ortamının her zaman doğru şekilde yüklenmesini ve uygulamayı barındırdığınıza her yerde yapılandırılmasını sağlar. Toplu Işteki kapsayıcı tabanlı görevler Ayrıca, uygulama paketleri ve kaynak dosyalarının ve çıkış dosyalarının yönetimi dahil olmak üzere, kapsayıcı olmayan görevlerin özelliklerinden de yararlanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **SDK sürümleri**: Batch SDK 'ları, aşağıdaki sürümlerden itibaren kapsayıcı görüntülerini destekler:
     * Batch REST API sürüm 2017 -09-01.6.0
@@ -56,15 +56,15 @@ Linux kapsayıcı iş yükleri için Batch Şu anda, özel bir görüntüye gere
 
 #### <a name="vm-sizes-without-rdma"></a>RDMA olmadan VM boyutları
 
-- 'In`microsoft-azure-batch`
-  - Sunar`centos-container`
-  - Sunar`ubuntu-server-container`
+- 'In `microsoft-azure-batch`
+  - Sunar `centos-container`
+  - Sunar `ubuntu-server-container`
 
 #### <a name="vm-sizes-with-rdma"></a>RDMA ile VM boyutları
 
-- 'In`microsoft-azure-batch`
-  - Sunar`centos-container-rdma`
-  - Sunar`ubuntu-server-container-rdma`
+- 'In `microsoft-azure-batch`
+  - Sunar `centos-container-rdma`
+  - Sunar `ubuntu-server-container-rdma`
 
 Bu görüntüler yalnızca Azure Batch havuzlarında kullanılmak üzere desteklenir ve Docker kapsayıcı yürütmesi için tasarlanmıştır. Bunlar özelliği:
 
@@ -253,7 +253,7 @@ Bir Batch görevinin kapsayıcı görüntüsü bir [ENTRYPOINT](https://docs.doc
 
 ### <a name="container-task-working-directory"></a>Kapsayıcı görevi çalışma dizini
 
-Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırıldıysa [iş](https://docs.docker.com/engine/reference/builder/#workdir) dizininden farklı olduğunu veya varsayılan kapsayıcı çalışma dizinini ( `C:\` bir Windows kapsayıcısında veya `/` bir Linux kapsayıcısında) farklı olduğunu unutmayın.
+Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırıldıysa [iş](https://docs.docker.com/engine/reference/builder/#workdir) dizininden farklı olduğunu veya varsayılan kapsayıcı çalışma dizinini ( `C:\`  bir Windows kapsayıcısında veya `/` bir Linux kapsayıcısında) farklı olduğunu unutmayın.
 
 Batch kapsayıcı görevi için:
 

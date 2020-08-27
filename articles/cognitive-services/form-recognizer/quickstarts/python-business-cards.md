@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934336"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama
 
@@ -38,33 +38,35 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="analyze-a-business-card"></a>Bir iş kartını analiz etme
 
-Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak **[Iş kartını çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
+Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak **[Iş kartını çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
-1. `<path to your business card>`Yerel form belgenizin yoluyla değiştirin.
+1. `<endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
+1. `<path to your business card>`İş kartı görüntünüzün veya PDF 'nizin yerel yoluyla değiştirin.
 1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<file type>`' Image/JPEG ', ' image/png ', ' Application/PDF ' veya ' Image/Tiff ' ile değiştirin.
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ Bir iş kartını çözümlemeye başlamak için aşağıdaki Python betiğini k
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-businesscards.py`.
 
-`202 (Success)`Komut dosyasının konsola yazdırabileceği bir **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki dize `operations/` Işlem kimliğidir.
+`202 (Success)`Komut dosyasının konsola yazdırabileceği bir **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, uzun süre çalışan işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir sonuç KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki dize `operations/` sonuç kimliğidir.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>İş kartı sonuçlarını al
 
-**Çözümle Iş kartı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[analiz Iş kartı sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API 'sini çağırabilirsiniz. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu işlem KIMLIĞI değerini yeni bir API çağrısında kullanır. Bu betik, sonuçlar kullanılabilir olana kadar, API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
+**Çözümle Iş kartı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[analiz Iş kartı sonucunu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** API 'sini çağırabilirsiniz. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu, sonuç KIMLIĞI değerini yeni bir API çağrısında kullanır. Bu betik, sonuçlar kullanılabilir olana kadar, API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 ![Contoso şirketinden bir iş kartı](../media/business-card-english.jpg)
 
-Bu örnek, form tanıyıcı tarafından döndürülen JSON çıkışını gösterir. Bu örnekler örneğin okunabilirliğini için kesildi.
+Bu örnek, form tanıyıcı tarafından döndürülen JSON çıkışını gösterir. Okunabilirlik için kesildi.
 
 ```json
 {
@@ -243,7 +245,7 @@ Bu örnek, form tanıyıcı tarafından döndürülen JSON çıkışını göste
 }
 ```
 
-Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderilecek yanıtları yazdırır. `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada şirket adı, adı, soyadı, telefon vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
+Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderilecek yanıtları yazdırır. `"readResults"`Düğüm, tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"documentResults"`Düğüm, modelin bulduğu iş kartına özgü değerleri içerir. Burada şirket adı, ilk adı, soyadı, telefon numarası vb. gibi yararlı iletişim bilgileri bulabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -251,4 +253,4 @@ Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderi
 Bu hızlı başlangıçta, bir iş kartının içeriğini ayıklamak için Python ile REST API adlı form tanıyıcıyı kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

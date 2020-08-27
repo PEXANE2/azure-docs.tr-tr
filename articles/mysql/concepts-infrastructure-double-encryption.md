@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066415"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919718"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>MySQL için Azure veritabanı altyapısı Çift şifreleme
 
@@ -32,7 +32,7 @@ Altyapı katmanlarında uygulama, anahtarların çeşitliliğe de sahiptir. Alty
 > [!NOTE]
 > Altyapı çift şifrelemenin kullanılması, ek şifreleme işlemi nedeniyle MySQL için Azure veritabanı sunucusu üzerinde performans etkisine sahip olacaktır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 MySQL için Azure veritabanı 'nın altyapı çift şifrelemesi aşağıdaki avantajları sağlar:
 
@@ -62,6 +62,12 @@ MySQL için Azure veritabanı tarafından sunulan şifreleme özellikleri birlik
 MySQL için Azure veritabanı 'nda, hizmet tarafından yönetilen anahtar kullanılarak altyapı Çift şifreleme desteği aşağıdaki sınırlamalara sahiptir:
 
 * Bu işlevselliğe yönelik destek, **genel amaçlı** ve bellek için **iyileştirilmiş** fiyatlandırma katmanlarında sınırlandırılmıştır.
+* Aşağıdaki bölgelerde altyapı şifrelemesi etkinleştirilmiş bir MySQL için Azure veritabanı oluşturabilirsiniz:
+
+   * Doğu ABD
+   * Orta Güney ABD
+   * Batı ABD 2
+   
 * * Bu özellik yalnızca bölge ve sunucularda desteklenir ve 16 TB 'a kadar depolamayı destekler. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [depolama belgelerine](concepts-pricing-tiers.md#storage)bakın.
 
     > [!NOTE]

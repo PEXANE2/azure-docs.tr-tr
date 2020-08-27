@@ -3,13 +3,14 @@ title: Konsol uygulamaları için Azure Application Insights | Microsoft Docs
 description: Kullanılabilirlik, performans ve kullanım için Web uygulamalarını izleyin.
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310472"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933350"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -36,7 +37,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetri anında gönderilmez. Telemetri öğeleri, toplu olarak ApplicationInsights SDK 'Sı tarafından gönderilir. Yöntemler çağrıldıktan hemen sonra gelen konsol uygulamalarında `Track()` , `Flush()` `Sleep` / `Delay` Bu makalede daha sonra [Tam örnekte](#full-example) gösterildiği gibi uygulamanın uygulamadan çıkmadan önce, telemetri gönderilemez. `Sleep`kullanıyorsanız, gerekli değildir `InMemoryChannel` . Burada izlenen gereksinimlerle ilgili etkin bir sorun var `Sleep` : [ApplicationInsights-DotNet/sorunlar/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+> Telemetri anında gönderilmez. Telemetri öğeleri, toplu olarak ApplicationInsights SDK 'Sı tarafından gönderilir. Yöntemler çağrıldıktan hemen sonra gelen konsol uygulamalarında `Track()` , `Flush()` `Sleep` / `Delay` Bu makalede daha sonra [Tam örnekte](#full-example) gösterildiği gibi uygulamanın uygulamadan çıkmadan önce, telemetri gönderilemez. `Sleep` kullanıyorsanız, gerekli değildir `InMemoryChannel` . Burada izlenen gereksinimlerle ilgili etkin bir sorun var `Sleep` : [ApplicationInsights-DotNet/sorunlar/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) paketinin en son sürümünü yükler-http, SQL veya diğer dış bağımlılık çağrılarını otomatik olarak izler.

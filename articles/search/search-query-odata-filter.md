@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201547"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934863"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $filter söz dizimi
 
 Azure Bilişsel Arama, tam metin arama terimlerinin yanı sıra bir arama sorgusuna ek ölçütler uygulamak için [OData Filtre ifadelerini](query-odata-filter-orderby-syntax.md) kullanır. Bu makalede, filtrelerin ayrıntılı sözdizimi ayrıntıları açıklanmıştır. Filtrelerin ne olduğu ve belirli sorgu senaryolarına yönelik olarak nasıl kullanılacağı hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama filtreleri](search-filters.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 OData dilinde bir filtre, aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından gösterildiği gibi, bir Boolean ifadedir ve bu da birçok ifade türünden biri olabilir:
 
@@ -67,7 +67,7 @@ Boolean ifadelerinin türleri şunlardır:
 - Aşağıdakiler dahil olmak üzere, Boole işlevlerine yapılan çağrılar:
   - `geo.intersects`, belirli bir noktanın belirli bir çokgen içinde olup olmadığını test eder. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
   - `search.in`bir alan veya Aralık değişkenini bir değer listesindeki her bir değerle karşılaştıran. Daha fazla bilgi için bkz [. `search.in` Azure bilişsel arama 'da OData işlevi](search-query-odata-search-in-function.md).
-  - `search.ismatch`ve `search.ismatchscoring` tam metin arama işlemlerini bir filtre bağlamında yürütür. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
+  - `search.ismatch` ve `search.ismatchscoring` tam metin arama işlemlerini bir filtre bağlamında yürütür. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
 - Türündeki alan yolları veya Aralık değişkenleri `Edm.Boolean` . Örneğin, dizininiz adlı bir Boole alanı varsa `IsEnabled` ve bu alanın olduğu tüm belgeleri döndürmek istiyorsanız `true` , filtre ifadeniz yalnızca ad olabilir `IsEnabled` .
 - Parantez içinde Boole ifadeleri. Parantez kullanımı, bir filtredeki işlem sırasını açıkça belirlemede yardımcı olabilir. OData işleçlerinin varsayılan önceliği hakkında daha fazla bilgi için sonraki bölüme bakın.
 
@@ -75,7 +75,7 @@ Boolean ifadelerinin türleri şunlardır:
 
 Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azure Bilişsel Arama, bunu bir işleç öncelik kuralları kümesine göre değerlendirir. Bu kurallar, alt ifadeleri birleştirmek için kullanılan işleçleri temel alır. Aşağıdaki tablo, işleç gruplarını en yüksekten en düşük önceliğe göre listeler:
 
-| Grup | İşleç (ler) |
+| Gruplama | İşleç (ler) |
 | --- | --- |
 | Mantıksal işleçler | `not` |
 | Karşılaştırma işleçleri | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
@@ -142,7 +142,7 @@ Park eden tüm oteller ve tüm odaların sigpasız olduğunu bulun:
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 ```
 
- \-Veya  
+ \- Veya  
 
 ```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
@@ -178,7 +178,7 @@ Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (burad
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-Bir çokgen ( `Location` Edm. Geographyıpoint türünde bir alandır) olarak tanımlanan belirli bir görünüm penceresinin içindeki tüm oteller bulun. Çokgen kapatılmalıdır, yani birinci ve son nokta kümelerinin aynı olması gerekir. Ayrıca, [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Bir çokgen ( `Location` Edm. Geographyıpoint türünde bir alandır) olarak tanımlanan belirli bir görünüm penceresinin içindeki tüm oteller bulun. Çokgen kapatılmalıdır, yani birinci ve son nokta kümelerinin aynı olması gerekir. Ayrıca, [noktaların saatin tersi sırada listelenmesi gerekir](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -214,7 +214,7 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
+"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -249,4 +249,4 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

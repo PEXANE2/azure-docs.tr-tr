@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146037"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934880"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure bilişsel arama- `eq` , `ne` ,, `gt` `lt` , `ge` ve içinde OData karşılaştırma işleçleri`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure bilişsel arama- `eq` , `ne` ,, `gt` `lt` , `ge` ve içinde OData karşılaştırma işleçleri `le`
 
 Azure Bilişsel Arama 'deki bir [OData filtre ifadesinde](query-odata-filter-orderby-syntax.md) en temel işlem, bir alanı verilen değerle karşılaştırmaktır. İki tür karşılaştırma yapılabilir--eşitlik karşılaştırması ve Aralık karşılaştırması. Bir alanı sabit değerle karşılaştırmak için aşağıdaki işleçleri kullanabilirsiniz:
 
@@ -47,7 +47,7 @@ Bir alanın belirli bir değer aralığı içinde olup olmadığını test etmek
 > [!NOTE]
 > İsterseniz, sabit değeri işlecin sol tarafına ve alan adını sağ tarafta koyabilirsiniz. Aralık işleçleri için karşılaştırma anlamı tersine çevrilir. Örneğin, sabit değer Solsa, `gt` sabit değerinin alandan büyük olup olmadığını test edecektir. Karşılaştırma işleçlerini, gibi bir işlevin sonucunu karşılaştırmak için de kullanabilirsiniz `geo.distance` . Gibi Boole işlevleri için `search.ismatch` , sonucu veya ile karşılaştırma `true` `false` isteğe bağlıdır.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), karşılaştırma işleçlerini kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
@@ -100,7 +100,7 @@ Türündeki bir alanı ile karşılaştırma gibi izin verilmeyen karşılaştı
 
 Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksiyon olmayan alanların potansiyel olarak olabileceğini unutmamak önemlidir `null` . Aşağıdaki tabloda her iki tarafın de bir karşılaştırma ifadesi için olası tüm sonuçlar gösterilmektedir `null` :
 
-| İşleç | Yalnızca alan veya değişken olduğunda sonuç`null` | Yalnızca sabit değer olduğunda sonuç`null` | Hem alan hem de değişken ve sabit olduğunda sonuç`null` |
+| Operatör | Yalnızca alan veya değişken olduğunda sonuç `null` | Yalnızca sabit değer olduğunda sonuç `null` | Hem alan hem de değişken ve sabit olduğunda sonuç `null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
 | `lt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
@@ -113,7 +113,7 @@ Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksi
 
 Dizininizdeki tür alanları varsa `Edm.Double` ve `NaN` Bu alanlara değerleri yüklerseniz, filtre yazarken bu hesaba hesap eklemeniz gerekir. Azure Bilişsel Arama, değerleri işlemek için IEEE 754 standardını uygular `NaN` ve bu tür değerlerle karşılaştırmalar, aşağıdaki tabloda gösterildiği gibi belirgin olmayan sonuçlar üretir.
 
-| İşleç | En az bir işlenen olduğunda sonuç`NaN` |
+| Operatör | En az bir işlenen olduğunda sonuç `NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -169,4 +169,4 @@ Rooms/any(room: room/Type eq 'Deluxe Room')
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

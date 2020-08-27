@@ -3,13 +3,13 @@ title: Etkili liste sorguları tasarlama
 description: Havuzlar, işler, görevler ve işlem düğümleri gibi Batch kaynakları hakkında bilgi isteğinde bulunduğunuzu filtreleyerek performansı artırın.
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960614"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933524"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
 
@@ -88,8 +88,8 @@ Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin d
 - Tüm özellik adları büyük/küçük harfe duyarlıdır, ancak özellik değerleri büyük/küçük harfe duyarsızdır.
 - Tarih/saat dizeleri iki biçimden biri olabilir ve önünde olmalıdır `DateTime` .
   
-  - W3C-DTF biçim örneği:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  - RFC 1123 biçim örneği:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  - W3C-DTF biçim örneği: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  - RFC 1123 biçim örneği: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 - Boolean dizeleri ya da `true` `false` .
 - Geçersiz bir özellik veya işleç belirtilirse, bir `400 (Bad Request)` hata ortaya kaydedilir.
 

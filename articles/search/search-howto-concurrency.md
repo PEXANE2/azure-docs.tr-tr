@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145283"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935203"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Bilişsel Arama eşzamanlılık yönetimi
 
@@ -28,8 +28,8 @@ Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirk
 
 Tüm kaynakların, nesne sürümü bilgilerini sağlayan bir [*varlık etiketi (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) vardır. Önce ETag 'i denetleyerek, kaynağın ETag 'i yerel kopyalarınızla eşleştirerek tipik bir iş akışında (alma, yerel olarak değiştirme, güncelleştirme) eşzamanlı güncelleştirmelerden kaçınabilirsiniz.
 
-+ REST API, istek üst bilgisinde [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) kullanır.
-+ .NET SDK bir accessCondition nesnesi aracılığıyla ETag 'i ayarlıyor, [IF-Match ayarlanıyor | Kaynakta IF-Match-None üst bilgisi](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) . [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) öğesinden devralan herhangi bir nesne bir accesscondition nesnesine sahiptir.
++ REST API, istek üst bilgisinde [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) kullanır.
++ .NET SDK bir accessCondition nesnesi aracılığıyla ETag 'i ayarlıyor, [IF-Match ayarlanıyor | Kaynakta IF-Match-None üst bilgisi](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) . [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) öğesinden devralan herhangi bir nesne bir accesscondition nesnesine sahiptir.
 
 Bir kaynağı her güncelleştirişinizde ETag, otomatik olarak değişir. Eşzamanlılık yönetimini uyguladığınızda, tek yapmanız gereken, uzak kaynağın istemcide değiştirdiğiniz kaynağın kopyasıyla aynı ETag 'e sahip olmasını gerektiren güncelleştirme isteğine bir ön koşul koyuyor. Eşzamanlı bir işlem uzak kaynağı zaten değiştiriyorsa ETag, önkoşullarla eşleşmez ve istek HTTP 412 ile başarısız olur. .NET SDK kullanıyorsanız, bu bildirimler `CloudException` `IsAccessConditionFailed()` Uzantı yönteminin true döndüğü yerdir.
 
@@ -217,6 +217,6 @@ ETags veya AccessCondition nesnelerini içerecek şekilde aşağıdaki örnekler
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Ortak http isteği ve yanıt üst bilgileri](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
- [Http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
- [Dizin işlemleri (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Ortak http isteği ve yanıt üst bilgileri](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ [Http durum kodları](/rest/api/searchservice/http-status-codes) 
+ [Dizin işlemleri (REST API)](/rest/api/searchservice/index-operations)
