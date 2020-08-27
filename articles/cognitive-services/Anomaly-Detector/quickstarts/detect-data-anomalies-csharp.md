@@ -10,12 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 86742568d8f0c7c951d872e7df23b8ce1cb0920f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922353"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Hızlı başlangıç: anomali algılayıcısının REST API ve C kullanarak zaman serisi verilerinizde bozukluklar algılama #
 
@@ -28,7 +29,7 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
  Bu uygulama C# dilinde yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu hızlı başlangıç için kaynak kodunu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)'da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 - Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal bir anomali algılayıcı kaynağı oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.

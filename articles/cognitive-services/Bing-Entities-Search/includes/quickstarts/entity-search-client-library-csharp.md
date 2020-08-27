@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: 39a6c21ad056980e8c7b146e36a6e185cb3ed95e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 27951a6da2c5e4a9d17e8b332d8ee9706701649d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136784"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931905"
 ---
 C# için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)' da bulunabilir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 * NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi.
@@ -28,7 +28,7 @@ C# için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlam
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Bing Varlık Arama istemci kitaplığını Visual Studio projenize eklemek için, **Çözüm Gezgini**' dan `Microsoft.Azure.CognitiveServices.Search.EntitySearch` **NuGet Paketlerini Yönet** seçeneğini kullanın ve paketi ekleyin.
+Bing Varlık Arama istemci kitaplığını Visual Studio projenize eklemek için, **Çözüm Gezgini**' dan **NuGet Paketlerini Yönet** seçeneğini kullanın ve `Microsoft.Azure.CognitiveServices.Search.EntitySearch` paketi ekleyin.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -48,13 +48,13 @@ Bing Varlık Arama istemci kitaplığını Visual Studio projenize eklemek için
 
 ## <a name="create-a-client-and-send-a-search-request"></a>İstemci oluşturma ve arama isteği gönderme
 
-1. Yeni bir arama istemcisi oluşturun. Yeni `ApiKeyServiceClientCredentials`bir oluşturarak abonelik anahtarınızı ekleyin.
+1. Yeni bir arama istemcisi oluşturun. Yeni bir oluşturarak abonelik anahtarınızı ekleyin `ApiKeyServiceClientCredentials` .
 
     ```csharp
     var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. Sorgunuzu aramak için istemci `Entities.Search()` işlevini kullanın:
+1. `Entities.Search()`Sorgunuzu aramak için istemci işlevini kullanın:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
@@ -62,7 +62,7 @@ Bing Varlık Arama istemci kitaplığını Visual Studio projenize eklemek için
 
 ## <a name="get-and-print-an-entity-description"></a>Bir varlık açıklaması al ve Yazdır
 
-1. API arama sonuçları döndürülürse, ana varlığı öğesinden `entityData`alın.
+1. API arama sonuçları döndürülürse, ana varlığı öğesinden alın `entityData` .
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();

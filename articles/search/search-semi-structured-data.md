@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559012"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929712"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Öğretici: REST kullanarak Azure Storage 'dan JSON bloblarını dizine
 
 Azure Bilişsel Arama, yarı yapılandırılmış verilerin nasıl okunacağını bilen bir [Dizin Oluşturucu](search-indexer-overview.md) kullanarak Azure Blob depolamada JSON belgelerini ve dizilerini dizinedebilir. Yarı yapılandırılmış veriler, veriler içindeki içeriği ayıran etiketleri veya işaretleri içerir. Tam olarak dizin oluşturulması gereken yapılandırılmamış veriler arasındaki farkı ve bir ilişkisel veritabanı şeması gibi bir veri modeline bağlı olan, tek başına yapılandırılmış verileri alan temelinde dizinlenebilir şekilde ayırır.
 
-Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/) kullanılmaktadır:
+Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [arama REST API 'leri](/rest/api/searchservice/) kullanılmaktadır:
 
 > [!div class="checklist"]
 > * Azure Blob kapsayıcısı için Azure Bilişsel Arama veri kaynağı yapılandırma
@@ -29,9 +29,9 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [ara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-+ [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Depolama](../storage/common/storage-account-create.md)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -72,7 +72,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
+1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
 1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin.
 
@@ -116,7 +116,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
 
 ## <a name="3---create-a-data-source"></a>3-veri kaynağı oluşturma
 
-[Veri kaynağı oluşturma API 'si](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , hangi verilerin dizine oluşturulacağını belirten bir Azure bilişsel arama nesnesi oluşturur.
+[Veri kaynağı oluşturma API 'si](/rest/api/searchservice/create-data-source) , hangi verilerin dizine oluşturulacağını belirten bir Azure bilişsel arama nesnesi oluşturur.
 
 1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin. 
 
@@ -159,7 +159,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
 
 ## <a name="4---create-an-index"></a>4-dizin oluşturma
     
-İkinci çağrı, tüm aranabilir verileri depolayan bir Azure Bilişsel Arama dizini oluşturan [Dizin API 'Si oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-index). Dizin, tüm parametreleri ve parametrelerin özniteliklerini belirtir.
+İkinci çağrı, tüm aranabilir verileri depolayan bir Azure Bilişsel Arama dizini oluşturan [Dizin API 'Si oluşturur](/rest/api/searchservice/create-index). Dizin, tüm parametreleri ve parametrelerin özniteliklerini belirtir.
 
 1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
@@ -234,7 +234,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
 
 ## <a name="5---create-and-run-an-indexer"></a>5-Dizin Oluşturucu oluşturma ve çalıştırma
 
-Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine aktarır ve isteğe bağlı olarak veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. REST API [Dizin Oluşturucu oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine aktarır ve isteğe bağlı olarak veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. REST API [Dizin Oluşturucu oluşturur](/rest/api/searchservice/create-indexer).
 
 1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 

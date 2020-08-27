@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589992"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930868"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault kimlik doğrulaması
 
@@ -112,14 +112,9 @@ Bu noktada, kayıtlı bir hizmet sorumlusu vardır. Bunu, "uygulama kayıtları"
 1. Sertifika oluşturma
 
     * Seçenek 1: [OpenSSL](https://www.openssl.org/) kullanarak sertifika oluşturma (yalnızca test amaçlı olarak, üretimde otomatik olarak imzalanan sertifikalar kullanmayın)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * 2. seçenek: Anahtar Kasası kullanarak bir sertifika oluşturun. [Azure Key Vault bir sertifika oluşturun](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. Sertifikayı pek biçiminde indirin
+1. Sertifikayı pek/PFX biçiminde indirin
 1. Azure portal oturum açın ve Azure Active Directory gidin
 1. "Uygulama kayıtları" na tıklayın
 1. Bölüm 1 ' de oluşturduğunuz hizmet sorumlusunu seçin.

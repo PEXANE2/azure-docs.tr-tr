@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d94e19753a93d2682043d7b67b867325067cee5d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762309"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931973"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure portal kullanarak Azure DDoS koruması standardını yönetme
 
@@ -61,7 +61,7 @@ DDoS koruma planı, aboneliklerde DDoS koruma standardı etkin olan bir sanal a�
     | Abonelik    | Aboneliğinizi seçin.                                    |
     | Kaynak grubu  | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
     | Konum        | Doğu ABD                                                      |
-    | DDos koruması | **Standart** ' ı seçin ve **DDoS koruması**altında **myddosprotectionplan**' ı seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
+    | DDoS koruma standardı | **Etkinleştir**’i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
 
 Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bir kaynak grubuna veya aboneliğe taşıyamazsınız. DDoS standart özellikli bir sanal ağı taşımanız gerekiyorsa, önce DDoS standardını devre dışı bırakın, sanal ağı taşıyın ve ardından DDoS standardını etkinleştirin. Taşıma işleminden sonra, sanal ağ içindeki tüm korumalı genel IP adresleri için otomatik olarak ayarlanan ilke eşikleri sıfırlanır.
 
@@ -229,7 +229,7 @@ Uyarılar, saldırı altında genel IP adresi, coğrafi ve tehdit bilgileri ve d
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Name                                     |
+| Eylem                                            | Ad                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |

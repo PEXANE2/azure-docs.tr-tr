@@ -3,12 +3,12 @@ title: Bir komut dosyası ile Azure geçişi gereci ayarlama
 description: Bir komut dosyası ile Azure geçişi gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 43e47c6b4121a2f389dfec27873b90b7031c4f2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929984"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası ile gereç ayarlama
 
@@ -36,7 +36,7 @@ Hyper-V | 16 GB bellek, 8 GB disk depolaması 80 etrafında sekiz vCPU ile Windo
 
 ## <a name="set-up-the-appliance-for-vmware"></a>VMware için gereci ayarlama
 
-VMware için gereci ayarlamak için, AzureMigrateInstaller.zip adlı daraltılmış dosyayı [buradan](https://go.microsoft.com/fwlink/?linkid=2105112)indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
+VMware için gereci ayarlamak için, AzureMigrateInstaller-Server-Public.zip adlı daraltılmış dosyayı portaldan veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140334)indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
 
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
@@ -46,12 +46,12 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 3. Azure genel bulutu için en son gereç sürümünü ve betiğini doğrulayın:
 
     **Algoritma** | **İndir** | **SHA256**
     --- | --- | ---
-    VMware (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
+    VMware (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 
 
@@ -74,7 +74,7 @@ Betiği çalıştırmak için:
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
 4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın:
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
 5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 
@@ -84,7 +84,7 @@ Gerecin [genel](migrate-appliance.md#public-cloud-urls) bulut Için Azure URL 'l
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V için gereci ayarlama
 
-Hyper-V için gereci ayarlamak için, AzureMigrateInstaller.zip adlı daraltılmış dosyayı [buradan](https://go.microsoft.com/fwlink/?linkid=2105112)indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
+Hyper-V için gereci ayarlamak için portaldan veya [buradan](https://go.microsoft.com/fwlink/?linkid=2105112)AzureMigrateInstaller-Server-Public.zip adlı daraltılmış dosyayı indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
 
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
@@ -94,13 +94,13 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 
 3. Azure genel bulutu için en son gereç sürümünü ve betiğini doğrulayın:
 
     **Senaryo** | **İndir** | **SHA256**
     --- | --- | ---
-    Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+    Hyper-V (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140334) |  5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -119,7 +119,9 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: 
+
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 

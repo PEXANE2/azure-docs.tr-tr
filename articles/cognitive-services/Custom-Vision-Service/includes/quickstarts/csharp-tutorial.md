@@ -3,16 +3,17 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba09deda155ac446693a7e1037390a3f1fd2700f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508566"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919395"
 ---
 Bu makalede, bir görüntü sınıflandırma modeli oluşturmak Için C# ile Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi .NET uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _olmadan_ bir sınıflandırma modeli oluşturma ve kullanma sürecini yapmak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](../../getting-started-build-a-classifier.md) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]

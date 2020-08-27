@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines ile sürekli tümleştirme
 description: Azure Resource Manager şablonlarını sürekli olarak derlemeyi, test etmek ve dağıtmak hakkında bilgi edinin.
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86118928"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892686"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
 
@@ -19,7 +19,7 @@ Azure DevOps, işleri planlamak, kod geliştirmeyle işbirliği yapmak ve uygula
 
 > [!NOTE]
 > Bir proje adı seçin. Öğreticiden gittiğinizde, **Azurermpipeline** herhangi birini proje adınızla değiştirin.
-> Bu proje adı, kaynak adları oluşturmak için kullanılır.  Kaynak bir depolama hesabıdır. Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
+> Bu proje adı, kaynak adları oluşturmak için kullanılır.  Kaynaklardan biri bir depolama hesabıdır. Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -65,7 +65,7 @@ Bu depo, *uzak depo*olarak adlandırılır. Aynı projenin geliştiricilerin her
 
 1. Git kabuğu veya git Bash 'i açın.  [Ön koşullara](#prerequisites) bakın.
 1. Geçerli klasörünüzün **GitHub**olduğunu doğrulayın.
-1. Şu komutu çalıştırın:
+1. Aşağıdaki komutu çalıştırın:
 
     ```bash
     git clone https://github.com/[YourAccountName]/[YourGitHubRepositoryName]
@@ -95,7 +95,7 @@ azuredeploy.js, yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersiniz.
 1. Açık değilse *Git kabuğu* veya *Git Bash*'i açın.
 1. Dizini yerel deponuzdaki CreateWebApp klasörü ile değiştirin.
 1. Dosyadaki **azuredeploy.js** klasörde olduğunu doğrulayın.
-1. Şu komutu çalıştırın:
+1. Aşağıdaki komutu çalıştırın:
 
     ```bash
     git add .
@@ -175,8 +175,8 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
     * **Konum**: kaynak grubu için bir konum seçin, örneğin **Orta ABD**.
     * **Şablon konumu**: **bağlı yapıt**' yi seçin, bu, görevin şablon dosyasını doğrudan bağlı depodan aramasını gösterir.
     * **Şablon**: **createwebapp/azuredeploy.js**girin. Klasör adını ve dosya adını değiştirdiyseniz, bu değeri değiştirmeniz gerekir.
-    * **Şablon parametreleri**: bu alanı boş bırakın. Parametre değerlerini * * geçersiz kılma şablonu parametrelerinde belirtirsiniz.
-    * **OverrideParameters**: ENTER **-ProjectName [enteraprojectname]-linkedtemplateuri [EnterTheLinkedTemplateURL]**. Proje adını ve bağlantılı şablon URL 'sini değiştirin. Bağlı şablon URL 'SI, [GitHub deposu oluşturma](#create-a-github-repository)sonunda yazdığınız şeydir.
+    * **Şablon parametreleri**: bu alanı boş bırakın. Parametre değerlerini **geçersiz kılma şablonu parametrelerinde**belirtirsiniz.
+    * **Geçersiz kılma şablonu parametreleri**: ENTER **-ProjectName [enteraprojectname]-linkedtemplateuri [EnterTheLinkedTemplateURL]**. Proje adını ve bağlantılı şablon URL 'sini değiştirin. Bağlı şablon URL 'SI, [GitHub deposu oluşturma](#create-a-github-repository)sonunda yazdığınız şeydir. İle başlar **https://raw.githubusercontent.com** .
     * **Dağıtım modu**: **artımlı**' i seçin.
     * **Dağıtım adı**: **Deploypipelinetemplate**girin. **Dağıtım adını**görebilmeniz için **Gelişmiş** ' i seçin.
 

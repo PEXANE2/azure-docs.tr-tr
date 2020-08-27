@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509612"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922574"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
 >[!IMPORTANT]
->Ekipler için medya iyileştirmesi Microsoft 365 Kamu ortamlarında desteklenmez.
+>Takımlar için medya iyileştirmesi Microsoft 365 Kamu (GCC) ortamları için desteklenir. Takımlar için medya iyileştirmesi GCC-High veya DoD için desteklenmez.
 
 >[!NOTE]
 >Microsoft ekipleri için medya iyileştirmesi yalnızca Windows 10 makinelerinde Windows Masaüstü istemcisi için kullanılabilir. Medya iyileştirmeleri Windows Masaüstü istemcisi sürümü 1.2.1026.0 veya üstünü gerektirir.
@@ -25,14 +25,14 @@ Windows sanal masaüstündeki Microsoft ekipleri sohbet ve işbirliğini destekl
 
 Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü istemcisi, takımlar ve toplantılar için ses ve videoyu yerel olarak işler. Windows sanal masaüstündeki Microsoft ekiplerini, iyileştirilmiş çağrı ve toplantılar olmadan diğer istemcilerle kullanmaya devam edebilirsiniz. Takımlar sohbeti ve işbirliği özellikleri tüm platformlarda desteklenir. Uzak oturumunuzdaki yerel cihazları yeniden yönlendirmek için [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini Özelleştir](#customize-remote-desktop-protocol-properties-for-a-host-pool)' e bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
 - [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
 - Windows [masaüstü istemcisini](connect-windows-7-10.md) , Windows [Bilgisayarı üzerindeki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 veya Windows 10 IoT kurumsal cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
-- Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa yükleme. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
+- Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa [indirin](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) ve yükleyin. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
 ## <a name="install-the-teams-desktop-app"></a>Takımlar masaüstü uygulamasını yükler
 
@@ -94,8 +94,8 @@ Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yük
 
         Bu, ekipleri 64 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 32 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
 
-        Ekipler yüklenirken ayarlanmış olabilecek iki bayrak vardır, **AllUser = 1** ve **ALLUSERS = 1**. Bu parametreler arasındaki farkı anlamak önemlidir. **AllUser = 1** PARAMETRESI yalnızca VDI ortamlarında, makine başına yükleme belirtmek için kullanılır. **ALLUSERS = 1** parametresi VDI olmayan ve VDI ortamlarında kullanılabilir. Bu parametreyi ayarladığınızda, takımlar makine genelinde yükleyici, Denetim Masası 'ndaki program ve Özellikler ' in yanı sıra Windows ayarlarındaki uygulamalar & Özellikler ' de görünür. Makinede yönetici kimlik bilgilerine sahip tüm kullanıcılar takımları kaldırabilir. 
-       
+        Ekipler yüklenirken ayarlanmış olabilecek iki bayrak vardır, **AllUser = 1** ve **ALLUSERS = 1**. Bu parametreler arasındaki farkı anlamak önemlidir. **AllUser = 1** PARAMETRESI yalnızca VDI ortamlarında, makine başına yükleme belirtmek için kullanılır. **ALLUSERS = 1** parametresi VDI olmayan ve VDI ortamlarında kullanılabilir. Bu parametreyi ayarladığınızda, takımlar makine genelinde yükleyici, Denetim Masası 'ndaki program ve Özellikler ' in yanı sıra Windows ayarlarındaki uygulamalar & Özellikler ' de görünür. Makinede yönetici kimlik bilgilerine sahip tüm kullanıcılar takımları kaldırabilir.
+
         > [!NOTE]
         > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
 

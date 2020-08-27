@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "76169777"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931633"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Örnek: büyük ölçekli özelliği kullanın
 
@@ -30,7 +31,7 @@ LargePersonGroup ve Largecelist, toplu olarak büyük ölçekli işlemler olarak
 
 ## <a name="step-1-initialize-the-client-object"></a>1. Adım: istemci nesnesini başlatma
 
-Yüz istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
+Yüz istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örnek:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";

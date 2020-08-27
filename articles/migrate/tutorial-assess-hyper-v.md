@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçi
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7e05f1c53d5e0a613dea6bec4a2ff6d120310ac8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86114253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931446"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -31,7 +31,7 @@ Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve ge�
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-hyper-v.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
@@ -75,15 +75,23 @@ Azure geçişi: Sunucu değerlendirmesi basit bir Azure geçişi gereci kullanı
 
 Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonra sunucu değerlendirmesi yapın, ilk kez yapılandırın ve Azure geçişi projesine kaydedin.
 
+### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
+3. **1: Azure geçişi proje anahtarı oluşturma**' da, Hyper-V VM 'lerini bulmak için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. ad 14 karakter veya daha kısa olmalıdır.
+1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
+
 ### <a name="download-the-vhd"></a>VHD 'YI indirin
 
-Gereç için daraltılmış VHD şablonunu indirin.
+**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. VHD dosyası ve **İndir**' e tıklayın. 
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2. Makinelerde **bulunan makinelerde**makineler  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet 'e**tıklayın.
-3. VHD dosyasını indirmek için **İndir** ' e tıklayın.
+   ![Bulma makineleri için seçimler](./media/tutorial-assess-hyper-v/servers-discover.png)
 
-    ![VM 'yi indir](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+
+   ![Anahtar oluştur seçimleri](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
@@ -102,13 +110,13 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
         **Senaryo** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 GB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (10,4 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140422) |  6b18a5d59a803cfc7dba6c8356e307ed65f52a3255f1cf989d8e633102c7c038
 
     - Azure Kamu için:
 
         **Senaryon*** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+        Hyper-V (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
 
 
 ### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
@@ -151,25 +159,27 @@ Gereci ilk kez ayarlayın.
 3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
    Alternatif olarak, uygulama kısayoluna tıklayarak uygulamayı gereç masaüstünden açabilirsiniz.
+1. **Lisans koşullarını**kabul edin ve üçüncü taraf bilgilerini okuyun.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
-    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-      - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
+      - Proxy 'yi **Ayarla** ' ya tıklayın ve proxy adresini (form http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında) belirtin.
       - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
       - Yalnızca HTTP proxy’si desteklenir.
+      - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
     - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
-    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
-    - Kullanıcı adınızla ve parolanızla oturum açın.
-    - PIN ile oturum açma desteklenmez.
-3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
-4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
-5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-6. **Kaydet**’e tıklayın.
+1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
+1. **Oturum**aç ' a tıklayın. Yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açar. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+1. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+   
+   PIN ile oturum açma desteklenmez.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün. 
+4. Günlüğe kaydetme için kullanılan Azure Kullanıcı hesabının, anahtar üretimi sırasında oluşturulan Azure kaynakları üzerinde doğru [izinleri](tutorial-prepare-hyper-v.md#prepare-azure) varsa, Gereç kaydı başlatılır.
+1. Gereç başarıyla kaydedildikten sonra, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
+
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
@@ -201,16 +211,27 @@ Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yap
 
 Gerecden Hyper-V konaklarına veya kümelerine bağlanın ve VM bulmayı başlatın.
 
-1. **Kullanıcı adı** ve **parola**' da, gerecin VM 'leri bulması için kullanacağı hesap kimlik bilgilerini belirtin. Kimlik bilgileri için kolay bir ad belirtin ve **ayrıntıları kaydet**' e tıklayın.
-2. **Konak Ekle**' ye tıklayın ve Hyper-V konağı/küme ayrıntılarını belirtin.
-3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, her bir konakta/kümede keşfedilebilir VM sayısı gösterilir.
-    - Bir konakta doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
-    - Konakları veya kümeleri kaldırmak için > **Sil**' i seçin.
+1. **1. Adım: Hyper-V ana bilgisayar kimlik bilgilerini sağlayın**bölümünde kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, gerecin VM 'leri bulması için kullanacağı bir Hyper-v Konağı/kümesi Için **Kullanıcı adı** ve **parola** ekleyin. **Kaydet**'e tıklayın.
+1. Aynı anda birden çok kimlik bilgisi eklemek istiyorsanız, kaydetmek için **daha fazla Ekle** ' ye tıklayın ve daha fazla kimlik bilgisi ekleyin. Hyper-V VM 'Leri bulmak için birden çok kimlik bilgisi desteklenir.
+1. **2. Adım: Hyper-v Konağı/kümesi ayrıntılarını sağlama**bölümünde, Hyper-v Konağı/kümesi **IP adresini/FQDN** 'yi ve konağa/kümeye bağlanacak kimlik bilgileri için kolay adı belirtmek üzere **bulma kaynağı Ekle** ' ye tıklayın.
+1. **Tek seferde tek bir öğe ekleyebilir** veya tek bir go içinde **birden fazla öğe ekleyebilirsiniz** . Ayrıca Hyper-V konağı/kümesi ayrıntılarını **Içeri aktarma CSV**aracılığıyla sağlama seçeneği de vardır.
+
+    ![Keşif kaynağı ekleme seçimleri](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
+
+    - **Tek öğe Ekle**' yi seçerseniz, kimlik bilgileri ve Hyper-V konağı/kümesi **IP adresi/FQDN** için kolay ad belirtmeniz ve **Kaydet**' e tıklamanız gerekir.
+    - **Birden çok öğe Ekle** _(varsayılan olarak seçilidir)_ seçeneğini belirlerseniz, metin kutusunda kimlik bilgileri Için kolay ad ile Hyper-V konağı/KÜMESI **IP adresi/FQDN** belirterek birden çok kayıt ekleyebilirsiniz. Eklenen kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
+    - **CSV 'Yi Içeri aktar**' ı SEÇERSENIZ bir CSV şablon dosyası indirebilir, dosyayı Hyper-V konağı/kümesi **IP adresi/FQDN** ve kimlik bilgileri için kolay ad ile doldurabilirsiniz. Sonra dosyayı gereç içine aktarır, dosyadaki kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
+
+1. Kaydet 'e tıkladığınızda gereç, eklenen Hyper-V konaklarına/kümelerine bağlantıyı doğrulamaya çalışır ve her konak/küme için tablodaki **doğrulama durumunu** gösterir.
+    - Başarıyla doğrulanan konaklar/kümeler için IP adreslerine/FQDN 'ye tıklayarak daha fazla ayrıntı görüntüleyebilirsiniz.
+    - Bir konakta doğrulama başarısız olursa, tablonun durum sütununda **doğrulama** ' ya tıklayarak hatayı gözden geçirin. Sorunu düzeltin ve tekrar doğrulayın.
+    - Konakları veya kümeleri kaldırmak için **Sil**'e tıklayın.
     - Belirli bir konağı kümeden kaldıramazsınız. Tüm kümeyi yalnızca çıkarabilirsiniz.
     - Kümedeki belirli konaklarla ilgili sorunlar olsa bile bir küme ekleyebilirsiniz.
-4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
+1. Keşfi başlatmadan önce herhangi bir zamanda konaklara/kümelere bağlantıyı **yeniden doğrulayabilirsiniz** .
+1. Başarıyla doğrulanan konaklardan/kümelerdeki VM bulmayı **başlatmak için bulmayı Başlat**' a tıklayın. Bulma işlemi başarılı bir şekilde başlatıldıktan sonra, tablodaki her bir konağa/kümeye yönelik bulma durumunu denetleyebilirsiniz.
 
-Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal görünmesi için ana bilgisayar başına yaklaşık 1,5 dakika sürer.
+Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal görünmesi için ana bilgisayar başına yaklaşık 2 dakika sürer.
 
 ### <a name="verify-vms-in-the-portal"></a>VM’lerin portalda olup olmadığını doğrulama
 

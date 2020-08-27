@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079441"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922761"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Örnek: C 'de Azure Bilişsel Arama için eş anlamlılar ekleme #
 
@@ -22,8 +22,8 @@ Eş anlamlılar, giriş terimine anlam bakımından eşdeğer olan terimlerle e�
 Azure Bilişsel Arama 'de eş anlamlılar, eşdeğer terimleri ilişkilendiren *eşleme kuralları* aracılığıyla bir *eş anlamlı haritada*tanımlanmıştır. Bu örnek, var olan bir dizinle eş anlamlıları eklemek ve kullanmak için gerekli olan adımları içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * [Eş anlamlı eşleme sınıfını kullanarak](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) bir eşanlamlı eşlemesi oluşturun. 
-> * Eş anlamlıları aracılığıyla sorgu genişletmeyi desteklemesi gereken alanlarda [eş](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) anlamlılar özelliğini ayarlayın.
+> * [Eş anlamlı eşleme sınıfını kullanarak](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) bir eşanlamlı eşlemesi oluşturun. 
+> * Eş anlamlıları aracılığıyla sorgu genişletmeyi desteklemesi gereken alanlarda [eş](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) anlamlılar özelliğini ayarlayın.
 
 Eş anlamlı etkin bir alanı normal şekilde sorgulayabilirsiniz. Eş anlamlıya erişmek için ek sorgu söz dizimi gerekli değildir.
 
@@ -32,14 +32,14 @@ Birden çok eş anlamlı eşlemi oluşturabilir, bunları bir dizin için kullan
 > [!NOTE]
 > Eş anlamlılar, portalda değil, programlı bir şekilde oluşturulabilir. Eş anlamlılar için Azure portalı desteği sizin için kullanışlı olacaksa, lütfen [UserVoice](https://feedback.azure.com/forums/263029-azure-search)’te geri bildiriminizi sağlayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğretici gereksinimleri şunları içerir:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Bilişsel Arama hizmeti](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [.NET uygulamasından Azure Bilişsel Arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search .NET kitaplığı](/dotnet/api/overview/azure/search)
+* [.NET uygulamasından Azure Bilişsel Arama kullanma](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -77,7 +77,7 @@ Birden çok eş anlamlı eşlemi oluşturabilir, bunları bir dizin için kullan
       Console.ReadKey();
   }
 ```
-Örnek dizini oluşturma ve doldurma adımları [bir .NET uygulamasından Azure bilişsel arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)bölümünde açıklanmıştır.
+Örnek dizini oluşturma ve doldurma adımları [bir .NET uygulamasından Azure bilişsel arama kullanma](./search-howto-dotnet-sdk.md)bölümünde açıklanmıştır.
 
 ## <a name="before-queries"></a>"Öncesi" sorguları
 
@@ -173,7 +173,7 @@ Bir örnek sonrasında temizlemenin en hızlı yolu, Azure Bilişsel Arama hizme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnekte, eşleme kurallarını oluşturup göndermek ve sonra bir sorguda eş anlamlı eşlemeyi çağırmak için C# kodundaki eş anlamlılar özelliği gösterilmiştir. [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) ve [REST API](https://docs.microsoft.com/rest/api/searchservice/) başvuru belgelerinde daha fazla bilgi bulabilirsiniz.
+Bu örnekte, eşleme kurallarını oluşturup göndermek ve sonra bir sorguda eş anlamlı eşlemeyi çağırmak için C# kodundaki eş anlamlılar özelliği gösterilmiştir. [.NET SDK](/dotnet/api/microsoft.azure.search) ve [REST API](/rest/api/searchservice/) başvuru belgelerinde daha fazla bilgi bulabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Bilişsel Arama eş anlamlılar kullanma](search-synonyms.md)

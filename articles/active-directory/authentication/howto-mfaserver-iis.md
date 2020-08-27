@@ -11,19 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919514"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS web uygulamaları için Azure Multi-Factor Authentication Sunucusu
 
 Microsoft IIS web uygulamaları ile IIS kimlik doğrulamasını etkinleştirmek ve yapılandırmak için Azure Multi-Factor Authentication (MFA) Sunucusu’nun IIS Kimlik Doğrulaması bölümünü kullanın. Azure MFA Sunucusu, Azure Multi-Factor Authentication eklemek üzere IIS web sunucusuna yapılan istekleri filtreleyebilen bir eklenti yükler. IIS eklentisi Form Tabanlı Kimlik Doğrulaması ve Tümleşik Windows HTTP Kimlik Doğrulaması için destek sağlar. Güvenilen IP’ler iç IP adreslerini iki öğeli kimlik doğrulamasından muaf tutmak için de kullanılabilir.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir. Bulut tabanlı Azure Multi-Factor Authentication kullandığınızda, Azure Multi-Factor Authentication (MFA) sunucusu tarafından sunulan IIS eklentisine bir alternatif yoktur. Bunun yerine, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Azure Active Directory uygulama proxy 'Si ile Web uygulaması ara sunucusu (WAP) kullanın.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sağlamamaktadır. Oturum açma olayları sırasında çok faktörlü kimlik doğrulaması (MFA) gerektirmek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır.
+>
+> Bulut tabanlı MFA 'yı kullanmaya başlamak için bkz. [öğretici: Azure Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
+>
+> MFA sunucusunu 1 Temmuz 2019 tarihinden önce etkinleştiren mevcut müşteriler, en son sürümü, gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+>
+> Bulut tabanlı Azure Multi-Factor Authentication kullandığınızda, Azure Multi-Factor Authentication (MFA) sunucusu tarafından sunulan IIS eklentisine bir alternatif yoktur. Bunun yerine, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Azure Active Directory uygulama proxy 'Si ile Web uygulaması ara sunucusu (WAP) kullanın.
 
 ![MFA sunucusunda IIS kimlik doğrulaması](./media/howto-mfaserver-iis/iis.png)
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067503"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918103"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>PostgreSQL için Azure veritabanı altyapısı Çift şifreleme
 
@@ -32,7 +32,7 @@ Altyapı katmanlarında uygulama, anahtarların çeşitliliğe de sahiptir. Alty
 > [!NOTE]
 > Altyapı çift şifrelemenin kullanılması, ek şifreleme işlemi nedeniyle PostgreSQL için Azure veritabanı sunucusunda performans etkisine sahip olur.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 PostgreSQL için Azure veritabanı 'nın altyapı çift şifrelemesi aşağıdaki avantajları sağlar:
 
@@ -62,6 +62,12 @@ PostgreSQL için Azure veritabanı tarafından sunulan şifreleme özellikleri b
 PostgreSQL için Azure veritabanı için, hizmet tarafından yönetilen anahtarı kullanarak altyapı Çift şifreleme desteği aşağıdaki sınırlamalara sahiptir:
 
 * Bu işlevselliğe yönelik destek, **genel amaçlı** ve bellek için **iyileştirilmiş** fiyatlandırma katmanlarında sınırlandırılmıştır.
+* Bir PostgreSQL için Azure veritabanı oluşturmak için altyapı çift şifrelemesi aşağıdaki bölgelerde etkinleştirilmiştir:
+
+   * Doğu ABD
+   * Orta Güney ABD
+   * Batı ABD 2
+   
 * Bu özellik yalnızca bölge ve sunucularda desteklenir ve 16 TB 'a kadar depolamayı destekler. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [depolama belgelerine](concepts-pricing-tiers.md#storage)bakın.
 
     > [!NOTE]
