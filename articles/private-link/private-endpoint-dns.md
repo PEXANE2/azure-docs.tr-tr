@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985793"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918137"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -27,12 +27,15 @@ Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak
 - **DNS ileticinizi kullanın (isteğe bağlı)**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere DNS ileticinizi kullanabilirsiniz. [DNS sunucunuz](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
  
 > [!IMPORTANT]
-> Ortak uç noktaları çözümlemek için etkin olarak kullanılan bir bölgeyi geçersiz kılmanızı önermiyoruz. Kaynaklara bağlantılar, DNS iletimi olmadan genel DNS 'e iletilmeksizin doğru şekilde çözümlenemez. Sorunları önlemek için, farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
+> Ortak uç noktaları çözümlemek için etkin olarak kullanılan bir bölgenin geçersiz kılınması önerilmez. Kaynaklara bağlantılar, DNS iletimi olmadan genel DNS 'e iletilmeksizin doğru şekilde çözümlenemez. Sorunları önlemek için, farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Azure hizmetleri DNS bölge yapılandırması
 Azure Hizmetleri, çözümü önerilen özel etki alanı adına yönlendirmek için genel DNS hizmetinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabilirsiniz. 
  
 Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Ortak bir DNS hizmetini kullanarak çözümlemeye çalışırken, DNS sunucusu şimdi özel uç noktalarınıza çözümlenir. İşlem, mevcut uygulamalarınızı etkilemez. 
+
+> [!IMPORTANT]
+> Belirli bir tür için özel DNS bölgesini kullanan özel ağlar, yalnızca özel uç nokta bağlantılarına sahip değillerse ortak kaynaklara bağlanabilir, aksi takdirde DNS çözümleme sırasını tamamlaması için özel DNS bölgesinde karşılık gelen bir DNS yapılandırması gerekir. 
 
 Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen bölge adlarını kullanın:
 

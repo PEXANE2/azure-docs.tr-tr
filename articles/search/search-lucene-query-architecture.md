@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917967"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de tam metin araması
 
@@ -49,7 +49,7 @@ Aşağıdaki diyagramda, bir arama isteğini işlemek için kullanılan bileşen
 
 Arama isteği, bir sonuç kümesinde döndürülmelidir öğesinin tüm bir belirtimidir. En basit biçimde, her türlü ölçütü olmayan boş bir sorgudur. Daha gerçekçi bir örnek, muhtemelen bir filtre ifadesi ve sıralama kurallarıyla belirli alanlara kapsamlı parametreler, birkaç sorgu terimi içerir.  
 
-Aşağıdaki örnek, [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak Azure bilişsel arama 'e gönderebilecek bir arama isteğidir.  
+Aşağıdaki örnek, [REST API](/rest/api/searchservice/search-documents)kullanarak Azure bilişsel arama 'e gönderebilecek bir arama isteğidir.  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2020-06-30
@@ -69,7 +69,7 @@ Bu istek için arama motoru şunları yapar:
 2. Sorguyu yürütür. Bu örnekte, arama sorgusu tümcecik ve terimlerden oluşur: `"Spacious, air-condition* +\"Ocean view\""` (kullanıcılar genellikle noktalama işareti girmez, ancak örnek eklemek, çözümleyiciler onu nasıl işleyeceğinizi anlamamızı sağlar). Bu sorgu için arama altyapısı, `searchFields` "okyanus görünümü" ni içeren belgeler için ' de belirtilen Açıklama ve başlık alanlarını ve ek olarak "spacemi" ya da "AIR-Condition" önekiyle başlayan koşulları tarar. `searchMode`Parametresi, bir terimin açıkça gerekli olmadığı durumlarda (varsayılan) veya tümü için herhangi bir dönem (varsayılan) veya hepsi ile eşleştirmek için kullanılır `+` .
 3. Elde edilen otel kümesini, belirli bir Coğrafya konumuna yakınlığa göre sıralar ve ardından çağıran uygulamaya geri döner. 
 
-Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""` . Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""` . Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>1. Aşama: sorgu ayrıştırma 
@@ -86,7 +86,7 @@ Sorgu ayrıştırıcısı, işleçleri ( `*` `+` Örneğin, ve örneğinde) aram
 + alıntı yapılan terimler için *tümcecik sorgusu* (okyanus görünümü gibi)
 + bir önek işleci (Air koşulu gibi) tarafından izlenen terimler için *ön ek sorgusu* `*`
 
-Desteklenen sorgu türlerinin tam listesi için bkz. [Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+Desteklenen sorgu türlerinin tam listesi için bkz. [Lucene sorgu söz dizimi](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
 Bir alt sorgu ile İlişkili işleçler, bir belgenin eşleşme olarak kabul edilmesi için "olması gereken" veya "olması" gerektiğini belirtir. Örneğin, `+"Ocean view"` işleci nedeniyle "gerekir" `+` . 
 
@@ -96,7 +96,7 @@ Sorgu ayrıştırıcısı, arama motoruna geçiş yaptığı bir *sorgu ağacın
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Desteklenen çözümleyiciler: Simple ve Full Lucene 
 
- Azure Bilişsel Arama, iki farklı sorgu dili sunar, `simple` (varsayılan) ve `full` . `queryType`Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla [Full Lucene query language](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), `queryType=full` benzer, Regex ve alan kapsamlı sorgular gibi daha fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız tam Lucene sorgu dili. Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
+ Azure Bilişsel Arama, iki farklı sorgu dili sunar, `simple` (varsayılan) ve `full` . `queryType`Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla [Full Lucene query language](/rest/api/searchservice/lucene-query-syntax-in-azure-search), `queryType=full` benzer, Regex ve alan kapsamlı sorgular gibi daha fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız tam Lucene sorgu dili. Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Ayrıştırıcıda searchMode etkisi 
 
@@ -123,7 +123,7 @@ Bu sorgu için değiştirilen bir sorgu ağacı, eşleşen bir belge üç alt so
  ![Boolean sorgusu searchmode tümü][3]
 
 > [!Note] 
-> Üzerinde seçim yapmak `searchMode=any` `searchMode=all` , temsilci sorguları çalıştırarak en iyi şekilde ulaşan bir karardır. İşleçleri içermesi muhtemel olabilecek kullanıcılar (belge depoları aranırken ortak), `searchMode=all` Boole sorgu yapılarını bilgilendirir, sonuçları daha sezgisel bulabilir. Ve işleçleri arasında karşılıklı yürütme hakkında daha fazla bilgi için `searchMode` bkz. [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
+> Üzerinde seçim yapmak `searchMode=any` `searchMode=all` , temsilci sorguları çalıştırarak en iyi şekilde ulaşan bir karardır. İşleçleri içermesi muhtemel olabilecek kullanıcılar (belge depoları aranırken ortak), `searchMode=all` Boole sorgu yapılarını bilgilendirir, sonuçları daha sezgisel bulabilir. Ve işleçleri arasında karşılıklı yürütme hakkında daha fazla bilgi için `searchMode` bkz. [basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>2. Aşama: sözcük Analizi 
@@ -137,10 +137,10 @@ En yaygın sözcük Analizi analizi, sorgu koşullarını belirli bir dile özg�
 * Bileşik sözcüğü bileşen bölümlerine bölme 
 * Büyük harfli bir sözcüğün küçük harfleri 
 
-Bu işlemlerin hepsi, Kullanıcı tarafından girilen metin girişi ve dizinde depolanan koşullar arasındaki farkları silme eğilimindedir. Bu gibi işlemler metin işlemenin ötesine geçer ve dilin kendisi hakkında ayrıntılı bilgi ister. Bu dil tanıma katmanını eklemek için Azure Bilişsel Arama, hem Lucene hem de Microsoft 'tan gelen [dil Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support) 'nin uzun listesini destekler.
+Bu işlemlerin hepsi, Kullanıcı tarafından girilen metin girişi ve dizinde depolanan koşullar arasındaki farkları silme eğilimindedir. Bu gibi işlemler metin işlemenin ötesine geçer ve dilin kendisi hakkında ayrıntılı bilgi ister. Bu dil tanıma katmanını eklemek için Azure Bilişsel Arama, hem Lucene hem de Microsoft 'tan gelen [dil Çözümleyicileri](/rest/api/searchservice/language-support) 'nin uzun listesini destekler.
 
 > [!Note]
-> Çözümleme gereksinimleri, senaryonuza bağlı olarak en az düzeyde farklılık açabilir. Önceden tanımlanmış çözümleyiciler arasından birini seçerek veya kendi [özel çözümleyicinizi](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)oluşturarak, sözlü çözümlemenin karmaşıklığını denetleyebilirsiniz. Çözümleyiciler aranabilir alanlara kapsamlandırılır ve bir alan tanımının parçası olarak belirtilir. Bu, alan temelinde sözcük temelli analizleri değiştirmenize olanak sağlar. Belirtilmemiş, *Standart* Lucene Çözümleyicisi kullanılır.
+> Çözümleme gereksinimleri, senaryonuza bağlı olarak en az düzeyde farklılık açabilir. Önceden tanımlanmış çözümleyiciler arasından birini seçerek veya kendi [özel çözümleyicinizi](/rest/api/searchservice/Custom-analyzers-in-Azure-Search)oluşturarak, sözlü çözümlemenin karmaşıklığını denetleyebilirsiniz. Çözümleyiciler aranabilir alanlara kapsamlandırılır ve bir alan tanımının parçası olarak belirtilir. Bu, alan temelinde sözcük temelli analizleri değiştirmenize olanak sağlar. Belirtilmemiş, *Standart* Lucene Çözümleyicisi kullanılır.
 
 Bizim örneğimizde, ilk sorgu ağacı, büyük bir "S" ve sorgu ayrıştırıcısının sorgu teriminin bir parçası olarak yorumladığı bir virgülle (bir virgül sorgu dili işleci olarak kabul edilmez) "Spacmerak" terimini içerir.  
 
@@ -150,7 +150,7 @@ Varsayılan çözümleyici terimi işlediğinde, küçük harfli "okyanus görü
 
 ### <a name="testing-analyzer-behaviors"></a>Çözümleyici davranışlarını test etme 
 
-Bir çözümleyicinin davranışı [Çözümle API 'si](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)kullanılarak test edilebilir. Hangi koşulların hangi koşullara göre oluşturulacağını görmek için çözümlemek istediğiniz metni sağlayın. Örneğin, standart çözümleyici 'nin "AIR-Condition" metnini nasıl işleyeceğini görmek için, aşağıdaki isteği verebilirsiniz:
+Bir çözümleyicinin davranışı [Çözümle API 'si](/rest/api/searchservice/test-analyzer)kullanılarak test edilebilir. Hangi koşulların hangi koşullara göre oluşturulacağını görmek için çözümlemek istediğiniz metni sağlayın. Örneğin, standart çözümleyici 'nin "AIR-Condition" metnini nasıl işleyeceğini görmek için, aşağıdaki isteği verebilirsiniz:
 
 ~~~~
 {
@@ -251,7 +251,7 @@ Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak i
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Terim | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,7 +265,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Terim | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | te | 3
 | ve | 4
@@ -286,7 +286,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 | kısa bir | 2
 | spacmerak | 1
 | şunu | 1, 2
-| - | 1
+| şöyle değiştirin: | 1
 | görüntüle | 1, 2, 3
 | İzlenecek | 1
 | örneklerini şununla değiştirin: | 3
@@ -359,8 +359,8 @@ Bunun ne kadar önemli olduğunu gösteren bir örnek. Önek aramaları dahil ol
 
 Azure Bilişsel Arama ilgi puanlarını ayarlamaya yönelik iki yol vardır:
 
-1. **Puanlama profilleri** , bir dizi kurala göre dereceli sonuçlar listesindeki belgeleri yükseltir. Örneğimizde, başlık alanında, açıklama alanında eşleşen belgelerden daha alakalı olan belgeleri kabul eteceğiz. Ayrıca, dizinimizin her otel için bir fiyat alanı varsa, belgeleri daha düşük fiyatla yükseltebiliriz. [Arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) hakkında daha fazla bilgi edinin.
-2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir) `^` , sorgu ağacının herhangi bir bölümüne uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu*aramak yerine \* bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
+1. **Puanlama profilleri** , bir dizi kurala göre dereceli sonuçlar listesindeki belgeleri yükseltir. Örneğimizde, başlık alanında, açıklama alanında eşleşen belgelerden daha alakalı olan belgeleri kabul eteceğiz. Ayrıca, dizinimizin her otel için bir fiyat alanı varsa, belgeleri daha düşük fiyatla yükseltebiliriz. [Arama dizinine Puanlama profilleri ekleme](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) hakkında daha fazla bilgi edinin.
+2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir) `^` , sorgu ağacının herhangi bir bölümüne uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu*aramak yerine \* bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Dağıtılmış dizindeki Puanlama
@@ -383,23 +383,23 @@ Bu makale, Azure Bilişsel Arama bağlamında tam metin aramasını araştırmak
 
 + Örnek dizini oluşturun, farklı sorgular deneyin ve sonuçları gözden geçirin. Yönergeler için bkz. [portalda dizin oluşturma ve sorgulama](search-get-started-portal.md#query-index).
 
-+ [Belgeleri ara](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) örnek bölümünde veya portalda arama Gezgini 'ndeki [basit sorgu söz diziminde](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) ek sorgu söz dizimini deneyin.
++ [Belgeleri ara](/rest/api/searchservice/search-documents#bkmk_examples) örnek bölümünde veya portalda arama Gezgini 'ndeki [basit sorgu söz diziminde](/rest/api/searchservice/simple-query-syntax-in-azure-search) ek sorgu söz dizimini deneyin.
 
-+ Arama uygulamanızda derecelendirme ayarlamak istiyorsanız [Puanlama profillerini](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) gözden geçirin.
++ Arama uygulamanızda derecelendirme ayarlamak istiyorsanız [Puanlama profillerini](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) gözden geçirin.
 
-+ [Dile özgü sözcük Çözümleyicileri çözümleyicilerinin](https://docs.microsoft.com/rest/api/searchservice/language-support)nasıl uygulanacağını öğrenin.
++ [Dile özgü sözcük Çözümleyicileri çözümleyicilerinin](/rest/api/searchservice/language-support)nasıl uygulanacağını öğrenin.
 
-+ [Özel Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) , belirli alanlarda en az işlem veya özel Işleme için yapılandırın.
++ [Özel Çözümleyicileri](/rest/api/searchservice/custom-analyzers-in-azure-search) , belirli alanlarda en az işlem veya özel Işleme için yapılandırın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Belgelerde Arama REST API'si](/rest/api/searchservice/search-documents) 
 
-[Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[Basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Tam Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Tam Lucene sorgu söz dizimi](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[Arama sonuçlarını işleme](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[Arama sonuçlarını işleme](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932075"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtreleri sorunlarını giderme
 
@@ -39,11 +39,11 @@ Aşağıdaki tabloda, bir koleksiyon filtresini yürütmeye çalışırken karş
 | Hata iletisi | Olanını | Daha fazla bilgi için bkz. |
 | --- | --- | --- |
 | ' IsMatch ' işlevinin, Aralık değişkeninin ' ' öğesine göre hiçbir parametresi yok. Lambda ifadelerinde yalnızca ilişkili alan başvuruları desteklenir (' any ' veya ' All '). Lütfen filtrenizi ' IsMatch ' işlevinin lambda ifadesinin dışında olması için değiştirin ve yeniden deneyin. | `search.ismatch` `search.ismatchscoring` Lambda ifadesi içinde veya içinde kullanma | [Karmaşık koleksiyonları filtrelemeye yönelik kurallar](#bkmk_complex) |
-| Geçersiz lambda ifadesi. Koleksiyon türü (EDM. String) alanı üzerinde yinelenen bir lambda ifadesinde ters beklenildiği eşitlik veya eşitsizlik için bir test bulundu. ' Any ' için lütfen ' x EQ y ' veya ' search.in (...) ' biçimindeki ifadeleri kullanın. ' All ' için lütfen ' x ne y ', ' Not (x EQ y) ' ya da ' Not search.in (...) ' biçimindeki ifadeleri kullanın. | Türünde bir alanda filtreleme`Collection(Edm.String)` | [Dize koleksiyonlarını filtreleme kuralları](#bkmk_strings) |
+| Geçersiz lambda ifadesi. Koleksiyon türü (EDM. String) alanı üzerinde yinelenen bir lambda ifadesinde ters beklenildiği eşitlik veya eşitsizlik için bir test bulundu. ' Any ' için lütfen ' x EQ y ' veya ' search.in (...) ' biçimindeki ifadeleri kullanın. ' All ' için lütfen ' x ne y ', ' Not (x EQ y) ' ya da ' Not search.in (...) ' biçimindeki ifadeleri kullanın. | Türünde bir alanda filtreleme `Collection(Edm.String)` | [Dize koleksiyonlarını filtreleme kuralları](#bkmk_strings) |
 | Geçersiz lambda ifadesi. Desteklenmeyen bir karmaşık Boole ifadesi formu bulundu. ' Any ' için lütfen, ayırt edici normal form olarak da bilinen ' and lerin ' ORs ' ifadesi kullanın. Örneğin: a, b, c ve d ' nin karşılaştırma ya da eşitlik alt ifadeleri olduğu ' (a ve b) veya (c ve d) '. ' All ' için lütfen ' and of ORs ' olan ifadeleri kullanın, Ayrıca, ayırt edici normal form olarak da bilinir. Örneğin: a, b, c ve d, burada a, b, c ve d, karşılaştırma veya eşitsizlik alt ifadeleridir. Karşılaştırma ifadesi örnekleri: ' x gt 5 ', ' x Le 2 '. Eşitlik ifadesi örneği: ' x EQ 5 '. Eşitsizlik ifadesi örneği: ' x ne 5 '. | ,, Veya türündeki alanlar üzerinde filtreleme `Collection(Edm.DateTimeOffset)` `Collection(Edm.Double)` `Collection(Edm.Int32)``Collection(Edm.Int64)` | [Karşılaştırılabilir koleksiyonları filtrelemeye yönelik kurallar](#bkmk_comparables) |
-| Geçersiz lambda ifadesi. Koleksiyon türünde (EDM. Geographyıpoint) bir alan üzerinde yinelenen bir lambda ifadesinde, desteklenmeyen coğrafi. uzaklık () veya coğrafi. kesişme () kullanımı bulundu. ' Any ' için, ' lt ' veya ' le ' işleçlerini kullanarak coğrafi. distance () öğesini karşılaştırdığınızdan emin olun ve coğrafi. kesişme () kullanımının herhangi bir kullanımında olmadığından emin olun. ' All ' için, ' gt ' veya ' ge ' işleçlerini kullanarak coğrafi. distance () ' i karşılaştırdığınızdan emin olun ve coğrafi. kesişme () kullanımının tüm kullanımlarda olduğundan emin olun. | Türünde bir alanda filtreleme`Collection(Edm.GeographyPoint)` | [Geographyıpoint koleksiyonlarını filtreleme kuralları](#bkmk_geopoints) |
+| Geçersiz lambda ifadesi. Koleksiyon türünde (EDM. Geographyıpoint) bir alan üzerinde yinelenen bir lambda ifadesinde, desteklenmeyen coğrafi. uzaklık () veya coğrafi. kesişme () kullanımı bulundu. ' Any ' için, ' lt ' veya ' le ' işleçlerini kullanarak coğrafi. distance () öğesini karşılaştırdığınızdan emin olun ve coğrafi. kesişme () kullanımının herhangi bir kullanımında olmadığından emin olun. ' All ' için, ' gt ' veya ' ge ' işleçlerini kullanarak coğrafi. distance () ' i karşılaştırdığınızdan emin olun ve coğrafi. kesişme () kullanımının tüm kullanımlarda olduğundan emin olun. | Türünde bir alanda filtreleme `Collection(Edm.GeographyPoint)` | [Geographyıpoint koleksiyonlarını filtreleme kuralları](#bkmk_geopoints) |
 | Geçersiz lambda ifadesi. Koleksiyon türü (EDM. Geographi Point) alanları üzerinde yinelen Lambda ifadelerinde karmaşık Boole ifadeleri desteklenmez. ' Any ' için lütfen ' or ' ile alt ifadeleri birleştirin; ' ve ' desteklenmez. ' All ' için lütfen ' ve ' ile alt ifadelere katın; ' veya ' desteklenmez. | Veya türündeki alanlarda filtreleme `Collection(Edm.String)``Collection(Edm.GeographyPoint)` | [Dize koleksiyonlarını filtreleme kuralları](#bkmk_strings) <br/><br/> [Geographyıpoint koleksiyonlarını filtreleme kuralları](#bkmk_geopoints) |
-| Geçersiz lambda ifadesi. Bir karşılaştırma işleci bulundu (' lt ', ' le ', ' gt ' veya ' ge '). Yalnızca eşitlik işleçlerinde, koleksiyon türü (EDM. String) alanları üzerinde yineleme yapan Lambda ifadelerinde izin verilir. ' Any ' için lütfen ' x EQ y ' biçiminde ifadeler kullanın. ' All ' için lütfen ' x ne y ' veya ' Not (x EQ y) ' biçimindeki ifadeleri kullanın. | Türünde bir alanda filtreleme`Collection(Edm.String)` | [Dize koleksiyonlarını filtreleme kuralları](#bkmk_strings) |
+| Geçersiz lambda ifadesi. Bir karşılaştırma işleci bulundu (' lt ', ' le ', ' gt ' veya ' ge '). Yalnızca eşitlik işleçlerinde, koleksiyon türü (EDM. String) alanları üzerinde yineleme yapan Lambda ifadelerinde izin verilir. ' Any ' için lütfen ' x EQ y ' biçiminde ifadeler kullanın. ' All ' için lütfen ' x ne y ' veya ' Not (x EQ y) ' biçimindeki ifadeleri kullanın. | Türünde bir alanda filtreleme `Collection(Edm.String)` | [Dize koleksiyonlarını filtreleme kuralları](#bkmk_strings) |
 
 <a name="bkmk_examples"></a>
 
@@ -171,10 +171,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - ,,, Veya içeren basit karşılaştırma ifadeleri `eq` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örneğin:
+  - ,,, Veya içeren basit karşılaştırma ifadeleri `eq` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örnek:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - İle birleştirilen Karşılaştırma ifadeleri `and` (yarışmalar) kullanılarak daha da birleştirilebilir `or` . Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örneğin:
+  - İle birleştirilen Karşılaştırma ifadeleri `and` (yarışmalar) kullanılarak daha da birleştirilebilir `or` . Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örnek:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - Kurallar `all` :
   - Basit eşitlik ifadeleri diğer ifadelerle tamamen birleştirilemez. Örneğin, bu ifadeye izin verilir:
@@ -185,10 +185,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - ,,, Veya içeren basit karşılaştırma ifadeleri `ne` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örneğin:
+  - ,,, Veya içeren basit karşılaştırma ifadeleri `ne` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örnek:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - İle birleştirilen Karşılaştırma ifadeleri `or` (ayırt edici), kullanılarak daha fazla birleştirilebilir `and` . Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örneğin:
+  - İle birleştirilen Karşılaştırma ifadeleri `or` (ayırt edici), kullanılarak daha fazla birleştirilebilir `and` . Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örnek:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
@@ -229,4 +229,4 @@ Filtreleri sıklıkla yazarsanız ve ilk ilkeden kuralları anlamak, bunları da
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

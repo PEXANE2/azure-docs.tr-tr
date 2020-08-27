@@ -2,13 +2,14 @@
 title: Azure Relay Karma Bağlantılar-.NET 'teki HTTP istekleri
 description: .NET’te Azure Relay Karma Bağlantılar HTTP istekleri için bir C# konsol uygulaması yazın.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 270e1bf0f9655705afe4d3657af03152957227c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a11abb984da3601a4d6aa921224e01f94d0871c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317067"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922591"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>.NET’te Relay Karma Bağlantılar HTTP istekleri ile çalışmaya başlama
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -23,7 +24,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 4. İleti göndermek için bir istemci (gönderen) konsol uygulaması yazma.
 5. Uygulamaları çalıştırın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 

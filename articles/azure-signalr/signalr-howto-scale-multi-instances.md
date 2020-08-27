@@ -4,14 +4,15 @@ description: Birçok ölçeklendirme senaryosunda, müşterinin genellikle birde
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158164"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921996"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>SignalR hizmetini birden çok örnek ile ölçeklendirme
 En son SignalR hizmeti SDK 'Sı, SignalR hizmet örnekleri için birden çok uç noktayı destekler. Bu özelliği, eş zamanlı bağlantıları ölçeklendirmek veya bölgeler arası mesajlaşma için kullanmak üzere kullanabilirsiniz.
@@ -217,7 +218,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `ServiceEndpoint`Nesne, `EndpointType` veya değerine sahip bir özelliğe `primary` sahiptir `secondary` .
 
-`primary`uç noktalar, istemci trafiği almak için tercih edilen uç noktalardır ve daha güvenilir ağ bağlantılarına sahip olduğu kabul edilir; `secondary`uç noktalar, daha az güvenilir ağ bağlantılarına sahip olduğu kabul edilir ve yalnızca, istemci trafiği için sunucu trafiği almak için değil, bir yayın iletileri almak için kullanılır.
+`primary` uç noktalar, istemci trafiği almak için tercih edilen uç noktalardır ve daha güvenilir ağ bağlantılarına sahip olduğu kabul edilir; `secondary` uç noktalar, daha az güvenilir ağ bağlantılarına sahip olduğu kabul edilir ve yalnızca, istemci trafiği için sunucu trafiği almak için değil, bir yayın iletileri almak için kullanılır.
 
 Bölgeler arası durumlarda ağ kararsız olabilir. *Doğu ABD*bulunan bir uygulama sunucusu için, aynı *Doğu ABD* bölgesinde yer alan SignalR hizmeti uç noktası, `primary` olarak işaretlenen diğer bölgelerde ve uç noktalar olarak yapılandırılabilir `secondary` . Bu yapılandırmada, diğer bölgelerdeki hizmet uç noktaları bu *Doğu ABD* App Server 'dan iletiler **alabilir** , ancak bu uygulama sunucusuna hiçbir **çapraz bölge** istemcisi yönlendirilmeyecektir. Mimari aşağıdaki diyagramda gösterilmiştir:
 

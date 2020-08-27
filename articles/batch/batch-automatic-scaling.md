@@ -3,13 +3,13 @@ title: Azure Batch havuzundaki işlem düğümlerini otomatik ölçeklendirme
 description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlamak için bir bulut havuzunda otomatik ölçeklendirmeyi etkinleştirin.
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387481"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932330"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -142,7 +142,7 @@ Otomatik ölçeklendirme formülleri aşağıdaki türleri destekler:
 - double
 - doubleVec
 - doubleVecList
-- dize
+- string
 - zaman damgası--aşağıdaki üyeleri içeren bileşik bir yapı:
   - yıl
   - ay (1-12)
@@ -192,7 +192,7 @@ Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
 Bir otomatik ölçeklendirme formülü tanımlarken, önceden tanımlanmış bu **işlevleri** kullanabilirsiniz.
 
-| İşlev | Dönüş türü | Description |
+| İşlev | Dönüş türü | Açıklama |
 | --- | --- | --- |
 | Ort (doubleVecList) |double |DoubleVecList içindeki tüm değerlerin ortalama değerini döndürür. |
 | Len (doubleVecList) |double |DoubleVecList 'ten oluşturulan vector öğesinin uzunluğunu döndürür. |
@@ -214,7 +214,7 @@ Bir otomatik ölçeklendirme formülü tanımlarken, önceden tanımlanmış bu 
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya varsa dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -283,7 +283,7 @@ Aşağıdaki yöntemler, hizmet tanımlı değişkenlerle ilgili örnek verileri
 
 | Yöntem | Açıklama |
 | --- | --- |
-| GetSample () |`GetSample()`Yöntemi, veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`: Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir. `GetSample(1)`kullanılabilir son örneği döndürür. Ancak, gibi ölçümler için, örneğin `$CPUPercent` `GetSample(1)` *ne zaman* toplandığını bildirmek imkansız olduğundan, kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Böyle durumlarda, aşağıda gösterildiği gibi bir zaman aralığı kullanmak daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Örnek veri toplamak için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir. Örneğin, `$CPUPercent.GetSample(TimeInterval_Minute * 10)` geçmişte son 10 dakikalık tüm örnekler varsa 20 örnek döndürür `CPUPercent` . Geçmişin son dakikası kullanılabilir değilse, yalnızca 18 örnek döndürülür. Bu durumda `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` , örneklerin yalnızca yüzde 90 ' unun kullanılabilir olduğundan, ancak başarılı olması nedeniyle başarısız olur `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` .<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Bir başlangıç saati ve bitiş saati ile veri toplamaya yönelik zaman çerçevesini belirtir. Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir hale gelmesi arasında bir gecikme vardır. Yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun `GetSample` . `GetSamplePercent`Aşağıya bakın. |
+| GetSample () |`GetSample()`Yöntemi, veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`: Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir. `GetSample(1)` kullanılabilir son örneği döndürür. Ancak, gibi ölçümler için, örneğin `$CPUPercent` `GetSample(1)` *ne zaman* toplandığını bildirmek imkansız olduğundan, kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Böyle durumlarda, aşağıda gösterildiği gibi bir zaman aralığı kullanmak daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Örnek veri toplamak için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir. Örneğin, `$CPUPercent.GetSample(TimeInterval_Minute * 10)` geçmişte son 10 dakikalık tüm örnekler varsa 20 örnek döndürür `CPUPercent` . Geçmişin son dakikası kullanılabilir değilse, yalnızca 18 örnek döndürülür. Bu durumda `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` , örneklerin yalnızca yüzde 90 ' unun kullanılabilir olduğundan, ancak başarılı olması nedeniyle başarısız olur `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` .<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Bir başlangıç saati ve bitiş saati ile veri toplamaya yönelik zaman çerçevesini belirtir. Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir hale gelmesi arasında bir gecikme vardır. Yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun `GetSample` . `GetSamplePercent`Aşağıya bakın. |
 | GetSamplePeriod () |Bir geçmiş örnek veri kümesinde alınan örneklerin dönemini döndürür. |
 | Count () |Ölçüm geçmişindeki toplam örnek sayısını döndürür. |
 | Geçmiş BeginTime () |Ölçüm için kullanılabilir en eski veri örneğinin zaman damgasını döndürür. |
@@ -309,7 +309,7 @@ Bunu yapmak için, `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -473,7 +473,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
 
 - [Batchclient. PoolOperations. Enableoto Scaleasync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .net)
 - [Bir havuzda otomatik ölçeklendirmeyi etkinleştir](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)
@@ -667,7 +667,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-`$curTime`, `time()` ürüne `TimeZoneInterval_Hour` ve UTC denkcinize eklenerek yerel saat diliminizi yansıtacak şekilde ayarlanabilir. Örneğin, `$curTime = time() + (-6 * TimeInterval_Hour);` Sıradağlar Yaz saati (MDT) için kullanın. Günışığından yararlanma saatinin başlangıç ve bitişine (varsa) göre ayarlanması gerektiğini aklınızda bulundurun.
+`$curTime` , `time()` ürüne `TimeZoneInterval_Hour` ve UTC denkcinize eklenerek yerel saat diliminizi yansıtacak şekilde ayarlanabilir. Örneğin, `$curTime = time() + (-6 * TimeInterval_Hour);` Sıradağlar Yaz saati (MDT) için kullanın. Günışığından yararlanma saatinin başlangıç ve bitişine (varsa) göre ayarlanması gerektiğini aklınızda bulundurun.
 
 ### <a name="example-2-task-based-adjustment"></a>Örnek 2: görev tabanlı ayarlama
 

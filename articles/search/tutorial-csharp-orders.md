@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9564576715c32f8bcc871d10fae50f139aacdb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420643"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932160"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarını sıralama
 
@@ -462,8 +462,8 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
 
 4. Şimdi bu kavramları birbirine bağlamak gerekir. Bununla birlikte, bu kod parçacıkları öğreticimizin ulaştığı kadar çok olduğu için harita tabanlı bir uygulama oluşturmak okuyucu için bir alıştırma olarak kalır. Bu örneği daha fazla almak için yarıçap ile bir şehir adı girmeyi veya haritada bir nokta konumlandırmayı ve bir RADIUS seçmeyi düşünün. Bu seçenekleri daha fazla araştırmak için aşağıdaki kaynaklara bakın:
 
-* [Azure Haritalar Belgeleri](https://docs.microsoft.com/azure/azure-maps/)
-* [Azure haritalar arama hizmetini kullanarak bir adres bulma](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Azure Haritalar Belgeleri](../azure-maps/index.yml)
+* [Azure haritalar arama hizmetini kullanarak bir adres bulma](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Puanlama profili temelinde sonuçları sıralama
 
@@ -959,7 +959,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="resources"></a>Kaynaklar
 
-Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Paketler
 
@@ -975,4 +975,4 @@ Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
 
 Bu C# öğreticilerini tamamladınız-Azure Bilişsel Arama API 'Lerinde değerli bilgiye sahip olmanız gerekir.
 
-Daha fazla başvuru ve öğretici için, [Azure bilişsel arama belgelerindeki](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)veya Diğer öğreticilere göz atmayı düşünün.
+Daha fazla başvuru ve öğretici için, [Azure bilişsel arama belgelerindeki](./index.yml) [Microsoft Learn](/learn/browse/?products=azure)veya Diğer öğreticilere göz atmayı düşünün.

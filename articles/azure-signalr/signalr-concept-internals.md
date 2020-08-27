@@ -4,14 +4,15 @@ description: Azure SignalR hizmeti iç işlevleri, mimari, bağlantılar ve veri
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169808"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921979"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service iç işlevleri
 

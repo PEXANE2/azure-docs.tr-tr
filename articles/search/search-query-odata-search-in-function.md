@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206929"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922829"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Azure bilişsel arama 'de OData işlevi
 
@@ -46,7 +46,7 @@ Ancak, işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır `search.i
 > [!NOTE]
 > OData standardının 4,01 sürümü yakın zamanda, Azure Bilişsel Arama işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur `search.in` . Ancak, Azure Bilişsel Arama bu işleci desteklemez, bu nedenle `search.in` bunun yerine işlevini kullanmanız gerekir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) işlevin dilbilgisini tanımlar `search.in` :
 
@@ -82,7 +82,7 @@ Parametreler aşağıdaki tabloda tanımlanmıştır:
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Performansı`search.in`
+### <a name="performance-of-searchin"></a>Performansı `search.in`
 
 Kullanırsanız `search.in` , ikinci parametre yüzlerce veya binlerce değerin listesini içerdiğinde alt ikinci yanıt süresini de bekleyebilir. İzin `search.in` verilen en büyük istek boyutuyla sınırlı olsanız da, geçirebilmeniz gereken öğe sayısı üzerinde açık bir sınır yoktur. Ancak, değer sayısı arttıkça gecikme artar.
 
@@ -123,4 +123,4 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)
