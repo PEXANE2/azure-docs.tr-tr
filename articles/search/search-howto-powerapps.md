@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751038"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918052"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Power Apps hesabı](http://make.powerapps.com)
 
@@ -261,5 +261,4 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 Power Apps, özel uygulamalar için hızlı uygulama geliştirmeyi mümkün bir şekilde sunar. Artık bir arama dizinine nasıl bağlanacağınızı öğrenmiş olduğunuza göre, özel bir Power App 'te zengin bir görselleştirme deneyimi oluşturma hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Power Apps öğrenme kataloğu](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
-
+> [Power Apps öğrenme kataloğu](/powerapps/learning-catalog/get-started)

@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525658"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930681"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -32,7 +32,7 @@ Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız
 
 Bu üç seçenek hakkında daha fazla bilgi için bkz. [Azure dosyaları dağıtımı Için planlama](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> PowerShell aracılığıyla katmanları ayarlama ve değiştirme özelliği, önizleme az. Storage PowerShell modülünde sunulmaktadır. Bu cmdlet 'ler veya çıktısı, genel olarak kullanılabilen az. Storage PowerShell modülünde yayınlanmadan önce değişebilir, bu nedenle komut dosyalarını aklınızda oluşturun.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Belirli bir katmana bir dosya paylaşımının oluşturulması veya taşınması işlevselliği, en son Azure CLı güncelleştirmesinde bulunabilir. Azure CLı 'nın güncelleştirilmesi, kullanmakta olduğunuz işletim sistemi/Linux dağıtımına özeldir. Azure CLı 'yi sisteminizde güncelleştirme hakkında yönergeler için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> Parametresi ile bir katmana ayarlama özelliği, `--access-tier` en son Azure CLI paketinde bir önizleme sağlar. Bu komut veya çıktısı genel kullanıma açık olarak işaretlenmeden önce değişebilir, bu nedenle komut dosyalarını aklınızda oluşturun.
+
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar

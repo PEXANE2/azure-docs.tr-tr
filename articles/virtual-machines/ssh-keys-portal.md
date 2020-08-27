@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041757"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929456"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal SSH anahtarları oluşturma ve depolama
 
@@ -28,7 +28,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. [Azure portalını](https://portal.azure.com) açın.
 
-1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market*altında **SSH anahtarları**' nı seçin.
+1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market**altında **SSH anahtarları**' nı seçin.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
@@ -61,7 +61,7 @@ Yerel bilgisayarınızda bir PowerShell istemi açın ve şunu yazın:
 ssh -i <path to the .pem file> username@<ipaddress of the VM>
 ```
 
-Örneğin şunu yazın:`ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
+Örneğin şunu yazın: `ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
 
 
 ## <a name="upload-an-ssh-key"></a>SSH anahtarını karşıya yükle
@@ -89,6 +89,20 @@ Ayrıca, Azure 'da depolanacak ortak bir SSH anahtarını da yükleyebilirsiniz.
 1. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. 
 
 Anahtar karşıya yüklendikten sonra, bir VM oluştururken kullanmayı seçebilirsiniz.
+
+## <a name="list-keys"></a>Anahtarları Listele
+
+Portalda oluşturulan SSH anahtarları kaynak olarak depolanır, bu sayede kaynakların tümünü görmek için kaynak görünümünüzü filtreleyebilmenizi sağlar.
+
+1. Portalda **tüm kaynak**' ı seçin.
+1. Filtrelerdeki **tür**' i seçin, listeyi temizlemek Için **Tümünü Seç** seçeneğinin seçimini kaldırın.
+1. Filtreye **SSH** yazın ve **SSH anahtarı**' nı seçin.
+
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Tüm SSH anahtarlarınızı görmek için listenin nasıl filtreleneceği ekran görüntüsü.":::
+
+## <a name="get-the-public-key"></a>Ortak anahtarı al
+
+Ortak anahtarınıza ihtiyacınız varsa, anahtar için Portal sayfasından kolayca kopyalayabilirsiniz. Anahtarlarınızı listeleyin (son bölümdeki işlemi kullanarak), ardından listeden bir anahtar seçin. Anahtarınızın sayfası açılır ve kopyalamak için anahtarın yanındaki **Panoya Kopyala** simgesine tıklayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

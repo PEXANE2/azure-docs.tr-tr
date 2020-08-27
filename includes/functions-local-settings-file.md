@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 6fd8c3c5839d4cc897caa2dff70af87980e547eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206725"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929508"
 ---
 ## <a name="local-settings-file"></a>Yerel ayarlar dosyası
 
@@ -41,11 +41,20 @@ Projeleri yerel olarak çalıştırdığınızda bu ayarlar desteklenir:
 | Ayar      | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | Bu ayar olarak ayarlandığında `true` , tüm değerler yerel makine anahtarıyla şifrelenir. Komutlarıyla birlikte kullanılır `func settings` . Varsayılan değer `false` . |
-| **`Values`** | Bir proje yerel olarak çalışırken kullanılan uygulama ayarları ve bağlantı dizeleri dizisi. Bu anahtar-değer (dize-dize) çiftleri, gibi Azure 'daki işlev uygulamanızda uygulama ayarlarına karşılık gelir [`AzureWebJobsStorage`] . Birçok tetikleyici ve bağlamanın, `Connection` [BLOB depolama tetikleyicisi](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)gibi bir bağlantı dizesi uygulama ayarına başvuran bir özelliği vardır. Bu özellikler için dizide tanımlanmış bir uygulama ayarı gereklidir `Values` . <br/>[`AzureWebJobsStorage`] , HTTP dışındaki Tetikleyiciler için gerekli bir uygulama ayarıdır. <br/>Işlevler çalışma zamanının 2. x ve üzeri sürümleri `FUNCTIONS_WORKER_RUNTIME` için, temel araçlar tarafından projeniz için oluşturulan [] ayarı gereklidir. <br/> [Azure Storage öykünücüsü](../articles/storage/common/storage-use-emulator.md) yerel olarak yüklüyse ve [`AzureWebJobsStorage`] olarak ayarlarsanız `UseDevelopmentStorage=true` , çekirdek araçlar öykünücüyü kullanır. Öykünücü geliştirme sırasında faydalıdır, ancak dağıtımdan önce gerçek bir depolama bağlantısı ile test etmeniz gerekir.<br/> Değerler dize olmalıdır ve JSON nesneleri veya dizileri olmamalıdır. Ayar adları iki nokta ( `:` ) veya çift alt çizgi () içeremez `__` . Bu karakterler çalışma zamanı tarafından ayrılmıştır. <br/>Yerel olarak çalışırken bir işlevi devre dışı bırakmak için, koleksiyona ekleyin; `"AzureWebJobs.<FUNCTION_NAME>.Disabled": "true"` burada `<FUNCTION_NAME>` işlevin adıdır. Daha fazla bilgi için bkz. [Azure işlevleri 'nde işlevleri devre dışı bırakma](../articles/azure-functions/disable-function.md#localsettingsjson)  |
+| **`Values`** | Bir proje yerel olarak çalışırken kullanılan uygulama ayarları ve bağlantı dizeleri dizisi. Bu anahtar-değer (dize-dize) çiftleri, gibi Azure 'daki işlev uygulamanızda uygulama ayarlarına karşılık gelir [`AzureWebJobsStorage`] . Birçok tetikleyici ve bağlamanın, `Connection` [BLOB depolama tetikleyicisi](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)gibi bir bağlantı dizesi uygulama ayarına başvuran bir özelliği vardır. Bu özellikler için dizide tanımlanmış bir uygulama ayarı gereklidir `Values` . Yaygın olarak kullanılan ayarların listesi için sonraki tabloya bakın. <br/>Değerler dize olmalıdır ve JSON nesneleri veya dizileri olmamalıdır. Ayar adları iki nokta ( `:` ) veya çift alt çizgi () içeremez `__` . Çift alt çizgi karakterleri çalışma zamanı tarafından ayrılmıştır ve iki nokta üst üste [bağımlılık ekleme](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)desteği için ayrılmıştır. |
 | **`Host`** | Bu bölümdeki ayarlar, projeleri yerel olarak çalıştırdığınızda Işlevler ana bilgisayar işlemini özelleştirir. Bu ayarlar, Azure 'da projeleri çalıştırdığınızda da uygulanan ayarları host.jsfarklıdır. |
 | **`LocalHttpPort`** | Yerel Işlevler Konağı (ve) çalıştırılırken kullanılan varsayılan bağlantı noktasını ayarlar `func host start` `func run` . `--port`Komut satırı seçeneği bu ayarın üzerine gelir. |
 | **`CORS`** | , [Çıkış noktaları arası kaynak paylaşımı (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)için izin verilen kaynakları tanımlar. Kaynaklar, boşluk olmadan virgülle ayrılmış bir liste olarak sağlanır. () Joker değeri \* desteklenir ve bu, herhangi bir kaynaktan gelen isteklere izin verir. |
 | **`CORSCredentials`** |  Olarak ayarlandığında `true` , isteklere izin verir `withCredentials` . |
 | **`ConnectionStrings`** | Bir koleksiyon. İşlev bağlamalarınız tarafından kullanılan bağlantı dizeleri için bu koleksiyonu kullanmayın. Bu koleksiyon, genellikle `ConnectionStrings` [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)gibi bir yapılandırma dosyasının bölümünden bağlantı dizelerini alan çerçeveler tarafından kullanılır. Bu nesnedeki bağlantı dizeleri [System. Data. SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)sağlayıcı türüyle ortama eklenir. Bu koleksiyondaki öğeler, diğer uygulama ayarlarıyla Azure 'da yayımlanmaz. Bu değerleri, `Connection strings` işlev uygulaması ayarlarınızın koleksiyonuna açıkça eklemeniz gerekir. [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)İşlev kodunuzda bir oluşturuyorsanız, bağlantı dizesi değerini portaldaki **uygulama ayarları** ' nda diğer bağlantılarınız ile depolamanız gerekir. |
+
+Aşağıdaki uygulama ayarları, **`Values`** yerel olarak çalıştırılırken dizisine dahil edilebilir:
+
+| Ayar | Değerler | Açıklama |
+|-----|-----|-----|
+|**`AzureWebJobsStorage`**| Depolama hesabı bağlantı dizesi veya<br/>`UseDevelopmentStorage=true`| Bir Azure depolama hesabı için bağlantı dizesini içerir. HTTP dışındaki Tetikleyiciler kullanılırken gereklidir. Daha fazla bilgi için bkz [`AzureWebJobsStorage`] . başvuru.<br/>[Azure Storage öykünücüsü](../articles/storage/common/storage-use-emulator.md) yerel olarak yüklüyse ve [`AzureWebJobsStorage`] olarak ayarlarsanız `UseDevelopmentStorage=true` , çekirdek araçlar öykünücüyü kullanır. Öykünücü geliştirme sırasında faydalıdır, ancak dağıtımdan önce gerçek bir depolama bağlantısı ile test etmeniz gerekir.| 
+|**`AzureWebJobs.<FUNCTION_NAME>.Disabled`**| `true`\|`false` | Yerel olarak çalışırken bir işlevi devre dışı bırakmak için, koleksiyona ekleyin; `"AzureWebJobs.<FUNCTION_NAME>.Disabled": "true"` burada `<FUNCTION_NAME>` işlevin adıdır. Daha fazla bilgi için bkz. [Azure işlevleri 'nde işlevleri devre dışı bırakma](../articles/azure-functions/disable-function.md#localsettingsjson) |
+|**`FUNCTIONS_WORKER_RUNTIME`** | `dotnet`<br/>`node`<br/>`java`<br/>`powershell`<br/>`python`| Işlevlerin çalışma zamanının hedeflenen dilini gösterir. Sürüm 2. x ve üzeri Işlevleri çalışma zamanının daha yüksek olması gerekir. Bu ayar projeniz için temel araçlar tarafından üretilir. Daha fazla bilgi için bkz [`FUNCTIONS_WORKER_RUNTIME`](../articles/azure-functions/functions-app-settings.md#functions_worker_runtime) . başvuru.|
+| **`FUNCTIONS_WORKER_RUNTIME_VERSION`** | `~7` |Yerel olarak çalıştırılırken PowerShell 7 ' nin kullanılacağını gösterir. Ayarlanmamışsa, PowerShell Core 6 kullanılır. Bu ayar yalnızca yerel olarak çalıştırılırken kullanılır. Azure 'da çalışırken, PowerShell çalışma zamanı sürümü `powerShellVersion` [Portal 'da ayarlanbilen](../articles/azure-functions/functions-reference-powershell.md#changing-the-powershell-version)site yapılandırma ayarı tarafından belirlenir. | 
 
 [AzureWebJobsStorage]: ../articles/azure-functions/functions-app-settings.md#azurewebjobsstorage

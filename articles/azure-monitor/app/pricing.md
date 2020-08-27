@@ -2,16 +2,17 @@
 title: Azure Application Insights kullanımı ve maliyetlerini yönetme | Microsoft Docs
 description: Application Insights telemetri birimlerini yönetin ve maliyetleri izleyin.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309690"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930494"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -79,7 +80,7 @@ Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights 
 
 ### <a name="queries-to-understand-data-volume-details"></a>Veri hacmi ayrıntılarını anlamak için sorgular
 
-Application Insights için veri birimlerini araştırmak için iki yaklaşım vardır. İlki tablodaki toplu bilgileri kullanır `systemEvents` ve ikincisi `_BilledSize` , her alınan olayda kullanılabilen özelliğini kullanır. `systemEvents`, [çalışma alanı tabanlı-Application-Insights](#data-volume-for-workspace-based-application-insights-resources)için veri boyutu bilgilerine sahip olmayacaktır.
+Application Insights için veri birimlerini araştırmak için iki yaklaşım vardır. İlki tablodaki toplu bilgileri kullanır `systemEvents` ve ikincisi `_BilledSize` , her alınan olayda kullanılabilen özelliğini kullanır. `systemEvents` , [çalışma alanı tabanlı-Application-Insights](#data-volume-for-workspace-based-application-insights-resources)için veri boyutu bilgilerine sahip olmayacaktır.
 
 #### <a name="using-aggregated-data-volume-information"></a>Toplu veri hacmi bilgilerini kullanma
 
@@ -187,7 +188,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
 
 * **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](./javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
 
-* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
+* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin ](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 
 * **Ön toplama ölçümleri**: uygulamanızda trackmetric çağrıları yerleştirirseniz, bir ölçüm toplu işinin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
  
@@ -215,7 +216,7 @@ Veri alma eğilimi ve tanımlanacak günlük hacim üst sınırı olduğunu anla
 
 ### <a name="set-the-daily-cap"></a>Günlük ucunu ayarla
 
-Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yapılandır** bölümünde, **kullanım ve tahmini maliyetler** sayfasında, **günlük üst sınır**' ı seçin.
+Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yapılandır** bölümünde, **kullanım ve tahmini maliyetler** sayfasında,  **günlük üst sınır**' ı seçin.
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-003.png)
 
@@ -239,7 +240,7 @@ Birçok örnekleme biçimi vardır.
 * [Uyarlamalı örnekleme](./sampling.md) , ASP.NET SDK için varsayılandır. Uyarlamalı örnekleme, uygulamanızın gönderdiği telemetri hacmine otomatik olarak ayarlanır. Ağ üzerindeki telemetri trafiğinin azaltılabilmesi için Web uygulamanızdaki SDK 'da otomatik olarak çalışır. 
 * Alım *örnekleme* , uygulamanızdaki Telemetriyi Application Insights hizmetine girdiği noktada çalışan bir alternatiftir. Alım örnekleme, uygulamanızdan gönderilen telemetri hacmini etkilemez, ancak hizmet tarafından tutulan hacmi azaltır. Tarayıcıların ve diğer SDK 'lardan telemetri tarafından kullanılan kotayı azaltmak için alma örneklemesini kullanabilirsiniz.
 
-Alım örneklemesini ayarlamak için **fiyatlandırma** bölmesine gidin:
+Alım örneklemesini ayarlamak için  **fiyatlandırma** bölmesine gidin:
 
 ![Kota ve fiyatlandırma bölmesinde örnekler kutucuğunu seçin ve ardından bir örnekleme kesri seçin](./media/pricing/pricing-004.png)
 
@@ -279,7 +280,7 @@ Verilerin Application Insights gönderilmesi veri bant genişliği ücretlerine 
 
 ## <a name="disable-daily-cap-e-mails"></a>Günlük uç e-postalarını devreden çıkar
 
-Günlük birim Cap e-postalarını devre dışı bırakmak için, Application Insights kaynağınızın **Yapılandır** bölümünde, **kullanım ve tahmini maliyetler** bölmesinde **günlük üst sınır**' ı seçin. Büyük/veya ayarlanabilir bir uyarı düzeyine ulaşıldığında e-posta gönderme ayarları vardır. Tüm günlük uç hacimlerle ilgili e-postaları devre dışı bırakmak istiyorsanız her iki kutunun işaretini kaldırın.
+Günlük birim Cap e-postalarını devre dışı bırakmak için, Application Insights kaynağınızın **Yapılandır** bölümünde, **kullanım ve tahmini maliyetler** bölmesinde  **günlük üst sınır**' ı seçin. Büyük/veya ayarlanabilir bir uyarı düzeyine ulaşıldığında e-posta gönderme ayarları vardır. Tüm günlük uç hacimlerle ilgili e-postaları devre dışı bırakmak istiyorsanız her iki kutunun işaretini kaldırın.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Eski Kurumsal (düğüm başına) Fiyatlandırma Katmanı
 

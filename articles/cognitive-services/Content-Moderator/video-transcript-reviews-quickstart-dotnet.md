@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2d0ddae8a9bd8054c740402b8beb3bb0bccfa9f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73744383"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919225"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET kullanarak video dökümü oluşturma İncelemeleri oluşturun
 
@@ -25,7 +26,7 @@ Bu makalede, [C# ile Content moderator SDK](https://www.nuget.org/packages/Micro
 - İncelemeye aracılı bir döküm ekleyin
 - İncelemeyi Yayımla
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Daha önce yapmadıysanız Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 - Bu makalede [, videoyu](video-moderation-api.md) dağıttığınız ve insan kararı verme için gözden geçirme aracında [video incelemesini oluşturmuş](video-reviews-quickstart-dotnet.md) olduğunuz varsayılmaktadır. Şimdi gözden geçirme aracında aracılı video dökümü eklemek istiyorsunuz.
@@ -80,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Özel özellikler ekleme
 
-Aşağıdaki özel özellikleri **Videotranscriptreviews**, Class **Program**ad alanına ekleyin. `AzureEndpoint` Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Aşağıdaki özel özellikleri **Videotranscriptreviews**, Class **Program**ad alanına ekleyin. `AzureEndpoint`Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 ```csharp
 namespace VideoReviews
@@ -144,7 +145,7 @@ public static ContentModeratorClient NewClient()
 **Createvideoincelemeleri** aşağıdaki gerekli parametrelere sahiptir:
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
-1. Bir **IList\<createvideo, sbodyıtem>** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
+1. Bir **IList \<CreateVideoReviewsBodyItem> ** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
 
 **Createvideo, Sbodyıtem** 'ın birkaç özelliği vardır. En azından, aşağıdaki özellikleri ayarlarsınız:
 - **İçerik**. Gözden geçirilecek videonun URL 'SI.
@@ -152,7 +153,7 @@ public static ContentModeratorClient NewClient()
 - **Durum**. Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
 
 > [!NOTE]
-> **Createvideoincelemeleri** bir ılist\<String> döndürür. Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir.
+> **Createvideoincelemeleri** bir IList döndürür \<string> . Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir.
 
 Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
 
@@ -234,15 +235,15 @@ Bir video incelemeye el ile döküm eklemenin yanı sıra, bu dökümü moderonu
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
 1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
-1. Bir IList\<transcriptmoderationbodyıtem>. **Transcriptmoderationbodyıtem** aşağıdaki özelliklere sahiptir:
-1. **Koşullar**. Bir IList\<TranscriptModerationBodyItemTermsItem>. Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
+1. Bir IList \<TranscriptModerationBodyItem> . **Transcriptmoderationbodyıtem** aşağıdaki özelliklere sahiptir:
+1. **Koşullar**. Bir IList \<TranscriptModerationBodyItemTermsItem> . Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
 1. **Dizin**. Terimin sıfır tabanlı dizini.
 1. **Terim**. Terimi içeren bir dize.
 1. **Zaman damgası**. Koşulların bulunduğu döküm içindeki zamanı saniye cinsinden içeren bir dize.
 
 TRANSCRIPT, WebVTT biçiminde olmalıdır. Daha fazla bilgi için bkz. [WEBVTT: web video metni Izler biçimi](https://www.w3.org/TR/webvtt1/).
 
-Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList\<transcriptmoderationbodyıtem> olarak çevirir ve **Addvideotranscriptmoderationresult**' a gönderir.
+Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList 'e çevirir \<TranscriptModerationBodyItem> ve **Addvideotranscriptmoderationresult**' a gönderir.
 
 ```csharp
 /// <summary>
@@ -366,7 +367,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Video dökümü gözden geçirme 'nize gidin
 
->**Video**Video>**dökümünü** **gözden geçir**ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin.
+Video dökümünü **gözden geçir**ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin > **Video** > **Transcript** .
 
 Aşağıdaki özellikleri görürsünüz:
 - Eklediğiniz iki satır dökümü

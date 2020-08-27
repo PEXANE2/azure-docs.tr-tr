@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 10a07e00d451b5e23f49bbb3b0d358057c629b8c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406682"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918698"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Konuşmadan metne yönelik kaynak dilini belirtin
 
@@ -48,7 +48,7 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`ve `EndpointId` set yöntemleri `SpeechConfig` C# ' deki sınıftan kullanımdan kaldırılmıştır. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
+> `SpeechRecognitionLanguage` ve `EndpointId` set yöntemleri `SpeechConfig` C# ' deki sınıftan kullanımdan kaldırılmıştır. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -78,7 +78,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`ve, `SetEndpointId` `SpeechConfig` C++ ve Java 'daki sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
+> `SetSpeechRecognitionLanguage` ve, `SetEndpointId` `SpeechConfig` C++ ve Java 'daki sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -107,7 +107,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`ve, `setEndpointId` `SpeechConfig` C++ ve Java 'daki sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
+> `setSpeechRecognitionLanguage` ve, `setEndpointId` `SpeechConfig` C++ ve Java 'daki sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -139,7 +139,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`ve `endpoint_id` Özellikler `SpeechConfig` Python 'daki sınıftan kullanımdan kaldırılmıştır. Bu özelliklerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
+> `speech_recognition_language` ve `endpoint_id` Özellikler `SpeechConfig` Python 'daki sınıftan kullanımdan kaldırılmıştır. Bu özelliklerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -195,7 +195,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 ```
 
 >[!Note]
-> `speechRecognitionLanguage`ve `endpointId` Özellikleri, `SPXSpeechConfiguration` hedef-C ' deki sınıfından kullanım dışıdır. Bu özelliklerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SPXSpeechRecognizer` .
+> `speechRecognitionLanguage` ve `endpointId` Özellikleri, `SPXSpeechConfiguration` hedef-C ' deki sınıfından kullanım dışıdır. Bu özelliklerin kullanımı önerilmez ve bir oluştururken kullanılmamalıdır `SPXSpeechRecognizer` .
 
 ::: zone-end
 

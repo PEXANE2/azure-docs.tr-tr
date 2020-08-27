@@ -1,40 +1,43 @@
 ---
 title: Premium Azure dosya paylaşma oluşturma
-description: Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak Premium Azure dosya paylaşımının nasıl oluşturulacağını öğrenin.
+description: Azure portal, Azure PowerShell modülünü veya Azure CLı kullanarak Azure Premium dosya paylaşımının nasıl oluşturulacağını öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2019
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 27bedb2a5d9f95632141ce332773e0f4f9c696d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903825"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930647"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure dosya paylaşma oluşturma
+# <a name="how-to-create-an-azure-premium-file-share"></a>Azure Premium dosya paylaşma oluşturma
+
 Premium dosya paylaşımları, katı hal disk (SSD) depolama medyasında sunulur ve barındırma veritabanları ve yüksek performanslı bilgi işlem (HPC) dahil olmak üzere GÇ yoğunluklu iş yükleri için kullanışlıdır. Premium dosya paylaşımları, FileStorage hesabı olarak adlandırılan özel bir amaç depolama hesabı türünde barındırılır. Premium dosya paylaşımları, yüksek performans ve kurumsal ölçekli uygulamalar için tasarlanmıştır; tutarlı düşük gecikme süresi, yüksek ıOPS ve yüksek verimlilik paylaşımları sağlar.
 
-Bu makalede [Azure Portal](https://portal.azure.com/), Azure PowerShell ve Azure CLI kullanarak bu yeni hesap türünü nasıl oluşturacağınız gösterilmektedir.
+Bu makalede, [Azure Portal](https://portal.azure.com/), Azure PowerShell modülünü ve Azure CLI kullanarak bu yeni hesap türünü nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure PowerShell modülünü kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Azure portal kullanarak Premium dosya paylaşma oluşturma
+## <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
+
+Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azure hizmetlerinizi gruplandırmaya yönelik mantıksal bir kapsayıcıdır. Bir depolama hesabı oluşturduğunuzda, yeni bir kaynak grubu oluşturma veya var olan bir kaynak grubu kullanma seçeneğiniz vardır. Premium dosya paylaşımları bir dosya depolama hesabı gerektirir.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://portal.azure.com/) oturum açın.
 
-### <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
-
 Artık depolama hesabınızı oluşturmaya hazır olursunuz.
-
-Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azure hizmetlerinizi gruplandırmaya yönelik mantıksal bir kapsayıcıdır. Bir depolama hesabı oluşturduğunuzda, yeni bir kaynak grubu oluşturma veya var olan bir kaynak grubu kullanma seçeneğiniz vardır. Bu makalede, yeni bir kaynak grubu oluşturma gösterilmektedir.
 
 1. Azure portal sol taraftaki menüden **depolama hesapları** ' nı seçin.
 
@@ -60,42 +63,9 @@ Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azu
 
 Depolama hesabı kaynağınız oluşturulduktan sonra şuraya gidin.
 
-### <a name="create-a-premium-file-share"></a>Premium dosya paylaşımı oluşturma
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Depolama hesabının sol menüsünde **Dosya hizmeti** bölümüne kaydırın ve ardından **dosyalar**' ı seçin.
-1. Premium dosya paylaşma oluşturmak için **dosya paylaşma** ' yı seçin.
-1. Dosya paylaşımınız için bir ad ve istediğiniz kotayı girip **Oluştur**' u seçin.
-
-> [!NOTE]
-> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır, daha fazla ayrıntı için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/files/) bakın.
-
-   ![Premium dosya paylaşımı oluşturma](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
-
-### <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Bu makalede oluşturulan kaynakları temizlemek isterseniz, kaynak grubunu silmeniz yeterlidir. Kaynak grubunun silinmesi, ilişkili depolama hesabının yanı sıra kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
-
-## <a name="create-a-premium-file-share-using-powershell"></a>PowerShell kullanarak Premium dosya paylaşma oluşturma
-
-### <a name="create-an-account-using-powershell"></a>PowerShell kullanarak hesap oluşturma
-
-İlk olarak [PowerShellGet](/powershell/scripting/gallery/installing-psget) modülünün en son sürümünü yüklemeniz gerekir.
-
-Ardından, PowerShell modülünüzü yükseltin, Azure aboneliğinizde oturum açın, bir kaynak grubu oluşturun ve ardından bir depolama hesabı oluşturun.
-
-### <a name="upgrade-your-powershell-module"></a>PowerShell modülünüzü yükseltin
-
-PowerShell ile bir Premium dosya paylaşımıyla etkileşim kurmak için az. Storage Module sürüm 1.4.0 veya en son az. Storage modülünü yüklemeniz gerekir.
-
-Yükseltilmiş izinlerle bir PowerShell oturumu açarak başlayın.
-
-Az. Storage modülünü Install:
-
-```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
-```
-
-### <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Komutunu kullanın `Connect-AzAccount` ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
@@ -123,32 +93,11 @@ PowerShell 'den bir dosya depolama depolama hesabı oluşturmak için [New-AzSto
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
 ```
 
-### <a name="create-a-premium-file-share"></a>Premium dosya paylaşımı oluşturma
-
-Artık bir dosya depolama hesabınız olduğuna göre, Premium bir dosya paylaşma oluşturabilirsiniz. [Yeni-Azstoragespaylaşma](/powershell/module/az.storage/New-AzStorageShare) cmdlet 'ini kullanarak bir tane oluşturun.
-
-> [!NOTE]
-> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır, daha fazla ayrıntı için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/files/) bakın.
-
-```powershell
-New-AzStorageShare `
-   -Name myshare `
-   -Context $storageAcct.Context
-```
-
-### <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Kaynak grubunu ve yeni depolama hesabı dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın: 
-
-```powershell
-Remove-AzResourceGroup -Name $resourceGroup
-```
-
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Azure CLı kullanarak Premium dosya paylaşma oluşturma
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure Cloud Shell başlamak için [Azure Portal](https://portal.azure.com)oturum açın.
 
-CLı 'nın yerel yüklemesinde oturum açmak istiyorsanız, öncelikle en son sürüme sahip olduğunuzdan emin olun, sonra oturum aç komutunu çalıştırın:
+CLı 'nın yerel yüklemesinde oturum açmak istiyorsanız en son sürüme sahip olduğunuzdan emin olun ve oturum açın:
 
 ```azurecli
 az login
@@ -187,13 +136,42 @@ STORAGEKEY=$(az storage account keys list \
     --account-name $STORAGEACCT \
     --query "[0].value" | tr -d '"')
 ```
+---
 
-### <a name="create-a-premium-file-share"></a>Premium dosya paylaşımı oluşturma
+## <a name="create-a-premium-file-share"></a>Premium dosya paylaşımı oluşturma
 
-Artık bir dosya depolama hesabınız olduğuna göre, Premium bir dosya paylaşma oluşturabilirsiniz. Bir tane oluşturmak için [az Storage Share Create](/cli/azure/storage/share) komutunu kullanın.
+Artık bir dosya depolama hesabı oluşturduğunuza göre, bu depolama hesabı içinde bir Premium dosya paylaşma oluşturabilirsiniz.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Depolama hesabının sol menüsünde **Dosya hizmeti** bölümüne kaydırın ve ardından **dosyalar**' ı seçin.
+1. Premium dosya paylaşma oluşturmak için **dosya paylaşma** ' yı seçin.
+1. Dosya paylaşımınız için bir ad ve istediğiniz kotayı girip **Oluştur**' u seçin.
 
 > [!NOTE]
-> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır, daha fazla ayrıntı için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/files/) bakın.
+> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
+
+   ![Premium dosya paylaşımı oluşturma](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Azure PowerShell modülüyle Premium bir dosya paylaşımı oluşturmak için [New-Azstoragesshare](/powershell/module/az.storage/New-AzStorageShare) cmdlet 'ini kullanın.
+
+> [!NOTE]
+> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
+
+```powershell
+New-AzStorageShare `
+   -Name myshare `
+   -Context $storageAcct.Context
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı ile Premium dosya paylaşma oluşturmak için [az Storage Share Create](/cli/azure/storage/share) komutunu kullanın.
+
+> [!NOTE]
+> Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ```azurecli-interactive
 az storage share create \
@@ -201,14 +179,34 @@ az storage share create \
     --account-key $STORAGEKEY \
     --name "myshare" 
 ```
+---
 
-### <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Bu makalede oluşturulan kaynakları temizlemek isterseniz, kaynak grubunu silin. Kaynak grubunun silinmesi, ilişkili depolama hesabının yanı sıra kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Bu makalede oluşturulan kaynakları temizlemek isterseniz, kaynak grubunu silin. Kaynak grubunun silinmesi, ilişkili depolama hesabının yanı sıra kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+
+Kaynak grubunu ve yeni depolama hesabı dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın: 
+
+```powershell
+Remove-AzResourceGroup -Name $resourceGroup
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bu makalede oluşturulan kaynakları temizlemek isterseniz, kaynak grubunu silin. Kaynak grubunun silinmesi, ilişkili depolama hesabının yanı sıra kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
 
 Kaynak grubunu ve yeni depolama hesabı dahil olmak üzere ilişkili kaynakları kaldırmak için [az group delete](/cli/azure/group) komutunu kullanın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

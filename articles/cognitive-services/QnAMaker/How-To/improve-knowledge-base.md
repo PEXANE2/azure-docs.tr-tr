@@ -3,13 +3,13 @@ title: Etkin öğrenme önerilen Sorular-Soru-Cevap Oluşturma
 description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9bed80ac8c80fb4cecf06b979e0403e34645db01
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406988"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919140"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -130,10 +130,10 @@ Content-Type: application/json
 
 |HTTP istek özelliği|Ad|Tür|Amaç|
 |--|--|--|--|
-|URL yol parametresi|Bilgi Bankası KIMLIĞI|dize|Bilgi tabanınız için GUID.|
-|Özel alt etki alanı|QnAMaker kaynak adı|dize|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. Olarak listelenir `host` .|
-|Üst bilgi|İçerik Türü|dize|API 'ye gönderilen gövdenin medya türü. Varsayılan değer:`application/json`|
-|Üst bilgi|Yetkilendirme|dize|Uç nokta anahtarınız (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|URL yol parametresi|Bilgi Bankası KIMLIĞI|string|Bilgi tabanınız için GUID.|
+|Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. Olarak listelenir `host` .|
+|Üst bilgi|İçerik Türü|string|API 'ye gönderilen gövdenin medya türü. Varsayılan değer: `application/json`|
+|Üst bilgi|Yetkilendirme|string|Uç nokta anahtarınız (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Gövde gönder|JSON nesnesi|JSON|Eğitim geri bildirimi|
 
 JSON gövdesi çeşitli ayarlara sahiptir:
@@ -141,8 +141,8 @@ JSON gövdesi çeşitli ayarlara sahiptir:
 |JSON Body özelliği|Tür|Amaç|
 |--|--|--|--|
 |`feedbackRecords`|array|Geri bildirim listesi.|
-|`userId`|dize|Önerilen soruları kabul eden kişinin Kullanıcı KIMLIĞI. Kullanıcı KIMLIĞI biçimi size ait. Örneğin, bir e-posta adresi, mimarinizdeki geçerli bir kullanıcı KIMLIĞI olabilir. İsteğe bağlı.|
-|`userQuestion`|dize|Kullanıcının sorgusunun tam metni. Gereklidir.|
+|`userId`|string|Önerilen soruları kabul eden kişinin Kullanıcı KIMLIĞI. Kullanıcı KIMLIĞI biçimi size ait. Örneğin, bir e-posta adresi, mimarinizdeki geçerli bir kullanıcı KIMLIĞI olabilir. İsteğe bağlı.|
+|`userQuestion`|string|Kullanıcının sorgusunun tam metni. Gereklidir.|
 |`qnaID`|sayı|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
 
 Örnek bir JSON gövdesi şöyle görünür:

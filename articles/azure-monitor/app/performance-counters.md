@@ -3,12 +3,13 @@ title: Application Insights 'da performans sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET performans sayaçlarını izleyin.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322525"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918528"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -59,11 +60,11 @@ ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış ge�
 > [!NOTE]
 > ASP.NET Core uygulamalar değildir `ApplicationInsights.config` ve bu nedenle yukarıdaki yöntem ASP.NET Core uygulamalar için geçerli değildir.
 
-Hem standart sayaçları hem de uyguladığınızı yakalayabilirsiniz. `\Objects\Processes`, tüm Windows sistemlerinde kullanılabilen standart sayaca bir örnektir. `\Sales(photo)\# Items Sold`, bir Web hizmetinde uygulanabilir olabilecek özel bir sayaca örnektir.
+Hem standart sayaçları hem de uyguladığınızı yakalayabilirsiniz. `\Objects\Processes` , tüm Windows sistemlerinde kullanılabilen standart sayaca bir örnektir. `\Sales(photo)\# Items Sold` , bir Web hizmetinde uygulanabilir olabilecek özel bir sayaca örnektir.
 
 Biçim `\Category(instance)\Counter"` veya örnekleri olmayan kategoriler için yalnızca `\Category\Counter` .
 
-`ReportAs`Eşleşmeyen sayaç adları için gereklidir `[a-zA-Z()/-_ \.]+` -diğer bir deyişle, şu kümeler içinde olmayan karakterler içerirler: harfler, yuvarlak köşeli ayraç, eğik çizgi, tire, alt çizgi, boşluk, nokta.
+`ReportAs` Eşleşmeyen sayaç adları için gereklidir `[a-zA-Z()/-_ \.]+` -diğer bir deyişle, şu kümeler içinde olmayan karakterler içerirler: harfler, yuvarlak köşeli ayraç, eğik çizgi, tire, alt çizgi, boşluk, nokta.
 
 Bir örnek belirtirseniz, bildirilen ölçümün "CounterInstanceName" boyutu olarak toplanır.
 

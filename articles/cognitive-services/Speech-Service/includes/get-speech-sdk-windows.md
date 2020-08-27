@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399996"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944399"
 ---
 :::row:::
     :::column span="3":::
@@ -25,11 +26,11 @@ ms.locfileid: "81399996"
 
 ### <a name="system-requirements"></a>Sistem gereksinimleri
 
-Windows üzerinde konuşma SDK 'sı, sistemde <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> için yeniden dağıtılabilir Microsoft Visual C++</a> gerektirir.
+Windows üzerinde konuşma SDK 'Sı, sistemde <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> Için yeniden dağıtılabilir Microsoft Visual C++</a> gerektirir.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">X86 için Install<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">X64 için yüklensin<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">ARMx64 için Install<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">X86 için Install <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">X64 için yüklensin <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">ARMx64 için Install <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ### <a name="c"></a>C#
 
@@ -39,16 +40,16 @@ Mikrofon girişi için Medya Altyapısı kitaplıklarının yüklenmesi gerekir.
 
 Gerekli konuşma SDK dosyaları, uygulamanızla aynı dizine dağıtılabilir. Bu şekilde, uygulamanız kitaplıklara doğrudan erişim sağlayabilir. Uygulamanızla eşleşen doğru sürümü (x86/x64) seçtiğinizden emin olun.
 
-| Adı                                            | İşlev                                             |
+| Ad                                            | İşlev                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Yerel ve yönetilen dağıtım için gerekli olan temel SDK |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Yönetilen dağıtım için gerekli                      |
 
 > [!NOTE]
-> 1.3.0 sürümünden itibaren (önceki sürümlerde sunulan `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ) dosya artık gerekli değildir. İşlevselliği artık çekirdek SDK 'sında tümleşiktir.
+> 1.3.0 sürümünden itibaren `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (önceki sürümlerde sunulan) dosya artık gerekli değildir. İşlevselliği artık çekirdek SDK 'sında tümleşiktir.
 
 > [!IMPORTANT]
-> Windows Forms App (.NET Framework) C# projesi için, kitaplıkların projenizin dağıtım ayarlarına eklendiğinden emin olun. Bunu altında `Properties -> Publish Section`kontrol edebilirsiniz. `Application Files` Düğmeye tıklayın ve aşağı kaydırma listesinden ilgili kitaplıkları bulun. Değerin olarak `Included`ayarlandığından emin olun. Proje yayımlandığında/dağıtıldığında, Visual Studio dosyayı içerecektir.
+> Windows Forms App (.NET Framework) C# projesi için, kitaplıkların projenizin dağıtım ayarlarına eklendiğinden emin olun. Bunu altında kontrol edebilirsiniz `Properties -> Publish Section` . Düğmeye tıklayın `Application Files` ve aşağı kaydırma listesinden ilgili kitaplıkları bulun. Değerin olarak ayarlandığından emin olun `Included` . Proje yayımlandığında/dağıtıldığında, Visual Studio dosyayı içerecektir.
 
 ### <a name="c"></a>C++
 

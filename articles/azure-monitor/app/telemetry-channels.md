@@ -3,13 +3,14 @@ title: Azure Application Insights telemetri kanalları | Microsoft Docs
 description: .NET ve .NET Core için Azure Application Insights SDK 'larda telemetri kanallarını özelleştirme.
 ms.topic: conceptual
 ms.date: 05/14/2019
+ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318938"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918409"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights telemetri kanalları
 
@@ -19,7 +20,7 @@ Telemetri kanalları, [Azure Application Insights SDK](./app-insights-overview.m
 
 Telemetri kanalları, telemetri öğelerini arabelleğe almayı ve bunları sorgulamak ve analiz etmek için depolanacağı Application Insights hizmetine göndermekten sorumludur. Telemetri kanalı arabirimini uygulayan herhangi bir sınıftır [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) .
 
-`Send(ITelemetry item)`Telemetri kanalının yöntemi, tüm telemetri başlatıcıları ve telemetri işlemcileri çağrıldıktan sonra çağrılır. Bu nedenle, bir telemetri işlemcisi tarafından bırakılan tüm öğeler kanala erişmez. `Send()`genellikle öğeleri arka uca anında göndermez. Genellikle, bunları bellekte arabelleğe alır ve etkili iletim için bunları toplu halde gönderir.
+`Send(ITelemetry item)`Telemetri kanalının yöntemi, tüm telemetri başlatıcıları ve telemetri işlemcileri çağrıldıktan sonra çağrılır. Bu nedenle, bir telemetri işlemcisi tarafından bırakılan tüm öğeler kanala erişmez. `Send()` genellikle öğeleri arka uca anında göndermez. Genellikle, bunları bellekte arabelleğe alır ve etkili iletim için bunları toplu halde gönderir.
 
 [Canlı ölçüm akışı](live-stream.md) Ayrıca telemetri canlı akışını destekleyen özel bir kanala sahiptir. Bu kanal, normal telemetri kanalından bağımsızdır ve bu belge kendisine uygulanmaz.
 
@@ -39,7 +40,7 @@ Application Insights .NET ve .NET Core SDK 'Ları, iki yerleşik kanala sahiptir
 
 Bir telemetri kanalını etkin telemetri yapılandırmasına ayarlayarak yapılandırırsınız. ASP.NET uygulamalar için, yapılandırma telemetri kanalı örneğinin `TelemetryConfiguration.Active` ' ı ' ya ayarlamayı ya da değiştirmesini içerir `ApplicationInsights.config` . ASP.NET Core uygulamalar için, yapılandırma kanalı bağımlılık ekleme kapsayıcısına eklemeyi içerir.
 
-Aşağıdaki bölümlerde, `StorageFolder` çeşitli uygulama türlerinde kanal için ayar yapılandırma örnekleri gösterilmektedir. `StorageFolder`, yapılandırılabilir ayarlardan yalnızca biridir. Yapılandırma ayarlarının tam listesi için, bu makalenin ilerleyen bölümlerinde bulunan [Ayarlar bölümüne](#configurable-settings-in-channels) bakın.
+Aşağıdaki bölümlerde, `StorageFolder` çeşitli uygulama türlerinde kanal için ayar yapılandırma örnekleri gösterilmektedir. `StorageFolder` , yapılandırılabilir ayarlardan yalnızca biridir. Yapılandırma ayarlarının tam listesi için, bu makalenin ilerleyen bölümlerinde bulunan [Ayarlar bölümüne](#configurable-settings-in-channels) bakın.
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>ASP.NET uygulamaları için ApplicationInsights.config kullanarak yapılandırma
 
@@ -108,9 +109,9 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="operational-details-of-servertelemetrychannel"></a>ServerTelemetryChannel işletimsel ayrıntıları
 
-`ServerTelemetryChannel`gelen öğeleri bellek içi arabellekte depolar. Öğeler, her 30 saniyede bir örnek olarak serileştirilir, sıkıştırılır ve saklanır `Transmission` , ya da 500 öğe ara belleğe alındıktan sonra. Tek bir `Transmission` örnek en fazla 500 öğe içerir ve Application Insights hizmetine tek BIR https çağrısıyla gönderilen bir telemetri toplu işini temsil eder.
+`ServerTelemetryChannel` gelen öğeleri bellek içi arabellekte depolar. Öğeler, her 30 saniyede bir örnek olarak serileştirilir, sıkıştırılır ve saklanır `Transmission` , ya da 500 öğe ara belleğe alındıktan sonra. Tek bir `Transmission` örnek en fazla 500 öğe içerir ve Application Insights hizmetine tek BIR https çağrısıyla gönderilen bir telemetri toplu işini temsil eder.
 
-Varsayılan olarak, en fazla 10 `Transmission` örnek paralel olarak gönderilebilir. Telemetri daha hızlı bir şekilde veya ağ veya Application Insights arka ucu yavaşsa, `Transmission` örnekler bellekte depolanır. Bu bellek içi arabelleğin varsayılan kapasitesi `Transmission` 5 MB 'tır. Bellek içi kapasite aşıldığında, `Transmission` örnekler 50 MB 'lik bir sınıra kadar yerel diskte depolanır. `Transmission`örnekler yerel diskte ağ sorunları olduğunda da depolanır. Yalnızca yerel bir diskte depolanan öğeler, uygulama kilitlenmesinin varlığını sürdürmez. Bunlar, uygulama her başlatıldığında gönderilir.
+Varsayılan olarak, en fazla 10 `Transmission` örnek paralel olarak gönderilebilir. Telemetri daha hızlı bir şekilde veya ağ veya Application Insights arka ucu yavaşsa, `Transmission` örnekler bellekte depolanır. Bu bellek içi arabelleğin varsayılan kapasitesi `Transmission` 5 MB 'tır. Bellek içi kapasite aşıldığında, `Transmission` örnekler 50 MB 'lik bir sınıra kadar yerel diskte depolanır. `Transmission` örnekler yerel diskte ağ sorunları olduğunda da depolanır. Yalnızca yerel bir diskte depolanan öğeler, uygulama kilitlenmesinin varlığını sürdürmez. Bunlar, uygulama her başlatıldığında gönderilir.
 
 ## <a name="configurable-settings-in-channels"></a>Kanallarda yapılandırılabilir ayarlar
 
@@ -130,7 +131,7 @@ Aşağıda, için en yaygın olarak kullanılan ayarlar verilmiştir `ServerTele
 
 ## <a name="which-channel-should-i-use"></a>Hangi kanalı kullanmalıyım?
 
-`ServerTelemetryChannel`uzun süre çalışan uygulamalarla ilgili birçok üretim senaryosu için önerilir. `Flush()`Tarafından uygulanan yöntem `ServerTelemetryChannel` zaman uyumlu değildir ve ayrıca, tüm bekleyen öğelerin bellekten veya diskten gönderilmesini garanti etmez. Uygulamanın kapanmak üzere olduğu senaryolarda bu kanalı kullanırsanız, çağrıldıktan sonra biraz gecikme yapmanızı öneririz `Flush()` . Gerekebilecek tam gecikme miktarı tahmin edilebilir değildir. Bu, kaç öğe veya `Transmission` örnek bellek içinde, kaç tane diskte olduğunu, arka uca kaç tane iletildiğini ve kanalın üstel geri alma senaryolarında ortalanıp içinde olup olmadığını gösteren faktörlere bağlıdır.
+`ServerTelemetryChannel` uzun süre çalışan uygulamalarla ilgili birçok üretim senaryosu için önerilir. `Flush()`Tarafından uygulanan yöntem `ServerTelemetryChannel` zaman uyumlu değildir ve ayrıca, tüm bekleyen öğelerin bellekten veya diskten gönderilmesini garanti etmez. Uygulamanın kapanmak üzere olduğu senaryolarda bu kanalı kullanırsanız, çağrıldıktan sonra biraz gecikme yapmanızı öneririz `Flush()` . Gerekebilecek tam gecikme miktarı tahmin edilebilir değildir. Bu, kaç öğe veya `Transmission` örnek bellek içinde, kaç tane diskte olduğunu, arka uca kaç tane iletildiğini ve kanalın üstel geri alma senaryolarında ortalanıp içinde olup olmadığını gösteren faktörlere bağlıdır.
 
 Zaman uyumlu bir temizleme yapmanız gerekiyorsa kullanmanızı öneririz `InMemoryChannel` .
 
