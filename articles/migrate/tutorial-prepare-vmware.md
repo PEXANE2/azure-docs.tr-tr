@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin değerlendirmesi/geçirilmesi
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109586"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927315"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
@@ -36,8 +36,8 @@ Tablo, Azure 'da gerçekleştirmeniz gereken görevleri özetler. Her bir görev
 --- | --- | ---
 **Azure geçişi projesi oluşturma** | Azure geçişi projesi, Azure geçiş araçları, Microsoft araçları ve üçüncü taraf teklifleriyle değerlendirmeleri ve geçişleri yönetmek ve yönetmek için merkezi bir konum sağlar. | Azure hesabınız, projenin bulunduğu kaynak grubunda katkıda bulunan veya sahip izinlerine ihtiyaç duyuyor.
 **Gereci Kaydet** | Azure geçişi, VM 'Leri keşfetmek, bunları sunucu değerlendirmesi aracı ile değerlendirmek ve sunucu geçiş aracı ile aracısız geçiş kullanarak geçirmek için basit bir Azure geçiş gereci kullanır. Kayıt hakkında [daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration) . | Gereci kaydettirmek için Azure hesabınızın Azure aboneliğinde katkıda bulunan veya sahip izinlerinin olması gerekir.
-**Azure AD uygulamaları oluşturma** | Bir gereci kaydederken, Azure geçişi Azure Active Directory (Azure AD) uygulamaları oluşturur. <br/><br/> -İlk uygulama, Gereç ve Azure geçişi üzerinde çalışan aracılar arasındaki iletişim için kullanılır. <br/><br/> -İkinci uygulama, yalnızca kullanıcının aracısız VMware VM geçişine yönelik abonelikte oluşturulan anahtar kasasına erişmek için kullanılır.   | Azure hesabınızın Azure AD uygulamaları oluşturmak için izinleri olması gerekir.
-**Anahtar kasası oluşturma** | Azure geçişi, aracısız geçiş kullanarak VMware VM 'lerini geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma hesabına yönetmek üzere bir Key Vault oluşturur. | Azure geçişi 'nin Key Vault oluşturmasına izin vermek için, Azure geçişi projesinin bulunduğu kaynak grubunda izinleri (sahip veya katkıda bulunan ve Kullanıcı erişimi Yöneticisi) ayarlarsınız.
+**Azure AD uygulamaları oluşturma** | Bir gereç kaydedilirken Azure geçişi, Azure iki Active Directory (Azure AD) uygulaması oluşturur. <br/><br/> -İlk uygulama, Gereç ve Azure geçişi üzerinde çalışan aracılar arasındaki iletişim için kullanılır. <br/><br/> -İkinci uygulama, yalnızca kullanıcının aracısız VMware VM geçişine yönelik abonelikte oluşturulan anahtar kasasına erişmek için kullanılır.   | Azure hesabınız, Azure AD uygulamaları oluşturmak için bu [izinlere](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps) ihtiyaç duyuyor.
+**Anahtar kasası oluşturma** | -İlk Key Vault, Gereç kaydının bir parçası olarak oluşturulur ve yapılandırması sırasında gereç üzerinde indirilen sertifikanın yönetimi için kullanılır. <br/><br/> -Azure geçişi, aracısız geçiş kullanarak VMware VM 'lerini geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma hesabına yönetmek üzere başka bir Key Vault oluşturur.| Azure geçişi 'nin Key Vault oluşturmasına izin vermek için, Azure geçişi projesinin bulunduğu kaynak grubunda izinleri (sahip veya katkıda bulunan ve Kullanıcı erişimi Yöneticisi) ayarlarsınız.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama

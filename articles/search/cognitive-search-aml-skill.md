@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924720"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde AML yeteneği
 
 > [!IMPORTANT] 
 > Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
 
-**AML** BECERISI, AI zenginleştirme 'yi özel bir [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML) modeliyle genişletmenizi sağlar. AML modelinin [eğitilmesi ve dağıtılması](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)bir **AML** becerisi onu AI zenginleştirme ile tümleştirir.
+**AML** BECERISI, AI zenginleştirme 'yi özel bir [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) modeliyle genişletmenizi sağlar. AML modelinin [eğitilmesi ve dağıtılması](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)bir **AML** becerisi onu AI zenginleştirme ile tümleştirir.
 
 Yerleşik yetenekler gibi, **AML** becerilerinin giriş ve çıkışları vardır. Girişler, bir JSON yükünün başarılı durum koduyla birlikte yanıt olarak çıkışını veren bir JSON nesnesi olarak dağıtılan AML hizmetinize gönderilir. Yanıtın **AML** becerinizde belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
 
@@ -31,9 +31,9 @@ Yerleşik yetenekler gibi, **AML** becerilerinin giriş ve çıkışları vardı
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [AML çalışma alanı](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
-* Bu çalışma alanında [dağıtılan bir modelle](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) bir [Azure Kubernetes hizmeti AML işlem hedefi](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)
-  * [İşlem HEDEFINDE SSL etkin olmalıdır](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Bilişsel Arama yalnızca **https** uç noktalarına erişime izin veriyor
+* [AML çalışma alanı](../machine-learning/concept-workspace.md)
+* Bu çalışma alanında [dağıtılan bir modelle](../machine-learning/how-to-deploy-azure-kubernetes-service.md) bir [Azure Kubernetes hizmeti AML işlem hedefi](../machine-learning/concept-compute-target.md)
+  * [İşlem HEDEFINDE SSL etkin olmalıdır](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Bilişsel Arama yalnızca **https** uç noktalarına erişime izin veriyor
   * Otomatik olarak imzalanan sertifikalar kullanılamayabilir.
 
 ## <a name="odatatype"></a>@odata.type  
@@ -45,8 +45,8 @@ Parametreler büyük/küçük harfe duyarlıdır. Kullanmak istediğiniz paramet
 
 | Parametre adı | Açıklama |
 |--------------------|-------------|
-| `uri` | (Kimlik doğrulaması [yok veya anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) _JSON_ yükünün gönderileceği [AML HIZMETININ Puanlama URI 'si](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) . Yalnızca **https** URI şemasına izin veriliyor. |
-| `key` | ( [Anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) [AML hizmeti için anahtar](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys). |
+| `uri` | (Kimlik doğrulaması [yok veya anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) _JSON_ yükünün gönderileceği [AML HIZMETININ Puanlama URI 'si](../machine-learning/how-to-consume-web-service.md) . Yalnızca **https** URI şemasına izin veriliyor. |
+| `key` | ( [Anahtar kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir) [AML hizmeti için anahtar](../machine-learning/how-to-consume-web-service.md#authentication-with-keys). |
 | `resourceId` | ( [Belirteç kimlik doğrulaması](#WhatSkillParametersToUse)için gereklidir). AML hizmetinin Azure Resource Manager kaynak KIMLIĞI. Abonelik/{Guid}/resourceGroups/{Resource-Group-name}/Microsoft. MachineLearningServices/Workspaces/{Workspace-Name}/Services/{service_name} biçiminde olmalıdır. |
 | `region` | ( [Belirteç kimlik doğrulaması](#WhatSkillParametersToUse)için isteğe bağlı). AML hizmetinin dağıtıldığı [bölge](https://azure.microsoft.com/global-infrastructure/regions/) . |
 | `timeout` | Seçim Belirtildiğinde, API çağrısını yapan http istemcisinin zaman aşımını gösterir. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Örneğin, `PT60S` 60 saniye için. Ayarlanmamışsa, varsayılan değer olan 30 saniye seçilir. Zaman aşımı en fazla 230 saniyeye ayarlanabilir ve en az 1 saniye olabilir. |
@@ -58,9 +58,9 @@ Parametreler büyük/küçük harfe duyarlıdır. Kullanmak istediğiniz paramet
 
 Hangi AML yetenek parametrelerinin gerekli olduğu, AML hizmetinizin kullandığı kimlik doğrulamasına bağlıdır. AML hizmetleri üç kimlik doğrulama seçeneği sunar:
 
-* [Anahtar tabanlı kimlik doğrulaması](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication-for-web-service-deployment). AML becerilerinden Puanlama isteklerinin kimliğini doğrulamak için bir statik anahtar sağlanır
+* [Anahtar tabanlı kimlik doğrulaması](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). AML becerilerinden Puanlama isteklerinin kimliğini doğrulamak için bir statik anahtar sağlanır
   * _URI_ ve _anahtar_ parametrelerini kullanma
-* [Belirteç tabanlı kimlik doğrulama](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication). AML hizmeti, [belirteç tabanlı kimlik doğrulaması kullanılarak dağıtılır](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service#authentication-with-tokens). Azure Bilişsel Arama hizmetinin [yönetilen kimliğine](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , AML hizmetinin çalışma alanında [okuyucu rolü](https://docs.microsoft.com/azure/machine-learning/how-to-assign-roles) verilir. AML yeteneği daha sonra, bir statik anahtar gerekmeden AML hizmetinde kimlik doğrulaması yapmak için Azure Bilişsel Arama hizmetinin yönetilen kimliğini kullanır.
+* [Belirteç tabanlı kimlik doğrulama](../machine-learning/concept-enterprise-security.md#authentication). AML hizmeti, [belirteç tabanlı kimlik doğrulaması kullanılarak dağıtılır](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). Azure Bilişsel Arama hizmetinin [yönetilen kimliğine](../active-directory/managed-identities-azure-resources/overview.md) , AML hizmetinin çalışma alanında [okuyucu rolü](../machine-learning/how-to-assign-roles.md) verilir. AML yeteneği daha sonra, bir statik anahtar gerekmeden AML hizmetinde kimlik doğrulaması yapmak için Azure Bilişsel Arama hizmetinin yönetilen kimliğini kullanır.
   * _RESOURCEID_ parametresini kullanın.
   * Azure Bilişsel Arama hizmeti AML çalışma alanından farklı bir bölgedeyse, AML hizmetinin dağıtıldığı bölgeyi ayarlamak için _Region_ parametresini kullanın
 * Kimlik doğrulaması yok. AML hizmetini kullanmak için kimlik doğrulaması gerekmez
@@ -171,4 +171,4 @@ AML hizmetinin kullanılamadığı veya bir HTTP hatası döndürdüğü durumla
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [AML hizmeti sorun giderme](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)
++ [AML hizmeti sorun giderme](../machine-learning/how-to-troubleshoot-deployment.md)

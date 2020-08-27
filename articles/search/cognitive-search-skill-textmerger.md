@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982025"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924648"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
 
@@ -35,7 +35,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | `insertPostTag`   | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak ayarlayın `""` .  |
 
 
-##  <a name="sample-input"></a>Örnek giriş
+##  <a name="sample-input"></a>Örnek girdi
 Bu yetenek için kullanılabilir giriş sağlayan bir JSON belgesi şu olabilir:
 
 ```json
@@ -75,7 +75,7 @@ Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "` ve *ınsertpos
 
 Metin birleştirme kullanmanın yaygın bir senaryosu, görüntülerin metinsel gösterimini (bir OCR becerinden gelen metin veya bir görüntünün resim yazısı) belgenin içerik alanına birleştirmektir. 
 
-Aşağıdaki örnek Beceri, belgeye katıştırılmış görüntülerden metin ayıklamak için OCR becerisi kullanır. Sonra, her görüntüden hem özgün hem de OCRed metin içeren bir *merged_text* alanı oluşturur. [Burada](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)OCR yeteneği hakkında daha fazla bilgi edinebilirsiniz.
+Aşağıdaki örnek Beceri, belgeye katıştırılmış görüntülerden metin ayıklamak için OCR becerisi kullanır. Sonra, her görüntüden hem özgün hem de OCRed metin içeren bir *merged_text* alanı oluşturur. [Burada](./cognitive-search-skill-ocr.md)OCR yeteneği hakkında daha fazla bilgi edinebilirsiniz.
 
 ```json
 {
@@ -148,4 +148,4 @@ Yukarıdaki örnekte, normalleştirilmiş görüntüler alanının var olduğu v
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Dizin Oluşturucu Oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Dizin Oluşturucu Oluşturma (REST)](/rest/api/searchservice/create-indexer)

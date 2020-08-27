@@ -2,13 +2,14 @@
 title: Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP olmayan uygulamaları izleme.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325415"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933282"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -46,7 +47,7 @@ Her uygulama türü için belirli yönergeler aşağıdaki bölümlerde açıkla
 Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) paylaşılır
 
 1. [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) indirin ve yükleyin
-2. Visual Studio yeni proje şablonu veya komut satırı kullanarak yeni bir çalışan hizmeti projesi oluşturma`dotnet new worker`
+2. Visual Studio yeni proje şablonu veya komut satırı kullanarak yeni bir çalışan hizmeti projesi oluşturma `dotnet new worker`
 3. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 
 4. `services.AddApplicationInsightsTelemetryWorkerService();` `CreateHostBuilder()` `Program.cs` Aşağıdaki örnekte olduğu gibi sınıfınıza yöntemine ekleyin:
@@ -124,7 +125,7 @@ Alternatif olarak, aşağıdaki ortam değişkenlerinden birinde izleme anahtar�
 `APPINSIGHTS_INSTRUMENTATIONKEY` veya `ApplicationInsights:InstrumentationKey`
 
 Örnek: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-VEYA`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+VEYA `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıtılan uygulamalar için izleme anahtarını belirler.
 
@@ -312,7 +313,7 @@ Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencie
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`Varsayılan olarak etkindir ve .NET Core 3,0 uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
+`EventCounterCollectionModule` Varsayılan olarak etkindir ve .NET Core 3,0 uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ek Telemetriyi el ile izleme
 
@@ -349,7 +350,7 @@ SDK, yukarıda açıklandığı gibi telemetri otomatik olarak toplarken, çoğu
 
 `ApplicationInsightsServiceOptions`Bu SDK 'daki ASP.NET Core SDK 'nın aksine ad alanında olduğunu unutmayın `Microsoft.ApplicationInsights.WorkerService` `Microsoft.ApplicationInsights.AspNetCore.Extensions` .
 
-İçinde yaygın olarak kullanılan ayarlar`ApplicationInsightsServiceOptions`
+İçinde yaygın olarak kullanılan ayarlar `ApplicationInsightsServiceOptions`
 
 |Ayar | Açıklama | Varsayılan
 |---------------|-------|-------
@@ -425,7 +426,7 @@ Aşağıdaki otomatik koleksiyon modülleri varsayılan olarak etkinleştirilmi�
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`-(Şu anda bu telemetri modülüyle ilgili bir sorun var. Geçici bir çözüm için bkz. [GitHub sorunu 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` -(Şu anda bu telemetri modülüyle ilgili bir sorun var. Geçici bir çözüm için bkz. [GitHub sorunu 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 ).)
 * `AzureInstanceMetadataTelemetryModule`
 

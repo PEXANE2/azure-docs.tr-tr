@@ -2,14 +2,15 @@
 title: .NET uygulamaları için Azure Application Insights Snapshot Debugger
 description: Üretim .NET uygulamalarında özel durumlar oluştuğunda hata ayıklama anlık görüntüleri otomatik olarak toplanır
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325653"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935815"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](./asp-net-exceptions.md) üzerinde görünür.

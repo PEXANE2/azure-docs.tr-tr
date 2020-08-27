@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130560"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935899"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -59,9 +59,9 @@ Dil Çözümleyicileri olduğu gibi kullanılır. Dizin tanımındaki her bir al
 > [!NOTE]
 > Dizin oluşturma sırasında bir alanın sorgu süresinden farklı bir dil Çözümleyicisi kullanmak mümkün değildir. Bu özellik [özel çözümleyiciler](index-add-custom-analyzers.md)için ayrılmıştır. Bu nedenle, **searchAnalyzer** veya **ındexanalyzer** özelliklerini bir dil çözümleyici adına ayarlamaya çalışırsanız REST API bir hata yanıtı döndürür. Bunun yerine **çözümleyici** özelliğini kullanmanız gerekir.
 
-Sorgularınızda aranacak dile özgü alanı belirtmek için **Searchfields** sorgu parametresini kullanın. [Arama belgelerinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)çözümleyici özelliğini içeren sorgu örneklerini inceleyebilirsiniz. 
+Sorgularınızda aranacak dile özgü alanı belirtmek için **Searchfields** sorgu parametresini kullanın. [Arama belgelerinde](/rest/api/searchservice/search-documents)çözümleyici özelliğini içeren sorgu örneklerini inceleyebilirsiniz. 
 
-Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Azure Bilişsel Arama 'de analiz hakkında daha fazla bilgi için bkz. [azure bilişsel arama 'de çözümleyiciler](https://docs.microsoft.com/azure/search/search-analyzers).
+Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](/rest/api/searchservice/create-index). Azure Bilişsel Arama 'de analiz hakkında daha fazla bilgi için bkz. [azure bilişsel arama 'de çözümleyiciler](./search-analyzers.md).
 
 <a name="language-analyzer-list"></a>
 
@@ -131,7 +131,6 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azu
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [Azure Bilişsel Arama REST API &#40;dizin oluşturma&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [Azure Bilişsel Arama REST API &#40;dizin oluşturma&#41;](/rest/api/searchservice/create-index)  
 
-+ [Analiz Zername sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
-
++ [Analiz Zername sınıfı](/dotnet/api/microsoft.azure.search.models.analyzername)

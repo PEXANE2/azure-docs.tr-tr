@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986671"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929083"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
@@ -23,7 +24,7 @@ Bu kılavuzda, farklı bir Azure bilişsel hizmetler aboneliğine sahip kayıtl�
 
 Aynı geçiş stratejisi LargePersonGroup ve Largecelist nesneleri için de geçerlidir. Bu kılavuzdaki kavramlarla ilgili bilgi sahibi değilseniz, [yüz tanıma kavramları](../concepts/face-recognition.md) kılavuzundaki tanımları bölümüne bakın. Bu kılavuzda, C# ile yüz .NET istemci kitaplığı kullanılmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki öğeler gereklidir:
 

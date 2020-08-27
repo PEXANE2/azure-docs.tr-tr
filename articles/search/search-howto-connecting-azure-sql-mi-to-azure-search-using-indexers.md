@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76964898"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922897"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Bilişsel Arama Dizin oluşturucudan SQL yönetilen örneği 'ne bağlantı yapılandırma
 
@@ -38,11 +38,11 @@ Ağ güvenlik grubunun Azure hizmetlerinden gelen bağlantılara izin veren doğ
 > Dizin oluşturucular hala verileri okumak için SQL yönetilen örneğinin genel bir uç nokta ile yapılandırılmasını gerektirir.
 > Ancak, geçerli kuralı ( `public_endpoint_inbound` ) aşağıdaki 2 kurallarla değiştirerek bu genel uç noktaya gelen erişimi kısıtlamayı seçebilirsiniz:
 >
-> * `AzureCognitiveSearch` [Hizmet etiketiyle](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) gelen erişime izin veriliyor ("kaynak" = `AzureCognitiveSearch` , "ad" = `cognitive_search_inbound` )
+> * `AzureCognitiveSearch` [Hizmet etiketiyle](../virtual-network/service-tags-overview.md#available-service-tags) gelen erişime izin veriliyor ("kaynak" = `AzureCognitiveSearch` , "ad" = `cognitive_search_inbound` )
 >
 > * Arama hizmetinin IP adresinden gelen erişime izin vererek, tam etki alanı adı (ör.) ile ping yaparak elde edilebilir `<your-search-service-name>.search.windows.net` . ("kaynak" = `IP address` , "ad" = `search_service_inbound` )
 >
-> Bu 2 kuralların her biri için "PORT" = `3342` , "Protocol" = `TCP` , "DESTINATION" = `Any` , "ACTION" = olarak ayarlayın.`Allow`
+> Bu 2 kuralların her biri için "PORT" = `3342` , "Protocol" = `TCP` , "DESTINATION" = `Any` , "ACTION" = olarak ayarlayın. `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Genel uç nokta bağlantı dizesi al
 **Genel uç nokta** için bağlantı dizesini kullandığınızdan emin olun (bağlantı noktası 1433 değil bağlantı noktası 3342).

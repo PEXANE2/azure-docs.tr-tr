@@ -7,15 +7,16 @@ author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590362"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932551"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -42,7 +43,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Öğretici *web rolü* ve *çalışan rolü* terminolojisi gibi [Azure bulut hizmetleri hakkında temel kavramları](cloud-services-choose-me.md) anladığınızı varsayar.  Ayrıca Visual Studio’da [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) veya [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projeleri ile nasıl çalışılacağını bildiğinizi varsayar. Örnek uygulama MVC kullanır, ancak öğreticinin büyük bölümü Web Forms için de geçerlidir.
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)

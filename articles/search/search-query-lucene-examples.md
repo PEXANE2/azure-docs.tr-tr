@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561765"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934982"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"Full" Lucene arama sözdizimini kullanın (Azure Bilişsel Arama Gelişmiş sorgular)
 
@@ -50,9 +50,9 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
-+ **`https://azs-playground.search.windows.net/`**, Azure Bilişsel Arama geliştirme ekibi tarafından tutulan bir korumalı alan arama hizmetidir. 
++ **`https://azs-playground.search.windows.net/`** , Azure Bilişsel Arama geliştirme ekibi tarafından tutulan bir korumalı alan arama hizmetidir. 
 + **`indexes/nycjobs/`** Bu hizmetin dizinler koleksiyonundaki NYC Işleri dizinidir. İstekte hem hizmet adı hem de dizin gereklidir.
-+ **`docs`**, aranabilir tüm içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
++ **`docs`** , aranabilir tüm içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
 + **`api-version=2020-06-30`** her istekte gerekli bir parametre olan api sürümünü ayarlar.
 + **`search=*`** İlk sorguda null olan sorgu dizesi, ilk 50 sonucunu döndürüyor (varsayılan olarak).
 
@@ -147,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız birden çok dizeyi tırnak içine aldığınızdan emin olun. Bu örnekte, alanda iki ayrı konum arama yapın `state` . Ayrıca, ve ve gibi gördüğünüz gibi işlecin büyük harfli olduğundan emin olun.
 
-**FieldName: searchExpression** 'da belirtilen alan aranabilir bir alan olmalıdır. Dizin özniteliklerinin alan tanımlarında nasıl kullanıldığına ilişkin ayrıntılar için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+**FieldName: searchExpression** 'da belirtilen alan aranabilir bir alan olmalıdır. Dizin özniteliklerinin alan tanımlarında nasıl kullanıldığına ilişkin ayrıntılar için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-index) .
 
 > [!NOTE]
 > Yukarıdaki örnekte, `searchFields` sorgunun her bölümü açıkça belirtilmiş bir alan adına sahip olduğundan, parametresini kullanmıyoruz. Ancak, `searchFields` bazı parçaların belirli bir alan kapsamında bulunduğu bir sorgu çalıştırmak istiyorsanız parametresini kullanmaya devam edebilirsiniz ve REST birçok alana uygulanabilir. Örneğin, sorgu `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` `senior NOT junior` yalnızca `business_title` alanla eşleşir, ancak alanla birlikte "External" eşleşecekti `posting_type` . **FieldName: searchExpression** 'da belirtilen alan adı her zaman `searchFields` parametresinden önceliklidir, bu örnekte bu nedenle parametreye dahil etmemiz gerekmez `business_title` `searchFields` .
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Regex sorgusu](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> Regex sorguları [çözümlenmez](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
+> Regex sorguları [çözümlenmez](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
 >
 
 ## <a name="example-7-wildcard-search"></a>Örnek 7: joker karakter arama
@@ -278,18 +278,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Joker karakter sorgusu](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> Joker karakter sorguları [çözümlenmez](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
+> Joker karakter sorguları [çözümlenmez](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kodunuzda Lucene sorgu ayrıştırıcısını belirtmeyi deneyin. Aşağıdaki bağlantılarda hem .NET hem de REST API için arama sorgularının nasıl ayarlanacağı açıklanmaktadır. Bağlantılar varsayılan basit söz dizimini kullanır, bu nedenle, bu makaleden öğrendiklerinizi belirtmek için **queryType**'i belirtmeniz gerekir.
 
-* [.NET SDK kullanarak dizininizi sorgulama](search-query-dotnet.md)
-* [REST API kullanarak dizininizi sorgulayın](search-create-index-rest-api.md)
+* [.NET SDK kullanarak dizininizi sorgulama](./search-get-started-dotnet.md)
+* [REST API kullanarak dizininizi sorgulayın](./search-get-started-powershell.md)
 
 Ek sözdizimi başvurusu, sorgu mimarisi ve örnekler aşağıdaki bağlantılarda bulunabilir:
 
 + [Basit sözdizimi sorgu örnekleri](search-query-simple-examples.md)
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
-+ [Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Tam Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Tam Lucene sorgu söz dizimi](/rest/api/searchservice/lucene-query-syntax-in-azure-search)

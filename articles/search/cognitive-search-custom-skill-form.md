@@ -8,18 +8,18 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935441"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Örnek: form tanıyıcı özel yeteneği oluşturma
 
 Bu Azure Bilişsel Arama Beceri örneğinde, C# ve Visual Studio kullanarak form tanıyıcı özel becerisi oluşturmayı öğreneceksiniz. Form tanıyıcı, belgeleri analiz eder ve anahtar/değer çiftlerini ve tablo verilerini ayıklar. Form tanıyıcısını [özel beceri arabirimine](cognitive-search-custom-skill-interface.md)sarmalayarak, bu özelliği uçtan uca bir zenginleştirme ardışık düzeninde bir adım olarak ekleyebilirsiniz. İşlem hattı daha sonra belgeleri yükleyebilir ve diğer dönüştürmeleri gerçekleştirebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm).
 - Aynı türde en az beş form. Bu kılavuzla birlikte sunulan örnek verileri kullanabilirsiniz.
@@ -30,18 +30,18 @@ Bu Azure Bilişsel Arama Beceri örneğinde, C# ve Visual Studio kullanarak form
 
 ## <a name="train-your-model"></a>Modelinizi eğitme
 
-Bu yeteneği kullanmadan önce, giriş formlarınıza bir form tanıyıcı modeli eğmeniz gerekir. Bir modeli eğitme hakkında bilgi edinmek için [kıvrımlı hızlı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) başlangıcı izleyin. Bu hızlı başlangıçta sunulan örnek formları kullanabilir veya kendi verilerinizi kullanabilirsiniz. Model eğitilirken, KIMLIK değerini güvenli bir konuma kopyalayın.
+Bu yeteneği kullanmadan önce, giriş formlarınıza bir form tanıyıcı modeli eğmeniz gerekir. Bir modeli eğitme hakkında bilgi edinmek için [kıvrımlı hızlı](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) başlangıcı izleyin. Bu hızlı başlangıçta sunulan örnek formları kullanabilir veya kendi verilerinizi kullanabilirsiniz. Model eğitilirken, KIMLIK değerini güvenli bir konuma kopyalayın.
 
 ## <a name="set-up-the-custom-skill"></a>Özel yeteneği ayarlama
 
 Bu öğreticide, [Azure Search Power beceriler](https://github.com/Azure-Samples/azure-search-power-skills) GitHub deposundaki [analiz zeform](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) projesi kullanılmaktadır. Bu depoyu yerel makinenize kopyalayın ve projeye erişmek için **Vision/Analzeform/** ' a gidin. Ardından Visual Studio 'da _analiz Zeform. csproj_ ' u açın. Bu proje, [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) yerine getiren ve Azure bilişsel arama zenginleştirme için kullanılabilen bir Azure işlevi kaynağı oluşturur. Form belgelerini giriş olarak alır ve belirttiğiniz anahtar/değer çiftleri (metin olarak) verir.
 
 İlk olarak, proje düzeyi ortam değişkenlerini ekleyin. Sol bölmedeki **analiz Zeformu** projesini bulun, sağ tıklayın ve **Özellikler**' i seçin. **Özellikler** penceresinde **Hata Ayıkla** sekmesine tıklayın ve ardından **ortam değişkenleri** alanını bulun. Aşağıdaki değişkenleri eklemek için **Ekle** ' ye tıklayın:
-* `FORMS_RECOGNIZER_ENDPOINT_URL`değerini Endpoint URL 'niz olarak ayarlayın.
-* `FORMS_RECOGNIZER_API_KEY`değerini abonelik anahtarınız olarak ayarlayın.
-* `FORMS_RECOGNIZER_MODEL_ID`değer ile, eğitilen modelin KIMLIĞI olarak ayarlanır.
-* `FORMS_RECOGNIZER_RETRY_DELAY`değerini 1000 olarak ayarlayın. Bu değer, programın sorguyu yeniden denemeden önce bekleyeceği süre (milisaniye olarak).
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`değerini 100 olarak ayarlayın. Bu değer, başarılı bir yanıt almaya çalışırken programın hizmeti sorgulama işleminin sayısıdır.
+* `FORMS_RECOGNIZER_ENDPOINT_URL` değerini Endpoint URL 'niz olarak ayarlayın.
+* `FORMS_RECOGNIZER_API_KEY` değerini abonelik anahtarınız olarak ayarlayın.
+* `FORMS_RECOGNIZER_MODEL_ID` değer ile, eğitilen modelin KIMLIĞI olarak ayarlanır.
+* `FORMS_RECOGNIZER_RETRY_DELAY` değerini 1000 olarak ayarlayın. Bu değer, programın sorguyu yeniden denemeden önce bekleyeceği süre (milisaniye olarak).
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS` değerini 100 olarak ayarlayın. Bu değer, başarılı bir yanıt almaya çalışırken programın hizmeti sorgulama işleminin sayısıdır.
 
 Sonra, _AnalyzeForm.cs_ açın ve `fieldMappings` dosyadaki *field-mappings.js* başvuran değişkeni bulun. Bu dosya (ve buna başvuran değişken), formlarınızda ayıklamak istediğiniz anahtarların listesini ve her anahtar için özel bir etiketi tanımlar. Örneğin, bir değeri, `{ "Address:", "address" }, { "Invoice For:", "recipient" }` betiğin yalnızca algılanan ve alanların değerlerini kaydedebileceği anlamına gelir `Address:` `Invoice For:` ve sırasıyla bu değerleri ve ile etiketlemesini sağlayacaktır `"address"` `"recipient"` .
 
@@ -167,5 +167,5 @@ Bu kılavuzda, Azure form tanıyıcı hizmetinden özel bir yetenek oluşturdunu
 * [Azure Search Power becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
 * [Bir beceri kümesi tanımlama](cognitive-search-defining-skillset.md)
-* [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 * [Zenginleştirilmiş alanları Eşle](cognitive-search-output-field-mapping.md)

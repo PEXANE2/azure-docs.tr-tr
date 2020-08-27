@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212380"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934965"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
 
@@ -30,7 +30,7 @@ Daha büyük bir dağıtım çabadan önce, tipik bir sorgu yükünün nasıl g�
 
 1. Saniye başına az sayıda sorgu (QPS) ile başlayın ve ardından sorgu gecikmesi önceden tanımlanmış hedefin altına düşene kadar testte yürütülen sayıyı kademeli olarak artırın. Bu, uygulamanızın kullanımda büyüdüğü sürece ölçek planlaması yapmanıza yardımcı olan önemli bir kıyaslamaya yöneliktir.
 
-1. Mümkün olan yerlerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız bu, bir örneği veya [Searchındexclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) örneğini yeniden kullanmanız gerektiği anlamına gelir ve REST API kullanıyorsanız, tek bir HttpClient kullanmanız gerekir.
+1. Mümkün olan yerlerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız bu, bir örneği veya [Searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient) örneğini yeniden kullanmanız gerektiği anlamına gelir ve REST API kullanıyorsanız, tek bir HttpClient kullanmanız gerekir.
 
 1. Sorgunun farklı bölümlerinin üzerinde gerçekleşmesini sağlamak için sorgu isteklerinin bu şekilde çeşitini farklılık gösterir. Aynı arama isteklerini sürekli olarak yürütüyorsa, değişim önemlidir çünkü sürekli olarak aynı arama isteklerini yürütüyorsa, verilerin önbelleğe alınması, daha farklı bir sorgu kümesiyle olabileceği gibi performansı daha iyi hale getirmek için başlar.
 
@@ -43,7 +43,7 @@ Bu test iş yüklerini oluştururken aklınızda bulundurmanız gereken bazı Az
 + Azure Bilişsel Arama, dizin oluşturma görevlerini arka planda çalıştırmaz. Hizmetiniz sorgu ve dizin oluşturma iş yüklerini eşzamanlı olarak işlerinizde, sorgu testleriniz için dizin oluşturma işleri sunarak ya da yoğun saatlerde dizin oluşturma işlerini çalıştırmaya yönelik seçenekleri inceleyerek bunu hesaba sunun.
 
 > [!Tip]
-> Yük testi araçlarını kullanarak gerçekçi bir sorgu yükünün benzetimini yapabilirsiniz. [Azure DevOps ile yük testi](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) yapmayı deneyin veya bu [alternatifden](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)birini kullanın.
+> Yük testi araçlarını kullanarak gerçekçi bir sorgu yükünün benzetimini yapabilirsiniz. [Azure DevOps ile yük testi](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) yapmayı deneyin veya bu [alternatifden](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)birini kullanın.
 
 ## <a name="scale-for-high-query-volume"></a>Yüksek sorgu hacmi için ölçeklendirin
 
@@ -99,7 +99,7 @@ Coğrafi olarak dağıtılmış bir arama hizmetleri kümesinin amacı, iki veya
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Verileri birden çok hizmet arasında eşitlenmiş durumda tut
 
-[Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) veya anında iletme API 'Sini ( [Azure bilişsel arama REST API](https://docs.microsoft.com/rest/api/searchservice/)olarak da bilinir) kullanarak, dağıtılmış arama hizmetlerinizi eşitlenmiş halde tutmanın iki seçeneği vardır.  
+[Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) veya anında iletme API 'Sini ( [Azure bilişsel arama REST API](/rest/api/searchservice/)olarak da bilinir) kullanarak, dağıtılmış arama hizmetlerinizi eşitlenmiş halde tutmanın iki seçeneği vardır.  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Birden çok hizmet üzerinde içerik güncelleştirmek için Dizin oluşturucular kullanma
 
@@ -111,7 +111,7 @@ Mimarinin nasıl görüneceğine ilişkin üst düzey bir görsel aşağıda ver
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Birden çok hizmete içerik güncelleştirmelerini göndermek için REST API 'Lerini kullanma
 
-Azure [bilişsel arama dizininizdeki içeriği göndermek](https://docs.microsoft.com/rest/api/searchservice/update-index)için azure bilişsel arama REST API kullanıyorsanız, her bir güncelleştirme gerektiğinde tüm arama hizmetlerine değişiklikleri göndererek çeşitli arama hizmetlerinizi eşitlenmiş halde tutabilirsiniz. Kodunuzda, bir arama hizmetine yapılan bir güncelleştirmenin başarısız olduğu ancak diğer arama hizmetleri için başarılı olduğu durumları işlediğinizden emin olun.
+Azure [bilişsel arama dizininizdeki içeriği göndermek](/rest/api/searchservice/update-index)için azure bilişsel arama REST API kullanıyorsanız, her bir güncelleştirme gerektiğinde tüm arama hizmetlerine değişiklikleri göndererek çeşitli arama hizmetlerinizi eşitlenmiş halde tutabilirsiniz. Kodunuzda, bir arama hizmetine yapılan bir güncelleştirmenin başarısız olduğu ancak diğer arama hizmetleri için başarılı olduğu durumları işlediğinizden emin olun.
 
 ## <a name="leverage-azure-traffic-manager"></a>Azure Traffic Manager 'ten yararlanın
 

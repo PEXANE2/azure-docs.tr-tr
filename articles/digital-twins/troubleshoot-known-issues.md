@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661495"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921078"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -51,7 +51,9 @@ Kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile otu
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
 
-Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'nın en son sürümünü (sürüm **1.2.0**) kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+
+Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2**' dir.
 
 Etkilenen yöntem aşağıdaki makalelerde kullanılır: 
 * [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
@@ -62,10 +64,7 @@ Sorun, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Id
 
 ### <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
-Bu sorunu çözmek için, uygulamalarınızın Azure. Identity sürüm **1.1.1**'i açık bir şekilde kullanmasını sağlayabilirsiniz. Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
-
->[!NOTE]
-> Hala en son **1.2.0**için varsayılan değer olacak şekilde, herhangi bir sürüm belirtmeden kitaplığı eklemek yeterli değildir. Sürüm **1.1.1** öğesini açıkça belirtmeniz gerekir.
+Çözümlemek için uygulamalarınızı Azure. Identity Version **1.2.2**kullanacak şekilde güncelleştirin. Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
 
 ### <a name="possible-causes"></a>Olası nedenler
 

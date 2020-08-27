@@ -2,13 +2,13 @@
 title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/26/2020
+ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387872"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936376"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
@@ -27,7 +27,7 @@ Ana şablonu ve bağlantılı şablonu oluşturun.
 
 Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. `templateLink`Özelliğinde, ana şablonun yoluna uygun olarak bağlı şablonun göreli yolunu belirtin.
 
-Bağlantılı şablon **üzerindelinkedTemplate.js**çağrılır ve ana şablonun depolandığı yolda **yapıtlar** adlı bir alt klasörde depolanır.  RelativePath için aşağıdaki değerlerden birini kullanabilirsiniz:
+Bağlantılı şablon ** üzerindelinkedTemplate.js**çağrılır ve ana şablonun depolandığı yolda **yapıtlar** adlı bir alt klasörde depolanır.  RelativePath için aşağıdaki değerlerden birini kullanabilirsiniz:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
@@ -164,28 +164,59 @@ Bağlantılı şablon **üzerindelinkedTemplate.js**çağrılır ve ana şablonu
 
 Şablon Özellikleri, kaynak gruplarında depolanır.  Bir kaynak grubu oluşturun ve ardından aşağıdaki betiği kullanarak bir şablon belirtimi oluşturun. Şablon belirtiminin adı **Webspec**' dir.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name templateSpecRG `
   -Location westus2
 
 New-AzTemplateSpec `
-  -ResourceGroupName templateSpecRG `
   -Name webSpec `
   -Version "1.0.0.0" `
+  -ResourceGroupName templateSpecRG `
   -Location westus2 `
   -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name templateSpecRG \
+  --location westus2
+
+az template-specs create \
+  --name webSpec \
+  --version "1.0.0.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+```
+
+---
+
 İşiniz bittiğinde, Azure portal şablon belirtimini veya aşağıdaki cmdlet 'i kullanarak görüntüleyebilirsiniz:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+```
+
+---
+
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
 Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılması, şablon belirtiminin kaynak KIMLIĞINI geçirmeniz dışında, içerdiği şablonu dağıtmaktır. Aynı dağıtım komutlarını kullanırsınız ve gerekirse, şablon belirtiminin parametre değerlerini geçirin.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -198,6 +229,25 @@ New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName webRG
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+
+az deployment group create \
+  --resource-group webRG \
+  --template-spec $id
+```
+
+> [!NOTE]
+> Şablon spec kimliği alma ve ardından bunu Windows PowerShell 'de bir değişkene atama konusunda bilinen bir sorun vardır.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

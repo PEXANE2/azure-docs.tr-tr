@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 1c24eba79c26c4540e9d97a3e2b6646fd0b5439c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864663"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934369"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -155,7 +156,7 @@ recognizeContent().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Page 1: width 8.5 and height 11 with unit inch
@@ -227,7 +228,7 @@ recognizeReceipt().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 status: notStarted
@@ -301,7 +302,7 @@ trainModel().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
@@ -387,7 +388,7 @@ trainModelLabels().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
@@ -470,7 +471,7 @@ recognizeCustom().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 status: notStarted
@@ -534,7 +535,7 @@ listModels().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 model 0:
@@ -585,7 +586,7 @@ async function listModelIds(){
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
@@ -614,7 +615,7 @@ listModelsByPage().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
@@ -638,7 +639,7 @@ Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kod
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted

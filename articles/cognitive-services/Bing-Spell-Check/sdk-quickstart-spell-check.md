@@ -10,12 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1e05ca9b63bda3373afb8a090118953d89ad8f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273524"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934234"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Hızlı başlangıç: C için Bing Yazım Denetimi SDK ile yazım denetimi #
 
@@ -36,7 +37,7 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından aşağıdaki `using` ifadeyi ekleyin.
+1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından aşağıdaki ifadeyi ekleyin `using` .
     
     ```csharp
     using System;
@@ -46,9 +47,9 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Yeni bir sınıf oluşturun. Ardından, bir abonelik anahtarı alan `SpellCheckCorrection()` ve yazım denetimi isteğini gönderen adlı bir zaman uyumsuz işlev oluşturun.
+2. Yeni bir sınıf oluşturun. Ardından `SpellCheckCorrection()` , bir abonelik anahtarı alan ve yazım denetimi isteğini gönderen adlı bir zaman uyumsuz işlev oluşturun.
 
-3. Yeni `ApiKeyServiceClientCredentials` bir nesne oluşturarak istemciyi örneğini oluşturun. 
+3. Yeni bir nesne oluşturarak istemciyi örneğini oluşturun `ApiKeyServiceClientCredentials` . 
 
     ```csharp
     public static class SpellCheckSample{
@@ -61,7 +62,7 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
 
 ## <a name="send-the-request-and-read-the-response"></a>İsteği gönder ve yanıtı oku
 
-1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemcisiyle gönderin. `text` Parametreye denetlenecek metni ekleyin ve modunu olarak `proof`ayarlayın.  
+1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemcisiyle gönderin. Parametreye denetlenecek metni ekleyin `text` ve modunu olarak ayarlayın `proof` .  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");

@@ -3,12 +3,13 @@ title: Application Insights 'de olay sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounters ' i izleyin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3082c90f3e9f7a150206e1df8806af0de1c17024
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936495"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
@@ -130,7 +131,7 @@ Canlı ölçümler, bugün itibariyle EventCounters göstermez. Telemetriyi gör
 
 ### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>.NET Core 3,0 sayaçlarının varsayılan listesini hangi platformlar görebilir?
 
-EventCounter herhangi bir özel izin gerektirmez ve tüm platformlarda desteklenir .NET Core 3,0 desteklenir. Buna aşağıdakiler dahildir:
+EventCounter herhangi bir özel izin gerektirmez ve tüm platformlarda desteklenir .NET Core 3,0 desteklenir. Şunları içerir:
 
 * **İşletim sistemi**: Windows, Linux veya MacOS.
 * **Barındırma yöntemi**: işlemde veya işlem dışı.

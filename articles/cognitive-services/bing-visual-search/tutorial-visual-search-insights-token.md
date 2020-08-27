@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: a867560edfb66527c09e349328246a8fc24dbbd3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c03800696897dc6cbb4cd793879e734366829b7d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207252"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925122"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Öğretici: görüntü öngörüleri belirtecini kullanarak önceki aramalardan benzer görüntüleri bulma
 
@@ -23,7 +24,7 @@ Görsel Arama istemci kitaplığı, döndüren önceki aramalardan resimleri çe
 
 Bu öğreticinin tam kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs)üzerinde ek hata işleme ve ek açıklamalarla bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/)sürümü.
 * Linux/MacOS kullanıyorsanız bu uygulamayı [mono](https://www.mono-project.com/)kullanarak çalıştırabilirsiniz.

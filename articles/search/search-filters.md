@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923084"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
@@ -47,9 +47,9 @@ Filtreler, "yakın beni bul", çok yönlü gezinme ve yalnızca bir kullanıcın
 
 Arama sonuçlarınızda bir daraltma efekti istiyorsanız, filtreler tek seçiminiz değildir. Bu alternatifler amacınıza bağlı olarak daha iyi bir uyum sağlayabilir:
 
- + `searchFields`sorgu parametresi Pegs aramasını belirli alanlara ekler. Örneğin, dizininiz Ingilizce ve Ispanyolca açıklamaları için ayrı alanlar sağlıyorsa, tam metin aramasında kullanılacak alanları hedeflemek için searchFields ' i kullanabilirsiniz. 
+ + `searchFields` sorgu parametresi Pegs aramasını belirli alanlara ekler. Örneğin, dizininiz Ingilizce ve Ispanyolca açıklamaları için ayrı alanlar sağlıyorsa, tam metin aramasında kullanılacak alanları hedeflemek için searchFields ' i kullanabilirsiniz. 
 
-+ `$select`parametresi, bir sonuç kümesinde hangi alanların ekleneceğini belirlemek için kullanılır, yanıtı çağıran uygulamaya göndermeden önce etkin bir şekilde kırpmaz. Bu parametre sorguyu iyileştirmez veya belge koleksiyonunu azaltır, ancak daha küçük bir yanıt hedefiniz ise, bu parametre dikkate alınması gereken bir seçenektir. 
++ `$select` parametresi, bir sonuç kümesinde hangi alanların ekleneceğini belirlemek için kullanılır, yanıtı çağıran uygulamaya göndermeden önce etkin bir şekilde kırpmaz. Bu parametre sorguyu iyileştirmez veya belge koleksiyonunu azaltır, ancak daha küçük bir yanıt hedefiniz ise, bu parametre dikkate alınması gereken bir seçenektir. 
 
 Her iki parametre hakkında daha fazla bilgi için bkz. [arama belgeleri > istek > sorgu parametreleri](/rest/api/searchservice/search-documents#query-parameters).
 
@@ -61,7 +61,7 @@ Sorgu zamanında, bir filtre ayrıştırıcısı ölçütü girdi olarak kabul e
 Filtreleme, arama ile birlikte meydana gelir ve belge alımı ve ilgi Puanlama için aşağı akış işleme dahil edilecek belgeleri niteleyen şekilde kapsar. Bir arama dizesiyle eşlendiğinde, filtre, sonraki arama işleminin geri çağırma kümesini etkin bir şekilde azaltır. Tek başına kullanıldığında (örneğin, sorgu dizesi nerede boşsa `search=*` ), filtre ölçütü tek giriştir. 
 
 ## <a name="defining-filters"></a>Filtreleri tanımlama
-Filtreler OData ifadeleridir, [Azure bilişsel arama 'de desteklenen OData v4 sözdizimi alt kümesi](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)kullanılarak ifade edilir. 
+Filtreler OData ifadeleridir, [Azure bilişsel arama 'de desteklenen OData v4 sözdizimi alt kümesi](/rest/api/searchservice/odata-expression-syntax-for-azure-search)kullanılarak ifade edilir. 
 
 Her **arama** işlemi için bir filtre belirtebilirsiniz, ancak filtrenin kendisi birden çok alan, birden çok ölçüt içerebilir ve bir **IMatch** işlevi kullanırsanız birden çok tam metin arama ifadesi olabilir. Çok parçalı bir filtre ifadesinde, koşulları herhangi bir sırada belirtebilirsiniz (işleç önceliği kurallarına tabidir). Belirli bir dizideki koşulları yeniden düzenlemenize çalışırsanız, performansın hiçbir şekilde ele geçirmesine izin verilmez.
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Kullanım düzenlerini filtrele
 
-Aşağıdaki örneklerde, filtre senaryoları için çeşitli kullanım desenleri gösterilmektedir. Daha fazla fikir için bkz. [OData Expression sözdizimi > örnekleri](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Aşağıdaki örneklerde, filtre senaryoları için çeşitli kullanım desenleri gösterilmektedir. Daha fazla fikir için bkz. [OData Expression sözdizimi > örnekleri](./search-query-odata-filter.md#examples).
 
 + Bir sorgu dizesi olmadan tek başına **$Filter**, filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlı olur. Sorgu dizesi olmadan, sözcük temelli veya dil analizi, Puanlama yok ve derecelendirme yoktur. Arama dizesinin yalnızca bir yıldız işareti olduğunu, yani "tüm belgeleri Eşleştir" anlamına geldiğini unutmayın.
 
@@ -135,9 +135,9 @@ Belirli kullanım durumlarında kapsamlı yönergeler için bu makalelerle takip
 
 ## <a name="field-requirements-for-filtering"></a>Filtreleme için alan gereksinimleri
 
-REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; `"filterable": false`Filtre içinde gerçekten kullanmayı planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
+REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; `"filterable": false` Filtre içinde gerçekten kullanmayı planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index).
 
-.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) nesnesinin [ısfilterable özelliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
+.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) nesnesinin [ısfilterable özelliğini](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Daha fazla örnekle çalışmak için bkz. [OData filtre Ifadesi söz dizimi > örnekleri](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Daha fazla örnekle çalışmak için bkz. [OData filtre Ifadesi söz dizimi > örnekleri](./search-query-odata-filter.md#examples).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
-+ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Belgelerde Arama REST API'si](/rest/api/searchservice/search-documents)
++ [Basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene sorgu söz dizimi](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Desteklenen veri türleri](/rest/api/searchservice/supported-data-types)

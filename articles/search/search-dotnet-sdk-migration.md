@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3b3d88c9e605889846808bb53063b06a3e980049
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171899"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929763"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK sürüm 3 ' e yükseltin
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-[Azure Search .NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)sürüm 2,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 3 ' ü kullanacak şekilde yükseltmenize yardımcı olur.
+[Azure Search .NET SDK 'sının](/dotnet/api/overview/azure/search)sürüm 2,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 3 ' ü kullanacak şekilde yükseltmenize yardımcı olur.
 
 Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
 
@@ -63,7 +63,7 @@ Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft
 
 Sonraki adım bu derleme hatasını düzeltemedi. Hataya neden olan ve nasıl düzeltileceğini gösteren Ayrıntılar için [sürüm 3 ' teki son değişikliklere](#ListOfChanges) bakın.
 
-Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParameters.Base64EncodeKeys` özelliğini kullanıyorsa, şöyle bir uyarı alırsınız`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParameters.Base64EncodeKeys` özelliğini kullanıyorsa, şöyle bir uyarı alırsınız `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler, [sürüm 3 ' teki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
 
@@ -132,7 +132,7 @@ index.Analyzers = new Analyzer[]
 
 Sürüm 2,0 ' de eski olarak işaretlenen ve sürüm 3 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
 
-- Bu oluşturucuyu kullanıyorsanız `ScoringParameter(string name, string value)` , bunun yerine kullanın:`ScoringParameter(string name, IEnumerable<string> values)`
+- Bu oluşturucuyu kullanıyorsanız `ScoringParameter(string name, string value)` , bunun yerine kullanın: `ScoringParameter(string name, IEnumerable<string> values)`
 - `ScoringParameter.Value`Özelliğini kullanıyorsanız, `ScoringParameter.Values` `ToString` bunun yerine özelliğini veya yöntemini kullanın.
 - `SearchRequestOptions.RequestId`Özelliğini kullanıyorsanız, `ClientRequestId` bunun yerine özelliğini kullanın.
 

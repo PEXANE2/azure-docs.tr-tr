@@ -8,16 +8,16 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562621"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927145"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>En son Azure Bilişsel Arama hizmeti REST API sürümüne yükseltin
 
-[Arama REST API](https://docs.microsoft.com/rest/api/searchservice/)önceki bir sürümünü kullanıyorsanız, bu makale, uygulamanızı en yeni genel kullanıma sahıp 2020-06-30 API sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+[Arama REST API](/rest/api/searchservice/)önceki bir sürümünü kullanıyorsanız, bu makale, uygulamanızı en yeni genel kullanıma sahıp 2020-06-30 API sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
 REST API sürüm 2020-06-30, önceki sürümlerden bazı değişiklikler içeriyor. Bunlar çoğunlukla geriye dönük olarak uyumludur; Bu nedenle kodunuzun değiştirilmesi, daha önce kullandığınız sürüme bağlı olarak yalnızca en az çaba gerektirir. [Yükseltme adımları](#UpgradeSteps) , yeni özellikleri kullanmak için gereken kod değişikliklerini özetler.
 
@@ -32,7 +32,7 @@ Yeni sürümlere yükseltirken, büyük olasılıkla kodunuzun üzerinde herhang
 
 * API yanıtında tanınmayan özellikler döndürüldüğünde kodunuz başarısız olur. Varsayılan olarak uygulamanızın anlayamadığını özellikleri yoksaymalıdır.
 
-* Kodunuzun API istekleri devam ettirir ve yeni API sürümüne yeniden göndermeye çalışır. Örneğin bu durum, uygulamanız arama API 'sinden döndürülen devamlılık belirteçlerini devam ettirir (daha fazla bilgi için `@search.nextPageParameters` [Arama API 'si başvurusunda](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)bölümüne bakın).
+* Kodunuzun API istekleri devam ettirir ve yeni API sürümüne yeniden göndermeye çalışır. Örneğin bu durum, uygulamanız arama API 'sinden döndürülen devamlılık belirteçlerini devam ettirir (daha fazla bilgi için `@search.nextPageParameters` [Arama API 'si başvurusunda](/rest/api/searchservice/Search-Documents)bölümüne bakın).
 
 * Kodunuz 2019-05-06 ön tarihine sahip bir API sürümüne başvurur ve bu sürümdeki bir veya daha fazla son değişikliğe tabidir. [2019-05-06 sürümüne yükseltme](#upgrade-to-2019-05-06) , daha fazla ayrıntı sağlar. 
 
@@ -146,4 +146,4 @@ API sürüm 2017-11-11-önizleme kullanarak aşağıdaki adımlarla "düz" dizin
 Arama REST API başvuru belgelerini gözden geçirin. Sorunlarla karşılaşırsanız [Stack Overflow](https://stackoverflow.com/) yardım almak için bize danışın veya [desteğe başvurun](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Arama hizmeti REST API başvurusu](https://docs.microsoft.com/rest/api/searchservice/)
+> [Arama hizmeti REST API başvurusu](/rest/api/searchservice/)

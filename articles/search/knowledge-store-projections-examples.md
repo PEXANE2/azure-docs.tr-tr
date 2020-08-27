@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85566009"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924172"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Zenginleştirme ve dışarı aktarma
 
@@ -206,7 +206,7 @@ Azure Storage 'da tablolara yansıtma, Power BI gibi araçları kullanarak rapor
 Belgelerden bir sözcük bulutu olarak ayıklanan anahtar tümceciklerini görselleştirmek için bir pano oluşturalım. Doğru veri yapısını oluşturmak için, belgeye özgü ayrıntıları ve anahtar tümceciklerini içeren özel bir şekil oluşturmak üzere beceri 'e bir beceri başına ekleyin. Özel şekil kök düğümünde çağrılacaktır `pbiShape` `document` .
 
 > [!NOTE] 
-> Tablo projeksiyonları, Azure depolama tarafından uygulanan depolama limitleriyle yönetilen Azure depolama tablolarıdır. Daha fazla bilgi için bkz. [Tablo depolama sınırları](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Varlık boyutunun 1 MB 'ı aşmaması ve tek bir özelliğin 64 KB 'den büyük olmaması gerektiğini bilmek yararlı olur. Bu kısıtlamalar, tabloları çok sayıda küçük varlığı depolamak için iyi bir çözüm yapar.
+> Tablo projeksiyonları, Azure depolama tarafından uygulanan depolama limitleriyle yönetilen Azure depolama tablolarıdır. Daha fazla bilgi için bkz. [Tablo depolama sınırları](/rest/api/storageservices/understanding-the-table-service-data-model). Varlık boyutunun 1 MB 'ı aşmaması ve tek bir özelliğin 64 KB 'den büyük olmaması gerektiğini bilmek yararlı olur. Bu kısıtlamalar, tabloları çok sayıda küçük varlığı depolamak için iyi bir çözüm yapar.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Özel bir şekil oluşturmak için bir beceri başına mil kullanma
 
@@ -677,4 +677,3 @@ Projeksiyonlar hakkında genel bakış için, gruplar ve dilimleme gibi yetenekl
 
 > [!div class="nextstepaction"]
 > [Bilgi deposundaki projeksiyonler](knowledge-store-projection-overview.md)
-

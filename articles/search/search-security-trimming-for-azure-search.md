@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496426"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928532"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama sonuçları kırpma için güvenlik filtreleri
 
@@ -27,7 +27,7 @@ Bu makalede, aşağıdaki adımları kullanarak güvenlik filtrelemeyi nasıl ge
 > [!div class="checklist"]
 > * Asıl tanımlayıcıları içeren bir alan oluşturun 
 > * Mevcut belgeleri ilgili asıl tanımlayıcılarla gönderin veya güncelleştirin
-> * İle `search.in` bir arama isteği verme`filter`
+> * İle `search.in` bir arama isteği verme `filter`
 
 >[!NOTE]
 > Asıl tanımlayıcıları alma işlemi bu belgede kapsanmıyor. Bunu kimlik hizmeti sağlayıcınızdan almalısınız.
@@ -109,13 +109,13 @@ Mevcut bir belgeyi Grup listesi ile güncelleştirmeniz gerekiyorsa, `merge` ya 
 }
 ```
 
-Belge ekleme veya güncelleştirme hakkında ayrıntılı bilgi için [belgeleri düzenleme belgesini](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)okuyabilirsiniz.
+Belge ekleme veya güncelleştirme hakkında ayrıntılı bilgi için [belgeleri düzenleme belgesini](/rest/api/searchservice/addupdate-or-delete-documents)okuyabilirsiniz.
    
 ## <a name="apply-the-security-filter"></a>Güvenlik filtresini uygulama
 
 Belgelere erişimi temel alarak kırpmak için bir `group_ids` filtre içeren bir arama sorgusu oluşturmalısınız `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` , burada ' group_id1, group_id2,... ' , arama isteği verenin ait olduğu gruplarıdır.
 Bu filtre, `group_ids` alanın verilen tanımlayıcılardan birini içerdiği tüm belgelerle eşleşir.
-Azure Bilişsel Arama kullanarak belge arama hakkında ayrıntılı bilgi için, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)okuyabilirsiniz.
+Azure Bilişsel Arama kullanarak belge arama hakkında ayrıntılı bilgi için, [arama belgelerini](/rest/api/searchservice/search-documents)okuyabilirsiniz.
 Bu örnekte, bir POST isteği kullanılarak belgelerin nasıl aranacağı gösterilmektedir.
 
 HTTP POST isteğini verme:

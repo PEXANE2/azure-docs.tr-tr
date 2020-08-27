@@ -3,12 +3,12 @@ title: Azure geçişi ile VMware VM keşfi kapsamını ayarlama
 description: Azure geçişi ile VMware VM değerlendirmesi ve geçişi için bulma kapsamının nasıl ayarlanacağını açıklar.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770399"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919735"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM 'Leri için bulma kapsamını ayarlama
 
@@ -39,7 +39,7 @@ Azure geçişi 'nin bulma için kullandığı bir vCenter Kullanıcı hesabı ay
 1. Bulma için kullandığınız gereç vCenter hesabında, bulmak ve değerlendirmek istediğiniz VM 'Leri barındıran tüm üst nesneler için **salt okuma** rolünü uygulayın (konak, küme, Hosts klasörü, kümeler klasörü, veri merkezine kadar).
 2. Bu izinleri hiyerarşideki alt nesnelere yay.
 
-    ![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
+    ![İzinler atama](./media/tutorial-assess-vmware/assign-perms.png)
 
 ### <a name="assign-a-role-for-agentless-migration"></a>Aracısız geçiş için rol atama
 
@@ -60,4 +60,4 @@ Rol tabanlı erişim denetimi kurulumu, karşılık gelen vCenter Kullanıcı he
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gereci [ayarlayın](how-to-set-up-appliance-vmware.md)ve [sürekli bulma işlemini başlatın](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential).
+[Gereci ayarlama](how-to-set-up-appliance-vmware.md)

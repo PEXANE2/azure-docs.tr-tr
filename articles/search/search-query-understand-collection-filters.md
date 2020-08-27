@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206172"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932925"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtrelerini anlama
 
@@ -88,14 +88,14 @@ Bunun nedeni, tüm `Rooms/Type` belgedeki tüm analiz edilen koşullara `Rooms/T
 
 `Rooms/Type`Tam metin arama için nasıl depolanır:
 
-| Dönem`Rooms/Type` | Belge kimlikleri |
+| Dönem `Rooms/Type` | Belge kimlikleri |
 | --- | --- |
 | lü | 1, 2 |
 | Stand | 1 |
 
 `Rooms/Description`Tam metin arama için nasıl depolanır:
 
-| Dönem`Rooms/Description` | Belge kimlikleri |
+| Dönem `Rooms/Description` | Belge kimlikleri |
 | --- | --- |
 | Kurs | 2 |
 | city | 1 |
@@ -142,7 +142,7 @@ Karmaşık koleksiyonlar üzerinde, vb. gibi basit koleksiyonlar için çok daha
 
 Alanın değerleri ters bir `seasons` **Dizin**adlı bir yapıda depolanır ve şuna benzer bir şekilde görünür:
 
-| Terim | Belge kimlikleri |
+| Süre | Belge kimlikleri |
 | --- | --- |
 | yay | 1, 2 |
 | ini | 1 |
@@ -180,9 +180,9 @@ eşittir:
 > [!NOTE]
 > Ayrıntılar bu belgenin kapsamının ötesinde olsa da, aynı ilkeler [coğrafi uzamsal noktaların koleksiyonları için uzaklık ve kesişim testlerine](search-query-odata-geo-spatial-functions.md) de genişletilir. Bunun nedeni `any` :
 >
-> - `geo.intersects`değillenemez
+> - `geo.intersects` değillenemez
 > - `geo.distance`, veya kullanılarak karşılaştırılmalıdır `lt``le`
-> - ifadeler, ile birleştirilmelidir `or` , ancak`and`
+> - ifadeler, ile birleştirilmelidir `or` , ancak `and`
 >
 > Convero kuralları için geçerlidir `all` .
 
@@ -204,4 +204,4 @@ Hangi tür filtrelerin izin verileceğini ve hangilerinin geçerli olduğunu gö
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

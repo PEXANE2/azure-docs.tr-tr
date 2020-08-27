@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113860"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935543"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Bilişsel Arama Beceri ek açıklamalarına başvurma
 
@@ -25,7 +25,7 @@ Bu makaledeki örneklerde, belge çözme aşamasının bir parçası olarak [Azu
 
 Söz dizimini gözden geçirmeden önce, bu makalenin ilerleyen kısımlarında belirtilen örnekleri daha iyi anlamak için birkaç önemli kavramı yeniden ziyaret edelim.
 
-| Terim | Açıklama |
+| Süre | Açıklama |
 |------|-------------|
 | Zenginleştirilmiş belge | Zenginleştirilmiş bir belge, işlem hattı tarafından oluşturulan ve bir belge ile ilgili tüm ek açıklamaları tutmak için kullanılan dahili bir yapıdır. Zenginleştirilmiş bir belgeyi, ek açıklama ağacı olarak düşünün. Genellikle, önceki bir ek açıklamanın oluşturduğu bir ek açıklama alt öğesi olur.<p/>Zenginleştirilmiş belgeler yalnızca beceri yürütmesinin süresi boyunca mevcuttur. İçerik arama dizinine eşlendikten sonra, zenginleştirilmiş belge artık gerekli değildir. Zenginleştirilmiş belgelerle doğrudan etkileşim kurmasanız da, Beceri oluştururken belge için bir model olması yararlı olacaktır. |
 | Zenginleştirme bağlamı | Hangi öğenin zenginleştirmesi halinde, zenginleştirme 'nin gerçekleştiği bağlam. Varsayılan olarak, enzenginleştirme bağlamı `"/document"` tek tek belgeler kapsamındaki düzeyindedir. Bir yetenek çalıştırıldığında, bu beceriye ait çıktılar [tanımlanan bağlamın özellikleri](#example-2)haline gelir.|
@@ -95,7 +95,7 @@ Ek açıklamalar diziler veya dize koleksiyonları olduğunda, bir bütün olara
 
 Bazen belirli bir yeteneğe iletmek için belirli bir türün tüm ek açıklamalarını gruplamak gerekir. Örnek 2 ' de ayıklanan tüm son adlardan en yaygın adı tanımlayan bir kuramsal özel yetenek düşünün. Özel beceriye yalnızca soyadlarını sağlamak için, bağlamı `"/document"` ve giriş olarak belirtin `"/document/people/*/lastname"` .
 
-Kardinalitesi `"/document/people/*/lastname"` belgeden daha büyük olduğuna dikkat edin. Bu belge için yalnızca bir belge düğümü varken 10 LastName düğümü olabilir. Bu durumda, sistem otomatik olarak `"/document/people/*/lastname"` belgedeki tüm öğeleri içeren bir dizi oluşturur.
+Kardinalitesi `"/document/people/*/lastname"` belgeden daha büyük olduğuna dikkat edin. Bu belge için yalnızca bir belge düğümü varken 10 LastName düğümü olabilir. Bu durumda, sistem otomatik olarak  `"/document/people/*/lastname"` belgedeki tüm öğeleri içeren bir dizi oluşturur.
 
 ```json
   {
@@ -123,5 +123,5 @@ Kardinalitesi `"/document/people/*/lastname"` belgeden daha büyük olduğuna di
 ## <a name="see-also"></a>Ayrıca bkz.
 + [Özel bir yeteneği bir zenginleştirme işlem hattı ile tümleştirme](cognitive-search-custom-skill-interface.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Beceri oluşturma (REST)](/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)

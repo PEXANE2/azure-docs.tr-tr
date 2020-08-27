@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835961"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935050"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Azure Bilişsel Arama, özel uygulamalara zengin arama deneyimi oluşturmak içi
 * Sol taraftaki **anahtarlar** sayfasını kullanarak erişimi yönetin.
 * **Ölçek** sayfasını sola kullanarak kapasiteyi ayarlayın.
 
-Portalda gerçekleştirilen aynı görevler Ayrıca [Yönetim API 'leri](https://docs.microsoft.com/rest/api/searchmanagement/) ve [az. Search PowerShell modülü](search-manage-powershell.md)aracılığıyla programlı bir şekilde işlenebilir. Yönetim görevleri Portal ve programlı arabirimler arasında tam olarak temsil edilir. Yalnızca tek bir modülüde kullanılabilen belirli bir yönetim görevi yoktur.
+Portalda gerçekleştirilen aynı görevler Ayrıca [Yönetim API 'leri](/rest/api/searchmanagement/) ve [az. Search PowerShell modülü](search-manage-powershell.md)aracılığıyla programlı bir şekilde işlenebilir. Yönetim görevleri Portal ve programlı arabirimler arasında tam olarak temsil edilir. Yalnızca tek bir modülüde kullanılabilen belirli bir yönetim görevi yoktur.
 
-Azure Bilişsel Arama, daha derin izleme ve yönetim için diğer Azure hizmetlerinden yararlanır. Tek başına, bir arama hizmeti ile depolanan tek veri, içerik (dizinler, Dizin Oluşturucu ve veri kaynağı tanımları ve diğer nesneler). Portal sayfalarına bildirilen ölçümler, 30 günlük bir döngüde iç günlüklerden çekilir. Kullanıcı denetimli günlük tutma ve ek olaylar için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/)'ye ihtiyacınız olacaktır. 
+Azure Bilişsel Arama, daha derin izleme ve yönetim için diğer Azure hizmetlerinden yararlanır. Tek başına, bir arama hizmeti ile depolanan tek veri, içerik (dizinler, Dizin Oluşturucu ve veri kaynağı tanımları ve diğer nesneler). Portal sayfalarına bildirilen ölçümler, 30 günlük bir döngüde iç günlüklerden çekilir. Kullanıcı denetimli günlük tutma ve ek olaylar için [Azure izleyici](../azure-monitor/index.yml)'ye ihtiyacınız olacaktır. 
 
 ## <a name="fixed-service-properties"></a>Düzeltilen hizmet özellikleri
 
@@ -58,7 +58,7 @@ Uç noktaya erişim için, hizmet URL 'sine erişimi olan herkesin ve bir API an
 
 Rol atamaları aracılığıyla hizmet sağlama apparas haklarına yönelik haklar verilir. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. 
 
-Azure Bilişsel Arama bağlamında, [Azure rol atamaları](search-security-rbac.md) , [Portal](search-manage.md), [PowerShell](search-manage-powershell.md)veya [Yönetim REST API 'lerini](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimin hangi görevleri gerçekleştirebileceğini tespit eder:
+Azure Bilişsel Arama bağlamında, [Azure rol atamaları](search-security-rbac.md) , [Portal](search-manage.md), [PowerShell](search-manage-powershell.md)veya [Yönetim REST API 'lerini](/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimin hangi görevleri gerçekleştirebileceğini tespit eder:
 
 * Hizmet oluşturma veya silme
 * Hizmeti ölçeklendirme
@@ -73,12 +73,12 @@ Azure Bilişsel Arama bağlamında, [Azure rol atamaları](search-security-rbac.
 
 Temel katmanda ve yukarıda, Microsoft, hizmet düzeyi sözleşmeleri (SLA) başına% 99,9 kullanılabilirlik için tüm Azure Bilişsel Arama hizmetlerini izler. Hizmet yavaşsa veya istek işleme SLA eşiklerinin altına düşerse, destek ekipleri, bu dosyaların kullanabildiği günlük dosyalarını gözden geçirir ve sorunu ele geçirebilir.
 
-Azure Bilişsel Arama, dizin oluşturma ve sorgu etkinliğini toplamak ve depolamak için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/) 'yi kullanır. Tek başına bir arama hizmeti, yalnızca içeriğini (dizinler, Dizin Oluşturucu tanımları, veri kaynağı tanımları, Beceri tanımları, eş anlamlı eşlemeler) depolar. Önbelleğe alma ve günlüğe kaydetme bilgileri, genellikle Azure Storage hesabında hizmet dışı olarak depolanır. Dizinleme ve sorgu iş yüklerini günlüğe kaydetme hakkında daha fazla bilgi için bkz. [günlük verilerini toplama ve analiz etme](search-monitor-logs.md).
+Azure Bilişsel Arama, dizin oluşturma ve sorgu etkinliğini toplamak ve depolamak için [Azure izleyici](../azure-monitor/index.yml) 'yi kullanır. Tek başına bir arama hizmeti, yalnızca içeriğini (dizinler, Dizin Oluşturucu tanımları, veri kaynağı tanımları, Beceri tanımları, eş anlamlı eşlemeler) depolar. Önbelleğe alma ve günlüğe kaydetme bilgileri, genellikle Azure Storage hesabında hizmet dışı olarak depolanır. Dizinleme ve sorgu iş yüklerini günlüğe kaydetme hakkında daha fazla bilgi için bkz. [günlük verilerini toplama ve analiz etme](search-monitor-logs.md).
 
 Yalnızca Azure Bilişsel Arama yerleşik olarak bulunan tesislerin kullanıldığı hizmetiniz hakkındaki genel bilgiler açısından, aşağıdaki yollarla bilgi edinebilirsiniz:
 
 * Hizmet **genel bakış** sayfasını bildirimler, Özellikler ve durum iletileri aracılığıyla kullanma.
-* [Hizmet özelliklerini almak](https://docs.microsoft.com/rest/api/searchmanagement/services)için [PowerShell](search-manage-powershell.md) veya [Yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/) kullanma. Programlı katmanda yeni bilgi veya işlem sağlanmaz. Arabirimler, komut dosyaları yazmak için mevcuttur.
+* [Hizmet özelliklerini almak](/rest/api/searchmanagement/services)için [PowerShell](search-manage-powershell.md) veya [Yönetim REST API](/rest/api/searchmanagement/) kullanma. Programlı katmanda yeni bilgi veya işlem sağlanmaz. Arabirimler, komut dosyaları yazmak için mevcuttur.
 
 ## <a name="monitor-resource-usage"></a>Kaynak kullanımını izleme
 
@@ -86,8 +86,8 @@ Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgula
 
 Arama hizmeti REST API kullanarak belgeler ve dizinlerde program aracılığıyla bir sayı alabilir: 
 
-* [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Belge sayısı](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Dizin Istatistiklerini al](/rest/api/searchservice/Get-Index-Statistics)
+* [Belge sayısı](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Olağanüstü durum kurtarma ve hizmet kesintileri
 
@@ -135,7 +135,7 @@ Yüksek sorgu birimleri dönemlerinden sonra, arama sorgusu yükleri normalleşt
 
 Belirli bölümlerde hangi dizin parçaları depolandığını belirten bir algılama yöntemi yoktur. Her bölüm, depolama alanı üzerinde yaklaşık 25 GB sağlar, bu nedenle depolama alanını sahip olduğunuz bölüm sayısına göre daha fazla bir boyuta düşürmeniz gerekecektir. Bir bölüme geri dönmek istiyorsanız, tüm 12 parçaların sığması gerekir.
 
-Gelecekteki planlamaya yardımcı olmak için, gerçekten ne kadar kullandığınızı görmek üzere depolamayı ( [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)' ı kullanarak) denetlemek isteyebilirsiniz. 
+Gelecekteki planlamaya yardımcı olmak için, gerçekten ne kadar kullandığınızı görmek üzere depolamayı ( [Dizin Istatistiklerini al](/rest/api/searchservice/Get-Index-Statistics)' ı kullanarak) denetlemek isteyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929780"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Postman 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Bu makalede, istekleri göndermek ve almak için [Azure BILIŞSEL arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice) ve API istemcisini kullanarak REST API isteklerini etkileşimli olarak nasıl ifade edeceğinizi açıklanmaktadır. Bir API istemcisiyle bu yönergelerle, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
+Bu makalede, istekleri göndermek ve almak için [Azure BILIŞSEL arama REST API 'lerini](/rest/api/searchservice) ve API istemcisini kullanarak REST API isteklerini etkileşimli olarak nasıl ifade edeceğinizi açıklanmaktadır. Bir API istemcisiyle bu yönergelerle, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
 
 Makale Postman uygulamasını kullanır. Önceden tanımlanmış istekleri kullanmayı tercih ediyorsanız [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) . 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
@@ -74,7 +74,7 @@ Postman 'da, aşağıdaki ekran görüntüsü gibi görünen bir istek girin. Ko
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
-Azure Bilişsel Arama, genellikle dizini verilerle yüklemeden önce oluşturursunuz. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu görev için kullanılır. 
+Azure Bilişsel Arama, genellikle dizini verilerle yüklemeden önce oluşturursunuz. [Create ındex REST API](/rest/api/searchservice/create-index) , bu görev için kullanılır. 
 
 URL, dizin adını içerecek şekilde genişletilir `hotels` .
 
@@ -128,7 +128,7 @@ Bu isteği gönderdiğinizde dizinin başarıyla oluşturulduğunu belirten HTTP
 
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Bilişsel Arama 'de Dizin, tüm aranabilir verileri içerir. Bu senaryoda, veriler JSON belgeleri olarak sağlanır. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
+Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Bilişsel Arama 'de Dizin, tüm aranabilir verileri içerir. Bu senaryoda, veriler JSON belgeleri olarak sağlanır. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
 
 URL, `docs` koleksiyonları ve işlemi içerecek şekilde genişletilir `index` .
 
@@ -236,12 +236,12 @@ Birkaç saniye içinde oturum listesinde bir HTTP 201 yanıtı görmeniz gerekir
 207 yanıtı alırsanız en az bir belge karşıya yüklenemedi. 404 yanıtı alırsanız üst bilgi veya istek gövdesinde söz dizimi hatanız vardır. Uç noktayı `/docs/index` içerecek şekilde değiştirdiğinizden emin olun.
 
 > [!Tip]
-> Seçili veri kaynaklarında dizin oluşturma için gerekli kodları sadeleştiren ve miktarını azaltan alternatif *dizin oluşturucu* yaklaşımını kullanabilirsiniz. Daha fazla bilgi için bkz. [Dizin oluşturucu işlemleri](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
+> Seçili veri kaynaklarında dizin oluşturma için gerekli kodları sadeleştiren ve miktarını azaltan alternatif *dizin oluşturucu* yaklaşımını kullanabilirsiniz. Daha fazla bilgi için bkz. [Dizin oluşturucu işlemleri](/rest/api/searchservice/indexer-operations).
 
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Artık bir dizin ve belge kümesi yüklendikten sonra, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
+Artık bir dizin ve belge kümesi yüklendikten sonra, [arama belgelerini](/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
 
 URL, arama işleci kullanılarak belirtilen bir sorgu ifadesi içerecek şekilde genişletilir.
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>Dizin özelliklerini al
-Belge sayılarını ve dizin boyutunu sorgulamak için de [Istatistikleri al](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) ' da kullanabilirsiniz: 
+Belge sayılarını ve dizin boyutunu sorgulamak için de [Istatistikleri al](/rest/api/searchservice/get-index-statistics) ' da kullanabilirsiniz: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30

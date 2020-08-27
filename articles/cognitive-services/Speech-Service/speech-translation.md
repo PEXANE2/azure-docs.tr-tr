@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052612"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934506"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -33,9 +34,9 @@ Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler
 
 | Kullanım örneği | SDK | REST |
 |----------|-----|------|
-| Tanıma sonuçlarıyla konuşmaya metin çevirisi. | Yes | Hayır |
-| Konuşmadan konuşmaya çevirisi. | Yes | Hayır |
-| Ara tanıma ve çeviri sonuçları. | Yes | Hayır |
+| Tanıma sonuçlarıyla konuşmaya metin çevirisi. | Evet | Hayır |
+| Konuşmadan konuşmaya çevirisi. | Evet | Hayır |
+| Ara tanıma ve çeviri sonuçları. | Evet | Hayır |
 
 ## <a name="get-started-with-speech-translation"></a>Konuşma çevirisi 'ni kullanmaya başlama
 

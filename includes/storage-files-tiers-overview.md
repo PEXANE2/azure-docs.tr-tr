@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: cace61739e13514bb4aba1169c51ea670a167c9d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864648"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944505"
 ---
 Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine yönelik olarak paylaşımlarınızı uyarlamanızı sağlamak için dört farklı depolama, Premium, işlem için iyileştirilmiş, sık erişimli ve seyrek katman katmanları sunar:
 
@@ -30,6 +30,8 @@ Sık erişimli ve seyrek erişimli dosya paylaşımları Şu anda ortak bölgele
 - Orta Avustralya 2
 - Doğu Avustralya
 - Güneydoğu Avustralya
+- Doğu Kanada
+- Orta Kanada
 - Orta Fransa
 - Güney Fransa
 - Almanya Kuzey (genel)
@@ -45,6 +47,8 @@ Sık erişimli ve seyrek erişimli dosya paylaşımları Şu anda ortak bölgele
 - Norveç Batı
 - Güney Afrika Kuzey
 - Güney Afrika Batı
+- İsviçre Kuzey
+- İsviçre Batı
 - BAE Orta
 - BAE Kuzey
 - Güney Birleşik Krallık

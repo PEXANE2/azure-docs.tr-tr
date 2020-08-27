@@ -8,21 +8,21 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125613"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932806"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Bilişsel Arama için IP güvenlik duvarını yapılandırma
 
 Azure Bilişsel Arama, gelen güvenlik duvarı desteği için IP kurallarını destekler. Bu model, arama hizmetiniz için bir Azure sanal ağ güvenlik grubunda bulacağınız IP kurallarına benzer ek bir güvenlik katmanı sağlar. Bu IP kuralları ile, arama hizmetinizi yalnızca onaylanan bir makine ve/veya bulut hizmeti kümesinden erişilebilir olacak şekilde yapılandırabilirsiniz. Bu onaylanmış makine ve hizmet kümelerinden arama hizmetinize depolanan verilere erişim, çağıranın geçerli bir yetkilendirme belirteci sunmasını gerektirir.
 
 > [!Important]
-> Azure Bilişsel Arama hizmetinizde IP kuralları Azure portal veya [yönetim REST API 2020-03-13 sürümü](https://docs.microsoft.com/rest/api/searchmanagement/)kullanılarak yapılandırılabilir.
+> Azure Bilişsel Arama hizmetinizde IP kuralları Azure portal veya [yönetim REST API 2020-03-13 sürümü](/rest/api/searchmanagement/)kullanılarak yapılandırılabilir.
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a>Azure portal kullanarak bir IP güvenlik duvarı yapılandırma
+## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal kullanarak bir IP güvenlik duvarı yapılandırma
 
 Azure portal IP erişim denetimi ilkesini ayarlamak için Azure Bilişsel Arama hizmet sayfanıza gidin ve gezinti menüsünde **ağ** ' ı seçin. Uç nokta ağ bağlantısı **genel**olmalıdır. Bağlantınız **özel**olarak ayarlandıysa, yalnızca özel bir uç nokta aracılığıyla arama hizmetinize erişebilirsiniz.
 
@@ -51,7 +51,7 @@ Aşağıdaki seçenekleri kullanarak bir IP erişim denetimi ilkesiyle ilgili so
 
 Azure Bilişsel Arama hizmetiniz için bir IP erişim denetim ilkesinin etkinleştirilmesi, Azure portal dahil olmak üzere izin verilen IP adresi aralıkları listesinin dışındaki makinelerden gelen tüm istekleri engeller.  Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır. 
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 
 İzin verilenler listesinde olmayan makinelerden SDK 'Yı kullanarak Azure Bilişsel Arama hizmetine eriştiğinizde, ek ayrıntı olmadan genel **403 yasaklanmış** bir yanıt döndürülür. Hesabınız için izin verilen IP listesini doğrulayın ve arama hizmetiniz için doğru yapılandırmanın güncelleştirildiğinden emin olun.
 

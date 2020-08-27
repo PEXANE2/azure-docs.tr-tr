@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c5431150141a8a2421c80ac4858f85ad41b002
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496762"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927111"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir demo uygulaması oluşturma (Azure Bilişsel Arama)
 
@@ -21,7 +21,7 @@ Bir tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulama
 
 Demo uygulaması, bir dizinin bir istemci uygulamasında nasıl çalıştığını görselleştirmenize yardımcı olabilir, ancak üretim senaryoları için tasarlanmamıştır. İstemci uygulamaları, oluşturulan HTML sayfasının sağlamadığı güvenlik, hata işleme ve barındırma mantığını içermelidir. Bir istemci uygulaması oluşturmaya hazırsanız, sonraki adımlar için [.NET SDK kullanarak ilk arama uygulamanızı oluşturma](tutorial-csharp-create-first-app.md) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -111,4 +111,4 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 Varsayılan uygulama ilk keşif ve küçük görevler için yararlı olsa da, API 'Lerin erken şekilde incelenmesi, kavram ve iş akışını daha derin bir düzeyde anlamanıza yardımcı olur:
 
 > [!div class="nextstepaction"]
-> [.NET SDK kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [.NET SDK kullanarak dizin oluşturma](./search-get-started-dotnet.md)

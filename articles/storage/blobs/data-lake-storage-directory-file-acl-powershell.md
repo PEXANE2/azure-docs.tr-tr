@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923883"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -264,7 +264,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz. Bu izinler, erişim denetim listeleri (ACL 'Ler) içinde yakalanır.
 
 > [!NOTE]
-> Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
+> Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
 ### <a name="get-an-acl"></a>ACL al
 
@@ -297,7 +297,7 @@ $file.ACL
 
 Aşağıdaki görüntüde bir dizinin ACL 'SI alındıktan sonra çıkış gösterilmektedir.
 
-![ACL çıkışı al](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
+![Dizin için ACL çıkışı al](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
 Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vardır. Sahip olan grubun yalnızca okuma ve yürütme izinleri vardır. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
 
@@ -344,31 +344,9 @@ $file.ACL
 
 Aşağıdaki görüntüde, bir dosyanın ACL 'sini ayarlamadıktan sonra çıkış gösterilmektedir.
 
-![ACL çıkışı al](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
+![Dosya için ACL çıkışı al](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
 
 Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma izinlerine sahiptir. Diğer tüm kullanıcılar yazma ve yürütme izinlerine sahiptir. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
-
-
-### <a name="set-acls-on-all-items-in-a-container"></a>Bir kapsayıcıdaki tüm öğelerde ACL 'Leri ayarlama
-
-`Get-AzDataLakeGen2Item` `-Recurse` `Update-AzDataLakeGen2Item` Bir kapsayıcıdaki dizinler ve dosyalar için ACL 'yi ayarlamak üzere, ve parametresini yinelemeli olarak cmdlet ile birlikte kullanabilirsiniz. 
-
-```powershell
-$filesystemName = "my-file-system"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-
-$Token = $Null
-do
-{
-     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Count -le 0) { Break;}
-     $items | Update-AzDataLakeGen2Item -Acl $acl
-     $Token = $items[$items.Count -1].ContinuationToken;
-}
-While ($Token -ne $Null) 
-```
 
 ### <a name="add-or-update-an-acl-entry"></a>ACL girdisi ekleme veya güncelleştirme
 
@@ -404,6 +382,10 @@ foreach ($a in $aclnew)
 }
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
 ```
+
+### <a name="set-an-acl-recursively-preview"></a>Bir ACL 'yi yinelemeli olarak ayarlama (Önizleme)
+
+Bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğelerinde ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](recursive-access-control-lists.md).
 
 <a id="gen1-gen2-map"></a>
 

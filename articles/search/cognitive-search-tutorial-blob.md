@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503311"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936019"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için REST ve AI kullanma
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. İşlem hattı görüntüleri işleyebilse de, bu REST öğreticide, sorgularda, modellerle ve filtrelerinizde kullanabileceğiniz yeni alanlar oluşturmak için dil algılama ve doğal dil işleme uygulayarak metin üzerinde odaklanılır.
 
-Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/) kullanılmaktadır:
+Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [arama REST API 'leri](/rest/api/searchservice/) kullanılmaktadır:
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
@@ -135,7 +135,7 @@ Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI i
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
 
-[Veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
+[Veri kaynağı nesnesi](/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
 
 1. **Post** 'u ve aşağıdaki URL 'yi kullanarak hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
@@ -165,7 +165,7 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
 
 ### <a name="step-2-create-a-skillset"></a>2. Adım: beceri oluşturma
 
-[Beceri nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-skillset) , içeriğinize uygulanan bir zenginleştirme adımları kümesidir. 
+[Beceri nesnesi](/rest/api/searchservice/create-skillset) , içeriğinize uygulanan bir zenginleştirme adımları kümesidir. 
 
 1. **PUT** ve aşağıdaki URL 'yi kullanın ve hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
@@ -175,7 +175,7 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
 
 1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
 
-   | İmde                 | Description    |
+   | İmde                 | Açıklama    |
    |-----------------------|----------------|
    | [Varlık Tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
    | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
@@ -250,7 +250,7 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
 
 ### <a name="step-3-create-an-index"></a>3. Adım: Dizin oluşturma
 
-Bir [Dizin](https://docs.microsoft.com/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifadesini, ters dizinler ve Azure bilişsel arama diğer yapıları oluşturmak için kullanılan şemayı sağlar. Bir dizinin en büyük bileşeni, veri türü ve özniteliklerin Azure Bilişsel Arama 'daki içerikleri ve davranışları belirlerken alanlar koleksiyonudur.
+Bir [Dizin](/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifadesini, ters dizinler ve Azure bilişsel arama diğer yapıları oluşturmak için kullanılan şemayı sağlar. Bir dizinin en büyük bileşeni, veri türü ve özniteliklerin Azure Bilişsel Arama 'daki içerikleri ve davranışları belirlerken alanlar koleksiyonudur.
 
 1. Dizininizi adlandırmak için, **PUT** ve aşağıdaki URL 'yi kullanarak hizmet adınızı hizmetinizin gerçek adıyla değiştirin.
 
@@ -334,7 +334,7 @@ Bir [Dizin](https://docs.microsoft.com/rest/api/searchservice/create-index) , i�
 
 ### <a name="step-4-create-and-run-an-indexer"></a>4. Adım: Dizin Oluşturucu oluşturma ve çalıştırma
 
-[Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , işlem hattını sürücüler. Şimdiye kadar oluşturduğunuz üç bileşen (veri kaynağı, Beceri, dizin) bir dizin oluşturucunun girdileri olur. Azure Bilişsel Arama dizin oluşturucunun oluşturulması, tüm işlem hattının hareket halinde yer aldığı olaydır. 
+[Dizin Oluşturucu](/rest/api/searchservice/create-indexer) , işlem hattını sürücüler. Şimdiye kadar oluşturduğunuz üç bileşen (veri kaynağı, Beceri, dizin) bir dizin oluşturucunun girdileri olur. Azure Bilişsel Arama dizin oluşturucunun oluşturulması, tüm işlem hattının hareket halinde yer aldığı olaydır. 
 
 1. Dizin oluşturucuyu adlandırmak için **PUT** ve aşağıdaki URL 'yi kullanın ve hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
@@ -486,7 +486,7 @@ Tüm belgenin tek bir alana paketlendiği blob içeriğiyle başladığımızda 
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-Bu sorgular, bilişsel arama tarafından oluşturulan yeni alanlara sorgu söz dizimi ve filtreler ile çalışmanın birkaç yolunu gösterir. Daha fazla sorgu örneği için bkz. [arama belgeleri REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [basit sözdizimi sorgu örnekleri](search-query-simple-examples.md)ve [tam Lucene sorgu örnekleri](search-query-lucene-examples.md).
+Bu sorgular, bilişsel arama tarafından oluşturulan yeni alanlara sorgu söz dizimi ve filtreler ile çalışmanın birkaç yolunu gösterir. Daha fazla sorgu örneği için bkz. [arama belgeleri REST API](/rest/api/searchservice/search-documents#bkmk_examples), [basit sözdizimi sorgu örnekleri](search-query-simple-examples.md)ve [tam Lucene sorgu örnekleri](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 

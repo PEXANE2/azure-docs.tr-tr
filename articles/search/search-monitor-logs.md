@@ -8,34 +8,34 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611620"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935067"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Bilişsel Arama günlük verilerini toplayın ve çözümleyin
 
 Tanılama veya işletimsel Günlükler Azure Bilişsel Arama ayrıntılı işlemlerine ilişkin öngörüler sağlar ve hizmet ve iş yükü işlemlerini izlemek için yararlıdır. Dahili olarak, bazı sistem bilgileri kısa bir süre için arka uçta bulunur, bir destek bileti dosyanız varsa araştırma ve analiz için yeterlidir. Ancak, işletimsel veriler üzerinde kendinden yönle isterseniz, günlük bilgilerinin nerede toplandığını belirtmek için bir tanılama ayarı yapılandırmanız gerekir.
 
-Tanılama günlüğü, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/)ile tümleştirme aracılığıyla etkinleştirilir. 
+Tanılama günlüğü, [Azure izleyici](../azure-monitor/index.yml)ile tümleştirme aracılığıyla etkinleştirilir. 
 
 Tanılama günlük kaydını ayarlarken, bir depolama mekanizması belirtmeniz istenir. Aşağıdaki tabloda, verileri toplama ve kalıcı hale getirme seçenekleri numaralandırılır.
 
 | Kaynak | Kullanıldığı yerler |
 |----------|----------|
-| [Log Analytics çalışma alanına gönderme](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Olaylar ve ölçümler Log Analytics çalışma alanına gönderilir ve bu, ayrıntılı bilgi döndürmek için portalda sorgulanabilir. Giriş için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [BLOB depolama ile arşivleme](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Olaylar ve ölçümler bir blob kapsayıcısına arşivlenir ve JSON dosyalarında depolanır. Günlükler, belirli bir olayı araştırmak için faydalı olan ancak açık uçlu araştırma için kullanışlı olan oldukça ayrıntılı olabilir (saat/dakika). Ham günlük dosyasını görüntülemek için bir JSON düzenleyicisi kullanın veya günlük verilerini toplamak ve görselleştirmek için Power BI.|
-| [Olay Hub 'ına akış](https://docs.microsoft.com/azure/event-hubs/) | Olaylar ve ölçümler bir Azure Event Hubs hizmetine akışla kaydedilir. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
+| [Log Analytics çalışma alanına gönderme](../azure-monitor/learn/tutorial-resource-logs.md) | Olaylar ve ölçümler Log Analytics çalışma alanına gönderilir ve bu, ayrıntılı bilgi döndürmek için portalda sorgulanabilir. Giriş için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](../azure-monitor/log-query/get-started-portal.md) |
+| [BLOB depolama ile arşivleme](../storage/blobs/storage-blobs-overview.md) | Olaylar ve ölçümler bir blob kapsayıcısına arşivlenir ve JSON dosyalarında depolanır. Günlükler, belirli bir olayı araştırmak için faydalı olan ancak açık uçlu araştırma için kullanışlı olan oldukça ayrıntılı olabilir (saat/dakika). Ham günlük dosyasını görüntülemek için bir JSON düzenleyicisi kullanın veya günlük verilerini toplamak ve görselleştirmek için Power BI.|
+| [Olay Hub 'ına akış](../event-hubs/index.yml) | Olaylar ve ölçümler bir Azure Event Hubs hizmetine akışla kaydedilir. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tanılama günlüğünü yapılandırırken bir veya daha fazla seçim yapabilmeniz için kaynakları önceden oluşturun.
 
 + [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md)
++ [Depolama hesabı oluşturma](../storage/common/storage-account-create.md)
 
 + [Olay Hub 'ı oluşturma](../event-hubs/event-hubs-create.md)
 
@@ -120,11 +120,11 @@ AzureDiagnostics
 
 Azure Izleyici tarafından yakalanan günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics içindeki **AzureDiagnostics** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
 
-| ThrottledRequests | Açıklama |
+| OperationName | Açıklama |
 |---------------|-------------|
-| ServiceStats | Bu işlem, bir portala genel bakış sayfası yüklendiğinde veya yenilendiğinde, doğrudan veya örtük olarak çağrılan [hizmet Istatistiklerini almak](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)için bir yordam çağrıdır. |
+| ServiceStats | Bu işlem, bir portala genel bakış sayfası yüklendiğinde veya yenilendiğinde, doğrudan veya örtük olarak çağrılan [hizmet Istatistiklerini almak](/rest/api/searchservice/get-service-statistics)için bir yordam çağrıdır. |
 | Query. Search |  Bir dizinde yapılan sorgu istekleri bkz. günlüğe kaydedilen sorgular hakkında bilgi için [izleyici sorguları](search-monitor-queries.md) .|
-| Dizin oluşturuluyor. Dizin  | Bu işlem, [belge eklemek, güncelleştirmek veya silmek](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)için yapılan bir çağrıdır. |
+| Dizin oluşturuluyor. Dizin  | Bu işlem, [belge eklemek, güncelleştirmek veya silmek](/rest/api/searchservice/addupdate-or-delete-documents)için yapılan bir çağrıdır. |
 | dizinlerde. Örneğini | Bu, verileri Içeri aktarma Sihirbazı tarafından oluşturulan bir dizindir. |
 | Dizin oluşturucular. oluştur | Veri alma Sihirbazı aracılığıyla açıkça veya örtük olarak bir Dizin Oluşturucu oluşturun. |
 | Indexers. Get | Dizin Oluşturucu her çalıştırıldığında bir dizin oluşturucunun adını döndürür. |
@@ -138,7 +138,7 @@ Azure Izleyici tarafından yakalanan günlüğe kaydedilen olaylar, dizin oluşt
 
 Aşağıdaki tablo, kaynak günlüğü ile ortak olan alanların kısmi bir listesidir.
 
-| Name | Tür | Örnek | Notlar |
+| Ad | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559 Z" |İşlemin zaman damgası |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>KAYNAKGRUPLARı/VARSAYıLAN/SAĞLAYıCıLAR/<br/> MICROSOFT. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |RESOURCEID |
@@ -148,13 +148,13 @@ Aşağıdaki tablo, kaynak günlüğü ile ortak olan alanların kısmi bir list
 | resultType |string |Başarılı |Olası değerler: başarılı veya başarısız |
 | resultSignature |int |200 |HTTP sonuç kodu |
 | Ort |int |50 |İşlem süresi (milisaniye) |
-| properties |nesne |aşağıdaki tabloya bakın |İşleme özgü verileri içeren nesne |
+| properties |object |aşağıdaki tabloya bakın |İşleme özgü verileri içeren nesne |
 
 ### <a name="properties-schema"></a>Özellikler şeması
 
 Aşağıdaki özellikler Azure Bilişsel Arama özgüdür.
 
-| Name | Tür | Örnek | Notlar |
+| Ad | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
 | Description_s |string |"GET/Indexes (' content ')/docs" |İşlemin uç noktası |
 | Documents_d |int |42 |İşlenen belge sayısı |
@@ -165,7 +165,7 @@ Aşağıdaki özellikler Azure Bilişsel Arama özgüdür.
 
 Ölçümler, sorgu istekleri için yakalanır ve bir dakikalık aralıklarla ölçülür. Her ölçüm, dakikada minimum, maksimum ve ortalama değerleri kullanıma sunar. Daha fazla bilgi için bkz. [sorgu Isteklerini izleme](search-monitor-queries.md).
 
-| Name | Tür | Örnek | Notlar |
+| Ad | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>KAYNAKGRUPLARı/VARSAYıLAN/SAĞLAYıCıLAR/<br/>MICROSOFT. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Kaynak KIMLIĞINIZ |
 | metricName |string |Dönemlerinde |ölçümün adı |

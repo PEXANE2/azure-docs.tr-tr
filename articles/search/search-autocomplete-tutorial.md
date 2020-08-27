@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413026"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936767"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
@@ -23,7 +23,7 @@ Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini i
 Bu deneyimleri Azure Bilişsel Arama uygulamak için şunlar gerekir:
 
 + Arka uçta bir *öneri aracı* .
-+ İstekte [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) veya [öneriler](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 'si belirten bir *sorgu* .
++ İstekte [otomatik tamamlama](/rest/api/searchservice/autocomplete) veya [öneriler](/rest/api/searchservice/suggestions) API 'si belirten bir *sorgu* .
 + İstemci uygulamanızda arama-yazma etkileşimini işlemek için bir *Kullanıcı arabirimi denetimi* . Bu amaçla mevcut bir JavaScript kitaplığı kullanmanızı öneririz.
 
 Azure Bilişsel Arama 'de, bir öneri aracı kaydettiğiniz seçili alanlardan, oto tamamlanmış sorgular ve önerilen sonuçlar arama dizininden alınır. Bir öneri aracı, dizinin bir parçasıdır ve bir sorguyu tamamlayan, bir sonuç öneren veya her ikisini de yapan içeriği belirtir. Dizin oluşturulup yüklendiğinde, kısmi sorgularda eşleşme için kullanılan önekleri depolamak üzere dahili olarak bir öneri aracı veri yapısı oluşturulur. Öneriler için, deneyim için benzersiz olan veya en az tekrarlanmayan uygun alanları seçme için gereklidir. Daha fazla bilgi için bkz. [Create a öneri aracı](index-add-suggesters.md).
@@ -54,16 +54,16 @@ Eşleşmeler, giriş dizesinin herhangi bir yerindeki bir terim başlangıcıdı
 
 REST ve .NET SDK başvuru sayfaları için bu bağlantıları izleyin:
 
-+ [Öneriler REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [Otomatik tamamlama REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Öneriler REST API](/rest/api/searchservice/suggestions) 
++ [Otomatik tamamlama REST API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Yanıt yapısı
 
-Otomatik tamamlama ve önerilerle ilgili yanıtlar, bu model için beklediğiniz şeydir: [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) bir terim listesi döndürüyor, [ÖNERILER](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) bir belge kimliği ve belgeyi alabilmeniz için (belirli bir belgeyi bir ayrıntı sayfasına getirmek üzere [Arama belgesi](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API 'sini kullanın) sağlar.
+Otomatik tamamlama ve önerilerle ilgili yanıtlar, bu model için beklediğiniz şeydir: [otomatik tamamlama](/rest/api/searchservice/autocomplete#response) bir terim listesi döndürüyor, [ÖNERILER](/rest/api/searchservice/suggestions#response) bir belge kimliği ve belgeyi alabilmeniz için (belirli bir belgeyi bir ayrıntı sayfasına getirmek üzere [Arama belgesi](/rest/api/searchservice/lookup-document) API 'sini kullanın) sağlar.
 
-Yanıtlar istekteki parametrelere göre şekillendirilir. Otomatik tamamlama için, bir veya iki terimde metin tamamlanmasının yapılıp yapılmayacağını öğrenmek için [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) ayarlayın. Öneriler için, seçtiğiniz alan yanıtın içeriğini belirler.
+Yanıtlar istekteki parametrelere göre şekillendirilir. Otomatik tamamlama için, bir veya iki terimde metin tamamlanmasının yapılıp yapılmayacağını öğrenmek için [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) ayarlayın. Öneriler için, seçtiğiniz alan yanıtın içeriğini belirler.
 
 Öneriler için, yinelemeleri önlemek için yanıtı daha da belirginleştirin veya ilişkisiz sonuçlar olarak görünür. Sonuçları denetlemek için, isteğe daha fazla parametre ekleyin. Aşağıdaki parametreler hem otomatik tamamlama hem de öneriler için geçerlidir, ancak özellikle de bir öneri aracı birden çok alan içerdiğinde öneriler için daha fazla gerekli olabilir.
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 C# ve MVC uygulaması kullanıyorsanız, **HomeController.cs** dosyası denetleyiciler dizini altında, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi [Documentsoperationsextensions. önerme metodunu](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)temel alır.
 
-`InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+`InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](./search-howto-dotnet-sdk.md).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -175,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Suggest işlevi, arama terimi girişine ek olarak isabet vurgularının veya benzer öğe eşleştirme özelliğinin kullanılıp kullanılmadığını belirleyen iki parametre alır. Yöntemi, daha sonra öneri API 'sine geçirilen bir [SuggestParameters nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
+Suggest işlevi, arama terimi girişine ek olarak isabet vurgularının veya benzer öğe eşleştirme özelliğinin kullanılıp kullanılmadığını belirleyen iki parametre alır. Yöntemi, daha sonra öneri API 'sine geçirilen bir [SuggestParameters nesnesi](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
 
 ## <a name="autocomplete"></a>Otomatik Tamamlama
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>AutoComplete işlevi
 
-AutoComplete, [Documentsoperationsextensions. AutoComplete yöntemine](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)göre belirlenir. Önerilerle birlikte bu kod bloğu **HomeController.cs** dosyasına gidebilirler.
+AutoComplete, [Documentsoperationsextensions. AutoComplete yöntemine](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)göre belirlenir. Önerilerle birlikte bu kod bloğu **HomeController.cs** dosyasına gidebilirler.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -243,7 +243,7 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-AutoComplete işlevi, arama terimi girişini alır. Yöntemi bir [AutoCompleteParameters nesnesi](https://docs.microsoft.com/rest/api/searchservice/autocomplete)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
+AutoComplete işlevi, arama terimi girişini alır. Yöntemi bir [AutoCompleteParameters nesnesi](/rest/api/searchservice/autocomplete)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

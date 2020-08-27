@@ -2,14 +2,15 @@
 title: Azure Application Insights .NET SDK ile özel işlemleri izleme
 description: Azure Application Insights .NET SDK ile özel işlemleri izleme
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320383"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933316"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -347,9 +348,9 @@ Benzer şekilde, diğer kuyruk işlemleri de görüntülenebilir. Bir göz atma 
 ### <a name="dependency-types"></a>Bağımlılık türleri
 
 Application Insights, UI deneyimlerini özelleştirmek için bağımlılık türünü kullanır. Kuyruklar için, `DependencyTelemetry` [işlem tanılama deneyimini](./transaction-diagnostics.md)geliştiren aşağıdaki türleri tanır:
-- `Azure queue`Azure depolama kuyrukları için
-- `Azure Event Hubs`Azure Event Hubs için
-- `Azure Service Bus`Azure Service Bus için
+- `Azure queue` Azure depolama kuyrukları için
+- `Azure Event Hubs` Azure Event Hubs için
+- `Azure Service Bus` Azure Service Bus için
 
 ### <a name="batch-processing"></a>Toplu işlem
 Bazı kuyruklarla birden çok iletiyi bir istek ile sıradan silebilirsiniz. Bu tür iletileri işlemek, büyük olasılıkla bağımsızdır ve farklı mantıksal işlemlere aittir. `Dequeue`İşlemin işlenmekte olan belirli bir iletiyle ilişkilendirilmesi mümkün değildir.
@@ -388,7 +389,7 @@ async Task BackgroundTask()
 }
 ```
 
-Bu örnekte, `telemetryClient.StartOperation` `DependencyTelemetry` bağıntı bağlamını oluşturur ve doldurur. İşlemi zamanladığı gelen istekler tarafından oluşturulan bir üst işlem olduğunu varsayalım. `BackgroundTask`Gelen istek olarak aynı zaman uyumsuz Denetim akışında başladığı sürece, bu üst işlemle bağıntılı olur. `BackgroundTask`Ayrıca, iç içe geçmiş telemetri öğeleri, isteğin sona erdikten sonra bile, hataya neden olan istekle otomatik olarak bağıntılı olur.
+Bu örnekte, `telemetryClient.StartOperation` `DependencyTelemetry` bağıntı bağlamını oluşturur ve doldurur. İşlemi zamanladığı gelen istekler tarafından oluşturulan bir üst işlem olduğunu varsayalım. `BackgroundTask`Gelen istek olarak aynı zaman uyumsuz Denetim akışında başladığı sürece, bu üst işlemle bağıntılı olur. `BackgroundTask` Ayrıca, iç içe geçmiş telemetri öğeleri, isteğin sona erdikten sonra bile, hataya neden olan istekle otomatik olarak bağıntılı olur.
 
 Görev, kendisiyle ilişkilendirilmiş herhangi bir işlemi () olmayan arka plan iş parçacığından başlatıldığında `Activity` `BackgroundTask` hiç üst öğeye sahip değildir. Ancak, iç içe geçmiş işlemlere sahip olabilir. Görevden bildirilen tüm telemetri öğeleri `DependencyTelemetry` içinde oluşturulan ile bağıntılı `BackgroundTask` .
 
@@ -429,7 +430,7 @@ Disposing işlemi, işlemin durdurulmasına neden olur, bu nedenle bunu çağır
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralel işlemler işleme ve izleme
 
-`StopOperation`yalnızca başlatılmış olan işlemi sonlandırır. Geçerli çalışan işlem durdurmak istediğiniz ile eşleşmiyorsa `StopOperation` hiçbir şey yapmaz. Aynı yürütme bağlamında paralel olarak birden çok işlem başlatırsanız bu durum oluşabilir:
+`StopOperation` yalnızca başlatılmış olan işlemi sonlandırır. Geçerli çalışan işlem durdurmak istediğiniz ile eşleşmiyorsa `StopOperation` hiçbir şey yapmaz. Aynı yürütme bağlamında paralel olarak birden çok işlem başlatırsanız bu durum oluşabilir:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
@@ -469,11 +470,11 @@ public async Task RunAllTasks()
 ```
 
 ## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights işlemleri vs System. Diagnostics. Activity
-`System.Diagnostics.Activity`Dağıtılmış izleme bağlamını temsil eder ve süreç içinde ve dışında bağlam oluşturmak ve dağıtmak ve telemetri öğelerini ilişkilendirmek için çerçeveler ve kitaplıklar tarafından kullanılır. Etkinlik, `System.Diagnostics.DiagnosticSource` ilginç olaylar (gelen veya giden istekler, özel durumlar, vb.) hakkında bilgilendirmek için çerçeve/kitaplık arasındaki bildirim mekanizmasıyla birlikte çalışarak.
+`System.Diagnostics.Activity` Dağıtılmış izleme bağlamını temsil eder ve süreç içinde ve dışında bağlam oluşturmak ve dağıtmak ve telemetri öğelerini ilişkilendirmek için çerçeveler ve kitaplıklar tarafından kullanılır. Etkinlik, `System.Diagnostics.DiagnosticSource` ilginç olaylar (gelen veya giden istekler, özel durumlar, vb.) hakkında bilgilendirmek için çerçeve/kitaplık arasındaki bildirim mekanizmasıyla birlikte çalışarak.
 
 Etkinlikler ilk sınıf vatandaşları Application Insights ve otomatik bağımlılık ve istek toplama işlemleri büyük ölçüde olaylar ile birlikte kullanır `DiagnosticSource` . Uygulamanızda etkinlik oluşturursanız, Application Insights telemetrinin oluşturulması neden olmaz. Application Insights, DiagnosticSource olaylarını alması ve etkinliğin telemetrisine çevrilmesi için olay adlarını ve yüklerini bilmesi gerekir.
 
-Her bir Application Insights işlemi (istek veya bağımlılık) `Activity` ile ilgilidir `StartOperation` . çağrıldığında, altında etkinlik oluşturulur. `StartOperation`, istek veya bağımlılık Telemetriler el ile izlemenin ve her şeyin bağıntılı olduğundan emin olmak için önerilen yoldur.
+Her bir Application Insights işlemi (istek veya bağımlılık) `Activity` ile ilgilidir `StartOperation` . çağrıldığında, altında etkinlik oluşturulur. `StartOperation` , istek veya bağımlılık Telemetriler el ile izlemenin ve her şeyin bağıntılı olduğundan emin olmak için önerilen yoldur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

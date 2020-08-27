@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 2f7678e2dd9f04f7aa930271c69c2d4ccf1e692b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210144"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928250"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Hızlı başlangıç: Görüntü İşleme 3,0 REST API okuma işlemini ve C 'yi kullanarak metin Ayıkla #
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Görüntü İşleme 3,0 REST API bir parçası olarak
 > [!IMPORTANT]
 > [Okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Daha sonra bu URI 'yi, [okuma sonucu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API 'sini temsil eder, her ikisi de durumu denetlemek ve okuma yöntemi çağrısının sonuçlarını döndürmek için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fd405513f8bdef09e6d3ab996fc2c04bd397db13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659432"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935254"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak Azure Blob verilerine tam metin araması ekleme
 
@@ -27,7 +27,7 @@ Azure Bilişsel Arama, dizin oluşturma katmanında Azure Blob depolama ile tüm
 
 Dizin oluşturulup doldurulduktan sonra, blob kapsayıcınızda bağımsız olarak bulunur, ancak dizin oluşturma işlemlerini yeniden çalıştırıp Dizin oluşturmayı temel kapsayıcıda yapılan değişikliklerle yenileyebilirsiniz. Tek bloblarda zaman damgası bilgileri değişiklik algılama için kullanılır. Yenileme mekanizması olarak zamanlanmış yürütme ya da isteğe bağlı dizin oluşturma için kabul edebilirsiniz.
 
-Azure Blob depolama alanında, tek bir kapsayıcıda bulunan bloblarınızın girdileri vardır. Blob 'lar neredeyse her türlü metin verisi olabilir. Bloblarınız görüntü içeriyorsa, görüntülerden metin oluşturup çıkarmak için bir [BLOB dizin oluşturmaya AI zenginleştirme](search-blob-ai-integration.md) ekleyebilirsiniz.
+Azure Blob depolama alanında, tek bir kapsayıcıda bulunan bloblarınızın girdileri vardır. Blob 'lar neredeyse her türlü metin verisi olabilir. Bloblarınız görüntü içeriyorsa, görüntülerden metin oluşturup çıkarmak için bir [BLOB dizin oluşturmaya AI zenginleştirme ](search-blob-ai-integration.md) ekleyebilirsiniz.
 
 Çıktı, istemci uygulamalarında hızlı metin arama, alma ve araştırma için kullanılan her zaman bir Azure Bilişsel Arama dizinidir. Between, dizin oluşturma ardışık düzen mimarisidir. İşlem hattı, bu makalede daha fazla açıklanılan *Dizin Oluşturucu* özelliğine dayanır.
 
@@ -75,5 +75,5 @@ Daha kalıcı bir çözüm, sorgu girişleri toplamaktır ve yanıtı bir istemc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure portal (Azure Blob depolama) ile Blobları karşıya yükleme, indirme ve listeleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [Blob Dizin oluşturucuyu ayarlama (Azure Bilişsel Arama)](search-howto-indexing-azure-blob-storage.md) 
++ [Azure portal (Azure Blob depolama) ile Blobları karşıya yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md)
++ [Blob Dizin oluşturucuyu ayarlama (Azure Bilişsel Arama)](search-howto-indexing-azure-blob-storage.md)

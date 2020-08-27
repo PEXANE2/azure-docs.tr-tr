@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084203"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923118"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama dile göre filtreleme 
 
@@ -37,11 +37,11 @@ Aşağıdaki örnek, farklı dillerdeki içerikleri içeren birkaç dize alanın
   ![Gerçek emlak örneğinin alanlar ekranını gösteren ekran görüntüsü. Bir grup alan, dil Çözümleyicisi atamalarının vurgulanan alanlarla ilgili dillere nasıl karşılık geldiğini göstermek için vurgulanır.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Dil Çözümleyicileri ile alan tanımlarını gösteren kod örnekleri için bkz. [Dizin tanımlama (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) ve [DIZIN tanımlama (REST)](search-create-index-rest-api.md).
+> Dil Çözümleyicileri ile alan tanımlarını gösteren kod örnekleri için bkz. [Dizin tanımlama (.net)](./search-get-started-dotnet.md) ve [DIZIN tanımlama (REST)](./search-get-started-powershell.md).
 
 ## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
-Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](https://docs.microsoft.com/azure/search/search-create-index-dotnet) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
+Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](./search-get-started-dotnet.md) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
 
 ## <a name="constrain-the-query-and-trim-results"></a>Sorgu ve kırpma sonuçlarını kısıtlama
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Azure Bilişsel Arama filtreler](search-filters.md)
-+ [Dil çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [Dil çözümleyicileri](/rest/api/searchservice/language-support)
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
-+ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [Belgelerde Arama REST API'si](/rest/api/searchservice/search-documents)
