@@ -8,18 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931105"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması C# uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 
 Kodu hemen görmek istiyor musunuz? [.NET için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) örnekleri GitHub ' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) veya
@@ -421,5 +422,5 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı uygulama kodundan kald�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilişsel hizmetler Node. js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+> [Bilişsel hizmetler Node.js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
                                     

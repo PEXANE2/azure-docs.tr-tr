@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ee05d331e953aa39855033d0987cb85cbfddb744
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 408b507ff23a2a20c5ed6d2fc32fd5dbf5dbab5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827520"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930902"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -36,10 +36,7 @@ Bir Key Vault sertifikası oluşturulduktan sonra, özel anahtarla adreslenebili
 - **Dışarı aktarılabilir**: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
 - **Dışarı aktarılabilir**değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
 
-Key Vault iki tür anahtarı destekler:
-
-- **RSA**: dışarı aktarılabilir
-- **HSM RSA**: dışarı aktarılabilir olmayan
+Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
 
 Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) .
 

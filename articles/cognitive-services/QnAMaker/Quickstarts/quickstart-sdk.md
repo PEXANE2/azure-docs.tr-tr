@@ -3,14 +3,14 @@ title: "Hızlı başlangıç: Bilgi Bankası oluşturmak ve yönetmek için SDK 
 description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi bankaınızı oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: e6a8a6d0688f362f934d1439c1ca0f6072acf6d6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 60ba7d18e9da791373914fef7962e32396a489f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872931"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934183"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Hızlı başlangıç: Soru-Cevap Oluşturma istemci kitaplığı
 

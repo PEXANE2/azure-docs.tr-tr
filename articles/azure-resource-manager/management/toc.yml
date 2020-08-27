@@ -119,7 +119,7 @@
         - name: Azure portal
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-cli.md
         - name: Azure PowerShell
@@ -130,7 +130,7 @@
         - name: Azure portal
           displayName: 'open,delete,deploy,move,lock,tag,monitor'
           href: manage-resources-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           displayName: 'open,delete,deploy,move,lock,tag'
           href: manage-resources-cli.md
         - name: Azure PowerShell
@@ -139,9 +139,9 @@
     - name: EA abonelikleri
       items:
         - name: Oluştur
-          href: programmatically-create-subscription.md
+          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: Oluşturma için erişim izni verme
-          href: grant-access-to-create-subscription.md
+          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Kaynak sağlayıcıları ve türleri
       href: resource-providers-and-types.md
     - name: Kaynak gruplarını ve kaynakları silme

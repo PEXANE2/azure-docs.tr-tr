@@ -2,13 +2,13 @@
 title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063098"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933248"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -18,7 +18,6 @@ Bu makalede, şu anda desteklenmeyen senaryolar ve sanal makineleri yedekleme il
 
 Aşağıdaki senaryolar henüz desteklenmemektedir:
 
-* Kullanılabilirlik Alanları yönetilen diskler farklı bir aboneliğe taşınamaz.
 * Standart SKU 'SU Load Balancer veya standart SKU genel IP 'si olan sanal makine ölçek kümeleri taşınamaz.
 * Planların eklendiği Market kaynaklarından oluşturulan sanal makineler abonelikler arasında taşınamaz. Sanal makinenin geçerli abonelikte sağlamasını kaldırın ve yeni abonelikte yeniden dağıtın.
 * Sanal ağdaki tüm kaynakları taşımadan, var olan bir sanal ağdaki sanal makineler yeni bir aboneliğe taşınamaz.
@@ -70,7 +69,7 @@ Sanal makineniz için [geçici silme](../../../backup/backup-azure-security-feat
 
 * Sanal makinenizin konumunu bulun.
 * Aşağıdaki adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` Örneğin, AzureBackupRG_westus2_1
-* CLı 'de şunu kullanın`az resource list -g AzureBackupRG_<location of your VM>_1`
+* CLı 'de şunu kullanın `az resource list -g AzureBackupRG_<location of your VM>_1`
 * `Microsoft.Compute/restorePointCollections`Adlandırma düzenine sahip olan türde kaynağı bulma`AzureBackup_<name of your VM that you're trying to move>_###########`
 * Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
 

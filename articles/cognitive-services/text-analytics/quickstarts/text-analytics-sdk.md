@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ba53b4a4765a2b3db0aa048a990a0a48f74682d0
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874988"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931191"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -83,7 +83,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | Dil | Kullanılabilir sürüm | 
 |----------|------------------------|
 | Ruby     | [Sürüm 2,1](ruby-sdk.md) | 
-| Başlayın       | [Sürüm 2,1](go-sdk.md) | 
+| Go       | [Sürüm 2,1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -102,5 +102,5 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Metin Analizine genel bakış](../overview.md)
 * [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Dil algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Dili algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749467"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932024"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
 
@@ -21,7 +21,7 @@ Azure Bilişsel Arama, verileri bir arama dizinine aktarmaya yönelik [iki temel
 
 Bu öğreticide, istek toplu işleme ve bir üstel geri alma yeniden deneme stratejisi kullanılarak [anında iletme modeli](search-what-is-data-import.md#pushing-data-to-an-index) kullanılarak verilerin nasıl verimli bir şekilde dizininin oluşturulduğu açıklanmaktadır. [Uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Bu makalede, verilerin dizininin oluşturulması sırasında göz önünde bulundurulması gereken uygulamanın ve faktörlerin temel yönleri açıklanmaktadır.
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Dizin oluşturma
@@ -32,7 +32,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -111,7 +111,7 @@ Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
 
 ### <a name="creating-the-index"></a>Dizin oluşturuluyor
 
-Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak için .NET SDK 'sını kullanır. Bir C# veri modeli sınıfından dizin yapısı oluşturmak için [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) sınıfından yararlanır.
+Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak için .NET SDK 'sını kullanır. Bir C# veri modeli sınıfından dizin yapısı oluşturmak için [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) sınıfından yararlanır.
 
 Veri modeli, ayrıca adres sınıfına başvurular içeren Otel Sınıfı tarafından tanımlanır. FieldBuilder, dizin için karmaşık bir veri yapısı oluşturmak üzere birden fazla sınıf tanımı aracılığıyla ayrıntıya gider. Meta veri etiketleri, her alanın, aranabilir veya sıralanabilir olup olmadığı gibi özniteliklerini tanımlamak için kullanılır.
 
@@ -162,8 +162,8 @@ Dizinlerinizin şeması, dizin oluşturma hızları üzerinde önemli bir etkiye
 
 Azure Bilişsel Arama, bir dizine tek veya birden çok belge yüklemek için aşağıdaki API 'Leri destekler:
 
-+ [Belge Ekleme, Güncelleştirme veya Silme (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 Belgelerin toplu olarak dizinlemesi, dizin oluşturma performansını önemli ölçüde iyileştirir. Bu toplu işlemler en fazla 1000 belge veya toplu işlem başına en fazla 16 MB olabilir.
 
@@ -258,14 +258,14 @@ Azure Bilişsel Arama 'in dizin oluşturma hızlarından tam olarak yararlanmak 
 
 Yukarıda bahsedilen önemli önemli noktalar, en iyi iş parçacığı sayısını etkiler. Senaryonuz için en iyi iş parçacığı sayısını öğrenmek için bu örneği değiştirebilir ve farklı iş parçacığı sayısı ile test edebilirsiniz. Bununla birlikte, eşzamanlı olarak çalışan birkaç iş parçacığı olduğu sürece, verimlilik kazanmalarının avantajlarından faydalanabilirsiniz.
 
-Arama hizmetine vurur istekleri artırdığınız için, isteğin tam olarak başarılı olmadığını belirten [http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) ile karşılaşabilirsiniz. Dizin oluşturma sırasında iki ortak HTTP durum kodu şunlardır:
+Arama hizmetine vurur istekleri artırdığınız için, isteğin tam olarak başarılı olmadığını belirten [http durum kodları](/rest/api/searchservice/http-status-codes) ile karşılaşabilirsiniz. Dizin oluşturma sırasında iki ortak HTTP durum kodu şunlardır:
 
 + **503 Hizmet kullanılamıyor** -bu hata, sistem ağır yükün altında ve isteğiniz şu anda işlenemediği anlamına gelir.
 + **207 çok durum** -bu hata, bazı belgelerin başarılı olduğu, ancak en az bir başarısız olduğu anlamına gelir.
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>Üstel geri alma yeniden deneme stratejisi uygulama
 
-Bir hata oluşursa, istekler [üstel geri alma yeniden deneme stratejisi kullanılarak yeniden](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)denenmelidir.
+Bir hata oluşursa, istekler [üstel geri alma yeniden deneme stratejisi kullanılarak yeniden](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)denenmelidir.
 
 Azure Bilişsel Arama .NET SDK, 503s ve diğer başarısız istekleri otomatik olarak yeniden dener, ancak 20 7s 'yi yeniden denemek için kendi mantığınızı uygulamanız gerekir. Yeniden deneme stratejisi uygulamak için, [Polly](https://github.com/App-vNext/Polly) gibi açık kaynaklı araçlar da kullanılabilir. 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Bu özel durumlar, dizin oluşturma işleminin yalnızca kısmen başarılı (207s) olduğunu gösterdiği için [ındexbatchexception](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) 'ın yakalanmasının önem taşımaktadır. Başarısız öğeler, `FindFailedActionsToRetry` yalnızca başarısız öğeleri içeren yeni bir toplu iş oluşturmayı kolaylaştıran yöntemi kullanılarak yeniden denenmelidir.
+Bu özel durumlar, dizin oluşturma işleminin yalnızca kısmen başarılı (207s) olduğunu gösterdiği için [ındexbatchexception](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) 'ın yakalanmasının önem taşımaktadır. Başarısız öğeler, `FindFailedActionsToRetry` yalnızca başarısız öğeleri içeren yeni bir toplu iş oluşturmayı kolaylaştıran yöntemi kullanılarak yeniden denenmelidir.
 
 Dışındaki özel durumlar `IndexBatchException` da yakalanmalıdır ve isteğin tamamen başarısız olduğunu gösterir. Bu özel durumlar, özellikle de 50. otomatik olarak yeniden denemeler yaparken .NET SDK ile daha yaygın olarak yaygındır.
 
@@ -346,7 +346,7 @@ Program program aracılığıyla çalıştırdıktan sonra veya portalda [**Aram
 
 ### <a name="programatically"></a>Program aracılığıyla
 
-Bir dizindeki belge sayısını denetlemeye yönelik iki ana seçenek vardır: [belgeleri say API 'si](https://docs.microsoft.com/rest/api/searchservice/count-documents) ve [Get Index STATISTICS API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Her iki yol da bazı ek saat gerektirebilir, bu nedenle döndürülen belge sayısı başlangıçta beklediğinizden daha düşükse uyarıda yok.
+Bir dizindeki belge sayısını denetlemeye yönelik iki ana seçenek vardır: [belgeleri say API 'si](/rest/api/searchservice/count-documents) ve [Get Index STATISTICS API](/rest/api/searchservice/get-index-statistics). Her iki yol da bazı ek saat gerektirebilir, bu nedenle döndürülen belge sayısı başlangıçta beklediğinizden daha düşükse uyarıda yok.
 
 #### <a name="count-documents"></a>Belge sayısı
 
@@ -370,7 +370,7 @@ Azure portal ' de, arama hizmeti **genel bakış** sayfasını açın ve **dizin
 
   ![Azure Bilişsel Arama dizinlerinin listesi](media/tutorial-optimize-data-indexing/portal-output.png "Azure Bilişsel Arama dizinlerinin listesi")
 
-*Belge sayısı* ve *depolama boyutu* , [Get Index STATISTICS API 'sine](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) dayanır ve güncelleştirilmesi birkaç dakika sürebilir.
+*Belge sayısı* ve *depolama boyutu* , [Get Index STATISTICS API 'sine](/rest/api/searchservice/get-index-statistics) dayanır ve güncelleştirilmesi birkaç dakika sürebilir.
 
 ## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
 

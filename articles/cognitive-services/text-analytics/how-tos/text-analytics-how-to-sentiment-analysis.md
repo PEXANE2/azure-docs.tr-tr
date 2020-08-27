@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: e7dca6f74145d1ea50c5a9bfc57b52e1cbdfcab3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869839"
+ms.locfileid: "88933027"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -40,7 +40,7 @@ Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Dah
 
 V3 'teki Yaklaşım Analizi, bir tümce ve belge düzeyinde döndürülen ve her biri için bir güven puanı bulunan yaklaşım etiketlerini metne uygular. 
 
-Etiketler `positive` , ve ' dir `negative` `neutral` . Belge düzeyinde yaklaşım `mixed` etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
+Etiketler *pozitif*, *negatif*ve *nötr*. Belge düzeyinde, *karışık* yaklaşım etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
 
 | Tümce yaklaşımı                                                                            | Döndürülen belge etiketi |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ Etiketler `positive` , ve ' dir `negative` `neutral` . Belge düzeyinde yaklaş�
 | Belgede en az bir `negative` cümle ve en az bir `positive` cümle vardır.    | `mixed`                 |
 | Belgedeki tüm tümceler `neutral` .                                                  | `neutral`               |
 
-Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her tümce içindeki güven puanları (belge değil) 1 ' e kadar bir ekler.
+Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her belge veya her tümce için, etiketlerle ilişkilendirilen tahmin edilen puanlar (pozitif, negatif ve nötr) 1 ' e kadar bir değer ekler.
 
 ### <a name="opinion-mining"></a>Görüşün madenciliği
 
@@ -90,7 +90,7 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
 
 > [!NOTE]
 > Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
@@ -103,7 +103,7 @@ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kaps
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
 
-Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örneğin:
+Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 

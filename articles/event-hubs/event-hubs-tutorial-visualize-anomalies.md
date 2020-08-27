@@ -3,12 +3,12 @@ title: Azure Event Hubs-gerçek zamanlı olaylarda veri bozuklukilerini görsell
 description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85315611"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934064"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun][] .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -308,7 +308,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    ![Veri kümesini belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Görselleştirme türü olarak **Kart** seçin. **Alanlar** bölümünde **Değer ekle**'ye tıklayıp **fraudulentuses** öğesini seçin.
+9. Görselleştirme türü olarak **Kart** seçin. **Alanlar**altında **Değer Ekle**' ye ve ardından öğesini seçin `fraudulentuses` .
 
    ![Görselleştirme türü ve alan belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
 12. **Görselleştirme Türü** olarak **Çizgi grafik** türünü seçin.
 
-13. **Eksen** bölümünde **Değer Ekle**'ye tıklayıp **windowend** değerini seçin. 
+13. **Eksen**altında **Değer Ekle**' ye tıklayın ve öğesini seçin `windowend` . 
 
-14. **Değerler** bölümünde **Değer ekle**'ye tıklayıp **fraudulentuses** değerini seçin.
+14. **Değerler**altında **Değer Ekle** ' ye tıklayın ve öğesini seçin `fraudulentuses` .
 
 15. **Görüntülenecek zaman penceresi** için son beş dakikayı seçin. **İleri**’ye tıklayın.
 
@@ -378,6 +378,6 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Azure Event Hubs hakkında daha fazla bilgi edinmek için bir sonraki makaleye geçin.
 
 > [!div class="nextstepaction"]
-> [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](get-started-dotnet-standard-send-v2.md)
+> [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](event-hubs-dotnet-standard-getstarted-send.md)
 
 [Ücretsiz hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

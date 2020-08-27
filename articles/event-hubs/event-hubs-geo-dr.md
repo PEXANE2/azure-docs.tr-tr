@@ -3,12 +3,12 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934081"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 Tüm Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı olursa, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* , herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
@@ -43,7 +43,7 @@ Bu makalede aşağıdaki terimler kullanılmaktadır:
 ## <a name="supported-namespace-pairs"></a>Desteklenen ad alanı çiftleri
 Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:  
 
-| Birincil ad alanı | İkincil ad alanı | Destekleniyor | 
+| Birincil ad alanı | İkincil ad alanı | Desteklenir | 
 | ----------------- | -------------------- | ---------- |
 | Standart | Standart | Evet | 
 | Standart | Ayrılmış | Evet | 
@@ -94,7 +94,7 @@ Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri e
 - Örnek kodu yürütmek için gereken adımlar. 
 - Geçerli birincil ad alanından gönderin ve alın. 
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
 
@@ -150,7 +150,7 @@ Uygulamanız için bir olağanüstü durum kurtarma yapılandırması oluşturur
 
 ![Özel uç noktalar ve sanal ağlar](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
 
-Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
+Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları inceleyin: 
 
 **Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
 
@@ -167,10 +167,10 @@ Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad 
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
 - Event Hubs kullanmaya başlayın
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 * [Event Hubs kullanan örnek uygulamalar](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

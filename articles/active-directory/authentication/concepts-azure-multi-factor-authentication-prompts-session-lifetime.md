@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169349"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919684"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
@@ -45,6 +45,8 @@ Kullanıcılarınıza yönelik kimlik doğrulama istemlerinin sıklığını iyi
 ### <a name="evaluate-session-lifetime-policies"></a>Oturum ömür ilkelerini değerlendir
 
 Herhangi bir oturum ömür ayarı olmadan, tarayıcı oturumunda kalıcı tanımlama bilgileri yoktur. Kullanıcı tarayıcıyı her kapattığında ve açtığında, yeniden kimlik doğrulama istemi alırlar. Office istemcilerinde, varsayılan zaman aralığı 90 günlük bir sıralı penceredir. Bu varsayılan Office yapılandırmasıyla, Kullanıcı parolasını sıfırlarsa veya 90 günden fazla kullanım dışı bir işlem yapılmışsa, kullanıcının tüm gerekli faktörlerle yeniden kimlik doğrulaması yapması gerekir (ilk ve ikinci faktör).
+
+Kullanıcı, Azure AD 'de kimliği olmayan bir cihazda birden fazla MFA istemi görebilir. Birden çok istem, her bir uygulama diğer istemci uygulamalarıyla paylaşılmayan kendi OAuth yenileme belirtecine sahip olduğunda sonuç olarak sonuçlanır. Bu senaryoda, her bir uygulama MFA ile doğrulanacak bir OAuth yenileme belirteci istediğinde MFA birden çok kez istemde bulunur.
 
 Azure AD 'de oturum ömrü için en kısıtlayıcı ilke, kullanıcının yeniden kimlik doğrulaması yapması gerekip gerekmediğini belirler. Şu senaryoyu göz önünde bulundurun:
 

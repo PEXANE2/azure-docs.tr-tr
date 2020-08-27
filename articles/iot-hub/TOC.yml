@@ -4,7 +4,7 @@
   items:
     - name: Azure IoT Hub nedir?
       href: about-iot-hub.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Telemetri gönderme
@@ -188,6 +188,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: IoT dağıtımınızın güvenliğini sağlama
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: X.509 CA sertifikalarını kullanarak koruma
       items:
         - name: X.509 CA sertifika güvenliğine genel bakış

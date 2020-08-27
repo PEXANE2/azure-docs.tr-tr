@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816414"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933536"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -384,14 +384,60 @@ Visual Studio Code ve Azure Functions Core Tools gibi araçları kullanarak bir 
 
 ## <a name="powershell-versions"></a>PowerShell sürümleri
 
-Aşağıdaki tabloda, Işlevlerin çalışma zamanının her ana sürümü tarafından desteklenen PowerShell sürümleri ve gerekli .NET sürümü gösterilmektedir:
+Aşağıdaki tabloda, Işlevlerin çalışma zamanının her ana sürümü için kullanılabilen PowerShell sürümleri ve gerekli .NET sürümü gösterilmektedir:
 
 | İşlevler sürümü | PowerShell sürümü                               | .NET sürümü  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (önerilir) | PowerShell 7 (önerilir)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 3. x (önerilir) | PowerShell 7 (önerilir)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Geçerli sürümü `$PSVersionTable` herhangi bir işlevden yazdırarak görebilirsiniz.
+
+### <a name="running-local-on-a-specific-version"></a>Belirli bir sürümde yerel çalıştırma
+
+Yerel olarak çalıştırılırken Azure Işlevleri çalışma zamanı varsayılan olarak PowerShell Core 6 ' yı kullanmaktır. Bunun yerine, yerel olarak çalışırken PowerShell 7 ' yi kullanmak için, `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` `Values` Proje kökündeki dosyadaki local.setting.js, bu ayarı diziye eklemeniz gerekir. PowerShell 7 ' de yerel olarak çalışırken, local.settings.jsdosya aşağıdaki örnekteki gibi görünür: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>PowerShell sürümünü değiştirme
+
+İşlev uygulamanızın PowerShell Core 6 ' dan PowerShell 7 ' ye yükseltebilmesi için sürüm 3. x üzerinde çalışıyor olması gerekir. Bunun nasıl yapılacağını öğrenmek için bkz. [geçerli çalışma zamanı sürümünü görüntüleme ve güncelleştirme](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
+İşlev uygulamanız tarafından kullanılan PowerShell sürümünü değiştirmek için aşağıdaki adımları kullanın. Bunu Azure portal ya da PowerShell kullanarak yapabilirsiniz.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+1. [Azure Portal](https://portal.azure.com), işlev uygulamanıza gidin.
+
+1. **Ayarlar**altında **yapılandırma**' yı seçin. **Genel ayarlar** sekmesinde **PowerShell sürümünü**bulun. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="İşlev uygulaması tarafından kullanılan PowerShell sürümünü seçin"::: 
+
+1. İstediğiniz **PowerShell Çekirdek sürümünüzü** seçin ve **Kaydet**' i seçin. Bekleyen yeniden başlatma hakkında uyarı olduğunda **devam**' ı seçin. İşlev uygulaması, seçilen PowerShell sürümünde yeniden başlatılır. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell sürümünü değiştirmek için aşağıdaki betiği çalıştırın: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+, `<SUBSCRIPTION_ID>` `<RESOURCE_GROUP>` , Ve ' yi `<FUNCTION_APP>` Azure aboneliğinizin kimliğiyle, kaynak grubunuzun ve işlev uygulamanızın adıyla değiştirin.  Ayrıca, `<VERSION>` ya da ile `~6` değiştirin `~7` . `powerShellVersion`Döndürülen karma tablosunda ayarının güncelleştirilmiş değerini doğrulayabilirsiniz `Properties` . 
+
+---
+
+İşlev uygulaması, yapılandırma sırasında değişiklik yapıldıktan sonra yeniden başlatılır.
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 
