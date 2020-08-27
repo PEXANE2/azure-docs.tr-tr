@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768495"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962460"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure Uygulama Hizmeti için En İyi Uygulamalar
 Bu makalede [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)kullanımı için en iyi yöntemler özetlenmektedir. 
@@ -67,7 +67,7 @@ Node.js uygulamalar için Azure App Service varsayılan yapılandırma, en yayg�
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](https://docs.microsoft.com/azure/app-service/overview-diagnostics) ' yı ziyaret ederek kaynağına özgü eyleme dönüştürülebilir en iyi yöntemleri bulabilirsiniz.
+En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](./overview-diagnostics.md) ' yı ziyaret ederek kaynağına özgü eyleme dönüştürülebilir en iyi yöntemleri bulabilirsiniz.
 
 - [Azure Portal](https://portal.azure.com)Web uygulamanıza gidin.
 - App Service Tanılama ' yı açan sol gezinmede **sorunları Tanıla ve çöz** ' e tıklayın.

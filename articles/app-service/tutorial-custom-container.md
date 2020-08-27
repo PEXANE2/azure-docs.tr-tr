@@ -7,22 +7,22 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958499"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows ortamı, işletim sistemini yönetimsel erişime, yazılım yüklemesine ve genel derleme önbelleğine ve benzeri uygulamalara karşı kilitler (bkz. [Azure App Service'teki işletim sistemi işlevleri](operating-system-functionality.md)). Ancak, App Service (Önizleme) içinde özel bir Windows kapsayıcısı kullanmak uygulamanızın ihtiyaç duyduğu işletim sistemi değişikliklerini yapmanızı sağlar, bu sayede özel işletim sistemi ve yazılım yapılandırması gerektiren şirket içi uygulamayı kolayca geçirebilirsiniz. Bu öğreticide Windows yazı tipi kitaplığında yüklü olan özel yazı tiplerini kullanan bir ASP.NET uygulamasını App Service'e geçirme adımları gösterilmektedir. Visual Studio'dan [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)'ye özel olarak yapılandırılmış bir Windows görüntüsü dağıtıp ardından bunu App Service'te çalıştıracaksınız.
+[Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows ortamı, işletim sistemini yönetimsel erişime, yazılım yüklemesine ve genel derleme önbelleğine ve benzeri uygulamalara karşı kilitler (bkz. [Azure App Service'teki işletim sistemi işlevleri](operating-system-functionality.md)). Ancak, App Service (Önizleme) içinde özel bir Windows kapsayıcısı kullanmak uygulamanızın ihtiyaç duyduğu işletim sistemi değişikliklerini yapmanızı sağlar, bu sayede özel işletim sistemi ve yazılım yapılandırması gerektiren şirket içi uygulamayı kolayca geçirebilirsiniz. Bu öğreticide Windows yazı tipi kitaplığında yüklü olan özel yazı tiplerini kullanan bir ASP.NET uygulamasını App Service'e geçirme adımları gösterilmektedir. Visual Studio'dan [Azure Container Registry](../container-registry/index.yml)'ye özel olarak yapılandırılmış bir Windows görüntüsü dağıtıp ardından bunu App Service'te çalıştıracaksınız.
 
 ![Bir Windows kapsayıcısında çalışan Web uygulamasını gösterir.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -92,7 +92,7 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 ## <a name="publish-to-azure-container-registry"></a>Azure Container Registry'de yayımlama
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/), kapsayıcı dağıtımlarınızın görüntülerini depolayabilir. App Service'i Azure Container Registry'de barındırılan görüntüleri kullanacak şekilde yapılandırabilirsiniz.
+[Azure Container Registry](../container-registry/index.yml), kapsayıcı dağıtımlarınızın görüntülerini depolayabilir. App Service'i Azure Container Registry'de barındırılan görüntüleri kullanacak şekilde yapılandırabilirsiniz.
 
 ### <a name="open-publish-wizard"></a>Yayımlama sihirbazını açma
 
@@ -110,7 +110,7 @@ Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registr
 
 **Yeni Azure Container Registry oluştur** iletişim kutusunda **Hesap ekle**’yi seçin ve Azure aboneliğinizde oturum açın. Oturumunuz zaten açıksa, açılan menüden istediğiniz aboneliği içeren hesabı seçin.
 
-![Azure’da oturum açma](./media/tutorial-custom-container/add-an-account.png)
+![Azure'da oturum açma](./media/tutorial-custom-container/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>Kayıt defterini yapılandırma
 
@@ -439,7 +439,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
     
     Bu ortam değişkeni hakkında daha fazla bilgi için örneğin [GitHub deposundaki Benioku dosyasına](https://github.com/Azure-Samples/docker-django-webapp-linux)bakın.
 
-1. Şu komutu kullanarak Web uygulaması için [yönetilen kimliği](/azure/app-service/overview-managed-identity) etkinleştirin [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) :
+1. Şu komutu kullanarak Web uygulaması için [yönetilen kimliği](./overview-managed-identity.md) etkinleştirin [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) :
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ Azure App Service bir kapsayıcı dağıtmak için, önce App Service üzerinde 
     - `<registry-name>` kapsayıcı kayıt defterinizin adıyla
     - `<subscription-id>`komuttan alınan abonelik KIMLIĞIYLE `az account show`
 
-Bu izinler hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi nedir](/azure/role-based-access-control/overview) ve 
+Bu izinler hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi nedir](../role-based-access-control/overview.md) ve 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>Görüntüyü dağıtın ve uygulamayı test edin
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207533"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962188"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -46,12 +46,12 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 
 **Uygulama günlüğü (dosya sistemi)** veya **uygulama günlüğü (blob)** ya da her ikisi için **Açık** seçeneğini belirleyin. 
 
-**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde ( `InstanceId` ), iş parçacığı kimliği ( `Tid` ) ve daha ayrıntılı bir zaman damgasına () ait kaynak sanal makine örneğinin kimliği gibi ek bilgiler içerir [`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks) .
+**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde ( `InstanceId` ), iş parçacığı kimliği ( `Tid` ) ve daha ayrıntılı bir zaman damgasına () ait kaynak sanal makine örneğinin kimliği gibi ek bilgiler içerir [`EventTickCount`](/dotnet/api/system.datetime.ticks) .
 
 > [!NOTE]
 > Şu anda yalnızca .NET uygulama günlükleri blob depolamaya yazılabilir. Java, PHP, Node.js, Python uygulama günlükleri yalnızca App Service dosya sisteminde depolanabilir (günlükleri dış depolamaya yazmak için kod değişiklikleri olmadan).
 >
-> Ayrıca, [depolama hesabınızın erişim anahtarlarını](../storage/common/storage-create-storage-account.md)yeniden oluşturursanız, ilgili günlük yapılandırmasını, güncelleştirilmiş erişim anahtarlarını kullanacak şekilde sıfırlamanız gerekir. Bunu yapmak için:
+> Ayrıca, [depolama hesabınızın erişim anahtarlarını](../storage/common/storage-account-create.md)yeniden oluşturursanız, ilgili günlük yapılandırmasını, güncelleştirilmiş erişim anahtarlarını kullanacak şekilde sıfırlamanız gerekir. Bunu yapmak için:
 >
 > 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı**olarak ayarlayın. Ayarınızı kaydedin.
 > 2. Depolama hesabı blobuna yeniden günlük kaydını etkinleştirin. Ayarınızı kaydedin.
@@ -62,9 +62,9 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | Yok |
+|**Devre dışı** | Hiçbiri |
 |**Hata** | Hata, kritik |
-|**Uyarı** | Uyarı, hata, kritik|
+|**Warning** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -89,7 +89,7 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 **Bekletme süresi (gün)** alanında günlüklerin saklanacağı gün sayısını ayarlayın.
 
 > [!NOTE]
-> [Depolama hesabınızın erişim anahtarlarını](../storage/common/storage-create-storage-account.md)yeniden oluşturursanız, güncelleştirilmiş anahtarları kullanmak için ilgili günlük yapılandırmasını sıfırlamanız gerekir. Bunu yapmak için:
+> [Depolama hesabınızın erişim anahtarlarını](../storage/common/storage-account-create.md)yeniden oluşturursanız, güncelleştirilmiş anahtarları kullanmak için ilgili günlük yapılandırmasını sıfırlamanız gerekir. Bunu yapmak için:
 >
 > 1. **Yapılandır** sekmesinde ilgili günlük özelliğini **kapalı**olarak ayarlayın. Ayarınızı kaydedin.
 > 2. Depolama hesabı blobuna yeniden günlük kaydını etkinleştirin. Ayarınızı kaydedin.
@@ -108,15 +108,15 @@ Her iki günlük türü de App Service dosya sisteminde depolanır. 50 ' e kadar
 
 ## <a name="add-log-messages-in-code"></a>Koda günlük iletileri ekleme
 
-Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örnek:
+Uygulama kodunuzda günlük iletilerini uygulama günlüklerine göndermek için her zamanki günlük tesislerini kullanırsınız. Örneğin:
 
-- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örnek:
+- ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örneğin:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Varsayılan olarak ASP.NET Core, [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) günlük sağlayıcısını kullanır. Daha fazla bilgi için bkz. [Azure 'da günlüğe kaydetme ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/).
+- Varsayılan olarak ASP.NET Core, [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) günlük sağlayıcısını kullanır. Daha fazla bilgi için bkz. [Azure 'da günlüğe kaydetme ASP.NET Core](/aspnet/core/fundamentals/logging/).
 
 ## <a name="stream-logs"></a>Akış günlükleri
 
@@ -138,12 +138,12 @@ Günlükleri gerçek zamanlı olarak akışa almadan önce istediğiniz günlük
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örnek:
+Hatalar gibi belirli olayları filtrelemek için **--Filter** parametresini kullanın. Örneğin:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örnek:
+HTTP gibi belirli günlük türlerini filtrelemek için **--Path** parametresini kullanın. Örneğin:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>Yerel terminalde
 
-Günlükleri yerel konsolda akışa almak için [Azure CLI 'yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli) [hesabınızda oturum açın](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Oturum açtıktan sonra, [Cloud Shell için yönergeler](#in-cloud-shell) izlenir
+Günlükleri yerel konsolda akışa almak için [Azure CLI 'yı yükleyip](/cli/azure/install-azure-cli) [hesabınızda oturum açın](/cli/azure/authenticate-azure-cli). Oturum açtıktan sonra, [Cloud Shell için yönergeler](#in-cloud-shell) izlenir
 
 ## <a name="access-log-files"></a>Günlük dosyalarına erişin
 

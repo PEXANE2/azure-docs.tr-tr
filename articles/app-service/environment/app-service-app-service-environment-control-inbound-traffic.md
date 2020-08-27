@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5efca8ab51c789a619e48b1ae96a53494ae411ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831174"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962069"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service Ortamı gelen trafiği denetleme
 ## <a name="overview"></a>Genel Bakış
@@ -31,8 +31,8 @@ Ağ güvenlik grubuyla gelen ağ trafiğini kilitleyerek, bir App Service Ortam�
 
 Aşağıdaki liste, bir App Service Ortamı tarafından kullanılan bağlantı noktalarını içerir. Tersi belirtilmedikçe, tüm bağlantı noktaları **TCP**ile yapılır:
 
-* 454: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
-* 455: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
+* 454: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan  **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
+* 455: Azure altyapısı tarafından TLS aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan  **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
 * 80: bir App Service Ortamı App Service planlarında çalışan uygulamalara gelen HTTP trafiği için varsayılan bağlantı noktası.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
 * 443: bir App Service Ortamı App Service planlarında çalışan uygulamalara gelen TLS trafiği için varsayılan bağlantı noktası.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
 * 21: FTP için denetim kanalı.  Bu bağlantı noktası, FTP kullanılmıyorsa güvenli bir şekilde engellenebilir.  ILB özellikli bir AO 'da, bu bağlantı noktası bir AO için ıLB adresine bağlanabilir.
@@ -86,7 +86,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 ```
 
-(**Note:** önizleme döneminde veri kanalı bağlantı noktası aralığı değişebilir.)
+(**Note:**  önizleme döneminde veri kanalı bağlantı noktası aralığı değişebilir.)
 
 Visual Studio ile uzaktan hata ayıklama kullanılıyorsa aşağıdaki kurallar nasıl erişim izni verildiğini gösterir.  Her sürüm uzaktan hata ayıklama için farklı bir bağlantı noktası kullandığından, Visual Studio 'nun desteklenen her sürümü için ayrı bir kural vardır.  FTP erişiminde olduğu gibi, uzaktan hata ayıklama trafiği geleneksel bir WAF veya proxy cihazından düzgün şekilde akamayabilir.  *Sourceaddresspredüzeltmesini* , Visual Studio çalıştıran GELIŞTIRICI makinelerinin IP adresi aralığına ayarlanabilir.
 
@@ -130,12 +130,11 @@ Daha fazla bilgi için bkz. [App Service ortamı arka uç kaynaklarına güvenli
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080618"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962528"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environmen
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
@@ -57,7 +57,7 @@ Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktad�
     Ao 'niz bir Iç VIP kullanıyorsa, söz konusu Ao 'nun içindeki bir uygulamanın URL 'SI: [*SiteName*]. [*as oluşturma sırasında belirtilen alt etki alanı*]   
     AIN oluşturma sırasında ASP 'nizi seçtikten sonra, alt etki alanı güncelleştirmesini aşağıda **adı** görürsünüz
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>App Service planı oluşturma
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service planı oluşturma
 Bir App Service Ortamı App Service planı oluşturduğunuzda, bir AO 'da paylaşılan çalışan olmadığı için çalışan seçenekleriniz farklı olacaktır.  Kullanmanız gereken çalışanlar, yönetici tarafından ATıCı 'e ayrıldıklardır.  Bu, yeni bir plan oluşturmak için, Ao çalışan havuzunuza zaten o çalışan havuzundaki tüm planlarınızda bulunan toplam örnek sayısından daha fazla çalışan olması gerektiğini belirtir.  Açi çalışan havuzunuzdaki planınızı oluşturmak için yeterli çalışanınız yoksa, bunları eklemek için Ao yöneticinizle birlikte çalışmanız gerekir.
 
 Bir App Service Ortamı tarafından barındırılan App Service planlarındaki başka bir farklılık, fiyatlandırma seçiminin olmamasıdır.  Bir App Service Ortamı sahip olduğunuzda, sistem tarafından kullanılan işlem kaynakları için ödeme yaparsınız ve bu ortamdaki planlar için ücret ekleme ücreti yoktur.  Genellikle App Service bir plan oluşturduğunuzda, faturalandırmanızı belirleyen bir fiyatlandırma planı seçersiniz.  App Service Ortamı, aslında içerik oluşturabileceğiniz özel bir konumdur.  Ortamınız için ücret ödeyin ve içeriğinizi barındırmak için ödeme yaparsınız.
@@ -105,4 +105,4 @@ Web uygulamanızı oluşturduktan sonra plan App Service, ölçeği ölçeklendi
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/?view=azps-3.8.0

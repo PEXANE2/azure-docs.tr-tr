@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220729"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958737"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
 
@@ -22,7 +22,7 @@ Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Serv
 
 Bu öğreticiyi tamamlamak için:
 
-* [Bir App Service uygulaması oluşturun](/azure/app-service/) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
+* [Bir App Service uygulaması oluşturun](./index.yml) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
 * [Aboneliğinizdeki harcama limitini kaldırın](../cost-management-billing/manage/spending-limit.md#remove). Ücretsiz abonelik kredilerine sahip App Service etki alanı satın alamaz.
 
 ## <a name="prepare-the-app"></a>Uygulamayı hazırlama
@@ -108,8 +108,8 @@ Ardından, etki alanınız için istenen seçenekleri seçin. Açıklamalar içi
 
 | Ayar | Önerilen Değer | Açıklama |
 |-|-|-|
-|Gizlilik koruması | Etkinleştirme | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
-| Varsayılan konak adlarını ata | **www** ve**\@** | İsterseniz istenen konak adı bağlamalarını seçin. Etki alanı satın alma işlemi tamamlandığında, uygulamanıza seçili ana bilgisayar adları üzerinden erişilebilir. Uygulama [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)arkasındaysa, Traffic Manager bir kaydı desteklemediği için kök etki alanını (@) atama seçeneğini görmezsiniz. Etki alanı satın alma işlemi tamamlandıktan sonra ana bilgisayar adı atamaları üzerinde değişiklik yapabilirsiniz. |
+|Gizlilik koruması | Etkinleştir | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
+| Varsayılan konak adlarını ata | **www** ve **\@** | İsterseniz istenen konak adı bağlamalarını seçin. Etki alanı satın alma işlemi tamamlandığında, uygulamanıza seçili ana bilgisayar adları üzerinden erişilebilir. Uygulama [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)arkasındaysa, Traffic Manager bir kaydı desteklemediği için kök etki alanını (@) atama seçeneğini görmezsiniz. Etki alanı satın alma işlemi tamamlandıktan sonra ana bilgisayar adı atamaları üzerinde değişiklik yapabilirsiniz. |
 
 ### <a name="accept-terms-and-purchase"></a>Koşulları kabul edin ve satın alın
 
@@ -168,7 +168,7 @@ Satın alınan etki alanının **App Service etki alanları** bölümünde liste
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını Yapılandır
-Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örnek:
+Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örneğin:
 
 - kontoso.net
 - www \. kontoso.net

@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831888"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962052"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Sertifikalar ve App Service Ortamı 
 
-App Service Ortamı (ASE), Azure sanal ağınız (VNet) içinde çalışan Azure App Service bir dağıtımdır. İnternet erişimli bir uygulama uç noktası veya VNet 'iniz içindeki bir uygulama uç noktası ile dağıtılabilir. Ao 'yu internet 'ten erişilebilen bir uç noktayla dağıtırsanız, bu dağıtıma dış Ao denir. ASE 'yi VNet 'iniz içindeki bir uç noktayla dağıtırsanız, bu dağıtıma ıLB ASE denir. ILB ATıCı hakkında daha fazla bilgiyi [oluşturma ve kullanma](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) hakkında bilgi edinebilirsiniz.
+App Service Ortamı (ASE), Azure sanal ağınız (VNet) içinde çalışan Azure App Service bir dağıtımdır. İnternet erişimli bir uygulama uç noktası veya VNet 'iniz içindeki bir uygulama uç noktası ile dağıtılabilir. Ao 'yu internet 'ten erişilebilen bir uç noktayla dağıtırsanız, bu dağıtıma dış Ao denir. ASE 'yi VNet 'iniz içindeki bir uç noktayla dağıtırsanız, bu dağıtıma ıLB ASE denir. ILB ATıCı hakkında daha fazla bilgiyi [oluşturma ve kullanma](./create-ilb-ase.md) hakkında bilgi edinebilirsiniz.
 
 ATıCı, tek bir kiracı sistemidir. Tek bir kiracı olduğundan, yalnızca çok kiracılı App Service kullanılamayan bir AO ile kullanılabilen bazı özellikler vardır. 
 
@@ -75,7 +75,7 @@ Uygulamanızı kendi AŞIRINIZDEKI uygulamanıza yüklemek için:
 
 1. Sertifikanız için bir *. cer* dosyası oluşturun. 
 2. Azure portal sertifikaya ihtiyacı olan uygulamaya git
-3. Uygulamadaki SSL ayarları ' na gidin. Sertifikayı Karşıya Yükle’ye tıklayın. Ortak seçeneğini belirleyin. Yerel makine ' yi seçin. Bir ad sağlayın. *. Cer* dosyanıza gözatıp seçin. Karşıya yükle ' yi seçin. 
+3. Uygulamadaki SSL ayarları ' na gidin. Sertifikayı Karşıya Yükle’ye tıklayın. Genel’i seçin. Yerel makine ' yi seçin. Bir ad sağlayın. *. Cer* dosyanıza gözatıp seçin. Karşıya yükle ' yi seçin. 
 4. Parmak izini kopyalayın.
 5. Uygulama ayarları ' na gidin. Değer olarak parmak izine sahip WEBSITE_LOAD_ROOT_CERTIFICATES bir uygulama ayarı oluşturun. Birden çok sertifikanız varsa, bunları virgülle ayırarak aynı ayara ve şu şekilde boşluk olmaksızın koyabilirsiniz 
 

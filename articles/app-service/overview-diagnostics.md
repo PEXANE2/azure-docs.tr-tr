@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869936"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962817"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service tanılamada genel bakış
 
@@ -20,7 +20,7 @@ Bir Web uygulaması çalıştırırken, 500 hatalardan, kullanıcılarınızın 
 
 Son 24 saat içinde uygulamanızla ilgili sorun yaşadığınızda bu deneyim en çok yararlı olsa da, tüm tanılama grafikleri her zaman analiz etmeniz için kullanılabilir.
 
-App Service tanılama yalnızca Windows üzerinde uygulamanız değil, [Linux/kapsayıcılar](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [App Service ortamı](https://docs.microsoft.com/azure/app-service/environment/intro)ve [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview)üzerinde de uygulamalar için çalışır.
+App Service tanılama yalnızca Windows üzerinde uygulamanız değil, [Linux/kapsayıcılar](./overview.md#app-service-on-linux), [App Service ortamı](./environment/intro.md)ve [Azure işlevleri](../azure-functions/functions-overview.md)üzerinde de uygulamalar için çalışır.
 
 ## <a name="open-app-service-diagnostics"></a>App Service tanılamayı aç
 
@@ -71,7 +71,7 @@ Sistem durumu denetiminde dört farklı grafik vardır.
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>Uygulama kodu sorunlarını araştır (yalnızca Windows uygulaması için)
 
-Birçok uygulama sorunu uygulama kodunuzda sorunlarla ilişkili olduğundan, App Service tanılama, seçili kesinti ile ilişkilendirmek üzere özel durumları ve bağımlılık sorunlarını vurgulamak için [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ile tümleşir. Application Insights ayrı olarak etkinleştirilmelidir.
+Birçok uygulama sorunu uygulama kodunuzda sorunlarla ilişkili olduğundan, App Service tanılama, seçili kesinti ile ilişkilendirmek üzere özel durumları ve bağımlılık sorunlarını vurgulamak için [Application Insights](../azure-monitor/app/app-insights-overview.md) ile tümleşir. Application Insights ayrı olarak etkinleştirilmelidir.
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 

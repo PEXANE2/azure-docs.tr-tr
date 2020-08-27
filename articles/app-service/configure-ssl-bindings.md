@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078640"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962647"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
-Bu makalede, bir sertifika bağlaması oluşturarak [App Service uygulamanızda](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızda](https://docs.microsoft.com/azure/azure-functions/) [özel etki alanının](app-service-web-tutorial-custom-domain.md) güvenliğini sağlama işlemi gösterilmektedir. İşiniz bittiğinde, `https://` özel DNS adınızın uç noktasında App Service uygulamanıza erişebilirsiniz (örneğin, `https://www.contoso.com` ). 
+Bu makalede, bir sertifika bağlaması oluşturarak [App Service uygulamanızda](./index.yml) veya [işlev uygulamanızda](../azure-functions/index.yml) [özel etki alanının](app-service-web-tutorial-custom-domain.md) güvenliğini sağlama işlemi gösterilmektedir. İşiniz bittiğinde, `https://` özel DNS adınızın uç noktasında App Service uygulamanıza erişebilirsiniz (örneğin, `https://www.contoso.com` ). 
 
 ![Özel TLS/SSL sertifikasıyla Web uygulaması](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -33,11 +33,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * TLS 1.1/1.2 zorlama
 > * TLS yönetimini betiklerle otomatikleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
-- [App Service uygulaması oluşturma](/azure/app-service/)
+- [App Service uygulaması oluşturma](./index.yml)
 - [Uygulamanıza bir etki alanı adı eşleyin](app-service-web-tutorial-custom-domain.md) veya [Azure 'da satın alıp yapılandırın](manage-custom-dns-buy-domain.md)
 - [Uygulamanıza özel bir sertifika ekleyin](configure-ssl-certificate.md)
 
@@ -133,7 +133,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 ![HTTPS'yi zorunlu tutma](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -168,4 +168,4 @@ App Service, ağ yükü dengeleyicilerde [TLS sonlandırması](https://wikipedia
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 * [Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service](configure-ssl-certificate-in-code.md)
-* [SSS: sertifikalar App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [SSS: sertifikalar App Service](./faq-configuration-and-management.md)

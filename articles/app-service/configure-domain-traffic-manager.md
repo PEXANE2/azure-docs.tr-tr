@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610250"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962885"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager tümleştirmeyle Azure App Service bir özel etki alanı adı yapılandırma
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name.md).
+> Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-[Azure App Service](overview.md)trafiğini dengelemek için [Azure Traffic Manager](/azure/traffic-manager/) kullandığınızda App Service uygulamasına ** \<traffic-manager-endpoint> . trafficmanager.net**kullanılarak erişilebilir. \.Kullanıcılarınız için daha tanınabilir bir etki alanı adı sağlamak üzere App Service uygulamasına sahip www contoso.com gibi özel bir etki alanı adı atayabilirsiniz.
+[Azure App Service](overview.md)trafiğini dengelemek için [Azure Traffic Manager](../traffic-manager/index.yml) kullandığınızda App Service uygulamasına ** \<traffic-manager-endpoint> . trafficmanager.net**kullanılarak erişilebilir. \.Kullanıcılarınız için daha tanınabilir bir etki alanı adı sağlamak üzere App Service uygulamasına sahip www contoso.com gibi özel bir etki alanı adı atayabilirsiniz.
 
 Bu makalede, [Traffic Manager](../traffic-manager/traffic-manager-overview.md)ile tümleştirilmiş App Service bir uygulamayla özel bir etki alanı adının nasıl yapılandırılacağı gösterilir.
 
@@ -51,11 +51,11 @@ Uygulamanın geçerli katmanı mavi kenarlıkla vurgulanmıştır. Uygulamanın 
 
 Uygulamanızı ölçeklendirmeniz gerekiyorsa, **Üretim** kategorisindeki fiyatlandırma katmanlarından birini seçin. Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**'ya tıklayın.
+**Uygula**’ya tıklayın.
 
 ## <a name="create-traffic-manager-endpoint"></a>Traffic Manager uç noktası oluşturma
 
-[Uç nokta ekleme veya silme](../traffic-manager/traffic-manager-endpoints.md)bölümündeki adımları izleyerek, App Service uygulamanızı Traffic Manager profilinize bir uç nokta olarak ekleyin.
+[Uç nokta ekleme veya silme](../traffic-manager/traffic-manager-manage-endpoints.md)bölümündeki adımları izleyerek, App Service uygulamanızı Traffic Manager profilinize bir uç nokta olarak ekleyin.
 
 App Service uygulamanız desteklenen bir fiyatlandırma katmanındaysa, uç noktayı eklediğinizde kullanılabilir App Service hedefleri listesinde görünür. Uygulamanız listede yoksa [uygulamanızın fiyatlandırma katmanını doğrulayın](#prepare-the-app).
 

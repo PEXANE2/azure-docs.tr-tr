@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077484"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961899"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Hata ayıklama konsolu sitesine gidin`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Hata ayıklama konsolu sitesine gidin `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Sitenize/Wwwroot dizinine gidin. Aşağıdaki örnekte gösterildiği gibi bir komut istemi görürsünüz:
 
@@ -267,15 +267,15 @@ Win32 hata kodunu görmek için uygulamanızın FREB 'sini etkinleştirin (perfo
 | 503 |1002 |Gerçek neden için Win32 hata kodunu denetle – Istek bir node.exe dağıtılamadı. |
 | 503 |1003 |Adlandırılmış kanal çok meşgul – node.exe aşırı CPU tükettiğini doğrulayın |
 
-NODE.exe adlı bir ayar vardır `NODE_PENDING_PIPE_INSTANCES` . Azure App Service, bu değer 5000 olarak ayarlanır. node.exe, adlandırılmış kanalda her seferinde 5000 isteği kabul edebileceği anlamına gelir. Bu değer, Azure App Service üzerinde çalışan düğüm uygulamalarının çoğu için yeterince iyi olmalıdır. Azure App Service için yüksek değerden 503,1003 ' i görmemelisiniz`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe adlı bir ayar vardır `NODE_PENDING_PIPE_INSTANCES` . Azure App Service, bu değer 5000 olarak ayarlanır. node.exe, adlandırılmış kanalda her seferinde 5000 isteği kabul edebileceği anlamına gelir. Bu değer, Azure App Service üzerinde çalışan düğüm uygulamalarının çoğu için yeterince iyi olmalıdır. Azure App Service için yüksek değerden 503,1003 ' i görmemelisiniz `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 Azure App Service üzerinde node.js uygulamalar hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
 * [Azure App Service’te Node.js web uygulamalarını kullanmaya başlama](quickstart-nodejs.md)
-* [Azure App Service’teki bir Node.js web uygulamasına hata ayıklama](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Azure App Service’teki bir Node.js web uygulamasına hata ayıklama](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Azure uygulamalarıyla Node.js Modüllerini kullanma](../nodejs-use-node-modules-azure-apps.md)
-* [Azure Uygulama Hizmeti Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure Uygulama Hizmeti Web Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js Geliştirici Merkezi](../nodejs-use-node-modules-azure-apps.md)
 * [Süper Gizli Kudu Hata Ayıklama Konsolunu keşfetme](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

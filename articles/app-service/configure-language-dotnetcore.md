@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211911"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961678"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET Core uygulaması yapılandırma
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-ASP.NET Core projeniz için proje dosyasında hedef Framework 'ü ayarlayın. Daha fazla bilgi için bkz. .NET Core belgelerinde [kullanılacak .NET Core sürümünü seçme](https://docs.microsoft.com/dotnet/core/versions/selection) .
+ASP.NET Core projeniz için proje dosyasında hedef Framework 'ü ayarlayın. Daha fazla bilgi için bkz. .NET Core belgelerinde [kullanılacak .NET Core sürümünü seçme](/dotnet/core/versions/selection) .
 
 ::: zone-end
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 App Service ve *appsettings.jsüzerinde*aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer * üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
 
 > [!NOTE]
-> *appsettings.jsüzerindeki* [Hiyerarşik yapılandırma verilerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` .NET Core için standart olan sınırlayıcı kullanılarak erişildiğini unutmayın. App Service belirli bir hiyerarşik yapılandırma ayarını geçersiz kılmak için, uygulama ayarı adını anahtarda aynı ayrılmış biçimle ayarlayın. [Cloud Shell](https://shell.azure.com)aşağıdaki örneği çalıştırabilirsiniz:
+> *appsettings.jsüzerindeki* [Hiyerarşik yapılandırma verilerine](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` .NET Core için standart olan sınırlayıcı kullanılarak erişildiğini unutmayın. App Service belirli bir hiyerarşik yapılandırma ayarını geçersiz kılmak için, uygulama ayarı adını anahtarda aynı ayrılmış biçimle ayarlayın. [Cloud Shell](https://shell.azure.com)aşağıdaki örneği çalıştırabilirsiniz:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-ASP.NET Core, [App Service için yerleşik bir günlük oluşturma sağlayıcısı](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)sağlar. Projenizin *program.cs* içinde, `ConfigureLogging` Aşağıdaki örnekte gösterildiği gibi, sağlayıcıyı uzantı yöntemi aracılığıyla uygulamanıza ekleyin:
+ASP.NET Core, [App Service için yerleşik bir günlük oluşturma sağlayıcısı](/aspnet/core/fundamentals/logging/#azure-app-service)sağlar. Projenizin *program.cs* içinde, `ConfigureLogging` Aşağıdaki örnekte gösterildiği gibi, sağlayıcıyı uzantı yöntemi aracılığıyla uygulamanıza ekleyin:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -159,11 +159,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-Daha sonra [Standart .NET Core düzeniyle](https://docs.microsoft.com/aspnet/core/fundamentals/logging)günlükleri yapılandırabilir ve oluşturabilirsiniz.
+Daha sonra [Standart .NET Core düzeniyle](/aspnet/core/fundamentals/logging)günlükleri yapılandırabilir ve oluşturabilirsiniz.
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-App Service ASP.NET Core uygulamalar hakkında sorun giderme hakkında daha fazla bilgi için bkz. [ASP.NET Core Azure App Service ve IIS 'de sorun giderme](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)
+App Service ASP.NET Core uygulamalar hakkında sorun giderme hakkında daha fazla bilgi için bkz. [ASP.NET Core Azure App Service ve IIS 'de sorun giderme](/aspnet/core/test/troubleshoot-azure-iis)
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
@@ -177,9 +177,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini bilmeleri gerekiyorsa, Iletilen üstbilgiler ara yazılımını *Startup.cs*içinde yapılandırın:
 
-- İçindeki ve üst bilgilerini iletmek için, yazılım yazılımını [Forwardedheadersoptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın `X-Forwarded-For` `X-Forwarded-Proto` `Startup.ConfigureServices` .
+- İçindeki ve üst bilgilerini iletmek için, yazılım yazılımını [Forwardedheadersoptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın `X-Forwarded-For` `X-Forwarded-Proto` `Startup.ConfigureServices` .
 - Bilinen ağlara özel IP adresi aralıkları ekleyin, böylece ara yazılım App Service yük dengeleyiciye güvenebilirler.
-- Diğer ara yazılım çağrılmadan önce içinde [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın `Startup.Configure` .
+- Diğer ara yazılım çağrılmadan önce içinde [Useforwardedheaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın `Startup.Configure` .
 
 Üç öğeyi birlikte koymak, kodunuz aşağıdaki örneğe benzer şekilde görünür:
 
@@ -208,7 +208,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çalışacak ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çalışacak ASP.NET Core yapılandırma](/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ::: zone pivot="platform-linux"
 
@@ -231,4 +231,3 @@ Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çal�
 > [App Service Linux SSS](faq-app-service-linux.md)
 
 ::: zone-end
-

@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081596"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962698"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma
 
 Bu hızlı başlangıçta, Azure SQL veritabanı 'nda tek bir veritabanı oluşturmak için Azure portal, bir PowerShell betiği veya bir Azure CLı betiği kullanırsınız. Daha sonra Azure portal **sorgu düzenleyicisini** kullanarak veritabanını sorgulayın.
 
-[Tek bir veritabanı](single-database-overview.md) , Azure SQL veritabanı için en hızlı ve en basit seçenektir. Belirli bir Azure bölgesindeki bir [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içinde olan bir [sunucu](logical-servers.md)içinde tek bir veritabanını yönetirsiniz. Bu hızlı başlangıçta yeni veritabanı için yeni bir kaynak grubu ve sunucu oluşturacaksınız.
+[Tek bir veritabanı](single-database-overview.md) , Azure SQL veritabanı için en hızlı ve en basit seçenektir. Belirli bir Azure bölgesindeki bir [Azure Kaynak grubu](../../azure-resource-manager/management/manage-resource-groups-portal.md) içinde olan bir [sunucu](logical-servers.md)içinde tek bir veritabanını yönetirsiniz. Bu hızlı başlangıçta yeni veritabanı için yeni bir kaynak grubu ve sunucu oluşturacaksınız.
 
 *Sağlanan* veya *sunucusuz* işlem katmanında tek bir veritabanı oluşturabilirsiniz. Sağlanan bir veritabanı, CPU ve bellek dahil olmak üzere sabit bir işlem kaynakları miktarına önceden ayrılır ve iki [satın alma modelinden](purchasing-models.md)birini kullanır. Bu hızlı başlangıç, [sanal çekirdek tabanlı](service-tiers-vcore.md) satın alma modeli kullanılarak sağlanan bir veritabanı oluşturur, ancak [DTU tabanlı](service-tiers-dtu.md) bir model de seçebilirsiniz.
 

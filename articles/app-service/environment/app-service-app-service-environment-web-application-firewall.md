@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85833190"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961848"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
 ## <a name="overview"></a>Genel Bakış
 
-Web uygulaması güvenlik duvarları (WAF), SQL eklemelerini, Siteler Arası Betik Kullanmayı, kötü amaçlı yazılım yüklemelerini ve uygulama DDoS ve diğer saldırıları engellemek üzere gelen web trafiğini denetleyerek web uygulamalarınızın güvenliğini sağlamaya yardımcı olur. Ayrıca, Veri Kaybı Önleme (DLP) için arka uç web sunucularından gelen yanıtları denetler. App Service Ortamlarının sağladığı yalıtım ve ek ölçeklendirme ile bir araya geldiğinde bu özellik, kötü amaçlı isteklere ve yüksek hacimli trafiğe dayanıklı olması gereken iş açısından kritik web uygulamalarını barındırmak için ideal bir ortam sağlar. Azure, [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) ile bir WAF özelliği sağlar.  App Service Ortamınızı bir Application Gateway ile tümleştirme hakkında bilgi almak için [ILB ASE’nizi bir Application Gateway ile tümleştirme](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) belgesine bakın.
+Web uygulaması güvenlik duvarları (WAF), SQL eklemelerini, Siteler Arası Betik Kullanmayı, kötü amaçlı yazılım yüklemelerini ve uygulama DDoS ve diğer saldırıları engellemek üzere gelen web trafiğini denetleyerek web uygulamalarınızın güvenliğini sağlamaya yardımcı olur. Ayrıca, Veri Kaybı Önleme (DLP) için arka uç web sunucularından gelen yanıtları denetler. App Service Ortamlarının sağladığı yalıtım ve ek ölçeklendirme ile bir araya geldiğinde bu özellik, kötü amaçlı isteklere ve yüksek hacimli trafiğe dayanıklı olması gereken iş açısından kritik web uygulamalarını barındırmak için ideal bir ortam sağlar. Azure, [Application Gateway](../../application-gateway/overview.md) ile bir WAF özelliği sağlar.  App Service Ortamınızı bir Application Gateway ile tümleştirme hakkında bilgi almak için [ILB ASE’nizi bir Application Gateway ile tümleştirme](./integrate-with-application-gateway.md) belgesine bakın.
 
 Azure Application Gateway’e ek olarak, [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice)’te [Azure için Barracuda WAF](https://www.barracuda.com/programs/azure) gibi birden çok market seçeneği mevcuttur. Bu belgenin geri kalanında App Service Ortamınızı bir Barracuda WAF cihazı ile tümleştirme işlemine odaklanılmaktadır.
 
@@ -34,7 +34,7 @@ Bu belgede, yalnızca WAF’den gelen trafiğin App Service Ortamına ulaşabilm
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>App Service Ortamınızı yapılandırma
-Bir App Service Ortamını yapılandırmak için konu ile ilgili [belgelerimize](app-service-web-how-to-create-an-app-service-environment.md) bakın. Bir App Service Ortamı oluşturduktan sonra bu ortamda, hepsi sonraki bölümde yapılandıracağımız WAF’nin ardında korunacak Web Uygulamaları, API Uygulamaları ve [Mobil Uygulamalar](../../app-service-mobile/app-service-mobile-value-prop.md) oluşturabilirsiniz.
+Bir App Service Ortamını yapılandırmak için konu ile ilgili [belgelerimize](app-service-web-how-to-create-an-app-service-environment.md) bakın. Bir App Service Ortamı oluşturduktan sonra bu ortamda, hepsi sonraki bölümde yapılandıracağımız WAF’nin ardında korunacak Web Uygulamaları, API Uygulamaları ve [Mobil Uygulamalar](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) oluşturabilirsiniz.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Barracuda WAF Bulut Hizmetinizi yapılandırma
 Barracuda, WAF’yi Azure’daki bir sanal makineye dağıtma hakkında [ayrıntılı bir makaleye](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) sahiptir. Ancak yedeklilik istediğimiz ve tek bir hata noktası tanımlamak istemediğimiz için, bu yönergeleri takip ederken aynı Bulut Hizmetine en az iki WAF örneği sanal makinesi dağıtmanız gerekir.

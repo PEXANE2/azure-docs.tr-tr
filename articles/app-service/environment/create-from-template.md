@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6b9ba8c3f72b070ad1ec9ade9684a182e2dea08
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962409"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak ATıCı oluşturma
 
@@ -48,7 +48,7 @@ ILB Ao oluşturmak istiyorsanız bu Kaynak Yöneticisi şablonu [örneklerini][q
 
 * *internalLoadBalancingMode*: çoğu durumda bunu 3 ' e ayarlayın, bu da 80/443 bağlantı noktalarında HTTP/HTTPS trafiği ve ASE 'de FTP hizmeti tarafından dinlenen denetim/veri kanalı bağlantı noktaları, ILB tarafından ayrılan bir sanal ağ iç adresine bağlanacaktır. Bu özellik 2 olarak ayarlandıysa, yalnızca FTP hizmetiyle ilgili bağlantı noktaları (denetim ve veri kanalları) bir ıLB adresine bağlanır. HTTP/HTTPS trafiği, genel VIP üzerinde kalır.
 * *DnsSuffix*: Bu parametre Ao 'ya atanan varsayılan kök etki alanını tanımlar. Azure App Service ortak çeşitlemesiyle, tüm Web Apps için varsayılan kök etki alanı *azurewebsites.net*' dir. ILB asa, müşterinin sanal ağı için dahili olduğundan, ortak hizmetin varsayılan kök etki alanını kullanmak mantıklı değildir. Bunun yerine, bir ıLB ASE 'nin bir şirketin iç sanal ağı içinde kullanım açısından anlamlı bir varsayılan kök etki alanı olması gerekir. Örneğin, contoso Corporation, yalnızca contoso 'nun sanal ağı dahilinde çözümlenebilmeleri ve erişilebilir olması amaçlanan uygulamalar için varsayılan *internal-contoso.com* kök etki alanını kullanabilir. 
-* *ıpssladdresscount*: ILB ASE yalnızca tek BIR ILB adresine sahip olduğundan, bu parametre, dosyadakiazuredeploy.jsotomatik olarak 0 değerine varsayılan olarak *alır* . ILB ATıCı için açık IP SSL adresi yoktur. Bu nedenle, bir ıLB asa için IP-SSL adres havuzu sıfır olarak ayarlanmalıdır. Aksi takdirde, sağlama hatası oluşur. 
+* *ıpssladdresscount*: ILB ASE yalnızca tek BIR ILB adresine sahip olduğundan, bu parametre, dosyadakiazuredeploy.jsotomatik olarak 0 değerine varsayılan olarak * alır* . ILB ATıCı için açık IP SSL adresi yoktur. Bu nedenle, bir ıLB asa için IP-SSL adres havuzu sıfır olarak ayarlanmalıdır. Aksi takdirde, sağlama hatası oluşur. 
 
 Dosyadaki *azuredeploy.parameters.js* doldurulduktan sonra, PowerShell kod parçacığını kullanarak atıcı 'i oluşturun. Dosya yollarını, makinenizde Kaynak Yöneticisi Şablon dosyası konumlarıyla eşleşecek şekilde değiştirin. Kaynak Yöneticisi dağıtım adı ve kaynak grubu adı için kendi değerlerinizi sağlamayı unutmayın:
 
@@ -104,7 +104,7 @@ Dosyadaki *azuredeploy.parameters.js* parametreler burada listelenmiştir:
 * *Existingaselocation*: ıLB atıcı 'Nin dağıtıldığı Azure bölgesini içeren metin dizesi.  Örneğin: "Orta Güney ABD".
 * *Pfxblobstring*:. pfx dosyasının based64 kodlu dize temsili. Daha önce gösterilen kod parçacığını kullanın ve "exportedcert. pfx. B64" içinde bulunan dizeyi kopyalayın. Öğesini *Pfxblobstring* özniteliğinin değeri olarak yapıştırın.
 * *parola*:. pfx dosyasının güvenliğini sağlamak için kullanılan parola.
-* *certificateThumbprint*: sertifikanın parmak izi. Bu değeri PowerShell 'den alırsanız (örneğin, *$Certificate. *Önceki kod parçacığındaki parmak izi), değeri olduğu gibi kullanabilirsiniz. Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın. *CertificateThumbprint* , AF3143EB61D43F6727842115BB7F17BBCECAECAE gibi görünmelidir.
+* *certificateThumbprint*: sertifikanın parmak izi. Bu değeri PowerShell 'den alırsanız (örneğin, *$Certificate. * Önceki kod parçacığındaki parmak izi), değeri olduğu gibi kullanabilirsiniz. Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın. *CertificateThumbprint* , AF3143EB61D43F6727842115BB7F17BBCECAECAE gibi görünmelidir.
 * *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı. Ad, TLS/SSL sertifikasını temsil eden *Microsoft. Web/Certificates* varlığının benzersiz kaynak yöneticisi tanımlayıcısının bir parçası olarak kullanılır. Ad şu soneke sahip *olmalıdır* : \_ yourASENameHere_InternalLoadBalancingASE. Azure portal, bu son eki sertifikanın ıLB özellikli bir AO 'nun güvenliğini sağlamak için kullanılan bir gösterge olarak kullanır.
 
 Kısaltılmış bir *azuredeploy.parameters.js* örneği burada gösterilmektedir:
@@ -178,12 +178,12 @@ Bir Kaynak Yöneticisi şablonu kullanarak bir ASEv1 oluşturmak için, bkz. [bi
 [NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

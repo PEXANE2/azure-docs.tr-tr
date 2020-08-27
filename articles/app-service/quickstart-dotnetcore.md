@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212671"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961542"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
 İşiniz bittiğinde, bir App Service barındırma planından ve dağıtılan bir Web uygulamasına sahip bir App Service içeren bir Azure Kaynak grubunuz olacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 - Bu hızlı başlangıçta Windows üzerinde App Service bir uygulama dağıtılır. _Linux_üzerinde App Service dağıtım yapmak için, bkz. [App Service bir .NET Core Web uygulaması oluşturma](./quickstart-dotnetcore.md).
@@ -59,8 +59,8 @@ Web uygulamanızı yayımlamak için öncelikle uygulamanızı yayımlayacağın
 
 App Service ayarlamanın bir parçası olarak şunları oluşturursunuz:
 
-- Hizmet için tüm Azure kaynaklarını içerecek yeni bir [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology) .
-- Uygulamanızı barındıran Web sunucusu grubunun konumunu, boyutunu ve özelliklerini belirten yeni bir [barındırma planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) .
+- Hizmet için tüm Azure kaynaklarını içerecek yeni bir [kaynak grubu](../azure-resource-manager/management/overview.md#terminology) .
+- Uygulamanızı barındıran Web sunucusu grubunun konumunu, boyutunu ve özelliklerini belirten yeni bir [barındırma planı](./overview-hosting-plans.md) .
 
 App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımları izleyin:
 
@@ -160,7 +160,7 @@ Bir .NET Core uygulaması oluşturmayı ve bir SQL veritabanına bağlamayı ö�
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-[Linux’ta App Service](overview.md#app-service-on-linux) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde App Service’te [.NET Core](https://docs.microsoft.com/aspnet/core/) uygulaması oluşturma gösterilmektedir. Uygulamayı [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak oluşturur ve .NET Core kodunu uygulamaya dağıtmak için git 'i kullanırsınız.
+[Linux’ta App Service](overview.md#app-service-on-linux) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde App Service’te [.NET Core](/aspnet/core/) uygulaması oluşturma gösterilmektedir. Uygulamayı [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak oluşturur ve .NET Core kodunu uygulamaya dağıtmak için git 'i kullanırsınız.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -168,7 +168,7 @@ Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilir
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -322,4 +322,4 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 > [!div class="nextstepaction"]
 > [ASP.NET Core uygulamasını yapılandırma](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

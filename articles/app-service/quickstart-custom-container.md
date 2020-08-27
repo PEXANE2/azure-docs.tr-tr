@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212522"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961372"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir Windows görüntüsünde ASP.NET uygulamasının 
 > Windows kapsayıcılarındaki App Service önizleme aşamasındadır.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -103,7 +103,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
    ![Kapsayıcılar için Web App yapılandırma](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    Web uygulamanız için [Azure Container Registry](/azure/container-registry/) gibi başka bir konumda veya başka özel bir depoda bulunan özel görüntünüz varsa bu adımda yapılandırabilirsiniz.
+    Web uygulamanız için [Azure Container Registry](../container-registry/index.yml) gibi başka bir konumda veya başka özel bir depoda bulunan özel görüntünüz varsa bu adımda yapılandırabilirsiniz.
 
 1. **Gözden geçir ' i ve oluştur** **' u seçin** ve ardından Azure 'un gerekli kaynakları oluşturmasını bekleyin.
 
@@ -173,8 +173,8 @@ Yeniden [Kapsayıcı uygulamasına göz atın](#browse-to-the-container-app). We
 
 Uygulamanızı çalıştırmak için farklı bir özel Docker görüntüsü kullanabilirsiniz. Ancak, istediğiniz çerçevenin sağ [üst görüntüsünü (temel görüntü)](https://docs.docker.com/develop/develop-images/baseimages/) seçmeniz gerekir:
 
-- .NET Framework uygulamaları dağıtmak için Windows Server Core 2019 [uzun süreli bakım kanalı (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) sürümüne göre bir üst görüntü kullanın. 
-- .NET Core uygulamaları dağıtmak için Windows Server nano 1809 [yarı yıllık bakım kanalı (sac)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümüne göre bir üst görüntü kullanın. 
+- .NET Framework uygulamaları dağıtmak için Windows Server Core 2019 [uzun süreli bakım kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) sürümüne göre bir üst görüntü kullanın. 
+- .NET Core uygulamaları dağıtmak için Windows Server nano 1809 [yarı yıllık bakım kanalı (sac)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümüne göre bir üst görüntü kullanın. 
 
 Uygulama başlatılırken üst görüntünün indirilmesi zaman alabilir. Ancak Azure App Service önbelleğinde bulunan aşağıdaki üst görüntülerden birini kullanarak başlangıç süresini kısaltabilirsiniz:
 
@@ -188,9 +188,9 @@ Uygulama başlatılırken üst görüntünün indirilmesi zaman alabilir. Ancak 
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node.js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](/azure/container-registry) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
+Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node.js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](../container-registry/index.yml) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
@@ -200,7 +200,7 @@ Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node.js ve diğerleri gi
 
 ## <a name="create-an-image"></a>Görüntü oluşturma
 
-Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-portal)' daki yönergeleri izleyin, ancak görüntü `mcr.microsoft.com/azuredocs/go` yerine görüntüyü kullanın `hello-world` . Başvuru için, [Azure örnekleri deposunda örnek Dockerfile bulunur](https://github.com/Azure-Samples/go-docs-hello-world).
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](../container-registry/index.yml)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-portal.md)' daki yönergeleri izleyin, ancak görüntü `mcr.microsoft.com/azuredocs/go` yerine görüntüyü kullanın `hello-world` . Başvuru için, [Azure örnekleri deposunda örnek Dockerfile bulunur](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **etkinleştirmek** için ayarladığınızdan emin olun. Ayrıca, Azure portal kayıt defteri sayfanızın **erişim tuşları** bölümünden de ayarlayabilirsiniz. App Service erişim için bu ayar gereklidir.
@@ -261,4 +261,4 @@ Daha sonra diğer Azure uzantılarına göz atın.
 
 Ya da [Azure Araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) uzantısı paketini yükleyerek tümünü alın.
 
-::: zone-end  
+::: zone-end

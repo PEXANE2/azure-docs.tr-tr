@@ -2,15 +2,15 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 08/26/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: aaceac9fccf21074732c4b6c4b3e72cc09552a65
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 84422862cfa73c2cbb27411bf0c1a7fb3fab9b35
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936393"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962664"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
@@ -257,7 +257,7 @@ Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılma
     ```
 
     > [!NOTE]
-    > Şablon spec kimliği alma ve ardından bunu Windows PowerShell 'de bir değişkene atama konusunda bilinen bir sorun vardır.
+    > Şablon spec KIMLIĞI alma ve bunu Windows PowerShell 'de bir değişkene atama ile ilgili bilinen bir sorun vardır.
 
 1. Şablon belirtimini dağıtın.
 

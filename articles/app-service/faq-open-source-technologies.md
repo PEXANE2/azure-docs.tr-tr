@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848647"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962337"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps yönelik açık kaynaklı teknolojiler SSS
 
@@ -33,7 +33,7 @@ PHP günlüğünü açmak için:
 5. Simgeyi seçin **+** ve ardından **yeni dosya**' yı seçin.
 6. Dosya adını **.user.ini**olarak ayarlayın.
 7. **.user.ini**yanındaki kurşun kalem simgesini seçin.
-8. Dosyasında şu kodu ekleyin:`log_errors=on`
+8. Dosyasında şu kodu ekleyin: `log_errors=on`
 9. **Kaydet**’i seçin.
 10. **Wp-config. php**' nin yanındaki kurşun kalem simgesini seçin.
 11. Metni şu kodla değiştirin:
@@ -43,7 +43,7 @@ PHP günlüğünü açmak için:
     ```
 12. Azure portal web uygulaması menüsünde Web uygulamanızı yeniden başlatın.
 
-Daha fazla bilgi için bkz. [WordPress hata günlüklerini etkinleştirme](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Daha fazla bilgi için bkz. [WordPress hata günlüklerini etkinleştirme](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>App Service barındırılan uygulamalarda Python uygulama hatalarını günlüğe Nasıl yaparım?.
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -72,7 +72,7 @@ Node.js uygulamasının sürümünü değiştirmek için aşağıdaki seçenekle
   Azure Kaynak denetimi dağıtım işlemi aşağıdaki adımları içerir:
   1. İçeriği Azure Web uygulamasına taşıın.
   2. Web uygulaması kök klasöründe bir tane (Deploy. cmd,. Deployment Files) yoksa varsayılan bir dağıtım betiği oluşturur.
-  3. Dosya > altyapısında package.jsNode.js sürümden bahsettiğiniz bir ıısnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Dosya > altyapısında package.jsNode.js sürümden bahsettiğiniz bir ıısnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Iısnode. yml dosyası aşağıdaki kod satırına sahiptir:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -80,7 +80,7 @@ Node.js uygulamasının sürümünü değiştirmek için aşağıdaki seçenekle
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>App Service ' de barındırılan WordPress uygulamamda "veritabanı bağlantısı kurulurken hata oluştu" iletisini görüyorum. Nasıl yaparım? sorunu gidermi?
 
-Azure WordPress uygulamanızda bu hatayı görürseniz, php_errors. log ve Debug. log ' u etkinleştirmek için, [WordPress hata günlüklerini etkinleştirme](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)bölümünde açıklanan adımları uygulayın.
+Azure WordPress uygulamanızda bu hatayı görürseniz, php_errors. log ve Debug. log ' u etkinleştirmek için, [WordPress hata günlüklerini etkinleştirme](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2)bölümünde açıklanan adımları uygulayın.
 
 Günlükler etkinleştirildiğinde, hata yeniden oluşturun ve sonra bağlantı dışında çalışıp çalışmadığını görmek için günlükleri kontrol edin:
 ```
@@ -97,11 +97,11 @@ Debug. log veya php_errors. log dosyalarında bu hatayı görürseniz, uygulaman
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Yerel Python modüllerini bir App Service Web uygulamasına veya API uygulamasına Nasıl yaparım?.
 
-Bazı paketler Azure 'da PIP kullanarak yüklenemeyebilir. Paket, Python paket dizininde bulunmayabilir veya bir derleyici gerekli olabilir (App Service bir derleyici, Web uygulamasını çalıştıran bilgisayarda, bu bilgisayarda kullanılabilir). App Service Web uygulamalarına ve API uygulamalarına yerel modüller yükleme hakkında daha fazla bilgi için bkz. [Python modüllerini App Service yükleme](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
+Bazı paketler Azure 'da PIP kullanarak yüklenemeyebilir. Paket, Python paket dizininde bulunmayabilir veya bir derleyici gerekli olabilir (App Service bir derleyici, Web uygulamasını çalıştıran bilgisayarda, bu bilgisayarda kullanılabilir). App Service Web uygulamalarına ve API uygulamalarına yerel modüller yükleme hakkında daha fazla bilgi için bkz. [Python modüllerini App Service yükleme](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Nasıl yaparım? bir Docgo uygulamasını git ve yeni Python sürümünü kullanarak App Service dağıtmak istiyor musunuz?
 
-Docgo yükleme hakkında bilgi için bkz. [App Service Için docgo uygulaması dağıtma](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
+Docgo yükleme hakkında bilgi için bkz. [App Service Için docgo uygulaması dağıtma](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Tomcat günlük dosyaları nerede bulunur?
 
@@ -183,7 +183,7 @@ Yakın zamanda Azure 'a geçiş yaptıysanız, WordPress eski etki alanı URL 's
 
 WordPress arkadaş +, yeniden yönlendirme URL 'sini doğrudan veritabanında güncelleştirmek için kullanabileceğiniz bir Azure Site uzantısıdır. WordPress arkadaş + kullanımı hakkında daha fazla bilgi için bkz. wordpress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
-Alternatif olarak, yeniden yönlendirme URL 'sini SQL sorguları veya PHPMyAdmin kullanarak el ile güncelleştirmeyi tercih ediyorsanız, bkz. [WordPress: yanlış URL 'ye yönlendirme](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Alternatif olarak, yeniden yönlendirme URL 'sini SQL sorguları veya PHPMyAdmin kullanarak el ile güncelleştirmeyi tercih ediyorsanız, bkz. [WordPress: yanlış URL 'ye yönlendirme](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>WordPress oturum açma parolamı Nasıl yaparım? değiştirilsin mi?
 
@@ -197,12 +197,12 @@ Son zamanlarda bir eklenti yükledikten sonra WordPress 'nin kilitlendiğini far
 
 WordPress web sitenize bağlı MySQL veritabanını geçirmek için birden çok seçeneğiniz vardır:
 
-* Geliştiriciler: [komut istemi veya PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) kullanın
+* Geliştiriciler: [komut istemi veya PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service) kullanın
 * Geliştiriciler olmayanlar: [WordPress arkadaş +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) kullanın
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Nasıl yaparım? WordPress 'in daha güvenli olmasına yardımcı olur mu?
 
-WordPress için en iyi güvenlik yöntemleri hakkında bilgi edinmek için bkz. [Azure 'Da WordPress güvenliği Için en iyi uygulamalar](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/).
+WordPress için en iyi güvenlik yöntemleri hakkında bilgi edinmek için bkz. [Azure 'Da WordPress güvenliği Için en iyi uygulamalar](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure).
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>PHPMyAdmin kullanmaya çalışıyorum ve "erişim engellendi" iletisini görüyorum. Bu sorunu nasıl çözebilirim?
 

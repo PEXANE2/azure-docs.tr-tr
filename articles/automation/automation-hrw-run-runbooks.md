@@ -3,14 +3,14 @@ title: Karma Runbook Worker üzerinde Azure Otomasyonu runbook 'ları çalışt�
 description: Bu makalede, karma Runbook Worker ile yerel veri merkezinizdeki veya bulut sağlayıcınızdaki makinelerde runbook 'ların nasıl çalıştırılacağı açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186223"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959578"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Çalışanı üzerinde runbook çalıştırma
 
@@ -43,7 +43,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-[InlineScript](automation-powershell-workflow.md#use-inlinescript) etkinliğini de kullanabilirsiniz. `InlineScript`kimlik bilgileriyle başka bir bilgisayarda kod blokları çalıştırmanızı sağlar.
+[InlineScript](automation-powershell-workflow.md#use-inlinescript) etkinliğini de kullanabilirsiniz. `InlineScript` kimlik bilgileriyle başka bir bilgisayarda kod blokları çalıştırmanızı sağlar.
 
 ## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma
 
@@ -70,7 +70,7 @@ Karma runbook çalışanında Azure kaynakları için yönetilen bir kimlik kull
     ```
 
     > [!NOTE]
-    > `Connect-AzAccount -Identity`sistem tarafından atanan kimlik ve Kullanıcı tarafından atanan tek bir kimlik kullanılarak karma Runbook Worker için geçerlidir. Karma Runbook Worker üzerinde birden çok kullanıcı tarafından atanan kimlik kullanırsanız, runbook 'inizdeki `AccountId` `Connect-AzAccount` belirli bir kullanıcı tarafından atanan kimlik seçmek için parametresi belirtilmelidir.
+    > `Connect-AzAccount -Identity` sistem tarafından atanan kimlik ve Kullanıcı tarafından atanan tek bir kimlik kullanılarak karma Runbook Worker için geçerlidir. Karma Runbook Worker üzerinde birden çok kullanıcı tarafından atanan kimlik kullanırsanız, runbook 'inizdeki `AccountId` `Connect-AzAccount` belirli bir kullanıcı tarafından atanan kimlik seçmek için parametresi belirtilmelidir.
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Farklı Çalıştır hesabıyla runbook kimlik doğrulamasını kullanma
 
@@ -304,6 +304,14 @@ PowerShell kullanarak bir runbook 'u başlatırken, `RunOn` parametresini [Start
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
+
+## <a name="logging"></a>Günlüğe Kaydetme
+
+Karma Runbook Worker üzerinde çalışan runbook 'larınızla ilgili sorunları gidermeye yardımcı olmak için, günlükler yerel olarak şu konumda depolanır:
+
+* `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes`Ayrıntılı iş çalışma zamanı işlem günlüğü Için Windows 'ta. Üst düzey runbook iş durumu olayları, **uygulama ve hizmetler Logs\Microsoft-Automation\Operations** olay günlüğüne yazılır.
+
+* Linux 'ta, Kullanıcı karma çalışanı günlükleri adresinde bulunabilir `/home/nxautomation/run/worker.log` ve sistem Runbook Worker günlükleri adresinde bulunabilir `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

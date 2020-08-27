@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121536"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960926"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -22,7 +22,7 @@ Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemle
 > Ayrıca, Microsoft Monitoring Agent (MMA) veya OMS Linux Aracısı olarak adlandırılan Log Analytics aracısını da görebilirsiniz.
 
 > [!NOTE]
-> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
+> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış ](agents-overview.md) .
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Azure tanılama uzantısına kıyasla
 Azure Izleyici 'de Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure sanal makinelerinin Konuk işletim sisteminden izleme verilerini toplamak için de kullanılabilir. Gereksinimlerinize bağlı olarak ya da her ikisini de kullanmayı seçebilirsiniz. Azure izleyici aracılarının ayrıntılı bir karşılaştırması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) . 
@@ -118,9 +118,9 @@ Bu bölüm desteklenen Linux dağıtımları hakkında ayrıntılı bilgi sağla
 ### <a name="python-2-requirement"></a>Python 2 gereksinimi
  Log Analytics Aracısı Python 2 gerektirir. Sanal makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, bunu kurmanız gerekir. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.
 
- - Red hat, CentOS, Oracle:`yum install -y python2`
- - Ubuntu, debir:`apt-get install -y python2`
- - SUSE`zypper install -y python2`
+ - Red hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, debir: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
 
 Python2 yürütülebilir dosyası, aşağıdaki yordam kullanılarak *Python* 'un diğer adı olmalıdır:
 
@@ -213,9 +213,6 @@ Windows ve Linux Aracısı, HTTPS protokolünü kullanarak bir proxy sunucu arac
 Linux Aracısı için ara sunucu, yükleme sırasında veya proxy. conf yapılandırma dosyası değiştirilerek [yüklendikten sonra](agent-manage.md#update-proxy-settings) belirtilir.  Linux Aracısı proxy yapılandırma değeri aşağıdaki sözdizimine sahiptir:
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> Proxy sunucunuz kimlik doğrulaması yapmanızı gerektirmiyorsa, Linux Aracısı yine de sahte bir kullanıcı/parola sağlanması gerekir. Bu, herhangi bir Kullanıcı adı veya parola olabilir.
 
 |Özellik| Açıklama |
 |--------|-------------|

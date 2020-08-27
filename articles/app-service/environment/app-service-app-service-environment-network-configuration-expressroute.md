@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013406"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961831"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için App Service Ortamı ağ yapılandırması ayrıntıları
 
@@ -85,7 +85,7 @@ Kullanıcı tanımlı yollar oluşturma ve yapılandırma hakkında bilgi edinme
 
 Bu bölümde App Service Ortamı için bir örnek UDR yapılandırması gösterilmektedir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Azure İndirmeleri sayfasından][AzureDownloads]Azure PowerShell ' i yükler. Haziran 2015 veya üzeri bir tarih içeren bir indirme seçin. **Command-line tools**  >  En son PowerShell cmdlet 'lerini yüklemek için komut satırı araçları**Windows PowerShell**altında, **yüklemek** ' ı seçin.
 
@@ -146,15 +146,15 @@ PowerApps için App Service Ortamı kullanmaya başlamak için bkz. [App Service
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/ 
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
-[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
+[UDROverview]: ../../virtual-network/virtual-networks-udr-overview.md
 <!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
 
-[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell 
+[UDRHowTo]: ../../virtual-network/tutorial-create-route-table-powershell.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
 [AzureDownloads]: https://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md 
 [NewPortal]:  https://portal.azure.com 
 

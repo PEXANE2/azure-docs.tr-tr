@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874206"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962511"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
 App Service Ortamı (Ao), düzgün bir şekilde çalışması için erişim gerektiren sayıda dış bağımlılıklara sahiptir. ASE, müşteri Azure sanal ağı 'nda (VNet) bulunur. Müşteriler, VNet 'ten tüm çıkışları kilitlemek isteyen müşteriler için bir sorun olan ASE bağımlılık trafiğine izin vermelidir.
 
-Bir AI 'yi yönetmek için kullanılan bazı gelen uç noktaları vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [App Service ortamı yönetim adresleri](https://docs.microsoft.com/azure/app-service/environment/management-addresses) belgesinde yayımlanır. Ayrıca, gelen trafiğin güvenliğini sağlamak için ağ güvenlik grupları (NSG 'ler) ile birlikte kullanılabilecek AppServiceManagement adlı bir hizmet etiketi de vardır.
+Bir AI 'yi yönetmek için kullanılan bazı gelen uç noktaları vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [App Service ortamı yönetim adresleri](./management-addresses.md) belgesinde yayımlanır. Ayrıca, gelen trafiğin güvenliğini sağlamak için ağ güvenlik grupları (NSG 'ler) ile birlikte kullanılabilecek AppServiceManagement adlı bir hizmet etiketi de vardır.
 
 ASE giden bağımlılıkları, bunların arkasında statik adresler bulunmayan FQDN 'Ler ile neredeyse tamamen tanımlıdır. Statik adreslerin olmaması, ağ güvenlik gruplarının bir ASE 'den giden trafiği kilitlemek için kullanılamayacağı anlamına gelir. Adresler, geçerli çözünürlüğe göre kuralları ayarlayamayacak ve bunları NSG 'ler oluşturmak için kullanabileceğiniz kadar sık değişir. 
 
@@ -55,7 +55,7 @@ Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme
 
    ![hizmet uç noktalarını seçin][2]
   
-1. ASE 'nizin bulunduğu VNet 'te AzureFirewallSubnet adlı bir alt ağ oluşturun. Azure Güvenlik duvarını oluşturmak için [Azure Güvenlik Duvarı belgelerindeki](https://docs.microsoft.com/azure/firewall/) yönergeleri izleyin.
+1. ASE 'nizin bulunduğu VNet 'te AzureFirewallSubnet adlı bir alt ağ oluşturun. Azure Güvenlik duvarını oluşturmak için [Azure Güvenlik Duvarı belgelerindeki](../../firewall/index.yml) yönergeleri izleyin.
 
 1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > uygulama kuralı koleksiyonu ' ndan uygulama kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. FQDN etiketleri bölümünde bir ad belirtin, kaynak adreslerini * olarak ayarlayın ve App Service Ortamı FQDN etiketini ve Windows Update seçin. 
    
@@ -69,7 +69,7 @@ Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme
 
    ![NTP hizmeti etiketi ağ kuralı ekle][6]
    
-1. Bir sonraki Internet duraklı [App Service ortamı yönetim adreslerinden]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) yönetim adresleriyle bir yol tablosu oluşturun. Asimetrik yönlendirme sorunlarından kaçınmak için yol tablosu girdileri gereklidir. IP adresi bağımlılıklarında aşağıda belirtilen IP adresi bağımlılıkları için bir sonraki Internet duraklı yollar ekleyin. 0.0.0.0/0 için yol tablonuza bir sonraki atlamada Azure Güvenlik Duvarı özel IP adresiniz olacak şekilde bir Sanal Gereç yolu ekleyin. 
+1. Bir sonraki Internet duraklı [App Service ortamı yönetim adreslerinden]( ./management-addresses.md) yönetim adresleriyle bir yol tablosu oluşturun. Asimetrik yönlendirme sorunlarından kaçınmak için yol tablosu girdileri gereklidir. IP adresi bağımlılıklarında aşağıda belirtilen IP adresi bağımlılıkları için bir sonraki Internet duraklı yollar ekleyin. 0.0.0.0/0 için yol tablonuza bir sonraki atlamada Azure Güvenlik Duvarı özel IP adresiniz olacak şekilde bir Sanal Gereç yolu ekleyin. 
 
    ![Rota tablosu oluşturma][4]
    
@@ -77,7 +77,7 @@ Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>ATıCı 'nizi bir güvenlik duvarının arkasında dağıtma
 
-ATıCı 'nizi bir güvenlik duvarının arkasında dağıtma adımları, bir Azure güvenlik duvarıyla, AI alt ağını oluşturmanız ve ardından önceki adımları uygulamanız gerekir. Önceden var olan bir alt ağda ATıCı 'nizi oluşturmak için, [bir kaynak yöneticisi şablonuyla atıcı 'Nizi oluşturma](https://docs.microsoft.com/azure/app-service/environment/create-from-template)konusunda açıklandığı gibi bir kaynak yöneticisi şablonu kullanmanız gerekir.
+ATıCı 'nizi bir güvenlik duvarının arkasında dağıtma adımları, bir Azure güvenlik duvarıyla, AI alt ağını oluşturmanız ve ardından önceki adımları uygulamanız gerekir. Önceden var olan bir alt ağda ATıCı 'nizi oluşturmak için, [bir kaynak yöneticisi şablonuyla atıcı 'Nizi oluşturma](./create-from-template.md)konusunda açıklandığı gibi bir kaynak yöneticisi şablonu kullanmanız gerekir.
 
 ## <a name="application-traffic"></a>Uygulama trafiği 
 
@@ -88,7 +88,7 @@ Yukarıdaki adımlar, ASE 'nizin sorunsuz bir şekilde çalışmasına olanak sa
 
 Uygulamalarınızın bağımlılıkları varsa, bunların Azure güvenlik duvarınızdan eklenmesi gerekir. Diğer her şey için HTTP/HTTPS trafiğine ve ağ kurallarına izin vermek üzere uygulama kuralları oluşturun. 
 
-Uygulamanız için gelen trafiğin geldiği adres aralığını biliyorsanız, bunu Ao alt ağına atanan yol tablosuna ekleyebilirsiniz. Adres aralığı büyükse veya belirtilmemişse, yol tablonuza eklemek için bir adres sağlamak üzere Application Gateway gibi bir ağ gerecini kullanabilirsiniz. ILB Ade Application Gateway yapılandırma hakkında ayrıntılı bilgi için, [ILB atıcı 'nizi bir Application Gateway tümleştirerek](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) edinin
+Uygulamanız için gelen trafiğin geldiği adres aralığını biliyorsanız, bunu Ao alt ağına atanan yol tablosuna ekleyebilirsiniz. Adres aralığı büyükse veya belirtilmemişse, yol tablonuza eklemek için bir adres sağlamak üzere Application Gateway gibi bir ağ gerecini kullanabilirsiniz. ILB Ade Application Gateway yapılandırma hakkında ayrıntılı bilgi için, [ILB atıcı 'nizi bir Application Gateway tümleştirerek](./integrate-with-application-gateway.md) edinin
 
 Bu Application Gateway kullanımı, sisteminizi yapılandırmaya yönelik yalnızca bir örnektir. Bu yolu izledikten sonra, Application Gateway gönderilen yanıt trafiğinin doğrudan gidebilmesi için ATıCı alt ağ yolu tablosuna bir yol eklemeniz gerekir. 
 
@@ -100,7 +100,7 @@ Azure Güvenlik Duvarı, Azure depolama, Olay Hub 'ı veya Azure Izleyici günl�
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Azure Güvenlik duvarını Azure Izleyici günlükleriyle tümleştirmek, uygulama bağımlılıklarının tümünün farkında olmadığında ilk olarak bir uygulama çalışırken yararlıdır. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için [Azure izleyici 'de günlük verilerini analiz](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)edebilirsiniz.
+Azure Güvenlik duvarını Azure Izleyici günlükleriyle tümleştirmek, uygulama bağımlılıklarının tümünün farkında olmadığında ilk olarak bir uygulama çalışırken yararlıdır. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için [Azure izleyici 'de günlük verilerini analiz](../../azure-monitor/log-query/log-query-overview.md)edebilirsiniz.
  
 ## <a name="dependencies"></a>Bağımlılıklar
 
@@ -269,7 +269,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 ## <a name="us-gov-dependencies"></a>US Gov bağımlılıklar
 
-US Gov bölgelerindeki ASE 'ler için, ASE 'niz ile bir Azure Güvenlik duvarı yapılandırmak için bu belgenin [ASE Ile Azure Güvenlik Duvarı 'Nı yapılandırma](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) bölümündeki yönergeleri izleyin.
+US Gov bölgelerindeki ASE 'ler için, ASE 'niz ile bir Azure Güvenlik duvarı yapılandırmak için bu belgenin [ASE Ile Azure Güvenlik Duvarı 'Nı yapılandırma](#configuring-azure-firewall-with-your-ase) bölümündeki yönergeleri izleyin.
 
 US Gov içinde Azure Güvenlik Duvarı dışında bir cihaz kullanmak istiyorsanız 
 

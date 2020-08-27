@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: CLı kullanarak doğrudan web trafiği'
 titleSuffix: Azure Application Gateway
-description: Web trafiğini bir arka uç havuzundaki sanal makinelere yönlendiren bir Azure Application Gateway oluşturmak için Azure CLı 'yi nasıl kullanacağınızı öğrenin.
+description: Bu hızlı başlangıçta, Web trafiğini bir arka uç havuzundaki sanal makinelere yönlendiren bir Azure Application Gateway oluşturmak için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b6b2077a71870d619c023b0d66c37ebc043aa3f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499135"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961763"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure CLI
 
@@ -24,12 +24,14 @@ Uygulama ağ geçidi, uygulama Web trafiğini bir arka uç havuzundaki belirli k
 
 Bu hızlı başlangıcı [Azure PowerShell](quick-create-powershell.md) veya [Azure Portal](quick-create-portal.md)kullanarak da tamamlayabilirsiniz.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure CLI sürüm 2.0.4 veya üzeri](/cli/azure/install-azure-cli) (Azure CLI 'yi yerel olarak çalıştırırsanız).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
