@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric ağ en iyi uygulamaları
-description: Azure Service Fabric kullanarak ağ bağlantısını yönetmeye yönelik en iyi yöntemler ve tasarım konuları.
-author: peterpogorski
+description: Azure Service Fabric kullanarak ağ bağlantısını yönetmeye yönelik kurallar ve tasarım konuları.
+author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.author: pepogors
-ms.openlocfilehash: 853e53d32f87f81e5db587de2654f83037930da7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: chrpap
+ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948972"
 ---
 # <a name="networking"></a>Ağ
 
@@ -19,7 +19,7 @@ Azure Service Fabric kümelerini oluşturup yönetirken, düğümleriniz ve uygu
 Şu özellikleri kullanan kümeler oluşturmayı öğrenmek için Azure [Service Fabric ağ düzenlerini](./service-fabric-patterns-networking.md) gözden geçirin: var olan sanal ağ veya alt ağ, STATIK genel IP adresi, yalnızca iç yük dengeleyici veya iç ve dış yük dengeleyici.
 
 ## <a name="infrastructure-networking"></a>Altyapı ağı
-Kaynak Yöneticisi şablonunuzda Enableivme ağ özelliğini bildirerek sanal makinenizin performansını hızlandırılmış ağ ile en üst düzeye çıkarın. Aşağıdaki kod parçacığı, hızlandırılmış ağ sağlayan bir sanal makine ölçek kümesi Networkınterfaceconfigurations ' dir:
+Kaynak Yöneticisi şablonunuzda *Enableivme ağ* özelliğini bildirerek sanal makinenizin performansını hızlandırılmış ağ ile en üst düzeye çıkarın. Aşağıdaki kod parçacığı, hızlandırılmış ağ sağlayan bir sanal makine ölçek kümesi Networkınterfaceconfigurations ' dir:
 
 ```json
 "networkInterfaceConfigurations": [
@@ -39,7 +39,7 @@ Kaynak Yöneticisi şablonunuzda Enableivme ağ özelliğini bildirerek sanal ma
 ```
 Service Fabric küme, [hızlandırılmış ağ Ile Linux](../virtual-network/create-vm-accelerated-networking-cli.md)üzerinde sağlanabilir ve [hızlandırılmış ağ ile Windows](../virtual-network/create-vm-accelerated-networking-powershell.md)'u kullanabilir.
 
-Hızlandırılmış ağ, Azure sanal makine serisi SKU 'Ları için desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, Service Fabric bir Windows kümesi için 1/23/2019 Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor.
+Hızlandırılmış ağ, Azure sanal makine serisi SKU 'Ları için desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, Service Fabric bir Windows kümesi için 01/23/2019 Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor.
 
 Mevcut bir Service Fabric kümesinde hızlandırılmış ağı etkinleştirmek için, önce aşağıdakileri gerçekleştirmek üzere bir [sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmelisiniz](./virtual-machine-scale-set-scale-node-type-scale-out.md):
 1. Hızlandırılmış ağ etkinken bir NodeType sağlama
@@ -51,11 +51,69 @@ Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme al
 
 * Service Fabric kümeler, [Service Fabric ağ desenlerinde](./service-fabric-patterns-networking.md)özetlenen adımları izleyerek mevcut bir sanal ağa dağıtılabilir.
 
-* Ağ güvenlik grupları (NSG 'ler), kümelerinde gelen ve giden trafiği kısıtlayan düğüm türleri için önerilir. NSG 'de gerekli bağlantı noktalarının açık olduğundan emin olun. Örneğin: ![ Service Fabric NSG kuralları][NSGSetup]
+* Ağ güvenlik grupları (NSG 'ler), gelen ve giden trafiği kümeyle kısıtlamak için düğüm türleri için önerilir. NSG 'de gerekli bağlantı noktalarının açık olduğundan emin olun. 
 
 * Service Fabric sistem hizmetlerinin bulunduğu birincil düğüm türü, dış yük dengeleyici aracılığıyla gösterilmemelidir ve bir [iç yük dengeleyici](./service-fabric-patterns-networking.md#internal-only-load-balancer) tarafından gösterilebilir.
 
 * Kümeniz için [statik bir genel IP adresi](./service-fabric-patterns-networking.md#static-public-ip-address-1) kullanın.
+
+## <a name="network-security-rules"></a>Ağ güvenlik kuralları
+
+Aşağıdaki temel kurallar, Azure yönetilen Service Fabric kümesinin güvenlik kilidi için en düşük gerekliliktir. Aşağıdaki bağlantı noktalarını açma veya IP/URL 'YI beyaz listeye alma hatası, kümenin düzgün çalışmasını engeller ve desteklenmeyebilir. Bu kural sayesinde, [Otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)kullanmak için kesinlikle gerekli değildir, aksi takdirde ek bağlantı noktalarının açılması gerekir.
+
+### <a name="inbound"></a>Inbound 
+|Öncelik   |Ad               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+|---        |---                |---         |---       |---                |---               |---
+|3900       |Azure              |19080       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
+|3910       |İstemci             |19000       |TCP       |İnternet           |VirtualNetwork    |İzin Ver
+|3920       |Küme            |1025-1027   |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
+|3930       |Kısa ömürlü          |49152-65534 |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
+|3940       |Uygulama        |20000-30000 |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
+|3950       |SMB                |445         |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
+|3960       |RDP                |3389-3488   |TCP       |İnternet           |VirtualNetwork    |Reddet
+|3970       |SSH                |22          |TCP       |İnternet           |VirtualNetwork    |Reddet
+|3980       |Özel uç nokta    |80          |TCP       |İnternet           |VirtualNetwork    |İzin Ver
+|4100       |Gelen engelle      |443         |Herhangi biri       |Herhangi biri                |Herhangi biri               |İzin Ver
+
+Gelen güvenlik kuralları hakkında daha fazla bilgi:
+
+* **Azure**. Bu bağlantı noktası, kümenize gözatıp yönetmek için Service Fabric Explorer tarafından kullanılır ve Azure Yönetim Portalı görüntülenmek üzere kümeniz hakkındaki bilgileri sorgulamak için Service Fabric kaynak sağlayıcısı tarafından da kullanılır. Bu bağlantı noktasına Service Fabric kaynak sağlayıcısından erişilemiyorsa, Azure portal ' de ' düğümler bulunamadı ' veya ' Upgradeservicenoteriþ' gibi bir ileti görürsünüz ve düğüm ve uygulama listeniz boş görünür. Bu, Azure Yönetim Portalı kümenizin görünürlüğünü kullanmak isterseniz, yük dengeleyicinizin genel bir IP adresi kullanıma sunması ve NSG 'nizin gelen 19080 trafiğine izin vermelidir.  
+
+* **İstemci**. REST/PowerShell/CLı gibi API 'Ler için istemci bağlantı uç noktası. 
+
+* **Küme**. Düğümler arası iletişim için kullanılır; hiçbir şekilde engellenmemelidir.
+
+* **Kısa ömürlü**. Service Fabric, bu bağlantı noktalarının bir parçasını uygulama bağlantı noktaları olarak kullanır ve kalan işletim sistemi için kullanılabilir. Ayrıca, bu aralığı işletim sisteminde mevcut olan aralığa eşler, bu nedenle tüm amaçlar için buradaki örnekte verilen aralıkları kullanabilirsiniz. Başlangıç ve bitiş bağlantı noktaları arasındaki farkın en az 255 olduğundan emin olun. Bu fark çok düşükse çakışmalar ile karşılaşabilirsiniz. bu Aralık işletim sistemi ile paylaşılmıştır. Yapılandırılmış dinamik bağlantı noktası aralığını görmek için, *netsh int IPv4 öğesini çalıştırın dinamik bağlantı noktası TCP 'yi göster*. Bu bağlantı noktaları, Linux kümeleri için gerekli değildir.
+
+* **Uygulama**. Uygulama bağlantı noktası aralığı uygulamalarınızın uç nokta gereksinimini kapsayacak kadar büyük olmalıdır. Bu Aralık, makinedeki dinamik bağlantı noktası aralığından, yani ephemeralPorts, yapılandırmada ayarlandığı şekilde özel olmalıdır. Service Fabric, yeni bağlantı noktaları gerektiğinde bu bağlantı noktalarını kullanır ve bu bağlantı noktalarının düğümlerde güvenlik duvarını açma işlemini gerçekleştirir.
+
+* **SMB**. SMB protokolü, ımakoya hizmeti tarafından iki senaryo için kullanılıyor. Bu bağlantı noktası, paketleri düğümler tarafından ımagesden yüklemek ve bunları çoğaltmalar arasında çoğaltmak için gereklidir. 
+
+* **RDP**. Internet veya VirtualNetwork for sıçrama kutusu senaryolarında RDP gerekliyse isteğe bağlı. 
+
+* **SSH**. Internet veya VirtualNetwork for sıçrama kutusu senaryolarında SSH gerekliyse isteğe bağlı.
+
+* **Özel uç nokta**. Uygulamanıza internet erişimi olan bir uç noktayı etkinleştirme örneği.
+
+### <a name="outbound"></a>Outbound
+
+|Öncelik   |Ad               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   
+|---        |---                |---         |---       |---                |---               |---
+|3900       |Ağ            |Herhangi biri         |TCP       |VirtualNetwork     |VirtualNetwork    |İzin Ver
+|3910       |Kaynak sağlayıcısı  |443         |TCP       |VirtualNetwork     |ServiceFabric     |İzin Ver
+|3920       |Yükseltme            |443         |TCP       |VirtualNetwork     |İnternet          |İzin Ver
+|3950       |Giden trafiği engelle     |Herhangi biri         |Herhangi biri       |Herhangi biri                |Herhangi biri               |Reddet
+
+Giden güvenlik kuralları hakkında daha fazla bilgi:
+
+* **Ağ**. Alt ağlar ve başka bir sanal ağa yönelik iletişim kanalı.
+
+* **Kaynak sağlayıcısı**. Service Fabric kaynak sağlayıcısı tarafından tüm ARM dağıtımlarını yürütmek için UpgradeService tarafından bağlantı.
+
+* **Yükseltme**. Download.microsoft.com adresini kullanan yükseltme hizmeti bitleri almak için bu, kurulum, yeniden görüntü oluşturma ve çalışma zamanı yükseltmeleri için gereklidir. Hizmet dinamik IP adresleriyle çalışır. "İç yalnızca bir" yük dengeleyicinin senaryosunda, bağlantı noktası 443 ' e giden trafiğe izin veren bir kuralla ek bir dış yük dengeleyici eklenmelidir. İsteğe bağlı olarak, bu bağlantı noktası başarılı bir kurulumdan sonra engellenebilir, ancak bu durumda yükseltme paketinin düğümlere dağıtılması veya bağlantı noktasının kısa bir süre için açılması gerekir, daha sonra el ile yükseltme gerekir.
+
+Güvenlik kilitiyle ilgili sorunları izlemek için [NSG akış günlüğü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) ve [Trafik Analizi](../network-watcher/traffic-analytics.md) ile Azure Güvenlik Duvarı 'nı kullanın. [NSG ile SERVICE fabrıc](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) ARM şablonunun başlaması iyi bir örnektir. 
+
 
 ## <a name="application-networking"></a>Uygulama Ağı
 

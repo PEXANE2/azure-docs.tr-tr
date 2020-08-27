@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb10effce8b94a6443e1daa8dadaa99111da0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100258"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950468"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Akış alma performansı sınırları
 
@@ -34,7 +34,7 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
 
 > [!TIP]
 >
-> * 16 MBps 'e kadar hızlara kadar olan ortam desteği istek tarafından sağlanarak temin edilebilir.
+> * 8 MBps 'ye kadar hızlara kadar olan ortam desteği istek tarafından sağlanarak temin edilebilir.
 > * Azure portal aracılığıyla bir destek bileti göndererek daha yüksek aktarım hızı gerekiyorsa bizimle iletişim kurun.
  
 * **Örnek 1:**
@@ -42,16 +42,16 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
     Contoso Shipping, dakikada üç kez bir olay sunan 100.000 cihaza sahiptir. Bir olayın boyutu 200 bayttır. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak dört bölümden oluşan bir IoT Hub kullanıyor.
 
     * Azure Time Series Insights Gen2 ortamı için alım oranı şu şekilde olacaktır: **100.000 cihaz * 200 bayt/olay * (3/60 olay/sn) = 1 MB**/sn.
-    * Bölüm başına alım oranı 0,25 MBps olur.
-    * Contoso sevkiyat alım oranı, ölçek kısıtlaması dahilinde olacaktır.
+    * Dengeli bölüm varsayıldığında, bölüm başına alım oranı 0,25 MBps olur.
+    * Contoso sevkiyat alım oranı, ölçek sınırlamaları dahilinde olacaktır.
 
 * **Örnek 2:**
 
-    Contoso Fleet Analytics, her saniye bir olay sunan 60.000 cihaza sahiptir. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak 4 bölüm sayısıyla bir olay hub 'ı kullanıyor. Bir olayın boyutu 200 bayttır.
+    Contoso Fleet Analytics, her saniye bir olay sunan 40.000 cihaza sahiptir. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak 2 bölüm sayısıyla bir olay hub 'ı kullanıyor. Bir olayın boyutu 200 bayttır.
 
-    * Ortam alma hızı şu şekilde olacaktır: **60.000 cihaz * 200 bayt/olay * 1 olay/sn = 12 Mbps**.
-    * Bölüm başına hız 3 MBps olur.
-    * Contoso Fleet Analizi ' alım oranı, ortam ve bölüm sınırlarının üzerinde. Gen2 Azure portal aracılığıyla Azure Time Series Insights, ortamları için alma hızını artırmak üzere bir istek gönderebilirler ve sınırlar dahilinde daha fazla bölüme sahip bir olay hub 'ı oluşturabilir.
+    * Ortam alma hızı şu şekilde olacaktır: **40.000 cihaz * 200 bayt/olay * 1 olay/sn = 8 Mbps**.
+    * Dengeli bölümler varsayıldığında, bölüm başına hız 4 MBps olur.
+    * Contoso Fleet Analizi ' alım oranı, ortam ve bölüm sınırlarının üzerinde. Gen2 Azure portal aracılığıyla, ortamları için alma hızını artırmak için Azure Time Series Insights bir istek gönderebilir ve sınırlar dahilinde daha fazla bölüm içeren bir olay hub 'ı oluşturabilir.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Merkez bölümleri ve bölüm sınırları başına
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234712"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948887"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
@@ -100,6 +100,6 @@ Diğer kuruluşların otomatik erişim denetimi kararları tanımlamak ve uygula
 
 - [Bir koşullu erişim ilkesi parçasını parça olarak oluşturma](concept-conditional-access-policies.md)
 - [Koşullu Erişim dağıtımınızı planlama](plan-conditional-access.md)
-- [Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
+- [Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-identity-protection.md)
 - [Microsoft Cloud App Security hakkında bilgi edinin](/cloud-app-security/what-is-cloud-app-security)
 - [Microsoft Intune hakkında bilgi edinin](/intune/index)

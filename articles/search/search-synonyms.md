@@ -7,23 +7,23 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948649"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Arama eş anlamlılar
 
 Arama altyapılarındaki eş anlamlılar, kullanıcının terimi gerçekten sağlaması gerekmeden bir sorgunun kapsamını örtülü olarak genişletmekte olan eşdeğer terimleri ilişkilendirir. Örneğin, "köpek" teriminin ve "Canine" ve "pupkopyala" teriminin eşanlamlısı, "köpek", "Canine" veya "pupkopyala" gibi tüm belgeler, sorgunun kapsamı içinde yer alacak.
 
-Azure Bilişsel Arama 'de, eş anlamlı genişletmesi sorgu zamanında yapılır. Mevcut işlemlere kesinti olmadan, bir hizmete eş anlamlı eşlemeler ekleyebilirsiniz. Dizini yeniden derlemek zorunda kalmadan, bir alan tanımına bir **eş anlamlı Eşeşlemeler** özelliği ekleyebilirsiniz.
+Azure Bilişsel Arama 'de, eş anlamlı genişletmesi sorgu zamanında yapılır. Mevcut işlemlere kesinti olmadan, bir hizmete eş anlamlı eşlemeler ekleyebilirsiniz. Dizini yeniden derlemek zorunda kalmadan, bir alan tanımına bir  **eş anlamlı Eşeşlemeler** özelliği ekleyebilirsiniz.
 
 ## <a name="create-synonyms"></a>Eş anlamlı oluştur
 
-Eş anlamlıları oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK 'sını kullanabilirsiniz. REST ile çalışmaya başlamak için bu API 'YI kullanarak isteklerin [Postman](search-get-started-postman.md) ve formüllerinin kullanılması önerilir: [eş anlamlı haritalar oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C# geliştiricileri için, [C# kullanarak Azure bilişsel arama 'Da eşanlamlı ekleme](search-synonyms-tutorial-sdk.md)ile çalışmaya başlayın.
+Eş anlamlıları oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK 'sını kullanabilirsiniz. REST ile çalışmaya başlamak için bu API 'YI kullanarak isteklerin [Postman](search-get-started-postman.md) ve formüllerinin kullanılması önerilir: [eş anlamlı haritalar oluşturma](/rest/api/searchservice/create-synonym-map). C# geliştiricileri için, [C# kullanarak Azure bilişsel arama 'Da eşanlamlı ekleme](search-synonyms-tutorial-sdk.md)ile çalışmaya başlayın.
 
 İsteğe bağlı olarak, hizmet tarafı şifreleme için [müşteri tarafından yönetilen anahtarlar](search-security-manage-encryption-keys.md) kullanıyorsanız, bu korumayı eş anlamlı Haritalarınızın içeriğine uygulayabilirsiniz.
 
@@ -92,6 +92,21 @@ Açık eşleme bir ok "=>" ile gösterilir. Belirtildiğinde, "=>" öğesinin so
 
 ```
 Washington, Wash., WA => WA
+```
+
+Virgül içeren eş anlamlıları tanımlamanız gerekiyorsa, bu örnekte olduğu gibi bir ters eğik çizgiyle kaçış yapabilirsiniz:
+
+```
+WA\, USA, WA, Washington
+```
+
+Ters eğik çizgi JSON ve C# gibi diğer dillerde özel bir karakter olduğundan, muhtemelen iki kez kaçış yapmanız gerekir. Örneğin, yukarıdaki eş anlamlı eşleme için REST API gönderilen JSON şöyle görünür:
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Hizmetiniz altındaki eş anlamlı haritaları listeleyin.
@@ -173,4 +188,4 @@ Geliştirme (üretim dışı) ortamında var olan bir dizininiz varsa, eş anlam
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Eş anlamlı eşleme oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Eş anlamlı eşleme oluşturma](/rest/api/searchservice/create-synonym-map)

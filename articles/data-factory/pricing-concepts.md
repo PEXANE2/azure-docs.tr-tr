@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949974"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örneklerle Data Factory fiyatlandırmasını anlama
 
@@ -166,6 +166,46 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 - İşlem hattı düzenleme &amp; yürütmesi = **$1,463**
   - Etkinlik çalıştırmaları = 001 \* 2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
   - Veri akışı etkinlikleri = $1,461 20 dakika (10 dakikalık yürütme süresi + 10 dakikalık TTL) için eşit olarak dağıtılır. 16 çekirdek genel işlem ile Azure Integration Runtime $0.274/saat
+
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Azure Data Factory yönetilen VNET 'te veri tümleştirmesi
+Bu senaryoda, Azure Blob depolamada orijinal dosyaları silmek ve Azure SQL veritabanından Azure Blob depolama alanına veri kopyalamak istersiniz. Bu yürütmeyi farklı işlem hatları üzerinde iki kez yapacaksınız. Bu iki işlem hattı yürütme süresi örtüşüyor.
+![Scenario4 ](media/pricing-concepts/scenario-4.png) senaryoyu tamamlamak için aşağıdaki öğelerle iki işlem hattı oluşturmanız gerekir:
+  - Bir işlem hattı etkinliği – etkinliği sil.
+  - Azure Blob depolama alanından kopyalanacak veriler için giriş veri kümesi olan bir kopyalama etkinliği.
+  - Azure SQL veritabanı 'ndaki veriler için çıkış veri kümesi.
+  - İşlem hattını yürütmek için bir zamanlama tetikler.
+
+
+| **İşlemler** | **Türler ve birimler** |
+| --- | --- |
+| Bağlı hizmet oluştur | 4 varlık okuma/yazma |
+| Veri kümeleri oluştur | 8 okuma/yazma varlıkları (veri kümesi oluşturma için 4, bağlantılı hizmet başvuruları için 4) |
+| İşlem hattı oluşturma | 6 okuma/yazma varlıkları (ardışık düzen oluşturma için 2, veri kümesi başvuruları için 4) |
+| İşlem hattı al | 2 varlık okuma/yazma |
+| İşlem hattını Çalıştır | 6 etkinlik çalıştırmaları (tetikleyici çalışması için 2, etkinlik çalıştırmaları için 4) |
+| Silme etkinliğini Yürüt: her yürütme süresi = 5 dk. İlk işlem hattındaki Etkinlik yürütme yürütmesi 10:00, UTC 'den 10:05. UTC 'ye kadar olur. İkinci işlem hattında etkinlik yürütmeyi silme, 10:02 saat UTC 'den 10:07 ' e kadar UTC 'ye kadar olur.|Yönetilen VNET 'te toplam 7 dakikalık işlem hattı etkinliği yürütme. İşlem hattı etkinliği yönetilen VNET 'te en fazla 50 eşzamanlılık destekler. |
+| Veri Kopyalama varsayım: her yürütme süresi = 10 dk. İlk işlem hattındaki kopya yürütme 10:06 ' dan UTC 'den 10:15 ' ye kadar UTC 'ye kadar olur. İkinci işlem hattında etkinlik yürütmeyi silme, 10:08 saat UTC 'den 10:17 ' e kadar UTC 'ye kadar olur. | 10 * 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi Için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 2 çalıştırma gerçekleşti | 6 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 2, etkinlik çalıştırması için 4) |
+
+
+**Toplam senaryo fiyatlandırması: $0,45523**
+
+- Data Factory Işlemler = $0,00023
+  - Okuma/yazma = 20 * 00001 = $0,0002 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 6 * 000005 = $0,00003 [1 Izleme = $0,25/50000 = 0,000005]
+- İşlem hattı düzenleme & yürütme = $0,455
+  - Etkinlik çalıştırmaları = 0,001 * 6 = 0,006 [1 Çalıştırma = $1/1000 = 0,001]
+  - Veri taşıma etkinlikleri = $0,333 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
+  - İşlem hattı etkinliği = $0,116 (7 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime 1/saat)
+
+> [!NOTE]
+> Bu fiyatlar yalnızca örnek amaçlıdır.
+
+**SSS**
+
+S: 50 'den fazla işlem hattı etkinliği çalıştırmak istersem, bu etkinlikler eşzamanlı olarak çalıştırılabilir mi?
+
+Y: en fazla 50 eşzamanlı işlem hattı etkinliğine izin verilir.  "Ücretsiz yuva" kapatılıncaya kadar 51th ardışık düzen etkinliği sıraya alınacaktır. Dış etkinlik için aynı. Maksimum 800 eşzamanlı dış etkinliğe izin verilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

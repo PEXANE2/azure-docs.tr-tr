@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032892"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948207"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu Erişimde What If aracını kullanarak sorunları giderme
 
-[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
+[Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
 
 Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kullanabileceğiniz açıklanır.
 
@@ -105,4 +105,4 @@ Kullanıcılarınız için uygulanamadıkları ilkeler listesinde, bu ilkelerin 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Koşullu erişim ilkesi uygulaması hakkında daha fazla bilgi, [koşullu erişim öngörülerini ve raporlamayı](howto-conditional-access-insights-reporting.md)kullanan ilkeler yalnızca rapor modu kullanılarak bulunabilir.
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [koşullu erişim ortak ilkelerine](concept-conditional-access-policy-common.md)bakın. 
+- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [koşullu erişim ortak ilkelerine](concept-conditional-access-policy-common.md)bakın.

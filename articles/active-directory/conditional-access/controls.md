@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922130"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948309"
 ---
 # <a name="custom-controls-preview"></a>Özel denetimler (Önizleme)
 
@@ -53,7 +53,7 @@ JSON verilerini kopyalayın ve ilgili metin kutusuna yapıştırın. Yaptığın
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Özel denetimler, Azure Multi-Factor Authentication, Azure AD self servis parola sıfırlama (SSPR) gerektiren kimlik koruması otomasyonu ile birlikte kullanılamaz, çok faktörlü kimlik doğrulama talep gereksinimlerini karşılayıp, rolleri ayrıcalıklı kimlik yöneticisi (PıM) ile veya Intune cihaz kaydının bir parçası olarak yükseltebilir.
+Özel denetimler, Azure Multi-Factor Authentication, Azure AD self servis parola sıfırlama (SSPR), kimlik koruması 'nın, Intune cihaz kaydının bir parçası olarak veya cihazları Azure AD 'ye birleştirilirken ayrıcalıklı Identity Manager 'daki (PıM) rolleri yükseltmek için Azure, Azure AD self servis parola sıfırlama (SSPR) gerektiren Otomasyon ile birlikte kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

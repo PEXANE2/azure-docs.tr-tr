@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 6271eab35be22d04f8ac1c6413f4f965c6800290
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931174"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950264"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -53,7 +53,7 @@ Bu öğreticide şunları yapacaksınız:
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>OpenVINO™ model sunucusu – Intel 'den AI uzantısı hakkında
 [Openvino™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) 'in Intel® dağıtımı (açık görsel çıkarım ve sinir ağ iyileştirmesi), geliştiricilerin ve veri bilimcilerinin bilgisayar görme iş yüklerini hızlandırmasına, derin öğrenime ve dağıtımlara sahip olmasına ve gelişmiş, hafif bir şekilde yürütmeyi uçtan buluta kadar kolay ve heterojen bir şekilde® yürütmeyi etkinleştirmesine yardımcı olan ücretsiz bir yazılım setidir. Model iyileştirici ve çıkarım altyapısı ile Intel® derin öğrenme dağıtım araç setini ve 40 'den fazla iyileştirilmiş önceden eğitilen [modeli Içeren açık model Zoo](https://github.com/openvinotoolkit/open_model_zoo) deposunu içerir.
 
-Karmaşık, yüksek performanslı canlı video analizi çözümleri oluşturmak için IoT Edge modüldeki canlı video analizinin, kenardaki ölçeğe uygun bir güçlü çıkarım altyapısı ile eşleştirilmesi gerekir. Bu öğreticide, çıkarım istekleri, IoT Edge üzerinde canlı video analizi ile çalışmak üzere tasarlanan bir uç modülü olan [Intel, Openvino™ model sunucusuna – AI uzantısına](https://aka.ms/lva-intel-ovms)gönderilir. Bu çıkarım sunucu modülü, bilgisayar görme iş yükleri için çok iyileştirilmiş ve Intel® mimarileri için geliştirilen, OpenVINO™ araç seti tarafından desteklenen bir çıkarım sunucusu olan OpenVINO™ model sunucusunu (OVM 'ler) içerir. OVM 'lere, video çerçevelerinin ve canlı video analizine yönelik IoT Edge modüldeki bir uzantı eklenmiştir ve bu sayede herhangi bir OpenVINO™ araç seti desteklenen modeli ( [burada](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)kodu değiştirerek çıkarım sunucu modülünü özelleştirebilirsiniz) kullanabilirsiniz. Intel® donanımı tarafından sağlanan çok çeşitli hızlandırma mekanizmalarından daha fazla seçim yapabilirsiniz. Bunlara CPU 'Lar (Atom, çekirdek, Xeon), FPGAs, VPUs dahildir.
+Karmaşık, yüksek performanslı canlı video analizi çözümleri oluşturmak için IoT Edge modüldeki canlı video analizinin, kenardaki ölçeğe uygun bir güçlü çıkarım altyapısı ile eşleştirilmesi gerekir. Bu öğreticide, çıkarım istekleri, IoT Edge üzerinde canlı video analizi ile çalışmak üzere tasarlanan bir uç modülü olan [Intel, Openvino™ model sunucusuna – AI uzantısına](https://aka.ms/lva-intel-ovms)gönderilir. Bu çıkarım sunucu modülü, bilgisayar görme iş yükleri için çok iyileştirilmiş ve Intel® mimarileri için geliştirilen, OpenVINO™ araç seti tarafından desteklenen bir çıkarım sunucusu olan OpenVINO™ model sunucusunu (OVM 'ler) içerir. OVM 'lere, video çerçevelerinin ve canlı video analizine ilişkin IoT Edge modüldeki bir uzantı eklenmiştir ve bu sayede herhangi bir OpenVINO™ Toolkit desteklenen modeli ( [kodu](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)değiştirerek çıkarım sunucu modülünü özelleştirebilirsiniz) kullanabilirsiniz. Intel® donanımı tarafından sağlanan çok çeşitli hızlandırma mekanizmalarından daha fazla seçim yapabilirsiniz. Bunlara CPU 'Lar (Atom, çekirdek, Xeon), FPGAs, VPUs dahildir.
 
 Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models)erişebilirsiniz:
 

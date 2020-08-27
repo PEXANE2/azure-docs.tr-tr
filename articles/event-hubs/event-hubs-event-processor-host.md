@@ -3,22 +3,20 @@ title: Olay Işleyicisi ana bilgisayarı 'nı kullanarak olayları alma-Azure Ev
 description: Bu makalede, Azure Event Hubs 'daki olay Işleyicisi ana bilgisayarı açıklanmaktadır. Bu, denetim noktası oluşturma, kiralama ve okuma olaylarının paralel olarak yönetilmesini basitleştirir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936189"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949091"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
-> Bu makale, Azure Event Hubs SDK 'sının eski sürümü için geçerlidir. Kodunuzu SDK 'nın daha yeni sürümüne nasıl geçirebileceğinizi öğrenmek için, bu geçiş kılavuzlarını inceleyin. 
+> Bu makale, Azure Event Hubs SDK 'sının eski sürümü için geçerlidir. SDK 'nın geçerli sürümü için bkz. [uygulamanızın birden çok örneğinde bölüm yükünü dengeleme](event-processor-balance-partition-load.md). Kodunuzu SDK 'nın daha yeni sürümüne nasıl geçirebileceğinizi öğrenmek için, bu geçiş kılavuzlarını inceleyin. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java betiği](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Ayrıca bkz. [uygulamanızın birden çok örneğinde bölüm yükünü dengeleme](event-processor-balance-partition-load.md).
 
 Azure Event Hubs, düşük maliyetli milyonlarca olayı akışa almak için kullanılabilen güçlü bir telemetri alma hizmetidir. Bu makalede, *olay Işlemcisi Konağı* (EPH) kullanılarak alınan olayların nasıl kullanılacağı açıklanır; checkişaret, kiralama ve paralel olay okuyucularının yönetimini kolaylaştıran akıllı bir tüketici Aracısı.  
 

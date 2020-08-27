@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067418"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949142"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -46,7 +46,7 @@ Aşağıda, git tümleştirmesinin yazma deneyimine sağladığı avantajların 
 -   **Daha Iyi performans:** Git tümleştirmesinin bulunduğu ortalama bir fabrika, Data Factory hizmetinde bir yazma işlemiyle 10 kat daha hızlı yükler. Bu performans geliştirmesi, kaynakların git aracılığıyla indirilmesinden kaynaklanır.
 
 > [!NOTE]
-> Git deposu yapılandırıldığında Data Factory hizmeti ile doğrudan yazma Azure Data Factory UX içinde devre dışıdır. Değişiklikler doğrudan hizmete PowerShell veya SDK aracılığıyla yapılabilir.
+> Git deposu yapılandırıldığında Data Factory hizmeti ile doğrudan yazma Azure Data Factory UX içinde devre dışıdır. PowerShell veya SDK aracılığıyla yapılan değişiklikler doğrudan Data Factory hizmetine yayımlanır ve git 'e girilmez.
 
 ## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git tümleştirmesi ile yazma
 

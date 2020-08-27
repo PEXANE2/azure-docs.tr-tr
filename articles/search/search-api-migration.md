@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927145"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949040"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>En son Azure Bilişsel Arama hizmeti REST API sürümüne yükseltin
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Bilişsel Arama en son REST API yükseltin
 
-[Arama REST API](/rest/api/searchservice/)önceki bir sürümünü kullanıyorsanız, bu makale, uygulamanızı en yeni genel kullanıma sahıp 2020-06-30 API sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+[**Arama REST API**](/rest/api/searchservice/)daha önceki bir sürümünü kullanıyorsanız, bu makale uygulamanızı en yenı **2020-06-30**API sürümüne yükseltmenize yardımcı olur.
 
-REST API sürüm 2020-06-30, önceki sürümlerden bazı değişiklikler içeriyor. Bunlar çoğunlukla geriye dönük olarak uyumludur; Bu nedenle kodunuzun değiştirilmesi, daha önce kullandığınız sürüme bağlı olarak yalnızca en az çaba gerektirir. [Yükseltme adımları](#UpgradeSteps) , yeni özellikleri kullanmak için gereken kod değişikliklerini özetler.
+Sürüm 2020-06-30 önemli bir yeni Özellik ([bilgi deposu](knowledge-store-concept-intro.md)) içerir ve birkaç küçük davranış değişikliği sunar. Bu nedenle, önceki sürümden yükseltiyorsanız (2019-05-06) kod değişikliklerinin en az olması için bu sürüm büyük ölçüde uyumludur.
 
 > [!NOTE]
-> Azure Bilişsel Arama hizmet örneği, daha önceki bir sürümü de dahil olmak üzere bir dizi REST API sürümünü destekler. Bu API sürümlerini kullanmaya devam edebilirsiniz, ancak yeni yeteneklere erişebilmek için kodunuzun en yeni sürüme geçirilmesini öneririz.
+> Bir arama hizmeti, önceki sürümlere dahil olmak üzere bir dizi REST API sürümü destekler. Bu API sürümlerini kullanmaya devam edebilirsiniz, ancak yeni yeteneklere erişebilmek için kodunuzun en yeni sürüme geçirilmesini öneririz. Zaman içinde, REST API en eski sürümleri kullanımdan kaldırılmıştır ve [artık desteklenmeyecektir](search-api-versions.md#unsupported-versions).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>Yükseltme
 
-Yeni sürümlere yükseltirken, büyük olasılıkla kodunuzun üzerinde herhangi bir değişiklik yapmanız gerekmez, ancak sürüm numarasını değiştirin. Kodu değiştirmeniz gerekebilecek tek durumlar şunlardır:
+Yeni bir sürüme yükseltirken, büyük olasılıkla kodunuzda sürüm numarasını değiştirmek yerine birçok değişiklik yapmanız gerekmez. Kodu değiştirmeniz gerekebilecek tek durumlar şunlardır:
 
 * API yanıtında tanınmayan özellikler döndürüldüğünde kodunuz başarısız olur. Varsayılan olarak uygulamanızın anlayamadığını özellikleri yoksaymalıdır.
 
@@ -36,7 +36,7 @@ Yeni sürümlere yükseltirken, büyük olasılıkla kodunuzun üzerinde herhang
 
 * Kodunuz 2019-05-06 ön tarihine sahip bir API sürümüne başvurur ve bu sürümdeki bir veya daha fazla son değişikliğe tabidir. [2019-05-06 sürümüne yükseltme](#upgrade-to-2019-05-06) , daha fazla ayrıntı sağlar. 
 
-Bu durumlardan herhangi biri sizin için geçerlidir, kodunuzu uygun şekilde değiştirmeniz gerekebilir. Aksi takdirde, yeni sürüme eklenen özellikleri kullanmaya başlamak istemiyorsanız hiçbir değişiklik yapılması gerekmez.
+Bu durumlardan herhangi biri sizin için geçerlidir, kodunuzu uygun şekilde değiştirmeniz gerekebilir. Aksi takdirde, yeni sürüme eklenen özellikleri kullanmaya başlamak isteyebileceğiniz halde hiçbir değişiklik yapılması gerekmez.
 
 ## <a name="upgrade-to-2020-06-30"></a>2020-06-30 sürümüne yükselt
 
@@ -63,7 +63,7 @@ Sürüm 2019-05-06, REST API önceki genel kullanıma hazır sürümüdür. Bu A
 
 ### <a name="breaking-changes"></a>Yeni değişiklikler
 
-Önceki API sürümlerine karşı yazılan mevcut kod, API-Version = 2019-05-06 ' de, kod aşağıdaki işlevleri içeriyorsa:
+Önceki API sürümlerine karşı yazılan mevcut kod, kod aşağıdaki işlevleri içeriyorsa API-Version = 2019-05-06 ve üzeri sürümlerde kesilir:
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB-DataSource için Dizin Oluşturucu artık "tür": "cosmosdb"
 

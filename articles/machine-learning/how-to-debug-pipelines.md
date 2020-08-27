@@ -5,34 +5,47 @@ description: Python 'da Azure Machine Learning işlem hatlarınızı hata ayıkl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: likebupt
-ms.author: keli19
-ms.date: 03/18/2020
+author: lobrien
+ms.author: laobri
+ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904658"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950162"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi](concept-ml-pipelines.md) işlem hatlarında hata ayıklamayı ve sorun gidermeyi öğreneceksiniz. Bilgiler şu şekilde sunulmaktadır:
+Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) sorunlarını gidermeye ve hata ayıklamanıza öğrenirsiniz. 
 
-* Azure Machine Learning SDK kullanarak hata ayıklama
-* Azure Machine Learning tasarımcısını kullanarak hata ayıklama
-* Application Insights kullanarak hata ayıkla
-* Visual Studio Code (VS Code) ve Visual Studio için Python Araçları (PTVSD) kullanarak etkileşimli olarak hata ayıklayın
+## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK’sı
-Aşağıdaki bölümler, işlem hatları oluştururken ortak olan genel bakışa genel bakış ve bir işlem hattında çalışan kodunuzda hata ayıklama için farklı stratejiler sağlar. İşlem hattını beklenen şekilde çalıştırmak için bir işlem hattı alırken sorun yaşadığınızda aşağıdaki ipuçlarını kullanın.
+Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirme sırasında yaygın sorunlar yer almaktadır.
 
-### <a name="testing-scripts-locally"></a>Betikleri yerel olarak test etme
+| Sorun | Olası çözüm |
+|--|--|
+| Verileri dizine geçiremedi `PipelineData` | Komut dosyasında, işlem hattının adım çıkış verilerini beklediği yere karşılık gelen bir dizin oluşturduğunuzdan emin olun. Çoğu durumda, bir giriş bağımsız değişkeni çıkış dizinini tanımlar ve ardından dizini açıkça oluşturursunuz. `os.makedirs(args.output_dir, exist_ok=True)`Çıkış dizinini oluşturmak için kullanın. Bu tasarım modelini gösteren bir Puanlama betiği örneği için [öğreticiye](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) bakın. |
+| Bağımlılık hataları | Yerel olarak test edilirken gerçekleşmeyen uzak işlem hattınızda bağımlılık hataları görürseniz, uzak ortam bağımlılıklarınızın ve sürümlerinin test ortamınızdaki olanlarla eşleştiğinden emin olun. (Bkz. [ortam oluşturma, önbelleğe alma ve yeniden kullanma](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| İşlem hedefleri ile belirsiz hatalar | İşlem hedeflerini silmeyi ve yeniden oluşturmayı deneyin. İşlem hedeflerini yeniden oluşturmak hızlı bir şekilde yapılır ve bazı geçici sorunları çözebilir. |
+| İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, `allow_reuse` adımdaki parametre olarak ayarlanır `False` . |
+| İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştığından emin olmak için, her adımın kaynak kodu dizinlerinizi ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem `source_directory` hattı adımı nesnesi üzerinde parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve `source_directory` birden çok adım için aynı yolu kullanmadığınız emin olun. |
 
-Bir işlem hattındaki en yaygın hatalardan biri, ekli bir betiğin (veri temizleme betiği, Puanlama betiği, vb.), istenen şekilde çalışmadığını veya uzak işlem bağlamında, Azure Machine Learning Studio 'daki çalışma alanınızda hata ayıklamanın zor olduğu çalışma zamanı hatalarını içerir. 
+
+## <a name="debugging-techniques"></a>Hata ayıklama teknikleri
+
+Hata ayıklama ardışık düzenleri için üç önemli teknik vardır: 
+
+* Yerel bilgisayarınızda ayrı ardışık düzen adımlarında hata ayıklayın
+* Sorunun kaynağını yalıtmak ve tanılamak için günlük kaydı ve Application Insights kullanın
+* Azure 'da çalışan bir işlem hattına uzaktan hata ayıklayıcı iliştirme
+
+### <a name="debug-scripts-locally"></a>Betiklerin yerel olarak hata ayıklama
+
+Bir işlem hattındaki en yaygın hatalardan biri, etki alanı betiğinin istendiği gibi çalıştırılmasıdır veya uzaktan işlem bağlamında hata ayıklaması zor olan çalışma zamanı hataları içerir.
 
 Ardışık düzenleri yerel olarak çalıştırılamaz, ancak komut dosyalarını yerel makinenizde yalıtımlarda çalıştırmak, işlem ve ortam oluşturma işlemini beklemek zorunda olmadığınızdan daha hızlı hata ayıklamanıza olanak tanır. Bunu yapmak için bazı geliştirme işleri gereklidir:
 
@@ -49,41 +62,9 @@ Yerel ortamınızda çalıştırmak üzere bir betik kurulumuna sahip olduktan s
 > [!TIP] 
 > Betiğinizin beklendiği gibi çalıştığını doğrulayabilmeniz için, bir sonraki adım komut dosyasını birden çok adımla bir işlem hattında çalıştırmayı denemeden önce tek adımlı bir işlem hattında çalıştırıyor.
 
-### <a name="debugging-scripts-from-remote-context"></a>Uzak bağlamdaki betiklerin hatalarını ayıklama
+## <a name="configure-write-to-and-review-pipeline-logs"></a>İşlem hattı günlüklerini yapılandırma, yazma ve gözden geçirme
 
 Komut dosyalarını yerel olarak test etmek, bir işlem hattı oluşturmaya başlamadan önce büyük kod parçalarının ve karmaşık mantığın hatalarını ayıklamanın harika bir yoludur. ancak bazı bir noktada, özellikle de işlem hattı adımları arasındaki etkileşim sırasında oluşan davranışı tanılarken, büyük olasılıkla gerçek ardışık düzen sırasında betiklerde hata ayıklaması yapmanız gerekir. `print()`Uzaktan yürütme sırasında nesne durumunu ve beklenen değerleri görebilmeniz için, JavaScript kodunun hatalarını ayıklamanıza benzer şekilde, adım betiklerinizde deyimlerin serbest bir şekilde kullanılmasını öneririz.
-
-Günlük dosyası `70_driver_log.txt` şunları içerir: 
-
-* Betiğinizin yürütülmesi sırasında tüm yazdırılmış deyimler
-* Betik için yığın izlemesi 
-
-Portalda bu ve diğer günlük dosyalarını bulmak için, önce çalışma alanınızdaki işlem hattına tıklayın.
-
-![İşlem hattı çalıştırma listesi sayfası](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-İşlem hattı çalıştırma ayrıntısı sayfasına gidin.
-
-![İşlem hattı çalıştırma ayrıntısı sayfası](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-Belirli bir adım için modüle tıklayın. **Günlükler** sekmesine gidin. Diğer Günlükler, ortam görüntüsü oluşturma işlemi ve adım hazırlama betikleriniz hakkında bilgiler içerir.
-
-![İşlem hattı çalıştırma ayrıntısı sayfa günlüğü sekmesi](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> Yayınlanan işlem *hatları* için çalıştırmalar çalışma alanınızdaki **uç noktalar** sekmesinde bulunabilir. *Yayımlanamayan işlem hatları* için çalıştırmalar, **denemeleri** veya işlem **hatları**içinde bulunabilir.
-
-### <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
-
-Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirme sırasında yaygın sorunlar yer almaktadır.
-
-| Sorun | Olası çözüm |
-|--|--|
-| Verileri dizine geçiremedi `PipelineData` | Komut dosyasında, işlem hattının adım çıkış verilerini beklediği yere karşılık gelen bir dizin oluşturduğunuzdan emin olun. Çoğu durumda, bir giriş bağımsız değişkeni çıkış dizinini tanımlar ve ardından dizini açıkça oluşturursunuz. `os.makedirs(args.output_dir, exist_ok=True)`Çıkış dizinini oluşturmak için kullanın. Bu tasarım modelini gösteren bir Puanlama betiği örneği için [öğreticiye](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) bakın. |
-| Bağımlılık hataları | Komut dosyalarını yerel olarak geliştirdiyseniz, ancak işlem hattındaki uzak bir işlem üzerinde çalışırken bağımlılık sorunları bulursanız, işlem ortamı bağımlılıklarınızın ve sürümlerinin test ortamınızla eşleştiğinden emin olun. (Bkz. [ortam oluşturma, önbelleğe alma ve yeniden kullanma](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
-| İşlem hedefleri ile belirsiz hatalar | İşlem hedeflerini silme ve yeniden oluşturma işlemi, işlem hedefleriyle ilgili bazı sorunları çözebilir. |
-| İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, `allow_reuse` adımdaki parametre olarak ayarlanır `False` . |
-| İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştırılması için dizinlerinizi her bir adımla ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem `source_directory` hattı adımı nesnesi üzerinde parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve `source_directory` birden çok adım için aynı yolu kullanmadığınız emin olun. |
 
 ### <a name="logging-options-and-behavior"></a>Günlüğe kaydetme seçenekleri ve davranışı
 
@@ -92,8 +73,8 @@ Aşağıdaki tabloda, işlem hatları için farklı hata ayıklama seçenekleri 
 | Kitaplık                    | Tür   | Örnek                                                          | Hedef                                  | Kaynaklar                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK’sı | Ölçüm | `run.log(name, val)`                                             | Azure Machine Learning Portal Kullanıcı arabirimi             | [Denemeleri izleme](how-to-track-experiments.md)<br>[azureml. Core. Run sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python yazdırma/günlüğe kaydetme    | Log    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning Tasarımcısı | [Denemeleri izleme](how-to-track-experiments.md)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | Log    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-izlemeler                | [Application Insights’ta işlem hatlarında hata ayıklama](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure İzleyici Dışarı Aktarıcıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python günlüğü tanıtım rehberi](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Python yazdırma/günlüğe kaydetme    | Günlük    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning Tasarımcısı | [Denemeleri izleme](how-to-track-experiments.md)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Günlük    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-izlemeler                | [Application Insights’ta işlem hatlarında hata ayıklama](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure İzleyici Dışarı Aktarıcıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python günlüğü tanıtım rehberi](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Günlüğe kaydetme seçenekleri örneği
 
@@ -127,9 +108,31 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning Tasarımcısı (Önizleme)
+### <a name="finding-and-reading-pipeline-log-files"></a>İşlem hattı günlük dosyalarını bulma ve okuma
 
-Bu bölümde, tasarımcıda işlem hatlarında sorun giderme hakkında genel bakış sunulmaktadır. Tasarımcıda oluşturulan işlem hatları için, **70_driver_log** dosyasını yazma sayfasında veya işlem hattı çalıştırma ayrıntısı sayfasında bulabilirsiniz.
+Günlük dosyası `70_driver_log.txt` şunları içerir: 
+
+* Betiğinizin yürütülmesi sırasında tüm yazdırılmış deyimler
+* Betik için yığın izlemesi 
+
+Portalda bu ve diğer günlük dosyalarını bulmak için, önce çalışma alanınızdaki işlem hattına tıklayın.
+
+![İşlem hattı çalıştırma listesi sayfası](./media/how-to-debug-pipelines/pipelinerun-01.png)
+
+İşlem hattı çalıştırma ayrıntısı sayfasına gidin.
+
+![İşlem hattı çalıştırma ayrıntısı sayfası](./media/how-to-debug-pipelines/pipelinerun-02.png)
+
+Belirli bir adım için modüle tıklayın. **Günlükler** sekmesine gidin. Diğer Günlükler, ortam görüntüsü oluşturma işlemi ve adım hazırlama betikleriniz hakkında bilgiler içerir.
+
+![İşlem hattı çalıştırma ayrıntısı sayfa günlüğü sekmesi](./media/how-to-debug-pipelines/pipelinerun-03.png)
+
+> [!TIP]
+> Yayınlanan işlem *hatları* için çalıştırmalar çalışma alanınızdaki **uç noktalar** sekmesinde bulunabilir. *Yayımlanamayan işlem hatları* için çalıştırmalar, **denemeleri** veya işlem **hatları**içinde bulunabilir.
+
+## <a name="logging-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında oturum açma (Önizleme)
+
+Tasarımcıda oluşturulan işlem hatları için, **70_driver_log** dosyasını yazma sayfasında veya işlem hattı çalıştırma ayrıntısı sayfasında bulabilirsiniz.
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>Gerçek zamanlı uç noktalar için günlüğe kaydetmeyi etkinleştirme
 
@@ -140,7 +143,7 @@ Tasarımcıda gerçek zamanlı uç noktalarda sorun gidermek ve hata ayıklamak 
 Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kaladığınızda, her modül çalışmayı bitirdiğinde her modül için oluşturulan günlük dosyalarını bulabilirsiniz.
 
 1. Yazma tuvalinde çalışmayı tamamlamış bir modül seçin.
-1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
+1. Modülün sağ bölmesinde,  **çıktılar + Günlükler** sekmesine gidin.
 1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log.txt** seçin. Günlükleri yerel olarak da indirebilirsiniz.
 
     ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)
@@ -154,7 +157,7 @@ Ayrıca, Studio 'nun işlem **hatları** veya **denemeleri** bölümünde buluna
     ![İşlem hattı çalıştırma sayfası](./media/how-to-debug-pipelines/designer-pipelines.png)
 
 1. Önizleme bölmesinde bir modül seçin.
-1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
+1. Modülün sağ bölmesinde,  **çıktılar + Günlükler** sekmesine gidin.
 1. **70_driver_log.txt** dosyasını tarayıcıda görüntülemek için sağ bölmeyi genişletin veya günlükleri yerel olarak indirmek için dosyayı seçin.
 
 > [!IMPORTANT]
@@ -163,7 +166,7 @@ Ayrıca, Studio 'nun işlem **hatları** veya **denemeleri** bölümünde buluna
 ## <a name="application-insights"></a>Application Insights
 OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilgi için şu kılavuza bakın: [Application Insights Machine Learning işlem hatlarında hata ayıklama ve sorun giderme](how-to-debug-pipelines-application-insights.md)
 
-## <a name="visual-studio-code"></a>Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Visual Studio Code (VS Code) ve hata ayıklama GPY kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz. Daha fazla bilgi için [vs Code kılavuzunda etkileşimli hata ayıklamayı](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)ziyaret edin.
 

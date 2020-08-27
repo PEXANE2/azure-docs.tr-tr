@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275437"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948462"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
-[Azure Active Directory (Azure AD) koşullu erişim](../active-directory-conditional-access-azure-portal.md)ile, yetkili kullanıcıların bulut uygulamalarınıza nasıl erişdiğini denetleyebilirsiniz. Bu makalede hakkında bilgi verilmektedir:
+[Azure Active Directory (Azure AD) koşullu erişim](./overview.md)ile, yetkili kullanıcıların bulut uygulamalarınıza nasıl erişdiğini denetleyebilirsiniz. Bu makalede hakkında bilgi verilmektedir:
 
 - Bilmeniz gerekenler 
 - Koşullu erişim ilkelerini yapılandırırken yapmaktan kaçının. 
 
-Bu makalede, [Azure Active Directory ' de koşullu erişim nedir?](../active-directory-conditional-access-azure-portal.md) başlıklı kavramlar ve terminoloji hakkında bilgi sahibi olduğunuz varsayılır.
+Bu makalede, [Azure Active Directory ' de koşullu erişim nedir?](./overview.md) başlıklı kavramlar ve terminoloji hakkında bilgi sahibi olduğunuz varsayılır.
 
 ## <a name="whats-required-to-make-a-policy-work"></a>Bir ilkenin çalışması için gerekenler ne gerekir?
 
@@ -57,7 +57,7 @@ Tüm ilkeler iki aşamada zorlanır:
    - Karşılanmamış tüm gereksinimleri belirlemek için 1. aşamada toplanan oturum ayrıntılarını kullanın. 
    - Erişimi engelleyecek şekilde yapılandırılan bir ilke varsa, blok atama denetimiyle, zorlama burada durdurulur ve Kullanıcı engellenir. 
    - Daha sonra Kullanıcı, ilke karşılanana kadar, 1. aşama sırasında memnun olmayan ek izin denetimi gereksinimlerini tamamlamayla istenir:  
-      - Çok faktörlü kimlik doğrulaması 
+      - Multi-factor authentication 
       - Onaylanan istemci uygulaması/uygulama koruma ilkesi 
       - Yönetilen cihaz (uyumlu veya hibrit Azure AD katılımı) 
       - Kullanım koşulları 
@@ -154,5 +154,5 @@ Daha fazla bilgi için bkz. [Azure portalında klasik ilkeleri geçirme](policy-
 
 Şunları bildirmek istiyorsanız:
 
-- Koşullu erişim ilkesini yapılandırma, bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
+- Koşullu erişim ilkesini yapılandırma, bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../authentication/tutorial-enable-azure-mfa.md).
 - Koşullu erişim ilkelerinizi nasıl planlayacaksanız, bkz. [Azure Active Directory Koşullu erişim dağıtımınızı nasıl planlayacaksanız](plan-conditional-access.md).

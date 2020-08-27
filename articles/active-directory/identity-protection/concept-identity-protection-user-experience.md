@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72887006"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950213"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Kimlik Koruması kullanıcı deneyimleri
 
@@ -29,7 +29,7 @@ Tüm kimlik koruması ilkelerinin, kullanıcılar için oturum açma deneyimine 
 
 ## <a name="multi-factor-authentication-registration"></a>Multi-Factor Authentication kaydı
 
-Multi-Factor Authentication kaydı gerektiren kimlik koruma ilkesini etkinleştirmek ve tüm kullanıcılarınızı hedeflemek için, gelecekte kendi kendini düzeltmek üzere Azure MFA 'yı kullanma imkanına sahip olduklarından emin olur. Bu ilkeyi yapılandırmak, kullanıcılarınıza kaydolmak üzere seçebilecekleri 14 günlük bir süre sağlar ve sona kaydolmaya zorlanır. Kullanıcılar için deneyim aşağıda özetlenmiştir. Makalenin son kullanıcı belgelerinde daha fazla bilgi bulunabilir, [iki öğeli doğrulama ve iş veya okul hesabınız Için genel bakış](../user-help/user-help-two-step-verification-overview.md).
+Multi-Factor Authentication kaydı gerektiren kimlik koruma ilkesini etkinleştirmek ve tüm kullanıcılarınızı hedeflemek için, gelecekte kendi kendini düzeltmek üzere Azure MFA 'yı kullanma imkanına sahip olduklarından emin olur. Bu ilkeyi yapılandırmak, kullanıcılarınıza kaydolmak üzere seçebilecekleri 14 günlük bir süre sağlar ve sona kaydolmaya zorlanır. Kullanıcılar için deneyim aşağıda özetlenmiştir. Makalenin son kullanıcı belgelerinde daha fazla bilgi bulunabilir, [iki öğeli doğrulama ve iş veya okul hesabınız Için genel bakış](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="registration-interrupt"></a>Kayıt kesmesi
 
@@ -84,4 +84,4 @@ BT personeli, kullanıcıların oturum açmalarına izin vermek için [kullanıc
 
 - [Riskleri düzeltin ve kullanıcıların engellemesini kaldırın](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md) 
+- [Azure Active Directory Kimlik Koruması](./overview-identity-protection.md)

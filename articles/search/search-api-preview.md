@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935271"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950485"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
@@ -35,7 +35,7 @@ Genel kullanılabilirliğe geçiş yapan Önizleme özellikleri bu listeden kald
 |  [**Azure Data Lake Storage 2. Dizin Oluşturucu**](search-howto-index-azure-data-lake-storage.md) | Dizin Oluşturucu veri kaynağı | Data Lake Storage 2. ' den içerik ve meta verileri dizine edin.| [Kaydolma](https://aka.ms/azure-cognitive-search/indexer-preview) işlemi, arka uçta aboneliğiniz için destek etkinleştirilecek şekilde gereklidir. Bu veri kaynağına API-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [veri kaynağı oluştur (REST)](/rest/api/searchservice/create-data-source) kullanarak erişin. |
 | [**moreLikeThis**](search-more-like-this.md) | Sorgu | Belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. | Bu sorgu parametresini, [arama belgeleri (REST)](/rest/api/searchservice/search-documents) çağrılarında api-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-preview veya 2017-11-11-Preview ile ekleyin. |
 
-## <a name="calling-preview-rest-apis"></a>Önizleme REST API 'Leri çağırma
+## <a name="how-to-call-a-preview-rest-api"></a>Önizleme REST API nasıl çağrılacağını
 
 Azure Bilişsel Arama, önce REST API önce, sonra .NET SDK 'nin ön sürüm sürümlerini kullanarak deneysel özellikleri önceden yayınlar.
 
@@ -47,12 +47,14 @@ Portalda ve .NET SDK 'sında bazı Önizleme özellikleri kullanılabilir olsa d
 
 + Yönetim işlemleri için [**`2019-10-01-Preview`**](/rest/api/searchmanagement/index-2019-10-01-preview) geçerli önizleme sürümüdür.
 
-Daha eski önizlemeler hala çalışır, ancak zaman içinde eski hale gelir. Kodunuz `api-version=2019-05-06-Preview` veya `api-version=2016-09-01-Preview` veya `api-version=2017-11-11-Preview` ' i çağırırsa, bu çağrılar hala geçerlidir. Ancak, geliştirmelerle yalnızca en yeni önizleme sürümü yenilenir. 
+Daha eski önizlemeler hala çalışır, ancak zaman içinde eski hale gelir. Kodunuz `api-version=2019-05-06-Preview` veya `api-version=2016-09-01-Preview` veya `api-version=2017-11-11-Preview` ' i çağırırsa, bu çağrılar hala geçerlidir. Ancak, geliştirmelerle yalnızca en yeni önizleme sürümü yenilenir.
 
 Aşağıdaki örnek sözdizimi, önizleme API sürümüne yapılan çağrıyı gösterir.
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Azure Bilişsel Arama hizmeti birden çok sürümde kullanılabilir. Daha fazla bilgi için bkz. [API sürümleri](search-api-versions.md).

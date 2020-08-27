@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874784"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948275"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -136,5 +136,5 @@ Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz, [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md)makalesine bakın.
+* Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz, [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](../authentication/tutorial-enable-azure-mfa.md)makalesine bakın.
 * Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim Için en iyi yöntemler](best-practices.md)makalesine bakın.

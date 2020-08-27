@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948072"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Koşullu erişim: Kullanıcı risk tabanlı koşullu erişim
 
@@ -29,7 +29,7 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşlar, güvenli parola deği�
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz. Daha fazla bilgi için [ilkelerinize yönelik adlandırma standartları](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies)' nı ayarlayın.
+1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz. Daha fazla bilgi için [ilkelerinize yönelik adlandırma standartları](./plan-conditional-access.md#set-naming-standards-for-your-policies)' nı ayarlayın.
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
@@ -66,4 +66,4 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşlar, güvenli parola deği�
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview.md)
+[Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview-identity-protection.md)

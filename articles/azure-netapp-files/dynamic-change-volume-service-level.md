@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fb83b30f0844b9bf0e362e6f1e3a3822ba0044d1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078963"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950009"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
@@ -53,6 +53,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
+Ayrıca, Azure CLı komutlarını kullanarak [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Bir birimi başka bir kapasite havuzuna taşıma
 
@@ -64,7 +65,7 @@ Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme a
 
     ![Havuzu Değiştir](../media/azure-netapp-files/change-pool.png)
 
-3.  **Tamam**’a tıklayın.
+3.  **Tamam** düğmesine tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

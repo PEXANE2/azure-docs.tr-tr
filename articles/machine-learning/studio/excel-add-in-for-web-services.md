@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950060"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için Excel eklentisi
 
@@ -28,7 +28,10 @@ Excel, herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan çağ�
 1. Excel eklentisini ve Titanic üzerindeki pastıcılar hakkındaki verileri içeren [örnek Excel dosyasını](https://aka.ms/amlexcel-sample-2)açın. 
  
     > [!NOTE]
-    > Dosya ile ilgili Web hizmetlerinin listesini ve "otomatik tahmin" için en altta bir onay kutusunu görürsünüz. Otomatik tahmin ' i etkinleştirirseniz, **Tüm** hizmetlerinizin tahminleri, girişte her değişiklik olduğunda güncelleştirilir. İşaretlenmezse, yenileme için "tümünü tahmin etme" seçeneğine tıklamanız gerekir. Hizmet düzeyinde otomatik ön tahmin sağlamak için 6. adıma gidin.
+    > - Dosya ile ilgili Web hizmetlerinin listesini ve "otomatik tahmin" için en altta bir onay kutusunu görürsünüz. Otomatik tahmin ' i etkinleştirirseniz, **Tüm** hizmetlerinizin tahminleri, girişte her değişiklik olduğunda güncelleştirilir. İşaretlenmezse, yenileme için "tümünü tahmin etme" seçeneğine tıklamanız gerekir. Hizmet düzeyinde otomatik ön tahmin sağlamak için 6. adıma gidin.
+    > - Azure Machine Learning Excel eklentisi, yüklenecek Office eklentileri deposunu çağırır. Kuruluşunuz Office eklentileri deposuna erişimi yasakladıysanız, eklentiyi yüklerken hata görürsünüz. Bu durumda, lütfen Azure Machine Learning Excel eklentisini Microsoft 365 Yönetim merkezinden dağıtın. Ardından eklentiyi çağırın ve URL ve API anahtarını yapıştırarak Web hizmetini el ile ekleyin.
+
+ 
 
 2. Bu örnekte, "Titanic acil vor Predictor (Excel Eklentisi örneği) [Score]" öğesine tıklayarak Web hizmetini seçin.
    

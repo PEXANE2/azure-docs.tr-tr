@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846318"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948411"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -115,7 +115,7 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine h
 
 - [Azure AD uygulama ara sunucusu](../manage-apps/what-is-application-proxy.md) aracılığıyla yayımlanan uygulamalar
 - [Galeriden eklenen uygulamalar](../manage-apps/add-application-portal.md)
-- [Galeride bulunmayan özel uygulamalar](../manage-apps/add-non-gallery-app.md)
+- [Galeride bulunmayan özel uygulamalar](../manage-apps/view-applications-portal.md)
 - [Uygulama teslim denetleyicileri ve ağları aracılığıyla yayınlanan eski uygulamalar](../manage-apps/secure-hybrid-access.md)
 - [Parola tabanlı çoklu oturum açma](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) kullanan uygulamalar
 

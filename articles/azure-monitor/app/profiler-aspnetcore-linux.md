@@ -2,16 +2,17 @@
 title: Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili | Microsoft Docs
 description: Application Insights Profiler kullanımı hakkında kavramsal genel bakış ve adım adım öğretici.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078096"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930392"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
 
@@ -23,7 +24,7 @@ Bu yönergeyi tamamladıktan sonra, uygulamanız görüntüde gösterilen izleme
 
 ![Profil Oluşturucu izlemeleri](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için geçerlidir:
 
 * [.NET Core SDK 2.1.2 'yi veya üstünü](https://dotnet.microsoft.com/download/archives)yükler.
@@ -168,7 +169,7 @@ Daha fazla dağıtım seçeneği için [App Service belgelerine](https://docs.mi
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure App Service tarafından barındırılan özel kapsayıcılar kullanıyorsanız, [kapsayıcılı bir ASP.NET Core uygulaması için](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler etkinleştirmek üzere Service Profiler etkinleştir bölümündeki yönergeleri izleyin.
+Azure App Service tarafından barındırılan özel kapsayıcılar kullanıyorsanız, [ kapsayıcılı bir ASP.NET Core uygulaması için](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler etkinleştirmek üzere Service Profiler etkinleştir bölümündeki yönergeleri izleyin.
 
 Application Insights GitHub deposuna tüm sorunları veya önerileri bildirin: [ApplicationInsights-Profiler-AspNetCore: sorunlar](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
 

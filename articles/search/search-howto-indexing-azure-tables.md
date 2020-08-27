@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519788"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929576"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -25,8 +25,8 @@ Bu makalede, Azure Tablo depolamada depolanan verileri indekslemek için Azure B
 Şu kaynakları kullanarak bir Azure Tablo depolama Dizin Oluşturucu oluşturabilirsiniz:
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* Azure Bilişsel Arama [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure Bilişsel Arama [.NET SDK](/dotnet/api/overview/azure/search)
 
 Burada, REST API kullanarak akışı gösteririz. 
 
@@ -62,7 +62,7 @@ Bir veri kaynağı oluşturmak için:
     }   
 ```
 
-DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kaynağı oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kaynağı oluşturma](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Kimlik bilgilerini belirtme yolları ####
@@ -73,7 +73,7 @@ Aşağıdaki yollarla tablo için kimlik bilgilerini sağlayabilirsiniz:
 - **Depolama hesabı paylaşılan erişim imzası bağlantı dizesi**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` paylaşılan erişim imzası, kapsayıcılar (Bu durumda tablolar) ve nesneler (tablo satırları) üzerinde liste ve okuma izinlerine sahip olmalıdır.
 -  **Tablo paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` paylaşılan erişim imzası tabloda sorgu (okuma) izinlerine sahip olmalıdır.
 
-Depolama paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Depolama paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Paylaşılan erişim imzası kimlik bilgilerini kullanıyorsanız, bu veri kaynağı kimlik bilgilerini yenilenen imzalara göre düzenli aralıklarla güncelleştirmeniz gerekir. Paylaşılan erişim imzası kimlik bilgilerinin kullanım süreleri dolarsa, Dizin Oluşturucu, "bağlantı dizesinde girilen kimlik bilgileri geçersiz veya süreleri sona erdiğinde" aşağıdakine benzer bir hata iletisiyle başarısız olur.  
@@ -97,7 +97,7 @@ Bir dizin oluşturmak için:
     }
 ```
 
-Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index).
 
 ### <a name="step-3-create-an-indexer"></a>3. Adım: Dizin Oluşturucu oluşturma
 Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. 
@@ -119,7 +119,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya
 
 Bu Dizin Oluşturucu her iki saatte bir çalışır. (Zamanlama aralığı "PT2H" olarak ayarlanır.) Her 30 dakikada bir dizin oluşturucu çalıştırmak için, aralığı "PT30M" olarak ayarlayın. Desteklenen en kısa Aralık beş dakikadır. Zamanlama isteğe bağlıdır; Atlanırsa, bir Dizin Oluşturucu oluşturulduğunda yalnızca bir kez çalışır. Ancak, bir dizin oluşturucuyu dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.   
 
-Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma](/rest/api/searchservice/create-indexer).
 
 Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
@@ -170,7 +170,7 @@ Tablo dizinleme performansını iyileştirmeye yönelik iki olası yaklaşım a�
 
 - Verileriniz zamana göre bölümlense (örneğin, her gün veya hafta için yeni bir bölüm oluşturursanız) aşağıdaki yaklaşımı göz önünde bulundurun: 
     - Şu biçimde bir sorgu kullanın: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
-    - Dizin Oluşturucu [durum API 'sini](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kullanarak dizin oluşturucunun ilerlemesini izleyin ve `<TimeStamp>` en son başarılı yüksek su işaretine göre sorgunun koşulunu düzenli olarak güncelleştirin. 
+    - Dizin Oluşturucu [durum API 'sini](/rest/api/searchservice/get-indexer-status)kullanarak dizin oluşturucunun ilerlemesini izleyin ve `<TimeStamp>` en son başarılı yüksek su işaretine göre sorgunun koşulunu düzenli olarak güncelleştirin. 
     - Bu yaklaşım sayesinde, bir yeniden dizin oluşturmayı tetiklemeniz gerekiyorsa, Dizin oluşturucuyu sıfırlamaya ek olarak DataSource sorgusunu sıfırlamanız gerekir. 
 
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: bf3e4262f4342788f343ab287fd3db53d12736c7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 73037ac3725ad1e7e9dd84597936c47406244630
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918120"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949890"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -24,7 +24,24 @@ Bir kural olarak, Azure Bilişsel Arama ekibi, kodunuzu yeni bir API sürümü k
 Aynı kural SDK güncelleştirmeleri için de geçerlidir. Azure Bilişsel Arama SDK, anlam sürümü [oluşturma](https://semver.org/) kurallarını izler, yani sürümünün üç bölümü vardır: Ana, ikincil ve derleme numarası (örneğin, 1.1.0). SDK 'nın yeni bir ana sürümü yalnızca geriye dönük uyumluluğu kesen değişiklikler için serbest bırakılır. Önemli olmayan özellik güncelleştirmeleri ikincil sürümü artırır ve hata düzeltmeleri yalnızca derleme sürümünü artırır.
 
 > [!Important]
-> .NET, Java, Python ve JavaScript için Azure SDK 'Ları, Azure Bilişsel Arama yönelik yeni istemci kitaplıklarını kullanıma alıyor. Şu anda Azure SDK kitaplıklarının hiçbiri en son arama REST API 'Lerini (2020-06-30) veya yönetim REST API 'Lerini (2020-03-13) tam olarak desteklemez, ancak bu zaman içinde değişecektir. Bu sayfayı veya işlevsel geliştirmelerle [ilgili duyurulara yönelik yenilikler](whats-new.md) ' i düzenli olarak denetleyebilirsiniz. 
+> .NET, Java, Python ve JavaScript için Azure SDK 'Ları, Azure Bilişsel Arama yönelik yeni istemci kitaplıklarını kullanıma alıyor. Şu anda Azure SDK kitaplıklarının hiçbiri en son arama REST API 'Lerini (2020-06-30) veya yönetim REST API 'Lerini (2020-03-13) tam olarak desteklemez, ancak bu zaman içinde değişecektir. Bu sayfayı veya işlevsel geliştirmelerle [ilgili duyurulara yönelik yenilikler](whats-new.md) ' i düzenli olarak denetleyebilirsiniz.
+
+<a name="unsupported-versions"></a>
+
+## <a name="unsupported-versions"></a>Desteklenmeyen sürümler
+
+Mevcut arama çözümlerini 15 Ekim 2020 ' e kadar en son REST API sürümüne yükseltin. Bu sırada, Azure Bilişsel Arama REST API aşağıdaki sürümleri kullanımdan kaldırılacak ve artık desteklenmeyecektir:
+
++ **2015-02-28**
++ **2015-02-28-Önizleme**
++ **2014-07-31-Önizleme**
++ **2014-10-20-Önizleme**
+
+Ayrıca, Azure Bilişsel Arama .NET SDK 'nın [**3.0.0-RC**](https://www.nuget.org/packages/Microsoft.Azure.Search/3.0.0-rc) ' den daha eski sürümleri de bu REST API sürümlerinden birini hedeflerse devre dışı bırakılacaktır. 
+
+Bu tarihten sonra, kullanımdan kaldırılan REST API veya SDK sürümlerinden herhangi birini kullanan uygulamalar artık çalışmaz ve yükseltilmesi gerekir. Bu türde herhangi bir değişiklik yaparken, 12 aylık bir bildirim sunuyoruz, bu nedenle ayarlamak için yeterli zaman vardır.
+
+Azure Bilişsel Arama 'yi kullanmaya devam etmek için lütfen [REST API](search-api-migration.md) hedefleyen mevcut kodu [REST API 2020-06-30 sürümünü](https://docs.microsoft.com/rest/api/searchservice/) veya daha yeni bir SDK 'yı 15 Ekim 2020 ' e geçirin.  En son sürüme güncelleştirme hakkında sorularınız varsa, azuresearch_contact@microsoft.com kodunuzu güncelleştirmek için yeterli zamana sahip olduğunuzdan emin olmak için lütfen 15 mayıs 2020 ' e kadar posta gönderin.
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -40,16 +57,16 @@ Arama hizmetinde içerik oluşturun ve yönetin.
 |-------------------------|--------|------------------------------|
 | [Arama 2020-06-30](/rest/api/searchservice/index)| Dengeli | Arama REST API 'lerinin en yeni kararlı sürümü, ilgi Puanlama ve genellikle bilgi deposu için kullanılabilirlik ile yapılır.|
 | [Arama 2020-06-30-Preview](/rest/api/searchservice/index-preview)| Önizleme | Kararlı sürümle ilişkili önizleme sürümü. Birden çok [Önizleme özelliği](search-api-preview.md)içerir. |
-| Arama 2019-05-06 | Dengeli | [Karmaşık türler](search-howto-complex-data-types.md)ekler. |
+| Arama 2019-05-06 | Dengeli  | [Karmaşık türler](search-howto-complex-data-types.md)ekler. |
 | Arama 2019-05-06-Preview | Önizleme | Kararlı sürümle ilişkili önizleme sürümü. |
-| Arama 2017-11-11 | Dengeli  | Becerileri ve [AI zenginleştirme](cognitive-search-concept-intro.md)ekler. |
+| Arama 2017-11-11 | Dengeli | Becerileri ve [AI zenginleştirme](cognitive-search-concept-intro.md)ekler. |
 | Arama 2017-11-11-Önizleme | Önizleme | Kararlı sürümle ilişkili önizleme sürümü. |
 | Arama 2016-09-01 |Dengeli | [Dizin oluşturucular](search-indexer-overview.md)ekler. |
 | Arama 2016-09-01-Önizleme | Önizleme | Kararlı sürümle ilişkili önizleme sürümü.|
-| Arama 2015-02-28 | Dengeli  | İlk genel olarak kullanılabilir sürüm.  |
-| Arama 2015-02-28-Önizleme | Önizleme | Kararlı sürümle ilişkili önizleme sürümü. |
-| Arama 2014-10-20-Önizleme | Önizleme | İkinci genel önizleme. |
-| Arama 2014-07-31-Önizleme | Önizleme | İlk genel önizleme. |
+| Arama 2015-02-28 | 10-10-2020 sonrasında desteklenmez   | İlk genel olarak kullanılabilir sürüm.  |
+| Arama 2015-02-28-Önizleme | 10-10-2020 sonrasında desteklenmez  | Kararlı sürümle ilişkili önizleme sürümü. |
+| Arama 2014-10-20-Önizleme | 10-10-2020 sonrasında desteklenmez | İkinci genel önizleme. |
+| Arama 2014-07-31-Önizleme | 10-10-2020 sonrasında desteklenmez  | İlk genel önizleme. |
 
 ### <a name="management-rest-apis"></a>Yönetim REST API’leri
 
@@ -64,8 +81,7 @@ Bir arama hizmeti oluşturup yapılandırın ve API anahtarlarını yönetin.
 
 ## <a name="azure-sdk-for-net"></a>.NET için Azure SDK
 
-Paket sürümü geçmişi NuGet.org üzerinde kullanılabilir. Bu tablo, her paket sayfasına bağlantılar sağlar.
-
+Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmiştir. 
 
 | SDK sürümü | Durum | Açıklama |
 |-------------|--------|------------------------------|
@@ -73,6 +89,8 @@ Paket sürümü geçmişi NuGet.org üzerinde kullanılabilir. Bu tablo, her pak
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Dengeli | Yayınlanan 2019 Mayıs. Arama REST API-Version = 2019-05-06 ' i hedefler.|
 | [Microsoft. Azure. Search 8,0-Önizleme](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Önizleme | Yayın tarihi 2019 Nisan. Arama REST API-Version = 2019-05 -06-Preview ' i hedefler.|
 | [Microsoft. Azure. Management. Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler.  |
+
+Microsoft. Azure. Search 'ün önceki sürümleri hakkında daha fazla bilgi için, herhangi bir yayın için bir [NuGet paketi sayfasına](https://www.nuget.org/packages/Microsoft.Azure.Search/) gidin, **Sürüm geçmişine**doğru kaydırın ve sürümlerin tam listesini görüntülemek için bölümü genişletin.
 
 ## <a name="azure-sdk-for-java"></a>Java için Azure SDK
 

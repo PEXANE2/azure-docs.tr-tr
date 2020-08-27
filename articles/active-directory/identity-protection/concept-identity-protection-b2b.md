@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72881321"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949205"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Kimlik Koruması ve B2B kullanıcıları
 
@@ -53,4 +53,4 @@ Kuruluşunuzun risk tabanlı koşullu erişim ilkelerinin B2B kullanıcıların�
 
 Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
-- [Azure AD B2B işbirliği nedir?](../b2b/what-is-b2b.md)
+- [Azure AD B2B işbirliği nedir?](../external-identities/what-is-b2b.md)

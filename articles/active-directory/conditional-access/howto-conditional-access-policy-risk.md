@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce687ae1f47b20bb5fff3827e7bcbd5d7edf2d83
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2564e3f246d23028d6c73832a25f37110e7670c8
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024372"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948105"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Koşullu erişim: oturum açma riski tabanlı koşullu erişim
 
@@ -35,11 +35,11 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşların güvenli parola değ
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
 1. **Koşullar**  >  **Kullanıcı riski**altında **Yapılandır** ' ı **Evet**olarak ayarlayın. **Bu ilkenin uygulanacağı oturum açma risk düzeyini seçin** altında 
    1. **Yüksek** ve **Orta**' yı seçin.
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
@@ -52,22 +52,22 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşların güvenli parola değ
 1. **Atamalar**altında **Kullanıcılar**' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin.
-   1. **Done** (Bitti) öğesini seçin.
+   1. **Bitti**'yi seçin.
 1. **Koşullar**' ın altında, **oturum açma riski**' nı **ve ardından orta ve üst**' i seçin.
    1. **Seç**' i ve sonra **bitti**' yi seçin.
 1. **Denetimleri**  >  **erişimi**altında, erişime **izin ver**' i seçin ve ardından **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
    1. **Seç**’i seçin.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Kullanıcı risk tabanlı koşullu erişim](howto-conditional-access-policy-risk-user.md)
+[Kullanıcı risk tabanlı Koşullu Erişim](howto-conditional-access-policy-risk-user.md)
 
 [Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview.md)
+[Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview-identity-protection.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225283"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928777"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
@@ -38,7 +38,7 @@ Azure Bilişsel Arama 'de, şifreleme bağlantılarla ve iletimlerle başlar ve 
 
 Arama hizmeti tarafından dahili olarak işlenen veriler için aşağıdaki tabloda [veri şifreleme modelleri](../security/fundamentals/encryption-models.md)açıklanmaktadır. Bilgi deposu, artımlı zenginleştirme ve Dizin Oluşturucu tabanlı dizin oluşturma, diğer Azure hizmetlerinde veri yapılarına okuma veya yazma gibi bazı özellikler. Bu hizmetlerin Azure Bilişsel Arama ayrı ayrı şifreleme desteği düzeyleri vardır.
 
-| Model | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
+| Modelleme | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
 |------------------|-------|-------------|--------------|------------|
 | sunucu tarafı şifreleme | Microsoft tarafından yönetilen anahtarlar | Hiçbiri (yerleşik) | Hiçbiri, tüm bölgelerde, tüm bölgelerde bulunan ve 24 2018 Ocak 'tan sonra oluşturulan içerikler için kullanılabilir. | İçerik (dizinler ve eş anlamlı haritalar) ve tanımlar (Dizin oluşturucular, veri kaynakları, becerileri) |
 | sunucu tarafı şifreleme | Müşteri tarafından yönetilen anahtarlar | Azure Key Vault | Faturalandırılabilir katmanda, tüm bölgelerde, Ocak 2019 ' den sonra oluşturulan içerikler için kullanılabilir. | Veri disklerinde içerik (dizinler ve eş anlamlılar haritaları) |
@@ -94,7 +94,7 @@ Arama hizmetinize erişimi daha fazla denetlemek için, belirli IP adreslerine v
 
 [Gelen erişimi yapılandırmak](service-configure-firewall.md)için portalı kullanabilirsiniz.
 
-Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13, [ıprule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parametresi ile, tek tek veya bir aralıkta, arama hizmetinize erişim vermek istediğiniz IP adreslerini tanımlayarak hizmetinize erişimi kısıtlamanıza olanak sağlar.
+Alternatif olarak, yönetim REST API 'Lerini de kullanabilirsiniz. API sürüm 2020-03-13, [ıprule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parametresi ile, tek tek veya bir aralıkta, arama hizmetinize erişim vermek istediğiniz IP adreslerini tanımlayarak hizmetinize erişimi kısıtlamanıza olanak sağlar.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Özel uç nokta (Internet trafiği yok)
 
@@ -127,7 +127,7 @@ Arama sonuçları üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsa
 
 ## <a name="administrative-rights"></a>Yönetim hakları
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. Azure Bilişsel Arama 'de, hizmeti oluşturmak veya silmek, API anahtarlarını yönetmek ve hizmeti ölçeklendirmek için Kaynak Yöneticisi kullanılır. Bu nedenle, Azure rol atamaları, [Portal](search-manage.md), [POWERSHELL](search-manage-powershell.md)veya [Yönetim REST API 'lerini](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimlerin bu görevleri gerçekleştirebileceğini tespit eder.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarının sağlanması için [Azure Resource Manager](../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir. Azure Bilişsel Arama 'de, hizmeti oluşturmak veya silmek, API anahtarlarını yönetmek ve hizmeti ölçeklendirmek için Kaynak Yöneticisi kullanılır. Bu nedenle, Azure rol atamaları, [Portal](search-manage.md), [POWERSHELL](search-manage-powershell.md)veya [Yönetim REST API 'lerini](/rest/api/searchmanagement/search-howto-management-rest-api)kullanıp kullanmadıklarından bağımsız olarak kimlerin bu görevleri gerçekleştirebileceğini tespit eder.
 
 Buna karşılık, bir dizin oluşturma veya silme yeteneği gibi, hizmette barındırılan içerik üzerinde yönetici hakları, [önceki bölümde](#index-access)AÇıKLANDıĞı gibi API anahtarları üzerinden basıp basmadığını değerlendirerek.
 

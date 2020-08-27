@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130441"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950400"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
@@ -29,7 +29,7 @@ Bu makalede her iki bildirim e-postası için bir genel bakış sunulmaktadır.
 
 ## <a name="users-at-risk-detected-email"></a>Risk altındaki kullanıcılar e-posta algıladı
 
-Risk altında algılanan bir hesaba yanıt olarak Azure AD Kimlik Koruması, **risk altındaki kullanıcılar** konu olarak algılanan bir e-posta uyarısı oluşturur. E-posta, **[risk için Işaretlenmiş kullanıcılar](../reports-monitoring/concept-user-at-risk.md)** raporu için bir bağlantı içerir. En iyi uygulama olarak, risk altındaki kullanıcıları hemen araştırmanız gerekir.
+Risk altında algılanan bir hesaba yanıt olarak Azure AD Kimlik Koruması, **risk altındaki kullanıcılar** konu olarak algılanan bir e-posta uyarısı oluşturur. E-posta, **[risk için Işaretlenmiş kullanıcılar](./overview-identity-protection.md)** raporu için bir bağlantı içerir. En iyi uygulama olarak, risk altındaki kullanıcıları hemen araştırmanız gerekir.
 
 Bu uyarının yapılandırması, uyarının oluşturulmasını istediğiniz Kullanıcı risk düzeyini belirtmenize olanak tanır. Kullanıcının risk düzeyi belirtdiklerinize ulaştığında e-posta oluşturulacaktır. Örneğin, ilkeyi orta Kullanıcı riski üzerine uyarı olarak ayarlarsanız ve Kullanıcı John 'un Kullanıcı risk puanı, gerçek zamanlı bir oturum açma riski nedeniyle orta riske geçerse, risk altında algılanan kullanıcılara e-posta gönderilir. Kullanıcı risk düzeyi hesaplamasının belirtilen risk düzeyi (veya üzeri) olmasına neden olan bir sonraki risk algılamamız varsa, Kullanıcı risk puanı yeniden hesaplandığında, tehlikede daha fazla Kullanıcı görürsünüz. Örneğin, bir Kullanıcı 1 Ocak 'ta orta riske geçerse, ayarlarınız Orta risk üzerine uyarı olarak ayarlandıysa, bir e-posta bildirimi alırsınız. Aynı kullanıcı daha sonra da orta ölçekli bir risk algılamasında daha fazla risk algılamasına sahipse ve Kullanıcı risk puanı yeniden hesaplanmışsa ve hala orta düzeydeyse, başka bir e-posta bildirimi alırsınız. 
 
@@ -70,4 +70,4 @@ Yönetici olarak, haftalık bir Özet e-postası göndermeyi veya kapatmayı de�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)
+- [Azure Active Directory Kimlik Koruması](./overview-identity-protection.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232352"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949183"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Kimlik Koruması sözlüğü
 
@@ -140,7 +140,7 @@ Bir Kullanıcı yeni bir konumdan (IP, Enlem/Boylam ve ASN) başarıyla oturum a
 ### <a name="sign-in-risk"></a>Oturum açma riski
 Risk düzeyine bakın (oturum açma)
 
-### <a name="sign-in-risk-policy"></a>Oturum açma risk ilkesi
+### <a name="sign-in-risk-policy"></a>Oturum açma riski ilkesi
 Belirli bir oturum açma riskini değerlendiren ve önceden tanımlanmış koşullara ve kurallara göre azaltmaları uygulayan koşullu erişim ilkesi.
 
 ### <a name="user-compromise-risk"></a>Kullanıcı güvenliğinin aşılmasına karşı risk
@@ -149,7 +149,7 @@ Risk düzeyine (Kullanıcı güvenliğinin aşılmasına) bakın
 ### <a name="user-risk"></a>Kullanıcı riski
 Risk düzeyine (Kullanıcı güvenliğinin aşılmasına) bakın.
 
-### <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
+### <a name="user-risk-policy"></a>Kullanıcı riski ilkesi
 Oturum açmayı göz önünde bulundurur ve önceden tanımlanmış koşullara ve kurallara göre azaltmaları uygulayan koşullu erişim ilkesi.
 
 ### <a name="users-flagged-for-risk"></a>Riskli oldukları belirlenen kullanıcılar
@@ -160,4 +160,4 @@ Azure Active Directory ' deki bir yapılandırma veya koşul, bu dizin, güvenli
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)
+- [Azure Active Directory Kimlik Koruması](./overview-identity-protection.md)

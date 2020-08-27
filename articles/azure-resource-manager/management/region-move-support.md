@@ -4,14 +4,14 @@ description: Azure bölgeleri arasında taşınabilecek Azure Kaynak türlerini 
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040967"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948122"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Bölgeler arasında Azure kaynaklarını taşıma desteği
 
@@ -32,7 +32,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [ChAIMicrosoft.Bat](#microsoftbatchai)
+> - [ ChAIMicrosoft.Bat](#microsoftbatchai)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
 > - [Microsoft. BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft. Blockzinciri](#microsoftblockchain)
@@ -121,6 +121,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft. Relay](#microsoftrelay)
 > - [Microsoft. ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft. resources](#microsoftresources)
 > - [Microsoft. SaaS](#microsoftsaas)
 > - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft. Search](#microsoftsearch)
@@ -346,7 +347,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes |  
+> | storageaccounts | Evet |  
 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. Biliveservices
@@ -376,7 +377,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sharedvmımages | Hayır | 
 > | sharedvmımages/sürümler | Hayır | 
 > | anlık görüntüler | Hayır | 
-> | virtualmachines | Yes | 
+> | virtualmachines | Evet | 
 > | virtualmachines/uzantıları | Hayır | 
 > | virtualmachinescalesets | Hayır | 
 
@@ -580,7 +581,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | elaun havuzları | Hayır. Kaynak gösterilmez.
 > | elaun havuzları/ıothubkiracılar | Hayır. Kaynak gösterilmez.
-> | ıothubs | Evet. [Daha fazla bilgi edinin](../../iot-hub/iot-hub-how-to-clone.md)
+> | ıothubs | Evet. [Daha fazla bilgi](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | Hayır | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
@@ -907,13 +908,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressrouteports | Hayır | 
 > | frontkapıların | Hayır | 
 > | frontdoorwebapplicationfirewallpolicies | Hayır | 
-> | loadbalancers | Yes <br/><br/> Varolan yapılandırmayı bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. [Dış](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) veya [iç](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) yük dengeleyiciyi taşımayı öğrenin. |
+> | loadbalancers | Evet <br/><br/> Varolan yapılandırmayı bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. [Dış](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) veya [iç](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) yük dengeleyiciyi taşımayı öğrenin. |
 > | localnetworkgateway 'ler |  Hayır | 
 > | natgateway 'ler |  Hayır | 
 > | networkıntpolicies ilkeleri |  Hayır | 
-> | NetworkInterfaces | Yes | 
+> | NetworkInterfaces | Evet | 
 > | networkprofiles | Hayır | 
-> | networksecuritygroups | Yes | 
+> | networksecuritygroups | Evet | 
 > | networkwatchers |  Hayır |  
 > | networkwatchers/connectionmonitörleri |  Hayır | 
 > | networkwatchers/uzunluler |  Hayır | 
@@ -923,7 +924,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | privatednszones/virtualnetworklinks |  Hayır |  
 > | privateendpoints | Hayır | 
 > | privatelinkservices | Hayır | 
-> | publicıpaddresses | Yes<br/><br/> Var olan genel IP adresi yapılandırmasını bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. Genel IP adresini taşıma hakkında [daha fazla bilgi edinin](../../virtual-network/move-across-regions-publicip-portal.md) . |
+> | publicıpaddresses | Evet<br/><br/> Var olan genel IP adresi yapılandırmasını bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. Genel IP adresini taşıma hakkında [daha fazla bilgi edinin](../../virtual-network/move-across-regions-publicip-portal.md) . |
 > | publicıpöneklerini | Hayır | 
 > | routefilters | Hayır | 
 > | routetables |  Hayır | 
@@ -1028,6 +1029,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | lardır |  Hayır |  
 
+## <a name="microsoftresources"></a>Microsoft. resources
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Bölge taşıma |
+> | ------------- | ----------- |
+> | deploymentScripts |  Evet<br/><br/>[Microsoft. resources kaynaklarını yeni bölgeye taşıma](microsoft-resources-move-regions.md) |
+> | Templatespec |  Evet<br/><br/>[Microsoft. resources kaynaklarını yeni bölgeye taşıma](microsoft-resources-move-regions.md) |  
+
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
@@ -1125,12 +1134,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | ınstancepools | Hayır | 
-> | ManagedInstances | Yes | 
-> | ManagedInstances/veritabanları | Yes | 
-> | larý | Yes | 
-> | sunucular/veritabanları | Yes | 
-> | sunucular/elaun havuzları | Yes | 
-> | virtualkümeler | Yes | 
+> | ManagedInstances | Evet | 
+> | ManagedInstances/veritabanları | Evet | 
+> | larý | Evet | 
+> | sunucular/veritabanları | Evet | 
+> | sunucular/elaun havuzları | Evet | 
+> | virtualkümeler | Evet | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
@@ -1152,7 +1161,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes<br/><br/> [Bir Azure Depolama hesabını başka bir bölgeye taşıma](../../storage/common/storage-account-move.md) | 
+> | storageaccounts | Evet<br/><br/> [Bir Azure Depolama hesabını başka bir bölgeye taşıma](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184355"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948938"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -50,7 +50,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Kullanım koşullarınızı kimlerin sahip olduğunu veya kabul etmemiş listesini listeleyin.
 - Toplantı gizlilik düzenlemelerine yardımcı olun.
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
-- [Microsoft Graph API 'leri](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
+- [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -255,10 +255,10 @@ Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Diğer |
 > | --- | --- | --- | --- | --- |
-> | **Yerel uygulama** | Yes | Yes | Yes |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
-> | **Internet Explorer** | Yes | Yes | Yes |  |
-> | **Chrome (uzantısıyla)** | Yes | Yes | Yes |  |
+> | **Yerel uygulama** | Evet | Evet | Evet |  |
+> | **Microsoft Edge** | Evet | Evet | Evet |  |
+> | **Internet Explorer** | Evet | Evet | Evet |  |
+> | **Chrome (uzantısıyla)** | Evet | Evet | Evet |  |
 
 Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 

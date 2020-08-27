@@ -4,20 +4,20 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263393"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950502"
 ---
-# <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
+# <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery hakkındaki genel sorular
 
 Bu makalede Azure Site Recovery hakkında sık sorulan sorular özetlenmektedir. Belirli senaryolar için bu makaleleri gözden geçirin
 
-- [Azure 'da Azure VM olağanüstü durum kurtarma ile ilgili sorular](azure-to-azure-common-questions.md)
-- [Azure 'a VMware VM olağanüstü durum kurtarma ile ilgili sorular](vmware-azure-common-questions.md)
-- [Azure 'da Hyper-V VM olağanüstü durum kurtarma ile ilgili sorular](hyper-v-azure-common-questions.md)
+- [Azure'a Azure VM olağanüstü durum kurtarma hakkındaki sorular](azure-to-azure-common-questions.md)
+- [Azure'a VMware VM olağanüstü durum kurtarma hakkındaki sorular](vmware-azure-common-questions.md)
+- [Azure'a Hyper-V VM olağanüstü durum kurtarma hakkındaki sorular](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Genel
 
@@ -256,8 +256,6 @@ Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı i
 
 - Kurtarma noktalarının bekletme geçmişi için 24 saat.
 - uygulamayla tutarlı anlık görüntülerin sıklığı için 4 saat.
-
-[Çoğaltma ayarları hakkında daha fazla bilgi edinin](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Kilitlenme ile tutarlı bir kurtarma noktası nedir?
 

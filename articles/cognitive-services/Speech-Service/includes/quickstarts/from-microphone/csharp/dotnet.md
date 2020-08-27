@@ -4,19 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63fc699cfd2f02a322f71324519b2f0b5b22234b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926476"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
@@ -93,8 +94,8 @@ namespace Speech.Recognition
 
 Artık uygulamanızı yeniden oluşturmaya ve konuşma tanıma işlevini konuşma hizmetini kullanarak test etmeye hazır olursunuz.
 
-1. **Kodu derleyin** -Visual Studio menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
-2. **Uygulamanızı başlatın** -menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya <kbd>F5</kbd>tuşuna basın.
+1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution**' ı seçin.
+2. **Uygulamanızı başlatın** -menü çubuğundan hata **Debug**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin veya <kbd>F5</kbd>tuşuna basın.
 3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

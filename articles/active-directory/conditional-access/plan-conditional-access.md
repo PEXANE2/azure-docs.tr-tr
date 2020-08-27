@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339733"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948904"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -34,7 +34,7 @@ Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fu
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Koşullu erişim dağıtmanın avantajları şunlardır:
 
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -162,7 +162,7 @@ Derlemeden önce her ilke için soruların yanıtlarını belgeleyin.
 
 #### <a name="common-questions-about-access-controls"></a>Erişim denetimleri hakkında sık sorulan sorular
 
-[Verme veya engelleme](concept-conditional-access-grant.md) 
+[Verme veya engelleme ](concept-conditional-access-grant.md) 
 
 Aşağıdakilerden birini veya birkaçını isteyerek kaynaklara erişim izni vermek istiyor musunuz?
 
@@ -240,7 +240,7 @@ Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına 
 * MFA gerektirme
 * oturum açma risk ilkelerini uygulama
 
-[Yalnızca rapor modu](concept-conditional-access-report-only.md) , yöneticilerin, kendi ortamlarında ETKINLEŞTIRILMEDEN önce CA ilkelerinin etkilerini değerlendirmelerini sağlar.
+[Yalnızca rapor modu ](concept-conditional-access-report-only.md) , yöneticilerin, kendi ortamlarında ETKINLEŞTIRILMEDEN önce CA ilkelerinin etkilerini değerlendirmelerini sağlar.
 
 [CA ilkesinde yalnızca rapor modunu yapılandırmayı](howto-conditional-access-report-only.md)öğrenin.
 
@@ -313,7 +313,7 @@ MFA erişimi gerektiren yaygın kullanım örnekleri:
 
 * [Yöneticiler tarafından](howto-conditional-access-policy-admin-mfa.md)
 
-* [Belirli uygulamalara](app-based-mfa.md)
+* [Belirli uygulamalara](../authentication/tutorial-enable-azure-mfa.md)
 
 * [Tüm kullanıcılar için](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -354,7 +354,7 @@ Kullanıcılarınıza erişimi engelleyebileceğiniz diğer yaygın senaryolar �
 
 * [Belirli ağ konumlarının](howto-conditional-access-policy-location.md) bulut uygulamalarınıza erişmesini engelleyin. Bu ilkeyi, trafiğin gelmemesi gerektiğini bildiğiniz bazı ülkeleri engellemek için kullanabilirsiniz.
 
-* Azure AD eski kimlik doğrulamasını destekler. Ancak, eski kimlik doğrulaması MFA 'yı desteklemez ve birçok ortam, kimlik güvenliğini sağlamak için gereklidir. Bu durumda, [eski kimlik doğrulama kullanan uygulamaları](block-legacy-authentication.md) kiracı kaynaklarınıza erişmesini engelleyebilirsiniz.
+* Azure AD eski kimlik doğrulamasını destekler. Ancak, eski kimlik doğrulaması MFA 'yı desteklemez ve birçok ortam, kimlik güvenliğini sağlamak için gereklidir. Bu durumda, [eski kimlik doğrulama kullanan uygulamaları ](block-legacy-authentication.md) kiracı kaynaklarınıza erişmesini engelleyebilirsiniz.
 
 ## <a name="build-and-test-policies"></a>Derleme ve test ilkeleri
 
@@ -384,18 +384,18 @@ Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştı
 | - | - | - |
 | [İş olmadığında MFA gerektir](untrusted-networks.md)| Güvenilen bir konum/iş sırasında yetkili kullanıcı uygulama oturumunu kapatır| Kullanıcıdan MFA istenmez |
 | [İş olmadığında MFA gerektir](untrusted-networks.md)| Yetkili Kullanıcı, güvenilir bir konum/iş üzerinde olmadığı sürece uygulamada oturum açar| Kullanıcıdan MFA yapması istenir ve başarıyla oturum açabilir |
-| [MFA gerektir (yönetici için)](howto-baseline-protect-administrators.md)| Genel yönetici uygulamada oturum açar| Yöneticiye MFA sorulur |
-| [Riskli oturum açma işlemleri](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Kullanıcı onaylanmamış bir tarayıcı kullanarak uygulamada oturum açar| Yöneticiye MFA sorulur |
+| [MFA gerektir (yönetici için)](../fundamentals/concept-fundamentals-security-defaults.md)| Genel yönetici uygulamada oturum açar| Yöneticiye MFA sorulur |
+| [Riskli oturum açma işlemleri](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Kullanıcı onaylanmamış bir tarayıcı kullanarak uygulamada oturum açar| Yöneticiye MFA sorulur |
 | [Cihaz yönetimi](require-managed-devices.md)| Yetkili Kullanıcı yetkili bir cihazdan oturum açmaya çalışır| Erişim Izni verildi |
 | [Cihaz yönetimi](require-managed-devices.md)| Yetkili kullanıcı yetkisiz bir cihazdan oturum açmaya çalışır| Erişim engellendi |
-| [Riskli kullanıcılar için parola değiştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| Yetkili Kullanıcı güvenliği tehlikeye giren kimlik bilgileriyle oturum açmaya çalışır (yüksek riskli oturum açma)| İlkenize göre kullanıcıdan parolayı değiştirmesi veya erişimin engellenmesi istenir |
+| [Riskli kullanıcılar için parola değiştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Yetkili Kullanıcı güvenliği tehlikeye giren kimlik bilgileriyle oturum açmaya çalışır (yüksek riskli oturum açma)| İlkenize göre kullanıcıdan parolayı değiştirmesi veya erişimin engellenmesi istenir |
 
 
 ### <a name="configure-the-test-policy"></a>Test ilkesini yapılandırma
 
 [Azure Portal](https://portal.azure.com/), Azure Active Directory > güvenlik > koşullu ERIŞIM altında CA ilkelerini yapılandırırsınız.
 
-CA ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. Bu örnek: [kullanıcı Azure Portal oturum AÇTıĞıNDA MFA istemek Için CA ilkesi](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json). Bu hızlı başlangıç şunları yapmanıza yardımcı olur:
+CA ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. Bu örnek: [kullanıcı Azure Portal oturum AÇTıĞıNDA MFA istemek Için CA ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Bu hızlı başlangıç şunları yapmanıza yardımcı olur:
 
 * Kullanıcı arabirimi hakkında bilgi sahibi olun
 
@@ -442,7 +442,7 @@ Yeni uygulanan ilkelerinizi geri almanız gerekiyorsa, aşağıdaki seçeneklerd
 > [!NOTE]
 >  Bu seçenek, yalnızca kullanıcının güvendiği durumlarda gelişigüzel bir şekilde kullanılmalıdır. Kullanıcı, ilke veya gruba mümkün olan en kısa sürede yeniden eklenmelidir.
 
-* **İlkeyi silin.** İlke artık gerekmiyorsa, [silin](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) .
+* **İlkeyi silin.** İlke artık gerekmiyorsa, [silin](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) .
 
 ## <a name="manage-access-to-cloud-apps"></a>Bulut uygulamalarına erişimi yönetme
 
@@ -501,4 +501,4 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 [Kimlik koruması hakkında daha fazla bilgi](../identity-protection/overview-identity-protection.md)
 
-[CA ilkelerini Microsoft Graph API ile yönetme](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[CA ilkelerini Microsoft Graph API ile yönetme](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

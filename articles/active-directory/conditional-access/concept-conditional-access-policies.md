@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295316"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948394"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -44,7 +44,7 @@ Bir ilke birden çok [koşul](concept-conditional-access-conditions.md)içerebil
 
 #### <a name="sign-in-risk"></a>Oturum açma riski
 
-[Azure AD kimlik koruması](../identity-protection/overview.md)olan kuruluşlar için, üretilen risk algılamaları koşullu erişim ilkelerinizi etkileyebilir.
+[Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md)olan kuruluşlar için, üretilen risk algılamaları koşullu erişim ilkelerinizi etkileyebilir.
 
 #### <a name="device-platforms"></a>Cihaz platformları
 
@@ -115,7 +115,7 @@ Yöneticiler, aşağıdaki seçenekleri kullanarak önceki denetimlerden birini 
 Koşullu erişim ilkesi, zorlanmak için en azından aşağıdakileri içermelidir:
 
 - İlkenin **adı** .
-- **Larıyla**
+- **Atamalar**
    - İlkenin uygulanacağı **Kullanıcılar ve/veya gruplar** .
    - İlkeyi uygulamak için **bulut uygulamaları veya eylemleri** .
 - **Erişim denetimleri**
