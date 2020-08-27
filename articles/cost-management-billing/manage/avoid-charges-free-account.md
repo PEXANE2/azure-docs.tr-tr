@@ -4,15 +4,16 @@ description: Ücretsiz Azure hesabınız için neden size ücret yansıtıldığ
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200957"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682935"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
 
@@ -23,7 +24,6 @@ ms.locfileid: "77200957"
 ## <a name="your-credit-runs-out-or-is-expired"></a>Krediniz tükendi veya süresi doldu
 
 Krediniz tükenir veya 30 günün sonunda süresi dolarsa aboneliğiniz devre dışı bırakılır. Azure hizmetlerini kullanmaya devam etmek için hesabınızı yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabınızı yükseltme](upgrade-azure-subscription.md). Yükseltmeden sonra ücretsiz hizmetlere 12 ay boyunca erişmeye devam edebilirsiniz ve yalnızca ücretsiz hizmetler ve miktarları aşan kullanımlarınız için ücret yansıtılır.
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Kullanım, ücretsiz hizmet limitlerini aşıyor
 

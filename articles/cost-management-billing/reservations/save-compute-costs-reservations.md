@@ -4,15 +4,16 @@ description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve di�
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.subservice: reservations
+ms.topic: overview
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760051"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682595"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -109,7 +110,6 @@ Yazılım planları:
 - **Azure Red Hat OpenShift** - Rezervasyon OpenShift maliyetlerine uygulanır; Azure altyapı maliyetlerine uygulanmaz.
 
 Windows sanal makineleri ve SQL Veritabanı için, yazılım maliyetlerine rezervasyon indirimi uygulanmaz. [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile lisanslama maliyetlerini kapsayabilirsiniz.
-
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

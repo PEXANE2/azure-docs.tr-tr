@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b3909281cf475a003ffaaef6f6f48441337728e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810258"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892669"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Hızlı başlangıç: HoloLens 'e yerel C++ örneği dağıtma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 >* Kaynak kodundaki ARR kimlik bilgilerini değiştirin.
 >* Örneği cihaza dağıtın ve çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure uzaktan Işleme hizmetine erişim sağlamak için önce [bir hesap oluşturmanız](../../../how-tos/create-an-account.md)gerekir.
 
@@ -63,7 +63,6 @@ Derleme yapılandırmasını *hata ayıklama* (veya *Release*) ve *ARM64*olarak 
 
 Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunları geçerli kimlik bilgileriyle değiştirin. Bunun için, dosyayı `HolographicAppMain.cpp` Visual Studio içinde açın ve sınıfın Oluşturucusu içinde ön uç 'nin oluşturulduğu parçayı değiştirin `HolographicAppMain` :
 
-
 ```cpp
 // 2. Create front end
 {
@@ -79,7 +78,7 @@ Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunlar�
 ```
 
 Özellikle, aşağıdaki değerleri değiştirin:
-* `init.AccountId`ve `init.AccountKey` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
+* `init.AccountId` ve `init.AccountKey` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
 * Örneğin `init.AccountDomain` , diğer bölgelere ait dizenin bölge bölümü `westus2``"westeurope.mixedreality.azure.com"`
 * Ayrıca, `m_sessionOverride` var olan bir oturum kimliği ile değiştirilebilir. Oturumlar, örneğin [PowerShell betiği](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) kullanılarak veya [oturum REST API](../../../how-tos/session-rest-api.md#create-a-session) doğrudan kullanılarak bu örneğin dışında oluşturulabilir.
 Örnek dışında bir oturum oluşturmak, örneğin örnek birden çok kez çalıştırılması önerilir. Hiçbir oturum geçirilmemişse, örnek her başlatma sırasında yeni bir oturum oluşturur ve bu işlem birkaç dakika sürebilir.

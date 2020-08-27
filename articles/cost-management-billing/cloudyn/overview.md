@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: overview
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9e1acee631316ec961af364769daa1f2a3001e72
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3acc13ca535808f14cb01d50e38f6bd4d12902fc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065868"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684448"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn hizmeti nedir?
 
@@ -57,4 +58,4 @@ AWS Ayrılmış Örnekleri sağladıysanız satın alma önerilerini görüntül
 
 Artık Cloudyn ile tanıştığınıza göre bir sonraki adım bulut ortamınızı kaydetmek ve verilerinizi keşfetmeye başlamaktır.
 
-- [CSP İş Ortağı programına kaydolma ve maliyetle ilgili verileri görüntüleme](quick-register-csp.md)
+- [CSP İş Ortağı programına kaydolun ve maliyetle ilgili verileri görüntüleyin](quick-register-csp.md)
