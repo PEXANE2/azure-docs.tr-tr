@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db2017a3bb1a8910049527796f422227b741b960
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562352"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923203"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK sürümü 9 ' a yükselt
 
-[Azure Search .NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)sürüm 7,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 9 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+[Azure Search .NET SDK 'sının](/dotnet/api/overview/azure/search)sürüm 7,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 9 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
 > [!NOTE]
 > Henüz genel olarak kullanılamayan özellikleri değerlendirmek için 8,0-Preview sürümünü kullanmak istiyorsanız, önceki sürümlerden 8,0-Preview sürümüne yükseltmek için bu makaledeki yönergeleri de izleyebilirsiniz.
@@ -106,12 +106,12 @@ Parametresiz oluşturucusu `Field` yapıldı `internal` . Şu andan itibaren, `F
 
 Sürüm 7,0-Önizleme ve önceki sürümlerde, belge gruplarını kapsülleyen çeşitli sınıflar paralel sınıf hiyerarşileri halinde yapılandırılmıştır:
 
-  -  `DocumentSearchResult`ve `DocumentSearchResult<T>` Devralındığı yer`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`ve `DocumentSuggestResult<T>` Devralındığı yer`DocumentSuggestResultBase`
-  -  `IndexAction`ve `IndexAction<T>` Devralındığı yer`IndexActionBase`
-  -  `IndexBatch`ve `IndexBatch<T>` Devralındığı yer`IndexBatchBase`
-  -  `SearchResult`ve `SearchResult<T>` Devralındığı yer`SearchResultBase`
-  -  `SuggestResult`ve `SuggestResult<T>` Devralındığı yer`SuggestResultBase`
+  -  `DocumentSearchResult` ve `DocumentSearchResult<T>` Devralındığı yer `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` ve `DocumentSuggestResult<T>` Devralındığı yer `DocumentSuggestResultBase`
+  -  `IndexAction` ve `IndexAction<T>` Devralındığı yer `IndexActionBase`
+  -  `IndexBatch` ve `IndexBatch<T>` Devralındığı yer `IndexBatchBase`
+  -  `SearchResult` ve `SearchResult<T>` Devralındığı yer `SearchResultBase`
+  -  `SuggestResult` ve `SuggestResult<T>` Devralındığı yer `SuggestResultBase`
 
 Genel tür parametresi olmayan türetilmiş türler, "dinamik olarak yazılmış" senaryolarda kullanılmak ve türün kullanımını kabul ediyor `Document` .
 
@@ -151,7 +151,7 @@ Bu türlerin isteğe bağlı değerlerini barındıran özellikler artık isteğ
 
 ### <a name="removed-facetresults-and-hithighlights"></a>FacetResults ve Hithighışıkları kaldırıldı
 
-`FacetResults`Ve `HitHighlights` sınıfları kaldırılmıştır. Model sonuçları artık olarak yazılır `IDictionary<string, IList<FacetResult>>` ve vurgulanana kadar vurgular `IDictionary<string, IList<string>>` . Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, `using` kaldırılan türleri kullanan her bir dosyanın üst kısmına diğer adlar eklemektir. Örneğin:
+`FacetResults`Ve `HitHighlights` sınıfları kaldırılmıştır. Model sonuçları artık olarak yazılır `IDictionary<string, IList<FacetResult>>` ve vurgulanana kadar vurgular `IDictionary<string, IList<string>>` . Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, `using` kaldırılan türleri kullanan her bir dosyanın üst kısmına diğer adlar eklemektir. Örnek:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130815"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928845"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu türleri ve bileşimi
 
 Azure Bilişsel Arama, bir sorgu gidiş dönüş işleminin tam belirtimidir. İstekte, altyapıya yönelik yürütme yönergelerini ve geri gelen yanıtı şekillendirieden parametreleri sağlayan parametreler vardır. Belirtilmemiş ( `search=*` ), eşleşme ölçütü olmadan ve null ya da varsayılan parametreleri kullanarak, bir sorgu tüm aranabilir alanlara tam metin arama işlemi olarak yürütülür ve bu da rastgele bir sonuç kümesi döndürür.
 
-Aşağıdaki örnek, [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)oluşturulan temsili bir sorgudur. Bu örnek, [otel demo dizinini](search-get-started-portal.md) hedefler ve bir sorgunun nasıl göründüğünü fikir alabilmek için ortak parametreleri içerir.
+Aşağıdaki örnek, [REST API](/rest/api/searchservice/search-documents)oluşturulan temsili bir sorgudur. Bu örnek, [otel demo dizinini](search-get-started-portal.md) hedefler ve bir sorgunun nasıl göründüğünü fikir alabilmek için ortak parametreleri içerir.
 
 ```
 {
@@ -55,7 +55,7 @@ Azure Bilişsel Arama 'de sorgu yürütme her zaman bir dizine göre yapılır v
 
 Herhangi bir kod yazmadan önce, sözdizimini öğrenmek ve farklı parametrelerle denemek için sorgu araçları 'nı kullanabilirsiniz. En hızlı yaklaşım, [Arama Gezgini](search-explorer.md)olan yerleşik Portal aracıdır.
 
-Bu [Hızlı başlangıcı otel demo dizini oluşturmak için](search-get-started-portal.md)izlediyseniz, ilk sorgunuzu çalıştırmak için bu sorgu dizesini gezgin 'in arama çubuğuna yapıştırabilirsiniz:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Bu [Hızlı başlangıcı otel demo dizini oluşturmak için](search-get-started-portal.md)izlediyseniz, ilk sorgunuzu çalıştırmak için bu sorgu dizesini gezgin 'in arama çubuğuna yapıştırabilirsiniz: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Sorgu işlemleri dizin tarafından nasıl etkinleştirilir
 
@@ -65,7 +65,7 @@ Bir alandaki dizin öznitelikleri, izin verilen işlemleri ayarlar; bir alanın 
 
 ![Otel örneği için Dizin tanımı](./media/search-query-overview/hotel-sample-index-definition.png "Otel örneği için Dizin tanımı")
 
-Yukarıdaki ekran görüntüsü, otel örneği için dizin özniteliklerinin kısmi bir listesidir. Tüm Dizin şemasını portalda görüntüleyebilirsiniz. Dizin öznitelikleri hakkında daha fazla bilgi için bkz. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Yukarıdaki ekran görüntüsü, otel örneği için dizin özniteliklerinin kısmi bir listesidir. Tüm Dizin şemasını portalda görüntüleyebilirsiniz. Dizin öznitelikleri hakkında daha fazla bilgi için bkz. [Create ındex REST API](/rest/api/searchservice/create-index).
 
 > [!Note]
 > Bazı sorgu işlevleri, her alan temelinde değil, Dizin genelinde etkindir. Bu yetenekler şunlardır: [eş anlamlı haritalar](search-synonyms.md), [özel çözümleyiciler](index-add-custom-analyzers.md), [öneri aracı yapıları (otomatik tamamlama ve önerilen sorgular için)](index-add-suggesters.md), [sıralama sonuçları için Puanlama mantığı](index-add-scoring-profiles.md).
@@ -76,13 +76,13 @@ Sorgular her zaman tek bir dizine yönlendirilir. Bir sorgu hedefi olarak dizinl
 
 Bir sorgu isteğindeki gerekli öğeler aşağıdaki bileşenleri içerir:
 
-+ Sabit ve Kullanıcı tanımlı bileşenleri içeren bir URL olarak ifade edilen hizmet uç noktası ve Dizin belgeleri koleksiyonu:**`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`**(Yalnızca REST), API 'nin birden fazla sürümü her zaman kullanılabilir olduğundan gereklidir. 
++ Sabit ve Kullanıcı tanımlı bileşenleri içeren bir URL olarak ifade edilen hizmet uç noktası ve Dizin belgeleri koleksiyonu: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Yalnızca REST), API 'nin birden fazla sürümü her zaman kullanılabilir olduğundan gereklidir. 
 + **`api-key`** ya bir sorgu ya da yönetici API anahtarı, hizmetinize yönelik isteğin kimliğini doğrular.
 + **`queryType`**, basit veya tam, yerleşik varsayılan basit sözdizimi kullanıyorsanız atlanabilir.
 + **`search`** ya da **`filter`** boş bir arama gerçekleştirmek istiyorsanız bu parametre belirtilmeyen bir eşleşme ölçütü sağlar. Her iki sorgu türü de basit ayrıştırıcı açısından ele alınmıştır ancak gelişmiş sorgular bile karmaşık sorgu ifadelerini geçirmek için arama parametresi gerektirir.
 
-Diğer tüm arama parametreleri isteğe bağlıdır. Özniteliklerin tam listesi için bkz. [Dizin oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). İşlemler sırasında parametrelerin nasıl kullanıldığına daha yakından bakmak için, [tam metin aramasının Azure bilişsel arama 'de nasıl çalıştığını](search-lucene-query-architecture.md)görün.
+Diğer tüm arama parametreleri isteğe bağlıdır. Özniteliklerin tam listesi için bkz. [Dizin oluşturma (REST)](/rest/api/searchservice/create-index). İşlemler sırasında parametrelerin nasıl kullanıldığına daha yakından bakmak için, [tam metin aramasının Azure bilişsel arama 'de nasıl çalıştığını](search-lucene-query-architecture.md)görün.
 
 ## <a name="choose-apis-and-tools"></a>API 'Leri ve araçları seçin
 
@@ -92,8 +92,8 @@ Aşağıdaki tabloda sorguları göndermek için API 'Ler ve araç tabanlı yakl
 |-------------|-------------|
 | [Arama Gezgini (portal)](search-explorer.md) | Dizin ve API-sürüm seçimleri için bir arama çubuğu ve seçenekler sağlar. Sonuçlar JSON belgeleri olarak döndürülür. Araştırma, test ve doğrulama için önerilir. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
 | [Postman veya diğer REST araçları](search-get-started-postman.md) | Web test araçları, REST çağrılarını formülletmenin çok iyi bir seçimdir. REST API Azure Bilişsel Arama tüm olası işlemleri destekler. Bu makalede, Azure Bilişsel Arama istek göndermek için HTTP istek üst bilgisini ve gövdesini ayarlamayı öğrenin.  |
-| [Searchındexclient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Bilişsel Arama dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Belgelerde ara (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Ek giriş için sorgu parametrelerini kullanarak bir dizinde GET veya POST yöntemleri.  |
+| [Searchındexclient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Bilişsel Arama dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Belgelerde ara (REST API)](/rest/api/searchservice/search-documents) | Ek giriş için sorgu parametrelerini kullanarak bir dizinde GET veya POST yöntemleri.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Ayrıştırıcı seçin: basit | tümünü
 
@@ -123,7 +123,7 @@ Azure Bilişsel Arama, çok çeşitli sorgu türlerini destekler.
 |------------|--------|-------------------------------|
 | Serbest form metin araması | Arama parametresi ve ayrıştırıcı| Tam metin arama, dizininizdeki tüm *aranabilir* alanlarda bir veya daha fazla terimi tarar ve Google veya Bing gibi bir arama altyapısının çalışmasını istediğiniz şekilde çalışır. Giriş bölümündeki örnek tam metin aramadır.<br/><br/>Tam metin araması, standart Lucene Çözümleyicisi (varsayılan olarak), tüm terimleri düşürmek için, "The" gibi durdurma sözcüklerini kaldırmak için standart Lucene çözümleyici (varsayılan olarak) kullanılarak sözlü analizler Varsayılan ayarı, [İngilizce olmayan çözümleyiciler](index-add-language-analyzers.md#language-analyzer-list) veya sözcük temelli analizleri değiştiren [özel dilden bağımsız çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) ile geçersiz kılabilirsiniz. Bir alanın tüm içeriğini tek bir belirteç olarak ele alan bir [anahtar sözcük](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) örneğidir. Bu, ZIP kodları, kimlikler ve bazı ürün adları gibi veriler için yararlıdır. | 
 | Filtrelenmiş arama | [OData filtre ifadesi](query-odata-filter-orderby-syntax.md) ve her iki ayrıştırıcı | Filtre sorguları bir dizin içindeki tüm *filtrelenebilir* alanlar üzerinde bir Boole ifadesi değerlendirir. Aramanın aksine, bir filtre sorgusu, dize alanlarında büyük/küçük harf duyarlılığı dahil olmak üzere bir alanın tam içeriğiyle eşleşir. Farklı bir farklılık, filtre sorgularının OData sözdiziminde ifade edildiği bir farktır. <br/>[Filtre ifadesi örneği](search-query-simple-examples.md#example-3-filter-queries) |
-| Coğrafi arama | Alan, filtre ifadesi ve herhangi bir ayrıştırıcıda [Edm. Geographon noktası türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) | EDM. Geographi noktası bulunan bir alanda depolanan koordinatlar "yakın ben bul" veya harita tabanlı arama denetimleri için kullanılır. <br/>[Coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search)|
+| Coğrafi arama | Alan, filtre ifadesi ve herhangi bir ayrıştırıcıda [Edm. Geographon noktası türü](/rest/api/searchservice/supported-data-types) | EDM. Geographi noktası bulunan bir alanda depolanan koordinatlar "yakın ben bul" veya harita tabanlı arama denetimleri için kullanılır. <br/>[Coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search)|
 | Aralık araması | Filtre ifadesi ve basit ayrıştırıcı | Azure Bilişsel Arama 'de, Aralık sorguları filtre parametresi kullanılarak oluşturulur. <br/>[Aralık filtresi örneği](search-query-simple-examples.md#example-4-range-filters) | 
 | [Parçalı arama](query-lucene-syntax.md#bkmk_fields) | Arama parametresi ve tam ayrıştırıcı | Tek bir alanı hedefleyen bir bileşik sorgu ifadesi oluşturun. <br/>[Parçalı arama örneği](search-query-lucene-examples.md#example-2-fielded-search) |
 | [benzer arama](query-lucene-syntax.md#bkmk_fuzzy) | Arama parametresi ve tam ayrıştırıcı | Benzer bir yapım veya yazım denetimi olan koşullara göre eşleşir. <br/>[Benzer arama örneği](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -169,5 +169,5 @@ Azure Bilişsel Arama 'de arama sorgusuyla eşleşen arama sonuçlarının tam b
 
 + [Tam metin aramasının Azure Bilişsel Arama 'da nasıl çalıştığı (sorgu ayrıştırma mimarisi)](search-lucene-query-architecture.md)
 + [Arama Gezgini](search-explorer.md)
-+ [.NET 'te sorgulama](search-query-dotnet.md)
-+ [REST 'te sorgulama](search-create-index-rest-api.md)
++ [.NET 'te sorgulama](./search-get-started-dotnet.md)
++ [REST 'te sorgulama](./search-get-started-powershell.md)

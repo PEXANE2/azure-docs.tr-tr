@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: Çekirdek Araçlar geliştirme
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: İşlev oluşturma
           items:
             - name: HTTP tetikleyicisi

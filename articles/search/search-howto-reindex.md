@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85051735"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924036"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
@@ -29,7 +29,7 @@ Yeni, değiştirilmiş veya silinen belgelerle bir dizinin içeriklerinin yenile
 
 Dizinin yapısını değiştirmiyorsanız, dizini ilk olarak yüklemek için kullandığınız tekniklerin aynısını kullanarak bir dizini yenileyebilirsiniz:
 
-* Gönderme modundaki dizin oluşturma için, değişiklikleri bir dizine göndermek üzere [Belge Ekle, Güncelleştir veya Sil](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ' i çağırın.
+* Gönderme modundaki dizin oluşturma için, değişiklikleri bir dizine göndermek üzere [Belge Ekle, Güncelleştir veya Sil](/rest/api/searchservice/addupdate-or-delete-documents) ' i çağırın.
 
 * Dizin oluşturucular için, [Dizin Oluşturucu yürütmeyi zamanlayabilir](search-howto-schedule-indexers.md) ve Delta tanımlamak için değişiklik izleme veya zaman damgalarını kullanabilirsiniz. Güncelleştirmelerin bir Scheduler 'ın yönetebileceğinden daha hızlı yansıtılması gerekiyorsa, bunun yerine gönderim modu dizin oluşturma kullanabilirsiniz.
 
@@ -39,7 +39,7 @@ Aşağıdaki koşullardan herhangi biri doğru olduğunda bir dizini bırakıp y
 
 | Koşul | Açıklama |
 |-----------|-------------|
-| Alan tanımını değiştirme | Bir alan adını, veri türünü veya belirli [Dizin özniteliklerini](https://docs.microsoft.com/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, çok yönlü tablo) yeniden düzeltme için tam yeniden oluşturma gerekir. |
+| Alan tanımını değiştirme | Bir alan adını, veri türünü veya belirli [Dizin özniteliklerini](/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, çok yönlü tablo) yeniden düzeltme için tam yeniden oluşturma gerekir. |
 | Bir alana çözümleyici atama | [Çözümleyiciler](search-analyzers.md) bir dizinde tanımlanır ve alanlara atanır. Dizine dilediğiniz zaman yeni bir çözümleyici tanımı ekleyebilirsiniz, ancak alan oluşturulduğunda yalnızca bir çözümleyici *atayabilirsiniz* . Bu, hem **çözümleyici** hem de **ındexanalyzer** özellikleri için geçerlidir. **SearchAnalyzer** özelliği bir özel durumdur (Bu özelliği var olan bir alana atayabilirsiniz). |
 | Bir dizindeki çözümleyici tanımını güncelleştirme veya silme | Tüm dizini yeniden oluşturmadığınız müddetçe, dizinde var olan bir çözümleyici yapılandırmasını (çözümleyici, belirteç Oluşturucu, belirteç filtresi veya char filtresi) silemez veya değiştiremezsiniz. |
 | Öneri aracı bir alan ekleme | Bir alan zaten varsa ve onu bir [Öneri araçları](index-add-suggesters.md) yapısına eklemek istiyorsanız, dizini yeniden oluşturmanız gerekir. |
@@ -48,7 +48,7 @@ Aşağıdaki koşullardan herhangi biri doğru olduğunda bir dizini bırakıp y
 
 ## <a name="update-conditions"></a>Güncelleştirme koşulları
 
-Mevcut fiziksel yapıları etkilemeden birçok başka değişiklik yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden *oluşturma gerektirmez.* Bu değişiklikler için, yaptığınız değişikliklerle [bir dizin tanımını güncelleştirebilirsiniz](https://docs.microsoft.com/rest/api/searchservice/update-index) .
+Mevcut fiziksel yapıları etkilemeden birçok başka değişiklik yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden *oluşturma gerektirmez.* Bu değişiklikler için, yaptığınız değişikliklerle [bir dizin tanımını güncelleştirebilirsiniz](/rest/api/searchservice/update-index) .
 
 + Yeni alan ekleme
 + Varolan bir alanda **alınabilir** özniteliği ayarla
@@ -58,7 +58,7 @@ Mevcut fiziksel yapıları etkilemeden birçok başka değişiklik yapılabilir.
 + CORS ayarlarını ekleme, güncelleştirme veya silme
 + Eş anlamlı haritaları ekleme, güncelleştirme veya silme
 
-Yeni bir alan eklediğinizde, var olan dizinli belgelere yeni alan için null değer verilir. Gelecekteki bir veri yenilemesinde, dış kaynak verilerinden alınan değerler Azure Bilişsel Arama tarafından eklenen null değerleri değiştirir. Dizin içeriğini güncelleştirme hakkında daha fazla bilgi için bkz. [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Yeni bir alan eklediğinizde, var olan dizinli belgelere yeni alan için null değer verilir. Gelecekteki bir veri yenilemesinde, dış kaynak verilerinden alınan değerler Azure Bilişsel Arama tarafından eklenen null değerleri değiştirir. Dizin içeriğini güncelleştirme hakkında daha fazla bilgi için bkz. [belge ekleme, güncelleştirme veya silme](/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="how-to-rebuild-an-index"></a>Bir dizini yeniden derleme
 
@@ -68,32 +68,32 @@ Zaten üretimde olan uygulamalar için, sorgu kapalı kalma süresini önlemek i
 
 Dizin oluşturma arka planda çalışmaz ve hizmet, devam eden sorgulara karşı ek Dizin oluşturmayı dengeleyebilir. Dizin oluşturma sırasında, sorguların zamanında tamamlanmasını sağlamak için portaldaki [sorgu isteklerini izleyebilirsiniz](search-monitor-queries.md) .
 
-1. Yeniden oluşturma gerekli olup olmadığını belirleme. Yalnızca alanlar ekliyorsanız veya alanların ilgisi olmayan bir bölümünü değiştirirseniz, tanımı silmeden, yeniden oluşturmadan ve tamamen yeniden yüklemeden [güncelleştirmeniz](https://docs.microsoft.com/rest/api/searchservice/update-index) yeterlidir.
+1. Yeniden oluşturma gerekli olup olmadığını belirleme. Yalnızca alanlar ekliyorsanız veya alanların ilgisi olmayan bir bölümünü değiştirirseniz, tanımı silmeden, yeniden oluşturmadan ve tamamen yeniden yüklemeden [güncelleştirmeniz](/rest/api/searchservice/update-index) yeterlidir.
 
-1. Daha sonra başvurmak üzere ihtiyacınız olduğunda [bir dizin tanımı alın](https://docs.microsoft.com/rest/api/searchservice/get-index) .
+1. Daha sonra başvurmak üzere ihtiyacınız olduğunda [bir dizin tanımı alın](/rest/api/searchservice/get-index) .
 
-1. Yeni ve eski dizinleri yan yana çalıştırdığınız varsayılarak, [var olan dizini bırakın](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
+1. Yeni ve eski dizinleri yan yana çalıştırdığınız varsayılarak, [var olan dizini bırakın](/rest/api/searchservice/delete-index). 
 
    Dizini hedefleyen tüm sorgular hemen bırakılır. Bir dizini silmenin geri alınamaz, alanlar koleksiyonu ve diğer yapılar için fiziksel depolamayı yok etmeyi unutmayın. Uygulamadan önce etkilerini düşünmek için duraklatın. 
 
-1. İsteğin gövdesinin değiştirilen veya değiştirilen alan tanımlarını içerdiği [düzeltilmiş bir dizin oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-index).
+1. İsteğin gövdesinin değiştirilen veya değiştirilen alan tanımlarını içerdiği [düzeltilmiş bir dizin oluşturun](/rest/api/searchservice/create-index).
 
-1. Dizini harici bir kaynaktaki [belgelerle yükleyin](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) .
+1. Dizini harici bir kaynaktaki [belgelerle yükleyin](/rest/api/searchservice/addupdate-or-delete-documents) .
 
 Dizini oluştururken, her bir aranabilir alan için bir ters dizin oluşturulan dizin şemasındaki her bir alan için fiziksel depolama ayrılır. Aranabilir olmayan alanlar, filtrelerde veya ifadelerde kullanılabilir, ancak ters dizinler içermez ve tam metin veya benzer şekilde aranabilir değildir. Bir dizin yeniden derlemede, bu ters dizinler silinir ve sağladığınız dizin şemasına göre yeniden oluşturulur.
 
-Dizini yüklediğinizde, her alanın ters çevrilmiş dizini her belgedeki benzersiz ve simgeleştirilmiş sözcüklerin tümü ile doldurulur ve buna karşılık gelen belge kimliklerine eşlenir. Örneğin, bir oteller veri kümesini dizinlerken, şehir alanı için oluşturulan ters dizin Seattle, Portland ve benzeri terimleri içerebilir. Şehir alanına Seattle veya Portland içeren belgeler, dönem içinde belge KIMLIĞINE göre listelenmiş olacaktır. Herhangi bir [ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işleminde, hüküm ve belge kimliği listesi buna göre güncelleştirilir.
+Dizini yüklediğinizde, her alanın ters çevrilmiş dizini her belgedeki benzersiz ve simgeleştirilmiş sözcüklerin tümü ile doldurulur ve buna karşılık gelen belge kimliklerine eşlenir. Örneğin, bir oteller veri kümesini dizinlerken, şehir alanı için oluşturulan ters dizin Seattle, Portland ve benzeri terimleri içerebilir. Şehir alanına Seattle veya Portland içeren belgeler, dönem içinde belge KIMLIĞINE göre listelenmiş olacaktır. Herhangi bir [ekleme, güncelleştirme veya silme](/rest/api/searchservice/addupdate-or-delete-documents) işleminde, hüküm ve belge kimliği listesi buna göre güncelleştirilir.
 
 > [!NOTE]
 > Katı SLA gereksinimleriniz varsa, geliştirme ve dizin oluşturma ile bir üretim dizininden tam yalıtımıyla oluşan yeni bir hizmet sağlamayı düşünebilirsiniz. Ayrı bir hizmet kendi donanımında çalışır ve kaynak çakışması olasılığını ortadan kaldırır. Geliştirme tamamlandığında, yeni dizini yerinde bırakabilir, sorguları yeni uç noktaya ve dizine yönlendirebilir ya da özgün Azure Bilişsel Arama hizmetinizde düzeltilmiş bir dizin yayımlamak için tamamlanmış kodu çalıştırırsınız. Kullanıma kullanım dışı bir dizini başka bir hizmete taşımak için şu anda hiçbir mekanizma yoktur.
 
 ## <a name="check-for-updates"></a>Güncelleştirmeleri denetle
 
-İlk belge yüklendikten hemen sonra bir dizini sorgulamaya başlayabilirsiniz. Bir belgenin KIMLIĞINI biliyorsanız, [Arama belgesi REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş bir test için, Dizin tam olarak yüklenene kadar beklemeniz gerekir ve ardından görmek istediğiniz bağlamı doğrulamak için sorguları kullanabilirsiniz.
+İlk belge yüklendikten hemen sonra bir dizini sorgulamaya başlayabilirsiniz. Bir belgenin KIMLIĞINI biliyorsanız, [Arama belgesi REST API](/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş bir test için, Dizin tam olarak yüklenene kadar beklemeniz gerekir ve ardından görmek istediğiniz bağlamı doğrulamak için sorguları kullanabilirsiniz.
 
 Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [Postman](search-get-started-postman.md) gibi bir Web Testi aracını kullanabilirsiniz.
 
-Bir alanı eklediyseniz veya yeniden adlandırdıysanız, bu alanı döndürmek için [$Select](search-query-odata-select.md) kullanın:`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
+Bir alanı eklediyseniz veya yeniden adlandırdıysanız, bu alanı döndürmek için [$Select](search-query-odata-select.md) kullanın: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

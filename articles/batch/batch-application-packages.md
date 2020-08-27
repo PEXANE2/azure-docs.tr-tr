@@ -3,13 +3,13 @@ title: İşlem düğümlerine uygulama paketleri dağıtma
 description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulamayı ve sürümü kolayca yönetmek için Azure Batch uygulama paketleri özelliğini kullanın.
 ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147220"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922013"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -176,11 +176,11 @@ Var olan bir uygulama paketini güncelleştirmek veya silmek için, uygulamanın
 
 ![Azure portal paket dikey penceresini güncelleştirme][11]
 
-**Sil**
+**Silme**
 
 **Sil**' e tıkladığınızda paket sürümünün silinmesini onaylamanız Istenir ve Batch, paketi Azure Storage 'dan siler. Bir uygulamanın varsayılan sürümünü silerseniz, **varsayılan sürüm** ayarı uygulama için kaldırılır.
 
-![Uygulamayı Sil][12]
+![Uygulamayı Sil ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>İşlem düğümlerine uygulama yükler
 Uygulama paketlerini Azure portal ile yönetmeyi öğrendiğinize göre, bunları işlem düğümlerine dağıtmayı ve Batch görevleriyle çalıştırmayı tartışabiliriz.
@@ -255,7 +255,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`ve `version` dağıtım için belirttiğiniz uygulama ve paket sürümüne karşılık gelen değerlerdir. Örneğin, *blender* uygulamasının 2,7 sürümünün Windows düğümlerinde yüklü olması gerektiğini belirttiyseniz, görev komut satırları bu ortam değişkenini, dosyalarına erişmek için kullanır:
+`APPLICATIONID` ve `version` dağıtım için belirttiğiniz uygulama ve paket sürümüne karşılık gelen değerlerdir. Örneğin, *blender* uygulamasının 2,7 sürümünün Windows düğümlerinde yüklü olması gerektiğini belirttiyseniz, görev komut satırları bu ortam değişkenini, dosyalarına erişmek için kullanır:
 
 ```
 Windows:

@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689754"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918953"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -40,7 +41,7 @@ Bu API özel uç noktalar gerektirmez ve hiçbir eşzamanlılık gereksinimi yok
 Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
 Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 

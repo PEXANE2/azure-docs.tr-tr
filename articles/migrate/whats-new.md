@@ -4,41 +4,32 @@ description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler h
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556919"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927185"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure geçişi 'ndeki yeni sürümler ve Özellikler özetlenmektedir.
+
+## <a name="update-august-2020"></a>Güncelleştirme (Ağustos 2020)
+
+- Portaldan bir Azure geçişi proje anahtarı oluşturulduğu ve gereç kaydını tamamlamaya yönelik kullanılan ekleme deneyimi geliştirildi.
+- VMware ve Hyper-V gereçlerini ayarlamak için portaldan OVA/VHD dosyalarını veya yükleyici betikleri indirme seçeneği.
+- Gelişmiş Kullanıcı deneyimiyle gereç Yapılandırma Yöneticisi yenilendi.
+- Hyper-V VM 'Leri bulma için birden çok kimlik bilgisi desteği.
+- Ek kimlik bilgileri ve bulma kaynakları için geliştirilmiş arama, sıralama ve filtreleme özellikleri.
+- Tek öğe girişi, birden çok öğe girişi ve Hyper-V konakları/& kümelerine yönelik bulma kaynaklarını fiziksel sunuculara eklemek için Kullanıcı için CSV seçeneklerini girin ve içeri aktarın.
+- Tablodaki eklenen her kaynağa karşı doğrulama ve bulma işlemlerine yönelik durum güncelleştirmeleriyle geliştirilmiş hata deneyimi. 
 
 ## <a name="update-june-2020"></a>Güncelleştirme (Haziran 2020)
 
 - Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
 - Fiziksel sunucu keşfi için gereç üzerinde birden çok kimlik bilgisi desteği.
 - Kiracı kısıtlamasının yapılandırıldığı kiracı için gerecden Azure oturum açmaya izin verme desteği.
-- Yeni Azure geçişi sürüm sürümlerini aşağıda listelenen şekilde yapın.
-
-### <a name="azure-public-cloud"></a>Azure genel bulutu
-
-**Senaryo** | **İndir** | **SHA256**
---- | --- | ---
-Hyper-V (8,93 GB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10,9 GB) | [En son sürüm](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Kamu
-
-**Senaryo** | **İndir** | **SHA256**
---- | --- | ---
-Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>Güncelleştirme (Nisan 2020)

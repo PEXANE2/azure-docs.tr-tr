@@ -27,14 +27,14 @@ Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış top
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure SQL Veritabanı](sql-database-output.md)|Evet, etkin olmalıdır.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
 |[Azure SYNAPSE Analytics (Önizleme)](azure-synapse-analytics-output.md)|Hayır|SQL kullanıcı kimlik doğrulaması|
-|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Erişim anahtarı|
-|[Azure Event Hubs](event-hubs-output.md)|Yes|Erişim anahtarı|
+|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Evet|MSI </br> Erişim anahtarı|
+|[Azure Event Hubs](event-hubs-output.md)|Evet|Erişim anahtarı|
 |[Power BI](power-bi-output.md)|Hayır|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
-|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
-|[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Erişim anahtarı|
-|[Azure İşlevleri](azure-functions-output.md)|Yes|Erişim anahtarı|
+|[Azure Tablo Depolama](table-storage-output.md)|Evet|Hesap anahtarı|
+|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Evet|Erişim anahtarı|
+|[Azure Service Bus konuları](service-bus-topics-output.md)|Evet|Erişim anahtarı|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Evet|Erişim anahtarı|
+|[Azure İşlevleri](azure-functions-output.md)|Evet|Erişim anahtarı|
 
 ## <a name="partitioning"></a>Bölümleme
 

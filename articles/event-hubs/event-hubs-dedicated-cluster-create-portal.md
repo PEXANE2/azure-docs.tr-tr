@@ -3,12 +3,12 @@ title: Azure portal kullanarak Event Hubs adanmış küme oluşturma
 description: Bu hızlı başlangıçta, Azure portal kullanarak Azure Event Hubs kümesi oluşturmayı öğreneceksiniz.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323099"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927774"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış Event Hubs kümesi oluşturma 
 Event Hubs kümeler en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu teklif,% 99,99 SLA garanti etti ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir [Event Hubs kümesi](event-hubs-dedicated-overview.md) , garantili kapasiteye ve alt saniyelik gecikmeye göre saniyede milyonlarca olayı alabilir. Bir küme içinde oluşturulan ad alanları ve Olay Hub 'ları, tüm giriş limitleri olmadan standart teklifin tüm özelliklerini ve daha fazlasını içerir. Adanmış teklif, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak [Azure Blob depolama alanına](../storage/blobs/storage-blobs-introduction.md) veya [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)' e otomatik olarak günlüğe kaydedebilirsiniz.
@@ -19,10 +19,10 @@ Adanmış kümeler, önceden ayrılmış bir CPU ve bellek kaynakları miktarı 
 > Bu self servis deneyimi şu anda [Azure portalında](https://aka.ms/eventhubsclusterquickstart)önizleme sürümünde sunulmaktadır. Adanmış teklif hakkında sorularınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)ulaşın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- Bir Azure hesabı. Bir hesabınız yoksa, başlamadan önce [bir hesap satın alın](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) . Bu özellik ücretsiz bir Azure hesabıyla desteklenmez. 
+- Azure hesabı. Bir hesabınız yoksa, başlamadan önce [bir hesap satın alın](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) . Bu özellik ücretsiz bir Azure hesabıyla desteklenmez. 
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 güncelleştirme 3 (sürüm 15,3, 26730,01) veya üzeri.
 - [.NET Standard SDK'sı](https://dotnet.microsoft.com/download), sürüm 2.0 veya üzeri.
 - [Kaynak grubu oluşturuldu](../event-hubs/event-hubs-create.md#create-a-resource-group).
@@ -100,9 +100,9 @@ Oluşturulduktan sonra kümenizin boyutunu değiştirmek isterseniz veya tercih 
 Bu makalede bir Event Hubs kümesi oluşturdunuz. Olay Hub 'ından olay gönderme ve alma ve olayları Azure depolama veya Azure Data Lake Store yakalama hakkında adım adım yönergeler için aşağıdaki öğreticilere bakın:
 
 - Olay gönderme ve alma 
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 - [Event Hubs yakalamayı etkinleştirmek için Azure portal kullanma](event-hubs-capture-enable-through-portal.md)
 - [Apache Kafka için Azure Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md)

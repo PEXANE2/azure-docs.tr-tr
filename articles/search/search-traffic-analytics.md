@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420082"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922744"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
 
 Arama trafiği analizi, Kullanıcı tarafından başlatılan tıklama olayları ve klavye girişleri gibi Azure Bilişsel Arama uygulamanızla kullanıcı etkileşimleri hakkında telemetri toplamaya yönelik bir modeldir. Bu bilgileri kullanarak, popüler arama terimleri, tıklama ücreti ve hangi sorgu girişlerinin sıfır sonuçları elde etme gibi arama çözümünüzün verimliliğini belirleyebilirsiniz.
 
-Bu model, Kullanıcı verilerini toplamak için [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ( [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/)'nin bir özelliği) bir bağımlılığı alır. Bu makalede açıklandığı gibi, istemci kodunuza izleme eklemenizi gerektirir. Son olarak, verileri çözümlemek için bir raporlama mekanizmasına ihtiyacınız olacaktır. Power BI önerilir ancak uygulama panosunu veya Application Insights bağlanan herhangi bir aracı kullanabilirsiniz.
+Bu model, Kullanıcı verilerini toplamak için [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure izleyici](../azure-monitor/index.yml)'nin bir özelliği) bir bağımlılığı alır. Bu makalede açıklandığı gibi, istemci kodunuza izleme eklemenizi gerektirir. Son olarak, verileri çözümlemek için bir raporlama mekanizmasına ihtiyacınız olacaktır. Power BI önerilir ancak uygulama panosunu veya Application Insights bağlanan herhangi bir aracı kullanabilirsiniz.
 
 > [!NOTE]
 > Bu makalede açıklanan model, gelişmiş senaryolar ve istemcinizde eklediğiniz kod tarafından oluşturulan tıklama akışı verileri içindir. Buna karşılık, hizmet günlüklerinin ayarlanması kolaydır, bir dizi ölçüm sağlar ve kod gerekmeden portalda yapılabilir. Günlüğe kaydetmenin etkinleştirilmesi tüm senaryolar için önerilir. Daha fazla bilgi için bkz. [günlük verilerini toplama ve analiz etme](search-monitor-logs.md).
@@ -43,9 +43,9 @@ Azure Bilişsel Arama hizmetinizin [Portal](https://portal.azure.com) sayfasınd
 
 ## <a name="1---set-up-application-insights"></a>1-Application Insights ayarlama
 
-Mevcut bir Application Insights kaynağını seçin veya henüz yoksa [bir tane oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) . Arama Trafik Analizi sayfasını kullanıyorsanız, uygulamanızın Application Insights bağlanması için gereken izleme anahtarını kopyalayabilirsiniz.
+Mevcut bir Application Insights kaynağını seçin veya henüz yoksa [bir tane oluşturun](../azure-monitor/app/create-new-resource.md) . Arama Trafik Analizi sayfasını kullanıyorsanız, uygulamanızın Application Insights bağlanması için gereken izleme anahtarını kopyalayabilirsiniz.
 
-Application Insights bir kaynağınız olduğunda, uygulamanızı kaydetmek için [desteklenen diller ve platformlar için yönergeler](https://docs.microsoft.com/azure/azure-monitor/app/platforms) izleyebilirsiniz. Kayıt, ilişkilendirmeyi ayarlayan Application Insights izleme anahtarını kodunuza eklemektir. Mevcut bir kaynağı seçerken, anahtarı portalda veya arama Trafik Analizi sayfasından bulabilirsiniz.
+Application Insights bir kaynağınız olduğunda, uygulamanızı kaydetmek için [desteklenen diller ve platformlar için yönergeler](../azure-monitor/app/platforms.md) izleyebilirsiniz. Kayıt, ilişkilendirmeyi ayarlayan Application Insights izleme anahtarını kodunuza eklemektir. Mevcut bir kaynağı seçerken, anahtarı portalda veya arama Trafik Analizi sayfasından bulabilirsiniz.
 
 Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıdaki adımlarda yansıtılır. Bir kaynak oluşturur ve uygulamanızı yalnızca birkaç tıklamayla kaydeder.
 
@@ -55,7 +55,7 @@ Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıd
 
 1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet**’e tıklayın.
 
-Bu noktada, uygulamanız uygulama izleme için ayarlanır. Bu, tüm sayfa yüklemelerinin varsayılan ölçümlerle izlendiği anlamına gelir. Önceki adımlar hakkında daha fazla bilgi için bkz. [sunucu tarafı telemetrisini Application Insights etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio).
+Bu noktada, uygulamanız uygulama izleme için ayarlanır. Bu, tüm sayfa yüklemelerinin varsayılan ölçümlerle izlendiği anlamına gelir. Önceki adımlar hakkında daha fazla bilgi için bkz. [sunucu tarafı telemetrisini Application Insights etkinleştirme](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
 ## <a name="2---add-instrumentation"></a>2-izleme ekleme
 
@@ -63,11 +63,11 @@ Bu adım, yukarıdaki adımda oluşturduğunuz Application Insights kaynağını
 
 ### <a name="step-1-create-a-telemetry-client"></a>1. Adım: telemetri istemcisi oluşturma
 
-Application Insights olayları gönderen bir nesne oluşturun. Sunucu tarafı uygulama kodunuza veya bir tarayıcıda çalışan istemci tarafı koduna, burada C# ve JavaScript çeşitlemeleri olarak ifade edilen araçlar ekleyebilirsiniz (diğer diller için, [Desteklenen platformların ve](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)çerçevelerin tam listesine bakın. Size istenen bilgi derinliğini sağlayan yaklaşımı seçin.
+Application Insights olayları gönderen bir nesne oluşturun. Sunucu tarafı uygulama kodunuza veya bir tarayıcıda çalışan istemci tarafı koduna, burada C# ve JavaScript çeşitlemeleri olarak ifade edilen araçlar ekleyebilirsiniz (diğer diller için, [Desteklenen platformların ve](../azure-monitor/app/platforms.md)çerçevelerin tam listesine bakın. Size istenen bilgi derinliğini sağlayan yaklaşımı seçin.
 
 Sunucu tarafı telemetrisi, uygulama katmanında ölçümleri, örneğin bulutta bir Web hizmeti olarak çalışan uygulamalarda veya kurumsal ağdaki şirket içi bir uygulama olarak yakalar. Sunucu tarafı telemetrisi, arama ve tıklama olayları, sonuçlar halinde bir belgenin konumu ve sorgu bilgileri yakalar, ancak veri koleksiyonunuz bu katmanda kullanılabilen bilgilerin kapsamına alınır.
 
-İstemcide sorgu girdilerini işleyen, gezinme ekleyen veya bağlamı içeren (örneğin, bir giriş sayfasından bir ürün sayfasına karşı başlatılan sorgular) ek kodunuz olabilir. Çözümünüzü tarif ediyorsanız, telemetrinizin ek ayrıntıyı yansıtması için istemci tarafı araçları 'nı tercih edebilirsiniz. Bu ek ayrıntıların toplanması, bu düzenin kapsamının ötesinde olur, ancak daha fazla yön için [Web sayfalarına yönelik Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) gözden geçirebilirsiniz. 
+İstemcide sorgu girdilerini işleyen, gezinme ekleyen veya bağlamı içeren (örneğin, bir giriş sayfasından bir ürün sayfasına karşı başlatılan sorgular) ek kodunuz olabilir. Çözümünüzü tarif ediyorsanız, telemetrinizin ek ayrıntıyı yansıtması için istemci tarafı araçları 'nı tercih edebilirsiniz. Bu ek ayrıntıların toplanması, bu düzenin kapsamının ötesinde olur, ancak daha fazla yön için [Web sayfalarına yönelik Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data) gözden geçirebilirsiniz. 
 
 **C# kullanma**
 
@@ -238,6 +238,6 @@ Aşağıdaki ekran görüntüsünde, tüm şema öğelerini kullandıysanız bir
 
 Arama hizmetinize yönelik güçlü ve öngörülü veriler almak için arama uygulamanızı işaretleyin.
 
-[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) hakkında daha fazla bilgi bulabilir ve farklı hizmet katmanları hakkında daha fazla bilgi edinmek için [fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/application-insights/) ziyaret edebilirsiniz.
+[Application Insights](../azure-monitor/app/app-insights-overview.md) hakkında daha fazla bilgi bulabilir ve farklı hizmet katmanları hakkında daha fazla bilgi edinmek için [fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/application-insights/) ziyaret edebilirsiniz.
 
-Harika raporlar oluşturma hakkında daha fazla bilgi edinin. Ayrıntılar için bkz. [Power BI Desktop kullanmaya](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) başlama.
+Harika raporlar oluşturma hakkında daha fazla bilgi edinin. Ayrıntılar için bkz. [Power BI Desktop kullanmaya](/power-bi/fundamentals/desktop-getting-started) başlama.

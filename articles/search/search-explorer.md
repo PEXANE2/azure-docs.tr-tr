@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488214"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929797"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Hızlı başlangıç: portalda sorgu çalıştırmak için arama Gezgini 'ni kullanma
 
 **Arama Gezgini** , Azure bilişsel arama 'de arama dizinine karşı sorgu çalıştırmak için kullanılan yerleşik bir sorgu aracıdır. Bu araç sorgu söz dizimini öğrenmenizi, bir sorgu veya filtre ifadesini test etmeyi veya dizinde yeni içerik olup olmadığını denetleyerek veri yenilemeyi silmeyi kolaylaştırır.
 
-Bu hızlı başlangıç, arama Gezginini göstermek için mevcut bir dizini kullanır. İstekler, JSON belgeleri olarak döndürülen yanıtları içeren [arama REST API](https://docs.microsoft.com/rest/api/searchservice/)kullanılarak formüle eklenir.
+Bu hızlı başlangıç, arama Gezginini göstermek için mevcut bir dizini kullanır. İstekler, JSON belgeleri olarak döndürülen yanıtları içeren [arama REST API](/rest/api/searchservice/)kullanılarak formüle eklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -133,7 +133,7 @@ Sonuçları arama puanının yanı sıra başka bir alana göre sıralamak için
 
    ![OrderBy ifadesi](./media/search-explorer/search-explorer-example-ordery.png "Sıralama düzenini değiştirme")
 
-**$Filter** ve **$OrderBy** ifadeleri OData kurulumlarını. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+**$Filter** ve **$OrderBy** ifadeleri OData kurulumlarını. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="start-search-explorer"></a>
 
@@ -147,11 +147,11 @@ Bu hızlı başlangıçta, REST API kullanarak bir dizini sorgulamak için **Ara
 
 + Ticari bir Web tarayıcısına girebilecekleri gibi serbest biçimli sorgular, son kullanıcı deneyiminin test edilmesi için yararlıdır. Örneğin, yerleşik realestate örnek dizinini varsayarsak, "Seattle apartmanlar Gölü" girebilir ve sonra arama sonuçları içindeki terimleri bulmak için CTRL-F ' y i kullanabilirsiniz. 
 
-+ Sorgu ve filtre ifadeleri, Azure Bilişsel Arama tarafından desteklenen bir sözdiziminde ifade edilir. Varsayılan değer basit bir [sözdizimidir](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ancak daha güçlü sorgular için isteğe bağlı olarak [tam Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) kullanabilirsiniz. [Filtre ifadeleri](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) bir OData sözdizimidir.
++ Sorgu ve filtre ifadeleri, Azure Bilişsel Arama tarafından desteklenen bir sözdiziminde ifade edilir. Varsayılan değer basit bir [sözdizimidir](/rest/api/searchservice/simple-query-syntax-in-azure-search), ancak daha güçlü sorgular için isteğe bağlı olarak [tam Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) kullanabilirsiniz. [Filtre ifadeleri](/rest/api/searchservice/odata-expression-syntax-for-azure-search) bir OData sözdizimidir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -159,7 +159,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorgu yapıları ve sözdizimi hakkında daha fazla bilgi için, API 'nin daha fazla bölümünden yararlanan sorgu ifadeleri oluşturmak için Postman veya eşdeğer bir araç kullanın. [Arama REST API](https://docs.microsoft.com/rest/api/searchservice/) özellikle öğrenme ve araştırma için faydalıdır.
+Sorgu yapıları ve sözdizimi hakkında daha fazla bilgi için, API 'nin daha fazla bölümünden yararlanan sorgu ifadeleri oluşturmak için Postman veya eşdeğer bir araç kullanın. [Arama REST API](/rest/api/searchservice/) özellikle öğrenme ve araştırma için faydalıdır.
 
 > [!div class="nextstepaction"]
 > [Postman 'da temel sorgu oluşturma](search-query-simple-examples.md)

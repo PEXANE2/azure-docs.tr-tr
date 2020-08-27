@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171950"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923254"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -50,7 +50,7 @@ Başlangıç noktası, genellikle Periphery üzerine yerleştirilmiş olan, çok
 1. Azure Bilişsel Arama gönderilen bir sorgu, bir veya daha fazla model sorgu parametresi aracılığıyla çok yönlü gezinti yapısını belirtir. Örneğin, sorgu, `facet=Rating` belki de `:values` `:sort` sunumu daha da belirginleştirmek için bir veya seçeneği olabilir.
 2. Sunu katmanı, istekte belirtilen modelleri kullanarak çok yönlü gezinme sağlayan bir arama sayfası oluşturur.
 3. Derecelendirme içeren çok yönlü bir gezinti yapısı verildiğinde, yalnızca 4 veya üzeri derecelendirmesine sahip ürünlerin gösterilmesi gerektiğini göstermek için "4" tıklayabiliyorsunuz. 
-4. Yanıt olarak, uygulama şunları içeren bir sorgu gönderir`$filter=Rating ge 4` 
+4. Yanıt olarak, uygulama şunları içeren bir sorgu gönderir `$filter=Rating ge 4` 
 5. Sunu katmanı, yalnızca yeni ölçütlere uyan öğeleri (Bu örnekte 4 ve üzeri) karşılayan öğeleri içeren, daha düşük bir sonuç kümesi göstererek sayfayı güncelleştirir.
 
 Bir model bir sorgu parametresidir, ancak sorgu girişi ile karıştırmayın. Bir sorguda seçim ölçütü olarak hiçbir şekilde kullanılmaz. Bunun yerine, model sorgu parametrelerini yanıta geri gelen gezinti yapısına giriş olarak düşünün. Sağladığınız her model sorgu parametresi için, Azure Bilişsel Arama her bir model değerinin kısmi sonuçlarında kaç belgenin olduğunu değerlendirir.
@@ -63,7 +63,7 @@ Uygulama kodunda, model, çok yönlü gezinti yapısını, model sonuçları ve 
 
 ### <a name="query-basics"></a>Sorgu temelleri
 
-Azure Bilişsel Arama, bir veya daha fazla sorgu parametresi aracılığıyla bir istek belirtilir (her birinin açıklaması için bkz. [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) ). Sorgu parametrelerinden hiçbiri gerekli değildir, ancak sorgunun geçerli olabilmesi için en az bir tane olmalıdır.
+Azure Bilişsel Arama, bir veya daha fazla sorgu parametresi aracılığıyla bir istek belirtilir (her birinin açıklaması için bkz. [arama belgeleri](/rest/api/searchservice/Search-Documents) ). Sorgu parametrelerinden hiçbiri gerekli değildir, ancak sorgunun geçerli olabilmesi için en az bir tane olmalıdır.
 
 Önemli olmayan isabetlerin filtreleyebilme özelliği olarak anlaşıldığı duyarlık, bu ifadelerden biri veya her ikisi üzerinden elde edilir:
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak,,, ve içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir `count:<integer>` `sort:<>` `interval:<integer>` `values:<list>` . Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak,,, ve içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir `count:<integer>` `sort:<>` `interval:<integer>` `values:<list>` . Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](/rest/api/searchservice/Search-Documents) .
 
 Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" düğmesine tıkladığınızda, uygulamanın gönderdiği sonraki sorgu de buna dahildir `$filter=Color eq 'Red'` .
 
@@ -299,7 +299,7 @@ Genel olarak, model sonuçlarının sürekli olarak çok büyük olduğunu fark 
 
 Gezinti ağacındaki her bir çok yönlü alan için varsayılan sınır olan 10 değer vardır. Bu varsayılan, değer listesini yönetilebilir bir boyuta tutacağından, gezinme yapıları için anlamlı hale gelir. Sayılacak bir değer atayarak varsayılanı geçersiz kılabilirsiniz.
 
-* `&facet=city,count:5`yalnızca üst dereceli sonuçlarda bulunan ilk beş şehrin bir model sonucu olarak döndürüleceğini belirtir. "Havaalanı" ve 32 eşleşme arama terimi ile örnek bir sorgu düşünün. Sorgu belirtiyorsa `&facet=city,count:5` , yalnızca arama sonuçlarında en çok belgeyi içeren ilk beş benzersiz şehir, model sonuçlarına dahil edilir.
+* `&facet=city,count:5` yalnızca üst dereceli sonuçlarda bulunan ilk beş şehrin bir model sonucu olarak döndürüleceğini belirtir. "Havaalanı" ve 32 eşleşme arama terimi ile örnek bir sorgu düşünün. Sorgu belirtiyorsa `&facet=city,count:5` , yalnızca arama sonuçlarında en çok belgeyi içeren ilk beş benzersiz şehir, model sonuçlarına dahil edilir.
 
 Model sonuçları ve arama sonuçları arasındaki ayrımı fark edin. Arama sonuçları sorguyla eşleşen tüm belgelerdir. Model sonuçları her bir model değeri için eşleşmeler olur. Örnekte, arama sonuçları, model sınıflandırma listesinde olmayan şehir adlarını içerir (örneğimizde 5). Çok yönlü gezinmede filtrelenmiş sonuçlar, modelleri temizlediğinizde veya City 'in yanı sıra diğer modelleri seçerken görünür hale gelir. 
 
@@ -319,7 +319,7 @@ Model sonuçları ve arama sonuçları arasındaki ayrımı fark edin. Arama son
 
 **Doğru model sayımlarını aldığınızdan emin olun**
 
-Belirli koşullarda, model sayılarının sonuç kümeleriyle eşleşip eşleşmediği fark edebilirsiniz (bkz. [Azure bilişsel arama 'da çok yönlü gezinme (Microsoft Q&bir soru sayfası)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
+Belirli koşullarda, model sayılarının sonuç kümeleriyle eşleşip eşleşmediği fark edebilirsiniz (bkz. [Azure bilişsel arama 'da çok yönlü gezinme (Microsoft Q&bir soru sayfası)](/answers/topics/azure-cognitive-search.html)).
 
 Parçalı mimari nedeniyle model sayısı yanlış olabilir. Her arama dizininin birden çok parçaları vardır ve her parça, ilk N modellerini belge sayısına göre rapor ederek tek bir sonuçla birleştirilir. Bazı parçalar daha fazla eşleşen değere sahip olsa da, diğerleri daha az olduğunda bazı model değerlerinin eksik veya eksik olduğunu fark edebilirsiniz.
 
@@ -333,12 +333,12 @@ Etiketler genellikle HTML veya formda tanımlanır ( `index.cshtml` örnek uygul
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Aralığa göre filtrele
-Değer aralıkları üzerinde her zaman, ortak bir arama uygulaması gereksinimidir. Aralıklar sayısal veriler ve tarih saat değerleri için desteklenir. Arama belgelerindeki her yaklaşım hakkında daha fazla bilgi edinebilirsiniz [(Azure BILIŞSEL arama API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Değer aralıkları üzerinde her zaman, ortak bir arama uygulaması gereksinimidir. Aralıklar sayısal veriler ve tarih saat değerleri için desteklenir. Arama belgelerindeki her yaklaşım hakkında daha fazla bilgi edinebilirsiniz [(Azure BILIŞSEL arama API)](/rest/api/searchservice/Search-Documents).
 
 Azure Bilişsel Arama, bir Aralık hesaplama için iki yaklaşım sunarak Aralık oluşturmayı basitleştirir. Her iki yaklaşım için de Azure Bilişsel Arama sağladığınız girişler verilen uygun aralıkları oluşturur. Örneğin, 10 | 20 | 30 Aralık değerlerini belirtirseniz, otomatik olarak 0-10, 10-20, 20-30 aralıklarını oluşturur. Uygulamanız, isteğe bağlı olarak boş olan aralıkları kaldırabilir. 
 
 **Yaklaşım 1: Aralık parametresini kullanma**  
-Fiyat modellerini $10 artışlarla ayarlamak için şunları belirtmeniz gerekir:`&facet=price,interval:10`
+Fiyat modellerini $10 artışlarla ayarlamak için şunları belirtmeniz gerekir: `&facet=price,interval:10`
 
 **Yaklaşım 2: bir değerler listesi kullanma**  
 Sayısal veriler için bir values listesi kullanabilirsiniz.  Bir `listPrice` alan için aşağıdaki şekilde işlenen model aralığını göz önünde bulundurun:
@@ -404,4 +404,3 @@ Arama sonuçlarıyla çalışırken, sorgu oluşturulmakta olan değişiklikler 
 
 * [Tasarım desenleri: çok yönlü gezinme](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Çok yönlü arama uygularken ön uç sorunları-1. Bölüm](https://articles.uie.com/faceted_search2/)
-
