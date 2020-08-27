@@ -3,12 +3,12 @@ title: VM bölmesinden bir SQL Server VM yedekleme
 description: Bu makalede, VM bölmesinden Azure sanal makinelerinde SQL Server veritabanlarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827486"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891666"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM bölmesinden bir SQL Server yedekleme
 

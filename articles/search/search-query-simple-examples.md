@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553413"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918035"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit bir sorgu oluşturma
 
 Azure Bilişsel Arama 'de [basit sorgu söz dizimi](query-simple-syntax.md) , bir dizine karşı tam metin arama sorguları yürütmek için varsayılan sorgu ayrıştırıcısını çağırır. Bu ayrıştırıcı hızlıdır ve tam metin araması, filtrelenmiş ve çok yönlü arama ve coğrafi arama gibi yaygın senaryoları işler. 
 
-Bu makalede, `search=` bir [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) işleminin parametresini doldurarak basit sözdizimini göstermek için örnekleri kullanırız.
+Bu makalede, `search=` bir [arama belgeleri](/rest/api/searchservice/search-documents) işleminin parametresini doldurarak basit sözdizimini göstermek için örnekleri kullanırız.
 
 Alternatif sorgu söz dizimi, belirsiz ve joker karakter araması gibi daha karmaşık sorgu yapılarını destekleyerek, işlemek için ek süre sürebilen [tam Lucene](query-lucene-syntax.md)' dir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler için bkz. [tam Lucene sözdizimini kullanma](search-query-lucene-examples.md).
 
@@ -47,9 +47,9 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
-+ **`https://azs-playground.search.windows.net/`**, Azure Bilişsel Arama geliştirme ekibi tarafından tutulan bir korumalı alan arama hizmetidir. 
++ **`https://azs-playground.search.windows.net/`** , Azure Bilişsel Arama geliştirme ekibi tarafından tutulan bir korumalı alan arama hizmetidir. 
 + **`indexes/nycjobs/`** Bu hizmetin dizinler koleksiyonundaki NYC Işleri dizinidir. İstekte hem hizmet adı hem de dizin gereklidir.
-+ **`docs`**, aranabilir tüm içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
++ **`docs`** , aranabilir tüm içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
 + **`api-version=2020-06-30`** her istekte gerekli bir parametre olan api sürümünü ayarlar.
 + **`search=*`** İlk sorguda null olan sorgu dizesi, ilk 50 sonucunu döndürüyor (varsayılan olarak).
 
@@ -103,7 +103,7 @@ Yanıtta arama puanı olduğunu fark etmiş olabilirsiniz. Arama tam metin arama
 
 ## <a name="example-2-look-up-by-id"></a>Örnek 2: KIMLIĞE göre ara
 
-Bu örnek bir bit normaldir, ancak arama davranışları değerlendirilirken, belirli bir belgenin tüm içeriğini incelemek isteyebilirsiniz. bu durum, sonuçların neden dahil edildiğini veya bunun dışında bırakıldığını anlayın. Tek bir belgeyi tümüyle döndürmek için, belge KIMLIĞINI geçirmek üzere bir [arama işlemi](https://docs.microsoft.com/rest/api/searchservice/lookup-document) kullanın.
+Bu örnek bir bit normaldir, ancak arama davranışları değerlendirilirken, belirli bir belgenin tüm içeriğini incelemek isteyebilirsiniz. bu durum, sonuçların neden dahil edildiğini veya bunun dışında bırakıldığını anlayın. Tek bir belgeyi tümüyle döndürmek için, belge KIMLIĞINI geçirmek üzere bir [arama işlemi](/rest/api/searchservice/lookup-document) kullanın.
 
 Tüm belgeler benzersiz bir tanımlayıcıya sahiptir. Bir arama sorgusunun sözdizimini denemek için ilk olarak belge kimliklerinin bir listesini döndürün, böylece kullanmak üzere bir tane bulabilirsiniz. NYC Işleri için tanımlayıcılar `id` alanında depolanır.
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>Örnek 3: sorguları filtrele
 
-[Filtre sözdizimi](https://docs.microsoft.com/azure/search/search-query-odata-filter) , **aramayla** veya kendisiyle kullanabileceğiniz bir OData deyimidir. Arama parametresi olmayan tek başına bir filtre, filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlıdır. Sorgu dizesi olmadan, sözcük temelli veya dil analizi yoktur, Puanlama yoktur (Tüm puanlar 1) ve derecelendirme yoktur. Arama dizesinin boş olduğuna dikkat edin.
+[Filtre sözdizimi](./search-query-odata-filter.md) , **aramayla** veya kendisiyle kullanabileceğiniz bir OData deyimidir. Arama parametresi olmayan tek başına bir filtre, filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlıdır. Sorgu dizesi olmadan, sözcük temelli veya dil analizi yoktur, Puanlama yoktur (Tüm puanlar 1) ve derecelendirme yoktur. Arama dizesinin boş olduğuna dikkat edin.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ Filtre ve arama 'yı birleştirmenin bir diğer güçlü yolu **`search.ismatch*
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-İşlev hakkında daha fazla bilgi için, ["filtre örnekleri" içinde Search. IsMatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)bölümüne bakın.
+İşlev hakkında daha fazla bilgi için, ["filtre örnekleri" içinde Search. IsMatch](./search-query-odata-full-text-search-functions.md#examples)bölümüne bakın.
 
 ## <a name="example-4-range-filters"></a>Örnek 4: Aralık filtreleri
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>Örnek 5: coğrafi arama
 
-Örnek dizin, enlem ve Boylam koordinatlarıyla bir geo_location alanı içerir. Bu örnek, bir başlangıç noktasının çevresi içindeki belgelerde, sağladığınız rastgele bir uzaklığa (kilometre cinsinden) göre filtreleyen [coğrafi. Distance işlevini](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) kullanır. Sorgunun yüzey alanını azaltmak veya büyütmek için sorgudaki son değeri ayarlayabilirsiniz (4).
+Örnek dizin, enlem ve Boylam koordinatlarıyla bir geo_location alanı içerir. Bu örnek, bir başlangıç noktasının çevresi içindeki belgelerde, sağladığınız rastgele bir uzaklığa (kilometre cinsinden) göre filtreleyen [coğrafi. Distance işlevini](./search-query-odata-geo-spatial-functions.md#examples) kullanır. Sorgunun yüzey alanını azaltmak veya büyütmek için sorgudaki son değeri ayarlayabilirsiniz (4).
 
 Aşağıdaki örnek okunabilirlik için GÖNDERI biçimindedir:
 
@@ -223,7 +223,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Terim sorguları, bağımsız olarak değerlendirilen ve bağımsız olarak değerlendirilen tek koşullardır. Tümcecik sorguları, tırnak işaretleri içine alınır ve tam bir dize olarak değerlendirilir. Eşleşmenin hassasiyeti, işleçler ve searchMode tarafından denetlenir.
 
-Örnek 1: **`&search=fire`** tüm eşleşmelerin belgede bir yerde harekete geçen kelimeyi içerdiği 150 sonucunu döndürür.
+Örnek 1: **`&search=fire`**  tüm eşleşmelerin belgede bir yerde harekete geçen kelimeyi içerdiği 150 sonucunu döndürür.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>Sonraki adımlar
 Kodunuzda sorgular belirtmeyi deneyin. Aşağıdaki bağlantılarda, varsayılan basit sözdizimi kullanılarak hem .NET hem de REST API için arama sorgularının nasıl ayarlanacağı açıklanmaktadır.
 
-* [.NET SDK kullanarak dizininizi sorgulama](search-query-dotnet.md)
-* [REST API kullanarak dizininizi sorgulayın](search-create-index-rest-api.md)
+* [.NET SDK kullanarak dizininizi sorgulama](./search-get-started-dotnet.md)
+* [REST API kullanarak dizininizi sorgulayın](./search-get-started-powershell.md)
 
 Ek sözdizimi başvurusu, sorgu mimarisi ve örnekler aşağıdaki bağlantılarda bulunabilir:
 
 + [Lucene sözdizimi sorgu gelişmiş sorgular oluşturmaya yönelik örnekler](search-query-lucene-examples.md)
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
-+ [Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Tam Lucene sorgusu](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Filter ve OrderBy sözdizimi](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Basit sorgu söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Tam Lucene sorgusu](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Filter ve OrderBy sözdizimi](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

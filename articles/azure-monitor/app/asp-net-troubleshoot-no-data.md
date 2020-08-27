@@ -2,13 +2,14 @@
 title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563084"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936478"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -66,7 +67,7 @@ Application Insights yüklerken bir sorun oluştu veya belki de günlüğe kayde
 
 Çözüm Gezgini, projenize sağ tıklayın ve **Application Insights yapılandır > Application Insights**' i seçin. Azure 'da oturum açmanız ve bir Application Insights kaynağı oluşturmanız ya da var olan bir kaynağın yeniden kullanılması için sizi davet eden bir iletişim kutusu alacaksınız.
 
-## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a>"Derleme sunucum üzerinde" NuGet paketleri eksik "
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> "Derleme sunucum üzerinde" NuGet paketleri eksik "
 *Geliştirme makinmda hata ayıklarken her şey tamam, ancak yapı sunucusunda bir NuGet hatası alıyorum.*
 
 Lütfen [NuGet paket geri yükleme](https://docs.nuget.org/Consume/Package-Restore) ve [otomatik paket geri yükleme](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)bölümüne bakın.
@@ -120,7 +121,7 @@ Onar
   Bazı Özet grafikler görürsünüz. Daha fazla ayrıntı görmek için bunlara tıklayabilirsiniz.
 * Visual Studio 'da uygulamanızda hata ayıklaması yaparken Application Insights düğmesine tıklayın.
 
-## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>Sunucu verisi yok (veya hiç veri yok)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> Sunucu verisi yok (veya hiç veri yok)
 *Uygulamamı çalıştırdım ve Microsoft Azure Application Insights hizmeti 'ni açtık, ancak tüm grafiklerde ' nasıl toplayacağınızı öğrenin... ' gösterilmektedir veya ' yapılandırılmadı. '* Ya da *yalnızca sayfa görünümü ve Kullanıcı verileri, ancak sunucu verisi yok.*
 
 * Uygulamanızı Visual Studio 'da hata ayıklama modunda çalıştırın (F5). Uygulamayı, bazı telemetri oluşturmak için kullanın. Visual Studio çıktı penceresinde günlüğe kaydedilen olayları görebilmeniz için denetleyin.  
@@ -185,7 +186,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. NuGet 'den [Microsoft. Aspnet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) paketini yükler. Yüklediğiniz sürüm, geçerli yüklü sürümü ile eşleşmelidir`Microsoft.ApplicationInsighs`
+1. NuGet 'den [Microsoft. Aspnet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) paketini yükler. Yüklediğiniz sürüm, geçerli yüklü sürümü ile eşleşmelidir `Microsoft.ApplicationInsighs`
 
 2. applicationinsights.config dosyanızı aşağıdakileri içerecek şekilde değiştirin:
 
@@ -227,7 +228,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 4. İşiniz bittiğinde bu değişiklikleri döndürür.
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>PerfView ile günlükleri toplama
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> PerfView ile günlükleri toplama
 [PerfView](https://github.com/Microsoft/perfview) , birçok kaynaktan tanılama bilgilerini toplayıp GÖRSELLEŞTIREREK CPU, bellek ve diğer sorunları yalıtmaya yardımcı olan ücretsiz bir tanılama ve performans analizi aracıdır.
 
 Application Insights SDK günlüğü, PerfView tarafından yakalanabilen EventSource kendi kendine sorun giderme günlüklerini günlüğe kaydeder.
@@ -249,7 +250,7 @@ Daha fazla bilgi için,
 
 ## <a name="collect-logs-with-dotnet-trace"></a>DotNet-Trace ile günlükleri toplama
 
-Özellikle Linux tabanlı ortamlarda yararlı olabilecek sorun gidermeye yönelik Günlükler toplamanın alternatif bir yöntemi[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Özellikle Linux tabanlı ortamlarda yararlı olabilecek sorun gidermeye yönelik Günlükler toplamanın alternatif bir yöntemi [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore

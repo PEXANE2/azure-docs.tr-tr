@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496681"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917865"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Bilişsel Arama karmaşık veri türlerini modelleme
 
@@ -33,7 +33,7 @@ Başlamak için, Azure portal **verileri Içeri aktarma** Sihirbazı ' nda yükl
 
 ## <a name="example-of-a-complex-structure"></a>Karmaşık bir yapı örneği
 
-Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gibi karmaşık alanların `Address` `Rooms` alt alanları vardır. `Address`belgedeki tek bir nesne olduğundan, bu alt alanlar için tek bir değer kümesi vardır. Buna karşılık, `Rooms` koleksiyon içindeki her nesne için bir tane olmak üzere alt alanları için birden çok değer kümesi vardır.
+Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gibi karmaşık alanların `Address` `Rooms` alt alanları vardır. `Address` belgedeki tek bir nesne olduğundan, bu alt alanlar için tek bir değer kümesi vardır. Buna karşılık, `Rooms` koleksiyon içindeki her nesne için bir tane olmak üzere alt alanları için birden çok değer kümesi vardır.
 
 ```json
 {
@@ -62,9 +62,9 @@ Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gib
 
 ## <a name="creating-complex-fields"></a>Karmaşık alanlar oluşturma
 
-Herhangi bir dizin tanımında olduğu gibi, karmaşık türler içeren bir şema oluşturmak için Portal, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)veya [.NET SDK 'sını](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) kullanabilirsiniz. 
+Herhangi bir dizin tanımında olduğu gibi, karmaşık türler içeren bir şema oluşturmak için Portal, [REST API](/rest/api/searchservice/create-index)veya [.NET SDK 'sını](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) kullanabilirsiniz. 
 
-Aşağıdaki örnek, basit alanlar, koleksiyonlar ve karmaşık türler içeren bir JSON Dizin şemasını gösterir. Karmaşık bir tür içinde her bir alt alanın bir tür olduğunu ve en üst düzey alanların olduğu gibi özniteliklere sahip olabileceğini unutmayın. Şema yukarıdaki örnek verilere karşılık gelir. `Address`, koleksiyon olmayan karmaşık bir alandır (otel bir adrese sahiptir). `Rooms`karmaşık bir koleksiyon alanıdır (otel birçok odaya sahiptir).
+Aşağıdaki örnek, basit alanlar, koleksiyonlar ve karmaşık türler içeren bir JSON Dizin şemasını gösterir. Karmaşık bir tür içinde her bir alt alanın bir tür olduğunu ve en üst düzey alanların olduğu gibi özniteliklere sahip olabileceğini unutmayın. Şema yukarıdaki örnek verilere karşılık gelir. `Address` , koleksiyon olmayan karmaşık bir alandır (otel bir adrese sahiptir). `Rooms` karmaşık bir koleksiyon alanıdır (otel birçok odaya sahiptir).
 
 ```json
 {

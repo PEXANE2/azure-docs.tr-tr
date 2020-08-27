@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245339"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924597"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
 
-Bu öğreticide, incelemelerden en boy tabanlı yaklaşımı ayıklamak üzere Azure Machine Learning kullanarak [özel bir yetenek](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
+Bu öğreticide, incelemelerden en boy tabanlı yaklaşımı ayıklamak üzere Azure Machine Learning kullanarak [özel bir yetenek](./cognitive-search-aml-skill.md) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
 
 Azure Machine Learning ' de en boy tabanlı yaklaşım modelini eğitmek için, [NLP tariflerinin deposunu](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)kullanacaksınız. Model daha sonra bir Azure Kubernetes kümesinde bir uç nokta olarak dağıtılır. Dağıtım yapıldıktan sonra, uç nokta, Bilişsel Arama hizmeti tarafından kullanılmak üzere bir AML yeteneği olarak enzenginleştirme ardışık düzenine eklenir.
 
@@ -36,10 +36,10 @@ Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği-ücretsiz bir [abonelik](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)alın.
-* [Bilişsel Arama hizmeti](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Bilişsel hizmetler kaynağı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Bilişsel Arama hizmeti](./search-get-started-arm.md)
+* [Bilişsel hizmetler kaynağı](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure depolama hesabı](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Machine Learning çalışma alanı](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Kurulum
 
@@ -47,9 +47,9 @@ Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_
 * İndirme bir ZIP dosyası ise içeriği ayıkla. Dosyaların okuma-yazma olduğundan emin olun.
 * Azure hesaplarını ve hizmetlerini ayarlarken, adları ve anahtarları kolayca erişilen bir metin dosyasına kopyalayın. Adlar ve anahtarlar, Not defteri 'ndeki Azure hizmetlerine erişim değişkenlerinin tanımlandığı ilk hücreye eklenir.
 * Azure Machine Learning ve gereksinimlerini tanımıyorsanız, başlamadan önce bu belgeleri gözden geçirmek isteyeceksiniz:
- * [Azure Machine Learning için bir geliştirme ortamı yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * Azure Machine Learning için geliştirme ortamını yapılandırırken, Başlarken ' de hız ve kolaylık sağlamak için [bulut tabanlı işlem örneğini](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance) kullanmayı düşünün.
+ * [Azure Machine Learning için bir geliştirme ortamı yapılandırma](../machine-learning/how-to-configure-environment.md)
+ * [Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin](../machine-learning/how-to-manage-workspace.md)
+ * Azure Machine Learning için geliştirme ortamını yapılandırırken, Başlarken ' de hız ve kolaylık sağlamak için [bulut tabanlı işlem örneğini](../machine-learning/how-to-configure-environment.md#compute-instance) kullanmayı düşünün.
 * Veri kümesi dosyasını depolama hesabındaki bir kapsayıcıya yükleyin. Not defterinde eğitim adımını gerçekleştirmek istiyorsanız, daha büyük dosya gereklidir. Eğitim adımını atlamayı tercih ediyorsanız, daha küçük dosya önerilir.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Not defteri 'ni açın ve Azure hizmetlerine bağlanın
@@ -68,9 +68,9 @@ Bölüm 2 ' de, NLP yemek dosyası deposundan eldiven embeddosyalarını yükley
 
 Not defterinin 3. bölümü, Bölüm 2 ' de oluşturulan modelleri eğitecektir, bu modelleri kaydeder ve bunları bir Azure Kubernetes kümesinde uç nokta olarak dağıtır. Azure Kubernetes hakkında bilginiz yoksa, bir çıkarım kümesi oluşturmayı denemeden önce aşağıdaki makaleleri gözden geçirmeniz önemle önerilir:
 
-* [Azure Kubernetes hizmetine genel bakış](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Azure Kubernetes Service (AKS) içinde kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Azure Kubernetes hizmetine genel bakış](../aks/intro-kubernetes.md)
+* [Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları](../aks/concepts-clusters-workloads.md)
+* [Azure Kubernetes Service (AKS) içinde kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği](../aks/quotas-skus-regions.md)
 
 Çıkarım kümesini oluşturmak ve dağıtmak 30 dakikaya kadar sürebilir. Son adımlara geçmeden önce Web hizmetini test etmek, Beceri ' yi güncelleştirmek ve Dizin oluşturucuyu çalıştırmak önerilir.
 
@@ -108,5 +108,5 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel beceri Web API](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api) 
->  'sini gözden geçirme [Zenginleştirme ardışık düzenine özel beceriler ekleme hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Özel beceri Web API](./cognitive-search-custom-skill-web-api.md) 
+>  'sini gözden geçirme [Zenginleştirme ardışık düzenine özel beceriler ekleme hakkında daha fazla bilgi edinin](./cognitive-search-custom-skill-interface.md)

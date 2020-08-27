@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987482"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936121"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84987482"
 
 **Özel varlık arama** becerisi, özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler.  
 
-Bu yetenek bilişsel hizmetler API 'siyle bağlantılı değildir ve önizleme dönemi boyunca ücretsiz olarak kullanılabilir. Ancak günlük zenginleştirme limitini geçersiz kılmak için yine de bilişsel [Hizmetler kaynağı iliştirmelisiniz](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services). Günlük sınır, Azure Bilişsel Arama üzerinden erişildiğinde bilişsel hizmetlere ücretsiz erişim için geçerlidir.
+Bu yetenek bilişsel hizmetler API 'siyle bağlantılı değildir ve önizleme dönemi boyunca ücretsiz olarak kullanılabilir. Ancak günlük zenginleştirme limitini geçersiz kılmak için yine de bilişsel [Hizmetler kaynağı iliştirmelisiniz](./cognitive-search-attach-cognitive-services.md). Günlük sınır, Azure Bilişsel Arama üzerinden erişildiğinde bilişsel hizmetlere ücretsiz erişim için geçerlidir.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. yetenekler. Text. CustomEntityLookupSkill 
@@ -69,7 +69,7 @@ Tanım satır içi olarak sağlanmışsa, *ınlineentitiesdefinition* yetenek pa
 
 ### <a name="csv-format"></a>CSV biçimi
 
-Bir virgülle ayrılmış değer (CSV) dosyasında aranacak özel varlıkların tanımını, dosyanın yolunu sağlayarak ve *Entitiesdefinitionuri* yetenek parametresinde ayarlayarak sağlayabilirsiniz. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
+Bir virgülle ayrılmış değer (CSV) dosyasında aranacak özel varlıkların tanımını, dosyanın yolunu sağlayarak ve *Entitiesdefinitionuri*  yetenek parametresinde ayarlayarak sağlayabilirsiniz. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
 
 CSV biçimi basittir. Her satır, aşağıda gösterildiği gibi benzersiz bir varlığı temsil eder:
 
@@ -231,7 +231,7 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
 
 ```
 
-##    <a name="sample-input"></a>Örnek giriş
+##    <a name="sample-input"></a>Örnek girdi
 
 ```json
 {

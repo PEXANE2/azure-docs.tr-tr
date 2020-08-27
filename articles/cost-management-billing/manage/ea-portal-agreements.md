@@ -3,16 +3,17 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/14/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: a23623112b44edc0bd32f0382ed382193d999394
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 08cc6b7c6edb31d0a983943694ebb1dc55989bca
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243675"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689890"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 

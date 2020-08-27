@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201998"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917882"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Bilişsel Arama OData mantıksal işleçleri- `and` , `or` ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Bilişsel Arama OData mantıksal işleçleri- `and` , `or` , `not`
 
 Azure Bilişsel Arama 'de [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) , veya sonucunu veren Boole ifadeleridir `true` `false` . Bir dizi [daha basit](search-query-odata-comparison-operators.md) filtre yazarak ve bunları [Boolean ALKU](https://en.wikipedia.org/wiki/Boolean_algebra)'dan mantıksal işleçler kullanarak oluşturarak karmaşık bir filtre yazabilirsiniz:
 
@@ -36,7 +36,7 @@ Azure Bilişsel Arama 'de [OData filtre ifadeleri](query-odata-filter-orderby-sy
 
 Bunlar, [koleksiyon işleçleri `any` ve `all` ](search-query-odata-collection-operators.md)ile birlikte çok karmaşık arama ölçütlerine hızlı bir şekilde ifade edebilen filtreler oluşturmanız için izin verir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), mantıksal işleçleri kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
@@ -58,9 +58,9 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 İki mantıksal ifade biçimi vardır: ikili (), `and` / `or` burada iki alt ifade ve birli () vardır; `not` burada yalnızca bir tane vardır. Alt ifadeler herhangi bir türden Boolean ifadeler olabilir:
 
-- Türündeki alanlar veya Aralık değişkenleri`Edm.Boolean`
-- Türü değer döndüren işlevler, örneğin `Edm.Boolean` `geo.intersects` veya`search.ismatch`
-- [Karşılaştırma ifadeleri](search-query-odata-comparison-operators.md), örneğin`rating gt 4`
+- Türündeki alanlar veya Aralık değişkenleri `Edm.Boolean`
+- Türü değer döndüren işlevler, örneğin `Edm.Boolean` `geo.intersects` veya `search.ismatch`
+- [Karşılaştırma ifadeleri](search-query-odata-comparison-operators.md), örneğin `rating gt 4`
 - Gibi [koleksiyon ifadeleri](search-query-odata-collection-operators.md)`Rooms/any(room: room/Type eq 'Deluxe Room')`
 - Boolean sabit değerleri `true` veya `false` .
 - , Ve kullanılarak oluşturulan diğer mantıksal ifadeler `and` `or` `not` .
@@ -68,11 +68,11 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 > [!IMPORTANT]
 > `and` / `or` Özellikle lambda ifadeleri içinde, tüm alt ifade türlerinin birlikte kullanılabileceği bazı durumlar vardır. Ayrıntılar için bkz. [Azure 'Da OData koleksiyon işleçleri bilişsel arama](search-query-odata-collection-operators.md#limitations) .
 
-### <a name="logical-operators-and-null"></a>Mantıksal işleçler ve`null`
+### <a name="logical-operators-and-null"></a>Mantıksal işleçler ve `null`
 
 İşlevler ve karşılaştırmalar gibi çoğu Boole ifadesi değer üretemiyor `null` ve mantıksal işleçler `null` doğrudan sabit değere uygulanamaz (örneğin, `x and null` buna izin verilmez). Ancak, Boolean alanları olabilir `null` , bu nedenle, `and` `or` ve işleçlerinin, `not` null durumunda nasıl davrandığına dikkat etmeniz gerekir. Bu, aşağıdaki tabloda özetlenmiştir, burada, `b` türünde bir alandır `Edm.Boolean` :
 
-| İfade | `b`Ne zaman sonuç`null` |
+| Expression | `b`Ne zaman sonuç`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -120,4 +120,4 @@ Alanın tüm öğelerinin `ratings` 3 ' ten küçük veya 5 ' ten büyük olduğ
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

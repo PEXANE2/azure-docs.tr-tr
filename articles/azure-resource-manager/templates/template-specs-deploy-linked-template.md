@@ -2,17 +2,17 @@
 title: Şablon belirtimini bağlantılı şablon olarak dağıtma
 description: Bağlı bir dağıtımda var olan bir şablon belirtimini dağıtmayı öğrenin.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099741"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918392"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtma (Önizleme)
 
-[Bağlı bir dağıtım](linked-templates.md#linked-template)kullanarak var olan bir [şablon belirtimini](template-specs.md) dağıtmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Şablon belirtimini oluşturduktan sonra, Azure PowerShell kullanarak şablon belirtimini dağıtabilirsiniz. Ayrıca, bağlantılı bir şablon kullanarak, çözümünüzün bir parçası olarak şablon belirtimini dağıtabilirsiniz.
+[Bağlı bir dağıtım](linked-templates.md#linked-template)kullanarak var olan bir [şablon belirtimini](template-specs.md) dağıtmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Şablon belirtimini oluşturduktan sonra, Azure PowerShell veya Azure CLı kullanarak şablon belirtimini dağıtabilirsiniz. Ayrıca, bağlantılı bir şablon kullanarak, çözümünüzün bir parçası olarak şablon belirtimini dağıtabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -117,9 +117,22 @@ Bir ARM şablonunda bir şablon belirtimini dağıtmak için ana şablonunuza bi
 
 Şablon belirtimi KIMLIĞI, işlevi kullanılarak oluşturulur [`resourceID()`](template-functions-resource.md#resourceid) . TemplateSpec geçerli dağıtımın aynı kaynak grubunda ise RESOURCEID () işlevindeki kaynak grubu bağımsız değişkeni isteğe bağlıdır.  Ayrıca, kaynak KIMLIĞINI bir parametre olarak doğrudan geçirebilirsiniz. KIMLIĞI almak için şunu kullanın:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> Şablon spec kimliği alma ve ardından bunu Windows PowerShell 'de bir değişkene atama konusunda bilinen bir sorun vardır.
+
+---
 
 Parametreleri şablon belirtimine geçirmek için sözdizimi şöyledir:
 
@@ -138,6 +151,8 @@ Parametreleri şablon belirtimine geçirmek için sözdizimi şöyledir:
 
 Bağlı şablonu dağıttığınızda, hem Web uygulamasını hem de depolama hesabını dağıtır. Dağıtım, diğer ARM şablonlarının dağıtılmasıyla aynıdır.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -147,6 +162,21 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

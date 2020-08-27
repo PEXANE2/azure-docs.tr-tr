@@ -4,12 +4,12 @@ description: Azure geçişi ile fiziksel sunucuların değerlendirilmesi/geçiri
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420796"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927383"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -40,6 +40,7 @@ Azure 'ı Azure geçişi ile çalışacak şekilde ayarlayın.
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katkıda bulunan veya sahip izinlerinin olması gerekir. 
 **Kaynak sağlayıcılarını kaydetme (yalnızca değerlendirme)** | Azure geçişi, Azure geçişi: Sunucu değerlendirmesi ile makineler bulma ve değerlendirme için basit bir Azure geçiş gereci kullanır.<br/><br/> Gereç kaydı sırasında kaynak sağlayıcıları, Gereç içinde seçilen aboneliğe kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
 **Azure AD uygulaması oluşturma (yalnızca değerlendirme)** | Gereci kaydederken Azure geçişi, Gereç üzerinde çalışan aracılar ile Azure üzerinde çalışan hizmetlerle ilgili iletişim için kullanılan bir Azure Active Directory (Azure AD) uygulaması oluşturur. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Azure AD uygulamaları (uygulama geliştiricisi 'nde bulunur) rolünde oluşturma izinlerine sahip olmanız gerekir.
+**Anahtar kasası oluşturma** | Key Vault, Gereç kaydının bir parçası olarak oluşturulur ve yapılandırması sırasında gereç üzerinde indirilen sertifikanın yönetimi için kullanılır.<br/><br/>Azure geçişi 'nin Key Vault oluşturmasına izin vermek için Azure hesabınızın, Azure geçişi projesinin bulunduğu kaynak grubunda katkıda bulunan izinleri olması gerekir.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama 

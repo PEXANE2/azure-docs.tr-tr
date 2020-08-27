@@ -2,13 +2,14 @@
 title: .NET WebSockets Azure Relay Karma Bağlantılar-
 description: Azure Relay Karma Bağlantılar WebSockets için bir C# konsol uygulaması yazın.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: a6e759b8cda7515faf63834ef15c013e2f075687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317073"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934268"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET’te Geçiş Karma Bağlantıları Web Yuvaları ile çalışmaya başlama
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -23,7 +24,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 4. İleti göndermek için bir istemci (gönderen) konsol uygulaması yazma.
 5. Uygulamaları çalıştırın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 

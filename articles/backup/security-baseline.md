@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761823"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890510"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -186,7 +186,7 @@ Ayrıca, Azure Backup analiz, uyarı ve raporlama amacıyla toplanabilecek ve ku
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 
-**Rehberlik**: Azure Backup, bir kurtarma hizmetleri kasasında yerleşik izleme ve uyarı özellikleri sağlar. Bu yetenekler ek bir yönetim altyapısı olmadan kullanılabilir. Ayrıca, Azure Izleyici 'yi kullanarak izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
+**Rehberlik**: Azure Backup, bir kurtarma hizmetleri kasasında yerleşik izleme ve uyarı özellikleri sağlar. Bu özellikler ek yönetim altyapısı olmadan kullanılabilir. Ayrıca, Azure Izleyici 'yi kullanarak izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
 
 Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve kurtarma hizmetleri kasaları için toplanabilecek etkinlik günlüğü verilerine göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin.
 
@@ -202,7 +202,7 @@ Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
 
-**Rehberlik**: Azure Backup, bir kurtarma hizmetleri kasasında yerleşik izleme ve uyarı özellikleri sağlar. Bu yetenekler ek bir yönetim altyapısı olmadan kullanılabilir. Ayrıca, Azure Izleyici 'yi kullanarak izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
+**Rehberlik**: Azure Backup, bir kurtarma hizmetleri kasasında yerleşik izleme ve uyarı özellikleri sağlar. Bu özellikler ek yönetim altyapısı olmadan kullanılabilir. Ayrıca, Azure Izleyici 'yi kullanarak izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
 
 Uyarılar, kullanıcıların ilgili eylemi yapabilmesi için bilgilendirildikleri senaryolara yöneliktir. Yedekleme uyarıları bölümü Azure Backup hizmeti tarafından oluşturulan uyarıları gösterir. Bu uyarılar hizmet tarafından tanımlanır ve özel uyarı oluşturamazsınız.
 
@@ -426,7 +426,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Kılavuz**: Azure IaaS sanal makineleri yedeklenirken, Azure Backup özgün verilerin yanlışlıkla yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedeklemeler, kurtarma noktalarının yerleşik yönetimi ile bir kurtarma hizmetleri kasasında depolanır.
+**Kılavuz**: Azure IaaS sanal makineleri yedeklenirken, Azure Backup özgün verilerin yanlışlıkla yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedekler, yerleşik kurtarma noktası yönetim özelliklerine sahip Kurtarma Hizmetleri kasasında depolanır.
 
 Geliştirme, test ve üretim kurtarma hizmetleri kasaları için ayrı abonelikler ve/veya yönetim grupları uygulayın. Kaynaklar VNet/subnet ile ayrılmalıdır, uygun şekilde etiketlenebilir ve bir NSG veya Azure güvenlik duvarıyla korunmuş olmalıdır. Hassas verileri depolayan veya işleyen kaynaklar yeterince yalıtılmalıdır. Hassas verileri depolayan veya işleyen sanal makineler için, kullanımda olmadığında devre dışı bırakmak üzere ilke ve yordam uygulayın.
 
@@ -580,7 +580,7 @@ Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet 
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure varlık bulmayı kullanma
 
-**Rehberlik**: abonelikleriniz dahilinde (işlem, depolama, ağ, bağlantı noktaları ve protokoller vb.) tüm kaynakları sorgulamak/öğrenmek Için Azure Kaynak grafiğini kullanın.  Kiracınızda uygun (okuma) izinlere sahip olun ve aboneliklerinizdeki kaynakların yanı sıra tüm Azure aboneliklerini numaralandırın.
+**Rehberlik**: abonelikleriniz dahilinde (işlem, depolama, ağ, bağlantı noktaları ve protokoller) tüm kaynakları sorgulamak/öğrenmek Için Azure Kaynak grafiğini kullanın.  Kiracınızda uygun (okuma) izinlere sahip olun ve aboneliklerinizdeki kaynakların yanı sıra tüm Azure aboneliklerini numaralandırın.
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
@@ -860,7 +860,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Rehberlik**: Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen temel alınan konakta (örneğin, Azure Backup) etkinleştirilir, ancak içeriğiniz üzerinde çalışmaz.
 
-App Service, Data Lake Storage, BLOB depolama vb. gibi işlem dışı Azure kaynaklarına yüklenen tüm dosyaları önceden tarayın.
+App Service, Data Lake Storage ve BLOB depolama gibi işlem dışı Azure kaynaklarına yüklenen tüm dosyaları önceden tarayın.
 
 Depolama hesaplarına yüklenen kötü amaçlı yazılımları algılamak için veri Hizmetleri için Azure Güvenlik Merkezi 'nin tehdit algılamasını kullanın.
 

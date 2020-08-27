@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496544"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932891"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel arama dizini oluşturma
 
@@ -26,10 +26,10 @@ Bir dizinin fiziksel yapısı, şema tarafından belirlenir ve "aranabilir" olar
 Aşağıdaki araçlar ve API 'lerle bir dizin oluşturabilirsiniz:
 
 * Azure portal, **dizin ekleme** veya **veri alma** Sihirbazı 'nı kullanma
-* [Create INDEX (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) kullanma
-* [.NET SDK 'yı](search-create-index-dotnet.md) kullanma
+* [Create INDEX (REST API)](/rest/api/searchservice/create-index) kullanma
+* [.NET SDK 'yı](./search-get-started-dotnet.md) kullanma
 
-Portal aracıyla daha kolay bir şekilde öğrenirsiniz. Portal, sayısal alanlarda tam metin arama özelliklerine izin vermeme gibi belirli veri türleri için gereksinimleri ve şema kurallarını uygular. Bir dizin oluşturma işleminden sonra, [Dizin Al (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) kullanarak hizmetten JSON tanımını alarak ve çözümünüze ekleyerek koda geçiş yapabilirsiniz.
+Portal aracıyla daha kolay bir şekilde öğrenirsiniz. Portal, sayısal alanlarda tam metin arama özelliklerine izin vermeme gibi belirli veri türleri için gereksinimleri ve şema kurallarını uygular. Bir dizin oluşturma işleminden sonra, [Dizin Al (REST API)](/rest/api/searchservice/get-index) kullanarak hizmetten JSON tanımını alarak ve çözümünüze ekleyerek koda geçiş yapabilirsiniz.
 
 ## <a name="recommended-workflow"></a>Önerilen iş akışı
 
@@ -59,7 +59,7 @@ Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak
 
    ![Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle](media/search-what-is-an-index//field-definitions.png "Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle")
 
-1. [Get Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) ve [Postman](search-get-started-postman.md)gibi bir Web testi aracı kullanarak Dizin şemasını indirin. Artık, kod için uyarlayabileceğiniz dizinin bir JSON gösterimine sahipsiniz.
+1. [Get Index (REST API)](/rest/api/searchservice/get-index) ve [Postman](search-get-started-postman.md)gibi bir Web testi aracı kullanarak Dizin şemasını indirin. Artık, kod için uyarlayabileceğiniz dizinin bir JSON gösterimine sahipsiniz.
 
 1. [Dizininizi verilerle yükleyin](search-what-is-data-import.md). Azure Bilişsel Arama JSON belgelerini kabul eder. Verilerinizi programlı bir şekilde yüklemek için, istek yükünde JSON belgeleriyle Postman kullanabilirsiniz. Verileriniz JSON olarak kolayca ifade edideğilse, bu adım en yoğun işgücü olacaktır. 
 
@@ -169,7 +169,7 @@ Alanlar bir ada, depolanan verileri sınıflandıran bir türe ve alanın nasıl
 
 ### <a name="data-types"></a>Veri türleri
 
-| Tür | Description |
+| Tür | Açıklama |
 |------|-------------|
 | Edm.String |İsteğe bağlı olarak tam metin araması için simgeleştirilmiş olabilecek metin (sözcük ayırma, sözcük kökü oluşturma vb.). |
 | Collection(Edm.String) |Tam metin araması için isteğe bağlı olarak belirteç haline getirilebilen dize listesi. Bir koleksiyondaki öğelerin sayısında teorik bir üst sınır yoktur ancak yük boyutundaki 16 MB'lık üst sınır, koleksiyonlar için geçerlidir. |
@@ -180,7 +180,7 @@ Alanlar bir ada, depolanan verileri sınıflandıran bir türe ve alanın nasıl
 | Edm.DateTimeOffset |OData v4 biçiminde temsil edilen tarih saat değerleri (örneğin, `yyyy-MM-ddTHH:mm:ss.fffZ` veya `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | Edm.GeographyPoint |Dünya üzerindeki bir coğrafi konumu temsil eden bir nokta. |
 
-Daha fazla bilgi için bkz. [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Daha fazla bilgi için bkz. [desteklenen veri türleri](/rest/api/searchservice/Supported-data-types).
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ Dize alanları genellikle "aranabilir" ve "alınabilir" olarak işaretlenir. Ara
 |aranamaz |Tam metin aranabilir, dizin oluşturma sırasında sözcüklere bölme gibi sözcük temelli analize tabidir. Aranabilir bir alanı, "güneşli gün" gibi bir değere ayarlarsanız, dahili olarak bu "güneşli" ve "gün" belirteçlerine bölünür. Ayrıntılar için bkz. [Tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)|  
 |filtrelenebilir |$filter sorgularında başvurulur. `Edm.String` veya `Collection(Edm.String)` türünde filtrelenebilir alanlara sözcüklere bölme işlemi uygulanmaz, bu nedenle karşılaştırmalar yalnızca tam eşleşmeler içindir. Örneğin, böyle bir alanı "güneşli gün" olarak ayarlarsanız `$filter=f eq 'sunny'` herhangi bir eşleşme bulmaz, ancak `$filter=f eq 'sunny day'` bulur. |  
 |amayan |Varsayılan olarak sistem sonuçları puana göre sıralar, ancak belgelerdeki alanlara göre sıralamayı yapılandırabilirsiniz. Türündeki alanlar `Collection(Edm.String)` "sıralanabilir" olamaz. |  
-|modellenebilir |Genellikle kategoriye göre (örneğin, belirli bir şehirdeki oteller) isabet sayısını içeren bir arama sonuçları sunumunda kullanılır. Bu seçenek, `Edm.GeographyPoint` türünde alanlarla kullanılamaz. `Edm.String`Filtrelenebilir, "sıralanabilir" veya "çok yönlü tablo" türündeki alanlar en fazla 32 kilobayt uzunluğunda olabilir. Ayrıntılar için bkz. [Dizin Oluşturma (REST API’si)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
+|modellenebilir |Genellikle kategoriye göre (örneğin, belirli bir şehirdeki oteller) isabet sayısını içeren bir arama sonuçları sunumunda kullanılır. Bu seçenek, `Edm.GeographyPoint` türünde alanlarla kullanılamaz. `Edm.String`Filtrelenebilir, "sıralanabilir" veya "çok yönlü tablo" türündeki alanlar en fazla 32 kilobayt uzunluğunda olabilir. Ayrıntılar için bkz. [Dizin Oluşturma (REST API’si)](/rest/api/searchservice/create-index).|  
 |anahtar |Dizin içindeki belgeler için benzersiz tanımlayıcı. Anahtar alan olarak tam olarak bir alan seçilmeli ve `Edm.String` türünde olmalıdır.|  
 |defterinden |Alanın bir arama sonucunda döndürülüp döndürülemeyeceğini belirler. Filtre, sıralama veya puanlama mekanizması olarak bir alanı (örn. *kâr marjı*) kullanmak istediğinizde, ancak alanın son kullanıcıya görünür olmasını istemediğinizde bu faydalıdır. Bu öznitelik, `key` alanları için `true` olmalıdır.|  
 
 İstediğiniz zaman yeni alanlar ekleyebilseniz de, dizinin ömrü boyunca mevcut alan tanımları kilitlenir. Bu nedenle geliştiriciler genellikle basit dizinler oluşturmak, fikirleri test etmek veya portal sayfalarını kullanarak bir ayarı bulmak için portalı kullanır. Dizini kolayca yeniden derleyebilmeniz için kod tabanlı bir yaklaşım izlerseniz, bir dizin tasarımı çerçevesinde sık sık yapılan yineleme daha verimli olur.
 
 > [!NOTE]
-> Bir dizin oluşturmak için kullandığınız API 'Ler, farklı varsayılan davranışlara sahiptir. [REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/Create-Index)için çoğu öznitelik varsayılan olarak etkindir (örneğin, "aranabilir" ve "alınabilir" dize alanları için geçerlidir) ve genellikle bunları kapatmak istiyorsanız ayarlamanız gerekir. .NET SDK için, tersi doğrudur. Açıkça ayarlamadığınız herhangi bir özellikte, özel olarak etkinleştirmediğiniz takdirde, karşılık gelen arama davranışının devre dışı bırakılması varsayılan olur.
+> Bir dizin oluşturmak için kullandığınız API 'Ler, farklı varsayılan davranışlara sahiptir. [REST API 'leri](/rest/api/searchservice/Create-Index)için çoğu öznitelik varsayılan olarak etkindir (örneğin, "aranabilir" ve "alınabilir" dize alanları için geçerlidir) ve genellikle bunları kapatmak istiyorsanız ayarlamanız gerekir. .NET SDK için, tersi doğrudur. Açıkça ayarlamadığınız herhangi bir özellikte, özel olarak etkinleştirmediğiniz takdirde, karşılık gelen arama davranışının devre dışı bırakılması varsayılan olur.
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Dize alanları genellikle "aranabilir" ve "alınabilir" olarak işaretlenir. Ara
 
 ## `suggesters`
 
-Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](https://docs.microsoft.com/rest/api/searchservice/suggestions) GÖNDERILIR ve API, önerilen bir belge veya tümcecik kümesi döndürür. 
+Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](/rest/api/searchservice/suggestions) GÖNDERILIR ve API, önerilen bir belge veya tümcecik kümesi döndürür. 
 
 Bir öneri aracı eklenen alanlar, tür öncelikli arama terimleri oluşturmak için kullanılır. Tüm arama terimleri dizin oluşturma sırasında oluşturulur ve ayrı olarak depolanır. Öneri aracı yapısı oluşturma hakkında daha fazla bilgi için bkz. [Add öneri araçları](index-add-suggesters.md).
 

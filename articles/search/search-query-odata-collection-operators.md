@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146058"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934914"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama OData toplama işleçleri `any` ve`all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama OData toplama işleçleri `any` ve `all`
 
 Azure Bilişsel Arama ile kullanmak üzere bir [OData filtresi ifadesi](query-odata-filter-orderby-syntax.md) yazarken, genellikle koleksiyon alanlarını filtrelemek yararlı olur. Ve işleçlerini kullanarak bunu elde edebilirsiniz `any` `all` .
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), veya kullanan bir OData ifadesinin dilbilgisini tanımlar `any` `all` .
 
@@ -107,4 +107,4 @@ Bu sınırlamalar ve örnekler hakkında daha fazla bilgi için bkz. [Azure bili
 - [Azure Bilişsel Arama filtreler](search-filters.md)
 - [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
 - [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](/rest/api/searchservice/Search-Documents)

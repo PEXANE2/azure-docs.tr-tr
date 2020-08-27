@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c8e44a3d57ee519ff792de97ed2b3d183bf666b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171967"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923373"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK sürüm 1,1 ' e yükseltin
 
-[Azure Search .NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)sürüm 1.0.2-Preview veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 1,1 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+[Azure Search .NET SDK 'sının](/dotnet/api/overview/azure/search)sürüm 1.0.2-Preview veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 1,1 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
 Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
 
@@ -53,9 +53,9 @@ Son olarak, herhangi bir yapı hatasını düzelttikten sonra, isterseniz yeni i
 Aşağıdaki liste, değişikliğin uygulama kodunuzu etkileyeceğine göre sıralanır.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>Indexbatch ve ındexaction değişiklikleri
-`IndexBatch.Create`, olarak yeniden adlandırıldı `IndexBatch.New` ve artık bir `params` bağımsız değişkeni yoktur. `IndexBatch.New`Farklı eylem türlerini (birleştirme, silme, vb.) karıştıraş toplu işler için kullanabilirsiniz. Ayrıca, tüm eylemlerin aynı olduğu durumlarda toplu iş oluşturmak için yeni statik yöntemler vardır: `Delete` ,, `Merge` `MergeOrUpload` ve `Upload` .
+`IndexBatch.Create` , olarak yeniden adlandırıldı `IndexBatch.New` ve artık bir `params` bağımsız değişkeni yoktur. `IndexBatch.New`Farklı eylem türlerini (birleştirme, silme, vb.) karıştıraş toplu işler için kullanabilirsiniz. Ayrıca, tüm eylemlerin aynı olduğu durumlarda toplu iş oluşturmak için yeni statik yöntemler vardır: `Delete` ,, `Merge` `MergeOrUpload` ve `Upload` .
 
-`IndexAction`Artık ortak oluşturucular yoktur ve özellikleri artık sabit değildir. Farklı amaçlara yönelik eylemler oluşturmak için yeni statik yöntemleri kullanmanız gerekir:,, `Delete` `Merge` `MergeOrUpload` ve `Upload` . `IndexAction.Create`kaldırıldı. Yalnızca bir belge alan aşırı yüklemeyi kullandıysanız, bunun yerine kullandığınızdan emin olun `Upload` .
+`IndexAction` Artık ortak oluşturucular yoktur ve özellikleri artık sabit değildir. Farklı amaçlara yönelik eylemler oluşturmak için yeni statik yöntemleri kullanmanız gerekir:,, `Delete` `Merge` `MergeOrUpload` ve `Upload` . `IndexAction.Create` kaldırıldı. Yalnızca bir belge alan aşırı yüklemeyi kullandıysanız, bunun yerine kullandığınızdan emin olun `Upload` .
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -197,12 +197,12 @@ sp.ScoringParameters =
 ```
 
 ### <a name="model-class-changes"></a>Model sınıfı değişiklikleri
-[İşlem yöntemi değişikliklerinde](#OperationMethodChanges)açıklanan imza değişikliklerinden dolayı, `Microsoft.Azure.Search.Models` ad alanındaki birçok sınıf yeniden adlandırıldı veya kaldırılmıştır. Örneğin:
+[İşlem yöntemi değişikliklerinde](#OperationMethodChanges)açıklanan imza değişikliklerinden dolayı, `Microsoft.Azure.Search.Models` ad alanındaki birçok sınıf yeniden adlandırıldı veya kaldırılmıştır. Örnek:
 
-* `IndexDefinitionResponse`değiştirdi`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` değiştirdi `AzureOperationResponse<Index>`
 * `DocumentSearchResponse`, `DocumentSearchResult` olarak yeniden adlandırıldı
 * `IndexResult`, `IndexingResult` olarak yeniden adlandırıldı
-* `Documents.Count()`Şimdi `long` bir değil, belge sayısı`DocumentCountResponse`
+* `Documents.Count()` Şimdi `long` bir değil, belge sayısı `DocumentCountResponse`
 * `IndexGetStatisticsResponse`, `IndexGetStatisticsResult` olarak yeniden adlandırıldı
 * `IndexListResponse`, `IndexListResult` olarak yeniden adlandırıldı
 
@@ -401,4 +401,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 Bu nedenle, en iyi uygulama olarak model sınıflarınızda null yapılabilir türler kullanmanızı öneririz.
 
 Bu hata ve düzeltmeyle ilgili daha fazla bilgi için lütfen [GitHub 'da Bu soruna](https://github.com/Azure/azure-sdk-for-net/issues/1063)bakın.
-

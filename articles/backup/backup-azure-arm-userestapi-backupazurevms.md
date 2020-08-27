@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826421"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890340"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -23,7 +23,7 @@ Yeni kasa ve ilke oluşturmaya yönelik REST API [kasa oluşturma](backup-azure-
 
 ### <a name="discover-unprotected-azure-vms"></a>Korumasız Azure VM 'lerini bulma
 
-İlk olarak, kasanın Azure VM 'yi tanımlayabilmesi gerekir. Bu, [yenileme işlemi](/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Bu, kasasının geçerli abonelikteki tüm korumasız VM 'nin en son listesini aldığından ve bunlara ' önbelleğe aldığınızdan emin olan zaman uyumsuz bir *Post*  işlemidir. VM ' önbelleğe alındıktan sonra, Kurtarma Hizmetleri sanal makineye erişebilir ve bunu koruyabilir.
+İlk olarak, kasanın Azure VM 'yi tanımlayabilmesi gerekir. Bu, [yenileme işlemi](/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Bu, kasasının geçerli abonelikteki tüm korumasız VM 'nin en son listesini aldığından ve bunlara ' önbelleğe aldığınızdan emin olan zaman uyumsuz bir *gönderi*  işlemidir. VM ' önbelleğe alındıktan sonra, Kurtarma Hizmetleri sanal makineye erişebilir ve bunu koruyabilir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01

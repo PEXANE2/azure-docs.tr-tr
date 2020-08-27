@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931668"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919327"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET kullanarak video incelemeleri oluşturma
 
@@ -27,7 +28,7 @@ Bu makalede, [C# ile Content moderator SDK](https://www.nuget.org/packages/Micro
 - İnceleme durumunu ve ayrıntılarını alın
 - İncelemeyi Yayımla
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 - Bu makalede [, videoyu (bkz. hızlı başlangıç)](video-moderation-api.md) dağıttığınız ve yanıt verilerinin bulunduğu varsayılmaktadır. Bu, insan moderatör için çerçeve tabanlı incelemeler oluşturmak için gereklidir.
@@ -92,7 +93,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Özel özellikler ekleme
 
-Aşağıdaki özel özellikleri, ad alanı **Videoincelemeleri**, sınıf **programına**ekleyin. `AzureEndpoint` Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
+Aşağıdaki özel özellikleri, ad alanı **Videoincelemeleri**, sınıf **programına**ekleyin. `AzureEndpoint`Ve `CMSubscriptionKey` alanlarını uç nokta URL 'si ve abonelik anahtarınızın değerleriyle güncelleştirin. Bunları, Azure portal kaynağınızın **hızlı başlangıç** sekmesinde bulabilirsiniz.
 
 
 ```csharp
@@ -157,7 +158,7 @@ public static ContentModeratorClient NewClient()
 **Createvideoincelemeleri** aşağıdaki gerekli parametrelere sahiptir:
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
-1. Bir **IList\<createvideo, sbodyıtem>** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
+1. Bir **IList \<CreateVideoReviewsBodyItem> ** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
 
 **Createvideo, Sbodyıtem** 'ın birkaç özelliği vardır. En azından, aşağıdaki özellikleri ayarlarsınız:
 - **İçerik**. Gözden geçirilecek videonun URL 'SI.
@@ -165,7 +166,7 @@ public static ContentModeratorClient NewClient()
 - **Durum**. Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
 
 > [!NOTE]
-> **Createvideoincelemeleri** bir ılist\<String> döndürür. Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir. 
+> **Createvideoincelemeleri** bir IList döndürür \<string> . Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir. 
 
 Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
 
@@ -215,18 +216,18 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize.
 1. Content Moderator takım adınız.
 1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
-1. Bir **IList\<videoframebodyıtem>** nesnesi. Her **Videoframebodyıtem** nesnesi bir video çerçevesini temsil eder.
+1. Bir **IList \<VideoFrameBodyItem> ** nesnesi. Her **Videoframebodyıtem** nesnesi bir video çerçevesini temsil eder.
 
 **Videoframebodyıtem** aşağıdaki özelliklere sahiptir:
 - **Zaman damgası**. Video çerçevesinin alındığı videodaki süreyi saniye cinsinden içeren bir dize.
 - **FrameImage**. Video çerçevesinin URL 'SI.
-- **Meta veri**. Bir IList\<videoframebodyıtemmetadataıtem>. **Videoframebodyıtemmetadataıtem** yalnızca bir anahtar/değer çiftidir. Geçerli anahtarlar şunlardır:
+- **Meta veri**. Bir IList \<VideoFrameBodyItemMetadataItem> . **Videoframebodyıtemmetadataıtem** yalnızca bir anahtar/değer çiftidir. Geçerli anahtarlar şunlardır:
 - **gözden geçirmeyi öneririz**. Video çerçevesinin insan incelemesi önerilse doğru.
 - **adultScore**. Video çerçevesindeki yetişkinlere yönelik içeriğin önem derecesini derecelendiren, 0 ile 1 arasında bir değer.
 - **a**. Video yetişkinlere yönelik içerik içeriyorsa doğru.
 - **Oycyscore**. Video çerçevesindeki süslü içeriğin önem derecesini derecelendiren, 0 ile 1 arasında bir değer.
 - **r**. Video çerçevesi, süslü içerik içeriyorsa doğru.
-- **Reviewerresulttags**. Bir IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** yalnızca bir anahtar/değer çiftidir. Bir uygulama, video çerçevelerini düzenlemek için bu etiketleri kullanabilir.
+- **Reviewerresulttags**. Bir IList \<VideoFrameBodyItemReviewerResultTagsItem> . **VideoFrameBodyItemReviewerResultTagsItem** yalnızca bir anahtar/değer çiftidir. Bir uygulama, video çerçevelerini düzenlemek için bu etiketleri kullanabilir.
 
 > [!NOTE]
 > Bu hızlı başlangıç, **adultScore** ve **racyscore** özellikleri için rastgele değerler üretir. Bir üretim uygulamasında, bu değerleri bir Azure Media Service olarak dağıtılan [video denetleme hizmetinden](video-moderation-api.md)elde edersiniz.
@@ -541,7 +542,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>Video incelemeniz için göz atın
 
-Son olarak, video incelemesini gözden **geçir**>**ekranında Content moderator** gözden geçirme araç hesabınızda görürsünüz.
+Son olarak, video incelemesini gözden **geçir**ekranında Content moderator gözden geçirme araç hesabınızda görürsünüz > **Video** .
 
 ![İnsan moderatör için video incelemesi](images/ams-video-review.PNG)
 
