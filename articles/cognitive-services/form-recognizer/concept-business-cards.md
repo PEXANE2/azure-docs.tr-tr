@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799290"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004910"
 ---
 # <a name="business-card-concepts"></a>Kartvizit kavramları
 
-Azure form tanıyıcısı, önceden oluşturulmuş modellerinden birini kullanarak iş kartlarından anahtar değer çiftlerini çözümleyebilir ve ayıklayabilir. İş kartı API 'SI, önemli bilgileri Ingilizce olarak iş kartlarımızdan ayıklamak için Iş kartımızda güçlü optik karakter tanıma (OCR) yeteneklerini birleştirir. Kişisel iletişim bilgilerini, şirket adını, iş başlığını ve daha fazlasını ayıklar. Önceden oluşturulmuş Iş kartı API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır. 
+Azure form tanıyıcı, önceden oluşturulmuş modellerinden birini kullanarak iş kartlarından iletişim bilgilerini çözümleyebilir ve ayıklayabilir. İş kartı API 'SI, önemli bilgileri Ingilizce olarak iş kartlarımızdan ayıklamak için Iş kartımızda güçlü optik karakter tanıma (OCR) yeteneklerini birleştirir. Kişisel iletişim bilgilerini, şirket adını, iş başlığını ve daha fazlasını ayıklar. Önceden oluşturulmuş Iş kartı API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır. 
 
 ## <a name="what-does-the-business-card-api-do"></a>Iş kartı API 'SI ne yapar?
 
@@ -27,10 +27,11 @@ Iş kartı API 'SI, iş kartlarından önemli alanları ayıklar ve bunları dü
 
 ![Contoso FOTT + JSON çıktısından resim dökümü](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>Ayıklanan alanlar: 
+### <a name="fields-extracted"></a>Ayıklanan alanlar:
+
 * Kişi adları 
-* Ad 
-* Soyadı 
+  * İlk adlar
+  * Son adlar
 * Şirket adları 
 * Departmanlar 
 * İş başlıkları 
@@ -43,7 +44,7 @@ Iş kartı API 'SI, iş kartlarından önemli alanları ayıklar ve bunları dü
   * İş telefonları 
   * Diğer telefonlar 
 
-Iş kartı API 'SI Ayrıca Iş kartından tanınan tüm metni döndürür. Bu OCR çıkışı JSON yanıtına dahildir.  
+Iş kartı API 'SI Ayrıca, Iş kartından tanınan tüm metinleri de döndürebilir. Bu OCR çıkışı JSON yanıtına dahildir.  
 
 ### <a name="input-requirements"></a>Giriş gereksinimleri 
 
@@ -51,7 +52,7 @@ Iş kartı API 'SI Ayrıca Iş kartından tanınan tüm metni döndürür. Bu OC
 
 ## <a name="the-analyze-business-card-operation"></a>Iş kartını çözümle işlemi
 
-[Çözümle Iş kartı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) , giriş olarak bir iş kartının GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgi ve metin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Çözümle Iş kartı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) , giriş olarak bir iş kartının GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgilendiğiniz değerleri ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
@@ -63,18 +64,15 @@ Iş kartı API 'SI Ayrıca Iş kartından tanınan tüm metni döndürür. Bu OC
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|
-|durum | string | notStarted: analiz işlemi başlatılmamış. |
-| |  | çalışıyor: analiz işlemi devam ediyor. |
-| |  | başarısız: çözümleme işlemi başarısız oldu. |
-| |  | başarılı: çözümleme işlemi başarılı oldu. |
+|durum | string | notStarted: analiz işlemi başlatılmamış.<br /><br />çalışıyor: analiz işlemi devam ediyor.<br /><br />başarısız: çözümleme işlemi başarısız oldu.<br /><br />başarılı: çözümleme işlemi başarılı oldu.|
 
-**Durum** alanı **başarılı** DEĞERINE sahip olduğunda, JSON yanıtı iş kartı anlama ve metin tanıma sonuçlarını içerir. İş kartı anlama sonucu, her değerin ayıklanan metin, normalleştirilmiş değer, sınırlama kutusu, güvenirlik ve karşılık gelen Word öğelerini içerdiği adlandırılmış alan değerlerinin bir sözlüğü olarak düzenlenmiştir. Metin tanıma sonucu, metin, sınırlayıcı kutusu ve güvenle bilgi içeren bir satır ve sözcük hiyerarşisi olarak düzenlenir.
+**Durum** alanı **başarılı** DEĞERINE sahip olduğunda, JSON yanıtı, istenirse, iş kartı anlama ve isteğe bağlı metin tanıma sonuçlarını içerir. İş kartı anlama sonucu, her değerin ayıklanan metin, normalleştirilmiş değer, sınırlama kutusu, güvenirlik ve karşılık gelen Word öğelerini içerdiği adlandırılmış alan değerlerinin bir sözlüğü olarak düzenlenmiştir. Metin tanıma sonucu, metin, sınırlayıcı kutusu ve güvenle bilgi içeren bir satır ve sözcük hiyerarşisi olarak düzenlenir.
 
 ![örnek iş kartı çıkışı](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Örnek JSON çıkışı
 
-Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanınan metnin tamamını içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. "DocumentResults" düğümü, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi faydalı anahtar/değer çiftleri bulacaksınız.
+Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanınan metnin tamamını içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. "DocumentResults" düğümü, modelin bulduğu iş kartına özgü değerleri içerir. Burada ad, soyadı, şirket adı ve daha fazlası gibi yararlı iletişim bilgileri bulabilirsiniz.
 
 ```json
 {
@@ -394,5 +392,4 @@ Iş kartı API 'SI de [Aibuilder Iş kartı işleme özelliğini](https://docs.m
 - Kullanmaya başlamak için hızlı başlangıcı izleyin [API Python hızlı başlangıç](./quickstarts/python-business-cards.md)
 - [Form tanıyıcı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) hakkında bilgi edinin REST API
 - [Form tanıyıcı](overview.md) hakkında daha fazla bilgi
-
 

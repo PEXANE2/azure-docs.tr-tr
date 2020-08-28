@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: 4445bb5c73ca001813d529a3e65d1ea95e084616
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082463"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000150"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
 
@@ -72,7 +72,7 @@ Eklenti kodunuz aşağıdaki arabirimlerden birini uygular. Hangi arabirim, topo
 
 ### <a name="iscpplugin"></a>SCC
 
-**SCC** , birçok eklenti için ortak arabirimdir. Şu anda, bu bir kukla arabirimdir.
+**SCC** , birçok eklenti için ortak arabirimdir. Şu anda bu bir kukla arabirimdir.
 
 ```csharp
 public interface ISCPPlugin
@@ -201,7 +201,7 @@ public Dictionary<string, Object> stormConf { get; set; }
 public Dictionary<string, Object> pluginConf { get; set; }  
 ```
 
-**Stormconf** bölümü, fırtınası tarafından tanımlanan parametrelerdir ve **PLUGINCONF** bölümü SCP tarafından tanımlanan parametrelerdir. İşte bir örnek:
+**Stormconf** bölümü, fırtınası tarafından tanımlanan parametrelerdir ve **PLUGINCONF** bölümü SCP tarafından tanımlanan parametrelerdir. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 public class Constants
@@ -217,7 +217,7 @@ public class Constants
 }
 ```
 
-**Topologyıcontext** türü topoloji bağlamını alır. Birden çok paralel bileşen için en yararlı seçenektir. İşte bir örnek:
+**Topologyıcontext** türü topoloji bağlamını alır. Birden çok paralel bileşen için en yararlı seçenektir. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 //demo how to get TopologyContext info
@@ -434,7 +434,7 @@ SCP topolojisi belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak içi
 
 SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
-| Yeni işlev | Parametreler | Description |
+| Yeni işlev | Parametreler | Açıklama |
 | --- | --- | --- |
 | **TX-topolopy** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile bir işlem topolojisini tanımlar. |
 | **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
@@ -446,7 +446,7 @@ SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
 SCP.NET aşağıdaki anahtar sözcükleri tanımlar:
 
-| Sözcükle | Description |
+| Sözcükle | Açıklama |
 | --- | --- |
 | **: ad** |Topoloji adı |
 | **: topoloji** |Önceki tabloda ve yerleşik işlevlerde bulunan işlevleri kullanan topoloji |
@@ -539,9 +539,9 @@ SCP.NET, özelleştirilmiş bir gruplama yöntemi ekler ve gruplandırmayı yapm
 
 Önceki belirtim dosyasında:
 
-* `scp-field-group`gruplandırmanın SCP tarafından uygulanan özelleştirilmiş bir alan gruplandırması olduğunu belirtir.
-* `:tx`ya da `:non-tx` topolojinin işlem olup olmadığını belirtir. Başlangıç dizini işlem ve işlem dışı topolojiler arasında farklı olduğundan, bu bilgiye ihtiyacınız vardır.
-* `[0,1]`sıfır ile başlayan bir alan kimliği karma kümesi belirtir.
+* `scp-field-group` gruplandırmanın SCP tarafından uygulanan özelleştirilmiş bir alan gruplandırması olduğunu belirtir.
+* `:tx` ya da `:non-tx` topolojinin işlem olup olmadığını belirtir. Başlangıç dizini işlem ve işlem dışı topolojiler arasında farklı olduğundan, bu bilgiye ihtiyacınız vardır.
+* `[0,1]` sıfır ile başlayan bir alan kimliği karma kümesi belirtir.
 
 ### <a name="hybrid-topology"></a>Karma topolojisi
 
@@ -549,7 +549,7 @@ Yerel fırtınası kodu Java 'da yazılmıştır. SCP.NET, iş mantığınızı 
 
 ### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Bir belirtim dosyasında Java Spout/Ruli belirtme
 
-Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spout** ve **SCP-sürgüsü** kullanabilirsiniz. İşte bir örnek:
+Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spout** ve **SCP-sürgüsü** kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 (spout-spec 
@@ -561,7 +561,7 @@ Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spo
 
 ### <a name="specify-the-java-classpath-in-a-runspec-command"></a>RunSpec komutunda Java sınıfyolunu belirtme
 
-Java spotları veya cıvataları içeren topoloji göndermek istiyorsanız, ilk olarak bunları JAR dosyaları oluşturacak şekilde derleyin. Ardından, topolojiyi gönderdiğinizde JAR dosyalarını içeren Java sınıf yolunu belirtin. İşte bir örnek:
+Java spotları veya cıvataları içeren topoloji göndermek istiyorsanız, ilk olarak bunları JAR dosyaları oluşturacak şekilde derleyin. Ardından, topolojiyi gönderdiğinizde JAR dosyalarını içeren Java sınıf yolunu belirtin. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*

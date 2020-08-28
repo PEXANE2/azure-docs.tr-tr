@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 14634fac5d4501572a54f80f01a37e440d69d09b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075544"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997566"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -67,7 +67,7 @@ Her tür için uygun günlük stratejilerini tasarlamak üzere HDInsight kümeni
 
 * Kümeden veya birden fazla kümeden günlükleri nasıl toplayacağınızı veya denetim, izleme, planlama ve uyarı gibi amaçlarla bunları harmanlamanızı düşünün. Günlük dosyalarına düzenli olarak erişmek ve bunları indirmek için özel bir çözüm kullanabilir ve bunları bir pano görüntüsü sağlamak üzere birleştirebilir ve çözümleyebilirsiniz. Ayrıca, güvenlik veya hata algılama için uyarı için ek yetenekler de ekleyebilirsiniz. Bu yardımcı programları PowerShell, HDInsight SDK 'Ları veya Azure klasik dağıtım modeline erişen kodu kullanarak oluşturabilirsiniz.
 
-* Bir izleme çözümünün veya hizmetinin yararlı bir avantaj olup olmayacağını göz önünde bulundurun. Microsoft System Center bir [HDInsight yönetim paketi](https://www.microsoft.com/download/details.aspx?id=42521)sağlar. Günlükleri toplamak ve merkezileştirmek için Apache Chukwa ve Gana gibi üçüncü taraf araçları da kullanabilirsiniz. Birçok şirket, Hadoop tabanlı büyük veri çözümlerini izlemek için hizmet sunar, örneğin: Centerity, Compuware APM, şeması metin SPM ve zettaset Orchestrator.
+* Bir izleme çözümünün veya hizmetinin yararlı bir avantaj olup olmayacağını göz önünde bulundurun. Microsoft System Center bir [HDInsight yönetim paketi](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259)sağlar. Günlükleri toplamak ve merkezileştirmek için Apache Chukwa ve Gana gibi üçüncü taraf araçları da kullanabilirsiniz. Birçok şirket, Hadoop tabanlı büyük veri çözümlerini izlemek için hizmet sunar, örneğin: Centerity, Compuware APM, şeması metin SPM ve zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>2. Adım: küme hizmeti sürümlerini yönetme ve günlükleri görüntüleme
 
@@ -173,8 +173,8 @@ HDInsight kümesi için verileri tutan Azure depolama için oluşturulan günlü
 
 Tutulan günlük dosyalarının boyutunu ve sayısını denetlemek için aşağıdaki özellikleri ayarlayın `RollingFileAppender` :
 
-* `maxFileSize`, dosyanın alındığı dosyanın kritik boyutudur. Varsayılan değer 10 MB 'tır.
-* `maxBackupIndex`oluşturulacak yedekleme dosyalarının sayısını, varsayılan 1 ' i belirtir.
+* `maxFileSize` , dosyanın alındığı dosyanın kritik boyutudur. Varsayılan değer 10 MB 'tır.
+* `maxBackupIndex` oluşturulacak yedekleme dosyalarının sayısını, varsayılan 1 ' i belirtir.
 
 ### <a name="other-log-management-techniques"></a>Diğer günlük yönetimi teknikleri
 

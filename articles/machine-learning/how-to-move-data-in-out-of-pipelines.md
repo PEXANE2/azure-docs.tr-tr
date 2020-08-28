@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 1b6b5af2e6533c13165ae8253813a52b2c7ad261
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756971"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997906"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -28,16 +28,16 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - `Dataset`Önceden var olan veriler için nesneleri kullanma
 - Adımlarınız içindeki verilere erişin
 - `Dataset`Verileri, eğitim ve doğrulama alt kümeleri gibi alt kümelere bölme
-- `OutputFileDatasetConfig`Sonraki işlem hattı adımına veri aktarmak için nesne oluşturma
-- İşlem `OutputFileDatasetConfig` hattı adımlarına girdi olarak nesneleri kullanma
-- `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `OutputFileDatasetConfig`
+- `PipelineData`Sonraki işlem hattı adımına veri aktarmak için nesne oluşturma
+- İşlem `PipelineData` hattı adımlarına girdi olarak nesneleri kullanma
+- `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `PipelineData`
 
-> [!NOTE]
->`OutputFileDatasetConfig`Ve `OutputTabularDatasetConfig` sınıfları deneysel önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
->
->Daha fazla bilgi için bkz. https://aka.ms/azuremlexperimental.
+> [!TIP]
+> Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  `OutputFileDatasetConfig` `OutputTabularDatasetConfig` .  Bu sınıflar deneysel önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
+> 
+>Deneysel özellikler hakkında daha fazla bilgi için bkz https://aka.ms/azuremlexperimental ..
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız var:
 
@@ -151,68 +151,67 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
-## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>`OutputFileDatasetConfig`Ara veriler için kullanın
+## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`Ara veriler için kullanın
 
-`Dataset`Nesneler yalnızca kalıcı verileri temsil ederken, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) nesne (ler) ardışık düzen adımlarında **ve** kalıcı çıkış verilerinden geçici veri çıktısı için kullanılabilir. 
-
- `OutputFileDatasetConfig` nesnenin varsayılan davranışı, çalışma alanının varsayılan veri deposuna yazılır. `OutputFileDatasetConfig`Nesnelerinizi `PythonScriptStep` `arguments` parametresine geçirin.
+`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep` _both_ `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
 
 ```python
-from azureml.data import OutputFileDatasetConfig
-dataprep_output = OutputFileDatasetConfig()
-input_dataset = Dataset.get_by_name(workspace, 'raw_data')
+
+default_datastore = workspace.get_default_datastore()
+dataprep_output = PipelineData("clean_data", datastore=default_datastore)
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
     compute_target=cluster,
-    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
-    )
+    arguments=["--output-path", dataprep_output]
+    inputs=[Dataset.get_by_name(workspace, 'raw_data')],
+    outputs=[dataprep_output]
+)
+
 ```
 
-Bir çalıştırmanın sonunda nesnenizin içeriğini karşıya yüklemeyi tercih edebilirsiniz `OutputFileDatasetConfig` . Bu durumda, `as_upload()` işlevini nesneniz ile birlikte kullanın `OutputFileDatasetConfig` ve hedefteki mevcut dosyaların üzerine yazılıp yazılmayacağını belirtin. 
+`PipelineData`Nesnesini, anında karşıya yükleme sağlayan bir erişim modu kullanarak oluşturmayı seçebilirsiniz. Bu durumda, oluşturduğunuz zaman `PipelineData` öğesini `upload_mode` olarak ayarlayın `"upload"` ve `output_path_on_compute` verileri yazmak istediğiniz yolu belirtmek için bağımsız değişkenini kullanın:
 
 ```python
-#get blob datastore already registered with the workspace
-blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
+PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
 
-### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>`OutputFileDatasetConfig`Eğitim adımının çıkışları olarak kullanın
+> [!TIP]
+> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
 
-Ardışık `PythonScriptStep` yollarınızın içinde, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `OutputFileDatasetConfig` .
+### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>`PipelineData`Eğitim adımının çıkışları olarak kullanın
+Ardışık `PythonScriptStep` yollarınızın içinde, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
 parser.add_argument('--output_path', dest='output_path', required=True)
 args = parser.parse_args()
-
 # Make directory for file
 os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
 with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-### <a name="read-outputfiledatasetconfig-as-inputs-to-non-initial-steps"></a>`OutputFileDatasetConfig`İlk olmayan adımlara giriş olarak oku
+`PipelineData` `is_directory` ' I ' a ayarlanmış bağımsız değişkenle oluşturduysanız `True` , yalnızca çağrıyı gerçekleştirmek için yeterli olur `os.makedirs()` ve ardından yola beklediğiniz dosyaları yazmanız ücretsizdir. Daha ayrıntılı bilgi için bkz. [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) Reference belgeleri.
 
-İlk işlem hattı adımı, yola bazı veriler yazar `OutputFileDatasetConfig` ve bu ilk adımın çıktısı haline gelirse, sonraki bir adımda giriş olarak kullanılabilir. 
 
-Aşağıdaki kodda, 
+### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>`PipelineData`İlk olmayan adımlara giriş olarak oku
 
-* `step1_output_data` PythonScriptStep çıktısının, `step1` `my_adlsgen2` karşıya yükleme erişim modunda ADLS Gen 2 veri deposuna yazıldığını belirtir. ADLS Gen 2 veri depolarına geri veri yazmak için [rol izinlerini ayarlama](how-to-access-data.md#azure-data-lake-storage-generation-2) hakkında daha fazla bilgi edinin. 
-
-* `step1`Tamamlandıktan sonra ve çıkış, tarafından belirtilen hedefe yazıldıktan sonra `step1_output_data` , Step2 `step1_output_data` bir giriş olarak kullanıma hazırdır. 
+İlk işlem hattı adımı, yola bazı veriler yazar `PipelineData` ve bu ilk adımın çıktısı haline gelirse, sonraki bir adımda giriş olarak kullanılabilir:
 
 ```python
+step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
-step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
     script_name="step1.py",
     runconfig = aml_run_config,
-    arguments = ["--output_path", step1_output_data]
+    arguments = ["--output_path", step1_output_data],
+    inputs=[],
+    outputs=[step1_output_data]
 )
 
 step2 = PythonScriptStep(
@@ -220,21 +219,38 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
-
+    arguments = ["--pd", step1_output_data],
+    inputs=[step1_output_data]
 )
-
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>`OutputFileDatasetConfig`Yeniden kullanım için nesneleri kaydetme
+Bir girdinin değeri, `PipelineData` önceki çıktının yoludur. 
 
-`OutputFileDatasetConfig`Deneme sürenizin süresinden daha uzun bir süre için kullanılabilir hale getirmek istiyorsanız, denemeleri genelinde paylaşmak ve yeniden kullanmak üzere çalışma alanınıza kaydedin.
+> [!TIP]
+> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
+
+Daha önce gösterildiği gibi, ilk adım tek bir dosya yazdı, bu, şu şekilde görünebilir: 
 
 ```python
-step1_output_ds = step1_output_data.register_on_complete(name='processed_data', 
-                                                         description = 'files from step1`)
+parser = argparse.ArgumentParser()
+parser.add_argument('--pd', dest='pd', required=True)
+args = parser.parse_args()
+with open(args.pd) as f:
+    print(f.read())
 ```
+
+## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData`Nesneleri s öğesine `Dataset` Dönüştür
+
+`PipelineData`Bir çalıştırmanın süresinden daha uzun bir süre için kullanılabilir hale getirmek istiyorsanız, `as_dataset()` işlevini ' a dönüştürmek için kullanın `Dataset` . Sonra, `Dataset` çalışma alanınızda birinci sınıf bir vatandaşlık yaparak öğesini kaydedebilirsiniz. `PipelineData`İşlem hattı her çalıştığında nesneniz farklı bir yola sahip olacağı `create_new_version` için, `True` `Dataset` bir nesneden oluşturulan bir kayıt sırasında olarak ayarlamanız kesinlikle önerilir `PipelineData` .
+
+```python
+step1_output_ds = step1_output_data.as_dataset()
+step1_output_ds.register(name="processed_data", create_new_version=True)
+
+```
+> [!TIP]
+> İşlem hattı çalıştırmalarınızın dışındaki ara verilerinizi kalıcı hale getiren gelişmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

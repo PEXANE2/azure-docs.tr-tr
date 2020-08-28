@@ -7,12 +7,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c141cd96877fd140b858d0aaed9197f2de80eca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551752"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005743"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Service Fabric 'de hizmet benzeşimini yapılandırma ve kullanma
 Benzeşim, genellikle daha büyük tek parçalı uygulamaların bulut ve mikro hizmet dünyasına geçişini kolaylaştırmak için sağlanan bir denetimdir. Ayrıca, hizmetin performansını iyileştirmek için bir iyileştirme olarak da kullanılır, ancak bunu yapmak yan etkilere sahip olabilir.

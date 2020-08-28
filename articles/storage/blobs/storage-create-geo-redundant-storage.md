@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript
+ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 25f4c0244a027a0354809080bf13923e92d295f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844601"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001477"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -73,12 +73,12 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
    | Ayar       | Örnek değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
-   | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   | **adlı yönetilen örnek,** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Ad** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
    | **Konum** | *Doğu ABD* | Konum seçin. |
    | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
    | **Hesap türü** | *StorageV2* | Genel amaçlı v2 depolama hesabı kullanılması önerilir. Azure depolama hesabı türleri hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md). |
-   | **Çoğaltma**| *Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
+   | **Yinelemesi**| *Okuma erişimli coğrafi alanlar arası yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
    | **Erişim katmanı**| *Sık erişim* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
 
     ![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)

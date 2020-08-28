@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 91ef9d8bf75874f07c6a4a9c5763ff77b97b0180
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78939228"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008973"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services V2 ile yük devretme akışını uygulama
 
@@ -50,7 +51,7 @@ Aşağıdaki noktalara dikkat edilmelidir:
 * Depolama şifreli varlıkları (AssetCreationOptions. Storageşifrelendi) çoğaltma için desteklenmez (şifreleme anahtarı her iki Media Services hesabında farklı olduğundan). 
 * Dinamik paketlemeden yararlanmak istiyorsanız, içeriğinizi akışa almak istediğiniz akış uç noktasının **çalışır** durumda olduğundan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yeni veya mevcut bir Azure aboneliğindeki iki Media Services hesabı. Bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * İşletim sistemi: Windows 7, Windows 2008 R2 veya Windows 8.

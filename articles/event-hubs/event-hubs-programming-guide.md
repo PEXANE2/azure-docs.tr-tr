@@ -3,12 +3,13 @@ title: .NET programlama kılavuzu-Azure Event Hubs (eski) | Microsoft Docs
 description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod yazma hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934030"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013920"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
 Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
@@ -56,7 +57,7 @@ Bir [Eventhubclient][] örneği oluşturarak ve [sendadsync](/dotnet/api/microso
 
 ## <a name="event-serialization"></a>Olayı seri hale getirme
 
-[Eventdata][] sınıfında, olay veri yükünü temsil eden çeşitli parametreleri, baytları veya bayt dizisini alan [iki aşırı yüklenmiş Oluşturucu](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) vardır. JSON’u [EventData][] ile kullanırken JSON ile kodlanmış bir dize için bayt dizisini almak üzere **Encoding.UTF8.GetBytes()** kullanabilirsiniz. Örnek:
+[Eventdata][] sınıfında, olay veri yükünü temsil eden çeşitli parametreleri, baytları veya bayt dizisini alan [iki aşırı yüklenmiş Oluşturucu](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) vardır. JSON’u [EventData][] ile kullanırken JSON ile kodlanmış bir dize için bayt dizisini almak üzere **Encoding.UTF8.GetBytes()** kullanabilirsiniz. Örneğin:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -108,7 +109,7 @@ Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz 
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Olay işlemeyi başlatmak için, Olay Hub 'ınız için uygun parametreleri sağlayan [Eventprocessorhost][]örneğini oluşturun. Örnek:
+Olay işlemeyi başlatmak için, Olay Hub 'ınız için uygun parametreleri sağlayan [Eventprocessorhost][]örneğini oluşturun. Örneğin:
 
 > [!NOTE]
 > EventProcessorHost ve ilgili sınıfları **Microsoft. Azure. EventHubs. Processor** paketinde sunulmaktadır. [Bu makaledeki](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) yönergeleri Izleyerek veya [Paket Yöneticisi konsolu](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) penceresinde aşağıdaki komutu vererek, paketi Visual Studio projenize ekleyin: `Install-Package Microsoft.Azure.EventHubs.Processor` .

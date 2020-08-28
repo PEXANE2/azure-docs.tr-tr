@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998416"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -57,7 +57,7 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - West Europe
 - Doğu Asya
 - Güneydoğu Asya
-- Central India
+- Orta Hindistan
 - Doğu Japonya
 - Doğu Avustralya
 - Güneydoğu Avustralya
@@ -78,86 +78,25 @@ Log Analytics bir çalışma alanınız yoksa, kaynaklardan birini kullanarak bi
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Aşağıdaki tabloda VM'ler için Azure İzleyici desteklediği Windows ve Linux işletim sistemleri listelenmektedir. Bu bölümde daha sonra, birincil ve ikincil Linux işletim sistemi sürümünün ve desteklenen çekirdek sürümlerinin ayrıntılarını içeren tam bir liste bulacaksınız.
+VM'ler için Azure İzleyici, Log Analytics Aracısı ve bağımlılık aracısını destekleyen tüm işletim sistemlerini destekler. Tüm liste için bkz. [Azure izleyici aracılarına genel bakış ](../platform/agents-overview.md#supported-operating-systems) .
 
-|İşletim sistemi sürümü |Performans |Haritalar |
-|-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18,04, 16,04 | X | X |
-|CentOS Linux 7, 6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Deyi 9,4, 8 | X<sup>1</sup> | |
+VM'ler için Azure İzleyici destekleyen bağımlılık aracısının Linux desteği hakkında aşağıdaki noktalara göz atın:
 
-<sup>1</sup> VM'ler için Azure izleyici performans özelliği yalnızca Azure izleyici 'den kullanılabilir. Doğrudan Azure VM 'nin sol bölmesinden kullanılamaz.
+- Yalnızca varsayılan ve SMP Linux çekirdek sürümleri desteklenir.
+- Fiziksel adres uzantısı (PAE) ve Xen gibi standart olmayan çekirdek sürümleri, hiçbir Linux dağıtımı için desteklenmez. Örneğin, *2.6.16.21-0.8-Xen* yayın dizesiyle bir sistem desteklenmez.
+- Standart kernels 'lerin yeniden derlemesi dahil olmak üzere özel kernels desteklenmez.
+- Sürüm 9,4 ' den başka bir deyişle, harita özelliği desteklenmez ve performans özelliği yalnızca Azure Izleyici menüsünden kullanılabilir. Doğrudan Azure VM 'nin sol bölmesinden kullanılamaz.
+- CentOSPlus Kernel destekleniyor.
+- Linux çekirdeğinin Spectre güvenlik açığı için düzeltme eki uygulanmış olması gerekir. Daha fazla ayrıntı için lütfen Linux dağıtım satıcınıza başvurun.
 
->[!NOTE]
->Linux işletim sisteminde:
-> - Yalnızca varsayılan ve SMP Linux çekirdek sürümleri desteklenir.
-> - Fiziksel adres uzantısı (PAE) ve Xen gibi standart olmayan çekirdek sürümleri, hiçbir Linux dağıtımı için desteklenmez. Örneğin, *2.6.16.21-0.8-Xen* yayın dizesiyle bir sistem desteklenmez.
-> - Standart kernels 'lerin yeniden derlemesi dahil olmak üzere özel kernels desteklenmez.
-> - CentOSPlus Kernel destekleniyor.
-> - Linux çekirdeğinin Spectre güvenlik açığı için düzeltme eki uygulanmış olması gerekir. Daha fazla ayrıntı için lütfen Linux dağıtım satıcınıza başvurun.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-| 7,6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-| 6,10 | 2.6.32-754 |
-| 6,9 | 2.6.32-696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6,9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-| 18,04 | 5.3.0-1020<br>5,0 (Azure tarafından ayarlanmış çekirdek dahil)<br>4,18* <br> 4,15* |
-| 16.04.3 | 4,15. * |
-| 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-|12 SP4 | 4,12. * (Azure tarafından ayarlanmış çekirdek dahil) |
-|12 SP3 | 4,4. * |
-|12 SP2 | 4,4. * |
-
-#### <a name="debian"></a>Debian 
-
-| İşletim sistemi sürümü | Çekirdek sürümü |
-|:--|:--|
-| 9 | 4,9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Desteklenen Azure yay makineleri
 VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Arc aracısının 0,9 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
 | Bağlı kaynak | Desteklenir | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems). |
 | Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Hayır | |
 
@@ -175,7 +114,7 @@ Aşağıda, bu aracıları dağıtmaya yönelik birden çok yöntem verilmiştir
 | Yöntem | Açıklama |
 |:---|:---|
 | [Azure Portal](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
-| [Kaynak Yöneticisi şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
+| [Resource Manager şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
 | [Azure İlkesi](./vminsights-enable-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
 | [El ile yüklemesi](./vminsights-enable-hybrid.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |
 

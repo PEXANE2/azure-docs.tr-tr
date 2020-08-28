@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73605611"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004077"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics kullanarak avro verilerini sorgulama
 
@@ -20,7 +20,7 @@ Bu makalede, Azure IoT Hub iletileri Azure hizmetlerine verimli bir şekilde yö
 
 Bu zorluk, Azure IoT Hub iletileri Azure Blob depolamaya yönlendirdiğini, varsayılan olarak IoT Hub bir ileti gövdesi özelliğine ve bir ileti özelliğine sahip olan içeriği avro biçiminde yazar. Diğer tüm uç noktalar için avro biçimi kullanılmaz. Veri ve ileti koruma için avro biçimi harika olsa da, verileri sorgulamak için kullanılması zor bir yoldur. Karşılaştırma bölümünde JSON veya CSV biçimi verileri sorgulamak için çok daha kolaydır. IoT Hub artık JSON 'daki blob depolamaya veri yazılmasını ve AVRO de desteklemektedir.
 
-Daha fazla bilgi için bkz. [Azure Storage 'ı yönlendirme uç noktası olarak kullanma](iot-hub-devguide-messages-d2c.md#azure-storage).
+Daha fazla bilgi için bkz. [Azure Storage 'ı yönlendirme uç noktası olarak kullanma](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 İlişkisel olmayan büyük veri gereksinimlerini ve biçimlerini adresleyerek ve bu zorluğu aşmak için, verilerin dönüştürülmesi ve ölçeklendirilmesi için büyük veri desenlerinin birçoğunu kullanabilirsiniz. "Sorgu başına ödeme" desenlerinden biri, bu makalenin odaklanmasındaki Azure Data Lake Analytics. Sorguyu Hadoop veya diğer çözümlerde kolayca yürütebilseniz de, bu "sorgu başına ödeme" yaklaşımı için genellikle daha uygundur Data Lake Analytics.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495072"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006950"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -20,7 +20,7 @@ Bu makalede Azure [Site Recovery](site-recovery-overview.md)tarafından çoğalt
 
 Azure Izleyici günlükleri, diğer izleme verileriyle birlikte etkinlik ve kaynak günlüklerini toplayan bir günlük veri platformu sağlar. Azure Izleyici günlükleri içinde, günlük sorgularını yazmak ve test etmek ve günlük verilerini etkileşimli olarak analiz etmek için Log Analytics kullanırsınız. Günlük sonuçlarını görselleştirebilir ve sorgulayabilir ve izlenen verilere göre eylemleri gerçekleştirmek için uyarıları yapılandırabilirsiniz.
 
-Site Recovery için, aşağıdakileri yapmanıza yardımcı olması için Azure günlüklerini Izleyebilirsiniz:
+Site Recovery için, Azure Izleyici günlüklerini kullanarak şunları yapmanıza yardımcı olabilirsiniz:
 
 - **Site Recovery durumunu ve durumunu izleyin**. Örneğin, çoğaltma durumunu, test yük devretme durumunu, Site Recovery olayları, korunan makineler için kurtarma noktası hedeflerini (RPOs) ve disk/veri değişim hızlarını izleyebilirsiniz.
 - **Site Recovery için uyarıları ayarlayın**. Örneğin, makine sistem durumu, test yük devretme durumu veya Site Recovery iş durumu için uyarıları yapılandırabilirsiniz.
@@ -62,9 +62,9 @@ Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDia
 1. Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın.
 2. **Bağlı kaynaklar** sayfasına tıklayın ve **Windows Server**' ı seçin.
 3. Işlem sunucusuna Windows Agent 'ı (64 bit) indirin. 
-4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [Aracıyı TLS 1,2 kullanacak şekilde yapılandırma](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) .
+6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) .
 7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın. **Veri** sayfasına gidin ve **Windows performans sayaçları**' na tıklayın. 
 8. Aşağıdaki iki sayacı 300 saniyelik örnek aralığıyla eklemek için **' + '** düğmesine tıklayın:
 

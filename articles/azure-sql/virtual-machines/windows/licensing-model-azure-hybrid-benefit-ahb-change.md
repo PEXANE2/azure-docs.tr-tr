@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668912"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010231"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure'da SQL sanal makinesi için lisans modelini değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Azure VM 'de SQL Server Azure Hibrit Avantajı kullanımını ve uyumlu olduğun
 
 SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zaman yapılandırılabilir. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
 
@@ -112,7 +112,7 @@ PowerShell 'i, lisans modelinizi değiştirmek için kullanabilirsiniz.
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
-**Kullandıkça öde**
+**Kullandıkça ödeyin**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -156,7 +156,9 @@ Lisans modelinin değiştirilmesi:
 
 ## <a name="known-errors"></a>Bilinen hatalar
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>' ' Kaynak grubunun altındaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ' kaynağı \<resource-group> bulunamadı.
+Yaygın olarak bilinen hataları ve bunların çözümlerini gözden geçirin. 
+
+**' ' Kaynak grubunun altındaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ' kaynağı \<resource-group> bulunamadı.**
 
 Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
 
@@ -165,7 +167,7 @@ Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lis
 Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](sql-vm-resource-provider-register.md)gerekir. 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>' ' Sanal makinesi \<vmname\> ilişkili birden fazla NIC 'ye sahip
+**' ' Sanal makinesi \<vmname\> ilişkili birden fazla NIC 'ye sahip**
 
 Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini değiştirmeden önce NIC 'lerden birini kaldırın. Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebilseniz de, otomatik yedekleme ve düzeltme eki uygulama gibi Azure portal işlemler artık desteklenmeyecektir. 
 

@@ -3,12 +3,13 @@ title: FabricClient ile Azure Service Fabric dağıtımı
 description: Service Fabric uygulamaları dağıtmak ve kaldırmak için FabricClient API 'Lerini kullanın.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376979"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009310"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient kullanarak uygulama dağıtma ve kaldırma
 > [!div class="op_single_selector"]
@@ -122,7 +123,7 @@ Görüntü deposu ve görüntü deposu bağlantı dizesi hakkında ek bilgi içi
 
 ### <a name="deploy-large-application-package"></a>Büyük uygulama paketini dağıtma
 Sorun: büyük bir uygulama paketi (GB miktarı) için [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API zaman aşımına uğruyor.
-Almaya
+Şunu deneyin:
 - [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) yöntemi için parametresiyle daha büyük bir zaman aşımı belirtin `timeout` . Varsayılan olarak, zaman aşımı 30 dakikadır.
 - Kaynak makineniz ve kümeniz arasındaki ağ bağlantısını kontrol edin. Bağlantı yavaşsa, daha iyi bir ağ bağlantısına sahip bir makine kullanmayı düşünün.
 İstemci makine kümeden başka bir bölgedeyse, kümeyle daha yakın bir bölgede bir istemci makine kullanmayı düşünün.
@@ -135,7 +136,7 @@ Sıkıştırma, dosyanın boyutunu ve sayısını azaltır ve bu da Service Fabr
 
 ### <a name="deploy-application-package-with-many-files"></a>Birçok dosya içeren uygulama paketini dağıtma
 Sorun: çok sayıda dosya (binlerce sırada) olan bir uygulama paketi için [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) zaman aşımına uğruyor.
-Almaya
+Şunu deneyin:
 - Görüntü deposuna kopyalamadan önce [paketi sıkıştırın](service-fabric-package-apps.md#compress-a-package) . Sıkıştırma, dosya sayısını azaltır.
 - [Provisionapplicationasync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) için parametresiyle daha büyük bir zaman aşımı belirtin `timeout` .
 

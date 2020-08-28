@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198515"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005029"
 ---
 # <a name="connect-to-synapse-sql"></a>SYNAPSE SQL 'e bağlanma
 Azure SYNAPSE Analytics 'te SYNAPSE SQL özelliğine bağlanın.
@@ -35,7 +36,7 @@ Aşağıdaki örnekteki SQL için isteğe bağlı sunucu adı: showdemoweu-ondem
 
 Tam sunucu adını bulmak için:
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 2. **SYNAPSE çalışma alanları**' na tıklayın.
 3. Bağlanmak istediğiniz çalışma alanına tıklayın.
 4. Genel Bakış ' a gidin.

@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004179"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -22,7 +22,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Hata İletisi**      | <span style="font-weight:normal">Azure Backup 'ın yedeklemeyi yürütmek için gerekli rol ayrıcalıkları yok</span>    |
+| **Hata İletisi**      | <span style="font-weight:normal">Azure Backup, yedeklemeyi gerçekleştirmek için gerekli rol ayrıcalıklarına sahip değil</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Olası nedenler**    | Rolün üzerine yazılmış olabilir.                          |
 | **Önerilen eylem** | Sorunu çözmek için betiği **bul** bölmesinden çalıştırın veya [buradan](https://aka.ms/scriptforpermsonhana)indirin. Alternatif olarak, ' SAP_INTERNAL_HANA_SUPPORT ' rolünü Iş yükü yedekleme kullanıcısına (AZUREWLBACKUPHANAUSER) ekleyin. |
@@ -31,7 +31,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 | Hata İletisi      | <span style="font-weight:normal">HANA sistemine bağlanılamadı</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Olası nedenler**    | SAP HANA örneği çalışmıyor olabilir.<br/>Azure Backup 'ın HANA veritabanıyla etkileşim kurması için gerekli izinler ayarlanmamış. |
+| **Olası nedenler**    | SAP HANA örneği çalışmıyor olabilir.<br/>HANA veritabanıyla etkileşimde bulunmak için gereken Azure Backup izinleri ayarlanmamış. |
 | **Önerilen eylem** | SAP HANA veritabanının çalışır olup olmadığını denetleyin. Veritabanı çalışır duruma kullanıyorsa, tüm gerekli izinlerin ayarlanmış olup olmadığını denetleyin. İzinlerden herhangi biri eksikse eksik izinleri eklemek için [preregistration betiğini](https://aka.ms/scriptforpermsonhana) çalıştırın. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>Usererrorhanaınstancenamegeçersiz
@@ -45,7 +45,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 | Hata İletisi      | <span style="font-weight:normal">Belirtilen SAP HANA işlemi desteklenmiyor</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Olası nedenler**    | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde (Studio/kokpit/DBA kokpiti) gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez |
+| **Olası nedenler**    | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez (Studio/kokpit/DBA kokpiti) |
 | **Önerilen eylem** | Daha fazla bilgi için [buraya](./sap-hana-backup-support-matrix.md#scenario-support)bakın. |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>Usererrorhanapoya Notsupportbackuptype
@@ -73,7 +73,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 | Hata İletisi      | <span style="font-weight:normal">Geçersiz backınt yapılandırması algılandı</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| **Olası nedenler**    | Azure Backup için yedekleme parametreleri yanlış belirtildi |
+| **Olası nedenler**    | Yedekleme parametreleri Azure Backup için yanlış belirtilmiş |
 | **Önerilen eylem** | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>Usererrorıncompatiblesrctargetsystemsforrestore

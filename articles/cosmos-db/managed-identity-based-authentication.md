@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243726"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997736"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -90,10 +91,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Artık Azure Cosmos DB izinlerinde **DocumentDB hesabı katılımcısı** rolüyle sistem tarafından atanmış bir yönetilen kimliğe sahip bir işlev uygulamasına sahipsiniz. Aşağıdaki işlev uygulama kodu Azure Cosmos DB anahtarları alır, bir CosmosClient nesnesi oluşturur, Aquarium 'un sıcaklığını alır ve bunu Azure Cosmos DB kaydeder.
 
-Bu örnek Azure Cosmos DB hesap Anahtarlarınıza erişmek için [liste anahtarları API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) 'sini kullanır.
+Bu örnek Azure Cosmos DB hesap Anahtarlarınıza erişmek için [liste anahtarları API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) 'sini kullanır.
 
 > [!IMPORTANT] 
-> [Cosmos DB hesap okuyucusu rolünü atamak](#grant-access-to-your-azure-cosmos-account) Istiyorsanız, [salt okuma anahtarları API 'sini](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)kullanmanız gerekir. Bu, yalnızca salt okunurdur tuşları doldurur.
+> [Cosmos DB hesap okuyucusu rolünü atamak](#grant-access-to-your-azure-cosmos-account) Istiyorsanız, [salt okuma anahtarları API 'sini](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)kullanmanız gerekir. Bu, yalnızca salt okunurdur tuşları doldurur.
 
 Liste anahtarları API 'SI nesneyi döndürür `DatabaseAccountListKeysResult` . Bu tür C# kitaplıklarında tanımlı değildir. Aşağıdaki kod bu sınıfın uygulamasını gösterir:  
 

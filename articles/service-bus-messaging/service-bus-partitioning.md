@@ -3,12 +3,13 @@ title: Bölümlenmiş Azure Service Bus kuyrukları ve konuları oluşturun | Mi
 description: Birden çok ileti aracıları kullanarak Service Bus kuyrukların ve konuların nasıl bölümleneceğini açıklar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064868"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007970"
 ---
 # <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
@@ -43,7 +44,7 @@ Premium katman ad alanında bölümlendirme varlıkları desteklenmez. Ancak, yi
 
 ### <a name="create-a-partitioned-entity"></a>Bölümlenmiş varlık oluşturma
 
-Bölümlenmiş bir kuyruğu veya konuyu oluşturmanın birkaç yolu vardır. Uygulamanızdan kuyruğu veya konuyu oluşturduğunuzda, kuyruk [açıklaması. Enablebölümlendirme][QueueDescription.EnablePartitioning] veya [Topicdescription. enablebölümlendirme][TopicDescription.EnablePartitioning] özelliğini **true**olarak ayarlayarak sıra veya konu için bölümlemeyi etkinleştirebilirsiniz. Bu özellikler Queue veya topic oluşturulduğu sırada ayarlanmalıdır ve yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. Daha önce belirtildiği gibi, var olan bir kuyruk veya konu üzerinde bu özellikleri değiştirmek mümkün değildir. Örnek:
+Bölümlenmiş bir kuyruğu veya konuyu oluşturmanın birkaç yolu vardır. Uygulamanızdan kuyruğu veya konuyu oluşturduğunuzda, kuyruk [açıklaması. Enablebölümlendirme][QueueDescription.EnablePartitioning] veya [Topicdescription. enablebölümlendirme][TopicDescription.EnablePartitioning] özelliğini **true**olarak ayarlayarak sıra veya konu için bölümlemeyi etkinleştirebilirsiniz. Bu özellikler Queue veya topic oluşturulduğu sırada ayarlanmalıdır ve yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. Daha önce belirtildiği gibi, var olan bir kuyruk veya konu üzerinde bu özellikleri değiştirmek mümkün değildir. Örneğin:
 
 ```csharp
 // Create partitioned topic
@@ -83,7 +84,7 @@ Bölüm anahtarı "PIN" i belirli bir bölüme bir ileti. Bu bölümü tutan mes
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Gelişmiş Konular: bölümlenmiş varlıklarla işlem kullanma
 
-Bir işlem kapsamında gönderilen iletilerin bölüm anahtarını belirtmesi gerekir. Anahtar Şu özelliklerden biri olabilir: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)veya [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Aynı işlemin bir parçası olarak gönderilen tüm iletiler aynı bölüm anahtarını belirtmelidir. Bir işlem içinde bölüm anahtarı olmadan bir ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Farklı bölüm anahtarlarına sahip aynı işlem içinde birden çok ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Örnek:
+Bir işlem kapsamında gönderilen iletilerin bölüm anahtarını belirtmesi gerekir. Anahtar Şu özelliklerden biri olabilir: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)veya [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Aynı işlemin bir parçası olarak gönderilen tüm iletiler aynı bölüm anahtarını belirtmelidir. Bir işlem içinde bölüm anahtarı olmadan bir ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Farklı bölüm anahtarlarına sahip aynı işlem içinde birden çok ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Örneğin:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -103,7 +104,7 @@ Bölüm anahtarı olarak görev yapan özelliklerden herhangi biri ayarlanırsa 
 
 Oturum kullanan bir konuya veya kuyruğa işlem iletisi göndermek için, iletide [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlanmış olmalıdır. [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği de belirtilmişse, [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ile aynı olmalıdır. Farklıysa, Service Bus geçersiz bir işlem özel durumu döndürür.
 
-Normal (bölümlenmemiş) kuyrukların veya konuların aksine, farklı oturumlara birden çok ileti göndermek için tek bir işlem kullanılması mümkün değildir. Denendiğinde Service Bus geçersiz bir işlem özel durumu döndürür. Örnek:
+Normal (bölümlenmemiş) kuyrukların veya konuların aksine, farklı oturumlara birden çok ileti göndermek için tek bir işlem kullanılması mümkün değildir. Denendiğinde Service Bus geçersiz bir işlem özel durumu döndürür. Örneğin:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();

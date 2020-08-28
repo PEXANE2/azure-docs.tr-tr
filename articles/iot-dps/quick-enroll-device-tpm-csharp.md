@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: ee1b803459e0c81b86021b617a29e0b29ee19909
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74976851"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999062"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Hızlı başlangıç: C# hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -63,14 +63,14 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
 
    Bu adım, [Azure IoT sağlama hizmeti istemci SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini `using` , öğesinin `Program.cs`üst kısmına ekleyin:
+1. Aşağıdaki deyimlerini, `using` `using` öğesinin üst kısmına ekleyin `Program.cs` :
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Aşağıdaki alanları aşağıda listelenen değişiklikleri yaparak `Program` sınıfa ekleyin.
+1. Aşağıdaki alanları `Program` aşağıda listelenen değişiklikleri yaparak sınıfa ekleyin.
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -87,13 +87,13 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Yer tutucu `ProvisioningServiceConnectionString` değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
+   * `ProvisioningServiceConnectionString`Yer tutucu değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
 
    * İsteğe bağlı olarak kayıt kimliğini, onay anahtarını, cihaz kimliğini ve sağlama durumunu değiştirebilirsiniz.
 
    * Bu hızlı başlangıcı, bir sanal cihaz sağlamak için [C# cihaz SDK 'sını kullanarak sanal BIR TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) hızlı başlangıcı ile birlikte kullanıyorsanız, onay anahtarını ve kayıt kimliğini bu hızlı başlangıçta not ettiğiniz değerlerle değiştirin. Cihaz KIMLIĞINI bu hızlı başlangıçta önerilen değer ile değiştirebilir, kendi değerini kullanabilir veya bu örnekteki varsayılan değeri kullanabilirsiniz.
 
-1. `Program` Sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, `ProvisioningServiceClient` bireysel kayıt girişi oluşturur ve sonra tek `CreateOrUpdateIndividualEnrollmentAsync` bir kaydı sağlama hizmetine eklemek için üzerinde yöntemini çağırır.
+1. Sınıfına aşağıdaki yöntemi ekleyin `Program` .  Bu kod, bireysel kayıt girişi oluşturur ve sonra `CreateOrUpdateIndividualEnrollmentAsync` `ProvisioningServiceClient` tek bir kaydı sağlama hizmetine eklemek için üzerinde yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -158,7 +158,7 @@ C# hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta olu
 
 1. Bilgisayarınızda C# örnek çıktı penceresini kapatın.
 
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
 
 1. Sanal bir TPM cihazı oluşturmak için [C# cihaz SDK 'sını kullanarak sanal BIR TPM cihazı oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) bölümündeki adımları izlediyseniz, aşağıdaki adımları uygulayın:
 

@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891479"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003533"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Kimlik doğrulaması için Azure Ön Uç API’lerini kullanma
 
-Bu bölümde, kimlik doğrulaması için C# API 'SININ nasıl kullanılacağını anlatmaktadır.
+Bu bölümde, kimlik doğrulama ve oturum yönetimi için API 'yi nasıl kullanacağınızı anlayacağız.
+
+> [!CAUTION]
+Bu bölümde açıklanan işlevler, sunucu üzerinde REST çağrılarını dahili olarak sorun. Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. `SessionGeneralContext.HttpResponseCode`Bu örnekte üyenin değeri 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+
 
 ## <a name="azurefrontendaccountinfo"></a>Azurefrontendaccountınfo
 

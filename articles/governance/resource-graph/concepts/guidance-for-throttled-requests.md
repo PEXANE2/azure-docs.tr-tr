@@ -3,12 +3,13 @@ title: Kısıtlanan istekler için yönergeler
 description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541847"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006015"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -27,8 +28,8 @@ Azure Kaynak Grafiği, bir zaman penceresine göre her bir kullanıcı için bir
 
 Her sorgu yanıtında, Azure Kaynak Grafiği iki daraltma üst bilgisi ekler:
 
-- `x-ms-user-quota-remaining`(int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
-- `x-ms-user-quota-resets-after`(SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
+- `x-ms-user-quota-remaining` (int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
+- `x-ms-user-quota-resets-after` (SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
 
 Bir güvenlik sorumlusu, kiracı veya yönetim grubu [sorgu kapsamı](./query-language.md#query-scope)içinde 5000 ' den fazla aboneliğe erişebilmediğinde, yanıt ilk 5000 abonelikle sınırlıdır ve `x-ms-tenant-subscription-limit-hit` üst bilgi olarak döndürülür `true` .
 

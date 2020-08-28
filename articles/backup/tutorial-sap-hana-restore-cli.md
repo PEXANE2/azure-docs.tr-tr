@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure Backup kurtarma hi
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 3887b8e7333b6c581887fcfde7e1bd99200e72ef
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762292"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007273"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını geri yükleme
 
@@ -24,7 +24,7 @@ Bu öğreticinin sonuna kadar şunları yapabilirsiniz:
 > * Yedeklenen bir veritabanının geri yükleme noktalarını görüntüleme
 > * Veritabanını geri yükleme
 
-Bu öğreticide, Azure Backup kullanılarak yedeklenen Azure VM 'de çalışan bir SAP HANA veritabanınız olduğunu varsaymaktadır. SAP HANA veritabanınızı yedeklemek için [CLI kullanarak Azure 'da bir SAP HANA veritabanı yedeklemeyi](tutorial-sap-hana-backup-cli.md) kullandıysanız aşağıdaki kaynakları kullanıyorsunuz:
+Bu öğreticide, Azure VM 'de Azure Backup kullanılarak yedeklenen SAP HANA bir veritabanı olduğunu varsaymaktadır. SAP HANA veritabanınızı yedeklemek için [CLI kullanarak Azure 'da bir SAP HANA veritabanı yedeklemeyi](tutorial-sap-hana-backup-cli.md) kullandıysanız aşağıdaki kaynakları kullanıyorsunuz:
 
 * *Saphanaresourcegroup* adlı bir kaynak grubu
 * *Saphanavault* adlı bir kasa

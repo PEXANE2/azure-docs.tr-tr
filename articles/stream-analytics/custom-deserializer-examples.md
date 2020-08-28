@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873060"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008395"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -22,7 +23,7 @@ ms.locfileid: "83873060"
 
 Aşağıdaki kod örnekleri, özel seri hale getirici 'yi tanımlayan ve uygulayan arabirimlerdir `StreamDeserializer<T>` .
 
-`UserDefinedOperator`Tüm özel akış işleçleri için temel sınıftır. Bu işlem başlatılır `StreamingContext` , bu, seri hale getiriciniz ile ilgili herhangi bir sorun için hata ayıklamanız gereken tanılama yayımlamak için düzenek içeren bağlam sağlar.
+`UserDefinedOperator` Tüm özel akış işleçleri için temel sınıftır. Bu işlem başlatılır `StreamingContext` , bu, seri hale getiriciniz ile ilgili herhangi bir sorun için hata ayıklamanız gereken tanılama yayımlamak için düzenek içeren bağlam sağlar.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -35,7 +36,7 @@ Aşağıdaki kod parçacığı, akış verilerinin serisini kaldırma işlemi ol
 
 Geçişli hatalar, `IStreamingDiagnostics` geçirilen `UserDefinedOperator` Initialize yöntemi kullanılarak verilmelidir. Tüm özel durumlar hata olarak değerlendirilir ve seri hale getirici yeniden oluşturulur. Belirli sayıda hatalardan sonra iş başarısız durumuna geçer.
 
-`StreamDeserializer<T>`bir akışı, türünde bir nesneye ayırır `T` . Aşağıdaki koşulların karşılanması gerekir:
+`StreamDeserializer<T>` bir akışı, türünde bir nesneye ayırır `T` . Aşağıdaki koşulların karşılanması gerekir:
 
 1. T, bir sınıf veya struct.
 1. T 'deki tüm ortak alanlar
@@ -45,7 +46,7 @@ Geçişli hatalar, `IStreamingDiagnostics` geçirilen `UserDefinedOperator` Init
     1. `T2`T2 'nin aynı kuralları Izlediği IList.
     1. Özyinelemeli tür yok.
 
-Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserialize`örnek koleksiyonunu döndürür `T` .
+Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserialize` örnek koleksiyonunu döndürür `T` .
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +55,7 @@ Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserializ
     }
 ```
 
-`StreamingContext`Kullanıcı operatörü için tanılamayı yayımlamaya yönelik mekanizmayı içeren bağlamı sağlar.
+`StreamingContext` Kullanıcı operatörü için tanılamayı yayımlamaya yönelik mekanizmayı içeren bağlamı sağlar.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +64,13 @@ Parametresi `stream` seri hale getirilen nesneyi içeren akışdır. `Deserializ
     }
 ```
 
-`StreamingDiagnostics`seri hale getirici, seri hale getirici ve Kullanıcı tanımlı işlevler dahil Kullanıcı tanımlı operatörler için tanılamadır.
+`StreamingDiagnostics` seri hale getirici, seri hale getirici ve Kullanıcı tanımlı işlevler dahil Kullanıcı tanımlı operatörler için tanılamadır.
 
-`WriteError`Kaynak günlüklerine bir hata iletisi yazar ve hatayı tanılama 'ya gönderir.
+`WriteError` Kaynak günlüklerine bir hata iletisi yazar ve hatayı tanılama 'ya gönderir.
 
-`briefMessage`kısa bir hata iletisidir. Bu ileti, tanılama 'da görünür ve ürün ekibi tarafından hata ayıklama amacıyla kullanılır. Hassas bilgileri eklemeyin ve iletiyi 200 karakterden az tutun
+`briefMessage` kısa bir hata iletisidir. Bu ileti, tanılama 'da görünür ve ürün ekibi tarafından hata ayıklama amacıyla kullanılır. Hassas bilgileri eklemeyin ve iletiyi 200 karakterden az tutun
 
-`detailedMessage`, yalnızca depolama ortamınızdaki kaynak günlüklerinizi eklenen ayrıntılı bir hata iletisidir. Bu ileti 2000 karakterden az olmalıdır.
+`detailedMessage` , yalnızca depolama ortamınızdaki kaynak günlüklerinizi eklenen ayrıntılı bir hata iletisidir. Bu ileti 2000 karakterden az olmalıdır.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -219,7 +220,7 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 }  
 ```
 
-`serializationClassName`, uygulayan bir sınıf olmalıdır `StreamDeserializer<T>` . Bu, aşağıdaki bölümde açıklanmıştır.
+`serializationClassName` , uygulayan bir sınıf olmalıdır `StreamDeserializer<T>` . Bu, aşağıdaki bölümde açıklanmıştır.
 
 ## <a name="region-support"></a>Bölge desteği
 
@@ -230,7 +231,7 @@ Bu özellik aşağıdaki bölgelerde kullanılabilir:
 * Doğu ABD
 * Batı ABD
 * Doğu ABD 2
-* Batı Avrupa
+* West Europe
 
 Ek bölgeler için [destek isteyebilirsiniz](https://aka.ms/ccodereqregion) .
 

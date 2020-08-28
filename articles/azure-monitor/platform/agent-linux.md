@@ -1,31 +1,91 @@
 ---
-title: Linux bilgisayarlarını Azure Izleyici 'ye bağlama | Microsoft Docs
+title: Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
 description: Bu makalede, diğer bulutlarda veya şirket içinde barındırılan Linux bilgisayarların Linux için Log Analytics aracısıyla Azure Izleyici 'ye nasıl bağlanacağı açıklanır.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/21/2020
-ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+author: bwren
+ms.author: bwren
+ms.date: 08/21/2020
+ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543869"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998943"
 ---
-# <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Izleyici 'ye bağlama
+# <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
+Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
 
-Yerel veri merkezinizdeki veya Azure Izleyici ile diğer bulut ortamlarınızdaki sanal makineleri veya fiziksel bilgisayarları izlemek ve yönetmek için Log Analytics aracısını dağıtmanız ve bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir. Aracı Ayrıca Azure Otomasyonu için karma Runbook Worker rolünü destekler.
-
-Linux için Log Analytics Aracısı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Her yöntemin kullanımıyla ilgili ayrıntılar, makalenin ilerleyen kısımlarında verilmiştir.
-
-* Aracıyı [el ile indirip yükleyin](#install-the-agent-manually) . Bu, Linux bilgisayarın Internet erişimi olmadığında ve [Log Analytics ağ geçidi](gateway.md)aracılığıyla Azure Izleyici veya Azure Otomasyonu ile iletişim kurdukları durumlarda gereklidir. 
 * GitHub 'da barındırılan [bir sarmalayıcı betiği kullanarak Linux için aracıyı yükler](#install-the-agent-using-wrapper-script) . Bu, bilgisayarın Internet bağlantısı olduğunda (doğrudan veya bir proxy sunucusu aracılığıyla) aracıyı yüklemek ve yükseltmek için önerilen yöntemdir.
+* Aracıyı [el ile indirip yükleyin](#install-the-agent-manually) . Bu, Linux bilgisayarın Internet erişimi olmadığında ve [Log Analytics ağ geçidi](gateway.md)aracılığıyla Azure Izleyici veya Azure Otomasyonu ile iletişim kurdukları durumlarda gereklidir. 
 
-Desteklenen yapılandırmayı anlamak için [desteklenen Linux işletim sistemlerini](log-analytics-agent.md#supported-linux-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](log-analytics-agent.md#network-requirements) inceleyin.
+>[!IMPORTANT]
+> Bu makalede açıklanan yükleme yöntemleri genellikle şirket içi veya diğer bulutlardaki sanal makineler için kullanılır. Azure sanal makineleri için kullanabileceğiniz daha verimli seçenekler için bkz. [yükleme seçenekleri](log-analytics-agent.md#installation-options) .
+
+
+
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+
+Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md#supported-operating-systems) .
 
 >[!NOTE]
->Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz. Yalnızca bir System Center Operations Manager yönetim grubuna ve Log Analytics çalışma alanına ya da tek başına rapor verecek şekilde yapılandırılabilir.
+>OpenSSL 1.1.0 yalnızca x86_x64 platformlarında desteklenir (64-bit) ve OpenSSL, 1. x ' den önceki bir platformda desteklenmez.
+>
+2018 Ağustos 'Tan sonra yayınlanan sürümlerle başlayarak, destek modelimiz için aşağıdaki değişiklikleri yapıyoruz:  
+
+* İstemci değil yalnızca sunucu sürümleri desteklenir.  
+* Azure Linux tarafından onaylanan bazı [destekler](../../virtual-machines/linux/endorsed-distros.md)için odak desteği. Azure Linux tarafından onaylama ve Log Analytics Linux Aracısı için desteklenmekte olan yeni bir delinler/sürüm arasında bazı gecikme olabileceğini unutmayın.
+* Listelenen her ana sürüm için tüm küçük yayınlar desteklenir.
+* Üreticisinin destek sonu tarihini geçen sürümler desteklenmez.  
+* Yeni bir AMı sürümü desteklenmez.  
+* Yalnızca SSL 1. x çalıştıran sürümler varsayılan olarak desteklenir.
+
+>[!NOTE]
+>Şu anda desteklenmeyen ve destek modelimize hizalanmayan bir veya daha fazla sürümü kullanıyorsanız, bu depoyu çatalla, Microsoft destek 'in aracılı aracı sürümleriyle ilgili yardım sağlamayamayacak olduğunu bildiren bu depoyu çatallandırmanızı öneririz.
+
+### <a name="python-2-requirement"></a>Python 2 gereksinimi
+
+ Log Analytics Aracısı Python 2 gerektirir. Sanal makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, bunu kurmanız gerekir. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.
+
+ - Red hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, debir: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
+
+Python2 yürütülebilir dosyası, aşağıdaki komutu kullanarak "Python" için diğer ad olmalıdır:
+
+```
+alternatives --set python `which python2`
+```
+
+## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
+OMS aracısının Linux için özelleştirme desteği sınırlıdır. 
+
+Aşağıdakiler şu anda desteklenmektedir: 
+- FIPS
+
+Aşağıdakiler planlanmaktadır ancak henüz desteklenmemektedir:
+- CıS-SELINUX
+
+Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için desteklenmez veya planlanmaz.  
+
+## <a name="agent-prerequisites"></a>Aracı önkoşulları
+
+Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
+
+|Gerekli paket |Açıklama |En düşük sürüm |
+|-----------------|------------|----------------|
+|GLIBC |    GNU C Kitaplığı | 2.5-12 
+|Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |
+|Curl | Web istemcisini kıvır | 7.15.5 |
+|Python | | 2.6 + veya 3.3 +
+|Python-ctypes | | 
+|PAM | Eklenebilir Kimlik Doğrulaması Modülleri | | 
+
+>[!NOTE]
+>Syslog iletilerini toplamak için rsyslog veya Syslog-ng gerekir. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümünün (sysklog) sürüm 5 ' te bulunan varsayılan Syslog Daemon, Syslog olay koleksiyonu için desteklenmez. Bu dağıtımların bu sürümünden Syslog verileri toplamak için rsyslog arka plan programı yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
+
+## <a name="network-requirements"></a>Ağ gereksinimleri
+Linux aracısının ağ gereksinimleri için bkz. [Log Analytics aracısına genel bakış](log-analytics-agent.md#network-requirements) .
 
 ## <a name="agent-install-package"></a>Aracı yüklemesi paketi
 
@@ -49,25 +109,47 @@ Linux paketleri için Log Analytics aracısını yükledikten sonra, aşağıdak
 * İçinde bir sudoers *içerme* dosyası oluşturulur `/etc/sudoers.d/omsagent` . Bu `omsagent` , syslog ve omsagent Daemon 'ları 'ı yeniden başlatmayı yetkilendirir. Sudo *ekleme* yönergeleri, sudo 'ın yüklü sürümünde desteklenmiyorsa, bu girişlerin üzerine yazılır `/etc/sudoers` .
 * Syslog yapılandırması bir olay alt kümesini aracıya iletecek şekilde değiştirilir. Daha fazla bilgi için bkz. [Syslog veri toplamayı yapılandırma](data-sources-syslog.md).
 
-İzlenen bir Linux bilgisayarında aracı olarak listelenir `omsagent` . `omsconfig`, Linux yapılandırma aracısına yönelik Log Analytics aracısıdır ve her 5 dakikada bir yeni Portal tarafı yapılandırmasını arar. Yeni ve güncelleştirilmiş yapılandırma konumunda bulunan aracı yapılandırma dosyalarına uygulanır `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
+İzlenen bir Linux bilgisayarında aracı olarak listelenir `omsagent` . `omsconfig` , Linux yapılandırma aracısına yönelik Log Analytics aracısıdır ve her 5 dakikada bir yeni Portal tarafı yapılandırmasını arar. Yeni ve güncelleştirilmiş yapılandırma konumunda bulunan aracı yapılandırma dosyalarına uygulanır `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
 
-## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
+## <a name="install-the-agent-using-wrapper-script"></a>Sarmalayıcı betiği kullanarak aracıyı yükler
 
-Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınızın kimliği ve anahtarına ihtiyacınız olacak. Bu bilgi, aracının düzgün şekilde yapılandırılması ve Azure Izleyici ile başarılı bir şekilde iletişim kurabildiğinden emin olmak için aracının kurulumu sırasında gereklidir.
+Aşağıdaki adımlar, GitHub 'da barındırılan aracıyı indirmek ve aracıyı yüklemek için doğrudan veya bir proxy sunucusu üzerinden iletişim kurabilen Linux bilgisayarları için sarmalayıcı betiği kullanarak Azure ve Azure Kamu Bulutu 'nda Log Analytics için aracının kurulumunu yapılandırır.  
 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
+Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, bu yapılandırma komut satırında dahil ederek belirlenebilir `-p [protocol://][user:password@]proxyhost[:port]` . *Protocol* özelliği `http` , veya kabul eder `https` ve *proxyhost* özelliği proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
 
-1. Azure portal sol üst köşesinde **tüm hizmetler**' i seçin. Arama kutusuna **Log Analytics**girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
+Örnek: `https://proxy01.contoso.com:30443`
 
-2. Log Analytics çalışma alanları listenizde, daha önce oluşturduğunuz çalışma alanını seçin. ( **Defaultlaworkspace**adında bir adlandırılmış olabilir.)
+Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: `https://user01:password@proxy01.contoso.com:30443`
 
-3. **Gelişmiş ayarları**seçin:
+1. Linux bilgisayarı bir Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler.
+    
+    ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
 
-    ![Azure portal Log Analytics için Gelişmiş ayarlar menüsü](../learn/media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
- 
-4. **Bağlı Kaynaklar**’ı seçin ve ardından **Linux Sunucuları**’nı seçin.
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
 
-5. **Çalışma Alanı Kimliği** ve **Birincil Anahtar**’ın sağındaki değer. Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
+
+2. Linux bilgisayarı Azure Kamu Bulutu 'nda Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler. 
+
+    ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
+    ``` 
+
+    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
+
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
+    ```
+2. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın: 
+
+    ```
+    sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
+    ``` 
+
 
 ## <a name="install-the-agent-manually"></a>Aracıyı el ile yükleme
 
@@ -117,61 +199,17 @@ Aracıyı yüklemeden Aracı paketlerini paketten ayıklamak istiyorsanız aşa�
 sudo sh ./omsagent-*.universal.x64.sh --extract
 ```
 
-## <a name="install-the-agent-using-wrapper-script"></a>Sarmalayıcı betiği kullanarak aracıyı yükler
-
-Aşağıdaki adımlar, GitHub 'da barındırılan aracıyı indirmek ve aracıyı yüklemek için doğrudan veya bir proxy sunucusu üzerinden iletişim kurabilen Linux bilgisayarları için sarmalayıcı betiği kullanarak Azure ve Azure Kamu Bulutu 'nda Log Analytics için aracının kurulumunu yapılandırır.  
-
-Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, bu yapılandırma komut satırında dahil ederek belirlenebilir `-p [protocol://][user:password@]proxyhost[:port]` . *Protocol* özelliği `http` , veya kabul eder `https` ve *proxyhost* özelliği proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
-
-Örnek: `https://proxy01.contoso.com:30443`
-
-Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: `https://user01:password@proxy01.contoso.com:30443`
-
-1. Linux bilgisayarı bir Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler.
-    
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
-    ```
-
-    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
-
-   ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
-    ```
-
-2. Linux bilgisayarı Azure Kamu Bulutu 'nda Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler. 
-
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
-    ``` 
-
-    Aşağıdaki komut proxy `-p` parametresini ve kimlik doğrulaması proxy sunucunuz için gerekliyse örnek sözdizimini içerir:
-
-   ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
-    ```
-2. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın: 
-
-    ```
-    sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
-    ``` 
-
-## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
-OMS aracısının Linux için özelleştirme desteği sınırlıdır. 
-
-Aşağıdakiler şu anda desteklenmektedir: 
-- FIPS
-
-Aşağıdakiler planlanmaktadır ancak henüz desteklenmemektedir:
-- CI
-- SELINUX
-
-Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için desteklenmez veya planlanmaz.  
-
-
 ## <a name="upgrade-from-a-previous-release"></a>Önceki sürümden yükseltme
 
 Önceki sürümden yükseltme, 1.0.0-47 sürümünden başlayarak her sürümde desteklenir. `--upgrade`Aracının tüm bileşenlerini en son sürüme yükseltmek için parametresiyle birlikte yüklemeyi gerçekleştirin.
+
+## <a name="cache-information"></a>Önbellek bilgileri
+Linux için Log Analytics aracısındaki veriler, Azure Izleyici 'ye gönderilmeden önce *% STATE_DIR_WS%/out_oms_common*. Buffer * konumundaki yerel makinede önbelleğe alınır. Özel günlük verilerinin *% STATE_DIR_WS%/out_oms_blob*. Buffer * içinde ara belleğe alınmış olması. Yol bazı [çözümler ve veri türleri](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)için farklı olabilir.
+
+Aracı 20 saniyede bir karşıya yüklemeye çalışır. Başarısız olursa, işlem başarılı olana kadar üstel olarak zaman uzunluğu artacaktır. İkinci denemeden önce 30 saniye 60, sonraki, 120 saniye öncesi ve bu şekilde yeniden bağlantı başarıyla bağlanana kadar yeniden denemeler arasında en fazla 9 dakika sürer. Aracı, bir sonrakine geçmeden önce belirli bir veri öbeği için yalnızca 10 kez yeniden dener. Bu, aracı başarıyla yeniden karşıya yükleyeünceye kadar devam eder. , Verilerin atılmadan önce 8,5 saate kadar arabelleğe alınbileceği anlamına gelir.
+
+Varsayılan önbellek boyutu 10 MB 'tır, ancak [omsagent. conf dosyasında](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)değiştirilebilir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029102"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999827"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux için Log Analytics sanal makine uzantısı
 
@@ -36,7 +36,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme, 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Desteklenen Linux dağıtımları hakkında daha fazla bilgi için [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) makalesine bakın.
+Desteklenen Linux dağıtımları hakkında daha fazla bilgi için [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) makalesine bakın.
 
 ### <a name="agent-and-vm-extension-version"></a>Aracı ve VM Uzantısı sürümü
 Aşağıdaki tabloda, her sürüm için Log Analytics VM uzantısının ve Log Analytics Aracı paketinin sürümünün bir eşlemesi verilmiştir. Log Analytics aracı paketi sürümü için sürüm notlarına bir bağlantı dahildir. Sürüm notları, hata düzeltmeleriyle ilgili ayrıntıları ve belirli bir aracı sürümü için kullanılabilen yeni özellikleri içerir.  
@@ -104,7 +104,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Ad | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |

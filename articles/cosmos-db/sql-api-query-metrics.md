@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392140"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008701"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 
@@ -136,7 +137,7 @@ REST API istek üstbilgileri ve seçenekleriyle ilgili ayrıntılar için, bkz. 
 ## <a name="best-practices-for-query-performance"></a>Sorgu performansı için en iyi uygulamalar
 Sorgu performansını Azure Cosmos DB etkileyen en yaygın etmenler aşağıda verilmiştir. Bu makaledeki konuların her birini daha ayrıntılı bir şekilde inceleyeceğiz.
 
-| Çarpan | İpucu | 
+| Faktör | İpucu | 
 | ------ | -----| 
 | Sağlanan aktarım hızı | Sorgu başına RU ile ölçüm yapın ve sorgularınız için gereken sağlanmış iş hızına sahip olduğunuzdan emin olun. | 
 | Bölümlendirme ve bölüm anahtarları | Filtre yan tümcesindeki bölüm anahtarı değeri için düşük gecikme süresine sahip sorguları tercih edin. |
@@ -182,7 +183,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maksimum paralellik derecesi
-Sorgular için, `MaxDegreeOfParallelism` özellikle de çapraz bölüm sorguları (bölüm anahtarı değerinde bir filtre olmadan) gerçekleştirirseniz, uygulamanız için en iyi yapılandırmayı belirlemek üzere öğesini ayarlayın. `MaxDegreeOfParallelism`paralel görev sayısının üst sınırını, yani paralel olarak ziyaret edilecek en fazla bölüm sayısını denetler. 
+Sorgular için, `MaxDegreeOfParallelism` özellikle de çapraz bölüm sorguları (bölüm anahtarı değerinde bir filtre olmadan) gerçekleştirirseniz, uygulamanız için en iyi yapılandırmayı belirlemek üzere öğesini ayarlayın. `MaxDegreeOfParallelism`  paralel görev sayısının üst sınırını, yani paralel olarak ziyaret edilecek en fazla bölüm sayısını denetler. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(

@@ -5,20 +5,21 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260954"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007817"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors yeniden giriş
 Reliable Actors çalışma zamanı, varsayılan olarak mantıksal çağrı bağlamı tabanlı yeniden giriş yapılmasına izin verir. Bu, aktörlerin aynı çağrı bağlamı zincirinde olmaları durumunda yer almasına izin verir. Örneğin, oyuncu aktör C 'ye bir ileti gönderen aktör B 'ye bir ileti gönderir. İleti işlemenin bir parçası olarak, aktör C aktör A 'yı çağırırsa ileti yeniden alınır, bu nedenle izin verilir. Farklı bir çağrı bağlamının parçası olan diğer tüm iletiler, işleme bitene kadar aktör A 'da engellenir.
 
 Sabit listesinde bir aktör yeniden girişi için kullanılabilen iki seçenek vardır `ActorReentrancyMode` :
 
-* `LogicalCallContext`(varsayılan davranış)
-* `Disallowed`-yeniden girişi devre dışı bırakır
+* `LogicalCallContext` (varsayılan davranış)
+* `Disallowed` -yeniden girişi devre dışı bırakır
 
 ```csharp
 public enum ActorReentrancyMode

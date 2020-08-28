@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959822"
+ms.locfileid: "89008565"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -98,7 +98,7 @@ ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak i
 [Önkoşul](#prerequisites) bölümünde daha önce topladığınız önemli bilgileri girin:
 * Uygulama (istemci) kimliği
 * Dizin (kiracı) kimliği
-* ADT URL 'SI, *https:// <instance host name> * biçiminde
+* ADT URL 'SI, *https://{örnek konak adı}* biçiminde
 
 >[!NOTE]
 > Aynı simgeyi seçerek, oturum açma kutusunu tekrar çekmek için bu bilgileri dilediğiniz zaman yeniden ziyaret edebilir/düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.

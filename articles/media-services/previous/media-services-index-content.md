@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 39cbfebcf34ef47ae93972a11be44ef3bcec0d66
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826067"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008956"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
 
@@ -240,7 +241,7 @@ Tüm giriş medyası dosyaları başarıyla dizinlenmez, dizin oluşturma işi 4
 
 Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değerlerine göre hangi giriş dosyalarının başarısız olduğunu öğrenmek için çıkış bildirimi dosyasına başvurabilirsiniz. Başarısız olan giriş dosyaları için, elde edilen TTML, WebVTT ve anahtar sözcük dosyaları oluşturulmaz.
 
-### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Azure Media Indexer için görev önayarı
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
 | Ad | Gerektirme | Açıklama |
@@ -263,7 +264,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 | 2006 |Çok fazla giriş dosyası |Giriş bildiriminde 10 ' dan fazla dosya vardır. |
 | 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>veya<br/> Bozuk medya dosyası <br/>veya<br/> Giriş medyasında ses akışı yok. |
 | 4000 |Toplu dizin oluşturma kısmen başarılı oldu |Bazı giriş medya dosyalarından dizin oluşturulamadı. Daha fazla bilgi için bkz. <a href="#output_files">çıkış dosyaları</a>. |
-| diğer |İç hatalar |Lütfen destek ekibine başvurun. indexer@microsoft.com |
+| other |İç hatalar |Lütfen destek ekibine başvurun. indexer@microsoft.com |
 
 ## <a name="supported-languages"></a><a id="supported_languages"></a>Desteklenen diller
 Şu anda Ingilizce ve Ispanyolca dilleri desteklenmektedir.  
@@ -271,7 +272,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

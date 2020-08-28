@@ -5,12 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261130"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005845"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric kümesini programlı olarak ölçeklendirme 
 
@@ -25,9 +26,9 @@ Azure 'da çalışan Service Fabric kümeleri, sanal makine ölçek kümelerinin
 Bir hizmet sorumlusu aşağıdaki adımlarla oluşturulabilir:
 
 1. Azure CLı 'da ( `az login` ) sanal makine ölçek kümesine erişimi olan bir kullanıcı olarak oturum açın
-2. Hizmet sorumlusu oluşturma`az ad sp create-for-rbac`
+2. Hizmet sorumlusu oluşturma `az ad sp create-for-rbac`
     1. Daha sonra kullanmak üzere AppID (' istemci KIMLIĞI ' başka bir yerde), ad, parola ve kiracı ' yı unutmayın.
-    2. Ayrıca, ile görüntülenebilecek abonelik KIMLIĞINIZ gerekir`az account list`
+    2. Ayrıca, ile görüntülenebilecek abonelik KIMLIĞINIZ gerekir `az account list`
 
 Akıcı işlem kitaplığı bu kimlik bilgilerini şu şekilde kullanarak oturum açabilir ( `IAzure` [Microsoft. Azure. Management. floent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) paketinde olduğu gibi, temel akıcı Azure türlerinin olduğunu unutmayın):
 
@@ -59,7 +60,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatif olarak, sanal makine ölçek kümesi boyutu da PowerShell cmdlet 'leri ile yönetilebilir. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss), sanal makine ölçek kümesi nesnesi alabilir. Geçerli kapasite özelliği aracılığıyla kullanılabilir `.sku.capacity` . Kapasiteyi istenen değere değiştirdikten sonra, Azure 'daki sanal makine ölçek kümesi, komutla birlikte güncelleştirilebilecek [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) .
+Alternatif olarak, sanal makine ölçek kümesi boyutu da PowerShell cmdlet 'leri ile yönetilebilir. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) , sanal makine ölçek kümesi nesnesi alabilir. Geçerli kapasite özelliği aracılığıyla kullanılabilir `.sku.capacity` . Kapasiteyi istenen değere değiştirdikten sonra, Azure 'daki sanal makine ölçek kümesi, komutla birlikte güncelleştirilebilecek [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) .
 
 Bir düğüm el ile eklenirken, ölçek kümesi şablonu yeni örnekleri Service Fabric kümesine otomatik olarak katmak için Uzantılar içerdiğinden, bir ölçek kümesi örneğinin eklenmesi, yeni bir Service Fabric düğümü başlatmak için gerekli olmalıdır. 
 

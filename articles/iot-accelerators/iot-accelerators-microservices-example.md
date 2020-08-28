@@ -7,12 +7,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9ff3e12721628e244f247e174af101e71ea91191
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61447650"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998331"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Bir mikro hizmeti özelleştirme ve yeniden dağıtma
 
@@ -56,7 +57,7 @@ Bu bölümde, varsayılan IoT Hub Manager Mikro hizmet API 'sini çağırabilirs
 1. Terminalizin açık olduğundan ve uzaktan Izleme çözümünü Klonladığınız dizine değişdiğinizden emin olun. 
 1. Dizininizi "Azure-IoT-PCs-Remote-Monitoring-DotNet/Services/ıothub-Manager/Services" olarak değiştirin.
 1. İstediğiniz herhangi bir metin düzenleyicisinde veya IDE 'de StatusService.cs açın. 
-1. Aşağıdaki kodu bulun:
+1. Şu kodu bulun:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
@@ -121,7 +122,7 @@ Yeni Docker görüntünüzü bir Docker Hub 'ına gönderebilmeniz için Docker,
 
 1. Terminale geri dönün ve şu dizine geçin: "Azure-IoT-PCs-Remote-Monitoring-DotNet/Services/betikler/Local".
 2. İstediğiniz metin düzenleyicisinde veya IDE 'de Docker-Compose. yıml 'yi açın.
-3. Aşağıdaki kodu bulun:
+3. Şu kodu bulun:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0e342e5509aaba05228c7d1032023a6f4710f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231854"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999521"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Video özeti oluşturmak için Azure Media Video Thumbnails kullanma  
 
@@ -33,7 +34,7 @@ ms.locfileid: "86231854"
 
 **Azure Media video küçük resim** MP, şu anda önizleme aşamasındadır.
 
-Bu makale, **Azure Media video küçük resmindeki** ayrıntıları sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
+Bu makale,  **Azure Media video küçük resmindeki** ayrıntıları sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -67,7 +68,7 @@ Azure Media Video Thumbnails medya işlemcisinin yapabilecekleri bazı örnekler
 
 Aşağıdaki tabloda, **maxMotionThumbnailInSecs** kullanılmazsa varsayılan süre açıklanmaktadır.
 
-|  | Small | Boyutta |
+|  | Küçük | Boyutta |
 | --- | --- | --- |
 | **Video süresi** |d < 3 dk |3 dk < d < 15 dk |
 | **Küçük resim süresi** |15 sn (2-3 sahne) |30 sn (3-5 sahne) |

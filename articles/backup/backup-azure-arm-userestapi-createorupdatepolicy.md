@@ -4,16 +4,16 @@ description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve b
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4678c6aaa03d511da35d5efee2b1e75d08546781
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826401"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006270"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
 
-Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanmamıza izin verin.
+Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanalım.
 
 ## <a name="create-or-update-a-policy"></a>İlke oluşturma veya güncelleştirme
 
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Name  |Gerekli  |Tür  |Açıklama  |
+|Ad  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |properties     |   Doğru      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
 |etiketler     |         | Nesne        |  Kaynak etiketleri       |
