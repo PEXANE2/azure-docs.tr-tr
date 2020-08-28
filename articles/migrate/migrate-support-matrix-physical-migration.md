@@ -4,12 +4,12 @@ description: Azure geçişi 'nde fiziksel sunucu geçişi desteği hakkında bil
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770348"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051143"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 
@@ -44,19 +44,20 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz fiziksel sunucu
 **Azure gereksinimleri** | En son bilgiler için Site Recovery [Azure ağ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [depolama](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)ve [işlem](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) gereksinimlerini gözden geçirin. Azure geçişi, fiziksel sunucu geçişi için aynı gereksinimlere sahiptir.
 **Mobility hizmeti** | Taşımak istediğiniz her makinede Mobility hizmeti aracısının yüklü olması gerekir.
 **UEFı önyüklemesi** | Azure 'daki geçirilmiş makine otomatik olarak bir BIOS önyüklemesi Azure VM 'sine dönüştürülür. Yalnızca Windows Server 2012 ve üzeri sürümleri çalıştıran sunucu desteklenir.<br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
+**UEFı-güvenli önyükleme**         | Geçiş için desteklenmez.
 **Hedef disk** | Makineler, yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilir.
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  Makine başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** |  Şifrelenmiş diskleri/birimleri olan makineler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmiyor.
+**Paylaşılan disk kümesi** | Desteklenmez.
 **Bağımsız diskler** | Destekleniyor.
 **Geçiş diskleri** | Destekleniyor.
 **NFS** | Makinelere birim olarak takılan NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan makineler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Destekleniyor
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
-**IPv6** | Desteklenmiyor.
+**Çok yollu GÇ** | Desteklenmez.
+**Depolama vMotion** | Desteklenir
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
+**IPv6** | Desteklenmez.
 
 
 
@@ -81,9 +82,9 @@ Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısı
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
+Paylaşılan VHD | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmez. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmez. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **Windows Firewall**  ->  **etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler** ' de RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  

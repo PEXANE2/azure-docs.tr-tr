@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045008"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050514"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Hızlı Başlangıç: Konsol uygulamasından gerçek zamanlı iletiler yayımlama
 
@@ -19,7 +19,7 @@ Azure SignalR hizmeti, yayıncılık gibi sunucudan istemciye doğrudan iletişi
 
 Bu hızlı başlangıçta C# dilinde bir komut satırı uygulamasından bağlı istemci uygulamalarına nasıl ileti gönderebileceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
@@ -28,11 +28,17 @@ Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabil
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
+
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında oturum açın.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
@@ -45,6 +51,7 @@ Hizmet dağıtılırken kodu hazırlamaya geçiş yapalım. [GitHub'dan örnek u
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
@@ -81,6 +88,8 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
+
 ## <a name="run-the-sample-without-publishing"></a>Örneği yayımlamadan çalıştırma
 
 Bir sunucu veya istemci başlatmak için aşağıdaki komutu da çalıştırabilirsiniz
@@ -97,6 +106,8 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` öğesini örneğin kök dizininde çalıştırabilirsiniz. Bundan sonra `-c "<ConnectionString>"` seçeneğine ihtiyacınız kalmaz.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
+
 ## <a name="usage"></a>Kullanım
 
 Sunucu başlatıldıktan sonra şu iletiyi göndermek için komutunu kullanın:
@@ -110,6 +121,8 @@ broadcast
 ```
 
 Farklı istemci adları ile birden çok istemci başlatabilirsiniz.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Üçüncü taraf hizmetlerle tümleştirme
 
@@ -126,7 +139,7 @@ Sürüm | API Durumu | Kapı | Özel
 
 Her sürüm için kullanılabilir API'lerin listesi aşağıda verilmiştir.
 
-API | 1,0-Önizleme | 1,0
+API | 1,0-Önizleme | 1.0
 --- | --- | ---
 [Tümüne yayınla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Gruba yayınla](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -244,7 +257,11 @@ Yanıt Durum Kodu | Açıklama
 `200` | Hizmet Iyi
 `5xx` | Hizmet hatası
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -252,3 +269,5 @@ Bu hızlı başlangıçta, SignalR hizmetinden istemcilere gerçek zamanlı ilet
 
 > [!div class="nextstepaction"]
 > [Azure SignalR hizmeti bağlamalarını kullanarak Azure Işlevleri geliştirme](signalr-quickstart-azure-functions-csharp.md)
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsapi)

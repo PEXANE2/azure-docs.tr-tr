@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/03/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78301971"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89052475"
 ---
 Aşağıdaki adımları izleyerek Kaynak Yöneticisi dağıtım modeliyle ve Azure portal bir sanal ağ oluşturabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -46,7 +46,6 @@ Aşağıdaki adımları izleyerek Kaynak Yöneticisi dağıtım modeliyle ve Azu
 
    ![IP adresleri sekmesi](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "IP adresleri sekmesi")  
    - **IPv4 adres alanı**: varsayılan olarak, bir adres alanı otomatik olarak oluşturulur. Adres alanına tıklayarak kendi değerlerinizi yansıtacak şekilde ayarlayabilirsiniz. Ayrıca, ek adres alanları da ekleyebilirsiniz.
-   - **IPv6**: yapılandırmanız IPv6 adres alanı gerektiriyorsa, bu bilgileri girmek için **IPv6 adres alanı Ekle** kutusunu seçin.
    - **Alt ağ**: varsayılan adres alanını kullanırsanız otomatik olarak varsayılan bir alt ağ oluşturulur. Adres alanını değiştirirseniz, bir alt ağ eklemeniz gerekir. **Alt ağ ekle** penceresini açmak için **+ alt ağ ekle** ' yi seçin. Aşağıdaki ayarları yapılandırın ve ardından **Ekle** ' yi seçerek değerleri ekleyin:
       - **Alt ağ adı**: Bu örnekte "ön uç" alt ağını adlandırdık.
       - **Alt ağ adres aralığı**: Bu alt ağın adres aralığı.

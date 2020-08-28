@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207552"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051364"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
@@ -95,7 +95,7 @@ Kullanılabilir protokoller, kullanılan Load Balancer SKU 'suna bağımlıdır:
 | **Standart SKU** |    &#9989; |   &#9989; |   &#9989; |
 | **Temel SKU** |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP araştırması
+### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP araştırması
 
 TCP araştırmaları, tanımlı bağlantı noktasıyla üç yönlü bir açık TCP el sıkışması gerçekleştirerek bir bağlantı başlatır.  TCP araştırmaları bir bağlantıyı dört yönlü bir kapalı TCP el sıkışması ile sonlandırır.
 
@@ -223,7 +223,7 @@ Load Balancer sistem durumu araştırmalarının yanı sıra [aşağıdaki işle
 - Özel DNS sunucuları tanımlamayan müşterilere filtrelenmiş ad çözümlemesi sağlamak için DNS sanal sunucusuyla iletişim sağlar.  Bu filtreleme, müşterilerin yalnızca dağıtımının ana bilgisayar adlarını çözümleyebilmesini sağlar.
 - VM 'nin Azure 'daki DHCP hizmetinden dinamik bir IP adresi almasını sağlar.
 
-## <a name="design-guidance"></a><a name="design"></a>Tasarım Kılavuzu
+## <a name="design-guidance"></a><a name="design"></a> Tasarım Kılavuzu
 
 Sistem durumu araştırmaları, hizmetinizi dayanıklı hale getirmek ve ölçeklendirilmesine izin vermek için kullanılır. Yanlış yapılandırma veya hatalı tasarım deseninin kullanılabilmesi, hizmetinizin kullanılabilirliğini ve ölçeklenebilirliğini etkileyebilir. Tüm belgeyi gözden geçirin ve bu araştırma yanıtının ne kadar etkilendiğine veya ne zaman işaretleneceğini ve uygulama senaryonuzun kullanılabilirliğini nasıl etkilediğini düşünün.
 
@@ -263,6 +263,6 @@ Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Standart Load Balancer](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
-- [PowerShell kullanarak Kaynak Yöneticisi bir genel yük dengeleyici oluşturmaya başlama](quickstart-create-standard-load-balancer-powershell.md)
+- [PowerShell kullanarak Kaynak Yöneticisi bir genel yük dengeleyici oluşturmaya başlama](quickstart-load-balancer-standard-public-powershell.md)
 - [Sistem durumu araştırmaları için REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer UserVoice](https://aka.ms/lbuservoice) ile yeni durum araştırma becerileri isteyin

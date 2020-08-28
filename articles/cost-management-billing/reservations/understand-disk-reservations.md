@@ -4,20 +4,21 @@ description: Azure ayrılmış disk indiriminin Azure premium SSD yönetilen dis
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509474"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682459"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Rezervasyon indiriminizin Azure Disk Depolama’ya nasıl uygulandığını anlama
 
 Azure diskleriniz için ayrılmış kapasite satın aldığınızda rezervasyon indirimi, rezervasyonunuzun dönemiyle eşleşen disk kaynaklarına otomatik olarak uygulanır. Rezervasyon indirimi yalnızca disk SKU’larına uygulanır. Disk anlık görüntüleri kullandıkça öde fiyatlarıyla ücretlendirilir.
 
-Azure Disk rezervasyonu hakkında daha fazla bilgi için bkz. [Azure Disk rezervasyonu ile tasarruf etme](../../virtual-machines/linux/disks-reserved-capacity.md). Azure disk rezervasyonu fiyatları hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
+Azure Disk rezervasyonu hakkında daha fazla bilgi için bkz. [Azure Disk rezervasyonu ile tasarruf etme](../../virtual-machines/disks-reserved-capacity.md). Azure disk rezervasyonu fiyatları hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
@@ -53,6 +54,5 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Disk Rezervasyonu ile maliyetleri azaltın (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [Azure Disk Rezervasyonu ile maliyetleri azaltın (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [Azure Disk Rezervasyonu ile maliyetleri azaltın](../../virtual-machines/disks-reserved-capacity.md)
 - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)

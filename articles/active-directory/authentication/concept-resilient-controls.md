@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716308"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049579"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -92,7 +92,7 @@ Bu örnek ilke kümesi, **appusers**'daki seçili kullanıcılara, güvenilen bi
 
 ### <a name="contingencies-for-user-lockout"></a>Kullanıcı kilitleme için kıdurumlar
 
-Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler oluşturmak için iş sürekliliği, operasyonel maliyet, mali maliyet ve güvenlik riskleri arasında zorunluluğunu getirir kriterleri tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesi, bir uygulamalar alt kümesi veya bir konum alt kümesi için etkinleştirebilirsiniz. Bir risk azaltma yöntemi uygulandığında, acil durum ilkeleri yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlayacak. Microsoft, yöneticilerin, ilkelerin açık olmaları gereken etkileri izleyebilmesi için, kullanımda olmadığında [yalnızca rapor modunda](../conditional-access/howto-conditional-access-report-only.md) yedek ilkelerin etkinleştirilmesini önerir.
+Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler oluşturmak için iş sürekliliği, operasyonel maliyet, mali maliyet ve güvenlik riskleri arasında zorunluluğunu getirir kriterleri tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesi, bir uygulamalar alt kümesi veya bir konum alt kümesi için etkinleştirebilirsiniz. Bir risk azaltma yöntemi uygulandığında, acil durum ilkeleri yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlayacak. Microsoft, yöneticilerin, ilkelerin açık olmaları gereken etkileri izleyebilmesi için, kullanımda olmadığında [yalnızca rapor modunda](../conditional-access/howto-conditional-access-insights-reporting.md) yedek ilkelerin etkinleştirilmesini önerir.
 
  Bir kesinti sırasında pozlandırmayı anlamak, riskinizi azaltmaya yardımcı olur ve planlama sürecinizin önemli bir parçasıdır. Acil durum planınızı oluşturmak için öncelikle kuruluşunuzun aşağıdaki iş gereksinimlerini saptayın:
 
@@ -282,7 +282,7 @@ Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdak
 >[!NOTE]
  > Azure MFA için [Güvenilen IP 'lerin](./howto-mfa-mfasettings.md) yapılandırılması yalnızca [Azure AD Premium lisanslarla](./concept-mfa-licensing.md)kullanılabilir.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Azure AD Kimlik Doğrulaması Belgeleri](./howto-mfaserver-iis.md)
 * [Azure AD 'de acil erişimli yönetim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)

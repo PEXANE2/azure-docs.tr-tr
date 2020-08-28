@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: portalda bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045221"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051531"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
-Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonlarına (ARM şablonları), ilkeye, güvenliğe ve daha fazlasına dayalı yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler aşağıdakileri içerir:
+Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonlarına (ARM şablonları), ilkeye, güvenliğe ve daha fazlasına dayalı yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler arasında şunlar yer alır:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -61,7 +61,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. **Türü** **yerleşik**olarak değiştirin. **Ara**alanına **Tag**yazın.
 
-   1. Filtrelemenin yapılması için **Ara**’ya tıklayın. **Kaynak grupları için etiketi ve varsayılan değerini Ekle '** yi seçin.
+   1. Filtreleme işleminin gerçekleşmesi için odak **aramanın** dışına geçin. **Kaynak grupları için etiketi ve varsayılan değerini Ekle '** yi seçin.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 

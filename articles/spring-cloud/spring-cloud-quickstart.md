@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9e9973db60f84d2eab63137a3034882bb4ded7f6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951849"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048219"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
 > * Gerçek zamanlı akış günlükleri
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -169,13 +169,15 @@ Dağıtım tamamlandıktan sonra uygulamasına ' de erişebilirsiniz `https://<s
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-1. Uygulamadan gerçek zamanlı günlükleri almak için aşağıdaki komutu kullanın.
+Uygulamadan gerçek zamanlı günlükleri almak için aşağıdaki komutu kullanın.
 
-    ```azurecli
-    az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
-    ```
-    
-    [![Akış günlükleri ](media/spring-cloud-quickstart-java/streaming-logs.png)](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
+```azurecli
+az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
+
+```
+Günlükler sonuçlarda görüntülenir:
+
+[![Akış günlükleri ](media/spring-cloud-quickstart-java/streaming-logs.png)](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
 
 >[!TIP]
 > `az spring-cloud app logs -h`Daha fazla parametre ve günlük akışı işlevlerini araştırmak için kullanın.

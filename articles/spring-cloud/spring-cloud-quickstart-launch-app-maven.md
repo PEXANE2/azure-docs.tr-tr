@@ -7,16 +7,18 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7496ffcc365a3e9178bcc3293b518ea790e56c78
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 95ae9c596742b075b5d78d22b925b3adf9285a7d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607060"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048066"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
 Azure Spring Cloud Maven eklentisini kullanarak Azure Spring Cloud uygulamalarınızı kolayca oluşturabilir ve güncelleştirebilirsiniz. Bir yapılandırmayı önceden tanımlayarak, mevcut Azure yay bulut hizmetinize uygulama dağıtabilirsiniz. Bu makalede, bu özelliği göstermek için POF ölçümleri adlı örnek bir uygulama kullanırsınız.
+
+Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
 

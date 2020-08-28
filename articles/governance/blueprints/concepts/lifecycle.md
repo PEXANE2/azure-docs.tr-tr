@@ -1,14 +1,14 @@
 ---
 title: Şema 'in yaşam döngüsünü anlama
 description: Şema tanımının ilerleyen yaşam döngüsü ve şema atamalarını güncelleştirme ve kaldırma dahil olmak üzere her aşama hakkında ayrıntılı bilgi edinin.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864037"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049715"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint yaşam döngüsünü anlama
 
@@ -81,14 +81,14 @@ Bir şema 'in her sürümü benzersiz bir nesnedir ve tek tek **yayımlanabilir*
 
 Bir şema için bir şema atanabileceği yaşam döngüsü sırasında birkaç noktaya yer vardır. Bir şema sürümünün bir sürümü **yayımlandığında**, bu sürüm bir aboneliğe atanabilir. Bu yaşam döngüsü, daha yeni bir sürüm geliştirildiğinde bir şema sürümlerinin kullanılmasını ve etkin olarak atanmasını sağlar.
 
-Planların sürümleri atandığında, atanma yerleri ve hangi parametrelere atandıklarından emin olmak önemlidir. Parametreler statik veya dinamik olabilir. Daha fazla bilgi için bkz. [statik ve dinamik parametreler](parameters.md).
+Planların sürümleri atandığında, atanma yerleri ve hangi parametrelere atandıklarından emin olmak önemlidir. Parametreler statik veya dinamik olabilir. Daha fazla bilgi için bkz. [statik ve dinamik parametreler](./parameters.md).
 
 ### <a name="updating-assignments"></a>Atamalar güncelleştiriliyor
 
 Bir şema atandığında, atama güncelleştirilebilen olabilir. Mevcut bir atamayı güncelleştirmek için aşağıdakiler de dahil olmak üzere çeşitli nedenler vardır:
 
-- [Kaynak kilitlemeyi](resource-locking.md) ekleme veya kaldırma
-- [Dinamik parametrelerin](parameters.md#dynamic-parameters) değerini değiştirme
+- [Kaynak kilitlemeyi](./resource-locking.md) ekleme veya kaldırma
+- [Dinamik parametrelerin](./parameters.md#dynamic-parameters) değerini değiştirme
 - Atamayı, şema 'in daha yeni **yayımlanmış** bir sürümüne yükseltin
 
 Nasıl yapılacağını öğrenmek için bkz. [var olan atamaları güncelleştirme](../how-to/update-existing-assignments.md).
@@ -97,7 +97,7 @@ Nasıl yapılacağını öğrenmek için bkz. [var olan atamaları güncelleşti
 
 Şema artık gerekmiyorsa, yönetim grubu veya abonelikten atanmamış olabilir. Şeması kaldırma sırasında aşağıdakiler gerçekleşir:
 
-- [Şema kaynak kilitlemeyi](resource-locking.md) kaldırma
+- [Şema kaynak kilitlemeyi](./resource-locking.md) kaldırma
 - Şema atama nesnesini silme
 - Oluştur **Sistem tarafından atanan yönetilen bir kimlik** kullanılmışsa de silinir
 
@@ -106,8 +106,8 @@ Nasıl yapılacağını öğrenmek için bkz. [var olan atamaları güncelleşti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Statik ve dinamik parametrelerin](./parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](./sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](./resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

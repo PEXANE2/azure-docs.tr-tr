@@ -3,12 +3,12 @@ title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530126"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050684"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -39,10 +39,14 @@ Gereç şu şekilde dağıtılabilir:
 - Bir şablon kullanmak istemiyorsanız veya Azure Kamu 'da çalışıyorsanız, bir PowerShell betiği kullanarak VMware veya Hyper-V için gereci dağıtabilirsiniz.
 - Fiziksel sunucular için, her zaman gereci bir komut dosyası kullanarak dağıtırsınız.
 
-
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
 
-Gereç Internet üzerinden veya ortak/Microsoft eşlemesi ile Azure ExpressRoute kullanarak bağlanabilir.
+Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir.
+
+- Azure ExpressRoute 'u Azure geçişi çoğaltma trafiği için kullanmak üzere Microsoft eşlemesi veya var olan bir genel eşleme gerekir (genel eşleme, yeni ER oluşturmaları için kullanım dışıdır).
+- Azure ExpressRoute üzerinden (yalnızca) özel eşleme etkin olan çoğaltma desteklenmez.
+
+Microsoft eşlemesi yapılandırılmış Azure ExpressRoute, çoğaltma trafiği için önerilen yönlendirme etki alanıdır.
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Gereç Analizi performansı etkiler mi?
 
@@ -53,7 +57,6 @@ Azure, Gereç profillerini şirket içi makineleri performans verilerini ölçme
 Gereç sanal makinesini oluşturmak için indirilen şablonu kullandığınızda, Azure geçişi gereci için gerekli olan iletişim ve güvenlik duvarı kurallarını yerinde bırakırsanız şablona bileşen ekleyebilirsiniz (örneğin, virüsten koruma).
 
 ## <a name="what-network-connectivity-is-required"></a>Hangi ağ bağlantısı gerekir?
-
 
 Gerecin Azure URL 'Lerine erişmesi gerekiyor. URL listesini [gözden geçirin](migrate-appliance.md#url-access) .
 
@@ -99,9 +102,11 @@ Bu adımlar, gerecin VMware vCenter Server nasıl bağlandığını anlatmaktad�
 Hayır. [Azure geçişi](migrate-appliance.md) gereci ve vCenter Server arasında bire bir eşleme var. Birden çok vCenter Server örneğinde VM 'Leri saptamak için birden çok gereç dağıtmanız gerekir. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Bir Azure geçişi projesi birden çok gereçte sahip olabilir mi?
+
 Bir projede birden fazla gereç eklenmiş olabilir. Ancak, bir gereç yalnızca bir projeyle ilişkilendirilebilir. 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure geçiş gereci/çoğaltma gereci aynı vCenter 'a bağlanmasına mi?
+
 Evet. Hem Azure geçiş gereci (değerlendirme ve aracısız VMware geçişi için kullanılır) hem de çoğaltma gereci (VMware VM 'lerinin aracı tabanlı geçişi için kullanılır) aynı vCenter sunucusuna ekleyebilirsiniz.
 
 

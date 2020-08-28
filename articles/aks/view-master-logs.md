@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250746"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048287"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
 
@@ -30,12 +30,8 @@ Azure Izleyici günlükleri Azure portal etkinleştirilir ve yönetilir. AKS kü
 1. *Myakscluster*gibi aks kümenizi seçin ve ardından **Tanılama ayarı eklemeyi**seçin.
 1. *Myaksclusterlogs*gibi bir ad girin ve **Log Analytics gönder**seçeneğini belirleyin.
 1. Mevcut bir çalışma alanını seçin veya yenisini oluşturun. Bir çalışma alanı oluşturursanız, bir çalışma alanı adı, bir kaynak grubu ve bir konum sağlayın.
-1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Ortak Günlükler *kuin-apiserver*, *kuin-Controller-Manager*ve *kuin-Scheduler*' ı kapsar. *Kuto-Audit* ve *cluster-otomatik Scaler*gibi ek günlükleri etkinleştirebilirsiniz. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
+1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Bu örnekte, *KUIN-denetim* günlüklerini etkinleştirin. Ortak Günlükler *kuin-apiserver*, *kuin-Controller-Manager*ve *kuin-Scheduler*' ı kapsar. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
 1. Hazırsanız, seçili günlüklerin toplanmasını etkinleştirmek için **Kaydet** ' i seçin.
-
-Aşağıdaki örnek Portal ekran görüntüsü *Tanılama ayarları* penceresini gösterir:
-
-![AKS kümesinin Azure Izleyici günlükleri için Log Analytics çalışma alanını etkinleştirin](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test Pod 'u zamanlama
 
@@ -71,30 +67,25 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Toplanan günlükleri görüntüle
 
-Tanılama günlüklerinin etkinleştirilmesi ve Log Analytics çalışma alanında gösterilmesi birkaç dakika sürebilir. Azure portal, Log Analytics çalışma alanınız için *Myresourcegroup*gibi kaynak grubunu seçin ve ardından *Myakslogs*gibi Log Analytics kaynağını seçin.
+Tanılama günlüklerinin etkinleştirilmesi ve gösterilmesi birkaç dakika sürebilir. Azure portal, AKS kümenize gidin ve sol taraftaki **Günlükler** ' i seçin. Görüntülenirse, *örnek sorgular* penceresini kapatın.
 
-![AKS kümeniz için Log Analytics çalışma alanını seçin](media/view-master-logs/select-log-analytics-workspace.png)
 
-Sol taraftaki **Günlükler**' i seçin. *Kuin-apiserver*' i görüntülemek için, metin kutusuna aşağıdaki sorguyu girin:
-
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-API sunucusu için büyük olasılıkla çok sayıda günlük döndürüldü. Önceki adımda oluşturulan NGıNX Pod hakkındaki günlükleri görüntülemek için sorguyu aşağı eklemek üzere, aşağıdaki örnek sorguda gösterildiği gibi *pods/NGINX* için arama yapmak üzere ek bir *WHERE* ifadesini ekleyin:
+Sol taraftaki **Günlükler**' i seçin. *Kuin-denetim* günlüklerini görüntülemek için metin kutusuna aşağıdaki sorguyu girin:
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi NGıNX Pod 'ağınız için belirli Günlükler görüntülenir:
+Büyük olasılıkla çok sayıda günlük döndürülür. Önceki adımda oluşturulan NGıNX Pod hakkındaki günlükleri görüntülemek için sorguyu aşağı bağlamak üzere, aşağıdaki örnek sorguda gösterildiği gibi *NGINX* için arama yapmak üzere ek bir *WHERE* ifadesini ekleyin:
 
-![Örnek NGıNX pod için Log Analytics sorgu sonuçları](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
 Ek günlükleri görüntülemek için, etkinleştirdiğiniz ek günlüklere bağlı olarak *Kategori* adı sorgusunu *Kuto-Controller-Manager* veya *Kuto-Scheduler*olarak güncelleştirebilirsiniz. Daha sonra, aradığınız olayları iyileştirmek için ek *WHERE* deyimleri kullanılabilir.
 

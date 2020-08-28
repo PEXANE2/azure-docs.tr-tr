@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814254"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049884"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -31,6 +31,7 @@ ISV iş ortağı ağı, sorunsuz son kullanıcı deneyimleri oluşturmanıza yar
 | :--- | :--- |
 | ![Le](./media/partner-gallery/arkose-logo.png) | [Arkoo Labs](./partner-arkose-labs.md) , kuruluşların bot saldırılarına karşı korunmasına yardımcı olan bir sahtekarlık önleme çözümü sağlayıcısıdır, hesap, saldırıları ve sahte hesap açılışlarına karşı koruma sağlar.
 | ![Le](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) , sahtekarlık önlemek için Kullanıcı özniteliklerine dayalı risk değerlendirmeleri gerçekleştiren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
+| ![Le](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) , ortak anahtar şifrelemeleri olan parolaların sahteciliği, kimlik avlarını ve kimlik bilgilerini yeniden kullanımını ortadan kaldıran, doğru bir passwordless kimlik doğrulama sağlayıcısıdır.|
 | ![Le](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) kimlik doğrulama çözümlerini, sahtekarlık önleme çözümlerini, uyumluluk çözümlerini ve diğerlerini Içeren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 | ![Le](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
 | ![Le](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) , gerçek ZAMANLı otomatik kimlik doğrulamaya izin veren ve müşteri verilerini koruma sağlayan bir kimlik doğrulama hizmetidir. |

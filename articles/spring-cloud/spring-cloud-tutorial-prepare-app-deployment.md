@@ -7,16 +7,18 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021282"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046740"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
 Bu konu başlığı altında, mevcut bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağı gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
+
+Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 Diğer örneklerde pod dosyası yapılandırıldığında bir uygulamanın Azure Spring Cloud 'a nasıl dağıtılacağı açıklanmaktadır. 
 * [Azure portal kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-portal.md)
@@ -39,7 +41,7 @@ Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Sprin
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
 2.1 | Greenwich. RELEASE
-2,2 | Hoxton. RELEASE
+2.2 | Hoxton. RELEASE
 2.3 | Hoxton. SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
@@ -127,7 +129,7 @@ Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan do
 Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
-2,2 | Hoxton. RELEASE | 2,2
+2.2 | Hoxton. RELEASE | 2.2
 2.3 | Hoxton. SR5 | 2.3
 
 pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.

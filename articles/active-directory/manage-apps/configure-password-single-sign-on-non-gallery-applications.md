@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640557"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049069"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Parola tabanlı çoklu oturum açmayı yapılandırma
 
@@ -52,6 +52,9 @@ Kimlik sağlayıcınız (IDP) olarak Azure AD 'nin kullanılması ve çoklu otur
 ## <a name="basic-configuration"></a>Temel yapılandırma
 
 [Hızlı başlangıç serisinde](view-applications-portal.md), kiracınıza bir uygulama eklemeyi öğrendiniz. Bu, Azure AD 'nin uygulama Için kimlik sağlayıcısı (IDP) olarak kullanıldığını bilmesini sağlar. Bazı uygulamalar önceden yapılandırılmış ve Azure AD galerisinde gösteriliyor. Diğer uygulamalar galeride değildir ve genel bir uygulama oluşturup el ile yapılandırmanız gerekir. Uygulamaya bağlı olarak, parola tabanlı SSO seçeneği kullanılamayabilir. Uygulamanın çoklu oturum açma sayfasında parola tabanlı seçenek listesini görmüyorsanız, kullanılabilir değildir.
+
+> [!IMPORTANT]
+> Parola tabanlı SSO için My Apps Browser uzantısı gereklidir. Daha fazla bilgi için bkz. [uygulamalarımı dağıtım planı](access-panel-deployment-plan.md).
 
 Parola tabanlı SSO yapılandırma sayfası basittir. Yalnızca uygulamanın kullandığı oturum açma sayfasının URL 'sini içerir. Bu dize, Kullanıcı adı giriş alanını içeren sayfa olmalıdır.
 

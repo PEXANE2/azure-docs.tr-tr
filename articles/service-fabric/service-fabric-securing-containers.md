@@ -4,14 +4,17 @@ description: Sertifika dosyalarını Service Fabric bir kapsayıcı hizmetine ak
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 949cc642572bfbf6ebe297d3ffba16939561ac8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012730"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050752"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric çalıştıran bir kapsayıcıya bir sertifika dosyasını içeri aktarma
+
+> [!NOTE]
+> Azure üzerinde çalışan Service Fabric kümeleri için, bir kapsayıcı içinden uygulama sertifikaları sağlamak üzere [Service Fabric uygulama tarafından yönetilen kimlik](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) kullanılması önerilir. Yönetilen kimlik, hizmet düzeyinde gizli dizi ve sertifika yalıtımı sağlar ve uygulama sertifikası sağlamasının altyapının iş akışı yerine uygulamanın iş akışının bir parçası olmasını sağlar. CertificateRef mekanizması gelecek bir sürümde kullanım dışı olacaktır.
 
 Bir sertifika belirterek kapsayıcı hizmetlerinizi güvenli hale getirebilirsiniz. Service Fabric, bir kapsayıcı içindeki hizmetler için bir Windows veya Linux kümesindeki düğümlere yüklenmiş bir sertifikaya (sürüm 5,7 veya üzeri) erişmek için bir mekanizma sağlar. Sertifikanın, kümenin tüm düğümlerinde LocalMachine altındaki bir sertifika deposunda yüklü olması gerekir. Sertifikaya karşılık gelen özel anahtar kullanılabilir, erişilebilir ve Windows-dışarı aktarılabilir olmalıdır. Aşağıdaki kod parçacığında gösterildiği gibi, sertifika bilgileri etiket altındaki uygulama bildiriminde verilmiştir `ContainerHostPolicies` :
 
@@ -30,6 +33,8 @@ Linux kümelerinde, Sertifikalar (pek), X509StoreName tarafından belirtilen ma�
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+Hem hem de `PEM` `PrivateKey` dosyasının sertifika ve şifrelenmemiş özel anahtar içerdiğini lütfen unutmayın.
 
 Alternatif olarak, gerekli formda sertifikalara zaten sahipseniz ve kapsayıcının içinde bu sertifikaya erişmek istiyorsanız, uygulama paketinizdeki bir veri paketi oluşturabilir ve uygulama bildiriminiz içinde aşağıdakileri belirtebilirsiniz:
 

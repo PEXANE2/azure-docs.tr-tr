@@ -3,17 +3,18 @@ title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560573"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718535"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -161,6 +162,10 @@ Ek analiz gerçekleştirmek için verileri indirmek, kendi verilerinizle birleş
 
 Tam, toplanmamış veri kümesine ihtiyacınız varsa ödeme hesabından indirebilirsiniz. Ardından, portalın sol gezinti bölmesindeki hizmetler listesinden **Maliyet Yönetimi + Faturalandırma**'yı seçin. Gerekirse ödeme hesabınızı seçin. **Kullanım + ücretler**'e gidip istediğiniz faturalama dönemine ait **İndir** simgesini seçin.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+- Maliyet analizi için özelleştirilmiş bir görünüm sabitlediyseniz ve artık buna ihtiyacınız yoksa bu görünümü sabitlediğiniz panoya gidin ve sabitlenmiş görünümü silin.
+- Kullanım veri dosyalarını indirdiyseniz ve artık ihtiyaç duymuyorsanız bunları sildiğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

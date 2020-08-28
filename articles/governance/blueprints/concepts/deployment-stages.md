@@ -1,14 +1,14 @@
 ---
 title: Şema dağıtımının aşamaları
 description: Şema atama oluştururken Azure şemaları hizmetlerinin üzerinden geçen güvenlik ve yapıt ile ilgili adımları öğrenin.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d3ccba6645e1b14fffc543af2a6ad40e3634e2ed
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970663"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049783"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 
@@ -56,8 +56,8 @@ Dağıtımlar tamamlandığında, Azure şemaları, abonelikle **sistem tarafın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Statik ve dinamik parametrelerin](./parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](./sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](./resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236616"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047301"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure’da genelleştirilmiş bir VM’nin yönetilen görüntüsünü oluşturma
 
@@ -26,10 +26,12 @@ Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı
 
 Sysprep tüm kişisel hesabınızı ve güvenlik bilgilerini kaldırır ve ardından makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkında daha fazla bilgi için bkz. [Sysprep genel bakış](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) ve [desteklenmeyen senaryolar](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). Sysprep, yürütmeden önce sürücülerin tamamen şifresinin çözülmesi gerekir. VM 'niz üzerinde şifrelemeyi etkinleştirdiyseniz, Sysprep 'ı çalıştırmadan önce şifrelemeyi devre dışı bırakın.
+Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) ve [desteklenmeyen senaryolar](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). 
 
 > [!IMPORTANT]
 > Bir VM 'de Sysprep 'ı çalıştırdıktan sonra, bu VM *Genelleştirilmiş* olarak değerlendirilir ve yeniden başlatılamaz. VM’yi genelleştirme işlemi geri döndürülemez. Özgün VM 'yi çalışır durumda tutmanız gerekiyorsa, [sanal makinenin bir kopyasını](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) oluşturmanız ve kopyasını genelleştirmelisiniz. 
+>
+>Sysprep, sürücülerin tam olarak şifresinin çözülmesi gerekir. VM 'niz üzerinde şifrelemeyi etkinleştirdiyseniz, Sysprep 'ı çalıştırmadan önce şifrelemeyi devre dışı bırakın.
 >
 > Sanal sabit diskinizi (VHD) Azure 'a ilk kez yüklemeden önce Sysprep 'i çalıştırmayı planlıyorsanız, [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)emin olun.  
 > 

@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798848"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048440"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -37,19 +37,28 @@ Topolojideki parametrelerin değerleri, topolojiye başvuran grafik örnekleri o
 
 ## <a name="media-graph-states"></a>Medya grafiği durumları  
 
-Bir medya grafiği, aşağıdaki durumlardan birinde olabilir:
+Grafik topolojileri ve grafik örneklerinin yaşam döngüsü aşağıdaki durum diyagramında gösterilmiştir.
 
-* Etkin değil – bir medya grafiğinin yapılandırıldığı ancak etkin olmadığı durumu temsil eder.
-* Etkinleştiriliyor: bir medya grafiğinin örneklendiği (yani, etkin olmayan ve etkin arasındaki geçiş durumu) durum.
-* Etkin – bir medya grafiğinin etkin olduğu durumdur. 
+![Graph topolojisi ve grafik örneği yaşam döngüsü](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  Medya grafiği, veri akışı olmadan etkin hale gelir (örneğin, giriş video kaynağı çevrimdışı olur).
-* Devre dışı bırak – bu durum, bir medya grafiğinin etkin durumundan devre dışı durumuna geçme durumdur.
+[Graph topolojisi oluşturmaya](direct-methods.md#graphtopologyset)başlayabilirsiniz. Ardından, Bu topolojiyle işlemek istediğiniz her canlı video akışı için [bir grafik örneği oluşturursunuz](direct-methods.md#graphinstanceset). 
 
-Aşağıdaki diyagramda medya grafiği durum makinesi gösterilmektedir.
+Grafik örneği `Inactive` (boş) durumunda olacaktır.
 
-![Medya grafiği durum makinesi](./media/media-graph/media-graph-state-machine.png)
+Canlı video akışını grafik örneğine göndermeye hazırsanız, uygulamayı [etkinleştirirsiniz](direct-methods.md#graphinstanceactivate) . Grafik örneği, geçişli bir duruma göre kısa bir süre boyunca gider `Activating` ve başarılı olursa bir `Active` duruma geçer. `Active`Bu durumda, medya işlenir (grafik örneği giriş verilerini alırsa).
+
+> [!NOTE]
+>  Grafik örneği, üzerinden veri akışı olmadan etkin olabilir (örneğin, kamera çevrimdışı olur).
+> Grafik örneği etkin durumundayken Azure aboneliğiniz faturalandırılır.
+
+İşlemek için diğer canlı video akışlarınız varsa, aynı topoloji için diğer grafik örneklerini oluşturma ve etkinleştirme sürecini tekrarlayabilirsiniz.
+
+Canlı video akışını işlemeyi tamamladığınızda, grafik örneğini [devre dışı](direct-methods.md#graphinstancedeactivate) bırakabilirsiniz. Grafik örneği, geçişli bir durumdan daha kısa sürer `Deactivating` , sahip olduğu tüm verileri temizler ve sonra duruma geri döner `Inactive` .
+
+Yalnızca durumundayken bir grafik örneğini [silebilirsiniz](direct-methods.md#graphinstancedelete) `Inactive` .
+
+Belirli bir grafik topolojisine başvuran tüm grafik örnekleri silinmişse, [grafik topolojisini silebilirsiniz](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Kaynaklar, işlemciler ve havuzlar  
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823990"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051177"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -61,7 +61,7 @@ A. Data Box ABD, Batı Avrupa, Kuzey Avrupa, Fransa, UK, Japonya, Avustralya ve 
 
 Data Box veri alımı veya çıkışı yalnızca hedefle aynı ülke/bölge dahilinde destekler ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), veri kutularının herhangi bir AB ülkesine/bölgesine nereden gönderdikleriyle ilgili olan emirler için geçerlidir.
 
-Örneğin, içeri aktarma senaryosunda, Kanada 'da bir Azure WestUS depolama hesabına taşımak istediğiniz şirket içi verileriniz varsa, bunu aşağıdaki şekilde gerçekleştirebilirsiniz:
+Örneğin, içeri aktarma senaryosunda, Kanada 'da bir Azure WestUS depolama hesabına taşımak istediğiniz kaynak veriler varsa, bunu aşağıdaki şekilde elde edebilirsiniz:
 
 1. Canda 'da bir depolama hesabı seçerek Kanada 'daki siparişi Data Box. Cihaz, bir Azure veri merkezinden, sipariş oluşturma sırasında belirtilen nakliye adresine (Kanada 'da) gönderilir.
 

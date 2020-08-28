@@ -3,21 +3,23 @@ title: Mürekkep Tanıma API’sine mürekkep verisi gönderme
 titleSuffix: Azure Cognitive Services
 description: Farklı uygulamalar için mürekkep Çözümleyicisi API 'sini çağırma hakkında bilgi edinin
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221111"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051109"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Mürekkep Tanıma API’sine mürekkep verisi gönderme 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Dijital mürekkep oluşturma, el yazısı ve çizim gibi girdilerin dijital sunumunun yapılmasını sağlayan teknolojilere başvurur. Bu, genellikle ekran kalemi gibi giriş cihazlarının hareketlerini yakalayan bir çizim tablası kullanılarak elde edilir. Cihazlar zengin dijital mürekkep oluşturma deneyimleri sunmaya devam ederken yapay zeka ve makine öğrenimi, yazılı metin ve şekillerin tüm bağlamlarda tanınmasını sağlar. Mürekkep tanıyıcı API 'SI mürekkep vuruşları göndermenizi ve bunlarla ilgili ayrıntılı bilgi almanızı sağlar. 
 
@@ -90,6 +92,6 @@ Tanınma sonuçlarının daha fazla olması, mürekkep vuruşlarının birbirler
 * [Mürekkep tanıyıcı REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 * Şunu kullanarak dijital mürekkep konturu verileri göndermeye başla:
-    * [, #](../quickstarts/csharp.md)
+    * [C#](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
     * [JavaScript](../quickstarts/javascript.md)

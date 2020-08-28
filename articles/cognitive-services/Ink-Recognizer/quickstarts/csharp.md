@@ -1,24 +1,26 @@
 ---
 title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve C ile dijital mürekkep tanıma #'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sinin nasıl kullanılacağı gösterilmektedir.
+description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak Için mürekkep tanıyıcı API 'SI ve C# ' nin nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25360ec1b5e8cd79c21da426a293c148ac0b1932
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931463"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051602"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve C ile dijital mürekkep tanıma #
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Mürekkep tanıyıcı API 'sine dijital mürekkep vuruşları göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu C# uygulaması JSON biçimli mürekkep konturu verilerini içeren bir API isteği gönderir ve yanıtı alır.
 
@@ -30,7 +32,7 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Herhangi bir [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)sürümü.
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
