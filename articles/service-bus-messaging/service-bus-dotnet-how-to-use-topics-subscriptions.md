@@ -4,12 +4,13 @@ description: Service Bus mesajlaşma konuları ve aboneliklerini kullanan bir C#
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021655"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus konuları ile çalışmaya başlama
 
@@ -20,7 +21,7 @@ Bu öğreticide aşağıdaki adımlar yer almaktadır:
 1. Konuya bir dizi ileti göndermek için bir .NET Core konsol uygulaması yazın.
 2. Bu iletileri abonelikten almak için bir .NET Core konsol uygulaması yazın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :

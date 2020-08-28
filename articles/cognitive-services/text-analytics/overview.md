@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141866"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000966"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -82,26 +82,7 @@ Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taş
 
 ## <a name="data-limits"></a>Veri sınırları
 
-Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli sınır, her belge için 5.120 karakterdir; daha büyük belgeleri analiz etmeniz gerekiyorsa, bunları daha küçük parçalara ayırın.
-
-| Sınır | Değer |
-|------------------------|---------------|
-| Tek belge için maksimum boyut | tarafından ölçülen 5.120 karakter [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
-| İsteğin tamamının maksimum boyutu | 1 MB |
-| Bir istekte bulunabilecek maksimum belge sayısı | En fazla 1.000 belge ([her bir özellik için farklılık gösterir](concepts/data-limits.md)) |
-
-Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
-
-| Katman          | Saniyedeki istek | Dakika başına istek |
-|---------------|---------------------|---------------------|
-| S/Multi-Service | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-İstekler her bir Metin Analizi özelliği için ayrı olarak ölçülür. Örneğin, fiyatlandırma katmanınız için en fazla istek sayısını aynı anda her bir özelliğe gönderebilirsiniz.      
+Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Daha fazla bilgi için [veri sınırları](concepts/data-limits.md) makalesine bakın.
 
 ## <a name="unicode-encoding"></a>Unicode kodlama
 

@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292683"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011472"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
@@ -40,7 +41,7 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 - [Linux için .NET Core](https://www.microsoft.com/net/download/linux) yükleyin
 - İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) yükleyin
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 - [macOS için .NET Core](https://www.microsoft.com/net/download/macos) yükleyin.
 - İsteğe bağlı olarak [Mac için Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/) yükleyin
@@ -81,7 +82,7 @@ export storageconnectionstring=<yourconnectionstring>
 
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 .bash_profile dosyanızı düzenleyin ve ortam değişkenini ekleyin:
 
@@ -113,7 +114,7 @@ Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
 dotnet run
 ```
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
 

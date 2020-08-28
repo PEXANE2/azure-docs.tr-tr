@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889660"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011200"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -27,7 +27,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{containerName}`Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)oluşturulur. `{fabricName}` "Azure" dır.
 
-*Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez
+*Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez.
 
 ### <a name="responses"></a>Yanıtlar
 

@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu verileri kurtarma
 description: Bu kasaya kayıtlı tüm Azure Backup Sunucusu kurtarma hizmetleri kasasına koruduğunuz verileri kurtarın.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 93ae34184679b5144288a4c8cb4dabd90ae69fa1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827452"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012016"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 
@@ -54,7 +54,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
 8. Kopyalama, **atlama**veya **üzerine yazma** **oluşturma**ile ilgili seçeneği belirleyin.
 
    * **Kopya oluştur** -bir ad çakışması varsa dosyanın bir kopyasını oluşturur.
-   * **Atla** -bir ad çakışması varsa, dosyayı kurtarmaz ve özgün dosyayı bırakır.
+   * **Atla** -bir ad çakışması varsa, özgün dosyayı atan dosyayı kurtarmaz.
    * **Üzerine yaz** -bir ad çakışması varsa, dosyanın varolan kopyasının üzerine yazar.
 
      **Güvenliği geri yüklemek**için uygun seçeneği belirleyin. Verilerin kurtarıldığı hedef bilgisayarın güvenlik ayarlarını veya kurtarma noktasının oluşturulduğu sırada ürün için geçerli olan güvenlik ayarlarını uygulayabilirsiniz.
@@ -83,7 +83,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
 | 1. |Bu sunucu, kasa kimlik bilgisi tarafından belirtilen kasaya kayıtlı değil. |**Neden:** Bu hata, seçilen kasa kimlik bilgileri dosyası kurtarmanın denendiği Azure Backup Sunucusu ilişkili kurtarma hizmetleri kasasına ait olmadığında görüntülenir. <br> **Çözüm:** Azure Backup Sunucusu kaydedildiği kurtarma hizmetleri kasasından kasa kimlik bilgileri dosyasını indirin. |
 | 2. |Kurtarılabilir veriler kullanılamıyor ya da seçilen sunucu bir DPM sunucusu değil. |**Neden:** Kurtarma Hizmetleri kasasına kayıtlı başka bir Azure Backup sunucusu yok veya sunucular henüz meta verileri yüklemedi veya seçili sunucu bir Azure Backup Sunucusu (Windows Server veya Windows Istemcisi kullanılarak) değil. <br> **Çözüm:** Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucuları varsa, en son Azure Backup aracısının yüklü olduğundan emin olun. <br>Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucular varsa, kurtarma işlemini başlatmak için yüklemeden sonra bir gün bekleyin. Gecelik işi tüm korumalı yedeklemelerin meta verilerini buluta yükleyecek. Veriler kurtarma için kullanılabilir olacaktır. |
 | 3. |Bu kasaya kayıtlı başka hiçbir DPM sunucusu yok. |**Neden:** Kurtarmanın denendiği kasaya kayıtlı başka bir Azure Backup sunucusu yok.<br>**Çözüm:** Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucuları varsa, en son Azure Backup aracısının yüklü olduğundan emin olun.<br>Kurtarma Hizmetleri kasasına kayıtlı başka Azure Backup sunucular varsa, kurtarma işlemini başlatmak için yüklemeden sonra bir gün bekleyin. Gecelik işi tüm korumalı yedeklemelerin meta verilerini buluta yükler. Veriler kurtarma için kullanılabilir olacaktır. |
-| 4. |Belirtilen şifreleme parolası, aşağıdaki sunucuyla ilişkili parolayla eşleşmiyor: **\<server name>** |**Neden:** Verilerin kurtarıldığı Azure Backup Sunucusu verileri şifreleme işleminde kullanılan şifreleme parolası, belirtilen şifreleme parolası ile eşleşmiyor. Aracı verilerin şifresini çözemez ve kurtarma başarısız olur.<br>**Çözüm:** Lütfen verileri kurtarılan Azure Backup Sunucusu ilişkili şifreleme parolasının aynısını sağlayın. |
+| 4. |Belirtilen şifreleme parolası, aşağıdaki sunucuyla ilişkili parolayla eşleşmiyor: **\<server name>** |**Neden:** Kurtarılan Azure Backup Sunucusu verileri şifreleme işleminde kullanılan şifreleme parolası, belirtilen şifreleme parolası ile eşleşmiyor. Aracı verilerin şifresini çözemez ve kurtarma başarısız olur.<br>**Çözüm:** Verileri kurtarılan Azure Backup Sunucusu ilişkili şifreleme parolasının aynısını sağlayın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

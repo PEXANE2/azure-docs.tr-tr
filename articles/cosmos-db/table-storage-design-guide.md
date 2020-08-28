@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027809"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002185"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo depolama tablosu Tasarım Kılavuzu: ölçeklenebilir ve performank tabloları
 
@@ -152,8 +152,8 @@ Aşağıdaki tabloda, bir tablo depolama çözümü tasarlarken farkında olacak
 | Tablodaki bölüm sayısı |Yalnızca depolama hesabının kapasitesine göre sınırlandırılır. |
 | Bir bölümdeki varlıkların sayısı |Yalnızca depolama hesabının kapasitesine göre sınırlandırılır. |
 | Tek bir varlığın boyutu |Maksimum 1 MB, en fazla 255 Özellik (, `PartitionKey` `RowKey` ve dahil `Timestamp` ). |
-| Boyutunu`PartitionKey` |Boyutu 1 KB 'a kadar olan bir dize. |
-| Boyutunu`RowKey` |Boyutu 1 KB 'a kadar olan bir dize. |
+| Boyutunu `PartitionKey` |Boyutu 1 KB 'a kadar olan bir dize. |
+| Boyutunu `RowKey` |Boyutu 1 KB 'a kadar olan bir dize. |
 | Bir varlık grubu işleminin boyutu |Bir işlem en fazla 100 varlığı içerebilir ve yükün boyutu 4 MB 'tan az olmalıdır. EGT, bir varlığı yalnızca bir kez güncelleştirebilir. |
 
 Daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
@@ -195,8 +195,8 @@ Aşağıdaki örneklerde, tablo depolamanın çalışan varlıklarını aşağı
 
 | Sütun adı | Veri türü |
 | --- | --- |
-| `PartitionKey`(Departman adı) |Dize |
-| `RowKey`(Çalışan KIMLIĞI) |Dize |
+| `PartitionKey` (Departman adı) |Dize |
+| `RowKey` (Çalışan KIMLIĞI) |Dize |
 | `FirstName` |Dize |
 | `LastName` |Dize |
 | `Age` |Tamsayı |
@@ -222,7 +222,7 @@ Aynı tabloda depolanan birden çok varlık türünü işleyebilen istemci taraf
 
 * [Heterojen varlık türleriyle çalışma](#work-with-heterogeneous-entity-types)  
 
-### <a name="choose-an-appropriate-partitionkey"></a>Uygun bir`PartitionKey`
+### <a name="choose-an-appropriate-partitionkey"></a>Uygun bir `PartitionKey`
 Tercih ettiğiniz seçim, `PartitionKey` varlıklarınızı birden çok bölüme dağıtmak (ölçeklenebilir bir çözüm sağlamak için) gereksinimini karşılamak için gereken yumurtların kullanılmasını (tutarlılık sağlamak için) sağlar.  
 
 Bir Extreme 'de, tüm varlıklarınızı tek bir bölümde saklayabilirsiniz. Ancak bu, çözümünüzün ölçeklenebilirliğini sınırlandırabilir ve tablo depolamanın yük dengeleme isteklerini önleyebilmesini engelliyor olabilir. Diğer bir deyişle, bölüm başına bir varlık depolayabilirler. Bu yüksek oranda ölçeklenebilir ve tablo depolamayı Yük Dengeleme isteklerine olanak sağlar, ancak varlık grubu işlemlerini kullanmanızı önler.  
@@ -329,8 +329,8 @@ Aşağıdaki tabloda, bire çok ilişkisine sahip olan çalışan ve departman v
 <table>
 <tr>
 <th>Yaklaşım</th>
-<th>Artıları</th>
-<th>Simgeler</th>
+<th>Avantajlar</th>
+<th>Dezavantajlar</th>
 </tr>
 <tr>
 <td>Ayrı varlık türleri, aynı bölüm, aynı tablo</td>
@@ -1236,7 +1236,7 @@ Her varlığın `PartitionKey` , `RowKey` , ve değerleri hala olmalıdır `Time
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1258,7 +1258,7 @@ Her varlığın `PartitionKey` , `RowKey` , ve değerleri hala olmalıdır `Time
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1299,7 +1299,7 @@ Her varlığın `PartitionKey` , `RowKey` , ve değerleri hala olmalıdır `Time
 <th>E-posta</th>
 </tr>
 <tr>
-<td>Employee (Çalışan)</td>
+<td>Çalışan</td>
 <td></td>
 <td></td>
 <td></td>

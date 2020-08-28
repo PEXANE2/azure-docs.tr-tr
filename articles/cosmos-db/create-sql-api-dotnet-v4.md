@@ -8,19 +8,20 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/11/2020
-ms.openlocfilehash: eabcc53c03b156088179d5ab7216d8a3409a7b3e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 6fec96d2fb70c0ccf6dc66690d5a61c76038fd74
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659135"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011132"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kaynaklarını yönetmek için .NET v4 SDK 'sını kullanarak bir konsol uygulaması oluşturun.
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java SDK v4](create-sql-api-java.md)
+> * [Java SDK’sı v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -36,7 +37,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 [Kitaplık kaynak kodu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/) veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz. 
 * [NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). Çalıştırıp ortamınızda hangi sürümün kullanılabilir olduğunu doğrulayabilirsiniz `dotnet --version` .
@@ -135,7 +136,7 @@ Uygulamayı oluşturmaya başlamadan önce, Azure Cosmos DB içindeki kaynak hiy
 * Azure Cosmos hesabı 
 * Veritabanları 
 * Kapsayıcılar 
-* Öğeleri
+* Öğeler
 
 Farklı varlıkların hiyerarşisi hakkında daha fazla bilgi edinmek için, [Azure Cosmos DB makalesinde veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) makalesine bakın. Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanacaksınız:
 
@@ -145,7 +146,7 @@ Farklı varlıkların hiyerarşisi hakkında daha fazla bilgi edinmek için, [Az
 * CreateItemAsync-bu yöntem kapsayıcı içinde bir öğe oluşturur.
 * UpsertItemAsync-bu yöntem, zaten yoksa kapsayıcı içinde bir öğe oluşturur veya zaten varsa öğeyi değiştirir. 
 * Getıtemqueryyineleyici-bu yöntem, parametreli değerler içeren bir SQL ifadesini kullanarak bir Azure Cosmos veritabanındaki kapsayıcı altındaki öğeler için bir sorgu oluşturur. 
-* DeleteAsync-belirtilen veritabanını Azure Cosmos hesabınızdan siler. `DeleteAsync`Yöntem yalnızca veritabanını siler.
+* DeleteAsync-belirtilen veritabanını Azure Cosmos hesabınızdan siler. `DeleteAsync` Yöntem yalnızca veritabanını siler.
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Kod örnekleri
 

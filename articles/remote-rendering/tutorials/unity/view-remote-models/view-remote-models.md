@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e9c29edb28700d0f2d3411925c0985adc0f53e92
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006474"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Öğretici: uzaktan işlenmiş bir modeli görüntüleme
 
@@ -42,7 +43,7 @@ Bu öğreticide şunlar gerekir:
 
 Azure uzaktan Işleme hizmetine erişim sağlamak için önce [bir hesap oluşturmanız](../../../how-tos/create-an-account.md#create-an-account)gerekir.
 
-## <a name="create-a-new-unity-project"></a>Yeni bir Unity projesi oluştur
+## <a name="create-a-new-unity-project"></a>Yeni Unity projesi oluşturma
 
 > [!TIP]
 > [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , tüm öğreticilerin tamamlandığı bir proje içerir, başvuru olarak kullanılabilir. Tüm Unity projesi için *Unity\Tutorial-Complete* bakın.

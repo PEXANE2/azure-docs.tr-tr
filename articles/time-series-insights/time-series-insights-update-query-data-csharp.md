@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 075bf78599602b1b92f3cec01fe5dfb92b5321cc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654455"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998960"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen2 ortamından veri sorgulama
 
 Bu C# örneği, Azure Time Series Insights Gen2 ortamlarındaki [Gen2 veri erişimi API 'lerinden](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) nasıl veri sorgulanacağını gösterir.
 
 > [!TIP]
-> Gen2 C# kod örneklerini şurada görüntüleyin: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
+> Gen2 C# kod örneklerini şurada görüntüleyin: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
 ## <a name="summary"></a>Özet
 
@@ -65,13 +65,13 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
 **Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin.
 
-Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örnek:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
 ## <a name="c-sample-code"></a>C# örnek kodu
 
-C# örnek koduna erişmek için lütfen [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) depoya bakın. 
+C# örnek koduna erişmek için lütfen [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) depoya bakın. 
 
 > [!NOTE]
 >

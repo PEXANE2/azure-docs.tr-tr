@@ -3,12 +3,13 @@ title: 'Öğretici: veri ambarına Event Hubs veri gönderme-Event Grid'
 description: 'Öğretici: bir SQL veri ambarına veri geçirmek için Azure Event Grid ve Event Hubs kullanımını açıklar. Bir yakalama dosyası almak için bir Azure Işlevi kullanır.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86117568"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007477"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
 Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob DEPOLAMADAN bir SQL veri ambarına sorunsuzca geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
@@ -33,7 +34,7 @@ Bu makalede, aşağıdaki adımları uygulayın:
 > * Olay Hub 'ına veri gönderen uygulamayı çalıştırın.
 > * Veri ambarında geçirilen verileri görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

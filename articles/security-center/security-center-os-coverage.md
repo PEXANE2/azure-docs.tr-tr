@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80521911"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998841"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
 Bu sayfada, Azure Güvenlik Merkezi tarafından desteklenen platformlar ve ortamlar gösterilmektedir.
 
-## <a name="combinations-of-environments"></a>Ortamların birleşimleri<a name="vm-server"></a>
+## <a name="combinations-of-environments"></a>Ortamların birleşimleri <a name="vm-server"></a>
 
 Azure Güvenlik Merkezi, farklı türlerde karma ortamlarda sanal makineleri ve sunucuları destekler:
 
@@ -39,19 +39,19 @@ Azure Güvenlik Merkezi, Azure aboneliği üzerinde etkinleştirilen bir Azure o
 
 Güvenlik Merkezi [Log Analytics aracısına](../azure-monitor/platform/agents-overview.md#log-analytics-agent)bağlıdır. Makinelerinizin, bu aracı için desteklenen işletim sistemlerinden birini aşağıdaki sayfalarda açıklandığı şekilde çalıştırdığından emin olun:
 
-* [Windows tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
-* [Linux tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [Windows tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Linux tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 Ayrıca, Log Analytics aracınızın, [verileri Güvenlik Merkezi 'ne göndermek için düzgün şekilde yapılandırıldığından](security-center-enable-data-collection.md#manual-agent) emin olun
 
 > [!TIP]
 > Windows ve Linux 'ta kullanılabilen belirli güvenlik merkezi özellikleri hakkında daha fazla bilgi edinmek için bkz. [makineler Için özellik kapsamı](security-center-services.md).
 
-## <a name="managed-virtual-machine-services"></a>Yönetilen sanal makine Hizmetleri<a name="virtual-machine"></a>
+## <a name="managed-virtual-machine-services"></a>Yönetilen sanal makine Hizmetleri <a name="virtual-machine"></a>
 
 Ayrıca, Azure Kubernetes (AKS), Azure Databricks ve daha fazlası gibi Azure tarafından yönetilen bazı hizmetlerin bir parçası olarak bir müşteri aboneliğinde de sanal makineler oluşturulur. Güvenlik Merkezi bu sanal makineleri de bulur ve desteklenen bir işletim sistemi varsa Log Analytics Aracısı yüklenebilir ve yapılandırılabilir.
 
-## <a name="cloud-services"></a>Cloud Services<a name="cloud-services"></a>
+## <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
 
 Bulut hizmetinde çalışan sanal makineler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
 

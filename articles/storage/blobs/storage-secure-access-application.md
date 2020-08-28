@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.custom: mvc
-ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85367385"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001182"
 ---
 # <a name="secure-access-to-application-data"></a>Uygulama verilerine güvenli erişim
 
@@ -31,7 +31,7 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
 [Azure blob depolama](../common/storage-introduction.md#blob-storage), uygulamalara ilişkin dosyaları depolamak için sağlam bir hizmet sağlar. Bu öğretici, bir web uygulamasından depolama hesabınıza erişim güvenliğinin nasıl sağlanacağını göstermek için [önceki konuyu][previous-tutorial] genişletir. İşiniz bittiğinde görüntüler şifrelenir ve web uygulaması, küçük resimlere erişmek için güvenli SAS belirteçlerini kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamış olmanız gerekir: [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme][previous-tutorial].
 
@@ -152,7 +152,7 @@ Yukarıdaki görevde, aşağıdaki sınıflar, özellikler ve yöntemler kullan�
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
 |[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Kullanılmamışsa](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Var](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlob 'Lar](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Ad](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Sorgu](/dotnet/api/system.uribuilder.query) |  |
 |[Liste](/dotnet/api/system.collections.generic.list-1) | | [Ekle](/dotnet/api/system.collections.generic.list-1.add) |
 

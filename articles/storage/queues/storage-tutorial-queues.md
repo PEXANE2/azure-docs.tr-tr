@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
-ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84809571"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008803"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Öğretici: .NET 'te Azure depolama kuyrukları ile çalışma
 
@@ -34,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Komut satırı bağımsız değişkenlerini denetle
 > - Uygulamayı derleyin ve çalıştırın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Platformlar arası [Visual Studio Code](https://code.visualstudio.com/download) düzenleyicisinin ücretsiz kopyasını alın.
 - [.NET Core SDK](https://dotnet.microsoft.com/download) sürüm 3,1 veya üstünü indirin ve yükleyin.

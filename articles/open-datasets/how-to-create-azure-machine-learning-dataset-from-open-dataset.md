@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584888"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998084"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Azure Machine Learning bir veri [kümesi](../machine-learning/how-to-create-regi
 
 Veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](../machine-learning/concept-data.md#data-workflow) makalesine bakın.
 
-Azure açık veri kümeleri, tahmine dayalı çözümlerinizi zenginleştirmek ve bunların doğruluğunu artırmak üzere senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Makine öğrenimi modellerini eğmenize yardımcı olabilecek ortak etki alanı verilerine yönelik [açık veri kümeleri kataloğuna](https://azure.microsoft.com/services/op[en-datasets/catalog/) bakın, örneğin:
+Azure açık veri kümeleri, tahmine dayalı çözümlerinizi zenginleştirmek ve bunların doğruluğunu artırmak üzere senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Makine öğrenimi modellerini eğmenize yardımcı olabilecek ortak etki alanı verilerine yönelik [açık veri kümeleri kataloğuna](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) bakın, örneğin:
 
 * [gü](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [görselleştirmenizdeki](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
@@ -38,7 +38,7 @@ Azure açık veri kümeleri, tahmine dayalı çözümlerinizi zenginleştirmek v
 Açık veri kümeleri bulutta Microsoft Azure ve hem [Azure Machine Learning Python SDK](#create-datasets-with-the-sdk) hem de [Azure Machine Learning Studio](#create-datasets-with-the-studio)'ya dahil edilmiştir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede şunlar gerekir:
 

@@ -5,12 +5,13 @@ author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c193ef00d56b2d2fc7ad806cc795dcbe360db548
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022114"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hizmet iş yükleri sırasında hataların benzetimini yapın
 Azure 'daki test Service Fabric senaryoları, geliştiricilerin bireysel hatalarıyla ilgilenme konusunda endişelenmelerine olanak tanır. Ancak, istemci iş yükünün ve hatalarının açık bir şekilde aramasının gerekebileceği senaryolar vardır. İstemci iş yükünün ve hatalarının araya getirilmesi, hata oluştuğunda hizmetin gerçekten bir eylem gerçekleştirmesini sağlar. Test edilebilirlik 'nın sağladığı denetim düzeyi verildiğinde, bunlar iş yükü yürütmesinin kesin noktalarında olabilir. Bu hata, uygulamadaki farklı durumlardaki hataları bulabilir ve kaliteyi iyileştirebilir.
@@ -18,7 +19,7 @@ Azure 'daki test Service Fabric senaryoları, geliştiricilerin bireysel hatalar
 ## <a name="sample-custom-scenario"></a>Örnek özel senaryo
 Bu test, iş yükünü [düzgün ve düzgün olmayan hatalarla](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)karşılıklı bırakan bir senaryoyu gösterir. Hatalar, hizmet işlemlerinin ortasında veya en iyi sonuçlar için işlem olarak bildirilmelidir.
 
-Dört iş yükü sunan bir hizmetin örneğini ele alalım: A, B, C ve D. her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama ya da bir karıştırma olabilir. Basitlik sağlamak için örneğimizde iş yüklerini Özet olarak ekleyeceğiz. Bu örnekte yürütülen farklı hatalar şunlardır:
+Dört iş yükü sunan bir hizmet örneğini ele alalım: A, B, C ve D. Her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama veya karıştırma olabilir. Basitlik sağlamak için örneğimizde iş yüklerini Özet olarak ekleyeceğiz. Bu örnekte yürütülen farklı hatalar şunlardır:
 
 * RestartNode: makinenin yeniden başlatılmasının benzetimini yapmak için düzgün olmayan hata.
 * RestartDeployedCodePackage: hizmet ana bilgisayar işleminin çökmelerini taklit etmek için düzgün olmayan hata.

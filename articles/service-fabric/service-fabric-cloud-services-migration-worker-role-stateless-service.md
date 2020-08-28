@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463334"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002292"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Durum bilgisi olmayan hizmetlere Service Fabric Web ve çalışan rollerini dönüştürmeye yönelik kılavuz
 Bu makalede, Cloud Services Web ve çalışan rollerinizin durum bilgisi olmayan hizmetlere Service Fabric nasıl geçirileceği açıklanır. Bu, genel mimarinin kabaca aynı kalmasını sağlayan uygulamalar için Cloud Services Service Fabric en basit geçiş yoludur.
@@ -30,12 +31,12 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 ## <a name="web-role-to-stateless-service"></a>Web rolünün durum bilgisiz hizmetine
 Çalışan rolüne benzer şekilde, bir Web rolü de durum bilgisiz iş yükünü temsil eder ve bu nedenle kavramsal olarak Service Fabric durum bilgisi olmayan bir hizmetle eşleştirilebilir. Ancak, Web rollerinin aksine Service Fabric IIS 'yi desteklemez. Web rolünden bir web rolünden durum bilgisiz olmayan bir hizmete geçirmek için önce kendiliğinden barındırılabilen ve IIS ya da System. Web 'e bağlı olmayan ASP.NET Core 1 gibi bir Web çerçevesine geçmeyi gerektirir.
 
-| **Uygulama** | **Destek** | **Geçiş yolu** |
+| **Uygulama** | **Desteklenir** | **Geçiş yolu** |
 | --- | --- | --- |
 | ASP.NET Web Forms |Hayır |ASP.NET Core 1 MVC 'ye Dönüştür |
 | ASP.NET MVC |Geçişle |ASP.NET Core 1 MVC 'ye yükselt |
 | ASP.NET Web API |Geçişle |Şirket içinde barındırılan sunucu veya ASP.NET Core 1 kullanın |
-| ASP.NET Core 1 |Evet |YOK |
+| ASP.NET Core 1 |Evet |Yok |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Giriş noktası API 'SI ve yaşam döngüsü
 Çalışan rolü ve Service Fabric hizmeti API 'Leri benzer giriş noktaları sunar: 
@@ -43,9 +44,9 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 | **Girdi Noktası** | **Çalışan rolü** | **Service Fabric hizmeti** |
 | --- | --- | --- |
 | İşleniyor |`Run()` |`RunAsync()` |
-| VM başlatma |`OnStart()` |YOK |
-| VM durdur |`OnStop()` |YOK |
-| İstemci istekleri için açık dinleyicisi |YOK |<ul><li> `CreateServiceInstanceListener()`durum bilgisiz için</li><li>`CreateServiceReplicaListener()`durum bilgisi için</li></ul> |
+| VM başlatma |`OnStart()` |Yok |
+| VM durdur |`OnStop()` |Yok |
+| İstemci istekleri için açık dinleyicisi |Yok |<ul><li> `CreateServiceInstanceListener()` durum bilgisiz için</li><li>`CreateServiceReplicaListener()` durum bilgisi için</li></ul> |
 
 ### <a name="worker-role"></a>Çalışan rolü
 ```csharp
@@ -113,9 +114,9 @@ Cloud Services Environment API 'SI, geçerli sanal makine örneği ve diğer VM 
 | --- | --- | --- |
 | Yapılandırma ayarları ve değişiklik bildirimi |`RoleEnvironment` |`CodePackageActivationContext` |
 | Yerel depolama |`RoleEnvironment` |`CodePackageActivationContext` |
-| Uç nokta bilgileri |`RoleInstance` <ul><li>Geçerli örnek:`RoleEnvironment.CurrentRoleInstance`</li><li>Diğer roller ve örnek:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`Geçerli düğüm adresi için</li><li>`FabricClient`ve `ServicePartitionResolver` hizmet uç noktası bulma için</li> |
-| Ortam öykünmesi |`RoleEnvironment.IsEmulated` |YOK |
-| Eşzamanlı değişiklik olayı |`RoleEnvironment` |YOK |
+| Uç nokta bilgileri |`RoleInstance` <ul><li>Geçerli örnek: `RoleEnvironment.CurrentRoleInstance`</li><li>Diğer roller ve örnek: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` Geçerli düğüm adresi için</li><li>`FabricClient` ve `ServicePartitionResolver` hizmet uç noktası bulma için</li> |
+| Ortam öykünmesi |`RoleEnvironment.IsEmulated` |Yok |
+| Eşzamanlı değişiklik olayı |`RoleEnvironment` |Yok |
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 Cloud Services içindeki yapılandırma ayarları bir VM rolü için ayarlanır ve bu VM rolünün tüm örneklerine uygulanır. Bu ayarlar, ServiceConfiguration. *. cscfg dosyalarında ayarlanan anahtar-değer çiftleridir ve doğrudan RoleEnvironment üzerinden erişilebilir. Service Fabric, bir sanal makine birden çok hizmet ve uygulamayı barındırabildiğinden, ayarlar her bir hizmete ve her bir uygulamaya tek tek uygulanır. Bir hizmet üç paketten oluşur:

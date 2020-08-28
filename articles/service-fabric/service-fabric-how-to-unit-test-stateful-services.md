@@ -3,12 +3,13 @@ title: Durum bilgisi olan hizmetler için birim testleri geliştirme
 description: Durum bilgisi olan hizmetler için Azure Service Fabric birim testi ve geliştirme sırasında göz önünde bulundurmanız gereken özel noktalar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639845"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011404"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Durum bilgisi olan hizmetler için birim testleri oluşturma
 Durum bilgisi olan hizmetler Service Fabric birim testi, geleneksel uygulama veya etki alanına özgü birim testi tarafından yakalanmak zorunda olmayan yaygın hataları açığa kaldırır. Durum bilgisi olan hizmetler için birim testleri geliştirirken göz önünde tutulması gereken bazı özel noktalar vardır.

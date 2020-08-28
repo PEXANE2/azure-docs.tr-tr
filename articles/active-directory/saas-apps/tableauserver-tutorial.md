@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546603"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Tableau Server 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -141,7 +141,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
     b. **Sunucu IÇIN SAML kimlik doğrulamasını etkinleştir**onay kutusunu seçin.
 
-    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL <http://tableau_server> . Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin,) bir URL kullanılması `http://tableau_server/` desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
+    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim verilecek URL `http://tableau_server` . Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin,) bir URL kullanılması `http://tableau_server/` desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
 
     d. SAML varlık KIMLIĞI — varlık KIMLIĞI, Tableau sunucu yüklemenizi IDP 'ye benzersiz şekilde tanımlar. İsterseniz Tableau sunucu URL 'nizi buraya girebilirsiniz, ancak Tableau Server URL 'niz olması gerekmez. **SAML VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın
 

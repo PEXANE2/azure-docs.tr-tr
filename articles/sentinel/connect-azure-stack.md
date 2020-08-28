@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8114a5e6db7b82b846d221471f41dbdf418ddd9d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77588527"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002003"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack sanal makinelerini Azure Sentinel 'e bağlama
 
@@ -49,7 +49,7 @@ Azure Stack çalışan sanal makinelere **Azure izleyici, güncelleştirme ve ya
 1. **Uzantıyı Azure Stack yüklemesi** penceresinde, belirtilen alanlara yapıştırın ve **Tamam**' a tıklayın.
 1. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı**olarak gösterilir. Sanal makinenin Azure Sentinel portalında görünmesi bir saate kadar sürebilir.
 
-Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/platform/agent-linux-troubleshoot.md).
 

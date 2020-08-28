@@ -5,12 +5,13 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: bf004b913c032d8a121bf4d508adf4cf9be1c7f9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021995"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services ve Reliable Actors yedekleme ve geri yükleme
 Azure Service Fabric, bu yüksek kullanılabilirliği korumak için durumu birden çok düğüm genelinde çoğaltan yüksek kullanılabilirliğe sahip bir platformdur.  Bu nedenle, kümedeki bir düğüm başarısız olsa bile hizmetler kullanılabilir olmaya devam eder. Platform tarafından sunulan bu yerleşik yedeklik, bazı durumlarda hizmetin verileri (bir dış depoya) yedeklemesi için gerekli olabilir.
@@ -80,7 +81,7 @@ Kullanıcılar, veya yapılandırarak artımlı yedeklemeler yapma olasılığı
 Bu değerlerin artırılması, çoğaltma diski kullanımı başına artar.
 Daha fazla bilgi için bkz. [Reliable Services Configuration](service-fabric-reliable-services-configuration.md)
 
-`BackupInfo`çalışma zamanının yedeklemeyi () kaydettiği klasörün konumu dahil olmak üzere yedeklemeyle ilgili bilgiler sağlar `BackupInfo.Directory` . Geri çağırma işlevi, öğesini bir `BackupInfo.Directory` dış depoya veya başka bir konuma taşıyabilir.  Bu işlev ayrıca yedekleme klasörünü hedef konumuna başarıyla taşıyıp taşıyamadığını belirten bir bool döndürür.
+`BackupInfo` çalışma zamanının yedeklemeyi () kaydettiği klasörün konumu dahil olmak üzere yedeklemeyle ilgili bilgiler sağlar `BackupInfo.Directory` . Geri çağırma işlevi, öğesini bir `BackupInfo.Directory` dış depoya veya başka bir konuma taşıyabilir.  Bu işlev ayrıca yedekleme klasörünü hedef konumuna başarıyla taşıyıp taşıyamadığını belirten bir bool döndürür.
 
 Aşağıdaki kod, `BackupCallbackAsync` Azure depolama 'ya yedekleme yüklemek için yönteminin nasıl kullanılabileceğini göstermektedir:
 
@@ -145,7 +146,7 @@ Ayrıca, `ArgumentException` `BackupFolderPath` bir artımlı yedekleme zinciri 
 Örneğin, tam yedeklemeyi içeriyorsa, ilk artımlı ve üçüncü artımlı yedekleme, ancak ikinci artımlı yedekleme yok.
 
 > [!NOTE]
-> RestorePolicy varsayılan olarak güvenli olarak ayarlanır.  Bu, `RestoreAsync` Yedekleme klasörünün bu çoğaltmada bulunan duruma eşit veya ondan daha eski bir durum içerdiğini algıladığında, bu API 'Nin ArgumentException ile başarısız olacağı anlamına gelir.  `RestorePolicy.Force`Bu güvenlik denetimini atlamak için kullanılabilir. Bu bir parçası olarak belirtilir `RestoreDescription` .
+> RestorePolicy varsayılan olarak güvenli olarak ayarlanır.  Bu, `RestoreAsync` Yedekleme klasörünün bu çoğaltmada bulunan duruma eşit veya ondan daha eski bir durum içerdiğini algıladığında, bu API 'Nin ArgumentException ile başarısız olacağı anlamına gelir.  `RestorePolicy.Force` Bu güvenlik denetimini atlamak için kullanılabilir. Bu bir parçası olarak belirtilir `RestoreDescription` .
 > 
 
 ## <a name="deleted-or-lost-service"></a>Silinen veya kayıp hizmet
@@ -223,7 +224,7 @@ Artımlı yedekleme etkinleştirildiğinde, `KvsActorStateProvider` günlük kay
 Yedekleme zincirinden, Reliable Services benzer şekilde geri yükleme yaparken, BackupFolderPath, tam yedekleme içeren bir alt dizine ve artımlı yedekleme içeren diğer alt dizinlere sahip alt dizinler içermelidir. Geri yükleme API 'SI, yedekleme zinciri doğrulaması başarısız olursa uygun hata iletisiyle FabricException oluşturur. 
 
 > [!NOTE]
-> `KvsActorStateProvider`Şu anda RestorePolicy. Safe seçeneğini yok sayar. Bu özellik için destek, gelecek bir sürümde planlanmaktadır.
+> `KvsActorStateProvider` Şu anda RestorePolicy. Safe seçeneğini yok sayar. Bu özellik için destek, gelecek bir sürümde planlanmaktadır.
 > 
 
 ## <a name="testing-back-up-and-restore"></a>Yedekleme ve geri yükleme sınanıyor
@@ -251,7 +252,7 @@ Bu, StatefulService uygulayıcıları için `RunAsync` başarıyla bitene kadar 
 Ardından, `OnDataLossAsync` Yeni birincil üzerinde çağrılacaktır.
 Bir hizmet bu API 'YI başarılı bir şekilde tamamlayana kadar (doğru veya yanlış döndürerek) ve ilgili yeniden yapılandırma işlemini tamamladıktan sonra, API her seferinde bir kez çağrılacaktır.
 
-`RestoreAsync`İlk olarak, çağrıldığı birincil çoğaltmadaki tüm mevcut durumu bırakır. Ardından güvenilir durum Yöneticisi, yedekleme klasöründe bulunan tüm güvenilir nesneleri oluşturur. Ardından, güvenilir nesneler 'in, yedekleme klasöründeki denetim noktalarından geri yüklenmesi istendi. Son olarak, güvenilir durum Yöneticisi yedekleme klasöründeki günlük kayıtlarından kendi durumunu kurtarır ve kurtarma gerçekleştirir. Kurtarma işleminin bir parçası olarak, yedekleme klasöründe kaydedilmiş günlük kayıtları olan "başlangıç noktasından" başlatılan işlemler güvenilir nesnelere yeniden yürütülür. Bu adım kurtarılan durumun tutarlı olmasını sağlar.
+`RestoreAsync` İlk olarak, çağrıldığı birincil çoğaltmadaki tüm mevcut durumu bırakır. Ardından güvenilir durum Yöneticisi, yedekleme klasöründe bulunan tüm güvenilir nesneleri oluşturur. Ardından, güvenilir nesneler 'in, yedekleme klasöründeki denetim noktalarından geri yüklenmesi istendi. Son olarak, güvenilir durum Yöneticisi yedekleme klasöründeki günlük kayıtlarından kendi durumunu kurtarır ve kurtarma gerçekleştirir. Kurtarma işleminin bir parçası olarak, yedekleme klasöründe kaydedilmiş günlük kayıtları olan "başlangıç noktasından" başlatılan işlemler güvenilir nesnelere yeniden yürütülür. Bu adım kurtarılan durumun tutarlı olmasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
   - [Güvenilir Koleksiyonlar](service-fabric-work-with-reliable-collections.md)

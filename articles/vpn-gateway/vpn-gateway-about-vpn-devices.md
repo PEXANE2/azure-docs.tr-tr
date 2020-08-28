@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 18eaf520c70b064f26cd1da5f50c023f42adb8ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367734"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021825"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -59,15 +59,15 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Juniper |SSG |ScreenOS 6.2 |Desteklenir |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Desteklenir |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Yönlendirme ve Uzaktan Erişim Hizmeti |Windows Server 2012 |Uyumlu değil |Desteklenir |
-| Open Systems AG |Mission Control Security Ağ Geçidi |Yok |[Yapılandırma Kılavuzu](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Uyumlu değil |
+| Open Systems AG |Mission Control Security Ağ Geçidi |Yok |[Yapılandırma Kılavuzu](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Uyumlu değil |
 | Palo Alto Networks |PAN-OS çalıştıran tüm cihazlar |PAN-OS<br>PolicyBased: 6.1.5 veya üzeri<br>RouteBased: 7.1.4 |Desteklenir |[Yapılandırma Kılavuzu](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Yeni Nesil UTM (NU serisi) | 9.0.1.3 | Uyumlu değil | [Yapılandırma Kılavuzu](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ Series, NSA Series<br>SuperMassive Series<br>E-Class NSA Series |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Uyumlu değil |[Yapılandırma Kılavuzu](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Yeni Nesil Güvenlik Duvarı | XG v17 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://community.sophos.com/kb/127546)<br><br>[Yapılandırma Kılavuzu-birden çok SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synoloji | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2.0 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v 1,10 | (sınanmamıştır) | [Ikev2/IPSec üzerinden BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[Ikev2/IPSec üzerinden VTı](https://help.ubnt.com/hc/en-us/articles/115012305347) |
-| Çok | 3E-636L3 | 5.2.0. T3 derlemesi-13  | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| Ultra | 3E-636L3 | 5.2.0. T3 derlemesi-13  | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |Tümü |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Yapılandırma Kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Yapılandırma Kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | ZyXEL |Zyduvar USG serisi<br>Zyduvaratp serisi<br>Zyduvarvpn serisi | ZLD v 4.32 + | (sınanmamıştır) | [Ikev2/IPSec üzerinden VTı](https://businessforum.zyxel.com/discussion/2648/)<br><br>[Ikev2/IPSec üzerinden BGP](https://businessforum.zyxel.com/discussion/2650/)|
 

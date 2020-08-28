@@ -3,12 +3,12 @@ title: Rehberlik ve en iyi deneyimler
 description: Buluta ve şirket içi iş yükünü buluta yedeklemeye yönelik en iyi yöntemleri ve Kılavuzu bulun
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825588"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000371"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Buluta ve şirket içi iş yüklerini buluta yedekleyin
 
@@ -90,7 +90,7 @@ Kasadaki yedeklemeleri yapılandırmadan önce gereksinimlerinizi karşılayacak
 
 ## <a name="backup-policy-considerations"></a>Yedekleme Ilkesi konuları
 
-Azure Backup Ilkesinin iki bileşeni vardır: *zamanlama* (yedekleme ne zaman) ve *bekletme* (yedeklemenin tutulacağı süre). İlkeyi, yedeklenen verilerin türüne, RTO/RPO gereksinimlerine, işlemsel veya mevzuat uyumluluk ihtiyaçlarına ve iş yükü türüne (örneğin, VM, veritabanı, dosyalar) göre tanımlayabilirsiniz. [Daha fazla bilgi edinin](backup-architecture.md#backup-policy-essentials).
+Azure Backup Ilkesinin iki bileşeni vardır: *zamanlama* (yedekleme ne zaman) ve *bekletme* (yedeklemenin tutulacağı süre). İlkeyi yedeklenen verilerin türüne, RTO/RPO gereksinimlerine, işlemsel veya mevzuat uyumluluk ihtiyaçlarına ve iş yükü türüne (örneğin, VM, veritabanı, dosyalar) göre tanımlayabilirsiniz. [Daha fazla bilgi edinin](backup-architecture.md#backup-policy-essentials).
 
 Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulundurun:
 
@@ -135,7 +135,7 @@ Yedekleme Ilkesi oluştururken aşağıdaki yönergeleri göz önünde bulunduru
 
 Yedekleme verilerinizi korumanıza ve işinizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olmak için Azure Backup, önemli veri ve sistemlerinizde bilinçli saldırılarına ve uygunsuz kullanım için gizlilik, bütünlük ve kullanılabilirlik sağlar. Azure Backup çözümünüz için aşağıdaki güvenlik yönergelerini göz önünde bulundurun:
 
-### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 * Azure rol tabanlı erişim denetimi (Azure RBAC), takımınızda görev ayırma ve yalnızca işlerini gerçekleştirmek için gereken kullanıcılara erişim miktarı verme konusunda ayrıntılı erişim yönetimi sağlar. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md).
 
@@ -214,7 +214,7 @@ Azure Backup hizmetin özellikleri, maliyetlerinizi etkin bir şekilde yönetme 
 
 * Azure Backup, Azure VM 'lerinin anlık görüntülerini alır ve bunları kurtarma noktası oluşturmayı artırmak ve geri yükleme işlemlerini hızlandırmak için disklerle birlikte depolar. Bu, anında geri yükleme olarak adlandırılır. Varsayılan olarak, anlık geri yükleme anlık görüntüleri iki gün boyunca tutulur. Bu özellik geri yükleme sürelerini kesip bu anlık görüntülerden geri yükleme işlemine izin verir. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Sonuç olarak, bu süre boyunca alınan anlık görüntülere karşılık gelen depolama maliyetlerini görürsünüz. [Daha fazla bilgi edinin](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Azure Backup kasasının depolama çoğaltma türü, varsayılan olarak coğrafi olarak yedekli (GRS) olarak ayarlanmıştır. Öğeler korunduktan sonra bu seçenek değiştirilemez. Coğrafi olarak yedekli depolama (GRS), yerel olarak yedekli depolama (LRS) düzeyinden daha yüksek düzeyde veri dayanıklılığı sağlar ve çapraz bölge geri yükleme ve maliyetlerin daha fazlasını kullanmasına izin verir. Daha düşük maliyetler ve senaryonuza yönelik daha yüksek veri dayanıklılığı arasındaki denge konusunu gözden geçirin. [Daha fazla bilgi edinin](backup-create-rs-vault.md#set-storage-redundancy)
+* Azure Backup kasasının depolama çoğaltma türü, varsayılan olarak coğrafi olarak yedekli (GRS) olarak ayarlanmıştır. Öğeler korunduktan sonra bu seçenek değiştirilemez. Coğrafi olarak yedekli depolama (GRS), yerel olarak yedekli depolama (LRS) düzeyinden daha yüksek düzeyde veri dayanıklılığı sağlar ve çapraz bölge geri yükleme ve maliyetlerin daha fazlasını kullanmasına izin verir. Düşük maliyetler ve daha yüksek veri dayanıklılığı arasındaki ücretleri gözden geçirin ve senaryonuza en uygun şeyleri belirleyin. [Daha fazla bilgi edinin](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Hem sanal makinenin hem de VM 'nin içinde çalıştığı iş yükünü koruyorsanız, bu çift korumanın gerekli olup olmadığını denetleyin.
 

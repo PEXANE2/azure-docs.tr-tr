@@ -4,12 +4,12 @@ description: Sanal makinelerin geçici silme işlemlerini yedeklemelerin daha g�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022250"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
 

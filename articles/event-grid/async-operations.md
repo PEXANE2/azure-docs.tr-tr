@@ -3,12 +3,13 @@ title: Event Grid zaman uyumsuz işlemlerin durumu
 description: Azure 'da Event Grid zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103339"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011693"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme Event Grid
 İşlem hızlı bir şekilde tamamlanamadığından bazı Azure REST işlemleri zaman uyumsuz olarak çalışır. Bu makalede, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz işlemlerin durumunun nasıl izleneceği açıklanır.  
@@ -29,9 +30,9 @@ Yürütmekte olduğunuz işlemin yanıtlarını görmek için [REST API belgeler
 ## <a name="monitor-status-of-operation"></a>İşlemin durumunu izle
 Zaman uyumsuz REST işlemleri, işlemin durumunu belirlemede kullandığınız üst bilgi değerlerini döndürür. İnceleyecek olabilecek üç üst bilgi değeri vardır:
 
-* `Azure-AsyncOperation`-İşlemin devam eden durumunu denetlemek için URL. İşlem bu değeri döndürürse, işlemin durumunu izlemek için her zaman kullanın (konum yerine).
-* `Location`-Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
-* `Retry-After`-Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
+* `Azure-AsyncOperation` -İşlemin devam eden durumunu denetlemek için URL. İşlem bu değeri döndürürse, işlemin durumunu izlemek için her zaman kullanın (konum yerine).
+* `Location` -Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
+* `Retry-After` -Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
 
 Ancak, her zaman uyumsuz işlem bu değerlerin tümünü döndürmez. Örneğin, bir işlem için Azure-AsyncOperation üst bilgi değerini ve başka bir işlemin konum üst bilgi değerini değerlendirmeniz gerekebilir. 
 
@@ -71,7 +72,7 @@ Yalnızca `status` tüm yanıtlar için döndürülür. Hata nesnesi, durum baş
 
 Kaynak oluşturan, güncelleştiren veya silen (PUT, PATCH, SIL) işlemler genellikle bir `provisioningState` değer döndürüyor. Bir işlem tamamlandığında, aşağıdaki üç değerden biri döndürülür: 
 
-* Başarılı oldu
+* Başarılı
 * Başarısız
 * İptal edildi
 
