@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339901"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018493"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Dosyaları Azure Stack Edge üzerinde taşımak için C# IoT Edge modülünü geliştirme
 
@@ -41,7 +42,7 @@ Azure Stack Edge cihazınız, IoT Edge modülleri dağıtabilir ve çalıştıra
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -64,19 +65,19 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**’a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
    2. Bir **abonelik**seçin.
    3. Yeni oluşturun veya var olan bir **kaynak grubunu**seçin.
-   4. Bir **Konum** seçin. Bu konumun Azure Stack Edge kaynağıyla ilişkili ile aynı olmasını öneririz.
+   4. Bir **konum**seçin. Bu konumun Azure Stack Edge kaynağıyla ilişkili ile aynı olmasını öneririz.
    5. **Yönetici kullanıcı** ayarını **Etkinleştir**'e getirin.
    6. SKU 'YU **temel**olarak ayarlayın.
 
       ![Kapsayıcı kayıt defteri oluşturma](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 5. Kapsayıcı kayıt defteriniz oluşturulduktan sonra, bu kayıt defterine gidin ve **Erişim anahtarları**'nı seçin.
 
     ![Erişim anahtarları al](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -256,7 +257,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 2. Parola istendiğinde parolayı girin. Ayrıca, oturum açma sunucusu, Kullanıcı adı ve parola değerlerini, Azure portal kapsayıcı kayıt defterinizde **erişim tuşlarından** alabilirsiniz.
  
-3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya **üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya ** üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
 
     ![IoT Edge çözümü oluşturun ve gönderin](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  

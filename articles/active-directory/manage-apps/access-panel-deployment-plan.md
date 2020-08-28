@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930545"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017728"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
-Azure Active Directory (Azure AD) Uygulamalarım, destek maliyetlerini azaltmaya, üretkenliği ve güvenliği artırmaya ve Kullanıcı azalmasını azaltmaya yardımcı olan Web tabanlı bir portaldır. Sistem sisteme eriştiğinizde izleyen ayrıntılı raporlama içerir ve yöneticilere kötüye kullanımı veya kötüye kullanımı bildirir.
+Azure Active Directory (Azure AD) Uygulamalarım, destek maliyetlerini azaltmaya, üretkenliği ve güvenliği artırmaya ve Kullanıcı azalmasını azaltmaya yardımcı olan Web tabanlı bir portaldır. Sistem sisteme eriştiğinizde izleyen ayrıntılı raporlama içerir ve yöneticilere kötüye kullanımı veya kötüye kullanımı bildirir. Son Kullanıcı perspektifinden uygulamalarımı kullanma hakkında bilgi edinmek için bkz. [Apps Portal yardımı](../user-help/my-apps-portal-end-user-access.md).
 
 Azure AD My Apps 'i kullanarak şunları yapabilirsiniz:
 
@@ -42,7 +42,7 @@ Azure AD My Apps, işletmelerden aşağıdaki yollarla faydalanır:
 
 **Sezgisel kullanıcı deneyimi sağlar**: uygulamalarım size Azure çoklu oturum açma (SSO) ile bağlantılı tüm uygulamalarınız için tek bir platform sağlar. Var olan ayarları ve Grup Yönetimi ve self servis parola sıfırlama gibi yeni özellikleri, bunlar eklendikçe bulmak için birleştirilmiş bir portala sahipsiniz. Sezgisel deneyim, kullanıcıların daha hızlı çalışmasına ve daha üretken olmasına karşın daha üretken olmasına olanak sağlar.
 
-**Üretkenliği artırır**: uygulamamdaki tüm kullanıcı uygulamalarının SSO 'su etkinleştirilmiştir. Kurumsal uygulamalarda SSO 'yu etkinleştirme ve Microsoft 365, ek oturum açma istemlerini azaltarak veya ortadan kaldırarak üstün bir oturum açma deneyimi oluşturur. Uygulamalarım self servis ve dinamik üyelik kullanır ve kimlik sisteminizin genel güvenliğini geliştirir. Bu, doğru kişilerin uygulamalara erişimi yönetmesini sağlayarak bunu yapar. Uygulamalarım hızlı bir şekilde kaynakları bulmanıza ve iş görevlerine devam etmeniz için tutarlı bir giriş sayfası görevi görür.
+**Üretkenliği artırır**: uygulamamdaki tüm kullanıcı uygulamalarının SSO 'su etkinleştirilmiştir. Kurumsal uygulamalarda SSO 'yu etkinleştirme ve Microsoft 365, ek oturum açma istemlerini azaltarak veya ortadan kaldırarak üstün bir oturum açma deneyimi oluşturur. Uygulamalarım self servis ve dinamik üyelik kullanır ve kimlik sisteminizin genel güvenliğini geliştirir. Uygulamalarım, doğru kişilerin uygulamalara erişimi yönetmesini sağlar. Uygulamalarım hızlı bir şekilde kaynakları bulmanıza ve iş görevlerine devam etmeniz için tutarlı bir giriş sayfası görevi görür.
 
 **Maliyeti yönetir**: Azure AD Ile uygulamalarımı etkinleştirmek, şirket içi altyapılarla ilgili yardımcı olabilir. Uygulamalarınızın tümünü bulmak, kaynaklara erişim istemek ve hesapları yönetmek için tutarlı bir portal sunarak destek maliyetlerini azaltır.
 
@@ -89,6 +89,10 @@ Aşağıdaki tabloda, uygulamalar dağıtımı için anahtar kullanım durumlar�
 | Kullanıcı Deneyimi| Kullanıcılar hesaplarını yönetebilir. |
 | Kullanıcı Deneyimi| Kullanıcılar tarayıcı uyumluluğuna duyarlı. |
 | Destek| Kullanıcılar uygulamalarım sorunlarıyla ilgili destek bulabilir. |
+
+
+> [!TIP]
+> Uygulamalarım, uzak uygulama proxy 'Si kullanılırken iç şirket URL 'Leriyle birlikte kullanılabilir. Daha fazla bilgi edinmek için bkz. [öğretici: Azure Active Directory Içindeki uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md).
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Azure AD uygulamalarımı dağıtmaya yönelik en iyi uygulamalar
 
@@ -189,7 +193,7 @@ Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir taray
 
 ## <a name="plan-your-my-apps-deployment"></a>Uygulamalarım dağıtımınızı planlayın
 
-Uygulamalarımın temeli, ' de kullanıcıların erişebileceği uygulama başlatıcısı portalıdır [https://myapps.microsoft.com](https://myapps.microsoft.com/) . Uygulamalarım sayfası, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sunar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
+Uygulamalarımın temeli, ' de kullanıcıların erişebileceği uygulama başlatıcısı portalıdır [https://myapps.microsoft.com](https://myapps.microsoft.com/) . Uygulamalarım sayfası, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sağlar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
 
 > [!NOTE]
 > Aynı uygulamalar Microsoft 365 App Launcher içinde gösterilir.
@@ -255,7 +259,7 @@ Bkz. [Active Directory bir uygulamaya Kullanıcı ve Grup atama](methods-for-ass
 
 Testi veya dağıtımı sırasında, grupları eklemek istiyorsanız ancak uygulamaların uygulamamda görüntülemesine izin vermediyse, bkz. [Azure Active Directory kullanıcının deneyiminden bir uygulamayı gizleme](hide-application-from-user-portal.md).
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Microsoft Microsoft 365 uygulamalarını uygulamalarıma dağıtma
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>Microsoft 365 uygulamalarını uygulamalarıma dağıtma
 
 Microsoft 365 uygulamalar için, kullanıcılar, bunlara atanan lisanslardan birine göre Office 'in bir kopyasını alırlar. Office uygulamalarına erişim için bir önkoşul, kullanıcılara Office uygulamalarına bağlı doğru lisansları atamalıdır. Bir kullanıcıya lisans atadığınızda, bu kullanıcılar kendi uygulamalarım sayfasında ve Microsoft 365 App Launcher ' de lisansla ilişkili uygulamaları otomatik olarak görürler.
 
@@ -303,7 +307,7 @@ Dağıtımınız planlanmazsa ne yapılacağını planlamanız önemlidir. Dağ�
 
 ## <a name="manage-your-implementation"></a>Uygulamanızı yönetme
 
-Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az ayrıcalıklı rolü kullanmanız gerekir. [Kullanılabilir farklı rolleri gözden geçirin](../users-groups-roles/directory-assign-admin-roles.md) ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
+Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az ayrıcalıklı rolü kullanın. [Kullanılabilir farklı rolleri gözden geçirin](../users-groups-roles/directory-assign-admin-roles.md) ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|

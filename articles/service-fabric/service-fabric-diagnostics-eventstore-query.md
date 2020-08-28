@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2d66248797d577d6894d1125188735ecf71029b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 614c8e5f76475c7e7af35db37334eb645ad553a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018612"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Küme olayları için EventStore API 'Lerini sorgulama
 
@@ -31,17 +32,17 @@ Bu parametrelere ek olarak, aşağıdaki gibi isteğe bağlı parametreler de me
 * `SkipCorrelationLookup`: kümede olası bağıntılı olayları arama. Varsayılan olarak, EventStore olayları bir küme genelinde ilişkilendirmeyi dener ve mümkünse olaylarınızı birbirine bağlar. 
 
 Bir kümedeki her varlık olay sorguları olabilir. Ayrıca, bu türdeki tüm varlıkların olaylarını da sorgulayabilirsiniz. Örneğin, belirli bir düğümün veya kümenizdeki tüm düğümlerin olaylarını sorgulayabilirsiniz. Olayları sorgulayabilmeniz için kullanabileceğiniz geçerli varlıklar kümesi (sorgunun yapılandırılması ile birlikte):
-* İçi`/EventsStore/Cluster/Events`
-* Düğümlerini`/EventsStore/Nodes/Events`
-* Düğümüne`/EventsStore/Nodes/<NodeName>/$/Events`
-* Uygulamaları`/EventsStore/Applications/Events`
-* Uygulamanızı`/EventsStore/Applications/<AppName>/$/Events`
-* Servislere`/EventsStore/Services/Events`
-* Hizmetle`/EventsStore/Services/<ServiceName>/$/Events`
-* Bölüme`/EventsStore/Partitions/Events`
-* Bölümünüzün`/EventsStore/Partitions/<PartitionID>/$/Events`
-* Çoğaltmaları`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Yinelemeden`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* İçi `/EventsStore/Cluster/Events`
+* Düğümlerini `/EventsStore/Nodes/Events`
+* Düğümüne `/EventsStore/Nodes/<NodeName>/$/Events`
+* Uygulamaları `/EventsStore/Applications/Events`
+* Uygulamanızı `/EventsStore/Applications/<AppName>/$/Events`
+* Servislere `/EventsStore/Services/Events`
+* Hizmetle `/EventsStore/Services/<ServiceName>/$/Events`
+* Bölüme `/EventsStore/Partitions/Events`
+* Bölümünüzün `/EventsStore/Partitions/<PartitionID>/$/Events`
+* Çoğaltmaları `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* Yinelemeden `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
 >Bir uygulamaya veya hizmet adına başvurulduğunda, sorgunun "Fabric:/" eklemesi gerekmez koy. Ayrıca, uygulama veya hizmet adlarınızın içinde "/" varsa, sorguyu çalışır durumda tutmak için "~" olarak değiştirin. Örneğin, uygulamanız "Fabric:/app1/FrontendApp" olarak görünüyorsa, uygulamaya özgü sorgular olarak yapılandırılır `/EventsStore/Applications/App1~FrontendApp/$/Events` .
@@ -112,7 +113,7 @@ Bu şekilde, ve arasında, `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` Bu küm
 
 Ayrıca, [Service Fabric istemci kitaplığı](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)aracılığıyla eventstore 'u programlı bir şekilde sorgulayabilirsiniz.
 
-Service Fabric Istemcinizi ayarladıktan sonra, aşağıdaki gibi EventStore 'a erişerek olayları sorgulayabilirsiniz:`sfhttpClient.EventStore.<request>`
+Service Fabric Istemcinizi ayarladıktan sonra, aşağıdaki gibi EventStore 'a erişerek olayları sorgulayabilirsiniz: `sfhttpClient.EventStore.<request>`
 
 `2018-04-03T18:00:00Z`İşlev aracılığıyla ve arasındaki tüm küme olayları için örnek bir istek aşağıda verilmiştir `2018-04-04T18:00:00Z` `GetClusterEventListAsync` .
 
@@ -171,19 +172,19 @@ Kümenizin durumunu anlamak için olay deposu REST API 'Lerini nasıl çağırab
 
 *Küme yükseltmeleri:*
 
-Kümenizin son haftada başarıyla yükseltildiğine veya son hafta yükseltildiğine bakmak için, EventStore 'daki "ClusterUpgradeCompleted" olaylarını sorgulayarak kümenizdeki son tamamlanan yükseltmelere yönelik API 'Leri sorgulayabilirsiniz:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Kümenizin son haftada başarıyla yükseltildiğine veya son hafta yükseltildiğine bakmak için, EventStore 'daki "ClusterUpgradeCompleted" olaylarını sorgulayarak kümenizdeki son tamamlanan yükseltmelere yönelik API 'Leri sorgulayabilirsiniz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
 *Küme yükseltme sorunları:*
 
-Benzer şekilde, son küme yükseltmesinde sorunlar varsa, küme varlığının tüm olaylarını sorgulayabilirsiniz. Yükseltmelerin başlatılması ve yükseltmenin başarıyla alındığı her bir UD dahil olmak üzere çeşitli olaylar görürsünüz. Ayrıca, geri almanın başlatıldığı noktaya yönelik olayları ve buna karşılık gelen sistem durumu olaylarını görürsünüz. Bunun için kullanacağınız sorgu aşağıda verilmiştir:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Benzer şekilde, son küme yükseltmesinde sorunlar varsa, küme varlığının tüm olaylarını sorgulayabilirsiniz. Yükseltmelerin başlatılması ve yükseltmenin başarıyla alındığı her bir UD dahil olmak üzere çeşitli olaylar görürsünüz. Ayrıca, geri almanın başlatıldığı noktaya yönelik olayları ve buna karşılık gelen sistem durumu olaylarını görürsünüz. Bunun için kullanacağınız sorgu aşağıda verilmiştir: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Düğüm durumu değişiklikleri:*
 
-Düğüm durumu değişikliklerinizi son birkaç güne göre görmek için-düğümler ne zaman yukarı veya aşağı geldiğinde ya da etkin ya da devre dışı bırakılmışsa (Platform, Chaos hizmeti veya Kullanıcı girişinden)-aşağıdaki sorguyu kullanın:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Düğüm durumu değişikliklerinizi son birkaç güne göre görmek için-düğümler ne zaman yukarı veya aşağı geldiğinde ya da etkin ya da devre dışı bırakılmışsa (Platform, Chaos hizmeti veya Kullanıcı girişinden)-aşağıdaki sorguyu kullanın: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Uygulama olayları:*
 
-Ayrıca, son uygulama dağıtımlarınızı ve yükseltmelerini izleyebilirsiniz. Kümenizdeki tüm uygulama olaylarını görmek için aşağıdaki sorguyu kullanın:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Ayrıca, son uygulama dağıtımlarınızı ve yükseltmelerini izleyebilirsiniz. Kümenizdeki tüm uygulama olaylarını görmek için aşağıdaki sorguyu kullanın: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Bir uygulamanın geçmiş durumu:*
 
@@ -191,12 +192,12 @@ Yalnızca uygulama yaşam döngüsü olaylarını görmenin yanı sıra, belirli
 
 *"MyApp" içindeki tüm hizmetler için geçmiş durumu:*
 
-Şu anda, hizmetler için sistem durumu raporu olayları, `DeployedServicePackageNewHealthReport` ilgili uygulama varlığının altında olay olarak görünür. Hizmetlerinizin "APP1" için nasıl çalıştığını görmek için aşağıdaki sorguyu kullanın:`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Şu anda, hizmetler için sistem durumu raporu olayları, `DeployedServicePackageNewHealthReport` ilgili uygulama varlığının altında olay olarak görünür. Hizmetlerinizin "APP1" için nasıl çalıştığını görmek için aşağıdaki sorguyu kullanın: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *Bölüm yeniden yapılandırması:*
 
-Kümenizde gerçekleşen tüm bölüm hareketlerini görmek için, `PartitionReconfigured` olayı sorgulayın. Bu, kümenizdeki sorunları tanılarken belirli zamanlarda hangi iş yüklerinin hangi düğümlerde çalıştığını bulmanıza yardımcı olabilir. İşte şunları yapan örnek bir sorgu:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Kümenizde gerçekleşen tüm bölüm hareketlerini görmek için, `PartitionReconfigured` olayı sorgulayın. Bu, kümenizdeki sorunları tanılarken belirli zamanlarda hangi iş yüklerinin hangi düğümlerde çalıştığını bulmanıza yardımcı olabilir. İşte şunları yapan örnek bir sorgu: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
 *Chaos hizmeti:*
 
-Chaos hizmeti başlatıldığında veya durdurulduğunda, küme düzeyinde sunulan bir olay vardır. Chaos hizmetini son kullanma hakkında bilgi için aşağıdaki sorguyu kullanın:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+Chaos hizmeti başlatıldığında veya durdurulduğunda, küme düzeyinde sunulan bir olay vardır. Chaos hizmetini son kullanma hakkında bilgi için aşağıdaki sorguyu kullanın: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`

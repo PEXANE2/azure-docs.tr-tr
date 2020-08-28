@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757294"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018731"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -184,6 +184,8 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 ## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 * **Amlcompute oluşturma sorunu**: Azure Machine Learning çalışma ALANıNı, GA sürümünden önce Azure Portal oluşturan bazı kullanıcıların, bu çalışma alanında AmlCompute oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
+
+* **Azure Container Registry Şu anda kaynak grubu adlarında Unicode karakterleri desteklememektedir**: kaynak grubu adı Unicode karakterler içerdiğinden ACR istekleri başarısız olabilir. Bu sorunu gidermek için, farklı adlandırılmış kaynak grubunda bir ACR oluşturmanız önerilir.
 
 ## <a name="work-with-data"></a>Verilerle çalışma
 

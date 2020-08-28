@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565464"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018986"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Unity için Remote Rendering’i ayarlama
 
@@ -66,11 +67,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="session-state-events"></a>Oturum durumu olayları
 
-`RemoteManagerUnity.OnSessionUpdate`oturum durumu değiştiğinde olayları yayar, Ayrıntılar için kod belgelerine bakın.
+`RemoteManagerUnity.OnSessionUpdate` oturum durumu değiştiğinde olayları yayar, Ayrıntılar için kod belgelerine bakın.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`, kurulum ve oturum yönetimini kolaylaştırmak için isteğe bağlı bir bileşendir. Uygulamanın çıkış sırasında veya yürütme modunun düzenleyicide çıkış yapıldığında oturumunu otomatik olarak durdurma ve gerektiğinde oturum kiralamasını otomatik olarak yenileme seçeneklerini içerir. Oturum özellikleri gibi verileri önbelleğe alır (kendi `LastProperties` değişkenine bakın) ve oturum durumu değişiklikleri ve oturum hataları için olayları ortaya koyar.
+`ARRServiceUnity` , kurulum ve oturum yönetimini kolaylaştırmak için isteğe bağlı bir bileşendir. Uygulamanın çıkış sırasında veya yürütme modunun düzenleyicide çıkış yapıldığında oturumunu otomatik olarak durdurma ve gerektiğinde oturum kiralamasını otomatik olarak yenileme seçeneklerini içerir. Oturum özellikleri gibi verileri önbelleğe alır (kendi `LastProperties` değişkenine bakın) ve oturum durumu değişiklikleri ve oturum hataları için olayları ortaya koyar.
 
 Tek seferde birden fazla örneği olamaz `ARRServiceUnity` . Bazı yaygın işlevleri uygulayarak daha hızlı bir şekilde başlamanıza yöneliktir. Daha büyük bir uygulama için, bu şeyleri sizin yapmanız tercih edilebilir, ancak.
 

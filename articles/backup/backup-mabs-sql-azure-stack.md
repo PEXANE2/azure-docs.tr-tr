@@ -3,12 +3,12 @@ title: Azure Stack SQL Server iş yüklerini yedekleme
 description: Bu makalede, Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032655"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017982"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 
@@ -101,7 +101,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Tutarlılık denetimi](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    Azure Backup Sunucusu, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi gerçekleştirir. Azure Backup Sunucusu, üretim sunucusundaki (Bu senaryodaki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için yedeklenmiş verileri hesaplar. Çakışma varsa, Azure Backup Sunucusu yedeklenen dosyanın bozuk olduğu varsayılır. Azure Backup Sunucusu, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri yeniden toplayın. Tutarlılık denetimleri performans açısından yoğun olduğundan, tutarlılık denetimini zamanlayabilir veya otomatik olarak çalıştırabilirsiniz.
+    Azure Backup Sunucusu, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi gerçekleştirir. Azure Backup Sunucusu, üretim sunucusundaki (Bu senaryodaki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve bu dosya için yedeklenmiş verileri hesaplar. Bir çakışma varsa, Azure Backup Sunucusu yedeklenen dosyanın bozuk olduğu varsayılır. Azure Backup Sunucusu, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri yeniden toplayın. Tutarlılık denetimleri performans açısından yoğun olduğundan, tutarlılık denetimini zamanlayabilir veya otomatik olarak çalıştırabilirsiniz.
 
 10. Veri kaynaklarının çevrimiçi korumasını belirtmek için, Azure 'da korunacak veritabanlarını seçin ve **İleri**' ye tıklayın.
 

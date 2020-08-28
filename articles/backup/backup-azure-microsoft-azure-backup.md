@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892295"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001187"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -66,9 +66,9 @@ Windows Server yinelenenleri kaldırma 'yı kullanarak DPM depolama alanını yi
 >
 > * Etki alanı denetleyicisi olarak çalıştırılan bir bilgisayar
 > * Uygulama Sunucusu rolünün yüklü olduğu bir bilgisayar
-> * System Center Operations Manager yönetim grubu olan bir bilgisayar
+> * System Center Operations Manager yönetim sunucusu olan bir bilgisayar
 > * Exchange Server’ın çalıştırıldığı bir bilgisayar
-> * Küme düğümü olan bir bilgisayar
+> * Bir kümenin düğümü olan bir bilgisayar
 >
 > Azure Backup Sunucusu yüklemek Windows Server Core veya Microsoft Hyper-V Server 'da desteklenmez.
 
@@ -261,25 +261,25 @@ Depolama alanını korurken MABS 'i yeni bir sunucuya taşımanız gerekiyorsa b
 
   > [!IMPORTANT]
   >
-  > * Yeni sunucu adı, özgün Azure Backup Sunucusu örneğiyle aynı ad olmalıdır. Kurtarma noktalarını sürdürmek için önceki depolama havuzunu ve MABS veritabanını (DPMDB) kullanmak istiyorsanız yeni Azure Backup Sunucusu örneğinin adını değiştiremezsiniz.
-  > * MABS veritabanının (DPMDB) yedeğine sahip olmanız gerekir. Veritabanını geri yüklemeniz gerekir.
+  > * Yeni sunucu adı, özgün Azure Backup Sunucusu örneğiyle aynı ada sahip olmalıdır. Kurtarma noktalarını sürdürmek için önceki depolama havuzunu ve MABS veritabanını (DPMDB) kullanmak istiyorsanız yeni Azure Backup Sunucusu örneğinin adını değiştiremezsiniz.
+  > * MABS veritabanının (DPMDB) yedeğine sahip olmanız gerekir. Veritabanını geri yüklemek için bu gereklidir.
 
 1. Görüntüleme bölmesinde, koruma aracısını güncelleştirmek istediğiniz istemci bilgisayarları seçin.
-2. Özgün Azure Backup sunucusunu kapatın veya kablo dışına alın.
-3. Active Directory 'de makine hesabını sıfırlayın.
-4. Sunucu 2016 ' i yeni makineye yükleyip özgün Azure Backup sunucusuyla aynı makine adına adlandırın.
-5. Etki alanına katılarak
-6. Azure Backup Server v3 veya üstünü (MABS depolama havuzu disklerini eski sunucudan taşıyın ve içeri aktarın)
+2. Özgün Azure Backup sunucusunu kapatın veya çevrimdışına alın.
+3. Active Directory makine hesabını sıfırlayın.
+4. Sunucu 2016 ' i yeni bir makineye yükleyip özgün Azure Backup sunucusuyla aynı makine adını verin.
+5. Etki alanına katın.
+6. Azure Backup Sunucusu v3 veya üstünü (MABS depolama havuzu disklerini eski sunucudan taşıyın ve içeri aktarın).
 7. Adım 1 ' de alınan DPMDB 'yi geri yükleyin.
 8. Özgün yedekleme sunucusundan yeni sunucuya depolama alanını ekleyin.
-9. SQL geri yükleme 'den DPMDB
-10. Yeni sunucu CD 'sindeki yönetici komut satırı Microsoft Azure Backup konum ve bin klasörünü yüklemek için
+9. SQL 'den DPMDB 'yi geri yükleyin.
+10. Yeni sunucuda CMD 'yi (yönetici olarak) çalıştırın. Microsoft Azure Backup install location ve bin klasörüne gidin
 
     Yol örneği: C:\Windows\System32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
-11. Azure Backup 'ta DPMSYNC-SYNC çalıştırın
+11. Azure Backup bağlanmak için, şunu çalıştırın `DPMSYNC -SYNC`
 
-    DPM depolama havuzuna eski olanları taşımak yerine yenı diskler eklediyseniz DPMSYNC-Reallocatereplica çalıştırın
+    DPM depolama havuzuna eski olanları taşımak yerine **Yeni** diskler eklediyseniz, şunu çalıştırın `DPMSYNC -Reallocatereplica`
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 

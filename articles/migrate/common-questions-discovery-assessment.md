@@ -3,12 +3,12 @@ title: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi ile i
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019020"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
@@ -181,13 +181,13 @@ Hayır, aracı tabanlı görselleştirmede bağımlılık görselleştirme rapor
 Aracı tabanlı bağımlılık görselleştirmesi için:
 
 - [Bağımlılık aracısını yüklemek için bir komut dosyası](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)kullanın.
-- MMA için [komut satırını veya Otomasyonu kullanın](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)veya bir [komut dosyası](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
+- MMA için [komut satırını veya Otomasyonu kullanın](../azure-monitor/platform/log-analytics-agent.md#installation-options)veya bir [komut dosyası](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
 - Betiklerin yanı sıra, aracıları dağıtmak için Microsoft uç nokta Configuration Manager ve [ıntigua](https://www.intigua.com/intigua-for-azure-migration) gibi dağıtım araçlarını kullanabilirsiniz.
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA hangi işletim sistemlerini destekler?
 
-- [MMA 'nın desteklediği Windows işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)listesini görüntüleyin.
-- [MMA 'nın desteklediği Linux işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)listesini görüntüleyin.
+- [MMA 'nın desteklediği Windows işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#installation-options)listesini görüntüleyin.
+- [MMA 'nın desteklediği Linux işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#installation-options)listesini görüntüleyin.
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Bağımlılıkları birden fazla saat için görselleştirebilir miyim?
 

@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: da4f9b4814e93a964105a7ed3ea4addaecd43864
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9954c8fa6affca7d2c2b73d7176280587d749476
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611237"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017898"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -32,13 +32,13 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 Azure Backup, bu önemli avantajları sunar:
 
 - **Şirket içi yedeklemeyi boşaltma**: Azure Backup şirket içi kaynaklarınızı buluta yedeklemeye yönelik basit bir çözüm sunar. Karmaşık şirket içi yedekleme çözümlerini dağıtmaya gerek olmadan kısa ve uzun süreli yedekleme yapın.
-- **Azure IaaS VM 'Lerini yedekleme**: Azure Backup özgün verilerin yanlışlıkla yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedeklemeler, kurtarma noktalarının yerleşik yönetimi ile bir kurtarma hizmetleri kasasında depolanır. Yapılandırma ve ölçeklenebilirlik basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
+- **Azure IaaS VM 'Lerini yedekleme**: Azure Backup özgün verilerin yanlışlıkla yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedekler, yerleşik kurtarma noktası yönetim özelliklerine sahip Kurtarma Hizmetleri kasasında depolanır. Yapılandırma ve ölçeklenebilirlik basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
 - **Kolayca ölçeklendirin** Azure Backup, bakım veya izleme ek yükü olmadan yüksek kullanılabilirlik sağlamak için Azure bulutunun temel alınan gücünü ve sınırsız ölçeğini kullanır.
-- **Sınırsız veri aktarımı alın**: Azure Backup, aktardığınız gelen veya giden verilerin miktarını sınırlamaz veya aktarılan veriler için ücret ödemez.
+- **Sınırsız veri aktarımı alın**: Azure Backup, aktardığınız gelen veya giden verilerin miktarını sınırlamaz veya aktarılan veriler için ücret alınmaz.
   - Giden veriler, geri yükleme işlemi sırasında bir Kurtarma Hizmetleri kasasından aktarılan verileri tanımlar.
   - Azure Içeri/dışarı aktarma hizmetini kullanarak büyük miktarda veriyi içeri aktarmaya yönelik çevrimdışı bir ilk yedekleme gerçekleştirirseniz, gelen verilerle ilişkili bir maliyet vardır.  [Daha fazla bilgi edinin](backup-azure-backup-import-export.md).
 - **Verileri güvende tutun**: Azure Backup [yoldaki](backup-azure-security-feature.md) ve [bekleyen](backup-azure-security-feature-cloud.md)verilerin güvenliğini sağlamak için çözümler sağlar.
-- **Merkezi izleme ve yönetim**: Azure Backup, bir kurtarma hizmetleri kasasında [yerleşik izleme ve uyarı özellikleri](backup-azure-monitoring-built-in-monitor.md) sağlar. Bu yetenekler ek bir yönetim altyapısı olmadan kullanılabilir. Ayrıca, [Azure izleyici 'yi kullanarak](backup-azure-monitoring-use-azuremonitor.md)izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
+- **Merkezi izleme ve yönetim**: Azure Backup, bir kurtarma hizmetleri kasasında [yerleşik izleme ve uyarı özellikleri](backup-azure-monitoring-built-in-monitor.md) sağlar. Bu özellikler ek yönetim altyapısı olmadan kullanılabilir. Ayrıca, [Azure izleyici 'yi kullanarak](backup-azure-monitoring-use-azuremonitor.md)izlemenin ve raporlamanın ölçeğini de artırabilirsiniz.
 - **Uygulamayla tutarlı yedeklemeler al**: uygulamayla tutarlı bir yedekleme, bir kurtarma noktasının yedek kopyayı geri yüklemek için gerekli tüm verilere sahip olduğu anlamına gelir. Azure Backup, verileri geri yüklemek için ek düzeltmelerin gerekli olmamasını sağlayan uygulamayla tutarlı yedeklemeler sağlar. Uygulamayla tutarlı verilerin geri yüklenmesi, geri yükleme süresini azaltarak hizmetlerinizin kısa süre içinde çalışır hale gelmesini sağlar.
 - **Kısa ve uzun süreli verileri koruyun**: kısa süreli ve uzun süreli veri saklama Için [Kurtarma Hizmetleri kasalarını](backup-azure-recovery-services-vault-overview.md) kullanabilirsiniz.
 - **Otomatik depolama yönetimi** - Karma ortamlar genelde heterojen depolamaya (bazıları şirket içi, bazıları ise bulutta olan) ihtiyaç duyar. Azure Backup, şirket içi depolama cihazlarını kullanma maliyeti yoktur. Azure Backup, yedekleme alanını otomatik olarak ayırıp yönetir ve "kullandıkça öde" modelini kullanır. Böylece yalnızca kullandığınız depolama alanı için ödeme yaparsınız. Fiyatlandırma hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/backup) .

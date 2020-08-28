@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449043"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018867"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
@@ -110,7 +111,7 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
     > [!NOTE]
     > Visual Studio 'da bir hata görürseniz *, ' X ' üzerinde talep ediliyor özelliği C# 6 ' da kullanılamaz. Lütfen dil sürümü 7,0 veya üzerini kullanın*, bu hata güvenle yoksayılabilir. Bu, Unity 'nin çözümü ve proje üretimi ile ilgilidir.
 
-    Bu betik, **Baseremoterenderedmodel**uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel**anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
+    Bu betik,  **Baseremoterenderedmodel**uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel**anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
 
     Uygulamak için iki yöntem vardır: **Querylimitlar** ve **processqueryresult**. **Querylimitler** , sınırları getirir ve **processqueryresult** sorgunun sonucunu alır ve bunu yerel **BoxCollider**uygular.
 

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757617"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017456"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 
@@ -39,7 +39,7 @@ Kurtarma Hizmetleri kasası, Azure sanal makineleri gibi koruma altındaki kayna
 
     ![Azure portalında sanal makine yedeklemeyi etkinleştirme](./media/quick-backup-vm-portal/enable-backup.png)
 
-    Varsayılan olarak kasada Coğrafi Olarak Yedekli depolama özelliği etkindir. Bu depolama yedekliliği seviyesi verilerinizi daha fazla korumak için yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar.
+    Varsayılan olarak kasada Coğrafi Olarak Yedekli depolama özelliği etkindir. Verilerinizi daha fazla korumak için bu depolama artıklık düzeyi, yedekleme verilerinizin birincil bölgeden yüzlerce mil olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
 
     Bir yedekleme işinin çalışma zamanını ve kurtarma noktalarının saklama süresini tanımlamak için ilke oluşturur ve kullanırsınız. Varsayılan koruma ilkesi yedekleme işini her gün çalıştırır ve kurtarma noktalarını 30 gün boyunca tutar. Sanal makinenizi hızlı bir şekilde koruma altına almak için bu varsayılan ilke değerlerini kullanabilirsiniz.
 

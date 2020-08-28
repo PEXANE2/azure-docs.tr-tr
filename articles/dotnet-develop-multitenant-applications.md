@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481844"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017711"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure’da Çok Müşterili Uygulamalar
 Çok kiracılı bir uygulama, "ayrı kiracılardaki kullanıcıların uygulamayı kendi kendine yaptığı gibi görüntülemesine izin veren paylaşılan bir kaynaktır. Çok kiracılı bir uygulamaya kendisini hedefleyen tipik bir senaryo, farklı kiracılardan uygulamanın tüm kullanıcılarının Kullanıcı deneyimini özelleştirmek ve aksi takdirde aynı temel iş gereksinimlerine sahip olması olabilir. Office 365, Outlook.com ve visualstudio.com gibi büyük çok kiracılı uygulamalara örnek olarak verilebilir.

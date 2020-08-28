@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950162"
+ms.locfileid: "89018068"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,6 +129,8 @@ Belirli bir adım için modüle tıklayın. **Günlükler** sekmesine gidin. Di�
 
 > [!TIP]
 > Yayınlanan işlem *hatları* için çalıştırmalar çalışma alanınızdaki **uç noktalar** sekmesinde bulunabilir. *Yayımlanamayan işlem hatları* için çalıştırmalar, **denemeleri** veya işlem **hatları**içinde bulunabilir.
+
+Günlüğe kaydetme ve izleme hakkında daha fazla bilgi için `ParallelRunStep` bkz. [hata ayıklama ve ParallelRunStep sorunlarını giderme](how-to-debug-parallel-run-step.md).
 
 ## <a name="logging-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında oturum açma (Önizleme)
 

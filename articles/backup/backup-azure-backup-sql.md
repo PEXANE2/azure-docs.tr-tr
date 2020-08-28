@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876317"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017320"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -38,7 +38,7 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
   * DPM bir yük devretmeyi algılar ve veritabanını korumaya devam eder.
   * DPM bir SQL Server örneği için çok siteli küme yapılandırmalarını destekler.
 * AlwaysOn özelliğini kullanan veritabanlarını koruduğunuzda, DPM için aşağıdaki sınırlamalar söz konusudur:
-  * DPM, yedekleme tercihlerine uygun olarak SQL Server'da ayarlanan kullanılabilirlik gruplarıyla ilgili yedekleme ilkesini aşağıdaki gibi değerlendirir:
+  * DPM, yedekleme tercihlerine göre SQL Server ayarlanan kullanılabilirlik grupları için yedekleme ilkesini aşağıdaki gibi kabul eder:
     * İkincil olanı tercih et - Birincil çoğaltmanın tek çoğaltma olması durumu haricinde yedeklemekler ikincil çoğaltmada gerçekleşmelidir. Kullanılabilir birden fazla ikincil çoğaltma varsa, yedekleme önceliği en yüksek olan düğüm yedekleme için seçilir. Yalnızca birincil çoğaltma kullanılabilirse, yedekleme birincil çoğaltmada gerçekleşmelidir.
     * Yalnızca ikincil - Birincil çoğaltmada yedekleme gerçekleştirilmemelidir. Birincil çoğaltma çevrimiçi olan tek çoğaltmaysa, yedekleme gerçekleşmemelidir.
     * Birincil - Yedeklemeler her zaman birincil çoğaltmada gerçekleşmelidir.
@@ -70,11 +70,11 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. Koruma grubu oluşturmak için **Yeni** ' yi seçin.
 
     ![Koruma grubu oluşturma](./media/backup-azure-backup-sql/protection-group.png)
-1. Başlangıç sayfasında, bir koruma grubu oluşturma kılavuzunu gözden geçirin. Sonra **İleri**’yi seçin.
+1. Başlangıç sayfasında, bir koruma grubu oluşturma kılavuzunu gözden geçirin. Ardından **İleri**’yi seçin.
 1. **Sunucular**' ı seçin.
 
     ![Sunucular koruma grubu türünü seçin](./media/backup-azure-backup-sql/pg-servers.png)
-1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server sanal makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. Sonra **İleri**’yi seçin.
+1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server sanal makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. Ardından **İleri**’yi seçin.
 
     ![SQL Server veritabanı seçin](./media/backup-azure-backup-sql/pg-databases.png)
 1. Koruma grubunu adlandırın ve **çevrimiçi koruma**istiyorum ' u seçin.
@@ -99,7 +99,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     **Birimleri otomatik olarak Büyüt**' i seçerseniz, üretim VERILERI arttıkça DPM artan yedekleme birimi için hesap yapabilir. **Birimleri otomatik olarak Büyüt**' i seçmezseniz DPM, yedekleme depolama alanını koruma grubundaki veri kaynaklarıyla sınırlandırır.
 
-1. Yöneticiyseniz, bu ilk yedeklemeyi **ağ üzerinden otomatik olarak** aktarmayı ve aktarım zamanını seçmenizi seçebilirsiniz. Ya da yedeklemeyi **el ile** aktarmayı seçebilirsiniz. Sonra **İleri**’yi seçin.
+1. Yöneticiyseniz, bu ilk yedeklemeyi **ağ üzerinden otomatik olarak** aktarmayı ve aktarım zamanını seçmenizi seçebilirsiniz. Ya da yedeklemeyi **el ile** aktarmayı seçebilirsiniz. Ardından **İleri**’yi seçin.
 
     ![Çoğaltma oluşturma yöntemi seçin](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -107,13 +107,13 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     İlk yedekleme tamamlandıktan sonra yedeklemeler ilk yedekleme kopyasında artımlı olarak devam eder. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
-1. Tutarlılık denetiminin ne zaman çalıştırılacağını seçin. Sonra **İleri**’yi seçin.
+1. Tutarlılık denetiminin ne zaman çalıştırılacağını seçin. Ardından **İleri**’yi seçin.
 
     ![Tutarlılık denetiminin ne zaman çalıştırılacağını seçin](./media/backup-azure-backup-sql/pg-consistent.png)
 
     DPM, yedekleme noktasının bütünlüğü üzerinde bir tutarlılık denetimi çalıştırabilir. Bu dosya, üretim sunucusundaki (Bu örnekteki SQL Server bilgisayar) yedekleme dosyasının sağlama toplamını ve DPM 'deki bu dosyanın yedeklenen verilerini hesaplar. Denetim bir çakışma bulursa DPM 'deki yedeklenen dosyanın bozuk olduğu varsayılır. DPM, sağlama toplamı uyuşmazlığına karşılık gelen blokları göndererek yedeklenen verileri düzeltir. Tutarlılık denetimi performansı yoğun bir işlem olduğundan, Yöneticiler tutarlılık denetimini zamanlamayı veya otomatik olarak çalıştırmayı seçebilirler.
 
-1. Azure 'da korunacak veri kaynaklarını seçin. Sonra **İleri**’yi seçin.
+1. Azure 'da korunacak veri kaynaklarını seçin. Ardından **İleri**’yi seçin.
 
     ![Azure 'da korunacak veri kaynaklarını seçin](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. Yöneticiyseniz, kuruluşunuzun ilkelerine uygun olan yedekleme zamanlamaları ve bekletme ilkeleri ' ni seçebilirsiniz.
@@ -179,12 +179,12 @@ Azure 'dan SQL Server veritabanı gibi korumalı bir varlığı kurtarmak için:
 1. Veritabanı adına sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Azure 'dan bir veritabanını kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. Sonra **İleri**’yi seçin.
+1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. Ardından **İleri**’yi seçin.
 
     ![Veritabanını özgün konumuna kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Bu örnekte DPM, veritabanının başka bir SQL Server örneğine veya tek başına bir ağ klasörüne kurtarılmasını sağlar.
-1. **Kurtarma seçeneklerini belirtin** sayfasında kurtarma seçeneklerini belirleyebilirsiniz. Örneğin, kurtarmanın kullandığı bant genişliğini azaltmak için **ağ bant genişliği kullanımını azaltmayı** seçebilirsiniz. Sonra **İleri**’yi seçin.
+1. **Kurtarma seçeneklerini belirtin** sayfasında kurtarma seçeneklerini belirleyebilirsiniz. Örneğin, kurtarmanın kullandığı bant genişliğini azaltmak için **ağ bant genişliği kullanımını azaltmayı** seçebilirsiniz. Ardından **İleri**’yi seçin.
 1. **Özet** sayfasında, geçerli kurtarma yapılandırmasını görürsünüz. **Kurtar**' ı seçin.
 
     Kurtarma durumu kurtarılan veritabanını gösterir. Sihirbazı kapatmak için **Kapat** ' ı seçebilirsiniz ve ilerlemeyi **izleme** çalışma alanında görüntüleyebilirsiniz.

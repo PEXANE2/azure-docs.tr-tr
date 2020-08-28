@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551532"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Öğretici: Google Cloud (G Suite) Bağlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Google Cloud (G Suite) bağlayıcısını Azure Active Director
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -225,15 +225,18 @@ Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azur
 
     b. Google Cloud (G Suite) bağlayıcısının **oturum açma sayfası URL 'si** alanında, Azure Portal kopyaladığınız **oturum açma URL** 'si değerini yapıştırın.
 
-    c. Google Cloud (G Suite) bağlayıcısının **oturum kapatma sayfası URL 'si** alanında, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    c. Google Cloud (G Suite) bağlayıcısının **oturum kapatma sayfası URL 'si** alanında, Azure Portal kopyaladığınız **oturum açma URL** 'si değerini yapıştırın.
 
-    d. Google Cloud (G Suite) Bağlayıcısı 'ndaki **parola URL 'Sini Değiştir** alanında, Azure Portal kopyaladığınız **parola URL 'sini Değiştir** değerini yapıştırın.
+    > [!NOTE]
+    > Google Cloud (G Suite), SAML oturum kapatma protokolünü temel alır. Bu nedenle, **oturum kapatma sayfası URL 'si** alanında, aynı değer olarak oturum açma URL 'SI olan SAML Logout URL 'sini kullanmanız gerekir.
 
-    e. Google Cloud (G Suite) Bağlayıcısı ' nda, **doğrulama sertifikası**için Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
+    d. Google Cloud (G Suite) Bağlayıcısı ' nda, **doğrulama sertifikası**için Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.   
 
-    f. Azure AD 'deki Yukarıdaki **temel SAML yapılandırması** bölümünde bahsedilen nota göre, **etki alanına özgü sertifikayı kullanma** seçeneğini işaretleyin/işaretini kaldırın.
+    e. Azure AD 'deki Yukarıdaki **temel SAML yapılandırması** bölümünde bahsedilen nota göre, **etki alanına özgü sertifikayı kullanma** seçeneğini işaretleyin/işaretini kaldırın.
 
-    örneğin: **Değişiklikleri Kaydet**’e tıklayın.
+    f. Google Cloud (G Suite) Bağlayıcısı 'ndaki **parola URL 'Sini Değiştir** alanında, Azure Portal kopyaladığınız **parola URL 'sini Değiştir** değerini yapıştırın.
+
+    örneğin: **Kaydet**’e tıklayın.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) bağlayıcı test kullanıcısı oluşturma
 

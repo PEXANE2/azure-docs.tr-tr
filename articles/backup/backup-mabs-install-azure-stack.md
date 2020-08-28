@@ -3,12 +3,12 @@ title: Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 description: Bu makalede, Azure Stack iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018136"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack üzerinde Azure Backup Sunucusu'nu yükleme
 
@@ -99,7 +99,7 @@ Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. 
 > - Etki alanı denetleyicisi olarak çalıştırılan bir bilgisayar
 > - Uygulama Sunucusu rolünün yüklü olduğu bir bilgisayar
 > - Exchange Server’ın çalıştırıldığı bir bilgisayar
-> - Küme düğümü olan bir bilgisayar
+> - Bir kümenin düğümü olan bir bilgisayar
 
 Azure Backup Sunucusu her zaman bir etki alanına ekleyin. Azure Backup Sunucusu farklı bir etki alanına taşımanız gerekiyorsa, önce Azure Backup Sunucusu yükledikten sonra yeni etki alanına katın. Azure Backup Sunucusu dağıttıktan sonra, yeni bir etki alanına taşıyamazsınız.
 

@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: has-adal-ref
-ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008993"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018153"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Rol tabanlı erişim denetimini uzaktan Izleme çözüm hızlandırıcısında yapılandırma
 
@@ -28,20 +28,20 @@ Uzaktan Izleme çözümünü ilk dağıttığınızda, iki rol vardır: **yönet
 
 | İzin            | Yönetici | Salt Okunur |
 |----------------       |-------|-----------|
-| Çözümü görüntüle         | Yes   | Yes       |
-| Uyarıları Güncelleştir         | Yes   | Hayır        |
-| Alarmları Sil         | Yes   | Hayır        |
-| Cihaz oluşturma        | Yes   | Hayır        |
-| Cihazları güncelleştirme        | Yes   | Hayır        |
-| Cihazları Sil        | Yes   | Hayır        |
-| Cihaz grupları oluşturma  | Yes   | Hayır        |
-| Cihaz gruplarını güncelleştirme  | Yes   | Hayır        |
-| Cihaz gruplarını silme  | Yes   | Hayır        |
-| Kural oluşturma          | Yes   | Hayır        |
-| Güncelleştirme kuralları          | Yes   | Hayır        |
-| Kuralları Sil          | Yes   | Hayır        |
-| İş oluşturma           | Yes   | Hayır        |
-| SIM yönetimini Güncelleştir | Yes   | Hayır        |
+| Çözümü görüntüle         | Evet   | Evet       |
+| Uyarıları Güncelleştir         | Evet   | Hayır        |
+| Alarmları Sil         | Evet   | Hayır        |
+| Cihaz oluşturma        | Evet   | Hayır        |
+| Cihazları güncelleştirme        | Evet   | Hayır        |
+| Cihazları Sil        | Evet   | Hayır        |
+| Cihaz grupları oluşturma  | Evet   | Hayır        |
+| Cihaz gruplarını güncelleştirme  | Evet   | Hayır        |
+| Cihaz gruplarını silme  | Evet   | Hayır        |
+| Kural oluşturma          | Evet   | Hayır        |
+| Güncelleştirme kuralları          | Evet   | Hayır        |
+| Kuralları Sil          | Evet   | Hayır        |
+| İş oluşturma           | Evet   | Hayır        |
+| SIM yönetimini Güncelleştir | Evet   | Hayır        |
 
 Varsayılan olarak, çözümü dağıtan Kullanıcı otomatik olarak **yönetici** rolüne atanır ve bir Azure Active Directory Uygulama sahibidir. Bir uygulama sahibi olarak, Azure portal aracılığıyla diğer kullanıcılara roller atayabilirsiniz. Başka bir kullanıcının çözümde rol atamasını istiyorsanız, Ayrıca, Azure portal bir uygulama sahibi olarak da ayarlanmalıdır.
 

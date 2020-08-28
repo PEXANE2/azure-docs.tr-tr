@@ -3,7 +3,7 @@ title: Yönetilen kimlik VM uzantısını kullanmayı Durdur-Azure AD
 description: VM uzantısını kullanmayı durdurmak ve kimlik doğrulaması için Azure Instance Metadata Service (ıMDS) kullanmaya başlamak için adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848381"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018385"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Sanal makine tarafından yönetilen kimlikler uzantısını kullanmayı durdurma ve Azure Instance Metadata Service kullanmaya başlama
 
@@ -167,8 +167,8 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 ```
 
 Burada: 
-- Windows için uzantı adı ve tür:`ManagedIdentityExtensionForWindows`
-- Linux için uzantı adı ve türü:`ManagedIdentityExtensionForLinux`
+- Windows için uzantı adı ve tür: `ManagedIdentityExtensionForWindows`
+- Linux için uzantı adı ve türü: `ManagedIdentityExtensionForLinux`
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Otomasyon betiği", Azure kaynakları uzantısı için Yönetilen kimlikler için şema dışarı aktarma denemesi sırasında başarısız oluyor
 
@@ -186,7 +186,7 @@ Sanal makine uzantısını kullanmanın bazı önemli sınırlamaları vardır.
 
  * En ciddi kısıtlama, belirteçleri istemek için kullanılan kimlik bilgilerinin sanal makinede depolanmasıdır. Sanal makineye başarılı bir şekilde ulaşan bir saldırgan, kimlik bilgilerini alabilir. 
  * Ayrıca, bu dağıtımların her birinde uzantıyı değiştirmek, derlemek ve test etmek için büyük bir geliştirme maliyetiyle, sanal makine uzantısı birkaç Linux dağıtımı tarafından yine de desteklenmeye devam etmektedir. Şu anda yalnızca aşağıdaki Linux dağıtımları desteklenir: 
-    * CoreOS kararlı
+    * CoreOS Stable
     * CentOS 7,1 
     * Red hat 7,2 
     * Ubuntu 15,04 

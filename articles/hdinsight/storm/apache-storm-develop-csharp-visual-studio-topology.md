@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082021"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000201"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı kullanarak Apache Storm için C# topolojileri geliştirme
 
@@ -27,7 +28,7 @@ C# topolojileri, .NET 4,5 kullanır ve HDInsight kümesinde çalıştırmak içi
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
 | 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
 | 3,5 | 1.0.2. x | 1.0.0. x | 4.2.1 |
-| 3,6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
+| 3.6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
 
 ## <a name="prerequisite"></a>Önkoşul
 
@@ -150,9 +151,9 @@ Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanıla
 
    * `NextTuple`: Spout 'in yeni tanımlama gruplarını yaymak için izin verildiğinde fırtınası tarafından çağırılır.
 
-   * `Ack`(yalnızca işlem topolojisi): Spout 'dan gönderilen tanımlama grupları için topolojideki diğer bileşenler tarafından başlatılan bildirimleri Işler. Bir tanımlama grubunun ele alındığı, biriktirme listesini aşağı akış bileşenleri tarafından başarıyla işlendiğini bildirir.
+   * `Ack` (yalnızca işlem topolojisi): Spout 'dan gönderilen tanımlama grupları için topolojideki diğer bileşenler tarafından başlatılan bildirimleri Işler. Bir tanımlama grubunun ele alındığı, biriktirme listesini aşağı akış bileşenleri tarafından başarıyla işlendiğini bildirir.
 
-   * `Fail`(yalnızca işlem topolojisi): topolojideki diğer bileşenleri işlemek için başarısız olan tanımlama gruplarını Işler. Bir `Fail` yöntemi uygulamak, kayıt düzeninin yeniden işlenebilmesi için yeniden yaymasını sağlar.
+   * `Fail` (yalnızca işlem topolojisi): topolojideki diğer bileşenleri işlemek için başarısız olan tanımlama gruplarını Işler. Bir `Fail` yöntemi uygulamak, kayıt düzeninin yeniden işlenebilmesi için yeniden yaymasını sağlar.
 
 2. `Spout`Sınıfının içeriğini aşağıdaki metinle değiştirin:
 
@@ -481,9 +482,9 @@ Karma topoloji oluştururken ve gönderirken aşağıdakileri göz önünde bulu
 
 SCP.NET Version 0.9.4.203, özellikle Olay Hub 'ı (Event Hubs okuyan bir Java Spout) ile birlikte çalışmak için yeni bir sınıf ve yöntem sunar. Bir olay hub 'ı (örneğin, **fırtınası EventHub okuyucu örnek** şablonunu kullanarak) kullanan bir topoloji oluşturduğunuzda, aşağıdaki API 'leri kullanın:
 
-* `EventHubSpoutConfig`Sınıf: Spout bileşeni yapılandırmasını içeren bir nesne oluşturur.
+* `EventHubSpoutConfig` Sınıf: Spout bileşeni yapılandırmasını içeren bir nesne oluşturur.
 
-* `TopologyBuilder.SetEventHubSpout`Yöntem: Olay Hub 'ı Spout bileşenini topolojiye ekler.
+* `TopologyBuilder.SetEventHubSpout` Yöntem: Olay Hub 'ı Spout bileşenini topolojiye ekler.
 
 > [!NOTE]  
 > `CustomizedInteropJSONSerializer`Spout tarafından üretilen verileri seri hale getirmek için kullanmaya devam etmeniz gerekir.

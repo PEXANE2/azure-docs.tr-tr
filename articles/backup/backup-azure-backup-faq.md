@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892771"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017745"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -56,7 +56,7 @@ Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız g
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasına yedeklenen VM'ler için Öğe Düzeyinde Kurtarma (ILR) işlemi yapabilir miyim?
 
 - ILR, Azure VM yedeklemesi tarafından yedeklenen Azure VM'lerinde desteklenir. Daha fazla bilgi için şu [makaleye](backup-azure-restore-files-from-vm.md) bakın
-- ILR, Azure Backup sunucusu ya da System Center DPM tarafından yedeklenen şirket içi VM 'lerin çevrimiçi kurtarma noktaları için desteklenmez.
+- ILR, Azure Backup Sunucusu (MABS) veya System Center DPM tarafından yedeklenen şirket içi VM 'lerin çevrimiçi kurtarma noktaları için desteklenmez.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 
@@ -184,7 +184,7 @@ Korumalı bir örnek için en çok 9999 kurtarma noktası oluşturabilirsiniz. K
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Azure'a yedeklenen verileri kaç kez kurtarabilirim?
 
-Azure Backup ile gerçekleştirilen kurtarma işlemlerinin sayısına yönelik bir sınır yoktur.
+Azure Backup kurtarma sayısı sınırı yoktur.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Verileri geri yüklerken Azure'dan çıkış trafiği için ödeme yapacak mıyım?
 

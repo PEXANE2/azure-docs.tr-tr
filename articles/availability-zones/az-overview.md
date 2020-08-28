@@ -4,15 +4,15 @@ description: Azure 'da teknik ve yasal gereksinimlerinizi karşılayacak bölgel
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413170"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018680"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -79,7 +79,7 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 | Bölge türü | Bölgesel olmayan | Temel | Temel | Özelleştirilmiş | Kullanılabilirlik Alanları | Veri yerleşimi |
 | --- | --- | --- | --- | --- | --- | --- |
 | Önerilen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | :heavy_check_mark: | :heavy_check_mark: |
-| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | YOK | :heavy_check_mark: |
+| Diğer | :heavy_check_mark: | :heavy_check_mark: | Talep odaklı | Talep odaklı | Yok | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Kategoriye göre hizmetler
 
@@ -92,46 +92,45 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Temel | Temel | Özelleştirilmiş |
 > | --- | --- | --- |
 > | Hesap depolama alanı | API Management | FHIR için Azure API'si |
-> | Application Gateway | Uygulama Yapılandırması | Azure Blok Zinciri Hizmeti |
-> | Azure Backup | App Service | Azure Blueprints |
-> | Azure Cosmos DB | Otomasyon | MariaDB için Azure Veritabanı |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Ayrılmış HSM |
-> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
-> | Azure SQL Veritabanı | Azure Bastion | Azure Digital Twins |
-> | Cloud Services | Redis için Azure Önbelleği | Azure Lab Services |
-> | Cloud Services: AV2-Series | Azure Bilişsel Arama | Azure NetApp Files |
-> | Cloud Services: dv2-Series | Azure Veri Gezgini | Azure hisse |
-> | Cloud Services: Dv3-Series | Azure Veri Paylaşımı | Azure Zaman Serisi Görüşleri |
-> | Cloud Services: Ev3-Series | MySQL için Azure Veritabanı | CloudSimple tarafından sunulan Azure VMware Çözümü |
-> | Cloud Services: örnek düzeyi IP 'Leri | PostgreSQL için Azure Veritabanı | Cloud Services: A8-A11 (Işlem yoğunluğu) |
-> | Cloud Services: Ayrılmış IP | Azure Veritabanı Geçiş Hizmeti | Cloud Services: G serisi |
-> | Disk Depolama | Azure Databricks | Cloud Services: H serisi |
-> | Event Hubs | Azure DDoS Koruması | Bilişsel hizmetler: anomali algılayıcısı |
-> | Key Vault | Azure DevTest Labs | Bilişsel hizmetler: Özel Görüntü İşleme |
+> | Application Gateway | Uygulama Yapılandırması | Azure Analysis Services |
+> | Azure Backup | App Service | Azure Blok Zinciri Hizmeti |
+> | Azure Cosmos DB | Otomasyon | Azure Blueprints |
+> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | MariaDB için Azure Veritabanı |
+> | Azure ExpressRoute | Azure Bastion | Azure Ayrılmış HSM |
+> | Azure SQL Veritabanı | Redis için Azure Önbelleği | Azure Dev Spaces |
+> | Cloud Services | Azure Bilişsel Arama | Azure Digital Twins |
+> | Cloud Services: AV2-Series | Azure Veri Gezgini | Azure Lab Services |
+> | Cloud Services: dv2-Series | Azure Veri Paylaşımı | Azure NetApp Files |
+> | Cloud Services: Dv3-Series | MySQL için Azure Veritabanı | Azure hisse |
+> | Cloud Services: Ev3-Series | PostgreSQL için Azure Veritabanı | Azure yay bulut hizmeti |
+> | Cloud Services: örnek düzeyi IP 'Leri | Azure Veritabanı Geçiş Hizmeti | Azure Zaman Serisi Görüşleri |
+> | Cloud Services: Ayrılmış IP | Azure Databricks | CloudSimple tarafından sunulan Azure VMware Çözümü |
+> | Disk Depolama | Azure DDoS Koruması | Cloud Services: G serisi |
+> | Event Hubs | Azure DevTest Labs | Cloud Services: H serisi |
+> | Key Vault | Azure Güvenlik Duvarı | Bilişsel hizmetler: Özel Görüntü İşleme |
 > | Yük dengeleyici | Azure Güvenlik Duvarı Yöneticisi | Bilişsel hizmetler: konuşmacı tanıma |
-> | Service Bus | Azure Güvenlik Duvarı | Data Box Heavy |
-> | Service Fabric | Azure İşlevleri | Veri Kataloğu |
-> | Sanal Makine Ölçek Kümeleri | Azure HPC Önbelleği | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure IoT Hub | Data Lake Analytics |
-> | Sanal makineler: AV2-Series | Azure Kubernetes Hizmeti (AKS) | Machine Learning Studio |
-> | Sanal makineler: BS serisi | Azure Machine Learning | Microsoft Genomiks |
-> | Sanal makineler: DSv2-Series | Azure Özel Bağlantı | Remote Rendering |
-> | Sanal makineler: DSv3-Series | Azure Red Hat OpenShift | Spatial Anchors |
+> | Service Bus | Azure İşlevleri | Data Box Heavy |
+> | Service Fabric | Azure HPC Önbelleği | Veri Kataloğu |
+> | Sanal Makine Ölçek Kümeleri | Azure IoT Hub | Data Factory: Data Factory v1 |
+> | Sanal Makineler | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Sanal makineler: AV2-Series | Azure Machine Learning | Machine Learning Studio |
+> | Sanal makineler: BS serisi | Azure Özel Bağlantı | Microsoft Genomiks |
+> | Sanal makineler: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
+> | Sanal makineler: DSv3-Series | Azure SignalR Hizmeti | Spatial Anchors |
 > | Sanal makineler: dv2-Series | Azure Site Recovery | StorSimple |
-> | Sanal makineler: Dv3-Series | Azure yay bulut hizmeti | Video Indexer |
-> | Sanal makineler: ESv3-Series | Azure Stack Hub | Sanal makineler: A8-A11 (Işlem yoğunluğu) |
-> | Sanal makineler: Ev3-Series | Azure Stream Analytics | Sanal makineler: DASv4-Series |
-> | Sanal makineler: F serisi | Azure Synapse Analytics | Sanal makineler: DAv4-Series |
-> | Sanal makineler: FS Serisi | Azure SignalR Service | Sanal makineler: DCsv2-Series |
-> | Sanal makineler: örnek düzeyi IP 'Leri | Batch | Sanal makineler: EASv4-Series |
-> | Sanal makineler: Ayrılmış IP | Cloud Services: a serisi | Sanal makineler: EAv4-Series |
-> | Sanal Ağ | Bilişsel Hizmetler | Sanal makineler: G serisi |
-> | VPN Gateway | Bilişsel hizmetler: Görüntü İşleme | Sanal makineler: GS serisi |
-> |  | Bilişsel hizmetler: Content Moderator | Sanal makineler: HBv1-Series |
-> |  | Bilişsel hizmetler: yüz | Sanal makineler: HBv2-Series |
+> | Sanal makineler: Dv3-Series | Azure Stack Hub | Video Indexer |
+> | Sanal makineler: ESv3-Series | Azure Stream Analytics | Sanal makineler: DASv4-Series |
+> | Sanal makineler: Ev3-Series | Azure Synapse Analytics | Sanal makineler: DAv4-Series |
+> | Sanal makineler: F serisi | Batch | Sanal makineler: DCsv2-Series |
+> | Sanal makineler: FS Serisi | Cloud Services: a serisi | Sanal makineler: EASv4-Series |
+> | Sanal makineler: örnek düzeyi IP 'Leri | Bilişsel Hizmetler | Sanal makineler: EAv4-Series |
+> | Sanal makineler: Ayrılmış IP | Bilişsel hizmetler: Görüntü İşleme | Sanal makineler: G serisi |
+> | Sanal Ağ | Bilişsel hizmetler: Content Moderator | Sanal makineler: GS serisi |
+> | VPN Ağ Geçidi | Bilişsel hizmetler: yüz | Sanal makineler: HBv1-Series |
+> |  | Bilişsel hizmetler: form tanıyıcı | Sanal makineler: HBv2-Series |
 > |  | Bilişsel hizmetler: Language Understanding | Sanal makineler: HCv1-Series |
-> |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: H serisi |
-> |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: LS Serisi |
+> |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: H serisi |
+> |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: LS Serisi |
 > |  | Container Instances | Sanal makineler: LSv2-Series |
 > |  | Container Registry | Sanal makineler: Mv2-Series |
 > |  | Data Factory | Sanal makineler: NC serisi |
@@ -146,6 +145,14 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > |  | Premium dosya depolaması | Visual Studio App Center |
 > |  | Depolama alanı: Arşiv Depolama |  |
 > |  | Ultra Disk Depolama |  |
+> |  | Sanal makineler: Ddsv4-Series |  |
+> |  | Sanal makineler: Ddv4-Series |  |
+> |  | Sanal makineler: Dsv4-Series |  |
+> |  | Sanal makineler: dv4-Series |  |
+> |  | Sanal makineler: Edsv4-Series |  |
+> |  | Sanal makineler: Edv4-Series |  |
+> |  | Sanal makineler: Esv4-Series |  |
+> |  | Sanal makineler: Ev4-Series |  |
 > |  | Sanal makineler: Fsv2-Series |  |
 > |  | Sanal makineler: a serisi |  |
 > |  | Sanal WAN |  |

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986397"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017286"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler ile Azure SQL veritabanı ve Azure SQL yönetilen örnek performans sorunlarını giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ Akıllı İçgörüler, sorgu yürütme bekleme süreleri, hatalar veya zaman a�
 | [Kaynak sınırlarına ulaşma](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Görüntülenen abonelikte kullanılabilir kaynakların (DTU), veritabanı çalışan iş parçacıklarının veya veritabanı oturum açma oturumlarının tüketimi, kaynak sınırlarına ulaştı. Bu, performansı etkiliyor. | CPU kaynaklarının tüketimi, kaynak sınırlarına ulaşıyor. Bu, veritabanı performansını etkiliyor. |
 | [İş yükü artışı](intelligent-insights-troubleshoot-performance.md#workload-increase) | İş yükü artışı veya veritabanındaki iş yükünün sürekli birikmesi algılandı. Bu, performansı etkiliyor. | İş yükü artışı algılandı. Bu, veritabanı performansını etkiliyor. |
 | [Bellek baskısı](intelligent-insights-troubleshoot-performance.md#memory-pressure) | İstenen bellek verdiği çalışanlar, istatistiksel olarak önemli miktarda süre için bellek ayırmaları beklemek ya da bellek isteyen çalışanların daha yüksek bir birikmesi sağlar. Bu, performansı etkiliyor. | Bellek izni isteyen çalışanlar, istatistiksel olarak önemli bir süre için bellek ayırmaları bekliyor. Bu, veritabanı performansını etkiliyor. |
-| [Kilitleme](intelligent-insights-troubleshoot-performance.md#locking) | Performansı etkileyen aşırı veritabanı kilitlemesi algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
+| [Lemeye](intelligent-insights-troubleshoot-performance.md#locking) | Performansı etkileyen aşırı veritabanı kilitlemesi algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
 | [Artan MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, performansı etkiliyor. | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, performansı etkiliyor. |
 | [Pagemandal çekişmesi](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, performansı etkiliyor. | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, performansı veritabanını etkiliyor. |
 | [Eksik dizin](intelligent-insights-troubleshoot-performance.md#missing-index) | Performansı etkileyen eksik dizin algılandı. | Veritabanı performansını etkileyen eksik dizin algılandı. |
@@ -168,7 +168,7 @@ Bir pagemandalı bir iç denetim mekanizması olduğundan, bu, ne zaman kullanı
 
 Mandal çekişmesini işlemek için bir yöntem, sıralı bir dizin anahtarını sıralı olmayan bir anahtarla değiştirmek ve bir dizin aralığına eklemeleri eşit bir şekilde dağıtmaktır. Genellikle, dizindeki önde gelen bir sütun iş yükünü orantılı olarak dağıtır. Dikkate alınması gereken başka bir yöntem de tablo bölümleniyor. Bölümlenmiş bir tabloda hesaplanan sütunlu bir karma bölümlendirme şeması oluşturma, aşırı mandal çekişmesini azaltmaya yönelik yaygın bir yaklaşımdır. Pagemanma GÇ çakışması durumunda, dizinler ile tanışın bu performans sorununu azaltmaya yardımcı olur.
 
-Daha fazla bilgi için bkz. SQL Server (PDF indirme) [üzerindeki mandal çekişmesini tanılama ve çözme](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) .
+Daha fazla bilgi için bkz. SQL Server (PDF indirme) [üzerindeki mandal çekişmesini tanılama ve çözme](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) .
 
 ## <a name="missing-index"></a>Eksik dizin
 

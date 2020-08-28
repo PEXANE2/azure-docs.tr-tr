@@ -9,18 +9,18 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84887448"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018255"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Yazılım yükleyip öğreticiye yönelik kaynakları ayarlayın
 
 Bu üç bölümden oluşan öğreticide, silika 'nın yüzdesi olarak Iron ve daha sonra modeli Azure SQL Edge 'de dağıttığınız bir makine öğrenimi modeli oluşturacaksınız. Birinci bölümde, gerekli yazılımı yükleyecek ve Azure kaynaklarını dağıtacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Python 3.6.8](https://www.python.org/downloads/release/python-368/)'i yükler.
@@ -30,7 +30,7 @@ Bu üç bölümden oluşan öğreticide, silika 'nın yüzdesi olarak Iron ve da
 4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) yüklensin
 5. Azure Data Studio açın ve Not defterleri için Python 'ı yapılandırın.Ayrıntılar için bkz. [Not defterleri Için Python yapılandırma](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Bu adım birkaç dakika sürebilir.
 6. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)'nın en son sürümünü yükler. Aşağıdaki betikler, AZ PowerShell 'in en son sürümü (3.5.0, Şubat 2020) olmasını gerektirir.
-7. Öğreticide kullanılacak [dacpac](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) ve [AMD/ARM Docker görüntü dosyalarını](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) indirin.
+7. Öğreticide kullanılacak [dacpac](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) ve [AMD/ARM Docker görüntü dosyalarını](https://www.docker.com/blog/multi-arch-images/) indirin.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell betiği kullanarak Azure kaynaklarını dağıtma
 

@@ -4,18 +4,18 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892635"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000388"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
 > [!NOTE]
 > Kullanıcılardan gelen geri bildirimlere bağlı olarak, Azure Stack işlevlerle karışıklık azaltmak için **VM yedekleme yığını v2** 'Yi **anında geri yükleme** olarak yeniden adlandırdık.
-> Tüm Azure Backup kullanıcıları artık **anında geri yüklemeye**yükseltildi.
+> Tüm Azure Backup kullanıcılar artık **anında geri yüklemeye**yükseltildi.
 
 Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini sağlar:
 
@@ -108,9 +108,9 @@ Kurtarma türü "anlık görüntü ve kasa" ise, geri yükleme işlemi, kasadan 
 
 Anlık görüntü (Katman1) silinene kadar yeni model geri yükleme noktasını silmeye izin vermez (Katman2). Geri yükleme noktası (Katman2) bekletme dönemini, anlık görüntü saklama süresinden daha büyük bir süre içinde zamanlamayı öneririz.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Yedekleme ilkesindeki bekletme süresinden sonra bile anlık görüntüm neden var?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Yedekleme ilkesindeki bekletme süresinden sonra bile anlık görüntümi hala var?
 
-Kurtarma noktasında anlık görüntü varsa ve en son RP varsa, bir sonraki başarılı yedeklemeye kadar korunur. Bu, şu anda, sanal makinenin bir sorunu nedeniyle tüm yedeklemelerin daha fazla başarısız olması durumunda, en az bir en son RP 'nin her zaman mevcut olmasını sağlayacak şekilde tasarlanan "çöp toplama" (GC) ilkesine göre belirlenir. Normal senaryolarda RPs, süresi dolduktan sonra en fazla 24 saat içinde temizlenir.
+Kurtarma noktasının bir anlık görüntüsü varsa ve en son kurtarma noktası varsa, bir sonraki başarılı yedeklemeye kadar tutulur. Bu, belirlenen "çöp toplama" (GC) ilkesine göre belirlenir. Sonraki tüm yedeklemelerin VM 'deki bir sorun nedeniyle başarısız olması durumunda, en az bir en son kurtarma noktasının her zaman mevcut olması gerekir. Normal senaryolarda kurtarma noktaları, süresi dolduktan sonra en fazla 24 saat sonra temizlenir.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Anlık geri yükleme işlevselliğine ihtiyacım yok. Devre dışı bırakılabilir mi?
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448738"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018391"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 Uygulamanızın yük devretmeden sonra yeni birincil sunucuya hemen erişebildiğinden emin olmak için ikincil sunucunuzun ve veritabanınızın kimlik doğrulama gereksinimlerinin doğru yapılandırıldığından emin olun. Ayrıntılar için bkz. [olağanüstü durum kurtarma sonrasında SQL veritabanı güvenliği](active-geo-replication-security-configure.md). Yük devretmeden sonra uyumluluğu güvence altına almak için ikincil veritabanındaki yedekleme bekletme ilkesinin birincili ile eşleştiğinden emin olun. Bu ayarlar veritabanının bir parçası değildir ve çoğaltılmaz. Varsayılan olarak, ikincil değer yedi günlük bir varsayılan bir saklama süresi ile yapılandırılır. Ayrıntılar için bkz. [SQL veritabanı otomatik yedeklemeleri](automated-backups-overview.md).
 
 > [!IMPORTANT]
-> Veritabanınız bir yük devretme grubunun üyesiyse, coğrafi çoğaltma yük devretme komutunu kullanarak yük devretmesini başlatamazsınız. Grup için yük devretme komutunu kullanın. Tek bir veritabanının yük devretmesine ihtiyacınız varsa, önce onu yük devretme grubundan kaldırmanız gerekir. Ayrıntılar için bkz. [Yük devretme grupları](auto-failover-group-overview.md) .
+> Veritabanınız bir yük devretme grubunun üyesiyse, coğrafi çoğaltma yük devretme komutunu kullanarak yük devretmesini başlatamazsınız. Grup için yük devretme komutunu kullanın. Tek bir veritabanının yük devretmesine ihtiyacınız varsa, önce onu yük devretme grubundan kaldırmanız gerekir. Ayrıntılar için bkz.  [Yük devretme grupları](auto-failover-group-overview.md) .
 
 ## <a name="configuring-secondary-database"></a>İkincil veritabanını yapılandırma
 
@@ -178,7 +178,8 @@ Değişiklikleri gerçekleştiren istemcinin birincil sunucuya ağ erişimi olma
 
 ### <a name="on-the-master-of-the-secondary-server"></a>İkincil sunucunun ana sayfasında
 
-1. Değişiklikleri gerçekleştiren istemcinin izin verilenler listesine IP adresini ekleyin. Birincil sunucunun tam IP adresi olmalıdır.
+1. İstemci IP adresini, ikincil sunucu için güvenlik duvarı kuralları altında izin verilen listeye ekleyin. Birincil sunucuya eklenen aynı istemci IP adresinin ikinciye de eklenmiş olduğunu doğrulayın. Bu, coğrafi çoğaltma başlatmak için ALTER DATABASE IKINCIL komut Ekle komutunu çalıştırmadan önce yapılması gereken bir adımdır.
+
 1. Aynı Kullanıcı adı parolasını ve SID 'yi kullanarak birincil sunucuda aynı oturum açma bilgilerini oluşturun:
 
    ```sql

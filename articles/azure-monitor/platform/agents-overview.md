@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/05/2020
-ms.openlocfilehash: e6a4c7fe739bd517646f8401e5c812a557441e9f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/21/2020
+ms.openlocfilehash: 6eb4aee1cfe62b09210f62d016028485594a9474
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88076906"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000796"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
-Sanal makineler ve diğer işlem kaynakları, Konuk işletim sistemi ve iş yüklerinin performansını ve kullanılabilirliğini ölçmek üzere bir aracının izleme verileri toplamasını gerektirir. Bu makalede, Azure Izleyici tarafından kullanılan aracılar açıklanmakta ve belirli ortamınızın gereksinimlerini karşılamanız gerektiğini belirlemenize yardımcı olur.
+Sanal makineler ve diğer işlem kaynakları, Konuk işletim sistemi ve iş yüklerinin performansını ve kullanılabilirliğini ölçmek için gereken izleme verilerini toplamak üzere bir aracı gerektirir. Bu makalede, Azure Izleyici tarafından kullanılan aracılar açıklanmakta ve belirli ortamınızın gereksinimlerini karşılamanız gerektiğini belirlemenize yardımcı olur.
 
 > [!NOTE]
 > Azure Izleyici 'nin şu anda birden çok Aracısı vardır çünkü Azure Izleyici 'nin son birleştirme ve Log Analytics. Özelliklerinde örtüşme olabilir, ancak her birinin benzersiz özellikleri vardır. Gereksinimlerinize bağlı olarak, sanal makinelerinizdeki bir veya daha fazla aracıya ihtiyacınız olabilir. 
@@ -25,29 +25,34 @@ Belirli bir sanal makine için tek bir aracıda tamamen karşılanmayan belirli 
 
 ## <a name="summary-of-agents"></a>Aracıların Özeti
 
-Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla ilgili hızlı bir karşılaştırma sağlanmaktadır. Aşağıdaki bölümde, her biri hakkında daha fazla ayrıntı sağlanır. 
+Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla ilgili hızlı bir karşılaştırma sağlanmaktadır. Aşağıdaki bölümde, her biri hakkında daha fazla ayrıntı sağlanır.
+
+> [!NOTE]
+> Azure Izleyici Aracısı Şu anda sınırlı özellikleri olan önizlemededir. Bu tablo güncelleştirilecektir 
 
 ### <a name="windows-agents"></a>Windows aracıları
 
 | | Azure Izleyici Aracısı (Önizleme) | Tanılama<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|
-| **Desteklenen ortamlar** | Azure<br>Diğer bulut<br>Şirket içi | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
-| **Aracı gereksinimleri**  | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
-| **Toplanan veriler** | Olay Günlükleri<br>Performans | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<IIS logs><br>Dosya tabanlı Günlükler<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri<br>Azure Storage<br>Olay Hub'ı | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
-
+| **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
+| **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
+| **Toplanan veriler** | Olay Günlükleri<br>Performans | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
 
 ### <a name="linux-agents"></a>Linux aracıları
 
 | | Azure Izleyici Aracısı (Önizleme) | Tanılama<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|:---|
 | **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
-| **Aracı gereksinimleri**  | Yok | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
-| **Toplanan veriler** | Syslog<br>Performans | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure Storage<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
+| **Aracı gereksinimleri**  | Hiçbiri | Hiçbiri | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
+| **Toplanan veriler** | Syslog<br>Performans | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Storage<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
+
 
 ## <a name="azure-monitor-agent-preview"></a>Azure Izleyici Aracısı (Önizleme)
-[Azure izleyici Aracısı](azure-monitor-agent-overview.md) Şu anda önizleme aşamasındadır ve hem Windows hem de Linux sanal makineleri için Log Analytics Aracısı, tanılama uzantısı ve telegraf aracısının yerini alacak. Hem Azure Izleyici günlüklerine hem de Azure Izleyici ölçümlerine veri gönderebilir ve her bir aracı için veri toplamayı ve hedeflerini yapılandırma hakkında daha ölçeklenebilir bir yöntem sağlayan [veri toplama kuralları 'nı (DCR)](data-collection-rule-overview.md) kullanır.
+[Azure izleyici Aracısı](azure-monitor-agent-overview.md) Şu anda önizleme aşamasındadır ve hem Windows hem de Linux sanal makineleri için Log Analytics Aracısı ve telegraf aracısının yerini alacak. Hem Azure Izleyici günlüklerine hem de Azure Izleyici ölçümlerine veri gönderebilir ve her bir aracı için veri toplamayı ve hedeflerini yapılandırma hakkında daha ölçeklenebilir bir yöntem sağlayan [veri toplama kuralları 'nı (DCR)](data-collection-rule-overview.md) kullanır.
 
 Şunları yapmanız gerekirse Azure Izleyici aracısını kullanın:
 
@@ -63,7 +68,7 @@ Azure Izleyici aracısının sınırlamaları şunlardır:
 
 ## <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-[Log Analytics Aracısı](log-analytics-agent.md) , Azure 'da, diğer bulut sağlayıcılarında ve Şirket içindeki sanal makinelerin Konuk işletim sisteminden ve iş yüklerinden izleme verilerini toplar. Log Analytics çalışma alanına veri toplar. Log Analytics Aracısı System Center Operations Manager tarafından kullanılan aracıdır ve aynı anda yönetim grubunuz ve Azure Izleyiciyle iletişim kurmak için çok giriş aracı bilgisayarları kullanabilirsiniz. Bu aracı, Azure Izleyici 'deki belirli Öngörüler ve çözümler için de gereklidir.
+[Log Analytics Aracısı](log-analytics-agent.md) , Azure 'da, diğer bulut sağlayıcılarında ve Şirket içindeki sanal makinelerin Konuk işletim sisteminden ve iş yüklerinden izleme verilerini toplar. Log Analytics çalışma alanına veri gönderir. Log Analytics Aracısı System Center Operations Manager tarafından kullanılan aracıdır ve aynı anda yönetim grubunuz ve Azure Izleyiciyle iletişim kurmak için çok giriş aracı bilgisayarları kullanabilirsiniz. Bu aracı, Azure Izleyici 'deki belirli Öngörüler ve Azure 'daki diğer hizmetler için de gereklidir.
 
 
 > [!NOTE]
@@ -73,7 +78,7 @@ Azure Izleyici aracısının sınırlamaları şunlardır:
 
 Şunları yapmanız gerekirse Log Analytics aracısını kullanın:
 
-* Azure dışındaki sanal veya fiziksel makinelerden gelen günlükleri ve performans verilerini toplayın. 
+* Azure 'un içindeki veya dışındaki sanal veya fiziksel makinelerden gelen günlükleri ve performans verilerini toplayın. 
 * [Günlük sorguları](../log-query/log-query-overview.md)gibi [Azure izleyici günlükleri](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) tarafından desteklenen özelliklerden yararlanmak için bir Log Analytics çalışma alanına veri gönderin.
 * Sanal makinelerinizi ölçekli olarak izlemenize ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izleyicmenize olanak tanıyan [VM'ler için Azure izleyici](../insights/vminsights-overview.md) kullanın.  
 * [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) veya [Azure Sentinel](../../sentinel/overview.md)kullanarak sanal makinelerinizin güvenliğini yönetin.
@@ -83,6 +88,8 @@ Azure Izleyici aracısının sınırlamaları şunlardır:
 Log Analytics aracısının sınırlamaları şunlardır:
 
 - Azure Izleyici ölçümleri, Azure depolama veya Azure Event Hubs veri gönderilemez.
+- Bireysel aracılar için benzersiz izleme tanımları yapılandırmaya zorlaştırıyor.
+- Her bir sanal makinenin benzersiz bir yapılandırması olduğundan ölçeğe göre yönetimi zor.
 
 ## <a name="azure-diagnostics-extension"></a>Azure tanılama uzantısı
 
@@ -123,9 +130,76 @@ Bağımlılık aracısını kullanırken aşağıdakileri göz önünde bulundur
 - Bağımlılık Aracısı, Log Analytics aracısının aynı sanal makinede yüklü olmasını gerektirir.
 - Linux VM 'lerinde, Azure tanılama uzantısından önce Log Analytics aracısının yüklenmesi gerekir.
 
-## <a name="extensions-compared-to-agents"></a>Aracılarla karşılaştırılan uzantılar
+## <a name="virtual-machine-extensions"></a>Sanal makine uzantıları
 
 [Windows](../../virtual-machines/extensions/oms-windows.md) ve [Linux](../../virtual-machines/extensions/oms-linux.md) Için Log Analytics uzantısı, Azure sanal makinelerine Log Analytics Aracısı 'nı yükler. [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) için Azure Izleyici bağımlılığı uzantısı, Azure sanal makinelerine bağımlılık aracısını yükler. Bunlar yukarıda açıklanan aracılardır, ancak bunları [sanal makine uzantıları](../../virtual-machines/extensions/overview.md)aracılığıyla yönetmenizi sağlar. Mümkün olan her durumda aracıları yüklemek ve yönetmek için uzantıları kullanmanız gerekir.
+
+
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+Aşağıdaki tablolarda, Azure Izleyici aracıları tarafından desteklenen işletim sistemleri listelenmektedir. Her bir aracının, benzersiz hususlar ve yükleme işlemi için belgelerine bakın. Desteklenen işletim sistemleri için bkz. telegraf belgeleri. Tüm işletim sistemleri x64 olarak kabul edilir. x86, herhangi bir işletim sistemi için desteklenmez.
+
+### <a name="windows"></a>Windows
+
+| İşletim sistemi | Azure İzleyici aracısı | Log Analytics aracısı | Bağımlılık aracısı | Tanılama uzantısı | 
+|:---|:---:|:---:|:---:|:---:|
+| Windows Server 2019                                      | X | X | X | X |
+| Windows Server 2016                                      | X | X | X | X |
+| Windows Server 2016 Core                                 |   |   |   | X |
+| Windows Server 2012 R2                                   | X | X | X | X |
+| Windows Server 2012                                      | X | X | X | X |
+| Windows Server 2008 R2                                   |   | X | X | X |
+| Windows 10 Enterprise<br>(çoklu oturum dahil) ve Pro  |   | X | X | X |
+| Windows 8 Enterprise ve Pro                             |   | X | X |   |
+| Windows 7 SP1                                            |   | X | X |   |
+
+
+### <a name="linux"></a>Linux
+
+| İşletim sistemi | Azure İzleyici aracısı | Log Analytics aracısı | Bağımlılık aracısı | Tanılama uzantısı | 
+|:---|:---:|:---:|:---:|:---:
+| Amazon Linux 2017,09                                     |   | X |   |   |
+| CentOS Linux 7                                           | X | X |   | X |
+| CentOS Linux 7,6                                         | X | X | X | X |
+| CentOS Linux 6                                           | X | X |   |   |
+| CentOS Linux 6.5 +                                        | X | X |   | X |
+| Debian 10                                                | X |   |   |   |
+| Debian 9                                                 | X | X | x | X |
+| Debian 8                                                 |   | X | X | X |
+| Deyi 7                                                 |   |   |   | X |
+| OpenSUSE 13.1 +                                           |   |   |   | X |
+| Oracle Linux 7                                           | X | X |   | X |
+| Oracle Linux 6                                           | X | X |   |   |
+| Oracle Linux 6.4 +                                        | X | X |   | X |
+| Red Hat Enterprise Linux Server 8                        | X | X |   |   |
+| Red Hat Enterprise Linux Server 7                        | X | X | X | X |
+| Red Hat Enterprise Linux Server 6                        | X | X | X |   |
+| Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
+| SUSE Linux Enterprise Server 15                          | X | X | X |   |
+| SUSE Linux Enterprise Server 12                          | X | X | X | X |
+| Ubuntu 18,04 LTS                                         | X | X | X | X |
+| Ubuntu 16.04 LTS                                         | X | X | X | X |
+| Ubuntu 14,04 LTS                                         | X | X |   | X |
+
+
+#### <a name="dependency-agent-linux-kernel-support"></a>Bağımlılık Aracısı Linux çekirdek desteği
+Bağımlılık Aracısı çekirdek düzeyinde çalıştığından, destek de çekirdek sürümüne bağımlıdır. Aşağıdaki tabloda, bağımlılık aracısına yönelik birincil ve küçük Linux işletim sistemi sürümü ve desteklenen çekirdek sürümleri listelenmektedir.
+
+| Dağıtım | İşletim sistemi sürümü | Çekirdek sürümü |
+|:---|:---|:---|
+|  Red Hat Linux 7   | 7,6     | 3.10.0-957  |
+|                    | 7,5     | 3.10.0-862  |
+|                    | 7.4     | 3.10.0-693  |
+| Red Hat Linux 6    | 6,10    | 2.6.32-754 |
+|                    | 6,9     | 2.6.32-696  |
+| CentOSPlus         | 6,10    | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+|                    | 6,9     | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
+| Ubuntu Server      | 18,04   | 5.3.0-1020<br>5,0 (Azure tarafından ayarlanmış çekirdek dahil)<br>4,18* <br> 4,15* |
+|                    | 16.04.3 | 4,15. * |
+|                    | 16,04   | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
+| SUSE Linux 12 Enterprise Server | 12 SP4 | 4,12. * (Azure tarafından ayarlanmış çekirdek dahil) |
+|                                 | 12 SP3 | 4,4. * |
+|                                 | 12 SP2 | 4,4. * |
+| Debian                          | 9      | 4,9  | 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

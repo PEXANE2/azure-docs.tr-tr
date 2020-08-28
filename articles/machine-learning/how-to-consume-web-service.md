@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652602"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018102"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ Hizmetinizde CORS desteğini etkinleştirme hakkında bilgi için bkz. çıkış
 
 ## <a name="call-the-service-c"></a>Hizmeti çağırma (C#)
 
-Bu örnek, C# ' [ın not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
+Bu örnek, C# ' [ın not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-go"></a>Hizmeti çağırın (git)
 
-Bu örnek, go 'nun [Not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
+Bu örnek, go 'nun [Not defteri Içinde tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) örneği kullanılarak oluşturulan Web hizmetini çağırmak için nasıl kullanılacağını gösterir:
 
 ```go
 package main
@@ -360,7 +360,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-java"></a>Hizmeti çağırma (Java)
 
-Bu örnek, [Not defteri 'nin Içindeki eğten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) oluşturulan Web hizmetini çağırmak için Java 'nın nasıl kullanılacağını gösterir:
+Bu örnek, [Not defteri 'nin Içindeki eğten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) oluşturulan Web hizmetini çağırmak için Java 'nın nasıl kullanılacağını gösterir:
 
 ```java
 import java.io.IOException;
@@ -440,7 +440,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="call-the-service-python"></a>Hizmeti çağırma (Python)
 
-Bu örnekte, Python kullanarak [Not defteri 'nin Içinden eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) örneği kullanılarak oluşturulan Web hizmetini nasıl çağıracağı gösterilmektedir:
+Bu örnekte, Python kullanarak [Not defteri 'nin Içinden eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) örneği kullanılarak oluşturulan Web hizmetini nasıl çağıracağı gösterilmektedir:
 
 ```python
 import requests

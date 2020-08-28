@@ -4,12 +4,12 @@ description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup ha
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892567"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000728"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 
@@ -52,7 +52,7 @@ Müşterilerinizin abonelikleri veya LA çalışma alanlarına temsilci erişimi
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
 
-Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakika kadar sürebilir.
+Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakikaya kadar sürebilir.
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Yedekleme işi başarısız olduğunda uyarı verilmesi ne kadar sürer?
 

@@ -15,12 +15,13 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Operations'
 - devx-track-javascript
-ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-csharp
+ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017694"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -79,7 +80,7 @@ Güvenlik belirteçleri oluşturma ve kullanma hakkında daha fazla bilgi için 
 
 MQTT, AMQP ve HTTPS gibi desteklenen her protokol, belirteçleri farklı şekillerde aktarır.
 
-MQTT kullanılırken, CONNECT paketi, `{iothubhostname}/{deviceId}` Kullanıcı adı alanında ClientID ve Password alanındaki BIR SAS belirteci olarak DeviceID 'yi içerir. `{iothubhostname}`IoT Hub 'ının tam CName 'i olmalıdır (örneğin, contoso.azure-devices.net).
+MQTT kullanılırken, CONNECT paketi, `{iothubhostname}/{deviceId}` Kullanıcı adı alanında ClientID ve Password alanındaki BIR SAS belirteci olarak DeviceID 'yi içerir. `{iothubhostname}` IoT Hub 'ının tam CName 'i olmalıdır (örneğin, contoso.azure-devices.net).
 
 [AMQP](https://www.amqp.org/)kullanırken, IoT Hub [SASL PLAIN](https://tools.ietf.org/html/rfc4616) ve [AMQP talepler tabanlı güvenliği](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)destekler.
 
@@ -87,8 +88,8 @@ AMQP talepler tabanlı güvenlik kullanıyorsanız, standart bu belirteçlerin n
 
 SASL PLAIN için **Kullanıcı adı** şu olabilir:
 
-* `{policyName}@sas.root.{iothubName}`IoT Hub düzeyi belirteçleri kullanıyorsanız.
-* `{deviceId}@sas.{iothubname}`cihaz kapsamlı belirteçler kullanılıyorsa.
+* `{policyName}@sas.root.{iothubName}` IoT Hub düzeyi belirteçleri kullanıyorsanız.
+* `{deviceId}@sas.{iothubname}` cihaz kapsamlı belirteçler kullanılıyorsa.
 
 Her iki durumda da, parola alanı [IoT Hub güvenlik belirteçleri](iot-hub-devguide-security.md#security-tokens)bölümünde açıklandığı gibi belirteci içerir.
 
@@ -96,7 +97,7 @@ HTTPS, **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek 
 
 #### <a name="example"></a>Örnek
 
-Kullanıcı adı (DeviceID, büyük/küçük harfe duyarlıdır):`iothubname.azure-devices.net/DeviceId`
+Kullanıcı adı (DeviceID, büyük/küçük harfe duyarlıdır): `iothubname.azure-devices.net/DeviceId`
 
 Parola (CLı uzantısı komutu ile bir SAS belirteci oluşturabilirsiniz [az IoT Hub Generate-SAS-Token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)veya [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 

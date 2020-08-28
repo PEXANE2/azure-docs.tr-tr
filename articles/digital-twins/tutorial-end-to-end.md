@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0f4155c479151c5af64049e0cf9a6a1c4dc4a553
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: b12320213b28e6b07abe217bb509fd668a9ad997
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855895"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017533"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
 Ortamınızdaki canlı veriler tarafından yönetilen tam uçtan uca bir çözüm kurmak için, Azure dijital TWINS örneğinizi cihaz ve verilerin yönetimi için diğer Azure hizmetlerine bağlayabilirsiniz.
 
 Bu öğreticide,...
-* Azure dijital TWINS örneği ayarlama
-* Örnek yapı senaryosu hakkında bilgi edinin ve önceden yazılmış bileşenleri oluşturun
-* Bir [IoT Hub](../iot-hub/about-iot-hub.md) cihazından dijital ikizi özelliklerine sanal telemetri yönlendirmek Için bir [Azure işlevleri](../azure-functions/functions-overview.md) uygulaması kullanma
-* Azure Işlevleri, uç noktaları ve rotalar ile dijital ikizi bildirimlerini işleyerek **ikizi Graph**aracılığıyla değişiklikleri yayma
+> [!div class="checklist"]
+> * Azure dijital TWINS örneği ayarlama
+> * Örnek yapı senaryosu hakkında bilgi edinin ve önceden yazılmış bileşenleri oluşturun
+> * Bir [IoT Hub](../iot-hub/about-iot-hub.md) cihazından dijital ikizi özelliklerine sanal telemetri yönlendirmek Için bir [Azure işlevleri](../azure-functions/functions-overview.md) uygulaması kullanma
+> * Azure Işlevleri, uç noktaları ve rotalar ile dijital ikizi bildirimlerini işleyerek **ikizi Graph**aracılığıyla değişiklikleri yayma
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -455,5 +456,6 @@ Son olarak, yerel makinenizden indirdiğiniz proje örnek klasörünü silin.
 Bu öğreticide, canlı cihaz verileri tarafından yürütülen Azure dijital TWINS 'i gösteren bir uçtan uca senaryo oluşturdunuz.
 
 Daha sonra, öğreticide birlikte çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini arayarak başlayın:
+
 > [!div class="nextstepaction"]
 > [*Kavramlar: özel modeller*](concepts-models.md)

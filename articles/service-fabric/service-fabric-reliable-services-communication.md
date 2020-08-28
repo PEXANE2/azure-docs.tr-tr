@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253193"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018646"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services iletişim API 'Lerini kullanma
 Platform olarak Azure Service Fabric, hizmetler arasındaki iletişim hakkında tamamen bağımsızdır. Her protokol ve yığın, UDP 'den HTTP 'ye kadar kabul edilebilir. Hizmetlerin nasıl iletişim kurması gerektiğini seçmek için hizmet geliştiricisi 'nin bir daha vardır. Reliable Services uygulama çerçevesi, yerleşik iletişim yığınlarının yanı sıra özel iletişim bileşenlerinizi oluşturmak için kullanabileceğiniz API 'Ler sağlar.
@@ -207,7 +208,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örnek:
+Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örneğin:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -231,7 +232,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`, kümedeki çeşitli yönetim işlemleri için Service Fabric kümesiyle iletişim kurmak için kullanılan nesnedir. Bu, bir hizmet bölümü Çözümleyicisinin kümeniz ile nasıl etkileşime girdiğinin üzerinde daha fazla denetim istediğinizde yararlıdır. `FabricClient`dahili olarak önbelleğe alma işlemini gerçekleştirir ve genellikle oluşturulması çok pahalıdır, bu nedenle örneklerin mümkün olduğunca yeniden kullanılması önemlidir `FabricClient` .
+`FabricClient` , kümedeki çeşitli yönetim işlemleri için Service Fabric kümesiyle iletişim kurmak için kullanılan nesnedir. Bu, bir hizmet bölümü Çözümleyicisinin kümeniz ile nasıl etkileşime girdiğinin üzerinde daha fazla denetim istediğinizde yararlıdır. `FabricClient` dahili olarak önbelleğe alma işlemini gerçekleştirir ve genellikle oluşturulması çok pahalıdır, bu nedenle örneklerin mümkün olduğunca yeniden kullanılması önemlidir `FabricClient` .
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -262,7 +263,7 @@ Genellikle, istemci kodunun doğrudan ServicePartitionResolver ile çalışması
 ### <a name="communication-clients-and-factories"></a>İletişim istemcileri ve fabrikalar
 İletişim fabrikası kitaplığı, çözümlenmiş hizmet uç noktalarına bağlantıların yeniden denenmesini kolaylaştıran tipik bir hata işleme yeniden deneme modelini uygular. Fabrika kitaplığı, hata işleyicilerini sağlarken yeniden deneme mekanizması sağlar.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`bir Service Fabric hizmetiyle konuşabilecek istemcileri üreten bir iletişim istemci fabrikası tarafından uygulanan temel arabirimi tanımlar. CommunicationClientFactory uygulamasının uygulanması, istemcinin iletişim kurmak istediği Service Fabric hizmeti tarafından kullanılan iletişim yığınına bağlıdır. Reliable Services API 'SI sağlar `CommunicationClientFactoryBase<TCommunicationClient>` . Bu, CommunicationClientFactory arabiriminin temel bir uygulamasını sağlar ve tüm iletişim yığınları için ortak olan görevleri gerçekleştirir. (Bu görevler hizmet uç noktasını belirlemede bir ServicePartitionResolver kullanmayı içerir). İstemciler genellikle iletişim yığınına özgü mantığı işlemek için soyut CommunicationClientFactoryBase sınıfını uygular.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` bir Service Fabric hizmetiyle konuşabilecek istemcileri üreten bir iletişim istemci fabrikası tarafından uygulanan temel arabirimi tanımlar. CommunicationClientFactory uygulamasının uygulanması, istemcinin iletişim kurmak istediği Service Fabric hizmeti tarafından kullanılan iletişim yığınına bağlıdır. Reliable Services API 'SI sağlar `CommunicationClientFactoryBase<TCommunicationClient>` . Bu, CommunicationClientFactory arabiriminin temel bir uygulamasını sağlar ve tüm iletişim yığınları için ortak olan görevleri gerçekleştirir. (Bu görevler hizmet uç noktasını belirlemede bir ServicePartitionResolver kullanmayı içerir). İstemciler genellikle iletişim yığınına özgü mantığı işlemek için soyut CommunicationClientFactoryBase sınıfını uygular.
 
 İletişim istemcisi yalnızca bir adres alır ve bir hizmete bağlanmak için onu kullanır. İstemci istediği herhangi bir protokolü kullanabilir.
 

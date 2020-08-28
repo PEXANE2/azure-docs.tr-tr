@@ -7,14 +7,14 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158155"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017864"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central Stream Analytics, Azure Işlevleri ve SendGrid kullanarak özel kurallarla genişletme
 
@@ -64,7 +64,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | Ad alanı adınızı seçin |
+| Ad    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -73,11 +73,11 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 ### <a name="stream-analytics-job"></a>Stream Analytics işi
 
-Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) kullanın:
+Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  kullanın:
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | İş adınızı seçin |
+| Ad    | İş adınızı seçin |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Konum | Doğu ABD |
@@ -105,7 +105,7 @@ Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](htt
 
 | Ayar | Değer |
 | ------- | ----- |
-| Adı    | SendGrid hesabınızın adını seçin |
+| Ad    | SendGrid hesabınızın adını seçin |
 | Parola | Parola oluştur |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -159,7 +159,7 @@ SendGrid ile e-posta göndermek için, işlevinizin bağlamalarını aşağıdak
 1. **Tümleştirme**' i seçin, çıkış **http ($Return)** öğesini seçin ve ardından **Sil**' i seçin.
 1. **+ Yeni çıkış**' ı seçin, sonra **SendGrid**' i ve ardından **Seç**' i seçin. SendGrid uzantısını yüklemek için **yüklemeyi** seçin.
 1. Yükleme tamamlandığında, **işlev dönüş değeri kullan**' ı seçin. E-posta bildirimleri almak için geçerli bir **Adres** ekleyin.  E-posta gönderici olarak kullanılacak geçerli bir **Kimden adresi** ekleyin.
-1. **SendGrid API anahtarı uygulama ayarının**yanındaki **Yeni** ' yi seçin. Anahtar olarak **Sendgridapikey** ve daha önce değer olarak not ettiğiniz SENDGRID API anahtarını girin. Ardından **Oluştur**'u seçin.
+1. **SendGrid API anahtarı uygulama ayarının**yanındaki **Yeni** ' yi seçin. Anahtar olarak **Sendgridapikey** ve daha önce değer olarak not ettiğiniz SENDGRID API anahtarını girin. Ardından **Oluştur**’u seçin.
 1. İşleviniz için SendGrid bağlamalarını kaydetmek için **Kaydet** ' i seçin.
 
 Tümleştirme ayarları aşağıdaki ekran görüntüsüne benzer şekilde görünür:

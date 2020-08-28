@@ -3,12 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 00af51764d5a9454b002de6375b2b16d6e80c300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017439"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -82,7 +82,7 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
     SharePoint Server MABS sorguları VSS 'yi genişleterek, MABS 'lerin neleri koruyabileceği hakkında bilgi alın.  SharePoint veritabanı uzak ise, MABS buna bağlanır. SharePoint veri kaynakları görünmezse, VSS yazıcısının SharePoint sunucusunda ve uzak SQL Server çalışıp çalışmadığını ve MABS aracısının hem SharePoint sunucusunda hem de uzak SQL Server yüklü olduğundan emin olun. Ayrıca SharePoint veritabanlarının başka bir yerde SQL Server veritabanları olarak korunmadığından emin olun.
 
-1. **Veri koruma yöntemini seçin**içinde, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin \- . Kısa\-süreli yedekleme Azure yedekleme ile diskten Azure buluta \(kısa veya uzun\-süreli için\) yedekleme seçeneğiyle her zaman ilk olarak diske yapılır.
+1. **Veri koruma yöntemini seçin**içinde, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin \- . Kısa \- süreli yedekleme, diskten Azure bulutuna \( kısa veya uzun süreli Azure Backup yedekleme seçeneği ile her zaman ilk olarak diske yöneliktir \- \) .
 
 1. **Kısa \- vadeli hedefleri seçin**bölümünde diskte kısa süreli depolama için nasıl yedekleme yapmak istediğinizi belirtin \- .   **Bekletme aralığı** kısmında verileri disk üzerinde ne kadar saklamak istediğinizi belirtirsiniz. **Eşitleme sıklığı**' nda, diske artımlı yedeklemeyi ne sıklıkta çalıştırmak istediğinizi belirtirsiniz. Bir yedekleme aralığı ayarlamak istemiyorsanız, MABS 'lerin her bir kurtarma noktası zamanlanmadan hemen önce hızlı tam yedekleme çalıştırmaları için bir kurtarma noktasının hemen öncesine bakabilirsiniz.
 

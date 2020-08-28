@@ -3,15 +3,15 @@ title: Windows sanal masaüstü için Azure Multi-Factor Authentication ayarlama
 description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017795"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
 
@@ -47,29 +47,36 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 6. **Ekle**' nin altında, **Kullanıcılar ve gruplar**  >  **Kullanıcılar ve gruplar** ' ı seçin > [Önkoşullar](#prerequisites) aşamasında oluşturduğunuz grubu seçin.
 7. **Bitti**'yi seçin.
 8. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
-9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulama gruplarından birini seçin.
-   - Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız şu iki uygulamayı seçin:
+9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulamalardan birini seçin.
+   - Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız, şu uygulamayı seçin:
        - **Windows sanal masaüstü** (uygulama kimliği 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows sanal masaüstü istemcisi** (uygulama kimliği fa4345a4-A730-4230-84a8-7d9651b86739)
-   - Windows sanal masaüstü kullanıyorsanız, bunun yerine şu iki uygulamayı seçin:
+   - Windows sanal masaüstü kullanıyorsanız, bunun yerine bu uygulamayı seçin:
        -  **Windows sanal masaüstü** (uygulama kimliği 9cdead84-a844-4324-93f2-b2e6bb768d07)
-       -  **Windows sanal masaüstü istemcisi** (uygulama kimliği a85cf173-4192-42f8-81fa-777a763e6e2c)
 
    >[!IMPORTANT]
-   > Web istemcisi için Windows sanal masaüstü Istemci uygulamaları kullanılır. Ancak, Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
+   > Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
 
-1. Uygulamanızı seçtikten sonra **Seç**' i seçin ve **bitti**' yi seçin.
+10. **Koşullar**  >  **istemci uygulamaları**' na gidin ve ilkeyi uygulamak istediğiniz yeri seçin:
+    
+    - İlkenin Web istemcisine uygulanmasını istiyorsanız **tarayıcı** ' yı seçin.
+    - İlkeyi diğer istemcilere uygulamak istiyorsanız **mobil uygulamalar ve Masaüstü istemcileri '** ni seçin.
+    - İlkeyi tüm istemcilere uygulamak istiyorsanız her iki onay kutusunu da seçin.
+   
+    > [!div class="mx-imgBorder"]
+    > ![Istemci uygulamaları sayfasının ekran görüntüsü. Kullanıcı mobil uygulamalar ve Masaüstü istemcileri onay kutusunu seçti.](media/select-apply.png)
 
-   > [!div class="mx-imgBorder"]
-   > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
+11. Uygulamanızı seçtikten sonra **Seç**' i seçin ve **bitti**' yi seçin.
 
-   >[!NOTE]
-   >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
+    > [!div class="mx-imgBorder"]
+    > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
 
-10. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
-11. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
-12. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-13. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
+    >[!NOTE]
+    >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
+
+12. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
+13. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
+14. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+15. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

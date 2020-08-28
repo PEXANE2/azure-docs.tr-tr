@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularla VM Uzantısı yönetimi (Önizleme)
 description: Azure Arc etkin sunucular (Önizleme), Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213121"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018170"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc etkin sunucularla sanal makine uzantısı yönetimi (Önizleme)
 
@@ -51,7 +51,7 @@ VM uzantıları, Azure portal veya Arc özellikli sunucular (Önizleme) tarafın
 
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özellik, aboneliğinizdeki aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
@@ -89,7 +89,7 @@ VM uzantıları, Azure portal aracılığıyla, sunucu (Önizleme) tarafından y
 
     ![Log Analytics VM uzantısını yükler](./media/manage-vm-extensions/mma-extension-config.png)
 
-    Yüklemeyi gerçekleştirmek için çalışma alanı KIMLIĞI ve birincil anahtarı sağlamanız gerekir. Bu bilgilerin nasıl bulunacağını bilmiyorsanız bkz. [çalışma alanı kimliğini ve anahtarını alma](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key).
+    Yüklemeyi gerçekleştirmek için çalışma alanı KIMLIĞI ve birincil anahtarı sağlamanız gerekir. Bu bilgilerin nasıl bulunacağını bilmiyorsanız bkz. [çalışma alanı kimliğini ve anahtarını alma](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
 4. Belirtilen gerekli bilgileri onayladıktan sonra **Oluştur**' u seçin. Dağıtımın bir özeti görüntülenir ve dağıtımın durumunu gözden geçirebilirsiniz.
 

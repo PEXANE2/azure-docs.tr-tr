@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733362"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018510"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>İşleri zamanlama ve yayınlama (.NET)
 
@@ -50,7 +50,7 @@ Bu öğreticinin sonunda iki .NET (C#) konsol uygulamanız vardır:
 
 * **Schedulejob**. Bu uygulama, **Lockkapısı** doğrudan yöntemini çağırmak ve cihazı ikizi istenen özellikleri birden çok cihazda güncelleştirmek için işleri kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio.
 
@@ -70,7 +70,7 @@ Bu öğreticinin sonunda iki .NET (C#) konsol uygulamanız vardır:
 
 Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme yanıt veren bir .NET konsol uygulaması oluşturacaksınız.
 
-1. Visual Studio 'da **Yeni proje oluştur**' u seçin ve ardından **konsol uygulaması (.NET Framework)** proje şablonunu seçin. Devam etmek için **İleri**’yi seçin.
+1. Visual Studio 'da **Yeni proje oluştur**' u seçin ve ardından **konsol uygulaması (.NET Framework)** proje şablonunu seçin. Devam etmek için **İleri** seçeneğini belirleyin.
 
 1. **Yeni projenizi yapılandırın**bölümünde projeyi *SimulateDeviceMethods*olarak adlandırın ve ardından **Oluştur**' u seçin.
 
@@ -78,7 +78,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
 1. Çözüm Gezgini, **SimulateDeviceMethods** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
 
     ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
