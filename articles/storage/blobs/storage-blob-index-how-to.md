@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500394"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018884"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Azure Blob depolama 'daki verileri yönetmek ve bulmak için blob Dizin etiketlerini (Önizleme) kullanın
 
@@ -24,7 +25,7 @@ Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizlem
 > [!NOTE]
 > Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 - Abonelik, blob dizini önizlemesine erişim için kaydedildi ve onaylandı
 - [Azure Portal](https://portal.azure.com/) erişim
@@ -34,7 +35,7 @@ Blob dizini genel önizlemede olduğundan, .NET depolama paketi önizleme NuGet 
 
 1. .NET için Azure Blob Storage istemci kitaplığı V12 kullanmaya başlamak için Visual Studio projenizi ayarlayın. Daha fazla bilgi için bkz. [.net hızlı başlangıç](storage-quickstart-blobs-dotnet.md)
 
-2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blob** paketi ' ni bulun ve **12.5.0-Preview. 6** sürümünü veya daha yeni sürümünü projenize yüklemek için. Komutunu da çalıştırabilirsiniz```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
+2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blob** paketi ' ni bulun ve **12.5.0-Preview. 6** sürümünü veya daha yeni sürümünü projenize yüklemek için. Komutunu da çalıştırabilirsiniz ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 

@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829926"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022386"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -82,9 +82,9 @@ Aracıyı bir Windows makinesine yüklemek için:
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
-- MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
+- MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-options) .
 - MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.
-- MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) .
+- MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 
 ### <a name="install-mma-on-a-linux-machine"></a>Linux makinesine MMA 'yı yükler
 
@@ -95,7 +95,7 @@ Bir Linux makinesine MMA 'yı yüklemek için:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) . 
+MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/agents-overview.md#supported-operating-systems) . 
 
 ## <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 

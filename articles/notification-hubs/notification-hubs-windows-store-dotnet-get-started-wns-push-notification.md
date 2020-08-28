@@ -10,17 +10,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: 'mvc, ms.custom: devx-track-csharp'
 ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076704"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998314"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalara bildirimler gönderme
 
@@ -63,7 +63,7 @@ UWP uygulamalarına anında iletme bildirimleri göndermek için uygulamanızı 
 2. Uygulamanız için bir ad yazın ve ardından **Ürün adını ayır**’ı seçin. Bunu yaptığınızda uygulamanız için yeni bir Windows Mağazası kaydı oluşturulur.
 
     ![Uygulama adını depolama](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. **Ürün yönetimi**' ni genişletin, **WNS/MPNS**öğesini seçin ve ardından **Live Services sitesi**' ni seçin. Microsoft hesabınızda oturum açın. Uygulama kaydı sayfası yeni bir sekmede açılır. alternatif olarak, doğrudan [uygulamalarım](https://apps.dev.microsoft.com) sayfasına gidebilir ve bu sayfaya ulaşmak için uygulama adınızı seçebilirsiniz.
+3. **Ürün yönetimi**' ni genişletin, **WNS/MPNS**öğesini seçin ve ardından **Live Services sitesi**' ni seçin. Microsoft hesabınızda oturum açın. Uygulama kaydı sayfası yeni bir sekmede açılır. Alternatif olarak, doğrudan [uygulamalarım](https://apps.dev.microsoft.com) sayfasına gidebilir ve bu sayfaya ulaşmak için uygulama adınızı seçebilirsiniz.
 
     ![WNS MPNS sayfası](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 4. **Uygulama gizli** dizileri parolasını ve **paket GÜVENLIK tanımlayıcısını (SID)** aklınızda edin.

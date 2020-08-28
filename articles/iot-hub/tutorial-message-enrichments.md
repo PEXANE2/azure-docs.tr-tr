@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500223"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019734"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanın
 
@@ -36,7 +36,7 @@ Bu öğreticiyi tamamlamak için gerçekleştirdiğiniz görevler şunlardır:
 > * Hub 'a ileti gönderen bir IoT cihazının benzetimini yapan bir uygulama çalıştırın.
 > * Sonuçları görüntüleyin ve iletinin zenginleştirildiği gibi çalıştığını doğrulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio 'yu](https://www.visualstudio.com/)yükler.
@@ -77,7 +77,7 @@ Daha önce yapmadıysanız, bir Azure [Cloud Shell penceresi](https://shell.azur
 
 Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. *Zenginleştirme* , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. *Özgün* , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir.
 
-| Name | Değer |
+| Ad | Değer |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | kapsayıcı adı | Özgün  |
@@ -297,7 +297,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşt
 
    Şablonu yükleyerek oluşturulan kaynaklar aşağıda verilmiştir. **Zenginleştirme** , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. **Özgün** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir. Bunlar, Azure CLı betikte kullanılan aynı değerlerdir.
 
-   | Name | Değer |
+   | Ad | Değer |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | kapsayıcı adı | Özgün  |
@@ -310,7 +310,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşt
    | yol adı 1 | Contosostoragerouteorjinal |
    | yol adı 2 | Contosostoragerouerricric |
 
-1. **Kaydet**'i seçin. **Özel dağıtım** bölmesi görüntülenir ve şablon tarafından kullanılan tüm parametreleri gösterir. Ayarlamanız gereken tek alan **kaynak grubudur**. Yeni bir tane oluşturun veya açılan listeden birini seçin.
+1. **Kaydet**’i seçin. **Özel dağıtım** bölmesi görüntülenir ve şablon tarafından kullanılan tüm parametreleri gösterir. Ayarlamanız gereken tek alan **kaynak grubudur**. Yeni bir tane oluşturun veya açılan listeden birini seçin.
 
    **Özel dağıtım** bölmesinin en üst yarısı aşağıda verilmiştir. Kaynak grubunu nerede doldurduğunuzdan bakabilirsiniz.
 

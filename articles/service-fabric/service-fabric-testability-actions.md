@@ -5,12 +5,13 @@ author: motanv
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 14b2b5bd2577a10ad77a715fb5d20e10da84cf1d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518988"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022182"
 ---
 # <a name="testability-actions"></a>Test edilebilirlik eylemleri
 Güvenilir olmayan bir altyapının benzetimini yapmak için Azure Service Fabric, çeşitli gerçek dünyada hataların ve durum geçişlerinin benzetimini yapmak için kullanabileceğiniz bir geliştirici sağlar. Bunlar, test edilebilirlik eylemleri olarak gösterilir. Eylemler, belirli bir hata ekleme, durum geçişi veya doğrulamaya neden olan alt düzey API 'lerdir. Bu eylemleri birleştirerek hizmetleriniz için kapsamlı test senaryoları yazabilirsiniz.

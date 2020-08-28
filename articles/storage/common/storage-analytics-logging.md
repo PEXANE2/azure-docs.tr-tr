@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903230"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021179"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure depolama Analizi günlüğü
 
@@ -89,7 +89,7 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 
 |Öznitelik|Açıklama|
 |---------------|-----------------|
-|`<service-name>`|Depolama hizmetinin adı. Örneğin: `blob` , `table` , veya`queue`|
+|`<service-name>`|Depolama hizmetinin adı. Örneğin: `blob` , `table` , veya `queue`|
 |`YYYY`|Günlük için dört basamaklı yıl. Örnek: `2011`|
 |`MM`|Günlüğün iki basamaklı ayı. Örnek: `07`|
 |`DD`|Günlüğün iki basamaklı günü. Örnek: `31`|
@@ -105,7 +105,7 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Bir depolama isteği günlüğe kaydedildiğinde, sonuçta elde edilen günlük adı, istenen işlem tamamlandığında saat ile ilişkili olur. Örneğin, 7/31/2011 tarihinde bir GetBlob isteği tamamlanırsa, günlük şu önek ile yazılır:`blob/2011/07/31/1800/`
+ Bir depolama isteği günlüğe kaydedildiğinde, sonuçta elde edilen günlük adı, istenen işlem tamamlandığında saat ile ilişkili olur. Örneğin, 7/31/2011 tarihinde bir GetBlob isteği tamamlanırsa, günlük şu önek ile yazılır: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Günlük meta verileri
 
@@ -113,7 +113,7 @@ Blob 'ları program aracılığıyla listeleme hakkında bilgi için bkz. blob [
 
 |Öznitelik|Açıklama|
 |---------------|-----------------|
-|`LogType`|Günlük okuma, yazma veya silme işlemleriyle ilgili bilgiler içerip içermediğini açıklar. Bu değer, virgülle ayrılmış olarak bir tür ya da üç tane birleşimi içerebilir.<br /><br /> Örnek 1:`write`<br /><br /> Örnek 2:`read,write`<br /><br /> Örnek 3:`read,write,delete`|
+|`LogType`|Günlük okuma, yazma veya silme işlemleriyle ilgili bilgiler içerip içermediğini açıklar. Bu değer, virgülle ayrılmış olarak bir tür ya da üç tane birleşimi içerebilir.<br /><br /> Örnek 1: `write`<br /><br /> Örnek 2: `read,write`<br /><br /> Örnek 3: `read,write,delete`|
 |`StartTime`|Günlükteki girdinin en erken saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örnek: `2011-07-31T18:21:46Z`|
 |`EndTime`|Günlükteki bir girişin en son saati, biçiminde `YYYY-MM-DDThh:mm:ssZ` . Örnek: `2011-07-31T18:22:09Z`|
 |`LogVersion`|Günlük biçiminin sürümü.|

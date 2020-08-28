@@ -3,12 +3,12 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752137"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005063"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Azure VMware Çözüm önizlemesi nedir?
 
@@ -46,7 +46,7 @@ Azure VMware çözümü özel bulutu ve VMware yazılımının düzenli yükselt
 
 ## <a name="monitoring-your-private-cloud"></a>Özel bulutunuzu izleme
 
-Azure VMware Çözüm özel bulutunuzda çalışan sanal makinelerinizdeki günlükleri toplamak için [Azure izleyici 'de günlükleri](../azure-monitor/overview.md) kullanabilirsiniz. MMA aracısını, şirket içi sanal makinelerinizde çalıştırdığınız sorguların aynısını kullanarak Azure VMware Çözüm özel bulutlarınızda çalışan Linux ve Windows sanal makinelerine [indirebilir ve yükleyebilirsiniz](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) . Normalde sanal makinelerinizde çalıştırdığınız sorguları yalnızca aynı şekilde çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [sorguları yazma](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Azure VMware Çözüm özel bulutunuzda çalışan sanal makinelerinizdeki günlükleri toplamak için [Azure izleyici 'de günlükleri](../azure-monitor/overview.md) kullanabilirsiniz. MMA aracısını, şirket içi sanal makinelerinizde çalıştırdığınız sorguların aynısını kullanarak Azure VMware Çözüm özel bulutlarınızda çalışan Linux ve Windows sanal makinelerine [indirebilir ve yükleyebilirsiniz](../azure-monitor/platform/log-analytics-agent.md#installation-options) . Normalde sanal makinelerinizde çalıştırdığınız sorguları yalnızca aynı şekilde çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [sorguları yazma](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

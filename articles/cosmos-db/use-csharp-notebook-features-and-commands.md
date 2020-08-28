@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.custom: devx-track-python
-ms.openlocfilehash: 6c095083f88c00f706d19d1c652e19da007c6542
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876436"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019275"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -39,7 +39,7 @@ Aynı hücrede birden çok NuGet paketi yükleyebilirsiniz. Paketler, Azure Cosm
 
 ``CosmosClient``Herhangi BIR SDK işlemini çalıştırmak için örneğini oluşturun. 
 
-Örnek:
+Örneğin:
 
 ```csharp
 // Include usings
@@ -59,7 +59,7 @@ Daha fazla bilgi için bkz. [.net v3 SDK örnekleri](https://github.com/Azure/az
 > [!IMPORTANT]
 > Yerleşik Azure Cosmos DB .NET SDK yalnızca SQL (çekirdek) API hesapları için desteklenir. Diğer API 'Ler için, API 'ye karşılık gelen [ilgili .net sürücüsünü yüklemeniz](#install-a-new-nuget-package) gerekir. 
 
-## <a name="set-custom-options-using-cosmosclientoptions"></a>Kullanarak özel seçenekleri ayarla``CosmosClientOptions``
+## <a name="set-custom-options-using-cosmosclientoptions"></a>Kullanarak özel seçenekleri ayarla ``CosmosClientOptions``
 Daha fazla esneklik için özel ``CosmosClientOptions`` özelliği ayarlayabilir ve Örneğinizde geçirebilirsiniz ``CosmosClient`` . Bu özelliği kullanarak şunları yapabilirsiniz:
 
 - Kullanıcı Aracısı sonekine, her istekte dahil etmek için bir uygulama adı ayarlayın.
@@ -96,7 +96,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Konsol çıktısını C# kodunda Yazdır
 C# kodunuzda, hücreyi çalıştırdığınızda görünecek konsol çıktısına yönelik [dize ilişkilendirme](/dotnet/csharp/language-reference/tokens/interpolated) ile Display. asmarku () sözdizimini kullanabilirsiniz. 
 
-Örnek: 
+Örneğin: 
 
 ```csharp
 // Print text in the output
@@ -134,7 +134,7 @@ Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini ku
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. 
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örnek:
+Örneğin:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 

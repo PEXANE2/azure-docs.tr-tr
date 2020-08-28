@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826710"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006574"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -84,7 +84,7 @@ Bu isteğe bağlı yedeklemeler Ayrıca geri yükleme için geri yükleme noktal
 
 Aynı makineye geri yüklemek için HANA yerel istemcilerinden ( **Backint**kullanılarak) tetiklenen geri yüklemeler, **yedekleme işleri** sayfasından [izlenebilir](#monitor-manual-backup-jobs-in-the-portal) .
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup etkin olan bir veritabanında SAP HANA yerel istemci yedeklemesi çalıştırma
+### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup etkin bir veritabanında SAP HANA yerel istemci yedeklemesi çalıştırma
 
 Azure Backup yedeklenmekte olan bir veritabanının yerel yedeklemesini (HANA Studio/kokpit kullanarak) almak istiyorsanız aşağıdakileri yapın:
 

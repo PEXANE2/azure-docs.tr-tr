@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001629"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>Başvuru: DSVM görüntülerinin retirements
 
@@ -50,18 +50,3 @@ Aboneliğinizde var olan DSVM sağlanmış görüntüleri, kullanımdan kaldırm
 >
 > Yeni DSVM görüntü ayrıntıları ile güncelleştirilmemiş ARM şablonları, kullanımdan kaldırma tarihinden sonra dağıtılamaz.
 
-## <a name="mitigating-upcoming-retirements"></a>Yaklaşan retirements
-
-Bu bölümde yaklaşan retirements için risk azaltma tartışıyoruz.
-
-### <a name="upgrade-windows-2016-dsvm"></a>Windows 2016 DSVM 'YI yükseltme
-
-Mevcut Windows 2016 DSVM 'nizden bir veri diskini Windows 2019 DSVM 'ye geçirmek için aşağıdaki adımları uygulayın:
-
-1. [Burada](./provision-vm.md#create-your-dsvm)gösterilen yönergeleri izleyerek yeni bir Windows 2019 dsvm oluşturun.
-1. [Bu yönergeleri](../../virtual-machines/windows/detach-disk.md)kullanarak, Windows 2016 görüntüsünden mevcut veri disklerini ayırın.
-1. [Bu yönergeleri](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)kullanarak diski önceki adımdan Windows 2019 yansımanıza ekleyin.
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>Ubuntu 16,04 DSVM 'YI yükseltme
-
-Mevcut Ubuntu 16,04 DSVMs 'yi [ubuntu 18,04 DSVM sürümüne](./dsvm-ubuntu-intro.md)yükseltmenizi öneririz.

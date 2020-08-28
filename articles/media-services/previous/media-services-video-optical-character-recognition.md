@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918351"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999555"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Video dosyalarındaki metin içeriğini dijital metne dönüştürmek için Azure Media Analytics kullanın  
 
@@ -33,7 +34,7 @@ Bir arama altyapısıyla birlikte kullanıldığında, medyanıza metin ile kola
 
 **Azure MEDIA OCR** medya işlemcisi Şu anda önizleme aşamasındadır.
 
-Bu makalede, **Azure MEDIA OCR** hakkında ayrıntılar verilmektedir ve .net IÇIN Media Services SDK ile nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi ve örnek için [Bu bloga](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)bakın.
+Bu makalede,  **Azure MEDIA OCR** hakkında ayrıntılar verilmektedir ve .net IÇIN Media Services SDK ile nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi ve örnek için [Bu bloga](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)bakın.
 
 ## <a name="ocr-input-files"></a>OCR giriş dosyaları
 Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
@@ -113,7 +114,7 @@ Video OCR çıktısı, videonuzda bulunan karakterlere göre zamana göre kesiml
 | Uzaklık |Tarih damgalarının zaman kayması. Video API 'Lerinin 1,0 sürümünde bu her zaman 0 olur. |
 | Framerate |Videonun saniye başına kareleri |
 | genişlik |Videonun piksel cinsinden genişliği |
-| yükseklik |Videonun piksel cinsinden yüksekliği |
+| boy |Videonun piksel cinsinden yüksekliği |
 | Fragments |meta verilerin öbekli olduğu, zaman tabanlı video öbeklerinin dizisi |
 | start |"ticks" içindeki bir parçanın başlangıç saati |
 | süre |"ticks" içindeki bir parçanın uzunluğu |

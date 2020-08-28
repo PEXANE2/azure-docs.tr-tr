@@ -8,12 +8,13 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290917"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021910"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 
@@ -51,7 +52,7 @@ Etkin olarak izlenen [GitHub sorunları bölümüne](https://github.com/Azure/az
 ### <a name="check-the-portal-metrics"></a>Portal ölçümlerini denetleyin
 [Portal ölçümlerinin](monitor-accounts.md) denetlenmesi, istemci tarafı bir sorun olup olmadığını veya hizmette bir sorun olup olmadığını belirlemenize yardımcı olur. Örneğin, ölçümler yüksek bir hız sınırlı istek (HTTP durum kodu 429) içeriyorsa, isteğin azaltıldı, [istek hızı çok büyük](troubleshoot-request-rate-too-large.md) bölümünü kontrol edin. 
 
-## <a name="common-error-status-codes"></a>Ortak hata durum kodları<a id="error-codes"></a>
+## <a name="common-error-status-codes"></a>Ortak hata durum kodları <a id="error-codes"></a>
 
 | Durum Kodu | Açıklama | 
 |----------|-------------|

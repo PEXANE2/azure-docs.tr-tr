@@ -10,18 +10,25 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/06/2020
-ms.openlocfilehash: df1e1e90b35c29678151d4f9159195f829022a62
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 08/20/2020
+ms.openlocfilehash: 5f0ba27a0964f08b32e1af19d6f578b3f41ee300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236735"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006423"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmelerle ilişkili belge değişiklikleri özetlenmektedir. 
+
+## <a name="august-2020"></a>Ağustos 2020
+
+| Değişiklikler | Ayrıntılar |
+| --- | --- |
+| **Portalda AG 'yi yapılandırma** | Artık [Azure Portal aracılığıyla kullanılabilirlik grubunuzu yapılandırmak](availability-group-azure-portal-configure.md)mümkündür. Bu özellik şu anda önizleme aşamasındadır ve dağıtılmakta olduğundan, istediğiniz bölge kullanılamıyorsa yakında tekrar kontrol edin. | 
+
 
 ## <a name="july-2020"></a>Temmuz 2020
 

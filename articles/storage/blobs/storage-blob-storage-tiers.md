@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849735"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009619"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -68,6 +68,9 @@ Arşiv erişim katmanı için örnek kullanım senaryoları şunları içerir:
 - Uzun vadeli yedekleme, ikincil yedekleme ve arşiv veri kümeleri
 - Son kullanılabilir biçime işlendikten sonra bile özgün (ham) veriler korunmalıdır.
 - Uzun süre depolanması gereken ve çok ender erişilecek uyumluluk ve arşiv verileri.
+
+> [!NOTE]
+> Arşiv katmanı Şu anda ZRS, GZRS veya RA-GZRS hesapları için desteklenmiyor.
 
 ## <a name="account-level-tiering"></a>Hesap düzeyi katmanlama
 

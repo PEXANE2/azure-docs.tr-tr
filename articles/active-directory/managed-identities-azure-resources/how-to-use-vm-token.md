@@ -3,7 +3,7 @@ title: Erişim belirteci almak için bir sanal makinede Yönetilen kimlikler kul
 description: Bir OAuth erişim belirteci almak için bir sanal makinelerde Azure kaynakları için yönetilen kimliklerin kullanılmasına yönelik adım adım yönergeler ve örnekler.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608390"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016147"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomat
 
 Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -373,15 +373,15 @@ Bu bölüm olası hata yanıtlarını belgeler. Bir "200 OK" durumu başarılı 
 
 | Durum kodu | Hata | Hata Açıklaması | Çözüm |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Hatalı Istek | invalid_resource | AADSTS50001: adlı uygulama *\<URI\>* adlı kiracıda bulunamadı *\<TENANT-ID\>* . Uygulama, kiracının yöneticisi tarafından yüklenmediyse veya kiracıdaki herhangi bir kullanıcı tarafından onaylanmadıysa bu durum ortaya çıkabilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. \ | (Yalnızca Linux) |
-| 400 Hatalı Istek | bad_request_102 | Gerekli meta veri üst bilgisi belirtilmedi | İsteğiniz için `Metadata` istek üst bilgisi alanı eksik ya da yanlış biçimlendirilmiş. Değer `true` , her küçük örnekte, olarak belirtilmelidir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
-| 401 Yetkisiz | unknown_source | Bilinmeyen kaynak*\<URI\>* | HTTP GET istek URI 'nizin doğru biçimlendirildiğinden emin olun. `scheme:host/resource-path`Bölüm olarak belirtilmelidir `http://localhost:50342/oauth2/token` . Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+| 400 Hatalı İstek | invalid_resource | AADSTS50001: adlı uygulama *\<URI\>* adlı kiracıda bulunamadı *\<TENANT-ID\>* . Uygulama, kiracının yöneticisi tarafından yüklenmediyse veya kiracıdaki herhangi bir kullanıcı tarafından onaylanmadıysa bu durum ortaya çıkabilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. \ | (Yalnızca Linux) |
+| 400 Hatalı İstek | bad_request_102 | Gerekli meta veri üst bilgisi belirtilmedi | İsteğiniz için `Metadata` istek üst bilgisi alanı eksik ya da yanlış biçimlendirilmiş. Değer `true` , her küçük örnekte, olarak belirtilmelidir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+| 401 Yetkisiz | unknown_source | Bilinmeyen kaynak *\<URI\>* | HTTP GET istek URI 'nizin doğru biçimlendirildiğinden emin olun. `scheme:host/resource-path`Bölüm olarak belirtilmelidir `http://localhost:50342/oauth2/token` . Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
 |           | invalid_request | İstekte gerekli bir parametre eksik, geçersiz bir parametre değeri içeriyor, birden fazla parametre içeriyor veya başka şekilde hatalı biçimlendirilmiş. |  |
 |           | unauthorized_client | İstemci bu yöntemi kullanarak bir erişim belirteci isteme yetkisine sahip değil. | Uzantıyı çağırmak için yerel geri döngüyü kullanmayan bir istek veya Azure kaynakları için doğru şekilde yapılandırılmış bir yönetilen kimliği olmayan bir VM 'de neden oldu. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın. |
 |           | access_denied | Kaynak sahibi veya yetkilendirme sunucusu isteği reddetti. |  |
 |           | unsupported_response_type | Yetkilendirme sunucusu, bu yöntemi kullanarak bir erişim belirteci edinmeyi desteklemez. |  |
 |           | invalid_scope | İstenen kapsam geçersiz, bilinmiyor veya hatalı biçimlendirilmiş. |  |
-| 500 iç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için bkz. günlüklere ait Günlükler*\<file path\>* | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](services-support-msi.md) bölümüne bakın.
+| 500 İç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için bkz. günlüklere ait Günlükler *\<file path\>* | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](services-support-msi.md) bölümüne bakın.
 
 ## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
 

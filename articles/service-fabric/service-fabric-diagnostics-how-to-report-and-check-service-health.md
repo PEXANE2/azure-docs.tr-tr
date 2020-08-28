@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020210"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
 Hizmetleriniz sorunlarla karşılaştığında, olayları ve kesintilere yanıt verme ve bunları çözme imkanını sorunları hızlı bir şekilde algılamanıza bağlıdır. Hizmet kodunuzda Azure Service Fabric Health Manager sorunlarını ve başarısızlıklarını raporlayabilir, sistem durumunu denetlemek için Service Fabric sağladığı standart sistem durumu izleme araçlarını kullanabilirsiniz.
@@ -19,7 +20,7 @@ Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
 * [Bölüm](/dotnet/api/system.fabric.istatefulservicepartition) veya [Codepackageactivationcontext](/dotnet/api/system.fabric.codepackageactivationcontext) nesneleri kullanın.  
   `Partition`Ve `CodePackageActivationContext` nesnelerini, geçerli bağlamın parçası olan öğelerin sistem durumunu raporlamak için kullanabilirsiniz. Örneğin, bir çoğaltmanın parçası olarak çalışan kod yalnızca o çoğaltma üzerinde sistem durumunu, ait olduğu bölümü ve bir parçası olan uygulamayı rapor edebilir.
-* `FabricClient` adresini kullanın.   
+* `FabricClient` komutunu kullanın.   
   `FabricClient`Küme [güvenli](service-fabric-cluster-security.md) değilse veya hizmet yönetici ayrıcalıklarıyla çalışıyorsa, hizmet kodundan sistem durumunu raporlamak için ' i kullanabilirsiniz. En gerçek dünyada senaryolar güvenli olmayan kümeler kullanmaz veya yönetici ayrıcalıkları sağlamaz. İle `FabricClient` , kümenin bir parçası olan herhangi bir varlıkta sistem durumunu rapor edebilirsiniz. Bununla birlikte, hizmet kodu yalnızca kendi sistem durumuyla ilgili raporları göndermelidir.
 * Küme, uygulama, dağıtılan uygulama, hizmet, hizmet paketi, bölüm, çoğaltma veya düğüm düzeylerinde REST API 'Leri kullanın. Bu, bir kapsayıcı içinden sistem durumunu raporlamak için kullanılabilir.
 
@@ -131,7 +132,7 @@ HealthInformation healthInformation = new HealthInformation("ServiceCode", "Stat
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-, Ve üzerinde sistem durumunu raporlamak için `Application` `DeployedApplication` `DeployedServicePackage` kullanın `CodePackageActivationContext` .
+, Ve üzerinde sistem durumunu raporlamak için `Application` `DeployedApplication` `DeployedServicePackage` kullanın  `CodePackageActivationContext` .
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);

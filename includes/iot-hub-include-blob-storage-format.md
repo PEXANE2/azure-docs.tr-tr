@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 27a254b664e2035cc66109f7a473a3e9ef4d730e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b20c97bf919073b01f564b59b3a55eccb7614005
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73612195"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89043018"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->
 > [!NOTE]
@@ -21,5 +21,5 @@ ms.locfileid: "73612195"
 >    
 > JSON biçimini kodlama özelliği, Doğu ABD, Batı ABD ve Batı Avrupa dışında IoT Hub kullanılabildiği tüm bölgelerde önizleme aşamasındadır. Kodlama biçimi yalnızca BLOB depolama uç noktasının yapılandırıldığı zamanda ayarlanabilir. Zaten ayarlanmış olan bir uç nokta için biçim değiştirilemez. JSON kodlaması kullanılırken, ' yi JSON olarak ve Contentenencoding ' i ileti sistemi özelliklerinde UTF-8 olarak ayarlamanız gerekir. 
 >
-> BLOB depolama uç noktası kullanma hakkında daha ayrıntılı bilgi için lütfen [depolama alanına yönlendirmeye yönelik kılavuza](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage)bakın.
+> BLOB depolama uç noktası kullanma hakkında daha ayrıntılı bilgi için lütfen [depolama alanına yönlendirmeye yönelik kılavuza](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)bakın.
 >

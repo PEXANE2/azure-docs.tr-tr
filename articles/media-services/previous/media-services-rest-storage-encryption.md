@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79f85473f4eb1839a283ce4fc0d3311defaa741e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439604"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999632"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme 
 
@@ -44,7 +45,7 @@ Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi ala
 
 ### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi
 
-|Şifreleme seçeneği|Description|Media Services v2|Media Services v3|
+|Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
 |[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Desteklenir|Desteklenir|
@@ -111,7 +112,7 @@ Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içe
 
     Depolama şifrelemesi için, aşağıdaki özellikler istek gövdesine eklenmelidir.
 
-    İstek gövdesi özelliği    | Description
+    İstek gövdesi özelliği    | Açıklama
     ---|---
     Id | ContentKey KIMLIĞI, "NB: KID: UUID:" biçiminde şu biçim kullanılarak oluşturulur \<NEW GUID> .
     ContentKeyType | İçerik anahtar türü, anahtarı tanımlayan bir tamsayıdır. Depolama şifreleme biçimi için değer 1 ' dir.

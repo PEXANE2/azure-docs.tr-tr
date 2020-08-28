@@ -3,7 +3,7 @@ title: Azure portal kullanarak yönetilen kimlikleri Yapılandırma-Azure AD
 description: Azure portal kullanarak bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8b6abe343a3f8bf7231d4b8f23a5e10f614e58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf423599d39d30ead953aa389380bf603f80bcd1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609162"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022046"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -50,7 +50,7 @@ Oluşturma sırasında bir VM 'de sistem tarafından atanan yönetilen kimliği 
 VM oluşturmak için aşağıdaki hızlı başlangıçlara bakın: 
 
 - [Azure portal ile Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
-- [Azure portal ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Azure portalı ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Var olan bir VM'de sistem tarafından yönetilen kimliği etkinleştirme
@@ -90,7 +90,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 Şu anda Azure portal, bir VM oluşturulurken Kullanıcı tarafından atanan yönetilen kimliğin atanmasını desteklemez. Bunun yerine, aşağıdaki VM oluşturma hızlı başlangıç makalelerinden birine başvurarak bir VM oluşturun ve ardından VM 'ye Kullanıcı tarafından atanan bir yönetilen kimlik atama hakkında ayrıntılı bilgi edinmek için sonraki bölüme ilerleyin:
 
 - [Azure portal ile Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Azure portal ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+- [Azure portalı ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Mevcut bir VM 'ye Kullanıcı tarafından atanan bir yönetilen kimlik atama
 

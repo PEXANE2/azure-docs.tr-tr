@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447697"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003363"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -103,7 +103,7 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
 
 1. İşletim sistemine bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun gidericiyi çalıştırın.
 
-2. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bu yönü doğrulamaya ilişkin yönergeler için bkz. [Log Analytics için aracı bağlantısını doğrulayın](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+2. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bu yönü doğrulamaya ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
 
 3. Makinelerin Otomasyon hesabınıza bağlı Log Analytics çalışma alanında göründüğünden emin olun. Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
 
@@ -534,7 +534,7 @@ Bir HRESULT görürseniz, tüm özel durum iletisini görmek için kırmızı re
 |`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Bunlar ağ bağlantısı sorunlarını gösterir. Makinenizin Güncelleştirme Yönetimi için ağ bağlantısı olduğundan emin olun. Gerekli bağlantı noktalarının ve adreslerin listesi için [ağ planlama](../update-management/update-mgmt-overview.md#ports) bölümüne bakın.        |
 |`0x8024001E`| Hizmet veya sistem kapatıldığından güncelleştirme işlemi tamamlanmadı.|
 |`0x8024002E`| Windows Update hizmeti devre dışı bırakıldı.|
-|`0x8024402C`     | Bir WSUS sunucusu kullanıyorsanız, kayıt defteri anahtarı için kayıt defteri değerlerinin `WUServer` `WUStatusServer` `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` doğru WSUS sunucusunu belirtdiğinizden emin olun.        |
+|`0x8024402C`     | Bir WSUS sunucusu kullanıyorsanız, kayıt defteri anahtarı için kayıt defteri değerlerinin `WUServer` `WUStatusServer`  `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` doğru WSUS sunucusunu belirtdiğinizden emin olun.        |
 |`0x80072EE2`|Bir ağ bağlantısı sorunu veya yapılandırılmış bir WSUS sunucusuyla iletişim kurulurken bir sorun var. WSUS ayarlarını denetleyin ve hizmetin istemciden erişilebilir olduğundan emin olun.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update hizmeti 'nin (wuauserv) çalıştığından ve devre dışı bırakılmadığından emin olun.        |
 |`0x80070005`| Bir erişim reddedildi hatası, aşağıdakilerden biri nedeniyle oluşabilir:<br> Virüslü bilgisayar<br> Windows Update ayarları doğru yapılandırılmadı<br> %WinDir%\SoftwareDistribution klasörüyle dosya izni hatası<br> Sistem sürücüsünde yetersiz disk alanı (C:).

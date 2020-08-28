@@ -3,18 +3,18 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587506"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014662"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
 Bu makalede, [Azure Backup hizmetinin](./backup-overview.md) Azure sanal makinelerini (VM) nasıl yedeklediği açıklanır.
 
-Azure Backup, sanal makinelerinizdeki verilerin istenmeden yok edilmesiyle karşı koruma sağlamak için bağımsız ve yalıtılmış yedeklemeler sağlar. Yedeklemeler, kurtarma noktalarının yerleşik yönetimi ile bir kurtarma hizmetleri kasasında depolanır. Yapılandırma ve ölçekleme basittir, yedeklemeler en iyi duruma getirilir ve gerektiğinde kolayca geri yükleyebilirsiniz.
+Azure Backup, VM'lerinizdeki verilerin istenmeden yok edilmesine karşı koruma sağlayan bağımsız ve yalıtılmış yedekler sunar. Yedekler, yerleşik kurtarma noktası yönetim özelliklerine sahip Kurtarma Hizmetleri kasasında depolanır. Yapılandırma ve ölçeklendirme süreçleri kolaydır, yedekler iyileştirilir ve ihtiyaç duyduğunuz anda kolayca geri yükleme gerçekleştirmeniz sağlanır.
 
 Yedekleme işleminin bir parçası olarak, bir [anlık görüntü alınır](#snapshot-creation)ve veriler, üretim iş yükleri üzerinde hiçbir etkilenmeden kurtarma hizmetleri kasasına aktarılır. Anlık görüntü, [burada](#snapshot-consistency)açıklandığı gibi farklı tutarlılık düzeyleri sağlar.
 
@@ -22,7 +22,7 @@ Azure Backup Ayrıca, iş yükü algılayan, 15 dakikalık RPO (kurtarma noktas�
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
-Azure Backup Azure VM 'Leri için bir yedeklemeyi nasıl tamamlarsa aşağıda verilmiştir:
+Azure Backup, Azure VM'lerini şu şekilde yedekler:
 
 1. Yedekleme için seçilen Azure VM 'Leri için Azure Backup, belirttiğiniz yedekleme zamanlaması doğrultusunda bir yedekleme işi başlatır.
 1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.
@@ -33,9 +33,9 @@ Azure Backup Azure VM 'Leri için bir yedeklemeyi nasıl tamamlarsa aşağıda v
     - Yedekleme uygulamayla tutarlı bir anlık görüntü alalamazsa, temeldeki depolamanın dosya ile tutarlı bir anlık görüntüsünü alır (VM durdurulduğunda hiçbir uygulama yazma işlemi gerçekleşmediğinden).
 1. Linux VM 'Leri için yedekleme, dosya ile tutarlı bir yedekleme gerçekleştirir. Uygulamayla tutarlı anlık görüntüler için, ön/son betikleri el ile özelleştirmeniz gerekir.
 1. Yedekleme, anlık görüntüyü aldıktan sonra verileri kasaya aktarır.
-    - Yedekleme, her bir sanal makine diski paralel olarak yedeklenerek en iyi duruma getirilir.
-    - Yedeklenmekte olan her disk için, Azure Backup diskteki blokları okur ve yalnızca önceki yedeklemeden bu yana değiştirilen (Delta) veri bloklarını tanımlar ve aktarır.
-    - Anlık görüntü verileri hemen kasaya kopyalanmayabilir. Yoğun zamanlarda birkaç saat sürebilir. Bir VM için toplam Yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten daha az olacaktır.
+    - VM diskleri paralel olarak yedeklenerek yedekleme işlemi iyileştirilir.
+    - Azure Backup, yedeklenen her disk için disk üzerindeki blokları okur ve yalnızca bir önceki yedekleme işleminden sonra değiştirilmiş olan veri bloklarını (delta) aktarır.
+    - Anlık görüntü verileri kasaya hemen kopyalanmayabilir. Yoğun zamanlarda birkaç saat sürebilir. Bir VM için toplam yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten az olacaktır.
 1. Azure Backup etkinleştirildikten sonra bir Windows sanal makinesinde yapılan değişiklikler şunlardır:
     - Microsoft Visual C++ 2013 Redistributable (x64)-12.0.40660, VM 'ye yüklenir
     - Birim gölge kopyası hizmeti 'nin (VSS) başlangıç türü el ile otomatik olarak değiştirildi

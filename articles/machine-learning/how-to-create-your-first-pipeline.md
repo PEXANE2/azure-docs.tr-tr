@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: feaba9616c524cf72a21785643f746123dc74757
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddf4336015ad172cdf13e224b10ca2536e8f6a25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927689"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018085"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -53,12 +53,13 @@ ML işlem hattı çalıştırmak için gereken kaynakları oluşturma:
 
 * İşlem hattı adımlarında gereken verilere erişmek için kullanılan bir veri deposu ayarlayın.
 
-* Bir `Dataset` nesnesi, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `OutputFileDatasetConfig` hattı adımları arasında geçirilen geçici veriler için veya çıkış oluşturmak için bir nesne yapılandırın.     * Bir `Dataset` nesne, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `PipelineData` hattı adımları arasında geçirilen geçici veriler için bir nesne yapılandırın. 
-> [!NOTE]   
->`OutputFileDatasetConfig`Sınıfı deneysel önizleme özelliğidir ve herhangi bir zamanda değişebilir.    
->   
->Daha fazla bilgi için bkz. https://aka.ms/azuremlexperimental.
+* Bir `Dataset` nesnesi, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `PipelineData` hattı adımları arasında geçirilen geçici veriler için bir nesne yapılandırın. 
 
+    > [!TIP]
+    > Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfında bulunabilir  `OutputFileDatasetConfig` .  Bu sınıf, deneysel Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
+    > 
+    >Deneysel özellikler hakkında daha fazla bilgi için bkz https://aka.ms/azuremlexperimental ..
+    
 * Ardışık düzen adımlarınızın çalıştırılacağı [işlem hedeflerini](concept-azure-machine-learning-architecture.md#compute-targets) ayarlayın.
 
 ### <a name="set-up-a-datastore"></a>Veri deposu ayarlama
@@ -81,7 +82,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 Adımlar genellikle verileri kullanır ve çıkış verileri oluşturur. Bir adım, model gibi verileri, model ve bağımlı dosyaları içeren bir dizini veya geçici verileri oluşturabilir. Bu veriler daha sonra işlem hattının ilerleyen adımları için kullanılabilir. İşlem hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için [verilere erişme ve veri](how-to-access-data.md) [kümelerini kaydetme](how-to-create-register-datasets.md)makalelerine bakın. 
 
-### <a name="configure-data-using-dataset-and-outputfiledatasetconfig-objects"></a>`Dataset`Ve nesnelerini kullanarak verileri `OutputFileDatasetConfig` yapılandırma
+### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>`Dataset`Ve nesneleriyle veri yapılandırma `PipelineData`
 
 Bir işlem hattına veri sağlamanın tercih edilen yolu bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) nesnesidir. Nesne, veya bir veri `Dataset` deposundan veya Web URL 'sinde erişilebilir olan verileri işaret eder. `Dataset`Sınıf soyuttur, bu nedenle bir veya daha fazla dosyaya başvuruda bulunan bir veya `FileDataset` `TabularDataset` daha fazla veri içeren bir veya daha fazla dosyadan oluşturulan bir örneğini (bir veya daha fazla dosyaya başvuran) oluşturacaksınız.
 
@@ -93,18 +94,20 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
-
-Ara veriler (veya bir adımın çıktısı) bir [Outputfiledatasetconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `OutputFileDatasetConfig` adımlar arasında bir veri bağımlılığı sunar ve ardışık düzende bir örtük yürütme sırası oluşturur. Bu nesne daha sonra işlem hattı adımları oluşturulurken kullanılacaktır. Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData` adımlar arasında bir veri bağımlılığı sunar ve ardışık düzende bir örtük yürütme sırası oluşturur. Bu nesne daha sonra işlem hattı adımları oluşturulurken kullanılacaktır.
-
-`OutputFileDatasetConfig` nesneler bir dizin döndürür ve varsayılan olarak çıktıyı çalışma alanının varsayılan veri deposuna yazar.
+Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData` adımlar arasında bir veri bağımlılığı sunar ve ardışık düzende bir örtük yürütme sırası oluşturur. Bu nesne daha sonra işlem hattı adımları oluşturulurken kullanılacaktır.
 
 ```python
-from azureml.pipeline.core import OutputFileDatasetConfig
+from azureml.pipeline.core import PipelineData
 
-output_data1 = OutputFileDatasetConfig()
+output_data1 = PipelineData(
+    "output_data1",
+    datastore=def_blob_store,
+    output_name="output_data1")
+
 ```
 
-Veri kümeleri ve OutputFileConfig nesneleriyle çalışmaya yönelik daha fazla ayrıntı ve örnek kod, [VERILERI ml ardışık düzen adımları (Python) içine ve arasında taşınıyor](how-to-move-data-in-out-of-pipelines.md).
+> [!TIP]
+> Genel Önizleme sınıfı ile ardışık düzen adımları arasında kalıcı ara verileri de mümkündür `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
 
 ## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
@@ -181,10 +184,8 @@ Olarak değiştirirseniz gerçekleştirilecek yol, `USE_CURATED_ENV` `False` ba�
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
-
 dataprep_source_dir = "./dataprep_src"
 entry_point = "prepare.py"
-
 # `my_dataset` as defined above
 ds_input = my_dataset.as_named_input('input1')
 
@@ -193,6 +194,8 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
+    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -201,7 +204,7 @@ data_prep_step = PythonScriptStep(
 
 Yukarıdaki kodda tipik bir ilk işlem hattı adımı gösterilmektedir. Veri hazırlama kodunuz bir alt dizinde (Bu örnekte, `"prepare.py"` dizininde `"./dataprep.src"` ) bulunur. İşlem hattı oluşturma sürecinin bir parçası olarak, bu dizin sıkıştırıldı ve ' a yüklenir `compute_target` ve bu adımda, için değer olarak belirtilen betiği çalıştırılır `script_name` .
 
-`arguments`Değerler, adımın giriş ve çıkışları belirler. Yukarıdaki örnekte, taban çizgisi verileri veri kümesidir `my_dataset` . Kod, olarak belirttiğinden karşılık gelen veriler işlem kaynağına indirilir `as_download()` . Komut dosyası, `prepare.py` veri dönüştürme görevlerinin her şey için uygun olduğunu ve bu verileri `output_data1` türüne göre çıkış yapar `OutputFileDatasetConfig` . Daha fazla bilgi için bkz. [ml ardışık düzen adımlarına ve arasında veri taşıma (Python)](how-to-move-data-in-out-of-pipelines.md). 
+`arguments`, `inputs` Ve değerleri, `outputs` adımın giriş ve çıkışları belirtir. Yukarıdaki örnekte, taban çizgisi verileri veri kümesidir `my_dataset` . Kod, olarak belirttiğinden karşılık gelen veriler işlem kaynağına indirilir `as_download()` . Komut dosyası, `prepare.py` veri dönüştürme görevlerinin her şey için uygun olduğunu ve bu verileri `output_data1` türüne göre çıkış yapar `PipelineData` . Daha fazla bilgi için bkz. [ml ardışık düzen adımlarına ve arasında veri taşıma (Python)](how-to-move-data-in-out-of-pipelines.md). 
 
 Bu adım, yapılandırma kullanılarak tarafından tanımlanan makinede çalıştırılır `compute_target` `aml_run_config` . 
 
@@ -213,9 +216,11 @@ Tek bir adımla işlem hattı oluşturmak mümkündür, ancak neredeyse her zama
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = OutputFileDatasetConfig(name = "training_results", 
-                                           destination=def_blob_store)
+training_results = PipelineData(name = "training_results", 
+                                datastore=def_blob_store,
+                                output_name="training_results")
 
+    
 train_step = PythonScriptStep(
     script_name=train_entry_point,
     source_directory=train_source_dir,
@@ -226,7 +231,11 @@ train_step = PythonScriptStep(
 )
 ```
 
-Yukarıdaki kod, veri hazırlama adımı için çok benzerdir. Eğitim kodu, veri hazırlama kodundan ayrı bir dizindir. `OutputFileDatasetConfig`Veri hazırlama adımının çıktısı, `output_data1` eğitim adımında _giriş_ olarak kullanılır. `OutputFileDatasetConfig` `training_results` Sonraki karşılaştırma veya dağıtım adımının sonuçlarını tutmak için yeni bir nesne oluşturulur. 
+Yukarıdaki kod, veri hazırlama adımı için çok benzerdir. Eğitim kodu, veri hazırlama kodundan ayrı bir dizindir. `PipelineData`Veri hazırlama adımının çıktısı, `output_data1` eğitim adımında _giriş_ olarak kullanılır. `PipelineData` `training_results` Sonraki karşılaştırma veya dağıtım adımının sonuçlarını tutmak için yeni bir nesne oluşturulur. 
+
+
+> [!TIP]
+> İyileştirilmiş bir deneyim ve işlem hattı çalıştırınızdaki sonunda ara verileri veri depolarına geri yazma özelliği için genel önizleme sınıfını kullanın `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
 
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
@@ -245,10 +254,12 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma 
 
-Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py), [databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)öğesine yazabilir veya belirli bir veri deposuna veri yazmak Istiyorsanız [outputfiledatasetconfig](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)komutunu kullanın. 
+Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py), [databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)veya belirli bir veri deposuna veri yazmak isterseniz, [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)kullanın. 
 
 > [!IMPORTANT]
-> Kullanılarak bir veri deposuna çıkış verileri yazmak `OutputFileDatasetConfig` yalnızca Azure blob, Azure dosya paylaşımında, ADLS Gen 1 ve ADLS Gen 2 veri depoları için desteklenir. Bu işlevsellik şu anda [ADLS Gen 2 veri depoları](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) için desteklenmez.
+> Yalnızca Azure Blob ve Azure dosya paylaşımında veri depoları için, çıkış verilerinin bir veri deposuna geri yazılması desteklenir. 
+>
+> Çıktı verilerini Azure Blob 'a geri yazmak için Azure dosya paylaşma, ADLS Gen 1 ve ADLS Gen 2 veri depoları genel önizleme sınıfını kullanır [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py) .
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -319,7 +330,8 @@ Bir işlem hattını ilk kez çalıştırdığınızda Azure Machine Learning:
 * Proje anlık görüntüsünü, çalışma alanıyla ilişkili blob depolamadan işlem hedefine indirir.
 * İşlem hattının her adımına karşılık gelen bir Docker görüntüsü oluşturur.
 * Her adım için Docker görüntüsünü kapsayıcı kayıt defterinden işlem hedefine indirir.
-* `Dataset`Ve nesnelerine erişimi yapılandırır `OutputFileDatasetConfig` . `as_mount()`Erişim modu için, sigorta, sanal erişim sağlamak için kullanılır. Bağlama desteklenmiyorsa veya Kullanıcı farklı erişim olarak belirtilmişse `as_download()` , veriler bunun yerine işlem hedefine kopyalanır.
+* `Dataset`Ve nesnelerine erişimi yapılandırır `PipelineData` . `as_mount()`Erişim modu olarak, sanal erişim sağlamak IÇIN sigorta kullanılır. Bağlama desteklenmiyorsa veya Kullanıcı farklı erişim olarak belirtilmişse `as_download()` , veriler bunun yerine işlem hedefine kopyalanır.
+
 * Adımı adım tanımında belirtilen işlem hedefi içinde çalıştırır. 
 * Adım tarafından belirtilen Günlükler, STDOUT ve STDERR, ölçümler ve çıkış gibi yapıtlar oluşturur. Bu yapıtlar daha sonra karşıya yüklenir ve kullanıcının varsayılan veri deposunda tutulur.
 
