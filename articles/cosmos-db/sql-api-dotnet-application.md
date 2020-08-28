@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 252f38e289f7b40c673d9048119823348a30a546
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015450"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051312"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -43,7 +43,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -117,36 +117,19 @@ Azure Cosmos DB verileri taşımak ve depolamak için JSON kullanır. `JsonPrope
 
 ### <a name="add-views"></a><a name="add-views"></a>Görünümler ekleme
 
-Ardından, aşağıdaki üç görünümü oluşturalım.
+Ardından aşağıdaki görünümleri ekleyelim.
 
-* Liste öğesi görünümü ekleme
-* Yeni öğe görünümü ekleme
-* Düzenleme öğesi görünümü ekleme
+* Öğe oluştur görünümü
+* Öğe Sil görünümü
+* Öğe ayrıntılarını almak için bir görünüm
+* Düzenleme öğesi görünümü
+* Tüm öğeleri listelemek için bir görünüm
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Liste öğesi görünümü ekleme
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Öğe görünümü oluştur
 
 1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve **Add**  >  **Yeni klasör**Ekle ' yi seçin. Klasör *öğesini*adlandırın.
 
 1. Boş **öğe** klasörünü sağ tıklatın ve ardından Görünüm **Ekle**' yi seçin  >  **View**.
-
-1. **MVC görünümü Ekle**' de, aşağıdaki değerleri sağlayın:
-
-   * **Görünüm adı**' nda, *Dizin*girin.
-   * **Şablon**' da **liste**' yi seçin.
-   * **Model sınıfı**' nda, **öğe (Todo) öğesini seçin. Modeller)**.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="MVC görünümü Ekle iletişim kutusunu gösteren ekran görüntüsü":::
-
-1. Bu değerleri ekledikten sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin.
-
-İşiniz bittiğinde, Visual Studio oluşturduğu *cshtml* dosyasını açar. Bu dosyayı, Visual Studio 'da kapatabilirsiniz. Daha sonra bu yüklemeye geri döneceğiz.
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>Yeni öğe görünümü ekleme
-
-Öğeleri listelemek için bir görünüm oluşturma ile benzer şekilde, aşağıdaki adımları kullanarak öğe oluşturmak için yeni bir görünüm oluşturun:
-
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle**' yi seçin  >  **View**.
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -156,9 +139,44 @@ Ardından, aşağıdaki üç görünümü oluşturalım.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
    * **Ekle**’yi seçin.
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Düzenleme öğesi görünümü ekleme
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="MVC görünümü Ekle iletişim kutusunu gösteren ekran görüntüsü":::
 
-Son olarak, aşağıdaki adımlarla bir öğeyi düzenlemek için bir görünüm ekleyin:
+1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Öğe görünümünü sil
+
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+
+1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+
+   * **Görünüm adı** kutusunda *Sil*yazın.
+   * **Şablon** kutusunda **Sil**' i seçin.
+   * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
+   * **Ekle**’yi seçin.
+
+1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Öğe ayrıntılarını almak için bir görünüm ekleyin
+
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle**' yi seçin  >  **View**.
+
+1. **MVC görünümü Ekle**' de, aşağıdaki değerleri sağlayın:
+
+   * **Görünüm adı**' nda, *Ayrıntılar*girin.
+   * **Şablon**' da **Ayrıntılar**' ı seçin.
+   * **Model sınıfı**' nda, **öğe (Todo) öğesini seçin. Modeller)**.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
+
+1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Düzenleme öğesi görünümü ekleme
 
 1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
 
@@ -170,7 +188,29 @@ Son olarak, aşağıdaki adımlarla bir öğeyi düzenlemek için bir görünüm
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
    * **Ekle**’yi seçin.
 
-Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğünüzde Visual Studio 'daki tüm *cshtml* belgelerini kapatın.
+1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>Tüm öğeleri listelemek için bir görünüm ekleyin
+
+Son olarak, aşağıdaki adımlarla tüm öğeleri almak için bir görünüm ekleyin:
+
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+
+1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+
+   * **Görünüm adı** kutusunda *Index* yazın.
+   * **Şablon** kutusunda **Liste**'yi seçin.
+   * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
+   * **Ekle**’yi seçin.
+
+1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerini kapatın.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Hizmetleri bildirme ve başlatma
 

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure SYNAPSE Analytics Not defteri için Apache Spark oluşturma'
-description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te bir Apache Spark Havuzu (Önizleme) oluşturmak ve bir Spark SQL sorgusu çalıştırmak için web araçlarının nasıl kullanılacağı gösterilmektedir.
+title: "Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma"
+description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te bir Apache Spark havuzu oluşturmak ve Spark SQL sorgusu çalıştırmak için web araçlarının nasıl kullanılacağı gösterilmektedir.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496256"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049817"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
@@ -98,7 +98,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
    SHOW TABLES
    ```
 
-   Azure SYNAPSE Apache Spark havuzunuzdaki bir not defteri kullanırken, `sqlContext` Spark SQL kullanarak sorguları çalıştırmak için kullanabileceğiniz bir önayar alırsınız. `%%sql`Not defterine sorguyu çalıştırmak için önceden belirlenmiş ayarı kullanmasını söyler `sqlContext` . Sorgu, varsayılan olarak tüm Azure SYNAPSE Apache Spark havuzlarıyla birlikte gelen bir sistem tablosundan ilk 10 satırı alır.
+   Azure SYNAPSE Apache Spark havuzunuzdaki bir not defteri kullanırken, `sqlContext` Spark SQL kullanarak sorguları çalıştırmak için kullanabileceğiniz bir önayar alırsınız. `%%sql` Not defterine sorguyu çalıştırmak için önceden belirlenmiş ayarı kullanmasını söyler `sqlContext` . Sorgu, varsayılan olarak tüm Azure SYNAPSE Apache Spark havuzlarıyla birlikte gelen bir sistem tablosundan ilk 10 satırı alır.
 
 2. `demo_df` komutundaki verileri görmek için başka bir sorgu çalıştırın.
 

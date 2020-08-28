@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: 489d05f19fe9fafd4c32f988e9b0b90f95c0b5b2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 08/28/2020
+ms.openlocfilehash: eeabc5d29f0f389120429bd31386e2bea69cf5c8
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718365"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047761"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -78,8 +78,8 @@ Data Factory, depolama hesabı anahtarı kimlik doğrulaması için aşağıdaki
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Evet |
-| Dizisi | **ConnectionString** özelliği için depolamaya bağlanmak için gereken bilgileri belirtin. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha fazla bilgi için, Azure Key Vault makalesinde aşağıdaki örneklere ve [Mağaza kimlik bilgilerine](store-credentials-in-key-vault.md) bakın. |Evet |
+| tür | **Type** özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki notlara bakın). |Yes |
+| Dizisi | **ConnectionString** özelliği için depolamaya bağlanmak için gereken bilgileri belirtin. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha fazla bilgi için, Azure Key Vault makalesinde aşağıdaki örneklere ve [Mağaza kimlik bilgilerine](store-credentials-in-key-vault.md) bakın. |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. |Hayır |
 
 >[!NOTE]
@@ -148,8 +148,8 @@ Data Factory, paylaşılan erişim imzası kimlik doğrulamasını kullanmak iç
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki nota bakın). |Evet |
-| sasUri | Blob veya kapsayıcı gibi depolama kaynakları için paylaşılan erişim imzası URI 'sini belirtin. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin. Ayrıca, Otomatik döndürmeyi kullanmak ve belirteç bölümünü kaldırmak için SAS belirtecini Azure Key Vault de yerleştirebilirsiniz. Daha fazla bilgi için, aşağıdaki örneklere bakın ve [Azure Key Vault kimlik bilgilerini depolayın](store-credentials-in-key-vault.md). |Evet |
+| tür | **Type** özelliği **AzureBlobStorage** (önerilen) veya **azurestorage** olarak ayarlanmalıdır (aşağıdaki nota bakın). |Yes |
+| sasUri | Blob veya kapsayıcı gibi depolama kaynakları için paylaşılan erişim imzası URI 'sini belirtin. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin. Ayrıca, Otomatik döndürmeyi kullanmak ve belirteç bölümünü kaldırmak için SAS belirtecini Azure Key Vault de yerleştirebilirsiniz. Daha fazla bilgi için, aşağıdaki örneklere bakın ve [Azure Key Vault kimlik bilgilerini depolayın](store-credentials-in-key-vault.md). |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. |Hayır |
 
 >[!NOTE]
@@ -232,11 +232,11 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Evet |
-| Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Evet |
-| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Azure portal, sağ üst köşenin üzerine gelerek alın. | Evet |
+| tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
+| Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Yes |
+| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
+| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Azure portal, sağ üst köşenin üzerine gelerek alın. | Yes |
 | Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için Azure Active Directory uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment**ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. |Hayır |
 
@@ -287,8 +287,8 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Evet |
-| Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Evet |
+| tür | **Type** özelliği **AzureBlobStorage**olarak ayarlanmalıdır. |Yes |
+| Sözleşmeli | Düzenine sahip Azure Blob depolama hizmeti uç noktasını belirtin `https://<accountName>.blob.core.windows.net/` . |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. |Hayır |
 
 > [!NOTE]
@@ -322,8 +322,8 @@ Aşağıdaki özellikler, `location` Biçim tabanlı bir veri kümesindeki ayarl
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| tür       | Veri kümesindeki konumun **Type** özelliği **AzureBlobStorageLocation**olarak ayarlanmalıdır. | Evet      |
-| kapsayıcı  | Blob kapsayıcısı.                                          | Evet      |
+| tür       | Veri kümesindeki konumun **Type** özelliği **AzureBlobStorageLocation**olarak ayarlanmalıdır. | Yes      |
+| kapsayıcı  | Blob kapsayıcısı.                                          | Yes      |
 | folderPath | Verilen kapsayıcı altındaki klasörün yolu. Klasörü filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirleyin. | Hayır       |
 | fileName   | Verilen kapsayıcı ve klasör yolu altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirleyin. | Hayır       |
 
@@ -366,18 +366,20 @@ Aşağıdaki özellikler, Azure Blob depolama için, `storeSettings` Biçim taba
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| tür                     | İçindeki **tür** özelliği `storeSettings` **AzureBlobStorageReadSettings**olarak ayarlanmalıdır. | Evet                                           |
+| tür                     | İçindeki **tür** özelliği `storeSettings` **AzureBlobStorageReadSettings**olarak ayarlanmalıdır. | Yes                                           |
 | ***Kopyalanacak dosyaları bulun:*** |  |  |
 | SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen kapsayıcı veya klasör/dosya yolundan Kopyala. Tüm Blobları bir kapsayıcı veya klasörden kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `*` . |  |
 | Seçenek 2: blob ön eki<br>-önek | Kaynak bloblarını filtrelemek için bir veri kümesinde yapılandırılan, belirtilen kapsayıcının altındaki blob adı için ön ek. Adları ile başlayan blob 'lar `container_in_dataset/this_prefix` seçilidir. BLOB depolama için hizmet tarafı filtresinden yararlanır ve bu, joker karakter filtresinden daha iyi performans sağlar. | Hayır                                                          |
 | Seçenek 3: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörleri filtrelemek için bir veri kümesinde yapılandırılan, belirtilen kapsayıcının altındaki joker karakterleri içeren klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
-| Seçenek 3: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için verilen kapsayıcı ve klasör yolu (veya joker karakter klasörü yolu) altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Evet |
+| Seçenek 3: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için verilen kapsayıcı ve klasör yolu (veya joker karakter klasörü yolu) altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Yes |
 | 4. seçenek: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullandığınızda, veri kümesinde bir dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |Hayır |
 | ***Ek ayarlar:*** |  | |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. **Özyinelemeli** değeri **true** olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |
 | deleteFilesAfterCompletion | Hedef depoya başarıyla taşıdıktan sonra, ikili dosyaların kaynak depodan silinip silinmeyeceğini gösterir. Dosya silme dosya başına yapılır, bu nedenle kopyalama etkinliği başarısız olduğunda, bazı dosyaların hedefe zaten kopyalanmış ve kaynaktan silindiği görürsünüz, diğerleri ise kaynak deposunda hala kalır. <br/>Bu özellik yalnızca, veri kaynağı depolamadaki blob, ADLS 1., ADLS 2., S3, Google bulut depolama, dosya, Azure dosyası, SFTP veya FTP olan ikili kopyalama senaryosunda geçerlidir. Varsayılan değer: false. |Hayır |
 | modifiedDatetimeStart    | Dosyalar şu özniteliğe göre filtrelenmiştir: son değiştirme. <br>Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, "2018-12-01T05:00:00Z" biçiminde bir UTC saat dilimine uygulanır. <br> Özellikler **null**olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacağı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak **null**ise, son değiştirilen özniteliği DateTime değerinden büyük veya ona eşit olan dosyalar seçilir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak **null**ise, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | Hayır                                            |
 | modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                            |
+| enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true**şeklindedir. | Yanlış                                            |
+| Partitionrootyolu | Bölüm bulma etkin olduğunda, bölümlenmiş klasörleri veri sütunları olarak okumak için mutlak kök yolunu belirtin.<br/><br/>Belirtilmemişse, varsayılan olarak<br/>-Veri kümesinde dosya yolunu veya kaynaktaki dosya listesini kullandığınızda, bölüm kök yolu, veri kümesinde yapılandırılan yoldur.<br/>-Joker karakter klasörü filtresi kullandığınızda, bölüm kök yolu ilk joker karakterin öncesindeki alt yoldur.<br/>-Öneki kullandığınızda, bölüm kök yolu son "/" dan önceki alt yoldur. <br/><br/>Örneğin, veri kümesindeki yolu "root/Folder/Year = 2020/ay = 08/gün = 27" olarak yapılandırdığınız varsayılarak:<br/>-Bölüm kök yolunu "root/Folder/Year = 2020" olarak belirtirseniz, kopyalama etkinliği `month` `day` dosyaların içindeki sütunlara ek olarak, sırasıyla "08" ve "27" değeriyle birlikte iki sütun oluşturur.<br/>-Bölüm kök yolu belirtilmemişse, ek sütun oluşturulmaz. | Yanlış                                            |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır                                            |
 
 > [!NOTE]
@@ -432,7 +434,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı bir kopya havuzunda ay
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| tür                     | İçindeki **tür** özelliği `storeSettings` **AzureBlobStorageWriteSettings**olarak ayarlanmalıdır. | Evet      |
+| tür                     | İçindeki **tür** özelliği `storeSettings` **AzureBlobStorageWriteSettings**olarak ayarlanmalıdır. | Yes      |
 | copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | Hayır       |
 | Blocksizeınmb | Blok bloblarına veri yazmak için kullanılan blok boyutunu megabayt cinsinden belirtin. [Blok Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer *4 MB ile 100 MB arasındadır*. <br/>Varsayılan olarak Data Factory, blok boyutunu kaynak depolama türü ve verilerinize göre otomatik olarak belirler. Blob depolamaya ikili olmayan kopya için, varsayılan blok boyutu 100 MB 'tır, bu nedenle en fazla 4,95 TB veri olabilir. Özellikle, işlem zaman aşımı veya performans sorunlarına neden olan kötü ağ bağlantılarıyla şirket içinde barındırılan tümleştirme çalışma zamanını kullandığınızda verileriniz büyük olmadığında en iyi durumda olmayabilir. Açıkça bir blok boyutu belirtebilirsiniz, bu da `blockSizeInMB*50000` verileri depolamaya yetecek büyüklükte bir değer sağlar. Aksi takdirde kopyalama etkinliği çalıştırması başarısız olur. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır       |
@@ -619,7 +621,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **Type** özelliği **AzureBlob**olarak ayarlanmalıdır. |Evet |
+| tür | Veri kümesinin **Type** özelliği **AzureBlob**olarak ayarlanmalıdır. |Yes |
 | folderPath | Blob depolamada kapsayıcı ve klasörün yolu. <br/><br/>Kapsayıcı adı hariç olmak üzere yol için bir joker karakter filtresi desteklenir. İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br/><br/>Örnek: myblobcontainer/myblobfolder/. [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. |GetMetadata etkinliği için Hayır, kopyalama veya arama etkinliği için Evet |
 | fileName | Belirtilen **FolderPath** değeri altındaki Blobların adı veya joker karakter filtresi. Bu özellik için bir değer belirtmezseniz, veri kümesi klasördeki tüm Blobları gösterir. <br/><br/>Filtre için, izin verilen joker karakterler şunlardır: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>`^`Dosya adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **Preservehierarchy** belirtilmemişse, kopyalama etkinliği otomatik olarak aşağıdaki Düzenle sahip blob adını oluşturur: "*Data. [ Etkinlik çalıştırma KIMLIĞI GUID 'SI]. [DÜZEDEN hiyerarşi varsa GUID]. [yapılandırıldıysa Biçimlendir]. [yapılandırıldıysa sıkıştırma]*". Örneğin: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Sorgu yerine tablo adı kullanarak tablosal kaynaktan kopyalama yaparsanız, ad deseninin "*[tablo adı]" olması gerekir. [ Biçim]. [yapılandırıldıysa sıkıştırma]*". Örneğin: "MyTable.csv". |Hayır |
 | modifiedDatetimeStart | Dosyalar şu özniteliğe göre filtrelenmiştir: son değiştirme. Son değiştirilme zamanı ve arasındaki zaman aralığı içinde ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Bu ayarın etkinleştirilmesi, çok büyük miktarlarda dosya filtrelemeniz istediğinizde veri hareketinin genel performansını etkiler. <br/><br/> Özellikler **null**olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacağı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak **null**ise, son değiştirilen özniteliği DateTime değerinden büyük veya ona eşit olan dosyalar seçilir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak **null**ise, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
@@ -664,7 +666,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği **blobsource**olarak ayarlanmalıdır. |Evet |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **blobsource**olarak ayarlanmalıdır. |Yes |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. **Özyinelemeli** değeri **true** olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın.<br/>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır |
 
@@ -704,7 +706,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun **Type** özelliği **blobsink**olarak ayarlanmalıdır. |Evet |
+| tür | Kopyalama etkinliği havuzunun **Type** özelliği **blobsink**olarak ayarlanmalıdır. |Yes |
 | copyBehavior | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır |
 

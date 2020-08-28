@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 53e27e4fafaf4468c9c2f4a1ce24ace3d317dada
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 305a12de05ca934f5f8fd8b86746608d7fa32712
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503268"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046978"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
 
-Azure Spring Cloud, Azure 'da bir Spring Boot tabanlı mikro hizmetler uygulamasını kolayca çalıştırmanıza olanak sağlar.
+Azure Spring Cloud, Azure 'da bir Spring Boot tabanlı mikro hizmetler uygulamasını kolayca çalıştırmanıza olanak sağlar.  Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 Bu hızlı başlangıçta, mevcut bir Java Spring Cloud uygulamasının Azure 'a nasıl dağıtılacağı gösterilir. İşiniz bittiğinde, uygulamayı Azure CLı aracılığıyla yönetmeye devam edebilir veya Azure portal kullanarak geçiş yapabilirsiniz.
 
@@ -160,16 +160,16 @@ az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. Plımetrimetrik uygulamasını çalıştırmak için önceki komutun sunduğu URL 'ye gidin.
-    ![Çalıştırılan POF ölçümleri ekran görüntüsü](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+    ![Çalıştırılan ölçümler](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 URL 'YI bulmak için Azure portal de gidebilirsiniz. 
 1. Hizmete git
 2. **Uygulama** seçin
 3. **Ağ geçidini** seçin
 
-    ![Çalıştırılan POF ölçümleri ekran görüntüsü](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+    ![Bekletilen ölçümler gezme](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. **Ağ geçidine genel bakış** sayfasında URL 'yi bulma ![ çalışan POF ölçümleri](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. **Ağ geçidine genel bakış** sayfasında URL 'yi bulun ![ Git 2](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

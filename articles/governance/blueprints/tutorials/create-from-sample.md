@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: yeni ortama Blueprint örneği'
 description: Bu öğreticide, iki kaynak grubu ayarlayan ve her biri için bir rol ataması yapılandıran bir şema tanımı oluşturmak üzere bir şema örneği kullanırsınız.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80677084"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048741"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
 
@@ -23,7 +23,7 @@ Aşağıdaki öğreticide, Azure şemaları hizmetinin farklı yönlerini göste
 > - Atama için dağıtılan kaynakları İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -122,7 +122,7 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
 
-   Bu sayfadan, atamanın başarılı olduğunu ve oluşturulan kaynakların listesini şema Lock durumuyla birlikte görebiliriz. Atama güncelleştirilirse, **atama işlemi** açılır listesi her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Oluşturulan her kaynak, tıklanmış ve bu kaynaklar özellik sayfasını açacak.
+   Bu sayfadan, atamanın başarılı olduğunu ve oluşturulan kaynakların listesini şema Lock durumuyla birlikte görebiliriz. Atama güncelleştirilirse, **atama işlemi** açılır listesi her tanım sürümünün dağıtımıyla ilgili ayrıntıları gösterir. Oluşturulan listelenen her kaynak seçilebilir ve bu kaynaklar özellik sayfasını açabilir.
 
 1. **Üretim RG** kaynak grubunu seçin.
 

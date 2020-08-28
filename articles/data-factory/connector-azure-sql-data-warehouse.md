@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: 4890013fe584c49caa9e358c924911255a7f5d33
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/28/2020
+ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815972"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051228"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla Azure SQL veri ambarı) veri kopyalama ve dönüştürme
 
@@ -504,7 +504,7 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
 
 3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
 
-4. `wildcardFolderPath` , `wildcardFilename` , `modifiedDateTimeStart` , `modifiedDateTimeEnd` ve `additionalColumns` belirtilmedi.
+4. `wildcardFolderPath` ,,,, `wildcardFilename` `modifiedDateTimeStart` `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` ve `additionalColumns` belirtilmedi.
 
 >[!NOTE]
 >Kaynağınız bir klasörssa, PolyBase dosyaları klasörden ve tüm alt klasörlerinden alır ve dosya adının bir alt çizgiyle (_) veya nokta (.) ile başladığı dosyalardan veri almaz ( [burada, konum bağımsız değişkeni](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)olarak belgelenmiştir).
@@ -684,7 +684,7 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
 
 3. Kaynağınız bir klasörse, `recursive` kopyalama etkinliği ' nde true olarak ayarlanmalıdır ve `wildcardFilename` olması gerekir `*` . 
 
-4. `wildcardFolderPath` , `wildcardFilename` (dışındaki `*` ), `modifiedDateTimeStart` `modifiedDateTimeEnd` ve `additionalColumns` belirtilmedi.
+4. `wildcardFolderPath` , `wildcardFilename` (dışındaki `*` ),, `modifiedDateTimeStart` , `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` ve `additionalColumns` belirtilmedi.
 
 Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCopyCommand` :
 
@@ -814,7 +814,7 @@ Veya Azure SYNAPSE Analytics 'ten veri kopyaladığınızda, Azure SYNAPSE Analy
 | Türünde                        | DateTimeOffset                 |
 | Ondalık                               | Ondalık                        |
 | FıLESTREAM özniteliği (varbinary (max)) | Byte []                         |
-| Kayan                                 | Çift                         |
+| Float                                 | Çift                         |
 | image                                 | Byte []                         |
 | int                                   | Int32                          |
 | etmenize                                 | Ondalık                        |

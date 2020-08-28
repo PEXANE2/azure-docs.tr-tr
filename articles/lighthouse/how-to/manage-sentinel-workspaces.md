@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511261"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050820"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -29,7 +29,7 @@ Bu merkezi dağıtım modelinin aşağıdaki avantajları vardır:
 
 - Verilerin sahipliği, her bir yönetilen kiracıyla kalır.
 - Verileri coğrafi sınırlar içinde depolamak için gereksinimleri destekler.
-- Birden çok müşteriye ait veriler aynı çalışma alanında depolandığından veri yalıtımının yapılmasını sağlar. 
+- Birden çok müşteriye ait veriler aynı çalışma alanında depolandığından veri yalıtımının yapılmasını sağlar.
 - Verilerin uyumluluğunu sağlamaya yardımcı olmak için yönetilen kiracılardan veri alımını önler.
 - İlgili maliyetler, Kiracı Yönetimi yerine her bir yönetilen kiracı için ücretlendirilir.
 - Azure Sentinel ile tümleştirilmiş tüm veri kaynaklarından ve veri bağlayıcılarından (Azure AD etkinlik günlükleri, Office 365 günlükleri veya Microsoft tehdit koruması uyarıları gibi) veriler her müşteri kiracısında kalır.
@@ -71,13 +71,21 @@ Azure ['Da Azure Izleyici çalışma kitapları](../../sentinel/overview.md#work
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel çalışma alanları genelinde Log Analytics ve sorguları çalıştırma
 
-Tehdit algılama için Log Analytics sorguları, [sorguları](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)yönetme dahil olmak üzere, yönetim kiracısında merkezi olarak oluşturabilir ve kaydedebilirsiniz. Bu sorgular daha sonra tüm müşterilerinizin Azure Sentinel çalışma alanlarında UNION işleci ve Workspace () ifadesi kullanılarak çalıştırılabilir. Daha fazla bilgi için bkz. [çapraz çalışma alanı sorgulama](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+[Sorguları](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)yönetme dahil olmak üzere, tehdit algılama için Log Analytics sorguları yönetim kiracısında merkezi olarak oluşturun ve kaydedin. Bu sorgular daha sonra tüm müşterilerinizin Azure Sentinel çalışma alanlarında UNION işleci ve Workspace () ifadesi kullanılarak çalıştırılabilir. Daha fazla bilgi için bkz. [çapraz çalışma alanı sorgulama](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Çoklu çalışma alanları yönetimi için Otomasyonu kullanma
 
 Otomasyonu, birden çok Azure Sentinel çalışma alanını yönetmek ve [sorguları](../../sentinel/hunting.md), PlayBook 'ları ve çalışma kitaplarını yapılandırmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Otomasyon kullanarak çapraz çalışma alanı yönetimi](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
 Bazı yeteneklerin [Şu anda birden çok çalışma alanı genelinde desteklenmediğini](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)unutmayın.
+
+## <a name="manage-security-of-office-365-environments"></a>Office 365 ortamlarının güvenliğini yönetme
+
+Kiracılar genelinde Office 365 ortamlarının güvenliğini yönetmek için Azure ve Azure Sentinel ile birlikte Azure birlikte kullanımı 'nı kullanın. İlk, kullanıma hazır Office 365 veri bağlayıcıları, Exchange ve SharePoint 'teki Kullanıcı ve yönetici Etkinlikleri (OneDrive dahil) hakkındaki bilgilerin yönetilen Kiracıdaki bir Azure Sentinel çalışma alanına dahil edilmesi için [yönetilen kiracı 'da etkinleştirilmelidir](../../sentinel/connect-office-365.md) . Bu, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları ve posta kutusu işlemlerinde değişiklikler ve bu eylemleri gerçekleştiren kullanıcılar hakkında bilgiler içerir. [Office 365 DLP uyarıları](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) , yerleşik Office 365 bağlayıcısının bir parçası olarak da desteklenir.
+
+[Microsoft Cloud App Security (MCAS) bağlayıcısını](../../sentinel/connect-cloud-app-security.md) , uyarıları ve Cloud Discovery günlüklerini Azure Sentinel 'e akışa almak için etkinleştirebilirsiniz. Bu, bulut uygulamalarına yönelik görünürlük elde etmenizi, siber tehditleri belirleyip işlemenize yönelik gelişmiş analizler almanızı ve verilerin nasıl hareket edebilirliğini denetlemenizi sağlar. MCAS için etkinlik günlükleri [ortak olay biçimi (CEF) kullanılarak tüketilebilir](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
+
+Office 365 veri bağlayıcıları ayarladıktan sonra, çalışma kitaplarındaki verileri görüntüleme ve analiz etme, özel uyarılar oluşturmak için sorguları kullanma ve tehditleri yanıtlamak üzere PlayBook 'ları yapılandırma gibi platformlar arası Azure Sentinel özelliklerini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

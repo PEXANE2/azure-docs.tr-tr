@@ -7,17 +7,19 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77b105fd5bbc6cc88411379e79522562ebce3677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 587b26d821b9701df435b9ee0a1c5f9ba5602fc0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083761"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050939"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
 Azure yay bulutu için IntelliJ eklentisi, IntelliJ FIKRINDEN uygulama dağıtımını destekler.  
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
+
+## <a name="prerequisites"></a>Ön koşullar
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
 * [IntelliJ fıkır, topluluk/Ultimate Edition, sürüm 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
@@ -44,7 +46,7 @@ Aşağıdaki yordamlar IntelliJ FIKRINI kullanarak bir Merhaba Dünya uygulamas�
 
 ## <a name="open-gs-spring-boot-project"></a>Açık GS-yay-önyükleme projesi
 
-1. Bu öğretici için kaynak depoyu indirip sıkıştırmasını açın veya git 'i kullanarak kopyalayın: git Clonehttps://github.com/spring-guides/gs-spring-boot.git 
+1. Bu öğretici için kaynak depoyu indirip sıkıştırmasını açın veya git 'i kullanarak kopyalayın: git Clone https://github.com/spring-guides/gs-spring-boot.git 
 1. CD 'ye GS-Spring-boot\complete.
 1. IntelliJ **karşılama** iletişim kutusunu açın, içeri aktar sihirbazını açmak Için **projeyi içeri aktar** ' ı seçin.
 1. `gs-spring-boot\complete`Klasör seçin.

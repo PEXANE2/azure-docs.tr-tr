@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131787"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047097"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -101,7 +101,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
 Yes | 2000
-No | 1000
+Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.
 - Bazı Azure bölgeleri daha küçüktür ve biraz daha düşük sınırlara sahip olabilir.
@@ -205,7 +205,7 @@ Yük devretme için önceden aşağıdaki şekilde hazırlanabilirsiniz:
     - Uygulamalarınızın uçtan uca RTO tahminini yapın.
     - İş yükleriniz için uçtan uca RPO 'yu tahmin edin.
     - IP adres aralığı çakışmalarını belirler.
-    - Ayrıntıya gitme işlemleri yaparken, detaylara yönelik üretim ağlarını kullanmanıza, üretim ve test ağlarında aynı alt ağ adlarını kullanmaktan kaçınmanızı ve her ayrıntıdan sonra yük devretme testini temizleyeöneririz.
+    - Ayrıntıya gitme işlemleri yaparken, detaylara yönelik üretim ağlarını ve her ayrıntıdan sonra yük devretme testi çalıştırmanızı öneririz.
 
 Büyük ölçekli yük devretme çalıştırmak için şunları öneririz:
 

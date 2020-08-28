@@ -1,14 +1,14 @@
 ---
 title: Dağıtım sırası sırasını anlayın
 description: Şema yapıtlarının bir şema atama sırasında dağıtıldığı ve dağıtım sırasının nasıl özelleştirileceğine ilişkin varsayılan sıra hakkında bilgi edinin.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970629"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051483"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure 'de dağıtım sırasını anlayın
 
@@ -44,7 +44,7 @@ Her **kaynak grubu** yapıtları içinde, bu kaynak grubu içinde yapıların ol
 
 Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseninin, bir şema tanımının birçok ARM şablonu içermesi durumunda olur. Azure şemaları, sıralama düzeninin tanımlanmasına izin vererek bu düzeni işler.
 
-Sıralama, `dependsOn` JSON içinde bir özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
+Sıralama, `dependsOn` JSON içinde bir özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn` , belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
 
 > [!NOTE]
 > Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır. yapıtlar içindeki _resourceGroup_ başvuruları, şema tanımında tanımlananlarla aynı olmalıdır.
@@ -141,8 +141,8 @@ Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
-- [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Şema yaşam döngüsü](./lifecycle.md) hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](./parameters.md) kullanımını anlayın.
+- [Şema kaynak kilitleme](./resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

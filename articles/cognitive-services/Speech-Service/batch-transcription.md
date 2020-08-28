@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918953"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050191"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -41,7 +41,7 @@ Bu API özel uç noktalar gerektirmez ve hiçbir eşzamanlılık gereksinimi yok
 Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
 Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
@@ -170,7 +170,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 'da yazılabilir bir kapsayıcıya [HIZMET SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda saklanır. Belirtilmediğinde Microsoft, sonuçları Microsoft tarafından yönetilen bir depolama kapsayıcısında depolar. Döküm, [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)işlemi çağırarak silindiğinde, sonuç verileri de silinir.
+      Azure 'da yazılabilir bir kapsayıcıya [hizmet GEÇICI SAS](../../storage/common/storage-sas-overview.md) 'si ile isteğe bağlı URL. Sonuç bu kapsayıcıda saklanır. Depolanan erişim ilkesiyle **SAS desteklenmez.** Belirtilmediğinde Microsoft, sonuçları Microsoft tarafından yönetilen bir depolama kapsayıcısında depolar. Döküm, [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)işlemi çağırarak silindiğinde, sonuç verileri de silinir.
 :::row-end:::
 
 ### <a name="storage"></a>Depolama

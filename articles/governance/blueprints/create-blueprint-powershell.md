@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: PowerShell ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, PowerShell kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051534"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Hızlı başlangıç: PowerShell ile Azure Blueprint tanımlama ve atama
 
 Şemaları oluşturmayı ve atamayı öğrenmek, ortak desenlerin tanımını Azure Resource Manager şablonları (ARM şablonları), ilke, güvenlik ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmeye olanak sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 

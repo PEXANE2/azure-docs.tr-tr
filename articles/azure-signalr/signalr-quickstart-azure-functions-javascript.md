@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3f1051b81666a036203eb1c810875d837ef9816f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386886"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050565"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Hızlı başlangıç: Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturmak için JavaScript kullanma
 
@@ -32,13 +32,21 @@ Azure SignalR hizmeti, uygulamanıza kolayca gerçek zamanlı işlevselliği ekl
 > [!NOTE]
 > Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
+
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında oturum açın.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure İşlev Uygulamasını yapılandırıp çalıştırma
 
@@ -71,9 +79,15 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
     ![SignalR Hizmeti Oluşturma](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -81,3 +95,5 @@ Bu hızlı başlangıçta, VS Code ' de gerçek zamanlı sunucusuz bir uygulama 
 
 > [!div class="nextstepaction"]
 > [VS Code ile Azure İşlevlerini dağıtma](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsjs)

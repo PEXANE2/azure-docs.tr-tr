@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001017"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047461"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -45,7 +45,7 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
 |**İş yükü yönetimi – Portal deneyimi**|Kullanıcılar, Azure portal aracılığıyla iş yükü yönetimi ayarlarını yapılandırabilir ve yönetebilir. [İş yükü gruplarını](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) ve [iş yükü sınıflandırıcıları](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) önem derecesine göre yapılandırma özelliği mümkündür.|
-|**Geliştirilmiş tablo eşlemeleri Katalog görünümü**|Yeni Katalog görünümü [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) kalıcı kullanıcı tablolarının **object_ids** fiziksel tablo adlarına eşler. Bu görünüm geçerli [sys. pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions)için iyileştirilmiş performans sağlar.|
+|**Geliştirilmiş tablo eşlemeleri Katalog görünümü**|Yeni Katalog görünümü [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) kalıcı kullanıcı tablolarının **object_ids** fiziksel tablo adlarına eşler.|
 
 ## <a name="july-2020"></a>Temmuz 2020
 

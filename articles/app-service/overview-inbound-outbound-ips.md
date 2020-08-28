@@ -2,28 +2,34 @@
 title: Gelen/giden IP adresleri
 description: Gelen ve giden IP adreslerinin Azure App Service, ne zaman değişdikleri ve uygulamanızın adreslerini nasıl bulacağınızı öğrenin.
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537636"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050701"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service gelen ve giden IP adresleri
 
-[Azure App Service](overview.md) , [App Service ortamları](environment/intro.md)dışında çok kiracılı bir hizmettir. App Service ortamda olmayan uygulamalar ( [yalıtılmış katmanda](https://azure.microsoft.com/pricing/details/app-service/)değil) ağ altyapısını diğer uygulamalarla paylaşır. Sonuç olarak, bir uygulamanın gelen ve giden IP adresleri farklı olabilir ve hatta belirli durumlarda bile değişebilir. 
+[Azure App Service](overview.md) , [App Service ortamları](environment/intro.md)dışında çok kiracılı bir hizmettir. App Service ortamda olmayan uygulamalar ( [yalıtılmış katmanda](https://azure.microsoft.com/pricing/details/app-service/)değil) ağ altyapısını diğer uygulamalarla paylaşır. Sonuç olarak, bir uygulamanın gelen ve giden IP adresleri farklı olabilir ve hatta belirli durumlarda bile değişebilir.
 
 [App Service ortamları](environment/intro.md) adanmış ağ altyapıları kullanır, bu nedenle bir App Service ortamında çalışan uygulamalar, hem gelen hem de giden bağlantılar için statik, ayrılmış IP adresleri alır.
+
+## <a name="how-ip-addresses-work-in-app-service"></a>IP adreslerinin App Service nasıl çalıştığı
+
+Bir App Service uygulama bir App Service planında çalışır ve App Service planları Azure altyapısındaki dağıtım birimlerinden birine dağıtılır (dahili olarak bir web alanı olarak adlandırılır). Her dağıtım birimi, bir genel gelen IP adresi ve dört giden IP adresi içeren beş adede kadar sanal IP adresine atanır. Aynı dağıtım birimi içindeki tüm App Service planlar ve bunlar içinde çalışan uygulama örnekleri aynı sanal IP adresleri kümesini paylaşır. Bir App Service Ortamı ( [yalıtılmış katmanda](https://azure.microsoft.com/pricing/details/app-service/)bir App Service planı) için, App Service planı dağıtım biriminin kendisidir, bu nedenle sanal IP adresleri buna sonuç olarak ayrılmıştır.
+
+Dağıtım birimleri arasında bir App Service planını taşımaya izin verilmediğinden, uygulamanıza atanan sanal IP adresleri genellikle aynı kalır, ancak özel durumlar vardır.
 
 ## <a name="when-inbound-ip-changes"></a>Gelen IP değiştiğinde
 
 Ölçeği genişletilmiş örneklerin sayısından bağımsız olarak, her uygulamanın tek bir gelen IP adresi vardır. Gelen IP adresi aşağıdaki eylemlerden birini gerçekleştirdiğinizde değişebilir:
 
-- Bir uygulamayı silip farklı bir kaynak grubunda yeniden oluşturun.
-- Kaynak grubu _ve_ bölge kombinasyondaki son uygulamayı silip yeniden oluşturun.
-- Sertifika yenileme sırasında olduğu gibi var olan bir TLS bağlamasını silin (bkz. [Sertifikayı Yenile](configure-ssl-certificate.md#renew-certificate)).
+- Bir uygulamayı silip farklı bir kaynak grubunda yeniden oluşturun (dağıtım birimi değişebilir).
+- Kaynak grubu _ve_ bölge kombinasyondaki son uygulamayı silin ve yeniden oluşturun (dağıtım birimi değişebilir).
+- Sertifika yenileme sırasında gibi var olan bir IP tabanlı TLS/SSL bağlamasını silin (bkz. [Sertifikayı Yenile](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Gelen IP 'yi bulma
 
@@ -39,9 +45,13 @@ Bazen, uygulamanız için adanmış ve statik bir IP adresi isteyebilirsiniz. St
 
 ## <a name="when-outbound-ips-change"></a>Giden IP 'Ler değiştiğinde
 
-Ölçeği genişletilmiş örneklerin sayısından bağımsız olarak, her uygulamanın belirli bir zamanda bir dizi giden IP adresi vardır. Bir arka uç veritabanı gibi App Service uygulamadan giden bağlantı, kaynak IP adresi olarak giden IP adreslerinden birini kullanır. Belirli bir uygulama örneğinin giden bağlantıyı yapmak için kullanacağı IP adresini önceden kullanacağınızı, bu nedenle arka uç hizmetinizin güvenlik duvarını uygulamanızın tüm giden IP adreslerine açması gerekir.
+Ölçeği genişletilmiş örneklerin sayısından bağımsız olarak, her uygulamanın belirli bir zamanda bir dizi giden IP adresi vardır. Bir arka uç veritabanı gibi App Service uygulamadan giden bağlantı, kaynak IP adresi olarak giden IP adreslerinden birini kullanır. Kullanılacak IP adresi, çalışma zamanında rastgele seçilir, bu nedenle arka uç hizmetiniz uygulamanızın tüm giden IP adreslerine güvenlik duvarını açması gerekir.
 
-Uygulamanızı daha düşük Katmanlar (**temel**, **Standart**ve **Premium**) ve **Premium v2** KATMANı arasında ölçeklendirirseniz, uygulamanız için giden IP adresleri kümesi değişir.
+Aşağıdaki eylemlerden birini gerçekleştirdiğinizde uygulamanız için giden IP adresleri kümesi değişir:
+
+- Bir uygulamayı silip farklı bir kaynak grubunda yeniden oluşturun (dağıtım birimi değişebilir).
+- Kaynak grubu _ve_ bölge kombinasyondaki son uygulamayı silin ve yeniden oluşturun (dağıtım birimi değişebilir).
+- Uygulamanızı daha düşük Katmanlar (**temel**, **Standart**ve **Premium**) ve **Premium v2** katmanı (IP adresleri kümeden eklenebilir veya kümeden çıkarılan) arasında ölçeklendirin.
 
 Fiyatlandırma katmanlarından bağımsız olarak, uygulamanızın kullanabileceği tüm olası giden IP adresleri kümesini, `possibleOutboundIpAddresses` özelliği arayarak veya Azure Portal **Özellikler** dikey PENCERESINDE **ek giden IP adresleri** alanında bulabilirsiniz. Bkz. [giden IP 'Leri bulma](#find-outbound-ips).
 

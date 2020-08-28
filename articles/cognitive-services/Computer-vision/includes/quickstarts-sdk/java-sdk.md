@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6eacaf2ec75c485dbdd7e66a73cdd36787da6126
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9186cb9e8a603330d8fac6003b4b27bffbc29688
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753057"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050278"
 ---
 <a name="HOLTop"></a>
 
@@ -204,26 +204,47 @@ Aşağıdaki kod, &mdash; küçük resim veya çizgi çizme gibi görüntü tür
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
-Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir.
+Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Bu bölüm, bir `ReadFromFile` yerel dosya yolu alan ve görüntünün metnini konsola yazdıran bir yöntemini tanımlar.
 
 > [!NOTE]
 > Ayrıca, URL 'sini kullanarak uzak görüntüdeki metni okuyabilirsiniz. Uzak görüntüleri kapsayan senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
 
-### <a name="call-the-recognize-api"></a>Tanıma API 'sini çağırma
+### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
-İlk olarak, verilen görüntü için **recognizePrintedTextInStream** yöntemini çağırmak üzere aşağıdaki kodu kullanın. Bu kodu projenize eklediğinizde, değerini `localTextImagePath` Yerel görüntkodunuzla değiştirin. Burada kullanmak üzere [örnek bir görüntü](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) indirebilirsiniz.
+Projenizin **src/Main/** klasöründe bir **kaynak/** klasör oluşturun ve metin okumak istediğiniz bir görüntü ekleyin. Burada kullanmak üzere [örnek bir görüntü](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) indirebilirsiniz.
+
+Ardından aşağıdaki yöntem tanımını **ComputerVisionQuickstarts** sınıfınıza ekleyin. Gerekirse, değerini `localFilePath` resim dosyanıza uyacak şekilde değiştirin. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
+
+### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
+
+Ardından, belirtilen görüntü için **readInStreamWithServiceResponseAsync** yöntemini çağırmak üzere aşağıdaki kodu ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Sonuçları Yazdır
 
-Aşağıdaki kod bloğu döndürülen metni işler ve her satırdaki ilk sözcüğü yazdırmak üzere ayrıştırır. Bu kodu bir **Ocrresult** örneğinin yapısını hızlıca anlamak için kullanabilirsiniz.
+Aşağıdaki kod bloğu, okuma çağrısının yanıtından işlem KIMLIĞINI ayıklar. Metin okuma sonuçlarını konsola yazdırmak için bir yardımcı yöntemle bu KIMLIĞI kullanır. 
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_response)]
 
-Son olarak, try/catch bloğunu ve yöntem tanımını kapatın.
+Try/catch bloğunu ve yöntem tanımını kapatın.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
+
+### <a name="get-read-results"></a>Okuma sonuçları al
+
+Ardından, yardımcı yöntemi için bir tanım ekleyin. Bu yöntem, okuma işlemini sorgulamak ve kullanılabilir olduğunda OCR sonuçlarını almak için önceki adımdaki işlem KIMLIğINI kullanır.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_call)]
+
+Yöntemin geri kalanı, OCR sonuçlarını ayrıştırır ve bunları konsola yazdırır.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_print)]
+
+Son olarak, ilk yanıttan işlem KIMLIĞINI çıkaran, yukarıda kullanılan diğer yardımcı yöntemi ekleyin.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

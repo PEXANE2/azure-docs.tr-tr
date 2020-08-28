@@ -3,12 +3,12 @@ title: Azure geçişi için Hyper-V geçişi desteği
 description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871505"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051160"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 
@@ -26,7 +26,10 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 | **Dağıtım**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. <br/>Azure geçişi çoğaltma yazılımı (Hyper-V çoğaltma sağlayıcısı), Hyper-V konaklarına yüklenir.|
 | **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. |
 | **Konak işletim sistemi** | En son güncelleştirmeleri içeren Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. Bu işletim sistemlerinin Sunucu Çekirdeği yüklemesinin de desteklendiğini unutmayın. |
+| **Diğer yazılım gereksinimleri** | .NET Framework 4,7 veya üzeri |
 | **Bağlantı noktası erişimi** |  VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.
+| **Boş disk alanı (önbellek)** |  600 GB |
+| **Boş disk alanı (bekletme diski)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V Sanal Makineleri
@@ -39,6 +42,7 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 | **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Geçişten önce ayarları el ile yapın. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir. |
 | **Linux önyüklemesi**                 | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir. |
 | **UEFı önyüklemesi**                  | Destekleniyor. Azure 2. nesil VM tarafından desteklenen bir VM boyutu seçtiğinizden emin olun  |
+| **UEFı-güvenli önyükleme**         | Geçiş için desteklenmez.|
 | **Disk boyutu**                  | işletim sistemi diski için 2 TB, veri diskleri için 4 TB.|
 | **Disk numarası** | VM başına en fazla 16 disk.|
 | **Şifrelenmiş diskler/birimler**    | Geçiş için desteklenmez.|

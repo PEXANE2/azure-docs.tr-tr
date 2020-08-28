@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23b812da8c84ebf055ac4eabdc4649828c139a7f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414385"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051024"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarını kullanarak sabit uzunluklu metin dosyalarını işleyin
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Microsoft Azure Data Factory veri akışlarını eşleme kullanarak, sabit genişlikli metin dosyalarından verileri dönüştürebilirsiniz. Aşağıdaki görevde, bir metin dosyası için sınırlayıcı olmadan bir veri kümesi tanımlayacağız ve sonra sıra konumuna göre alt dize bölmelerini ayarlayacağız.
 
@@ -83,7 +83,7 @@ Microsoft Azure Data Factory veri akışlarını eşleme kullanarak, sabit geni�
 
     ![Sabit genişlikli havuz](media/data-flow/fwsink.png)
 
-    Çıktının şöyle göründüğü aşağıda verilmiştir:
+    Çıkış şöyle görünür:
 
     ![Sabit genişlikli çıkış](media/data-flow/fxdoutput.png)
 

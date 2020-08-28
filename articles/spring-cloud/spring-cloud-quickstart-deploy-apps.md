@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 770dd021a09e3ba0b1c2c6742ded3a73424b042f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8931c22c3656cf9708756153268ab1d9d87b8343
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951753"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050837"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
@@ -23,7 +23,7 @@ Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spri
 
 Azure CLı veya Maven kullanarak dağıtımdan önce [Azure Spring Cloud 'ın bir örneğini](spring-cloud-quickstart-provision-service-instance.md) sağlayan örnekleri tamamlayın ve [yapılandırma sunucusunu ayarlayın](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
@@ -68,7 +68,7 @@ Projenin derlenmesi yaklaşık 5 dakika sürer. Tamamlandıktan sonra, ilgili kl
     az spring-cloud app create --name account-service
     ```
 
-1. Uygulamalarımızı gerçekten Azure 'a dağıtmamız gerekiyor. Üç uygulamayı da dağıtmak için aşağıdaki komutları kullanın:
+1. Önceki adımda oluşturulan uygulamaları Azure 'a dağıtmemiz gerekiyor. Üç uygulamayı da dağıtmak için aşağıdaki komutları kullanın:
 
     ```azurecli
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
@@ -118,10 +118,10 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
     ```
     
     Şunları seçmeniz istenir:
-    * **Modüller:** Select `gateway` , `auth-service` ve ' Account-Service ' ')
-    * **Abonelik:** Azure Spring Cloud Instance ile aboneliğiniz oluşturuldu
-    * **Hizmet örneği:** oluşturduğunuz Azure Spring Cloud örneğinin adı
-    * **Ortak uç nokta:** Belirtilen projeler listesinde, `gateway` ortak erişim sağlamak için öğesine karşılık gelen sayıyı girin.
+    * **Modüller:** `gateway`, `auth-service` Ve seçin `account-service` .
+    * **Abonelik:** Bu, Azure yay bulutu örneği oluşturmak için kullanılan aboneliğiniz.
+    * **Hizmet örneği:** Bu, Azure Spring Cloud örneğinizin adıdır.
+    * **Ortak uç nokta:** Belirtilen projeler listesinde, öğesine karşılık gelen sayıyı girin `gateway` .  Bu, BT 'ye Genel erişim sağlar.
 
 1. Pod artık eklenti bağımlılıklarını ve yapılandırmasını içerir. Aşağıdaki komutu kullanarak uygulamaları dağıtın. 
 
@@ -158,13 +158,13 @@ Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum 
 
     ![Azure 'a dağıtma Tamam](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. İletişim kutusunun **başlatma öncesi** bölümünde * Maven hedefini Çalıştır * * öğesine çift tıklayın.
+1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır*' a çift tıklayın.
 1. **Çalışma dizini** metin kutusunda, *Pize ölçümleri/ağ geçidi* klasörüne gidin.
 1. **Komut satırı** metin kutusuna *Package-dskiptests*yazın. **Tamam** düğmesine tıklayın.
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. Eklenti uygulamada komutunu çalıştırır `mvn package` `gateway` ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Azure yay bulutuna auth-Service ve Account-Service uygulamaları dağıtma
-' İ dağıtmak için yukarıdaki adımları yineleyebilirsiniz `auth-service` ve `account-service` uygulamaları Azure Spring Cloud 'a uygulayabilirsiniz. Emin ol:
+' İ dağıtmak için yukarıdaki adımları yineleyebilirsiniz `auth-service` ve `account-service` uygulamaları Azure Spring Cloud 'a uygulayabilirsiniz:
 
 1. Uygulamayı tanımlamak için **adı** ve **yapıtı** değiştirin `auth-service` .
 1. **Uygulama:** metin kutusunda, uygulamalar oluşturmak Için **uygulama oluştur...** seçeneğini belirleyin `auth-service` .

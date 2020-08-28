@@ -1,7 +1,7 @@
 ---
 title: Web API 'Lerini çağıran mobil uygulamaları kaydetme | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir mobil uygulama oluşturmayı öğrenin
+description: Web API 'Leri (uygulamanın kaydı) çağıran bir mobil uygulama oluşturmayı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652635"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047682"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
 
@@ -40,7 +40,7 @@ Ayrıca, B2C yetkilisini ve ilkesini geçiren sosyal kimlikleri kullanarak kulla
 
 Daha fazla bilgi için bkz. [senaryolar ve desteklenen kimlik doğrulaması akışları](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) ve [senaryolar ve desteklenen platformlar ve diller](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform yapılandırma ve yeniden yönlendirme URI 'Leri  
+## <a name="platform-configuration-and-redirect-uris"></a>Platform yapılandırma ve yeniden yönlendirme URI 'Leri
 
 ### <a name="interactive-authentication"></a>Etkileşimli kimlik doğrulaması
 
@@ -72,20 +72,20 @@ Adımları tamamladığınızda, aşağıdaki görüntüde olduğu gibi yeniden 
 
 Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Bildirim için önerilen biçim aşağıda verilmiştir:
 
-- **iOS**:`msauth.<BUNDLE_ID>://auth` 
-  - Örneğin, şunu girin`msauth.com.yourcompany.appName://auth`
-- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
+  - Örneğin, şunu girin `msauth.com.yourcompany.appName://auth`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Anahtar araç komutu aracılığıyla sürüm anahtarını veya hata ayıklama anahtarını kullanarak Android imza karmasını oluşturabilirsiniz.
 
 ### <a name="username-password-authentication"></a>Kullanıcı adı-parola kimlik doğrulaması
 
-Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış Microsoft Identity Platform sürüm 2,0 uç noktasına gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır. 
+Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış Microsoft Identity Platform sürüm 2,0 uç noktasına gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 
 Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirlemeniz gerekir. Bunu yapmak için uygulamanızın **kimlik doğrulama** bölümünde öğesini başlatın. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak bir istemci olarak değerlendir**için **Evet**' i seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 
-Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uygulamanızın temsilci izinleri istemesi gerekiyor. Bu izinler Ayrıca kapsamlar olarak adlandırılır. İstediğiniz deneyime bağlı olarak, Azure portal aracılığıyla statik olarak temsilci izinleri isteyebilirsiniz. Ya da çalışma zamanında dinamik olarak istek yapabilirsiniz. 
+Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uygulamanızın temsilci izinleri istemesi gerekiyor. Bu izinler Ayrıca kapsamlar olarak adlandırılır. İstediğiniz deneyime bağlı olarak, Azure portal aracılığıyla statik olarak temsilci izinleri isteyebilirsiniz. Ya da çalışma zamanında dinamik olarak istek yapabilirsiniz.
 
 İzinleri statik olarak kaydederek, yöneticilerin uygulamanızı kolayca onaylamasını sağlayabilirsiniz. Statik kayıt önerilir.
 

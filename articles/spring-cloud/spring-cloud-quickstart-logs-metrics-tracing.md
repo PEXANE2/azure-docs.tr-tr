@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9f0ba36abac045d1deb6b4179fbfb6aa32d4dc9a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9f03c355e1e619d004c8ec8c1cc2f91932db744
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009787"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046842"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme
 
-Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar. Günlük akışını, Log Analytics, ölçümleri ve dağıtılmış Plımetrik uygulamalarıyla dağıtılmış izlemeyi nasıl kullanacağınızı adım adım göstereceğiz.
+Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar. Aşağıdaki yordamlarda, dağıtılmış Plımetrik uygulamalarıyla günlük akışı, Log Analytics, ölçüm ve dağıtılmış izlemenin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önceki adımları doldurun: 
 

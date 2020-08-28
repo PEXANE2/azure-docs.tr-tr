@@ -7,16 +7,18 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 09820da3fcebe3614852f36180a29f35505039b8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 163940095c4a3a25123706ca47a7d059897cad20
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496857"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046876"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma
 
 Bu hızlı başlangıçta, mevcut bir yay bulutu uygulamasının Azure 'a nasıl dağıtılacağı gösterilir. Azure Spring Cloud, Azure 'da Spring Cloud tabanlı mikro hizmet uygulamalarını kolayca çalıştırmanıza olanak sağlar. 
+
+Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 Bu öğreticide kullanılan örnek uygulama kodunu [GitHub örnekleri depomız](https://github.com/Azure-Samples/PiggyMetrics)bölümünde bulabilirsiniz. İşiniz bittiğinde, belirtilen örnek uygulama çevrimiçi olarak erişilebilir ve Azure portal aracılığıyla yönetilmeye hazırlıyordu.
 
@@ -53,11 +55,11 @@ Bu hızlı başlangıcı tamamlamak için:
 
 3. Sonuçlardan **Azure yay bulutu** ' nı seçin.
 
- ![ASC simgesi](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
+ ![ASC başlangıcı](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
 4. Azure yay bulutu sayfasında **+ Ekle**' ye tıklayın.
 
- ![ASC simgesi](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+ ![ASC ekleme](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
     - **Abonelik**: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.  Bu aboneliğin Azure yay bulutu için izin verilenler listenize eklendiğinden emin olun.
@@ -78,7 +80,7 @@ Bu hızlı başlangıcı tamamlamak için:
 9. **İzlemeyi** , gereksinimlerinize göre *Evet* veya *Hayır* olarak ayarlayabilirsiniz.  **Izlemeyi etkinleştir** ' i Evet olarak ayarlarsanız, var olan bir uygulama öngörüyü seçin veya yeni bir tane oluşturun. **Application Insights** belirtimi olmadan bir doğrulama hatası olur.
 
 
-    ![İzleme](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+    ![İzleme görünümü](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
 
 10. **Gözden geçir ve oluştur**’a tıklayın.
 
@@ -98,7 +100,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 3. Yaptığınız değişiklikleri kaydetmek için **Apply**'ı (Uygula) seçin.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![ASC portalı](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
@@ -164,11 +166,11 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 3. Ağ geçidine genel bir uç nokta atamak için **uç nokta ata** ' yı seçin. Bu işlem birkaç dakika sürebilir.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+    ![ASC portalı uç noktası](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
 4. Çalışan uygulamanızı görüntülemek için tarayıcınıza atanan ortak uç noktayı ( **URL etiketli URL**) girin.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
+    ![ASC portalı örnek uygulaması](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)

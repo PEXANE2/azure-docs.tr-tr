@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604731"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047216"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -33,7 +33,7 @@ ms.locfileid: "88604731"
 
 Anında yükleme, [çoğaltmayı etkinleştirmek](vmware-azure-enable-replication.md#enable-replication)için Azure Portal çalıştırılan işin integral bir parçasıdır. Korumak ve çoğaltmayı etkinleştirmek istediğiniz VM kümesini seçtikten sonra, yapılandırma sunucusu Mobility hizmet aracısını sunuculara gönderir, aracıyı kurar ve yapılandırma sunucusu ile aracının kaydını tamamlar.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Tüm gönderme yükleme [önkoşullarının](vmware-azure-install-mobility-service.md) karşılandığından emin olun.
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
@@ -69,7 +69,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-ui"></a>Kullanıcı arabirimini kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
@@ -97,7 +97,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Komut istemi kullanarak Mobility hizmetini yükler
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Tüm sunucu yapılandırmalarının, [VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma Için destek matrisindeki](vmware-physical-azure-support-matrix.md)ölçütlere uygun olduğundan emin olun.
 - Sunucunun işletim sistemi için [yükleyiciyi bulun](#locate-installer-files) .
@@ -108,7 +108,7 @@ Mobility hizmetinin göndererek yüklenmesi sırasında aşağıdaki adımlar ge
 
   ```cmd
   cd C:\Temp
-  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   ```

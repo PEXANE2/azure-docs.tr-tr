@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253282"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049426"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Koşullu erişim öngörüleri ve raporlama
 
@@ -97,6 +97,22 @@ Koşulların her biri için kullanıcıların veya oturum açma işlemlerinin d�
 
 Ayrıca, panonun alt kısmındaki oturum açma işlemlerini arayarak belirli bir kullanıcının oturum açma işlemlerini araştırabilirsiniz. Soldaki sorgu en sık kullanılan kullanıcıları görüntüler. Bir kullanıcı seçildiğinde sorgu sağa filtreedilir.  
 
+> [!NOTE]
+> Oturum açma günlüklerini karşıdan yüklerken, yalnızca koşullu erişim rapor sonuç verilerini dahil etmek için JSON biçimini seçin.
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma
+
+Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırmak için:
+
+1. **Azure Portal** , koşullu erişim Yöneticisi, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
+1. Var olan bir ilkeyi seçin veya yeni bir ilke oluşturun.
+1. **Ilkeyi etkinleştir** altında, değiştirme modunu **yalnızca rapor** moduna ayarlayın.
+1. **Kaydet**’i seçin
+
+> [!TIP]
+> Mevcut bir **Ilkenin** açık olan ilke durumunu yalnızca raporun **üzerine** Düzenle **-yalnızca** mevcut ilke zorlamayı devre dışı bırakır. 
+
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Sorgular bir izin hatası nedeniyle neden başarısız oluyor?
@@ -111,6 +127,10 @@ Ayrıca, panonun alt kısmındaki oturum açma işlemlerini arayarak belirli bir
 ![Başarısız sorguların sorunlarını giderme](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Azure AD oturum açma günlüklerinin Log Analytics çalışma alanına akışı hakkında daha fazla bilgi için Azure [ad günlüklerini Azure izleyici günlükleriyle tümleştirme](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)makalesine bakın.
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>Çalışma kitabındaki sorgular neden başarısız oluyor?
+
+Müşteriler, çalışma kitabıyla yanlış veya birden çok çalışma alanı ilişkilendirilirse sorguların bazen başarısız olduğunu fark etmiş olur. Bu sorunu gidermek için, çalışma kitabının en üstünde **Düzenle** ' ye ve ardından ayarlar dişli ' a tıklayın. Çalışma kitabıyla ilişkilendirilmemiş çalışma alanlarını seçin ve kaldırın. Her çalışma kitabıyla ilişkili yalnızca bir çalışma alanı olmalıdır.
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Koşullu erişim ilkeleri parametresi neden boş?
 
@@ -134,4 +154,8 @@ Oturum açma birimi Log Analytics sorgu kapasitesini aşarsa çalışma kitabı 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu erişim yalnızca rapor modu](concept-conditional-access-report-only.md)
+- [Koşullu erişim yalnızca rapor modu](concept-conditional-access-report-only.md)
+
+- Azure AD çalışma kitapları hakkında daha fazla bilgi için [Azure izleyici çalışma kitaplarını Azure Active Directory raporları için kullanma](../reports-monitoring/howto-use-azure-monitor-workbooks.md)makalesine bakın.
+
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)

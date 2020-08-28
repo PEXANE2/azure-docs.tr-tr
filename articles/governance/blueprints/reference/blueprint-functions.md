@@ -1,14 +1,14 @@
 ---
 title: Azure şemaları işlevleri
 description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
-ms.date: 05/22/2020
+ms.date: 08/27/2020
 ms.topic: reference
-ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422853"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050769"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
@@ -19,7 +19,7 @@ Aşağıdaki işlevler desteklenir:
 - [Yapıt](#artifacts)
 - [Concat](#concat)
 - [parametrelere](#parameters)
-- [resourceGroup](#resourcegroup)
+- [Kaynak](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [aboneliğiniz](#subscription)
 
@@ -34,9 +34,9 @@ Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| artifactName |Yes |dize |Şema yapıtı adı. |
+| artifactName |Yes |string |Şema yapıtı adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -123,10 +123,10 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dize1 |Yes |dize |Birleştirme için ilk değer. |
-| ek bağımsız değişkenler |No |dize |Birleştirme için ek değerler sıralı sırada |
+| dize1 |Yes |string |Birleştirme için ilk değer. |
+| ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -148,9 +148,9 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |dize |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -269,9 +269,9 @@ Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. `resource
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Yes |dize |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
+| placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

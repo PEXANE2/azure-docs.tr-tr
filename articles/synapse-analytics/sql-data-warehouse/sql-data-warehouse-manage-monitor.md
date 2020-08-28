@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211706"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048033"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMVs kullanarak Azure SYNAPSE Analytics SQL havuzu iş yükünüzü izleme
 
@@ -102,8 +102,8 @@ Bir DSQL planı beklenenden uzun sürüyorsa, nedeni çok sayıda DSQL adımı o
 
 Tek bir adım hakkında daha fazla ayrıntı araştırmak için, uzun süreli sorgu adımının *operation_type* sütunu ve **adım dizini**' ni aklınızda koyun:
 
-* **SQL Işlemlerinde**adım 3A ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
-* **Veri taşıma işlemleri**için adım 3bile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
+* **SQL işlemleri**için adım 3 ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
+* **Veri taşıma işlemleri**için 4. adım ile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>3. Adım: dağıtılmış veritabanlarında SQL 'i araştırın
 

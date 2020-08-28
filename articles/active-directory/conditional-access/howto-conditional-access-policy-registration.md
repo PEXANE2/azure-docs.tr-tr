@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993754"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049103"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu erişim: güvenlik bilgilerini kaydettirme güvenliğini sağlama
 
@@ -67,6 +67,6 @@ Bazıları, yukarıdaki 6. adımdaki konum yerine cihaz durumunu kullanmayı se�
 
 [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-insights-reporting.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

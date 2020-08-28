@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835893"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049698"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
@@ -80,11 +80,8 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad etiketi":::
 
-1. Hedef konuma karşılık gelen Site Recovery IP 'Leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
-
-   | Konum | Site Recovery IP adresi | Site Recovery izleme IP adresi |
-   | --- | --- | --- |
-   | Central US | 40.69.144.231 | 52.165.34.144 |
+1. Yukarıdaki güvenlik kurallarına benzer şekilde, hedef konuma karşılık gelen NSG 'de "EventHub. Merkezileştirus" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
+1. NSG 'de "Azuresterecovery" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
 
 #### <a name="nsg-rules---central-us"></a>NSG kuralları-Orta ABD
 
@@ -100,11 +97,8 @@ Bu örnekte, çoğaltmanın hedef bölgeden kaynak bölgeye yük devretme sonras
    - **Hedef hizmet etiketi**: _AzureActiveDirectory_
    - **Hedef bağlantı noktası aralıkları**: _443_
 
-1. Kaynak konumuna karşılık gelen Site Recovery IP 'Leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
-
-   | Konum | Site Recovery IP adresi | Site Recovery izleme IP adresi |
-   | --- | --- | --- |
-   | Doğu ABD | 13.82.88.226 | 104.45.147.24 |
+1. Yukarıdaki güvenlik kurallarına benzer şekilde, kaynak konuma karşılık gelen NSG 'de "EventHub. EastUS" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
+1. NSG 'de "Azuresterecovery" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırma başarısız oldu (151197)
 
@@ -127,8 +121,8 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
 1. Mobility hizmeti Aracısı Windows ve Linux üzerinde IE 'deki proxy ayarlarını algılar `/etc/environment` .
 1. Proxy 'yi yalnızca Azure Site Recovery Mobility hizmeti için ayarlamayı tercih ediyorsanız, şu adreste bulunan _ProxyInfo. conf_ dosyasında proxy ayrıntılarını sağlayabilirsiniz:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo. conf_ _dosyası aşağıdaki ını_ biçiminde proxy ayarlarına sahip olmalıdır:
 
@@ -147,4 +141,4 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure VM 'lerini başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)
+[Azure sanal makinelerini başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)

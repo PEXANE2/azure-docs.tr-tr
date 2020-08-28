@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 989c6464e45b95a276746b6d57e0ca08a345296c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931497"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051075"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mürekkep Tanıma API’si nedir?
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 Mürekkep tanıyıcı bilişsel hizmeti, dijital mürekkep içeriğini çözümlemek ve tanımak için bulut tabanlı bir REST API sağlar. Optik karakter tanıma (OCR) kullanan hizmetlerden farklı olarak, API, giriş olarak dijital mürekkep kontur verileri gerektirir. Dijital mürekkep vuruşları, dijital kalemlerin veya parmakların gibi giriş araçlarının hareketini temsil eden, zaman sıralı 2B puntolar (X, Y koordinatları) kümesidir. Daha sonra bu şekil, girdiden şekilleri ve el yazısı içeriğini tanır ve tüm tanınan varlıkları içeren bir JSON yanıtı döndürür.
 

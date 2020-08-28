@@ -1,14 +1,14 @@
 ---
 title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383603"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051511"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -28,7 +28,7 @@ Ancak, kilitleme modları Azure şemaları dışında değiştirilemez.
 |-|-|-|-|
 |Kilitleme|*|Kilitlenmedi|Kaynaklar Azure şemaları tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
 |Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
-|Salt Okunur|Kaynak olmayan Grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez--değişiklik yok ve silinemez.|
+|Salt Okunur|Kaynak olmayan Grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez. Değişiklik yok ve silinemez.|
 |Silme|*|Silinemiyor|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 
 ## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
@@ -182,8 +182,8 @@ Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-cont
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Yeni kaynakları koru](../tutorials/protect-new-resources.md) öğreticisini izleyin.
-- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema yaşam döngüsü](./lifecycle.md) hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](./parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](./sequencing-order.md) özelleştirmeyi öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

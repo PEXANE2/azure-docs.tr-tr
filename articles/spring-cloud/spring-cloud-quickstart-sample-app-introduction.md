@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d833c8f136a71d563ce10240f03e2c68e9131687
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: d8eee715a3ac2256838b37c1c6722aa1307f6dd0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951897"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046791"
 ---
 # <a name="introduction-to-piggy-metrics-sample-app"></a>Piggy ölçümleri örnek uygulamasına giriş
 
-Bu hızlı başlangıçta, Azure Spring Cloud Service 'e bir uygulama dağıtmayı göstermek için Piggy ölçümleri adlı bir kavram kanıtı kişisel finans örneği kullanacağız. Piggy ölçümleri, mikro hizmet mimarisi modelini gösterir ve aşağıdaki bölümlerde hizmetler dökümü vurgulanacak. Hizmet bulma, yapılandırma sunucusu 'ndan Günlükler, ölçümler ve dağıtılmış izleme 'den güvenli bir şekilde kullanıma hazır Azure Spring Cloud özellikleri ile Azure 'a nasıl dağıtıldığını öğreneceksiniz.
+Bu hızlı başlangıçta, Azure Spring Cloud Service 'e bir uygulamanın nasıl dağıtılacağını göstermek için Piggy ölçümleri adlı bir kişisel finans örneği kullanırız. Piggy ölçümleri, mikro hizmet mimarisi modelini gösterir ve hizmet dökümünü vurgular. Hizmet bulma, yapılandırma sunucusu, Günlükler, ölçümler ve dağıtılmış izleme gibi güçlü Azure Spring Cloud Capabilities ile Azure 'a nasıl dağıtıldığını öğreneceksiniz.
 
 Azure yay bulutu dağıtım örneklerini izlemek için, yalnızca kaynak kodun gerekli olduğu şekilde sağlandığı konuma ihtiyacınız vardır.
 
 ## <a name="functional-services"></a>İşlevsel hizmetler
-Piggy ölçümleri üç çekirdekli mikro hizmette bulunur. Bunların hepsi, iş etki alanları etrafında düzenlenmiş bağımsız olarak dağıtılabilir uygulamalardır.
+Piggy ölçümleri üç çekirdekli mikro hizmette bulunur. Bunların hepsi, iş etki alanlarına göre düzenlenmiş bağımsız olarak dağıtılabilir uygulamalardır.
 
 * **Hesap hizmeti (dağıtılacak)**: genel kullanıcı giriş mantığını ve doğrulamayı içerir: giriş/gider öğeleri, tasarrufları ve hesap ayarları.
 * **İstatistik hizmeti (Bu hızlı başlangıçta kullanılmıyor)**: büyük istatistik parametrelerinde hesaplamalar yapar ve her hesap için zaman serisini yakalar. DataPoint temel para birimine ve zaman dilimine göre normalleştirilmiş değerler içerir. Bu veriler nakit akışı Dynamics 'in hesap ömrünü izlemek için kullanılır.

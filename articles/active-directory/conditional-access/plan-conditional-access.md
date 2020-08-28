@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948904"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049936"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -242,7 +242,7 @@ Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına 
 
 [Yalnızca rapor modu ](concept-conditional-access-report-only.md) , yöneticilerin, kendi ortamlarında ETKINLEŞTIRILMEDEN önce CA ilkelerinin etkilerini değerlendirmelerini sağlar.
 
-[CA ilkesinde yalnızca rapor modunu yapılandırmayı](howto-conditional-access-report-only.md)öğrenin.
+[CA ilkesinde yalnızca rapor modunu yapılandırmayı](howto-conditional-access-insights-reporting.md)öğrenin.
 
 ### <a name="plan-for-disruption"></a>Kesintiyi planlayın
 

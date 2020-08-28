@@ -1,14 +1,14 @@
 ---
 title: Dinamik şemaları oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970646"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051568"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -55,11 +55,11 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
-1. Mevcut bir şema öğesine tıklayın ve ardından şemayı **Düzenle** ' ye tıklayın veya **+ şema oluştur** ' a tıklayın ve **temel** bilgiler sekmesindeki bilgileri doldurun.
+1. Mevcut bir şema seçin ve ardından şemayı **Düzenle** ' yi seçin veya **+ şema oluştur** ' u seçin ve **temel** bilgiler sekmesindeki bilgileri doldurun.
 
-1. **İleri: yapıtlar** ' e tıklayın veya **yapılar** sekmesine tıklayın.
+1. **İleri: yapıtlar** ' ı seçin veya **yapılar** sekmesini seçin.
 
-1. Parametre seçeneklerine sahip şema öğesine eklenen yapılar, **Parameters** sütununda **doldurulmuş X/Y parametrelerini** görüntüler. Yapıt parametrelerini düzenlemek için yapıt satırına tıklayın.
+1. Parametre seçeneklerine sahip şema öğesine eklenen yapılar, **Parameters** sütununda **doldurulmuş X/Y parametrelerini** görüntüler. Yapıt parametrelerini düzenlemek için yapıt satırını seçin.
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Şema tanımında şema parametreleri" border="false":::
 
@@ -172,7 +172,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
-1. Atamak istediğiniz şema öğesine sağ tıklayın. Şema **ata veya atamak istediğiniz şema '** i seçin, ardından şema **ata** düğmesine tıklayın.
+1. Atamak istediğiniz şema öğesine sağ tıklayın. Şemayı **ata veya atamak istediğiniz şema '** i seçin, sonra şema **ata** düğmesini kullanın.
 
 1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
@@ -234,8 +234,8 @@ Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer giri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Şema işlevlerinin](../reference/blueprint-functions.md)listesine bakın.
-- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
-- [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Şema yaşam döngüsü](./lifecycle.md) hakkında bilgi edinin.
+- [Şema sıralama düzenini](./sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](./resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

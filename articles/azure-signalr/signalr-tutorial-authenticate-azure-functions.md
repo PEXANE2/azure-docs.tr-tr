@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 72f6cee18664f63e36c38499e77f4c0ba7177c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386869"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050463"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Öğretici: Azure İşlevleri ile Azure SignalR Hizmeti kimlik doğrulaması
 
@@ -38,9 +38,13 @@ Bu öğreticiyi oluşturmak için aşağıdaki yazılımlar gereklidir.
   * [Azure İşlevleri](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) - VS Code'da Azure İşlevleri ile çalışmak için
   * [Canlı Sunucu](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - Test amacıyla yerel ortamda web sayfası sunmak için
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
+
 ## <a name="sign-into-the-azure-portal"></a>Azure portalda oturum açma
 
 [Azure portala](https://portal.azure.com/) gidin ve kimlik bilgilerinizle oturum açın.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Hizmeti örneği oluşturma
 
@@ -66,7 +70,8 @@ Azure İşlevleri uygulamasını yerel ortamda derleyecek ve test edeceksiniz. U
 1. Örnek dağıtıldıktan sonra portalda açın ve ayarlar sayfasını bulun. Hizmet modu ayarını *sunucusuz*olarak değiştirin.
 
     ![SignalR hizmeti modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
-
+    
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
 
 ## <a name="initialize-the-function-app"></a>İşlev uygulamasını başlatma
 
@@ -131,7 +136,7 @@ Azure İşlevleri çalışma zamanını yerel ortamda çalıştırma ve hata ay�
 
 1. Dosyayı kaydedin.
 
-    
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Kullanıcıların SignalR Hizmetinde kimlik doğrulamasını sağlayacak işlevi oluşturma
 
@@ -146,7 +151,7 @@ Sohbet uygulaması tarayıcıda ilk açıldığında Azure SignalR Hizmetine ba�
 
 1. İstendiğinde aşağıdaki bilgileri girin.
 
-    | Name | Değer |
+    | Ad | Değer |
     |---|---|
     | İşlev uygulamasının klasörü | Ana proje klasörünü seçin |
     | Şablon | HTTP Tetikleyicisi |
@@ -195,6 +200,8 @@ Sohbet uygulaması tarayıcıda ilk açıldığında Azure SignalR Hizmetine ba�
 
     Bu işlev giriş bağlamasındaki SignalR bağlantısı bilgilerini alır ve HTTP yanıtı gövdesinde istemciye döndürür. SignalR istemcisi bu bilgileri SignalR hizmeti örneğine bağlanmak için kullanır.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
+
 ## <a name="create-a-function-to-send-chat-messages"></a>Sohbet iletisi göndermek için işlev oluşturma
 
 Web uygulaması, sohbet iletisi göndermek için bir HTTP API'sine ihtiyaç duyar. SignalR Hizmetini kullanarak bağlı olan tüm istemcilere ileti gönderen *SendMessage* adlı bir HTTP ile tetiklenen işlev oluşturacaksınız.
@@ -205,7 +212,7 @@ Web uygulaması, sohbet iletisi göndermek için bir HTTP API'sine ihtiyaç duya
 
 1. İstendiğinde aşağıdaki bilgileri girin.
 
-    | Name | Değer |
+    | Ad | Değer |
     |---|---|
     | İşlev uygulamasının klasörü | ana proje klasörünü seçin |
     | Şablon | HTTP Tetikleyicisi |
@@ -276,6 +283,8 @@ Web uygulaması, sohbet iletisi göndermek için bir HTTP API'sine ihtiyaç duya
 
 1. Dosyayı kaydedin.
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
+
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>Sohbet istemcisi web kullanıcı arabirimini oluşturma ve çalıştırma
 
 Sohbet uygulamasının arabirimi, Vue JavaScript çerçevesiyle oluşturulan basit bir tek sayfalı uygulamadır (SPA). İşlev uygulamasından ayrı barındırılacaktır. Yerel ortamda web arabirimini çalıştırmak için Canlı Sunucu VS Code uzantısını kullanacaksınız.
@@ -293,6 +302,8 @@ Sohbet uygulamasının arabirimi, Vue JavaScript çerçevesiyle oluşturulan bas
 1. **index.html** dosyası açıkken VS Code komut paletini açarak (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`) ve **Canlı Sunucu: Canlı Sunucu ile Aç**'ı seçerek Canlı Sunucuyu başlatın. Canlı Sunucu uygulamayı bir tarayıcıda açar.
 
 1. Uygulama açılır. Sohbet kutusuna ileti yazıp Enter tuşuna basın. Yeni iletileri görmek için uygulamayı yenileyin. Kimlik doğrulaması yapılandırılmadığından tüm iletiler "anonim" olarak gönderilir.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
 
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Azure'a dağıtma ve kimlik doğrulamasını etkinleştirme
 
@@ -372,7 +383,7 @@ Azure depolama hesabı, Azure 'da çalışan bir işlev uygulaması için gerekl
 
 1. İstendiğinde aşağıdaki bilgileri girin.
 
-    | Name | Değer |
+    | Ad | Değer |
     |---|---|
     | Dağıtılacak klasör | Ana proje klasörünü seçin |
     | Abonelik | Aboneliğinizi seçin |
@@ -490,9 +501,13 @@ Tebrikler! Gerçek zamanlı bir sunucusuz sohbet uygulaması dağıttınız!
 
 ![Tanıtım](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu öğretici ile oluşturulan kaynakları temizlemek için Azure portalı kullanarak kaynak grubunu silebilirsiniz.
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -500,3 +515,6 @@ Bu öğreticide, Azure İşlevleri’ni Azure SignalR Hizmeti ile birlikte kulla
 
 > [!div class="nextstepaction"]
 > [Azure Işlevleri ile gerçek zamanlı uygulamalar oluşturun](signalr-concept-azure-functions.md)
+
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsauth)
+

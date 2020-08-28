@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762428"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048542"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -20,6 +20,7 @@ Bu öğreticide, Azure geçişi: Sunucu değerlendirmesi ve Azure geçişi: sunu
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
+>
 > * Geçiş için önkoşulları doğrulayın.
 > * Azure geçişi ile Azure kaynakları hazırlama: sunucu geçişi. Azure hesabınız ve kaynaklarınızın Azure geçişi ile çalışması için izinleri ayarlayın.
 > * AWS EC2 örneklerini geçiş için hazırlayın.
@@ -55,9 +56,9 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-- Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
+- Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
 - AWS sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
 - Azure 'a çoğaltılan AWS VM 'lerinin [Azure VM gereksinimleriyle](./migrate-support-matrix-physical-migration.md#azure-vm-requirements) uyumlu olduğunu doğrulayın.
 - Azure 'a geçirmeden önce VM 'lerde gereken bazı değişiklikler vardır.
@@ -252,7 +253,7 @@ Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olmas�
 4. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin. 
 5. **Konuk kimlik bilgileri**' nde, Mobility hizmetini el ile yüklemek için lütfen daha önce [çoğaltma yükleyicisi kurulumu](#download-the-replication-appliance-installer) sırasında oluşturulan kukla hesabı seçin (gönderme yüklemesi desteklenmez). Ileri ' ye tıklayın **: sanal makineler**.   
  
-    ![Sanal makineleri çoğaltma](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Çoğaltma ayarları](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **Sanal makinelerde** **geçiş ayarlarını bir değerlendirmede içeri aktar**bölümünde, varsayılan ayar Hayır olarak kalsın **, geçiş ayarlarını el ile belirteceğiz**.
 7. Geçirmek istediğiniz her VM 'yi denetleyin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
@@ -381,11 +382,23 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 **Soru:** AWS VM 'lerimi bulmaya çalışırken "BIOS GUID 'SI getirilemedi" hatasını alıyorum   
 **Cevap:** Her zaman kimlik doğrulama için kök oturum açma kullanın, herhangi bir sözde Kullanıcı değil. AWS VM 'Leri için desteklenen işletim sistemlerini de gözden geçirin.  
 
-**Soru:** Çoğaltma durumum ilerlemiyor    
+**Soru:** Çoğaltma durumum ilerlemiyor   
 **Cevap:** Çoğaltma gerecinizin gereksinimleri karşılayıp karşılamadığını denetleyin. Çoğaltma gereci TCP bağlantı noktası 9443 ve HTTPS 443 veri aktarımı için gerekli bağlantı noktalarını etkinleştirdiğinizden emin olun. Aynı projeye bağlı çoğaltma gerecinin eski bir sürümü olmadığından emin olun.   
 
 **Soru:** Uzak Windows Yönetim hizmeti 'nden 504 HTTP durum kodu nedeniyle Azure geçişi 'ni kullanarak AWS örneklerini bulamadım    
-**Cevap:** Azure geçiş gereci gereksinimlerini ve URL erişim gereksinimlerini gözden geçirdiğinizden emin olun. Hiçbir proxy ayarlarının gereç kaydını engellemediğinden emin olun.   
+**Cevap:** Azure geçiş gereci gereksinimlerini ve URL erişim gereksinimlerini gözden geçirdiğinizden emin olun. Hiçbir proxy ayarlarının gereç kaydını engellemediğinden emin olun.
+
+**Soru:** AWS VM 'lerimi Azure 'a geçirmeden önce herhangi bir değişiklik yapmam gerekir   
+**Cevap:** EC2 VM 'lerinizi Azure 'a geçirmeden önce bu değişiklikleri yapmanız gerekebilir:
+
+- VM sağlama için Cloud-init kullanıyorsanız, VM 'yi Azure 'a çoğaltmadan önce VM üzerinde Cloud-init devre dışı bırakmak isteyebilirsiniz. VM üzerinde Cloud-init tarafından gerçekleştirilen sağlama adımları, Azure 'a geçişten sonra geçerli olmayacaktır. 
+- VM, HVM VM 'si olmayan bir BD VM ise (para-sanallaştırılmış), ancak para-sanallaştırılmış VM 'Ler AWS 'de özel bir önyükleme sırası kullandığından Azure 'da olduğu gibi çalışmayabilir. Azure 'a geçiş yapmadan önce BD sürücülerini kaldırarak bu zorluğu daha fazla alabilirsiniz.  
+- Son geçişten önce her zaman bir test geçişi çalıştırmanızı öneririz.  
+
+
+**Soru:** Amazon Linux Işletim sistemini çalıştıran AWS VM 'Leri geçirebilir miyim?  
+**Cevap:** Amazon Linux işletim sistemi yalnızca AWS 'de desteklendiğinden, Amazon Linux çalıştıran sanal makineler olduğu gibi geçirilemez.
+Amazon Linux üzerinde çalışan iş yüklerini geçirmek için Azure 'da bir CentOS/RHEL VM 'yi açabilir ve ilgili iş yükü geçişi yaklaşımını kullanarak AWS Linux makinesinde çalışan iş yükünü geçirebilirsiniz. Örneğin, iş yüküne bağlı olarak, geçişe yardımcı olacak iş yüküne özgü araçlar (Web sunucuları durumunda veritabanları veya dağıtım araçları gibi) olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

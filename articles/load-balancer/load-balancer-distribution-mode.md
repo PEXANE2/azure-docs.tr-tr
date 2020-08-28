@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 82c203322f1a417fa006c5228d957c178a706b3a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961022"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051398"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için Dağıtım modunu yapılandırın
 
@@ -29,7 +29,7 @@ ms.locfileid: "85961022"
 Azure Load Balancer’ın varsayılan dağıtım modu beşli tanımlama grubu olan karmadır. 
 
 Tanımlama grubu şunlardan oluşur:
-* **Kaynak IP 'si**
+* **Kaynak IP**
 * **Kaynak bağlantı noktası**
 * **Hedef IP**
 * **Hedef bağlantı noktası**
@@ -59,14 +59,14 @@ Başka bir kullanım örneği senaryosu medya karşıya yükleme 'dir. Karşıya
 
 ## <a name="configure-source-ip-affinity-settings"></a>Kaynak IP benzeşimi ayarlarını yapılandırma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Portalda Yük Dengeleme kuralını değiştirerek dağıtım modunun yapılandırmasını değiştirebilirsiniz.
 
 1. Azure portal oturum açın ve **kaynak grupları**' na tıklayarak değiştirmek istediğiniz yük dengeleyiciyi Içeren kaynak grubunu bulun.
 2. Yük Dengeleyiciye genel bakış ekranında **Ayarlar**' ın altındaki **Yük Dengeleme kuralları** ' na tıklayın.
 3. Yük Dengeleme kuralları ekranında, Dağıtım modunu değiştirmek istediğiniz yük dengeleme kuralına tıklayın.
-4. Kural altında, **oturum kalıcılığı** açılan kutusu değiştirilerek dağıtım modu değiştirilir.  Aşağıdaki seçenekler mevcuttur:
+4. Kural altında, **oturum kalıcılığı** açılan kutusu değiştirilerek dağıtım modu değiştirilir.  Aşağıdaki seçenekler kullanılabilir:
     
     * **Hiçbiri (karma tabanlı)** -aynı istemciden gelen ardışık isteklerin herhangi bir sanal makine tarafından işlenebileceğini belirtir.
     * **ISTEMCI IP (kaynak IP benzeşimi 2-kayıt düzeni)** -aynı istemci IP adresinden gelen isteklerin aynı sanal makine tarafından işleneceğini belirtir.
@@ -202,5 +202,5 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Iç Load Balancer genel bakış](load-balancer-internal-overview.md)
-* [İnternet 'e yönelik yük dengeleyici yapılandırma ile çalışmaya başlama](quickstart-create-standard-load-balancer-powershell.md)
+* [İnternet 'e yönelik yük dengeleyici yapılandırma ile çalışmaya başlama](quickstart-load-balancer-standard-public-powershell.md)
 * [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)

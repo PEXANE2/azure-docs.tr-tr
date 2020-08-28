@@ -1,14 +1,14 @@
 ---
 title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131506"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047335"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -29,10 +29,10 @@ Ilke ayrıntılarını kod iş akışı olarak almadan önce aşağıdaki tanım
 - [Girişim tanımı](./initiative-definition-structure.md)
 
 Dosya adları, ilke ya da girişim tanımının bölümlerine hizalanır:
-- `policy(set).json`-Tüm tanım
-- `policy(set).parameters.json`- `properties.parameters` Tanımın bölümü
-- `policy.rules.json`- `properties.policyRule` Tanımın bölümü
-- `policyset.definitions.json`- `properties.policyDefinitions` Tanımın bölümü
+- `policy(set).json` -Tüm tanım
+- `policy(set).parameters.json` - `properties.parameters` Tanımın bölümü
+- `policy.rules.json` - `properties.policyRule` Tanımın bölümü
+- `policyset.definitions.json` - `properties.policyDefinitions` Tanımın bölümü
 
 Bu dosya biçimlerine örnek olarak [Azure Policy GitHub](https://github.com/Azure/azure-policy/)deposunda ulaşılabilir:
 
@@ -110,7 +110,8 @@ Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut k
 > [!NOTE]
 > Zorlama modu yararlı olsa da, çeşitli koşullarda bir ilke tanımının kapsamlı bir şekilde test edilmesine yönelik bir değişiklik değildir. İlke tanımı, ile test edilmelidir `PUT` ve `PATCH` REST API çağrılarınız, uyumlu ve uyumlu olmayan kaynaklar ve uç durumları, kaynakta eksik bir özellik gibi.
 
-Atama dağıtıldıktan sonra, yeni atama için [uyumluluk verilerini almak](../how-to/get-compliance-data.md) üzere ilke SDK 'sını kullanın. İlkeleri ve atamaları test etmek için kullanılan ortamda hem uyumlu hem de uyumlu olmayan kaynaklar olmalıdır. Kod için iyi bir birim testi gibi, kaynakların beklenen şekilde olduğunu ve yanlış pozitif veya yanlış-negatifler olduğunu test etmek istersiniz. Test edin ve yalnızca beklediğiniz kadar doğrulandıysanız, ilkeden beklenmedik ve tanımlanamayan etki olabilir. Daha fazla bilgi için bkz. [Yeni bir Azure ilke tanımının etkisini değerlendirme](./evaluate-impact.md).
+Atama dağıtıldıktan sonra, yeni atama için [uyumluluk verilerini almak](../how-to/get-compliance-data.md) üzere ilke SDK 'Sını veya [Azure Ilke uyumluluk taraması GitHub eylemini](https://github.com/marketplace/actions/azure-policy-compliance-scan) kullanın. İlkeleri ve atamaları test etmek için kullanılan ortamda hem uyumlu hem de uyumlu olmayan kaynaklar olmalıdır.
+Kod için iyi bir birim testi gibi, kaynakların beklenen şekilde olduğunu ve yanlış pozitif veya yanlış-negatifler olduğunu test etmek istersiniz. Test edin ve yalnızca beklediğiniz kadar doğrulandıysanız, ilkeden beklenmedik ve tanımlanamayan etki olabilir. Daha fazla bilgi için bkz. [Yeni bir Azure ilke tanımının etkisini değerlendirme](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Düzeltme görevlerini etkinleştir
 

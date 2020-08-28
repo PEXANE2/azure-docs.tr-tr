@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853927"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047637"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
 
@@ -57,7 +57,7 @@ Mevcut bir Azure Cosmos hesabının varsayılan yedekleme seçeneklerini değiş
 
    * **Yedekleme bekletme** -bu, her yedeklemenin saklanacağı dönemi temsil eder. Saati saat veya gün olarak yapılandırabilirsiniz. En düşük saklama süresi, yedekleme aralığının (saat cinsinden) iki katından az olamaz ve 720 saatten büyük olamaz.
 
-   * **Korunan verilerin kopyaları** -varsayılan olarak, verilerinizin iki yedek kopyası ücretsiz olarak sunulur. Ek kopyalara ihtiyacınız varsa, Azure portal aracılığıyla bir destek isteği oluşturmanız gerekir ve ek kopyalar ücretlendirilecektir. Ek kopyaların tam fiyatını öğrenmek için [fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/cosmos-db/) tüketilen depolama bölümüne bakın.
+   * **Korunan verilerin kopyaları** -varsayılan olarak, verilerinizin iki yedek kopyası ücretsiz olarak sunulur. İkiden fazla kopyaya ihtiyacınız varsa ek bir ücret vardır. Ek kopyaların tam fiyatını öğrenmek için [fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/cosmos-db/) tüketilen depolama bölümüne bakın.
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Mevcut bir Azure Cosmos hesabı için yedekleme aralığını ve bekletmeyi yapılandırın" border="true":::
 

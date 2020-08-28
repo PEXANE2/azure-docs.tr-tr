@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 34c29a6f6cab77eaa69c7f28f57a4b823dd23d08
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e35e32c92535a408c8df22d7306895150a59519
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685247"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050157"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 ve Esv4 serisi
 
-Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir.
+Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir. Sürekli olarak 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir.
 
 > [!NOTE]
 > Sık sorulan sorular için,  [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.

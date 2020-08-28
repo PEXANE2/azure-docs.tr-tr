@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1fcec8b591192bba862bf91040e5d6ca1ef9bcd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037738"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046859"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -130,6 +130,8 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| Tomcat. Sessions. ACTIVE. Current | Tomcat. Sessions. ACTIVE. Current | Count | Tomcat oturumu etkin sayısı |
 
 ## <a name="see-also"></a>Ayrıca bkz.
+* [Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme](spring-cloud-quickstart-logs-metrics-tracing.md)
+
 * [Azure Ölçüm Gezgini'ni kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

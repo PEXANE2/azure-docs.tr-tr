@@ -1,14 +1,14 @@
 ---
 title: Portaldan mevcut bir atamayı güncelleştirme
 description: Azure 'da portaldan mevcut bir şema atamasını güncelleştirme mekanizması hakkında bilgi edinin.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969473"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051432"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Mevcut bir şema atamasını güncelleştirme
 
@@ -24,12 +24,11 @@ Bir şema atandığında, atama güncelleştirilebilen olabilir. Mevcut bir atam
 
 1. Soldaki sayfadan **atanan** şemalar ' ı seçin.
 
-1. Planlar listesinde, BLUEPRINT atamasını sol tıklatın. Ardından, **atamayı Güncelleştir** DÜĞMESINE tıklayın veya BLUEPRINT atamasını sağ tıklayıp **atamayı Güncelleştir**' i seçin.
+1. Planlar listesinde, BLUEPRINT atamasını seçin. Ardından, **atamayı Güncelleştir** DÜĞMESINI kullanın veya BLUEPRINT atamasını sağ tıklatın ve **atamayı Güncelleştir**' i seçin.
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Mevcut bir şema atamasını güncelleştirme" border="false":::
 
-1. **Şema ata** sayfası, orijinal atamadan tüm değerlerle önceden doldurulmuş olarak yüklenir.
-   **Şema tanım sürümünü**, **kilit atama** durumunu ve şema tanımında bulunan dinamik parametrelerden herhangi birini değiştirebilirsiniz. Değişiklik yapıldığında **ata** ' ya tıklayın.
+1. **Şema ata** sayfası, orijinal atamadan tüm değerlerle önceden doldurulmuş olarak yüklenir. **Şema tanım sürümünü**, **kilit atama** durumunu ve şema tanımında bulunan dinamik parametrelerden herhangi birini değiştirebilirsiniz. Değişiklik yapıldığında **ata** ' yı seçin.
 
 1. Güncelleştirilmiş atama ayrıntıları sayfasında, yeni durum ' a bakın. Bu örnekte, atamaya **kilitleme** ekledik.
 

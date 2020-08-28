@@ -1,24 +1,26 @@
 ---
 title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve Node.js ile dijital mürekkep tanıma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
+description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini ve JavaScript 'ı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 59cd4711ec3604779e57434af72460534b378af4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b8d8464fb9defb64c039ef9026812de89436091c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407056"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050922"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Mürekkep tanıyıcı API 'sini dijital mürekkep vuruşları üzerinde kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bu JavaScript uygulaması JSON biçimli mürekkep konturu verilerini içeren bir API isteği gönderir ve yanıtı görüntüler.
 
@@ -148,7 +150,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
         };
         ```
     
-    5. API isteği gönderin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve öğesini `content-type` olarak ayarlayın`application/json`
+    5. API isteği gönderin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve öğesini `content-type` olarak ayarlayın `application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);

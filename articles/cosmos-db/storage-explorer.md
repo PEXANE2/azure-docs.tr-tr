@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799120"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047488"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Depolama Gezgini'ni kullanarak verilerle çalışma
 
 Azure Depolama Gezgini’nde Azure Cosmos DB kullanılması, kullanıcıların Azure Cosmos DB varlıklarını yönetmesine, verileri düzenlemesine, saklı yordamların ve tetikleyicilerin yanı sıra Depolama blob’ları ve kuyrukları gibi diğer Azure varlıklarını güncelleştirmesine imkan tanır. Artık farklı Azure varlıklarını aynı aracı kullanarak tek bir yerde yönetebilirsiniz. Şu anda Azure Depolama Gezgini SQL, MongoDB, Graph ve tablo API 'Leri için yapılandırılmış Cosmos hesaplarını destekler.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 MongoDB için SQL API veya Azure Cosmos DB API 'SI ile Cosmos hesabı. Hesabınız yoksa, [Azure Cosmos DB: .NET ve Azure portalı ile bir SQL API'si web uygulaması derleme](create-sql-api-dotnet.md) bölümünde açıklandığı gibi Azure portalından bir hesap oluşturabilirsiniz.
 
@@ -95,7 +95,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 * Bir Azure Cosmos DB hesabına veya veritabanına sağ tıklayın; **Portalda Aç**’ı seçerek kaynağı Azure portalında, tarayıcıda yönetebilirsiniz.
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Portalda açma":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Portalda açma":::
 
 * Ayrıca, **Hızlı Erişim**’e Azure Cosmos DB hesabı, veritabanı, koleksiyonu ekleyebilirsiniz.
 * **Buradan Arayın** özelliği, seçili yol altında anahtar sözcük aramayı etkinleştirir.
@@ -106,25 +106,25 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 #### <a name="create-a-database"></a>Veritabanı oluşturma
 
--   Azure Cosmos DB hesabına sağ tıklayın, **Veritabanı Oluştur**’u seçin, veritabanı adını girin ve işlemi tamamlamak için **Enter** tuşuna basın.
+- Azure Cosmos DB hesabına sağ tıklayın, **Veritabanı Oluştur**’u seçin, veritabanı adını girin ve işlemi tamamlamak için **Enter** tuşuna basın.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Azure Cosmos hesabınızda veritabanı oluşturma":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Azure Cosmos hesabınızda veritabanı oluşturma":::
 
 #### <a name="delete-a-database"></a>Veritabanı silme
 
 - Veritabanına sağ tıklayın, **veritabanını sil**' i seçin ve açılır pencerede **Evet** ' i seçin. Veritabanı düğümü silinir ve Azure Cosmos DB hesabı otomatik olarak yenilenir.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="İlk veritabanını sil":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="İlk veritabanını sil":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="İkinci veritabanlarını silme":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="İkinci veritabanlarını silme":::
 
 #### <a name="create-a-collection"></a>Koleksiyon oluşturma
 
 1. Veritabanınıza sağ tıklayın, **koleksiyon oluştur**' u seçin ve ardından **koleksiyon kimliği**, **depolama kapasitesi**vb. gibi aşağıdaki bilgileri sağlayın. **Tamam** ' a tıklayarak işlemi sona erdirin.
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Veritabanında ilk koleksiyon oluştur":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Veritabanında ilk koleksiyon oluştur":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Veritabanında ikinci koleksiyon oluştur":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Veritabanında ikinci koleksiyon oluştur":::
 
 2. Bölüm anahtarını belirtmek için **sınırsız** ' ı seçin ve ardından son ' u seçerek **Tamam** ' ı seçin.
 
@@ -146,7 +146,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 - Yeni bir belge oluşturmak için sol penceredeki **belgeleri** açın, **Yeni belge**' yi seçin, sağ bölmedeki Içeriği düzenleyin ve ardından **Kaydet**' i seçin. Ayrıca var olan bir belgeyi güncelleştirebilir ve ardından **Kaydet**' i seçebilirsiniz. Değişiklikler **At** seçeneğine tıklanarak atılabilir.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Yeni belge oluştur":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="Yeni belge oluştur":::
 
 #### <a name="delete-a-document"></a>Bir belgeyi silme
 
@@ -156,7 +156,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 - Belge filtresini bir [SQL sorgusu](how-to-sql-query.md) girerek düzenleyin ve ardından **Uygula**' yı seçin.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Belirli belgeler için sorgu":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Belirli belgeler için sorgu":::
 
 ### <a name="graph-management"></a>Graf yönetimi
 
@@ -165,7 +165,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 1. Yeni bir köşe oluşturmak için sol penceredeki **grafik** ' i açın, **Yeni köşe**' i seçin, içeriği düzenleyin ve **Tamam**' ı seçin.
 2. Varolan bir köşeyi değiştirmek için sağ bölmedeki kalem simgesini seçin.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Grafiğin izdüşümünü değiştirme":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Grafiğin izdüşümünü değiştirme":::
 
 #### <a name="delete-a-graph"></a>Graf silme
 
@@ -175,7 +175,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 - Bir [Gremlin sorgusu](gremlin-support.md) girip **Filtre Uygula**' yı seçerek grafik filtresini düzenleyin.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Grafik sorgusu çalıştırma":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Grafik sorgusu çalıştırma":::
 
 ### <a name="table-management"></a>Tablo yönetimi
 
@@ -184,33 +184,34 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 1. Yeni bir tablo oluşturmak için, sol penceredeki **varlıkları** açın, **Ekle**' yi seçin, **varlık Ekle** Iletişim kutusunda içeriği düzenleyin, özellik **Ekle**' ye tıklayıp **Ekle**' yi seçin.
 2. Bir tabloyu değiştirmek için **Düzenle**' yi seçin, içeriği değiştirin ve ardından **Güncelleştir**' i seçin.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tablo oluşturma ve değiştirme":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tablo oluşturma ve değiştirme":::
 
 #### <a name="import-and-export-table"></a>Tabloyu içeri ve dışarı aktarma
 
 1. İçeri aktarmak için **Içeri aktar** düğmesini seçin ve var olan bir tabloyu seçin.
 2. Dışarı aktarmak için **dışarı aktar** düğmesini seçin ve bir hedef seçin.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tablo içeri veya dışarı aktarma":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tablo içeri veya dışarı aktarma":::
 
 #### <a name="delete-entities"></a>Varlıkları silme
 
 - Varlıkları seçin ve düğme **Sil**' i seçin.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Bir tablo silme":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Bir tablo silme":::
 
 #### <a name="query-table"></a>Sorgu tablosu
 
 - **Sorgu** düğmesine tıklayın, sorgu koşulunu girin ve ardından **sorgu Çalıştır** düğmesini seçin. **Sorguyu Kapat** düğmesine tıklayarak Sorgu bölmesini kapatın.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Tablodaki verileri sorgulama":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Tablodaki verileri sorgulama":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Saklı yordamları, tetikleyicileri ve UDF'leri yönetme
 
 * Saklı yordam oluşturmak için, sol ağaçta, **saklı yordam**' i sağ tıklatın, **saklı yordam oluştur**' u seçin, sola bir ad girin, doğru pencerede saklı yordam betikleri yazın ve ardından **Oluştur**' u seçin.
 * Ayrıca, mevcut saklı yordamları, güncelleştirmeyi yaparak ve sonra kaydetmek için **Güncelleştir** ' e tıklayarak düzenleyebilir veya değişikliği iptal etmek için **at** ' ı seçebilirsiniz.
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Saklı yordamlar oluşturma ve yönetme":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Saklı yordamlar oluşturma ve yönetme":::
+
 * **Tetikleyicilere** ve **UDF**’ye yönelik işlemler, **Saklı Yordamlara** benzer.
 
 ## <a name="troubleshooting"></a>Sorun giderme

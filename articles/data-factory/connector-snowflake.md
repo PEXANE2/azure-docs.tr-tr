@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/30/2020
-ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: 5bc64985401fce1c58a985b6b9fdead620c9aa8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529509"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048185"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar/veya kar tanesi arasında veri kopyalama
 
@@ -36,7 +36,7 @@ Kopyalama etkinliği için, bu kar tanesi bağlayıcı aşağıdaki işlevleri d
 - En iyi performansı elde etmek için kar tanesine ait [kopyayı [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) komutuna kullanan kar grubundan verileri kopyalayın.
 - En iyi performansı elde etmek için, kar \ ' ın [[tablo]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) komutuna kadar olan verileri kar düzeyine kopyalayın. Azure 'da kar.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,10 +49,10 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
 | Özellik         | Açıklama                                                  | Gerekli |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | tür             | Tür özelliğinin **kar**tanesi olarak ayarlanması gerekir.              | Yes      |
-| Dizisi | Kar tanesi örneğine bağlanmak için gereken bilgileri belirtir. Azure Key Vault bir parola veya tam bağlantı dizesi koyabilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault 'de mağaza kimlik bilgileri](store-credentials-in-key-vault.md) ' ne bakın.<br><br>Bazı tipik ayarlar:<br>- **Hesap adı:** Kar sunan hesabınızın [tam hesap adı](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), örn. xy12345. Doğu-US-2. Azure.<br/>- **Kullanıcı adı:** Bağlantının kullanıcı oturum açma adı.<br>- **Parola:** Kullanıcının parolası.<br>- **Veritabanı:** Bağlandıktan sonra kullanılacak varsayılan veritabanı. Belirtilen rolün ayrıcalıkları olan mevcut bir veritabanı olmalıdır.<br>- **Ambar:** Bağlandıktan sonra kullanılacak sanal ambar. Belirtilen rolün ayrıcalıkları olan mevcut bir ambar olması gerekir.<br>- **Rol:** Kar tanesi oturumunda kullanılacak varsayılan erişim denetimi rolü. Belirtilen rol, belirtilen kullanıcıya zaten atanmış olan mevcut bir rol olmalıdır. Varsayılan rol GENELDIR. | Yes      |
-| connectVia       | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | No       |
+| Dizisi | Kar tanesi örneğine bağlanmak için gereken bilgileri belirtir. Azure Key Vault bir parola veya tam bağlantı dizesi koyabilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault 'de mağaza kimlik bilgileri](store-credentials-in-key-vault.md) ' ne bakın.<br><br>Bazı tipik ayarlar:<br>- **Hesap adı:** Kar sunan hesabınızın  [tam hesap adı](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), örn. xy12345. Doğu-US-2. Azure.<br/>- **Kullanıcı adı:** Bağlantının kullanıcı oturum açma adı.<br>- **Parola:** Kullanıcının parolası.<br>- **Veritabanı:** Bağlandıktan sonra kullanılacak varsayılan veritabanı. Belirtilen rolün ayrıcalıkları olan mevcut bir veritabanı olmalıdır.<br>- **Ambar:** Bağlandıktan sonra kullanılacak sanal ambar. Belirtilen rolün ayrıcalıkları olan mevcut bir ambar olması gerekir.<br>- **Rol:** Kar tanesi oturumunda kullanılacak varsayılan erişim denetimi rolü. Belirtilen rol, belirtilen kullanıcıya zaten atanmış olan mevcut bir rol olmalıdır. Varsayılan rol GENELDIR. | Yes      |
+| connectVia       | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır       |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -108,7 +108,7 @@ Aşağıdaki özellikler, kar tanesi veri kümesi için desteklenir.
 | schema | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
 | table | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -143,12 +143,12 @@ Verileri kar 'lerden kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | tür                         | Kopyalama etkinliği kaynağının Type özelliği **SnowflakeSource**olarak ayarlanmalıdır. | Yes      |
-| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir.<br>Saklı yordamın yürütülmesi desteklenmiyor. | No       |
-| exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No       |
+| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir.<br>Saklı yordamın yürütülmesi desteklenmiyor. | Hayır       |
+| exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | Hayır       |
 | ***Altında `exportSettings` :*** |  |  |
 | tür | Dışa aktarma komutunun türü, **kar Keexportcopycommand**olarak ayarlanır. | Yes |
-| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: MAX_FILE_SIZE, ÜZERINE yaz. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Komutları anahtar-değer çiftleri sözlüğü olarak kopyalamak için belirtilen ek dosya biçimi seçenekleri. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
+| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: MAX_FILE_SIZE, ÜZERINE yaz. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | Hayır |
+| additionalFormatOptions | Komutları anahtar-değer çiftleri sözlüğü olarak kopyalamak için belirtilen ek dosya biçimi seçenekleri. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | Hayır |
 
 #### <a name="direct-copy-from-snowflake"></a>Kar tanesi 'nden doğrudan kopya
 
@@ -162,17 +162,17 @@ Havuz veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyorsa
     - **Sınırlandırılmış metin** biçimi için:
         - `rowDelimiter`**\r\n**veya herhangi bir tek karakter.
         - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
-        - `quoteChar`**çift tırnak**, **tek tırnak** veya **boş dize** (quote char yok).
+        - `encodingName` Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - `quoteChar`**çift tırnak**, **tek tırnak**veya **boş dize** (quote char yok).
     - **JSON** biçimi için doğrudan kopyalama yalnızca kaynak kar tablosu veya sorgu sonucunun yalnızca tek bir sütuna sahip olduğu ve bu sütunun veri türü **değişken**, **nesne**veya **dizi**olduğu durumu destekler.
         - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
-        - `filePattern`kopyalama etkinliği havuzu varsayılan olarak bırakılır veya **Setofobjects**olarak ayarlanır.
+        - `encodingName` Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - `filePattern` kopyalama etkinliği havuzu varsayılan olarak bırakılır veya **Setofobjects**olarak ayarlanır.
 
 - Kopyalama etkinliği kaynağı ' nda `additionalColumns` belirtilmedi.
 - Sütun eşleme belirtilmedi.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -223,7 +223,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 > [!NOTE]
 > Hazırlama Azure Blob depolama bağlı hizmeti, kar tanesi kopyalama komutunun gerektirdiği şekilde paylaşılan erişim imzası kimlik doğrulaması kullanmalıdır. 
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -274,12 +274,12 @@ Verileri kar 'a kopyalamak için, etkinlik **havuzunu** Kopyala bölümünde aş
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | tür              | Kopyalama etkinliği havuzunun Type özelliği, **SnowflakeSink**olarak ayarlanır. | Yes                                           |
-| Ön Copyscrıpt     | Kopyalama etkinliği için, her çalıştırmada verileri kar alanına yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
-| importSettings | Kar ayarlarına veri yazmak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | No |
+| Ön Copyscrıpt     | Kopyalama etkinliği için, her çalıştırmada verileri kar alanına yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| importSettings | Kar ayarlarına veri yazmak için kullanılan gelişmiş ayarlar. Deyiminizi çağırdığınızda Data Factory geçirilecek olan COPY komutuna göre desteklenen olanları yapılandırabilirsiniz. | Hayır |
 | ***Altında `importSettings` :*** |                                                              |  |
 | tür | Import komutunun türü, **kar Keımportcopycommand**olarak ayarlanır. | Yes |
-| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: ON_ERROR, zorla, LOAD_UNCERTAIN_FILES. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Anahtar-değer çiftleri sözlüğü olarak sağlanmış olan COPY komutuna ek dosya biçimi seçenekleri verilmiştir. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
+| additionalCopyOptions | Anahtar-değer çiftlerinin sözlüğü olarak belirtilen ek kopyalama seçenekleri. Örnekler: ON_ERROR, zorla, LOAD_UNCERTAIN_FILES. Daha fazla bilgi için bkz. [kar tanesi kopyalama seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | Hayır |
+| additionalFormatOptions | Anahtar-değer çiftleri sözlüğü olarak sağlanmış olan COPY komutuna ek dosya biçimi seçenekleri verilmiştir. Örnekler: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. Daha fazla bilgi için bkz. [kar tanesi biçim türü seçenekleri](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | Hayır |
 
 #### <a name="direct-copy-to-snowflake"></a>Kar için doğrudan kopya
 
@@ -294,20 +294,20 @@ Kaynak veri deprenizin ve biçimlendirmeniz bu bölümde açıklanan ölçütler
     - **Sınırlandırılmış metin** biçimi için:
         - `rowDelimiter`**\r\n**veya herhangi bir tek karakter. Satır sınırlayıcısı "\r\n" değilse, `firstRowAsHeader` **false**olması ve `skipLineCount` belirtilmemişse belirtilmemiş olması gerekir.
         - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-        - `encodingName`Varsayılan olarak bırakılır veya "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32AS", "BIG5", "EUC-JP", "EUC-KR", "GB18030", "ISO-2022-JP", "ISO-2022-KR", "olarak ayarlanır. ISO-8859-1", "ISO-8859-2", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255".
-        - `quoteChar`**çift tırnak**, **tek tırnak** veya **boş dize** (quote char yok).
+        - `encodingName` Varsayılan olarak bırakılır veya "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32AS", "BIG5", "EUC-JP", "EUC-KR", "GB18030", "ISO-2022-JP", "ISO-2022-KR", "olarak ayarlanır. ISO-8859-1", "ISO-8859-2", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255".
+        - `quoteChar`**çift tırnak**, **tek tırnak**veya **boş dize** (quote char yok).
     - **JSON** biçimi için doğrudan kopyalama yalnızca havuz kar tanesi tablosunun yalnızca tek bir sütuna sahip olduğu ve bu sütunun veri türü **değişken**, **nesne**veya **dizi**olduğu durumu destekler.
         - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - `encodingName` Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
         - Sütun eşleme belirtilmedi.
 
 - Kopyalama etkinliği kaynağı: 
 
-   -  `additionalColumns`belirtilmedi.
+   -  `additionalColumns` belirtilmedi.
    - Kaynağınız bir klasörse, `recursive` true olarak ayarlanır.
-   - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` belirtilmedi.
+   - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` , ve `enablePartitionDiscovery` belirtilmedi.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -357,7 +357,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 > [!NOTE]
 > Hazırlama Azure Blob depolama bağlı hizmetinin, kar tanesi kopyalama komutunun gerektirdiği şekilde paylaşılan erişim imzası kimlik doğrulamasını kullanması gerekir.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

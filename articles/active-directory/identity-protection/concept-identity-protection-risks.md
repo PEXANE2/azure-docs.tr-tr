@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815061"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047114"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
@@ -39,7 +39,6 @@ Bu riskler, Microsoft 'un güvenlik araştırmacıları, hukuk uzmanları, Micro
 | Risk algılama | Açıklama |
 | --- | --- |
 | Sızdırılan kimlik bilgileri | Bu risk algılama türü, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. Sidolandırıcılar meşru kullanıcıların geçerli parolalarını tehlikeye ayorsa, genellikle bu kimlik bilgilerini paylaşır. Bu paylaşım genellikle koyu Web üzerinden genel olarak, siteler yapıştırarak veya ticari ve kimlik bilgilerini siyah pazarda satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti, koyu Web, siteleri veya diğer kaynaklardan Kullanıcı kimlik bilgilerini edindiğinde, geçerli eşleşmeleri bulmak için Azure AD kullanıcılarının geçerli geçerli kimlik bilgileriyle denetlenir. Sızdırılan kimlik bilgileri hakkında daha fazla bilgi için bkz. [genel sorular](#common-questions). |
-| Parola spreyi | Bir parola spreyi saldırısı, birden çok Kullanıcı adı, Birleşik bir deneme yanılma, yetkisiz erişim elde etmek için ortak parolalar kullanan saldırıya neden olur. Bu risk algılama, bir parola spreyi saldırısı gerçekleştirildiğinde tetiklenir. |
 | Azure AD tehdit bilgileri | Bu risk algılama türü, belirli bir kullanıcı için olağandışı olan veya Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarına dayanan bilinen saldırı desenleriyle tutarlı olan kullanıcı etkinliklerini gösterir. |
 
 ### <a name="sign-in-risk"></a>Oturum açma riski
@@ -57,6 +56,7 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | Yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış | Çevrimdışı | Bu algılama, bir yöneticinin riskli kullanıcılar Kullanıcı arabiriminde veya riskyUsers API 'sini kullanarak ' Kullanıcı güvenliğinin aşılmasına karşı ' yı seçtiğinizi gösterir. Bu kullanıcının hangi yönetici tarafından tehlikede olduğunu görmek için kullanıcının risk geçmişini (UI veya API aracılığıyla) denetleyin. |
 | Kötü amaçlı IP adresi | Çevrimdışı | Bu algılama, kötü amaçlı bir IP adresinden oturum açma işlemini gösterir. IP adresi veya diğer IP saygınlığı kaynaklarından alınan geçersiz kimlik bilgileri nedeniyle, bir IP adresi yüksek hata ücretleri temelinde kötü amaçlı olarak değerlendirilir. |
 | Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu algılama, Kullanıcı hesabının güvenliğinin aşıldığını, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını belirtebilir. |
+| Parola spreyi | Çevrimdışı | Bir parola spreyi saldırısı, birden çok Kullanıcı adı, Birleşik bir deneme yanılma, yetkisiz erişim elde etmek için ortak parolalar kullanan saldırıya neden olur. Bu risk algılama, bir parola spreyi saldırısı gerçekleştirildiğinde tetiklenir. |
 | Mümkün olmayan seyahat | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)tarafından keşfedilir. Bu algılama, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösteren bir zaman dilimi içinde coğrafi olarak uzak konumların ikinci kez, ilk konumdan saniye içinde hareket etmek için geçen süreden daha kısa bir süre içinde olan iki kullanıcı etkinliğini tanımlar (tek veya birden çok oturumdur). |
 
 ### <a name="other-risk-detections"></a>Diğer risk algılamaları

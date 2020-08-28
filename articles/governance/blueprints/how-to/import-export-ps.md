@@ -1,14 +1,14 @@
 ---
 title: PowerShell ile şemaları içeri ve dışarı aktarma
 description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğrenin. Dışarı aktarma ve içeri aktarma komutlarını kullanarak bunları paylaşabilirsiniz, kaynak denetimi yapın ve yönetin.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864054"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051449"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
 

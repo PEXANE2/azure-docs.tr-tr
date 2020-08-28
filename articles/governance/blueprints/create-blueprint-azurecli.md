@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: Azure CLI ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969677"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051551"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure Blueprint tanımlama ve atama
 
 Şemaları oluşturmayı ve atamayı öğrenmek, ortak desenlerin tanımını Azure Resource Manager şablonları (ARM şablonları), ilke, güvenlik ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmeye olanak sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -25,7 +25,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Şema tanımlarını ve atamalarını yönetmek için Azure CLı 'yı etkinleştirmek üzere uzantının eklenmesi gerekir.
 Bu uzantı; [Windows 10 üzerinde bash](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (ikisi de tek başına ve portalın içinde), [Azure CLI Docker resmi](https://hub.docker.com/r/microsoft/azure-cli/) dahil olmak üzere Azure CLI’sinin kullanılabildiği her yerde çalışır veya yerel olarak yüklenir.
 
-1. En son Azure CLı 'nın yüklü olup olmadığını denetleyin (en azından **2.0.76**). Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) izleyin.
+1. En son Azure CLı 'nın yüklü olup olmadığını denetleyin (en azından **2.0.76**). Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows) izleyin.
 
 1. Seçtiğiniz Azure CLI ortamınızda, aşağıdaki komutu kullanarak içeri aktarın:
 

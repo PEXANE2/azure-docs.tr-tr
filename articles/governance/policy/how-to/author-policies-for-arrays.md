@@ -3,12 +3,12 @@ title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544596"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048491"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -95,7 +95,7 @@ Azure CLı, Azure PowerShell veya REST API kullanılırken parametre değerinin 
 
 Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
-- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) parametresini parametre **params**
+- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment#az-policy-assignment-create) parametresini parametre **params**
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with Parameter **PolicyParameter**
 - REST API: _PUT_ [oluşturma](/rest/api/resources/policyassignments/create) işleminde, **Properties. Parameters** özelliğinin değeri olarak istek gövdesinin bir parçası olarak
 

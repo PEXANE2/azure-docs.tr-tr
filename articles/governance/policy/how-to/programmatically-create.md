@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548320"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047088"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -235,7 +235,7 @@ Oluşturduğunuz ilke tanımının ilke tanımı KIMLIĞI aşağıdaki örneğe 
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Azure CLı ile kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [Azure CLI kaynak ilkeleri](/cli/azure/policy?view=azure-cli-latest).
+Azure CLı ile kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [Azure CLI kaynak ilkeleri](/cli/azure/policy).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -243,6 +243,6 @@ Bu makaledeki komutlar ve sorgular hakkında daha fazla bilgi için aşağıdaki
 
 - [Azure REST API kaynakları](/rest/api/resources/)
 - [Azure PowerShell modüller](/powershell/module/az.resources/#policies)
-- [Azure CLı Ilkesi komutları](/cli/azure/policy?view=azure-cli-latest)
+- [Azure CLı Ilkesi komutları](/cli/azure/policy)
 - [Azure Policy Insights kaynak sağlayıcısı REST API başvurusu](/rest/api/policy-insights)
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).
