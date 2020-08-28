@@ -5,12 +5,13 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793100"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005522"
 ---
 # <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirmeye giriş
 Otomatik ölçeklendirme, hizmetlerin raporlanması gereken yükün veya kaynakların kullanımlarına göre dinamik olarak ölçeklendirilmesine yönelik Service Fabric ek bir özelliktir. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve isteğe bağlı olarak hizmetinizin ek örneklerinin veya bölümlerinin sağlanmasına olanak tanır. Otomatik ölçeklendirme işleminin tamamı otomatik ve şeffaftır ve ilkeleri bir hizmette ayarladıktan sonra hizmet düzeyinde el ile ölçeklendirme işlemlerine gerek yoktur. Otomatik Ölçeklendirme hizmeti oluşturma sırasında veya hizmeti güncelleştirilerek herhangi bir zamanda açılabilir.

@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5b5d413eee2528e2d5c7d04d06f1607949beaae
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253244"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012713"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services için WCF tabanlı iletişim yığını
 Reliable Services Framework, hizmet yazarlarının kendi hizmetleri için kullanmak istedikleri iletişim yığınını seçmesine olanak sağlar. [CreateServiceReplicaListeners veya Createserviceınstancelisteners](service-fabric-reliable-services-communication.md) metotlarından döndürülen **ıcommunicationlistener** aracılığıyla seçtikleri iletişim yığınını yükleyebilir. Framework, WCF tabanlı iletişim kullanmak isteyen hizmet yazarları için Windows Communication Foundation (WCF) temelinde iletişim yığınının bir uygulamasını sağlar.
@@ -18,7 +19,7 @@ Reliable Services Framework, hizmet yazarlarının kendi hizmetleri için kullan
 ## <a name="wcf-communication-listener"></a>WCF Iletişim dinleyicisi
 **Idimmunicationlistener** 'ın WCF 'e özgü uygulanması **Microsoft. Servicefabric. Services. Communication. WCF. Runtime. wcfcommunicationlistener** sınıfı tarafından sağlanır.
 
-En uzun bir hizmet sözleşmemiz türü`ICalculator`
+En uzun bir hizmet sözleşmemiz türü `ICalculator`
 
 ```csharp
 [ServiceContract]

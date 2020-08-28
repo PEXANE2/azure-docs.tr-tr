@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056372"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015994"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bi
 Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > [!div class="checklist"]
 > * Azure Machine Learning çalışma alanı oluşturma
-> * Bu öğreticiyi çalışma alanınıza çalıştırmak için gerekli dosyaları içeren bir not defteri klasörünü kopyalayın
 > * Çalışma alanınızdan RStudio 'Yu açın
+> * https://github.com/Azure/azureml-sdk-for-rBu öğreticiyi çalışma alanınıza çalıştırmak için gerekli dosyaları kopyalayın
 > * Veri yükleme ve eğitim için hazırlanma
 > * Verileri bir veri deposuna yükleme uzak eğitim için kullanılabilir
 > * Modeli uzaktan eğitme için bir işlem kaynağı oluşturma
@@ -53,33 +53,11 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 > **Çalışma alanınızı** ve **aboneliğinizi**bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>Not defteri klasörünü Kopyala
-
-Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) kullanın.
-
-Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan Azure Machine Learning Studio 'da aşağıdaki deneme sürümü kurulumunu tamamlayıp adımları gerçekleştirin.
-
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
-
-1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
-
-1. Sol taraftaki **not defterlerini** seçin.
-
-1. **Örnekler** klasörünü açın.
-
-1. **R** klasörünü açın.
-
-1. Klasörü üzerinde bir sürüm numarasıyla açın.  Bu sayı, R SDK için geçerli yayını temsil eder.
-
-1. **Vignettes** klasörünün sağ tarafındaki **"..."** öğesini seçin ve ardından **Kopyala**' yı seçin.
-
-    ![Klasörü kopyala](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. Çalışma alanına erişen her kullanıcıyı gösteren bir klasör listesi görüntülenir.  **Vignettes** klasörünü kopyalamak için klasörünüzü seçin.
-
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio 'Yu aç
 
-Bu öğreticiyi çalıştırmak için bir işlem örneği veya Not defteri sanal makinesinde RStudio kullanın.  
+Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızda bir işlem örneği kullanır. Kendi makinenizde ortamınız, paketler ve bağımlılıklar üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) kullanın.
+
+Bu öğreticiyi çalıştırmak için bir Azure ML işlem örneğinde RStudio kullanın.  
 
 1. Sol tarafta **işlem** ' ı seçin.
 
@@ -87,10 +65,19 @@ Bu öğreticiyi çalıştırmak için bir işlem örneği veya Not defteri sanal
 
 1. İşlem çalışırken **rstudio 'yu** kullanarak rstudio 'yu açın.
 
-1. RStudio 'da, *Vignettes* klasörünüz, alt sağ taraftaki **dosyalar** bölümünde yer alan *kullanıcılardan* birkaç düzeydir.  *Vignettes*altında, bu öğreticide gereken dosyaları bulmak için *eğitme ve dağıtma-aci* klasörünü seçin.
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>Örnek Vignettes 'i kopyalayın 
+
+https://github.com/azure/azureml-sdk-for-rBu öğreticide çalıştıracağınız Vignette dosyalarının bir kopyası için GitHub deposunu kopyalayın.
+
+1. RStudio 'da, depoyu kopyalamak istediğiniz dizine "Terminal" sekmesine ve CD 'ye gidin.
+
+1. https://github.com/Azure/azureml-sdk-for-r.gitDepoyu kopyalamak için terminalde "git clone" öğesini çalıştırın.
+
+1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes*altında, *eğitme ve dağıtım-ilk modeli ' ni seçin. *Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın**. 
 
 > [!Important]
-> Bu makalenin geri kalanında, *eğitme ve dağıtma-aci ile aynı içeriğe sahip olursunuz. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz.  
+> Bu makalenin geri kalanında,  *eğitme ve dağıtma-ilk modelinde gördüğünüz içerikle aynı içerik bulunur. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz. 
 
 
 ## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
@@ -197,7 +184,7 @@ Bu öğreticide, uzaktan işlem kümenizi kullanarak karşıya yüklenen veriler
 * İşi gönderme
 
 ### <a name="prepare-the-training-script"></a>Eğitim betiğini hazırlama
-`accidents.R`Bu öğreticiyle aynı dizinde sizin için çağrılan bir eğitim betiği sunulmaktadır. Eğitim betiğine yönelik olarak Azure Machine Learning faydalanmak için yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
+Bir eğitim betiği, `accidents.R` sizin için *eğitme ve dağıtma-ilk model* dizininde sunulmaktadır. Eğitim betiğine yönelik olarak Azure Machine Learning faydalanmak için yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
 
 * Eğitim betiği, `-d` eğitim verilerini içeren dizini bulmak için bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
 * Eğitim betiği, kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder `log_metric_to_run()` . Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. Günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın `log_*()` .
@@ -216,7 +203,7 @@ Estimator oluşturmak için şunu tanımlayın:
 * Eğitim için gereken tüm ortam bağımlılıkları. Eğitim için tasarlanan varsayılan Docker görüntüsü, `caret` `e1071` eğitim betiğine gereken üç paketi (,, ve) zaten içerir `optparse` .  Bu nedenle ek bilgi belirtmeniz gerekmez. Varsayılan olarak dahil olmayan R paketleri kullanıyorsanız, `cran_packages` ek CRAN paketleri eklemek için Estimator 'un parametresini kullanın. [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html)Yapılandırılabilir seçeneklerin tam kümesinin başvurusuna bakın.
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -225,7 +212,7 @@ est <- estimator(source_directory = ".",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>İşi uzak kümede gönder
 
-Son olarak, işi kümenizde çalışacak şekilde gönderebilirsiniz. `submit_experiment()`daha sonra çalıştırma ile arabirim için kullandığınız bir Run nesnesi döndürür. Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika**sürer. Ancak daha sonra çalıştırıldığında, komut dosyası bağımlılıkları değişmedikçe aynı Docker görüntüsü yeniden kullanılır.  Bu durumda, görüntü önbelleğe alınır ve kapsayıcı başlangıç zamanı çok daha hızlıdır.
+Son olarak, işi kümenizde çalışacak şekilde gönderebilirsiniz. `submit_experiment()` daha sonra çalıştırma ile arabirim için kullandığınız bir Run nesnesi döndürür. Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika**sürer. Ancak daha sonra çalıştırıldığında, komut dosyası bağımlılıkları değişmedikçe aynı Docker görüntüsü yeniden kullanılır.  Bu durumda, görüntü önbelleğe alınır ve kapsayıcı başlangıç zamanı çok daha hızlıdır.
 
 ```R
 run <- submit_experiment(exp, est)
@@ -331,6 +318,7 @@ Artık Puanlama betiğinizi ve ortam bağımlılıklarınızı kapsüllemek içi
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 

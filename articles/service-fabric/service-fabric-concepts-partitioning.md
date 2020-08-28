@@ -3,12 +3,13 @@ title: Service Fabric Hizmetleri bölümlendirme
 description: Service Fabric durum bilgisi olan hizmetlerin nasıl bölümleneceğini açıklar. Bölümler, veri ve işlem birlikte ölçeklendirilebilmeleri için yerel makinelerde veri depolamayı mümkün bir şekilde sunar.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045425"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005437"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric güvenilir hizmetleri
 Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Makalede kullanılan kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)'da da kullanılabilir.
@@ -224,7 +225,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     }
     ```
    
-    `ProcessInternalRequest`bölümü çağırmak için kullanılan sorgu dizesi parametresinin değerlerini okur ve `AddUserAsync` soyadu güvenilir sözlüğe eklemek için çağırır `dictionary` .
+    `ProcessInternalRequest` bölümü çağırmak için kullanılan sorgu dizesi parametresinin değerlerini okur ve `AddUserAsync` soyadu güvenilir sözlüğe eklemek için çağırır `dictionary` .
 10. Ayrıca, belirli bir bölümü nasıl çağırakullanabileceğinizi görmek için projeye durum bilgisi olmayan bir hizmet ekleyelim.
     
     Bu hizmet, LastName parametresini bir sorgu dizesi parametresi olarak kabul eden basit bir Web arabirimi olarak görev yapar, Bölüm anahtarını belirler ve işlemek için alfabetik. processing hizmetine gönderir.
@@ -307,7 +308,7 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     ```
     
     Bu örnekte, bölüm başına bir bölüm anahtarı ile 26 bölüm kullandığınızı unutmayın.
-    Daha sonra, `partition` Bu anahtarla ilgili hizmet bölümünü `ResolveAsync` nesne üzerindeki metodunu kullanarak elde ediyoruz `servicePartitionResolver` . `servicePartitionResolver`şöyle tanımlanır
+    Daha sonra, `partition` Bu anahtarla ilgili hizmet bölümünü `ResolveAsync` nesne üzerindeki metodunu kullanarak elde ediyoruz `servicePartitionResolver` . `servicePartitionResolver` şöyle tanımlanır
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();

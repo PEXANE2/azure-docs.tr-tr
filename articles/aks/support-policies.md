@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050680"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012356"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Kubernetes Service (AKS) için teknik destek ilkeleri ve sın
 ## <a name="service-updates-and-releases"></a>Hizmet güncelleştirmeleri ve yayınlar
 
 * Sürüm bilgileri için bkz. [aks sürüm notları](https://github.com/Azure/AKS/releases).
-* Önizlemedeki özellikler hakkında daha fazla bilgi için bkz. [aks Önizleme özellikleri ve ilgili projeler](https://github.com/Azure/AKS/blob/master/previews.md).
+* Önizlemedeki özellikler hakkında daha fazla bilgi için bkz. [aks Önizleme özellikleri ve ilgili projeler](https://awesomeopensource.com/projects/aks?categoryPage=11).
 
 ## <a name="managed-features-in-aks"></a>AKS 'deki yönetilen özellikler
 
@@ -140,7 +140,7 @@ Müşteriler, çalışan düğümlerinde oturum açıp değiştirebilse de, değ
 Yönetilen bir hizmet olarak, AKS 'nin belirli ağ ve bağlantı gereksinimleri vardır. Bu gereksinimler normal IaaS bileşenleri gereksinimlerinden daha az esnektir. AKS 'de, NSG kurallarını özelleştirme, belirli bir bağlantı noktasını engelleme (örneğin, giden bağlantı noktası 443 ' i engelleyen güvenlik duvarı kuralları kullanma) ve bir izin verilenler listesine URL ekleme gibi işlemler, kümenizin desteklenemez olmasını sağlayabilir.
 
 > [!NOTE]
-> Şu anda AKS, çıkış trafiğini kümenizdeki tamamen kilitlemenize izin vermez. Kümenizin giden trafik için kullanabileceği URL 'Lerin ve bağlantı noktalarının listesini denetlemek için, [çıkış trafiğini sınırla](limit-egress-traffic.md)' ya bakın.
+> Şu anda AKS, çıkış trafiğini kümenizdeki tamamen kilitlemenize izin vermez. Kümenizin giden trafik için kullanabileceği URL 'Lerin ve bağlantı noktalarının listesini denetlemek için,  [çıkış trafiğini sınırla](limit-egress-traffic.md)' ya bakın.
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Desteklenmeyen Alfa ve Beta Kubernetes özellikleri
 
@@ -149,7 +149,7 @@ AKS yalnızca yukarı akış Kubernetes projesi içindeki kararlı özellikleri 
 İki senaryoda, Alfa veya beta özellikleri genel kullanıma açılmadan önce kullanıma alınmış olabilir:
 
 * Müşteriler, AKS ürünü, destek veya mühendislik ekipleriyle karşılanır ve bu yeni özellikleri denemeleri istendi.
-* Bu özellikler [bir özellik bayrağı tarafından etkinleştirildi](https://github.com/Azure/AKS/blob/master/previews.md). Müşteriler bu özellikleri kullanmak için açıkça kabul etmelidir.
+* Bu özellikler [bir özellik bayrağı tarafından etkinleştirildi](https://awesomeopensource.com/projects/aks?categoryPage=11). Müşteriler bu özellikleri kullanmak için açıkça kabul etmelidir.
 
 ## <a name="preview-features-or-feature-flags"></a>Önizleme özellikleri veya özellik bayrakları
 

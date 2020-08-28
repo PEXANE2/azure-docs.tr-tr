@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5ec5db2b2fefeba3bffb7e30a77850b30dccf95e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246563"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005641"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
 Azure Service Fabric 'ın Küme Kaynak Yöneticisi özelliği, bir kümeyi açıklamak için çeşitli mekanizmalar sağlar:
@@ -347,7 +348,7 @@ Bazen (aslında çoğu zaman) belirli iş yüklerinin yalnızca kümedeki belirl
 
 Belirli iş yükleri için donanım hedeflemek için harika bir örnek neredeyse her n katmanlı mimaridir. Bazı makineler uygulamanın ön uç veya API hizmet tarafı olarak hizmet verir ve istemcilere ya da internet 'e sunulur. Genellikle farklı donanım kaynakları olan farklı makineler, işlem veya depolama katmanlarının çalışmasını işler. Bunlar genellikle istemcilere veya internet _'e doğrudan gösterilmez_ . 
 
-Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örnek:
+Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örneğin:
 
 * Var olan n katmanlı bir uygulama, bir Service Fabric ortamına "yükseltilmemiş ve" kaydırmıştır.
 * Performans, ölçek veya güvenlik yalıtımı nedenleriyle belirli bir donanımda iş yükünün çalıştırılması gerekir.
@@ -375,7 +376,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Belirli deyimler oluşturmak için koşullu denetimler:
 
-  | Deyim | Sözdizimi |
+  | Deyim | Syntax |
   | --- |:---:|
   | "eşittir" | "==" |
   | "eşit değildir" | "!=" |
@@ -386,7 +387,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Gruplandırma ve mantıksal işlemler için Boole deyimleri:
 
-  | Deyim | Sözdizimi |
+  | Deyim | Syntax |
   | --- |:---:|
   | ' | "&&" |
   | veya | "&#124;&#124;" |

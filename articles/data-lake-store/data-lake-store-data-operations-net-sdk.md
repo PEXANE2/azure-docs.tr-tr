@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515662"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022471"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri
 
@@ -27,7 +28,7 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
 
 .NET SDK kullanarak Data Lake Storage 1. hesap yönetimi işlemlerinin nasıl yapılacağı hakkında yönergeler için bkz. [.NET SDK kullanarak Data Lake Storage 1. üzerinde hesap yönetimi işlemleri](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Visual Studio 2013 veya üzeri**. Bu makaledeki yönergeler Visual Studio 2019 kullanır.
 
@@ -48,8 +49,8 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
    1. **NuGet Paket Yöneticisi** sekmesinde, **paket kaynağının** **NuGet.org**olarak ayarlandığından emin olun. Ayrıca, **ön sürümü dahil** et onay kutusunun işaretli olduğundan emin olun.
    1. Aşağıdaki NuGet paketlerini arayıp yükleyin:
 
-      * `Microsoft.Azure.DataLake.Store`-Bu makalede v 1.0.0 kullanılmaktadır.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`-Bu makalede v 2.3.1 kullanılmaktadır.
+      * `Microsoft.Azure.DataLake.Store` -Bu makalede v 1.0.0 kullanılmaktadır.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -Bu makalede v 2.3.1 kullanılmaktadır.
 
       **NuGet Paket Yöneticisi 'ni**kapatın.
 

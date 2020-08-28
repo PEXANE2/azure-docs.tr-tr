@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451991"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005658"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
 *Ölçümler* , hizmetlerinizin önem verdiği ve kümedeki düğümler tarafından sağlandığı kaynaklardır. Bir ölçüm, hizmetlerinizin performansını artırmak veya izlemek için yönetmek istediğiniz her şey olur. Örneğin, hizmetinizin aşırı yüklenmiş olup olmadığını bilmeniz için bellek tüketimini izleyebilirsiniz. Başka bir kullanım, daha iyi performans sağlamak için, belleğin daha az kısıtlandığı yerde hizmetin hareket etmeyeceğini anlayabilir.
@@ -28,12 +29,12 @@ Bellek, disk ve CPU kullanımı gibi şeyler, ölçüm örnekleridir. Bu ölçü
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Yüksek |
 | ReplicaCount |0 |1 |1 |Orta |
-| Sayı |1 |1 |1 |Düşük |
+| Count |1 |1 |1 |Düşük |
 
 
 Temel iş yükleri için varsayılan ölçümler, kümede işin daha iyi bir dağıtımını sağlar. Aşağıdaki örnekte, iki hizmet oluşturduğumuz ve dengeleme için varsayılan ölçümleri temel alarak ne olacağını görelim. İlk hizmet, üç bölümden oluşan ve üç bölümlü bir hedef çoğaltma kümesi boyutu ile durum bilgisi olan bir hizmettir. İkinci hizmet, bir bölüm ve örnek sayısı üç olan durum bilgisi olmayan bir hizmettir.
 
-İşte şunları edinebilirsiniz:
+Elde edeceğiniz sonuç şu:
 
 <center>
 

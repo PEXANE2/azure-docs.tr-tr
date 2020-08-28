@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509850"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012390"
 ---
 # <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
@@ -117,7 +117,14 @@ Yukarıdaki istekten gelen yanıt, tüm izleme istekleri için gereken bir **Ses
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>Bir oturumu güncelleştirme
+## <a name="modify-and-query-session-properties"></a>Oturum özelliklerini değiştirme ve sorgulama
+
+Mevcut oturumların parametrelerini sorgulamak veya değiştirmek için birkaç komut vardır.
+
+> [!CAUTION]
+Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. Bu örnekte durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+
+### <a name="update-session-parameters"></a>Oturum parametrelerini güncelleştirme
 
 Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir oturumun kira süresini genişletebilirsiniz.
 
@@ -138,7 +145,7 @@ Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir 
 |-----------|:-----------|:-----------|
 | 200 | | Başarılı |
 
-### <a name="example-script-update-a-session"></a>Örnek betik: bir oturumu güncelleştirme
+#### <a name="example-script-update-a-session"></a>Örnek betik: bir oturumu güncelleştirme
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +167,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Etkin oturumları al
+### <a name="get-active-sessions"></a>Etkin oturumları al
 
 Bu komut, etkin oturumların bir listesini döndürür.
 
@@ -174,7 +181,7 @@ Bu komut, etkin oturumların bir listesini döndürür.
 |-----------|:-----------|:-----------|
 | 200 | -Sessions: oturum özellikleri dizisi | oturum özelliklerinin açıklaması için bkz. "oturum özelliklerini al" bölümü |
 
-### <a name="example-script-query-active-sessions"></a>Örnek betik: etkin oturumları sorgulama
+#### <a name="example-script-query-active-sessions"></a>Örnek betik: etkin oturumları sorgulama
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +210,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Oturum özelliklerini al
+### <a name="get-sessions-properties"></a>Oturum özelliklerini al
 
 Bu komut, sanal makine ana bilgisayar adı gibi bir oturumla ilgili bilgileri döndürür.
 
@@ -217,7 +224,7 @@ Bu komut, sanal makine ana bilgisayar adı gibi bir oturumla ilgili bilgileri d�
 |-----------|:-----------|:-----------|
 | 200 | -Message: String<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: dize<br/>-SessionID: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: sabit listesi<br/>-sessionStatus: Enum | Enum sessionStatus {başlatılıyor, hazırlanıyor, durduruluyor, durduruldu, zaman aşımına uğradı, hata}<br/>Durum ' Error ' veya ' dolmuşsa ' ise, ileti daha fazla bilgi içerir |
 
-### <a name="example-script-get-session-properties"></a>Örnek komut dosyası: oturum özelliklerini al
+#### <a name="example-script-get-session-properties"></a>Örnek komut dosyası: oturum özelliklerini al
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }

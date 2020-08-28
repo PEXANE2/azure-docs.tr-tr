@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509289"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014600"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -34,6 +34,14 @@ Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıd
 GPU 'nun donanım video kodunu çözmeyi destekleyip desteklemediğini denetleyin. Bkz. [GELIŞTIRME bilgisayarı](../overview/system-requirements.md#development-pc).
 
 İki GPU içeren bir dizüstü bilgisayarda çalışıyorsanız, varsayılan olarak üzerinde çalıştırdığınız GPU, donanım video kod çözme işlevselliği sağlamaz. Bu durumda, uygulamanızı diğer GPU 'YU kullanmaya zorlamaya çalışın. Bu durum genellikle GPU sürücü ayarlarında mümkündür.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>Oturum/dönüştürme durumunu alma başarısız
+
+REST API komutlarının çok sık gönderilmesi sunucunun başarısız olmasına ve sonunda hata döndürmesine neden olur. Daraltma çalışmasının http durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+
+Not Bu sınır yalnızca doğrudan çağrıldığında, ancak, ya da gibi C#/C + + ortaklarınıza REST API çağrıları etkilemez `Session.GetPropertiesAsync` `Session.RenewAsync` `Frontend.GetAssetConversionStatusAsync` .
+
+Sunucu tarafı azaltmasına karşılaşıyorsanız, çağrıları daha az sıklıkta yapmak için kodu değiştirin. Sunucu, dakikada bir dakika sonra kodu yeniden çalıştırmak güvenli olduğundan, azaltma durumunu her dakikada sıfırlar.
 
 ## <a name="h265-codec-not-available"></a>H265 codec bileşeni kullanılamıyor
 

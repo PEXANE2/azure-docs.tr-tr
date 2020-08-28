@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb5820849fb34e232a07d610e1cedeb40c0fcfba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246389"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005335"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric ölçeklendirme
 Azure Service Fabric, bir kümenin düğümlerinde Hizmetleri, bölümleri ve çoğaltmaları yöneterek ölçeklenebilir uygulamalar oluşturmayı kolaylaştırır. Aynı donanımda birçok iş yükünün çalıştırılması maksimum kaynak kullanımını sağlar, ancak aynı zamanda iş yüklerinizi ölçeklendirmeye nasıl seçeceğiniz konusunda esneklik sağlar. Bu Channel 9 videosu, ölçeklenebilir mikro hizmet uygulamaları oluşturmayı açıklar:
@@ -27,7 +28,7 @@ Service Fabric ölçeklendirme birkaç farklı şekilde gerçekleştirilir:
 6. Küme Kaynak Yöneticisi ölçümlerini kullanarak ölçeklendirme
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Durum bilgisi olmayan hizmet örnekleri oluşturarak veya kaldırarak ölçekleme
-Service Fabric içinde ölçeklendirmenin en basit yöntemlerinden biri, durum bilgisi olmayan hizmetlerle birlikte çalışmaktadır. Durum bilgisi olmayan bir hizmet oluşturduğunuzda, tanımlama şansı elde edersiniz `InstanceCount` . `InstanceCount`hizmet başlatıldığında hizmetin kodunun kaç tane çalışan kopyasının oluşturulduğunu tanımlar. Örneğin, kümede 100 düğüm olduğunu varsayalım. Ayrıca, 10 ' un bir hizmetin oluşturulduğunu de söylayalım `InstanceCount` . Çalışma zamanı sırasında kodun çalışan 10 kopyası hepsi çok meşgul hale gelebilir (veya yeterince meşgul olmayabilir). Bu iş yükünü ölçeklendirmenin bir yolu, örnek sayısını değiştirmektir. Örneğin, bazı izleme veya yönetim kodu parçaları, iş yükünün yük temelinde ölçeklendirilmesine veya kullanıma hazır olmasına bağlı olarak, mevcut örnek sayısını 50 veya 5 olarak değiştirebilir. 
+Service Fabric içinde ölçeklendirmenin en basit yöntemlerinden biri, durum bilgisi olmayan hizmetlerle birlikte çalışmaktadır. Durum bilgisi olmayan bir hizmet oluşturduğunuzda, tanımlama şansı elde edersiniz `InstanceCount` . `InstanceCount` hizmet başlatıldığında hizmetin kodunun kaç tane çalışan kopyasının oluşturulduğunu tanımlar. Örneğin, kümede 100 düğüm olduğunu varsayalım. Ayrıca, 10 ' un bir hizmetin oluşturulduğunu de söylayalım `InstanceCount` . Çalışma zamanı sırasında kodun çalışan 10 kopyası hepsi çok meşgul hale gelebilir (veya yeterince meşgul olmayabilir). Bu iş yükünü ölçeklendirmenin bir yolu, örnek sayısını değiştirmektir. Örneğin, bazı izleme veya yönetim kodu parçaları, iş yükünün yük temelinde ölçeklendirilmesine veya kullanıma hazır olmasına bağlı olarak, mevcut örnek sayısını 50 veya 5 olarak değiştirebilir. 
 
 C#:
 
@@ -63,7 +64,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Yeni adlandırılmış hizmetler oluşturarak veya kaldırarak ölçekleme
 Adlandırılmış bir hizmet örneği, kümedeki bazı adlandırılmış uygulama örnekleri içinde hizmet türünün belirli bir örneğidir (bkz. [uygulama yaşam döngüsü Service Fabric](service-fabric-application-lifecycle.md)). 
 
-Hizmetler daha fazla veya daha az hale geldiği için yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlar, genellikle mevcut hizmetlerde yükün azaltılmasına izin verir. Hizmet oluştururken, Service Fabric kümesi Kaynak Yöneticisi Hizmetleri dağıtılmış bir biçimde kümeye koyar. Tam kararlar, kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleştirme kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın olarak, biri çağıran ya da kod çağırarak yönetim eylemleridir [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`, kümede çalışan diğer hizmetlerden da çağrılabilir.
+Hizmetler daha fazla veya daha az hale geldiği için yeni adlandırılmış hizmet örnekleri oluşturulabilir (veya kaldırılabilir). Bu, isteklerin daha fazla hizmet örneğine yayılmasını sağlar, genellikle mevcut hizmetlerde yükün azaltılmasına izin verir. Hizmet oluştururken, Service Fabric kümesi Kaynak Yöneticisi Hizmetleri dağıtılmış bir biçimde kümeye koyar. Tam kararlar, kümedeki [ölçümlere](service-fabric-cluster-resource-manager-metrics.md) ve diğer yerleştirme kurallarına tabidir. Hizmetler birkaç farklı şekilde oluşturulabilir, ancak en yaygın olarak, biri çağıran ya da kod çağırarak yönetim eylemleridir [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync` , kümede çalışan diğer hizmetlerden da çağrılabilir.
 
 Hizmetlerin dinamik olarak oluşturulması, her tür senaryoda kullanılabilir ve ortak bir modeldir. Örneğin, belirli bir iş akışını temsil eden bir durum bilgisi olan hizmeti düşünün. İşi temsil eden çağrılar bu hizmete kadar görünür ve bu hizmet bu iş akışına yönelik adımları yürütecek ve ilerlemeyi kaydetmeye devam etmektedir. 
 
