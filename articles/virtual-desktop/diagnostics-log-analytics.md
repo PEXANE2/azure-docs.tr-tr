@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005102"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006814"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -48,7 +48,7 @@ Log Analytics kullanabilmeniz için önce bir çalışma alanı oluşturmanız g
 - Azure portal kullanmayı tercih ediyorsanız, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
 - PowerShell 'i tercih ediyorsanız, bkz. [PowerShell ile Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace-posh.md).
 
-Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) bölümündeki yönergeleri izleyin:
+Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
 
 - Çalışma alanı KIMLIĞI
 - Çalışma alanınızın birincil anahtarı
@@ -80,7 +80,7 @@ Yeni bir nesne için Log Analytics ayarlamak için:
 
 5. Ayarlar yapılandırmanız için bir ad girin ve **Log Analytics gönder**' i seçin. Kullandığınız ad boşluk içermemelidir ve [Azure adlandırma kurallarına](../azure-resource-manager/management/resource-name-rules.md)uymalıdır. Günlüklerin bir parçası olarak, Log Analytics eklenmesini istediğiniz tüm seçenekleri (denetim noktası, hata, yönetim vb.) seçebilirsiniz.
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 >[!NOTE]
 >Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md).

@@ -3,12 +3,12 @@ title: Linux VM 'lerinin uygulamayla tutarlı yedeklemeleri
 description: Linux sanal makinelerinizin Azure 'da uygulamayla tutarlı yedeklerini oluşturun. Bu makalede, betik çerçevesinin Azure tarafından dağıtılan Linux VM 'lerini yedeklemek için yapılandırılması açıklanmaktadır. Bu makalede, sorun giderme bilgileri de yer alır.
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407107"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999249"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Uygulama ile tutarlı Azure Linux VM yedekleri
 
@@ -58,7 +58,7 @@ Framework, VM anlık görüntülerini alırken özel betik ve son betik çalış
 
     - **Timeoutınseconds**: ön betik ve son betik için zaman aşımlarını belirtin (maksimum değer 1800 olabilir).
 
-    - **devam Backuponfailure**: ön betikte veya betik sonrası başarısız olursa, Azure Backup bir dosya sistemine tutarlı/kilitlenmeyle tutarlı bir yedeklemeye geri döneceğini istiyorsanız bu değeri **true** olarak ayarlayın. Betik hatası varsa, bunu **false** olarak ayarlamak yedeklemenin başarısız olmasına neden olur (bu ayardan bağımsız olarak kilitlenmeyle TUTARLı bir sanal makineye sahip olmanız dışında). **Devam Backuponfailure** değeri false olarak ayarlandığında yedekleme başarısız olursa, hizmette yeniden deneme mantığı temel alınarak yedekleme işlemi yeniden denenir (beklenen sayıda deneme sayısı için).
+    - **devam Backuponfailure**: ön betikte veya betik sonrası başarısız olursa, Azure Backup bir dosya sistemine tutarlı/kilitlenmeyle tutarlı bir yedeklemeye geri döneceğini istiyorsanız bu değeri **true** olarak ayarlayın. Betik hatası varsa, bunu **false** olarak ayarlamak yedeklemenin başarısız olmasına neden olur (bu ayardan bağımsız olarak kilitlenmeyle tutarlı yedeklemeye geri kalan tek diskli bir sanal makineye sahip olmanız dışında). **Devam Backuponfailure** değeri false olarak ayarlandığında yedekleme başarısız olursa, hizmette yeniden deneme mantığı temel alınarak yedekleme işlemi yeniden denenir (beklenen sayıda deneme sayısı için).
 
     - **Fsfreezeenabled**: dosya sistemi tutarlılığını sağlamak için VM anlık görüntüsünü alırken Linux fsfreeze 'in çağrılması gerekip gerekmediğini belirtin. Uygulamanızda fsfreeze devre dışı bırakma bağımlılığı yoksa, bu ayarın **true** olarak tutulmasını öneririz.
 

@@ -8,15 +8,13 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom:
-- amqp
-- mqtt
-ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, mqtt, devx-track-csharp
+ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81730901"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016963"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge çalışma zamanını ve mimarisini anlayın
 
@@ -92,22 +90,22 @@ Dağıtım bildirimindeki her öğe, bir modülle ilgili belirli bilgileri içer
 * **durum** : IoT Edge aracısının modülü yerleştirdiği durum. Genellikle, bu değer, IoT Edge aracısının cihazdaki tüm modülleri hemen başlatmasını istediği için, *çalışıyor* olarak ayarlanır. Ancak, durdurulacak bir modülün başlangıç durumunu belirtebilir ve daha sonra IoT Edge aracısına bir modül başlatmasını söylemeniz için bekleyin.IoT Edge Aracısı, her modülün durumunu bildirilen özelliklerde buluta geri bildirir. İstenen özellik ile bildirilen özellik arasındaki fark, yanlış davranan bir cihazın göstergesidir. Desteklenen durumlar şunlardır:
 
   * Yüklüyor
-  * Çalışıyor
+  * Çalışma
   * Uygun Değil
   * Başarısız
   * Durduruldu
 
 * **restartPolicy** : IoT Edge Aracısı bir modülü yeniden başlatır. Olası değerler şunlardır:
   
-  * `never`– IoT Edge Aracısı modülü hiçbir şekilde yeniden başlatmaz.
-  * `on-failure`-Modül kilitlenirse, IoT Edge Aracısı tarafından yeniden başlatılır. Modül düzgün şekilde kapatılırsa IoT Edge Aracısı onu yeniden başlatmaz.
-  * `on-unhealthy`-Modül kilitlenirse veya sağlıksız kabul edildiğinde, IoT Edge Aracısı yeniden başlatır.
-  * `always`-Modül kilitlenirse, sağlıksız olarak kabul edilir veya herhangi bir şekilde kapatılırsa, IoT Edge Aracısı tarafından yeniden başlatılır.
+  * `never` – IoT Edge Aracısı modülü hiçbir şekilde yeniden başlatmaz.
+  * `on-failure` -Modül kilitlenirse, IoT Edge Aracısı tarafından yeniden başlatılır. Modül düzgün şekilde kapatılırsa IoT Edge Aracısı onu yeniden başlatmaz.
+  * `on-unhealthy` -Modül kilitlenirse veya sağlıksız kabul edildiğinde, IoT Edge Aracısı yeniden başlatır.
+  * `always` -Modül kilitlenirse, sağlıksız olarak kabul edilir veya herhangi bir şekilde kapatılırsa, IoT Edge Aracısı tarafından yeniden başlatılır.
 
 * **ımagepullpolicy** -IoT Edge aracısının bir modül için en son görüntüyü otomatik olarak çekmeye çalışıp çalışmadığını belirtir. Bir değer belirtmezseniz, varsayılan olarak *OnCreate*olur. Olası değerler şunlardır:
 
-  * `on-create`-Bir modül başlatıldığında veya yeni bir dağıtım bildirimine göre bir modülü güncelleştirirken, IoT Edge Aracısı modül görüntüsünü kapsayıcı kayıt defterinden çekmeye çalışacaktır.
-  * `never`-IoT Edge Aracısı hiçbir şekilde kapsayıcı kayıt defterinden modül görüntüsünü çekmeye çalışmaz. Bu yapılandırmayla, modül görüntüsünün cihaza alınması ve görüntü güncelleştirmelerinin yönetilmesi sizin sorumluluğunuzdadır.
+  * `on-create` -Bir modül başlatıldığında veya yeni bir dağıtım bildirimine göre bir modülü güncelleştirirken, IoT Edge Aracısı modül görüntüsünü kapsayıcı kayıt defterinden çekmeye çalışacaktır.
+  * `never` -IoT Edge Aracısı hiçbir şekilde kapsayıcı kayıt defterinden modül görüntüsünü çekmeye çalışmaz. Bu yapılandırmayla, modül görüntüsünün cihaza alınması ve görüntü güncelleştirmelerinin yönetilmesi sizin sorumluluğunuzdadır.
 
 IoT Edge Aracısı IoT Hub çalışma zamanı yanıtı gönderir. Olası yanıtların bir listesi aşağıda verilmiştir:
   

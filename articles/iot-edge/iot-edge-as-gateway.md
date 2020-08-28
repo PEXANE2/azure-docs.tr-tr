@@ -4,19 +4,19 @@ description: Birden çok aşağı akış aygıtından buluta veri gönderen veya
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/25/2019
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0589779de2ddb0bc75dde3b57d6444634b879f86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232636"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017031"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
 
@@ -24,13 +24,31 @@ IoT Edge çözümlerinde ağ geçitleri, bu yeteneklere sahip olmayan IoT cihazl
 
 ## <a name="patterns"></a>Desenler
 
-IoT Edge cihazını ağ geçidi olarak kullanmak için üç desen vardır; saydam, protokol çevirisi ve kimlik çevirisi:
+Bir IoT Edge cihazını ağ geçidi olarak kullanmanın üç deseni vardır: saydam, protokol çevirisi ve kimlik çevirisi.
 
-* **Saydam** – teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT, AMQP veya HTTP protokollerinden herhangi birini kullanır. Ağ geçidi basitçe cihazlarla IoT Hub arasındaki iletişimi geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam*olarak kabul edildiği anlamına gelir. IoT Edge cihazını saydam ağ geçidi olarak kullanmaya özel bilgiler için [Saydam ağ geçidi oluşturma](how-to-create-transparent-gateway.md) konusuna bakın.
-* **Protokol çevirisi** – donuk ağ geçidi alanı olarak da BILINEN, MQTT, AMQP veya HTTP desteği olmayan cihazlar, verileri adına IoT Hub veri göndermek için bir ağ geçidi cihazı kullanabilir. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlar ve IoT Hub’da kimliği olan tek cihazdır. Tüm bilgiler bir cihazdan, ağ geçidinden geliyor gibi görünüyor. Bulut uygulamaları verileri cihaz başına analiz etmek istiyorsa, aşağı akış cihazları ek tanımlama bilgilerini iletilerine eklemelidir. Buna ek olarak, ikizler ve yöntemler gibi IoT Hub basit öğeleri yalnızca ağ geçidi cihazı için kullanılabilir, aşağı akış cihazları için kullanılamaz.
-* **Kimlik çevirisi** -IoT Hub bağlantı olmayan cihazlar, bunun yerine bir ağ geçidi cihazına bağlanabilir. Ağ geçidi, aşağı akış cihazları adına IoT Hub kimliği ve protokol çevirisi sağlar. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlayacak kadar akıllıdır, onlara kimlik sağlar ve IoT Hub basit öğelerini çevirir. Aşağı akış cihazları IoT Hub’da ikizler ve yöntemlerle birinci sınıf cihazlar olarak görüntülenir. Kullanıcı IoT Hub’da cihazlarla etkileşim kurabilir ve aradaki ağ geçidi cihazının farkında olmaz.
+Desenler arasındaki önemli bir fark, saydam bir ağ geçidinin iletileri aşağı akış cihazları arasında ve ek işleme gerekmeden IoT Hub geçireceğini. Ancak protokol çevirisi ve kimlik çevirisi, iletişim sağlamak için ağ geçidinde işlem gerektirir.
+
+Herhangi bir ağ geçidi, iletileri aşağı akış cihazlarından IoT Hub geçirmeden önce analiz veya ön işleme gerçekleştirmek için IoT Edge modüllerini kullanabilir.
 
 ![Diyagram-saydam, protokol ve kimlik ağ geçidi desenleri](./media/iot-edge-as-gateway/edge-as-gateway.png)
+
+### <a name="transparent-pattern"></a>Saydam kalıp
+
+*Saydam* bir ağ geçidi modelinde, teorik olarak IoT Hub bir ağ geçidi cihazına bağlanabilir cihazlar. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT, AMQP veya HTTP protokollerinden herhangi birini kullanır. Ağ geçidi basitçe cihazlarla IoT Hub arasındaki iletişimi geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam*olarak kabul edildiği anlamına gelir.
+
+IoT Edge çalışma zamanı, saydam ağ geçidi özelliklerini içerir. Daha fazla bilgi için bkz. bir [IoT Edge cihazını saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md).
+
+### <a name="protocol-translation-pattern"></a>Protokol çevirisi stili
+
+Saydam ağ geçidi deseninin aksine, bir *protokol çevirisi* ağ geçidi *donuk* ağ geçidi olarak da bilinir. Bu düzende, MQTT, AMQP veya HTTP desteği olmayan cihazlar, verileri adına IoT Hub veri göndermek için bir ağ geçidi cihazı kullanabilir. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlar ve IoT Hub’da kimliği olan tek cihazdır. Tüm bilgiler bir cihazdan, ağ geçidinden geliyor gibi görünüyor. Bulut uygulamaları verileri cihaz başına analiz etmek istiyorsa, aşağı akış cihazları ek tanımlama bilgilerini iletilerine eklemelidir. Buna ek olarak, ikizler ve yöntemler gibi IoT Hub basit öğeleri yalnızca ağ geçidi cihazı için kullanılabilir, aşağı akış cihazları için kullanılamaz.
+
+IoT Edge çalışma zamanı protokol çevirisi özelliklerini içermez. Bu model, genellikle kullanılan donanım ve protokole özgü özel veya üçüncü taraf modüller gerektirir. [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) , aralarından seçim yapabileceğiniz çeşitli protokol çeviri modüllerini içerir.
+
+### <a name="identity-translation-pattern"></a>Kimlik çevirisi stili
+
+Bir *kimlik çevirisi* ağ geçidi modelinde, IoT Hub bağlantı olmayan cihazlar, bunun yerine bir ağ geçidi cihazına bağlanabilir. Ağ geçidi, aşağı akış cihazları adına IoT Hub kimliği ve protokol çevirisi sağlar. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlayacak kadar akıllıdır, onlara kimlik sağlar ve IoT Hub basit öğelerini çevirir. Aşağı akış cihazları IoT Hub’da ikizler ve yöntemlerle birinci sınıf cihazlar olarak görüntülenir. Kullanıcı IoT Hub’da cihazlarla etkileşim kurabilir ve aradaki ağ geçidi cihazının farkında olmaz.
+
+IoT Edge çalışma zamanı, kimlik çevirisi özelliklerini içermez. Bu model, genellikle kullanılan donanım ve protokole özgü özel veya üçüncü taraf modüller gerektirir. Kimlik çevirisi modelini kullanan bir örnek için bkz. [Azure IoT Edge LoRaWAN Starter Kit](https://github.com/Azure/iotedge-lorawan-starterkit).
 
 ## <a name="use-cases"></a>Uygulama alanları
 
@@ -42,7 +60,7 @@ Tüm ağ geçidi desenleri aşağıdaki avantajları sağlar:
 * **Trafik yumuşatma** -IoT Edge cihaz, trafiği yerel olarak kalıcı hale getiren IoT Hub trafiği kısıtlıyorsa üstel geri alma otomatik olarak uygulanır. Bu avantaj, çözümünüzü trafikte ani artışlar açısından dayanıklı hale getirir.
 * **Çevrimdışı destek** -ağ geçidi cihazı, IoT Hub teslim edilmemiş iletileri ve ikizi güncelleştirmelerini depolar.
 
-Protokol çevirisi yapan bir ağ geçidi, uç analizi, cihaz yalıtımı, trafik düzleştirme ve mevcut cihazlara ve kaynak kısıtlanmış yeni cihazlara çevrimdışı destek de gerçekleştirebilir. Birçok mevcut cihaz, iş içgörülerini destekleyen verileri üretir; Ancak bulut bağlantısı göz önünde bulundurularak tasarlanmamıştır. Donuk ağ geçitleri, bu verilerin bir IoT çözümünde kilidinin açık ve kullanılabilir olmasını sağlar.
+Protokol çevirisi yapan bir ağ geçidi, var olan cihazları ve kaynak kısıtlanmış yeni cihazları destekleyebilir. Birçok mevcut cihaz, iş içgörülerini destekleyen verileri üretir; Ancak bulut bağlantısı göz önünde bulundurularak tasarlanmamıştır. Donuk ağ geçitleri, bu verilerin bir IoT çözümünde kilidinin açık ve kullanılabilir olmasını sağlar.
 
 Kimlik çevirisi yapan bir ağ geçidi, protokol çevirisi avantajlarından yararlanır ve ayrıca, diğer bir deyişle, tüm aşağı akış cihazlarının bulutlarından tam yönetilebilirlik sağlar. IoT çözümünüzdeki tüm cihazlar, kullandıkları Protokolden bağımsız olarak IoT Hub gösterir.
 
@@ -61,7 +79,7 @@ Donuk bir ağ geçidi (protokol çevirisi) modelini kullanırken, bu ağ geçidi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Saydam ağ geçidini ayarlamayı öğrenin:
+Saydam bir ağ geçidi ayarlamaya yönelik üç adımı öğrenin:
 
 * [IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)
 * [Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md)

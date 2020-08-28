@@ -3,12 +3,13 @@ title: Reliable Actors zamanlayıcılar ve anımsatıcılar
 description: Her birinin ne zaman kullanılacağı hakkında rehberlik dahil olmak üzere Service Fabric Reliable Actors için zamanlayıcılar ve anımsatıcılara giriş.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245958"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016555"
 ---
 # <a name="actor-timers-and-reminders"></a>Aktör zamanlayıcılar ve anımsatıcıları
 Aktör, zamanlayıcılar veya anımsatıcılar kaydederek kendi üzerinde düzenli işler zamanlayabilir. Bu makalede, zamanlayıcılar ve anımsatıcıların nasıl kullanılacağı gösterilir ve aralarındaki farklar açıklanmaktadır.
@@ -204,7 +205,7 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Bir anımsatıcı tetiklendiğinde, Reliable Actors çalışma zamanı `ReceiveReminderAsync` aktör üzerinde (C#) veya `receiveReminderAsync` (Java) yöntemini çağırır. Aktör birden çok anımsatıcı kaydedebilir ve `ReceiveReminderAsync` (C#) veya `receiveReminderAsync` (Java) yöntemi bu anımsatıcıları tetiklendiğinde çağrılır. Aktör, `ReceiveReminderAsync` `receiveReminderAsync` hangi anımsatıcının tetiklendiğini anlamak için (C#) veya (Java) yöntemine geçirilen anımsatıcı adını kullanabilir.
+Bir anımsatıcı tetiklendiğinde, Reliable Actors çalışma zamanı  `ReceiveReminderAsync` aktör üzerinde (C#) veya `receiveReminderAsync` (Java) yöntemini çağırır. Aktör birden çok anımsatıcı kaydedebilir ve `ReceiveReminderAsync` (C#) veya `receiveReminderAsync` (Java) yöntemi bu anımsatıcıları tetiklendiğinde çağrılır. Aktör, `ReceiveReminderAsync` `receiveReminderAsync` hangi anımsatıcının tetiklendiğini anlamak için (C#) veya (Java) yöntemine geçirilen anımsatıcı adını kullanabilir.
 
 Aktör çalışma zamanı, `ReceiveReminderAsync` (C#) veya `receiveReminderAsync` (Java) çağrısı tamamlandığında aktör durumunu kaydeder. Durumu kaydederken bir hata oluşursa, bu aktör nesnesi devre dışı bırakılır ve yeni bir örnek etkinleştirilir.
 

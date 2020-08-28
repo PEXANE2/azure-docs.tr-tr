@@ -10,14 +10,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
+ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 1f0d60d1f76523beca6567517ef44d50b910b221
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537624"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997464"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -49,7 +50,7 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda**çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar şunlardır:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.

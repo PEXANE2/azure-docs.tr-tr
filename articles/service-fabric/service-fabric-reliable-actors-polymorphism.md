@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7552609fc4c85cdd5033e67b1bab7fb58cb6ebf1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348932"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016572"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors çerçevesinde çok biçimlilik
 Reliable Actors Framework, nesne odaklı tasarımda kullandığınız tekniklerin birçoğunu kullanarak aktör oluşturmanıza olanak sağlar. Bu tekniklerin biri çok biçimlerdir, bu da türlerin ve arabirimlerin daha Genelleştirilmiş üst öğeden devralınmasını sağlar. Reliable Actors Framework 'te devralma, genellikle birkaç ek kısıtlama içeren .NET modelini izler. Java/Linux durumunda Java modelini izler.

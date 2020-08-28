@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.custom: devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: fa03ae10239be4ec735a2d450343bf98fde00e70
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-javascript, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: cf2bd616fc739d233826769baaa14298d0fcec2d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497044"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017133"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında standart (el ile) aktarım hızı sağlama
 
@@ -100,7 +100,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API'si
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API’si
 
 ```csharp
 // refer to MongoDB .NET Driver
@@ -121,7 +121,7 @@ mongoDatabase = mongoClient.GetDatabase("testdb");
 var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
 ```
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API'si
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API’si
 
 Benzer komutlar, CQL uyumlu herhangi bir sürücü aracılığıyla verilebilir.
 

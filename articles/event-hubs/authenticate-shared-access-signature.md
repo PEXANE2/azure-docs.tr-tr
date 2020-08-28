@@ -3,13 +3,13 @@ title: Paylaşılan erişim imzaları ile Azure Event Hubs erişimi kimlik doğr
 description: Bu makalede, paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimin nasıl doğrulandığını gösterilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423108"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008327"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -44,10 +44,10 @@ SendRuleNS yetkilendirme kuralı kullanılırken, istemci uygulamaları hem EH1 
 ## <a name="generate-a-shared-access-signature-token"></a>Paylaşılan erişim Imza belirteci oluştur 
 Bir yetkilendirme kuralı adı adına erişimi olan tüm istemciler ve imzalama anahtarlarından biri bir SAS belirteci oluşturabilir. Belirteç, aşağıdaki biçimde bir dize oluşturarak oluşturulur:
 
-- `se`– Token süre sonu anında. Belirtecin süresi 1 1970 Ocak 00:00:00 ' de (UNIX dönemi), bu yana beklenen saniye sayısı
-- `skn`– SAS anahtar adı olan yetkilendirme kuralının adı.
-- `sr`– Erişilmekte olan kaynağın URI 'SI.
-- `sig`İmza.
+- `se`  – Token süre sonu anında. Belirtecin süresi 1 1970 Ocak 00:00:00 ' de (UNIX dönemi), bu yana beklenen saniye sayısı
+- `skn` – SAS anahtar adı olan yetkilendirme kuralının adı.
+- `sr` – Erişilmekte olan kaynağın URI 'SI.
+- `sig` İmza.
 
 İmza-dize, kaynak URI üzerinden (önceki bölümde açıklandığı gibi kapsam) ve CRLF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize gösterimine göre hesaplanan SHA-256 karmasıdır.
 

@@ -5,12 +5,13 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 80192aef564317e36fba56025aa31c787676d974
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253550"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006865"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Güvenilir Aktörleri ve durumlarını silme
 Devre dışı bırakılmış aktörlerin atık toplama işlemi yalnızca aktör nesnesini temizler, ancak aktörün durum yöneticisinde depolanan verileri kaldırmaz. Bir aktör yeniden etkinleştirildiğinde, verileri durum Yöneticisi aracılığıyla tekrar kullanılabilir hale getirilir. Aktörlerin verileri durum Yöneticisi 'nde depolaması ve devre dışı bırakılmaması, ancak hiçbir zaman yeniden etkinleştirilmemesi durumunda, verilerinin temizlenmesi gerekebilir.

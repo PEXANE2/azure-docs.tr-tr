@@ -4,12 +4,13 @@ description: Windows 'da Service Fabric Reliable Services ve Reliable Actors hiz
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16840eb397dad697d4f3b9f361225e98442ae39e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824554"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016215"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows'da Service Fabric Reliable Services ve Reliable Actors kapsayıcıları
 

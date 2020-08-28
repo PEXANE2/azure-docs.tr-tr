@@ -5,12 +5,13 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260447"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016708"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktör yaşam döngüsü, otomatik atık toplama ve el ile silme
 Bir aktör, metotlarından herhangi birine ilk kez çağrı yapıldığında etkinleştirilir. Bir aktör, yapılandırılabilir bir süre için kullanılmıyorsa devre dışı bırakılır (aktör çalışma zamanı tarafından atık olarak toplanır). Aktör ve durumu istediğiniz zaman el ile de silinebilir.
@@ -40,7 +41,7 @@ Aktör devre dışı bırakıldığında, aktör nesnesine yapılan başvurular 
 Devre dışı bırakma ve çöp toplama amacıyla "kullanılma" olarak ne sayılır?
 
 * Çağrı alma
-* `IRemindable.ReceiveReminderAsync`çağrılan Yöntem (yalnızca aktör anımsatıcıları kullanıyorsa geçerlidir)
+* `IRemindable.ReceiveReminderAsync` çağrılan Yöntem (yalnızca aktör anımsatıcıları kullanıyorsa geçerlidir)
 
 > [!NOTE]
 > aktör zamanlayıcılar kullanıyorsa ve zamanlayıcı geri araması çağrılırsa, "kullanılıyor" olarak **sayılmaz.**

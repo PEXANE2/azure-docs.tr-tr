@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913013"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016844"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics ile Motions Algıla
 
@@ -34,7 +35,7 @@ Güvenlik video akışlarına hedeflenmiş bu teknoloji, ilgili olaylara yöneli
 
 **Azure Media Motion Detector** MP Şu anda önizleme aşamasındadır.
 
-Bu makale, **Azure Media Motion Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir
+Bu makale,  **Azure Media Motion Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir
 
 ## <a name="motion-detector-input-files"></a>Hareket algılayıcısı giriş dosyaları
 Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
@@ -45,7 +46,7 @@ Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
 ### <a name="parameters"></a>Parametreler
 Aşağıdaki parametreleri kullanabilirsiniz:
 
-| Name | Seçenekler | Açıklama | Varsayılan |
+| Ad | Seçenekler | Açıklama | Varsayılan |
 | --- | --- | --- | --- |
 | sensitivityLevel |Dize: ' Low ', ' Medium ', ' High ' |Hareketlerin 'in bildirildiği duyarlılık düzeyini ayarlar. Hatalı pozitif sonuç sayısını ayarlamak için bunu ayarlayın. |uzunlukta |
 | frameSamplingValue |Pozitif tamsayı |Algoritmanın çalışacağı sıklığı ayarlar. 1 her çerçeveye eşittir, 2 her ikinci kare de vb. anlamına gelir. |1 |

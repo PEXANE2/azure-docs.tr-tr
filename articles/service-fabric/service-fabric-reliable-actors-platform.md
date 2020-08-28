@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016623"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors Service Fabric platformunu kullanma
 Bu makalede Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors, *aktör hizmeti*olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin uygulamasında barındırılan bir çerçevede çalışır. Aktör hizmeti, Aktörlerinizin yaşam döngüsünü ve ileti dağıtımını yönetmek için gerekli tüm bileşenleri içerir:
@@ -61,7 +62,7 @@ Aktör Hizmetleri bölümlenmiş durum bilgisi olan hizmetlerdir. Aktör hizmeti
 Reliable Services, farklı bölüm şemaları ve bölüm anahtarı aralıklarıyla oluşturulabilir. Aktör hizmeti, aktörlerin bölümlerle eşleşmesini sağlamak için tam Int64 anahtar aralığıyla Int64 bölümlendirme şemasını kullanır.
 
 ### <a name="actor-id"></a>Aktör KIMLIĞI
-Hizmette oluşturulan her aktörle ilişkili benzersiz bir KIMLIĞI vardır ve sınıfı tarafından temsil edilir `ActorId` . `ActorId`Rastgele kimlikler oluşturarak hizmet bölümleri genelinde aktörlerin Tekdüzen dağılımı için kullanılabilen donuk bir KIMLIK değeridir:
+Hizmette oluşturulan her aktörle ilişkili benzersiz bir KIMLIĞI vardır ve sınıfı tarafından temsil edilir `ActorId` . `ActorId` Rastgele kimlikler oluşturarak hizmet bölümleri genelinde aktörlerin Tekdüzen dağılımı için kullanılabilen donuk bir KIMLIK değeridir:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
