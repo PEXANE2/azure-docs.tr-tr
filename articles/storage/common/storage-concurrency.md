@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030393"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021570"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolamada Eşzamanlılığı Yönetme
 
@@ -90,14 +91,14 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | İşlem | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Kapsayıcı Oluşturma |Yes |Hayır |
-| Kapsayıcı özelliklerini al |Yes |Hayır |
-| Kapsayıcı meta verilerini al |Yes |Hayır |
-| Kapsayıcı meta verilerini ayarla |Yes |Yes |
-| Kapsayıcı ACL 'sini al |Yes |Hayır |
-| Kapsayıcı ACL 'sini ayarla |Yes |Evet (*) |
-| Kapsayıcıyı Silme |Hayır |Yes |
-| Kira kapsayıcısı |Yes |Yes |
+| Kapsayıcı Oluşturma |Evet |Hayır |
+| Kapsayıcı özelliklerini al |Evet |Hayır |
+| Kapsayıcı meta verilerini al |Evet |Hayır |
+| Kapsayıcı meta verilerini ayarla |Evet |Evet |
+| Kapsayıcı ACL 'sini al |Evet |Hayır |
+| Kapsayıcı ACL 'sini ayarla |Evet |Evet (*) |
+| Kapsayıcıyı Silme |Hayır |Evet |
+| Kira kapsayıcısı |Evet |Evet |
 | Blobları Listele |Hayır |Hayır |
 
 (*) SetContainerACL tarafından tanımlanan izinler önbelleğe alınır ve bu izinlere yönelik güncelleştirmeler, zaman içindeki güncelleştirmelerin tutarlı olması garanti edilmediği için 30 saniye sürer.  
@@ -106,22 +107,22 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | İşlem | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| İkili Büyük Nesne Koyma |Yes |Yes |
-| Blob al |Yes |Yes |
-| BLOB özelliklerini Al |Yes |Yes |
-| Blob özelliklerini ayarla |Yes |Yes |
-| Blob meta verilerini al |Yes |Yes |
-| Blob meta verilerini ayarla |Yes |Yes |
-| Kira Blobu (*) |Yes |Yes |
-| İkili Büyük Nesne Anlık Görüntüsünü Alma |Yes |Yes |
-| İkili Büyük Nesneyi Kopyalama |Yes |Evet (kaynak ve hedef blobu için) |
+| İkili Büyük Nesne Koyma |Evet |Evet |
+| Blob al |Evet |Evet |
+| BLOB özelliklerini Al |Evet |Evet |
+| Blob özelliklerini ayarla |Evet |Evet |
+| Blob meta verilerini al |Evet |Evet |
+| Blob meta verilerini ayarla |Evet |Evet |
+| Kira Blobu (*) |Evet |Evet |
+| İkili Büyük Nesne Anlık Görüntüsünü Alma |Evet |Evet |
+| İkili Büyük Nesneyi Kopyalama |Evet |Evet (kaynak ve hedef blobu için) |
 | Kopyalama blobu durdur |Hayır |Hayır |
-| İkili Büyük Nesneyi Silme |Hayır |Yes |
+| İkili Büyük Nesneyi Silme |Hayır |Evet |
 | Yerleştirme bloğu |Hayır |Hayır |
-| Öbek listesini yerleştirme |Yes |Yes |
-| Engelleme listesini al |Yes |Hayır |
-| Yerleştirme sayfası |Yes |Yes |
-| Sayfa aralıklarını al |Yes |Yes |
+| Öbek listesini yerleştirme |Evet |Evet |
+| Engelleme listesini al |Evet |Hayır |
+| Yerleştirme sayfası |Evet |Evet |
+| Sayfa aralıklarını al |Evet |Evet |
 
 (*) Kira blobu blob üzerinde ETag öğesini değiştirmez.  
 
@@ -244,13 +245,13 @@ Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kull
 
 | İşlem | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
 |:--- |:--- |:--- |
-| Sorgu varlıkları |Yes |Hayır |
-| Varlık Ekle |Yes |Hayır |
-| Varlığı Güncelleştir |Yes |Yes |
-| Birleştirme varlığı |Yes |Yes |
-| Varlığı Sil |Hayır |Yes |
-| Varlık Ekle veya Değiştir |Yes |Hayır |
-| Varlık ekleme veya birleştirme |Yes |Hayır |
+| Sorgu varlıkları |Evet |Hayır |
+| Varlık Ekle |Evet |Hayır |
+| Varlığı Güncelleştir |Evet |Evet |
+| Birleştirme varlığı |Evet |Evet |
+| Varlığı Sil |Hayır |Evet |
+| Varlık Ekle veya Değiştir |Evet |Hayır |
+| Varlık ekleme veya birleştirme |Evet |Hayır |
 
 **Varlık Ekle veya Değiştir** ve **Ekle ya da Birleştir** Işlemlerinin tablo hizmetine bir ETag değeri *göndermediğinden hiçbir eşzamanlılık denetimi gerçekleştirmediğini* unutmayın.  
 

@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 9498c4a0e0dc5b528066ffadd6a9638fe99b1135
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: dbfb90abcf301cb22a84ba28359c6cb0bfaacfd6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874801"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021094"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak genel dağıtım Azure Cosmos DB ayarlama
 
@@ -28,7 +28,7 @@ Bu makale aşağıdaki görevleri kapsar:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>SQL API 'sini kullanarak tercih edilen bir bölgeye bağlanma
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> SQL API 'sini kullanarak tercih edilen bir bölgeye bağlanma
 
 [Genel dağıtımdan](distribute-data-globally.md) yararlanmak için istemci uygulamaları, belge işlemlerini gerçekleştirmek için kullanılacak bölgelerin tercihe göre sıralanmış listesini belirtebilir. Azure Cosmos DB hesap yapılandırmasına, geçerli bölgesel kullanılabilirliğe ve belirtilen tercih listesine göre yazma ve okuma işlemlerini gerçekleştirmek için SQL SDK tarafından en iyi uç nokta seçilir.
 
@@ -159,7 +159,7 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Java v4 SDK 'Sı
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java v4 SDK 'Sı
 
 Aşağıdaki kod, Java SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
@@ -179,7 +179,7 @@ Aşağıdaki kod, Java SDK kullanarak tercih edilen konumların nasıl ayarlanac
 
 ## <a name="rest"></a>REST
 
-Bir veritabanı hesabı birden çok bölgede kullanıma sunulduktan sonra istemciler, bu URI üzerinde bir GET isteği gerçekleştirerek kullanılabilirliğini sorgulayabilir`https://{databaseaccount}.documents.azure.com/`
+Bir veritabanı hesabı birden çok bölgede kullanıma sunulduktan sonra istemciler, bu URI üzerinde bir GET isteği gerçekleştirerek kullanılabilirliğini sorgulayabilir `https://{databaseaccount}.documents.azure.com/`
 
 Hizmet, bölgelerin listesini ve çoğaltmalar için karşılık gelen Azure Cosmos DB uç nokta URI’lerini döndürür. Yanıtta geçerli yazma bölgesi belirtilir. Daha sonra istemci aşağıdaki gibi diğer tüm REST API istekleri için uygun uç noktayı seçebilir.
 

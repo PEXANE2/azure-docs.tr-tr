@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494675"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020516"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
@@ -29,7 +29,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme �
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Desteklenen Windows işletim sistemleri hakkında daha fazla bilgi için [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) makalesine bakın.
+Desteklenen Windows işletim sistemleri hakkında daha fazla bilgi için bkz. [Azure izleyici aracılarına genel bakış](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) makalesine bakın.
 
 ### <a name="agent-and-vm-extension-version"></a>Aracı ve VM Uzantısı sürümü
 Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzantısı ve Log Analytics aracı paketi sürümünün bir eşlemesi verilmiştir. 
@@ -86,16 +86,16 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 ```
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Ad | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |
 | tür | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1,0 |
+| typeHandlerVersion | 1.0 |
 | çalışma alanı kimliği (ör.) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (ör.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*Çalışma alanı kimliği, Log Analytics API 'sinde ConsumerID olarak adlandırılır.
+\* Çalışma alanı kimliği, Log Analytics API 'sinde ConsumerID olarak adlandırılır.
 
 > [!NOTE]
 > Ek özellikler için bkz. Azure [Windows bilgisayarlarını Azure 'A Bağlama İzleyicisi](../../azure-monitor/platform/agent-windows.md).

@@ -3,12 +3,13 @@ title: Azure Service Fabric DNS hizmeti
 description: Kümenin içinden mikro hizmetleri keşfetmek için Service Fabric DNS hizmetini kullanın.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258901"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021281"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric'te DNS Hizmeti
 DNS hizmeti, kümenizde etkinleştirebileceğiniz ve DNS protokolünü kullanarak diğer hizmetleri keşfedebilmeniz için kullanabileceğiniz isteğe bağlı bir sistem hizmetidir. 
@@ -116,7 +117,7 @@ Hizmetinizin DNS adı küme genelinde çözülebilir, bu sayede DNS adının kü
 Bir adlandırma şeması kullanmanız önemle önerilir `<ServiceDnsName>.<AppInstanceName>` ; Örneğin, `service1.application1` . Bir uygulama Docker Compose kullanılarak dağıtılırsa, hizmetler otomatik olarak bu adlandırma şemasını kullanarak DNS adlarına atanır.
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>ApplicationManifest.xml varsayılan bir hizmetin DNS adını ayarlama
-Projenizi Visual Studio 'da veya en sevdiğiniz düzenleyicide açın ve ApplicationManifest.xml dosyasını açın. Varsayılan hizmetler bölümüne gidin ve her bir hizmet için `ServiceDnsName` özniteliği ekleyin. Aşağıdaki örnekte, hizmetinin DNS adının nasıl ayarlanacağı gösterilmektedir.`service1.application1`
+Projenizi Visual Studio 'da veya en sevdiğiniz düzenleyicide açın ve ApplicationManifest.xml dosyasını açın. Varsayılan hizmetler bölümüne gidin ve her bir hizmet için `ServiceDnsName` özniteliği ekleyin. Aşağıdaki örnekte, hizmetinin DNS adının nasıl ayarlanacağı gösterilmektedir. `service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -143,7 +144,7 @@ Aşağıdaki örnek, durum bilgisi olan bir hizmetin DNS adını olarak ayarlar 
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>PowerShell kullanarak bir hizmetin DNS adını ayarlama
-Bir hizmetin DNS adını PowerShell komutunu kullanarak oluştururken ayarlayabilirsiniz `New-ServiceFabricService` . Aşağıdaki örnek, DNS adıyla yeni bir durum bilgisi olmayan hizmet oluşturur`service1.application1`
+Bir hizmetin DNS adını PowerShell komutunu kullanarak oluştururken ayarlayabilirsiniz `New-ServiceFabricService` . Aşağıdaki örnek, DNS adıyla yeni bir durum bilgisi olmayan hizmet oluşturur `service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -170,12 +171,12 @@ Bir bölümü hedefleyen DNS sorguları aşağıdaki gibi biçimlendirilir:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Konum:
+Burada:
 
 - *İlk-bölümlenmiş-Service-DnsName etiketi* , hizmet DNS adınızın ilk kısmıdır.
-- *PartitionPrefix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. "--" Varsayılan değeri. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionPrefix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. "--" Varsayılan değeri. Daha fazla bilgi için bkz.  [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Hedef-bölüm adı* , bölümün adıdır. 
-- *Partitionsuffix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. Varsayılan değer boş bir dizedir. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *Partitionsuffix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. Varsayılan değer boş bir dizedir. Daha fazla bilgi için bkz.  [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Kalan-bölümlenmiş-Service-DnsName* , hizmet DNS adınızın kalan kısmıdır.
 
 Aşağıdaki örneklerde, ve için varsayılan ayarlarına sahip bir kümede çalışan bölümlenmiş hizmetlere yönelik DNS sorguları gösterilmektedir `PartitionPrefix` `PartitionSuffix` : 

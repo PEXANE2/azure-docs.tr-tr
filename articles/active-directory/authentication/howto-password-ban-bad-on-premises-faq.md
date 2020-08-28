@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717787"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003482"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD parola koruması şirket içi sık sorulan sorular
 
@@ -47,6 +47,14 @@ Parola değişikliği, bir Kullanıcı eski parola hakkında bilgi sahibi oldukt
 Bir parola kümesi (bazen parola sıfırlama olarak adlandırılır), bir yönetici bir hesaptaki parolayı yeni bir parolayla Değiştir, örneğin Active Directory Kullanıcılar ve bilgisayarlar Yönetim Aracı ' nı kullanmaktır. Bu işlem, yüksek düzeyde ayrıcalık (genellikle etki alanı Yöneticisi) gerektirir ve işlemi gerçekleştiren kişi genellikle eski parola hakkında bilgi sahibi değildir. Yardım Masası senaryoları genellikle parola kümeleri gerçekleştirir, örneğin, parolasını unutmuş bir kullanıcıyı öğreniyor. Ayrıca, yeni bir kullanıcı hesabı bir parola ile ilk kez oluşturulduğunda parola ayarlama olaylarını da görürsünüz.
 
 Parola doğrulama ilkesi, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığına bakılmaksızın aynı şekilde davranır. Azure AD parola koruması DC Aracısı hizmeti, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığını bildirmek için farklı olayları günlüğe kaydeder.  Bkz. [Azure AD parola koruması izleme ve günlüğe kaydetme](./howto-password-ban-bad-on-premises-monitor.md).
+
+**S: Azure AD parola koruması, mevcut parolaları yükledikten sonra doğrular mi?**
+
+Hayır-Azure AD parola koruması, parola değiştirme veya ayarlama işlemi sırasında yalnızca şifresiz metin parolalarında parola ilkesini zorlayabilir. Bir parola Active Directory tarafından kabul edildiğinde, bu parolanın yalnızca kimlik doğrulaması protokolüne özgü karmaları kalıcı hale getirilir. Şifresiz metin parolası hiçbir şekilde kalıcı değildir, bu nedenle Azure AD parola koruması mevcut parolaları doğrulayamaz.
+
+Azure AD parola koruması 'nın ilk dağıtımından sonra, tüm kullanıcılar ve hesaplar sonunda, var olan parolalarının zaman içinde normalde süresi dolduğunda Azure AD parola koruması ile doğrulanan parolayı kullanmaya başlar. İsterseniz, bu işlem, Kullanıcı hesabı parolalarının bir kerelik bir el ile süre sonu ile hızlandırılır.
+
+"Parola süresi dolmasın" ile yapılandırılan hesapların, el ile sona erme tarihi yapılmadığı takdirde parolalarını değiştirme izni olmaz.
 
 **S: Active Directory Kullanıcıları ve bilgisayarları Yönetimi ek bileşenini kullanarak zayıf bir parola ayarlamaya çalışırken neden yinelenen parola reddetme olayları günlüğe kaydedilir?**
 

@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020601"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Azure ile SendGrid kullanarak e-posta gönderme
 ## <a name="overview"></a>Genel Bakış
@@ -51,7 +52,7 @@ Uygulamanıza SendGrid NuGet paketini yüklemek için aşağıdakileri yapın:
 
 1. **Yeni proje** ' ye tıklayın ve bir **şablon**seçin.
 
-   ![Yeni proje oluşturma][create-new-project]
+   ![Yeni bir proje oluşturma][create-new-project]
 2. **Çözüm Gezgini**, **Başvurular**' a sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
 
    ![SendGrid NuGet paketi][SendGrid-NuGet-package]
@@ -276,7 +277,7 @@ SendGrid, Azure uygulamanızda ek işlevlerden yararlanmak için kullanabileceğ
 SendGrid e-posta hizmetinin temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
 * SendGrid C \# kitaplığı deposu: [SendGrid-CSharp][sendgrid-csharp]
-* SendGrid API belgeleri:<https://sendgrid.com/docs>
+* SendGrid API belgeleri: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis

@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fdd0cd6995a294be03640693fcca9fb814f3acbe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826832"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021706"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Yeni Azure dijital TWINS 'in önceki sürümden (2018) farkı nedir?
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Yeni Azure dijital TWINS nedir? Önceki sürümden (2018) farklı mi?
 
 Azure Digital TWINS 'in ilk genel önizlemesi Ekim 2018 ' de yayımlanmıştır. Bu önceki sürümden temel kavramlar, artık genel önizlemede bulunan yeni hizmete devredilirken, arabirimlerin ve uygulama ayrıntılarının birçoğu hizmeti daha esnek ve erişilebilir hale getirmek için değiştirilmiştir. Bu değişiklikler müşteri geri bildirimleri tarafından görüşmiş.
 
@@ -44,5 +44,4 @@ Bu genel önizleme sırasında Azure dijital TWINS sınırları listesi için bk
 
 Ardından, ilk öğreticiyle Azure dijital ikgörüler ile çalışmaya hemen başlayabilirsiniz:
 
-> [!div class="nextstepaction"]
-> [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
+[*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

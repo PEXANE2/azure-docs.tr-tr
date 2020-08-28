@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260168"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021442"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -57,12 +57,14 @@ Bu yük devretme seçeneklerinin her ikisi de aşağıdaki kurtarma noktası hed
 
 <sup>1</sup> Buluttan cihaza iletiler ve üst işler, el ile yük devretmenin bir parçası olarak kurtarılmaz.
 
-IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka uç uygulamalardaki tüm işlemlerin el ile müdahale gerekmeden çalışmaya devam etmesi beklenir. Bu, cihazdan buluta iletilerinizin çalışmaya devam etmesi ve tüm cihaz kayıt defterinin bozulmadan emin olması anlamına gelir. Event Grid aracılığıyla yayılan olaylar, daha önce yapılandırılan ve bu Event Grid abonelikleri kullanılabilir olmaya devam eden abonelik (ler) i üzerinden tüketilebilir.
+IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka uç uygulamalardaki tüm işlemlerin el ile müdahale gerekmeden çalışmaya devam etmesi beklenir. Bu, cihazdan buluta iletilerinizin çalışmaya devam etmesi ve tüm cihaz kayıt defterinin bozulmadan emin olması anlamına gelir. Event Grid aracılığıyla yayılan olaylar, daha önce yapılandırılan ve bu Event Grid abonelikleri kullanılabilir olmaya devam eden abonelik (ler) i üzerinden tüketilebilir. Özel uç noktalar için ek işlem gerekmez.
 
 > [!CAUTION]
-> - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Uygulamanızda doğrudan olay hub 'ı ile uyumlu ad ve uç nokta kullanırsanız, devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu uç noktasını](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) almanız gerekir. Yerleşik uç noktayı bağlamak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir.
+> - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Uygulamanızda doğrudan olay hub 'ı ile uyumlu ad ve uç nokta kullanırsanız, devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu uç noktasını](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) almanız gerekir. 
 >
-> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. 
+> - Yerleşik olaylar uç noktasına bağlanmak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir. Bunun nedeni yük devretme sırasında önceki uzaklıklar artık geçerli değildir.
+>
+> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 
@@ -132,8 +134,8 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok|Yok|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Hiçbiri|Hiçbiri|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar

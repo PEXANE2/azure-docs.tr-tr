@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071894"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021515"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma  
 
@@ -45,7 +46,7 @@ Her ders için tamamlanmış çözüm, MSDN Geliştirici kod örneklerinden (kod
 * [1. ders](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) -basit bir Windows 8 kesintisiz akış Media Player, 
 * [2. ders](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) -kaydırıcı çubuğu denetimiyle basit bir Windows 8 kesintisiz akış Media Player 
 * [Ders 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) -akış seçimi Ile bir Windows 8 kesintisiz akış Media Player,  
-* [4. ders](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) -kesintisiz akış bir Windows 8 Media Player izleme seçimi.
+* [4. ders](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907)  -kesintisiz akış bir Windows 8 Media Player izleme seçimi.
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>1. ders: temel bir Kesintisiz Akış Mağazası uygulaması oluşturma
 
@@ -66,11 +67,11 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
 1. **DOSYA** menüsünde **Yeni**’ye ve sonra **Proje**’ye tıklayın.
 1. Yeni proje iletişim kutusunda, aşağıdaki değerleri yazın veya seçin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | --- | --- |
     | Şablon grubu |Yüklü/şablonlar/Visual C#/Windows Mağazası |
     | Şablon |Boş uygulama (XAML) |
-    | Name |SSPlayer |
+    | Ad |SSPlayer |
     | Konum |C:\SSTutorials |
     | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
@@ -82,7 +83,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
 1. Çözüm Gezgini, **Ssplayer**öğesine sağ tıklayın ve ardından **Başvuru Ekle**' ye tıklayın.
 1. Aşağıdaki değerleri yazın veya seçin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | --- | --- |
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |

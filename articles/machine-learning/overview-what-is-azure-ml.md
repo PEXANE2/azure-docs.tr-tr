@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5d8dca091ef5bc039538903f07f46bc5d8ea262f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650123"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021587"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
 Bu makalede, ML modellerini eğmek, dağıtmak, otomatikleştirmek, yönetmek ve izlemek için kullanabileceğiniz bulut tabanlı bir ortam olan Azure Machine Learning hakkında bilgi edineceksiniz. 
 
-Azure Machine Learning, klasik ml 'den derin öğrenme, denetimli ve denetimli öğrenime kadar her türlü makine öğrenimi için kullanılabilir. [Tasarımcı](tutorial-designer-automobile-price-train-score.md)gibi Python veya R kodu veya sıfır kodu/düşük kod seçenekleri yazmayı tercih etmeksizin, bir Azure Machine Learning çalışma alanı yüksek düzeyde doğru makine öğrenimi ve derin öğrenme modelleri oluşturabilir, eğitebilir ve izleyebilirsiniz. 
+Azure Machine Learning, klasik ml 'den derin öğrenme, denetimli ve denetimli öğrenime kadar her türlü makine öğrenimi için kullanılabilir. Bu SDK ile Python veya R kodu yazmayı veya [Studio](#build-ml-models-in-the-studio)'da kod içermeyen/düşük kod seçenekleriyle çalışmayı tercih etmeksizin, bir Azure Machine Learning çalışma alanı makine öğrenimi ve derin öğrenme modelleri oluşturabilir, eğitebilir ve izleyebilirsiniz. 
 
 Yerel makinenizde eğitime başlayın ve ardından buluta ölçeklendirin. 
 
@@ -67,23 +67,27 @@ Azure Machine Learning Işlem ve [Azure Databricks](/azure/azure-databricks/what
 
 SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train-models.md) getirebilirsiniz.
 
-## <a name="build-ml-models-with-no-code-tools"></a>Kod içermeyen araçları olan ML modelleri oluşturun
+## <a name="build-ml-models-in-the-studio"></a>Studio 'da ML modelleri derleme
 
-Kod içermeyen veya düşük kodlu eğitim ve dağıtım için şunu deneyin:
+[Azure Machine Learning Studio](https://www.ml.azure.com) , model eğitimi, dağıtımı ve varlık yönetimi için düşük kod ve kod içermeyen seçenekler için Azure Machine Learning bir Web portalıdır. Studio, sorunsuz bir deneyim için Azure Machine Learning SDK ile tümleşir. Daha fazla bilgi için bkz. [Azure Machine Learning Studio nedir?](overview-what-is-machine-learning-studio.md).
 
 + **Azure Machine Learning Tasarımcısı (Önizleme)**
 
-  Herhangi bir kod yazmadan, verileri geliştirmek, eğitme, test etmek, dağıtmak, yönetmek ve makine öğrenimi modellerini izlemek için tasarımcıyı kullanın. Programlama gerekmez, modelinizi oluşturmak için veri kümelerini ve modülleri görsel olarak bağlamanız gerekir. [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md)deneyin.
+  [Tasarımcı](concept-designer.md) kullanarak makine öğrenimi modellerini herhangi bir kod yazmadan eğitme ve dağıtma. Başlamak için [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md) deneyin. 
 
-  [Azure Machine Learning tasarımcı genel bakış makalesinde](concept-designer.md)daha fazla bilgi edinin. 
+  ![Azure Machine Learning Tasarımcısı 'nın sürükle ve bırak arabiriminin animasyonlu gif 'i](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Azure Machine Learning tasarımcı örneği](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **Denemeleri izleme**
 
-+ **Otomatik makine öğrenme Kullanıcı arabirimi**
+  Studio 'da [veri bilimi denemeleri nasıl izleneceğini ve görselleştirileyeceğinizi](tutorial-first-experiment-automated-ml.md) öğrenin. 
 
-  Kullanımı kolay arabirimde [OTOMATIK ml denemeleri](tutorial-first-experiment-automated-ml.md) oluşturmayı öğrenin. 
+    ![Azure Machine Learning Studio 'da çalıştırma ayrıntıları](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Azure Machine Learning Studio gezinti bölmesi](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **Ve çok daha fazlası...**
+
+  [Ml.Azure.com](https://www.ml.azure.com)adresinde Azure Machine Learning Studio adresini ziyaret edin. 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & yaşam döngüsü yönetimini dağıtma
 Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın.

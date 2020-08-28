@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084322"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003635"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Kurumsal gönderim mimari kılavuzu
 
@@ -89,7 +90,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
     }
     ```
 
-    c. `CreateTopic`Service Bus konusunu oluşturmak için kullanılır.
+    c. `CreateTopic` Service Bus konusunu oluşturmak için kullanılır.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +107,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
     }
     ```
 
-    d. `SendMessage`iletileri bu Service Bus konusuna göndermek için kullanılır. Bu kod, örnek amacına uygun olarak konuya düzenli olarak bir rastgele ileti kümesi gönderir. Normalde bir olay gerçekleştiğinde ileti gönderen bir arka uç sistemi vardır.
+    d. `SendMessage` iletileri bu Service Bus konusuna göndermek için kullanılır. Bu kod, örnek amacına uygun olarak konuya düzenli olarak bir rastgele ileti kümesi gönderir. Normalde bir olay gerçekleştiğinde ileti gönderen bir arka uç sistemi vardır.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -158,7 +159,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
     }
     ```
 
-    c. `CreateSubscription`arka uç sisteminin ileti gönderdiği konu için Service Bus bir abonelik oluşturmak için kullanılır. İş senaryosuna bağlı olarak, bu bileşen ilgili konulara bir veya daha fazla abonelik oluşturur (örneğin, bazı bir HR sisteminden, bazıları finans sisteminden ve bu şekilde devam edebilir)
+    c. `CreateSubscription` arka uç sisteminin ileti gönderdiği konu için Service Bus bir abonelik oluşturmak için kullanılır. İş senaryosuna bağlı olarak, bu bileşen ilgili konulara bir veya daha fazla abonelik oluşturur (örneğin, bazı bir HR sisteminden, bazıları finans sisteminden ve bu şekilde devam edebilir)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +175,7 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification`, aboneliğini kullanarak konudan iletiyi okumak için kullanılır ve okuma başarılı olursa Azure Notification Hubs kullanılarak mobil uygulamaya gönderilmek üzere bir bildirim (örneğin, bir Windows yerel bildirim bildirimi) oluşturun.
+    d. `ReceiveMessageAndSendNotification` , aboneliğini kullanarak konudan iletiyi okumak için kullanılır ve okuma başarılı olursa Azure Notification Hubs kullanılarak mobil uygulamaya gönderilmek üzere bir bildirim (örneğin, bir Windows yerel bildirim bildirimi) oluşturun.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c2dc90b84446917c4f06de707047b92e52cf7bc8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954630"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020992"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için Axinom kullanma 
 > [!div class="op_single_selector"]
@@ -54,7 +55,7 @@ Her ikisine de sahip olan DASH akışı için çoklu DRM ile dinamik CENC koruma
 
 Neden Azure Active Directory Axinom 'ın Widevine lisans sunucusu için STS olarak kullanılamayacağını öğrenmek için [JWT belirteci oluşturma](media-services-axinom-integration.md#jwt-token-generation) bölümüne bakın.
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 1. Anahtar teslim hizmetini yapılandırmaya yönelik içerik anahtarını oluşturmak için, Axınom belirtilen anahtar kaynağı (8888000000000000000000000000000000000000) ve oluşturulan ya da seçtiğiniz anahtar KIMLIĞINI kullanmanız gerekir. Axinom lisans sunucusu, hem test hem de üretim için geçerli olan aynı anahtar Seed 'e dayalı içerik anahtarları içeren tüm lisansları yayınlar.
 2. Test için Widevine lisans alma URL 'SI: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense) . Hem HTTP hem de ıSıTLARA izin verilir.
 
@@ -142,7 +143,7 @@ Axınom Widevine lisans sunucusu
 <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
 ```
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 1. AMS PlayReady lisans teslimi hizmeti bir kimlik doğrulama belirtecinden önce "taşıyıcı =" gerektirse de, Axınom Widevine lisans sunucusu bunu kullanmaz.
 2. Axınom iletişim anahtarı imzalama anahtarı olarak kullanılır. Anahtar onaltılık bir dizedir, ancak kodlama sırasında dize olmayan bir dizi bayt olarak değerlendirilmelidir. Bu, ConvertHexStringToByteArray yöntemi tarafından gerçekleştirilir.
 
@@ -199,8 +200,8 @@ Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çöz�
 | --- | --- |
 | İletişim anahtarı KIMLIĞI |JWT belirtecinde "com_key_id" talebinin değeri olarak eklenmelidir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
 | İletişim anahtarı |JWT belirtecinin imzalama anahtarı olarak kullanılması gerekir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
-| Anahtar tohum |Verilen içerik anahtarı KIMLIĞIYLE içerik anahtarı oluşturmak için kullanılmalıdır ( [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
-| Widevine lisans alma URL 'SI |DASH akışı için varlık teslim ilkesini yapılandırırken kullanılması gerekir ( [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
+| Anahtar tohum |Verilen içerik anahtarı KIMLIĞIYLE içerik anahtarı oluşturmak için kullanılmalıdır (  [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
+| Widevine lisans alma URL 'SI |DASH akışı için varlık teslim ilkesini yapılandırırken kullanılması gerekir (  [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
 | İçerik anahtarı KIMLIĞI |JWT belirtecinin yetkilendirme Iletisi talebinin değerinin bir parçası olarak eklenmelidir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
 
 ## <a name="additional-notes"></a>Ek notlar
@@ -213,6 +214,6 @@ Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çöz�
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>İlgili kaynaklar
+### <a name="acknowledgments"></a>Teşekkürler
 Bu belgeyi oluşturmak için katkıda bulunan şu kişileri bildirmek istiyoruz: Kristjan Jõgi of Axinom, Mingfei yan ve Amit Esjput.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718960"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003550"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -49,6 +49,8 @@ Daha güçlü parola doğrulamanın, mevcut Active Directory etki alanı denetle
 * [Etki alanı denetleyicisi indirgeme zayıf bir yerel yönetici parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Özellik, makul bir süre için denetim modunda çalıştıktan sonra, daha güvenli parolalar *istemek için yapılandırmayı* *Denetim* modundan geçirebilirsiniz. Bu süre boyunca ek izleme iyi bir fikirdir.
+
+Azure AD parola korumasının parola değiştirme veya ayarlama işlemleri sırasında yalnızca parolaları doğrulayabileceğini unutmayın. Azure AD parola koruması dağıtımı öncesinde Active Directory kabul edilen ve depolanan parolalar hiçbir şekilde doğrulanmaz ve olduğu gibi çalışmaya devam edecektir. Zaman içinde, tüm kullanıcılar ve hesaplar sonunda mevcut parolalarının süresi dolduğunda Azure AD parola koruması ile doğrulanan parolaları kullanmaya başlar. "Parola süresi dolmasın" ile yapılandırılan hesaplar bundan muaf tutulur.
 
 ### <a name="multiple-forest-considerations"></a>Birden çok orman konuları
 

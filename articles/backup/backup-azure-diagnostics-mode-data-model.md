@@ -3,12 +3,12 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890272"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020958"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -472,7 +472,7 @@ Yalnızca v1 şemasına ait olan sütunları belirlemek için yukarıda açıkla
 
 V1 şeması kullanımdan kaldırma yolunda olduğu için, Azure Backup tanılama verilerinde yalnızca tüm özel sorgularınızda v2 şeması kullanılması önerilir. Aşağıda v1 şemasında bağımlılığı kaldırmak için sorgularınızı güncelleştirme örneği verilmiştir:
 
-1. Sorgunuzun yalnızca v1 şeması için geçerli olan herhangi bir alanı kullanıp kullanacağına göre belirlenir. Tüm yedekleme öğelerini ve bunlarla ilişkili korumalı sunucuları listelemek için bir sorgunuz olduğunu varsayalım:
+1. Sorgunuzun yalnızca v1 şemasına uygulanabilen alanı kullanıp kullanacağına göre belirlenir. Tüm yedekleme öğelerini ve bunlarla ilişkili korumalı sunucuları listelemek için bir sorgunuz olduğunu varsayalım:
 
     ````Kusto
     AzureDiagnostics

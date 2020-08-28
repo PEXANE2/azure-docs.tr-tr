@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853018"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011353"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -182,7 +182,7 @@ Kuruluşunuzun kaynaklarını Azure AD ile tümleştirdikten sonra (örneğin, k
 
 * Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Microsoft ekipleri dahil olmak üzere Azure AD ile eşitlenmiş veya Azure AD 'de veya Office 365 ' de oluşturulmuştur).
 
-* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/entitlement-management-overview.md) .
+* Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/azure/active-directory/governance/entitlement-management-overview) .
 
 * Privileged Identity Management ' de tanımlanan [Azure AD rolleri ve Azure Kaynak rolleri](../privileged-identity-management/pim-resource-roles-assign-roles.md) .
 
@@ -422,7 +422,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 | Nasıl yapılır makaleleri| Açıklama |
 | - | - |
 | [Erişim Incelemeleri oluşturma](entitlement-management-access-reviews-create.md)| Erişim paketi incelemelerini etkinleştirin. |
-| [Erişim gözden geçirmeleri gerçekleştirin](/entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
+| [Erişim gözden geçirmeleri gerçekleştirin](entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
 | [Atanan erişim paketlerini kendi kendine gözden geçir](entitlement-management-access-reviews-self-review.md)| Atanan erişim paketlerini kendi kendine gözden geçirme |
 
 

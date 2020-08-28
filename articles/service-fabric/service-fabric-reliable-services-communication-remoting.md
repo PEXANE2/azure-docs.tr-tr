@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253295"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022165"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Reliable Services Ile C# ' de hizmet uzaktan iletişimi
 
@@ -109,7 +110,7 @@ Kullanıcı bu değerleri, OperationRetrySettings nesnesini ServiceProxyFactory 
 
 NuGet Remoting paketinin 2,8 sürümünden itibaren, remoting v2 yığınını kullanma seçeneğiniz vardır. Remoting v2 yığını daha iyi çalışır. Ayrıca özel serileştirme ve daha fazla takılabilir API 'Ler gibi özellikler de sağlar.
 Şablon kodu, uzaktan iletişim v1 yığınını kullanmaya devam eder.
-Remoting v2, v1 (önceki uzaktan iletişim yığını) ile uyumlu değildir. Hizmet kullanılabilirliğine yönelik etkileri önlemek için [v1 'Den v2 'ye yükseltme](#upgrade-from-remoting-v1-to-remoting-v2) makalesindeki yönergeleri izleyin.
+Remoting v2, v1 (önceki uzaktan iletişim yığını) ile uyumlu değildir. Hizmet kullanılabilirliğine yönelik etkileri önlemek için  [v1 'Den v2 'ye yükseltme](#upgrade-from-remoting-v1-to-remoting-v2) makalesindeki yönergeleri izleyin.
 
 V2 yığınını etkinleştirmek için aşağıdaki yaklaşımlar mevcuttur.
 
@@ -268,7 +269,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>V2 (arabirim ile uyumlu) sürümü için bir dinleyici/istemci fabrikası oluşturmak üzere açık uzaktan iletişim sınıfları kullanın
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -357,7 +358,7 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Uzaktan, Sarmalanan bir ileti ile özel serileştirme kullanma
 
 Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm parametreleri içeren tek bir Sarmalanan nesne oluşturacağız.
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. `IServiceRemotingMessageSerializationProvider`Özel serileştirme için uygulama sağlamak üzere arabirimini uygulayın.
     Bu kod parçacığı, uygulamanın nasıl göründüğünü gösterir.

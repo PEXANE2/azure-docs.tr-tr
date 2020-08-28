@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594874"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021315"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
 Bu makale, istemci tarafında çeşitli tür reklamları ekleme hakkında bilgiler içerir.
@@ -160,7 +161,7 @@ Doğrusal reklamlar da bir öğede belirtilir `<Creative>` . Aşağıdaki örnek
     </Creative>
 ```
 
-<**ilişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal** dizi> öğesi içerebilir. <**Doğrusal** olmayan> öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak <bir **StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**>HTML olmayan bir kaynak tanımlar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
+<**ilişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal** dizi> öğesi içerebilir. <**Doğrusal** olmayan> öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak <bir **StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan bir kaynak tanımlar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
 
 Image/gif, Image/JPEG, Image/PNG – kaynak bir HTML <**img**> etiketinde görüntülenir.
 
@@ -239,9 +240,9 @@ VMAP dosyası, her biri bir `<VMAP>` ad kesmesi tanımlayan bir veya daha fazla 
 
 <**Adsource**> öğesi, oynatıcı için bir satır içi ad yanıtı veya bir ad yanıtı başvurusu sağlar. Aşağıdaki öğelerden birini içerebilir:
 
-* `<VASTAdData>`VMAP dosyası içine çok büyük bir ad yanıtı gömülü olduğunu belirtir
-* `<AdTagURI>`başka bir sistemden ad yanıtına başvuran bir URI
-* `<CustomAdData>`-çok büyük olmayan yanıtı temsil eden rastgele bir dize
+* `<VASTAdData>` VMAP dosyası içine çok büyük bir ad yanıtı gömülü olduğunu belirtir
+* `<AdTagURI>` başka bir sistemden ad yanıtına başvuran bir URI
+* `<CustomAdData>` -çok büyük olmayan yanıtı temsil eden rastgele bir dize
 
 Bu örnekte, büyük bir ad yanıtı içeren bir öğe ile satır içi ad yanıtı belirtilmiştir `<VASTAdData>` . Diğer öğeler hakkında daha fazla bilgi için bkz. [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
@@ -276,7 +277,7 @@ Aşağıdaki örnek, izleme olaylarını belirten bir VMAP dosyasını gösterir
     </vmap:VMAP>
 ```
 
-<**Trackingevents**> öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz.http://iab.net/VMAP.pdf
+<**Trackingevents**> öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz. http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Medya soyut sıralama şablonu (MAST) dosyası kullanma
 Bir MAST dosyası, bir ad görüntülendiğinde tanımlayan Tetikleyicileri belirtmenize olanak tanır. Aşağıda, bir ön alma ad, orta düzey ad ve bir son alma reklamı için Tetikleyiciler içeren bir MAST dosyası verilmiştir.
@@ -327,7 +328,7 @@ Bir MAST dosyası, bir ad görüntülendiğinde tanımlayan Tetikleyicileri beli
 
 Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile başlar. `<triggers>`Öğesi, bir ad 'nin ne zaman yürütülmesi gerektiğini tanımlayan bir veya daha fazla **tetikleyici** öğesi içerir.
 
-**Tetikleyici** öğesi, bir ad 'nin oynatılma başlaması gereken zaman belirten bir **startconditions** öğesi içerir. **Startconditions** öğesi bir veya daha fazla `<condition>` öğe içeriyor. Her biri `<condition>` true olarak değerlendirildiğinde bir tetikleyici başlatılır veya bir `<condition>` **Startconditions** veya **endconditions** öğesi içinde olup olmadığına bağlı olarak iptal edilir. Birden çok `<condition>` öğe mevcut olduğunda, örtülü olarak değerlendirilir, true olarak değerlendirilen herhangi bir koşul tetikleyicisinin başlatılmasına neden olur. `<condition>`öğeler iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, örtülü ve olarak değerlendirilir, tetikleyicisinin başlatması için tüm koşulların doğru olarak değerlendirilmesi gerekir. `<condition>`Öğesi, koşulu tanımlayan aşağıdaki öznitelikleri içerir:
+**Tetikleyici** öğesi, bir ad 'nin oynatılma başlaması gereken zaman belirten bir **startconditions** öğesi içerir. **Startconditions** öğesi bir veya daha fazla `<condition>` öğe içeriyor. Her biri `<condition>` true olarak değerlendirildiğinde bir tetikleyici başlatılır veya bir `<condition>` **Startconditions** veya **endconditions** öğesi içinde olup olmadığına bağlı olarak iptal edilir. Birden çok `<condition>` öğe mevcut olduğunda, örtülü olarak değerlendirilir, true olarak değerlendirilen herhangi bir koşul tetikleyicisinin başlatılmasına neden olur. `<condition>` öğeler iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, örtülü ve olarak değerlendirilir, tetikleyicisinin başlatması için tüm koşulların doğru olarak değerlendirilmesi gerekir. `<condition>`Öğesi, koşulu tanımlayan aşağıdaki öznitelikleri içerir:
 
 1. **tür** – koşulun, etkinliğin veya özelliğin türünü belirtir
 2. **ad** : değerlendirme sırasında kullanılacak özelliğin veya etkinliğin adı

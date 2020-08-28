@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b9b234f0d701ae2ef269b53c3b3c0276ca31f7f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052831"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020618"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services ile Azure Işlevleri geliştirme
 
@@ -42,7 +43,7 @@ Azure Media Services kullanan mevcut Azure Işlevlerini araştırmak ve dağıtm
 
 ## <a name="configure-function-app-settings"></a>İşlev uygulaması ayarlarını yapılandırma
 
-Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılacak ortam değişkenlerini eklemek kullanışlıdır. Uygulama ayarlarını yapılandırmak için uygulama ayarlarını yapılandır bağlantısına tıklayın. Daha fazla bilgi için bkz. [Azure işlev uygulaması ayarlarını yapılandırma](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılacak ortam değişkenlerini eklemek kullanışlıdır. Uygulama ayarlarını yapılandırmak için uygulama ayarlarını yapılandır bağlantısına tıklayın. Daha fazla bilgi için bkz.  [Azure işlev uygulaması ayarlarını yapılandırma](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam değişkenlerine sahip olduğunuzu varsayar:
 

@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: d789d74f79fa691a2d5b374530450d966e0c40ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047246"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020465"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir dil modeli özelleştirme
 
@@ -133,7 +133,9 @@ Video Indexer, kullanıcıların videolarının dökümlerinde yaptıkları ger�
 
     ![Dil modeli düzenleme dökümünü özelleştirme — Video Indexer](./media/customize-language-model/edits.png)
 
-    Video Indexer, videonuzın dökümindeki sizin tarafınızdan düzeltilen tüm satırları yakalar ve bunları otomatik olarak "dökümden döküm düzenlemelerine" adlı bir metin dosyasına ekler. Bu düzenlemeler, bu videoyu dizinlemek için kullanılan belirli dil modelini yeniden eğitmek için kullanılır.
+    Video Indexer, videonuzın dökümindeki sizin tarafınızdan düzeltilen tüm satırları yakalar ve bunları otomatik olarak "dökümden döküm düzenlemelerine" adlı bir metin dosyasına ekler. Bu düzenlemeler, bu videoyu dizinlemek için kullanılan belirli dil modelini yeniden eğitmek için kullanılır. 
+    
+    [Pencere öğesinin](video-indexer-embed-widgets.md) zaman çizelgesinde gerçekleştirilen düzenlemeler da dahil edilmiştir.
     
     Bu videoyu dizin oluştururken bir dil modeli belirtmediyseniz, bu videonun tüm düzenlemeleri, videonun algılanan dili içinde "hesap uyarlamalar" adlı varsayılan bir dil modelinde depolanır.
     

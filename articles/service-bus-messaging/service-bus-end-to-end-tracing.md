@@ -3,12 +3,13 @@ title: Uçtan uca izlemeyi ve tanılamayı Azure Service Bus | Microsoft Docs
 description: İstemci tanılama ve uçtan uca izlemeye (işleme dahil olan tüm hizmetler aracılığıyla istemci) genel Service Bus bakış.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340728"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021638"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
 
@@ -86,7 +87,7 @@ Application Insights SDK 'ya ek olarak herhangi bir dış kod çalıştırıyors
 
 Service Bus .NET Client, .NET izleme temelleri [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve [System. Diagnostics. diagnosticsource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)kullanılarak işaretlendi.
 
-`Activity`bir bildirim mekanizması iken bir izleme bağlamı işlevi görür `DiagnosticSource` . 
+`Activity` bir bildirim mekanizması iken bir izleme bağlamı işlevi görür `DiagnosticSource` . 
 
 DiagnosticSource olayları için dinleyici yoksa, izleme devre dışı, sıfır izleme maliyetlerine sahip olur. DiagnosticSource tüm denetimi dinleyiciye verir:
 - dinleyici, hangi kaynak ve olayların dinleneceğini denetler
@@ -142,8 +143,8 @@ Her işlem için, iki olay gönderilir: ' Başlat ' ve ' Durdur '. Büyük olas�
 Olay yükü işlemin bağlamına sahip bir dinleyici sağlar, API gelen parametrelerini ve dönüş değerini çoğaltır. ' Stop ' olay yükü, ' Start ' olay yükünün tüm özelliklerine sahiptir, bu nedenle ' Start ' olayını tamamen yoksayabilirsiniz.
 
 Tüm olaylarda Ayrıca ' Entity ' ve ' Endpoint ' özellikleri bulunur, bunlar aşağıdaki tabloda atlanır
-  * `string Entity`--Varlığın adı (kuyruk, konu, vb.)
-  * `Uri Endpoint`-Service Bus uç nokta URL 'SI
+  * `string Entity` --Varlığın adı (kuyruk, konu, vb.)
+  * `Uri Endpoint` -Service Bus uç nokta URL 'SI
 
 Her bir ' Stop ' olayının `Status` `TaskStatus` , zaman uyumsuz işlem ile tamamlandı ve bu, basitlik için aşağıdaki tabloda da atlanmıştır.
 
@@ -151,33 +152,33 @@ Aşağıda, Araçlı işlemlerin tam listesi verilmiştir:
 
 | İşlem adı | İzlenen API | Belirli yük özellikleri|
 |----------------|-------------|---------|
-| Microsoft. Azure. ServiceBus. Send | [Iletileyici. Sendadsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`-Gönderilen iletilerin listesi |
-| Microsoft. Azure. ServiceBus. ScheduleMessage | [Iletileyici. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`-İleti işlendi<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`-Zamanlanan ileti kayması<br/>`long SequenceNumber`-Zamanlanmış iletinin sıra sayısı (' Durdur ' olay yükü) |
-| Microsoft. Azure. ServiceBus. Cancel | [Iletileyici. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`-İptal edilecek te iletisinin sıra numarası | 
-| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver. ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`-Alınabilecek en fazla ileti sayısı.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
-| Microsoft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`-Bir ileti toplu işlemine gözatabileceği başlangıç noktası.<br/>`int RequestedMessageCount`-Alınacak ileti sayısı.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
-| Microsoft. Azure. ServiceBus. Receiveertelenmiş | [MessageReceiver. ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`-Alacak sıra numaralarını içeren liste.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
-| Microsoft. Azure. ServiceBus. tamamlanmış | [MessageReceiver. tamamlana eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`-Tamamlanacak karşılık gelen iletilerin kilit belirteçlerini içeren liste.|
-| Microsoft. Azure. ServiceBus. Abandon | [MessageReceiver. bırakma zaman uyumsuz](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`-İptal edilecek karşılık gelen iletinin kilit belirteci. |
-| Microsoft. Azure. ServiceBus. erteleme | [MessageReceiver. Defsilinebilir eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`-Erteleyecek karşılık gelen iletinin kilit belirteci. | 
-| Microsoft. Azure. ServiceBus. Deadmektup | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`-Karşılık gelen iletinin yok sayılma harfine kilit belirteci. | 
-| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver. RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`-Kilidi yenilemek için ilgili iletinin kilit belirteci.<br/>`DateTime LockedUntilUtc`-UTC biçiminde yeni kilit belirteci bitiş tarihi ve saati. (' Durdur ' olay yükü)|
-| Microsoft. Azure. ServiceBus. Process | [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) içinde sunulan ileti işleyici Lambda işlevi | `Message Message`-İleti işlendi. |
-| Microsoft. Azure. ServiceBus. ProcessSession | [Iqueueclient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) içinde sunulan Ileti oturumu işleyicisi Lambda işlevi | `Message Message`-İleti işlendi.<br/>`IMessageSession Session`-Oturum işleniyor |
-| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`-Eklenecek kuralı sağlayan kural açıklaması. |
-| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`-Kaldırılacak kuralın adı. |
-| Microsoft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`-Abonelikle ilişkili tüm kurallar. (Yalnızca ' Durdur ' yük) |
-| Microsoft. Azure. ServiceBus. AcceptMessageSession | [Isessionclient. AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`-İletilerde SessionID var. |
-| Microsoft. Azure. ServiceBus. GetSessionState | [Imessagesession. GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`-İletilerde SessionID var.<br/>`byte [] State`-Oturum durumu (' Durdur ' olay yükü) |
-| Microsoft. Azure. ServiceBus. SetSessionState | [Imessagesession. SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`-İletilerde SessionID var.<br/>`byte [] State`-Oturum durumu |
-| Microsoft. Azure. ServiceBus. RenewSessionLock | [Imessagesession. RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-İletilerde SessionID var. |
-| Microsoft. Azure. ServiceBus. Exception | Tüm belgelenmiş API 'leri| `Exception Exception`-Özel durum örneği |
+| Microsoft. Azure. ServiceBus. Send | [Iletileyici. Sendadsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` -Gönderilen iletilerin listesi |
+| Microsoft. Azure. ServiceBus. ScheduleMessage | [Iletileyici. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` -İleti işlendi<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` -Zamanlanan ileti kayması<br/>`long SequenceNumber` -Zamanlanmış iletinin sıra sayısı (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Cancel | [Iletileyici. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` -İptal edilecek te iletisinin sıra numarası | 
+| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver. ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` -Alınabilecek en fazla ileti sayısı.<br/>`IList<Message> Messages` -Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` -Bir ileti toplu işlemine gözatabileceği başlangıç noktası.<br/>`int RequestedMessageCount` -Alınacak ileti sayısı.<br/>`IList<Message> Messages` -Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Receiveertelenmiş | [MessageReceiver. ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` -Alacak sıra numaralarını içeren liste.<br/>`IList<Message> Messages` -Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. tamamlanmış | [MessageReceiver. tamamlana eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` -Tamamlanacak karşılık gelen iletilerin kilit belirteçlerini içeren liste.|
+| Microsoft. Azure. ServiceBus. Abandon | [MessageReceiver. bırakma zaman uyumsuz](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` -İptal edilecek karşılık gelen iletinin kilit belirteci. |
+| Microsoft. Azure. ServiceBus. erteleme | [MessageReceiver. Defsilinebilir eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` -Erteleyecek karşılık gelen iletinin kilit belirteci. | 
+| Microsoft. Azure. ServiceBus. Deadmektup | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` -Karşılık gelen iletinin yok sayılma harfine kilit belirteci. | 
+| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver. RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` -Kilidi yenilemek için ilgili iletinin kilit belirteci.<br/>`DateTime LockedUntilUtc` -UTC biçiminde yeni kilit belirteci bitiş tarihi ve saati. (' Durdur ' olay yükü)|
+| Microsoft. Azure. ServiceBus. Process | [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) içinde sunulan ileti işleyici Lambda işlevi | `Message Message` -İleti işlendi. |
+| Microsoft. Azure. ServiceBus. ProcessSession | [Iqueueclient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) içinde sunulan Ileti oturumu işleyicisi Lambda işlevi | `Message Message` -İleti işlendi.<br/>`IMessageSession Session` -Oturum işleniyor |
+| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` -Eklenecek kuralı sağlayan kural açıklaması. |
+| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` -Kaldırılacak kuralın adı. |
+| Microsoft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Abonelikle ilişkili tüm kurallar. (Yalnızca ' Durdur ' yük) |
+| Microsoft. Azure. ServiceBus. AcceptMessageSession | [Isessionclient. AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` -İletilerde SessionID var. |
+| Microsoft. Azure. ServiceBus. GetSessionState | [Imessagesession. GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` -İletilerde SessionID var.<br/>`byte [] State` -Oturum durumu (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. SetSessionState | [Imessagesession. SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` -İletilerde SessionID var.<br/>`byte [] State` -Oturum durumu |
+| Microsoft. Azure. ServiceBus. RenewSessionLock | [Imessagesession. RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` -İletilerde SessionID var. |
+| Microsoft. Azure. ServiceBus. Exception | Tüm belgelenmiş API 'leri| `Exception Exception` -Özel durum örneği |
 
 Her olayda `Activity.Current` geçerli işlem bağlamını tutan erişim sağlayabilirsiniz.
 
 #### <a name="logging-additional-properties"></a>Ek özellikleri günlüğe kaydetme
 
-`Activity.Current`geçerli işlemin ve üst öğelerinin ayrıntılı bağlamını sağlar. Daha fazla bilgi için bkz. [etkinlik belgeleri](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) .
+`Activity.Current` geçerli işlemin ve üst öğelerinin ayrıntılı bağlamını sağlar. Daha fazla bilgi için bkz. [etkinlik belgeleri](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) .
 Service Bus izleme, içinde bulunan `Activity.Current.Tags` `MessageId` ve her seferinde ek bilgi sağlar `SessionId` .
 
 ' Receive ', ' Peek ' ve ' Receiveertelenmiş ' olaylarını izleyen etkinliklerin etiketi de olabilir `RelatedTo` . `Diagnostic-Id`Sonuç olarak alınan iletilerin ayrı listesini barındırır.
@@ -201,17 +202,17 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filtreleme ve örnekleme
 
 Bazı durumlarda, performans yükünü veya depolama tüketimini azaltmak için olayların yalnızca bir kısmını günlüğe kaydetmek tercih edilir. Yalnızca ' Durdur ' olaylarını (önceki örnekte olduğu gibi) veya olayların örnek yüzdesini günlüğe yazabilirsiniz. 
-`DiagnosticSource`koşul ile elde etmenin yolunu sağlayın `IsEnabled` . Daha fazla bilgi için bkz. [DiagnosticSource 'Ta bağlam tabanlı filtreleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource` koşul ile elde etmenin yolunu sağlayın `IsEnabled` . Daha fazla bilgi için bkz. [DiagnosticSource 'Ta bağlam tabanlı filtreleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
-`IsEnabled`, performans etkisini en aza indirmek için tek bir işlem için birden çok kez çağrılabilir.
+`IsEnabled` , performans etkisini en aza indirmek için tek bir işlem için birden çok kez çağrılabilir.
 
-`IsEnabled`Şu sırada çağrılır:
+`IsEnabled` Şu sırada çağrılır:
 
-1. `IsEnabled(<OperationName>, string entity, null)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Sonunda ' Start ' veya ' Stop ' yok. Belirli işlemleri veya kuyrukları filtrelemek için bu uygulamayı kullanın. Geri çağırma döndürürse `false` , işlem için olaylar gönderilmez
+1. `IsEnabled(<OperationName>, string entity, null)` Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Sonunda ' Start ' veya ' Stop ' yok. Belirli işlemleri veya kuyrukları filtrelemek için bu uygulamayı kullanın. Geri çağırma döndürürse `false` , işlem için olaylar gönderilmez
 
    * ' Process ' ve ' ProcessSession ' işlemleri için `IsEnabled(<OperationName>, string entity, Activity activity)` geri çağırma de alırsınız. Olayları ya da Etiketler özelliklerine göre filtrelemek için kullanın `activity.Id` .
   
-2. `IsEnabled(<OperationName>.Start)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . ' Start ' olayının tetiklenip tetiklenmeyeceğini denetler. Sonuç yalnızca ' Başlat ' olayını etkiler, ancak daha fazla izleme buna bağlı değildir.
+2. `IsEnabled(<OperationName>.Start)` Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . ' Start ' olayının tetiklenip tetiklenmeyeceğini denetler. Sonuç yalnızca ' Başlat ' olayını etkiler, ancak daha fazla izleme buna bağlı değildir.
 
 `IsEnabled`' Durdur ' olayı yok.
 

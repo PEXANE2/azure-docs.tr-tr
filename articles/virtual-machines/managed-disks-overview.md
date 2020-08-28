@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749681"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021452"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -91,7 +91,7 @@ Veri diski, uygulama verilerini depolamak için bir sanal makineye bağlı yöne
 
 Her sanal makinenin bir bağlı işletim sistemi diski vardır. Bu işletim sistemi diskinde, VM oluşturulduğunda seçilen, önceden yüklenmiş bir işletim sistemi vardır. Bu disk, önyükleme birimini içerir.
 
-Bu diskin en fazla 2.048 GiB kapasitesi vardır.
+Bu diskin en fazla 4.095 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 

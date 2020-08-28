@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022199"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
 
@@ -92,7 +93,7 @@ Hem Kestrel hem de HTTP.sys `ICommunicationListener` uygulamaları bu mekanizmay
 Bu nedenle, hem Kestrel hem de HTTP.sys `ICommunicationListener` uygulamaları genişletme yöntemi tarafından sağlanmış olan ara yazılımlar üzerinde standartlaştırın `UseServiceFabricIntegration` . Bu nedenle, istemcilerin HTTP 410 yanıtları üzerinde yalnızca bir hizmet uç noktası yeniden çözümlemesi yapması gerekir.
 
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services HTTP.sys
-**Microsoft. ServiceFabric. AspNetCore. HttpSys** NuGet paketini içeri aktararak Reliable Services HTTP.sys kullanabilirsiniz. Bu paket `HttpSysCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `HttpSysCommunicationListener`Web sunucusu olarak HTTP.sys kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
+**Microsoft. ServiceFabric. AspNetCore. HttpSys** NuGet paketini içeri aktararak Reliable Services HTTP.sys kullanabilirsiniz. Bu paket `HttpSysCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `HttpSysCommunicationListener` Web sunucusu olarak HTTP.sys kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
 HTTP.sys, [WINDOWS http sunucu API 'si](/windows/win32/http/http-api-start-page)üzerine kurulmuştur. Bu API, HTTP isteklerini işlemek ve bunları Web uygulamaları çalıştıran işlemlere yönlendirmek için **HTTP.sys** çekirdek sürücüsünü kullanır. Bu, aynı fiziksel veya sanal makinedeki birden çok işlemin aynı bağlantı noktasında Web uygulamalarını barındırarak benzersiz bir URL yolu veya ana bilgisayar adıyla ayırt etmesine olanak tanır. Bu özellikler, aynı kümede birden çok Web sitesini barındırmak için Service Fabric yararlıdır.
 
@@ -129,7 +130,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>Durum bilgisi olan bir hizmette HTTP.sys
 
-`HttpSysCommunicationListener`, temel alınan **HTTP.sys** bağlantı noktası paylaşma özelliği ile ilgili zorluklar nedeniyle şu anda durum bilgisi olan hizmetlerde kullanılmak üzere tasarlanmamıştır. Daha fazla bilgi için, HTTP.sys ile dinamik bağlantı noktası ayırma üzerinde aşağıdaki bölüme bakın. Durum bilgisi olan hizmetler için, Kestrel önerilen Web sunucusudur.
+`HttpSysCommunicationListener` , temel alınan **HTTP.sys** bağlantı noktası paylaşma özelliği ile ilgili zorluklar nedeniyle şu anda durum bilgisi olan hizmetlerde kullanılmak üzere tasarlanmamıştır. Daha fazla bilgi için, HTTP.sys ile dinamik bağlantı noktası ayırma üzerinde aşağıdaki bölüme bakın. Durum bilgisi olan hizmetler için, Kestrel önerilen Web sunucusudur.
 
 ### <a name="endpoint-configuration"></a>Uç nokta yapılandırması
 
@@ -189,7 +190,7 @@ HTTP.sys ile dinamik olarak atanmış bir bağlantı noktası kullanmak için, `
 Bir yapılandırma tarafından ayrılan dinamik bir bağlantı noktası `Endpoint` , *ana bilgisayar işlemi başına*yalnızca bir bağlantı noktası sağlar. Geçerli Service Fabric barındırma modeli, birden çok hizmet örneğinin ve/veya çoğaltmaların aynı işlemde barındırılmasına olanak sağlar. Bu, her birinin yapılandırma yoluyla ayrıldığı aynı bağlantı noktasını paylaşacağı anlamına gelir `Endpoint` . Birden çok **HTTP.sys** örneği, temel alınan **HTTP.sys** bağlantı noktası paylaşma özelliğini kullanarak bir bağlantı noktasını paylaşabilir. Ancak `HttpSysCommunicationListener` , istemci istekleri için sunmakta olduğu karmaşıklıklar nedeniyle tarafından desteklenmez. Dinamik bağlantı noktası kullanımı için, Kestrel önerilen Web sunucusudur.
 
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services Kestrel
-**Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket `KestrelCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `KestrelCommunicationListener`Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
+**Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket `KestrelCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `KestrelCommunicationListener` Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
 Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
 

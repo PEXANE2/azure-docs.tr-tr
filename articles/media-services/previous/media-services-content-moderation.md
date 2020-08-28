@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954715"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022216"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma 
 
@@ -31,7 +32,7 @@ ms.locfileid: "85954715"
 
 **Azure Media Content moderator** MP Şu anda önizleme aşamasındadır.
 
-Bu makale, **Azure medya Content moderator** ilgili ayrıntıları verir ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
+Bu makale,  **Azure medya Content moderator** ilgili ayrıntıları verir ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
 ## <a name="content-moderator-input-files"></a>Content Moderator giriş dosyaları
 Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
@@ -54,7 +55,7 @@ JSON çıktısı aşağıdaki öğeleri içerir:
 | uzaklık |Zaman damgası için saat farkıdır. Video API 'Lerinin 1,0 sürümünde bu değer her zaman 0 olur. Bu değer gelecekte değişebilir. |
 | kare hızı değerini |Videodaki saniye başına kare hızı. |
 | genişlik |Çıkış video çerçevesinin piksel cinsinden genişliği.|
-| yükseklik |Çıkış video çerçevesinin piksel cinsinden yüksekliği.|
+| boy |Çıkış video çerçevesinin piksel cinsinden yüksekliği.|
 | Toplam süre |Giriş videosunun süresi "ticks" cinsinden. |
 | [Eşleştir](#fragments-json-elements) |Meta veriler parçalar adlı farklı kesimlere bölünmüştür. Her parça, başlatma, süre, Aralık numarası ve olay (ler) içeren otomatik olarak algılanan bir çekidir. |
 
@@ -71,7 +72,7 @@ JSON çıktısı aşağıdaki öğeleri içerir:
 
 |Öğe|Açıklama|
 |---|---|
-| Gözden geçirmeyi öneririz | `true`ya da `false` **AdultScore** veya **oycyscore** 'ın iç eşikleri aşdığına bağlı olarak. |
+| Gözden geçirmeyi öneririz | `true` ya da `false` **AdultScore** veya **oycyscore** 'ın iç eşikleri aşdığına bağlı olarak. |
 | adultScore | 0,00 ile 0,99 arasında bir ölçekte olası yetişkinlere yönelik içerik için güvenirlik puanı. |
 | Oycyscore | 0,00 ile 0,99 arasında bir ölçekte olabilecek olası bir içerik için güvenirlik puanı. |
 | dizin | İlk kare dizininden son kare dizinine kadar bir ölçekte çerçevenin dizini. |

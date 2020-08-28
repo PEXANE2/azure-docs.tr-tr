@@ -1,43 +1,56 @@
 ---
-title: Azure HDInsight için müşteri tarafından yönetilen anahtar disk şifrelemesi
-description: Bu makalede, Azure HDInsight kümelerinde yönetilen disklerde depolanan verileri şifrelemek için Azure Key Vault ' den kendi şifreleme anahtarınızın nasıl kullanılacağı açıklanır.
+title: Bekleyen veriler için çift şifreleme
+titleSuffix: Azure HDInsight
+description: Bu makalede, Azure HDInsight kümelerinde bekleyen veriler için kullanılabilen iki şifreleme katmanı açıklanmaktadır.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/10/2020
+ms.openlocfilehash: a78b56de537cfac0da48814afe9b07d911a61af1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387855"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020787"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi
+# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
-Azure HDInsight, yönetilen disklerde ve HDInsight kümesi sanal makinelerine eklenen kaynak disklerinde bulunan veriler için müşterinin yönettiği anahtar şifrelemesini destekler. Bu özellik, HDInsight kümelerinizde bekleyen verilerin güvenliğini sağlayan şifreleme anahtarlarını yönetmek için Azure Key Vault kullanmanıza olanak sağlar.
+Bu makalede, Azure HDInsight kümelerinde bekleyen verilerin şifrelenmesi için yöntemler anlatılmaktadır. Bekleyen veri şifrelemesi, HDInsight kümesi sanal makinelerine eklenen yönetilen disklerde (veri diskleri, işletim sistemi diskleri ve geçici diskler) şifrelemeyi ifade eder. 
 
-HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunmaktadır. Varsayılan olarak, bu disklerdeki veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. HDInsight için müşteri tarafından yönetilen anahtarları etkinleştirirseniz, HDInsight için şifreleme anahtarlarını kullanarak bu anahtarları kullanabilir ve Azure Key Vault aracılığıyla yönetebilirsiniz.
-
-Bu belge, Azure depolama hesabınızda depolanan verileri gidermez. Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md). Kümelerinizde, şifreleme anahtarlarının Microsoft tarafından yönetilen veya müşteri tarafından yönetilen olabileceği, ancak şifreleme hizmeti farklı olan bir veya daha fazla bağlı Azure depolama hesabı olabilir.
+Bu belge, Azure depolama hesabınızda depolanan verileri gidermez. Kümelerinizde, şifreleme anahtarlarının Microsoft tarafından yönetilen veya müşteri tarafından yönetilen olabileceği, ancak şifreleme hizmeti farklı olan bir veya daha fazla bağlı Azure depolama hesabı olabilir. Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
 ## <a name="introduction"></a>Giriş
 
-Müşteri tarafından yönetilen anahtar şifrelemesi, küme oluşturma sırasında ek bir ücret ödemeden işlenen tek adımlı bir işlemdir. Yapmanız gereken tek şey, HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydeder ve kümenizi oluştururken şifreleme anahtarını eklemektir.
+Azure 'da üç ana yönetilen disk rolü vardır: veri diski, işletim sistemi diski ve geçici disk. Farklı yönetilen disk türleri hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview). 
 
-Kümenin her bir düğümündeki kaynak disk ve yönetilen diskler, simetrik bir veri şifreleme anahtarı (DEK) ile şifrelenir. DEK, anahtar kasaınızdan anahtar şifreleme anahtarı (KEK) kullanılarak korunmaktadır. Şifreleme ve şifre çözme işlemleri tamamen Azure HDInsight tarafından işlenir.
+HDInsight iki farklı katmanda birden çok şifreleme türünü destekler:
+
+- Sunucu tarafı şifrelemesi (SSE)-SSE, depolama hizmeti tarafından gerçekleştirilir. HDInsight 'ta, SSE işletim sistemi disklerini ve veri disklerini şifrelemek için kullanılır. Varsayılan olarak etkindir. SSE bir katman 1 şifreleme hizmetidir.
+- Platform tarafından yönetilen anahtar kullanılarak konakta şifreleme-SSE ile benzerdir, bu tür bir şifreleme depolama hizmeti tarafından gerçekleştirilir. Ancak, yalnızca geçici disklere yöneliktir ve varsayılan olarak etkin değildir. Konaktaki şifreleme da Katman 1 şifreleme hizmetidir.
+- Müşteri tarafından yönetilen anahtar kullanılarak bekleyen şifreleme-bu tür şifreleme, veri ve geçici disklerde kullanılabilir. Varsayılan olarak etkinleştirilmemiştir ve müşterinin Azure Anahtar Kasası aracılığıyla kendi anahtarını sağlamasını gerektirir. Bekleyen şifreleme katman 2 şifreleme hizmetidir.
+
+Bu türler aşağıdaki tabloda özetlenmiştir.
+
+|Küme türü |İşletim sistemi diski (yönetilen disk) |Veri diski (yönetilen disk) |Geçici veri diski (yerel SSD) |
+|---|---|---|---|
+|Hızlandırılmış yazma ile Kafka, HBase|LAYER1: [SSE şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) varsayılan olarak|LAYER1: [SSE şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) varsayılan olarak, Layer2: CMK kullanarak Rest 'de isteğe bağlı şifreleme|LAYER1: PMK kullanılarak konakta Isteğe bağlı şifreleme, Layer2: CMK kullanarak bekleyen Isteğe bağlı şifreleme|
+|Diğer tüm kümeler (Spark, etkileşimli, Hadoop, hızlandırılmamış yazma olmadan HBase)|LAYER1: [SSE şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) varsayılan olarak|Yok|LAYER1: PMK kullanılarak konakta Isteğe bağlı şifreleme, Layer2: CMK kullanarak bekleyen Isteğe bağlı şifreleme|
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
+
+Müşteri tarafından yönetilen anahtar şifrelemesi, küme oluşturma sırasında ek bir ücret ödemeden işlenen tek adımlı bir işlemdir. Yapmanız gereken tek şey, Azure Key Vault ile yönetilen bir kimliği yetkilendirmeniz ve kümenizi oluştururken şifreleme anahtarını eklemektir.
+
+Her iki veri diski ve kümenin her bir düğümündeki geçici diskler, simetrik bir veri şifreleme anahtarı (DEK) ile şifrelenir. DEK, anahtar kasaınızdan anahtar şifreleme anahtarı (KEK) kullanılarak korunmaktadır. Şifreleme ve şifre çözme işlemleri tamamen Azure HDInsight tarafından işlenir.
+
+Küme VM 'lerine bağlı işletim sistemi diskleri için yalnızca bir şifreleme katmanı (PMK) vardır. Senaryolar için CMK şifrelemesi gerekliyse, müşterilerin hassas verileri işletim sistemi disklerine kopyalamasını önlemeniz önerilir.
 
 Anahtar Kasası güvenlik duvarı, disk şifreleme anahtarının depolandığı anahtar kasasında etkinleştirilirse, kümenin dağıtılacağı bölgenin HDInsight bölgesel kaynak sağlayıcısı IP adresleri Anahtar Kasası Güvenlik Duvarı yapılandırmasına eklenmelidir. HDInsight güvenilen bir Azure Anahtar Kasası hizmeti olmadığından, bu gereklidir.
 
 Anahtar kasasındaki anahtarları güvenle döndürmek için Azure portal veya Azure CLı kullanabilirsiniz. Bir anahtar döndürülerek HDInsight kümesi yeni anahtarı dakikalar içinde kullanmaya başlar. Fidye yazılımı senaryolarına ve yanlışlıkla silinmeye karşı koruma sağlamak için [geçici silme](../key-vault/general/soft-delete-overview.md) anahtar koruma özelliklerini etkinleştirin. Bu koruma özelliği olmadan anahtar kasaları desteklenmez.
 
-|Küme türü |İşletim sistemi diski (yönetilen disk) |Veri diski (yönetilen disk) |Geçici veri diski (yerel SSD) |
-|---|---|---|---|
-|Hızlandırılmış yazma ile Kafka, HBase|[SSE şifrelemesi](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE şifreleme + Isteğe bağlı CMK şifrelemesi|İsteğe bağlı CMK şifrelemesi|
-|Diğer tüm kümeler (Spark, etkileşimli, Hadoop, hızlandırılmamış yazma olmadan HBase)|SSE şifrelemesi|Yok|İsteğe bağlı CMK şifrelemesi|
-
-## <a name="get-started-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla çalışmaya başlama
+### <a name="get-started-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla çalışmaya başlama
 
 Müşteri tarafından yönetilen anahtar etkin bir HDInsight kümesi oluşturmak için aşağıdaki adımları inceleyeceğiz:
 
@@ -48,19 +61,21 @@ Müşteri tarafından yönetilen anahtar etkin bir HDInsight kümesi oluşturmak
 1. Müşteri tarafından yönetilen anahtar etkinken HDInsight kümesi oluşturma
 1. Şifreleme anahtarını döndürme
 
-## <a name="create-managed-identities-for-azure-resources"></a>Azure kaynakları için Yönetilen kimlikler oluşturma
+Her adım ayrıntılı olarak aşağıdaki bölümlerden birinde açıklanmıştır.
+
+### <a name="create-managed-identities-for-azure-resources"></a>Azure kaynakları için Yönetilen kimlikler oluşturma
 
 Key Vault kimlik doğrulaması için Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
 Bkz. belirli adımlar için [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) . Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md). Key Vault erişim ilkesine eklediğinizde yönetilen kimlik kaynak KIMLIĞINI kaydettiğinizden emin olun.
 
-## <a name="create-azure-key-vault"></a>Azure Key Vault oluştur
+### <a name="create-azure-key-vault"></a>Azure Key Vault oluştur
 
 Anahtar kasası oluşturma. Bkz. belirli adımlar için [Azure Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md) .
 
 HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseniz, anahtarlarınızı Azure Key Vault içine aktarabilirsiniz. Anahtar kasasının **geçici silme** özelliğinin etkin olması gerektiğini unutmayın. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bölümünü ziyaret edin.
 
-## <a name="create-key"></a>Anahtar oluştur
+### <a name="create-key"></a>Anahtar oluştur
 
 1. Yeni anahtar kasasından **Ayarlar**  >  **anahtarlar**  >  **+ Oluştur/içeri aktar**' a gidin.
 
@@ -78,7 +93,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     ![anahtar tanımlayıcısını al](./media/disk-encryption/get-key-identifier.png)
 
-## <a name="create-access-policy"></a>Erişim İlkesi Oluştur
+### <a name="create-access-policy"></a>Erişim İlkesi Oluştur
 
 1. Yeni anahtar kasasından **Ayarlar**  >  **erişim ilkeleri**  >  **+ erişim ilkesi Ekle**' ye gidin.
 
@@ -94,23 +109,23 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
     ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
-## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi ile küme oluşturma
+### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi ile küme oluşturma
 
-Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. Müşteri tarafından yönetilen anahtar, yalnızca küme oluşturma sırasında yeni kümelere uygulanabilir. Şifreleme, müşteri tarafından yönetilen anahtar kümelerinden kaldırılamaz ve müşteri tarafından yönetilen anahtar var olan kümelere eklenemez.
+Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. Müşteri tarafından yönetilen anahtarlar, küme oluşturma sırasında yalnızca yeni kümelere uygulanabilir. Şifreleme, müşteri tarafından yönetilen anahtar kümelerinden kaldırılamaz ve müşteri tarafından yönetilen anahtarlar var olan kümelere eklenemez.
 
-### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+#### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam **anahtar tanımlayıcısını**sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
 
 ![Yeni küme oluştur](./media/disk-encryption/create-cluster-portal.png)
 
-### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+#### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
 Aşağıdaki örnek, disk şifrelemesi etkinken yeni bir Apache Spark kümesi oluşturmak için Azure CLı 'nın nasıl kullanılacağını göstermektedir. Daha fazla bilgi için bkz. [Azure CLI az HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
 
@@ -124,7 +139,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 --assign-identity MyMSI
 ```
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
+#### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 
 Aşağıdaki örnekte, disk şifrelemesi etkin olan yeni bir Apache Spark kümesi oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [ARM şablonları nedir?](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
@@ -338,17 +353,17 @@ Kaynak yönetimi şablonunun içeriği `azuredeploy.json` :
 }
 ```
 
-## <a name="rotating-the-encryption-key"></a>Şifreleme anahtarını döndürme
+### <a name="rotating-the-encryption-key"></a>Şifreleme anahtarını döndürme
 
 Oluşturulduktan sonra HDInsight kümesi tarafından kullanılan şifreleme anahtarlarını değiştirmek isteyebileceğiniz senaryolar olabilir. Bu, Portal aracılığıyla kolayca olabilir. Bu işlem için, kümenin hem geçerli anahtara hem de hedeflenen yeni anahtara erişimi olması gerekir, aksi takdirde anahtar döndürme işlemi başarısız olur.
 
-### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+#### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Anahtarı döndürmek için temel Anahtar Kasası URI 'sine ihtiyacınız vardır. Bunu yaptıktan sonra, portalda HDInsight küme özellikleri bölümüne gidin ve **disk şifreleme anahtarı URL 'si**altında **anahtarı Değiştir** ' e tıklayın. Yeni anahtar URL 'sini girin ve anahtarı döndürmek için Gönder ' i yazın.
 
 ![disk şifreleme anahtarını döndür](./media/disk-encryption/change-key.png)
 
-### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+#### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
 Aşağıdaki örnekte, mevcut bir HDInsight kümesi için disk şifreleme anahtarının nasıl döndürülebileceğiniz gösterilmektedir. Daha fazla bilgi için bkz. [Azure CLI az HDInsight döndürme-disk-Encryption-Key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key).
 
@@ -385,9 +400,6 @@ Küme anahtara erişimi kaybederse, uyarılar Apache ambarı portalında göster
 
 Yalnızca "geçici silme" özelliği desteklendiğinden, anahtarlar anahtar kasasında kurtarılıyorsa, küme anahtarlara yeniden erişim elde etmelidir. Azure Key Vault anahtarını kurtarmak için, bkz. [Undo-Azkeyvaultkeykaldırması](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) veya [az-keykasa-Key-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
-**Hangi disk türleri şifrelenir? İşletim sistemi diskleri/kaynak diskleri de şifrelenir mi?**
-
-Kaynak diskler ve veri/yönetilen diskler şifrelenir. İşletim sistemi diskleri şifrelenmemiştir.
 
 **Bir küme yukarı ölçekleniyorsa, yeni düğümler müşteri tarafından yönetilen anahtarları sorunsuz şekilde destekliyor mu?**
 
@@ -396,6 +408,64 @@ Evet. Kümenin, ölçek artırma sırasında anahtar kasasındaki anahtara eriş
 **Müşteri tarafından yönetilen anahtarlar konumumdaki kullanılabilir mi?**
 
 HDInsight müşteri tarafından yönetilen anahtarlar tüm genel bulutlar ve ulusal bulutlarda kullanılabilir.
+
+## <a name="encryption-at-host-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarlar kullanılarak konakta şifreleme
+
+### <a name="enable-in-the-azure-portal"></a>Azure portal etkinleştir
+
+Konakta şifreleme, Azure portal küme oluşturma sırasında etkinleştirilebilir.
+
+> [!Note]
+> Konakta şifreleme etkinleştirildiğinde, Azure Marketi 'nden HDInsight kümenize uygulama ekleyemezsiniz.
+
+:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Konakta şifrelemeyi etkinleştirin.":::
+
+Bu seçenek, HDInsight kullanan HDInsight VM 'Leri geçici veri diskleri için [konakta şifrelemeyi](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) mümkün. Konaktaki şifreleme yalnızca [sınırlı bölgelerdeki belırlı VM SKU 'larında desteklenir](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) ve HDInsight [aşağıdaki düğüm yapılandırmalarını ve SKU 'larını](./hdinsight-supported-node-configuration.md)destekler.
+
+HDInsight kümeniz için doğru VM boyutunu anlamak için bkz. [Azure HDInsight kümeniz için doğru VM boyutunu seçme](hdinsight-selecting-vm-size.md). Konakta şifreleme etkin olduğunda Zookeeper düğümü için varsayılan VM SKU 'SU DS2V2 olur.
+
+### <a name="enable-using-powershell"></a>PowerShell’i kullanarak etkinleştirme
+
+Aşağıdaki kod parçacığında, PowerShell kullanılarak etkinleştirilmiş konakta şifreleme içeren yeni bir Azure HDInsight kümesi oluşturma işlemi gösterilmektedir. `-EncryptionAtHost $true`Özelliği etkinleştirmek için parametresini kullanır.
+
+```powershell
+$storageAccountResourceGroupName = "Group"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | %{ $_.Key1 }
+$storageContainer = "container002"
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 4 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EncryptionAtHost $true `
+```
+
+### <a name="enable-using-azure-cli"></a>Azure CLı kullanarak etkinleştirme
+
+Aşağıdaki kod parçacığında, Azure CLı kullanarak, konakta şifreleme özelliği olan yeni bir Azure HDInsight kümesi oluşturma işlemi gösterilmektedir. `--encryption-at-host true`Özelliği etkinleştirmek için parametresini kullanır.
+
+```azurecli
+az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
+-p "HttpPassword1234!" \\
+--storage-account MyStorageAccount --encryption-at-host true
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

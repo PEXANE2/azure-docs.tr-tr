@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d9efb1e9256bccd04a76b4f63edaaf7c2c6ac708
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 45a23f55f87f086e4f5be8058a68ada1513f8975
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955225"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021009"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services platformunda Media Analytics 
 
@@ -64,7 +65,7 @@ Azure Media Redactor, bulutta ölçeklenebilir yüz redaksiyon sağlayan bir Med
 ### <a name="content-moderation"></a>İçerik denetleme
 Azure Content Moderator, videolarınız için makine destekli denetleme kullanmanıza olanak sağlar. Örneğin videolardaki yetişkinlere yönelik veya müstehcen içerikleri tespit edip belirlenen içeriklerin moderasyon ekibiniz tarafından gözden geçirilmesini isteyebilirsiniz. İstenmeyen içerik için videoları el ile moderalıme, zaman alan ve pahalı bir görevdir. Bu hizmet ve ilişkili gözden geçirme araçlarıyla, en iyi sonuçlar için verimli ve uygun maliyetli bir şekilde, makine destekli denetleme özelliğini her ne kadar verimli bir şekilde birleştirmelisiniz. Daha fazla bilgi edinmek için bkz. [Azure Content moderator videolarınızı işleme](media-services-content-moderation.md) makalesi.
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 Media Analytics, kuruluşların ve kuruluşların videodan yeni Öngörüler iletmelerine ve büyük hacimlerde video içeriğini daha verimli bir şekilde yönetmesine yardımcı olabilir. İşte birkaç senaryo:
 
 * **Çağrı merkezleri**. Sosyal medya kasayına karşın müşteri çağrı merkezleri, müşteri hizmetleri işlemlerinin büyük bir yüzdesini de kolaylaştırmaya devam eder. Bu ses verilerinde kodlanan, daha yüksek müşteri memnuniyetini sağlamak üzere çözümlenebilecek büyük miktarda müşteri bilgisi olacaktır. Media Indexer kullanarak kuruluşlar metin ayıklayabilir ve arama dizinlerini ve panoları oluşturabilir. Daha sonra, yaygın şikayetler, şikayet kaynakları ve diğer ilgili veriler hakkında zeka bilgileri ayıklayabilir.

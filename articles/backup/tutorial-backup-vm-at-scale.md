@@ -4,12 +4,12 @@ description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6556731ed18bd591e930ed89264cd62893fe9ac6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757515"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022063"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
@@ -53,7 +53,7 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
 
     ![Kurtarma Hizmetleri Kasası değerleri](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    Kurtarma Hizmetleri kasası, korunan sanal makinelerle aynı konumda olmalıdır. Birden çok bölgede sanal makineniz varsa her bölgede bir Kurtarma Hizmetleri kasası oluşturun. Bu öğreticide, *Batı Avrupa*, *myVM*’nin (hızlı başlangıçla oluşturulan sanal makine) oluşturulduğu konum olduğu için burada bir Kurtarma Hizmetleri kasası oluşturulmaktadır.
+    Kurtarma Hizmetleri kasası, korunan sanal makinelerle aynı konumda olmalıdır. Birden çok bölgede sanal makineniz varsa her bölgede bir Kurtarma Hizmetleri kasası oluşturun. Bu öğretici, *Myvm* (hızlı başlangıç ile oluşturulan sanal makine) oluşturulduğu için *Batı Avrupa* bir kurtarma hizmetleri Kasası oluşturur.
 
 1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
 

@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75434655"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020941"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı başlangıç: C# kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -28,7 +28,7 @@ Bu makaledeki adımlar hem Windows hem de Linux bilgisayarlarda çalışır, anc
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio 2019](https://www.visualstudio.com/vs/)’u yükleyin.
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
@@ -51,7 +51,7 @@ Sertifika oluşturmak için bu test araçlarını kullanmak üzere aşağıdaki 
 
 1. Azure IoT C SDK 'sının [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-2. Komut istemi veya Git Bash kabuğu açın ve makinenizdeki çalışma klasörüne geçin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
+2. Komut istemi veya Git Bash kabuğu açın ve makinenizdeki çalışma klasörüne geçin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini parametre değeri olarak kullanın `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -95,7 +95,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
 
    Bu adım, [Azure IoT sağlama hizmeti istemci SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini `using` , öğesinin `Program.cs`üst kısmına ekleyin:
+1. Aşağıdaki deyimlerini, `using` `using` öğesinin üst kısmına ekleyin `Program.cs` :
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -103,7 +103,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. `Program` Sınıfına aşağıdaki alanları ekleyin ve listelenen değişiklikleri yapın.  
+1. Sınıfına aşağıdaki alanları ekleyin `Program` ve listelenen değişiklikleri yapın.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
@@ -111,11 +111,11 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Yer tutucu `ProvisioningServiceConnectionString` değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
+   * `ProvisioningServiceConnectionString`Yer tutucu değerini, kaydını oluşturmak istediğiniz sağlama hizmetinin bağlantı dizesiyle değiştirin.
 
-   * `X509RootCertPath` Yer tutucu değerini bir. pek veya. cer dosyasının yoluyla değiştirin. Bu dosya, daha önce önceden yüklenmiş ve sağlama hizmetinize doğrulanan bir ara veya kök CA X. 509.440 sertifikasının genel bölümünü temsil eder.
+   * `X509RootCertPath`Yer tutucu değerini bir. pek veya. cer dosyasının yoluyla değiştirin. Bu dosya, daha önce önceden yüklenmiş ve sağlama hizmetinize doğrulanan bir ara veya kök CA X. 509.440 sertifikasının genel bölümünü temsil eder.
 
-   * İsteğe bağlı olarak `EnrollmentGroupId` değeri değiştirebilirsiniz. Dize yalnızca küçük harflerden ve kısa çizgilerden oluşabilir.
+   * İsteğe bağlı olarak değeri değiştirebilirsiniz `EnrollmentGroupId` . Dize yalnızca küçük harflerden ve kısa çizgilerden oluşabilir.
 
    > [!IMPORTANT]
    > Üretim kodunda, güvenlikle ilgili aşağıdaki noktalara dikkat edin:
@@ -123,7 +123,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    > * Sağlama hizmeti yöneticisi için bağlantı dizesinin sabit kodlanması en iyi güvenlik yöntemlerine uygun değildir. Bunun yerine, bağlantı dizesi güvenli bir şekilde, örneğin güvenli yapılandırma dosyasının içinde veya kayıt defterinin içinde tutulmalıdır.
    > * İmzalama sertifikasının yalnızca ortak bölümünü karşıya yüklediğinizden emin olun. Özel anahtarları içeren .pfx (PKCS12) veya .pem dosyalarını asla sağlama hizmetine yüklemeyin.
 
-1. `Program` Sınıfına aşağıdaki yöntemi ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu `CreateOrUpdateEnrollmentGroupAsync` sağlama hizmetine `ProvisioningServiceClient` eklemek için üzerinde yöntemini çağırır.
+1. Sınıfına aşağıdaki yöntemi ekleyin `Program` . Bu kod bir kayıt grubu girişi oluşturur ve ardından `CreateOrUpdateEnrollmentGroupAsync` `ProvisioningServiceClient` kayıt grubunu sağlama hizmetine eklemek için üzerinde yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()

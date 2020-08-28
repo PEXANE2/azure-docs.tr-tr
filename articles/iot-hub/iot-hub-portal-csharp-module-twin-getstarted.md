@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: a10c8b21da1e4dc08a186ccb6ba6528b7a655943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759772"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022080"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Portal ve .NET cihazını kullanarak IoT Hub modül kimliğini ve modül ikizini kullanmaya başlama
 
@@ -35,7 +35,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > Hem cihazlarda hem de çözüm arka ucunda çalıştırılacak uygulamalar oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio.
 
@@ -93,7 +93,7 @@ Modül kimliği ve modül ikizi genel önizlemede. Yalnızca yayın öncesi ciha
 
 ### <a name="get-your-module-connection-string"></a>Modülünüzün bağlantı dizesini alın
 
-Konsol uygulamanız için modül bağlantı dizesine ihtiyacınız vardır. Şu adımları uygulayın:
+Konsol uygulamanız için modül bağlantı dizesine ihtiyacınız vardır. Şu adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 

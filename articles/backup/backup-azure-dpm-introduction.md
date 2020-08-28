@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890816"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021043"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -46,7 +46,7 @@ Bileşenler | DPM sunucusunda Windows PowerShell ve .NET Framework 4,5 yüklü o
 Desteklenen uygulamalar | DPM 'nin neleri yedekleyebileceklerini [öğrenin](/system-center/dpm/dpm-protection-matrix) .
 Desteklenen dosya türleri | Bu dosya türleri Azure Backup yedeklenebilir:<br> <li>Şifrelenmiş (yalnızca tam yedeklemeler)<li> Sıkıştırılmış (artımlı yedeklemeler desteklenir) <li> Seyrek (artımlı yedeklemeler desteklenir)<li> Sıkıştırılmış ve seyrek (seyrek olarak kabul edilir)
 Desteklenmeyen dosya türleri | <li>Büyük/küçük harfe duyarlı dosya sistemlerindeki sunucular<li> sabit bağlantılar (atlandı)<li> yeniden ayrıştırma noktaları (atlandı)<li> şifrelenmiş ve sıkıştırılmış (atlandı)<li> şifrelenmiş ve seyrek (atlandı)<li> Sıkıştırılmış akış<li> ayrıştırma akışı
-Yerel depolama | Yedeklemek istediğiniz her makinenin, yedeklenmekte olan verilerin boyutunun en az %5 ' i kadar yerel boş depolama alanı olmalıdır. Örneğin, 100 GB veri yedeklenirken karalama konumunda en az 5 GB boş alan gerekir.
+Yerel depolama | Yedeklemek istediğiniz her makinenin, yedeklenen verilerin boyutunun en az %5 ' i kadar yerel boş depolama alanı olmalıdır. Örneğin, 100 GB veri yedeklenirken karalama konumunda en az 5 GB boş alan gerekir.
 Kasa depolaması | Bir Azure Backup kasasına yedekleyebileceğiniz veri miktarına yönelik bir sınır yoktur, ancak bir veri kaynağının boyutu (örneğin bir sanal makine veya veritabanı) 54.400 GB 'ı aşmamalıdır.
 Azure ExpressRoute | Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.<br/><br/> **Ortak eşleme ile**: aşağıdaki etki alanlarına/adreslere erişim sağlayın:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft eşlemesi ile**aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>-Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).<br/><br/>**Note**: genel eşleme, yeni devreler için kullanım dışıdır.
 Azure Backup aracısı | DPM, System Center 2012 SP1 üzerinde çalışıyorsa, DPM SP1 için paketi 2 veya sonraki bir sürümü çalıştırın. Bu, aracı yüklemesi için gereklidir.<br/><br/> Bu makalede, Microsoft Azure kurtarma hizmeti (MARS) Aracısı olarak da bilinen Azure Backup aracısının en son sürümünün nasıl dağıtılacağı açıklanır. Daha önceki bir sürümü dağıttıysanız yedeklemenin beklendiği gibi çalıştığından emin olmak için en son sürüme güncelleştirin.

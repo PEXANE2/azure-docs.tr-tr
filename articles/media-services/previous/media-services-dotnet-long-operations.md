@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4365796a9d7f7b72687db19573c09ccfdf9ea8de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831745"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020541"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Azure Media Services ile canlı akış sunma
 
@@ -32,7 +33,7 @@ Media Services .NET SDK, isteği gönderen ve işlemin tamamlanmasını bekleyen
 Uygulamanın uzun süre çalışan bir http isteğini bekleyemez ve işlem ilerlemesini el ile yoklamak isteyen senaryolar vardır. Tipik bir örnek, durum bilgisi olmayan bir Web hizmetiyle etkileşime geçen bir tarayıcı olabilir: tarayıcı bir kanal oluşturmak istediğinde, Web hizmeti uzun süre çalışan bir işlem başlatır ve işlem KIMLIĞINI tarayıcıya döndürür. Böylece tarayıcı, Web hizmetinden KIMLIĞE göre işlem durumunu almasını isteyebilir. Media Services .NET SDK, bu senaryo için yararlı olan API 'Ler sağlar. Bu API 'Ler "yoklama dışı Yöntemler" olarak adlandırılır.
 "Yoklama dışı Yöntemler" Şu adlandırma düzenine sahiptir: gönderme*OperationName*işlemi (örneğin, SendCreateOperation). *OperationName*işlem yöntemlerini gönder **IOperation** nesnesini döndürür; döndürülen nesne, işlemi izlemek için kullanılabilecek bilgiler içerir. *OperationName*operationasync yöntemleri gönderme **görevi \<IOperation> **.
 
-Şu anda aşağıdaki sınıflar yoklama dışı yöntemleri destekler: **Channel**, **streamingendpoint**ve **Program**.
+Şu anda aşağıdaki sınıflar yoklama dışı yöntemleri destekler:  **Channel**, **streamingendpoint**ve **Program**.
 
 İşlem durumunu yoklamak için, **Operationbasecollection** sınıfında **GetOperation** yöntemini kullanın. İşlem durumunu denetlemek için aşağıdaki aralıkları kullanın: **Channel** ve **Streamingendpoint** işlemleri için 30 saniye kullanın; **Program** işlemleri için 10 saniye kullanın.
 
@@ -213,5 +214,5 @@ Console.WriteLine(channelId);
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
