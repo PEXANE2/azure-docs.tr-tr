@@ -3,7 +3,7 @@ title: Azure kaynakları için Yönetilen kimlikler Azure sanal makineleri ile n
 description: Azure kaynakları için yönetilen kimliklerin açıklaması Azure sanal makinelerle çalışır.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5355d4c83961d87ad4b880f6b3758b212e74dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609218"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014358"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Azure kaynakları için Yönetilen kimlikler Azure sanal makineleri ile nasıl çalışır?
 
@@ -57,7 +57,7 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
 
 4. VM bir kimliğe sahip olduktan sonra hizmet sorumlusunu kullanarak Azure kaynaklarına VM erişimi sağlayabilirsiniz. Azure Resource Manager'ı çağırmak için Azure AD'de rol tabanlı erişim denetimini (RBAC) kullanarak VM hizmet sorumlusuna uygun rolü atayabilirsiniz. Key Vault'u çağırmak için kodunuza Key Vault'ta belirli bir gizli diziye veya anahtara erişim verebilirsiniz.
 
-5. VM üzerinde çalışan kodunuz Azure örnek meta veri hizmeti uç noktasından yalnızca VM 'nin içinden erişilebilen bir belirteç isteyebilir:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM üzerinde çalışan kodunuz Azure örnek meta veri hizmeti uç noktasından yalnızca VM 'nin içinden erişilebilen bir belirteç isteyebilir: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Resource parametresi belirtecin gönderildiği hizmeti belirtir. Azure Resource Manager ile kimlik doğrulaması için `resource=https://management.azure.com/` kullanın.
     - API version parametresi IMDS sürümünü belirtir; api-version=2018-02-01 veya üstünü kullanın.
 
@@ -78,7 +78,7 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
    > [!Note]
    > Bu adımı 3. adımdan önce de gerçekleştirebilirsiniz.
 
-5. VM üzerinde çalışan kodunuz Azure Instance Metadata Service Identity uç noktasından yalnızca VM içinden erişilebilen bir belirteç isteyebilir:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM üzerinde çalışan kodunuz Azure Instance Metadata Service Identity uç noktasından yalnızca VM içinden erişilebilen bir belirteç isteyebilir: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Resource parametresi belirtecin gönderildiği hizmeti belirtir. Azure Resource Manager ile kimlik doğrulaması için `resource=https://management.azure.com/` kullanın.
     - Client ID parametresi belirtecin hangi kimlik için istendiğini belirtir. Tek bir sanal makinede birden çok kullanıcı tarafından atanan kimlik olduğunda, belirsizliği ortadan kaldırmak için bu değer gereklidir.
     - API version parametresi, Azure Instance Metadata Service sürümünü belirtir. `api-version=2018-02-01` veya daha yüksek bir değer kullanın.

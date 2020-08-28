@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465873"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005233"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)
 
@@ -24,7 +25,7 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 > [!NOTE]
 > Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adls/qa-preview-signup)bakın.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 

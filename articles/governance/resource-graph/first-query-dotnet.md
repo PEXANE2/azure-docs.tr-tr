@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: ilk .NET Core sorgunuz'
 description: Bu hızlı başlangıçta, .NET Core için kaynak grafiği NuGet paketlerini etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: b452329148f607b6a71c366c51745906247a43a1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802733"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005879"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Hızlı başlangıç: .NET Core kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -16,7 +17,7 @@ Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, .NET Core için gereken pake
 
 Bu işlemin sonunda, paketleri .NET Core yüklemenize eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 - _ClientID_ ve _ClientSecret_dahil olmak üzere bir Azure hizmet sorumlusu. Kaynak Graph ile kullanım için bir hizmet sorumlusu yoksa veya yeni bir tane oluşturmak istiyorsanız bkz. [.net Için Azure Yönetim kitaplıkları kimlik doğrulaması](/dotnet/azure/sdk/authentication#mgmt-auth).
@@ -97,9 +98,9 @@ Bu işlemin sonunda, paketleri .NET Core yüklemenize eklemiş ve ilk kaynak Gra
 
 Her çağrıda `argQuery` , kendi değerlerinizle değiştirmeniz gereken kullanılan değişkenler vardır:
 
-- `{tenantId}`-Kiracı KIMLIĞINIZLE değiştirin
-- `{clientId}`-Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
-- `{clientSecret}`-Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
+- `{tenantId}` -Kiracı KIMLIĞINIZLE değiştirin
+- `{clientId}` -Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
+- `{clientSecret}` -Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
 1. `{run-folder}`Önceki komutla tanımladığınız dizinleri değiştirin `dotnet publish` .

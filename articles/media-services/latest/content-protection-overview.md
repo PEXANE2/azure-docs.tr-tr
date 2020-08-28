@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023271"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012204"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
 
@@ -242,7 +242,7 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`istenen anahtarın bir değeri vardır. `AlternativeMediaId`İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz. Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
+`ContentKeyId` istenen anahtarın bir değeri vardır. `AlternativeMediaId`İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz. Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
 
 Özel lisans/anahtar alma URL 'Leri kullanan REST örnekleri için bkz. [akış ilkeleri-oluştur](/rest/api/media/streamingpolicies/create).
 

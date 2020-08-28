@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0fc79cab5868ec7d676c956581407dce308d80ad
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022522"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -21,9 +21,10 @@ Bu öğreticide, bir Azure dijital TWINS örneğiyle etkileşim kurmak için bir
 Bu örneği, model yükleme, TWINS oluşturma ve değiştirme ve ilişki oluşturma gibi temel Azure dijital TWINS eylemlerini gerçekleştirmek için kullanabilirsiniz. Ayrıca, Azure dijital TWINS API 'Leri hakkında bilgi edinmek ve örnek projeyi istediğiniz gibi değiştirerek kendi komutlarınızı uygulamayı yapmak için örneğin koduna bakabilirsiniz.
 
 Bu öğreticide,...
-1. Azure dijital TWINS örneği ayarlama
-2. Örnek komut satırı uygulamasını örnekle etkileşim kuracak şekilde yapılandırma
-3. **Modeller**, **dijital TWINS**, **ilişkiler**ve **sorgular** dahil olmak üzere Azure dijital TWINS 'i araştırmak için komut satırı uygulamasını kullanın
+> [!div class="checklist"]
+> * Azure dijital TWINS örneği ayarlama
+> * Örnek komut satırı uygulamasını örnekle etkileşim kuracak şekilde yapılandırma
+> * **Modeller**, **dijital TWINS**, **ilişkiler**ve **sorgular** dahil olmak üzere Azure dijital TWINS 'i araştırmak için komut satırı uygulamasını kullanın
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 

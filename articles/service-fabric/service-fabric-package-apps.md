@@ -3,12 +3,13 @@ title: Azure Service Fabric uygulaması paketleme
 description: Azure Service Fabric uygulaması paketleme ve bir kümeye dağıtım için hazırlanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260971"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012407"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 
@@ -43,7 +44,7 @@ Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek 
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint kullanma
 
-**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örnek:
+**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örneğin:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.

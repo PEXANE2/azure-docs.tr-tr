@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757549"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022318"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 
@@ -69,7 +69,7 @@ SAP HANA çalıştıran bir VM 'yi geri yüklemek için şu adımları izleyin:
 
 * [Azure VM yedeğinden yeni BIR VM](backup-azure-arm-restore-vms.md) 'yi en son kurtarma noktasından geri yükleyin. Veya yeni bir boş VM oluşturun ve diskleri en son kurtarma noktasından bağlayın.
 * WA diskleri yedeklenmeden bu yana geri yüklenmez. Boş WA diskleri ve günlük alanı oluşturun.
-* Diğer tüm yapılandırmaların (IP, sistem adı, vb.) ayarlanabilmesi için VM, Azure Backup 'tan DB verisi alacak şekilde ayarlanır.
+* Diğer tüm yapılandırmaların (IP, sistem adı, vb.) ayarlanabilmesi için VM, Azure Backup 'ten DB verisi alacak şekilde ayarlanır.
 * Şimdi VERITABANıNı [Azure SAP HANA DB YEDEĞINDEN](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) sanal makineye istediğiniz zaman noktasına geri yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

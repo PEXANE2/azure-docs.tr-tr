@@ -3,12 +3,12 @@ title: Windows sistem durumunu Azure 'a yedekleme
 description: Windows Server bilgisayarlarının sistem durumunu Azure 'a nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824471"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013444"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows sistem durumunu Azure 'a yedekleme
 
@@ -90,7 +90,7 @@ Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek içi
 
     ![kasa kimlik bilgilerini indirme tamamlandı](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
-   > Kasa kimlik bilgilerinin yalnızca aracıyı kullanmayı düşündüğünüz Windows Server 'ın yerel bir konumuna kaydedilmesi gerekir.
+   > Kasa kimlik bilgilerinin yalnızca aracıyı kullanmayı düşündüğünüz Windows Server 'da yerel bir konuma kaydedilmesi gerekir.
    >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]

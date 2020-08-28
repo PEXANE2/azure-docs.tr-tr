@@ -3,12 +3,13 @@ title: Azure Service Fabric uygulama gizli dizilerini yönetme
 description: Service Fabric uygulamasındaki gizli değerlerin güvenliğini nasıl sağlayacağınızı öğrenin (platformdan bağımsız).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248127"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012832"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifreli gizli dizileri yönetme
 Bu kılavuz, Service Fabric uygulamasında gizli dizileri yönetme adımlarında size yol gösterir. Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.

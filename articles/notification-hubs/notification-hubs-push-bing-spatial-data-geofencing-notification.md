@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116932"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015144"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Öğretici: Notification Hubs ve Bing uzamsal veriler ile konum temelli anında iletme bildirimleri gönderme
 
@@ -39,7 +39,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce  [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Visual Studio 2015 Güncelleştirme 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) veya üzeri ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
 * [Azure SDK](https://azure.microsoft.com/downloads/)'nın en son sürümü.
 * [Bing Haritalar Geliştirme Merkezi hesabı](https://www.bingmapsportal.com/) (ücretsiz bir tane oluşturabilir ve Microsoft hesabınızla ilişkilendirebilirsiniz).

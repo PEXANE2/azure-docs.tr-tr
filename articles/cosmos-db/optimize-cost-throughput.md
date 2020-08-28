@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610736"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012458"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -55,7 +56,7 @@ Aşağıdaki tabloda gösterildiği gibi, API seçimine bağlı olarak, farklı 
 
 |API|**Paylaşılan** verimlilik için yapılandırma |**Adanmış** aktarım hızı için yapılandırma |
 |----|----|----|
-|SQL API’si|Veritabanı|Kapsayıcı|
+|SQL API|Veritabanı|Kapsayıcı|
 |MongoDB için Azure Cosmos DB API'si|Veritabanı|Koleksiyon|
 |Cassandra API’si|Anahtar alanı|Tablo|
 |Gremlin API|Veritabanı hesabı|Graf|

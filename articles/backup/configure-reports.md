@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826863"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022403"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -109,7 +109,7 @@ Yedeklemelerinize yönelik potansiyel maliyet iyileştirme fırsatlarıyla ilgil
 
 ###### <a name="inactive-resources"></a>Etkin olmayan kaynaklar
 
-Bu görünümü kullanarak, önemli bir süre için başarılı bir yedeklemeye sahip olmayan yedekleme öğelerini belirleyebilirsiniz. Bu, yedeklenen temel makinenin artık mevcut olmadığı anlamına gelir (ve bu nedenle başarısız olan yedeklemelere yol açar) veya makinenin güvenilir bir şekilde alınmasını engelleyen bir sorunu vardır.
+Bu görünümü kullanarak, önemli bir süre için başarılı bir yedeklemeye sahip olmayan yedekleme öğelerini belirleyebilirsiniz. Bu, yedeklenen temel makinenin artık mevcut olmadığı anlamına gelir (ve bu nedenle başarısız olan yedeklemelere yol açar) ya da bu, yedeklemelerin güvenilir bir şekilde alınmasını engelleyen bir sorun olabilir.
 
 Etkin olmayan kaynakları görüntülemek için **en iyileştirme** sekmesine gidin ve **etkin olmayan kaynaklar** kutucuğunu seçin. Bu kutucuğu Seç seçili kapsamda mevcut olan tüm etkin olmayan kaynakların ayrıntılarını içeren bir kılavuz görüntüler. Varsayılan olarak, kılavuz son yedi gün içinde bir kurtarma noktası olmayan öğeleri gösterir. Farklı bir zaman aralığı için etkin olmayan kaynakları bulmak için sekmenin en üstünde **zaman aralığı** filtresini ayarlayabilirsiniz.
 

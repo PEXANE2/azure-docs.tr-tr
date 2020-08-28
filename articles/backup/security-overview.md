@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890476"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012560"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -70,7 +70,7 @@ Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şi
 
 * Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar; bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur. [Silinen yedekleme verilerini kurtarma hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
-* Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı kullanılarak yedeklenen veriler için, verilerin Azure Backup yüklenmeden önce şifrelenmesini ve yalnızca Azure Backup 'den indirildikten sonra şifresinin çözülmesi sağlamak için bir parola kullanılır. Parola ayrıntıları yalnızca parolayı oluşturan kullanıcı ve onunla yapılandırılmış aracı için kullanılabilir. Hiçbir şey iletilmez veya hizmetle paylaşılmaz. Bu, yanlışlıkla sunulan tüm veriler (örneğin, ağda ortadaki adam saldırısı gibi), parola olmadan kullanılamaz ve parola ağda gönderilmediğinde, verilerinizin güvenliğini tam olarak sağlar.
+* Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı kullanılarak yedeklenen veriler için, verilerin Azure Backup yüklenmeden önce şifrelenmesini ve yalnızca Azure Backup 'den indirildikten sonra şifresinin çözülmesi sağlamak için bir parola kullanılır. Parola ayrıntıları yalnızca parolayı oluşturan kullanıcı ve onunla yapılandırılmış aracı için kullanılabilir. Hiçbir şey iletilmez veya hizmetle paylaşılmaz. Bu, yanlışlıkla ortaya çıkarılan tüm veriler (örneğin, ağ üzerinde bir ortadaki adam saldırısı gibi) parola olmadan kullanılamaz durumda ve parola ağ üzerinden gönderilmediğinde verilerinizin güvenliğinin tam olarak yapılmasını sağlar.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Standartlaştırılmış güvenlik gereksinimleriyle uyumluluk
 

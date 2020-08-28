@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022454"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül ikizleri, işler ve mesaj yönlendirmesi için IoT Hub sorgu dili
 
@@ -478,7 +479,7 @@ Yollar koşullarında, aşağıdaki tür denetimi ve atama işlevleri destekleni
 
 | İşlev | Açıklama |
 | -------- | ----------- |
-| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop`Giriş bir sayı ise, `Undefined`dize bir sayıyı temsil etmez.|
+| AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop` Giriş bir sayı ise, `Undefined` dize bir sayıyı temsil etmez.|
 | IS_ARRAY | Belirtilen ifadenin türünün bir dizi olup olmadığını gösteren bir Boole değeri döndürür. |
 | IS_BOOL | Belirtilen ifadenin türünün bir Boolean olup olmadığını gösteren bir Boole değeri döndürür. |
 | IS_DEFINED | Özelliğe bir değer atanıp atanmadığını gösteren bir Boole değeri döndürür. Bu yalnızca değer temel bir tür olduğunda desteklenir. İlkel türler String, Boolean, numeric veya içerir `null` . DateTime, nesne türleri ve diziler desteklenmez. |

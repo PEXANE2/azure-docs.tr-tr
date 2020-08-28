@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 353024513885651cbc791548d8b91def3de65d90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513510"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013478"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
 
@@ -64,7 +65,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Gelişmiş senaryolar 
 
-Onun şemasını kullanarak AME için kendi kodlama ön ayarını oluşturduysanız, [Media Encoder Standard için eşdeğer bir şema](media-services-mes-schema.md)vardır. Eski ayarların yeni kodlayıcıyla eşlenme hakkında sorularınız varsa, lütfen bizimle iletişime geçinmailto:amshelp@microsoft.com  
+Onun şemasını kullanarak AME için kendi kodlama ön ayarını oluşturduysanız, [Media Encoder Standard için eşdeğer bir şema](media-services-mes-schema.md)vardır. Eski ayarların yeni kodlayıcıyla eşlenme hakkında sorularınız varsa, lütfen bizimle iletişime geçin mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Bilinen farklar 
 
 Media Encoder Standard daha sağlam, güvenilir, daha iyi bir performansa sahiptir ve eski AME kodlayıcısından daha iyi kaliteli çıkış üretir. Bunlara ek olarak: 

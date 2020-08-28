@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 252f38e289f7b40c673d9048119823348a30a546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85118891"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015450"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -42,7 +43,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 

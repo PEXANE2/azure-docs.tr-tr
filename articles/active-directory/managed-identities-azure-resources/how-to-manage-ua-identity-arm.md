@@ -3,7 +3,7 @@ title: Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetil
 description: Azure Resource Manager kullanarak Kullanıcı tarafından atanan Yönetilen kimlikler oluşturma ve silme hakkında adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b0853648fab078af89f01a9aea157205e81d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896c1909c8cc920e53fc2f43fbc4dbca41ad7db4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608492"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014243"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme
 
@@ -33,7 +33,7 @@ Bir Azure Resource Manager şablonu kullanarak Kullanıcı tarafından atanan y�
 
 - [Kullanıcı tarafından atanan yönetilen kimliği listeleme](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
 - [Kullanıcı tarafından atanan yönetilen kimliği Sil](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-  ## <a name="prerequisites"></a>Ön koşullar
+  ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).

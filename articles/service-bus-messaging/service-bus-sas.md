@@ -3,12 +3,13 @@ title: Paylaşılan erişim Imzaları ile erişim denetimi Azure Service Bus
 description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denetimine genel bakış, Azure Service Bus ile SAS yetkilendirmesi hakkında ayrıntılar.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066194"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012084"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -67,9 +68,9 @@ Bir yetkilendirme kuralı adı adına erişimi olan tüm istemciler ve imzalama 
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-Token süre sonu anında. `00:00:00 UTC`Belirtecin süresi sona erdiğinde 1 ocak 1970 (UNIX dönemi) üzerinden dönem bu yana bir saniye yansıtarak tamsayı.
-* **`skn`**-Yetkilendirme kuralının adı.
-* **`sr`**-Erişilmekte olan kaynağın URI 'SI.
+* **`se`** -Token süre sonu anında. `00:00:00 UTC`Belirtecin süresi sona erdiğinde 1 ocak 1970 (UNIX dönemi) üzerinden dönem bu yana bir saniye yansıtarak tamsayı.
+* **`skn`** -Yetkilendirme kuralının adı.
+* **`sr`** -Erişilmekte olan kaynağın URI 'SI.
 * **`sig`** İmza.
 
 , `signature-string` Kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize GÖSTERIMINE göre hesaplanan SHA-256 karmasıdır.

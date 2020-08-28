@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774353"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022437"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
 Video Indexer, Microsoft tarafından sunulan çeşitli ses ve video yapay zeka (AI) teknolojilerini tek bir tümleşik hizmette birleştirerek geliştirmeyi daha kolay hale getirir. API 'Ler, geliştiricilerin ölçek, küresel erişim, kullanılabilirlik ve bulut platformlarının güvenilirliğini öğrenmek zorunda kalmadan medya AI teknolojilerine odaklanmasını sağlamak üzere tasarlanmıştır. API 'Leri kullanarak dosyalarınızı karşıya yükleyebilir, ayrıntılı video öngörüleri alabilir, eklenebilir Öngörüler ve oynatıcı Pencere öğelerinin URL 'Lerini alabilir ve daha fazlasını yapabilirsiniz.
 
-Video Indexer bir hesap oluştururken, ücretsiz bir deneme hesabı (belirli bir sayıda dizin oluşturma dakikası aldığınız) veya ücretli bir seçenek (Kota ile sınırlı olmamak üzere) seçebilirsiniz. Ücretsiz deneme sürümü sayesinde, Video Indexer Web sitesi kullanıcılarına en fazla 600 dakikalık ücretsiz dizin oluşturma ve API kullanıcılarına 2400 dakikalık ücretsiz dizin oluşturma olanağı sağlar. Ücretli bir seçenekle, [Azure aboneliğinize ve Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Azure Media Services hesabıyla ilgili ücretler için ödeme yaparsınız.
+Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli bir seçenekle, [Azure aboneliğinize ve Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Azure Media Services hesabıyla ilgili ücretler için ödeme yaparsınız.
 
 Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.videoindexer.ai/) nasıl yararlanabileceği açıklanmaktadır.
 

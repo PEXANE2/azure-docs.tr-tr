@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013954"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme
 
@@ -31,13 +31,15 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * IoT hub'ın işlemlerini birincil konuma geri almak için yeniden çalışma gerçekleştirin. 
 > * Hub'ın doğru konumda düzgün biçimde çalıştığını onaylayın.
 
+El ile yük devretme ve Microsoft tarafından başlatılan IoT Hub yük devretme hakkında daha fazla bilgi için bkz. [çapraz bölge olağanüstü durum kurtarma](iot-hub-ha-dr.md#cross-region-dr).
+
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
 
@@ -83,7 +85,7 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    Elle yük devretme gerçekleştirmek için gereken süre, hub'ınıza kayıtlı olan cihaz sayısına bağlıdır. Örneğin 100.000 cihazınız varsa 15 dakika, beş milyon cihazınız varsa bir saat veya daha uzun sürebilir.
 
-   ![Elle Yük Devretme bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![El Ile yük devretme onay bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    El ile yük devretme işlemi çalışırken, devam etmekte olan bir el ile yük devretme olduğunu söyleyen bir başlık görünür. 
 

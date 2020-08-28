@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 65662af2bad5475b024366a2ff550ff30e6c0e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892346"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014668"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -28,10 +28,10 @@ Bu bölümde, Azure sanal makinesinin yedekleme işlemi hatası ele alınmaktad�
 * VM 'nin internet bağlantısı olduğunu doğrulayın.
   * Başka bir yedekleme hizmetinin çalışmadığından emin olun.
 * `Services.msc` **Windows Azure Konuk Aracısı** hizmetinin **çalıştığından**emin olun. **Windows Azure Konuk Aracısı** hizmeti eksikse, [bir kurtarma hizmetleri kasasındaki Azure VM 'lerinden yedekleme](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)konumundan yüklemesi yapın.
-* **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup 'tan kaynaklanabilir. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
-  * Olay kaynağında veya iletisinde bir giriş **yedeğiyle** ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
+* **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup nedeni değildir. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
+  * Olay kaynağında veya iletisinde giriş **yedeğiyle** ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
   * Azure Backup çalışıyorsa, sorun büyük olasılıkla başka bir yedekleme çözümüyle birlikte olur.
-  * Azure Backup 'ın sorunsuz çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu bir Olay Görüntüleyicisi hatası 517 örneği aşağıda verilmiştir:<br>
+  * Azure Backup düzgün çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu Olay Görüntüleyicisi hatası 517 ' a bir örnek aşağıda verilmiştir:<br>
     ![Başarısız Windows Server Yedekleme](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Azure Backup başarısız olursa, bu makaledeki ortak VM yedekleme hataları bölümünde karşılık gelen hata kodunu arayın.
 

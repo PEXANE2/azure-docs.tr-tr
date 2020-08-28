@@ -10,12 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82859022"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013070"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın
 
@@ -71,7 +72,7 @@ Bunlar, bu makalenin geri kalanında tartıştığımız diğer önemli noktalar
 
 * Sonuçta tutarlı veriler ve son eşitleme zamanı
 
-* Test Etme
+* Sınama
 
 ## <a name="running-your-application-in-read-only-mode"></a>Uygulamanızı salt okuma modunda çalıştırma
 
@@ -196,12 +197,12 @@ Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye
 
 Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolünün bir üyesi haline getirmek için güncelleştirdiğinizde neler gerçekleşebileceğini gösteren bir örnek gösterilmektedir. Bu örneğin, bu örnek için **çalışan** varlığını güncelleştirmenizi ve bir **yönetici rolü** varlığını, toplam yönetici sayısı sayısıyla güncelleştirmeniz gerekir. Güncelleştirmelerin ikincil bölgede nasıl uygulandığına dikkat edin.
 
-| **Saat** | **İşlem**                                            | **Çoğaltma**                       | **Son eşitleme zamanı** | **Sonuç** |
+| **Saat** | **İşlem**                                            | **Yinelemesi**                       | **Son eşitleme zamanı** | **Sonuç** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
 | T1       |                                                            | İşlem A <br> çoğaltma<br> İK | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştir<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
-| T3       | İşlem C:<br> Güncelleştir <br>yönetici<br>içindeki rol varlığı<br>Birinc |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
+| T2       | İşlem B:<br>Güncelleştirme<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
+| T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>içindeki rol varlığı<br>Birinc |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
 | *T4*     |                                                       | İşlem C <br>çoğaltma<br> İK | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
 | *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
 | *T6*     |                                                      | İşlem B<br> çoğaltma<br> İK | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |
@@ -212,7 +213,7 @@ Bu örnekte, istemci, T5 adresindeki ikincil bölgeden okuma yapmak için anahta
 
 Son eşitleme zamanını nasıl denetleyeceğinizi öğrenmek için bkz. [depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 Yeniden denenebilir hata ile karşılaştığında uygulamanızın beklendiği gibi davrandığını test etmek önemlidir. Örneğin, bir sorun algıladığında uygulamanın ikinciye ve salt okuma moduna geçiş yapması ve birincil bölge yeniden kullanılabilir olduğunda geri geçiş yapmanız gerekir. Bunu yapmak için yeniden denenebilir hata benzetimi yapmak ve ne sıklıkta gerçekleştikleri denetlemek için bir yol gerekir.
 

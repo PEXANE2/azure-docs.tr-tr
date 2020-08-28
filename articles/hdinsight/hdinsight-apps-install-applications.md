@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212835"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016045"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
 
@@ -29,7 +29,7 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 |[HDInsight için CDAP](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP, Hadoop için zaman değerini hızlandıran ve self servis verileri sağlamasına olanak tanıyan büyük verilere yönelik ilk Birleşik tümleştirme platformudur. Açık kaynak ve genişletilebilir, CDAP yeniliklere yönelik engelleri kaldırır. Gereksinimler: 4 bölge düğümü, min D3 v2. |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Analiz için verilerinizi hazırlamaya, keşfetmeye ve yapılandırmaya yönelik self servis ölçeklenebilir platformu, karmaşık çok kaynaklı verileri, kurumsal ölçekte daha hızlı ve daha akıllı Öngörüler sunarak değerli iş için hazır bilgilere açmayı hızlandırır. |
 |[HDInsight üzerinde dataıku DSS](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Veri bilimcilerinin ve veri analistlerinin yeni veri ürünlerini ve hizmetlerini daha verimli bir şekilde tasarlamak ve çalıştırmak ve ham verileri kesin tahmine dayalı tahmine dayalı olarak yürütmek üzere işbirliği yapmasına imkan tanıyan bir kurumsal veri bilimi platformunda dataiku DSS. |
-|[WANdisco Fusion HDI uygulaması](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, fırtınası, Kafka |Verilerin dağıtılmış bir ortamda tutarlı tutulması çok büyük bir veri işlemleri sınamadır. Kurumsal sınıf yazılım platformu olan WANdisco Fusion, hiçbir ortamda yapılandırılmamış veri tutarlılığını etkinleştirerek bu sorunu çözer. |
+|[WANdisco Fusion HDI uygulaması](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBase, fırtınası, Kafka |Verilerin dağıtılmış bir ortamda tutarlı tutulması çok büyük bir veri işlemleri sınamadır. Kurumsal sınıf yazılım platformu olan WANdisco Fusion, hiçbir ortamda yapılandırılmamış veri tutarlılığını etkinleştirerek bu sorunu çözer. |
 |[HDInsight için H2O mini Susu](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Suze su aşağıdaki dağıtılmış algoritmaları destekler: GLM, Naïve Bayes, dağıtılmış rastgele orman, gradyan arttırma makinesi, derin sinir ağlar, derin öğrenme, K-anlamı, PCA, genelleştirilmiş düşük sıra modelleri, anomali algılama, oto kodlayıcılar. |
 |[HDInsight ile gerçek zamanlı veri tümleştirmesi için anlık ileti çabam](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, fırtınası, Spark, Kafka |Anlık ileti ("Stream"), uçtan uca bir akış veri tümleştirmesi + zekası platformudur ve farklı veri akışlarının sürekli alımı, işlenmesi ve analizine olanak sağlar. |
 |[Jumbune kurumsal-hızlandırma BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Yüksek düzeyde, Jumbe, kuruluşlara, 1 ' e yardımcı olur. Tez, MapReduce & Spark Engine tabanlı Hive, Java, Scala iş yükü performansı hızlandırıcı. 2. Proaktif Hadoop kümesi Izleme, 3. Dağıtılmış dosya sisteminde veri kalitesi yönetimi oluşturma. |
@@ -43,7 +43,7 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 
 Bu makalede verilen yönergeler Azure portalı kullanmaktadır. Ayrıca, portaldan Azure Resource Manager şablonunu dışarı aktarabilir veya satıcılardan Kaynak Yöneticisi şablonunun bir kopyasını alabilir ve şablonu dağıtmak için Azure PowerShell ve Azure klasik CLı kullanabilirsiniz.  Bkz. [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
 ## <a name="install-applications-to-existing-clusters"></a>Var olan kümelere uygulama yükleme

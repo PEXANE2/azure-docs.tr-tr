@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661563"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013013"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
 
 ```json
 [
@@ -165,6 +165,30 @@ API 'leri, tüm dönüş nesnelerini almak için çağırır `ModelData` . `Mode
 `RetrieveModelWithDependencies`Çağrı yalnızca istenen modeli değil, istenen modelin bağımlı olduğu tüm modelleri de döndürür.
 
 Modeller, içinde karşıya yüklendikleri belge formunda tam olarak döndürülmeyebilir. Azure dijital TWINS yalnızca dönüş formunun anlamsal olarak eşdeğer olmasını güvence altına alır. 
+
+### <a name="update-models"></a>Modelleri Güncelleştir
+
+Bir model örneğinize yüklendikten sonra tüm model arabirimi sabittir. Bu, modellerin geleneksel "düzenlemesi" olmadığı anlamına gelir.
+
+Bunun yerine, veya değiştirmek gibi Azure dijital TWINS 'deki bir modelde değişiklik yapmak istiyorsanız, `DisplayName` `Description` bunu yapmanın yolu aynı modelin **daha yeni bir sürümünü** karşıya yüklemedir. Bu, özgün modeli geçersiz kılar.
+
+Bunu yapmak için, özgün modelin DTDL ile başlayın. Değiştirmek istediğiniz alanları güncelleştirin.
+
+Ardından, modelin alanını güncelleştirerek bunu modelin daha yeni bir sürümü olarak işaretleyin `id` . Model KIMLIĞININ son bölümü, öğesinden sonra, `;` model numarasını temsil eder. Bu modelin daha güncel bir sürümünü olduğunu göstermek için, değerin sonundaki sayıyı `id` geçerli sürüm numarasından daha büyük bir sayı olarak artırın.
+
+Örneğin, önceki model KIMLIĞINIZ şöyle görünüyorsa:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+Bu modelin 2. sürümü şöyle görünebilir:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+Ardından, modelin yeni sürümünü örneğinize yükleyin. Bu, eski sürümün yerini alır ve bu modeli kullanarak oluşturduğunuz yeni TWINS güncelleştirilmiş sürümü kullanacaktır.
 
 ### <a name="remove-models"></a>Modelleri kaldır
 

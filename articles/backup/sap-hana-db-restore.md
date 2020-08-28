@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763295"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006321"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 

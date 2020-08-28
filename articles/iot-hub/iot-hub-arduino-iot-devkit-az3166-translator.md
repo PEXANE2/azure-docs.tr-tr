@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953350"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004349"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Azure Işlevleri ve bilişsel hizmetler ile IoT DevKit AZ3166 kullanarak bir dil Çeviricisi oluşturun
 
@@ -29,7 +30,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 
 ## <a name="create-azure-cognitive-service"></a>Azure bilişsel hizmeti oluşturma
 
-1. Azure portal, **kaynak oluştur ' a** tıklayın ve **konuşma**için arama yapın. Konuşma hizmetini oluşturmak için formu doldurun.
+1. Azure portal, **kaynak oluştur ' a** tıklayın ve **konuşma**için arama yapın. Konuşma Hizmeti oluşturmak için formu doldurun.
   ![Konuşma hizmeti](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Yeni oluşturduğunuz konuşma hizmetine gidin, **KEY1** for devkit 'e erişimi kopyalamak ve ona erişmek için **anahtarlar** Bölümü ' ne tıklayın.
@@ -51,7 +52,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 1. Azure IoT Hub ve Azure Işlevlerini sağlamayı tamamlayacak adımları izleyin.
    ![Adımları sağla](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   Oluşturduğunuz Azure IoT Hub cihaz adını bir yere göz atın.
+   Oluşturduğunuz Azure IoT Hub cihaz adını not edin.
 
 1. `Functions\DevKitTranslatorFunction.cs`Aşağıdaki kod satırlarını açın ve not ettiğiniz cihaz adı ve konuşma hizmeti anahtarıyla güncelleştirin.
    ```csharp
@@ -101,19 +102,19 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 
 ## <a name="test-the-project"></a>Projeyi test etme
 
-Uygulama başlatma işleminden sonra DevKit ekranındaki yönergeleri izleyin. Varsayılan kaynak dili Çince 'dir.
+Uygulama başlatıldıktan sonra DevKit ekranındaki yönergeleri izleyin. Varsayılan kaynak dil Çincedir.
 
-Çeviri için başka bir dil seçmek için:
+Çeviriye yönelik başka bir dil seçmek için:
 
-1. Kurulum moduna girmek için düğme A 'ya basın.
+1. Kurulum moduna girmek için A düğmesine basın.
 
 2. Desteklenen tüm kaynak dillerini kaydırmak için B düğmesine basın.
 
 3. Kaynak dili seçiminizi onaylamak için düğme A 'ya basın.
 
-4. Konuşma düğmesine basın ve basılı tutun, ardından çeviriyi başlatmak için B düğmesini bırakın.
+4. Konuşurken B düğmesini basılı tutun, ardından çeviriyi başlatmak için B düğmesini bırakın.
 
-5. Ingilizce olarak çevrilmiş metin ekranda görüntülenir.
+5. Çevrilmiş metin ekranda İngilizce dilinde görüntülenir.
 
 ![Dil Seç ' e kaydır](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
@@ -121,9 +122,9 @@ Uygulama başlatma işleminden sonra DevKit ekranındaki yönergeleri izleyin. V
 
 Çeviri sonucu ekranında şunları yapabilirsiniz:
 
-- Kaynak dilini kaydırmak ve seçmek için A ve B düğmelerine basın.
+- Kaynak dili kaydırıp seçmek için A ve B düğmelerine basın.
 
-- Konuşmak için B düğmesine basın. Sesi göndermek ve çeviri metnini almak için B düğmesini bırakın.
+- Konuşmak için B düğmesine basın. Sesi gönderip çeviri metnini almak için B düğmesini bırakın.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 

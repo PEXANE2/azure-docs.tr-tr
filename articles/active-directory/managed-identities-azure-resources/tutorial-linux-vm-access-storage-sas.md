@@ -3,7 +3,7 @@ title: 'Öğretici: SAS kimlik bilgisi kullanarak Azure depolamaya erişme-Linux
 description: Depolama hesabı erişim anahtarı yerine SAS kimlik bilgilerini kullanarak Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliğini kullanma işlemini gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 55ed1ff7f620b45bfc4e7ca4065bce014a28994b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84266313"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005080"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Öğretici: SAS kimlik bilgisiyle Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan kimliğini kullanma
 
@@ -40,7 +40,7 @@ Hizmet SAS, bir hesap erişim anahtarı göstermeden sınırlı bir süre boyunc
 > * VM'nize Resource Manager'da yer alan depolama hesabı SAS için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan SAS almak için bu belirteci kullanma 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

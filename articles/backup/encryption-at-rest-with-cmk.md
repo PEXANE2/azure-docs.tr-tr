@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892652"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022420"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -169,7 +169,7 @@ Anahtarı atamak için:
     ![Durum başarılı](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
 >[!NOTE]
-> Bu işlem, şifreleme anahtarını güncelleştirmek/değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan bir bilgisayardan farklı) bir anahtarı güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:
+> Bu işlem, şifreleme anahtarını güncelleştirmek/değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan birinden farklı) bir anahtar güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:
 >
 > - Key Vault, kurtarma hizmetleri kasasıyla aynı bölgede bulunur
 >
@@ -242,7 +242,7 @@ Hayır, CMK şifreleme yalnızca yeni kasaların etkinleştirilebilmesi için et
 
 Hayır, kasadaki herhangi bir öğeyi geçmişteki bir şekilde korumak için hiçbir girişimde bulunulmamalıdır.
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>CMK şifrelemesini kullanan bir kasam var. Kasaya korunan yedekleme öğeleri olsa bile daha sonra platforma yönetilen anahtarlar kullanılarak şifrelemeye dönebilir miyim?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>CMK şifrelemesini kullanan bir kasam var. Kasaya korunan yedekleme öğeleri olsa bile daha sonra platforma yönetilen anahtarlar kullanılarak şifrelemeye dönebilir miyim?
 
 Hayır, CMK şifrelemesini etkinleştirdikten sonra platform tarafından yönetilen anahtarlar kullanılmak üzere geri döndürülemez. Gereksinimlerinize göre kullanılan anahtarları değiştirebilirsiniz.
 

@@ -4,12 +4,12 @@ description: Bu makalede, şirket içi Windows Server 'lar için sistem durumu y
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824279"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022369"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -20,7 +20,7 @@ Bu makalede, sistem durumu yedeklemesini kullanırken içinde karşılaşabilece
 Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğrulama adımlarını gerçekleştirmenizi öneririz:
 
 - [Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS aracısı ile Azure arasında ağ bağlantısı sağlandığından emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [MARS Aracısı ve Azure arasında ağ bağlantısı olduğundan emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Kurtarma Hizmetleri'nin çalıştığından emin olun (Hizmet konsolunda). Gerekirse yeniden başlatın ve işlemi yeniden deneyin
 - [Boş klasör konumunda %5-10 oranında kullanılabilir alan olduğundan emin olun](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olup olmadığını kontrol edin](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)

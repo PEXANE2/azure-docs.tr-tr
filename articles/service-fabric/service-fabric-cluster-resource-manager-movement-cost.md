@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0fdcfb02851d56ed996ae4bf32671ab545782733
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75563352"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005352"
 ---
 # <a name="service-movement-cost"></a>Hizmet taşıma maliyeti
 Service Fabric kümenin Kaynak Yöneticisi, bir kümede yapılacak değişikliklerin ne kadar değişiklik yaptığını belirlemeye çalışırken dikkate aldığı bir faktör bu değişikliklerin maliyetidir. "Maliyet" kavramı, kümenin ne kadar iyileşebileceğini bir şekilde satın alabilir. Hizmetler, Dengeleme, birleştirme ve diğer gereksinimler için Hizmetleri taşırken buna göre belirlenir. Amaç, gereksinimleri en az karışıklığa veya pahalı bir şekilde karşılamaktır.

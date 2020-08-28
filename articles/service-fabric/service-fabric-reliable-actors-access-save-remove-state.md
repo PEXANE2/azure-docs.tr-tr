@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645642"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012798"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors duruma erişin, kaydedin ve kaldırın
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) hem mantığı hem de durumu kapsüllemek ve durumu güvenilir bir şekilde korumak için tek iş parçacıklı nesnelerdir. Her aktör örneğinin kendi [Durum Yöneticisi](service-fabric-reliable-actors-state-management.md)vardır: anahtar/değer çiftlerini güvenilir bir şekilde depolayan sözlük benzeri bir veri yapısı. Durum Yöneticisi, bir durum sağlayıcısının etrafındaki bir sarmalayıcıdır. Bu uygulamayı, hangi [Kalıcılık ayarının](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) kullanıldığı bağımsız olarak verileri depolamak için kullanabilirsiniz.

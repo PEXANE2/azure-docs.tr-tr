@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320502"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022505"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici nedir?
 
@@ -26,10 +26,6 @@ VM'ler için Azure İzleyici, Windows ve Linux işletim sistemlerini aşağıdak
 - Başka bir bulut ortamında barındırılan sanal makineler
   
 
-
->[!NOTE]
->Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğine yaptığımız [değişiklikleri duyuruyoruz](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-) . Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın.  
 
 
 VM'ler için Azure İzleyici, verileri Azure Izleyici günlüklerinde depolar ve bu sayede güçlü toplama ve filtreleme olanağı sunar ve zaman içinde veri eğilimlerini analiz edebilir. Bu verileri doğrudan sanal makineden tek bir VM 'de görüntüleyebilir veya birden çok VM 'nin toplanmış bir görünümünü sunmak için Azure Izleyici 'yi kullanabilirsiniz.

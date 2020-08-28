@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519771"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013750"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme
 Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan kaynaklar için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, Log Analytics aracısını sağlayarak etkinleştirebilirsiniz.
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiya
 
 ## <a name="add-new-windows-computer"></a>Yeni Windows bilgisayar ekleme
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiya
 3. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
 4. **Başlangıç** sekmesini seçin.
 
-   ![Kullanmaya başlayın][3]
+   ![başlarken][3]
 
 5. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
@@ -74,7 +74,7 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiya
 
 Tamamlandığında, **Log Analytics Aracısı** **Denetim Masası**'nda görüntülenir. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
 
-Aracının yüklenmesi ve yapılandırılması hakkında daha fazla bilgi için bkz. [Windows bilgisayarları bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Aracının yüklenmesi ve yapılandırılması hakkında daha fazla bilgi için bkz. [Windows bilgisayarları bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Artık Azure VM’lerinizi ve Azure olmayan bilgisayarlarınızı tek bir yerde izleyebilirsiniz. **Bilgi İşlem** dikey penceresinde, önerilerle birlikte tüm VM’lere ve bilgisayarlara ilişkin bir genel bakış görürsünüz. Her sütunda bir dizi öneri sunulur. Renk VM'nin veya bilgisayarın söz konusu öneri için geçerli güvenlik durumunu belirtir. Güvenlik Merkezi ayrıca bu bilgisayarlara yönelik tüm algılamaları Güvenlik uyarıları bölümünde gösterir.
 

@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014923"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
@@ -32,8 +32,8 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 
 **VM disk türü** | **ADE (BEK/dm-crypt)** | **ADE ve KEK**
 --- | --- | ---
-**Yönetilmeyen** | Yes | Yes
-**Yönetilen**  | Yes | Yes
+**Yönetilmeyen** | Evet | Evet
+**Yönetilen**  | Evet | Evet
 
 - [Ade](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)ve [Keks](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/fundamentals/azure-disk-encryption-vms-vmss.md) makalesini okuyun.
@@ -41,7 +41,7 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 ### <a name="limitations"></a>Sınırlamalar
 
 - Şifrelenmiş VM 'Leri aynı abonelik ve bölge içinde yedekleyebilir ve geri yükleyebilirsiniz.
-- Azure Backup, tek başına anahtarlar kullanılarak şifrelenmiş VM 'Leri destekler. Bir sanal makineyi şifrelemek için kullanılan bir sertifikanın parçası olan herhangi bir anahtar şu anda desteklenmemektedir.
+- Azure Backup, tek başına anahtarlar kullanılarak şifrelenmiş VM 'Leri destekler. Bir VM 'yi şifrelemek için kullanılan bir sertifikanın parçası olan herhangi bir anahtar şu anda desteklenmemektedir.
 - Kurtarma Hizmetleri yedekleme kasası ile aynı abonelik ve bölge içinde şifrelenmiş VM 'Leri yedekleyebilir ve geri yükleyebilirsiniz.
 - Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Dosya ve klasörleri geri yüklemek için tüm VM 'yi kurtarmanız gerekir.
 - Bir VM 'yi geri yüklerken, şifrelenen VM 'Ler için [mevcut VM 'yi Değiştir](backup-azure-arm-restore-vms.md#restore-options) seçeneğini kullanamazsınız. Bu seçenek yalnızca şifrelenmemiş yönetilen diskler için desteklenir.

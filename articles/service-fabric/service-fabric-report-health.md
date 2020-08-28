@@ -5,12 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256314"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012662"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Özel Service Fabric sistem durumu raporları ekleme
 Azure Service Fabric, belirli varlıklara uygun olmayan kümeyi ve uygulama koşullarını işaretlemek için tasarlanan bir [sistem durumu modeli](service-fabric-health-introduction.md) sunar. Sistem durumu modeli, sistem **durumu reporlarını** (sistem bileşenleri ve Watchdogs) kullanır. Amaç kolay ve hızlı tanılama ve onarma. Hizmet yazıcılarının sistem durumu hakkında düşünmesine ihtiyacı vardır. Özellikle, sorunların köke yakın olduğunu bayrakladığında, sistem durumunu etkileyebilecek herhangi bir koşul tarihinde bildirilmelidir. Sistem durumu bilgileri, hata ayıklama ve araştırma konusunda zaman ve çaba tasarrufu sağlayabilir. Hizmet, bulutta (özel veya Azure) bir ölçekte çalışmaya başladıktan sonra özellikle net bir şekilde belirlenir.

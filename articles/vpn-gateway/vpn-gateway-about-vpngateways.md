@@ -1,25 +1,24 @@
 ---
 title: Azure VPN Gateway hakkında
-description: VPN Gateway ne olduğunu ve IPSec ıKE siteden siteye, VNet-VNET ve Noktadan siteye VPN sanal ağlarına bağlanmak için VPN Gateway nasıl kullanacağınızı öğrenin.
+description: VPN Gateway ne olduğunu ve IPSec ıKE siteden siteye, VNet-VNet ve Noktadan siteye VPN sanal ağlarına bağlanmak için VPN Gateway nasıl kullanacağınızı öğrenin.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855605"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015399"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
 
 VPN ağ geçidi, genel İnternet üzerinden bir Azure sanal ağı ile şirket içi konum arasında şifrelenmiş trafik göndermek için kullanılan belirli bir sanal ağ geçidi türüdür. Ayrıca VPN ağ geçidini Microsoft ağı üzerinden Azure sanal ağları arasında şifrelenmiş trafik göndermek için de kullanabilirsiniz. Her sanal ağın yalnızca bir VPN ağ geçidi olabilir. Ancak, aynı VPN ağ geçidi ile birden fazla bağlantı oluşturabilirsiniz. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
-
-VPN ağ geçitleri Azure Kullanılabilirlik Alanları ' de dağıtılabilir. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. [Azure kullanılabilirlik alanları ' de bölgesel olarak yedekli sanal ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md)bölümüne bakın.
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Sanal ağ geçidi nedir?
 
@@ -33,9 +32,15 @@ Bir sanal ağ geçidinin oluşturulması 45 dakika sürebilir. Bir sanal ağ ge�
 
 VPN ağ geçidi bağlantısı belirli ayarlarla yapılandırılmış birden fazla kaynağı kullanır. Kaynakların birçoğu ayrı ayrı yapılandırılabilir, ancak bazı kaynakların belirli bir sırayla yapılandırılması gerekir.
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>Tasarım: bağlantı topolojisi diyagramları
+### <a name="design"></a><a name="diagrams"></a>Tasarım
 
-VPN ağ geçidi bağlantıları için kullanılabilecek farklı yapılandırmalar vardır. Gereksinimlerinize en uygun yapılandırmayı belirlemeniz gerekir. Örneğin, Noktadan siteye, siteden siteye ve birlikte var olan ExpressRoute/siteden siteye bağlantıların hepsi farklı yönergeler ve yapılandırma gereksinimlerine sahiptir. Tasarım ve bağlantı topolojisi diyagramları hakkında daha fazla bilgi için bkz. [Tasarım](design.md).
+VPN ağ geçidi bağlantıları için kullanılabilecek farklı yapılandırmalar vardır. Gereksinimlerinize en uygun yapılandırmayı belirlemeniz gerekir. Örneğin, Noktadan siteye, siteden siteye ve birlikte var olan ExpressRoute/siteden siteye bağlantıların hepsi farklı yönergeler ve yapılandırma gereksinimlerine sahiptir. Tasarım ve bağlantı topolojisi diyagramlarını görüntüleme hakkında daha fazla bilgi için bkz. [Tasarım](design.md).
+
+### <a name="planning-table"></a><a name="planningtable"></a>Planlama tablosu
+
+Aşağıdaki tablo çözümünüz için en iyi bağlantı seçeneğine karar vermenize yardımcı olabilir.
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>Ayarlar
 
@@ -44,12 +49,6 @@ Her kaynak için seçtiğiniz ayarlar başarılı bir bağlantı oluşturmak iç
 ### <a name="deployment-tools"></a><a name="tools"></a>Dağıtım araçları
 
 Azure portalı gibi bir yapılandırma aracını kullanarak kaynakları oluşturmaya ve yapılandırmaya başlayabilirsiniz. Daha sonra ek kaynaklar yapılandırmak ya da uygun olduğunda var olan kaynakları değiştirmek için PowerShell gibi başka bir araca geçmeye karar verebilirsiniz. Şu anda Azure portalında her kaynağı ve kaynak ayarını yapılandıramazsınız. Her bağlantı topolojisine ilişkin makalelerdeki yönergelerde, belirli bir aracının ne zaman gerekli olduğu belirtilmektedir.
-
-### <a name="planning-table"></a><a name="planningtable"></a>Planlama tablosu
-
-Aşağıdaki tablo çözümünüz için en iyi bağlantı seçeneğine karar vermenize yardımcı olabilir.
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU’ları
 
@@ -62,6 +61,10 @@ Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
+## <a name="availability-zones"></a><a name="availability"></a>Kullanılabilirlik Alanları
+
+VPN ağ geçitleri Azure Kullanılabilirlik Alanları ' de dağıtılabilir. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. [Azure kullanılabilirlik alanları ' de bölgesel olarak yedekli sanal ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md)bölümüne bakın.
+
 ## <a name="pricing"></a><a name="pricing"></a>Fiyatlandırma
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
@@ -72,7 +75,7 @@ VPN Gateway’e yönelik ağ geçidi SKU’ları hakkında bilgi için bkz. [Ağ
 
 VPN Gateway hakkında sık sorulan sorular için bkz. [VPN Gateway hakkında SSS](vpn-gateway-vpn-faq.md).
 
-## <a name="whats-new"></a><a name="new"></a>Yenilikler nelerdir?
+## <a name="whats-new"></a><a name="new"></a>Yenilikler
 
 RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VPN%20Gateway) sayfasında en son VPN Gateway Özellik güncelleştirmelerini görüntüleyin.
 
