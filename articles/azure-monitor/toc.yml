@@ -329,6 +329,28 @@
       items:
         - name: Veri toplama kuralları
           href: platform/data-collection-rule-overview.md
+        - name: Aracı veri kaynakları
+          items:
+            - name: Genel Bakış
+              href: platform/agent-data-sources.md
+            - name: Windows olayları
+              href: platform/data-sources-windows-events.md
+            - name: Özel JSON verileri
+              href: platform/data-sources-json.md
+            - name: Toplanan performans verileri
+              href: platform/data-sources-collectd.md
+            - name: Syslog
+              href: platform/data-sources-syslog.md
+            - name: Performans sayaçları
+              href: platform/data-sources-performance-counters.md
+            - name: Linux uygulama performansı
+              href: platform/data-sources-linux-applications.md
+            - name: IIS günlükleri
+              href: platform/data-sources-iis-logs.md
+            - name: Özel günlükler
+              href: platform/data-sources-custom-logs.md
+            - name: Özel alanlar
+              href: platform/custom-fields.md
         - name: Özel ölçümler
           items:
             - name: Özel ölçümler
@@ -361,6 +383,24 @@
             - name: Veri toplama
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Log Analytics aracısı
+          items:
+            - name: Genel Bakış
+              href: platform/log-analytics-agent.md
+            - name: Windows aracıları
+              href: platform/agent-windows.md
+            - name: Linux aracıları
+              href: platform/agent-linux.md
+            - name: Windows için VM Uzantısı
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Linux için VM Uzantısı
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics ağ geçidi
+              href: platform/gateway.md
+            - name: Aracı yönetimi
+              href: platform/agent-manage.md
+            - name: Aracı Durumu
+              href: insights/solution-agenthealth.md
         - name: Azure Tanılama uzantısı
           items:
             - name: Genel Bakış
@@ -403,46 +443,6 @@
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Telegraf ile ölçümleri toplama
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Log Analytics aracısı
-          items:
-            - name: Genel Bakış
-              href: platform/log-analytics-agent.md
-            - name: Windows aracıları
-              href: platform/agent-windows.md
-            - name: Linux aracıları
-              href: platform/agent-linux.md
-            - name: Windows için VM Uzantısı
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: Linux için VM Uzantısı
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Log Analytics ağ geçidi
-              href: platform/gateway.md
-            - name: Aracı yönetimi
-              href: platform/agent-manage.md
-            - name: Aracı Durumu
-              href: insights/solution-agenthealth.md
-            - name: Veri kaynakları
-              items:
-                - name: Genel Bakış
-                  href: platform/agent-data-sources.md
-                - name: Windows olayları
-                  href: platform/data-sources-windows-events.md
-                - name: Özel JSON verileri
-                  href: platform/data-sources-json.md
-                - name: Toplanan performans verileri
-                  href: platform/data-sources-collectd.md
-                - name: Syslog
-                  href: platform/data-sources-syslog.md
-                - name: Performans sayaçları
-                  href: platform/data-sources-performance-counters.md
-                - name: Linux uygulama performansı
-                  href: platform/data-sources-linux-applications.md
-                - name: IIS günlükleri
-                  href: platform/data-sources-iis-logs.md
-                - name: Özel günlükler
-                  href: platform/data-sources-custom-logs.md
-                - name: Özel alanlar
-                  href: platform/custom-fields.md
         - name: Sorun giderme
           items:
             - name: Log Analytics VM Uzantısı

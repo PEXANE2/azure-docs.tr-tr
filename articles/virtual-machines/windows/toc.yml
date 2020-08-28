@@ -82,7 +82,7 @@
             - name: Yönetilen diski çoğaltma
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
             - name: VHD’den anlık görüntü oluşturma
@@ -124,7 +124,7 @@
             - name: Yönetilen diski kopyalama
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Anlık görüntüyü depolama hesabına VHD olarak dışarı aktarma
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
             - name: Anlık görüntüyü kopyalama

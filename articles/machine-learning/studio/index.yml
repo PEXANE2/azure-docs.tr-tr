@@ -12,19 +12,19 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 03/05/2020
-  ms.openlocfilehash: 02d90dc6781fe39e92d97d64697cc2ee32b04b31
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e31651c07cc9567af0deac8311b2321ad6dee4ba
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78331501"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "89021927"
 landingContent:
 - title: Studio (klasik) ile çalışmaya başlama
   linkLists:
   - linkListType: get-started
     links:
     - text: Studio (klasik) nedir?
-      url: what-is-ml-studio.md
+      url: studio-classic-overview.md
     - text: İlk ML denemenizi oluşturma
       url: create-experiment.md
     - text: Tahmine dayalı çözüm oluşturma
