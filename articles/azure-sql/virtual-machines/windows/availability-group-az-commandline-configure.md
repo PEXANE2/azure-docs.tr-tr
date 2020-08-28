@@ -9,16 +9,16 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/15/2020
+ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6ce142f196da9207dd26b1917190ebdcba50fe74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532106"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003041"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırma (PowerShell & az CLı)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Azure CLı kullanarak Always on kullanılabilirlik grubunu yapılandırmak için
 - Etki alanında **bilgisayar nesnesi oluşturma** iznine sahip olan mevcut bir etki alanı kullanıcı hesabı. Örneğin, bir etki alanı yönetici hesabı genellikle yeterli izne sahiptir (örneğin: account@domain.com ). _Bu hesap, kümeyi oluşturmak için her VM 'de yerel yönetici grubunun da bir parçası olmalıdır._
 - SQL Server denetleyen etki alanı kullanıcı hesabı. 
  
-## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>1. Adım: bulut tanığı olarak depolama hesabı oluşturma
+## <a name="create-a-storage-account-as-a-cloud-witness"></a>Bulut tanığı olarak bir depolama hesabı oluşturma
 Kümenin bulut tanığı olarak davranması için bir depolama hesabı olması gerekir. Mevcut bir depolama hesabını kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, sonraki bölüme atlayın. 
 
 Aşağıdaki kod parçacığı depolama hesabını oluşturur: 
@@ -77,11 +77,10 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
     -SkuName Standard_LRS -Location <region> -Kind StorageV2 `
     -AccessTier Hot -EnableHttpsTrafficOnly
 ```
+
 ---
 
-
-
-## <a name="step-2-define-windows-failover-cluster-metadata"></a>2. Adım: Windows Yük devretme kümesi meta verilerini tanımlama
+## <a name="define-windows-failover-cluster-metadata"></a>Windows Yük devretme kümesi meta verilerini tanımlama
 
 Azure CLı [az SQL VM Group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) komut grubu, kullanılabilirlik grubunu barındıran Windows Server yük devretme KÜMESI (wsfc) hizmetinin meta verilerini yönetir. Küme meta verileri Active Directory etki alanını, küme hesaplarını, bulut tanığı olarak kullanılacak depolama hesaplarını ve SQL Server sürümünü içerir. İlk SQL Server VM eklendiğinde kümenin tanımlandığı şekilde oluşturulması için WSFC meta verilerini tanımlamak için [az SQL VM Group Create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) kullanın. 
 
@@ -126,7 +125,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ---
 
-## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>3. Adım: kümeye SQL Server VM ekleme
+## <a name="add-vms-to-the-cluster"></a>Kümeye VM ekleme
 
 Kümeye ilk SQL Server VM eklendiğinde küme oluşturulur. [Az SQL VM Add-Group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) komutu, kümeyi daha önce verilen adla oluşturur, küme rolünü SQL Server VM 'lerine ekler ve kümeye ekler. Komutun sonraki kullanımları `az sql vm add-to-group` Yeni oluşturulan kümeye daha fazla SQL Server VM ekler. 
 
@@ -185,14 +184,14 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 
 ---
 
-## <a name="step-4-create-the-availability-group"></a>4. Adım: kullanılabilirlik grubunu oluşturma
+## <a name="create-availability-group"></a>Kullanılabilirlik grubu oluştur
 
 Kullanılabilirlik grubunu, [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)veya [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql)kullanarak normal şekilde yaptığınız şekilde el ile oluşturun. 
 
 >[!IMPORTANT]
 > Aşağıdaki bölümlerde Azure CLı üzerinden yapıldığından, şu anda bir *dinleyici oluşturmayın.*  
 
-## <a name="step-5-create-the-internal-load-balancer"></a>5. Adım: iç yük dengeleyici oluşturma
+## <a name="create-internal-load-balancer"></a>İç yük dengeleyici oluştur
 
 Always on kullanılabilirlik grubu dinleyicisi bir Azure Load Balancer iç örneğini gerektirir. İç yük dengeleyici, daha hızlı yük devretme ve yeniden bağlantı sağlayan kullanılabilirlik grubu dinleyicisi için "kayan" bir IP adresi sağlar. Bir kullanılabilirlik grubundaki SQL Server VM 'Ler aynı Kullanılabilirlik kümesinin parçasıysa, temel bir yük dengeleyici kullanabilirsiniz. Aksi takdirde, standart yük dengeleyici kullanmanız gerekir.  
 
@@ -228,7 +227,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 >[!IMPORTANT]
 > Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu**' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
 
-## <a name="step-6-create-the-availability-group-listener"></a>6. Adım: kullanılabilirlik grubu dinleyicisini oluşturma
+## <a name="create-listener"></a>Dinleyici oluştur
 
 Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create)kullanarak dinleyiciyi oluşturabilirsiniz. 
 
@@ -237,9 +236,9 @@ Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/
    1. Sanal ağ kaynağını seçin. 
    1. **Ayarlar** bölmesinde **Özellikler** ' i seçin. 
    1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örneğin:
-      - Sanal ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
-      - Alt ağ adınız:`default`
-      - Bu nedenle, alt ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
+      - Sanal ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
+      - Alt ağ adınız: `default`
+      - Bu nedenle, alt ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
 
 
 Aşağıdaki kod parçacığı, kullanılabilirlik grubu dinleyicisini oluşturur:
@@ -283,7 +282,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 
 ---
 
-## <a name="modify-the-number-of-replicas-in-an-availability-group"></a>Bir kullanılabilirlik grubundaki çoğaltmaların sayısını değiştirme
+## <a name="modify-number-of-replicas"></a>Kopyaların sayısını değiştirme 
 Azure 'da barındırılan SQL Server VM 'lere bir kullanılabilirlik grubu dağıttığınızda bir karmaşıklık katmanı daha vardır. Kaynak sağlayıcısı ve sanal makine grubu artık kaynakları yönetir. Bu nedenle, kullanılabilirlik grubunda çoğaltmalar eklerken veya kaldırırken, SQL Server VM 'Ler hakkında bilgi içeren dinleyici meta verilerini güncelleştirme hakkında ek bir adım vardır. Kullanılabilirlik grubundaki çoğaltmaların sayısını değiştirirken, dinleyiciyi SQL Server VM 'lerin meta verileriyle güncelleştirmek için [az SQL VM Group AG-Listener Update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) komutunu da kullanmanız gerekir. 
 
 
@@ -408,7 +407,7 @@ Bir çoğaltmayı kullanılabilirlik grubundan kaldırmak için:
 
 ---
 
-## <a name="remove-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini kaldır
+## <a name="remove-listener"></a>Dinleyiciyi kaldır
 Azure CLı ile yapılandırılmış kullanılabilirlik grubu dinleyicisini daha sonra kaldırmanız gerekirse, SQL VM kaynak sağlayıcısı ' na gitmeniz gerekir. Dinleyici SQL VM kaynak sağlayıcısı aracılığıyla kaydedildiğinden, SQL Server Management Studio aracılığıyla silmeniz yeterlidir. 
 
 En iyi yöntem, Azure CLı 'de aşağıdaki kod parçacığını kullanarak SQL VM kaynak sağlayıcısı aracılığıyla bunu silmektir. Bunun yapılması, kullanılabilirlik grubu dinleyicisi meta verilerini SQL VM kaynak sağlayıcısından kaldırır. Ayrıca, dinleyiciyi kullanılabilirlik grubundan fiziksel olarak siler. 
@@ -431,6 +430,65 @@ az sql vm group ag-listener delete --group-name <cluster name> --name <listener 
 
 Remove-AzAvailabilityGroupListener -Name <Listener> `
    -ResourceGroupName <Resource Group Name> -SqlVMGroupName <cluster name>
+```
+
+---
+
+## <a name="remove-cluster"></a>Kümeyi kaldır
+
+Kümeyi yok etmek için kümeden tüm düğümleri kaldırın ve ardından SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın. Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz. 
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+İlk olarak, SQL Server VM 'lerin tümünü kümeden kaldırın: 
+
+```azurecli-interactive
+# Remove the VM from the cluster metadata
+# example: az sql vm remove-from-group --name SQLVM2 --resource-group SQLVM-RG
+
+az sql vm remove-from-group --name <VM1 name>  --resource-group <resource group name>
+az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group name>
+```
+
+Bunlar kümedeki tek VM 'lardır, küme yok edilir. Kümeden kaldırılan SQL Server VM 'lerden ayrı başka VM 'Ler varsa, diğer VM 'Ler kaldırılmaz ve küme yok edilmez. 
+
+Sonra, SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın: 
+
+```azurecli-interactive
+# Remove the cluster from the SQL VM RP metadata
+# example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
+
+az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+```
+
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+İlk olarak, SQL Server VM 'lerin tümünü kümeden kaldırın. Bu, düğümleri fiziksel olarak kümeden kaldırır ve kümeyi yok eder: 
+
+```powershell-interactive
+# Remove the SQL VM from the cluster
+# example: $sqlvm = Get-AzSqlVM -Name SQLVM3 -ResourceGroupName SQLVM-RG
+#  $sqlvm. SqlVirtualMachineGroup = ""
+#  Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
+
+$sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
+   $sqlvm. SqlVirtualMachineGroup = ""
+   
+   Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
+```
+
+Bunlar kümedeki tek VM 'lardır, küme yok edilir. Kümeden kaldırılan SQL Server VM 'lerden ayrı başka VM 'Ler varsa, diğer VM 'Ler kaldırılmaz ve küme yok edilmez. 
+
+Sonra, SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın: 
+
+```powershell-interactive
+# Remove the cluster metadata
+# example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
+
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
 ```
 
 ---

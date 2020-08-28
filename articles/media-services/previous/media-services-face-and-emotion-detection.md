@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232585"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019887"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics ile yüz ve duygu algılama
 
@@ -45,7 +46,7 @@ ms.locfileid: "86232585"
 
 **Azure Media Face Detector** MP Şu anda önizleme aşamasındadır.
 
-Bu makale, **Azure Media Face Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
+Bu makale,  **Azure Media Face Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
 ## <a name="face-detector-input-files"></a>Yüz algılayıcısı giriş dosyaları
 Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
@@ -167,8 +168,8 @@ Toplam pencere ve Aralık ayarları için önerilen değerler aşağıda verilmi
 
 || Varsayılanlar | En fazla (s) | En az (s) |
 |--- | --- | --- | --- |
-| **AggregateEmotionWindowMs** |0,5 |2 |0,25|
-| **Aggregateemotionınterlationms** |0,5 |1 |0,25|
+| **AggregateEmotionWindowMs** |0,5 |2 |0.25|
+| **Aggregateemotionınterlationms** |0,5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON çıkışı
 Toplam duygu tanıma için JSON çıktısı (kesilmiş):

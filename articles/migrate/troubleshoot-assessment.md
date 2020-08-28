@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685417"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020363"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -23,7 +23,7 @@ Bu makale, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.m
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Konuda** | **Düzeltme**
+**Sorun** | **Düzeltme**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
@@ -164,7 +164,7 @@ Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komut
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)ve [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) işletim sistemlerini gözden geçirin.
+- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)ve [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) işletim sistemlerini gözden geçirin.
 - **Bağımlılık Aracısı**: desteklenen [Windows ve Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
 
 ## <a name="visualize-dependencies-for--hour"></a>> saat bağımlılıklarını görselleştirin

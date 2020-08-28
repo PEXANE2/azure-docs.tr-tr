@@ -6,14 +6,14 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4ad6d16e4c6d91b44061d99ffa1c397fb0e0ec28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080066"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019649"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix sorgu sunucusu REST SDK 'Sı
 
@@ -54,7 +54,7 @@ Her örnek öncelikle yöntemine bir çağrı yapar `OpenConnectionRequestAsync`
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest ve ConnectionProperties
 
-Çağırmak için `ConnectionSyncRequestAsync` bir `ConnectionProperties` nesneyi geçirin.
+Çağırmak için  `ConnectionSyncRequestAsync` bir `ConnectionProperties` nesneyi geçirin.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -84,7 +84,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 `TransactionIsolation`Değerler şunlardır:
 
-| Yalıtım değeri | Description |
+| Yalıtım değeri | Açıklama |
 | -- | -- |
 | 0 | İşlemler desteklenmiyor. |
 | 1 | Kirli okumalar, tekrarlanabilir olmayan okumalar ve hayalet okuma gerçekleşmeyebilir. |

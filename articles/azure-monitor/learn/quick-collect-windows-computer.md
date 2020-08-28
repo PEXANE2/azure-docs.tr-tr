@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324327"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020380"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
 [Azure izleyici](../overview.md) , ortamınızdaki fiziksel veya sanal Windows bilgisayarlarınızdan, ayrıntılı analiz ve bağıntı için bir Log Analytics çalışma alanına doğrudan veri toplayabilir. [Log Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta birkaç kolay adımda Windows bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir. Azure Windows VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](./quick-collect-azurevm.md).  
 
-Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim sistemleri](../platform/log-analytics-agent.md#supported-windows-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-requirements).
+Desteklenen yapılandırmayı anlamak için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-requirements).
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

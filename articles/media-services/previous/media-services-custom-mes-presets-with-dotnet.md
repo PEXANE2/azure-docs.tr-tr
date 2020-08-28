@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c0abeedb1253c2561f2d435aa3fe5a428418a50
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052923"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019479"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard önayarlarını özelleştirme  
 
@@ -32,11 +33,11 @@ Bu makalede, [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multip
 > [!NOTE]
 > Bu makalede açıklanan özel ön ayarlar [Media Services v3](../latest/index.yml) dönüştürmelerde veya CLI komutlarında kullanılamaz. Daha fazla ayrıntı için bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md) .
 
-## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES ön ayarını özelleştirme
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> MES ön ayarını özelleştirme
 
 ### <a name="original-preset"></a>Özgün önayar
 
-. JSON uzantılı bazı dosyadaki [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) MAKALESINDE tanımlanan JSON 'ı kaydedin. Örneğin, **üzerindeCustomPreset_JSON.js**.
+. JSON uzantılı bazı dosyadaki [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) MAKALESINDE tanımlanan JSON 'ı kaydedin. Örneğin, ** üzerindeCustomPreset_JSON.js**.
 
 ### <a name="customized-preset"></a>Özelleştirilmiş önayar
 

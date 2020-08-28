@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019389"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Hızlı başlangıç: Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme
 Azure aboneliğinizi ekledikten sonra, Azure Stack marketi 'nden **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını ekleyerek Azure Stack çalıştıran sanal makinelerinizi korumak Için Güvenlik Merkezi 'ni etkinleştirebilirsiniz.
@@ -72,7 +72,7 @@ Artık Azure Stack çalışan sanal makinelere **Azure izleyici, güncelleştirm
 7. Gerekli yapılandırma ayarlarını sağlamayı tamamladığınızda **Tamam**' a tıklayın.
 8. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı**olarak görünür. Sanal makinenin güvenlik merkezi portalında görünmesi bir saate kadar sürebilir.
 
-Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/platform/agent-linux-troubleshoot.md).
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500564"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010656"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
 
@@ -53,11 +53,11 @@ Daha fazla bilgi için bkz.
     Uzun süre çalışan işlemlerin nasıl izleneceği hakkında bilgi için bkz. [uzun süreli işlemler](media-services-apis-overview.md).
 * Bu [Postman koleksiyonu](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) , akış uç noktasının nasıl başlatılacağı hakkında daha fazla Rest işlemi örnekleri içerir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma 
  
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure Media Services hesabınıza gidin.
-1. Sol bölmede, **akış uç noktaları**' nı seçin.
+1. Sol bölmede,  **akış uç noktaları**' nı seçin.
 1. Başlatmak istediğiniz akış uç noktasını seçin ve ardından **Başlat**' ı seçin.
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma

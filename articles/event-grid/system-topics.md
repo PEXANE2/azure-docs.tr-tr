@@ -2,13 +2,13 @@
 title: Azure Event Grid sistem konuları
 description: Azure Event Grid içindeki Sistem konularını açıklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/27/2020
+ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119931"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019105"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
 Event Grid bir sistem konusu, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri tarafından yayınlanan bir veya daha fazla olayı temsil eder. Örneğin, bir sistem konusu **tüm blob olaylarını** veya yalnızca **BLOB oluşturulmuş** ve **belirli bir depolama hesabı**için yayımlanan **BLOB silinen** olayları temsil edebilir. Bu örnekte, bir BLOB depolama hesabına yüklendiğinde Azure Storage hizmeti, Event Grid ' deki Sistem konusuna **BLOB tarafından oluşturulan** bir olay yayımlar, daha sonra olayı alan ve işleyen [abonelere](event-handlers.md) iletir. 
@@ -57,7 +57,7 @@ Azure ilkelerini Event Grid hizmetinin oluşturamamasında bu şekilde ayarladı
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Bir sistem konusunun konumu ve kaynak grubu
 Belirli bir bölgedeki/konumdaki Azure olay kaynakları için sistem konusu, Azure Olay kaynağıyla aynı konumda oluşturulur. Örneğin, Doğu ABD bir Azure Blob depolama alanı için bir olay aboneliği oluşturursanız, sistem konusu Doğu ABD oluşturulur. Azure abonelikleri, kaynak grupları veya Azure haritaları gibi genel Azure olay kaynakları için Event Grid, **genel** konumdaki Sistem konusunu oluşturur. 
 
-Genel olarak, sistem konusu Azure olay kaynağının bulunduğu kaynak grubunda oluşturulur. Azure abonelik kapsamında oluşturulan olay abonelikleri için, sistem konusu **varsayılan-EventGrid**kaynak grubu altında oluşturulur. Kaynak grubu yoksa, Azure Event Grid Sistem konusunu oluşturmadan önce onu oluşturur. 
+Genel olarak, sistem konusu Azure olay kaynağının bulunduğu kaynak grubunda oluşturulur. Azure abonelik kapsamında oluşturulan olay abonelikleri için, sistem konusu **Batı ABD 2** bölgesindeki **Default-eventgrid** kaynak grubunda oluşturulur. Kaynak grubu yoksa, Azure Event Grid Sistem konusunu oluşturmadan önce onu oluşturur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 

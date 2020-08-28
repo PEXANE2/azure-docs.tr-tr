@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833037"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010333"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -569,7 +570,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

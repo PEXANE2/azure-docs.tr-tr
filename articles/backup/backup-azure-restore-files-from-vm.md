@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892584"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020176"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 

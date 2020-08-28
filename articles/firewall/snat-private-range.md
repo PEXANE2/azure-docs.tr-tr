@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.author: victorh
-ms.openlocfilehash: be2bf0f9590a23f9def44a1800338c80f69a782c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610532"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019088"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
 
@@ -23,6 +23,9 @@ Bu mantık, trafiği doğrudan Internet 'e yönlendirdiğinizde iyi sonuç verir
 Kuruluşunuz özel ağlar için genel bir IP adresi aralığı kullanıyorsa, Azure Güvenlik Duvarı AzureFirewallSubnet 'deki güvenlik duvarı özel IP adreslerinden birine giden trafiği yeniden çıkarır. Ancak, Azure Güvenlik duvarını genel IP adresi **aralığınızı SNAT olarak** yapılandırmak için yapılandırabilirsiniz.
 
 Azure Güvenlik duvarını hedef IP adresinden bağımsız olarak hiçbir şekilde hiçbir şekilde hiçbir şekilde hiçbir şekilde SNAT olarak yapılandırmak için, özel IP adresi aralığınız olarak **0.0.0.0/0** kullanın Bu yapılandırmayla, Azure Güvenlik Duvarı trafiği hiçbir şekilde doğrudan Internet 'e yönlendirmez. Güvenlik duvarını, hedef adresten bağımsız olarak her zaman SNAT olarak yapılandırmak için, özel IP adresi aralığınızdan **255.255.255.255/32** kullanın.
+
+> [!IMPORTANT]
+> Kendi özel IP adresi aralıklarını belirtmek ve varsayılan ıANA RFC 1918 adres aralıklarını korumak istiyorsanız, özel listenizin ıANA RFC 1918 aralığını hala içerdiğinden emin olun. 
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>SNAT özel IP adresi aralıklarını Yapılandırma-Azure PowerShell
 

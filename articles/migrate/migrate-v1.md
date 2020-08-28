@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836012"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001646"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -85,7 +85,7 @@ Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, 
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 
-**Hazır Olma** | **Durum** | **Ayrıntılar**
+**Hazırlığı** | **Durum** | **Ayrıntılar**
 --- | --- | ---
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
@@ -97,7 +97,7 @@ Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadı�
 Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayacağını belirlemek için bir dizi VM özelliği hesaba girer.
 
 
-**Özellik** | **Ayrıntılar** | **Hazır Olma**
+**Özellik** | **Ayrıntılar** | **Hazırlığı**
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Çekirdekler** | Makine çekirdeği <= bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
@@ -114,7 +114,7 @@ VM özellikleriyle birlikte Azure geçişi, VM 'nin Azure 'da çalıştırıp ç
 
 Aşağıdaki mantık kullanılır.
 
-**İşletim Sistemi** | **Ayrıntılar** | **Hazır Olma**
+**İşletim Sistemi** | **Ayrıntılar** | **Hazırlığı**
 --- | --- | ---
 Windows Server 2016 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
 Windows Server 2012 R2 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
@@ -238,7 +238,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics**  >  **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
-Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
+Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-options) .
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Bir Linux makinesine MMA aracısını yükler
 
@@ -249,7 +249,7 @@ Aracıyı bir Linux makinesine yüklemek için:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
+MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager tarafından izlenen bir makineye MMA aracısını yükler
 

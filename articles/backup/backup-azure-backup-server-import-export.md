@@ -3,12 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890085"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002020"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 

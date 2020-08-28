@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121910"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019751"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
@@ -54,7 +54,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
-1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizininde *pom.xml* bulun.
+1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizininde  *pom.xml* bulun.
 
 1. *pom.xml* dosyasını bir metin düzenleyicisinde açın ve aşağıdakileri listesine ekleyin `<dependencies>` :
 
@@ -97,7 +97,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     ```
 
 > [!Note]
-> Spring-Web 'e bağımlılığı olmayan Web dışı bir özellik Yönetim Kitaplığı var. Farklar için GitHub [belgelerine](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) bakın.
+> Spring-Web 'e bağımlılığı olmayan Web dışı bir özellik Yönetim Kitaplığı var. Farklar için GitHub [belgelerine](https://github.com/microsoft/spring-cloud-azure) bakın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -107,7 +107,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Yapılandırma deponuzu uygulama yapılandırma portalında `Access keys` kenar çubuğundan seçeneğini belirleyin. Salt okuma anahtarları sekmesini seçin. birincil bağlantı dizesinin değerini kopyalayın.
+1. Yapılandırma deponuzu uygulama yapılandırma portalında `Access keys` kenar çubuğundan seçeneğini belirleyin. Salt okuma anahtarları sekmesini seçin. Birincil bağlantı dizesinin değerini kopyalayın.
 
 1. Birincil bağlantı dizesini, değişken adını kullanarak bir ortam değişkeni olarak ekleyin `APP_CONFIGURATION_CONNECTION_STRING` .
 

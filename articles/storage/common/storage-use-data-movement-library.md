@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888023"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001885"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Veri Taşıma kitaplığıyla veri aktarma
 
@@ -32,7 +33,7 @@ Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulama
 - Dosyayı URL 'den blob depolamaya kopyalayın.
 - Blob depolamadan blob depolamaya kopyalama.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Bir [Azure depolama hesabı](storage-account-create.md)
@@ -44,12 +45,12 @@ Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulama
 3. Bu dizini Visual Studio Code açın. Bu adım, Windows 'a yazarak komut satırı aracılığıyla hızlı bir şekilde yapılabilir `code .` .
 4. Visual Studio Code marketi 'nden [C# uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) yükler. Visual Studio Code yeniden başlatın.
 5. Bu noktada, iki istem görmeniz gerekir. Biri, "derlemek ve hata ayıklamak için gerekli varlıklar" eklemek içindir. "Evet" e tıklayın. Çözümlenmemiş bağımlılıkları geri yüklemek için başka bir istem vardır. "Geri yükle" ye tıklayın.
-6. `launch.json` `.vscode` Konsol olarak dış Terminal kullanmak için altında öğesini değiştirin. Bu ayar şu şekilde okunmalıdır`"console": "externalTerminal"`
+6. `launch.json` `.vscode` Konsol olarak dış Terminal kullanmak için altında öğesini değiştirin. Bu ayar şu şekilde okunmalıdır `"console": "externalTerminal"`
 7. Visual Studio Code, .NET Core uygulamalarında hata ayıklamanıza olanak tanır. `F5`Uygulamanızı çalıştırmak ve kurulumun çalıştığını doğrulamak için isabet edin. "Merhaba Dünya!" görmeniz gerekir konsola yazdırılır.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>Veri taşıma kitaplığını projenize ekleyin
 
-1. Veri taşıma kitaplığının en son sürümünü `dependencies` dosyanızın bölümüne ekleyin `<project-name>.csproj` . Bu sürüm, yazma sırasında`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. Veri taşıma kitaplığının en son sürümünü `dependencies` dosyanızın bölümüne ekleyin `<project-name>.csproj` . Bu sürüm, yazma sırasında `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. Projenizi geri yüklemek için bir istem görüntülenmelidir. "Geri yükle" düğmesine tıklayın. Ayrıca, proje dizininizin köküne komutunu yazarak projenizi komut satırından da geri yükleyebilirsiniz `dotnet restore` .
 
 Değiştir `<project-name>.csproj` :

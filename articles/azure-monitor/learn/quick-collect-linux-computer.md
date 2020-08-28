@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322168"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020397"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
 [Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için ortamınızdaki doğrudan fiziksel veya sanal Linux bilgisayarlarınızdaki verileri bir Log Analytics çalışma alanına toplayabilir. [Log Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure izleyici 'nin bir veri merkezinde veya diğer bulut ortamından veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla Linux sunucunuzdaki verilerin nasıl yapılandırılacağı ve toplanacağı gösterilmektedir. Azure Linux VM 'Leri hakkında daha fazla bilgi için bkz. [Azure sanal makineler hakkında veri toplama](./quick-collect-azurevm.md).  
 
-Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim sistemleri](../platform/log-analytics-agent.md#supported-linux-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-requirements).
+Desteklenen yapılandırmayı anlamak için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems) ve [ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-requirements).
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

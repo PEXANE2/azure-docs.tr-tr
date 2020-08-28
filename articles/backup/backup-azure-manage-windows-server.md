@@ -3,12 +3,12 @@ title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
 description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756070"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002139"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -16,7 +16,7 @@ Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurt
 
 ![Kurtarma Hizmetleri Kasası panosu](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
-Bu makaleye yönelik önkoşullar: bir Azure aboneliği, bir kurtarma hizmetleri kasası ve kasa için yapılandırılmış en az bir yedekleme öğesi vardır.
+Bu makaleye yönelik önkoşullar şunlardır: Azure aboneliği, bir kurtarma hizmetleri kasası ve kasa için yapılandırılmış en az bir yedekleme öğesi.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 

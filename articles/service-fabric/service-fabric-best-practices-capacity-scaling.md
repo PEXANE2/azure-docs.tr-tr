@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824605"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002258"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -38,7 +39,7 @@ Sanal Makine Ölçek Kümeleri aracılığıyla otomatik ölçeklendirmeyi kulla
 
 ## <a name="vertical-scaling-considerations"></a>Dikey ölçeklendirme konuları
 
-Azure Service Fabric bir düğüm türünün [Dikey ölçeklendirilmesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) için birkaç adım ve dikkat edilmesi gerekir. Örnek:
+Azure Service Fabric bir düğüm türünün [Dikey ölçeklendirilmesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) için birkaç adım ve dikkat edilmesi gerekir. Örneğin:
 
 * Ölçeklendirmeden önce kümenin sağlıklı olması gerekir. Aksi takdirde, kümeyi daha fazla sabitleyebileceksiniz.
 * Durum bilgisi olmayan hizmetleri barındıran tüm Service Fabric küme düğümü türleri için gümüş dayanıklılık düzeyi veya daha yüksek bir değer gereklidir.
@@ -123,7 +124,7 @@ El ile ölçeklendirmek için, istenen [sanal makine ölçek kümesi](/rest/api/
 }
 ```
 
-Programlı olarak ölçeklendirmek için düğümü kapanmaya hazırlamanız gerekir. Kaldırılacak düğümü (en yüksek örnekli düğüm) bulun. Örnek:
+Programlı olarak ölçeklendirmek için düğümü kapanmaya hazırlamanız gerekir. Kaldırılacak düğümü (en yüksek örnekli düğüm) bulun. Örneğin:
 
 ```csharp
 using (var client = new FabricClient())

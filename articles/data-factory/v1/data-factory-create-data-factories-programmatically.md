@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023492"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019904"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK kullanarak Azure veri fabrikaları oluşturun, izleyin ve yönetin
 > [!NOTE]
@@ -103,7 +104,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 * Uygulama Kimliği
 * Parola (ik komutta belirtilir)
 
-## <a name="walkthrough"></a>İzlenecek yol
+## <a name="walkthrough"></a>Kılavuz
 İzlenecek yolda, kopyalama etkinliği içeren bir işlem hattı ile veri fabrikası oluşturacaksınız. Kopyalama etkinliği, verileri Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. 
 
 Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. Etkinlik, çeşitli veri depolama alanları arasında güvenli, güvenilir ve ölçeklenebilir bir yolla veri kopyalayabilen genel olarak kullanılabilir bir hizmet tarafından desteklenir. Kopyalama etkinliği hakkında ayrıntılı bilgi için [Veri Taşıma Etkinlikleri](data-factory-data-movement-activities.md) makalesine bakın.

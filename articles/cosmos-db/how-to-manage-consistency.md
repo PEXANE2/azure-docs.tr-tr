@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 48f728e697e3ca92eee0469c8368e966479fe7fb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422241"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019615"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 
@@ -93,7 +93,7 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
 # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -109,7 +109,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Java v2 SDK 'Ları
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java v2 SDK 'Ları
 
 # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -194,7 +194,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
 # <a name="async"></a>[Eş](#tab/api-async)
 
@@ -279,7 +279,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Olasılığa Dayalı Sınırlanmış Eskime Durumu (PBS) ölçümünü izleme
 
-Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **iş yükünüze göre sağlam tutarlı okuma olasılığı**adlı GRAFIĞE göz atın (bkz. PBS).
+Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **İş yükünüze göre sağlam tutarlı okumaların olasılığı adlı grafiğe bakın (bkz. PBS)**.
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal PBS grafiği":::
 

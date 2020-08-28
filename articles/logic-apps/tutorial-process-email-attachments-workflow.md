@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132339"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002793"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -259,7 +259,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Arama kutusuna tasarımcıda `when new email arrives` filtreniz olarak yazın. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde - <*e-posta-sağlayıcınız*>**
 
-   Örnek:
+   Örneğin:
 
    ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -278,8 +278,8 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
       | Ayar | Değer | Açıklama |
       | ------- | ----- | ----------- |
       | **Klasör** | Gelen Kutusu | Denetlenecek e-posta klasörü |
-      | **Eki Var** | Yes | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
-      | **Ekleri Dahil Et** | Yes | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
+      | **Eki Var** | Evet | Yalnızca ek içeren e-postaları alın. <p>**Not:** Tetikleyici, hesabınızdaki e-postaları kaldırmaz, yalnızca yeni iletileri denetler ve yalnızca konu filtresiyle eşleşen e-postaları işler. |
+      | **Ekleri Dahil Et** | Evet | Yalnızca ekleri denetlemek yerine, iş akışınız için giriş olarak ekleri alın. |
       | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı |
       | **Sıklık** | Dakika | Denetimler arası her aralık için zaman birimi |
       ||||
@@ -363,7 +363,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir:`Business Analyst 2 #423501`
+   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız bir ek içerir. Şimdilik boş bir metin dosyası oluşturun ve bu dosyayı e-postanıza ekleyin.
 
@@ -470,11 +470,11 @@ Ardından e-posta gövdesini kaydedebilmek için depolama kapsayıcınızda blob
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir:`Business Analyst 2 #423501`
+   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız en az bir ek içerir. Şimdilik yalnızca bir boş metin dosyası oluşturun ve bu dosyayı e-postanıza ekleyin.
 
-   * E-postanız gövdede bazı test içeriğine sahiptir, örneğin:`Testing my logic app`
+   * E-postanız gövdede bazı test içeriğine sahiptir, örneğin: `Testing my logic app`
 
    Mantıksal uygulamanız başarılı bir tetikleyiciye rağmen tetiklenmediyse veya çalıştırılmadıysa bkz. [Mantıksal uygulamanızla ilgili sorun giderme](../logic-apps/logic-apps-diagnosing-failures.md).
 
@@ -555,7 +555,7 @@ Sonra mantıksal uygulamanızın ekleri belirttiğiniz şekilde işleyip işleme
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız konusu, tetikleyicinin **Konu filtresi** özelliğinde belirttiğiniz metni içerir:`Business Analyst 2 #423501`
+   * E-postanız konusu, tetikleyicinin **Konu filtresi** özelliğinde belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız en az iki ek içerir. Şimdilik iki boş metin dosyası oluşturun ve bu dosyaları e-postanıza ekleyin.
 
@@ -601,8 +601,8 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
 
    | Ayar | Değer | Notlar |
    | ------- | ----- | ----- |
-   | **Hedef** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
-   | **Konu**  | ```ASAP - Review applicant for position:```**Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
+   | **Amaç** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Konu**  | ```ASAP - Review applicant for position:``` **Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
    | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:``` **Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
    ||||
 
@@ -621,7 +621,7 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız konusu, tetikleyicinin **Konu filtresi** özelliğinde belirttiğiniz metni içerir:`Business Analyst 2 #423501`
+   * E-postanız konusu, tetikleyicinin **Konu filtresi** özelliğinde belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız bir veya daha fazla eke sahip. Önceki testinizdeki boş metin dosyasını yeniden kullanabilirsiniz. Daha gerçekçi bir senaryo için bir özgeçmiş dosyası ekleyin.
 

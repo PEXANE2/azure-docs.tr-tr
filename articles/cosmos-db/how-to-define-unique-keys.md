@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 8a87f9c9b2db2c6118134d76cefc7c2813f5a864
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 413664b790423fb5eafb58e2baaee46e10c6a929
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876674"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019972"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
 Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](unique-keys.md) tanımlamanın farklı yolları sunulmaktadır. Azure portal veya SDK 'Lardan birini kullanarak bu işlemi gerçekleştirmek mümkün değildir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 

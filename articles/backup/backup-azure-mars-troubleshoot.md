@@ -3,12 +3,12 @@ title: Azure Backup aracısında sorun giderme
 description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilmesinde nasıl sorun giderileceği hakkında bilgi edinebilirsiniz.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019632"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -83,7 +83,7 @@ Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye 
 
 ## <a name="backup-jobs-completed-with-warning"></a>Yedekleme işleri uyarıyla tamamlandı
 
-- MARS Aracısı yedekleme sırasında dosyalar ve klasörler üzerinde yineleme yaparken, yedeklemenin uyarılarla tamamlandı olarak işaretlenmesine neden olabilecek çeşitli koşullara karşılaşabilir. Bu koşullar sırasında, bir iş uyarılarla tamamlandı olarak gösterilir. Bu iyi bir deyişle, ancak en az bir dosyanın yedeklenemeyeceği anlamına gelir. Böylece iş bu dosyayı atladı, ancak veri kaynağında söz konusu tüm dosyaları yedekledi.
+- MARS Aracısı yedekleme sırasında dosyalar ve klasörler üzerinde yineleme yaparken, yedeklemenin uyarılarla tamamlandı olarak işaretlenmesine neden olabilecek çeşitli koşullara karşılaşabilir. Bu koşullar sırasında, bir iş uyarılarla tamamlandı olarak gösterilir. Bu kadar iyidir, ancak en az bir dosyanın yedeklenmemesi anlamına gelir. Böylece iş bu dosyayı atladı, ancak veri kaynağında söz konusu tüm dosyaları yedekledi.
 
   ![Yedekleme işi uyarılarla tamamlandı](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 

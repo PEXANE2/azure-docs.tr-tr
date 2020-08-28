@@ -7,12 +7,13 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 12043ead1c7d59cc3955bb927fabb54278c18bd5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b06530488e74120f3cc511694d290840269db453
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127698"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020074"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>.NET uygulaması ile Azure Data Lake Analytics’i yönetme
 
@@ -55,7 +56,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Data Lake Analytics oturum açma için birden çok seçeneğiniz vardır. Aşağıdaki kod parçacığında bir açılır pencere ile etkileşimli kullanıcı kimlik doğrulaması ile bir kimlik doğrulaması örneği gösterilmektedir.
 

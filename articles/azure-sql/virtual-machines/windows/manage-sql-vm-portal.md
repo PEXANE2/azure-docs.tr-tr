@@ -12,31 +12,31 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f502183b8240515ee136ce27d99bd4b5d6277c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669010"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010180"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure 'da SQL Server VM 'Leri Azure portal kullanarak yönetin
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[Azure Portal](https://portal.azure.com), **SQL sanal makineler** (VM) kaynağı bağımsız bir yönetim hizmetidir. Bunu, tüm SQL Server sanal makinelerinizi aynı anda görüntülemek ve SQL Server adanmış ayarları değiştirmek için kullanabilirsiniz: 
+[Azure Portal](https://portal.azure.com), [**SQL sanal makineler**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağı, Azure VM 'lerinde SQL Server yönetmek için bağımsız bir yönetim hizmetidir. Bunu, tüm SQL Server sanal makinelerinizi aynı anda görüntülemek ve SQL Server adanmış ayarları değiştirmek için kullanabilirsiniz: 
 
 ![SQL sanal makineler kaynağı](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Azure 'da SQL Server VM 'lerinizi görüntülemek ve yönetmek için **SQL sanal makineler** kaynağını kullanmanızı öneririz. Ancak şu anda **SQL sanal makineler** kaynağı, [destek sonu](sql-server-2008-extend-end-of-support.md) SQL Server VM 'lerinin yönetimini desteklemez. Destek sonu SQL Server sanal makinelerinizin ayarlarını yönetmek için, bunun yerine kullanım dışı [SQL Server Yapılandırma sekmesini](#access-the-sql-server-configuration-tab) kullanın. 
+- Azure 'da SQL Server VM 'lerinizi görüntülemek ve yönetmek için [**SQL sanal makineler**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağını kullanmanızı öneririz. Ancak şu anda **SQL sanal makineler** kaynağı, [destek sonu](sql-server-2008-extend-end-of-support.md) SQL Server VM 'lerinin yönetimini desteklemez. Destek sonu SQL Server sanal makinelerinizin ayarlarını yönetmek için, bunun yerine kullanım dışı [SQL Server Yapılandırma sekmesini](#access-the-sql-server-configuration-tab) kullanın. 
 - **SQL sanal makineler** kaynağı yalnızca [SQL VM kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md)SQL Server VM 'ler için kullanılabilir. 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>SQL sanal makineler kaynağına erişin
 **SQL sanal makineler** kaynağına erişmek için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com)açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **SQL sanal makinelerini** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **SQL sanal makineler** ' in yanındaki yıldızı seçin. 
@@ -51,7 +51,7 @@ ms.locfileid: "84669010"
    SQL Server VM seçtiğinizde **SQL sanal makineler** kaynağı açılır: 
 
 
-   ![SQL sanal makineler kaynağı](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![SQL sanal makineler kaynağını görüntüle](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > **SQL sanal makineler** kaynağı adanmış SQL Server ayarları içindir. **Sanal makine** kutusunda VM 'nin adını seçerek VM 'ye özgü ayarları açın, ancak SQL Server dışlamalı. 
@@ -61,7 +61,7 @@ ms.locfileid: "84669010"
 
 Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal makineler** kaynağına gidin. Aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **sanal makineler** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **sanal makineler** ' in yanındaki yıldızı seçin. 

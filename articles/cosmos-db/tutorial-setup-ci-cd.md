@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206980"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019326"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
 
@@ -178,4 +179,4 @@ Derleme tamamlandıktan sonra testlerinizin iletildiğinden ve tümünün derlem
 
 Yerel geliştirme ve test için öykünücü kullanımı hakkında daha fazla bilgi edinmek için bkz. [Yerel geliştirme ve test için Azure Cosmos DB Öykünücüsünü kullanma](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Öykünücü TLS/SSL sertifikalarını dışarı aktarmak için bkz [. Java, Python ve Node.jsbirlikte kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarma](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+Öykünücü TLS/SSL sertifikalarını dışarı aktarmak için bkz [. Java, Python ve Node.jsbirlikte kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarma ](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

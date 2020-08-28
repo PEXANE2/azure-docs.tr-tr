@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7cdacabcc97d37c144b498ea9a05ccc9d6bffc04
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019870"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics ile yüzeyleri redaksiyonu 
 ## <a name="overview"></a>Genel Bakış
@@ -159,13 +160,13 @@ Aşağıdaki bulanıklaştırma türlerinin örneklerini bulabilirsiniz.
 
 ![Yüksek](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>Kutu
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![Kutu](./media/media-services-face-redaction/blur4.png)
 
-#### <a name="black"></a>Siyah
+#### <a name="black"></a>Siyahi
 
-![Siyah](./media/media-services-face-redaction/blur5.png)
+![Siyahi](./media/media-services-face-redaction/blur5.png)
 
 ## <a name="elements-of-the-output-json-file"></a>Çıktı JSON dosyasının öğeleri
 

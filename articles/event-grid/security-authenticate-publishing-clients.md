@@ -3,12 +3,13 @@ title: Özel konular veya etki alanları Event Grid için istemci yayımlama ola
 description: Bu makalede, istemci yayımlama olaylarını Event Grid özel konuları doğrulamak için farklı yollar açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837406"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019122"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Yayımlama istemcilerinin kimliğini doğrulama (Azure Event Grid)
 Bu makalede, **erişim anahtarı** veya **paylaşılan ERIŞIM imzası (SAS)** belirteci kullanarak Azure Event Grid konular veya etki alanları için olayları yayınlayan istemcilerin kimlik doğrulaması hakkında bilgi sağlanır. SAS belirtecini kullanmanızı öneririz, ancak anahtar kimlik doğrulaması basit programlama sağlar ve birçok mevcut Web kancası yayımcısıyla uyumludur.  

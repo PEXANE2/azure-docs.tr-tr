@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052965"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019411"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure Web kancalarını kullanın 
 
@@ -61,7 +62,7 @@ Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılac
 
 [Uygulama ayarları](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) bölümü, bu makalede tanımlanan Web kancasında kullanılan parametreleri tanımlar. Ayrıca uygulama ayarlarına aşağıdaki parametreleri ekleyin. 
 
-|Name|Tanım|Örnek| 
+|Ad|Tanım|Örnek| 
 |---|---|---|
 |SigningKey |Bir imzalama anahtarı.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |Web kancası uç noktası | Web kancası uç noktası adresi. Web kancası işleviniz oluşturulduktan sonra, **işlev URL 'Sini al** bağlantısından URL 'yi kopyalayabilirsiniz. | https: \/ /juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

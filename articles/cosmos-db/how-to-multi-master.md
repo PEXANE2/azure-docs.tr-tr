@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2cf6d2c02beff93553944474138bee3a2a316aa9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 94465e44a6cc2c4fa94ec8ea4504cbed80742f0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874359"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019156"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çoklu yönetici yapılandırma
 
@@ -56,7 +56,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Java v4 SDK 'Sı
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java v4 SDK 'Sı
 
 Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, `.multipleWriteRegionsEnabled(true)` ve `.preferredRegions(preferredRegions)` `preferredRegions` `List` uygulamanın dağıtıldığı bölge olan ve Cosmos DB çoğaltılacağı bölgenin bulunduğu bir öğe olan istemci Oluşturucu ' ya çağrı yapın:
 
@@ -74,7 +74,7 @@ Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, `.multipleWr
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Zaman uyumsuz Java v2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Zaman uyumsuz Java v2 SDK
 
 Java v2 SDK 'Sı Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)'yi kullandı. Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, ayarlayın `policy.setUsingMultipleWriteLocations(true)` ve `policy.setPreferredLocations` uygulamanın dağıtıldığı bölgeyi ve Cosmos DB nerede çoğaltıldığından ayarlayın:
 

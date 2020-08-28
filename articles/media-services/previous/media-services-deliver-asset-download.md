@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61465669"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019462"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılır: indirme yoluyla varlık sunma  
 Bu makalede, Media Services yüklenen medya varlıklarını sunmaya yönelik seçenekler açıklanmaktadır. Birçok uygulama senaryosunda Media Services içeriği sunabilirsiniz. Kodlama sonrasında, üretilen medya varlıklarını indirin veya bir akış Bulucu kullanarak bunlara erişin. Daha iyi performans ve ölçeklenebilirlik sağlamak için, Content Delivery Network (CDN) kullanarak da içerik sağlayabilirsiniz.

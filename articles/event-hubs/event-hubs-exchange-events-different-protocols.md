@@ -3,22 +3,23 @@ title: Azure Event Hubs-farklı protokoller kullanarak Exchange olayları
 description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002514"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010329"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Farklı protokoller kullanan tüketiciler ve üreticileri arasında Exchange olayları: AMQP, Kafka ve HTTPS
 Azure Event Hubs, tüketiciler ve üreticileri için üç protokolü destekler: AMQP, Kafka ve HTTPS. Bu protokollerin her birinin bir iletiyi temsil eden kendi yolu vardır. bu nedenle, bir uygulama bir olay hub 'ına bir protokol ile olayları gönderirse ve farklı bir protokolle kullanırsa, olayın çeşitli parçaları ve değerleri tüketiciye ulaştığında nasıl görünür? Bu makalede, bir olay içindeki değerlerin, tüketen uygulama tarafından doğru şekilde yorumlandığından emin olmak için hem üretici hem de tüketici için en iyi yöntemler açıklanmaktadır.
 
 Bu makaledeki öneri, kod parçacıklarını geliştirmekte kullanılan sürümleriyle birlikte bu istemcileri özellikle ele almaktadır:
 
-* Kafka Java istemcisi (sürüm 1.1.1 fromhttps://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* Java için Event Hubs Client Microsoft Azure (sürüm 1.1.0https://github.com/Azure/azure-event-hubs-java)
-* .NET için Event Hubs Client Microsoft Azure (sürüm 2.1.0https://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (sürüm 5.0.0https://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* Kafka Java istemcisi (sürüm 1.1.1 from https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* Java için Event Hubs Client Microsoft Azure (sürüm 1.1.0 https://github.com/Azure/azure-event-hubs-java)
+* .NET için Event Hubs Client Microsoft Azure (sürüm 2.1.0 https://github.com/Azure/azure-event-hubs-dotnet)
+* Microsoft Azure Service Bus (sürüm 5.0.0 https://www.nuget.org/packages/WindowsAzure.ServiceBus)
 * HTTPS (yalnızca üreticileri destekler)
 
 Diğer AMQP istemcileri biraz farklı davranabilir. AMQP 'nin iyi tanımlanmış bir tür sistemi vardır, ancak bu tür sisteminden ve bu türden dile özgü türlerin serileştirilmesi, istemcinin bir AMQP iletisinin bölümlerine erişim sağladığı şekilde istemciye bağlıdır.
