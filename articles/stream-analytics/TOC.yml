@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: Verilerinizi şifreleme
           href: data-protection.md
+        - name: Coğrafi yedeklilik
+          href: geo-redundancy.md
     - name: Çözüm oluşturma
       items:
         - name: Twitter yaklaşım analizi

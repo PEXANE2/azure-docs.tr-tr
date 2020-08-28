@@ -246,7 +246,7 @@
               href: application-types.md
             - name: Beklenmeyen kullanıcı ataması
               href: ways-users-get-assigned-to-applications.md
-        - name: Erişim paneli sorunlarını giderme
+        - name: Uygulamalarım ile ilgili sorunları giderme
           items:
             - name: Tarayıcı uzantısı yönetme
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: Oturum açılamıyor
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Tarayıcı uzantısı yüklenirken hata oluşuyor
-              href: access-panel-extension-problem-installing.md
             - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
               href: access-panel-troubleshoot-self-service-access.md
         - name: Şirket içi uygulamalarda sorun giderme

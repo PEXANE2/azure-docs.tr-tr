@@ -10,14 +10,21 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Spring Cloud uygulamasını başlatma - portal
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spring Cloud uygulamasını başlatma - Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spring Cloud uygulamasını başlatma - kaynak
-      href: spring-cloud-launch-from-source.md
-    - name: Spring Cloud uygulamasını başlatma - Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: İlk uygulamanızı yayınlama
+      href: spring-cloud-quickstart.md
+    - name: Mikro hizmetler oluşturma ve çalıştırma
+      expanded: true
+      items:
+        - name: Örnek uygulamalara giriş
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Azure Spring Cloud hizmetini sağlama
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: Yapılandırma sunucusu ayarlama
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: Uygulama oluşturma ve dağıtma
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 'Günlükleri, ölçümleri ve izlemeyi kullanma'
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Öğreticiler
   items:
     - name: Uygulamayı el ile ölçeklendirme

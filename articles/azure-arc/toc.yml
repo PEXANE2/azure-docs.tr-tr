@@ -1,0 +1,10 @@
+- name: Azure Arc Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Arc hakkında
+      href: arc-overview.md
+- name: Arc özellikli sunucular >
+  href: ./servers/overview.md
+- name: Arc özellikli Kubernetes >
+  href: ./kubernetes/overview.md

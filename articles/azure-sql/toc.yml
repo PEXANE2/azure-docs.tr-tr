@@ -941,7 +941,7 @@
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Kavramlar
           items:
-            - name: İş Sürekliliği
+            - name: İş sürekliliği
               items:
                 - name: Genel Bakış
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
@@ -986,9 +986,11 @@
                 - name: Lisans modeli
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Sürüm
+                - name: Sürümü değiştirme
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Sürüm değiştirme
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Depolama
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Anahtar Kasası Tümleştirme
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: AlwaysOn kullanılabilirlik grubu
                   items:
+                    - name: Azure portal
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell veya Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure Hızlı Başlangıç şablonları

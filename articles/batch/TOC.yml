@@ -134,6 +134,8 @@
           href: batch-sig-images.md
         - name: Yönetilen görüntü kaynağıyla havuz oluşturma
           href: batch-custom-images.md
+        - name: Disk şifrelemesi etkinleştirilmiş havuz oluşturma
+          href: disk-encryption.md
         - name: Sanal ağ içinde havuz oluşturma
           href: batch-virtual-network.md
         - name: Genel IP adresleriyle havuz oluşturma
