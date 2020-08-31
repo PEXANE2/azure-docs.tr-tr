@@ -234,13 +234,23 @@
       href: custom-disaster-recovery.md
     - name: Zaman uyumsuz REST işlemlerini izleme
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Taşı
+      items:
+        - name: Sistem konularını bölgeler arasında taşıma
+          href: move-system-topics-across-regions.md
+        - name: Özel konuları bölgeler arasında taşıma
+          href: move-custom-topics-across-regions.md
+        - name: Etki alanlarını bölgeler arasında taşıma
+          href: move-domains-across-regions.md
+        - name: İş ortağı ad alanlarını bölgeler arasında taşıma
+          href: move-partner-namespaces-across-regions.md
     - name: Güvenlik
       items:
         - name: Özel uç noktaları yapılandırma
           href: configure-private-endpoints.md
         - name: IP güvenlik duvarını yapılandırma
           href: configure-firewall.md
-        - name: AAD ile Web Kancası güvenliğini sağlama
+        - name: Azure Active Directory ile Web Kancasının güvenliğini sağlama
           href: secure-webhook-delivery.md
         - name: Yönetilen kimlikle olay teslimi
           href: managed-service-identity.md

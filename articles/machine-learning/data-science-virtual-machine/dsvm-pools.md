@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477349"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144779"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Paylaşılan veri bilimi sanal makineleri havuzu oluşturma
 
 Bu makalede, bir ekip için paylaşılan bir veri bilimi sanal makineleri Havuzu (DSVMs) oluşturmayı öğreneceksiniz. Paylaşılan havuz kullanmanın avantajları, daha iyi kaynak kullanımı, daha kolay paylaşım ve işbirliği ve DSVM kaynaklarının daha etkili bir şekilde yönetilmesini içerir.
 
-Bir DSVMs havuzu oluşturmak için birçok yöntem ve teknolojiden yararlanabilirsiniz. Bu makale etkileşimli sanal makineler (VM 'Ler) için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [işlem hedeflerini ayarlama](../how-to-set-up-training-targets.md#amlcompute).
+Bir DSVMs havuzu oluşturmak için birçok yöntem ve teknolojiden yararlanabilirsiniz. Bu makale etkileşimli sanal makineler (VM 'Ler) için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [Python SDK ile işlem hedefleri oluşturma](../how-to-create-attach-compute-sdk.md).
 
 ## <a name="interactive-vm-pool"></a>Etkileşimli VM havuzu
 

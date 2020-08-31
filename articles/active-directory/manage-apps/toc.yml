@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: Kullanıcı onayı hatası
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: Özel portaldan oturum açma sorunları
-              href: application-sign-in-other-problem-deeplink.md
-            - name: Özel bölmeden oturum açma sorunları
+            - name: Uygulamalarım'dan oturum açma sorunları
               href: application-sign-in-other-problem-access-panel.md
             - name: Uygulama oturum açma sayfasında hata
               href: application-sign-in-problem-application-error.md
-            - name: Parolayla çoklu oturum açma sorunu - galeri dışındaki uygulama
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: Parolayla çoklu oturum açma sorunu - galeri uygulaması
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: Microsoft uygulamasında oturum açma sorunu
               href: application-sign-in-problem-first-party-microsoft.md
             - name: Federasyonda çoklu oturum açma sorunu - galeri dışındaki uygulama
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: Çoklu oturum açma sorunlarını giderme
           items:
+            - name: Parola tabanlı çoklu oturum açma sorunlarını giderme
+              href: troubleshoot-password-based-sso.md
             - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: Parola yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Uygulama listesi ve atama sorunlarını giderme
           items:
             - name: Kiracınızın uygulama listesini yönetme
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: Uygulamalarım ile ilgili sorunları giderme
           items:
-            - name: Tarayıcı uzantısı yönetme
-              href: manage-access-panel-browser-extension.md
             - name: Uygulama görüntülenmiyor
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: Beklenmeyen uygulama görüntüleniyor
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: Oturum açılamıyor
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
-              href: access-panel-troubleshoot-self-service-access.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

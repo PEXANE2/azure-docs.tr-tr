@@ -16,7 +16,7 @@ ms.locfileid: "80673327"
 Bir işlev yalnızca bir tetikleyicisine sahip olsa da, özel tümleştirme kodu yazmadan diğer Azure hizmetlerine ve kaynaklarına bağlanmanızı sağlayan birden çok giriş ve çıkış bağlaması olabilir. 
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Bu bağlamaları, işlev klasörünüzdeki *function. JSON* dosyasında bildirirsiniz. Önceki hızlı başlangıçta, *Httpexample* klasöründeki `bindings` *function. JSON* dosyanız koleksiyonda iki bağlama içerir:  
+Bu bağlamaları, işlev klasörünüzdeki dosyasında *function.js* bildirirsiniz. Önceki hızlı başlangıçta, *Httpexample* klasöründeki dosya *function.js* koleksiyonda iki bağlama içerir `bindings` :  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
@@ -32,33 +32,33 @@ Bu bağlamaları, işlev klasörünüzdeki *function. JSON* dosyasında bildirir
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Her bağlamanın en az bir türü, yönü ve adı vardır. Yukarıdaki örnekte, ilk bağlama yönden `httpTrigger` `in`bir tür. `in` Yönü için, `name` tetikleyici tarafından çağrıldığında işleve gönderilen giriş parametresinin adını belirtir.  
+Her bağlamanın en az bir türü, yönü ve adı vardır. Yukarıdaki örnekte, ilk bağlama `httpTrigger` yönden bir tür `in` . Yönü için `in` , `name` Tetikleyici tarafından çağrıldığında işleve gönderilen giriş parametresinin adını belirtir.  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Koleksiyondaki ikinci bağlamanın adı `res`. Bu `http` bağlama, HTTP yanıtını yazmak için`out`kullanılan bir çıkış bağlamadır (). 
+Koleksiyondaki ikinci bağlamanın adı `res` . Bu `http` bağlama, `out` HTTP yanıtını yazmak için kullanılan bir çıkış bağlamadır (). 
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için aşağıdaki kodda gösterildiği gibi adıyla `out` `queue` `msg`bir tür bağlama ekleyin:
+Bu işlevden bir Azure depolama kuyruğuna yazmak için `out` `queue` `msg` aşağıdaki kodda gösterildiği gibi adıyla bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-Koleksiyondaki ikinci `http` bağlama yöndür `out`ve bu durumda özel `name` , bu bağlamanın bir giriş parametresi sağlamak yerine işlevin dönüş `$return` değerini kullandığını gösterir.
+Koleksiyondaki ikinci bağlama `http` yöndür ve `out` Bu durumda özel, `name` `$return` Bu bağlamanın bir giriş parametresi sağlamak yerine işlevin dönüş değerini kullandığını gösterir.
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için aşağıdaki kodda gösterildiği gibi adıyla `out` `queue` `msg`bir tür bağlama ekleyin:
+Bu işlevden bir Azure depolama kuyruğuna yazmak için `out` `queue` `msg` aşağıdaki kodda gösterildiği gibi adıyla bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-powershell"  
-Koleksiyondaki ikinci bağlamanın adı `res`. Bu `http` bağlama, HTTP yanıtını yazmak için`out`kullanılan bir çıkış bağlamadır (). 
+Koleksiyondaki ikinci bağlamanın adı `res` . Bu `http` bağlama, `out` HTTP yanıtını yazmak için kullanılan bir çıkış bağlamadır (). 
 
-Bu işlevden bir Azure depolama kuyruğuna yazmak için aşağıdaki kodda gösterildiği gibi adıyla `out` `queue` `msg`bir tür bağlama ekleyin:
+Bu işlevden bir Azure depolama kuyruğuna yazmak için `out` `queue` `msg` aşağıdaki kodda gösterildiği gibi adıyla bir tür bağlama ekleyin:
 
 :::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Bu durumda, `msg` işlevine çıkış bağımsız değişkeni olarak verilir. `queue` Bir tür için, `queueName` içindeki kuyruğun adını da belirtmeniz ve içindeki Azure depolama bağlantısının ( *Local. Settings. JSON*' `connection`dan) *adını* sağlamanız gerekir. 
+Bu durumda, `msg` işlevine çıkış bağımsız değişkeni olarak verilir. Bir `queue` tür için, içindeki kuyruğun adını da belirtmeniz `queueName` ve Içindeki Azure depolama bağlantısının ( *local.settings.json*) *adını* sağlamanız gerekir `connection` . 
 ::: zone-end  

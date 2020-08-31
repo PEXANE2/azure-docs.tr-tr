@@ -7,16 +7,20 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266308"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072307"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager şablonundan bir Windows sanal makinesi oluşturma
 
 Azure Cloud Shell 'den bir Azure Resource Manager şablonu ve Azure PowerShell kullanarak Windows sanal makinesi oluşturmayı öğrenin. Bu makalede kullanılan şablon, tek bir alt ağa sahip yeni bir sanal ağda Windows Server çalıştıran tek bir sanal makine dağıtır. Linux sanal makinesi oluşturmak için bkz. [Azure Resource Manager şablonlarıyla Linux sanal makinesi oluşturma](../linux/create-ssh-secured-vm-from-template.md).
+
+Diğer bir seçenek de Azure portal şablonu dağıtmaktır. Şablonu portalda açmak için **Azure 'A dağıt** düğmesini seçin.
+
+[![Azure’a dağıt](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874631"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144473"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -109,7 +109,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Karalama klasörünün geçerli ve erişilebilir olup olmadığını denetleme
 
-1. Varsayılan olarak karalama klasörü şurada bulunur:`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+1. Varsayılan olarak karalama klasörü şurada bulunur: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Karalama klasörü konumunun yolunun aşağıda gösterilen kayıt defteri anahtarı girişlerinin değerleriyle eşleştiğinden emin olun:
 
     | Kayıt defteri yolu | Kayıt Defteri Anahtarı | Değer |
@@ -123,7 +123,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 
     ```Net stop obengine```
 2. Sistem durumu yedeklemesini yapılandırdıysanız, disk yönetimi 'ni açın ve adları biçimindeki disk (ler) i çıkarın `"CBSSBVol_<ID>"` .
-3. Varsayılan olarak, karalama klasörü şurada bulunur:`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+3. Varsayılan olarak, karalama klasörü şurada bulunur: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Tüm `\Scratch` klasörü yeterli alana sahip farklı bir sürücüye kopyalayın. İçeriğin kopyalanmadığından ve taşınmadığından emin olun.
 5. Aşağıdaki kayıt defteri girdilerini yeni taşınan karalama klasörünün yoluyla güncelleştirin.
 
@@ -199,7 +199,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?
 
-Bir güvenlik önlemi olarak, Azure Backup, bekletme süresini geçmiş olsa bile son kurtarma noktasını korur. Yedeklemeler çalışmaya başladıktan ve yeni kurtarma noktaları kullanılabilir hale geldiğinde, eski kurtarma noktası belirtilen bekletmeye göre kaldırılır.
+Bir güvenlik önlemi olarak, Azure Backup bekletme süresini geçmiş olsa bile en son kurtarma noktasını korur. Yedeklemeler çalışmaya başladıktan ve yeni kurtarma noktaları kullanılabilir hale geldiğinde, eski kurtarma noktası belirtilen bekletmeye göre kaldırılır.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal etdiğimde ne olur?
 

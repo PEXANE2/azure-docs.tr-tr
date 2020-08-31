@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bce1f00603d9304fc544fb92d4cc5f1a429504ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039186"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069009"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi başlatma
 
@@ -28,7 +29,7 @@ Bir işi başlatmak için aşağıdaki üç seçenek mevcuttur. Aşağıda bahse
 * **Son durdurulduğunda**. Bu seçenek, iş daha önce başlatıldığında kullanılabilir ancak el ile veya başarısız olarak durdurulur. Bu seçeneği seçerken Azure Stream Analytics, bir veri kaybolmayacak şekilde işi yeniden başlatmak için son çıkış süresini kullanır. Önceki seçeneklere benzer şekilde, Azure Stream Analytics zamana bağlı bir operatör kullanılıyorsa, bu zamandan önce verileri otomatik olarak okur. Birkaç giriş bölümünün saati farklı olabileceğinden, tüm bölümlerin en erken durma saati kullanılır, bu nedenle çıktıda bazı yinelemeler görülebilir. Tam bir kez işleme hakkında daha fazla bilgi için, [olay teslim garantisi](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)sayfasında kullanılabilir.
 
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 Azure portal işinize gidin ve genel bakış sayfasında **Başlat** ' ı seçin. Bir **iş çıkışı başlangıç zamanı** seçin ve ardından **Başlat**' ı seçin.
 

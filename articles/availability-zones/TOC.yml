@@ -25,9 +25,9 @@
         - name: Yönetilen diskler
           items:
             - name: CLI ile Kullanılabilirlik Alanına yönetilen disk ekleme
-              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
+              href: ../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm
             - name: PowerShell ile Kullanılabilirlik Alanına yönetilen disk ekleme
-              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+              href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
         - name: Sanal makine ölçek kümeleri
           items:
             - name: Kullanılabilirlik Alanında ölçek kümesi oluşturma
@@ -58,24 +58,23 @@
                 - name: Azure CLI’si ile kullanılabilirlik bölgelerindeki VM’lerde yük dengeleme
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Genel IP adresi
-          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Veritabanı
           items:
             - name: SQL Veritabanı ile kullanılabilirlik alanları
-              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
         - name: Depolama
           items:
-            - name: |
-                Alanlar arası yedekli depolama
+            - name: Alanlar arası yedekli depolama
               href: ../storage/common/storage-redundancy-zrs.md
         - name: Event Hubs
           items:
             - name: Event Hubs coğrafi olağanüstü durum kurtarma
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
+              href: ../event-hubs/event-hubs-geo-dr.md#availability-zones
         - name: Service Bus
           items:
             - name: Service Bus coğrafi olağanüstü durum kurtarma
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
+              href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones
         - name: VPN Gateway
           items:
             - name: Alanlar arası yedekli sanal ağ geçidi oluşturma
@@ -84,6 +83,10 @@
           items:
             - name: Alanlar arası yedekli sanal ağ geçidi oluşturma
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Application Gateway v2
+          items:
+            - name: Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2
+              href: ../application-gateway/application-gateway-autoscaling-zone-redundant.md
         - name: Kimlik
           items:
             - name: Azure Active Directory Domain Services örneği oluşturma

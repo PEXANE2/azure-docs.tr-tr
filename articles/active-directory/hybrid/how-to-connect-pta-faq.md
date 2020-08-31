@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358302"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071440"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -113,7 +113,7 @@ Her geçişli kimlik doğrulama Aracısı ve Azure AD arasındaki iletişimin se
 
 Bir geçişli kimlik doğrulama Aracısı çalıştığı sürece, etkin kalır ve Kullanıcı oturum açma isteklerini sürekli olarak işler. Bir kimlik doğrulama aracısını kaldırmak istiyorsanız, **Denetim Masası-> programlar-> programlar ve Özellikler** ' e gidin ve hem **Microsoft Azure AD Connect kimlik doğrulama aracısını** hem de **Microsoft Azure AD Connect Agent Güncelleştirici** programlarını kaldırın.
 
-Yukarıdaki adımı tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini kontrol ederseniz, kimlik doğrulama aracısının **etkin değil**olarak gösterildiğini görürsünüz. Bu _beklenen_bir değer. Kimlik doğrulama Aracısı birkaç gün sonra otomatik olarak listeden bırakılır.
+Yukarıdaki adımı tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini kontrol ederseniz, kimlik doğrulama aracısının **etkin değil**olarak gösterildiğini görürsünüz. Bu _beklenen_bir değer. Kimlik doğrulama Aracısı 10 gün sonra otomatik olarak listeden bırakılır.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Azure AD 'de oturum açmak için zaten AD FS kullanıyorum. Nasıl yaparım? doğrudan kimlik doğrulamaya geçiş yapılsın mı?
 

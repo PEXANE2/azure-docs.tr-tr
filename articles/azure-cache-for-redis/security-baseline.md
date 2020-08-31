@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e22e7c1295747725cf40f1fd1b84b49ab6d6fbb2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242721"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071202"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Güvenlik temeli
 
@@ -158,7 +158,7 @@ Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 
 DDoS koruma standardı etkinleştirilmelidir
 
-Ayrıca, tek bir şema tanımında Azure Resource Manager (ARM) şablonları, rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
+Ayrıca, tek bir şema tanımında Azure Resource Manager (ARM) şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve ilkeler gibi anahtar ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
 Azure Ilkesini yapılandırma ve yönetme:
 
@@ -216,7 +216,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, denetim düzlemi düzeyinde Redsıs örnekleri için Azure önbelleğiniz üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, Redsıs örnekleri için Azure önbelleğiniz için denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" ı belirleyebilirsiniz.
 
-Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -228,7 +228,7 @@ Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme:https://d
 
 Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, veri düzleminde denetim günlüğü Redsıs için Azure önbelleği için henüz kullanılamıyor.
 
-Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -262,9 +262,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#chan
 
 Veri düzlemine yönelik denetim günlüğü kaydının, Redsıs için Azure önbelleği için henüz kullanılabilir olmadığına unutmayın.
 
-Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
+Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -276,7 +276,7 @@ Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlükler
 
 Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, veri düzleminde denetim günlüğü Redsıs için Azure önbelleği için henüz kullanılamıyor.
 
-Redsıs için Azure önbelleği uyarılarını yapılandırma:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
+Redsıs için Azure önbelleği uyarılarını yapılandırma: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -314,9 +314,9 @@ Redsıs için Azure önbelleği uyarılarını yapılandırma:https://docs.micro
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (ad) açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-Azure AD 'de PowerShell ile dizin rolü alma:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Azure AD 'de PowerShell ile dizin rolü alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -330,7 +330,7 @@ Redo için Azure önbelleğine veri düzlemi erişimi, erişim anahtarları arac
 
 Uygulamanızda varsayılan parolalar oluşturmanız önerilmez. Bunun yerine, parolalarınızı Azure Key Vault kaydedebilir ve sonra bunları almak için Azure Active Directory kullanabilirsiniz.
 
-Redsıs erişim anahtarları için Azure önbelleğini yeniden üretme:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
+Redsıs erişim anahtarları için Azure önbelleğini yeniden üretme: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -348,9 +348,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Azure Ilkesini kullanma:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini kullanma: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 **Azure Güvenlik Merkezi izleme**: Evet
@@ -361,9 +361,9 @@ Azure Ilkesini kullanma:https://docs.microsoft.com/azure/governance/policy/tutor
 
 **Rehberlik**: redsıs Için Azure Cache, kullanıcıların kimliğini doğrulamak için erişim anahtarlarını kullanır ve veri düzlemi düzeyinde çoklu oturum AÇMAYı (SSO) desteklemez. Redde için Azure önbelleği denetim düzlemine erişim, REST API aracılığıyla kullanılabilir ve SSO 'yu destekler. Kimlik doğrulaması yapmak için isteklerinizin yetkilendirme üst bilgisini Azure Active Directory aldığınız JSON Web Token ayarlayın.
 
-Redsıs REST API için Azure önbelleğini anlayın:https://docs.microsoft.com/rest/api/redis/
+Redsıs REST API için Azure önbelleğini anlayın: https://docs.microsoft.com/rest/api/redis/
 
-Azure AD ile SSO 'yu anlayın:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Azure AD ile SSO 'yu anlayın: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
@@ -374,9 +374,9 @@ Azure AD ile SSO 'yu anlayın:https://docs.microsoft.com/azure/active-directory/
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (AD) MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-Azure 'da MFA 'yı etkinleştirme:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Azure 'da MFA 'yı etkinleştirme: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -404,9 +404,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın.
 
-Privileged Identity Management dağıtma (PıM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management dağıtma (PıM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Azure AD risk algılamalarını anlama:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure AD risk algılamalarını anlama: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -416,7 +416,7 @@ Azure AD risk algılamalarını anlama:https://docs.microsoft.com/azure/active-d
 
 **Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından erişime izin vermek için Azure ACTIVE DIRECTORY (ad) koşullu erişim içindeki adlandırılmış konumları yapılandırın.
 
-Azure 'da adlandırılmış konumlar nasıl yapılandırılır:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Azure 'da adlandırılmış konumlar nasıl yapılandırılır: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -437,9 +437,9 @@ Azure AD kimlik doğrulaması, Redsıs ' veri düzlemi için Azure önbelleğine
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (ad) eski hesapları keşfetmenize yardımcı olacak Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. 
 
-Azure AD raporlamayı anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD raporlamayı anlayın: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure kimlik erişimi Incelemelerini kullanma:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure kimlik erişimi Incelemelerini kullanma: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -451,9 +451,9 @@ Azure kimlik erişimi Incelemelerini kullanma:https://docs.microsoft.com/azure/a
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. Log Analytics içinde, istenen günlük uyarılarını yapılandırabilirsiniz.
 
-Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Yerleşik Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Yerleşik Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -463,11 +463,11 @@ Yerleşik Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Rehberlik**: denetim düzleminde hesap oturum açma davranışı sapması için, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırmak üzere Azure ACTIVE DIRECTORY (ad) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-Azure AD riskli oturum açma işlemlerini görüntüleme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Azure AD riskli oturum açma işlemlerini görüntüleme: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -535,7 +535,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Microsoft, Redsıs için Azure önbelleği için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -563,7 +563,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -571,9 +571,9 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: redsıs denetim düzlemi Için Azure önbelleğine erişimi denetlemek üzere Azure ACTIVE DIRECTORY (AAD) rol tabanlı erişim denetımı (RBAC) kullanın (örneğin, Azure Portal). 
+**Rehberlik**: redsıs denetim düzlemi Için Azure önbelleğine erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın (örneğin, Azure Portal). 
 
-Azure 'da RBAC 'yi yapılandırma:
+Azure RBAC 'yi yapılandırma:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -603,11 +603,11 @@ Redsıs özelliği için Azure önbellek "Redsıs veri kalıcılığı" kullanı
 
 Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi devre dışı bırakılamıyor. Depolama hesabınızın şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetebilirsiniz.
 
-Redsıs için Azure önbelleğinde kalıcılığı yapılandırma:https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
+Redsıs için Azure önbelleğinde kalıcılığı yapılandırma: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-persistence
 
-Azure depolama hesapları için şifrelemeyi anlayın:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Azure depolama hesapları için şifrelemeyi anlayın: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
-Azure müşteri verileri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure müşteri verileri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -635,7 +635,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 Microsoft, Redsıs için Azure önbelleğini destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
 
-Azure Güvenlik Merkezi önerilerini anlayın:https://docs.microsoft.com/azure/security-center/recommendations-reference
+Azure Güvenlik Merkezi önerilerini anlayın: https://docs.microsoft.com/azure/security-center/recommendations-reference
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -683,11 +683,11 @@ Azure Güvenlik Merkezi önerilerini anlayın:https://docs.microsoft.com/azure/s
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
-Azure Kaynak Graf ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Kaynak Graf ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure RBAC 'yi anlama:https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure RBAC 'yi anlama: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -715,11 +715,11 @@ Ayrıca, aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneli
 
 - İzin verilen kaynak türleri
 
-Ek Azure abonelikleri oluşturma:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Ek Azure abonelikleri oluşturma: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Yönetim Grupları oluşturma:https://docs.microsoft.com/azure/governance/management-groups/create
+Yönetim Grupları oluşturma: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -845,9 +845,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -865,9 +865,9 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 **Kılavuz**: Azure kaynaklarınız genelinde güvenli ayarları zorlamak Için Azure ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilke efektlerini anlayın:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Ilke efektlerini anlayın: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -885,9 +885,9 @@ Azure Ilke efektlerini anlayın:https://docs.microsoft.com/azure/governance/poli
 
 **Rehberlik**: redsıs örnekleri ve ilgili kaynaklar Için Azure önbelleğiniz Için özel Azure ilke tanımları veya Azure Resource Manager şablonları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure DevOps 'da kod depolama:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure DevOps 'da kod depolama: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos belgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -905,7 +905,7 @@ Azure Repos belgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. cache" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -923,7 +923,7 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 **Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. cache" ad alanındaki Azure ilke diğer adlarını kullanın. Redsıs örnekleri ve ilgili kaynaklar için Azure önbelleğiniz için otomatik olarak yapılandırmaların uygulanmasını sağlamak üzere Azure Ilkesi [audit], [Deny] ve [dağıtım yok] kullanın.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 **Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
 
-Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/helpcredscan.html
+Kimlik bilgisi tarayıcısını ayarlama: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1087,7 +1087,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Rehberlik**: Redsıs dışa aktarma ve redsıs kalıcılığı Için Azure önbelleği, seçili Azure depolama hesabınızda depolanır. Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi devre dışı bırakılamıyor. Depolama hesabınızın şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetebilirsiniz.
 
-Azure depolama hesapları için şifrelemeyi anlayın:https://docs.microsoft.com/azure/storage/common/storage-service-encryption
+Azure depolama hesapları için şifrelemeyi anlayın: https://docs.microsoft.com/azure/storage/common/storage-service-encryption
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

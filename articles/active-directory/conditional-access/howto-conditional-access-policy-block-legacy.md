@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049256"
+ms.locfileid: "89068635"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
@@ -37,7 +37,7 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 1. **Bulut uygulamaları veya eylemler**altında **tüm bulut uygulamaları**' nı seçin.
    1. **Bitti**'yi seçin.
 1. **Conditions**  >  **İstemci uygulamaları**Koşulları ' nın altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
-   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler**için kutuyu işaretleyin.
+   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler**için kutuyu işaretleyin. Azure 'da Exchange ActiveSync koşullu erişim ilkesini dağıtmak için kullanıcının da genel yönetici olması gerekir.
    1. **Bitti**'yi seçin.
 1. **Erişim denetimleri**  >  **izni**' nın altında, **erişimi engelle**' yi seçin.
    1. **Seç**’i seçin.
