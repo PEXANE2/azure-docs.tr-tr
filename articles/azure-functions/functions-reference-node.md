@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810125"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055337"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -20,7 +20,7 @@ Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne y
 
 | Başlarken | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code kullanarakNode.js işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Terminal/komut istemiyleNode.js işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript işlevi temelleri
 
@@ -107,7 +107,7 @@ JavaScript 'te [bağlamalar](functions-triggers-bindings.md) , üzerinde bir iş
 
 ### <a name="inputs"></a>Girişler
 Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici girişi, diğeri ise ek giriştir. Tetikleyici ve diğer giriş bağlamaları (bağlamaları `direction === "in"` ), bir işlev tarafından üç şekilde okunabilir:
- - **_[Önerilir]_ İşlevlerinizi parametre olarak geçirdi.** Bunlar, *üzerindefunction.js*tanımlandıkları sırada işleve geçirilir. `name` *function.jsüzerinde* tanımlanan özelliğin, parametresinin adı ile eşleşmesi gerekir, ancak.
+ - **_[Önerilir]_ İşlevlerinizi parametre olarak geçirdi.** Bunlar, * üzerindefunction.js*tanımlandıkları sırada işleve geçirilir. `name` *function.jsüzerinde* tanımlanan özelliğin, parametresinin adı ile eşleşmesi gerekir, ancak.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,7 +138,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
 
 Çıkış bağlamalarına aşağıdaki yöntemlerden birini uygulayarak veri atayabilirsiniz (Bu yöntemleri birleştirmeyin):
 
-- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları *üzerindefunction.js*"HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
+- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları * üzerindefunction.js*"HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
 
   ```javascript
   module.exports = async function(context) {
@@ -183,15 +183,38 @@ Bir giriş bağlamasının veri türünü tanımlamak için `dataType` bağlama 
 Seçenekleri `dataType` şunlardır: `binary` , `stream` , ve `string` .
 
 ## <a name="context-object"></a>bağlam nesnesi
-Çalışma zamanı, `context` işlevinizden ve bu işlevden veri geçirmek ve çalışma zamanıyla iletişim kurmanızı sağlamak için bir nesnesi kullanır. Bağlam nesnesi bağlamalardan veri okumak ve ayarlamak, günlükleri yazmak ve `context.done` verdiğiniz işleviniz zaman uyumlu olduğunda geri çağırma işlemini kullanmak için kullanılabilir.
 
-`context`Nesnesi her zaman bir işleve ilk parametredir. Ve gibi önemli yöntemlere sahip olduğu için dahil edilmelidir `context.done` `context.log` . Nesneyi istediğiniz her şey olarak adlandırabilirsiniz (örneğin, `ctx` veya `c` ).
+Çalışma zamanı, `context` işlevinizden ve çalışma zamanından verileri iletmek için bir nesnesi kullanır. Bağlamaları okumak ve bağlamalardan veri yazmak ve günlüklere yazmak için kullanılır `context` . nesne her zaman bir işleve geçirilen ilk parametredir.
+
+Zaman uyumlu kod kullanan işlevler için bağlam nesnesi, `done` işlev işlemeyi tamamladıktan sonra çağrınızı çağıran geri çağırma işlemini içerir. `done`Zaman uyumsuz kod yazılırken açıkça çağırma gereksizdir; `done` geri çağırma örtük olarak çağrılır.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
+
+| Özellik adı  | Tür  | Açıklama |
+|---------|---------|---------|
+| `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
+| `functionName` | Dize | Çalışan işlevin adını sağlar |
+| `functionDirectory` | Dize | Uygulama dizini işlevlerini sağlar. |
+
+Aşağıdaki örnek, nasıl dönegösterdiğini gösterir `invocationId` .
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -201,7 +224,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Bağlama verilerini okumak veya atamak için kullanılan adlandırılmış bir nesne döndürür. Giriş ve tetikleyici bağlama verilerine, üzerindeki Özellikler okunarak erişilebilir `context.bindings` . Çıkış bağlama verileri, öğesine veri eklenerek atanabilir`context.bindings`
+Bağlama verilerini okumak veya atamak için kullanılan adlandırılmış bir nesne döndürür. Giriş ve tetikleyici bağlama verilerine, üzerindeki Özellikler okunarak erişilebilir `context.bindings` . Çıkış bağlama verileri, öğesine veri eklenerek atanabilir `context.bindings`
 
 Örneğin, function.js' deki aşağıdaki bağlama tanımları, ' dan bir kuyruğun içeriğine erişmenize `context.bindings.myInput` ve kullanarak bir kuyruğa çıktılar atamanıza izin verir `context.bindings.myOutput` .
 
@@ -395,7 +418,7 @@ HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeş
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Yalnızca yanıt]_ Çağırarak `context.res.send(body?: any)` .** Yanıt gövdesi olarak giriş ile bir HTTP yanıtı oluşturulur `body` . `context.done()`örtük olarak çağırılır.
++ **_[Yalnızca yanıt]_ Çağırarak `context.res.send(body?: any)` .** Yanıt gövdesi olarak giriş ile bir HTTP yanıtı oluşturulur `body` . `context.done()` örtük olarak çağırılır.
 
 + **_[Yalnızca yanıt]_ Çağırarak `context.done()` .** Özel bir HTTP bağlama türü yöntemine geçirilen yanıtı döndürür `context.done()` . Aşağıdaki HTTP çıkış bağlaması bir `$return` Çıkış parametresini tanımlar:
 
@@ -500,7 +523,7 @@ Yerel olarak çalışırken, uygulama ayarları proje dosyasındaki [local.setti
 
 Varsayılan olarak, `index.js` karşılık gelen bir üst dizini paylaşan bir dosya olan öğesinden bir JavaScript işlevi yürütülür `function.json` .
 
-`scriptFile`Aşağıdaki örnekteki gibi görünen bir klasör yapısını almak için kullanılabilir:
+`scriptFile` Aşağıdaki örnekteki gibi görünen bir klasör yapısını almak için kullanılabilir:
 
 ```
 FunctionApp

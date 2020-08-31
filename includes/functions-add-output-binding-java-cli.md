@@ -11,17 +11,17 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673289"
 ---
-Java projesinde bağlamalar, işlev yönteminde bağlama ek açıklamaları olarak tanımlanır. *Function. JSON* dosyası daha sonra bu ek açıklamaları temel alınarak otomatik olarak oluşturulur.
+Java projesinde bağlamalar, işlev yönteminde bağlama ek açıklamaları olarak tanımlanır. Dosyadaki *function.js* bu ek açıklamaları temel alınarak otomatik olarak oluşturulur.
 
-_Src/Main/Java_altındaki işlev kodunuzun konumuna gidin, *function. Java* proje dosyasını açın ve `run` Yöntem tanımına aşağıdaki parametreyi ekleyin:
+_Src/Main/Java_altındaki işlev kodunuzun konumuna gidin, *function. Java* proje dosyasını açın ve Yöntem tanımına aşağıdaki parametreyi ekleyin `run` :
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-`msg` Parametresi, işlev tamamlandığında [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) çıkış bağlamaya ileti olarak yazılmış dizeler koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı `outqueue`bir depolama kuyruğudur. Depolama hesabı için bağlantı dizesi `connection` yöntemi tarafından ayarlanır. Bağlantı dizesinin kendisi yerine, depolama hesabı bağlantı dizesini içeren uygulama ayarını geçirirsiniz.
+`msg`Parametresi [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , işlev tamamlandığında çıkış bağlamaya ileti olarak yazılmış dizeler koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı bir depolama kuyruğudur `outqueue` . Depolama hesabı için bağlantı dizesi yöntemi tarafından ayarlanır `connection` . Bağlantı dizesinin kendisi yerine, depolama hesabı bağlantı dizesini içeren uygulama ayarını geçirirsiniz.
 
-`run` Yöntem tanımı şimdi aşağıdaki örnekteki gibi görünmelidir:  
+`run`Yöntem tanımı şimdi aşağıdaki örnekteki gibi görünmelidir:  
 
 ```java
 @FunctionName("HttpTrigger-Java")

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2020
-ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 08/28/2020
+ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245579"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055592"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -257,7 +257,7 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.zone_id.database.windows.net` 
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>İkincil örneğe bağlanmak için salt okuma dinleyicisi kullanma
 
-Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `server.secondary.zone_id.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
+Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.zone_id.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
 > [!NOTE]
 > Belirli hizmet katmanlarında SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve bağlantı dizesindeki parametresini kullanarak yük dengelemesi [için destekler](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.

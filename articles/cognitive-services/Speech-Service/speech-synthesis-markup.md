@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012441"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055558"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -238,7 +238,8 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
 |                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
-|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.          | |                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |     
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.          |
+|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |     
 |                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
 |                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  | 

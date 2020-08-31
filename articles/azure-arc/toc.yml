@@ -3,7 +3,7 @@
 - name: Genel Bakış
   items:
     - name: Azure Arc hakkında
-      href: arc-overview.md
+      href: overview.md
 - name: Arc özellikli sunucular >
   href: ./servers/overview.md
 - name: Arc özellikli Kubernetes >

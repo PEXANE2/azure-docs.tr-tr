@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685655"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055439"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Otomasyon hesabı oluşturma
 
@@ -60,7 +60,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 |:---|:---|:---|
 | [Çalışma alanı](/azure/templates/microsoft.operationalinsights/workspaces) | çalışma alanı | 2020-03-01-Önizleme |
 | [Otomasyon hesabı](/azure/templates/microsoft.automation/automationaccounts) | otomasyon | 2020-01-13-Önizleme |
-| [Çalışma alanı bağlı hizmetleri](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | iş sapmaları | 2020-03-01-Önizleme |
+| [Çalışma alanı bağlı hizmetleri](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | çalışma alanı | 2020-03-01-Önizleme |
 
 ### <a name="before-you-use-the-template"></a>Şablonu kullanmadan önce
 
@@ -94,7 +94,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Otomasyonu hesabı, bir Log Analytics çalışma alanı oluşturur ve otomasyon hesabını çalışma alanına bağlar.
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+    [![Azure’a dağıt](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
 
 2. Değerleri girin.
 
@@ -104,7 +104,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portal, az önce oluşturduğunuz Otomasyon hesabını açın. 
 

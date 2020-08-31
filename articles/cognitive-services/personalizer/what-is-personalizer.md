@@ -1,24 +1,25 @@
 ---
 title: Kişiselleştirme nedir?
-description: Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza gösterilecek en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
+description: Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza gösterilecek en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir hizmettir.
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 08/27/2020
+ms.custom: cog-serv-seo-aug-2020
+keywords: kişiselleştirici, Azure kişiselleştirici, makine öğrenimi
+ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586227"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055626"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+Azure kişiselleştirici, uygulamalarınızın kullanıcılarınızı göstermek için en iyi içerik öğesini seçmesini sağlayan bulut tabanlı bir hizmettir. Alışverişçilere hangi ürünün önereceğini belirlemek veya bir tanıtım için en iyi konumu öğrenmek için kişiselleştirici hizmetini kullanabilirsiniz. İçerik kullanıcıya gösterildikten sonra, sistem gerçek zamanlı kullanıcı davranışını izler ve kişiselleştirici hizmetine geri dönüş puanı bildirir. Bu, makine öğrenimi modelinin sürekli gelişmesini ve kişiselleştirici 'nin aldığı bağlamsal bilgileri temel alan en iyi içerik öğesini seçme yeteneğini sağlar.
 
-Azure kişiselleştirici, istemci uygulamanızın her kullanıcıyı göstermek için en iyi, tek _içerik_ öğesini seçmesini sağlayan bulut tabanlı bir API hizmetidir. Hizmet, içerik ve bağlam hakkında sağladığınız toplu gerçek zamanlı bilgilere göre içerik öğelerinden en iyi öğeyi seçer.
+> [!TIP]
+> İçerik, metin, görüntü, URL, e-posta veya arasından seçim yapmak istediğiniz herhangi bir şey veya kullanıcılarınıza göstermek istediğiniz herhangi bir bilgi birimidir.
 
-Kullanıcı için içerik öğesini sunduktan sonra, sistem kullanıcı davranışını izler ve aldığı bağlam bilgilerine göre en iyi içeriği seçme yeteneğini geliştirmek için bir geri puanı Kişiselleştiriciye bildirir.
-
-**İçerik** , metin, görüntü, URL veya e-posta gibi istediğiniz herhangi bir bilgi birimi olabilir.
+Başlamadan önce [Bu etkileşimli tanıtım Ile kişiselleştirici](https://personalizationdemo.azurewebsites.net/)kullanmayı deneyebilirsiniz.
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
@@ -26,7 +27,7 @@ Kullanıcı için içerik öğesini sunduktan sonra, sistem kullanıcı davranı
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Kişiselleştirici en iyi içerik öğesini nasıl seçer?
 
-Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi (_eylem_) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya aralarından seçim yapabileceğiniz ürünler gibi içerik öğeleridir.
+Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi (_eylem_) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya ürünler gibi içerik öğeleridir.
 
 **Sıralama** çağrısı, eylem öğesini ve eylem özelliklerini ve en üstteki eylem öğesini seçmek için bağlam özelliklerini alır:
 
@@ -34,27 +35,31 @@ Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden p
 * **Bağlam özellikleri** -uygulamanızın kullanımı sırasında kullanıcılarınızın özellikleri, bağlamları veya ortamları
 
 Sıralama çağrısı, **geri dönüş EYLEMI kimliği** alanında kullanıcıya gösterilecek içerik öğesi, __eylem__kimliğini döndürür.
-Kullanıcıya gösterilen __eylem__ , makine öğrenimi modelleriyle seçilir ve zaman içinde toplam yeniden kullanım miktarını en üst düzeye çıkarmaya çalışıyor.
 
-Birkaç örnek senaryo şunlardır:
+Kullanıcıya gösterilen __eylem__ makine öğrenimi modelleriyle seçilir ve bu, zaman içinde toplam yeniden kullanım miktarını en üst düzeye çıkarmaya çalışır.
 
-|İçerik türü|**Eylemler (özelliklerle birlikte)**|**Bağlam özellikleri**|Geri alınan geri dönüş eylemi KIMLIĞI<br>(Bu içeriği görüntüle)|
+### <a name="sample-scenarios"></a>Örnek senaryolar
+
+Kişiselleştirmenin, bir kullanıcı için işlenecek en iyi içeriği seçmek üzere kullanılabileceği birkaç senaryoya göz atalım.
+
+|İçerik türü|Eylemler (özelliklerle birlikte)|Bağlam özellikleri|Geri alınan geri dönüş eylemi KIMLIĞI<br>(Bu içeriği görüntüle)|
 |--|--|--|--|
-|Haber listesi|a. `The president...`(Ulusal, politika, [metin])<br>b. `Premier League ...`(küresel, spor, [metin, görüntü, video])<br> c. `Hurricane in the ...`(bölgesel, hava durumu, [metin, görüntü]|Cihaz haberleri okundu<br>Ay veya mevsim<br>|a`The president...`|
-|Filmler listesi|1. `Star Wars` (1977, [eylem, Adventure, FI], George Lucas)<br>2. `Hoop Dreams` (1994, [belgesel, spor], Steve James<br>3. `Casablanca` (1942, [Romantik, Drama, war], Michael Curtiz)|Cihaz filminin izlenen<br>ekran boyutu<br>Kullanıcı türü<br>|03.`Casablanca`|
-|Ürün listesi|i. `Product A`(3 kg, $ $ $ $, 24 saat içinde teslim et)<br>ii. `Product B`(20 kg, $ $, 2 hafta gümrük ile sevkiyat)<br>iii. `Product C`(3 kg, $ $ $, 48 saat içinde teslim)|Cihaz alışverişi buradan okundu<br>Kullanıcının harcama katmanı<br>Ay veya mevsim|ii. `Product B`|
+|Haber listesi|a. `The president...` (Ulusal, politika, [metin])<br>b. `Premier League ...` (küresel, spor, [metin, görüntü, video])<br> c. `Hurricane in the ...` (bölgesel, hava durumu, [metin, görüntü]|Cihaz haberleri okundu<br>Ay veya mevsim<br>|a `The president...`|
+|Filmler listesi|1. `Star Wars` (1977, [eylem, Adventure, FI], George Lucas)<br>2. `Hoop Dreams` (1994, [belgesel, spor], Steve James<br>3. `Casablanca` (1942, [Romantik, Drama, war], Michael Curtiz)|Cihaz filminin izlenen<br>ekran boyutu<br>Kullanıcı türü<br>|03. `Casablanca`|
+|Ürün listesi|i. `Product A` (3 kg, $ $ $ $, 24 saat içinde teslim et)<br>ii. `Product B` (20 kg, $ $, 2 hafta gümrük ile sevkiyat)<br>iii. `Product C` (3 kg, $ $ $, 48 saat içinde teslim)|Cihaz alışverişi buradan okundu<br>Kullanıcının harcama katmanı<br>Ay veya mevsim|ii. `Product B`|
 
-Kişiselleştirici, pekiştirmeye dayalı öğrenimi, bir birleşimini temel alarak _eylem kimliği_olarak bilinen tek bir en iyi eylemi seçmek için kullanılır:
-* Eğitilen model-son bilgiler kişiselleştirme hizmeti alındı
+Kişiselleştirici, _ödül eylem kimliği_olarak bilinen tek bir en iyi eylemi seçmek için pekiştirmeye dayalı öğrenimi kullandı. Machine Learning modeli şunları kullanır: 
+
+* Makine öğrenimi modelini geliştirmek için kullanılan Kişiselleştir hizmetinden daha önce bir eğitilen model-bilgi alındı
 * Özelliklerle ve bağlam özellikleriyle geçerli veriye özgü eylemler
 
-## <a name="when-to-call-personalizer"></a>Kişiselleştirici ne zaman çağrılacağını
+## <a name="when-to-use-personalizer"></a>Kişiselleştirici ne zaman kullanılır?
 
-Kişiselleştirici 'in **sıralama** [API 'si](https://go.microsoft.com/fwlink/?linkid=2092082) , _her içerik her seferinde_ gerçek zamanlı olarak çağrılır. Bu, _olay kimliği_ile belirtilen bir **olay**olarak bilinir.
+Kişiselleştirici 'in **sıralama** [API 'si](https://go.microsoft.com/fwlink/?linkid=2092082) , uygulamanız içeriği her sunışınızda çağrılır. Bu, _olay kimliği_ile belirtilen bir **olay**olarak bilinir.
 
 Kişiselleştiriciye yönelik **Reward** [API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) gerçek zamanlı olarak çağrılabilir veya altyapınıza daha iyi uyum sağlamak için gecikebilir. İş gereksinimlerinize göre ödül puanı ' nı belirlersiniz. Ödül puanı 0 ile 1 arasındadır. Bu, iyi için 1 ve hatalı için 0 gibi tek bir değer ya da iş hedeflerinizi ve ölçümünüzü göz önünde bulundurarak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
 
-## <a name="personalizer-content-requirements"></a>Kişiselleştirici içerik gereksinimleri
+## <a name="content-requirements"></a>İçerik gereksinimleri
 
 İçeriğiniz için kişiselleştirici kullanın:
 
@@ -67,16 +72,16 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 * Bireysel kullanıcıların tercihlerini veya geçmişini günlüğe kaydet
 * Temizlenen ve etiketlenmiş içerik gerektir
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>İstemci uygulamanız için kişiselleştirici tasarlama ve uygulama
+## <a name="how-to-design-for-and-implement-personalizer"></a>Kişiselleştirici için tasarlama ve uygulama
 
 1. İçeriği, **_eylemleri_** ve **_bağlamı_** [tasarlayın](concepts-features.md) ve planlayın. **_Ödül_** puanı için yeniden dengeleme algoritmasını saptayın.
 1. Oluşturduğunuz her bir [kişiselleştirici kaynağı](how-to-settings.md) bir öğrenme döngüsü olarak kabul edilir. Döngü, bu içerik veya Kullanıcı deneyimi için hem derecelendirme hem de yeniden çağrıları alacaktır.
 
     |Kaynak türü| Amaç|
     |--|--|
-    |[Apprenlet modu](concept-apprentice-mode.md)`E0`|Mevcut uygulamanızı etkilemeden kişiselleştirici modeli eğitme, ardından çevrimiçi öğrenme davranışına bir üretim ortamına dağıtma|
-    |Stand`S0`|Üretim ortamında çevrimiçi öğrenme davranışı|
-    |Süz`F0`| Üretim dışı bir ortamda çevrimiçi öğrenme davranışını deneyin|
+    |[Acemi modu](concept-apprentice-mode.md) `E0`|Mevcut uygulamanızı etkilemeden kişiselleştirici modeli eğitme, ardından çevrimiçi öğrenme davranışına bir üretim ortamına dağıtma|
+    |Stand `S0`|Üretim ortamında çevrimiçi öğrenme davranışı|
+    |Süz `F0`| Üretim dışı bir ortamda çevrimiçi öğrenme davranışını deneyin|
 
 1. Uygulamanıza, Web sitenize veya sisteminize kişiselleştirici ekleyin:
     1. İçerik kullanıcıya gösterilmeden önce en iyi, tek _içerik_ öğesini belirleyebilmek için, uygulamanızda, Web sitenizde veya sisteminizde kişiselleştiriciye bir **Derecelendirme** çağrısı ekleyin.
@@ -94,13 +99,28 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
         * Veya sonraki bir süre sonra çevrimdışı bir sistem
     1. Bir kullanım süresinden sonra [çevriminizi](concepts-offline-evaluation.md) çevrimdışı değerlendirmede değerlendirin. Çevrimdışı bir değerlendirme, kodunuzu değiştirmeden veya Kullanıcı deneyimini etkilemeden, kişiselleştirici hizmetin verimliliğini test etmenize ve değerlendirmenize olanak tanır.
 
+## <a name="complete-a-quickstart"></a>Hızlı başlangıç tamamlamayı
+
+C#, JavaScript ve Python 'da hızlı başlangıç sunuyoruz. Her hızlı başlangıç size temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanmıştır. 
+
+* [Hızlı başlangıç: kişiselleştirici istemci kitaplığını kullanma](sdk-learning-loop.md)
+
+Kişiselleştirici hizmeti ile çalışmaya başlama şansınız olduktan sonra öğreticilerimizi deneyin ve Web uygulamaları, sohbet botları veya bir Azure Not defteri 'nde Kişiselleştiriciye nasıl kullanacağınızı öğrenin.
+
+* [Öğretici: bir .NET Web uygulamasında kişiselleştirici kullanma](tutorial-use-personalizer-web-app.md)
+* [Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma](tutorial-use-personalizer-chat-bot.md)
+* [Öğretici: Azure not defterinde kişiselleştirici kullanma](tutorial-use-azure-notebook-generate-loop-data.md)
+
+## <a name="reference"></a>Başvuru 
+
+* [Kişiselleştirici C#/.NET SDK 'Sı](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Kişiselleştirici git SDK 'Sı](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Kişiselleştirici JavaScript SDK 'Sı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Kişiselleştirici Python SDK 'Sı](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [REST API'leri](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-
-* [Kişiselleştirme nasıl çalışır?](how-personalizer-works.md)
-* [Pekiştirmeye dayalı Learning nedir?](concepts-reinforcement-learning.md)
-* [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
-* [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
-* [Hızlı Başlangıçlar](sdk-learning-loop.md)
-* [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
-* [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)
+> [!div class="nextstepaction"]
+> [Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md) 
+>  [Pekiştirmeye dayalı Learning nedir?](concepts-reinforcement-learning.md)

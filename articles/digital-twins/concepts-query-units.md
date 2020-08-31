@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615119"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067714"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure dijital TWINS 'de sorgu birimleri 
 
@@ -20,7 +20,9 @@ Azure dijital TWINS **sorgu birimi (QU)** , [sorgu API](https://docs.microsoft.c
 
 Azure dijital TWINS tarafından desteklenen sorgu işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarını soyutlayıp bunun yerine sorgu birimlerindeki kullanımı izlemenize olanak sağlar.
 
-Sorgunun karmaşıklığı, bu sorguyu yürütmek için kaç QUs tüketildiğini etkiler. 
+Bir sorguyu yürütmek için tüketilen sorgu birimlerinin miktarı bundan etkilenir...
+* sorgunun karmaşıklığı 
+* sonuç kümesinin boyutu (yani 10 sonuç döndüren bir sorgu, tek bir sonuç döndüren benzer karmaşıklık sorgusunun bir sorgusundan daha fazla QUs kullanır)
 
 Bu makalede sorgu birimlerinin nasıl anlaşılması ve sorgu birimi tüketiminin izlenmesi açıklanmaktadır.
 

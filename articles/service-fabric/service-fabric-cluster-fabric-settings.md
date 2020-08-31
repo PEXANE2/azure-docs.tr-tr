@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682999"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055129"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -27,7 +27,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|dize, varsayılan değer "none"|Statik| Bu, sunucu sertifikasını doğrulamaz; isteği başarılı oldu. Ters proxy 'nin güvenebileceği uzak sertifika parmak izleri için, virgülle ayrılmış bir liste için yapılandırma ServiceCertificateThumbprints bakın. Ters proxy 'nin güvenebileceği uzak sertifikaların konu adı ve veren parmak izi için yapılandırma ServiceCommonNameAndIssuer ' a bakın. Daha fazla bilgi için bkz. [ters proxy güvenli bağlantısı](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, varsayılan değer 16384 |Dinamik| Gövdesi okumak için kullanılan bayt cinsinden öbek için boyut boyutunu verir. |
-|CrlCheckingFlag|uint, varsayılan değer 0x40000000 |Dinamik| Uygulama/hizmet sertifika zinciri doğrulama bayrakları; örn. CRL denetimi 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ayarı 0 olarak ayarlandığında, desteklenen değerlerin tam listesi CRL denetimini devre dışı bırakır, Certgetcertificatezincirinin dwFlags tarafından belgelenmiştir:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|CrlCheckingFlag|uint, varsayılan değer 0x40000000 |Dinamik| Uygulama/hizmet sertifika zinciri doğrulama bayrakları; örn. CRL denetimi 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ayarı 0 olarak ayarlandığında, desteklenen değerlerin tam listesi CRL denetimini devre dışı bırakır, Certgetcertificatezincirinin dwFlags tarafından belgelenmiştir: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Saniye cinsinden süre. Varsayılan değer 120 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin.  Http uygulama ağ geçidinde işlenmekte olan http istekleri için varsayılan istek zaman aşımını verir. |
 |ForwardClientCertificate|bool, varsayılan değer FALSE|Dinamik|False olarak ayarlandığında, istemci sertifikası için ters proxy istemeyecektir. Doğru olarak ayarlandığında, ters proxy, TLS el sıkışması sırasında istemci sertifikası ister ve Base64 kodlamalı PEı biçim dizesini X-Client-Certificate adlı bir üstbilgideki hizmete iletir. hizmet, sertifika verilerini inceledikten sonra uygun durum koduna sahip isteği başarısız olabilir. Bu doğru ise ve istemci bir sertifika sunmıyorsa, ters proxy boş bir üst bilgiyi iletir ve hizmetin durumu işlemesini sağlar. Ters proxy, saydam bir katman işlevi görür. Daha fazla bilgi için bkz. [istemci sertifikası kimlik doğrulamasını ayarlama](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |dize, varsayılan değer "none" |Statik| Http uygulama ağ geçidi uç noktasında kullanılacak güvenlik kimlik bilgilerinin türünü belirtir geçerli değerler None/x509 'Tur. |
@@ -423,14 +423,14 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Azurestoraymagemaxconnections | Int, varsayılan değer 5000 ' dir |Dinamik|Azure depolama 'ya yönelik eşzamanlı bağlantı sayısı üst sınırı. |
 |Azurestomingemaxworkerthreads | Int, varsayılan değer 25 ' tir |Dinamik|Paralel olarak en fazla çalışan iş parçacığı sayısı. |
 |Azurestooygeoperationtimeout | Saniye cinsinden süre, varsayılan değer 6000 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. XSTORE işleminin tamamlanabilmesi için zaman aşımı. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer FALSE |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır. |
-|CleanupUnusedApplicationTypes|Bool, varsayılan değer FALSE |Dinamik|Bu yapılandırma etkinleştirilirse, kullanılmamış olan en son üç sürümü atlayarak kullanılmayan uygulama türü sürümlerinin kaydını otomatik olarak kaldırmak için izin verir. Otomatik Temizleme, bu belirli uygulama türü için başarılı sağlama sonunda tetiklenir ve ayrıca tüm uygulama türleri için günde bir kez düzenli olarak çalışır. Atlanacak kullanılmayan sürüm sayısı "MaxUnusedAppTypeVersionsToKeep" parametresi kullanılarak yapılandırılabilir. |
-|DisableChecksumValidation | Bool, varsayılan değer false |Statik| Bu yapılandırma, uygulama sağlama sırasında sağlama toplamı doğrulamasını etkinleştirmemizi veya devre dışı bırakmanızı sağlar. |
-|DisableServerSideCopy | Bool, varsayılan değer false |Statik|Bu yapılandırma, uygulama sağlama sırasında Imate uygulama paketinin sunucu tarafı kopyasını etkinleştirilir veya devre dışı bırakır. |
-|Imagecachingenabled | Bool, varsayılan değer doğru |Statik|Bu yapılandırma, önbelleğe almayı etkinleştirmemizi veya devre dışı bırakmanızı sağlar. |
-|Imagestoreconnectionstring |SecureString |Statik|Imabir için köke yönelik bağlantı dizesi. |
-|Imatoanımsat ımumtransferbps | Int, varsayılan değer 1024 ' dir |Dinamik|Küme ve ımafer arasındaki en düşük aktarım hızı. Bu değer, dış ımatikten erişirken zaman aşımını belirlemede kullanılır. Bu değeri yalnızca küme ve ımaver arasındaki gecikme süresi yüksekse, kümenin dış ımak'ten indirilmesi için daha fazla zaman tanımak istiyorsanız değiştirin. |
-|MaxUnusedAppTypeVersionsToKeep | Int, varsayılan 3 ' dir |Dinamik|Bu yapılandırma, temizleme için atlanacak kullanılmayan uygulama türü sürümlerinin sayısını tanımlar. Bu parametre yalnızca CleanupUnusedApplicationTypes parametresi etkinse geçerlidir. |
+|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer FALSE |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır.
+
+*En iyi yöntem kullanmaktır `true` .* | | CleanupUnusedApplicationTypes | Bool, varsayılan değer FALSE | Dinamik | Bu yapılandırma etkinleştirilirse, kullanılmamış olan en son üç sürümü atlayarak kullanılmayan uygulama türü sürümlerinin kaydını otomatik olarak kaldırmak için izin verir. Otomatik Temizleme, bu belirli uygulama türü için başarılı sağlama sonunda tetiklenir ve ayrıca tüm uygulama türleri için günde bir kez düzenli olarak çalışır. Atlanacak kullanılmayan sürüm sayısı "MaxUnusedAppTypeVersionsToKeep" parametresi kullanılarak yapılandırılabilir. 
+
+*En iyi yöntem kullanmaktır `true` .*
+| | DisableChecksumValidation | Bool, varsayılan değer false | Statik | Bu yapılandırma, uygulama sağlama sırasında sağlama toplamı doğrulamasını etkinleştirmemizi veya devre dışı bırakmanızı sağlar. | | DisableServerSideCopy | Bool, varsayılan değer false | Statik | Bu yapılandırma, uygulama sağlama sırasında Imate uygulama paketinin sunucu tarafı kopyasını etkinleştirilir veya devre dışı bırakır. | | Imagecachingenabled | Bool, varsayılan değer true | Statik | Bu yapılandırma, önbelleğe almayı etkinleştirmemizi veya devre dışı bırakmanızı sağlar. | | Imatoreconnectionstring | SecureString | Statik | Imabir için köke yönelik bağlantı dizesi. | | Imaitotoanımsat | Int, varsayılan değer 1024 | Dinamik | Küme ve ımafer arasındaki en düşük aktarım hızı. Bu değer, dış ımatikten erişirken zaman aşımını belirlemede kullanılır. Bu değeri yalnızca küme ve ımaver arasındaki gecikme süresi yüksekse, kümenin dış ımak'ten indirilmesi için daha fazla zaman tanımak istiyorsanız değiştirin. | | MaxUnusedAppTypeVersionsToKeep | Int, varsayılan 3 ' dir | Dinamik | Bu yapılandırma, temizleme için atlanacak kullanılmayan uygulama türü sürümlerinin sayısını tanımlar. Bu parametre yalnızca CleanupUnusedApplicationTypes parametresi etkinse geçerlidir.
+
+*En iyi genel uygulama varsayılan ( `3` ) kullanmaktır.*|
 
 
 ## <a name="metricactivitythresholds"></a>Metricactivityeşikleri
@@ -669,7 +669,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |ClusterCredentialType|dize, varsayılan değer "none"|Izin verilmiyor|Kümenin güvenliğini sağlamak için kullanılacak güvenlik kimlik bilgilerinin türünü belirtir. Geçerli değerler "none/x509/Windows" |
 |Kümekimlikleri|dize, varsayılan değer ""|Dinamik|Küme düğümlerinin Windows kimlikleri; küme üyeliği yetkilendirmesi için kullanılır. Bu, virgülle ayrılmış bir liste; her giriş bir etki alanı hesap adı veya grup adıdır |
 |Kümespn|dize, varsayılan değer ""|Izin verilmiyor|Kümenin hizmet sorumlusu adı; doku tek bir etki alanı kullanıcısı (gMSA/etki alanı kullanıcı hesabı) olarak çalıştırıldığında. fabric.exe: Federasyon dinleyicileri; kira dinleyicileri ve dinleyicilerinin SPN 'si. iç çoğaltma dinleyicileri; çalışma zamanı hizmeti dinleyicisi ve adlandırma ağ geçidi dinleyicisi. Doku makine hesapları olarak çalıştırıldığında bu, boş bırakılmalıdır; Bu durumda, yan işlem dinleyicisi SPN 'si dinleyici aktarım adresinden bağlanıyor. |
-|CrlCheckingFlag|uint, varsayılan değer 0x40000000|Dinamik|Varsayılan sertifika zinciri doğrulama bayrağı; bileşene özgü bayrak tarafından geçersiz kılınabilir. Örneğin, Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ayarı 0 olarak ayarlandığında, desteklenen değerlerin tam listesini devre dışı bırakır, Certgetcertificatezincirinin dwFlags ile belgelenmiştir:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlCheckingFlag|uint, varsayılan değer 0x40000000|Dinamik|Varsayılan sertifika zinciri doğrulama bayrağı; bileşene özgü bayrak tarafından geçersiz kılınabilir. Örneğin, Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ayarı 0 olarak ayarlandığında, desteklenen değerlerin tam listesini devre dışı bırakır, Certgetcertificatezincirinin dwFlags ile belgelenmiştir: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|TimeSpan, varsayılan:: TimeSpan:: FromMinutes (15)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Çevrimdışı hatayla karşılaşıldığında, belirli bir sertifika için CRL denetlemesi ne kadar devre dışı bırakılır? CRL çevrimdışı hatası yoksayılabilir. |
 |CrlOfflineHealthReportTtl|TimeSpan, varsayılan:: TimeSpan:: FromMinutes (1440)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. |
 |DisableFirewallRuleForDomainProfile| bool, varsayılan değer doğru |Statik| Güvenlik duvarı kuralının etki alanı profili için etkinleştirilip etkinleştirilmeyeceğini belirtir |
@@ -794,7 +794,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |UpgradeApplication |dize, varsayılan değer "admin" |Dinamik| Uygulama yükseltmelerini başlatmak veya kesintiye uğratma için güvenlik yapılandırması. |
 |UpgradeComposeDeployment|dize, varsayılan değer "admin"| Dinamik|Oluşturma dağıtımını yükseltir |
 |Yüksellen Bric |dize, varsayılan değer "admin" |Dinamik| Küme yükseltmelerini başlatmak için güvenlik yapılandırması. |
-|Karşıya Yükle |dize, varsayılan değer "admin" | Dinamik|Görüntü deposu istemcisini karşıya yükleme işlemi için güvenlik yapılandırması. |
+|Karşıya Yükleme |dize, varsayılan değer "admin" | Dinamik|Görüntü deposu istemcisini karşıya yükleme işlemi için güvenlik yapılandırması. |
 
 ## <a name="securityclientcertificateissuerstores"></a>Güvenlik/Clientcertificateıssuermağazalarında
 

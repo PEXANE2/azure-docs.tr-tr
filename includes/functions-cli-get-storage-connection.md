@@ -13,15 +13,15 @@ ms.locfileid: "80673349"
 ---
 ### <a name="retrieve-the-azure-storage-connection-string"></a>Azure depolama bağlantı dizesini alma
 
-Daha önce, işlev uygulaması tarafından kullanılmak üzere bir Azure depolama hesabı oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu ayarı *Local. Settings. JSON* dosyasına indirerek bu bağlantıyı, işlevi yerel olarak çalıştırırken aynı hesaptaki bir depolama kuyruğuna yazma işlemi kullanabilirsiniz. 
+Daha önce, işlev uygulaması tarafından kullanılmak üzere bir Azure depolama hesabı oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu ayarı dosyadaki *local.settings.js* indirerek, bu bağlantıyı, işlevi yerel olarak çalıştırırken aynı hesaptaki bir depolama kuyruğuna yazma ' yı kullanabilirsiniz. 
 
-1. Projenin kökünden, önceki hızlı başlangıçta işlev uygulamanızın adıyla değiştirerek `<app_name>` aşağıdaki komutu çalıştırın. Bu komut, dosyadaki varolan tüm değerlerin üzerine yazar.
+1. Projenin kökünden, `<app_name>` önceki hızlı başlangıçta işlev uygulamanızın adıyla değiştirerek aşağıdaki komutu çalıştırın. Bu komut, dosyadaki varolan tüm değerlerin üzerine yazar.
 
     ```
     func azure functionapp fetch-app-settings <app_name>
     ```
     
-1. *Local. Settings. JSON* ' u açın ve depolama hesabı `AzureWebJobsStorage`bağlantı dizesi olan adlı değeri bulun. Bu makalenin diğer bölümlerinde `AzureWebJobsStorage` adı ve bağlantı dizesini kullanırsınız.
+1. *local.settings.js* açın ve `AzureWebJobsStorage` depolama hesabı bağlantı dizesi olan adlı değeri bulun. `AzureWebJobsStorage`Bu makalenin diğer bölümlerinde adı ve bağlantı dizesini kullanırsınız.
 
 > [!IMPORTANT]
-> *Local. Settings. JSON* , Azure 'dan indirilen gizli dizileri içerdiğinden, bu dosyayı her zaman kaynak denetiminden dışlayın. Yerel işlevler projesiyle oluşturulan *. gitignore* dosyası, varsayılan olarak dosyayı dışlar.
+> *local.settings.js* , Azure 'dan indirilen gizli dizileri içerdiğinden, bu dosyayı her zaman kaynak denetiminden dışlayın. Yerel işlevler projesiyle oluşturulan *. gitignore* dosyası, varsayılan olarak dosyayı dışlar.

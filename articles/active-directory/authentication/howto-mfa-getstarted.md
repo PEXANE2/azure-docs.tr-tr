@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717039"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055082"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
@@ -110,7 +110,7 @@ Kuruluşların, [adlandırılmış konumları](../conditional-access/location-co
 Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Birincil yöntemi kullanılamaz durumda olduğunda kullanıcıların bir yedekleme yöntemine sahip olması için birden fazla kimlik doğrulama yöntemine izin vermek önemlidir. Yöneticilerin etkinleştiremeleri için aşağıdaki yöntemler kullanılabilir:
 
 > [!TIP]
-> Microsoft, en iyi güvenlik ve Kullanıcı deneyimi için Azure Multi-Factor Authentication birincil yöntemi olarak mobil uygulamayı kullanmanızı önerir.
+> Microsoft, daha güvenli ve geliştirilmiş bir kullanıcı deneyimi için Azure Multi-Factor Authentication birincil yöntemi olarak Microsoft Authenticator (mobil uygulama) kullanılmasını önerir. Microsoft Authenticator uygulaması, ulusal standartlar ve teknoloji Authenticator güvence seviyelerini de [karşılar](https://azure.microsoft.com/resources/microsoft-nist/) . 
 
 ### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 

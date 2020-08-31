@@ -27,8 +27,8 @@ Belgedeki girişler, `deploymentconfig.json` [Akswebservice. deploy_configuratio
 | `authEnabled` | `auth_enabled` | Web hizmeti için anahtar kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de olamaz `tokenAuthEnabled` `authEnabled` `True` . Varsayılan, `True` . |
 | `tokenAuthEnabled` | `token_auth_enabled` | Web hizmeti için belirteç kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de olamaz `tokenAuthEnabled` `authEnabled` `True` . Varsayılan, `False` . |
 | `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı. Olarak`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını`0.5` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı. Olarak `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını `0.5` |
 | `appInsightsEnabled` | `enable_app_insights` | Web hizmeti için Application Insights günlüğü etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan, `False` . |
 | `scoringTimeoutMs` | `scoring_timeout_ms` | Web hizmetine yönelik Puanlama çağrılarına zorlamak için zaman aşımı. Varsayılan, `60000` . |
 | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Bu Web hizmeti için düğüm başına en fazla eşzamanlı istek. Varsayılan, `1` . |

@@ -5,9 +5,7 @@
   items:
     - name: Azure Spring Cloud nedir?
       href: spring-cloud-overview.md
-    - name: Spring Mikro Hizmet Uygulamaları için Java ve Temel İşletim Sistemi
-      href: spring-cloud-principles-microservice-apps.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: İlk uygulamanızı yayınlama

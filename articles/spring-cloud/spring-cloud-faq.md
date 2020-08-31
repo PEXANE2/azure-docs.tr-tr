@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800380"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054997"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -42,8 +42,8 @@ Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
 
 Önizleme sürümü sırasında, Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
 
-* `spring.application.name`, her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* `server.port`Varsayılan bağlantı noktaları 80/443 ' dir. Başka herhangi bir değer uygulanırsa, 80/443 olarak geçersiz kılınır.
+* `spring.application.name` , her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
+* `server.port` Varsayılan bağlantı noktaları 80/443 ' dir. Başka herhangi bir değer uygulanırsa, 80/443 olarak geçersiz kılınır.
 * Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
 
 ### <a name="what-pricing-tiers-are-available"></a>Hangi fiyatlandırma katmanları kullanılabilir? 
@@ -88,6 +88,12 @@ Evet.
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure yay bulut hizmeti örneğini sildiğimde/taşırken, uzantı kaynakları da silinir/taşınır mi?
 
 Bu, uzantı kaynaklarına sahip olan kaynak sağlayıcılarının mantığına bağlıdır. Bir örneğin uzantı kaynakları `Microsoft.AppPlatform` aynı ad alanına ait değildir, bu nedenle davranış kaynak sağlayıcısına göre değişir. Örneğin, silme/taşıma işlemi, **Tanılama ayarları** kaynakları için basamaklanmaz. Silinen bir kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya önceki Azure yay bulutu örneği geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
+
+Azure CLı kullanarak Spring Cloud 'ın tanılama ayarlarını silebilirsiniz:
+
+```azurecli
+ az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
+```
 
 ## <a name="java-runtime-and-os-versions"></a>Java çalışma zamanı ve işletim sistemi sürümleri
 

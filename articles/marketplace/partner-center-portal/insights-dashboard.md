@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1a645a333db9b24005639f4adbb2913a2b887b66
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607147"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055677"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 
@@ -67,6 +67,9 @@ Ticari Market ölçümlerini çeşitli yollarla görüntüleyin:
 ## <a name="marketplace-insights-summary"></a>Market öngörüleri Özeti
 
 Market öngörüleri Özeti bölümünde, seçilen tarih aralığı için **sayfa ziyaretlerinin**sayısı, **eyleme yapılan çağrılar**ve **benzersiz ziyaretçiler** bulunur.
+
+>[!NOTE]
+>Market öngörüleri panosu, lider hedefi uç noktasında oluşturulan müşteri adaylarıyla bağıntılı olmayan tıklama akışı verileri sağlar.
 
 ### <a name="page-visits"></a>Sayfa ziyaretleri
 

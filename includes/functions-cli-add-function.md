@@ -12,15 +12,15 @@ ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673192"
 ---
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Aşağıdaki komutu kullanarak, `--name` bağımsız değişkenin Işlevinizin (httpexample) benzersiz adı olduğu ve `--template` bağımsız DEĞIŞKENININ işlevin tetikleyicisini (http) belirttiği, projenize bir işlev ekleyin. 
+Aşağıdaki komutu kullanarak, `--name` bağımsız değişkenin işlevinizin (HttpExample) benzersiz adı olduğu ve `--template` bağımsız değişkeninin işlevin TETIKLEYICISINI (http) belirttiği, projenize bir işlev ekleyin. 
 
 ```
 func new --name HttpExample --template "HTTP trigger"
 ```  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"
-`func new`bir HttpExample.cs kod dosyası oluşturur.
+`func new` bir HttpExample.cs kod dosyası oluşturur.
 ::: zone-end
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
-`func new`Projenin seçilen diline ve *function. JSON*adlı yapılandırma dosyasına uygun bir kod dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturur.
+`func new` Projenin seçtiği dile uygun bir kod dosyası ve * üzerindefunction.js*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturur.
 ::: zone-end

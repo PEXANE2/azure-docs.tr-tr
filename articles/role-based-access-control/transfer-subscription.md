@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029986"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055660"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -28,12 +28,15 @@ Kuruluşların çeşitli Azure abonelikleri olabilir. Her abonelik belirli bir A
 
 Bu makalede, bir aboneliği farklı bir Azure AD dizinine aktarmak ve aktarımdan sonra bazı kaynakları yeniden oluşturmak için izleyebileceğiniz temel adımlar açıklanmaktadır.
 
+> [!NOTE]
+> Azure CSP abonelikleri için, aboneliğin Azure AD dizinini değiştirme desteklenmez.
+
 ## <a name="overview"></a>Genel Bakış
 
 Azure aboneliğini farklı bir Azure AD dizinine aktarmak, dikkatlice planlanmalıdır ve yürütülmesi gereken karmaşık bir işlemdir. Birçok Azure hizmeti, normal şekilde çalışması için güvenlik sorumlularını (kimlikler) gerektirir veya diğer Azure kaynaklarını yönetebilir. Bu makale, güvenlik ilkelerine büyük ölçüde bağlı olan, ancak kapsamlı olmayan Azure hizmetlerinin çoğunu kapsamaya çalışır.
 
 > [!IMPORTANT]
-> Bir aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekir.
+> Bazı senaryolarda, bir aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekebilir. Geçişiniz için kapalı kalma süresinin gerekli olup olmadığını değerlendirmek için dikkatli bir planlama yapılması gerekir.
 
 Aşağıdaki diyagramda, bir aboneliği farklı bir dizine aktardığınızda izlemeniz gereken temel adımlar gösterilmektedir.
 
@@ -71,19 +74,20 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Sistem tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
 | Kullanıcı tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri silmeniz, yeniden oluşturmanız ve uygun kaynağa bağlamanız gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
 | Azure Key Vault | Yes | Yes | [Key Vault erişim ilkelerini listeleme](#list-other-known-resources) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
-| Azure AD kimlik doğrulaması ile Azure SQL veritabanları | Evet | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-other-known-resources) |  |  |
+| Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Yes | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Data Lake Storage 1. Nesil | Evet |  |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Data Lake Storage 1. Nesil | Evet | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosyaları | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosya Eşitleme | Yes | Yes |  |  |
 | Azure Yönetilen Diskleri | Yes | Yok |  |  |
 | Kubernetes için Azure Kapsayıcı Hizmetleri | Yes | Yes |  |  |
-| Azure Active Directory Domain Services | Evet | Hayır |  |  |
+| Azure Active Directory Domain Services | Yes | Hayır |  |  |
 | Uygulama kayıtları | Yes | Yes |  |  |
 
-Aktarılmakta olan abonelikte aynı abonelikte olmayan bir anahtar kasasına bağımlılığı olan bir depolama hesabı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
+> [!IMPORTANT]
+> Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanırsanız ve kaynağın, aktarılmakta olan abonelikte *olmayan* bir anahtar kasasına bağımlılığı varsa, kurtarılamaz bir hata alabilirsiniz. Bu durumda, kurtarılamaz bir hatadan kaçınmak için farklı bir Anahtar Kasası kullanın veya müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -199,9 +203,9 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
     | Ölçütler | Yönetilen kimlik türü |
     | --- | --- |
-    | `alternativeNames`özellik eklemeleri`isExplicit=False` | Sistem tarafından atanan |
-    | `alternativeNames`Özellik şunu içermez`isExplicit` | Sistem tarafından atanan |
-    | `alternativeNames`özellik eklemeleri`isExplicit=True` | Kullanıcı tarafından atanan |
+    | `alternativeNames` özellik eklemeleri `isExplicit=False` | Sistem tarafından atanan |
+    | `alternativeNames` Özellik şunu içermez `isExplicit` | Sistem tarafından atanan |
+    | `alternativeNames` özellik eklemeleri `isExplicit=True` | Kullanıcı tarafından atanan |
 
     Yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az Identity List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) ' i de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
@@ -217,8 +221,8 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
 Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneliğin varsayılan Azure Active Directory kiracı KIMLIĞINE bağlanır. Tüm erişim ilkesi girdileri de bu kiracı kimliğine bağlanır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/move-subscription.md).
 
-> [!WARNING]
-> Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanıyorsanız, aktarılmakta olan abonelikte aynı abonelikte olmayan bir Anahtar Kasası bağımlılığı olan bir kurtarılamaz senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
+> [!IMPORTANT]
+> Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanırsanız ve kaynağın, aktarılmakta olan abonelikte *olmayan* bir anahtar kasasına bağımlılığı varsa, kurtarılamaz bir hata alabilirsiniz. Bu durumda, kurtarılamaz bir hatadan kaçınmak için farklı bir Anahtar Kasası kullanın veya müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakın.
 
 - Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) komutunu kullanın. Daha fazla bilgi için bkz. [erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama](../key-vault/key-vault-group-permissions-for-apps.md).
 
@@ -228,7 +232,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını listeleme
 
-- Azure AD kimlik doğrulamasıyla Azure SQL veritabanları kullanıp kullankullandığınızı görmek için [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) ve [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../sql-database/sql-database-aad-authentication-configure.md).
+- Azure AD kimlik doğrulamasıyla Azure SQL veritabanları kullanıp kullankullandığınızı görmek için [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) ve [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)

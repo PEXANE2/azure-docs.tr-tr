@@ -13,12 +13,13 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: e7729318e6121b0072546b8e111a8b782e95906d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183435"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067833"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory'de Saklı Yordam etkinliğiyle bir SSIS paketi çalıştırma
 
@@ -116,7 +117,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
     ![İşlem hattını doğrulama](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Data Factory **Tümünü** Yayımla düğmesine tıklayarak ardışık düzeni yayımlayın. 
 
-    ![Yayımla](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Yayımlama](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>İşlem hattını çalıştırma ve izleme
 Bu bölümde bir işlem hattı çalıştırması tetiklersiniz ve sonra bunu izleyebilirsiniz. 

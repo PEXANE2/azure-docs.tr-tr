@@ -5,7 +5,7 @@
     - name: Azure İlkesi nedir?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: İlke atama - Portal
@@ -167,7 +167,11 @@
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: Sorun giderme
-  href: ./troubleshoot/general.md
+  items:
+    - name: Genel sorunlar
+      href: ./troubleshoot/general.md
+    - name: Bilinen sorunlar
+      href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
     - name: Azure CLI
@@ -189,9 +193,9 @@
     - name: Java için Azure SDK
       items:
         - name: Atamalar
-          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment
         - name: İlke Tanımları
-          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions
     - name: JavaScript için Azure SDK
       items:
         - name: İlke
@@ -234,31 +238,45 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: Kaynaklar
   items:
-    - name: Bilinen sorunlar
-      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure İlkesi örnekleri
       href: 'https://github.com/Azure/azure-policy'
-    - name: GitHub - Topluluk İlkesi deposu
-      href: 'https://github.com/Azure/Community-Policy'
-    - name: Azure İlkesi için Microsoft Soru-Cevap
-      href: /answers/topics/azure-policy.html
-    - name: Governance YouTube Kanalı
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Konuk Yapılandırma videoları
+    - name: Topluluk araçları
       items:
-        - name: Başlarken
-          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-        - name: Girişimleri Anlama
-          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-        - name: İlke Ata
-          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-        - name: Düzeltme Görevi
-          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: Video - Ignite 2019
-      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: GitHub - Topluluk İlkesi deposu
+          href: 'https://github.com/Azure/Community-Policy'
+        - name: Azure İlkesi Uyumluluk Taraması için GitHub Eylemi
+          href: 'https://github.com/marketplace/actions/azure-policy-compliance-scan'
+        - name: CCO Azure İdare Panosu
+          href: 'https://github.com/Azure/ccodashboard/blob/master/README.md#cco-azure-governance-dashboard-report-pages'
+        - name: AzAdvertizer
+          href: 'https://www.azadvertizer.net/'
+        - name: Azure İdare Görselleştiricisi
+          href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+    - name: Geri bildirim ve destek
+      items:
+        - name: Azure İlkesi için Microsoft Soru-Cevap
+          href: /answers/topics/azure-policy.html
+        - name: Azure destek bileti
+          href: 'https://azure.microsoft.com/support/create-ticket/'
+        - name: UserVoice
+          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+    - name: Videolar
+      items:
+        - name: Governance YouTube Kanalı
+          href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+        - name: Video - Ignite 2019
+          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: Konuk Yapılandırma videoları
+          items:
+            - name: Başlarken
+              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+            - name: Girişimleri Anlama
+              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+            - name: İlke Ata
+              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+            - name: Düzeltme Görevi
+              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'

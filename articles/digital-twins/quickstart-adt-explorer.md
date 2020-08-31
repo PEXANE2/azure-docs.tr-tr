@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008565"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055473"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -27,7 +27,11 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 1. Oluşturulan senaryo grafiğini keşfet
 1. Grafikte değişiklikler yapma
 
-## <a name="prerequisites"></a>Önkoşullar
+İle birlikte çalıştığınız örnek grafik, iki kattan ve iki odaya sahip bir bina temsil eder. Grafik şöyle görünür:
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi **[ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 

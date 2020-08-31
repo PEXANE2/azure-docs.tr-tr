@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496228"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055575"
 ---
 # <a name="use-file-metadata-in-queries"></a>Sorgularda dosya meta verilerini kullan
 
-SQL isteğe bağlı sorgu hizmeti, [sorgu klasörleri ve birden çok dosya](query-folders-multiple-csv-files.md) makalesinde açıklandığı gibi birden çok dosya ve klasörü ele alabilir. Bu makalede, sorgularda dosya ve klasör adları hakkında meta veri bilgilerini nasıl kullanacağınızı öğreneceksiniz.
+SQL isteğe bağlı, [sorgu klasörleri ve birden çok dosya](query-folders-multiple-csv-files.md) makalesinde açıklandığı şekilde birden çok dosya ve klasörü ele alabilir. Bu makalede, sorgularda dosya ve klasör adları hakkında meta veri bilgilerini nasıl kullanacağınızı öğreneceksiniz.
 
 Bazen, sonuç kümesindeki belirli bir satırla hangi dosya veya klasör kaynağının ilişkili olduğunu bilmeniz gerekebilir.
 

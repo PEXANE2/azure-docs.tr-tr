@@ -3,12 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086158"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054980"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -114,7 +114,7 @@ Site Recovery, şirket içi VMware VM 'lerini ve fiziksel sunucuları Azure 'da 
 
 Hayır. Azure portal Mart 2019 ' den başlayarak, yalnızca Azure yönetilen disklere çoğaltabilirsiniz.
 
-Yeni VM 'lerin bir depolama hesabına çoğaltılması yalnızca PowerShell veya REST API (sürüm 2018-01-10 veya 2016-08-10) kullanılarak kullanılabilir.
+Yeni VM 'lerin bir depolama hesabına çoğaltılması yalnızca PowerShell ([az. RecoveryServices Module Version 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) veya REST API (sürüm 2018-01-10 veya 2016-08-10) kullanılarak kullanılabilir. PowerShell komutlarını kullanarak çoğaltmayı ayarlamayı [öğrenin](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) .
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Yönetilen disklere çoğaltılmasının avantajları nelerdir?
 

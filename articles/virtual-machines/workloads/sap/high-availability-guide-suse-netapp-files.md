@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/28/2020
 ms.author: radeltch
-ms.openlocfilehash: dd245ddfa7f6be90e37bacc0797a3af4adc8bb96
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 089976f6e97e303dd8faaf854e453a558b9eba84
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650443"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067595"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -250,7 +250,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.1.1.20**)
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklama
       1. YOKLAR için IP adresi 10.1.1.21
          * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **10.1.1.21** ve **ön uç). QAS. ERS**)
    1. Arka uç havuzunu oluşturma
@@ -276,7 +276,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. **Ha bağlantı noktalarını** seçin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklama
          * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **lb. QAS. ERS**)
 1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
@@ -293,13 +293,13 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
       1. Sanal makine Ekle ' ye tıklayın.
       1. Daha önce yoks için oluşturduğunuz kullanılabilirlik kümesini seçin 
       1. (A) SCS kümesinin sanal makinelerini seçin
-      1. Tamam 'a tıklayın
+      1. Tamam’a tıklama
    1. Sistem durumu araştırmalarını oluşturma
       1. YOKS için bağlantı noktası 620**00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklama
       1. YOKLAR için bağlantı noktası 621**01**
             * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
    1. Yük Dengeleme kuralları
@@ -310,7 +310,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. Protokol **TCP**'yi tut, bağlantı noktası **3200** girin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklama
       1. YOKS için ek bağlantı noktaları
          * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında yineleyin
       1. YOKLAR için ek bağlantı noktaları
@@ -575,7 +575,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s

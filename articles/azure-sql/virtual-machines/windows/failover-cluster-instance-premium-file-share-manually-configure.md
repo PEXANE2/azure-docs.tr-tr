@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: befab4dfb8d414743b70c535d041112bd9ccb700
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964173"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055150"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium dosya paylaşımıyla bir FCı oluşturma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 ## <a name="mount-premium-file-share"></a>Premium dosya paylaşma bağlama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. ve depolama hesabınıza gidin.
 1. **Dosya hizmeti**altında **dosya paylaşımları** ' na gidin ve ardından SQL depolaması için kullanmak istediğiniz Premium dosya paylaşımını seçin.
 1. Dosya paylaşımınızın bağlantı dizesini görüntülemek için **Bağlan** ' ı seçin.
 1. Açılan listede, kullanmak istediğiniz sürücü harfini seçin ve ardından her iki kod bloğunu Not defteri 'ne kopyalayın.
@@ -204,7 +204,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2019 kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824959"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055643"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -24,9 +24,21 @@ Bu makalenin geri kalanında, bu işlemlerin nasıl kullanılacağına ilişkin 
 
 ## <a name="query-syntax"></a>Sorgu söz dizimi
 
-Bu bölüm, sorgu dili yapısını gösteren ve olası sorgu işlemlerini gerçekleştiren örnek sorgular içerir.
+Bu bölüm, sorgu dili yapısını gösteren örnek sorgular içerir ve [dijital TWINS](concepts-twins-graph.md)üzerinde olası sorgu işlemleri gerçekleştirir.
 
-Özelliklere göre [dijital TWINS](concepts-twins-graph.md) al (kimlik ve meta veriler dahil):
+### <a name="select-top-items"></a>En üstteki öğeleri seç
+
+Yan tümcesini kullanarak bir sorgudaki birkaç "üst" öğeyi seçebilirsiniz `Select TOP` .
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE ...
+```
+
+### <a name="query-by-property"></a>Özelliğe göre sorgu
+
+**Özelliklere** göre dijital TWINS al (kimlik ve meta veriler dahil):
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -38,24 +50,29 @@ AND T.Temperature = 70
 > [!TIP]
 > Dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
 
-Ayrıca, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında açıklandığı gibi, kendi *etiket* özelliklerine göre TWINS 'leri de edinebilirsiniz:
+Ayrıca, **belirli bir özelliğin tanımlanıp tanımlanmadığına**göre TWINS de alabilirsiniz. Tanımlı bir *konum* özelliği olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
+
+```sql
+SELECT *
+FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+```
+
+Bu, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında açıklandığı gibi, kendi *etiket* özelliklerine göre TWINS 'leri almanıza yardımcı olabilir. *Kırmızı*ile etiketlenmiş tüm TWINS 'leri alan bir sorgu aşağıda verilmiştir:
+
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-### <a name="select-top-items"></a>En üstteki öğeleri seç
-
-Yan tümcesini kullanarak bir sorgudaki birkaç "üst" öğeyi seçebilirsiniz `Select TOP` .
+Ayrıca, **bir özelliğin türüne**göre TWINS de edinebilirsiniz. *Sıcaklık* özelliği bir sayı olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 
 ```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE property = 42
+SELECT * FROM DIGITALTWINS T
+WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>Modele göre sorgu
 
-`IS_OF_MODEL`İşleci, ikizi 'in [modeline](concepts-models.md)göre filtrelemek için kullanılabilir. Devralmayı destekler ve birkaç aşırı yükleme seçeneği içerir.
+`IS_OF_MODEL`İşleci, ikizi 'in [**modeline**](concepts-models.md)göre filtrelemek için kullanılabilir. Devralmayı destekler ve birkaç aşırı yükleme seçeneği içerir.
 
 En basit kullanımı `IS_OF_MODEL` yalnızca bir parametre alır `twinTypeName` : `IS_OF_MODEL(twinTypeName)` .
 Bu parametreye bir değer geçiren sorgu örneği aşağıda verilmiştir:
@@ -87,7 +104,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
 
-Dijital TWINS ' ilişkilerine göre sorgulama yaparken, Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
+Dijital TWINS ' **ilişkilerine**göre sorgulama yaparken Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
 
 İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` . 
 
@@ -117,7 +134,8 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
 
-Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
+Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. , **İlişkilerinin özelliklerine göre**TWINS 'i sorgulayabilirsiniz.
+Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
 
 Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
 
@@ -142,10 +160,20 @@ SELECT LightBulb
 FROM DIGITALTWINS Room 
 JOIN LightPanel RELATED Room.contains 
 JOIN LightBulb RELATED LightPanel.contains 
-WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
-AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
-AND Room.$dtId IN [‘room1’, ‘room2’] 
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1') 
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1') 
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
+
+### <a name="other-compound-query-examples"></a>Diğer bileşik sorgu örnekleri
+
+Tek bir sorguda daha fazla ayrıntı dahil etmek için, birleşim işleçlerini kullanarak yukarıdaki sorgu türlerinden herhangi birini **birleştirebilirsiniz** . Aynı anda birden fazla ikizi tanımlayıcısı için sorgu oluşturan bileşik sorguların bazı ek örnekleri aşağıda verilmiştir.
+
+| Açıklama | Sorgu |
+| --- | --- |
+| *Oda 123* ' nin sahip olduğu cihazların dışında, işleç rolüne sunan mxyonga cihazlarını döndürün | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
+| KIMLIĞI *ID1* olan başka bir Ikizi ile *Contains* adlı bir ilişkiye sahip olan TWINS 'i alma | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| Bu oda modelinin *floor11* tarafından bulunan tüm odalarına ulaşın | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 

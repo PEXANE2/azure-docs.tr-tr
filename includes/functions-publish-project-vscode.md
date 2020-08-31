@@ -29,16 +29,16 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
     + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    + **Azure 'da işlev uygulaması seçin**: Seç `+ Create new Function App`. (Bu makalede kapsanmayan `Advanced` seçeneğini seçmeyin.)
+    + **Azure 'da işlev uygulaması seçin**: Seç `+ Create new Function App` . ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
       
     + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
     
     ::: zone pivot="programming-language-python"
-    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Python sürümünü seçin. Sürümünüzü denetlemek için `python --version` komutunu kullanabilirsiniz.
+    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Python sürümünü seçin. `python --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
     ::: zone-end
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Node. js sürümünü seçin. Sürümünüzü denetlemek için `node --version` komutunu kullanabilirsiniz.
+    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Node.js sürümünü seçin. `node --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
     ::: zone-end
 
     + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. 

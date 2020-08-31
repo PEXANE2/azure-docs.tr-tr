@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 46aae2acb1f35eb22259e1e648fb869c23f26c9c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500802"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067680"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için Azure Güvenlik temeli
 
@@ -34,11 +34,11 @@ Alternatif olarak, PostgreSQL için Azure veritabanı uygulamalarına ağ erişi
 
 PostgreSQL için Azure veritabanı sunucunuzu güvenlik duvarı kurallarıyla da güvenli hale bırakabilirsiniz. Sunucu güvenlik duvarı, hangi bilgisayarların izin olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik duvarınızı yapılandırmak için kabul edilebilir IP adreslerinin aralıklarını belirten güvenlik duvarı kuralları oluşturun. Sunucu düzeyinde güvenlik duvarı kuralları oluşturabilirsiniz.
 
-PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-PostgreSQL için Azure veritabanı 'nda VNet hizmet uç noktaları ve VNet kuralları oluşturma ve yönetme:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+PostgreSQL için Azure veritabanı 'nda VNet hizmet uç noktaları ve VNet kuralları oluşturma ve yönetme: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırma:https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
+PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırma: https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -48,11 +48,11 @@ PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırm
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örneği özel bir uç noktayla güvenli hale geldiğinde, sanal makineleri aynı sanal ağa dağıtabilirsiniz. Veri sızdırma riskini azaltmak için bir ağ güvenlik grubu (NSG) kullanabilirsiniz. Trafik denetimi için NSG akış günlüklerini etkinleştirin ve günlükleri bir depolama hesabına gönderin. Ayrıca, NSG akış günlüklerini bir Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzda trafik akışına Öngörüler sağlamak için Trafik Analizi kullanabilirsiniz. Trafik Analizi avantajlarından bazıları, ağ etkinliğini görselleştirme ve etkin noktaları belirlemek, güvenlik tehditlerini belirlemek, trafik akışı düzenlerini anlamak ve ağ yapılandırmalarını saptamak için kullanılır.
 
-PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-NSG akış günlüklerini etkinleştirme:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Trafik Analizi etkinleştirme ve kullanma: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -72,9 +72,9 @@ Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/netwo
 
 DDoS saldırılarına karşı koruma sağlamak için PostgreSQL için Azure veritabanı örnekleri ile ilişkili sanal ağlarda DDoS koruma standardı 'nı etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
-PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması nasıl yapılandırılır:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması nasıl yapılandırılır: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-DDoS korumasını yapılandırma:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS korumasını yapılandırma: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -84,9 +84,9 @@ DDoS korumasını yapılandırma:https://docs.microsoft.com/azure/virtual-networ
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örneği özel bir uç noktayla güvenli hale geldiğinde, sanal makineleri aynı sanal ağa dağıtabilirsiniz. Daha sonra, veri sızdırma riskini azaltmak için bir ağ güvenlik grubu (NSG) yapılandırabilirsiniz. Trafik denetimi için NSG akış günlüklerini etkinleştirin ve günlükleri bir depolama hesabına gönderin. Ayrıca, NSG akış günlüklerini bir Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzda trafik akışına Öngörüler sağlamak için Trafik Analizi kullanabilirsiniz. Trafik Analizi avantajlarından bazıları, ağ etkinliğini görselleştirme ve etkin noktaları belirlemek, güvenlik tehditlerini belirlemek, trafik akışı düzenlerini anlamak ve ağ yapılandırmalarını saptamak için kullanılır.
 
-NSG akış günlüklerini etkinleştirme:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Trafik Analizi etkinleştirme ve kullanma: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -96,7 +96,7 @@ Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/netwo
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı Için Gelişmiş tehdit koruması kullanın. Gelişmiş tehdit koruması, veritabanlarına erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
-PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması nasıl yapılandırılır:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması nasıl yapılandırılır: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -116,9 +116,9 @@ PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması nasıl yap�
 
 Note: PostgreSQL için Azure veritabanı "Microsoft. SQL" hizmet etiketini kullanır.
 
-Hizmet etiketlerini kullanma hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Hizmet etiketlerini kullanma hakkında daha fazla bilgi için: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-PostgreSQL için Azure veritabanı için hizmet etiketi kullanımını anlayın:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
+PostgreSQL için Azure veritabanı için hizmet etiketi kullanımını anlayın: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -132,11 +132,11 @@ PostgreSQL için Azure veritabanı için hizmet etiketi kullanımını anlayın:
 
 - PostgreSQL veritabanı sunucuları için TLS bağlantısının zorla etkinleştirilmesi gerekir
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ağ için Azure Ilke örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/
+Ağ için Azure Ilke örnekleri: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Azure Blueprint oluşturma:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Azure Blueprint oluşturma: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -150,7 +150,7 @@ Tüm kaynakların etiketlerle oluşturulduğundan ve mevcut etiketlenmemiş kayn
 
 Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzerinde arama yapabilir veya eylemler gerçekleştirebilirsiniz.
 
-Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -160,9 +160,9 @@ Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve PostgreSQL Için Azure veritabanı örnekleri ile ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-Azure etkinlik günlüğü olaylarını görüntüleme ve alma:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Azure etkinlik günlüğü olaylarını görüntüleme ve alma: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Azure Izleyici 'de uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Azure Izleyici 'de uyarı oluşturma: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -185,11 +185,11 @@ Azure Izleyici 'de uyarı oluşturma:https://docs.microsoft.com/azure/azure-moni
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örnekleri tarafından oluşturulan güvenlik verilerini toplamak Için tanılama ayarlarını ve sunucu günlüklerini ve alma günlüklerini etkinleştirin. Azure Izleyici 'de, Log Analytics çalışma alanı (ler) kullanarak Analizi sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın. Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
-PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/concepts-audit
+PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -199,11 +199,11 @@ Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Rehberlik**: denetim, güvenlik ve kaynak günlüklerine erişim Için PostgreSQL Için Azure veritabanı örneklerine yönelik tanılama ayarlarını etkinleştirin. PostgreSQL denetim günlüğünü özellikle etkinleştirip etkinleştirdiğinizden emin olun. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını da etkinleştirebilir ve günlükleri aynı Log Analytics çalışma alanına veya depolama hesabına gönderebilirsiniz.
 
-PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/concepts-audit
+PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -222,9 +222,9 @@ Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma:https://d
 
 **Kılavuz**: Azure izleyici 'de, PostgreSQL Için Azure veritabanınızı tutmak üzere kullanılan Log Analytics çalışma alanı için, saklama süresini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-Log Analytics çalışma alanları için günlük bekletme parametreleri ayarlama:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Log Analytics çalışma alanları için günlük bekletme parametreleri ayarlama: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-Kaynak günlüklerini bir Azure depolama hesabında depolama:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Kaynak günlüklerini bir Azure depolama hesabında depolama: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -234,11 +234,11 @@ Kaynak günlüklerini bir Azure depolama hesabında depolama:https://docs.micros
 
 **Rehberlik**: anormal davranışlar Için PostgreSQL Için Azure veritabanı örneklerinden günlükleri çözümleyin ve izleyin. Günlükleri gözden geçirmek ve günlük verilerinde sorgular gerçekleştirmek için Azure Izleyici Log Analytics kullanın. Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik verileri etkinleştirebilir.
 
-Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Log Analytics hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Log Analytics hakkında daha fazla bilgi için: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Azure Izleyici 'de özel sorgular gerçekleştirme:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Azure Izleyici 'de özel sorgular gerçekleştirme: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -250,15 +250,15 @@ Azure Izleyici 'de özel sorgular gerçekleştirme:https://docs.microsoft.com/az
 
 Ayrıca, PostgreSQL için sunucu günlüklerini ve tanılama ayarlarını etkinleştirebilir ve bir Log Analytics çalışma alanına Günlükler gönderebilirsiniz. Log Analytics çalışma alanınızı Azure Sentinel 'e ekleyin. Bu, bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağlar. Bu, güvenlik sorunlarını gidermek için PlayBook 'ları (otomatikleştirilmiş çözümlerin) oluşturulmasına ve kullanılmasına olanak tanır.
 
-PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması 'nı etkinleştirme:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması 'nı etkinleştirme: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/concepts-audit
+PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -298,11 +298,11 @@ Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 PostgreSQL için Azure veritabanı yerleşik rol tabanlı erişim denetimini desteklemez, ancak belirli kaynak sağlayıcısı işlemlerine göre özel roller oluşturabilirsiniz.
 
-Azure aboneliği için özel rolleri anlayın:https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+Azure aboneliği için özel rolleri anlayın: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
 
-PostgreSQL için Azure veritabanı kaynak sağlayıcısı işlemlerini anlayın:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
+PostgreSQL için Azure veritabanı kaynak sağlayıcısı işlemlerini anlayın: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
 
-PostgreSQL için Azure veritabanı için erişim yönetimini anlayın:https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
+PostgreSQL için Azure veritabanı için erişim yönetimini anlayın: https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -314,9 +314,9 @@ PostgreSQL için Azure veritabanı için erişim yönetimini anlayın:https://do
 
 PostgreSQL için Azure veritabanı kaynağı oluşturulduktan sonra, Azure, bir yönetici kullanıcı tarafından güçlü bir parola oluşturulmasını zorlar. Ancak, PostgreSQL örneği oluşturulduktan sonra, daha fazla kullanıcı oluşturmak ve bunlara yönetici erişimi vermek için oluşturduğunuz ilk sunucu yönetici hesabını kullanabilirsiniz. Bu hesapları oluştururken, her hesap için farklı ve güçlü bir parola yapılandırmadiğinizden emin olun.
 
-PostgreSQL için Azure veritabanı için ek hesaplar oluşturma:https://docs.microsoft.com/azure/postgresql/howto-create-users
+PostgreSQL için Azure veritabanı için ek hesaplar oluşturma: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
-Yönetici parolasını güncelleştirme:https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
+Yönetici parolasını güncelleştirme: https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -326,9 +326,9 @@ Yönetici parolasını güncelleştirme:https://docs.microsoft.com/azure/postgre
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örneklerine erişimi olan adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Yönetim hesaplarının sayısını izlemek için Azure Güvenlik Merkezi kimlik ve erişim yönetimi 'ni kullanın. 
 
-Azure Güvenlik Merkezi kimliğini ve erişimini anlayın:https://docs.microsoft.com/azure/security-center/security-center-identity-access 
+Azure Güvenlik Merkezi kimliğini ve erişimini anlayın: https://docs.microsoft.com/azure/security-center/security-center-identity-access 
 
-PostgreSQL için Azure veritabanı 'nda yönetici kullanıcılar oluşturmayı anlayın:https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
+PostgreSQL için Azure veritabanı 'nda yönetici kullanıcılar oluşturmayı anlayın: https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
 
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
@@ -341,11 +341,11 @@ PostgreSQL için Azure veritabanı 'nda yönetici kullanıcılar oluşturmayı a
 
 Ayrıca, PostgreSQL için denetim düzlemi erişimi, REST API aracılığıyla kullanılabilir ve SSO 'yu destekler. Kimlik doğrulaması yapmak için isteklerinizin yetkilendirme üst bilgisini Azure Active Directory aldığınız JSON Web Token ayarlayın.
 
-PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-PostgreSQL için Azure veritabanı REST API anlayın:https://docs.microsoft.com/rest/api/postgresql/
+PostgreSQL için Azure veritabanı REST API anlayın: https://docs.microsoft.com/rest/api/postgresql/
 
-Azure AD ile SSO 'yu anlayın:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Azure AD ile SSO 'yu anlayın: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -355,11 +355,11 @@ Azure AD ile SSO 'yu anlayın:https://docs.microsoft.com/azure/active-directory/
 
 **Rehberlik**: Azure Active Directory MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. Veritabanınızda oturum açmak için Azure AD belirteçlerini kullanırken, veritabanı oturum açma işlemleri için çok faktörlü kimlik doğrulaması gerektirmesini sağlar.
 
-Azure 'da MFA 'yı etkinleştirme:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Azure 'da MFA 'yı etkinleştirme: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -369,9 +369,9 @@ Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme:https://docs.microsoft.
 
 **Kılavuz**: Azure kaynaklarını açmak ve yapılandırmak için yapılandırılmış MULTI-Factor AUTHENTICATION (MFA) Ile ayrıcalıklı erişim iş Istasyonları (Paw) kullanın.
 
-Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Azure 'da MFA 'yı etkinleştirme:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Azure 'da MFA 'yı etkinleştirme: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -385,11 +385,11 @@ Ayrıca, ortamda şüpheli veya güvenli olmayan bir etkinlik olduğunda Günlü
 
 Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın.
 
-PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması ayarlama:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması ayarlama: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Privileged Identity Management dağıtma (PıM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management dağıtma (PıM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Azure AD risk algılamalarını anlama:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure AD risk algılamalarını anlama: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -399,7 +399,7 @@ Azure AD risk algılamalarını anlama:https://docs.microsoft.com/azure/active-d
 
 **Rehberlik**: portala izin vermek ve IP adresi aralıklarının ya da ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından erişim Azure Resource Manager Için, koşullu erişim adlı konum kullanın.
 
-Azure 'da adlandırılmış konumlar nasıl yapılandırılır:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Azure 'da adlandırılmış konumlar nasıl yapılandırılır: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -413,7 +413,7 @@ PostgreSQL için Azure veritabanı 'nda oturum açmak için Azure AD kullanılma
 
 Azure AD kimlik bilgileri ayrıca, PostgreSQL yönetici hesaplarını denetlemek için yönetim düzlemi düzeyinde (ör. Azure portal) yönetim için de kullanılabilir.
 
-PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active Directory kullanın: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -423,11 +423,11 @@ PostgreSQL için Azure veritabanı 'nda kimlik doğrulaması için Azure Active 
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı yönetici rollerine sahip olabilecek eski hesapları bulmaya yardımcı olması için Azure Active Directory günlüklerini gözden geçirin. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek için Azure kimlik erişimi Incelemelerini kullanın, PostgreSQL için Azure veritabanı 'na erişmek üzere kullanılabilecek kurumsal uygulamalara erişin ve rol atamaları. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişiminin her 90 gün gibi düzenli aralıklarla gözden geçirilmesi gerekir.
 
-Azure AD raporlamayı anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD raporlamayı anlayın: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Azure kimlik erişimi Incelemelerini kullanma:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure kimlik erişimi Incelemelerini kullanma: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-PostgreSQL kullanıcılarını ve atanan rolleri gözden geçirin:https://www.postgresql.org/docs/current/database-roles.html
+PostgreSQL kullanıcılarını ve atanan rolleri gözden geçirin: https://www.postgresql.org/docs/current/database-roles.html
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -437,11 +437,11 @@ PostgreSQL kullanıcılarını ve atanan rolleri gözden geçirin:https://www.po
 
 **Rehberlik**: tüm günlükleri bir Log Analytics çalışma alanına göndererek PostgreSQL Için Azure veritabanı ve Azure Active Directory Için tanılama ayarlarını etkinleştirin. Log Analytics içinde istenen uyarıları (başarısız kimlik doğrulama girişimleri gibi) yapılandırın.
 
-PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+PostgreSQL için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme:https://docs.microsoft.com/azure/postgresql/concepts-audit
+PostgreSQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -455,13 +455,13 @@ Algılanan şüpheli eylemlere yönelik otomatik yanıtları yapılandırmak iç
 
 Ayrıca, daha fazla araştırma için günlükleri Azure Sentinel 'e aktarabilirsiniz.
 
-PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması ayarlama:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması ayarlama: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Azure AD Kimlik Koruması genel bakış:https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+Azure AD Kimlik Koruması genel bakış: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
 
-Azure AD riskli oturum açma işlemlerini görüntüleme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure AD riskli oturum açma işlemlerini görüntüleme: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -471,7 +471,7 @@ Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-on
 
 **Rehberlik**: Şu anda kullanılamıyor; Müşteri Kasası henüz PostgreSQL için Azure veritabanı için desteklenmiyor.
 
-Desteklenen Müşteri Kasası hizmetleri listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Desteklenen Müşteri Kasası hizmetleri listesi: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -485,7 +485,7 @@ Desteklenen Müşteri Kasası hizmetleri listesi:https://docs.microsoft.com/azur
 
 **Rehberlik**: etiketi, PostgreSQL Için Azure veritabanı örneklerine veya gizli bilgileri depolayan veya işleyen ilgili kaynaklara yardımcı olmak için kullanın.
 
-Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -495,15 +495,15 @@ Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. PostgreSQL örnekleri için Azure veritabanınıza ağ erişimini yalıtmak ve sınırlamak üzere özel bağlantı, hizmet uç noktaları ve/veya Güvenlik Duvarı kurallarının bir birleşimini kullanın.
 
-Ek Azure abonelikleri oluşturma:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Ek Azure abonelikleri oluşturma: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Yönetim Grupları oluşturma:https://docs.microsoft.com/azure/governance/management-groups/create
+Yönetim Grupları oluşturma: https://docs.microsoft.com/azure/governance/management-groups/create
 
-PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+PostgreSQL için Azure veritabanı için özel bağlantı yapılandırma: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-PostgreSQL için Azure veritabanı 'nda VNet hizmet uç noktaları ve VNet kuralları oluşturma ve yönetme:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+PostgreSQL için Azure veritabanı 'nda VNet hizmet uç noktaları ve VNet kuralları oluşturma ve yönetme: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırma:https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
+PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırma: https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -515,9 +515,9 @@ PostgreSQL için Azure veritabanı güvenlik duvarı kurallarını yapılandırm
 
 Microsoft, PostgreSQL için Azure veritabanı 'nın temel altyapısını yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-PostgreSQL için Azure veritabanı 'na veri alımını azaltma:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
+PostgreSQL için Azure veritabanı 'na veri alımını azaltma: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
 
-Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -529,7 +529,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 Şu anda PostgreSQL için Azure veritabanı 'nda desteklenen TLS sürümü TLS 1,0, TLS 1,1, TLS 1,2.
 
-PostgreSQL için Azure veritabanı için iletim sırasında şifrelemeyi yapılandırma:https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
+PostgreSQL için Azure veritabanı için iletim sırasında şifrelemeyi yapılandırma: https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -541,7 +541,7 @@ PostgreSQL için Azure veritabanı için iletim sırasında şifrelemeyi yapıla
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -549,11 +549,11 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: PostgreSQL Için Azure veritabanı denetim düzlemi 'ne erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın (ör. Azure Portal). Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
+**Rehberlik**: PostgreSQL Için Azure veritabanı denetim düzlemi 'ne erişimi denetlemek için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın (ör. Azure Portal). Veri düzlemi erişimi için (veritabanının kendisi içinde), SQL sorgularını kullanarak kullanıcı oluşturun ve Kullanıcı izinlerini yapılandırın. Azure RBAC, veritabanı içindeki kullanıcı izinlerini etkilemez.
 
-Azure 'da RBAC 'yi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Azure RBAC 'yi yapılandırma: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-PostgreSQL için Azure veritabanı için SQL ile Kullanıcı erişimini yapılandırma:https://docs.microsoft.com/azure/postgresql/howto-create-users
+PostgreSQL için Azure veritabanı için SQL ile Kullanıcı erişimini yapılandırma: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -565,7 +565,7 @@ PostgreSQL için Azure veritabanı için SQL ile Kullanıcı erişimini yapılan
 
 Microsoft, PostgreSQL için Azure veritabanı 'nın temel altyapısını yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -579,7 +579,7 @@ PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahta
 
 AskAzureDBforPostgreSQL@service.microsoft.com.
 
-PostgreSQL için Azure veritabanı için REST 'te şifrelemeyi anlama:https://docs.microsoft.com/azure/postgresql/concepts-security
+PostgreSQL için Azure veritabanı için REST 'te şifrelemeyi anlama: https://docs.microsoft.com/azure/postgresql/concepts-security
 
 Müşteri tarafından yönetilen anahtarları kullanarak PostgreSQL için Azure veritabanı için bekleyen şifrelemeyi anlayın:https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
 
@@ -592,7 +592,7 @@ Müşteri tarafından yönetilen anahtarları kullanarak PostgreSQL için Azure 
 
 **Kılavuz**: Azure Izleyici 'Yi PostgreSQL Için Azure veritabanı ve diğer kritik veya ilgili kaynakların üretim örneklerine ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü ile birlikte kullanın.
 
-Azure etkinlik günlüğü olayları için uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Azure etkinlik günlüğü olayları için uyarı oluşturma: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -606,7 +606,7 @@ Azure etkinlik günlüğü olayları için uyarı oluşturma:https://docs.micros
 
 **Rehberlik**: Şu anda kullanılamıyor; Azure Güvenlik Merkezi, PostgreSQL için Azure veritabanı için güvenlik açığı değerlendirmesini henüz desteklememektedir.
 
-Azure Güvenlik Merkezi 'nde Azure PaaS hizmetleri için özellik kapsamı:https://docs.microsoft.com/azure/security-center/features-paas
+Azure Güvenlik Merkezi 'nde Azure PaaS hizmetleri için özellik kapsamı: https://docs.microsoft.com/azure/security-center/features-paas
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -652,11 +652,11 @@ Azure Güvenlik Merkezi 'nde Azure PaaS hizmetleri için özellik kapsamı:https
 
 **Rehberlik**: abonelikleriniz dahilinde (PostgreSQL Için Azure veritabanı örnekleri dahil) tüm kaynakları sorgulamak ve saptamak Için Azure Kaynak Grafiği 'ni kullanın. Kiracınızda uygun (okuma) izinleriniz olduğundan ve aboneliklerinizdeki kaynakların yanı sıra tüm Azure aboneliklerinin listesini belirleyebildiğinizden emin olun.
 
-Azure Kaynak Graf ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Kaynak Graf ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure RBAC 'yi anlama:https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure RBAC 'yi anlama: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -666,7 +666,7 @@ Azure RBAC 'yi anlama:https://docs.microsoft.com/azure/role-based-access-control
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örneklerine ve diğer ilgili kaynaklara Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler sağlar.
 
-Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -676,11 +676,11 @@ Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örnekleri ve ilgili kaynakları düzenlemek ve izlemek için etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-Ek Azure abonelikleri oluşturma:https://docs.microsoft.com/azure/billing/billing-create-subscription
+Ek Azure abonelikleri oluşturma: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Yönetim Grupları oluşturma:https://docs.microsoft.com/azure/governance/management-groups/create
+Yönetim Grupları oluşturma: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -704,9 +704,9 @@ Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource
 
 Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları sorgular/bulur.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Graph ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -744,9 +744,9 @@ Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/res
 
 - İzin verilen kaynak türleri
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Ilkesiyle belirli bir kaynak türünü reddetme: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -764,7 +764,7 @@ Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak Için Azure koşullu erişimini kullanın. Bu, önemli bilgiler içeren PostgreSQL için Azure veritabanı örnekleri gibi yüksek bir güvenlik ortamındaki kaynaklarda oluşturma ve değişiklik yapılmasını önleyebilir.
 
-Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -798,9 +798,9 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 - PostgreSQL veritabanı sunucuları için günlük bağlantıları etkinleştirilmelidir
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -818,9 +818,9 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 **Kılavuz**: Azure kaynaklarınız genelinde güvenli ayarları zorlamak Için Azure ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilke efektlerini anlayın:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Ilke efektlerini anlayın: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -838,9 +838,9 @@ Azure Ilke efektlerini anlayın:https://docs.microsoft.com/azure/governance/poli
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örnekleri ve ilgili kaynaklar Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure DevOps 'da kod depolama:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure DevOps 'da kod depolama: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos belgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -858,7 +858,7 @@ Azure Repos belgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. DBforPostgreSQL" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -876,7 +876,7 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 **Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. DBforPostgreSQL" ad alanındaki Azure ilke diğer adlarını kullanın. PostgreSQL için Azure veritabanı örneklerine ve ilgili kaynaklara yönelik konfigürasyonları otomatik olarak zorlamak için [Denetim], [reddetme] ve [dağıtım yok] Azure Ilkesini kullanın.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -894,11 +894,11 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı örneklerine erişmek üzere kullanılan Azure App Service üzerinde çalışan Azure sanal makineleri veya Web uygulamaları Için, PostgreSQL Için Azure veritabanı gizli yönetimini basitleştirmek ve güvenli hale getirmek üzere Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın. Key Vault geçici silmenin etkinleştirildiğinden emin olun.
 
-Azure yönetilen kimliklerle tümleştirme:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault oluşturma:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:https://docs.microsoft.com/azure/key-vault/managed-identity
+Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama: https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -912,9 +912,9 @@ PostgreSQL için Azure veritabanı sunucusuna erişmek üzere kullanılan Azure 
 
 Azure Active Directory (AD) içinde otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
-Yönetilen kimlikleri yapılandırma:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Yönetilen kimlikleri yapılandırma: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Azure yönetilen kimliklerle tümleştirme:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -924,7 +924,7 @@ Azure yönetilen kimliklerle tümleştirme:https://docs.microsoft.com/azure/azur
 
 **Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
 
-Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/helpcredscan.html
+Kimlik bilgisi tarayıcısını ayarlama: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -973,9 +973,9 @@ Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen te
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı, veri dosyalarının ve işlem günlüğünün yedeklerini alır. Desteklenen en fazla depolama boyutuna bağlı olarak, tam ve fark yedeklemeleri (4 TB maksimum depolama sunucusu) veya anlık görüntü yedeklemeleri (en fazla 16 TB depolama sunucusu) sunuyoruz. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. İsteğe bağlı olarak 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
 
-PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-PostgreSQL için Azure veritabanı başlangıç yapılandırması 'nı anlayın:https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
+PostgreSQL için Azure veritabanı başlangıç yapılandırması 'nı anlayın: https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -987,9 +987,9 @@ PostgreSQL için Azure veritabanı başlangıç yapılandırması 'nı anlayın:
 
 PostgreSQL için Azure veritabanı örneklerine ait kimlik bilgilerini depolamak üzere Azure Key Vault kullanıyorsanız, anahtarlarınızın düzenli otomatik yedeklemelerini sağlayın.
 
-PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Key Vault anahtarlarını yedekleme:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault anahtarlarını yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1003,7 +1003,7 @@ Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ
 
 PostgreSQL için Azure veritabanı örneklerini düzenli aralıklarla test edin.
 
-PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1013,7 +1013,7 @@ PostgreSQL için Azure veritabanı 'nda bir sunucu nasıl yedekleyebilirsiniz:ht
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı, tam, fark ve işlem günlüğü yedeklemeleri gerçekleştirir. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. İsteğe bağlı olarak 35 güne kadar yapılandırma yapabilirsiniz. Tüm yedeklemeler AES 256 bit şifreleme kullanılarak şifrelenir.
 
-PostgreSQL için Azure veritabanı 'nda yedeklemeyi ve geri yüklemeyi anlayın:https://docs.microsoft.com/azure/postgresql/concepts-backup
+PostgreSQL için Azure veritabanı 'nda yedeklemeyi ve geri yüklemeyi anlayın: https://docs.microsoft.com/azure/postgresql/concepts-backup
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1027,13 +1027,13 @@ PostgreSQL için Azure veritabanı 'nda yedeklemeyi ve geri yüklemeyi anlayın:
 
 **Rehberlik**: kuruluşunuz için bir olay yanıtı Kılavuzu oluşturun. Tüm personel rollerinin yanı sıra olay işleme/yönetim 'in algılanmasından olay sonrası gözden geçirme aşamalarını tanımlayan, yazılı olay yanıt planları bulunduğundan emin olun.
 
-Azure Güvenlik Merkezi 'nde Iş akışı Otomatiklamalar nasıl yapılandırılır:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Azure Güvenlik Merkezi 'nde Iş akışı Otomatiklamalar nasıl yapılandırılır: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Kendi güvenlik olay yanıtı işleminizi oluşturma kılavuzu:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Kendi güvenlik olay yanıtı işleminizi oluşturma kılavuzu: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Microsoft Güvenlik Yanıt Merkezi 'nin bir olayın Anatomisi:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Microsoft Güvenlik Yanıt Merkezi 'nin bir olayın Anatomisi: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Müşteri, kendi olay yanıt planının oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay Işleme kılavuzunu de kullanabilir:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+Müşteri, kendi olay yanıt planının oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay Işleme kılavuzunu de kullanabilir: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1053,7 +1053,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) ve
 
 **Rehberlik**: sistem olay yanıt yeteneklerini düzenli bir temposunda test etmek için alıştırmaları gerçekleştirin. Zayıf noktaları ve boşlukları belirleyip planı gerektiği şekilde gözden geçirin.
 
-NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alıştırma programlarını inceleyin:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alıştırma programlarını inceleyin: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1063,7 +1063,7 @@ NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alışt
 
 **Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), müşterinin verilerine izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır.  Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin.
 
-Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1073,9 +1073,9 @@ Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama:https://docs.microso
 
 **Rehberlik**: sürekli dışa aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Uyarılar Sentinel 'i akışa almak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz.
 
-Sürekli dışarı aktarmayı yapılandırma:https://docs.microsoft.com/azure/security-center/continuous-export
+Sürekli dışarı aktarmayı yapılandırma: https://docs.microsoft.com/azure/security-center/continuous-export
 
-Uyarıları Azure Sentinel 'e aktarma:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Uyarıları Azure Sentinel 'e aktarma: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1085,7 +1085,7 @@ Uyarıları Azure Sentinel 'e aktarma:https://docs.microsoft.com/azure/sentinel/
 
 **Rehberlik**: güvenlik uyarılarında ve önerilerinde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek Için Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanın.
 
-Iş akışı otomasyonunu yapılandırma ve Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
+Iş akışı otomasyonunu yapılandırma ve Logic Apps: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1097,9 +1097,9 @@ Iş akışı otomasyonunu yapılandırma ve Logic Apps:https://docs.microsoft.co
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
-**Rehberlik**: Penettim testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için Microsoft katılım kurallarını izleyin:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Rehberlik**: Penettim testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için Microsoft katılım kurallarını izleyin: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına göre kırmızı ekip oluşturma ve canlı site sızma testini yürütme hakkında daha fazla bilgi edinebilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına göre kırmızı ekip oluşturma ve canlı site sızma testini yürütme hakkında daha fazla bilgi edinebilirsiniz: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

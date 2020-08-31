@@ -4,7 +4,7 @@
   items:
     - name: Koşullu Erişim nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: Kullanım koşullarının kabul edilmesini gerektirme
       href: require-tou.md
@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Oturum
           href: concept-conditional-access-session.md
-    - name: İçgörüler ve raporlama
-      href: howto-conditional-access-insights-reporting.md
     - name: Yalnızca rapor modu
       href: concept-conditional-access-report-only.md
     - name: Hizmet bağımlılıkları
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Eski kimlik doğrulamasını engelleme
       href: block-legacy-authentication.md
+    - name: Yalnızca rapor modunu yapılandırma
+      href: howto-conditional-access-insights-reporting.md
     - name: Onaylı istemci uygulamaları gerektirme
       href: app-based-conditional-access.md
     - name: Uygulama koruma ilkesi gerektir
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: Kullanım koşullarını gerekli kılma
       href: terms-of-use.md
-    - name: Yalnızca rapor modunu yapılandırma
-      href: howto-conditional-access-report-only.md
     - name: Oturum açma sıklığı ve tarayıcı kalıcılık denetimleri
       href: howto-conditional-access-session-lifetime.md
-    - name: Klasik ilkeleri geçirme
-      href: policy-migration-mfa.md
     - name: Sorun giderme
       items:
         - name: Oturum açma sorunlarını giderme
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: SSS
           href: faqs.md
+    - name: Klasik ilkeleri geçirme
+      href: policy-migration-mfa.md
 - name: Başvuru
   items:
     - name: Beta Graph API'leri

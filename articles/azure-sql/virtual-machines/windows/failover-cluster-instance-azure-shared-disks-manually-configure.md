@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003636"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055269"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -86,7 +86,7 @@ Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin:
    ```
 
 
-2. PowerShell kullanarak *üzerindeSharedDiskConfig.js* çalıştırın: 
+2. PowerShell kullanarak * üzerindeSharedDiskConfig.js* çalıştırın: 
 
    ```powershell
    $rgName = < specify your resource group name>
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Bağlantı yapılandırma 
 
-Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2019 kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
+Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ortamınız için uygun olan bağlantı seçeneğini yapılandırın. [Azure yük dengeleyici](hadr-vnn-azure-load-balancer-configure.md) oluşturabilir veya SQL Server 2019 ve Windows Server 2016 (veya üzeri) kullanıyorsanız, [dağıtılmış ağ adı](hadr-distributed-network-name-dnn-configure.md) özelliğinin önizlemesini yapabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 

@@ -13,12 +13,12 @@ ms.locfileid: "80673195"
 ---
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 
-+ Bir Terminal veya komut penceresinde, Azure Functions Core Tools sürüm `func --version` 2.7.1846 veya üzeri olduğunu denetlemek için komutunu çalıştırın.
++ Bir Terminal veya komut penceresinde, `func --version` Azure Functions Core Tools sürüm 2.7.1846 veya üzeri olduğunu denetlemek için komutunu çalıştırın.
 
-+ Azure `az --version` CLI sürümünün 2.0.76 veya üzeri olduğunu denetlemek için öğesini çalıştırın.
++ `az --version`Azure CLI sürümünün 2.0.76 veya üzeri olduğunu denetlemek için öğesini çalıştırın.
 
-+ Azure `az login` 'da oturum açmak ve etkin bir aboneliği doğrulamak için ' i çalıştırın.
++ `az login`Azure 'da oturum açmak ve etkin bir aboneliği doğrulamak için ' i çalıştırın.
 
 ::: zone pivot="programming-language-python"  
-+ Python `python --version` sürüm raporlarınızı 3.8. x, 3.7 `py --version` . x veya 3.6. x olarak denetlemek Için (Linux/MacOS) veya (Windows) öğesini çalıştırın.
++ `python --version` `py --version` Python sürüm raporlarınızı 3.8. x, 3.7. x veya 3.6. x olarak denetlemek için (Linux/MacOS) veya (Windows) öğesini çalıştırın.
 ::: zone-end

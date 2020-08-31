@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654285"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055694"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes hizmeti (AKS) düğümü görüntüsü yükseltme
 
@@ -20,6 +20,10 @@ AKS, en yeni işletim sistemi ve çalışma zamanı güncelleştirmeleriyle gün
 AKS tarafından sunulan en son görüntüler hakkında bilgi edinmek istiyorsanız, daha fazla ayrıntı için bkz. [aks sürüm notları](https://github.com/Azure/AKS/releases) .
 
 Kümeniz için Kubernetes sürümünü yükseltme hakkında daha fazla bilgi için bkz. [AKS kümesini yükseltme][upgrade-cluster].
+
+## <a name="limitations"></a>Sınırlamalar
+
+* AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
 
 ## <a name="install-the-aks-cli-extension"></a>AKS CLı uzantısını yükler
 

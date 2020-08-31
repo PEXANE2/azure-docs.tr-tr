@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020516"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067697"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
@@ -36,6 +36,7 @@ Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzant
 
 | Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Sürüm Notları |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18040.2 | Ağustos 2020   | <ul><li>Azure Arc 'da bir sorunu çözer</li></ul> |
 | 10.20.18038 | 1.0.18038 | Nisan 2020   | <ul><li>Azure Izleyici özel bağlantı kapsamlarını kullanarak özel bağlantı üzerinden bağlantıya izin verebilir</li><li>Bir çalışma alanına yönelik alma sırasında ani ve yanlışlıkla etkileyen bir x kullanmaktan kaçınmak için alım azaltma ekler</li><li>Ek Azure Kamu bulutları ve bölgeleri için destek ekler</li><li>HealthService.exe kilitlendiğinde oluşan bir hatayı çözer</li></ul> |
 | 10.20.18029 | 1.0.18029 | Mart 2020   | <ul><li>SHA-2 kod imzalama desteği ekler</li><li>VM Uzantısı yükleme ve yönetimini geliştirir</li><li>Sunucu tümleştirmesi için Azure Arc 'da bir hata çözer</li><li>Müşteri desteği için yerleşik bir sorun giderme aracı ekler</li><li>Ek Azure Kamu bölgeleri için destek ekler</li> |
 | 10.20.18018 | 1.0.18018 | Ekim 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li></ul> |

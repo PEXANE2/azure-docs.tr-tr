@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131863"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055320"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Konuşma hizmeti: docs 'taki yenilikler
 
@@ -48,9 +48,6 @@ Konuşma hizmeti, konuşma SDK 'Sı, konuşma cihazları SDK 'Sı veya konuşma 
 * [Hızlı başlangıç: geliştirme ortamını ayarlama](quickstarts/setup-platform.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: bir ses dosyasına konuşmayı Sentezleştirme](quickstarts/text-to-speech-audio-file.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: belgelere konuşmacıyı eklenen bir JavaScript yönergelerine Sentezleştirme](quickstarts/text-to-speech.md) .
-* [Hızlı başlangıç: konuşmaya konuşmaya](quickstarts/translate-speech-to-speech.md) eklenen JavaScript yönergelerini belgelere çevirin.
-* [Hızlı başlangıç: konuşmayı birden çok dile çevirme](quickstarts/translate-speech-to-text-multiple-languages.md) -belgelere JavaScript yönergeleri eklendi.
-* [Hızlı başlangıç: konuşmaya metin](quickstarts/translate-speech-to-text.md) eklenmiş JavaScript yönergelerini belgelere çevirin.
 * [Anahtar sözcük nedir?](custom-keyword-overview.md) -Başlangıç içeriği ve bağlantıları güncelleştirildi.
 * Konuşmadan metne eklenen JavaScript ve amaç-C yönergelerinin belgelerine [yönelik kaynak dilini belirtin](how-to-specify-source-language.md) .
 
@@ -77,7 +74,7 @@ Bu tablo aylık olarak güncelleştirilir ve yalnızca Mayıs 'ta açılan sorun
 |[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|on bir tetadını çıkarın|Konuşma hizmeti kapsayıcılarını çalıştırma başarısız|2020-05-13|Açık|Sorun|
 |[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|mani-95|Söyleniş dosyası örneği|2020-05-11|Açık|Sorun|
 |[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|Java örneği yanlış.|2020-05-10|Açık|Sorun|
-|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Pronounciation puanı alınamıyor|2020-05-08|Kapalı|Sorun|
+|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Söyleniş puanı alınamıyor|2020-05-08|Kapalı|Sorun|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|YAML dosya şablonu|2020-05-07|Kapalı|Sorun|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|C# örnek kodu kullanıcıdan konuşmasını istemez.|2020-05-06|Kapalı|Sorun|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|TTS 'yi v 1.3 'den v 1.4 'e yükseltin|2020-05-05|Kapalı|Çekme Isteği|

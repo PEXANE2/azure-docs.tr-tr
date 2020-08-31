@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/27/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934506"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055541"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -30,25 +30,14 @@ Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuş
 
 ## <a name="core-features"></a>Temel Özellikler
 
-Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler şunlardır:
+* Tanıma sonuçlarıyla konuşmaya metin çevirisi.
+* Konuşmadan konuşmaya çevirisi.
+* Birden çok hedef dile çeviri desteği.
+* Ara tanıma ve çeviri sonuçları.
 
-| Kullanım örneği | SDK | REST |
-|----------|-----|------|
-| Tanıma sonuçlarıyla konuşmaya metin çevirisi. | Evet | Hayır |
-| Konuşmadan konuşmaya çevirisi. | Evet | Hayır |
-| Ara tanıma ve çeviri sonuçları. | Evet | Hayır |
+## <a name="get-started"></a>Kullanmaya başlayın 
 
-## <a name="get-started-with-speech-translation"></a>Konuşma çevirisi 'ni kullanmaya başlama
-
-Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hızlı başlangıç sunuyoruz. Bu tablo, dile göre düzenlenen konuşma çevirisi hızlı başlangıçlarını bir listesini içerir.
-
-| Hızlı Başlangıç | Platform | API başvurusu |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Gözat](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Gözat](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Gözat](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Gözat](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Gözat](https://aka.ms/csspeech/javaref) |
+Konuşma çevirisi 'ni kullanmaya başlamak için [hızlı](get-started-speech-translation.md) başlangıca bakın. Konuşma çevirisi hizmeti, konuşma [SDK 'sı](speech-sdk.md) ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -72,5 +61,6 @@ Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi AP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Konuşma çevirisi [hızlı](get-started-speech-translation.md) başlangıcını doldurun
 * [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
