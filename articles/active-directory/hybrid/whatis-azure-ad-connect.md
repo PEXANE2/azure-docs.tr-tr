@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631718"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278845"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect nedir?
 
@@ -26,7 +26,7 @@ Azure AD Connect, Microsoft'un karma kimlik hedeflerinizi karşılamak ve gerçe
 - [Geçişli kimlik doğrulaması](how-to-connect-pta.md) -kullanıcıların şirket içinde ve bulutta aynı parolayı kullanmasına izin veren bir oturum açma yöntemi, ancak Federasyon ortamında ek altyapı gerektirmez.
 - [Federasyon tümleştirme](how-to-connect-fed-whatis.md) -federasyon, Azure AD Connect 'nin isteğe bağlı bir parçasıdır ve şirket içi AD FS altyapısını kullanarak karma ortam yapılandırmak için kullanılabilir. Ayrıca sertifika yenileme ve ek AD FS sunucu dağıtımları gibi AD FS yönetim özellikleri de sağlar.
 - [Eşitleme](how-to-connect-sync-whatis.md) -Kullanıcı, Grup ve diğer nesneleri oluşturmaktan sorumludur.  Ayrıca, şirket içi kullanıcılarınız ve gruplarınız için kimlik bilgilerinin bulutla aynı olduğundan emin olun.  Bu eşitleme, parola karmaları da içerir.
-- [Sistem durumu izleme](whatis-hybrid-identity-health.md) -Azure AD Connect Health, bu etkinliği görüntülemek için güçlü izleme sağlayabilir ve Azure Portal merkezi bir konum sağlayabilir. 
+- [Sistem durumu izleme]() -Azure AD Connect Health, bu etkinliği görüntülemek için güçlü izleme sağlayabilir ve Azure Portal merkezi bir konum sağlayabilir. 
 
 
 ![Azure AD Connect nedir?](./media/whatis-hybrid-identity/arch.png)
@@ -57,7 +57,7 @@ AD FS'ye ilişkin Azure AD Connect Health Windows Server 2008 R2, Windows Server
 
 |Önemli Avantajlar|En İyi Uygulamalar|
 |-----|-----|
-|Geliştirilmiş güvenlik|[Extranet kilitlemede trendler](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Başarısız oturum açma raporu](how-to-connect-health-adfs-risky-ip.md)</br>[Gizlilik uyumlu](reference-connect-health-user-privacy.md)|
+|Artırılmış güvenlik|[Extranet kilitlemede trendler](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Başarısız oturum açma raporu](how-to-connect-health-adfs-risky-ip.md)</br>[Gizlilik uyumlu](reference-connect-health-user-privacy.md)|
 |[Tüm KRITIK ADFS sistem sorunları](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services) hakkında uyarı alın|Sunucu yapılandırması ve kullanılabilirlik</br>[Performans ve bağlantı](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Düzenli bakım|
 |Dağıtımı ve yönetimi kolay|[Hızlı aracı yüklemesi](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Aracıyı en sün sürüme otomatik yükseltme</br>Dakikalar içinde portalda veri|
 Zengin [kullanım ölçümleri](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|En çok kullanılan uygulamalar</br>Ağ konumları ve TCP bağlantısı</br>Sunucu başına belirteç istekleri|
@@ -76,4 +76,4 @@ Zengin [kullanım ölçümleri](how-to-connect-health-adfs.md#usage-analytics-fo
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Hızlı ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-- [Azure AD Connect Health aracılarını yükleme](how-to-connect-health-agent-install.md) 
+- [Azure AD Connect Health aracılarını yükleme](how-to-connect-health-agent-install.md)

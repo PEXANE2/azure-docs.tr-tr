@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68779843"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278658"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Azure Active Directory ile karma kimlik nedir?
 
@@ -36,7 +36,7 @@ Azure AD ile karma kimlik elde etmek için, senaryolarınıza bağlı olarak ü�
 
 Bu kimlik doğrulama yöntemleri [Çoklu oturum açma](how-to-connect-sso.md) yeteneklerini de sağlar.  Çoklu oturum açma, şirket ağınıza bağlı olan şirket cihazlarındaki kullanıcılarınızı otomatik olarak imzalar.
 
-Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
+Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](./choose-ad-authn.md). 
 
 ## <a name="common-scenarios-and-recommendations"></a>Ortak senaryolar ve öneriler 
 
@@ -60,7 +60,7 @@ Aşağıda, bazı yaygın karma kimlik ve erişim yönetimi senaryoları, hangi 
 > 
 > <sup>3</sup> AD FS ile federasyon çoklu oturum açma.  
 >  
-> <sup>4</sup> AD FS, kurumsal PKI çözümünüzle tümleştirilerek sertifika ile oturum açma imkanı sunulabilir. Bu sertifikalar MDM veya GPO gibi güvenilen sağlama kanalları aracılığıyla dağıtılan yazılımsal sertifikalar, akıllı kart sertifikaları (PIV/CAC kartları dahil) veya İç için Hello (sertifika güveni) olabilir. Akıllı kart kimlik doğrulaması desteği hakkında daha fazla bilgi için [bu bloga](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/) bakın. 
+> <sup>4</sup> AD FS, kurumsal PKI çözümünüzle tümleştirilerek sertifika ile oturum açma imkanı sunulabilir. Bu sertifikalar MDM veya GPO gibi güvenilen sağlama kanalları aracılığıyla dağıtılan yazılımsal sertifikalar, akıllı kart sertifikaları (PIV/CAC kartları dahil) veya İç için Hello (sertifika güveni) olabilir. Akıllı kart kimlik doğrulaması desteği hakkında daha fazla bilgi için [bu bloga](/archive/blogs/samueld/adfs-certauth-aad-o365) bakın. 
 > 
 
 ## <a name="license-requirements-for-using-azure-ad-connect"></a>Azure AD Connect kullanımı için lisans gereksinimleri
@@ -73,5 +73,4 @@ Aşağıda, bazı yaygın karma kimlik ve erişim yönetimi senaryoları, hangi 
 - [Parola karması eşitleme (PHS) nedir?](whatis-phs.md) 
 - [Geçişli kimlik doğrulaması (PTA) nedir?](how-to-connect-pta.md) 
 - [Federasyon nedir?](whatis-fed.md) 
-- [Çoklu oturum açma nedir?](how-to-connect-sso.md) 
-
+- [Çoklu oturum açma nedir?](how-to-connect-sso.md)

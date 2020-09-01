@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66473012"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279151"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Öğretici: geçişli kimlik doğrulaması (PTA) kullanarak tek bir AD ormanını tümleştirme
 
@@ -24,11 +24,11 @@ ms.locfileid: "66473012"
 
 Aşağıdaki öğretici, geçişli kimlik doğrulaması kullanarak karma kimlik ortamı oluşturma konusunda size yol gösterecektir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
-- - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
+- - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
 - Windows Server 2016 kopyası
 - Doğrulanmakta olabilecek [özel bir etki alanı](../../active-directory/fundamentals/add-custom-domain.md)
 
@@ -262,4 +262,4 @@ Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanıma
 
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-- [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
+- [Geçişli kimlik doğrulaması](how-to-connect-pta.md)

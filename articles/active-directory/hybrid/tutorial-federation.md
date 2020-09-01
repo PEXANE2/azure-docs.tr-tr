@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200cc996acddecbfc1424ff24295d1373cdb3c23
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226667"
+ms.locfileid: "89279202"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: tek bir AD orman ortamını buluta federasyona ekleme
 
@@ -29,9 +29,9 @@ Aşağıdaki öğreticide, Federasyon kullanarak karma kimlik ortamı oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
-- - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
+- - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
 - Windows Server 2016 kopyası
 - Doğrulanmakta olabilecek [özel bir etki alanı](../../active-directory/fundamentals/add-custom-domain.md)
 
@@ -292,4 +292,3 @@ Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanıma
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
 - [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)
-

@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "64919000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279015"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Öğretici: Azure AD Connect AD FS için bir yedekleme olarak e-s ayarlama
 
@@ -29,11 +29,11 @@ Aşağıdaki öğreticide, Parola karması eşitlemesini yedekleme olarak ayarla
 >[!NOTE]
 >Azure AD Connect sunucusuna erişiminiz yok veya sunucunun internet erişimi yok durumunda, Azure AD tarafında yapılan değişikliklere yardımcı olmak için [Microsoft desteği](https://support.microsoft.com/en-us/contactus/) başvurabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğretici [öğreticiye dayanır: tek BIR ad ormanı ortamını buluta Federasyonun](tutorial-federation.md) ve bu öğreticiyi denemeden önce bir önkoşul vardır.  Bu öğreticiyi tamamlamadıysanız, bu belgedeki adımları denemeden önce bunu yapın.
 
 >[!IMPORTANT]
->PHS 'ye geçmeden önce AD FS ortamınızın bir yedeğini oluşturmalısınız.  Bu işlem, [AD FS hızlı geri yükleme aracı](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)kullanılarak yapılabilir.
+>PHS 'ye geçmeden önce AD FS ortamınızın bir yedeğini oluşturmalısınız.  Bu işlem, [AD FS hızlı geri yükleme aracı](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)kullanılarak yapılabilir.
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>Azure AD Connect ' de PHS 'yi etkinleştirme
 İlk adım, artık Federasyon kullanan bir Azure AD Connect ortamınız olduğuna göre, Parola karması eşitlemesini açmak ve Azure AD Connect karmaları eşitlemesine izin vermek.

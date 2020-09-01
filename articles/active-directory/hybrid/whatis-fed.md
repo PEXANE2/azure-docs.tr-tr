@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1c3bc9f89db3f4b694803a63293a5537d4b98b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049369"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278761"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Azure AD ile Federasyon nedir?
 
@@ -35,7 +35,7 @@ Federasyon, güvenilen bir etki alanı koleksiyonudur. Güven düzeyi farklılı
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Hibrit kimlik nedir?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Hibrit kimlik nedir?](./whatis-hybrid-identity.md)
 - [Azure AD Connect ve Connect Health nedir?](whatis-azure-ad-connect.md)
 - [Parola karması eşitleme nedir?](whatis-phs.md)
 - [Federasyon nedir?](whatis-fed.md)

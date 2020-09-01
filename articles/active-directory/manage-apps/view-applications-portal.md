@@ -12,12 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117898"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277944"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Hızlı başlangıç: kimlik yönetimi için Azure Active Directory (Azure AD) kiracınızı kullanan uygulamaların listesini görüntüleme
 
@@ -27,7 +27,7 @@ Kuruluşunuzun kullandığı uygulamalar için kimlik ve erişim yönetimi (ıAM
 
 Azure AD kiracınızda kayıtlı olan uygulamaları görüntülemek için şunlar gerekir:
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 >[!IMPORTANT]
 >Bu hızlı başlangıçtaki adımları test etmek için üretim dışı bir ortam kullanmanızı öneririz.
