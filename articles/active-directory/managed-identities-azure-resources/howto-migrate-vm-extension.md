@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018385"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260195"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Sanal makine tarafından yönetilen kimlikler uzantısını kullanmayı durdurma ve Azure Instance Metadata Service kullanmaya başlama
 
@@ -35,7 +35,7 @@ Bir sonraki bölümde özetlenen çeşitli sınırlamalar nedeniyle, yönetilen 
 
 ### <a name="provision-the-extension"></a>Uzantıyı sağlama 
 
-Bir sanal makineyi veya sanal makine ölçek kümesini yönetilen bir kimliğe sahip olacak şekilde yapılandırdığınızda, isteğe bağlı olarak `-Type` [set-Azvmexgercmdlet](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 'Teki parametresini kullanarak Azure kaynakları VM uzantısı için Yönetilen kimlikler sağlamayı tercih edebilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
+Bir sanal makineyi veya sanal makine ölçek kümesini yönetilen bir kimliğe sahip olacak şekilde yapılandırdığınızda, isteğe bağlı olarak `-Type` [set-Azvmexgercmdlet](/powershell/module/az.compute/set-azvmextension) 'Teki parametresini kullanarak Azure kaynakları VM uzantısı için Yönetilen kimlikler sağlamayı tercih edebilirsiniz. `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` Sanal makine türüne bağlı olarak ya da ' i geçirebilir ve parametresini kullanarak adını verebilirsiniz `-Name` . `-Settings`Parametresi, OAuth belirteci bitiş noktası tarafından belirteç alımı için kullanılan bağlantı noktasını belirtir:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ Sanal makine ölçek kümesi uzantısını Azure Resource Manager dağıtım şa
 Sanal makine uzantısının sağlanması DNS arama hatalarından dolayı başarısız olabilir. Bu durumda, sanal makineyi yeniden başlatın ve yeniden deneyin. 
 
 ### <a name="remove-the-extension"></a>Uzantıyı kaldırma 
-Uzantıyı kaldırmak için, `-n ManagedIdentityExtensionForWindows` `-n ManagedIdentityExtensionForLinux` [az VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)ile (sanal makine türüne bağlı olarak) veya Azure CLI kullanan sanal makine ölçek kümeleri için [az VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) ' i veya `Remove-AzVMExtension` PowerShell için şunu kullanın:
+Uzantıyı kaldırmak için, `-n ManagedIdentityExtensionForWindows` `-n ManagedIdentityExtensionForLinux` [az VM Extension Delete](/cli/azure/vm/)ile (sanal makine türüne bağlı olarak) veya Azure CLI kullanan sanal makine ölçek kümeleri için [az VMSS Extension Delete](/cli/azure/vmss) ' i veya `Remove-AzVMExtension` PowerShell için şunu kullanın:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Sanal makine uzantısını kullanmanın bazı önemli sınırlamaları vardır.
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) , sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilecek çalışan sanal makine örnekleri hakkında bilgi sağlayan bir REST uç noktasıdır. Uç nokta, `169.254.169.254` yalnızca sanal makine içinden erişilebilen, iyi bilinen YÖNLENDIRILEMEYEN IP adresinde () kullanılabilir.
+[Azure Instance Metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) , sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilecek çalışan sanal makine örnekleri hakkında bilgi sağlayan bir REST uç noktasıdır. Uç nokta, `169.254.169.254` yalnızca sanal makine içinden erişilebilen, iyi bilinen YÖNLENDIRILEMEYEN IP adresinde () kullanılabilir.
 
 Belirteçleri istemek için Azure ıMDS kullanmanın çeşitli avantajları vardır. 
 
@@ -212,4 +212,4 @@ Bu nedenlerden dolayı, sanal makine uzantısı kullanım dışı olduktan sonra
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * [Erişim belirteci almak için bir Azure sanal makinesinde Azure kaynakları için Yönetilen kimlikler kullanma](how-to-use-vm-token.md)
-* [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata Service](../../virtual-machines/windows/instance-metadata-service.md)

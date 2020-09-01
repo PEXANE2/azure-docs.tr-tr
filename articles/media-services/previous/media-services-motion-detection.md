@@ -15,14 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e9a978cd96da47e91434c7146eb3e258d77d8ee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016844"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261351"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics ile Motions Algıla
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure Media Motion Detector** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
@@ -46,7 +48,7 @@ Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
 ### <a name="parameters"></a>Parametreler
 Aşağıdaki parametreleri kullanabilirsiniz:
 
-| Ad | Seçenekler | Açıklama | Varsayılan |
+| Name | Seçenekler | Açıklama | Varsayılan |
 | --- | --- | --- | --- |
 | sensitivityLevel |Dize: ' Low ', ' Medium ', ' High ' |Hareketlerin 'in bildirildiği duyarlılık düzeyini ayarlar. Hatalı pozitif sonuç sayısını ayarlamak için bunu ayarlayın. |uzunlukta |
 | frameSamplingValue |Pozitif tamsayı |Algoritmanın çalışacağı sıklığı ayarlar. 1 her çerçeveye eşittir, 2 her ikinci kare de vb. anlamına gelir. |1 |

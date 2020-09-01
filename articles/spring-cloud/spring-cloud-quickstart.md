@@ -1,18 +1,18 @@
 ---
 title: Hızlı başlangıç - İlk Azure Spring Cloud uygulamanızı dağıtma
-description: Bu hızlı başlangıçta, Azure Spring buluta bir Spring Cloud Hello uygulaması dağıdık.
+description: Bu hızlı başlangıçta, Azure Spring buluta bir yay bulutu uygulaması dağıdık.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6a7a489367aa7348a3449a72de6889476e5d38db
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 245516e0a54865d3a6097c4bb566b850cb738ad6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177608"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260559"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlamak için:
 * Seçim [Azure CLI sürüm 2.0.67 veya üstünü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve Azure yay bulutu uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
 * Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
 
-## <a name="generate-a-spring-cloud-hello-project"></a>Yay bulutu Hello projesi oluşturma
+## <a name="generate-a-spring-cloud-project"></a>Yay bulutu projesi oluşturma
 
 Azure Spring Cloud için önerilen bağımlılıklara sahip bir örnek proje oluşturmak üzere [Spring ınitialku](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) ile başlayın. Aşağıdaki görüntüde, bu örnek proje için ayarlanan ınitialr gösterilmektedir.
 ```url
@@ -125,7 +125,7 @@ Aşağıdaki yordam, Azure CLı kullanarak uygulamayı oluşturur ve dağıtır.
 
 Aşağıdaki yordam, IntelliJ FIKRINDEN örnek uygulamayı dağıtmak üzere Azure Spring Cloud için IntelliJ eklentisini kullanır.  
 
-### <a name="import-hello-project"></a>Merhaba projeyi içeri aktar
+### <a name="import-project"></a>Projeyi içeri aktarma
 
 1. IntelliJ **hoş geldiniz** iletişim kutusunu açın ve içeri aktarma Sihirbazı 'nı açmak Için **projeyi içeri aktar** ' ı seçin.
 1. `hellospring`Klasör seçin.

@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b9b234f0d701ae2ef269b53c3b3c0276ca31f7f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020618"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262133"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services ile Azure Işlevleri geliştirme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Bu makalede, Media Services kullanan Azure Işlevleri oluşturmaya nasıl başlacağınız gösterilmektedir. Bu makalede tanımlanan Azure Işlevi, yeni MP4 dosyaları için **giriş** adlı bir depolama hesabı kapsayıcısını izler. Depolama kapsayıcısına bir dosya bırakıldıktan sonra blob tetikleyicisi işlevi yürütür. Azure işlevlerini gözden geçirmek için bkz. **Azure işlevleri** bölümündeki [genel bakış](../../azure-functions/functions-overview.md) ve diğer konular.
 
 Azure Media Services kullanan mevcut Azure Işlevlerini araştırmak ve dağıtmak istiyorsanız [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)' ne bakın. Bu depo, doğrudan BLOB depolama, kodlama ve BLOB depolamaya geri içerik yazma ile ilgili içerik akışını göstermek için Media Services kullanan örnekleri içerir. Ayrıca, Web kancaları ve Azure Kuyrukları aracılığıyla iş bildirimlerinin nasıl izleneceği hakkında örnekler de içerir. Ayrıca, [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) deposundaki örneklere göre işlevlerinizi geliştirebilirsiniz. İşlevleri dağıtmak için **Azure 'A dağıt** düğmesine basın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - İlk işlevinizin oluşturmadan önce etkin bir Azure hesabınız olması gerekir. Bir Azure hesabınız yoksa [ücretsiz hesaplar kullanılabilir](https://azure.microsoft.com/free/).
 - Azure Media Services (AMS) hesabınızda eylem gerçekleştiren veya Media Services tarafından gönderilen olayları dinlemek için Azure Işlevleri oluşturacaksanız, [burada](media-services-portal-create-account.md)açıklandığı gibi bir AMS hesabı oluşturmanız gerekir.

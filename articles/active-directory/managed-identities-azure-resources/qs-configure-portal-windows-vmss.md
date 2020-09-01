@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b47bba00b3eb09b643e3cc0d8f610557cc1f211
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000898"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262682"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -37,7 +37,7 @@ Bu makalede, PowerShell kullanarak, bir sanal makine ölçek kümesindeki Azure 
     > [!NOTE]
     > Ek Azure AD dizin rolü ataması gerekli değildir.
 
-    - Bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği etkinleştirmek ve kaldırmak için [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
+    - Bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği etkinleştirmek ve kaldırmak için [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 

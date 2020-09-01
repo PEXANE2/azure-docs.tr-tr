@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260535"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -40,10 +40,10 @@ Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 'ın bilinen sınırlamaları nelerdir?
 
-Önizleme sürümü sırasında, Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
-
+Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
+    
 * `spring.application.name` , her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* `server.port` Varsayılan bağlantı noktaları 80/443 ' dir. Başka herhangi bir değer uygulanırsa, 80/443 olarak geçersiz kılınır.
+* `server.port` Varsayılan bağlantı noktası 1025 ' dir. Başka herhangi bir değer uygulanırsa, 1025 olarak geçersiz kılınır.
 * Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
 
 ### <a name="what-pricing-tiers-are-available"></a>Hangi fiyatlandırma katmanları kullanılabilir? 

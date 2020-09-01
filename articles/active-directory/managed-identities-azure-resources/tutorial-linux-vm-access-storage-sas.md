@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ed1ff7f620b45bfc4e7ca4065bce014a28994b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260246"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Öğretici: SAS kimlik bilgisiyle Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan kimliğini kullanma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Bu öğreticide depolama alanı Paylaşılan Erişim İmzası (SAS) kimlik bilgilerini almak üzere bir Linux sanal makinesi (VM) için sistem tarafından atanan yönetilen bir kimliği nasıl kullanacağınız gösterilmektedir. Özellikle, bir [Hizmet SAS kimlik bilgileri](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+Bu öğreticide depolama alanı Paylaşılan Erişim İmzası (SAS) kimlik bilgilerini almak üzere bir Linux sanal makinesi (VM) için sistem tarafından atanan yönetilen bir kimliği nasıl kullanacağınız gösterilmektedir. Özellikle, bir [Hizmet SAS kimlik bilgileri](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 > [!NOTE]
 > Bu öğreticide oluşturulan SAS anahtarı, VM 'ye kısıtlanmayacak/bu anahtara bağlanmayacak.  
@@ -40,7 +40,7 @@ Hizmet SAS, bir hesap erişim anahtarı göstermeden sınırlı bir süre boyunc
 > * VM'nize Resource Manager'da yer alan depolama hesabı SAS için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan SAS almak için bu belirteci kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -86,7 +86,7 @@ Azure Depolama Azure AD kimlik doğrulamayı yerel olarak desteklemez.  Bununla 
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışacağız.
 
-Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/install_guide)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/install-win10)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Azure portalında **Sanal Makineler**'e gidin, Linux sanal makinenize gidin ve ardından **Genel Bakış** sayfasında üst kısımdaki **Bağlan**'a tıklayın. VM'nize bağlanma dizesini kopyalayın. 
 2. SSH istemcinizi kullanarak VM'nize bağlanın.  
@@ -152,7 +152,7 @@ Blob depolama kapsayıcısına yüklemek için örnek bir blob dosyası oluştur
 echo "This is a test file." > test.txt
 ```
 
-Ardından SAS kimlik bilgilerini kullanarak CLI `az storage` komutuyla kimlik doğrulaması yapın ve dosyayı blob kapsayıcısına yükleyin. Bu adım için, daha önceden yüklemediyseniz VM’inize [en son Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
+Ardından SAS kimlik bilgilerini kullanarak CLI `az storage` komutuyla kimlik doğrulaması yapın ve dosyayı blob kapsayıcısına yükleyin. Bu adım için, daha önceden yüklemediyseniz VM’inize [en son Azure CLI](/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -231,4 +231,4 @@ Yanıt:
 Bu öğreticide, SAS kimlik bilgisi kullanarak Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimlik kullanmayı öğrendiniz.  Azure Depolama SAS hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Paylaşılan erişim imzaları (SAS) kullanma](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+>[Paylaşılan erişim imzaları (SAS) kullanma](../../storage/common/storage-sas-overview.md)

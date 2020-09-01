@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179768"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260332"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -41,8 +41,8 @@ Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Sprin
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
 2.1 | Greenwich. RELEASE
-2.2 | Hoxton. RELEASE
-2.3 | Hoxton. SR5
+2.2 | Hoxton. SR8
+2.3 | Hoxton. SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
 
@@ -62,7 +62,7 @@ Spring Boot sürüm 2,1 için aşağıdaki bağımlılıkları uygulama Pod dosy
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -88,7 +88,7 @@ Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosy
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -113,7 +113,7 @@ Spring Boot sürüm 2,3 için aşağıdaki bağımlılıkları uygulama Pod dosy
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -122,49 +122,23 @@ Spring Boot sürüm 2,3 için aşağıdaki bağımlılıkları uygulama Pod dosy
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure yay bulutu istemci bağımlılığı
 
-Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Azure Spring Cloud Service örneğiniz ile iletişime izin vermek için bağımlılıklarınızı Azure yay bulutu istemci Kitaplığı ' nı dahil edin.
+Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Spring Boot 2,2 veya 2,3 kullanılması önerilir. Spring Boot 2,1 için, Azure Spring Cloud Service örneğiniz ile iletişime izin vermek üzere bağımlılıklarınızı Azure Spring Cloud istemci kitaplığı 'nı dahil etmeniz gerekir.
 
 Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan doğru Azure yay bulut sürümleri listelenmektedir.
 
-Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
+Spring Boot sürümü | Yay bulutu sürümü | Azure yay bulutu istemci Başlatıcı sürümü
 ---|---|---
-2.1 | Greenwich. RELEASE | 2.1
-2.2 | Hoxton. RELEASE | 2.2
-2.3 | Hoxton. SR5 | 2.3
+2.1 | Greenwich. RELEASE | 2.1.2
+2.2 | Hoxton. SR8 | Gerekli değil
+2.3 | Hoxton. SR8 | Gerekli değil
 
-pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud sürüm 2,1 için bağımlılık
-
-Spring Boot sürüm 2,1 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
+Spring Boot 2,1 kullanıyorsanız, pom.xml dosyanıza aşağıdaki bağımlılığı ekleyin.
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud sürüm 2,2 için bağımlılık
-
-Spring Boot sürüm 2,2 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-Spring Boot sürüm 2,3 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

@@ -1,16 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Bilgi bankası oluşturma - REST, Java - Soru-Cevap Oluşturma'
-description: Bu Java REST tabanlı hızlı başlangıçta Bilişsel Hizmetler API hesabınızdaki Azure Panonuzda görünecek olan örnek bir Soru-Cevap Oluşturma bilgi bankasını programlamayla oluşturma adımları gösterilir.
+description: Bu Java REST tabanlı hızlı başlangıç, programlama yoluyla, bilişsel hizmetler API hesabınızın Azure panonuzda görünecek bir örnek Soru-Cevap Oluşturma Bilgi Bankası oluşturma işlemi boyunca size yol gösterir.
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325959"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259804"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -39,7 +39,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 Aşağıdaki satırları `CreateKB.java` adlı dosyanın en üstüne ekleyerek projeye gerekli bağımlılıkları dahil edin:
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine erişmek için `CreateKB` sınıfına gerekli sabitleri ekleyin.
@@ -48,18 +48,18 @@ Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.m
 
 Aşağıdaki değerleri ayarlayın:
 
-* `<your-qna-maker-subscription-key>`- **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
-* `<your-resource-name>`- **Kaynak adınız** yazma için yazma uç noktası URL 'sini, biçiminde oluşturmak için kullanılır `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
+* `<your-qna-maker-subscription-key>` - **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu anahtar, tahmin uç noktası anahtarıyla aynı değildir.
+* `<your-resource-name>` - **Kaynak adınız** yazma için yazma uç noktası URL 'sini, biçiminde oluşturmak için kullanılır `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Bu kaynak adı, tahmin uç noktasını sorgulamak için kullanılan ile aynı değil.
 
 Sınıfı bitirmek için küme ayracı eklemeniz gerekmez; bu, hızlı başlangıcın sonundaki en son kod parçacığındadır.
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="constants":::
 
 
 ## <a name="add-the-kb-model-definition-classes"></a>KB modeli tanım sınıfları ekleme
 Sabitlerden sonra model tanımı nesnesini JSON’da seri hale getirmek için `CreateKB` sınıfına aşağıdaki sınıf ve işlevleri ekleyin.
 
-[!code-java[Add the KB model definition classes](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=36-80 "Add the KB model definition classes")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="model":::
 
 ## <a name="add-supporting-functions"></a>Destekleyici işlevleri ekleme
 
@@ -67,24 +67,24 @@ Bir sonraki adımda `CreateKB` sınıfının içine aşağıdaki destekleyici i�
 
 1. JSON sonucunu okunabilir biçimde yazdırmak için aşağıdaki işlevi ekleyin:
 
-    [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="pretty":::
 
 2. HTTP yanıtını yönetmek için aşağıdaki sınıfı ekleyin:
 
-    [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="response":::
 
 3. Soru-Cevap Oluşturma API'lerine POST isteği göndermek için aşağıdaki yöntemi ekleyin. `Ocp-Apim-Subscription-Key`, Soru-Cevap Oluşturma hizmeti anahtarıdır ve kimlik doğrulaması için kullanılır.
 
-    [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="post":::
 
 4. Soru-Cevap Oluşturma API'lerine GET isteği göndermek için aşağıdaki yöntemi ekleyin.
 
-    [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get":::
 
 ## <a name="add-a-method-to-create-the-kb"></a>KB oluşturmak için yöntem ekleme
 Post yöntemine çağırarak KB’yi oluşturmak için aşağıdaki yöntemi ekleyin.
 
-[!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="create_kb":::
 
 Bu API çağrısı, işlem kimliğini içeren bir JSON yanıtı döndürür. İşlem kimliğini KB'nin başarıyla oluşturulup oluşturulmadığını belirlemek için kullanın.
 
@@ -101,7 +101,7 @@ Bu API çağrısı, işlem kimliğini içeren bir JSON yanıtı döndürür. İ�
 ## <a name="add-a-method-to-get-status"></a>Durumu almak için bir yöntem ekleme
 Oluşturma durumunu denetlemek için aşağıdaki yöntemi ekleyin.
 
-[!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get_status":::
 
 Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 
@@ -119,17 +119,17 @@ Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 ## <a name="add-a-main-method"></a>Main yöntemi ekleme
 Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem KIMLIĞI, yanıt gönder üst bilgisi alan **konumunda**döndürülür, ardından Get isteğindeki yolun bir parçası olarak kullanılır. `while`Tamamlandıysa, döngü durumu yeniden dener.
 
-[!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="main":::
 
 ## <a name="compile-and-run-the-program"></a>Programı derleme ve çalıştırma
 
-1. Gson kitaplığının `./libs` dizininde bulunduğundan emin olun. Komut satırında `CreateKB.java` dosyasını derleyin:
+1. Gson kitaplığının `./libs` dizininde bulunduğundan emin olun. Komut satırında, dosyayı derleyin `CreateKB.java` :
 
     ```bash
     javac -cp ".;libs/*" CreateKB.java
     ```
 
-2. Programı çalıştırmak için aşağıdaki komutu bir komut satırına yazın. Soru-Cevap Oluşturma API'sine KB oluşturma isteği gönderir ve 30 saniyede bir sonucu yoklar. Her yanıt konsol penceresine yazdırılır.
+2. Programı çalıştırmak için komut satırına aşağıdaki komutu girin. Soru-Cevap Oluşturma API'sine KB oluşturma isteği gönderir ve 30 saniyede bir sonucu yoklar. Her yanıt konsol penceresine yazdırılır.
 
     ```bash
     java -cp ",;libs/*" CreateKB

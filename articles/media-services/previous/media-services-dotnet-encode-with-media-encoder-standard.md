@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ead605462eeb92b31181ce9bba3100df521b471b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004434"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262420"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET kullanarak Media Encoder Standard bir varlık kodla  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET kullanarak Media Encoder Standard bir varlık kodla
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Kodlama işleri, Media Services en yaygın işlem işlemlerinden biridir. Bir kodlamadan diğerine medya dosyalarını dönüştürmek için kodlama işleri oluşturursunuz. Kodlarken, yerleşik Medya Kodlayıcısı Media Services kullanabilirsiniz. Bir Media Services iş ortağı tarafından sunulan bir kodlayıcı de kullanabilirsiniz; üçüncü taraf kodlayıcılar Azure Marketi aracılığıyla kullanılabilir. 
 

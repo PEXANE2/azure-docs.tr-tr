@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 706e4762fa81ad4f290ded89387fc3ea9ab5bb1c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020584"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262112"
 ---
-# <a name="media-services-development-with-net"></a>.NET ile Media Services geliştirme 
+# <a name="media-services-development-with-net"></a>.NET ile Media Services geliştirme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -31,7 +33,7 @@ Bu makalede, .NET kullanarak Media Services uygulamaları geliştirmeye nasıl b
 
 **Azure Media Services .NET SDK** kitaplığı, .net kullanarak Media Services karşı programlama yapmanızı sağlar. .NET ile geliştirmeyi daha da kolaylaştırmak için **Azure Media Services .NET SDK uzantıları** kitaplığı sağlanır. Bu kitaplık, .NET kodunuzu basitleştirecek bir uzantı yöntemleri ve yardımcı işlevler kümesi içerir. Her iki kitaplık da **NuGet** ve **GitHub**aracılığıyla kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Yeni veya mevcut bir Azure aboneliğinde bir Media Services hesabı. [Media Services hesabı oluşturma](media-services-portal-create-account.md)makalesine bakın.
 * İşletim sistemleri: Windows 10, Windows 7, Windows 2008 R2 veya Windows 8.
 * .NET Framework 4,5 veya üzeri.

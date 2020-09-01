@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089473"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260365"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure yay bulutu için kotalar ve hizmet planları
 
@@ -27,9 +27,6 @@ Bellek | hizmet örneği başına 2 GB | hizmet örneği başına 8 GB
 Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 10 | 10
 Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 25 | 500
 Kalıcı birimler | 1 GB/uygulama x 10 uygulamaları | 50 GB/uygulama x 10 uygulamaları
-
-
-Önizleme dönemi boyunca Azure yay bulutu yalnızca bir hizmet katmanı sunar. Bir sınıra ulaştığınızda, şöyle bir 400 hatası alırsınız: "Kota, *Azure Spring Cloud Service 'in oluşturulduğu*bölge bölgesindeki *aboneliğiniz için* sınırı aşıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

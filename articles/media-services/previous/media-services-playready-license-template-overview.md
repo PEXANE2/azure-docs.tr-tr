@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1fcb935a7a07629ba3d7424a39f6c8542628a842
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084628"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261062"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady lisans şablonuna genel bakış
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure Media Services, artık PlayReady lisanslarını sunmaya yönelik bir hizmet sağlar. Oynatıcı (örneğin, Silverlight) PlayReady korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, istemciye gönderilen lisansı yayınlar ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
 
 Media Services Ayrıca, PlayReady lisanslarınızı yapılandırmak için kullanabileceğiniz API 'Ler de sağlar. Lisanslar, bir kullanıcı tarafından korunan içeriği yürütmeye çalıştığında PlayReady dijital hak yönetimi (DRM) çalışma zamanının uygulanmasını istediğiniz hakları ve kısıtlamaları içerir.
