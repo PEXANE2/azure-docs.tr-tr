@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: ad610339d79eb0fd77403957c252a36e8243eb87
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 0334b13fa73eb2fd648184f44bf0856c0d2a9ed9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837277"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076829"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 
@@ -276,7 +276,7 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Disk ayırma
-Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Bir diski ölçek kümesinden ayırmak için [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) komutunu kullanın ve diskin LUN 'unu belirtin. LUN 'Lar, önceki bölümde [Get-AzVmss](/powershell/module/az.compute/get-azvmss) öğesinden alınan çıktıda gösterilir. Aşağıdaki örnek, ölçek kümesinden LUN *3*’ü ayırır:
+Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Bir diski ölçek kümesinden ayırmak için [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) komutunu kullanın ve diskin LUN 'unu belirtin. LUN 'Lar, önceki bölümde [Get-AzVmss](/powershell/module/az.compute/get-azvmss)  öğesinden alınan çıktıda gösterilir. Aşağıdaki örnek, ölçek kümesinden LUN *3*’ü ayırır:
 
 ```azurepowershell-interactive
 # Get scale set object

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055592"
+ms.locfileid: "89076523"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Yük devretme grubu okuma-yazma dinleyicisi**
 
-  Geçerli birincil URL 'yi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve yük devretme sonrasında birincil değişiklikler olan okuma/yazma iş yükünün birincil veritabanına şeffaf bir şekilde yeniden bağlanmasına izin verir. Yük devretme grubu bir sunucuda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.database.windows.net` . Yük devretme grubu bir SQL yönetilen örneği üzerinde oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.zone_id.database.windows.net` .
+  Geçerli birincil URL 'yi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve yük devretme sonrasında birincil değişiklikler olan okuma/yazma iş yükünün birincil veritabanına şeffaf bir şekilde yeniden bağlanmasına izin verir. Yük devretme grubu bir sunucuda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.database.windows.net` . Yük devretme grubu bir SQL yönetilen örneği üzerinde oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.<zone_id>.database.windows.net` .
 
 - **Yük devretme grubu salt okuma dinleyicisi**
 
-  İkincil URL 'yi işaret eden salt okunurdur dinleyiciyi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve salt okunurdur SQL iş yükünün belirtilen Yük Dengeleme kurallarını kullanarak ikincil sunucuya şeffaf bir şekilde bağlanmasına izin verir. Yük devretme grubu bir sunucuda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.secondary.database.windows.net` . Yük devretme grubu bir SQL yönetilen örneği üzerinde oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.zone_id.secondary.database.windows.net` .
+  İkincil URL 'yi işaret eden salt okunurdur dinleyiciyi işaret eden bir DNS CNAME kaydı. Yük devretme grubu oluşturulduğunda otomatik olarak oluşturulur ve salt okunurdur SQL iş yükünün belirtilen Yük Dengeleme kurallarını kullanarak ikincil sunucuya şeffaf bir şekilde bağlanmasına izin verir. Yük devretme grubu bir sunucuda oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.secondary.database.windows.net` . Yük devretme grubu bir SQL yönetilen örneği üzerinde oluşturulduğunda, dinleyici URL 'SI için DNS CNAME kaydı olarak biçimlendirilir `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 - **Otomatik yük devretme ilkesi**
 
@@ -257,13 +257,13 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.zone_id.database.windows.net` 
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>İkincil örneğe bağlanmak için salt okuma dinleyicisi kullanma
 
-Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.zone_id.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
+Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.secondary.<zone_id>.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
 > [!NOTE]
 > Belirli hizmet katmanlarında SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve bağlantı dizesindeki parametresini kullanarak yük dengelemesi [için destekler](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
 >
-> - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.zone_id.database.windows.net` .
-> - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.zone_id.database.windows.net` .
+> - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.<zone_id>.database.windows.net` .
+> - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>Performans düşüşü için hazırlanma
 

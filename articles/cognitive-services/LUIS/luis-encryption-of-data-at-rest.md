@@ -1,20 +1,20 @@
 ---
 title: Bekleyen verilerin hizmet şifrelemesini Language Understanding
 titleSuffix: Azure Cognitive Services
-description: Bekleyen verilerin hizmet şifrelemesini Language Understanding.
+description: Microsoft, Microsoft tarafından yönetilen şifreleme anahtarları sunar ve ayrıca bilişsel hizmetler aboneliklerinizi, müşteri tarafından yönetilen anahtarlar (CMK) olarak adlandırılan kendi Anahtarlarınıza göre yönetmenizi sağlar. Bu makalede, Language Understanding (LUSıS) için bekleyen veri şifreleme ve CMK 'nin nasıl etkinleştirileceği ve yönetileceği ele alınmaktadır.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052705"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078138"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Bekleyen verilerin hizmet şifrelemesini Language Understanding
 
@@ -22,11 +22,11 @@ Language Understanding hizmeti, buluta kalıcı yapıldığında verilerinizi ot
 
 ## <a name="about-cognitive-services-encryption"></a>Bilişsel hizmetler şifreleme hakkında
 
-[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak güvenlidir ve şifreleme avantajlarından yararlanmak için kodunuzu veya uygulamalarınızı değiştirmeniz gerekmez.
+[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak koruma altındadır ve şifrelemeden yararlanmak için kodunuzu veya uygulamalarınızı değiştirmenize gerek yoktur.
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 
-Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır. Müşteri tarafından yönetilen anahtarlar (CMK), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Aboneliğinizi, müşteri tarafından yönetilen anahtarlar (CMK) adlı kendi anahtarlarınız ile yönetme seçeneği de vardır. CMK, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
 
@@ -39,10 +39,6 @@ Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Ke
 Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için, [Lusıs hizmeti müşteri tarafından yönetilen anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve iletin. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. LUSıS ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir Language Understanding kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Yeni SKU, CMK hariç zaten kullanılabilir olan F0 SKU 'SU ile aynı işlevi görür. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
 
 ![LUSıS abonelik görüntüsü](../media/cognitive-services-encryption/luis-subscription.png)
-
-### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Müşteri tarafından yönetilen anahtarlar tüm [yazma bölgelerinde](luis-reference-regions.md)kullanılabilir. 
 
 ### <a name="limitations"></a>Sınırlamalar
 

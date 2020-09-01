@@ -1,6 +1,7 @@
 - name: Azure Veri Paylaşımı belgeleri
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Azure Veri Paylaşımı nedir?
       href: overview.md
@@ -36,6 +37,11 @@
       href: samples-powershell.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Kaynağa göre verileri paylaşma ve alma
+      items:
+        - name: Azure Veri Gezgini'nden paylaşma
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: İzleme
       href: how-to-monitor.md
     - name: Sorun giderme
@@ -54,9 +60,6 @@
       href: security.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
-    - name: Azure Veri Gezgini verilerini paylaşma
-      href: /azure/data-explorer/data-share
-      maintainContext: true
 - name: Başvuru
   items:
     - name: .NET

@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422071"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078257"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
-Azure Storage artık ölçümleri Azure Izleyici platformu ile tümleştirir. Bu makale, geçişi yapmanıza yardımcı olur.
+**31 ağustos 2023** ' de, *Klasik ölçümler* olarak da bilinen depolama Analizi ölçümler kullanımdan kaldırılacak. Klasik ölçümler kullanıyorsanız, bu tarihten önce Azure Izleyici 'de ölçümlere geçiş yaptığınızdan emin olun. Bu makale, geçişi yapmanıza yardımcı olur.
 
 ## <a name="steps-to-complete-the-transition"></a>Geçişi tamamlamaya yönelik adımlar
 
@@ -63,8 +63,8 @@ Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Az
 
 | Klasik ölçüm | Azure Izleyici 'de ölçüm |
 | ------------------- | ----------------- |
-| `Capacity`            | `BlobCapacity`Boyut `BlobType` değerine eşit `BlockBlob` veya`PageBlob` |
-| `ObjectCount`        | `BlobCount`Boyut `BlobType` değerine eşit `BlockBlob` veya`PageBlob` |
+| `Capacity`            | `BlobCapacity` Boyut `BlobType` değerine eşit `BlockBlob` veya `PageBlob` |
+| `ObjectCount`        | `BlobCount` Boyut `BlobType` değerine eşit `BlockBlob` veya `PageBlob` |
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
@@ -74,40 +74,40 @@ Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Az
 
 | Klasik ölçüm | Azure Izleyici 'de ölçüm |
 | ------------------- | ----------------- |
-| `AnonymousAuthorizationError` | Boyutu `ResponseType` `AuthorizationError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousClientOtherError` | Boyutu `ResponseType` `ClientOtherError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousClientTimeoutError` | Boyutu `ResponseType` `ClientTimeoutError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousNetworkError` | Boyutu `ResponseType` `NetworkError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousServerOtherError` | Boyutu `ResponseType` `ServerOtherError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousServerTimeoutError` | Boyutu `ResponseType` `ServerTimeoutError` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
-| `AnonymousSuccess` | Boyutu `ResponseType` `Success` ve boyutu `Authentication` eşit olan işlemler`Anonymous` |
+| `AnonymousAuthorizationError` | Boyutu `ResponseType` `AuthorizationError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousClientOtherError` | Boyutu `ResponseType` `ClientOtherError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousClientTimeoutError` | Boyutu `ResponseType` `ClientTimeoutError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousNetworkError` | Boyutu `ResponseType` `NetworkError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousServerOtherError` | Boyutu `ResponseType` `ServerOtherError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousServerTimeoutError` | Boyutu `ResponseType` `ServerTimeoutError` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
+| `AnonymousSuccess` | Boyutu `ResponseType` `Success` ve boyutu `Authentication` eşit olan işlemler `Anonymous` |
 | `AnonymousThrottlingError` | Boyutu veya ile eşit boyuta sahip işlemler `ResponseType` `ClientThrottlingError` `ServerBusyError` `Authentication``Anonymous` |
-| `AuthorizationError` | Boyutu `ResponseType` Şuna eşit olan işlemler`AuthorizationError` |
+| `AuthorizationError` | Boyutu `ResponseType` Şuna eşit olan işlemler `AuthorizationError` |
 | `Availability` | `Availability` |
 | `AverageE2ELatency` | `SuccessE2ELatency` |
 | `AverageServerLatency` | `SuccessServerLatency` |
-| `ClientOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ClientOtherError` |
-| `ClientTimeoutError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ClientTimeoutError` |
-| `NetworkError` | Boyutu `ResponseType` Şuna eşit olan işlemler`NetworkError` |
-| `PercentAuthorizationError` | Boyutu `ResponseType` Şuna eşit olan işlemler`AuthorizationError` |
-| `PercentClientOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ClientOtherError` |
-| `PercentNetworkError` | Boyutu `ResponseType` Şuna eşit olan işlemler`NetworkError` |
-| `PercentServerOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ServerOtherError` |
-| `PercentSuccess` | Boyutu `ResponseType` Şuna eşit olan işlemler`Success` |
+| `ClientOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ClientOtherError` |
+| `ClientTimeoutError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ClientTimeoutError` |
+| `NetworkError` | Boyutu `ResponseType` Şuna eşit olan işlemler `NetworkError` |
+| `PercentAuthorizationError` | Boyutu `ResponseType` Şuna eşit olan işlemler `AuthorizationError` |
+| `PercentClientOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ClientOtherError` |
+| `PercentNetworkError` | Boyutu `ResponseType` Şuna eşit olan işlemler `NetworkError` |
+| `PercentServerOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ServerOtherError` |
+| `PercentSuccess` | Boyutu `ResponseType` Şuna eşit olan işlemler `Success` |
 | `PercentThrottlingError` | Boyutu `ResponseType` veya değerine eşit olan işlemler `ClientThrottlingError``ServerBusyError` |
-| `PercentTimeoutError` | Boyutu `ResponseType` eşit `ServerTimeoutError` veya `ResponseType` buna eşit olan işlemler`ClientTimeoutError` |
-| `SASAuthorizationError` | Boyutu `ResponseType` `AuthorizationError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASClientOtherError` | Boyutu `ResponseType` `ClientOtherError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASClientTimeoutError` | Boyutu `ResponseType` `ClientTimeoutError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASNetworkError` | Boyutu `ResponseType` `NetworkError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASServerOtherError` | Boyutu `ResponseType` `ServerOtherError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASServerTimeoutError` | Boyutu `ResponseType` `ServerTimeoutError` ve boyutu `Authentication` eşit olan işlemler`SAS` |
-| `SASSuccess` | Boyutu `ResponseType` `Success` ve boyutu `Authentication` eşit olan işlemler`SAS` |
+| `PercentTimeoutError` | Boyutu `ResponseType` eşit `ServerTimeoutError` veya `ResponseType` buna eşit olan işlemler `ClientTimeoutError` |
+| `SASAuthorizationError` | Boyutu `ResponseType` `AuthorizationError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASClientOtherError` | Boyutu `ResponseType` `ClientOtherError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASClientTimeoutError` | Boyutu `ResponseType` `ClientTimeoutError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASNetworkError` | Boyutu `ResponseType` `NetworkError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASServerOtherError` | Boyutu `ResponseType` `ServerOtherError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASServerTimeoutError` | Boyutu `ResponseType` `ServerTimeoutError` ve boyutu `Authentication` eşit olan işlemler `SAS` |
+| `SASSuccess` | Boyutu `ResponseType` `Success` ve boyutu `Authentication` eşit olan işlemler `SAS` |
 | `SASThrottlingError` | Boyutu veya ile eşit boyuta sahip işlemler `ResponseType` `ClientThrottlingError` `ServerBusyError` `Authentication``SAS` |
-| `ServerOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ServerOtherError` |
-| `ServerTimeoutError` | Boyutu `ResponseType` Şuna eşit olan işlemler`ServerTimeoutError` |
-| `Success` | Boyutu `ResponseType` Şuna eşit olan işlemler`Success` |
-| `ThrottlingError` | `Transactions`Boyut `ResponseType` değerine eşit `ClientThrottlingError` veya`ServerBusyError`|
+| `ServerOtherError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ServerOtherError` |
+| `ServerTimeoutError` | Boyutu `ResponseType` Şuna eşit olan işlemler `ServerTimeoutError` |
+| `Success` | Boyutu `ResponseType` Şuna eşit olan işlemler `Success` |
+| `ThrottlingError` | `Transactions` Boyut `ResponseType` değerine eşit `ClientThrottlingError` veya `ServerBusyError`|
 | `TotalBillableRequests` | `Transactions` |
 | `TotalEgress` | `Egress` |
 | `TotalIngress` | `Ingress` |

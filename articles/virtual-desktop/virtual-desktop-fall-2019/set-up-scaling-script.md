@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005593"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078189"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Windows sanal masaüstü (klasik) oturum konaklarına ölçeklendirme
 
@@ -21,10 +21,6 @@ ms.locfileid: "88005593"
 Sanal makinelerinizi (VM 'Ler) ölçeklendirerek toplam Windows sanal masaüstü dağıtım maliyetinizi azaltabilirsiniz. Bu, yoğun olmayan kullanım saatlerinde oturum ana bilgisayar VM 'lerinin kapatılması ve serbest bir şekilde çıkarılması, daha sonra yeniden açılması ve yoğun saatlerde yeniden bulunması anlamına gelir.
 
 Bu makalede, Azure Otomasyonu hesabı ve Azure Logic App ile oluşturulan ve Windows sanal masaüstü ortamınızdaki oturum ana bilgisayar VM 'lerini otomatik olarak ölçeklendirilen ölçeklendirme aracı hakkında bilgi edineceksiniz. Ölçeklendirme aracının nasıl kullanılacağını öğrenmek için [önkoşulların](#prerequisites)önüne atlayın.
-
-## <a name="report-issues"></a>Sorun bildirme
-
-Ölçeklendirme aracı için sorun raporları Şu anda Microsoft Desteği yerine GitHub 'da işlenmekte. Ölçeklendirme aracıyla ilgili herhangi bir sorunla karşılaşırsanız, [raporlama sorunları](#reporting-issues) bölümünde açıklandığı gibi gerekli bilgileri alın ve [RDS GitHub sayfasında](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)"4A-WVD-ölçeklendirmesini-logicapps" ile etiketlenmiş bir GitHub sorunu açın.
 
 ## <a name="how-the-scaling-tool-works"></a>Ölçeklendirme aracının çalışması
 
@@ -362,3 +358,7 @@ Log Analytics kullanmaya karar verdiyseniz, tüm günlük verilerini Log Analyti
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Sorun bildirme
+
+Ölçeklendirme aracı için sorun raporları Şu anda Microsoft Desteği tarafından işleniyor. Bir sorun raporu oluştururken, [sorunları raporlama](#reporting-issues)konusundaki yönergeleri izlediğinizden emin olun. Araçla ilgili geri bildiriminiz varsa veya yeni özellikler istemek istiyorsanız, [RDS GitHub sayfasında](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)"4-WVD-Ölçeklendirmesi-Tool" etiketli bir GitHub sorunu açın.

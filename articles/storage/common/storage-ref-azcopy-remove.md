@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1cdb49f6865afa4101468dc35b4e416d999b63f5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285229"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078229"
 ---
 # <a name="azcopy-remove"></a>azcopy kaldırma
 
@@ -73,7 +73,6 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-
 Hiyerarşik ad alanı olan bir BLOB depolama hesabından tek bir dosyayı kaldırma (dahil etme/hariç tutma desteklenmiyor):
 
 ```azcopy
@@ -94,15 +93,17 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: `*.jpg` ;; `*.pdf``exactName`
 
-**--** -------salt-   Bir Azure dosyaları dosyası veya klasörü silinirken, var olan nesnenin salt okunurdur özniteliği ayarlanmış olsa bile silme işlemini çalışmaya zorlayın.
+**--**   -------salt-   Bir Azure dosyaları dosyası veya klasörü silinirken, var olan nesnenin salt okunurdur özniteliği ayarlanmış olsa bile silme işlemini çalışmaya zorlayın.
 
-**--** kaldırma yardımı yardımı.
+**--**   kaldırma yardımı yardımı.
 
 **--Include-Path** dize yalnızca kaldırılırken Bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örnek: `myFolder;myFolder/subDirName/file.pdf`
 
 **--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: * `.jpg` ;* `.pdf` ;`exactName`
 
-**--dosya listesi** dizesi, silinecek dosya ve dizinlerin listesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalıdır ve yolların URL kodlamalı olmaması gerekir.
+**--dosya listesi** dizesi, silinecek dosya ve dizinlerin listesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalıdır ve yolların URL kodlamalı olmaması gerekir. 
+
+**--** ------------------------ Kaynağın tek bir Blobun işaret etmelidir ve bu bayrağı kullanarak dosyada belirtilen tüm sürüm kimlikleri yalnızca kaynak Blobun ait olmalıdır. Verilen Blobun belirtilen sürüm kimlikleri Azure depolama alanından silinecek. 
 
 **--günlük düzeyi** dize günlük dosyası için günlük ayrıntı düzeyini tanımlar. Kullanılabilir düzeyler şunlardır: `INFO` (tüm istekler/yanıtlar), `WARNING` (yavaş yanıtlar), `ERROR` (yalnızca başarısız istekler) ve `NONE` (çıktı günlüğü yok). (varsayılan `INFO` ) (varsayılan `INFO` )
 

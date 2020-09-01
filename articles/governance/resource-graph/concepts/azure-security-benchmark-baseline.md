@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b67397db3cc6de2a0e6658795ddf87ad355ad422
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009010"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078376"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Azure Kaynak Grafiği güvenlik temeli
 
@@ -41,13 +41,13 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../../../security/
 
 *Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: veri ve kaynaklara erişimi denetlemek için rol tabanlı erişim denetımı (RBAC) kullanın. Azure Kaynak grafiğini kullanmak için, sorgulamak istediğiniz kaynaklara uygun erişiminizin olması gerekir. Bu erişimin kapsamı salt okunurdur ve yalnızca gerekli personele verilmelidir.
+**Rehberlik**: veri ve kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın. Azure Kaynak grafiğini kullanmak için, sorgulamak istediğiniz kaynaklara uygun erişiminizin olması gerekir. Bu erişimin kapsamı salt okunurdur ve yalnızca gerekli personele verilmelidir.
 
 * [Azure Kaynak Grafiği’nde izinler](../overview.md#permissions-in-azure-resource-graph)
 
-* [Azure 'da RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-rest.md)
+* [Azure RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor

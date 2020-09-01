@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566072"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076183"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
 
@@ -24,6 +24,8 @@ Nesne çoğaltma (Önizleme), blok bloblarını bir kaynak depolama hesabı ve h
 Nesne çoğaltmasını yapılandırdığınızda, kaynak depolama hesabı ve hedef hesap belirten bir çoğaltma ilkesi oluşturursunuz. Çoğaltma İlkesi, kaynak kapsayıcısını ve hedef kapsayıcıyı belirten bir veya daha fazla kural içerir ve kaynak kapsayıcısındaki hangi blok bloblarının çoğaltılacağı anlamına gelir.
 
 Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesabınız için nesne çoğaltmanın nasıl yapılandırılacağı açıklanır. Ayrıca, nesne çoğaltmasını yapılandırmak için Azure depolama kaynak sağlayıcısı istemci kitaplıklarından birini de kullanabilirsiniz.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>Çoğaltma İlkesi ve kuralları oluşturma
 

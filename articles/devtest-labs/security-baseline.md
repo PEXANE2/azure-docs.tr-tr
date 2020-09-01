@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212307"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078053"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -159,7 +159,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 **Rehberlik:** DevTest Labs kimlik yönetimi için Azure AD hizmetini kullanır. Kullanıcılara DevTest Labs tabanlı bir ortama erişim verdiğinizde, bu iki temel yönü göz önünde bulundurun:
 
-- **Kaynak yönetimi:** Kaynakları yönetmek (VM oluşturma, ortamlar oluşturma, başlatma, durdurma, yeniden başlatma, silme ve yapıları uygulama vb.) için Azure portal erişim sağlar. Kaynak yönetimi, Azure 'da rol tabanlı erişim denetimi (RBAC) kullanılarak yapılır. Kullanıcılara roller atarsınız ve kaynak ve erişim düzeyi izinlerini ayarlarsınız.
+- **Kaynak yönetimi:** Kaynakları yönetmek (VM oluşturma, ortamlar oluşturma, başlatma, durdurma, yeniden başlatma, silme ve yapıları uygulama vb.) için Azure portal erişim sağlar. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak kaynak yönetimi Azure 'da yapılır. Kullanıcılara roller atarsınız ve kaynak ve erişim düzeyi izinlerini ayarlarsınız.
 - **Sanal makineler (ağ düzeyi)**: Varsayılan yapılandırmada VM 'ler bir yerel yönetici hesabı kullanır. Kullanılabilir bir etki alanı (Azure AD Domain Services, şirket içi etki alanı veya bulut tabanlı etki alanı) varsa, makineler etki alanına katılabilir. Kullanıcılar, makinelere bağlanmak için etki alanına yönelik bir yapıt kullanarak etki alanı tabanlı kimlikleri kullanabilir. 
 
 - [DevTest Labs için başvuru mimarisi](devtest-lab-reference-architecture.md#architecture)
@@ -315,9 +315,9 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 **Sorumluluk:** Müşterisi
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
-**Rehberlik:** Azure DevTest Labs Labs 'e erişimi denetlemek için Azure Active Directory (Azure AD) rol tabanlı erişim denetimi (RBAC) kullanın.
+**Rehberlik:** Azure DevTest Labs 'daki laboratuvarlara erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 - [DevTest Labs 'de rolleri anlayın](devtest-lab-add-devtest-user.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -638,12 +638,12 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 **Sorumluluk:** Müşterisi
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
-**Rehberlik:** Özel görüntüler kullanıyorsanız, görüntülere yalnızca yetkili kullanıcıların erişebildiğinden emin olmak için rol tabanlı erişim denetimi (RBAC) kullanın. Paylaşılan bir görüntü Galerisi 'ni kullanarak görüntülerinizi, ihtiyaç duyulan belirli laboratuvarlara paylaşabilirsiniz. Kapsayıcı görüntüleri için, onları Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için RBAC kullanın.
+**Rehberlik:** Özel görüntüler kullanıyorsanız, görüntülere yalnızca yetkili kullanıcıların erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanın. Paylaşılan bir görüntü Galerisi 'ni kullanarak görüntülerinizi, ihtiyaç duyulan belirli laboratuvarlara paylaşabilirsiniz. Kapsayıcı görüntüleri için, bunları Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için Azure RBAC kullanın.
 
-- [Azure 'da RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [DevTest Labs için paylaşılan görüntü Galerisi yapılandırma](configure-shared-image-gallery.md)
-- [Container Registry için RBAC 'yi anlayın](../container-registry/container-registry-roles.md)
+- [Container Registry için Azure RBAC 'nı anlama](../container-registry/container-registry-roles.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 

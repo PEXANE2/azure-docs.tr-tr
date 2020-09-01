@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 97be10352d25daf9c60ce41fe1fc9e728513ba94
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210899"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076824"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 
@@ -138,7 +138,7 @@ Azure SYNAPSE SQL havuzunuz için bir hizmet uç noktası kullanırken, Azure SQ
 
 **Rehberlik**: Azure ilkesiyle SQL havuzunuza ilişkin kaynaklar için ağ güvenlik yapılandırması tanımlama ve uygulama. Özel ilke tanımlarını tanımlamak veya Azure SQL veritabanı/sunucu ağ koruması için tasarlanan yerleşik ilke tanımlarından herhangi birini kullanmak için "Microsoft. SQL" ad alanını kullanabilirsiniz. Azure SQL veritabanı sunucusu için geçerli bir yerleşik ağ güvenlik ilkesi örneği şöyle olabilir: "SQL Server sanal ağ hizmeti uç noktası kullanmalıdır".
 
-Azure Kaynak Yönetimi şablonları, rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi tek bir şema tanımında temel ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanın. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
+Azure Kaynak Yönetimi şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve ilkeler gibi tek bir şema tanımında temel ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanın. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
 * [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -582,7 +582,7 @@ Ayrıca, Azure portal bir dinamik veri maskeleme (DDM) ilkesi ayarlayabilirsiniz
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
 **Kılavuz**: SYNAPSE SQL HAVUZUNUZDAKI Azure SQL veritabanlarına erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 

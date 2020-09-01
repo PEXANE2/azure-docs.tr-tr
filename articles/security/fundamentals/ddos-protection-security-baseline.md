@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 63c476e7ad8c7bab38ad4adfb6197b845106458c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839911"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077985"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı için Azure Güvenlik temeli
 
@@ -262,11 +262,11 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
 **Kılavuz**: Azure DDoS koruma planları ile çalışmak için, hesabınız ağ katılımcısı rolüne veya özel eylemlere atanmış özel bir role atanmalıdır.
 
-- [Azure DDoS koruması 'nda rol tabanlı erişim denetimini yönetme](../../virtual-network/manage-ddos-protection.md)
+- [Azure DDoS koruması 'nda Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yönetme](../../virtual-network/manage-ddos-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

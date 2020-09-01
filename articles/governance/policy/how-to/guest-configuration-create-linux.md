@@ -1,16 +1,17 @@
 ---
-title: Linux için Konuk Yapılandırma ilkeleri oluşturma
+title: Linux için Konuk Yapılandırma ilkelerini oluşturma
 description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7510cf378bc7e2d999de122be27662a7ccf0ba92
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717549"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076370"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkeleri oluşturma
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
 Özel ilkeler oluşturmadan önce [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md)' nın genel bakış bilgilerini okuyun.
  

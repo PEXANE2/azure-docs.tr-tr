@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005123"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076387"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics için Azure Güvenlik temeli
 
@@ -334,7 +334,7 @@ Azure AD Privileged Identity Management ve Azure Resource Manager kullanarak tam
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure AD, istemcinin Data Lake Analytics kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar.
+**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure rol tabanlı erişim denetimi (Azure RBAC), istemcinin Data Lake Analytics kaynaklara erişimi üzerinde ayrıntılı denetim sağlar.
 
 * [Azure AD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ Azure AD Privileged Identity Management ve Azure Resource Manager kullanarak tam
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: ayrı abonelikler kullanarak yalıtım uygulayın, ortam gibi bireysel güvenlik etki alanları için yönetim grupları, veri duyarlılığı. Uygulamalarınızın ve kurumsal ortamların talep ettiği Data Lake Analytics kaynaklarınıza erişim düzeyini denetlemek için Data Lake Analytics kısıtlayabilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar Data Lake Analytics kaynaklarınıza erişebilir. Azure AD RBAC aracılığıyla Azure Data Lake Analytics erişimini denetleyebilirsiniz.
+**Rehberlik**: ayrı abonelikler kullanarak yalıtım uygulayın, ortam gibi bireysel güvenlik etki alanları için yönetim grupları, veri duyarlılığı. Uygulamalarınızın ve kurumsal ortamların talep ettiği Data Lake Analytics kaynaklarınıza erişim düzeyini denetlemek için Data Lake Analytics kısıtlayabilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar Data Lake Analytics kaynaklarınıza erişebilir. Azure RBAC aracılığıyla Azure Data Lake Analytics erişimini denetleyebilirsiniz.
 
 * [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için rol tabanlı erişim denetımı (RBAC) kullanın.
+**Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-* [Rol tabanlı Access Control yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure RBAC 'yi yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

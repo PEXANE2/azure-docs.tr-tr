@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84710142"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078002"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Öğretici: Azure DNS’te etki alanınızı barındırma
 
 Azure DNS'yi DNS etki alanınızı barındırmak ve DNS kayıtlarınızı yönetmek için kullanabilirsiniz. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz.
 
-Örneğin, contoso.net etki alanını bir etki alanı adı kayıt şirketinden satın aldığınızı ve Azure DNS'de contoso.net adlı bir bölge oluşturduğunuzu varsayalım. Etki alanının sahibi olduğunuzdan, kayıt şirketiniz size etki alanınız için ad sunucusu (NS) kayıtlarını yapılandırma seçeneğini sunar. Kayıt kuruluşu bu NS kayıtlarını .net üst alanında depolar. Dünyanın her yerindeki Internet kullanıcıları, contoso.net 'deki DNS kayıtlarını çözümlemeye çalıştıklarında Azure DNS bölgesindeki etki alanına yönlendirilir.
+Örneğin, contoso.net etki alanını bir etki alanı adı kayıt şirketinden satın aldığınızı ve Azure DNS'de contoso.net adlı bir bölge oluşturduğunuzu varsayalım. Etki alanının sahibi olduğunuzdan, kayıt şirketiniz size etki alanınız için ad sunucusu (NS) kayıtlarını yapılandırma seçeneğini sunar. Kaydedici, NS kayıtlarını .NET üst bölgesine depolar. Dünyanın her yerindeki Internet kullanıcıları, contoso.net 'deki DNS kayıtlarını çözümlemeye çalıştıklarında Azure DNS bölgesindeki etki alanına yönlendirilir.
 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -32,11 +32,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
-Bu öğretici için kullanılan örnek etki alanı contoso.net ' dir, ancak kendi etki alanı adınızı kullanır.
+Bu örnekte, üst etki alanına **contoso.net** olarak başvuracağız
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
@@ -45,14 +45,19 @@ Bu öğretici için kullanılan örnek etki alanı contoso.net ' dir, ancak kend
    ![DNS bölgesi](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. **DNS bölgesi oluştur**' u seçin.
-1. **DNS bölgesi oluştur** sayfasında aşağıdaki değerleri girin ve **Oluştur**’u seçin:
+1. **DNS bölgesi oluştur** sayfasında aşağıdaki değerleri girin ve **Oluştur**' u seçin. Örneğin, **contoso.net**
+      > [!NOTE] 
+      > Oluşturmakta olduğunuz yeni bölge bir alt bölgedir (örneğin, üst bölge = contoso.net alt bölgesi = child.contoso.net), lütfen [Yeni bir alt DNS bölgesi oluşturma öğreticimize](./tutorial-public-dns-zones-child.md) başvurun
 
-   | **Ayar** | **Değer** | **Ayrıntılar** |
-   |---|---|---|
-   |**Name**|[etki alanı adınız] |Satın aldığınız etki alanı adı. Bu öğreticide örnek olarak contoso.net kullanılmıştır.|
-   |**Abonelik**|[Aboneliğiniz]|Bölgenin oluşturulacağı bir abonelik seçin.|
-   |**Kaynak grubu**|**Yeni oluştur:** contosoRG|Bir kaynak grubu oluşturun. Kaynak grubu adı, seçtiğiniz abonelik içinde benzersiz olmalıdır.<br>Kaynak grubunun konumunu ifade eder ve DNS bölgesini etkilemez. DNS bölgesi konumu her zaman "geneldir" olur ve gösterilmez.|
-   |**Konum**|Doğu ABD||
+    | **Ayar** | **Değer** | **Ayrıntılar** |
+    |--|--|--|
+    | **Proje ayrıntıları:**  |  |  |
+    | **Kaynak grubu**    | ContosoRG | Bir kaynak grubu oluşturun. Kaynak grubu adı, seçtiğiniz abonelik içinde benzersiz olmalıdır. Kaynak grubunun konumu, DNS bölgesini etkilemez. DNS bölgesi konumu her zaman "geneldir" olur ve gösterilmez. |
+    | **Örnek ayrıntıları:** |  |  |
+    | **Bölge alt öğesi**        | İşaretlenmeyen bırak | Bu bölge bir [alt bölge](./tutorial-public-dns-zones-child.md) **olmadığından** , bu işareti kaldırılmış olarak bırakmalısınız |
+    | **Ad**              | contoso.net | Üst bölge adınızın alanı      |
+    | **Konum**          | Doğu ABD | Bu alan, kaynak grubu oluşturma işlemi kapsamında seçilen konuma göre belirlenir.  |
+    
 
 ## <a name="retrieve-name-servers"></a>Ad sunucularını alma
 

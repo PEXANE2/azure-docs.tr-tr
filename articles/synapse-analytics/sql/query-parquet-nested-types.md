@@ -1,6 +1,6 @@
 ---
 title: İsteğe bağlı SQL kullanarak iç içe geçmiş türleri sorgulama (Önizleme)
-description: Bu makalede, Parquet iç içe türlerin nasıl sorgulanalınacağını öğreneceksiniz.
+description: Bu makalede, SQL isteğe bağlı (Önizleme) kullanarak Parquet iç içe türlerini sorgulamayı öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f58adf124634ce1b4326f0026718688f0eb1dc7b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489699"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076744"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet ve JSON dosyalarındaki iç içe türleri sorgulama
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet ve JSON dosyalarındaki iç içe türler sorgulayın
 
-Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Bu sorgu, Parquet iç içe geçmiş türlerini okur.
+Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgu, Parquet iç içe geçmiş türlerini okur.
 İç içe türler, nesneleri veya dizileri temsil eden karmaşık yapılardır. İç içe türler, içinde depolanabilir: 
-- Dizi ve nesne içeren birden çok karmaşık sütunubileceğiniz [Parquet](query-parquet-files.md) .
-- Karmaşık JSON belgelerini tek sütunlu olarak okuyabileceğiniz hiyerarşik [JSON dosyaları](query-json-files.md) .
-- Her belgenin karmaşık iç içe geçmiş Özellikler (Şu anda geçitli genel önizleme kapsamında) içerebildiği CosmosDB koleksiyonu.
+- [Parquet](query-parquet-files.md), diziler ve nesneler içeren birden çok karmaşık sütunlarınız olabilir.
+- Karmaşık bir JSON belgesini tek bir sütun olarak okuyabileceğiniz hiyerarşik [JSON dosyaları](query-json-files.md).
+- Her belge karmaşık iç içe Özellikler içerebilen Koleksiyonlar (Şu anda geçitli genel önizleme kapsamında) Azure Cosmos DB.
 
-İsteğe bağlı SYNAPSE SQL, tüm iç içe geçmiş türleri JSON nesneleri ve diziler olarak biçimlendirir, böylece [JSON işlevlerini kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırabilirsiniz](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+İsteğe bağlı Azure SYNAPSE SQL, iç içe geçmiş tüm türleri JSON nesneleri ve diziler olarak biçimlendirir. Bu nedenle, [JSON işlevleri kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırtırabilirsiniz](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
-[Covıd-19 açık araştırma veri kümesi](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON dosyası ile birlikte iç içe geçmiş nesneleriyle skalar ve nesne değerlerini çıkaran bir sorgu örneği aşağıda gösterilmiştir. 
+Aşağıda, iç içe geçmiş nesneler içeren [Covı-19 açık araştırma veri kümesi](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON dosyasındaki skaler ve nesne değerlerini ayıklayan bir sorgu örneği verilmiştir: 
 
 ```sql
 SELECT
@@ -42,18 +42,18 @@ FROM
     WITH ( doc varchar(MAX) ) AS docs;
 ```
 
-`JSON_VALUE`işlev, belirtilen yoldaki alandan skaler bir değer döndürür. `JSON_QUERY`işlev, belirtilen yoldaki alandan JSON olarak biçimlendirilen bir nesne döndürür.
+`JSON_VALUE`İşlev, belirtilen yoldaki alandan skaler bir değer döndürür. `JSON_QUERY`İşlev, belirtilen yoldaki alandan JSON olarak biçimlendirilen bir nesne döndürür.
 
 > [!IMPORTANT]
-> Bu örnek [Covıd-19 açık araştırma veri kümesinden](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)bir dosya kullanır. Bu sayfadaki verilerin hangi yapıda ve yapısına bakın.
+> Bu örnek COVıD-19 açık araştırma veri kümesinden bir dosya kullanır. Bu [verilerin yapısına ve yapısına bakın](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İlk adımınız, başvuran bir veri kaynağı ile **veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
+İlk adım, DataSource 'un oluşturulacağı bir veritabanı oluşturmaktır. Ardından, veritabanında bir [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) çalıştırarak nesneleri başlatacaksınız. Kurulum betiği, örneklerde kullanılan veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve harici dosya biçimlerini oluşturacaktır.
 
 ## <a name="project-nested-or-repeated-data"></a>Proje iç içe veya yinelenen veriler
 
-PARQUET dosyasında karmaşık türlerde birden çok sütun olabilir. Bu sütunlardaki değerler JSON metni olarak biçimlendirilir ve VARCHAR sütunu olarak döndürülür. Aşağıdaki sorgu, *Structexörnek. Parquet* dosyasını okur ve iç içe geçmiş sütunların değerlerinin nasıl okunacağını gösterir: 
+Bir Parquet dosyası karmaşık türlerde birden fazla sütuna sahip olabilir. Bu sütunlardaki değerler JSON metni olarak biçimlendirilir ve VARCHAR sütunları olarak döndürülür. Aşağıdaki sorgu, Structexörnek. Parquet dosyasını okur ve iç içe geçmiş sütunların değerlerinin nasıl okunacağını gösterir: 
 
 ```sql
 SELECT
@@ -73,14 +73,14 @@ FROM
     ) AS [r];
 ```
 
-Bu sorgu, iç içe geçmiş her nesnenin içeriğinin JSON metni olarak döndürüldüğü aşağıdaki sonucu döndürür:
+Bu sorgu aşağıdaki sonucu döndürür. İç içe geçmiş her nesnenin içeriği JSON metni olarak döndürülür.
 
 | DateStruct    | TimeStruct    | TimestampStruct   | DecimalStruct | FloatStruct |
 | --- | --- | --- | --- | --- |
 |{"Date": "2009-04-25"}| {"Time": "20:51:54.3598000"}|    {"Timestamp": "5501-04-08 12:13:57.4821000"}|    {"Decimal": 11143412.25350}| {"Float": 0,5}|
 |{"Date": "1916-04-29"}| {"Time": "00:16:04.6778000"}|    {"Timestamp": "1990-06-30 20:50:52.6828000"}|    {"Decimal": 1963545.62800}|  {"Float":-2,125}|
 
-Aşağıdaki sorgu, *Adatsimplearray. Parquet* dosyasını okur. Bu, iç içe geçmiş veya yinelenen veriler de dahil olmak üzere Parquet dosyasındaki tüm sütunları.
+Aşağıdaki sorgu, Adatsimplearray. Parquet dosyasını okur. İç içe geçmiş ve yinelenen veriler de dahil olmak üzere, Parquet dosyasındaki tüm sütunları.
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ Bu sorgu aşağıdaki sonucu döndürür:
 
 ## <a name="read-properties-from-nested-object-columns"></a>İç içe nesne sütunlarından özellikleri okuma
 
-`JSON_VALUE`işlevi, JSON metni olarak biçimlendirilen sütundan değer döndürmenizi sağlar:
+`JSON_VALUE`İşlevi, JSON metni olarak biçimlendirilen sütunlardan değer döndürmenizi sağlar:
 
 ```sql
 SELECT
@@ -121,11 +121,11 @@ Sonuç aşağıdaki tabloda gösterilmiştir:
 | --- | --- | --- | --- |
 | Tamamlayıcı bilgiler bir ekonomik-epidemıolo... | Julien   | -Şekil S1: Phylogeny... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Çoğu durumda, JSON dosyalarının aksine, karmaşık JSON nesnesi içeren tek bir sütun döndürülür. PARQUET dosyalarında birden çok karmaşık olabilir. Her sütunda işlevini kullanarak iç içe sütun özelliklerini okuyabilirsiniz `JSON_VALUE` . `OPENROWSET`iç içe geçmiş Özellikler ın yan tümcesinin yollarını doğrudan belirtmenizi sağlar `WITH` . Yollar sütunun adı olarak ayarlanabilir veya sütun türünden sonra [JSON yolu ifadesi](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) ekleyebilirsiniz.
+Çoğu durumda karmaşık bir JSON nesnesi içeren tek bir sütun döndüren JSON dosyalarından farklı olarak, Parquet dosyalarında birden çok karmaşık sütun bulunabilir. Her sütunda işlevini kullanarak iç içe sütunların özelliklerini okuyabilirsiniz `JSON_VALUE` . `OPENROWSET` bir yan tümce içinde iç içe özelliklerin yollarını doğrudan belirtmenizi sağlar `WITH` . Yolları bir sütunun adı olarak ayarlayabilir veya sütun türünden sonra bir [JSON yolu ifadesi](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) ekleyebilirsiniz.
 
-Aşağıdaki sorgu, *Structexörnek. Parquet* dosyasını okur ve iç içe geçmiş bir sütunun yüzey öğelerinin nasıl gösterileceğini gösterir. İç içe değere başvurmak için iki yol vardır:
-- Tür belirtiminden sonra iç içe değer yol ifadesini belirtme.
-- Alanlara başvurmak için "." kullanarak sütun adı iç içe yol olarak biçimlendiriliyor.
+Aşağıdaki sorgu, Structexörnek. Parquet dosyasını okur ve iç içe geçmiş bir sütunun yüzey öğelerinin nasıl gösterileceğini gösterir. İç içe bir değere başvurmak için iki yol vardır:
+- Tür belirtiminden sonra iç içe değer yol ifadesini belirterek.
+- Sütun adını, alanlara başvurmak için do "." kullanarak iç içe bir yol olarak biçimlendirerek.
 
 ```sql
 SELECT
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Aşağıdaki sorgu, *Yatsimplearray. Parquet* dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içindeki **skalar** bir öğeyi almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
+Aşağıdaki sorgu, yatsimplearray. Parquet dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden skaler bir öğe almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
 
 ```sql
 SELECT
@@ -163,7 +163,7 @@ FROM
     ) AS [r];
 ```
 
-Sonuç aşağıdaki tabloda gösterilmiştir:
+Sonuç şu şekildedir:
 
 |Simplelearray    | FirstElement  | SecondElement | ThirdElement |
 | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ Sonuç aşağıdaki tabloda gösterilmiştir:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Karmaşık sütunlardan alt nesnelere erişme
 
-Aşağıdaki sorgu, *Mapexample. Parquet* dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden **skalar olmayan** bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
+Aşağıdaki sorgu, mapExample. Parquet dosyasını okur ve bir dizi veya eşleme gibi yinelenen bir sütunun içinden skalar olmayan bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
 
 ```sql
 SELECT
@@ -186,7 +186,7 @@ FROM
     ) AS [r];
 ```
 
-Ayrıca, yan tümcesine döndürmek istediğiniz sütunlara açık bir şekilde başvurabilirsiniz `WITH` :
+Ayrıca, bir yan tümce içinde döndürmek istediğiniz sütunlara açık bir şekilde başvurabilirsiniz `WITH` :
 
 ```sql
 SELECT DocId,
@@ -201,11 +201,11 @@ FROM
     WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
 ```
 
-Yapı `MapOfPersons` sütun olarak döndürülür `VARCHAR` ve JSON dizesi olarak biçimlendirilir.
+Yapı, `MapOfPersons` varchar sütunu olarak döndürülür ve JSON dizesi olarak biçimlendirilir.
 
 ## <a name="project-values-from-repeated-columns"></a>Yinelenen sütunlardan proje değerleri
 
-Bazı sütunlarda bir skaler değerler dizisine sahipseniz (örneğin `[1,2,3]` ), bunları kolayca genişletebilir ve aşağıdaki betiği kullanarak ana satırla birleştirebilirsiniz:
+Bazı sütunlarda bir skaler değerler dizisine sahipseniz (örneğin `[1,2,3]` ), bu betiği kullanarak bunları kolayca genişletebilir ve ana satırla birleştirebilirsiniz:
 
 ```sql
 SELECT

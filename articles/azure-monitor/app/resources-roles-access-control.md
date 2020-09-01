@@ -3,12 +3,13 @@ title: Azure Application Insights kaynaklar, roller ve erişim denetimi | Micros
 description: Kuruluşunuzun öngörülerinin sahipleri, katkıda bulunanlar ve okuyucular.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076693"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights içindeki kaynaklar, roller ve erişim denetimi
 
@@ -37,7 +38,7 @@ Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-contr
 * [**Abonelik**](https://portal.azure.com) -Application Insights veya diğer Azure kaynaklarını kullanmak Için bir Azure aboneliğinde oturum açın. Her kaynak grubu, Fiyat paketinizi seçtiğiniz bir Azure aboneliğine aittir ve bir kuruluş aboneliği ise, üyeleri ve bunların erişim izinlerini seçin.
 * [**Microsoft hesabı**][account] -Microsoft Azure aboneliklerde, Xbox Live, Outlook.com ve diğer Microsoft hizmetlerinde oturum açmak için kullandığınız Kullanıcı adı ve parola.
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Kaynak grubunda erişimi denetleme
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Kaynak grubunda erişimi denetleme
 
 Uygulamanız için oluşturduğunuz kaynağa ek olarak, uyarılar ve Web testleri için ayrı gizli kaynaklar da olduğunu anlamak önemlidir. Bunlar, Application Insights kaynağınız ile aynı [kaynak grubuna](#resource-group) iliştirilir. Ayrıca, Web siteleri veya depolama gibi diğer Azure hizmetlerini de yerleştirebilirsiniz.
 

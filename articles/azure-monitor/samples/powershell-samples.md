@@ -6,12 +6,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055262"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078410"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Izleyici PowerShell örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek PowerShell komutları gösterilmektedir.
@@ -96,10 +97,10 @@ Aşağıdaki komut, etkinlik günlüğünden son 1000 olayı alır:
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog`diğer birçok parametreyi destekler. `Get-AzLog`Daha fazla bilgi için başvuruya bakın.
+`Get-AzLog` diğer birçok parametreyi destekler. `Get-AzLog`Daha fazla bilgi için başvuruya bakın.
 
 > [!NOTE]
-> `Get-AzLog`yalnızca 15 günlük geçmişi sağlar. **-MaxRecords** parametresini kullanmak, son N olayı, 15 günden daha fazla sorgulamanızı sağlar. 15 günden eski olaylara erişmek için REST API veya SDK 'yı (SDK kullanarak C# örneği) kullanın. **StartTime**'i eklemezseniz, varsayılan değer **bitişsaati** eksi bir saattir. **Bitişsaati**eklemezseniz, varsayılan değer geçerli süredir. Her zaman UTC 'de.
+> `Get-AzLog` yalnızca 15 günlük geçmişi sağlar. **-MaxRecords** parametresini kullanmak, son N olayı, 15 günden daha fazla sorgulamanızı sağlar. 15 günden eski olaylara erişmek için REST API veya SDK 'yı (SDK kullanarak C# örneği) kullanın. **StartTime**'i eklemezseniz, varsayılan değer **bitişsaati** eksi bir saattir. **Bitişsaati**eklemezseniz, varsayılan değer geçerli süredir. Her zaman UTC 'de.
 > 
 > 
 
@@ -139,23 +140,23 @@ Hedef kaynak için ayarlanan tüm uyarı kurallarını alın. Örneğin, bir VM 
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`diğer parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
+`Get-AzAlertRule` diğer parametreleri destekler. Daha fazla bilgi için bkz. [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Ölçüm uyarıları oluşturma
 `Add-AlertRule`Bir uyarı kuralı oluşturmak, güncelleştirmek veya devre dışı bırakmak için cmdlet 'ini kullanabilirsiniz.
 
-Sırasıyla ve kullanarak e-posta ve Web kancası özellikleri oluşturabilirsiniz `New-AzAlertRuleEmail` `New-AzAlertRuleWebhook` . Uyarı kuralı cmdlet 'inde, bu özellikleri uyarı kuralının **Eylemler** özelliğine eylem olarak atayın.
+Sırasıyla ve kullanarak e-posta ve Web kancası özellikleri oluşturabilirsiniz  `New-AzAlertRuleEmail` `New-AzAlertRuleWebhook` . Uyarı kuralı cmdlet 'inde, bu özellikleri uyarı kuralının **Eylemler** özelliğine eylem olarak atayın.
 
 Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullanılan parametreler ve değerler açıklanmaktadır.
 
-| parametre | value |
+| parametre | değer |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Ad |simpletestdiskwrite |
 | Bu uyarı kuralının konumu |Doğu ABD |
-| ResourceGroup |montest |
+| adlı yönetilen örnek, |montest |
 | Targetresourceıd |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Oluşturulan uyarının MetricName |\Fiziksel disk (_Total) \Disk yazma/sn. `Get-MetricDefinitions`Tam ölçüm adlarını alma hakkında cmdlet 'e bakın |
-| operator |GreaterThan |
+| Oluşturulan uyarının MetricName |\Fiziksel disk (_Total) \Disk yazma/sn. `Get-MetricDefinitions` Tam ölçüm adlarını alma hakkında cmdlet 'e bakın |
+| işleç |GreaterThan |
 | Eşik değeri (Bu ölçümün içindeki Count/SEC) |1 |
 | WindowSize (SS: DD: ss biçimi) |00:05:00 |
 | toplayıcı (Bu örnekte ortalama sayı kullanan ölçüm istatistiği) |Ortalama |

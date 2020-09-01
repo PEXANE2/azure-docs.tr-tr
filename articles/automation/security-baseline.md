@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6e5c7bbc850a71cd71d8f826c6a975f552374b7a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562693"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077730"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -146,7 +146,7 @@ Azure sanal makinelerinde barındırılan karma runbook çalışanları kullanı
 
 **Rehberlik**: Azure Otomasyonu tarafından Azure ilkesi tarafından kullanılan ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın.
 
-Tek bir şema tanımında Azure kaynakları Yöneticisi şablonları, RBAC denetimleri ve ilkeleri gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı da kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz.
+Azure şemaları, Azure Kaynak Yöneticisi şablonları, Azure RBAC denetimleri ve ilkeleri gibi tek bir şema tanımında paket ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirmek için de kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz.
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -570,11 +570,11 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: yerleşik rol tanımlarını kullanarak Azure Otomasyonu kaynaklarına erişimi denetlemek IÇIN Azure AD RBAC kullanın, en az ayrıcalıklı veya ' yalnızca yeterli ' erişim modelinden sonra Otomasyon kaynaklarınıza erişen kullanıcılara erişim atayın. Karma runbook çalışanları kullanılırken, hizmet sorumlularını kullanmaktan kaçınmak için bu sanal makinelerin yönetilen kimliklerinden yararlanın, hem çok kiracılı hem de karma runbook çalışanlarının kullanılması, runbook çalışanlarının kimliğine doğru kapsamlı RBAC izinleri uyguladığınızdan emin olmanızı sağlar.
+**Rehberlik**: yerleşik rol tanımlarını kullanarak Azure Otomasyonu kaynaklarına erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın, en az ayrıcalıklı veya ' tam ' erişim modelinden sonra Otomasyon kaynaklarınıza erişen kullanıcılar için erişim atayın. Karma runbook çalışanları kullanılırken, hizmet sorumlularını kullanmaktan kaçınmak için bu sanal makinelerin yönetilen kimliklerinden yararlanın, hem çok kiracılı hem de karma runbook çalışanları kullanılırken, runbook çalışanlarının kimliği üzerinde doğru kapsamlı Azure RBAC izinleri uyguladığınızdan emin olun.
 
-* [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 * [Karma Runbook Worker için Runbook izinleri](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 Karma Runbook Worker özelliğini kullanırken, yalnızca yetkili kullanıcıların görüntüye erişebilmesi için depolama hesabınızda bulunan özel işletim sistemi görüntüsüne erişimi doğru sınırlandırdığınızdan emin olun.
 
-* [Azure 'da RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC 'yi anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

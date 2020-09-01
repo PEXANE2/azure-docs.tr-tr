@@ -4,7 +4,7 @@
   items:
     - name: Redis için Azure Önbelleği hakkında
       href: cache-overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Bir önbellek oluşturma
@@ -94,9 +94,11 @@
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI Kullanarak Dağıtın ve Yönetin
           href: cli-samples.md
-        - name: Redis için Azure Önbelleği'ni sağlama
+        - name: Redis Cache oluşturma - ARM şablonu
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Redis için Azure Önbelleği ile Web Uygulaması sağlama
+        - name: Redis Cache ile Web Uygulaması oluşturma - ARM şablonu
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: Yönetme
       items:

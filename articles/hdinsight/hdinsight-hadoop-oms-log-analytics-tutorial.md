@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 531bbf40df4636ae62203d639deeeb9468c7bfe0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498200"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078359"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure İzleyici günlüklerini kullanarak HDInsight kümelerini izleme
 
@@ -59,7 +59,7 @@ Bu bölümde, var olan bir HDInsight Hadoop kümesini işleri izlemek için bir 
 
 1. **Çalışma alanı seç** aşağı açılan listesinden, mevcut bir Log Analytics çalışma alanını seçin.
 
-1. **Kaydet**'i seçin.  Ayarın kaydedilmesi birkaç dakika sürer.
+1. **Kaydet**’i seçin.  Ayarın kaydedilmesi birkaç dakika sürer.
 
     ![HDInsight kümeleri için izlemeyi etkinleştir](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight kümeleri için izlemeyi etkinleştir")
 
@@ -153,10 +153,10 @@ Azure izleyici, kümenizdeki düğümlerin performans ölçümlerini toplamayı 
 
 HDInsight, Azure Izleyici günlükleri ile küme denetimini destekler ve aşağıdaki türlerde Günlükler içeri aktarabilirsiniz:
 
-* `log_gateway_audit_CL`-Bu tablo, başarılı ve başarısız oturum açma girişimlerini gösteren küme ağ geçidi düğümlerinden denetim günlükleri sağlar.
-* `log_auth_CL`-Bu tablo, başarılı ve başarısız oturum açma girişimleri ile SSH günlükleri sağlar.
-* `log_ambari_audit_CL`-Bu tablo, ambarı 'ndan denetim günlükleri sağlar.
-* `log_ranger_audti_CL`-Bu tablo, ESP kümelerinde Apache Ranger 'tan denetim günlükleri sağlar.
+* `log_gateway_audit_CL` -Bu tablo, başarılı ve başarısız oturum açma girişimlerini gösteren küme ağ geçidi düğümlerinden denetim günlükleri sağlar.
+* `log_auth_CL` -Bu tablo, başarılı ve başarısız oturum açma girişimleri ile SSH günlükleri sağlar.
+* `log_ambari_audit_CL` -Bu tablo, ambarı 'ndan denetim günlükleri sağlar.
+* `log_ranger_audti_CL` -Bu tablo, ESP kümelerinde Apache Ranger 'tan denetim günlükleri sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
