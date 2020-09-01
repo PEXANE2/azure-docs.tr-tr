@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542387"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259192"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -265,5 +267,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

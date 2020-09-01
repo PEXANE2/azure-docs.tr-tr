@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180346"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259379"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Azure RBAC 'nin Azure abonelik kaynaklarınıza erişimini yönetmek için nasıl kullanılacağı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-cli)
-- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-portal)
-- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
+- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
+- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 
@@ -339,7 +339,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 ![Kimlik bilgileriniz çalışmadı](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 bilgisayarının Azure AD 'ye katılmış veya karma Azure AD 'nin, sanal makinenizin katıldığı Azure AD dizinine katılmış olduğu bir bağlantı olduğunu doğrulayın. Cihaz kimliği hakkında daha fazla bilgi için, [cihaz kimliği nedir](/azure/active-directory/devices/overview)makalesine bakın.
+Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 bilgisayarının Azure AD 'ye katılmış veya karma Azure AD 'nin, sanal makinenizin katıldığı Azure AD dizinine katılmış olduğu bir bağlantı olduğunu doğrulayın. Cihaz kimliği hakkında daha fazla bilgi için, [cihaz kimliği nedir](./overview.md)makalesine bakın.
 
 > [!NOTE]
 > Windows 10 derleme 20H1, VM 'nize RDP bağlantısı başlatacak bir Azure AD kayıtlı BILGISAYARı için destek eklendi. VM 'nize bağlantıları başlatmak üzere RDP istemcisi olarak Azure AD 'ye kayıtlı (Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış) bilgisayar kullanırken, kimlik bilgilerini AzureAD\UPn (ör.) biçiminde girmeniz gerekir AzureAD\john@contoso.com .
@@ -367,4 +367,4 @@ Bu önizleme özelliğiyle ilgili geri bildirimlerinizi paylaşabilirsiniz veya 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](/azure/active-directory/fundamentals/active-directory-whatis)
+Azure Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](../fundamentals/active-directory-whatis.md)

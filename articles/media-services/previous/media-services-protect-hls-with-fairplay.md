@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27e4fd7762f1f65a46aa7c3aaaf5c131220caba7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2f9b3cdd0b2080a26a9b1948263a7638dc66f2b3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259756"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay veya Microsoft PlayReady ile HLS içeriğinizi koruma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)

@@ -6,12 +6,12 @@ author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258608"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259022"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Veri deposu | Anlık görüntü tabanlı paylaşım | Yerinde paylaşım 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama |✓ | |
-| Azure Data Lake Storage 1. Nesil |✓ | |
+| Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Veritabanı |Genel Önizleme | |
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel Önizleme | |
@@ -38,10 +38,10 @@ Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda
 
 Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandırırken kullandığı farklı birleşimler ve seçimler ayrıntılı olarak verilmiştir. Veri kümesi eşlemelerini yapılandırma hakkında daha fazla bilgi için bkz. [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md).
 
-| Veri deposu | Azure Blob Depolama Alanı | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics | Azure Veri Gezgini
+| Veri deposu | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics | Azure Veri Gezgini
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama | ✓ || ✓ ||
-| Azure Data Lake Storage 1. Nesil | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
 | Azure SQL Veritabanı | ✓ | | ✓ | ✓ | ✓ ||
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
@@ -50,19 +50,22 @@ Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandır
 ## <a name="share-from-a-storage-account"></a>Depolama hesabından paylaşma
 Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Dosya sistemleri, kapsayıcılar veya klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisi paylaşma verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden yararlanın. Artımlı anlık görüntü, dosyaların son değiştirilme saatini temel alır. Aynı ada sahip varolan dosyaların üzerine yazılacak.
 
+Lütfen [Azure Blob depolama alanından paylaşma ve veri alma ve](how-to-share-from-storage.md) ayrıntılar için Azure Data Lake Storage bakın.
+
 ## <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma
-Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tabloları veya görünümlerinin paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Store Gen2 veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edebilir. Varsayılan olarak, dosya biçimlerinin CSV olduğunu unutmayın. Veri TÜKETİCİSİNDE, isterseniz verileri Parquet biçiminde almayı tercih edebilirsiniz. Bu, verileri alırken veri kümesi eşleme ayarlarında yapılabilir. 
+Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tabloları veya görünümlerinin paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edip Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i de tablolar olarak kabul edebilir.
 
-Azure Data Lake Store Gen2 veya Azure Blob depolama alanına veri kabul edildiğinde, tam anlık görüntüler hedef dosyanın içeriğinin üzerine yazar. 
+Azure Data Lake Store Gen2 veya Azure Blob depolama alanına veri kabul edildiğinde, tam anlık görüntüler zaten varsa hedef dosyanın içeriğinin üzerine yazar.
+Veriler tabloya alındığında ve hedef tablo henüz yoksa, Azure veri paylaşımında kaynak şeması ile SQL tablosu oluşturulur. Aynı ada sahip bir hedef tablo zaten varsa, en son tam anlık görüntüyle bırakılır ve üzerine yazılır. Artımlı anlık görüntüler şu anda desteklenmiyor.
 
-Bir veri tüketicisi, kendi tercih ettiği bir tabloya veri almayı tercih edebilir. Bu senaryoda, hedef tablo henüz yoksa, Azure veri paylaşımında kaynak şeması ile SQL tablosu oluşturulur. Aynı ada sahip bir hedef tablo zaten varsa, en son tam anlık görüntüyle bırakılır ve üzerine yazılır. Hedef tablo eşlerken, alternatif bir şema ve tablo adı belirtilebilir. Artımlı anlık görüntüler şu anda desteklenmiyor. 
+Ayrıntılar için lütfen [Azure SQL veritabanı ve Azure SYNAPSE Analytics 'Ten paylaşma ve veri alma](how-to-share-from-sql.md) ' ya bakın.
 
-SQL tabanlı kaynaklardan paylaşım, güvenlik duvarı kuralları ve izinleriyle ilgili önkoşulları içerir. Ayrıntılar için lütfen [verilerinizi paylaşma](share-your-data.md) öğreticisinin ön koşul bölümüne bakın.
-
-## <a name="share-from-azure-data-explorer"></a>Azure Veri Gezgini paylaşma
+## <a name="share-from-azure-data-explorer"></a>Azure Veri Gezgini'nden paylaşma
 Azure veri paylaşımında, Azure Veri Gezgini kümelerinden veritabanlarını yerinde paylaşma özelliği de desteklenir. Veri sağlayıcısı veritabanı veya küme düzeyinde paylaşabilir. Veritabanı düzeyinde paylaşıldığında, veri tüketicisi yalnızca veri sağlayıcısı tarafından paylaşılan belirli veritabanına erişebilir. Küme düzeyinde paylaşıldığında veri tüketicisi, veri sağlayıcısı tarafından oluşturulan gelecekteki veritabanları da dahil olmak üzere sağlayıcının kümesindeki tüm veritabanlarına erişebilir.
 
 Paylaşılan veritabanlarına erişmek için veri tüketicisinin kendi Azure Veri Gezgini kümesine sahip olması gerekir. Veri tüketicisinin Azure Veri Gezgini kümesinin, veri sağlayıcının Azure Veri Gezgini kümesiyle aynı Azure veri merkezinde bulunması gerekir. İlişki paylaşımı oluşturulduğunda Azure veri paylaşımı, sağlayıcı ve tüketicinin Azure Veri Gezgini kümeleri arasında bir sembolik bağlantı oluşturur. Kaynak Azure Veri Gezgini kümesine toplu işlem modu kullanılarak alınan veriler, birkaç saniye içinde birkaç dakika içinde hedef kümede görünür.
+
+Ayrıntılar için lütfen [Azure Veri Gezgini paylaşma ve veri alma](/azure/data-explorer/data-share) bilgilerini inceleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

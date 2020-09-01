@@ -5,17 +5,19 @@ services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298640"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258648"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Şirket içi canlı akış kodlayıcılarınızı doğrulama
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services şirket içi kodlayıcı iş ortağı olarak, Media Services kurumsal müşterilere kodlayıcınızı önererek ürününüzü yükseltir. Şirket içi kodlayıcı iş ortağı olmak için, Media Services ile şirket içi kodlayıcılarınızın uyumluluğunu doğrulamanız gerekir. Bunu yapmak için aşağıdaki doğrulamaları doldurun.
 

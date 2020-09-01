@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7ef020298b66ce3b66f27bdd482ef7fc04a2504c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a55151ec70c27f18c9503235519d4dd2fcf5b64e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021213"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259668"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady ve/veya Widevine dinamik ortak şifreleme kullanma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)

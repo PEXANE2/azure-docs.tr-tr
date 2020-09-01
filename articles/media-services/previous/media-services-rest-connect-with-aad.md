@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082741"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257152"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>REST ile Media Services API'sine erişmek için Azure AD kimlik doğrulamasını kullanma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -168,7 +170,7 @@ Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebil
 
 1. **Postman**'yi açın.
 2. **GET**'i seçin.
-3. REST API uç noktasını yapıştırın (örneğin,https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. REST API uç noktasını yapıştırın (örneğin, https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. **Yetkilendirme** sekmesini seçin. 
 5. **Taşıyıcı belirtecini**seçin.
 6. Önceki bölümde oluşturulan belirteci yapıştırın.

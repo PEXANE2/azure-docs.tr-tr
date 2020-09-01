@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422105"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258852"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu öğretici ve sunulan oynatıcı örneği sayesinde, tüm AMS destekli DRM/AES-128, akış protokolleri, codec ve kapsayıcı biçimleriyle medya içeriğini akışa almak için Azure Media Services (AMS) ve Azure Active Directory (AAD) üzerinde uçtan uca bir medya içerik koruma alt sistemi ayarlayabilirsiniz. Örnek, OAuth 2 tarafından korunan REST API, kod değişimi (PKCE) düzeltme anahtarıyla yetkilendirme kodu akışı aracılığıyla güvenli erişim için yeterince geneldir. (Azure Media Services lisans teslim hizmeti bunlardan yalnızca biridir.) Ayrıca, OAuth 2 yetkilendirme kodu akışıyla güvenliği sağlanmış Microsoft Graph API veya özel geliştirilmiş REST API için de kullanılır. Bu, [örnek koda](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)eşlik eden bir belgedir.
 
@@ -40,7 +42,7 @@ Azure Media Services aboneliğiniz yoksa, bir Azure [ücretsiz deneme hesabı](h
 ### <a name="duration"></a>Süre
 Önkoşul teknolojisini denemeye hazırladıktan sonra öğreticinin tamamlanması iki saat sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğreticiye başlamadan önce bunları tanımanız önerilir.
 
@@ -64,7 +66,7 @@ Bu, isteğe bağlıdır, ancak Bu öğreticiye başlamadan önce aşağıdaki ka
 * Node.js yüklemesi. Node.js buradan indirin [https://nodejs.org](https://nodejs.org) . NPM, install ile birlikte gelir.
 * Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 * Azure Media Services (AMS) hesabı.
-* @azure/msal-browserfarklı istemci platformları için [Microsoft kimlik doğrulama kitaplığı (msal)](../../active-directory/develop/msal-overview.md) SDK ailesindeki üyelerden biri olan v 2.0
+* @azure/msal-browser farklı istemci platformları için [Microsoft kimlik doğrulama kitaplığı (msal)](../../active-directory/develop/msal-overview.md) SDK ailesindeki üyelerden biri olan v 2.0
 * [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)en son sürümü (örneğe dahildir.)
 * FairPlay DRM 'yi ve istemci tarafı JavaScript aracılığıyla erişilebilen CORS ile barındırılan uygulama sertifikasını eklemek istiyorsanız Apple 'dan kimlik bilgileri.
 
@@ -106,7 +108,7 @@ Alt sistem hakkında daha fazla bilgi için [Access Control ile bir çoklu DRM i
 Oynatıcı uygulaması, kullanarak Visual Studio Code geliştirilen tek sayfalı bir uygulamadır (SPA):
 
 * ES 6 JavaScript ile Node.js
-* @azure/msal-browser2,0 Beta
+* @azure/msal-browser 2,0 Beta
 * Azure Media Player SDK
 * Azure AD v2 uç noktalarında OAuth 2 akışı (Microsoft Identity Platform)
 
@@ -261,13 +263,13 @@ Oynatıcı uygulamasını ayarlamak için iki seçeneğiniz vardır:
 
 ### <a name="option-1"></a>1\. Seçenek
 
-1. Visual Studio Code’u başlatın.
+1. Visual Studio Code’u başlatma.
 1. Projeyi açmak için dosya > klasörü aç ' a tıklayın > klasöre gidin ve *package.jsdosya üzerinde* üst klasörü seçin.
 1. *Public/JavaScript/constants.js*JavaScript dosyasını açın.
 1. `OAUTH2_CONST.CLIENT_ID` `client_id` AAD kiracısındaki kayıtlı istemci uygulamanızın ile değiştirin.  `client_id`Azure Portal ' de kayıtlı uygulamanın genel bakış bölümünü bulabilirsiniz. Not: nesne KIMLIĞI değil, istemci KIMLIĞIDIR.
 1. `OAUTH2_CONST.TENANT_ID` `tenant_id` Azure AD kiracınızın yerine koyun. `tenant_id`Azure Active Directory menüsüne tıklayarak hesabınızı bulabilirsiniz. Tenant_id genel bakış bölümünde görüntülenir.
 1. `OAUTH2_CONST.SCOPE`Kayıtlı istemci uygulamanıza eklediğiniz kapsama göre değiştirin. Kapsamı, **uygulama kayıtları** menüsünden kayıtlı istemci uygulamasına giderek ve ardından istemci uygulamanızı seçerek bulabilirsiniz:
-    1. İstemci uygulamanızı seçin, **API izinleri** menüsüne tıklayın ve ardından DRM kapsamını seçin *. *API Permission *LicenseDeliveryResource2*altında lisans. Delivery. İzin api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM gibi biçimde olmalıdır *. Lisans. Delivery*. **Önemli**: alanı `offline_access` ' de önünde tutun `OAUTH2_CONST.SCOPE` .
+    1. İstemci uygulamanızı seçin, **API izinleri** menüsüne tıklayın ve ardından DRM kapsamını seçin *. * API Permission *LicenseDeliveryResource2*altında lisans. Delivery. İzin api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM gibi biçimde olmalıdır *. Lisans. Delivery*. **Önemli**: alanı `offline_access` ' de önünde tutun `OAUTH2_CONST.SCOPE` .
 1. Aşağıdaki iki sabit dizeyi `AMS_CONST` aşağıda gösterildiği gibi değiştirin. Biri, FairPlay test çalışmasını eklemek istiyorsanız, test varlığınızın korumalı akış URL 'si ve diğeri ise FPS uygulama sertifikası URL 'sidir. Aksi takdirde, için olduğu gibi bırakabilirsiniz `AMS_CONST.APP_CERT_URL` . Ardından **Kaydet**' e tıklayın.
 
 ```javascript

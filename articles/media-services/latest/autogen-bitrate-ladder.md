@@ -3,7 +3,7 @@ title: Media Services-Azure 'da standart kodlayıcıyla videoları kodlayın | M
 description: Bu konu başlığı Media Services altında Standart kodlayıcının, giriş ve bit hızını temel alarak otomatik olarak oluşturulan bir bit hızı el ile bir giriş videosunu kodlamak için nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733326"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258835"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Otomatik olarak üretilen bit hızı el ile kodla
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -40,7 +42,7 @@ Bu bölümde, Media Services Kodlayıcısı tarafından, **uyarlamalı akış** 
 ### <a name="example-1"></a>Örnek 1
 "1080" yüksekliğinde ve "29,970" kare hızına sahip kaynak 6 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +54,7 @@ Bu bölümde, Media Services Kodlayıcısı tarafından, **uyarlamalı akış** 
 ### <a name="example-2"></a>Örnek 2
 "720" yüksekliğinde ve "23,970" kare hızına sahip kaynak 5 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,7 +65,7 @@ Bu bölümde, Media Services Kodlayıcısı tarafından, **uyarlamalı akış** 
 ### <a name="example-3"></a>Örnek 3
 "360" yüksekliğinde ve "29,970" kare hızına sahip kaynak 3 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

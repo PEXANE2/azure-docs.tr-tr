@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: eea54d493a27373a682b361ab7138ae1fa527362
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: afee82b66f9803333e27f029ecb487a47ba5dd9e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873067"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259736"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Hızlı başlangıç: Python kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.7](https://www.python.org/downloads/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -37,7 +37,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 Aşağıdaki satırları `create-new-knowledge-base-3x.py` adlı dosyanın en üstüne ekleyerek projeye gerekli bağımlılıkları dahil edin:
 
-[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine erişmek için gerekli sabitleri ekleyin. `<your-qna-maker-subscription-key>`Ve değerlerini `<your-resource-name>` kendi soru-cevap oluşturma anahtar ve kaynak adınızla değiştirin.
@@ -46,29 +46,29 @@ Program sınıfının en üstünde, Soru-Cevap Oluşturma erişmek için gereken
 
 Aşağıdaki değerleri ayarlayın:
 
-* `<your-qna-maker-subscription-key>`- **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
-* `<your-resource-name>`- **Kaynak adınız** yazma için yazma uç noktası URL 'sini, biçiminde oluşturmak için kullanılır `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
+* `<your-qna-maker-subscription-key>` - **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
+* `<your-resource-name>` - **Kaynak adınız** yazma için yazma uç noktası URL 'sini, biçiminde oluşturmak için kullanılır `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
-[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="constants":::
 
 ## <a name="add-the-kb-model-definition"></a>KB modeli tanımını ekleme
 
 Sabitlerden sonra aşağıdaki KB modeli tanımını ekleyin. Model tanımdan sonra bir dizeye dönüştürülür.
 
-[!code-python[Add the KB model definition](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=15-41 "Add the KB model definition")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="model":::
 
 ## <a name="add-supporting-function"></a>Destekleyici işlevi ekleme
 
 JSON sonucunu okunabilir biçimde yazdırmak için aşağıdaki işlevi ekleyin:
 
-[!code-python[Add supporting function](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=43-45 "Add supporting function")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="pretty":::
 
 ## <a name="add-function-to-create-kb"></a>KB oluşturma işlevini ekleme
 
 Bilgi bankasını oluşturma amacıyla bir HTTP POST isteğinde bulunmak için aşağıdaki işlevi ekleyin.
 Bu API çağrısı, **Location** üst bilgi alanında işlem kimliğini içeren bir JSON yanıtı döndürür. İşlem kimliğini KB'nin başarıyla oluşturulup oluşturulmadığını belirlemek için kullanın. `Ocp-Apim-Subscription-Key`, Soru-Cevap Oluşturma hizmeti anahtarıdır ve kimlik doğrulaması için kullanılır.
 
-[!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="create_kb":::
 
 Bu API çağrısı, işlem kimliğini içeren bir JSON yanıtı döndürür. İşlem kimliğini KB'nin başarıyla oluşturulup oluşturulmadığını belirlemek için kullanın.
 
@@ -86,7 +86,7 @@ Bu API çağrısı, işlem kimliğini içeren bir JSON yanıtı döndürür. İ�
 
 Aşağıdaki işlev, URL yolunun sonundaki işlem kimliğini göndererek oluşturma durumunu denetler. `check_status` çağrısı, ana _while_ döngüsünün içinde yer alır.
 
-[!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="get_status":::
 
 Bu API çağrısı, işlem durumunu içeren bir JSON yanıtı döndürür:
 
@@ -116,7 +116,7 @@ Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 ## <a name="add-main-code-block"></a>Ana kod bloğunu ekleme
 Aşağıdaki döngü, oluşturma işlemi tamamlanana kadar düzenli aralıklarla işlemin durumunu yoklar.
 
-[!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/create-kb.py" id="main":::
 
 ## <a name="build-and-run-the-program"></a>Programı derleme ve çalıştırma
 

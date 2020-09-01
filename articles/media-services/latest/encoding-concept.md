@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Bu makalede, Azure Media Services ile video ve ses kodlama hakkında bilgi verilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e4db27f268d0d49696fd2a7dacc200942fa4477
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053342"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258988"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services ' deki terim kodlaması, dijital video ve/veya ses içeren dosyaları bir standart biçimden diğerine dönüştürme işlemi için geçerlidir. (a), dosyaların boyutunu azaltarak ve/veya (b) çok sayıda cihaz ve uygulama ile uyumlu bir biçim üretir. Bu işlem, video sıkıştırması veya kodlama kodlaması olarak da adlandırılır. Kavramlarla ilgili daha fazla bilgi için [veri sıkıştırmaya](https://en.wikipedia.org/wiki/Data_compression) ve [kodlama ve dönüştürme nedir?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) bölümüne bakın.
 
@@ -60,7 +62,7 @@ Videolarınızı işlemek üzere Iş gönderdiğinizde, Media Services Giriş vi
 * [.NET ile HTTPS URL 'sinden kodlama](stream-files-dotnet-quickstart.md)
 * [REST ile HTTPS URL 'sinden kodlama](stream-files-tutorial-with-rest.md)
 * [CLı ile HTTPS URL 'sinden kodlama](stream-files-cli-quickstart.md)
-* [Node.jsile HTTPS URL 'sini kodla](stream-files-nodejs-quickstart.md)
+* [Node.jsile HTTPS URL 'sini kodla ](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>Yerel bir dosyadan iş girişi oluşturma
 

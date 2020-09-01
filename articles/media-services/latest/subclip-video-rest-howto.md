@@ -3,7 +3,7 @@ title: Azure Media Services REST ile kodlama yaparken bir videoyu alt kırpın
 description: Bu konu, REST kullanarak Azure Media Services kodlama sırasında bir videonun nasıl alt kırpılacağını açıklamaktadır
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: juliako
-ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: d60baf6b8ca3fd2371ab13128524ad407d07942e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091887"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257356"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services REST ile kodlarken bir videoyu alt kırpın
 
@@ -26,7 +26,7 @@ Bir [işi](/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya al
 
 Bu konudaki REST örneği, bir kodlama işi gönderdiği için videoyu kırpan bir iş oluşturur. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 

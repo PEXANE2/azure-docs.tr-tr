@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7125c67fb68665408009ffbe7823842ac1c99cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4ac981fb3aa17cbc242b5cc51cd579f926bad034
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019513"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257985"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Mevcut blobları Media Services bir varlığa kopyalama
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -43,7 +45,7 @@ Makalede iki kod örneği gösterilmektedir:
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>Blob 'ları iki AMS hesabı arasında kopyalama  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 İki Media Services hesabı. [Media Services hesabı oluşturma](media-services-portal-create-account.md)makalesine bakın.
 
@@ -161,7 +163,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blob 'ları bir depolama hesabından AMS hesabına kopyalama 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Blob 'ları kopyalamak istediğiniz bir depolama hesabı.
 - Blob 'ları kopyalamak istediğiniz bir AMS hesabı.

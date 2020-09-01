@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604392"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259362"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -52,12 +52,12 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 |   |   | Windows geçerli | Kalıcı olmayan | Evet<sup>5</sup> |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
 |   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | No |
+|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
-|   | Yönetilen | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
+|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
 | Azure AD kayıtlı | Federasyon/yönetilen | Windows geçerli/Windows alt düzeyi | Kalıcı/kalıcı olmayan | Geçerli değil |
 
 <sup>1</sup> Windows **geçerli** cihaz Windows 10, Windows Server 2016 ve Windows Server 2019 ' i temsil eder.
@@ -68,7 +68,7 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 
 <sup>4</sup> **yönetilen** bir kimlik altyapısı ortamı, [sorunsuz çoklu oturum açma](../hybrid/how-to-connect-sso.md)ile [Parola karması eşitleme (PHS)](../hybrid/whatis-phs.md) veya [geçişli kimlik doğrulaması (PTA)](../hybrid/how-to-connect-pta.md) ile dağıtılan kimlik sağlayıcısı olarak Azure AD ile bir ortamı temsil eder.
 
-<sup>5</sup> **Windows için kalıcılık olmayan destek** , aşağıda belgelenen kılavuz bölümünde daha fazla dikkat gerektirir.
+<sup>5</sup> **Windows için kalıcılık olmayan destek** , aşağıda belgelenen kılavuz bölümünde daha fazla dikkat gerektirir. Bu senaryo için Windows 10 1803, Windows Server 2019 veya Windows Server (yarı yıllık kanal) başlangıç sürümü 1803 gerekir
 
 <sup>6</sup> **Windows alt düzey için kalıcı olmayan 6 desteği** , kılavuz bölümünde aşağıda belgelenen şekilde daha fazla dikkat gerektirir.
 

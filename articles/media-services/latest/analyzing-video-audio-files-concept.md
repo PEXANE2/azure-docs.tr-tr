@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Azure Media Services ' de Audioanalizzerönayar ve Videoanalizzerönayar kullanarak ses ve video içeriğini çözümlemeyi öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053478"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258903"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video ve ses dosyalarını Azure Media Services Çözümleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services v3, video ve ses dosyalarından Video Indexer ile öngörüleri ayıklamanıza olanak tanır. Bu makalede, bu öngörüleri ayıklamak için kullanılan Media Services v3 Analyzer önayarları açıklanmaktadır. Daha ayrıntılı içgörüler istiyorsanız doğrudan Video Indexer’ı kullanın. Video Indexer ve Media Services çözümleyici önayarlarının ne zaman kullanılacağını anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)göz atın.
 

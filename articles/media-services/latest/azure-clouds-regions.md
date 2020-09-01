@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001358"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258665"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 21Vianet ' te Azure Resource Manager bildirimi aracılığıyla kullanılabilir. Ancak tüm Azure bulutlarında tüm Media Services özellikleri kullanılamaz. Bu belgede ana Media Services v3 bileşenlerinin kullanılabilirliği özetlenmektedir.
 
@@ -39,10 +41,10 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 [Livetranscription](live-transcription.md) aşağıdaki bölgelerde kullanılabilir:
 
 - Güneydoğu Asya
-- Batı Avrupa
+- West Europe
 - Kuzey Avrupa
 - Doğu ABD
-- Orta ABD
+- Central US
 - Orta Güney ABD
 - Batı ABD 2
 - Brezilya Güney
@@ -83,7 +85,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Hizmet | Uç Noktası |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Kimlik doğrulaması | `https://login.microsoftonline.com/` |
+| Kimlik Doğrulaması | `https://login.microsoftonline.com/` |
 | Belirteç hedef kitlesi | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Kamu
@@ -91,7 +93,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Hizmet | Uç Noktası |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Kimlik doğrulaması | `https://login.microsoftonline.us/` |
+| Kimlik Doğrulaması | `https://login.microsoftonline.us/` |
 | Belirteç hedef kitlesi | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Almanya
@@ -99,7 +101,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Hizmet | Uç Noktası |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Kimlik doğrulaması | `https://login.microsoftonline.de/` |
+| Kimlik Doğrulaması | `https://login.microsoftonline.de/` |
 | Belirteç hedef kitlesi | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
@@ -107,7 +109,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Hizmet | Uç Noktası |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Kimlik doğrulaması | `https://login.chinacloudapi.cn/` |
+| Kimlik Doğrulaması | `https://login.chinacloudapi.cn/` |
 | Belirteç hedef kitlesi |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Ayrıca bkz.

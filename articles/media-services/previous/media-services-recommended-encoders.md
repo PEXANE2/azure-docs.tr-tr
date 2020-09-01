@@ -9,14 +9,16 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535103"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259532"
 ---
 # <a name="recommended-on-premises-encoders"></a>Önerilen şirket içi kodlayıcılar
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Azure Media Services ile canlı akış yapıldığında, kanalınızın giriş akışını nasıl almasını istediğinizi belirtebilirsiniz. Canlı kodlama kanalı ile şirket içi bir kodlayıcı kullanmayı seçerseniz, kodlayıcının yüksek kaliteli tek bit hızında bir akışı çıkış olarak göndermelidir. Geçiş kanalı ile şirket içi kodlayıcı kullanmayı tercih ederseniz, kodlayıcının istenen tüm çıktı kalitelerini içeren bir çoklu bit hızı akışını çıkış olarak iletmesi gerekir. Daha fazla bilgi için bkz. [Şirket içi kodlayıcılarla canlı akış](media-services-live-streaming-with-onprem-encoders.md).
 

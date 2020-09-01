@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 82d5c605baf6f95df7fee62379772ce13d696ac6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000814"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258359"
 ---
-# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLı kullanarak bir Azure AD uygulaması oluşturun ve Media Services API 'sine erişecek şekilde yapılandırın 
+# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLı kullanarak bir Azure AD uygulaması oluşturun ve Media Services API 'sine erişecek şekilde yapılandırın
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu konuda, Azure Media Services kaynaklara erişmek üzere bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturmak için Azure CLı 'nın nasıl kullanılacağı gösterilmektedir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/). 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)konusuna bakın.

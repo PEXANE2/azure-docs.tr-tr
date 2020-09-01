@@ -15,14 +15,16 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82c69d67d261c493d89f259720e1f903824d6ef8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34f71242b5d9c607d0b27dca3abd3c441ddad36e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013614"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259770"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure Media Indexer 2** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.

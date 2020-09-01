@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 18d6331c666e547c06a573dc970cf05aba8fbea1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604579"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258602"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Microsoft Azure Media Services, birçok medya kaynak dosya biçimini kodlamak için kullanılabilir. Bu, tüm büyük cihazlara (iOS ve Android cihazlar gibi) erişmek için, içerik koruma ile veya olmayan farklı akış protokolleriyle bu cihazları sunar. Bu istemciler farklı protokolleri anladım. Örneğin, iOS HTTP Canlı Akışı (HLS) biçiminde ve Android cihazlarında HLS 'yi ve MPEG DASH 'i desteklemek için akışların teslim edilmesini gerektirir.
 
