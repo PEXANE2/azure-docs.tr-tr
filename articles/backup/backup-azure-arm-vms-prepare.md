@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826319"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145663"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -155,7 +155,7 @@ Tamamlandı | Başarısız | Uyarıyla tamamlandı
 Başarısız | Başarısız | Başarısız
 
 Artık bu özellik ile aynı VM için iki yedek paralel çalışabilir, ancak her iki aşamada (anlık görüntü, verileri kasaya aktar) yalnızca bir alt görev çalışıyor olabilir. Bu nedenle, devam eden bir yedekleme işinin bir sonraki güne ait yedeklemenin başarısız olmasına neden olduğu senaryolarda, bu ayrılmış işlevle kaçınılmaz. Sonraki günlerde, yedeklemelerin anlık görüntü tamamlanabilmesi için, önceki bir günün yedekleme işi devam ediyorsa, **verileri kasaya aktarma** işlemi atlanır.
-Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan son kurtarma noktasındaki tüm karmaşıklığı yakalar. Kullanıcı üzerinde herhangi bir maliyet etkisi yoktur.
+Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan en son kurtarma noktasından tüm dalgalanmasını yakalar. Kullanıcı üzerinde herhangi bir maliyet etkisi yoktur.
 
 ## <a name="optional-steps"></a>İsteğe bağlı adımlar
 

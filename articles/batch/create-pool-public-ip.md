@@ -3,12 +3,12 @@ title: Belirtilen genel IP adreslerine sahip bir havuz oluşturun
 description: Kendi genel IP adreslerinizi kullanan bir Batch havuzu oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.openlocfilehash: 630da3ff9c1f2318c7ed4da0e8f4b5ee8212f389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023764"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146496"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturun
 
@@ -24,7 +24,7 @@ Genel IP adresleri olmayan havuzlar oluşturma hakkında bilgi için, [genel IP 
 
 - **Bir Azure sanal ağı**. Havuzunuzu ve IP adreslerinizi oluşturduğunuz aynı Azure aboneliğinden bir [sanal ağ](batch-virtual-network.md) kullanmanız gerekir. Yalnızca Azure Resource Manager tabanlı VNET 'ler kullanılabilir. VNet 'in tüm [genel gereksinimleri](batch-virtual-network.md#vnet-requirements)karşıladığından emin olun.
 
-- **En az bir Azure genel IP adresi**. Bir veya daha fazla genel IP adresi oluşturmak için [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [Azure komut SATıRı arabirimini (clı)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)veya [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)kullanabilirsiniz. Aşağıda listelenen gereksinimleri izlediğinizden emin olun.
+- **En az bir Azure genel IP adresi**. Bir veya daha fazla genel IP adresi oluşturmak için [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [Azure komut SATıRı arabirimini (clı)](/cli/azure/network/public-ip#az-network-public-ip-create)veya [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)kullanabilirsiniz. Aşağıda listelenen gereksinimleri izlediğinizden emin olun.
 
 > [!NOTE]
 > Batch, genel IP adreslerini içeren kaynak grubundaki ek ağ kaynaklarını otomatik olarak ayırır. Batch, her 100 ayrılmış düğüm için genellikle bir ağ güvenlik grubu (NSG) ve bir yük dengeleyici ayırır. Bu kaynaklar, aboneliğin kaynak kotalarıyla sınırlıdır. Daha büyük havuzlar kullanılırken, bir veya daha fazla kaynağın bir veya daha fazlası için [bir kota artışı istemeniz](batch-quota-limit.md#increase-a-quota) gerekebilir.

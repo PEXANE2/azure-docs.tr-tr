@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141934"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146750"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -27,13 +27,13 @@ Tipik bir model geliştirme yaşam döngüsünde şunları yapabilirsiniz:
 
 İşlem hedeflerinizin kullanacağı işlem kaynakları bir [çalışma alanına](concept-workspace.md)eklenir. Yerel makine dışında işlem kaynakları, çalışma alanının kullanıcıları tarafından paylaşılır.
 
-## <a name="training-compute-targets"></a><a name="train"></a>Eğitim işlem hedefleri
+## <a name="training-compute-targets"></a><a name="train"></a> Eğitim işlem hedefleri
 
 Azure Machine Learning, farklı işlem kaynakları arasında farklı destek içerir.  Ayrıca, çeşitli senaryolar için destek farklılık gösterebilse de kendi işlem kaynağınızı ekleyebilirsiniz.
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-[Model eğitimi için bir işlem hedefi ayarlama ve kullanma](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
+[Model eğitimi için bir işlem hedefi kullanma](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>Dağıtım hedefleri
 
@@ -46,10 +46,10 @@ Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için ku
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning işlem (yönetilen)
 
-Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur ve yönetilir. Bu işlem makine öğrenimi iş yükleri için iyileştirilmiştir. Azure Machine Learning işlem kümeleri ve [işlem örnekleri](concept-compute-instance.md) yalnızca yönetilen hesaplalardır. Daha sonra ek yönetilen işlem kaynakları eklenebilir.
+Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur ve yönetilir. Bu işlem makine öğrenimi iş yükleri için iyileştirilmiştir. Azure Machine Learning işlem kümeleri ve [işlem örnekleri](concept-compute-instance.md) yalnızca yönetilen hesaplalardır. 
 
 Azure Machine Learning işlem örnekleri veya işlem kümeleri oluşturabilirsiniz:
-* Azure Machine Learning Studio
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) ve [amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) sınıfları
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Önizleme)
@@ -68,7 +68,7 @@ Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin 
 
 
 > [!NOTE]
-> Bir işlem kümesi boşta olduğunda, otomatik olarak 0 düğüme ölçeklenirken, kullanımda olmadığında ödeme yapmayın.  Ancak, bir işlem *örneği*her zaman açık olur ve otomatik ölçeklendirme yapmaz.  Ek maliyetten kaçınmak için, bunu kullanmadığınız durumlarda [işlem örneğini durdurmanız](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) gerekir.
+> Bir işlem kümesi boşta olduğunda, otomatik olarak 0 düğüme ölçeklenirken, kullanımda olmadığında ödeme yapmayın.  Ancak, bir işlem *örneği*her zaman açık olur ve otomatik ölçeklendirme yapmaz.  Ek maliyetten kaçınmak için, bunu kullanmadığınız durumlarda [işlem örneğini durdurmanız](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) gerekir. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
 
@@ -82,19 +82,19 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
-| D | Hiçbiri |
-| Dv2 | Hiçbiri |  
-| DSv2 | Hiçbiri |  
-| FSv2 | Hiçbiri | 
+| D | Yok |
+| Dv2 | Yok |  
+| DSv2 | Yok |  
+| FSv2 | Yok | 
 | HBv2 | Onay gerekiyor |  
 | HCS | Onay gerekiyor |  
 | M | Onay gerekiyor |
-| NC | Hiçbiri |    
+| NC | Yok |    
 | NCsv2 | Onay gerekiyor |
 | NCsv3 | Onay gerekiyor |  
 | Üstündeki | Onay gerekiyor |
 | NDv2 | Onay gerekiyor |
-| NV | Hiçbiri |
+| NV | Yok |
 | NVv3 | Onay gerekiyor | 
 
 
@@ -107,5 +107,5 @@ Yönetilmeyen bir işlem hedefi Azure Machine Learning *tarafından yönetilmiyo
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Şunları nasıl yapacağınızı öğrenin:
-* [Modelinizi eğitme için bir işlem hedefi ayarlama](how-to-set-up-training-targets.md)
+* [Modelinizi eğitme bir işlem hedefi kullanın](how-to-set-up-training-targets.md)
 * [Modelinizi bir işlem hedefine dağıtın](how-to-deploy-and-where.md)

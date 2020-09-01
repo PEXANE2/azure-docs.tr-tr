@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167020"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177321"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -141,7 +141,7 @@ Bu genel önizleme sürümündeki yeni yetenekler şunlardır:
 
 Sanal makinelere yüklenen uygulamalar, genellikle sanal makine ihlaline neden olabilecek güvenlik açıklarına sahip olabilir. Güvenlik Merkezi Standart katmanının, hiçbir ek ücret ödemeden sanal makineler için yerleşik güvenlik açığı değerlendirmesi içerdiğini duyuruyoruz. Genel önizlemede Qualys tarafından desteklenen güvenlik açığı değerlendirmesi, güvenlik açığı bulunan uygulamaları bulmak ve Güvenlik Merkezi portalının deneyimindeki bulguları sunmak için bir sanal makinede yüklü olan tüm uygulamaları sürekli olarak taramanıza olanak sağlayacak. Güvenlik Merkezi, kullanıcıdan hiçbir ek iş gerekmemesi için tüm dağıtım işlemlerini gerçekleştirir. İleri ' ye giderek, müşterilerinizin benzersiz iş ihtiyaçlarını desteklemeye yönelik güvenlik açığı değerlendirmesi seçenekleri sağlamayı planlıyoruz.
 
-[Azure sanal makineleriniz için güvenlik açığı değerlendirmeleri hakkında daha fazla bilgi edinin](security-center-vulnerability-assessment-recommendations.md).
+[Azure sanal makineleriniz için güvenlik açığı değerlendirmeleri hakkında daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Önizleme)

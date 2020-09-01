@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117235"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178952"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -55,7 +55,7 @@ Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 
@@ -87,7 +87,7 @@ Azure AD uygulamanızı ve hizmet sorumlusunu oluşturdunuz.
 
 ## <a name="assign-a-role-to-the-application"></a>Uygulamaya bir rol atama
 
-Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında bilgi edinmek için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
@@ -163,7 +163,7 @@ Sertifikayı karşıya yüklemek için:
 
 Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirmeniz gerekir.
 
-### <a name="create-a-new-application-secret"></a>Yeni bir uygulama parolası oluştur
+### <a name="create-a-new-application-secret"></a>Yeni uygulama gizli dizisi oluşturma
 
 Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluşturabilirsiniz.
 

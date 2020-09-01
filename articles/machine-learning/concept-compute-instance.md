@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651924"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146768"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -24,7 +24,7 @@ Azure Machine Learning işlem örneği, veri bilimcileri için yönetilen bulut 
 
 Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız olarak bir işlem örneği kullanın. Ayrıca, geliştirme ve test amacıyla bilgi işlem hedefi olarak da kullanılabilir.  
 
-Üretim sınıfı modeli eğitimi için çok düğümlü ölçeklendirme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) kullanın. Üretim sınıfı modeli dağıtımı için [Azure Kubernetes hizmet kümesi](how-to-deploy-azure-kubernetes-service.md)' ni kullanın.
+Üretim sınıfı modeli eğitimi için çok düğümlü ölçeklendirme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-create-attach-compute-sdk.md#amlcompute) kullanın. Üretim sınıfı modeli dağıtımı için [Azure Kubernetes hizmet kümesi](how-to-deploy-azure-kubernetes-service.md)' ni kullanın.
 
 ## <a name="why-use-a-compute-instance"></a>Neden bir işlem örneği kullanılmalıdır?
 
@@ -138,18 +138,7 @@ Bu eylemler RBAC tarafından denetlenebilir:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>İşlem örneği oluşturma
 
-Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizden birini çalıştırmaya hazırsanız **işlem** bölümünden veya **Not defterleri** bölümünde yeni bir işlem örneği oluşturun.
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Yeni bir işlem örneği oluştur":::
-
-
-|Alan  |Açıklama  |
-|---------|---------|
-|İşlem adı     |  <li>Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.</li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
-|Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
-|Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
-|SSH erişimini etkinleştirme/devre dışı bırakma     |   SSH erişimi varsayılan olarak devre dışıdır.  SSH erişimi olamaz. oluşturulduktan sonra değiştirildi. [Vs Code uzak](how-to-set-up-vs-code-remote.md) ile etkileşimli olarak hata ayıklamayı planlıyorsanız erişimi etkinleştirdiğinizden emin olun   |
-|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ**ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](how-to-enable-virtual-network.md#compute-instance) bakın.        |
+Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizden birini çalıştırmaya hazırsanız **işlem** bölümünden veya **Not defterleri** bölümünde [Yeni bir işlem örneği oluşturun](how-to-create-attach-compute-studio.md#compute-instance) . 
 
 Ayrıca, bir örnek oluşturabilirsiniz
 * Doğrudan [Tümleşik Not defteri deneyiminden](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -158,7 +147,7 @@ Ayrıca, bir örnek oluşturabilirsiniz
 * Azure Machine Learning SDK ile
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md#computeinstance)
 
-VM ailesi kotası başına bölge başına adanmış çekirdek ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota. Birleşik ve Azure Machine Learning eğitim işlem kümesi kotasıyla paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır.
+VM ailesi kotası başına bölge başına adanmış çekirdekler ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota, Azure Machine Learning eğitim işlem kümesi kotasıyla birleştirilmiş ve paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır.
 
 ## <a name="compute-target"></a>İşlem hedefi
 

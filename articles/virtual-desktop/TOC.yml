@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: Dil paketlerini yükleme
       href: language-packs.md
+    - name: Azure Danışmanı’nı kullanma
+      href: azure-advisor.md
     - name: Önerileri çözümleme
       href: azure-advisor-recommendations.md
 - name: Kavramlar

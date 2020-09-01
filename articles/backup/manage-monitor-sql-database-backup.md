@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını yönetme ve izleme
 description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritabanlarının nasıl yönetileceği ve izleneceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826642"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146530"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
 
@@ -55,7 +55,7 @@ Kurtarma noktalarından ayrıldığınızda bu ayrıntıları göz önünde bulu
 
 - Tüm kurtarma noktaları süresiz olarak kalır ve tüm ayıklama, verileri koruyarak koruma durdurma sırasında durdurulur.
 - Korumalı örnek ve tüketilen depolama alanı için ücretlendirilirsiniz. Daha fazla bilgi için bkz. [Azure Backup fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/).
-- Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur. Eski kurtarma noktaları ilkeye göre sona erer, ancak yedeklemeleri durdurup verileri silene kadar bir son kurtarma noktası her zaman tutulur.
+- Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur. Eski kurtarma noktaları ilkeye göre sona erer, ancak yedeklemeleri durdurup verileri silene kadar en son kurtarma noktası her zaman tutulur.
 
 Bir veritabanının korumasını durdurmak için:
 

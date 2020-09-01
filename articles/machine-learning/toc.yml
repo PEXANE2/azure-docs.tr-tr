@@ -216,6 +216,13 @@
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: İşlem kaynakları oluşturma
+      items:
+        - name: Stüdyoyu kullanma
+          href: how-to-create-attach-compute-studio.md
+        - name: Python SDK’yı kullanma
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: Ortamınızı ayarlama
       items:
         - name: Geliştirme ortamlarını ayarlama
@@ -265,7 +272,7 @@
         - name: Verilere erişme
           items:
             - name: Azure Depolama’ya bağlanma
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: Bir veri deposundan veri alma
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: Modelleri eğitme
       items:
-        - name: Eğitim ortamlarını ayarlama
+        - name: Eğitim çalıştırmasını gönderme
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: ML için tahmin araçlarını kullanma

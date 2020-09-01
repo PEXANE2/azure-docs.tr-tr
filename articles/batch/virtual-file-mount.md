@@ -4,23 +4,23 @@ description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi ed
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921639"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145493"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
 
 Azure Batch artık Batch havuzlarınızdaki Windows veya Linux işlem düğümlerinde bulut depolama veya harici bir dosya sistemi bağlamayı desteklemektedir. Bir işlem düğümü bir havuza katıldığında, sanal dosya sistemi bağlanır ve bu düğümde yerel bir sürücü olarak değerlendirilir. Azure dosyaları, Azure Blob depolama, ağ dosya sistemi (NFS) gibi bir [avere vFXT önbelleği](../avere-vfxt/avere-vfxt-overview.md)veya ortak Internet dosya SISTEMI (CIFS) gibi dosya sistemlerini bağlayabilirsiniz.
 
-Bu makalede, [.net Için Batch Yönetim Kitaplığı](/dotnet/api/overview/azure/batch?view=azure-dotnet)'nı kullanarak bir işlem düğümleri havuzuna bir sanal dosya sistemi bağlama hakkında bilgi edineceksiniz.
+Bu makalede, [.net Için Batch Yönetim Kitaplığı](/dotnet/api/overview/azure/batch)'nı kullanarak bir işlem düğümleri havuzuna bir sanal dosya sistemi bağlama hakkında bilgi edineceksiniz.
 
 > [!NOTE]
 > Bir sanal dosya sistemi bağlama, 2019-08-19 tarihinde veya sonrasında oluşturulan Batch havuzlarında desteklenir. 2019-08-19 ' den önce oluşturulan toplu iş havuzları bu özelliği desteklemez.
 > 
-> Dosya sistemlerini bir işlem düğümüne bağlamak için API 'Ler [Batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) kitaplığı 'nın bir parçasıdır.
+> Dosya sistemlerini bir işlem düğümüne bağlamak için API 'Ler [Batch .net](/dotnet/api/microsoft.azure.batch) kitaplığı 'nın bir parçasıdır.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Bir havuza bağlama avantajları
 

@@ -4,12 +4,12 @@ description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulama
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922013"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146479"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -248,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
 
 ```
 Linux:
@@ -334,8 +334,8 @@ Uygulama paketleriyle, müşterilerinizin işlerinin uygulamalarını seçmesini
 * [Batch REST API][api_rest] Ayrıca uygulama paketleriyle çalışmak için destek sağlar. Örneğin, REST API kullanarak yüklenecek paketleri belirtme hakkında bilgi için bkz. [bir hesaba havuz ekleme][rest_add_pool] Içindeki [applicationpackagereferges][rest_add_pool_with_packages] öğesi. Toplu REST API kullanarak uygulama bilgilerini alma hakkında ayrıntılar için bkz. [uygulamalar][rest_applications] .
 * [Batch yönetimi .NET ile Azure Batch hesaplarını ve kotaları](batch-management-dotnet.md)programlı bir şekilde yönetmeyi öğrenin. [Batch yönetimi .net][api_net_mgmt] kitaplığı, Batch uygulamanız veya hizmetiniz için hesap oluşturma ve silme özelliklerini etkinleştirebilir.
 
-[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples

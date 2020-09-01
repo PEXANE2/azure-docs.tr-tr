@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117252"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178833"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -164,7 +164,7 @@ Bir istemci uygulaması gibi, kaynak uygulamanın kimlik yapılandırması da bi
 
 Roller, kaynak tanımlı dizelerdir (örneğin, "harcama onaylayan", "salt okunurdur", "Directory. ReadWrite. All"), kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilir ve kaynağın [approles özelliğinde][Graph-Sp-Resource]depolanır. Azure portal, kullanıcıları "Kullanıcı" rollerine atamak ve "uygulama" rolüne erişmek için istemci [uygulama izinlerini](#permissions) yapılandırmak için de kullanılır.
 
-Microsoft Graph API tarafından kullanıma sunulan uygulama rollerinin ayrıntılı bir açıklaması için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Adım adım bir uygulama örneği için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal][AAD-RBAC].
+Microsoft Graph API tarafından kullanıma sunulan uygulama rollerinin ayrıntılı bir açıklaması için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Adım adım bir uygulama örneği için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma][AAD-RBAC].
 
 ## <a name="scopes"></a>scopes
 

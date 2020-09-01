@@ -4,12 +4,12 @@ description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810097"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144932"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -144,14 +144,16 @@ Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının 
 
 | İşlevler sürümü | Java sürümleri (Windows) | Java sürümleri (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Önizleme)<br/>240<sup>\*</sup> | 11 (Önizleme)<br/>8 |
+| 3.x | 11 (Önizleme)<br/>8 | 11 (Önizleme)<br/>8 |
 | 2.x | 8 | yok |
 
-<sup>\*</sup>Bu, Maven arşiv ETYPE tarafından oluşturulan pom.xml geçerli varsayılandır.
+Dağıtımınız için bir Java sürümü belirtmediğiniz takdirde, Maven arşiv ETYPE, Azure 'a dağıtım sırasında varsayılan olarak Java 8 ' dir.
 
 ### <a name="specify-the-deployment-version"></a>Dağıtım sürümünü belirtin
 
-Şu anda Maven arşiv ETYPE, Java 8 ' i hedefleyen bir pom.xml oluşturur. pom.xml ' deki aşağıdaki öğelerin, Java 11 çalıştıran bir işlev uygulaması oluşturmak için güncelleştirilmeleri gerekir.
+Parametresini kullanarak Maven arşiv ETYPE tarafından hedeflenen Java sürümünü kontrol edebilirsiniz `-DjavaVersion` . Bu parametrenin değeri istatistiklerinden `8` or olabilir `11` . Java 11 desteği şu anda önizleme aşamasındadır. 
+
+Maven arşiv ETYPE, belirtilen Java sürümünü hedefleyen bir pom.xml oluşturur. pom.xml ' deki aşağıdaki öğeler, kullanılacak Java sürümünü gösterir:
 
 | Öğe |  Java 8 değeri | Java 11 değeri | Açıklama |
 | ---- | ---- | ---- | --- |
@@ -320,7 +322,7 @@ Bir toplu işlem almak için,, veya ' a bağlayabilirsiniz `String[]` `POJO[]` `
 
 ```
 
-Bu işlev, yapılandırılan olay hub 'ında her yeni veri olduğunda tetiklenir. , `cardinality` Olarak ayarlandığı için `MANY` , işlevi olay hub 'ından bir ileti toplu işi alır. `EventData`Olay Hub 'ı `TestEventData` , işlev yürütmesi için öğesine dönüştürülür.
+Bu işlev, yapılandırılan olay hub 'ında her yeni veri olduğunda tetiklenir. , `cardinality` Olarak ayarlandığı için `MANY` , işlevi olay hub 'ından bir ileti toplu işi alır. `EventData` Olay Hub 'ı `TestEventData` , işlev yürütmesi için öğesine dönüştürülür.
 
 ### <a name="output-binding-example"></a>Çıkış bağlama örneği
 
@@ -388,7 +390,7 @@ Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden ç
 | `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
 | `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](./functions-triggers-bindings.md) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
 

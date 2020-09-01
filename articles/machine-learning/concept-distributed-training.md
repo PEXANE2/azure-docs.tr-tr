@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995032"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146666"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning ile dağıtılmış eğitim
 
@@ -50,7 +50,7 @@ Model paralelliği ' nde, çalışan düğümlerinin, genellikle her bir ileri v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Python SDK ile [eğitim ortamlarını ayarlamayı](how-to-set-up-training-targets.md) öğrenin.
+* Python SDK ile [model eğitimi için işlem hedeflerini nasıl kullanacağınızı](how-to-set-up-training-targets.md) öğrenin.
 * Teknik bir örnek için bkz. [başvuru mimarisi senaryosu](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
 * [TensorFlow Ile ml modellerini eğitme](how-to-train-tensorflow.md).
 * [PyTorch Ile ml modellerini eğitme](how-to-train-pytorch.md). 

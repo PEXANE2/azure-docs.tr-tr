@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500319"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146649"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -30,6 +30,8 @@ ms.locfileid: "86500319"
 * [B serisi](../sizes-b-series-burstable.md)
 * [DCsv2 serisi](../dcv2-series.md)
 * [DSv2-Series](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
+* [Dsv4 serisi](../dv4-dsv4-series.md)
+* [Ddsv4 serisi](../ddv4-ddsv4-series.md)
 * [Dasv4 serisi](../dav4-dasv4-series.md)
 * [Esv3 serisi](../ev3-esv3-series.md)
 * [Easv4 serisi](../eav4-easv4-series.md)
@@ -86,7 +88,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. nesil ve 2. nesil yetenekler
 
-| Yetenek | 1. nesil | 2. nesil |
+| Özellik | 1. nesil | 2. nesil |
 |------------|--------------|--------------|
 | İşletim sistemi diski > 2 TB                    | sayı                | :heavy_check_mark: |
 | Özel disk/görüntü/takas OS         | :heavy_check_mark: | :heavy_check_mark: |
@@ -137,7 +139,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 
 Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 

@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: Uzaktan çalışanların güvenliğini sağlama
           href: concept-secure-remote-workers.md
-        - name: Sürekli erişim değerlendirmesi
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Gruplar ve kullanıcılar
       items:
         - name: Gruplar ve erişim yönetimi

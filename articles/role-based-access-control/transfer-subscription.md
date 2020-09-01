@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055660"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177287"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -29,14 +29,14 @@ Kuruluşların çeşitli Azure abonelikleri olabilir. Her abonelik belirli bir A
 Bu makalede, bir aboneliği farklı bir Azure AD dizinine aktarmak ve aktarımdan sonra bazı kaynakları yeniden oluşturmak için izleyebileceğiniz temel adımlar açıklanmaktadır.
 
 > [!NOTE]
-> Azure CSP abonelikleri için, aboneliğin Azure AD dizinini değiştirme desteklenmez.
+> Azure bulut hizmeti sağlayıcıları (CSP) abonelikleri için, aboneliğin Azure AD dizinini değiştirme desteklenmez.
 
 ## <a name="overview"></a>Genel Bakış
 
 Azure aboneliğini farklı bir Azure AD dizinine aktarmak, dikkatlice planlanmalıdır ve yürütülmesi gereken karmaşık bir işlemdir. Birçok Azure hizmeti, normal şekilde çalışması için güvenlik sorumlularını (kimlikler) gerektirir veya diğer Azure kaynaklarını yönetebilir. Bu makale, güvenlik ilkelerine büyük ölçüde bağlı olan, ancak kapsamlı olmayan Azure hizmetlerinin çoğunu kapsamaya çalışır.
 
 > [!IMPORTANT]
-> Bazı senaryolarda, bir aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekebilir. Geçişiniz için kapalı kalma süresinin gerekli olup olmadığını değerlendirmek için dikkatli bir planlama yapılması gerekir.
+> Bazı senaryolarda, bir aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekebilir. Aktarımınız için kapalı kalma süresinin gerekli olup olmadığını değerlendirmek için dikkatli bir planlama yapılması gerekir.
 
 Aşağıdaki diyagramda, bir aboneliği farklı bir dizine aktardığınızda izlemeniz gereken temel adımlar gösterilmektedir.
 
@@ -73,7 +73,7 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Özel roller | Yes | Yes | [Özel rolleri listeleme](#save-custom-roles) | Tüm özel roller kalıcı olarak silinir. Özel rolleri ve tüm rol atamalarını yeniden oluşturmanız gerekir. |
 | Sistem tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
 | Kullanıcı tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri silmeniz, yeniden oluşturmanız ve uygun kaynağa bağlamanız gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
-| Azure Key Vault | Yes | Yes | [Key Vault erişim ilkelerini listeleme](#list-other-known-resources) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
+| Azure Key Vault | Yes | Yes | [Key Vault erişim ilkelerini listeleme](#list-key-vaults) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
 | Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Yes | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Data Lake Storage 1. Nesil | Evet | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
@@ -84,8 +84,8 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Azure Active Directory Domain Services | Yes | Hayır |  |  |
 | Uygulama kayıtları | Yes | Yes |  |  |
 
-> [!IMPORTANT]
-> Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanırsanız ve kaynağın, aktarılmakta olan abonelikte *olmayan* bir anahtar kasasına bağımlılığı varsa, kurtarılamaz bir hata alabilirsiniz. Bu durumda, kurtarılamaz bir hatadan kaçınmak için farklı bir Anahtar Kasası kullanın veya müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakın.
+> [!WARNING]
+> Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -221,8 +221,8 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
 Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneliğin varsayılan Azure Active Directory kiracı KIMLIĞINE bağlanır. Tüm erişim ilkesi girdileri de bu kiracı kimliğine bağlanır. Daha fazla bilgi için bkz. [Azure Key Vault başka bir aboneliğe taşıma](../key-vault/general/move-subscription.md).
 
-> [!IMPORTANT]
-> Depolama hesabı veya SQL veritabanı gibi bir kaynak için bekleyen şifreleme kullanırsanız ve kaynağın, aktarılmakta olan abonelikte *olmayan* bir anahtar kasasına bağımlılığı varsa, kurtarılamaz bir hata alabilirsiniz. Bu durumda, kurtarılamaz bir hatadan kaçınmak için farklı bir Anahtar Kasası kullanın veya müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakın.
+> [!WARNING]
+> Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
 - Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) komutunu kullanın. Daha fazla bilgi için bkz. [erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama](../key-vault/key-vault-group-permissions-for-apps.md).
 
@@ -232,7 +232,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını listeleme
 
-- Azure AD kimlik doğrulamasıyla Azure SQL veritabanları kullanıp kullankullandığınızı görmek için [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) ve [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
+- Azure AD kimlik doğrulaması tümleştirmesinin etkin olduğu Azure SQL veritabanlarını kullanıp kullankullandığınızı görmek için [az SQL Server ad-yönetici listesi](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) ' ni ve [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension ' i kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -262,16 +262,21 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>2. Adım: Faturalandırma sahipliğini aktarma
+## <a name="step-2-transfer-the-subscription"></a>2. Adım: aboneliği aktarma
 
-Bu adımda, aboneliğin faturalama sahipliğini Kaynak dizinden hedef dizine aktarırsınız.
+Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar, faturalandırma sahipliğini de aktarmak isteyip istemediğinize bağlı olarak farklı olacaktır.
 
 > [!WARNING]
-> Aboneliğin fatura sahipliğini aktardığınızda, kaynak dizindeki tüm rol atamaları **kalıcı olarak** silinir ve geri yüklenemez. Aboneliğin fatura sahipliğini aktardıktan sonra geri dönemezsiniz. Bu adımı gerçekleştirmeden önce önceki adımları tamamladığınızdan emin olun.
+> Aboneliği aktardığınızda, kaynak dizindeki tüm rol atamaları **kalıcı olarak** silinir ve geri yüklenemez. Aboneliği aktardıktan sonra geri dönemezsiniz. Bu adımı gerçekleştirmeden önce önceki adımları tamamladığınızdan emin olun.
 
-1. Bir [Azure aboneliğinin faturalandırma sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md)bölümündeki adımları izleyin. Aboneliği farklı bir Azure AD dizinine aktarmak için **abonelik Azure AD kiracısı** onay kutusunu denetlemeniz gerekir.
+1. Faturalandırma sahipliğini de aktarmak isteyip istemediğinizi belirleme.
 
-1. Sahiplik aktarmayı tamamladıktan sonra, hedef dizindeki kaynakları yeniden oluşturmak için bu makaleye geri dönün.
+1. Aboneliği farklı bir dizine aktarın.
+
+    - Geçerli faturalandırma sahipliğini korumak istiyorsanız, [ilişkilendir veya Azure Active Directory Kiracınıza Azure aboneliği ekleme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)bölümündeki adımları izleyin.
+    - Faturalandırma sahipliğini de aktarmak istiyorsanız, bir [Azure aboneliğinin faturalandırma sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md)bölümündeki adımları izleyin. Aboneliği farklı bir dizine aktarmak için **abonelik Azure AD kiracısı** onay kutusunu denetlemeniz gerekir.
+
+1. Aboneliği aktarmayı tamamladıktan sonra, hedef dizindeki kaynakları yeniden oluşturmak için bu makaleye geri dönün.
 
 ## <a name="step-3-re-create-resources"></a>3. Adım: kaynakları yeniden oluşturma
 

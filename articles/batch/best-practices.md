@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191810"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146547"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -29,12 +29,12 @@ Bu makalede, toplu Iş ile gerçek yaşam deneyimine göre Azure Batch hizmetini
     Bağımsız düğümlerin her zaman kullanılabilir olması garanti edilmez. Yaygın olarak, donanım hataları, işletim sistemi güncelleştirmeleri ve diğer sorunların bir konağı, tek tek düğümlerin çevrimdışı olmasına neden olabilir. Batch iş yükünüz belirleyici gerektiriyorsa, garantili ilerleme durumunda birden çok düğüm içeren havuzlar ayırmanız gerekir.
 
 - **Kaynak adlarını yeniden kullanmayın.**
-    Batch kaynakları (işler, havuzlar vb.) genellikle zaman içinde gelir ve zaman içinde gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve ardından Perşembe üzerinde başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa, daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID kullanılarak (tüm kaynak adı olarak veya bunun bir parçası olarak) ya da kaynağın kaynak adında oluşturulduğu zamanı katıştırarak yapılabilir. Batch, gerçek kaynak KIMLIĞI insana sahip olmayan bir şey olsa da kaynağa okunabilir bir ad vermek için kullanılabilen [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)'i destekler. Benzersiz adların kullanılması, hangi belirli kaynağın günlüklerde ve ölçümlerde bir şeyler olduğunu ayırt etmenize daha kolay hale getirir. Ayrıca, bir kaynak için bir destek durumu dosyası oluşturmanız gerekiyorsa belirsizlik kaldırılır.
+    Batch kaynakları (işler, havuzlar vb.) genellikle zaman içinde gelir ve zaman içinde gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve ardından Perşembe üzerinde başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa, daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID kullanılarak (tüm kaynak adı olarak veya bunun bir parçası olarak) ya da kaynağın kaynak adında oluşturulduğu zamanı katıştırarak yapılabilir. Batch, gerçek kaynak KIMLIĞI insana sahip olmayan bir şey olsa da kaynağa okunabilir bir ad vermek için kullanılabilen [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)'i destekler. Benzersiz adların kullanılması, hangi belirli kaynağın günlüklerde ve ölçümlerde bir şeyler olduğunu ayırt etmenize daha kolay hale getirir. Ayrıca, bir kaynak için bir destek durumu dosyası oluşturmanız gerekiyorsa belirsizlik kaldırılır.
 
 - **Havuz bakımı ve başarısızlık sırasında süreklilik.**
     İşlerinizin havuzları dinamik olarak kullanması en iyisidir. İşleriniz her şey için aynı havuzu kullanıyorsa, havuzda bir sorun oluşursa işlerin çalıştırılmayabileceği bir şansınız vardır. Bu, özellikle zamana duyarlı iş yükleri için önemlidir. Bunu çözmek için, her bir işi zamanlarken bir havuzu dinamik olarak seçin veya oluşturun veya uygun olmayan bir havuzu atlayabilmeniz için havuz adını geçersiz kılmak üzere bir yol belirtin.
 
-- **Havuz bakımı ve başarısızlığı sırasında iş sürekliliği** Bir havuzun, dahili hatalar, kapasite kısıtlamaları vb. gibi gerekli boyuta büyümesini engelleyebilen birçok nedeni vardır. Bu nedenle, işleri farklı bir havuzda yeniden hedeflemeniz (muhtemelen farklı bir VM boyutu ile) gerekirse bu Işlemi [Updatejob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)aracılığıyla destekler. Bir statik havuz KIMLIĞI kullanmaktan kaçının hiçbir şekilde silinmeyeceğinden ve hiçbir şekilde değişmeyeceğinden, beklenmez.
+- **Havuz bakımı ve başarısızlığı sırasında iş sürekliliği** Bir havuzun, dahili hatalar, kapasite kısıtlamaları vb. gibi gerekli boyuta büyümesini engelleyebilen birçok nedeni vardır. Bu nedenle, işleri farklı bir havuzda yeniden hedeflemeniz (muhtemelen farklı bir VM boyutu ile) gerekirse bu Işlemi [Updatejob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)aracılığıyla destekler. Bir statik havuz KIMLIĞI kullanmaktan kaçının hiçbir şekilde silinmeyeceğinden ve hiçbir şekilde değişmeyeceğinden, beklenmez.
 
 ### <a name="pool-lifetime-and-billing"></a>Havuz ömrü ve faturalama
 
@@ -63,7 +63,7 @@ Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğ
 
 ### <a name="third-party-images"></a>Üçüncü taraf görüntüleri
 
-Havuzlar, Azure Marketi 'Nde yayınlanan üçüncü taraf görüntüleri kullanılarak oluşturulabilir. Kullanıcı aboneliği modu Batch hesaplarıyla, bazı üçüncü taraf görüntülerle bir havuz oluştururken "Market satın alma uygunluğu denetimi nedeniyle ayrılamadı" hatasını görebilirsiniz. Bu hatayı çözmek için görüntünün yayımcısı tarafından ayarlanan koşulları kabul edin. Bunu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) veya [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)kullanarak yapabilirsiniz.
+Havuzlar, Azure Marketi 'Nde yayınlanan üçüncü taraf görüntüleri kullanılarak oluşturulabilir. Kullanıcı aboneliği modu Batch hesaplarıyla, bazı üçüncü taraf görüntülerle bir havuz oluştururken "Market satın alma uygunluğu denetimi nedeniyle ayrılamadı" hatasını görebilirsiniz. Bu hatayı çözmek için görüntünün yayımcısı tarafından ayarlanan koşulları kabul edin. [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) veya [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms)kullanarak bunu yapabilirsiniz.
 
 ### <a name="azure-region-dependency"></a>Azure bölge bağımlılığı
 
@@ -83,7 +83,7 @@ Bu nedenle, binlerce eşzamanlı etkin iş gerektiren bir Batch çözümü tasar
 
 Toplu işin, sistemden silinene kadar sınırsız bir ömrü vardır. Durumu, zamanlama için daha fazla görevi kabul edip edemeyeceğini belirler.
 
-Açık olarak sonlandırılmadığı takdirde bir iş otomatik olarak tamamlandı durumuna taşınamaz. Bu, [Onalltasksall](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) özelliği veya [Maxduvara Clocktime](/rest/api/batchservice/job/add#jobconstraints)aracılığıyla otomatik olarak tetiklenebilir.
+Açık olarak sonlandırılmadığı takdirde bir iş otomatik olarak tamamlandı durumuna taşınamaz. Bu, [Onalltasksall](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) özelliği veya [Maxduvara Clocktime](/rest/api/batchservice/job/add#jobconstraints)aracılığıyla otomatik olarak tetiklenebilir.
 
 Varsayılan bir [etkin iş ve iş zamanlaması kotası](batch-quota-limit.md#resource-quotas)vardır. İşlerin ve iş zamanlamalarının tamamlandı durumunda bu kotaya dahil sayılmaz.
 
@@ -99,7 +99,7 @@ Toplu işlem, Azure depolama 'yı kullanarak verileri [OutputFiles](batch-task-o
 
 ### <a name="manage-task-lifetime"></a>Görev ömrünü yönetme
 
-Görevleri artık gerekli olmadığında silin veya bir [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) görev kısıtlaması ayarlayın. Bir `retentionTime` ayarlanmışsa, toplu iş süresi dolduktan sonra görev tarafından kullanılan disk alanını otomatik olarak temizler `retentionTime` .
+Görevleri artık gerekli olmadığında silin veya bir [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) görev kısıtlaması ayarlayın. Bir `retentionTime` ayarlanmışsa, toplu iş süresi dolduktan sonra görev tarafından kullanılan disk alanını otomatik olarak temizler `retentionTime` .
 
 Görevleri silme işlemi iki şeyi gerçekleştirir. İşte, ilgilendiğiniz görevi sorgulamayı/bulmayı daha da zorlamanızı sağlayan (tamamlanan görevleri filtrelemeniz gerektiği için) iş içinde görevlerin bir oluşturma işlemi olmamasını sağlar. Ayrıca, düğümdeki karşılık gelen görev verilerini de temizler (belirtilen `retentionTime` zaten isabet mıştır). Bu, düğümlerinizin görev verileriyle doldurulup disk alanı tükenmemesini sağlamaya yardımcı olur.
 
@@ -113,7 +113,7 @@ Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha
 
 ### <a name="design-for-retries-and-re-execution"></a>Yeniden denemeler ve yeniden yürütme için tasarım
 
-Görevler, toplu Işlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: Kullanıcı denetimli ve dahili. Kullanıcı denetimli yeniden denemeler, görevin [Maxtaskretrycount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)tarafından belirtilir. Görevde belirtilen bir program sıfır dışında bir çıkış kodu ile çıktığında, görev değerine kadar yeniden denenir `maxTaskRetryCount` .
+Görevler, toplu Işlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: Kullanıcı denetimli ve dahili. Kullanıcı denetimli yeniden denemeler, görevin [Maxtaskretrycount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount)tarafından belirtilir. Görevde belirtilen bir program sıfır dışında bir çıkış kodu ile çıktığında, görev değerine kadar yeniden denenir `maxTaskRetryCount` .
 
 Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalışırken düğüm üzerinde iç durumu veya bir başarısızlığı güncelleştirmeme gibi yeniden deneniyor olabilir. Görev, mümkünse aynı işlem düğümünde yeniden denenecektir, bu, görevde bir süre önce bir iç sınıra kadar ve bir toplu Işlem tarafından, potansiyel olarak farklı bir işlem düğümünde yeniden zamanlanmasını ertelenir.
 
@@ -192,7 +192,7 @@ Sistemlerinizin Batch hesabı hizmet URL 'niz için DNS yaşam süresi (TTL) old
 
 ### <a name="retry-requests-automatically"></a>İstekleri otomatik olarak yeniden dene
 
-Batch hizmeti istemcilerinizde, normal işlem sırasında bile isteklerinizi otomatik olarak yeniden denemek için uygun yeniden deneme ilkelerine sahip olduğundan emin olun. Bu yeniden deneme ilkeleri, en az 5 dakikalık bir aralığı kapsamalıdır. Otomatik yeniden deneme özellikleri, [.net RetryPolicyProvider sınıfı](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)gibi çeşitli Batch SDK 'leriyle sağlanır.
+Batch hizmeti istemcilerinizde, normal işlem sırasında bile isteklerinizi otomatik olarak yeniden denemek için uygun yeniden deneme ilkelerine sahip olduğundan emin olun. Bu yeniden deneme ilkeleri, en az 5 dakikalık bir aralığı kapsamalıdır. Otomatik yeniden deneme özellikleri, [.net RetryPolicyProvider sınıfı](/dotnet/api/microsoft.azure.batch.retrypolicyprovider)gibi çeşitli Batch SDK 'leriyle sağlanır.
 
 ### <a name="static-public-ip-addresses"></a>Statik genel IP adresleri
 

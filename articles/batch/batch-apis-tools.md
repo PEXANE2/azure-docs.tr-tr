@@ -4,12 +4,12 @@ description: Azure Batch hizmeti ile çözüm geliştirmek için kullanılabilen
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7484e59391be8f4853c2394bff20c6d9676dec9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 502eb08631223215933b75dca882c12c02d17bd9
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032201"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146411"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API'lerine ve araçlarına genel bakış
 
@@ -33,7 +33,7 @@ Azure Batch, biri hizmet düzeyi ve diğeri Yönetim düzeyi için olmak üzere 
 
 Etkinlik günlüğünde yalnızca yönetim API 'Lerine ait eylemler izlenir. Hizmet düzeyi API 'Leri, Azure Kaynak Yönetimi katmanını (management.azure.com) atlar ve günlüğe kaydedilmez.
 
-Örneğin, [bir havuzu silmek Için Batch hizmeti API 'si](/rest/api/batchservice/pool/delete) doğrudan Batch hesabına yöneliktir:`DELETE {batchUrl}/pools/{poolId}`
+Örneğin, [bir havuzu silmek Için Batch hizmeti API 'si](/rest/api/batchservice/pool/delete) doğrudan Batch hesabına yöneliktir: `DELETE {batchUrl}/pools/{poolId}`
 
 [Bir havuzu silmeye yönelik Batch yönetim API 'si](/rest/api/batchmanagement/pool/delete) Management.Azure.com katmanına hedeflenmiş olur:`DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}`
 
@@ -44,10 +44,10 @@ Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir
 | API | API başvurusu | İndir | Öğretici | Kod örnekleri | Daha fazla bilgi |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[Azure REST API-docs](/rest/api/batchservice/) |Yok |- |- | [Desteklenen sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[.NET için Azure SDK-docs](/dotnet/api/overview/azure/batch?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Sürüm notları](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[Python için Azure SDK-docs](/python/api/overview/azure/batch/client?view=azure-python) |[PyPI](https://pypi.org/project/azure-batch/) |[Öğretici](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
-| **Batch Node.js** |[JavaScript için Azure SDK-docs](/javascript/api/overview/azure/batch/client?view=azure-node-latest) |[npm](https://www.npmjs.com/package/azure-batch) |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
-| **Batch Java** |[Java için Azure SDK-docs](/java/api/overview/azure/batch?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Benioku](https://github.com/Azure/azure-batch-sdk-for-java)|
+| **Batch .NET** |[.NET için Azure SDK-docs](/dotnet/api/overview/azure/batch) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Sürüm notları](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch Python** |[Python için Azure SDK-docs](/python/api/overview/azure/batch/client) |[PyPI](https://pypi.org/project/azure-batch/) |[Öğretici](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
+| **Batch Node.js** |[JavaScript için Azure SDK-docs](/javascript/api/overview/azure/batch/client) |[npm](https://www.npmjs.com/package/azure-batch) |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Java** |[Java için Azure SDK-docs](/java/api/overview/azure/batch) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Benioku](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Batch Yönetimi API’leri
 
@@ -56,10 +56,10 @@ Batch için Azure Resource Manager API'leri, Batch hesaplarına programlı eriş
 | API | API başvurusu | İndir | Öğretici | Kod örnekleri |
 | --- | --- | --- | --- | --- |
 | **Batch Yönetimi REST** |[Azure REST API-docs](/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **Batch Yönetimi .NET** |[.NET için Azure SDK-docs](/dotnet/api/overview/azure/batch/management?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Öğretici](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
-| **Batch Yönetimi Python** |[Python için Azure SDK-docs](/python/api/overview/azure/batch/management?view=azure-python) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
-| **Batch Yönetimi Node.js** |[JavaScript için Azure SDK-docs](/javascript/api/overview/azure/batch/management?view=azure-node-latest) |[npm](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
-| **Batch Yönetimi Java** |[Java için Azure SDK-docs](/java/api/overview/azure/batch/management?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
+| **Batch Yönetimi .NET** |[.NET için Azure SDK-docs](/dotnet/api/overview/azure/batch/management) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Öğretici](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
+| **Batch Yönetimi Python** |[Python için Azure SDK-docs](/python/api/overview/azure/batch/management) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
+| **Batch Yönetimi Node.js** |[JavaScript için Azure SDK-docs](/javascript/api/overview/azure/batch/management) |[npm](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
+| **Batch Yönetimi Java** |[Java için Azure SDK-docs](/java/api/overview/azure/batch/management) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
 
 ## <a name="batch-command-line-tools"></a>Batch komut satırı araçları
 

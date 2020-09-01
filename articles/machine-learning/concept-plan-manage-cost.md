@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012697"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145000"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -39,7 +39,7 @@ Maliyet analizi, farklı türdeki Azure hesaplarını destekler. Desteklenen hes
 
 Azure Maliyet Yönetimi verilerine erişim atama hakkında daha fazla bilgi için bkz. [Verilere erişim atama](../cost-management-billing/costs/assign-access-acm-data.md).
 
-## <a name="estimate-costs"></a>Tahmin maliyetleri
+## <a name="estimate-costs"></a>Maliyetleri tahmin etme
 
 Azure Machine Learning hesapta kaynakları oluşturmadan önce maliyetleri tahmin etmek için [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanın. Sol tarafta **AI + Machine Learning**ve ardından başlamak için **Azure Machine Learning** öğesini seçin.  
 
@@ -69,7 +69,7 @@ Sürekli değişen veriler sayesinde, doğru modelleri sürdürmek için hızlı
 
 Azure Machine Learning kullanıcılar, AmlCompute olarak da adlandırılan yönetilen Azure Machine Learning işlem kümesini kullanabilir. AmlCompute, çeşitli GPU ve CPU seçeneklerini destekler. AmlCompute, Azure Machine Learning tarafından aboneliğiniz adına dahili olarak barındırılır. Azure IaaS bulut ölçeğinde aynı kurumsal sınıf güvenlik, uyumluluk ve idare sağlar.
 
-Bu işlem havuzları Azure 'un IaaS altyapısının içinde olduğundan, altyapınızın geri kalanı ile aynı güvenlik ve uyumluluk gereksinimleriyle öğreticinizi dağıtabilir, ölçeklendirebilir ve yönetebilirsiniz.  Bu dağıtımlar aboneliğinizde oluşur ve idare kurallarınızı uyar. [Azure Machine Learning işlem](how-to-set-up-training-targets.md#amlcompute)hakkında daha fazla bilgi edinin.
+Bu işlem havuzları Azure 'un IaaS altyapısının içinde olduğundan, altyapınızın geri kalanı ile aynı güvenlik ve uyumluluk gereksinimleriyle öğreticinizi dağıtabilir, ölçeklendirebilir ve yönetebilirsiniz.  Bu dağıtımlar aboneliğinizde oluşur ve idare kurallarınızı uyar. [Azure Machine Learning işlem](how-to-create-attach-compute-sdk.md#amlcompute)hakkında daha fazla bilgi edinin.
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Otomatik ölçeklendirme için eğitim kümelerini yapılandırma
 
@@ -107,7 +107,7 @@ Bazı durumlarda, eğitim çalıştırmalarını süreleri sınırlamak veya erk
 * [Hiper parametre ayarlama](how-to-tune-hyperparameters.md#early-termination)için, bir bandıt ilkesinden erken sonlandırma Ilkesi, ortanca durdurma Ilkesi veya kesme seçim ilkesi tanımlayın. Hiper parametre sweeps 'yi daha fazla denetlemek için veya gibi parametreleri `max_total_runs` kullanın `max_duration_minutes` .
 * [Otomatik makine öğrenimi](how-to-configure-auto-train.md#exit)için bayrağını kullanarak benzer sonlandırma ilkeleri ayarlayın `enable_early_stopping` . Ayrıca, `iteration_timeout_minutes` ve `experiment_timeout_minutes` bir çalıştırmanın en uzun süresini denetlemek için veya tüm denemeler için ve gibi özellikleri kullanın.
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Düşük öncelikli VM 'Ler kullanma
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Düşük öncelikli VM 'Ler kullanma
 
 Azure, sanal makine ölçek kümeleri, toplu Iş ve Machine Learning hizmeti arasında düşük öncelikli VM 'Ler olarak fazla unutilized kapasitesini kullanmanıza olanak tanır. Bu ayırmalar ön azaltıldı, ancak adanmış VM 'Lerle karşılaştırıldığında daha düşük bir fiyata gelir. Genel olarak, toplu iş yükleri için düşük öncelikli VM 'Ler kullanmanızı öneririz. Ayrıca, kesintileri resubmits aracılığıyla kurtarılabilir (toplu Iş için geçiş için) veya yeniden başlatmalar aracılığıyla (checksize ile derin öğrenme eğitimi için) de kullanmanız gerekir.
 
@@ -127,4 +127,4 @@ Azure Machine Learning Işlem, ayrılmış örnekleri kendiliğinden destekler. 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Kaynak kotalarını yönetme ve artırma](how-to-manage-quotas.md)
 * [Maliyet Analizi ile maliyetleri yönetme](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* [İşlem Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute).
+* [SDK](how-to-create-attach-compute-sdk.md#amlcompute) ile veya [Studio](how-to-create-attach-compute-studio.md#amlcompute)'da Azure Machine Learning işlem oluşturun.

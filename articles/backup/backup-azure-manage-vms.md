@@ -3,12 +3,12 @@ title: Azure VM yedeklemelerini yönetme ve izleme
 description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 707558b8ad28f7a8a17e24e57f97fda064d0f238
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999351"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145442"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -121,7 +121,7 @@ Bir VM 'yi korumayı durdurmanın iki yolu vardır:
 * **Korumayı durdurun ve yedekleme verilerini silin**. Bu seçenek, gelecekteki tüm yedekleme işlerinin VM 'nizi korumasını durdurur ve tüm kurtarma noktalarını siler. VM 'yi geri yükleyemeyeceksiniz ve *yedeklemeyi* yeniden yükle seçeneğini kullanamazsınız.
 
 >[!NOTE]
->Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur. Eski kurtarma noktaları ilkeye göre sona erer, ancak yedeklemeleri durdurup verileri silene kadar bir son kurtarma noktası her zaman tutulur.
+>Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur. Eski kurtarma noktaları ilkeye göre sona erer, ancak yedeklemeleri durdurup verileri silene kadar en son kurtarma noktası her zaman tutulur.
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Korumayı durdurun ve yedekleme verilerini koruyun
@@ -187,8 +187,8 @@ Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Birincil veri kaynağı artık mevcut olmayan yedekleme öğesi
 
 * Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi, yalnızca başarısız olan isteğe bağlı yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez).
-* Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
-* Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı uygun olan yedekleme fiyatlandırmasına göre ücretlendirildiği için, birincil veri kaynağının artık mevcut olmadığı yedekleme öğelerini silmeniz önerilir. Bu, silme kaynakları için yedekleme öğesi
+* Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi geçmiş kurtarma noktaları (en son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
+* Herhangi bir ek maliyet olmaması için birincil veri kaynağının artık mevcut olmadığı yedekleme öğelerini silmeniz önerilir, çünkü silme kaynakları için yedekleme öğesi/verileri artık en son kurtarma noktası sürekli tutulur ve Kullanıcı, geçerli yedekleme fiyatlandırmasına göre ücretlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
-title: Azure CLı ve Python aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
-description: Azure CLı ve Python kullanarak bir Azure Stack Edge cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure CLı ve Python aracılığıyla Azure Stack Edge cihaz GPU 'unuzda VM 'Leri dağıtma
+description: Azure CLı ve Python kullanarak bir Azure Stack Edge GPU cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/21/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 898e10f4cc6d1e85a5d44fff41bede885b914a18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77251148bed76f672adc2fffe2db688b33786022
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088406"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147125"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma
 

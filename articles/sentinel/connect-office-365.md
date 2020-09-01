@@ -1,6 +1,6 @@
 ---
 title: Office 365 günlüklerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: OneDrive dahil olmak üzere Exchange ve SharePoint 'te devam eden Kullanıcı ve yönetici etkinlikleri hakkında bilgi almak için Office 365 günlük bağlayıcısını kullanmayı öğrenin.
+description: OneDrive dahil olmak üzere Exchange, takımlar ve SharePoint 'te devam eden Kullanıcı ve yönetici etkinlikleri hakkında bilgi almak için Office 365 günlük bağlayıcısını kullanmayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,18 +12,22 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559334"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178935"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Office 365 günlüklerini Azure Sentinel 'e bağlama
 
-[Office 365](https://docs.microsoft.com/office/) log Connector, **Exchange** ve **SharePoint** 'te ( **OneDrive**dahil) devam eden Kullanıcı ve yönetici etkinliklerinde Azure Sentinel bilgilerine sahiptir. Bu bilgiler, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları ve posta kutusu işlemlerinde değişiklikler ve eylemleri gerçekleştiren kullanıcının ayrıntıları gibi eylemlerin ayrıntılarını içerir. Office 365 günlüklerini Azure Sentinel 'e bağlamak, bu verileri çalışma kitaplarınızda görüntülemenize ve çözümlemenize, özel uyarılar oluşturmak için sorgulamanıza ve araştırma işleminizi iyileştirebilmenizi sağlayarak Office 365 güvenliğine daha fazla öngörü sağlamanıza olanak sağlar.
+[Office 365](https://docs.microsoft.com/office/) log Connector, **Exchange** ve **SharePoint** 'te ( **OneDrive**dahil) ve artık **ekiplerde** bulunan devam eden Kullanıcı ve yönetici etkinliklerinde Azure Sentinel bilgilerini sunar. Bu bilgiler, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları, posta kutusu işlemleri, takımlar olayları (sohbet, takım, üye ve kanal olayları gibi) gibi eylemlerin ayrıntılarını ve eylemleri gerçekleştiren kullanıcının ayrıntılarını içerir. Office 365 günlüklerini Azure Sentinel 'e bağlamak, bu verileri çalışma kitaplarınızda görüntülemenize ve çözümlemenize, özel uyarılar oluşturmak için sorgulamanıza ve araştırma işleminizi iyileştirebilmenizi sağlayarak Office 365 güvenliğine daha fazla öngörü sağlamanıza olanak sağlar.
+
+> [!IMPORTANT]
+> Office 365 günlük bağlayıcısının **Microsoft ekipleri günlükleri için olan uzantısı** Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,20 +44,27 @@ ms.locfileid: "85559334"
 
 
    > [!NOTE]
-   > Yukarıda belirtildiği gibi, ve **veri türleri**altındaki bağlayıcı sayfasında göreceğiniz gibi, Azure Sentinel Office 365 Bağlayıcısı Şu anda yalnızca Microsoft Exchange ve SharePoint 'Ten (OneDrive dahil) denetim günlüklerinin içeri alımını desteklemektedir. Ancak [ekiplerden](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) veya [diğer ofis verilerinden](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888) Azure Sentinel 'e veri getirmek istiyorsanız bazı dış çözümler vardır. 
+   > Yukarıda belirtildiği gibi, ve **veri türleri**altındaki bağlayıcı sayfasında gördüğünüz gibi, Azure Sentinel Office 365 Bağlayıcısı Şu anda yalnızca Microsoft Exchange ve SharePoint 'Ten (OneDrive dahil) **ve artık ekiplerden de bulunan**denetim günlüklerinin alımını desteklemektedir. Ancak, [diğer Office verilerini](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888) Azure Sentinel 'e getirmek istiyorsanız bazı dış çözümler vardır. 
 
 ## <a name="enable-the-office-365-log-connector"></a>Office 365 günlük bağlayıcısını etkinleştirme
 
+### <a name="instructions-tab"></a>Yönergeler sekmesi
+
 1. Azure Sentinel gezinti menüsünde **veri bağlayıcıları**' nı seçin.
 
-1. **Veri bağlayıcıları** listesinden **Office 365**' e ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın.
+1. **Veri bağlayıcıları** galerisinden **Office 365**' i seçin ve ardından Önizleme bölmesinde **bağlayıcı sayfasını aç** ' ı seçin.
 
 1. **Yapılandırma**etiketli bölüm altında, Azure Sentinel 'e bağlanmak istediğiniz Office 365 etkinlik günlüklerinin onay kutularını Işaretleyin ve **Değişiklikleri Uygula**' ya tıklayın. 
 
    > [!NOTE]
    > Daha önce birden fazla kiracıyı Azure Sentinel 'e bağladıysanız, bunu destekleyen Office 365 bağlayıcısının daha eski bir sürümünü kullanarak her bir kiracıdan topladığınız günlükleri görüntüleyebilir ve değiştirebilirsiniz. Ek kiracılar ekleyemeyeceksiniz, ancak daha önce eklenen kiracılar kaldırabilirsiniz.
 
-1. Log Analytics 'de Office 365 günlük verilerini sorgulamak için, `OfficeActivity` sorgu penceresinin ilk satırına yazın.
+### <a name="next-steps-tab"></a>Sonraki adımlar sekmesi
+
+- SharePoint, OneDrive, Exchange ve takımlar günlük verilerinize ilişkin Öngörüler almak için **Office 365** günlük Bağlayıcısı ile birlikte paketlenmiş önerilen çalışma kitaplarına, sorgu örneklerine ve analiz kuralı şablonlarına bakın.
+
+- **Günlüklerde**Office 365 günlük verilerini el ile sorgulamak için, `OfficeActivity` sorgu penceresinin ilk satırına girin.
+   - Belirli bir günlük türüne yönelik sorguyu filtrelemek için, `| where OfficeWorkload == "<logtype>"` sorgunun ikinci satırına,, veya şeklinde bir *\<logtype\>* değer girin `SharePoint` `OneDrive` `Exchange` `MicrosoftTeams` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Office 365 ' i Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

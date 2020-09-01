@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828804"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177627"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -103,13 +103,13 @@ Bir hizmet örneğini silerken, aşağıdakilere dikkat edin:
    <br><br>
 
 [//]: # (RBAC bölümünün başlangıcı)
-## <a name="manage-access-with-role-based-access-control"></a>Rol Tabanlı Erişim Denetimi ile erişimi yönetme
-Azure AD Connect Health için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) , genel yönetici dışındaki kullanıcılara ve gruplara erişim sağlar. RBAC, istenen kullanıcılara ve gruplara roller atar ve dizininizin içindeki genel yöneticileri sınırlandırmak için bir mekanizma sağlar.
+## <a name="manage-access-with-azure-rbac"></a>Azure RBAC ile erişimi yönetme
+Azure AD Connect Health için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) , genel yönetici dışındaki kullanıcılara ve gruplara erişim sağlar. Azure RBAC, istenen kullanıcılara ve gruplara roller atar ve dizininizin içindeki genel yöneticileri sınırlandırmak için bir mekanizma sağlar.
 
 ### <a name="roles"></a>Roller
 Azure AD Connect Health aşağıdaki yerleşik rolleri destekler:
 
-| Role | İzinler |
+| Rol | İzinler |
 | --- | --- |
 | Sahip |Sahipler *erişimi yönetebilir* (örneğin, bir kullanıcıya veya gruba bir rol atayabilir), portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilirsiniz* . <br>Varsayılan olarak, Azure AD Genel yöneticilerine bu rol atanır ve bu ayar değiştirilemez. |
 | Katılımcı |Katkıda bulunanlar portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilir* . |
@@ -135,12 +135,12 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
    ![Azure AD Connect Health kaynak kenar çubuğu ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
 2. **Add (Ekle)** seçeneğini belirleyin.
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
-   ![RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Azure AD Connect Health ve Azure RBAC yapılandırma menüsünün ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**’e tıklayın.
-   ![RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Azure AD Connect Health ve Azure RBAC rol listesinin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. **Tamam**’ı seçin.<br>
 6. Rol ataması tamamlandıktan sonra, kullanıcılar ve gruplar listede görüntülenir.<br>
-   ![Yeni kullanıcılar vurgulanmış şekilde RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Azure AD Connect Health ve Azure RBAC ve yeni kullanıcıların vurgulandığı ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 Artık listelenen kullanıcılar ve gruplar, kendilerine atanan rollerine göre erişime sahiptir.
 
@@ -153,7 +153,7 @@ Artık listelenen kullanıcılar ve gruplar, kendilerine atanan rollerine göre 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. Adım: dikey pencere konumunu kullanıcılarla veya gruplarla paylaşma
 1. İzinleri atadıktan sonra, bir Kullanıcı [buraya](https://aka.ms/aadconnecthealth)giderek Azure AD Connect Health erişebilir.
 2. Dikey pencerede Kullanıcı dikey pencereyi veya farklı parçalarını panoya sabitleyebilir. **Panoya sabitle** simgesine tıklamanız yeterlidir.<br>
-   ![PIN simgesi vurgulanmış şekilde Azure AD Connect Health RBAC pin dikey penceresinin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![PIN simgesi vurgulanmış şekilde Azure AD Connect Health ve Azure RBAC pin dikey penceresinin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > Atanmış okuyucu rolüne sahip bir Kullanıcı Azure Marketi 'nden Azure AD Connect Health uzantısını alamıyor. Kullanıcı bu işlemi gerçekleştirmek için gerekli "Oluştur" işlemini gerçekleştiremiyor. Kullanıcı, önceki bağlantıya giderek dikey pencereye yine de alabilir. Sonraki kullanımlar için Kullanıcı dikey pencereyi panoya sabitleyebilir.
@@ -161,8 +161,8 @@ Artık listelenen kullanıcılar ve gruplar, kendilerine atanan rollerine göre 
 >
 
 ### <a name="remove-users-or-groups"></a>Kullanıcıları veya grupları kaldır
-RBAC Azure AD Connect Health eklenen bir kullanıcıyı veya grubu kaldırabilirsiniz. Kullanıcıya veya gruba sağ tıklayıp **Kaldır**' ı seçmeniz yeterlidir.<br>
-![Azure AD Connect Health RBAC kullanıcıları penceresinin ekran görüntüsü, vurgulanmış olarak kaldır](./media/how-to-connect-health-operations/RBAC_remove.png)
+Azure AD Connect Health ve Azure RBAC 'ye eklenen bir kullanıcıyı veya grubu kaldırabilirsiniz. Kullanıcıya veya gruba sağ tıklayıp **Kaldır**' ı seçmeniz yeterlidir.<br>
+![Vurgulanan Azure AD Connect Health ve Azure RBAC 'nin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (RBAC bölümünün sonu)
 

@@ -4,12 +4,12 @@ description: Azure portal Azure Kaynak grafik Gezgini, eylemleri gerçekleştirm
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848907"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146445"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Kaynak Grafiği Gezgini için klavye kısayolları
 
@@ -22,7 +22,6 @@ Bu makalede, Azure portal Azure Kaynak Grafiği Gezgini sayfasında çalışan k
 |Açıklama/açıklama kaldır |<kbd>T</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |Girintiyi Azalt |<kbd>CTRL</kbd> + <kbd>[</kbd> |<kbd>Cmd</kbd> + <kbd>[</kbd> |
 |Girintiyi Artır |<kbd>CTRL</kbd> + <kbd>]</kbd> |<kbd>Cmd</kbd> + <kbd>]</kbd> |
-|Tümünü seç |<kbd>CTRL</kbd> + <kbd>Bir</kbd> |<kbd>Cmd</kbd> + <kbd>Bir</kbd> |
 |Satırı aşağı taşı |<kbd>Alt</kbd> + <kbd>↓</kbd> |<kbd>Seçenek</kbd> + <kbd>↓</kbd> |
 |Satırı yukarı taşı |<kbd>Alt</kbd> + <kbd>↑</kbd> |<kbd>Seçenek</kbd> + <kbd>↑</kbd> |
 |Değiştir |<kbd>CTRL</kbd> + <kbd>F</kbd> |<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> |

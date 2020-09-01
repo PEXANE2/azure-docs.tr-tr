@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f9adf6ce4559234eec74c92f09aa752eb1f9ab51
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386071"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177338"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
 
@@ -99,7 +100,7 @@ Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahi
 1. Açılan listeden bir **Azure AD B2C kiracı** seçin. Yalnızca genel yöneticisi olduğunuz ve bir aboneliğe henüz bağlanmamış olan kiracılar gösterilir. **Azure AD B2C kaynak adı** alanı seçtiğiniz Azure AD B2C kiracının etki alanı adıyla doldurulur.
 1. Yönetici olduğunuz etkin bir Azure **aboneliğini** seçin.
 1. **Kaynak grubu**altında **Yeni oluştur**' u seçin ve **kaynak grubu konumunu**belirtin. Buradaki kaynak grubu ayarları Azure AD B2C kiracı konumunuzu, performansını veya faturalandırma durumunu etkilemez.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
     ![Azure portal Azure AD B2C kaynak oluşturma sayfası](./media/billing/portal-01-create-b2c-resource-page.png)
 
 Azure AD B2C kiracısı için bu adımları tamamladıktan sonra Azure aboneliğiniz, varsa Azure doğrudan veya Kurumsal Anlaşma ayrıntılarınıza uygun olarak faturalandırılır.
@@ -132,11 +133,24 @@ Rol tabanlı erişim denetimi kullanan Azure AD B2C yönetimi, Azure AD B2C kira
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C kiracı faturalandırma aboneliğini değiştirin
 
-Kaynak ve hedef abonelikler aynı Azure Active Directory kiracısında mevcutsa Azure AD B2C kiracılar başka bir aboneliğe taşınabilir.
+### <a name="move-using-azure-resource-manager"></a>Azure Resource Manager kullanarak taşı
+
+Azure AD B2C kiracılar, kaynak ve hedef abonelikler aynı Azure Active Directory kiracısında mevcutsa Azure Resource Manager kullanılarak başka bir aboneliğe taşınabilir.
 
 Azure AD B2C kiracınız gibi Azure kaynaklarını başka bir aboneliğe taşımayı öğrenmek için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Taşımayı başlatmadan önce, böyle bir taşımanın sınırlamalarını ve gereksinimlerini tam olarak anlamak için makalenin tamamını okuduğunuzdan emin olun. Kaynak taşıma yönergelerine ek olarak, bir taşıma öncesi denetim listesi ve taşıma işleminin nasıl doğrulanacağı gibi kritik bilgileri de içerir.
+
+### <a name="move-by-un-linking-and-re-linking"></a>Bağlama ve yeniden bağlama ile taşıma
+
+Kaynak ve hedef abonelikler farklı Azure Active Directory kiracılar ile ilişkiliyse, yukarıda açıklanan şekilde Azure Resource Manager üzerinden taşıma işlemini gerçekleştiremezsiniz. Ancak, Azure AD B2C kiracının kaynak abonelikle bağlantısını kaldırarak ve hedef aboneliğe yeniden bağlayarak aynı nihai sonucu elde edebilirsiniz. Yalnızca sildiğiniz nesne Azure AD B2C kiracının kendisi değil, *faturalandırma bağlantısı*olduğundan bu yöntem güvenlidir. Hiçbir Kullanıcı, uygulama, Kullanıcı akışı, vb. etkilenmez.
+
+1. Azure AD B2C dizininde, [bir konuk kullanıcıyı](user-overview.md#guest-user) hedef Azure AD kiracısından (hedef Azure aboneliğinin bağlandığı bir bağlantı) davet edin ve bu kullanıcının Azure AD B2C **genel yönetici** rolüne sahip olduğundan emin olun.
+1. Yukarıdaki [Azure AD B2C kiracı kaynaklarını yönetme](#manage-your-azure-ad-b2c-tenant-resources) bölümünde açıklandığı gibi, kaynak Azure aboneliğinizdeki Azure AD B2C temsil eden *Azure kaynağına* gidin. Gerçek Azure AD B2C kiracıya geçiş yapmayın.
+1. **Genel bakış** sayfasında **Sil** düğmesine tıklayın. Bu, ilgili Azure AD B2C kiracının kullanıcılarını veya *uygulamalarını silmez.* Yalnızca faturalandırma bağlantısını kaynak abonelikle kaldırır.
+1. Adım 1 ' de Azure AD B2C yönetici olarak eklenen kullanıcı hesabıyla Azure portal oturum açın. Ardından hedef Azure Active Directory kiracısıyla bağlantılı hedef Azure aboneliğine gidin. 
+1. Yukarıdaki [bağlantı oluşturma](#create-the-link) yordamını izleyerek, hedef abonelikte faturalandırma bağlantısını yeniden oluşturun.
+1. Azure AD B2C kaynağınız artık hedef Azure aboneliğine taşındı (hedef Azure Active Directory bağlantılı) ve bu abonelik üzerinden ücretlendirilecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

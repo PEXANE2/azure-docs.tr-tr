@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650324"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146598"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahmin aracı kullanarak modelleri Azure Machine Learning eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning, bir [RunConfiguration nesnesi](how-to-set-up-training-targets.md#whats-a-run-configuration) ve bir [ScriptRunConfig nesnesi](how-to-set-up-training-targets.md#submit)kullanarak eğitim betiğinizi [çeşitli işlem hedeflerine](how-to-set-up-training-targets.md#compute-targets-for-training)kolayca gönderebilirsiniz. Bu model size çok fazla esneklik ve en yüksek denetim sağlar.
+Azure Machine Learning, bir [RunConfiguration nesnesi](how-to-set-up-training-targets.md#whats-a-run-configuration) ve bir [ScriptRunConfig nesnesi](how-to-set-up-training-targets.md#submit)kullanarak eğitim betiğinizi [çeşitli işlem hedeflerine](how-to-set-up-training-targets.md)kolayca gönderebilirsiniz. Bu model size çok fazla esneklik ve en yüksek denetim sağlar.
 
 
 Tahmin aracı sınıfı, modellerinizi derin öğrenme ve pekiştirmeye dayalı öğrenme ile eğmenizi kolaylaştırır. Çalışma yapılandırmasını kolayca oluşturmanıza olanak tanıyan üst düzey bir soyutlama sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-öğren gibi) kullanarak eğitim betiğini, sizin yerel makineniz, Azure 'da tek bir VM veya Azure 'da bir GPU kümesi olsun, seçtiğiniz herhangi bir bilgi işlem hedefinde göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz. Pytorch, TensorFlow, Chainer ve pekiştirmeye dayalı Learning görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)ve [pekiştirmeye dayalı Learning](how-to-use-reinforcement-learning.md) tahmini 'ı da sağlar.
@@ -29,7 +29,7 @@ Tahmin aracı sınıfı, modellerinizi derin öğrenme ve pekiştirmeye dayalı 
 ## <a name="train-with-an-estimator"></a>Bir tahmin aracı ile eğitme
 
 [Çalışma](concept-workspace.md) alanınızı oluşturup [geliştirme ortamınızı](how-to-configure-environment.md)ayarladıktan sonra, Azure Machine Learning bir modeli eğitmek aşağıdaki adımları içerir:  
-1. [Uzaktan işlem hedefi](how-to-set-up-training-targets.md) oluşturma (yerel bilgisayarı işlem hedefi olarak da kullanabilirsiniz)
+1. [Uzaktan işlem hedefi](how-to-create-attach-compute-sdk.md) oluşturma (veya yerel bilgisayarı işlem hedefi olarak da kullanabilirsiniz)
 2. [Eğitim verilerinizi](how-to-access-data.md) veri deposuna yükleme (isteğe bağlı)
 3. [Eğitim betiğinizi](tutorial-train-models-with-aml.md#create-a-training-script) oluşturma
 4. `Estimator` nesnesi oluşturun
@@ -39,7 +39,7 @@ Bu makale 4-5. adıma odaklanır. 1-3 adımları için bir örnek için [modeli 
 
 ### <a name="single-node-training"></a>Tek düğümlü eğitim
 
-Bir `Estimator` scikit-öğrenme modeli Için Azure 'da uzaktan işlem üzerinde çalışan tek düğümlü bir eğitim için kullanın. [İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesneniz `compute_target` ve [filedataset](how-to-create-register-datasets.md) nesneniz zaten oluşturmuş olmanız gerekir `ds` .
+Bir `Estimator` scikit-öğrenme modeli Için Azure 'da uzaktan işlem üzerinde çalışan tek düğümlü bir eğitim için kullanın. [İşlem hedefi](how-to-create-attach-compute-sdk.md#amlcompute) nesneniz `compute_target` ve [filedataset](how-to-create-register-datasets.md) nesneniz zaten oluşturmuş olmanız gerekir `ds` .
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ Parametre | Açıklama
 --|--
 `source_directory`| Eğitim işi için gereken tüm kodunuzu içeren yerel dizin. Bu klasör yerel makinenizden uzak işlem 'a kopyalanmış olur.
 `script_params`| Bir komut satırı bağımsız değişkenlerini belirten, çiftler biçiminde eğitim betiğinizi geçirilecek sözlük `entry_script` `<command-line argument, value>` . İçinde ayrıntılı bir bayrak belirtmek için `script_params` , kullanın `<command-line argument, "">` .
-`compute_target`| Eğitim betiğinizin çalışacağı uzaktan işlem hedefi, bu durumda bir Azure Machine Learning Işlem ([Amlcompute](how-to-set-up-training-targets.md#amlcompute)) kümesi olur. (AmlCompute kümesi yaygın olarak kullanılan hedef olsa da, Azure VM 'Leri veya hatta yerel bilgisayar gibi diğer bilgi işlem hedefi türlerini de seçebilirsiniz.)
+`compute_target`| Eğitim betiğinizin çalışacağı uzaktan işlem hedefi, bu durumda bir Azure Machine Learning Işlem ([Amlcompute](how-to-create-attach-compute-sdk.md#amlcompute)) kümesi olur. (AmlCompute kümesi yaygın olarak kullanılan hedef olsa da, Azure VM 'Leri veya hatta yerel bilgisayar gibi diğer bilgi işlem hedefi türlerini de seçebilirsiniz.)
 `entry_script`| `source_directory`Uzaktan işlem üzerinde çalıştırılacak eğitim betiğinin FilePath (öğesine göre). Bu dosya ve bağımlı olduğu tüm ek dosyalar bu klasörde bulunmalıdır.
 `conda_packages`| Eğitim betiğinizin gerektirdiği Conda ile yüklenecek Python paketlerinin listesi.  
 
@@ -93,7 +93,7 @@ print(run.get_portal_url())
 
 Aşağıdaki kod, bir keras modeli için dağıtılmış eğitimin nasıl alınacağını gösterir. Ayrıca, varsayılan Azure Machine Learning görüntülerini kullanmak yerine, eğitim için Docker Hub 'ından özel bir Docker görüntüsü belirtir `continuumio/miniconda` .
 
-[İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesnenizin zaten oluşturulmuş olması gerekir `compute_target` . Tahmin aracı 'ı aşağıdaki gibi oluşturursunuz:
+[İşlem hedefi](how-to-create-attach-compute-sdk.md#amlcompute) nesnenizin zaten oluşturulmuş olması gerekir `compute_target` . Tahmin aracı 'ı aşağıdaki gibi oluşturursunuz:
 
 ```Python
 from azureml.train.estimator import Estimator

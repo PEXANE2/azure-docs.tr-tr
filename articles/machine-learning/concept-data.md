@@ -1,7 +1,7 @@
 ---
 title: Bulutta güvenli veri erişimi
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning verilerinize güvenli bir şekilde bağlanmayı ve ML görevleri için veri kümelerini ve veri depolarını kullanmayı öğrenin. Veri depoları, Azure Data Lake Gen 1 & 2, SQL DB, Databricks,... Azure Blobundan veri depolayabilirler.
+description: Azure Machine Learning verilerinize güvenli bir şekilde bağlanmayı ve ML görevleri için veri kümelerini ve veri depolarını kullanmayı öğrenin. Veri depoları, Azure Data Lake Gen 1 & 2, SQL DB ve Azure Databricks verileri bir Azure Blobundan saklayabilir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651803"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146698"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
 Azure Machine Learning buluttaki verilerinize bağlanmanızı kolaylaştırır.  Bu, temel alınan depolama hizmeti üzerinde bir Özet katman sağlar, böylece depolama türüne özel kod yazmak zorunda kalmadan verilerinize güvenli bir şekilde erişebilir ve bunlarla çalışabilirsiniz. Azure Machine Learning Ayrıca aşağıdaki veri yeteneklerini de sağlar:
 
+*    Pandas ve Spark veri çerçeveleri ile birlikte çalışabilirlik
 *    Veri kökenini sürümü oluşturma ve izleme
 *    Veri etiketleme 
 *    Veri değişikliklerini izleme
-*    Pandas ve Spark veri çerçeveleri ile birlikte çalışabilirlik
-
+    
 ## <a name="data-workflow"></a>Veri iş akışı
 
 Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aşağıdaki veri teslimi iş akışını öneririz. Bu iş akışı, Azure 'daki bulut tabanlı bir depolama hizmetinde bir [Azure depolama hesabınız](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) ve verileriniz olduğunu varsayar. 
@@ -67,13 +67,19 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Verilerinizin kopyası olmadıklarından, hiçbir ek depolama maliyeti tahakkuk etmemektedir ve özgün veri kaynaklarınızın bütünlüğü risk altında değildir.
+Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Azure Machine Learning veri kümesi oluşturma, veri kaynağı konumuna bir başvuru, meta verilerinin bir kopyasını oluşturur. 
 
- Depolama alanındaki verilerinizle etkileşim kurmak için, verilerinizi makine öğrenimi görevleri için tüketilebilir bir nesneye paketlemek üzere [bir veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri alma karmaşıklıkları olmadan farklı denemeleri genelinde paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
+Veri kümeleri geç olarak değerlendirildiğinden ve veriler mevcut konumunda kaldığı için
 
-Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https://azure.microsoft.com/services/open-datasets/)kümelerinden veya veri depoları aracılığıyla Azure Storage hizmetlerinden oluşturulabilir. Bellek Pandas dataframe 'ten bir veri kümesi oluşturmak için, verileri bir Parquet gibi yerel bir dosyaya yazın ve veri kümenizi bu dosyadan oluşturun.  
+* Ek depolama maliyeti yoktur.
+* Özgün veri kaynaklarınızı yanlışlıkla değiştirmeyi riske eklemeyin.
+* ML iş akışı performans hızlarını geliştirir.
 
-2 tür veri kümesini destekliyoruz: 
+Depolama alanındaki verilerinizle etkileşim kurmak için, verilerinizi makine öğrenimi görevleri için tüketilebilir bir nesneye paketlemek üzere [bir veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri alma karmaşıklıkları olmadan farklı denemeleri genelinde paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
+
+Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https://azure.microsoft.com/services/open-datasets/)kümelerinden veya veri depoları aracılığıyla Azure Storage hizmetlerinden oluşturulabilir. 
+
+2 tür veri kümesi vardır: 
 
 + Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
 

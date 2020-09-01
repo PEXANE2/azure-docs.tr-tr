@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e5b7211ffc72c4752008f36ebb266373c919025b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076030"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146870"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -81,17 +81,19 @@ func init LocalFunctionsProject --worker-runtime node --language typescript --do
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+`-DjavaVersion`Parametresi, işlevleri çalışma zamanına hangi Java sürümünün kullanılacağını söyler. `-DjavaVersion=11`İşlevlerinizin önizleme aşamasında olan Java 11 ' de çalışmasını istiyorsanız kullanın. Belirtmezseniz `-DjavaVersion` Maven varsayılan olarak Java 8 ' dir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
 
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
 İstendiğinde aşağıdaki değerleri sağlayın:
@@ -106,8 +108,6 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 `Y`Onaylamak için yazın veya ENTER tuşuna basın.
 
 Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_adında yeni bir klasörde oluşturur `fabrikam-functions` . 
-
-Azure 'da Java 11 ' de çalıştırmak için pom.xml dosyadaki değerleri değiştirmeniz gerekir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
 ::: zone-end
 `--docker`Seçeneği, `Dockerfile` Azure işlevleri ve seçilen çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcıyı tanımlayan proje için bir oluşturur.
 
@@ -159,14 +159,6 @@ mvn azure-functions:run
 ## <a name="build-the-container-image-and-test-locally"></a>Kapsayıcı görüntüsünü oluşturma ve yerel olarak test etme
 
 Seçim Proje klasörünün kökündeki *Dockerfile dosyasını* inceleyin. Dockerfile, Linux üzerinde işlev uygulamasını çalıştırmak için gerekli ortamı açıklar.  Azure Işlevleri için desteklenen temel görüntülerin tüm listesi, [Azure işlevleri temel görüntü sayfasında](https://hub.docker.com/_/microsoft-azure-functions-base)bulunabilir.
-
-::: zone pivot="programming-language-java"  
-Java 11 ' de (Önizleme) çalıştırıyorsanız, `JAVA_VERSION` oluşturulan Dockerfile içindeki derleme bağımsız değişkenini aşağıdaki şekilde değiştirin: 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 Kök proje klasöründe [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve bir ad, `azurefunctionsimage` , ve etiketi belirtin `v1.0.0` . `<DOCKER_ID>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
 
@@ -311,17 +303,17 @@ Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP 
 
     1. Sol gezinti panelinde **işlevler**' i seçin ve ardından doğrulamak istediğiniz işlevi seçin.
 
-        ![Azure portal işlev URL 'sini Al komutu](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![Azure portal işlevinizi seçin](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. **Işlev URL 'Sini al**' ı seçin.
 
-        ![Azure portal işlev URL 'sini Al komutu](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![Azure portal işlev URL 'sini alın](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. Açılır pencerede, **varsayılan (işlev anahtarı)** seçeneğini belirleyin ve ardından URL 'yi panoya kopyalayın. Anahtar, aşağıdaki karakter dizesidir `?code=` .
 
-        ![Azure portal işlev URL 'sini Al komutu](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![Varsayılan işlev erişim anahtarını seçin](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  

@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513069"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145935"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Sanal merkez yönlendirmeyi yapılandırma
 
 Bir sanal hub, siteden siteye VPN ağ geçidi, ExpressRoute ağ geçidi, Noktadan siteye ağ geçidi ve Azure Güvenlik Duvarı gibi birden çok ağ geçidi içerebilir. Sanal hub 'daki yönlendirme özellikleri, Sınır Ağ Geçidi Protokolü (BGP) kullanan ağ geçitleri arasında geçiş yönlendirmesi dahil olmak üzere tüm yönlendirmeyi yöneten bir yönlendirici tarafından sağlanır. Bu yönlendirici Ayrıca, bir sanal hub 'a bağlanan sanal ağlar arasında geçiş bağlantısı sağlar ve 50 Gbps 'in toplam verimini destekleyebilir. Bu yönlendirme özellikleri standart sanal WAN müşterileri için geçerlidir.
 
 Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
-
-> [!NOTE]
-> Bu yeteneklerin bazıları hala kullanıma sunulmayabilir. Bu, 17 Ağustos 'Tan tamamlanmalıdır.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Yönlendirme tablosu oluşturma
 

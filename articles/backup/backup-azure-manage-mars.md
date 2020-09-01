@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893077"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145578"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -173,7 +173,7 @@ Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'da
 
 Bu bölümde, kaynak makinenizin MARS ile korunan, bozuk, kötü amaçlı yazılım/fidye veya kullanımdan kaldırılan bir senaryo açıklanmaktadır.
 
-Bu makineler için Azure Backup hizmeti, son kurtarma noktasının, yedekleme ilkesinde belirtilen bekletme kurallarına göre sona ermemesini sağlar (yani ayıklanmaz). Bu nedenle, makineyi güvenli bir şekilde geri yükleyebilirsiniz.  Yedeklenen verilerde gerçekleştirebileceğiniz aşağıdaki senaryoları göz önünde bulundurun:
+Bu makineler için Azure Backup hizmeti, en son kurtarma noktasının, yedekleme ilkesinde belirtilen bekletme kurallarına göre sona ermemesini sağlar (yani ayıklanmaz). Bu nedenle, makineyi güvenli bir şekilde geri yükleyebilirsiniz.  Yedeklenen verilerde gerçekleştirebileceğiniz aşağıdaki senaryoları göz önünde bulundurun:
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Senaryo 1: kaynak makine kullanılamıyor ve artık yedekleme verilerini tutmanız gerekmiyor
 

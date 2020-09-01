@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017609"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177695"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -73,7 +73,7 @@ Aşağıdakilerden emin olun:
 
 ## <a name="setup-azure-data-box-devices"></a>Azure Data Box cihazları kurma
 
-Azure Data Box cihazı aldıktan sonra, sipariş ettiğiniz Azure Data Box SKU 'suna bağlı olarak, DPM/MABS sunucusu için Data Box cihazlarını ayarlamak ve ilk yedekleme verilerini aktarmak üzere hazırlamak üzere aşağıdaki ilgili bölümlerdeki adımları gerçekleştirin.
+Azure Data Box cihazı aldıktan sonra, sipariş ettiğiniz Azure Data Box SKU 'suna bağlı olarak, DPM/MABS sunucusu için Data Box cihazlarını ayarlamak ve ilk yedekleme verilerini aktarmak üzere hazırlamak üzere aşağıdaki ilgili bölümlerde verilen adımları gerçekleştirin.
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box disk ayarlama
 
@@ -149,7 +149,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
           -Azure. Storage       *4.6.1*<br>
      >  - Azure AD uygulaması *AzureOfflineBackup_ \<object GUID of the user> *olarak kaydedilir.
 
-13. Data Box diskinizin açılacağı, bağlandığı ve kilidinin bulunduğu doğru veri kutusu sırasını seçin. **İleri**’yi seçin.
+13. Data Box diskinizin açılacağı, bağlandığı ve kilidinin açılacağı doğru veri kutusu sırasını seçin. **İleri**’yi seçin.
 
     ![Veri kutusunu seçin](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 

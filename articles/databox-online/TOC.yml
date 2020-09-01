@@ -154,7 +154,7 @@
         - name: Sorun giderme
           items:
             - name: Cihaz sorunları
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: Sorunları sıralama
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Microsoft Desteği’ne başvurma

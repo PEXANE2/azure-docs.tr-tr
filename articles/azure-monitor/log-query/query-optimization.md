@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565732"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177752"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -52,6 +52,8 @@ Aşağıdaki sorgu performans göstergeleri, yürütülen her sorgu için kullan
 
 ## <a name="total-cpu"></a>Toplam CPU
 Tüm sorgu işleme düğümlerinde bu sorguyu işlemek için yatırılan gerçek işlem CPU 'SU. Çoğu sorgu çok sayıda düğüm üzerinde yürütüldüğü için bu, genellikle sorgunun yürütülmesi için geçen süreden daha büyük olur. 
+
+100 saniyeden fazla CPU kullanan sorgu aşırı kaynak tüketen bir sorgu olarak kabul edilir. 1.000 saniyeden fazla CPU kullanan bir sorgu, bir rahatsız edici sorgu olarak değerlendirilir ve kısıtlanıyor olabilir.
 
 Sorgu işleme süresi şu saatte harcanan:
 - Veri alma – eski verilerin alınması, son verilerin alınmından daha fazla zaman harcar.
@@ -177,6 +179,8 @@ SecurityEvent
 
 Sorgu işlenirken kritik bir faktör, taranan ve sorgu işleme için kullanılan veri birimidir. Azure Veri Gezgini, diğer veri platformları ile karşılaştırıldığında veri hacmini önemli ölçüde azaltan agresif iyileştirmeler kullanır. Hala, sorguda kullanılan veri birimini etkileyebilecek kritik etmenler vardır.
 
+2 ' den fazla veri işleyen sorgu fazla miktarda kaynak tüketen bir sorgu kabul edilir. 20 ' den fazla veri işleyen sorgu, bir rahatsız edici sorgu olarak değerlendirilir ve kısıtlanmış olabilir.
+
 Azure Izleyici günlüklerinde **TimeGenerated** sütunu, verileri dizine almanın bir yolu olarak kullanılır. **TimeGenerated** değerlerinin mümkün olduğunca dar olarak sınırlanması, işlenmesi gereken veri miktarını önemli ölçüde sınırlandırarak performansı sorgulamak için önemli bir geliştirme sağlar.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Arama ve birleşim işleçlerinin gereksiz kullanımını önleyin
@@ -300,6 +304,8 @@ SecurityEvent
 
 Azure Izleyici günlüklerindeki tüm Günlükler, **TimeGenerated** sütununa göre bölümlendirilir. Erişilen bölüm sayısı doğrudan zaman dilimi ile ilgilidir. Zaman aralığını azaltmak, istem sorgusu yürütmeyi en verimli yoludur.
 
+15 günden daha uzun süre aralığına sahip sorgu aşırı kaynak tüketen bir sorgu olarak kabul edilir. 90 günden fazla zaman aralığına sahip sorgu, bir rahatsız edici sorgu olarak değerlendirilir ve kısıtlanmış olabilir.
+
 Zaman aralığı, [Azure izleyici Log Analytics günlük sorgusu kapsamı ve zaman aralığı](scope.md#time-range)bölümünde açıklandığı gibi Log Analytics ekranındaki zaman aralığı Seçicisi kullanılarak ayarlanabilir. Bu, seçili zaman aralığı, sorgu meta verileri kullanılarak arka uca geçirildiği için önerilen yöntemdir. 
 
 Alternatif bir yöntem, sorguda her **zaman** bir [WHERE](/azure/kusto/query/whereoperator) koşulunu açıkça içermelidir. Bu yöntemi, sorgu farklı bir arabirimden kullanıldığında bile zaman aralığının düzeltildiğinden emin olmak için kullanmanız gerekir.
@@ -389,6 +395,9 @@ Sistemin zaman aralığının doğru bir ölçümünü sağlayamadığının bir
 ## <a name="age-of-processed-data"></a>İşlenen verilerin yaşı
 Azure Veri Gezgini, çeşitli depolama katmanlarını kullanır: bellek içi, yerel SSD diskleri ve çok daha yavaş Azure Blob 'Ları. Veriler arttıkça, daha yüksek gecikme süresine sahip daha fazla performans ve sorgu süresi ve CPU 'YU azaltan bir daha iyi hale gelir. Verilerin kendisi dışında, sistem meta veriler için de önbelleğe sahiptir. Veriler daha eski olduğunda meta verileri önbellekte olacaktır.
 
+Verilerin işlediği sorgu, 14 günden daha eski bir sorgu, aşırı kaynak tüketen bir sorgu olarak kabul edilir.
+
+
 Bazı sorgular eski verilerin kullanımını gerektirirken, eski verilerin yanlışlıkla kullanıldığı durumlar vardır. Bu durum, sorguları meta verilerinde zaman aralığı sağlamaktan yürütülene ve tüm tablo başvuruları, **TimeGenerated** sütununda filtre içermez. Bu durumlarda sistem, bu tabloda depolanan tüm verileri tarar. Veri saklama süresi uzunsa, uzun zaman aralıklarını ve bu nedenle veri saklama süresi kadar eski olan verileri kapsayacaktır.
 
 Bu gibi durumlarda, örneğin:
@@ -408,6 +417,8 @@ Farklı bölgelerde tek bir sorgunun yürütülebileceği birkaç durum vardır:
 Çapraz bölge sorgusu yürütme, sistemin son kullanılan büyük öbeklere, genellikle sorgu nihai sonuçlarından çok daha büyük parçalar halinde serileştirmek ve aktarım yapılmasını gerektirir. Ayrıca sistemin iyileştirmeler, buluşsal yöntemler gerçekleştirme ve önbellekleri kullanma yeteneğini de kısıtlar.
 Tüm bu bölgeleri taramak için gerçek bir neden yoksa, kapsamı daha az bölge içerecek şekilde ayarlamanız gerekir. Kaynak kapsamı simge durumuna küçültülmüş, ancak hala çok sayıda bölge kullanılıyorsa, yanlış yapılandırma nedeniyle bu durum oluşabilir. Örneğin, denetim günlükleri ve Tanılama ayarları farklı bölgelerdeki farklı çalışma alanlarına gönderilir veya birden çok Tanılama ayarları yapılandırması vardır. 
 
+3 ' ten fazla bölge kapsayan sorgu aşırı kaynak tüketen bir sorgu olarak kabul edilir. 6 ' dan fazla bölge kapsayan sorgu, bir rahatsız edici sorgu olarak değerlendirilir ve kısıtlanmış olabilir.
+
 > [!IMPORTANT]
 > Bir sorgu çeşitli bölgelerde çalıştırıldığında, CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca bölgelerden birindeki ölçüyü temsil eder.
 
@@ -420,6 +431,8 @@ Birden çok çalışma alanının kullanımı şu sonucu verebilir:
 - Kaynak kapsamlı bir sorgu veri getirilirken ve veriler birden fazla çalışma alanında depolandığında.
  
 Sorguların bölgeler arası ve çapraz küme yürütmesi, sistemin son görüntülenen büyük öbeklere, genellikle sorgu nihai sonuçlarından çok daha büyük parçalara serileştirmesinin ve aktarılmasını gerektirir. Ayrıca sistem, iyileştirmeler, buluşsal yöntemler ve önbellekler gerçekleştirme becerisini de kısıtlar.
+
+5 ' ten fazla çalışma alanına yayılan sorgu aşırı kaynak tüketen bir sorgu olarak kabul edilir. Sorgular 100 ' den fazla çalışma alanına yayılamaz.
 
 > [!IMPORTANT]
 > Bazı çok çalışma alanı senaryolarında CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca birkaç çalışma alanında ölçüyü temsil eder.

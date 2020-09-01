@@ -12,19 +12,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319584"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144048"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, giriş dosyalarının nereye kaydedileceğini ve depolama sınırı hatalarını ve deneme gecikmesini engellemek için denemeleri 'dan çıktı dosyalarının nereye yazılacağını öğrenirsiniz.
 
-Bir [işlem hedefi](how-to-set-up-training-targets.md)üzerinde eğitim çalıştırmaları başlatıldığında, bunlar dış ortamlardan yalıtılmıştır. Bu tasarımın amacı, denemenin reproducibility ve taşınabilirliği sağlamaktır. Aynı betiği iki kez çalıştırırsanız aynı veya başka bir işlem hedefinde aynı sonuçları alırsınız. Bu tasarımla, işlem hedeflerini durum bilgisiz hesaplama kaynakları olarak, her biri tamamlandıktan sonra çalışmakta olan işlere benzeşim olmadan kabul edebilirsiniz.
+Bir [işlem hedefi](concept-compute-target.md)üzerinde eğitim çalıştırmaları başlatıldığında, bunlar dış ortamlardan yalıtılmıştır. Bu tasarımın amacı, denemenin reproducibility ve taşınabilirliği sağlamaktır. Aynı betiği iki kez çalıştırırsanız aynı veya başka bir işlem hedefinde aynı sonuçları alırsınız. Bu tasarımla, işlem hedeflerini durum bilgisiz hesaplama kaynakları olarak, her biri tamamlandıktan sonra çalışmakta olan işlere benzeşim olmadan kabul edebilirsiniz.
 
 ## <a name="where-to-save-input-files"></a>Giriş dosyalarının kaydedileceği yer
 
@@ -79,4 +79,4 @@ Bir veri deposu gerekmiyorsa, dosyaları `./outputs` ve/veya `./logs` klasörün
 
 * [Veri mağazalarınızın verilerine erişme](how-to-access-data.md)hakkında daha fazla bilgi edinin.
 
-* [Eğitim hedeflerini ayarlama](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
+* [Python SDK](how-to-create-attach-compute-sdk.md) ile veya [Studio 'yu](how-to-create-attach-compute-studio.md)kullanarak işlem hedefleri oluşturma hakkında daha fazla bilgi edinin.

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 067195cfef35863a7bcc314a55b4bf1ff8a3ccd7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048219"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146993"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
 > * Gerçek zamanlı akış günlükleri
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -147,23 +147,24 @@ Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi
 
 1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
-    ![Azure 'a dağıtma 1](media/spring-cloud-quickstart-java/intellij-deploy-azure.png)
+    [![Azure 'a dağıtma 1 ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png)](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. **Ad** alanındaki uygulamanın adını kabul edin. **Ad** , uygulama adı değil, yapılandırmaya başvurur. Kullanıcıların genellikle bunu değiştirmesi gerekmez.
 1. **Yapıt** metin kutusunda *HELLOSPRING-0.0.1-Snapshot. jar*öğesini seçin.
 1. **Abonelik** metin kutusunda aboneliğinizi doğrulayın.
 1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
+1. **Genel uç noktayı** *Etkinleştir*olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
 1. *Merhaba yay*girin ve ardından **Tamam**' a tıklayın.
 
-    ![Azure 'a dağıtma Tamam](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)
+    [![Azure 'a dağıtma Tamam ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. Eklenti uygulamada komutunu çalıştırır `mvn package` `hellospring` ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 ---
 
 Dağıtım tamamlandıktan sonra uygulamasına ' de erişebilirsiniz `https://<service instance name>-hellospring.azuremicroservices.io/` .
 
-  ![Tarayıcıdan uygulamaya erişme](media/spring-cloud-quickstart-java/access-app-browser.png)
+  [![Tarayıcıdan ](media/spring-cloud-quickstart-java/access-app-browser.png) uygulamaya erişme](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
 
 ## <a name="streaming-logs-in-real-time"></a>Akış günlükleri gerçek zamanlı olarak
 
@@ -187,16 +188,13 @@ Günlükler sonuçlarda görüntülenir:
 1. **Azure Gezgini**' ni ve ardından **yay bulutu**' nı seçin.
 1. Çalışan uygulamaya sağ tıklayın.
 1. Açılan listeden **akış günlükleri** ' ni seçin.
-
-    ![Akış günlüklerini seçme](media/spring-cloud-intellij-howto/streaming-logs.png)
-
 1. Örnek seçin.
 
-    ![Örnek seçin](media/spring-cloud-intellij-howto/select-instance.png)
+    [![Akış günlüklerini ](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png) seçme](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)
 
 1. Akış günlüğü, çıkış penceresinde görünür olur.
 
-    ![Akış günlüğü çıkışı](media/spring-cloud-intellij-howto/streaming-log-output.png)
+    [![Akış günlüğü çıkışı ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 ---
 
 Gelişmiş Günlükler analiz özellikleri için [Azure Portal](https://portal.azure.com/)menüsündeki **Günlükler** sekmesini ziyaret edin. Burada günlüklerde birkaç dakika gecikme vardır.

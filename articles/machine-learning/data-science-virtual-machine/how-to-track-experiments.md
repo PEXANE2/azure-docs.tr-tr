@@ -1,7 +1,7 @@
 ---
-title: Modelleri Izlemeyi ve dağıtmayı deneyin
+title: Modelleri izlemeyi ve dağıtımı deneyin
 titleSuffix: Azure Data Science Virtual Machine
-description: Azure Machine Learning hizmeti ve/veya MLFlow ile DSVM 'den izleme ve denemeleri kaydetme hakkında bilgi edinin.
+description: Denemeleri ve/veya MLFlow Azure Machine Learning ile DSVM 'deki izleme ve günlüğe kaydetme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,14 +9,14 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 687cd6570a9518be6f398a40fcd2d0e10a9634f2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817966"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146904"
 ---
-# <a name="track-experiments-and-deploy-models-in-azureml"></a>Denemeleri izleyin ve modelleri AzureML içinde dağıtın
+# <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning ' de izleme denemeleri ve modelleri dağıtma
 
 Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma sürecini geliştirin. Bu makalede, [Mlflow](https://mlflow.org/) API 'sini kullanarak eğitim betiğe günlük kodu eklemeyi öğrenin ve Azure Machine Learning deneme deneyimini izleyin.
 
@@ -24,7 +24,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
 ![denemeleri izleme](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Bir Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace) sağlamanız gerekir
 

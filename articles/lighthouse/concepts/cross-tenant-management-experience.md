@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163518"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146921"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -35,7 +35,7 @@ Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim ara
 
 [Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription) , `HomeTenantId` `ManagedByTenantIds` her abonelik için ve özniteliklerini gösterir. Bu, döndürülen bir aboneliğin yönetilen bir kiracıya veya yönetim kiracınıza ait olduğunu tanımlamanızı sağlar. Azure PowerShell
 
-Benzer şekilde, [az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları `homeTenantId` ve özniteliklerini gösterir `managedByTenants` .
+Benzer şekilde, [az Account List](/cli/azure/account#az-account-list) gıbı Azure CLI komutları `homeTenantId` ve özniteliklerini gösterir `managedByTenants` .
 
 > [!TIP]
 > Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651769"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144847"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -55,7 +55,7 @@ Yerel bilgisayarınız için bir çalıştırma yapılandırması ile başlayabi
 * [Çalışma yapılandırması nedir?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Öğretici: ilk ML modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)
 * [Örnekler: eğitim modellerine Jupyter Notebook örnekler](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [Nasıl yapılır: model eğitimi için işlem hedeflerini ayarlama ve kullanma](how-to-set-up-training-targets.md)
+* [Nasıl yapılır: model eğitimi için işlem hedeflerini kullanma](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Otomatik Makine Öğrenmesi
 
@@ -160,4 +160,4 @@ Eğitim işlerinizi çalıştırmak ve yönetmek için VS Code uzantısını kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Eğitim ortamlarını ayarlamayı](how-to-set-up-training-targets.md)öğrenin.
+[Model eğitimi için işlem hedeflerini nasıl kullanacağınızı](how-to-set-up-training-targets.md)öğrenin.

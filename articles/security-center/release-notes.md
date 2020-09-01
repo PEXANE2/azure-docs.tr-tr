@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723971"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177253"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -159,11 +159,11 @@ Güvenlik Merkezi bir güvenlik açığı değerlendirme çözümü dağıttığ
 
 Bu güncelleştirmeden denetim kaldırılmıştır ve artık ' özel ' Windows ve Linux makinelerine güvenlik açığı değerlendirme araçları dağıtabilirsiniz. Özel görüntüler, Market varsayılanlarından değiştirdiğiniz alanlardır.
 
-Artık tümleşik güvenlik açığı değerlendirmesi uzantısını (Qualys tarafından desteklenen) çok sayıda makineye dağıtabileceğiniz halde, destek yalnızca [Qualys yerleşik güvenlik açığı tarayıcısını dağıtırken](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)listelenen bir işletim sistemi kullanıyorsanız kullanılabilir.
+Artık tümleşik güvenlik açığı değerlendirme uzantısını (Qualys tarafından desteklenen) çok sayıda makineye dağıtabseniz de, destek yalnızca [Tümleşik güvenlik açığı tarayıcısını Standart katman VM 'Lerine dağıtma](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms) bölümünde listelenen bir işletim sistemi kullanıyorsanız kullanılabilir
 
-[Sanal makineler için tümleşik güvenlik açığı tarayıcısı (yalnızca Standart katman)](built-in-vulnerability-assessment.md)hakkında daha fazla bilgi edinin.
+[Sanal makineler için tümleşik güvenlik açığı tarayıcısı (yalnızca Standart katman)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)hakkında daha fazla bilgi edinin.
 
-Özel olarak lisanslanan güvenlik açığı değerlendirme çözümünüzü [bir iş ortağı güvenlik açığı tarama çözümü dağıtma](partner-vulnerability-assessment.md)konusunda Qualys veya Rapid7 'tan kullanma hakkında daha fazla bilgi edinin.
+Özel olarak lisanslanan güvenlik açığı değerlendirme çözümünüzü [bir iş ortağı güvenlik açığı tarama çözümü dağıtma](deploy-vulnerability-assessment-vm.md)konusunda Qualys veya Rapid7 'tan kullanma hakkında daha fazla bilgi edinin.
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)
@@ -415,7 +415,7 @@ Yeni çözüm Güvenlik Merkezi 'nde güvenlik açıklarını bulmak ve bulgular
 
 "Yerleşik güvenlik açığı değerlendirme çözümünü sanal makinelerde etkinleştir (Qualys tarafından desteklenir)"
 
-[Güvenlik Merkezi 'nin sanal makineler için tümleşik güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)hakkında daha fazla bilgi edinin.
+[Güvenlik Merkezi 'nin sanal makineler için tümleşik güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)hakkında daha fazla bilgi edinin.
 
 
 

@@ -4,12 +4,12 @@ description: Bu makalede, özel konuların Azure Event Grid bir bölgeden başka
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: f33636f7033495a1e437715cc89c492889e4dfe0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087227"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145357"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Azure Event Grid özel konuları başka bir bölgeye taşıyın
 Birkaç nedenden dolayı kaynaklarınızı başka bir bölgeye taşımak isteyebilirsiniz. Örneğin, yeni bir Azure bölgesinden yararlanarak iç ilke ve idare gereksinimlerini veya kapasite planlama gereksinimlerine yanıt olarak tanışın. 
@@ -32,7 +32,7 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
 ## <a name="prepare"></a>Hazırlama
 Başlamak için, özel konu için bir Kaynak Yöneticisi şablonu dışarı aktarın. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Arama çubuğuna **Event Grid konular**yazın ve sonuçlar listesinden **Event Grid konular** ' ı seçin. 
 
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Event Grid konuları arayın ve seçin":::
@@ -80,6 +80,8 @@ Hedef bölgede özel bir konu oluşturmak için şablonu dağıtın.
 ## <a name="verify"></a>Doğrulama
 
 1. Dağıtım başarılı olduktan sonra **Kaynağa Git**' i seçin. 
+
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Kaynağa git":::
 1. Özel konu için **Event Grid konu** sayfasını görtığınızdan emin olun.   
 1. Konuya olay göndermek için [özel olayları bir Web uç noktasına yönlendir](custom-event-quickstart-portal.md#send-an-event-to-your-topic) ' i izleyin. Web kancası olay işleyicisinin çağrıldığından emin olun. 
 

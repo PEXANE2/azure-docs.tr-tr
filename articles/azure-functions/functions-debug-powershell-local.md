@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799375"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177100"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>İliştirme noktasını ayarlama
 
 Herhangi bir PowerShell işlevinde hata ayıklamak için, hata ayıklayıcının eklenmesi için işlevin durdurulması gerekir. `Wait-Debugger`Cmdlet yürütmeyi durduruyor ve hata ayıklayıcıyı bekler.
+
+>[!NOTE]
+>PowerShell 7 ' yi kullanırken, bu çağrıyı kodunuza eklemeniz gerekmez `Wait-Debugger` .
 
 Tüm yapmanız gereken `Wait-Debugger` `if` , aşağıdaki gibi deyimin hemen üzerindeki cmdlet 'ine bir çağrı eklemektir:
 

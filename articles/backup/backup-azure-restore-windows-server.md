@@ -3,12 +3,12 @@ title: MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
 description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma Hizmetleri (MARS) aracısına sahip bir Windows Server veya Windows bilgisayara geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018918"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178566"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
 
@@ -23,7 +23,7 @@ Yazılabilir bir kurtarma noktası anlık görüntüsünü kurtarma birimi olara
 > Verileri geri yüklemek için anlık geri yükleme kullanmak istiyorsanız [ocak 2017 Azure Backup güncelleştirme](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) gerekir. Ayrıca, yedekleme verileri destek makalesinde listelenen yerel ayarlarda kasaların korunması gerekir. Anında geri yüklemeyi destekleyen en son yerel ayar listesi için [2017 ocak Azure Backup güncelleştirmesine](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) bakın.
 >
 
-Azure portal kurtarma hizmetleri kasalarıyla anında geri yükleme kullanın. Yedekleme kasalarında veri depoladıysanız, bunlar kurtarma hizmetleri kasalarına dönüştürülüyordu. Anında geri yükleme kullanmak istiyorsanız, MARS güncelleştirmesini indirin ve anında geri yükleme ile ilgili yordamları izleyin.
+Azure portal kurtarma hizmetleri kasalarıyla anında geri yükleme kullanın. Yedekleme kasalarında veri depoladıysanız kurtarma hizmetleri kasalarına dönüştürülüyordu. Anında geri yükleme kullanmak istiyorsanız, MARS güncelleştirmesini indirin ve anında geri yükleme ile ilgili yordamları izleyin.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 

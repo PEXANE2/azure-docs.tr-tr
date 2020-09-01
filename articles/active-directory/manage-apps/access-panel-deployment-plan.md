@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017728"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146632"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
@@ -55,11 +55,8 @@ Azure AD My Apps, işletmelerden aşağıdaki yollarla faydalanır:
 Uygulamalarım ücretsizdir ve temel düzeyde kullanılacak bir lisans gerektirmez. Ancak, dizininizdeki nesne sayısı ve dağıtmak istediğiniz ek özellikler ek lisanslar gerektirebilir. Lisanslama gereksinimlerine sahip bazı yaygın Azure AD senaryoları aşağıdaki güvenlik özelliklerini içerir:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [Grup tabanlı üyelik](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [Self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory Kimlik Koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 [Azure AD için tam lisanslama kılavuzuna](https://azure.microsoft.com/pricing/details/active-directory/)bakın.
@@ -69,7 +66,6 @@ Uygulamalarım ücretsizdir ve temel düzeyde kullanılacak bir lisans gerektirm
 Bu projeye başlamadan önce aşağıdaki önkoşulları doldurun:
 
 * [Uygulama SSO 'SU tümleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [Azure AD Kullanıcı ve grup altyapısını yönetme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Azure AD My Apps dağıtımını planlayın
@@ -126,11 +122,11 @@ Aşağıdaki tabloda birçok önemli uygulama yapılandırması ve kullanabilece
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Microsoft 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 
@@ -139,7 +135,6 @@ Kullanıcıların veya yöneticilerin herhangi bir uygulamanın kullanım koşul
 Yönetici onayını kullanmak için kuruluşun genel yöneticisi olmanız ve uygulamalar şunlardan biri olmalıdır:
 
 * Kuruluşunuzda kayıtlı
-
 * Başka bir Azure AD kuruluşunda kayıtlı ve daha önce en az bir kullanıcı tarafından onaylanan
 
 Daha fazla bilgi için bkz. [Azure Active Directory bir uygulamaya son kullanıcıların izin vermesini yapılandırma](configure-user-consent.md).
@@ -180,9 +175,7 @@ Kullanıcılar parola tabanlı SSO uygulamalarında oturum açtıklarında, uygu
 Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçeneklere şunlar dahildir:
 
 * [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Internet Explorer için Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Parola tabanlı SSO uygulamaları kullanmayan kullanıcılar da uzantısından faydalanır. Bu avantajlar, arama çubuğundan herhangi bir uygulamayı başlatma, son kullanılan uygulamalara erişimi bulma ve uygulamalarım sayfasına bir bağlantı olma imkanını içerir.
@@ -294,7 +287,6 @@ Aşağıdaki testler, şirkete ait cihazlar ve kişisel cihazlarla birlikte ger�
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>Uygulama self servis yetenekleri test çalışması örnekleri
 
-
 | İş örneği| Beklenen sonuç |
 | - | - |
 | Kullanıcı, uygulama üyeliğini yönetebilir| Kullanıcı, uygulamaya erişimi olan üyeleri ekleyebilir/kaldırabilir |
@@ -311,30 +303,13 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|
-| Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
+| Yardım Masası Yöneticisi| Katman 1 desteği| Yok |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
-| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) kullanabilirsiniz.
 
-### <a name="troubleshoot-my-apps-issues"></a>Uygulamalarımın sorunlarını giderme
-
-Ortak senaryolarla destek kuruluşunuz için sorun giderme kılavuzlarını oluşturun ve bu çözüm, çözümlerinde Microsoft belgelerine işaret eder. Kuruluşunuzun kullandığı katmanlara yönelik desteği kesen kılavuzlar oluşturmak isteyebilirsiniz.
-
-Başvuru için şu sorun giderme kılavuzlarını inceleyin:
-
-[Görünmeyen uygulamalar](access-panel-troubleshoot-application-not-appearing.md)
-
-[Beklenmeyen uygulamalar görünüyor](access-panel-troubleshoot-unexpected-application.md)
-
-[Kullanıcı uygulamamda oturum açılamıyor](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[Self Servis uygulama erişimini kullanan sorunlar](access-panel-troubleshoot-self-service-access.md)
-
-[Tarayıcı uzantısıyla ilgili sorunlar](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>Sonraki adımlar
-
 [Azure Multi-Factor Authentication dağıtımını planlayın](https://aka.ms/deploymentplans/mfa)

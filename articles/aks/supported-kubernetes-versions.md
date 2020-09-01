@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475201"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144626"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -135,18 +135,18 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Ara-09-19  | 19 Ocak   | 20 Temmuz  | 1,20 GA | 
-| 1,18  | Mar-23-20  | 20 Mayıs   | 20 Ağu  | 1,21 GA | 
-| 1,19  | Ağu-04-20  | 20 Ağu   | 20 Kas  | 1,22 GA | 
-| 1,20  | * Kas 20    | * Ara 20   | * 21 Ocak  | 1,23 GA | 
+| 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
+| 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
+| 1,19  | Ağu-04-20  | Ağu 2020   | Kas 2020  | 1,22 GA | 
+| 1.20  | * Kas 2020    | * Dec 2020   | * Jan 2021  | 1,23 GA | 
 
-\*Bekleyen yukarı akış Yayın tarihi onayı.
+\* Bekleyen yukarı akış Yayın tarihi onayı.
 
 ## <a name="faq"></a>SSS
 
 **Bir Kullanıcı bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örnek:
+*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örneğin:
 
 - Desteklenen en eski AKS sürümü *1.15. a* ise ve *1.14. b* veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 - *1.14. b* 'den 1.15 'e yükseltme yapıldığında, ya da daha yüksek *bir* başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.

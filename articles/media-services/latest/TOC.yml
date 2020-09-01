@@ -7,6 +7,8 @@
     - name: Media Services yenilikleri
       displayName: release notes
       href: release-notes.md
+    - name: Media Services uyumluluğu
+      href: concept-compliance.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Ortamınızı ayarlama
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: Öğreticiler
   items:
-    - name: Uzak dosyayı kodlama ve video akışı yapma
+    - name: .NET
       items:
-        - name: REST ile
-          displayName: 'encoding, job, transform'
+        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
           href: stream-files-tutorial-with-rest.md
-        - name: CLI ile
-          href: stream-files-cli-quickstart.md
-        - name: .NET ile
+        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma .NET
           href: stream-files-dotnet-quickstart.md
-        - name: Node.js ile
+        - name: Karşıya yüklenmiş bir dosyayı kodlama ve akış ile aktarma
+          href: stream-files-tutorial-with-api.md
+        - name: Canlı akış
+          href: stream-live-tutorial-with-api.md
+        - name: Videonuzu analiz etme
+          href: analyze-videos-tutorial-with-api.md
+        - name: AES-128 ile dinamik olarak şifreleme
+          href: protect-with-aes128.md
+        - name: DRM ile dinamik olarak şifreleme
+          href: protect-with-drm.md
+    - name: CLI
+      items:
+        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma CLI
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma Node.js
           href: stream-files-nodejs-quickstart.md
-    - name: Azure Log Analytics’te AMS olaylarını depolama
-      href: tutorial-events-log-analytics.md
-    - name: Karşıya yüklenen dosyayı kodlama ve video akışı yapma
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: Canlı akış
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: Videonuzu analiz etme
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: AES-128 ile dinamik olarak şifreleme
-      href: protect-with-aes128.md
-    - name: DRM ile dinamik olarak şifreleme
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure portal
+      items:
+        - name: Azure Log Analytics’te AMS olaylarını depolama
+          href: tutorial-events-log-analytics.md
 - name: Örnekler
   items:
     - name: Media Services v3 örnekleri
@@ -378,7 +381,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

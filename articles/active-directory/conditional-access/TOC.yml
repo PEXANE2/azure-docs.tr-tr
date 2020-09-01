@@ -4,7 +4,7 @@
   items:
     - name: Koşullu Erişim nedir?
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Kullanım koşullarının kabul edilmesini gerektirme
       href: require-tou.md
@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: Durum aracı
       href: what-if-tool.md
+    - name: Sürekli erişim değerlendirmesi
+      href: concept-continuous-access-evaluation.md
     - name: Özel denetimler
       href: controls.md
     - name: Klasik ilke geçişleri

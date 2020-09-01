@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge ile verileri depolama hesabına aktarma öğreticisi | Microsoft Docs
-description: Azure Stack Edge cihazında depolama hesaplarına ekleme ve bunları bağlama hakkında bilgi edinin.
+title: Azure Stack Edge GPU ile verileri depolama hesabına aktarma öğreticisi | Microsoft Docs
+description: Azure Stack Edge GPU cihazında depolama hesaplarına ekleme ve bunları bağlama hakkında bilgi edinin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5e22a04dc8d60a472809bdd3c5f79ad3de6f929c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7289498516664228e569d821032eeefeb6c65be4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088171"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146258"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge"></a>Öğretici: Azure Stack Edge ile depolama hesapları aracılığıyla veri aktarımı
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge"></a>Öğretici: Azure Stack Edge ile depolama hesapları aracılığıyla veri aktarımı 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory bir acil durumda Kullanıcı erişimini iptal etme | Microsoft Docs
-description: Azure Active Directory 'de Azure AD Yönetim Merkezi 'nde toplu olarak Kullanıcı ekleme
+description: Azure Active Directory bir kullanıcının tüm erişimini iptal etme
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798423"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147142"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory Kullanıcı erişimini iptal etme
 
@@ -38,7 +38,7 @@ Erişim belirteçleri ve yenileme belirteçleri, genellikle kalın istemci uygul
 
 Azure AD daha sonra yetkilendirme ilkelerini yeniden değerlendirin. Kullanıcı hala yetkilendirilirse, Azure AD yeni bir erişim belirteci yayınlar ve belirteci yeniler.
 
-Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, Office 365 uygulamalarına [sürekli erişim değerlendirmesi](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) getirmek için etkin bir şekilde çalışır ve bu da neredeyse gerçek zamanlı olarak erişim belirteçlerinin doğrulanması sağlanmasına yardımcı olur.  
+Erişim belirteçleri, genellikle bir saat içinde olan belirtecin yaşam süresinden daha kısa bir süre içinde iptal edilmeli bir güvenlik sorunu olabilir. Bu nedenle, Microsoft, Office 365 uygulamalarına [sürekli erişim değerlendirmesi](../conditional-access/concept-continuous-access-evaluation.md) getirmek için etkin bir şekilde çalışır ve bu da neredeyse gerçek zamanlı olarak erişim belirteçlerinin doğrulanması sağlanmasına yardımcı olur.  
 
 ## <a name="session-tokens-cookies"></a>Oturum belirteçleri (tanımlama bilgileri)
 

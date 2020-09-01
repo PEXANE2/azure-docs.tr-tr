@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2b68c4857d3d688c42779be9b5f5fa6e43e0403e
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: c960a4aeaeea41f23c7f29351b9205c4bbf21454
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116893"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177236"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Öğretici: Azure Spring Cloud uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -20,7 +20,7 @@ Bu makalede, Azure yay bulutu uygulaması için yönetilen kimlik oluşturma ve 
 
 Azure Key Vault, uygulamanızın belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve güvenle denetlemek için kullanılabilir. Azure Active Directory (AAD) ' de yönetilen bir kimlik oluşturabilir ve kodunuzda kimlik bilgilerini görüntülemeye gerek kalmadan Key Vault dahil AAD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
 * [Azure CLı sürüm 2.0.67 veya üstünü yükler](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -114,13 +114,13 @@ Bu uygulamanın Azure Key Vault parolaları almak için erişimi olacak. Başlan
 
     @SpringBootApplication
     @RestController
-    public class SecretsApplication implements CommandLineRunner {
+    public class DemoApplication implements CommandLineRunner {
 
         @Value("${connectionString}")
         private String connectionString;
 
         public static void main(String[] args) {
-          SpringApplication.run(SecretsApplication.class, args);
+          SpringApplication.run(DemoApplication.class, args);
         }
 
         @GetMapping("get")
@@ -149,7 +149,7 @@ Bu uygulamanın Azure Key Vault parolaları almak için erişimi olacak. Başlan
     mvn clean package
     ```
 
-5. Artık Azure CLı komutuyla uygulamanızı Azure 'a dağıtabilirsiniz `az spring-cloud app deploy` . 
+5. Artık Azure CLı komutuyla uygulamanızı Azure 'a dağıtabilirsiniz  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/demo-0.0.1-SNAPSHOT.jar
@@ -201,7 +201,7 @@ Azure Key Vault gizli istemci kitaplığı, belirteçlere, parolalara, API anaht
     mvn clean package
     ```
 
-5. Şimdi Azure CLı komutuyla uygulamayı Azure 'a dağıtın `az spring-cloud app deploy` . 
+5. Şimdi Azure CLı komutuyla uygulamayı Azure 'a dağıtın  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/asc-managed-identity-keyvault-sample-0.1.0.jar
