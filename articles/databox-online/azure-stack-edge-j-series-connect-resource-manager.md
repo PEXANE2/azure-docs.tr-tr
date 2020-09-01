@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c7f571489a9e565fac8c23db4c08321be6f551d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146207"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269820"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Azure Resource Manager bağlama
 
@@ -57,7 +57,7 @@ Azure Resource Manager kullanarak cihazın yerel API 'Lerine bağlanma işlemi a
 
 Aşağıdaki bölümler Azure Resource Manager bağlanmada yukarıdaki adımların her birini ayrıntılandırır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, Azure Resource Manager aracılığıyla cihaza bağlanmak için kullanılan istemcinin TLS 1,2 kullanmasını sağlayın. Daha fazla bilgi için bkz. [Windows ISTEMCISINDE TLS 1,2 yapılandırma Azure Stack Edge cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md).
 

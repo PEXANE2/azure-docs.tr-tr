@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: ef558b9339fe1d4525156cf58efe5056862de0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052741"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269097"
 ---
-# <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -60,7 +62,7 @@ Kodlayıcılar giriş meta verileri [burada](media-services-input-metadata-schem
 Kodlayıcılar çıkış meta verileri [burada](media-services-output-metadata-schema.md)açıklanmıştır.
 
 ### <a name="generate-thumbnails"></a>Küçük resim oluşturma
-Bilgi için bkz. [Media Encoder Standard kullanarak küçük resimleri oluşturma](media-services-advanced-encoding-with-mes.md#thumbnails).
+Bilgi için bkz. [Media Encoder Standard kullanarak küçük resimleri oluşturma](media-services-advanced-encoding-with-mes.md).
 
 ### <a name="trim-videos-clipping"></a>Videoları kırpma (kırpma)
 Bilgi için bkz. [Media Encoder Standard kullanarak videoları kırpma](media-services-advanced-encoding-with-mes.md#trim_video).

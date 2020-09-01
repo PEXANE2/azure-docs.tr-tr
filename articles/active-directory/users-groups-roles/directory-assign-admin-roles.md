@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953217d15e6aede86d863bcd5be6df583d15df6d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 09664de9ab2040ad04127ee1556c21244ac6bc2d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269684"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki 
 
 ## <a name="limit-use-of-global-administrator"></a>Genel yönetici kullanımını sınırla
 
-Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure AD kuruluşu için genel yönetici rolü atanır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
+Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda, bir Azure AD kiracısı oluşturulur ve Kullanıcı genel Yöneticiler rolünün bir üyesi yapılır. Mevcut bir kiracıya bir abonelik eklediğinizde, genel yönetici rolüne atanmamıştır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
 
 En iyi uygulama olarak, bu rolü kuruluşunuzda beşten az kişiden fazlasına atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş taneden fazla yönetici varsa, bunun kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
 

@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560006"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269633"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan kanallar ile çalışma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 12 Mayıs 2018 ' den itibaren Canlı Kanallar artık RTP/MPEG-2 aktarım akışı alma protokolünü desteklemezler. Lütfen RTP/MPEG-2 ' den RTMP veya parçalanmış MP4 (Kesintisiz Akış) alma protokolleriyle geçiş yapın.
@@ -141,7 +143,7 @@ Bu kanala video yayımlamasına izin verilen IP adreslerini tanımlayabilirsiniz
 Hiçbir IP adresi belirtilmemişse ve kural tanımı yoksa, hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.
 
 ### <a name="channel-preview"></a>Kanal önizlemesi
-#### <a name="preview-urls"></a>URL 'Leri Önizle
+#### <a name="preview-urls"></a>Önizleme URL’leri
 Kanallar, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
 
 Kanalı oluştururken önizleme URL 'sini alabilirsiniz. URL 'YI alabilmeniz için kanalın **çalışıyor** durumunda olması gerekmez. Kanal veri almaya başladıktan sonra, akışınızı önizleyebilirsiniz.
@@ -187,7 +189,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | **Başlatılıyor** |**Başlatılıyor** |Hayır (geçici durum) |
-| **Çalışıyor** |**Ready** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Evet |
+| **Çalışıyor** |**Ready** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Yes |
 | **Durduruluyor** |**Durduruluyor** |Hayır (geçici durum) |
 | **Durduruldu** |**Durduruldu** |Hayır |
 
@@ -200,7 +202,7 @@ Aşağıdaki tabloda kapalı açıklamalı altyazı ve ad ekleme için desteklen
 | TTML içinde. ismt (Kesintisiz Akış metin parçaları) |Media Services dinamik paketleme, istemcilerinizin şu biçimlerden herhangi birinde içerik akışını sağlar: DASH, HLS veya Kesintisiz Akış. Ancak,. ismt (Kesintisiz Akış metin parçaları) içindeki açıklamalı alt yazılar ile parçalanmış MP4 (Kesintisiz Akış) aldıysanız, akışı yalnızca Kesintisiz Akış istemcilerine teslim edebilirsiniz. |
 | SCTE-35 |SCTE-35, reklam ekleme işlemini işaret etmek için kullanılan dijital bir sinyal sistemidir. Aşağı akış alıcıları, ayrılan süre için tanıtımı akışa almak için sinyali kullanır. SCTE-35, giriş akışında seyrek bir izleme olarak gönderilmelidir.<p><p>Şu anda, ad sinyallerini taşıyan tek desteklenen giriş akışı biçimi parçalanmış MP4 (Kesintisiz Akış). Yalnızca desteklenen çıkış biçimi de Kesintisiz Akış. |
 
-## <a name="considerations"></a><a id="considerations"></a>Önemli noktalar
+## <a name="considerations"></a><a id="considerations"></a>Dikkat edilmesi gerekenler
 Bir kanala çoklu bit hızında akış göndermek için şirket içi bir Live Encoder kullandığınızda aşağıdaki kısıtlamalar uygulanır:
 
 * Alma noktalarına veri göndermek için yeterli boş Internet bağlantısına sahip olduğunuzdan emin olun.

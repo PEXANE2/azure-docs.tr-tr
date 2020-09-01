@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925354"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269582"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -26,13 +26,13 @@ Bir kullanıcıya benzer bir şekilde, bir cihaz korumak istediğiniz başka bir
 - Hibrit Azure AD'ye katılım
 - Azure AD kaydı
 
-Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği sayesinde bulut ve şirket içi kaynaklarınız genelinde kullanıcılarınızın üretkenliğini en üst düzeye çıkarırsınız. Aynı zamanda bulut ve şirket içi kaynaklarınız için [koşullu erişimle](../active-directory-conditional-access-azure-portal.md)erişimi güvenli hale getirebilirsiniz.
+Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği sayesinde bulut ve şirket içi kaynaklarınız genelinde kullanıcılarınızın üretkenliğini en üst düzeye çıkarırsınız. Aynı zamanda bulut ve şirket içi kaynaklarınız için [koşullu erişimle](../conditional-access/overview.md)erişimi güvenli hale getirebilirsiniz.
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
+Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](./overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
 > [!NOTE]
 > Windows 10 karma Azure AD JOIN için gereken en düşük etki alanı denetleyicisi sürümü Windows Server 2008 R2 'dir.
@@ -100,7 +100,7 @@ Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azu
 > Windows 10 yerel olarak Azure AD kayıtlı durumunu otomatik olarak kaldırsa da, Intune tarafından yönetiliyorsa Azure AD 'deki cihaz nesnesi hemen silinmez. Dsregcmd/Status ' i çalıştırarak Azure AD kayıtlı durumunun kaldırılmasını doğrulayabilir ve bu cihazı, Azure AD 'ye göre kayıtlı değil olarak kabul edebilirsiniz.
 
 ### <a name="additional-considerations"></a>Diğer konular
-- Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](./howto-device-identity-virtual-desktop-infrastructure.md).
 
 - Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. 
 
@@ -118,19 +118,19 @@ Karma Azure AD katılımı, UPN 'nin yönlendirilebilir veya yönlendirilemeyen 
 
 ### <a name="managed-environment"></a>Yönetilen ortam
 
-Yönetilen bir ortam, [kesintisiz çoklu oturum açma](/azure/active-directory/hybrid/how-to-connect-sso)Ile [Parola karması eşitlemesi (PHS)](/azure/active-directory/hybrid/whatis-phs) veya [doğrudan kimlik doğrulama (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) aracılığıyla dağıtılabilir.
+Yönetilen bir ortam, [kesintisiz çoklu oturum açma](../hybrid/how-to-connect-sso.md)Ile [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) veya [doğrudan kimlik doğrulama (PTA)](../hybrid/how-to-connect-pta.md) aracılığıyla dağıtılabilir.
 
 Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
 > [!NOTE]
-> [Hazırlanan dağıtım kullanılarak bulut kimlik doğrulaması](/azure/active-directory/hybrid/how-to-connect-staged-rollout) yalnızca Windows 10 1903 güncelleştirmesi ile desteklenir
+> [Hazırlanan dağıtım kullanılarak bulut kimlik doğrulaması](../hybrid/how-to-connect-staged-rollout.md) yalnızca Windows 10 1903 güncelleştirmesi ile desteklenir
 
 ### <a name="federated-environment"></a>Federasyon ortamı
 
 Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağlayıcısı olmalıdır. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan bir Federasyon ortamınız varsa, aşağıdaki gereksinimler zaten desteklenmektedir.
 
 - **Wiaormultiauthn talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
-- **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir. AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/windowstransport`  
+- **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir. AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -152,9 +152,9 @@ Kimlik altyapınızla eşleşen senaryoya bağlı olarak, bkz:
 
 ## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>Karma Azure AD katılımı için şirket içi AD kullanıcıları UPN desteğini gözden geçirin
 
-Bazen, şirket içi AD kullanıcılarınızın UPN 'leri Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](/azure/security/fundamentals/choose-ad-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
+Bazen, şirket içi AD kullanıcılarınızın UPN 'leri Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](../hybrid/choose-ad-authn.md), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
 
-- Yönlendirilebilir kullanıcılar UPN: yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](/azure/active-directory/fundamentals/add-custom-domain) birincil etki alanıdır.
+- Yönlendirilebilir kullanıcılar UPN: yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](../fundamentals/add-custom-domain.md) birincil etki alanıdır.
 - Yönlendirilemeyen kullanıcılar UPN: yönlendirilemeyen bir UPN 'de doğrulanmış bir etki alanı yok. Yalnızca kuruluşunuzun özel ağı dahilinde geçerlidir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso. Local şirket içi AD 'deki birincil etki alanıdır, ancak internet 'te doğrulanabilir bir etki alanı değildir ve yalnızca contoso ağı içinde kullanılır.
 
 > [!NOTE]

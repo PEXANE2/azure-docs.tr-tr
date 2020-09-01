@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313215"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272163"
 ---
-İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, modülleri izlemek veya sorunlarını gidermek için Docker komutlarının bir alt kümesi kullanılabilir. Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `dkrdbe` işlevini kullanın.
+İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
+
+- `iotedge`Komutları kullanma. Bu komutlar, cihazınız için temel işlemler için kullanılabilir.
+- `dkrdbe`Komutları kullanma. Bu komutlar, cihazınız için kapsamlı bir işlem kümesi için kullanılabilir.
+
+Yukarıdaki komut kümesinden birini yürütmek için [PowerShell arabirimine bağlanmanız](#connect-to-the-powershell-interface)gerekir.
+
+### <a name="use-iotedge-commands"></a>`iotedge`Komutları kullanma
+
+Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `iotedge` işlevini kullanın.
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
+
+|command  |Açıklama |
+|---------|---------|
+|`check`     | Ortak yapılandırma ve bağlantı sorunları için otomatikleştirilmiş denetimleri gerçekleştirme       |
+|`list`     | Modülleri listeleme         |
+|`logs`     | Modülün günlüklerini getirme        |
+|`restart`     | Modülü durdurma ve yeniden başlatma         |
+
+
+### <a name="use-dkrdbe-commands"></a>`dkrdbe`Komutları kullanma
+
+Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `dkrdbe` işlevini kullanın.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -39,7 +74,7 @@ Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması 
 
 |command  |Açıklama |
 |---------|---------|
-|`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunu kullanın:`dkrdbe image prune -a -f`       |
+|`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunu kullanın: `dkrdbe image prune -a -f`       |
 |`images`     | Resimleri Listele         |
 |`inspect`     | Docker nesnelerinde alt düzey bilgileri döndür         |
 |`login`     | Docker kayıt defterinde oturum açma         |
@@ -89,14 +124,14 @@ Tüm kapsayıcıların (duraklatılmış olanlar dahil) listesini almak için `p
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-Kapsayıcı görüntüsünü oluştururken veya görüntüyü çekirken bir hata oluşursa, öğesini çalıştırın `logs edgeAgent` .  `EdgeAgent`, diğer kapsayıcıları sağlamaktan sorumlu IoT Edge çalışma zamanı kapsayıcısıdır.
+Kapsayıcı görüntüsünü oluştururken veya görüntüyü çekirken bir hata oluşursa, öğesini çalıştırın `logs edgeAgent` .  `EdgeAgent` , diğer kapsayıcıları sağlamaktan sorumlu IoT Edge çalışma zamanı kapsayıcısıdır.
 
 `logs edgeAgent`Tüm günlüklerin dökümünü yaptığından, son hataları görmenin iyi bir yolu, seçeneğini kullanmaktır `--tail 20` .
 
@@ -127,10 +162,10 @@ Belirli bir kapsayıcıya ait günlükleri almak için, önce kapsayıcıyı lis
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. İçin günlüklere ihtiyacınız olan kapsayıcının kapsayıcı KIMLIĞINI bir yere getirin.

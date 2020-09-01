@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Azure Media Services yönelik terminoloji ve kavramlar hakkında bilgi edinin.
 services: media-servicesgit
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/18/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5f0436394d6d45e8a8e112cc59bc7be50356ce10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092108"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269718"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu konu, Azure Media Services terminoloji ve kavramlar hakkında kısa bir genel bakış sunar. Makalede ayrıca Media Services v3 kavramları ve işlevselliği hakkında derinlemesine bir açıklama içeren makalelere bağlantılar da sağlanmaktadır.
 
@@ -34,7 +36,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 terminolojisi
 
-|Terim|Açıklama|
+|Süre|Açıklama|
 |---|---|
 |Canlı etkinlik|**Canlı bir olay** , video, ses ve gerçek zamanlı meta verilerin canlı akışını geri almak, kodlamak (isteğe bağlı olarak) ve paketlenmesi için bir işlem hattı temsil eder.<br/><br/>Media Services V2 API 'Lerinden geçiş yapmak için **canlı olay** , v2 'deki **Kanal** varlığının yerini alır. Daha fazla bilgi için bkz. [v2 'den v3 'e geçiş](migrate-from-v2-to-v3.md).|
 |Akış uç noktası/paketleme/kaynak|**Akış uç noktası** , canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve Origin hizmetini temsil eder. Ortak akış medya protokollerinden birini (HLS veya DASH) kullanır. Ayrıca, **akış uç noktası** , sektör lideri dijital hak yönetimi sistemleri (drms) için dinamik (tam zamanında) şifreleme sağlar.<br/><br/>Medya akışı sektöründe bu hizmet genellikle bir **Paketleyici** veya **kaynak**olarak adlandırılır.  Sektörün bu özellik için diğer yaygın terimleri, JıOP (tam zamanında Paketleyici) veya JıITE (tam zamanında şifreleme) içerir.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252789"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269565"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma
 
@@ -31,18 +31,18 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 
 | Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Korunmalıdır | Yalıtılmış |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Azure AD 'de Kullanıcı | Evet | Evet | Evet | Evet | Evet | Evet |
-| Intune tarafından yönetilen | Evet | Evet | Evet | Evet | Evet | Evet |
-| Cihaz-Azure AD kayıtlı | Evet |  |  |  |  | |   |
-| Cihaz-Azure AD 'ye katılmış |   | Evet | Evet | Evet | Evet | Evet |
-| Intune güvenlik temeli uygulandı |   | Evet <br> Leştirilmiş | Evet <br> (HighSecurity) | Evet <br> (NCSC) | Evet <br> Korunmalıdır | NA |
-| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Evet | Evet | Evet | Evet | Evet |
-| Microsoft Defender ATP etkin |   | Evet  | Evet | Evet | Evet | Evet |
-| Yönetici haklarının kaldırılması |   |   | Evet  | Evet | Evet | Evet |
-| Microsoft Autopilot kullanarak dağıtım |   |   | Evet  | Evet | Evet | Evet |
-| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Evet | Evet |Evet |
-| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Evet | Evet |Evet |
-| Internet engellendi (gelen/giden) |   |   |   |  |  |Evet |
+| Azure AD 'de Kullanıcı | Yes | Yes | Yes | Yes | Yes | Yes |
+| Intune tarafından yönetilen | Yes | Yes | Yes | Yes | Yes | Yes |
+| Cihaz-Azure AD kayıtlı | Yes |  |  |  |  | |   |
+| Cihaz-Azure AD 'ye katılmış |   | Yes | Yes | Yes | Yes | Yes |
+| Intune güvenlik temeli uygulandı |   | Yes <br> Leştirilmiş | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Korunmalıdır | NA |
+| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Yes | Yes | Yes | Yes | Yes |
+| Microsoft Defender ATP etkin |   | Yes  | Yes | Yes | Yes | Yes |
+| Yönetici haklarının kaldırılması |   |   | Yes  | Yes | Yes | Yes |
+| Microsoft Autopilot kullanarak dağıtım |   |   | Yes  | Yes | Yes | Yes |
+| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Yes | Yes |Yes |
+| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Yes | Yes |Yes |
+| Internet engellendi (gelen/giden) |   |   |   |  |  |Yes |
 
 > [!NOTE]
 > Güvenli iş istasyonu Kılavuzu **cihazlarında** profiller ve ilkeler atanır. Kullanıcılara doğrudan ilke uygulanmayacak, cihaz paylaşımının (paylaşılan cihazlar) etkin olmasını sağlar. Güvenli bir iş istasyonu dağıtımınızda paylaşılmadığı veya ayrı kullanıcı ilkeleri gerekliyse, Kullanıcı ilkesi profillerinin atanması Kullanıcı ve cihaza atanabilir. 
@@ -71,7 +71,7 @@ En azından yöneticileriniz için çok faktörlü kimlik doğrulaması gerektir
    * **Kullanıcı adı** - `secure-ws-admin@identityitpro.com`
    * **Dizin rolü**  -  **Sınırlı yönetici** ve **Intune yönetici** rolünü seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Sonra iki grup oluşturursunuz: iş istasyonu kullanıcıları ve iş istasyonu cihazları.
 
@@ -84,16 +84,16 @@ Azure Portal **Azure Active Directory**  >  **gruplar**  >  **Yeni Grup**' a gid
    * **Grup adı** -güvenli Iş istasyonu kullanıcıları
    * **Üyelik türü** -atandı
 
-1. Güvenli iş istasyonu yönetici kullanıcısını ekleyin:`secure-ws-admin@identityitpro.com`
+1. Güvenli iş istasyonu yönetici kullanıcısını ekleyin: `secure-ws-admin@identityitpro.com`
 1. Güvenli iş istasyonlarını yönetmek için diğer kullanıcıları ekleyebilirsiniz.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. İş istasyonu cihazları grubu için şunu girin:
 
    * **Grup türü** -güvenlik
    * **Grup adı** -güvenli iş istasyonları
    * **Üyelik türü** -atandı
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD cihaz yapılandırması
 
@@ -101,23 +101,23 @@ Azure Portal **Azure Active Directory**  >  **gruplar**  >  **Yeni Grup**' a gid
 
 Yönetim güvenlik grubunuzun cihazları etki alanınıza katılmasına izin vermek için Active Directory cihaz ayarınızı yapılandırın. Bu ayarı Azure portal yapılandırmak için:
 
-1. **Azure Active Directory**  >  **cihazlar**  >  **cihaz ayarları**' na gidin.
+1. **Azure Active Directory** > **Cihazlar** > **Cihaz ayarları**’na gidin.
 1. **Kullanıcılar cihazları Azure AD 'ye katabilir**ve ardından "güvenli Iş istasyonu kullanıcıları" grubunu seçerek **Seçili** ' ı seçin.
 
 #### <a name="removal-of-local-admin-rights"></a>Yerel yönetici haklarının kaldırılması
 
 Bu yöntem VIP, DevOps ve güvenli düzey iş istasyonlarının kullanıcılarının makinelerinde yönetici haklarına sahip olmasını gerektirir. Bu ayarı Azure portal yapılandırmak için:
 
-1. **Azure Active Directory**  >  **cihazlar**  >  **cihaz ayarları**' na gidin.
+1. **Azure Active Directory** > **Cihazlar** > **Cihaz ayarları**’na gidin.
 1. **Azure AD 'ye katılmış cihazlarda ek yerel Yöneticiler**altında **hiçbiri** ' ni seçin.
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>Cihazlara katılması için çok faktörlü kimlik doğrulaması gerektir
 
 Cihazları Azure AD 'ye katma işlemini daha da güçlendirin:
 
-1. **Azure Active Directory**  >  **cihazlar**  >  **cihaz ayarları**' na gidin.
+1. **Azure Active Directory** > **Cihazlar** > **Cihaz ayarları**’na gidin.
 1. **Cihazlara katmak Için Multi-Factor auth iste**altında **Evet** ' i seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="configure-mobile-device-management"></a>Mobil cihaz yönetimini yapılandırma
 
@@ -125,7 +125,7 @@ Azure portal:
 
 1. **Azure Active Directory**  >  **Mobility (MDM ve MAM)**  >  **Microsoft Intune**gidin.
 1. **MDM Kullanıcı kapsamı** ayarını **Tümü**olarak değiştirin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bu adımlar, Intune ile herhangi bir cihazı yönetmenizi sağlar. Daha fazla bilgi için bkz. [Intune hızlı başlangıç: Windows 10 cihazları için otomatik kayıt ayarlama](/Intune/quickstart-setup-auto-enrollment). Intune yapılandırma ve uyumluluk ilkelerini gelecekteki bir adımda oluşturursunuz.
 
@@ -200,7 +200,7 @@ Azure portalında:
    * Yeniden başlatma için yeniden başlatma anımsatıcısı (gün)- **3**
    * Bekleyen yeniden başlatmalar için son tarihi ayarla (gün)- **3**
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. **Atamalar** sekmesinde, **güvenli iş istasyonları** grubunu ekleyin.
 
 Windows Update ilkeleri hakkında daha fazla bilgi için bkz. [Ilke CSP-güncelleştirme](/windows/client-management/mdm/policy-csp-update).
@@ -221,7 +221,7 @@ Windows Defender ATP ve Intune tümleştirmesini yapılandırmak için Azure por
 
 1. Bir bağlantı kurulduktan sonra Intune 'a dönün ve en üstte **Yenile** ' yi seçin.
 1. **10.0.15063 ve üstü sürümü Windows cihazları Windows Defender ATP bağlayıcısına bağla** ayarını **Açık** olarak ayarlayın.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Daha fazla bilgi için bkz. [Windows Defender Gelişmiş tehdit koruması](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
@@ -231,14 +231,14 @@ Daha fazla bilgi için bkz. [Windows Defender Gelişmiş tehdit koruması](/Wind
 
 | Profil | İndirme konumu | Kısaltın |
 | --- | --- | --- |
-| Düşük güvenlik | YOK | YOK |
+| Düşük güvenlik | Yok | Yok |
 | Gelişmiş güvenlik | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Yüksek güvenlik | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Özelleştirilmiş | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline.ps1 |
 | Özelleştirilmiş uyumluluk * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
 | Korunmalıdır | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
-\*Özelleştirilmiş uyumluluk, NCSC Windows10 SecurityBaseline içinde sunulan özelleştirilmiş yapılandırmayı zorlayan bir betiktir.
+\* Özelleştirilmiş uyumluluk, NCSC Windows10 SecurityBaseline içinde sunulan özelleştirilmiş yapılandırmayı zorlayan bir betiktir.
 
 Betik başarıyla yürütüldükten sonra, Intune 'da profiller ve ilkeler için güncelleştirmeler yapabilirsiniz. Gelişmiş ve güvenli profiller için betikler, sizin için ilkeler ve profiller oluşturur, ancak ilkeyi **güvenli Iş istasyonları** cihaz grubunuza atamanız gerekir.
 
@@ -291,7 +291,7 @@ Bazı durumlarda, Google Chrome tarayıcısı gibi uygulamalar, güvenli iş ist
 1. **Uygulama türü**' nün altında **iş kolu**' yi seçin.
 1. **Uygulama paketi dosyası**altında `GoogleChromeStandaloneEnterprise64.msi` ayıklanan konumdan dosyayı seçin ve **Tamam**' ı seçin.
 1. **Uygulama bilgileri**altında bir açıklama ve yayımcı sağlayın. **Tamam**’ı seçin.
-1. **Ekle**'yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. **Atamalar** sekmesinde, **atama türü**altında **Kayıtlı cihazlar için kullanılabilir** ' ı seçin.
 1. **Dahil edilen gruplar**' ın altında, **güvenli iş istasyonları** grubunu ekleyin.
 1. **Tamam**' ı ve ardından **Kaydet**' i seçin.
@@ -342,10 +342,10 @@ Microsoft komut dosyası merkezi 'ndeki [SetDesktopBackground.ps1](https://galle
 1. **Yapılandır**'ı seçin.
    1. **Bu betiği, oturum açmış kimlik bilgilerini Evet olarak kullanarak Çalıştır '** a ayarlayın. **Yes**
    1. **Tamam**’ı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. **Atamaları**seçin  >  **grupları**seçin.
    1. Güvenlik grubu **güvenli Iş istasyonlarını**ekleyin.
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
 
 ## <a name="enroll-and-validate-your-first-device"></a>İlk cihazınızı kaydetme ve doğrulama
 
@@ -393,7 +393,7 @@ Sentinel izleme, Azure AD gibi veri kaynaklarınıza yönelik bağlayıcıların
    * **Kaynak grubu** - **Tamam** > "yeni oluştur * * > Secure Workstation RG ' i seçin
    * **Konum** -dağıtımınız için coğrafi olarak en uygun konumu seçin
    * **Fiyat katmanı** - **GB başına seçim (2018)**
-1. **Tamam ' ı**seçin.
+1. **Tamam**'ı seçin.
 
 Daha sonra, kullanılabilir güvenli iş istasyonu veri kaynaklarını izlemeye bağlayacağız.
 
@@ -429,10 +429,10 @@ MMA aracısını Intune PowerShell betiği ile dağıtma
 1. **Yapılandır**'ı seçin.
    1. **Bu betiği, oturum açmış kimlik bilgilerini Evet olarak kullanarak Çalıştır '** a ayarlayın. **Yes**
    1. **Tamam**’ı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. **Atamaları**seçin  >  **grupları**seçin.
    1. Güvenlik grubu **güvenli Iş istasyonlarını**ekleyin.
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
 
 Sonra yeni günlükleri almak için Log Analytics ayarlamanız gerekir
 1. **Azure Portal**, **Log Analytics çalışma alanına** gidin > ' güvenli iş Istasyonu izleme ' öğesini seçin
@@ -443,15 +443,15 @@ Sonra yeni günlükleri almak için Log Analytics ayarlamanız gerekir
    * ' Microsoft-Windows-AppLocker/MSI ve Script ' > **bilgi** seçimini kaldırın
    * ' Microsoft-Windows-AppLocker/paketlenmiş uygulama-dağıtım ' > **bilgi** seçimini kaldırın
    * ' Microsoft-Windows-AppLocker/paketlenmiş uygulama-yürütme ' > **bilgi** seçimini kaldırın
-1. **Kaydet**'i seçin
+1. **Kaydet**’i seçin
 
 Uygulama günlüğü, seçtiğiniz Log Analytics çalışma alanında kullanılabilir.
 
 ## <a name="monitoring"></a>İzleme
 
-* [Azure Sentinel ile tehditleri algılamayı](/azure/sentinel/tutorial-detect-threats) öğrenin
-* [Azure Sentinel ile olayları araştırın](/azure/sentinel/tutorial-investigate-cases)
-* [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](/azure/sentinel/tutorial-respond-threats-playbook)
+* [Azure Sentinel ile tehditleri algılamayı](../../sentinel/tutorial-detect-threats-built-in.md) öğrenin
+* [Azure Sentinel ile olayları araştırın](../../sentinel/tutorial-investigate-cases.md)
+* [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](../../sentinel/tutorial-respond-threats-playbook.md)
 * [Pozlama puanınızı](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) nasıl gözden geçibileceğinizi anlayın
 * [Güvenlik önerisini](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) gözden geçirme
 * [Güvenlik düzeltmelerinin](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) yönetimi
@@ -463,4 +463,4 @@ Uygulama günlüğü, seçtiğiniz Log Analytics çalışma alanında kullanıla
 * [Microsoft Intune](/intune/index)hakkında daha fazla bilgi edinin.
 * [Azure AD](../index.yml)'yi anlayın.
 * [Microsoft Defender Gelişmiş tehdit koruması](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) ile çalışma
-* [Azure Sentinel](/azure/sentinel/) 'i bulma
+* [Azure Sentinel](../../sentinel/index.yml) 'i bulma

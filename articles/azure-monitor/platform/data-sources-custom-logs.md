@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112009"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269497"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure İzleyici'deki özel günlükler
 
@@ -74,7 +74,7 @@ Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalı
 
 Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenlerin örnekleri verilmiştir.
 
-| Description | Yol |
+| Açıklama | Yol |
 |:--- |:--- |
 | *C:\logs* içindeki tüm dosyalar Windows aracısında. txt uzantısıyla |C:\Logs \\ \* . txt |
 | *C:\logs* içindeki tüm dosyalar, Windows aracısında log ve. txt uzantısıyla başlayan bir ada sahip. |C:\Logs\log \* . txt |
@@ -85,7 +85,7 @@ Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenl
 2. Yolu yazın ve **+** düğmesine tıklayın.
 3. İşlemi ek yollar için yineleyin.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. Adım. Günlük için bir ad ve açıklama girin
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. Adım: Günlük için bir ad ve açıklama girin
 Belirttiğiniz ad, yukarıda açıklandığı gibi, günlük türü için kullanılacaktır.  Bu, özel bir günlük olarak tanımlamak için _CL her zaman sona acaktır.
 
 1. Günlük için bir ad yazın.  ** \_ CL** son eki otomatik olarak sağlanır.
@@ -158,7 +158,7 @@ Toplanan günlükteki tüm kayıtları döndürmek için *MyApp_CL* basit bir so
 
 
 ## <a name="alternatives-to-custom-logs"></a>Özel günlüklerin alternatifleri
-Verileriniz hakkında listelenen ölçütlere uyan özel Günlükler yararlı olmakla kalmaz, ancak aşağıdaki gibi başka bir stratejinin olması gereken durumlar vardır:
+Verileriniz yukarıda listelenen ölçütlere sığıyorsa özel Günlükler yararlı olsa da, aşağıdaki gibi başka bir stratejinin olması gereken durumlar vardır:
 
 - Veriler, zaman damgasının farklı biçimde olması gibi gerekli yapıya uymuyor.
 - Günlük dosyası, dosya kodlama veya desteklenmeyen bir klasör yapısı gibi gereksinimlere uymuyor.

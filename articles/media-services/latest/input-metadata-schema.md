@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 giriş meta verileri şeması
 description: Bu makale, Azure Media Services v3 giriş meta verisi şemasına genel bir bakış sunar.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269157"
 ---
-# <a name="input-metadata"></a>Giriş meta verileri 
+# <a name="input-metadata"></a>Giriş meta verileri
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş varlığı (veya varlıkları) ile ilişkilendirilir.  Bir görevi tamamladıktan sonra bir çıkış varlığı üretilir. Çıktı varlığı video, ses, küçük resim, bildirim ve diğer dosyaları içerir. 
 
@@ -41,17 +43,17 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 > 
 > 
 
-| Name  | Açıklama |
+| Ad  | Açıklama |
 | --- | --- | 
 | **Videoizler**|Her fiziksel varlık dosyası sıfır veya daha fazla video, araya eklemeli bir şekilde uygun bir kapsayıcı biçimine sahip olabilir. Daha fazla bilgi için bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel varlık dosyası, uygun bir kapsayıcı biçiminde araya eklemeli sıfır veya daha fazla ses parçası içerebilir. Daha fazla bilgi için bkz. [ses izleri](#audiotracks) |
-| **Meta veri**  |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. <br />Örneğin, `<Metadata key="language" value="eng" />` |
+| **Meta Veriler**  |Varlık dosyasının meta verileri key\value dizeleri olarak temsil edilir. <br />Örnek: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Diğer alt öğeler
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
-| **Adı**<br />Gerekli |Varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short.mp4"` |
+| **Ad**<br />Gerekli |Varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short.mp4"` |
 | **Kullanılmamışsa**<br />Gerekli |Giriş varlığının bulunduğu URL. Çıkış varlığının ait olduğu giriş varlığını belirlemek için, `Uri` kimlik yerine alanını kullanın.|
 | **Boyut**<br />Gerekli |Varlık dosyasının bayt cinsinden boyutu.  <br /><br />Örnek: `"Size": 75739259`|
 | **Süre**<br />Gerekli |İçerik kayıttan yürütme süresi. <br /><br />Örnek: `"Duration": "PT1M10.304S"`. |
@@ -63,13 +65,13 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ## <a name="videotracks"></a>Videoizler
 
-| Name |  | Açıklama |
+| Ad |  | Açıklama |
 | --- | --- |
 | **FourCC**<br />Gerekli |FFmpeg tarafından raporlanan video codec FourCC kodu.<br /><br />Örnek: `"FourCC": "avc1"` |
 | **Profil** |Video izleme profili. <br /><br />Örnek: `"Profile": "Main"`|
 | **Düzeyde** |Video izlemenin düzeyi. <br /><br />Örnek: `"Level": "3.2"`|
 | **PixelFormat 'a dönüştürme** |Video izlemenin piksel biçimi. <br /><br />Örnek: `"PixelFormat": "yuv420p"`|
-| **Genişlik**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği. <br /><br />Örnek: `"Width": "1280"`|
+| **Width**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği. <br /><br />Örnek: `"Width": "1280"`|
 | **Height**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.<br /><br />Örnek: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Gerekli |Video görüntüleme en boy oranı payı.<br /><br />Örnek: `"DisplayAspectRatioNumerator": 16.0` |
 | **Displayaspectratiopayda**<br />Gerekli |Video görüntüleme en boy oranı paydası. <br /><br />Örnek: `"DisplayAspectRatioDenominator": 9.0`|
@@ -78,7 +80,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **Kare hızı değerini**<br />Gerekli |.3F biçiminde ölçülen video kare hızı. <br /><br />Örnek: `"FrameRate": 29.970`|
 | **Bit hızı** |Varlık dosyasından hesaplanan bit/saniye cinsinden ortalama video bit hızı. Yalnızca öğesel akış yükü sayılır ve paketleme ek yükü dahil değildir. <br /><br />Örnek: `"Bitrate": 8421583`|
 | **HasBFrames** |Video parça sayısı B kare. <br /><br />Örnek: `"HasBFrames": 2`|
-| **Meta veri** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. <br />Makalenin sonundaki tam örneğe bakın. |
+| **Meta Veriler** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri. <br />Makalenin sonundaki tam örneğe bakın. |
 | **Numarasını**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 2`|
 | **Bileşeni** |Video izleme codec bileşeni dizesi. <br /><br />Örnek: `"Codec": "h264"`|
 | **CodecLongName** |Ses veya video izleme codec bileşeni uzun adı. <br /><br />Örnek: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
@@ -90,14 +92,14 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ## <a name="audiotracks"></a>Ses Izleri
 
-| Name  | Açıklama |
+| Ad  | Açıklama |
 | --- | --- | 
 | **SampleFormat** |Örnek biçim. <br /><br />Örnek: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Kanal düzeni. <br /><br />Örnek: `"ChannelLayout": "stereo"`|
 | **Kanallar**<br />Gerekli |Ses kanalı sayısı (0 veya daha fazla). <br /><br />Örnek: `"Channels": 2`|
 | **SamplingRate**<br />Gerekli |Örnek/sn veya Hz 'teki ses örnekleme oranı. <br /><br />Örnek: `"SamplingRate": 48000`|
 | **Bit hızı** |Varlık dosyasından hesaplanan bit/saniye cinsinden ortalama ses bit hızı. Yalnızca öğesel akış yükü sayılır ve paketleme ek yükü bu sayıma dahil değildir. <br /><br />Örnek: `"Bitrate": 192080`|
-| **Meta veri** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri.  <br />Makalenin sonundaki tam örneğe bakın. |
+| **Meta Veriler** |Çeşitli bilgileri tutmak için kullanılabilen genel anahtar/değer dizeleri.  <br />Makalenin sonundaki tam örneğe bakın. |
 | **Numarasını**<br />Gerekli |Bu sesin veya video izlemenin sıfır tabanlı dizini.<br /><br /> Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. <br /><br />Örnek: `"Id": 1`|
 | **Bileşeni** |Video izleme codec bileşeni dizesi. <br /><br />Örnek: `"Codec": "aac"`|
 | **CodecLongName** |Ses veya video izleme codec bileşeni uzun adı. <br /><br />Örnek: `"CodecLongName": "AAC (Advanced Audio Coding)"`|
@@ -106,9 +108,9 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 | **StartTime** |Başlangıç saatini izleyin. Daha fazla bilgi için bkz. [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html). <br /><br />Örnek: `"StartTime": "PT0S"` |
 | **Süre** |Süreyi izleyin. <br /><br />Örnek: `"Duration": "PT1M10.272S"` |
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | --- | --- |
 | **anahtar**<br />Gerekli |Anahtar/değer çiftindeki anahtar. |
 | **deeri**<br /> Gerekli |Anahtar/değer çiftindeki değer. |

@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065486"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269599"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı  
+# <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Media Services sürümünü seçin:"]
 > * [Sürüm 3](../latest/offline-widevine-for-android.md)
@@ -71,7 +73,7 @@ Media Services bir varlığın Widevine korumasını yapılandırdığınızda, 
 
 Widevine lisansları için **çevrimdışı** modu etkinleştirmek üzere [Widevine lisans şablonu](media-services-widevine-license-template-overview.md)' nu yapılandırmanız gerekir. **Policy_overrides** nesnesinde, **can_persist** özelliğini **true** olarak ayarlayın (varsayılan değer false). 
 
-Aşağıdaki kod örneği, Widevine lisansları için **çevrimdışı** modu etkinleştirmek üzere .net kullanır. Kod, [.net örneği Ile PlayReady ve/veya Widevine dinamik Common Encryption kullanımı](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) temel alır. 
+Aşağıdaki kod örneği, Widevine lisansları için **çevrimdışı** modu etkinleştirmek üzere .net kullanır. Kod, [ .net örneği Ile PlayReady ve/veya Widevine dinamik Common Encryption kullanımı](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) temel alır. 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -131,7 +133,7 @@ Geliştiriciler, bir uygulamanın geliştirilmesi sırasında [Exoplayer gelişt
 
 Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](media-services-widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds**ve **license_duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
 
-Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve https://github.com/google/ExoPlayer/issues/3112 . <br/>Değerleri açıkça ayarlamazsanız, **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
+Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve https://github.com/google/ExoPlayer/issues/3112 . <br/>Değerleri açıkça ayarlamazsanız,  **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
 
 Android 5,0, ARMv8 ([GELIŞMIŞ RISC makinesi](https://en.wikipedia.org/wiki/ARM_architecture)) ve 64-bit platformlarını tamamen destekleyecek şekilde tasarlanan ilk Android sürümü olduğundan, Android 5,0 Lollipop veya sonrasında bu sorun oluşmaz, çünkü Android 4,4 KitKat ilk olarak diğer eski Android sürümleriyle aynı şekilde ARMv7 ve 32 bit platformları desteklemek üzere tasarlanmıştır.
 
@@ -157,7 +159,7 @@ Mobil Chrome tarayıcınızı bir Android telefonunda V62 (veya üzeri) sürüm�
 
 Yukarıdaki açık kaynaklı PWA uygulaması Node.js yazılır. Bir Ubuntu sunucusunda kendi sürümünüzü barındırmak istiyorsanız, kayıttan yürütmeyi engelleyebilecek aşağıdaki yaygın sorunları göz önünde bulundurun:
 
-1. CORS sorunu: örnek uygulamadaki örnek video içinde barındırılır https://storage.googleapis.com/biograf-video-files/videos/ . Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi `https://biograf-155113.appspot.com` (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere erişimi ENGELLEDIĞI CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS sorunu: örnek uygulamadaki örnek video içinde barındırılır https://storage.googleapis.com/biograf-video-files/videos/ . Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi `https://biograf-155113.appspot.com` (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere erişimi ENGELLEDIĞI CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Sertifika sorunu: Chrome v 58 ' den başlayarak Widevine için EME, HTTPS gerektirir. Bu nedenle, örnek uygulamayı bir x509 sertifikasıyla HTTPS üzerinden barındırmanıza gerek duyarsınız. Aşağıdaki gereksinimler nedeniyle olağan bir test sertifikası çalışmıyor: aşağıdaki minimum gereksinimleri karşılayan bir sertifika edinmeniz gerekir:
     - Chrome ve Firefox, sertifikada SAN konusu alternatif adı ayarının mevcut olmasını gerektirir
     - Sertifika, güvenilir bir CA 'ya sahip olmalı ve kendinden imzalı bir geliştirme sertifikası çalışmıyor
