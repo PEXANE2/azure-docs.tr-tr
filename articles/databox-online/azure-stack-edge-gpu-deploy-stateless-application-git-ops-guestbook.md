@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Edge cihazında, Arc etkin Kubernetes üzerinde PHP Konuk defteri uygulaması dağıtma | Microsoft Docs
+title: Azure Stack Edge GPU cihazında, Arc etkin Kubernetes üzerinde PHP Konuk defteri uygulaması dağıtma | Microsoft Docs
 description: Azure Stack Edge cihazınızın bir yay özellikli bir Kubernetes kümesinde Gile kullanarak, Redis ile PHP Konuk olmayan bir uygulamanın nasıl dağıtılacağını açıklar.
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087053"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254228"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>Azure Stack Edge 'de Arc etkin Kubernetes kümesi üzerinde Redis ile bir PHP Konuk durum bilgisiz olmayan uygulaması dağıtma
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Azure Stack Edge GPU üzerinde Kubernetes kümesi etkin olan Redis ile PHP Konuk olmayan bir uygulaması dağıtma
 
 Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Bu örnek aşağıdaki bileşenlerden oluşur:
 
@@ -28,7 +28,7 @@ Dağıtım, Azure Stack Edge cihazınızdan yay etkinleştirilmiş Kubernetes k�
 Bu yordam, [Azure Stack Edge cihazında Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme) kavramlarının kavramlarını öğrendiklerine](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)yöneliktir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 

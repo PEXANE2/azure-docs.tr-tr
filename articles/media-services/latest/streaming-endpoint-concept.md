@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Doğrudan bir istemci oynatıcı uygulamasına veya bir Content Delivery Network (CDN) içerik teslim eden bir dinamik paketleme ve akış hizmeti olan akış uç noktaları (Origin) hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.author: inhenkel
+ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446218"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256506"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
@@ -54,7 +54,7 @@ Türler aşağıdaki tabloda açıklanmıştır:
 |Tür|Ölçek birimleri|Açıklama|
 |--------|--------|--------|  
 |**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak Premium türüne değiştirilebilir `scaleUnits` .|
-|**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits`200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
+|**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits` 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
 
 > [!NOTE]
 > Büyük internet kitlelerine içerik teslim etmek isteyen müşteriler için, akış uç noktasında CDN 'yi etkinleştirmenizi öneririz.
@@ -92,8 +92,8 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
 
     Bu hatayı alırsanız veri merkezi tarafından desteklenmez. Başka bir veri merkezini deneyin.
 
-- `cdnProfile`: `cdnEnabled` True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile`CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
-- `cdnProvider`: CDN etkinleştirildiğinde değerleri de geçirebilirsiniz `cdnProvider` . `cdnProvider`hangi sağlayıcının kullanılacağını denetler. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "Standardadkamai". Değer sağlanmazsa ve `cdnEnabled` true ise, "StandardVerizon" kullanılır (varsayılan değer).
+- `cdnProfile`: `cdnEnabled` True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile` CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
+- `cdnProvider`: CDN etkinleştirildiğinde değerleri de geçirebilirsiniz `cdnProvider` . `cdnProvider` hangi sağlayıcının kullanılacağını denetler. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "Standardadkamai". Değer sağlanmazsa ve `cdnEnabled` true ise, "StandardVerizon" kullanılır (varsayılan değer).
 - `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](/previous-versions/azure/azure-services/gg185950(v=azure.100)). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
 - `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda ayarlanabilir `cdnEnabled` : false.
 
@@ -122,7 +122,7 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
 
     Şu anda, Media Services özel etki alanlarıyla TLS 'yi desteklemez.
 
-- `maxCacheAge`-Medya parçalarında ve isteğe bağlı bildirimlerde akış uç noktası tarafından ayarlanan varsayılan en yüksek yaş HTTP önbelleği denetim üstbilgisini geçersiz kılar. Değer saniye cinsinden ayarlanır.
+- `maxCacheAge` -Medya parçalarında ve isteğe bağlı bildirimlerde akış uç noktası tarafından ayarlanan varsayılan en yüksek yaş HTTP önbelleği denetim üstbilgisini geçersiz kılar. Değer saniye cinsinden ayarlanır.
 - `resourceState` -
 
     - Durduruldu: oluşturulduktan sonra akış uç noktasının başlangıç durumu

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efce90225367489c05afb044a5381ae3ec2fdae3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59f60a0167e7ac09b1fdfee87cc8412cdbe19053
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021349"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255979"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API çağrılarını kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -33,12 +33,12 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 - Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
 - Azure VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
-- [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
+- Windows kullanıyorsanız, [Linux Için Windows alt sistemini](/windows/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
+- [Linux Için Windows alt sistemi](/windows/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
 - Azure CLı yerel Konsolu kullanıyorsanız, `az login` sistem veya Kullanıcı tarafından atanan yönetilen kimlikleri yönetmek Istediğiniz Azure aboneliğiyle ilişkili bir hesapla Azure 'da oturum açın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -49,7 +49,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
+Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM'nizin ve onunla ilgili kaynakların kapsaması ve dağıtımı için, [az group create](/cli/azure/group/#az-group-create) komutunu kullanarak bir [kaynak grubu](../../azure-resource-manager/management/overview.md#terminology) oluşturun. Bunun yerine kullanmak istediğiniz bir kaynak grubunuz varsa, bu adımı atlayabilirsiniz:
 
@@ -148,7 +148,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak i
 
 ### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Mevcut bir Azure VM 'de sistem tarafından atanan kimliği etkinleştirme
 
-Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
+Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
@@ -258,7 +258,7 @@ Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliğ
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Azure VM 'den sistem tarafından atanan yönetilen kimliği devre dışı bırakma
 
-Bir VM 'de sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
+Bir VM 'de sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
@@ -303,7 +303,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için b
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında Kullanıcı tarafından atanan yönetilen kimlik atama
 
-Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) ve [yönetilen kimlik işleci](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
@@ -490,7 +490,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Mevcut bir Azure VM 'sine Kullanıcı tarafından atanan bir yönetilen kimlik atama
 
-Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) ve [yönetilen kimlik işleci](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
@@ -660,7 +660,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure VM 'den kaldırma
 
-Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.
+Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ataması gerekir.
 
 1. VM 'nizi sistem tarafından atanan bir yönetilen kimlikle oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79100991d89708570871620b446af1a83783ff12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6756d66f176314ad5abd0c94f7bdf96c42a460a4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007511"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255318"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
@@ -34,7 +34,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * VM'nize Key Vault'ta depolanan gizli diziye erişim verme 
 > * VM'nin kimliğini kullanarak erişim belirteci alma ve Key Vault'tan gizli diziyi almak için bunu kullanma 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -66,7 +66,7 @@ Ardından, Key Vault'a bir gizli dizi ekleyin; böylelikle VM'nizde çalıştır
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM'nin kimliğini kullanarak erişim belirteci alma ve Key Vault'tan gizli diziyi almak için bunu kullanma  
 
-Bu adımları tamamlamak bir SSH istemciniz olmalıdır.Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır.Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
  
 1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın. 
 2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
@@ -110,8 +110,4 @@ Key Vault'tan gizli diziyi aldıktan sonra, bunu kullanarak ad ve parola gerekti
 Bu öğreticide, Azure Key Vault'a erişmek için Linux VM sistem tarafından atanan yönetilen kimlik kullanmayı öğrendiniz.  Azure Key Vault hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
-
-
-
-
+>[Azure Key Vault](../../key-vault/general/overview.md)

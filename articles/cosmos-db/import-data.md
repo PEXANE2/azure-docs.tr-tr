@@ -4,14 +4,14 @@ description: 'Öğretici: MongoDB, SQL Server, tablo depolama, Amazon DynamoDB, 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85118772"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255996"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: verilerinizi Azure Cosmos DB geçirmek için veri geçiş aracını kullanma
 
@@ -40,6 +40,9 @@ Bu makaledeki yönergeleri uygulamadan önce aşağıdaki adımları belirttiği
 * **Aktarım hızını artır:** Veri geçişinizin süresi, tek bir koleksiyon veya koleksiyonlar kümesi için ayarladığınız üretilen iş miktarına bağlıdır. Büyük veri geçişleri için aktarım hızını artırdığınızdan emin olun. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Azure portal aktarım hızını artırma hakkında daha fazla bilgi için, bkz. Azure Cosmos DB [performans düzeyleri](performance-levels.md) ve [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
 * **Azure Cosmos DB kaynaklarını oluşturma:** Veri geçişini başlatmadan önce Azure portaldan tüm koleksiyonlarınızı oluşturun. Veritabanı düzeyinde aktarım hızı olan bir Azure Cosmos DB hesabına geçiş yapmak için, Azure Cosmos kapsayıcıları oluştururken bir bölüm anahtarı sağlayın.
+
+> [!IMPORTANT]
+> Veri geçiş aracının Azure Cosmos hesaplarınıza bağlanırken Aktarım Katmanı Güvenliği (TLS) 1,2 ' i kullandığından emin olmak için, .NET Framework sürüm 4,7 ' yi kullanın veya [Bu makalede](https://docs.microsoft.com/dotnet/framework/network-programming/tls)bulunan yönergeleri izleyin.
 
 ## <a name="overview"></a><a id="Overviewl"></a>Genel Bakış
 

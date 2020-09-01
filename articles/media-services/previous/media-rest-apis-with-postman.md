@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: 21eb3d9862c8fa2b840117d5f0e9fbd0ad2214c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091751"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255520"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services V2 REST API çağrıları için Postman yapılandırma  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services V2 REST API çağrıları için Postman yapılandırma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -29,7 +31,7 @@ Bu öğreticide, Azure Media Services (AMS) REST API 'Lerini çağırmak için k
 
 Bu ortam ve koleksiyon, Azure Media Services REST API 'Leri ile çeşitli görevlerin nasıl elde alınacağını gösteren makalelerde kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - AMS REST öğreticilerinden bazılarında gösterilen REST API'lerini yürütmek için [Postman](https://www.getpostman.com/) REST istemcisini yükleyin. 
 

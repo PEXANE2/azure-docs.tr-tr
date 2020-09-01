@@ -3,23 +3,25 @@ title: Azure Media Services v3 kullanarak uzak dosya ve akış kodlama
 description: Bir URL 'yi temel alan bir dosyayı kodlamak ve REST kullanarak Azure Media Services içeriğinizi akışa almak için bu öğreticideki adımları izleyin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2020
-ms.author: juliako
-ms.openlocfilehash: f12771e55ced3b8783b6c7497b83e6b041c66b75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074474"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256767"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Öğretici: Uzak dosya tabanlı URL kodlama ve video akışı yapma - REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services, medya dosyalarınızı çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlamanızı sağlar. Örneğin, içeriğinizi Apple'ın HLS veya MPEG DASH biçimlerinde akışla göndermek isteyebilirsiniz. Akışla göndermeden önce yüksek kaliteli dijital medya dosyanızı kodlamanız gerekir. Kodlama yönergeleri için bkz. [Kodlama kavramı](encoding-concept.md).
 
@@ -40,7 +42,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 
@@ -213,7 +215,7 @@ Yerleşik bir EncoderNamedPreset ön ayarını veya özel ön ayarları kullanab
         }
         ```
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 Burada [İş](/rest/api/media/jobs), oluşturulan **Dönüşümü** belirli bir video girdisine veya ses içeriğine uygulamak için Media Services'e gönderilen istektir. **İş** giriş videosunun konumu ve çıktının konumu gibi bilgileri belirtir.
 

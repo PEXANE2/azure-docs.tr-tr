@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0309579a674533ebd056c8493b149cc78beef607
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896013"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254092"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Bit hızı merdiveni otomatik olarak oluşturmak için Media Encoder Standard kullanın  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Bit hızı merdiveni otomatik olarak oluşturmak için Media Encoder Standard kullanın
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -174,7 +176,7 @@ Bu bölümde, **uyarlamalı akış** ön ayarıyla kodlama sonucu olarak, mes ta
 ### <a name="example-1"></a>Örnek 1
 "1080" yüksekliğinde ve "29,970" kare hızına sahip kaynak 6 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +188,7 @@ Bu bölümde, **uyarlamalı akış** ön ayarıyla kodlama sonucu olarak, mes ta
 ### <a name="example-2"></a>Örnek 2
 "720" yüksekliğinde ve "23,970" kare hızına sahip kaynak 5 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +199,7 @@ Bu bölümde, **uyarlamalı akış** ön ayarıyla kodlama sonucu olarak, mes ta
 ### <a name="example-3"></a>Örnek 3
 "360" yüksekliğinde ve "29,970" kare hızına sahip kaynak 3 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (Kbps)|
+|Katman|Height|Width|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

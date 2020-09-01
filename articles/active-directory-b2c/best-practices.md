@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484291"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254500"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
 
 Aşağıdaki en iyi yöntemler ve öneriler, Azure Active Directory (Azure AD) B2C 'yi mevcut veya yeni uygulama ortamlarında tümleştirmesinin bazı birincil yönlerini kapsar.
 
-## <a name="fundamentals"></a>Temel Konular
+## <a name="fundamentals"></a>Temel Bilgiler
 
 | En iyi yöntem | Açıklama |
 |--|--|
@@ -44,6 +44,7 @@ Uygulamanızı ve hizmet mimarinizi tanımlayın, geçerli sistemleri envanter y
 | Kullanılabilirlik ve güvenlik karşılaştırması | Çözümünüz, uygulama kullanılabilirliği ve kuruluşunuzun kabul edilebilir risk düzeyi arasındaki doğru dengeyi içermelidir. |
 | Şirket içi bağımlılıkları buluta taşıyın | Dayanıklı bir çözümün sağlanmasına yardımcı olmak için mevcut uygulama bağımlılıklarını buluta taşımayı göz önünde bulundurun. |
 | Mevcut uygulamaları b2clogin.com 'e geçirme | Login.microsoftonline.com 'in kullanımdan kaldırılması, 04 Aralık 2020 ' de tüm Azure AD B2C kiracılar için geçerli olacaktır. [Daha fazla bilgi edinin](b2clogin.md). |
+| Kimlik koruması ve koşullu erişim kullanma | Riskli kimlik doğrulamaları ve erişim ilkeleri üzerinde önemli ölçüde daha fazla denetim için bu özellikleri kullanın. Azure AD B2C Premium P2 gereklidir. [Daha fazla bilgi edinin](conditional-access-identity-protection-overview.md). |
 
 ## <a name="implementation"></a>Uygulama
 
@@ -70,7 +71,7 @@ Azure AD B2C uygulamanızı test edin ve otomatikleştirin.
 | Azaltma |  Kısa bir süre içinde aynı kaynaktan çok fazla istek gönderiliyorsa, trafiği kısıtlar Azure AD B2C. Yük testi sırasında birkaç trafik kaynağı kullanın ve `AADB2C90229` hata kodunu uygulamalarınızda düzgün şekilde işleyin. |
 | Otomasyon | Test ve dağıtımları otomatik hale getirmek için sürekli tümleştirme ve teslim (CI/CD) işlem hatlarını kullanın, örneğin, [Azure DevOps](deploy-custom-policies-devops.md). |
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 Azure AD B2C ortamınızı yönetin.
 

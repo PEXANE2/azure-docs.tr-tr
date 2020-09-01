@@ -1,7 +1,7 @@
 ---
 title: Modelleri izlemeyi ve dağıtımı deneyin
 titleSuffix: Azure Data Science Virtual Machine
-description: Denemeleri ve/veya MLFlow Azure Machine Learning ile DSVM 'deki izleme ve günlüğe kaydetme hakkında bilgi edinin.
+description: Azure Machine Learning ve/veya MLFlow ile Veri Bilimi Sanal Makinesi nasıl izleneceğini ve günlüğe denemeleri öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146904"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254809"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning ' de izleme denemeleri ve modelleri dağıtma
 
@@ -24,7 +24,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
 ![denemeleri izleme](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Bir Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace) sağlamanız gerekir
 
@@ -40,7 +40,7 @@ Azure Machine Learning ve MLFlow SDK Veri Bilimi VM'si önceden yüklenir ve **a
 
 ![Yapılandırma dosyası Al](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-Yapılandırma, çalışma alanı adı, abonelik vb. gibi bilgileri içerir ve bu parametreleri sabit olarak kodistemediğiniz anlamına gelir.
+Yapılandırma, çalışma alanı adı, abonelik vb. gibi bilgileri içerir ve bu parametreleri sabit bir şekilde kodistemediğiniz anlamına gelir.
 
 ## <a name="track-dsvm-runs"></a>DSVM çalıştırmalarını izle
 
@@ -123,19 +123,19 @@ Günlüğe kaydedilen ortalama kare hatası (MSE) görmeniz gerekir:
 
 ![MSE](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-Çalıştırmaya tıkladığınızda diğer ayrıntılar ve ayrıca __çıkışlar + günlüklerde__ bulunan Pickle modeli görüntülenir
+Çalıştırmaya tıkladığınızda, diğer ayrıntıları ve ayrıca __çıkışlar + günlüklerde__ bulunan Pickle modelini görürsünüz.
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>Modeli Azure Machine Learning dağıt
 
-Bu bölümde, bir DSVM üzerinde eğitilen modellerin Azure Machine Learning için nasıl dağıtılacağı ana hatlarıyla anlatılmaktadır.
+Bu bölümde, bir DSVM üzerinde eğitilen modellerin Azure Machine Learning için nasıl dağıtılacağını ana hatlarıyla sunuyoruz.
 
 ### <a name="step-1-create-inference-compute"></a>1. Adım: çıkarım Işlem oluşturma
 
-[AzureML](https://ml.azure.com) için sol taraftaki menüde __işlem__ ' e ve ardından __çıkarım kümeleri__ sekmesine tıklayın. Sonra, aşağıda belirtildiği gibi __+ Yeni__ seçeneğine tıklayın:
+[AzureML](https://ml.azure.com) için sol taraftaki menüde __işlem__ ' e ve ardından __çıkarım kümeleri__ sekmesine tıklayın. Ardından, aşağıda anlatıldığı gibi __+ Yeni__ ' ye tıklayın:
 
 ![Çıkarım Işlem oluşturma](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-__Yeni çıkarım kümesi__ bölmesinde ayrıntıları buraya girin:
+__Yeni çıkarım kümesi__ bölmesindeki Fill details:
 
 * İşlem adı
 * Kubernetes hizmeti-yeni oluştur seçeneğini belirleyin
@@ -151,7 +151,7 @@ Sonra __Oluştur__' a tıklayın.
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>2. Adım: dağıtım No-Code çıkarımı hizmeti
 
-Modeli kodumuza kaydettiğimiz zaman, `register_model` Framework 'ü sköğren olarak belirttik. Azure Machine Learning, aşağıdaki çerçeveler için kod dağıtımı desteklemiyor:
+' Yi kullanarak, bir modeli kodumuza kaydettiğimiz zaman `register_model` , Framework 'ü sköğren olarak belirttik. Azure Machine Learning, aşağıdaki çerçeveler için kod dağıtımı desteklemiyor:
 
 * scikit-learn
 * TensorFlow SaveModel biçimi
@@ -167,7 +167,7 @@ Ardından, model ayrıntıları bölmesindeki __Dağıt__ düğmesine tıklayın
 
 ![Dağıtma](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-Modeli, 1. adımda oluşturduğumuz çıkarım kümesine (Azure Kubernetes hizmeti) dağıtacağız. Hizmet için bir ad ve AKS işlem kümesinin adı (adım 1 ' de oluşturulur) sağlayarak aşağıdaki ayrıntıları girin. Ayrıca __CPU Reserve kapasitesini__ 1 ' e (0,1 ' den) ve __bellek ayırma kapasitesini__ 1 ' e (0,5 ' den) artırmanız önerilir. bunu, __Gelişmiş__ ' e tıklayıp Ayrıntıları doldurarak yapabilirsiniz. Ardından __Dağıt__' a tıklayın.
+Modeli, 1. adımda oluşturduğumuz çıkarım kümesine (Azure Kubernetes hizmeti) dağıtacağız. Hizmet için bir ad ve AKS işlem kümesinin adı (adım 1 ' de oluşturulur) sağlayarak aşağıdaki ayrıntıları girin. Ayrıca __CPU Reserve kapasitesini__ 1 ' e (0,1 ' den) ve __bellek ayırma kapasitesini__ 1 ' e (0,5 ' den) artırmanız önerilir. bu artışı __Gelişmiş__ ' e tıklayıp Ayrıntıları doldurarak yapabilirsiniz. Ardından __Dağıt__' a tıklayın.
 
 ![Dağıtım ayrıntıları](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,9 +177,9 @@ Model başarıyla dağıtıldığında, aşağıdakileri görmeniz gerekir (Bu s
 
 ![Modeli tüketme](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Dağıtım durumunun __sağlıklı__duruma geçme aşamasından __kaynaklandığına__ dikkat etmelisiniz. Bu ayrıntılar bölümünde, bir uygulama geliştiricisinin ML modelinizi uygulamalarıyla tümleştirmeleri için kullanabileceği REST uç noktası ve Swagger URL 'Leri de sağlanmaktadır.
+Dağıtım durumunun __sağlıklı__duruma geçmeyeceğini görmeniz gerekir. __transitioning__ Buna ek olarak, bu ayrıntılar bölümü bir uygulama geliştiricisinin ML modelinizi uygulamalarıyla tümleştirmeleri için kullanabileceği REST uç noktası ve Swagger URL 'Lerini sağlar.
 
-Uç noktayı [Postman](https://www.postman.com/)kullanarak test edebilirsiniz, alternatif olarak, AzureML SDK 'sını kullanabilirsiniz:
+[Postman](https://www.postman.com/)kullanarak uç noktayı test edebilir veya AzureML SDK 'sını kullanabilirsiniz:
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>4. Adım: Temizleme
 
-Adım 1 ' de oluşturduğunuz çıkarım işlemi, devam eden işlem ücretlerine tabi kalmayacak şekilde silmelisiniz. Azure Machine Learning Studio sol taraftaki menüde, Işlem > çıkarım kümelerine tıklayın > işlem > Sil ' i seçin.
+Adım 1 ' de oluşturduğunuz çıkarım işlemi, devam eden işlem ücretlerine tabi kalmayacak şekilde silinir. Azure Machine Learning Studio sol taraftaki menüde, Işlem > çıkarım kümelerine tıklayın > işlem > Sil ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

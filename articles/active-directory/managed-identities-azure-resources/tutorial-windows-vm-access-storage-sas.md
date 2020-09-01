@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92a7c9580d48f70d4bc2391e5c13c8571c38feae
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018595"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255860"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Öğretici: SAS kimlik bilgileri aracılığıyla Azure depolama 'ya erişmek için Windows VM sistem tarafından atanan bir yönetilen kimlik kullanma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Bu öğreticide, bir Windows sanal makinesi (VM) için bir depolama paylaşılan erişim Imzası (SAS) kimlik bilgisi almak üzere sistem tarafından atanan bir kimliğin nasıl kullanılacağı gösterilmektedir. Özellikle, bir [Hizmet SAS kimlik bilgileri](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+Bu öğreticide, bir Windows sanal makinesi (VM) için bir depolama paylaşılan erişim Imzası (SAS) kimlik bilgisi almak üzere sistem tarafından atanan bir kimliğin nasıl kullanılacağı gösterilmektedir. Özellikle, bir [Hizmet SAS kimlik bilgileri](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 Bir hizmet SAS, bir hesap erişim anahtarı açığa çıkarmadan sınırlı süre ve belirli bir hizmet (bizim örneğimizde, blob hizmeti) için bir depolama hesabındaki nesnelere sınırlı erişim verme olanağı sağlar. Depolama işlemleri yaparken, örneğin Depolama SDK'sını kullanırken SAS kimlik bilgilerini olağan şekilde kullanabilirsiniz. Bu öğreticide, Azure Storage PowerShell kullanarak bir blobu karşıya yüklemeyi ve indirmeyi gösteririz. Şunları öğrenirsiniz:
 
@@ -35,7 +35,7 @@ Bir hizmet SAS, bir hesap erişim anahtarı açığa çıkarmadan sınırlı sü
 > * VM'nize Resource Manager'da yer alan depolama hesabı SAS için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan SAS almak için bu belirteci kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -83,7 +83,7 @@ Azure Depolama Azure AD kimlik doğrulamayı yerel olarak desteklemez.  Ancak, K
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışacağız.
 
-Bu bölümde Azure Resource Manager PowerShell cmdlet’lerini kullanmanız gerekir.  Bunu yüklemediyseniz, devam etmeden önce [en son sürümünü indirin](https://docs.microsoft.com/powershell/azure/).
+Bu bölümde Azure Resource Manager PowerShell cmdlet’lerini kullanmanız gerekir.  Bunu yüklemediyseniz, devam etmeden önce [en son sürümünü indirin](/powershell/azure/).
 
 1. Azure portalında **Sanal Makineler**'e gidin, Windows sanal makinenize gidin ve ardından **Genel Bakış** sayfasında üst kısımdaki **Bağlan**'a tıklayın.
 2. Windows VM 'yi oluştururken eklediğiniz **Kullanıcı adınızı** ve **parolanızı** girin. 
@@ -205,6 +205,4 @@ Name              : testblob
 Bu öğreticide, bir SAS kimlik bilgisi kullanarak Azure depolama 'ya erişmek için Windows VM 'nin sistem tarafından atanan yönetilen kimliğini nasıl kullanacağınızı öğrendiniz.  Azure Depolama SAS hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Paylaşılan erişim imzaları (SAS) kullanma](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-
-
+>[Paylaşılan erişim imzaları (SAS) kullanma](../../storage/common/storage-sas-overview.md)

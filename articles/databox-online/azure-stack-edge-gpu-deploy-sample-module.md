@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure Stack Edge cihazınızda GPU modülünü dağıtma | Microsoft Docs
+title: Azure Stack Edge GPU cihazınızda GPU modülünü dağıtma | Microsoft Docs
 description: İşlemin nasıl etkinleştirileceğini ve Azure Stack Edge cihazınızın, yerel kullanıcı arabirimi aracılığıyla işlem için nasıl hazırlanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 68badb1524c869309a0e2d96eaf6c9e490111bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087060"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254568"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-device"></a>Azure Stack Edge cihazında GPU özellikli IoT modülünü dağıtma
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazında GPU özellikli IoT modülünü dağıtma
 
-Bu makalede, Azure Stack Edge cihazınıza GPU etkin bir IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
+Bu makalede, Azure Stack Edge GPU cihazınızda GPU etkin bir IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
 
 Bu makalede şunları öğreneceksiniz:
   - GPU modülünü çalıştırmak için Azure Stack Edge 'i hazırlayın.
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorch ve TensorFlow benchişaretlemesini içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 

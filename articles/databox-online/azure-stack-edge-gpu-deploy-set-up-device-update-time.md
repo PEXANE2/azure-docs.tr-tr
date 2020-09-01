@@ -1,6 +1,6 @@
 ---
 title: Azure portal ' de GPU ile Azure Stack Edge cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
-description: Azure Stack Edge dağıtımı öğreticisi, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
+description: Azure Stack Edge GPU 'YU dağıtmaya yönelik öğretici, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c0581a79bda4ae4e311390f5b2d929073e0833d9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 41055fbd455d3f7b9da63ee8f7420f008ea75a00
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182029"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254517"
 ---
 # <a name="tutorial-configure-device-settings-for-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için cihaz ayarlarını yapılandırma
 

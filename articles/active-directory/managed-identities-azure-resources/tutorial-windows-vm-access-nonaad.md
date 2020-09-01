@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3690c8558a767b169b993077acddddc22bb86aba
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2890eb2211ac0a105363742a0e900e52a577ed27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018527"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255835"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma 
 
@@ -35,7 +35,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * VM'nize Key Vault'ta depolanan gizli diziye erişim verme 
 > * VM kimliği kullanarak erişim belirteci alma ve Key Vault'tan gizli diziyi almak için bunu kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -75,7 +75,7 @@ Ardından, Key Vault'a bir gizli dizi ekleyin; böylelikle VM'nizde çalıştır
  
 ## <a name="access-data"></a>Verilere erişme  
 
-Bu bölüm, VM kimliğini kullanarak bir erişim belirtecinin nasıl alınacağını ve Key Vault gizli anahtarı almak için nasıl kullanılacağını gösterir. PowerShell 4.3.1 veya üstünü yüklemediyseniz, [en son sürümü indirip yüklemeniz gerekir](https://docs.microsoft.com/powershell/azure/).
+Bu bölüm, VM kimliğini kullanarak bir erişim belirtecinin nasıl alınacağını ve Key Vault gizli anahtarı almak için nasıl kullanılacağını gösterir. PowerShell 4.3.1 veya üstünü yüklemediyseniz, [en son sürümü indirip yüklemeniz gerekir](/powershell/azure/).
 
 İlk olarak, Key Vault'ta kimlik doğrulaması yapmak üzere erişim belirteci almak için VM’nin sistem tarafından atanan yönetilen kimliğini kullanırız:
  
@@ -128,4 +128,4 @@ Key Vault'tan gizli diziyi aldıktan sonra, bunu kullanarak ad ve parola gerekti
 Bu öğreticide, Azure Key Vault'a erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanmayı öğrendiniz.  Azure Key Vault hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
+>[Azure Key Vault](../../key-vault/general/overview.md)

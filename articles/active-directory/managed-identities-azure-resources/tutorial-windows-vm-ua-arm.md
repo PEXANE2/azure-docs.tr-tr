@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2b976a9a2b6a39ccfa1dc9f4117801fee54ea6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018578"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255724"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager erişmek için Windows VM üzerinde kullanıcı tarafından atanan yönetilen kimlik kullanma
 
@@ -39,15 +39,15 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 - [Azure portalda oturum açın](https://portal.azure.com)
 
-- [Windows sanal makinesi oluşturma](/azure/virtual-machines/windows/quick-create-portal)
+- [Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-portal.md)
 
-- Bu öğreticideki gerekli kaynak oluşturma ve rol yönetimini adımlarını gerçekleştirmek için hesabınız uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "Sahip" izinlerini gerektiriyor. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](/azure/role-based-access-control/role-assignments-portal).
+- Bu öğreticideki gerekli kaynak oluşturma ve rol yönetimini adımlarını gerçekleştirmek için hesabınız uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "Sahip" izinlerini gerektiriyor. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
 - [Azure PowerShell modülünün en son sürümünü yükler](/powershell/azure/install-az-ps). 
 - Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 - [PowerShellGet'in en son sürümünü](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget) yükleyin.
@@ -163,4 +163,4 @@ Yanıtta, aşağıdaki örneğe benzer belirli Kaynak Grubu bilgileri yer alır:
 Bu öğreticide, Kullanıcı tarafından atanan bir kimlik oluşturmayı ve Azure Resource Manager API 'sine erişmek için Azure sanal makinesine eklemeyi öğrendiniz.  Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

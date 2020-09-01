@@ -1,6 +1,6 @@
 ---
 title: Kubectl 'yi kullanarak Kubernetes durum bilgisi olan bir uygulamayı Azure Stack Edge cihazında statik olarak sağlanan paylaşımda dağıtma | Microsoft Docs
-description: Bir Microsoft Azure Stack Edge cihazında kubectl kullanarak statik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulduğunu ve yönetileceğini açıklar.
+description: Bir Azure Stack Edge GPU cihazında kubectl kullanarak statik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulduğunu ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: cabd27849445c0eab93a6649d228a172b66bd1a4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087059"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254381"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubectl 'yi, Azure Stack Edge cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
@@ -22,7 +22,7 @@ Bu makalede, bir PersistentVolume (BD) ve dağıtım kullanarak Kubernetes 'te t
 Bu yordam, [Azure Stack Edge cihazında Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını öğrentiren kullanıcılara yöneliktir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 

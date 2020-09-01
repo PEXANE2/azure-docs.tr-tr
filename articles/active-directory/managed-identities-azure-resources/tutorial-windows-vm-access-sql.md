@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05278213e30aa6d31873e93025b5a4f1bc36a5a1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018544"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255758"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Öğretici: Azure SQL hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, Azure SQL veritabanına erişmek için bir Windows sanal makine
 > * VM’nin sistem tarafından atanan kimliğini temsil eden veritabanında içerilen kullanıcı oluşturma
 > * VM kimliğini kullanarak bir erişim belirteci alın ve Azure SQL veritabanını sorgulamak için kullanın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -44,7 +44,7 @@ Bu öğreticide, Azure SQL veritabanına erişmek için bir Windows sanal makine
 
 ## <a name="grant-access"></a>Erişim verme
 
-VM 'nize Azure SQL veritabanı 'nda bir veritabanına erişim izni vermek için, var olan bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) kullanabilir veya yeni bir tane oluşturabilirsiniz. Azure portalını kullanarak yeni sunucu ve veritabanı oluşturmak için bu [Azure SQL hızlı başlangıcını](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) izleyin. [Azure SQL belgeleri](https://docs.microsoft.com/azure/sql-database/) arasında Azure CLI'nin ve Azure PowerShell'in kullanıldığı hızlı başlangıçlar da vardır.
+VM 'nize Azure SQL veritabanı 'nda bir veritabanına erişim izni vermek için, var olan bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) kullanabilir veya yeni bir tane oluşturabilirsiniz. Azure portalını kullanarak yeni sunucu ve veritabanı oluşturmak için bu [Azure SQL hızlı başlangıcını](../../azure-sql/database/single-database-create-quickstart.md) izleyin. [Azure SQL belgeleri](/azure/sql-database/) arasında Azure CLI'nin ve Azure PowerShell'in kullanıldığı hızlı başlangıçlar da vardır.
 
 VM'nize veritabanı erişimi verme işleminin iki adımı vardır:
 
@@ -53,7 +53,7 @@ VM'nize veritabanı erişimi verme işleminin iki adımı vardır:
 
 ### <a name="enable-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını etkinleştirme
 
-**[Azure AD kimlik doğrulamasını yapılandırmak](/azure/sql-database/sql-database-aad-authentication-configure)için:**
+**[Azure AD kimlik doğrulamasını yapılandırmak](../../azure-sql/database/authentication-aad-configure.md)için:**
 
 1. Azure portalında, sol gezintiden **SQL sunucuları**'nı seçin.
 2. Azure AD kimlik doğrulaması için etkinleştirilecek SQL sunucusuna tıklayın.
@@ -64,10 +64,10 @@ VM'nize veritabanı erişimi verme işleminin iki adımı vardır:
 
 ### <a name="create-contained-user"></a>Kapsanan kullanıcı oluştur
 
-Bu bölümde, veritabanında VM 'nin sistem tarafından atanan kimliğini temsil eden kapsanan bir kullanıcının nasıl oluşturulacağı gösterilmektedir. Bu adım için [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir. Başlamadan önce, Azure Ad tümleştirmesiyle ilgili arka plan bilgileri için aşağıdaki makaleleri gözden geçirmeniz yararlı olabilir:
+Bu bölümde, veritabanında VM 'nin sistem tarafından atanan kimliğini temsil eden kapsanan bir kullanıcının nasıl oluşturulacağı gösterilmektedir. Bu adım için [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir. Başlamadan önce, Azure Ad tümleştirmesiyle ilgili arka plan bilgileri için aşağıdaki makaleleri gözden geçirmeniz yararlı olabilir:
 
-- [SQL veritabanı ve Azure SYNAPSE Analytics ile evrensel kimlik doğrulaması (MFA için SSMS desteği)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [SQL veritabanı veya Azure SYNAPSE Analytics ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL veritabanı ve Azure SYNAPSE Analytics ile evrensel kimlik doğrulaması (MFA için SSMS desteği)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [SQL veritabanı veya Azure SYNAPSE Analytics ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../../azure-sql/database/authentication-aad-configure.md)
 
 SQL DB, benzersiz AAD görünen adları gerektirir. Bu şekilde, kullanıcılar, gruplar ve hizmet sorumluları (uygulamalar) gibi AAD hesaplarının ve yönetilen kimlik için etkinleştirilen VM adlarının, görünen adlarıyla ilgili AAD 'de benzersiz olarak tanımlanması gerekir. SQL DB, bu tür kullanıcıların T-SQL oluşturma işlemi sırasında AAD görünen adını denetler ve benzersiz değilse, komut belirli bir hesap için benzersiz bir AAD görünen adı sağlaması isteğinde bulunur.
 
@@ -208,4 +208,4 @@ Sorgunun sonuçlarını görüntülemek için `$DataSet.Tables[0]` değerini inc
 Bu öğreticide, Azure SQL veritabanına erişmek için sistem tarafından atanan yönetilen kimlik kullanmayı öğrendiniz. Azure SQL veritabanı hakkında daha fazla bilgi için bkz.
 
 > [!div class="nextstepaction"]
-> [Azure SQL Veritabanı](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Veritabanı](../../azure-sql/database/sql-database-paas-overview.md)

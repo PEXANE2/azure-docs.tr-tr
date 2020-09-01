@@ -1,6 +1,6 @@
 ---
-title: Kubectl 'yi kullanarak Kubernetes durum bilgisi olan uygulamayı Azure Stack Edge cihazında dinamik olarak sağlanan paylaşımda dağıtma | Microsoft Docs
-description: Bir Microsoft Azure Stack Edge cihazında kubectl kullanılarak dinamik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Kubectl 'yi kullanarak Kubernetes durum bilgisi olan uygulamayı Azure Stack Edge GPU cihazındaki dinamik olarak sağlanan paylaşımda dağıtma | Microsoft Docs
+description: Bir Microsoft Azure Stack Edge GPU cihazında kubectl kullanılarak dinamik olarak sağlanan bir paylaşımdan Kubernetes durum bilgisi olan bir uygulama dağıtımının nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: e83b2b1cb7013b9d72bd2c2de8c7636d5c9d8773
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087043"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254330"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda StorageClass ile Kubernetes durum bilgisi olan bir uygulamayı çalıştırmak için kubectl kullanın
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>Kubectl 'yi kullanarak Azure Stack Edge GPU cihazınızda StorageClass ile Kubernetes durum bilgisi olan bir uygulama çalıştırın
 
 Bu makalede, depolama ve bir dağıtımı dinamik olarak sağlamak için StorageClass kullanarak Kubernetes 'te tek örnekli durum bilgisi olan bir uygulamanın nasıl dağıtılacağı gösterilir. Dağıtım, `kubectl` var olan bir Kubernetes kümesinde komutlar kullanır ve MySQL uygulamasını dağıtır. 
 
 Bu yordam, [Azure Stack Edge cihazında Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını öğrentiren kullanıcılara yöneliktir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 

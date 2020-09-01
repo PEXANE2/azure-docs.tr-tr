@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084390"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255112"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 [Azure Media Indexer](media-services-index-content.md) medya işlemcisi ve [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya işlemcileri kullanımdan kaldırılıyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
@@ -50,7 +52,7 @@ Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarl
 
 **Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>başlarken
+### <a name="get-started"></a>Kullanmaya başlayın
 
 Başlamak için bkz:
 

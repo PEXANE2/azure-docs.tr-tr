@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 1532283be8521ad5c6cd5a9e2252e5ba839a4aa3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087071"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254653"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-device"></a>Azure Stack Edge cihazında Azure Marketi 'nden GPU özellikli bir IoT modülü dağıtma
+# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazında Azure Marketi 'nden GPU özellikli IoT modülünü dağıtma
 
 Bu makalede, Azure Stack Edge cihazınızda Azure Marketi 'nden bir grafik Işleme birimi (GPU) özellikli IoT Edge modülünün nasıl dağıtılacağı açıklanır. 
 
@@ -28,7 +28,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorch ve TensorFlow benchişaretlemesini içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 

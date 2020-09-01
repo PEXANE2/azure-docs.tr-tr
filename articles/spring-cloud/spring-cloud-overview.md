@@ -7,20 +7,18 @@ ms.topic: overview
 ms.date: 11/4/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: dda95932551cdb28c5f28207c05c8e3e78e753b8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa3f1032301224701f5bfc08807e89194f263da6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050854"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255248"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud nedir?
 
 Azure yay bulutu, Azure 'a Spring Boot tabanlı mikro hizmet uygulamalarının, sıfır kod değişiklikleriyle dağıtılmasını kolaylaştırır.  Azure yay bulutu, Spring bulut uygulamalarının altyapısını yönetir, böylelikle geliştiriciler koda odaklanabilirler.  Spring Cloud, kapsamlı izleme ve tanılama, yapılandırma yönetimi, hizmet bulma, CI/CD tümleştirmesi, mavi yeşil dağıtımlar ve daha fazlasını kullanarak yaşam döngüsü yönetimi sağlar.
 
 Azure Spring Cloud, Azure ekosisteminin bir parçası olarak depolama, veritabanları, izleme ve daha fazlasını içeren diğer Azure hizmetlerine kolayca bağlamayı sağlar.
-
-Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
 
 Bu giriş, Azure Spring Cloud Configuration Server, mavi/yeşil dağıtımları etkinleştirme, uygulamaları ölçeklendirme ve uygulama performansının nasıl izleneceği açıklanmaktadır.
 

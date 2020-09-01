@@ -8,41 +8,19 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: b4d48dcc8f09ae8e2ec3bb198f8864de1c945682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101862"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255027"
 ---
-# <a name="create-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
+# <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
 
 Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 
-## <a name="prepare-a-storage-account"></a>Depolama hesabı hazırlama
-
-1. [Azure portalını](https://portal.azure.com) açın.
-1. Aşağıdaki ayarlara sahip yeni bir depolama hesabı oluşturun:
-
-    |Tab|Ayar | Önerilen değer | Açıklama |
-    |---|---|---|---|
-    |Temel bilgiler|**Depolama hesabı adı**| Herhangi bir ad seçin.| Bu belgede **contosolake**adını kullanacağız.|
-    |Temel bilgiler|**Hesap türü**| **StorageV2** ||
-    |Temel bilgiler|**Konum**|Herhangi bir konum seçin.| Azure SYNAPSE Analytics çalışma alanınızı ve Azure Data Lake Storage 2. hesabınızın aynı bölgede olmasını öneririz.|
-    |Gelişmiş|**Data Lake Storage 2. Nesil**|**Etkin**| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
-    |||||
-
-1. Depolama hesabını oluşturduktan sonra sol bölmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun:
-    * Kendinizi **sahip** rolüne atayın.
-    * Kendinizi **Depolama Blobu veri sahibi** rolüne atayın.
-1. Sol bölmede **kapsayıcılar** ' ı seçin ve bir kapsayıcı oluşturun.
-1. Kapsayıcıya bir ad verebilirsiniz. Bu belgede kapsayıcı **kullanıcılarını**adı vereceğiz.
-1. Varsayılan ayar olan **genel erişim düzeyini**kabul edin ve **Oluştur**' u seçin.
-
-Aşağıdaki adımda, Azure SYNAPSE çalışma alanınızı, bu depolama hesabını "birincil" depolama hesabı ve çalışma alanı verilerini depolayacak kapsayıcı olarak kullanacak şekilde yapılandıracaksınız. Çalışma alanı, verileri Apache Spark tablolarında depolar. Spark uygulama günlüklerini **/SYNAPSE/WorkspaceName**adlı bir klasörde depolar.
-
-## <a name="create-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
+## <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
 
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE**için arama yapın.
 1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
@@ -50,23 +28,17 @@ Aşağıdaki adımda, Azure SYNAPSE çalışma alanınızı, bu depolama hesabı
 
     |Tab|Ayar | Önerilen değer | Açıklama |
     |---|---|---|---|
-    |Temel bilgiler|**Çalışma alanı adı**|Bunu herhangi bir şekilde adlandırın.| Bu belgede, **MyWorkspace**kullanacağız.|
-    |Temel bilgiler|**Bölge**|Depolama hesabının bölgesiyle eşleştirin.|
+    |Temel Bilgiler|**Çalışma alanı adı**|Bunu herhangi bir şekilde adlandırın.| Bu belgede, **MyWorkspace**kullanacağız.|
+    |Temel Bilgiler|**Bölge**|Depolama hesabının bölgesiyle eşleştirin.|
 
-1. **Data Lake Storage Gen 2**' yi seçin altında, daha önce oluşturduğunuz hesabı ve kapsayıcıyı seçin.
+1. Bir çalışma alanı oluşturmak için bir ADLSGEN2 hesabınızın olması gerekir. Yeni bir tane oluşturmak için en basit seçenektir. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
+1. 1. seçenek yeni bir ADLSGEN2 hesabı oluşturma 
+    1. **Data Lake Storage Gen 2**' yi seçin altında **Yeni oluştur** ' a tıklayın ve **contosolake**olarak adlandırın.
+    1. **Data Lake Storage Gen 2**' yi seçin altında **dosya sistemi** ' ne tıklayın ve ardından **kullanıcıları**adlandırın.
+1. 2. seçenek bu belgenin en altındaki **depolama hesabı hazırlama** yönergelerine bakın.
+1. Azure SYNAPSE çalışma alanınız, bu depolama hesabını "birincil" depolama hesabı ve çalışma alanı verilerini depolamak için kapsayıcı olarak kullanacaktır. Çalışma alanı, verileri Apache Spark tablolarında depolar. Spark uygulama günlüklerini **/SYNAPSE/WorkspaceName**adlı bir klasörde depolar.
 1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
-## <a name="verify-access-to-the-storage-account"></a>Depolama hesabına erişimi doğrulama
-
-Azure SYNAPSE çalışma alanınız için Yönetilen kimlikler zaten depolama hesabına erişebilmiş olabilir. Aşağıdakileri sağlamak için aşağıdaki adımları izleyin:
-
-1. [Azure Portal](https://portal.azure.com) ve çalışma alanınız için seçilen birincil depolama hesabını açın.
-1. Sol bölmeden **erişim denetimi (IAM)** seçeneğini belirleyin.
-1. Aşağıdaki rolleri atayın veya zaten atandıklarından emin olun. Çalışma alanı kimliği ve çalışma alanı adı için aynı adı kullanıyoruz.
-    * Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolü için çalışma alanı kimliği olarak **MyWorkspace** ' i atayın.
-    * Çalışma alanı adı olarak **MyWorkspace** atayın.
-
-1. **Kaydet**'i seçin.
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın
 
@@ -121,6 +93,38 @@ Diğer havuz türlerinden farklı olarak, isteğe bağlı SQL için faturalandı
 
 * İsteğe bağlı SQL, tüm SQL isteğe bağlı havuzlarından bağımsız olarak bulunan kendi SQL isteğe bağlı veritabanlarına sahiptir.
 * Bir çalışma alanının her zaman **isteğe bağlı SQL**ADLı bir SQL isteğe bağlı havuzu vardır.
+
+## <a name="prepare-a-storage-account"></a>Depolama hesabı hazırlama
+
+1. [Azure portalını](https://portal.azure.com) açın.
+1. Aşağıdaki ayarlara sahip yeni bir depolama hesabı oluşturun:
+
+    |Tab|Ayar | Önerilen değer | Açıklama |
+    |---|---|---|---|
+    |Temel Bilgiler|**Depolama hesabı adı**| Herhangi bir ad seçin.| Bu belgede **contosolake**adını kullanacağız.|
+    |Temel Bilgiler|**Hesap türü**| **StorageV2** ||
+    |Temel Bilgiler|**Konum**|Herhangi bir konum seçin.| Azure SYNAPSE Analytics çalışma alanınızı ve Azure Data Lake Storage 2. hesabınızın aynı bölgede olmasını öneririz.|
+    |Gelişmiş|**Data Lake Storage 2. Nesil**|**Etkin**| Azure SYNAPSE, yalnızca bu ayarın etkinleştirildiği depolama hesaplarıyla birlikte kullanılabilir.|
+    |||||
+
+1. Depolama hesabını oluşturduktan sonra sol bölmede **erişim denetimi (IAM)** seçeneğini belirleyin. Ardından, aşağıdaki rolleri atayın veya zaten atanmış olduklarından emin olun:
+    * Kendinizi **sahip** rolüne atayın.
+    * Kendinizi **Depolama Blobu veri sahibi** rolüne atayın.
+1. Sol bölmede **kapsayıcılar** ' ı seçin ve bir kapsayıcı oluşturun.
+1. Kapsayıcıya bir ad verebilirsiniz. Bu belgede kapsayıcı **kullanıcılarını**adı vereceğiz.
+1. Varsayılan ayar olan **genel erişim düzeyini**kabul edin ve **Oluştur**' u seçin.
+
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Çalışma alanınızdan depolama hesabına erişimi yapılandırma
+
+Azure SYNAPSE çalışma alanınız için Yönetilen kimlikler zaten depolama hesabına erişebilmiş olabilir. Aşağıdakileri sağlamak için aşağıdaki adımları izleyin:
+
+1. [Azure Portal](https://portal.azure.com) ve çalışma alanınız için seçilen birincil depolama hesabını açın.
+1. Sol bölmeden **erişim denetimi (IAM)** seçeneğini belirleyin.
+1. Aşağıdaki rolleri atayın veya zaten atandıklarından emin olun. Çalışma alanı kimliği ve çalışma alanı adı için aynı adı kullanıyoruz.
+    * Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolü için çalışma alanı kimliği olarak **MyWorkspace** ' i atayın.
+    * Çalışma alanı adı olarak **MyWorkspace** atayın.
+
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

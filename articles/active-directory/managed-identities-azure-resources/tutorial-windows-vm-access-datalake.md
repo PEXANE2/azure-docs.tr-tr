@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/14/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce980d232c6b493bab817d3319d984015270ac7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d29edec6145ebc03218264532cae07b6afc9654c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018564"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254211"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Öğretici: Azure Data Lake Store'a erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Data Lake Store'a erişmek amacıyla, Windows sanal makin
 > * Azure Data Lake Store'a VM'niz için erişim verme
 > * VM kimliğini kullanarak erişim belirteci alma ve Azure Data Lake Store'a erişmek için bunu kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -46,7 +46,7 @@ Bu öğreticide, Azure Data Lake Store'a erişmek amacıyla, Windows sanal makin
 
 ## <a name="grant-access"></a>Erişim verme
 
-Artık VM'nize Azure Data Lake Store'daki dosyalar ve klasörler için erişim verebilirsiniz.  Bu adımda, mevcut Data Lake Store’u kullanabilir veya yeni bir tane oluşturabilirsiniz.  Azure portalını kullanarak yeni bir Data Lake Store oluşturmak için bu [Azure Data Lake Store hızlı başlangıcı](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)'nı izleyin. [Azure Data Lake Store belgeleri](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) arasında Azure CLI'nin ve Azure PowerShell'in kullanıldığı hızlı başlangıçlar da vardır.
+Artık VM'nize Azure Data Lake Store'daki dosyalar ve klasörler için erişim verebilirsiniz.  Bu adımda, mevcut Data Lake Store’u kullanabilir veya yeni bir tane oluşturabilirsiniz.  Azure portalını kullanarak yeni bir Data Lake Store oluşturmak için bu [Azure Data Lake Store hızlı başlangıcı](../../data-lake-store/data-lake-store-get-started-portal.md)'nı izleyin. [Azure Data Lake Store belgeleri](../../data-lake-store/data-lake-store-overview.md) arasında Azure CLI'nin ve Azure PowerShell'in kullanıldığı hızlı başlangıçlar da vardır.
 
 Data Lake Store'unuzda yeni bir klasör oluşturun ve VM sistem tarafından atanan kimliğine bu klasördeki dosyaları okuma, yazma ve yürütme izni verin:
 
@@ -62,11 +62,11 @@ Data Lake Store'unuzda yeni bir klasör oluşturun ve VM sistem tarafından atan
 10. 5. adımdaki gibi **Ekle**’ye tıklayın, **Seç** alanına VM’nizin adını girin, bunu seçin ve **Seç**’e tıklayın.
 11. 6. adımdaki gibi **İzin Seç**’e tıklayın, **Okuma**, **Yazma** ve **Yürütme**'yi seçin, **Bu klasör**'e ekleyin ve **Erişim izni girdisi ve varsayılan erişim girdisi** olarak ekleyin.  **Tamam**’a tıklayın.  İzin başarıyla eklenmiş olmalıdır.
 
-VM sistem tarafından atanan yönetilen kimliği artık oluşturduğunuz klasördeki dosyalar üzerinde tüm işlemleri gerçekleştirebilir.  Data Lake Store'a erişimi yönetme hakkında daha fazla bilgi için [Data Lake Store’da Erişim Denetimi](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) makalesini okuyun.
+VM sistem tarafından atanan yönetilen kimliği artık oluşturduğunuz klasördeki dosyalar üzerinde tüm işlemleri gerçekleştirebilir.  Data Lake Store'a erişimi yönetme hakkında daha fazla bilgi için [Data Lake Store’da Erişim Denetimi](../../data-lake-store/data-lake-store-access-control.md) makalesini okuyun.
 
 ## <a name="access-data"></a>Verilere erişme
 
-Azure Data Lake Store, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder.  Data Lake Store dosya sisteminde kimliği doğrulamak için, Azure AD tarafından verilen bir erişim belirtecini "Bearer<ACCESS_TOKEN_VALUE>" biçiminde Yetkilendirme üst bilgisinde Data Lake Store dosya sistemi uç noktanıza gönderirsiniz.  Data Lake Store'da Azure AD kimlik doğrulaması desteği hakkında daha fazla bilgi edinmek için [Azure Active Directory kullanarak Data Lake Store ile kimlik doğrulaması yapma](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory) konusunu okuyun.
+Azure Data Lake Store, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder.  Data Lake Store dosya sisteminde kimliği doğrulamak için, Azure AD tarafından verilen bir erişim belirtecini "Bearer<ACCESS_TOKEN_VALUE>" biçiminde Yetkilendirme üst bilgisinde Data Lake Store dosya sistemi uç noktanıza gönderirsiniz.  Data Lake Store'da Azure AD kimlik doğrulaması desteği hakkında daha fazla bilgi edinmek için [Azure Active Directory kullanarak Data Lake Store ile kimlik doğrulaması yapma](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) konusunu okuyun.
 
 > [!NOTE]
 > Data Lake Store dosya sistemi istemci SDK'ları henüz Azure kaynakları için yönetilen kimlikleri desteklememektedir.  Bu öğretici, SDK’ye destek eklendiğinde güncelleştirilecektir.
@@ -193,4 +193,4 @@ Başka Data Lake Store dosya sistemi API'leri kullanarak dosyaların sonuna ekle
 Bu öğreticide, Azure Data Lake Store'a erişmek için Windows sanal makinesinde sistem tarafından atanan yönetilen kimliği kullanmayı öğrendiniz. Azure Data Lake Store hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

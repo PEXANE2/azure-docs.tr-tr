@@ -1,6 +1,6 @@
 ---
-title: Azure portal, Datacenter ortamını Azure Stack Edge dağıtımı için hazırlama öğreticisi | Microsoft Docs
-description: Azure Stack Edge 'i dağıtmaya yönelik ilk öğretici Azure portal hazırlamayı içerir.
+title: Azure portal, Datacenter ortamını Azure Stack Edge GPU 'SU dağıtmaya hazırlama öğreticisi | Microsoft Docs
+description: Azure Stack Edge GPU 'YU dağıtmaya yönelik ilk öğretici, Azure portal hazırlamayı içerir.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c02af8983489651d8b5b83d5d3107a534c51f067
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181859"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254687"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge dağıtmaya hazırlanma 
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge dağıtımı için öncelikle ortamınızı hazırlamanız gerekir. Ortam çalışmaya başladıktan sonra, cihazı tam olarak dağıtmak için gerekli adımları ve gerekirse isteğe bağlı adımları ve yordamları izleyin. Adım adım dağıtım yönergeleri, bu gerekli ve isteğe bağlı adımların her birini ne zaman gerçekleştirmeniz gerektiğini gösterir.
 
-| Adım | Description |
+| Adım | Açıklama |
 | --- | --- |
 | **Hazırlık** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |

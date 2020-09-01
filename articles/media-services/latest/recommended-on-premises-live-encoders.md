@@ -6,17 +6,19 @@ keywords: kodlama; kodlayıcılar; medya
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 04/16/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b246833b5a6ea38c70afe49f8b2d0421943a3a02
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030674"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256795"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Doğrulanan şirket içi canlı akış kodlayıcıları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services, canlı bir [olay](/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 

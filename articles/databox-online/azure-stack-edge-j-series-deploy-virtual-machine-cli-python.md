@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 77251148bed76f672adc2fffe2db688b33786022
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147125"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255537"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge GPU cihazınızda sanal makineler dağıtma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -45,7 +45,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
