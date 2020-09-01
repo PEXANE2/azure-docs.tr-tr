@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Bu konu, Azure Media Services v3 içindeki canlı olaylara ve canlı çıkışlara genel bakış sunar.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/08/2020
-ms.author: juliako
-ms.openlocfilehash: c41538acdb8ed94ee4995ad8d5f5e4cebb2e14d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: da91e37c47db6d944aa6974123dd80ec982453e4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043444"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265193"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanıza olanak tanır. Media Services v3 ' de canlı akış olaylarınızı ayarlamak için, bu makalede ele alınan kavramları anlamanız gerekir.
 

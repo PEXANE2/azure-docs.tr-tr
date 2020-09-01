@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aab2eaecfcba8a0a5ce450d99f18710c94925a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022539"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263187"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Öğretici: Azure Depolama’ya erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
 
@@ -36,7 +36,7 @@ Bu öğreticide, Azure Depolama'ya erişmek amacıyla, Windows sanal makinesi (V
 > [!NOTE]
 > Azure Depolama için Azure Active Directory kimlik doğrulaması genel önizlemeye sunuldu.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -184,4 +184,4 @@ Yanıt, dosyanın içeriklerini kapsar:
 Bu öğreticide Azure Depolama’ya erişmek için Windows VM sistem tarafından atanan kimliğini etkinleştirmeyi öğrendiniz.  Azure Depolama hakkında daha fazla bilgi için bkz:
 
 > [!div class="nextstepaction"]
-> [Azure Depolama](/azure/storage/common/storage-introduction)
+> [Azure Depolama](../../storage/common/storage-introduction.md)

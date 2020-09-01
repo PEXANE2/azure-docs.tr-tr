@@ -1,6 +1,6 @@
 ---
-title: Install-Unpack, rafı, kablo Azure Stack Edge fiziksel cihaz | Microsoft Docs
-description: Azure Stack Edge yüklemeyle ilgili ikinci öğretici, fiziksel cihazın paketini açmak, rafa eklemek ve kablosunu içerir.
+title: Install-Unpack, rafı, kablo Azure Stack Edge GPU fiziksel cihaz | Microsoft Docs
+description: Azure Stack Edge GPU 'YU yüklemeyle ilgili ikinci öğretici, fiziksel cihazın paketini açmak, rafa eklemek ve kablosunu içerir.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181825"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262864"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'i yükler
 

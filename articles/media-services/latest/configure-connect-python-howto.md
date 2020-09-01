@@ -3,7 +3,7 @@ title: Azure Media Services v3 API 'sine bağlanma-Python
 description: Bu makalede, Python ile Media Services v3 API 'sine nasıl bağlanacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,21 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 834d87f607ca65a9d9e0ebee12d2772f5baf7949
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 42fea1a4363684667ccb41f0406bb66ef00d5485
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849650"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265584"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 Python SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Python.org](https://www.python.org/downloads/) 'ten Python indirin
 - Ortam değişkenini ayarladığınızdan emin olun `PATH`

@@ -2,15 +2,17 @@
 title: İçeriği Azure portal şifreleyin
 description: Bu hızlı başlangıçta, Azure portal Azure Media Services kullanarak içeriğiniz için şifrelemeyi nasıl yapılandıracağınız gösterilir.
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.openlocfilehash: 6ff3c14039f9199053d3d43c6ce4488c2692b336
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.date: 08/31/2020
+ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263646"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Hızlı başlangıç: içeriği şifrelemek için portalı kullanma
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ortamınızı, depolama, işleme ve teslim aracılığıyla bilgisayarınızdan tamamen ayrılmaları için güvenli hale getirmek üzere Azure Media Services kullanın. Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. 
  
@@ -19,7 +21,7 @@ Akışunuzdaki şifreleme seçeneklerini (varsa) belirtmek için bir **akış il
 > [!NOTE]
 > İçerik anahtarı ilkesi, açık akış veya indirme için gerekli değildir.
 
-Bir akış bir oyuncu tarafından istendiğinde, Media Services AES şifresiz anahtar veya DRM şifrelemesini kullanarak içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Player, akışın şifresini çözmek için Media Services anahtar teslim hizmetinden veya belirttiğiniz anahtar teslim hizmetinden anahtarı ister. Kullanıcının anahtarı almak için yetkilendirilip yetkilendirilmeyeceğine karar vermek için, hizmet, anahtar için belirttiğiniz **içerik anahtarı ilkesini** değerlendirir.
+Bir akış bir oyuncu tarafından istendiğinde, Media Services AES şifresiz anahtar veya DRM şifrelemesini kullanarak içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Player, akışın şifresini çözmek için Media Services anahtar teslim hizmetinden veya belirttiğiniz anahtar teslim hizmetinden anahtarı ister. Kullanıcının anahtarı almak için yetkilendirilip yetkilendirilmeyeceğine karar vermek için, hizmet, anahtar için belirttiğiniz  **içerik anahtarı ilkesini** değerlendirir.
 
 Bu hızlı başlangıçta, akışa alma sırasında varlığınıza hangi şifrelemenin uygulanacağını belirlediğiniz bir içerik anahtarı ilkesi oluşturma işlemi gösterilir. Hızlı başlangıçta, varlığınızın yapılandırılmış şifrelemenin nasıl ayarlanacağı de gösterilmektedir.
 

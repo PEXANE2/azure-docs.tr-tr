@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000056"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264292"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
+# <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -64,8 +66,8 @@ Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gere
 | --- | --- | --- |
 | Yetkilendirme |Taşıyıcı |Taşıyıcı tek kabul edilen yetkilendirme mekanizmasıdır. Değer, Azure Active Directory tarafından sağlanmış erişim belirtecini de içermelidir. |
 | x-MS-sürümü |Ondalık |2,17 (veya en son sürüm)|
-| DataServiceVersion |Ondalık |3,0 |
-| MaxDataServiceVersion |Ondalık |3,0 |
+| DataServiceVersion |Ondalık |3.0 |
+| MaxDataServiceVersion |Ondalık |3.0 |
 
 > [!NOTE]
 > Media Services, REST API 'Lerini kullanıma sunmak için OData kullandığından, DataServiceVersion ve MaxDataServiceVersion üstbilgileri tüm isteklere eklenmelidir; Ancak, yoksa şu anda Media Services, kullanılmakta olan DataServiceVersion değerinin 3,0 olduğunu varsayar.

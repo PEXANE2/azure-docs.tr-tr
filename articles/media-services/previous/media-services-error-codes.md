@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042840"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263686"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services hata kodları
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Microsoft Azure Media Services kullanırken, hizmetten Media Services desteklenmeyen eylemlere yönelik kimlik doğrulama belirteçleri süresi dolan işlemlere bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Aşağıda, Media Services tarafından döndürülebilecek **http hata kodlarının** listesi ve olası nedenleri verilmiştir.  
 
 ## <a name="400-bad-request"></a>400 Hatalı İstek

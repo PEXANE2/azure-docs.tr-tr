@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264972"
 ---
 # <a name="live-transcription-preview"></a>Canlı döküm (Önizleme)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Medya hizmeti, farklı protokollerde video, ses ve metin sağlar. MPEG-DASH veya HLS/CMAF kullanarak canlı akışınızı yayımladığınızda ve video ve sesle birlikte hizmetimiz, IMSC 1.1 uyumlu TTML 'de el ile metin sağlar. Teslim, MPEG-4 Bölüm 30 (ISO/ıEC 14496-30) parçalarında paketlenmiştir. HLS/TS aracılığıyla teslim kullanılıyorsa, metin öbekli VTT olarak dağıtılır.
 
@@ -34,13 +36,13 @@ Bu makalede, Azure Media Services ile canlı bir olay akışı yapılırken canl
 Canlı döküm aşağıdaki bölgelerde kullanılabilir:
 
 - Güneydoğu Asya
-- Batı Avrupa
+- West Europe
 - Kuzey Avrupa
 - Doğu ABD
-- Orta ABD
+- Central US
 - Orta Güney ABD
 - Batı ABD 2
-- Güney Brezilya
+- Brezilya Güney
 
 Bu, kullanılabilir dillerin, API 'deki dil kodunu kullanan bir listesidir.
 
@@ -135,7 +137,7 @@ Canlı güncelleştirmeleri açmak veya döküm dilini güncelleştirmek için c
 
 Bu, canlı dökümlerini açmak için örnek çağrıdır.
 
-DÜZELTMESI```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+DÜZELTMESI ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
 
 ```
 {

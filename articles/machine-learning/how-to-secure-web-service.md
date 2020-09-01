@@ -11,14 +11,14 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3e10841852b8a89b344d3bfd9311db8abe15642a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0afb7906e102e4f0fb49245949b08618da1693ec
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319550"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265686"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
@@ -28,7 +28,7 @@ Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği veriler
 > [!TIP]
 > Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS*kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
 >
-> Özellikle Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri yalnızca TLS sürüm 1,2 ' i destekler.
+> Özellikle Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri yalnızca TLS sürüm 1,1 ' i destekler.
 
 TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları*kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
 
@@ -71,7 +71,7 @@ Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız ad
 > [!WARNING]
 > *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikalar, istemci uygulamalarınızda sorunlara yol açabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
 
-## <a name="enable-tls-and-deploy"></a><a id="enable"></a>TLS ve dağıtımı etkinleştirme
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a> TLS ve dağıtımı etkinleştirme
 
 Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 

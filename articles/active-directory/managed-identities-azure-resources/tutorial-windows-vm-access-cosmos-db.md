@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f6f59c94f8167b700208036c16cc4c948376e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019836"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263085"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, Cosmos DB'ye erişmek amacıyla, Windows sanal makinesi (VM) i�
 > * Windows VM’nin sistem tarafından atanan yönetilen kimliğini kullanarak erişim belirteci alma ve Azure Resource Manager çağrısı yapma
 > * Cosmos DB çağrıları yapmak için Azure Resource Manager'dan erişim anahtarları alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 Bu bölümde, Windows VM sistem tarafından atanan yönetilen kimlik için bir erişim belirteci kullanarak Azure Resource Manager nasıl çağrılacağını gösterir. Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışacağız. 
 
-Windows sanal makinenize en son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
+Windows sanal makinenize en son [Azure CLI](/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
 
 
 
@@ -204,6 +204,4 @@ Bu CLI komutu koleksiyon hakkındaki ayrıntıları döndürür:
 Bu öğreticide Cosmos DB'ye erişmek için Windows VM sistem tarafından atanan kimliğini kullanmayı öğrendiniz.  Cosmos DB hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB genel bakış](/azure/cosmos-db/introduction)
-
-
+>[Azure Cosmos DB genel bakış](../../cosmos-db/introduction.md)

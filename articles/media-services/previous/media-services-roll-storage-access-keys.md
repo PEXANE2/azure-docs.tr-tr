@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264139"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>Depolama erişim anahtarlarını dağıttıktan sonra Media Services'i güncelleştirme 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>Depolama erişim anahtarlarını dağıttıktan sonra Media Services'i güncelleştirme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Yeni bir Azure Media Services (AMS) hesabı oluşturduğunuzda, Ayrıca medya içeriğinizi depolamak için kullanılan bir Azure depolama hesabı seçmeniz istenir. Media Services hesabınıza birden fazla depolama hesabı ekleyebilirsiniz. Bu makalede, depolama anahtarlarının nasıl döndürüleceğini gösterilmektedir. Ayrıca, bir medya hesabına depolama hesaplarının nasıl ekleneceğini gösterir. 
 
@@ -80,5 +82,5 @@ Aşağıdaki makalede, AMS hesabınıza depolama hesaplarının nasıl eklenece�
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>İlgili kaynaklar
+### <a name="acknowledgments"></a>Teşekkürler
 Bu belgeyi oluşturmak için katkıda bulunan şu kişileri bildirmek istiyoruz: cenk dingiloglu, Milan gada, Seva Titov.

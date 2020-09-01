@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018034"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264819"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES ön ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirme 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES ön ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -51,7 +53,7 @@ Küçük resim oluştururken, her zaman piksel cinsinden çıkış genişliğini
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Küçük resim oluşturma
+## <a name="generate-thumbnails"></a>Küçük resim oluşturma
 
 Bu bölümde, küçük resim üreten bir önayarın nasıl özelleştirileceği gösterilmektedir. Aşağıda tanımlanan önceden tanımlı ayar, dosyanızın nasıl kodlanacağını ve küçük resim oluşturmak için gereken bilgileri içerir. [Bu](media-services-mes-presets-overview.md) bölümde belgelenen mes ön ayarlarından herhangi birini alabilir ve küçük resimler üreten kodlar ekleyebilirsiniz.  
 
@@ -64,7 +66,7 @@ Bu bölümde, küçük resim üreten bir önayarın nasıl özelleştirileceği 
 
 [Konular](#considerations) bölümünü gözden geçirdiğinizden emin olun.
 
-### <a name="json-preset"></a><a id="json"></a>JSON önceden ayarı
+### <a name="json-preset"></a>JSON önceden ayarı
 
 ```json
 {
@@ -166,7 +168,7 @@ Bu bölümde, küçük resim üreten bir önayarın nasıl özelleştirileceği 
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML önayarı
+### <a name="xml-preset"></a>XML önayarı
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

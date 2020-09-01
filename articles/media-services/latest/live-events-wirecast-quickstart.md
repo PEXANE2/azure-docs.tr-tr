@@ -6,15 +6,17 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 03/25/2020
-ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/31/2020
+ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985006"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265278"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Azure Media Services canlı akış oluşturma
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu hızlı başlangıç, Azure portal ve Telestream Kablotonunu kullanarak Azure Media Services canlı bir akış oluşturmanıza yardımcı olur. Azure aboneliğiniz olduğunu ve bir Media Services hesabı oluşturduğunuzu varsayar.
 
@@ -125,7 +127,7 @@ Bu bölüm, çıktılarınızı ayarlar ve canlı akışınızın bir kaydını 
 
 ## <a name="start-the-broadcast"></a>Yayını Başlat
 
-1. Kabloda bulunan **Çıkış** > **Başlat/yayını** > Durdur**Başlat Azure Media Services:** ana menüden Azure Media Services.
+1. Kabloda bulunan **Çıkış**  >  **Başlat/yayını durdur**  >  **Başlat Azure Media Services:** ana menüden Azure Media Services.
 
    ![Yayın menü öğelerini Başlat](media/live-events-wirecast-quickstart/start-broadcast.png)
 

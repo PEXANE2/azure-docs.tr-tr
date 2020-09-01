@@ -3,7 +3,7 @@ title: Azure Media Services LiveEvent Types | Microsoft Docs
 description: Azure Media Services, canlı bir olay *doğrudan geçiş* ya da *canlı kodlamaya*ayarlanabilir. Bu makalede, canlı olay türlerini karşılaştıran ayrıntılı bir tablo gösterilir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090068"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265261"
 ---
 # <a name="live-event-types-comparison"></a>Canlı olay türleri karşılaştırması
 
-Azure Media Services, canlı bir [olay](/rest/api/media/liveevents) *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) ya da *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Azure Media Services, canlı bir  [olay](/rest/api/media/liveevents) *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) ya da *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. 
 
 Bu makaleler, canlı olay türlerinin özelliklerini karşılaştırır.
 
@@ -36,13 +38,13 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 
 | Özellik | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Katkı akışı için maksimum video çözünürlüğü |4K (4096x2160/60 kare/sn) |1080p (1920x1088 üzerinde 30 kare/sn)|
 | Katkı akışında önerilen maksimum katman sayısı|12 ' ye kadar|Bir ses|
 | Çıktıda maksimum katman sayısı| Giriş ile aynı|6 ' ya kadar (aşağıdaki sistem önayarlarına bakın)|
 | Katkı akışı en fazla toplam bant genişliği|60 Mbps|Yok|
 | Katkıdaki tek bir katman için maksimum bit hızı |20 Mbps|20 Mbps|
-| Birden çok dil sesi parçası desteği|Evet|Hayır|
+| Birden çok dil sesi parçası desteği|Yes|Hayır|
 | Desteklenen giriş video codec bileşenleri |H., ve AVC ve H. 265/HEVC|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen çıkış video codec bileşenleri|Giriş ile aynı|H. BIR/DAHA FAZLA/AVC|
 | Desteklenen video bit derinliği, giriş ve çıkış|HDR 10/HLG dahil olmak üzere en fazla 10 bit|8 bit|

@@ -1,6 +1,6 @@
 ---
 title: Azure portal 'de GPU ile Azure Stack Edge cihazının ağ ayarlarını yapılandırma öğreticisi | Microsoft Docs
-description: Azure Stack Edge dağıtımı öğreticisi, fiziksel cihazınız için ağ, bilgi işlem ağı ve Web proxy ayarlarını yapılandırmanızı sağlar.
+description: Azure Stack Edge GPU 'YU dağıtmaya yönelik öğretici, fiziksel cihazınız için ağ, bilgi işlem ağı ve Web proxy ayarlarını yapılandırmanızı sağlar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 36d331de3a93e04932c4bce4d14704b33f69fab6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181553"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262993"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için ağı yapılandırma
 

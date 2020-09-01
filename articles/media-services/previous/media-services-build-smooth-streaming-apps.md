@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021515"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264649"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Windows 8 için Kesintisiz Akış Istemci SDK 'Sı, geliştiricilerin talep üzerine ve canlı Kesintisiz Akış içeriği oynatacak Windows Mağazası uygulamaları oluşturmalarına olanak sağlar. SDK, Kesintisiz Akış içeriğin temel oynatımına ek olarak Microsoft PlayReady koruması, kalite düzeyi kısıtlaması, canlı DVR, ses akışı değiştirme, durum güncelleştirmelerini dinleme (kalite düzeyi değişiklikleri gibi) ve hata olayları vb. gibi zengin özellikler de sağlar. Desteklenen özellikler hakkında daha fazla bilgi için [sürüm notlarına](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)bakın. Daha fazla bilgi için bkz. [Windows 8 Için oynatıcı çerçeve](https://playerframework.codeplex.com/). 
 
@@ -33,7 +35,7 @@ Bu öğretici dört ders içerir:
 3. Kesintisiz Akış akışları seçin
 4. Kesintisiz Akış Izleri seçin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 > [!NOTE]
 > Windows Mağazası projeleri sürüm 8,1 ve önceki sürümleri Visual Studio 2017 ' de desteklenmez.  Daha fazla bilgi için bkz. [Visual Studio 2017 Platform Desteği ve Uyumluluk](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
@@ -67,28 +69,28 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
 1. **DOSYA** menüsünde **Yeni**’ye ve sonra **Proje**’ye tıklayın.
 1. Yeni proje iletişim kutusunda, aşağıdaki değerleri yazın veya seçin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | --- | --- |
     | Şablon grubu |Yüklü/şablonlar/Visual C#/Windows Mağazası |
     | Şablon |Boş uygulama (XAML) |
-    | Ad |SSPlayer |
+    | Name |SSPlayer |
     | Konum |C:\SSTutorials |
     | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
 
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**’a tıklayın.
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Kesintisiz Akış Istemci SDK 'sına bir başvuru eklemek için
 
 1. Çözüm Gezgini, **Ssplayer**öğesine sağ tıklayın ve ardından **Başvuru Ekle**' ye tıklayın.
 1. Aşağıdaki değerleri yazın veya seçin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | --- | --- |
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |
 
-1. **Tamam** düğmesine tıklayın. 
+1. **Tamam**’a tıklayın. 
 
 Başvuruları ekledikten sonra, hedeflenen platformu (x64 veya x86) seçmeniz gerekir. başvuruları eklemek herhangi bir CPU platformu yapılandırması için çalışmaz.  Çözüm Gezgini 'nde, bu eklenen başvurular için sarı bir uyarı işareti görürsünüz.
 

@@ -3,7 +3,7 @@ title: Azure Media Services | LiveEvent düşük gecikme süresi ayarları | Mic
 description: Bu konu, LiveEvent düşük gecikme ayarlarına genel bir bakış sağlar ve düşük gecikme süresinin nasıl ayarlanacağını gösterir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/22/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e454ce84049f0f7c90da45ed77532f9ba2d90fd4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7f874491f392f320a6cdf833864c7b3eddc2f5e2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018714"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265329"
 ---
 # <a name="live-event-low-latency-settings"></a>Canlı olay düşük gecikme süresi ayarları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu makalede, [canlı bir olayda](/rest/api/media/liveevents)düşük gecikme süresinin nasıl ayarlanacağı gösterilmektedir. Ayrıca, çeşitli oynatıcılarda düşük gecikme süresi ayarlarını kullanırken gördüğünüz tipik sonuçları da açıklar. Sonuçlar CDN ve ağ gecikme süresine göre farklılık gösterir.
 

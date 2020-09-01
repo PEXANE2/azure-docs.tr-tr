@@ -7,19 +7,16 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 07e7b8db3bf7e1131ec8892a69223eaf4505e8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10f3856a7c0c0a98ab8b23e20342d745b1966b9b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037755"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263204"
 ---
 # <a name="az-spring-cloud"></a>az yay-bulut
 
 ## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Azure CLı kullanarak Azure yay bulutu 'nı yönetme
-
->[!Note]
-> Azure yay bulutu Şu anda önizleme aşamasındadır.  Bu komutlar sonraki bir sürümde değiştirilebilir veya kaldırılabilir.
 
 | az yay-bulut | Komutlar |
 |------|------:|
@@ -93,11 +90,11 @@ az spring-cloud create  --name -n
 | Gerekli Parametreler | Açıklama |
 | --- | :--- |
 | --ad-n | Bu Azure yay bulutu örneğinin adı. |
-| --Resource-Group-g | Bu uygulama için kaynak grubunu belirtir.  Varsayılan grubu kullanarak yapılandırma`az configure --defaults group=<name>` |
+| --Resource-Group-g | Bu uygulama için kaynak grubunu belirtir.  Varsayılan grubu kullanarak yapılandırma `az configure --defaults group=<name>` |
 
 | İsteğe Bağlı Parametreler | Açıklama |
 | --- | :--- |
-| --Location-l | Bu uygulama için sunucu konumunu belirtir.  Kullanarak geçerli konumlar bulma`az account list-locations` |
+| --Location-l | Bu uygulama için sunucu konumunu belirtir.  Kullanarak geçerli konumlar bulma `az account list-locations` |
 | --No-wait | Uzun süre çalışan işlemlerin tamamlanmasını kullanmayın.
 
 ### <a name="examples"></a>Örnekler
@@ -254,7 +251,7 @@ az spring cloud app deploy  --name -n
 | --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
 | --örnek-sayısı | Örnek sayısı. |
 | --jar-yol | Sağlanmışsa, belirtilen yoldan jar dağıtın. Aksi takdirde, geçerli klasörü bir tar olarak dağıtın. |
-| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör.,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --bellek | Örnek başına GB bellek sayısı. |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 | --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler: `Java_11` , `Java_8` . |
@@ -504,7 +501,7 @@ az spring-cloud app update --name -n
 | --Enable-kalıcı-depolama | Boolean.  Doğru ise, varsayılan yolla bir 50 disk bağlayın. |
 | --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
 | --,-public | Boolean.  Doğru ise, uygulamaya ortak bir etki alanı atayın. |
-| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör.,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 | --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler: `Java_11` , `Java_8` . |
 
@@ -739,7 +736,7 @@ Kodu dağıtmak veya mevcut bir dağıtıma ayarları güncelleştirmek için `a
 | --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
 | --örnek-sayısı | Örnek sayısı. Varsayılan: 1. |
 | --jar-yol | Sağlanmışsa, jar dağıtın.  Aksi takdirde, geçerli klasörü bir tar olarak dağıtın. |
-| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m` . |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör.,  `--jvm-options='-Xms1024m -Xmx2048m` . |
 | --bellek | Örnek başına GB bellek sayısı. |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 | --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler: `Java_11` , `Java_8` . |

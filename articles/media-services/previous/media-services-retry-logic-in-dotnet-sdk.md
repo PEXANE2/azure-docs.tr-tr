@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000032"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264122"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>.NET için Media Services SDK 'da yeniden deneme mantığı  
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>.NET için Media Services SDK 'da yeniden deneme mantığı
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Microsoft Azure hizmetleriyle çalışırken geçici hatalar meydana gelebilir. Geçici bir hata oluşursa, çoğu durumda işlem başarılı olur. .NET için Media Services SDK, Web istekleri, sorgu yürütme, değişiklikleri kaydetme ve depolama işlemleri gibi özel durumlar ve hatalarla ilişkili geçici hataları işlemek için yeniden deneme mantığını uygular.  Varsayılan olarak, .NET için Media Services SDK, uygulamanıza özel durumu yeniden oluşturmadan önce dört yeniden deneme yürütür. Uygulamanızdaki kod daha sonra bu özel durumu doğru bir şekilde işlemelidir.  
 
@@ -46,10 +48,10 @@ Aşağıdaki tabloda, .NET için Media Services SDK 'nın, geçici hatalara nede
 | DataServiceTransportException |Hayır |Hayır |Yes |Yes |
 | TimeoutException |Yes |Yes |Yes |Hayır |
 | SocketException |Yes |Yes |Yes |Yes |
-| StorageException |Hayır |Evet |Hayır |Hayır |
-| IOException |Hayır |Evet |Hayır |Hayır |
+| StorageException |Hayır |Yes |Hayır |Hayır |
+| IOException |Hayır |Yes |Hayır |Hayır |
 
-### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>WebException durum kodları
+### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException durum kodları
 Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı WebException hata kodlarının gösterildiği gösterilmektedir. [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) numaralandırması durum kodlarını tanımlar.  
 
 | Durum | Web Isteği | Depolama | Sorgu | Sonrasında |
@@ -67,13 +69,13 @@ Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı WebException 
 | Zaman aşımı |Yes |Yes |Yes |Hayır |
 | ProtocolError <br/>Protocolon 'da yeniden dene hatası, HTTP durum kodu işleme tarafından denetlenir. Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Yes |Yes |Yes |Yes |
 
-### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>HTTP hatası durum kodları
+### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP hatası durum kodları
 Sorgu ve SaveChanges işlemleri DataServiceClientException, DataServiceQueryException veya DataServiceQueryException oluştururken, StatusCode özelliğinde HTTP hatası durum kodu döndürülür.  Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı hata kodları gösterilmektedir.  
 
 | Durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
-| 401 |Hayır |Evet |Hayır |Hayır |
-| 403 |Hayır |Evet<br/>Daha uzun bir süre sonra yeniden denemeleri işleme. |Hayır |Hayır |
+| 401 |Hayır |Yes |Hayır |Hayır |
+| 403 |Hayır |Yes<br/>Daha uzun bir süre sonra yeniden denemeleri işleme. |Hayır |Hayır |
 | 408 |Yes |Yes |Yes |Yes |
 | 429 |Yes |Yes |Yes |Yes |
 | 500 |Yes |Yes |Yes |Hayır |

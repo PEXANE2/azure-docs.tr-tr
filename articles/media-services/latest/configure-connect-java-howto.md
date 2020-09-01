@@ -3,7 +3,7 @@ title: Azure Media Services v3 API 'sine bağlanma-Java
 description: Bu makalede, Java ile Azure Media Services v3 API 'sine nasıl bağlanabileceğinizi açıklamaktadır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 08/31/2020
 ms.custom: devx-track-java
-ms.author: juliako
-ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: inhenkel
+ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319839"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265635"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API 'sine bağlanma-Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 Java SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
 Bu makalede, örnek uygulamayı geliştirmek için Visual Studio Code kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yüklemek için [Visual Studio Code Java yazma](https://code.visualstudio.com/docs/java/java-tutorial) ' yı izleyin:
 
@@ -59,7 +61,7 @@ Komutunu çalıştırdığınızda,, `pom.xml` `App.java` ve diğer dosyalar olu
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
 1. Visual Studio Code, projenizin bulunduğu klasörü açın
-1. Bul ve aç`pom.xml`
+1. Bul ve aç `pom.xml`
 1. Gerekli bağımlılıkları Ekle
 
     ```xml

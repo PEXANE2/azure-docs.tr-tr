@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021315"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263595"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Bu makale, istemci tarafında çeşitli tür reklamları ekleme hakkında bilgiler içerir.
 
 Canlı akış videolarında kapalı açıklamalı altyazı ve ad desteği hakkında daha fazla bilgi için bkz. [desteklenen kapalı açıklamalı altyazı ve ad ekleme standartları](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
