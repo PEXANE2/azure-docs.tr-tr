@@ -3,12 +3,13 @@ title: PowerShell kullanarak uygulama yükseltmesini Service Fabric
 description: Bu makalede, bir Service Fabric uygulaması dağıtma, kodu değiştirme ve PowerShell 'i kullanarak bir yükseltmeyi kullanıma alma deneyimi anlatılmaktadır.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064596"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075197"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell kullanarak uygulama yükseltmesini Service Fabric
 > [!div class="op_single_selector"]

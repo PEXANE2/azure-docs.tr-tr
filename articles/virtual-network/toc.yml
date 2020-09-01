@@ -4,7 +4,7 @@
   items:
     - name: Sanal Ağ hakkında
       href: virtual-networks-overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: Sanal ağ oluşturma - Portal
       href: quick-create-portal.md
@@ -97,7 +97,11 @@
     - name: Güvenlik
       items:
         - name: Ağ güvenlik grupları
-          href: security-overview.md
+          items:
+            - name: Genel Bakış
+              href: security-overview.md
+            - name: Nasıl çalışır?
+              href: network-security-group-how-it-works.md
         - name: Uygulama güvenliği grupları
           href: application-security-groups.md
         - name: Hizmet etiketleri

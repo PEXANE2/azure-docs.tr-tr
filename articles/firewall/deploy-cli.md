@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602644"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075435"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
 
@@ -35,13 +35,12 @@ Bu makalede, kolay dağıtım için üç alt ağa sahip Basitleştirilmiş tek b
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Test amaçlı ağ ortamı oluşturma
-> * Güvenlik duvarı dağıtma
-> * Varsayılan rota oluşturma
-> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
-> * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
-> * Güvenlik duvarını test etme
+* Test amaçlı ağ ortamı oluşturma
+* Güvenlik duvarı dağıtma
+* Varsayılan rota oluşturma
+* Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
+* Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
+* Güvenlik duvarını test etme
 
 İsterseniz, [Azure Portal](tutorial-firewall-deploy-portal.md) veya [Azure PowerShell](deploy-ps.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
@@ -49,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-cli"></a>Azure CLI
 

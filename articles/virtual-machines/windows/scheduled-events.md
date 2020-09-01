@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
-ms.openlocfilehash: b6e877f4e4ce7b50a2e50a2925850b9f533b7f97
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814833"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074234"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -96,7 +97,7 @@ Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanı
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-### <a name="headers"></a>Üst Bilgiler
+### <a name="headers"></a>Üst bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula

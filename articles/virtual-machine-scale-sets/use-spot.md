@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
-ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832646"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072749"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
 
@@ -146,7 +146,7 @@ Y **:** Evet, [Standart kota isteği işlemi](../azure-portal/supportability/per
 Y **:** Hayır, bayrak ayarı `Spot` yalnızca oluşturma sırasında desteklenir.
 
 
-**S:** `low`Düşük öncelikli ölçek kümeleri için kullanılıyorsa, bunun yerine kullanmaya başlamam gerekir `Spot` mi?
+**S:** `low` Düşük öncelikli ölçek kümeleri için kullanılıyorsa, bunun yerine kullanmaya başlamam gerekir `Spot` mi?
 
 Y **:** Şimdilik her ikisi de `low` `Spot` çalışır, ancak kullanmaya geçiş başlatmanız gerekir `Spot` .
 
@@ -174,11 +174,11 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Evet                               |
-| Kullandıkça Öde                | Evet                               |
+| Kurumsal Anlaşma         | Yes                               |
+| Kullandıkça Öde                | Yes                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](/partner-center/azure-plan-get-started) |
-| Yararları                     | Kullanılamaz                     |
-| Sponsorlu                    | Evet                               |
+| Avantajlar                     | Kullanılamaz                     |
+| Sponsorlu                    | Yes                               |
 | Ücretsiz Deneme                   | Kullanılamaz                     |
 
 

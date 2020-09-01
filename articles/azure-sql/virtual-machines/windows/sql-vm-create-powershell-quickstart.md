@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a458e0c03687df9d1cd53df69b8cf275da04174a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514620"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073701"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Windows sanal makinesinde SQL Server oluşturma
 
@@ -29,7 +30,7 @@ Bu hızlı başlangıçta Azure PowerShell ile SQL Server sanal makine (VM) olu�
 > - Bu hızlı başlangıç, hızlı bir şekilde bir SQL VM sağlama ve VM’ye bağlanma yolu sağlar. SQL VM’leri oluşturmaya yönelik diğer Azure PowerShell seçenekleri hakkında daha fazla bilgi için bkz. [Azure PowerShell ile SQL Server VM'leri için sağlama kılavuzu](create-sql-vm-powershell.md).
 > - SQL Server sanal makineleri hakkında sorularınız olursa [Sık Sorulan Sorular](frequently-asked-questions-faq.md) bölümüne bakın.
 
-## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure aboneliği edinme
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Azure aboneliği edinme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -196,7 +197,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManageme
 
 1. Uzak Masaüstü oturumunda oturum açtıktan sonra Başlat menüsünden **SQL Server Management Studio 2017** ' u başlatın.
 
-1. **Sunucuya Bağlan** iletişim kutusunda, Varsayılanları koruyun. Sunucu adı, VM'nin adıdır. Kimlik doğrulaması, **Windows Kimlik Doğrulaması** olarak ayarlanmıştır. **Bağlan**'ı seçin.
+1. **Sunucuya Bağlan** iletişim kutusunda, Varsayılanları koruyun. Sunucu adı, VM'nin adıdır. Kimlik doğrulaması, **Windows Kimlik Doğrulaması** olarak ayarlanmıştır. **Bağlan**’ı seçin.
 
 Artık SQL Server yerel olarak bağlı olursunuz. Uzaktan bağlanmak istiyorsanız Azure portal bağlantıyı veya el ile [yapılandırmanız](ways-to-connect-to-sql.md) gerekir.
 

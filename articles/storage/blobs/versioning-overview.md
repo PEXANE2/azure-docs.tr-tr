@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056542"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074543"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -29,6 +29,8 @@ Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz.
 
 > [!IMPORTANT]
 > Blob sürümü oluşturma, bir depolama hesabı veya kapsayıcısının yanlışlıkla silinmesini kurtarmanıza yardımcı olamaz. Depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-versioning-works"></a>Blob sürümü oluşturma nasıl kullanılır?
 
@@ -163,7 +165,7 @@ Sürümlü bir Blobun anlık görüntüsünü aldığınızda, anlık görüntü
 
 Aşağıdaki diyagramda, sürümlü bir Blobun anlık görüntüsünü alırken ne olacağı gösterilmektedir. Diyagramda, sürüm KIMLIĞI 2 ve 3 olan blob sürümleri ve anlık görüntüler aynı verileri içerir.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Sürümlü bir Blobun anlık görüntülerini gösteren diyagram":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Sürümlü bir Blobun anlık görüntülerini gösteren diyagram ":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Blob sürümlerinde yetkilendirme işlemleri
 
@@ -179,7 +181,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |

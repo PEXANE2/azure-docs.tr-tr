@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: edbce017b1090a029d49c9f2f8812e7e65133fcb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495174"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073140"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
 
@@ -31,6 +31,8 @@ Aşağıdaki diyagramda, nesne çoğaltmanın, blok bloblarını bir bölgedeki 
 :::image type="content" source="media/object-replication-overview/object-replication-diagram.svg" alt-text="Nesne çoğaltmasının nasıl çalıştığını gösteren diyagram":::
 
 Nesne çoğaltmasını yapılandırma hakkında bilgi edinmek için bkz. [nesne çoğaltmasını yapılandırma (Önizleme)](object-replication-configure.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="object-replication-policies-and-rules"></a>Nesne çoğaltma ilkeleri ve kuralları
 
@@ -77,7 +79,7 @@ Kaynak ve hedef hesapların her ikisi de, nesne çoğaltmasını kullanmak için
 ### <a name="prerequisites-for-object-replication"></a>Nesne çoğaltma için önkoşullar
 
 Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir: 
-- [Akışı Değiştir](storage-blob-change-feed.md)
+- [Akışı değiştirme](storage-blob-change-feed.md)
 - [Sürüm oluşturma](versioning-overview.md)
 
 Nesne çoğaltmasını yapılandırmadan önce, önkoşullarını etkinleştirin. Kaynak hesapta değişiklik akışı etkinleştirilmelidir ve hem kaynak hem de hedef hesapta blob sürümü oluşturma etkinleştirilmiş olmalıdır. Bu özellikleri etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:

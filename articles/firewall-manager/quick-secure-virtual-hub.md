@@ -1,19 +1,19 @@
 ---
 title: "Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi 'Ni Kaynak Yöneticisi şablonu kullanarak güvenli sanal hub"
-description: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme hakkında bilgi edinin.
+description: Bu hızlı başlangıçta, Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme hakkında bilgi edineceksiniz.
 services: firewall-manager
 author: vhorne
-ms.service: firewall
+ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705767"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075350"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi-ARM şablonunu kullanarak sanal hub 'ınızı güvenli hale getirme
 
@@ -59,7 +59,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, sanal bir WAN ve sanal hub, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+   [![Azure’a dağıt](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 2. Portalda, **güvenli sanal hub 'lar** sayfasında, aşağıdaki değerleri yazın veya seçin:
    - Abonelik: mevcut abonelikler arasından seçim yapın 

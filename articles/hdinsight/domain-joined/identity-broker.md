@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086611"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075316"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için KIMLIK Aracısı (Önizleme) kullan
 
@@ -38,7 +38,7 @@ KIMLIK Aracısı, parola sağlamadan Multi-Factor Authentication kullanarak ESP 
 
 KIMLIK Aracısı etkin bir ESP kümesi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Bir ESP kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için bkz. [ESP Ile HDInsight kümesi oluşturma](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. **HDıNSIGHT kimlik Broker 'ı etkinleştir**' i seçin.
 
@@ -98,13 +98,21 @@ KIMLIK Aracısı etkinleştirildikten sonra, etki alanı hesaplarıyla SSH senar
 
 SSH kimlik doğrulaması, karmasının Azure AD DS kullanılabilir olmasını gerektirir. SSH 'yi yalnızca yönetim senaryoları için kullanmak istiyorsanız yalnızca bir bulut hesabı oluşturabilir ve bunu kümeye SSH için kullanabilirsiniz. Diğer kullanıcılar, Azure AD DS 'de Parola karması olmadan ambarı veya HDInsight araçlarını (IntelliJ eklentisi gibi) kullanmaya devam edebilir.
 
+Kimlik doğrulama sorunlarını gidermek için lütfen bu [kılavuza](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)bakın.
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>KIMLIK Aracısı kurulumu ile HDInsight ağ geçidine bağlanmak için OAuth kullanan istemciler
 
 KIMLIK Aracısı kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirtecini almak üzere güncelleştirilebilen olabilir. Bu [belgedeki](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) adımları izleyerek belirteci aşağıdaki bilgilerle elde edebilirsiniz:
 
-*   OAuth Kaynak URI 'si:`https://hib.azurehdinsight.net` 
+*   OAuth Kaynak URI 'si: `https://hib.azurehdinsight.net` 
 * AppID: 7865c1d2-F040-46cc-875f-831a1ef6a28a
 *   İzin: (ad: Cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+OAuth belirtecini gönderdikten sonra, küme ağ geçidine (ör.-int.azurehdinsight.net) HTTP isteğinin yetkilendirme üstbilgisinde bunu kullanabilirsiniz <clustername> . Örneğin, Livy API 'ye örnek bir kıvrımlı komut aşağıdaki gibi görünebilir:
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,17 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 801032e3df9dcb778fa4e591ef37eabc317e997a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736331"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073345"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresini değiştirme (klasik)
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
@@ -123,7 +124,7 @@ Devreniz artık ExpressRoute Premium eklenti özellikleri etkin olur. Komut baş
 >
 >
 
-#### <a name="considerations"></a>Önemli noktalar
+#### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Premium 'dan standart sürümüne düşürme yapmadan önce, bağlantı hattına bağlı sanal ağların sayısının 10 ' dan küçük olduğundan emin olun. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve Premium ücretler üzerinden faturalandırılırsınız.
 * Diğer geopolitik bölgelerdeki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve Premium ücretler üzerinden faturalandırılırsınız.
@@ -191,7 +192,7 @@ At line:1 char:1
 
 ## <a name="deprovision-and-delete-a-circuit"></a>Devre sağlamasını kaldırma ve silme
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Bu işlemin başarılı olması için tüm sanal ağların ExpressRoute bağlantı hattından bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, bağlantı hattına bağlı sanal ağlarınızın olup olmadığını denetleyin.
 * ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.

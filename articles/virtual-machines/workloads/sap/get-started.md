@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871386"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075962"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -88,6 +88,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 08/28/2020: mımpo 'yi onarmak için [ANF Ile SLES 'Teki Azure VM 'LERINDE SAP NW Için ha](./high-availability-guide-suse-netapp-files.md) 'de değiştirin
 - 08/25/2020: [wsfc ve paylaşılan disk Ile SAP ascs/SCS Için ha kılavuzunda](./sap-high-availability-guide-wsfc-shared-disk.md)değişiklik yaparken, wsfc ve paylaşılan DISK [Ile SAP ascs/SCS için Azure altyapısını hazırlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ve Azure PAYLAŞıLAN DISK ve belge SAP ERS2 mimarisini kullanma seçeneğini göstermek için [wsfc ve PAYLAŞıLAN disk Ile SAP NW ha 'yı yükledikten](./sap-high-availability-guide-wsfc-shared-disk.md) sonra
 - 08/25/2020: [wsfc ve Azure Paylaşılan disk Ile SAP yoks/SCS için çok DÜZEYLI ha kılavuzunun](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) yayını
 - 08/25/2020: [wsfc ve Azure NetApp Files (SMB) Ile SAP ASCS/SCS Için ha kılavuzunda](./high-availability-guide-windows-netapp-files-smb.md)değiştirme wsfc ve [dosya paylaşımıyla](./sap-high-availability-infrastructure-wsfc-file-share.md)SAP yoks/SCS, wsfc ve [paylaşılan disk](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) ile SAP yoks/SCS için çok düzeyli ha Kılavuzu, wsfc ve paylaşılan disk ile SAP yoks/SCS IÇIN çok [düzeyli ha Kılavuzu ve WFC](./sap-ascs-ha-multi-sid-wsfc-file-share.md) ve paylaşılan disk ile SAP 

@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001068"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074415"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)
 
@@ -24,6 +24,8 @@ Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storag
 Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak depolama hesabı için blob sürüm oluşturma 'nın nasıl etkinleştirileceği veya devre dışı bırakılacağı gösterilmektedir.
 
 Blob sürümü oluşturmayı etkinleştirmeden önce önizlemeye kaydolmanız gerekir. Önizleme için nasıl kayıt yapılacağı dahil olmak üzere blob sürümü oluşturma hakkında daha fazla bilgi edinmek için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 

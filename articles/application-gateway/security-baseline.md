@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 562a0fbd64fca530598a58599160dbdd7e479557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f5e8d9efdacf6d5c281cabebc08bd525d517f9d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485633"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074721"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway için Azure Güvenlik temeli
 
@@ -156,7 +156,7 @@ Azure Application Gateway alt ağlarınız ile ilişkili ağ güvenlik grupları
 
 **Rehberlik**: Azure Application Gateway dağıtımlarınızla ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Application Gateway, Azure sanal ağları ve ağ güvenlik gruplarının ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Network" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, yerleşik ilke tanımını da kullanabilirsiniz.
 
-Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
+Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 
 * [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -561,11 +561,11 @@ Microsoft, Azure Application Gateway için temel altyapıyı yönetir ve müşte
 
 **Sorumluluk**: geçerli değil
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure Application Gateway denetim düzlemi 'ne (Azure Portal) erişimi denetlemek için Azure ACTIVE DIRECTORY (ad) rol tabanlı erişim denetımı (RBAC) kullanın.
+**Kılavuz**: Azure Application Gateway denetim düzlemine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın (Azure Portal).
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

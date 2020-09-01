@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bb4cc150fab388846b35dc9adebfacf7a56e9bbc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073514"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -480,11 +480,11 @@ Microsoft, Azure Backup için temel altyapıyı yönetir ve müşteri verilerini
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
+**Kılavuz**: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
 
 Azure Backup yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol sağlar: yedek katkıda bulunan, yedekleme operatörü ve yedek okuyucu. Yedekleme yerleşik rollerini çeşitli yedekleme yönetimi eylemlerine eşleyebilirsiniz.
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 - [Azure Backup kurtarma noktalarını yönetmek için rol tabanlı Access Control kullanma](./backup-rbac-rs-vault.md)
 
