@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420830"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079124"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme
 
@@ -33,6 +33,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir güvenlik duvarı ilkesi oluşturma ve merkezinizi güvenli hale getirme
 > * Güvenlik duvarını test etme
 
+## <a name="prerequisites"></a>Ön koşullar
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
 ## <a name="create-a-hub-and-spoke-architecture"></a>Hub ve bağlı bileşen mimarisi oluşturma
 
 İlk olarak, sunucularınızı yerleştirebileceğiniz bağlı olan sanal ağlar oluşturun.
@@ -52,7 +56,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 3. **Alt ağ ekle**' yi seçin.
 4. **Iş yükü-01-sn**yazın.
 5. **Alt ağ adres aralığı**için **10.1.1.0/24**yazın.
-6. **Ekle**'yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 1. **Gözden geçir ve oluştur**’u seçin.
 2. **Oluştur**’u seçin.
 
@@ -182,7 +186,7 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 10. **Protokol**için **http, https**yazın.
 11. **Hedef türün** **FQDN**olduğundan emin olun.
 12. **Hedef**için ** \* . Microsoft.com**yazın.
-13. **Ekle**'yi seçin.
+13. **Add (Ekle)** seçeneğini belirleyin.
 
 Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz IÇIN BIR DNAT kuralı ekleyin.
 
@@ -199,7 +203,7 @@ Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz I
 11. **Hedef**için, daha önce not ettiğiniz güvenlik DUVARı genel IP adresini yazın.
 12. **Çevrilen adres**için, daha önce not ettiğiniz **SRV-Workload-01** özel IP adresini yazın.
 13. **Çevrilmiş bağlantı noktası** için **3389** yazın.
-14. **Ekle**'yi seçin.
+14. **Add (Ekle)** seçeneğini belirleyin.
 
 Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' e bir uzak masaüstü bağlayabilirsiniz.
 
@@ -214,7 +218,7 @@ Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' 
 9. **Hedef bağlantı noktaları**için **3389**yazın.
 9. **Hedef türü**Için **IP adresi**' ni seçin.
 10. **Hedef**için, daha önce not ettiğiniz **SRV-Workload-02** özel IP adresini yazın.
-11. **Ekle**'yi seçin.
+11. **Add (Ekle)** seçeneğini belirleyin.
 1. **İleri ' yi seçin: tehdit bilgileri**.
 2. Ileri 'yi seçin **: hub**.
 3. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.
@@ -234,7 +238,7 @@ Artık ağ trafiğinin güvenlik duvarınız üzerinden yönlendirildiğinden em
 4. **Internet trafiği**altında **Azure Güvenlik Duvarı**' nı seçin.
 5. **Özel trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
 10. **Hub-ışınsal** bağlantısı bağlantısının **Internet trafiğini** **güvenli**olarak gösterdiğini doğrulayın.
-11. **Kaydet**'i seçin.
+11. **Kaydet**’i seçin.
 
 
 ## <a name="test-your-firewall"></a>Güvenlik duvarınızı test etme
@@ -270,6 +274,10 @@ Artık güvenlik duvarı uygulama kuralının çalıştığını doğruladınız
 
 Artık güvenlik duvarı ağ kuralının çalıştığını doğruladınız:
 * Uzak bir masaüstünü, başka bir sanal ağda bulunan bir sunucuya bağlayabilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Güvenlik Duvarı kaynaklarınızı test etmeyi tamamladığınızda, güvenlik duvarı ile ilgili tüm kaynakları silmek için **FW-Manager** kaynak grubunu silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

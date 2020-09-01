@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044184"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079192"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -598,15 +598,15 @@ Veri bulma ve sınıflandırma özellikleri henüz diğer Azure hizmetleri için
 
 **Sorumluluk**: müşteri
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: Azure Data Factory denetim düzlemine erişimi denetlemek için (Azure portal) Azure ACTIVE DIRECTORY (ad) rol tabanlı erişim denetımı (RBAC) kullanın.
+**Rehberlik**: Azure Data Factory denetim düzlemine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın (Azure Portal).
 
 Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, katkıda bulunan, sahip veya yönetici rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır.
 
-Azure SQL veritabanı gibi Data Factory veri kaynaklarınız için, RBAC ile ilgili daha fazla bilgi için ilgili hizmetin güvenlik temeline bakın.
+Azure SQL veritabanı gibi Data Factory veri kaynaklarınız için, Azure RBAC hakkında daha fazla bilgi için ilgili hizmetin güvenlik temeline bakın.
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Azure Data Factory için roller ve izinler](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -656,7 +656,7 @@ Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etk
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-* [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+* [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -808,7 +808,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 Note: yazılım adı, sürüm, yayımcı ve yenileme süresi Azure portal kullanılabilir. Yüklemenin tarih ve diğer bilgilerine erişim sağlamak için, müşteri, Konuk düzeyinde tanılamayı etkinleştirmek ve Windows olay günlüklerini bir Log Analytics çalışma alanına getirmelerini sağlamak için gereklidir.
 
-* [Azure Otomasyonu'na giriş](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Otomasyonu’na giriş](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [Azure VM envanterini etkinleştirme](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
@@ -820,7 +820,7 @@ Note: yazılım adı, sürüm, yayımcı ve yenileme süresi Azure portal kullan
 
 **Kılavuz**: Azure sanal makinesinde Integration Runtime çalıştırıyorsanız Azure Otomasyonu, dağıtım, işlemler ve iş yüklerinin ve kaynakların yetkisini alma sırasında tüm denetimi sağlar. Sanal makinelerde yüklü olan tüm yazılımları tanımlamak için Değişiklik İzleme kullanabilirsiniz. Kendi işleminizi uygulayabilir veya yetkisiz yazılımı kaldırmak için Azure Otomasyonu durum yapılandırması ' nı kullanabilirsiniz.
 
-* [Azure Otomasyonu'na giriş](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Otomasyonu’na giriş](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin](https://docs.microsoft.com/azure/automation/change-tracking)
 
@@ -984,15 +984,15 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
-**Kılavuz**: özel görüntüler kullanıyorsanız, yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için rol tabanlı erişim denetımı (RBAC) kullanın. Kapsayıcı görüntüleri için Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için RBAC 'den yararlanın.
+**Kılavuz**: özel görüntüler kullanıyorsanız, görüntülere yalnızca yetkili kullanıcıların erişebildiğinden emin olmak için Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) kullanın. Kapsayıcı görüntüleri için Azure Container Registry depolayın ve yalnızca yetkili kullanıcıların görüntülere erişebildiğinden emin olmak için Azure RBAC 'den yararlanın.
 
 Data Factory katkıda bulunan rolü, veri fabrikalarının yanı sıra bunların içindeki alt kaynakların oluşturulması ve yönetilmesi için kullanılabilir.
 
-* [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Container Registry için RBAC 'yi anlayın](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Container Registry için Azure RBAC 'nı anlama](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Azure Data Factory için roller ve izinler](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 

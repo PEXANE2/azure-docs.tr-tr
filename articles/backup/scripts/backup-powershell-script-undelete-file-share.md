@@ -3,12 +3,13 @@ title: PowerShell betiği-silinmiş bir dosya paylaşımının silmeyi geri al
 description: Yanlışlıkla silinen bir dosya paylaşımının silmeyi geri almak için Azure PowerShell betiğini nasıl kullanacağınızı öğrenin.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007641"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079872"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>Yanlışlıkla silinen dosya paylaşımının silmeyi geri almak için PowerShell betiği
 
@@ -177,7 +178,7 @@ Aşağıdaki örnek, depolama hesabı *afsshare*'da bulunan *Share1* dosya payla
    .\UnDelete.ps1 -ResourceGroupName afsshare -StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1
 ```
 
-Çıktıda ileti gösterilmesi gerekir`Completed:Restore File Share`
+Çıktıda ileti gösterilmesi gerekir `Completed:Restore File Share`
 
 #### <a name="scenario-2"></a>2\. Senaryo
 
@@ -185,7 +186,7 @@ Silmeyi denediğiniz dosya adı ile aynı ada sahip birden fazla silinmiş sür�
 
 Aşağıdaki örnek dosya paylaşımının bir sürümünü kaldırır *Share1*
 
-##### <a name="step-1"></a>1\. Adım
+##### <a name="step-1"></a>1. Adım
 
 Dosya paylaşımının adını sağlayarak betiği aşağıdaki gibi yürütün.
 

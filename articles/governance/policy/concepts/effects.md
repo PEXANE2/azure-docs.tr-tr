@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958771"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079668"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -488,7 +488,7 @@ Aşağıdaki işlemler değiştirme tarafından desteklenir:
 - `identity.type`Sanal makineler ve sanal makine ölçek kümelerinin yönetilen kimlik türü () değerini ekleyin veya değiştirin.
 - Belirli diğer adların (Önizleme) değerlerini ekleyin veya değiştirin.
   - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` komutunu kullanma
-    Azure PowerShell ' de, değiştirme ile kullanılabilecek diğer adların bir listesini almak için.
+    Azure PowerShell **4.6.0** veya üzeri sürümlerde, değiştirme ile kullanılabilecek diğer adların bir listesini alın.
 
 > [!IMPORTANT]
 > Etiketleri yönetiyorsanız, değişiklik olarak ekle yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme olanağı sağlar. Ancak, yönetilen bir kimlik oluşturmadıysanız veya değiştirme henüz kaynak özelliği için diğer adı desteklemiyorsa, ekleme önerilir.

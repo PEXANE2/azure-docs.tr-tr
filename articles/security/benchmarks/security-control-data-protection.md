@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045544"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079005"
 ---
 # <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
 
@@ -46,7 +46,7 @@ Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanla
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.3 | 13,3 | Shared |
+| 4.3 | 13,3 | Paylaşılan |
 
 Hassas bilgilerin yetkisiz aktarımını izleyen ve bilgi güvenliği uzmanlarına uyarı ederken bu tür aktarımları engelleyen bir üçüncü taraf çözümünü Azure Marketi 'nden yararlanın.
 
@@ -58,7 +58,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.4 | 14,4 | Shared |
+| 4.4 | 14,4 | Paylaşılan |
 
 Yoldaki tüm hassas bilgileri şifreleyin. Azure kaynaklarınıza bağlanan tüm istemcilerin TLS 1,2 veya üzerini anlaşamadığından emin olun.
 
@@ -70,7 +70,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4,5 | 14,5 | Shared |
+| 4,5 | 14,5 | Paylaşılan |
 
 Azure 'daki belirli bir hizmet için kullanılabilir bir özellik yoksa, şirket içinde veya uzak bir hizmet sağlayıcısında bulunan ve kuruluşun önemli bilgi envanterini güncelleştiren tüm hassas bilgileri, kuruluşunuzun teknoloji sistemleri tarafından saklanan, işlenen veya aktarılan tüm hassas bilgileri tanımlamak için üçüncü taraf bir etkin bulma aracı kullanın.
 
@@ -84,21 +84,21 @@ Azure SQL veritabanı 'nda depolanan bilgilerin sınıflandırmasına ve etiketl
 
 - [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 4.6 | 14,6 | Müşteri |
 
-Veri ve kaynaklara erişimi denetlemek için Azure AD RBAC kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın.
+Veri ve kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın.
 
-- [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4,7 | 14,7 | Shared |
+| 4,7 | 14,7 | Paylaşılan |
 
 İşlem kaynaklarında uyumluluk için gerekliyse, verileri bir sistemden kopyalandıklarında bile verilere erişim denetimlerine zorlamak için otomatik ana bilgisayar tabanlı veri kaybı önleme çözümü gibi bir üçüncü taraf aracı uygulayın.
 
@@ -131,4 +131,4 @@ Azure Izleyici 'yi Azure etkinlik günlüğü ile birlikte kullanarak, önemli A
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sonraki güvenlik denetimine bakın: [güvenlik açığı yönetimi](security-control-vulnerability-management.md)
+- Sonraki güvenlik denetimine bakın:  [güvenlik açığı yönetimi](security-control-vulnerability-management.md)

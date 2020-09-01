@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117138"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89094249"
 ---
 [Dayanıklı işlevler](../articles/azure-functions/durable-functions-overview.md)için yapılandırma ayarları.
 
@@ -59,6 +59,7 @@ ms.locfileid: "80117138"
       "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
       "trackingStoreNamePrefix": "DurableTask",
+      "useLegacyPartitionManagement": true,
       "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
@@ -83,9 +84,10 @@ ms.locfileid: "80117138"
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
     "extendedSessionIdleTimeoutInSeconds": 30,
+    "useAppLease": true,
     "useGracefulShutdown": false
   }
-  }
+ }
 }
 
 ```
@@ -104,7 +106,7 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 |maxConcurrentOrchestratorFunctions |10 x geçerli makinedeki işlemci sayısı|Tek bir konak örneğinde eşzamanlı olarak işlenebilecek Orchestrator işlevlerinin maksimum sayısı.|
 |Maxqueuepollingınterval|30 saniye|*SS: DD: ss* biçiminde maksimum denetim ve iş öğesi kuyruğu yoklama aralığı. Daha yüksek değerler ileti işleme gecikmelerinin oluşmasına neden olabilir. Daha düşük değerler, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.|
 |Azurestoraygeconnectionstringname |AzureWebJobsStorage|Temel Azure depolama kaynaklarını yönetmek için kullanılan Azure depolama bağlantı dizesine sahip uygulama ayarının adı.|
-|trackingStoreConnectionStringName||Geçmiş ve örnekler tabloları için kullanılacak bağlantı dizesinin adı. Belirtilmemişse, `azureStorageConnectionStringName` bağlantı kullanılır.|
+|trackingStoreConnectionStringName||Geçmiş ve örnekler tabloları için kullanılacak bağlantı dizesinin adı. Belirtilmemişse, `connectionStringName` (dayanıklı 2. x) veya `azureStorageConnectionStringName` (dayanıklı 1. x) bağlantısı kullanılır.|
 |trackingStoreNamePrefix||Belirtildiğinde, geçmiş ve örnekleri tabloları için kullanılacak ön ek `trackingStoreConnectionStringName` . Ayarlanmamışsa, varsayılan ön ek değeri olacaktır `DurableTask` . `trackingStoreConnectionStringName`Belirtilmemişse, geçmiş ve örnekler tabloları `hubName` ön ekler olarak değeri kullanır ve için herhangi bir ayar `trackingStoreNamePrefix` yok sayılır.|
 |traceInputsAndOutputs |yanlış|İşlev çağrılarının giriş ve çıkışları takip edilip edilmeyeceğini belirten bir değer. İşlev yürütme olaylarının izlenirken, işlev çağrılarının seri hale getirilmiş giriş ve çıkışlarındaki bayt sayısını eklemek varsayılan davranıştır. Bu davranış, girişlerin ve çıktıların günlüğe kaydetmeksizin veya farkında olmadan hassas bilgileri açığa çıkarmadan nasıl göründüğünü öğrenmek için en az bilgi sağlar. Bu özelliğin true olarak ayarlanması, işlev girişlerinin ve çıktıların tüm içeriğini günlüğe kaydetmek için varsayılan işlev günlüğe kaydetmenin oluşmasına neden olur.|
 |Günlüğe kaydetme Yevents|yanlış|Application Insights için düzenleme yeniden yürütme olaylarının yazılacağını belirten bir değer.|
@@ -113,6 +115,8 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 |eventGridPublishRetryCount|0|Event Grid konusunda yayımlama başarısız olursa kaç kez yeniden deneneceği.|
 |Eventgridpublishretryınterval|5 dakika|Event Grid, *HH: mm: ss* biçiminde yeniden deneme aralığı yayımlar.|
 |eventGridPublishEventTypes||Event Grid yayımlanacak olay türlerinin listesi. Belirtilmezse, tüm olay türleri yayımlanır. İzin verilen değerler şunlardır,,, `Started` `Completed` `Failed` `Terminated` .|
+|useAppLease|true|Olarak ayarlandığında `true` , uygulamalar, görev hub 'ı iletilerini işlemeden önce uygulama düzeyi blob kirası almak için gerekli olacaktır. Daha fazla bilgi için [olağanüstü durum kurtarma ve coğrafi dağıtım](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) belgelerine bakın. V 2.3.0 'dan başlayarak kullanılabilir.
+|useLegacyPartitionManagement|true|Olarak ayarlandığında `false` , ölçekleme sırasında yinelenen işlev yürütme olasılığını azaltan bir bölüm yönetimi algoritması kullanır.  V 2.3.0 'dan başlayarak kullanılabilir. Varsayılan değer `false` gelecek bir sürümde olarak değiştirilir.|
 |useGracefulShutdown|yanlış|Önizle İşlem sırasında işlev yürütmelerinin başarısız olmasına neden olan konak kapanmalarının olasılığını azaltmak için düzgün bir şekilde kapatmayı etkinleştirin.|
 
 Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable-functions-perf-and-scale.md).

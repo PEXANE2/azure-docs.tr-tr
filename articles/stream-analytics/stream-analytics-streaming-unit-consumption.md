@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903570"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079685"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Akış Birimlerini anlama ve ayarlama
 
@@ -20,7 +20,7 @@ Akış birimleri (SUs) Stream Analytics işini yürütmek için ayrılan bilgi i
 
 Düşük gecikme süreli akış işlemeyi başarabilmek için, Azure Stream Analytics işleri tüm işlemi bellekte gerçekleştirir. Bellek tükençalışırken, akış işi başarısız olur. Sonuç olarak, bir üretim işi için bir akış işinin kaynak kullanımını izlemek önemlidir ve 24/7 çalıştıran işleri tutmak için yeterli kaynak bulunduğundan emin olun.
 
-%0 ile %100 arasında değişen% SU kullanım ölçümü, iş yükünüzün bellek tüketimini açıklamaktadır. Minimum parmak izine sahip bir akış işi için bu ölçüm genellikle %10 ila %20 arasındadır. % SU kullanımı düşükse ve giriş olayları geri yazılır duruma gelir, iş yükünüz muhtemelen daha fazla bilgi işlem kaynağı gerektirir, bu da SUs sayısını artırmanız gerekir. SU ölçüsünü zaman zaman ani artışlar için %80 oranında hesaba tutmanız en iyisidir. Microsoft, kaynak tükenmesi 'ni engellemek için %80 SU kullanım ölçümü üzerinde bir uyarı ayarlanmasını öneriyor. Daha fazla bilgi için bkz. [öğretici: Azure Stream Analytics işleri için uyarıları ayarlama](stream-analytics-set-up-alerts.md).
+%0 ile %100 arasında değişen% SU kullanım ölçümü, iş yükünüzün bellek tüketimini açıklamaktadır. Minimum parmak izine sahip bir akış işi için bu ölçüm genellikle %10 ila %20 arasındadır. % SU kullanımı yüksek (%80) ise veya giriş olayları geri günlüğe alırsa (CPU kullanımını göstermese de, düşük SU kullanımı ile bile), iş yükünüz muhtemelen daha fazla bilgi işlem kaynağı gerektirir ve bu da SUs sayısını artırmanız gerekir. SU ölçüsünü zaman zaman ani artışlar için %80 oranında hesaba tutmanız en iyisidir. Microsoft, kaynak tükenmesi 'ni engellemek için %80 SU kullanım ölçümü üzerinde bir uyarı ayarlanmasını öneriyor. Daha fazla bilgi için bkz. [öğretici: Azure Stream Analytics işleri için uyarıları ayarlama](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics akış birimlerini (SUs) yapılandırma
 1. [Azure Portal](https://portal.azure.com/) oturum açın
@@ -111,7 +111,7 @@ Birleşimdeki eşleşmeyen olay sayısı sorgunun bellek kullanımını etkiler.
 
 Bu örnekte, çok sayıda reklam gösterilmesi ve birkaç kişinin üzerine tıkladığından ve tüm olayların zaman penceresinde tutulması gerekir. Tüketilen bellek miktarı pencere boyutu ve olay hızıyla doğru orantılıdır. 
 
-Bunu düzeltmek için, Olay Hub 'ına JOIN anahtarlarına (Bu durumda KIMLIK) göre bölümlenmiş olayları gönderin ve aşağıdaki gibi, sistem her giriş bölümünü **bölüm** kullanarak ayrı olarak işlemesini sağlayarak sorguyu ölçeklendirin:
+Bunu düzeltmek için, Olay Hub 'ına JOIN anahtarlarına (Bu durumda KIMLIK) göre bölümlenmiş olayları gönderin ve aşağıdaki gibi, sistem her giriş bölümünü  **bölüm** kullanarak ayrı olarak işlemesini sağlayarak sorguyu ölçeklendirin:
 
    ```sql
    SELECT clicks.id

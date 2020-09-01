@@ -4,7 +4,7 @@
   items:
     - name: AKS hakkında
       href: intro-kubernetes.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: AKS Kümesi oluşturma
@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service Tanılamasına Genel Bakış
       href: concepts-diagnostics.md
+    - name: Sürdürülebilir yazılım mühendisliği
+      href: concepts-sustainable-software-engineering.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Küm işlemleri

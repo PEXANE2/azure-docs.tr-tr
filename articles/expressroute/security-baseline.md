@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f84c73f3fbefddd2972f077826fe1e2a8738ad5a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079046"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079158"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute için Azure Güvenlik temeli
 
@@ -240,13 +240,13 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 **Kılavuz**: Azure ExpressRoute kaynaklarınızın denetim düzlemi (ör. Azure Portal) üzerinde yönetici erişimi olan kullanıcı hesaplarının envanterini saklayın.
 
-Rol tabanlı erişim denetimi 'ni (RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır.
+Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır.
 
 Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları, expressRouteCrossConnection kaynağına rol tabanlı Access Control uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
-* [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [ExpressRoute ortağında RBAC 'den yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [ExpressRoute ortağında Azure RBAC 'ten yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -437,7 +437,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 * [ExpressRoute üzerinden siteden siteye ıPSEC yapılandırması yapılandırma](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
 
-ExpressRoute üzerinden siteden siteye ıPSEC 'i yapılandırma:https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
+ExpressRoute üzerinden siteden siteye ıPSEC 'i yapılandırma: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -453,17 +453,17 @@ ExpressRoute üzerinden siteden siteye ıPSEC 'i yapılandırma:https://docs.mic
 
 **Sorumluluk**: geçerli değil
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: rol tabanlı erişim denetimi 'NI (RBAC) yapılandırmak için, aboneliğiniz Için Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
+**Kılavuz**: Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) yapılandırmak için aboneliğinizin Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
 
 Azure ExpressRoute Ayrıca devre sahibine ve devre Kullanıcı rolüne sahiptir. Devre kullanıcıları ExpressRoute bağlantı hattı ile aynı abonelikte yer alan sanal ağ geçitlerinin sahiplerinden oluşur. Devre sahibinin, her zaman yetkilendirmeleri değiştirme ve iptal etme gücü vardır. Erişim iptal edilen abonelikten tüm bağlantı bağlantılarında silinen bir yetkilendirme sonuçları iptal ediliyor. Devre kullanıcıları yetkilendirmeleri (sanal ağ başına bir yetkilendirme) kullanabilir.
 
 Ayrıca, ExpressRoute Iş ortağı Kaynak Yöneticisi API 'sini kullanan iş ortakları, expressRouteCrossConnection kaynağına rol tabanlı Access Control uygulayabilir. Bu denetimler, Kullanıcı hesaplarının expressRouteCrossConnection kaynağını değiştirebileceği izinleri tanımlayabilir ve eşleme yapılandırmasını ekleyebilir/güncelleştirebilir/silebilir.
 
-* [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [ExpressRoute ortağında RBAC 'den yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [ExpressRoute ortağında Azure RBAC 'ten yararlanın Kaynak Yöneticisi API](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 * [ExpressRoute 'da yönetim rollerini anlama](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
 

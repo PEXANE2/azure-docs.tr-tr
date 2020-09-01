@@ -33,6 +33,8 @@
           href: dns-delegate-domain-azure-dns.md
         - name: Bir web uygulaması için özel DNS kayıtları oluşturma
           href: dns-web-sites-custom-domain.md
+        - name: Yeni Alt DNS bölgesi oluşturma
+          href: tutorial-public-dns-zones-child.md
         - name: Traffic Manager için diğer ad kayıtları
           href: tutorial-alias-tm.md
         - name: Genel IP adresleri için diğer ad kayıtları

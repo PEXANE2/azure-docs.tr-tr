@@ -1,20 +1,20 @@
 ---
 title: Bekleyen verilerin Translator şifrelemesi
 titleSuffix: Azure Cognitive Services
-description: Bekleyen verilerin Translator şifrelemesi.
+description: Microsoft, bilişsel hizmetler aboneliklerinizi, müşteri tarafından yönetilen anahtarlar (CMK) olarak adlandırılan kendi Anahtarlarınıza göre yönetmenizi sağlar. Bu makalede, çeviri için bekleyen veri şifrelemesi ve CMK 'nin nasıl etkinleştirileceği ve yönetileceği ele alınmaktadır.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310844"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079209"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Bekleyen verilerin Translator şifrelemesi
 
@@ -22,7 +22,7 @@ ms.locfileid: "84310844"
 
 ## <a name="about-cognitive-services-encryption"></a>Bilişsel hizmetler şifreleme hakkında
 
-[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak güvenlidir ve şifreleme avantajlarından yararlanmak için kodunuzu veya uygulamalarınızı değiştirmeniz gerekmez.
+[Fıps 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) uyumlu [256 bit AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) şifrelemesi kullanılarak veriler şifrelenir ve şifresi çözülür. Şifreleme ve şifre çözme saydamdır, bu da şifreleme ve erişimin sizin için yönetilip yönetilmediğini belirtir. Verileriniz varsayılan olarak koruma altındadır ve şifrelemeden yararlanmak için kodunuzu veya uygulamalarınızı değiştirmenize gerek yoktur.
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 
@@ -34,7 +34,7 @@ Yalnızca Microsoft tarafından yönetilen şifreleme anahtarlarını destekleye
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
 
-Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır. Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Aboneliğinizi, müşteri tarafından yönetilen anahtarlar (CMK) adlı kendi anahtarlarınız ile yönetme seçeneği de vardır. CMK, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz. Aboneliğiniz için CMK yapılandırıldıysa, ikinci bir koruma katmanı sunan ve Azure Key Vault şifreleme anahtarını denetlemenizi sağlayan çift şifreleme sağlanır.
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarlar, çevirmen hizmeti için tüm fiyatlandırma katmanlarında kullanılabilir. Müşteri tarafından yönetilen anahtarları kullanma olanağı istemek için [Translator müşteri tarafından yönetilen anahtar Isteği formunu](https://aka.ms/cogsvc-cmk) doldurun ve gönderebilirsiniz. Bu işlem, isteğinizin durumunu öğrenmek için yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. Translator hizmeti ile CMK kullanmaya onaylandıktan sonra yeni bir çevirmen kaynağı oluşturmanız gerekir. Çevirmen kaynağınız oluşturulduktan sonra, yönetilen kimliğinizi ayarlamak için Azure Key Vault kullanabilirsiniz.
@@ -44,8 +44,6 @@ Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır
 1. Yeni bölgesel Çevirmeninizi veya bölgesel bilişsel hizmetler kaynağını oluşturun. Bu, genel bir kaynakla çalışmaz.
 2. Azure portal yönetilen kimliği etkinleştirdi ve müşteri tarafından yönetilen anahtar bilgilerinizi ekleyin.
 3. Özel çevirmende yeni bir çalışma alanı oluşturun ve bu abonelik bilgilerini ilişkilendirin.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 

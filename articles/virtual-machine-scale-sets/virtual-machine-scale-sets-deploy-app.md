@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080531"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079600"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uygulamanızı sanal makine ölçek kümelerine dağıtma
 
@@ -43,8 +43,8 @@ Yapılandırma yönetimini ve VM sağlama süresini azaltmak için, ölçek küm
 
 PowerShell DSC Uzantısı, PowerShell ile bir ölçek kümesindeki sanal makine örneklerini özelleştirmenize olanak sağlar. Aşağıdaki örnek:
 
-- Sanal makine örneklerine GitHub 'dan bir DSC paketi indirmesini söyler.*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Uzantıyı bir Install betiği çalıştıracak şekilde ayarlar-`configure-http.ps1`
+- Sanal makine örneklerine GitHub 'dan bir DSC paketi indirmesini söyler. *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Uzantıyı bir Install betiği çalıştıracak şekilde ayarlar- `configure-http.ps1`
 - [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ile bir ölçek kümesi hakkında bilgi alır
 - Uzantıyı [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile sanal makine örneklerine uygular
 

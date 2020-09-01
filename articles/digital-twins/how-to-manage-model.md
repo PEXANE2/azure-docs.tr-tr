@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013013"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079785"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -170,9 +170,9 @@ Modeller, içinde karşıya yüklendikleri belge formunda tam olarak döndürül
 
 Bir model örneğinize yüklendikten sonra tüm model arabirimi sabittir. Bu, modellerin geleneksel "düzenlemesi" olmadığı anlamına gelir.
 
-Bunun yerine, veya değiştirmek gibi Azure dijital TWINS 'deki bir modelde değişiklik yapmak istiyorsanız, `DisplayName` `Description` bunu yapmanın yolu aynı modelin **daha yeni bir sürümünü** karşıya yüklemedir. Bu, özgün modeli geçersiz kılar.
+Bunun yerine, Azure dijital TWINS 'de bir modelde değişiklik yapmak istiyorsanız, bunu yapmanın yolu aynı modelin **daha yeni bir sürümünü** karşıya yüklemedir. Önizleme süresince, bir model sürümünün ilerleme özelliği yalnızca alanları kaldırmanıza izin verir, yenilerini eklememeniz gerekmez (yeni alanlar eklemek için yalnızca [bir marka yeni model oluşturmanız](#create-models)gerekir).
 
-Bunu yapmak için, özgün modelin DTDL ile başlayın. Değiştirmek istediğiniz alanları güncelleştirin.
+Varolan bir modelin yeni bir sürümünü oluşturmak için özgün modelin DTDL ile başlayın. Değiştirmek istediğiniz alanları güncelleştirin.
 
 Ardından, modelin alanını güncelleştirerek bunu modelin daha yeni bir sürümü olarak işaretleyin `id` . Model KIMLIĞININ son bölümü, öğesinden sonra, `;` model numarasını temsil eder. Bu modelin daha güncel bir sürümünü olduğunu göstermek için, değerin sonundaki sayıyı `id` geçerli sürüm numarasından daha büyük bir sayı olarak artırın.
 

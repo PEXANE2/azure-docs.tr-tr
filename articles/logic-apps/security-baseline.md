@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836335"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079651"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps için Azure Güvenlik temeli
 
@@ -182,7 +182,7 @@ Logic Apps tanılama günlükleri etkinleştirilmelidir
 
 DDoS koruma standardı etkinleştirilmelidir
 
-Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
+Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve ilkeler gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -641,7 +641,7 @@ Microsoft, Azure Logic Apps için temel altyapıyı yönetir ve müşteri verile
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
 **Rehberlik**: mantıksal uygulamaları yönetme, düzenleme ve görüntüleme gibi belirli görevleri yalnızca belirli kullanıcıların veya grupların çalıştırmasına izin verebilirsiniz. İzinlerini denetlemek için, Azure aboneliğinizdeki üyelere özelleştirilmiş veya yerleşik roller atayabilmeniz için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın:
 - Mantıksal uygulama katılımcısı: mantıksal uygulamaları yönetmenizi sağlar, ancak bunlara erişimi değiştiremezsiniz.
@@ -877,7 +877,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Rehberlik**: iş işlemlerinde gerekli olan, ancak kuruluşa daha fazla risk doğurabilecek Logic Apps ilgili kaynaklar, kendi sanal makinesi ve/veya sanal ağı içinde yalıtılmalı ve bir Azure Güvenlik Duvarı veya ağ güvenlik grubuyla yeterince güvenli hale getirilir.
 
-İş işlemleri için gerekli olan, ancak kuruluş için daha yüksek risk doğurabilecek Logic Apps, belirli izinlere ve RBAC sınırlarına sahip ayrı kaynak grupları aracılığıyla mümkün olan her yerde yalıtılmalıdır.
+İş işlemleri için gerekli olan, ancak kuruluş için daha yüksek risk doğurabilecek Logic Apps, belirli izinlere ve Azure RBAC sınırlarına sahip ayrı kaynak grupları aracılığıyla mümkün olan her yerde yalıtılmalıdır.
 
 * [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
@@ -885,7 +885,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 * [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Azure RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Güvenlik Merkezi izleme**: yok
 

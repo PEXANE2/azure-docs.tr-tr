@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 19548aa76d3dd08ebb8a1edd0cf726db6d458d67
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 044b1b145f95e81b2aa2474950d4961131c3c88a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212981"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079736"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzu için işlem ölçekleme
 
@@ -56,7 +56,7 @@ Duraklatmayı ve sürdürmeyi planladığınız veri ambarı için veritabanı a
 
 Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımları uygulayın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure portal sol gezinti sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
 3. Veri ambarını açmak için **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin.
 

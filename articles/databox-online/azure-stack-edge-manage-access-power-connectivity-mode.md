@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339731"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079804"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge için erişimi, gücü ve bağlantı modunu yönetme
 
@@ -95,7 +95,7 @@ Azure Stack Edge cihazında kayıtlı olmalıdır `Microsoft.DataBoxEdge` . Kayd
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Bağlantı modunu Yönet
 
@@ -120,7 +120,7 @@ Cihaz modunu değiştirmek için şu adımları izleyin:
  
 ## <a name="manage-power"></a>Güç yönetimi
 
-Yerel Web Kullanıcı arabirimini kullanarak fiziksel cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Yeniden başlatmadan önce, verileri veri sunucusunda ve ardından cihazda çevrimdışı duruma getirin. Bu eylem, herhangi bir veri bozulması olasılığını en aza indirir.
+Fiziksel cihazınızı yerel web kullanıcı arabirimini kullanarak kapatabilir ya da yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce veri sunucusundaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem veri bozulması olasılığını en aza indirir.
 
 1. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
 2. Ne yapmak istediğinize bağlı olarak, **kapanıyor** ' u veya **Yeniden Başlat** ' ı seçin.

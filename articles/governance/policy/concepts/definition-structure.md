@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958788"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079039"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -653,7 +653,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   ```
 
   > [!NOTE]
-  > [Değiştirme](./effects.md#modify) efektiyle kullanılabilecek diğer adları bulmak için aşağıdaki komutu kullanın:
+  > [Değişiklik](./effects.md#modify) efektiyle kullanılabilecek diğer adları bulmak için, Azure PowerShell **4.6.0** veya üzeri sürümlerde aşağıdaki komutu kullanın:
   >
   > ```azurepowershell-interactive
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
