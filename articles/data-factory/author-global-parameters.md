@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854358"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230848"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
 
@@ -41,15 +41,30 @@ Genel parametreler, herhangi bir [ardışık düzen ifadesinde](control-flow-exp
 
 ![Genel parametreleri kullanma](media/author-global-parameters/expression-global-parameters.png)
 
-## <a name="global-parameters-in-cicd"></a><a name="cicd"></a>CI/CD 'deki genel parametreler
+## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> CI/CD 'deki genel parametreler
 
-Genel parametreler, Azure Data Factory diğer varlıklara göre benzersiz bir CI/CD işlemine sahiptir. Genel parametrelerle bir fabrika yayımladığınızda veya bir ARM şablonunu dışarı aktardığınızda, *your-factory-name_GlobalParameters.jsüzerinde*adlı bir dosya Ile *globalparameters* adlı bir klasör oluşturulur. Bu dosya, yayımlanan fabrikada her genel parametre türünü ve değerini içeren bir JSON nesnesidir.
+Sürekli tümleştirme ve dağıtım çözümünüzde genel parametreleri tümleştirmenin iki yolu vardır:
+
+* ARM şablonuna genel parametreleri ekleyin
+* PowerShell betiği aracılığıyla genel parametreleri dağıtma
+
+Çoğu kullanım durumu için, ARM şablonuna genel parametreleri eklemeniz önerilir. Bu, yerel olarak [CI/CD belgesi](continuous-integration-deployment.md)içinde özetlenen çözümle tümleştirilir. Genel parametreler, genellikle ortamdan ortama geçiş yaparken varsayılan olarak ARM şablon parametresi olarak eklenecektir. Yönetim hub 'ından ARM şablonunda genel parametrelerin dahil edilmesini sağlayabilirsiniz.
+
+![ARM şablonuna Ekle](media/author-global-parameters/include-arm-template.png)
+
+ARM şablonuna genel parametreler eklemek, müşteri tarafından yönetilen anahtar veya diğer ortamlarda git yapılandırması gibi diğer fabrika düzeyindeki ayarları geçersiz kılabileceğiniz bir fabrika düzeyi ayarı ekler. Bu ayarları, UıAT veya PROD gibi yükseltilmiş bir ortamda etkinleştirdiyseniz, genel parametreleri aşağıda vurgulanan adımlarda bir PowerShell betiği aracılığıyla dağıtmanız daha iyidir.
+
+### <a name="deploying-using-powershell"></a>PowerShell kullanarak dağıtma
+
+Aşağıdaki adımlar, PowerShell aracılığıyla genel parametrelerin nasıl dağıtılacağını özetler. Hedef fabrikanızın, müşteri tarafından yönetilen anahtar gibi bir fabrika düzeyi ayarı varsa, bu faydalıdır.
+
+Genel parametrelerle bir fabrika yayımladığınızda veya bir ARM şablonunu dışarı aktardığınızda, *your-factory-name_GlobalParameters.jsüzerinde*adlı bir dosya Ile *globalparameters* adlı bir klasör oluşturulur. Bu dosya, yayımlanan fabrikada her genel parametre türünü ve değerini içeren bir JSON nesnesidir.
 
 ![Genel parametreler yayımlanıyor](media/author-global-parameters/global-parameters-adf-publish.png)
 
-TEST veya ÜRETIM gibi yeni bir ortama dağıtıyorsanız, bu genel parametre dosyasının bir kopyasını oluşturmanız ve ortama özgü uygun değerlerin üzerine yazılması önerilir. Özgün genel parametre dosyasını yeniden yayımladığınızda, üzerine yazılır, ancak diğer ortamın kopyası dokunmaz.
+TEST veya ÜRETIM gibi yeni bir ortama dağıtım yapıyorsanız, bu genel parametreler dosyasının bir kopyasını oluşturmanız ve ortama özgü uygun değerlerin üzerine yazılması önerilir. Özgün genel parametre dosyasını yeniden yayımladığınızda, üzerine yazılır, ancak diğer ortamın kopyası dokunmaz.
 
-Örneğin, ' ADF-DEV ' adlı bir fabrikanızı ve ' dev ' değeri ile ' Environment ' adlı, dize türünde bir genel parametre varsa, *üzerindeADF-DEV_GlobalParameters.js* adlı bir dosya yayımladığınızda oluşturulur. ' ADF_TEST ' adlı bir test fabrikasına dağıtım yapıyorsanız, JSON dosyasının bir kopyasını oluşturun (örneğin, ADF-TEST_GlobalParameters.jsadlı) ve parametre değerlerini ortama özgü değerlerle değiştirin. ' Environment ' parametresinin ' test ' değeri artık olabilir. 
+Örneğin, ' ADF-DEV ' adlı bir fabrikanızı ve ' dev ' değeri ile ' Environment ' adlı, dize türünde bir genel parametre varsa, * üzerindeADF-DEV_GlobalParameters.js* adlı bir dosya yayımladığınızda oluşturulur. ' ADF_TEST ' adlı bir test fabrikasına dağıtım yapıyorsanız, JSON dosyasının bir kopyasını oluşturun (örneğin, ADF-TEST_GlobalParameters.jsadlı) ve parametre değerlerini ortama özgü değerlerle değiştirin. ' Environment ' parametresinin ' test ' değeri artık olabilir. 
 
 ![Genel parametreleri dağıtma](media/author-global-parameters/powershell-task.png)
 

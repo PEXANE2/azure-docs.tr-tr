@@ -10,16 +10,16 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020856"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230238"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
-Blob geçici silme, verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Bir depolama hesabı için blob geçici silme etkinleştirildiğinde, blob 'lar, blob sürümleri (Önizleme) ve bu depolama hesabındaki anlık görüntüler, belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
+Blob geçici silme, verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Depolama hesabı için blob geçici silme etkinleştirildiğinde, bu depolama hesabındaki Bloblar, blob sürümleri ve anlık görüntüler, belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
 
 Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft, blob geçici silme özelliğini etkinleştirmeyi önerir. Bu makalede, Bloblar için geçici silmenin nasıl etkinleştirileceği gösterilmektedir. Blob geçici silme hakkında daha fazla bilgi için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md).
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [BLOB depolama için geçici silme](soft-delete-overview.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)

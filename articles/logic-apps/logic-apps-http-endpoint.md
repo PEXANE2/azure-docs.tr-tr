@@ -1,44 +1,39 @@
 ---
-title: Çağrı, tetikleyici veya iç içe mantıksal uygulamalar
-description: Azure Logic Apps içinde mantıksal uygulama iş akışlarını çağırmak, tetiklemek veya iç içe aktarmak için HTTPS uç noktalarını ayarlama
+title: Istek tetikleyicilerini kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar
+description: Azure Logic Apps ' de mantıksal uygulama iş akışlarını çağırmak, tetiklemek veya iç içe yerleştirmek için HTTPS uç noktalarını ayarlama
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078678"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230815"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
-Mantıksal uygulamanızın diğer hizmetlerden gelen istekleri alabilmesi için mantıksal uygulamanızı bir URL aracılığıyla çağrılabilir hale getirmek için, bu mantıksal uygulamada bir tetikleyici olarak zaman uyumlu bir HTTPS uç noktası kullanıma sunabilirsiniz. Bu özelliği ayarlarken, mantıksal uygulamanızı diğer mantıksal uygulamalarda iç içe geçirebilirsiniz, bu da çağrılabilir bir uç nokta stili oluşturmanızı sağlar.
-
-Çağrılabilir bir uç nokta ayarlamak için, mantıksal uygulamaların gelen istekleri almasını sağlayan bu tetikleyici türlerinden herhangi birini kullanabilirsiniz:
+Mantıksal uygulamanızı bir URL aracılığıyla çağrılabilir hale getirmek ve diğer hizmetlerden gelen istekleri alabilmesi için, mantıksal uygulamanızda istek tabanlı bir tetikleyici kullanarak bir zaman uyumlu HTTPS uç noktasını yerel olarak kullanıma sunabilirsiniz. Bu özellik sayesinde mantıksal uygulamanızı diğer Logic Apps 'ten çağırabilir ve çağrılabilir uç noktalar için bir model oluşturabilirsiniz. Gelen çağrıları işlemek için çağrılabilir bir uç nokta ayarlamak için şu tetikleyici türlerinden herhangi birini kullanabilirsiniz:
 
 * [İstek](../connectors/connectors-native-reqres.md)
 * [HTTP Web kancası](../connectors/connectors-native-webhook.md)
 * [Apiconnectionweb kancası türüne](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) sahip yönetilen bağlayıcı Tetikleyicileri ve gelen https isteklerini alabilir
 
-> [!NOTE]
-> Bu örnekler, Istek tetikleyicisini kullanır, ancak önceki listede bulunan HTTPS istek tabanlı bir tetikleyiciyi kullanabilirsiniz. Tüm ilkeler bu diğer tetikleyici türleri için de geçerlidir.
+Bu makalede, Istek tetikleyicisi kullanılarak mantıksal uygulamanızda çağrılabilir bir uç nokta oluşturma ve bu uç noktayı başka bir mantıksal uygulamadan çağırma gösterilmektedir. Tüm ilkeler, gelen istekleri almak için kullanabileceğiniz diğer tetikleyici türleriyle aynı şekilde uygulanır.
 
-Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Mantıksal uygulamanıza yönelik olarak, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL) veya [Azure Active Directory açık kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml)gibi bilinen bir gelen çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Çağrılabilir uç noktayı oluşturmak için tetikleyiciyi kullanmak istediğiniz mantıksal uygulama. Geçerli tetikleyiciyi değiştirmek istediğiniz boş bir mantıksal uygulama ya da mevcut bir mantıksal uygulama ile başlayabilirsiniz. Bu örnek, boş bir mantıksal uygulamayla başlar.
+* Çağrılabilir uç noktayı oluşturmak için tetikleyiciyi kullanmak istediğiniz mantıksal uygulama. Boş bir mantıksal uygulama ya da geçerli tetikleyiciyi değiştirmek için mevcut bir mantıksal uygulama ile başlayabilirsiniz. Bu örnek, boş bir mantıksal uygulamayla başlar. Logic Apps 'e yeni başladıysanız, bkz. [Azure Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-callable-endpoint"></a>Çağrılabilir bir uç nokta oluşturma
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
-
-   Bu örnek, Istek tetikleyicisini kullanır, ancak gelen HTTPS isteklerini alabilen herhangi bir tetikleyiciyi kullanabilirsiniz. Tüm ilkeler bu Tetikleyiciler için aynı şekilde geçerlidir. Istek tetikleyicisi hakkında daha fazla bilgi için, bkz. [Azure Logic Apps kullanarak gelen https çağrılarını alma ve yanıtlama](../connectors/connectors-native-reqres.md).
 
 1. Arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `request` filtreniz olarak yazın. Tetikleyiciler listesinden **BIR http isteği alındığında**öğesini seçin.
 
@@ -200,7 +195,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?{parameter-name=parameter-value}&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   Tarayıcı şu metinle bir yanıt döndürür:`Postal Code: 123456`
+   Tarayıcı şu metinle bir yanıt döndürür: `Postal Code: 123456`
 
    ![İsteği geri çağırma URL 'sine gönderme yanıtı](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
@@ -210,12 +205,12 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
    Bu örnekte, `postalCode=123456` URL içindeki farklı konumlarda örnek parametre adı ve değeri ile geri çağırma URL 'si gösterilmektedir:
 
-   * ilk konum:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * ilk konum: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   * 2. konum:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * 2. konum: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
 > [!NOTE]
-> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın:`%25%23`
+> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın: `%25%23`
 
 <a name="relative-path"></a>
 
@@ -257,12 +252,12 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 1. Çağrılabilir uç noktanızı test etmek için, Istek tetikleyicisinden güncelleştirilmiş geri çağırma URL 'sini kopyalayın, URL 'yi başka bir tarayıcı penceresine yapıştırın, `{postalCode}` URL 'de ile değiştirin `123456` ve ENTER tuşuna basın.
 
-   Tarayıcı şu metinle bir yanıt döndürür:`Postal Code: 123456`
+   Tarayıcı şu metinle bir yanıt döndürür: `Postal Code: 123456`
 
    ![İsteği geri çağırma URL 'sine gönderme yanıtı](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
 > [!NOTE]
-> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın:`%25%23`
+> URI 'ye karma veya sterlin simgesini () eklemek istiyorsanız **#** bunun yerine bu kodlanmış sürümü kullanın: `%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Uç nokta URL 'SI aracılığıyla mantıksal uygulama çağırma
 
@@ -357,7 +352,7 @@ Yanıt gövdesinde, birden fazla üstbilgiyi ve herhangi bir içerik türünü d
 
 Yanıtlar şu özelliklere sahiptir:
 
-| Özellik (görüntüleme) | Özellik (JSON) | Açıklama |
+| Özellik (görüntüleme) | Özellik (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Durum kodu** | `statusCode` | Gelen istek için yanıtta kullanılacak HTTPS durum kodu. Bu kod, 2xx, 4xx veya 5xx ile başlayan geçerli bir durum kodu olabilir. Ancak, 3xx durum kodlarına izin verilmez. |
 | **Üst Bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
@@ -408,3 +403,4 @@ Y **: Evet**, HTTPS uç noktaları [Azure API Management](../api-management/api-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Logic Apps kullanarak gelen HTTPS çağrılarını alma ve yanıtlama](../connectors/connectors-native-reqres.md)
+* [İstek tabanlı tetikleyicilere gelen çağrılar için Azure Logic Apps erişimli erişim ve verileri güvenli hale getirme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

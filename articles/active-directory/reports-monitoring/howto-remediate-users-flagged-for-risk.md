@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608934"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231172"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında riskli olarak işaretlenmiş kullanıcıları düzeltme
 
@@ -40,7 +40,7 @@ Risk işaretli kullanıcılar raporu için, her kullanıcı için aşağıdaki e
 - Kullanıcının bir sonraki defa oturum açtığında parolasını güvenli şekilde sıfırlamasını zorunlu tutma
 - Herhangi bir düzeltme eylemi gerçekleştirmeden kullanıcı riskini kapatma.
 
-Daha fazla bilgi için bkz. [risk için Işaretlenen kullanıcılar güvenlik raporu](concept-user-at-risk.md).
+Daha fazla bilgi için bkz. [risk için Işaretlenen kullanıcılar güvenlik raporu](../identity-protection/overview-identity-protection.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 müşterileri için Azure AD aboneliği
 
@@ -91,5 +91,5 @@ Ayrıca şunları yapmalısınız:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)
-* [Riskli oldukları belirlenen kullanıcılar](concept-user-at-risk.md)
+* [Azure Active Directory Kimlik Koruması](../identity-protection/overview-identity-protection.md)
+* [Riskli oldukları belirlenen kullanıcılar](../identity-protection/overview-identity-protection.md)

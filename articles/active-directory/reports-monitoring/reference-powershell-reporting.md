@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3ea568d35ca1ad489fea3cd910c0e1e5dc9722
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071423"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231138"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
 
 > [!NOTE] 
-> Bu PowerShell cmdlet 'leri Şu anda yalnızca [Azure AD önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modülüyle çalışır. Önizleme modülünün üretim kullanımı için önerilmediğini lütfen unutmayın. 
+> Bu PowerShell cmdlet 'leri Şu anda yalnızca [Azure AD önizleme](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modülüyle çalışır. Önizleme modülünün üretim kullanımı için önerilmediğini lütfen unutmayın. 
 
 Genel önizleme sürümünü yüklemek için aşağıdakileri kullanın. 
 
@@ -36,7 +36,7 @@ Genel önizleme sürümünü yüklemek için aşağıdakileri kullanın.
 Install-module AzureADPreview
 ```
 
-PowerShell kullanarak Azure AD 'ye bağlanma hakkında daha fazla bilgi için lütfen [Graph Için Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)makalesine bakın.  
+PowerShell kullanarak Azure AD 'ye bağlanma hakkında daha fazla bilgi için lütfen [Graph Için Azure AD PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)makalesine bakın.  
 
 Azure Active Directory (Azure AD) raporlarında, yönlerinizde (denetim günlükleri) ve kimlik doğrulama verilerinde (oturum açma günlükleri) tüm yazma işlemlerinde bulunan etkinliklerle ilgili ayrıntılı bilgi edinebilirsiniz. Bilgiler MS Graph API kullanılarak kullanılabilir olsa da, artık raporlama için Azure AD PowerShell cmdlet 'lerini kullanarak aynı verileri alabilirsiniz.
 

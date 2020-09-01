@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129194"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231121"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Izleyici 'de Azure AD oturum açma günlüğü şemasını yorumlama
 
@@ -145,27 +145,27 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 
 | Alan adı | Description |
 |------------|-------------|
-| Saat | Tarih ve saat, UTC olarak. |
+| Süre | Tarih ve saat, UTC olarak. |
 | ResourceId | Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz.  |
-| ThrottledRequests | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
+| OperationName | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
 | OperationVersion | İstemci tarafından istenen REST API sürümü. |
 | Kategori | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
 | TenantId | Günlüklerle ilişkili kiracı GUID 'SI. |
-| 'I | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
+| ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
 | ResultSignature | Varsa, oturum açma işlemi için hata kodunu içerir. |
 | ResultDescription | Oturum açma işlemi için hata açıklaması sağlar. |
 | riskDetail | riskDetail | Riskli bir kullanıcının, oturum açmanın veya risk algılamanın arkasındaki ' neden ' durumunu sağlar. Olası değerler şunlardır:,,,,, `none` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` `aiConfirmedSigninSafe` , `userPassedMFADrivenByRiskBasedPolicy` , `adminDismissedAllRiskForUser` , `adminConfirmedSigninCompromised` , `unknownFutureValue` . Değer, `none` Kullanıcı veya şimdiye kadar oturum açma işlemleri için hiçbir eylem gerçekleştirilmediği anlamına gelir. <br>**Note:** Bu özelliğe ilişkin ayrıntılar Azure AD Premium P2 lisansı gerektirir. Diğer lisanslar değeri döndürür `hidden` . |
-| riskEventTypes | riskEventTypes | Oturum açma ile ilişkili risk algılama türleri. Olası değerler şunlardır: `unlikelyTravel` , `anonymizedIPAddress` ,, `maliciousIPAddress` , `unfamiliarFeatures` , `malwareInfectedIPAddress` `suspiciousIPAddress` , `leakedCredentials` , `investigationsThreatIntelligence` , `generic` , ve `unknownFutureValue` . |
+| riskEventTypes | riskEventTypes | Oturum açma ile ilişkili risk algılama türleri. Olası değerler şunlardır: `unlikelyTravel` , `anonymizedIPAddress` ,, `maliciousIPAddress` , `unfamiliarFeatures` , `malwareInfectedIPAddress` `suspiciousIPAddress` , `leakedCredentials` , `investigationsThreatIntelligence` ,  `generic` , ve `unknownFutureValue` . |
 | riskLevelAggregated | riskLevel | Toplu risk düzeyi. Olası değerler şunlardır: `none` , `low` ,, `medium` `high` , `hidden` , ve `unknownFutureValue` . Değer, `hidden` kullanıcının veya oturum açma Azure AD kimlik koruması için etkinleştirilmemiş anlamına gelir. **Note:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler döndürülür `hidden` . |
 | riskLevelDuringSignIn | riskLevel | Oturum açma sırasında risk düzeyi. Olası değerler şunlardır: `none` , `low` ,, `medium` `high` , `hidden` , ve `unknownFutureValue` . Değer, `hidden` kullanıcının veya oturum açma Azure AD kimlik koruması için etkinleştirilmemiş anlamına gelir. **Note:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler döndürülür `hidden` . |
 | riskState | riskState | Riskli kullanıcının, oturum açma işleminin veya risk algılamanın durumunu raporlar. Olası değerler şunlardır: `none` , `confirmedSafe` ,, `remediated` , `dismissed` , `atRisk` `confirmedCompromised` , `unknownFutureValue` . |
-| Ort |  Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz. |
+| DurationMs |  Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz. |
 | Callerıpaddress | İsteği yapan istemcinin IP adresi. | 
 | CorrelationId | İstemci tarafından geçirilen isteğe bağlı GUID. Bu değer, istemci tarafı işlemlerini sunucu tarafı işlemleriyle ilişkilendirmenize yardımcı olabilir ve hizmetleri kapsayan günlükleri izlerken yararlıdır. |
 | Kimlik | İsteği yaptığınızda sunulan belirtecin kimliği. Bu bir kullanıcı hesabı, sistem hesabı veya hizmet sorumlusu olabilir. |
 | Düzey | İleti türünü sağlar. Denetim için her zaman *bilgilendirme amaçlıdır*. |
 | Konum | Oturum açma etkinliğinin konumunu sağlar. |
-| Özellikler | Oturum açma işlemleri ile ilişkili tüm özellikleri listeler. Daha fazla bilgi için bkz. [MICROSOFT Graph API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Bu şema, okunabilirlik için oturum açma kaynağıyla aynı öznitelik adlarını kullanır.
+| Özellikler | Oturum açma işlemleri ile ilişkili tüm özellikleri listeler. Daha fazla bilgi için bkz. [MICROSOFT Graph API başvurusu](/graph/api/resources/signin?view=graph-rest-beta). Bu şema, okunabilirlik için oturum açma kaynağıyla aynı öznitelik adlarını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

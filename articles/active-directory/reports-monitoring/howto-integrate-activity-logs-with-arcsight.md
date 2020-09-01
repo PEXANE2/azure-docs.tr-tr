@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c3c597c172c7ec21c2d46e89602abf87d750127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608186"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230526"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini Arcizle tümleştirin
 
@@ -33,7 +33,7 @@ Bu makalede, Azure Izleyici kullanarak Azure AD günlüklerini Arcize yönlendir
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
-* Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
+* Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](./tutorial-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 * Arcgözetimi syslog, Daemon SmartConnector (SmartConnector) veya Arcgörüş Load Balancer yapılandırılmış bir örneği. Olaylar Arcgörüş Load Balancer gönderilirse, bu, sonuçta Load Balancer tarafından SmartConnector 'a gönderilir.
 
 [Azure Izleyici Olay Hub 'ı Için Arcgörüş SmartConnector yapılandırma kılavuzunu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)indirip açın. Bu kılavuz, Azure Izleyici için Arcgörüş SmartConnector 'ı yüklemek ve yapılandırmak için gereken adımları içerir. 

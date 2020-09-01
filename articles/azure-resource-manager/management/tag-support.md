@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855090"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231529"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -263,6 +263,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | reportFeedback | Hayır | Hayır |
 > | hizmet | Yes | Yes |
 > | validateServiceName | Hayır | Hayır |
+
+> [!NOTE]
+> Azure API Management, her hizmet için yalnızca en fazla 15 etiket adı/değer çifti oluşturulmasını destekler.
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -1695,7 +1698,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressRouteServiceProviders | Hayır | Hayır |
 > | firewallPolicies | Yes | Yes |
 > | frontkapıların | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Hayır |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | No |
 > | frontdoorWebApplicationFirewallPolicies | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
 > | getDnsResourceReference | Hayır | Hayır |
 > | ınternalnotify | Hayır | Hayır |

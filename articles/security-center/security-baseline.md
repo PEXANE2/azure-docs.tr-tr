@@ -6,13 +6,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f7da9b1779ed2cf46cb29b21215a9415cbaef494
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004477"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231291"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Güvenlik Merkezi için Azure Güvenlik temeli
 
@@ -394,7 +394,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Kılavuz**: Azure Güvenlik Merkezi, oluşturduğu verileri, uyarıları ve önerileri depolamak için yapılandırılmış bir Log Analytics çalışma alanı kullanır. Güvenlik Merkezi veri toplama için yapılandırdığınız çalışma alanı için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırın. CMK, çalışma alanına kaydedilen veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulan ve size ait bir Azure Key Vault anahtarla şifrelenmesini sağlar. 
 
-- [Azure Izleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -596,7 +596,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerindeki kaynakları sorgulama ve 
 
 **Kılavuz**: Azure Güvenlik Merkezi, oluşturduğu verileri, uyarıları ve önerileri depolamak için yapılandırılmış bir Log Analytics çalışma alanı kullanır. Güvenlik Merkezi veri toplama için yapılandırdığınız çalışma alanı için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırın. CMK, çalışma alanına kaydedilen veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulan ve size ait bir Azure Key Vault anahtarla şifrelenmesini sağlar. 
 
-- [Azure Izleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure İzleyici müşteri tarafından yönetilen anahtar](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

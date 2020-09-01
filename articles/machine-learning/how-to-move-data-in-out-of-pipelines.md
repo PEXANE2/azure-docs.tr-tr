@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997906"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230324"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -33,11 +33,10 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `PipelineData`
 
 > [!TIP]
-> Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  `OutputFileDatasetConfig` `OutputTabularDatasetConfig` .  Bu sınıflar deneysel önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
-> 
->Deneysel özellikler hakkında daha fazla bilgi için bkz https://aka.ms/azuremlexperimental ..
+> Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Şunlara ihtiyacınız var:
 

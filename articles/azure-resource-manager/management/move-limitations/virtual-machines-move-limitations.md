@@ -2,13 +2,13 @@
 title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/31/2020
+ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933248"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230968"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -48,7 +48,7 @@ Sanal makineniz için [geçici silme](../../../backup/backup-azure-security-feat
 2. Azure Backup ile yapılandırılmış sanal makineleri taşımak için aşağıdaki adımları uygulayın:
 
    1. Sanal makinenizin konumunu bulun.
-   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` . Örneğin, *AzureBackupRG_westus2_1*
+   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<VM location>_1` . Örneğin, ad *AzureBackupRG_westus2_1*biçimindedir.
    3. Azure portal, **gizli türleri göster**' i işaretleyin.
    4. Adlandırma düzenine sahip **Microsoft. COMPUTE/restorePointCollections** türünde kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
@@ -59,19 +59,41 @@ Sanal makineniz için [geçici silme](../../../backup/backup-azure-security-feat
 
 ### <a name="powershell"></a>PowerShell
 
-* Sanal makinenizin konumunu bulun.
-* Aşağıdaki adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` Örneğin, AzureBackupRG_westus2_1
-* PowerShell 'de `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet 'ini kullanın
-* `Microsoft.Compute/restorePointCollections`Adlandırma düzenine sahip olan türde kaynağı bulma`AzureBackup_<name of your VM that you're trying to move>_###########`
-* Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
+1. Sanal makinenizin konumunu bulun.
 
-### <a name="azure-cli"></a>Azure CLI
+1. Adlandırma düzenine sahip bir kaynak grubu bulun `AzureBackupRG_<VM location>_1` . Örneğin, ad olabilir `AzureBackupRG_westus2_1` .
 
-* Sanal makinenizin konumunu bulun.
-* Aşağıdaki adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` Örneğin, AzureBackupRG_westus2_1
-* CLı 'de şunu kullanın `az resource list -g AzureBackupRG_<location of your VM>_1`
-* `Microsoft.Compute/restorePointCollections`Adlandırma düzenine sahip olan türde kaynağı bulma`AzureBackup_<name of your VM that you're trying to move>_###########`
-* Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
+1. Geri yükleme noktası al koleksiyonunu almak için aşağıdaki komutu kullanın.
+
+   ```azurepowershell
+   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+1. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
+
+   ```azurepowershell
+   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```
+
+### <a name="azure-cli"></a>Azure CLI’si
+
+1. Sanal makinenizin konumunu bulun.
+
+1. Adlandırma düzenine sahip bir kaynak grubu bulun `AzureBackupRG_<VM location>_1` . Örneğin, ad olabilir `AzureBackupRG_westus2_1` .
+
+1. Geri yükleme noktası koleksiyonunu almak için aşağıdaki komutu kullanın.
+
+   ```azurecli
+   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```
+
+1. Adlandırma düzenine sahip kaynağın kaynak KIMLIĞINI bulun `AzureBackup_<VM name>_###########`
+
+1. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
+
+   ```azurecli
+   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

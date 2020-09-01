@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873934"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230934"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Apache Spark Machine Learning uygulaması geliştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluşturma](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -41,7 +41,7 @@ Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC.csv*
 
 Bu uygulama bir belge sınıflandırması yapmak için Spark [ml işlem hattı](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) kullanır. ML işlem hatları, veri çerçevelerinin üzerine inşa olan tek düzeyli bir üst düzey API kümesi sağlar. Veri çerçeveleri, kullanıcıların pratik makine öğrenimi işlem hatlarını oluşturmasına ve ayarlamaya yardımcı olur. İşlem hattında, belgeyi sözcüklere böler, sözcükleri sayısal bir özellik vektörüne dönüştürür ve son olarak özellik vektörleri ile etiketleri kullanarak bir tahmin modeli oluşturursunuz. Uygulamayı oluşturmak için aşağıdaki adımları uygulayın.
 
-1. PySpark çekirdeği kullanarak bir Jupyter not defteri oluşturun. Yönergeler için bkz. [Jupyter not defteri oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+1. PySpark çekirdeği kullanarak bir Jupyter not defteri oluşturun. Yönergeler için bkz. [Jupyter Not defteri dosyası oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 1. Bu senaryo için gereken türleri içeri aktarın. Aşağıdaki kod parçacığını boş bir hücreye yapıştırın ve sonra **SHIFT + ENTER** tuşlarına basın.
 
@@ -200,7 +200,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**’i seçin.
+1. **Sil**’i seçin. **Evet** seçeneğini belirleyin.
 
 ![Azure portal bir HDInsight kümesini siler](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

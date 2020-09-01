@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070335"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231189"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -27,10 +27,16 @@ Azure AD 'yi bir uygulama için kimlik sağlayıcısı olarak kullanma hakkında
 Bu uygulamalar, Azure AD portalındaki Kullanıcı adına yapılandırılır. Uygulama, uygulama için düzgün şekilde yapılandırılmalı ve Kullanıcı veya Kullanıcı üyesi olan bir gruba atanmış olmalıdır. 
 
 Bir kullanıcının görebilecekleri uygulamaların türü aşağıdaki kategorilere ayrılır:
--   Office 365 uygulamaları
+-   Microsoft 365 ve Office 365 uygulamaları
 -   Federasyon tabanlı SSO ile yapılandırılan Microsoft ve üçüncü taraf uygulamalar
 -   Parola tabanlı SSO uygulamaları
 -   Var olan SSO çözümlerini içeren uygulamalar
+
+Uygulamanın görünmemiş veya görünmediğinden emin olmak için bazı şeyler aşağıda verilmiştir.
+- Uygulamanın Azure AD 'ye eklendiğinden emin olun ve kullanıcının atandığından emin olun. Daha fazla bilgi edinmek için bkz. [uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md).
+- Uygulama son zamanlarda eklendiyse, kullanıcının oturumu kapatıp tekrar oturum açmasını sağlayabilirsiniz. 
+- Uygulama Office gibi bir lisans gerektiriyorsa, kullanıcıya uygun lisans atandığından emin olun.
+- Lisans değişiklikleri için gereken süre, grubun boyutuna ve karmaşıklığına bağlı olarak farklılık gösterebilir.
 
 ## <a name="general-issues-to-check-first"></a>Önce denetlenecek genel sorunlar
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: a97619abdedd60f827f524cd279c4ffc360d92e1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2fb38fdfaace188936975c1cfdd8c86b44d5b0a5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291658"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231546"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
 Microsoft Power BI Desktop, verilerinize bağlanmanıza, verilerinizi dönüştürmenize ve görselleştirmenize olanak sağlayan ücretsiz bir uygulamadır. Microsoft Azure Bilişsel Hizmetler’in parçası olan Metin Analizi hizmeti, doğal dil işleme özelliği sağlar. Ham yapılandırılmamış veriler olduğunda, en önemli ifadeleri ayıklayabilir, yaklaşımı analiz edebilir ve markalar gibi iyi bilindik varlıkları belirleyebilir. Birlikte bu araçlar, müşterilerinizin ne hakkında konuştuğunu ve bu konuda nasıl hissettiğini hızlıca görmenize yardımcı olabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Verileri içeri aktarmak ve dönüştürmek için Power BI Desktop’ı kullanma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Müşteri geri bildiriminden en önemli ifadeleri ayıklamak için Metin Analizi Anahtar İfadeler API’sini kullanma
 > * Müşteri geri bildiriminden sözcük bulutu oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Ücretsiz olarak indirin](https://powerbi.microsoft.com/get-started/).
@@ -121,7 +121,7 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -145,7 +145,7 @@ Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgu
 
 Özel İşlev Çağır iletişim kutusu görüntülenir. **Yeni sütun adı** bölümüne `keyphrases` girin. **İşlev sorgusu** bölümünde, oluşturduğunuz özel işlevi (`KeyPhrases`) seçin.
 
-İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)**. Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (Ve parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız `language` `id` .) `Merged`Açılır menüden (konu ve ileti alanlarını birleştirerek [daha önce](#PreparingData) oluşturduğunuz sütun) seçeneğini belirleyin.
+İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)**. Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (Ve parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız `language` `id` .) `Merged` Açılır menüden (konu ve ileti alanlarını birleştirerek [daha önce](#PreparingData) oluşturduğunuz sütun) seçeneğini belirleyin.
 
 ![[Özel işlev çağırma]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -225,7 +225,7 @@ Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne �
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -242,7 +242,7 @@ Dil Algılama işlevine ilişkin iki sürüm aşağıda verilmiştir. İlk sür�
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -256,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -276,7 +276,7 @@ Son olarak, sunulmuş olan Anahtar İfade Ayıklama işlevinin, virgülle ayrıl
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -293,7 +293,7 @@ in  keyphrases
 Metin Analizi hizmeti, Power Query M formül dili veya Power BI hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Metin Analizi API'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+> [Metin Analizi API'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
 
 > [!div class="nextstepaction"]
 > [Power Query d başvurusu](https://docs.microsoft.com/powerquery-m/power-query-m-reference)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998943"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230475"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
@@ -51,11 +51,19 @@ Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi i
  - Ubuntu, debir: `apt-get install -y python2`
  - SUSE `zypper install -y python2`
 
-Python2 yürütülebilir dosyası, aşağıdaki komutu kullanarak "Python" için diğer ad olmalıdır:
+Python2 yürütülebilir dosyası *Python*'un diğer adı olmalıdır. Aşağıda, bu diğer adı ayarlamak için kullanabileceğiniz bir yöntem verilmiştir:
 
-```
-alternatives --set python `which python2`
-```
+1. Mevcut diğer adları kaldırmak için aşağıdaki komutu çalıştırın.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Diğer adı oluşturmak için aşağıdaki komutu çalıştırın.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
 OMS aracısının Linux için özelleştirme desteği sınırlıdır. 
@@ -64,7 +72,8 @@ Aşağıdakiler şu anda desteklenmektedir:
 - FIPS
 
 Aşağıdakiler planlanmaktadır ancak henüz desteklenmemektedir:
-- CıS-SELINUX
+- CI
+- SELINUX
 
 Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için desteklenmez veya planlanmaz.  
 
@@ -72,7 +81,7 @@ Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için dest
 
 Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
 
-|Gerekli paket |Açıklama |En düşük sürüm |
+|Gerekli paket |Description |En düşük sürüm |
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |

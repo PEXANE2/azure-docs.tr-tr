@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608220"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230628"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portalda etkinlik raporlarını bulma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure portal Azure Active Directory (Azure AD) Kullanıcı etkinli�
 
 Denetim günlükleri raporu, uygulama etkinlikleri etrafında çeşitli raporları bağlam tabanlı raporlama için tek bir görünümde birleştirir. Denetim günlükleri raporuna erişmek için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Sağ üst köşedeki dizininizi seçin, sonra sol gezinti bölmesinden **Azure Active Directory** dikey penceresini seçin.
 3. Azure Active Directory dikey penceresinin **etkinlik** bölümünden **Denetim günlükleri** ' ni seçin. 
 
@@ -95,7 +95,7 @@ Hizmetler şunları içerir:
 
 Oturum açma raporuna erişmek için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Sağ üst köşedeki dizininizi seçin, sonra sol gezinti bölmesinden **Azure Active Directory** dikey penceresini seçin.
 3. Azure Active Directory dikey penceresinin **etkinlik** bölümünden **signins** ' i seçin. 
 
@@ -114,7 +114,7 @@ Kullanıcı adına veya uygulama adına filtreleyerek uygulama kullanımı hakk�
 
 Anormal etkinlik raporları, Azure AD 'nin tespit ve rapor etbildiği güvenlikle ilgili risk algılamaları hakkında bilgiler sağlar.
 
-Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure Portal ilgili risk algılama türleri listelenmektedir. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](concept-risk-events.md).  
+Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure Portal ilgili risk algılama türleri listelenmektedir. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](../identity-protection/overview-identity-protection.md).  
 
 
 | Azure AD anormal etkinlik raporu |  Kimlik koruması risk algılama türü|
@@ -136,8 +136,8 @@ Aşağıdaki Azure AD anormal etkinlik güvenlik raporları Azure Portal risk al
 
 Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **güvenlik** bölümünde erişebilirsiniz. Algılanan risk algılamaları aşağıdaki raporlarda izlenir:   
 
-- [Risk altındaki kullanıcılar](concept-user-at-risk.md)
-- [Riskli oturum açma işlemleri](concept-risky-sign-ins.md)
+- [Risk altındaki kullanıcılar](../identity-protection/overview-identity-protection.md)
+- [Riskli oturum açma işlemleri](../identity-protection/overview-identity-protection.md)
 
     ![Güvenlik raporları](./media/howto-find-activity-reports/04.png "Güvenlik raporları")
 
@@ -147,7 +147,7 @@ Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://por
 
 #### <a name="symptoms"></a>Belirtiler 
 
-Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden mi? 
+Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden? 
 
  ![Raporlama](./media/troubleshoot-missing-data-download/01.png)
  
@@ -205,7 +205,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 #### <a name="symptoms"></a>Belirtiler
 
-Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden mi? 
+Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
  ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -228,4 +228,4 @@ Verileri 30 günden daha uzun bir süre boyunca saklamak için iki seçeneğiniz
 
 * [Denetim günlüklerine genel bakış](concept-audit-logs.md)
 * [Oturum açma işlemleri genel bakış](concept-sign-ins.md)
-* [Riskli olaylara genel bakış](concept-risk-events.md)
+* [Riskli olaylara genel bakış](../identity-protection/overview-identity-protection.md)

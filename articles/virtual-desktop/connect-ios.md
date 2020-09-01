@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007650"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230050"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>İOS istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -36,6 +36,7 @@ Bir akışa abone olmak için:
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
+   - US Gov portalı üzerinden bağlanmak için kullanın <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.
    - **Kullanıcı adı**için, Kullanıcı adına kaynaklara erişim izni verin.

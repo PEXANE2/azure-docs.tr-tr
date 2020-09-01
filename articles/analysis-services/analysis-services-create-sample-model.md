@@ -1,18 +1,18 @@
 ---
 title: Öğretici-Azure Analysis Services bir örnek model ekleme | Microsoft Docs
-description: Bu öğretici derste, Azure Analysis Services'e örnek model eklemeyi öğrenin.
+description: Bu öğreticide, Azure Analysis Services bir örnek model eklemeyi öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697512"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230916"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
 
@@ -24,7 +24,7 @@ Bu öğreticide, sunucunuza örnek Adventure Works tablolu model veritabanını 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 2. **Yeni modelde**  >  **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
 
-    ![Örnek verileri seçme](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Yeni Model Seç](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. **Genel Bakış**'ta, `adventureworks` örnek modelinin eklendiğini doğrulayın.
 
@@ -62,7 +62,7 @@ Bu adımlarda, SSMS kullanarak sunucudan modelin nasıl silineceği açıklanır
 
 2. **Sunucuya Bağlan** alanına sunucu adını yapıştırın, ardından **Kimlik doğrulaması** alanında **Active Directory - MFA ile Evrensel desteği**'ni seçin, kullanıcı adınızı girin ve **Bağlan**'a tıklayın.
 
-    ![Oturum aç](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Oturum açın](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. **Nesne Gezgini**’nde `adventureworks` örnek veritabanına sağ tıklayın ve sonra da **Sil**’e tıklayın.
 

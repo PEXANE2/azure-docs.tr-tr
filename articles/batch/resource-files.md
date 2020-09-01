@@ -3,12 +3,12 @@ title: Kaynak dosyalarını oluşturma ve kullanma
 description: Çeşitli giriş kaynaklarından Batch kaynak dosyaları oluşturmayı öğrenin. Bu makalede, bunları bir VM 'ye oluşturma ve bunlara yerleştirme hakkında bazı yaygın yöntemler ele alınmaktadır.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146309"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230951"
 ---
 # <a name="creating-and-using-resource-files"></a>Kaynak dosyalarını oluşturma ve kullanma
 
@@ -99,7 +99,7 @@ Her görevin bu görev için benzersiz çok sayıda dosyası varsa, kaynak dosya
 
 Bir görevde birden fazla yüz kaynak dosyası belirtilmişse toplu Işlem, görevi çok büyük olarak reddedebilir. Görevin kendisinde kaynak dosyalarının sayısını en aza indirerek görevlerinizi küçük tutmanız en iyisidir.
 
-Görevin ihtiyaç duyacağı dosya sayısını en aza indirmenin bir yolu yoksa, kaynak dosyalarının depolama kapsayıcısına başvuran tek bir kaynak dosyası oluşturarak görevi iyileştirebilirsiniz. Bunu yapmak için, kaynak dosyalarınızı bir Azure depolama kapsayıcısına koyun ve kaynak dosyaları için farklı "kapsayıcı" [yöntemlerini](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods) kullanın. Görevleriniz için indirilecek dosya koleksiyonlarını belirtmek için blob öneki seçeneklerini kullanın.
+Görevin ihtiyaç duyacağı dosya sayısını en aza indirmenin bir yolu yoksa, kaynak dosyalarının depolama kapsayıcısına başvuran tek bir kaynak dosyası oluşturarak görevi iyileştirebilirsiniz. Bunu yapmak için, kaynak dosyalarınızı bir Azure depolama kapsayıcısına koyun ve kaynak dosyaları için farklı "kapsayıcı" [yöntemlerini](/dotnet/api/microsoft.azure.batch.resourcefile#methods) kullanın. Görevleriniz için indirilecek dosya koleksiyonlarını belirtmek için blob öneki seçeneklerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

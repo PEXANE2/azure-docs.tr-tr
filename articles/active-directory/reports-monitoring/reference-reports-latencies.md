@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74007695"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231070"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory raporlama gecikme süreleri
 
@@ -54,8 +54,8 @@ Aşağıdaki tabloda etkinlik raporları için gecikme bilgileri listelenmektedi
 
 İki tür güvenlik raporu vardır:
 
-- [Riskli oturum açma işlemleri](concept-risky-sign-ins.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
-- [Riskli oldukları belirlenen kullanıcılar](concept-user-at-risk.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
+- [Riskli oturum açma işlemleri](../identity-protection/overview-identity-protection.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
+- [Riskli oldukları belirlenen kullanıcılar](../identity-protection/overview-identity-protection.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
 
 Aşağıdaki tabloda güvenlik raporlarının gecikme süresi bilgileri listelenmektedir.
 
@@ -84,4 +84,4 @@ Aşağıdaki tabloda risk algılamaları için gecikme bilgileri listelenmektedi
 
 * [Azure AD raporlarına genel bakış](overview-reports.md)
 * [Azure AD raporlarına programlı erişim](concept-reporting-api.md)
-* [Risk algılamalarını Azure Active Directory](concept-risk-events.md)
+* [Risk algılamalarını Azure Active Directory](../identity-protection/overview-identity-protection.md)

@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046704"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230985"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Power BI Azure Time Series Insights verileri görselleştirme
 
@@ -29,7 +29,7 @@ Son olarak, Azure Time Series Insights aracılığıyla zaman serisi verileri g�
 
 Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/free/) kaydolduğunuzdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
 * [Azure Time Series Insights Gen2 ortamı](time-series-insights-update-how-to-manage.md) oluşturun veya oluşturun
@@ -52,20 +52,20 @@ Azure Time Series Insights ortamınızı Power BI bağlamak için şu adımları
 
 Başlamak için:
 
-1. Azure Time Series Insights Gen2 Gezginini açın ve verilerinizi seçin.
+1. Azure Time Series Insights Gezginini açın ve verilerinizi seçin.
 1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' ı seçin.
 
-    [![Azure Time Series Insights Gen2 Explorer dışarı aktarma](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Gezgin dışarı aktarma Azure Time Series Insights](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Parametrelerinizi bu sekmenin içinde ayarlayın:
 
    1. Görüntülenecek göreli zaman dilimini belirtin. Mevcut görünümümüz varsa, bunu **var olan zaman dilimi**olarak bırakın.
-   
-   1. **Toplanan** ve **Ham olaylar**arasında seçim yapın. 
-   
+
+   1. **Toplanan** ve **Ham olaylar**arasında seçim yapın.
+
        > [!NOTE]
-       > Verilerinizi Power BI daha sonra istediğiniz zaman toplayabilirsiniz, ancak toplandıktan sonra ham verilere dönemezsiniz. 
-       
+       > Verilerinizi Power BI daha sonra istediğiniz zaman toplayabilirsiniz, ancak toplandıktan sonra ham verilere dönemezsiniz.
+
        > [!NOTE]
        > Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
 
@@ -89,7 +89,7 @@ Başlamak için:
     [![Power BI Azure Time Series Insights bağlama](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Alternatif olarak, **Azure** sekmesine gidin, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlantısını**yapın.
-    
+
 1. Üçüncü taraf kaynaklarına bağlanmak için izin isteyen bir ileti iletişim kutusu görüntülenir. **Devam**' ı seçin.
 
     [![Özel sorgu oluştur ' a tıklayın](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Verileri Power BI 'e aktardığınıza göre, görsellerin bulunduğu bir rapor 
 
     [![Rapor görünümünü seçin](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  **Görsel öğeler** sütununda, istediğiniz görseli seçin. Örneğin, **çizgi grafik**' i seçin. Bu, Tuvalinize boş bir çizgi grafik ekler.
+1. **Görsel öğeler** sütununda, istediğiniz görseli seçin. Örneğin, **çizgi grafik**' i seçin. Bu, Tuvalinize boş bir çizgi grafik ekler.
 
-1.  **Alanlar** listesinde **_Timestamp** seçin ve öğeleri X ekseni üzerinde göstermek için **eksen** alanına sürükleyin. **Eksenin** değeri olarak **_Timestamp** ' ye geçdiğinizden emin olun (varsayılan **Tarih hiyerarşisi**).
+1. **Alanlar** listesinde **_Timestamp** seçin ve öğeleri X ekseni üzerinde göstermek için **eksen** alanına sürükleyin. **Eksenin** değeri olarak **_Timestamp** ' ye geçdiğinizden emin olun (varsayılan **Tarih hiyerarşisi**).
 
     [![Rapor görünümünü seçin](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  Yine, **alanlar** listesinde **Timeseriesıd** öğesini seçin ve öğeleri Y ekseni üzerinde göstermek için **değerler** alanına sürükleyin.
+1. Yine, **alanlar** listesinde **Timeseriesıd** öğesini seçin ve öğeleri Y ekseni üzerinde göstermek için **değerler** alanına sürükleyin.
 
     [![Çizgi grafik oluşturma](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Tuvalinize başka bir grafik eklemek için, çizgi grafik dışında tuval üzerinde herhangi bir yeri seçin ve bu işlemi tekrarlayın.
+1. Tuvalinize başka bir grafik eklemek için, çizgi grafik dışında tuval üzerinde herhangi bir yeri seçin ve bu işlemi tekrarlayın.
 
     [![Paylaşılacak ek grafikler oluşturma](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

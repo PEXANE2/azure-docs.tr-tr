@@ -1,23 +1,24 @@
 ---
 title: Azure Logic Apps-Azure blok zinciri hizmeti ile Ethereum blok zinciri bağlayıcısını kullanma
 description: Akıllı sözleşme işlevlerini tetiklemek ve akıllı sözleşme olaylarına yanıt vermek için Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın.
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077039"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230543"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
 
-Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](../../logic-apps/index.yml) Ile [Ethereum blok zinciri bağlayıcısını](/connectors/blockchainethereum/) kullanın. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
+Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](../../logic-apps/index.yml) Ile [Ethereum blok zinciri bağlayıcısını](/connectors/blockchainethereum/) kullanın. Bu makalede, farklı bir hizmete blok zinciri bilgilerini göndermek veya bir blok zinciri işlevini çağırmak için Ethereum blok zinciri bağlayıcısını nasıl kullanabileceğiniz açıklanır. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-İsteğe bağlı önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
+- İsteğe bağlı önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
+- Azure Logic Apps yeni bir deyişle, bir [özel bağlayıcı kullanarak Logic Apps iş akışından bir API çağrısı](/learn/modules/logic-apps-and-custom-connectors/) [Azure Logic Apps](/learn/modules/intro-to-logic-apps/) ve bir API çağırma Microsoft Learn modüllerinin gözden geçirilmesini göz önünde bulundurun.
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
@@ -33,7 +34,7 @@ Azure Logic Apps, sistemleri ve Hizmetleri tümleştirmeniz gerektiğinde iş s�
 
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur.
 
-Ethereum blok zinciri bağlayıcısının bir tetikleyicisi ve birkaç eylemi vardır. Kullandığınız tetikleyici veya eylem, senaryonuza bağlıdır.
+Ethereum blok zinciri bağlayıcısının bir tetikleyicisi ve birkaç eylemi vardır. Kullandığınız tetikleyici veya eylem, senaryonuza bağlıdır. Bu makaledeki, senaryonuza en iyi şekilde eşleşen bölümü izleyin.
 
 İş akışınız:
 
@@ -59,7 +60,7 @@ Akıllı bir anlaşma olayı oluştuktan sonra bir mantıksal uygulamanın çal�
     | **Olay adı** | Denetlenecek akıllı sözleşme olayını seçin. Olay mantıksal uygulamayı tetikler. |
     | **Aralık** ve **Sıklık** | Olayı ne sıklıkta denetlemek istediğinizi seçin. |
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Mantıksal uygulamanızı tamamlayabilmeniz için Ethereum blok zinciri olay tetikleyicisine dayalı bir eylem gerçekleştiren yeni bir adım ekleyebilirsiniz. Örneğin, bir e-posta gönderin.
 

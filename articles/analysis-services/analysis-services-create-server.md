@@ -1,18 +1,18 @@
 ---
 title: Hızlı başlangıç-Azure portal Analysis Services sunucu oluşturma | Microsoft Docs
-description: Azure portal kullanarak Azure Analysis Services sunucu örneğini hızlı bir şekilde oluşturmayı öğrenin.
+description: Bu hızlı başlangıçta, Azure portal kullanılarak Azure Analysis Services sunucu örneğinin nasıl oluşturulacağı açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697476"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230790"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Hızlı başlangıç: Sunucu oluşturma - Portal
 
@@ -20,8 +20,8 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-* **Azure aboneliği**: Hesap oluşturmak için [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/offers/ms-azr-0044p/)’nü ziyaret edin.
-* **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması gerekir. Ayrıca bu Azure Active Directory içindeki bir hesapla Azure'da oturum açmış olmanız gerekir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
+* **Azure aboneliği**: hesap oluşturmak Için [Azure Ücretsiz deneme sürümünü](https://azure.microsoft.com/offers/ms-azr-0044p/) ziyaret edin.
+* **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması gerekir. Ayrıca bu Azure Active Directory içindeki bir hesapla Azure'da oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın 
 
@@ -58,6 +58,4 @@ Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle*
 Bu hızlı başlangıçta Azure aboneliğinizde sunucu oluşturmayı öğrendiniz. Sunucuyu oluşturduğunuza göre bir sunucu güvenlik duvarı yapılandırarak (isteğe bağlı) güvenliğinin sağlanmasına yardımcı olacaksınız. Sunucunuza doğrudan portaldan örnek bir veri modeli de ekleyebilirsiniz. Örnek modelin olması, model veritabanı rollerini yapılandırma ve istemci bağlantılarını test etme işlemlerini öğrenme konusunda yardımcı olur. Daha fazla bilgi edinmek için, örnek model ekleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: sunucu güvenlik duvarını yapılandırma-Portal](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [Öğretici: Sunucunuza örnek model ekleme](analysis-services-create-sample-model.md)
+> [Hızlı Başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal](analysis-services-qs-firewall.md)   

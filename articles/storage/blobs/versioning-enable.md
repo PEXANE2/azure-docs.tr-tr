@@ -1,35 +1,33 @@
 ---
-title: Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)
+title: Blob sürüm oluşturmayı etkinleştirme ve yönetme
 titleSuffix: Azure Storage
-description: Azure portal veya Azure Resource Manager şablonu kullanarak blob sürümü oluşturmayı (Önizleme) nasıl etkinleştireceğinizi öğrenin.
+description: Azure portal blob sürümü oluşturmayı nasıl etkinleştireceğinizi veya bir Azure Resource Manager şablonu kullanarak öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074415"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230679"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)
+# <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
 
-Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturma 'yı (Önizleme) etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
+Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
 
-Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak depolama hesabı için blob sürüm oluşturma 'nın nasıl etkinleştirileceği veya devre dışı bırakılacağı gösterilmektedir.
-
-Blob sürümü oluşturmayı etkinleştirmeden önce önizlemeye kaydolmanız gerekir. Önizleme için nasıl kayıt yapılacağı dahil olmak üzere blob sürümü oluşturma hakkında daha fazla bilgi edinmek için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
+Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak depolama hesabı için blob sürüm oluşturma 'nın nasıl etkinleştirileceği veya devre dışı bırakılacağı gösterilmektedir. Blob sürümü oluşturma hakkında daha fazla bilgi için bkz. [BLOB sürümü oluşturma](versioning-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Azure portal blob sürümü oluşturmayı etkinleştirmek için:
 
@@ -75,7 +73,7 @@ Azure portal şablonlar ile kaynak dağıtma hakkında daha fazla bilgi için bk
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Yeni bir sürüm tetiklemek için blobu değiştirme
 
-Aşağıdaki kod örneği, .NET için Azure depolama istemci kitaplığı, sürüm [12.5.0-Preview. 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) veya üzeri ile yeni bir sürüm oluşturmanın nasıl tetikleneceğini göstermektedir. Bu örneği çalıştırmadan önce, depolama hesabınız için sürüm oluşturmayı etkinleştirdiğinizden emin olun.
+Aşağıdaki kod örneği, .NET için Azure depolama istemci kitaplığı, sürüm [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) veya daha yeni bir sürümün nasıl tetikleneceğini göstermektedir. Bu örneği çalıştırmadan önce, depolama hesabınız için sürüm oluşturmayı etkinleştirdiğinizden emin olun.
 
 Örnek bir Blok Blobu oluşturur ve ardından Blobun meta verilerini günceller. Blob 'un meta verilerini güncelleştirme, yeni bir sürümün oluşturulmasını tetikler. Örnek, ilk sürümü ve geçerli sürümü alır ve yalnızca geçerli sürümün meta verileri içerdiğini gösterir.
 
@@ -161,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)
 - [Azure Depolama blobları için geçici silme](soft-delete-overview.md)

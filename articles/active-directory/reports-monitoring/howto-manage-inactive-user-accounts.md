@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608152"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244730"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
@@ -43,9 +43,9 @@ Son başarılı oturum açma, bir kullanıcının kaynaklara erişim gereksinimi
 
 **Microsoft Graph** API 'Sinin **signeylemsizlik** kaynak türü tarafından kullanıma sunulan **lastsignındatetime** özelliğini değerlendirerek etkin olmayan hesapları tespit edersiniz. Bu özelliği kullanarak, aşağıdaki senaryolar için bir çözüm uygulayabilirsiniz:
 
-- **Ada göre kullanıcılar**: Bu senaryoda, Lastsignındatetime değerini değerlendirmenizi sağlayan belirli bir kullanıcıyı ada göre aratın:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Ada göre kullanıcılar**: Bu senaryoda, Lastsignındatetime değerini değerlendirmenizi sağlayan belirli bir kullanıcıyı ada göre aratın: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce bir Lastsignındatetime değeri olan kullanıcıların listesini istemeniz gerekir:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce bir Lastsignındatetime değeri olan kullanıcıların listesini istemeniz gerekir: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -58,7 +58,7 @@ Bu bölümde, Lastsignındatetime özelliği hakkında bilmeniz gerekenler liste
 
 ### <a name="how-can-i-access-this-property"></a>Bu özelliğe nasıl erişebilirim?
 
-**Lastsignındatetime** özelliği, [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signeylemsizlik kaynak türü](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) tarafından gösterilir.   
+**Lastsignındatetime** özelliği, [Microsoft Graph REST API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signeylemsizlik kaynak türü](/graph/api/resources/signinactivity?view=graph-rest-beta) tarafından gösterilir.   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Lastsignındatetime özelliği Get-AzureAdUser cmdlet 'i aracılığıyla kullanılabilir mi?
 
@@ -91,5 +91,5 @@ Bir Lastsignındatetime zaman damgası oluşturmak için başarılı bir oturum 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma](tutorial-access-api-with-certificates.md)
-* [API başvurusunu denetle](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Oturum açma Etkinliği raporu API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [API başvurusunu denetle](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Oturum açma Etkinliği raporu API başvurusu](/graph/api/resources/signin?view=graph-rest-beta)

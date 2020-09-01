@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656545"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231325"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API
 
@@ -58,7 +58,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi söz dizimi. Konumda yüklü olan kendinden imzalı bir sertifikanın kullanılmasına izin veren bir ıSE oluşturmak için `TrustedRoot` , `certificates` nesneyi Ise tanımının bölümünün içine ekleyin `properties` . Mevcut bir ıSE için yalnızca nesnesi için bir yama isteği gönderebilirsiniz `certificates` . Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için Ayrıca bkz. [http Bağlayıcısı-otomatik olarak imzalanan sertifikalar](../connectors/connectors-native-http.md#self-signed).
+İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi söz dizimi. Konumda yüklü olan kendinden imzalı bir sertifikanın kullanılmasına izin veren bir ıSE oluşturmak için `TrustedRoot` , `certificates` nesneyi Ise tanımının bölümünün içine ekleyin `properties` . Mevcut bir ıSE için yalnızca nesnesi için bir yama isteği gönderebilirsiniz `certificates` . Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ```json
 {

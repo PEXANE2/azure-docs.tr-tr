@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018731"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230390"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -318,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
+* **Yeni sürümlere yönelik yeni sürümlere yönelik son yükseltme, daha önce uyumluluk**OLACAKTıR: SDK 'nın sürüm 1.13.0 itibariyle, önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
+  * Modül bulunamadı: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
+  * İçeri aktarma hataları: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
+  * Öznitelik hataları: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  Bu sorunu geçici olarak çözmek için, oto ml SDK eğitim sürümünüze bağlı olarak aşağıdaki iki adımdan birini gerçekleştirin:
+  1. Oto ml SDK 'Sı eğitim sürümünüz 1.13.0 büyükse, `pandas == 0.25.1` ve gereklidir `sckit-learn==0.22.1` . Sürüm uyuşmazlığı varsa, aşağıda gösterildiği gibi aşağıdaki sürüme yükselterek scikit-bilgi edinin ve/veya Pandas 'ı yükseltin:
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. Oto ml SDK 'Sı eğitim sürümünüz 1.12.0 değerinden küçük veya bu değere eşitse, `pandas == 0.23.4` ve gereklidir `sckit-learn==0.20.3` . Sürüm uyuşmazlığı varsa, scikit-aşağıda gösterildiği gibi doğru sürümü öğrenmek ve/veya Pandas 'yi indirgemeniz gerekir:
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
  
    ```python

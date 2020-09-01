@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045952"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231036"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Güvenlik temeli
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **Kılavuz**: Azure SQL veritabanı Için Gelişmiş tehdit koruması 'Nı (ATP) etkinleştirin.  Kullanıcılar şüpheli veritabanı etkinlikleri, olası güvenlik açıkları ve SQL ekleme saldırılarına ve anormal veritabanı erişimi ve sorgu desenleri üzerine bir uyarı alırlar. Gelişmiş tehdit koruması Ayrıca uyarıları Azure Güvenlik Merkezi ile tümleştirir.
 
-Azure SQL veritabanı için Gelişmiş tehdit koruması 'nı anlayın ve kullanın:https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Azure SQL veritabanı için Gelişmiş tehdit koruması 'nı anlayın ve kullanın: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -157,9 +157,9 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 Azure Kaynak Yönetimi şablonları, rol tabanlı erişim denetimi (RBAC) ve ilkeler gibi tek bir şema tanımında, büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanın. Şema 'i yeni abonelikler ve ortamlara kolayca uygulayın ve sürüm oluşturma aracılığıyla denetimi ve yönetimi ayrıntılı olarak ayarlayın.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Blueprint oluşturma:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Azure Blueprint oluşturma: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -437,7 +437,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 **Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından portala ve Azure kaynak yönetimine erişim sağlamak Için, koşullu erişim adlı konum kullanın.
 
-Azure 'da adlandırılmış konumlar nasıl yapılandırılır:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Azure 'da adlandırılmış konumlar nasıl yapılandırılır: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -723,11 +723,11 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
-Azure Kaynak Graf ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Kaynak Graf ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure RBAC 'yi anlama:https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure RBAC 'yi anlama: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -783,9 +783,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Graph ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -825,9 +825,9 @@ Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/res
 
 Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Ilkesiyle belirli bir kaynak türünü reddetme: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -845,7 +845,7 @@ Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak Için Azure koşullu erişimi kullanın.
 
-Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1011,7 +1011,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 **Rehberlik**: kodunuzda kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
 
-Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/helpcredscan.html
+Kimlik bilgisi tarayıcısını ayarlama: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1035,7 +1035,7 @@ Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/h
 
 App Service, Data Lake Storage, BLOB depolama, Azure SQL veritabanı vb. gibi işlem dışı Azure kaynaklarına yüklenen tüm içerikleri önceden tarayın. Microsoft bu örneklerdeki verilerinize erişemez.
 
-Azure Cloud Services ve sanal makineler için Microsoft kötü amaçlı yazılımdan koruma 'i anlayın:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Azure Cloud Services ve sanal makineler için Microsoft kötü amaçlı yazılımdan koruma 'i anlayın: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1133,7 +1133,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Rehberlik**: Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardımcı olmak için uyarılara önem derecesi atar. böylece, bir kaynak tehlikeye girdiğinde, hemen bu işe başlayabilirsiniz. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
 
-Azure Güvenlik Merkezi 'nde güvenlik uyarıları:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+Azure Güvenlik Merkezi 'nde güvenlik uyarıları: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1201,7 +1201,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

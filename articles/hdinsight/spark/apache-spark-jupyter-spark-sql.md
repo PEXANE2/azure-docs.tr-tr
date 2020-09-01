@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 0f6a6cbc9112959a670bdb0a9cb56ea4509413a1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 132b0f095ef1767d7416aefc71dced2a15769701
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640778"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230492"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
-Bu hızlı başlangıçta, Azure HDInsight 'ta bir [Apache Spark](./apache-spark-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Daha sonra bir Jupyter Not defteri oluşturun ve bunu, Apache Hive tablolarında Spark SQL sorguları çalıştırmak için kullanabilirsiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. HDInsight için Apache Spark Framework, bellek içi işleme kullanarak hızlı veri analizi ve küme bilgi işlem desteği sunar. Jupyter Not defteri verilerinizle etkileşim kurmanıza, kodu markı metniyle birleştirmenize ve basit görselleştirmeler yapmanıza olanak sağlar.
+Bu hızlı başlangıçta, Azure HDInsight 'ta bir [Apache Spark](./apache-spark-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Daha sonra bir Jupyter Notebook dosyası oluşturup Apache Hive tablolarında Spark SQL sorguları çalıştırmak için kullanabilirsiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. HDInsight için Apache Spark Framework, bellek içi işleme kullanarak hızlı veri analizi ve küme bilgi işlem desteği sunar. Jupyter Notebook verilerinizle etkileşim kurmanıza, kodu markı metniyle birleştirmenize ve basit görselleştirmeler yapmanıza olanak sağlar.
 
 Birden çok kümeyi birlikte kullanıyorsanız, bir sanal ağ oluşturmak isteyeceksiniz ve bir Spark kümesi kullanıyorsanız, Hive ambarı bağlayıcısını de kullanmak isteyeceksiniz. Daha fazla bilgi için bkz. [Azure HDInsight için bir sanal ağ planlayın](../hdinsight-plan-virtual-network-deployment.md) ve [Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirin](../interactive-query/apache-hive-warehouse-connector.md).
 
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Azure 'da oturum açmak ve ARM şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
 
-    [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
+    [![Azure’a dağıt](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
@@ -71,9 +71,9 @@ HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak
 
 Küme oluşturulduktan sonra **Kaynağa Git** bağlantısına sahip bir **dağıtım başarılı** bildirimi alırsınız. Kaynak grubu sayfanız yeni HDInsight kümenizi ve kümeyle ilişkili varsayılan depolamayı listeler. Her kümenin bir [Azure depolama](../hdinsight-hadoop-use-blob-storage.md) hesabı veya [Azure Data Lake Storage hesabı](../hdinsight-hadoop-use-data-lake-store.md) bağımlılığı vardır. Bu, varsayılan depolama hesabı olarak adlandırılır. HDInsight kümesi ve varsayılan depolama hesabı aynı Azure bölgesinde birlikte bulunmalıdır. Küme silme, depolama hesabını silmez.
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter not defteri oluşturma
+## <a name="create-a-jupyter-notebook-file"></a>Jupyter Notebook dosyası oluşturma
 
-[Jupyter Notebook](https://jupyter.org/) , çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri verilerinizle etkileşim kurmanıza, kodu markı metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak tanır.
+[Jupyter Notebook](https://jupyter.org/) , çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Verilerinizle etkileşim kurmak, kodu markı metniyle birleştirmek ve basit görselleştirmeler gerçekleştirmek için bir Jupyter Notebook dosyası kullanabilirsiniz.
 
 1. [Azure portalını](https://portal.azure.com) açın.
 
@@ -87,7 +87,7 @@ Küme oluşturulduktan sonra **Kaynağa Git** bağlantısına sahip bir **dağı
 
 4. **New**  >  Bir not defteri oluşturmak için yeni**pyspark** ' ı seçin.
 
-   ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
+   ![Etkileşimli Spark SQL sorgusu çalıştırmak için bir Jupyter Notebook dosyası oluşturma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 
    Untitled(Untitled.pynb) adıyla yeni bir not defteri oluşturulur ve açılır.
 
@@ -108,7 +108,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve dönüştürme için en
     SHOW TABLES
     ```
 
-    HDInsight kümeniz ile bir Jupyter Notebook kullandığınızda, `spark` Spark SQL kullanarak Hive sorguları çalıştırmak için kullanabileceğiniz bir önceden ayarlanmış oturum alırsınız. `%%sql`, Hive sorgusunu çalıştırmak için Jupyter Not Defteri’ne `spark` oturumu ön ayarını kullanmasını söyler. Sorgu, varsayılan olarak tüm HDInsight kümelerinde sağlanan Hive tablosundaki (**hivesampletable**) ilk 10 satırı getirir. Sorguyu ilk kez gönderdiğinizde, Jupyter Not defteri için bir Spark uygulaması oluşturacaktır. Tamamlanması yaklaşık 30 saniye sürer. Spark uygulaması çalışmaya başladıktan sonra sorgu bir saniye içinde yürütülür ve sonuçları üretir. Çıkış aşağıdakine benzer olacaktır:
+    HDInsight kümeniz ile bir Jupyter Notebook dosyası kullandığınızda, `spark` Spark SQL kullanarak Hive sorguları çalıştırmak için kullanabileceğiniz önceden ayarlanmış bir oturum alırsınız. `%%sql`, Hive sorgusunu çalıştırmak için Jupyter Not Defteri’ne `spark` oturumu ön ayarını kullanmasını söyler. Sorgu, varsayılan olarak tüm HDInsight kümelerinde sağlanan Hive tablosundaki (**hivesampletable**) ilk 10 satırı getirir. Sorguyu ilk kez gönderdiğinizde, Jupyter Not defteri için bir Spark uygulaması oluşturacaktır. Tamamlanması yaklaşık 30 saniye sürer. Spark uygulaması çalışmaya başladıktan sonra sorgu bir saniye içinde yürütülür ve sonuçları üretir. Çıktı şuna benzer:
 
     ![HDInsight 'ta sorgu Apache Hive](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "HDInsight 'ta Hive sorgusu")
 

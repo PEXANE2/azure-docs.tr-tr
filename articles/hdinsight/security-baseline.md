@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041328"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230441"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik temeli
 
@@ -32,9 +32,9 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 Veri kaybı riskini azaltmak için Azure Güvenlik Duvarı 'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini kısıtlayın.
 
-Azure HDInsight 'ı bir sanal ağ içinde dağıtma ve bir ağ güvenlik grubuyla güvenli hale getirme:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Azure HDInsight 'ı bir sanal ağ içinde dağıtma ve bir ağ güvenlik grubuyla güvenli hale getirme: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Azure Güvenlik Duvarı ile Azure HDInsight kümeleri için giden trafiği kısıtlama:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Azure Güvenlik Duvarı ile Azure HDInsight kümeleri için giden trafiği kısıtlama: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -108,11 +108,11 @@ Azure HDInsight için gelen trafik gerektiren birkaç bağımlılık vardır. Ge
 
 Veri kaybı riskini azaltmak için Azure Güvenlik Duvarı 'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini kısıtlayın.
 
-Bir sanal ağ içinde HDInsight dağıtma ve bir ağ güvenlik grubuyla güvenli hale getirme:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Bir sanal ağ içinde HDInsight dağıtma ve bir ağ güvenlik grubuyla güvenli hale getirme: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-HDInsight bağımlılıklarını ve Güvenlik Duvarı kullanımını anlayın:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+HDInsight bağımlılıklarını ve Güvenlik Duvarı kullanımını anlayın: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-HDInsight yönetim IP adresleri:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+HDInsight yönetim IP adresleri: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -192,7 +192,7 @@ Azure etkinlik günlüğü olaylarını görüntüleme ve alma:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Azure Izleyici 'de uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Azure Izleyici 'de uyarı oluşturma: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -526,7 +526,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 **Rehberlik**: kullanılamıyor; Müşteri Kasası henüz Azure HDInsight için desteklenmiyor.
 
-Desteklenen Müşteri Kasası hizmetleri listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Desteklenen Müşteri Kasası hizmetleri listesi: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -840,9 +840,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak grafiğini kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Graph ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -887,9 +887,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 - İzin verilen kaynak türleri
 
-Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Ilkesiyle belirli bir kaynak türünü reddetme: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
@@ -909,7 +909,7 @@ Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak Için Azure koşullu erişimi kullanın.
 
-Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
@@ -1290,7 +1290,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

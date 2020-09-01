@@ -238,12 +238,6 @@
               href: application-types.md
             - name: Beklenmeyen kullanıcı ataması
               href: ways-users-get-assigned-to-applications.md
-        - name: Uygulamalarım ile ilgili sorunları giderme
-          items:
-            - name: Uygulama görüntülenmiyor
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: Beklenmeyen uygulama görüntüleniyor
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

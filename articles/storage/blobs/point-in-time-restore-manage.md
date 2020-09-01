@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445449"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230186"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
 
@@ -48,7 +48,7 @@ Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet I
 
 Zaman içinde nokta geri yüklemeyi etkinleştirmeden ve yapılandırmadan önce, depolama hesabı için önkoşulları etkinleştirin: geçici silme, akış değiştirme ve BLOB sürümü oluşturma. Bu özelliklerin her birini etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 
-- [Bloblar için geçici silmeyi etkinleştir](soft-delete-enable.md)
+- [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
 - [Değişiklik akışını etkinleştirme ve devre dışı bırakma](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)
 
@@ -184,4 +184,4 @@ $job | Wait-Job
 - [Blok Blobları için noktadan noktaya geri yükleme (Önizleme)](point-in-time-restore-overview.md)
 - [Geçici silme](soft-delete-overview.md)
 - [Akışı Değiştir (Önizleme)](storage-blob-change-feed.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)

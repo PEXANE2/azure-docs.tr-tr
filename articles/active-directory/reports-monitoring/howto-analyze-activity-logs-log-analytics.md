@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608237"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231240"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -36,13 +36,13 @@ Bu makalede, Log Analytics çalışma alanınızdaki Azure AD etkinlik günlükl
 
 Bu arada izlemek için şunlar gerekir:
 
-* Azure aboneliğinizdeki bir Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)öğrenin.
+* Azure aboneliğinizdeki bir Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](../../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 * İlk olarak, [Azure ad etkinlik günlüklerini Log Analytics çalışma alanınıza yönlendirmekte](howto-integrate-activity-logs-with-log-analytics.md)olan adımları doldurun.
-*  Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+*  Log Analytics çalışma alanına [erişim](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)
 * Azure Active Directory 'de aşağıdaki roller (Azure Active Directory Portal üzerinden Log Analytics erişiyorsanız)
     - Güvenlik Yöneticisi
-    - Güvenlik okuyucusu
-    - Rapor okuyucu
+    - Güvenlik Okuyucusu
+    - Rapor Okuyucusu
     - Genel Yönetici
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
@@ -96,7 +96,7 @@ Ayrıca, sorgunuzda uyarıları da ayarlayabilirsiniz. Örneğin, son hafta 10 '
 
 3. Uyarı için bir ad ve açıklama girin ve önem derecesini seçin. Bizim örneğimiz için, bunu **bilgilendirici**olarak ayarlayabiliriz.
 
-4. Sinyal oluştuğunda uyarı verilecek **Eylem grubunu** seçin. Ekibinize e-posta veya kısa mesaj yoluyla bildirimde bulunabilir veya Web kancaları, Azure işlevleri veya Logic Apps kullanarak eylemi otomatikleştirebileceğinizi seçebilirsiniz. [Azure Portal Uyarı grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)hakkında daha fazla bilgi edinin.
+4. Sinyal oluştuğunda uyarı verilecek **Eylem grubunu** seçin. Ekibinize e-posta veya kısa mesaj yoluyla bildirimde bulunabilir veya Web kancaları, Azure işlevleri veya Logic Apps kullanarak eylemi otomatikleştirebileceğinizi seçebilirsiniz. [Azure Portal Uyarı grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
 
 5. Uyarıyı yapılandırdıktan sonra, etkinleştirmek için **uyarı oluştur** ' u seçin. 
 
@@ -113,6 +113,6 @@ Azure AD etkinlik günlükleri için önceden oluşturulmuş Log Analytics gör�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Izleyici günlüklerinde sorguları kullanmaya başlama](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
-* [Azure portal uyarı grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
+* [Azure Izleyici günlüklerinde sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure portal uyarı grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md)
 * [Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın](howto-install-use-log-analytics-views.md)

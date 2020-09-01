@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016895"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230356"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,9 +41,7 @@ Bir işlem hattındaki otomatikleştirilen ML bir nesne tarafından temsil edili
 
 
 > [!TIP]
-> Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de  `OutputFileDatasetConfig` bulunur `OutputTabularDatasetConfig` .  Bu sınıflar deneysel önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
-> 
->Deneysel özellikler hakkında daha fazla bilgi için bkz https://aka.ms/azuremlexperimental ..
+> Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) bulunur [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
 
 , `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
 
@@ -51,7 +49,7 @@ Bir `Pipeline` üzerinde çalışır `Experiment` . İşlem hattı, `Run` her ad
 
 Bu makale, şeyleri somut hale getirmek için bir sınıflandırma görevi için basit bir işlem hattı oluşturur. Görev, Titanic Inval 'i tahmin ediyor, ancak veri veya görev geçirilme dışında tartışıyoruz.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 ### <a name="retrieve-initial-dataset"></a>İlk veri kümesini alma
 
@@ -272,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Yukarıdaki kod parçacığı, `PipelineOutputTabularDataset` `PipelineOutputFileDataset` veri hazırlama adımının çıktısından yüksek performanslı bir durum oluşturur.
 
 > [!TIP]
-> Genel Önizleme sınıfı `OutputFileDatasetConfig` Ayrıca, `OutputFileDatasetConfig` `OutputTabularDatasetConfig` oto ml çalıştırmalarından bir tüketim için bir olarak dönüştürme özelliğine sahiptir. `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
+> Genel Önizleme sınıfı `OutputFileDatasetConfig` Ayrıca, `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) oto ml çalıştırmalarından bir tüketim için bir olarak dönüştürme özelliğine sahiptir. `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
 
 Diğer bir seçenek `Dataset` de çalışma alanında kayıtlı nesneleri kullanmaktır:
 

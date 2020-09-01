@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057422"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230118"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
-Bloblara yönelik geçici silme, verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Blob 'lar için geçici silme, bir depolama hesabı için etkinleştirildiğinde, blob 'lar, blob sürümleri (Önizleme) ve bu depolama hesabındaki anlık görüntüler, sizin belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
+Bloblara yönelik geçici silme, verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Blob 'lar için geçici silme etkin olduğunda, bu depolama hesabındaki blob 'lar, blob sürümleri ve anlık görüntüler, belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
 
 Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft geçici silme özelliğini etkinleştirmeyi önerir. Geçici silmeyi etkinleştirme hakkında daha fazla bilgi için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-enable.md).
 
@@ -28,7 +28,7 @@ Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kulla
 
 Depolama hesabında Bloblar için geçici silme etkinleştirildiğinde, nesneleri silindikten sonra, belirtilen veri saklama süresi içinde kurtarabilirsiniz. Bu koruma, bir üzerine yazma sonucu olarak silinen blob 'ları (Blok Blobu, ekleme Blobları veya sayfa Blobları) genişletir.
 
-Blob geçici silme etkinken ancak blob sürümü oluşturma (Önizleme) etkin durumdayken mevcut bir Blobun veya anlık görüntüdeki veriler silinirse, üzerine yazılan verilerin durumunu kaydetmek için geçici olarak silinen bir anlık görüntü oluşturulur. Belirtilen bekletme döneminin süresi dolduktan sonra nesne kalıcı olarak silinir.
+Blob geçici silme etkinken mevcut bir Blobun veya anlık görüntüdeki veriler silinirse, ancak blob sürümü oluşturma etkin değilse, üzerine yazılan verilerin durumunu kaydetmek için geçici olarak silinen bir anlık görüntü oluşturulur. Belirtilen bekletme döneminin süresi dolduktan sonra nesne kalıcı olarak silinir.
 
 Depolama hesabında blob sürümü oluşturma ve BLOB geçici silme etkinse, bir blob silindiğinde, geçici olarak silinen bir anlık görüntü yerine yeni bir sürüm oluşturulur. Yeni sürüm geçici olarak silinmez ve geçici silme bekletme süresi sona erdiğinde kaldırılmaz. Bir Blobun geçici olarak silinen sürümleri, [geri alma blobu](/rest/api/storageservices/undelete-blob) işlemini çağırarak Bekletme dönemi içinde geri yüklenebilir. Blob, daha sonra [BLOB kopyalama](/rest/api/storageservices/copy-blob) işlemini çağırarak sürümlerinden birinden geri yüklenebilir. Blob sürümü oluşturma ve geçici silme hakkında daha fazla bilgi için bkz. [BLOB sürümü oluşturma ve geçici silme](versioning-overview.md#blob-versioning-and-soft-delete).
 
@@ -193,5 +193,5 @@ Kullanmakta olduğunuz API sürümüne bakılmaksızın geçici silme avantajın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bloblar için geçici silmeyi etkinleştir](soft-delete-enable.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
+- [Blob sürümü oluşturma](versioning-overview.md)

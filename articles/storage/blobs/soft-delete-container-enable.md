@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066670"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230084"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme (Önizleme)
 
@@ -22,7 +22,7 @@ Kapsayıcı geçici silme (Önizleme), verilerinizin yanlışlıkla veya yanlı�
 
 Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft kapsayıcı geçici silme özelliğini etkinleştirmeyi önerir. Bu makalede, kapsayıcılar için geçici silmenin nasıl etkinleştirileceği gösterilmektedir. Önizlemeye kaydolma dahil olmak üzere kapsayıcı geçici silme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
 
-Microsoft, uçtan uca veri koruması için, Bloblar ve BLOB sürümü oluşturma (Önizleme) için geçici silme özelliğini de etkinleştirmenizi önerir. Blob 'lar için geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md). Blob sürüm oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturma (Önizleme)](versioning-overview.md).
+Microsoft, uçtan uca veri koruması için, Bloblar ve BLOB sürümü oluşturma için geçici silme özelliğini de etkinleştirmenizi önerir. Blob 'lar için geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md). Blob sürüm oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürümü oluşturma](versioning-overview.md).
 
 ## <a name="enable-container-soft-delete"></a>Kapsayıcı geçici silmeyi etkinleştir
 
@@ -101,4 +101,4 @@ Geçici olarak silinen bir kapsayıcıyı ve içeriğini saklama dönemi içinde
 
 - [Kapsayıcılar için geçici silme (Önizleme)](soft-delete-container-overview.md)
 - [Bloblar için geçici silme](soft-delete-blob-overview.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)

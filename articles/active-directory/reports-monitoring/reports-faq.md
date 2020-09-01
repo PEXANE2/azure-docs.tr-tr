@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383775"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231053"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -37,7 +37,7 @@ Y **:** [Etkinlik raporlarına erişmek için API 'leri nasıl kullanabileceğin
 
 **S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlı olarak çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
 
-Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk ALGıLAMA API](../identity-protection/graph-get-started.md)'sini kullanabilirsiniz   . Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
+Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk ALGıLAMA API](../identity-protection/howto-identity-protection-graph-api.md)'sini kullanabilirsiniz   . Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](/graph/api/resources/identityriskevent?view=graph-rest-beta), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
 
 ---
 
@@ -89,7 +89,7 @@ Y **:** Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin ka
 
 **S: Office 365 etkinlik günlükleri hakkında bilgi almak için hangi API 'Leri kullanmalıyım?**
 
-Y **:** Office 365 etkinlik günlüklerine bir API aracılığıyla erişmek için [office 365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) kullanın.
+Y **:** Office 365 etkinlik günlüklerine bir API aracılığıyla erişmek için [office 365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview) kullanın.
 
 ---
 
@@ -156,10 +156,10 @@ Y **:** Koşullu erişim ilkesi aşağıdaki sonuçlara sahip olabilir:
 * **Uygulanmadı**: bunun nedeni, ilke koşullarının uymamaları olabilir.
 * **Etkin değil**: bunun nedeni ilke devre dışı durumda. 
     
-**S: tüm oturum açma raporundaki ilke adı, CA 'daki ilke adı ile eşleşmiyor. Kaydol?**
+**S: tüm oturum açma raporundaki ilke adı, CA 'daki ilke adı ile eşleşmiyor. neden?**
 
 Y **:** Tüm oturum açma raporundaki ilke adı, oturum açma sırasında CA ilkesi adını temel alır. İlke adını daha sonra (oturum açma işleminden sonra) güncelleştirdiyseniz, bu, CA 'daki ilke adı ile tutarsız olabilir.
 
 **S: oturum açma, koşullu erişim ilkesi nedeniyle engellendi, ancak oturum açma Etkinliği raporu, oturum açma etkinliğinin başarılı olduğunu gösteriyor. Kaydol?**
 
-Y **:** Şu anda oturum açma raporu, koşullu erişim uygulandığında Exchange ActiveSync senaryolarına doğru sonuçları göstermeyebilir. Raporda, oturum açma işleminin başarılı bir oturum açma gösterdiği durumlarda, ancak oturum açma işlemi aslında bir koşullu erişim ilkesi nedeniyle başarısız olduysa, bu durum oluşabilir. 
+Y **:** Şu anda oturum açma raporu, koşullu erişim uygulandığında Exchange ActiveSync senaryolarına doğru sonuçları göstermeyebilir. Raporda, oturum açma işleminin başarılı bir oturum açma gösterdiği durumlarda, ancak oturum açma işlemi aslında bir koşullu erişim ilkesi nedeniyle başarısız olduysa, bu durum oluşabilir.

@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611951"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230169"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -22,6 +22,11 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |Yürütülen denetimler|
 |---|
 |<ul><li>API Yönetimi hizmeti çalışır duruma mi çalışıyor?</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/yay
+|Yürütülen denetimler|
+|---|
+|<ul><li>Azure yay bulutu örneği kullanılabilir mi?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Yürütülen denetimler|
@@ -56,12 +61,17 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft. COMPUTE/hostgroups/konaklar
 |Yürütülen denetimler|
 |---|
-|<ul><li>Ana bilgisayar çalışır ve çalışıyor</li><li>Konak donanımı düşürülmüş mi?</li><li>Konak serbest bırakıldı mi?</li><li>Ana bilgisayar donanım hizmeti farklı donanımlara karşı ısılıyor mu?</li></ul>|
+|<ul><li>Ana bilgisayar çalışır duruma mi çalışıyor?</li><li>Konak donanımı düşürülmüş mi?</li><li>Konak serbest bırakıldı mi?</li><li>Ana bilgisayar donanım hizmeti farklı donanımlara karşı ısılıyor mu?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft. COMPUTE/virtualmachines
 |Yürütülen denetimler|
 |---|
 |<ul><li>Bu sanal makineyi barındıran sunucu çalışır duruma mi çalışıyor?</li><li>Konak işletim sistemi önyüklemesi tamamlandı mı?</li><li>Sanal makine kapsayıcısı sağlanıyor ve destekleniyor mu?</li><li>Ana bilgisayar ve depolama hesabı arasında ağ bağlantısı var mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/Managedkümeler
+|Yürütülen denetimler|
+|---|
+|<ul><li>Küme çalışır duruma mi çalışıyor?</li><li>Çekirdek Hizmetleri kümede kullanılabilir mi?</li><li>Tüm küme düğümleri hazırlanıyor mi?</li><li>Hizmet sorumlusu geçerli ve geçerli mi?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/Factory
 |Yürütülen denetimler|
@@ -124,10 +134,20 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>HDInsight kümesinde çekirdek hizmetleri var mı?</li><li>HDInsight kümesi Rest 'de BYOK şifrelemesi için anahtara erişebilsin mi?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft. ıotcentral/ıotapps
+|Yürütülen denetimler|
+|---|
+|<ul><li>IoT Central uygulama kullanılabilir mi?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. Keykasası/kasa
 |Yürütülen denetimler|
 |---|
 |<ul><li>Azure Keykasaplatformu sorunları nedeniyle Anahtar Kasası başarısız olma istekleri mi?</li><li>Müşteri tarafından çok fazla istek yapıldığından anahtar kasasının kısıtlanıyor olması ister misiniz?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft. kusto/kümeler
+|Yürütülen denetimler|
+|---|
+|<ul><li>Küme, düşük Alım başarı oranları yaşıyor mu?</li><li>Küme, yüksek alım gecikmesi mi yaşıyor?</li><li>Küme, çok sayıda sorgu hatasını mı yaşıyor?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft. Machinöğrenim/webServices
 |Yürütülen denetimler|
@@ -164,6 +184,11 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>Yük Dengeleme uç noktaları kullanılabilir mi?</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficmanagerprofiles
+|Yürütülen denetimler|
+|---|
+|<ul><li>Traffic Manager profilini etkileyen herhangi bir sorun var mı?</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/Virtualnetworkgateway 'ler
 |Yürütülen denetimler|
 |---|
@@ -183,11 +208,6 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |Yürütülen denetimler|
 |---|
 |<ul><li>Kapasite kaynağı çalışır duruma mi çalışıyor?</li><li>Tüm iş yükleri çalışır ve çalışıyor mu?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft. PowerBI/workspaceCollections
-|Yürütülen denetimler|
-|---|
-|<ul><li>Ana bilgisayar işletim sistemi çalışıyor mu?</li><li>WorkspaceCollection, veri merkezi dışından erişilebilir mi?</li><li>Power BI kaynak sağlayıcısı kullanılabilir mi?</li><li>Power BI hizmeti uygun bölgede kullanılabilir mi?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 |Yürütülen denetimler|

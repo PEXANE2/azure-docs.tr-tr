@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608203"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230594"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın
 
@@ -35,7 +35,7 @@ Azure Active Directory Log Analytics görünümleri, Azure AD kiracınızda Azur
 
 Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
-* Azure aboneliğinizdeki bir Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)öğrenin.
+* Azure aboneliğinizdeki bir Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](../../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 * İlk olarak, [Azure ad etkinlik günlüklerini Log Analytics çalışma alanınıza yönlendirmekte](howto-integrate-activity-logs-with-log-analytics.md)olan adımları doldurun.
 * [GitHub deposundan](https://aka.ms/AADLogAnalyticsviews) görünümleri yerel bilgisayarınıza indirin.
 
@@ -67,11 +67,11 @@ Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
     ![Kural Oluştur](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Uyarı almak için eylem grubunu seçin. Bu, genel olarak, e-posta veya kısa mesaj yoluyla bildirim almak istediğiniz bir ekip olabilir ya da Web kancaları, runbook 'lar, işlevler, Logic Apps veya dış ıTSM çözümlerini kullanan otomatikleştirilmiş bir görev olabilir. [Azure Portal eylem grupları oluşturmayı ve yönetmeyi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)öğrenin.
+6. Uyarı almak için eylem grubunu seçin. Bu, genel olarak, e-posta veya kısa mesaj yoluyla bildirim almak istediğiniz bir ekip olabilir ya da Web kancaları, runbook 'lar, işlevler, Logic Apps veya dış ıTSM çözümlerini kullanan otomatikleştirilmiş bir görev olabilir. [Azure Portal eylem grupları oluşturmayı ve yönetmeyi](../../azure-monitor/platform/action-groups.md)öğrenin.
 
 7. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin. Artık her oturum açma hatası olduğunda uyarı alırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Izleyici günlükleri ile etkinlik günlüklerini çözümleme](howto-analyze-activity-logs-log-analytics.md)
-* [Azure portal Azure Izleyici günlüklerini kullanmaya başlama](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Azure portal Azure Izleyici günlüklerini kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md)

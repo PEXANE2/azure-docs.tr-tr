@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68987951"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231104"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Izleyici 'de Azure AD denetim günlükleri şemasını yorumlama (Önizleme)
 
@@ -147,7 +147,7 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günl�
 
 ## <a name="field-and-property-descriptions"></a>Alan ve özellik açıklamaları
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 |------------|-------------|
 | time       | Tarih ve saat (UTC). |
 | operationName | İşlemin adı. |
@@ -167,7 +167,7 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günl�
 
 <br>
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 |---------------|-------------|
 | AuditEventCategory | Denetim olayının türü. *Kullanıcı yönetimi*, *uygulama yönetimi*veya başka bir tür olabilir.|
 | Kimlik türü | Tür *uygulama* veya *Kullanıcı*olabilir. |
@@ -179,5 +179,5 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günl�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

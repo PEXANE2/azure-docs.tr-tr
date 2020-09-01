@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007617"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230883"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>MacOS istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -24,7 +24,7 @@ Windows sanal masaüstü kaynaklarına, macOS cihazlarınızdan indirilebilir is
 
 ## <a name="install-the-client"></a>İstemciyi yükleme
 
-Başlamak için, [download](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)   istemciyi MacOS cihazınıza indirin ve yükleyin.
+Başlamak için, istemciyi macOS cihazınıza [indirin](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) ve yükleyin.
 
 ## <a name="subscribe-to-a-feed"></a>Bir akışa abone olma
 
@@ -36,6 +36,7 @@ Bir akışa abone olmak için:
 2. Akış URL 'sini girin. Bu bir URL veya e-posta adresi olabilir:
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
+   - US Gov portalı üzerinden bağlanmak için kullanın <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. **Add (Ekle)** seçeneğini belirleyin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 

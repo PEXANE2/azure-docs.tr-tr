@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891518"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231155"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
 
@@ -35,8 +35,8 @@ Azure AD'nin raporlama mimarisi aşağıdaki bileşenlerden oluşur:
     - [Denetim günlükleri](concept-audit-logs.md) - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. 
     
 - **Güvenlik raporları** 
-    - [Riskli oturum açma işlemleri](concept-risky-sign-ins.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
-    - [Riskli oldukları belirlenen kullanıcılar](concept-user-at-risk.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
+    - [Riskli oturum açma işlemleri](../identity-protection/overview-identity-protection.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
+    - [Riskli oldukları belirlenen kullanıcılar](../identity-protection/overview-identity-protection.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
 
 Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri listelenir.
 
