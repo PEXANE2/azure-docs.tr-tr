@@ -8,12 +8,13 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76937168"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069551"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell’i kullanarak Azure DNS bölgesi ve kaydı oluşturma
 
@@ -91,7 +92,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-**Www\.contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
+**Www \. contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 
 ## <a name="delete-all-resources"></a>Tüm kaynakları silme
 

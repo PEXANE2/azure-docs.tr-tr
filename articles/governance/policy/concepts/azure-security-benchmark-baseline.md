@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 909d423b31bb76d8d6aaed994d1c9f7372cbc01f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937547"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069791"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Azure Ilkesi güvenlik temeli
 
@@ -72,13 +72,13 @@ Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/pri
 
 *Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure ilkesine erişimi denetlemek için Azure Active Directory rol tabanlı erişim denetımı (RBAC) kullanın.
+**Kılavuz**: Azure ilkesine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-* [Azure İlkesi'ndeki RBAC İzinleri](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure Ilkesinde Azure RBAC Izinleri](../overview.md#rbac-permissions-in-azure-policy)
 
-* [Azure 'da RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor

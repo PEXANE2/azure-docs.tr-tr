@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853372"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068652"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -302,7 +302,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | StreetAddress | Adres |
 | Kullanıcı | PostalCode | Posta Kodu |
 | Kullanıcı | preferredlanguange | Tercih edilen dil |
-| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
+| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |*
 | Kullanıcı | mailNickname | Posta takma adı |
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
@@ -340,6 +340,8 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 - JwtClaimType, JWTs 'de yayınlankullanılacak talebin adını içermelidir.
 - SamlClaimType, SAML belirteçlerine yayınlaneklenecek talebin URI 'sini içermelidir.
+
+* **onPremisesUserPrincipalName özniteliği:** Alternatif KIMLIK kullanılırken, şirket içi öznitelik userPrincipalName, onPremisesUserPrincipalName Azure AD özniteliğiyle eşitlenir. Bu öznitelik yalnızca alternatif KIMLIK yapılandırıldığında kullanılabilir ancak MS Graph Beta ile de kullanılabilir: https://graph.microsoft.com/beta/me/ .
 
 > [!NOTE]
 > Kısıtlanmış talep kümesindeki taleplerin adları ve URI 'Leri talep türü öğeleri için kullanılamaz. Daha fazla bilgi için, bu makalenin devamındaki "özel durumlar ve kısıtlamalar" bölümüne bakın.

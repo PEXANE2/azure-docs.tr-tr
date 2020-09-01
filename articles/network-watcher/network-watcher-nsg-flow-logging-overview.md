@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084373"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070590"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -62,7 +62,7 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 - Bir ağ güvenlik grubu (NSG), bağlı olduğu kaynaklarda ağ trafiğine izin veren veya reddeden _güvenlik kurallarının_ bir listesini içerir. NSG 'Ler, VM 'lere bağlı olan alt ağlar, tek VM 'Ler veya tek ağ arabirimleri (NIC) ile ilişkilendirilebilir (Kaynak Yöneticisi). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
 - Ağınızdaki tüm trafik akışları, geçerli NSG kuralları kullanılarak değerlendirilir.
 - Bu değerlendirmelerinin sonucu NSG akış günlüklerinizi de kaydeder. Akış günlükleri Azure platformu aracılığıyla toplanır ve müşteri kaynaklarında herhangi bir değişiklik yapılmasını gerektirmez.
-- Note: kurallar iki türden oluşur-sonlandırma & Sonlandırılmamış, her biri farklı günlüğe kaydetme yetki kaldırıldığında davranışlar.
+- Note: kurallar, her biri farklı günlüğe kaydetme davranışlarına sahip olan & Sonlandırılmamış olan iki türden oluşur.
 - - NSG reddetme kuralları sonlandırılıyor. Trafiği reddetme NSG 'si, bu durumda akış günlüklerinde ve işlenmek üzere trafiği reddettikten sonra durur. 
 - - NSG Izin verme kuralları Sonlandırılmamış, yani bir NSG izin veriyorsa, işleme sonraki NSG 'ye devam eder. Son NSG trafiğe izin veren trafiği akış günlüklerine kaydeder.
 - NSG akış günlükleri, erişilebilen depolama hesaplarına yazılır.
@@ -294,7 +294,7 @@ Aşağıdaki metin akış günlüğüne bir örnektir. Gördüğünüz gibi, ön
 ```
 **Açıklanan günlük kayıt düzeni**
 
-![akış günlüklerine genel bakış](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![akış günlükleri kayıt düzeni](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **Örnek bant genişliği hesaplaması**
 
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
-**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı, Aralık 2020 ' de en son kullanılabilir şekilde zamanlanır. Geçici olarak, bu davranış nedeniyle önemli sorunlara yönelik müşterilere destek aracılığıyla isteğe bağlı olarak izin verebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
+**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı, Aralık 2020 ' de en son kullanılabilir şekilde zamanlanır. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
@@ -365,7 +365,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Kritik VNET 'lerde/alt ağlarda etkinleştir**: akış günlüklerinin, aboneliğinizdeki tüm kritik VNET 'lerde/alt ağlarda bir denetlenebilirlik ve Security en iyi uygulaması olarak etkinleştirilmesi gerekir. 
 
-**Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm NSG 'ler için bir kaynağın alt ağını veya ağ arabirimini uygulayarak tüm trafiğin kaydedildiğinden emin olmanızı öneririz. Daha fazla bilgi için bkz. trafiğin ağ güvenlik gruplarında [nasıl değerlendirildiği](../virtual-network/security-overview.md#how-traffic-is-evaluated) .
+**Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm NSG 'ler için bir kaynağın alt ağını veya ağ arabirimini uygulayarak tüm trafiğin kaydedildiğinden emin olmanızı öneririz. Daha fazla bilgi için bkz. trafiğin ağ güvenlik gruplarında [nasıl değerlendirildiği](../virtual-network/network-security-group-how-it-works.md) .
 
 **Depolama sağlama**: depolama alanı beklenen akış günlüğü birimi ile ayarlama sırasında sağlanmalıdır.
 
@@ -407,7 +407,7 @@ Bir güvenlik duvarının arkasında bir depolama hesabı kullanmak için, güve
 
 - Portala veya [depolama hesapları sayfasından](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) depolama hesabının adını yazarak depolama hesabına gidin.
 - **Ayarlar** bölümünde **güvenlik duvarları ve sanal ağlar** ' ı seçin.
-- **Erişime Izin ver**' de **Seçili ağlar**' ı seçin. Ardından, **özel durumlar**' ın altında, * * * *, güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver seçeneğinin yanındaki kutuyu işaret edin * * * *
+- **Erişime Izin ver**' de **Seçili ağlar**' ı seçin. Ardından,  **özel durumlar**' ın altında, * * * *, güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver seçeneğinin yanındaki kutuyu işaret edin * * * *
 - Zaten seçiliyse, hiçbir değişiklik yapmanız gerekmez.
 - [NSG akış günlüklerine Genel Bakış sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) hedef NSG 'nizi bulun ve NSG akış günlüklerini yukarıdaki depolama hesabı seçiliyken etkinleştirin.
 

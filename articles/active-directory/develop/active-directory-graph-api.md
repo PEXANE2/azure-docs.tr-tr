@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115807"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068669"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API'si
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) kaynaklarına erişmek için Azure AD Graph API yerine [Microsoft Graph](https://developer.microsoft.com/graph) kullanmanızı kesinlikle öneririz. Geliştirme çalışmalarımız şu anda Microsoft Graph üzerine yoğunlaşmıştır ve Azure AD Graph API’si için başka bir geliştirme planlanmamaktadır. Azure AD Graph API 'nin hala uygun olabileceği çok sınırlı sayıda senaryo vardır; daha fazla bilgi için bkz. [Microsoft Graph veya Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blog gönderisi ve [Azure ad Graph uygulamalarını Microsoft Graph 'ye geçirme](/graph/migrate-azure-ad-graph-overview).
+> Azure Active Directory (Azure AD) kaynaklarına erişmek için Azure AD Graph API yerine [Microsoft Graph](https://developer.microsoft.com/graph) kullanmanızı kesinlikle öneririz. Geliştirme çalışmalarımız şu anda Microsoft Graph üzerine yoğunlaşmıştır ve Azure AD Graph API’si için başka bir geliştirme planlanmamaktadır. Azure AD Graph API 'nin hala uygun olabileceği çok sınırlı sayıda senaryo vardır; daha fazla bilgi için bkz. [Microsoft Graph veya Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blog gönderisi ve [Azure ad Graph uygulamalarını Microsoft Graph 'ye geçirme](/graph/migrate-azure-ad-graph-planning-checklist).
 
 Bu makale, Azure AD Graph API için geçerlidir. Microsoft Graph API ile ilgili benzer bilgiler için, bkz. [MICROSOFT Graph API 'Sini kullanma](/graph/use-the-api).
 

@@ -16,12 +16,13 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf27778d1365ef3779a996f37fff09bb7a1efbec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4183ed7343434b575015e94afb4111b3d14c5e3
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999810"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071559"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -139,7 +140,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle**' ye tıklayın.
 8. **Federasyon Hizmeti özellikleri** Iletişim kutusunda **Olaylar** sekmesine tıklayın.
 9. **Success audits (Başarı denetimleri)** ve **Failure audits (Hata denetimleri)** onay kutularını seçin.
-10. **Tamam** düğmesine tıklayın.
+10. **Tamam**’a tıklayın.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2'de AD FS için denetimi etkinleştirme
 

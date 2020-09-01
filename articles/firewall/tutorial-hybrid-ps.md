@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611229"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069417"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
 Karma ağ oluşturmak için şirket içi ağınızı bir Azure sanal ağına bağladığınızda, Azure ağ kaynaklarınıza erişimi denetleme özelliği, genel bir güvenlik planının önemli bir parçasıdır.
 
-Azure Güvenlik Duvarı 'nı, izin verilen ve reddedilen ağ trafiğini tanımlayan kuralları kullanarak bir karma ağdaki ağ erişimini denetlemek için kullanabilirsiniz.
+Azure Güvenlik Duvarı'nı kullanarak izin verilen ve reddedilen ağ trafiğini tanımlayan kurallar sayesinde hibrit ağdaki ağ erişimini denetleyebilirsiniz.
 
 Bu makalede üç sanal ağ oluşturursunuz:
 
@@ -31,23 +31,22 @@ Bu makalede üç sanal ağ oluşturursunuz:
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Değişkenleri tanımlama
-> * Güvenlik Duvarı hub 'ı sanal ağını oluşturma
-> * Bağlı bileşen sanal ağını oluşturma
-> * Şirket içi sanal ağı oluşturma
-> * Güvenlik duvarını yapılandırma ve dağıtma
-> * VPN ağ geçitlerini oluşturma ve bağlama
-> * Hub ve bağlı bileşen sanal ağlarını eşler
-> * Yolları oluşturma
-> * Sanal makineleri oluşturma
-> * Güvenlik duvarını test etme
+* Değişkenleri tanımlama
+* Güvenlik Duvarı hub 'ı sanal ağını oluşturma
+* Bağlı bileşen sanal ağını oluşturma
+* Şirket içi sanal ağı oluşturma
+* Güvenlik duvarını yapılandırma ve dağıtma
+* VPN ağ geçitlerini oluşturma ve bağlama
+* Hub ve bağlı bileşen sanal ağlarını eşler
+* Yolları oluşturma
+* Sanal makineleri oluşturma
+* Güvenlik duvarını test etme
 
 Bu öğreticiyi tamamlayabilmeniz için Azure portal kullanmak istiyorsanız, bkz. [öğretici: Azure Güvenlik duvarını Azure Portal kullanarak karma ağda dağıtma ve yapılandırma](tutorial-hybrid-portal.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 
@@ -62,7 +61,7 @@ Bu senaryonun doğru çalışması için üç önemli gereksinimi vardır:
 Bu yolların nasıl oluşturulduğunu görmek için bu makaledeki [yolları oluşturma](#create-the-routes) bölümüne bakın.
 
 >[!NOTE]
->Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
+>Azure Güvenlik Duvarı internete bağlı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 >
 >Azure Güvenlik Duvarı, zorlamalı tüneli destekleyecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md).
 

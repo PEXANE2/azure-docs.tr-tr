@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281999"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070403"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -254,7 +254,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--** ---arası Isteğe bağlı olarak kaynak hedef birleşimini belirtir. Örneğin: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**--** kopyalama için yardım yardım.
+**--**  kopyalama için yardım yardım.
 
 **--Include-After** dizesi yalnızca verilen tarih/saat içinde veya daha sonra değiştirilen dosyaları içerir. Değer ıSO8601 biçiminde olmalıdır. Hiçbir saat dilimi belirtilmemişse, değer AzCopy çalıştıran makinenin yerel saat diliminde olduğu varsayılır. Örneğin, `2020-08-19T15:04:00Z` BIR UTC saati veya `2020-08-19` yerel saat dilimindeki gece yarısı (00:00) için. AzCopy 10,5 itibariyle, bu bayrak yalnızca dosyalar için geçerlidir, bu nedenle bu bayrak veya ile kullanılırken klasör özellikleri kopyalanmaz `--preserve-smb-info` `--preserve-smb-permissions` .
 
@@ -263,6 +263,8 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 **--include-path** dizesi kopyalama sırasında yalnızca bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--Include-model** dize, kopyalama sırasında yalnızca bu dosyaları içerir. Bu seçenek joker karakterler (*) destekler. Kullanarak dosyaları ayırın `;` .
+
+**--** ------------------------ Kaynağın tek bir Blobun işaret etmelidir ve bu bayrağı kullanarak dosyada belirtilen tüm sürüm kimlikleri yalnızca kaynak Blobun ait olmalıdır. AzCopy, belirtilen sürümleri belirtilen hedef klasöre indirecek. Daha fazla bilgi için bkz. [bir blob 'un önceki sürümlerini indirme](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan `INFO` ). 
 

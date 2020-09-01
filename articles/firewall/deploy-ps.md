@@ -4,15 +4,15 @@ description: Bu makalede, Azure Güvenlik Duvarı 'nı Azure PowerShell kullanar
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610668"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071712"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma
 
@@ -35,19 +35,19 @@ Bu makalede, kolay dağıtım için üç alt ağa sahip Basitleştirilmiş tek b
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Test amaçlı ağ ortamı oluşturma
-> * Güvenlik duvarı dağıtma
-> * Varsayılan rota oluşturma
-> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
-> * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
-> * Güvenlik duvarını test etme
+
+* Test amaçlı ağ ortamı oluşturma
+* Güvenlik duvarı dağıtma
+* Varsayılan rota oluşturma
+* Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
+* Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
+* Güvenlik duvarını test etme
 
 İsterseniz, [Azure Portal](tutorial-firewall-deploy-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 

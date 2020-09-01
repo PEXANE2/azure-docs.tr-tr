@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536943"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069332"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -48,6 +48,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Tercih ederseniz, bu öğreticiyi [Azure PowerShell](deploy-ps.md) kullanarak tamamlayabilirsiniz.
 
+## <a name="prerequisites"></a>Ön koşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="set-up-the-network"></a>Ağı ayarlama
@@ -72,7 +74,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 > [!NOTE]
 > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 1. **Ağ**  >  **sanal ağını**seçin.
 2. **Abonelik** bölümünde aboneliğinizi seçin.
 3. **Kaynak grubu**için **Test-FW-RG**öğesini seçin.
@@ -98,7 +100,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 
 Şimdi iş yükü sanal makinesini oluşturun ve **Iş yükü-sn** alt ağına yerleştirin.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 2. **İşlem** ' ı seçin ve ardından **sanal makine**' yi seçin.
 3. Öne çıkan listede **Windows Server 2016 Datacenter** .
 4. Sanal makine için şu değerleri girin:
@@ -125,7 +127,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 
 Güvenlik duvarını sanal ağa dağıtın.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 2. Arama kutusuna **güvenlik duvarı** yazın ve **ENTER**tuşuna basın.
 3. **Güvenlik duvarı** ' nı seçip **Oluştur**' u seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
@@ -134,10 +136,10 @@ Güvenlik duvarını sanal ağa dağıtın.
    |---------|---------|
    |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**Test-ILT-RG** |
-   |Name     |**Test-FW01**|
+   |Ad     |**Test-FW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**: **Test-FW-vn**|
-   |Genel IP adresi     |**Yeni Ekle**<br>**Ad**: **FW-PIP**|
+   |Genel IP adresi     |**Yeni Ekle**<br>**Ad**:  **FW-PIP**|
 
 5. **Gözden geçir ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.

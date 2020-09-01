@@ -10,13 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056729"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070505"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
 
@@ -217,7 +217,7 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırmak için aşağıdaki makalelerden birine bakın:
 
-- [Azure portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](storage-encryption-keys-portal.md)
+- [Azure portalı kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](storage-encryption-keys-portal.md)
 - [PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](storage-encryption-keys-powershell.md)
 - [Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](storage-encryption-keys-cli.md)
 

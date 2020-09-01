@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
@@ -89,13 +89,13 @@
             - name: Anlık görüntüden yönetilen disk oluşturma
               href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Yönetilen diski aynı veya farklı aboneliğe kopyalama
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Anlık görüntüyü depolama hesabına VHD olarak dışarı aktarma
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Anlık görüntüyü aynı veya farklı aboneliğe kopyalama
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Ağ sanal makineleri
           items:
             - name: Sanal makineler arasındaki ağ trafiğinin güvenliğini sağlama
@@ -143,13 +143,13 @@
             - name: VHD’den anlık görüntü oluşturma
               href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Anlık görüntüyü aynı veya farklı aboneliğe kopyalama
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Sanal makineleri izleme
           items:
             - name: Azure İzleyici günlükleri ile VM izleme
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Yönetilen diski aynı veya farklı aboneliğe kopyalama
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: PowerShell ile bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure İlkesi yerleşik ilkeler
@@ -239,7 +239,7 @@
             - name: Mv2 serisi
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Kısıtlanmış vCPU'lar
-              href: ../constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Depolama için iyileştirilmiş
           items:
             - name: Genel Bakış
@@ -294,7 +294,7 @@
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Sanal makine örneği boyut esnekliği
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Spot VM'ler
           displayName: 'pre-empt, preempt'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -317,7 +317,7 @@
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Sanal makine örneği boyut esnekliği
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Kıyaslama puanları
           href: compute-benchmark-scores.md
     - name: Doğrulanan dağıtımlar
@@ -329,21 +329,21 @@
     - name: Disk depolama
       items:
         - name: Yönetilen disklere giriş
-          href: ../managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: IaaS VM’leri için disk türü seçme
-          href: ../disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Şifreleme
           href: disk-encryption.md
         - name: Disk Depolama rezervasyonları
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Yüksek performansa uygun tasarım yapma
-          href: ../premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk genişletme
           href: disk-bursting.md
         - name: Diskler için ölçeklenebilirlik hedefleri
           href: disk-scalability-targets.md
         - name: Diskler için yedekleme ve olağanüstü durum kurtarma
-          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Paylaşılan diskler
           href: disks-shared.md
         - name: Kısa ömürlü işletim sistemi diskleri
@@ -357,7 +357,7 @@
     - name: Güvenlik
       items:
         - name: Güvenlik ve ilke
-          href: ../security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Disk Şifrelemesi
           href: disk-encryption-overview.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
@@ -370,7 +370,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Durumlar ve yaşam döngüsü
-      href: ../states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: İzleme
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Önyükleme tanılaması
@@ -418,7 +418,7 @@
         - name: Geçişe Genel Bakış
           href: migration-classic-resource-manager-overview.md
         - name: Geçişe derinlemesine bakış
-          href: ../migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Geçiş planlaması
           href: migration-classic-resource-manager-plan.md
         - name: CLI kullanarak geçirme
@@ -428,7 +428,7 @@
         - name: Geçiş için topluluk araçları
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: SSS
-          href: ../migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Görüntüleri Kullanma
       displayName: 'SIG, AMI, image'
       items:
@@ -474,7 +474,7 @@
               href: cloudinit-bash-script.md
             - name: Mevcut VM’yi cloud-init için hazırlama
               href: cloudinit-prepare-custom-image.md
-        - name: 'Şu öğe olmadan görüntü oluşturma:'
+        - name: Sağlama aracısı olmadan görüntü oluşturma
           href: no-agent.md
         - name: Linux Aracısı sağlamasını devre dışı bırakma
           href: disable-provisioning.md
@@ -956,9 +956,9 @@
           href: detach-disk.md
         - name: ARM şablonu ile diskleri dağıtma
           displayName: 'Azure Resource Manager, ARM'
-          href: ../using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Paylaşılan diskleri etkinleştirme
-          href: ../disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Diske VHD yükleme - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Diski güvenli bir şekilde içeri/dışarı aktarma - CLI
@@ -968,11 +968,11 @@
         - name: Bir diski yeniden boyutlandırma
           href: expand-disks.md
         - name: Diskleri yönetmek için Depolama Gezgini kullanma
-          href: ../disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
         - name: Disk Depolama rezervasyonu yapma
-          href: ../disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Artımlı anlık görüntü oluşturma - CLI
           href: disks-incremental-snapshots.md
         - name: Artımlı anlık görüntü oluşturma - Portal
@@ -1006,9 +1006,9 @@
         - name: Performans
           items:
             - name: Yazma hızlandırıcıyı kullanma
-              href: ../how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Ultra diskleri kullanma
-              href: ../disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Disk kıyaslama
               href: disks-benchmarks.md
             - name: Performansı iyileştirme

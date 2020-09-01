@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 05d4bc8d249d5ac45fd36ce1ae58ca56870e3be6
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722797"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068975"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
 
@@ -26,7 +27,7 @@ Bu makalede, PowerShell kullanarak Azure AD DS nasıl etkinleştirileceği göst
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

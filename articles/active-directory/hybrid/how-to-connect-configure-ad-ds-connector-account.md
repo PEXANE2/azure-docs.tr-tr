@@ -11,14 +11,15 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce6f0e5e6e958e72ddc04608c5f207fedb18daf9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360070"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072273"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS bağlayıcı hesabı Izinlerini yapılandırma 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS Bağlayıcı Hesabı İzinlerini Yapılandırma 
 
 [Adsyncconfig. psm1](reference-connect-adsyncconfig.md) adlı PowerShell modülü, Azure AD Connect dağıtımınız için doğru Active Directory izinlerini yapılandırmanıza yardımcı olacak cmdlet 'lerin bir koleksiyonunu içeren Build 1.1.880.0 (2018 Ağustos ayında yayımlanmıştır) ile tanıtılmıştır. 
 
@@ -136,7 +137,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Bu cmdlet aşağıdaki izinleri ayarlar: 
  
 
-|Tür |Name |Access |Uygulanan Öğe| 
+|Tür |Ad |Access |Uygulanan Öğe| 
 |-----|-----|-----|-----|
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Alt cihaz nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı|Tüm özellikleri oku |Alt InetOrgPerson nesneleri| 
@@ -162,7 +163,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver|AD DS bağlayıcı hesabı|Okuma/yazma özelliği|Alt Kullanıcı nesneleri|
 
@@ -182,7 +183,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
@@ -202,7 +203,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Parola Sıfırlama |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Write özelliği lockoutTime |Alt Kullanıcı nesneleri| 
@@ -222,7 +223,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Genel okuma/yazma |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Alt nesne Oluştur/Sil |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
@@ -245,7 +246,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Bu cmdlet aşağıdaki izinleri ayarlar:  
  
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt InetOrgPerson nesneleri| 
@@ -267,7 +268,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Descendant PublicFolder nesneleri| 
 
@@ -292,7 +293,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Name |Access |Uygulanan Öğe|
+|Tür |Ad |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |SİSTEM |Tam Denetim |Bu nesne 
 |İzin Ver |Enterprise Admins |Tam Denetim |Bu nesne 

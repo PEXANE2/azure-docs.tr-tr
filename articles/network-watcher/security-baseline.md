@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f50310b8494b65ff8e9170d333d7c3e70c82ded
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85256048"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071525"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Ağ Izleyicisi için Azure Güvenlik temeli
 
@@ -234,9 +234,9 @@ Ağ Izleyicisi etkinleştirilmelidir
 
 **Kılavuz**: Azure Ağ İzleyicisi 'nin denetim düzlemi (ör. Azure Portal) üzerinde yönetici erişimi olan kullanıcı hesaplarının envanterini saklayın. Ağ Izleyicisi yeteneklerini kullanmak için, Azure 'da oturum açarken kullandığınız hesap sahibine, katkıda bulunan veya ağ katılımcısı yerleşik rollerine atanmalıdır veya belirli ağ Izleyicisi özellikleri için listelenen eylemlere atanmış özel bir role atanmalıdır.
 
-Rol tabanlı erişim denetimi 'ni (RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır.
+Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırmak için, aboneliğiniz için Azure portal kimlik ve erişim denetimi (ıAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır.
 
-* [Azure 'da RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Ağ Izleyicisi yeteneklerini kullanmak için gereken rol tabanlı erişim denetimi izinleri](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -443,15 +443,15 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Sorumluluk**: geçerli değil
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: rol tabanlı erişim denetimi 'NI (RBAC) yapılandırmak için, aboneliğiniz Için Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
+**Kılavuz**: Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) yapılandırmak için aboneliğinizin Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
 
 Ağ Izleyicisi yeteneklerini kullanmak için, Azure 'da oturum açarken kullandığınız hesap sahibine, katkıda bulunan veya ağ katılımcısı yerleşik rollerine atanmalıdır veya belirli ağ Izleyicisi özellikleri için listelenen eylemlere atanmış özel bir role atanmalıdır.
 
-* [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [Ağ Izleyicisi 'nde RBAC izinlerini anlama](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Ağ Izleyicisi 'nde Azure RBAC izinlerini anlama](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

@@ -6,12 +6,13 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506307"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071270"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
@@ -238,7 +239,7 @@ HTTP tetikleyicisi ve Zamanlayıcı tetikleyicisi dışındaki [işlev Tetikleyi
 
 Basit bir HTTP tetikleyicisiyle bir Kotlin işlev uygulaması oluşturdunuz ve bunu Azure Işlevlerine dağıttınız.
 
-- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için [Java işlevleri Geliştirici Kılavuzu ' nu](functions-reference-java.md) gözden geçirin.
+- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için  [Java işlevleri Geliştirici Kılavuzu ' nu](functions-reference-java.md) gözden geçirin.
 - `azure-functions:add` Maven hedefini kullanarak projenize farklı tetikleyicilere sahip ek işlevler ekleyin.
 - [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) ve [Eclipse](functions-create-maven-eclipse.md) ile yerel olarak işlev yazın ve işlevlerde hata ayıklayın. 
 - Visual Studio Code ile Azure’da dağıtılan işlevlerde hata ayıklayın. Yönergeler için [sunucusuz Java uygulamaları](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) belgelerine bakın.

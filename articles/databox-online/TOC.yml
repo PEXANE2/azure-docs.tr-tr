@@ -1,73 +1,181 @@
 - name: Azure Stack Edge ve Data Box Gateway Belgeleri
   href: /azure/databox-online/
   expanded: true
-- name: Data Box Gateway
+- name: GPU ile Azure Stack Edge (Önizleme)
   items:
     - name: Genel Bakış
       items:
-        - name: Data Box Gateway nedir?
-          href: data-box-gateway-overview.md
+        - name: GPU ile Azure Stack Edge nedir?
+          href: azure-stack-edge-gpu-overview.md
     - name: Öğreticiler
       items:
-        - name: 1 - Hazırlanma
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A - Hyper-V’de sağlama
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B - VMware’de sağlama
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3 - Bağlanma, kurma, etkinleştirme'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: '4 - Paylaşıma ekleme, bağlanma'
-          href: data-box-gateway-deploy-add-shares.md
+        - name: 0 - Denetim listesini alma
+          href: azure-stack-edge-gpu-deploy-checklist.md
+        - name: '1 - Sipariş verme, hazırlama'
+          href: azure-stack-edge-gpu-deploy-prep.md
+        - name: 2 - Yükleme
+          href: azure-stack-edge-gpu-deploy-install.md
+        - name: 3 - Bağlama
+          href: azure-stack-edge-gpu-deploy-connect.md
+        - name: 4 - Ağı yapılandırma
+          href: azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md
+        - name: 5 - Cihazı yapılandırma
+          href: azure-stack-edge-gpu-deploy-set-up-device-update-time.md
+        - name: 6 - Sertifikaları yapılandırma
+          href: azure-stack-edge-gpu-deploy-configure-certificates.md
+        - name: 7 - Etkinleştirme
+          href: azure-stack-edge-gpu-deploy-activate.md
+        - name: 8 - İşlemi yapılandırma
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+        - name: '9A - Paylaşıma ekleme, bağlanma'
+          href: azure-stack-edge-j-series-deploy-add-shares.md
+        - name: '9B - Depolama hesaplarına ekleme, bağlama'
+          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Kavramlar
       items:
         - name: Gereksinimleri inceleme
-          href: data-box-gateway-system-requirements.md
+          href: azure-stack-edge-gpu-system-requirements.md
         - name: Sınırları anlama
-          href: data-box-gateway-limits.md
+          href: azure-stack-edge-limits.md
         - name: Güvenliğe genel bakış
-          href: data-box-gateway-security.md
-        - name: Kullanım örneklerini görüntüleme
-          href: data-box-gateway-use-cases.md
+          href: azure-stack-edge-security.md
+        - name: Belirtimleri gözden geçirme
+          items:
+            - name: Cihaz belirtimleri
+              href: azure-stack-edge-gpu-technical-specifications-compliance.md
+            - name: Güç kablosu belirtimleri
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+        - name: Kubernetes'i anlama
+          items:
+            - name: Kubernetes nedir?
+              href: azure-stack-edge-gpu-kubernetes-overview.md
+            - name: Kubernetes depolaması
+              href: azure-stack-edge-gpu-kubernetes-storage.md
+            - name: Kubernetes ağ
+              href: azure-stack-edge-gpu-kubernetes-networking.md
+            - name: Kubernetes RBAC
+              href: azure-stack-edge-gpu-kubernetes-rbac.md
+            - name: Kubernetes iş yükleri
+              href: azure-stack-edge-gpu-kubernetes-workload-management.md
     - name: Nasıl yapılır
       items:
-        - name: Güncelleştir
-          href: data-box-gateway-apply-updates.md
-        - name: Yönetme
+        - name: IoT Edge örneklerini dağıtma
+          items:
+            - name: Nvidia galerisinden modül
+              href: azure-stack-edge-j-series-configure-gpu-modules.md
+            - name: Git deposundan GPU modülü
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: Market aracılığıyla GPU modülü
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+        - name: Kubernetes iş yüklerini dağıtma
+          items:
+            - name: kubectl yoluyla
+              items:
+                - name: Kubernetes kümesine erişme
+                  href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Durum bilgisi olmayan uygulamayı kullanıma sunma
+                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                - name: Durum bilgisi olan uygulamayı dağıtma (statik sağlanan)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
+                - name: Durum bilgisi olan uygulamayı dağıtma (dinamik sağlanan)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+            - name: IoT Edge yoluyla
+              items:
+                - name: Durum bilgisi olmayan uygulamayı kullanıma sunma
+                  href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+            - name: Azure Arc yoluyla
+              items:
+                - name: Kubernetes kümesinde Arc'ı etkinleştirme
+                  href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
+                - name: GitOps yoluyla durum bilgisi olmayan uygulamayı dağıtma
+                  href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+        - name: Azure Resource Manager'ı yapılandırma
+          items:
+            - name: Azure PowerShell yoluyla bağlanma
+              href: azure-stack-edge-j-series-connect-resource-manager.md
+            - name: Azure Resource Manager parolasını ayarlama
+              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+            - name: İstemci TLS ayarlarını yapılandırma
+              href: azure-stack-edge-j-series-configure-tls-settings.md
+        - name: VM’leri dağıtma
+          items:
+            - name: VM'leri dağıtma - Şablonlar
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: VM'leri dağıtma - Azure PowerShell cmdlet'leri
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+            - name: VM'leri dağıtma - Azure PowerShell betiği
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+            - name: VM'leri dağıtma - Azure CLI/Python
+              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: VM görüntüsü oluşturma
+              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+        - name: Sertifikaları yönetme
+          items:
+            - name: Gereksinimler
+              href: azure-stack-edge-j-series-certificate-requirements.md
+            - name: Kendinizinkini getirin
+              href: azure-stack-edge-j-series-manage-certificates.md
+            - name: Azure Stack Hazır Olma Denetleyicisi aracı yoluyla oluşturma
+              href: azure-stack-edge-j-series-create-certificates-tool.md
+            - name: Sertifika hatalarını giderme
+              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+            - name: C# modülü geliştirme
+              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: Uç işlemini yönetme
+          href: azure-stack-edge-j-series-manage-compute.md
+        - name: Depolama ağ geçidini yönetme
           items:
             - name: Paylaşımlar
-              href: data-box-gateway-manage-shares.md
+              href: azure-stack-edge-j-series-manage-shares.md
             - name: Kullanıcılar
-              href: data-box-gateway-manage-users.md
+              href: azure-stack-edge-j-series-manage-users.md
+            - name: Depolama hesapları
+              href: azure-stack-edge-j-series-manage-storage-accounts.md
             - name: Bant genişliği zamanlamaları
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Erişim, güç, bağlantı'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+        - name: Cihaz yönetme
+          items:
+            - name: 'Güç, erişim, bağlantı'
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell aracılığıyla
-              href: data-box-gateway-connect-powershell-interface.md
+              href: azure-stack-edge-gpu-connect-powershell-interface.md
+            - name: Güncelleştirme uygulama
+              href: azure-stack-edge-gpu-install-update.md
+            - name: Cihazın iade edilmesi
+              href: azure-stack-edge-return-device.md
+            - name: Cihazı değiştirme
+              href: azure-stack-edge-replace-device.md
         - name: İzleme
-          href: data-box-gateway-monitor.md
+          items:
+            - name: Ölçüm grafiklerini kullanma
+              href: azure-stack-edge-monitor.md
+            - name: Kubernetes panosunu kullanma
+              href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
         - name: Sorun giderme
-          href: data-box-gateway-troubleshoot.md
-        - name: Microsoft Desteği’ne başvurma
-          href: azure-stack-edge-contact-microsoft-support.md
+          items:
+            - name: Cihaz sorunları
+              href: azure-stack-edge-troubleshoot.md
+            - name: Sorunları sıralama
+              href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Microsoft Desteği’ne başvurma
+              href: azure-stack-edge-contact-microsoft-support.md
     - name: Sürüm notları
       items:
-        - name: 2007 - Geçerli
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: Genel kullanılabilirlik (GA)
-          href: data-box-gateway-release-notes.md
-- name: Azure Stack Edge
+        - name: 2008 - Sürüm notları
+          href: azure-stack-edge-gpu-2008-release-notes.md
+    - name: Başvuru
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: FPGA ile Azure Stack Edge
   items:
     - name: Genel Bakış
       items:
-        - name: Azure Stack Edge nedir?
+        - name: FPGA ile Azure Stack Edge nedir?
           href: azure-stack-edge-overview.md
     - name: Öğreticiler
       items:
@@ -151,6 +259,68 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Data Box Gateway
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Data Box Gateway nedir?
+          href: data-box-gateway-overview.md
+    - name: Öğreticiler
+      items:
+        - name: 1 - Hazırlanma
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A - Hyper-V’de sağlama
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B - VMware’de sağlama
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: '3 - Bağlanma, kurma, etkinleştirme'
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: '4 - Paylaşıma ekleme, bağlanma'
+          href: data-box-gateway-deploy-add-shares.md
+    - name: Kavramlar
+      items:
+        - name: Gereksinimleri inceleme
+          href: data-box-gateway-system-requirements.md
+        - name: Sınırları anlama
+          href: data-box-gateway-limits.md
+        - name: Güvenliğe genel bakış
+          href: data-box-gateway-security.md
+        - name: Kullanım örneklerini görüntüleme
+          href: data-box-gateway-use-cases.md
+    - name: Nasıl yapılır
+      items:
+        - name: Güncelleştir
+          href: data-box-gateway-apply-updates.md
+        - name: Yönetme
+          items:
+            - name: Paylaşımlar
+              href: data-box-gateway-manage-shares.md
+            - name: Kullanıcılar
+              href: data-box-gateway-manage-users.md
+            - name: Bant genişliği zamanlamaları
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 'Erişim, güç, bağlantı'
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: PowerShell aracılığıyla
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: İzleme
+          href: data-box-gateway-monitor.md
+        - name: Sorun giderme
+          href: data-box-gateway-troubleshoot.md
+        - name: Microsoft Desteği’ne başvurma
+          href: azure-stack-edge-contact-microsoft-support.md
+    - name: Sürüm notları
+      items:
+        - name: 2007 - Geçerli
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: Genel kullanılabilirlik (GA)
+          href: data-box-gateway-release-notes.md
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge C# modülü örnekleri (.NET)

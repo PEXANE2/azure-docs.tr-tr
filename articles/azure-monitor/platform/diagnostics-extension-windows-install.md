@@ -7,13 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499203"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069587"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure [Tanılama uzantısı](diagnostics-extension-overview.md) , Azure izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
@@ -192,7 +192,7 @@ Ayrıca bkz. [Windows çalıştıran bir sanal makinede Azure tanılama etkinle�
 Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve bunların bir tablo ya da blob olarak saklanıp saklanmayacağı listelenmiştir. Tablolarda depolanan veriler ayrıca, ortak yapılandırmanızda [StorageType ayarına](diagnostics-extension-schema-windows.md#publicconfig-element) bağlı olarak bloblarda depolanabilir.
 
 
-| Veriler | Depolama türü | Description |
+| Veriler | Depolama türü | Açıklama |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tablo | Tanılama İzleyicisi ve yapılandırma değişiklikleri. |
 | WADDirectoriesTable | Tablo | Tanılama izleyicisinin izlediği dizinler.  Buna IIS günlükleri, IIS başarısız istek günlükleri ve özel dizinler dahildir.  Blob günlük dosyasının konumu kapsayıcı alanında belirtilir ve BLOB adı RelativePath alanında bulunur.  AbsolutePath alanı, Azure sanal makinesinde var olan dosyanın konumunu ve adını gösterir. |
@@ -204,7 +204,7 @@ Aşağıdaki tabloda, tanılama uzantısından toplanan farklı veri türleri ve
 | Özel | Blob | Tanılama İzleyicisi tarafından izlenen dizinleri yapılandırmaya dayalı özel bir kapsayıcı.  Bu blob kapsayıcısının adı WADDirectoriesTable içinde belirtilecektir. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Tanılama verilerini görüntülemek için Araçlar
-Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örnek:
+Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örneğin:
 
 * Visual Studio 'da Sunucu Gezgini-Azure araçlarını Microsoft Visual Studio yüklediyseniz, Azure depolama hesaplarınızdan salt okunurdur blob ve tablo verilerini görüntülemek için Sunucu Gezgini Azure Storage düğümünü kullanabilirsiniz. Yerel depolama öykünücü hesabınızdan ve ayrıca Azure için oluşturduğunuz depolama hesaplarından verileri görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Sunucu Gezgini Ile depolama kaynaklarına göz atma ve yönetme](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md) , Windows, OSX ve Linux 'Ta Azure Depolama verileriyle kolayca çalışabilmenizi sağlayan tek başına bir uygulamadır.

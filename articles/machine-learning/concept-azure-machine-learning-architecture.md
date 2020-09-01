@@ -10,29 +10,29 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: d7bad24510f74a7fadd74328e24ea22855e6fe02
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b90cda409096f940d6c2b1c64517731e81c41fbe
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750840"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069178"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
-Azure Machine Learning için mimari ve kavramlar hakkında bilgi edinin.
-
-> [!NOTE]
-> Bu makalede Azure Machine Learning tarafından kullanılan hüküm ve kavramlar tanımlanmakla birlikte, Azure platformu için hüküm ve kavramlar tanımlamaz. Azure platform terminolojisi hakkında daha fazla bilgi için [Microsoft Azure sözlüğü](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)bölümüne bakın.
+[Azure Machine Learning](overview-what-is-azure-ml.md)için mimari ve kavramlar hakkında bilgi edinin.  Bu makale, bileşenleri ve makine öğrenimi modellerini oluşturma, dağıtma ve sürdürme sürecinde yardımcı olmak üzere nasıl birlikte çalıştıkları hakkında daha fazla bilgi sahibi olmanızı sağlar.
 
 ## <a name="workspace"></a><a name="workspace"></a> Alanında
 
-:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="Azure Machine Learning mimarisi":::
+[Machine Learning çalışma alanı](concept-workspace.md) , Azure Machine Learning için en üst düzey kaynaktır.
 
-[Machine Learning çalışma alanı](concept-workspace.md) , Azure Machine Learning için en üst düzey kaynaktır.  Çalışma alanı, şunları yapmak için merkezi yerdir:
+:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="Diyagram: bir çalışma alanının ve bileşenlerinin Azure Machine Learning mimarisi":::
+
+Çalışma alanı, şunları yapmak için merkezi yerdir:
+
 * Modellerle ilgili eğitim ve dağıtım için kullandığınız kaynakları yönetme (örneğin, [hesaplar](#compute-instance) )
 * Azure Machine Learning kullandığınızda oluşturduğunuz varlıkları depolama, aşağıdakiler dahil:
   * [Ortamlar](#environments)
-  * [Çalıştırmalar](#runs)
+  * [Denemeler](#experiments)
   * [Pipelines](#ml-pipelines)
   * [Veri kümeleri](#datasets-and-datastores)
   * [Modeller](#models)
@@ -40,83 +40,47 @@ Azure Machine Learning için mimari ve kavramlar hakkında bilgi edinin.
 
 Çalışma alanı, çalışma alanı tarafından kullanılan diğer Azure kaynaklarını içerir:
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
++ [Azure Container Registry (ACR)](https://azure.microsoft.com/services/container-registry/): eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için ACR yalnızca dağıtım görüntüleri oluşturulduğunda oluşturulur.
 + [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): çalışma alanı için varsayılan veri deposu olarak kullanılır.  Azure Machine Learning işlem örneklerinizde kullanılan jupi Not defterleri burada da depolanır.
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): modelleriniz hakkında izleme bilgilerini depolar.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): işlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
 
 Çalışma alanını başkalarıyla paylaşabilirsiniz.
 
-## <a name="studio"></a>Studio
+## <a name="computes"></a>Karmasını
 
-[Azure Machine Learning Studio](https://ml.azure.com) , çalışma alanınızdaki tüm yapıtların bir web görünümünü sağlar.  Ayrıca, bu portal Azure Machine Learning bir parçası olan etkileşimli araçlara de erişirsiniz:
+<a name="compute-targets"></a>[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullandığınız herhangi bir makine veya makine kümesidir. Yerel makinenizi veya uzak bir işlem kaynağını işlem hedefi olarak kullanabilirsiniz.  İşlem hedefleri sayesinde, yerel makinenizde eğitime başlayabilir ve ardından eğitim betiğinizi değiştirmeden buluta ölçeklendirebilirsiniz.
 
-+ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md)
-+ [Otomatik makine öğrenimi](concept-automated-ml.md) için Web deneyimi
-+ Verilerin etiketlenmesi için projeleri oluşturmak, yönetmek ve izlemek için [veri etiketleme projeleri](how-to-create-labeling-projects.md)
+Azure Machine Learning, makine öğrenimi görevleri için yapılandırılmış iki tam olarak yönetilen bulut tabanlı sanal makine (VM) sunar:
 
-##  <a name="computes"></a>Karmasını
+* <a name="compute-instance"></a>**İşlem örneği**: işlem örneği makine öğrenimi için yüklenen birden çok araç ve ortamı IÇEREN bir sanal makinedir. Bir işlem örneğinin birincil kullanımı geliştirme iş istasyonunuz içindir.  Örnek not defterlerini, kurulum gerekmeden çalıştırmaya başlayabilirsiniz. Bir işlem örneği, eğitim ve ınişsiz işler için işlem hedefi olarak da kullanılabilir.
 
-<a name="compute-targets"></a>[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındırabileceğiniz makinedir veya makineler kümesidir. Bu konum, yerel makineniz veya uzak bir işlem kaynağı olabilir.
-
-Azure Machine Learning, makine öğrenimi görevleri için yapılandırılmış iki tam olarak yönetilen bulut tabanlı işlem kaynağı tanıtır:
-
-* <a name="compute-instance"></a>**İşlem örneği** ([Computeinstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance?view=azure-ml-py)): bir işlem örneği, Machine Learning için yüklenen birden çok araç ve ortamı içeren bir sanal makinedir (VM). Kurulum gerekmeden örnek not defterlerini çalıştırmaya başlamak için geliştirme iş istasyonunuz olarak bir işlem örneği kullanın. , Eğitim ve ınişsiz işler için bir işlem hedefi olarak da kullanılabilir.
-* **İşlem kümeleri** ([amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)): çok düğümlü ölçeklendirme özelliklerine sahip VM 'ler kümesi. Bir iş gönderildiğinde otomatik olarak ölçeği ölçeklendirir. Büyük işler ve üretim için işlem hedeflerine daha uygun. Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
+* **İşlem kümeleri**: işlem kümeleri, çok düğümlü ölçeklendirme özelliklerine sahip VM 'lerin bir kümesidir. Bilgi işlem kümeleri, büyük işler ve üretim için işlem hedefleri için daha uygundur.  Bir iş gönderildiğinde küme otomatik olarak ölçeklendirilir.  Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
 
 Eğitim işlem hedefleri hakkında daha fazla bilgi için bkz. [eğitim işlem hedefleri](concept-compute-target.md#train).  Dağıtım işlem hedefleri hakkında daha fazla bilgi için bkz. [dağıtım hedefleri](concept-compute-target.md#deploy).
 
 ## <a name="datasets-and-datastores"></a>Veri kümeleri ve veri depoları
 
-[**Azure Machine Learning veri kümeleri**](concept-data.md#datasets)  , verilere erişmeyi ve verilerinize çalışmayı kolaylaştırır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri keşfedebilir ve farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilirsiniz.
-
-Veri kümeleri, veya kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar `from_delimited_files()` `to_pandas_dataframe()` .
+[**Azure Machine Learning veri kümeleri**](concept-data.md#datasets)  , verilere erişmeyi ve verilerinize çalışmayı kolaylaştırır. Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz ve veri kaynaklarınızın bütünlüğünü riske çıkarmazsınız.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial).
 
-Bir [**veri deposu**](concept-data.md#datastores) , bir Azure depolama hesabı üzerinden bir depolama soyutlamasıdır. Her çalışma alanının varsayılan bir veri deposu vardır ve ek veri depolarını kaydedebilirsiniz. Veri deposundan dosyaları depolamak ve almak için Python SDK API 'sini veya Azure Machine Learning CLı 'yi kullanın. 
+Veri kümeleri, Azure depolama hizmetlerine güvenli bir şekilde bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Veri, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan mağaza bağlantı bilgilerini depolar. Bu kişiler, çalışma alanıyla ilişkili Key Vault abonelik KIMLIĞINIZ ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz.
 
-## <a name="models"></a>Modeller
-
-En basit olan model, bir girişi alan ve çıkış üreten bir kod parçasıdır. Machine Learning modeli oluşturmak, bir algoritma seçmeyi, verileri verilerle sağlamayı ve [hiper parametreleri ayarlamayı](how-to-tune-hyperparameters.md)içerir. Eğitim, eğitilen bir model üreten ve eğitim sürecinde modelin öğrendiği bir işlem olan yinelemeli bir işlemdir.
-
-Bir model, Azure Machine Learning bir deneme [çalıştırması](#runs) tarafından üretilir [experiment](#experiments) . Ayrıca, Azure Machine Learning dışında eğitilen bir model de kullanabilirsiniz. Daha sonra [modeli](#register-model) çalışma alanına kaydedersiniz.
-
-Azure Machine Learning çerçeve agstik. Bir model oluşturduğunuzda, Scikit-öğren, XGBoost, PyTorch, TensorFlow ve Chainer gibi popüler Machine Learning çerçevesini kullanabilirsiniz.
-
-Scikit-öğrenme kullanarak bir modele eğitim verme örneği için bkz. [öğretici: görüntü sınıflandırma modelini Azure Machine Learning Ile eğitme](tutorial-train-models-with-aml.md).
-
-### <a name="model-registry"></a><a name="register-model"></a> Model kayıt defteri
-[Çalışma alanı](#workspace)  >  **Model kayıt defteri**
-
-**Model kayıt defteri** , Azure Machine Learning çalışma alanınızdaki tüm modelleri izlemenize olanak sağlar.
-
-Modeller ad ve sürüm ile tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri yeni bir sürüm olduğunu varsayar. Sürüm artırılır ve yeni model aynı adla kaydedilir.
-
-Modeli kaydettiğinizde, ek meta veri etiketleri sağlayabilir ve ardından modeller ararken etiketleri kullanabilirsiniz.
-
-> [!TIP]
-> Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
-
-Etkin bir dağıtım tarafından kullanılan kayıtlı bir modeli silemezsiniz.
-
-Bir modeli kaydetme örneği için bkz. [Azure Machine Learning görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).
-
-
-### <a name="environments"></a>Ortamlar
+## <a name="environments"></a>Ortamlar
 
 [Çalışma alanı](#workspace)  >  **Ortamlar**
 
-[Ortam](concept-environments.md) , makine öğrenimi modelinizin eğitiminin veya Puanlarınızın gerçekleştiği ortamın kapsüllenmesi. Ortam, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirtir.
+[Ortam](concept-environments.md) , makine öğrenimi modelinizin eğitiminin veya Puanlarınızın gerçekleştiği ortamın kapsüllenmesi. Ortam, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirtir.  
 
 Kod örnekleri için, [ortamları kullanma](how-to-use-environments.md#manage-environments)konusunun "ortamları yönetme" bölümüne bakın.
 
-### <a name="experiments"></a>Denemeler
+## <a name="experiments"></a>Denemeler
 
 [Çalışma alanı](#workspace)  >  **Denemeleri**
 
 Deneme, belirtilen bir betikten birçok çalıştırma gruplandırmasıdır. Her zaman bir çalışma alanına aittir. Bir çalıştırma gönderdiğinizde, bir deneme adı sağlarsınız. Çalıştırma bilgileri bu deneme kapsamında saklanır. Bir deneme gönderdiğinizde ad yoksa, otomatik olarak yeni bir deneme oluşturulur.
-
+  
 Deneme kullanmanın bir örneği için bkz. [öğretici: İlk modelinize eğitme](tutorial-1st-experiment-sdk-train.md).
 
 ### <a name="runs"></a>Çalıştırmalar
@@ -148,14 +112,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı sınıfı kolayca çalışma yapılandırması oluşturmanıza olanak sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren).
 
-Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
-
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-
-* Tüm [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md).
-* [Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme](how-to-train-pytorch.md).
-* [TensorFlow modellerini Azure Machine Learning ölçeklendirerek eğitin ve kaydedin](how-to-train-tensorflow.md).
-* [Chainer modellerini Azure Machine Learning ölçeklendirerek eğitin ve kaydedin](how-to-train-ml-models.md).
+Tahmini hakkında daha fazla bilgi için bkz. [tahmini ile ml modellerini eğitme](how-to-train-ml-models.md).
 
 ### <a name="snapshots"></a>Anlık Görüntüler
 
@@ -177,6 +134,34 @@ Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren diz
 Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Bu, bir Estimator, ML işlem hattı veya betik çalıştırması kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
+
+## <a name="models"></a>Modeller
+
+En basit olan model, bir girişi alan ve çıkış üreten bir kod parçasıdır. Machine Learning modeli oluşturmak, bir algoritma seçmeyi, verileri verilerle sağlamayı ve [hiper parametreleri ayarlamayı](how-to-tune-hyperparameters.md)içerir. Eğitim, eğitilen bir model üreten ve eğitim sürecinde modelin öğrendiği bir işlem olan yinelemeli bir işlemdir.
+
+Azure Machine Learning dışında eğitilen bir modeli getirebilirsiniz. Ya da Azure Machine Learning bir [işlem hedefine](#compute-targets) bir [deneme](#experiments) [çalıştırması](#runs) göndererek modeli eğitebilirsiniz. Bir modelinize sahip olduktan sonra modeli çalışma alanına [kaydedersiniz](#register-model) .
+
+Azure Machine Learning çerçeve agstik. Bir model oluşturduğunuzda, Scikit-öğren, XGBoost, PyTorch, TensorFlow ve Chainer gibi popüler Machine Learning çerçevesini kullanabilirsiniz.
+
+Scikit-öğrenme kullanarak bir modele eğitim verme örneği için bkz. [öğretici: görüntü sınıflandırma modelini Azure Machine Learning Ile eğitme](tutorial-train-models-with-aml.md).
+
+
+### <a name="model-registry"></a><a name="register-model"></a> Model kayıt defteri
+
+[Çalışma alanı](#workspace)  >  **Modeller**
+
+**Model kayıt defteri** , Azure Machine Learning çalışma alanınızdaki tüm modelleri izlemenize olanak sağlar.
+
+Modeller ad ve sürüm ile tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri yeni bir sürüm olduğunu varsayar. Sürüm artırılır ve yeni model aynı adla kaydedilir.
+
+Modeli kaydettiğinizde, ek meta veri etiketleri sağlayabilir ve ardından modeller ararken etiketleri kullanabilirsiniz.
+
+> [!TIP]
+> Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
+
+Etkin bir dağıtım tarafından kullanılan kayıtlı bir modeli silemezsiniz.
+
+Bir modeli kaydetme örneği için bkz. [Azure Machine Learning görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).
 
 ## <a name="deployment"></a>Dağıtım
 
@@ -210,8 +195,7 @@ Dağıtılan bir IoT modülü uç noktası, modelinizi ve ilişkili betiği ya d
 
 İzlemeyi etkinleştirdiyseniz, Azure Azure IoT Edge modülünün içindeki modelden telemetri verileri toplar. Telemetri verilerine yalnızca sizin için erişilebilir ve depolama hesabı Örneğinizde depolanır.
 
-Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıran cihazı izler.
-. 
+Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıran cihazı izler. 
 ## <a name="automation"></a>Otomasyon
 
 ### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLı 
@@ -224,7 +208,19 @@ Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine
 
 İşlem hattı adımları yeniden kullanılabilir ve bu adımların çıkışı değişmemişse önceki adımları yeniden çalıştırmadan çalıştırılabilir. Örneğin, veriler değişmemişse maliyetli veri hazırlama adımlarını yeniden çalıştırmadan bir modeli yeniden eğitebilirsiniz. İşlem hatları, makine öğrenimi iş akışının ayrı alanlarında çalışırken veri bilimcilerinin işbirliği yapmasına de olanak tanır.
 
-## <a name="interacting-with-machine-learning"></a>Machine Learning ile etkileşim kurma
+## <a name="interacting-with-your-workspace"></a>Çalışma alanınız ile etkileşim kurma
+
+### <a name="studio"></a>Studio
+
+[Azure Machine Learning Studio](https://ml.azure.com) , çalışma alanınızdaki tüm yapıtların bir web görünümünü sağlar.  Veri kümelerinizin, denemeleri, işlem hatlarının, modellerinizin ve uç noktaların sonuçlarını ve ayrıntılarını görüntüleyebilirsiniz.  Ayrıca, Studio 'daki işlem kaynaklarını ve veri depolarını yönetebilirsiniz.
+
+Ayrıca, Azure Machine Learning bir parçası olan etkileşimli araçlara de erişebilirsiniz:
+
++ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md)
++ [Otomatik makine öğrenimi](concept-automated-ml.md) için Web deneyimi
++ Verilerinizi etiketleyerek projeler oluşturmak, yönetmek ve izlemek için [veri etiketleme projeleri](how-to-create-labeling-projects.md)
+
+### <a name="programming-tools"></a>Programlama araçları
 
 > [!IMPORTANT]
 > Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
@@ -232,7 +228,6 @@ Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
-+ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın. (Bir [Kurumsal çalışma alanı](concept-workspace.md#upgrade)) tasarımcı kullanmak için gereklidir.)
 + Otomasyon için [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanın.
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 

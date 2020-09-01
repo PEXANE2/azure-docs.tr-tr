@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d78e9c11ef0c70730fedc0ea9ef4b5a61f7d29c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511982"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072171"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşma kullanarak veri paylaşma  
 
@@ -25,7 +25,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Veri paylaşımınız için bir anlık görüntü zamanlaması etkinleştirin. 
 > * Veri Paylaşımınıza alıcıları ekleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Alıcının Azure oturum açma e-posta adresi (e-posta diğer adlarını kullanarak çalışmaz).
@@ -67,13 +67,13 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
 Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
-1. Portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini (+) seçin.
+1. Portalın sol üst köşesindeki menü düğmesini seçin ve ardından **kaynak oluştur** (+) seçeneğini belirleyin.
 
 1. *Veri paylaşımında*arama yapın.
 
@@ -83,13 +83,13 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
-    | Name | *datashareacount* | Veri paylaşma hesabınız için bir ad belirtin. |
     | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
     | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
     | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
+    | Ad | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
     | | |
 
-1. Veri paylaşma hesabınızı sağlamak için **Oluştur** ' u seçin. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
+1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
 
 1. Dağıtım tamamlandığında **Kaynağa Git**' i seçin.
 
@@ -107,7 +107,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![EnterShareDetails](./media/enter-share-details.png "Paylaşma ayrıntılarını girin") 
 
-1. **Devam**'ı seçin
+1. **Devam**’ı seçin.
 
 1. Veri paylaşımınıza veri kümeleri eklemek için veri **kümesi Ekle**' yi seçin. 
 
@@ -125,7 +125,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![AddRecipients](./media/add-recipient.png "Alıcı ekleme") 
 
-1. **Devam**'ı seçin
+1. **Devam**’ı seçin.
 
 1. Anlık görüntü paylaşma türü ' nu seçtiyseniz, veri tüketicisine verilerinizin güncelleştirmelerini sağlamak için anlık görüntü zamanlamasını yapılandırabilirsiniz. 
 
@@ -133,9 +133,9 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. Bir başlangıç saati ve yinelenme aralığı seçin. 
 
-1. **Devam**'ı seçin
+1. **Devam**’ı seçin.
 
-1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur**’u seçin
+1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur**’u seçin.
 
 Azure veri paylaşımınız artık oluşturulmuştur ve veri paylaşımınızın alıcısı artık davetinizi kabul etmeye hazırdır. 
 

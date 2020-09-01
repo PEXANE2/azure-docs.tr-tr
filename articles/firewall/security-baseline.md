@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854399"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069298"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure Güvenlik Duvarı için Azure Güvenlik temeli
 
@@ -74,7 +74,7 @@ Kendi hizmet etiketinizi oluşturmayacağınızı ve bir etiket içinde hangi IP
 
 **Kılavuz**: Azure Ilkesi henüz Azure Güvenlik Duvarı için tam olarak desteklenmiyor. Azure Güvenlik Duvarı Yöneticisi, güvenlik yapılandırmalarının standartlaştırma düzeyini elde etmek için kullanılabilir.
 
-Tek bir şema tanımında Azure kaynakları Yöneticisi şablonları, RBAC denetimleri ve ilkeleri gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı da kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz.
+Azure şemaları, Azure Kaynak Yöneticisi şablonları, Azure RBAC denetimleri ve ilkeleri gibi tek bir şema tanımında paket ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirmek için de kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz.
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -132,7 +132,7 @@ Note: her Iki günlük de bir depolama hesabına kaydedilebilir, Olay Hub 'ları
 
 Etkinlik günlüklerindeki kaynak eylemlerinin listesi: Azure Resource Manager kaynak sağlayıcısı işlemleri
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -416,11 +416,11 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 **Sorumluluk**: paylaşılan
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure Güvenlik Duvarı ve ilgili kaynaklara erişimi denetlemek için Azure Active Directory rol tabanlı erişim denetımı (RBAC) kullanın.
+**Kılavuz**: Azure Güvenlik Duvarı ve ilgili kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-- [Azure 'da RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

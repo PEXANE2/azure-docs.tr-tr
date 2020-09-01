@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 12/19/2019
+ms.date: 08/28/2020
 ms.author: nitinme
-ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 1ab075d882f073098e015f8b0726743803edc2ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223763"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069995"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -29,9 +29,9 @@ Yeni ve güncelleştirilmiş bilişsel hizmetler belgelerini görmek mi istiyors
 |:-----------|:------------------|
 |[Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Görüntü İşleme")|Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar.|
 |[Özel Görüntü İşleme Hizmeti](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Özel Görüntü İşleme Hizmeti")|Özel Görüntü İşleme Hizmeti özel görüntü sınıflandırıcıları oluşturmanıza olanak sağlar.|
-|[Yüz](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
+|[Yüz Tanıma](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
 |[Form tanıyıcı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Tanıma") (Önizleme)|Form tanıyıcı, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlar ve ayıklar; ardından, özgün dosyadaki ilişkiler dahil olmak üzere yapılandırılmış verilerin çıktısını verir.|
-|[Mürekkep tanıyıcı](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Mürekkep Tanıma") (Önizleme)|Mürekkep tanıyıcı, dijital mürekkep konturu verilerini, şekilleri ve el yazısı içeriğini tanımanıza ve analiz etmenize ve tüm tanınan varlıklarla bir belge yapısını çıkışlamaya olanak tanır.|
+|[Mürekkep tanıyıcı](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Mürekkep Tanıma") (devre dışı bırakma)|Mürekkep tanıyıcı, dijital mürekkep konturu verilerini, şekilleri ve el yazısı içeriğini tanımanıza ve analiz etmenize ve tüm tanınan varlıklarla bir belge yapısını çıkışlamaya olanak tanır.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer, videonuzun öngörülerini ayıklamanızı sağlar.|
 
 ## <a name="speech-apis"></a>Konuşma API 'Leri

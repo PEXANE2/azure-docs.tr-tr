@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501364"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069859"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
 
@@ -76,7 +76,7 @@ Yok.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -154,7 +154,7 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 |Coğrafi olarak yedekli depolama (GRS)     |Standard_GRS         |
 |Okuma erişimli coğrafi olarak yedekli depolama (GRS)     |Standard_RAGRS         |
 |Coğrafi alanlar arası yedekli depolama (GZRS)    |Standard_GZRS         |
-|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
+|Okuma erişimli coğrafi alanlar arası yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -197,7 +197,7 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 |Coğrafi olarak yedekli depolama (GRS)     |Standard_GRS         |
 |Okuma erişimli coğrafi olarak yedekli depolama (GRS)     |Standard_RAGRS         |
 |Coğrafi alanlar arası yedekli depolama (GZRS)    |Standard_GZRS         |
-|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
+|Okuma erişimli coğrafi alanlar arası yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Şablon](#tab/template)
 

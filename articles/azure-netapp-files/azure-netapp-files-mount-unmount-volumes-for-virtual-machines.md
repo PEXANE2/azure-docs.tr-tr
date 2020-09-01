@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/06/2020
-ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533096"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072205"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows veya Linux sanal makineleri için birimi bağlama veya ayırma 
 
@@ -28,15 +28,17 @@ Gerektiğinde Windows veya Linux sanal makineleri için bir birimi bağlayabilir
 
     ![Bağlama yönergeleri SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
     * Bir NFS birimi bağlarsanız, `vers` `mount` bağlamak istediğiniz birime KARŞıLıK gelen NFS protokol sürümünü belirtmek için komutunda seçeneğini kullandığınızdan emin olun. 
-    * NFSv 4.1 kullanıyorsanız, dosya sisteminizi bağlamak için aşağıdaki komutu kullanın:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    * NFSv 4.1 kullanıyorsanız, dosya sisteminizi bağlamak için aşağıdaki komutu kullanın:  `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+        > [!NOTE]
+        > NFSv 4.1 kullanırsanız, dışarı aktarmayı bağlayan tüm VM 'Lerin benzersiz ana bilgisayar adları kullandığından emin olun.
 
 3. Bir Azure VM başlatıldığında veya yeniden başlatıldığında bir NFS biriminin otomatik olarak bağlanmasını istiyorsanız, konaktaki dosyasına bir giriş ekleyin `/etc/fstab` . 
 
-    Örneğin:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
+    Örneğin:  `$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
-    * `$ANFIP`, birim özellikleri dikey penceresinde bulunan Azure NetApp Files biriminin IP adresidir.
-    * `$FILEPATH`Azure NetApp Files biriminin dışarı aktarma yoludur.
-    * `$MOUNTPOINT`, NFS dışarı aktarmayı bağlamak için kullanılan Linux ana bilgisayarında oluşturulan dizindir.
+    * `$ANFIP` , birim özellikleri dikey penceresinde bulunan Azure NetApp Files biriminin IP adresidir.
+    * `$FILEPATH` Azure NetApp Files biriminin dışarı aktarma yoludur.
+    * `$MOUNTPOINT` , NFS dışarı aktarmayı bağlamak için kullanılan Linux ana bilgisayarında oluşturulan dizindir.
 
 4. Birimini NFS kullanarak Windows 'a bağlamak istiyorsanız:
 

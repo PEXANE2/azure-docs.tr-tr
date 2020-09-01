@@ -10,14 +10,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517329"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070726"
 ---
-# <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL yönetilen örnek bağlantı türleri
+# <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Yönetilen Örneği bağlantı türleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, istemcilerin bağlantı türüne bağlı olarak Azure SQL yönetilen örneği 'ne nasıl bağlanacağı açıklanmaktadır. Bağlantı türlerini değiştirmeye yönelik betik örnekleri aşağıda verilmiştir ve varsayılan bağlantı ayarlarını değiştirmekle ilgili önemli noktalar verilmektedir.
