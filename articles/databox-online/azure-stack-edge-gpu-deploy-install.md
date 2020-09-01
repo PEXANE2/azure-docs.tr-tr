@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 905229cde0d2b3dde7f0f2192860c33fc69e5fb2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088238"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181825"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'i yükler
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaza raf bağlama
 > * Cihazın kablolarını bağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Fiziksel bir cihazı yükleme önkoşulları şunlardır:
 
@@ -37,7 +37,7 @@ Fiziksel bir cihazı yükleme önkoşulları şunlardır:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-* [Azure Stack Edge 'i dağıtmaya hazırlanma](azure-stack-edge-gpu-deploy-prep.md)bölümündeki tüm adımları tamamladınız.
+* [GPU ile Azure Stack Edge dağıtmaya hazırlanma](azure-stack-edge-gpu-deploy-prep.md)bölümündeki tüm adımları tamamladınız.
     * Cihazınızı dağıtmak için bir Azure Stack Edge kaynağı oluşturdunuz.
     * Cihazınızı Azure Stack Edge kaynağıyla etkinleştirmek için etkinleştirme anahtarını oluşturdunuz.
 
@@ -48,11 +48,11 @@ Cihazı dağıtmadan önce:
 
 - Cihazın düz, kararlı ve düzeyi bir iş yüzeyine güvenli bir şekilde oturduğu emin olun.
 - Kurulumu gerçekleştirmeyi planladığınız yerde şunların bulunduğundan emin olun:
-    - Bağımsız bir kaynaktan standart AC gücü
+    - Bağımsız bir kaynaktan standart AC gücü.
 
         -VEYA-
-    - Kesintisiz güç kaynağı (UPS) ile bir raf güç dağıtım birimi (PDU)
-    - Cihazı bağlamak istediğiniz rafa ait kullanılabilir bir 1U yuvası
+    - Kesintisiz güç kaynağına (UPS) sahip bir raf güç dağıtım birimi (PDU).
+    - Cihazı bağlamak istediğiniz rafa ait kullanılabilir bir 1U yuvası.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Veri merkezindeki ağ için
 
@@ -75,7 +75,7 @@ Cihaz tek bir kutuda gönderilir. Cihazınızı kutusundan çıkarmak için aşa
     - Bir demiryolu seti derlemesi
     - Güvenlik, ortam ve mevzuat bilgileri kitapçık
 
-Burada listelenen öğelerin tümünü almadıysanız Azure Stack Edge desteğiyle iletişim kurun. Sonraki adım, cihazınızı takmaya yönelik bir adımdır.
+Burada listelenen öğelerin tümünü almadıysanız [Microsoft desteği başvurun](azure-stack-edge-contact-microsoft-support.md). Sonraki adım, cihazınızı takmaya yönelik bir adımdır.
 
 
 ## <a name="rack-the-device"></a>Cihazı rafa yerleştirme
@@ -86,7 +86,7 @@ Cihaz, standart 19 inç bir rafa yüklenmiş olmalıdır. Cihazınızı standart
 > Azure Stack Edge cihazlarının uygun işlemler için rafa bağlı olması gerekir.
 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Başlamadan önce güvenlik, ortam ve mevzuat bilgi kitapçığlarınızın güvenlik yönergelerini okuyun. Bu broşür cihazla birlikte gönderilmiştir.
 - Dolap kutusu alt kısmına en yakın olan ayrılan alana rayları yüklemeye başlayın.
@@ -166,7 +166,7 @@ Cihazınızı kablolamayı başlatmaya başlamadan önce şunlar gerekir:
 - Yönetim arabirimine bağlamak için en az bir 1-GbE RJ-45 ağ kablosu. Cihazda biri yönetim ve diğeri veri olmak üzere iki 1-GbE ağ arabirimi vardır.
 - Yapılandırılacak her veri ağı arabirimi için bir 25-GbE SFP+ bakır kablo. Bağlantı noktası 2, bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 arasındaki en az bir veri ağı arabiriminin Internet 'e bağlanması gerekir (Azure bağlantısı ile).  
 - İki güç dağıtımı birimine erişim (önerilir).
-- Veri için 1-GbE ağ arabirimini Internet 'e bağlamak üzere en az bir adet 1-GbE ağ anahtarı. Veriler için 25/10 GbE arabirimini kullanıyorsanız, 25 GbE veya 10-GbE bir anahtara ihtiyacınız olacaktır. 
+- Veri için 1-GbE ağ arabirimini Internet 'e bağlamak üzere en az bir adet 1-GbE ağ anahtarı. Bağlı anahtar en az 1-GbE değilse, yerel Web Kullanıcı arabirimine erişilemeyecektir. Veriler için 25/10 GbE arabirimini kullanıyorsanız, 25 GbE veya 10-GbE bir anahtara ihtiyacınız olacaktır. 
 
 > [!NOTE]
 > - Yalnızca bir veri ağı arabirimi bağlıyorsanız, Azure 'a veri göndermek için bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 gibi bir 25/10-GbE ağ arabirimi kullanmanızı öneririz. 

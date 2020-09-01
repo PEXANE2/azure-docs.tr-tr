@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: CDN tümleştirmesinin yanı sıra önceden getirme ve kaynak Yardımcısı CDN-önceden getirme ile akış içeriği hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799358"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226157"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
@@ -29,14 +29,19 @@ Video parçası önbelleğe alındığı sürece popüler içerik doğrudan CDN 
 
 Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurmanız gerekir. Her bir video parçası kendi varlığı olarak önbelleğe alınır. Örneğin, belirli bir videonun ilk kez nasıl izlenen hakkında düşünün. Görüntüleyici burada yalnızca birkaç saniye izlemeyi atlar ve burada yalnızca, izlenen kişilerin CDN 'de önbelleğe alınması ile ilişkili video parçaları vardır. Uyarlamalı akış sayesinde genellikle 5 ile 7 arasında farklı bit fiyatları vardır. Bir kişi bir bit hızı izlerken ve başka bir kişi farklı bir bit hızı izlerse, her biri CDN 'de ayrı olarak önbelleğe alınır. İki kişi aynı bit hızını izliyor olsa da, farklı protokollerde akış olabilir. Her protokol (HLS, MPEG-DASH, Kesintisiz Akış) ayrı olarak önbelleğe alınır. Böylece her bit hızı ve protokol ayrı olarak önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
 
-Media Services [akış uç NOKTASıNDA](streaming-endpoint-concept.md)CDN 'nin etkinleştirilip etkinleştirilmeyeceğini saptarken, beklenen görüntüleyiciler sayısını göz önünde bulundurun. CDN, yalnızca içeriğiniz için birçok Görüntüleyici bekliyorsanız yardımcı olur. Görüntüleyicilerin en fazla eşzamanlılık 500 ' den düşükse, CDN 'nin eşzamanlılık ile en iyi şekilde ölçeklendirilmiş olduğundan CDN 'yi devre dışı bırakmanız önerilir.
+Test ortamı hariç, hem standart hem de Premium akış uç noktaları için CDN 'nin etkinleştirilmesini öneririz. Her akış uç noktası türü, desteklenen farklı bir üretilen iş sınırına sahiptir.
+Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bu güncelleştirmeler şunlardır:
+
+- Akış için kullanılan maksimum bit hızı
+- Oynatıcı ön arabelleği ve anahtarlama davranışı. Oyuncular, bir kaynaktan kesimleri patlama ve Uyarlamalı bit hızı geçişini hesaplamak için yük hızını kullanmanıza çalışır. Akış uç noktası doygunluğu yakınsa, yanıt süreleri farklılık gösterebilir ve oyuncular daha düşük kalitede geçişe başlayabilir. Bu, akış uç noktası yürütücülerinin yükünü azaltmakta olduğundan, istenmeyen geçiş Tetikleyicileri oluşturarak daha yüksek kalitede ölçeklendirin.
+En yüksek akış uç noktası aktarım hızını alarak ve en yüksek bit hızına (tüm oyuncuların en yüksek bit hızını kullandığı varsayıldığında) en fazla eşzamanlı akışları tahmin etmek güvenlidir. Örneğin, 600 Mbps ile sınırlı standart bir akış uç noktası ve 3Mbp 'nin en yüksek bit hızına sahip olabilirsiniz. Bu durumda, en yüksek bit hızında yaklaşık 200 eşzamanlı akış desteklenir. Ses bant genişliği gereksinimlerinde de etken olduğunu unutmayın. Ses akışı yalnızca 128 KPS konumunda Akış yapabilse de, toplam akış, eş zamanlı akış sayısına göre çarpdığınızda hızlı bir şekilde eklenir.
 
 Bu konu, [CDN tümleştirmesini](#enable-azure-cdn-integration)etkinleştirmeyi tartışır. Ayrıca, önceden getirme (etkin önbelleğe alma) ve [kaynak-yardım CDN-önceden getirme](#origin-assist-cdn-prefetch) kavramını da açıklar.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* [Akış uç noktası](streaming-endpoint-concept.md) `hostname` ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
-* İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturun.
+- [Akış uç noktası](streaming-endpoint-concept.md) `hostname` ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
+- İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturun.
 
 ## <a name="enable-azure-cdn-integration"></a>Azure CDN tümleştirmeyi etkinleştir
 
@@ -71,7 +76,7 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 - Media Services kaynağı, bir sonraki nesneyi önceden getirme için CDN 'e bildirmek üzere "zeka" (Origin-yardım) içermelidir.
 - CDN, önceden getirme ve önbelleğe alma (CDN-önceden getirme bölümü) yapar. CDN 'nin bir önceden getirme veya düzenli getirme, 404 yanıtlarını işleme ve sonsuz önceden getirme döngüsünden kaçınmak için bir yol olduğunu bildirmek üzere "zeka" sahip olması gerekir.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 *Kaynak-yardım CDN-önceden getirme* özelliğinin avantajları şunları içerir:
 

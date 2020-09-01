@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 1bfd83534bda6397983b0595acc089e901c473d6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021493"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182046"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -59,7 +59,7 @@ Azure Backup, Azure sanal makinesinin uygulamayla tutarlı bir yedeğini almak i
 
 - **Ağ erişiminin gerekli**olup olmadığını denetleyin: uzantı paketleri Azure depolama uzantısı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. [Daha fazla bilgi edinin](../virtual-machines/extensions/features-windows.md#network-access).
   - Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
-  - `168.63.129.16`Konuk güvenlik duvarını veya bir ara sunucu kullanarak erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir, [daha fazla bilgi edinin](../virtual-machines/extensions/features-windows.md#network-access).
+  - `168.63.129.16`Konuk güvenlik duvarını veya bir ara sunucu kullanarak erişimi engellediyseniz, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir, [daha fazla bilgi edinin](../virtual-machines/extensions/features-windows.md#network-access).
 
 - **Konuk VM IÇINDE DHCP 'nin etkinleştirildiğinden emin olun**: Bu, IaaS VM yedeklemesinin ÇALıŞMASı için DHCP 'den ana bilgisayar veya doku adresi almak için gereklidir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırmanız ve VM 'nin içindeki DHCP seçeneğinin etkinleştirildiğinden emin olmanız gerekir, [daha fazla bilgi edinin](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken).
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144473"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182522"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 

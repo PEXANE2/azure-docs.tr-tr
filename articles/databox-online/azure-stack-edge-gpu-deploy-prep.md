@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e95f635cfb354487298b340f8f25b15c3ca146a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088249"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181859"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Öğretici: Azure Stack Edge dağıtmaya hazırlanma  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge dağıtmaya hazırlanma 
 
-Bu, Azure Stack kenarını tamamen dağıtmak için gereken dağıtım öğreticilerinde ilk öğreticidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır.
+Bu, GPU ile Azure Stack ucunu tamamen dağıtmak için gereken dağıtım öğreticilerinde ilk öğreticidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır.
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge dağıtımı için öncelikle ortamınızı hazırlamanız gerekir. Ortam çalışmaya başladıktan sonra, cihazı tam olarak dağıtmak için gerekli adımları ve gerekirse isteğe bağlı adımları ve yordamları izleyin. Adım adım dağıtım yönergeleri, bu gerekli ve isteğe bağlı adımların her birini ne zaman gerçekleştirmeniz gerektiğini gösterir.
 
-| Adım | Açıklama |
+| Adım | Description |
 | --- | --- |
 | **Hazırlık** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
@@ -46,8 +46,9 @@ Azure Stack Edge dağıtımı için öncelikle ortamınızı hazırlamanız gere
 |**[5. Azure Stack Edge için cihaz ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Bir cihaz adı ve DNS etki alanı atayın, güncelleştirme sunucusunu ve cihaz zamanını yapılandırın. |
 |**[6. Azure Stack Edge için güvenlik ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Cihazınız için sertifikaları yapılandırın. Cihaz tarafından oluşturulan sertifikaları kullanın veya kendi sertifikalarınızı getirin.   |
 |**[7. Azure Stack kenarı etkinleştirin](azure-stack-edge-gpu-deploy-activate.md)** |Cihazı etkinleştirmek için hizmetten etkinleştirme anahtarını kullanın. Cihaz, SMB veya NFS paylaşımlarını ayarlamaya veya REST aracılığıyla bağlamaya hazırlanıyor. |
-|**[8A. Kenar paylaşımları ile veri aktarma](azure-stack-edge-j-series-deploy-add-shares.md)** |Paylaşımları ekleyin ve SMB veya NFS üzerinden paylaşımlara bağlanın. |
-|**[8B. Edge depolama hesaplarıyla veri aktarma](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Depolama hesapları ekleyin ve REST API 'Ler aracılığıyla blob depolamaya bağlanın. |
+|**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bu, bir Kubernetes kümesi de oluşturur. |
+|**[9A. Kenar paylaşımları ile veri aktarma](azure-stack-edge-j-series-deploy-add-shares.md)** |Paylaşımları ekleyin ve SMB veya NFS üzerinden paylaşımlara bağlanın. |
+|**[9B. Edge depolama hesaplarıyla veri aktarma](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Depolama hesapları ekleyin ve REST API 'Ler aracılığıyla blob depolamaya bağlanın. |
 
 
 Artık Azure Stack Edge cihazınız için yazılım yapılandırmasıyla ilgili bilgi toplamaya başlayabilirsiniz.
@@ -57,7 +58,7 @@ Artık Azure Stack Edge cihazınız için yazılım yapılandırmasıyla ilgili 
 Cihazınızı dağıtmadan önce, Azure Stack Edge cihazınızda yazılımı yapılandırmak için bilgi toplamanız gerekir. Bu bilgilerin bir bölümünü önceden hazırlamak, cihazı ortamınızda dağıtma işlemini kolaylaştırmaya yardımcı olur. Cihazınızı dağıtırken yapılandırma ayrıntılarını göz önünde bırakmak için [Azure Stack Edge dağıtım yapılandırması denetim listesini](azure-stack-edge-gpu-deploy-checklist.md) kullanın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -104,7 +105,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 1. Bu URL 'de Azure portal oturum açmak için Microsoft Azure kimlik bilgilerinizi kullanın: [https://portal.azure.com](https://portal.azure.com) .
 
-2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway**için arama yapın ve seçin. **Oluştur**’u seçin.
+2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway**için arama yapın ve seçin. **Oluştur**’u seçin. Herhangi bir sorun görürseniz, [sorun giderme sorunları gider](azure-stack-edge-troubleshoot-ordering.md)bölümüne gidin.
 
 3. Azure Stack Edge cihazı için kullanmak istediğiniz aboneliği seçin. Bu fiziksel cihazı göndermek istediğiniz ülkeyi seçin. **Cihazları göster**' i seçin.
 
@@ -118,7 +119,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     ![Kaynak oluşturma 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
-5. Abonelik etkinleştirildikten sonra kaynak oluşturmaya devam edebilmelisiniz. **Cihaz türü seç** dikey penceresinde **Seç**' i seçin. 
+5. Abonelik etkinleştirildikten sonra kaynak oluşturmaya devam edebilmelisiniz. **Cihaz türü seç** dikey penceresinde **Seç**' i seçin.
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
 
@@ -165,6 +166,8 @@ Kaynağın oluşturulması birkaç dakika sürer. Kaynak başarıyla oluşturulu
 Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayrıntıları ile size (e-posta aracılığıyla) ulaşır.
 
 ![Azure Stack Edge sırasının incelenmesi için bildirim](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
 
 ## <a name="get-the-activation-key"></a>Etkinleştirme anahtarı alma
 

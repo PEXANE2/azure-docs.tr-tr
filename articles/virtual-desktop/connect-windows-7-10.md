@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008755"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226718"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisine bağlanma
 
@@ -61,8 +61,9 @@ Bir çalışma alanına abone olabileceğiniz iki yol vardır. İstemci, iş vey
 1. İstemcinin ana sayfasında **URL Ile abone ol**' u seçin.
 2. Çalışma alanı URL 'sini veya e-posta adresinizi girin:
    - **Çalışma alanı URL 'sini**kullanıyorsanız, yöneticinizin size verdiği bir tane kullanın. Windows sanal masaüstünden kaynaklara erişim için aşağıdaki URL 'Lerden birini kullanabilirsiniz:
-     - Windows sanal masaüstü (klasik):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows sanal masaüstü:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windows sanal masaüstü (klasik): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows sanal masaüstü: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windows sanal masaüstü (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - Bunun yerine **e-posta** alanını kullanıyorsanız, e-posta adresinizi girin. Bu, yönetici [e-posta bulmayı](/windows-server/remote/remote-desktop-services/rds-email-discovery)ayarlamışsa, istemciye e-posta adresinizle ILIŞKILI bir URL aramasını söyler.
 3. **İleri**’yi seçin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.

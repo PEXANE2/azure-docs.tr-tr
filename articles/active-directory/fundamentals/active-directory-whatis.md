@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 82a5fd5a14091c95bc1783f283c41431082c8980
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262967"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182114"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -81,7 +81,7 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Privileged identity management (PIM)|Kuruluşunuzun içindeki erişimi yönetin, denetleyin ve izleyin. Bu özellik, Azure AD ve Azure 'daki kaynaklara ve Office 365 veya Intune gibi diğer Microsoft çevrimiçi hizmetlerine erişimi içerir. Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
 |Raporlar ve izleme|Ortamınızdaki güvenlik ve kullanım desenleriyle ilgili Öngörüler elde edin. Daha fazla bilgi için bkz. [Azure Active Directory raporları ve izleme](../reports-monitoring/index.yml).|
 
-## <a name="terminology"></a>Terminoloji
+## <a name="terminology"></a>Terimler
 
 Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçiririz.
 
@@ -92,7 +92,7 @@ Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden 
 |Azure AD hesabı| Azure AD veya Office 365 gibi başka bir Microsoft bulut hizmeti aracılığıyla oluşturulmuş bir kimlik. Kimlikler Azure AD 'de depolanır ve kuruluşunuzun bulut hizmeti aboneliklerinde erişilebilir. Bu hesaba bazen Iş veya okul hesabı da denir.|
 |Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan, rol tabanlı erişim denetimi (RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan Azure rol tabanlı erişim denetimi (Azure RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler. Bu yönetici rolünün Azure portal genel yönetici olarak adlandırıldığına, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırıldığına bakın. çeşitli yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).|
 |Azure aboneliği| Azure bulut hizmetleri için ödeme yapmak üzere kullanılır. Birçok aboneliğiniz olabilir ve bunlar kredi kartıyla bağlantılıdır.|
 |Azure kiracısı| Kuruluşunuz, Microsoft Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmeti aboneliğine kaydolduğunda otomatik olarak oluşturulan adanmış ve güvenilir bir Azure AD örneğidir. Azure kiracısı tek kuruluşu temsil eder.|

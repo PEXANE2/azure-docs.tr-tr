@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690702"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182369"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Kullanıcı gizliliği ve Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Etkin **sistem durumu hizmeti verileri olan sunucular, en** fazla 30 ardışık 
 Azure AD Connect Health, izlenen her sunucu için veya izlenen bir hizmetin bir örneği için veri toplamayı durdurmanızı sağlar. Örneğin, Azure AD Connect Health kullanılarak izlenen tek bir ADFS (Active Directory Federasyon Hizmetleri (AD FS)) sunucusu için veri toplamayı durdurabilirsiniz. Ayrıca, Azure AD Connect Health kullanılarak izlenmekte olan tüm ADFS örneği için veri toplamayı durdurabilirsiniz. Bunu seçtiğinizde, veri toplamayı durdurduktan sonra karşılık gelen sunucular Azure AD Connect Health portalından silinir. 
 
 >[!IMPORTANT]
-> İzlenen sunucuları Azure AD Connect Health silmek için Azure AD Genel yönetici ayrıcalıklarına ya da RBAC 'de katkıda bulunan rolüne sahip olmanız gerekir.
+> İzlenen sunucuları Azure AD Connect Health silmek için Azure AD Genel yönetici ayrıcalıklarına veya Azure RBAC 'de katkıda bulunan rolüne sahip olmanız gerekir.
 >
 > Azure AD Connect Health bir sunucu veya hizmet örneğinin kaldırılması, geri alınamaz bir eylem değildir. 
 

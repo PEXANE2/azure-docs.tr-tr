@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226735"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
 
@@ -31,6 +31,8 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgisayar VM 'Leri zaten oluşturduysanız, Azure portal uygulama gruplarını aşağıdaki işlemle ekleyebilirsiniz:
 
 1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+   
+   >! NOTUN US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
 
 2.  **Windows sanal masaüstü**araması yapın ve seçin.
 

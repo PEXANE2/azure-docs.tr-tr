@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718093"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226684"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -114,6 +114,8 @@ Bir güvenlik anahtarı, FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak i�
 | 2 | İstemci PIN 'i | Bu özellik, kimlik bilgilerinizi ikinci bir faktörle korumanıza olanak sağlar ve Kullanıcı arabirimine sahip olmayan güvenlik anahtarları için geçerlidir. |
 | 3 | HMAC-gizli | Bu uzantı, hatta çevrimdışı veya uçak modunda cihazınızda oturum açabilmenizi sağlar. |
 | 4 | RP başına birden çok hesap | Bu özellik, Microsoft hesabı ve Azure Active Directory gibi birden çok hizmet arasında aynı güvenlik anahtarını kullanmanıza da sağlar. |
+
+### <a name="fido2-security-key-providers"></a>FIDO2 güvenlik anahtarı sağlayıcıları
 
 Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen farklı form faktörlerinin FIDO2 güvenlik anahtarlarını sunmaktadır. Bu anahtarların güvenlik özelliklerini, satıcıya ve FIDO Alliance ile iletişim kurarak değerlendirmeniz önerilir.
 

@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/16/2020
-ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/18/2020
+ms.openlocfilehash: 0f6b1789a5148af37ddd2d0895cec348c27f663a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522780"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182505"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme 
 
@@ -37,7 +37,7 @@ Satır içi veri kümesi kullanmak için, **kaynak türü** seçicideki istenen 
 
 ![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
 
-##  <a name="supported-source-types"></a><a name="supported-sources"></a>Desteklenen kaynak türleri
+##  <a name="supported-source-types"></a><a name="supported-sources"></a> Desteklenen kaynak türleri
 
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
 
@@ -49,8 +49,9 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Bu bağlayıcılara özgü ayarlar, **kaynak seçenekleri** sekmesinde bulunur. bu ayarlarda bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
+Bu bağlayıcılara özgü ayarlar **kaynak seçenekleri** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
 
 Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
 

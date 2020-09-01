@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056806"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182131"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
@@ -267,16 +267,15 @@ az aks update \
 *Outboundıps* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
  
 Örneğin, 3 *Nodevms*ve 50.000 *desiredAllocatedOutboundPorts*varsa, en az 3 *outboundıps*gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
- 
+
 - *Idletimeoutınminutes* değerini varsayılan değer olan 30 dakikadan farklı bir değere ayarlarken, iş yüklerinizin giden bir bağlantıya ne kadar süreyle ihtiyacı olacağını düşünün. Ayrıca, AKS dışında kullanılan *Standart* SKU yük dengeleyici için varsayılan zaman aşımı değerini 4 dakikadır. Belirli AKS iş yükünüzü daha doğru bir şekilde yansıtan bir *ıdletimeoutınminutes* değeri, artık kullanılmayan bağlantıların AYıKLANMASıNDAN kaynaklanan SNAT tükenmesi azalmasına yardımcı olabilir.
 
 > [!WARNING]
 > *AllocatedOutboundPorts* ve *ıdletimeoutınminutes* değerlerinin değiştirilmesi, yük dengeleyiciniz için giden kuralın davranışını önemli ölçüde değiştirebilir ve bu değerleri, avantajları ve uygulamanızın bağlantı düzenlerini anlamadan daha açık bir şekilde yapılmamalıdır, bu değerleri güncelleştirmeden önce, değişikliklerinizin etkisini tam olarak anlamak için [aşağıdaki][troubleshoot-snat] [Load Balancer giden kuralları][azure-lb-outbound-rules-overview] ve [giden bağlantıları][azure-lb-outbound-connections] gözden geçirin.
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>Gelen trafiği belirli IP aralıklarıyla kısıtla
 
-Yük Dengeleyici için sanal ağla ilişkili ağ güvenlik grubu (NSG), varsayılan olarak tüm gelen dış trafiğe izin veren bir kural içerir. Bu kuralı, gelen trafik için yalnızca belirli IP aralıklarına izin verecek şekilde güncelleştirebilirsiniz. Aşağıdaki bildirim, gelen dış trafik için yeni bir IP aralığı belirtmek üzere *Loadbalancersourceranges* kullanır:
+Aşağıdaki bildirim, gelen dış trafik için yeni bir IP aralığı belirtmek üzere *Loadbalancersourceranges* kullanır:
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> Gelen, dış trafik, AKS kümeniz için yük dengeleyiciden sanal ağa akar. Sanal ağın, yük dengeleyiciden gelen tüm trafiğe izin veren bir ağ güvenlik grubu (NSG) vardır. Bu NSG, yük dengeleyiciden gelen trafiğe izin vermek için *LoadBalancer* türünde bir [hizmet etiketi][service-tags] kullanır.
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>İstemci IP 'sini gelen bağlantılarda koruyun
 
@@ -322,7 +324,7 @@ Bu, türü ile Kubernetes Hizmetleri için desteklenen ek açıklamaların bir l
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Genel IP 'lerde DNS etiketinin adı   | **Ortak** HIZMET için DNS etiketi adını belirtin. Boş dizeye ayarlanırsa, genel IP 'deki DNS girişi kullanılmaz.
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` veya `false`                     | Hizmetin, başka bir hizmetle paylaşılabilecek bir Azure güvenlik kuralı kullanılarak sunulduğunu ve açığa çıkarılabileceğiniz hizmet sayısında bir artış için bir artış kuralları için bir artış olduğunu belirtin. Bu ek açıklama, ağ güvenlik gruplarının Azure [genişletilmiş güvenlik kuralları](../virtual-network/security-overview.md#augmented-security-rules) özelliğine bağımlıdır. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Kaynak grubunun adı            | Küme altyapısı (düğüm kaynak grubu) ile aynı kaynak grubunda olmayan yük dengeleyici genel IP 'Lerinin kaynak grubunu belirtin.
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | İzin verilen hizmet etiketlerinin listesi          | Virgülle ayrılmış izin verilen [hizmet etiketlerinin](../virtual-network/security-overview.md#service-tags) bir listesini belirtin.
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | İzin verilen hizmet etiketlerinin listesi          | Virgülle ayrılmış izin verilen [hizmet etiketlerinin][service-tags] bir listesini belirtin.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Dakikalar içinde TCP boş zaman aşımları          | Yük dengeleyicide, TCP bağlantısı boşta kalma zaman aşımlarının gerçekleşmesi için dakika cinsinden süreyi belirtin. Varsayılan ve en küçük değer 4 ' dir. En büyük değer 30 ' dur. Bir tamsayı olmalıdır.
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB için devre dışı bırak `enableTcpReset`
 
@@ -424,3 +426,4 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

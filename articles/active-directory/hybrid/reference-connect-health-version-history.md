@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: abc0417fc6f97501566f03d7eae0e4274d1dbced
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165167"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182352"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
@@ -225,7 +225,7 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
 ## <a name="november-2015"></a>Kasım 2015
 **Yeni Özellikler:**
 
-* [Azure rol tabanlı erişim denetimi (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) desteği
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) desteği
 
 **Yeni Önizleme özellikleri:**
 

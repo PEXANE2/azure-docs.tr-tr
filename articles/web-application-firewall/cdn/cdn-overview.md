@@ -4,15 +4,15 @@ description: Azure CDN hizmetindeki Azure Web uygulaması güvenlik duvarının 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
-ms.date: 03/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278633"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225161"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network Azure Web uygulaması güvenlik duvarı
 
@@ -25,7 +25,7 @@ Azure CDN WAF, genel ve merkezi bir çözümdür. Dünyanın dört bir yanındak
 
 Bir WAF ilkesi, aboneliğinizdeki herhangi bir CDN uç noktasına kolayca bağlanır. Yeni kurallar dakikalar içinde dağıtılabilir ve bu sayede tehdit desenlerini değiştirmek için hızlıca yanıt verebilirsiniz.
 
-![Azure Web uygulaması güvenlik duvarı](../media/cdn-overview/waf-cdn-overview.png)
+![Azure web uygulaması güvenlik duvarı](../media/cdn-overview/waf-cdn-overview.png)
 
 ## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 

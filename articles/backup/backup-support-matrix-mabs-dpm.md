@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b79dfa412102b139f2f094fb9ca07a6361cab0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71f188ffca125bc13eb2e9a43f466aeb61c64b75
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019581"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182012"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -86,7 +86,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 **Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
 **Depolama** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **MABS yükseltmesi** | Mabs v3 'i doğrudan yükleyebilir veya mabs v2 'den MABS v3 'e yükseltebilirsiniz. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
-**MABS taşınıyor** | MB kullanıyorsanız, depolama alanını korurken MABS 'i yeni bir sunucuya taşımak desteklenir.<br/><br/> Sunucu orijinalde aynı ada sahip olmalıdır. Aynı depolama havuzunu korumak istiyorsanız adı değiştiremezsiniz ve veri kurtarma noktalarını depolamak için aynı MABS veritabanını kullanabilirsiniz.<br/><br/> Geri yüklemeniz gerekeceğinden, MABS veritabanının yedeğine ihtiyacınız olacaktır.
+**MABS taşınıyor** | MB kullanıyorsanız, depolama alanını korurken MABS 'i yeni bir sunucuya taşımak desteklenir.<br/><br/> Sunucu orijinalde aynı ada sahip olmalıdır. Aynı depolama havuzunu korumak istiyorsanız adı değiştiremezsiniz ve veri kurtarma noktalarını depolamak için aynı MABS veritabanını kullanabilirsiniz.<br/><br/> Geri yüklemeniz gereken için MABS veritabanının bir yedeklemesi gerekir.
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack için MABS desteği
 

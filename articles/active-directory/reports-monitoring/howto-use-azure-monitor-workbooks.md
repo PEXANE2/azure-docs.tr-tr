@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ec492466e107eb6f4821f0e6d2caed9daa141a35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608959"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226990"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -42,13 +42,13 @@ ms.locfileid: "85608959"
 
 - Oturum açma günlüğü sorguları hakkında daha derin Öngörüler elde edin. çalışma kitabı, kaç kullanıcının erişim izni verildiğini veya reddedildiğini, Ayrıca kaynaklara erişirken kaç kullanıcının koşullu erişim ilkelerini atladığını bildirir.
 
-- Bu soruları ele almanıza yardımcı olmak Azure Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir.
+- Bu soruları ele almanıza yardımcı olmak Azure Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir.
 
 
 
 Bu makalede:
 
-- [İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)hakkında bilgi sahibi olduğunuz varsayılır.
+- [İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../../azure-monitor/platform/workbooks-overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
 - Koşullu erişim ilkelerinizin etkisini anlamak, oturum açma hatalarıyla ilgili sorunları gidermek ve eski kimlik doğrulamaları belirlemek için çalışma kitaplarının nasıl kullanılacağını açıklar.
  
@@ -58,11 +58,11 @@ Bu makalede:
 
 Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
-- Premium (P1 veya P2) lisansıyla bir Azure Active Directory kiracısı. [Premium lisans alma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)hakkında bilgi edinin.
+- Premium (P1 veya P2) lisansıyla bir Azure Active Directory kiracısı. [Premium lisans alma](../fundamentals/active-directory-get-started-premium.md)hakkında bilgi edinin.
 
-- [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- Bir [Log Analytics çalışma alanı](../../azure-monitor/learn/quick-create-workspace.md).
 
-- Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+- Log Analytics çalışma alanına [erişim](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)
 - Azure Active Directory ' de aşağıdaki roller (Azure Active Directory Portal üzerinden Log Analytics erişiyorsanız)
     - Güvenlik yöneticisi
     - Güvenlik okuyucusu
@@ -70,7 +70,7 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
     - Genel yönetici
 
 ## <a name="roles"></a>Roller
-Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
+Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
 -   Genel yönetici
 -   Güvenlik yöneticisi
 -   Güvenlik okuyucusu
@@ -122,7 +122,7 @@ Her eğilim için, aşağıdaki kategorilere göre bir döküm alırsınız:
 
 - Cihaz
 
-    ![Cihaza göre oturum açma işlemleri](./media/howto-use-azure-monitor-workbooks/46.png)
+    ![Cihaza göre oturum açma sayısı](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
 ## <a name="sign-ins-using-legacy-authentication"></a>Eski kimlik doğrulaması kullanan oturum açma işlemleri 
@@ -186,7 +186,7 @@ Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumu
 ### <a name="instructions"></a>Yönergeler 
 Koşullu erişim öngörüleri için çalışma kitabına erişmek üzere koşullu erişim bölümünde **koşullu erişim öngörüleri** çalışma kitabını seçin. Bu çalışma kitabı, kiracınızdaki her bir koşullu erişim ilkesinin beklenen etkisini gösterir. Aşağıdaki filtreleri uygulayarak, açılan listeden bir veya daha fazla koşullu erişim ilkesi seçin ve çalışma kitabının kapsamını daraltın: 
 
-- **Zaman aralığı**
+- **Zaman Aralığı**
 
 - **Kullanıcı**
 
@@ -302,4 +302,4 @@ Azure Izleyici, oturum açma sorunlarını gidermenize yardımcı olmak için a�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturun](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+[İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturun](../../azure-monitor/platform/workbooks-overview.md).

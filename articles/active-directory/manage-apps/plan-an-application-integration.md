@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763100"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182335"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama
 
@@ -54,7 +54,7 @@ Uygulamaları Azure AD ile tümleştirmadan önce nerede olduğunuzu ve nereye g
 * Tümleştirmadan önce Kullanıcı/Grup veritabanlarını temizlemeniz gerekecek mi?  (Bu oldukça önemli bir sorudır. Çöp kutusu, atık çıkış.)
 
 ### <a name="access-management-inventory"></a>Erişim yönetimi envanteri
-* Şu anda uygulamalara Kullanıcı erişimini nasıl yönetirsiniz? Bunun değiştirilmesi gerekiyor mu?  Örneğin [RBAC](../../role-based-access-control/role-assignments-portal.md) gibi, erişimi yönetmenin başka yollarını kabul etmeniz mi gerekiyor?
+* Şu anda uygulamalara Kullanıcı erişimini nasıl yönetirsiniz? Bunun değiştirilmesi gerekiyor mu?  Örneğin [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) gibi farklı erişimi yönetmenin diğer yollarını kabul etmeniz mi gerekiyor?
 * Neye ne erişmesi gerekiyor?
 
 Belki de tüm bu sorulara yanıt verme, ancak bu sorun.  Bu kılavuz, bu sorulardan bazılarını cevaplamanıza ve bazı bilinçli kararlar almanıza yardımcı olabilir.

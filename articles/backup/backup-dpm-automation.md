@@ -3,12 +3,12 @@ title: PowerShell kullanarak DPM iş yüklerini yedekleme
 description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Backup dağıtmayı ve yönetmeyi öğrenin
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 7b4e63e94599b1445a7244018e00999df8365cd3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4f0364ef218d346149191e168540eed4827001de
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014685"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182471"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -262,7 +262,7 @@ Her DPM Aracısı, üzerinde yüklü olduğu sunucudaki veri kaynaklarının lis
 3. Sunucudaki tüm veri kaynaklarının listesini getirir.
 4. Bir veya daha fazla veri kaynağı seçin ve koruma grubuna ekleyin
 
-DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 'i ile elde edilir. Bu örnekte, PowerShell 'i yalnızca *ProductionServer01* adlı yedekleme için filtreleyecek ve yapılandıracağız.
+DPM aracısının yüklü olduğu ve DPM sunucusu tarafından yönetilmekte olduğu sunucuların listesi [Get-Dpmbir Server](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) cmdlet 'i ile elde edilir. Bu örnekte, yalnızca yedekleme için *ProductionServer01* adıyla PowerShell 'i filtreleyecek ve yapılandıracağız.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

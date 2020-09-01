@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256875"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226956"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorunlarını giderme
 
@@ -120,7 +120,7 @@ Bulut sağlama aracısını yüklerken bir hata iletisi alabilirsiniz.
 
 Bu sorun genellikle aracının yerel PowerShell yürütme ilkeleri nedeniyle PowerShell kayıt betikleri yürütmesine neden olur.
 
-Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned*olarak ayarlanmış olması gerekir. *Kısıtlamasız*olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned*olarak ayarlanmış olması gerekir. *Kısıtlamasız*olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
 ### <a name="log-files"></a>Günlük dosyaları
 
@@ -195,7 +195,7 @@ Durumu seçerek, karantinaya alma hakkında daha fazla bilgi görebilirsiniz. Ha
 
   ![Sağlamayı yeniden Başlat](media/how-to-troubleshoot/quarantine3.png)
 
-- [Sağlama işini yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Şunları temizleyebilirsiniz:
+- [Sağlama işini yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Şunları temizleyebilirsiniz:
   - Et, karantina durumuna doğru tahakkuk eden Emanet sayacını yeniden başlatacak.
   - Karantina, uygulamayı karantinadan kaldırma.
   - Fli. 
@@ -208,6 +208,3 @@ Durumu seçerek, karantinaya alma hakkında daha fazla bilgi görebilirsiniz. Ha
 
 - [Sağlama nedir?](what-is-provisioning.md)
 - [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
-
-
-

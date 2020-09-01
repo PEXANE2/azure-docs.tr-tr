@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c97009a69c937863a5776d63bab1c994a8a9160
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2ca5a591d168e18181a29cf1c00a7d1fead54595
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007616"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226055"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -31,7 +31,7 @@ HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşa�
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | Sürüm 11 veya üzeri |
-| Apple Safari      | macOS                            |                     |
+| Apple Safari      | Mac OS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
@@ -41,6 +41,8 @@ Bir tarayıcıda, üzerinde Windows sanal masaüstü web istemcisinin Azure Reso
 
 >[!NOTE]
 >Azure Resource Manager tümleştirme olmadan Windows sanal masaüstü (klasik) kullanıyorsanız, <https://rdweb.wvd.microsoft.com/webclient> bunun yerine kaynaklarınıza bağlanın.
+>
+> US Gov portalını kullanıyorsanız, kullanın <https://rdweb.wvd.azure.us/arm/webclient/index.html> .
 
 >[!NOTE]
 >Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.

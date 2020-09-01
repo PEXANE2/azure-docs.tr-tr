@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718552"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182386"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
 Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
@@ -70,10 +70,10 @@ Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aad
 
 | Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
-| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
-|  | Eşitleme hata raporu | Evet |
-| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
-| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
+| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | No |
+|  | Eşitleme hata raporu | Yes |
+| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
+| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
 
 Eşitleme için bağlantı durumunun aracı bağlantısının olduğundan emin olmak için lütfen [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde yapılandırın.
 
@@ -137,7 +137,7 @@ Sistem Durumu Aracısı, aşağıdaki olası nedenlerden dolayı kayıt gerçekl
 
 * Bir güvenlik duvarı trafiği engellediği için aracı gerekli uç noktalarla iletişim kuramıyor. Bu özellikle Web uygulaması ara sunucuları üzerinde ortaktır. Gerekli uç noktalara ve bağlantı noktalarına giden iletişimin izin verildiğinden emin olun. Ayrıntılar için [gereksinimler bölümüne](how-to-connect-health-agent-install.md#requirements) bakın.
 * Giden iletişim, ağ katmanı tarafından bir TLS denetimine tabi. Bu, aracının kullandığı sertifikanın İnceleme sunucusu/varlıkla değiştirilmesini ve aracı kaydını tamamlamaya yönelik adımların başarısız olmasına neden olur.
-* Kullanıcının aracının kaydını gerçekleştirme erişimi yok. Genel yöneticilerin varsayılan olarak erişimi vardır. Diğer kullanıcılara erişim yetkisi vermek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) kullanabilirsiniz.
+* Kullanıcının aracının kaydını gerçekleştirme erişimi yok. Genel yöneticilerin varsayılan olarak erişimi vardır. Diğer kullanıcılara erişim yetkisi vermek için [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) kullanabilirsiniz.
 
 **S: "Sistem Sağlığı Hizmeti veri güncel değil." olarak uyarı alıyorum. Nasıl yaparım? sorun gidermi?**
 

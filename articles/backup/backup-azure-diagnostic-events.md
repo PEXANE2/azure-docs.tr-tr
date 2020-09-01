@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826676"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182607"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -102,7 +102,7 @@ Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verile
 
 2. Belirtilen kapsamdaki tüm kasalara yönelik yeni bir tanılama ayarı eklemek için Azure Backup [yerleşik Azure ilke tanımlarını](./azure-policy-configure-diagnostics.md) kullanın. Bu ilke, bir tanılama ayarı olmayan ya da yalnızca eski bir tanılama ayarına sahip olmayan kasalara yeni bir tanılama ayarı ekler. Bu ilke, bir kerede bir abonelik veya kaynak grubuna atanabilir. İlkenin atandığı her abonelik için sahip erişiminizin olması gerekir.
 
-Yeni tablolardaki verileri kullanmak üzere tüm özel sorgularınızı geçirene kadar, AzureBackupReport için ayrı tanılama ayarlarına ve altı yeni olaya sahip olmak isteyebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya ait bir örnek gösterilmektedir. **Setting1**adlı ilk ayar, bir AzureBackupReport olayının verilerini Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2**adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü moddaki bir Log Analytics çalışma alanına gönderir.
+Yeni tablolardaki verileri kullanmak üzere özel sorgularınızın tümünü geçirene kadar, AzureBackupReport ve altı yeni olay için ayrı Tanılama ayarları olmasını tercih edebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya ait bir örnek gösterilmektedir. **Setting1**adlı ilk ayar, bir AzureBackupReport olayının verilerini Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2**adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü moddaki bir Log Analytics çalışma alanına gönderir.
 
 ![İki ayar](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

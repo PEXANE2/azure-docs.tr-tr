@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 200cc996acddecbfc1424ff24295d1373cdb3c23
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80673699"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226667"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: tek bir AD orman ortamını buluta federasyona ekleme
 
@@ -27,7 +27,7 @@ ms.locfileid: "80673699"
 
 Aşağıdaki öğreticide, Federasyon kullanarak karma kimlik ortamı oluşturma işleminde size yol gösterilir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
@@ -140,7 +140,7 @@ VM 'nin oluşturulduğuna ve yeniden adlandırıldığına ve statik bir IP adre
 $DatabasePath = "c:\windows\NTDS"
 $DomainMode = "WinThreshold"
 $DomainName = "contoso.com"
-$DomaninNetBIOSName = "CONTOSO"
+$DomainNetBIOSName = "CONTOSO"
 $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"

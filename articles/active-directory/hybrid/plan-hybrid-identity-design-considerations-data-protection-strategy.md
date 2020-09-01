@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109365"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182454"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için veri koruma stratejisini tanımlama
 Bu görevde, karma kimlik çözümünüz için veri koruma stratejisini, içinde tanımladığınız iş gereksinimlerini karşılayacak şekilde tanımlayacaksınız:
@@ -80,7 +80,7 @@ Kuruluşunuzda veri sınıflandırması yoksa ancak yeni sunucular eklemek zorun
 >
 >
 
-| İçerik yönetimi seçenekleri | Yararları | Dezavantajlar |
+| İçerik yönetimi seçenekleri | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
 | Merkezi şirket içi (Active Directory Rights Management sunucusu) |Verileri sınıflandırmaktan sorumlu sunucu altyapısı üzerinde tam denetim <br> Windows Server 'da yerleşik yetenek, ek lisans veya abonelik gerekmez <br> Bir karma senaryoda Azure AD ile tümleştirilebilir <br> Exchange Online ve SharePoint Online gibi Microsoft Online hizmetlerinde ve Office 365 ' de bilgi hakları yönetimi (ıRM) özelliklerini destekler <br> Exchange Server, SharePoint Server gibi şirket içi Microsoft sunucu ürünlerini ve Windows Server ve dosya sınıflandırma altyapısını (FCı) çalıştıran dosya sunucularını destekler. |Sunucunun sahibi olduğu için daha yüksek bakım (güncelleştirmeler, yapılandırma ve olası yükseltmelerden haberdar olma) <br> Şirket içi sunucu altyapısı gerektir<br> Yerel olarak Azure özelliklerinden faydalanır |
 | Bulutta Merkezi (Azure RMS) |Şirket içi çözümle karşılaştırıldığında daha kolay yönetilebilir <br> Karma bir senaryoda AD DS tümleştirilebilirler <br>  Azure AD ile tam olarak tümleşik <br> Hizmeti dağıtmak için şirket içi bir sunucu gerektirmez <br> Exchange Server, SharePoint, Server ve Windows Server ve dosya sınıflandırması, altyapı (FCı) çalıştıran dosya sunucuları gibi şirket içi Microsoft sunucu ürünlerini destekler <br> Bu, BYOK özelliği ile kiracının anahtarı üzerinde tamamen denetime sahip olabilir. |Kuruluşunuzun RMS 'yi destekleyen bir bulut aboneliği olmalıdır <br> RMS için Kullanıcı kimlik doğrulamasını desteklemek üzere kuruluşunuzun bir Azure AD dizini olmalıdır |
@@ -121,7 +121,7 @@ Kullanıcının kimliği Azure AD kullanarak doğrulandıktan sonra, kullanıcı
 
 1. Şirket içinde barındırılan uygulamalara koşullu erişim: Windows Server 2012 R2 ile AD FS kullanmak üzere yapılandırılmış uygulamalar için erişim ilkeleriyle kayıtlı cihazları kullanabilirsiniz.
 
-2. Azure portal Access Control: Azure, rol tabanlı erişim denetimi (RBAC) kullanarak portala erişimi denetlemenize de olanak tanır. Bu yöntem, şirketin Azure portal bir bireyin izin veren işlem sayısını kısıtlayabilmesini sağlar. BT yöneticileri, portala erişimi denetlemek için RBAC kullanarak, aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişim yetkisi verebilir:
+2. Azure portal Access Control: Azure, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak portala erişimi denetlemenize de olanak tanır. Bu yöntem, şirketin Azure portal bir bireyin izin veren işlem sayısını kısıtlayabilmesini sağlar. BT yöneticileri portala erişimi denetlemek için Azure RBAC kullanarak, aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişim temsilciliğini alabilir:
 
    - Grup tabanlı rol atama: Azure AD gruplarına, yerel Active Directory eşitlenemeyen erişim atayabilirsiniz. Bu, kuruluşunuzun araç yönetiminde yaptığı mevcut yatırımlardan ve grupları yönetmek için süreçlerden yararlanmanızı sağlar. Azure AD Premium için temsilci Grup Yönetimi özelliğini de kullanabilirsiniz.
    - Azure 'da yerleşik roller kullanın: kullanıcıların ve grupların yalnızca işlerini yapmak için gereken görevleri yapmak için izne sahip olduğundan emin olmak için, sahip, katkıda bulunan ve okuyucu olmak üzere üç rol kullanabilirsiniz.

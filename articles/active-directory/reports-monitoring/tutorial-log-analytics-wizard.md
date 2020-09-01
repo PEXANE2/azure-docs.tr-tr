@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226216"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Öğretici: Log Analytics Sihirbazı 'nı yapılandırma
 
@@ -41,15 +41,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalelerle ilgili bilgi edinin:
 
-- [Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [Etkinlik günlüklerini Log Analytics ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Etkinlik günlüklerini Log Analytics ile tümleştirme](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure AD 'de acil durum erişim hesabını yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Azure AD 'de acil durum erişim hesabını yönetme](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL hızlı başvurusu](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL hızlı başvurusu](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)
 
 
 

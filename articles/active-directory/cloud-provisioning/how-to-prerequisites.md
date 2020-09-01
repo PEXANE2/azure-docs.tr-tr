@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373871"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226905"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -27,7 +27,7 @@ Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulu
 Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
     
 - Azure AD kiracınız için konuk kullanıcı olmayan bir karma kimlik yöneticisi hesabı.
-- Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
+- Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
 >[!NOTE]
@@ -37,12 +37,12 @@ Belgenin geri kalanı, bu Önkoşullar için adım adım yönergeler sağlar.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
-1. Azure AD kiracınızda yalnızca bulutta yer alan bir karma kimlik yöneticisi hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olursa veya kullanılamaz hale gelirse kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut karma kimlik yöneticisi hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
-1. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../active-directory-domains-add-azure-portal.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
+1. Azure AD kiracınızda yalnızca bulutta yer alan bir karma kimlik yöneticisi hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olursa veya kullanılamaz hale gelirse kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut karma kimlik yöneticisi hesabı ekleme](../fundamentals/add-users-azure-active-directory.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
+1. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../fundamentals/add-custom-domain.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
 
 ### <a name="in-your-directory-in-active-directory"></a>Active Directory dizininizde
 
-Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) çalıştırın.
+Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) çalıştırın.
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
@@ -96,4 +96,3 @@ TLS 1,2 ' i etkinleştirmek için aşağıdaki adımları izleyin.
 
 - [Sağlama nedir?](what-is-provisioning.md)
 - [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
-

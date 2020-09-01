@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959910"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226038"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio kullanarak Web Işleri geliştirme ve dağıtma
 
@@ -53,7 +53,7 @@ Bir projeyi kendi başına WebJob olarak dağıtın veya Web projesini her dağ�
 
 ![Web projesine yönelik WebJob projesi bağlantısını gösteren diyagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 [Azure geliştirme iş yüküyle](/visualstudio/install/install-visual-studio#step-4---choose-workloads)visual Studio 2017 veya visual Studio 2019 ' ü yükler.
 
@@ -184,9 +184,9 @@ WebJob dağıtım bilgileri:
 
 WebJob türü *tetiklenebilir* ya da *sürekli*olabilir:
 
-- Tetiklenen (varsayılan): tetiklenen bir WebJob, bağlama olayına, [zamanlamaya](#scheduling-a-triggered-webjob)göre veya el ile (isteğe bağlı) tetiklendiğinde başlar. Web uygulamasının üzerinde çalıştığı tüm örneklerde çalışır, ancak isteğe bağlı olarak WebJob 'u tek bir örneğe kısıtlayabilirsiniz.
+- Tetiklenen (varsayılan): tetiklenen bir WebJob, bağlama olayına, [zamanlamaya](#scheduling-a-triggered-webjob)göre veya el ile (isteğe bağlı) tetiklendiğinde başlar. Web uygulamasının üzerinde çalıştığı tek bir örnek üzerinde çalışır.
 
-- Sürekli: [sürekli](#continuous-execution) WebJob, WebJob oluşturulduğunda hemen başlar. Bu tür bir WebJob, sınırsız veya uzun süre çalışan işler için idealdir. İş sona erdirmek için yeniden başlatabilirsiniz.  
+- Sürekli: [sürekli](#continuous-execution) WebJob, WebJob oluşturulduğunda hemen başlar. Tüm Web uygulaması ölçeklendirilen örnekleri varsayılan olarak çalışır, ancak *Settings. job*aracılığıyla tek bir örnek olarak çalışacak şekilde yapılandırılabilir.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

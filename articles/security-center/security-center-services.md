@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc921e319b5ac16cb39001b5ffba5de48727d84
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607133"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181944"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -35,7 +35,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Standart|
 |[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
 |[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
@@ -59,7 +59,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Standart|
 |[Ağ tabanlı güvenlik uyarıları](threat-protection.md#network-layer)|✔|✔|-|Standart|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Standart|
-|[Yerel güvenlik açığı değerlendirmesi](built-in-vulnerability-assessment.md)|✔|-|-|Standart|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standart|
 |[Dosya bütünlüğünü Izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standart|
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
 |[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|

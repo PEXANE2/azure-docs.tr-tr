@@ -1,25 +1,25 @@
 ---
-title: Blob sürümü oluşturma (Önizleme)
+title: Blob sürümü oluşturma
 titleSuffix: Azure Storage
-description: Blob Storage sürümü oluşturma (Önizleme), bir nesnenin önceki sürümlerini otomatik olarak korur ve zaman damgalarına göre tanımlar. Yanlışlıkla değiştiriliyorsa veya silinirse verilerinizi kurtarmak için bir Blobun önceki sürümlerini geri yükleyebilirsiniz.
+description: Blob Storage sürümü oluşturma bir nesnenin önceki sürümlerini otomatik olarak korur ve zaman damgalarına göre tanımlar. Yanlışlıkla değiştiriliyorsa veya silinirse verilerinizi kurtarmak için bir Blobun önceki sürümlerini geri yükleyebilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074543"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226272"
 ---
-# <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
+# <a name="blob-versioning"></a>Blob sürümü oluşturma
 
-Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturma 'yı (Önizleme) etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
+Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
 
 Blob sürümü oluşturma, depolama hesabında etkinleştirilir ve depolama hesabındaki tüm Bloblar için geçerlidir. Depolama hesabı için blob sürüm oluşturmayı etkinleştirdikten sonra Azure depolama, depolama hesabındaki her blob için sürümleri otomatik olarak korur.
 
@@ -41,6 +41,10 @@ Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob bl
 Sürüm oluşturma etkinken bir blobu sildiğinizde, Azure depolama, silinmeden önce blob durumunu yakalayan bir sürüm oluşturur. Blob 'un geçerli sürümü silinir, ancak gerekirse yeniden oluşturulabilmesi için Blobun sürümleri korunur. 
 
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
+
+Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
+
+Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 
 ### <a name="version-id"></a>Sürüm KIMLIĞI
 
@@ -108,7 +112,7 @@ Blok bloblarını uygun katmana taşıma işlemini otomatik hale getirmek için 
 
 ## <a name="enable-or-disable-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme veya devre dışı bırakma
 
-Blob sürüm oluşturmayı etkinleştirmeyi veya devre dışı bırakmayı öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme veya devre dışı bırakma](versioning-enable.md).
+Blob sürüm oluşturmayı etkinleştirme veya devre dışı bırakma hakkında bilgi edinmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
 
 Blob sürüm oluşturmayı devre dışı bırakmak, mevcut blob 'ları, sürümleri veya anlık görüntüleri silmez. Blob sürüm oluşturmayı kapattığınızda, mevcut tüm sürümler depolama hesabınızda erişilebilir kalır. Yeni sürüm daha sonra oluşturulmaz.
 
@@ -181,7 +185,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |
@@ -196,134 +200,95 @@ Aşağıdaki tabloda bir blob sürümünü silmek için SAS üzerinde gereken iz
 |----------------|----------------|------------------------|
 | Sil         | x              | Blob sürümünü silin. |
 
-## <a name="about-the-preview"></a>Önizleme hakkında
-
-Blob sürümü oluşturma, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
-
-- Doğu ABD 2
-- Central US
-- Kuzey Avrupa
-- Batı Avrupa
-- Orta Fransa
-- Doğu Kanada
-- Orta Kanada
-
-> [!IMPORTANT]
-> Blob sürüm oluşturma önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
-
-Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
-
-### <a name="storage-account-support"></a>Depolama hesabı desteği
-
-Blob sürümü oluşturma, aşağıdaki depolama hesabı türleri için kullanılabilir:
-
-- Genel amaçlı v2 depolama hesapları
-- BLOB depolama hesaplarını engelle
-- Blob Storage hesapları
-
-Depolama Hesabınız genel amaçlı bir v1 hesabıdır, genel amaçlı v2 hesabına yükseltmek için Azure portal kullanın. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
-
-Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
-
-### <a name="register-for-the-preview"></a>Önizlemeye kaydolun
-
-Blob sürüm oluşturma önizlemesine kaydolmak için, özelliği aboneliğinize kaydetme isteği göndermek üzere PowerShell veya Azure CLı kullanın. İsteğiniz onaylandıktan sonra, yeni veya mevcut genel amaçlı v2, BLOB depolama veya Premium Blok Blobu depolama hesaplarıyla blob sürümü oluşturmayı etkinleştirebilirsiniz.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell 'e kaydolmak için [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) komutunu çağırın.
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLı ile kaydolmak için [az Feature Register](/cli/azure/feature#az-feature-register) komutunu çağırın.
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Kaydlarınızın durumunu denetleyin
-
-Kaydlarınızın durumunu denetlemek için PowerShell veya Azure CLı kullanın.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Kayıt durumunuzu PowerShell 'e göre denetlemek için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Azure CLı ile kaydlarınızın durumunu denetlemek için [az Feature](/cli/azure/feature#az-feature-show) komutunu çağırın.
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
 Blob sürümü oluşturma özelliğinin etkinleştirilmesi hesabınıza ek veri depolama ücretleri oluşmasına neden olabilir. Uygulamanızı tasarlarken, maliyetleri en aza indirmek için bu ücretlerin nasıl tahakkuk edebileceğini bilmeniz önemlidir.
 
-Blob anlık görüntüleri gibi BLOB sürümleri, etkin verilerle aynı hızda faturalandırılır. Bir sürüm, temel Blobun blok veya sayfalarını paylaşıyorsa, yalnızca sürüm ve temel blob arasında paylaşılmayan ek bloklar veya sayfalar için ödeme yaparsınız.
+Blob anlık görüntüleri gibi BLOB sürümleri, etkin verilerle aynı hızda faturalandırılır. Sürümlerin faturalandırılması, temel Blobun veya sürümlerinin (ya da anlık görüntülerinin) açık olarak katmanı ayarlamış olmanıza bağlı olarak değişir. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md).
+
+Bir Blobun veya sürümün katmanını değiştirmediyseniz, söz konusu blob, sürümleri ve sahip olabileceği tüm anlık görüntülerle ilgili benzersiz veri blokları için faturalandırılırsınız. Daha fazla bilgi için bkz. [BLOB katmanı açıkça ayarlanmamışsa faturalandırma](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Bir Blobun veya sürümün katmanını değiştirdiyseniz, blob ve sürümün son olarak aynı katmanda olup olmamasından bağımsız olarak tüm nesne için faturalandırılırsınız. Daha fazla bilgi için bkz. [BLOB katmanı açıkça ayarlandığında faturalama](#billing-when-the-blob-tier-has-been-explicitly-set).
 
 > [!NOTE]
 > Genellikle üzerine yazılacak veriler için sürüm oluşturmanın etkinleştirilmesi, depolama kapasitesi ücretlerine yol açabilir ve listeleme işlemleri sırasında gecikme süresini artırabilir. Bu kaygıları azaltmak için, sık sık oluşan verileri, sürüm oluşturma devre dışı olan ayrı bir depolama hesabında depolayın.
 
-### <a name="important-billing-considerations"></a>Önemli faturalandırma konuları
+Blob anlık görüntülerinin faturalama ayrıntıları hakkında daha fazla bilgi için bkz. [BLOB anlık görüntüleri](snapshots-overview.md).
 
-Blob sürüm oluşturmayı etkinleştirirken aşağıdaki noktaları dikkate aldığınızdan emin olun:
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Blob katmanı açıkça ayarlanmamışsa faturalandırma
 
-- Depolama hesabınız, blob 'ta veya blob 'un önceki bir sürümünde olup olmadıkları bağımsız olarak benzersiz bloklar veya sayfalar için ücretler doğurur. Hesabınız, temel aldıkları blobu güncelleştirene kadar bir blob ile ilişkili sürümler için ek ücret uygulamaz. Blobu güncelleştirdikten sonra önceki sürümlerden de ayrılmış olur. Bu durumda, her blob veya sürümdeki benzersiz bloklar veya sayfalar için ücretlendirilirsiniz.
-- Blok Blobu içindeki bir bloğu değiştirdiğinizde, bu blok daha sonra benzersiz bir blok olarak ücretlendirilir. Bu, blok aynı blok KIMLIĞINE ve sürümde aynı veriye sahip olsa bile geçerlidir. Blok yeniden gerçekleştirildikten sonra, herhangi bir sürümdeki karşılığından bağımsız kalır ve verileri için ücretlendirilirsiniz. Aynı verilerle güncelleştirilmiş bir sayfa blobunun bir sayfası için de aynı değer geçerlidir.
-- Blob depolamada, iki Blobun aynı verileri içerip içermediğini belirleme yolu yoktur. Karşıya yüklenen ve yürütülen her bir blok, aynı verilere ve aynı blok KIMLIĞINE sahip olsa bile benzersiz olarak değerlendirilir. Ücretler benzersiz bloklar için tahakkuk ettiğinden, sürüm oluşturma etkinken bir blob 'u güncelleştirmek, ek benzersiz bloklara ve ek ücretler oluşmasına neden olur.
-- Blob sürümü oluşturma etkinleştirildiğinde, blok Blobları üzerinde güncelleştirme işlemlerini, en az olası blok sayısını güncelleştirecek şekilde tasarlayın. Bloklar üzerinde ayrıntılı denetime izin veren yazma işlemleri, [PUT bloğu](/rest/api/storageservices/put-block) ve [yerleştirme engellenenler listesi](/rest/api/storageservices/put-block-list)' dir. Diğer taraftan [BLOB 'U koy](/rest/api/storageservices/put-blob) işlemi, bir Blobun tüm içeriğini değiştirir ve bu nedenle ek ücretlere neden olabilir.
+Bir temel blob veya sürümlerinin herhangi birinin blob katmanını açıkça ayarlamazsanız, blob, sürümleri ve sahip olabileceği tüm anlık görüntülerle ilgili benzersiz bloklar veya sayfalar için ücretlendirilirsiniz. Blob ve sürümleri üzerinde paylaşılan veriler yalnızca bir kez ücretlendirilir. Bir blob güncelleştirilirken, bir temel blob içindeki veriler, sürümlerinde depolanan verilerden farklıdır ve benzersiz veriler blok veya sayfa başına ücretlendirilir.
 
-### <a name="versioning-billing-scenarios"></a>Sürüm faturalama senaryoları
+Blok Blobu içindeki bir bloğu değiştirdiğinizde, bu blok daha sonra benzersiz bir blok olarak ücretlendirilir. Bu, blok aynı blok KIMLIĞINE ve önceki sürümde aynı verilere sahip olsa bile geçerlidir. Blok yeniden gerçekleştirildikten sonra, önceki sürümdeki karşılığından itibaren önem altına alınır ve veriler için ücretlendirilirsiniz. Aynı verilerle güncelleştirilmiş bir sayfa blobunun bir sayfası için de aynı değer geçerlidir.
 
-Aşağıdaki senaryolarda, giderlerin bir Blok Blobu ve sürümleri için nasıl tahakkuk olduğu gösterilmektedir.
+Blob depolamada, iki Blobun aynı verileri içerip içermediğini belirleme yolu yoktur. Karşıya yüklenen ve yürütülen her bir blok, aynı verilere ve aynı blok KIMLIĞINE sahip olsa bile benzersiz olarak değerlendirilir. Ücretler benzersiz bloklar için tahakkuk ettiğinden, sürüm oluşturma etkinken bir blob 'u güncelleştirme, ek benzersiz bloklar ve ek ücretler elde edilmesine dikkat etmeniz önemlidir.
+
+Blob sürümü oluşturma etkinken, blok Bloblarındaki güncelleştirme işlemlerini, en az olası blok sayısını güncelleştirecek şekilde çağırın. Bloklar üzerinde ayrıntılı denetime izin veren yazma işlemleri, [PUT bloğu](/rest/api/storageservices/put-block) ve [yerleştirme engellenenler listesi](/rest/api/storageservices/put-block-list)' dir. Diğer taraftan [BLOB 'U koy](/rest/api/storageservices/put-blob) işlemi, bir Blobun tüm içeriğini değiştirir ve bu nedenle ek ücretlere neden olabilir.
+
+Aşağıdaki senaryolar, blob katmanı açıkça ayarlanmamışsa bir Blok Blobu ve sürümlerinin ücretleri için nasıl tahakkuk olduğunu gösterir.
 
 #### <a name="scenario-1"></a>1\. Senaryo
 
 Senaryo 1 ' de, blob 'un önceki bir sürümü vardır. Sürüm oluşturulduktan sonra blob güncelleştirilmedi, bu nedenle ücretler yalnızca 1, 2 ve 3 benzersiz blokları için ücretlendirilir.
 
-![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-1.png)
+![Temel Blobun ve önceki sürümdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 1](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>2\. Senaryo
 
 Senaryo 2 ' de, blobdaki bir blok (diyagramdaki blok 3) güncelleştirildi. Güncelleştirilmiş blok aynı verileri ve aynı KIMLIĞI içerse de, önceki sürümde blok 3 ile aynı değildir. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
-![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-2.png)
+![Temel Blobun ve önceki sürümdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 2](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>3\. Senaryo
 
 Senaryo 3 ' te blob güncelleştirildi, ancak sürüm değil. Blok 3, temel Blobun içindeki blok 4 ile değiştirilmiştir, ancak önceki sürüm hala blok 3 ' ü yansıtır. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
-![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-3.png)
+![Temel Blobun ve önceki sürümdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 3](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>4\. Senaryo
 
-Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap, &mdash; temel Blobun dört benzersiz blok ve önceki sürümde dört adet ücretlendirilir. Bu senaryo, blob 'u koy işlemi ile bir blob 'a yazıyorsanız, bu durum temel Blobun tüm içeriğinin yerini almıştır.
+Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap, &mdash; temel Blobun dört benzersiz blok ve önceki sürümde dört adet ücretlendirilir. Bu senaryo, [BLOB 'U koy](/rest/api/storageservices/put-blob) işlemi ile bir blob 'a yazıyorsanız, bu durum temel Blobun tüm içeriğinin yerini almıştır.
 
-![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-4.png)
+![Temel Blobun ve önceki sürümdeki benzersiz bloklar için faturalandırmayı gösteren diyagram 4](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Blob katmanı açıkça ayarlandığında faturalandırma
+
+Blob katmanını bir blob veya sürüm (veya anlık görüntü) için açıkça ayarladıysanız, yeni katmandaki nesnenin tam içerik uzunluğu için ücretlendirilirsiniz. Bu durumda, blokları orijinal katmanda bir nesneyle paylaştığından bağımsız olarak. Orijinal katmanda en eski sürümün tam içerik uzunluğu için de ücretlendirilirsiniz. Özgün katmanda kalan diğer önceki sürümler veya anlık görüntüler, [BLOB katmanı açıkça ayarlanmamışsa faturalandırma](#billing-when-the-blob-tier-has-not-been-explicitly-set)bölümünde açıklandığı gibi, PAYLAŞILABİLECEKLERİ benzersiz bloklar için ücretlendirilir.
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>Bir blobu yeni katmana taşıma
+
+Aşağıdaki tabloda, yeni katmana taşındığında bir blob veya sürüm için faturalandırma davranışı açıklanmaktadır.
+
+| Blob katmanı açık olarak ayarlandığında... | Ardından, için faturalandırılırsınız... |
+|-|-|
+| Önceki sürüme sahip bir temel blob | Yeni katmandaki temel blob ve orijinal katmandaki en eski sürüm ve diğer sürümlerdeki benzersiz bloklar. <sup>1</sup> |
+| Önceki sürüme ve anlık görüntüye sahip bir temel blob | Yeni katmandaki temel blob, orijinal katmandaki en eski sürüm ve orijinal katmandaki en eski anlık görüntü ve diğer sürümlerdeki veya anlık görüntü<sup>1</sup>' deki tüm benzersiz bloklar. |
+| Önceki bir sürüm | Yeni katmandaki sürüm ve orijinal katmandaki temel blob ve diğer sürümlerdeki benzersiz bloklar. <sup>1</sup> |
+
+<sup>1</sup> Özgün katmanlarından taşınmayan başka bir önceki sürüm veya anlık görüntü varsa, bu sürümler veya anlık görüntüler, [BLOB katmanı açıkça ayarlanmamışsa faturalandırma](#billing-when-the-blob-tier-has-not-been-explicitly-set)bölümünde açıklandığı gibi, içerdikleri benzersiz blok sayısına göre ücretlendirilir.
+
+Bir blob, sürüm veya anlık görüntü için katmanı açıkça ayarlamak geri alınamaz. Bir blobu yeni bir katmana taşır ve sonra özgün katmanına geri taşırsanız, özgün katmandaki diğer nesnelerle blokları paylaşsa bile nesnenin tam içerik uzunluğu için ücretlendirilirsiniz.
+
+Blob, sürüm veya anlık görüntünün katmanını açıkça ayarlamış işlemler şunlardır:
+
+- [Blob Katmanını Ayarla](/rest/api/storageservices/set-blob-tier)
+- [Blobu](/rest/api/storageservices/put-blob) belirtilen katmana yerleştir
+- Belirtilen katmana sahip [blok listesini yerleştir](/rest/api/storageservices/put-block-list)
+- Belirtilen katmana sahip [blobu Kopyala](/rest/api/storageservices/copy-blob)
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>Geçici silme etkinken bir blobu silme
+
+Blob geçici silme etkinleştirildiğinde, katmanı açıkça ayarlanmış olan bir temel blobu siler veya üzerine yazdığınızda, geçici olarak silinen blob 'un önceki sürümleri tam içerik uzunluğuna göre faturalandırılır. Blob sürümü oluşturma ve geçici silme işlemlerinin birlikte çalışması hakkında daha fazla bilgi için bkz. [BLOB sürümü oluşturma ve geçici silme](#blob-versioning-and-soft-delete).
+
+Aşağıdaki tabloda, sürüm oluşturma 'nın etkin veya devre dışı olmasına bağlı olarak, geçici olarak silinen bir blob için faturalandırma davranışı açıklanmaktadır. Sürüm oluşturma etkinleştirildiğinde bir blob geçici olarak silindiğinde bir sürüm oluşturulur. Sürüm oluşturma devre dışı bırakıldığında, bir blobu geçici olarak silmek, yumuşak silme anlık görüntüsü oluşturur.
+
+| Katman açıkça ayarlanmış bir temel Blobun üzerine yazdığınızda... | Ardından, için faturalandırılırsınız... |
+|-|-|
+| Blob geçici silme ve sürüm oluşturma özelliği etkinse | Katman ne olursa olsun, tüm mevcut sürümler tam içerik uzunluğuna sahiptir. |
+| Blob geçici silme etkinse ancak sürüm oluşturma devre dışıysa | Katmanından bağımsız olarak tam içerik uzunluğundaki tüm mevcut geçici ekran anlık görüntüleri. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Blob sürümü oluşturmayı etkinleştirme](versioning-enable.md)
+- [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)
 - [Blob 'un anlık görüntüsünü oluşturma](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Azure depolama Blobları için geçici silme](storage-blob-soft-delete.md)

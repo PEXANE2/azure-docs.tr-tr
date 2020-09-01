@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299338"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226939"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD şemasını anlama
 Tüm Dizin gibi Azure Active Directory (Azure AD) bir nesne, kullanıcılar, gruplar ve kişiler gibi şeyleri temsil eden bir programlama üst düzey veri yapısıdır. Azure AD 'de yeni bir kullanıcı veya ilgili kişi oluşturduğunuzda, bu nesnenin yeni bir örneğini oluşturuyorsunuz. Bu örnekler özelliklerine göre farklılaştırılabilir.
@@ -51,7 +51,7 @@ Kullanıcı gibi bir nesne Azure AD 'ye sağlandığında, Kullanıcı nesnesini
 * **Giriş** (posta): " john.smith@contoso.com "
 * **Çıkış**: "John. Smith"
 
-Özel ifadeler ve söz dizimi yazma hakkında daha fazla bilgi için, bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Özel ifadeler ve söz dizimi yazma hakkında daha fazla bilgi için, bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md).
 
 Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşitlendikleri listelenmektedir.
 

@@ -1,27 +1,27 @@
 ---
 title: .NET 'te blob anlık görüntüsü oluşturma ve yönetme
 titleSuffix: Azure Storage
-description: Blob verilerini belirli bir anda yedeklemek için Blobun salt okunurdur bir anlık görüntü oluşturmayı öğrenin.
+description: Blob verilerini belirli bir anda yedeklemek için bir Blobun salt okunurdur anlık görüntüsünü oluşturmak üzere .NET istemci kitaplığı 'nı nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020822"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226140"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET 'te blob anlık görüntüsü oluşturma ve yönetme
 
 Anlık görüntü, bir Blobun zaman içinde alınmış bir salt okunurdur. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)'nı kullanarak blob anlık görüntülerinin oluşturulması ve yönetilmesi gösterilmektedir.
 
-Azure depolama 'daki blob anlık görüntüleri hakkında daha fazla bilgi için bkz. [.net 'te blob anlık görüntüsü oluşturma ve yönetme](snapshots-overview.md).
+Azure Storage 'daki blob anlık görüntüleri hakkında daha fazla bilgi için bkz. [BLOB anlık görüntüleri](snapshots-overview.md).
 
 ## <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
@@ -162,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Blob anlık görüntüleri](snapshots-overview.md)
-- [Blob sürümleri (Önizleme)](versioning-overview.md)
+- [Blob sürümleri](versioning-overview.md)
 - [Bloblar için geçici silme](storage-blob-soft-delete.md)

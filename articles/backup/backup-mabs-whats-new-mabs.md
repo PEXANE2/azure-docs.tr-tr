@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893196"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182148"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
 
@@ -37,7 +37,7 @@ MABS v3 UR1 ile ReFS hacminde dağıtılan ReFS birimlerini ve iş yüklerini ye
 >[!NOTE]
 > ReFS biriminde depolanan Hyper-V VM 'lerinin yedeklenmesi MABS v3 ile desteklenir
 
->ÖNEMLI Yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesiyle ilgili birkaç sorun tespit ettik. Bunları düzeltmek için çalışıyoruz ve kullanılabilir bir düzeltme olduğunda bu bölümü güncelliyoruz. Bundan sonra, MABSv3 UR1 ' den yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesi desteğini kaldırıyoruz.
+>ÖNEMLI Yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesiyle ilgili bazı sorunlar belirledik. Bunları düzeltmek için çalışıyoruz ve kullanılabilir bir düzeltme olduğunda bu bölümü güncelliyoruz. Bundan sonra, MABSv3 UR1 ' den yinelenenleri kaldırılmış ReFS birimlerinin yedeklenmesi desteğini kaldırıyoruz.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Çözüm koruması desteği
 

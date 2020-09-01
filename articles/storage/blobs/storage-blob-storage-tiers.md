@@ -3,17 +3,17 @@ title: Blob 'lar için sık erişimli, seyrek erişimli ve arşiv erişim katman
 description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin. Blok Blobu depolama seçeneklerini karşılaştırın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009619"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226191"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -156,7 +156,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak g
 
 1. En üstteki **Kaydet** ' e tıklayın.
 
-![Depolama hesabı katmanını değiştirme](media/storage-tiers/account-tier.png)
+![Azure portal varsayılan hesap katmanını Değiştir](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Hesap katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Alt kısımdaki **Kaydet** ' i seçin.
 
-![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
+![Azure portal blob katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. `$containerName`Değişken, kapsayıcı adınızla başlatılmalıdır. `$blobName`Değişken, blob adınızla başlatılmalıdır. 
@@ -219,6 +219,8 @@ Tüm depolama hesapları, Blok Blobu depolama için her Blobun katmanını temel
 - **Coğrafi Çoğaltma veri aktarımı maliyetleri**: Bu ücret, GRS ve RA-GRS dahil olmak üzere yalnızca coğrafi çoğaltma yapılandırılmış hesaplara uygulanır. Coğrafi çoğaltma veri aktarımı gigabayt başına ücret doğurur.
 - **Giden veri aktarımı maliyetleri**: Giden veri aktarımları (bir Azure bölgesinin dışına aktarılan veriler), genel amaçlı depolama hesapları ile tutarlı şekilde gigabayt başına esaslı olarak bant genişliği kullanımı için fatura doğurur.
 - **Erişim katmanını değiştirme**: hesap erişim katmanını değiştirmek, açık bir katman kümesi olmayan hesapta depolanan, _erişim katmanı çıkarılan_ blob 'ların katman değişikliği ücretlerine neden olur. Tek bir Blobun erişim katmanını değiştirme hakkında daha fazla bilgi için bkz. [BLOB düzeyi katmanlama faturalandırma](#blob-level-tiering-billing).
+
+    Sürüm oluşturma etkinken bir blob için erişim katmanını değiştirme veya Blobun anlık görüntüler varsa, ek ücretler elde edebilir. Blob sürüm oluşturma etkinken nasıl faturalandırılacaksınız ve bir Blobun katmanını açıkça değiştirdiğiniz hakkında daha fazla bilgi için, blob sürümü oluşturma belgelerindeki [fiyatlandırma ve faturalandırma](versioning-overview.md#pricing-and-billing) bölümüne bakın. Blob 'un anlık görüntülere sahip olduğu ve Blobun katmanını açıkça değiştirdiğiniz zaman faturalandırılma hakkında daha fazla bilgi için bkz. blob anlık görüntüleri belgelerindeki [fiyatlandırma ve faturalandırma](snapshots-overview.md#pricing-and-billing) .
 
 > [!NOTE]
 > Blok Blobları için fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/) sayfası. Giden veri aktarımı ücretlerine ilişkin daha fazla bilgi için [Veri Aktarımları Fiyatlandırma Bilgileri](https://azure.microsoft.com/pricing/details/data-transfers/) sayfasına bakın.

@@ -5,15 +5,15 @@ description: Azure PowerShell kullanarak bir uygulama ağ geçidinde Web uygulam
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74046287"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225195"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Web uygulaması güvenlik duvarını etkinleştirme
 
@@ -21,11 +21,10 @@ Bir [Web uygulaması güvenlik duvarı](ag-overview.md) (WAF) ile bir uygulama a
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * WAF etkinken bir uygulama ağ geçidi oluşturma
-> * Sanal makine ölçek kümesi oluşturma
-> * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
+* Ağı ayarlama
+* WAF etkinken bir uygulama ağ geçidi oluşturma
+* Sanal makine ölçek kümesi oluşturma
+* Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 
 ![Web uygulaması güvenlik duvarı örneği](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
@@ -250,7 +249,7 @@ Update-AzVmss `
 
 Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz.
 
-### <a name="create-the-storage-account"></a>Depolama hesabı oluşturma
+### <a name="create-the-storage-account"></a>Depolama hesabını oluşturma
 
 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)kullanarak *myagstore1* adlı bir depolama hesabı oluşturun.
 

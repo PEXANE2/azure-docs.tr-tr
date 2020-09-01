@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ebf91f68e45148d9a609ff671ffa4683bd74c82c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007786"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226123"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Android istemcisiyle Windows sanal masaüstüne bağlanma
 
@@ -36,6 +36,7 @@ Bir akışa abone olmak için:
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
    - URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-posta kullanmak için e-posta adresinizi girin. Yöneticiniz sunucuyu bu şekilde yapılandırdıysa istemci, e-posta adresinizle ilişkili bir URL arar.
+   - US Gov portalı üzerinden bağlanmak için kullanın <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.
    - **Kullanıcı adı**için, Kullanıcı adına kaynaklara erişim izni verin.

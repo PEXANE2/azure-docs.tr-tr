@@ -1,7 +1,7 @@
 ---
 title: Uygulama markalama yönergeleri | Mavisi
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory'nin geliştirici yönelimli kaynakları için kapsamlı bir kılavuz
+description: Microsoft Identity platform için uygulama markalama yönergeleri hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,25 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117303"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226650"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
-Azure Active Directory (Azure AD) ile uygulama geliştirirken uygulamanıza kaydolmak veya uygulamanızda oturum açmak için iş veya okul hesaplarını (Azure AD’de yönetilen) ya da kişisel hesaplarını kullanmak istediklerinde müşterilerinizi yönlendirmeniz gerekir.
+Microsoft Identity platformu ile uygulama geliştirirken, müşterilerinizin iş veya okul hesabı (Azure AD 'de yönetiliyor) veya kişisel hesapları kullanarak, uygulamanıza kaydolmak ve oturum açmak istediğinizde müşterilerinizi yönlendirirsiniz.
 
 Bu makalede şunları yapacaksınız:
 
 - Microsoft tarafından yönetilen iki hesap türünü ve uygulamanızdan Azure AD hesaplarına nasıl başvuracağınızı öğreneceksiniz
-- Uygulamanıza Microsoft logosunu eklemek için yapmanız gerekenleri öğreneceksiniz
+- Uygulamanızda kullanılmak üzere Microsoft logosu eklemek için ne yapmanız gerektiğini öğrenin
 - Uygulamanızda kullanmak için resmi **Oturum açın** veya **Microsoft hesabıyla oturum açın** görsellerini indireceksiniz
 - Marka ve gezinti konularında yapmanız ve yapmamanız gerekenleri öğreneceksiniz
 
@@ -38,7 +38,7 @@ Microsoft, iki tür kullanıcı hesabı yönetir:
 - **Kişisel hesaplar** (eski adıyla Windows Live ID olarak da bilinir). Bu hesaplar, *bireysel* kullanıcılar ile Microsoft arasındaki ilişkiyi temsil eder ve tüketici cihazlarına ve Microsoft hizmetlerine erişmek üzere kullanılır. Bu hesaplar, kişisel kullanım için tasarlanmıştır.
 - **İş veya okul hesapları.** Bu hesaplar, Azure Active Directory kullanan kuruluşlar adına Microsoft tarafından yönetilir. Bu hesaplar, Office 365 ve diğer Microsoft iş hizmetlerinde oturum açmak için kullanılır.
 
-Microsoft iş veya okul hesapları genel olarak kuruluşlar (şirket, okul, devlet kurumu) tarafından son kullanıcılara (çalışanlar, öğrenciler, kamu çalışanları) atanır. Bu hesaplar doğrudan bulutta (Azure AD platformu) yönetilir veya Windows Server Active Directory gibi bir şirket içi dizinden Azure AD’ye eşitlenir. Microsoft iş veya okul hesaplarının *koruyucusudur* ancak hesapların mülkiyeti ve denetimi kuruluşa aittir.
+Microsoft iş veya okul hesapları genel olarak kuruluşlar (şirket, okul, devlet kurumu) tarafından son kullanıcılara (çalışanlar, öğrenciler, kamu çalışanları) atanır. Bu hesaplar doğrudan bulutta (Azure AD platformunda) veya Windows Server Active Directory gibi şirket içi bir dizinden Azure AD ile eşitlenir. Microsoft iş veya okul hesaplarının *koruyucusudur* ancak hesapların mülkiyeti ve denetimi kuruluşa aittir.
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Uygulamanızda Azure AD hesaplarına başvurma
 
@@ -67,7 +67,7 @@ Yönetici uygulamanıza eklendikten sonra, bunu kullanıcıların Office 365 uyg
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
 
 > *Zaten Microsoft 'tan Office 365 veya diğer iş Hizmetleri kullanıyorsanız, kuruluşunuzun verilerine> your_app_name <verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla> <your_app_name erişmesine izin verir.*
 

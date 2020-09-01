@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cfafb47e6d5fcde2858e7329b5b8ef3a0e0b241e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c0581a79bda4ae4e311390f5b2d929073e0833d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088229"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182029"
 ---
 # <a name="tutorial-configure-device-settings-for-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için cihaz ayarlarını yapılandırma
 
@@ -26,12 +26,12 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 GPU ile Azure Stack Edge cihazınızda cihazla ilgili ayarları yapılandırmadan önce şunları yaptığınızdan emin olun:
 
@@ -59,16 +59,17 @@ Cihazla ilgili ayarları yapılandırmak için bu adımları izleyin.
 
         ![Yerel Web Kullanıcı arabirimi "cihaz" sayfası](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
-        Cihaz adını ve DNS etki alanını değiştirdiyseniz, cihazdaki otomatik olarak imzalanan sertifikalar çalışmaz. Aşağıdaki seçeneklerden birini belirlemeniz gerekir: 
+        Cihaz adını ve DNS etki alanını değiştirdiyseniz, cihazdaki otomatik olarak imzalanan sertifikalar çalışmaz. Sertifikaları yapılandırırken aşağıdaki seçeneklerden birini belirlemeniz gerekir.: 
         
         - Cihaz sertifikaları oluşturun ve indirin. 
         - İmzalama zinciri dahil olmak üzere cihaz için kendi sertifikalarınızı getirin.
+    
 
         ![Yerel Web Kullanıcı arabirimi "cihaz" sayfası](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
 
-    4. Cihaz adı ve DNS etki alanı değiştirildiğinde, SMB ve NFS uç noktaları oluşturulur. 
+    4. Cihaz adı ve DNS etki alanı değiştirildiğinde, SMB ve NFS uç noktaları oluşturulur.  
 
-    4. Ayarlar uygulandıktan sonra, **kullanmaya**başlamak için geri dönün.
+    5. Ayarlar uygulandıktan sonra, **kullanmaya**başlamak için geri dönün.
 
 ## <a name="configure-update"></a>Güncelleştirmeyi yapılandır
 
@@ -128,7 +129,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır

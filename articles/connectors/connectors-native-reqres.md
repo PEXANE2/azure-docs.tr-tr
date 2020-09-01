@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289445"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226523"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi ve yanıtı eylemiyle, gelen https isteklerini alıp yanıtlayan otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi ve yanıtı EYLEMIYLE, https üzerinden gelen istekleri alabilen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Bunun yerine giden istekleri göndermek için yerleşik [http tetikleyicisi veya http eylemini](../connectors/connectors-native-http.md)kullanın.
+
+Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
 
 * Şirket içi bir veritabanındaki veriler için bir HTTPS isteği alın ve yanıt verin.
 
@@ -24,47 +26,28 @@ ms.locfileid: "87289445"
 
 * Başka bir mantıksal uygulamadan bir HTTPS çağrısını alın ve yanıtlayın.
 
-Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](../active-directory/develop/index.yml) (Azure AD OAuth) destekler. Bu kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için [Azure Logic Apps Azure AD OAuth kimlik doğrulamasını etkinleştirme ' deki güvenli erişim ve verilere](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)bakın.
+Bu makalede, mantıksal uygulamanızın gelen çağrıları alabilmesi ve yanıtlayabilmesi için Istek tetikleyicisi ve yanıt eyleminin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+Mantıksal uygulamanıza yönelik olarak, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL) veya [Azure Active Directory açık kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml)gibi bilinen bir gelen çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-* Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Logic Apps](../logic-apps/logic-apps-overview.md)hakkında temel bilgi. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
+* Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
-
-* Gelen çağrılar *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. TLS el sıkışma hataları alırsanız TLS 1,2 kullandığınızdan emin olun. Daha fazla bilgi için bkz. [TLS 1,0 sorununu çözme](/security/solving-tls1-problem). Giden çağrılar, hedef uç noktanın özelliğine göre TLS 1,0, 1,1 ve 1,2 destekler.
-
-* Gelen çağrılar bu şifreleme paketlerini destekler:
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md)olduğunu gözden geçirin.
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Istek tetikleyicisi Ekle
 
-Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile ÇAĞRıLABILIR bir HTTPS uç noktası oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [istek tetikleme türü](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve Azure Logic Apps ' [de HTTPS uç noktaları ile çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
+Bu yerleşik tetikleyici, HTTPS üzerinden *yalnızca* gelen istekleri işleyebilen el ile çağrılabilir bir uç nokta oluşturur. Bir çağıran bu uç noktaya bir istek gönderdiğinde, [istek tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ateşlenir ve mantıksal uygulamayı çalıştırır. Bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [Azure Logic Apps ' de HTTPS uç noktalarına çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
+
+Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulamanız bir [yanıt eylemi](#add-response)içerdiğinde, mantıksal uygulamanız bu süre geçtikten sonra arayana geri yanıt göndermezse, mantıksal uygulamanız `504 GATEWAY TIMEOUT` çağırana bir durum döndürür. Mantıksal uygulamanız bir yanıt eylemi içermiyorsa, 
+> mantıksal uygulamanız `202 ACCEPTED` , çağrıyı yapana hemen bir durum döndürür.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
-1. Mantıksal uygulama Tasarımcısı açıldıktan sonra arama kutusuna `http request` filtreniz olarak girin. Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olan **BIR http isteği alındığında** tetiklenir ' ı seçin.
+1. Mantıksal uygulama Tasarımcısı açıldıktan sonra arama kutusuna `http request` filtreniz olarak girin. Tetikleyiciler listesinden **BIR http isteği alındığında** tetiklenir ' ı seçin.
 
    ![Istek tetikleyicisi seçin](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -75,7 +58,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
-   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   | **İstek gövdesi JSON şeması** | `schema` | No | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
 1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak, gelen istekteki gövdeyi açıklayan bir JSON şeması girin, örneğin:
@@ -144,11 +127,11 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan**' ı seçin.
 
-      ![Yük 'ten şema oluştur](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      !["Şema oluşturmak için örnek yük kullan" seçiliyken ekran görüntüsü](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. Örnek yükü girin ve **bitti**' yi seçin.
 
-      ![Yük 'ten şema oluştur](./media/connectors-native-reqres/enter-payload.png)
+      ![Şema oluşturmak için örnek yük girin](./media/connectors-native-reqres/enter-payload.png)
 
       Örnek yük aşağıda verilmiştir:
 
@@ -181,8 +164,8 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Yöntem** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
-   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   | **Yöntem** | `method` | No | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | No | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
    |||||
 
    Bu örnek, **Yöntem** özelliğini ekler:
@@ -210,11 +193,9 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
 1. Mantıksal uygulamanızı tetiklemek için, oluşturulan URL 'ye bir HTTP GÖNDERISI gönderin.
 
-   Örneğin, HTTP GÖNDERISINI göndermek için [Postman](https://www.getpostman.com/) gibi bir araç kullanabilirsiniz. Istek tetikleyicisine gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) etkinleştirdiyseniz, bir [paylaşılan ERIŞIM imzası (SAS) URL 'si](../logic-apps/logic-apps-securing-a-logic-app.md#sas) kullanarak veya bir kimlik doğrulama belirteci kullanarak tetikleyiciyi çağırın, ancak ikisini birden kullanamazsınız. Kimlik doğrulama belirtecinin `Bearer` Yetkilendirme üstbilgisindeki türü belirtmesi gerekir. Daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere Azure Logic Apps erişimi ve verileri güvenli hale getirme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+   Örneğin, HTTP GÖNDERISINI göndermek için [Postman](https://www.getpostman.com/) gibi bir araç kullanabilirsiniz. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bu konulara bakın, [tetikleyici türü isteyin](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve [Azure Logic Apps içindeki HTTP uç noktalarına çağrı, tetikleyici veya iç Içe iş akışları çağırın](../logic-apps/logic-apps-http-endpoint.md).
 
-Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bu konulara bakın, [tetikleyici türü isteyin](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve [Azure Logic Apps içindeki HTTP uç noktalarına çağrı, tetikleyici veya iç Içe iş akışları çağırın](../logic-apps/logic-apps-http-endpoint.md).
-
-### <a name="trigger-outputs"></a>Tetikleme çıkışları
+## <a name="trigger-outputs"></a>Tetikleme çıkışları
 
 Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıda verilmiştir:
 
@@ -228,15 +209,13 @@ Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıd
 
 ## <a name="add-a-response-action"></a>Yanıt eylemi ekleme
 
-Yanıt eylemini, gelen HTTPS isteğine bir yük (veri) ile yanıt vermek için, ancak yalnızca HTTPS isteği tarafından tetiklenen bir mantıksal uygulamada kullanabilirsiniz. Yanıt eylemini iş akışınızın herhangi bir noktasına ekleyebilirsiniz. Bu tetikleyicinin temel alınan JSON tanımı hakkında daha fazla bilgi için bkz. [yanıt eylem türü](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
-
-Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir yanıt döndürür.
+Gelen istekleri işlemek için Istek tetikleyicisi kullandığınızda, yanıtı modelleyebilir ve yerleşik [Yanıt eylemini](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)kullanarak yük sonuçlarını çağırana geri gönderebilirsiniz. *Yalnızca* istek tetikleyicisi ile yanıt eylemini kullanabilirsiniz. Istek tetikleyicisi ve yanıt eylemiyle Bu birleşim, [istek-yanıt modelini](https://en.wikipedia.org/wiki/Request%E2%80%93response)oluşturur. Foreach döngüleri ve Until döngüleri ve paralel dallar dışında, yanıt eylemini iş akışınızda istediğiniz yere ekleyebilirsiniz.
 
 > [!IMPORTANT]
 > Bir yanıt eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata göstermeden oluşturulan yanıt iletisinden kaldırır:
 >
 > * `Allow`
-> * `Content-*`Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve`Content-Type`
+> * `Content-*` Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve `Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -253,7 +232,7 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
    Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "yanıt" yazın ve **Yanıt** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna `response` filtreniz olarak girin ve **Yanıt** eylemini seçin.
 
    ![Yanıt eylemini seçin](./media/connectors-native-reqres/select-response-action.png)
 
@@ -276,8 +255,8 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
    | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
-   | **Üst bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
-   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
+   | **Üst Bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | No | Yanıt gövdesi |
    |||||
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
@@ -286,5 +265,5 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [İstek tabanlı tetikleyicilere gelen çağrılar için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Logic Apps için bağlayıcılar](../connectors/apis-list.md)
-

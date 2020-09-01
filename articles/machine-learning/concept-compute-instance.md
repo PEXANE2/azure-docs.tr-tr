@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146768"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226803"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -30,7 +30,7 @@ Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen ge
 
 İşlem örneği, Machine Learning geliştirme ortamınız için iyileştirilmiş, tam olarak yönetilen bulut tabanlı bir iş istasyonudur. Aşağıdaki avantajları sağlar:
 
-|Önemli avantajlar|Açıklama|
+|Önemli avantajlar|Description|
 |----|----|
 |Üretkenlik|Tümleşik not defterlerini ve Azure Machine Learning Studio 'daki aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilirsiniz:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)<br/>İşlem örneği, Azure Machine Learning çalışma alanı ve Studio ile tamamen tümleşiktir. Çalışma alanındaki diğer veri bilimcileri ile not defterlerini ve verileri paylaşabilirsiniz. [SSH](how-to-set-up-vs-code-remote.md) kullanarak uzaktan geliştirme vs Code de ayarlayabilirsiniz |
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan otomatik sağlama<br/>- [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi<br/>TLS 1,2 etkin |
@@ -51,7 +51,7 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |----|:----:|
 |Sürücüler|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPı kitaplığı||
-|Azure CLI ||
+|Azure CLI’si ||
 |Azure Machine Learning örnekleri ||
 |Docker||
 |Nginx||
@@ -80,10 +80,10 @@ Python paketlerinin hepsi **python 3,6-AzureML** ortamında yüklüdür.
 
 ### <a name="installing-packages"></a>Paketleri yükleme
 
-Paketleri doğrudan bir Jupyter Not defteri 'ne veya rstudio 'Ya yükleyebilirsiniz:
+Paketleri doğrudan Jupyter Notebook veya RStudio 'Ya yükleyebilirsiniz:
 
 * RStudio sağ alt köşedeki **paketler** sekmesini veya sol üstteki **konsol** sekmesini kullanın.  
-* Python: bir Jupyter Not defteri hücresinde Install Code ve Execute özelliğini ekleyin.
+* Python: Jupyter Notebook bir hücrede Install kodu ekleyin ve yürütün.
 
 Ya da bir Terminal penceresine şu yollarla erişebilirsiniz:
 

@@ -19,7 +19,7 @@
 - name: Kavramlar
   items:
     - name: Parola karması eşitleme nedir?
-      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 'Azure AD şemasını, özniteliklerini ve ifadelerini anlama'
       href: concept-attributes.md
     - name: Azure Active Directory’de Öznitelik Eşlemeleri için İfadeler Yazma
@@ -36,11 +36,11 @@
           href: how-to-configure.md
         - name: Çoklu Oturum Açma Kullanma
           href: how-to-sso.md
-    - name: Planlama ve tasarım
+    - name: Planlama ve tasarlama
       items:
         - name: Azure AD Connect bulut sağlama için topolojiler ve senaryolar
           href: plan-cloud-provisioning-topologies.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Aracıyı otomatik yükseltme
           href: how-to-automatic-upgrade.md
@@ -49,20 +49,20 @@
         - name: Dönüşümler
           href: how-to-transformation.md
         - name: Azure AD eşitleme API’si
-          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+          href: /graph/api/resources/synchronization-overview
     - name: Sorun giderme
       items:
         - name: Bulut sağlama sorunlarını giderme
           href: how-to-troubleshoot.md
         - name: Yinelenen öznitelikler
-          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+          href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Başvuru
   items:
     - name: Azure AD Connect bulut sağlama aracısı sürüm geçmişi
-      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect bulut sağlama hakkında SSS
       href: reference-cloud-provisioning-faq.md
     - name: Eşitlenen öznitelikler
-      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Temel Active Directory ve Azure AD ortamı
       href: tutorial-basic-ad-azure.md

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbbc86b44c95219677b520cc54fbad51be06104a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109309"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182420"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Karma kimlik yaşam döngüsü benimseme stratejisini belirleme
 Bu görevde, karma kimlik [yönetimi görevlerini belirleme](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)bölümünde tanımladığınız iş gereksinimlerini karşılamak üzere karma kimlik çözümü kimlik yönetimi stratejisini tanımlayacaksınız.
@@ -36,13 +36,13 @@ Access Control, merkezi bir tek noktası sağlama sisteminin kritik bir işlevid
 
 Karmaşık BT kuruluşlardaki hesaplar, yetkilileri tanımlayan yüzlerce parametre içerir ve bu ayrıntılar, sağlama sisteminiz tarafından denetlenebilir. Yetkili kaynaktan sağladığınız verilerle yeni kullanıcılar tanımlanabilir. Erişim isteği onay özelliği, kaynak sağlamayı kendileri için onaylama (veya reddetme) işlemlerini başlatır.
 
-| Yaşam döngüsü yönetimi aşaması | Şirket içi | Bulut | Hibrit |
+| Yaşam döngüsü yönetimi aşaması | Şirket içinde | Bulut | Hibrit |
 | --- | --- | --- | --- |
 | Hesap yönetimi ve sağlama |Active Directory® Etki Alanı Hizmetleri (AD DS) sunucu rolünü kullanarak, kullanıcı ve kaynak yönetimi için ölçeklenebilir, güvenli ve yönetilebilir bir altyapı oluşturabilir ve Microsoft® Exchange Server gibi dizin özellikli uygulamalar için destek sağlayabilirsiniz. <br><br> [AD DS bir kimlik Yöneticisi aracılığıyla grupları sağlayabilirsiniz](https://technet.microsoft.com/library/ff686261.aspx) <br>[AD DS kullanıcıları temin edebilirsiniz](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Yöneticiler, güvenlik amacıyla paylaşılan kaynaklara Kullanıcı erişimini yönetmek için erişim denetimini kullanabilir. Active Directory ' de, erişim denetimi, tam denetim, yazma, okuma veya erişim yok gibi nesnelere farklı düzeylerde erişim veya izinler ayarlayarak nesne düzeyinde yönetilir. Active Directory erişim denetimi, farklı kullanıcıların Active Directory nesneleri nasıl kullanabileceğinizi tanımlar. Varsayılan olarak, Active Directory Nesnelerdeki izinler en güvenli ayara ayarlanır. |Bir Microsoft bulut hizmetine erişecek her kullanıcı için bir hesap oluşturmanız gerekir. Ayrıca, Kullanıcı hesaplarını değiştirebilir veya artık gerekli olmadığında silebilirsiniz. Varsayılan olarak, kullanıcıların yönetici izinleri yoktur, ancak bunları isteğe bağlı olarak atayabilirsiniz. <br><br> Azure Active Directory içinde, ana özelliklerden biri kaynaklara erişimi yönetme olanağıdır. Bu kaynaklar dizindeki roller aracılığıyla nesneleri yönetme izinlerinde olduğu gibi bir dizine veya SaaS uygulamaları, Azure hizmetleri ve SharePoint siteleri ya da şirket içi kaynaklar gibi dizin dışındaki kaynaklara ait olabilir. <br><br> Azure Active Directory erişim yönetimi çözümünün merkezinde güvenlik grubudur. Kaynak sahibi (veya dizinin yöneticisi), bir gruba sahip oldukları kaynaklara belirli bir erişim hakkı atayabilir. Grubun üyelerine erişim sağlanacaktır ve kaynak sahibi bir grubun Üyeler listesini bir Departman Yöneticisi veya bir yardım masası Yöneticisi gibi başka birisine yönetme hakkına temsilci seçebilir<br> <br> Azure AD 'de grupları yönetme bölümünde, grupları kullanarak erişimin yönetilmesi hakkında daha fazla bilgi verilmektedir. |Eşitleme ve Federasyon aracılığıyla Active Directory kimliklerini buluta genişletme |
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
-Rol tabanlı erişim denetimi (RBAC), kullanıcılara erişim izni vermek için iş işlemlerinizi ve kurallarınızı değerlendirmek, test etmek ve zorlamak için roller ve sağlama ilkeleri kullanır. Anahtar yöneticileri, sağlama ilkeleri oluşturur ve kullanıcılara roller atayabilir ve bu rollerin kaynaklarına yönelik yetkilendirmeler tanımlar. RBAC, kimlik yönetimi çözümünü yazılım tabanlı işlemleri kullanacak ve sağlama sürecinde Kullanıcı el ile etkileşimini azaltacak şekilde genişletir.
-Azure AD RBAC, şirketin Azure portal erişimi olduğunda bir bireyin yapabilecekleri işlem sayısını kısıtlayabilmesini sağlar. Portala erişimi denetlemek için RBAC kullanarak BT yöneticileri CA 'sı, aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişim izni verin:
+Azure rol tabanlı erişim denetimi (Azure RBAC), kullanıcılara erişim izni vermek için iş işlemlerinizi ve kurallarınızı değerlendirmek, test etmek ve zorlamak üzere roller ve sağlama ilkeleri kullanır. Anahtar yöneticileri, sağlama ilkeleri oluşturur ve kullanıcılara roller atayabilir ve bu rollerin kaynaklarına yönelik yetkilendirmeler tanımlar. Azure RBAC, kimlik yönetimi çözümünü yazılım tabanlı işlemleri kullanacak ve sağlama sürecinde Kullanıcı el ile etkileşimini azaltacak şekilde genişletir.
+Azure RBAC, şirketin Azure portal erişimi olduğunda bir bireyin yapabilecekleri işlem sayısını kısıtlayabilmesini sağlar. Portala erişimi denetlemek için Azure RBAC kullanarak, BT yöneticileri CA 'sı, aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişim sağlar:
 
 * **Grup tabanlı rol atama**: Azure AD gruplarına, yerel Active Directory eşitlenemeyen erişim atayabilirsiniz. Bu, kuruluşunuzun araç yönetiminde yaptığı mevcut yatırımlardan ve grupları yönetmek için süreçlerden yararlanmanızı sağlar. Azure AD Premium için temsilci Grup Yönetimi özelliğini de kullanabilirsiniz.
 * **Azure 'da yerleşik rolden yararlanın**: kullanıcıların ve grupların yalnızca işlerini yapmak için gereken görevleri yapmak için izne sahip olduğundan emin olmak Için, sahip, katkıda bulunan ve okuyucu olmak üzere üç rol kullanabilirsiniz.
@@ -92,7 +92,7 @@ Kimlik eşitlemesi işlemi
 
 Eşitleme seçeneklerini karşılaştırmak için aşağıdaki tabloyu gözden geçirin:
 
-| Eşitleme yönetimi seçeneği | Yararları | Dezavantajlar |
+| Eşitleme yönetimi seçeneği | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
 | Eşitleme tabanlı (DirSync veya AADConnect aracılığıyla) |Şirket içi ve buluttan eşitlenen kullanıcılar ve gruplar <br>  **İlke denetimi**: hesap ilkeleri, yöneticiye, bulutta ek görevler gerçekleştirmeye gerek kalmadan parola ilkeleri, iş istasyonu, kısıtlama, kilit denetimleri ve daha fazlasını yönetme olanağı veren Active Directory aracılığıyla ayarlanabilir.  <br>  **Erişim denetimi**: bulut hizmetine erişimi kısıtlayabilir, böylece hizmetlere şirket ortamından, çevrimiçi sunuculardan veya her ikisiyle erişilebilir. <br>  Azaltılmış destek çağrıları: Kullanıcıların anımsaması daha az parola varsa, bunları unutmaları daha az olabilir. <br>  Güvenlik: çoklu oturum açma bölümünde kullanılan tüm sunucu ve hizmetler, şirket içinde ana ve denetimli olduğundan, Kullanıcı kimlikleri ve bilgiler korunur. <br>  Güçlü kimlik doğrulaması desteği: bulut hizmetiyle güçlü kimlik doğrulaması (iki öğeli kimlik doğrulaması da denir) kullanabilirsiniz. Ancak, güçlü kimlik doğrulaması kullanırsanız, çoklu oturum açma kullanmanız gerekir. | |
 | Federasyon tabanlı (AD FS aracılığıyla) |Güvenlik belirteci hizmeti (STS) tarafından etkinleştirildi. Bir STS 'yi bir Microsoft bulut hizmeti ile çoklu oturum açma erişimi sağlamak üzere yapılandırdığınızda, şirket içi STS 'niz ve Azure AD kiracınızda belirttiğiniz Federasyon etki alanı arasında bir federasyon güveni oluşturacaksınız. <br> Son kullanıcıların birden fazla kaynağa erişim elde etmek için aynı kimlik bilgileri kümesini kullanmasına izin verir <br>Son kullanıcılar birden çok kimlik bilgileri kümesini sürdürmek zorunda değildir. Henüz, kullanıcıların kimlik bilgilerini katılan kaynakların her birine sağlaması gerekir., B2B ve B2C senaryoları desteklenir. |Şirket içi AD FS sunucularında adanmış dağıtım ve bakım için özel personel gerektirir. STS 'niz için AD FS kullanmayı planlıyorsanız güçlü kimlik doğrulaması kullanımı konusunda kısıtlamalar vardır. Daha fazla bilgi için bkz. [AD FS 2,0 Gelişmiş seçeneklerini yapılandırma](https://go.microsoft.com/fwlink/?linkid=235649). |

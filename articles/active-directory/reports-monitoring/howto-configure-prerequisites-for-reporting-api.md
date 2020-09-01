@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608271"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226973"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
 
-[Azure Active Directory (Azure AD) raporlama API'leri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api), bir dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Bu API 'Leri, programlama dilleri ve araçlarından çağırabilirsiniz.
+[Azure Active Directory (Azure AD) raporlama API'leri](./concept-reporting-api.md), bir dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Bu API 'Leri, programlama dilleri ve araçlarından çağırabilirsiniz.
 
-Raporlama API 'SI, Web API 'Lerine erişim yetkisi vermek için [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) kullanır.
+Raporlama API 'SI, Web API 'Lerine erişim yetkisi vermek için [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) kullanır.
 
 Raporlama API 'sine erişiminizi hazırlamak için şunları yapmanız gerekir:
 
@@ -42,7 +42,7 @@ Raporlama API 'sine erişiminizi hazırlamak için şunları yapmanız gerekir:
 
 API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki rollerden birine atanmış olması gerekir:
 
-- Güvenlik okuyucusu
+- Güvenlik Okuyucusu
 
 - Güvenlik Yöneticisi
 
@@ -53,7 +53,7 @@ API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki 
 Bir kiracının oturum açma raporlarına erişebilmek için bir Azure AD kiracısının ilişkili Azure AD Premium lisansı olması gerekir. Azure AD Premium P1 (veya üzeri), herhangi bir Azure AD kiracısına yönelik oturum açma raporlarına erişmek için gereklidir. Alternatif olarak, Dizin türü Azure AD B2C ise, oturum açma raporlarına ek lisans gereksinimi olmadan API aracılığıyla erişilebilir. 
 
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Raporlama API 'sine bir betik kullanarak erişiyorsanız bile kayıt gereklidir. Kayıt, yetkilendirme çağrıları için gerekli olan bir **uygulama kimliği**sağlar ve kodunuzun belirteçleri almasını sağlar.
 
@@ -87,7 +87,7 @@ Dizininizi Azure AD Raporlama API 'sine erişecek şekilde yapılandırmak için
 
     c. **Yeniden yönlendirme URL 'si** ' nde **Web** metin kutusu seçin yazın `https://localhost` .
 
-    d. **Kaydol**’u seçin. 
+    d. **Kaydet**’i seçin. 
 
 
 ## <a name="grant-permissions"></a>İzinleri verme 
@@ -200,7 +200,7 @@ Bu bölümde, Microsoft Graph API 'sini ve bunların çözümlenme adımlarını
 
  Graph Explorer 'ı kullanarak oturum açmaya çalışırken bir hata oluşmasını önlemek için, Graph Explorer Kullanıcı arabirimindeki oturum açma düğmelerini kullanarak hesabınızda oturum açın. 
 
-![Graph Gezgini](./media/troubleshoot-graph-api/graph-explorer.png)
+![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Hata: Microsoft Graph Premium lisans denetimi yapılamadı 
 
@@ -225,5 +225,5 @@ Uygulamanızın doğru izin kümesiyle çalıştığından emin olmak için [Azu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma](tutorial-access-api-with-certificates.md)
-* [API başvurusunu denetle](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Oturum açma Etkinliği raporu API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [API başvurusunu denetle](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Oturum açma Etkinliği raporu API başvurusu](/graph/api/resources/signin?view=graph-rest-beta)

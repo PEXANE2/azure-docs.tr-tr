@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518331"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182403"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -28,10 +28,10 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 
 | İşlev | Özellikler | En son |
 |--|--|--|
-| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.3.1 |
-| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.3.1 |
-| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
-| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
+| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.4.0 |
+| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.4.0 |
+| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.6.0 |
+| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.6.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
@@ -165,7 +165,7 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 **Konuşmadan metne** kapsayıcının desteklenen tüm yerel ayarları Için lütfen [konuşmadan metne görüntü etiketleri](../containers/container-image-tags.md#speech-to-text)bölümüne bakın.
@@ -207,7 +207,7 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 Desteklenen tüm yerel ayarlar ve **metin okuma** kapsayıcısının karşılık gelen sesleri için bkz. [metin okuma görüntü etiketleri](../containers/container-image-tags.md#text-to-speech).
@@ -423,6 +423,8 @@ WSS ve HTTPS protokollerini kullanma hakkında daha fazla bilgi için bkz. [kaps
 #### <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
 Metin Analizi API'si kimlik bilgilerinizi [kapsayıcıda](#analyze-sentiment-on-the-speech-to-text-output)sağladıysanız konuşma tanıma isteklerini yaklaşım analiziyle göndermek için konuşma SDK 'sını kullanabilirsiniz. API yanıtlarını *basit* veya *ayrıntılı* bir biçim kullanacak şekilde yapılandırabilirsiniz.
+> [!NOTE]
+> Konuşma hizmeti Python SDK 'sının v 1.13, yaklaşım analizi ile ilgili bir sorun saptadı. Konuşma hizmeti Python SDK 'sında yaklaşım analizini kullanıyorsanız lütfen v 1.12. x veya daha önceki bir sürümünü kullanın.
 
 # <a name="simple-format"></a>[Basit biçim](#tab/simple-format)
 

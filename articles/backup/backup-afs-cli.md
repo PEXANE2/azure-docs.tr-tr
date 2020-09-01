@@ -3,12 +3,12 @@ title: Azure CLı ile Azure dosya paylaşımlarını yedekleme
 description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki Azure dosya paylaşımlarını nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012033"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182216"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLı ile Azure dosya paylaşımlarını yedekleme
 

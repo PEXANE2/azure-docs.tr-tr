@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755492"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226106"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -47,6 +47,8 @@ Henüz bir Azure aboneliğiniz yoksa, bu yönergeleri izleyerek önce [bir hesap
 Yeni konak havuzunuzu oluşturmaya başlamak için:
 
 1. [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
+   
+   >! NOTUN US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
 
 2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin, ardından hizmetler altında **Windows sanal masaüstü** ' nü bulun ve seçin.
 
@@ -72,7 +74,7 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
       > [!div class="mx-imgBorder"]
       > ![Atama türü alanı açılan menüsünün ekran görüntüsü. Kullanıcı otomatik olarak seçildi.](media/assignment-type-field.png)
 
-9. **Havuza alınmış**' ı seçerseniz, aşağıdaki bilgileri girin:
+9.  **Havuza alınmış**' ı seçerseniz, aşağıdaki bilgileri girin:
 
      - **En fazla oturum sınırı**için, yük dengelenmesi istediğiniz en fazla kullanıcı sayısını tek bir oturum konağına girin.
      - **Yük dengeleme algoritması**için, kullanım düzeninizi temel alarak, öncelikle, birinci veya derinlik seçeneklerinden birini belirleyin.
@@ -157,7 +159,7 @@ Konak Havuzu Kurulum işlemi varsayılan olarak bir masaüstü uygulama grubu ol
 
 Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
 
-1. **Evet**’i seçin.
+1. **Evet** seçeneğini belirleyin.
 
    **Hayır**' ı seçerseniz, uygulama grubunu daha sonra kaydedebilirsiniz, ancak konak havuzunuzun düzgün şekilde çalışması için çalışma alanı kaydını hemen yapmanız önerilir.
 

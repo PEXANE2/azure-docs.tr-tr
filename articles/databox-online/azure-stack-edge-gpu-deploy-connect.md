@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c98d6644dba0b3ca51f07f01ec27fee697369f2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 90f9fcc7bbac3164b4e620674bd64d026c11badb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088261"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181842"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'e bağlanma
 
@@ -26,11 +26,11 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel bir cihaza bağlanma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -45,9 +45,11 @@ Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce ş
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
+    Cihazın geri düzlemi, almış olduğunuz modele bağlı olarak biraz farklı görünebilir.
+
 
 3. Bir tarayıcı penceresi açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine erişin `https://192.168.100.10` .  
-    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir. 
+    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir.
 
     Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz. 
    
@@ -71,7 +73,7 @@ Artık cihazınızın **genel bakış** sayfasında olursunuz. Bir sonraki adım
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel bir cihaza bağlanma
 
 
