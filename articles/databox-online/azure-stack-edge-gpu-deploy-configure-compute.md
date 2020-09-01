@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 9fd940ec5cfb3eac9d0072c8554ca6bd295a50ec
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8ba460168edc03b1cb491d69010acd03f4a84ae3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088297"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181619"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Öğretici: Azure Stack Edge GPU cihazında işlem yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kubernetes API uç noktasını al
 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -59,7 +59,7 @@ Azure Stack kenarınızdan işlem yapılandırmak için Azure portal aracılığ
     |Alan  |Değer  |
     |---------|---------|
     |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak, bir IoT kaynağı oluşturmak için standart bir katman (S1) kullanılır. Ücretsiz bir IoT kaynağı kullanmak için, bir tane oluşturun ve ardından mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Ad     |IoT Hub kaynağınız için bir ad girin.         |
+    |Name     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
@@ -80,7 +80,7 @@ Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulmasından bu y
 
 Azure portal içinde işlem başarıyla yapılandırıldıktan sonra, bir Kubernetes kümesi ve IoT ad alanıyla ilişkili bir varsayılan kullanıcı (Azure Stack Edge tarafından denetlenen bir sistem ad alanı) bulunur. 
 
-## <a name="get-kubernetes-api-endpoint"></a>Kubernetes API uç noktasını al
+## <a name="get-kubernetes-endpoints"></a>Kubernetes uç noktalarını al
 
 Bir istemciyi Kubernetes kümesine erişecek şekilde yapılandırmak için Kubernetes uç noktasına ihtiyacınız olacaktır. Azure Stack Edge cihazınızın yerel kullanıcı arabiriminden Kubernetes API uç noktasını almak için aşağıdaki adımları izleyin.
 
@@ -91,13 +91,21 @@ Bir istemciyi Kubernetes kümesine erişecek şekilde yapılandırmak için Kube
 
 3. Uç nokta dizesini kaydedin. Bu daha sonra, kubectl aracılığıyla Kubernetes kümesine erişmek üzere bir istemciyi yapılandırırken kullanacaksınız.
 
-4. Yerel Web Kullanıcı arabirimdeyken **Gelişmiş ayarlar** ' ı seçin ve bir yapılandırma dosyası indirin. 
+4. Yerel Web Kullanıcı arabirimdeyken şunları yapabilirsiniz:
 
-    ![Yerel Kullanıcı arabirimindeki cihaz sayfası](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-1.png)
+    - Kubernetes API 'sine gidin, **Gelişmiş ayarlar** ' ı seçin ve Kubernetes için gelişmiş bir yapılandırma dosyası indirin. 
 
-    Microsoft 'tan bir anahtar sağladıysanız (Select Users bu olabilir), bu yapılandırma dosyasını kullanabilirsiniz.
+        ![Yerel Kullanıcı arabirimi 1 ' deki cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-    ![Yerel Kullanıcı arabirimindeki cihaz sayfası](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-2.png)
+        Microsoft 'tan bir anahtar sağladıysanız (Select Users bu olabilir), bu yapılandırma dosyasını kullanabilirsiniz.
+
+        ![Yerel Kullanıcı arabirimi 2 ' deki cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
+
+    - Ayrıca, **Kubernetes Pano** uç noktasına gidebilir ve bir `aseuser` yapılandırma dosyası indirebilirsiniz. 
+    
+        ![Yerel Kullanıcı arabirimi 3 ' te cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
+
+        `aseuser`Yapılandırma dosyası, `iotedge` Kubernetes kümenizdeki ad alanıyla ilgili tüm sorunları ayıklamanıza olanak tanır. Daha fazla bilgi için bkz. [Kubernetes sorunlarını ayıklama](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge). 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -106,7 +114,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
-> * Kubernetes API uç noktasını al
+> * Kubernetes uç noktalarını al
 
 
 Azure Stack Edge cihazınızı yönetmeyi öğrenmek için bkz.:

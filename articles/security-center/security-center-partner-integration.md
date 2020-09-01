@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519288"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180856"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -35,10 +35,7 @@ Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirme
 > [!NOTE]
 > Güvenlik Merkezi, çoğu güvenlik satıcısı, gereçlerinde çalışan dış aracıları yasakladığından, Log Analytics aracısını iş ortağı sanal gereçlerine yüklemez.
 
-Standart katman müşterilerinin kullanabildiği yerleşik bir tarayıcı dahil olmak üzere Qualys 'ten güvenlik açığı tarama araçlarının tümleştirilmesi hakkında daha fazla bilgi edinmek için bkz.: 
-
-- [Sanal makineler Için tümleşik güvenlik açığı tarayıcısı](built-in-vulnerability-assessment.md).
-- [Bir iş ortağı güvenlik açığı tarama çözümü dağıtımı](partner-vulnerability-assessment.md).
+Standart katman müşterilerine sunulan yerleşik bir tarayıcı dahil olmak üzere Qualys 'ten güvenlik açığı tarama araçlarının tümleştirilmesi hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makineleriniz için güvenlik açığı değerlendirmeleri](deploy-vulnerability-assessment-vm.md).
 
 Güvenlik Merkezi, için güvenlik açığı analizini de sunmaktadır:
 

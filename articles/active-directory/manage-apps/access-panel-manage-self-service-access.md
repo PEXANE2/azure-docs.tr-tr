@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: c789a5fdd2aed7a904dc71065340b3c921ac9abb
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146615"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181723"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Self Servis uygulama erişimini kullanma
 
@@ -28,7 +28,7 @@ Son Kullanıcı perspektifinden uygulamalarımı kullanma hakkında bilgi edinme
 
 Bu özelliği kullanarak şunları yapabilirsiniz:
 
--   Kullanıcıların [uygulama erişim panelinden](https://myapps.microsoft.com/) bothering BT grubu olmadan uygulamaları kendi kendine bulmasına izin verin.
+-   Kullanıcıların bothering BT grubu olmadan [uygulamalarımın](https://myapps.microsoft.com/) uygulamalarını kendi kendine bulmasına izin verin.
 -   Bu kullanıcıları önceden yapılandırılmış bir gruba ekleyerek kimin erişimi olduğunu, erişimi kaldırabileceğini görebilir ve bunlara atanan rolleri yönetebilirsiniz.
 -   İsteğe bağlı olarak, bir kişinin uygulama erişim isteklerini onaylamasını sağlamak için BT grubunun olması gerekir.
 -   İsteğe bağlı olarak, bu uygulamaya erişimi onaylayabilecek en fazla 10 kişi yapılandırın.
@@ -57,14 +57,14 @@ Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdak
 13. **Isteğe bağlı:** **rolleri kullanıma sunan uygulamalar için**, bir role self servis onaylı kullanıcılar atamak istiyorsanız, **Bu uygulamada hangi rolün atanması gerektiğini belirtin?** seçeneğinin yanındaki seçiciyi seçin. bu kullanıcıların atanması gereken rolü seçin.
 14. En üstteki **Kaydet** düğmesini seçin.
 
-Self Servis uygulama yapılandırmasını tamamladıktan sonra, kullanıcılar kendi [uygulama erişim paneline](https://myapps.microsoft.com/) gidebilir ve self servis erişimini etkinleştirdiğiniz uygulamaları bulmak Için **+ Ekle** düğmesini seçebilir. İş onaylayanları Ayrıca [uygulama erişimi panelinde](https://myapps.microsoft.com/)bir bildirim görür. Bir Kullanıcı onay gerektiren bir uygulamaya erişim isteğinde bulunduğunda bu e-postayı bildiren bir e-posta sağlayabilirsiniz. 
+Self Servis uygulama yapılandırmasını tamamladıktan sonra, kullanıcılar [uygulamalarıma](https://myapps.microsoft.com/) gidebilir ve self servis erişimini etkinleştirdiğiniz uygulamaları bulmak Için **+ Ekle** düğmesini seçebilir. İş onaylayanları Ayrıca [uygulamalarım](https://myapps.microsoft.com/) sayfasında da bir bildirim görür. Bir Kullanıcı onay gerektiren bir uygulamaya erişim isteğinde bulunduğunda bu e-postayı bildiren bir e-posta sağlayabilirsiniz. 
 
 Bu onaylar yalnızca tek onay iş akışlarını destekler, yani birden çok onaylayan belirtirseniz, tek bir onaylayanın uygulamaya erişimi onaylayabileceği anlamına gelir.
 
 ## <a name="things-to-check-if-self-service-isnt-working"></a>Self Servis çalışıp çalışmadığını kontrol etmek için gerekenler
 -   Kullanıcının veya grubun Self Servis uygulama erişimi istemek için etkinleştirildiğinden emin olun.
--   Kullanıcının Self Servis uygulama erişimi için doğru yeri ziyaret ettiğini doğrulayın. Kullanıcılar kendi [uygulama erişim paneline](https://myapps.microsoft.com/) gidebilir ve self servis erişimini etkinleştirdiğiniz uygulamaları bulmak Için **+ Ekle** düğmesini seçebilir.
--   Self Servis uygulama erişimi son zamanlarda yapılandırıldıysa, self servis erişim değişikliklerinin görünmediği anlamak için birkaç dakika sonra kullanıcının erişim paneline yeniden oturum açmayı deneyin.
+-   Kullanıcının Self Servis uygulama erişimi için doğru yeri ziyaret ettiğini doğrulayın. Kullanıcılar kendi [uygulamalarım](https://myapps.microsoft.com/) sayfasına gidebilir ve self servis erişimini etkinleştirdiğiniz uygulamaları bulmak Için **+ Ekle** düğmesini seçebilir.
+-   Self Servis uygulama erişimi son zamanlarda yapılandırıldıysa, self servis erişim değişikliklerinin görünmediği anlamak için birkaç dakika sonra kullanıcının uygulamalarıma yeniden oturum açmayı deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Self servis grup yönetimi için Azure Active Directory'yi ayarlama](../users-groups-roles/groups-self-service-management.md)

@@ -3,12 +3,12 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004927"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179972"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
@@ -97,7 +97,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
-Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
+Yazılım, geçici silme devre dışı bırakıldıktan sonra siliniyorsa, geçici olarak silinen bir durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
 
 Geçici olarak silinmiş durumdaki öğeleri belirler.
 
@@ -134,7 +134,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="using-rest-api"></a>REST API kullanma
 
-Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
+Yazılım, geçici silme devre dışı bırakıldıktan sonra siliniyorsa, geçici olarak silinen bir durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
 
 1. İlk olarak, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)bahsedilen adımlarla silme işlemlerini geri alın.
 2. Ardından, [burada](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)bahsedilen adımları kullanarak REST API kullanarak geçici silme işlevini devre dışı bırakın.

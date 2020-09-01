@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88264006"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181125"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin
 
@@ -40,7 +40,7 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 |Yayın durumu:|Önizleme|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Tüm kullanıcılar|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -102,6 +102,9 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](https://docs.microsoft.com/azure/d
 1. **Güvenlik bulgularını filtre içeriyor** olarak kullanmak için, etkilenen kaynaklara filtre uygulamak için bir GÜVENLIK açığının kimlik, güvenlik denetımı veya CVE adından ücretsiz metin girin:
 
     !["Güvenlik bulguları" filtre içeriyor](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > **Güvenlik bulguları içerir** ve **Etiketler** filtreleri yalnızca tek bir değeri kabul eder. Birden fazla filtrelemek için, filtre **Ekle**' yi kullanın.
 
 1. **Fiyatlandırma katmanı** filtresini kullanmak için bir veya daha fazla seçenek (ücretsiz, kısmi veya standart) seçin:
 

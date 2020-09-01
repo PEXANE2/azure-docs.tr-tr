@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496062"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180788"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
 
@@ -24,7 +24,7 @@ Günümüzde Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir
 
 Bunun gibi çözümler oluşturmak, yapılandırmak, güvenli hale getirmek ve bakımını yapmak zordur ve bu da akıllı öngörü 'nin Swift ayıklamasını geciktirir.
 
-**Azure SYNAPSE** , veri ambarları ve büyük veri analizi sistemleri arasında herhangi bir ölçekte tüm verilerden bilgi elde etmek için zamanı hızlandıran tümleşik bir analiz hizmetidir. Kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyilerini, büyük veri analizlerinde kullanılan **Spark** teknolojilerini ve etkinlikleri ve veri hareketini düzenlemek için işlem **hatlarını** bir araya getirir.
+**Azure SYNAPSE** , veri ambarları ve büyük veri analizi sistemleri arasında herhangi bir ölçekte tüm verilerden bilgi elde etmek için zamanı hızlandıran tümleşik bir analiz hizmetidir. Kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyilerini, büyük veri analizlerinde kullanılan **Spark** teknolojilerini ve veri TÜMLEŞTIRME ve etl/ELT için işlem **hatlarını** birlikte getirir.
 
 Azure SYNAPSE, yönetim, izleme, kodlama ve güvenlik için tek bir deneyim ve model sağlayan bir Web Native **Studio** Kullanıcı deneyimiyle birlikte gelir.
 
@@ -59,13 +59,13 @@ Azure SYNAPSE, SQL ve Spark ile birlikte kullanma arasındaki geleneksel teknolo
 * SQL ve Spark, Veri Gölü içinde depolanan Parquet, CSV, TSV ve JSON dosyalarını doğrudan keşfedebilir ve analiz edebilir.
 * SQL ve Spark veritabanları arasında devam eden veriler için hızlı ölçeklenebilir yükleme ve kaldırma
 
-### <a name="built-in-orchestration-via-pipelines"></a>Ardışık düzen aracılığıyla yerleşik düzenleme
+### <a name="built-in-data-integration-via-pipelines"></a>Ardışık düzen aracılığıyla yerleşik veri tümleştirmesi
 
-Azure SYNAPSE, aynı veri tümleştirme altyapısı ve deneyimleriyle Azure Data Factory ile yerleşik olarak sunulur ve ayrı bir düzenleme altyapısı kullanmadan zengin veri işlem hatları oluşturmanıza olanak sağlar.
+Azure SYNAPSE, Azure Data Factory ile aynı veri tümleştirme altyapısı ve deneyimleriyle yerleşik olarak sunulur. böylece, SYNAPSE analizinden çıkmadan zengin ölçekli ETL işlem hatları oluşturabilirsiniz.
 
-* Verileri Azure SYNAPSE ile 90 + şirket içi veri kaynakları arasında taşıma
-* Not defterlerini, işlem hatlarını, Spark işlerini, SQL betikleri, saklı yordamları düzenleyin
+* 90 ' dan fazla veri kaynağından veri alma
 * Veri akışı etkinlikleri ile kod ücretsiz ETL
+* Not defterlerini, Spark işlerini, saklı yordamları, SQL betiklerini ve daha fazlasını düzenleyin
 
 ### <a name="unified-management-monitoring-and-security"></a>Birleşik yönetim, izleme ve güvenlik
 
@@ -86,7 +86,7 @@ Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve e
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-* [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
+* [Synapse Studio’yu kullanma](quickstart-synapse-studio.md)
 * [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 * [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
 * [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md)

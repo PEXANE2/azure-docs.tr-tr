@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 092d3893c3cc5473debf8f7d51f393751cfd82bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526828"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180244"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Azure 'da sanal makinelerde sorun gidermek için önyükleme tanılamayı kullanma
 
@@ -91,8 +91,6 @@ Mevcut bir sanal makinede önyükleme tanılamayı etkinleştirmek için şu ad�
 4. Yaptığınız değişikliği kaydedin.
 
     ![Mevcut VM’yi güncelleştirme](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
-
-Değişikliğin etkili olması için sanal makineyi yeniden başlatmanız gerekir.
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Azure CLI kullanarak önyükleme tanılamasını etkinleştirme
 

@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-ilk Azure Spring Cloud uygulamanızı dağıtma
+title: Hızlı başlangıç - İlk Azure Spring Cloud uygulamanızı dağıtma
 description: Bu hızlı başlangıçta, Azure Spring buluta bir Spring Cloud Hello uygulaması dağıdık.
 author: bmitchell287
 ms.service: spring-cloud
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 067195cfef35863a7bcc314a55b4bf1ff8a3ccd7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6a7a489367aa7348a3449a72de6889476e5d38db
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146993"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177608"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
 > * Gerçek zamanlı akış günlükleri
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -46,17 +46,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
   ![Initialkr sayfası](media/spring-cloud-quickstart-java/initializr-page.png)
 
-1. Tüm bağımlılıklar ayarlandığında **Oluştur** ' a tıklayın. Paketi indirip paketini açın ve ardından Uygulama dosyasına aşağıdaki bağımlılığı ekleyin `pom.xml` .
-
-    ```xml
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-    ```
-
-1. Aşağıdaki şekilde ekleyerek basit bir Web uygulaması için Web denetleyicisi oluşturun `src/main/java/com/example/hellospring/HelloController.java` :
+1. Tüm bağımlılıklar ayarlandığında **Oluştur** ' a tıklayın. Paketi indirip paketini açın ve aşağıdaki şekilde ekleyerek basit bir Web uygulaması için bir Web denetleyicisi oluşturun `src/main/java/com/example/hellospring/HelloController.java` :
 
     ```java
     package com.example.hellospring;

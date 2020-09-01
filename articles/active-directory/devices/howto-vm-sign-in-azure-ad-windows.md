@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005026"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180346"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -32,7 +32,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Çok faktörlü kimlik doğrulaması
+   - Multi-factor authentication
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 
@@ -274,7 +274,7 @@ Uzantı Azure AD kiracı bilgilerini sorgulayamadığından, bu çıkış kodu D
 
    - Yerel yönetici olarak VM 'ye RDP ile ve bu komutu VM 'deki yükseltilmiş bir komut satırından çalıştırarak uç noktanın geçerli bir kiracı KIMLIĞI döndürdüğünden emin olun:
       
-      - kıvrık-H meta verileri: truehttp://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - kıvrık-H meta verileri: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
 1. VM Yöneticisi AADLoginForWindows uzantısını yüklemeyi dener, ancak sistem tarafından atanmış bir yönetilen kimlik önce VM 'yi etkinleştirmedi. VM 'nin kimlik dikey penceresine gidin. Sistem atandı sekmesinden durumunun açık olarak yapıldığını doğrulayın.
 
@@ -329,7 +329,7 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 
 ![Hesabınız, bu cihazı kullanmanızı engelleyecek şekilde yapılandırıldı.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-VM için sanal makine yöneticisinin oturum açma veya sanal makine Kullanıcı oturum açma rolünü veren [RBAC ilkelerini yapılandırdığınızdan](../../virtual-machines/linux/login-using-aad.md) emin olun:
+VM için, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma rolü veren [Azure RBAC ilkelerini yapılandırdığınızdan](../../virtual-machines/linux/login-using-aad.md) emin olun:
  
 #### <a name="unauthorized-client"></a>Yetkisiz istemci
 

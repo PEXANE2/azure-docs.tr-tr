@@ -4,12 +4,12 @@ description: Geçici silme işleminin, Azure dosya paylaşımlarınızı yanlı�
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282713"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179921"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Azure Backup kullanarak Azure dosya paylaşımları için korumayı yanlışlıkla silme
 
@@ -53,7 +53,7 @@ Depolama hesabında en az bir korumalı dosya paylaşımınız varsa, bu hesapta
 >Sonraki zamanlanmış yedekleme işinin depolama hesabınızda korunan dosya paylaşımında çalışması için 2. adımı gerçekleştirmeniz gerekir. Yedekleme işi her çalıştığında, depolama hesabındaki tüm dosya paylaşımları için geçici silme işlemini yeniden etkinleştirilir.
 
 >[!WARNING]
->2. adımdaki geçici silme devre dışı bırakıldıktan sonra, dosya paylaşımlarına karşı gerçekleştirilen silme işlemleri kalıcı silme işlemidir. Bu, geçici silme devre dışı bırakıldıktan sonra yedeklenen dosya paylaşımından yanlışlıkla sildiğiniz tüm anlık görüntülerinizi kaybedecek ve verilerinizi kurtaramayacaksınız demektir.
+>2. adımdaki geçici silme devre dışı bırakıldıktan sonra, dosya paylaşımlarına karşı gerçekleştirilen silme işlemleri kalıcı silme işlemidir. Bu nedenle, geçici silme devre dışı bırakıldıktan sonra yedeklenen dosya paylaşımından yanlışlıkla silerseniz, tüm anlık görüntülerinizi kaybedersiniz ve verilerinizi kurtaramazsınız.
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>Bir dosya paylaşımının geçici silme ayarı bağlamında, bir depolama hesabının kaydını sildiğimde ne Azure Backup değişiklikler yapılır?
 

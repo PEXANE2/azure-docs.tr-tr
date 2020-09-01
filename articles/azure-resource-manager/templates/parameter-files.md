@@ -2,13 +2,13 @@
 title: Parametre dosyası oluşturma
 description: Azure Resource Manager şablonunun dağıtımı sırasında değerleri geçirmek için parametre dosyası oluşturma
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082945"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179632"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluştur
 
@@ -184,14 +184,34 @@ Aşağıdaki örnek farklı parametre türlerinin biçimlerini gösterir.
 
 ## <a name="deploy-template-with-parameter-file"></a>Parametre dosyası ile şablon dağıtma
 
-Bkz.
+Azure CLı ile yerel bir parametre dosyası geçirmek için, @ ve parametre dosyasının adını kullanın.
 
-- [ARM şablonları ve Azure CLı ile kaynak dağıtma](./deploy-cli.md#parameters)
-- [ARM şablonları ve Azure PowerShell kaynak dağıtma](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+Daha fazla bilgi için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](./deploy-cli.md#parameters).
+
+Yerel bir parametre dosyasını Azure PowerShell geçirmek için `TemplateParameterFile` parametresini kullanın.
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+Daha fazla bilgi için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+
+> [!NOTE]
+> Portalda özel şablon dikey penceresinde bir parametre dosyası kullanmak mümkün değildir.
 
 ## <a name="file-name"></a>Dosya adı
 
-Parametre dosyasını adlandırmak için genel kural, şablon adına **. parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy.js**olarak adlandırılmışsa, parametre dosyanız **üzerindeazuredeploy.parameters.js**olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenizi sağlar.
+Parametre dosyasını adlandırmak için genel kural, şablon adına **. parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy.js**olarak adlandırılmışsa, parametre dosyanız ** üzerindeazuredeploy.parameters.js**olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenizi sağlar.
 
 Farklı ortamlara dağıtmak için, birden fazla parametre dosyası oluşturun. Parametre dosyasını adlandırırken, kullanımını tanımlamak için bir yol ekleyin. Örneğin, **üzerindeazuredeploy.parameters-dev.js** ve **azuredeploy.parameters-prod.js** kullanın
 
@@ -199,7 +219,7 @@ Farklı ortamlara dağıtmak için, birden fazla parametre dosyası oluşturun. 
 
 Aynı dağıtım işleminde satır içi parametreleri ve yerel bir parametre dosyasını kullanabilirsiniz. Örneğin, yerel parametre dosyasında bazı değerler belirtebilir ve dağıtım sırasında satır içi diğer değerleri ekleyebilirsiniz. Hem yerel parametre dosyasında hem de satır içi bir parametre için değerler sağlarsanız, satır içi değer önceliklidir.
 
-Dosyaya URI sağlayarak bir dış parametre dosyası kullanmak mümkündür. Bunu yaptığınızda, diğer değerleri satır içi veya yerel bir dosyadan geçiremezsiniz. Tüm satır içi parametreler yok sayılır. Dış dosyadaki tüm parametre değerlerini belirtin.
+Dosyaya URI sağlayarak bir dış parametre dosyası kullanmak mümkündür. Dış parametre dosyası kullandığınızda, diğer değerleri satır içi veya yerel bir dosyadan geçiremezsiniz. Tüm satır içi parametreler yok sayılır. Dış dosyadaki tüm parametre değerlerini belirtin.
 
 ## <a name="parameter-name-conflicts"></a>Parametre adı çakışmaları
 

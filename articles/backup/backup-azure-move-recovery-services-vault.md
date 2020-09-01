@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827129"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181519"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -17,7 +17,7 @@ Bu makalede, Azure abonelikleri arasında Azure Backup için yapılandırılmı�
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Orta Batı ABD, Orta Batı ABD 2, Batı ABD, Batı ABD 2, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Kuzey Avrupa , Batı Avrupa, Güney Afrika Kuzey, Güney Afrika Batı, UK Güney ve UK Batı.
+Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Orta Batı ABD, Orta Batı ABD 2, Batı ABD, Batı ABD 2, Brezilya Güney, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney , Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey, Güney Afrika Batı, UK Güney ve UK Batı.
 
 ## <a name="unsupported-regions"></a>Desteklenmeyen bölgeler
 

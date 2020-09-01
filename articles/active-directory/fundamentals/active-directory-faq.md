@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d88873dafd5a3ffac3f0135d877ff407427ffd6f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799110"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179870"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -51,7 +51,7 @@ Enterprise Mobility + Security gibi ücretli Azure AD hizmetleri, kurumsal ölç
 
 Y **:** Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure kaynakları için sahip rolü atanır. Bir sahip, Azure aboneliğinin ilişkili olduğu dizinden Microsoft hesabı veya bir iş ya da okul hesabı kullanabilir.  Bu rol Azure portaldaki hizmetleri yönetme yetkisine sahiptir.
 
-Başkalarının aynı aboneliği kullanarak oturum açması ve hizmetlere erişmesi gerekiyorsa, bu kullanıcılara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)de atayabilirsiniz. Daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Başkalarının aynı aboneliği kullanarak oturum açması ve hizmetlere erişmesi gerekiyorsa, bu kullanıcılara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)de atayabilirsiniz. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye, dizin için genel yönetici rolü atanır. Genel yönetici, tüm Azure AD dizin özelliklerine erişebilir. Azure AD 'nin, dizin ve kimlikle ilgili özellikleri yönetmek için farklı bir yönetici rolü kümesi vardır. Bu yöneticiler Azure portal çeşitli özelliklere erişebilir. Yönetici rolü, Kullanıcı oluşturma veya düzenleme, başkalarına yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanlarını yönetme gibi neler yapabileceğini belirler.  Azure AD dizin yöneticileri ve rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rollerine Kullanıcı atama](active-directory-users-assign-role-azure-portal.md) ve [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md).
 

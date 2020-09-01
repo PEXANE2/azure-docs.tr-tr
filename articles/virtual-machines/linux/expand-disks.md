@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cdc5f56d4500581b36f366663dc3db915070ee2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649857"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181757"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile Linux VM 'de sanal sabit diskler genişletme
 
@@ -71,7 +71,7 @@ Genişletilmiş bir disk kullanmak için temeldeki bölümü ve dosya sistemini 
 1. Uygun kimlik bilgileriyle sanal makinenize SSH. [Az VM Show](/cli/azure/vm#az-vm-show)ile sanal MAKINENIZIN genel IP adresini görebilirsiniz:
 
     ```azurecli
-    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
+    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv
     ```
 
 1. Temel alınan bölümü ve dosya sistemini genişletin.

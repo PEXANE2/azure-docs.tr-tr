@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892261"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180023"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -50,7 +50,13 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 
-Azure dosya paylaşma yedeklemesi anlık görüntü tabanlı bir çözüm olduğundan, şu anda yalnızca anlık görüntüler için ücretlendirilirsiniz. Anlık görüntüler için tahakkuk eden depolama ücretleri, [burada](https://azure.microsoft.com/pricing/details/storage/files/)bahsedilen fiyatlandırma ayrıntılarına göre Azure dosyaları kullanımıyla birlikte faturalandırılır.
+Azure dosya paylaşma yedekleme çözümüyle ilişkili iki maliyet vardır:
+
+1. **Anlık görüntü depolama maliyeti**: anlık görüntüler için tahakkuk eden depolama ücretleri, [burada](https://azure.microsoft.com/pricing/details/storage/files/) bahsedilen fiyatlandırma ayrıntılarına göre Azure dosyaları kullanımıyla birlikte faturalandırılır 
+
+2. **Korumalı örnek ücreti** : 1 Eylül 2020 ' den itibaren müşteriler [burada](https://azure.microsoft.com/en-in/pricing/details/backup/) bahsedilen fiyatlandırma ayrıntılarına göre korunan bir örnek ücreti ödeyecek. Korumalı örnek ücreti, bir depolama hesabındaki korunan dosya paylaşımlarının toplam boyutuna bağlıdır.
+
+Azure dosya paylaşımlarını yedeklemeye yönelik ayrıntılı tahminler almak için ayrıntılı [Azure Backup fiyatlandırma tahminleyicisi](https://aka.ms/AzureBackupCostEstimates)'ni indirebilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

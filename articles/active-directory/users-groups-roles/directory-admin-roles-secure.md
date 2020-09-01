@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795924"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179581"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -310,11 +310,11 @@ Azure Active Directory Şirket içi Active Directory bağlıysa, [güvenlik ayr�
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Barındırılan sanal makineler içindeki ayrıcalıklı hesaplarınızın envanterini çıkarın
 
-Genellikle kullanıcılara tüm Azure abonelikleriniz veya kaynaklarınız için kısıtlanmamış izinler vermeniz gerekmez. Yalnızca kendi işlerini yapması gereken kullanıcılarınızın erişimini sağlamak için Azure AD yönetici rolleri ' ni kullanın. Azure AD yönetici rollerini, bir yöneticinin yalnızca bir abonelikteki VM 'Leri yönetmesine izin vermek için kullanabilirsiniz, ancak başka bir deyişle SQL veritabanlarını aynı abonelik içinde yönetebilir. Daha fazla bilgi için, bkz. [Azure Portal rol tabanlı Access Control kullanmaya başlama](../../role-based-access-control/overview.md).
+Genellikle kullanıcılara tüm Azure abonelikleriniz veya kaynaklarınız için kısıtlanmamış izinler vermeniz gerekmez. Yalnızca kendi işlerini yapması gereken kullanıcılarınızın erişimini sağlamak için Azure AD yönetici rolleri ' ni kullanın. Azure AD yönetici rollerini, bir yöneticinin yalnızca bir abonelikteki VM 'Leri yönetmesine izin vermek için kullanabilirsiniz, ancak başka bir deyişle SQL veritabanlarını aynı abonelik içinde yönetebilir. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi nedir?](../../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD yönetici rolleri için PıM uygulama
 
-Azure kaynaklarına erişimi yönetmek, denetlemek ve izlemek için Azure AD yönetici rolleriyle ayrıcalıklı kimlik yönetimi kullanın. , Ayrıcalıkların etkilenme süresini azaltarak ve görünürlüğünüzü raporlar ve uyarılar aracılığıyla kullanım için artırarak PıM 'nin kullanılması. Daha fazla bilgi için bkz. [Privileged Identity Management Ile Azure KAYNAKLARıNA RBAC erişimini yönetme](../../role-based-access-control/best-practices.md).
+Azure kaynaklarına erişimi yönetmek, denetlemek ve izlemek için Azure AD yönetici rolleriyle ayrıcalıklı kimlik yönetimi kullanın. , Ayrıcalıkların etkilenme süresini azaltarak ve görünürlüğünüzü raporlar ve uyarılar aracılığıyla kullanım için artırarak PıM 'nin kullanılması. Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](../privileged-identity-management/pim-configure.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>İlgili Azure günlüklerini SıEM sistemlerinize göndermek için Azure günlük tümleştirmelerini kullanın
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791189"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180482"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde uyarı doğrulaması (EICAR test dosyası)
+# <a name="alert-validation-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulama
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
@@ -33,12 +33,12 @@ Daha fazla bilgi için bkz. Güvenlik [Merkezi 'Nde güvenlik uyarıları](secur
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## <a name="validate-alerts-on-windows-vms"></a>Windows VM 'lerinde uyarıları doğrulama<a name="validate-windows"></a>
+## <a name="validate-alerts-on-windows-vms"></a>Windows VM 'lerinde uyarıları doğrulama <a name="validate-windows"></a>
 
 Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının saldırıya uğrayan kaynak olmasını istediğiniz bilgisayarda bu adımları izleyin:
 
 1. Bir yürütülebilir dosyayı (örneğin **calc.exe**) bilgisayarın masaüstüne veya sizin rahatınızın diğer dizinine kopyalayın ve **ASC_AlertTest_662jfi039N.exe**olarak yeniden adlandırın.
-1. Komut istemi ' ni açın ve bu dosyayı aşağıdaki gibi bir bağımsız değişkenle (yalnızca sahte bir bağımsız değişken adı) yürütün:```ASC_AlertTest_662jfi039N.exe -foo```
+1. Komut istemi ' ni açın ve bu dosyayı aşağıdaki gibi bir bağımsız değişkenle (yalnızca sahte bir bağımsız değişken adı) yürütün: ```ASC_AlertTest_662jfi039N.exe -foo```
 1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Bir uyarı görüntülenmelidir.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Linux VM 'lerinde uyarıları doğrulama<a name="validate-linux"></a>
+## <a name="validate-alerts-on-linux-vms"></a>Linux VM 'lerinde uyarıları doğrulama <a name="validate-linux"></a>
 
 Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının saldırıya uğrayan kaynak olmasını istediğiniz bilgisayarda bu adımları izleyin:
 1. Bir yürütülebilir dosyayı uygun bir konuma kopyalayın ve **./asc_alerttest_662jfi039n**olarak yeniden adlandırın, örneğin:
@@ -60,7 +60,7 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Bir uyarı görüntülenmelidir.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Kubernetes üzerinde uyarıları doğrulama<a name="validate-kubernetes"></a>
+## <a name="validate-alerts-on-kubernetes"></a>Kubernetes üzerinde uyarıları doğrulama <a name="validate-kubernetes"></a>
 
 Azure Kubernetes hizmetini tümleştirme güvenlik merkezi önizleme özelliğini kullanıyorsanız, uyarılarınızın çalıştığını sınamak için aşağıdaki kubectl komutunu çalıştırın:
 

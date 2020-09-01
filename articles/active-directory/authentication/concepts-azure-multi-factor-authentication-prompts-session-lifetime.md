@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919684"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179360"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
 Azure Active Directory (Azure AD), kullanıcıların hangi sıklıkta yeniden kimlik doğrulaması yapması gerektiğini tespit eden birden çok ayarı vardır. Bu yeniden kimlik doğrulaması, parola, FIDO veya passwordless Microsoft Authenticator gibi bir ilk faktörle veya Multi-Factor Authentication (MFA) gerçekleştirmeye yönelik olabilir. Bu yeniden kimlik doğrulama ayarlarını kendi ortamınız ve istediğiniz kullanıcı deneyimi için gerektiği şekilde yapılandırabilirsiniz.
+
+Kullanıcı oturum açma sıklığı için Azure AD varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılara genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir. Kullanıcılar kimlik bilgilerini düşünmeden girmeye eğitilerse, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
+
+Bir kullanıcının yeniden oturum açmasını istememekle birlikte, BT ilkelerinin herhangi bir ihlali oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz ya da hesap devre dışı bırakma işlemi bazı örneklere dahildir. Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)edebilirsiniz.
 
 Bu makalede önerilen yapılandırma ve farklı ayarların nasıl çalıştığı ve birbirleriyle etkileşim kurduğu açıklanır.
 
@@ -35,6 +39,7 @@ Kullanıcılarınıza doğru sıklıkta oturum açmasını isteyerek kullanıcı
 * Office 365 uygulama lisanslarınız veya ücretsiz Azure AD katmanınız varsa:
     * [Yönetilen cihazları](../devices/overview.md) veya [sorunsuz SSO](../hybrid/how-to-connect-sso.md)'yu kullanarak uygulamalar arasında çoklu oturum açma (SSO) özelliğini etkinleştirin.
     * Açık *oturum açmış durumda kalır* seçeneğinin etkin kalmasını sağlayın ve kullanıcılarınıza bunu kabul etmesine kılavuzluk edin.
+* Mobil cihaz senaryolarında, kullanıcılarınızın Microsoft Authenticator uygulamasını kullanmasına emin olun. Bu uygulama, diğer Azure AD federasyon uygulamalarına yönelik bir aracı olarak kullanılır ve cihazdaki kimlik doğrulama istemlerini azaltır.
 
 Araştırmamız bu ayarların çoğu kiracılar için doğru olduğunu gösterir. Bu ayarların *MFA* ve *MAED olmaya devam ediyor*gibi bazı birleşimleri, kullanıcılarınızın çok sık kimlik doğrulamasına neden olabilir. Normal yeniden kimlik doğrulama istemleri, kullanıcı üretkenliği için hatalı ve saldırılara karşı daha savunmasız hale getirebilir.
 
@@ -71,11 +76,11 @@ Kullanıcıların oturum açmasını sağlamak için seçeneğini yapılandırma
 
 ### <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication anımsa  
 
-Bu ayar, bir Kullanıcı oturum açma sırasında **X gün için yeniden sorma** seçeneğini seçtiğinde tarayıcıda 1-60 gün arasında değer yapılandırmanıza ve kalıcı bir tanımlama bilgisi ayarlamanıza olanak sağlar.
+Bu ayar, bir Kullanıcı oturum açma sırasında **X gün için yeniden sorma** seçeneğini seçtiğinde tarayıcıda 1-365 gün arasında değer yapılandırmanıza ve kalıcı bir tanımlama bilgisi ayarlamanıza olanak sağlar.
 
 ![Bir oturum açma isteğini onaylama isteminin ekran görüntüsü](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-Bu ayar Web Apps 'teki kimlik doğrulama sayısını azalttığında, Office istemcileri gibi modern kimlik doğrulama istemcilerinin kimlik doğrulama sayısını artırır. Bu istemciler normalde yalnızca parola sıfırlama veya 90 günlük eylemsizlik sonrasında uyarır. Ancak, *MFA hatırlama* maksimum değeri 60 gündür. İle birlikte kullanıldığında, **oturum açmış** veya koşullu erişim ilkelerine devam edildiğinde, kimlik doğrulama isteklerinin sayısını artırabilir.
+Bu ayar Web Apps 'teki kimlik doğrulama sayısını azalttığında, Office istemcileri gibi modern kimlik doğrulama istemcilerinin kimlik doğrulama sayısını artırır. Bu istemciler normalde yalnızca parola sıfırlama veya 90 günlük eylemsizlik sonrasında uyarır. Ancak, bu değerin 90 günden az olması, Office istemcilerine yönelik varsayılan MFA istemlerini kısaltır ve yeniden kimlik doğrulama sıklığını artırır. İle birlikte kullanıldığında, **oturum açmış** veya koşullu erişim ilkelerine devam edildiğinde, kimlik doğrulama isteklerinin sayısını artırabilir.
 
 *MFA 'Yı hatırla* ve Azure AD Premium 1 lisansı varsa, bu ayarları koşullu erişim oturum açma sıklığına geçirmeyi göz önünde bulundurun. Aksi takdirde, *Oturumumu Açık tut* seçeneğini kullanmayı düşünün.
 

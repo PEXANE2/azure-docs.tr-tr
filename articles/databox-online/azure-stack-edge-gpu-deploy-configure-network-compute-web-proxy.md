@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 673bd211f3271eceacb18e7fabfcc6ace2ded42c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 36d331de3a93e04932c4bce4d14704b33f69fab6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088269"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181553"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için ağı yapılandırma
 
@@ -26,13 +26,13 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -84,7 +84,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
      >[!NOTE]
      >
      > * Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini static 'ten DCHP 'e geçmenizi öneririz. Bir ağ arabirimi kullanılıyorsa ve DHCP 'ye geçerseniz, DHCP adresini belirlemenin bir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmetle etkinleştirilinceye kadar bekleyin ve ardından değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
-     > * İşlem ' ı etkinleştirip Azure Stack Edge cihazınızda IoT Edge modülünü kullanırsanız, Web proxy kimlik doğrulamasını **yok**olarak ayarlamanızı öneririz. NTLM desteklenmiyor.
+
 
     Ağ ayarlarını yapılandırdıktan ve uyguladıktan sonra, **kullanmaya**başlamak için geri dönün.
 
@@ -120,7 +120,11 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
 
 Bu, isteğe bağlı bir yapılandırmadır.
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminde Başlarken sayfasına gidin.
+> [!IMPORTANT]
+> * İşlem ' ı etkinleştirip Azure Stack Edge cihazınızda IoT Edge modülünü kullanırsanız, Web proxy kimlik doğrulamasını **yok**olarak ayarlamanızı öneririz. NTLM desteklenmiyor.
+>* Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar. Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya çalışır (sonra her şeyi kendi sertifikalarıyla yeniden imzala) uyumlu değildir. Genellikle saydam proxy 'ler Azure Stack Edge ile iyi çalışır. Saydam olmayan Web proxy 'leri desteklenmez.
+
+1. Cihazınızın yerel Web Kullanıcı arabiriminde **Başlarken** sayfasına gidin.
 2. **Ağ** kutucuğunda Web proxy sunucusu ayarlarınızı yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web Proxy kullanıyorsanız, bunu yalnızca bu sayfada yapılandırabilirsiniz.
 
    ![Yerel Web Kullanıcı arabirimi "Web proxy ayarları" sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
@@ -145,7 +149,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma

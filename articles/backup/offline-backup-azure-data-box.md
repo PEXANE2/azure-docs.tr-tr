@@ -3,12 +3,12 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761568"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180941"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
@@ -56,7 +56,7 @@ Azure Data Box kullanarak MARS aracısından verileri temel alan işlem, aşağ�
 >[!IMPORTANT]
 >Tek bir sunucudan ilk yedekleme verileri tek bir Azure Data Box örneği veya Azure Data Box disk içinde bulunmalıdır ve aynı veya farklı SKU 'ların birden çok cihazı arasında paylaşılamaz. Ancak bir Azure Data Box cihaz, birden çok sunucudan ilk yedeklemeleri içerebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure aboneliği ve gerekli izinler
 
@@ -195,7 +195,7 @@ NFS protokolünü kullanarak Data Box cihazınızı yerel bir sistem olarak bağ
 
     ![Abonelik KIMLIĞI için Data Box işleri getir](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Data Box diskinizin açılacağı, bağlandığı ve kilidinin bulunduğu doğru Data Box sırasını seçin. **İleri**’yi seçin.
+1. Data Box diskinizin yüklendiği, bağlandığı ve kilidinin açılacağı doğru Data Box sırasını seçin. **İleri**’yi seçin.
 
     ![Data Box siparişleri seçin](./media/offline-backup-azure-data-box/select-databox-order.png)
 

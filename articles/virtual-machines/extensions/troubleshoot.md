@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ad3197f20428ec751b4e3520af72dc5f8eb9ad28
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187566"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180364"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM Uzantısı hatalarında sorun giderme
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "86187566"
 ## <a name="viewing-extension-status"></a>Uzantı durumunu görüntüleme
 Azure Resource Manager Şablonlar Azure PowerShell yürütülebilir. Şablon yürütüldüğünde, uzantı durumu Azure Kaynak Gezgini veya komut satırı araçlarından görüntülenebilir.
 
-Örnek aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 Azure PowerShell:
 
@@ -63,6 +63,7 @@ Extensions:  {
 ```
 
 ## <a name="troubleshooting-extension-failures"></a>Uzantı hatalarında sorun giderme
+
 ### <a name="rerun-the-extension-on-the-vm"></a>Uzantıyı VM 'de yeniden çalıştırın
 Özel Betik uzantısı kullanarak VM 'de komut dosyaları çalıştırıyorsanız, bazen VM 'nin başarıyla oluşturulduğu ancak betiğin başarısız olduğu bir hata ile çalışabilir. Bu koşullar altında, bu hatayı kurtarmak için önerilen yol, uzantıyı kaldırmak ve şablonu yeniden çalıştıramaktır.
 Note: gelecekte, uzantıyı kaldırma gereksinimini ortadan kaldırmak için bu işlev geliştirilir.
@@ -74,3 +75,28 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 Uzantı kaldırıldıktan sonra, şablon, betikleri sanal makinede çalıştırmak için yeniden çalıştırılabilir.
 
+### <a name="trigger-a-new-goalstate-to-the-vm"></a>VM 'ye yeni bir GoalState tetikleme
+Bir uzantının çalıştırılmadığını veya eksik bir "Windows Azure CRP sertifika Oluşturucusu" (Bu sertifika, uzantının korunan ayarlarının aktarımını korumak için kullanılır) nedeniyle yürütülebileceğini fark edebilirsiniz.
+Bu sertifika, sanal makinenin içinden Windows Konuk Aracısı yeniden başlatılarak otomatik olarak yeniden oluşturulur:
+- Görev Yöneticisi 'Ni açın
+- Ayrıntılar sekmesine gidin
+- WindowsAzureGuestAgent.exe işlemini bulun
+- Sağ tıklayın ve "Görevi Sonlandır" seçeneğini belirleyin. İşlem otomatik olarak yeniden başlatılacak
+
+
+Ayrıca, "boş güncelleştirme" yürüterek VM 'ye yeni bir GoalState tetikleyebilirsiniz:
+
+Azure PowerShell:
+
+```azurepowershell
+$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
+Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+```
+
+Azure CLı:
+
+```azurecli
+az vm update -g <rgname> -n <vmname>
+```
+
+"Boş güncelleştirme" işe yaramazsa, Azure Yönetim Portalı sanal makinesine yeni bir boş veri diski ekleyebilir ve daha sonra sertifika yeniden eklendikten sonra kaldırabilirsiniz.

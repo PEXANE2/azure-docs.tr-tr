@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure CLı kullanarak bir Azure Backup kurtarma hi
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3887b8e7333b6c581887fcfde7e1bd99200e72ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0a6cec234c367ceb1c6032e99d64d6ca5bc4805
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007273"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180278"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını geri yükleme
 
@@ -89,7 +89,7 @@ Bu öğreticide, önceki bir geri yükleme noktasına geri yükleyeceksiniz. Ver
 Yukarıdaki geri yükleme noktası adını ve geri yükleme modunu kullanarak, [az Backup recoveryconfig Show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 'ini kullanarak kurtarma yapılandırma nesnesini oluşturalım. Bu cmdlet 'teki kalan parametrelerin her birinin ne anlama geldiğini inceleyelim:
 
 * **--Target-öğe-adı** Bu, geri yüklenen veritabanının kullanacağı addır. Bu durumda *restored_database*adı kullandık.
-* **--target-sunucu-adı** Bu, bir kurtarma hizmetleri kasasında başarıyla kaydedilen ve geri yüklenecek veritabanıyla aynı bölgede yer alan bir SAP HANA sunucusunun adıdır. Bu öğreticide, veritabanını, *hxehost*adlı, koruduğumuz SAP HANA sunucuya geri yükleyeceğiz.
+* **--target-sunucu-adı** Bu, bir kurtarma hizmetleri kasasında başarıyla kaydedilen ve geri yüklenecek veritabanıyla aynı bölgede yer alan bir SAP HANA sunucusunun adıdır. Bu öğreticide, veritabanını, *hxehost*adlı koruduğumuz SAP HANA sunucuya geri yükleyeceğiz.
 * **--target-sunucu türü** SAP HANA veritabanlarının geri yüklenmesi için **Saphanadatabase** kullanılması gerekir.
 
 ```azurecli-interactive
@@ -113,7 +113,7 @@ Yukarıdaki sorguya olan yanıt, şuna benzer bir kurtarma yapılandırma nesnes
 {"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, * üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
+Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, * üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını gireceğiz.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -154,7 +154,7 @@ Yukarıdaki sorguya olan yanıt, aşağıdaki gibi görünen bir kurtarma yapıl
 {"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, * üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
+Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, * üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını gireceğiz.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \

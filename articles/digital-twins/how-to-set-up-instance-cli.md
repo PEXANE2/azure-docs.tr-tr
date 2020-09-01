@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 17e39a7b94384827af19b2362d478456cde8f167
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078521"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181468"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
 
@@ -118,7 +118,7 @@ Sonra bu dosyayı Cloud Shell karşıya yüklersiniz. Cloud Shell pencerenizde, 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
 Yeni oluşturduğunuz *manifest.js* gidin ve "Aç" düğmesine basın.
 
-Ardından, bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın (yer tutucuları gerektiği gibi değiştirin):
+Ardından, *genel istemci/yerel (mobil & Masaüstü)* yanıt URL 'si ile bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın `http://localhost` . Yer tutucuları gerektiği gibi değiştirin:
 
 ```azurecli
 az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost

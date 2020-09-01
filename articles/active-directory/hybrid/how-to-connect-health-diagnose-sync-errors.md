@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359101"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179156"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Yinelenen öznitelik eşitleme hatalarını tanılama ve düzeltme
 
@@ -58,7 +58,7 @@ Tanıla özelliği, aşağıdaki yinelenen özniteliklere sahip kullanıcı nesn
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Bu özelliğe erişmek için, **genel yönetici** IZNI veya RBAC ayarlarından **katkıda bulunan** izin gerekir.
+> Bu özelliğe erişmek için, **genel yönetici** Izni veya Azure RBAC Ile **katkıda bulunan** izin gerekir.
 >
 
 Eşitleme hata ayrıntılarını daraltmak ve daha belirli çözümler sağlamak için Azure portal adımları izleyin:
@@ -148,7 +148,7 @@ Azure AD 'deki bulut tabanlı Kullanıcı kaynak tutturucusu içermemelidir. Bu 
 
 
 **Ç.** Kullanıcının bu çözümü uygulamak için hangi izni vardır?  
-**A.** **Genel yönetici**veya RBAC ayarlarından **katılımcı** , tanılama ve sorun giderme sürecine erişme iznine sahiptir.
+**A.** **Genel yönetici**veya Azure RBAC 'den **katılımcı** , tanılama ve sorun giderme sürecine erişme iznine sahiptir.
 
 
 **Ç.** Bu özellik için Azure AD Connect yapılandırıp Azure AD Connect Health aracıyı güncelleştirmem gerekir mi?  

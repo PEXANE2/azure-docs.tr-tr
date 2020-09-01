@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792545"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179853"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Azure Logic Apps 'de UNH 2.5 segmentiyle EDIOLGU belgelerini işleme
 
@@ -56,8 +56,6 @@ Gelen iletiyi kodlamak için, bu şemayı EDıOLGU sözleşmesi gönderme ayarla
 1. Şemayı tümleştirme hesabınıza ekleyin.
 
 1. EDıOLGU sözleşmesinin gönderme ayarlarındaki şemayı yapılandırın.
-
-1. EDIOLGU Sözleşmesi ' ni seçin ve **JSON olarak Düzenle**' ye tıklayın.  Gönderme sözleşmesi 'nde UNH 2.5 değeri ekleyin **schemaReferences**
 
 1. EDIOLGU Sözleşmesi ' ni seçin ve **JSON olarak Düzenle**' yi seçin. Gönderme sözleşmesinin bölümüne UNH 2.5 değerini ekleyin `schemaReferences` :
 

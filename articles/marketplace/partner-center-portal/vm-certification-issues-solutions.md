@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225401"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181451"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
 
@@ -84,7 +84,7 @@ Visual Studio 'Yu veya Office lisanslı herhangi bir ürünü yüklemeye çalı�
 
 Onaylanan bir temel seçme hakkında daha fazla bilgi için bkz. [Azure sanal makine teknik varlıklarınızı oluşturma](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Araç seti test çalışması yürütülemedi
+## <a name="tool-kit-test-case-execution-failed"></a>Araç seti test çalışması yürütülemedi 
 
 Microsoft sertifika araç seti, test çalışmalarını çalıştırmanıza ve VHD veya görüntünüzün Azure ortamıyla uyumlu olduğunu doğrulamanıza yardımcı olabilir.
 
@@ -113,7 +113,7 @@ Aşağıdaki tabloda, önceki test çalışmaları yürütülürken bulunan yayg
  
 |Senaryo|Test çalışması|Hata|Çözüm|
 |---|---|---|---|
-|1|Linux Aracısı sürüm test çalışması|En düşük Linux Aracısı sürümü 2,241 veya üzeri. Bu gereksinim 1 Mayıs 2020 ' den itibaren zorunludur.|[İsteğin gönderileceği](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support), görüntünün gereken sürümle güncelleştirilmeleri gerekir.|
+|1|Linux Aracısı sürüm test çalışması|En düşük Linux Aracısı sürümü 2.2.41 veya üzeri. Bu gereksinim 1 Mayıs 2020 ' den itibaren zorunludur.|Lütfen Linux Aracısı sürümünü güncelleştirin ve 2,241 veya üzeri olmalıdır. Daha fazla bilgi için [Linux Aracısı sürüm güncelleştirme sayfasını](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)ziyaret edebilirsiniz.|
 |2|Bash geçmiş test çalışması|Gönderilen görüntinizdeki Bash geçmişinin boyutu 1 kilobayt (KB) daha büyükse bir hata görürsünüz. Potansiyel olarak hassas bilgilerin Bash geçmiş dosyanızda yakalandığından emin olmak için Boyut 1 KB 'a kısıtlanır.|Bu sorunu çözmek için, VHD 'yi başka bir çalışan VM 'ye bağlayın ve istediğiniz değişiklikleri yapın (örneğin, *. bash* geçmiş dosyalarını silin), boyutu 1 KB 'tan küçük veya buna eşit olacak şekilde küçültün.|
 |3|Gerekli çekirdek parametresi test çalışması|**Konsolun** değeri **ttyS0**olarak ayarlanmadıysa bu hatayı alırsınız. Aşağıdaki komutu çalıştırarak kontrol edin:<br>`cat /proc/cmdline`|**Konsolun** değerini **ttyS0**olarak ayarlayın ve isteği yeniden gönderin.|
 |4|ClientAlive Interval test çalışması|Araç seti sonucu, bu test çalışması için başarısız bir sonuç veriyorsa **ClientAliveInterval**için uygun olmayan bir değer vardır.|**ClientAliveInterval** değerini 235 ' e eşit veya daha küçük olarak ayarlayın ve sonra isteği yeniden gönderin.|
@@ -363,7 +363,8 @@ Yayımcılar, yukarıdaki senaryo için aşağıdaki ek bilgilerle özel durumla
    4.    Sürüm: özel durum istenen VM teklifinin sürümü
    5.   Özel durum türü – testler, kilitli VM, özel şablonlar
    6.   İsteğin nedeni-bu özel durumun nedeni ve dışarıda bırakılan testler hakkında bilgi 
-   7.   Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
+   7. Zaman çizelgesi-bu özel durumun istendiği Tarih 
+   8.   Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

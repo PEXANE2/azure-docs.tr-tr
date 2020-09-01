@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89086972"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180686"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızı izlemek için Kubernetes panosunu kullanma
 
@@ -26,6 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Cihazınızdaki Kubernetes panosuna erişin
+> * `aseuser`Yapılandırmayı indir
 > * Cihazınızda dağıtılan modülleri görüntüleme
 > * Cihazınızda dağıtılan uygulamalar için IP adresi al
 > * Cihazınızda dağıtılan modüller için kapsayıcı günlüklerini görüntüleme
@@ -33,13 +34,13 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="about-kubernetes-dashboard"></a>Kubernetes panosu hakkında
 
-Kubernetes panosu, Kapsayıcılı uygulamalarınızın sorunlarını gidermek için kullanabileceğiniz web tabanlı bir kullanıcı arabirimidir. Kubernetes panosu, Kubernetes komut satırı için Kullanıcı arabirimi tabanlı bir alternatiftir `kubectl` . 
+Kubernetes panosu, Kapsayıcılı uygulamalarınızın sorunlarını gidermek için kullanabileceğiniz web tabanlı bir kullanıcı arabirimidir. Kubernetes panosu, Kubernetes komut satırı için Kullanıcı arabirimi tabanlı bir alternatiftir `kubectl` . Daha fazla bilgi için bkz. [Kubernetes panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Azure Stack Edge cihazınızda, Kubernetes panosunu salt okunurdur modunda kullanarak Azure Stack Edge cihazınızda çalışan uygulamalara bir genel bakış alabilir, Kubernetes küme kaynaklarının durumunu görüntüleyebilir ve cihazda oluşan tüm hataları görebilirsiniz.
+Azure Stack Edge cihazınızda, Kubernetes panosunu *salt okunurdur* modunda kullanarak Azure Stack Edge cihazınızda çalışan uygulamalara bir genel bakış alabilir, Kubernetes küme kaynaklarının durumunu görüntüleyebilir ve cihazda oluşan tüm hataları görebilirsiniz.
 
 ## <a name="access-dashboard"></a>Panoya erişin
 
-Kubernetes panosu salt okunurdur ve 31000 numaralı bağlantı noktasında Kubernetes ana düğümünde çalışır. Panoya erişmek için şu adımları izleyin: 
+Kubernetes panosu *salt okunurdur* ve 31000 numaralı bağlantı noktasında Kubernetes ana düğümünde çalışır. Panoya erişmek için şu adımları izleyin: 
 
 1. Cihazınızın yerel kullanıcı arabiriminde **cihaz** ' a gidin ve **cihaz uç noktaları**' na gidin. Panoyu bir tarayıcıda açmak için Kubernetes panosu URL 'sini seçin.
 

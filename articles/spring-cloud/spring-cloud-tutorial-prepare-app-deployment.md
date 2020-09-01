@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046740"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179768"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -21,8 +21,8 @@ Bu konu başlığı altında, mevcut bir Java Spring uygulamasının Azure Sprin
 Bu örneği çalıştırmadan önce [temel hızlı](spring-cloud-quickstart.md)başlangıcı deneyebilirsiniz.
 
 Diğer örneklerde pod dosyası yapılandırıldığında bir uygulamanın Azure Spring Cloud 'a nasıl dağıtılacağı açıklanmaktadır. 
-* [Azure portal kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-portal.md)
-* [Azure CLı kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-cli.md)
+* [İlk uygulamanızı başlatın](spring-cloud-quickstart.md)
+* [Mikro hizmetler oluşturma ve çalıştırma](spring-cloud-quickstart-sample-app-introduction.md)
 
 Bu makalede, gerekli bağımlılıklar ve bunların Pod dosyasına nasıl ekleneceği açıklanmaktadır.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589512"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181774"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -36,6 +36,15 @@ Aşağıdaki nedenlerden bazıları için SQL yönetilen örneği üzerinde [el 
 > Üretim ortamına dağıtmadan önce uygulamalarınızın yük devri açısından dayanıklı olmasını sağlamak, üretimde uygulama hatalarının riskini azaltmaya yardımcı olur ve müşterileriniz için uygulama kullanılabilirliğine katkıda bulunur.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde el ile yük devretme başlatma
+
+### <a name="rbac-permissions-required"></a>RBAC izinleri gerekiyor
+
+Yük devretmeyi başlatan kullanıcının aşağıdaki RBAC rollerinden birine sahip olması gerekir:
+
+- Abonelik sahibi rolü veya
+- Yönetilen örnek katılımcısı rolü veya
+- Aşağıdaki izne sahip özel rol:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>PowerShell’i kullanma
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027708"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179412"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -123,7 +123,7 @@ OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabil
 
 Yeniden kullanılabilen programlanabilir OATH TOTP Donanım belirteçleri, yazılım belirteci kurulum akışında Azure AD ile de ayarlanabilir.
 
-OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz.  [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
@@ -220,7 +220,7 @@ Kendi özel iletilerinizi kullanmak için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **Security**  >  **MFA**  >  **telefon araması ayarları**' na gidin.
 1. **Karşılama Ekle**' yi seçin.
-1. Selamlama **türü** *(Standart)* veya *kimlik doğrulama başarılı*' ı seçin.
+1. Selamlama **türü** *(Standart)* veya  *kimlik doğrulama başarılı*' ı seçin.
 1. [Özel ileti dili davranışının](#custom-message-language-behavior)önceki bölümüne göre **dili**seçin.
 1. Karşıya yüklenecek bir *. mp3* veya *. wav* ses dosyasına gözatıp seçin.
 1. Hazırsanız, **Ekle**' yi ve ardından **Kaydet**' i seçin.
@@ -242,12 +242,9 @@ Azure Multi-Factor Authentication 'nin _güvenilir IP 'leri_ özelliği, TANıML
 
 Kuruluşunuz, şirket içi uygulamalara MFA sağlamak üzere NPS uzantısını dağıttığında, kaynak IP adresi her zaman kimlik doğrulama girişiminin akışa aldığı NPS sunucusu olacak şekilde görünür.
 
-| Azure AD kiracı türü | Güvenilen IP özelliği seçenekleri |
-|:--- |:--- |
-| Yönetilen |**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için iki aşamalı doğrulamayı atlayabilen bir IP adresi aralığı belirtir. En fazla 50 güvenilen IP aralığı yapılandırılabilir.|
-| Federe |**Tüm Federasyon kullanıcıları**: kuruluşun içinden oturum açan tüm Federasyon kullanıcıları, iki aşamalı doğrulamayı atlayabilir. Kullanıcılar, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından verilen bir talep kullanarak doğrulamayı atlar.<br/>**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için iki aşamalı doğrulamayı atlayabilen bir IP adresi aralığı belirtir. |
+| Azure AD kiracı türü | Güvenilen IP özelliği seçenekleri | |:---|:---| iki adımlı | Yönetilen | **Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. En fazla 50 güvenilen IP aralığı yapılandırılabilir. | | Federasyon | **Tüm Federasyon kullanıcıları**: kuruluşun içinden oturum açan tüm Federasyon kullanıcıları Multi-Factor Authentication 'ı atlayabilir. Kullanıcılar, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından verilen bir talep kullanarak doğrulamayı atlar.<br/>**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. |
 
-Güvenilen IP atlama yalnızca şirket intraneti 'nin içinden işe yarar. **Tüm Federasyon kullanıcıları** seçeneğini belirlerseniz ve Kullanıcı şirket intranet dışından oturum açarsa, kullanıcının kimlik doğrulaması iki aşamalı doğrulamayı kullanarak yapılır. Kullanıcı bir AD FS talebi sunsa bile, işlem aynıdır.
+Güvenilen IP atlama yalnızca şirket intraneti 'nin içinden işe yarar. **Tüm Federasyon kullanıcıları** seçeneğini belirlerseniz ve Kullanıcı şirket intranet dışından oturum açarsa, kullanıcının Multi-Factor Authentication kullanarak kimlik doğrulaması yapması gerekir. Kullanıcı bir AD FS talebi sunsa bile, işlem aynıdır.
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>Corpnet içinde son kullanıcı deneyimi
 
@@ -278,16 +275,16 @@ Koşullu erişim ilkelerini kullanarak güvenilen IP 'Leri etkinleştirmek için
 1. **MFA güvenilir IP 'Lerini Yapılandır**' ı seçin.
 1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini seçin:
 
-   * **İntranetten kaynaklanan Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu seçin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak iki aşamalı doğrulamayı atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
+   * **İntranetten kaynaklanan Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu seçin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak çok faktörlü kimlik doğrulamasını atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Belirli bir genel IP aralığından gelen Istekler için**: Bu seçeneği belirlemek IÇIN, CIDR gösterimini kullanarak metın kutusuna IP adreslerini girin.
       * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24**gibi bir gösterim kullanın.
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
-      * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar iki aşamalı doğrulamayı atlar.
+      * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Hizmet ayarlarını kullanarak güvenilir IP 'Leri özelliğini etkinleştirme
 
@@ -298,20 +295,20 @@ Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak is
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini (veya her ikisini) seçin:
 
-   * **İntranetimde Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu işaretleyin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak iki aşamalı doğrulamayı atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
+   * **İntranetimde Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu işaretleyin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak çok faktörlü kimlik doğrulamasını atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Belirli BIR IP adresi alt ağı aralığından gelen Istekler için**: Bu seçeneği belirlemek IÇIN, CIDR gösterimini kullanarak metın kutusuna IP adreslerini girin.
       * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24**gibi bir gösterim kullanın.
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
-      * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar iki aşamalı doğrulamayı atlar.
+      * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="verification-methods"></a>Doğrulama yöntemleri
 
-Hizmet ayarları portalındaki kullanıcılarınız için kullanılabilir doğrulama yöntemlerini seçebilirsiniz. Kullanıcılarınız Azure Multi-Factor Authentication hesaplarını kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [iki adımlı doğrulama için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
+Hizmet ayarları portalındaki kullanıcılarınız için kullanılabilir doğrulama yöntemlerini seçebilirsiniz. Kullanıcılarınız Azure Multi-Factor Authentication hesaplarını kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [Multi-Factor Authentication için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
 
 Aşağıdaki doğrulama yöntemleri kullanılabilir:
 
@@ -336,25 +333,25 @@ Doğrulama yöntemlerini etkinleştirmek veya devre dışı bırakmak için aşa
 
 ## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication anımsa
 
-_Multi-Factor Authentication anımsa_ özelliği, kullanıcıların, Multi-Factor Authentication kullanarak bir cihaza başarıyla oturum açtıktan sonra, belirtilen gün sayısı için sonraki doğrulamaları atlayabilecekleri şekilde izin verir. Özelliği, bir kullanıcının aynı cihazda MFA 'yı kaç kez gerçekleştirmesi gerektiğini en aza indirerek kullanılabilirliği geliştirir.
+_Multi-Factor Authentication anımsa_ özelliği, kullanıcıların, Multi-Factor Authentication kullanarak bir cihaza başarıyla oturum açtıktan sonra, belirtilen gün sayısı için sonraki doğrulamaları atlayabilecekleri şekilde izin verir. Kullanılabilirliği geliştirmek ve bir kullanıcının aynı cihazda MFA 'yı kaç kez gerçekleştirmesi gerektiğini en aza indirmek için, 90 gün veya daha uzun bir süre seçin.
 
 > [!IMPORTANT]
 > Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlar için Multi-Factor Authentication hatırlama güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [MFA oturumlarını iptal](howto-mfa-userdevicesettings.md)etmeniz gerekir.
 >
-> Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızı [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)bölümünde belirtildiği gibi kendi cihazlarındaki Multi-Factor Authentication geri yüklemesini de söyleyebilirsiniz.
+> Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının Multi-Factor Authentication 'ı yeniden gerçekleştirmesi gerekir. Kullanıcılarınıza, [çok faktörlü kimlik doğrulaması için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)bölümünde belirtildiği gibi, kendi cihazlarındaki Multi-Factor Authentication geri yüklemesini de söyleyebilirsiniz.
 
 ### <a name="how-the-feature-works"></a>Özelliğin çalışma şekli
 
 Multi-Factor Authentication hatırlayın özelliği, Kullanıcı oturum açma sırasında **X gün için yeniden sorma** seçeneğini seçtiğinde tarayıcıda kalıcı bir tanımlama bilgisi ayarlıyor. Tanımlama bilgisinin süresi dolana kadar Kullanıcı aynı tarayıcıdan Multi-Factor Authentication için bir daha istenmez. Kullanıcı aynı cihazda farklı bir tarayıcı açarsa veya tanımlama bilgilerini temizlerse, bunları doğrulamak için bir kez daha istenir.
 
-Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark etmeksizin, **X gün boyunca yeniden sorma** seçeneği, tarayıcı olmayan uygulamalarda gösterilmez. Bu uygulamalar, her saat yeni erişim belirteçleri sağlayan _yenileme belirteçlerini_ kullanır. Yenileme belirteci doğrulandıktan sonra, Azure AD, son iki adımlı doğrulamanın belirtilen gün sayısı içinde gerçekleştiğini denetler.
+Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark etmeksizin, **X gün boyunca yeniden sorma** seçeneği, tarayıcı olmayan uygulamalarda gösterilmez. Bu uygulamalar, her saat yeni erişim belirteçleri sağlayan _yenileme belirteçlerini_ kullanır. Yenileme belirteci doğrulandıktan sonra Azure AD, son Multi-Factor Authentication 'ın belirtilen gün sayısı içinde gerçekleştiğini denetler.
 
-Özelliği, Web Apps 'teki kimlik doğrulama sayısını azaltır ve bu, normalde her seferinde uyarır. Özelliği, normalde her 90 günde bir bilgi veren modern kimlik doğrulama istemcileri için kimlik doğrulama sayısını artırır. , Koşullu erişim ilkeleriyle birleştirildiğinde kimlik doğrulama sayısını da artırabilir.
+Özelliği, Web Apps 'teki kimlik doğrulama sayısını azaltır ve bu, normalde her seferinde uyarır. Bu özellik, daha düşük bir süre yapılandırılırsa, normalde her 90 günde bir istemde bulunan modern kimlik doğrulama istemcilerinin kimlik doğrulama sayısını artırabilir. , Koşullu erişim ilkeleriyle birleştirildiğinde kimlik doğrulama sayısını da artırabilir.
 
 > [!IMPORTANT]
-> **Multi-Factor Authentication anımsa** özelliği, kullanıcılar Azure Multi-Factor Authentication sunucusu veya üçüncü taraf bir Multi-Factor Authentication çözümü aracılığıyla AD FS için iki aşamalı doğrulama gerçekleştirirken, AD FS Oturumumu **açık tut** özelliği ile uyumlu değildir.
+> **Multi-Factor Authentication anımsa** özelliği, kullanıcılar Azure Multi-Factor Authentication sunucusu veya üçüncü taraf bir multi-factor authentication çözümü AD FS için multi-factor authentication gerçekleştirirken AD FS Oturumumu **açık tut** özelliği ile uyumlu değildir.
 >
-> Kullanıcılarınız Oturumumu AD FS açık **tut** ' u seçer ve ayrıca cihazlarını Multi-Factor Authentication için güvenilir olarak işaretledikten sonra, **Multi-Factor Authentication** gün sayısı ' nın süresinin dolmasını doğruladıktan sonra Kullanıcı otomatik olarak doğrulanmaz. Azure AD, iki adımlı bir doğrulama ister, ancak AD FS iki adımlı doğrulamayı yeniden gerçekleştirmek yerine özgün Multi-Factor Authentication talep ve Tarih ile bir belirteç döndürür. **Bu yeniden eylem, Azure AD ile AD FS arasındaki bir doğrulama döngüsünü belirler.**
+> Kullanıcılarınız Oturumumu AD FS açık **tut** ' u seçer ve ayrıca cihazlarını Multi-Factor Authentication için güvenilir olarak işaretledikten sonra, **Multi-Factor Authentication** gün sayısı ' nın süresinin dolmasını doğruladıktan sonra Kullanıcı otomatik olarak doğrulanmaz. Azure AD, yeni bir Multi-Factor Authentication ister, ancak AD FS Multi-Factor Authentication 'ı yeniden gerçekleştirmek yerine özgün Multi-Factor Authentication talep ve Tarih ile bir belirteç döndürür. **Bu yeniden eylem, Azure AD ile AD FS arasındaki bir doğrulama döngüsünü belirler.**
 >
 > **Multi-Factor Authentication anımsa** özelliği B2B kullanıcılarıyla uyumlu değildir ve davet edilen kiracılarda oturum açarken B2B kullanıcıları için görünür olmayacaktır.
 >
@@ -366,9 +363,9 @@ Kullanıcıların MFA durumunu hatırlamaları ve istemleri atlaması için seç
 1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
-1. **Hizmet ayarları** sayfasında, **çok faktörlü kimlik doğrulamasını anımsa**' yı yönetin, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
-1. Güvenilen cihazların iki aşamalı doğrulamayı atlamasına izin vermek için gün sayısını ayarlayın. Varsayılan değer 14 gündür.
-1. **Kaydet**'i seçin.
+1. **Hizmet ayarları** sayfasında, **Multi-Factor Authentication 'ı anımsa**altında, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
+1. Güvenilen cihazların Multi-Factor Authentication 'ı atlamasına izin verilecek gün sayısını ayarlayın. En iyi kullanıcı deneyimi için süreyi *90* veya daha fazla gün uzatın.
+1. **Kaydet**’i seçin.
 
 ### <a name="mark-a-device-as-trusted"></a>Bir cihazı güvenilir olarak işaretle
 

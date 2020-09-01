@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 1204435a5f1d7a48fceb654df10b8394d6f5df50
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: db3bfddd3376a013cc8921f9e0b94bd30bfe041f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146649"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181536"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -29,7 +29,8 @@ ms.locfileid: "89146649"
 
 * [B serisi](../sizes-b-series-burstable.md)
 * [DCsv2 serisi](../dcv2-series.md)
-* [DSv2-Series](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
+* [DSv2 serisi](../dv2-dsv2-series.md) 
+* [Dsv3 serisi](../dv3-dsv3-series.md)
 * [Dsv4 serisi](../dv4-dsv4-series.md)
 * [Ddsv4 serisi](../ddv4-ddsv4-series.md)
 * [Dasv4 serisi](../dav4-dasv4-series.md)
@@ -39,10 +40,12 @@ ms.locfileid: "89146649"
 * [GS serisi](../sizes-previous-gen.md#gs-series)
 * [HB serisi](../hb-series.md)
 * [HC serisi](../hc-series.md)
-* [LS-Serisi](../sizes-previous-gen.md#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
+* [LS Serisi](../sizes-previous-gen.md#ls-series) 
+* [Lsv2 serisi](../lsv2-series.md)
 * [M serisi](../m-series.md)
 * [Mv2-serisi](../mv2-series.md)<sup>1</sup>
-* [NCv2-Series](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
+* [NCv2 serisi](../ncv2-series.md) 
+* [NCv3 serisi](../ncv3-series.md)
 * [ND serisi](../nd-series.md)
 * [NVv3 serisi](../nvv3-series.md)
 
@@ -84,7 +87,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
-| VM boyutları         | Tüm VM boyutları | Yalnızca Premium depolamayı destekleyen VM 'Ler |
+| VM boyutları         | Tüm VM boyutları | [Kullanılabilir boyutları gör](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. nesil ve 2. nesil yetenekler
 
@@ -139,7 +142,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 

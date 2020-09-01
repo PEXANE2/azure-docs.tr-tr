@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 908d9386f08c5de863d1d435c54d65cb85feef7a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639707"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181672"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -62,7 +62,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Azure Geçişi | Tüm ortak bölgeler      |  | Önizleme <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Tüm ortak bölgeler      | PremiumV2 Windows ve Linux ve elastik Premium Işlevleriyle desteklenir  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | DOĞU ABD, BATı ABD 2      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | DOĞU ABD, ORTA GÜNEY ABD, BATı ABD 2      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme | |
 | Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://aka.ms/asrs/privatelink)   |

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 6c29240aa3267cd93ba0c3de1f0c797ce1a1483c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de0847beb92ebc95e1998d88cae93dbc19c3fb27
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087191"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180057"
 ---
 # <a name="azure-stack-edge-with-gpu-preview-release-notes"></a>GPU önizlemesi sürüm notları ile Azure Stack Edge
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda Azure Stack Edge cihazına yönelik bilinen sorunların bir
 |**üst.**|Kubernetes |Kubernetes, şu anda çok protokollü yük dengeleyici hizmetlerine izin vermiyor. Örneğin, TCP ve UDP üzerinde dinleme yapmak zorunda olacak bir DNS hizmeti. |Kubernetes 'in bu şekilde, MetalLB ile bu sınırlamaya geçici bir çözüm bulmak için, iki hizmet (TCP için bir adet, UDP için bir adet) aynı Pod seçicisi üzerinde oluşturulabilir. Bu hizmetler aynı IP adresini paylaşmak için aynı paylaşım anahtarını ve spec. Loadbalancerıp 'yi kullanır. Kullanılabilir IP adreslerinden daha fazla hizmete sahipseniz, IP 'Ler de paylaşılabilir. <br> Daha fazla bilgi için bkz. [IP adresi paylaşımı](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**+.**|Kubernetes kümesi|Mevcut Azure IoT Edge marketi modülleri, Kubernetes kümesinde Azure Stack Edge cihazında IoT Edge barındırma platformu olarak çalışmaz.|Modüllerin Azure Stack Edge cihazında dağıtılmadan önce değiştirilmesi gerekir. Daha fazla bilgi için bkz. Market 'ten Azure Stack Edge cihazında çalışacak Azure IoT Edge modülleri değiştirme.<!-- insert link-->|
 |**hatası.**|Kubernetes |Dosya tabanlı bağlama takar, Azure Stack Edge cihazında Kubernetes üzerinde Azure IoT Edge desteklenmez.|IoT Edge, `ContainerCreate` seçenekleri Kubernetes yapılarına çevirmek için bir çeviri katmanı kullanır. `Binds`Hostpath dizinine haritalar oluşturma veya oluşturma ve böylece dosya tabanlı bağlama bağlama IoT Edge kapsayıcılarındaki yollara bağlanamaz.|
-
+|**May.**|Kubernetes |IoT Edge için kendi sertifikalarınızı getirip Azure Stack Edge cihazınıza eklemek istiyorsanız, Helu grafik güncelleştirmesinin bir parçası olarak yeni sertifikalar alınmaz.|Bu soruna geçici bir çözüm olarak, [cihazın PowerShell arabirimine bağlanın](azure-stack-edge-gpu-connect-powershell-interface.md). Yeniden başlatma `iotedged` ve `edgehub` pods.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

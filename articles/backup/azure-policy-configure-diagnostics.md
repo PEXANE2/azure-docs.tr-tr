@@ -3,12 +3,12 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892244"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179989"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 

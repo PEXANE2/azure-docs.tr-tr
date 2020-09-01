@@ -4,12 +4,12 @@ description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup ha
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000728"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181502"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 
@@ -19,7 +19,7 @@ Bu makalede Azure Backup izleme ve raporlama hakkında sık sorulan sorular yan�
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Nasıl yaparım? rapor verilerinin bir Log Analytics (LA) çalışma alanına aktarılmaya başlayıp başlamadığına bakın.
 
-Yapılandırdığınız LA çalışma alanına gidin, **Günlükler** menü öğesine gidin ve sorgu CoreAzureBackup ' ı çalıştırın | 1 yapın. Döndürülmekte olan bir kayıt görürseniz, verilerin çalışma alanına akışını başlatan anlamına gelir. İlk veri gönderme, 24 saate kadar sürebilir.
+Yapılandırdığınız LA çalışma alanına gidin. **Günlükler** menü öğesine gidin ve sorguyu çalıştırın `CoreAzureBackup | take 1` . Döndürülmekte olan bir kayıt görürseniz, verilerin çalışma alanına akışını başlatan anlamına gelir. İlk veri gönderme, 24 saate kadar sürebilir.
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Bir LA çalışma alanına veri gönderme sıklığı nedir?
 

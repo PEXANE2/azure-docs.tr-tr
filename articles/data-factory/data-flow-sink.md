@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/18/2020
+ms.openlocfilehash: b2a356f8ee6c8e3d11548a3c7c17a868e4c057c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223644"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179190"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -36,7 +36,7 @@ Satır içi veri kümesi kullanmak için, **Havuz türü** seçicisinde istediğ
 
 ![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
 
-##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Desteklenen havuz türleri
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Desteklenen havuz türleri
 
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
 
@@ -48,8 +48,9 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Bu bağlayıcılara özgü ayarlar, **Ayarlar** sekmesinde bulunur. bu ayarlarda bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
+Bu bağlayıcılara özgü ayarlar **Ayarlar** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
 
 Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak bu verileri desteklenen bir alıcıdan yükleyin.
 

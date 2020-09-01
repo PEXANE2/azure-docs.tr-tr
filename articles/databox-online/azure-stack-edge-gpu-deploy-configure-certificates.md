@@ -6,38 +6,38 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fcaac4c1efe6507d4f69acd897e456400b1f61f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1f8e0464eb7f513149dd1cfa2ec5dcdc0f193417
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088333"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181231"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için sertifikaları yapılandırma
 
 Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge cihazınız için sertifikaları, yerleşik bir GPU ile nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-Bu adım için geçen süre, belirli bir seçeneğe bağlı olarak, ortamınızda sertifika akışının nasıl oluşturulduğunu seçmenize göre farklılık gösterebilir. 
+Bu adım için geçen süre, seçtiğiniz belirli seçeneğe ve sertifika akışının ortamınızda nasıl Kuruladığına bağlı olarak değişebilir.
 
 Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihaz için sertifikaları yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
 * Fiziksel cihazı [yükleme Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md)bölümünde ayrıntılı olarak yüklediniz.
 * Kendi sertifikalarınızı getirmeyi planlıyorsanız:
     - İmza Zinciri sertifikası da dahil olmak üzere, sertifikalarınızın uygun biçimde hazırlanmalıdır.
-    - Cihazınız Azure Kamu veya Azure Kamu Gizli Bilgi ya da Azure Kamu üst gizli bulutuna dağıtılmışsa, cihazınızı etkinleştirebilmeniz için bir imzalama zinciri sertifikası gerekir. 
-    Sertifika hakkındaki ayrıntılar için [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin.
+<!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
+    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Cihaz için sertifikaları yapılandırma
@@ -55,9 +55,9 @@ Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce ş
 
     - Cihaz adını veya DNS etki alanını değiştirdiyseniz, cihazınızı başarıyla etkinleştirmek için aşağıdaki seçeneklerden birini belirleyebilirsiniz: 
     
-        - Tüm cihaz sertifikalarını oluştur. **Cihaz sertifikaları yalnızca test için kullanılmalıdır ve üretim iş yükleri ile kullanılmaz.** Daha fazla bilgi için [Azure Stack kenarunuzda cihaz sertifikaları oluşturma](#generate-device-certificates)bölümüne gidin.
+        - **Tüm cihaz sertifikalarını oluştur**. Cihaz sertifikaları yalnızca test için kullanılmalıdır ve üretim iş yükleri ile kullanılmaz. * * daha fazla bilgi Için [Azure Stack kenarunuzda cihaz sertifikaları oluşturma](#generate-device-certificates)bölümüne gidin.
 
-        - Kendi sertifikalarınızı getirin. Kendi imzalı uç nokta sertifikalarınızı ve buna karşılık gelen imzalama zincirlerini getirebilirsiniz. Önce imzalama zincirini ekleyin ve ardından uç nokta sertifikalarını karşıya yükleyin. **Üretim iş yükleri için her zaman kendi sertifikalarınızı getirmenizi öneririz.** Daha fazla bilgi için [Azure Stack Edge cihazınızda kendi sertifikalarınızı getirme](#bring-your-own-certificates)bölümüne gidin.
+        - **Kendi sertifikalarınızı getirin**. Kendi imzalı uç nokta sertifikalarınızı ve buna karşılık gelen imzalama zincirlerini getirebilirsiniz. Önce imzalama zincirini ekleyin ve ardından uç nokta sertifikalarını karşıya yükleyin. **Üretim iş yükleri için her zaman kendi sertifikalarınızı getirmenizi öneririz.** Daha fazla bilgi için [Azure Stack Edge cihazınızda kendi sertifikalarınızı getirme](#bring-your-own-certificates)bölümüne gidin.
     
         - Kendi sertifikalarınızı getirip bazı cihaz sertifikaları oluşturabilirsiniz. **Sertifika oluştur** seçeneği yalnızca cihaz sertifikalarını yeniden oluşturur.
 
@@ -155,7 +155,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihaz için sertifikaları yapılandırma
 
 Azure Stack Edge cihazınızı nasıl etkinleştireceğinizi öğrenmek için bkz.:
