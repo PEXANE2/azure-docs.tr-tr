@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387039"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266978"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -23,7 +23,7 @@ VMware VM 'lerini Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini]
 **Destek** | **Ayrıntılar**
 --- | ---
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 VMware VM 'yi bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucular ve Hyper-V VM 'lerini her biri için değerlendirme sınırlarına kadar de içerebilir.
-**Bulma** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
+**Keşfini** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -40,6 +40,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 **VMware** | **Ayrıntılar**
 --- | ---
 **VMware Sanal Makineleri** | Geçiş için tüm işletim sistemleri değerlendirilenebilir. 
+**Depolama** | SCSI, IDE ve SATA tabanlı denetleyicilere bağlı diskler desteklenir.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
@@ -55,7 +56,7 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 **Cihaz** | **Bağlantı**
 --- | ---
-**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktası üzerinden giden bağlantılar.
+**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktası üzerinden giden bağlantılar.
 **vCenter server** | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
 **ESXi Konakları** | [Uygulama bulmayı](how-to-discover-applications.md)veya [aracısız bağımlılık analizini](concepts-dependency-visualization.md#agentless-analysis)yapmak istiyorsanız, Gereç, uygulamalar bulmak ve VM 'lerde aracısız bağımlılık GÖRSELLEŞTIRMESINI çalıştırmak için TCP bağlantı noktası 443 üzerindeki ESXi konaklarına bağlanır.
 
@@ -66,7 +67,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
+**Keşfini** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
 **VM desteği** | Uygulama bulma, tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için desteklenir.
 **vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler**Konuk işlemleri**için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
 **VM erişimi** | Uygulama bulma 'nın uygulama bulma için VM 'de yerel bir kullanıcı hesabı olması gerekir.<br/><br/> Azure geçişi Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.

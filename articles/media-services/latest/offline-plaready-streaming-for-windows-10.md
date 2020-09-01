@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/01/2019
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bec7b37cf45851216f7b392ae1be52d4b1b2d990
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998501"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266689"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services, DRM koruması ile çevrimdışı indirmeyi/kayıttan yürütmeyi destekler. Bu makalede, Windows 10/PlayReady istemcileri için Azure Media Services çevrimdışı desteği ele alınmaktadır. Aşağıdaki makalelerde iOS/FairPlay ve Android/Widevine cihazları için çevrimdışı mod desteği hakkında bilgi edinebilirsiniz:
 

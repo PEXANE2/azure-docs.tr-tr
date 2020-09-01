@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal
-ms.openlocfilehash: fadb290d1bd1126c3bfc0cd76d6e6b862d1396e3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8924b77cddc9efc4d2b1b8451df38de77b37c09c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556372"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267369"
 ---
 # <a name="find-your-azure-subscription"></a>Azure aboneliğinizi bulma
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +31,7 @@ ms.locfileid: "88556372"
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure hizmetleri başlığı altında abonelikler ' i seçin. (Hiçbir abonelik listelenmediyse, Azure AD kiracılarını değiştirmeniz gerekebilir.) Abonelik kimlikleriniz ikinci sütunda listelenir.
 1. Abonelik KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere seçtiğiniz bir metin belgesine yapıştırın.
 

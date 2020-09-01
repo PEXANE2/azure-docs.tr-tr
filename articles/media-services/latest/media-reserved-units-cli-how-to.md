@@ -3,7 +3,7 @@ title: CLı kullanarak medya ayrılmış birimlerini ölçeklendirme-Azure | Mic
 description: Bu konuda, Azure Media Services ile medya işlemeyi ölçeklendirmek için CLı 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e681b1f82086480541d08ae9f8ef9e5cf07b4df
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053226"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268477"
 ---
 # <a name="scaling-media-processing"></a>Medya işlemeyi ölçeklendirme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services ile sunulan Medya Ayrılmış Birimlerini (MRU) yöneterek hesabınızdaki medya işleme kapasitesini ölçeklendirebilirsiniz. MRUs, medya işleme görevlerinizin işlenme hızını saptar. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır. 
 
@@ -47,7 +49,7 @@ Makalenin geri kalanında, MRU 'yi ölçeklendirmek için [Media Services v3 CLI
 > [!NOTE]
 > Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 

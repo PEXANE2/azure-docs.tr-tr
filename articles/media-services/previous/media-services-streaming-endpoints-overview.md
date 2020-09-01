@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052527"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265924"
 ---
 # <a name="streaming-endpoints-overview"></a>Akış uç noktalarına genel bakış  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -39,9 +41,9 @@ Bu konu, akış uç noktaları tarafından sunulan ana işlevlere genel bir bak�
 
 ## <a name="naming-conventions"></a>Adlandırma kuralları
 
-Varsayılan uç nokta için:`{AccountName}.streaming.mediaservices.windows.net`
+Varsayılan uç nokta için: `{AccountName}.streaming.mediaservices.windows.net`
 
-Ek uç noktalar için:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+Ek uç noktalar için: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Akış türleri ve sürümleri
 
@@ -77,10 +79,10 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 
 |Tür|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasik|1,0|0|NA|Ücretsiz|
-|Standart akış uç noktası (Önizleme)|2,0|0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|1,0|>0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|2,0|>0|Yes|Ödenmemiş|
+|Klasik|1.0|0|NA|Ücretsiz|
+|Standart akış uç noktası (Önizleme)|2.0|0|Yes|Ödenmemiş|
+|Premium Akış Birimleri|1.0|>0|Yes|Ödenmemiş|
+|Premium Akış Birimleri|2.0|>0|Yes|Ödenmemiş|
 
 ### <a name="features"></a>Özellikler
 

@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1e85f37a0dfdbb7ff10db13e53b1998ef391caa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997787"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267205"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Android için Media Services v3 ile çevrimdışı Widevine akışı
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Çevrimiçi akış için içeriği korumanın yanı sıra, medya içerik aboneliği ve Kiralama Hizmetleri, internet 'e bağlı değilseniz kullanılan indirilebilir içerik sunar. Ağ bağlantısı kesildiğinde Uçak modunda kayıttan yürütmek için içeriği telefonunuza veya tabletinize indirmeniz gerekebilir. İçeriği indirmek isteyebileceğiniz ek senaryolar:
 
@@ -43,7 +45,7 @@ Makalede ayrıca Wıdevine korumalı içeriğin çevrimdışı akışı ile ilgi
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Android cihazlarda Widevine için çevrimdışı DRM uygulamadan önce, önce şunları yapmalısınız:
 

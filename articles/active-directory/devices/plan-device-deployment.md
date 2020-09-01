@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541881"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268817"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -38,7 +38,7 @@ Cihazlarınızı Azure AD ile tümleştirmeye yönelik birden çok yöntem vard�
 
 Başlamadan önce, [cihaz kimlik yönetimine genel bakış](overview.md)hakkında bilgi sahibi olduğunuzdan emin olun.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
@@ -48,13 +48,13 @@ Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
 * Kullanıcı deneyimini geliştirme: Azure AD 'de cihaz kimlikleri sayesinde kullanıcılarınıza kuruluşunuzun bulut tabanlı kaynaklarına hem kişisel hem de şirket cihazlarından kolay erişim sağlayabilirsiniz. Yöneticiler, tüm Windows cihazlarında birleştirilmiş bir deneyim için [Enterprise State Roaming](enterprise-state-roaming-overview.md) etkinleştirebilir.
 
-* Dağıtım ve yönetimi basitleştirme – cihaz kimlik yönetimi, [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot), [toplu sağlama](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)ve [self servis: kullanıma hazır deneyim (OOBE)](../user-help/user-help-join-device-on-network.md)ile cihazları Azure AD 'ye getirme sürecini basitleştirir. Bu cihazları, [Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune)gibi mobil cihaz YÖNETIMI (MDM) araçlarıyla ve [Azure Portal](https://portal.azure.com/)kimlikleri ile yönetebilirsiniz.
+* Dağıtım ve yönetimi basitleştirme – cihaz kimlik yönetimi, [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot), [toplu sağlama](/mem/intune/enrollment/windows-bulk-enroll)ve [self servis: kullanıma hazır deneyim (OOBE)](../user-help/user-help-join-device-on-network.md)ile cihazları Azure AD 'ye getirme sürecini basitleştirir. Bu cihazları, [Microsoft Intune](/mem/intune/fundamentals/what-is-intune)gibi mobil cihaz YÖNETIMI (MDM) araçlarıyla ve [Azure Portal](https://portal.azure.com/)kimlikleri ile yönetebilirsiniz.
 
 ### <a name="training-resources"></a>Eğitim kaynakları
 
-Video: [cihaz denetimleriyle koşullu erişim](https://youtu.be/NcONUf-jeS4)
+Video:  [cihaz denetimleriyle koşullu erişim](https://youtu.be/NcONUf-jeS4)
 
-SSS: [Azure AD cihaz YÖNETIMI SSS](faq.md) ve [Ayarlar ve VERI dolaşımı hakkında SSS](enterprise-state-roaming-faqs.md) 
+SSS: [Azure AD cihaz YÖNETIMI SSS](faq.md)  ve [Ayarlar ve VERI dolaşımı hakkında SSS](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Dağıtım projesini planlayın
 
@@ -127,21 +127,21 @@ Koşullu Erişim <br>(Karma Azure AD 'ye katılmış cihazlar gerektir)| | | ![d
 
 ## <a name="azure-ad-registration"></a>Azure AD kaydı 
 
-Kayıtlı cihazlar genellikle [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment)ile yönetilir. Cihazlar, işletim sistemine bağlı olarak çeşitli yollarla Intune 'A kaydedilir. 
+Kayıtlı cihazlar genellikle [Microsoft Intune](/mem/intune/enrollment/device-enrollment)ile yönetilir. Cihazlar, işletim sistemine bağlı olarak çeşitli yollarla Intune 'A kaydedilir. 
 
 Azure AD kayıtlı cihazlar, kendi cihazlarını getir (KCG) ve şirkete ait cihazlar için bulut kaynaklarına SSO 'ya yönelik destek sağlar. Kaynaklara erişim, cihaza ve kullanıcıya uygulanan Azure AD [CA ilkelerini](../conditional-access/require-managed-devices.md) temel alır.
 
 ### <a name="registering-devices"></a>Cihazları kaydetme
 
-Kayıtlı cihazlar genellikle [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment)ile yönetilir. Cihazlar, işletim sistemine bağlı olarak çeşitli yollarla Intune 'A kaydedilir. 
+Kayıtlı cihazlar genellikle [Microsoft Intune](/mem/intune/enrollment/device-enrollment)ile yönetilir. Cihazlar, işletim sistemine bağlı olarak çeşitli yollarla Intune 'A kaydedilir. 
 
 KCG ve şirkete ait mobil cihaz, Şirket Portalı uygulamasını yükleyen kullanıcılar tarafından kaydedilir.
 
-* [iOS](https://docs.microsoft.com/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
+* [iOS](/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
 
-* [Android](https://docs.microsoft.com/mem/intune/user-help/enroll-device-android-company-portal)
+* [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
-* [Windows 10](https://docs.microsoft.com/mem/intune/user-help/enroll-windows-10-device)
+* [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
 Cihazlarınızı kaydettirmek, kuruluşunuz için en iyi seçenektir. aşağıdaki kaynaklara bakın:
 
@@ -171,9 +171,9 @@ Bir cihazda Windows 10 Professional veya Windows 10 Enterprise yüklüyse deneyi
 
 * [Windows, kutudan çıkar deneyimi (OOBE) veya Windows ayarlarından](../user-help/user-help-join-device-on-network.md)
 
-* [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
+* [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 
-* [Toplu kayıt](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)
+* [Toplu kayıt](/mem/intune/enrollment/windows-bulk-enroll)
 
 [Bu yaklaşımların dikkatli karşılaştırmasının](azureadjoin-plan.md)ardından dağıtım yordamınızdan birini seçin.
 
@@ -216,7 +216,7 @@ Hibrit Azure AD JOIN 'in bir cihaz için en iyi çözüm olduğunu ve bu cihazı
 | Geçerli cihaz durumu| İstenen cihaz durumu| Nasıl yapılır |
 | - | - | - |
 | Şirket içi etki alanına ekleme| Karma Azure AD katılımı| Azure 'a katmak için Azure AD Connect veya AD FS kullanma |
-| Şirket içi çalışma grubu katılmış veya yeni| Karma Azure AD katılımı| [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)ile desteklenir. Aksi takdirde cihazın, karma Azure AD JOIN 'ten önce şirket içi etki alanına katılmış olması gerekir |
+| Şirket içi çalışma grubu katılmış veya yeni| Karma Azure AD katılımı| [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)ile desteklenir. Aksi takdirde cihazın, karma Azure AD JOIN 'ten önce şirket içi etki alanına katılmış olması gerekir |
 | Azure AD'ye katılanlar| Karma Azure AD katılımı| Azure AD 'den katılmayı, şirket içi çalışma grubuna veya yeni duruma getirir. |
 | Azure AD kayıt defteri| Karma Azure AD katılımı| Windows sürümüne bağlıdır. [Bu noktalara göz atın](hybrid-azuread-join-plan.md). |
 
@@ -239,13 +239,13 @@ Tümleşik Aygıtlar için desteklenen ve desteklenmeyen platformları gözden g
 
 | Cihaz yönetimi araçları| Azure AD kayıtlı| Azure AD'ye katılım| Hibrit Azure AD'ye katılım|
 | - | - | - | - |
-| [Mobil cihaz yönetimi (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Örnek: Microsoft Intune| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
-| [Microsoft Intune ve Microsoft uç noktası ile ortak yönetim Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 ve üzeri)| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
-| [Grup İlkesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Yalnızca Windows)| | | ![denetlemez](./media/plan-device-deployment/check.png)|  |
+| [Mobil cihaz yönetimi (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Örnek: Microsoft Intune| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
+| [Microsoft Intune ve Microsoft uç noktası ile ortak yönetim Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 ve üzeri)| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)|  |
+| [Grup İlkesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Yalnızca Windows)| | | ![denetlemez](./media/plan-device-deployment/check.png)|  |
 
 
 
- [Mobil uygulama yönetimi 'ni (MAM)](https://docs.microsoft.com/mem/intune/apps/app-management) kayıtlı IOS veya Android cihazlar için cihaz yönetimiyle veya bunlarla birlikte Microsoft Intune düşünmeniz önerilir.
+ [Mobil uygulama yönetimi 'ni (MAM)](/mem/intune/apps/app-management) kayıtlı IOS veya Android cihazlar için cihaz yönetimiyle veya bunlarla birlikte Microsoft Intune düşünmeniz önerilir.
 
  Yöneticiler ayrıca, yönetimi kolaylaştırmak ve kaynakların konsolidasyonu ve merkezileşmeyi aracılığıyla maliyetleri azaltmak için kuruluşlarında Windows işletim sistemlerini barındıran [sanal masaüstü altyapısı (VDI) platformlarını dağıtabilir](howto-device-identity-virtual-desktop-infrastructure.md) . 
 

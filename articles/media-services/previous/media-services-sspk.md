@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086243"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265958"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 ## <a name="overview"></a>Genel Bakış
 Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
 

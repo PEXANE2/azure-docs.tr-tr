@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006574"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267488"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -65,6 +65,8 @@ Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir
 2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve **Şimdi Yedekle**' ye tıklayın.
 3. **Şimdi Yedekle**' de, gerçekleştirmek istediğiniz yedekleme türünü seçin. Daha sonra, **Tamam**'a tıklayın. Bu yedekleme, bu yedekleme öğesiyle ilişkili ilkeye göre saklanacaktır.
 4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
+
+Varsayılan olarak, isteğe bağlı yedeklemelerin saklanması 45 gündür.
 
 ### <a name="hana-native-client-integration"></a>HANA yerel istemci tümleştirmesi
 

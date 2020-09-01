@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654846"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265890"
 ---
-# <a name="get-credentials-to-access-media-services-api"></a>Media Services API 'sine erişim için kimlik bilgilerini alın  
+# <a name="get-credentials-to-access-media-services-api"></a>Media Services API 'sine erişim için kimlik bilgilerini alın
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulaması kullandığınızda iki kimlik doğrulama seçeneğiniz vardır:
 
@@ -33,7 +35,7 @@ Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulaması kull
 
 Bu makalede Media Services API 'sine erişmek için kimlik bilgilerini alma adımları açıklanır. Aşağıdaki sekmelerden birini seçin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](create-account-howto.md)konusuna bakın.

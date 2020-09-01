@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611322"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268783"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 
@@ -28,8 +28,8 @@ Diğer Windows istemcileri için bkz. [karma Azure Active Directory birleştiril
 Bu makalede, [karma Azure Active Directory katılmış cihazları](hybrid-azuread-join-plan.md) aşağıdaki senaryoları destekleyecek şekilde yapılandırdığınız varsayılır:
 
 - Cihaz tabanlı koşullu erişim
-- [Ayarların kurumsal dolaşımı](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [İş İçin Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
+- [Ayarların kurumsal dolaşımı](./enterprise-state-roaming-overview.md)
+- [İş İçin Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Bu belge olası sorunları çözmek için sorun giderme kılavuzu sağlar.
 
@@ -170,7 +170,7 @@ Hatanın olası nedenleri:
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
    - Neden: genel bulma hatası. DRS 'nin bulma meta verileri alınamadı.
    - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
    - Neden: bulma Işlemi gerçekleştirilirken Işlem zaman aşımına uğradı.
    - Çözüm: `https://enterpriseregistration.windows.net` sistem bağlamında erişilebilir olduğundan emin olun. Daha fazla bilgi için [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bölümüne bakın.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
@@ -387,7 +387,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. Adım: günlükleri ve iletişim Microsoft Desteği toplayın
 
-Dosya Auth.zip şuradan indirin[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Dosya Auth.zip şuradan indirin [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
 1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd**' ye **stop-auth.txt** .
 1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd**' yi çalıştırın.

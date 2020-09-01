@@ -3,22 +3,24 @@ title: Azure Media Services v3 sürüm notları | Microsoft Docs
 description: En son gelişmelerden haberdar olmak için bu makalede, Azure Media Services v3 hakkında en son güncelleştirmeler sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072148"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267519"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` RSS akışı okuyucusuna.
 
@@ -141,7 +143,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için,  [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -205,7 +207,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans geliştirmeleri
+### <a name="performance-improvements"></a>Performans iyileştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
@@ -270,31 +272,31 @@ CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams?view=azure-
 
 #### <a name="asset-commands"></a>Varlık komutları
 
-- ```--storage-account```ve ```--container``` bağımsız değişkenler eklendi.
+- ```--storage-account``` ve ```--container``` bağımsız değişkenler eklendi.
 - Sona erme saati (şimdi + 23h) için varsayılan değerler ve komutta izinler (okuma) ```az ams asset get-sas-url``` eklendi.
 
 #### <a name="job-commands"></a>İş komutları
 
-- ```--correlation-data```ve ```--label``` eklenen bağımsız değişkenler
-- ```--output-asset-names```olarak yeniden adlandırıldı ```--output-assets``` . Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
+- ```--correlation-data``` ve ```--label``` eklenen bağımsız değişkenler
+- ```--output-asset-names``` olarak yeniden adlandırıldı ```--output-assets``` . Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
 
 #### <a name="streaming-locator-commands"></a>Akış Bulucu komutları
 
-- ```az ams streaming locator```temel komut ile değiştirilmiştir ```az ams streaming-locator``` .
-- ```--streaming-locator-id```ve ```--alternative-media-id support``` bağımsız değişkenler eklendi.
-- ```--content-keys argument```bağımsız değişken güncelleştirildi.
-- ```--content-policy-name```olarak yeniden adlandırıldı ```--content-key-policy-name``` .
+- ```az ams streaming locator``` temel komut ile değiştirilmiştir ```az ams streaming-locator``` .
+- ```--streaming-locator-id``` ve ```--alternative-media-id support``` bağımsız değişkenler eklendi.
+- ```--content-keys argument``` bağımsız değişken güncelleştirildi.
+- ```--content-policy-name``` olarak yeniden adlandırıldı ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Akış Ilkesi komutları
 
-- ```az ams streaming policy```temel komut ile değiştirilmiştir ```az ams streaming-policy``` .
+- ```az ams streaming policy``` temel komut ile değiştirilmiştir ```az ams streaming-policy``` .
 - Şifreleme parametreleri desteği ```az ams streaming-policy create``` eklendi.
 
 #### <a name="transform-commands"></a>Dönüşüm komutları
 
-- ```--preset-names```bağımsız değişken ile değiştirilmiştir ```--preset``` . Artık tek seferde yalnızca 1 çıkış/önayar ayarlayabilirsiniz (çalıştırmanız gerekir daha fazla bilgi için ```az ams transform output add``` ). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
-- ```az ams transform output remove```, kaldırılacak çıkış dizini geçirerek gerçekleştirilebilir.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```ve komutlarına eklenen bağımsız değişkenler ```az ams transform create``` ```az ams transform output add``` .
+- ```--preset-names``` bağımsız değişken ile değiştirilmiştir ```--preset``` . Artık tek seferde yalnızca 1 çıkış/önayar ayarlayabilirsiniz (çalıştırmanız gerekir daha fazla bilgi için ```az ams transform output add``` ). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
+- ```az ams transform output remove``` , kaldırılacak çıkış dizini geçirerek gerçekleştirilebilir.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` ve komutlarına eklenen bağımsız değişkenler ```az ams transform create``` ```az ams transform output add``` .
 
 ## <a name="october-2018---ga"></a>Ekim 2018-GA
 
@@ -396,6 +398,6 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel bakış](media-services-overview.md)
+- [Genel Bakış](media-services-overview.md)
 - [Media Services v3 belge güncelleştirmeleri](docs-release-notes.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

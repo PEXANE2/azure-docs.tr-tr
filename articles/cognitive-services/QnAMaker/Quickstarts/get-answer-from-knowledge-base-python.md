@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 2d693a63360890b9f658baa1a37d251f311d5617
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 645ad24b2b275f9a14fda82746347a6f64c735dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875022"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268015"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Hızlı başlangıç: Python ile Bilgi Bankası 'ndan bir soruya yanıt alın
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından 
 
 [Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3,6 veya üzeri](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -37,7 +37,7 @@ VSCode 'u açın ve adlı yeni bir dosya oluşturun `get-answer-3x.py` .
 
 Dosyanın en üstünde `get-answer-3x.py` , gerekli bağımlılıkları projeye ekleyin:
 
-[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="dependencies":::
 
 <!--TBD - reword this following paragraph -->
 
@@ -47,13 +47,13 @@ Konak ve rota **Yayımla** sayfasında göründükleri şekilde farklıdır. Bun
 
 Soru-Cevap Oluşturma erişmek için gerekli sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
 
-[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=5-25 "Add the required constants")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>Soru göndermek ve yanıt almak için bir POST isteği ekleyin
 
 Aşağıdaki kod, soruyu bilgi tabanına göndermek için Soru-Cevap Oluşturma API'si HTTPS isteği yapar ve yanıtı alır:
 
-[!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
+:::code language="python" source="~/cognitive-services-quickstart-code/python/QnAMaker/rest/query-kb.py" id="main":::
 
 `Authorization`Üstbilginin değeri dizeyi içerir `EndpointKey` .
 

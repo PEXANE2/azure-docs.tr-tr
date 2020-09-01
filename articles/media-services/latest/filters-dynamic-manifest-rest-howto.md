@@ -3,7 +3,7 @@ title: Azure Media Services v3 REST API ile Filtreler oluşturma
 description: Bu konuda, istemcinizin bir akışın belirli bölümlerini akışa almak için bunları kullanabilmesi için filtrelerin nasıl oluşturulacağı açıklanmaktadır. Media Services, bu seçmeli akışa ulaşmak için dinamik bildirimler oluşturuyor.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a98a56bf27f76de706d02691d5dfbb54b5466c49
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023118"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268528"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API ile Filtreler oluşturma
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 İçeriğinizi müşterilere sunarken (canlı etkinlikler veya Isteğe bağlı video akışı), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, içeriğiniz için hesap filtrelerini ve varlık filtrelerini tanımlamanızı sağlar. 
 
@@ -31,7 +33,7 @@ Bu konu, Isteğe bağlı bir video için bir filtre tanımlanacağını ve [hesa
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 

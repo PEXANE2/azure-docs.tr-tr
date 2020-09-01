@@ -1,21 +1,21 @@
 ---
 title: Azure Stack Edge GPU ile sertifika kullanma | Microsoft Docs
 description: Azure Stack Edge GPU cihazındaki sertifikaların kullanımını, hangi türleri ve cihazınızdaki sertifikaların nasıl yükleneceğini açıklar.
-services: Azure Stack Edge
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268885"
 ---
-# <a name="use-certificates-with-azure-stack-edge-series"></a>Azure Stack Edge serisi ile sertifikaları kullanma 
+# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazındaki sertifikaları kullanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 

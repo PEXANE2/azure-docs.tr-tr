@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b54f4d64810fbbb6a3a0fe0eb8083640376eecb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d26f1cdd6184ca10c3a7b9c9a7dc5724cc5e8129
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020567"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266315"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Azure CLı kullanarak yönetilen bir kimliğin hizmet sorumlusunu görüntüleme
 
@@ -29,15 +29,15 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomat
 
 Bu makalede, Azure CLı kullanarak yönetilen bir kimliğin hizmet sorumlusunu görüntülemeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın.
 - Henüz bir Azure hesabınız yoksa [ücretsiz hesap için kaydolun](https://azure.microsoft.com/free/).
-- [Bir sanal makine veya uygulama üzerinde sistem tarafından atanan kimliği](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) etkinleştirin. [application](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)
+- [Bir sanal makine veya uygulama üzerinde sistem tarafından atanan kimliği](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) etkinleştirin. [application](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)
 - CLı betiği örneklerini çalıştırmak için üç seçeneğiniz vardır:
     - Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
     - Katıştırılmış Azure Cloud Shell her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak kullanın.
-    - Yerel bir CLı konsolu kullanmayı tercih ediyorsanız ve kullanarak Azure 'da oturum açmak isterseniz [Azure CLI 'nın en son sürümünü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli) .`az login`
+    - Yerel bir CLı konsolu kullanmayı tercih ediyorsanız ve kullanarak Azure 'da oturum açmak isterseniz [Azure CLI 'nın en son sürümünü yükleyebilirsiniz](/cli/azure/install-azure-cli) .`az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -52,5 +52,3 @@ az ad sp list --display-name <VM or application name>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLı kullanarak Azure AD hizmet sorumlularını yönetme hakkında daha fazla bilgi için, bkz. [az ad SP](/cli/azure/ad/sp).
-
-

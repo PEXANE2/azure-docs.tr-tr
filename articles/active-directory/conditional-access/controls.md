@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948309"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266587"
 ---
 # <a name="custom-controls-preview"></a>Özel denetimler (Önizleme)
 
 Özel denetimler Azure Active Directory önizleme özelliğidir. Özel denetimler kullanılırken, kullanıcılarınız Azure Active Directory dışında kimlik doğrulama gereksinimlerini karşılamak için uyumlu bir hizmete yönlendirilir. Bu denetimi karşılamak için, bir kullanıcının tarayıcısı dış hizmete yönlendirilir, gerekli kimlik doğrulamasını gerçekleştirir ve ardından Azure Active Directory yeniden yönlendirilir. Azure Active Directory yanıtı doğrular ve kullanıcının kimliği başarıyla doğrulanır veya doğrulandıysa, Kullanıcı koşullu erişim akışında devam eder.
 
 > [!NOTE]
-> Özel denetim özelliğiyle ilgili planlama yaptığımız değişiklikler hakkında daha fazla bilgi için, Şubat 2020 ' de [yeni güncelleştirme](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)bölümüne bakın.
+> Özel denetim özelliğiyle ilgili planlama yaptığımız değişiklikler hakkında daha fazla bilgi için bkz. Şubat 2020 [Arşivi](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls), yenilikler.
 
 ## <a name="creating-custom-controls"></a>Özel denetimler oluşturma
 

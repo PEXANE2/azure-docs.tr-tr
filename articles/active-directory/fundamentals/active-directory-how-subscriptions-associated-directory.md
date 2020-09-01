@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc1286b6c434d1c7a110c75dd5085de2043012d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6cd095939009c39c48456d330f975303f06a841a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179105"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267539"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme
 
@@ -28,6 +28,8 @@ Birden çok abonelik aynı Azure AD dizinine güvenebilir. Her abonelik yalnızc
 
 Aboneliğinizin süresi dolarsa, abonelikle ilişkili diğer tüm kaynaklara erişiminizi kaybedersiniz. Ancak Azure AD dizini Azure 'da kalır. Farklı bir Azure aboneliği kullanarak dizini ilişkilendirebilir ve yönetebilirsiniz.
 
+Varsayılan olarak, bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda, bir Azure AD kiracısı oluşturulur ve Kullanıcı genel Yöneticiler rolünün bir üyesi yapılır. Mevcut bir dizine abonelik eklediğinizde, genel yönetici rolüne atanmamıştır.
+
 Tüm kullanıcılarınızın kimlik doğrulaması için tek bir *giriş* dizini vardır. Kullanıcılarınız diğer dizinlerde da konuk olabilir. Azure AD 'de her bir kullanıcı için hem ev hem de Konuk dizinleri görebilirsiniz.
 
 > [!Important]
@@ -36,7 +38,6 @@ Tüm kullanıcılarınızın kimlik doğrulaması için tek bir *giriş* dizini 
 > Abonelik farklı bir dizinle ilişkilendirildiğinde İlke Atamaları da abonelikten kaldırılır.
 >
 > Azure Kubernetes Service (AKS) kümenizi farklı bir aboneliğe taşımak veya küme sahibi aboneliği yeni bir kiracıya taşımak, kayıp rol atamaları ve hizmet sorumlusunun hakları nedeniyle kümenin işlevselliği kaybetmesine neden olur. AKS hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks)](https://docs.microsoft.com/azure/aks/).
-
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -66,19 +67,19 @@ Mevcut bir aboneliği Azure AD dizininizle ilişkilendirmek için şu adımları
 
 1. **Dizini Değiştir**' i seçin.
 
-    ![Abonelik Değiştir seçeneği vurgulanmış şekilde abonelikler sayfası](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   ![Abonelik Değiştir seçeneği vurgulanmış şekilde abonelikler sayfası](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
 1. Görüntülenen tüm uyarıları gözden geçirin ve ardından **Değiştir**' i seçin.
 
-    ![Değiştirilecek dizini gösteren Dizin sayfasını değiştirin](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   ![Değiştirilecek dizini gösteren Dizin sayfasını değiştirin](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    Abonelik için Dizin değiştirildikten sonra, başarılı bir ileti alırsınız.
+   Abonelik için Dizin değiştirildikten sonra, başarılı bir ileti alırsınız.
 
-  1. Yeni dizininize gitmek için abonelik sayfasında **dizinleri Değiştir** ' i seçin. 
+1. Yeni dizininize gitmek için abonelik sayfasında **dizinleri Değiştir** ' i seçin.
 
-      ![Örnek bilgilerle Dizin değiştirici sayfası](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   ![Örnek bilgilerle Dizin değiştirici sayfası](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-      Her şeyin düzgün şekilde gösterilmesi birkaç saat sürebilir. Çok uzun sürüyor görünüyorsa **genel abonelik filtresini**kontrol edin. Taşınan aboneliğin gizlenmediğinden emin olun. Yeni dizini görmek için Azure portal oturumunuzu kapatıp yeniden açmanız gerekebilir.
+   Her şeyin düzgün şekilde gösterilmesi birkaç saat sürebilir. Çok uzun sürüyor görünüyorsa **genel abonelik filtresini**kontrol edin. Taşınan aboneliğin gizlenmediğinden emin olun. Yeni dizini görmek için Azure portal oturumunuzu kapatıp yeniden açmanız gerekebilir.
 
 Abonelik dizininin değiştirilmesi, hizmet düzeyi bir işlemdir, bu nedenle Abonelik Faturalandırma sahipliğini etkilemez. Hesap Yöneticisi hala hizmet yöneticisini [Hesap merkezinden](https://account.azure.com/subscriptions)değiştirebilir. Özgün dizini silmek için, Abonelik Faturalandırma sahipliğini yeni bir hesap yöneticisine aktarmanız gerekir. Faturalama sahipliğini aktarma hakkında daha fazla bilgi edinmek için bkz. [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../../cost-management-billing/manage/billing-subscription-transfer.md).
 

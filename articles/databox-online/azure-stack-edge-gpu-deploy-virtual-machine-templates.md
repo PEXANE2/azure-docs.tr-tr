@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 330186b12efcc31e9f99d7c4bdbff3e081311c23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268168"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-templates"></a>Şablonlar aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Azure Stack Edge GPU cihazınızda VM 'Leri şablonlar aracılığıyla dağıtma
 
 Bu öğreticide, şablonları kullanarak Azure Stack Edge cihazınızda bir sanal makinenin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Bu şablonlar, VM 'niz için altyapıyı ve yapılandırmayı tanımlayan JavaScript Nesne Gösterimi (JSON) dosyalarıdır. Bu şablonlarda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
@@ -340,7 +340,7 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
 > [!NOTE]
 > Bir kimlik doğrulama hatası alırsanız şablonu dağıttığınızda, bu oturum için Azure kimlik bilgilerinizin geçerliliği geçmiş olabilir. `login-AzureRM`Azure Stack Edge cihazındaki Azure Resource Manager tekrar bağlanmak için komutu yeniden çalıştırın.
 
-1. Aşağıdaki komutu çalıştırın: 
+1. Şu komutu çalıştırın: 
     
     ```powershell
     $templateFile = "Path to CreateImageAndVnet.json"
@@ -494,7 +494,7 @@ Azure Stack Edge cihazınız için ' de uygun parametreleri atayın `CreateVM.pa
 
 VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 'ten bir ağ arabirimi oluşturur ve dağıtılan görüntüden VM oluşturur.
 
-1. Aşağıdaki komutu çalıştırın: 
+1. Şu komutu çalıştırın: 
     
     ```powershell
     Command:
@@ -548,7 +548,7 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
         PS C:\07-30-2020>
     ```   
  
-7. VM 'nin başarıyla sağlanıp sağlanmadığını denetleyin. Aşağıdaki komutu çalıştırın:
+7. VM 'nin başarıyla sağlanıp sağlanmadığını denetleyin. Şu komutu çalıştırın:
 
     `Get-AzureRmVm`
 

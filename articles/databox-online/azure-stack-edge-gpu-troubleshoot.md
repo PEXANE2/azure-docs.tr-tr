@@ -1,19 +1,19 @@
 ---
 title: GPU ile Azure Stack Edge sorunlarını gidermek için Azure portal kullanma | Microsoft Docs
-description: Azure Stack Edge sorunlarını nasıl giderebileceğinizi açıklar.
+description: Azure Stack Edge GPU sorunlarını nasıl giderebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: b92d590756ddd98d145d1728c89ea4cf98662d0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89086946"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268331"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazındaki sorunları giderme 
 

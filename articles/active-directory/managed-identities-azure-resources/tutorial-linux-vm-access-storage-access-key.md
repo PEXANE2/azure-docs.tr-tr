@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99651bb449268aa830babcedc18cc33d5870aa23
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016385"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266281"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Öğretici: Erişim anahtarı yoluyla Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -32,7 +32,7 @@ Bu öğreticide depolama hesabı erişim anahtarlarını almak amacıyla bir Lin
 > * VM’inize Resource Manager’da yer alan depolama hesabı erişim anahtarı için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan depolama erişim anahtarlarını almak için bu belirteci kullanma  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -78,7 +78,7 @@ Bu adımda, VM sistem tarafından atanan yönetilen kimliğinize depolama hesab�
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışacağız.
 
-Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/install_guide)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/install-win10)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Azure portalında **Sanal Makineler**'e gidin, Linux sanal makinenize gidin ve ardından **Genel Bakış** sayfasında üst kısımdaki **Bağlan**'a tıklayın. VM'nize bağlanma dizesini kopyalayın. 
 2. SSH istemcinizi kullanarak VM'nize bağlanın.  
@@ -127,7 +127,7 @@ Blob depolama kapsayıcısına yüklemek için örnek bir blob dosyası oluştur
 echo "This is a test file." > test.txt
 ```
 
-Ardından depolama erişim anahtarını kullanarak CLI `az storage` komutuyla kimlik doğrulaması yapın ve dosyayı blob kapsayıcısına yükleyin. Bu adım için, daha önceden yüklemediyseniz VM’inize [en son Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
+Ardından depolama erişim anahtarını kullanarak CLI `az storage` komutuyla kimlik doğrulaması yapın ve dosyayı blob kapsayıcısına yükleyin. Bu adım için, daha önceden yüklemediyseniz VM’inize [en son Azure CLI](/cli/azure/install-azure-cli) sürümünü yüklemeniz gerekir.
  
 
 ```azurecli-interactive
@@ -199,4 +199,4 @@ Yanıt:
 Bu öğreticide, erişim anahtarı kullanarak Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimlik kullanmayı öğrendiniz.  Azure Depolama erişim anahtarları hakkında daha fazla bilgi için bkz:
 
 > [!div class="nextstepaction"]
->[Depolama erişim tuşlarınızı yönetme](/azure/storage/common/storage-create-storage-account)
+>[Depolama erişim tuşlarınızı yönetme](../../storage/common/storage-account-create.md)

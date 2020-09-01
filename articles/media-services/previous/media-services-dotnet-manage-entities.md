@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d7624c00a48ae1462aae27a195e4a9164b49135
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b615e6526eb4187d354c4e276147743156b10bc1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015824"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266026"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK ile varlıkları ve Ilgili varlıkları yönetme
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
 > * [REST](media-services-rest-manage-entities.md)
@@ -36,7 +39,7 @@ Bu konuda .NET ile Azure Media Services varlıkların nasıl yönetileceği gös
 
 1 Nisan 2017’den itibaren, hesabınızdaki 90 günden eski olan tüm İş kayıtları, toplam kayıt sayısı üst kota sınırının altında olsa bile ilişkili Görev kayıtlarıyla birlikte otomatik olarak silinecektir. Örneğin, 1 Nisan 2017 ' de hesabınızda 31 Aralık 2016 ' den eski olan Iş kayıtları otomatik olarak silinir. İş/görev bilgilerini arşivlemek gerekirse, bu konuda açıklanan kodu kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
 

@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245596"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266434"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: Node.js için REST API 'Leri Soru-Cevap Oluşturma
 
@@ -29,7 +29,7 @@ Node.js için Soru-Cevap Oluşturma REST API 'Lerini kullanın:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Node.js](https://nodejs.org)geçerli sürümü.
@@ -76,11 +76,15 @@ Bu kod parçacıkları, Node.js için Soru-Cevap Oluşturma REST API 'Leri ile a
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Adlı bir dosya oluşturun `rest-apis.js` ve http istekleri oluşturmak için aşağıdaki _gerekli_ ifadeyi ekleyin.
+Adlı bir dosya oluşturun `rest-apis.js` ve aşağıdaki bağımlılıkları ekleyin.
 
-```javascript
-const request = require("requestretry");
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="dependencies":::
+
+## <a name="add-utility-functions"></a>Yardımcı program işlevleri ekleme
+
+Aşağıdaki yardımcı program işlevlerini ekleyin.
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="utility":::
 
 ## <a name="add-azure-resource-information"></a>Azure Kaynak bilgilerini ekleme
 
@@ -91,7 +95,7 @@ Aşağıdaki ortam değerlerini ayarlayın:
 * `QNAMAKER_RESOURCE_KEY` - **Anahtar** bir 32 karakter dizesidir ve **hızlı başlangıç** sayfasında soru-cevap oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
 * `QNAMAKER_AUTHORING_ENDPOINT` -Kendi biçimindeki yazma uç noktanız, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` **kaynak adınızı**içerir. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
 ## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
@@ -103,13 +107,13 @@ Bilgi Bankası, bir JSON nesnesinden oluşturulan soru ve yanıt çiftlerini dep
 
 [Bilgi Bankası oluşturmak için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kullanın.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Bilgi bankasını değiştirme
 
 [Bilgi bankasını değiştirmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)kullanın.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
 ## <a name="publish-a-knowledge-base"></a>Bilgi bankası yayımlama
 
@@ -117,14 +121,13 @@ Bilgi Bankası 'nı yayımlayın. Bu işlem, bilgi bankasını bir HTTP sorgu ta
 
 [Bilgi Bankası yayımlamak için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)kullanın.
 
-
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>Bilgi Bankası 'nı indirin
 
 [Bilgi Bankası indirmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)kullanın.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
 ## <a name="delete-a-knowledge-base"></a>Bilgi bankasını silme
 
@@ -132,7 +135,7 @@ Bilgi Bankası 'nı kullanarak işiniz bittiğinde silin.
 
 [Bilgi Bankası 'nı silmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)kullanın.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
 ## <a name="get-status-of-an-operation"></a>İşlemin durumunu al
 
@@ -140,9 +143,13 @@ Oluşturma işlemi gibi uzun süre çalışan işlemler, ayrı bir REST API ça�
 
 [Bilgi Bankası 'ndaki işlemleri izlemek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)kullanın.
 
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+## <a name="add-main-method"></a>Main yöntemi ekle
 
+Aşağıdaki yöntemi ekleyin `main` .
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

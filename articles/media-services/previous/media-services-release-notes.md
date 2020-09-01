@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010333"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268664"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Bu sürüm notları, önceki sürümlerden ve bilinen sorunlardan değişiklikleri özetler Azure Media Services.
 
@@ -100,7 +102,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
 > Media Services Azure Access Control Service kimlik doğrulama anahtarları desteğini kullanımdan kaldırır. 22 Haziran 2018 ' de, Access Control Service anahtarlarını kullanarak kod aracılığıyla Media Services arka ucu ile kimlik doğrulaması yapamayacaktır. Kodunuzu [Azure AD tabanlı kimlik doğrulaması](media-services-use-aad-auth-to-access-ams-api.md)başına Azure Active Directory (Azure AD) kullanacak şekilde güncelleştirmeniz gerekir. Azure portal bu değişiklik hakkındaki uyarıları izleyin.
 
 ### <a name="updates-for-october-2017"></a>2017 Ekim güncelleştirmeleri
-#### <a name="sdks"></a>SDK’lar
+#### <a name="sdks"></a>SDK
 * .NET SDK, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Azure AD 'ye daha hızlı geçiş yapmak için, Access Control Service kimlik doğrulaması desteği Nuget.org üzerindeki en son .NET SDK 'sinden kaldırılmıştır. 
 * JAVA SDK 'Sı, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Java SDK 'sına Azure AD kimlik doğrulaması desteği eklenmiştir. Java SDK 'sını Media Services ile kullanma hakkında daha fazla bilgi için bkz [. Java istemci SDK 'sını kullanmaya başlama Azure Media Services](media-services-java-how-to-use.md)
 

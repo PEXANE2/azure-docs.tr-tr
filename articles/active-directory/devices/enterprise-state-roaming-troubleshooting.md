@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604548"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267250"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory Enterprise State Roaming ayarları sorunlarını giderme
 
@@ -108,7 +108,7 @@ Windows 10 v1511 istemcisinin Temmuz 2016 toplu güncelleştirmesine ([KB3172985
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Tema eşitlenmiyor ve Windows Information Protection ile korunan veriler 
 
-Veri sızıntısını engellemek için [windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) ile korunan veriler, Windows 10 yıldönümü güncelleştirmesi kullanılarak cihazların Enterprise State Roaming üzerinden eşitlenmez.
+Veri sızıntısını engellemek için [windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) ile korunan veriler, Windows 10 yıldönümü güncelleştirmesi kullanılarak cihazların Enterprise State Roaming üzerinden eşitlenmez.
 
 **Önerilen eylem**  
 Yok. Windows için gelecekteki güncelleştirmeler bu sorunu çözebilir.
@@ -159,8 +159,8 @@ Kullanıcının karma bir durum UPN 'si varsa (örneğin, Kullanıcı adı yerin
 Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **Ayarlar**  >  **sistemine**giderek cihazın  >  **About** bağlantısını kaldırın ve "iş veya okuldan yönetme veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' ın **Ayarlar**sisteminde cihazı yeniden birleştirin  >  **System**  >  **About** ve "iş veya okula Bağlan" seçeneğini seçin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
 
 Temizleme adımında, aşağıdaki dosyaları temizleyin:
-- İçindeki Settings. dat`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Klasörün altındaki tüm dosyalar`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- İçindeki Settings. dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Klasörün altındaki tüm dosyalar `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

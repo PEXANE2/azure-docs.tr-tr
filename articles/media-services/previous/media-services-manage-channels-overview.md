@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042856"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265981"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services kullanarak canlı akışa genel bakış
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
@@ -74,13 +76,13 @@ Aşağıdaki tabloda, Media Services desteklenen iki kanal türünü Karşılaş
 
 | Özellik | Doğrudan geçiş kanalı | Standart Kanal |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Maksimum çözünürlük, katman sayısı |1080p, 8 katman, 60 + fps |720p, 6 katman, 30 fps |
 | Giriş protokolleri |RTMP, Kesintisiz Akış |RTMP, Kesintisiz Akış |
 | Fiyat |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın ve "canlı video" sekmesine tıklayın |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın |
 | En fazla çalışma süresi |7x24 |8 saat |
-| SLA ekleme desteği |Hayır |Evet |
-| Ad sinyali için destek |Hayır |Evet |
+| SLA ekleme desteği |Hayır |Yes |
+| Ad sinyali için destek |Hayır |Yes |
 | Geçiş CEA 608/708 açıklamalı alt yazılar |Yes |Yes |
 | Tekdüzen olmayan giriş GOPs desteği |Yes |Hayır – giriş sabit 2sec GOPs olmalıdır |
 | Değişken çerçeve hızı girişi desteği |Yes |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |

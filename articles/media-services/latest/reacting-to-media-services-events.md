@@ -3,22 +3,24 @@ title: Azure Media Services olaylara yeniden davranıyor | Microsoft Docs
 description: Bu makalede, Media Services olaylarına abone olmak için Azure Event Grid nasıl kullanılacağı açıklanır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: juliako
-ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d2dffc90d78d5d173e25232010171a5c0109e028
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887893"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267522"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid olaylarını işleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services olaylar, uygulamaların, modern sunucusuz mimariler kullanılarak farklı olaylara (örneğin, iş durumu değiştirme olayı) tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gereksinimini ortadan kaldırmaz. Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi web kancasına dahil olmak üzere olay işleyicisine [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir ve yalnızca kullandığınız kadar ödersiniz. Fiyatlandırma hakkında bilgi için bkz. [Event Grid fiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/).
 

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 1d9bd6ccc0f92ab28088e886c5bd17d79bc6cea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007636"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267454"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -39,7 +39,7 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 Azure API Management yönetilen kimliğini (varsa) yapılandırmak için aşağıdaki listeye bakın:
 
-- [Azure Resource Manager şablonu](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Resource Manager şablonu](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -51,10 +51,10 @@ Azure API Management yönetilen kimliğini (varsa) yapılandırmak için aşağ�
 
 Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki listeye bakın:
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager şablonu](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc özellikli Kubernetes
 
@@ -63,7 +63,7 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 | Sistem tarafından atanan | Önizleme | Kullanılamaz | Kullanılamaz | Kullanılamaz | 
 | Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
-Azure Arc etkin Kubernetes Şu anda [sistem tarafından atanan kimliği desteklemektedir](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes). Yönetilen hizmet kimlik sertifikası, Azure ile iletişim kurmak için tüm Azure Arc etkinleştirilmiş Kubernetes aracıları tarafından kullanılır.
+Azure Arc etkin Kubernetes Şu anda [sistem tarafından atanan kimliği desteklemektedir](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Yönetilen hizmet kimlik sertifikası, Azure ile iletişim kurmak için tüm Azure Arc etkinleştirilmiş Kubernetes aracıları tarafından kullanılır.
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 
@@ -134,7 +134,7 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 Azure Data Factory v2 için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın (varsa):
 
-- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
@@ -165,10 +165,10 @@ Yönetilen kimlik türü |Tüm genel kullanıma açık<br>Küresel Azure bölgel
 
 Azure Işlevleri için yönetilen kimliği (varsa) yapılandırmak üzere aşağıdaki listeye bakın:
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager şablonu](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
@@ -179,7 +179,7 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 Azure Data Factory v2 için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın (varsa):
 
-- [Azure Portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
+- [Azure portal](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
 ### <a name="azure-importexport"></a>Azure İçeri/Dışarı Aktarma
 
@@ -188,7 +188,7 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 | Sistem tarafından atanan | Azure Içeri aktarma verme hizmeti 'nin kullanılabildiği bölgede kullanılabilir | Önizleme | Kullanılabilir | Kullanılabilir |
 | Kullanıcı tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
-### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
 
 | Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -196,7 +196,7 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 | Kullanıcı tarafından atanan | ![Kullanılabilir][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabilir][check] |
 
 
-Daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/aks/use-managed-identity).
+Daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma](../../aks/use-managed-identity.md).
 
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
@@ -209,8 +209,8 @@ Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölge
 
 Azure Logic Apps yönetilen kimliği (varsa) yapılandırmak için aşağıdaki listeye bakın:
 
-- [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+- [Azure portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager şablonu](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure İlkesi
@@ -222,16 +222,16 @@ Azure Logic Apps yönetilen kimliği (varsa) yapılandırmak için aşağıdaki 
 
 Azure Ilkesi için yönetilen kimliği (varsa) yapılandırmak üzere aşağıdaki listeye bakın:
 
-- [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
+- [Azure portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
-- [REST](https://docs.microsoft.com/rest/api/resources/policyassignments/create)
+- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure Resource Manager şablonları](/azure/templates/microsoft.authorization/policyassignments)
+- [REST](/rest/api/resources/policyassignments/create)
 
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Service Fabric uygulamalar Için yönetilen kimlik](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) tüm bölgelerde kullanılabilir.
+[Service Fabric uygulamalar Için yönetilen kimlik](../../service-fabric/concepts-managed-identity.md) tüm bölgelerde kullanılabilir.
 
 Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -262,7 +262,7 @@ Daha fazla bilgi için bkz. [Azure Spring Cloud uygulaması için sistem tarafı
 
 Azure sanal makine ölçek kümeleri (varsa) için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın:
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [Azure portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonları](qs-configure-template-windows-vm.md)
@@ -279,7 +279,7 @@ Azure sanal makine ölçek kümeleri (varsa) için yönetilen kimliği yapıland
 
 Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın (kullanılabilir yerlerde):
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [Azure portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonları](qs-configure-template-windows-vm.md)
@@ -291,9 +291,9 @@ Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağı
 | Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Sistem tarafından atanan | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz | 
-| Kullanıcı tarafından atanan | [Desteklenen bölgelerde kullanılabilir](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| Kullanıcı tarafından atanan | [Desteklenen bölgelerde kullanılabilir](../../virtual-machines/windows/image-builder-overview.md#regions) | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
-Azure VM görüntü Oluşturucu için yönetilen kimliği yapılandırma hakkında bilgi edinmek için (varsa) bkz. [görüntü oluşturucuya genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions).
+Azure VM görüntü Oluşturucu için yönetilen kimliği yapılandırma hakkında bilgi edinmek için (varsa) bkz. [görüntü oluşturucuya genel bakış](../../virtual-machines/windows/image-builder-overview.md#permissions).
 ### <a name="azure-signalr-service"></a>Azure SignalR Hizmeti
 
 Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
@@ -397,7 +397,7 @@ Azure Resource Manager erişimi yapılandırmak için aşağıdaki listeye bakı
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Kullanılabilir][check] |
 
 > [!Note]
-> Microsoft Power BI, [yönetilen kimlikleri de destekler](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
+> Microsoft Power BI, [yönetilen kimlikleri de destekler](../../stream-analytics/powerbi-output-managed-identity.md).
 
 
 [check]: media/services-support-managed-identities/check.png "Kullanılabileceğini"

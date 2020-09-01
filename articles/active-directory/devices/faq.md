@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689053"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266791"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -62,7 +62,7 @@ Y **:** Azure AD 'ye katılmış veya kayıtlı Windows 10 cihazlarında, kullan
 - Kullanıcı, cihazı uygulamalarım portalından devre dışı bırakır. 
 - Yönetici (veya Kullanıcı) Azure portal veya PowerShell kullanarak cihazı siler veya devre dışı bırakır
 - Karma Azure AD 'ye katılmış: bir yönetici, Azure AD 'den silinmekte olan cihazların, eşitleme kapsamının dışına çıkmasına neden olan cihazları kaldırır
-- Azure AD Connect sürümü 1.4. xx. x sürümüne yükseltiliyor. [Azure AD Connect 1.4. xx. x ve cihaz görünümlerini anlama](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Azure AD Connect sürümü 1.4. xx. x sürümüne yükseltiliyor. [Azure AD Connect 1.4. xx. x ve cihaz görünümlerini anlama](../hybrid/reference-connect-device-disappearance.md).
 
 
 Bu eylemlerin nasıl geri alınacağını aşağıda görebilirsiniz.
@@ -312,7 +312,7 @@ Y **:** Evet, ancak yalnızca Azure cihaz kayıt hizmeti ve hibrit müşteriler 
 Y **:** Aşağıdaki adımları uygulayın:
 
 1.    [Uyumluluk ilkesi oluşturma](/intune/compliance-policy-create-mac-os)
-1.    [MacOS cihazları için koşullu erişim ilkesi tanımlama](../active-directory-conditional-access-azure-portal.md) 
+1.    [MacOS cihazları için koşullu erişim ilkesi tanımlama](../conditional-access/overview.md) 
 
 **Açıklamalarının**
 

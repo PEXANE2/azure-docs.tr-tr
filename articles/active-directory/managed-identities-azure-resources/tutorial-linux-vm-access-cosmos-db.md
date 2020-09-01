@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14067ee1719c178e6942f159944385814537654a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007426"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267998"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'ye erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
@@ -37,14 +37,14 @@ Bu öğreticide Azure Cosmos DB'ye erişmek amacıyla bir Linux sanal makinesi (
 > * Erişim belirteci alma ve bunu kullanarak Azure Resource Manager çağrısı yapma
 > * Cosmos DB çağrıları yapmak için Azure Resource Manager'dan erişim anahtarları alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 Bu öğreticideki CLI betiği örneklerini çalıştırmak için iki seçeneğiniz vardır:
 
 - Azure portaldan veya her kod bloğunun sağ üst köşesinde yer alan **Deneyin** düğmesi aracılığıyla [Azure Cloud Shell](~/articles/cloud-shell/overview.md)'i kullanın.
-- Yerel bir CLI konsolu kullanmayı tercih ediyorsanız [en son CLI 2.0 sürümünü yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 veya üstü).
+- Yerel bir CLI konsolu kullanmayı tercih ediyorsanız [en son CLI 2.0 sürümünü yükleyin](/cli/azure/install-azure-cli) (2.0.23 veya üstü).
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB hesabı oluşturma 
 
@@ -114,7 +114,7 @@ Yanıt, oluşturulan rol atamasının ayrıntılarını içerir:
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğunuz VM'den çalışın.
 
-Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](https://msdn.microsoft.com/commandline/wsl/install_guide)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/install-win10)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
 1. Azure portalında **Sanal Makineler**'e gidin, Linux sanal makinenize gidin ve ardından **Genel Bakış** sayfasında üst kısımdaki **Bağlan**'a tıklayın. VM'nize bağlanma dizesini kopyalayın. 
 2. SSH istemcinizi kullanarak VM'nize bağlanın.  
@@ -228,5 +228,4 @@ Bu CLI komutu koleksiyon hakkındaki ayrıntıları döndürür:
 Bu öğreticide, Cosmos DB'ye erişmek için Linux sanal makinesinde sistem tarafından atanan yönetilen kimliği kullanmayı öğrendiniz.  Cosmos DB hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB genel bakış](/azure/cosmos-db/introduction)
-
+>[Azure Cosmos DB genel bakış](../../cosmos-db/introduction.md)

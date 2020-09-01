@@ -3,29 +3,31 @@ title: Azure Media Services v3 ile açıklayıcı sesli parçalar sinyali | Micr
 description: Bu öğreticinin adımlarını izleyerek bir dosyayı karşıya yükleyin, videoyu kodlayın, açıklayıcı ses parçaları ekleyin ve içeriğinizi Media Services v3 ile akışın.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006661"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267437"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Görsel açıdan görme istemcilerinin, konuşmayı dinleyerek video kaydını izlemesini sağlamak için videonuza konuşma izi ekleyebilirsiniz. Media Services v3 'de, bildirim dosyasındaki ses izlemesine açıklama ekleyerek açıklayıcı ses izlemelerinin sinyalini görürsünüz.
 
 Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içeren bir salt ses MP4 dosyasını (AAC codec) karşıya yükleme ve açıklama sesini dahil etmek için. ISM dosyasını düzenleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 - [Azure CLI Ile Access Azure Media Services API 'sindeki](./access-api-howto.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.

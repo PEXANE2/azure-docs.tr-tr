@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/13/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226157"
+ms.locfileid: "89267114"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar.  
 

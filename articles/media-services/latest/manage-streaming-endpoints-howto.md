@@ -3,7 +3,7 @@ title: Azure Media Services v3 ile akış uç noktalarını yönetme
 description: Bu makalede, Azure Media Services v3 ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08730961d81cd14b5ba8af0778d2de4078398bff
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010656"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266553"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** [akış uç noktası](streaming-endpoint-concept.md) eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile [dinamik şifrelemeden](content-protection-overview.md)yararlanmak için içerik akışı yapmak Istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir.
 
@@ -31,7 +33,7 @@ Bu makalede, farklı teknolojiler kullanarak akış uç noktanıza [Başlangıç
 > [!NOTE]
 > Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
     
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İncelemeyi 
 
@@ -53,7 +55,7 @@ Daha fazla bilgi için bkz.
     Uzun süre çalışan işlemlerin nasıl izleneceği hakkında bilgi için bkz. [uzun süreli işlemler](media-services-apis-overview.md).
 * Bu [Postman koleksiyonu](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) , akış uç noktasının nasıl başlatılacağı hakkında daha fazla Rest işlemi örnekleri içerir.
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
  
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure Media Services hesabınıza gidin.

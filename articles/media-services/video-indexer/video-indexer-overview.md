@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744598"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267879"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
 Video Indexer (VI), Azure Media Services AI çözümüdür ve Azure bilişsel hizmetler markasının bir parçasıdır. Video Indexer, birden fazla kanala (ses, Vocal, görsel) göre makine öğrenimi modellerini kullanarak derin içgörüler (veri çözümleme veya kodlama becerileri gerektirmez) ayıklayabilme olanağı sağlar. Modelleri daha fazla özelleştirebilir ve eğitebilirsiniz. Hizmet derin arama imkanı sunar, işlem maliyetlerini azaltır, yeni para kullanımı fırsatlarını azaltır ve büyük video arşivleri üzerinde yeni kullanıcı deneyimleri oluşturur (düşük girişli engelleri olan).
 
 Video Indexer öngörüleri çıkarmaya başlamak için bir hesap oluşturmanız ve videoları yüklemeniz gerekir. Videolarınızı Video Indexer yüklediğinizde, farklı AI modellerini çalıştırarak hem görselleri hem de sesi analiz edersiniz. Video Indexer, video, AI modelleri tarafından ayıklanan Öngörüler ile analiz edilir.
+
+Bir Video Indexer hesabı oluşturup Media Services 'e bağladığınızda, medya ve meta veri dosyaları bu Media Services hesabıyla ilişkili Azure depolama hesabında depolanır. Daha fazla bilgi için bkz. [Azure 'a bağlı video Indexer hesabı oluşturma](connect-to-azure.md).
 
 Aşağıdaki diyagram, Video Indexer arka uçta nasıl çalıştığına ilişkin teknik bir açıklama değildir.
 
@@ -70,9 +72,9 @@ Aşağıdaki listede video ve ses modellerini Video Indexer kullanarak videolar�
 
 ### <a name="audio-insights"></a>Audio Insights
 
-* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, MANDARIN Çince, Japonca, Arapça, Rusça, Portekizce, Hintçe ve Korece bulunur.
-* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, MANDARIN Çince, Japonca, Rusça ve Portekizce bulunur. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
-* **Çok dilli konuşma tanımlama ve** döküm (Önizleme): ses 'tan farklı kesimlerde konuşulan dili otomatik olarak tanımlar. Bu, oluşturulacak medya dosyasının her bir segmentini gönderir ve ardından geri alma işlemi ile Birleşik bir dökümü yeniden birleştirir. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
+* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Arapça, Rusça ve Portekizce, Hintçe ve Korece'dir.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Rusça ve Portekizce'dir. Dil güvenilir bir şekilde belirlenemiyorsa Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için bkz. [Dil tanımlama modeli](language-identification-model.md).
+* **Çok dilli konuşma tanımlama ve** döküm (Önizleme): ses 'tan farklı kesimlerde konuşulan dili otomatik olarak tanımlar. Medya dosyasının transkripsiyonu alınacak her bölümünü gönderir ve sonra transkripsiyonu yeniden tek bir transkripsiyon olarak birleştirir. Daha fazla bilgi için bkz. [Çok dilli içeriği tanımlama ve transkripsiyonunu alma](multi-language-identification-transcription.md).
 * **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
 * **İki kanal işleme**: otomatik olarak ayrı dökümü algılar ve tek bir zaman çizelgesine birleştirir.
 * **Gürültü azaltma**: telefon sesini veya gürültülü kayıtları (Skype filtreleri temelinde) temizler.

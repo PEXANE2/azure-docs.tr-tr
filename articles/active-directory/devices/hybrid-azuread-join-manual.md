@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428387"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268562"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) ' de cihaz yönetimiyle, Kullanıcıların kay
 
 Bu öğreticide hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 
-* [Azure Active Directory'de cihaz yönetimine giriş](../device-management-introduction.md)
+* [Azure Active Directory'de cihaz yönetimine giriş](./overview.md)
 * [Hibrit Azure Active Directory JOIN Uygulamanızı planlayın](hybrid-azuread-join-plan.md)
 * [Cihazlarınızın hibrit Azure AD katılımını denetleme](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ Senaryonuz için gereken adımlara ilişkin genel bir bakış elde etmek için a
 
 Cihazlarınız Azure AD kiracı bilgilerini bulmaya yönelik kayıt sırasında bir hizmet bağlantı noktası (SCP) nesnesi kullanır. Şirket içi Active Directory Örneğinizde, karma Azure AD 'ye katılmış cihazların SCP nesnesi, bilgisayarın ormanının yapılandırma adlandırma bağlamı bölümünde bulunmalıdır. Orman başına yalnızca bir yapılandırma adlandırma bağlamı bulunur. Çok ormanlı bir Active Directory yapılandırmasında, hizmet bağlantı noktası, etki alanına katılmış bilgisayarlar içeren tüm ormanlarda bulunmalıdır.
 
-Ormanınızın yapılandırma adlandırma bağlamını almak için [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) cmdlet öğesini kullanabilirsiniz.  
+Ormanınızın yapılandırma adlandırma bağlamını almak için [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) cmdlet öğesini kullanabilirsiniz.  
 
 Active Directory etki alanı adı *fabrikam.com* olan bir orman için yapılandırma adlandırma bağlamı:
 
@@ -115,7 +115,7 @@ Aşağıdaki Windows PowerShell betiğini kullanarak nesnenin varlığını doğ
    $scp.Keywords;
    ```
 
-**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. İşte bir örnek:
+**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. Aşağıda bir örnek verilmiştir:
 
    ```
    azureADName:microsoft.com
@@ -167,7 +167,7 @@ Windows Server 2008 veya önceki sürümlerini çalıştıran etki alanı denetl
 
 Önceki betikte `$verifiedDomain = "contoso.com"` yer tutucudur. Azure AD 'de doğrulanmış etki alanı adlarından biriyle değiştirin. Kullanabilmeniz için etki alanına sahip olmanız gerekir.
 
-Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../active-directory-domains-add-azure-portal.md)bölümüne bakın.
+Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)bölümüne bakın.
 
 Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet öğesini kullanabilirsiniz.
 
@@ -326,7 +326,7 @@ Talebin, Şirket `http://schemas.microsoft.com/ws/2008/06/identity/claims/primar
 
 Önceki talepte `<verified-domain-name>` yer tutucudur. Azure AD 'de doğrulanmış etki alanı adlarından biriyle değiştirin. Örneğin, kullanın `Value = "http://contoso.com/adfs/services/trust/"` .
 
-Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../active-directory-domains-add-azure-portal.md)bölümüne bakın.  
+Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)bölümüne bakın.  
 
 Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet öğesini kullanabilirsiniz.
 
@@ -557,7 +557,7 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 ### <a name="locally-on-the-device"></a>Cihazda yerel olarak
 
 1. Windows PowerShell'i açın.
-2. Şunu girin: `dsregcmd /status`.
+2. `dsregcmd /status` yazın.
 3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
 4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorunlarla karşılaşırsanız, bkz.:
 
-- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](./troubleshoot-device-dsregcmd.md)
 - [Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme](troubleshoot-hybrid-join-windows-current.md)
 - [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 

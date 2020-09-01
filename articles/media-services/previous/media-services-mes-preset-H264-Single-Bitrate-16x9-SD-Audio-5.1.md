@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 730854f572e1e2ab21140f53d59b7593ad26cb05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 584d36779c8a7ed0641a191a911986c737273587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463608"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265754"
 ---
 # <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 Single Bitrate 16x9 SD Audio 5.1
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+`Media Encoder Standard` kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
  Bu konu, `H264 Single Bitrate 16x9 SD Audio 5.1` XML ve JSON biçimindeki ön ayarı gösterir.  
   

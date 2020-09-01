@@ -3,7 +3,7 @@ title: Azure Media Services ile video dosyaları akışı Node.js | Microsoft Do
 description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, akış
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc, devx-track-javascript
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1c96c538826de696de531aff79ce601bc01a239d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414080"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267403"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu öğreticide, Azure Media Services kullanarak çok çeşitli tarayıcılarda ve cihazlarda akış videolarının kodlanması ve başlatılması ne kadar kolay olduğunu gösterir. Azure Blob depolamada bulunan dosyaların yolları, SAS URL’leri veya HTTPS URL’leri kullanılarak girdi içeriği belirtilebilir.
 
@@ -32,7 +34,7 @@ Bu makaledeki örnek, bir HTTPS URL 'SI aracılığıyla erişilebilir hale geti
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Node.js](https://nodejs.org/en/download/) yüklensin
 - [Media Services hesabı oluşturun](./create-account-howto.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.

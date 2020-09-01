@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837049"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267862"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -65,7 +65,7 @@ Desteklenen dağıtımlar ve sürümler:
 - 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
 * **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
@@ -128,7 +128,7 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
@@ -173,7 +173,7 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Ad | Değer
+Name | Değer
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu 'na sahiptir `https://core.windows.net` . Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
@@ -233,8 +233,8 @@ Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekliyor: Ev
 
 "SasURL" girdisi, verilerin yayımlanması gereken olay hub 'ı için SAS belirteci dahil olmak üzere tam URL 'yi içerir. LAD, gönderme talebini sağlayan bir ilkeyi adlandırma için bir SAS gerektirir. Örnek:
 
-* Adlı bir Event Hubs ad alanı oluşturun`contosohub`
-* Adlı ad alanında bir olay hub 'ı oluşturma`syslogmsgs`
+* Adlı bir Event Hubs ad alanı oluşturun `contosohub`
+* Adlı ad alanında bir olay hub 'ı oluşturma `syslogmsgs`
 * Adlı olay hub 'ında, `writer` gönderme talebini sağlayan bir paylaşılan erişim ilkesi oluşturun
 
 1 Ocak 2018 ' de gece yarısı UTC 'ye kadar bir SAS oluşturduysanız, sasURL değeri şu olabilir:
@@ -347,7 +347,7 @@ PerformanceCounters bölümünde belirtilen ölçümlerin örnekleri, her 15 san
 
 Bu isteğe bağlı bölüm, ölçüm koleksiyonunu denetler. Ham örnekler her bir [Scheduledtransferperiod](#metrics) için toplanır ve bu değerleri üretir:
 
-* ortalama
+* mean
 * minimum
 * maksimum
 * Son toplanan değer
@@ -367,9 +367,9 @@ displayName | Azure ölçümlerinde bu verilere eklenecek olan etiket (ilişkili
 
 Counterbelirleyicisi, rastgele bir tanımlayıcıdır. Ölçüm tüketicileri, Azure portal grafik oluşturma ve uyarı özelliği gibi, ölçüm veya ölçüm örneğini tanımlayan "anahtar" olarak Counterbelirleyicisi kullanın. `builtin`Ölçümler için, ile başlayan Counterbelirleyicisi değerlerini kullanmanızı öneririz `/builtin/` . Bir ölçümün belirli bir örneğini topluyorsanız, örneğin tanımlayıcısını Counterıdentifier değerine iliştirmenizi öneririz. Bazı örnekler:
 
-* `/builtin/Processor/PercentIdleTime`-Tüm vCPU 'larda ortalama boşta geçen süre
-* `/builtin/Disk/FreeSpace(/mnt)`-/MNT dosya sistemi için boş alan
-* `/builtin/Disk/FreeSpace`-Tüm bağlı dosya sistemleri genelinde ortalama boş alan
+* `/builtin/Processor/PercentIdleTime` -Tüm vCPU 'larda ortalama boşta geçen süre
+* `/builtin/Disk/FreeSpace(/mnt)` -/MNT dosya sistemi için boş alan
+* `/builtin/Disk/FreeSpace` -Tüm bağlı dosya sistemleri genelinde ortalama boş alan
 
 Ne de ne de Azure portal, Counterbelirtici değerinin herhangi bir kalıpla eşleşmesini bekler. Onay tanımlayıcısı değerlerini nasıl oluşturabileceğinize göre tutarlı olun.
 
@@ -572,7 +572,7 @@ Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"conditi
 
 ## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 yükleme ve yapılandırma
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 

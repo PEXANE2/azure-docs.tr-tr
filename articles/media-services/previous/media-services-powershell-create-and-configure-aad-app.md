@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: a8339ed5f6b570f392a76d8e4109f015c951b9df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e54c89a609b39a88d2a34078aadd6bbe9308e39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065609"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268375"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>PowerShell kullanarak Azure Media Services API ile kullanmak üzere bir Azure AD uygulaması oluşturma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services kaynaklarına erişmek için bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturmak üzere bir PowerShell betiği kullanmayı öğrenin.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure portal Azure Media Services hesap oluşturma](media-services-portal-create-account.md)konusuna bakın.

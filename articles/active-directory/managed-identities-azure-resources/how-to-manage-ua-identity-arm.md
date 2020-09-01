@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896c1909c8cc920e53fc2f43fbc4dbca41ad7db4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014243"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266366"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme
 
@@ -33,7 +33,7 @@ Bir Azure Resource Manager şablonu kullanarak Kullanıcı tarafından atanan y�
 
 - [Kullanıcı tarafından atanan yönetilen kimliği listeleme](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
 - [Kullanıcı tarafından atanan yönetilen kimliği Sil](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-  ## <a name="prerequisites"></a>Önkoşullar
+  ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -44,12 +44,12 @@ Azure portal ve betikte olduğu gibi Azure Resource Manager şablonlar, bir Azur
 
 - Sıfırdan bir şablon oluşturmanıza veya mevcut bir ortak ya da [hızlı başlangıç şablonuna](https://azure.microsoft.com/documentation/templates/)temeletmenize olanak tanıyan [Azure Marketi 'nden özel bir şablon](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanma.
 - Varolan bir kaynak grubundan türeterek, [orijinal dağıtımdan](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)veya [dağıtımın geçerli durumundan](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)bir şablonu dışarı aktararak.
-- Yerel bir [JSON Düzenleyicisi (vs Code gibi)](../../azure-resource-manager/resource-manager-create-first-template.md)kullanarak ve POWERSHELL veya CLI kullanarak karşıya yükleme ve dağıtma.
+- Yerel bir [JSON Düzenleyicisi (vs Code gibi)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)kullanarak ve POWERSHELL veya CLI kullanarak karşıya yükleme ve dağıtma.
 - Bir şablon oluşturmak ve dağıtmak için Visual Studio [Azure Kaynak grubu projesini](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) kullanma. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma 
 
-Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
+Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rol ataması gerekir.
 
 Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için aşağıdaki şablonu kullanın. `<USER ASSIGNED IDENTITY NAME>`Değeri kendi değerlerinizle değiştirin:
 
@@ -88,4 +88,3 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için aşağıdaki 
 Bir Azure Resource Manager şablonu kullanarak bir Azure VM 'sine Kullanıcı tarafından atanan yönetilen kimlik atama hakkında bilgi için, bkz. bir [Azure VM 'de Azure kaynakları için yönetilen kimlikleri şablonlar kullanarak yapılandırma](qs-configure-template-windows-vm.md).
 
 
- 

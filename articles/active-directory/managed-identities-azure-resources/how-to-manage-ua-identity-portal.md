@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9672984bca42fc855476bf5b97ff5610ba6081
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014209"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266396"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama
 
@@ -28,14 +28,14 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory yönetilen 
 
 Bu makalede, Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atamayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
+Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rol ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. Arama kutusuna *Yönetilen kimlikler*yazın ve **Hizmetler**' ın altında, **Yönetilen kimlikler**' e tıklayın.
@@ -50,7 +50,7 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza 
 
 ## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listeleme
 
-Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesabınızın [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) veya [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolü ataması gerekir.
+Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesabınızın [yönetilen kimlik işleci](../../role-based-access-control/built-in-roles.md#managed-identity-operator) veya [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rolü ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. Arama kutusuna *Yönetilen kimlikler*yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
@@ -60,9 +60,9 @@ Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesab
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliği silme
 
-Kullanıcı tarafından atanan bir yönetilen kimliği silmek için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
+Kullanıcı tarafından atanan bir yönetilen kimliği silmek için hesabınıza [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rol ataması gerekir.
 
-Kullanıcı tarafından atanan bir kimlik silindiğinde, atandığı VM veya kaynaktan kaldırılmaz.  Kullanıcı tarafından atanan kimliği bir VM 'den kaldırmak için bkz. [Kullanıcı tarafından atanan bir yönetilen kimliği BIR VM 'Den kaldırma](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
+Kullanıcı tarafından atanan bir kimlik silindiğinde, atandığı VM veya kaynaktan kaldırılmaz.  Kullanıcı tarafından atanan kimliği bir VM 'den kaldırmak için bkz. [Kullanıcı tarafından atanan bir yönetilen kimliği BIR VM 'Den kaldırma](./qs-configure-portal-windows-vm.md#remove-a-user-assigned-managed-identity-from-a-vm).
 
 1. Kullanıcı tarafından atanan yönetilen kimliği silmek için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. Kullanıcı tarafından atanan yönetilen kimliği seçin ve **Sil**' e tıklayın.
@@ -72,7 +72,7 @@ Kullanıcı tarafından atanan bir kimlik silindiğinde, atandığı VM veya kay
 
 ## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliğe rol atama 
 
-Kullanıcı tarafından atanan yönetilen kimliğe bir rol atamak için hesabınızın [Kullanıcı erişimi yönetici](/azure/role-based-access-control/built-in-roles#user-access-administrator) rolü ataması gerekir.
+Kullanıcı tarafından atanan yönetilen kimliğe bir rol atamak için hesabınızın [Kullanıcı erişimi yönetici](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolü ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 2. Arama kutusuna *Yönetilen kimlikler*yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
@@ -86,4 +86,4 @@ Kullanıcı tarafından atanan yönetilen kimliğe bir rol atamak için hesabın
    - Kullanıcı tarafından atanan yönetilen kimliği atamak için kaynağa **erişim atama**
    - **Select** -erişim atanacak üye
    
-   ![Kullanıcı tarafından atanan yönetilen kimlik ıAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
+   ![Kullanıcı tarafından atanan yönetilen kimlik ıAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)

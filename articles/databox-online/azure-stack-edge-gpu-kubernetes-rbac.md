@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 703e67b4829413776dc8d98843888fbd67906baa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182199"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268083"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Kubernetes rol tabanlı Access Control
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge GPU cihazınızda
 
 
 Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes rol tabanlı erişim denetimi 'ni (RBAC), cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için kullanabilirsiniz.

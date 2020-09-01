@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services içindeki dinamik şifreleme, akış protokolleri ve şifreleme türleriyle içerik koruması hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012204"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267930"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ortamınızı, depolama, işleme ve teslim aracılığıyla bilgisayarınızdan tamamen ayrılmaları için güvenli hale getirmek üzere Azure Media Services kullanın. Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. İçerik AES şifresiz anahtarla şifrelenirse ve HTTPS üzerinden gönderildiğinde, istemciye ulaşıncaya kadar net değildir. 
 

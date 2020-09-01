@@ -3,7 +3,7 @@ title: Azure Media Services V2 'den v3 'e geçiş | Microsoft Docs
 description: Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm arasındaki farklılıklar gösteren değişiklikler açıklanmaktadır. Makale Ayrıca Media Services V2 'den v3 'e geçiş için geçiş kılavuzu sağlar.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: e692eef45f8a0b4a8918e7255fa1ac85d4ad064c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078056"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265839"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` RSS akışı okuyucusuna.
 
@@ -30,7 +32,7 @@ Bu makale, Media Services V2 'den v3 'e geçiş kılavuzu sağlar.
 
 Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview.md)geliştirilen bir video hizmetiniz varsa, v3 API 'lerine geçiş yapmadan önce aşağıdaki yönergeleri ve konuları gözden geçirmeniz gerekir. V3 API 'de Media Services Geliştirici deneyimini ve yeteneklerini geliştiren birçok avantaj ve yeni özellik vardır. Ancak, bu makalenin [bilinen sorunlar](#known-issues) bölümünde ÇAĞRıLDıKÇA, API sürümleri arasındaki değişikliklerden dolayı bazı sınırlamalar de vardır. Media Services ekibi, v3 API 'Lerinde devam eden geliştirmeler yaptığında ve sürümler arasındaki boşlukları adresleyen Bu sayfa korunacak. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Media Services V2 ve v3 karşılaştırması](media-services-v2-vs-v3.md)
 * [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

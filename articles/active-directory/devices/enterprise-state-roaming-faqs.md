@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274094"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268545"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Ayarlar ve veri dolaşımı hakkında SSS
 
@@ -37,7 +37,7 @@ Bu makalede, yöneticilerin ayarlar ve uygulama verilerinin eşitlenmesi hakkın
 > [!NOTE]
 > Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
 
-**Uygulama verileri**: Evrensel Windows uygulamaları, ayarlar verilerini bir dolaşım klasörüne yazabilir ve bu klasöre yazılan tüm veriler otomatik olarak eşitlenir. Bu özellikten yararlanmak için tek bir uygulama geliştiricisinin bir uygulama tasarlaması vardır. Dolaşım kullanan bir Evrensel Windows uygulaması geliştirme hakkında daha fazla bilgi için bkz. [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) ve [Windows 8 AppData gezici geliştirici blogu](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Uygulama verileri**: Evrensel Windows uygulamaları, ayarlar verilerini bir dolaşım klasörüne yazabilir ve bu klasöre yazılan tüm veriler otomatik olarak eşitlenir. Bu özellikten yararlanmak için tek bir uygulama geliştiricisinin bir uygulama tasarlaması vardır. Dolaşım kullanan bir Evrensel Windows uygulaması geliştirme hakkında daha fazla bilgi için bkz. [AppData Storage API](/windows/uwp/design/app-settings/store-and-retrieve-app-data) ve [Windows 8 AppData gezici geliştirici blogu](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Ayarların eşitlenmesi için kullanılacak hesap nedir?
 
@@ -86,9 +86,9 @@ Farklı Azure AD kiracılarından birden çok Azure AD hesabı aynı cihazdan ol
 Dolaşım yalnızca Evrensel Windows uygulamaları için geçerlidir. Mevcut bir Windows masaüstü uygulamasında dolaşımı etkinleştirmek için kullanılabilecek iki seçenek vardır:
 
 * [Masaüstü Köprüsü](https://aka.ms/desktopbridge) , mevcut Windows masaüstü uygulamalarınızı Evrensel Windows platformu taşımanıza yardımcı olur. Buradan, Azure AD uygulama veri dolaşımı avantajlarından yararlanmak için en az kod değişikliği yapmanız gerekecektir. Masaüstü Köprüsü, uygulamalarınızı mevcut masaüstü uygulamaları için uygulama verilerini dolaşımı etkinleştirmek için gereken bir uygulama kimliğiyle sağlar.
-* [Kullanıcı deneyimi sanallaştırma (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) , var olan Windows Masaüstü uygulamaları için özel bir ayarlar şablonu oluşturmanıza ve Win32 uygulamaları için dolaşımı etkinleştirmesine yardımcı olur. Bu seçenek, uygulama geliştiricisinin uygulamanın kodunu değiştirmesini gerektirmez. UE-V, Microsoft Desktop optimizasyon paketini satın almış olan müşteriler için şirket içi Active Directory dolaşımla sınırlandırılmıştır.
+* [Kullanıcı deneyimi sanallaştırma (UE-V)](/previous-versions//dn458947(v=vs.85)) , var olan Windows Masaüstü uygulamaları için özel bir ayarlar şablonu oluşturmanıza ve Win32 uygulamaları için dolaşımı etkinleştirmesine yardımcı olur. Bu seçenek, uygulama geliştiricisinin uygulamanın kodunu değiştirmesini gerektirmez. UE-V, Microsoft Desktop optimizasyon paketini satın almış olan müşteriler için şirket içi Active Directory dolaşımla sınırlandırılmıştır.
 
-Yöneticiler, Windows işletim sistemi ayarlarının ve evrensel uygulama verilerinin dolaşımını, [UE-v grup ilkeleriyle](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)ve aşağıdakiler de dahil olmak üzere değiştirerek Windows masaüstü uygulaması verilerini DOLAŞıMA arak UE-v ' yi yapılandırabilir.
+Yöneticiler, Windows işletim sistemi ayarlarının ve evrensel uygulama verilerinin dolaşımını, [UE-v grup ilkeleriyle](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)ve aşağıdakiler de dahil olmak üzere değiştirerek Windows masaüstü uygulaması verilerini DOLAŞıMA arak UE-v ' yi yapılandırabilir.
 
 * Gezici Windows ayarları Grup İlkesi
 * Windows uygulamaları grup ilkesini eşitlememe

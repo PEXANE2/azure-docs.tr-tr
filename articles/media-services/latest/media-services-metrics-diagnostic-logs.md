@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Izleyici aracılığıyla Azure Media Services ölçümleri ve tanılama günlüklerini izlemeyi öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011660"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267616"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Izleyici aracılığıyla Media Services ölçümleri ve tanılama günlüklerini izleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Azure Izleyici tarafından toplanan tüm veriler iki temel türden birine uyar: ölçümler ve Günlükler. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. Ölçüm [Gezgini](../../azure-monitor/platform/metrics-getting-started.md)'ni kullanarak ölçüm verilerini görselleştirebilir ve çözümleyebilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir, [Log Analytics](https://azure.microsoft.com/services/log-analytics/)dışarı aktarabilir veya üçüncü taraf hizmetleri kullanabilirsiniz.
 

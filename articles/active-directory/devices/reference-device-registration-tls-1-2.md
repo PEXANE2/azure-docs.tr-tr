@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfbad53fd2361752824292e0ade82f3ac231916
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099857"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268766"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Azure AD kayıt hizmeti için TLS 1,2 ' i zorla
 
@@ -52,7 +52,7 @@ Cihazlar ve Azure AD cihaz kayıt hizmeti arasında proxy görevi gören tüm ma
 
 ## <a name="update-ad-fs-servers"></a>AD FS sunucularını Güncelleştir
 
-Azure AD cihaz kayıt hizmeti ile iletişim kurmak için kullanılan AD FS sunucularının TLS 1,2 ' nin etkin olduğundan emin olması gerekir. Bu yapılandırmayı etkinleştirme/doğrulama hakkında bilgi için bkz. [AD FS IÇIN SSL/TLS protokollerini ve şifre paketlerini yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
+Azure AD cihaz kayıt hizmeti ile iletişim kurmak için kullanılan AD FS sunucularının TLS 1,2 ' nin etkin olduğundan emin olması gerekir. Bu yapılandırmayı etkinleştirme/doğrulama hakkında bilgi için bkz. [AD FS IÇIN SSL/TLS protokollerini ve şifre paketlerini yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
 
 ## <a name="client-updates"></a>İstemci güncelleştirmeleri
 
@@ -68,4 +68,4 @@ Aşağıdaki istemcilerin TLS 1,2 destekleyemediği bilinmektedir. Kesintisiz er
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[TLS/SSL 'ye Genel Bakış (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/tls-ssl-schannel-ssp-overview)
+[TLS/SSL 'ye Genel Bakış (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

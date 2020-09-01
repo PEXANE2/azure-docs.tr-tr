@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services çıktı meta verileri şeması | Microsoft Docs
 description: Bu makale, Azure Media Services çıkış meta verisi şemasına bir genel bakış sunar.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080933"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267216"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş varlığı (veya varlıkları) ile ilişkilendirilir. Örneğin, bir MP4 dosyasını H. küçük resim oluşturma; yer paylaşımları oluştur. Bir görevi tamamladıktan sonra bir çıkış varlığı üretilir.  Çıktı varlığı video, ses, küçük resim ve diğer dosyaları içerir. Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri JSON dosyasının adı şu biçimdedir: `<source_file_name>_manifest.json` (örneğin, `BigBuckBunny_manifest.json` ). Üzerinde herhangi bir * _metadata.jstarama yapmanız ve kaynak dosya adını (kesilmeksizin) bulmak için içindeki FilePath dizesinde sorgu yapmanız gerekir.
 
@@ -36,7 +38,7 @@ Kodlama işi için Assetdosya girişlerinin toplanması.
 
 | Ad | Açıklama |
 | --- | --- |
-| **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
+| **Kaynaklar** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.<br />Örnek: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **Videoizler**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. <br />Bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur.<br /> Daha fazla bilgi için bkz. [Audioiz](#audiotracks). |
 | **Ad**<br />Gerekli |Medya varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
@@ -54,7 +56,7 @@ Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili b
 | **Profil** |H264 profili (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Profile": "High"` |
 | **Düzeyde** |H264 düzeyi (yalnızca H264 codec için geçerlidir).  <br /><br />Örnek: `"Level": "3.2"`|
 | **Width**<br />Gerekli |Piksel cinsinden kodlanmış video genişliği.  <br /><br />Örnek: `"Width": "1280"`|
-| **Yükseklik**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
+| **Height**<br />Gerekli |Piksel cinsinden kodlanmış video yüksekliği.  <br /><br />Örnek: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Gerekli|Video görüntüleme en boy oranı payı.  <br /><br />Örnek: `"DisplayAspectRatioNumerator": 16.0`|
 | **Displayaspectratiopayda**<br />Gerekli |Video görüntüleme en boy oranı paydası.  <br /><br />Örnek: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framerate**<br />Gerekli |.3F biçiminde ölçülen video kare hızı.  <br /><br />Örnek: `"Framerate": 29.970`|

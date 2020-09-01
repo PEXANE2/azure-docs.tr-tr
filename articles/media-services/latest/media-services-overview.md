@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Hızlı başlangıçlar, öğreticiler ve kod örnekleri bağlantılarıyla Azure Media Services v3 'e yönelik üst düzey bir genel bakış.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000967"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267624"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişilebilirlik ve dağıtımı iyileştirmenizi, içerikleri analiz etmenizi ve daha fazlasını yapmanızı sağlayan çözümler derlemenize olanak tanıyan bulut tabanlı bir platformdur. Bir uygulama geliştiricisi, bir çağrı merkezi, devlet kurumu veya eğlence şirketi olsun, Media Services günümüzün en popüler mobil cihaz ve tarayıcılarındaki büyük kitlelere kadar üstün kalitede medya deneyimleri sunan uygulamalar oluşturmanıza yardımcı olur.
 

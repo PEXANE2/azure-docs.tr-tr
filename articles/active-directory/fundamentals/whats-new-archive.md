@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd7ce0229d5e26bc4bf3b05f7b97d20d2a23dff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 887bc083a35a065c4b54590c284bfbc794da18e5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927207"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267828"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -33,7 +33,120 @@ Azure Active Directory yenilikler nelerdir? sürüm notları hakkında bilgi sa�
 - Değişiklik planları
 
 ---
+ ## <a name="february-2020"></a>Şubat 2020
+
+### <a name="upcoming-changes-to-custom-controls"></a>Özel denetimlerde yaklaşan değişiklikler
+
+**Şunu yazın:** Değişiklik planı  
+**Hizmet kategorisi:** MFA  
+**Ürün yeteneği:** Kimlik güvenliği & koruması
  
+İş ortağı tarafından sunulan kimlik doğrulama yeteneklerinin Azure Active Directory yönetici ve son kullanıcı deneyimleri ile sorunsuz bir şekilde çalışmasını sağlayan bir yaklaşım ile geçerli özel denetim önizlemesini değiştirmeyi planlıyoruz. Günümüzde, iş ortağı MFA çözümleri şu sınırlamalara sahiptir: yalnızca bir parola girildikten sonra çalışır; diğer anahtar senaryolarında adım adım kimlik doğrulaması için MFA olarak işlev görürler; Ayrıca, son kullanıcı veya yönetim kimlik bilgileri yönetim işlevleriyle tümleştirilemiyor. Yeni uygulama, iş ortağı tarafından belirtilen kimlik doğrulama faktörlerinin, kayıt, kullanım, MFA talepleri, adım kimlik doğrulama, raporlama ve günlüğe kaydetme gibi önemli senaryolar için yerleşik faktörlerle birlikte çalışmasına izin verir. 
+
+Özel denetimler, genel kullanıma ulaşıncaya kadar yeni tasarımın yanı sıra önizlemede desteklenmeye devam edecektir. Bu noktada, müşterilere yeni tasarıma geçiş süresi vereceğiz. Geçerli yaklaşımın sınırlamaları nedeniyle, yeni tasarım kullanılabilir olana kadar yeni sağlayıcılar sunmayacağız. Müşteriler ve sağlayıcılar ile yakından çalışıyoruz ve zaman çizelgesini daha yakından ilettiğimiz için iletişim kuracak. [Daha fazla bilgi edinin](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
+
+---
+
+### <a name="identity-secure-score---mfa-improvement-action-updates"></a>Kimlik güvenli puanı-MFA geliştirme eylem güncelleştirmeleri
+
+**Şunu yazın:** Değişiklik planı  
+**Hizmet kategorisi:** MFA  
+**Ürün yeteneği:** Kimlik güvenliği & koruması
+ 
+İşletmelerin, işletmelerle çalışan ilkeleri uygularken en fazla güvenliği güvence altına aldığından emin olmak için, çok faktörlü kimlik doğrulaması (MFA) etrafında ortalanmış üç geliştirme eylemini kaldırır ve iki ekleme işlemi yapılır.
+
+Aşağıdaki geliştirme eylemleri kaldırılacak:
+
+- MFA için tüm kullanıcıları kaydet
+- Tüm kullanıcılar için MFA gerektirme
+- Azure AD ayrıcalıklı rolleri için MFA gerektir
+
+Aşağıdaki geliştirme eylemleri eklenecek:
+
+- Tüm kullanıcıların, güvenli erişim için MFA 'yı tamambağlanabildiğinden emin olun
+- Yönetim rolleri için MFA gerektir
+
+Bu yeni geliştirme eylemleri, kullanıcılarınızın veya yöneticilerinin dizininiz genelinde MFA için kaydedilmesini ve kuruluşunuzun gereksinimlerine uygun olan doğru ilke kümesini oluşturmayı gerektirir. Ana amaç, tüm kullanıcılarınızın ve yöneticilerinin birden çok faktörle veya risk tabanlı kimlik doğrulama istemlerinde kimlik doğrulaması yapabilmesini sağlarken esneklik sağlamaktır. Bu, Microsoft 'un MFA için kullanıcıları ne zaman sınayacağına karar vermesine veya kapsamlı kararlar uygulayan birden çok ilkeye sahip olmasına izin veren güvenlik varsayılanlarını ayarlama biçimini alabilir. Bu geliştirme eylemi güncelleştirmelerinin bir parçası olarak, temel koruma ilkeleri artık Puanlama hesaplamalarına dahil olmayacaktır. [Microsoft güvenli puanına nelerin geldiği hakkında daha fazla bilgi edinin](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide).
+
+---
+
+### <a name="azure-ad-domain-services-sku-selection"></a>Azure AD Domain Services SKU seçimi
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Azure AD Domain Services  
+**Ürün yeteneği:** Azure AD Domain Services
+ 
+Azure AD Domain Services müşterilerin, örnekleri için performans düzeylerini seçerken daha fazla esneklik istediğini belirten geri bildirimde bulunduk. 1 Şubat 2020 ' den itibaren, dinamik bir modelden (Azure AD, nesne sayısına göre performans ve fiyatlandırma katmanını belirler) bir kendi kendine seçim modeline geçtik. Artık müşteriler, ortamıyla eşleşen bir performans katmanını seçebilirler. Bu değişiklik Ayrıca, kaynak ormanları gibi yeni senaryoları ve günlük yedeklemeler gibi Premium özellikleri etkinleştirebileceğimizi de sağlar. Nesne sayısı tüm SKU 'Lar için artık sınırsız, ancak her katman için nesne sayısı önerileri sunmaya devam edeceğiz.
+
+**Acil bir müşteri eylemi gerekli değildir.** Mevcut müşteriler için 1 Şubat 2020 ' de kullanılan dinamik katman, yeni varsayılan katmanı belirler. Bu değişikliğin sonucu olarak bir fiyatlandırma veya performans etkisi yoktur. Azure AD DS müşterilerinin, dizin boyutu ve iş yükü özellikleri değiştikçe performans gereksinimlerini değerlendirmesi gerekecektir. Hizmet katmanları arasında geçiş kesinti olmaması durumunda olmaya devam eder, ancak artık kendi dizin artışına göre müşterileri otomatik olarak yeni katmanlara taşıyamayacaktır. Ayrıca, hiçbir ücret artmayacak ve yeni fiyatlandırma geçerli faturalandırma modelimize göre hizalanacaktır. Daha fazla bilgi için bkz. [Azure AD DS SKU belgeleri](https://docs.microsoft.com/azure/active-directory-domain-services/administration-concepts#azure-ad-ds-skus) ve [Azure AD Domain Services fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/active-directory-ds/).
+
+---
+ 
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2020"></a>Azure AD Uygulaması galerisinde yeni Federasyon uygulamaları kullanılabilir-Şubat 2020
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Kurumsal uygulamalar  
+**Ürün yeteneği:** üçüncü taraf tümleştirmesi
+ 
+Şubat 2020 ' de, uygulama galerisine federasyon desteğiyle bu 31 yeni uygulamayı ekledik: 
+
+[Iamıp patent platformu](https://docs.microsoft.com/azure/active-directory/saas-apps/iamip-patent-platform-tutorial), [deneyim bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/experience-cloud-tutorial), [Azure için ns1 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/ns1-sso-azure-tutorial), [Barkcuda e-posta güvenlik hizmeti](https://ess.barracudanetworks.com/sso/azure), [aba raporlaması](https://myaba.co.uk/client-access/signin/auth/msad), [Çapraz çevrimiçi portal](https://docs.microsoft.com/azure/active-directory/saas-apps/in-case-of-crisis-online-portal-tutorial), [Bic bulut tasarımı](https://docs.microsoft.com/azure/active-directory/saas-apps/bic-cloud-design-tutorial), [Splashtop](https://docs.microsoft.com/azure/active-directory/saas-apps/splashtop-tutorial) [Azure ad veri Bağlayıcısı için beekeeto](https://docs.microsoft.com/azure/active-directory/saas-apps/beekeeper-azure-ad-data-connector-tutorial) [Verkada Command](https://docs.microsoft.com/azure/active-directory/saas-apps/verkada-command-tutorial) [Yeni relik (sınırlı sürüm)](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial), [thulium](https://admin.thulium.com/login/instance), [bilet Yöneticisi](https://docs.microsoft.com/azure/active-directory/saas-apps/ticketmanager-tutorial), [Syxsense](https://docs.microsoft.com/azure/active-directory/saas-apps/syxsense-tutorial) [takımlar için şablon Seçicisi](https://links.officeatwork.com/templatechooser-download-teams), [beesy](https://www.beesy.me/index.php/site/login), [sağlık desteği sistemi](https://docs.microsoft.com/azure/active-directory/saas-apps/health-support-system-tutorial), [mural](https://app.mural.co/signup), [Hive](https://docs.microsoft.com/azure/active-directory/saas-apps/hive-tutorial), [LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview), [Wakelet](https://wakelet.com/login), [firmex VDR](https://docs.microsoft.com/azure/active-directory/saas-apps/firmex-vdr-tutorial), [öğretmenler ve okullar için ThingLink](https://www.thinglink.com/), [Coda](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial), beklenen [podapp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product), [Wedo](https://docs.microsoft.com/azure/active-directory/saas-apps/wedo-tutorial), [Korn Ferry Assessments](https://www.kornferry.com/solutions/kf-digital/kf-assess) [EAB Navigate](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-tutorial) [davetli](https://invitepeople.com/login) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial) [Reprints Desk - Article Galaxy](https://docs.microsoft.com/azure/active-directory/saas-apps/reprints-desk-article-galaxy-tutorial)
+
+ 
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](https://aka.ms/azureadapprequest)listeleme bölümüne bakın.
+
+---
+ 
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---february-2020"></a>Azure AD uygulama galerisinde yeni sağlama bağlayıcıları-Şubat 2020
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Kurumsal uygulamalar  
+**Ürün yeteneği:** üçüncü taraf tümleştirmesi
+ 
+Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
+
+- [Mixpanel](https://docs.microsoft.com/azure/active-directory/saas-apps/mixpanel-provisioning-tutorial)
+- [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-provisioning-tutorial)
+- [Azure Databricks](https://docs.microsoft.com/azure/active-directory/saas-apps/azure-databricks-scim-connector-provisioning-tutorial)
+- [PureCloud by Genesys](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-provisioning-tutorial)
+- [Zapier](https://docs.microsoft.com/azure/active-directory/saas-apps/zapier-provisioning-tutorial)
+
+Otomatik Kullanıcı hesabı sağlamayı kullanarak kuruluşunuzun daha iyi güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatikleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+
+---
+ 
+### <a name="azure-ad-support-for-fido2-security-keys-in-hybrid-environments"></a>Karma ortamlarda FIDO2 güvenlik anahtarları için Azure AD desteği
+
+**Şunu yazın:** Yeni Özellik  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
+**Ürün yeteneği:** Kullanıcı kimlik doğrulaması
+ 
+Karma ortamlarda FIDO2 güvenlik anahtarlarına yönelik Azure AD desteğinin genel önizlemesini duyuruyoruz. Kullanıcılar, karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve şirket içi ve bulut kaynaklarında sorunsuz oturum açmak için FIDO2 güvenlik anahtarlarını kullanabilir. Azure AD 'ye katılmış cihazlarda FIDO2 desteği için genel önizlemeyi başlatdığımız için, karma ortamlar için destek, parolalarımızın en çok istenen özelliğidir. Biyometri ve genel/özel anahtar şifrelemesi gibi gelişmiş teknolojiler kullanılarak passwordless kimlik doğrulaması, güvenli hale getirmeye yönelik kolaylık ve kullanım kolaylığını sağlar. Bu genel önizleme ile, artık geleneksel Active Directory kaynaklarına erişmek için FIDO2 güvenlik anahtarları gibi modern kimlik doğrulamasını kullanabilirsiniz. Daha fazla bilgi için bkz. Şirket [içi kaynaklara SSO](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)'ya gidin. 
+
+Başlamak için, adım adım yönergeler için [kiracınız IÇIN FIDO2 güvenlik anahtarlarını etkinleştir](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key) ' i ziyaret edin. 
+
+---
+ 
+### <a name="the-new-my-account-experience-is-now-generally-available"></a>Yeni Hesabım deneyimi artık genel kullanıma sunuldu
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** Profilim/Hesabım  
+**Ürün yeteneği:** Son Kullanıcı deneyimleri
+ 
+Tüm Son Kullanıcı hesabı yönetimi ihtiyaçları için tek bir durdurma için Hesabım, artık genel kullanıma sunuldu! Son kullanıcılar bu yeni siteye URL aracılığıyla veya yeni uygulamalarım deneyiminin üst bilgisinde erişebilir. Tüm self servis özellikleri hakkında daha fazla bilgi edinmek için yeni deneyim [Hesap portalından genel bakış ' a](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)
+
+---
+ 
+### <a name="my-account-site-url-updating-to-myaccountmicrosoftcom"></a>Hesabım sitesi URL 'SI myaccount.microsoft.com olarak güncelleştiriliyor
+
+**Şunu yazın:** Değiştirilen özellik  
+**Hizmet kategorisi:** Profilim/Hesabım  
+**Ürün yeteneği:** Son Kullanıcı deneyimleri
+ 
+Yeni Hesabım Son Kullanıcı deneyimi, URL 'sini bir sonraki ay içinde olacak şekilde güncelleştirilecektir `https://myaccount.microsoft.com` . [Hesabım portalı yardımım](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)'de son kullanıcılara sunduğu deneyim ve tüm hesap self servis özellikleri hakkında daha fazla bilgi edinin.
+
+---
+
 ## <a name="january-2020"></a>Ocak 2020
  
 ### <a name="the-new-my-apps-portal-is-now-generally-available"></a>Yeni uygulamalarım portalı genel kullanıma sunuldu
@@ -111,7 +224,8 @@ Kimlik korumasına iki yeni oturum açma bağlantılı algılama türü ekledik:
 **Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı kimlik doğrulaması
  
-<a name="starting-on-february-8-2020-when-a-request-is-sent-to-loginmicrosoftonlinecom-to-sign-in-a-user-the-service-will-append-an-empty-fragment-to-the-request--this-prevents-a-class-of-redirect-attacks-by-ensuring-that-the-browser-wipes-out-any-existing-fragment-in-the-request-no-application-should-have-a-dependency-on-this-behavior-for-more-information-see-breaking-changes-in-the-microsoft-identity-platform-documentation"></a>8 Şubat 2020 ' den itibaren, bir kullanıcının oturum açması için login.microsoftonline.com 'e bir istek gönderildiğinde, hizmet isteğe boş bir parça ekler.  Bu, tarayıcının istekteki mevcut bir parçayı temizler olarak yeniden yönlendirme saldırılarına karşı bir sınıf önler. Hiçbir uygulamanın bu davranışa bağımlılığı olmamalıdır. Daha fazla bilgi için bkz. Microsoft Identity platform belgelerindeki [son değişiklikler](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) .
+8 Şubat 2020 ' den itibaren, bir kullanıcının oturum açması için login.microsoftonline.com 'e bir istek gönderildiğinde, hizmet isteğe boş bir parça ekler.  Bu, tarayıcının istekteki mevcut bir parçayı temizler olarak yeniden yönlendirme saldırılarına karşı bir sınıf önler. Hiçbir uygulamanın bu davranışa bağımlılığı olmamalıdır. Daha fazla bilgi için bkz. Microsoft Identity platform belgelerindeki [son değişiklikler](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) .
+
 ---
 
 ## <a name="december-2019"></a>Aralık 2019
@@ -574,7 +688,7 @@ Bu yeni uç noktanın nasıl kullanılacağı hakkında daha fazla bilgi için, 
 
 Eylül 2019 ' de, uygulama galerisine federasyon desteğiyle bu 29 yeni uygulamaları ekledik:
 
-[Schedulelook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO erişimi, etidex uyumluluk ofisi &trade; -Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [Iver portalı](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [ufuk sitesi](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [yarışmayı ve harcama](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [çalışma panosu](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial), `https://apps.yeeflow.com/` [yay tesislerini](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [luware strazı ekibi](https://stratus.emea.luware.cloud/login), [geniş fikirler](https://wideideas.online/wideideas/), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [jdlt Client hub](https://clients.jdlt.co.uk/login), [renpaku](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial), [sealpath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), `https://app.penneo.com/` ,, işlem `https://app.testhtm.com/settings/email-integration` [çok fazla bulut](https://aec.cintoo.com/login), [beyaz kaynak](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial), [barındırılan herials online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial), [IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial), [cakehr](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial)b, [COO Kai ekip derlemesi](https://ms-contacts.coo-kai.jp/), [sonarquin](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial), [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial), [Discovery avantajları SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial), [Amelio](https://app.amelio.co/),`https://itask.yipinapp.com/`
+[Schedulelook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO erişimi, etidex uyumluluk ofisi &trade; -Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [Iver portalı](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [ufuk sitesi](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [yarışmayı ve harcama](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [çalışma panosu](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial), `https://apps.yeeflow.com/` [yay tesislerini](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [luware strazı ekibi](https://stratus.emea.luware.cloud/login), [geniş fikirler](https://wideideas.online/wideideas/), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [jdlt Client hub](https://clients.jdlt.co.uk/login), [renpaku](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial), [sealpath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), `https://app.penneo.com/` ,, işlem `https://app.testhtm.com/settings/email-integration` [çok fazla bulut](https://aec.cintoo.com/login), [beyaz kaynak](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial), [barındırılan herials online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial), [IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial), [cakehr](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial)b, [COO Kai ekip derlemesi](https://ms-contacts.coo-kai.jp/), [sonarquin](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial), [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial), [Discovery avantajları SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial), [Amelio](https://app.amelio.co/), `https://itask.yipinapp.com/`
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](https://aka.ms/azureadapprequest)listeleme bölümüne bakın.
 
@@ -582,7 +696,7 @@ Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS 
 
 ### <a name="new-azure-ad-global-reader-role"></a>Yeni Azure AD Genel okuyucu rolü
 
-**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** RBAC **ürün yeteneği:** Access Control
+**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** Azure AD rolleri **ürün yeteneği:** Access Control
 
 24 Eylül 2019 ' den itibaren, genel okuyucu adlı yeni bir Azure Active Directory (AD) rolü kullanıma sunacağız. Bu piyasaya çıkma üretim ve küresel bulut müşterileri (GCC) ile başlar ve Ekim 'de dünya çapında bir işlem görür.
 
@@ -671,7 +785,7 @@ Daha fazla bilgi için [Azure Portal grupları yönetme](https://docs.microsoft.
 
 ### <a name="new-custom-roles-are-available-for-app-registration-management-public-preview"></a>Yeni özel roller uygulama kayıt yönetimi için kullanılabilir (Genel Önizleme)
 
-**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** RBAC **ürün yeteneği:** Access Control
+**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** Azure AD rolleri **ürün yeteneği:** Access Control
 
 Özel Roller (bir Azure AD P1 veya P2 aboneliği ile kullanılabilir) artık, belirli izinlerle rol tanımları oluşturmanıza ve ardından bu rolleri belirli kaynaklara atamaya izin vererek size ayrıntılı erişim sağlamanıza yardımcı olabilir. Şu anda, uygulama kayıtlarını yönetmek ve ardından rolü belirli bir uygulamaya atamak için izinleri kullanarak özel roller oluşturursunuz. Özel roller hakkında daha fazla bilgi için, bkz. [Azure Active Directory (Önizleme) Içinde özel yönetici rolleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview).
 
@@ -802,7 +916,7 @@ Azure Izleyici 'yi ayarlama hakkında daha fazla bilgi için bkz. Azure [izleyic
 
 ### <a name="update-your-users-to-the-new-enhanced-security-info-experience"></a>Kullanıcılarınızı yeni, geliştirilmiş güvenlik bilgileri deneyimiyle güncelleştirin
 
-**Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
+**Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:**  kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
 25 Eylül 2019 ' de, Kullanıcı güvenlik bilgilerini kaydetmek ve yönetmek ve yalnızca yeni ve [geliştirilmiş sürümü](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)açmak için eski, gelişmiş olmayan güvenlik bilgileri deneyimini kapatıyoruz. Bu, kullanıcılarınızın artık eski deneyimi kullanamayacağı anlamına gelir.
 
@@ -1776,7 +1890,7 @@ Aşağıdaki alanlar denetim şemasında değişiyor:
 |Alan adı|Değişen|Eski değerler|Yeni değerler|
 |----------|------------|----------|----------|
 |Kategori|Bu **hizmet adı** alanıdır. Artık **denetim kategorileri** alanıdır. **Hizmet adı** **Loggedbyservice** alanı olarak yeniden adlandırıldı.|<ul><li>Hesap Sağlama</li><li>Çekirdek Dizin</li><li>Self servis parola sıfırlama</li></ul>|<ul><li>Kullanıcı Yönetimi</li><li>Grup Yönetimi</li><li>Uygulama yönetimi</li></ul>|
-|targetResources|En üst düzeyde **Targetresourcetype** içerir.|&nbsp;|<ul><li>İlke</li><li>Uygulama</li><li>Kullanıcı</li><li>Grup</li></ul>|
+|targetResources|En üst düzeyde **Targetresourcetype** içerir.|&nbsp;|<ul><li>İlke</li><li>Uygulama</li><li>Kullanıcı</li><li>Gruplama</li></ul>|
 |loggedByService|Denetim günlüğünü oluşturan hizmetin adını sağlar.|Null|<ul><li>Hesap Sağlama</li><li>Çekirdek Dizin</li><li>Self servis parola sıfırlama</li></ul>|
 |Sonuç|Denetim günlüklerinin sonucunu sağlar. Bu, daha önce numaralandırılmıştı, ancak şimdi gerçek değeri gösteriyoruz.|<ul><li>0</li><li>1</li></ul>|<ul><li>Başarılı</li><li>Hata</li></ul>|
 
@@ -2242,7 +2356,7 @@ Azure Active Directory (Azure AD) e-postaları artık güncelleştirilmiş bir t
 
 E-posta bildirimleri şu e-posta adresinden ve görünen adla gönderilir:
 
-- E-posta adresi:azure-noreply@microsoft.com
+- E-posta adresi: azure-noreply@microsoft.com
 - Görünen ad: Microsoft Azure
 
 Yeni e-posta tasarımlarının bir örneği ve daha fazla bilgi için bkz. [Azure AD PIM 'de e-posta bildirimleri](https://go.microsoft.com/fwlink/?linkid=2005832).
@@ -2643,7 +2757,7 @@ Oturum açma işlemlerini ve denetim günlüklerini içeren Azure AD etkinlik g�
 
 Mayıs 2018 ' de, uygulama galerimize federasyon desteği olan bu 18 yeni uygulamayı ekledik:
 
-[Awardspring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), ınfogix Data3Sixty yönetme [, yodestesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [JAMF Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [knowledgeowl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi Mmis](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [launchkaranlık](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Capze ana](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [monsat çevrimiçi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial),[まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [yay yayımlama-SSO](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [plangrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [ıwellneskar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [Flock](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Gözden](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
+[Awardspring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), ınfogix Data3Sixty yönetme [, yodestesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [JAMF Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [knowledgeowl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi Mmis](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [launchkaranlık](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Capze ana](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [monsat çevrimiçi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial), [まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [yay yayımlama-SSO](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [plangrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [ıwellneskar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [Flock](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Gözden](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial).
 
@@ -3031,7 +3145,7 @@ Kullanıcıları ve grupları yönetmeye yönelik gezinti deneyimi kolaylaştır
 
 Azure AD etkinlik günlüğü raporları artık 21Vianet (Azure Çin 21Vianet) örnekleri tarafından işletilen Microsoft Azure sunulmaktadır. Aşağıdaki günlükler dahil edilmiştir:
 
-- **Oturum açma etkinliği günlükleri** -kiracınızla ilişkili tüm oturum açma günlüklerini içerir.
+- **Oturum açma etkinliği günlükleri**  -kiracınızla ilişkili tüm oturum açma günlüklerini içerir.
 
 - **Self servis parola denetim günlükleri** -tüm SSPR denetim günlüklerini içerir.
 
@@ -3307,7 +3421,7 @@ Daha fazla bilgi için bkz.
 
 Artık erişim paneline gidebilir ve önceden kabul ettiğiniz kullanım koşullarını görüntüleyebilirsiniz.
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. [Uygulamaps portalına](https://myapps.microsoft.com)gidin ve oturum açın.
 
@@ -3543,7 +3657,7 @@ Daha fazla bilgi için bkz.
 
 ### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için ağ Ilkesi sunucusu uzantısı
 
-**Şunu yazın:** Yeni özellik **hizmeti kategorisi:** Multi-Factor Authentication **ürün yeteneği:** Kullanıcı kimlik doğrulaması
+**Şunu yazın:** Yeni özellik **hizmeti kategorisi:**  Multi-Factor Authentication **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
 Azure Multi-Factor Authentication için ağ Ilkesi sunucu uzantısı, mevcut sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı Multi-Factor Authentication özellikleri ekler. Ağ Ilkesi sunucusu uzantısıyla, mevcut kimlik doğrulama akışınıza telefon araması, SMS mesajı veya telefon uygulaması doğrulaması ekleyebilirsiniz. Yeni sunucuları yüklemek, yapılandırmak ve bakımını yapmak zorunda değilsiniz.
 

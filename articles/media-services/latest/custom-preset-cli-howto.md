@@ -3,23 +3,25 @@ title: Media Services v3 Azure CLı kullanarak özel dönüştürmeyi kodla | Mi
 description: Bu konu, Azure CLı kullanarak özel bir dönüşüm kodlamak için Azure Media Services v3 'in nasıl kullanılacağını gösterir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-azurecli
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f7b1f7a858c465629e075bcdb6d32bec29863f0a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503897"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267896"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama-Azure CLı
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) hızlı başlangıç bölümünde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir başlangıç yapabilirsiniz. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 

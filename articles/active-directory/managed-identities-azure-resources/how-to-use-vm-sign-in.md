@@ -16,12 +16,12 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 02815003bf5167a73c1e2362d9270deb867c84b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999419"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266332"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açma için Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -30,11 +30,11 @@ Bu makalede, Azure kaynakları hizmet sorumlusu için yönetilen kimlikleri kull
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Bu makaledeki Azure PowerShell veya Azure CLı örneklerini kullanmayı planlıyorsanız, [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'nin en son sürümünü yüklediğinizden emin olun. 
+Bu makaledeki Azure PowerShell veya Azure CLı örneklerini kullanmayı planlıyorsanız, [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'nin en son sürümünü yüklediğinizden emin olun. 
 
 > [!IMPORTANT]
 > - Bu makaledeki tüm örnek betik, komut satırı istemcisinin Azure kaynakları için yönetilen kimliklere sahip bir VM 'de çalıştığını varsayar. Sanal makinenize uzaktan bağlanmak için Azure portal VM "Connect" özelliğini kullanın. Bir VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirme hakkında daha fazla bilgi için bkz. Azure portal veya varyant makalelerinden birini [kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)(POWERSHELL, CLI, bir şablon veya BIR Azure SDK kullanarak). 
@@ -49,7 +49,7 @@ Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için 
 
 Azure kaynakları için Yönetilen kimlikler sayesinde, komut dosyası istemciniz artık Azure kaynakları hizmet sorumlusu için Yönetilen kimlikler altında oturum açabilse de bunu yapması gerekmez. 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki betik, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
@@ -100,9 +100,3 @@ Bunlardan biri yanlışsa, kaynak üzerinde Azure kaynakları için yönetilen k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek üzere bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-powershell-windows-vm.md)veya Azure [CLI kullanarak bir Azure VM 'de Azure kaynakları Için Yönetilen kimlikler yapılandırma](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

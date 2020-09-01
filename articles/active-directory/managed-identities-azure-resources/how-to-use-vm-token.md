@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016147"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266298"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomat
 
 Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın
 
-.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](/azure/key-vault/service-to-service-authentication)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
+.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure?view=azure-cli-latest)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](../../key-vault/general/service-to-service-authentication.md)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
 1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasa](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet paketlerine başvurular ekleyin.
 
@@ -141,7 +141,7 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu](/azure/key-vault/service-to-service-authentication) ve App Service ve keykasası.
+Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu](../../key-vault/general/service-to-service-authentication.md) ve App Service ve keykasası.
 
 ## <a name="get-a-token-using-c"></a>C kullanarak belirteç al #
 
@@ -381,7 +381,7 @@ Bu bölüm olası hata yanıtlarını belgeler. Bir "200 OK" durumu başarılı 
 |           | access_denied | Kaynak sahibi veya yetkilendirme sunucusu isteği reddetti. |  |
 |           | unsupported_response_type | Yetkilendirme sunucusu, bu yöntemi kullanarak bir erişim belirteci edinmeyi desteklemez. |  |
 |           | invalid_scope | İstenen kapsam geçersiz, bilinmiyor veya hatalı biçimlendirilmiş. |  |
-| 500 İç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için bkz. günlüklere ait Günlükler *\<file path\>* | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](services-support-msi.md) bölümüne bakın.
+| 500 İç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için bkz. günlüklere ait Günlükler *\<file path\>* | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](./services-support-managed-identities.md) bölümüne bakın.
 
 ## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
 
@@ -397,17 +397,9 @@ Yeniden denemek için aşağıdaki stratejiyi öneririz:
 
 ## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
 
-Azure AD [kimlik doğrulamasını](services-support-msi.md) destekleyen ve Azure kaynakları için Yönetilen kimlikler ve bunlara karşılık gelen kaynak kimlikleri ile test edilmiş bir kaynak listesi için bkz. Azure hizmetleri.
+Azure AD [kimlik doğrulamasını](./services-support-managed-identities.md) destekleyen ve Azure kaynakları için Yönetilen kimlikler ve bunlara karşılık gelen kaynak kimlikleri ile test edilmiş bir kaynak listesi için bkz. Azure hizmetleri.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek üzere, [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)konusuna bakın.
-
-
-
-
-
-
-
-

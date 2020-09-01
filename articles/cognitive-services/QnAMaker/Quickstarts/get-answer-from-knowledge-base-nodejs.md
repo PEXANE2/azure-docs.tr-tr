@@ -1,24 +1,24 @@
 ---
-title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Node. js-Soru-Cevap Oluşturma"
-description: Bu Node. js REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan programlama yoluyla yanıt alma konusunda size kılavuzluk eder.
+title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Node.js Soru-Cevap Oluşturma"
+description: Bu Node.js REST tabanlı hızlı başlangıç, bilgi bankasından programlama yoluyla yanıt alma konusunda size yol gösterir.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342791"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268066"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Hızlı başlangıç: node. js ile Bilgi Bankası 'ndan bir soruya yanıt alın
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Hızlı başlangıç: Node.js ile bilgi bankasından soru cevap alın
 
 Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/knowledge-base.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir.
 
 [Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından 
 
     ![Yayımlama ayarları](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-## <a name="create-a-nodejs-file"></a>Node. js dosyası oluşturma
+## <a name="create-a-nodejs-file"></a>Node.js dosyası oluşturma
 
 VSCode 'u açın ve adlı yeni bir dosya oluşturun `get-answer.js` .
 
@@ -37,29 +37,19 @@ VSCode 'u açın ve adlı yeni bir dosya oluşturun `get-answer.js` .
 
 Dosyanın en üstünde `get-answer.js` , gerekli bağımlılıkları projeye ekleyin:
 
-[!code-nodejs[Add the required dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=1-4 "Add the required dependencies")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 
 Sonra, Soru-Cevap Oluşturma erişmek için gerekli sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
 
-[!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>Soru göndermek ve yanıt almak için bir POST isteği ekleyin
 
 Aşağıdaki kod, soruyu bilgi tabanına göndermek için Soru-Cevap Oluşturma API'si HTTPS isteği yapar ve yanıtı alır:
 
-[!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
-
-`Authorization`Üstbilginin değeri dizeyi içerir `EndpointKey` .
-
-## <a name="install-the-dependencies"></a>Bağımlılıkları yükler
-
-Bağımlılıkları komut satırından yükler:
-
-```bash
-npm install request request-promise
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="query":::
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 

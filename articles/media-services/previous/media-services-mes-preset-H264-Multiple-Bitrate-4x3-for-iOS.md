@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 45dbaea4e2c6f8cdbe3d33df5d3b82b9df519ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4124758a5e96ae580f7182b610b896594ca4ea
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463659"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266944"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>iOS için H264 Multiple Bitrate 4x3
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+`Media Encoder Standard` kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
  Bu konu, `H264 Multiple Bitrate 4x3 for iOS` XML ve JSON biçimindeki ön ayarı gösterir.  
   

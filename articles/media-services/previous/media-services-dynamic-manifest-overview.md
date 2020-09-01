@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d86cca609f0a494bb012d3393facc14ec23dbbe2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054704"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266927"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtreler ve dinamik bildirimler
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Media Services sürümünü seçin:"]
 > * [Sürüm 2](media-services-dynamic-manifest-overview.md)
@@ -100,7 +102,7 @@ Filtre içeren Kesintisiz Akış URL 'SI
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>Filtreler
+### <a name="filters"></a><a id="filters"></a>FilTReleri
 İki tür varlık filtresi vardır: 
 
 * Genel filtreler (Azure Media Services hesabındaki herhangi bir varlığa uygulanabilir, hesabın kullanım ömrü vardır) ve 
@@ -108,7 +110,7 @@ Filtre içeren Kesintisiz Akış URL 'SI
 
 Genel ve yerel filtre türleri tam olarak aynı özelliklere sahiptir. İkisi arasındaki temel fark, ne tür bir filme türü daha uygun olan senaryolara yöneliktir. Genel filtreler genellikle, yerel filtrelerin belirli bir varlığı kırpmak için kullanılabileceği cihaz profilleri (işleme filtrelemesi) için uygundur.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a><a id="scenarios"></a>Genel senaryolar
 Daha önce belirtildiği gibi, İçeriğinizi müşterilere sunarken (canlı etkinlik veya isteğe bağlı video akışı), amacınız, farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli bir video sunmaktır. Ayrıca, varlıklarınızı filtrelemeyi ve **dinamik bildirimlerin**kullanımını içeren başka gereksinimleriniz de olabilir. Aşağıdaki bölümler, farklı filtreleme senaryolarına kısa bir genel bakış sunar.
 
 * Belirli cihazların işleyebileceği ses ve video yorumlamaları (varlıkla ilişkili tüm yorumlamalar yerine) yalnızca bir alt kümesini belirtin. 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge cihazında Kubernetes üzerinde Azure yayı 'yi etkinleştirme | Microsoft Docs
-description: Azure Stack Edge cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ın nasıl etkinleştirileceğini açıklar.
+title: Azure Stack Edge GPU cihazında Kubernetes 'te Azure yayı 'yi etkinleştirme | Microsoft Docs
+description: Azure Stack Edge GPU cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ın nasıl etkinleştirileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 03bf2a01ad4c1d5d017d881bf171806fa33e8799
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087171"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268202"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Kubernetes kümesinde Azure yayı 'yi etkinleştirme
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda Kubernetes kümesinde Azure yayı 'yi etkinleştirme
 
 Bu makalede, Azure Stack Edge cihazındaki mevcut bir Kubernetes kümesinde Azure Arc 'ı nasıl etkinleştireceğinizi gösterilmektedir. 
 
 Bu yordam, [Azure Stack Edge cihazında Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)ile ilgili kavramların öğrentiği kişilere yöneliktir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kubernetes kümesinde Azure Arc 'ı etkinleştirebilmeniz için, Azure Stack Edge cihazınızda ve cihaza erişmek için kullanacağınız istemcide aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
@@ -132,7 +132,7 @@ Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fa
     Hizmet sorumlusu oluşturma ve rol atamasını gerçekleştirme hakkında daha fazla bilgi için, [Azure Arc özellikli ekleme hizmeti sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal)içindeki adımlara bakın.
 
 
-## <a name="enable-arc-on-kubernetes-cluster"></a>Kubernetes kümesinde yayı etkinleştir
+## <a name="enable-arc-on-kubernetes-cluster"></a>Kubernetes kümesinde Arc'ı etkinleştirme
 
 Azure Arc yönetimi için Kubernetes kümesini yapılandırmak için aşağıdaki adımları izleyin:
 

@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61229059"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268579"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Küçük resim görüntüsü oluşturma  
+# <a name="generate-a-thumbnail-sprite"></a>Küçük resim görüntüsü oluşturma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Bir VTT dosyasıyla birlikte tek bir (büyük) görüntüde birlikte bulunan birden çok küçük çözünürlüklü küçük resim içeren bir JPEG dosyası olan küçük resim sprite oluşturmak için Media Encoder Standard kullanabilirsiniz. Bu VTT dosyası, her bir küçük resmin, büyük JPEG dosyasındaki bu küçük resmin boyutuyla ve koordinatlarıyla birlikte gösterdiği, giriş videosunun zaman aralığını belirtir. Video oyuncuları, bir ' görsel ' SeekBar göstermek için VTT dosyasını ve Sprite görüntüsünü kullanır ve video zaman çizelgesinde geri ve ileri ilerledikçe görsel geri bildirimde bulunan bir Görüntüleyici sağlar.
 
@@ -33,7 +35,7 @@ Küçük resim sprite oluşturmak için Media Encoder Standard kullanmak için �
 
     1. SpriteColumn, e >= 1 olarak ayarlandıysa, çıkış resmi, e-sütunları olan bir dikdörtgendir. #2 aracılığıyla oluşturulan küçük resim sayısı, son satırın tam katı olmaması halinde, son satır eksik olur ve siyah piksellerle kalır.  
 
-Örnek aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 {

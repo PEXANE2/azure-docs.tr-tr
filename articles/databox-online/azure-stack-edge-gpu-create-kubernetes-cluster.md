@@ -1,21 +1,21 @@
 ---
-title: Microsoft Azure Stack Edge cihazında bir Kubernetes kümesi oluşturma ve yönetme | Microsoft Docs
-description: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge cihazında bir Kubernetes kümesinin nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure Stack Edge GPU cihazında bir Kubernetes kümesi oluşturma ve yönetme | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge GPU cihazında bir Kubernetes kümesinin nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 74f86ed48f363031fcab5d9d89046c349a1c3667
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181401"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267967"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda kubectl aracılığıyla bir Kubernetes kümesine bağlanma ve bunları yönetme
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınızda kubectl aracılığıyla bir Kubernetes kümesine bağlanma ve bunları yönetme
 
 Azure Stack Edge cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra, *kubectl*gibi yerel bir araç aracılığıyla bir istemci makinesinden kümeye bağlanabilir ve yerel olarak yönetim sağlayabilirsiniz.
 

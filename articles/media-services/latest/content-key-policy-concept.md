@@ -3,23 +3,25 @@ title: Media Services-Azure 'da içerik anahtarı Ilkeleri | Microsoft Docs
 description: Bu makalede, Içerik anahtarı Ilkelerinin ne olduğu ve Azure Media Services tarafından nasıl kullanıldıkları hakkında bir açıklama sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 49226ba703e8ade963b368616102db035b3c07ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6d907e987cb57836997cab43e9bfa9e919bf67d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092074"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268297"
 ---
 # <a name="content-key-policies"></a>İçerik Anahtar İlkeleri
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. 
 

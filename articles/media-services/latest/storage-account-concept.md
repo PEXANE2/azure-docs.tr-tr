@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Azure Media Services ile kullanmak için bir Azure depolama hesabı oluşturmayı öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/01/2019
-ms.author: juliako
-ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 120bd403d84f9912bd309f965f3b69306fabcc24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072010"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267080"
 ---
 # <a name="azure-storage-accounts"></a>Azure Depolama hesapları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir.
 

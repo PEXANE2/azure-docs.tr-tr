@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182063"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268048"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınızda Kubernetes iş yükü yönetimi
 
@@ -47,11 +47,11 @@ Uygulamaları Azure Stack Edge cihazında dağıtmak için şu adımları izleyi
 
 ![Kubernetes iş yükü dağıtımı](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Yerel dağıtım**: Bu, K8 dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `kubectl` `yamls` . Dosyayı kullanarak oluşturduğunuz Azure Stack Kenarlarınızın K8 kümesine bağlanırsınız `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
+- **Yerel dağıtım**: Bu, `kubectl` Kubernetes 'i dağıtmanıza olanak sağlayan gibi komut satırı erişim aracıdır `yamls` . Dosyayı kullanarak oluşturduğunuz Azure Stack Kenarlarınızın Kubernetes kümesine bağlanırsınız `kubeconfig` . Daha fazla bilgi için, [kubectl aracılığıyla bir Kubernetes kümesine erişme](azure-stack-edge-gpu-create-kubernetes-cluster.md)konusuna gidin.
 
-- **IoT Edge dağıtımı**: Bu, Azure IoT Hub 'e bağlanan IoT Edge. Ad alanı aracılığıyla Azure Stack Edge cihazınızdan K8 kümesine bağlanırsınız `iotedge` . Bu ad alanında dağıtılan IoT Edge aracıları Azure bağlantısı sağlanmasından sorumludur. `IoT Edge deployment.json`Yapılandırmayı Azure DevOps CI/CD kullanarak uygularsınız. Ad alanı ve IoT Edge yönetimi, bulut operatörü aracılığıyla yapılır.
+- **IoT Edge dağıtımı**: Bu, Azure IoT Hub 'e bağlanan IoT Edge. Ad alanı aracılığıyla Azure Stack Edge cihazınızdan Kubernetes kümesine bağlanırsınız `iotedge` . Bu ad alanında dağıtılan IoT Edge aracıları Azure bağlantısı sağlanmasından sorumludur. `IoT Edge deployment.json`Yapılandırmayı Azure DevOps CI/CD kullanarak uygularsınız. Ad alanı ve IoT Edge yönetimi, bulut operatörü aracılığıyla yapılır.
 
-- **Azure/Arc dağıtımı**: Azure Arc, K8 kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Azure Stack Edge cihazınızdan K8 kümesini aracılığıyla bağlanırsınız `azure-arc namespace` . Aracılar, bu ad alanında Azure bağlantısının sorumlu olduğu bir şekilde dağıtılır. Dağıtım yapılandırmasını, Gilar tabanlı yapılandırma yönetimini kullanarak uygularsınız. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyicisini kullanmanıza da imkan tanır. Daha fazla bilgi için [Azure-Arc etkin Kubernetes nedir?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bölümüne bakın.
+- **Azure/Arc dağıtımı**: Azure Arc, Kubernetes kümelerinizde uygulamalar dağıtmanıza imkan tanıyan bir karma yönetim aracıdır. Kubernetes kümesini ile Azure Stack Edge cihazınıza bağlanırsınız `azure-arc namespace` . Aracılar, bu ad alanında Azure bağlantısının sorumlu olduğu bir şekilde dağıtılır. Dağıtım yapılandırmasını, Gilar tabanlı yapılandırma yönetimini kullanarak uygularsınız. Azure Arc, kümelerinizi görüntülemek ve izlemek için kapsayıcılar için Azure Izleyicisini kullanmanıza da imkan tanır. Daha fazla bilgi için [Azure-Arc etkin Kubernetes nedir?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)bölümüne bakın.
 
 ## <a name="choose-the-deployment-type"></a>Dağıtım türünü seçin
 

@@ -14,21 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060224"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268392"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal’ı kullanarak isteğe bağlı içerik göndermeye başlama
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu öğretici, Azure portalı kullanarak Azure Media Services uygulaması ile temel bir isteğe bağlı video içerik teslim hizmeti uygulamanın adımlarını açıklar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 * Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/). 
@@ -135,7 +137,7 @@ Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](/rest/api/me
 2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Ekle**’yi seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Medyayı karşıya yükle
+title: Medyayı karşıya yükleme
 titleSuffix: Azure Media Services
 description: Akış veya kodlama için medya yüklemeyi öğrenin.
 services: media-services
@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 334eebe9680ba0e381bf82ac2e474a47a3b8875e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719266"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267301"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Akış veya kodlama için medya yükleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services, dijital dosyalarınızı (medya) bir varlıkla ilişkili bir blob kapsayıcısına yüklersiniz. Varlık [varlığı video](/rest/api/media/operations/asset) , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir. Dosyalar varlığın kapsayıcısına yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
 

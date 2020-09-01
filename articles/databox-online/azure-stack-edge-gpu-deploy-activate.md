@@ -1,20 +1,20 @@
 ---
 title: Azure portal 'de GPU ile Azure Stack Edge cihazını etkinleştirme öğreticisi | Microsoft Docs
-description: Azure Stack Edge dağıtımı öğreticisi, fiziksel cihazınızı etkinleştirmenizi sağlar.
+description: Azure Stack Edge GPU 'YU dağıtmaya yönelik öğretici, fiziksel cihazınızı etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: be3e7c7f9a5a8c48d8644eefef42b7020e2b37f4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 88be4d9753e48f70dae5666e800a54209ed6ba3f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088338"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267947"
 ---
 # <a name="tutorial-activate-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'i etkinleştirme
 
@@ -25,10 +25,10 @@ Etkinleştirme işleminin tamamlanması 5 dakika sürebilir.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihazı etkinleştirin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -96,7 +96,7 @@ Cihaz etkinleştirme işlemi tamamlanmıştır. Artık cihazınıza paylaşımla
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Fiziksel cihazı etkinleştirin
 
 Azure Stack Edge cihazınızla veri aktarmayı öğrenmek için bkz.:

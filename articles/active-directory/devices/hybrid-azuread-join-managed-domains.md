@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428473"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268426"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -68,14 +68,14 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
+- `https://autologon.microsoftazuread-sso.com` (Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
 
 > [!WARNING]
 > Kuruluşunuz, veri kaybı önleme veya Azure AD kiracı kısıtlamaları gibi senaryolar için SSL trafiğini kesintiye uğratan ara sunucular kullanıyorsa, ' https://device.login.microsoftonline.com ' TRAFIĞININ TLS kesme ve İnceleme dışında dışlandığından emin olun. ' ' Dışlanmaması https://device.login.microsoftonline.com , istemci sertifikası kimlik doğrulaması ile kesintiye neden olabilir ve cihaz kaydı ve cihaz tabanlı koşullu erişimle ilgili sorunlara neden olabilir.
 
-Kuruluşunuzun giden bir ara sunucu üzerinden İnternet 'e erişmesi gerekiyorsa, Azure AD ile cihaz kaydı için Windows 10 bilgisayarlarını etkinleştirmek üzere [Web proxy otomatik bulma 'yı (WPAD) uygulamayı](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) kullanabilirsiniz. WPAD yapılandırma ve yönetme sorunlarını gidermek için bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)). Windows 10 cihazlarında 1709 güncelleştirmesinden önce, WPAD, karma Azure AD JOIN ile çalışmak üzere bir proxy yapılandırmak için kullanılabilen tek seçenektir. 
+Kuruluşunuzun giden bir ara sunucu üzerinden İnternet 'e erişmesi gerekiyorsa, Azure AD ile cihaz kaydı için Windows 10 bilgisayarlarını etkinleştirmek üzere [Web proxy otomatik bulma 'yı (WPAD) uygulamayı](/previous-versions/tn-archive/cc995261(v=technet.10)) kullanabilirsiniz. WPAD yapılandırma ve yönetme sorunlarını gidermek için bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)). Windows 10 cihazlarında 1709 güncelleştirmesinden önce, WPAD, karma Azure AD JOIN ile çalışmak üzere bir proxy yapılandırmak için kullanılabilen tek seçenektir. 
 
-WPAD kullanmıyorsanız, bilgisayarınızda Windows 10 1709 ile başlayarak WinHTTP proxy ayarlarını yapılandırabilirsiniz. Daha fazla bilgi için bkz. [GPO tarafından dağıtılan WinHTTP proxy ayarları](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+WPAD kullanmıyorsanız, bilgisayarınızda Windows 10 1709 ile başlayarak WinHTTP proxy ayarlarını yapılandırabilirsiniz. Daha fazla bilgi için bkz. [GPO tarafından dağıtılan WinHTTP proxy ayarları](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo).
 
 > [!NOTE]
 > Bilgisayarınızda, WinHTTP ayarlarını kullanarak ara sunucu ayarlarını yapılandırırsanız, yapılandırılmış ara sunucuya bağlanamamakta olan tüm bilgisayarlar internet 'e bağlanamaz.
@@ -167,14 +167,14 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 ### <a name="locally-on-the-device"></a>Cihazda yerel olarak
 
 1. Windows PowerShell'i açın.
-2. Şunu girin: `dsregcmd /status`.
+2. `dsregcmd /status` yazın.
 3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
 4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
-2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)bölümünde bulunabilir.
+2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](./device-management-azure-portal.md)bölümünde bulunabilir.
 3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz.
 4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
@@ -224,7 +224,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorunlarla karşılaşırsanız, bkz.:
 
-- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](./troubleshoot-device-dsregcmd.md)
 - [Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme](troubleshoot-hybrid-join-windows-current.md)
 - [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 

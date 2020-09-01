@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Media Services v3 ile geliştirme sırasında varlıklar ve API 'Ler için uygulanan kurallar hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6cb771b8df4ab81ff9c538a38b084856b1dfbc39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267284"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API’leri ile geliştirme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bir geliştirici olarak, özel medya iş akışlarını kolayca oluşturmak, yönetmek ve korumak için REST API ile etkileşime girebilmeniz için Media Services [REST API](/rest/api/media/) veya istemci kitaplıklarını kullanabilirsiniz. [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API 'Si, openapı belirtimini temel alır (önceki adı Swagger olarak bilinir).
 
@@ -113,7 +115,7 @@ Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK’lar
+## <a name="sdks"></a>SDK
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olduğu garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.

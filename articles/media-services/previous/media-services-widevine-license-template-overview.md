@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171984"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266502"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine lisans şablonuna genel bakış 
+# <a name="widevine-license-template-overview"></a>Widevine lisans şablonuna genel bakış
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Google Widevine lisanslarını yapılandırmak ve istemek için Azure Media Services kullanabilirsiniz. Oynatıcı Widevine korumalı içeriğinizi yürütmeye çalıştığında, lisans almak için lisans teslim hizmetine bir istek gönderilir. Lisans hizmeti isteği onayladığında, hizmet lisansı yayınlar. İstemciye gönderilir ve belirtilen içeriğin şifresini çözmek ve yürütmek için kullanılır.
 
 Widevine lisans isteği JSON iletisi olarak biçimlendirilir.  
@@ -61,7 +64,7 @@ Widevine lisans isteği JSON iletisi olarak biçimlendirilir.
 ```
 
 ## <a name="json-message"></a>JSON iletisi
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | yük |Base64 ile kodlanmış dize |İstemci tarafından gönderilen lisans isteği. |
 | content_id |Base64 ile kodlanmış dize |Her bir content_key_specs için anahtar KIMLIĞINI ve içerik anahtarını türetmede kullanılan tanımlayıcı. track_type. |
@@ -79,7 +82,7 @@ Widevine lisans isteği JSON iletisi olarak biçimlendirilir.
 
 Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğinden bağımsız olarak tüm parçalar için belirtilmelidir. 
 
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | content_key_specs. track_type |string |Bir izleme türü adı. Lisans isteğinde content_key_specs belirtilmişse, tüm izleme türlerini açık olarak belirttiğinizden emin olun. Bunun yapılmaması, son 10 saniye içinde oynatılmasına neden olur. |
 | content_key_specs  <br/> security_level |Int32 |Kayıttan yürütme için istemci sağlamlık gereksinimlerini tanımlar. <br/> -Yazılım tabanlı beyaz kutu şifrelemesi gereklidir. <br/> -Yazılım şifrelemesi ve karıştırılmış bir kod çözücü gereklidir. <br/> -Anahtar malzeme ve şifreleme işlemlerinin, donanım ile desteklenen bir güvenilir yürütme ortamında gerçekleştirilmesi gerekir. <br/> -İçerik şifrelemesi ve kodunun çözülmesi, donanım tarafından desteklenen bir güvenilir yürütme ortamında gerçekleştirilmelidir.  <br/> -Şifreleme, kod çözme ve medyanın tüm işlenmesi (sıkıştırılmış ve sıkıştırılmamış), donanım tarafından desteklenen bir güvenilir yürütme ortamında işlenmelidir. |
@@ -88,7 +91,7 @@ Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğind
 | content_key_specs. key_id |Base64 kodlamalı dize ikili, 16 bayt |Anahtar için benzersiz tanımlayıcı. |
 
 ## <a name="policy-overrides"></a>İlke geçersiz kılmaları
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | policy_overrides. can_play |Boolean, true veya false |İçeriğin kayıttan yürütmeye izin verildiğini belirtir. Varsayılan değer false’tur. |
 | policy_overrides. can_persist |Boolean, true veya false |Çevrimdışı kullanım için lisansın kalıcı depolamaya kalıcı olabileceğini belirtir. Varsayılan değer false’tur. |
@@ -103,7 +106,7 @@ Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğind
 | policy_overrides. renew_with_usage |Boolean, true veya false |Kullanım başladığında lisansın yenileme için gönderileceğini belirtir. Bu alan yalnızca can_renew true ise kullanılır. |
 
 ## <a name="session-initialization"></a>Oturum başlatma
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | provider_session_token |Base64 ile kodlanmış dize |Bu oturum belirteci lisansa geri geçirilir ve sonraki yenilemelerde bulunur. Oturum belirteci oturumlardan daha fazla kalıcı yapmaz. |
 | provider_client_token |Base64 ile kodlanmış dize |Lisans yanıtına geri göndermek için istemci belirteci. Lisans isteği bir istemci belirteci içeriyorsa, bu değer yoksayılır. İstemci belirteci, lisans oturumlarının ötesinde devam ettirir. |

@@ -1,21 +1,21 @@
 ---
-title: Azure Stack Edge cihazını dağıtmaya yönelik ön dağıtım denetim listesi | Microsoft Docs
-description: Bu makalede, Azure Stack Edge cihazınızı dağıtmadan önce toplanacak bilgiler açıklanmaktadır.
+title: Azure Stack Edge GPU cihazını dağıtmaya yönelik ön dağıtım denetim listesi | Microsoft Docs
+description: Bu makalede, Azure Stack Edge GPU cihazınızı dağıtmadan önce toplanacak bilgiler açıklanmaktadır.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/29/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: e1233e17dfe2a56e6ea995190b243ed9c64b8945
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d7b3388b7e3a31c23b34b21017f012d40e9f849
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181366"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268151"
 ---
-# <a name="deployment-checklist-for-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınız için dağıtım denetim listesi  
+# <a name="deployment-checklist-for-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazınız için dağıtım denetim listesi  
 
 Bu makalede, Azure Stack Edge cihazınızın gerçek dağıtımının önüne toplanacak bilgiler açıklanmaktadır. 
 

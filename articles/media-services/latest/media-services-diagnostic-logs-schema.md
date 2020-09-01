@@ -3,7 +3,7 @@ title: Tanılama günlükleri şemaları Azure Media Services-Azure
 description: Bu makalede Azure Media Services tanılama günlüğü şemaları gösterilmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6f09a0ab88273aa10bb5f3cb55f89d014897df12
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092023"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268460"
 ---
 # <a name="diagnostic-logs-schemas"></a>Tanılama günlükleri şemaları
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir ve [Log Analytics](https://azure.microsoft.com/services/log-analytics/)ya da üçüncü taraf hizmetleri kullanabilirsiniz.
 

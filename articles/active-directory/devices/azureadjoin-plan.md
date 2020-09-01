@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555024"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268236"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -26,7 +26,7 @@ Bu makale, Azure AD JOIN uygulamanızı planlamak için gereken bilgileri sağla
  
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
+Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](./overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
 ## <a name="plan-your-implementation"></a>Uygulamanızı planlayın
 
@@ -58,7 +58,7 @@ Azure AD katılımı, hem yönetilen hem de Federasyon ortamlarında çalışmak
 
 ### <a name="managed-environment"></a>Yönetilen ortam
 
-Yönetilen bir ortam, [Parola karması eşitlemesi](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) aracılığıyla ya da kesintisiz çoklu oturum açma Ile [kimlik doğrulama](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) yoluyla dağıtılabilir.
+Yönetilen bir ortam, [Parola karması eşitlemesi](../hybrid/how-to-connect-password-hash-synchronization.md) aracılığıyla ya da kesintisiz çoklu oturum açma Ile [kimlik doğrulama](../hybrid/how-to-connect-pta-quick-start.md) yoluyla dağıtılabilir.
 
 Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırmanızı gerektirmez.
 
@@ -69,7 +69,7 @@ Federasyon ortamının hem WS-Trust hem de WS-beslenir protokollerini destekleye
 - **WS-beslenir:** Bu protokol, bir cihazın Azure AD 'ye katılması için gereklidir.
 - **WS-Trust:** Bu protokol, bir Azure AD 'ye katılmış cihazda oturum açmak için gereklidir.
 
-AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/usernamemixed`
+AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
@@ -90,7 +90,7 @@ Cihazları Azure AD 'ye katmak için akıllı kartlar veya sertifika tabanlı ki
 
 İçinde kullanıcı oluşturursanız:
 
-- **Şirket içi Active Directory**, [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis)kullanarak bunları Azure AD ile eşitlemeniz gerekir. 
+- **Şirket içi Active Directory**, [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md)kullanarak bunları Azure AD ile eşitlemeniz gerekir. 
 - **Azure AD**, ek bir kurulum gerekli değildir.
 
 Azure AD UPN 'lerden farklı olan şirket içi UPN 'ler Azure AD 'ye katılmış cihazlarda desteklenmez. Kullanıcılarınız şirket içi UPN kullanıyorsa, Azure AD 'de birincil UPN 'sini kullanmaya geçmeniz gerekir.
@@ -162,7 +162,7 @@ AD FS kullanıyorsanız, bkz. [AD FS ile çoklu oturum açmayı doğrulama ve y�
 
 Cihazın bir etki alanı denetleyicisine erişimi varsa, kullanıcılar Azure AD 'ye katılmış cihazlardan SSO alır. 
 
-**Öneri:** Bu uygulamalar için güvenli erişimi etkinleştirmek üzere [Azure AD uygulaması proxy](/azure/active-directory/manage-apps/application-proxy) dağıtın.
+**Öneri:** Bu uygulamalar için güvenli erişimi etkinleştirmek üzere [Azure AD uygulaması proxy](../manage-apps/application-proxy.md) dağıtın.
 
 ### <a name="on-premises-network-shares"></a>Şirket içi ağ paylaşımları
 
@@ -190,7 +190,7 @@ Windows 10 2004 Güncelleştirmesi başlatıldığında, kullanıcılar Azure AD
 
 Aşağıdaki yaklaşımlardan yararlanarak Azure AD katılımı sağlayabilirsiniz:
 
-- **Self-Service ın OOBE/Settings** -self servis modunda, kullanıcılar, Windows kutudan çıkar DENEYIMI (OOBE) sırasında veya Windows AYARLARıNDAN Azure AD JOIN işlemi üzerinden gider. Daha fazla bilgi için bkz. [iş cihazınızı kuruluşunuzun ağına ekleme](/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Self-Service ın OOBE/Settings** -self servis modunda, kullanıcılar, Windows kutudan çıkar DENEYIMI (OOBE) sırasında veya Windows AYARLARıNDAN Azure AD JOIN işlemi üzerinden gider. Daha fazla bilgi için bkz. [iş cihazınızı kuruluşunuzun ağına ekleme](../user-help/user-help-join-device-on-network.md). 
 - **Windows Autopilot** -Windows Autopilot, BIR Azure AD katılımı gerçekleştirmek üzere daha sorunsuz bir deneyim için cihazların önceden yapılandırılmasını sağlar. Daha fazla bilgi için bkz. [Windows Autopilot 'e genel bakış](/windows/deployment/windows-autopilot/windows-10-autopilot). 
 - Toplu **kayıt** -toplu kayıt, cihazları yapılandırmak için bir toplu sağlama aracı kullanarak yönetici tarafından yönetilen BIR Azure AD katılımı sağlar. Daha fazla bilgi için bkz. [Windows cihazları Için toplu kayıt](/intune/windows-bulk-enroll).
  
@@ -198,11 +198,11 @@ Bu üç yaklaşımdan oluşan bir karşılaştırma
  
 | Öğe | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
 | --- | --- | --- | --- |
-| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Evet | Hayır |
-| BT çabaları gerektir | Hayır | Evet | Yes |
-| Geçerli akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
-| Birincil Kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
-| Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
+| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
+| BT çabaları gerektir | Hayır | Yes | Evet |
+| Uygulanabilir akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
+| Birincil kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
+| Cihaz OEM desteği gerektir | Hayır | Yes | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  
 Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlarınızı seçin ve iki yaklaşımı benimsemeye yönelik aşağıdaki konuları gözden geçirin:  
@@ -220,17 +220,17 @@ Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlar
 
 Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings` .
 
-### <a name="users-may-join-devices-to-azure-ad"></a>Kullanıcılar cihazları Azure AD 'ye katabilir
+### <a name="users-may-join-devices-to-azure-ad"></a>Kullanıcılar cihazları Azure AD’ye ekleyebilir
 
 Bu seçeneği, dağıtımınızın kapsamına ve Azure AD 'ye katılmış bir cihaz kurulumuna izin vermek istediğiniz herhangi bir seçeneğe göre **Tüm** veya **Seçili** olarak ayarlayın. 
 
-![Kullanıcılar cihazları Azure AD 'ye katabilir](./media/azureadjoin-plan/01.png)
+![Kullanıcılar cihazları Azure AD’ye ekleyebilir](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda ek yerel Yöneticiler
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Azure AD’ye katılan cihazlarda ek yerel yöneticiler
 
 **Seçili** ' i seçin ve tüm Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubuna eklemek istediğiniz kullanıcıları seçin. 
 
-![Azure AD 'ye katılmış cihazlarda ek yerel Yöneticiler](./media/azureadjoin-plan/02.png)
+![Azure AD’ye katılan cihazlarda ek yerel yöneticiler](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Cihazlara katılması için çok faktörlü kimlik doğrulaması gerektir
 
@@ -252,18 +252,18 @@ Mobility ayarlarınızı yapılandırmadan önce, önce bir MDM sağlayıcısı 
 
 İlgili ayarları yapılandırmak için MDM sağlayıcınızı seçin. 
 
-### <a name="mdm-user-scope"></a>MDM Kullanıcı kapsamı
+### <a name="mdm-user-scope"></a>MDM kullanıcı kapsamı
 
 Dağıtımınızın kapsamına göre **bazılarını** veya **Tümünü** seçin. 
 
-![MDM Kullanıcı kapsamı](./media/azureadjoin-plan/05.png)
+![MDM kullanıcı kapsamı](./media/azureadjoin-plan/05.png)
 
 Kapsamınızı temel alarak aşağıdakilerden biri olur: 
 
 - **Kullanıcı MDM kapsamında**: Azure AD Premium bir aboneliğiniz varsa, MDM kaydı Azure AD JOIN ile birlikte otomatikleştirilir. Tüm kapsamlı kullanıcıların MDM 'niz için uygun bir lisansı olmalıdır. MDM kaydı bu senaryoda başarısız olursa, Azure AD JOIN de geri alınacaktır.
 - **Kullanıcı MDM kapsamında**değil: kullanıcılar MDM kapsamında değilse, hiçbir MDM kaydı olmadan Azure AD JOIN işlemi tamamlanır. Bu, yönetilmeyen bir cihaza neden olur.
 
-### <a name="mdm-urls"></a>MDM URL 'Leri
+### <a name="mdm-urls"></a>MDM URL’leri
 
 MDM yapılandırmanızla ilgili üç URL vardır:
 
@@ -273,7 +273,7 @@ MDM yapılandırmanızla ilgili üç URL vardır:
 
 ![Uygulama ekleme](./media/azureadjoin-plan/06.png)
 
-Her URL 'de önceden tanımlanmış bir varsayılan değer bulunur. Bu alanlar boşsa, daha fazla bilgi için lütfen MDM sağlayıcınızla iletişim kurun.
+Her URL’de önceden tanımlanmış varsayılan bir değer vardır. Bu alanlar boşsa, daha fazla bilgi için lütfen MDM sağlayıcınızla iletişim kurun.
 
 ### <a name="mam-settings"></a>MAM ayarları
 
@@ -297,7 +297,7 @@ Bu uygulamayı, [bulut uygulaması için yönetilen cihazların koşullu erişim
 
 > [!div class="nextstepaction"]
 > [İlk çalıştırma sırasında Azure AD ile yeni bir Windows 10 cihazına ekleme](azuread-joined-devices-frx.md) 
->  [İş cihazınızı kuruluşunuzun ağına ekleyin](/azure/active-directory/user-help/user-help-join-device-on-network)
+>  [İş cihazınızı kuruluşunuzun ağına ekleyin](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

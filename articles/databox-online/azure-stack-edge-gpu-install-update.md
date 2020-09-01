@@ -1,22 +1,23 @@
 ---
 title: Azure Stack Edge GPU cihazına güncelleştirme yüklemeyi | Microsoft Docs
-description: Azure Stack Edge GPU cihazı için Azure portal ve yerel Web Kullanıcı arabirimini kullanarak güncelleştirmelerin nasıl uygulanacağını açıklar.
+description: Azure Stack Edge GPU cihazı için Azure portal ve yerel Web Kullanıcı arabirimi ve cihazdaki Kubernetes kümesi kullanılarak güncelleştirmelerin nasıl uygulanacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: article
-ms.date: 06/12/2020
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e973e41493b8e84f31a82d5379a01a0e851a48d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89086997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268253"
 ---
 # <a name="update-your-azure-stack-edge-with-gpu"></a>Azure Stack Edge 'i GPU ile güncelleştirme 
 
-Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal aracılığıyla Azure Stack Edge ile güncelleştirme yüklemek için gereken adımlar açıklanmaktadır. Azure Stack Edge cihazınızı güncel tutmak için yazılım güncelleştirmelerini veya düzeltmeleri uygularsınız. 
+Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal aracılığıyla Azure Stack Edge ile güncelleştirme yüklemek için gereken adımlar açıklanmaktadır. Azure Stack Edge cihazınızı ve ilişkili Kubernetes 'i cihazın güncel kalmasını sağlamak için yazılım güncelleştirmelerini veya düzeltmeleri uygularsınız. 
 
 > [!IMPORTANT]
 > - Güncelleştirme **2008** , cihazınızdaki **2.1.1328.1904** yazılım sürümüne karşılık gelir. Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2008-release-notes.md)' na gidin.
@@ -43,7 +44,7 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
     
     Daha fazla bilgi için [Windows Server Update Services (WSUS)](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) sayfasına gidin
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz, güncelleştirmeleri günde bir kez otomatik olarak tarar. Güncelleştirmeler kullanılabilir olduktan sonra portalda bir bildirim görürsünüz. Daha sonra güncelleştirmeleri indirebilir ve yükleyebilirsiniz. 
 

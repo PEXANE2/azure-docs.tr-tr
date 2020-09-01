@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4422c7d360db401233d0cf4c072e88cd4aff16b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 67cf46fbe86dfd8388c61f3a55b4068e57d0b538
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086277"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266519"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>Media Services geliştirme ortamınızı ayarlama  
+# <a name="set-up-your-media-services-development-environment"></a>Media Services geliştirme ortamınızı ayarlama 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)

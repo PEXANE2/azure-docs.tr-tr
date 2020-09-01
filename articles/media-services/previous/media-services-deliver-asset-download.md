@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019462"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266536"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılır: indirme yoluyla varlık sunma  
+# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılır: indirme yoluyla varlık sunma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Bu makalede, Media Services yüklenen medya varlıklarını sunmaya yönelik seçenekler açıklanmaktadır. Birçok uygulama senaryosunda Media Services içeriği sunabilirsiniz. Kodlama sonrasında, üretilen medya varlıklarını indirin veya bir akış Bulucu kullanarak bunlara erişin. Daha iyi performans ve ölçeklenebilirlik sağlamak için, Content Delivery Network (CDN) kullanarak da içerik sağlayabilirsiniz.
 
 Bu örnekte, Media Services ' den yerel bilgisayarınıza medya varlıklarının nasıl indirileceği gösterilmektedir. Kod, iş KIMLIĞINE göre Media Services hesabıyla ilişkili işleri sorgular ve **Outputmediavarlıklarının** koleksiyonuna erişir (bir işi çalıştırmanın sonucu olan bir veya daha fazla çıktı medya varlığı kümesidir). Bu örnek, bir işten çıkış medya varlıklarının nasıl indirileceği gösterir, ancak diğer varlıkları indirmek için aynı yaklaşımı uygulayabilir.

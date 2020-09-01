@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0704913bf3158067c96eeaa69729792cfe63bf37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49fc67bcd45d0c364f47276a9b47676a65f6d837
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010263"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268681"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Varlık teslim ilkelerini yapılandırma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
 Dinamik olarak şifrelenen varlıklar teslim etmeyi planlıyorsanız, Media Services içerik teslim iş akışındaki adımlardan biri varlıklar için teslim ilkelerini yapılandırıyorsunuz. Varlık teslim ilkesi, varlığınızın nasıl sunulmasını istediğinizi Media Services söyler: varlığınızı dinamik olarak paketlemeniz gereken (örneğin, MPEG DASH, HLS, Kesintisiz Akış veya All), varlığınızı ve (zarf veya ortak şifreleme) nasıl (zarf veya ortak şifrelemeyi) bir şekilde şifrelemek isteyip istemediğiniz.

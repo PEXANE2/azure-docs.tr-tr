@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83fc8316171601b7a55e4fc2cb83f49978269150
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9022b1e91b8a1030bf283675b213e87ecf171f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999572"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265941"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Statik paketleme görevlerini gerçekleştirmek için Azure Medya Paketleyiciyi kullanma  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)

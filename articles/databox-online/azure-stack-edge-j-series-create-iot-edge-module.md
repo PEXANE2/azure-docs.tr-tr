@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146241"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268970"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Dosyaları Azure Stack Edge üzerinde taşımak için C# IoT Edge modülünü geliştirme
 
@@ -42,7 +42,7 @@ Azure Stack Edge cihazınız, IoT Edge modülleri dağıtabilir ve çalıştıra
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 

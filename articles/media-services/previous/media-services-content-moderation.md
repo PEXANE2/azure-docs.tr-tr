@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 395d2239970e7efbf6973d6262df0e049306584b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022216"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266706"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure media Content moderator** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.

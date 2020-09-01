@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428590"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268443"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Öğretici: Federasyon etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -32,7 +32,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
 
 - **Wiaormultiauthn talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
 - **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir.
-  AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/windowstransport`
+  AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir: `/adfs/services/trust/2005/windowstransport`
    `/adfs/services/trust/13/windowstransport`
    `/adfs/services/trust/2005/usernamemixed`
    `/adfs/services/trust/13/usernamemixed`
@@ -79,7 +79,7 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - Kuruluşunuzun güvenlik belirteci hizmeti (STS) (federe etki alanları Için)
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
+- `https://autologon.microsoftazuread-sso.com` (Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
 
 > [!WARNING]
 > Kuruluşunuz, veri kaybı önleme veya Azure AD kiracı kısıtlamaları gibi senaryolar için SSL trafiğini kesintiye uğratan ara sunucular kullanıyorsa, ' https://device.login.microsoftonline.com ' TRAFIĞININ TLS kesme ve İnceleme dışında dışlandığından emin olun. ' ' Dışlanmaması https://device.login.microsoftonline.com , istemci sertifikası kimlik doğrulaması ile kesintiye neden olabilir ve cihaz kaydı ve cihaz tabanlı koşullu erişimle ilgili sorunlara neden olabilir.
@@ -88,7 +88,7 @@ Windows 10 1803 ' den itibaren, AD FS kullanarak Federasyon ortamına anında ka
 
 Kuruluşunuz, bir giden proxy üzerinden internet erişimi gerektiriyorsa, Microsoft, Windows 10 bilgisayarlarını Azure AD 'ye cihaz kaydı için etkinleştirmek üzere [Web proxy otomatik bulma (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) uygulamasını önerir. WPAD yapılandırma ve yönetme sorunlarıyla karşılaşırsanız bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
-WPAD kullanmıyorsanız ve bilgisayarınızda proxy ayarlarını yapılandırmak istiyorsanız, Windows 10 1709 ' den başlayarak bunu yapabilirsiniz. Daha fazla bilgi için bkz. [Grup İlkesi nesnesi (GPO) kullanarak WinHTTP ayarlarını yapılandırma](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+WPAD kullanmıyorsanız ve bilgisayarınızda proxy ayarlarını yapılandırmak istiyorsanız, Windows 10 1709 ' den başlayarak bunu yapabilirsiniz. Daha fazla bilgi için bkz. [Grup İlkesi nesnesi (GPO) kullanarak WinHTTP ayarlarını yapılandırma](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo).
 
 > [!NOTE]
 > Bilgisayarınızda, WinHTTP ayarlarını kullanarak ara sunucu ayarlarını yapılandırırsanız, yapılandırılmış ara sunucuya bağlanamamakta olan tüm bilgisayarlar internet 'e bağlanamaz.
@@ -167,7 +167,7 @@ Windows alt düzey cihazlarınızın karma Azure AD katılmasını başarıyla t
 
 - `https://device.login.microsoftonline.com`
 - Kuruluşunuzun STS 'si (federe etki alanları Için)
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO için)
+- `https://autologon.microsoftazuread-sso.com` (Sorunsuz SSO için)
 
 Ayrıca, kullanıcının yerel intranet bölgesindeki **komut dosyası aracılığıyla durum çubuğu güncelleştirmelerine Izin ver** ' i etkinleştirmeniz gerekir.
 
@@ -186,14 +186,14 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 ### <a name="locally-on-the-device"></a>Cihazda yerel olarak
 
 1. Windows PowerShell'i açın.
-2. Şunu girin: `dsregcmd /status`.
+2. `dsregcmd /status` yazın.
 3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
 4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
-2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)bölümünde bulunabilir.
+2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](./device-management-azure-portal.md)bölümünde bulunabilir.
 3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
 4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
@@ -243,7 +243,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Etki alanına katılmış Windows cihazları için karma Azure AD JOIN 'i tamamlamada sorunlarla karşılaşırsanız, bkz.:
 
-- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](./troubleshoot-device-dsregcmd.md)
 - [Windows geçerli cihazlarda karma Azure AD katılımı sorunlarını giderme](troubleshoot-hybrid-join-windows-current.md)
 - [Windows alt düzey cihazlarda karma Azure AD katılımı sorunlarını giderme](troubleshoot-hybrid-join-windows-legacy.md)
 

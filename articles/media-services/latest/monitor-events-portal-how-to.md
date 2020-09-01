@@ -3,7 +3,7 @@ title: Portal ile Event Grid Azure Media Services olaylarını izleme
 description: Bu makalede, Azure Media Services olaylarını izlemek için Event Grid nasıl abone olunacağı gösterilmektedir.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 602ff0a29f3fd8717e581b6ac15d493e3ad475f7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 26e6e56d7c14cfa0ab54776003ae4489bb254094
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542404"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265856"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portalını kullanarak Event Grid ile Media Services olayları oluşturma ve izleme
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu hizmet, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. Media Services olaylar, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. Media." ile başladığı için bir Media Services olayı tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Media Services olay şemaları](media-services-event-schemas.md).
 
@@ -30,9 +32,9 @@ Bu makalede, Azure Media Services hesabınıza yönelik olaylara abone olmak iç
 
 İşiniz bittiğinde, olay verilerinin web uygulamasına gönderildiğini görürsünüz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-* Etkin bir Azure aboneliğiniz olmalıdır.
+* Etkin bir Azure aboneliğine sahip olma.
 * [Bu hızlı başlangıçta](./create-account-howto.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma

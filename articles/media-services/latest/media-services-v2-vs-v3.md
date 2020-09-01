@@ -3,7 +3,7 @@ title: Azure Media Services V2 'den v3 'e geçiş
 description: Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm arasındaki farklılıklar gösteren değişiklikler açıklanmaktadır.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: be0c12eacae9bb13a475de4634746e9d38d35e43
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448395"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267573"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm arasındaki farklılıklar gösteren değişiklikler açıklanmaktadır.
 
@@ -94,14 +96,14 @@ Aşağıdaki tabloda, [varlıkların](/rest/api/media/assets/createorupdate#asse
 |V3 Özellikleri|v2 özellikleri|
 |---|---|
 |`id`-(benzersiz) tam Azure Resource Manager yolu, bkz. [varlık](/rest/api/media/assets/createorupdate) içindeki örnekler||
-|`name`-(benzersiz) bkz. [adlandırma kuralları](media-services-apis-overview.md#naming-conventions) ||
+|`name` -(benzersiz) bkz. [adlandırma kuralları](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
-|`assetId`|`Id`-(unique) değeri `nb:cid:UUID:` önekiyle başlar.|
+|`assetId`|`Id` -(unique) değeri `nb:cid:UUID:` önekiyle başlar.|
 |`created`|`Created`|
 |`description`|`Name`|
 |`lastModified`|`LastModified`|
 |`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options`(oluşturma seçenekleri)|
+|`storageEncryptionFormat`| `Options` (oluşturma seçenekleri)|
 |`type`||
 
 ### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi

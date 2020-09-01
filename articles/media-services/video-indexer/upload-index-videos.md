@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011880"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268834"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -167,7 +167,7 @@ Dizinlenecek video/ses dosyasının URL'si. URL bir medya dosyasına yönlendirm
 
 Aşağıdaki C# kod parçacığı, tüm Video Indexer API'lerinin kullanımını bir arada göstermektedir.
 
-#### <a name="instructions-for-running-this-code-sample"></a>Bu kod örneğini çalıştırmaya yönelik yönergeler
+**Aşağıdaki kod örneğini çalıştırmaya yönelik yönergeler**
 
 Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanız gerekir: API Management kimlik doğrulama anahtarı ve video URL 'SI.
 
