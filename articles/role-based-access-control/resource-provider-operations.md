@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272052"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227772"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -81,7 +81,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok zinciri** |
+| **Blok Zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -797,6 +797,7 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/Applicationgateway/privateEndpointConnections/Read | Application Gateway PrivateEndpoint bağlantılarını alır |
 > | Microsoft. Network/Applicationgateway/privateEndpointConnections/Write | Application Gateway PrivateEndpoint bağlantısını güncelleştirir |
 > | Microsoft. Network/Applicationgateway/privateEndpointConnections/Delete | Application Gateway PrivateEndpoint bağlantısını siler |
+> | Microsoft. Network/Applicationgateway/privateLinkConfigurations/Read | Application Gateway özel bağlantı yapılandırmasını alır |
 > | Microsoft. Network/Applicationgateway/privateLinkResources/Read | ApplicationGateway PrivateLink kaynaklarını alır |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Read | Application Gateway WAF ilkesi alır |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Write | Bir Application Gateway WAF ilkesi oluşturur veya bir Application Gateway WAF ilkesini güncelleştirir |
@@ -880,6 +881,9 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/dnszones/TXT/Read | JSON biçiminde ' TXT ' türünün kayıt kümesini alın. Kayıt kümesi, TTL, Etiketler ve ETag 'in yanı sıra bir kayıt listesi içerir. |
 > | Microsoft. Network/dnszones/TXT/Write | Bir DNS bölgesi içinde ' TXT ' türünde bir kayıt kümesi oluşturun veya güncelleştirin. Belirtilen kayıtlar, kayıt kümesindeki geçerli kayıtların yerini alır. |
 > | Microsoft. Network/dnszones/TXT/Delete | Verilen ad ve ' TXT ' türünün kayıt kümesini bir DNS bölgesinden kaldırın. |
+> | Microsoft. Network/dscpConfiguration/Write | DSCP yapılandırmasını yerleştirme işlemi |
+> | Microsoft. Network/dscpConfiguration/Read | DSCP yapılandırmasını yerleştirme işlemi |
+> | Microsoft. Network/dscpConfiguration/JOIN/Action | DSCP yapılandırmasını birleştirir |
 > | Microsoft. Network/Expressroutedevreler/okuma | Expressroutedevresi al |
 > | Microsoft. Network/Expressroutedevreleri/Write | Mevcut bir Expressroutedevresini oluşturur veya güncelleştirir |
 > | Microsoft. Network/Expressroutedevreleri/JOIN/Action | Bir hızlı rota devresini birleştirir. Alertable değil. |
@@ -916,6 +920,7 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/expressRoutePorts/Write | Expressrouteport oluşturur veya güncelleştirir |
 > | Microsoft. Network/expressRoutePorts/JOIN/Action | Express Route bağlantı noktalarını birleştirir. Alertable değil. |
 > | Microsoft. Network/expressRoutePorts/Delete | ExpressRoutePorts siler |
+> | Microsoft. Network/expressRoutePorts/generateloa/eylem | ExpressRoutePorts için LOA oluşturur |
 > | Microsoft. Network/expressRoutePorts/bağlantılar/okuma | ExpressRouteLink alır |
 > | Microsoft. Network/expressRoutePortsLocations/Read | Hızlı rota bağlantı noktaları konumlarını al |
 > | Microsoft. Network/expressRouteServiceProviders/Read | Hızlı Yönlendirme Hizmeti sağlayıcılarını alır |
@@ -2041,6 +2046,10 @@ Azure hizmeti: [Azure Search](../search/index.yml)
 > | Microsoft. Search/searchServices/Privateendpointconnectionproxy/yazma | Belirtilen parametrelerle özel bir uç nokta bağlantı proxy 'si oluşturur veya belirtilen özel uç nokta bağlantısı proxy 'si için özellikleri veya etiketleri güncelleştirir |
 > | Microsoft. Search/searchServices/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantı proxy 'leri listesini döndürür veya belirtilen özel uç nokta bağlantı proxy 'sinin özelliklerini alır |
 > | Microsoft. Search/searchServices/Privateendpointconnectionproxy 'Leri/silme | Var olan bir özel uç nokta bağlantı proxy 'sini siler |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Write | Belirtilen parametrelerle yeni bir paylaşılan özel bağlantı kaynağı oluşturur veya belirtilen paylaşılan özel bağlantı kaynağı için özellikleri güncelleştirir |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Read | Paylaşılan özel bağlantı kaynaklarının listesini döndürür veya belirtilen paylaşılan özel bağlantı kaynağı için özellikleri alır |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Delete | Var olan bir paylaşılan özel bağlantı kaynağını siler |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Operationdurumlarının/Read | Uzun süre çalışan bir paylaşılan özel bağlantı kaynağı işleminin ayrıntılarını alın |
 
 ### <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -2075,9 +2084,18 @@ Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/SignalR/privateEndpointConnections/Read | Özel bir uç nokta bağlantısını oku |
 > | Microsoft. SignalRService/SignalR/privateLinkResources/Read | Tüm SignalR özel bağlantı kaynaklarını listeleyin |
 > | **DataAction** | **Açıklama** |
-> | Microsoft. SignalRService/SignalR/serverConnection/Write | Sunucu bağlantısı başlatın. |
+> | Microsoft. SignalRService/SignalR/serverConnection/Action | Sunucu bağlantısı başlatın. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Action | Gruplardan istemci bağlantıları Ekle/Kaldır veya bir istemci bağlantısını kapat. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/eylem | Gruplardan Kullanıcı ekleyin/kaldırın. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Read | Bağlantı varlığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Write | İletileri doğrudan bir istemci bağlantısına gönderin. |
+> | Microsoft. SignalRService/SignalR/grup/okuma | Grup varlığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/grup/yazma | Bir gruptaki veya bazı gruplarda istemci bağlantılarına ileti yayınlayın. |
+> | Microsoft. SignalRService/SignalR/hub/Write | Bu hub 'a bağlı tüm istemci bağlantılarına ileti yayınlayın. |
 > | Microsoft. SignalRService/SignalR/Service/accessKey/Action | Clienttoken imzalamak için geçici bir AccessKey alın. |
 > | Microsoft. SignalRService/SignalR/Service/clientToken/Action | İstemci bağlantısı başlatmak için bir ClientToken alın. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/okuma | Kullanıcı varlığını ve bir grup içinde olup olmadığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/yazma | Birden çok istemci bağlantısına sahip olabilecek bir kullanıcıya ileti gönderin. |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -4386,6 +4404,12 @@ Azure hizmeti: [Event Hubs](../event-hubs/index.yml)
 > | Microsoft. EventHub/namespaces/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantısı proxy 'Si al |
 > | Microsoft. EventHub/namespaces/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantısı proxy 'Si oluştur |
 > | Microsoft. EventHub/namespaces/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Sini Sil |
+> | Microsoft. EventHub/namespaces/Privateendpointconnectionproxy/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. EventHub/namespaces/privateEndpointConnections/Read | Özel uç nokta bağlantısı al |
+> | Microsoft. EventHub/namespaces/privateEndpointConnections/Write | Özel uç nokta bağlantısı oluştur veya güncelleştir |
+> | Microsoft. EventHub/namespaces/privateEndpointConnections/Delete | Özel uç nokta bağlantısını kaldırır |
+> | Microsoft. EventHub/namespaces/privateEndpointConnections/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. EventHub/namespaces/privateLinkResources/Read | Özel uç nokta bağlantılarını destekleyen kaynak türlerini alır |
 > | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
@@ -4558,7 +4582,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok zinciri
+## <a name="blockchain"></a>Blok Zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -5082,6 +5106,15 @@ Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/Workspaces/denemeleri/çalıştırmalar/Read | Machine Learning Services çalışma alanlarında çalışmaları alır |
 > | Microsoft. MachineLearningServices/Workspaces/denemeleri/çalıştırmalar/Write | Machine Learning Services çalışma alanlarında çalışan oluşturur veya güncelleştirir |
 > | Microsoft. MachineLearningServices/çalışma alanları/Özellikler/okuma | Machine Learning Services çalışma alanı için tüm etkin özellikleri alır |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/Read | Machine Learning Services çalışma alanındaki çıkarım uç noktalarını alır |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/Write | Machine Learning Services çalışma alanında çıkarım uç noktası oluşturur veya güncelleştirir |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/Delete | Machine Learning Services çalışma alanındaki çıkarım uç noktasını siler |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/Checknameavaılabılıty/Read | Machine Learning Services çalışma alanındaki çıkarım uç noktasının adını denetler |
+> | Microsoft. MachineLearningServices/çalışma alanları/ınenceendpoints/dağıtımlar/okuma | Machine Learning Services çalışma alanındaki çıkarım uç noktasındaki dağıtımları alır |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/dağıtımlar/Write | Machine Learning Services çalışma alanlarında dağıtımı çıkarım uç noktasında oluşturur veya güncelleştirir |
+> | Microsoft. MachineLearningServices/çalışma alanları/ınenceendpoints/dağıtımlar/silme | Machine Learning Services çalışma alanlarında dağıtımı çıkarım uç noktasında siler |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/dağıtımlar/Checknameavaılabılıty/Read | Machine Learning Services çalışma alanındaki çıkarım uç noktasında dağıtım için adı denetler |
+> | Microsoft. MachineLearningServices/Workspaces/ınenceendpoints/dağıtımlar/SKU/okuma | Machine Learning Services çalışma alanındaki çıkarım uç noktasında dağıtım için ölçek SKU ayarlarını alır |
 > | Microsoft. MachineLearningServices/çalışma alanları/etiketleme/dışarı aktarma/eylem | Machine Learning Services çalışma alanındaki etiketleme projelerinin etiketlerini dışarı aktar |
 > | Microsoft. MachineLearningServices/çalışma alanları/etiketleme/Etiketler/okuma | Machine Learning Services çalışma alanındaki etiketleme projelerinin etiketlerini alır |
 > | Microsoft. MachineLearningServices/çalışma alanları/etiketleme/Etiketler/yazma | Machine Learning Services çalışma alanlarında etiketleme projelerinin etiketlerini oluşturur |
@@ -5307,6 +5340,9 @@ Azure hizmeti: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/silme | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/regenerateKeys/ACTION | Ad alanı yetkilendirme kuralı birincil/Ikincil anahtarı yeniden oluştur, yeniden oluşturulması gereken anahtarı belirtin |
+> | Microsoft. Notificationhub 'Lar/ad alanları/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
+> | Microsoft. Notificationhub 'Lar/ad alanları/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
+> | Microsoft. Notificationhub 'Lar/ad alanları/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/yazma | Bir Bildirim Hub 'ı oluşturun ve özelliklerini güncelleştirin. Özellikleri genellikle PNS kimlik bilgilerini içerir. Yetkilendirme kuralları ve TTL |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/okuma | Bildirim Hub 'ı kaynak açıklamalarının listesini al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/silme | Bildirim Hub 'ı kaynağını Sil |
@@ -6006,6 +6042,12 @@ Azure hizmeti: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Microsoft. Relay/namespaces/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantısı proxy 'Si al |
 > | Microsoft. Relay/namespaces/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantısı proxy 'Si oluştur |
 > | Microsoft. Relay/namespaces/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Sini Sil |
+> | Microsoft. Relay/namespaces/Privateendpointconnectionproxy/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. Relay/Namespace/privateEndpointConnections/Read | Özel uç nokta bağlantısı al |
+> | Microsoft. Relay/Namespace/privateEndpointConnections/Write | Özel uç nokta bağlantısı oluştur veya güncelleştir |
+> | Microsoft. Relay/Namespace/privateEndpointConnections/Delete | Özel uç nokta bağlantısını kaldırır |
+> | Microsoft. Relay/Namespace/privateEndpointConnections/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. Relay/Namespace/privateLinkResources/Read | Özel uç nokta bağlantılarını destekleyen kaynak türlerini alır |
 > | Microsoft. Relay/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. Relay/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. Relay/namespaces/Providers/Microsoft. Insights/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
@@ -6077,6 +6119,12 @@ Azure hizmeti: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/namespaces/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantısı proxy 'Si al |
 > | Microsoft. ServiceBus/namespaces/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantısı proxy 'Si oluştur |
 > | Microsoft. ServiceBus/namespaces/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Sini Sil |
+> | Microsoft. ServiceBus/namespaces/Privateendpointconnectionproxy/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. ServiceBus/namespaces/privateEndpointConnections/Read | Özel uç nokta bağlantısı al |
+> | Microsoft. ServiceBus/namespaces/privateEndpointConnections/Write | Özel uç nokta bağlantısı oluştur veya güncelleştir |
+> | Microsoft. ServiceBus/namespaces/privateEndpointConnections/Delete | Özel uç nokta bağlantısını kaldırır |
+> | Microsoft. ServiceBus/namespaces/privateEndpointConnections/OperationStatus/Read | Zaman uyumsuz özel uç nokta işleminin durumunu al |
+> | Microsoft. ServiceBus/namespaces/privateLinkResources/Read | Özel uç nokta bağlantılarını destekleyen kaynak türlerini alır |
 > | Microsoft. ServiceBus/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. ServiceBus/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Microsoft. ServiceBus/namespaces/Providers/Microsoft. Insights/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
@@ -6511,6 +6559,9 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. Securityınsights/threatıntelligence/ölçümler/eylem | Tehdit zekası ölçümlerini toplayın |
 > | Microsoft. Securityınsights/threatıntelligence/bulkDelete/Action | Tehdit zekasını toplu silme |
 > | Microsoft. Securityınsights/threatıntelligence/Bulakg/Action | Toplu Etiketler tehdit bilgileri |
+> | Microsoft. Securityınsights/Watchlists/Read | Watchlists alır |
+> | Microsoft. Securityınsights/Watchlists/Write | Watchlists oluştur |
+> | Microsoft. Securityınsights/Watchlists/Delete | Watchlists siler |
 
 ## <a name="devops"></a>DevOps
 
@@ -7062,7 +7113,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -7213,14 +7264,85 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/günlüğe profiller/Sil | Etkinlik günlüğü günlük profilini silme |
 > | Microsoft. Insights/günlüğe profiller/okuma | Etkinlik günlüğü günlük profilini okuyun |
 > | Microsoft. Öngörüler/Günlükler/okuma | Tüm günlüklerinizin verilerini okuma |
+> | Microsoft. Insights/logs/AADDomainServicesAccountLogon/Read | AADDomainServicesAccountLogon tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesAccountManagement/Read | AADDomainServicesAccountManagement tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesDirectoryServiceAccess/Read | AADDomainServicesDirectoryServiceAccess tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesLogonLogoff/Read | AADDomainServicesLogonLogoff tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesPolicyChange/Read | AADDomainServicesPolicyChange tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesPrivilegeUse/Read | AADDomainServicesPrivilegeUse tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AADDomainServicesSystemSecurity/Read | AADDomainServicesSystemSecurity tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Aadmanagedıdentitysignınlogs/Read | Aadmanagedıdentitysignınlogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Aadnonınteractiveusersignınlogs/Read | Aadnonınteractiveusersignınlogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Aadserviceprincipalsignınlogs/Read | Aadserviceprincipalsignınlogs tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Adassessmentönerisi/okuma | Adassessmentöneriyi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AddonAzureBackupAlerts/Read | AddonAzureBackupAlerts tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AddonAzureBackupJobs/Read | AddonAzureBackupJobs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AddonAzureBackupPolicy/Read | AddonAzureBackupPolicy tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AddonAzureBackupProtectedInstance/Read | AddonAzureBackupProtectedInstance tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AddonAzureBackupStorage/Read | AddonAzureBackupStorage tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADFActivityRun/Read | ADFActivityRun tablosundan verileri oku |
+> | Microsoft. Insights/logs/Adfardışık düzen eylemsizlik/Read | Adfardışık düzen eylemsizlik tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssisıntegrationruntimelogs/Read | Adfssisıntegrationruntimelogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssıspackageeventmessagecontext/Read | ADFSSISPackageEventMessageContext tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssıspackageeventmessages/Read | ADFSSISPackageEventMessages tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssispackageyürütülebilirstatıstıcs/Read | Adfssispackageexecutablestatıstıcs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssispackageexecutioncomponentaşamaların/Read | Adfssispackageexecutioncomponentaşamaların tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Adfssispackageexecutiondatastatıstıcs/Read | Adfssispackageexecutiondatastatıstıcs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADFTriggerRun/Read | ADFTriggerRun tablosundan verileri oku |
 > | Microsoft. Insights/logs/ADReplicationResult/Read | ADReplicationResult tablosundan verileri oku |
 > | Microsoft. Insights/logs/Adsecurityassessmentönerisi/okuma | Adsecurityassessmentönerisi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADTDigitalTwinsOperation/Read | ADTDigitalTwinsOperation tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADTEventRoutesOperation/Read | ADTEventRoutesOperation tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADTModelsOperation/Read | ADTModelsOperation tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ADTQueryOperation/Read | ADTQueryOperation tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Ayumurdeliveryfailurelogs/Read | AegDeliveryFailureLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Ayumurpublishfailurelogs/Read | AegPublishFailureLogs tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/uyarı/okuma | Uyarı tablosundan verileri oku |
 > | Microsoft. Öngörüler/Günlükler/AlertHistory/Read | AlertHistory tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AmlComputeClusterEvent/Read | AmlComputeClusterEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AmlComputeClusterNodeEvent/Read | AmlComputeClusterNodeEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AmlComputeCpuGpuUtilization/Read | AmlComputeCpuGpuUtilization tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AmlComputeJobEvent/Read | AmlComputeJobEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AmlRunStatusChangedEvent/Read | AmlRunStatusChangedEvent tablosundan verileri oku |
+> | Microsoft. Insights/logs/ApiManagementGatewayLogs/Read | ApiManagementGatewayLogs tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AppAvailabilityResults/Read | AppAvailabilityResults tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Appbrowserzamanlamalar/okuma | Appbrowserzamanlamalar tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Appcenterhata/okuma | AppCenterError tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AppDependencies/okuma | AppDependencies tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AppEvents/okuma | AppEvents tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AppExceptions/Read | AppExceptions tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ApplicationInsights/Read | ApplicationInsights tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Appölçümlerini/Read | Appölçümlerini tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppPageViews/Read | AppPageViews tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppPerformanceCounters/okuma | AppPerformanceCounters tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Appplatformlogsforyay/okuma | AppPlatformLogsforSpring tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppPlatformSystemLogs/Read | AppPlatformSystemLogs tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AppRequests/Read | AppRequests tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceAntivirusScanLogs/Read | AppServiceAntivirusScanLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceAppLogs/Read | AppServiceAppLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceAuditLogs/Read | AppServiceAuditLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceConsoleLogs/Read | AppServiceConsoleLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceEnvironmentPlatformLogs/Read | AppServiceEnvironmentPlatformLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Appservicefıleauditlogs/Read | AppServiceFileAuditLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServiceHTTPLogs/Read | AppServiceHTTPLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppServicePlatformLogs/Read | AppServicePlatformLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AppSystemEvents/Read | AppSystemEvents tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/Appizlemeler/okuma | Appizlemeler tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/AuditLogs/okuma | AuditLogs tablosundan verileri oku |
+> | Microsoft. Insights/logs/AutoscaleEvaluationsLog/Read | AutoscaleEvaluationsLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/oto Scalescaleactionslog/Read | Oto Scalescaleactionslog tablosundan verileri oku |
+> | Microsoft. Insights/logs/Awscses Izi/okuma | Awscses Iziz tablosundan verileri okuma |
 > | Microsoft. Insights/logs/AzureActivity/Read | AzureActivity tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Azureassessmentönerisi/okuma | Azureassessmentöneriyi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AzureDevOpsAuditing/Read | AzureDevOpsAuditing tablosundan verileri okuma |
+> | Microsoft. Insights/logs/AzureDiagnostics/Read | AzureDiagnostics tablosundan verileri okuma |
 > | Microsoft. Insights/logs/AzureMetrics/Read | AzureMetrics tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Baılusterevent/Read | BaiClusterEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Baılusternodeevent/Read | BaiClusterNodeEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/BaiJobEvent/Read | BaiJobEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/BehaviorAnalytics/Read | BehaviorAnalytics tablosundan verileri okuma |
+> | Microsoft. Insights/logs/BlockchainApplicationLog/Read | BlockchainApplicationLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/BlockchainProxyLog/Read | BlockchainProxyLog tablosundan verileri okuma |
 > | Microsoft. Insights/logs/BoundPort/Read | BoundPort tablosundan verileri okuma |
 > | Microsoft. Insights/logs/CommonSecurityLog/Read | CommonSecurityLog tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ComputerGroup/Read | ComputerGroup tablosundan verileri okuma |
@@ -7229,7 +7351,22 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/Containerımageınventory/Read | Containerımageınventory tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Containerınventory/Read | Containerınventory tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ContainerLog/Read | ContainerLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Containernodeınventory/Read | Containernodeınventory tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Containerregistrylogınevents/Read | ContainerRegistryLoginEvents tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Containerregistrydepotoryevents/Read | Containerregistrydepotoryevents tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ContainerServiceLog/Read | ContainerServiceLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/CoreAzureBackup/Read | CoreAzureBackup tablosundan verileri okuma |
+> | Microsoft. Insights/logs/DatabricksAccounts/okuma | DatabricksAccounts tablosundan verileri okuma |
+> | Microsoft. Insights/logs/DatabricksClusters/okuma | DatabricksClusters tablosundan verileri okuma |
+> | Microsoft. Insights/logs/DatabricksDBFS/okuma | DatabricksDBFS tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Databricksınstancehavuzlar/Read | Databricksınstancepools tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Databricksk Işleri/okuma | DatabricksJobs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Databricksnot/Read | DatabricksNotebook tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Databricksgizlilikler/Read | Databricksgizlilikler tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Databricksstopermissions/Read | Databricksstopermissions tablosundan verileri okuma |
+> | Microsoft. Insights/logs/DatabricksSSH/Read | DatabricksSSH tablosundan verileri okuma |
+> | Microsoft. Insights/logs/DatabricksTables/Read | DatabricksTables tablosundan veri okuma |
+> | Microsoft. Insights/logs/DatabricksWorkspace/Read | DatabricksWorkspace tablosundan veri okuma |
 > | Microsoft. Insights/logs/Deviceappkilitleniyor/Read | DeviceAppCrash tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Deviceapplayeniden Başlat/oku | Deviceapplayeniden Başlat tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/DeviceCalendar/okuma | DeviceCalendar tablosundan verileri okuma |
@@ -7244,6 +7381,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/Devicestaepstate/Read | Devicestaepstate tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/Dnne hatası/okuma | Dılure tablosundan verileri oku |
 > | Microsoft. Insights/logs/Dakppresorumluluğun/okunan | Dappreyükümlülük tablosundan verileri oku |
+> | Microsoft. Insights/logs/DHCPActivity/Read | DHCPActivity tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Dhdrivergüvenilirlik/okuma | Dhdrivergüvenirlik tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Dhlogonbaşarısızlıkları/okuma | Dhlogonarızaları tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Dhlogonölçümler/okuma | Dhlogonölçümlerini tablosundan verileri okuma |
@@ -7252,15 +7390,28 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/DHWipAppLearning/Read | DHWipAppLearning tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/DnsEvents/okuma | DnsEvents tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Dnsınventory/Read | DnsInventory tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Dynamics365Activity/Read | Dynamics365Activity tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Etwewevent/Read | ETWEvent tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/olay/okuma | Olay tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ExchangeAssessmentRecommendation/Read | ExchangeAssessmentRecommendation tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ExchangeOnlineAssessmentRecommendation/Read | ExchangeOnlineAssessmentRecommendation tablosundan verileri okuma |
+> | Microsoft. Öngörüler/Günlükler/FailedIngestion/Read | FailedIngestion tablosundan verileri oku |
+> | Microsoft. Insights/logs/FunctionAppLogs/Read | FunctionAppLogs tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/sinyal/okuma | Sinyal tablosundan verileri okuma |
+> | Microsoft. Insights/logs/HuntingBookmark/Read | HuntingBookmark tablosundan verileri okuma |
 > | Microsoft. Insights/logs/IISAssessmentRecommendation/Read | IISAssessmentRecommendation tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ınboundconnection/Read | Inboundconnection tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ınsightsölçümlerini/Read | Insightsölçümlerini tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ıntuneauditlogs/Read | Intuneauditlogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ıntunedevicekarmaşıkanceorg/Read | Intunedevicekarmaşıkanceorg tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ıntuneoperationallogs/Read | Intuneoperationallogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/ıothubdistributedizleme/okuma | Iothubdistributedizleme tablosundan verileri okuma |
+> | Microsoft. Insights/logs/KubeEvents/okuma | KubeEvents tablosundan verileri okuma |
+> | Microsoft. Insights/logs/KubeHealth/Read | KubeHealth tablosundan verileri okuma |
+> | Microsoft. Insights/logs/KubeMonAgentEvents/Read | KubeMonAgentEvents tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Kubenodeınventory/Read | Kubenodeınventory tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Kubepodinvenfer/Read | KubePodInventory tablosundan verileri okuma |
+> | Microsoft. Insights/logs/KubeServices/okuma | KubeServices tablosundan verileri okuma |
 > | Microsoft. Insights/logs/LinuxAuditLog/Read | LinuxAuditLog tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAApplication/Read | MAApplication tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/MAApplicationHealth/Read | MAApplicationHealth tablosundan verileri okuma |
@@ -7271,6 +7422,8 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Öngörüler/Günlükler/MAApplicationReadiness/Read | MAApplicationReadiness tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MADeploymentPlan/okuma | MADeploymentPlan tablosundan verileri okuma |
 > | Microsoft. Insights/Günlükler/MADevice/okuma | MADevice tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Madevicenotentopla/Read | Madevicenotentoplatable 'dan verileri okuma |
+> | Microsoft. Insights/logs/MADeviceNRT/okuma | MADeviceNRT tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MADevicePnPHealth/Read | MADevicePnPHealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Madevicepnphealthsorunlar/okuma | Madevicepnphealthsorunlar tablosundan verileri okuma |
@@ -7278,19 +7431,27 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/Madriverınstancereadsürekliliği/okuma | Madriverınstancereadılmi tablosundan verileri oku |
 > | Microsoft. Öngörüler/Günlükler/MADriverReadiness/Read | MADriverReadiness tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeeklentisi/okuma | Maofficeeklenti tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Maofficeaddınentityhealth/Read | Maofficeaddınentityhealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeaddınhealth/Read | Maofficeaddınhealth tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MAOfficeAddinHealthEventNRT/Read | MAOfficeAddinHealthEventNRT tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeaddınhealthsorunlar/okuma | Maofficeaddınhealthsorunlar tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeaddınınstance/Read | Maofficeaddınınstance tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeaddınınstancereadsürekliliği/okuma | Maofficeaddınınstancereadılmi tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeaddınreadiness/Read | Maofficeaddınreadiness tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeuygulaması/okuma | Maofficeuygulama tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MAOfficeAppCrashesNRT/okuma | MAOfficeAppCrashesNRT tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAOfficeAppHealth/Read | MAOfficeAppHealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficeappınstance/Read | Maofficeappınstance tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Maofficeappınstancehealth/Read | Maofficeappınstancehealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAOfficeAppReadiness/Read | MAOfficeAppReadiness tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MAOfficeAppSessionsNRT/okuma | MAOfficeAppSessionsNRT tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficebuilınfo/Read | Maofficebuilınfo tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAOfficeCurrencyAssessment/Read | MAOfficeCurrencyAssessment tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAOfficeCurrencyAssessmentDailyCounts/Read | MAOfficeCurrencyAssessmentDailyCounts tablosundan verileri okuma |
 > | Microsoft. Insights/logs/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MAOfficeDeploymentStatusNRT/okuma | MAOfficeDeploymentStatusNRT tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Maofficemakroerrornrt/okuma | MAOfficeMacroErrorNRT tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Maofficemakroglobalhealth/Read | Maofficemakroglobalhealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficemakrosağlığı/okuma | Maofficemakrohealth tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficemakrohealthsorunlar/okuma | Maofficemacrohealthsorunlar tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Maofficemakroıssueınstancereadsürekliliği/okuma | Maofficemacroıssueınstancectablosundan verileri okuma |
@@ -7303,7 +7464,16 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/Mawindowscurrencki/Read | Mawindowscurrencyaskment tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Mawindowscurrencyassessmentgünlükcounts/okuma | MAWindowsCurrencyAssessmentDailyCounts tablosundan verileri oku |
 > | Microsoft. Insights/logs/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MAWindowsDeploymentStatusNRT/okuma | MAWindowsDeploymentStatusNRT tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Mawindowssysreqınstancereadsürekliliği/okuma | Mawindowssysreqınstancereadtıı tablosundan verileri okuma |
+> | Microsoft. Insights/logs/McasShadowItReporting/Read | McasShadowItReporting tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MicrosoftAzureBastionAuditLogs/Read | MicrosoftAzureBastionAuditLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Microsoftdatasharereceibir Snapshotlog/Read | Microsoftdatasharereceibir Snapshotlog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MicrosoftDataShareSentSnapshotLog/Read | MicrosoftDataShareSentSnapshotLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MicrosoftDataShareShareLog/Read | MicrosoftDataShareShareLog tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Microsoftdynamicstelemetryperformanslı Celogs/Read | Microsoftdynamicstelemetryperformanseogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/MicrosoftDynamicsTelemetrySystemMetricsLogs/Read | MicrosoftDynamicsTelemetrySystemMetricsLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/microsofthealthumerererererererererer | Microsofthealthınumtaauditlogs tablosundan verileri okuma |
 > | Microsoft. Insights/logs/NetworkMonitoring/Read | NetworkMonitoring tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Officeetkinliği/okuma | OfficeActivity tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/Işlem/okuma | Işlem tablosundan verileri oku |
@@ -7319,18 +7489,33 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/SecurityBaselineSummary/okuma | SecurityBaselineSummary tablosundan verileri okuma |
 > | Microsoft. Insights/logs/SecurityDetection/okuma | SecurityDetection tablosundan verileri okuma |
 > | Microsoft. Insights/logs/SecurityEvent/Read | SecurityEvent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Securityıncident/Read | Securityıncident tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Securityıotrawevent/Read | Securityıotrawevent tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Securitynestedönerisi/okuma | Securitynestedöneriyi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Securityönerisi/okuma | Securityöneriyi tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent tablosundan verileri okuma |
 > | Microsoft. Insights/logs/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Sfbassessmentönerisi/okuma | Sfbassessmentöneriyi tablosundan verileri okuma |
 > | Microsoft. Insights/logs/SfBOnlineAssessmentRecommendation/Read | SfBOnlineAssessmentRecommendation tablosundan verileri okuma |
 > | Microsoft. Insights/logs/SharePointOnlineAssessmentRecommendation/Read | SharePointOnlineAssessmentRecommendation tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Signalrservicediagnoçıkartlogs/okuma | Signalrservicediagnoçıkartlogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/Signınlogs/Read | Signınlogs tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Spassessmentönerisi/okuma | Spassessmentöneriyi tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Sqlassessmentönerisi/okuma | Sqlassessmentöneriyi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/SqlDataClassification/Read | SqlDataClassification tablosundan verileri okuma |
 > | Microsoft. Insights/logs/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan verileri okuma |
+> | Microsoft. Insights/logs/SQL | SQLbir bu sonuç tablosundan verileri oku |
+> | Microsoft. Insights/logs/Storagebloblogları/okuma | Storagebloblogları tablosundan verileri okuma |
+> | Microsoft. Insights/logs/StorageFileLogs/Read | StorageFileLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/StorageQueueLogs/Read | StorageQueueLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/StorageTableLogs/Read | StorageTableLogs tablosundan verileri okuma |
+> | Microsoft. Insights/logs/SucceededIngestion/Read | SucceededIngestion tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Syslog/Read | Syslog tablosundan veri okuma |
 > | Microsoft. Insights/logs/SysmonEvent/Read | SysmonEvent tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Tables. Custom/Read | Herhangi bir özel günlükteki verileri okuma |
+> | Microsoft. Insights/logs/Threatıntelligenceındicator/Read | Threatıntelligenceındicator tablosundan verileri okuma |
+> | Microsoft. Insights/Günlükler/Tsıingress/okuma | Tsıingress tablosundan verileri okuma |
 > | Microsoft. Insights/logs/UAApp/Read | UAApp tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/Uabilgisayar/okuma | UAComputer tablosundan verileri okuma |
 > | Microsoft. Insights/logs/UAComputerRank/Read | Uıacomputerrank tablosundan verileri okuma |
@@ -7347,6 +7532,12 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Öngörüler/Günlükler/UpdateRunProgress/Read | UpdateRunProgress tablosundan verileri okuma |
 > | Microsoft. Insights/logs/UpdateSummary/Read | UpdateSummary tablosundan verileri oku |
 > | Microsoft. Öngörüler/Günlükler/kullanım/okuma | Kullanım tablosundan verileri oku |
+> | Microsoft. Insights/logs/UserAccessAnalytics/Read | UserAccessAnalytics tablosundan verileri okuma |
+> | Microsoft. Insights/logs/UserPeerAnalytics/okuma | UserPeerAnalytics tablosundan verileri okuma |
+> | Microsoft. Insights/logs/VMBoundPort/Read | VMBoundPort tablosundan verileri okuma |
+> | Microsoft. Insights/logs/VMComputer/Read | VMComputer tablosundan verileri okuma |
+> | Microsoft. Insights/logs/VMConnection/Read | VMConnection tablosundan verileri okuma |
+> | Microsoft. Insights/logs/VMProcess/Read | VMProcess tablosundan verileri okuma |
 > | Microsoft. Insights/logs/W3CIISLog/Read | W3CIISLog tablosundan verileri okuma |
 > | Microsoft. Insights/logs/WaaSDeploymentStatus/Read | WaaSDeploymentStatus tablosundan verileri oku |
 > | Microsoft. Insights/logs/Waasınsiderstatus/Read | Waasınsiderstatus tablosundan verileri okuma |
@@ -7354,11 +7545,19 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Insights/logs/WDAVStatus/Read | WDAVStatus tablosundan verileri okuma |
 > | Microsoft. Insights/logs/WDAVThreat/Read | WDAVThreat Table 'dan verileri okuma |
 > | Microsoft. Insights/logs/Windowsclientassessmentönerisi/okuma | Windowsclientassessmentöneriyi tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WindowsEvent/Read | WindowsEvent tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/WindowsFirewall/Read | WindowsFirewall tablosundan verileri okuma |
 > | Microsoft. Insights/logs/WindowsServerAssessmentRecommendation/Read | WindowsServerAssessmentRecommendation tablosundan verileri okuma |
 > | Microsoft. Insights/logs/kablolu veri/okuma | Kablolu veri tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WorkloadMonitoringPerf/Read | WorkloadMonitoringPerf tablosundan verileri okuma |
 > | Microsoft. Insights/logs/Wudoaggreg, Status/Read | Wudoaggreg, Status tablosundan verileri okuma |
 > | Microsoft. Öngörüler/Günlükler/WUDOStatus/okuma | WUDOStatus tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDCheckpoints/Read | WVDCheckpoints tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDConnections/Read | WVDConnections tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDErrors/okuma | WVDErrors tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDFeeds/Read | WVDFeeds tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDHostRegistrations/Read | WVDHostRegistrations tablosundan verileri okuma |
+> | Microsoft. Insights/logs/WVDManagement/Read | WVDManagement tablosundan verileri okuma |
 > | Microsoft. Insights/MetricAlerts/Write | Ölçüm uyarısı oluşturma veya güncelleştirme |
 > | Microsoft. Insights/MetricAlerts/Delete | Ölçüm uyarısını silme |
 > | Microsoft. Insights/MetricAlerts/okuma | Ölçüm uyarısını okuyun |
@@ -7576,9 +7775,18 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicectaanup/okuma | Devicectaanup tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/DeviceConnectSession/Read | DeviceConnectSession tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceEtw/okuma | DeviceEtw tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceEvents/okuma | DeviceEvents tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceFileEvents/okuma | DeviceFileEvents tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHardwareHealth/Read | DeviceHardwareHealth tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHealth/Read | DeviceHealth tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesinyal/okuma | Devicesinyal tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/Deviceımageloadevents/Read | Deviceımageloadevents tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/DeviceInfo/Read | DeviceInfo tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceLogonEvents/okuma | DeviceLogonEvents tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceNetworkEvents/okuma | DeviceNetworkEvents tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/Devicenetworkınfo/Read | Devicenetworkınfo tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/DeviceProcessEvents/Read | DeviceProcessEvents tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceRegistryEvents/okuma | DeviceRegistryEvents tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeHeartbeat/okuma | DeviceSkypeHeartbeat tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeSignIn/okuma | DeviceSkypeSignIn tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesliepstate/Read | Devicestaepstate tablosundan verileri okuma |
@@ -7629,6 +7837,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/HDInsightStormLogs/okuma | HDInsightStormLogs tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/HDInsightStormMetrics/okuma | HDInsightStormMetrics tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/HDInsightStormTopologyMetrics/okuma | HDInsightStormTopologyMetrics tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/HealthStateChangeEvent/Read | HealthStateChangeEvent tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/sinyal/okuma | Sinyal tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/HuntingBookmark/Read | HuntingBookmark tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/IISAssessmentRecommendation/okuma | IISAssessmentRecommendation tablosundan verileri okuma |
@@ -7712,6 +7921,8 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Işlem/okuma | Işlem tablosundan verileri oku |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/OutboundConnection/Read | OutboundConnection tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/perf/okuma | Perf tablosundan verileri oku |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/PowerBIDatasetsTenantPreview/okuma | PowerBIDatasetsTenantPreview tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/Powerbıdatasetsworkspace önizlemesi/okuma | Powerbıdatasetsworkspace önizleme tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/ProtectionStatus/Read | ProtectionStatus tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/istekler/okuma | İstekler tablosundan verileri oku |
 > | Microsoft. Operationalınsights/Workspaces/Query/Sccmassessmentönerisi/okuma | Sccmassessmentöneriyi tablosundan verileri okuma |
@@ -7919,9 +8130,6 @@ Azure hizmeti: [Azure ilkesi](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyDefinitions/Read | Bir ilke tanımı hakkında bilgi alın. |
 > | Microsoft. Authorization/policyDefinitions/Write | Özel bir ilke tanımı oluşturun. |
 > | Microsoft. Authorization/policyDefinitions/Delete | İlke tanımını silin. |
-> | Microsoft. Authorization/Policymuafiyet/okuma | İlke muafiyeti hakkında bilgi alın. |
-> | Microsoft. Authorization/Policymuafiyet/yazma | Belirtilen kapsamda bir ilke muafiyeti oluşturun. |
-> | Microsoft. Authorization/Policymuafiyet/silme | Belirtilen kapsamdaki bir ilke muafiyetini silin. |
 > | Microsoft. Authorization/policySetDefinitions/Read | İlke kümesi tanımı hakkında bilgi alın. |
 > | Microsoft. Authorization/policySetDefinitions/Write | Özel bir ilke kümesi tanımı oluşturun. |
 > | Microsoft. Authorization/policySetDefinitions/Delete | İlke kümesi tanımını silin. |
@@ -9076,12 +9284,14 @@ Azure hizmeti: çekirdek
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
 > | --- | --- |
-> | Microsoft. Subscription/CreateSubscription/eylem | Azure aboneliği oluşturma |
-> | Microsoft. Subscription/Register/ACTION | Aboneliği Microsoft. Subscription kaynak sağlayıcısına kaydeder |
 > | Microsoft. Subscription/Cancel/ACTION | Aboneliği iptal eder |
 > | Microsoft. abonelik/yeniden adlandırma/eylem | Aboneliği yeniden adlandırır |
-> | Microsoft. Subscription/SubscriptionDefinitions/okuma | Bir yönetim grubu içinde bir Azure abonelik tanımı alın. |
-> | Microsoft. Subscription/SubscriptionDefinitions/yaz | Azure abonelik tanımı oluşturma |
+> | Microsoft. Subscription/Enable/Action | Aboneliği etkinleştirilir |
+> | Microsoft. Subscription/CreateSubscription/eylem | Azure aboneliği oluşturma |
+> | Microsoft. Subscription/Register/ACTION | Aboneliği Microsoft. Subscription kaynak sağlayıcısına kaydeder |
+> | Microsoft. Subscription/updateTenant/Action | Aboneliğin kiracı güncelleştirme |
+> | Microsoft. Subscription/diğer adlar/yazma | Abonelik diğer adı oluştur |
+> | Microsoft. abonelik/abonelikler/yazma | Abonelik oluştur veya güncelleştir |
 
 ## <a name="intune"></a>Intune
 

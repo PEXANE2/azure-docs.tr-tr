@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228775"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
     - **Oturum açma** bilgileri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgiler.
     - **Denetim günlükleri**  -  [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
+    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
@@ -142,14 +142,14 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 ![İstemci uygulama filtresi](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern kimlik doğrulaması|Açıklama|
+|Name|Modern kimlik doğrulaması|Description|
 |---|:-:|---|
 |Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
 |Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
 |Exchange ActiveSync| |Bu filtre, EAS protokolünün denendiği tüm oturum açma girişimlerini gösterir.|
 |Tarayıcı|![İşaretli](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
 |Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange Acticessync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
-|Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Exchange Web Hizmetleri| |Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
 |IMAP4| |E-posta almak için IMAP kullanan eski bir posta istemcisi.|
 |HTTP üzerinden MAPI| |Outlook 2010 ve üzeri tarafından kullanılır.|
@@ -271,13 +271,12 @@ Uygulama kullanımı grafiğinde bir güne tıkladığınızda, oturum açma etk
 
 ## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
 
-[Microsoft 365 Yönetim merkezinden](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlüklerinin, dizin kaynaklarının önemli bir sayısını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlüklerinin, dizin kaynaklarının önemli bir sayısını paylaştığı noktayı göz önünde bulundurun. Yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Office [365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Oturum açma Etkinliği raporu hata kodları](reference-sign-ins-error-codes.md)
 * [Azure AD veri saklama ilkeleri](reference-reports-data-retention.md)
 * [Azure AD rapor gecikmeleri](reference-reports-latencies.md)
-

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146428"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229404"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -29,7 +29,7 @@ Bu örnekte, bir Azure Batch altyapısını dağıtmak ve bir uygulama paketini 
 Bu makaledeki adımları izlemek için bir Azure DevOps organizasyonu ve bir takım projesi gerekir.
 
 * [Azure DevOps organizasyonu oluşturma](/azure/devops/organizations/accounts/create-organization)
-* [Azure DevOps 'da proje oluşturma](/azure/devops/organizations/projects/create-projects)
+* [Azure DevOps 'da proje oluşturma](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>Ortamınız için kaynak denetimi
 
@@ -325,7 +325,7 @@ Bu örnekte, **HPC-Application** klasörüne odaklanacağız. **HPC-Application*
 
     a. [Görsel tasarımcı kullanma](/azure/devops/pipelines/get-started-designer). Bunu kullanmak için **Yeni işlem hattı** sayfasında "görsel tasarımcıyı kullan" a tıklayın.
 
-    b. [YAML derlemelerini kullanma](/azure/devops/pipelines/get-started-yamls). Yeni bir YAML işlem hattı oluşturarak yeni bir işlem hattı sayfasında Azure Repos veya GitHub seçeneğine tıklayabilirsiniz. Alternatif olarak, aşağıdaki örneği, kaynak denetilinizi kullanarak, Visual Designer ' a tıklayıp YAML şablonunu kullanarak var olan bir YAML dosyasına başvurabilirsiniz.
+    b. [YAML derlemelerini kullanma](/azure/devops/pipelines/get-started-yaml). Yeni bir YAML işlem hattı oluşturarak yeni bir işlem hattı sayfasında Azure Repos veya GitHub seçeneğine tıklayabilirsiniz. Alternatif olarak, aşağıdaki örneği, kaynak denetilinizi kullanarak, Visual Designer ' a tıklayıp YAML şablonunu kullanarak var olan bir YAML dosyasına başvurabilirsiniz.
 
     ```yml
     # To publish an application into Azure Batch, we need to

@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854535"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228639"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
@@ -25,7 +25,7 @@ Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri 
 
 - Kapsayıcı geçici silme, bir kapsayıcının yanlışlıkla silinmesine veya üzerine yazılmasına karşı koruma için. Kapsayıcı geçici silmeyi etkinleştirme hakkında bilgi edinmek için bkz. [kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-container-enable.md).
 - Blob geçici silme, tek bir Blobun yanlışlıkla silinmeye veya üzerine yazılmasına karşı koruma sağlamak için. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md).
-- Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma (Önizleme). Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
+- Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
 
 > [!WARNING]
 > Depolama hesabını silme işlemi geri alınamaz. Geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz. Bir depolama hesabının yanlışlıkla silinmesini engellemek için, depolama hesabı kaynağında bir **Cannotdelete** kilidi yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
@@ -123,4 +123,4 @@ Kapsayıcı geçici silme özelliğini etkinleştirmek için ek ücret alınmaz.
 
 - [Kapsayıcıyı geçici silme yapılandırması](soft-delete-container-enable.md)
 - [Bloblar için geçici silme](soft-delete-blob-overview.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)

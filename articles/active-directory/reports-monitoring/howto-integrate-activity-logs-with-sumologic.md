@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c3b1216d5ced766a77bb1fb63e41eaedb8220d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ccdfa99a36635e72fc97820ec6b852e36a50ec2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608985"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229795"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini SumoLogic ile tümleştirme
 
@@ -31,12 +31,12 @@ Bu makalede, Azure Izleyici kullanarak Azure Active Directory (Azure AD) günlü
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
-* Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
+* Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](./tutorial-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 * SumoLogic çoklu oturum açma etkin aboneliği.
 
 ## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Azure AD günlüklerini SumoLogic ile tümleştirme adımları 
 
-1. İlk olarak [Azure AD günlüklerini bir Azure Olay Hub 'ına akışı](quickstart-azure-monitor-stream-logs-to-event-hub.md)yapın.
+1. İlk olarak [Azure AD günlüklerini bir Azure Olay Hub 'ına akışı](./tutorial-azure-monitor-stream-logs-to-event-hub.md)yapın.
 2. [Azure Active Directory günlüklerini toplamak](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)için SumoLogic örneğinizi yapılandırın.
 3. Ortamınızın gerçek zamanlı analizini sağlayan önceden yapılandırılmış panoları kullanmak için [Azure AD SumoLogic uygulamasını yükler](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) .
 

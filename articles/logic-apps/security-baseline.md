@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079651"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228401"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps için Azure Güvenlik temeli
 
@@ -94,9 +94,9 @@ NSG 'leri, sınırlı bir süre için bitiş noktaları onaylı IP adresleriyle 
 
 Bağlantı noktalarını ve kaynak IP 'Leri gerçek trafik ve tehdit zeka göre sınırlayan NSG yapılandırmalarının kullanılması için Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma kullanın.
 
-* [Logic Apps gelen çağrıları güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Logic Apps gelen çağrıları güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Gelen IP adreslerini kısıtlama](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Gelen IP adreslerini kısıtlama](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [DDoS korumasını yapılandırma](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ Bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL 'sinde bir
 
 * [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [SAS kullanarak Azure Logic Apps erişimi ve verileri güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [SAS kullanarak Azure Logic Apps erişimi ve verileri güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Azure Güvenlik Merkezi izleme**: yok
 
@@ -382,7 +382,7 @@ Temel kimlik doğrulaması kullanılıyorsa, bir Kullanıcı adı ve parola beli
 
 Kod olarak altyapı kullanıyorsanız, parolaları kodda depolamaktan kaçının ve bunun yerine kimlik bilgilerini depolamak ve almak için Azure Key Vault kullanın.
 
-* [Logic Apps verileri güvenli hale getirme ve verilere erişme](./logic-apps-securing-a-logic-app.md)
+* [Logic Apps verileri güvenli hale getirme ve verilere erişme](logic-apps-securing-a-logic-app.md)
 
 * [Azure Key Vault bir gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ Ayrıca, bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL '
 
 * [Azure 'da adlandırılmış konumları yapılandırma](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Logic Apps gelen IP adreslerini nasıl kısıtlayacağınızı anlayın](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Logic Apps gelen IP adreslerini nasıl kısıtlayacağınızı anlayın](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure Güvenlik Merkezi izleme**: yok
 
@@ -611,11 +611,11 @@ Istek tetikleyicisi, gelen istekler için yalnızca Aktarım Katmanı Güvenliğ
 
 Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın.
 
-* [Azure Logic Apps 'da güvenli erişim ve veriler](./logic-apps-securing-a-logic-app.md)
+* [Azure Logic Apps 'da güvenli erişim ve veriler](logic-apps-securing-a-logic-app.md)
 
-* [Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin](../connectors/connectors-native-reqres.md#tls-support)
+* [Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma](../connectors/connectors-native-http.md#tls-support)
+* [Azure Logic Apps'ten HTTP veya HTTPS üzerinden hizmet uç noktalarını çağırma](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 Microsoft, Azure Logic Apps için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-* [Çalışma geçmişi verilerine güvenli erişim](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [Çalışma geçmişi verilerine güvenli erişim](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ Microsoft, Azure Logic Apps için temel altyapıyı yönetir ve müşteri verile
 
 Başkalarının mantıksal uygulamanızı değiştirmesini veya silmesini engellemek için Azure Kaynak kilidi ' ni kullanabilirsiniz. Bu özellik başkalarının üretim kaynaklarını değiştirmesini veya silmesini engeller.
 
-* [Azure Logic Apps işlemlerine güvenli erişim](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Azure Logic Apps işlemlerine güvenli erişim](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Güvenlik Merkezi izleme**: yok
 
@@ -885,7 +885,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 * [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [Azure RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Azure RBAC aracılığıyla Logic Apps erişimi güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Güvenlik Merkezi izleme**: yok
 
@@ -911,9 +911,9 @@ Ayrıca hassas verileri ve gizli dizileri korumak için güvenli parametreleri k
 
 * [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps için Azure Resource Manager şablonlarını dağıtma](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Logic Apps için Azure Resource Manager şablonlarını dağıtma](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Güvenli eylem parametrelerini anlama](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Güvenli eylem parametrelerini anlama](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Parametreler için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Ayrıca, gizleme kullanarak verileri çalıştırma geçmişinde güvende olduğ
 
 * [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps için Azure Resource Manager şablonlarını dağıtma](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Logic Apps için Azure Resource Manager şablonlarını dağıtma](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Çalışma geçmişi girişleri ve çıkışları için güvenli erişim](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Çalışma geçmişi girişleri ve çıkışları için güvenli erişim](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Parametre girdilerine güvenli erişim](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Parametre girdilerine güvenli erişim](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Parametreler için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik ger
 
 Logic Apps 'i barındırmak için bir tümleştirme hizmeti ortamı (ıSE) oluşturduğunuzda ve Azure Storage tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istiyorsanız, Azure Key Vault kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınız "müşteri tarafından yönetilen anahtar" olarak adlandırılır.
 
-* [Azure Logic Apps çalışma geçmişinde güvenli giriş ve çıkış çıkışları](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Azure Logic Apps çalışma geçmişinde güvenli giriş ve çıkış çıkışları](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Parametreler için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Azure Logic Apps içindeki parametre girdilerine güvenli erişim](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Azure Logic Apps içindeki parametre girdilerine güvenli erişim](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Azure Key Vault kullanarak dağıtım sırasında güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ Logic Apps 'i barındırmak için bir tümleştirme hizmeti ortamı (ıSE) oluş
 
 Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı da uygulayabilirsiniz. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
 
-* [Azure Logic Apps çalışma geçmişinde güvenli giriş ve çıkış çıkışları](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Azure Logic Apps çalışma geçmişinde güvenli giriş ve çıkış çıkışları](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Parametreler için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Azure Logic Apps içindeki parametre girdilerine güvenli erişim](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Azure Logic Apps içindeki parametre girdilerine güvenli erişim](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Azure Key Vault kullanarak dağıtım sırasında güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Ayrıca, mantıksal uygulamanızın temel alınan iş akışı tanımını bir A
 
 * [Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma hakkında daha fazla bilgi edinin](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımını otomatikleştirme](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: yok
 
@@ -1151,9 +1151,9 @@ Bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL 'sinde bir
 
 * [Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma hakkında daha fazla bilgi edinin](./business-continuity-disaster-recovery-guidance.md)
 
-* [Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımını otomatikleştirme](./logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [SAS kullanarak Azure Logic Apps erişimi ve verileri güvenli hale getirme](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [SAS kullanarak Azure Logic Apps erişimi ve verileri güvenli hale getirme](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Key Vault anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

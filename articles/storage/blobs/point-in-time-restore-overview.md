@@ -10,12 +10,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2840e82508ee4f4046aec8f23c00a5c275bf5b67
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 07a1e81f2fe63ea8d34f362627ad79ab6729f3f0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074466"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229132"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yükleme (Önizleme)
 
@@ -56,7 +56,7 @@ Zaman içinde geri yükleme, aşağıdaki Azure depolama özelliklerinin etkinle
 
 - [Geçici silme](soft-delete-overview.md)
 - [Akışı Değiştir (Önizleme)](storage-blob-change-feed.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)
 
 Noktadan noktaya geri yüklemeyi etkinleştirmeden önce depolama hesabı için bu özellikleri etkinleştirin. Etkinleştirmeden önce değişiklik akışına ve BLOB sürüm önizlemesine kaydolduğunuzdan emin olun.
 
@@ -105,7 +105,7 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 # Register for change feed (preview)
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
-# Register for blob versioning (preview)
+# Register for Blob versioning
 Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace

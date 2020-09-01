@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0d917ea686c2003bf46b6fca872ef67fb0363107
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144082"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228928"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -32,7 +32,7 @@ ML ardışık düzenleri işlem hedefleri üzerinde yürütülür (bkz. [Azure M
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun.
 
@@ -56,10 +56,8 @@ ML işlem hattı çalıştırmak için gereken kaynakları oluşturma:
 * Bir `Dataset` nesnesi, bir veri deposu içinde bulunan veya ' de erişilebilir olan kalıcı verileri işaret etmek üzere yapılandırın. İşlem `PipelineData` hattı adımları arasında geçirilen geçici veriler için bir nesne yapılandırın. 
 
     > [!TIP]
-    > Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfında bulunabilir  `OutputFileDatasetConfig` .  Bu sınıf, deneysel Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
-    > 
-    >Deneysel özellikler hakkında daha fazla bilgi için bkz https://aka.ms/azuremlexperimental ..
-    
+    > Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfında bulunabilir  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) .  Bu sınıf, [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir.
+
 * Ardışık düzen adımlarınızın çalıştırılacağı [işlem hedeflerini](concept-azure-machine-learning-architecture.md#compute-targets) ayarlayın.
 
 ### <a name="set-up-a-datastore"></a>Veri deposu ayarlama

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 55a4f06b93aafbd1e94a3bf6573ba39dc25022b5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077016"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228690"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -45,7 +45,6 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |Anlık Görüntüler|Önizleme|Henüz desteklenmiyor|[Blob anlık görüntüleri](snapshots-overview.md)|
 |Statik web siteleri|Önizleme|Henüz desteklenmiyor|[Azure Depolama'da statik web sitesi barındırma](storage-blob-static-website.md)|
 |Sabit depolama|Önizleme|Henüz desteklenmiyor|[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)|
-|Yaşam döngüsü yönetim ilkeleri|Önizleme|Henüz desteklenmiyor|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
 |Kapsayıcı geçici silme|Önizleme|Önizleme|[Kapsayıcılar için geçici silme (Önizleme)](soft-delete-container-overview.md)|
 |Blob geçici silme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Bloblar için geçici silme](storage-blob-soft-delete.md)|
 |Blobsigortası|Önizleme|Henüz desteklenmiyor|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|

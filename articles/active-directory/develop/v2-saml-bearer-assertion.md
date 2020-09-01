@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949363"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227925"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
 OAuth 2,0 SAML taşıyıcı onaylama akışı, bir istemcinin var olan bir güven ilişkisini kullanması gerektiğinde bir SAML onaylama işlemi kullanarak bir OAuth erişim belirteci istemesini sağlar. SAML onaylaması 'na uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML onaylama, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcı, güvenlikle ilgili amaçlar için onay konusunun konusunu belirlemek üzere içeriğine bağımlıdır.
@@ -27,14 +27,14 @@ SAML taşıyıcı onaylama akışı, kullanıcıdan kimlik bilgileri istemeden M
 
 Bir SAML onaylama işlemi almak ve ardından OAuth korumalı bir API 'ye (Microsoft Graph gibi) erişim eklemek için etkileşimli tarayıcı tabanlı oturum açma kullanan uygulamalar için, API için bir erişim belirteci almak üzere bir OAuth isteği yapabilirsiniz. Tarayıcı, kullanıcının kimliğini doğrulamak için Azure AD 'ye yeniden yönlendirildiğinde, tarayıcı, SAML oturum açma işleminden oturumu seçer ve kullanıcının kimlik bilgilerini girmesi gerekmez.
 
-OAuth SAML taşıyıcı onaylama akışı, Azure Active Directory Federal Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kimlik doğrulaması yapan kullanıcılar için de desteklenir.  ADFS 'den edinilen SAML onaylama işlemi, kullanıcının kimliğini doğrulamak için bir OAuth akışında kullanılabilir.
+OAuth SAML taşıyıcı onaylama akışı yalnızca Azure Active Directory Federal Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi kimlik sağlayıcılarıyla kimlik doğrulaması yapan kullanıcılar için desteklenir.  ADFS 'den edinilen SAML onaylama işlemi, kullanıcının kimliğini doğrulamak için bir OAuth akışında kullanılabilir.
 
 ![OAuth akışı](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>SAML taşıyıcı onaylama kullanarak Graph çağırma
 Artık SAML onaylama program aracılığıyla 'ı gerçekten nasıl getirdiğimiz hakkında anladık. Bu yaklaşım, ADFS ile test edilmiştir. Ancak, bu, SAML onaylama program aracılığıyla dönüşü destekleyen herhangi bir kimlik sağlayıcısıyla birlikte kullanılır. Temel süreç: bir SAML onaylama işlemi alın, erişim belirteci alın ve Microsoft Graph erişin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Yetkilendirme sunucusu/ortam (Microsoft 365) ile kimlik sağlayıcısı ya da SAML 2,0 taşıyıcı onaylama (ADFS) veren arasında bir güven ilişkisi oluşturun. ADFS 'yi çoklu oturum açma ve kimlik sağlayıcısı olarak yapılandırmak için [Bu makaleye](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)başvurabilirsiniz.
 

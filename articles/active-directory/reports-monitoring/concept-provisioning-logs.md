@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826880"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229880"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -34,12 +34,12 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
     - **Günlükleri sağlama** -Azure AD sağlama hizmeti tarafından sağlanan Kullanıcı, Grup ve roller hakkında sistem etkinliği sağlar. 
 
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir.
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir.
+    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
 
 Bu konu, sağlama raporuna genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
@@ -218,36 +218,34 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 - Şu anda Log Analytics desteği yoktur.
 
-- Sağlama günlüklerine bir uygulama bağlamından eriştiğinizde, olayları otomatik olarak belirli bir uygulamayla denetim günlüklerinin yaptığı şekilde filtreetmez.
+- Kapsamda olmayan kullanıcılar için Atlanan olayları görebilirsiniz. Özellikle eşitleme kapsamı tüm kullanıcılar ve gruplar olarak ayarlandığında bu beklenmektedir. Hizmetimiz, Kiracıdaki tüm nesneleri, kapsam dışı olsalar da değerlendirmeyecektir. 
 
 ## <a name="error-codes"></a>Hata Kodları
 
 Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini daha iyi anlamak için aşağıdaki tabloyu kullanın. Eksik olan herhangi bir hata kodu için, bu sayfanın en altındaki bağlantıyı kullanarak geri bildirim sağlayın. 
 
-|Hata Kodu|Açıklama|
+|Hata Kodu|Description|
 |---|---|
-|Çakışma, EntryConflict|Çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, Azure AD 'de veya uygulamada çakışan öznitelik değerlerini düzeltin ya da eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) gözden geçirin.|
+|Çakışma, EntryConflict|Çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, Azure AD 'de veya uygulamada çakışan öznitelik değerlerini düzeltin ya da eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için aşağıdaki [belgeleri](../app-provisioning/customize-application-attributes.md) gözden geçirin.|
 |TooManyRequests|Hedef uygulama, aşırı yüklenmiş ve çok fazla istek aldığından kullanıcıyı güncelleştirme girişimini reddetti. Yapılacak bir şey yok. Bu deneme otomatik olarak kullanımdan kaldırılacak. Microsoft bu sorunla aynı zamanda bilgilendirildi.|
 |InternalServerError |Hedef uygulama beklenmeyen bir hata döndürdü. Hedef uygulamayla ilgili olarak çalışmasını engelleyen bir hizmet sorunu olabilir. Bu deneme, 40 dakika içinde otomatik olarak kullanımdan kaldırılacaktır.|
-|InsufficientRights, MethodNotAllowed, NotAllowed, yetkisiz| Azure AD, hedef uygulamayla kimlik doğrulaması yapabiliyor, ancak güncelleştirmeyi gerçekleştirme yetkisi yoktu. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)gözden geçirin.|
+|InsufficientRights, MethodNotAllowed, NotAllowed, yetkisiz| Azure AD, hedef uygulamayla kimlik doğrulaması yapabiliyor, ancak güncelleştirmeyi gerçekleştirme yetkisi yoktu. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](../saas-apps/tutorial-list.md)gözden geçirin.|
 |UnprocessableEntity|Hedef uygulama beklenmeyen bir yanıt döndürdü. Hedef uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir.|
 |WebExceptionProtocolError |Hedef uygulamaya bağlanılırken bir HTTP protokol hatası oluştu. Yapılacak bir şey yok. Bu deneme, 40 dakika içinde otomatik olarak kullanımdan kaldırılacaktır.|
-|Invalidanchor|Sağlama hizmeti tarafından daha önce oluşturulmuş veya eşleştirilmiş bir Kullanıcı artık yok. Kullanıcının mevcut olduğundan emin olmak için denetleyin. Tüm kullanıcıların yeniden eşleşmesini zorlamak için, [işi yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)üzere MS Graph API kullanın. Yeniden başlatmanın sağlanması, tamamlanması zaman alabilir ve bir başlangıç döngüsünü tetikleyeceğini unutmayın. Ayrıca, sağlama hizmetinin çalışması için kullandığı önbelleği de siler, yani Kiracıdaki tüm kullanıcılar ve gruplar yeniden değerlendirilmek ve belirli sağlama olayları bırakılamaz.|
-|NotImplemented | Hedef uygulama beklenmeyen bir yanıt döndürdü. Uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)gözden geçirin. |
-|MandatoryFieldsMissing, MissingValues |Gerekli değerler eksik olduğundan kullanıcı oluşturulamadı. Kaynak kayıttaki eksik öznitelik değerlerini düzeltin veya gerekli alanların atlanmadığından emin olmak için eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
-|SchemaAttributeNotFound |Hedef uygulamada mevcut olmayan bir öznitelik belirtildiğinden, işlem gerçekleştirilemedi. Öznitelik özelleştirme hakkındaki [belgelere](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) bakın ve yapılandırmanızın doğru olduğundan emin olun.|
+|Invalidanchor|Sağlama hizmeti tarafından daha önce oluşturulmuş veya eşleştirilmiş bir Kullanıcı artık yok. Kullanıcının mevcut olduğundan emin olmak için denetleyin. Tüm kullanıcıların yeniden eşleşmesini zorlamak için, [işi yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)üzere MS Graph API kullanın. Yeniden başlatmanın sağlanması, tamamlanması zaman alabilir ve bir başlangıç döngüsünü tetikleyeceğini unutmayın. Ayrıca, sağlama hizmetinin çalışması için kullandığı önbelleği de siler, yani Kiracıdaki tüm kullanıcılar ve gruplar yeniden değerlendirilmek ve belirli sağlama olayları bırakılamaz.|
+|NotImplemented | Hedef uygulama beklenmeyen bir yanıt döndürdü. Uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](../saas-apps/tutorial-list.md)gözden geçirin. |
+|MandatoryFieldsMissing, MissingValues |Gerekli değerler eksik olduğundan kullanıcı oluşturulamadı. Kaynak kayıttaki eksik öznitelik değerlerini düzeltin veya gerekli alanların atlanmadığından emin olmak için eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında [daha fazla bilgi edinin](../app-provisioning/customize-application-attributes.md) .|
+|SchemaAttributeNotFound |Hedef uygulamada mevcut olmayan bir öznitelik belirtildiğinden, işlem gerçekleştirilemedi. Öznitelik özelleştirme hakkındaki [belgelere](../app-provisioning/customize-application-attributes.md) bakın ve yapılandırmanızın doğru olduğundan emin olun.|
 |InternalError |Azure AD sağlama hizmeti içinde bir iç hizmet hatası oluştu. Yapılacak bir şey yok. Bu deneme 40 dakika içinde otomatik olarak yeniden denenecek.|
 |Invaliddomain |Geçersiz bir etki alanı adı içeren bir öznitelik değeri nedeniyle işlem gerçekleştirilemedi. Kullanıcının etki alanı adını güncelleştirin veya hedef uygulamadaki izin verilen listeye ekleyin. |
 |Zaman aşımı |Hedef uygulamanın yanıt vermesi çok uzun sürdüğü için işlem tamamlanamadı. Yapılacak bir şey yok. Bu deneme 40 dakika içinde otomatik olarak yeniden denenecek.|
 |Licenselimitexceıbaşında|Bu Kullanıcı için kullanılabilir lisans olmadığından, Kullanıcı hedef uygulamada oluşturulamadı. Hedef uygulama için ek lisanslar temin edebilir ya da doğru özniteliklerin doğru özniteliklerle atandığından emin olmak için Kullanıcı atamalarınızı ve öznitelik eşleme yapılandırmanızı gözden geçirin.|
-|DuplicateTargetEntries  |Hedef uygulamada yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Hedef uygulamadan yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)açıklandığı gibi yeniden yapılandırın.|
-|DuplicateSourceEntries | Yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)açıklandığı gibi yeniden yapılandırın.|
+|DuplicateTargetEntries  |Hedef uygulamada yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Hedef uygulamadan yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
+|DuplicateSourceEntries | Yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
 |Importatlandı | Her kullanıcı değerlendirildiğinde, kullanıcıyı kaynak sistemden içeri aktarmayı deneiyoruz. Bu hata genellikle, içeri aktarılan Kullanıcı öznitelik eşlemelerinizde tanımlanan eşleşen özellik eksikse oluşur. Eşleşen öznitelik için Kullanıcı nesnesinde bir değer olmadan kapsam, eşleme veya dışarı aktarma değişikliklerini değerlendiremedik. Not, bu hatanın varlığı kullanıcının kapsam içinde olduğunu göstermez, ancak kullanıcı için kapsamları henüz değerlendirdik.|
 |Entrysynchronizationatlandı | Sağlama Hizmeti, kaynak sistemi başarıyla sorguladı ve kullanıcıyı tanımladı. Kullanıcı üzerinde başka bir eylem yapılmadı ve bunlar atlandı. Atlama, kullanıcının kapsam dışına çıkmasına veya daha fazla değişiklik gerekmeden hedef sistemde zaten mevcut olan kullanıcıdan kaynaklanıyor olabilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kullanıcı hazırlama durumunu denetleme](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](../app-provisioning/application-provisioning-config-problem.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı 'na giriş
+title: Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 titleSuffix: Azure Web Application Firewall
 description: Bu makalede, Application Gateway Web uygulaması güvenlik duvarı 'na (WAF) genel bir bakış sunulmaktadır
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142850"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227007"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 
 Azure Application Gateway Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın genel güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. SQL ekleme ve siteler arası komut dosyası oluşturma en yaygın saldırı arasındadır.
 
@@ -98,7 +98,7 @@ Geomatch işleci artık özel kurallar için genel önizlemede kullanılabilir. 
 
 ### <a name="bot-mitigation-preview"></a>Bot azaltma (Önizleme)
 
-Yönetilen bir bot koruma kuralı kümesi, WAF 'nizin yönetilen RuleSet 'in yanı sıra bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlüğe kaydetmek için etkinleştirilebilir. IP adresleri Microsoft Threat Intelligence akışından kaynaklıdır. Intelligent Security Graph, Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.
+Yönetilen bir bot koruma kuralı kümesi, WAF 'nizin yönetilen RuleSet 'in yanı sıra bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlüğe kaydetmek için etkinleştirilebilir. IP adresleri, Microsoft Tehdit Analizi akışından alınır. Microsoft Tehdit Analizi, Intelligent Security Graph tarafından desteklenir ve Azure Güvenlik Merkezi dahil olmak üzere birçok hizmet tarafından kullanılır.
 
 > [!NOTE]
 > Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -158,9 +158,9 @@ Microsoft Azure Sentinel, ölçeklenebilir, bulutta yerel, güvenlik bilgileri o
 Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizin güvenlik olaylarına genel bir bakış edinebilirsiniz. Bu, olayları, eşleşen ve engellenen kuralları ve güvenlik duvarı günlüklerinde günlüğe kaydedilen diğer her şeyi içerir. Aşağıda günlüğe kaydetme hakkında daha fazla bilgi bulabilirsiniz. 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Azure WAF güvenlik duvarı olayları çalışma kitabı](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Günlüğe kaydetme
+#### <a name="logging"></a>Günlüğe Kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
 
@@ -206,10 +206,12 @@ WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporla
 
 Fiyatlandırma modelleri WAF_v1 ve WAF_v2 SKU 'Ları için farklıdır. Daha fazla bilgi için lütfen [Application Gateway fiyatlandırma](https://azure.microsoft.com/pricing/details/application-gateway/) sayfasına bakın. 
 
+## <a name="whats-new"></a>Yenilikler
+
+Azure Web uygulaması güvenlik duvarı yenilikleri hakkında bilgi edinmek için bkz. [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [BIR WAF Ilkesi oluşturarak](create-waf-policy-ag.md) başlayın
 - [WAF tarafından yönetilen kurallar](application-gateway-crs-rulegroups-rules.md) hakkında daha fazla bilgi edinin
 - [Özel kurallar](custom-waf-rules-overview.md) hakkında daha fazla bilgi edinin
 - [Azure ön kapıda Web uygulaması güvenlik duvarı](../afds/afds-overview.md) hakkında bilgi edinin
-

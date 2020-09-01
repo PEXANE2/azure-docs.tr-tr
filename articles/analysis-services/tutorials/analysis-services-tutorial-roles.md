@@ -1,18 +1,18 @@
 ---
 title: Öğretici-Azure Analysis Services rollerini yapılandırma | Microsoft Docs
-description: Azure portal veya SQL Server Management Studio kullanarak Azure Analysis Services Yönetici ve Kullanıcı rollerinin nasıl yapılandırılacağını öğrenin.
+description: Bu öğreticide, Azure portal veya SQL Server Management Studio kullanarak Azure Analysis Services Yönetici ve Kullanıcı rollerinin nasıl yapılandırılacağını öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84016398"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229370"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -63,7 +63,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 3. **Nesne Gezgini**'nde, sunucu nesnelerini görmek için sunucuyu genişletin. Sunucu özelliklerini görmek için sağ tıklatın.
    
-    ![SSMS'de bağlanma](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
+    ![SSMS 'de Nesne Gezgini](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir kullanıcı hesabı ekleme
 

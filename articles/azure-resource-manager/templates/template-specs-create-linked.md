@@ -2,19 +2,19 @@
 title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: a70d4be2810b8d5a19fa9d806444cac1674e1a05
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.date: 08/31/2020
+ms.openlocfilehash: f1808be73981c3ab4d53fd2a651822b93b5fb790
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959230"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228010"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
 [Bağlantılı şablonla](linked-templates.md#linked-template) [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)yeni özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -186,7 +186,7 @@ az group create \
   --name templateSpecRG \
   --location westus2
 
-az template-specs create \
+az ts create \
   --name webSpec \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
@@ -207,14 +207,14 @@ Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
-az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 ```
 
 ---
 
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
-Artık şablon belirtimini dağıtabilirsiniz. şablon belirtiminin dağıtılması, şablon belirtiminin kaynak KIMLIĞINI geçirmeniz dışında, içerdiği şablonu dağıtmaktır. Aynı dağıtım komutlarını kullanırsınız ve gerekirse, şablon belirtiminin parametre değerlerini geçirin.
+Artık şablon belirtimini dağıtabilirsiniz. Şablon belirtiminin dağıtım, şablon belirtiminin kaynak KIMLIĞI ' ni geçirmeniz dışında, içerdiği şablonu dağıtmaktan benzer. Aynı dağıtım komutlarını kullanırsınız ve gerekirse, şablon belirtiminin parametre değerlerini geçirin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

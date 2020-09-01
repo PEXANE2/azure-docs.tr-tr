@@ -1,6 +1,6 @@
 ---
-title: Gen2 Explorer 'da verileri görselleştirme-Azure Time Series Insights Gen2 | Microsoft Docs
-description: Azure Time Series Insights Gen2 Explorer 'da bulunan özellikler ve seçenekler hakkında bilgi edinin.
+title: Verileri TSI Explorer 'da görselleştirin-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Azure Time Series Insights Gezgini 'nde bulunan özellikler ve seçenekler hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,22 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164164"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227058"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Gezgini
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede Azure Time Series Insights Gen2 [demo ortamında](https://insights.timeseries.azure.com/preview/demo)kullanılabilen çeşitli özellikler ve seçenekler açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Time Series Insights Gen2 Explorer ile çalışmaya başlamak için şunları yapmanız gerekir:
+Azure Time Series Insights Gezginini kullanmaya başlamak için şunları yapmanız gerekir:
 
 * Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
 * Hesap için oluşturduğunuz Azure Time Series Insights Gen2 ortamına [veri erişimi sağlar](./time-series-insights-data-access.md) . Başkalarının yanı sıra kendinize de erişim sağlayabilirsiniz.
@@ -31,11 +31,11 @@ Azure Time Series Insights Gen2 Explorer ile çalışmaya başlamak için şunla
   * [Bir olay hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin
   * [IoT Hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-iothub.md) öğrenin
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Gezginini keşfet
+## <a name="explore-the-azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezginini keşfet
 
-Azure Time Series Insights Gen2 Explorer aşağıdaki yedi öğeden oluşur:
+Azure Time Series Insights Gezgini aşağıdaki yedi öğeden oluşur:
 
-[![Azure Time Series Insights Gen2 Explorer genel bakış](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Azure Time Series Insights Gezgini 'ne genel bakış](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [Ortam paneli](#1-environment-panel): tüm Azure Time Series Insights Gen2 ortamlarınızı görüntüler.
 1. [Gezinti çubuğu](#2-navigation-bar): **analiz** ve **model** sayfaları arasında geçiş yapmanızı sağlar.
@@ -193,7 +193,7 @@ Yeni bir tema seçmek için sağ üst köşede bulunan profil simgenizi seçin. 
 > [!TIP]
 > Dil seçimi, profil simgenizin seçilerek de kullanılabilir.
 
-Azure Time Series Insights Gen2 Explorer iki tema destekler:
+Azure Time Series Insights Explorer iki tema destekler:
 
 * **Açık tema**: Bu belge boyunca gösterilen varsayılan tema.
 * **Koyu tema**: gezgin 'i burada gösterildiği gibi işler:
@@ -204,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer iki tema destekler:
 
 ### <a name="gen2-terms-panel"></a>Gen2 terimleri bölmesi
 
-Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen 1 ortamları için geçerlidir. Gen 1 ürün ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gen2 Explorer 'da bir gen 1 ortamı için tam kullanıcı arabirimi deneyimini edinebilirsiniz.
+Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kullanmayı deneyen mevcut Gen 1 ortamları için geçerlidir. Gen 1 ürün ve Gen2 ürününü birlikte kullanmak isteyebilirsiniz. Mevcut kullanıcı arabiriminden güncelleştirilmiş gezgin 'e bazı işlevler ekledik, ancak yeni Azure Time Series Insights Gezgininde bir gen 1 ortamı için tam kullanıcı arabirimi deneyimini edinebilirsiniz.
 
 Hiyerarşi yerine, Azure Time Series Insights Gen2 terimleri paneli görüntülenir. Terimler paneli ortamınızda sorgular tanımlamanızı sağlar. Ayrıca, bir koşula göre verileri filtrelemek için kullanın.
 

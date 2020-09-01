@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e28da81400a97216836cfd9eccf0d4859ce0762f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902363"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228231"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
 
@@ -31,7 +31,7 @@ Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure A
 Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Kullanıcı uygunluğunu Privileged Identity Management (PıM) kullanarak bir role tam zamanında Yükseltilmek üzere de yapılandırabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
-> Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../users-groups-roles/directory-manage-roles-portal.md)gerçekleştirilir.
+> Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../users-groups-roles/directory-manage-roles-portal.md)gerçekleştirilir. Bu özellik şu anda aynı anda yalnızca bir rol atamak için sınırlıdır. Şu anda birden çok rol seçemezsiniz ve bunları bir kullanıcıya tek seferde atayabilirsiniz.
 >
 > ![Zaten PıM kullanan ve Premium P2 lisansına sahip olan kullanıcılar için PıM 'de yönetilen Azure AD rolleri](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 

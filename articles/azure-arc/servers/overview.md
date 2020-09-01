@@ -1,20 +1,20 @@
 ---
 title: Azure Arc etkin sunucular (Önizleme) genel bakış
-description: Azure 'un dışında barındırılan makineleri Azure kaynağı olarak yönetmek için Azure Arc etkin sunucularını (Önizleme) nasıl kullanacağınızı öğrenin.
+description: Azure 'un dışında barındırılan sunucuları bir Azure kaynağı gibi yönetmek için Azure Arc etkin sunucularını (Önizleme) nasıl kullanacağınızı öğrenin.
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211320"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228096"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Azure Arc etkin sunucuları (Önizleme) nedir?
 
-Azure Arc etkin sunucular (Önizleme), yerel Azure sanal makinelerini yönetme sürecinize benzer şekilde, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenize olanak sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir aboneliğin içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır.
+Azure Arc etkin sunucular (Önizleme), yerel Azure sanal makinelerini yönetme sürecinize benzer şekilde, Azure dışında barındırılan Windows ve Linux makinelerinizi şirket ağınızda veya diğer bulut sağlayıcınızdan yönetmenizi sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir aboneliğin içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır.
 
 Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunmak için Azure 'a bağlanmayı planladığınız her makinede Azure bağlı makine aracısının yüklü olması gerekir. Bu aracı başka bir işlevsellik sunmaz ve Azure [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md)yerini almaz. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
 
@@ -51,4 +51,4 @@ Bağlı makine Aracısı, her 5 dakikada bir hizmete düzenli bir sinyal iletisi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birden çok karma makinede yay etkin sunucuları (Önizleme) değerlendirmeden veya etkinleştirmeden önce, nelerin gerekli olduğunu, aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini öğrenmek için [bağlı makine aracısına genel bakış](agent-overview.md) makalesini gözden geçirin.
+Birden çok karma makinede yay etkin sunucuları (Önizleme) değerlendirmeden veya etkinleştirmeden önce, gereksinimleri anlamak için [bağlı makine aracısına genel bakış](agent-overview.md) ' ı ve aracı hakkındaki teknik ayrıntıları ve dağıtım yöntemlerini gözden geçirin.

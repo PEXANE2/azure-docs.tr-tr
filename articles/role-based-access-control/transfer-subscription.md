@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177287"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227041"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -42,7 +42,7 @@ Aşağıdaki diyagramda, bir aboneliği farklı bir dizine aktardığınızda iz
 
 1. Aktarım için hazırlanma
 
-1. Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
+1. Azure aboneliğini farklı bir dizine aktarma
 
 1. Hedef dizinde rol atamaları, özel roller ve yönetilen kimlikler gibi kaynakları yeniden oluşturun
 
@@ -264,12 +264,12 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ## <a name="step-2-transfer-the-subscription"></a>2. Adım: aboneliği aktarma
 
-Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar, faturalandırma sahipliğini de aktarmak isteyip istemediğinize bağlı olarak farklı olacaktır.
+Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar, faturalandırma sahipliğini de aktarmak istediğinize bağlı olarak farklılık belirtir.
 
 > [!WARNING]
 > Aboneliği aktardığınızda, kaynak dizindeki tüm rol atamaları **kalıcı olarak** silinir ve geri yüklenemez. Aboneliği aktardıktan sonra geri dönemezsiniz. Bu adımı gerçekleştirmeden önce önceki adımları tamamladığınızdan emin olun.
 
-1. Faturalandırma sahipliğini de aktarmak isteyip istemediğinizi belirleme.
+1. Aynı zamanda faturalandırma sahipliğini başka bir hesaba aktarmak isteyip istemediğinizi belirleme.
 
 1. Aboneliği farklı bir dizine aktarın.
 

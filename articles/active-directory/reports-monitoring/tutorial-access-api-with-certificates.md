@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bc763a99c945925b80171738f4076e6305d92df9
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85608017"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229468"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
 
@@ -100,5 +100,5 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Raporlama API'leriyle ilgili ilk izlenim elde edin](concept-reporting-api.md)
-* [API başvurusunu denetle](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Oturum açma Etkinliği raporu API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [API başvurusunu denetle](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Oturum açma Etkinliği raporu API başvurusu](/graph/api/resources/signin?view=graph-rest-beta)

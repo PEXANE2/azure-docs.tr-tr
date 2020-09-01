@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856810"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229234"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
@@ -85,18 +85,11 @@ Bu bölümde, bir Azure Active Directory hizmet sorumlusu kullanarak HDInsight k
 Azure portal, var olan bir hizmet sorumlusunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
 Azure portal bir hizmet sorumlusu oluşturmak için:
-
-1. Depolama dikey penceresinden **Data Lake Store erişim** ' i seçin.
-1. **Data Lake Storage 1. erişim** dikey penceresinde **Yeni oluştur**' u seçin.
-1. **Hizmet sorumlusu**' nı seçin ve ardından hizmet sorumlusu oluşturmak için yönergeleri izleyin.
-1. Daha sonra yeniden kullanmaya karar verirseniz sertifikayı indirin. Ek HDInsight kümeleri oluştururken aynı hizmet sorumlusunu kullanmak istiyorsanız, sertifikayı indirme yararlı olur.
-
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "HDInsight kümesine hizmet sorumlusu ekleme")
-
-1. Klasör erişimini yapılandırmak için **erişim** ' i seçin.  Bkz. [Dosya Izinlerini yapılandırma](#configure-file-permissions).
+1. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
 
 Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
 
+1. Hizmet sorumlusu, depolama hesabında sahip izinlerine sahip olmalıdır. [Depolama hesabında sahip olması Için hizmet sorumlusunun Izinlerini ayarlama](#configure-serviceprincipal-permissions) bölümüne bakın
 1. **Data Lake Store erişim**' i seçin.
 1. **Data Lake Storage 1. erişim** dikey penceresinde **Varolanı kullan**' ı seçin.
 1. **Hizmet sorumlusu**' nı seçin ve ardından hizmet sorumlusu ' nı seçin.
@@ -105,6 +98,10 @@ Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
     ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
 1. Klasör erişimini yapılandırmak için **erişim** ' i seçin.  Bkz. [Dosya Izinlerini yapılandırma](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Depolama hesabında sahip olması için hizmet sorumlusu için izinleri ayarlayın
+1. Depolama hesabının Access Control (ıAM) dikey penceresinde rol ataması Ekle ' ye tıklayın. 
+2. Rol ataması Ekle dikey penceresinde, rolü ' sahip ' olarak seçin ve SPN 'yi seçip Kaydet ' e tıklayın.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Dosya izinlerini yapılandırma
 
@@ -130,7 +127,7 @@ Data Lake Storage 1. hesabı kök düzeyinde izin atamak için:
 
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. İzin atamak için **Çalıştır** ' ı seçin.
-1. **Done** (Bitti) öğesini seçin.
+1. **Bitti**'yi seçin.
 
 HDInsight kümesi kök düzeyinde izin atamak için:
 
@@ -140,7 +137,7 @@ HDInsight kümesi kök düzeyinde izin atamak için:
 1. Klasör üzerindeki izinleri ayarlayın.  Varsayılan olarak, okuma, yazma ve yürütme tümü seçilidir.
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. **Çalıştır**'ı seçin.
-1. **Done** (Bitti) öğesini seçin.
+1. **Bitti**'yi seçin.
 
 Ek depolama alanı olarak Data Lake Storage 1. kullanıyorsanız, yalnızca HDInsight kümesinden erişmek istediğiniz klasörlere izin atamanız gerekir. Örneğin, aşağıdaki ekran görüntüsünde yalnızca bir Data Lake Storage 1. hesabındaki **myNewFolder** klasörüne erişim sağlarsınız.
 
@@ -176,9 +173,9 @@ CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.a
 
 Tanımlarını
 
-* `adl://hdiadlsg1storage.azuredatalakestore.net/`Data Lake Storage 1. hesabının köküdür.
-* `/clusters/myhdiadlcluster`, kümeyi oluştururken belirttiğiniz küme verilerinin köküdür.
-* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/`, sorguda kullandığınız örnek dosyanın konumudur.
+* `adl://hdiadlsg1storage.azuredatalakestore.net/` Data Lake Storage 1. hesabının köküdür.
+* `/clusters/myhdiadlcluster` , kümeyi oluştururken belirttiğiniz küme verilerinin köküdür.
+* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` , sorguda kullandığınız örnek dosyanın konumudur.
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>Data Lake Storage 1. hesabındaki verilerde bir Hive sorgusu çalıştırma (ek depolama alanı olarak)
 

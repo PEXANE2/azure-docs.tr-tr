@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843717"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228894"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>Veri alma işlem hattı için DevOps
 
@@ -64,7 +64,7 @@ Değişiklikleri izlemek ve takım üyeleri arasında işbirliğini etkinleştir
 Veri mühendisleri, Python Not defteri kaynak koduyla yerel olarak bir IDE 'de (örneğin, [Visual Studio Code](https://code.visualstudio.com)) veya doğrudan Databricks çalışma alanında çalışır. Kod değişiklikleri tamamlandıktan sonra, bir dallanma ilkesi takip eden depoya birleştirilir.
 
 > [!TIP] 
-> Kodu `.py` `.ipynb` Jupyter Not defteri biçiminde değil dosyalarında depolamanızı öneririz. Kod okunabilirliğini geliştirir ve CI işleminde otomatik kod kalitesi denetimleri sağlar.
+> Kodu `.py` Jupyter Notebook biçiminde değil dosyalarında depolamanızı öneririz `.ipynb` . Kod okunabilirliğini geliştirir ve CI işleminde otomatik kod kalitesi denetimleri sağlar.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory kaynak kodu
 
@@ -286,7 +286,7 @@ Azure Data Factory için dağıtılabilir yapıt Azure Resource Manager şablonu
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-Veri dosya adı parametresinin değeri, `$(DATA_FILE_NAME)` qa aşama değişkeni grubunda tanımlanan değişkenden gelir. Benzer şekilde, ***üzerindeARMTemplateForFactory.js*** tanımlanmış tüm parametreler geçersiz kılınabilir. Aksi takdirde, varsayılan değerler kullanılır.
+Veri dosya adı parametresinin değeri, `$(DATA_FILE_NAME)` qa aşama değişkeni grubunda tanımlanan değişkenden gelir. Benzer şekilde, *** üzerindeARMTemplateForFactory.js*** tanımlanmış tüm parametreler geçersiz kılınabilir. Aksi takdirde, varsayılan değerler kullanılır.
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>İşlem hattını çalıştırma ve veri alma sonucunu denetleme
 

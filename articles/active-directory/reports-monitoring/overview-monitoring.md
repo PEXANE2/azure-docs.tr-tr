@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873424"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228656"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory izleme nedir?
 
@@ -63,7 +63,7 @@ Günlükleri bir Azure olay hub'ına aktarmak, Sumologic ve Splunk gibi üçünc
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerine gönder
 
-[Azure izleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , farklı kaynaklardan izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. [Azure izleyici günlüklerine veri gönderme](howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
+[Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md) , farklı kaynaklardan izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. [Azure izleyici günlüklerine veri gönderme](howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
 
 Oturum açma ve denetim etkinlikleri gibi yaygın senaryoları izlemek için önceden oluşturulmuş Azure AD etkinlik günlüklerini de görüntüleyebilirsiniz. [Azure ad etkinlik günlükleri için Log Analytics görünümlerini yüklemeyi ve kullanmayı](howto-install-use-log-analytics-views.md)öğrenin.
 

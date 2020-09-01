@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481400"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229525"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory raporları nelerdir?
 
@@ -44,9 +44,9 @@ Raporlama mimarisinin iki ana dayanağı vardır:
 
 Güvenlik raporları, kuruluşunuzun kimliklerini korumanıza yardımcı olur. İki tür güvenlik raporu vardır:
 
-- **Riskli oldukları belirlenen kullanıcılar** - [Riskli oldukları belirlenen kullanıcılar güvenlik raporundan](concept-user-at-risk.md), gizliliği bozulmuş olabilecek kullanıcı hesaplarına genel bir bakış elde edersiniz.
+- **Riskli oldukları belirlenen kullanıcılar** - [Riskli oldukları belirlenen kullanıcılar güvenlik raporundan](../identity-protection/overview-identity-protection.md), gizliliği bozulmuş olabilecek kullanıcı hesaplarına genel bir bakış elde edersiniz.
 
-- **Riskli oturum açma işlemleri** - [Riskli oturum açma işlemleri güvenlik raporuyla](concept-risky-sign-ins.md), kullanıcı hesabının meşru sahibi olmayan biri tarafından gerçekleştirilmiş olabilecek oturum açma işlemleriyle ilgili göstergeler elde edersiniz. 
+- **Riskli oturum açma işlemleri** - [Riskli oturum açma işlemleri güvenlik raporuyla](../identity-protection/overview-identity-protection.md), kullanıcı hesabının meşru sahibi olmayan biri tarafından gerçekleştirilmiş olabilecek oturum açma işlemleriyle ilgili göstergeler elde edersiniz. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Güvenlik raporuna erişebilmek için hangi Azure AD lisansınızın olması gerekir?  
 
@@ -81,7 +81,7 @@ Etkinlik raporları, kuruluşunuzdaki kullanıcıların davranışını anlaman�
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Denetim günlükleri raporuna erişebilmek için hangi Azure AD lisansınızın olması gerekir?  
 
-Denetim günlükleri raporu, lisansınız olan özellikler için sağlanır. Belirli bir özelliğin lisansına sahipseniz, o özelliğin denetim günlüğü bilgilerine de erişebilirsiniz. [Azure Active Directory fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/), [farklı lisans türlerine](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) göre tek bir şekilde döşeli bir özellik karşılaştırması görülebilir. Daha ayrıntılı bilgi için bkz. [Azure Active Directory Özellikler ve yetenekler](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
+Denetim günlükleri raporu, lisansınız olan özellikler için sağlanır. Belirli bir özelliğin lisansına sahipseniz, o özelliğin denetim günlüğü bilgilerine de erişebilirsiniz. [Azure Active Directory fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/), [farklı lisans türlerine](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) göre tek bir şekilde döşeli bir özellik karşılaştırması görülebilir. Daha ayrıntılı bilgi için bkz. [Azure Active Directory Özellikler ve yetenekler](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
 
@@ -101,6 +101,6 @@ Azure AD, Kullanıcı arabirimine ek olarak, bir dizi REST tabanlı API aracıl�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Riskli oturum açma işlemleri raporu](concept-risky-sign-ins.md)
+- [Riskli oturum açma işlemleri raporu](../identity-protection/overview-identity-protection.md)
 - [Denetim günlükleri raporu](concept-audit-logs.md)
 - [Oturum açma günlükleri raporu](concept-sign-ins.md)

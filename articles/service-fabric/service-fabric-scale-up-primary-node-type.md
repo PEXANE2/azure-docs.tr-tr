@@ -4,12 +4,12 @@ description: Düğüm türü ekleyerek bir Service Fabric kümesini ölçeklendi
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854617"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228741"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Düğüm türü ekleyerek Service Fabric kümesi birincil düğüm türünü büyütme
 Bu makalede, kümeye ek bir düğüm türü ekleyerek bir Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.
@@ -99,7 +99,7 @@ Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service 
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. Yeni VM SKU 'SU ve ölçeğini genişletmek istediğiniz işletim sistemi SKU 'su kullanan yeni bir sanal makine ölçek kümesi oluşturun. 
+4. Ölçeğini genişletmek istediğiniz yeni VM SKU 'SU ve işletim sistemi SKU 'su kullanan yeni bir sanal makine ölçek kümesi oluşturun. 
 
 Düğüm türü başvurusu 
 ```json
@@ -124,6 +124,134 @@ IŞLETIM SISTEMI SKU 'SU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+Aşağıdaki kod parçacığı, bir Service Fabric kümesi için yeni bir düğüm türü oluşturmak için kullanılan yeni bir sanal makine ölçek kümesi kaynağına bir örnektir. İş yükünüz için gerekli olan tüm ek uzantıları dahil etmek istemeniz gerekir. 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. Kümeye yeni bir düğüm türü ekleyin, bu, yukarıda oluşturulan sanal makine ölçek kümesine başvurur. Bu düğüm türündeki **ısprımary** özelliği true olarak ayarlanmalıdır. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki kü
 ```
 10. ARM şablonundan orijinal düğüm türüyle ilişkili diğer tüm kaynakları kaldırın. Bu özgün kaynakların tümü kaldırılmış olan bir şablon için [Service Fabric-yeni düğüm türü kümesi](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) ' ne bakın.
 
-11. Değiştirilen Azure Resource Manager şablonunu dağıtın. * * Bu adım genellikle iki saate kadar sürer. Bu yükseltme ayarları InfrastructureService olarak değiştirecek, bu nedenle bir düğümün yeniden başlatılması gerekiyor. Bu durumda forceRestart yoksayıldı. Yükseltilebilir Dereperepsetchecktimeout parametresi, Service Fabric bir bölümün güvenli bir durumda olmasını bekleyeceği en uzun süreyi belirtir, zaten güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. UpgradeTimeout parametresi için değer 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
+11. Değiştirilen Azure Resource Manager şablonunu dağıtın. * * Bu adım genellikle iki saate kadar sürer. Bu yükseltme, ayarları InfrastructureService olarak değiştirecek; Bu nedenle, bir düğümün yeniden başlatılması gerekiyor. Bu durumda, forceRestart yoksayıldı. Yükseltilebilir Dereperepsetchecktimeout parametresi, Service Fabric bir bölümün güvenli bir durumda olmasını bekleyeceği en uzun süreyi belirtir, zaten güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. UpgradeTimeout parametresi için değer 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
 Ardından, portalda Service Fabric kaynağının, ' ın hazırlandığını doğrulayın. 
 
 ```powershell

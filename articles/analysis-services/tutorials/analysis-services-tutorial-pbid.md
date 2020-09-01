@@ -1,18 +1,18 @@
 ---
 title: Öğretici-Power BI Desktop ile Azure Analysis Services bağlama | Microsoft Docs
 author: minewiskan
-description: Azure portal Analysis Services sunucu adı almayı ve sonra Power BI Desktop kullanarak sunucuya bağlanmayı öğrenin.
+description: Bu öğreticide, Azure portal Analysis Services sunucu adını nasıl alabileceğinizi ve sonra Power BI Desktop kullanarak sunucuya nasıl bağlanacağınızı öğrenin.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73572328"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229319"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
 
@@ -23,7 +23,7 @@ Bu öğreticide, Power BI Desktop'u kullanarak sunucunuzdaki örnek adventurewor
 > * Power BI Desktop kullanarak bağlanma
 > * Temel bir rapor oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sunucunuza [örnek adventureworks model veritabanını ekleyin](../analysis-services-create-sample-model.md).
 - Örnek adventureworks model veritabanı üzerinde [*okuma*](../analysis-services-server-admins.md) izinlerine sahip olun.
@@ -57,7 +57,7 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 
 4. **GÖRSEL ÖĞELER**'de **Kümelenmiş Çubuk Grafik**'i seçin, sonra **Biçim**'e (rulo fırça simgesi) tıklayın ve **Veri etiketleri**'ni açın. 
 
-   ![Görsel öğeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
+   ![Görselleştirmeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
 5. **Alanlar**  >  **Internet Sales** tablosunda, **Internet satışları toplamı** ve **kenar boşluğu** ölçüleri ' ni seçin. **Ürün Kategorisi** tablosunda **Ürün Kategorisi Adı**'nı seçin.
 

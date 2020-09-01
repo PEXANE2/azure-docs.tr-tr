@@ -17,14 +17,14 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261032"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229863"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Izleyici 'de Azure AD etkinlik günlükleri
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure İzleyici’de Azure AD etkinlik günlükleri
 
 Uzun süreli saklama ve veri öngörüleri için Azure Active Directory (Azure AD) etkinlik günlüklerini çeşitli uç noktalara yönlendirebilirsiniz. Bu özellik şunları yapmanıza olanak sağlar:
 
@@ -79,8 +79,8 @@ Aşağıdaki tabloda, Batı ABD bölgesindeki bir genel amaçlı sürüm 2 depol
 | Günlük kategorisi | Kullanıcı sayısı | Günlük olay sayısı | Aylık veri hacmi (tahmini) | Aylık maliyet (tahmini) | Yıllık maliyet (tahmini) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
 | Denetim | 100.000 | 1,5&nbsp;milyon | 90 GB | $1,93 | $23,12 |
-| Denetim | 1000 | 15.000 | 900 MB | $0,02 | $0,24 |
-| Oturum açma işlemleri | 1000 | 34.800 | 4 GB | $0,13 | $1,56 |
+| Denetim | 1.000 | 15.000 | 900 MB | $0,02 | $0,24 |
+| Oturum açma işlemleri | 1.000 | 34.800 | 4 GB | $0,13 | $1,56 |
 | Oturum açma işlemleri | 100.000 | 15&nbsp;milyon | 1,7 TB | $35,41 | $424,92 |
  
 
@@ -103,9 +103,9 @@ Aşağıdaki tabloda, Kullanıcı oturum açma davranışı gibi birçok etkene 
 | Günlük kategorisi | Kullanıcı sayısı | Saniye başına olay sayısı | Beş dakikalık aralık başına olay sayısı | Aralık başına boyut | Aralık başına ileti sayısı | Aylık ileti sayısı | Aylık maliyet (tahmini) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Denetim | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $10,83 |
-| Denetim | 1000 | 0.1 | 52 | 104 KB | 1 | 8640 | $10,80 |
+| Denetim | 1.000 | 0.1 | 52 | 104 KB | 1 | 8640 | $10,80 |
 | Oturum açma işlemleri | 100.000 | 18000 | 5.400.000 | 10,8 GB | 42188 | 364.504.320 | $23,9 |  
-| Oturum açma işlemleri | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $11,06 |  
+| Oturum açma işlemleri | 1.000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $11,06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Izleyici günlükleri maliyet konuları
 
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, Kullanıcı oturum açma davranışı gibi birçok etkene 
 
 
 
-Azure Izleyici günlüklerini yönetme ile ilgili maliyetleri gözden geçirmek için bkz. [Azure izleyici günlüklerinde veri hacmi ve bekletme denetimi yaparak maliyeti yönetme](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Azure Izleyici günlüklerini yönetme ile ilgili maliyetleri gözden geçirmek için bkz. [Azure izleyici günlüklerinde veri hacmi ve bekletme denetimi yaparak maliyeti yönetme](../../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -180,13 +180,13 @@ Y **: yeni**bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulan
 
 **S: Hangi SIEM araçları desteklenmektedir?** 
 
-Y: **a** **: Şu**anda Azure Izleyici, [splunk](tutorial-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Y: **a** **: Şu**anda Azure Izleyici, [splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](./howto-integrate-activity-logs-with-arcsight.md), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
 **S: Azure AD etkinlik günlüklerini Splunk örneğimle nasıl tümleştirebilirim?**
 
-**Y**: Öncelikle [Azure AD etkinlik günlüklerini bir olay hub'ına yönlendirip](quickstart-azure-monitor-stream-logs-to-event-hub.md) ardından [Etkinlik günlüklerini Splunk ile tümleştirme](tutorial-integrate-activity-logs-with-splunk.md) adımlarını izleyin.
+**Y**: Öncelikle [Azure AD etkinlik günlüklerini bir olay hub'ına yönlendirip](./tutorial-azure-monitor-stream-logs-to-event-hub.md) ardından [Etkinlik günlüklerini Splunk ile tümleştirme](./howto-integrate-activity-logs-with-splunk.md) adımlarını izleyin.
 
 ---
 
@@ -198,7 +198,7 @@ Y: **a** **: Şu**anda Azure Izleyici, [splunk](tutorial-integrate-activity-logs
 
 **S: Olay hub'ı verilerine harici bir SIEM aracı kullanmadan erişebilir miyim?** 
 
-Y **: Evet**. Günlüklere özel uygulamanızdan erişmek için [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)’sini kullanabilirsiniz. 
+Y **: Evet**. Günlüklere özel uygulamanızdan erişmek için [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)’sini kullanabilirsiniz. 
 
 ---
 
@@ -206,5 +206,5 @@ Y **: Evet**. Günlüklere özel uygulamanızdan erişmek için [Event Hubs API]
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Etkinlik günlüklerini depolama hesabında arşivleme](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Etkinlik günlüklerini olay hub'ına yönlendirme](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Etkinlik günlüklerini olay hub'ına yönlendirme](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Etkinlik günlüklerini Azure Izleyici ile tümleştirme](howto-integrate-activity-logs-with-log-analytics.md)

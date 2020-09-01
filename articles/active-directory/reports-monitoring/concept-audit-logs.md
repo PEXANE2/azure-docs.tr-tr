@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846981"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229931"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -34,8 +34,8 @@ Raporlama mimarisi aşağıdaki bileşenlerden oluşur:
     - **Oturum açma** işlemleri – [oturum açma işlemleri raporu](concept-sign-ins.md) , yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar.
     - **Denetim günlükleri** - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Denetim günlüklerine örnek olarak, Azure AD 'de Kullanıcı, uygulama, Grup, rol ve ilke ekleme veya kaldırma gibi herhangi bir kaynak üzerinde yapılan değişiklikler bulunur.
 - **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](concept-risky-sign-ins.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](concept-user-at-risk.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+    - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
+    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
 
 Bu makale, denetim raporuna genel bir bakış sağlar.
  
@@ -78,7 +78,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 
 - Hizmet
-- Kategori
+- Category
 - Etkinlik
 - Durum
 - Hedef
@@ -134,7 +134,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 
 **Etkinlik** filtresi, yaptığınız kategori ve etkinlik kaynak türü seçimine dayalıdır. Görmek istediğiniz belirli bir etkinliği ya da tüm etkinlikleri seçebilirsiniz. 
 
-Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Graph API kullanarak tüm denetim etkinliklerinin listesini alabilirsiniz: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 **Durum** filtresi, bir denetim işleminin durumuna göre filtrelemenize izin verir. Durum aşağıdakilerden biri olabilir:
 
@@ -210,9 +210,9 @@ Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, *
 
 ## <a name="office-365-activity-logs"></a>Office 365 etkinlik günlükleri
 
-[Microsoft 365 Yönetim merkezinden](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
+[Microsoft 365 Yönetim merkezinden](/office365/admin/admin-overview/about-the-admin-center)Office 365 etkinlik günlüklerini görüntüleyebilirsiniz. Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, yalnızca Microsoft 365 Yönetim Merkezi, Office 365 etkinlik günlüklerinin tam görünümünü sağlar. 
 
-Office [365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
+Office [365 Yönetim API 'lerini](/office/office-365-management-api/office-365-management-apis-overview)kullanarak da Office 365 etkinlik günlüklerine programlı bir şekilde erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

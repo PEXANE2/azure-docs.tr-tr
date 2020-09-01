@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003373"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229013"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics için Azure Güvenlik temeli
 
@@ -260,7 +260,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Rehberlik**: yönetici rollerine en az ayrıcalıklı erişim ilkesi dahil olmak üzere en iyi uygulamaları takip eden bir kimlik yönetimi ve rol güvenlik planı oluşturun. Azure AD ve Azure kaynaklarına tam zamanında ayrıcalıklı erişim sağlamak için Azure Privileged Identity Management (PıM) kullanın. Yönetim hesaplarının etkinliğini izlemek için Azure PıM uyarılarını ve denetim geçmişini kullanın. Güvenliği aşılmış olabilecek yönetim hesaplarını belirlemenize yardımcı olması için Azure AD güvenlik raporlarını kullanın.
 
-* [Daha fazla bilgi](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+* [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -860,7 +860,7 @@ Ayrıca, verileri arşiv katmanına yedeklemek için yaşam döngüsü yönetimi
 
 * [Azure Blob depolama yaşam döngüsünü yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
 
-Azure depolama Blobları için geçici silme:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Azure depolama Blobları için geçici silme: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076183"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228333"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
 
@@ -36,10 +36,10 @@ Bir depolama hesabı, en fazla iki hedef hesap için kaynak hesap olarak görev 
 Başlamadan önce, aşağıdaki özellik önizlemeleri için kaydolduğunuzdan emin olun:
 
 - [Nesne çoğaltma (Önizleme)](object-replication-overview.md)
-- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
+- [Blob sürümü oluşturma](versioning-overview.md)
 - [Azure Blob depolamada akış desteğini değiştirme (Önizleme)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun. Ayrıca, blob sürümü oluşturma ve kaynak hesapta akışı değiştirme ve hedef hesapta blob sürümü oluşturma 'yı etkinleştirme.
 
@@ -255,7 +255,7 @@ az storage account or-policy show \
 
 Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal, PowerShell veya CLı kullanın.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 
