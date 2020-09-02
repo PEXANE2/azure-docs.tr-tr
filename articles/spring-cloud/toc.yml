@@ -1,11 +1,11 @@
 - name: Azure Spring Cloud Belgeleri
   href: index.yml
   displayName: Azure Spring Cloud
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Spring Cloud nedir?
       href: spring-cloud-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: İlk uygulamanızı yayınlama
@@ -47,11 +47,6 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Sanal ağda Azure Spring Cloud dağıtma
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Uygulama ve dağıtımı anlama
@@ -126,3 +121,6 @@
       href: spring-cloud-faq.md
     - name: REST API başvurusu
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

@@ -1,6 +1,6 @@
 - name: Azure Cosmos DB belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
@@ -83,9 +83,6 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: NoSQL ile ilişkisel veritabanlarının karşılaştırması
@@ -1305,6 +1302,11 @@
       displayName: ARM
     - name: Öykünücü sürüm notları
       href: local-emulator-release-notes.md
+- name: Başvuru
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

@@ -1,6 +1,6 @@
 - name: Redis için Azure Önbelleği Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Redis için Azure Önbelleği hakkında
       href: cache-overview.md
@@ -161,7 +161,8 @@
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure İlkesi yerleşik ilkeler
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis komutları
       href: 'https://redis.io/commands#'
 - name: Kaynaklar

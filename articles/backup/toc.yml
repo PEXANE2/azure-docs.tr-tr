@@ -1,6 +1,6 @@
 - name: Azure Backup belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Backup’a genel bakış
       href: backup-overview.md
@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Yedeklenmiş SAP HANA veritabanlarını yönetme - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Destek matrisleri
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Uyumluluk

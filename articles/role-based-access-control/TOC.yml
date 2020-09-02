@@ -1,7 +1,7 @@
 - name: Azure RBAC belgeleri
   href: index.yml
   items: null
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure RBAC nedir?
       href: overview.md
@@ -26,11 +26,6 @@
       href: tutorial-custom-role-powershell.md
     - name: Özel rol oluşturma - CLI
       href: tutorial-custom-role-cli.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: En iyi uygulamalar
@@ -131,6 +126,9 @@
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: Rol Tanımları
           href: /azure/templates/microsoft.authorization/roledefinitions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

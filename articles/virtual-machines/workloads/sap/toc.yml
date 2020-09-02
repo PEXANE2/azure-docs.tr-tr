@@ -1,4 +1,4 @@
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: başlarken
       href: get-started.md
@@ -299,8 +299,10 @@
       href: azure-monitor-faq.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/sap-hana/hanainstance
+    - name: Azure PowerShell
+      href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

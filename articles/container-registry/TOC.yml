@@ -35,11 +35,6 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3- Web uygulamasını güncelleştirme
               href: container-registry-tutorial-deploy-update.md
-    - name: Örnekler
-      items:
-        - name: Azure İlkesi yerleşik ilkeler
-          displayName: 'samples, policies, definitions'
-          href: ./policy-samples.md
     - name: Kavramlar
       expanded: false
       items:
@@ -243,6 +238,9 @@
       href: ../event-grid/event-schema-container-registry.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
     - name: Sistem durumu sorunları
       href: container-registry-health-error-reference.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   expanded: false
   items:

@@ -1,6 +1,6 @@
 - name: Service Bus Mesajlaşma Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Service Bus Mesajlaşması nedir?
       href: service-bus-messaging-overview.md
@@ -72,9 +72,6 @@
   items:
     - name: Service Bus örnekleri
       href: service-bus-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Premium mesajlaşma
@@ -272,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction söz dizimi
       href: service-bus-messaging-sql-rule-action.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: SSS

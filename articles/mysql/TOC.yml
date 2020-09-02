@@ -1,6 +1,6 @@
 - name: MySQL için Azure Veritabanı belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: MySQL için Azure DB nedir?
       href: overview.md
@@ -54,7 +54,7 @@
       items:
         - name: Azure portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: tutorial-design-database-using-cli.md
         - name: Azure PowerShell
           href: tutorial-design-database-using-powershell.md
@@ -74,9 +74,6 @@
       href: sample-scripts-azure-cli.md
     - name: Java bağlantı havuzu
       href: sample-scripts-java-connection-pooling.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: DB ve Sunucular
@@ -186,7 +183,7 @@
       items:
         - name: Azure portal
           href: howto-restore-server-portal.md
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
@@ -220,7 +217,7 @@
       items:
         - name: Azure portal
           href: howto-server-parameters.md
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: howto-configure-server-parameters-using-cli.md
         - name: Azure PowerShell
           href: howto-configure-server-parameters-using-powershell.md
@@ -228,7 +225,7 @@
       items:
         - name: Azure portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: howto-auto-grow-storage-cli.md
         - name: Azure PowerShell
           href: howto-auto-grow-storage-powershell.md
@@ -314,7 +311,7 @@
       items:
         - name: Azure portal
           href: howto-restart-server-portal.md
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
@@ -324,7 +321,7 @@
           href: howto-move-regions-portal.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
@@ -332,6 +329,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Yönetim saklı yordamları
       href: reference-stored-procedures.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Dağıtım şablonları

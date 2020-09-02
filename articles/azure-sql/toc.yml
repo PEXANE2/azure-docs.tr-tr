@@ -627,15 +627,12 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
-        - name: Azure İlkesi yerleşik ilkeler
-          displayName: 'samples, policies, definitions'
-          href: ./database/policy-samples.md
         - name: Kod örnekleri
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Yönetilen Örnek (SQL MI)
@@ -905,15 +902,12 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
-        - name: Azure İlkesi yerleşik ilkeler
-          displayName: 'samples, policies, definitions'
-          href: ./database/policy-samples.md
         - name: Kod örnekleri
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM’lerde SQL Server
@@ -1080,6 +1074,9 @@
               href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
             - name: REST
               href: /rest/api/
+            - name: Azure İlkesi yerleşik ilkeler
+              displayName: 'samples, policies, definitions'
+              href: ./database/policy-reference.md
         - name: Kaynaklar
           items:
             - name: SSS
@@ -1180,6 +1177,9 @@
           href: /sql/connect/python/python-driver-for-sql-server
         - name: Ruby
           href: /sql/connect/ruby/ruby-driver-for-sql-server
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./database/policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

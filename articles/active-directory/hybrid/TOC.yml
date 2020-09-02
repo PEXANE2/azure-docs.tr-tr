@@ -1,6 +1,6 @@
 - name: Hibrit kimlik belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Hibrit kimlik nedir?
       href: whatis-hybrid-identity.md
@@ -31,7 +31,7 @@
         - name: Azure AD Connect ve Connect Health nedir?
           href: whatis-azure-ad-connect.md
         - name: Doğru kimlik doğrulamasını seçme
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Parola karması eşitleme
@@ -339,7 +339,7 @@
     - name: Azure AD Geçişli Kimlik Doğrulama aracısı sürüm geçmişi
       href: reference-connect-pta-version-history.md
     - name: Bağlayıcı sürüm geçmişi
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: Hesaplar ve izinler
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect ile ilgili SSS

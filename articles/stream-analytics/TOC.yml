@@ -1,6 +1,6 @@
 - name: Azure Stream Analytics belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Stream Analytics nedir?
       href: stream-analytics-introduction.md
@@ -40,9 +40,6 @@
   items:
     - name: Kod örnekleri
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Akış analiz teknolojisi seçme
@@ -655,6 +652,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Stream Analytics önizlemeleri

@@ -1,6 +1,6 @@
 - name: Azure Bilişsel Hizmetler Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Bilişsel Hizmetler nedir?
@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: Tanılama günlüğüne kaydetme
       href: diagnostic-logging.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      href: ./policy-samples.md
 - name: Güvenlik
   items:
     - name: Bilişsel Hizmetler güvenliği
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Tarif: Art Gezgini'
           href: ./big-data/recipes/art-explorer.md
+- name: Başvuru
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

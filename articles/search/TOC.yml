@@ -1,6 +1,6 @@
 - name: Azure Bilişsel Arama Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Azure Bilişsel Arama nedir?
@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST örnekleri
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Tam metin arama
@@ -387,7 +384,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -496,6 +493,9 @@
           items:
             - name: Adlandırılmış Varlık Tanıma
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Topluluk Desteği

@@ -1,6 +1,6 @@
 - name: Azure Lighthouse belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Lighthouse nedir?
       displayName: 'management at scale, service providers'
@@ -10,9 +10,6 @@
     - name: Dizin oluşturma
       displayName: 'template, sample'
       href: ./samples/index.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./samples/policy-samples.md
 - name: Kavramlar
   items:
     - name: Azure tarafından atanan temsilcinin kaynak yönetimi
@@ -81,7 +78,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services
@@ -95,6 +92,9 @@
       href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Lighthouse için Microsoft Soru-Cevap

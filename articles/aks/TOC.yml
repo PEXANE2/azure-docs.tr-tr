@@ -1,6 +1,6 @@
 - name: Azure Kubernetes Hizmeti (AKS)
   href: ./index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: AKS hakkında
       href: intro-kubernetes.md
@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - Kümeyi yükseltme
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Kümeler ve iş yükleri
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

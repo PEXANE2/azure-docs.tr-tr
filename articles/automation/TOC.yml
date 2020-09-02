@@ -1,6 +1,6 @@
 - name: Azure Otomasyonu Kullanıcı Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Otomasyon nedir?
       href: automation-intro.md
@@ -27,11 +27,6 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python runbook'u oluşturma
       href: learn/automation-tutorial-runbook-textual-python2.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Otomasyon hesabı kimlik doğrulamasına genel bakış
@@ -325,6 +320,9 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Otomasyon tanıtım videosu

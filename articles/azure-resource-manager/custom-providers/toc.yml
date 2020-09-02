@@ -1,6 +1,6 @@
 - name: Azure Özel Sağlayıcılar Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Özel Sağlayıcılar nelerdir?
       href: overview.md
@@ -21,11 +21,6 @@
       href: tutorial-custom-providers-create.md
     - name: Kaynakları genişletme
       href: tutorial-resource-onboarding.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: İlişkilendirmeler için Azure İlkesi
@@ -50,6 +45,9 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

@@ -1,6 +1,6 @@
 - name: PostgreSQL için Azure Veritabanı belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: PostgreSQL için Azure DB nedir?
       href: overview.md
@@ -54,7 +54,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Tek sunucu
@@ -247,7 +244,7 @@
           items:
             - name: Azure portal
               href: howto-restore-server-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restore-server-cli.md
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
@@ -269,7 +266,7 @@
           items:
             - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-configure-server-parameters-using-cli.md
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
@@ -277,7 +274,7 @@
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-auto-grow-storage-cli.md
             - name: Azure PowerShell
               href: howto-auto-grow-storage-powershell.md
@@ -329,7 +326,7 @@
           items:
             - name: Azure portal
               href: howto-restart-server-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md
@@ -393,6 +390,9 @@
           href: reference-hyperscale-parameters.md
         - name: Sistem tabloları
           href: reference-hyperscale-metadata.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

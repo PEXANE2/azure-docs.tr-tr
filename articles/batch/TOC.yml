@@ -1,6 +1,6 @@
 - name: Batch Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Batch nedir?
       href: batch-technical-overview.md
@@ -44,9 +44,6 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Güvenlik
@@ -229,7 +226,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch
@@ -268,6 +265,9 @@
           href: batch-task-complete-event.md
         - name: Görev başarısızlık olayı
           href: batch-task-fail-event.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure güncelleştirmeleri

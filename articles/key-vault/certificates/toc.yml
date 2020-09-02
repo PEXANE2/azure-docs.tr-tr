@@ -1,6 +1,6 @@
 - name: Sertifikalar
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Sertifikalar hakkında
       href: about-certificates.md
@@ -19,9 +19,6 @@
       href: quick-create-python.md
 - name: Örnekler
   items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: Key Vault Kod Örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: Öğreticiler
@@ -67,6 +64,9 @@
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

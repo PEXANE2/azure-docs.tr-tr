@@ -1,15 +1,9 @@
 - name: Azure Arc özellikli Kubernetes için belgeler
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Arc özellikli Kubernetes
       href: overview.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      items:
-        - name: Arc özellikli Kubernetes
-          href: policy-samples.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Arc’a bağlanma
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: Sorun giderme
       href: Troubleshooting.md
+- name: Başvuru
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

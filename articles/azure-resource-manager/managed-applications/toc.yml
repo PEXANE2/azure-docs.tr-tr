@@ -1,6 +1,6 @@
 - name: Azure Tarafından Yönetilen Uygulamalarla İlgili Belgeler
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Yönetilen uygulamalar hakkında
       href: overview.md
@@ -19,15 +19,12 @@
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
     - name: Yönetilen uygulama çözümleri
       href: sample-projects.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Tanım yapıtını görüntüleme
@@ -157,6 +154,9 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

@@ -1,6 +1,6 @@
 - name: App Service Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Web Apps hakkında
       href: overview.md
@@ -73,15 +73,12 @@
       href: tutorial-troubleshoot-monitor.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
     - name: Resource Manager şablonları
       href: samples-resource-manager-templates.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
     - name: Terraform
       href: samples-terraform.md
 - name: Kavramlar
@@ -277,7 +274,7 @@
           href: webjobs-sdk-how-to.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: /powershell/module/az.websites/#app_service
@@ -285,6 +282,9 @@
       href: /rest/api/appservice/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.web/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: App Service Blogu
