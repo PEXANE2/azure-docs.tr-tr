@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542204"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378228"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik kümesi içeren kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
-Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir kimlik](../general/managed-identity.md)kullanmaktır, ancak bir seçenek olmadığı durumlarda bazı senaryolar vardır. Bu durumlarda, erişim tuşları veya parolalar kullanılır. Erişim anahtarları ve parolalar sıklıkla döndürülmelidir.
+Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir kimlik](../general/authentication.md)kullanmaktır, ancak bir seçenek olmadığı durumlarda bazı senaryolar vardır. Bu durumlarda, erişim tuşları veya parolalar kullanılır. Erişim anahtarları ve parolalar sıklıkla döndürülmelidir.
 
 Bu öğreticide, iki kimlik doğrulama kimlik doğrulaması kümesini kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici, Azure Event Grid bildirimi tarafından tetiklenen bir işlevi kullanarak Azure Key Vault depolanan Azure depolama hesabı anahtarlarını, gizli dizi olarak döndürür. :
 
@@ -35,7 +35,7 @@ Yukarıdaki çözümde, Azure Key Vault depolama hesabı ayrı erişim anahtarla
 1. İşlev uygulaması alternatif anahtarı (en son dışında) tanımlar ve depolama hesabı 'nı yeniden oluşturmak için çağırır
 1. İşlev uygulaması, yeni bir parola Azure Key Vault için yeni bir anahtar ekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
 * İki Azure depolama hesabı
@@ -91,7 +91,7 @@ Daha sonra, diğer gerekli bileşenlere ek olarak, sistem tarafından yönetilen
 1. **Gözden geçir + oluştur**' u seçin.
 1. **Oluştur**’u seçin
 
-   ![Gözden geçir + oluştur](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![İlk depolama hesabını gözden geçirin ve oluşturun](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 Yukarıdaki adımları tamamladıktan sonra bir depolama hesabınız, bir sunucu grubu, bir işlev uygulaması, Application Insights vardır. Dağıtım tamamlandıktan sonra aşağıdaki ekranı görmeniz gerekir: ![ dağıtım tamamlandı](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ Aşağıdaki komutu kullanarak gizli bilgileri gösterebilirsiniz:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-`CredentialId`Alternatif olarak güncellendiğine `keyName` ve gizli dizi `value` tarafından yeniden üretildiğine dikkat edin ![](../media/secrets/rotation-dual/dual-rotation-4.png)
+`CredentialId`Alternatif olarak güncelleştirilmiş `keyName` ve `value` ![ ilk depolama hesabı için az keykasa gizli göster çıkışının yeniden üretildiğine dikkat edin](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Değeri doğrulamak için erişim tuşlarını al
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Erişim anahtarı listesi](../media/secrets/rotation-dual/dual-rotation-5.png)
+![İlk depolama hesabı için az depolama hesabı anahtarları listesinin çıkışı](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>Döndürme için ek depolama hesapları ekleme
 
@@ -164,7 +164,7 @@ Mevcut işleve dönme için ek depolama hesabı anahtarları eklenmesi şunları
 1. **Gözden geçir + oluştur**' u seçin.
 1. **Oluştur**’u seçin
 
-   ![Gözden geçir + oluştur](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![İkinci Depolama hesabını gözden geçirin ve oluşturun](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Key Vault başka bir depolama hesabı erişim anahtarı ekleyin
 
@@ -190,20 +190,20 @@ Aşağıdaki komutu kullanarak gizli bilgileri göster:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-`CredentialId`Alternatif olarak güncellendiğine `keyName` ve gizli dizi `value` tarafından yeniden üretildiğine dikkat edin ![](../media/secrets/rotation-dual/dual-rotation-8.png)
+`CredentialId`Alternatif olarak güncelleştirilmiş `keyName` ve `value` ![ ikinci depolama hesabı için az keykasa gizli göster çıkışının yeniden üretildiğine dikkat edin](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Değeri doğrulamak için erişim tuşlarını al
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Erişim anahtarı listesi](../media/secrets/rotation-dual/dual-rotation-9.png)
+![İkinci depolama hesabı için az depolama hesabı anahtarları listesinin çıkışı](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Key Vault çift kimlik bilgisi döndürme işlevlerini kullanılabilir
 
 - [Depolama hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 - Genel Bakış: [Azure Event Grid Key Vault izleme (Önizleme)](../general/event-grid-overview.md)
 - Nasıl yapılır: [Azure Portal ilk işlevinizi oluşturma](../../azure-functions/functions-create-first-azure-function.md)
 - Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](../general/event-grid-logicapps.md)

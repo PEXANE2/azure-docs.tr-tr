@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 08221bddf9eac77217be23d972cd434b36d3c607
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180550"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375287"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -73,7 +73,7 @@ Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izi
 
 1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
-1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**  ' ye tıklayın.
+1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**  ' yi seçin.
 
 Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları oluşturabilirsiniz. Hizmet etiketleri hakkında daha fazla bilgi için [Bu makaleye](../virtual-network/service-tags-overview.md)bakın.
 
@@ -165,11 +165,11 @@ Kurtarma Hizmetleri Kasası artık oluşturulmuştur.
 
 ## <a name="discover-the-databases"></a>Veritabanlarını bulma
 
-1. Kasadaki **Başlarken**' de, **Yedekle**' ye tıklayın. **İş yükünüz nerede çalışıyor?**, **Azure VM 'de SAP HANA**' yi seçin.
-2. **Bulmayı Başlat**' a tıklayın. Bu işlem, kasa bölgesinde korunmayan Linux VM 'lerinin bulunmasını başlatır. Korumak istediğiniz Azure VM 'yi görürsünüz.
-3. **Sanal makineler Seç**bölümünde, veritabanı bulma Için SAP HANA VM 'lerine erişmek üzere Azure Backup hizmetine izinler sağlayan betiği indirmek için bağlantıya tıklayın.
+1. Kasadaki **Başlarken**bölümünde **Yedekle**' yi seçin. **İş yükünüz nerede çalışıyor?**, **Azure VM 'de SAP HANA**' yi seçin.
+2. **Bulmayı Başlat**' ı seçin. Bu işlem, kasa bölgesinde korunmayan Linux VM 'lerinin bulunmasını başlatır. Korumak istediğiniz Azure VM 'yi görürsünüz.
+3. **Sanal makineler Seç**bölümünde, veritabanı bulma Için SAP HANA VM 'lerine erişmek üzere Azure Backup hizmetine izinler sağlayan betiği indirmek için bağlantıyı seçin.
 4. Betiği, yedeklemek istediğiniz SAP HANA veritabanlarını barındıran VM üzerinde çalıştırın.
-5. Betiği VM üzerinde çalıştırdıktan sonra, **sanal makineler Seç**bölümünde VM 'yi seçin. Ardından veritabanlarını **bul**' a tıklayın.
+5. Betiği VM üzerinde çalıştırdıktan sonra, **sanal makineler Seç**bölümünde VM 'yi seçin. Ardından veritabanlarını **keşfet**' i seçin.
 6. Azure Backup VM 'deki tüm SAP HANA veritabanlarını bulur. Bulma sırasında Azure Backup, VM 'yi kasayla kaydeder ve VM 'ye bir uzantı kurar. Veritabanına hiçbir aracı yüklü değil.
 
    ![Veritabanlarını bulma](./media/tutorial-backup-sap-hana-db/database-discovery.png)
@@ -178,11 +178,11 @@ Kurtarma Hizmetleri Kasası artık oluşturulmuştur.
 
 Şimdi yedeklemek istediğimiz veritabanları keşfedildiğine göre yedeklemeyi etkinleştirelim.
 
-1. **Yedeklemeyi Yapılandır**öğesine tıklayın.
+1. **Yedeklemeyi Yapılandır**' ı seçin.
 
    ![Yedeklemeyi yapılandırma](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
-2. **Yedeklenecek öğeleri seçin**' de korumak istediğiniz bir veya daha fazla veritabanını seçin ve ardından **Tamam**' a tıklayın.
+2. **Yedeklenecek öğeleri seçin**' de korumak istediğiniz bir veya daha fazla veritabanını seçin ve ardından **Tamam**' ı seçin.
 
    ![Yedeklenecek öğeleri seçin](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
@@ -190,9 +190,9 @@ Kurtarma Hizmetleri Kasası artık oluşturulmuştur.
 
    ![Yedekleme ilkesi seçin](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
-4. İlkeyi oluşturduktan sonra **yedekleme menüsünde** **yedeklemeyi etkinleştir**' e tıklayın.
+4. İlkeyi oluşturduktan sonra **yedekleme menüsünde** **yedeklemeyi etkinleştir**' i seçin.
 
-   ![Yedeklemeyi etkinleştir 'e tıklayın](./media/tutorial-backup-sap-hana-db/enable-backup.png)
+   ![Yedeklemeyi Etkinleştir ' i seçin](./media/tutorial-backup-sap-hana-db/enable-backup.png)
 
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
@@ -219,7 +219,7 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
    * Kurtarma noktaları, bekletme aralığına göre bekletme için etiketlenir. Örneğin, günlük tam yedekleme seçerseniz, her gün yalnızca bir tam yedekleme tetiklenir.
    * Belirli bir günün yedeklemesi, haftalık bekletme aralığına ve ayarına göre etiketlenebilir ve korunur.
    * Aylık ve yıllık bekletme aralıkları benzer bir şekilde davranır.
-4. **Tam yedekleme ilkesi** menüsünde, ayarları kabul etmek için **Tamam** ' ı tıklatın.
+4. **Tam yedekleme ilkesi** menüsünde, ayarları kabul etmek için **Tamam** ' ı seçin.
 5. Ardından bir fark ilkesi eklemek için **fark yedeklemesi** ' ni seçin.
 6. **Değişiklik yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin. **30 gün**boyunca tutulan her **Pazar günü** **2:00**' de bir değişiklik yedeklemesini etkinleştirdik.
 
@@ -229,7 +229,7 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
    >Artımlı yedeklemeler Şu anda desteklenmiyor.
    >
 
-7. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
+7. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam ' ı** seçin.
 8. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi** ' ni seçin,
    * **Günlük yedeklemesi** varsayılan olarak **Enable**olarak ayarlanmıştır. Tüm günlük yedeklemelerini SAP HANA yönettiğinden bu devre dışı bırakılamaz.
    * Yedekleme zamanlaması ve **15 günlük** Bekletme dönemi olarak **2 saat** ayarlandık.
@@ -240,8 +240,8 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
    > Günlük yedeklemeleri, yalnızca bir başarılı tam yedekleme tamamlandıktan sonra Flow 'a başlar.
    >
 
-9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
-10. Yedekleme ilkesini tanımlamayı tamamladıktan sonra, **Tamam**' a tıklayın.
+9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam ' ı** seçin.
+10. Yedekleme ilkesini tanımlamayı tamamladıktan sonra **Tamam**' ı seçin.
 
 Artık SAP HANA veritabanınız için yedekleme (ler) i başarıyla yapılandırdınız.
 
