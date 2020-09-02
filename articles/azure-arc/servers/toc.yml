@@ -1,6 +1,6 @@
 - name: Azure Arc özellikli sunucular için belgeler
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Arc özellikli sunucular hakkında
       href: overview.md
@@ -16,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Makineyi izleme
       href: ./learn/tutorial-enable-vm-insights.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      items:
-        - name: Arc özellikli sunucular
-          href: policy-samples.md
 - name: Kavramlar
   items:
     - name: Güvenlik
@@ -57,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

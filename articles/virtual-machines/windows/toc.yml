@@ -1,6 +1,6 @@
 - name: Windows VM’leri ile İlgili Belgeler
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
@@ -141,9 +141,6 @@
           items:
             - name: Azure İzleyici
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: Kavramlar
   items:
     - name: Görüntüler
@@ -1047,6 +1044,9 @@
     - name: Resource Manager şablonu
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: Kaynaklar
   items:
     - name: Soru-Cevap
