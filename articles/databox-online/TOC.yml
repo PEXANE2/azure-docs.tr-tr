@@ -71,17 +71,17 @@
           items:
             - name: kubectl yoluyla
               items:
-                - name: Kubernetes kümesine erişme
+                - name: Kubernetes kümesine erişim
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: Durum bilgisi olmayan uygulamayı kullanıma sunma
+                - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: Durum bilgisi olan uygulamayı dağıtma (statik sağlanan)
+                - name: Statik sağlanmış durum bilgisi olan uygulama
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: Durum bilgisi olan uygulamayı dağıtma (dinamik sağlanan)
+                - name: Dinamik sağlanmış durum bilgisi olan uygulama
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: IoT Edge yoluyla
               items:
-                - name: Durum bilgisi olmayan uygulamayı kullanıma sunma
+                - name: Durum bilgisi olmayan uygulama
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: Azure Arc yoluyla
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Sertifika hatalarını giderme
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: C# modülü geliştirme
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: C# modülü geliştirme
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Uç işlemini yönetme
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Depolama ağ geçidini yönetme

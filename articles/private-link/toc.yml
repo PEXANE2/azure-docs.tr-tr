@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: Özel uç noktaları yönetme
       href: manage-private-endpoint.md
+    - name: Azure Güvenlik Duvarı ile trafiği inceleme
+      href: inspect-traffic-with-azure-firewall.md
     - name: Sorun giderme
       items:
         - name: Özel Uç Nokta bağlantı sorunlarını giderme
@@ -54,7 +56,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

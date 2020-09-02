@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Microsoft Azure Doğrulama (önizleme)
+summary: Azure Doğrulama'nın nasıl kullanılacağını öğrenin
+metadata:
+  title: Azure Doğrulama belgeleri
+  description: Azure Doğrulama'yı kullanarak bulut kaynaklarınıza, uygulamalarınıza ve çözümlerinize erişen, bunları şifreleyen anahtarlar oluşturma ve bunları koruma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+  services: attestation
+  ms.service: attestation
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 07/20/2020
+  ms.openlocfilehash: e0fa5be7d88a2de661838ca85fe5f365e8da930f
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89236491"
+landingContent:
+- title: Microsoft Azure Doğrulama hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Azure Doğrulama nedir?
+      url: overview.md
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: PowerShell hızlı başlangıç
+      url: quickstart-powershell.md
+    - text: ARM şablonu hızlı başlangıç
+      url: quickstart-template.md
+- title: Kavramlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Temel kavramlar
+      url: basic-concepts.md
+    - text: Talep kuralı dil bilgisi
+      url: claim-rule-grammar.md
+    - text: Talep kümeleri
+      url: claim-sets.md
+    - text: İş akışı
+      url: workflow.md
+- title: Öğreticiler
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kanıtlama ilkesini yazma ve imzalama
+      url: author-sign-policy.md
+    - text: SGX kanıtlama kodu örnekleri
+      url: /samples/browse/?expanded=azure&terms=attestation
+- title: Örnekler
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: İlke örnekleri
+      url: policy-examples.md
+    - text: İlkeyi imzalayan örnekleri
+      url: policy-signer-examples.md
+    - text: Sık sorulan sorular
+      url: faq.md

@@ -1,6 +1,6 @@
 - name: Azure AD B2C Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure AD B2C hakkında
       expanded: true
@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO oturumları
       href: session-overview.md
+    - name: Kimlik Koruması ve Koşullu Erişim
+      href: conditional-access-identity-protection-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Uygulama tümleştirmesi
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: Self servis parola sıfırlamayı ayarlama
               href: user-flow-self-service-password-reset.md
+        - name: Koşullu Erişim ekleme
+          href: conditional-access-user-flow.md
         - name: UX özelleştirme
           items:
             - name: Kullanıcı arabirimini özelleştirme
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: Doğrudan geçiş harici IdP belirteci
           href: idp-pass-through-user-flow.md
+    - name: Kimlik Koruması ve Koşullu Erişim
+      href: conditional-access-identity-protection-setup.md
     - name: Özel ilke
       items:
         - name: İlke oluşturma
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: Talepleri dönüştürme
                       href: claims-transformation-technical-profile.md
+                    - name: Koşullu Erişim teknik profili
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: JWT belirtecini veren
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

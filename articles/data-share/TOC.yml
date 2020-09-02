@@ -1,6 +1,6 @@
 - name: Azure Veri Paylaşımı belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Azure Veri Paylaşımı nedir?
@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Veri paylaşımı oluşturma - Azure portal
+    - name: Paylaşılan veriler - Azure portal
       href: share-your-data-portal.md
-    - name: Veri paylaşımı oluşturma - ARM şablonu
+    - name: Paylaşılan veriler - ARM şablonu
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Öğreticiler
@@ -39,6 +39,10 @@
   items:
     - name: Kaynağa göre verileri paylaşma ve alma
       items:
+        - name: Azure Depolama’dan paylaşma
+          href: how-to-share-from-storage.md
+        - name: Azure SQL Veritabanı veya Synapse Analytics’ten paylaşma
+          href: how-to-share-from-sql.md
         - name: Azure Veri Gezgini'nden paylaşma
           href: /azure/data-explorer/data-share
           maintainContext: true

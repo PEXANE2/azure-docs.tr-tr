@@ -1,6 +1,6 @@
 - name: Genel
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Key Vault hakkında
       href: overview.md
@@ -39,9 +39,6 @@
   items:
     - name: Key Vault Kod Örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Kavramlar
   items:
     - name: Temel kavramlar
@@ -90,6 +87,8 @@
           href: managed-identity.md
         - name: Erişim denetimi ilkesi kullanma
           href: group-permissions-for-apps.md
+        - name: Azure rol tabanlı erişim denetimi kullanma (önizleme)
+          href: rbac-guide.md
         - name: Erişim sorunlarını giderme
           href: troubleshooting-access-issues.md
     - name: Geliştirme
@@ -163,6 +162,9 @@
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

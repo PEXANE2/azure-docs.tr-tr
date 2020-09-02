@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
-          href: stream-files-tutorial-with-rest.md
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma .NET
           href: stream-files-dotnet-quickstart.md
-        - name: Karşıya yüklenmiş bir dosyayı kodlama ve akış ile aktarma
+        - name: Karşıya yüklenmiş bir dosyayı kodlama ve akış ile aktarma .NET
           href: stream-files-tutorial-with-api.md
-        - name: Canlı akış
+        - name: .NET ile canlı akış yapma
           href: stream-live-tutorial-with-api.md
-        - name: Videonuzu analiz etme
+        - name: .NET ile videonuzu analiz etme
           href: analyze-videos-tutorial-with-api.md
         - name: AES-128 ile dinamik olarak şifreleme
           href: protect-with-aes128.md
         - name: DRM ile dinamik olarak şifreleme
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
+          href: stream-files-tutorial-with-rest.md
     - name: CLI
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma CLI
@@ -381,7 +383,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Başlayın
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

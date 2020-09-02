@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: Ranger ve Apache Ambari’de LDAP eşitlemesi
           href: ./domain-joined/ldap-sync.md
+        - name: Aktarım sırasında çift şifreleme
+          href: ./domain-joined/encryption-in-transit.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Kimlik bilgileri yönetimi için Kimlik Aracısı kullanma

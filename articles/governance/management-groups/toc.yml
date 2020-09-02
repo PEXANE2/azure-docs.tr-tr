@@ -7,18 +7,31 @@
       href: ../azure-management.md
     - name: Yönetim grupları
       href: ./overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Yönetim grubu oluşturma - Portal
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: Yönetim grubu oluşturma - Azure CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: Yönetim grubu oluşturma - Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: Yönetim grubu oluşturma - REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
-    - name: Yönetim grupları oluşturma
-      href: ./create.md
-    - name: Kaynaklarınızı yönetme
+    - name: Kaynak hiyerarşinizi yönetme
       href: ./manage.md
     - name: Kaynak hiyerarşinizi koruma
       href: ./how-to/protect-resource-hierarchy.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: /powershell/module/az.resources/#resources

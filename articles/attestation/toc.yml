@@ -1,0 +1,48 @@
+- name: Microsoft Azure Doğrulama (önizleme)
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Microsoft Azure Doğrulama hakkında
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: ARM şablonu
+      href: quickstart-template.md
+    - name: PowerShell
+      href: quickstart-powershell.md
+- name: Öğreticiler
+  items:
+    - name: Kanıtlama ilkesini yazma ve imzalama
+      href: author-sign-policy.md
+    - name: SGX kanıtlama kodu örnekleri
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+- name: Örnekler
+  items:
+    - name: Kanıtlama ilkesi
+      href: policy-examples.md
+    - name: İlkeyi imzalayan sertifikası
+      href: policy-signer-examples.md
+- name: Kavramlar
+  items:
+    - name: Temel kavramlar
+      href: basic-concepts.md
+    - name: Kanıtlama ilkesi talepleri
+      items:
+        - name: Talep kuralı dil bilgisi
+          href: claim-rule-grammar.md
+        - name: Talep kümeleri
+          href: claim-sets.md
+    - name: İş akışı
+      href: workflow.md
+- name: Başvurular
+  items:
+    - name: SSS
+      href: faq.md
+    - name: REST
+      href: /rest/api/attestation/
+    - name: Azure PowerShell
+      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+    - name: Windows için Azure DCAP kitaplığı
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
+    - name: Linux için Azure DCAP kitaplığı
+      href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'

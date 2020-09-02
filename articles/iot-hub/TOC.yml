@@ -1,6 +1,6 @@
 - name: IoT Hub Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure IoT Hub nedir?
       href: about-iot-hub.md
@@ -84,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: Cihaz bağlantısını test etme
       href: tutorial-connectivity.md
-- name: Örnekler
-  items:
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: TLS desteği
@@ -423,7 +418,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub
@@ -461,6 +456,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Özellik ve API’yi kullanımdan kaldırma
       items:
         - name: İşlemleri izleme

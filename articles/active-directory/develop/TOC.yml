@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Çekirdeği
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: MSAL.NET'e geçirme
               href: msal-net-migration.md
-            - name: Aracıları kullanarak Xamarin uygulamalarını MSAL.NET’e geçirme
+            - name: Aracı kullanarak Xamarin Android uygulamasını MSAL.NET'e geçirme
+              href: msal-net-migration-android-broker.md
+            - name: Aracı kullanarak Xamarin iOS uygulamasını MSAL.NET'e geçirme
               href: msal-net-migration-ios-broker.md
             - name: Web tarayıcısı hakkında dikkate alınması gerekenler
               href: msal-net-web-browsers.md

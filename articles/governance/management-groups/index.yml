@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: d27bb0be6698a6b92c459143604ad2ebeb00b728
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/31/2020
+  ms.openlocfilehash: a2d736b2706b3b0958bb544c6d0e4434c78e6791
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85551872"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89231342"
 landingContent:
 - title: Azure İdaresi hakkında
   linkLists:
@@ -29,19 +29,31 @@ landingContent:
     links:
     - text: Azure yönetim grupları
       url: ./overview.md
-- title: Kaynaklarınızı düzenleme
+- title: Kullanmaya başlayın
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Yönetim grubu oluşturma (Portal)
+      url: ./create-management-group-portal.md
+    - text: Yönetim grubu oluşturma (Azure CLI)
+      url: ./create-management-group-azure-cli.md
+    - text: Yönetim grubu oluşturma (Azure PowerShell)
+      url: ./create-management-group-powershell.md
+    - text: Yönetim grubu oluşturma (REST)
+      url: ./create-management-group-rest-api.md
+    - text: Kaynakları yönetim grubuna dağıtma (ARM şablonları)
+      url: ../../azure-resource-manager/templates/deploy-to-management-group.md
   - linkListType: how-to-guide
     links:
-    - text: Yönetim grupları oluşturma
-      url: ./create.md
-    - text: Kaynaklarınızı yönetme
+    - text: Kaynak hiyerarşinizi yönetme
       url: ./manage.md
+    - text: Kaynak hiyerarşinizi koruma
+      url: ./how-to/protect-resource-hierarchy.md
 - title: Başvuru
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure CLI
+    - text: Azure CLI’si
       url: /cli/azure/account/management-group
     - text: Azure PowerShell
       url: /powershell/module/az.resources/#resources

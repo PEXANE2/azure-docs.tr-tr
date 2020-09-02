@@ -1,6 +1,6 @@
 - name: Uygulama yönetimi belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Uygulama yönetimi nedir?
@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: Bir uygulamayı yapılandırma
       href: add-application-portal-configure.md
+    - name: Kullanıcıları bir role atama
+      href: add-application-portal-assign-users.md
     - name: Çoklu oturum açmayı ayarlama
       href: add-application-portal-setup-sso.md
     - name: Bir uygulamayı silme

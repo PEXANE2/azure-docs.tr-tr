@@ -4,6 +4,8 @@
   items:
     - name: Azure Arc özellikli sunucular hakkında
       href: overview.md
+    - name: Connected Machine aracısındaki yenilikler
+      href: agent-release-notes.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Azure Arc özellikli sunucular aracısını etkinleştirme

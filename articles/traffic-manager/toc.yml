@@ -1,17 +1,20 @@
-- name: Traffic Manager Belgeleri
+- name: Traffic Manager belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Traffic Manager nedir?
       href: traffic-manager-overview.md
-- name: Hızlı Başlangıç
+- name: Hızlı Başlangıçlar
   items:
-    - name: Traffic Manager profili oluşturma - portal
+    - name: Traffic Manager profili oluşturma - Portal
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager profili oluşturma - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: Traffic Manager profili oluşturma - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: Traffic Manager profili oluşturma - ARM Şablonu
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: Öğreticiler
   items:
     - name: Düşük gecikme süresi için trafiği yönlendirme
@@ -30,7 +33,7 @@
       href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: Örnekler
   items:
-    - name: Azure CLl
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: SSS
       href: traffic-manager-FAQs.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır kılavuzları
   items:
     - name: Traffic Manager'da performans yönlendirmeyi yapılandırma
       href: traffic-manager-configure-performance-routing-method.md
@@ -132,7 +135,7 @@
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Hizmet Sınırlamaları
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

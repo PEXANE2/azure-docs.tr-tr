@@ -1,6 +1,6 @@
 - name: Azure API Management Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: API Management hakkında
       href: api-management-key-concepts.md
@@ -41,8 +41,6 @@
       href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Terminoloji
@@ -263,6 +261,9 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: SSS

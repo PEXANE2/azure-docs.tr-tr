@@ -1,6 +1,6 @@
 - name: Azure IoT Edge Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure IoT Edge hakkında
       href: about-iot-edge.md
@@ -207,10 +207,14 @@
           href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: DevOps araçlarıyla yönetme
       items:
-        - name: Azure DevOps Projeleri
-          href: how-to-devops-project.md
+        - name: Azure DevOps Başlatıcısı
+          href: how-to-devops-starter.md
         - name: Azure DevOps
-          href: how-to-ci-cd.md
+          items:
+            - name: YAML
+              href: how-to-continuous-integration-continuous-deployment.md
+            - name: Klasik düzenleyici
+              href: how-to-continuous-integration-continuous-deployment-classic.md
     - name: Sorun giderme
       items:
         - name: Standart tanılama adımları

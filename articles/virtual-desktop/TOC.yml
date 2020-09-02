@@ -166,6 +166,8 @@
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
     - name: Örnek Azure senaryoları
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: E-posta bulma
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: Kaynaklar
   items:
     - name: PowerShell

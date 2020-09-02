@@ -1,6 +1,6 @@
 - name: Azure Uygulama Yapılandırması belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Uygulama Yapılandırması hakkında
       href: overview.md
@@ -76,9 +76,6 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Anahtarlar ve değerler
@@ -151,6 +148,9 @@
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Fiyatlandırma
@@ -165,7 +165,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: Cloud Native Show üzerinde Azure Uygulama Yapılandırması
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
-        - name: Azure Friday’de özellik filtreleme
-          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
+        - name: Yeni özellikler dağıtma
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: Ürün geri bildirimi sağlama
       href: 'https://github.com/Azure/AppConfiguration/issues'

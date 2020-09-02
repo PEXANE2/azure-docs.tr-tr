@@ -4,6 +4,10 @@
   items:
     - name: ExpressRoute nedir?
       href: expressroute-introduction.md
+- name: Hızlı Başlangıç
+  items:
+    - name: ExpressRoute bağlantı hattı oluşturma - ARM Şablonu
+      href: quickstart-create-expressroute-vnet-template.md
 - name: Öğreticiler
   items:
     - name: Bağlantı hattı oluşturma ve değiştirme
