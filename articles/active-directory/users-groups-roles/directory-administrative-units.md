@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795907"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376392"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 'de yönetim birimleri yönetimi (Önizleme)
 
@@ -27,7 +27,7 @@ Bu makalede Azure Active Directory (Azure AD) içindeki yönetim birimleri açı
 
 Yönetim birimleri bir departman, bölge veya tanımladığınız kuruluşunuzun diğer kesimiyle kısıtlanan yönetici izinleri vermenizi sağlar. Bölgesel yöneticilerle izinleri devretmek veya ayrıntılı bir düzeyde ilke ayarlamak için yönetim birimlerini kullanabilirsiniz. Örneğin, bir kullanıcı hesabı Yöneticisi profil bilgilerini güncelleştirebilir, parolaları sıfırlayabilir ve yalnızca kendi yönetim biriminde kullanıcılar için lisans atayabilir.
 
- Örneğin, bölgesel destek uzmanlarına temsilci seçme, [Yardım Masası yönetici](directory-assign-admin-roles.md#helpdesk-administrator) rolü, yalnızca destekledikleri bölgedeki kullanıcıları yönetmeye kısıtlıdır.
+Örneğin, bölgesel destek uzmanlarına temsilci seçme, [Yardım Masası yönetici](directory-assign-admin-roles.md#helpdesk-administrator) rolü, yalnızca destekledikleri bölgedeki kullanıcıları yönetmeye kısıtlıdır.
 
 ## <a name="deployment-scenario"></a>Dağıtım senaryosu
 
@@ -54,7 +54,7 @@ Bu önizleme sürümünde, yönetim birimlerini Azure portal, PowerShell cmdlet 
 
 Yönetim birimleri, Azure AD kaynaklarını mantıksal olarak gruplamak için kullanılabilir. Örneğin, BT departmanı Global olarak dağınık olan bir kuruluş için, bu coğrafi sınırları tanımlayan yönetim birimleri oluşturmak mantıklı olabilir. Çok milli bir kuruluşun, işlemlerde yarı otonom olan farklı "alt kuruluşlar" olduğu başka bir senaryoda, her bir alt kuruluş bir yönetim birimiyle temsil edilebilir.
 
-Yönetim birimlerinin oluşturulduğu ölçütler, bir kuruluşun benzersiz gereksinimlerine göre kılavuzluk eder. Yönetim birimleri, M365 Services genelinde yapıyı tanımlamanın yaygın bir yoludur. Yönetim birimlerinizi, M365 Services genelinde kullanımı göz önüne alarak hazırlamanızı öneririz. Genel kaynakları bir yönetim birimi altında M365 arasında ilişkilendirebileceğiniz zaman, yönetim birimlerinden maksimum değeri alabilirsiniz.
+Yönetim birimlerinin oluşturulduğu ölçütler, bir kuruluşun benzersiz gereksinimlerine göre kılavuzluk eder. Yönetim birimleri Microsoft 365 hizmetleri genelinde yapıyı tanımlamanın yaygın bir yoludur. Yönetim birimlerinizi, Microsoft 365 hizmetleri genelinde kullanımı göz önüne alarak hazırlamanızı öneririz. Genel kaynakları bir yönetim birimi altında Microsoft 365 arasında ilişkilendirebileceğiniz zaman, yönetim birimlerinden maksimum değeri alabilirsiniz.
 
 Aşağıdaki aşamaları izleyerek kuruluştaki yönetim birimlerinin oluşturulmasını bekleyebilir:
 
@@ -64,7 +64,7 @@ Aşağıdaki aşamaları izleyerek kuruluştaki yönetim birimlerinin oluşturul
 
 ## <a name="currently-supported-scenarios"></a>Şu anda desteklenen senaryolar
 
-Genel Yöneticiler veya ayrıcalıklı rol yöneticileri, yönetim birimleri oluşturmak, kullanıcıları yönetim birimlerinin üyesi olarak eklemek ve ardından BT personelini yönetim birimi kapsamlı yönetici rollerine atamak için Azure AD portalını kullanabilir. Yönetim birimi kapsamındaki Yöneticiler daha sonra yönetim birimlerindeki kullanıcıların temel yönetiminde Office 365 portalını kullanabilir.
+Genel Yöneticiler veya ayrıcalıklı rol yöneticileri, yönetim birimleri oluşturmak, kullanıcıları yönetim birimlerinin üyesi olarak eklemek ve ardından BT personelini yönetim birimi kapsamlı yönetici rollerine atamak için Azure AD portalını kullanabilir. Yönetim birimi kapsamındaki Yöneticiler daha sonra yönetim birimlerindeki kullanıcıların temel yönetimi için Microsoft 365 Yönetim merkezini kullanabilir.
 
 Ayrıca, gruplar yönetim biriminin üyeleri olarak eklenebilir ve yönetici birim kapsamlı Grup Yöneticisi bunları PowerShell, Microsoft Graph ve Azure AD portalını kullanarak yönetebilir.
 
@@ -99,7 +99,7 @@ Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Desteklenir  |   
 >
 > Yönetim birimi kapsamına sahip yöneticiler dinamik grup üyeliği kurallarını yönetemez.
 
-Yönetim birimleri kapsamı yalnızca yönetim izinlerine uygular. Üyelerin veya yöneticilerin, yönetim birimi dışındaki diğer kullanıcılara, gruplara veya kaynaklara gözatmaları için [Varsayılan Kullanıcı izinlerini](../fundamentals/users-default-permissions.md) kullanmalarını engellemez. Office 365 portalında, kapsamlı yönetici yönetim birimlerinin dışındaki kullanıcılar filtrelenmiştir, ancak Azure AD portalında, PowerShell 'de ve diğer Microsoft hizmetlerinde diğer kullanıcılara da gidebilirsiniz.
+Yönetim birimleri kapsamı yalnızca yönetim izinlerine uygular. Üyelerin veya yöneticilerin, yönetim birimi dışındaki diğer kullanıcılara, gruplara veya kaynaklara gözatmaları için [Varsayılan Kullanıcı izinlerini](../fundamentals/users-default-permissions.md) kullanmalarını engellemez. Microsoft 365 Yönetim merkezinde, kapsamlı yönetici yönetim birimlerinin dışındaki kullanıcılar filtrelenmektedir, ancak Azure AD portalındaki, PowerShell ve diğer Microsoft hizmetlerinde diğer kullanıcılara da gidebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

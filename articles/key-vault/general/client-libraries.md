@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9cc8c1e9406f6b92a445cd52a4ad26e71d83ef5a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 34321ac9baf3d3cb43dace33b574cb582c2d72a0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88264094"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378959"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Azure Key Vault için istemci kitaplıkları
 
@@ -34,4 +34,4 @@ Her SDK 'nın aşağıdaki tabloya göre gizli dizi, anahtar ve sertifika için 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bkz. [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md)
-- [Azure Key Vault yönetilen kimlik](managed-identity.md) hakkında daha fazla bilgi edinin
+- [Anahtar kasasında kimlik doğrulama](authentication.md) hakkında daha fazla bilgi edinin
