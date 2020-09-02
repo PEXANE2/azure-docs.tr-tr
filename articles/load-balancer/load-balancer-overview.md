@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420337"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299210"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -48,7 +48,7 @@ Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar
 
 - **[Kaynakları bölgeler](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** arasında ve bölgeler **[arasında](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** dağıtarak kullanılabilirliği artırın.
 
-- Azure sanal makineleri için **[giden bağlantıyı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** yapılandırın.
+- Azure sanal makineleri için **[giden bağlantıyı ](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** yapılandırın.
 
 - Yük dengeli kaynakları izlemek için **[sistem durumu araştırmalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** kullanın.
 
@@ -74,6 +74,10 @@ Temel Load Balancer varsayılan olarak Internet 'e açıktır. Ayrıca, Load Bal
 Standart Load Balancer fiyatlandırma bilgileri için bkz. [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/).
 Temel Load Balancer ücretsiz olarak sunulur.
 [Load Balancer Için SLA](https://aka.ms/lbsla)konusuna bakın. Temel Load Balancer SLA 'sı yok.
+
+## <a name="whats-new"></a>Yenilikler
+
+RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) sayfasında en son Azure Load Balancer Özellik güncelleştirmelerini görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Temel Load Balancer Standart Load Balancer sürümüne yükseltmek için bkz. [temel Load Balancer yükseltme](upgrade-basic-standard.md) .

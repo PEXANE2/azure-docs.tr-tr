@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82203276"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295271"
 ---
 # <a name="add-an-api-manually"></a>El ile API ekleme
 
@@ -27,7 +27,7 @@ Mevcut bir API’yi içeri aktarmak istiyorsanız [ilgili konular](#related-topi
 
 Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u (genel bir test hizmeti) bir arka uç API’si olarak ekleyeceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
@@ -45,7 +45,7 @@ Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u 
 Bu noktada, arka uç API 'nizin işlemlerine eşlenen API Management hiçbir işlem yok. Arka uçtan açığa çıkarılan ancak API Management aracılığıyla kullanıma sunulan bir işlem çağırırsanız, **404**alırsınız.
 
 >[!NOTE] 
-> Varsayılan olarak, bir API eklediğinizde bu API bir arka uç hizmetine bağlı olsa bile sizin tarafınızdan beyaz listeye eklenene kadar APIM tarafından herhangi bir işlem sunulmaz. Arka uç hizmetinizin bir işlemini beyaz listeye eklemek için arka uç işlemiyle eşlenen bir APIM işlemi oluşturun.
+> Varsayılan olarak, bir API eklediğinizde, bir arka uç hizmetine bağlı olsa bile APıM, izin verene kadar herhangi bir işlem sergilemez. Arka uç hizmetinizin bir işlemine izin vermek için, arka uç işlemiyle eşleşen bir APıM işlemi oluşturun.
 
 ## <a name="add-and-test-an-operation"></a>İşlem ekleme ve test etme
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496585"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300026"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı-tek sunucu oluşturmak için az Postgres up (Önizleme) adlı bir Azure CLı komutu kullanın
 
@@ -75,7 +75,7 @@ admin-password | Sistem tarafından oluşturulan | Yönetici kullanıcının par
 
 Sunucunuz oluşturulduktan sonra, aşağıdaki ayarlarla birlikte gelir:
 
-- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır `az postgres up` ve o IP adresini beyaz listeler.
+- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır `az postgres up` ve bu IP adresine izin verir.
 - "Azure hizmetlerine erişime izin ver" ayarı açık olarak ayarlanmıştır. Bu ayar, sunucu güvenlik duvarını aboneliğinizdeki kaynaklar dahil olmak üzere tüm Azure kaynaklarından gelen bağlantıları kabul edecek şekilde yapılandırır.
 - "SampleDB" adlı boş bir veritabanı oluşturuldu
 - "SampleDB" ayrıcalıklarına sahip "root" adlı yeni bir Kullanıcı oluşturuldu

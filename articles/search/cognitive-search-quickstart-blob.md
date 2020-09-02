@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935407"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300043"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilişsel bir beceri oluşturma
 
@@ -21,7 +21,7 @@ Beceri, büyük ölçekli metin veya resim dosyalarından bilgi ve yapı çıkar
 
 Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -76,7 +76,7 @@ Ardından, AI zenginleştirme 'yı OCR, görüntü analizi ve doğal dil işleme
 
 1. Bu hızlı başlangıçta, **ücretsiz** bilişsel hizmetler kaynağını kullanıyoruz. Örnek veriler 14 dosyadan oluşur, bu nedenle bilişsel hizmetler üzerinde 20 işlemin ücretsiz servis birimi bu hızlı başlangıç için yeterlidir. 
 
-   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Bilişsel hizmetler iliştirme temel hizmeti Ekle](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 1. **Zenginleştirme Ekle** ' yi genişletin ve dört seçim yapın. 
 
@@ -86,7 +86,7 @@ Ardından, AI zenginleştirme 'yı OCR, görüntü analizi ve doğal dil işleme
 
    Varlık tanıma (kişiler, kuruluşlar, konumlar) ve görüntü analizi becerileri seçin.
 
-   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Bilişsel hizmetler Ekle beceri için hizmet seçme](media/cognitive-search-quickstart-blob/skillset.png)
 
    Sonraki sayfaya devam edin.
 

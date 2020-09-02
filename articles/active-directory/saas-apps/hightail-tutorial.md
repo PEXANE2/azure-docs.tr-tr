@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b3f279b28bf78114556623865a9f132174c6e41
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550554"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Öğretici: Hightail ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Hightail uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | -------- |-------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -109,7 +109,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Hightail uygulamasında çoklu oturum açmayı yapılandırmadan önce lütfen, bu etki alanını kullanan tüm kullanıcıların çoklu oturum açma işlevlerini kullanabilmesi için hightail ekibi ile e-posta etki alanınızı da beyaz listeleyin.
+> Hightail uygulamasında çoklu oturum açmayı yapılandırmadan önce, bu etki alanını kullanan tüm kullanıcıların çoklu oturum açma işlevlerini kullanabilmesi için lütfen Hightail ekibiyle birlikte izin verilen listeye bir e-posta etki alanı ekleyin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

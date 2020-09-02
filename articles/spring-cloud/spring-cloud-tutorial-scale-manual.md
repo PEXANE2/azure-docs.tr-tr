@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021197"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289826"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
 
@@ -22,12 +22,12 @@ Sanal CPU (vCPU) sayısını ve bellek miktarını değiştirerek uygulamanızı
 
 İşlemi tamamladıktan sonra, hizmetinizdeki her uygulamada hızlı bir şekilde değişiklik yapmayı öğrenirsiniz. Ölçeklendirme, saniyeler içinde etkili olur ve herhangi bir kod değişikliği veya yeniden dağıtım gerektirmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordamları izlemek için şunlar gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
-* Dağıtılmış bir Azure yay bulut hizmeti örneği.  Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını izleyin.
+* Dağıtılmış bir Azure yay bulut hizmeti örneği.  Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart.md) başlangıcını izleyin.
 * Hizmet örneğiniz için en az bir uygulama zaten oluşturulmuş.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal ölçek sayfasına gidin
@@ -58,7 +58,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ![Azure portal ölçek hizmeti](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-Birkaç saniye sonra, yaptığınız değişiklikler, **uygulama örnekleri** sekmesinde daha fazla ayrıntı Ile **genel bakış** sayfasında görüntülenir. ölçeklendirme, herhangi bir kod değişikliği veya yeniden dağıtım gerektirmez.
+Birkaç saniye sonra, yaptığınız değişiklikler, **genel bakış** sayfasında, daha fazla ayrıntı için **uygulama örnekleri** sekmesinde görüntülenir. Ölçeklendirme, herhangi bir kod değişikliği veya yeniden dağıtım gerektirmez.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standart katmana yükseltme
 Temel katmandadır ve bu [limitlerden](spring-cloud-quotas.md)biri veya daha fazlası ile kısıtlanıyor ise Standart katmana yükseltebilirsiniz. Bunu yapmak için, önce Standart katman sütununu ve **Yükselt** düğmesine tıklayarak fiyatlandırma katmanı menüsüne gidin.

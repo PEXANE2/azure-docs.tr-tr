@@ -2,13 +2,14 @@
 title: Azure Resource Manager genel bakış
 description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim denetimi için Azure Resource Manager’ın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087036"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293957"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
@@ -26,7 +27,7 @@ Aşağıdaki görüntüde, Azure isteklerini işlerken Azure Resource Manager ro
 
 Portalda kullanılabilen tüm yetenekler, PowerShell, Azure CLı, REST API 'Ler ve istemci SDK 'Ları aracılığıyla da kullanılabilir. İlk olarak API'lerle başlatılan işlevler 180 gün içinde portalda kullanıma sunulacaktır.
 
-## <a name="terminology"></a>Terminoloji
+## <a name="terminology"></a>Terimler
 
 Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabileceğiniz bazı terimler vardır.
 
@@ -68,25 +69,33 @@ Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiği
 
 Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli faktörler bulunur:
 
-* Grubunuzdaki tüm kaynaklar aynı yaşam döngüsünü paylaşmalıdır. Bunları birlikte dağıtır, güncelleştirir ve silersiniz. Sunucu gibi bir kaynağın farklı bir dağıtım döngüsüyle bulunması gerekiyorsa, başka bir kaynak grubunda olması gerekir.
+* Kaynak grubunuzdaki tüm kaynaklar aynı yaşam döngüsünü paylaşmalıdır. Bunları birlikte dağıtır, güncelleştirir ve silersiniz. Sunucu gibi bir kaynağın farklı bir dağıtım döngüsüyle bulunması gerekiyorsa, başka bir kaynak grubunda olması gerekir.
 
 * Her kaynak yalnızca bir kaynak grubunda yer alabilir.
-
-* Bazı kaynaklar bir kaynak grubunun dışında bulunabilir. Bu kaynaklar [aboneliğe](../templates/deploy-to-subscription.md), [yönetim grubuna](../templates/deploy-to-management-group.md)veya [kiracıya](../templates/deploy-to-tenant.md)dağıtılır. Bu kapsamlarda yalnızca belirli kaynak türleri desteklenir.
 
 * Bir kaynak grubuna dilediğiniz zaman kaynak ekleyebilir veya kaldırabilirsiniz.
 
 * Bir kaynağı, bir kaynak grubundan bir diğerine taşıyabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](move-resource-group-and-subscription.md).
 
-* Bir kaynak grubu, farklı bölgelerde bulunan kaynakları içerebilir.
+* Bir kaynak grubundaki kaynaklar kaynak grubundan farklı bölgelerde bulunabilir.
 
-* Bir kaynak grubu, yönetim eylemleri için erişim denetimini incelemek üzere kullanılabilir.
+* Bir kaynak grubu oluştururken bu kaynak grubu için bir konum belirtmeniz gerekir. "Bir kaynak grubu için neden konum gerekli olsun? Ayrıca kaynaklar kaynak grubundan farklı konumlarda olabiliyorsa kaynak grubu konumu neden önemli olsun?" diye soruyor olabilirsiniz Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğinizde, meta verilerin nerede depolandığını belirtirsiniz. Uyumluluk nedeniyle verilerinizin belirli bir bölgeye depolandığından emin olmanız gerekebilir.
 
-* Bir kaynak diğer kaynak gruplarındaki kaynaklarla etkileşim kurabilir. İki kaynak ilişkili olmasına karşın aynı yaşam döngüsünü paylaşmadığında (örneğin, bir veritabanına bağlanan web uygulamaları) bu etkileşim yaygın olarak görülür.
+   Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Güvenilir uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [güvenilir Azure uygulamaları tasarlama](/azure/architecture/checklist/resiliency-per-service).
 
-Bir kaynak grubu oluştururken bu kaynak grubu için bir konum belirtmeniz gerekir. "Bir kaynak grubu için neden konum gerekli olsun? Ayrıca kaynaklar kaynak grubundan farklı konumlarda olabiliyorsa kaynak grubu konumu neden önemli olsun?" diye soruyor olabilirsiniz Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğinizde, meta verilerin nerede depolandığını belirtirsiniz. Uyumluluk nedeniyle verilerinizin belirli bir bölgeye depolandığından emin olmanız gerekebilir.
+* Bir kaynak grubu, yönetim eylemleri için erişim denetimini incelemek üzere kullanılabilir. Bir kaynak grubunu yönetmek için [Azure ilkeleri](../../governance/policy/overview.md), [RBAC rolleri](../../role-based-access-control/role-assignments-portal.md)veya [kaynak kilitleri](lock-resources.md)atayabilirsiniz.
 
-Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Güvenilir uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [güvenilir Azure uygulamaları tasarlama](/azure/architecture/checklist/resiliency-per-service).
+* Bir kaynak grubuna [Etiketler uygulayabilirsiniz](tag-resources.md) . Kaynak grubundaki kaynaklar bu etiketleri almıyor.
+
+* Kaynak, diğer kaynak gruplarındaki kaynaklara bağlanabilir. Bu senaryo, iki kaynak ilişkili olduğunda ancak aynı yaşam döngüsünü paylaşmadığında yaygın bir senaryodur. Örneğin, farklı bir kaynak grubundaki bir veritabanına bağlanan bir Web uygulamanız olabilir.
+
+* Bir kaynak grubunu sildiğinizde, kaynak grubundaki tüm kaynaklar da silinir. Azure Resource Manager Bu silmeleri nasıl düzenleyen hakkında daha fazla bilgi için bkz. [Azure Resource Manager kaynak grubu ve kaynak silme](delete-resource-group.md).
+
+* Her kaynak grubunda bir kaynak türünün en fazla 800 örneğini dağıtabilirsiniz. Bazı kaynak türleri [800 örnek sınırından muaf](resources-without-resource-group-limit.md)tutulur.
+
+* Bazı kaynaklar bir kaynak grubunun dışında bulunabilir. Bu kaynaklar [aboneliğe](../templates/deploy-to-subscription.md), [yönetim grubuna](../templates/deploy-to-management-group.md)veya [kiracıya](../templates/deploy-to-tenant.md)dağıtılır. Bu kapsamlarda yalnızca belirli kaynak türleri desteklenir.
+
+* Bir kaynak grubu oluşturmak için [Portal](manage-resource-groups-portal.md#create-resource-groups), [POWERSHELL](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)veya [Azure Resource Manager (ARM) şablonunu](../templates/deploy-to-subscription.md#resource-groups)kullanabilirsiniz.
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager esnekliği
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405543"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300060"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -33,7 +33,7 @@ Bu örnek uygulama şunları yapabilir:
 
 Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uygulamayı çalıştırmak için ihtiyacınız olacak birkaç şey:
 
@@ -443,7 +443,7 @@ Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcı
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si abonelik anahtarınız web sayfasına eklenmelidir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, CORS ara sunucusu aracılığıyla bir istek gönderebilirsiniz. Bu tür bir ara sunucudan gelen yanıtta, yanıt üst bilgilerini beyaz listeye alan ve JavaScript'in kullanımına sunan `Access-Control-Expose-Headers` üst bilgisi bulunur.
+Geliştirme amacıyla, CORS ara sunucusu aracılığıyla bir istek gönderebilirsiniz. Bu proxy türünden yanıt, `Access-Control-Expose-Headers` yanıt üstbilgilerini filtreleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
 
 Örnek uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. Şu komutu çalıştırın:
 

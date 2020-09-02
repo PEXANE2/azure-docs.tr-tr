@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121247"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299312"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
 
@@ -56,7 +56,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
 
     URL yolundaki _geojson_ parametresi, karşıya yüklenen verilerin veri biçimini temsil eder.
 
-4. **Gövde** sekmesine tıklayın. **Ham**' ı ve sonra da giriş biçimi olarak **JSON** ' ı seçin. Aşağıdaki GeoJSON verilerini kopyalayıp **gövde** metin alanına yapıştırın:
+4. **Gövde** sekmesine tıklayın. Girdi biçimi olarak **RAW**ve sonra **JSON** ' ı seçin. Aşağıdaki GeoJSON verilerini kopyalayıp **gövde** metin alanına yapıştırın:
 
    ```JSON
    {
@@ -258,15 +258,15 @@ Bölge giriş olayları için bir olay aboneliği oluşturmak üzere aşağıdak
 
 5. Önceki bölümde oluşturduğunuz Logic App çıkış uç noktası için 1-4 adımlarını yineleyin. Adım 3 ' te `Geofence Exited` olay türü olarak seçtiğinizden emin olun.
 
-## <a name="use-search-geofence-get-api"></a>Arama bölge bölge Al API 'sini kullanma
+## <a name="use-spatial-geofence-get-api"></a>Uzamsal bölge Get API 'sini kullanma
 
-Şimdi, bir ekipman parçası bölge dilimleri girdiğinde ya da çıktığında Operations Manager e-posta bildirimleri göndermek için [Arama bölge kullanımı API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini kullanacağız.
+Şimdi, bir ekipman parçası bölge dilimleri girdiğinde veya oradan çıktığında Operations Manager e-posta bildirimleri göndermek için [uzamsal bölge edınme API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini kullanacağız.
 
 Her ekipman bir içerir `deviceId` . Bu öğreticide, benzersiz KIMLIĞI olan tek bir ekipman parçasını izliyoruz `device_1` .
 
 Daha anlaşılır olması için aşağıdaki diyagramda, zaman içindeki donanımların, bölge sayısı dışında bir yerde olan *Başlangıç* konumundan başlayan beş konumu gösterilmektedir. Bu öğreticinin amaçları doğrultusunda, bu konumda cihazı sorguladığımızdan *Başlangıç* konumu tanımsızdır.
 
-[Arama bölge sınırı Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini ilk bölge sınırı girişi veya çıkışı gösteren bir ekipman konumuyla sorgulıyoruz, Event Grid Operations Manager e-posta bildirimi göndermek için uygun mantıksal uygulama uç noktasını çağırır.
+[Uzamsal bölge edinme API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 'sini ilk bölge sınırı girişi veya çıkışı gösteren bir ekipman konumuyla sorgulıyoruz, Event Grid Operations Manager e-posta bildirimi göndermek için uygun mantıksal uygulama uç noktasını çağırır.
 
 Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinasını kullanarak HTTP GET bölge sınırlaması API 'SI isteklerini sağlar.
 

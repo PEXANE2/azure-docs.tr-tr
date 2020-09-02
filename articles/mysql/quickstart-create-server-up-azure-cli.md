@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495360"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296490"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Hızlı başlangıç: basit bir Azure CLı komutu kullanarak MySQL için Azure veritabanı oluşturma-az MySQL up (Önizleme)
 
@@ -75,7 +75,7 @@ admin-password | Sistem tarafından oluşturulan | Yönetici kullanıcının par
 
 Sunucunuz oluşturulduktan sonra, aşağıdaki ayarlarla birlikte gelir:
 
-- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır `az mysql up` ve o IP adresini beyaz listeler.
+- "Devbox" adlı bir güvenlik duvarı kuralı oluşturulur. Azure CLı, komutun çalıştırıldığı makinenin IP adresini algılamaya çalışır `az mysql up` ve bu IP adresine izin verir.
 - "Azure hizmetlerine erişime izin ver" ayarı açık olarak ayarlanmıştır. Bu ayar, sunucu güvenlik duvarını aboneliğinizdeki kaynaklar dahil olmak üzere tüm Azure kaynaklarından gelen bağlantıları kabul edecek şekilde yapılandırır.
 - `wait_timeout`Parametre 8 saat olarak ayarlanır
 - "SampleDB" adlı boş bir veritabanı oluşturuldu

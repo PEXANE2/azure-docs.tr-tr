@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585025"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300298"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
 
@@ -53,13 +53,11 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 *Sentinel anahtarı* , yapılandırma değiştirildiğinde sinyal almak için kullanılan özel bir anahtardır. Uygulamanız, değişiklikler için Sentinel anahtarını izler. Bir değişiklik algılandığında, tüm yapılandırma değerlerini yenileyebilirsiniz. Bu yaklaşım, uygulamanız tarafından uygulama yapılandırması için yapılan isteklerin genel sayısını azaltarak tüm anahtarların değişiklikler için izlenmesiyle karşılaştırılır.
 
 1. Azure portal, **yapılandırma gezgini > oluştur > anahtar-değer**' i seçin.
-
 1. **Anahtar**için *TestApp: Settings: Sentinel*yazın. **Değer**için 1 girin. **Etiketi** ve **içerik türünü** boş bırakın.
-
 1. **Uygula**’yı seçin.
 
-    > [!NOTE]
-    > Sentinel anahtarı kullanmıyorsanız, izlemek istediğiniz her anahtarı el ile kaydetmeniz gerekir.
+> [!NOTE]
+> Sentinel anahtarı kullanmıyorsanız, izlemek istediğiniz her anahtarı el ile kaydetmeniz gerekir.
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
@@ -162,9 +160,8 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
     ---
-
-    > [!TIP]
-    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi edinmek için lütfen [ASP.NET Core Içindeki seçenekler desenlerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
+    > [!Tip]
+    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
 
 4. `Configure` `UseAzureAppConfiguration` ASP.NET Core Web uygulaması istekleri almaya devam ederken, yenilemenin güncelleştirilmesi için kaydedilen yapılandırma ayarlarının güncelleştirilmesine izin vermek üzere ara yazılımı ekleyerek yöntemini güncelleştirin.
 
@@ -316,21 +313,21 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
 1. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
 
-```console
+    ```console
         dotnet build
-```
+    ```
 
 1. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
-```console
+    ```console
         dotnet run
-```
+    ```
 
 1. Bir tarayıcı penceresi açın ve çıktıda gösterilen URL 'ye gidin `dotnet run` .
 
     ![Hızlı başlangıç uygulamasını yerel olarak başlatma](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 

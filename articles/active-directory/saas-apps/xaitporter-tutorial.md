@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546313"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Öğretici: XaitPorter ile tümleştirme Azure Active Directory
 
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-6. [Smartalporter destek ekibine](https://www.smartrecruiters.com/about-us/contact-us/) **IP adresini** veya **uygulama Federasyon meta veri URL 'sini** sağlayın. bu sayede, xaitporter, IP adresine, kendi taraflarındaki Beyaz listeyi yapılandırma olan xaitporter örneğinden erişilebildiğinden emin olabilir. 
+6. [Smartitporter destek ekibine](https://www.smartrecruiters.com/about-us/contact-us/) **IP adresini** veya **uygulama Federasyon meta verileri URL 'sini** sağlayın. bu sayede, bu nedenle, bir IP adresinin, kendi tarafında onaylanan listeyi yapılandırarak, bu IP adresine olan xaıporter örneğinden erişilebilir olmasını sağlayabilirsiniz. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Xaıporter çoklu oturum açmayı yapılandırma
 
@@ -144,7 +144,7 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
     c. **Kullanıcıları oto oluşturmayı etkinleştir**' i seçin.
 
-    d. **Tamam** düğmesine tıklayın.
+    d. **Tamam**’a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -213,4 +213,3 @@ Erişim panelinde XaitPorter kutucuğuna tıkladığınızda, SSO 'yu ayarladı�
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

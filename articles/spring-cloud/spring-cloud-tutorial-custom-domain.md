@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374210"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290336"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 Etki alanı adı hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolamanın bir tekniğidir. Bu öğretici, CNAME kaydı kullanarak www.contoso.com gibi bir etki alanını eşler. Özel etki alanının bir sertifikayla güvenliğini sağlar ve Güvenli Yuva Katmanı (SSL) olarak da bilinen Aktarım Katmanı Güvenliği 'ni (TLS) nasıl zorunlu hale kullanabileceğinizi gösterir. 
@@ -20,7 +20,7 @@ Etki alanı adı hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolama
 Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vault depolanabilir. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-* Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart-launch-app-portal.md)veya mevcut bir uygulamayı kullanma).
+* Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) dağıtılan bir örnek
@@ -145,7 +145,7 @@ az spring-cloud app custom-domain list --app <app name>
 1. **Sertifikanızı** seçin veya içeri aktarın.
 1. **Kaydet**’e tıklayın.
 
-    ![SSL bağlaması Ekle](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![SSL bağlaması Ekle 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 Ya da, **SSL bağlama eklemek**IÇIN Azure CLI 'yi kullanabilirsiniz:
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 SSL bağlamasını başarıyla ekledikten sonra, etki alanı durumu güvenli olur: **sağlıklı**. 
 
-![SSL bağlaması Ekle](./media/custom-dns-tutorial/secured-domain-state.png)
+![SSL bağlaması Ekle 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>HTTPS'yi zorunlu tutma
 Varsayılan olarak, HTTP kullanarak uygulamanıza erişmeye devam edebilir, ancak tüm HTTP isteklerini HTTPS bağlantı noktasına yeniden yönlendirebilirsiniz.
 
 Uygulama sayfanızda, sol gezinti bölmesinde **özel etki alanı**' nı seçin. Ardından, **yalnızca https**'Yi, *true*olarak ayarlayın.
 
-![SSL bağlaması Ekle](./media/custom-dns-tutorial/enforce-http.png)
+![SSL bağlaması Ekle 3](./media/custom-dns-tutorial/enforce-http.png)
 
 Veya, HTTPS 'yi zorlamak için Azure CLı 'yi kullanabilirsiniz:
 ```

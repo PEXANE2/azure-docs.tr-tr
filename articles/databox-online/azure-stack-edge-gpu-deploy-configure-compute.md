@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: a5e0817050f8411dfc7fc64edae21f1b927e4e5c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263000"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293581"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Öğretici: Azure Stack Edge GPU cihazında işlem yapılandırma
 
@@ -105,7 +105,7 @@ Bir istemciyi Kubernetes kümesine erişecek şekilde yapılandırmak için Kube
     
         ![Yerel Kullanıcı arabirimi 3 ' te cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
 
-        `aseuser`Yapılandırma dosyası, `iotedge` Kubernetes kümenizdeki ad alanıyla ilgili tüm sorunları ayıklamanıza olanak tanır. Daha fazla bilgi için bkz. [Kubernetes sorunlarını ayıklama](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge). 
+        Bu yapılandırma dosyasını Kubernetes panosunda oturum açmak veya Kubernetes kümenizdeki sorunları ayıklamak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Kubernetes panosuna erişme](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#access-dashboard). 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

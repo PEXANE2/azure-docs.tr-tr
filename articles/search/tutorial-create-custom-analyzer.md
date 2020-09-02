@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290319"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
 
@@ -29,7 +29,7 @@ Bu öğretici, Postman ve Azure Bilişsel Arama [REST API 'lerini](/rest/api/sea
 > * Özel çözümleyici 'nin metin olarak Simgeleştir işlemini test etme
 > * Sonuçları daha fazla geliştirmek için dizin oluşturmak ve aramak üzere ayrı çözümleyiciler oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -239,7 +239,7 @@ Bu arama sonuçlarını anlamak için, çözümleyicilerin nasıl çalıştığ�
 
 Aşağıdaki diyagramda, bu üç bileşenin bir tümceyi simgeleştirmek için birlikte nasıl çalıştığını görebilirsiniz:
 
-  ![Çözümleyici işleminin diyagramı](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![Bir tümceyi simgeleştirme için çözümleyici işleminin diyagramı](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 Bu belirteçler daha sonra, hızlı, tam metin aramalarına izin veren ters bir dizinde depolanır.  Ters bir dizin, sözcük temelli analiz sırasında ayıklanan tüm benzersiz terimleri, bulundukları belgelere eşleyerek tam metin aramasını sağlar. Aşağıdaki diyagramda bir örnek görebilirsiniz:
 
@@ -251,7 +251,7 @@ Tüm arama, ters çevrilen dizinde depolanan terimleri aramaya yönelik olarak g
 1. Tersine çevrilmiş Dizin, eşleşen koşullara sahip belgeler için taranır.
 1. Son olarak, alınan belgeler [benzerlik algoritmasına](index-ranking-similarity.md)göre sıralanır.
 
-  ![Çözümleyici işleminin diyagramı](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![Çözümleyici işlem derecelendirmesi benzerliği diyagramı](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 Sorgu terimleri, ters dizininizdeki koşullara eşleşmezse sonuçlar döndürülmez. Sorguların nasıl çalıştığı hakkında daha fazla bilgi edinmek için [tam metin aramasında](search-lucene-query-architecture.md)bu makaleye bakın.
 

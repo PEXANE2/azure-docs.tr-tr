@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Traffic Manager oluşturma (ARM şablonu)
-description: Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure Traffic Manager profili oluşturmayı öğrenin.
+title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Traffic Manager oluşturma (ARM şablonu)'
+description: Bu hızlı başlangıç makalesinde, Azure Resource Manager şablonu (ARM şablonu) kullanılarak bir Azure Traffic Manager profilinin nasıl oluşturulacağı açıklanmaktadır.
 services: traffic-manager
 author: duongau
 ms.service: traffic-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
-ms.date: 08/24/2020
-ms.openlocfilehash: bc7cc3220f228a4c8f15370b7b0fcde56db8186d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237363"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299159"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Traffic Manager profili oluşturma
 
@@ -105,12 +105,12 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak gruplarını, Web uygulamalarını ve tüm ilgili kaynakları silin.
+Traffic Manager profile artık ihtiyacınız kalmadığında, kaynak grubunu silin. Bu, Traffic Manager profilini ve ilgili tüm kaynakları kaldırır.
+
+Kaynak grubunu silmek için `Remove-AzResourceGroup` cmdlet 'ini çağırın:
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-Remove-AzResourceGroup -Name $resourceGroupName
-Write-Host "Press [ENTER] to continue..."
+Remove-AzResourceGroup -Name <your resource group name>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

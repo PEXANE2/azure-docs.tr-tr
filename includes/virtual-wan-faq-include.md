@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604683"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304044"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -249,9 +249,12 @@ ExpressRoute bağlantı hattı sanal hub 'a bağlıyken, Microsoft Edge yönlend
 
 Geçerli davranış, VNet-VNet bağlantısı için hub-hub üzerinden ExpressRoute bağlantı hattı üzerinden tercih edilir. Ancak, bu bir sanal WAN kurulumunda önerilir. Sanal WAN ekibi, ExpressRoute yolu üzerinden hub-hub için tercihi etkinleştirmek üzere bir düzeltmeyle çalışır. Bu öneri, birden fazla ExpressRoute devresine (farklı sağlayıcılar) bir hub 'a bağlanmasını ve bölgeler arası trafik akışları için sanal WAN tarafından sunulan hub-hub bağlantısını kullanmayı kullanmaktır.
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Hub 'lar sanal WAN 'da farklı bir kaynak grubunda oluşturulabilir mi?
+Evet. Bu seçenek şu anda yalnızca PowerShell aracılığıyla kullanılabilir. Sanal WAN portalı, sanal WAN kaynağı ile aynı kaynak grubundaki hub 'ları ister.
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Sanal WAN 'da IPv6 desteği var mı?
 
-IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir.
+IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv4 ve IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir. 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Çeşitli sanal WAN işlevlerini otomatikleştirerek betikler tarafından kullanılacak önerilen API sürümü nedir?
 
