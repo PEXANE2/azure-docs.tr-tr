@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: f5f2678078850ad17fa72439df9c963b60ad7a9d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237819"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89326874"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -61,7 +61,7 @@ mkdir -p src/main/java
 
 Bu hızlı başlangıç, Gradle bağımlılık yöneticisini kullanır. İstemci kitaplığını ve diğer bağımlılık yöneticilerinin bilgilerini [Maven merkezi deposunda](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)bulabilirsiniz.
 
-Projenizin *Build. Gradle. kts* dosyasında, istemci kitaplığını `implementation` gerekli eklentiler ve ayarlarla birlikte bir ifade olarak eklediğinizden emin olun.
+Projenizin *Build. Gradle. kts* dosyasında, `implementation` gerekli eklentiler ve ayarlarla birlikte, istemci kitaplığını bir ifade olarak dahil edin.
 
 ```kotlin
 plugins {
@@ -79,7 +79,7 @@ dependencies {
 }
 ```
 
-Yeni **src/Main/Java** klasörüne gidin ve *formtanıyıcı. Java*adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
+Yeni **src/Main/Java** klasörüne gidin ve *Management. Java*adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
 
 ```java
 import com.azure.ai.formrecognizer.*;

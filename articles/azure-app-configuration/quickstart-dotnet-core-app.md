@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5925d80f23052324e5512908241ed573c681d835
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 57202752a965ad0405a04b2eba4cdf42070c94bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590260"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319517"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Hızlı başlangıç: uygulama yapılandırmasıyla .NET Core uygulaması oluşturma
 
@@ -44,7 +44,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 1. Projeniz için yeni bir klasör oluşturun.
 
-2. Yeni klasörde, yeni bir ASP.NET Core konsol uygulama projesi oluşturmak için aşağıdaki komutu çalıştırın:
+2. Yeni bir klasörde, yeni bir .NET Core konsol uygulaması projesi oluşturmak için aşağıdaki komutu çalıştırın:
 
     ```dotnetcli
     dotnet new console

@@ -1,0 +1,68 @@
+---
+title: Yönetilen diski işletim sistemi diski olarak ekleyerek VM 'yi oluşturma-PowerShell
+description: Azure PowerShell Betik Örneği - Yönetilen bir diski işletim sistemi diski olarak ekleyerek sanal makine oluşturma
+documentationcenter: virtual-machines
+author: ramankumarlive
+manager: kavithag
+ms.service: virtual-machines-windows
+ms.subservice: disks
+ms.topic: sample
+ms.workload: infrastructure
+ms.date: 05/10/2017
+ms.author: ramankum
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 038ec433a4f27eec5ace537ff9b08e5ff6c2f6a9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323215"
+---
+# <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell ile yönetilen bir diski işletim sistemi diski olarak ekleyerek sanal makine oluşturma 
+
+Bu betik, mevcut bir yönetilen diski işletim sistemi diski olarak ekleyerek bir sanal makine oluşturur. Yukarıdaki senaryolarda bu betiği kullanın:
+* Farklı abonelikteki bir yönetilen diskten kopyalanmış mevcut bir yönetilen işletim sistemi diskinden VM oluşturma
+* Özelleştirilmiş bir VHD dosyasından oluşturulmuş mevcut bir yönetilen diskten VM oluşturma 
+* Anlık görüntüden oluşturulmuş mevcut bir yönetilen işletim sistemi diskinden VM oluşturma 
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+ 
+
+## <a name="sample-script"></a>Örnek betik
+
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.ps1 "Create VM from snapshot")]
+
+## <a name="clean-up-deployment"></a>Dağıtımı temizleme 
+
+Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+
+```powershell
+Remove-AzResourceGroup -Name myResourceGroup
+```
+
+## <a name="script-explanation"></a>Betik açıklaması
+
+Bu betik yönetilen disk özelliklerini almak, yeni bir VM’ye yönetilen bir disk eklemek ve bir VM oluşturmak için aşağıdaki komutları kullanır. Tablodaki her öğe, komuta özgü belgelere yönlendirir.
+
+| Komut | Notlar |
+|---|---|
+| [Get-AzDisk](/powershell/module/az.compute/get-azdisk) | Diskin adına ve kaynak grubuna göre disk nesnesini alır. Döndürülen disk nesnesinin Id özelliği, diski yeni VM'ye bağlamak için kullanılır |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Sanal makine yapılandırması oluşturur. Bu yapılandırma; sanal makine adı, işletim sistemi ve yönetici kimlik bilgileri gibi bilgileri içerir. Yapılandırma, sanal makine oluşturulurken kullanılır. |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | Diskin Id özelliğini kullanarak yönetilen diski yeni sanal makineye işletim sistemi diski olarak ekler |
+| [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur. |
+| [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) | Ağ arabirimi oluşturur. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Sanal makine oluşturur. |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
+
+Market görüntüleri için plan bilgilerini ayarlamak üzere [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) kullanın.
+
+```powershell
+Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame
+```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
+
+Ek sanal makine PowerShell betiği örnekleri, [Azure Windows VM belgeleri](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) içinde bulunabilir.

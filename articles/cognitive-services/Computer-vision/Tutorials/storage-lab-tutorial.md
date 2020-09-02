@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 985060d1acb9e3bf0babc8303b997ceddfff8f05
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931956"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322339"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure Storage 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
 
-Bu öğreticide, karşıya yüklenen görüntülerin meta verilerini oluşturmak için Azure Görüntü İşleme hizmetini bir Web uygulamasıyla tümleştirmeyi öğreneceksiniz. Bu, bir şirketin tüm görüntüleri için hızlı bir şekilde açıklayıcı açıklamalı alt yazılar veya aranabilir anahtar sözcükler oluşturmak istemesi gibi [dijital varlık yönetimi (Dam)](../Home.md#computer-vision-for-digital-asset-management) senaryolarında kullanışlıdır.
+Bu öğreticide, karşıya yüklenen görüntülerin meta verilerini oluşturmak için Azure Görüntü İşleme hizmetini bir Web uygulamasıyla tümleştirmeyi öğreneceksiniz. Bu, bir şirketin tüm görüntüleri için hızlı bir şekilde açıklayıcı açıklamalı alt yazılar veya aranabilir anahtar sözcükler oluşturmak istemesi gibi [dijital varlık yönetimi (Dam)](../overview.md#computer-vision-for-digital-asset-management) senaryolarında kullanışlıdır.
 
 GitHub 'daki [Azure depolama ve bilişsel hizmetler laboratuvarında](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) tam bir uygulama kılavuzu bulunabilir ve bu öğretici aslında laboratuvarın 5. alıştırisini ele alır. Her adımı izleyerek tam uygulamayı oluşturmak isteyebilirsiniz, ancak yalnızca Görüntü İşleme var olan bir Web uygulamasına tümleştirme hakkında bilgi edinmek istiyorsanız, buradan okuyun.
 
@@ -34,7 +34,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) veya üzeri, "ASP.net ve Web geliştirme" ve "Azure geliştirme" iş yükleri yüklendi.
 - Görüntü depolaması için ayarlanmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. alýþtýrmalarý](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin).

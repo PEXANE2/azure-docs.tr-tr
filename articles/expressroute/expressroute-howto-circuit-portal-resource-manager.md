@@ -1,23 +1,23 @@
 ---
 title: Öğretici-ExpressRoute ile devre oluşturma ve değiştirme
-description: Bu öğreticide, bir ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, güncelleştirme, silme ve sağlamayı kaldırma hakkında bilgi edinin.
+description: Bu öğreticide, bir ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, güncelleştirme, silme ve sağlamayı kaldırma hakkında bilgi edineceksiniz.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/20/2018
-ms.author: cherylmc
-ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.author: duau
+ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74813120"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322150"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Öğretici: ExpressRoute bağlantı hattı oluşturma ve değiştirme
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
@@ -25,7 +25,15 @@ ms.locfileid: "74813120"
 > * [PowerShell (klasik)](expressroute-howto-circuit-classic.md)
 >
 
-Bu makale, Azure portal ve Azure Resource Manager dağıtım modelini kullanarak bir ExpressRoute bağlantı hattı oluşturmanıza yardımcı olur. Ayrıca, durumu denetleyebilir, güncelleştirebilir, silebilir veya devre sağlamayı kaldırabilirsiniz.
+Bu öğreticide, Azure portal ve Azure Resource Manager dağıtım modelini kullanarak bir ExpressRoute bağlantı hattı oluşturma gösterilmektedir. Ayrıca, durumu denetleyebilir, güncelleştirebilir, silebilir veya devre sağlamayı kaldırabilirsiniz.
+
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> [!div class="checklist"]
+> * ExpressRoute bağlantı hattı oluşturma
+> * Bir devrenin geçerli durumunu al
+> * Devreyi değiştirme
+> * Devre sağlamasını kaldırma ve silme
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -47,38 +55,51 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
 
 Yeni kaynak oluşturma seçeneğini belirleyerek bir ExpressRoute bağlantı hattı oluşturabilirsiniz. 
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Networking**  >  Aşağıdaki görüntüde gösterildiği gibi ağ**ExpressRoute**' u seçin:
+1. Azure portalı menüsünde **Kaynak oluştur**'u seçin. **Networking**  >  Aşağıdaki görüntüde gösterildiği gibi ağ**ExpressRoute**' u seçin:
 
-   ![ExpressRoute bağlantı hattı oluşturma](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="ExpressRoute bağlantı hattı oluşturma":::
 
-2. **ExpressRoute**' a tıkladıktan sonra **ExpressRoute** bağlantı hattı oluştur sayfasını görürsünüz. Bu sayfadaki değerleri doldururken, doğru SKU katmanını (Standart veya Premium) ve veri ölçümü faturalandırma modelini (sınırsız veya tarifeli) belirttiğinizden emin olun.
+2. **ExpressRoute**' a tıkladıktan sonra **ExpressRoute oluştur** sayfasını görürsünüz. Devrenin **kaynak grubunu**, **bölgesini**ve  **adını** belirtin. Ileri ' ye tıklayın **: yapılandırma >**.
 
-   ![SKU katmanını ve veri ölçümünü yapılandırma](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="Kaynak grubunu ve bölgeyi yapılandırma":::
 
-   * **Katman** , bir ExpressRoute standardı veya ExpressRoute Premium eklentisinin etkinleştirilip etkinleştirilmediğini belirler. Premium eklenti için standart SKU veya **Premium** almak üzere **Standart** belirtebilirsiniz.
-   * **Veri ölçümü** Faturalandırma türünü belirler. Tarifeli bir veri planı için **tarifeli** ve sınırsız bir veri planı için **sınırsız** bir şekilde belirtebilirsiniz. Faturalandırma türünü **tarifeli** iken **sınırsız**olarak değiştirebileceğinizi unutmayın.
+3. Bu sayfadaki değerleri doldururken, doğru SKU katmanını (yerel, standart veya Premium) ve veri ölçümü faturalandırma modelini (sınırsız veya tarifeli) belirttiğinizden emin olun.
 
-     > [!IMPORTANT]
-     > Türü **sınırsız** iken **tarifeli**olarak değiştiremezsiniz.
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="Devresini yapılandırma":::
+    
+    * **Bağlantı noktası türü** , bir hizmet sağlayıcısına bağlanıp bağlanamayacağını veya doğrudan Microsoft 'un genel ağına bir eşleme konumu olduğunu belirler.
+    * Yeni bir devrenin oluşturulup oluşturulamayacağını veya klasik bir bağlantı hattını ARM 'ye geçiriyorsanız yeni bir bağlantı hattı **oluşturma veya klasik** bir bağlantı hattı.
+    * **Sağlayıcı** , hizmetinizi istediğiniz Internet hizmetidir.
+    * **Eşleme konumu** , Microsoft ile eşolduğunuz fiziksel konumdur.
 
-   * **Eşleme konumu** , Microsoft ile eşolduğunuz fiziksel konumdur.
+    > [!IMPORTANT]
+    > Eşleme konumu, Microsoft ile eşolduğunuz [fiziksel konumu](expressroute-locations.md) gösterir. Bu, Azure ağ kaynak sağlayıcısı 'nın bulunduğu coğrafi konuma başvuran "location" özelliği ile bağlantılı **değildir** . İlgili olmadıkları sürece, bir ağ kaynağı sağlayıcısını coğrafi olarak devrenin eşleme konumuna yakın bir şekilde tercih eden bir uygulamadır.
 
-     > [!IMPORTANT]
-     > Eşleme konumu, Microsoft ile eşolduğunuz [fiziksel konumu](expressroute-locations.md) gösterir. Bu, Azure ağ kaynak sağlayıcısı 'nın bulunduğu coğrafi konuma başvuran "location" özelliği ile bağlantılı **değildir** . İlgili olmadıkları sürece, bir ağ kaynağı sağlayıcısını coğrafi olarak devrenin eşleme konumuna yakın bir şekilde tercih eden bir uygulamadır.
+    * **SKU** , bir ExpressRoute yerel, ExpressRoute Standard veya ExpressRoute Premium eklentisinin etkinleştirilip etkinleştirilmediğini belirler. Premium eklenti için standart SKU veya **Premium** 'u almak üzere yerel SKU, **Standart** almak için **Yerel** ' i belirtebilirsiniz.
+    * **Faturalandırma modeli** Faturalandırma türünü belirler. Tarifeli bir veri planı için **tarifeli** ve sınırsız bir veri planı için **sınırsız** bir şekilde belirtebilirsiniz. Faturalandırma türünü **tarifeli** iken **sınırsız**olarak değiştirebileceğinizi unutmayın.
+
+    > [!IMPORTANT]
+    > Türü **sınırsız** iken **tarifeli**olarak değiştiremezsiniz.
+
+    * **Klasik Işleme Izin ver** , klasik sanal ağların devreye bağlanmasına izin verir.
 
 ### <a name="3-view-the-circuits-and-properties"></a>3. devreleri ve özellikleri görüntüleyin
 
 **Tüm devreleri görüntüleme**
 
-Sol taraftaki menüden **tüm kaynaklar** ' a seçerek oluşturduğunuz tüm devreleri görüntüleyebilirsiniz.
+Sol taraftaki menüdeki **tüm hizmetler > ağ > ExpressRoute devreleri** ' nı seçerek oluşturduğunuz tüm devreleri görüntüleyebilirsiniz.
 
-![Devreleri görüntüle](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute devre menüsü":::
+
+Abonelikte oluşturulan tüm ExpressRoute devreleri burada görünür.
+
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute devre listesi":::
 
 **Özellikleri görüntüle**
 
-Devre dışı seçeneğinin özelliklerini seçerek görüntüleyebilirsiniz. Devreniz için **genel bakış** sayfasında hizmet anahtarı, hizmet anahtarı alanında görüntülenir. Hazırlama işlemini gerçekleştirmek için devre dışı bırakmak üzere hizmet anahtarını kopyalamanız ve hizmet sağlayıcısına geçirmeniz gerekir. Devre hizmeti anahtarı, bağlantı hattına özeldir.
+Devre dışı seçeneğinin özelliklerini seçerek görüntüleyebilirsiniz. Devreniz için **genel bakış** sayfasında hizmet anahtarı, hizmet anahtarı alanında görüntülenir. Devrenizin için hizmet anahtarına başvurun ve sağlama işlemini tamamlaması için hizmet sağlayıcısına sağlayın. Hizmet anahtarı, devrenizin için özeldir.
 
-![Özellikleri görüntüle](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="Özellikleri görüntüle":::
 
 ### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. sağlama için hizmet anahtarını bağlantı sağlayıcınıza gönderin
 
@@ -86,26 +107,26 @@ Bu sayfada, **sağlayıcı durumu** hizmet sağlayıcı tarafında sağlama duru
 
 Yeni bir ExpressRoute bağlantı hattı oluşturduğunuzda, devre aşağıdaki durumda olur:
 
-Sağlayıcı durumu: sağlanmadı<BR>
-Devre durumu: etkin
+Sağlayıcı durumu: **sağlanmadı**<BR>
+Devre durumu: **etkin**
 
-![Sağlama işlemini Başlat](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="Sağlama işlemini Başlat":::
 
 Bağlantı sağlayıcısı sizin için etkinleştirme işleminde olduğunda devre aşağıdaki duruma geçer:
 
-Sağlayıcı durumu: sağlama<BR>
-Devre durumu: etkin
+Sağlayıcı durumu: **sağlama**<BR>
+Devre durumu: **etkin**
 
 ExpressRoute bağlantı hattını kullanabilmeniz için aşağıdaki durumda olmalıdır:
 
-Sağlayıcı durumu: sağlandı<BR>
-Devre durumu: etkin
+Sağlayıcı durumu: **sağlandı**<BR>
+Devre durumu: **etkin**
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. devre anahtarının durumunu ve durumunu düzenli olarak kontrol edin
 
 ' İ seçerek ilgilendiğiniz devrenin özelliklerini görüntüleyebilirsiniz. Devam etmeden önce **sağlayıcının durumunu** kontrol edin ve **sağlanan** ' a taşındığını doğrulayın.
 
-![Devre ve sağlayıcı durumu](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="Devre ve sağlayıcı durumu":::
 
 ### <a name="6-create-your-routing-configuration"></a>6. yönlendirme yapılandırmanızı oluşturun
 
@@ -137,7 +158,7 @@ Kapalı kalma süresi olmadan aşağıdaki görevleri gerçekleştirebilirsiniz:
 * Ölçüm planını *ölçülen verilerden* *sınırsız veriye*değiştirin.
 
   > [!IMPORTANT]
-  > Ölçüm planının sınırsız verilerden ölçülen verilerle değiştirilmesi desteklenmez.
+  > Ölçüm planının **sınırsız verilerden** **ölçülen verilerle** değiştirilmesi desteklenmez.
 
 * *Klasik Işlemlere Izin ver*' i etkinleştirebilir ve devre dışı bırakabilirsiniz.
   > [!IMPORTANT]
@@ -149,15 +170,19 @@ Kapalı kalma süresi olmadan aşağıdaki görevleri gerçekleştirebilirsiniz:
 
 Bir ExpressRoute devresini değiştirmek için **yapılandırma**' ya tıklayın.
 
-![Devre değiştirme](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="Devre değiştirme":::
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Bir ExpressRoute bağlantı hattının sağlamasını kaldırma ve silme
 
-ExpressRoute devrenizi **Sil** simgesini seçerek silebilirsiniz. Aşağıdaki bilgileri not edin:
+ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
 
-* ExpressRoute bağlantı hattınızdaki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, herhangi bir sanal ağın bağlantı hattına bağlanıp bağlanmadığını denetleyin.
-* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
-* Hizmet sağlayıcı devre sağlamasını kaldırmışsa (hizmet sağlayıcı sağlama durumu **sağlanmadı**olarak ayarlandıysa), devresini silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
+> [!NOTE]
+>* Sağlamayı kaldırmadan önce *tüm sanal ağların* ExpressRoute bağlantı hattından bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, herhangi bir sanal ağın bağlantı hattına bağlanıp bağlanmadığını denetleyin.
+>* Hizmet sağlayıcı devre sağlamasını kaldırmışsa (hizmet sağlayıcı sağlama durumu **sağlanmadı**olarak ayarlandıysa), devresini silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
+
+ExpressRoute devrenizi **Sil** simgesini seçerek silebilirsiniz. 
+
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Devresini Sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

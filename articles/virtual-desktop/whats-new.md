@@ -3,16 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003534"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319823"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -24,6 +25,31 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="august-2020"></a>Ağustos 2020
+
+Ağustos 2020 ' de değiştirilen özellikler:
+
+- Aşağıdaki Azure bölgelerinde bağlantı gecikmesini azaltmak için performansı geliştirdik: 
+
+    - Birleşik Krallık
+    - Fransa
+    - Norveç
+    - Güney Kore
+
+   Bu değişikliklerin kullanıcılarınızı nasıl etkileyeceğini gösteren genel bir fikir edinmek için [deneyim Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) ' i kullanabilirsiniz.
+
+- Microsoft Store uzak masaüstü Istemcisi (v 10.2.1522 +) artık genel kullanıma sunulmuştur! Microsoft Store uzak masaüstü Istemcisinin bu sürümü Windows sanal masaüstü ile uyumludur. Ayrıca, geliştirilmiş kullanıcı deneyimleri için yenilenmiş UI akışları geliştirdik. Bu güncelleştirme, akıcı tasarımı, hafif ve koyu modlarını ve diğer birçok heyecan verici değişikliği içerir. Ayrıca, istemciyi iOS, macOS ve Android istemcileri ile aynı temel Uzak Masaüstü Protokolü (RDP) altyapısını kullanacak şekilde de buraya verdik. Bu, tüm platformlarda daha hızlı bir hızda yeni özellikler sunmamızı sağlar. [Istemcisini indirip](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) deneyin!
+
+- Takımlar masaüstü istemcisinde (sürüm 1.3.00.21759), istemcinin yalnızca sohbet, kanallar ve takvimdeki UTC saat dilimini gösterdiğimiz bir sorunu düzelttik. Güncelleştirilmiş istemci artık bunun yerine uzak oturumun saat dilimini gösterir.
+
+- Azure Advisor artık Windows sanal masaüstü 'nün bir parçasıdır. Windows sanal masaüstüne Azure portal aracılığıyla eriştiğinizde, Windows sanal masaüstü ortamınızı iyileştirmek için öneriler görebilirsiniz. [Azure Danışmanı](azure-advisor.md)hakkında daha fazla bilgi edinin.
+
+- Azure CLı artık Windows `az desktopvirtualization` sanal masaüstü dağıtımlarınızı otomatikleştirmenize yardımcı olmak Için Windows sanal masaüstü 'nü () desteklemektedir. Uzantı komutlarının bir listesi için [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) 'a göz atın.
+
+- Dağıtım şablonlarımızı Windows sanal masaüstü Azure Resource Manager arabirimleriyle tamamen uyumlu hale getirmek için güncelleştirdik. Şablonları [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)' da bulabilirsiniz.
+
+- Windows sanal masaüstü US Gov portalı artık genel önizlemeye sunuldu. Daha fazla bilgi edinmek için [duyurumuza](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/)bakın.
 
 ## <a name="july-2020"></a>Temmuz 2020  
 
@@ -105,9 +131,7 @@ Windows sanal masaüstü için Microsoft ekiplerinde bazı geliştirmeler yaptı
 
 Daha fazla bilgi edinmek için [blog gönderimize](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)bakın.
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Windows sanal masaüstü yol haritası Microsoft 365](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)gelecek planlar hakkında bilgi edinin.
+## <a name="client-updates"></a>İstemci güncelleştirmeleri
 
 Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik güncelleştirmeler hakkında bilgi edinmek için şu makalelere göz atın:
 
@@ -116,3 +140,8 @@ Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik 
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Windows sanal masaüstü yol haritası Microsoft 365](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)gelecek planlar hakkında bilgi edinin.
+

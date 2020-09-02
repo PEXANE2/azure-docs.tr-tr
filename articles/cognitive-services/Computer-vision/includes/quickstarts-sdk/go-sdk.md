@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: d0e677377037203a6a67150d985efb30e09af86e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073217"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321874"
 ---
 <a name="HOLTop"></a>
 
@@ -87,7 +87,7 @@ Daha sonra, farklı Görüntü İşleme işlemleri gerçekleştirmek için kod e
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme go SDK 'sının bazı önemli özelliklerini işler.
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Bu sınıf, görüntü analizi ve metin okuma gibi tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[Imageanalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Bu tür, bir **analiz Zeımage** işlev çağrısının sonuçlarını içerir. Kategoriye özgü işlevlerin her biri için benzer türler vardır.|
@@ -251,5 +251,5 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si Başvurusu (git)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
-* [Görüntü İşleme nedir?](../../Home.md)
+* [Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go)' da bulunabilir.

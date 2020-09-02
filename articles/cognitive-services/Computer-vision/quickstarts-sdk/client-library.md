@@ -1,27 +1,32 @@
 ---
-title: 'Hızlı başlangıç: Görüntü İşleme istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: Görüntü İşleme istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Uygulamalarınızı Azure bilişsel hizmetler 'den Görüntü İşleme API'si bağlamak için bu hızlı başlangıcı kullanın.
+description: Seçtiğiniz dilde yerel bir istemci kitaplığı aracılığıyla uygulamanızda Azure Görüntü İşleme kullanmayı öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 08/31/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom:
+- devx-track-python
+- devx-track-javascript
+- devx-track-csharp
+- cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bc5b0d05dc1e9e7c09781dba63c2031c72da73ff
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+keywords: görüntü işleme, bilgisayar görme hizmeti
+ms.openlocfilehash: 87ff6a03f45fe61b44712166966a1fe3851ffb41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050277"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321875"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Hızlı başlangıç: Görüntü İşleme istemci kitaplığını kullanma
 
-Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Görüntü İşleme, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar.
+Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Görüntü İşleme Hizmeti, görüntüleri işlemek ve görsel özellikleri hakkında bilgi döndürmek için size AI algoritmaları sağlar. Uygulamanıza bir paket yüklemek ve temel görevler için örnek kodu denemek için bu adımları izleyin.
 
 Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 

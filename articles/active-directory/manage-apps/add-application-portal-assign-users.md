@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0e31852b6cf40cec9161c6904ce99798f1ee4996
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303902"
+ms.locfileid: "89322509"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama
 
@@ -34,11 +34,11 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
 >[!IMPORTANT]
 >Bu hızlı başlangıçtaki adımları test etmek için üretim dışı bir ortam kullanın.
 
-## <a name="assign-users-to-an-app"></a>Bir uygulamaya Kullanıcı atama
+## <a name="assign-users-to-an-app"></a>Kullanıcıları bir role atama
 1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 2. Sol gezinti menüsünde **Kullanıcılar ve gruplar**' ı seçin.
    > [!NOTE]
-   > Kullanıcıları Office 365 uygulamaları gibi Microsoft uygulamalarına atamak istiyorsanız, bu uygulamalardan bazıları PowerShell kullanır. 
+   > Microsoft 365 ve Office 365 uygulamalarından bazıları PowerShell kullanımını gerektirir. 
 3. **Kullanıcı Ekle** düğmesini seçin.
 4. **Atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 5. Uygulamaya atamak istediğiniz kullanıcıyı veya grubu seçin. Ayrıca arama kutusuna kullanıcı veya grup adını yazmaya başlayabilirsiniz. Birden çok kullanıcı ve grup seçebilirsiniz ve seçimleriniz **Seçili öğeler**altında görünür.
@@ -55,6 +55,8 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
     > Uygulama, rol seçimini desteklemiyorsa, varsayılan erişim rolü atanır. Bu durumda, uygulama kullanıcıların sahip olduğu erişim düzeyini yönetir.
 9. **Atama Ekle** bölmesinde, bölmenin altındaki **ata** düğmesini seçin.
 
+> [!NOTE]
+> Aynı yordamı kullanarak kullanıcıların veya grupların atamasını kaldırabilirsiniz. Atamasını kaldırmak istediğiniz kullanıcıyı veya grubu seçin ve ardından **Kaldır**' ı seçin. Microsoft 365 ve Office 365 uygulamalarından bazıları PowerShell kullanımını gerektirir. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

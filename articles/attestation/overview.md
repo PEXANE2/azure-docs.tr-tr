@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: bc6f52ed175e55b283e3c41408c15b818a85d6b7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237438"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320605"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure kanıtlama (Önizleme)
+# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
 
 Microsoft Azure kanıtlama (Önizleme), [ıntel® Software Guard uzantıları](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) şifreleme ve [sanallaştırma tabanlı güvenlik](/windows-hardware/design/device-experiences/oem-vbs) (VBS) şifrelemesi gibi güvenilir yürütme ortamlarının (TEEs) atlaması için bir çözümdür. Şifreleme kanıtlama, bir kuşın güvenli ve güvenilir olduğunu doğrulamaya yönelik bir işlemdir.
 
@@ -65,10 +65,11 @@ Azure kanıtlama müşterileri, Microsoft 'un güvenilir bilgi işlem tabanı (T
 
 Azure kanıtlama, TEEs, aşağıdaki avantajları sağladığından, kanıtlamaktan için tercih edilen seçenektir: 
 
-- Yüksek kullanılabilirliğe sahip ücretsiz Azure hizmeti
-- İstemci isteklerine kimlik doğrulaması için Azure Active Directory yararlanır. Bu, Azure kanıtlama 'nın kimlik ve sahiplik temelinde kanıtlama gerçekleştirmesine olanak sağlar
-- Kiracı sahiplerinin belirteç oluşturmayı kısıtlayabileceği ilkeleri destekler
-- Bir SGX enclade uygulamasıyla birlikte kullanırken verilerinin korunmasını sağlar
+- SGX ve vbs enclaven gibi birden çok TEEs kanıtlamaktan için Birleşik çerçeve
+- Belirteç oluşturmayı kısıtlamak için özel kanıtlama sağlayıcılarının ve ilkelerinin yapılandırılmasına izin veren çok kiracılı hizmet
+- Kullanıcılardan yapılandırma olmadan test olabilen varsayılan sağlayıcıları sunar
+- , Bir SGX encde uygulamasıyla birlikte kullanımda olan verilerini korur
+- Hizmet Düzeyi Sözleşmesi (SLA) sunan yüksek oranda kullanılabilir hizmet
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR) desteği
 

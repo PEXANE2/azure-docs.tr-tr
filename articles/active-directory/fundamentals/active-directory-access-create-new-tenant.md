@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797653"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318616"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory yeni bir kiracı oluşturun
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -72,6 +72,6 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımları kull
 
 - Gruplar ve üyeler ekleme; bkz. [Temel bir grup oluşturma ve üyeler ekleme](active-directory-groups-create-azure-portal.md)
 
-- Kuruluşunuzun uygulamasının ve kaynak erişiminin yönetilmesine yardımcı olmak üzere Privileged Identity Management ve [koşullu erişim](../../role-based-access-control/conditional-access-azure-management.md) [kullanarak rol tabanlı erişim](../../role-based-access-control/pim-azure-resource.md) hakkında bilgi edinin.
+- Kuruluşunuzun uygulamasının ve kaynak erişiminin yönetilmesine yardımcı olmak üzere Privileged Identity Management ve [koşullu erişim](../../role-based-access-control/conditional-access-azure-management.md) [kullanarak rol tabanlı erişim](../../role-based-access-control/best-practices.md) hakkında bilgi edinin.
 
 - [Temel lisans bilgileri, terminoloji ve ilişkili özellikleri](active-directory-whatis.md) dahil olmak üzere Azure AD hakkında bilgi edinin.

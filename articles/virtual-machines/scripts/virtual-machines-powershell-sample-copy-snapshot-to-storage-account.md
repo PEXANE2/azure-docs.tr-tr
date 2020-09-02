@@ -10,12 +10,12 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 7a2e8654940f94938c7436911f030ecb5dad9cf1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 389c256e951c8a97f0233e5082ea13cc1573302d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951735"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320384"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Yönetilen anlık görüntüleri, PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak verme/kopyalama
 
@@ -44,9 +44,9 @@ Bu betik bir yönetilen anlık görüntünün SAS URI'sini oluşturmak için aş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VHD'den yönetilen disk oluşturma](virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[VHD'den yönetilen disk oluşturma](virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Yönetilen diskten sanal makine oluşturma](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Yönetilen diskten sanal makine oluşturma](./virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 

@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu Azure portal-Azure
 description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226106"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322594"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -131,9 +131,11 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 7. Sanal makinelerinizin ne tür işletim sistemi diskleri kullanmasını istediğinizi seçin: Standart SSD, Premium SSD veya Standart HDD.
 
-8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz **sanal ağı** ve **alt ağı** seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel IP daha güvenli olduğundan **Hayır**' ı seçmenizi öneririz.
+8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz **sanal ağı** ve **alt ağı** seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Seçtiğiniz sanal ağın DNS sunucuları, etki alanı denetleyicisinin IP 'sini kullanacak şekilde yapılandırılmalıdır.
 
-9. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş**veya **yok**.
+9. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel bir IP daha güvenli olduğundan **Hayır** ' ı seçmenizi öneririz.
+
+10. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş**veya **yok**.
 
     **Temel**seçeneğini belirlerseniz, herhangi bir gelen bağlantı noktasının açılmasını isteyip istemediğinizi seçmeniz gerekir. **Evet**' i seçerseniz, gelen bağlantılara izin vermek için standart bağlantı noktaları listesinden seçim yapın.
 
@@ -145,11 +147,13 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
     **Gelişmiş**' i seçerseniz, önceden yapılandırdığınız mevcut bir ağ güvenlik grubunu seçin.
 
-10. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. İsteğe bağlı olarak, sanal makinelerin içinde olmasını istediğiniz belirli bir kuruluş birimini ekleyebilirsiniz. **Hayır**' ı seçerseniz, VM 'ler **ad etkı alanına katılma UPN**'si sonekiyle eşleşen etki alanına birleştirilir.
+11. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. İsteğe bağlı olarak, sanal makinelerin içinde olmasını istediğiniz belirli bir kuruluş birimini ekleyebilirsiniz. **Hayır**' ı seçerseniz, VM 'ler **ad etkı alanına katılma UPN**'si sonekiyle eşleşen etki alanına birleştirilir.
 
-11. Yönetici hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin.
+  - Bir OU belirttiğinizde, tam yolu (ayırt edici ad) ve tırnak işaretleri olmadan kullandığınızdan emin olun.
 
-12. **İleri ' yi seçin: çalışma alanı >**.
+12. Yönetici hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin. Bu hesabın birden çok facklu kimlik doğrulaması (MFA) etkin olamaz. Azure Active Directory Domain Services (Azure AD DS) etki alanına katılırken, hesap Azure AD DC yöneticileri grubunun bir parçası olmalıdır ve hesap parolasının Azure AD DS 'de çalışması gerekir.
+
+13. **İleri ' yi seçin: çalışma alanı >**.
 
 Bununla birlikte, konak havuzunuzu ayarlamanın bir sonraki aşamasına başlamaya hazırız: uygulama grubunuzu bir çalışma alanına kaydetme.
 

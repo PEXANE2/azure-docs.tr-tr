@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815309"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319551"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -46,7 +46,7 @@ Azure, genelleştirilmiş ve özelleştirilmiş iki ana görüntü türü sunar.
 
 ### <a name="generalized-images"></a>Genelleştirilmiş görüntüler
 
-Genelleştirilmiş görüntü, kurulumun ilk önyüklemede tamamlanmasını gerektiren bir görüntüdür. Örneğin, ilk önyüklemede ana bilgisayar adı, Yönetici Kullanıcı ve VM 'ye özgü diğer yapılandırma ayarları ayarlanır. Bu, görüntünün birden çok kez yeniden kullanılmasını istediğinizde ve oluşturma sırasında parametreleri geçirmek istediğinizde yararlıdır. Genelleştirilmiş görüntü Azure Aracısı içeriyorsa, aracı parametreleri işleyecek ve ilk yapılandırmanın tamamlandığı platforma geri sinyaline sahip olur. Bu işleme **sağlama**adı verilir. 
+Genelleştirilmiş görüntü, kurulumun ilk önyüklemede tamamlanmasını gerektiren bir görüntüdür. Örneğin, ilk önyüklemede ana bilgisayar adı, Yönetici Kullanıcı ve VM 'ye özgü diğer yapılandırma ayarları ayarlanır. Bu, görüntünün birden çok kez yeniden kullanılmasını istediğinizde ve oluşturma sırasında parametreleri geçirmek istediğinizde yararlıdır. Genelleştirilmiş görüntü Azure Aracısı içeriyorsa, aracı parametreleri işleyecek ve ilk yapılandırmanın tamamlandığı platforma geri sinyaline sahip olur. Bu işleme [sağlama](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)adı verilir. 
 
 Sağlama, görüntüye bir hazırlayıcı eklenmesini gerektirir. İki hazıriyer vardır:
 - [Azure Linux Aracısı](../extensions/agent-linux.md)

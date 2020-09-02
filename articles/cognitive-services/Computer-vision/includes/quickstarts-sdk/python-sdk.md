@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c6e94cb4d55fdc8a204af0017eb1a8b37d44f087
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 744ef58b54dc3718c4693ce2aad69024e2d6e2fe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035630"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321891"
 ---
 <a name="HOLTop"></a>
 
@@ -59,7 +59,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Bu sınıf, görüntü analizi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. **ComputerVisionClientOperationsMixin**uygular.|
@@ -194,5 +194,5 @@ Bu hızlı başlangıçta, Python için Görüntü İşleme kitaplığı 'nı ku
 > [!div class="nextstepaction"]
 >[Görüntü İşleme API'si Başvurusu (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Görüntü İşleme nedir?](../../Home.md)
+* [Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)' da bulunabilir.

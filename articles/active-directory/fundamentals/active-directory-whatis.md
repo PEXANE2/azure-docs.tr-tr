@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82a5fd5a14091c95bc1783f283c41431082c8980
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: db14e4e47cce1822404561d33bd8e0d3f224e037
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182114"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321115"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişi
 
 - Şirket ağınızdaki ve intranetinizdeki uygulamalar gibi iç kaynaklar, kendi kuruluşunuz tarafından geliştirilen tüm bulut uygulamalarıyla birlikte. Kuruluşunuz için kiracı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Active Directory yeni kiracı oluşturma](active-directory-access-create-new-tenant.md).
 
-Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
+Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD 'yi kimler kullanıyor?
 
@@ -68,7 +68,7 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Uygulama yönetimi|Uygulama proxy 'Si, çoklu oturum açma, Uygulamalarım portalı (erişim paneli olarak da bilinir) ve hizmet olarak yazılım (SaaS) uygulamaları kullanarak bulutunuzu ve şirket içi uygulamalarınızı yönetin. Daha fazla bilgi için bkz. Şirket [içi uygulamalara güvenli uzaktan erişim sağlama](../manage-apps/application-proxy.md) ve [uygulama yönetimi belgeleri](../manage-apps/index.yml).|
 |Kimlik Doğrulaması|Azure Active Directory self servis parola sıfırlama, Multi-Factor Authentication, özel yasaklanmış parola listesi ve akıllı kilitleme 'yi yönetin. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulaması belgeleri](../authentication/index.yml).|
 |Geliştiriciler için Azure Active Directory|Tüm Microsoft kimliklerinde oturum açma, Microsoft Graph, diğer Microsoft API 'Leri veya özel API 'Leri çağırmak için belirteçleri alan uygulamalar oluşturun. Daha fazla bilgi için bkz. [Microsoft Identity platform (geliştiriciler için Azure Active Directory)](../develop/index.yml).|
-|İşletmeden İşletmeye (B2B)|Konuk kullanıcılarınızı ve dış iş ortaklarınızı yönetin ve kendi şirket verileriniz üzerinde denetimi koruyun. Daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B belgeleri](../b2b/index.yml).|
+|İşletmeden İşletmeye (B2B)|Konuk kullanıcılarınızı ve dış iş ortaklarınızı yönetin ve kendi şirket verileriniz üzerinde denetimi koruyun. Daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B belgeleri](../external-identities/index.yml).|
 |İşletmeden Müşteriye (B2C)|Uygulamalarınızı kullanırken kullanıcıların nasıl kaydolma, oturum açma ve profillerini yönetme şeklini özelleştirin ve denetleyin. Daha fazla bilgi için bkz. [Azure Active Directory B2C belgeleri](../../active-directory-b2c/index.yml).|
 |Koşullu Erişim|Bulut uygulamalarınıza erişimi yönetin. Daha fazla bilgi için bkz. [Azure AD koşullu erişim belgeleri](../conditional-access/index.yml).|
 |Aygıt Yönetimi|Buluttaki veya şirket içindeki cihazlarınızın kurumsal verilerinize erişimini yönetin. Daha fazla bilgi için bkz. [Azure AD cihaz yönetimi belgeleri](../devices/index.yml).|
@@ -81,7 +81,7 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Privileged identity management (PIM)|Kuruluşunuzun içindeki erişimi yönetin, denetleyin ve izleyin. Bu özellik, Azure AD ve Azure 'daki kaynaklara ve Office 365 veya Intune gibi diğer Microsoft çevrimiçi hizmetlerine erişimi içerir. Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
 |Raporlar ve izleme|Ortamınızdaki güvenlik ve kullanım desenleriyle ilgili Öngörüler elde edin. Daha fazla bilgi için bkz. [Azure Active Directory raporları ve izleme](../reports-monitoring/index.yml).|
 
-## <a name="terminology"></a>Terimler
+## <a name="terminology"></a>Terminoloji
 
 Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçiririz.
 
