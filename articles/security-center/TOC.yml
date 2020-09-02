@@ -1,6 +1,6 @@
 - name: Güvenlik Merkezi belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Güvenlik Merkezi hakkında
@@ -61,8 +61,6 @@
           href: security-center-recommendations.md
         - name: Güvenlik ilkelerine genel bakış
           href: tutorial-security-policy.md
-        - name: Yerleşik güvenlik ilkeleri
-          href: security-center-policy-definitions.md
         - name: Güvenliği artırmak için önerileri kullanın
           href: security-center-using-recommendations.md
         - name: Güvenlik temeli
@@ -157,7 +155,7 @@
       href: asset-inventory.md
     - name: Diğer araçlarla ve hizmetlerle tümleştirme
       items:
-        - name: Windows Admin Center ile tümleştirme
+        - name: Windows Admin Center sunucularınızı koruma
           href: windows-admin-center-integration.md
         - name: Azure App Service web uygulamalarınızı ve API'lerinizi koruma
           href: security-center-app-services.md
@@ -211,6 +209,9 @@
       href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri
       href: security-center-endpoint-protection.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin
