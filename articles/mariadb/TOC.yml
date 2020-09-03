@@ -1,6 +1,6 @@
 - name: MariaDB için Azure Veritabanı belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: MySQL için Azure DB nedir?
       href: overview.md
@@ -72,6 +72,9 @@
           href: concepts-data-access-security-private-link.md
         - name: Gelişmiş Tehdit Koruması
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: İş sürekliliği

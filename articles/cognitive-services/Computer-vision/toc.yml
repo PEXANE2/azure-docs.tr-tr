@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Görüntü İşleme nedir?
-      href: Home.md
+      href: overview.md
     - name: Yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
@@ -133,7 +133,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) Belgeleri
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) hizmeti, bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar. LUIS, geliştiricilerin doğal dilde kullanıcı girdisi alabilen ve bu girdiden anlam çıkarabilen uygulamalar derlemesini sağlamak için makine öğrenimini kullanır.
-  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
-  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+  ms.openlocfilehash: 6e34c5e39118565e14a40765443583b0b9ed237b
+  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88236531"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89322492"
 landingContent:
 - title: Language Understanding (LUIS) hakkında
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portal: Yeni LUIS uygulaması oluşturma'
       url: get-started-portal-build-app.md
     - text: C# SDK'sını kullanma
-      url: quickstart-sdk.md?pivots=programming-language-csharp
+      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
     - text: Python SDK’sını kullanma
-      url: quickstart-sdk.md?pivots=programming-language-python
+      url: azure-sdk-quickstart.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: Yeni LUIS uygulaması oluşturma
@@ -88,7 +88,7 @@ landingContent:
     - text: 'Portal: Uygulamayı tahmin uç noktasına dağıtma'
       url: get-started-portal-deploy-app.md
     - text: SDK’yı kullanma
-      url: quickstart-sdk.md
+      url: azure-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: Uygulamanızın sürümünü oluşturma
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: SDK’yı kullanma
-      url: quickstart-sdk.md
+      url: azure-sdk-quickstart.md
   - linkListType: quickstart
     links:
     - text: REST kullanarak C# ile

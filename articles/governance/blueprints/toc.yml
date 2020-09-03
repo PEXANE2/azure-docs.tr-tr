@@ -22,7 +22,7 @@
       href: create-blueprint-rest-api.md
     - name: Şema oluşturma - ARM şablonu
       displayName: 'assign, compliance, resource manager'
-      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md?toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json#azure-blueprints
 - name: Öğreticiler
   items:
     - name: Şema örneğinden oluşturma
@@ -261,7 +261,7 @@
   href: ./troubleshoot/general.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint

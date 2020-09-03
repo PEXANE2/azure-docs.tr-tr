@@ -1,10 +1,10 @@
 - name: Azure Bilişsel Hizmetler Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Bilişsel Hizmetler nedir?
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Bilişsel Hizmetler belgelerindeki yenilikler
       href: whats-new-docs.md
     - name: Bilişsel Hizmetler ve Makine öğrenmesi

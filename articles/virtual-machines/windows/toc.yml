@@ -1,6 +1,6 @@
 - name: Windows VM’leri ile İlgili Belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
@@ -70,23 +70,23 @@
             - name: VHD karşıya yüklemesinden VM
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: Bir işletim sistemi diski iliştirme
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: Anlık görüntüden VM
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: Depolamayı yönetme
           items:
             - name: VHD'den yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: Anlık görüntüden yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: Yönetilen diski çoğaltma
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: VHD’den anlık görüntü oluşturma
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: Anlık görüntü kopyalama
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Güvenlik
@@ -118,15 +118,15 @@
         - name: Depolamayı yönetme
           items:
             - name: VHD'den yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: Anlık görüntüden yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: Yönetilen diski kopyalama
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Anlık görüntüyü depolama hesabına VHD olarak dışarı aktarma
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: Anlık görüntüyü kopyalama
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Ağ
@@ -172,7 +172,7 @@
         - name: VM boyutları
           href: ../sizes.md
         - name: 2. Nesil VM’ler
-          href: generation-2.md
+          href: ../generation-2.md
         - name: Genel amaçlı
           items:
             - name: Genel Bakış
@@ -621,7 +621,7 @@
     - name: VM’leri yönetme
       items:
         - name: VM kullanımı
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: Ortak PowerShell görevleri
           href: ps-common-ref.md
         - name: VM boyutunu değiştirme

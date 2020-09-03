@@ -15,7 +15,7 @@
     - name: Kanıtlama ilkesini yazma ve imzalama
       href: author-sign-policy.md
     - name: SGX kanıtlama kodu örnekleri
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: Örnekler
   items:
     - name: Kanıtlama ilkesi

@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET Çekirdeği
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -470,13 +470,13 @@
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:
         - name: Otomatik kullanıcı sağlama nedir?
-          href: ../app-provisioning/user-provisioning.md
+          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: SCIM uç noktasını geliştirme ve tümleştirme
-          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Yaygın sağlama senaryoları
-          href: ../app-provisioning/scim-graph-scenarios.md
+          href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph kullanarak yapılandırmayı otomatikleştirme
-          href: ../app-provisioning/application-provisioning-configure-api.md
+          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
     - name: Azure portalı yardım makaleleri
       items:
         - name: Özel olarak geliştirilmiş bir uygulama için belirteç ömrü varsayılanları

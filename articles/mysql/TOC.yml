@@ -1,6 +1,6 @@
 - name: MySQL için Azure Veritabanı belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: MySQL için Azure DB nedir?
       href: overview.md
@@ -114,6 +114,9 @@
           href: concepts-azure-ad-authentication.md
         - name: Altyapıyı çift şifreleme
           href: concepts-infrastructure-double-encryption.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: İş sürekliliği

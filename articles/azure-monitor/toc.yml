@@ -1,6 +1,6 @@
 - name: Azure İzleyici Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure İzleyici nedir?
       href: overview.md
@@ -146,7 +146,7 @@
           href: app/data-retention-privacy.md
     - name: Uyarılar
       items:
-        - name: Genel bakış
+        - name: Genel Bakış
           href: platform/alerts-overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md
@@ -400,7 +402,7 @@
               href: insights/solution-agenthealth.md
         - name: Azure Tanılama uzantısı
           items:
-            - name: Genel bakış
+            - name: Genel Bakış
               href: platform/diagnostics-extension-overview.md
             - name: Windows
               displayname: diagnostics extension
