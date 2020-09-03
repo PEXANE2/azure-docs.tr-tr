@@ -2,18 +2,18 @@
 title: Azure IaaS VM 'lerini Azure Site Recovery başka bir bölgeye taşıma
 description: Azure IaaS VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076103"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425934"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -82,13 +82,13 @@ Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sana
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasa oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Ara ' ya tıklayın, kurtarma hizmetleri kasaları ' na tıklayın >
 1. Kurtarma Hizmetleri kasaları menüsünde + Ekle ' ye tıklayın.
 1. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. **ContosoRG**kaynak grubunu oluşturun.
 1. Bir Azure bölgesi belirtin. Desteklenen bölgeleri denetlemek için [Azure Site Recovery fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/site-recovery/)coğrafi kullanılabilirlik bölümüne bakın.
-1. **Kurtarma Hizmetleri kasalarında** **genel bakış**  >  **contosovmkasası**  >  **+ Çoğalt**' ı seçin.
+1. **Kurtarma Hizmetleri kasalarında** **genel bakış**  >  **contosovmkasaçoğaltılan**  >  **öğeleri**  >  **+ Çoğalt**' ı seçin.
 1. **Kaynak** bölümünde **Azure** seçeneğini belirleyin.
 1. **Kaynak konumu**’nda, VM’lerinizin çalışmakta olduğu kaynak Azure bölgesini seçin.
 1. Kaynak Yöneticisi dağıtım modelini seçin. Ardından **kaynak aboneliği** ve **kaynak kaynak grubunu**seçin.

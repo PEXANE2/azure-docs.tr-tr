@@ -1,18 +1,18 @@
 ---
 title: Azure VM 'lerini kamu ve kamu bölgeleri arasında Azure Site Recovery ile taşıma
 description: Azure sanal makinelerini Azure Kamu ve kamu bölgeleri arasında taşımak için Azure Site Recovery kullanın.
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927309"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425356"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure VM’lerini Azure Kamu ve Genel bölgeleri arasında taşıma 
 
@@ -79,7 +79,7 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 
 - Bir etki alanı veya yerel hesap kullanabilirsiniz
 - Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, Register **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\ilkelersystem**altında, 1 değeriyle **LocalAccountTokenFilterPolicy**DWORD girişini ekleyin.
-- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux için hesap, kaynak Linux sunucusunda kök olmalıdır.
 
 

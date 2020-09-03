@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079201"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426359"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Öğretici: Terrayform ile Azure yay bulutu örneği sağlama
 
@@ -29,7 +29,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
 > * , [HashiCorp topluluk portalının](https://discuss.hashicorp.com/c/terraform-core) soru, kullanım örnekleri ve faydalı desenler: Terkform bölümü
 > * Sağlayıcıyla ilgili sorular: [HashiCorp topluluk portalının Terkform sağlayıcıları bölümü](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
@@ -94,7 +94,7 @@ Bu bölümde, yapılandırmayı çalıştırmak için çeşitli Teraform komutla
     terraform apply plan.out
     ```
 
-1. Azure portal içindeki sonuçları doğrulamak için yeni kaynak grubuna gidin. Yeni **Azure Cosmos DB örneği** yeni kaynak grubunda gösterilmektedir.
+1. Azure portal içindeki sonuçları doğrulamak için yeni kaynak grubuna gidin. Yeni **Azure yay bulutu** örneği yeni kaynak grubunda gösterilmektedir.
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>Yapılandırmayı yapılandırma günlükleri ve ölçümleriyle Güncelleştir
 

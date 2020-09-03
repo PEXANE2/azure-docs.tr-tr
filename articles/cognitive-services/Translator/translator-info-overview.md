@@ -1,7 +1,7 @@
 ---
-title: Çevirmen nedir? -Translator
+title: Translator nedir? -Translator
 titlesuffix: Azure Cognitive Services
-description: Çeviriciyi, Web siteleriniz, araçları ve diğer çözümlerinizi, çok dilli kullanıcı deneyimleri sağlamak için tümleştirin.
+description: Çeviriciyi, web sitelerinizi, araçlarınızla ve çok dilli kullanıcı deneyimleri sağlamak için diğer çözümlerle tümleştirin.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589461"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425968"
 ---
-# <a name="what-is-the-translator"></a>Çevirmen nedir?
+# <a name="what-is-translator"></a>Translator nedir?
 
-Çevirmen, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilecek. [70 ' den fazla dilde](languages.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve metinden metne dil çevirisi için herhangi bir işletim sistemiyle herhangi bir donanım platformunda kullanılabilir.
-
-Çevirmen, bulutta makine öğrenimi ve AI algoritmalarının Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/?pivot=products&panel=ai) koleksiyonunun bir parçasıdır ve geliştirme projelerinizde kolayca tüketilebilir.
+Azure bilişsel hizmetler çevirmeni, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmaya yönelik bilişsel API 'lerin Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/?pivot=products&panel=ai) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [70 ' den fazla dilde](languages.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve metinden metne dil çevirisi için herhangi bir işletim sistemiyle herhangi bir donanım platformunda kullanılabilir.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator Hakkında
 
-Çevirmen, bulut tabanlı bir makine çevirisi hizmetidir. Çekirdek hizmet, bir dizi Microsoft ürününü ve hizmeti güçlendirir ve kendi uygulamaları ve iş akışlarında dünya çapındaki binlerce işletme tarafından kullanılan ve içeriklerinin küresel bir hedef kitleye ulaşmasını sağlayan bir çevirmendir.
+Azure bilişsel hizmetler çevirmeni, bulut tabanlı bir makine çevirisi hizmetidir. Çevirmen, bir dizi Microsoft ürününü ve hizmetini güçlendirir ve kendi uygulamaları ve iş akışlarında dünya çapındaki binlerce işletme tarafından kullanılır ve bu da içeriğinin küresel bir hedef kitleye ulaşmasını sağlar.
 
-Çevirmen tarafından desteklenen konuşma çevirisi, [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/)aracılığıyla da kullanılabilir. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir.Konuşma Tanıma API'si, 15 Ekim 2019 tarihinde kullanımdan kaldırılacak Translator Konuşma Çevirisi API'sinin yerini alacaktır.
+Çevirmen ile desteklenen konuşma çevirisi, [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/)aracılığıyla da kullanılabilir. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir. 
 
 ## <a name="language-support"></a>Dil desteği
 
@@ -46,7 +44,7 @@ NMT modelleri API'nin temelindedir ve son kullanıcılara görünür değildir. 
 
 ## <a name="language-customization"></a>Dil özelleştirmesi
 
-Temel Microsoft Translator hizmeti uzantısı, özel çevirici, sinir çeviri sistemini özelleştirmenize ve belirli terminoloji ve stiliniz için çeviriyi iyileştirmenize yardımcı olan çevirmenle birlikte kullanılabilir.
+Çevirmen hizmeti uzantısı, özel çevirici, sinir çeviri sistemini özelleştirmenize ve belirli terminoloji ve stiliniz için çeviriyi iyileştirmenize yardımcı olmak üzere Translator ile birlikte kullanılabilir.
 
 Custom Translator sayesinde, kendi işletmenizde veya sektörünüzde kullanılan terminolojiyi işleyebilen çeviri sistemleri oluşturabilirsiniz. Özelleştirilmiş çeviri sisteminiz daha sonra, kategori parametresini kullanarak, düzenli çevirici aracılığıyla, mevcut uygulama, iş akışlarınız ve Web siteleriniz arasında birden çok cihaz türü arasında kolayca tümleşecek.
 
