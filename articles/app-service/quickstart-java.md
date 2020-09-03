@@ -10,23 +10,22 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: a3067972dc42db6644006e33797fc44c2f494693
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7130ed2965e2df0d366635f6ce84c822c1359b59
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378177"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir. jar dosyası veya. war dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir. Java & Tomcat yönergeleri arasında geçiş yapmak için sekmeleri kullanın.
 
-> [!NOTE]
-> Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Aynı zamanda IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
->
+
+
 ![Azure App Service 'de çalışan örnek uygulama](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +33,22 @@ ms.locfileid: "88961253"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>Java uygulaması oluşturma
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+[Spring Boot Başlarken](https://github.com/spring-guides/gs-spring-boot) örnek projesini klonlayın.
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+Tamamlanmış projenin dizinine geçin.
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı yeni bir uygulama oluşturun `helloworld` :
 
@@ -47,146 +62,140 @@ Sonra çalışma dizininizi proje klasörü olarak değiştirin:
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
-Azure App Service dağıtım işlemi, Azure CLı 'den otomatik olarak Azure kimlik bilgilerinizi alabilir. Azure CLı yerel olarak yüklü değilse Maven eklentisi OAuth veya cihaz oturum açma bilgileri ile oturum açmanızı ister. Gerekirse [Maven eklentilerle kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) ayrıntılarını denetleyin.
+Azure App Service dağıtım işlemi, Azure CLı 'daki Azure kimlik bilgilerinizi otomatik olarak kullanacaktır. Azure CLı yerel olarak yüklü değilse, Maven eklentisi OAuth veya cihaz oturum açma bilgileriyle kimlik doğrulaması yapılır. Daha fazla bilgi için bkz. [Maven eklentileri ile kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
-Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırabilirsiniz
+Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırın. Bu komut, App Service işletim sistemini, Java sürümünü ve Tomcat sürümünü ayarlamanıza yardımcı olur.
+
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows" 
-Şunları seçmeniz istenecek 
-* **İşletim sistemi (varsayılan: `linux` )**
-* **Java sürümü (varsayılan: `1.8` )**
-* **Web kapsayıcısı (varsayılan: `tomcat 8.5` )** 
- 
-**`2`** İlk adımda **Windows** işletim sistemini seçmek için girişe dikkat edin. Diğer yapılandırma, **ENTER**tuşuna basarak varsayılan olarak bırakılabilir. Son olarak, **`Y`** yapılandırmayı tamamlamaya yönelik **onay (Y/N)** istemine basın.
+::: zone pivot="platform-windows"
 
-Örnek bir işlem şöyle görünür:
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. İstendiğinde, girerek **Windows** ' u seçin `2` .
+2. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+3. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+
+    Özet çıktınızı aşağıda gösterilen kod parçacığına benzer şekilde görünecektir.
+
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. İstendiğinde, girerek **Windows** ' u seçin `2` .
+1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+1. ENTER tuşuna basarak, Tomcat 8,5 varsayılan Web kapsayıcısını kullanın.
+1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+
+    Özet çıktınızı aşağıda gösterilen kod parçacığına benzer şekilde görünecektir.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-Şunları seçmeniz istenecek 
-* **İşletim sistemi (varsayılan: `linux` )**
-* **Java sürümü (varsayılan: `Java 8` )**
-* **Web kapsayıcısı (varsayılan: `Tomcat 8.5` )** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-Tüm yapılandırmalara, **ENTER**tuşuna basarak varsayılan değer bırakılabilir. Son olarak, **`Y`** yapılandırmayı tamamlamaya yönelik **onay (Y/N)** istemine basın.
-Örnek bir işlem şöyle görünür:
+1. İstendiğinde, ENTER tuşuna basarak **Linux** ' u seçin.
+2. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+3. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. İstendiğinde, ENTER tuşuna basarak **Linux** ' u seçin.
+1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+1. ENTER tuşuna basarak, Tomcat 8,5 varsayılan Web kapsayıcısını kullanın.
+1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
-App Service yapılandırmasını doğrudan gerekirse değiştirebilirsiniz `pom.xml` , bazı yaygın olanlar aşağıda listelenmiştir:
+Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz `pom.xml` . Bazı yaygın olanlar aşağıda listelenmiştir:
 
- Özellik | Gerekli | Açıklama | Sürüm
+Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---
 `<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
@@ -203,12 +212,13 @@ App Service yapılandırmasını doğrudan gerekirse değiştirebilirsiniz `pom.
 
 ## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
-Azure App Service dağıtım işlemi, Azure CLı 'den hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+Maven eklentisi, uygulama hizmetlerine dağıtmak için Azure CLı 'den hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
-Ardından, aşağıdaki komutu kullanarak Java uygulamanızı Azure 'a dağıtabilirsiniz:
+
+Ardından, aşağıdaki komutu kullanarak Java uygulamanızı Azure 'a dağıtabilirsiniz.
 
 ```bash
 mvn package azure-webapp:deploy

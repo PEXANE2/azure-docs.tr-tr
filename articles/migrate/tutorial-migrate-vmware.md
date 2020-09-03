@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 77fc621dc5e8013f49c261f7e0e265aad939bc2a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86113539"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376051"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -94,26 +94,36 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 
 6. **Hedef ayarlar**' da, abonelik ve hedef bölge ' yi seçin. Azure VM 'lerinin geçişten sonra bulunduğu kaynak grubunu belirtin.
 7. **Sanal ağ**bölümünde, Azure VM 'lerinin geçişten sonra birleşme Azure VNET/alt ağını seçin.
-7. **Azure Hibrit Avantajı**’nda:
+8. **Kullanılabilirlik seçenekleri**' nde şunları seçin:
+    -  Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçeneği belirlerseniz, Işlem sekmesinde seçilen makinenin her biri için kullanılacak kullanılabilirlik alanını belirtmeniz gerekir. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir
+    -  Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Bu seçeneği kullanabilmek için seçilen hedef kaynak grubunun bir veya daha fazla kullanılabilirlik kümesi olmalıdır.
+    - Geçirilen makineler için bu kullanılabilirlik yapılandırmalarının herhangi birine ihtiyacınız yoksa, altyapı artıklığı gerekli değildir.
+
+9. **Azure Hibrit Avantajı**’nda:
 
     - Azure Hibrit Avantajı’nı uygulamak istemiyorsanız **Hayır**’ı seçin. Ardından **İleri**'ye tıklayın.
     - Etkin Yazılım Güvencesi veya Windows Server abonelikleri kapsamında olan Windows Server makineleriniz varsa ve avantajı geçirdiğiniz makinelere uygulamak istiyorsanız **Evet**’i seçin. Ardından **İleri**'ye tıklayın.
 
     ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
+10. **İşlem**bölümünde, işlem ' de VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
     - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu **’nda el ile bir boyut seçin. 
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. 
-    - **Kullanılabilirlik kümesi**: VM geçişten sonra bir Azure kullanılabilirlik kümesinde yer alıyorsa, kümeyi belirtin. Küme, geçiş için belirttiğiniz hedef kaynak grubunda olmalıdır.
+    - **Kullanılabilirlik alanı**: kullanılacak kullanılabilirlik bölgesini belirtin.
+    - **Kullanılabilirlik kümesi**: kullanılacak kullanılabilirlik kümesini belirtin.
 
-    ![VM işlem ayarları](./media/tutorial-migrate-vmware/compute-settings.png)
+> [!NOTE]
+>Bir sanal makine kümesi için farklı bir kullanılabilirlik seçeneği seçmek istiyorsanız 1. adıma gidin ve tek bir sanal makine kümesi için çoğaltma başlattıktan sonra farklı kullanılabilirlik seçeneklerini belirleyerek adımları yineleyin.
 
-9. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
+
+ ![VM işlem ayarları](./media/tutorial-migrate-vmware/compute-settings.png)
+
+11. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
    
     ![Diskler](./media/tutorial-migrate-vmware/disks.png)
 
-10. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
+12. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
 > Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (**Manage**  >  **çoğaltılan makineleri**yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
