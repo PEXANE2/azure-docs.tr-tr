@@ -3,12 +3,12 @@ title: gRPC uzantısı veri sözleşmesi-Azure
 description: Bu makalede, canlı video analizi modülü ile AI veya CV özel uzantısı arasında ileti göndermek için gRPC protokolünü kullanma hakkında bilgi edineceksiniz.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 0221d20245a6db69791d8bf13ba9e00de3b96ecc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f2d93fb062ab3d6963177e7ece15df6bfe5b42cb
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691881"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421501"
 ---
 # <a name="grpc-extension-data-contract"></a>gRPC uzantısı veri sözleşmesi
 
@@ -21,7 +21,7 @@ gRPC, herhangi bir ortamda çalışan modern, açık kaynaklı ve yüksek perfor
 
 GRPC oturumu, gRPC istemcisinden TCP/TLS bağlantı noktası üzerinden gRPC sunucusuna tek bağlantıdır. 
 
-Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://developers.google.com/protocol-buffers) bir ileti olarak bir medya akış tanımlayıcısı ve ardından sunucuya video çerçeveleri gönderir. Sunucu akış tanımlayıcısını doğrular, video çerçevesini analiz edin ve çıkarım sonuçlarını bir prototipme iletisi olarak döndürür.
+Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) bir ileti olarak bir medya akış tanımlayıcısı ve ardından sunucuya video çerçeveleri gönderir. Sunucu akış tanımlayıcısını doğrular, video çerçevesini analiz edin ve çıkarım sonuçlarını bir prototipme iletisi olarak döndürür.
 
 ![gRPC uzantı sözleşmesi](./media/data-contracts/grpc.png)
 

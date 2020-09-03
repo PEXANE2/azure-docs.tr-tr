@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190550"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421654"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
@@ -25,7 +25,7 @@ Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 - **Gizli Dizi Yönetimi**: Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
 - **Anahtar Yönetimi**: Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
 - **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir. 
-- **Donanım güvenlik modülleri tarafından desteklenen gizli dizileri depolama** -gizli dizi ve anahtarlar yazılım veya FIPS 140-2 düzey 2 doğrulanan HSM 'ler tarafından korunabilir
+- **Donanım güvenlik modülleri tarafından desteklenen gizli** dizileri: depodaki gizlilikler, anahtarlar ve sertifikalar, yazılım anahtarı (Standart katman) veya FIPS 140-2 düzey 2 Ile doğrulanan hsms anahtarı (Premium katman) ile şifrelenir 
 
 ## <a name="why-use-azure-key-vault"></a>Neden Azure Key Vault kullanmalıyım?
 

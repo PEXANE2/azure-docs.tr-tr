@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237391"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421297"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure kanıtlama ayarlama
 
@@ -159,26 +159,27 @@ TagsTable:
 
 Kanıtlama sağlayıcıları Remove-AzAttestation cmdlet 'i kullanılarak silinebilir.  
 
-' ' AzurePowerShell Remove-AzAttestation-Name $attestationProvider-ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>İlke yönetimi
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
-- Microsoft.Attestation/attestationProviders/attestation/write
-- Microsoft.Attestation/attestationProviders/attestation/delete
+İlkeleri yönetmek için, bir Azure AD kullanıcısı "eylemler" için aşağıdaki izinleri gerektirir:
+- Microsoft. kanıtlama/attestationProviders/kanıtlama/okuma
+- Microsoft. kanıtlama/attestationProviders/kanıtlama/yazma
+- Microsoft. kanıtlama/attestationProviders/kanıtlama/silme
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+Bu izinler, "Owner" (joker izinleri), "katkıda bulunan" (joker karakter izinleri) veya "kanıtlama katılımcısı" (yalnızca Azure kanıtlama için özel izinler) gibi bir rol aracılığıyla bir AD kullanıcısına atanabilir.  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
+İlkeleri okumak için, bir Azure AD kullanıcısı "eylemler" için aşağıdaki izinleri gerektirir:
+- Microsoft. kanıtlama/attestationProviders/kanıtlama/okuma
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+Bu izin, "okuyucu" (joker karakter izinleri) veya "kanıtlama okuyucusu" gibi bir rol aracılığıyla bir AD kullanıcısına atanabilir (yalnızca Azure kanıtlama için özel izinler).
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+Aşağıdaki PowerShell cmdlet 'leri bir kanıtlama sağlayıcısı için ilke yönetimi sağlar (bir seferde bir t).
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+Get-AzAttestationPolicy, belirtilen t için geçerli ilkeyi döndürür. Cmdlet, ilkeyi ilkenin hem metin hem de JWT biçiminde görüntüler.
 
 ```powershell
 $teeType = "<tee Type>"

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262864"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421382"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge 'i yükler
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaza raf bağlama
 > * Cihazın kablolarını bağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Fiziksel bir cihazı yükleme önkoşulları şunlardır:
 
@@ -86,7 +86,7 @@ Cihaz, standart 19 inç bir rafa yüklenmiş olmalıdır. Cihazınızı standart
 > Azure Stack Edge cihazlarının uygun işlemler için rafa bağlı olması gerekir.
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Başlamadan önce güvenlik, ortam ve mevzuat bilgi kitapçığlarınızın güvenlik yönergelerini okuyun. Bu broşür cihazla birlikte gönderilmiştir.
 - Dolap kutusu alt kısmına en yakın olan ayrılan alana rayları yüklemeye başlayın.
@@ -221,6 +221,10 @@ Cihazınızı güç ve ağ için kablolu yapmak üzere aşağıdaki adımları u
 4. Güç kablolarını raf güç dağıtım birimlerine (PDU) takın. İki PSU'nun ayrı güç kaynaklarını kullandığından emin olun.
 5. Cihazı açmak için güç düğmesine basın.
 6. 1-GbE ağ arabirimi bağlantı noktası 1 ' i fiziksel cihazı yapılandırmak için kullanılan bilgisayara bağlayın. Bağlantı noktası 1 yönetim arabirimi olarak hizmet verir.
+    
+    > [!NOTE]
+    > Bilgisayarı doğrudan cihazınıza bağlıyorsanız (bir anahtarla devam etmeden), bir çapraz kablo veya USB Ethernet bağdaştırıcısı kullanın.
+
 7. PORT 2, PORT 3, PORT 4, PORT 5 veya PORT 6 bağlantı noktalarından birini veya birkaçını veri merkezi ağına/İnternete bağlayın.
 
     - Bağlantı noktası 2 ' yi bağlıyorsanız, 1-GbE RJ-45 ağ kablosunu kullanın.
@@ -235,7 +239,7 @@ Bu öğreticide, şu konularda nasıl yapılacağını Azure Stack öğrendiniz:
 > * Cihazı rafa yerleştirme
 > * Cihazın kablolarını bağlama
 
-Cihazınıza bağlanma, kurulumunu yapma ve etkinleştirme adımları için bir sonraki öğreticiye geçin.
+Cihazınıza nasıl bağlanacağınızı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge 'i bağlama](./azure-stack-edge-gpu-deploy-connect.md)

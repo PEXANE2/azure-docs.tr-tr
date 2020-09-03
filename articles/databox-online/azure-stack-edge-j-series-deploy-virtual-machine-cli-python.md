@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255537"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420498"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge GPU cihazınızda sanal makineler dağıtma
 
@@ -45,7 +45,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
@@ -60,13 +60,13 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
 
     2. Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir.
 
-    İşlem için başka bir ağ arabirimi kullanmaya karar verirseniz şunları yaptığınızdan emin olun:
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Azure Resource Manager kullanarak dağıttığınız tüm VM 'Leri silin.
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - Tüm sanal ağ arabirimlerini ve bu ağ arabirimiyle ilişkili sanal ağı silin.
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - Artık, işlem için başka bir ağ arabirimini etkinleştirebilirsiniz.
+    - You can now enable another network interface for compute.-->
 
 3. Azure Stack Edge cihazınızda ve istemcinizin güvenilir deposunda tüm sertifikaları oluşturdunuz ve yüklediniz. [2. Adım: sertifika oluşturma ve yüklemede](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)açıklanan yordamı izleyin.
 

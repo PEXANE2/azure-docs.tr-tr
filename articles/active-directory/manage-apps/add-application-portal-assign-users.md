@@ -21,7 +21,7 @@ ms.locfileid: "89322509"
 
 Önceki hızlı başlangıçta bir uygulama için özellikleri yapılandırdınız. Hem atanan hem de atanmamış kullanıcılar için deneyimi yapılandırdığınız özellikleri ayarladığınızda. Bu hızlı başlangıç, uygulamayı uygulamaya atama sürecinde size yol gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için şunlar gerekir:
 

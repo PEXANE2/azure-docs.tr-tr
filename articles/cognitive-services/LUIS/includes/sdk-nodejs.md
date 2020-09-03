@@ -26,7 +26,7 @@ Node.js için Language Understanding (LUSıS) istemci kitaplıklarını kullanı
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |   [Yazma](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) ve [tahmin](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) kitaplığı kaynak kodu | [Yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring) ve [tahmin](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) NPM | [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/sdk-3x/index.js)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org)
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)

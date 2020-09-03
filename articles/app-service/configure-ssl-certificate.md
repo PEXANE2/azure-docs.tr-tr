@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401495"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420889"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -188,6 +188,13 @@ Yeni satın aldığınız sertifikayı seçin ve **Tamam**' ı seçin.
 
 Sertifikalarınızı yönetmek için Azure Key Vault kullanıyorsanız, [gereksinimleri karşılayan](#private-certificate-requirements)sürece Key Vault bir PKCS12 sertifikasını App Service 'e aktarabilirsiniz.
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>App Service kasadan okumak üzere yetkilendir
+Varsayılan olarak App Service kaynak sağlayıcısı Key Vault erişimine sahip değildir. Bir sertifika dağıtımı için Key Vault kullanabilmeniz için, [anahtar kasasında kaynak sağlayıcısına okuma erişimi yetkisi](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)vermeniz gerekir. 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd`  , App Service için kaynak sağlayıcısı hizmet asıl adıdır ve tüm Azure abonelikleri için aynıdır. Azure Kamu bulut ortamı için `6a02c803-dafd-4136-b4c3-5a6f318b4714` kaynak sağlayıcısı hizmet sorumlusu adı olarak kullanın.
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Kasanızdan bir sertifikayı uygulamanıza aktarma
+
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
 Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **Key Vault sertifikayı içeri aktar**' ı seçin.
@@ -205,6 +212,9 @@ Sertifikayı seçmenize yardımcı olması için aşağıdaki tabloyu kullanın.
 İşlem tamamlandığında, sertifikayı **özel anahtar sertifikaları** listesinde görürsünüz. İçeri aktarma işlemi bir hatayla başarısız olursa, sertifika [App Service gereksinimlerini](#private-certificate-requirements)karşılamıyor.
 
 ![Key Vault sertifikası alma tamamlandı](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> Sertifikanızı yeni bir sertifikayla Key Vault güncelleştirirseniz, App Service sertifikayı otomatik olarak 48 saat içinde eşitler.
 
 > [!IMPORTANT] 
 > Özel bir etki alanını bu sertifikayla güvenli hale getirmek için yine de bir sertifika bağlaması oluşturmanız gerekir. [Bağlama oluşturma](configure-ssl-bindings.md#create-binding)bölümündeki adımları izleyin.

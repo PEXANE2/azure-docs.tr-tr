@@ -50,6 +50,6 @@ Diğer hatalar: Yukarıdaki listede kapsanmayan bir hata alırsanız, bu sayfan�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Language Understanding (LUSıS) API nedir?](what-is-luis.md)
-* [Yenilikler nelerdir?](whats-new.md)
+* [Yenilikler](whats-new.md)
 * [Amaçlar](luis-concept-intent.md), [varlıklar](luis-concept-entity-types.md)ve [örnek](luis-concept-utterance.md)bildirimler ve [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code)' da bulunabilir.

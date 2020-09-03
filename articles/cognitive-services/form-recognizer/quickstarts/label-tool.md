@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377821"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418968"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir model
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -225,7 +225,9 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > [!NOTE]
 > Tarih biçimlendirme için şu kurallara bakın:
 > 
-> Aşağıdaki karakterler DMY Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
+> `dmy` `mdy` Tarih biçimlendirme çalışması için bir biçim (,,) belirtmeniz gerekir `ymd` .
+>
+> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > * 1-1-2020
 > * 1-01-20
 >
-> Bir DMY Tarih dizesinde sekiz basamak varsa sınırlayıcı isteğe bağlıdır:
+> Bir tarih dizesinde sekiz basamak varsa sınırlayıcı isteğe bağlıdır:
 > * 01012020
 > * 01 01 2020
 >
-> Ay, tam veya kısa ad olarak da yazılabilir. Ad kullanılırsa, sınırlayıcı karakterler isteğe bağlıdır:
+> Ay, tam veya kısa ad olarak da yazılabilir. Ad kullanılırsa, sınırlayıcı karakterler isteğe bağlıdır. Ancak, bu biçim diğerlerinden daha az tanınmış olabilir.
 > * 01/Jan/2020
 > * 01Oc2020
 > * 01 Ocak 2020

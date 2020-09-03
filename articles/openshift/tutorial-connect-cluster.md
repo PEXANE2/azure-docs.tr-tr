@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8ac25193bacfcce3c3062ccd92fa5cfbb5784572
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587863"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421705"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesine bağlanma
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kubeadminPassword` .
+Aşağıdaki örnek çıktıda parolanın ne olacağı gösterilmektedir `kubeadminPassword` .
 
 ```json
 {
@@ -46,7 +46,7 @@ Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kube
 }
 ```
 
-Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, şöyle görünür `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
 
 ```azurecli-interactive
  az aro show \
@@ -103,3 +103,4 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift kümesini silme](tutorial-delete-cluster.md)
+
