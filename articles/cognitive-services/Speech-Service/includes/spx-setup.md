@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 27d450f8e48210723570f2fe0b45be4bca89fd56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068606"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400932"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tek önkoşul, bir Azure konuşma aboneliğudur. Henüz bir abonelik yoksa, yeni abonelik oluşturma [kılavuzuna](../get-started.md#new-resource) bakın.
 
@@ -22,9 +22,8 @@ Tek önkoşul, bir Azure konuşma aboneliğudur. Henüz bir abonelik yoksa, yeni
 
 Windows 'a konuşma CLı 'Yı yüklemek için aşağıdaki adımları izleyin:
 
-1. [.NET Framework 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471) veya [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) ' ü yükleyebilir
-2. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
-3. `spx-zips`İndirmenin ayıklanacağı kök dizine gidin ve ihtiyacınız olan alt dizini ayıklayın ( `spx-net471` .NET Framework 4,7 için veya `spx-netcore-win-x64` x64 CPU üzerinde .NET Core 3,0 için).
+1. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
+2. `spx-zips`İndirmenin ayıklanacağı kök dizine gidin ve ihtiyacınız olan alt dizini ayıklayın ( `spx-net471` .NET Framework 4,7 için veya `spx-netcore-win-x64` x64 CPU üzerinde .NET Core 3,0 için).
 
 Komut isteminde dizini bu konum olarak değiştirin ve ardından yazarak `spx` konuşma CLI için yardımı görüntüleyin.
 
@@ -53,11 +52,15 @@ Linux 'ta konuşma CLı 'Yı x64 CPU 'ya yüklemek için şu adımları izleyin:
 
 #### <a name="docker-install"></a>[Docker yüklemesi](#tab/dockerinstall)
 
+#### <a name="prerequisites"></a>Ön koşullar
+
+> [!div class="checklist"]
+> * <a href="https://www.docker.com/get-started" target="_blank">Platformunuz için Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
 Konuşma CLı 'Yı bir Docker kapsayıcısına yüklemek için şu adımları izleyin:
 
-1. [Platformunuz Için Docker Desktop](https://www.docker.com/get-started)'ı yükleyip çalıştırın.
-1. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:`docker pull msftspeech/spx`
-1. Bu komutu yazın. Konuşma CLı için yardım bilgileri görmeniz gerekir:`docker run -it --rm msftspeech/spx help`
+1. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:  `docker pull msftspeech/spx`
+2. Bu komutu yazın. Konuşma CLı için yardım bilgileri görmeniz gerekir: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>Kapsayıcıda bir dizin bağlama
 
