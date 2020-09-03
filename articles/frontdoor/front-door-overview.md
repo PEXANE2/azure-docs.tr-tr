@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378194"
+ms.locfileid: "89399421"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 Azure ön kapısı, yüksek kullanılabilirlik için en iyi performansı ve hızlı genel yük devretmeyi iyileştirerek Web trafiğiniz için küresel yönlendirmeyi tanımlamanıza, yönetmenize ve izlemenize olanak sağlar. Ön kapı sayesinde küresel (çok bölgeli) tüketici ve kurumsal uygulamalarınızı, Azure ile küresel bir hedef kitleye ulaşan sağlam, yüksek performanslı, kişiselleştirilmiş modern uygulamalar, API 'Ler ve içeriğe dönüştürebilirsiniz.
@@ -84,7 +84,7 @@ Fiyatlandırma bilgileri için bkz. [Front Door Fiyatlandırması](https://azure
 
 ## <a name="whats-new"></a>Yenilikler
 
-RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) sayfasında en son Azure Load Balancer Özellik güncelleştirmelerini görüntüleyin.
+RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) sayfasında en son Azure ön kapılı Özellik güncelleştirmelerini görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

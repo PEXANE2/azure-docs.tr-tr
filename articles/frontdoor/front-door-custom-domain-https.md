@@ -3,7 +3,7 @@ title: Öğretici-Azure ön kapısı için özel bir etki alanında HTTPS 'yi ya
 description: Bu öğreticide, özel bir etki alanı için Azure ön kapısı yapılandırmanızda HTTPS 'yi etkinleştirmeyi ve devre dışı bırakmayı öğreneceksiniz.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
-ms.author: sharadag
-ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.author: duau
+ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808806"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399829"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmalı ve en az bir özel etki alanı eklemelisiniz. Daha fazla bilgi için bkz. [Öğretici: Front Door’unuza özel etki alanı ekleme](front-door-custom-domain.md).
 

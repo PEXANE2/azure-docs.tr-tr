@@ -1,25 +1,26 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma-konuşma hizmeti'
+title: Amaç tanıma hızlı başlangıç-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir mikrofondan yakalanan ses verilerinden konuşmayı etkileşimli olarak tanımak için konuşma SDK 'sını kullanacaksınız.
+description: Bu hızlı başlangıçta, bir mikrofondan yakalanan ses verilerinden amaçları etkileşimli olarak tanımak için amaç tanımayı kullanırsınız.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/02/2020
 ms.author: erhopf
-ms.custom: devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 4cc0754ea38ad7006431dd40206b2f10b1249e92
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: Amaç tanıma
+ms.openlocfilehash: 1bc8e7da760d1037185aed5ef0538055d5e697f2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925988"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401002"
 ---
-# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Hızlı başlangıç: Language Understanding (LUU) ile konuşmayı, amaçları ve varlıkları tanıma
+# <a name="get-started-with-intent-recognition"></a>Amaç tanıma 'yı kullanmaya başlama
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/intent-recognition/header.md)]

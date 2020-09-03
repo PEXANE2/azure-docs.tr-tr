@@ -3,7 +3,7 @@ title: Azure ön kapı kuralları altyapı eylemleri
 description: Bu makalede, Azure ön kapısı kuralları altyapısında yapabileceğiniz çeşitli eylemlerin bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: f5110a7644d3ca33da5755f783f61ac35484ddb1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521505"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399285"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
 
@@ -78,7 +78,7 @@ Alan | Açıklama
 Arka uç havuzu | İstekleri geçersiz kılmak ve istemcilere hizmeti sağlamak için arka uç havuzunu seçin. Bu, önceden yapılandırılmış olan tüm arka uç havuzlarınızı ön kapı profilinizde gösterir. 
 İletme Protokolü | Match Isteği, HTTP, HTTPS.
 URL yeniden yazma | Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeniden yazmak için kullanın. Etkinleştirilirse, gereken ek alanlar için aşağıya bakın
-Önbelleğe alma | Etkin, devre dışı. Etkinleştirilirse gereken ek alanlar için aşağıya bakın. 
+Önbelleğe Alma | Etkin, devre dışı. Etkinleştirilirse gereken ek alanlar için aşağıya bakın. 
 
 #### <a name="url-rewrite"></a>URL yeniden yazma
 
@@ -88,18 +88,18 @@ Alan | Açıklama
 ------|------------
 Özel iletme yolu | İsteklerin iletileceği yolu tanımlayın. 
 
-#### <a name="caching"></a>Önbelleğe alma
+#### <a name="caching"></a>Önbelleğe Alma
 
 Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alındığını ve tüm parametrelere veya seçili parametrelere göre içeriğinizi önbelleğe alınıp alınmayacağını denetlemek için bu ayarları kullanın. Kuralların eşleşen koşullara göre isteklerin önbellekte ne kadar süreyle kalacağından emin olmak için, yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Bunu yaptığınızda, aşağıdaki seçenekler görünür: 
 
-Önbellek davranışı |  Description              
+Önbellek davranışı |  Açıklama              
 ---------------|----------------
 Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
 
-Ek alanlar |  Description 
+Ek alanlar |  Açıklama 
 ------------------|---------------
 Dinamik sıkıştırma | Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak daha küçük ve daha hızlı bir yanıt elde edebilir.
 Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin verilen (veya izin verilmeyen) parametrelerin virgülle ayrılmış listesi.
