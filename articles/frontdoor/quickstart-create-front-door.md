@@ -3,7 +3,7 @@ title: 'Hızlı başlangıç: Azure ön kapı hizmeti ile yüksek kullanılabili
 description: Bu hızlı başlangıçta, yüksek oranda kullanılabilir ve yüksek performanslı Global Web uygulamanız için Azure ön kapı hizmeti 'nin nasıl kullanılacağı açıklanmaktadır.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.assetid: ''
 ms.service: frontdoor
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
-ms.author: sharadag
-ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: ab59de49b7cf625220f8a803aab9d2b9a2ae5937
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82133375"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398776"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Hızlı başlangıç: Yüksek oranda kullanılabilir global web uygulaması için Front Door oluşturma
 
@@ -40,7 +40,7 @@ Henüz bir Web uygulamanız yoksa, örnek Web uygulamaları ayarlamak için aşa
 
 1. Giriş sayfasından veya Azure menüsünde **kaynak oluştur**' u seçin.
 
-1. **Web** > **Web uygulaması**' nı seçin.
+1. **Web** > **Web Uygulaması**’nı seçin.
 
    ![Azure portalında web uygulaması oluşturma](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
 
@@ -67,15 +67,15 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
 | Ayar          | Değer     |
 | ---              | ---  |
 | **Kaynak grubu**   | **Yeni** ' yi seçin ve *FrontDoorQS_rg2* girin |
-| **Adı**             | Web uygulamanız için benzersiz bir ad girin, bu örnekte *Webappcontoso-2*  |
+| **Ad**             | Web uygulamanız için benzersiz bir ad girin, bu örnekte *Webappcontoso-2*  |
 | **Bölge**           | Farklı bir bölge, bu örnekte *Orta Güney ABD* |
-| **App Service plan** > **Windows planı**         | **Yeni** ' yi seçin ve *Myappserviceplangüneydoğu US*' i girip **Tamam** ' ı seçin. |
+| **App Service planı**  >  **Windows planı**         | **Yeni** ' yi seçin ve *Myappserviceplangüneydoğu US*' i girip **Tamam** ' ı seçin. |
 
 ## <a name="create-a-front-door-for-your-application"></a>Uygulamanız için Front Door oluşturma
 
 İki Web Apps sunucusu arasındaki en düşük gecikme süresine göre Kullanıcı trafiğini yönlendirmek için Azure ön kapısını yapılandırın. Başlamak için, Azure ön kapısının ön uç konağını ekleyin.
 
-1. Giriş sayfasından veya Azure menüsünde **kaynak oluştur**' u seçin. **Ağ** > **ön kapısını**seçin.
+1. Giriş sayfasından veya Azure menüsünde **kaynak oluştur**' u seçin. **Ağ**  >  **ön kapısını**seçin.
 
 1. **Ön kapı oluştur**' da bir **abonelik**seçin.
 
@@ -83,7 +83,7 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
 
 1. Bir kaynak grubu oluşturduysanız, bir **kaynak grubu konumu**seçin ve ardından **İleri: yapılandırma**' yı seçin.
 
-1. **Ön uç konak Ekle**' yi açmak **+** için ön **uçlar/etki alanları**' nı seçin.
+1. **Frontends/domains** **+** **Ön uç konak Ekle**' yi açmak için ön uçlar/etki alanları ' nı seçin.
 
 1. **Ana bilgisayar adı**için, genel olarak benzersiz bir ana bilgisayar adı girin. Bu örnek *contoso-ön uç*kullanır. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -105,14 +105,14 @@ Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
 
    ![Ön kapıya bir arka uç konağı ekleme](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
-Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç konunuzu arka uç havuzuna eşler. Kural, için `contoso-frontend.azurefd.net` bir Isteği **Mybackendpool**öğesine iletir.
+Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç konunuzu arka uç havuzuna eşler. Kural, için bir isteği `contoso-frontend.azurefd.net` **Mybackendpool**öğesine iletir.
 
-1. Hala **ön kapı oluştur**' da, **yönlendirme kuralları**' nda bir **+** yönlendirme kuralı yapılandırmak için öğesini seçin.
+1. Hala **ön kapı oluştur**' da, **yönlendirme kuralları**' nda **+** bir yönlendirme kuralı yapılandırmak için öğesini seçin.
 
 1. **Kural Ekle**' de, **ad**için *locationrule*yazın. Varsayılan değerleri kabul edin ve sonra yönlendirme kuralını eklemek için **Ekle** ' yi seçin.
 
    >[!WARNING]
-   > Ön kapıdaki her bir ön uç konağın, kendisiyle ilişkilendirilmiş bir yönlendirme kuralına`\*`sahip olduğundan emin **olmanız gerekir** . Diğer bir deyişle, tüm yönlendirme kurallarınızın tamamında, varsayılan yolda (`\*`) tanımlanan ön uç konaklarınızın her biri için en az bir yönlendirme kuralı olmalıdır. Bunun başarısız olması, Son Kullanıcı trafiğinizin doğru şekilde yönlendirilmemesi sonucunu verebilir.
+   > Ön kapıdaki her bir ön uç konağın, kendisiyle ilişkilendirilmiş bir yönlendirme kuralına sahip olduğundan emin **olmanız gerekir** `\*` . Diğer bir deyişle, tüm yönlendirme kurallarınızın tamamında, varsayılan yolda () tanımlanan ön uç konaklarınızın her biri için en az bir yönlendirme kuralı olmalıdır `\*` . Bunun başarısız olması, Son Kullanıcı trafiğinizin doğru şekilde yönlendirilmemesi sonucunu verebilir.
 
 1. **Gözden geçir + oluştur**' u ve ardından **Oluştur**' u seçin.
 
@@ -120,13 +120,13 @@ Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç 
 
 ## <a name="view-azure-front-door-in-action"></a>Azure ön kapısını görüntüleme işlemi
 
-Ön kapı oluşturduktan sonra yapılandırmanın küresel olarak dağıtılması birkaç dakika sürer. Tamamlandıktan sonra oluşturduğunuz ön uç konağına erişin. Bir tarayıcıda adresine gidin `contoso-frontend.azurefd.net`. İsteğiniz, arka uç havuzundaki belirtilen sunuculardan sizin için en yakın sunucuya otomatik olarak yönlendirilir.
+Ön kapı oluşturduktan sonra yapılandırmanın küresel olarak dağıtılması birkaç dakika sürer. Tamamlandıktan sonra oluşturduğunuz ön uç konağına erişin. Bir tarayıcıda adresine gidin `contoso-frontend.azurefd.net` . İsteğiniz, arka uç havuzundaki belirtilen sunuculardan sizin için en yakın sunucuya otomatik olarak yönlendirilir.
 
 Bu uygulamaları bu hızlı başlangıçta oluşturduysanız bir bilgi sayfası görürsünüz.
 
 Hızlı genel yük devretmeyi işlem sırasında test etmek için aşağıdaki adımları deneyin:
 
-1. Yukarıda açıklandığı gibi bir tarayıcı açın ve ön uç adresine gidin: `contoso-frontend.azurefd.net`.
+1. Yukarıda açıklandığı gibi bir tarayıcı açın ve ön uç adresine gidin: `contoso-frontend.azurefd.net` .
 
 1. Azure portal, *uygulama hizmetleri*' ni arayıp seçin. Bu örnekte Web uygulamalarınızdan birini bulmak için aşağı kaydırın, **Webappcontoso-1** .
 
