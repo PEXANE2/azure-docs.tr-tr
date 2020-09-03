@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48ef1344a76444af23fd462175a8087af2724d3e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961950"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401495"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -145,8 +145,8 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [birkaç uygulamaya bir anahtar kasasına erişim verme](../key-vault/general/group-permissions-for-apps.md)adımlarını izleyerek daha sonra yapılandırabilirsiniz. |
-| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/general/network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
+| Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [Key Vault erişim Ilkesi atama](/azure/key-vault/general/assign-access-policy-portal)içindeki adımları izleyerek yapılandırabilirsiniz. |
+| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](/azure/key-vault/general/network-security) içindeki adımları izleyerek yapılandırabilirsiniz |
 
 Kasayı seçtikten sonra **Key Vault deposu** sayfasını kapatın. **1. Adım: Store** seçeneğinde başarılı olması için yeşil bir onay işareti gösterilmelidir. Sonraki adımda sayfayı açık tutun.
 

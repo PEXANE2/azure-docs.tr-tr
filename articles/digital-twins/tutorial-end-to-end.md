@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3da73e376fc77297f77c1ff8c7f444b98e92b412
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290812"
+ms.locfileid: "89401784"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -436,7 +436,7 @@ Bu öğreticide oluşturduğunuz senaryonun incelenmesi aşağıda verilmiştir.
 
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin. 
 
-Azure Cloud Shell kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; ve depolama gibi ilişkili kaynaklar da dahil olmak üzere her ikisi de Azure Işlevleri uygulaması.
+[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; ve depolama gibi ilişkili kaynaklar dahil olmak üzere Azure Işlevleri uygulaması.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
@@ -451,7 +451,7 @@ Ardından, aşağıdaki komutla istemci uygulamanız için oluşturduğunuz Azur
 az ad app delete --id <your-application-ID>
 ```
 
-Son olarak, yerel makinenizden indirdiğiniz proje örnek klasörünü silin.
+Son olarak, indirdiğiniz proje örnek klasörünü yerel makinenize silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
