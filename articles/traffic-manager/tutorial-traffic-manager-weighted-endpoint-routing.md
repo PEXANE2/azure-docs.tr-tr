@@ -2,24 +2,24 @@
 title: 'Öğretici: trafiği ağırlıklı uç noktalara yönlendirme-Azure Traffic Manager'
 description: Bu öğretici makalede, Traffic Manager'ı kullanarak trafiği ağırlıklı uç noktalara yönlendirme açıklanmaktadır.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: rohink
-ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: duau
+ms.openlocfilehash: 90ed68e36b47d46c47e78407fac3b5fd74924b57
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76939474"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397092"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Öğretici: Traffic Manager'ı kullanarak ağırlıklı uç noktalar ile trafiği denetleme
 
 Bu öğreticide, ağırlıklı yönlendirme yöntemini kullanarak kullanıcı trafiğini uç noktalar arasında yönlendirmeyi denetlemek için Azure Traffic Manager'ı kullanma adımları açıklanmaktadır. Bu yönlendirme yönteminde Traffic Manager profil yapılandırmasında her uç noktasına bir ağırlık değeri atarsınız. Kullanıcı trafiği, her bir uç noktaya atanan ağırlık değerine göre yönlendirilir. Ağırlık 1 ile 1.000 arasında bir tamsayıdır. Bir uç noktaya ne kadar yüksek bir ağırlık değeri atanırsa uç nokta o kadar yüksek önceliğe sahip olur.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * IIS üzerinde basit bir web sitesi çalıştıran iki VM oluşturma.
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Traffic Manager'ın nasıl çalıştığını görmek için bu öğretici kapsamında aşağıdaki kaynakları dağıtın:
 
@@ -65,12 +65,12 @@ Bu bölümde, Doğu ABD ve Azure bölgelerinde Batı Avrupa iki VM (*myIISVMEast
    - **Gelen bağlantı noktası kuralları**  >  **Gelen bağlantı noktalarını seçin**: aşağı açılan kutuda **RDP** ve **http** ' yi seçin.
 
 3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
-4. **Gözden geçir ve oluştur**’u seçin.
+4. **Gözden geçir + oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
 6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myIISVMEastUS*ile aynı olan *myIISVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
 7. Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.
 
-![VM oluştur](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
+![VM oluşturma](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>IIS yükleme ve varsayılan web sayfasını özelleştirme
 
@@ -125,7 +125,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir 
    - **Gelen bağlantı noktası kuralları**  >  **Gelen bağlantı noktalarını seçin**: açılan kutuda **RDP** ' yi seçin.
 
 3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
-4. **Gözden geçir ve oluştur**’u seçin.
+4. **Gözden geçir + oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
 6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myVMEastUS*ile aynı olan *myVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
 7. Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.
