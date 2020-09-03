@@ -1,27 +1,28 @@
 ---
-title: Konuşma tanıma temelleri-konuşma hizmeti
+title: Konuşmayı metne hızlı başlangıç-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmayı metne dönüştürmek için konuşma SDK 'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne oluşturma, desteklenen ses girişi biçimleri ve konuşma tanıma için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
+description: Konuşmayı metne dönüştürmek için konuşma SDK 'sını nasıl kullanacağınızı öğrenin. Bu hızlı başlangıçta, nesne oluşturma, desteklenen ses girişi biçimleri ve konuşma tanıma için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 49189eaa4b04b0f14f62a07a64334f56f658ac5d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: konuşmayı metne dönüştürme, konuşmayı metne dönüştürme
+ms.openlocfilehash: 4c3718fcf4e4b71073cf9c1fa79462fbb0f95e6a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934557"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396922"
 ---
-# <a name="learn-the-basics-of-speech-recognition"></a>Konuşma tanımanın temellerini öğrenin
+# <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
 
-Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma olarak adlandırılır). Bu makalede, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli konuşma tanıma işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
+Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
 > [!TIP]
 > Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve konuşma tanımayı kendiniz denemeniz önerilir.

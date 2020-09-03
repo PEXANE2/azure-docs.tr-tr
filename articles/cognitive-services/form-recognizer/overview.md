@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723579"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394406"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -48,6 +48,7 @@ Form tanıyıcı, yazdırılan ve el yazısı metin öğelerinin beklenen boyutl
 ## <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
 Form tanıyıcı ayrıca benzersiz form türleri için önceden oluşturulmuş modeller içerir.
+
 ### <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
 Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur. 
 
@@ -62,7 +63,7 @@ Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve tel
 
 Form tanıyıcı, yüksek tanımlı optik karakter tanıma (OCR) kullanarak metin ve tablo yapısını (metinle ilişkili satır ve sütun numaraları) de ayıklayabilir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
@@ -74,9 +75,11 @@ Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı iz
     * [Etiketler olmadan eğitme](quickstarts/curl-train-extract.md)
     * [Etiketler olmadan eğitme-Python](quickstarts/python-train-extract.md)
     * [Etiketlerle eğitme-Python](quickstarts/python-labeled-data.md)
-  * ABD satış makbuzlarından veri ayıklama
+  * Satış makbuzlarından veri ayıklama
     * [Alma verilerini ayıklama-kıvrımlı](quickstarts/curl-receipts.md)
     * [Alma verilerini Ayıkla-Python](quickstarts/python-receipts.md)
+  * Kartvizitlerden veri ayıklama
+    * [İş kartı verilerini Ayıkla-Python](quickstarts/python-business-cards.md)
   * Formdan metin ve tablo yapısını Ayıkla
     * [Düzen verilerini ayıklama-Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için 
 | **Özel modeli eğitme**| Formlarınızı aynı türden beş form kullanarak analiz etmek için yeni bir model eğitme. _Uselabelfile_ parametresini, `true` el ile etiketlenmiş verileri eğit olacak şekilde ayarlayın. |
 | **Formu çözümle** |Metin, anahtar/değer çiftleri ve tablolardaki tabloları özel modelinize çıkarmak için akış olarak geçirilmiş tek bir belgeyi analiz edin.  |
 | **Okundu bilgisi** |Anahtar bilgilerini ve diğer makbuz metnini ayıklamak için tek bir alış belgesi çözümleyin.|
+| **Iş kartını çözümle** |Anahtar bilgileri ve metin ayıklamak için bir iş kartını analiz edin.|
 | **Düzeni çözümle** |Metin ve tablo yapısını ayıklamak için formun yerleşimini çözümleyin.|
 
 Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.

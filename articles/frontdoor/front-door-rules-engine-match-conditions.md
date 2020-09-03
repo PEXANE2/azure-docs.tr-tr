@@ -3,7 +3,7 @@ title: Azure ön kapı kuralları altyapısı eşleştirme koşulları
 description: Bu makalede, Azure ön kapı kuralları altyapısından kullanılabilen çeşitli eşleşme koşullarının bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 99a590fd3adacc9a63c2ec482965ccd9ff162ac3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512172"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399251"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door Kural Altyapısı Eşleştirme Koşulları
 
@@ -150,7 +150,7 @@ Operatör | İstek URL’si | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Dahili numara | Örnek dönüştürme
+Operatör | Uzantı | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -186,7 +186,7 @@ Operatör | Dosya adı | Örnek dönüştürme
 
 Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki işleçler geçerlidir:
 
-- Herhangi bir
+- Herhangi biri
 - Eşittir 
 - Contains 
 - Şununla başlar 
