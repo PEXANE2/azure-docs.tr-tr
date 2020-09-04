@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 8ac25193bacfcce3c3062ccd92fa5cfbb5784572
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421705"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469125"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesine bağlanma
 
@@ -25,7 +25,7 @@ ms.locfileid: "89421705"
 
 Önceki öğreticilerde, bir Azure Red Hat OpenShift kümesi oluşturuldu. Bu adımları yapmadıysanız ve birlikte takip etmek istiyorsanız, [öğretici 1 ile başlayın-Azure Red Hat OpenShift 4 kümesi oluşturun.](tutorial-create-cluster.md)
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
@@ -103,4 +103,3 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift kümesini silme](tutorial-delete-cluster.md)
-

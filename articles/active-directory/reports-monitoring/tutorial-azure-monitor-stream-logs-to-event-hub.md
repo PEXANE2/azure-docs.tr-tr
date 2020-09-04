@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229387"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469193"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri
 
@@ -60,8 +60,8 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 7. Olay hub'ı yapılandırmasını kapatmak için **Tamam**'ı seçin.
 
 8. Aşağıdakilerden birini veya ikisini birden yapın:
-    * Denetim günlüklerini depolama hesabına göndermek için **AuditLogs** onay kutusunu işaretleyin. 
-    * Oturum açma günlüklerini depolama hesabına göndermek için **SignInLogs** onay kutusunu işaretleyin.
+    * Olay Hub 'ına denetim günlükleri göndermek için **Auditlogs** onay kutusunu seçin. 
+    * Olay Hub 'ına oturum açma günlükleri göndermek için **Signınlogs** onay kutusunu seçin.
 
 9. Ayarları kaydetmek için **Kaydet**’i seçin.
 

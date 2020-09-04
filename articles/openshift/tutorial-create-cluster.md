@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 96954d0ebf56251a66d4b9c8bdcce07153f64068
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300179"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469975"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -22,9 +22,9 @@ Bu öğreticide, üç bölümden biri olmak üzere, ortamınızı OpenShift 4 ç
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](../azure-portal/supportability/per-vm-quota-requests.md).
 
 ### <a name="verify-your-permissions"></a>İzinlerinizi doğrulama
 
@@ -88,7 +88,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
 1. **Bir kaynak grubu oluşturun.**
 
-    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
+    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
     
 > [!NOTE]
 > Azure Red Hat OpenShift, bir Azure Kaynak grubunun oluşturulabildiği tüm bölgelerde kullanılamaz. Azure Red Hat OpenShift 'in desteklendiği konum hakkında bilgi için bkz. [kullanılabilir bölgeler](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) .
@@ -167,7 +167,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
+5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](../private-link/disable-private-link-service-network-policy.md) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
 
     ```azurecli-interactive
     az network vnet subnet update \
