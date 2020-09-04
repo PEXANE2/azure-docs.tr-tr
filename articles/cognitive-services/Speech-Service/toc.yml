@@ -241,11 +241,8 @@
   items:
     - name: Amaç tanıma belgeleri
       href: index-intent-recognition.yml
-    - name: Hızlı Başlangıç
-      items:
-        - name: 'Konuşmayı, amaçları ve varlıkları tanıma'
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: Amaç tanıma hızlı başlangıcı
+      href: quickstarts/intent-recognition.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: 'LUIS ile konuşma amaçlarını tanıma, C#'
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: Konuşmacı Tanıma
   items:
-    - name: Genel Bakış
-      items:
-        - name: Konuşmacı Tanıma nedir?
-          href: speaker-recognition-overview.md
-        - name: Konuşmacı Tanıma hakkındaki temel bilgiler
-          href: speaker-recognition-basics.md
+    - name: Konuşmacı Tanıma’ya genel bakış
+      href: speaker-recognition-overview.md
+    - name: Konuşmacı Tanıma hızlı başlangıcı
+      href: get-started-speaker-recognition.md
     - name: Başvuru
       items:
-        - name: REST API'leri
-          items:
-            - name: Konuşmacı Tanıma REST API’si
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: Konuşmacı Tanıma REST API’si
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Barındırma belgeleri

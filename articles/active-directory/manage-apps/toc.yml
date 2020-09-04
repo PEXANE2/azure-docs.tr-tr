@@ -1,6 +1,6 @@
 - name: Uygulama yönetimi belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Uygulama yönetimi nedir?
@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: Yaygın uygulama yönetim senaryoları
       href: common-scenarios.md
+    - name: Kiracınızdaki uygulamaları görüntüleme
+      href: application-types.md
+    - name: Uygulamalara kullanıcı atama
+      href: ways-users-get-assigned-to-applications.md
     - name: Bulut uygulaması tümleştirmesi planlama
       items:
         - name: Uygulama tümleştirmesini kullanmaya başlama
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: Yönetici onayı iş akışını yapılandırma (önizleme)
           href: configure-admin-consent-workflow.md
-        - name: Uygulamaya kullanıcı veya grup atama
+        - name: Uygulama için kullanıcı atamasını yönetme
           href: assign-user-or-group-access-portal.md
         - name: Uygulamalara verilen izinleri gözden geçirme
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: Bir kullanıcının uygulamaya erişimini kaldırma yöntemleri
           href: methods-for-removing-user-access.md
-        - name: Kullanıcı veya grup erişimini kaldırma
-          href: remove-user-or-group-access-portal.md
         - name: Kullanıcıdan uygulama gizleme
           href: hide-application-from-user-portal.md
         - name: Kullanıcılar için oturum açmayı devre dışı bırakma
@@ -203,11 +205,7 @@
     - name: Sorun giderme
       items:
         - name: Uygulama ekleme sorunlarını giderme
-          items:
-            - name: Yaygın sorunlar - galeri uygulamaları
-              href: adding-gallery-app-common-problems.md
-            - name: Yaygın sorunlar - galeri dışındaki uygulamalar
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: Kullanıcı oturum açma sorunlarını giderme
           items:
             - name: Beklenmeyen izin alma istemi
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Uygulama listesi ve atama sorunlarını giderme
-          items:
-            - name: Kiracınızın uygulama listesini yönetme
-              href: application-types.md
-            - name: Beklenmeyen kullanıcı ataması
-              href: ways-users-get-assigned-to-applications.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

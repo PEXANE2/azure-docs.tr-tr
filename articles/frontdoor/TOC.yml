@@ -1,11 +1,9 @@
-- name: Front Door Belgeleri
+- name: Front Door belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Azure Front Door nedir?
       href: front-door-overview.md
-    - name: Azure Front Door’daki yenilikler
-      href: front-door-whats-new.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -85,7 +83,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

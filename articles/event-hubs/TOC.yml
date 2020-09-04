@@ -1,6 +1,6 @@
 - name: Event Hubs Belgeleri
   href: ./index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Event Hubs nedir?
       href: event-hubs-about.md
@@ -125,8 +125,12 @@
       maintainContext: true
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bölgeler arasında taşıma
-      href: move-across-regions.md
+    - name: Taşı
+      items:
+        - name: Bir ad alanını başka bir bölgeye taşıma
+          href: move-across-regions.md
+        - name: Ayrılmış bir kümeyi başka bir bölgeye taşıma
+          href: move-cluster-across-regions.md
     - name: Dinamik olarak bölüm ekleme
       href: dynamically-add-partitions.md
     - name: Azure Stack Hub üzerinde denetim noktası deposu olarak Blob Depolama’yı kullanma

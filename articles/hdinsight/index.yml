@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: c32ca826eb7ebbc773d86a8cfae65cdd4984bcd0
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: fdda3f72c9ed70130a5f5d3877e677ee625a024d
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78192736"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89393539"
 landingContent:
 - title: HDInsight hakkında
   linkLists:
@@ -24,209 +24,143 @@ landingContent:
     links:
     - text: Azure HDInsight nedir?
       url: ./hdinsight-overview.md
-  - linkListType: learn
+    - text: HDInsight OSS bileşenleri ve sürümleri
+      url: ./hdinsight-component-versioning.md
+  - linkListType: get-started
     links:
     - text: Azure HDInsight ile analitik çözümler oluşturma
       url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+    - text: HDInsight kümeleri oluşturma
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: HDInsight ile izleme
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Maliyet tasarrufu sağlamak için kümeyi ölçeklendirme
+      url: ./hdinsight-scaling-best-practices.md
+    - text: HDInsight güvenliğine genel bakış
+      url: ./domain-joined/hdinsight-security-overview.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Apache Spark nedir?
+      url: ./spark/apache-spark-overview.md
+    - text: Spark kümeleri oluşturma ve Jupyter’da Spark çalıştırma
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+    - text: Verileri yükleme ve Spark sorgularını çalıştırma
+      url: ./spark/apache-spark-load-data-run-query.md
+  - linkListType: how-to-guide
+    links:
+    - text: Spark bağımlılıklarını yönetme
+      url: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+    - text: Spark işlerini en iyi duruma getirme
+      url: ./spark/apache-spark-perf.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Apache Hadoop nedir?
+      url: ./hadoop/apache-hadoop-introduction.md
+    - text: Hadoop kümeleri oluşturma ve Hive sorguları çalıştırma
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+    - text: Harita Azaltma örnekleri çalıştırma
+      url: ./hadoop/apache-hadoop-run-samples-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hadoop kümelerini izleme ve yönetme
+      url: ./hdinsight-hadoop-manage-ambari.md
+    - text: JDBC/ODBC sürücüsünü kullanma
+      url: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+- title: Tümleştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Spark/Hive - Hive Ambarı bağlayıcısı ile Spark ve Hive’ı bağlama
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: Spark/Kafka - Apache Kafka ile Apache Spark yapılandırılmış akışı
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: Spark/HBase - Apache HBase’i Apache Spark ile sorgulama
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: ADF kullanarak isteğe bağlı kümeler oluşturma
+      url: ./hdinsight-hadoop-create-linux-clusters-adf.md
   - linkListType: concept
     links:
-    - text: HDInsight bileşenleri ve sürümleri
-      url: ./hdinsight-component-versioning.md
     - text: Doğru VM boyutunu seçme
       url: ./hdinsight-selecting-vm-size.md
     - text: HDInsight tarafından desteklenen VM türleri
       url: ./hdinsight-supported-node-configuration.md
     - text: Depolama seçeneklerini karşılaştırın
       url: ./hdinsight-hadoop-compare-storage-options.md
-  - linkListType: tutorial
-    links:
-    - text: HDInsight kümelerini ayarlama
-      url: ./hdinsight-hadoop-provision-linux-clusters.md
-    - text: Data Lake Store 2. Nesil ile kümeler oluşturma
-      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
-  - linkListType: whats-new
-    links:
-    - text: Özel Ambari DB
-      url: ./hdinsight-custom-ambari-db.md
-    - text: 'Otomatik ölçeklendirme: Hadoop kümelerini otomatik olarak ölçeklendirme'
-      url: ./hdinsight-autoscale-clusters.md
-    - text: HDInsight ile izleme
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Apache Hive tablolarını HDInsight 4.0’a geçirme
-      url: ./interactive-query/apache-hive-migrate-workloads.md
-- title: Apache Spark
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache Spark nedir?
-      url: ./spark/apache-spark-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portalda Apache Spark kümeleri oluşturma
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-  - linkListType: concept
-    links:
-    - text: Spark işlerini en iyi duruma getirme
-      url: ./spark/apache-spark-perf.md
-  - linkListType: tutorial
-    links:
-    - text: Spark için Scala Maven uygulaması oluşturma
-      url: ./spark/apache-spark-create-standalone-application.md
-    - text: Verileri yükleme ve Apache Spark sorgularını çalıştırma
-      url: ./spark/apache-spark-load-data-run-query.md
-    - text: Apache HBase’i Apache Spark ile sorgulama
-      url: ./hdinsight-using-spark-query-hbase.md
-    - text: Power BI ile Spark verilerini çözümleme
-      url: ./spark/apache-spark-use-bi-tools.md
-- title: Apache Hadoop
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache Hadoop nedir?
-      url: ./hadoop/apache-hadoop-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portalda Apache Hadoop kümeleri oluşturma
-      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-  - linkListType: concept
-    links:
-    - text: Ölçeğe uygun Hadoop ETL
-      url: ./hadoop/apache-hadoop-etl-at-scale.md
-    - text: Hadoop’u buluta geçirme
-      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-    - text: Hadoop küme kapasitesi planlama
-      url: ./hdinsight-capacity-planning.md
-  - linkListType: tutorial
-    links:
-    - text: Excel'i Apache Hadoop’a Bağlama
-      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-    - text: Azure izleyici günlükleri ile Hadoop’u izleme
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Ambari kullanıcı arabirimi ile Hadoop kümelerini izleme ve yönetme
-      url: ./hdinsight-hadoop-manage-ambari.md
 - title: Apache Kafka
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Apache Kafka nedir?
       url: ./kafka/apache-kafka-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portalda Apache Kafka kümeleri oluşturma
+    - text: Kafka kümeleri oluşturma ve Kafka’yı yönetme konuları
       url: ./kafka/apache-kafka-get-started.md
-  - linkListType: concept
-    links:
-    - text: Kafka REST ara sunucusu
-      url: ./kafka/rest-proxy.md
-    - text: 3.6'dan 4.0'a geçme
-      url: ./kafka/migrate-versions.md
-    - text: Kafka performansını iyileştirme
-      url: ./kafka/apache-kafka-performance-tuning.md
-    - text: Kafka ölçeklenebilirliği
-      url: ./kafka/apache-kafka-scalability.md
-    - text: Kafka yüksek kullanılabilirliği
-      url: ./kafka/apache-kafka-high-availability.md
-  - linkListType: tutorial
-    links:
-    - text: Kafka üretici ve tüketici API’lerini kullanma
+    - text: Üretici ve tüketici API’lerini kullanma
       url: ./kafka/apache-kafka-producer-consumer-api.md
-    - text: Apache Kafka ile Apache Spark yapılandırılmış akışı
-      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
-    - text: Olağanüstü durum kurtarma için Kafka yansıtması
-      url: ./kafka/apache-kafka-mirroring.md
-    - text: Kimlik doğrulaması için Kafka SSL kurulumu
+  - linkListType: how-to-guide
+    links:
+    - text: Kafka REST ara sunucusunu kullanma
+      url: ./kafka/rest-proxy.md
+    - text: Kafka TLS şifreleme ve kimlik doğrulaması
       url: ./kafka/apache-kafka-ssl-encryption-authentication.md
-- title: Apache HBase
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache HBase nedir?
-      url: ./hbase/apache-hbase-overview.md
-  - linkListType: quickstart
-    links:
-    - text: HBase’i Apache Phoenix ile sorgulama
-      url: ./hbase/apache-hbase-query-with-phoenix.md
-  - linkListType: concept
-    links:
-    - text: Apache HBase için Hızlandırılmış Yazma İşlemleri
-      url: ./hbase/apache-hbase-accelerated-writes.md
-    - text: Apache Phoenix için en iyi yöntemler
-      url: ./hbase/apache-hbase-phoenix-performance.md
-  - linkListType: tutorial
-    links:
-    - text: Azure HDInsight’ta Apache HBase kullanma
-      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - text: HBase’i yeni bir sürüme geçirme
-      url: ./hbase/apache-hbase-migrate-new-version.md
 - title: Etkileşimli Sorgu
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Etkileşimli Sorgu nedir?
       url: ./interactive-query/apache-interactive-query-get-started.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Zeppelin kullanarak Apache Hive sorguları yürütme
-      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-  - linkListType: concept
-    links:
-    - text: Hive sorgularını en iyi duruma getirme
-      url: ./hdinsight-hadoop-optimize-hive-query.md
-    - text: ETL aracı olarak Hive kullanma
-      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-  - linkListType: tutorial
-    links:
     - text: Apache Hive ile uçuş verilerini analiz etme
       url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
-    - text: Hive Ambarı bağlayıcısı ile Spark ve Hive’ı bağlama
-      url: ./interactive-query/apache-hive-warehouse-connector.md
-    - text: DirectQuery kullanarak Hive ve Power BI’ı bağlama
+  - linkListType: how-to-guide
+    links:
+    - text: Küme boyutlandırma kılavuzu
+      url: ./interactive-query/hive-llap-sizing-guide.md
+    - text: Hive ile Power BI’ı bağlama
       url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
 - title: Kurumsal kullanıma hazır olma
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: HDInsight güvenliğine genel bakış
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: concept
-    links:
     - text: Plan sanal ağı
       url: ./hdinsight-plan-virtual-network-deployment.md
     - text: 'Active Directory’de Hadoop: Kurumsal Güvenlik Paketi'
       url: ./domain-joined/apache-domain-joined-architecture.md
-    - text: Hadoop kümelerini otomatik olarak ölçeklendirme
-      url: ./hdinsight-autoscale-clusters.md
     - text: Şirket içi kümeleri buluta geçirme
       url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-  - linkListType: tutorial
+- title: Apache HBase
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Azure ADDS ile kurumsal güvenlik kurulumu
-      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+    - text: Apache HBase nedir?
+      url: ./hbase/apache-hbase-overview.md
+    - text: Azure HDInsight'ta HBase kullanma
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: HBase’i Apache Phoenix ile sorgulama
+      url: ./hbase/apache-hbase-query-with-phoenix.md
+  - linkListType: how-to-guide
+    links:
+    - text: HBase için Hızlandırılmış Yazma İşlemlerini etkinleştirme
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Apache Phoenix için en iyi yöntemler
+      url: ./hbase/apache-hbase-phoenix-performance.md
 - title: ML Services
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: HDInsight'ta ML Services nedir?
       url: ./r-server/r-server-overview.md
-  - linkListType: quickstart
-    links:
     - text: ML Services kümesinde R betiği yürütme
       url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
-  - linkListType: tutorial
-    links:
-    - text: Spark işlem bağlamında R kullanma
-      url: ./r-server/ml-services-tutorial-spark-compute.md
 - title: Apache Storm
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Apache Storm nedir?
       url: ./storm/apache-storm-overview.md
-  - linkListType: quickstart
-    links:
     - text: Apache Storm topolojisi oluşturma
       url: ./storm/apache-storm-quickstart.md
-  - linkListType: tutorial
-    links:
-    - text: Apache Storm kullanarak HDFS yazma
-      url: ./storm/apache-storm-write-data-lake-store.md

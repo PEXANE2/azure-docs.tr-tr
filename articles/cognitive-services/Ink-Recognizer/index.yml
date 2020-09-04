@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Mürekkep Tanıma API belgeleri
-summary: Uygulama ve hizmetlerinizde dijital mürekkep tanımayı sunmak için mürekkep tanıma API’sini nasıl kullanacağınızı öğrenin. API, herhangi bir bağlamdaki el yazısı şekillerini ve metinleri tanımak için makine öğrenimi kullanan bulut tabanlı bir hizmettir.
+title: Mürekkep Tanıma API’si belgeleri (Kullanımdan kaldırılıyor)
+summary: Mürekkep Tanıma API’sinin önizleme aşaması 26 Ağustos 2020’de sona erdi. Mevcut Mürekkep Tanıma kaynaklarınız varsa bunları, hizmetin tamamen kullanımdan kaldırılacağı 31 Ocak 2021’e kadar kullanmaya devam edebilirsiniz. Uygulama ve hizmetlerinizde dijital mürekkep tanımayı sunmak için mürekkep tanıma API’sini nasıl kullanacağınızı öğrenin. API, herhangi bir bağlamdaki el yazısı şekillerini ve metinleri tanımak için makine öğrenimi kullanan bulut tabanlı bir hizmettir.
 metadata:
   title: Mürekkep Tanıma API'si - Öğreticiler, Hızlı başlangıçlar, API başvurusu
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415675"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419597"
 landingContent:
 - title: Mürekkep Tanıma API’si hakkında
   linkLists:

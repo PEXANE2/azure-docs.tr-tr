@@ -1,6 +1,6 @@
 - name: Azure Digital Twins
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Digital Twins Hakkında
       href: overview.md
@@ -82,6 +82,8 @@
       items:
         - name: IoT Hub’dan telemetri alma
           href: how-to-ingest-iot-hub-data.md
+        - name: DPS ile cihazları otomatik olarak yönetme
+          href: how-to-provision-using-device-provisioning-service.md
         - name: Logic Apps ile tümleştirme
           href: how-to-integrate-logic-apps.md
     - name: Bağlantı çıkışı
@@ -183,7 +185,9 @@
         - name: DTDL doğrulayıcı (örnek)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: DPS ve IoT Hub tümleştirmesi örneği
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Azure Digital Twins Özel Swagger’lar
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
     - name: Azure araçları
       items:
         - name: Azure Cloud Shell

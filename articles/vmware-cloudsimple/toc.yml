@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: ExpressRoute ile Azure Sanal ağ bağlantısı
               href: azure-expressroute-connection.md
+    - name: Sürüm notları
+      items:
+        - name: CloudSimple Eylül 2020 Güncelleştirmesi
+          href: update-plan-sept-2020.md

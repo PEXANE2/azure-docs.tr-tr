@@ -65,6 +65,8 @@
       href: ../../firewall/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
       href: ../../azure-functions/security-baseline.md
+    - name: Azure İzleyici güvenlik temeli
+      href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning güvenlik temeli
       href: ../../machine-learning/security-baseline.md
     - name: Azure İlkesi güvenlik temeli

@@ -222,6 +222,8 @@
                   href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio not defterleri
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: TokenLibrary kullanarak kimlik bilgilerinin güvenliğini sağlama
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: Apache Spark için .NET
               href: ./spark/spark-dotnet.md
             - name: Apache Spark makine öğrenmesi
@@ -248,7 +250,7 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL havuzu en iyi yöntemleri
               href: sql/best-practices-sql-pool.md
-        - name: Veri yükleme
+        - name: Veri alımı ve hazırlığı
           items:
             - name: Genel Bakış
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -416,7 +418,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Gen2'ye yükselt
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Veri yükleme
+    - name: Veri alımı ve hazırlığı
       items:
         - name: Veri ambarına
           items:

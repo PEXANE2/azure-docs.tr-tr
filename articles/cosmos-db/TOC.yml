@@ -1,6 +1,6 @@
 - name: Azure Cosmos DB belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
@@ -661,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: Nasıl yapılır kılavuzları
           items:
+            - name: Cassandra API’ye geçirme
+              items:
+                - name: Geçirme - Striim kullanarak Oracle DB'den Cassandra API'ye
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: Geçirme - Blitzz kullanarak Oracle DB'den Cassandra API'ye
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: Geçirme - Blitzz kullanarak Apache Cassandra'dan Cassandra API'ye
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Akışı değiştirme
               href: cassandra-change-feed.md
             - name: Mağaza ve Spring Verilerini yönetme
@@ -736,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: Node.js ve React uygulaması
                   href: tutorial-develop-mongodb-react.md
-            - name: 2 - Verileri geçirme
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3 - Verileri sorgulama
+            - name: 2 - Verileri sorgulama
               href: tutorial-query-mongodb.md
-            - name: 4 - Verileri global olarak dağıtma
+            - name: 3 - Verileri genel olarak dağıtma
               href: tutorial-global-distribution-mongodb.md
         - name: Kavramlar
           items:
@@ -753,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: Nasıl yapılır kılavuzları
           items:
-            - name: Geçiş öncesine yönelik kılavuz
-              href: mongodb-pre-migration.md
-            - name: Geçiş sonrasına yönelik kılavuz
-              href: mongodb-post-migration.md
+            - name: MongoDB API’sine geçirme
+              items:
+                - name: Geçiş öncesine yönelik kılavuz
+                  href: mongodb-pre-migration.md
+                - name: Veritabanı Geçiş Hizmeti (çevrimiçi)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Veritabanı Geçiş Hizmeti (çevrimdışı)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Geçiş sonrasına yönelik kılavuz
+                  href: mongodb-post-migration.md
             - name: Bağlantı dizesini alma
               href: connect-mongodb-account.md
             - name: Studio 3T kullanarak bağlanma
@@ -1235,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: Striim kullanarak SQL API’ye geçirme
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: Striim kullanarak Cassandra API’ye geçirme
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: Geçirme - Blitzz kullanarak Oracle DB'den Cassandra API'ye
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: Geçirme - Blitzz kullanarak Apache Cassandra'dan Cassandra API'ye
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme
           href: migrate-cosmosdb-data.md
         - name: Birden çoka ilişkisel verileri geçirme

@@ -1,10 +1,10 @@
 - name: Azure Kubernetes Hizmeti (AKS)
   href: ./index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: AKS hakkında
       href: intro-kubernetes.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: AKS Kümesi oluşturma
@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Azure Ultra Diskleri'ni kullanma (önizleme)
           href: use-ultra-disks.md
+        - name: CSI Depolama Sürücüleri
+          items:
+            - name: CSI Depolama Sürücülerini etkinleştirme (önizleme)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI sürücüleri (önizleme)
+              href: azure-disk-csi.md
+            - name: Azure Dosyalar CSI sürücüleri (önizleme)
+              href: azure-files-csi.md
     - name: Ağ yapılandırması
       items:
         - name: Sanal ağ oluşturma veya mevcut bir sanal ağı kullanma
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: Azure Active Directory tümleştirmesini etkinleştirme
           items:
-            - name: AKS tarafından yönetilen AAD
+            - name: AKS tarafından yönetilen Azure AD
               href: managed-aad.md
-            - name: AAD tümleştirmesi (eski)
+            - name: Azure AD tümleştirmesi (eski)
               href: azure-ad-integration-cli.md
         - name: Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
           href: manage-azure-rbac.md

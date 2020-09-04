@@ -4,16 +4,6 @@
   items:
     - name: Sanal WAN nedir?
       href: virtual-wan-about.md
-    - name: Mimari
-      items:
-        - name: Sanal WAN'a geçme
-          href: migrate-from-hub-spoke-topology.md
-        - name: Genel geçiş ağ mimarisi
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: SD-WAN bağlantı mimarisi
-          href: sd-wan-connectivity-architecture.md
-        - name: Çin ile bağlantı kurma
-          href: interconnect-china.md
 - name: Öğreticiler
   items:
     - name: Siteden siteye bağlantı oluşturma
@@ -36,11 +26,21 @@
           href: virtual-wan-locations-partners.md
         - name: İş ortaklarına yönelik otomasyon yönergeleri
           href: virtual-wan-configure-automation-providers.md
+    - name: Mimari
+      items:
+        - name: Sanal WAN'a geçme
+          href: migrate-from-hub-spoke-topology.md
+        - name: Genel geçiş ağ mimarisi
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN bağlantı mimarisi
+          href: sd-wan-connectivity-architecture.md
+        - name: Çin ile bağlantı kurma
+          href: interconnect-china.md
     - name: Yönlendirme
       items:
         - name: Sanal merkez yönlendirmesi hakkında
           href: about-virtual-hub-routing.md
-        - name: Senaryolar
+        - name: Yönlendirme senaryoları
           items:
             - name: Herhangi iki nokta arasında
               href: scenario-any-to-any.md
@@ -154,8 +154,6 @@
   items:
     - name: SSS
       href: virtual-wan-faq.md
-    - name: Güncelleştirme duyuruları
-      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Abonelik ve hizmet sınırlamaları

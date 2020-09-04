@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Ticari markete hoş geldiniz
-summary: Ölçeği fark etmeksizin tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
+summary: Ölçeği fark etmeksizin tüm şirketlere, çözümlerini dünyanın her yerinden müşterilere ulaştırma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
 metadata:
   title: Ticari markete hoş geldiniz
-  description: Ölçeği fark etmeksizin tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
+  description: Ölçeği fark etmeksizin tüm şirketlere, çözümlerini dünyanın her yerinden müşterilere ulaştırma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
   author: keferna
   ms.author: keferna
   ms.date: 04/02/2020
-  ms.openlocfilehash: a79d3de89399e9ed89598c5f08efb756291246ca
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: 9a61e3796fdd228ffee52d8bf7611946c873460a
+  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87287854"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89378109"
 landingContent:
 - title: Ticari markette çalışma
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Yeni bir SaaS teklifi oluşturma
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: ./create-new-saas-offer.md
     - text: En iyi pazarlama deneyimleri
       url: ./gtm-marketing-best-practices.md
     - text: Bulut çözüm sağlayıcıları
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: SaaS teklifleri
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: create-new-saas-offer.md
     - text: Sanal makine teklifleri
       url: ./marketplace-virtual-machines.md
     - text: Azure uygulama teklifleri

@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Ticari markette işlem yapma
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: Planlar ve Fiyatlandırma
+              href: plans-pricing.md
             - name: Özel teklifler
               href: ./private-offers.md
             - name: Standart Sözleşme
               href: ./standard-contract.md
             - name: Azure iş ortağı müşteri kullanımı ilişkilendirmesi
               href: ./azure-partner-customer-usage-attribution.md
+            - name: Desteklenen ülkeler ve bölgeler
+              href: ./sell-from-countries.md
         - name: Teklif türüne göre yayımlama kılavuzları
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: Azure uygulamaları yönetilen uygulamalar
               href: ./marketplace-managed-apps.md
-            - name: SaaS uygulamaları
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Kapsayıcılar
               href: ./marketplace-containers.md
             - name: IoT Edge modülleri
@@ -109,9 +111,9 @@
               href: ./partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Kapsayıcısı teklifi oluşturma
               href: ./partner-center-portal/create-azure-container-offer.md
-        - name: Sanal makine teklifi
+        - name: Sanal Makine teklifi
           items:
-            - name: Azure sanal makine teklifi oluşturma
+            - name: Azure Sanal Makine teklifi oluşturma
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM teknik varlığı oluşturma
               items:
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS teklifleri
           items:
-            - name: SaaS teklifi oluşturma denetim listesi
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: SaaS teklifi oluşturma
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS teklifi planlama
+              href: plan-saas-offer.md
             - name: SaaS için Azure AD ile kimlik doğrulama
               items:
                 - name: Azure AD ve SaaS’ye genel bakış
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: Ücretsiz teklifler veya deneme teklifleri için giriş sayfası
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS ölçülen faturalaması
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: SaaS teklifi oluşturma ve yayımlama
+              items:
+                - name: SaaS teklifi oluşturma
+                  href: create-new-saas-offer.md
+                - name: SaaS teklifi özelliklerini yapılandırma
+                  href: create-new-saas-offer-properties.md
+                - name: SaaS teklif listesini yapılandırma
+                  href: create-new-saas-offer-listing.md
+                - name: Önizleme hedef kitlesi ekleme
+                  href: create-new-saas-offer-preview.md
+                - name: Teknik ayrıntılar ekleme
+                  href: create-new-saas-offer-technical.md
+                - name: Plan oluşturma
+                  href: create-new-saas-offer-plans.md
+                - name: SaaS teklifini test etme ve yayımlama
+                  href: test-publish-saas-offer.md
+            - name: SaaS teklifinizi pazara sunma
+              href: create-new-saas-offer-marketing.md
             - name: SaaS gerçekleştirme API'leri
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS gerçekleştirme API’leri - SSS
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS ölçülen faturalaması
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: Müşteri Adayına Genel Bakış
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Market ölçüm hizmeti
           items:
-            - name: Anomali algılama hizmeti
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Kimlik doğrulaması stratejileri
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Market ölçüm hizmeti API’leri
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: Mevcut teklifleri güncelleştirme
       href: ./partner-center-portal/update-existing-offer.md
-    - name: Avantajları etkinleştirme
+    - name: Marketplace Rewards’u etkinleştirme
       href: ./partner-center-portal/marketplace-rewards.md
     - name: İş Ortağı Merkezi Analizi
       items:
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Destek seçenekleri
       href: ./partner-center-portal/support.md
+    - name: Kaynaklar
+      items:
+        - name: Desteklenen HTML etiketleri
+          href: supported-html-tags.md

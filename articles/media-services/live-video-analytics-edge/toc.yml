@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: Başvuru
   items:
-    - name: HTTP veri anlaşması
-      href: http-data-contract.md
-    - name: gRPC veri anlaşması
-      href: grpc-data-contract.md
+    - name: HTTP uzantısı protokolü
+      href: http-extension-protocol.md
+    - name: gRPC uzantısı protokolü
+      href: grpc-extension-protocol.md
     - name: Çıkarım meta verileri şeması
       href: inference-metadata-schema.md
     - name: Doğrudan yöntemler
