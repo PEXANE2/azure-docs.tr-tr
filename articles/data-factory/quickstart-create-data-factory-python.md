@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Python kullanarak Azure Data Factory oluşturma'
-description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
+description: Azure Blob depolama alanındaki bir konumdan başka bir konuma veri kopyalamak için bir veri fabrikası kullanın.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,14 +13,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873305"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439121"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı Başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta Python kullanarak bir veri fabrikası oluşturursunuz.
 
 Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak, işlem hatları olarak adlandırılan veri odaklı iş akışları oluşturabilir ve zamanlayabilirsiniz.
 
-İşlem hatları, farklı veri depolarından veri alabilir. İşlem hatları Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işler veya dönüştürür. İşlem hatları, çıktı verilerini iş zekası (BI) uygulamaları için Azure SQL veri ambarı gibi veri depolarında yayımlar.
+İşlem hatları, farklı veri depolarından veri alabilir. İşlem hatları Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işler veya dönüştürür. İşlem hatları, çıktı verilerini iş zekası (BI) uygulamaları için Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi veri depolarında yayımlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

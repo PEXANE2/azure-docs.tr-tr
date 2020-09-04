@@ -4,12 +4,12 @@ description: Site Recovery kullanarak, System Center VMM bulutlarındaki şirket
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130225"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442829"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM bulutlarında şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](./index.yml) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki öğreticileri zaten tamamladığınız varsayılmaktadır:
 
@@ -83,7 +83,11 @@ Aracıyı, çoğaltmak istediğiniz VM 'Leri içeren her Hyper-V konağına yük
 Microsoft Azure Kurtarma Hizmetleri Aracısı kurulum sihirbazında, şu ayarları yapılandırın:
 
 1. **Önkoşul denetimi**. **İleri**’yi seçin. Eksik Önkoşullar otomatik olarak yüklenir.
-1. **Yükleme ayarları**. Yükleme konumunu ve önbellek konumunu kabul edin. Önbellek sürücüsü en az 5 GB depolama alanı gerektirir. 600 GB veya daha fazla boş alan içeren bir sürücü önerilir. Ardından, **Install**' ı seçin.
+1. **Yükleme ayarları**. Yükleme konumunu kabul edin. Ardından, **Install**' ı seçin.
+
+    >[!NOTE]
+    >Azure Site Recovery için **önbellek konumu** gerekli değildir.
+
 1. **Yükleme**. Yükleme tamamlandığında, Sihirbazı kapatmak için **Kapat** ' ı seçin.
 
    ![Aracıyı yükler](./media/hyper-v-vmm-azure-tutorial/mars-install.png)

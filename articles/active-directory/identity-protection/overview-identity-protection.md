@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815190"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437709"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -102,17 +102,17 @@ Koşullu erişim yöneticileri Ayrıca, bir koşul olarak oturum açma riskini g
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Özellik | Ayrıntılar | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Ücretsiz/Office 365 uygulamaları |
+| Özellik | Ayrıntılar  | Azure AD Ücretsiz/Office 365 uygulamaları | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla) | Yes | Hayır | Hayır |
-| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla) | Yes | Hayır | Hayır |
-| Güvenlik raporları | Genel Bakış | Yes | Hayır | Hayır |
-| Güvenlik raporları | Riskli kullanıcılar | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
-| Güvenlik raporları | Riskli oturum açma işlemleri | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
-| Güvenlik raporları | Risk algılamaları | Tam erişim | Sınırlı bilgi | Hayır |
-| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti | Yes | Hayır | Hayır |
-| Bildirimler | Haftalık Özet | Yes | Hayır | Hayır |
-| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Yes | Hayır | Hayır |
+| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Evet | 
+| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Evet |
+| Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Evet |
+| Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
+| Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
+| Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi| Tam erişim|
+| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Evet |
+| Bildirimler | Haftalık Özet| Hayır | Hayır | Evet | 
+| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Evet |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

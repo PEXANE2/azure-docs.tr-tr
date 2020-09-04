@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 428aa25bc40b556ffd7ca6e59948fc79c8bef1c5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f924347b99d270ac97da5f6d6f4edf7a13efacee
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237989"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89449635"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -22,7 +22,7 @@ ms.locfileid: "89237989"
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services).
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
@@ -196,7 +196,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Form Page 1 has 18 lines.
@@ -333,7 +333,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 ```console
 Form Page 1 has 18 lines.
@@ -443,7 +443,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -539,12 +539,12 @@ Bu yöntemi çalıştırmak için, öğesinden öğesini çağırmanız gerekir 
 ```csharp
 static void Main(string[] args)
 {
-    var trainCustomModel = TrainCustomModelNoLabels();
+    var trainCustomModel = TrainCustomModelWithLabels();
     Task.WaitAll(trainCustomModel);
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -596,6 +596,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 `StartRecognizeCustomFormsFromUri`Yöntemini kullanacaksınız. Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 
 ```csharp
+static async Task RecognizeContentCustomModel()
 {
     // Use the custom model ID returned in the previous example.
     string modelId = "<modelId>";
@@ -634,7 +635,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -722,7 +723,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 ```console
 Account has 20 models.
@@ -760,7 +761,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -821,7 +822,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 Bu yanıt okunabilirlik için kesildi.
 

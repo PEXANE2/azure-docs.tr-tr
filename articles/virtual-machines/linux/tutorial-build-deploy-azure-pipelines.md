@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 140365abad266617443d58b7ed59f05a27009f59
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 60321363a7506d03ebf4aeffebac56305e231eb6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433048"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436230"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -84,9 +84,9 @@ Uygulama için kullanılan çalışma zamanı yığınına göre aşağıda aç�
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Java Spring Boot ve Spring bulut tabanlı uygulamaları dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) şablonu kullanarak Azure 'da tümüyle desteklenen bir OpenJDK tabanlı çalışma zamanı sağlayan bir Linux sanal makinesi oluşturun.
-- Tomcat sunucusunda Java servi 'leri dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure şablonunu kullanarak Java 8 Ile BIR Linux VM oluşturun ve [bir hizmet olarak Tomcat 9. x 'i yapılandırın](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + jpatron 14 
+- Java Spring Boot ve Spring bulut tabanlı uygulamaları dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) şablonu kullanarak Azure 'da tümüyle desteklenen bir OpenJDK tabanlı çalışma zamanı sağlayan bir Linux sanal makinesi oluşturun.
+- Tomcat sunucusunda Java servi 'leri dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) Azure şablonunu kullanarak Java 8 Ile BIR Linux VM oluşturun ve [bir hizmet olarak Tomcat 9. x 'i yapılandırın](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) + jpatron 14 
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -225,7 +225,7 @@ Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/ya
 
 3. Idthor `runOnce` veya `rolling` dağıtım stratejisi olarak belirtebilirsiniz. 
 
-   `runOnce`, ve gibi tüm yaşam döngüsü `preDeploy` `deploy` `routeTraffic` `postRouteTraffic` kancalarının bir kez yürütüldüğü en basit dağıtım stratejisidir. Ardından, ya da `on:` `success` `on:` `failure` yürütülür.
+   `runOnce` , ve gibi tüm yaşam döngüsü `preDeploy` `deploy` `routeTraffic` `postRouteTraffic` kancalarının bir kez yürütüldüğü en basit dağıtım stratejisidir. Ardından, ya da `on:` `success` `on:` `failure` yürütülür.
 
    Aşağıda, için YAML kod parçacığı örneği verilmiştir `runOnce` :
    ```YAML
@@ -244,7 +244,7 @@ Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/ya
              - script: echo my first deployment
    ```
 
-4. Aşağıda, her yinelemede 5 ' e kadar hedef sanal makine güncelleştirmeleri için bir sıralı strateji tanımlamak üzere kullanabileceğiniz YAML kod parçacığı örneği verilmiştir. `maxParallel`, paralel olarak, öğesine dağıtılabilecek hedef sayısını tespit eder. Dağıtım yapılan hedefleri dışlayarak herhangi bir zamanda kullanılabilir kalması gereken mutlak sayı veya hedef yüzdesi için seçim hesapları. Dağıtım sırasında başarı ve başarısızlık koşullarını tespit etmek için de kullanılır.
+4. Aşağıda, her yinelemede 5 ' e kadar hedef sanal makine güncelleştirmeleri için bir sıralı strateji tanımlamak üzere kullanabileceğiniz YAML kod parçacığı örneği verilmiştir. `maxParallel` , paralel olarak, öğesine dağıtılabilecek hedef sayısını tespit eder. Dağıtım yapılan hedefleri dışlayarak herhangi bir zamanda kullanılabilir kalması gereken mutlak sayı veya hedef yüzdesi için seçim hesapları. Dağıtım sırasında başarı ve başarısızlık koşullarını tespit etmek için de kullanılır.
 
    ```YAML
    jobs: 

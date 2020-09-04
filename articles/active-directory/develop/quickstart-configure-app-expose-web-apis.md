@@ -1,146 +1,119 @@
 ---
-title: "Hızlı başlangıç: bir uygulamayı bir Web API 'SI sunmak üzere yapılandırma | Mavisi"
+title: "Hızlı başlangıç: Web API 'sini kaydetme ve kullanıma sunma | Mavisi"
 titleSuffix: Microsoft identity platform
-description: Bu hızlı başlangıçta, uygulamayı istemci uygulamalar için kullanılabilir hale getirmek üzere yeni bir izni/kapsamı ve rolü ortaya çıkarmak için bir uygulamayı nasıl yapılandıracağınızı öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir Web API 'sini Microsoft Identity platformu ile kaydeder ve kapsamlarını yapılandırarak API 'nin kaynaklarına izin tabanlı erişim için istemcilere kullanıma sunmaktadır.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830300"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442172"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma
 
-Bir web API'si geliştirip [izinleri/kapsamları](developer-glossary.md#scopes) ve [rolleri](developer-glossary.md#roles) kullanıma sunarak istemci uygulamaları tarafından kullanılmasını sağlayabilirsiniz. Doğru şekilde yapılandırılmış olan bir web API'sini kullanıma sunmak için yapılması gereken işlemler Graph API ve Office 365 API'leri gibi diğer Microsoft web API'leri için yapılması gerekenlerle aynıdır.
-
-Bu hızlı başlangıçta, bir uygulamayı istemci uygulamalar için kullanılabilir hale getirmek üzere yeni bir kapsam sergilemek üzere nasıl yapılandıracağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, bir Web API 'sini Microsoft Identity platformu ile kaydeder ve örnek bir kapsam ekleyerek bunu istemci uygulamalarına kullanıma sunacaksınız. Web API 'nizi kaydederek ve kapsamlar aracılığıyla kullanıma sunarak, kendi kaynaklarına, API 'nize erişen yetkili kullanıcılara ve istemci uygulamalarına izin tabanlı erişim sağlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Hızlı başlangıç: bir uygulamayı Microsoft Identity platformu Ile kaydetme](quickstart-register-app.md).
+* Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
+## <a name="register-the-web-api"></a>Web API 'sini kaydetme
 
-Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
+Web API 'nizin kaynaklarına kapsamlı erişim sağlamak için, önce API 'yi Microsoft Identity platformu ile kaydetmeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' i seçin.
-1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
-1. Yeni bir kapsamı kullanıma sunmak için kullanıcı birimi veya uygulama bildirimi arasından kullanmak istediğiniz yöntemi seçin:
-    * [Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunma](#expose-a-new-scope-through-the-ui)
-    * [Uygulama bildirimi aracılığıyla yeni bir kapsamı veya rolü kullanıma sunma](#expose-a-new-scope-or-role-through-the-application-manifest)
+1. [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md) **bölümündeki adımları** uygulayın.
+1. **Yeniden yönlendirme URI 'Si Ekle** ve **Platform ayarlarını yapılandır** bölümlerini atlayın. Etkileşimli olarak hiçbir Kullanıcı oturum açmadığından, bir Web API 'si için yeniden yönlendirme URI 'SI yapılandırmanız gerekmez.
+1. Şimdilik **kimlik bilgileri ekle** bölümünü atlayın. Yalnızca API 'niz bir aşağı akış API 'sine eriştiğinde, bu makalede kapsanmayan bir senaryo olan kendi kimlik bilgilerine ihtiyacı vardır.
 
-## <a name="expose-a-new-scope-through-the-ui"></a>Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunma
+Web API 'niz kayıtlı olduğunda, API 'nizin tüketicilerine ayrıntılı izin sağlamak için API 'nizin kullanabileceği kapsamları eklemeye hazırsınız demektir.
 
-[![Kullanıcı arabirimini kullanarak bir API 'yi kullanıma sunma](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+## <a name="add-a-scope"></a>Kapsam Ekle
 
-Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için:
+Bir istemci uygulamasındaki kod, bir erişim belirtecini korunan kaynağa (Web API) istekleriyle birlikte geçirerek Web API 'niz tarafından tanımlanan işlemleri gerçekleştirme izni ister. Web API 'niz daha sonra istenen işlemi, yalnızca aldığı erişim belirteci, işlem için gereken kapsamları içeriyorsa gerçekleştirir.
 
-1. Uygulamanın **Genel Bakış** sayfasında, **API’yi kullanıma sunma** bölümünü seçin.
+İlk olarak, adlı örnek bir kapsam oluşturmak için aşağıdaki adımları izleyin `Employees.Read.All` :
 
-1. **Kapsam ekle**’yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden çok kiracıya erişiminiz varsa, **Directory + subscription** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. **Azure Active Directory**  >  **uygulama kayıtları**öğesini seçin ve ardından API 'nizin uygulama kaydını seçin.
+1. **API 'yi kullanıma**sunma bir  >  **kapsam ekleyin**' i seçin.
 
-1. Bir **Uygulama Kimliği URI’si** ayarlamadıysanız, bir tane girmeniz istenir. Uygulama kimliği URI’nizi girin veya sağlanan kimliği kullanın ve ardından **Kaydet ve devam et** seçeneğini belirleyin.
+    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Uygulama kaydı, Azure portal bir API bölmesi sunar":::
 
-1. **Kapsam ekleyin** sayfası görüntülendiğinde, kapsamınızın bilgilerini girin:
+1. Henüz bir tane yapılandırmadıysanız, bir **uygulama kimliği URI 'si** ayarlamanız istenir.
 
-    | Alan | Açıklama |
-    |-------|-------------|
-    | **Kapsam adı** | Kapsamınız için anlamlı bir ad girin.<br><br>Örneğin, `Employees.Read.All`. |
-    | **Kimler onaylayabilir** | Bu kapsama kullanıcılar tarafından onay verilip verilemeyeceğini veya yönetici onayının gerekli olup olmadığını seçin. Daha yüksek ayrıcalıklı izinler için **Yalnızca yöneticiler**’i seçin. |
-    | **Yönetici onayı görünen adı** | Kapsamınız için yöneticilerin göreceği anlamlı bir açıklama girin.<br><br>Örneğin, `Read-only access to Employee records` |
-    | **Yönetici onayı açıklaması** | Kapsamınız için yöneticilerin göreceği anlamlı bir açıklama girin.<br><br>Örneğin, `Allow the application to have read-only access to all Employee data.` |
+   Uygulama KIMLIĞI URI 'SI, API 'nin kodunda başvuracağız ve genel olarak benzersiz olması gereken kapsamlar için ön ek olarak davranır. Olarak belirtilen varsayılan değeri kullanabilir `api://<application-client-id>` veya gibi daha okunabilir BIR URI belirtebilirsiniz `https://contoso.com/api` .
 
-    Kullanıcılar kapsamınıza onay verebiliyorsa, aşağıdaki alanlar için değerler ekleyin:
+1. Sonra, kapsam **Ekle** bölmesinde kapsamın özniteliklerini belirtin. Bu izlenecek yol için örnek değerleri kullanabilir veya kendi kendinizinkini belirtebilirsiniz.
 
-    | Alan | Açıklama |
-    |-------|-------------|
-    | **Kullanıcı onayı görünen adı** | Kapsamınız için kullanıcıların göreceği anlamlı bir ad girin.<br><br>Örneğin, `Read-only access to your Employee records` |
-    | **Kullanıcı onayı açıklaması** | Kapsamınız için kullanıcıların göreceği anlamlı bir açıklama girin.<br><br>Örneğin, `Allow the application to have read-only access to your Employee data.` |
+    | Alan | Açıklama | Örnek |
+    |-------|-------------|---------|
+    | **Kapsam adı** | Kapsamınız adı. Ortak bir kapsam adlandırma kuralı `resource.operation.constraint` . | `Employees.Read.All` |
+    | **Kimler onaylayabilir** | Bu kapsamın Kullanıcı tarafından kabul edilip edilmeyeceğini veya yönetici onayı gerekli olup olmadığı. Daha yüksek ayrıcalıklı izinler için **Yalnızca yöneticiler**’i seçin. | **Yöneticiler ve kullanıcılar** |
+    | **Yönetici onayı görünen adı** | Kapsamın yalnızca yöneticiler tarafından göreceği amaç hakkında kısa bir açıklama. | `Read-only access to Employee records` |
+    | **Yönetici onayı açıklaması** | Yalnızca yöneticilerin göreceği kapsam tarafından verilen iznin daha ayrıntılı bir açıklaması. | `Allow the application to have read-only access to all Employee data.` |
+    | **Kullanıcı onayı görünen adı** | Kapsamın amacının kısa bir açıklaması. Kullanıcılara yalnızca **Yöneticiler ve kullanıcılara** **izin verebilir** ayarlarsanız gösterilir. | `Read-only access to your Employee records` |
+    | **Kullanıcı onayı açıklaması** | Kapsam tarafından verilen iznin daha ayrıntılı bir açıklaması. Kullanıcılara yalnızca **Yöneticiler ve kullanıcılara** **izin verebilir** ayarlarsanız gösterilir. | `Allow the application to have read-only access to your Employee data.` |
 
-1. **Durum**’u ayarlayın ve işiniz bittiğinde **Kapsam ekle**’yi seçin.
+1. **Durumu** **etkin**olarak ayarlayın ve ardından **Kapsam Ekle**' yi seçin.
 
-1. Seçim Uygulamanızın kullanıcılarına tanımladığınız kapsamlara izin sorulmasını engellemek için, istemci uygulamasını Web API 'nize erişmek üzere "önceden Yetkilendir" seçeneğini kullanabilirsiniz. Kullanıcılarınızın izin reddetme fırsatı olmadığı için *yalnızca* güvendiğiniz istemci uygulamalarına ön yetki vermiş olmanız gerekir.
+1. Seçim Uygulamanızın kullanıcılarına tanımladığınız kapsamlara izin sorulmasını engellemek için, istemci uygulamasını Web API 'nize erişmek üzere *önceden yetkilendirirsiniz* . Kullanıcılarınızın izin reddetme fırsatı olmadığı için *yalnızca* güvendiğiniz istemci uygulamalarına ön yetki verin.
     1. **Yetkili istemci uygulamaları**altında, **istemci uygulaması Ekle** ' yi seçin.
     1. Önceden yetkilendirmek istediğiniz istemci uygulamanın **uygulama (istemci) kimliğini** girin. Örneğin, daha önce kaydetmiş olduğunuz bir Web uygulamasının.
     1. **Yetkili kapsamlar**altında izin istemini bastırmak istediğiniz kapsamları seçin ve ardından **Uygulama Ekle**' yi seçin.
 
-    İstemci uygulaması artık önceden yetkilendirilmiş bir istemci uygulamasıdır (PCA) ve oturum açarken kullanıcılardan onay istenmez.
+    İsteğe bağlı bu adımı izlediyseniz, istemci uygulaması artık önceden yetkilendirilmiş bir istemci uygulaması (PCA) ve oturum açarken kullanıcılara onay sorulur.
 
-1. [Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama](#verify-the-web-api-is-exposed-to-other-applications) adımlarını izleyin.
+## <a name="add-a-scope-requiring-admin-consent"></a>Yönetici onayı gerektiren bir kapsam ekleyin
 
-## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Uygulama bildirimi aracılığıyla yeni bir kapsamı veya rolü kullanıma sunma
+Daha sonra, `Employees.Write.All` yalnızca yöneticilerin izin veremediği adlı başka bir örnek kapsam ekleyin. Yönetici onayı gerektiren kapsamlar genellikle daha yüksek ayrıcalıklı işlemlere erişim sağlamak için kullanılır ve genellikle arka uç hizmetleri olarak çalışan istemci uygulamaları veya kullanıcı etkileşimli olarak oturum açan Daemon 'ları.
 
-Uygulama bildirimi, bir Azure AD uygulama kaydının özniteliklerini tanımlayan uygulama varlığını güncelleştirme mekanizması olarak görev yapar.
+`Employees.Write.All`Örnek kapsamı eklemek için, [kapsam ekleme](#add-a-scope) bölümündeki adımları izleyin ve bu değerleri **Kapsam Ekle** bölmesinde belirtin:
 
-[![Bildirimde oauth2Permissions koleksiyonunu kullanarak yeni bir kapsam kullanıma sunma](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+| Alan                          | Örnek değer                                                      |
+|--------------------------------|--------------------------------------------------------------------|
+| **Kapsam adı**                 | `Employees.Write.All`                                              |
+| **Kimler onaylayabilir**            | **Yalnızca Yöneticiler**                                                    |
+| **Yönetici onayı görünen adı** | `Write access to Employee records`                                 |
+| **Yönetici onayı açıklaması**  | `Allow the application to have write access to all Employee data.` |
+| **Kullanıcı onayı görünen adı**  | *Hiçbiri (boş bırakın)*                                               |
+| **Kullanıcı onayı açıklaması**   | *Hiçbiri (boş bırakın)*                                               |
 
-Uygulama bildirimini düzenleyerek yeni bir kapsamı ortaya çıkarmak için:
+## <a name="verify-the-exposed-scopes"></a>Sunulan kapsamları doğrulama
 
-1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Bildirimi portalda **Düzenleme** seçeneği sunana web tabanlı bir bildirim düzenleyici açılır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz.
+Önceki bölümlerde açıklanan örnek kapsamları başarıyla eklediyseniz, bu resme benzer şekilde, Web API 'sinin uygulama kaydınızın **BIR API bölmesini kullanıma sunacaksınız** :
 
-    Bu örnekte `oauth2Permissions` koleksiyonuna aşağıdaki JSON öğesini ekleyerek kaynak/API öğesinde `Employees.Read.All` adlı yeni bir kapsamı kullanıma sunma gösterilmektedir.
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="İki açık kapsamı gösteren bir API bölmesinin sergileme ekran görüntüsü.":::
 
-    `id`Değeri programlı olarak veya [Guidgen](https://www.microsoft.com/download/details.aspx?id=55984)gibi bir GUID oluşturma aracı kullanarak oluşturun.
+Görüntüde gösterildiği gibi, bir kapsamın tam dizesi, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin ve kapsamın **Kapsam adının**bitiştirilmesi olur.
 
-      ```json
-      {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
-        "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
-        "value": "Employees.Read.All"
-      }
-      ```
-
-1. İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. Web API'nizi dizininizdeki diğer uygulamalar tarafından kullanılacak şekilde yapılandırmış oldunuz.
-1. [Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama](#verify-the-web-api-is-exposed-to-other-applications) adımlarını izleyin.
-
-Uygulama varlığı ve şeması hakkında daha fazla bilgi için bkz. Microsoft Graph 'ın [uygulama][ms-graph-application] kaynak türü başvurusu belgeleri.
-
-Şema başvurusu da dahil olmak üzere uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama](reference-app-manifest.md).
-
-## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama
-
-1. Azure AD kiracınıza dönün, **uygulama kayıtları**' yi seçin ve ardından yapılandırmak istediğiniz istemci uygulamasını bulun ve seçin.
-1. [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md) bölümünde belirtilen adımları tekrarlayın.
-1. [BIR API seçme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)adımına geldiğinizde, kaynağı (Web API 'si uygulama kaydı) seçin.
-    * Web API uygulaması kaydını Azure portal kullanarak oluşturduysanız API kaynağınız **My API 'Lerim** sekmesinde listelenir.
-    * Proje oluşturma sırasında Web API uygulaması kaydınızı oluşturmak için Visual Studio 'ya izin verirseniz, API kaynağınız **Kuruluşumun kullandığı API 'ler** sekmesinde listelenir.
-
-Web API kaynağını seçtikten sonra, istemci izin istekleri için kullanılabilir yeni kapsamı görmeniz gerekir.
-
-## <a name="using-the-exposed-scopes"></a>Sunulan kapsamları kullanma
-
-İstemci, Web API 'nize erişim izinleri ile uygun şekilde yapılandırıldıktan sonra, Azure AD tarafından bir OAuth 2,0 erişim belirteci verilebilir. İstemci, Web API 'sini çağırdığında, kapsam ( `scp` ) talebinin, uygulama kaydında istenen izinlere ayarlanmış erişim belirtecini gösterir.
-
-Gerekirse daha sonra ek kapsamları kullanıma sunabilirsiniz. Web API'niz farklı işlevlerle ilişkilendirilmiş birden fazla kapsamı kullanıma sunabilir. Kaynağınız alınan OAuth 2.0 erişim belirtecindeki kapsam (`scp`) taleplerini değerlendirerek web API'si erişimini çalışma zamanında denetleyebilir.
-
-Uygulamalarınızda, tam kapsam değeri, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin (kaynak) ve **Kapsam adının**bir birleşimi olur.
-
-Örneğin, Web API 'nizin uygulama KIMLIĞI URI 'SI ise `https://contoso.com/api` ve kapsam adınız ise `Employees.Read.All` , tam kapsam şu şekilde olur:
+Örneğin, Web API 'nizin uygulama KIMLIĞI URI 'SI ise `https://contoso.com/api` ve kapsam adı ise `Employees.Read.All` , tam kapsam şu şekilde olur:
 
 `https://contoso.com/api/Employees.Read.All`
 
+## <a name="using-the-exposed-scopes"></a>Sunulan kapsamları kullanma
+
+Serinin bir sonraki makalesinde, Web API 'nize erişimi olan bir istemci uygulamasının kaydını ve bu makalenin adımlarını izleyerek tanımladığınız kapsamları yapılandırırsınız.
+
+Bir istemci uygulama kaydına Web API 'nize erişim izni verildiğinde, istemciye Microsoft Identity platformu tarafından bir OAuth 2,0 erişim belirteci verilebilir. İstemci, Web API 'sini çağırdığında, kapsamı ( `scp` ) talebi istemcinin uygulama kaydında belirttiğiniz izinlere ayarlanmış olan bir erişim belirteci sunar.
+
+Gerekirse daha sonra ek kapsamları kullanıma sunabilirsiniz. Web API 'nizin birkaç işlem ile ilişkili birden çok kapsamı kullanıma sunabileceğinden göz önünde bulundurun. Kaynağınız, `scp` aldığı OAuth 2,0 erişim belirtecindeki kapsam () talep (ler) i değerlendirerek çalışma zamanında Web API 'sine erişimi denetleyebilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kapsamları yapılandırarak Web API 'nizi kullanıma açdığınıza göre, bu kapsamlara erişim izni ile istemci uygulamanızın kaydını yapılandırın.
+Kapsamları yapılandırarak Web API 'nizi kullanıma açıkdığınıza göre, istemci uygulamanızın, kapsamlarına erişim izni olan kaydını yapılandırın.
 
 > [!div class="nextstepaction"]
 > [Web API erişimi için uygulama kaydını yapılandırma](quickstart-configure-app-access-web-apis.md)

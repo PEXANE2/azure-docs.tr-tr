@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984668"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436791"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Transact-SQL (T-SQL) sorgularını çalıştırmak ve bakım görevlerini gerçekleştirmek için, bir veya daha fazla veritabanına göre düzenli olarak yürütülen işleri oluşturabilir ve zamanlayabilirsiniz.
 
-İşin gerçekleştirileceği hedef veritabanını veya veritabanı gruplarını tanımlayabilir ve ayrıca bir işi çalıştırmaya yönelik zamanlamalar tanımlayabilirsiniz.
-Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, bir veritabanı grubu genelinde yürütülecek Transact-SQL betiklerini tanımlar, korur ve kalıcı hale getirin.
+İşin yürütüldüğü hedef veritabanı veya veritabanı gruplarını tanımlayabilir ve iş çalıştırmak için zamanlamaları belirleyebilirsiniz.
+İşler, hedef veritabanında oturum açma görevini üstlenir. Veritabanı grubunda çalıştırılacak Transact-SQL betiklerinin tanımlama, bakımını yapma ve sürekliliğini sağlama konusunda da denetim sahibi olursunuz.
 
-Her iş, yürütme durumunu günlüğe kaydeder ve herhangi bir hata oluşursa işlemleri otomatik olarak yeniden dener.
+Her iş yürütmenin durumunu günlüğe kaydeder ve herhangi bir hata oluşursa otomatik olarak işlemleri yeniden dener.
 
 ## <a name="when-to-use-automated-jobs"></a>Otomatikleştirilmiş işlerin ne zaman kullanılacağı
 
@@ -51,7 +51,7 @@ Aşağıdaki iş zamanlama teknolojileri kullanılabilir:
 - **SQL Aracısı işleri** , Azure SQL yönetilen örneği 'nde kullanılabilen, klasik ve yeniden çalıştırılan SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri Azure SQL veritabanı 'nda kullanılamıyor.
 - **Elastik veritabanı işleri (Önizleme)** , Azure SQL veritabanı 'ndaki bir veya daha fazla veritabanında özel Işleri yürütülen iş zamanlama hizmetlerdir.
 
-SQL Aracısı (Şirket içi ve SQL yönetilen örneğinin parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.
+SQL Aracısı (Şirket içi ve SQL yönetilen örneğinin parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı 'ndaki tek veritabanları ve Azure SYNAPSE Analytics 'teki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer vardır.
 
 | |Elastik İşler |SQL Aracısı |
 |---------|---------|---------|
@@ -218,7 +218,7 @@ Geçerli önizleme için, elastik bir Iş Aracısı oluşturmak için Azure SQL 
 
 |Rol adı |'jobs' şeması izinleri |'jobs_internal' şeması izinleri |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Hiçbiri |
+|**jobs_reader** | SELECT | Yok |
 
 > [!IMPORTANT]
 > Veritabanı yöneticisi olarak *İş veritabanına* erişim izni vermeden önce güvenlik durumunu gözden geçirin. İş oluşturma veya düzenleme izinlerine sahip olan kötü niyetli bir kullanıcı, kendi denetimindeki bir veritabanına bağlanmak için kayıtlı kimlik bilgisini kullanan bir iş oluşturarak veya düzenleyerek ilgili kimlik bilgisinin parolasını belirleyebilir.

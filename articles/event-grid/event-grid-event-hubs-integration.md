@@ -1,18 +1,18 @@
 ---
 title: 'Öğretici: veri ambarına Event Hubs veri gönderme-Event Grid'
-description: 'Öğretici: bir SQL veri ambarına veri geçirmek için Azure Event Grid ve Event Hubs kullanımını açıklar. Bir yakalama dosyası almak için bir Azure Işlevi kullanır.'
+description: "Öğretici: Azure SYNAPSE Analytics 'e veri geçirmek için Azure Event Grid ve Event Hubs kullanımını açıklar. Bir yakalama dosyası almak için bir Azure Işlevi kullanır."
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007477"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435040"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
-Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob DEPOLAMADAN bir SQL veri ambarına sorunsuzca geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
+Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob depolamadan Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) sorunsuz bir şekilde geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
 
 ![Uygulamaya genel bakış](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Bu diyagram, bu öğreticide oluşturduğunuz çözümün iş akışını göste
 2. Veri yakalama tamamlandığında bir olay oluşturulup bir Azure Event Grid 'e gönderilir. 
 3. Event Grid bu olay verilerini bir Azure işlev uygulamasına iletir.
 4. İşlev uygulaması, blob 'u depodan almak için olay verilerinde blob URL 'sini kullanır. 
-5. İşlev uygulaması, blob verilerini bir Azure SQL veri ambarına geçirir. 
+5. İşlev uygulaması, blob verilerini bir Azure SYNAPSE analizinden geçirir. 
 
 Bu makalede, aşağıdaki adımları uygulayın:
 
 > [!div class="checklist"]
-> * Altyapıyı dağıtmak için bir Azure Resource Manager şablonu kullanın: bir olay hub 'ı, bir depolama hesabı, bir işlev uygulaması, bir SQL veri ambarı.
+> * Altyapıyı dağıtmak için bir Azure Resource Manager şablonu kullanın: bir olay hub 'ı, bir depolama hesabı, bir işlev uygulaması, bir Synapse analizi.
 > * Veri ambarında bir tablo oluşturun.
 > * İşlev uygulamasına kod ekleyin.
 > * Olaya abone olun. 
@@ -52,7 +52,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 * İşlev uygulamasını barındırmak için App Service planı
 * Olayı işlemek için işlev uygulaması
 * Veri ambarını barındırmak için SQL Server
-* Geçirilen verileri depolamak için SQL Veri Ambarı
+* Geçirilen verileri depolamak için Azure SYNAPSE Analytics
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal Azure Cloud Shell başlatma
 
@@ -97,7 +97,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
           "tags": null
         }
         ```
-2. Önceki bölümde bahsedilen tüm kaynakları (Olay Hub 'ı, depolama hesabı, işlevler uygulaması, SQL veri ambarı) aşağıdaki CLı komutunu çalıştırarak dağıtın: 
+2. Önceki bölümde bahsedilen tüm kaynakları (Olay Hub 'ı, depolama hesabı, işlevler uygulaması, Azure SYNAPSE Analytics) aşağıdaki CLı komutunu çalıştırarak dağıtın: 
     1. Komutu kopyalayıp Cloud Shell penceresine yapıştırın. Alternatif olarak, seçtiğiniz bir düzenleyiciye kopyalamak/yapıştırmak, değerleri ayarlamak ve sonra Cloud Shell komutu kopyalamak isteyebilirsiniz. 
 
         ```azurecli
@@ -112,7 +112,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
         3. Olay Hub 'ının adı. Değeri olduğu gibi (hubdatamigration) bırakabilirsiniz.
         4. SQL Server için ad.
         5. SQL kullanıcısının ve parolanın adı. 
-        6. SQL veri ambarı için ad
+        6. Azure SYNAPSE Analytics için ad
         7. Depolama hesabının adı. 
         8. İşlev uygulamasının adı. 
     3.  Komutu çalıştırmak için Cloud Shell penceresinde **ENTER** tuşuna basın. Bu işlem biraz zaman alabilir. Bu, bir dizi kaynak oluştururken biraz zaman alabilir. Komutun sonucunda, hiçbir başarısızlık olmadığından emin olun. 
@@ -131,7 +131,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
         ```
     2. **Kaynak grubu**için bir ad belirtin.
     3. ENTER tuşuna basın. 
-3. Önceki bölümde bahsedilen tüm kaynakları (Olay Hub 'ı, depolama hesabı, işlevler uygulaması, SQL veri ambarı) aşağıdaki komutu çalıştırarak dağıtın:
+3. Önceki bölümde bahsedilen tüm kaynakları (Olay Hub 'ı, depolama hesabı, işlevler uygulaması, Azure SYNAPSE Analytics) aşağıdaki komutu çalıştırarak dağıtın:
     1. Komutu kopyalayıp Cloud Shell penceresine yapıştırın. Alternatif olarak, seçtiğiniz bir düzenleyiciye kopyalamak/yapıştırmak, değerleri ayarlamak ve sonra Cloud Shell komutu kopyalamak isteyebilirsiniz. 
 
         ```powershell
@@ -143,7 +143,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
         3. Olay Hub 'ının adı. Değeri olduğu gibi (hubdatamigration) bırakabilirsiniz.
         4. SQL Server için ad.
         5. SQL kullanıcısının ve parolanın adı. 
-        6. SQL veri ambarı için ad
+        6. Azure SYNAPSE Analytics için ad
         7. Depolama hesabının adı. 
         8. İşlev uygulamasının adı. 
     3.  Komutu çalıştırmak için Cloud Shell penceresinde **ENTER** tuşuna basın. Bu işlem biraz zaman alabilir. Bu, bir dizi kaynak oluştururken biraz zaman alabilir. Komutun sonucunda, hiçbir başarısızlık olmadığından emin olun. 
@@ -162,13 +162,13 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 
     ![Kaynak grubundaki kaynaklar](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te tablo oluşturma
 [Createdatawarehousetable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) betiğini çalıştırarak veri Ambarınızda tablo oluşturun. Betiği çalıştırmak için, Visual Studio 'Yu veya portalda sorgu düzenleyicisini kullanabilirsiniz. Aşağıdaki adımlarda sorgu Düzenleyicisi 'nin nasıl kullanılacağı gösterilmektedir: 
 
 1. Kaynak grubundaki kaynak listesinde **SYNAPSE SQL havuzunu (veri ambarı)** seçin. 
-2. SQL veri ambarı sayfasında sol menüdeki **sorgu Düzenleyicisi 'ni (Önizleme)** seçin. 
+2. Azure SYNAPSE Analytics sayfasında sol menüdeki **sorgu Düzenleyicisi 'ni (Önizleme)** seçin. 
 
-    ![SQL veri ambarı sayfası](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Azure SYNAPSE Analytics sayfası](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. SQL Server için **Kullanıcı** ve **parola** adını girip **Tamam**' ı seçin. SQL Server 'da başarılı bir şekilde oturum açmak için istemci IP adresinizi güvenlik duvarına eklemeniz gerekebilir. 
 
     ![SQL Server kimlik doğrulaması](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
         ![Event Grid aboneliği oluştur](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Veri oluşturmak için uygulama çalıştırma
-Olay hub’ı, SQL veri ambarı, Azure işlev uygulaması ve olay aboneliğinizi ayarlamayı tamamladınız. Olay hub’ı için veri oluşturan bir uygulamayı çalıştırmadan önce birkaç değeri yapılandırmanız gerekir.
+Olay Hub 'ınızı, Azure SYNAPSE Analytics, Azure işlev uygulaması ve olay aboneliğinizi ayarlamayı tamamladınız. Olay hub’ı için veri oluşturan bir uygulamayı çalıştırmadan önce birkaç değeri yapılandırmanız gerekir.
 
 1. Azure portal, daha önce yaptığınız gibi kaynak grubunuza gidin. 
 2. Event Hubs ad alanını seçin.

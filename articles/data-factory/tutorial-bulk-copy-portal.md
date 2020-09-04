@@ -1,6 +1,6 @@
 ---
 title: Azure portal kullanarak verileri toplu olarak kopyalama
-description: Azure Data Factory ve Kopyalama Etkinliği’ni kullanarak bir kaynak veri deposundan hedef veri deposuna toplu veri kopyalama hakkında bilgi edinin.
+description: Kaynak veri deposundan verileri toplu olarak hedef veri deposuna kopyalamak için Azure Data Factory ve kopyalama etkinliğini kullanın.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081647"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442863"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -45,11 +45,11 @@ Bu senaryoda, Azure SQL veritabanı 'nda Azure SYNAPSE Analytics 'e (eski adıyl
 ![İş akışı](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * İlk işlem hattı, havuz veri depolarına kopyalanması gereken tabloların listesini arar.  Alternatif olarak, havuz veri deposuna kopyalanacak tüm tabloları listeleyen bir meta veri tablosu tutabilirsiniz. İşlem hattı daha sonra veritabanındaki her bir tabloda yinelenen ve veri kopyalama işlemini gerçekleştiren başka bir işlem hattını tetikler.
-* İkinci işlem hattı gerçek kopyalama işlemini gerçekleştirir. Tablo listesini bir parametre olarak alır. Listedeki her tablo için, Azure SQL veritabanı 'ndaki belirli bir tabloyu, en iyi performans için [BLOB depolama ve PolyBase aracılığıyla hazırlanan kopyayı](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) kullanarak Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) ilgili tabloya kopyalayın. Bu örnekte, ilk işlem hattı tablo listesini bir parametre değeri olarak geçirir. 
+* İkinci işlem hattı gerçek kopyalama işlemini gerçekleştirir. Tablo listesini bir parametre olarak alır. Listedeki her tablo için, Azure SQL veritabanı 'ndaki belirli bir tabloyu, en iyi performans için [BLOB depolama ve PolyBase aracılığıyla hazırlanan kopyayı](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) kullanarak Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) ilgili tabloya kopyalayın. Bu örnekte, ilk işlem hattı tablo listesini bir parametre değeri olarak geçirir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
 * **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. 
 * **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
@@ -62,7 +62,7 @@ SQL veritabanı 'nda Adventure Works LT örnek verileriyle bir veritabanı oluş
 
 **Havuz Azure SYNAPSE Analytics (eski ADıYLA SQL DW) hazırlama**:
 
-1. Bir Azure SYNAPSE analizinin (eski adıyla SQL DW) yoksa, oluşturma adımları için [SQL veri ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) makalesine bakın.
+1. Bir Azure SYNAPSE Analytics (eski adıyla SQL DW) çalışma alanınız yoksa, oluşturma adımları için [Azure SYNAPSE Analytics ile çalışmaya başlama](..\synapse-analytics\get-started.md) makalesini inceleyin.
 
 1. Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) ilgili tablo şemaları oluşturun. Daha sonraki bir adımda verileri geçirmek/kopyalamak için Azure Data Factory’yi kullanın.
 
@@ -331,7 +331,7 @@ Bu işlem hattı iki eylem yapar:
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
-1. **İzleyici** sekmesine geçin. çözümünüzdeki her iki işlem hattı için de çalıştırmaları görene kadar **Yenile** 'ye tıklayın. **Başarılı oldu** durumunu görene kadar listeyi yenilemeye devam edin. 
+1. **İzleyici** sekmesine geçin. Çözümünüzde her iki işlem hattı için de çalıştırmaları görene kadar **Yenile** ' ye tıklayın. **Başarılı oldu** durumunu görene kadar listeyi yenilemeye devam edin. 
 
 1. **Gettablelistandtriggercopydata** işlem hattı ile ilişkili etkinlik çalıştırmalarını görüntülemek için işlem hattının işlem hattı adı bağlantısına tıklayın. Bu işlem hattı çalıştırması için iki etkinlik çalıştırması görüyor olmalısınız. 
     ![İşlem hattı çalıştırmasını izleme](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)

@@ -1,18 +1,18 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce2ce146b8a8ba06729c5e9428bccb8a60e14c39
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501976"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89449675"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -52,7 +52,7 @@ Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**
 |---|---|---|---|
 |myImage1|Contoso|Finance|Arka uç|
 |myImage2|Contoso|Finance|Ön uç|
-|myImage3|Sınama|Finance|Ön uç|
+|myImage3|Test Etme|Finance|Ön uç|
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
@@ -83,7 +83,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 ## <a name="regional-support"></a>Bölgesel destek
 
-Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
+Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Sınırlar 
 
@@ -129,8 +129,8 @@ Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü t�
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
-| Görüntü Tanımı     | Hayır                   | Evet          | Yes                  |
+| Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
+| Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -146,12 +146,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Description
+- Açıklama
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Description
+- Açıklama
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -196,7 +196,7 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 * [Paylaşılan görüntü galerisini kullanma ücretleri nelerdir?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Paylaşılan görüntü Galerisi ve görüntü tanımı ve görüntü sürümü oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Görüntü sürümünden paylaşılan VM veya sanal makine ölçek kümesi oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [Paylaşılan görüntü Galerisi görüntülerini kullanmak için yönetilen görüntü kullanılarak oluşturulan sanal makine ölçek kümesini güncelleştirebilir miyim?]
+* [Paylaşılan görüntü Galerisi görüntülerini kullanmak için yönetilen görüntü kullanılarak oluşturulan sanal makine ölçek kümesini güncelleştirebilir miyim?] (#can-----------makinesi---------------------------kullanımı-
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Tüm paylaşılan görüntü Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?
 

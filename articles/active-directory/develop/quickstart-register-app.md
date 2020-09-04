@@ -1,77 +1,133 @@
 ---
-title: 'Hızlı başlangıç: Microsoft Identity platform ile uygulamaları kaydetme | Mavisi'
-description: Bu hızlı başlangıçta, bir uygulamayı Microsoft Identity platformu ile nasıl ekleyeceğinizi ve kaydedeceğinizi öğreneceksiniz.
+title: "Hızlı başlangıç: uygulamayı Microsoft Identity platformu 'nda kaydetme | Mavisi"
+description: Bu hızlı başlangıçta, bir uygulamayı Microsoft Identity platformu ile nasıl kaydedeceğinizi öğrenirsiniz.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/12/2020
-ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115365"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436751"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
-Bu hızlı başlangıçta, Azure portal **uygulama kayıtları** deneyimini kullanarak bir uygulamayı kaydedersiniz. 
+Bu hızlı başlangıçta, Microsoft kimlik platformunun uygulamanız ve kullanıcıları için kimlik doğrulama ve yetkilendirme hizmetleri sağlayabilmesi adına bir uygulamayı Azure portal kaydedersiniz.
 
-Uygulamanız, bir Azure Active Directory kiracısıyla kaydedilerek Microsoft Identity platformu ile tümleşiktir. Kurumsal geliştiriciler ve hizmet olarak yazılım (SaaS) sağlayıcıları, Microsoft Identity platform ile tümleştirilebilen ticari bulut hizmetleri veya iş kolu uygulamaları geliştirebilir. Tümleştirme, bu hizmetler için güvenli oturum açma ve yetkilendirme sağlar.
+Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleştirmesini istediğiniz her uygulama için gereklidir. Bir Web veya mobil uygulama gibi bir istemci uygulaması ya da bir istemci uygulamasını yedekleyen bir Web API 'SI olup olmadığı, kaydetme, uygulamanız ile kimlik sağlayıcısı arasında bir güven ilişkisi oluşturur, Microsoft Identity platform.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Bir [Azure AD kiracısı](quickstart-create-new-tenant.md).
+* Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
 
-## <a name="register-a-new-application-using-the-azure-portal"></a>Yeni bir uygulamayı Azure portalını kullanarak kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. **Azure Active Directory**'yi bulun ve seçin. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
-1. **Yeni kayıt**seçeneğini belirleyin.
-1. **Bir uygulamayı kaydet**' de kullanıcılara görüntülenecek anlamlı bir uygulama adı girin.
-1. Uygulamayı şu şekilde kullanabilecek kişileri belirtin:
+Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, farklı bir şekilde değildir.
+
+Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.
+1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. Bazen *oturum açma hedef kitlesi*olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
 
     | Desteklenen hesap türleri | Açıklama |
     |-------------------------|-------------|
-    | **Yalnızca bu kuruluş dizinindeki hesaplar** | Bir iş kolu uygulaması (LOB) oluşturuyorsanız bu seçeneği belirtin. Uygulamayı bir dizine kaydetaçmadıysanız, bu seçenek kullanılamaz.<br><br>Bu seçenek, yalnızca Azure AD tek kiracılı hesaba eşlenir.<br><br>Uygulamayı bir dizinin dışına kaydetmiyorsanız Bu seçenek varsayılandır. Uygulamanın bir dizin dışında kaydedildiği durumlarda, varsayılan seçenek Azure çok kiracılı ve kişisel Microsoft kişisel hesaplarıdır. |
-    | **Herhangi bir kuruluş dizinindeki hesaplar** | Tüm iş ve eğitim müşterilerini hedeflemek istiyorsanız bu seçeneği belirleyin.<br><br>Bu seçenek, bir yalnızca Azure AD çok kiracılı hesaba eşlenir.<br><br>Uygulamayı Azure AD 'ye yalnızca tek kiracı olarak kaydettirdiğiniz takdirde, **kimlik doğrulama** sayfası aracılığıyla Azure AD çok kiracılı ve tek kiracıya geri yükleyebilirsiniz. |
-    | **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** | En geniş müşteri kümesini hedeflemek için bu seçeneği belirleyin.<br><br>Bu seçenek Azure AD çok kiracılı ve kişisel Microsoft hesaplarına eşlenir.<br><br>Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiniz, Kullanıcı arabiriminde bu ayarı değiştiremezsiniz. Bunun yerine, desteklenen hesap türlerini değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir. |
+    | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu, Microsoft Identity platformunda **tek kiracılı** bir uygulamadır. |
+    | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure AD kiracısındaki kullanıcıların uygulamanızı kullanabilmemizi istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu, Microsoft Identity platformunda **çok kiracılı** bir uygulama olarak bilinir. |
+    | **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** | En geniş müşteri kümesini hedeflemek için bu seçeneği belirleyin.<br><br>Bu seçeneği belirlediğinizde, kişisel **Microsoft hesapları** (MSA) ile kullanıcıları destekleyebilen bir **çok kiracılı** uygulamayı kaydediyorsanız. |
+    | **Kişisel Microsoft hesapları** | Yalnızca kişisel Microsoft hesapları olan kullanıcılar tarafından kullanılmak üzere bir uygulama oluşturuyorsanız bu seçeneği belirleyin. Kişisel Microsoft hesapları, Skype, Xbox, canlı ve hotmail hesaplarını içerir. |
 
-1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** altında, oluşturmakta olduğunuz uygulamanın türünü seçin: **Web** veya **Public Client (mobil & Masaüstü)**. Ardından, uygulamanız için yeniden yönlendirme URI 'sini veya yanıt URL 'sini girin.
+1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** için hiçbir şey girmeyin, sonraki bölümde bir tane yapılandıracaksınız.
+1. İlk uygulama kaydını gerçekleştirmek için **Kaydet** ' i seçin.
 
-    * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `https://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
-    * Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örn. `myapp://auth`.
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
 
-    Web uygulamaları veya yerel uygulamalar için örnekler için bkz. [Microsoft Identity platform](./index.yml)'daki hızlı başlangıçlara bakın.
+Kayıt tamamlandığında Azure portal, **uygulamanın (istemci) kimliğini**içeren uygulama kaydının **genel bakış** bölmesini görüntüler. Yalnızca *ISTEMCI kimliği*olarak da adlandırılan bu değer, uygulamanızı Microsoft Identity platformunda benzersiz şekilde tanımlar.
 
-1. Bittiğinde **Kaydet**’i seçin.
+Uygulamanızın kodu veya daha yaygın olarak uygulamanızda kullanılan bir kimlik doğrulama kitaplığı da, kimlik platformundan aldığı güvenlik belirteçlerini doğrulamak için istemci KIMLIĞINI bir boyut olarak kullanır.
 
-    ![Azure portal yeni bir uygulamanın kaydedileceği ekranı gösterir](./media/quickstart-add-azure-ad-app-preview/new-app-registration.png)
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Bir uygulama kaydının genel bakış bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
 
-Azure AD, uygulamanıza benzersiz bir uygulama veya istemci KIMLIĞI atar. Portal, uygulamanızın **genel bakış** sayfasını açar. Uygulamanıza özellik eklemek için, marka, sertifikalar ve gizlilikler, API izinleri ve daha fazlasını içeren diğer yapılandırma seçeneklerini belirleyebilirsiniz.
+## <a name="add-a-redirect-uri"></a>Yeniden yönlendirme URI 'SI Ekle
 
-![Yeni kayıtlı bir uygulamaya genel bakış sayfası örneği](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)
+Yeniden yönlendirme URI 'SI, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konumdur.
+
+Bir üretim Web uygulamasında, örneğin, yeniden yönlendirme URI 'SI genellikle uygulamanızın çalıştırıldığı ortak bir uç noktadır `https://contoso.com/auth-response` . Geliştirme sırasında, uygulamanızı yerel olarak çalıştırdığınız uç noktayı (gibi) de eklemek yaygın bir uygulamadır `https://127.0.0.1/auth-response` .
+
+[Platform ayarlarını](#configure-platform-settings)yapılandırarak kayıtlı uygulamalarınız için yeniden yönlendirme URI 'leri ekler ve değiştirirsiniz.
+
+### <a name="configure-platform-settings"></a>Platform ayarlarını yapılandırma
+
+Yeniden yönlendirme URI 'Leri dahil olmak üzere her uygulama türünün ayarları, Azure portal **Platform yapılandırmalarında** yapılandırılır. **Web** ve **tek sayfalı uygulamalar**gibi bazı platformlar, BIR yeniden yönlendirme URI 'sini el ile belirtmenizi gerektirir. Mobil ve Masaüstü gibi diğer platformlarda, diğer ayarlarını yapılandırırken sizin için oluşturulan yeniden yönlendirme URI 'Leri arasından seçim yapabilirsiniz.
+
+Hedeflediğiniz platformu veya cihazı temel alan uygulama ayarlarını yapılandırmak için:
+
+1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
+1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. **Platform yapılandırması**altında **Platform Ekle**' yi seçin.
+1. **Platformları Yapılandır**bölümünde, ayarlarını yapılandırmak için uygulama türü (Platform) kutucuğunu seçin.
+
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure portal platform yapılandırma bölmesinin ekran görüntüsü" border="false":::
+
+    | Platform | Yapılandırma ayarları |
+    | -------- | ---------------------- |
+    | **Web** | Uygulamanız için bir **yeniden yönlendirme URI 'si** girin, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konum.<br/><br/>Sunucuda çalışan standart Web uygulamaları için bu platformu seçin. |
+    | **Tek sayfalı uygulama** | Uygulamanız için bir **yeniden yönlendirme URI 'si** girin, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konum.<br/><br/>JavaScript 'te bir istemci tarafı Web uygulaması oluşturuyorsanız veya angular, Vue.js, React.js veya Blazor WebAssembly gibi bir çatı varsa bu platformu seçin. |
+    | **iOS/macOS** | *Info. plist* veya Build Settings Içinde Xcode içinde bulunan uygulama **paket kimliğini**girin.<br/><br/>Bir paket KIMLIĞI belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
+    | **Android** | *AndroidManifest.xml* dosyasında bulabileceğiniz uygulama **paketi adını**girin ve **imza karmasını**oluşturup girin.<br/><br/>Bu ayarları belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
+    | **Mobil ve Masaüstü uygulamaları** | **Önerilen yeniden yönlendirme** URI 'lerinden birini seçin veya özel bir **yeniden yönlendirme URI 'si**belirtin.<br/>Masaüstü uygulamaları için şunları yapmanızı öneririz:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için bu platformu seçin. Masaüstü uygulamaları için de bu platformu seçin. |
+1. Platform yapılandırmasını gerçekleştirmek için **Yapılandır** ' ı seçin.
+
+### <a name="redirect-uri-restrictions"></a>Yeniden yönlendirme URI kısıtlamaları
+
+Uygulama kaydına eklediğiniz yeniden yönlendirme URI 'Leri biçiminde bazı kısıtlamalar vardır. Bu kısıtlamalarla ilgili ayrıntılar için bkz. [yeniden YÖNLENDIRME URI 'si (yanıt URL 'si) kısıtlamaları ve sınırlamaları](reply-url.md).
+
+## <a name="add-credentials"></a>Kimlik bilgileri ekle
+
+Kimlik bilgileri, bir Web API 'sine erişen gizli istemci uygulamaları tarafından kullanılır. Gizli istemci örnekleri Web Apps, diğer Web API 'Leri veya hizmet ve Daemon türünde uygulamalardır. Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar.
+
+Gizli istemci uygulaması kaydınız için kimlik bilgileri olarak hem sertifikaları hem de istemci gizli dizilerini (bir dize) ekleyebilirsiniz.
+
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Uygulama kaydında sertifikalar ve gizlilikler bölmesini gösteren Azure portal ekran görüntüsü":::
+
+### <a name="add-a-certificate"></a>Sertifika ekle
+
+Bazen *ortak anahtar*olarak da bilinen sertifikalar, istemci gizliliğine göre daha yüksek bir güvence düzeyi sağladıkları için önerilen kimlik bilgisi türüdür.
+
+1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
+1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası**' nı seçin.
+1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
+1. **Add (Ekle)** seçeneğini belirleyin.
+
+### <a name="add-a-client-secret"></a>İstemci parolası ekleme
+
+*Uygulama parolası*olarak da bilinen istemci parolası, uygulamanızın kimliğini kimlik için bir sertifika yerine kullanabileceği bir dize değeridir. Bu iki kimlik bilgisi türünün kullanılması kolaylaşır ve genellikle geliştirme sırasında kullanılır, ancak bir sertifikadan daha az güvenli olarak değerlendirilir. Üretimde çalışan uygulamalarınızda sertifikalar kullanmanız gerekir.
+
+1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
+1. **Sertifikalar & parolaları**seçin  >   **yeni istemci gizli anahtarı**.
+1. İstemci gizli diziniz için bir açıklama ekleyin.
+1. Bir süre seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Gizli anahtarı** istemci uygulama kodunuzda kullanım için kaydedin-bu sayfadan ayrıldıktan sonra *hiç bir daha gösterilmez* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Web API 'Lerine erişmek için bkz [. hızlı başlangıç: Web API 'lerine erişmek için istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md)
+İstemci uygulamalarının genellikle bir Web API 'sindeki kaynaklara erişmesi gerekir. İstemci uygulamanızı Microsoft Identity platformu ile korumanın yanı sıra, Web API 'nize kapsamlı ve izin tabanlı erişim yetkisi veren platformu kullanabilirsiniz.
 
-* İzinler hakkında bilgi edinmek için bkz. [Microsoft Identity platform uç noktasındaki izinler ve onay](v2-permissions-and-consent.md).
+Web API 'niz için başka bir uygulama kaydı oluşturmak ve kapsamlarını göstermek için serideki bir sonraki hızlı başlangıca geçin.
 
-* Web API 'Lerini göstermek için bkz. [hızlı başlangıç: Web API 'leri göstermek için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md).
-
-* Desteklenen hesapları yönetmek için bkz. [hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md).
-
-* Bir uygulama oluşturmak ve işlevsellik eklemek için bkz. [Microsoft Identity platform](./index.yml)'daki hızlı başlangıçlara bakın.
-
-* Kayıtlı uygulamayı temsil eden iki Azure AD nesnesi ve aralarındaki ilişki hakkında daha fazla bilgi edinmek için bkz. [Uygulama nesneleri ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
-
-* Uygulama geliştirirken kullanmanız gereken marka yönergeleri hakkında daha fazla bilgi edinmek için bkz. [uygulamalar Için marka yönergeleri](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Web API 'sini kullanıma sunmak için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md)

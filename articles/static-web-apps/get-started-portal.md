@@ -5,22 +5,22 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752930"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434814"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik Web uygulamanızı oluşturma
 
-Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, portalı kullanarak bir Web uygulamasını Azure statik Web uygulamalarına dağıtırsınız.
+Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, Azure portal kullanarak bir Web uygulamasını Azure statik Web uygulamalarına dağıtırsınız.
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
@@ -56,38 +56,39 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
 1. _Dal_ açılan listesinden **ana öğe** seçin
-1. Derleme yapılandırmasını düzenlemek için **Sonraki: build >** düğmesini seçin
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Sonraki derleme düğmesi":::
 
 > [!NOTE]
 > Herhangi bir depo görmüyorsanız, GitHub 'da Azure statik Web Apps yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth uygulamaları > ayarlar > uygulamalar**' a gidip **Azure statik Web Apps**' yı seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
 
-1. _Derleme_ sekmesinde, tercih ettiğiniz ön uç çerçevesine özgü yapılandırma ayrıntılarını ekleyin.
+1. _Yapı ayrıntıları_ bölümünde, tercih ettiğiniz ön uç çerçevesine özgü yapılandırma ayrıntılarını ekleyin.
 
     # <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
 
-    - _Uygulama konumu_ kutusunda varsayılan değeri temizle
-    - _API konum_ kutusundan varsayılan değeri temizle
-    - _Uygulama yapıtı konum_ kutusundan varsayılan değeri temizle
+    1. _Derleme ön ayarları_ açılır listesinden **özel** ' i seçin
+    1. _Uygulama konumu_ kutusunda varsayılan değeri temizle
+    1. _API konum_ kutusundan varsayılan değeri temizle
+    1. _Uygulama yapıtı konum_ kutusunu boş bırakın
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - _Uygulama konumu_ kutusunda varsayılan değeri temizle
-    - _API konum_ kutusundan varsayılan değeri temizle
-    - _Uygulama yapıt konumu_ kutusuna **Dist/angular-temel** yazın
+    1. _Derleme ön ayarları_ açılır listesinden **angular** seçin
+    1. Varsayılan değeri _uygulama konumu_ kutusunda tut
+    1. _API konum_ kutusundan varsayılan değeri temizle
+    1. _Uygulama yapıt konumu_ kutusuna **Dist/angular-temel** yazın
 
     # <a name="react"></a>[React](#tab/react)
 
-    - _Uygulama konumu_ kutusunun varsayılan değerini temizle
-    - _API konum_ kutusundan varsayılan değeri temizle
-    - _Uygulama yapıtı konum_ kutusunda **Oluştur** yazın
+    1. _Derleme ön ayarları_ açılır listesinden **tepki** ' ı seçin
+    1. Varsayılan değeri _uygulama konumu_ kutusunda tut
+    1. _API konum_ kutusundan varsayılan değeri temizle
+    1. _Uygulama yapıtı konum_ kutusunda **Oluştur** yazın
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - _Uygulama konumu_ kutusunun varsayılan değerini temizle
-    - _API konum_ kutusundan varsayılan değeri temizle
-    - _Uygulama yapıtı konum_ kutusuna **Dist** yazın
+    1. _Derleme ön ayarları_ açılır listesinden **Vue.js** seçin
+    1. Varsayılan değeri _uygulama konumu_ kutusunda tut
+    1. _API konum_ kutusundan varsayılan değeri temizle
+    1. Varsayılan değeri _uygulama yapıtı konum_ kutusunda tut
 
     ---
 

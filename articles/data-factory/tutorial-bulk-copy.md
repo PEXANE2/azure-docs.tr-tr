@@ -1,6 +1,6 @@
 ---
 title: PowerShell ile verileri toplu halde kopyalama
-description: Azure Data Factory ve Kopyalama Etkinliği’ni kullanarak bir kaynak veri deposundan hedef veri deposuna toplu veri kopyalama hakkında bilgi edinin.
+description: Kaynak veri deposundan verileri toplu olarak hedef veri deposuna kopyalamak için kopyalama etkinliği ile Azure Data Factory kullanın.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3bdfe243301a2439178e0dd1f016a804e3f40fd7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85251523"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442777"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell kullanarak Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide **Azure SQL Veritabanından Azure SQL Veri Ambarı'na birkaç tabloyu kopyalama** işlemi gösterilmektedir. Aynı düzeni diğer kopyalama senaryolarında da uygulayabilirsiniz. Örneğin, SQL Server/Oracle’dan Azure SQL Veritabanı/Veri Ambarı/Azure Blob’a tablo kopyalama, Blob’dan Azure SQL Veritabanı tablolarına farklı yollar kopyalama.
+Bu öğreticide **, Azure SQL veritabanı 'Ndan Azure SYNAPSE Analytics 'e (eski ADıYLA SQL veri ambarı) bir dizi tablonun kopyalanması**gösterilmektedir. Aynı düzeni diğer kopyalama senaryolarında da uygulayabilirsiniz. Örneğin, SQL Server/Oracle’dan Azure SQL Veritabanı/Veri Ambarı/Azure Blob’a tablo kopyalama, Blob’dan Azure SQL Veritabanı tablolarına farklı yollar kopyalama.
 
 Yüksek düzeyde, bu öğretici aşağıdaki adımları içerir:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure Depolama bağlı hizmetleri oluşturma.
-> * Azure SQL Veritabanı ve Azure SQL Veri Ambarı veri kümeleri oluşturma.
+> * Azure SQL veritabanı, Azure SYNAPSE Analytics ve Azure depolama bağlı hizmetleri oluşturun.
+> * Azure SQL veritabanı ve Azure SYNAPSE Analytics veri kümeleri oluşturun.
 > * Kopyalanacak tabloları aramak için bir işlem hattı ve gerçek kopyalama işlemini gerçekleştirmek için başka bir işlem hattı oluşturma. 
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
@@ -37,39 +37,39 @@ Yüksek düzeyde, bu öğretici aşağıdaki adımları içerir:
 Bu öğretici Azure PowerShell kullanır. Veri fabrikası oluşturmaya yönelik diğer araçlar/SDK’lar hakkında bilgi edinmek için bkz. [Hızlı Başlangıçlar](quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="end-to-end-workflow"></a>Uçtan uca iş akışı
-Bu senaryoda, Azure SQL Veritabanında SQL Veri Ambarı’na kopyalamak istediğimiz birkaç tablo vardır. İş akışının işlem hatlarında gerçekleşen adımlarının mantıksal sırası şöyledir:
+Bu senaryoda, Azure SQL veritabanı 'nda Azure SYNAPSE Analytics 'e kopyalamak istediğimiz birkaç tablo vardır. İş akışının işlem hatlarında gerçekleşen adımlarının mantıksal sırası şöyledir:
 
 ![İş akışı](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * İlk işlem hattı, havuz veri depolarına kopyalanması gereken tabloların listesini arar.  Alternatif olarak, havuz veri deposuna kopyalanacak tüm tabloları listeleyen bir meta veri tablosu tutabilirsiniz. İşlem hattı daha sonra veritabanındaki her bir tabloda yinelenen ve veri kopyalama işlemini gerçekleştiren başka bir işlem hattını tetikler.
-* İkinci işlem hattı gerçek kopyalama işlemini gerçekleştirir. Tablo listesini bir parametre olarak alır. Listedeki her tablo için, en iyi performansı elde etmek üzere [Blob depolama ve PolyBase yoluyla hazırlanan kopyayı](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) kullanarak Azure SQL Veritabanındaki ilgili tabloyu SQL Veri Ambarında karşılık gelen tabloya kopyalayın. Bu örnekte, ilk işlem hattı tablo listesini bir parametre değeri olarak geçirir. 
+* İkinci işlem hattı gerçek kopyalama işlemini gerçekleştirir. Tablo listesini bir parametre olarak alır. Listedeki her tablo için, en iyi performans için [BLOB depolama ve PolyBase aracılığıyla hazırlanan kopyayı](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) kullanarak Azure SQL veritabanı 'ndaki belirli bir tabloyu Azure SYNAPSE Analytics 'te karşılık gelen tabloya kopyalayın. Bu örnekte, ilk işlem hattı tablo listesini bir parametre değeri olarak geçirir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 * **Azure depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
 * **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. 
-* **Azure SQL veri ambarı**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
+* **Azure SYNAPSE Analytics**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>SQL Veritabanı ve SQL Veri Ambarı’nı hazırlama
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>SQL Database ve Azure SYNAPSE Analytics 'i hazırlama
 
 **Kaynak Azure SQL Veritabanı’nı hazırlama**:
 
-[Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) MAKALESINI Izleyerek SQL veritabanı 'Nda Adventure Works lt örnek verileriyle bir veritabanı oluşturun. Bu öğretici, bu örnek veritabanındaki tüm tabloları SQL ambarına kopyalar.
+[Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) MAKALESINI Izleyerek SQL veritabanı 'Nda Adventure Works lt örnek verileriyle bir veritabanı oluşturun. Bu öğretici bu örnek veritabanındaki tüm tabloları Azure SYNAPSE Analytics 'e kopyalar.
 
-**Havuz Azure SQL Veri Ambarını hazırlama**:
+**Azure SYNAPSE Analytics 'ı hazırlama**:
 
-1. Azure SQL Veri Ambarınız yoksa, oluşturma adımları için [Azure SQL Veri Ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) makalesine bakın.
+1. Bir Azure SYNAPSE Analytics çalışma alanınız yoksa, oluşturma adımları için [Azure SYNAPSE Analytics ile çalışmaya başlama](..\synapse-analytics\get-started.md) makalesini inceleyin.
 
-2. SQL Veri Ambarında karşılık gelen tablo şemalarını oluşturun. Daha sonraki bir adımda verileri geçirmek/kopyalamak için Azure Data Factory’yi kullanın.
+2. Azure SYNAPSE Analytics 'te ilgili tablo şemaları oluşturun. Daha sonraki bir adımda verileri geçirmek/kopyalamak için Azure Data Factory’yi kullanın.
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL sunucusuna erişime yönelik Azure hizmetleri
 
-Hem SQL Veritabanı hem de SQL Veri Ambarı için Azure hizmetlerinin SQL sunucusuna erişmesine izin verin. Sunucunuz için **Azure hizmetlerine erişime Izin ver** **ayarının açık olduğundan** emin olun. Bu ayar, Data Factory hizmetinin Azure SQL Veritabanınızdan verileri okumasına ve Azure SQL Veri Ambarına veri yazmasına olanak tanır. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
+Hem SQL veritabanı hem de Azure SYNAPSE Analytics için, Azure hizmetlerinin SQL Server 'a erişmesine izin verin. Sunucunuz için **Azure hizmetlerine erişime Izin ver** **ayarının açık olduğundan** emin olun. Bu ayar Data Factory hizmetinin Azure SQL veritabanınızdaki verileri okumasını ve Azure SYNAPSE Analytics 'e veri yazmasını sağlar. Bu ayarı doğrulamak ve etkinleştirmek için aşağıdaki adımları uygulayın:
 
 1. Soldaki **Tüm hizmetler**’e ve sonra **SQL sunucuları**’na tıklayın.
 2. Sunucunuzu seçin ve **AYARLAR** altındaki **Güvenlik Duvarı**’na tıklayın.
@@ -153,7 +153,7 @@ Bu öğreticide sırasıyla kaynak, havuz ve hazırlama blob’u için veri depo
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>Havuz Azure SQL Veri Ambarı bağlı hizmetini oluşturma
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>Azure SYNAPSE Analytics bağlı hizmeti havuzunu oluşturma
 
 1. **C:\ADFv2TutorialBulkCopy** klasöründe aşağıdaki içeriğe sahip **AzureSqlDWLinkedService.json** adlı bir JSON dosyası oluşturun:
 
@@ -263,7 +263,7 @@ Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri k
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Havuz SQL Veri Ambarı için veri kümesi oluşturma
+### <a name="create-a-dataset-for-sink-synapse-analytics"></a>Havuz SYNAPSE analizi için veri kümesi oluşturma
 
 1. **C:\ADFv2TutorialBulkCopy** klasöründe aşağıdaki içeriğe sahip **AzureSqlDWDataset.json** adlı bir JSON dosyası oluşturun: "tableName" bir parametre olarak ayarlanır; daha sonra bu veri kümesine başvuran kopyalama etkinliği gerçek değeri veri kümesine geçirir.
 
@@ -313,7 +313,7 @@ Bu öğreticide, iki işlem hattı oluşturacaksınız:
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>"IterateAndCopySQLTables" işlem hattını oluşturma
 
-Bu işlem hattı parametre olarak tablo listesini alır. Listedeki her bir tablo için verileri hazırlanmış kopya ve PolyBase kullanarak Azure SQL Veritabanından Azure SQL Veri Ambarına kopyalar.
+Bu işlem hattı parametre olarak tablo listesini alır. Listedeki her tablo için, Azure SQL veritabanındaki tablodaki verileri, hazırlanan Copy ve PolyBase kullanarak Azure SYNAPSE Analytics 'e kopyalar.
 
 1. **C:\ADFv2TutorialBulkCopy** klasöründe aşağıdaki içeriğe sahip **IterateAndCopySQLTables.json** adlı bir JSON dosyası oluşturun:
 
@@ -573,15 +573,15 @@ Bu işlem hattı iki adım gerçekleştirir:
     $result2
     ```
 
-3. Havuz Azure SQL Veri Ambarınıza bağlanın ve verilerin Azure SQL Veritabanından düzgün şekilde kopyalandığını onaylayın.
+3. Havuz Azure SYNAPSE Analytics 'e bağlanın ve verilerin Azure SQL veritabanından düzgün şekilde kopyalandığını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide aşağıdaki adımları gerçekleştirdiniz: 
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure Depolama bağlı hizmetleri oluşturma.
-> * Azure SQL Veritabanı ve Azure SQL Veri Ambarı veri kümeleri oluşturma.
+> * Azure SQL veritabanı, Azure SYNAPSE Analytics ve Azure depolama bağlı hizmetleri oluşturun.
+> * Azure SQL veritabanı ve Azure SYNAPSE Analytics veri kümeleri oluşturun.
 > * Kopyalanacak tabloları aramak için bir işlem hattı ve gerçek kopyalama işlemini gerçekleştirmek için başka bir işlem hattı oluşturma. 
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.

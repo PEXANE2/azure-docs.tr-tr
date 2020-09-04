@@ -13,21 +13,21 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267367"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441791"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Azure portal sorgu düzenleyicisini kullanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı 'nda veri ambarı içindeki veritabanınıza SQL sorguları çalıştırmak için Azure portal bir araçtır. 
+Sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'teki veri ambarı 'nda veritabanınıza SQL sorguları çalıştırmak için Azure portal bir araçtır. 
 
 Bu hızlı başlangıçta, bir veritabanında Transact-SQL (T-SQL) sorgularını çalıştırmak için sorgu düzenleyicisini kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak AdventureWorksLT örnek veritabanı gerektirir. SQL veritabanında AdventureWorksLT örnek veritabanının çalışan bir kopyasına sahip değilseniz aşağıdaki hızlı başlangıçta bir tane oluşturulur:
 
@@ -139,7 +139,7 @@ Tabloya yeni bir ürün eklemek için aşağıdaki [Insert](/sql/t-sql/statement
    ```
 
 
-2. Tabloya yeni bir satır eklemek için **Çalıştır** ' ı seçin `Product` . **İletiler** bölmesi **sorgu başarılı: etkilenen satırlar: 1 ' i**görüntüler.
+2. Tabloya yeni bir satır eklemek için **Çalıştır**  ' ı seçin `Product` . **İletiler** bölmesi **sorgu başarılı: etkilenen satırlar: 1 ' i**görüntüler.
 
 
 ### <a name="run-an-update-query"></a>GÜNCELLEŞTIRME sorgusu çalıştırma

@@ -13,14 +13,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504874"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433991"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -56,7 +56,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 
 Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
 
-1. **Visual Studio**’yu başlatın.
+1. **Visual Studio 'yu**başlatın.
 2. Başlangıç penceresinde **Yeni proje**  >  **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
 3. **Proje adı**alanına **ADFv2QuickStart**girin.
 4. Projeyi oluşturmak için **Oluştur**'u seçin.

@@ -4,12 +4,12 @@ description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hiz
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997294"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441536"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -238,7 +238,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 PowerShell’i **SetupEntryPoint** noktasından çalıştırmak için PowerShell.exe dosyasını bir PowerShell dosyasını işaret eden toplu iş dosyasında çalıştırabilirsiniz. İlk olarak, toplu iş dosyasını hizmet projesine ekleyin.  Çözüm Gezgini’nde **VotingWeb**’e sağ tıklayıp **Ekle**->**Yeni Öğe**’yi seçin ve "Setup.bat" adlı yeni bir dosya ekleyin.  *Setup.bat* dosyasını düzenleyin ve aşağıdaki komutu ekleyin:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
