@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852489"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458570"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma
 
@@ -81,7 +81,7 @@ Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları][Service Bu
 Queue Client, `get_receiver` **Servicebusclient** nesnesindeki yöntemini kullanarak bir kuyruktan ileti alır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve kuyruktan bir ileti alır `taskqueue` . `<connectionstring>`Service Bus birincil bağlantı dizesi değeri ile değiştirin. 
 
 ```python
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import QueueClient
 
 # Create the QueueClient
 queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")

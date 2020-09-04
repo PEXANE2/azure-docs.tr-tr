@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 53773d7c616edec067e1ed1778b7ce6b500ee936
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401087"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462624"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak coğrafi trafik yönlendirme yöntemini yapılandırma
 
@@ -39,8 +39,7 @@ Coğrafi trafik yönlendirme yöntemi, isteklerin gerçekleştiği coğrafi konu
 
 1. Portalın arama çubuğunda oluşturduğunuz Traffic Manager profili adını arayın ve gösterilen sonuca tıklayın.
 2. Traffic Manager **Ayarlar**  ->  **uç noktalarına** gidin.
-3. Ekleme **uç noktasını**göstermek için **Ekle** ' ye tıklayın.
-3. **Ekle** ' ye tıklayın ve görüntülenen **uç nokta Ekle** ' ye tıkladıktan sonra aşağıdaki gibi tamamlanır:
+3. **Ekle** ' ye tıklayın ve görüntülenen **uç nokta Ekle** bölmesinde aşağıdaki gibi tamamlanır:
 4. Eklediğiniz uç noktanın türüne bağlı olarak **tür** ' ı seçin. Üretimde kullanılan coğrafi yönlendirme profilleri için, birden fazla uç noktaya sahip bir alt profil içeren iç içe geçmiş uç nokta türlerini kullanmanızı önemle öneririz. Daha fazla ayrıntı için bkz. [coğrafi trafik yönlendirme yöntemleri hakkında SSS](traffic-manager-FAQs.md).
 5. Bu uç noktayı tanımak istediğiniz bir **Ad** belirtin.
 6. Bu sayfadaki bazı alanlar, eklediğiniz uç noktanın türüne bağlıdır:

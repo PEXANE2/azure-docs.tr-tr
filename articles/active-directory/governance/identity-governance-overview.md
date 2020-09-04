@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783306"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460823"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -68,9 +68,9 @@ Geçmişte, ayrıcalıklı erişim diğer satıcılar tarafından kimlik yöneti
 
 ![Ayrıcalıklı erişim yaşam döngüsü](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , Azure AD, Azure ve diğer Microsoft çevrimiçi hizmetleri arasında kaynaklara yönelik erişim haklarının güvenliğini sağlamaya yönelik ek denetimler sağlar.  Azure AD PıM tarafından sağlanan tam zamanında erişim ve rol değişikliği uyarısı özellikleri, Multi-Factor Authentication ve koşullu erişim 'in yanı sıra, şirketinizin kaynaklarını (Dizin, Office 365 ve Azure Kaynak rolleri) güvenli hale getirmeye yardımcı olmak için kapsamlı bir idare denetimleri kümesi sağlar. Diğer erişim formlarında olduğu gibi, kuruluşlar yönetici rollerindeki tüm kullanıcılar için yinelenen erişim yeniden sertifika yapılandırmak üzere erişim gözden geçirmeleri kullanabilir.
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , Azure AD, Azure ve diğer Microsoft çevrimiçi hizmetleri arasında kaynaklara yönelik erişim haklarının güvenliğini sağlamaya yönelik ek denetimler sağlar.  Azure AD PıM tarafından sağlanan tam zamanında erişim ve rol değişikliği uyarısı özellikleri, Multi-Factor Authentication ve koşullu erişim 'in yanı sıra, şirketinizin kaynaklarını (Dizin, Microsoft 365 ve Azure Kaynak rolleri) güvenli hale getirmeye yardımcı olmak için kapsamlı bir idare denetimleri kümesi sağlar. Diğer erişim formlarında olduğu gibi, kuruluşlar yönetici rollerindeki tüm kullanıcılar için yinelenen erişim yeniden sertifika yapılandırmak üzere erişim gözden geçirmeleri kullanabilir.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesine göz atın.
 
@@ -88,7 +88,7 @@ Her müşteri için kusursuz bir çözüm veya öneri olmasa da, aşağıdaki ya
 
 Kimlik yönetimi 'nde Yönetim görevlerini gerçekleştirmek için en az ayrıcalıklı rolü kullanmak en iyi uygulamadır. Bu görevleri gerçekleştirmek için gerektiğinde bir rolü etkinleştirmek üzere Azure AD PıM kullanmanızı öneririz. Aşağıda, kimlik Idare özelliklerini yapılandırmak için en az ayrıcalıklı dizin rolü verilmiştir:
 
-| Özellik | En az ayrıcalıklı rol |
+| Öne çıkan özelliği | En az ayrıcalıklı rol |
 | ------- | --------------------- |
 | Yetkilendirme yönetimi | Kullanıcı Yöneticisi (genel yönetici gerektiren kataloglara SharePoint Online siteleri ekleme hariç) |
 | Erişim gözden geçirmeleri | Kullanıcı Yöneticisi (ayrıcalıklı rol yöneticisi gerektiren Azure veya Azure AD rolleri için erişim gözden geçirmeleri hariç) |

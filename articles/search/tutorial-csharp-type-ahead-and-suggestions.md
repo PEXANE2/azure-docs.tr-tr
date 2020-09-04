@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1afeca4f627236c5172dd07a44751015c16d2f58
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998450"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462038"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
@@ -27,11 +27,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Otomatik tamamlama Ekle
 > * Otomatik tamamlamayı ve önerileri birleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, bir serinin parçasıdır ve C# öğreticisinde oluşturulan sayfalama projesindeki derlemeler [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md).
 
-Alternatif olarak, bu özel öğreticiye yönelik çözümü indirebilir ve çalıştırabilirsiniz: [3-Add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
+Alternatif olarak, bu özel öğreticiye yönelik çözümü indirebilir ve çalıştırabilirsiniz: [3-Add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Öneri ekleme
 

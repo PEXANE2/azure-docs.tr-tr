@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145901"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462471"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -69,7 +69,7 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 
 ## <a name="build-ml-models-in-the-studio"></a>Studio 'da ML modelleri derleme
 
-[Azure Machine Learning Studio](https://www.ml.azure.com) , model eğitimi, dağıtımı ve varlık yönetimi için düşük kod ve kod içermeyen seçenekler için Azure Machine Learning bir Web portalıdır. Studio, sorunsuz bir deneyim için Azure Machine Learning SDK ile tümleşir. Daha fazla bilgi için bkz. [Azure Machine Learning Studio nedir?](overview-what-is-machine-learning-studio.md).
+[Azure Machine Learning Studio](https://studio.azureml.net) , model eğitimi, dağıtımı ve varlık yönetimi için düşük kod ve kod içermeyen seçenekler için Azure Machine Learning bir Web portalıdır. Studio, sorunsuz bir deneyim için Azure Machine Learning SDK ile tümleşir. Daha fazla bilgi için bkz. [Azure Machine Learning Studio nedir?](overview-what-is-machine-learning-studio.md).
 
 + **Azure Machine Learning Tasarımcısı (Önizleme)**
 
@@ -86,7 +86,7 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 
 + **Ve çok daha fazlası...**
 
-  [Ml.Azure.com](https://www.ml.azure.com)adresinde Azure Machine Learning Studio adresini ziyaret edin. 
+  [Ml.Azure.com](https://studio.azureml.net)adresinde Azure Machine Learning Studio adresini ziyaret edin. 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & yaşam döngüsü yönetimini dağıtma

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: fd2742744ef4f2f616e772c8f387887e113b132a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88862539"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462675"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure IoT Hub ve depolama hesabı dağıtma
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, Azure depolama 'ya iletileri yönlendiren bir IoT Hub
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -32,8 +32,8 @@ Bu hızlı başlangıçta kullanılan şablon `101-iothub-auto-route-messages` [
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır: 
-* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.iothubs)
-* [Microsoft. Storage/](/azure/templates/microsoft.storage)
+* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
+* [Microsoft. Storage/](/azure/templates/microsoft.storage/allversions)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>Şablonu dağıtma ve örnek uygulamayı çalıştırma
 
@@ -46,7 +46,7 @@ Bu bölümde, iletileri göndermek için şablonu dağıtma, sanal cihaz oluştu
 
     [![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. [IoT C# örneklerini](https://Azure-Samples/azure-iot-samples-csharp)indirip sıkıştırmasını açın.
+1. [IoT C# örneklerini](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)indirip sıkıştırmasını açın.
 
 1. Bir komut penceresi açın ve IoT C# örneklerinin sıkıştırunı geri yüklediğiniz klasöre gidin. ARM-Read-Write. csproj dosyasını içeren klasörü bulun. Bu komut penceresinde ortam değişkenlerini oluşturursunuz. Anahtarları almak için [Azure portal] (] içinde oturum açın https://portal.azure.com . **Kaynak grupları** ' nı seçin ve ardından bu hızlı başlangıç için kullanılan kaynak grubunu seçin.
 

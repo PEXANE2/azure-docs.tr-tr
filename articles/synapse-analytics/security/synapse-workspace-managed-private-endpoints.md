@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070101"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459548"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>SYNAPSE yönetilen özel uç noktaları (Önizleme)
 
@@ -23,7 +23,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te yönetilen özel uç noktalar açıklan
 
 Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı kurmak Microsoft Azure Sanal Ağ yönetilen çalışma alanında oluşturulan özel uç noktalardır. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir.
 
-Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetlerine (Azure depolama, Azure Cosmos DB ve Azure SQL veri ambarı gibi) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine Azure sanal ağınızdan güvenli bir şekilde erişmenizi sağlar.
+Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetlerine (Azure depolama ve Azure Cosmos DB gibi) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine Azure sanal ağınızdan güvenli bir şekilde erişmenizi sağlar.
 
 Özel bir bağlantı kullandığınızda, sanal ağınız ile çalışma alanınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
 

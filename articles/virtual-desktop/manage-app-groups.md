@@ -3,15 +3,15 @@ title: Windows sanal masaüstü portalı için uygulama gruplarını yönetme-Az
 description: Azure portal ile Windows sanal masaüstü uygulama gruplarını yönetme.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226735"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461436"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
 
@@ -121,6 +121,9 @@ Dağıtım işlemi sizin için aşağıdaki işlemleri yapar:
 - Seçtiğiniz kullanıcılara ve Kullanıcı gruplarına yayınlanan uygulama grubunu yayımlayın.
 - Bunu yapmayı seçerseniz, uygulama grubunu kaydedin.
 - Daha sonra indirileceği ve kaydedebileceğiniz yapılandırmanıza göre Azure Resource Manager şablonuna yönelik bir bağlantı oluşturun.
+
+>[!IMPORTANT]
+>Her Azure Active Directory kiracı için yalnızca 50 uygulama grubu oluşturabilirsiniz. Kullanıcılarımıza ait akışların alınması için hizmet sınırlamaları nedeniyle bu limiti ekledik. Bu sınır, Windows sanal masaüstü 'nde (klasik) oluşturulan uygulama grupları için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

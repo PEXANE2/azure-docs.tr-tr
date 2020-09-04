@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008684"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458341"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
@@ -197,7 +197,7 @@ Bu bölümde, tablo hizmetinde önemli performans iyileştirmeleri yapmak için 
 
 Storage hizmeti sürüm 2013-08-15 ' den başlayarak tablo hizmeti, tablo verilerini aktarmak için XML tabanlı AtomPub biçimi yerine JSON kullanımını destekler. JSON kullanımı, yük boyutunu %75 kadar azaltabilir ve uygulamanızın performansını önemli ölçüde iyileştirebilir.
 
-Daha fazla bilgi için bkz. Gönderi [Microsoft Azure tabloları:](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) [tablo HIZMETI işlemleri Için JSON ve yük biçimine](https://msdn.microsoft.com/library/azure/dn535600.aspx)giriş.
+Daha fazla bilgi için bkz. Gönderi [Microsoft Azure tabloları:](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) [tablo HIZMETI işlemleri Için JSON ve yük biçimine](https://msdn.microsoft.com/library/azure/dn535600.aspx)giriş.
 
 ### <a name="disable-nagle"></a>Nagle 'ı devre dışı bırak
 

@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 60321363a7506d03ebf4aeffebac56305e231eb6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436230"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462182"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -84,9 +84,10 @@ Uygulama için kullanılan çalışma zamanı yığınına göre aşağıda aç�
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Java Spring Boot ve Spring bulut tabanlı uygulamaları dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) şablonu kullanarak Azure 'da tümüyle desteklenen bir OpenJDK tabanlı çalışma zamanı sağlayan bir Linux sanal makinesi oluşturun.
-- Tomcat sunucusunda Java servi 'leri dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) Azure şablonunu kullanarak Java 8 Ile BIR Linux VM oluşturun ve [bir hizmet olarak Tomcat 9. x 'i yapılandırın](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) + jpatron 14 
+- Java Spring Boot ve Spring bulut tabanlı uygulamaları dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) şablonu kullanarak Azure 'da tümüyle desteklenen bir OpenJDK tabanlı çalışma zamanı sağlayan bir Linux sanal makinesi oluşturun.
+- Tomcat sunucusunda Java servi 'leri dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) Azure şablonunu kullanarak Java 8 Ile BIR Linux VM oluşturun ve [bir hizmet olarak Tomcat 9. x 'i yapılandırın](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) + jpatron 14 
+
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 

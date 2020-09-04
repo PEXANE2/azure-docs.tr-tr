@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262993"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461876"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge için ağı yapılandırma
 
@@ -104,7 +104,11 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
     
 3. **Kubernetes düğüm IP 'leri**atayın. Bu statik IP adresleri, işlem sanal makinesi içindir. 
 
-    *N*düğümlü bir cihaz için, başlangıç ve bitiş IP adreslerini kullanan işlem VM 'si için en az *n + 1* IPv4 adresi (veya daha fazla) bulunur. Verilen Azure Stack Edge 1 düğümlü bir cihazdır, en az 2 bitişik IPv4 adresi sağlanır. 
+    *N*düğümlü bir cihaz için, başlangıç ve bitiş IP adreslerini kullanan işlem VM 'si için en az *n + 1* IPv4 adresi (veya daha fazla) bulunur. Verilen Azure Stack Edge 1 düğümlü bir cihazdır, en az 2 bitişik IPv4 adresi sağlanır.
+
+    > [!IMPORTANT]
+    > Azure Stack Edge üzerinde Kubernetes, pod için 172.27.0.0/16 alt ağını ve hizmet için 172.28.0.0/16 alt ağını kullanır. Bunların ağınızda kullanımda olmadığından emin olun. Bu alt ağlar ağınızda zaten kullanılıyorsa, bu alt ağları, `Set-HcsKubeClusterNetworkInfo` cihazın PowerShell arabiriminden cmdlet 'ini çalıştırarak değiştirebilirsiniz. Daha fazla bilgi için bkz. [Kubernetes Pod ve hizmet alt ağlarını değiştirme](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
+
 
 4. **Kubernetes dış hizmet IP 'leri**atayın. Bunlar ayrıca Yük Dengeleme IP adresleridir. Bu bitişik IP adresleri, Kubernetes kümesi dışında kullanıma sunmak istediğiniz hizmetlere yöneliktir ve sunulan hizmet sayısına bağlı olarak statik IP aralığını belirlersiniz. 
     

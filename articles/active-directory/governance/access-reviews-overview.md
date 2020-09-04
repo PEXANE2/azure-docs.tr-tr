@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c8f3b9933e09e4c31316037445643e83a2e9c07
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783680"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461009"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -45,7 +45,7 @@ Azure AD, kuruluşunuzun içinden ve dış kullanıcılarla işbirliği yapmanı
 ## <a name="when-should-you-use-access-reviews"></a>Erişim gözden geçirmeleri ne zaman kullanılmalıdır?
 
 - **Ayrıcalıklı rollerde çok fazla sayıda Kullanıcı:** Kaç kullanıcının yönetim erişimi olduğunu, bunların kaç tane genel yönetici olduğunu ve bir yönetim görevi için atandıktan sonra kaldırılmayan davet konukları veya iş ortakları olduğunu kontrol etmek iyi bir fikirdir. Genel Yöneticiler gibi [Azure AD rollerinde](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) rol atama kullanıcılarını veya [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) deneyiminde Kullanıcı erişimi Yöneticisi gibi [Azure kaynakları rollerini](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) yeniden ayarlayabilirsiniz.
-- **Otomasyon mümkün olmadığında:** Güvenlik gruplarında veya Office 365 gruplarında dinamik üyelik için kurallar oluşturabilirsiniz, ancak HR verileri Azure AD 'de değilse veya kullanıcıların değiştirme işlerini eğitmek üzere gruptan ayrıldıktan sonra hala erişime ihtiyacı varsa ne olur? Daha sonra, hala erişime ihtiyacı olan kişilerin erişmeye devam ettiğinden emin olmak için bu grupta bir gözden geçirme oluşturabilirsiniz.
+- **Otomasyon mümkün olmadığında:** Güvenlik gruplarında veya Microsoft 365 gruplarında dinamik üyelik için kurallar oluşturabilirsiniz, ancak HR verileri Azure AD 'de değilse veya kullanıcıların değiştirme işlerini eğitmek üzere gruptan ayrıldıktan sonra hala erişime ihtiyacı varsa ne olur? Daha sonra, hala erişime ihtiyacı olan kişilerin erişmeye devam ettiğinden emin olmak için bu grupta bir gözden geçirme oluşturabilirsiniz.
 - **Yeni bir amaç için bir grup kullanıldığında:** Azure AD ile eşitlenecek bir grubunuz varsa veya satış ekibi grubundaki herkes için uygulama Salesforce 'ı etkinleştirmeyi planlıyorsanız, Grup sahibinden farklı bir risk içeriğinde kullanılan gruptan önce grup üyeliğini gözden geçirmesini istemek yararlı olacaktır.
 - **İş açısından kritik veri erişimi:** belirli kaynaklar IÇIN, BT dışındaki kişilerin düzenli olarak oturumu açmasını ve denetim amacıyla erişmesi gereken nedenleri hakkında bir gerekçe vermesini istemek gerekebilir.
 - **Bir ilkenin özel durum listesini korumak için:** İdeal bir dünyada, tüm kullanıcılar kuruluşunuzun kaynaklarına erişimi güvenli hale getirmek için erişim ilkelerini takip edecektir. Ancak bazen özel durumlar oluşturmanız gereken iş durumları vardır. BT Yöneticisi olarak, bu görevi yönetebilir, ilke özel durumlarının fazla ilerlemesinin önüne kaçabilir ve bu özel durumların düzenli olarak inceleneceğini prova ile Denetçiler sağlayabilirsiniz.
