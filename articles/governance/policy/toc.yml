@@ -5,7 +5,7 @@
     - name: Azure İlkesi nedir?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: İlke atama - Portal
@@ -93,6 +93,9 @@
     - name: Yeni ilkenin etkisini değerlendirme
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Önerilen ilkeler
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: Mevzuata Uyumluluğu
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md

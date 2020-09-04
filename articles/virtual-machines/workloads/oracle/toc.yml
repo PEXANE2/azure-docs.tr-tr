@@ -28,8 +28,6 @@
       href: oracle-reference-architecture.md
     - name: Oracle DB mimarisi hazırlama
       href: oracle-design.md
-    - name: Oracle DB için yedekleme stratejisi
-      href: oracle-backup-recovery.md
     - name: Oracle olağanüstü durum kurtarma seçenekleri
       href: oracle-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları

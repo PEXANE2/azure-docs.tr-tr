@@ -1,10 +1,10 @@
 - name: IoT Hub Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure IoT Hub nedir?
       href: about-iot-hub.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Telemetri gönderme
@@ -173,6 +173,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Öneriler
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Baştan sona güvenlik
@@ -418,7 +420,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

@@ -219,9 +219,10 @@
     - name: İşlem kaynakları oluşturma
       items:
         - name: Stüdyoyu kullanma
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-studio.md
         - name: Python SDK’yı kullanma
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
           href: how-to-create-attach-compute-sdk.md
     - name: Ortamınızı ayarlama
       items:
@@ -477,9 +478,6 @@
         - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: Makine öğrenmesi işlem hatlarını yineleme ve geliştirme
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: CI/CD için Azure Pipelines
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context

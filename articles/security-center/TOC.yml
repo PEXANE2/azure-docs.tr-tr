@@ -1,6 +1,6 @@
 - name: Güvenlik Merkezi belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Güvenlik Merkezi hakkında
@@ -130,6 +130,7 @@
         - name: Uyarıların yanıtlarını otomatikleştirme
           href: workflow-automation.md
         - name: Uyarıları dışarı aktarma
+          displayName: continuous
           href: continuous-export.md
     - name: Güvenliği geliştirmek için güvenlik önerilerini kullanma
       items:
@@ -150,6 +151,7 @@
         - name: Önerilere verilen yanıtları otomatikleştirme
           href: workflow-automation.md
         - name: Önerileri dışarı aktarma
+          displayName: continuous
           href: continuous-export.md
     - name: Varlık envanteriyle kaynaklarınızı yönetme
       href: asset-inventory.md

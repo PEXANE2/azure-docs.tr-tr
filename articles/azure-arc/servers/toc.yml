@@ -1,6 +1,6 @@
 - name: Azure Arc özellikli sunucular için belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Arc özellikli sunucular hakkında
       href: overview.md
@@ -23,6 +23,8 @@
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: Güvenliğe genel bakış
+          href: security-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Arc’a bağlanma
