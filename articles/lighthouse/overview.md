@@ -3,16 +3,16 @@ title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660742"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488822"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
-Azure Athouse, platformlar ve kiracılar arasında daha yüksek otomasyon, ölçeklenebilirlik ve geliştirilmiş idare sağlayan çoklu ve çok kiracılı yönetimi sağlar. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
+Azure Lighthouse, kiracılar arası ve çok kiracılı yönetime olanak tanır. Bu sayede kaynaklar ve kiracılar daha yüksek otomasyon, ölçeklenebilirlik ve gelişmiş idare elde edilir. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
 
 ![Azure açık kullanım için genel bakış Diyagramı](media/azure-lighthouse-overview.jpg)
 
@@ -22,7 +22,7 @@ Azure Kathouse, yönetilen Hizmetleri öngörülebilir ve verimli bir şekilde o
 
 - **Ölçekteki yönetim**: müşteri kaynaklarını yönetmeye yönelik müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir. Mevcut API 'Ler, yönetim araçları ve iş akışları, bulundukları bölgeler ne olursa olsun, temsilcili kaynaklarla kullanılabilir.
 - **Müşteriler Için daha fazla görünürlük ve duyarlık**: MÜŞTERILER, IP 'niz korunurken, erişimi tamamen kaldırma özelliği de dahil olmak üzere, eylemleriniz üzerinde daha fazla görünürlük ve yönetim için temsilci seçtikleri kapsam üzerinde tam denetim sahibi olacaktır.
-- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Azure ışıklı kullanımı, mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](../cost-management-billing/manage/link-partner-id.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
+- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Azure Althouse, mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](./how-to/partner-earned-credit.md)müşteri görevlendirmelerinizi izleyebilir ve iş ortağının kazanıldığı krediyi elde edebilirsiniz.
 
 Azure kaynaklarını yönetmek için Azure açık Thouse kullanımıyla ilişkili ek maliyet yoktur. Tüm Azure müşterileri veya iş ortakları, Azure Use 'ı kullanabilir.
 

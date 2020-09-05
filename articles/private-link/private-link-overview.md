@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/18/2020
+ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 425290f44fc5f8bc761dc80b72aa2421e5c6d194
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 94d4a035c95b8eb2a567c71ec2172f55881e8099
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460669"
+ms.locfileid: "89488431"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -43,8 +43,11 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Desteklenen hizmetler  |Kullanılabilir bölgeler | Diğer konular | Durum  |
 |:-------------------|:-----------------|:----------------|:--------|
 |Standart Azure Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri  | Standart Load Balancer destekleniyor | GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Storage       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
-| Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
+| Azure Blob depolama (Data Lake Storage 2. dahil)       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
+| Azure Dosyaları | Tüm ortak bölgeler      | |   GA <br/> [Daha fazla bilgi](/azure/storage/files/storage-files-networking-endpoints)   |
+| Azure Dosya Eşitleme | Tüm ortak bölgeler      | |   GA <br/> [Daha fazla bilgi](/azure/storage/files/storage-sync-files-networking-endpoints)   |
+| Azure Kuyruk Depolama       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
+| Azure Tablo depolama       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Veritabanı         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri      |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir | GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure Synapse Analytics (eski adı SQL Veri Ambarı)| Tüm ortak bölgeler <br/> Tüm kamu bölgeleri |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir |GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri | |GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
@@ -67,7 +70,6 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 | Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |  | Önizleme   <br/> [Daha fazla bilgi](https://aka.ms/asrs/privatelink)   |
 | Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure Dosya Eşitleme | Tüm ortak bölgeler      | |   GA   <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
 | Azure Batch | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD, BATı ORTA ABD, FRANSA ORTA, DOĞU ASYA, UK GÜNEY, ABD DEVLETI VIRGINIA, US GOV ARIZONA  | | GA <br/> [Daha fazla bilgi](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 En güncel bildirimler için, [Azure özel bağlantı güncelleştirmeleri sayfasına](https://azure.microsoft.com/updates/?product=private-link)bakın.

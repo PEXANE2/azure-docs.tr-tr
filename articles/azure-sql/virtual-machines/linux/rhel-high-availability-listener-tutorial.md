@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84343776"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485813"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Tamamlanan [öğretici: Azure 'DA RHEL sanal makinelerinde SQL Server için kull
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure portal yük dengeleyiciyi oluşturun
 
-Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availability-group-load-balancer-portal-configure.md) makalesinin [Azure Portal bölümünde yük dengeleyiciyi oluşturma ve yapılandırma](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal) üzerinden 1 ile 4 arasındaki adımları adım adım ele alır.
+Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availability-group-load-balancer-portal-configure.md) makalesinin [Azure Portal bölümünde yük dengeleyiciyi oluşturma ve yapılandırma](../windows/availability-group-load-balancer-portal-configure.md#create--configure-load-balancer) üzerinden 1 ile 4 arasındaki adımları adım adım ele alır.
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
@@ -104,7 +104,7 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
    | **Aralık** |*5* |
    | **İyi durumda olmayan durum eşiği** |*2* |
 
-4.  **Tamam** düğmesine tıklayın. 
+4.  **Tamam**’a tıklayın. 
 
 5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
@@ -138,7 +138,7 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
 
    :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
 
-4. **Tamam** düğmesine tıklayın. 
+4. **Tamam**’a tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.
@@ -176,7 +176,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıkışı görmeniz gerekir:
+    Aşağıdaki çıktıyı görmeniz gerekir:
 
     ```output
     Location Constraints:

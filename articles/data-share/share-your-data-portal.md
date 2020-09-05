@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269650"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489944"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure veri paylaşımından kullanarak veri paylaşma
 
@@ -67,7 +67,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
    ![Paylaşımınıza veri kümeleri ekleme](./media/datasets.png "Veri kümeleri")
 
-1. Eklemek istediğiniz veri kümesi türünü seçin. Önceki adımda seçtiğiniz paylaşma türüne (anlık görüntü veya yerinde) bağlı olarak farklı bir veri kümesi türleri listesi görürsünüz. Bir Azure SQL veritabanı veya Azure SQL veri ambarı 'ndan paylaşıyorsanız bazı SQL kimlik bilgileri istenir. Önkoşulların bir parçası olarak oluşturduğunuz kullanıcıyı kullanarak kimlik doğrulaması yapın.
+1. Eklemek istediğiniz veri kümesi türünü seçin. Önceki adımda seçtiğiniz paylaşma türüne (anlık görüntü veya yerinde) bağlı olarak farklı bir veri kümesi türleri listesi görürsünüz. Bir Azure SQL veritabanından veya Azure SYNAPSE Analytics 'ten paylaşıyorsanız bazı SQL kimlik bilgileri istenir. Önkoşulların bir parçası olarak oluşturduğunuz kullanıcıyı kullanarak kimlik doğrulaması yapın.
 
    ![Adddataset 'ler](./media/add-datasets.png "Veri kümesi Ekle")    
 

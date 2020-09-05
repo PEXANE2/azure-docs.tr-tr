@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378992"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481384"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault kimlik doğrulaması
 
 Azure Key Vault, gizli dizileri depolamanıza ve bunların dağıtımını, uygulamalarda kimlik bilgilerinin depolanması gereksinimini ortadan kaldıran merkezi bir güvenli bulut deposunda depolamanızı sağlar. Uygulamalar, bu gizli dizileri erişmek için çalışma zamanında yalnızca Key Vault kimlik doğrulaması gerektirir.
 
-## <a name="app-identity-and-service-principals"></a>Uygulama kimliği ve hizmet sorumluları
+## <a name="app-identity-and-security-principals"></a>Uygulama kimliği ve güvenlik sorumluları
 
 Key Vault kimlik doğrulaması, herhangi bir **güvenlik sorumlusunun**kimliğini kimlik doğrulamasından getirmekten sorumlu olan [Azure ACTIVE DIRECTORY (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis)ile birlikte çalışıyor.
 
@@ -40,7 +40,7 @@ Uygulamalar için hizmet sorumlusu almanın iki yolu vardır:
 
 * Yönetilen kimliği kullandıysanız, bunun yerine uygulamayı Azure AD kiracınızla **kaydedin** . [hızlı başlangıç: Azure Identity platformu ile uygulama kaydetme](/azure/active-directory/develop/quickstart-register-app). Kayıt Ayrıca, tüm kiracıların genelinde uygulamayı tanımlayan ikinci bir uygulama nesnesi oluşturur.
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>Hizmet sorumlusunu Key Vault erişim yetkisi verme
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Güvenlik sorumlusunu Key Vault erişim yetkisi verme
 
 Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
 

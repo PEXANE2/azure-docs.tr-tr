@@ -1,18 +1,18 @@
 ---
 title: MySQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 description: MySQL için Azure veritabanı 'nda kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a75627c8872a125d8a6fce6d9e93033fe2dbcf9a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 295791e247b742945f46d8ed166df420ec8a2dd3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379274"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489349"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 
