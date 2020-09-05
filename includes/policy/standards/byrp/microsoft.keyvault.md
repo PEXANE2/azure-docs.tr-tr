@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5bec718de3f4f4b0ee78bacf9fc41cbedb8e71df
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 84a3f02935b64ccf7a672f19925cc6434d509ece
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379262"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483906"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -34,4 +34,18 @@ Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [cıs Microsoft Az
 |---|---|---|---|---|
 |Günlüğe Kaydetme ve İzleme |5.1.7 |Azure Anahtar Kasası günlüğü 'nün ' Enabled ' olduğundan emin olun |[Key Vault tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |Güvenlik Hakkında Diğer Önemli Noktalar |8.4 |Anahtar kasasının kurtarılabilir olduğundan emin olun |[Key Vault nesneler kurtarılabilir olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HıPAA HITRUST 9,2
+
+Tüm Azure hizmetleri için kullanılabilen Azure Ilkesinin Bu uyumluluk standardına nasıl eşlendiğini gözden geçirmek için bkz. [Azure Ilke mevzuatı uyumluluğu-HIPAA HITRUST 9,2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md).
+Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [HIPAA HITRUST 9,2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+
+|Etki alanı |Denetim KIMLIĞI |Denetim başlığı |İlke<br /><sub>(Azure portal)</sub> |İlke sürümü<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Ağlarda ayrım yapma |0805.01 m1Organizational. 12-01. dk |Kuruluşun güvenlik ağ geçitleri (ör. güvenlik duvarları) güvenlik ilkelerini uygular ve etki alanları arasındaki trafiği filtrelemek, yetkisiz erişimi engellemek ve etki alanlarının her biri için, DMZs dahil olmak üzere iç kablolu, iç kablosuz ve dış ağ kesimleri (örn. Internet) arasında ayrımı sürdürmek için kullanılır. |[Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Ağlarda ayrım yapma |0806.01 m2Organizational. 12356-01. dk |Kuruluşlar ağı, kurumsal gereksinimlere bağlı olarak, iç ağdan mantıksal olarak ayrılan genel erişimli sistem bileşenlerine yönelik alt ağlar da dahil olmak üzere, tanımlı bir güvenlik çevresi ve dereceli bir denetim kümesi ile mantıksal ve fiziksel olarak bölünmüştür; ve trafik, risk değerlendirmesine ve bunların ilgili güvenlik gereksinimlerine bağlı olarak, gereken işlevlere ve veri/sistemlerin sınıflandırmasına göre denetlenir. |[Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Ağlarda ayrım yapma |0894.01 m2Organizational. 7-01. dk |Ağlar, fiziksel sunucular, uygulamalar veya veriler sanallaştırılmış sunuculara geçirilirken üretim düzeyindeki ağlardan ayırabilirsiniz. |[Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|Denetim günlüğü |1211.09 aa3System. 4-09. aa |Kuruluş, verilerin silindiğini veya kullanımı hala gerekli olan tüm kapsanan bilgileri ayıklayarak her 90 (90) günde bir doğrular. |[Key Vault tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|Ağ denetimleri |0865.09 m2Organizational. 13-09. d |Kuruluş (i), bağlantı güvenliği sözleşmelerinin veya diğer biçimsel sözleşmenin kullanımı aracılığıyla bilgi sisteminden kuruluş dışındaki diğer bilgi sistemlerine yönelik bağlantıları yetkilendirir. (ii) her bir bağlantıyı, arabirim özelliklerini, güvenlik gereksinimlerini ve iletilen bilgilerin doğasını belgeler; (III) bilgi sisteminden kuruluş dışındaki diğer bilgi sistemlerine yönelik bağlantılara izin vermek için bir Tümünü Reddet, özel durum ilkesine izin ver ilkesi kullanır; ve (IV), açıkça izin verilen hizmetler ve bağlantı noktaları hariç, tüm trafiği uç noktalarında (iş istasyonları, sunucular, vb.) ana bilgisayar tabanlı güvenlik duvarları veya bağlantı noktası filtreleme araçları aracılığıyla alan bir varsayılan reddetme kuralı uygular. |[Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
+|İş sürekliliği ve risk değerlendirmesi |1635.12 b1Organizational. 2-12. b |İş sürekliliği 'nin bilgi güvenliği yönleri, kuruluşun kritik iş süreçlerine (örneğin, ekipman arızası, insan hataları, hırsızlık, ateş, doğal felate, Terrorism 'nin) kesintiye neden olabilecek olayları (veya olay sırasını) tanımlamaya göre (i). (ii) ve bu kesintileri, zaman içinde, hasar ve kurtarma dönemi açısından, bu kesintileri olasılığa ve etkisini tespit etmek için bir risk değerlendirmesi. (III) risk değerlendirmesi sonuçlarına göre, iş sürekliliği için genel yaklaşımı belirlemek üzere bir iş sürekliliği stratejisi geliştirilmiştir; ve (IV) Bu strateji oluşturulduktan sonra, yönetim tarafından onay sağlanır ve bu stratejiyi uygulamak için oluşturulup onaylanan bir plan oluşturulur. |[Key Vault nesneler kurtarılabilir olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 

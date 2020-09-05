@@ -229,7 +229,7 @@
     - name: Hazırlık Yol Haritası
       href: security-center-readiness-roadmap.md
     - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Stack Overflow üzerinde Azure Güvenlik Merkezi
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Videolar

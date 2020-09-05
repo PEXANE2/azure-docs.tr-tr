@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU kotaları
           href: quotas.md
-        - name: Ayrılmış örnekler
-          items:
-            - name: VM'ler için ön ödeme yapma
-              href: prepay-reserved-vm-instances.md
-            - name: Azure ayırmaları nedir?
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: Sanal makine örneği boyut esnekliği
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Kıyaslama puanları
           href: compute-benchmark-scores.md
     - name: Doğrulanan dağıtımlar

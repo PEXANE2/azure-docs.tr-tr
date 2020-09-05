@@ -4,29 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 66d3397fae24ee2546dae4eb5d7c9d188f9ede99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f490a5b12484a91e963d068810b292d7761521a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944151"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484315"
 ---
 > [!NOTE]
 > Azure App Service için özel bir DNS adı yapılandırmak üzere Azure DNS kullanabilirsiniz. Daha fazla bilgi için bkz. [Bir Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS'yi kullanma](../articles/dns/dns-custom-domain.md#app-service-web-apps).
 >
 >
 
-Etki alanı sağlayıcınızın web sitesinde oturum açın.
+1. Etki alanı sağlayıcınızın web sitesinde oturum açın.
 
-DNS kayıtlarını yönetme sayfasını bulun. Her etki alanı sağlayıcısının kendi DNS kayıtları arabirimi vardır, bu nedenle sağlayıcının belgelerine başvurun. Sitede **Domain Name**, **DNS** veya **Name Server Management** etiketli alanları bulun. 
+1. DNS kayıtlarını yönetme sayfasını bulun. Her etki alanı sağlayıcısının kendi DNS kayıtları arabirimi vardır, bu nedenle sağlayıcının belgelerine başvurun. Sitede **Domain Name**, **DNS** veya **Name Server Management** etiketli alanları bulun.
 
-Çoğunlukla, hesap bilgilerinizi görüntüleyip ardından **My domains** (Etki alanlarım) gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. O sayfaya gidin ve **Zone file**, **DNS Records** veya **Advanced configuration** gibi bir adı olan bağlantıyı arayın.
+   Genellikle, hesap bilgilerinizi görüntüleyerek ve **etki alanlarım**gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyası**, **DNS kayıtları**veya **Gelişmiş yapılandırma**gibi bir bağlantı adlı bağlantıyı arayın.
 
-DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde görebilirsiniz:
+   DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde görebilirsiniz:
 
-![Örnek DNS kayıtları sayfası](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
+   ![Örnek bir DNS kayıtları sayfasını gösteren ekran görüntüsü.](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
 
-Örnek ekran görüntüsünde, kayıt oluşturmak için **Add** (Ekle) öğesini seçersiniz. Bazı sağlayıcıların farklı kayıt türlerini eklemek için farklı bağlantıları vardır. Yeniden belirtelim; sağlayıcının belgelerine başvurun.
+1. Örnek ekran görüntüsünde, bir kayıt oluşturmak için **Ekle** ' yi seçin. Bazı sağlayıcıların farklı kayıt türlerini eklemek için farklı bağlantıları vardır. Yeniden belirtelim; sağlayıcının belgelerine başvurun.
 
 > [!NOTE]
-> GoDaddy gibi bazı sağlayıcılarda, DNS kayıtlarında yapılan değişiklikler ayrı bir **Değişiklikleri Kaydet** bağlantısı seçilene kadar geçerlilik kazanmaz. 
+> GoDaddy gibi bazı sağlayıcılarda, DNS kayıtlarında yapılan değişiklikler ayrı bir **Değişiklikleri Kaydet** bağlantısı seçilene kadar geçerlilik kazanmaz.

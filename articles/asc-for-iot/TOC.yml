@@ -94,6 +94,6 @@
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'

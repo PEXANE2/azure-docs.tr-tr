@@ -1,6 +1,6 @@
 - name: PostgreSQL için Azure Veritabanı belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: PostgreSQL için Azure DB nedir?
       href: overview.md
@@ -54,7 +54,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -117,6 +117,9 @@
               href: concepts-data-encryption-postgresql.md
             - name: Altyapıyı çift şifreleme
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
               href: security-baseline.md
         - name: İş sürekliliği
@@ -244,7 +247,7 @@
           items:
             - name: Azure portal
               href: howto-restore-server-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restore-server-cli.md
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
@@ -266,7 +269,7 @@
           items:
             - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
@@ -274,7 +277,7 @@
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
             - name: Azure PowerShell
               href: howto-auto-grow-storage-powershell.md
@@ -326,7 +329,7 @@
           items:
             - name: Azure portal
               href: howto-restart-server-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md

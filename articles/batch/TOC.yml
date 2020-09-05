@@ -1,6 +1,6 @@
 - name: Batch Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Batch nedir?
       href: batch-technical-overview.md
@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Batch ile sertifikaları kullanma
           href: batch-certificates.md
-    - name: Uygulama paketlerini kullanma
-      href: batch-application-packages.md
     - name: Dosyaları ve uygulamaları havuz düğümlerine kopyalama
       items:
         - name: Uygulama ve verileri havuz düğümlerine kopyalama
@@ -226,7 +224,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch
