@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420498"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500241"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge GPU cihazınızda sanal makineler dağıtma
 
@@ -45,7 +45,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge cihazınızda VM 'Leri dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
@@ -342,7 +342,8 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   `id` `tenantId` Azure Resource Manager abonelik kimliğiniz ve Azure Resource Manager kiracı kimliğinizi sırasıyla ve sonraki adımda kullanılacak şekilde, ve değerlerini bir yere iade edin.
+       
    Aşağıdaki ortam değişkenlerinin *hizmet sorumlusu*olarak çalışacak şekilde ayarlanması gerekir:
 
    ```
@@ -352,7 +353,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge cihazınızda bir VM oluşturma
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Azure Resource Manager kiracı KIMLIĞINIZ, Azure Resource Manager Istemci KIMLIĞI ve Azure Resource Manager abonelik KIMLIĞI tamamen sabit kodludur ve tüm Azure Stack Edge cihazlarında aynı değerlere sahiptir. Azure Resource Manager Istemci parolası, ayarladığınız Azure Resource Manager paroladır.
+   Azure Resource Manager Istemci KIMLIĞINIZ sabit kodlanmış. Azure Resource Manager kiracı KIMLIĞINIZ ve Azure Resource Manager abonelik KIMLIĞINIZ, `az login` daha önce çalıştırdığınız komutun çıktısında bulunur. Azure Resource Manager Istemci parolası, ayarladığınız Azure Resource Manager paroladır.
 
    Daha fazla bilgi için bkz. [Azure Resource Manager Password](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
 

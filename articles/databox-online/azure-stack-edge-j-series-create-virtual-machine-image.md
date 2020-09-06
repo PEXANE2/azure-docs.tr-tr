@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268919"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500292"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Azure Stack Edge cihazınız için özel VM görüntüleri oluşturma
 
@@ -52,7 +52,22 @@ Bir Linux VM görüntüsü oluşturmak için aşağıdaki adımları uygulayın.
 
 1. Linux Sanal Makinesi oluşturun. Daha fazla bilgi için bkz. [öğretici: Azure CLI Ile Linux VM 'Leri oluşturma ve yönetme](../virtual-machines/linux/tutorial-manage-vm.md).
 
-2. [Mevcut işletim sistemi diskini indirin](../virtual-machines/linux/download-vhd.md).
+1. VM’nin sağlamasını kaldırın. Makineye özgü dosyaları ve verileri silmek için Azure VM aracısını kullanın. `waagent`Komutunu `-deprovision+user` Kaynak Linux sanal makinenizde parametresiyle birlikte kullanın. Daha fazla bilgi için bkz. [Azure Linux aracısını anlama ve kullanma](../virtual-machines/extensions/agent-linux.md).
+
+    1. Bir SSH istemcisiyle Linux sanal makinenize bağlanın.
+    2. SSH penceresinde, aşağıdaki komutu girin:
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. `+user`Parametresi, sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca kullanın `-deprovision` .
+     
+    3. Devam etmek için **y** girin. `-force`Bu onay adımından kaçınmak için parametresini ekleyebilirsiniz.
+    4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.
+
+
+1. [Mevcut işletim sistemi diskini indirin](../virtual-machines/linux/download-vhd.md).
 
 Artık Azure Stack Edge cihazınızda bir VM oluşturup dağıtmak için bu VHD 'yi kullanın. Linux özel görüntülerini oluşturmak için aşağıdaki iki Azure Marketi görüntüsünü kullanabilirsiniz:
 
