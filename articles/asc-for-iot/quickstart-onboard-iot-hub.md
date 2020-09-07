@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310747"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504052"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Güvenlik Merkezi 'Ni ekleme
 
@@ -52,8 +52,8 @@ IoT çözümünüzü güvenli hale getirmek için IoT cihazlarınıza gelen ve g
 
 IP adresi verilerini toplamayı etkinleştirmek veya devre dışı bırakmak için:
 
-1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin.
-1. **Ayarlar** ekranını seçin ve coğrafi konum ve/veya IP işleme ayarlarını istediğiniz gibi değiştirin.
+1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
+1. **Veri toplama** ekranını seçin ve coğrafi konum ve/veya IP işleme ayarlarını istediğiniz gibi değiştirin.
 
 ### <a name="log-analytics-creation"></a>Log Analytics oluşturma
 
@@ -61,8 +61,8 @@ IoT için Azure Güvenlik Merkezi açıldığında, IoT cihazlarınıza, IoT Edg
 
 Log Analytics çalışma alanı yapılandırmasını değiştirmek için:
 
-1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin.
-1. **Ayarlar** ekranını seçin ve Log Analytics ayarların çalışma alanı yapılandırmasını istediğiniz gibi değiştirin.
+1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
+1. **Veri toplama** ekranını seçin ve Log Analytics ayarların çalışma alanı yapılandırmasını istediğiniz gibi değiştirin.
 
 ### <a name="customize-your-iot-security-solution"></a>IoT Güvenlik çözümünüzü özelleştirme
 
@@ -70,8 +70,8 @@ Varsayılan olarak, IoT çözümü için Azure Güvenlik Merkezi 'ni açmak, Azu
 
 Belirli bir IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'ni etkinleştirmek veya devre dışı bırakmak için:
 
-1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin.
-1. **Ayarlar** ekranını seçin ve Azure aboneliğinizdeki herhangi bir IoT Hub 'ının güvenlik ayarlarını istediğiniz gibi değiştirin.
+1. IoT Hub açın ve ardından **güvenlik** menüsünden **Ayarlar** ' ı seçin.
+1. **Veri toplama** ekranını seçin ve Azure aboneliğinizdeki herhangi bir IoT Hub 'ının güvenlik ayarlarını istediğiniz gibi değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

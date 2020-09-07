@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310842"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505446"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Hızlı başlangıç: özel uyarılar oluşturma
 
@@ -40,7 +40,7 @@ Bu gruplar belirli donanımlar olan cihazları, belirli bir konumda dağıtılan
 
 Güvenlik grupları, **SecurityGroup**adlı bir Device ikizi Tag özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub her bir IoT çözümünün **varsayılan**adlı bir güvenlik grubu vardır. Bir cihazın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
 
-Örneğin:
+Örnek:
 
 ```
 {
@@ -67,8 +67,8 @@ Cihazlarınızı mantıksal kategoriler halinde gruplandırmak için güvenlik g
 
 ## <a name="customize-an-alert"></a>Bir uyarıyı özelleştirme
 
-1. IoT Hub açın.
-1. **Güvenlik** bölümünde **özel uyarılar** ' a tıklayın.
+1. IoT Hub açın ve **güvenlik** menüsünden **Ayarlar** ' ı seçin. 
+1. **Özel uyarılar**' a tıklayın.
 1. Özelleştirmeyi uygulamak istediğiniz güvenlik grubunu seçin.
 1. **Özel uyarı Ekle**' ye tıklayın.
 1. Açılan listeden özel bir uyarı seçin.

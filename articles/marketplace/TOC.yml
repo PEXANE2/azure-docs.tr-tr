@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: Danışmanlık hizmetleri
               href: ./consulting-services.md
-            - name: 'Office 365, Dynamics 365 ve Power BI'
+            - name: 'Microsoft 365, Dynamics 365 ve Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Azure AD ile kimlik doğrulaması teklifini etkinleştirme
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: Bulut Çözüm Sağlayıcıları
               href: ./cloud-solution-providers.md
             - name: Program ekleme kılavuzunu bağlama
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: Market avantajlarınız
           href: ./gtm-your-marketplace-benefits.md
           items:

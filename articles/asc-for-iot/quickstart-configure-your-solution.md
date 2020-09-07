@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310851"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505463"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Hızlı başlangıç: IoT çözümünüzü yapılandırma
 
@@ -45,8 +45,8 @@ Tüm kaynak ilişkilerini tanımladıktan sonra IoT için Azure Güvenlik Merkez
 IoT çözümünüze yeni kaynak eklemek için aşağıdakileri yapın:
 
 1. **IoT Hub** Azure Portal açın.
-1. Sol taraftaki menüden **güvenlik** altında **kaynakları** seçin ve açın.
-1. **Düzenle** ' yi seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
+1. Sol menüdeki **güvenlik** bölümünden **ayarları** seçip açın ve ardından **izlenen kaynaklar**' ı seçin.
+1. **Düzenle** ' yi seçin ve IoT çözümünüze ait izlenen kaynakları seçin.
 1. **Ekle**'ye tıklayın.
 
 Tebrikler! IoT çözümünüze yeni bir kaynak grubu eklediniz.
