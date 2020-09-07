@@ -206,6 +206,10 @@
       items:
         - name: Uygulama ekleme sorunlarını giderme
           href: troubleshoot-adding-apps.md
+        - name: Parola tabanlı çoklu oturum açma sorunlarını giderme
+          href: troubleshoot-password-based-sso.md
+        - name: SAML tabanlı çoklu oturum açma sorunlarını giderme
+          href: troubleshoot-saml-based-sso.md
         - name: Kullanıcı oturum açma sorunlarını giderme
           items:
             - name: Beklenmeyen izin alma istemi
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: Özel geliştirilmiş uygulama ile ilgili sorun
               href: application-sign-in-problem-custom-dev.md
-        - name: Çoklu oturum açma sorunlarını giderme
-          items:
-            - name: Parola tabanlı çoklu oturum açma sorunlarını giderme
-              href: troubleshoot-password-based-sso.md
-            - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri uygulamaları
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: Federasyon yapılandırmayla ilgili yaygın sorunlar - galeri dışındaki uygulamalar
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: Şirket içi uygulamalarda sorun giderme
           items:
             - name: Uygulama Ara Sunucusu sorunlarını giderme

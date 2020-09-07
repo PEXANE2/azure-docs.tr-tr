@@ -102,17 +102,9 @@
         - name: Dağıtım adımları
           displayName: 'standards, fedramp, high'
           href: ./samples/fedramp-h/deploy.md
-    - name: HIPAA HITRUST
-      items:
-        - name: Genel Bakış
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/index.md
-        - name: Denetim eşlemesi
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/control-mapping.md
-        - name: Dağıtım adımları
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/deploy.md
+    - name: HIPAA HITRUST 9.2
+      displayName: 'standards, HIPAA HITRUST'
+      href: ./samples/hipaa-hitrust-9-2.md
     - name: IRS 1075
       items:
         - name: Genel Bakış
@@ -261,7 +253,7 @@
   href: ./troubleshoot/general.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint

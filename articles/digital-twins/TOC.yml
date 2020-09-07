@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Geliştirme
-      items:
-        - name: API’leri ve SDK’ları kullanma
-          href: how-to-use-apis-sdks.md
-        - name: AutoRest ile özel SDK oluşturma
-          href: how-to-create-custom-sdks.md
     - name: Dağıtma
       items:
         - name: Azure Digital Twins CLI’sini kullanma
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: İkiz grafiğini sorgulama
           href: how-to-query-graph.md
+    - name: İstemci uygulamaları geliştirme
+      items:
+        - name: API’leri ve SDK’ları kullanma
+          href: how-to-use-apis-sdks.md
+        - name: AutoRest ile özel SDK oluşturma
+          href: how-to-create-custom-sdks.md
+        - name: Azure SignalR Hizmeti ile tümleştirme
+          href: how-to-integrate-azure-signalr.md
     - name: Bağlantı girişi
       items:
         - name: IoT Hub’dan telemetri alma
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Azure Digital Twins Özel Swagger’lar
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: SignalR tümleştirme örneği
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure araçları
       items:
         - name: Azure Cloud Shell

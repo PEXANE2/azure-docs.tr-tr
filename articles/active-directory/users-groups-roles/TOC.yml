@@ -52,6 +52,8 @@
           href: users-sharing-accounts.md
         - name: Kullanıcıları yönetici rollerine atama
           href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: Kullanıcı yönetimi geliştirmeleri
+          href: users-search-enhanced.md
         - name: Kullanıcıları toplu silme
           href: users-bulk-delete.md
         - name: Silinen bir kullanıcıyı geri yükleme

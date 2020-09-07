@@ -1,6 +1,6 @@
 - name: Azure Bilişsel Arama Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Azure Bilişsel Arama nedir?
@@ -114,6 +114,8 @@
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Dizin oluşturucu kaynaklarının güvenliğini sağlama
+          href: search-indexer-securing-resources.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Dizinler ve yapılar oluşturma
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: Kullanıcı kimlikleri üzerinde filtreleme
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Giden güvenlik (dizin oluşturucular)
+          items:
+            - name: Bir IP aralığı üzerinden erişim
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: Güvenilen hizmet özel durumu üzerinden erişim
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: Özel uç noktalar üzerinden erişim
+              href: search-indexer-howto-access-private.md
     - name: Yönetme
       items:
         - name: Portal
@@ -384,7 +394,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Arama 2020-06-30
+        - name: Arama API’si (Kararlı)
           href: /rest/api/searchservice
-        - name: Arama 2020-06-30-Preview
+        - name: Arama API’si (Önizleme)
           href: /rest/api/searchservice/index-preview
-        - name: Yönetim 13.03.2020
+        - name: Yönetim API'si (Kararlı)
           href: /rest/api/searchmanagement
-        - name: Yönetim 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Yönetim API'si (Önizleme)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Arama API’si

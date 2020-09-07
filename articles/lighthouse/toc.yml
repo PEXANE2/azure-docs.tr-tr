@@ -1,6 +1,6 @@
 - name: Azure Lighthouse belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Lighthouse nedir?
       displayName: 'management at scale, service providers'
@@ -47,6 +47,9 @@
     - name: Müşterileri görüntüleme ve yönetme
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: İş ortağı kimliğinizi bağlama
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
     - name: Temsilci erişimini kaldırma
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
@@ -78,7 +81,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

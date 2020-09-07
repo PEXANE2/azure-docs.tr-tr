@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: Bulut Çözüm Sağlayıcıları
               href: ./cloud-solution-providers.md
+            - name: Program ekleme kılavuzunu bağlama
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: Market avantajlarınız
           href: ./gtm-your-marketplace-benefits.md
           items:

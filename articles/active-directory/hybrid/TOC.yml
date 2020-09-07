@@ -1,6 +1,6 @@
 - name: Hibrit kimlik belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Hibrit kimlik nedir?
       href: whatis-hybrid-identity.md
@@ -262,6 +262,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: Azure AD Connect Health uyarı kataloğu
           href: how-to-connect-health-alert-catalog.md
+        - name: Azure AD Connect Health veri alma
+          href: how-to-connect-health-data-retrieval.md
     - name: Azure AD Connect Sync'i yönetme
       items:
         - name: Hazırlama sunucusu ve olağanüstü durum kurtarma
