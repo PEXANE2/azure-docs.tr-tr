@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi ile AWS tümleştirmesini ayarlama
 description: Bu makale, AWS Maliyet ve Kullanım raporu ile Azure Maliyet Yönetimi tümleştirmesini ayarlama ve yapılandırma adımlarında size yol gösterecektir.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 639d63df060a680e8c135a9be054ac412d1ca8dd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685009"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266127"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS Maliyet ve Kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
@@ -71,7 +71,6 @@ Yeni Rol Oluştur sihirbazını kullanın:
 5. **Hesap Kimliği** alanına **432263259397** girin.
 6. **Seçenekler** bölümünde **Dış kimlik gerekir (Bu rolün üçüncü tarafın kullanımında olacağı durumlarda en iyi yöntemdir)** girişini seçin.
 7. **Dış Kimlik** bölümünde AWS rolü ile Azure Maliyet Yönetimi arasındaki paylaşılan geçiş kodu olan dış kimliği girin. Bu dış kimlik, Maliyet Yönetimi'ndeki **Yeni Bağlayıcı** sayfasında da kullanılır. Microsoft, dış kimliği girerken güçlü bir geçiş kodu ilkesi kullanmanızı önerir.
-
     > [!NOTE]
     > **MFA Gerektir** seçimini değiştirmeyin. İşaretlenmemiş şekilde kalmalıdır.
 8. Şunu seçin: **İleri: İzinler**.
@@ -148,23 +147,23 @@ AWS Kuruluşları için izin ekleme:
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Azure'da yeni bir AWS bağlayıcısı ayarlama
+## <a name="set-up-a-new-connector-for-aws-in-azure"></a>Azure'da AWS için yeni bağlayıcı ayarlama
 
 Bir AWS bağlayıcısı oluşturmak ve AWS maliyetlerinizi izlemeye başlamak için aşağıdaki bilgileri kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi**'ne gidin.
-3. **Ayarlar**'ın altında **Bulut bağlayıcıları (Önizleme)** girişini seçin.  
-    ![Bulut bağlayıcıları (Önizleme) ayarını gösteren örnek](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. Bağlayıcı oluşturmak için sayfanın üst kısmındaki **+ Ekle**'yi seçin.
-5. **AWS bağlayıcısı oluşturma** sayfasının **Görünen ad** alanında bağlayıcınız için bir ad girin.  
-    ![AWS bağlayıcısı oluşturma sayfasının örneği](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. İsterseniz varsayılan yönetim grubunu seçebilirsiniz. Bulunan tüm bağlı hesaplar orada depolanır. Bunu daha sonra da ayarlayabilirsiniz.
-7. Önizleme sona erdikten sonra bağlayıcınızın çalışmaya devam etmesi için **Faturalama** bölümünde **Genel kullanılabilirlikte otomatik olarak %1 ücretlendir** seçeneğini belirtin. Otomatik seçeneğini belirtirseniz bir faturalandırma aboneliği seçmeniz gerekir.
-8. **Rol ARN'si** için AWS'de rolü ayarlarken kullandığınız değeri girin.
-9. **Dış Kimlik** için AWS'de rolü ayarlarken kullandığınız değeri girin.
-10. **Rapor adı** için AWS'de oluşturduğunuz adı girin.
-11. **İleri**’yi ve ardından **Oluştur**’u seçin.
+3. **Ayarlar**'ın altında **AWS için Bağlayıcılar**'ı seçin.  
+4. Bağlayıcı oluşturmak için sayfanın üst kısmındaki **+ Ekle**'yi seçin.  
+    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
+1. **Bağlayıcı oluştur** sayfasının **Görünen ad** alanında bağlayıcınız için bir ad girin.  
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="AWS bağlayıcısı oluşturma sayfasının örneği" :::
+1. İsterseniz varsayılan yönetim grubunu seçebilirsiniz. Bulunan tüm bağlı hesaplar orada depolanır. Bunu daha sonra da ayarlayabilirsiniz.
+1. **Faturalama** bölümünde, sürekli çalışmayı güvence altına almak istiyorsanız **Otomatik Yenileme** için **Açık** seçin. Otomatik seçeneğini belirtirseniz bir faturalandırma aboneliği seçmeniz gerekir.
+1. **Rol ARN'si** için AWS'de rolü ayarlarken kullandığınız değeri girin.
+1. **Dış Kimlik** için AWS'de rolü ayarlarken kullandığınız değeri girin.
+1. **Rapor adı** için AWS'de oluşturduğunuz adı girin.
+1. **İleri**’yi ve ardından **Oluştur**’u seçin.
 
 Yeni AWS kapsamlarının, AWS birleştirilmiş hesabının, AWS bağlı hesaplarının ve maliyet verilerinin görünmesi birkaç saat sürebilir.
 
@@ -178,16 +177,19 @@ Bulma işleminden sonra kullanıcılara bağlayıcı izinlerinin atanması, bu i
 - Kapsam seçiciye yeni kapsamların ayarlandığından emin olun. En son verileri görüntülemek için **Yenile**'yi seçin.
 - **Bulut bağlayıcıları** sayfasından bağlayıcınızı seçin ve **Faturalama hesabına gidin**'i seçerek bağlı hesabı yönetim gruplarına atayın.
 
-## <a name="manage-cloud-connectors"></a>Bulut bağlayıcılarını yönetme
+> [!NOTE]
+> Yönetim grupları şu anda Microsoft Müşteri Sözleşmesi (MCA) müşterileri için desteklenmemektedir. MCA müşterileri bağlayıcıyı oluşturup AWS verilerini görüntüleyebilir. Öte yandan MCA müşterileri Azure maliyetleri ile AWS maliyetlerini yönetim grubu altında birlikte görüntüleyemez.
 
-**Bulut bağlayıcıları** sayfasında bir bağlayıcı seçtiğinizde şunları yapabilirsiniz:
+## <a name="manage-aws-connectors"></a>AWS bağlayıcılarını yönetme
+
+**AWS için Bağlayıcılar** sayfasında bir bağlayıcı seçtiğinizde şunları yapabilirsiniz:
 
 - **Faturalama hesabına gidin**'i seçerek birleştirilmiş AWS hesabıyla ilgili bilgileri görüntüleyebilirsiniz.
 - Bağlayıcının rol atamasını yönetmek için **Erişim Denetimi**'ni seçebilirsiniz.
 - Bağlayıcıyı güncelleştirmek için **Düzenle**'yi seçebilirsiniz. Rol ARN'sinde göründüğünden AWS hesap numarasını değiştiremezsiniz. Ancak yeni bir bağlayıcı oluşturabilirsiniz.
 - Maliyet Yönetimi'nin bağlayıcı ayarlarını kullanarak verileri toplayabildiğini doğrulamak için doğrulama testini yeniden çalıştırmak üzere **Doğrula**'yı seçin.
 
-![Oluşturulan AWS bağlayıcılarının örnek listesi](./media/aws-integration-setup-configure/list-aws-connectors.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="Örnek AWS bağlayıcısı ayrıntıları" :::
 
 ## <a name="set-up-azure-management-groups"></a>Azure yönetim gruplarını ayarlama
 
@@ -197,9 +199,9 @@ Maliyetleri ayırmak istiyorsanız yalnızca bağlı AWS hesaplarını içeren b
 
 ## <a name="set-up-an-aws-consolidated-account"></a>AWS birleştirilmiş hesabı ayarlama
 
-AWS birleştirilmiş hesabı, birden fazla AWS hesabı için faturalandırma ve ödeme süreçlerini birleştirir. Ayrıca bağlı AWS hesabı olarak görev yapar.
+AWS birleştirilmiş hesabı, birden fazla AWS hesabı için faturalandırma ve ödeme süreçlerini birleştirir. Ayrıca bağlı AWS hesabı olarak görev yapar. AWS bağlayıcısı sayfasındaki bağlantıyı kullanarak AWS birleştirilmiş hesabınızın ayrıntılarını görüntüleyebilirsiniz. 
 
-![Birleştirilmiş AWS hesabı için örnek ayrıntılar](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="Birleştirilmiş AWS hesabı için örnek ayrıntılar" :::
 
 Sayfada şunları yapabilirsiniz:
 
@@ -221,7 +223,7 @@ Bu sayfada şunları yapabilirsiniz:
 - **Güncelleştir**'i seçerek bağlı AWS hesabını bir yönetim grubuyla güncelleştirebilirsiniz.
 - Kapsam için rol atamasını yönetmek üzere **Erişim Denetimi**'ni seçebilirsiniz.
 
-![Bağlı AWS hesabı sayfası örneği](./media/aws-integration-setup-configure/aws-linked-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="Bağlı AWS hesabı sayfası örneği" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>Bağlı AWS hesabı için izinler
 

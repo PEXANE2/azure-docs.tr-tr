@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686616"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997583"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -24,6 +24,9 @@ Bu makalede Azure aboneliklerini Bulut Çözümü Sağlayıcıları (CSP) iş or
 [Azure Uzman Yönetilen Hizmetler Sağlayıcısı (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) sertifikalı CSP doğrudan faturalandırma iş ortakları, Doğrudan Kurumsal Anlaşma (EA) sahibi olan müşterilerinin Azure aboneliklerinin aktarılması isteğinde bulunabilirler. Abonelik aktarma işlemleri yalnızca kabul edilen bir Microsoft Müşteri Sözleşmesi'ne (MCA) sahip olan ve bir Azure planı satın almış olan müşteriler tarafından gerçekleştirilebilir.
 
 İstek onaylandıktan sonra CSP, müşterilerine birleştirilmiş fatura sunabilir. CSP'lerin abonelikleri aktarması hakkında daha fazla bilgi için bkz. [MPA hesabınız için Azure aboneliklerinin fatura sahipliğini alma](mpa-request-ownership.md).
+
+>[!IMPORTANT]
+> EA aboneliğini CSP iş ortağına aktardıktan sonra, daha önce EA aboneliğine uygulanan tüm kota artışları varsayılan değere sıfırlanır. Abonelik aktarımından sonra kota artışı gerekiyorsa, CSP sağlayıcınızın [kota artışı](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) isteği göndermesini sağlayabilirsiniz. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>CSP iş ortağına diğer aboneliklerin aktarılması
 

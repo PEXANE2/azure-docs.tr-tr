@@ -3,18 +3,18 @@ title: Azure Maliyet Yönetimi'nde AWS maliyetlerini ve kullanımını yönetme
 description: Bu makale, Maliyet Yönetimi'ndeki maliyet analizlerini ve bütçeleri kullanarak AWS maliyetlerinizi ve kullanımınızı yönetme konusunda yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4d6a961388c9794a7584e8529dac75d068f91ed4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685026"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266222"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure'da AWS maliyetlerini ve kullanımını yönetme
 
@@ -36,17 +36,18 @@ Aşağıdaki bölümlerde her birine ait olan maliyet ve kullanım verilerini g�
 
 ### <a name="view-aws-linked-accounts-under-a-management-group"></a>Yönetim grubu altındaki AWS bağlı hesaplarını görüntüleme
 
-Maliyetleri yönetim grubu kapsamı kullanarak görüntüleme, farklı aboneliklerden ve bağlı hesaplardan gelen toplu maliyetleri görmenin tek yoludur. Yönetim grubu kullanmak, bulutlar arası bir görünüm sunar.
+Maliyetleri yönetim grubu kapsamı kullanarak görüntüleme, farklı Azure aboneliklerinden ve AWS bağlı hesaplardan gelen toplu maliyetleri görmenin tek yoludur. Yönetim grubunun kullanılması Azure ile AWS maliyetlerini birlikte görüntülemek için bulutlar arası bir görünüm sağlar.
 
 Maliyet analizinde kapsam seçiciyi açın ve AWS bağlı hesaplarınızı barındıran yönetim grubunu seçin. Aşağıda Azure portalından örnek bir görüntü verilmiştir:
 
-![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope01.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope01.png" alt-text="Yönetim grubu altında bağlı hesaplarla Kapsam seç görünümü örneği" :::
 
 Aşağıda maliyet analizinde yönetim grubunu Sağlayıcıya (Azure ve AWS) göre gruplanmış şekilde gösteren bir örnek verilmiştir.
 
-![Maliyet analizinde üç aylık döneme ait Azure ve AWS maliyetlerini gösteren örnek](./media/aws-integration-manage/cost-analysis-aws-azure.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Maliyet analizinde üç aylık döneme ait Azure ve AWS maliyetlerini gösteren örnek" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+
+> [!NOTE]
+> Yönetim grupları şu anda Microsoft Müşteri Sözleşmesi (MCA) müşterileri için desteklenmemektedir. MCA müşterileri bağlayıcıyı oluşturup AWS verilerini görüntüleyebilir. Öte yandan MCA müşterileri Azure maliyetleri ile AWS maliyetlerini yönetim grubu altında birlikte görüntüleyemez.
 
 ### <a name="view-aws-linked-account-costs"></a>AWS bağlı hesaplarıyla ilgili maliyetleri görüntüleme
 
@@ -54,21 +55,17 @@ AWS bağlı hesaplarıyla ilgili maliyetleri görüntülemek için kapsam seçic
 
 Aşağıda AWS bağlı hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
 
-![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope02.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="AWS bağlı hesaplarını gösteren Kapsam seç görünümü örneği" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntüleme
 
 AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntülemek için kapsam seçiciyi açıp AWS birleştirilmiş hesabını seçin. Aşağıda AWS birleştirilmiş hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
 
-![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope03.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Birleştirilmiş hesaplarla Kapsam seç görünümü örneği" :::
 
 Bu kapsam, AWS birleştirilmiş hesabıyla ilişkili tüm AWS bağlı hesaplarının toplu bir görünümünü sağlar. Aşağıda bir AWS birleştirilmiş hesabının, hizmet adına göre gruplanan maliyetleri gösterdiği bir örnek verilmiştir.
 
-![Maliyet analizinde AWS birleştirilmiş maliyetlerini gösteren örnek](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Maliyet analizinde AWS birleştirilmiş maliyetlerini gösteren örnek" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Filtreleme ve gruplama için kullanılabilen boyutlar
 
@@ -89,7 +86,7 @@ Aşağıdaki tabloda maliyet analizinde gruplama ve filtreleme için kullanılab
 | Hizmet katmanı |   |   |   |
 | Abonelik Kimliği | lineItem/UsageAccountId | Birleştirilmiş hesap ve yönetim grubu |   |
 | Abonelik adı | Yok | Birleştirilmiş hesap ve yönetim grubu | Hesap adları AWS Kuruluş API'si kullanılarak toplanır. |
-| Etiket | resourceTags/\* | Tümü | _user:_ ön eki, bulutlar arası etiketlere izin vermek için kullanıcı tanımlı etiketlerden kaldırılmıştır. _aws:_ ön eki değiştirilmeden bırakılmıştır. |
+| Etiket | resourceTags | Tümü | _user:_ ön eki, bulutlar arası etiketlere izin vermek için kullanıcı tanımlı etiketlerden kaldırılmıştır. _aws:_ ön eki değiştirilmeden bırakılmıştır. |
 | Faturalama hesabı kimliği | bill/PayerAccountId | Yönetim grubu |   |
 | Faturalama hesabı adı | Yok | Yönetim grubu | Hesap adları AWS Kuruluş API'si kullanılarak toplanır. |
 | Sağlayıcı | Yok | Yönetim grubu | AWS veya Azure. |
@@ -98,7 +95,7 @@ Aşağıdaki tabloda maliyet analizinde gruplama ve filtreleme için kullanılab
 
 Kuruluşunuzda maliyetleri önceden yönetmek ve sorumluluk bilinci sağlamak için bütçeleri kullanabilirsiniz. Bütçeler AWS birleştirilmiş hesabı ve AWS bağlı hesap kapsamlarında ayarlanır. Aşağıda Maliyet Yönetimi'ndeki bir AWS birleştirilmiş hesabına ait bütçe örnekleri gösterilmiştir:
 
-![Birleştirilmiş AWS hesabı için bütçeleri gösteren örnek](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Birleştirilmiş AWS hesabı için bütçeleri gösteren örnek" :::
 
 ## <a name="aws-data-collection-process"></a>AWS veri toplama işlemi
 
@@ -110,15 +107,15 @@ AWS bağlayıcısını ayarladıktan sonra veri toplama ve bulma işlemi başlar
 
 ## <a name="aws-integration-pricing"></a>AWS tümleştirme fiyatlandırması
 
-Her AWS bağlayıcısı 90 günlük ücretsiz deneme sunar. Genel Önizleme sırasında ücret alınmaz.
+Her AWS bağlayıcısı 90 günlük ücretsiz deneme sunar.
 
 Liste fiyatı, aylık AWS maliyetlerinizin %1'inin altındadır. Her ay, önceki ay kullanılan tutarlara göre ödeme yaparsınız.
 
-AWS API'lerine erişmek için ek ücret uygulanabilir.
+AWS API'lerine erişmek için AWS'ye ek ücret uygulanabilir.
 
 ## <a name="aws-integration-limitations"></a>AWS tümleştirme sınırlamaları
 
-- Maliyet Yönetimi, birden fazla para birimi içeren maliyet raporlarını desteklemez. Birden fazla para birimine sahip bir kapsam seçtiğinizde hata iletisi görüntülenir.
+- Maliyet Yönetimi'nde bütçeler, birden çok para birimi içeren maliyet gruplarını desteklemez. Birden çok para birimi içeren yönetim grupları bütçe değerlendirmesi görmez. Bütçe oluştururken birden çok para birimi olan bir maliyet grubu seçerseniz hata iletisi gösterilir.
 - Bulut bağlayıcıları AWS GovCloud (US), AWS Gov veya AWS China desteği sunmaz.
 - Maliyet Yönetimi yalnızca AWS _kullanım maliyetlerini_ gösterir. Vergiler, destek, para iadeleri, RI, krediler ve diğer ücret türleri desteklenmemektedir.
 
@@ -182,4 +179,4 @@ Bu hata, AWS Maliyet ve Kullanım raporunun tanımıyla ilgilidir, bu rapor içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure ortamınızı yönetim gruplarıyla yapılandırmadıysanız bkz. [Yönetim gruplarını ilk kez ayarlama](../../governance/management-groups/overview.md#initial-setup-of-management-groups).
+- Yönetim gruplarıyla Azure ortamınızı yapılandırmadıysanız bkz. [Yönetim gruplarının ilk ayarı](../../governance/management-groups/overview.md#initial-setup-of-management-groups).

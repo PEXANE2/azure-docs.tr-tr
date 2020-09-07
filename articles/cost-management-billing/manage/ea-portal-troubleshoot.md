@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687408"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294416"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA portalı erişim sorunlarını giderme
 
@@ -32,7 +32,7 @@ Farklı kimlik doğrulaması düzeylerine sahip kullanıcılara erişim izni ver
 - Kiracılar Arasında İş veya Okul Hesabı - Buluta Federasyon ile Active Directory ayarlamış ve birden çok kiracıda hesapları bulunacak olan kuruluşlara yöneliktir.
 - Karma Hesap - Microsoft Hesabı ve/veya İş ya da Okul Hesabıyla kullanıcı eklemenize olanak tanır.
 
-Kayda eklenen ilk iş veya okul hesabı _varsayılan_ veya _ana_ etki alanını belirler. Başka bir kiracının iş veya okul hesabını eklemek için kaydın altındaki kimlik doğrulaması düzeyini kiracılar arası kimlik doğrulaması olarak değiştirmeniz gerekir.
+Kayda eklenen ilk iş veya okul hesabı, _varsayılan_ etki alanını belirler. Başka bir kiracının iş veya okul hesabını eklemek için kaydın altındaki kimlik doğrulaması düzeyini kiracılar arası kimlik doğrulaması olarak değiştirmeniz gerekir.
 
 Kimlik Doğrulaması Düzeyini güncelleştirmek için:
 
