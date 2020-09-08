@@ -2,13 +2,13 @@
 title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/07/2020
+ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750486"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512394"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
@@ -30,14 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-Azure VMware çözümünü kullanmak için, öncelikle kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.
-
-```
-azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
@@ -46,34 +39,7 @@ Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sa�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-
-1. **Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazın `Azure VMware Solution` ve listeden **Azure VMware çözümü** ' nü seçin. **Azure VMware Çözüm** penceresinde **Oluştur** ' u seçin.
-
-1. **Temel bilgiler** sekmesinde, alanlar için değerler girin. Aşağıdaki tabloda alanlarıyla ilgili özellikler listelenmiştir.
-
-   | Alan   | Değer  |
-   | ---| --- |
-   | **Abonelik** | Dağıtım için kullanmayı planladığınız abonelik.|
-   | **Kaynak grubu** | Özel bulut kaynaklarınızın kaynak grubu. |
-   | **Konum** | **Doğu ABD**gibi bir konum seçin.|
-   | **Kaynak adı** | Azure VMware çözümünüz özel bulutunuzun adı. |
-   | **SKU** | Şu SKU değerini seçin: AV36 |
-   | **Bilgisayarlarınızı** | Özel bulut kümesine eklenecek ana bilgisayar sayısı. Varsayılan değer, dağıtımdan sonra ortaya çıkarılan veya düşürülen 3 ' dir.  |
-   | **vCenter yönetici parolası** | Bir bulut Yöneticisi parolası girin. |
-   | **NSX-T Yöneticisi parolası** | NSX-T yönetici parolası girin. |
-   | **Adres bloğu** | Özel bulut için CıDR ağı için bir IP adresi bloğu girin, örneğin, 10.175.0.0/22. |
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Temel bilgiler sekmesinde, alanlar için değerler girin." border="true":::
-
-1. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. Sonraki ekranda, girilen bilgileri doğrulayın. Bilgilerin tümü doğru ise **Oluştur**' u seçin.
-
-   > [!NOTE]
-   > Bu adım kabaca iki saat sürer. 
-
-1. Dağıtımın başarılı olduğunu doğrulayın. Oluşturduğunuz kaynak grubuna gidin ve özel bulutunuzu seçin.  Dağıtım tamamlandığında **başarılı** durumunu görürsünüz. 
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Dağıtımın başarılı olduğunu doğrulayın." border="true":::
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
