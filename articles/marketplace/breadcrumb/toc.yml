@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: Ticari market
+      tocHref: /legal/marketplace/
+      topicHref: /azure/marketplace/index

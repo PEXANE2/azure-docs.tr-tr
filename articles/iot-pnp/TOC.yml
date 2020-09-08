@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: Öğreticiler
   items:
+    - name: Çok bileşenli bir cihaza bağlanma (C)
+      href: tutorial-multiple-components-c.md
     - name: Çok bileşenli bir cihaza bağlanma (C#)
       href: tutorial-multiple-components-csharp.md
     - name: Çok bileşenli bir cihaza bağlanma (Java)

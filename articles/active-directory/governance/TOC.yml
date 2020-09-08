@@ -31,6 +31,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: Koşullu Erişimin dışında tutulan kullanıcıları yönetme
           href: conditional-access-exclusion.md
+    - name: Dış kuruluşlardaki kullanıcıları inceleme ve kaldırma
+      href: access-reviews-external-users.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:

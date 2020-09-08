@@ -36,6 +36,8 @@
   items:
     - name: Azure portalı kullanarak Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace.md
+    - name: Şablonla dağıtma
+      href: quickstart-deployment-template-workspaces.md
     - name: Azure CLI’yı kullanarak Synapse çalışma alanı oluşturma
       href: quickstart-create-workspace-cli.md
     - name: Synapse Studio’yu kullanma
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark performansı
               href: ./spark/apache-spark-performance.md
+            - name: Hyperspace dizinlerini kullanarak Apache Spark için performans iyileştirmesi
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark Otomatik Ölçeklendirme davranışı
               href: ./spark/apache-spark-autoscale.md
         - name: Geliştirme
