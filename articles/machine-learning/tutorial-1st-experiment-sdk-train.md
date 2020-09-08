@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854921"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536247"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -56,11 +56,14 @@ Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici i�
 Sınıfını içeri aktarın `Workspace` ve `config.json` Bu işlevi kullanarak abonelik bilgilerinizi `from_config().` Varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` . Bu Not defterini çalışma alanınızdaki bir bulut Not defteri sunucusunda çalıştırıyorsanız, dosya otomatik olarak kök dizinde olur.
 
 Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir. Ayrıca, Kullanıcı ile bağlantılı birden fazla kiracı varsa, aşağıdaki satırları eklemeniz gerekir:
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+Kimlik doğrulaması hakkında daha fazla bilgi için bkz [Azure Machine Learning kimlik doğrulaması](https://aka.ms/aml-notebook-auth)
+
 
 ```python
 from azureml.core import Workspace

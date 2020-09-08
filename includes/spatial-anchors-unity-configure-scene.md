@@ -2,21 +2,19 @@
 author: craigktreasure
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/2/2019
+ms.date: 8/13/2020
 ms.author: crtreasu
-ms.openlocfilehash: 43e64dadc5e339d174d08788cc7a98506841ee88
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 89c804c038e2b23c9d61225a07f92f70bf1157fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810197"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536285"
 ---
 ## <a name="configure-the-account-information"></a>Hesap bilgilerini yapılandırın
-
-**Proje** bölmesinde, öğesine gidin `Assets/AzureSpatialAnchors.Examples/Scenes` ve `AzureSpatialAnchorsBasicDemo.unity` sahne dosyasını açın.
 
 Sonraki adım, uygulamayı hesap bilgilerinizi kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
 **Proje** bölmesinde öğesine gidin `Assets\AzureSpatialAnchors.SDK\Resources` . `SpatialAnchorConfig` öğesini seçin. Ardından, **Inspector** bölmesinde, için değer olarak değerini, için `Account Key` değeri olarak `Spatial Anchors Account Key` `Account ID` `Spatial Anchors Account Id` ve `Account Domain` değeri olarak değerini girin `Spatial Anchors Account Domain` .
 
-**Dosya**Kaydet ' i seçerek sahneyi kaydedin  >  **Save**.
+**Dosya**Kaydet ' i seçerek yaptığınız değişiklikleri kaydedin  >  **Save**.

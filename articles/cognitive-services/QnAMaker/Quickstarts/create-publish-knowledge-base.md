@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Bilgi Bankası oluşturma, eğitme ve yayımlama-S
 description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu makale, Soru-Cevap Oluşturma soruları yanıtlamak için basit bir SSS Web sayfasından Soru-Cevap Oluşturma Bilgi Bankası oluşturma örneği içerir.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540763"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535858"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -89,7 +89,7 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 
 ## <a name="publish-the-knowledge-base"></a>Bilgi bankasını yayımlama
 
-Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın içeriği `test` dizinden `prod` Azure Search 'te bir dizine gider.
+Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın içeriği `test` dizinden `prod` Azure Search 'te bir dizine taşınır.
 
 ![Bilgi Bankalarınızın içeriğini taşıma ekran görüntüsü](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 

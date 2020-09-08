@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079124"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536012"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme
 
@@ -110,30 +110,6 @@ Artık hub ve bağlı bileşen sanal ağlarını eşleyebilir.
 
 **Bağlı bileşen-02** sanal ağını bağlamak için tekrarlayın: bağlantı adı- **Merkez-bağlı-02**
 
-### <a name="configure-the-hub-and-spoke-routing"></a>Hub ve bağlı bileşen yönlendirmeyi yapılandırma
-
-Azure portal, bir Cloud Shell açın ve gerekli hub ve bağlı bileşen yönlendirmesini yapılandırmak için aşağıdaki Azure PowerShell çalıştırın. Eşlenen bağlı bileşen/dal bağlantıları, yayılmayı **none**olarak ayarlanmalıdır. Bu, bağlı bileşenler arasındaki herhangi bir iletişimi engeller ve bunun yerine, trafiği varsayılan yolu kullanarak güvenlik duvarlarına yönlendirir.
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
-
 ## <a name="deploy-the-servers"></a>Sunucuları dağıtma
 
 1. Azure portal **kaynak oluştur**' u seçin.
@@ -144,7 +120,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
    |---------|---------|
    |Kaynak grubu     |**FW-yönetici**|
    |Sanal makine adı     |**SRV-iş yükü-01**|
-   |Bölge     |**ABD Doğu ABD)**|
+   |Region     |**ABD Doğu ABD)**|
    |Yönetici Kullanıcı adı     |Kullanıcı adı yazın|
    |Parola     |parola yazın|
 

@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504526"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536064"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
-Bu makalede, anahtar kasanıza erişimi kısıtlamak için Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırmaya yönelik adım adım yönergeler sağlanmaktadır. [Key Vault için sanal ağ hizmet uç noktaları](overview-vnet-service-endpoints.md), belirtilen bir sanal ağa erişimi ve IPv4 (Internet Protokolü sürüm 4) adres aralıklarını kısıtlamanıza izin verir.
+Bu makalede, anahtar kasanıza erişimi kısıtlamak için Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırmaya yönelik adım adım yönergeler sağlanmaktadır. [Key Vault için sanal ağ hizmet uç noktaları](overview-vnet-service-endpoints.md) , belirtilen sanal ağa erişimi ve IPv4 (Internet Protokolü sürüm 4) adres aralıklarını kısıtlamanıza izin verir.
 
 > [!IMPORTANT]
 > Güvenlik duvarı kuralları etkin olduktan sonra, kullanıcılar, istekleri izin verilen sanal ağlardan veya IPv4 adres aralıklarından başlatıldığında yalnızca Key Vault [veri düzlemi](secure-your-key-vault.md#data-plane-access-control) işlemleri gerçekleştirebilir. Bu, Azure portal Key Vault erişmek için de geçerlidir. Kullanıcılar Azure portal bir anahtar kasasına gözatabilse de, istemci makineleri izin verilenler listesinde yoksa anahtarları, parolaları veya sertifikaları listelemeyebilir. Bu, diğer Azure hizmetleri tarafından Key Vault seçiciyi de etkiler. Kullanıcılar, güvenlik duvarı kuralları istemci makinesini engelliyorsa, anahtar kasalarının listesini görebilirler, ancak liste anahtarlarını göremez.
@@ -42,7 +42,7 @@ Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yap�
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
 6. **IP ağları**altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
 7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 
@@ -129,5 +129,5 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Key Vault Için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md))
-* [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md))
+* [Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
+* [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)
