@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçi
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 8c2784e999e751972883b6c9ffba2485bb9fe9e1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: abd8aafebe9cc02b8ee88cce88616389c82af83f
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950094"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514110"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Sunucu Değerlendirmesiyle VMware VM'lerini Değerlendirme
 
@@ -114,7 +114,7 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
     
         **Algoritma** | **İndir** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140337) | 7davb9445a89b47302994d6de4caddada092c1c582c8f3c1fc5b9c4908c7d2f9f7
+        VMware (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
 
 
 ### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
@@ -210,8 +210,8 @@ Azure geçişi sunucu değerlendirmesini kullanarak iki tür değerlendirme olu�
 
 **Değerlendirme türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi](concepts-assessment-calculation.md)
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Sunucu değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
 

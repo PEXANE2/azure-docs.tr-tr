@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8798808741fe5d659ed7afe96f415964296d356f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429126"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514394"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript V12 SDK ile Blobları yönetme
 
@@ -26,7 +26,7 @@ Ek kaynaklar:
 * [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob)
 * [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
@@ -97,7 +97,7 @@ Proje dizininden:
 
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
-    const uuidv1 = require('uuid/v1');
+    const { v1: uuid} = require('uuid');
 
     async function main() {
         console.log('Azure Blob storage v12 - JavaScript quickstart sample');
@@ -134,7 +134,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, JavaScript için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
-* [Kapsayıcı oluşturma](#create-a-container)
+* [Bir kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -156,7 +156,7 @@ Bu kodu işlevin içine ekleyin `main` :
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
-### <a name="create-a-container"></a>Kapsayıcı oluşturma
+### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir UUID değeri ekler.
 
