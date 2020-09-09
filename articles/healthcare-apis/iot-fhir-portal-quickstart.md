@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826781"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594382"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak FHIR için Azure IoT bağlayıcısını dağıtma (Önizleme)
 
@@ -169,7 +169,10 @@ Azure, IoT cihazlarınızı bağlamak ve yönetmek için kapsamlı bir IoT ürü
 > Gerçek cihazlarınız her seferinde, [cihazlarınızı](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) eklemek ve cihaz simülatörleri değiştirmek için aynı IoT Central uygulamasını kullanabilirsiniz. Cihaz verileriniz de otomatik olarak FHıR 'ye akar. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT verilerinizi FHıR için Azure IoT Bağlayıcısı (Önizleme) ile bağlama
-IoT Central Uygulamanızı dağıttıktan sonra, iki kullanıma hazır sanal aygıtınız telemetri oluşturmaya başlar. Bu öğreticide, FHıR için Azure IoT Bağlayıcısı aracılığıyla *akıllı Vintals düzeltme* simülatörü simülatisini fhır 'ye aktaracağız. IoT verilerinizi FHıR için Azure IoT bağlayıcısına aktarmak için [IoT Central içinde sürekli veri dışarı aktarma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export)kurmak istiyoruz. Sürekli veri dışa aktarma sayfasında:
+> [!WARNING]
+> Bu kılavuzda verilen cihaz eşleme şablonu, IoT Central içinde veri dışa aktarma (eski) ile çalışmak üzere tasarlanmıştır.
+
+IoT Central Uygulamanızı dağıttıktan sonra, iki kullanıma hazır sanal aygıtınız telemetri oluşturmaya başlar. Bu öğreticide, FHıR için Azure IoT Bağlayıcısı aracılığıyla *akıllı Vintals düzeltme* simülatörü simülatisini fhır 'ye aktaracağız. IoT verilerinizi FHıR için Azure IoT bağlayıcısına aktarmak için [IoT Central içinde sürekli veri dışarı aktarma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy)kurmak istiyoruz. Sürekli veri dışa aktarma sayfasında:
 - Dışarı aktarma hedefi olarak *Azure Event Hubs* 'yi seçin.
 - **Event Hubs ad alanı** alanı için *bağlantı dizesi değeri kullan* ' ı seçin.
 - FHıR **'nin bağlantı dizesi alanı için** önceki bir adımda elde edilen bağlantı dizesi Için Azure IoT Bağlayıcısı 'nı sağlayın.

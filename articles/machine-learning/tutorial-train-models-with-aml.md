@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: f56b289f65bf12c1ad89d046d6bc26acd76249ce
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 00fff79e2f572a6292336d0647d497a8851ef74a
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849788"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595555"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 > Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
 > Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı kurma
 
 Geliştirme çalışmanızdaki tüm kurulum bir Python not defterinde gerçekleştirilebilir. Kurulum aşağıdaki eylemleri içerir:
 
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Çalışma alanına bağlan
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`Dosya **config.js** okur ve ayrıntıları adlı bir nesneye yükler `ws` :
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()` Dosya **config.js** okur ve ayrıntıları adlı bir nesneye yükler `ws` :
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -183,7 +183,7 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Bazı örnek görüntüleri gösterme
 
-Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, `load_data` bir dosyaya eklenen bir işlev gerektirir `util.py` . Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. `load_data`İşlevi, sıkıştırılmış dosyaları yalnızca sayısal tuş takımı dizileri olarak ayrıştırır.
+Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, `load_data` bir dosyaya eklenen bir işlev gerektirir `utils.py` . Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. `load_data`İşlevi, sıkıştırılmış dosyaları yalnızca sayısal tuş takımı dizileri olarak ayrıştırır.
 
 ```python
 # make sure utils.py is in the same directory as this code
@@ -423,7 +423,7 @@ Sonraki öğreticide, bu modeli daha ayrıntılı bir şekilde araştırın.
 
 ## <a name="register-model"></a>Modeli kaydetme
 
-Eğitim betiğindeki son adım, dosyayı `outputs/sklearn_mnist_model.pkl` `outputs` işin ÇALıŞTıRıLDıĞı kümenin VM 'sinde adlı bir dizinde yazdı. `outputs`, bu dizindeki tüm içeriklerin çalışma alanınıza otomatik olarak yüklenmesini sağlayan özel bir dizindir. Bu içerik çalışma alanınızın altında yer alan denemedeki çalıştırma kaydında gösterilir. Bu nedenle model dosyası artık çalışma alanınızda de kullanılabilir.
+Eğitim betiğindeki son adım, dosyayı `outputs/sklearn_mnist_model.pkl` `outputs` işin ÇALıŞTıRıLDıĞı kümenin VM 'sinde adlı bir dizinde yazdı. `outputs` , bu dizindeki tüm içeriklerin çalışma alanınıza otomatik olarak yüklenmesini sağlayan özel bir dizindir. Bu içerik çalışma alanınızın altında yer alan denemedeki çalıştırma kaydında gösterilir. Bu nedenle model dosyası artık çalışma alanınızda de kullanılabilir.
 
 Bu çalıştırma ile ilişkili dosyaları görebilirsiniz:
 

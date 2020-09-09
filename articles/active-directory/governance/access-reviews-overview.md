@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 5c8f3b9933e09e4c31316037445643e83a2e9c07
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461009"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594348"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -94,8 +94,10 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 | Yönetici, 75 Kullanıcı ve 1 Grup sahibi ile A grubu için bir erişim incelemesi oluşturur ve Grup sahibini gözden geçiren olarak atar. | 1 Grup sahibi için gözden geçiren olarak lisans | 1 |
 | Yönetici, 500 Kullanıcı ve 3 Grup sahibi olan B grubunun erişim incelemesini oluşturur ve 3 Grup sahibini gözden geçirenler olarak atar. | Her grup sahibi için gözden geçirenler olarak 3 lisans | 3 |
 | Yönetici, 500 Kullanıcıyla Grup B 'ye erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendini gözden geçirenler olarak 500 lisans | 500 |
-| Yönetici, 50 üye kullanıcıları ve 25 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendine gözden geçirenler olarak 50 lisans.<br/>(Konuk kullanıcılar gereken 1:5 oranına göre ele alınmıştır) | 50 |
-| Yönetici, 6 üye kullanıcısı ve 108 Konuk kullanıcıyla Grup D 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her bir kullanıcı için kendi kendine gözden geçirenler olarak 6 lisans ve gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak ek lisanslar. 6 \* 5 = 30 Konuk kullanıcıyı kapsayan 6 lisans. Kalan (108-6 \* 5) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
+| Yönetici, 50 üye kullanıcıları ve 25 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendine gözden geçirenler olarak 50 lisans. * | 50 |
+| Yönetici, 6 üye kullanıcısı ve 108 Konuk kullanıcıyla Grup D 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendini gözden geçirenler olarak 6 lisans. Konuk kullanıcılar aylık bir etkin kullanıcı (MAU) temelinde faturalandırılır. Ek lisans gerekmez. *  | - |
+
+\* Azure AD dış kimlikleri (Konuk Kullanıcı) fiyatlandırması, aylık etkin kullanıcıları (MAU) temel alır. Bu, bir takvim ayı içinde kimlik doğrulama etkinliği olan benzersiz kullanıcıların sayısıdır. Bu model, kiracınızdaki Azure AD Premium her bir lisans için beş adede kadar Konuk kullanıcıya izin veren 1:5 orandaki faturalandırma modelinin yerini alır. Kiracınız bir aboneliğe bağlandığında ve konuk kullanıcılarla işbirliği yapmak için dış kimlikler özelliklerini kullandığınızda, MAU tabanlı faturalandırma modeli kullanılarak otomatik olarak faturalandırılırsınız. Daha fazla bilgi için bkz. Azure AD dış kimlikleri için faturalandırma modeli.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400441"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595997"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -25,6 +25,14 @@ Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasa
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Kasa kullanılabilirliğini, hizmet gecikme sürelerini veya Anahtar Kasası için diğer performans ölçümlerini nasıl izleyebilirim?
 
 Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen isteklerin sayısı artacaktır. Bu talep, isteklerinizin gecikme süresini artırmak ve olağanüstü durumlarda, hizmetinizin performansını etkileyecek olan isteklerinizin kısıtlanmasına neden olur. Anahtar Kasası performans ölçümlerini izleyebilir ve belirli eşiklere göre uyarı alabilir, izlemeyi yapılandırmaya yönelik adım adım kılavuz için [daha fazla](https://docs.microsoft.com/azure/key-vault/general/alert)bilgi edinebilirsiniz.
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Erişim ilkesini değiştiremem mümkün değil mi?
+Kullanıcının erişim ilkesini değiştirmek için yeterli AAD izinleri olması gerekir. Bu durumda, kullanıcının daha yüksek katkıda bulunan rolüne sahip olması gerekir.
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>' Unkize Ilkesi ' hatası görüyorum. Bu ne anlama gelir?
+Erişim ilkesini bilinmeyen bölümde görmekten iki farklı olasılık vardır:
+* Kullanıcının mevcut olmadığı bir nedenden dolayı, erişimi olan önceki bir kullanıcı olabilir.
+* Erişim ilkesi PowerShell aracılığıyla eklenirse ve erişim ilkesi, hizmet priciple yerine uygulama ObjectID için eklenirse
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Anahtar Kasası nesnesine göre erişim denetimini nasıl atayabilirim? 
 
