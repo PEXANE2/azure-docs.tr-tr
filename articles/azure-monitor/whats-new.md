@@ -6,16 +6,22 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827750"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569535"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="august-2020"></a>Ağustos 2020
+
+### <a name="containers"></a>Kapsayıcılar
+
+- [Kapsayıcılar Için Azure izleyici ile & HPA ölçümleri dağıtımı](insights/container-insights-deployment-hpa-metrics.md) -yeni makale.
 
 ## <a name="july-2020"></a>Temmuz 2020
 
@@ -138,7 +144,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma](platform/diagnostic-settings.md)
 - [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods)
-- [Azure platformu günlüklerine genel bakış](platform/platform-logs-overview.md)
+- [Azure platform günlüklerine genel bakış](platform/platform-logs-overview.md)
 - [Azure platformu günlüklerini bir olay hub 'ına akış](./platform/resource-logs.md#send-to-azure-event-hubs)
 - [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](./platform/activity-log.md#view-the-activity-log)
 
@@ -543,7 +549,7 @@ Tanılama ayarları kullanılarak etkinlik günlüğünü yapılandırmaya yöne
 - [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](platform/diagnostic-settings-template.md)
 - [Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluştur](platform/diagnostic-settings.md)
 - [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods)
-- [Azure platformu günlüklerine genel bakış](platform/platform-logs-overview.md)
+- [Azure platform günlüklerine genel bakış](platform/platform-logs-overview.md)
 - [Azure izleme verilerini Olay Hub 'ına akış](platform/stream-monitoring-data-event-hubs.md)
 - [Azure platformu günlüklerini bir olay hub 'ına akış](./platform/resource-logs.md#send-to-azure-event-hubs)
 

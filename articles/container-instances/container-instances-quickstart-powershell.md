@@ -2,18 +2,17 @@
 title: Hızlı başlangıç-Docker kapsayıcısını kapsayıcı örneğine dağıtma-PowerShell
 description: Bu hızlı başlangıçta, yalıtılmış bir Azure Container örneğinde çalışan kapsayıcılı bir Web uygulamasını hızlıca dağıtmak için Azure PowerShell kullanacaksınız
 services: container-instances
-author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533619"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565591"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure 'da kapsayıcı örneği dağıtma
 
@@ -47,7 +46,7 @@ Artık bir kaynak grubuna sahip olduğunuza göre Azure'da kapsayıcı çalışt
 
 Açılacak bir veya daha fazla bağlantı noktası, DNS ad etiketi ya da ikisini birden belirterek kapsayıcılarınızı internete açabilirsiniz. Bu hızlı başlangıçta, IIS 'nin genel olarak erişilebilir olması için DNS adı etiketiyle bir kapsayıcı dağıtırsınız.
 
-Bir kapsayıcı örneği başlatmak için aşağıdakine benzer bir komut yürütün. Örneği oluşturduğunuz `-DnsNameLabel` Azure bölgesi içinde benzersiz bir değer ayarlayın. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
+Bir kapsayıcı örneği başlatmak için aşağıdakine benzer bir komut yürütün. `-DnsNameLabel`Örneği oluşturduğunuz Azure bölgesi içinde benzersiz bir değer ayarlayın. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

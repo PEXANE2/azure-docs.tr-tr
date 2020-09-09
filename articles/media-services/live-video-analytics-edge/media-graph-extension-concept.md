@@ -3,12 +3,12 @@ title: Medya grafiği uzantısı nedir? Azure
 description: IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: d7e14a0336da75e1948cf6dc4dbdb51490b70021
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420838"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569347"
 ---
 # <a name="media-graph-extension"></a>Medya grafiği uzantısı
 
@@ -49,8 +49,9 @@ Bu nedenle, şu durumlarda bir gRPC uzantı işlemcisi düğümü kullanın:
 Medya grafiği uzantıları, tercih ettiğiniz çıkarım modellerini, ONNX, TensorFlow, PyTorch veya kendi Docker kapsayıcısındaki diğer kişiler gibi kullanılabilir bir çıkarma çalışma zamanı üzerinde çalıştırmanızı sağlar. En iyi performansı elde etmek için, Inse sınırlaması özel uzantısının canlı video analizi Edge modülü ile birlikte dağıtılması gerekir ve daha sonra, grafik topolojinize dahil edilen HTTP uzantısı işlemcisi veya gRPC uzantı işlemcisi aracılığıyla çağrılacaktır. Ayrıca, özel uzantıza yapılan çağrıların sıklığı isteğe bağlı olarak bir [hareket algılayıcısı işlemcisi](media-graph-concept.md#motion-detection-processor) ve medya uzantısı işlemcisine bir [kare hızı filtresi işlemcisi](media-graph-concept.md#frame-rate-filter-processor) yukarı akış eklenerek kısıtlanabilir.
 
 Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
- 
-![Veri akışı](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="AI çıkarımı hizmeti":::
 
 ## <a name="samples"></a>Örnekler
 

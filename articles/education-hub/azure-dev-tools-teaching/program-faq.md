@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102228"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567818"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Eğitim için Azure dev araçları hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Eğitim Merkezi hakkında sık sorulan sorular
 
 Bu makalede öğrenciler için Azure, öğrenciler için Azure başlangıç ve eğitim için Azure dev araçları hakkında sık sorulan sorular ele alınmaktadır.
 
@@ -42,7 +42,7 @@ Kalan kredilerinizi [Azure sponsorships portalında](https://www.microsoftazures
 
 ### <a name="how-do-i-download-the-software-developer-tools"></a>Yazılım geliştirici araçlarını Nasıl yaparım? indirmek mi?
 
-Öğrenciler için Azure aboneliğiniz, belirli yazılım geliştirici araçlarına erişmenizi sağlar. Yazılım Geliştirici araçlarına erişebilmek ve bunları indirmek için geçerli, etkin bir öğrenciler için Azure aboneliğine sahip olmanız gerekir. Öğrenciler için Azure aboneliğinizi kullanarak yazılım geliştirici araçları 'nı indirmek için [Eğitim Merkezi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) gidin.
+Öğrenciler için Azure aboneliğiniz, belirli yazılım geliştirici araçlarına erişmenizi sağlar. Yazılım Geliştirici araçlarına erişebilmek ve bunları indirmek için geçerli, etkin bir öğrenciler için Azure aboneliğine sahip olmanız gerekir. Öğrenciler için Azure aboneliğinizi kullanarak yazılım geliştirici araçları 'nı indirmek için  [Eğitim Merkezi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) gidin.
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn nedir?
 
@@ -64,7 +64,7 @@ Hayır. Kredilerinizi Azure Market tekliflerine uygulayamazsınız. Ancak, birç
 
 - Azure App Service
 - Azure İşlevleri
-- Azure Bildirim Merkezleri
+- Azure Notification Hubs
 - MySQL için Azure Veritabanı
 - Application Insights
 - Azure DevOps Services (eski adıyla Visual Studio Team Services)
@@ -103,7 +103,7 @@ Bu yazılımı [Eğitim Merkezi](https://ms.portal.azure.com/#blade/Microsoft_Az
 
 ### <a name="how-do-i-start-using-my-azure-course-credits"></a>Azure kursu kredilerimi kullanmaya başlamak Nasıl yaparım? mı?
 
-Azure kurs kredilerine, yeni bir Microsoft Azure akademik Izin aboneliği oluşturarak erişebilirsiniz. Sponsorluk onay e-postasında **Etkinleştir** düğmesini seçin.
+Azure kurs kredilerine, yeni bir Microsoft Azure akademik Izin aboneliği oluşturarak erişebilirsiniz. Sponsorluk onay e-postasında  **Etkinleştir** düğmesini seçin.
 
 Kredilerinizden erişmek için mevcut bir aboneliği Microsoft Azure Sponsorluğu teklifine de dönüştürebilirsiniz. Aboneliğinizi nasıl dönüştürebileceğiniz hakkındaki ayrıntılar bir sonraki soruda.
 
@@ -152,6 +152,11 @@ Azure kursu kredileri, yalnızca Azure Sponsorluğu teklifini etkinleştirdiğin
 Azure portal abonelikler dikey penceresinde belirli bir aboneliğe bakarsanız, özelliklerden biri olarak **teklif adı** ' nı görürsünüz. Teklif adı, kurs kredilerinizle bağlandıysa **Azure sponsorluğu** olacaktır. **Azure sponsorluğu** görünmezse, daha sonra dönüştürülmesini sağlamak için desteğe başvurun.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Öğretim için Azure Geliştirici Araçları
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Eğitim için Microsoft Azure dev araçları satın alma hakkına sahip misiniz?
+
+Yalnızca Microsoft ile toplu lisanslama (VL) sözleşmesi satın almış akademik kurumlar, öğretme için Azure dev araçlarına kaydolabilir.  Şu anda, VL sözleşmesi olmadan müşteriye eğitim için bir geliştirme araçlarınız varsa, aboneliğinizi yenilemeye devam edebilirsiniz. Akademik kurumlar için VL sözleşmeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin https://aka.ms/ees 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Eğitim aboneliği için Azure geliştirme araçlarına hangi ürünler dahildir?
 

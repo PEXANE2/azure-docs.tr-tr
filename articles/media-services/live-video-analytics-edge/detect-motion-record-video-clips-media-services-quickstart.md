@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067707"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569024"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -23,7 +23,7 @@ Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstar
 * Daha önce [Başlarken hızlı başlangıç](get-started-detect-motion-emit-events-quickstart.md) adımlarını tamamlamadıysanız, aşağıdaki adımları izleyin:
     * [Azure kaynakları ayarlama](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Modülleri dağıtma](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Visual Studio Code Yapılandır](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
+    * [Visual Studio Code’u yapılandırma](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
@@ -33,7 +33,8 @@ Azure kaynaklarını kurmak için yukarıdaki adımların bir parçası olarak, 
 
 Aşağıdaki adımları tamamladığınızda, arabasının bu hareketini saptamak için IoT Edge üzerinde canlı video analizi kullandınız ve 5 saniyelik bir işaret üzerinden başlayarak bir video klibini kaydedecaksınız. Aşağıdaki diyagram, genel akışın görsel gösterimidir.
 
-![Hareket olaylarına göre kıymetlere olay tabanlı video kaydı](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="Hareket olaylarına göre kıymetlere olay tabanlı video kaydı":::
 
 ## <a name="use-direct-method-calls"></a>Doğrudan Yöntem çağrılarını kullanın
 

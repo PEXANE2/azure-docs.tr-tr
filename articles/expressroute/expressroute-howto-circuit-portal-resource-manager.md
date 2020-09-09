@@ -7,17 +7,17 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322150"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566271"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Öğretici: ExpressRoute bağlantı hattı oluşturma ve değiştirme
 
 > [!div class="op_single_selector"]
-> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
@@ -75,7 +75,10 @@ Yeni kaynak oluşturma seçeneğini belirleyerek bir ExpressRoute bağlantı hat
     > [!IMPORTANT]
     > Eşleme konumu, Microsoft ile eşolduğunuz [fiziksel konumu](expressroute-locations.md) gösterir. Bu, Azure ağ kaynak sağlayıcısı 'nın bulunduğu coğrafi konuma başvuran "location" özelliği ile bağlantılı **değildir** . İlgili olmadıkları sürece, bir ağ kaynağı sağlayıcısını coğrafi olarak devrenin eşleme konumuna yakın bir şekilde tercih eden bir uygulamadır.
 
-    * **SKU** , bir ExpressRoute yerel, ExpressRoute Standard veya ExpressRoute Premium eklentisinin etkinleştirilip etkinleştirilmediğini belirler. Premium eklenti için standart SKU veya **Premium** 'u almak üzere yerel SKU, **Standart** almak için **Yerel** ' i belirtebilirsiniz.
+    * **SKU** , bir ExpressRoute yerel, ExpressRoute Standard veya ExpressRoute Premium eklentisinin etkinleştirilip etkinleştirilmediğini belirler. Premium eklenti için standart SKU veya **Premium** 'u almak üzere yerel SKU 'yu almak için **Yerel** **' i belirtebilirsiniz** . Premium eklentiyi etkinleştirmek için SKU 'YU değiştirebileceğinizi unutmayın.
+    > [!IMPORTANT]
+    > SKU 'YU **Standart/Premium** 'dan **Yerel**olarak değiştiremezsiniz.
+    
     * **Faturalandırma modeli** Faturalandırma türünü belirler. Tarifeli bir veri planı için **tarifeli** ve sınırsız bir veri planı için **sınırsız** bir şekilde belirtebilirsiniz. Faturalandırma türünü **tarifeli** iken **sınırsız**olarak değiştirebileceğinizi unutmayın.
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ Bağlantıyı etkilemeden bir ExpressRoute devresine ait belirli özellikleri de
 Kapalı kalma süresi olmadan aşağıdaki görevleri gerçekleştirebilirsiniz:
 
 * ExpressRoute devreniz için bir ExpressRoute Premium eklentisini etkinleştirin veya devre dışı bırakın.
+
+> [!IMPORTANT]
+  > SKU 'nun **Standart/Premium** 'dan **Yerel** olarak değiştirilmesi desteklenmez.
+
 * Bağlantı noktasında kullanılabilir kapasite olması şartıyla ExpressRoute devrenizi için bant genişliğini artırın.
 
   > [!IMPORTANT]

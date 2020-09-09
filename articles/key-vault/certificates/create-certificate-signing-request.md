@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716121"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569382"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -100,8 +100,11 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-- **Hata türü ' belirtilen X ile son varlık sertifikasının ortak anahtarı. 509.440 sertifika içeriği belirtilen özel anahtarın ortak bölümüyle eşleşmiyor. Lütfen sertifikanın geçerli olup olmadığını denetleyin** . CSR 'yi aynı CSR isteği ile birleştirdiğimde bu hata oluşabilir. CSR her oluşturulduğunda, imzalanmış istek birleştirilirken eşleşmesi gereken özel bir anahtar oluşturur.
+- **Hata türü ' belirtilen X ile son varlık sertifikasının ortak anahtarı. 509.440 sertifika içeriği belirtilen özel anahtarın ortak bölümüyle eşleşmiyor. Lütfen sertifikanın geçerli olup olmadığını denetleyin** . CSR 'yi aynı CSR isteği ile birleştirdiğimde bu hata oluşabilir. CRS her oluşturulduğunda, imzalanmış isteği birleştirirken eşleştirilmesi gereken bir özel anahtar oluşturur.
     
+- CSR birleştirildiğinde, tüm zinciri birleştiriyordu mi?
+    Evet, kullanıcının bir P7B dosyasını birleştirme için geri hazırlayamadığı belirtilen zincir tüm zinciri birleştirir.
+
 - Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini gözden geçirmek için **sertifika işlemini** görüntüleme adımına geçin.
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).

@@ -2,14 +2,14 @@
 title: OpenVINO™ model sunucusu – AI Uzantısı ile Intel arasında canlı videoyu çözümleme
 description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için Intel tarafından sunulan bir AI modeli sunucusu kullanacaksınız.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950264"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567597"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -30,6 +30,7 @@ Bu öğretici bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir 
 > Azure IoT araçları 'nı yüklerken Docker 'ı yüklemeniz istenebilir. İstemi yoksayabilirsiniz.
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
+
 Azure kaynaklarını ayarlarken, bir park lotunun kısa bir videosu, Azure 'da IoT Edge cihaz olarak kullandığınız Linux VM 'sine kopyalanır. Bu hızlı başlangıçta canlı bir akışın benzetimini yapmak için video dosyası kullanılmaktadır.
 
 [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama açın. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak için [videoya](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bir bağlantı yapıştırın. Her bir park partisi, bunların Park yeri ve tek bir hareket halinde araçlar görürsünüz.
@@ -38,7 +39,8 @@ Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanar
 
 ## <a name="overview"></a>Genel Bakış
 
-![Genel Bakış](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Genel Bakış":::
 
 Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , gerçek zamanlı akış protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetim yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır. 
 
@@ -46,7 +48,7 @@ HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Video çerçevele
 
 Bu öğreticide şunları yapacaksınız:
 
-1. Medya grafiğini oluşturma ve dağıtma, bunu değiştirme 
+1. Medya grafiğini oluşturun ve dağıtın.
 1. Sonuçları yorumlayın.
 1. Kaynakları temizleyin.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825367"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569314"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
@@ -90,10 +90,10 @@ Yeni konuşma kaynağınızın dağıtılması birkaç dakika sürer. Dağıtım
 
 Her biri temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan en popüler programlama dillerinde hızlı başlangıçlar sunuyoruz. Her bir özelliğin hızlı başlangıcı için aşağıdaki listeye bakın.
 
-* [Konuşmayı metne hızlı başlangıç](speech-to-text-basics.md)
+* [Konuşmayı metne hızlı başlangıç](get-started-speech-to-text.md)
 * [Metin okuma için hızlı başlangıç](get-started-text-to-speech.md)
-* [Konuşma çevirisi hızlı başlangıç](speech-translation-basics.md)
-* [Amaç tanıma hızlı başlangıç](quickstarts/intent-recognition.md)
+* [Konuşma çevirisine hızlı başlangıç](speech-translation-basics.md)
+* [Amaç tanıma hızlı başlangıcı](quickstarts/intent-recognition.md)
 * [Konuşmacı Tanıma hızlı başlangıç](speaker-recognition-basics.md)
 
 Konuşma hizmetini kullanmaya başlama şansınız olduktan sonra, çeşitli senaryoları nasıl çözeceğinizi gösteren öğreticilerimizi deneyin.
@@ -117,7 +117,7 @@ Konuşma hizmeti yerleşik modellerle iyi çalışmaktadır, ancak ürününüz�
 
 Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan konuşma modellerini sunar, ancak herkese eşit olarak erişilebilir. Azure konuşma 'da özelleştirme, başka bir kullanıcı veya müşteri tarafından kullanılamayan *benzersiz rekabet avantajlarınızın* bir parçası haline gelir. Diğer bir deyişle, modelleriniz özel ve yalnızca kullanım için özel olarak ayarlanmıştır.
 
-| Konuşma Hizmeti | Platform | Açıklama |
+| Konuşma Hizmeti | Platform | Description |
 | -------------- | -------- | ----------- |
 | Konuşmayı Metne Dönüştürme | [Özel Konuşma Tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelme. |
 | Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Kullanılabilir konuşma verilerinizle Metin Okuma uygulamalarınız için tanınabilir, kendine özgü bir ses oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |

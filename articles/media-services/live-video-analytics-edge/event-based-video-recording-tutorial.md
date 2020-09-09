@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011796"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568583"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -62,7 +62,8 @@ Olay tabanlı video kaydı, bir olay tarafından tetiklenen videoyu kaydetme sü
 
 Alternatif olarak, yalnızca bir ınpoger hizmeti belirli bir olayın oluştuğunu algıladığında kayıt tetikleyebilirsiniz. Bu öğreticide, bir otobana hareket eden bir eğitim videosunu kullanacaksınız ve her kamyon algılandığında video kliplerini kaydedeceksiniz.
 
-![Medya grafiği](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Medya grafiği":::
 
 Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
 
@@ -80,7 +81,8 @@ Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu ya
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
-![Uygulama ayarları](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Uygulama ayarları":::
 
 Bu öğreticide ilgilendiğiniz dosyalar şunlardır:
 
@@ -91,7 +93,7 @@ Bu adımlar için dosyalara ihtiyacınız olacaktır.
 
 1. GitHub bağlantısından depoyu kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Visual Studio Code başlatın ve depoyu indirdiğiniz klasörü açın.
-1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve **üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
+1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve ** üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
 1. Dosyadaki ~/CloudDrive/LVA-Sample/appsettings.jsiçeriğini kopyalayın. Metin şöyle görünmelidir:
 
     ```
@@ -152,7 +154,8 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 
 Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) izleyin. Ardından **IoT Edge çözüm oluştur ve Gönder '** i seçin. Bu adım için src/Edge/deployment.objectCounter.template.jskullanın.
 
-![IoT Edge çözümü oluşturun ve gönderin](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge çözümü oluşturun ve gönderin":::
 
 Bu eylem nesne sayma için objectCounter modülünü oluşturur ve görüntüyü Azure Container Registry iter.
 
@@ -160,7 +163,8 @@ Bu eylem nesne sayma için objectCounter modülünü oluşturur ve görüntüyü
 
 Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
 
-![Tek cihaz için dağıtım oluştur](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Tek bir cihaz için dağıtım oluşturma":::
 
 IoT Edge üzerinde canlı video analiziyle ilgili ilk öğreticeniz varsa, Visual Studio Code IoT Hub bağlantı dizesini girmenizi ister. Dosyadaki appsettings.jskopyalayabilirsiniz.
 
@@ -169,7 +173,8 @@ Sonra, Visual Studio Code IoT Hub bir cihaz seçmenizi ister. LVA-örnek-cihaz o
 Bu aşamada, Edge modüllerinin IoT Edge cihazınıza dağıtılması başladı.
 Yaklaşık 30 saniye içinde, Visual Studio Code sol alt bölümdeki Azure IoT Hub yenileyin. LvaEdge, rtspsim, yolov3 ve objectCounter adlı dört modülün dağıtıldığını görmeniz gerekir.
 
-![Dört modül dağıtıldı](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Dört modül dağıtıldı":::
 
 ## <a name="prepare-for-monitoring-events"></a>İzleme olaylarını hazırlama
 
@@ -179,9 +184,10 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 1. **Cihazlar** düğümünü genişletin.
 1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
-   ![Yerleşik olay uç noktasını Izlemeye başla](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>Programı çalıştırma
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Yerleşik olay uç noktasını izlemeye başla":::
+    
+    ## <a name="run-the-program"></a>Programı çalıştırma
 
 1. Visual Studio Code ' de, src/buluttan cihaza-Console-App/operations.json ' a gidin.
 
@@ -390,13 +396,14 @@ Grafik tarafından oluşturulan Media Services varlığını, Azure portal oturu
 1. Aboneliğinizdeki kaynaklar arasında Media Services hesabınızı bulun. Hesap bölmesini açın.
 1. **Media Services** listesinden **varlıklar** ' ı seçin.
 
-    ![Varlıklar](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Sürekli video kaydı":::
 1. SampleAssetFromEVR-LVAEdge-{DateTime} adıyla listelenmiş bir varlık bulacaksınız. Bu, RecordingStarted olayının outputLocation özelliğinde verilen addır. Topolojideki assetNamePattern, bu adın nasıl oluşturulduğunu belirler.
 1. Varlığı seçin.
 1. Varlık ayrıntıları sayfasında **akış URL 'si** metin kutusunda **Yeni oluştur** ' u seçin.
 
-    ![Yeni varlık](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Yeni varlık":::
 1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 04/23/2020
 ms.author: lbosq
-ms.openlocfilehash: ba3b20f263f37d85389bb11c0674584408a0c223
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 75a796a860acbd4279938b315fafccb9333906bd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161648"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567274"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin grafik desteği
 Azure Cosmos DB, [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)olarak bilinen [Apache tinkerpop 'un](https://tinkerpop.apache.org) grafik çapraz geçiş dilini destekler. Grafik varlıkları (köşeler ve kenarlar) oluşturmak, bu varlıkların içindeki özellikleri değiştirmek, sorgu ve geçiş işlemleri gerçekleştirmek ve varlıkları silmek için Gremlin dilini kullanabilirsiniz. 
@@ -23,9 +23,9 @@ Bu makalede, Gremlin için hızlı bir yol sunuyoruz ve Gremlin API tarafından 
 
 Aşağıdaki tabloda Azure Cosmos DB’ye karşı kullanabileceğiniz popüler Gremlin sürücüleri gösterilir:
 
-| İndirme | Kaynak | Başlarken | Desteklenen bağlayıcı sürümü |
+| İndir | Kaynak | Başlarken | Desteklenen bağlayıcı sürümü |
 | --- | --- | --- | --- |
-| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub’da Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET kullanarak Grafik oluşturma](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [GitHub’da Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET kullanarak Grafik oluşturma](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Java kullanarak Grafik oluşturma](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub’da Gremlin-JavaScript](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Node.js kullanarak Grafik oluşturma](create-graph-nodejs.md) | 3.3.4 + |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python kullanarak Grafik oluşturma](create-graph-python.md) | 3.2.7 |
@@ -91,7 +91,7 @@ Köşelere yönelik JSON biçimi tarafından kullanılan özellikler aşağıda 
 
 | Özellik | Açıklama | 
 | --- | --- | --- |
-| `id` | Köşenin kimliği. Benzersiz olmalıdır ( `_partition` varsa değeriyle birlikte). Değer sağlanmazsa, otomatik olarak bir GUID ile sağlanacaktır | 
+| `id` | Köşenin kimliği. Benzersiz olmalıdır (varsa değeriyle birlikte `_partition` ). Değer sağlanmazsa, otomatik olarak bir GUID ile sağlanacaktır | 
 | `label` | Köşenin etiketi. Bu özellik varlık türünü tanımlamakta kullanılır. |
 | `type` | Grafik olmayan belgelerdeki köşeleri ayırt etmek için kullanılır |
 | `properties` | Köşe ile ilişkili, kullanıcı tanımlı özellikler paketi. Her bir özellik birden çok değere sahip olabilir. |
@@ -102,7 +102,7 @@ Kenar, grafiğin diğer bölümlerine gezintiyi kolaylaştırmak için aşağıd
 
 | Özellik | Açıklama |
 | --- | --- |
-| `id` | Kenarın kimliği. Benzersiz olmalıdır ( `_partition` varsa değeriyle birlikte) |
+| `id` | Kenarın kimliği. Benzersiz olmalıdır (varsa değeriyle birlikte `_partition` ) |
 | `label` | Kenarın etiketi. Bu özellik isteğe bağlıdır ve ilişki türünü tanımlamak için kullanılır. |
 | `inV` | Bu özellik, bir kenar için köşelerin bir listesini içerir. Komşuluk bilgilerini kenarla birlikte depolamak, geçişlerin hızla yürütülmesini sağlar. Köşeler etiketlerine göre gruplandırılır. |
 | `properties` | Kenar ile ilişkili, kullanıcı tanımlı özellikler paketi. Her bir özellik birden çok değere sahip olabilir. |
@@ -116,7 +116,7 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 ## <a name="gremlin-steps"></a>Gremlin adımları
 Şimdi de Azure Cosmos DB tarafından desteklenen Gremlin adımlarına bakalım. Gremlin hakkında eksiksiz bir başvuru için bkz. [TinkerPop başvurusu](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| adım | Açıklama | TinkerPop 3.2 Belgeleri |
+| adım | Description | TinkerPop 3.2 Belgeleri |
 | --- | --- | --- |
 | `addE` | İki köşe arasına kenar ekler | [addE step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Grafiğe bir köşe ekler | [addV step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -148,7 +148,7 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 | `sample` | Sonuçları geçişten örneklendirmek için kullanılır | [sample step](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Sonuçları geçişten projelendirmek için kullanılır |  [select step](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Geçişteki engelleyici olmayan toplamalar için kullanılır | [store step](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Dize filtreleme işlevi. Bu işlev, `has()` bir özelliğin belirli bir dizenin başlangıcıyla eşleşmesi için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Dize filtreleme işlevi. Bu işlev, bir `has()` özelliğin belirli bir dizenin başlangıcıyla eşleşmesi için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.endingWith(string)` |  Dize filtreleme işlevi. Bu işlev, `has()` belirli bir dizenin sonu ile bir özelliği eşleştirmek için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.containing(string)` | Dize filtreleme işlevi. Bu işlev, `has()` belirli bir dizenin içeriğiyle bir özelliği eşlemek için adım için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notStartingWith(string)` | Dize filtreleme işlevi. Bu işlev, `has()` belirli bir dize ile başlamabir özelliği eşlemek için adım için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |

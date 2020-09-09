@@ -7,15 +7,15 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: 26f27297b651da11bf6dd76236709e5bfb77d90e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395409"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566883"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute nedir?
-ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
+ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Microsoft 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
 Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.  ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarına Internet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, tutarlı gecikme süreleri ve daha yüksek güvenlik sunma olanağı sağlar. ExpressRoute kullanarak ağınızı Microsoft’a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md).
 
@@ -44,7 +44,7 @@ Her ExpressRoute bağlantı hattı, bağlantı sağlayıcısından/ağ ucunuzdak
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Microsoft bulut hizmetlerine bağlantı
 ExpressRoute bağlantıları aşağıdaki hizmetlere erişim sağlar:
 * Microsoft Azure hizmetleri
-* Microsoft Office 365 hizmetleri
+* Microsoft 365 hizmetleri
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

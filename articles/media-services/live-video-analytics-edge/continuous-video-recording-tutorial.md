@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043478"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566814"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -61,7 +61,8 @@ Medya [grafiği kavram](media-graph-concept.md) makalesinde açıklandığı gib
  
  CVR 'yi gerçekleştirmek için, bir RTSP özellikli kameradan videoyu yakalamanız ve sürekli olarak [Azure Media Services bir varlık](terminology.md#asset)kaydetmeniz gerekir. Bu diyagramda, bu medya grafiğinin grafik temsili gösterilmektedir.
 
-![Medya grafiği](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Medya grafiği":::
 
 Bu öğreticide, bir RTSP kamerasının benzetimini yapmak için [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) kullanılarak oluşturulan bir kenar modülünü kullanacaksınız. Medya grafiğinde, bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak canlı akışı alabilir ve videoyu bir varlığa kaydeden [varlık havuzu düğümüne](media-graph-concept.md#asset-sink)gönderebilirsiniz.
 
@@ -80,7 +81,7 @@ Bu adımlar için dosyalar gereklidir:
 
 1. GitHub bağlantısından depoyu kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Visual Studio Code başlatın ve depoyu indirdiğiniz klasörü açın.
-1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve **üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
+1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve ** üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
 1. Dosyadaki ~/CloudDrive/LVA-Sample/appsettings.jsiçeriğini kopyalayın. Metin şöyle görünmelidir:
     ```
     {  
@@ -130,11 +131,11 @@ Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturdu�
 
 Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından bir bildirim oluşturmak ve ardından bunu Edge cihazına dağıtmak için bu adımları izleyin.
 
-1. Visual Studio Code’u başlatın.
+1. Visual Studio Code’u başlatma.
 1. Sol alt köşedeki **Azure ıOT hub** bölmesinin yanındaki **daha fazla eylem** simgesini seçerek IoT Hub bağlantı dizesini ayarlayın. Dosyayı src/buluttan-cihazdan-Console-App/appsettings.jsdosyasından kopyalayın. 
 
     ![IoT Hub bağlantı dizesi ayarla](./media/quickstarts/set-iotconnection-string.png)
-1. Dosyasında src/Edge/deployment.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin. Visual Studio Code, dağıtım şablonu dosyasında bulunan değişkenleri değiştirmek için. env dosyasındaki değerleri kullanır. Bu eylem, **üzerindedeployment.amd64.js**adlı src/Edge/config klasöründe bir bildirim dosyası oluşturur.
+1. Dosyasında src/Edge/deployment.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin. Visual Studio Code, dağıtım şablonu dosyasında bulunan değişkenleri değiştirmek için. env dosyasındaki değerleri kullanır. Bu eylem, ** üzerindedeployment.amd64.js**adlı src/Edge/config klasöründe bir bildirim dosyası oluşturur.
 
    ![IoT Edge dağıtım bildirimi oluştur](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
 1. Dosyasında src/Edge/config/deployment.amd64.jsöğesine sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
@@ -352,7 +353,7 @@ Medya grafiği tarafından oluşturulan Media Services varlığı, Azure portal 
 1. Aboneliğinizdeki kaynaklar arasında Media Services hesabınızı bulun ve hesap bölmesini açın.
 1. **Media Services** listesinden **varlıklar** ' ı seçin.
 
-    ![Varlıklar](./media/continuous-video-recording-tutorial/assets.png)
+    ![Media Services varlıklar](./media/continuous-video-recording-tutorial/assets.png)
 1. Samplevarlık-CVRToAMSAsset-Sample-Graph-1 adında listelenen bir varlık bulacaksınız. Bu, Graf topolojisi dosyanızda seçilen adlandırma modelidir.
 1. Varlığı seçin.
 1. Varlık ayrıntıları sayfasında **akış URL 'si** metin kutusunda **Yeni oluştur** ' u seçin.

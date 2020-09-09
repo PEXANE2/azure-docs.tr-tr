@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: duau
-ms.openlocfilehash: ab59de49b7cf625220f8a803aab9d2b9a2ae5937
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398776"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569246"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Hızlı başlangıç: Yüksek oranda kullanılabilir global web uygulaması için Front Door oluşturma
 
@@ -26,7 +26,7 @@ Bir Web uygulaması için yüksek kullanılabilirlik ayarlamak üzere Azure port
 
 Bu hızlı başlangıçta Azure ön kapısı, farklı Azure bölgelerinde çalışan bir Web uygulamasının iki örneğini havuzlar. Eşit ağırlıklı ve aynı öncelikli arka uçlara dayalı bir ön kapı yapılandırması oluşturursunuz. Bu yapılandırma, trafiği uygulamayı çalıştıran en yakın siteye yönlendirir. Azure ön kapısı, Web uygulamasını sürekli izler. Hizmet, en yakın site kullanılamadığında, kullanılabilir bir sonraki siteye otomatik yük devretme sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -165,5 +165,3 @@ Diğer iki grup için yordamı tekrarlayın.
 Ön kapıya özel bir etki alanı ekleme hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
 > [Özel etki alanı ekleme](front-door-custom-domain.md)
-
-Yönlendirme trafiği hakkında daha fazla bilgi için bkz. [ön kapı yönlendirme yöntemleri](front-door-routing-methods.md).

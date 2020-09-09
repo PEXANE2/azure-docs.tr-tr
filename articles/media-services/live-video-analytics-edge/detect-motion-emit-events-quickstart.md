@@ -4,18 +4,18 @@ description: Bu hızlı başlangıçta, program aracılığıyla doğrudan yönt
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 45595e8e6aa53b41d6d8b0d9d11457468dc47013
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d8b91529eaf5a9ee93cff28153b28b26fb7e685
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691043"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566933"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Hızlı başlangıç: hareket ve yayma olaylarını Algıla
 
 Bu hızlı başlangıç, IoT Edge üzerinde canlı video analizlerini kullanmaya başlamanıza yönelik adımlarda size yol gösterir. IoT Edge cihazı olarak bir Azure sanal makinesi ve canlı video akış simülasyonu kullanır. Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algılayan ve raporlayan bir medya grafiğiyle sanal bir canlı video akışı çalıştırabileceksiniz. Aşağıdaki diyagramda, bu medya grafiğinin grafik temsili gösterilmektedir.
 
-![Hareket algılamayı temel alan canlı video analizi](./media/analyze-live-video/motion-detection.png) 
+![Hareket algılamayı temel alan canlı video analizi](./media/analyze-live-video/motion-detection.svg) 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/csharp/header.md)]
@@ -25,7 +25,7 @@ Bu hızlı başlangıç, IoT Edge üzerinde canlı video analizlerini kullanmaya
 [!INCLUDE [header](includes/detect-motion-emit-events-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/detect-motion-emit-events-quickstart/csharp/prerequisites.md)]

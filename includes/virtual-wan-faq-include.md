@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304044"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569998"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -83,7 +83,7 @@ P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır. İlk yö
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Kullanıcı VPN için (Noktadan siteye)-kaç istemci destekleniyor?
 
-Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12 5000 bağlantıları destekler ve birim ölçek 13-20, en fazla 10.000 bağlantıyı destekler. 
+Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12 5000 bağlantıları destekler ve birim ölçek 13-18, en fazla 10.000 bağlantıyı destekler. 
 
 Örnek olarak, kullanıcının 1 ölçek birimi seçtiği konusunda izin verir. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) en fazla 500 bağlantıyı destekleyeceği anlamına gelmez. Ağ Geçidi başına 500 bağlantı alabilmeniz için bu ölçek birimi için 500 yerine 1000 planlaması yapmanız anlamına gelmez. Önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğraması durumunda örneklere bakım yapılması gerekebilir. Ayrıca, ölçek biriminde ölçeği büyütme veya küçültme kararı verirken veya VPN ağ geçidinde Noktadan siteye yapılandırmayı değiştirmek için kapalı kalma süresi planlandığınızdan emin olun.
 

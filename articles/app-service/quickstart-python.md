@@ -2,20 +2,21 @@
 title: 'Hızlı başlangıç: Python uygulaması oluşturma'
 description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 3bfe927b2c9dc16de8712f6c1793e850df92c201
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078461"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568923"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) bir Mac, Linux veya Windows bilgisayarında kullanırsınız. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
 
-Uygulamaları bir IDE aracılığıyla dağıtmayı tercih ediyorsanız, bkz. [Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/developer/python/tutorial-deploy-app-service-on-linux-01).
+> [!NOTE]
+> Uygulamaları bir IDE aracılığıyla dağıtmayı tercih ediyorsanız, bkz. **[Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.
 
 ## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
 
@@ -67,15 +68,10 @@ Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure C
 
 ## <a name="clone-the-sample"></a>Örneği
 
-Aşağıdaki komutla örnek depoyu kopyalayın. (Zaten git yoksa[Git 'ı yükleyebilirsiniz](https://git-scm.com/downloads) .)
+Aşağıdaki komutla örnek depoyu kopyalayın ve klasöre gidin. (Zaten git yoksa[Git 'ı yükleyebilirsiniz](https://git-scm.com/downloads) .)
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-```
-
-Daha sonra bu klasöre gidin:
-
-```terminal
 cd python-docs-hello-world
 ```
 
@@ -157,7 +153,7 @@ az webapp up --sku F1 -n <app-name>
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 - `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-` *). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 - `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
-- İsteğe bağlı olarak, `-l <location-name>` `<location_name>` **westeurope**, **koreagüney**, **brazilsouth**, **merkezileştirme**vb. **eastasia** **gibi**bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) .
+- İsteğe bağlı olarak, `-l <location-name>` `<location_name>` **westeurope**, **koreagüney**, **brazilsouth**, **merkezileştirme**vb. **eastasia** **gibi**bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
 
 Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak grubu oluşturma, App Service planı ve barındırma uygulaması, günlüğü yapılandırma ve ardından ZIP dağıtımı gerçekleştirme hakkında iletiler sağlar. Daha sonra, "uygulamayı &lt; &gt; Azure 'da uygulamanın URL 'si olan http://app-name. azurewebsites.net konumunda başlatabilirsiniz.
