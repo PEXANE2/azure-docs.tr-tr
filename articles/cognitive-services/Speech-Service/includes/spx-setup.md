@@ -12,7 +12,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 09/04/2020
 ms.locfileid: "89494340"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tek önkoşul, bir Azure konuşma aboneliğudur. Henüz bir abonelik yoksa, yeni abonelik oluşturma [kılavuzuna](../get-started.md#new-resource) bakın.
 

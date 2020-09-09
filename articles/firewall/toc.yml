@@ -1,17 +1,9 @@
 - name: Azure Güvenlik Duvarı belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Güvenlik Duvarı nedir?
       href: overview.md
-- name: Öğreticiler
-  items:
-    - name: Dağıtma ve yapılandırma
-      href: tutorial-firewall-deploy-portal.md
-    - name: Hibrit ağda dağıtma
-      href: tutorial-hybrid-portal.md
-    - name: DNAT ile gelen trafiği filtreleme
-      href: tutorial-firewall-dnat.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -24,6 +16,14 @@
     - name: Kullanılabilirlik Alanları ile dağıtma - ARM şablonu
       displayName: Resource Manager
       href: deploy-template.md
+- name: Öğreticiler
+  items:
+    - name: Dağıtma ve yapılandırma
+      href: tutorial-firewall-deploy-portal.md
+    - name: Hibrit ağda dağıtma
+      href: tutorial-hybrid-portal.md
+    - name: DNAT ile gelen trafiği filtreleme
+      href: tutorial-firewall-dnat.md
 - name: Örnekler
   items:
     - name: Azure PowerShell

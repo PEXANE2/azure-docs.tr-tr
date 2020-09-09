@@ -1,6 +1,6 @@
 - name: Video Indexer Belgeleri
   href: ./index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Video Indexer nedir?
       href: video-indexer-overview.md
@@ -102,6 +102,7 @@
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Bölgeler
+      displayName: location
       href: regions.md
     - name: SSS
       href: faq.md
