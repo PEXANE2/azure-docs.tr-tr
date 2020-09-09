@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697389"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612055"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Stream Analytics ile telefon araması verilerini analiz edin ve sonuçları Power BI panoda görselleştirin
 
@@ -28,12 +28,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İşi test etme ve başlatma
 > * Sonuçları Power BI’da görselleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki işlemleri yapın:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 * [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefon araması olay oluşturucu uygulamasını Microsoft İndirme Merkezi’nden indirin veya [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)’dan kaynak kodu edinin.
 * Power BI hesabınız olmalıdır.
 
@@ -43,7 +43,7 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Event Hubs**.
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -51,7 +51,7 @@ Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek içi
 
    |**Ayar**  |**Önerilen değer** |**Açıklama**  |
    |---------|---------|---------|
-   |Ad     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
+   |Name     | myEventHubsNS        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
    |Abonelik     |   \<Your subscription\>      |   Olay hub'ını oluşturmak istediğiniz Azure aboneliğini seçin.      |
    |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
    |Konum     |   Batı ABD 2      |    Olay hub'ı ad alanının dağıtılabildiği konum.     |
@@ -185,7 +185,7 @@ Son adım, işin dönüştürülmüş verileri yazabileceği bir çıkış havuz
 
    ![Stream Analytics çıkışını yapılandırma](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin.
+4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin. Yönetilen kimliği kullanmak için, bkz. [Azure Stream Analytics işinizin kimliğini doğrulamak Için yönetilen kimliği kullanma Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Giriş verilerini analiz etmek için sorgu tanımlama
 

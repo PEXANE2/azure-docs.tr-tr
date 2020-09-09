@@ -4,15 +4,15 @@ description: Yüksek performanslı bilgi işlem için bir dosya erişim Hızland
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053686"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611749"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
@@ -65,11 +65,11 @@ Azure HPC önbelleğinin kullanılabilir olduğunu öğrenmek için [bölgeye g�
 * US Gov Arizona
 * US Gov Virginia
 
-## <a name="service-availability"></a>Hizmet kullanılabilirliği
+<!-- ## Service availability
 
-Azure HPC Cache ile kullanacağınız her abonelik için erişim istemeniz gerekir. Bu kısıtlama hizmet kalitesinin sağlanmasına yardımcı olur.
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-[Bu formu](https://aka.ms/onboard-hpc-cache)doldurarak erişim isteyin. Aboneliğiniz erişim listesine eklendikten sonra önbellekler oluşturabilirsiniz.
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

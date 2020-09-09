@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510183"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612792"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için sıralı dağıtım stratejisini yapılandırma
 
-Azure DevOps, her türlü Azure kaynağı için DevOps işleminin her bölümünü otomatikleştiren yerleşik bir Azure hizmetidir. Uygulamanızda sanal makineler, Web Apps, Kubernetes veya başka herhangi bir kaynak kullanılıyorsa, Azure ve Azure DevOps ile kod olarak altyapı (IaaC), sürekli tümleştirme, sürekli test, sürekli teslim ve sürekli izleme uygulayabilirsiniz.
+Azure DevOps, her türlü Azure kaynağı için DevOps işleminin her bölümünü otomatikleştiren yerleşik bir Azure hizmetidir. Uygulamanızda sanal makineler, Web Apps, Kubernetes veya başka herhangi bir kaynak kullanılıyorsa, Azure ve Azure DevOps ile kod olarak altyapı (IAC), sürekli tümleştirme, sürekli test, sürekli teslim ve sürekli izleme uygulayabilirsiniz.
 
 ![Hizmetler altında seçili Azure DevOps ile Azure portal](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 

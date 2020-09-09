@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326474"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612179"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -78,7 +78,7 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
 
 1. Veri **deposundan veri kümesi oluştur**' u seçin  >  **From datastore**.
 1. Veri kümenize bir **ad** atayın.
-1. **Veri kümesi türü**olarak **Dosya** ' yı seçin.  
+1. **Veri kümesi türü**olarak **Dosya** ' yı seçin.  Yalnızca dosya veri kümesi türleri desteklenir.
 1. Veri deposunu seçin.
 1. Verileriniz blob depolamalarınızın içindeki bir alt klasördeyse, yolu seçmek için, **Araştır** ' ı seçin.
     * Seçili yolun alt klasörlerindeki tüm dosyaları dahil etmek için yola "/* *" ekleyin.
