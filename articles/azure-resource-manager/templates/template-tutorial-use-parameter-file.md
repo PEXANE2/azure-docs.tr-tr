@@ -2,22 +2,22 @@
 title: Öğretici-şablon dağıtmak için parametre dosyası kullanma
 description: Azure Resource Manager şablonunuzu dağıtmak için kullanılacak değerleri içeren parametre dosyalarını kullanın.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff3ba6bdf93fd51b3b78fce2bc82404423c427ba
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502809"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667434"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
-Bu öğreticide, dağıtım sırasında geçirdiğiniz değerleri depolamak için [parametre dosyalarını](parameter-files.md) nasıl kullanacağınızı öğreneceksiniz. Önceki öğreticilerde, dağıtım komutunuz ile satır içi parametreleri kullandınız. Bu yaklaşım Azure Resource Manager (ARM) şablonunuzun test edilmesine çalıştı, ancak dağıtımları otomatikleştirmede ortamınız için bir değer kümesini geçirmek daha kolay olabilir. Parametre dosyaları belirli bir ortam için parametre değerlerini paketlemeyi kolaylaştırır. Bu öğreticide geliştirme ve üretim ortamları için parametre dosyaları oluşturacaksınız. Yaklaşık **12 dakika** sürer.
+Bu öğreticide, dağıtım sırasında geçirdiğiniz değerleri depolamak için [parametre dosyalarını](parameter-files.md) nasıl kullanacağınızı öğreneceksiniz. Önceki öğreticilerde, dağıtım komutunuz ile satır içi parametreleri kullandınız. Bu yaklaşım Azure Resource Manager şablonunuzu (ARM şablonu) test etmeye çalıştı, ancak dağıtımları otomatikleştirmede ortamınız için bir değer kümesini geçirmek daha kolay olabilir. Parametre dosyaları belirli bir ortam için parametre değerlerini paketlemeyi kolaylaştırır. Bu öğreticide geliştirme ve üretim ortamları için parametre dosyaları oluşturacaksınız. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Etiketler hakkında öğreticiyi](template-tutorial-add-tags.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -34,6 +34,12 @@ Bu şablon iyi sonuç verir, ancak artık şablon için geçirdiğiniz parametre
 ## <a name="add-parameter-files"></a>Parametre dosyaları Ekle
 
 Parametre dosyaları, şablonunuza benzer bir yapıya sahip JSON dosyalarıdır. Dosyasında, dağıtım sırasında geçirmek istediğiniz parametre değerlerini sağlarsınız.
+
+Parametre dosyası içinde, şablonunuzda parametreler için değerler sağlarsınız. Parametre dosyanızdaki her parametrenin adı, şablonunuzda bir parametre adıyla eşleşmelidir. Ad, büyük/küçük harfe duyarsızdır ancak eşleşen değerleri kolayca görmek için şablondan büyük küçük harf eşleştirmenizi öneririz.
+
+Her parametre için bir değer sağlamanız gerekmez. Belirtilmeyen bir parametre varsayılan değere sahipse, bu değer dağıtım sırasında kullanılır. Bir parametre varsayılan değere sahip değilse ve parametre dosyasında belirtilmemişse, dağıtım sırasında bir değer sağlamanız istenir.
+
+Parametre dosyanızda, şablondaki bir parametre adıyla eşleşmeyen bir parametre adı belirtemezsiniz. Bilinmeyen parametreler sağlandığında bir hata alırsınız.
 
 VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy.parameters.dev.js**adı ile kaydedin.
 
@@ -147,4 +153,4 @@ Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri
 Sonraki öğretici serisi, şablonları dağıtma hakkında daha fazla ayrıntıya gider.
 
 > [!div class="nextstepaction"]
-> [Yerel şablonu dağıtma](./deployment-tutorial-local-template.md)
+> [Yerel şablon dağıtma](./deployment-tutorial-local-template.md)

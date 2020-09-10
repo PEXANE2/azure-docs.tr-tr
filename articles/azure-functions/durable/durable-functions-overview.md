@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660691"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669252"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -23,7 +23,7 @@ Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
 
 * **C#**: hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem de [C# betiği](../functions-reference-csharp.md).
 * **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
-* **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.8.5 gerektirir. 
+* **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.8.5 gerektirir. Dayanıklı İşlevler desteği şu anda genel önizlemededir.
 * **F #**: önceden derlenmiş sınıf kitaplıkları ve F # betiği. F # betiği yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
 * **PowerShell**: dayanıklı işlevler desteği şu anda genel önizlemededir. Yalnızca Azure Işlevleri çalışma zamanı ve PowerShell 7 sürümü 3. x için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 2.2.2 gerektirir. Şu anda yalnızca şu desenler destekleniyor: [işlev zinciri](#chaining), [fan-çıkış/fan](#fan-in-out), [zaman uyumsuz HTTP API 'leri](#async-http).
 
@@ -708,7 +708,7 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 
 Bu hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 Aşağıdaki videoda Dayanıklı İşlevler avantajları vurgulanmıştır:
 

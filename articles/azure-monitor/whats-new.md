@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0809894964ff99c468f8bf3876bfdb44995656f7
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569535"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667459"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -19,9 +19,67 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 ## <a name="august-2020"></a>Ağustos 2020
 
-### <a name="containers"></a>Kapsayıcılar
+### <a name="general"></a>Genel
 
+- [Azure izleyici tarafından izlenen](monitor-reference.md) -Azure izleyici aracısını içerecek şekilde güncelleştirildi.
+
+
+### <a name="agents"></a>Aracılar
+- [Azure izleyici aracısına genel bakış](platform/azure-monitor-agent-overview.md) -yeni makale.
+- [Karma ortam Için Azure Izleyicisini etkinleştirin](insights/vminsights-enable-hybrid.md) -bağımlılık Aracısı sürümü güncelleştirildi.
+- [Azure izleme aracılarına genel bakış](platform/agents-overview.md) -Azure izleyici Aracısı ve birleştirilmiş işletim sistemi desteği tablosu eklendi.
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Aracı içeriğini yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler
+- [VM'ler için Azure İzleyici genel bakış 'ı etkinleştir](insights/vminsights-enable-overview.md)
+- [Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler](platform/agent-linux.md)
+- [Windows bilgisayarlarına Log Analytics Aracısı 'nı yükler](platform/agent-windows.md)
+- [Log Analytics aracısına genel bakış](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [JavaScript Web Apps Için Azure Application Insights](app/javascript.md) -istemci sunucu bağıntısını ve CORS bağıntısını yapılandırmayı açıklığa kavuşturan bölüm eklendi.
+- Çalışma alanı tabanlı uygulamalar tarafından sunulan [Yeni bir Azure izleyici Application Insights çalışma alanı tabanlı, kaynak](app/create-workspace-resource.md) tarafından eklenen yetenekler oluşturun.
+- [Application Insights ve Log Analytics tarafından](app/ip-addresses.md) güncelleştirilmiş IP adresleri, canlı ölçümler akışı için kullanılır.
+- Desteklenen özel telemetri için [Azure izleyici Application Insights eklenen tablo aracılığıyla Java uygulamalarını izleyin](app/java-in-process-agent.md) .
+- [Application Insights JavaScript SDK 'sı Için yerel](app/javascript-react-native-plugin.md) yanıt verme eklentisi-yeni makale.
+- [JavaScript SDK 'sı için Application Insights eklentisi](app/javascript-react-plugin.md) -yeni makale.
+- [Application Insights izleme-yeni makale Ile Azure işlev uygulamaları oluşturmaya yönelik Kaynak Yöneticisi Şablon örneği](samples/resource-manager-function-app.md) .
+- [Application Insights izleme-yeni makale Ile Azure Uygulama Hizmetleri Web uygulamaları oluşturmaya yönelik Kaynak Yöneticisi şablon örnekleri](samples/resource-manager-web-app.md) .
+- [Azure Application Insights eklenen video Ile Kullanım Analizi](app/usage-overview.md) .
+
+### <a name="autoscale"></a>Otomatik Ölçeklendirme
+- App Service için Healty örneklerine yönlendirme konusunda [Azure 'da otomatik ölçeklendirme ile çalışmaya](platform/autoscale-get-started.md) başlayın.
+
+### <a name="data-collection"></a>Veri toplama
+- [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](platform/data-collection-rule-azure-monitor-agent.md) -yeni makale.
+- [Azure izleyici 'de veri toplama kuralları (Önizleme)](platform/data-collection-rule-overview.md) -yeni makale.
+
+
+### <a name="containers"></a>Kapsayıcılar
 - [Kapsayıcılar Için Azure izleyici ile & HPA ölçümleri dağıtımı](insights/container-insights-deployment-hpa-metrics.md) -yeni makale.
+
+### <a name="insights"></a>Insights
+- [Azure izleyici 'de çözümleri izleme](insights/solutions.md) -yeni kullanıcı arabirimi için güncelleştirildi.
+- [Azure 'da ağ performansı İzleyicisi çözüm,](insights/network-performance-monitor.md) desteklenen çalışma alanı bölgelerini ekledi.
+
+
+### <a name="logs"></a>Günlükler
+- [Azure IZLEYICI SSS](faq.md) -çalışma alanından veri silmeye yönelik giriş eklendi. 502 ve 503 yanıtlarına giriş eklendi.
+  - [Azure Izleyici günlükleri dağıtımını tasarlama](platform/design-logs-deployment.md) -alma birimi hız sınırı bölümündeki güncelleştirmeler.
+- [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) -kullanım sorguları, daha verimli sorgu biçimine karşı güncelleştirildi.
+- [Azure izleyici 'de günlük sorgularını iyileştirme](log-query/query-optimization.md) -performans göstergelerine belirli değerler ekledi.
+- [Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-diagnostic-settings.md) -günlük sorgusu denetim günlükleri için örnek eklendi.
+
+
+### <a name="platform-logs"></a>Platform günlükleri
+- [Platform günlüklerini ve ölçümleri, Tanılama ayarları için farklı hedeflerle eklenen bölgesel gereksinime göndermek için Tanılama ayarları oluşturun](platform/diagnostic-settings.md) .
+
+### <a name="visualizations"></a>Görsel öğeler
+- [Azure Izleyici çalışma kitaplarına genel bakış](platform/workbooks-overview.md) -video eklendi.
+- Bir [Azure çalışma kitabı şablonunu başka bir bölgeye taşıma](platform/workbook-templates-move-region.md) -yeni makale.
+- [Bir Azure çalışma kitabını başka bir bölgeye taşıma](platform/workbooks-move-region.md) -yeni makale.
+
+
 
 ## <a name="july-2020"></a>Temmuz 2020
 
