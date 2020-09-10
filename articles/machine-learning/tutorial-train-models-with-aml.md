@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 00fff79e2f572a6292336d0647d497a8851ef74a
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 402eaec50d273c4d8d9215f53fa433d0db4332e8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595555"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649906"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Bir modelin nasıl seçeceğinizi ve [Bu öğreticinin ikinci bölümünde](tuto
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 >[!NOTE]
-> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sürümü 1.0.83 ile test edilmiştir.
+> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) sürümü 1.0.83 ile test edilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -386,7 +386,7 @@ Beklerken ne olur:
 
 ### <a name="jupyter-widget"></a>Jupyter pencere öğesi
 
-Bir [Jupyıter pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)ile çalıştırmanın ilerlemesini izleyin. Çalıştırma gönderimi gibi pencere öğesi zaman uyumsuzdur ve iş bitene kadar her 10 ila 15 saniye canlı güncelleştirmeler sağlar:
+Bir [Jupyıter pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)ile çalıştırmanın ilerlemesini izleyin. Çalıştırma gönderimi gibi pencere öğesi zaman uyumsuzdur ve iş bitene kadar her 10 ila 15 saniye canlı güncelleştirmeler sağlar:
 
 ```python
 from azureml.widgets import RunDetails

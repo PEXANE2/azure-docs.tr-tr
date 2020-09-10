@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d5e1e8c0ced03191a530598bf2dca308dc4fab03
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462471"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651042"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -92,7 +92,7 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & yaşam döngüsü yönetimini dağıtma
 Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın.
 
-Daha sonra Python, [Azure Machine Learning Studio](https://ml.azure.com)veya [Machine Learning CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
+Daha sonra Python, [Azure Machine Learning Studio](https://ml.azure.com)veya [Machine Learning CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
 
 Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](how-to-use-parallel-run-step.md) olarak büyük miktarlarda veri alabilir.
 

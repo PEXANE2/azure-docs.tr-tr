@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 600b19ffac61f8f7c7336f114c6b52c6bc88b5ad
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489519"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646978"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
 * Kurulum öğreticisini tamamladığınızda, *öğreticiler/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
@@ -142,7 +142,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Makine öğrenimi ardışık düzenleri yerel olarak çalıştırılamaz, bu nedenle bunları bulut kaynaklarında veya *uzak işlem hedeflerinde*çalıştırmalısınız. Uzaktan işlem hedefi, denemeleri ve makine öğrenimi iş akışlarını çalıştırdığınız yeniden kullanılabilir bir sanal işlem ortamıdır. 
 
-GPU etkin bir [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) hedef oluşturmak ve ardından çalışma alanınıza eklemek için aşağıdaki kodu çalıştırın. İşlem hedefleri hakkında daha fazla bilgi için [kavramsal makaleye](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)bakın.
+GPU etkin bir [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) hedef oluşturmak ve ardından çalışma alanınıza eklemek için aşağıdaki kodu çalıştırın. İşlem hedefleri hakkında daha fazla bilgi için [kavramsal makaleye](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)bakın.
 
 
 ```python
@@ -305,7 +305,7 @@ parallel_run_config = ParallelRunConfig(
 * Giriş ve çıkış verileri ve tüm özel parametreler
 * Adım sırasında çalışacak bir betik veya SDK mantığına başvuru
 
-Birden çok sınıf üst sınıftan devralınır [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak üzere sınıfları seçebilirsiniz. Bu örnekte, `ParallelRunStep` özel bir Python betiği kullanarak adım mantığınızı tanımlamak için sınıfını kullanırsınız. Betiğinizin bir bağımsız değişkeni, adımın bir girişi ya da adımın bir çıkışı ise, bağımsız değişkenin sırasıyla *hem* dizide hem de ya da parametresinde tanımlanması `arguments` gerekir *and* `input` `output` . 
+Birden çok sınıf üst sınıftan devralınır [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true) . Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak üzere sınıfları seçebilirsiniz. Bu örnekte, `ParallelRunStep` özel bir Python betiği kullanarak adım mantığınızı tanımlamak için sınıfını kullanırsınız. Betiğinizin bir bağımsız değişkeni, adımın bir girişi ya da adımın bir çıkışı ise, bağımsız değişkenin sırasıyla *hem* dizide hem de ya da parametresinde tanımlanması `arguments` gerekir *and* `input` `output` . 
 
 Birden fazla adımın olduğu senaryolarda dizideki bir nesne başvurusu, `outputs` sonraki bir işlem hattı adımı için *giriş* olarak kullanılabilir hale gelir.
 
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-Farklı adım türleri için kullanabileceğiniz tüm sınıfların bir listesi için, bkz. [adımlar paketi](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
+Farklı adım türleri için kullanabileceğiniz tüm sınıfların bir listesi için, bkz. [adımlar paketi](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true).
 
 ## <a name="submit-the-pipeline"></a>İşlem hattını gönderme
 
@@ -386,9 +386,9 @@ published_pipeline
 
 İşlem hattını REST uç noktasından çalıştırmak için, OAuth2 taşıyıcı türünde bir kimlik doğrulama üst bilgisi gerekir. Aşağıdaki örnek etkileşimli kimlik doğrulaması kullanır (çizim amaçları için), ancak otomatik veya gözetimsiz kimlik doğrulaması gerektiren çoğu üretim senaryosunda, [Bu makalede açıklandığı](how-to-setup-authentication.md)gibi hizmet sorumlusu kimlik doğrulamasını kullanın.
 
-Hizmet sorumlusu kimlik doğrulaması, *Azure Active Directory*bir *uygulama kaydı* oluşturulmasını içerir. İlk olarak, bir istemci parolası oluşturun ve ardından hizmet sorumlusu rolünüze Machine Learning çalışma alanınıza *erişim* verirsiniz. [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)Kimlik doğrulama akışınızı yönetmek için sınıfını kullanın. 
+Hizmet sorumlusu kimlik doğrulaması, *Azure Active Directory*bir *uygulama kaydı* oluşturulmasını içerir. İlk olarak, bir istemci parolası oluşturun ve ardından hizmet sorumlusu rolünüze Machine Learning çalışma alanınıza *erişim* verirsiniz. [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true)Kimlik doğrulama akışınızı yönetmek için sınıfını kullanın. 
 
-Hem hem de [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) ' `ServicePrincipalAuthentication` den devralınır `AbstractAuthentication` . Her iki durumda da, [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) üst bilgiyi getirmek için işlevini aynı şekilde kullanın:
+Hem hem de [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) ' `ServicePrincipalAuthentication` den devralınır `AbstractAuthentication` . Her iki durumda da, [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) üst bilgiyi getirmek için işlevini aynı şekilde kullanın:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

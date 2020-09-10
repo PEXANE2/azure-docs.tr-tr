@@ -3,12 +3,12 @@ title: Azure Güvenlik Karşılaştırması şema örneğine genel bakış
 description: Azure Güvenlik Karşılaştırması şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
 ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84740382"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651910"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Azure Güvenlik kıyaslaması şeması örneği
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **Azure Güvenlik kıyaslaması** şeması örneğini bulun ve bu örneği seçmek için ada tıklayın ' ı seçin.
+1. _Diğer örnekler_ altında **Azure Güvenlik kıyaslaması** şeması örneğini bulun ve bu örneği seçmek için adı seçin.
 
 1. Şema örneği _hakkında temel bilgileri_ girin:
 

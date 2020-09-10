@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399829"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648882"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmalı ve en az bir özel etki alanı eklemelisiniz. Daha fazla bilgi için bkz. [Öğretici: Front Door’unuza özel etki alanı ekleme](front-door-custom-domain.md).
 
@@ -219,7 +219,27 @@ Aşağıdaki tabloda, HTTPS’yi etkinleştirdiğinizde oluşan işlem ilerleme 
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
+1. *Sertifika sağlayıcısı kimdir ve ne tür bir sertifika kullanılır?*
+
+    Özel etki alanınız için Digicert tarafından sağlanan ayrılmış/tek bir sertifika kullanılır. 
+
+2. *IP tabanlı veya SNI TLS/SSL kullanıyor musunuz?*
+
+    Azure ön kapısı SNı TLS/SSL kullanır.
+
+3. *DigiCert’ten etki alanı doğrulama e-postası almazsam ne olur?*
+
+    Özel etki alanınız için doğrudan uç nokta ana bilgisayar adına işaret eden bir CNAME girişiniz varsa (ve afdverify alt etki alanı adını kullanmıyorsanız) etki alanı doğrulama e-postası almazsınız. Doğrulama otomatik olarak gerçekleşir. Ancak CNAME girişiniz yoksa ve e-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
+
+4. *Ayrılmış sertifika kullanmak, SAN sertifikasından daha mı güvenlidir?*
+    
+    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Tüm verilen TLS/SSL sertifikaları, gelişmiş sunucu güvenliği için SHA-256 kullanır.
+
+5. *DNS sağlayıcım ile Sertifika Yetkilisi Yetkilendirme kaydı kullanmam gerekir mi?*
+
+    Hayır, Sertifika Yetkilisi Yetkilendirme kaydı şu anda gerekli değildir. Ancak, varsa, geçerli CA olarak DigiCert’i içermelidir.
 
 ## <a name="clean-up-resources---disable-https"></a>Kaynakları temizleme - HTTPS’yi devre dışı bırakma
 
@@ -247,30 +267,15 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 | 2 Sertifika sağlaması kaldırılıyor | Sertifika siliniyor |
 | 3 Tamamlandı | Sertifika silindi |
 
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular
-
-1. *Sertifika sağlayıcısı kimdir ve ne tür bir sertifika kullanılır?*
-
-    Özel etki alanınız için Digicert tarafından sağlanan ayrılmış/tek bir sertifika kullanılır. 
-
-2. *IP tabanlı veya SNI TLS/SSL kullanıyor musunuz?*
-
-    Azure ön kapısı SNı TLS/SSL kullanır.
-
-3. *DigiCert’ten etki alanı doğrulama e-postası almazsam ne olur?*
-
-    Özel etki alanınız için doğrudan uç nokta ana bilgisayar adına işaret eden bir CNAME girişiniz varsa (ve afdverify alt etki alanı adını kullanmıyorsanız) etki alanı doğrulama e-postası almazsınız. Doğrulama otomatik olarak gerçekleşir. Ancak CNAME girişiniz yoksa ve e-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
-
-4. *Ayrılmış sertifika kullanmak, SAN sertifikasından daha mı güvenlidir?*
-    
-    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Tüm verilen TLS/SSL sertifikaları, gelişmiş sunucu güvenliği için SHA-256 kullanır.
-
-5. *DNS sağlayıcım ile Sertifika Yetkilisi Yetkilendirme kaydı kullanmam gerekir mi?*
-
-    Hayır, Sertifika Yetkilisi Yetkilendirme kaydı şu anda gerekli değildir. Ancak, varsa, geçerli CA olarak DigiCert’i içermelidir.
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
-- [Front Door’un nasıl çalıştığını](front-door-routing-architecture.md) öğrenin.
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+
+* Key Vault bir sertifikayı karşıya yükleyin.
+* Bir etki alanını doğrulayın.
+* Özel etki alanınız için HTTPS 'yi etkinleştirin.
+
+Ön kapıya yönelik coğrafi filtreleme ilkesi ayarlamayı öğrenmek için bir sonraki öğreticiye geçin.
+
+> [!div class="nextstepaction"]
+> [Coğrafi filtreleme ilkesi ayarlama](front-door-geo-filtering.md)

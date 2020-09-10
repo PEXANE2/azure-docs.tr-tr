@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: efe2f062cc75fb05484fe810a3ae16c07e93339b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120856"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651751"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
@@ -72,16 +72,16 @@ green_taxi_df.head(10)
 
 |Konağında VendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| Üçlü mesafe|   Pulocationıd|   Dolocationıd|   Pickupboylam|    Pickupenlem| Açılan Boylam    |...|   paymentType |fareAmount |ına| Mtavergisi| improvementSurcharge|   tipAmount|  tollsAmount|    Ehailücret|   totalAmount|    Üçlü tür|
 |----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Yok|Yok|-73,88|40,84|-73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|nBir|16,30|1,00
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Yok|Yok|-73,96|40,81|-73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|nBir|6,30|1,00
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Yok|Yok|-73,92|40,76|-73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|nBir|4,80|1,00
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Yok|Yok|-73,81|40,70|-73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|nBir|13,80|1,00
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Yok|Yok|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|nBir|5,00|1,00
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Yok|Yok|-73,96|40,72|-73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|nBir|7,80|1,00
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Yok|Yok|-73,88|40,76|-73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|nBir|6,80|1,00
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Yok|Yok|-73,96|40,72|-73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|nBir|13,80|1,00
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Yok|Yok|-73,94|40,71|-73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|nBir|9,55|1,00
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Yok|Yok|-73,94|40,71|-73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|nBir|6,30|1,00
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Yok|Yok|-73,88|40,84|-73,94|...|2|15,00|0.50|0.50|0.3|0.00|0.00|nBir|16,30|1,00
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Yok|Yok|-73,96|40,81|-73,96|...|2|4,50|1,00|0.50|0.3|0.00|0.00|nBir|6,30|1,00
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Yok|Yok|-73,92|40,76|-73,91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nBir|4,80|1,00
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|Yok|Yok|-73,81|40,70|-73,82|...|2|12,50|0.50|0.50|0.3|0.00|0.00|nBir|13,80|1,00
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|Yok|Yok|-73,92|40,76|-73,92|...|2|4.00|0.50|0.50|0|0.00|0.00|nBir|5.00|1,00
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Yok|Yok|-73,96|40,72|-73,95|...|2|6,50|0.50|0.50|0.3|0.00|0.00|nBir|7.80|1,00
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Yok|Yok|-73,88|40,76|-73,87|...|2|6,00|0.00|0.50|0.3|0.00|0.00|nBir|6,80|1,00
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Yok|Yok|-73,96|40,72|-73,91|...|2|12,50|0.50|0.50|0.3|0.00|0.00|nBir|13,80|1,00
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Yok|Yok|-73,94|40,71|-73,95|...|1|7,00|0.00|0.50|0.3|1,75|0.00|nBir|9,55|1,00
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Yok|Yok|-73,94|40,71|-73,94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nBir|6,30|1,00
 
 Artık ilk veriler yüklendikten sonra, toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturmak için bir işlev tanımlayın. Bu işlem, ay numarası, ay günü, haftanın günü ve günün saati için yeni alanlar oluşturur ve modelin zaman tabanlı mevsimsellik açısından çarpaya izin verir. İşlevi, `apply()` `build_time_features()` TAXI verilerinde her satıra yinelemeli olarak uygulamak için dataframe üzerindeki işlevini kullanın.
 
@@ -101,16 +101,16 @@ green_taxi_df.head(10)
 
 |Konağında VendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| Üçlü mesafe|   Pulocationıd|   Dolocationıd|   Pickupboylam|    Pickupenlem| Açılan Boylam    |...|   paymentType|fareAmount  |ına| Mtavergisi| improvementSurcharge|   tipAmount|  tollsAmount|    Ehailücret|   totalAmount|Üçlü tür|month_num|day_of_month|day_of_week|hour_of_day
 |----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|----
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Yok|Yok|-73,88|40,84|-73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|nBir|16,30|1,00|1|11|6|5
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Yok|Yok|-73,96|40,81|-73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|nBir|6,30|1,00|1|20|1|16
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Yok|Yok|-73,92|40,76|-73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|nBir|4,80|1,00|1|1|3|5
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Yok|Yok|-73,81|40,70|-73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|nBir|13,80|1,00|1|17|5|2
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Yok|Yok|-73,92|40,76|-73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|nBir|5,00|1,00|1|1|3|5
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Yok|Yok|-73,96|40,72|-73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|nBir|7,80|1,00|1|4|6|19
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Yok|Yok|-73,88|40,76|-73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|nBir|6,80|1,00|1|3|5|12
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Yok|Yok|-73,96|40,72|-73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|nBir|13,80|1,00|1|9|4|23
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Yok|Yok|-73,94|40,71|-73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|nBir|9,55|1,00|1|11|6|17
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Yok|Yok|-73,94|40,71|-73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|nBir|6,30|1,00|1|22|3|23
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Yok|Yok|-73,88|40,84|-73,94|...|2|15,00|0.50|0.50|0.3|0.00|0.00|nBir|16,30|1,00|1|11|6|5
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Yok|Yok|-73,96|40,81|-73,96|...|2|4,50|1,00|0.50|0.3|0.00|0.00|nBir|6,30|1,00|1|20|1|16
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Yok|Yok|-73,92|40,76|-73,91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nBir|4,80|1,00|1|1|3|5
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|Yok|Yok|-73,81|40,70|-73,82|...|2|12,50|0.50|0.50|0.3|0.00|0.00|nBir|13,80|1,00|1|17|5|2
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|Yok|Yok|-73,92|40,76|-73,92|...|2|4.00|0.50|0.50|0|0.00|0.00|nBir|5.00|1,00|1|1|3|5
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Yok|Yok|-73,96|40,72|-73,95|...|2|6,50|0.50|0.50|0.3|0.00|0.00|nBir|7.80|1,00|1|4|6|19
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Yok|Yok|-73,88|40,76|-73,87|...|2|6,00|0.00|0.50|0.3|0.00|0.00|nBir|6,80|1,00|1|3|5|12
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Yok|Yok|-73,96|40,72|-73,91|...|2|12,50|0.50|0.50|0.3|0.00|0.00|nBir|13,80|1,00|1|9|4|23
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Yok|Yok|-73,94|40,71|-73,95|...|1|7,00|0.00|0.50|0.3|1,75|0.00|nBir|9,55|1,00|1|11|6|17
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Yok|Yok|-73,94|40,71|-73,94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nBir|6,30|1,00|1|22|3|23
 
 Eğitim veya ek özellik oluşturma için ihtiyaç duymayabilmeniz gereken bazı sütunları kaldırın.
 
@@ -136,13 +136,13 @@ green_taxi_df.describe()
 |Konağında VendorID|passengerCount|Üçlü mesafe|Pickupboylam|Pickupenlem|Açılan Boylam|Açılan Enlem|  totalAmount|month_num day_of_month|day_of_week|hour_of_day
 |----|----|---|---|----|---|---|---|---|---|---|---
 |count|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00
-|ortalama|1,78|1,37|2,87|-73,83|40,69|-73,84|40,70|14,75|6,50|15,13|3,27|13,52
-|STD|0,41|1.04|2,93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
-|dk|1,00|0,00|0,00|-74,66|0,00|-74,66|0,00|-300,00|1,00|1,00|0,00|0,00
-|%25|2,00|1,00|1.06|-73,96|40,70|-73,97|40,70|7,80|3,75|8,00|2,00|9,00
-|%50|2,00|1,00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
-|%75|2,00|1,00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5,00|19,00
-|max|2,00|9,00|97,57|0,00|41,93|0,00|41,94|450,00|12,00|30,00|6,00|23,00
+|mean|1,78|1.37|2.87|-73,83|40,69|-73,84|40,70|14,75|6,50|15,13|3,27|13,52
+|std|0,41|1.04|2,93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
+|dk|1,00|0.00|0.00|-74,66|0.00|-74,66|0.00|-300,00|1,00|1,00|0.00|0.00
+|25%|2.00|1,00|1.06|-73,96|40,70|-73,97|40,70|7.80|3,75|8,00|2.00|9,00
+|50%|2.00|1,00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
+|75%|2.00|1,00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5.00|19,00
+|max|2.00|9,00|97,57|0.00|41,93|0.00|41,94|450,00|12,00|30,00|6,00|23,00
 
 
 Özet istatistiklerinde, mantıksal veya daha fazla alan içeren birkaç alanın, model doğruluğunu azaltacak şekilde olduğunu görürsünüz. İlk olarak, Manhattan alanının sınırları dahilinde olacak şekilde Enlem/Long alanlarını filtreleyin. Bu, diğer özelliklerle ilişkisine göre, daha uzun bir süre içinde daha fazla vergilenme veya gezilerin filtreleneceği.
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()`Dosya **config.js** okur ve kimlik doğrulama ayrıntılarını adlı bir nesneye yükler `ws` . Bu öğreticideki kodun kalanında `ws` kullanılır.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Ayrıca, modelinizi izlemek ve izlemek için bir bulut kaynağı oluşturur. `Workspace.from_config()` Dosya **config.js** okur ve kimlik doğrulama ayrıntılarını adlı bir nesneye yükler `ws` . Bu öğreticideki kodun kalanında `ws` kullanılır.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Sonuçları inceleme
 
-[Jupyıter pencere öğesiyle](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)otomatik eğitime ilişkin sonuçları keşfet. Pencere öğesi, eğitim doğruluğu ölçümleri ve meta verileri ile birlikte tüm bireysel çalıştırma yinelemelerini bir grafik ve tablo görmenizi sağlar. Ayrıca, açılan seçiciyle, birincil ölçümünüzün farklı doğruluk ölçümlerine filtre uygulayabilirsiniz.
+[Jupyıter pencere öğesiyle](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)otomatik eğitime ilişkin sonuçları keşfet. Pencere öğesi, eğitim doğruluğu ölçümleri ve meta verileri ile birlikte tüm bireysel çalıştırma yinelemelerini bir grafik ve tablo görmenizi sağlar. Ayrıca, açılan seçiciyle, birincil ölçümünüzün farklı doğruluk ölçümlerine filtre uygulayabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails

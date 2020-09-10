@@ -3,12 +3,12 @@ title: 'Öğretici: uyumluluğu zorlamak için ilke oluşturma'
 description: Bu öğreticide, standartları zorlamak, maliyetleri denetlemek, güvenliği korumak ve kurumsal çapta tasarım ilkelerini uygulamak için ilkeleri kullanırsınız.
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84781137"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650090"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
 
@@ -32,15 +32,15 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 1. İlke atamak için Azure portal gidin. **İlke**arayın ve seçin.
 
-   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="Arama çubuğunda Ilke ara" border="false":::
+   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="Arama çubuğunda Ilke aramanın ekran görüntüsü." border="false":::
 
 1. Azure İlkesi sayfasının sol tarafından **Atamalar**'ı seçin. Atama, belirli bir kapsamda gerçekleşmesi için atanmış olan bir ilkedir.
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Ilkeye genel bakış sayfasından atamaları seçin" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Ilkeye genel bakış sayfasından atamalar düğümünü seçme ekran görüntüsü." border="false":::
 
 1. **İlke - Atamalar** sayfasının üst kısmından **İlke Ata**'yı seçin.
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Atamalar sayfasından bir ilke tanımı atama" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Atamalar sayfasında ' ilke ata ' düğmesini seçme ekran görüntüsü." border="false":::
 
 1. **Ilke ata** sayfası ve **temel bilgiler** sekmesinde, üç noktayı seçip bir yönetim grubu veya abonelik seçerek **kapsamı** seçin. İsterseniz bir kaynak grubu seçin. Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler.
    Ardından **kapsam** sayfasının alt kısmında **Seç** ' i seçin.
@@ -54,7 +54,7 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 1. **Eksikse kaynak grubundan etiket devralma**' yı seçin. Hemen bulamıyorsanız, arama kutusuna **bir etiket devralma** YAZıN ve ENTER tuşuna basın veya arama kutusunu seçin.
    Varsa ve ilke tanımını seçtikten sonra **kullanılabilir tanımlar** sayfasının alt kısmında **Seç** ' i seçin.
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="İlkeyi bulmak için arama filtresini kullanın":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="İlke tanımı seçerken arama filtresinin ekran görüntüsü.":::
 
 1. **Atama adı** otomatik olarak seçtiğiniz ilke adıyla doldurulur, ancak bunu değiştirebilirsiniz. Bu örnek için, _eksikse kaynak grubundan bir etiketi devralmayı_bırakın. İsteğe bağlı bir **Açıklama** da ekleyebilirsiniz. Açıklama, bu ilke atamasıyla ilgili ayrıntıları sağlar.
 
@@ -82,7 +82,7 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
 
 1. Azure Ilkesi sayfasının sol tarafında bulunan **yazma** altındaki **tanımlar** ' ı seçin.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Yazma grubu altındaki tanım sayfası" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Yazma grubu altında tanımlar sayfasının ekran görüntüsü." border="false":::
 
 1. Sayfanın üst kısmındaki **+ İlke tanımı** seçeneğini belirleyin. Bu düğme, **ilke tanımı** sayfası için açılır.
 
@@ -342,11 +342,11 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
 1. Azure Ilkesi sayfasının sol tarafında bulunan **yazma** altındaki **tanımlar** ' ı seçin.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Tanımlar sayfasından tanımı seçin" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Yazma grubu altındaki tanımlar sayfasının ekran görüntüsü." border="false":::
 
 1. Sayfanın üst kısmından **+ Giriş Tanımı**'nı seçerek **Girişim Tanımı** sayfasını açın.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Girişim tanımı sayfasını gözden geçirin" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Girişim tanımı sayfasının ve ayarlanacak özelliklerin ekran görüntüsü." border="false":::
 
 1. Tanımın depolanacağı bir yönetim grubu veya abonelik seçmek için **Tanım konumu** üç nokta simgesini kullanın. Önceki sayfanın kapsamı tek bir yönetim grubu veya abonelik olduğunda, **Tanım konumu** otomatik olarak doldurulur. Seçildiğinde, **kullanılabilir tanımlar** doldurulur.
 
@@ -366,11 +366,11 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
    Listeden ilke tanımı seçildikten sonra, her biri **kategorinin**altına eklenir.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Girişim tanımı parametrelerini gözden geçirin" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Girişim tanımı sayfasındaki parametrelerin ve değer tanımlarının ekran görüntüsü." border="false":::
 
 1. Girişim öğesine eklenen bir ilke tanımı parametrelere sahipse, bunlar **Kategori** alanının altındaki alanda ilke adı altında gösterilir. _Değer_'i, "Değer ata" (bu girişimin tüm atamaları için sabit kodlanmıştır) veya "Girişim Parametresini Kullan" (her girişim ataması sırasında ayarlanır) olarak ayarlayabilirsiniz. ' Değeri ayarla ' seçilirse, _değer_ sağ tarafındaki açılan kutuda değer (ler) girilmesine veya seçmeye izin verilir. 'Girişim Parametresini Kullan' seçildiğinde ise girişim ataması sırasında ayarlanan parametreyi tanımlamanıza olanak sağlayan yeni bir **Giriş parametreleri** bölümü görüntülenir. Bu girişim parametresinde izin verilen değerler, girişim ataması sırasında ayarlanabilecek değerleri daha fazla kısıtlayabilir.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="İzin verilen değerlerden girişim tanımı parametrelerini değiştirme" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Girişim tanımı sayfasındaki bir efekt parametresi için izin verilen değerler için seçeneklerin ekran görüntüsü." border="false":::
 
    > [!NOTE]
    > Bazı `strongType` parametrelerinde değer listesi otomatik olarak belirlenebilir. Böyle durumlarda parametre satırının sağ tarafında üç nokta simgesi görünür. Seçilirse, ' parametre kapsamı ( &lt; parametre adı &gt; ) ' sayfası açılır. Bu sayfada, değer seçeneklerini sağlamak için kullanılacak aboneliği seçin. Bu parametre kapsamı yalnızca girişim tanımı oluşturma işlemi sırasında kullanılır ve atandığında, ilke değerlendirmesi veya girişim kapsamı üzerinde herhangi bir etkisi olmaz.
@@ -426,11 +426,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Daha önce oluşturduğunuz **Güvenliği Sağlama** adlı girişim tanımını bulup seçin. Sayfanın en üstünde bulunan **ata** ' yı seçerek **güvenli al: atama girişimi** sayfasına açın.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Girişim tanımı sayfasından tanım atama" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Girişim tanımı sayfasındaki ' ata ' düğmesinin ekran görüntüsü." border="false":::
 
    Ayrıca, seçilen satıra sağ tıklayıp bir bağlamsal menü için satırın sonundaki üç nokta simgesini de seçebilirsiniz. Ardından **ata**' yı seçin.
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Girişim için alternatif seçenekler" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Atama işlevini seçmek için bir girişimin bağlam menüsünün ekran görüntüsü." border="false":::
 
 1. Aşağıdaki örnek bilgileri girerek **Güvenliği Sağlama: Girişimi Ata** sayfasını doldurun. Kendi bilgilerinizi de kullanabilirsiniz.
 
@@ -457,11 +457,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. **Güvenli al** girişimi ' ni bulun. Hala **başlatılmamış**olan _uyumluluk durumunda_ olabilir.
    Atamanın ilerlemesiyle ilgili tüm ayrıntıları almak için girişimi seçin.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Girişim uyumluluk sayfası-değerlendirmeler başlatılmadı" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Başlama durumunda atama değerlendirmelerinin gösterildiği girişim uyumluluk sayfasının ekran görüntüsü." border="false":::
 
 1. Girişim ataması tamamlandıktan sonra, uyumluluk sayfası güncelleştirilerek _Uyumluluk durumu_ değeri **Uyumlu** olur.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Girişim uyumluluk sayfası-kaynaklar uyumlu" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Atama değerlendirmelerinin tamamlandığını ve uyumlu durumda olduğunu gösteren girişim uyumluluk sayfasının ekran görüntüsü." border="false":::
 
 1. Girişim uyumluluğu sayfasında herhangi bir ilkeyi seçmek, bu ilkenin uyumluluk ayrıntıları sayfasını açar. Bu sayfada uyumluluk için kaynak düzeyinde ayrıntılar sağlanır.
 
@@ -471,11 +471,11 @@ Belirli bir konum gerektirecek bir ilke girişimi atadıktan sonra, farklı bir 
 
 Atanan bir ilke veya girişim tarafından engellenen dağıtımlar, dağıtım tarafından hedeflenen kaynak grubunda görüntülenebilir: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin, sonra başarısız dağıtımın **dağıtım adını** seçin. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı belirlemek için başarısız ' ı seçin **. Dağıtım Genel Bakış sayfasında Ayrıntılar->için buraya tıklayın ** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. **Hata ayrıntıları** ' nın altında, ilgili Ilke nesnelerinin GUID 'leri vardır.
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Dağıtım ilke ataması tarafından reddedildi" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Bir ilke ataması tarafından reddedilen başarısız dağıtımın ekran görüntüsü." border="false":::
 
 Azure Ilkesi sayfasında: sayfanın sol tarafındaki **Uyumluluk** ' i seçin ve **güvenli ilke Al** girişim ' yı seçin. Bu sayfada, engellenen kaynaklar için **reddetme** sayısında bir artış vardır. **Olaylar** sekmesinin altında, ilke tanımı tarafından reddedilen kaynağı kimin oluşturmaya veya dağıtmaya çalıştığımız hakkında ayrıntılardır.
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Atanan bir ilkenin uyumluluğuna genel bakış" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Girişim uyumluluğu sayfasında olaylar sekmesinin ekran görüntüsü ve ilke olay ayrıntıları." border="false":::
 
 Bu örnekte, contoso SR. Virtualization uzmanlarının biri olan Trent Baker, gerekli işleri yapıyor. Özel durum için bir alan vermemiz gerekiyor. Yeni bir kaynak grubu oluşturuldu, **Locationsexcluded**ve Next Bu ilke ataması için bir özel durum verin.
 
@@ -487,7 +487,7 @@ Bu örnekte, contoso SR. Virtualization uzmanlarının biri olan Trent Baker, ge
 
 1. Üç noktayı seçerek ve dışlanacak kaynak grubunu seçerek **dışlamayı** ayarlayın, bu örnekte _Locationsexcluded_ . **Seçili kapsama Ekle** ' yi seçin ve ardından **Kaydet**' i seçin.
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="İlke atamasına dışlanan bir kaynak grubu ekleme" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="İlke atamasına dışlanan bir kaynak grubu eklemek için girişim atama sayfasındaki dışlamaları seçeneğinin ekran görüntüsü." border="false":::
 
    > [!NOTE]
    > İlke tanımına ve etkine bağlı olarak, dışlama, atama kapsamındaki bir kaynak grubu içindeki belirli kaynaklara da verilebilir. Bu öğreticide bir **reddetme** etkisi kullanıldığından, zaten mevcut olan belirli bir kaynakta dışlamanın ayarlanması mantıklı değildir.

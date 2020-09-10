@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413733"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651305"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault anahtarları hakkında
 

@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419019"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651834"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -43,12 +43,17 @@ Bir değerlendirmeyi aşağıdaki şekilde ayarlayın:
 1. Azure 'u ayarlamak ve AWS VM 'lerinizi bir değerlendirme için hazırlamak üzere [öğreticiyi](./tutorial-prepare-physical.md) izleyin. Şunlara dikkat edin:
 
     - Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
-        - Windows makineleri için WinRM bağlantı noktası 5986 (HTTPS) ve 5985 (HTTP) seçeneğine izin verin. Bu, uzak WMI çağrılarına izin verir. Öğesini ayarlarsanız 
+        - Windows makineleri için WinRM bağlantı noktası 5985 (HTTP) izin verin. Bu, uzak WMI çağrılarına izin verir.
         - Linux makineleri için:
             1. Her bir Linux makinesinde oturum açın.
             2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
             3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet**olarak değiştirin.
             4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
+    - Linux sanal makinelerinizi keşfettiğiniz bir kök Kullanıcı kullanıyorsanız, VM 'lerde kök oturum açmaya izin verildiğinden emin olun.
+        1. Her Linux makinesinde oturum açın
+        2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
+        3. Dosyasında, **PermitRootLogin** satırını bulun ve değeri **Evet**olarak değiştirin.
+        4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
 
 2. Ardından, AWS sanal makinelerinizi bulup değerlendirmek üzere bir Azure geçişi projesi ve gereci ayarlamak için bu [öğreticiyi](./tutorial-assess-physical.md) izleyin.
 

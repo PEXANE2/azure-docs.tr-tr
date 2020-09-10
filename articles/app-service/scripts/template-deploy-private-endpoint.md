@@ -1,6 +1,6 @@
 ---
-title: Bu Azure Resource Manager şablonuyla, Web uygulaması için özel uç nokta dağıtacaksınız.
-description: Web uygulamanız için özel uç nokta dağıtmak üzere ARM şablonunu nasıl kullanacağınızı öğrenin
+title: Bir Web uygulaması için özel bir uç nokta dağıtmak üzere Azure Resource Manager şablonu kullanma
+description: Web uygulamanız için özel bir uç nokta dağıtmak üzere ARM şablonunu nasıl kullanacağınızı öğrenin.
 author: ericgre
 ms.assetid: 49e460d0-7759-4ceb-b5a4-f1357e4fde56
 ms.topic: sample
@@ -8,16 +8,16 @@ ms.date: 07/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ff2d59ed569037f34e24a69ffafa0df237a3de34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535730"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652015"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak App Service uygulaması oluşturma ve özel uç nokta dağıtma
+# <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak App Service uygulaması oluşturma ve özel uç nokta dağıtma
 
-Bu hızlı başlangıçta, bir Web uygulaması oluşturmak ve özel bir uç nokta ile sunmak için bir Azure Resource Manager şablonu kullanırsınız.
+Bu hızlı başlangıçta, bir Web uygulaması oluşturmak ve özel bir uç nokta ile sunmak için bir Azure Resource Manager (ARM) şablonu kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +37,10 @@ Bu şablon, bir Azure Web uygulaması için özel bir uç nokta oluşturur.
 
 Azure Resource Manager şablonunu Azure 'a dağıtma:
 
-1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt**' ı seçin. Şablon VNet, Web uygulaması, Özel uç nokta ve özel DNS bölgesi oluşturur.
-
-   [Azure’a dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)
-
+1. Azure 'da oturum açmak ve şablonu açmak için şu bağlantıyı seçin:  [Azure 'A dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json). Şablon, sanal ağ, Web uygulaması, Özel uç nokta ve özel DNS bölgesi oluşturur.
 2. Kaynak grubunuzu seçin veya oluşturun.
-3. Web uygulamanızın adını, App Service planı, Özel uç noktasını yazın.
-5. Hüküm ve koşullar ekstresini okuyun. Kabul ediyorsanız, satın alma > yukarıda belirtilen hüküm ve koşulları kabul ediyorum ' u seçin. Dağıtımın süresi uzun sürebilir.
+3. Web uygulamanızın adını, Azure App Service planınızı ve özel uç noktasını girin.
+5. Hüküm ve koşullar hakkındaki ifadeyi okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul**ediyorum ' u seçin  >  **Purchase**. Dağıtımın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -57,4 +54,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure App Service Web Apps için ek Azure Resource Manager şablonları [ARM şablonu örneklerinde](../samples-resource-manager-templates.md)bulunabilir.
+- [ARM şablon örneklerinde](../samples-resource-manager-templates.md)Azure App Service Web uygulamaları için daha fazla Azure Resource Manager şablonu bulabilirsiniz.

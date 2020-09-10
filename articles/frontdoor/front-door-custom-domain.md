@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399778"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648810"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Öğretici: Front Door örneğinize özel etki alanı ekleme
 Bu öğreticide Front Door'a özel etki alanı ekleme adımları gösterilmektedir. Uygulama teslimi için Azure ön kapısı kullandığınızda, kendi etki alanı adınızın Son Kullanıcı isteğiniz içinde görünmesini istiyorsanız özel bir etki alanı gereklidir. Görünür bir etki alanınızın olması, müşterileriniz için kolaylık sağlar ve markalama için faydalıdır.
@@ -35,13 +35,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Ön kapı, [punyıcode](https://en.wikipedia.org/wiki/Punycode) karakterleriyle özel etki **alanlarını desteklemez.** 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Front Door oluşturma](quickstart-create-front-door.md).
+* Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Front Door oluşturma](quickstart-create-front-door.md).
 
-Henüz özel bir etki alanınız yoksa ilk olarak bir etki alanı sağlayıcısından satın almanız gerekir. Örneğin bkz. [Özel etki alanı adı satın alma](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Henüz özel bir etki alanınız yoksa ilk olarak bir etki alanı sağlayıcısından satın almanız gerekir. Örneğin bkz. [Özel etki alanı adı satın alma](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
-[DNS etki alanlarınızı](https://docs.microsoft.com/azure/dns/dns-overview) barındırmak için Azure kullanıyorsanız, etki alanı sağlayıcısının etki alanı adı sistemini (DNS) bir Azure DNS’e devretmeniz gerekir. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Aksi takdirde, DNS etki alanınızı işlemek için bir etki alanı sağlayıcısı kullanıyorsanız [CNAME DNS kaydı oluşturma](#create-a-cname-dns-record) bölümüne geçin.
+* [DNS etki alanlarınızı](https://docs.microsoft.com/azure/dns/dns-overview) barındırmak için Azure kullanıyorsanız, etki alanı sağlayıcısının etki alanı adı sistemini (DNS) bir Azure DNS’e devretmeniz gerekir. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Aksi takdirde, DNS etki alanınızı işlemek için bir etki alanı sağlayıcısı kullanıyorsanız [CNAME DNS kaydı oluşturma](#create-a-cname-dns-record) bölümüne geçin.
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS kaydı oluşturma
@@ -202,7 +202,11 @@ Yukarıdaki adımlarda bir özel etki alanını bir Front Door'a eklediniz. Fron
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
-> [!div class="checklist"]
-> - CNAME DNS kaydı oluşturun.
-> - Özel etki alanını Front Door'unuzla ilişkilendirin.
-> - Özel etki alanını doğrulayın.
+* CNAME DNS kaydı oluşturun.
+* Özel etki alanını Front Door'unuzla ilişkilendirin.
+* Özel etki alanını doğrulayın.
+
+Özel etki alanınız için HTTPS 'yi etkinleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
+
+> [!div class="nextstepaction"]
+> [Özel bir etki alanı için HTTPS'yi etkinleştirme](front-door-custom-domain.md)

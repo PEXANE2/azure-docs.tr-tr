@@ -1,14 +1,14 @@
 ---
 title: 'Model: bir ilke tanımıyla kaynakları dağıtma'
-description: Bu Azure Ilke düzeninde, bir ilke tanımıyla kaynakların nasıl dağıtılacağı hakkında bir örnek verilmiştir.
+description: Bu Azure Ilke modelinde, bir deployIfNotExists ilke tanımıyla kaynakların nasıl dağıtılacağı gösterilmektedir.
 ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 705c751183a0b71c8628a505f08ef112bca1cbb7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545616"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649982"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Ilke deseninin: kaynakları dağıtma
 

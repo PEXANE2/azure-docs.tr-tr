@@ -3,12 +3,12 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86044626"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649829"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -73,7 +73,7 @@ Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../..
 Özellikleri bulmanın en kolay yolu, aynı türdeki mevcut bir kaynağa bakmanız. Zorlamak istediğiniz ayarla önceden yapılandırılmış kaynaklar, karşılaştırılacak değeri de sağlar.
 Söz konusu kaynak için Azure portal **şablonu dışarı aktar** sayfasına ( **Ayarlar**altında) bakın.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Mevcut kaynak üzerinde şablon dışarı aktarma sayfası" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure portal içindeki mevcut bir kaynaktaki şablonu dışarı aktar sayfasının ekran görüntüsü." border="false":::
 
 Bunu bir depolama hesabı için yapmak, bu örneğe benzer bir şablonu ortaya çıkarır:
 

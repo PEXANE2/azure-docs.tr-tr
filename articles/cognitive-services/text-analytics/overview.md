@@ -1,47 +1,53 @@
 ---
-title: Metin Analizi API'si nedir? Yetenek
+title: Metin Analizi API'si-Azure bilişsel hizmetler ile metin madenciliği ve Analizi
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler 'den, yaklaşım analizi, anahtar ifade ayıklama, dil algılama ve varlık tanıma için Metin Analizi API'si kullanın.
+description: Metin Analizi API'si ile metin madenciliği hakkında bilgi edinin. Bu uygulamayı, yaklaşım analizi, dil algılama ve diğer doğal dil Işleme biçimleri için kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: metin araştırma, yaklaşım analizi, metin analizi
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000966"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647458"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
-Metin Analizi API'si, ham metin üzerinde gelişmiş doğal dil işleme sağlayan bulut tabanlı bir hizmettir ve dört ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama, dil algılama ve adlandırılmış varlık tanıma.
+Metin Analizi API'si, metin madenciliği ve metin analizi için doğal dil Işleme (NLP) özellikleri sağlayan bulut tabanlı bir hizmettir: yaklaşım analizi, bakım madenciliği, anahtar tümceciği ayıklama, dil algılama ve adlandırılmış varlık tanıma.
 
-API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'in bir parçasıdır.
+API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
+## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-## <a name="sentiment-analysis"></a>Yaklaşım Analizi
-Olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni analiz ederek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir.<br /> Analiz modelleri, Microsoft tarafından sağlanan geniş kapsamlı gövde metinleri ve doğal dil teknolojileri kullanılarak önceden eğitilmiştir. API, [seçili dillerde](text-analytics-supported-languages.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir.
+Yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın ve olumlu veya olumsuz yaklaşım hakkında ipuçları için metni inceleyerek markanızı veya konuyu düşündüğünü öğrenin. Bu API özelliği her belge için 0 ile 1 arasında bir yaklaşım puanı, 1 ise en pozitif bir değer döndürür.
 
-## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
-Ana noktaları hızlı bir şekilde tanımlamak için [anahtar tümceleri](how-tos/text-analytics-how-to-keyword-extraction.md) otomatik olarak ayıklayın. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür.
+V 3.1 önizlemeden başlayarak, görüşme madenciliği bir Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
 
-## <a name="language-detection"></a>Dil Algılama
-[Giriş metninin hangi dilde yazıldığını algılayabilir](how-tos/text-analytics-how-to-language-detection.md) ve çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerinde istek üzerine gönderilen her belge için tek bir dil kodu rapor edebilirsiniz. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir.
+## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-## <a name="named-entity-recognition"></a>Adlandırılmış Varlık Tanıma
-Metninizdeki varlıkları kişiler, konumlar, kuruluşlar, tarih/saat, miktarlar, yüzdeler, para birimleri ve daha fazlası olarak [belirleyip kategorilere ayırın](how-tos/text-analytics-how-to-entity-linking.md) . İyi bilinen varlıklar da tanınarak web üzerindeki ek bilgilere bağlantı verilir.
+Metindeki ana kavramları hızlıca tanımlamak için [anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md) kullanın. Örneğin, "gıda merak ediyor ve harika personel vardı" metninde Anahtar İfade Ayıklama ana konuşmanoktaları döndürür: "yiyecek" ve "harika personel".
+
+## <a name="language-detection"></a>Dil algılama
+
+Dil algılama, bir [giriş metninin yazıldığı dili algılayabilir](how-tos/text-analytics-how-to-language-detection.md) ve çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerinde istek üzerine gönderilen her belge için tek bir dil kodu rapor edebilir. Dil kodu bir güvenirlik puanı ile eşleştirilmiş.
+
+## <a name="named-entity-recognition"></a>Adlandırılmış varlık tanıma
+
+Adlandırılmış varlık tanıma (NER), kişiler, konumlar, kuruluşlar, miktarlar ve Iyi bilinen varlıkların de tanınabilmesi ve Web üzerinde daha fazla bilgi ile bağlanması halinde, metinlerinizde [varlıkları tanımlayabilir ve kategorilere ayırabilirsiniz](how-tos/text-analytics-how-to-entity-linking.md) .
 
 ## <a name="use-containers"></a>Kapsayıcıları kullanma
 
-Verilerinize daha yakın standartlaştırılmış Docker Kapsayıcıları yükleyerek anahtar tümceleri ayıklamak, dili algılamak ve yaklaşımı yerel olarak çözümlemek için [metin analizi kapsayıcıları kullanın](how-tos/text-analytics-how-to-install-containers.md) .
+[Metin analizi kapsayıcıları,](how-tos/text-analytics-how-to-install-containers.md) araştırma METNI ve API 'yi kullanarak bir şirket içi çözüm olarak kullanın. Bu Docker kapsayıcıları, önemli ifadeleri ayıklamanızı, dili tespit etmeyi ve verilerinize yakın yaklaşımı analiz etmenize olanak tanır.
 
 ## <a name="typical-workflow"></a>Tipik iş akışı
 

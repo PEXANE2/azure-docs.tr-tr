@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651208"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647228"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>İşlem hedefi oluştur
 
-Azure Machine Learning, *işlem* (veya *işlem hedefi*), makine öğrenimi ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur. CPU tabanlı bir [Amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) hedefi oluşturmak için aşağıdaki kodu çalıştırın.
+Azure Machine Learning, *işlem* (veya *işlem hedefi*), makine öğrenimi ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur. CPU tabanlı bir [Amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) hedefi oluşturmak için aşağıdaki kodu çalıştırın.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>Veri girişlerini oluşturma
 
-Toplu çıkarım girişleri, paralel işleme için bölümlemek istediğiniz veri. Toplu çıkarım ardışık düzeni, aracılığıyla veri girişlerini kabul eder [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
+Toplu çıkarım girişleri, paralel işleme için bölümlemek istediğiniz veri. Toplu çıkarım ardışık düzeni, aracılığıyla veri girişlerini kabul eder [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) .
 
-`Dataset` Azure Machine Learning verileri keşfetmek, dönüştürmek ve yönetmek içindir. İki tür vardır: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ve [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . Bu örnekte, `FileDataset` giriş olarak kullanacaksınız. `FileDataset` dosyaları, işlem için indirme veya işleme özelliğini sağlar. Bir veri kümesi oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine kümeleme dönüştürmeleri uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir.
+`Dataset` Azure Machine Learning verileri keşfetmek, dönüştürmek ve yönetmek içindir. İki tür vardır: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) ve [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) . Bu örnekte, `FileDataset` giriş olarak kullanacaksınız. `FileDataset` dosyaları, işlem için indirme veya işleme özelliğini sağlar. Bir veri kümesi oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine kümeleme dönüştürmeleri uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir.
 
 Azure Machine Learning veri kümeleri hakkında daha fazla bilgi için bkz. [veri kümeleri oluşturma ve erişim (Önizleme)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-Toplu çıkarım ardışık düzenini çalıştırırken dinamik veri girişlerini kullanmak için girdileri `Dataset` bir olarak tanımlayabilirsiniz [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) . Bir toplu çıkarım işlem hattı çalıştırmasını her yeniden başlattığınızda giriş veri kümesini belirtebilirsiniz.
+Toplu çıkarım ardışık düzenini çalıştırırken dinamik veri girişlerini kullanmak için girdileri `Dataset` bir olarak tanımlayabilirsiniz [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) . Bir toplu çıkarım işlem hattı çalıştırmasını her yeniden başlattığınızda giriş veri kümesini belirtebilirsiniz.
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Çıktıyı oluşturma
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneler, işlem hattı adımları arasında ara verileri aktarmak için kullanılır. Bu örnekte, çıkarım çıkışı için kullanırsınız.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) nesneler, işlem hattı adımları arasında ara verileri aktarmak için kullanılır. Bu örnekte, çıkarım çıkışı için kullanırsınız.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>İşlem hattını oluşturma ve çalıştırma
 
-Şimdi işlem hattını çalıştırın. İlk olarak, [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) çalışma alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak bir nesne oluşturun. `steps`Parametresi bir adım dizisidir. Bu durumda, toplu iş çıkarımı için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
+Şimdi işlem hattını çalıştırın. İlk olarak, [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) çalışma alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak bir nesne oluşturun. `steps`Parametresi bir adım dizisidir. Bu durumda, toplu iş çıkarımı için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
 
 Sonra, işlem hattını `Experiment.submit()` yürütmeye göndermek için işlevini kullanın.
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 Bir toplu çıkarım işinin tamamlanması uzun zaman alabilir. Bu örnek, bir Jupyıter pencere öğesi kullanarak ilerlemeyi izler. Ayrıca şunları kullanarak işin ilerlemesini izleyebilirsiniz:
 
 * Azure Machine Learning Studio. 
-* Nesneden konsol çıktısı [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) .
+* Nesneden konsol çıktısı [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true) .
 
 ```python
 from azureml.widgets import RunDetails
