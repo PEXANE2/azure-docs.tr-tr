@@ -32,6 +32,10 @@
       href: private-link-service-overview.md
     - name: Özel Uç Nokta DNS tümleştirme
       href: private-endpoint-dns.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır
   items:
     - name: Bir depolama hesabına özel olarak bağlanma
@@ -56,7 +60,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

@@ -1,10 +1,10 @@
 - name: Azure Maliyet Yönetimi ve Faturalandırma belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Maliyet Yönetimi ve Faturalandırma nedir?
       href: cost-management-billing-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Maliyet analizini başlatın
@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
           href: understand/mpa-overview.md
+        - name: İş ortakları arasında abonelik aktarma (Önizleme)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Maliyet Yönetimi ve Faturalandırma’yı yapılandırma

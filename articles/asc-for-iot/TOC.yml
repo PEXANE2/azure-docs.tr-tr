@@ -1,11 +1,11 @@
 - name: IoT için Azure Güvenlik Merkezi belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   href: overview.md
   items:
     - name: Çözüm mimarisi
       href: architecture.md
-    - name: Azure RTOS için güvenlik çözümü
+    - name: Azure RTOS için Güvenlik Modülü
       href: iot-security-azure-rtos.md
     - name: Güvenlik aracıları
       href: security-agent-architecture.md
@@ -23,6 +23,8 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: Azure RTOS için Güvenlik Modülü’nü yapılandırma
+      href: quickstart-azure-rtos-security-module.md
     - name: IoT Hub’da IoT için Azure Güvenlik Merkezi’ni ekleme
       href: quickstart-onboard-iot-hub.md
     - name: Çözümünüzü yapılandırma
@@ -37,6 +39,12 @@
       href: quickstart-investigate-security-alerts.md
 - name: Kavramlar
   items:
+    - name: Azure RTOS için Güvenlik Modülü
+      items:
+        - name: Azure RTOS için Güvenlik Modülü’nü anlama
+          href: concept-rtos-security-module.md
+        - name: Azure RTOS için Güvenlik Modülü uyarıları ve önerileri
+          href: concept-rtos-security-alerts-recommendations.md
     - name: Güvenlik aracısında kimlik doğrulaması
       href: concept-security-agent-authentication-methods.md
     - name: Güvenlik modülü
@@ -55,6 +63,8 @@
       href: concept-pricing.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure RTOS için Güvenlik Modülü ile çalışma
+      href: how-to-azure-rtos-security-module.md
     - name: Hangi aracıyı dağıtmalıyım?
       items:
         - name: Dağıtılacak aracıyı seçme
@@ -87,13 +97,29 @@
       href: how-to-configure-with-sentinel.md
     - name: Çözümünüzü özelleştirme
       href: how-to-customize-solution.md
-- name: Kaynaklar
+- name: Başvurular
   items:
+    - name: Azure RTOS için Güvenlik Modülü API’si
+      href: azure-rtos-security-module-api.md
     - name: Sık sorulan sorular
       href: resources-frequently-asked-questions.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-    - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile güvenlik becerilerinizi geliştirme
+      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+    - name: Azure Güvenlik Merkezi belgeleri
+      href: 'https://docs.microsoft.com/azure/security-center/'
+    - name: Azure güvenlik belgeleri
+      href: 'https://docs.microsoft.com/azure/security/'
+    - name: Stack Overflow’da Azure RTOS güvenlik modülü
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+    - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Videolar
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

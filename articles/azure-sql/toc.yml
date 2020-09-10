@@ -924,8 +924,6 @@
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Hızlı Başlangıçlar
           items:
-            - name: SQL VM oluşturma
-              items: null
             - name: Portal
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
             - name: PowerShell

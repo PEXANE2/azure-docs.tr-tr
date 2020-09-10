@@ -1,6 +1,6 @@
 - name: SQL Edge Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: SQL Edge nedir?
       href: overview.md
@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: Veri saklama ve temizleme
+          items:
+            - name: Veri saklamaya genel bakış
+              href: data-retention-overview.md
+            - name: Veri saklamayı etkinleştirme veya devre dışı bırakma
+              href: data-retention-enable-disable.md
+            - name: Veri saklamayı temizleme
+              href: data-retention-cleanup.md

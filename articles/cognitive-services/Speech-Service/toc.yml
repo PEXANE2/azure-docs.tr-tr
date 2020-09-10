@@ -1,6 +1,6 @@
 - name: Konuşma hizmeti belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   expanded: true
   items:
     - name: Konuşma tanıma hizmetine genel bakış
@@ -16,24 +16,14 @@
   items:
     - name: Konuşmayı metne dönüştürme belgeleri
       href: index-speech-to-text.yml
-    - name: Genel Bakış
-      items:
-        - name: Konuşmayı metne dönüştürme nedir?
-          href: speech-to-text.md
-        - name: Konuşma tanımanın temelleri
-          href: speech-to-text-basics.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Mikrofon girişiyle yapılan konuşmayı tanıma
-          href: quickstarts/speech-to-text-from-microphone.md
-        - name: Ses dosyasından alınan konuşmayı tanıma
-          href: quickstarts/speech-to-text-from-file.md
-        - name: Blob depolama alanında depolanan konuşmayı tanıma
-          href: quickstarts/from-blob.md
-        - name: Speech Studio’da ses dosyalarını kullanarak model test etme
-          href: quickstarts/speech-studio-test-model.md
+    - name: Konuşmayı metne dönüştürmeye genel bakış
+      href: speech-to-text.md
+    - name: Konuşmayı metne dönüştürmeye yönelik hızlı başlangıç
+      href: get-started-speech-to-text.md
     - name: Nasıl yapılır kılavuzları
       items:
+        - name: Blob depolama alanında depolanan konuşmayı tanıma
+          href: quickstarts/from-blob.md
         - name: Konuşma tanıma modunu seçme
           href: how-to-choose-recognition-mode.md
         - name: Konuşmayı tanıma için kaynak dili değiştirme
@@ -57,6 +47,8 @@
           href: tutorial-tenant-model.md
     - name: Özelleştirme
       items:
+        - name: Speech Studio’da ses dosyalarını kullanarak model test etme
+          href: quickstarts/speech-studio-test-model.md
         - name: Özel Konuşma için verileri hazırlama
           href: how-to-custom-speech-test-and-train.md
         - name: Özel Konuşma verilerini inceleme
@@ -75,33 +67,29 @@
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Başvuru
       items:
-        - name: Konuşma SDK'sı API'leri
-          items:
-            - name: C++
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/cppref'
-            - name: C#
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/csharpref'
-            - name: Java
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
-              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javascriptref'
-            - name: Objective-C
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/objectivecref'
-            - name: Python
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/pythonref'
-            - name: Sürüm notları
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-              href: releasenotes.md
-        - name: REST API'leri
-          items:
-            - name: Konuşmayı metne dönüştürme REST API'si
-              href: rest-speech-to-text.md
+        - name: C++
+          displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/cppref'
+        - name: C#
+          displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/csharpref'
+        - name: Java
+          displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javaref'
+        - name: JavaScript
+          displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javascriptref'
+        - name: Objective-C
+          displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/objectivecref'
+        - name: Python
+          displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/pythonref'
+        - name: Sürüm notları
+          displayName: 'release notes,updates,what''s new,what is new,changes'
+          href: releasenotes.md
+        - name: Konuşmayı metne dönüştürme REST API'si
+          href: rest-speech-to-text.md
     - name: Kaynaklar
       items:
         - name: Dil desteği

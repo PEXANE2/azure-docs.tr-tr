@@ -1,10 +1,10 @@
 - name: Load Balancer belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Load Balancer nedir?
       href: load-balancer-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Genel yük dengeleyici oluşturma - Portal
       href: quickstart-load-balancer-standard-public-portal.md
@@ -41,7 +41,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Nasıl yapılır
   items:
+    - name: Portal ayarları
+      href: manage.md
     - name: Sanal makine ölçek kümeleri
       items:
         - name: Mevcut bir Azure Load Balancer ile kullanma - Portal
@@ -99,7 +101,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'

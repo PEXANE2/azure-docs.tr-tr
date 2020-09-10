@@ -1,6 +1,6 @@
 - name: Azure Digital Twins
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Digital Twins Hakkında
       href: overview.md
@@ -158,6 +158,8 @@
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview'
             - name: .NET (C#) SDK - kaynak
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+            - name: JavaScript SDK - npm
+              href: 'https://www.npmjs.com/package/@azure/digital-twins'
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI başvurusu

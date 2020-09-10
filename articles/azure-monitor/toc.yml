@@ -1,6 +1,6 @@
 - name: Azure İzleyici Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure İzleyici nedir?
       href: overview.md
@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: BT Hizmet Yönetimi bağlantıları
               href: platform/itsmc-connections.md
+            - name: Güvenli Dışarı Aktarma Tümleştirmesi
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager web uygulaması oluşturma
               href: platform/itsmc-service-manager-script.md
             - name: ServiceNow ITSM eşitleme sorunlarını düzeltme
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: SSS
+              href: faq.md#opentelemetry
         - name: Kaynak oluşturma (klasik)
           href: app/create-new-resource.md
         - name: Kaynak oluşturma (çalışma alanı tabanlı)
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: GPU performansını izleme
           href: insights/container-insights-gpu-monitoring.md
+        - name: Dağıtımları ve HPA’ları izleme
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: Canlı verileri görüntüleme
           items:
             - name: Canlı Verilere (önizleme) genel bakış

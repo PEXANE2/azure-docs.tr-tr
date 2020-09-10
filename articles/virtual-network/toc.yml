@@ -1,6 +1,6 @@
 - name: Sanal Ağ Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Sanal Ağ hakkında
       href: virtual-networks-overview.md
@@ -31,7 +31,7 @@
       href: tutorial-create-validate-nat-gateway-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -96,7 +96,7 @@
         - name: Ağ güvenlik grupları
           items:
             - name: Genel bakış
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: Nasıl çalışır?
               href: network-security-group-how-it-works.md
         - name: Uygulama güvenliği grupları
@@ -420,7 +420,7 @@
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network
