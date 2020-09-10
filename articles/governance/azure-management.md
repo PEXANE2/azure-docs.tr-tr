@@ -1,14 +1,14 @@
 ---
 title: Azure yönetimine genel bakış-Azure Idare
 description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılarla Azure uygulamaları ve kaynakları için yönetim bölümlerine genel bakış.
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041923"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662134"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure Yönetim bölgeleri nelerdir?
 
@@ -18,7 +18,9 @@ Yönetim, iş uygulamalarınızı ve onları destekleyen kaynaklarınızı korum
 
 Aşağıdaki diyagramda herhangi bir uygulamayı veya kaynağı korumak için gereken farklı yönetim alanları gösterilmektedir. Bu farklı bölgeler yaşam döngüsü olarak düşünülebilir. Her alan, bir kaynağın kullanım ömrü boyunca sürekli olarak her bir şekilde gereklidir. Bu kaynak yaşam döngüsü ilk dağıtım ile başlar, devam eden işlem ve son kullanımdan kalkmıştır.
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 'da disiplindeki yönetim hatları" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 'da disiplindeki yönetim hatlarının diyagramı." border="false":::
+   Azure 'da yönetim ve Idare desteği sunan hizmetlerin tekerleğinin içeriğini geçirme, güvenli, koruma, Izleme, yapılandırma ve yönetme öğelerini gösteren diyagram. Güvende, alt öğeler olarak güvenlik yönetimi ve tehdit koruması vardır. Koruma, alt öğeler olarak yedekleme ve olağanüstü durum kurtarma içerir. Monitörde uygulama, Infra ve ağ izleme, alt öğe olarak Log Analytics ve Tanılamalar vardır. Yapılandırma, güncelleştirme yönetimi, otomasyon ve komut dosyasını alt öğe olarak yapılandırın. Ve, alt öğeler olarak Ilke yönetimi ve maliyet yönetimi içerir.
+:::image-end:::
 
 Tek bir Azure hizmeti belirli bir yönetim alanının gereksinimlerini tamamen doldurmıyor. Bunun yerine, her biri birlikte çalışan çeşitli hizmetler tarafından gerçekleştirilir. Application Insights gibi bazı hizmetler, Web uygulamaları için hedeflenen izleme işlevlerini sağlar. Azure Izleyici günlükleri gibi diğerleri, diğer hizmetler için yönetim verilerini depolar. Bu özellik farklı hizmetler tarafından toplanan farklı türlerdeki verileri analiz etmenizi sağlar.
 

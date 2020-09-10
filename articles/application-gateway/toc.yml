@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Application Gateway bileşenleri
           href: application-gateway-components.md
-        - name: Yapılandırmaya genel bakış
-          href: configuration-overview.md
+        - name: Yapılandırma
+          items:
+            - name: Genel Bakış
+              href: configuration-overview.md
+            - name: Altyapı
+              href: configuration-infrastructure.md
+            - name: Ön uç IP adresi
+              href: configuration-front-end-ip.md
+            - name: Dinleyiciler
+              href: configuration-listeners.md
+            - name: Yönlendirme kuralı isteme
+              href: configuration-request-routing-rules.md
+            - name: HTTP ayarları
+              href: configuration-http-settings.md
     - name: Yüksek trafik desteği
       href: high-traffic-support.md
     - name: Otomatik ölçeklendirme v2 SKU

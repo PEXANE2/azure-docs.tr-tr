@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Öğretici: Mapbox ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Mapbox 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,6 +41,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Mapbox, **IDP** tarafından başlatılan SSO 'yu destekler
 * Mapbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-mapbox-from-the-gallery"></a>Galeriden Mapbox ekleme
 
@@ -84,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Mapbox uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı   |  Kaynak özniteliği|
+    | Name   |  Kaynak özniteliği|
     | -----|--------- |
     | rol | Kullanıcı. atandroles |
     | | |
@@ -136,15 +139,15 @@ Bu bölümde, Mapbox 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. **Ayarlar** sekmesine tıklayın.
 
-    ![Mapbox yapılandırması](./media/mapbox-tutorial/configure1.png)
+    ![Mapbox ayarları sekmesi](./media/mapbox-tutorial/configure1.png)
 
 1. Sol gezinti bölmesinden **güvenlik** sekmesine tıklayın.
 
-    ![Mapbox yapılandırması](./media/mapbox-tutorial/configure2.png)
+    ![Mapbox güvenlik sekmesi](./media/mapbox-tutorial/configure2.png)
 
 1. **Çoklu oturum açmayı Düzenle**' ye tıklayın.
 
-    ![Mapbox yapılandırması](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox çoklu oturum açmayı Düzenle](./media/mapbox-tutorial/configure3.png)
 
 1. **3. Adım: Mapbox IÇIN SAML çoklu oturum açma kurulumunu** yapın ve aşağıdaki adımları gerçekleştirin:
 

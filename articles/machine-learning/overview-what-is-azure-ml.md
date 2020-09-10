@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d5e1e8c0ced03191a530598bf2dca308dc4fab03
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 72de3c45d0def7cf4a48884ee49be256179ac0a4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651042"
+ms.locfileid: "89659491"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -115,7 +115,7 @@ Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayr�
 + __Azure Event Grid__. Daha fazla bilgi için bkz. [Azure Machine Learning olayları](concept-event-grid-integration.md)kullanma.
 + __Azure izleyici__. Daha fazla bilgi için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 + __Azure depolama hesapları__, __Azure Data Lake Storage__, __Azure SQL veritabanı__, __PostgreSQL Için Azure veritabanı__ve __Azure açık veri kümeleri__gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md).
-+ __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağdaki güvenli deneme ve çıkarım](how-to-enable-virtual-network.md).
++ __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
 + __Azure Pipelines__. Daha fazla bilgi için bkz. [makine öğrenimi modellerini eğitme ve dağıtma](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git deposu günlükleri__. Daha fazla bilgi için bkz. [Git tümleştirmesi](concept-train-model-git-integration.md).
 + __Mlflow__. Daha fazla bilgi için bkz. [ölçümleri izlemek ve modelleri dağıtmak Için Mlflow](how-to-use-mlflow.md) 
@@ -123,7 +123,7 @@ Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayr�
 
 ### <a name="secure-communications"></a>Güvenli iletişim
 
-Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modelleri eğitmek ve çıkarım gerçekleştirmek için bir sanal ağ içinde güvenli bir şekilde kullanılabilir. Daha fazla bilgi için bkz. [sanal ağdaki güvenli deneme ve çıkarım](how-to-enable-virtual-network.md).
+Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modelleri eğitmek ve çıkarım gerçekleştirmek için bir sanal ağ içinde güvenli bir şekilde kullanılabilir. Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
 
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Temel & Enterprise sürümleri
 

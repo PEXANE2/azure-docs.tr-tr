@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Portal ile bir yönetim grubu oluşturma'
 description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşisinde düzenlemek üzere bir yönetim grubu oluşturmak için Azure portal kullanırsınız.
 ms.date: 08/31/2020
 ms.topic: quickstart
-ms.openlocfilehash: 28b530e1da6b75dcc20e4a5dfebc494a959040b3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237374"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661733"
 ---
 # <a name="quickstart-create-a-management-group"></a>Hızlı başlangıç: yönetim grubu oluşturma
 
@@ -16,7 +16,7 @@ Yönetim grupları, birden çok abonelik üzerinde erişimi, ilkeyi ve uyumlulu�
 
 Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. Dizininiz için Azure 'da yönetim grupları hizmetini ayarlamak için ilk kez çalışan süreçler vardır. İşlem tamamlandığında bir bildirim alırsınız. Daha fazla bilgi için bkz. [yönetim gruplarının ilk kurulumu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -32,14 +32,14 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 1. **+ Yönetim grubu Ekle**' yi seçin.
 
-   :::image type="content" source="./media/main.png" alt-text="Yönetim gruplarıyla çalışma sayfası" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Alt yönetim grupları ve abonelikleri gösteren yönetim grupları sayfasının ekran görüntüsü." border="false":::
 
 1. **Yeni oluştur** ' a seçili bırakın ve YÖNETIM grubu kimliği alanını girin.
 
    - **Yönetim grubu kimliği** , bu yönetim grubundaki komutları göndermek için kullanılan dizin benzersiz tanımlayıcısıdır. Bu tanımlayıcı, bu grubu tanımlamak için Azure sisteminde kullanıldığından oluşturulduktan sonra düzenlenebilir değildir. [Kök yönetim grubu](./overview.md#root-management-group-for-each-directory) , Azure Active Directory kimliği olan bir kimlikle otomatik olarak oluşturulur. Diğer tüm yönetim grupları için benzersiz bir KIMLIK atayın.
    - Görünen ad alanı Azure portal içinde görüntülenen addır. Ayrı bir görünen ad, yönetim grubu oluşturulurken isteğe bağlı bir alandır ve herhangi bir zamanda değiştirilebilir.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Yeni yönetim grubu oluşturmak için seçenekler bölmesi":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Yeni bir yönetim grubu oluşturmak için ' yönetim grubu Ekle ' seçeneklerinin ekran görüntüsü.":::
 
 1. **Kaydet**’i seçin.
 

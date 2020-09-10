@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 304f80dcb2da4ed60bd94e9fb4d71d985da87cc2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496222"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661990"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
 
@@ -34,7 +34,7 @@ Ortamınızda neler olduğunu görselleştirmek ve analiz etmek için öncelikle
 
 - Üstteki araç çubuğu, belirlenen zaman dilimine göre kaç olay olduğunu size bildirir ve bunu önceki 24 saat ile karşılaştırır. Araç çubuğu, bu olayları, tetiklenen uyarıları (küçük sayı, son 24 saat içindeki değişikliği temsil eder) ve ardından bu olayları, ne kadar açık, devam ediyor ve kapalı olduğunu bildirir. Olay sayısında önemli bir artış veya bırakma olmadığını kontrol edin. Bir bırakma işlemi varsa, bağlantı Azure Sentinel 'e raporlamayı durdurdu olabilir. Bir artış varsa şüpheli bir sorun oluşmuş olabilir. Yeni uyarılar olup olmadığını kontrol edin.
 
-   ![Azure Sentinel huni](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel sayaçları](./media/qs-get-visibility/funnel.png)
 
 Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik durumunu gösteren bir bakışta fikir verir:
 
@@ -42,14 +42,14 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
 - **Olası kötü amaçlı olaylar**: kötü amaçlı oldukları bilinen kaynaklardan trafik algılandığında, Azure Sentinel, haritada sizi uyarır. Turuncu görürseniz, bu gelen trafiktir: birisi kuruluşunuza bilinen bir kötü amaçlı IP adresinden erişmeyi deniyor. Giden (kırmızı) etkinlik görürseniz, ağınızdaki verilerin kuruluşunuzun dışında, bilinen bir kötü amaçlı IP adresine akışını sağlarsınız.
 
-   ![Azure Sentinel eşlemesi](./media/qs-get-visibility/map.png)
+   ![Kötü amaçlı trafik Haritası](./media/qs-get-visibility/map.png)
 
 
-- **Son olaylar**: son olaylarınızı, bunların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, Azure ATP 'den en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
+- **Son olaylar**: son olaylarınızı, bunların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, kimlik için Microsoft Defender 'dan (eski adıyla Azure ATP) en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
 
 - **Veri kaynağı Anomali**: Microsoft 'un veri analistleri için veri kaynaklarınızdan verileri sürekli olarak arama modellerini oluşturdu. Herhangi bir sorun yoksa, hiçbir şey görüntülenmez. Bozukluklar algılanırsa, ne olduğunu görmek için bunlara ayrıntılı bir bakış uygulamanız gerekir. Örneğin, Azure 'da ani artış ' a tıklayın. Ne zaman meydana geldiğini görmek için **grafiğe** tıklayabilir ve sonra ne olduğunu görmek için o zaman diliminde gerçekleşen etkinliklere filtre uygulayabilirsiniz.
 
-   ![Azure Sentinel eşlemesi](./media/qs-get-visibility/anomolies.png)
+   ![Anormal veri kaynakları](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
 
@@ -64,10 +64,10 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
 
    - Güvenlik duvarınız için bir çalışma kitabı ekleyin. Örneğin, Palo Alto Alto çalışma kitabını ekleyin. Çalışma kitabı, güvenlik duvarı verileriniz ile tehdit olayları arasında bağıntılar sunarak ve varlıklar genelinde şüpheli olayları vurgulamaktadır. Çalışma kitapları, trafikte eğilimleri hakkında bilgi sağlar ve sonuçların ayrıntılarına inmenize ve sonuçları filtrelemenize imkan sağlar. 
 
-      ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Palo Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
+Ana sorgu sorgusu düzenleme düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme günlüğü Analizi düğmesine tıklayabilir ve üç nokta (...) simgesini seçip **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

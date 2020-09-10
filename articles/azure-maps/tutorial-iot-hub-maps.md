@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4150464b5c59b631afea0c788b1e351dee5185f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 86ae186d3d8b131955be7d9fa2c305316dea9f00
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299409"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658439"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal Analizi uygulama
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları yapmanız gerekir:
 > * Azure işlevindeki IoT cihaz telemetri olaylarına Event Grid aracılığıyla abone olun.
 > * IoT Hub ileti yönlendirme kullanarak telemetri olaylarını filtreleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -204,7 +204,7 @@ Bir işlev, belirli bir olay tarafından "tetiklenir". Senaryolarımızda Event 
     * **UDID** `udid` değerini, [bölge yükleme](#upload-a-geofence)sırasında karşıya yüklediğiniz bölge alanı ile değiştirin.
     * Betikteki **Createblobasync** işlevi, veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY**, **account_name**ve **STORAGE_CONTAINER_NAME** değerini depolama hesabınızın erişim anahtarı, hesap adı ve veri depolama kapsayıcınızla değiştirin. Bu değerler, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde depolama hesabınızı oluşturduğunuzda oluşturulmuştur.
 
-9. Sol taraftaki menüde **tümleştirme** dikey penceresine tıklayın. Diyagramda **Event Grid tetikleyicisi** ' ne tıklayın. Tetikleyici için *Eventcartelemetri*gibi bir ad yazın ve **Event Grid aboneliği oluştur**' a tıklayın.
+9. Sol taraftaki menüde **tümleştirme** dikey penceresine tıklayın. Diyagramda **Event Grid tetikleyicisi** ' ne tıklayın. Tetikleyici için bir ad yazın, *Eventgridevent*ve **Event Grid aboneliği oluştur**' a tıklayın.
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Olay aboneliği ekleyin":::
 

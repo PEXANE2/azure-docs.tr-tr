@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: cbeb37599d28241dac3829af3891b2810cca4dce
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812946"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662122"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları (Önizleme)
 
@@ -67,8 +67,8 @@ Bu yerleşik gerileme örneklerini gezin.
 
 | Örnek başlık | Açıklama | 
 | --- | --- |
-| [Örnek 1: gerileme-otomobil fiyat tahmini (temel)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Doğrusal regresyon kullanarak otomobil fiyatlarını tahmin edin. |
-| [Örnek 2: gerileme-otomobil fiyat tahmini (Gelişmiş)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Karar ormanını kullanarak otomobil fiyatlarını tahmin edin ve karar ağacı gerilediğini kullanın. En iyi algoritmayı bulmak için modelleri karşılaştırın.
+| [Gerileme-otomobil fiyat tahmini (temel)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Doğrusal regresyon kullanarak otomobil fiyatlarını tahmin edin. |
+| [Gerileme-otomobil fiyat tahmini (Gelişmiş)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Karar ormanını kullanarak otomobil fiyatlarını tahmin edin ve karar ağacı gerilediğini kullanın. En iyi algoritmayı bulmak için modelleri karşılaştırın.
 
 ## <a name="classification"></a>Sınıflandırma
 
@@ -76,11 +76,19 @@ Bu yerleşik sınıflandırma örneklerini keşfet. Örnekleri açıp modül aç
 
 | Örnek başlık | Açıklama | 
 | --- | --- |
-| [Örnek 3: Özellik seçimi ile Ikili sınıflandırma-gelir tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | İki sınıf artırılmış bir karar ağacı kullanarak geliri yüksek veya düşük olarak tahmin edin. Özellikleri seçmek için Pearson bağıntısını kullanın.
-| [Örnek 4: özel Python betiği ile Ikili sınıflandırma-kredi riski tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Kredi uygulamalarını yüksek veya düşük riskli olarak sınıflandırın. Verilerinizi ağırlığa yönelik Python betiği yürütme modülünü kullanın.
-| [Örnek 5: Ikili sınıflandırma-müşteri Ilişkisi tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | İki sınıf artırılmış bir karar ağacının kullanıldığı müşteri karmaşıklığını tahmin edin. Taraflı verileri örneklemek için IÇTE 'yi kullanın.
-| [Örnek 7: metin sınıflandırması-Vikipedi SP 500 veri kümesi](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Birden çok Lass Lojistik gerileme ile Vikipedi makalelerinden şirket türlerini sınıflandırın. |
-| Örnek 12: birden çok Lass sınıflandırması-harf tanıma | Yazılan harflerin sınıflandırılmasında ikili Sınıflandırıcıların bir kopyasını oluşturun. |
+| [Özellik seçimi ile ikili sınıflandırma-gelir tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | İki sınıf artırılmış bir karar ağacı kullanarak geliri yüksek veya düşük olarak tahmin edin. Özellikleri seçmek için Pearson bağıntısını kullanın.
+| [Özel Python betiği ile ikili sınıflandırma-kredi riski tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Kredi uygulamalarını yüksek veya düşük riskli olarak sınıflandırın. Verilerinizi ağırlığa yönelik Python betiği yürütme modülünü kullanın.
+| [İkili sınıflandırma-müşteri Ilişki tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | İki sınıf artırılmış bir karar ağacının kullanıldığı müşteri karmaşıklığını tahmin edin. Taraflı verileri örneklemek için IÇTE 'yi kullanın.
+| [Metin sınıflandırması-Vikipedi SP 500 veri kümesi](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Birden çok Lass Lojistik gerileme ile Vikipedi makalelerinden şirket türlerini sınıflandırın. |
+| Birden çok Lass sınıflandırması-harf tanıma | Yazılan harflerin sınıflandırılmasında ikili Sınıflandırıcıların bir kopyasını oluşturun. |
+
+## <a name="computer-vision"></a>Görüntü işleme
+
+Bu yerleşik bilgisayar görme örneklerini keşfet. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
+
+| Örnek başlık | Açıklama | 
+| --- | --- |
+| Geniş & derin tabanlı öneri-Restoran derecelendirme tahmini | Restoran/Kullanıcı özellikleri ve derecelendirmelerinden bir restoran öneren altyapısı oluşturun.|
 
 ## <a name="recommender"></a>Öneren
 
@@ -88,7 +96,7 @@ Bu yerleşik öneren örnekleri keşfedebilirsiniz. Örnekleri açıp modül aç
 
 | Örnek başlık | Açıklama | 
 | --- | --- |
-| Örnek 10: öneri-film derecelendirmesi arası | Film başlıklarından ve derecelendirmeden bir film öneren altyapısı oluşturun. |
+| DenseNet kullanarak görüntü sınıflandırması | PyTorch DenseNet 'yi temel alan görüntü sınıflandırma modeli oluşturmak için bilgisayar görme modüllerini kullanın.| 
 
 ## <a name="utility"></a>Yardımcı Program
 
@@ -96,10 +104,11 @@ Machine Learning yardımcı programlarını ve özelliklerini gösteren örnekle
 
 | Örnek başlık | Açıklama | 
 | --- | --- |
-| [Örnek 6: özel R betiği kullanma-Uçuş gecikmesi tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| Örnek 8: Ikili sınıflandırma için çapraz doğrulama-yetişkinlere yönelik gelir tahmini | Yetişkinlere yönelik gelir için ikili bir sınıflandırıcı oluşturmak üzere çapraz doğrulama kullanın.
-| Örnek 9: permütasyon özelliği önem derecesi | Test veri kümesinin önem puanlarını hesaplamak için permütasyon özelliği önem derecesini kullanın. 
-| Örnek 11: Ikili sınıflandırmayla ilgili parametreleri ayarlama-yetişkinlere yönelik gelir tahmini | İkili bir sınıflandırıcı oluşturmak için en uygun hiper parametreleri bulmak için model hiper parametrelerini ayarla ' yı kullanın. |
+| Vowpal Wabbit modelini kullanan ikili sınıflandırma-yetişkinlere yönelik gelir tahmini | Vowpal Wabbit, makine öğrenimini çevrimiçi, karma, allazaltma, azaltma, learning2search, etkin ve etkileşimli öğrenimler gibi tekniklerle bağlayan bir makine öğrenimi sistemidir. Bu örnek, ikili sınıflandırma modeli oluşturmak için Vowpal Wabbit modelinin nasıl kullanılacağını gösterir. 
+| [Özel R betiği kullan-Uçuş gecikmesi tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Zamanlanan bir pastger uçuşun 15 dakikadan fazla ertelenmesini tahmin etmek için özelleştirilmiş R betiği kullanın.
+| Ikili sınıflandırma için çapraz doğrulama-yetişkinlere yönelik gelir tahmini | Yetişkinlere yönelik gelir için ikili bir sınıflandırıcı oluşturmak üzere çapraz doğrulama kullanın.
+| Permütasyon Özelliği Önem Derecesi | Test veri kümesinin önem puanlarını hesaplamak için permütasyon özelliği önem derecesini kullanın. 
+| Ikili sınıflandırma için parametreleri ayarlama-yetişkinlere yönelik gelir tahmini | İkili bir sınıflandırıcı oluşturmak için en uygun hiper parametreleri bulmak için model hiper parametrelerini ayarla ' yı kullanın. |
 
 ## <a name="datasets"></a>Veri kümeleri
 

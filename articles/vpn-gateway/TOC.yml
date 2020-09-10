@@ -154,6 +154,8 @@
               href: openvpn-azure-ad-client.md
             - name: İstemci VPN profili indirme dosyası hakkında
               href: about-vpn-profile-download.md
+            - name: Intune - VPN istemcisi profili dağıtma
+              href: vpn-profile-intune.md
         - name: OpenVPN
           items:
             - name: Noktadan siteye bağlantılar için OpenVPN yapılandırması

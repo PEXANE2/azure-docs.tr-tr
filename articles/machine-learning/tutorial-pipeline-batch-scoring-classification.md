@@ -11,20 +11,20 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 87a65cd42ad58a06488499aaf8651e206c35b5f2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646978"
+ms.locfileid: "89657041"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu gelişmiş öğreticide, Batch Puanlama işi çalıştırmak için Azure Machine Learning bir işlem hattı oluşturmayı öğreneceksiniz. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
+Bu gelişmiş öğreticide, Batch Puanlama işi çalıştırmak için [Azure Machine Learning işlem hattı](concept-ml-pipelines.md) oluşturmayı öğreneceksiniz. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
 
-Örnek, etiketli görüntüleri sınıflandırmak için TensorFlow 'da uygulanan önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) sinir ağ modelini kullanır. [Makine öğrenimi işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
+Örnek, etiketli görüntüleri sınıflandırmak için TensorFlow 'da uygulanan önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) sinir ağ modelini kullanır. 
 
 Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 

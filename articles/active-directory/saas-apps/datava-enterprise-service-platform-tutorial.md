@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536742"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>Öğretici: Datava Enterprise Service platformu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,15 +28,12 @@ Bu öğreticide, veri VA Enterprise Service platformunu Azure Active Directory (
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Datava Enterprise Service platformu çoklu oturum açma (SSO) etkin aboneliği.
-
-> [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -44,7 +41,10 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Datava Enterprise Service platformu, **SP** tarafından başlatılan SSO 'yu destekler
 * Datava Enterprise Service platformu **, tam zamanında** Kullanıcı sağlamayı destekliyor
-* Datava Enterprise Service platformunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Datava Enterprise Service platformunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>Galeriden Datava Enterprise Service platformu ekleme
 
@@ -57,7 +57,7 @@ Datava Enterprise Service platformunun tümleştirmesini Azure AD ile yapıland�
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Datava Enterprise Service platformunu** yazın.
 1. Sonuçlar panelinden **Datava Enterprise Service platformunu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Datava Enterprise Service platformu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Datava Enterprise Service platformu için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Datava Enterprise Service platformu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Datava Enterprise Service platformunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://go.datava.com/<TENANT_NAME>`
 
-    b. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
+    b. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
 
     > [!NOTE]
     > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Datava Enterprise Service platform istemci desteği ekibine](mailto:support@datava.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -148,5 +148,3 @@ Erişim panelinde Datava Enterprise Service platformu kutucuğuna tıkladığın
 - [Azure AD ile Datava Enterprise Service platformunu deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Veri VA Enterprise Service platformunu gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -24,6 +24,8 @@
   items:
     - name: Power Virtual Agent ile tümleştirme
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: Azure Bot Hizmeti ile SSS Botu oluşturma
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: Toplu iş dosyasıyla test etme
       href: Quickstarts/batch-testing.md
 - name: Kavramlar
@@ -91,7 +93,7 @@
         - name: Yeni bilgi bankasına geçiş
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Test etme
+        - name: Bilgi bankasını test etme
           href: How-To/test-knowledge-base.md
     - name: Soru-Cevap çiftlerini yönetme
       items:

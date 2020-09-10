@@ -8,22 +8,21 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211379"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662366"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Core uygulamasına dahil edersiniz. .NET Core konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 veya üzeri](https://www.microsoft.com/net/download/dotnet-framework-runtime), StackEdchange. redsıs istemcisi için gereklidir.
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

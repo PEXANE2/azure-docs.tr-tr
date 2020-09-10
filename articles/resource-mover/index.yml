@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Azure Kaynak Taşıyıcı belgeleri
+summary: Azure kaynaklarınızı Azure bölgeleri arasında taşımak için Azure Kaynak Taşıyıcı merkezine gidin.
+metadata:
+  title: Azure Resource Manager Belgeleri
+  description: Kaynakları Azure bölgeleri arasında taşımaya yönelik öğreticiler ve bilgiler bulun.
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
+  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89652177"
+landingContent:
+- title: Azure Kaynak Taşıyıcı hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kaynak Taşıyıcı nedir?
+      url: ./overview.md
+    - text: Kaynak taşımak için bir araç seçin
+      url: ./select-move-tool.md
+    - text: Sık sorulan sorular
+      url: ./common-questions.md
+- title: başlarken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure VM’lerini başka bir bölgeye taşıma
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: Azure SQL veritabanlarını ve elastik havuzları başka bir bölgeye taşıyın
+      url: ./tutorial-move-region-sql.md
+- title: Daha fazla bilgi edinin
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Taşıma süreci hakkında bilgi edinin
+      url: ./about-move-process.md
+    - text: Azure sanal makinelerini taşımaya yönelik destek matrisini inceleyin
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: Azure SQL kaynaklarını taşımaya yönelik destek matrisini inceleyin
+      url: ./support-matrix-move-region-sql.md

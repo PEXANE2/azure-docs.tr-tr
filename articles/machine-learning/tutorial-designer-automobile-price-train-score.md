@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9d25d9e13cc7f3dba0f4254cda6e1119ff9e2e68
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812995"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659823"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 Üzerinde denemeler yapmanız için tasarımcıya dahil edilen birkaç örnek veri kümesi vardır. Bu öğretici için, **otomobil fiyat verileri (ham)** kullanın. 
 
-1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. **Veri kümelerini**seçin ve ardından kullanılabilir örnek veri kümelerini görüntülemek için **örnekler** bölümünü görüntüleyin.
+1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. Kullanılabilir örnek veri kümelerini görüntülemek için **örnek veri kümeleri** ' ni seçin.
 
 1. Veri kümesi **otomobil fiyat verileri (ham)** öğesini seçin ve tuvale sürükleyin.
 
@@ -179,7 +179,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
     :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-Column":::
 
-## <a name="train-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme
+## <a name="train-a-machine-learning-model"></a>Makine öğrenmesi modeli eğitme
 
 Artık verileri işlemek için modüller olduğuna göre, eğitim modüllerini ayarlayabilirsiniz.
 

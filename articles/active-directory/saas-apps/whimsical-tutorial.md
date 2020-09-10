@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 443cd6ce3805dbd5ebc250556c6d8ec28161f50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523347"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Öğretici: Whimsical ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -35,16 +35,16 @@ Başlamak için aşağıdaki öğeler gereklidir:
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Whimsical takım çalışma alanı.
 
-> [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
-
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Whimsical **, SP ve ıDP** tarafından başlatılan SSO 'yu destekliyor
 * Whimsical **, tam zamanında** Kullanıcı sağlamayı destekliyor
-* Whimsical 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Whimsical 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-whimsical-from-the-gallery"></a>Galeriden Whımsical ekleme
 
@@ -57,7 +57,7 @@ Azure AD 'ye ilişkin tümleştirmeyi yapılandırmak için, Galeriden yönetile
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Whimsical** yazın.
 1. Sonuçlar panelinden bir **kenar** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-whimsical"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-whimsical"></a>Azure AD SSO 'yu, Whımsical için yapılandırın ve test edin
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Whımsical ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -169,5 +169,3 @@ Erişim panelinde duman kutucuğuna tıkladığınızda, SSO 'yu ayarladığın�
 - [Azure AD ile deneme yapmayı deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle ne kadar koruma sağlar](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

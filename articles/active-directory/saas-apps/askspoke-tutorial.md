@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549445"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662285"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>Öğretici: Askkol ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,15 +28,12 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir askın nasıl tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Askkol çoklu oturum açma (SSO) etkin aboneliği.
-
-> [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -44,7 +41,10 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Askbağlı bileşen **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Askışınsal 'nin **tam zamanında** Kullanıcı sağlamasını desteklediği
-* Askıı 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Askıı 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-askspoke-from-the-gallery"></a>Galeriden Askkol ekleme
 
@@ -57,7 +57,7 @@ Azure AD 'ye Askışınsal 'nin tümleştirilmesini yapılandırmak için, Galer
 1. **Galeriden Ekle** bölümünde, arama kutusuna **askışınsal** yazın.
 1. Sonuçlar panelinden **Askkol** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>Askışınsal için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Askışınsal ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Askışınsal içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://askspoke.com/login`
+    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://askspoke.com/login`
 
 1. Askkol uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -97,7 +97,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, Askbağlı bileşen uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------- |
     | firstName | Kullanıcı. |
     | lastName | User. soyadı |
@@ -146,15 +146,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Askışınsal 'y
 
 1. Sol gezinti bölmesinden **Ayarlar** sekmesine tıklayın.
 
-    ![Askkol yapılandırması](./media/askspoke-tutorial/configure1.png)
+    ![Askkol ayarları sekmesi](./media/askspoke-tutorial/configure1.png)
 
 1. **SSO** 'ya kaydırın ve **Bağlan**'a tıklayın.
 
-    ![Askkol yapılandırması](./media/askspoke-tutorial/configure2.png)
+    ![Askbağlı bileşen bağlantısı](./media/askspoke-tutorial/configure2.png)
 
 1. **SAML & SCıM 'ı etkinleştir** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Askkol yapılandırması](./media/askspoke-tutorial/configure3.png)
+    ![Askışınsal bağlı SAML & SCıM bölümünü etkinleştir](./media/askspoke-tutorial/configure3.png)
 
     1. Oturum açma **URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -187,6 +187,3 @@ Erişim panelinde Askkol kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 - [Azure AD ile Güvenkiyle deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle Askkol koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

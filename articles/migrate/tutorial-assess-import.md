@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ff7e423063859a6cdc1a4362fb030c0deb75eb32
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447077"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658697"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -120,10 +120,10 @@ Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
 **Disk 1 yazma aktarım hızı** | Hayır | Saniyede diske yazılan veriler (MB/saniye).
 **CPU kullanım yüzdesi** | Hayır | Kullanılan CPU yüzdesi.
 **Bellek kullanım yüzdesi** | Hayır | Kullanılan RAM yüzdesi.
-**Toplam disk okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
-**Toplam disk yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
-**Toplam disk okuma performansı** | Hayır | Diskten MB/saniye cinsinden okunan veriler.
-**Toplam disk yazma performansı** | Hayır | Diske yazılan veriler MB/saniye cinsinden.
+**Toplam disk okuma Ops** | Hayır | Tüm diskler için saniye başına okuma işlemi. <br/> Disk düzeyi verisi sağlayabilmeyebilirsiniz bu alanı kullanın. 
+**Toplam disk yazma Ops** | Hayır | Tüm diskler için saniye başına yazma işlemi. <br/> Disk düzeyi verisi sağlayabilmeyebilirsiniz bu alanı kullanın.
+**Toplam disk okuma performansı** | Hayır | Tüm disklerden, MB/saniye cinsinden okunan veriler. <br/> Disk düzeyi verisi sağlayabilmeyebilirsiniz bu alanı kullanın. 
+**Toplam disk yazma performansı** | Hayır | Tüm diske, MB/saniye cinsinden yazılan veriler. <br/> Disk düzeyi verisi sağlayabilmeyebilirsiniz bu alanı kullanın.
 **Aktarım sırasında ağ** | Hayır | Sunucu tarafından saniyede MB cinsinden alınan veriler.
 **Ağ çıkış performansı** | Hayır | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
 **Bellenim türü** | Hayır | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
@@ -146,6 +146,11 @@ Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz ad, [
 - Disk 2 okuma performansı
 - Disk 2 yazma işleme
 
+Disk düzeyi verisi sağlayadıysanız aşağıdaki alanları kullanarak sunucu başına disk performans verileri sağlayabilirsiniz. Her alanla ilgili ayrıntılar için [Bu](#add-server-information) bölüme bakın.
+- Toplam disk okuma Ops
+- Toplam disk yazma Ops
+- Toplam disk okuma performansı
+- Toplam disk yazma performansı
 
 ## <a name="import-the-server-information"></a>Sunucu bilgilerini içeri aktarma
 

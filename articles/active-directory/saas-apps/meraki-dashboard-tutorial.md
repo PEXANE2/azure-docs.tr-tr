@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535023"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Öğretici: Meraki panosu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Meraki panosunu Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -40,7 +40,10 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Meraki panosu **IDP** tarafından başlatılan SSO 'yu destekler
-* Meraki panosunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Meraki panosunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-meraki-dashboard-from-the-gallery"></a>Galeriden Meraki panosu ekleniyor
 
@@ -53,7 +56,7 @@ Meraki panosunun Azure AD ile tümleştirilmesini yapılandırmak için, galerin
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Meraki panosu** yazın.
 1. Sonuçlar panelinden **Meraki panosunu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Meraki panosu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>Meraki panosu için Azure AD SSO 'Yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO Ile Meraki panosunu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Meraki panosundaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -91,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Meraki pano uygulaması, yukarılarına ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------- |
     | `https://dashboard.meraki.com/saml/attributes/username` | User. UserPrincipalName |
     | `https://dashboard.meraki.com/saml/attributes/role` | Kullanıcı. atandroles |
@@ -147,15 +150,15 @@ Bu bölümde, Meraki panosuna erişim vererek Azure çoklu oturum açma özelli�
 
 1. **Kuruluş**  ->  **ayarları**' na gidin.
 
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Meraki Pano ayarları sekmesi](./media/meraki-dashboard-tutorial/configure1.png)
 
 1. Kimlik doğrulaması altında **SAML SSO** 'YU **SAML SSO 'yu etkin**olarak değiştirin.
 
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Meraki Pano kimlik doğrulaması](./media/meraki-dashboard-tutorial/configure2.png)
 
 1. **SAML IDP Ekle**' ye tıklayın.
 
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Meraki panosu SAML IDP ekleme](./media/meraki-dashboard-tutorial/configure3.png)
 
 1. Azure portal **X. 590 CERT SHA1 parmak izi** metin kutusuna kopyaladığınız **parmak izi** değerini yapıştırın. Daha sonra **Kaydet**'e tıklayın. Kaydettikten sonra tüketici URL 'SI görünür. Tüketici URL 'SI değerini kopyalayın ve Azure portal **temel SAML yapılandırması bölümünde** bunu **yanıt URL 'si** metin kutusuna yapıştırın.
 
@@ -167,15 +170,15 @@ Bu bölümde, Meraki panosuna erişim vererek Azure çoklu oturum açma özelli�
 
 1. **Kuruluş**  ->  **yöneticileri**' ne gidin.
 
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/user1.png)
+    ![Meraki Pano yöneticileri](./media/meraki-dashboard-tutorial/user1.png)
 
 1. SAML yöneticisi rolleri bölümünde **SAML rolü Ekle** düğmesine tıklayın.
 
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/user2.png)
+    ![Meraki panosu SAML rolü Ekle düğmesi](./media/meraki-dashboard-tutorial/user2.png)
 
 1. Rol **meraki_full_admin**girin, **kuruluş erişimini** **dolu** olarak işaretleyin ve **rol oluştur**' a tıklayın. **Meraki_readonly_admin**işlemi yineleyin, bu kez **kuruluş erişimini** **salt okuma** kutusu olarak işaretler.
  
-    ![Meraki Pano yapılandırması](./media/meraki-dashboard-tutorial/user3.png)
+    ![Meraki Panosu kullanıcı oluştur](./media/meraki-dashboard-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -194,6 +197,3 @@ Erişim panelinde Meraki pano kutucuğuna tıkladığınızda, SSO 'Yu ayarladı
 - [Azure AD ile Meraki panosunu deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Meraki panosunu gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

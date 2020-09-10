@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228248"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657830"
 ---
 # <a name="what-is-identity-provisioning"></a>Kimlik sağlama nedir?
 
@@ -40,10 +40,10 @@ HR 'dan buluta sağlama, HR sisteminizdeki bilgilere göre nesnelerin (kullanıc
 
 En yaygın senaryo, yeni bir çalışan şirketinize katıldığında bu durumda HR sistemine girilmiştir.  Bu durumda, bulut tarafından sağlanır.  Bu durumda, Azure AD.  HR 'dan sağlama aşağıdaki senaryoları kapsayabilir. 
 
-- **Yeni çalışanların işe** Alım-bulut HR 'a yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak oluşturulur. Bu, e-posta adresi Ile bulut HR 'ye geri yazılır.
-- **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı bulut HR (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak güncelleştirilir.
+- **Yeni çalışanların işe** Alım-bulut HR 'a yeni bir çalışan eklendiğinde, Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında bir kullanıcı hesabı otomatik olarak oluşturulur. Bu, e-posta adresi Ile bulut HR 'ye geri yazılır.
+- **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı bulut HR (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak güncelleştirilir.
 - **Çalışan sonlandırmaları** -bulut HR ' de bir çalışan sonlandırıldığında, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak devre dışı bırakılır.
-- **Çalışan rehires** -bir çalışan bulut HR 'da yeniden çalıştırıldığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamaları için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
+- **Çalışan rehires** -bir çalışan bulut HR 'da yeniden çalıştırıldığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Microsoft 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamaları için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
 
 
 ## <a name="app-provisioning"></a>Uygulama sağlama

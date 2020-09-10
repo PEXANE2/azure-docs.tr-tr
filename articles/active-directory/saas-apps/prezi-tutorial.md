@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553576"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Öğretici: Prezi ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile PREZI tümleştirmeyi ö�
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -42,6 +42,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * PREZI, SP ve ıDP tarafından başlatılan SSO 'yu destekler.
 * PREZI, tam zamanında Kullanıcı sağlamayı destekler.
 * PREZI 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="add-prezi-from-the-gallery"></a>Galeriden PREZI ekleme
 
@@ -81,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
 
 1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP**tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
-    **Oturum açma URL** 'si kutusuna URL 'yi girin `https://prezi.com/login/sso/` .
+    **Oturum açma URL** 'si kutusuna URL 'yi girin: `https://prezi.com/login/sso/` .
 
 1. **Kaydet**’i seçin.
 
@@ -91,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
 
 1. PREZI uygulaması, burada gösterildiği gibi, daha fazla özniteliğin SAML yanıtına geri geçirilmesini de bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | given_name | Kullanıcı. |
     | family_name | User. soyadı |

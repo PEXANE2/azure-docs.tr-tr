@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585670"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662054"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
@@ -23,7 +23,7 @@ Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerini
 - Bir anahtar kasasının kurtarılabilir silme desteği
 - Anahtar Kasası nesnelerinin kurtarılabilir silme desteği; Anahtarlar, gizlilikler ve, sertifikalar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure CLı-ortamınız için bu kuruluma sahip değilseniz bkz. [Azure CLI kullanarak Key Vault yönetme](manage-with-cli2.md)).
 
@@ -58,7 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Yeni Anahtar Kasası
 
-Geçici silme, varsayılan olarak tüm anahtar kasalarında otomatik olarak etkinleştirilir. 31 Aralık 2020 ' e kadar, geçici silme etkin olmadan yeni bir Anahtar Kasası oluşturmak artık mümkün olmayacaktır.
+Geçici silme, varsayılan olarak tüm anahtar kasalarında otomatik olarak etkinleştirilir. 31 Aralık 2020 ' den, geçici silme etkin olmadan yeni bir Anahtar Kasası oluşturmak artık mümkün olmayacaktır.
 
 ### <a name="verify-soft-delete-enablement"></a>Geçici silme etkinleştirmeyi doğrula
 

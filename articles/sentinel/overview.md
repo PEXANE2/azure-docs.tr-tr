@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564636"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662030"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel nedir?
 
@@ -43,9 +43,9 @@ Azure Sentinel, mevcut Azure hizmetlerinin tam aralığında oluşturma, Log Ana
 
 ## <a name="connect-to-all-your-data"></a>Tüm verilerinize bağlanın
 
-Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connect-data-sources.md)gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft tehdit koruması çözümleri dahil gerçek zamanlı tümleştirme ve Office 365, Azure AD, Azure ATP ve Microsoft Cloud App Security gibi Microsoft 365 kaynaklar sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz.  
+Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connect-data-sources.md)gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcıyla sunulur ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri ve Office 365, Azure AD, kimlik için Microsoft Defender (eski adıyla Azure ATP) ve Microsoft Cloud App Security gibi Microsoft 365 kaynakları dahil gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz.  
 
-![Veri toplayıcılar](./media/collect-data/collect-data-page.png)
+![Veri Toplayıcılar](./media/collect-data/collect-data-page.png)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
@@ -82,13 +82,13 @@ Ortak görevlerinizi otomatikleştirin ve Azure hizmetleriyle ve mevcut araçlar
 
 Azure Sentinel 'in, bir uyarı tetiklenene kadar, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri için güvenli bir şekilde araştırma yapma imkanı sunan, MITRE çerçevesini temel alan, [arama ve sorgu araçlarını](hunting.md)kullanın. Hangi Arayıcı sorgusunun olası saldırılara yönelik yüksek değerli Öngörüler sağladığını bulduktan sonra, sorgunuza göre özel algılama kuralları oluşturabilir ve bu öngörüleri güvenlik olay yanıtlamalarınıza uyarı olarak bırakabilirsiniz. Arama yaparken, ilginç olaylar için yer işaretleri oluşturabilir, daha sonra bu kullanıcılara geri dönebilmeniz, başkalarıyla paylaşmanız ve daha sonra incelemek üzere etkileyici bir olay oluşturmak için bunları diğer ilişkili olaylarla gruplandırmanıza olanak tanır.
 
-![Avlanma](./media/overview/hunting.png)
+![Arama özelliğine genel bakış](./media/overview/hunting.png)
 
 ## <a name="community"></a>Topluluk
 
 Azure Sentinel topluluğu, tehdit algılama ve otomasyonu için güçlü bir kaynaktır. Microsoft Güvenlik analistlerimiz sürekli olarak yeni çalışma kitapları, PlayBook 'lar oluşturma ve ekleme, sorguları yönetme ve daha fazlası oluşturup, ortamınızda kullanabilmeniz için bunları topluluğa aktarıyoruz. Özel çalışma kitapları oluşturmak, Azure Sentinel için sorguları, not defterlerini ve PlayBook 'ları yakalamak üzere özel topluluk GitHub [deposundan](https://aka.ms/asicommunity) örnek içerik indirebilirsiniz. 
 
-![Topluluk](./media/overview/community.png)
+![Kullanıcı topluluğunu keşfet](./media/overview/community.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

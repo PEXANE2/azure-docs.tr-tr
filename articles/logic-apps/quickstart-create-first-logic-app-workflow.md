@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/23/2020
-ms.openlocfilehash: 980e3e036257bbf5aa9743025bbfb55065176a39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133308"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658303"
 ---
 # <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk otomatikleştirilmiş Tümleştirme iş akışınızı oluşturun
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, boş bir mantıksal uygulama oluşturma, tetikleyici 
 
 ![Üst düzey örnek mantıksal uygulama iş akışını gösteren kavramsal resim.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Bu senaryoda, bir Azure aboneliğine sahip olmanız veya [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen bir hizmetten e-posta hesabı için kaydolmanız gerekir. Desteklenen diğer e-posta hizmetleri için [burada bağlayıcılar listesini gözden geçirin](/connectors/). Bu örnekte, Logic App bir Office 365 Outlook hesabı kullanır. Farklı bir e-posta hizmeti kullanıyorsanız genel adımlar aynıdır, ancak Kullanıcı arabiriminiz biraz farklı görünebilir.
+Bu senaryoda, bir Azure aboneliğine sahip olmanız veya [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen bir hizmetten e-posta hesabı için kaydolmanız gerekir. Desteklenen diğer e-posta hizmetleri için [burada bağlayıcılar listesini gözden geçirin](/connectors/). Bu örnekte, mantıksal uygulama bir iş veya okul hesabı kullanır. Farklı bir e-posta hizmeti kullanıyorsanız genel adımlar aynıdır, ancak Kullanıcı arabiriminiz biraz farklı görünebilir.
 
 > [!IMPORTANT]
 > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).

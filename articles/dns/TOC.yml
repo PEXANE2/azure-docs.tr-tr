@@ -1,4 +1,4 @@
-- name: DNS Belgeleri
+- name: DNS belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: Genel bölge oluşturma - CLI
           href: dns-getstarted-cli.md
+        - name: Genel bölge oluşturma - ARM Şablonu
+          href: dns-get-started-template.md
     - name: Özel DNS
       items:
         - name: Özel bölge oluşturma - portal

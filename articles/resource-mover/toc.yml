@@ -1,0 +1,36 @@
+- name: Azure Kaynak Taşıyıcı Belgeleri
+  href: index.yml
+- name: Genel bakış
+  items:
+    - name: Azure Kaynak Taşıyıcı hakkında
+      href: overview.md
+    - name: Kaynak taşımak için bir araç seçin
+      href: select-move-tool.md
+    - name: Sık sorulan sorular
+      href: common-questions.md
+- name: Öğreticiler
+  items:
+    - name: Azure VM’lerini başka bir bölgeye taşıma
+      href: tutorial-move-region-virtual-machines.md
+    - name: SQL kaynaklarını başka bir bölgeye taşıma
+      href: tutorial-move-region-sql.md
+- name: Kavramlar
+  items:
+    - name: Taşımaya genel bakış
+      href: about-move-process.md
+    - name: Azure VM bölge taşıma için destek matrisi
+      href: support-matrix-move-region-azure-vm.md
+    - name: Azure SQL bölge taşıma için destek matrisi
+      href: support-matrix-move-region-sql.md
+- name: Nasıl Yapılır Kılavuzları
+  items:
+    - name: Bir taşıma koleksiyonundan kaynak kaldırma
+      href: remove-move-resources.md
+- name: Kaynaklar
+  items:
+    - name: Bulut Benimseme Çerçevesi kapsamında geçiş
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: Resource Manager şablonu
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
