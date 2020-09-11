@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Sorun giderme
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Self servis parola sıfırlama (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR geri yazma
+          href: troubleshoot-sspr-writeback.md
         - name: SSPR SSS
           href: active-directory-passwords-faq.md
         - name: MFA SSS

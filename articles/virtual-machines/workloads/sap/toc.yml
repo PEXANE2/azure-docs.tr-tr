@@ -1,4 +1,4 @@
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: başlarken
       href: get-started.md
@@ -293,13 +293,15 @@
       href: azure-monitor-overview.md
     - name: SAP Çözümleri için Azure İzleyici Sağlayıcıları
       href: azure-monitor-providers.md
-    - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma
+    - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma - Portal
       href: azure-monitor-sap-quickstart.md
+    - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma - Azure PowerShell
+      href: azure-monitor-sap-quickstart-powershell.md
     - name: SAP Çözümleri için Azure İzleyici Hakkında SSS
       href: azure-monitor-faq.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/sap-hana/hanainstance
     - name: Azure PowerShell
       href: /powershell/module/az.hanaonazure/#sap-hana-on-azure

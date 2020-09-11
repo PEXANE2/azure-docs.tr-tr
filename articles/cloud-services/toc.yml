@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: Klasik VM mimarisinin iş akışı
           href: cloud-services-workflow-process.md
+        - name: Cloud Services için kaynak durumu desteği
+          href: resource-health-for-cloud-services.md
         - name: Cloud Services SSS
           items:
             - name: Uygulama ve hizmet kullanılabilirliği hakkında SSS

@@ -1,6 +1,6 @@
 - name: Azure İzleyici Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure İzleyici nedir?
       href: overview.md
@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Görsel öğeler
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Metin
+              href: platform/workbooks-text-visualizations.md
+            - name: Grafik
+              href: platform/workbooks-chart-visualizations.md
+            - name: Kılavuz
+              href: platform/workbooks-grid-visualizations.md
+            - name: Kutucuk
+              href: platform/workbooks-tile-visualizations.md
+            - name: Ağaç
+              href: platform/workbooks-tree-visualizations.md
+            - name: Graf
+              href: platform/workbooks-graph-visualizations.md
+            - name: Bileşik çubuk
+              href: platform/workbooks-composite-bar.md
         - name: Veri kaynakları
           href: platform/workbooks-data-sources.md
         - name: Parametreler

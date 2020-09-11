@@ -130,6 +130,8 @@
           href: luis-concept-devops-automation.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: LUIS portalında oturum açma
+      href: sign-in-luis-portal.md
     - name: Yeni bir uygulama başlatma
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'

@@ -1,6 +1,6 @@
 - name: Azure Blob depolama belgeleri
   href: /azure/storage/blobs/
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Blob depolama nedir?
       href: storage-blobs-overview.md
@@ -310,7 +310,7 @@
               href: storage-blobs-list.md
             - name: Blob özelliklerini ve meta verilerini yönetme (.NET)
               href: storage-blob-properties-metadata.md
-            - name: Blob kopyalama (.NET)
+            - name: Blob kopyalama (SDK)
               href: storage-blob-copy.md
         - name: Blob verilerine erişimi yetkilendirme
           items:

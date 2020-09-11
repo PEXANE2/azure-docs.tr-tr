@@ -4,7 +4,7 @@
   items:
     - name: Koşullu Erişim nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: Kullanım koşullarının kabul edilmesini gerektirme
       href: require-tou.md
@@ -52,8 +52,8 @@
   items:
     - name: Koşullu Erişim dağıtımınızı planlama
       href: plan-conditional-access.md
-    - name: En iyi uygulamalar
-      href: best-practices.md
+    - name: Koşullu Erişim API’leri
+      href: howto-conditional-access-apis.md
     - name: Sık kullanılan Koşullu Erişim İlkeleri
       items:
         - name: Eski kimlik doğrulamasını engelleme
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: Oturum açma sıklığı ve tarayıcı kalıcılık denetimleri
       href: howto-conditional-access-session-lifetime.md
+    - name: En iyi uygulamalar
+      href: best-practices.md
     - name: Sorun giderme
       items:
         - name: Oturum açma sorunlarını giderme

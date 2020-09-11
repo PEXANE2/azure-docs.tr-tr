@@ -1,6 +1,6 @@
 - name: Azure kaynaklarını yönetme belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Resource Manager nedir?
       href: overview.md
@@ -53,8 +53,10 @@
               href: ./move-limitations/virtual-machines-move-limitations.md
     - name: Taşıma - bölgeler
       items:
-        - name: Bölgeler arasında taşıma
+        - name: Genel Bakış
           href: move-region.md
+        - name: Bölgeler arasında taşıma (kaynak grubundan)
+          href: ../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: Desteklenen hizmetler
           href: region-move-support.md
         - name: Hizmetler
@@ -82,19 +84,19 @@
             - name: Azure SQL
               href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure VM’leri
-              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Mantıksal uygulamalar
               href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Bakım Denetimi yapılandırması
               href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Ağ güvenlik grubu (NSG)
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Genel IP adresleri
-              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Site Recovery (Kurtarma Hizmetleri kasaları)
               href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Sanal ağ
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: PostgreSQL için Azure Veritabanı Sunucusu
               href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: MariaDB için Azure Veritabanı Sunucusu
@@ -116,7 +118,7 @@
         - name: Azure portal
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-cli.md
         - name: Azure PowerShell
@@ -127,7 +129,7 @@
         - name: Azure portal
           displayName: 'open,delete,deploy,move,lock,tag,monitor'
           href: manage-resources-portal.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           displayName: 'open,delete,deploy,move,lock,tag'
           href: manage-resources-cli.md
         - name: Azure PowerShell

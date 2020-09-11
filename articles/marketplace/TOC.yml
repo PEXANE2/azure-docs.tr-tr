@@ -17,7 +17,7 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Ticari markette işlem yapma
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: Planlar ve Fiyatlandırma
+            - name: Planlar ve fiyatlandırma
               href: plans-pricing.md
             - name: Özel teklifler
               href: ./private-offers.md
@@ -30,6 +30,8 @@
         - name: Teklif türüne göre yayımlama kılavuzları
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: SaaS teklifi planlama
+              href: ./plan-saas-offer.md
             - name: Sanal makineler
               href: ./marketplace-virtual-machines.md
             - name: Azure uygulamaları çözüm şablonları

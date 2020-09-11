@@ -1,7 +1,7 @@
 - name: Azure Spring Cloud Belgeleri
   href: index.yml
   displayName: Azure Spring Cloud
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Spring Cloud nedir?
       href: spring-cloud-overview.md
@@ -67,6 +67,8 @@
   items:
     - name: Java Spring uygulamasını dağıtım için hazırlama
       href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: Kaynak kodundan Java uygulaması başlatma
+      href: spring-cloud-howto-launch-from-source.md
     - name: Yapılandırma Sunucusunu ayarlama
       href: spring-cloud-tutorial-config-server.md
     - name: Hizmet Kaydını Etkinleştirme

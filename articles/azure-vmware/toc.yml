@@ -58,9 +58,11 @@
               href: set-up-mabs-for-avs.md
             - name: Backup Sunucusu ile özel bulut sanal makinelerini yedekleme
               href: backup-avs-vms-with-mabs.md
+        - name: Sanal makinelerin yaşam döngüsü yönetimi
+          href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
-        - name: AVS’de Traffic Manager
+        - name: Traffic Manager
           href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware çözümleri
       items:
