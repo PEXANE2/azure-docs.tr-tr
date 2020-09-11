@@ -1,6 +1,6 @@
 ---
 title: Kodda paylaşılan erişim imza belirteçlerini getirme | Azure Key Vault
-description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar.
+description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar. Bu örnek, SAS belirteçlerini yönetmek için .NET için Azure SDK 'sını kullanır.
 ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,55 +9,41 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ca89d06ea0d5e2396c820b25490b30e25c99f10
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002938"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007426"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Kodda paylaşılan erişim imza belirteçlerini getirme
 
 Depolama hesabınızı, Anahtar Kasanızda depolanan paylaşılan erişim imzası (SAS) belirteçleriyle yönetebilirsiniz. Daha fazla bilgi için bkz. [SAS kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../../storage/common/storage-sas-overview.md).
 
-Bu makalede, bir SAS belirteci getiren ve ile işlem gerçekleştiren .NET kodu örnekleri sağlanmaktadır. SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
+> [!NOTE]
+> Paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlamak üzere depolama hesabınızı güvenli hale getirmek için [rol tabanlı Access Control (RBAC)](../../storage/common/storage-auth-aad.md) kullanmanızı öneririz.
+
+Bu makalede bir SAS tanımı oluşturan ve SAS belirteçlerini getiren .NET kodu örnekleri sağlanmaktadır. Key Vault yönetilen depolama hesapları için oluşturulan istemci dahil olmak üzere, tüm ayrıntılar için bkz. [sharelink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) örneğimize bakın. SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Bu örnekte, kod anahtar kasaınızdan bir SAS belirteci getirir, bunu yeni bir depolama hesabı oluşturmak için kullanır ve yeni bir blob hizmeti istemcisi oluşturur.
+Aşağıdaki örnekte SAS şablonu oluşturacağız:
 
-```cs
-// The shared access signature is stored as a secret in keyvault. 
-// After you get a security token, create a new SecretClient with vault credentials and the key vault URI.
-// The format for the key vault URI (kvuri) is https://<YourKeyVaultName>.vault.azure.net
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="91-97":::
 
-var kv = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+Bu şablonu kullanarak, şunu kullanarak bir SAS tanımı oluşturuyoruz 
 
-// Now retrive your storage SAS token from Key Vault using the name of the secret (secretName).
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="137-156":::
 
-KeyVaultSecret secret = client.GetSecret(secretName);
-var sasToken = secret.Value;
+SAS tanımı oluşturulduktan sonra, kullanarak gizli dizileri gibi SAS belirteçlerini alabilirsiniz `SecretClient` . Gizli adı, depolama hesabı adı ile izleyen bir tire ile önyüklemeniz gerekir:
 
-// Create new storage credentials using the SAS token.
-StorageCredentials accountSAS = new StorageCredentials(sasToken);
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="52-58":::
 
-// Use these credentials and your storage account name to create a Blob service client.
-CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, "<storage-account>", endpointSuffix: null, useHttps: true);
-CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
-```
-
-Paylaşılan erişim imza belirtecinizin kullanım süreleri dolarsa, anahtar kasaınızdan paylaşılan erişim imza belirtecini getirip kodu güncelleştirebilirsiniz.
-
-```cs
-// If your shared access signature token is about to expire,
-// get the shared access signature token again from Key Vault and update it.
-KeyVaultSecret secret = client.GetSecret(secretName);
-var sasToken = secret.Value;
-accountSAS.UpdateSASToken(sasToken);
-```
-
+Paylaşılan erişim imza belirtecinizin kullanım süreleri dolarsa, yeni bir tane oluşturmak için aynı parolayı yeniden getirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [SAS kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../../storage/common/storage-sas-overview.md)hakkında bilgi edinin.
 - [Azure PowerShell](overview-storage-keys-powershell.md) [Key Vault ve Azure CLI veya Azure PowerShell ile depolama hesabı anahtarlarını yönetmeyi](overview-storage-keys.md) öğrenin.
+- Bkz. tam parçalı [elink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) örneği.
+- Daha fazla [Key Vault örnek](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - Bkz. [yönetilen depolama hesabı anahtar örnekleri](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

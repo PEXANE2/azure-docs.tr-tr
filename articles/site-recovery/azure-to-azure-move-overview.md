@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130625"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007375"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
@@ -26,9 +26,21 @@ VM 'Leri aşağıdaki nedenlerle taşıyabilirsiniz:
 - Zaten bir bölgede dağıttıysanız, uygulamanızın veya hizmetinizin son kullanıcılarına daha yakın olan yeni bir bölge desteği eklenmiştir. Bu senaryoda, gecikme süresini azaltmak için sanal makinelerinizi yeni bölgeye taşımak istersiniz. Abonelikleri birleştirmek istiyorsanız veya taşımanızı gerektiren idare veya kuruluş kuralları varsa aynı yaklaşımı kullanın.
 - VM 'niz tek örnekli bir VM veya bir kullanılabilirlik kümesinin parçası olarak dağıtıldı. Kullanılabilirlik SLA 'larını artırmak istiyorsanız, sanal makinelerinizi bir kullanılabilirlik bölgesine taşıyabilirsiniz.
 
-## <a name="steps-to-move-azure-vms"></a>Azure VM 'lerini taşıma adımları
+## <a name="move-vms-with-resource-mover"></a>VM 'Leri kaynak taşıyıcısı ile taşıma
 
-VM 'Leri taşımak aşağıdaki adımları içerir:
+Artık, [Azure Kaynak taşıyıcısı](../resource-mover/tutorial-move-region-virtual-machines.md)Ile VM 'leri başka bir bölgeye taşıyabilirsiniz. Kaynak taşıyıcısı genel önizlemede bulunur ve şunları sağlar:
+- Kaynakları bölgeler arasında taşımak için tek bir hub.
+- Daha az taşıma süresi ve karmaşıklığı. İhtiyacınız olan her şey tek bir konumda.
+- Farklı türlerde Azure kaynaklarını taşımak için basit ve tutarlı bir deneyim.
+- Taşımak istediğiniz kaynaklar arasında bağımlılıkları belirlemenin kolay bir yolu. Bu, ilgili kaynakları bir arada taşımanızı sağlar, böylece taşıma işleminden sonra her şeyin hedef bölgede beklendiği gibi çalışması gerekir.
+- Taşıma işleminden sonra silmek istiyorsanız kaynak bölgedeki kaynakların otomatik olarak temizlenmesi.
+- Edici. Bir taşımayı deneyebilir ve tam bir taşıma yapmak istemiyorsanız bu uygulamayı atabilirsiniz.
+
+
+
+## <a name="move-vms-with-site-recovery"></a>VM 'Leri Site Recovery taşıyın
+
+VM 'Leri Site Recovery ile taşımak aşağıdaki adımları içerir:
 
 1. Önkoşulları doğrulama.
 2. Kaynak VM 'Leri hazırlayın.
@@ -49,7 +61,7 @@ Bu bölümde, Azure 'daki çok katmanlı bir uygulama için en yaygın dağıtı
 
 * **Farklı katmanlara dağıtılan tek örnekli VM 'ler**: bir KATMANDAKI her VM tek ÖRNEKLI bir VM olarak yapılandırılır ve yük dengeleyiciler tarafından diğer katmanlara bağlanır. Bu yapılandırma, benimsemek için en basit olanıdır.
 
-     ![Katmanlar arasında tek örnekli VM dağıtımı](media/move-vm-overview/regular-deployment.png)
+     ![Tek örnekli VM dağıtımını katmanlar arasında taşımak için seçim](media/move-vm-overview/regular-deployment.png)
 
 * **Her katmandaki VM 'ler kullanılabilirlik kümeleri arasında dağıtılır**: bir KATMANDAKI her VM bir kullanılabilirlik kümesinde yapılandırılır. [Kullanılabilirlik kümeleri](../virtual-machines/windows/tutorial-availability-sets.md) , Azure 'Da dağıttığınız VM 'lerin bir kümedeki birden fazla yalıtılmış donanım düğümüne dağıtılmış olmasını güvence altına alır. Böylece, Azure 'da bir donanım veya yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
 
@@ -64,16 +76,8 @@ Bu bölümde, Azure 'daki çok katmanlı bir uygulama için en yaygın dağıtı
 Daha önce bahsedilen [mimarilere](#typical-architectures-for-a-multi-tier-deployment) bağlı olarak, taşıma işlemini gerçekleştirdikten sonra dağıtım hedef bölgeye benzer şekilde şöyle görünür.
 
 * **Çeşitli katmanlarda dağıtılan tek örnekli VM 'Ler**
-
-     ![Katmanlar arasında tek örnekli VM dağıtımı](media/move-vm-overview/single-zone.png)
-
 * **Kullanılabilirlik kümeleri arasında dağıtılan her katmandaki VM 'Ler**
-
-     ![Çapraz bölge kullanılabilirlik kümeleri](media/move-vm-overview/crossregionaset.png)
-
 * **Kullanılabilirlik Alanları arasında dağıtılan her katmandaki VM 'Ler**
-
-     ![Kullanılabilirlik Alanları genelinde VM dağıtımı](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>Kullanılabilirliği artırmak için VM 'Leri taşıma
 
@@ -91,5 +95,5 @@ Daha önce bahsedilen [mimarilere](#typical-architectures-for-a-multi-tier-deplo
 > 
 > * [Azure VM’lerini başka bir bölgeye taşıma](azure-to-azure-tutorial-migrate.md)
 > 
-> * [Azure VM'lerini Kullanılabilirlik Alanlarına taşıma](move-azure-vms-avset-azone.md)
+> * [Azure VM 'lerini Kullanılabilirlik Alanları içine taşıyın](move-azure-vms-avset-azone.md)
 

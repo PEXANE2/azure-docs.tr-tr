@@ -1,5 +1,6 @@
 ---
 title: Azure Site Recovery kullanarak VM 'Leri kullanılabilirlik alanları içeren bir Azure bölgesine taşıyın
+description: VM 'Leri Site Recovery farklı bir bölgedeki kullanılabilirlik bölgesine nasıl taşıyacağınızı öğrenin
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425481"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004519"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM 'lerini Kullanılabilirlik Alanları içine taşıyın
+
+Bu makalelerde, Azure VM 'lerinin farklı bir bölgedeki kullanılabilirlik bölgesine nasıl taşınacağı açıklanır. Aynı bölgedeki farklı bir bölgeye taşımak istiyorsanız, [Bu makaleyi gözden geçirin](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+
+
 Azure 'daki Kullanılabilirlik Alanları, veri merkezi hatalarından uygulamalarınızın ve verilerinizin korunmasına yardımcı olur. Her Kullanılabilirlik Alanı bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaların ve verilerin veri merkezi hatalarından korunmasını sağlar. Azure, Kullanılabilirlik Alanları ile sanal makinelerin (VM) çalışma süresi için% 99,99 ' lik bir hizmet düzeyi sözleşmesi (SLA) sunmaktadır. Kullanılabilirlik Alanları, [kullanılabilirlik alanları destekleyen bölgelerde](../availability-zones/az-region.md)belirtildiği gibi, seçme bölgelerinde desteklenir.
 
 Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldığı ve bu VM 'Leri bir kullanılabilirlik bölgesine taşıyarak kullanılabilirliği artırmak istediğiniz bir senaryoda, Azure Site Recovery kullanarak bunu yapabilirsiniz. Bu eylem, daha sonra kategorilere ayrılabilir:
@@ -23,7 +28,15 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 - Bir kullanılabilirlik kümesindeki VM 'Leri hedef bölgedeki Kullanılabilirlik Alanları taşıyın
 
 > [!IMPORTANT]
-> Şu anda Azure Site Recovery VM 'Lerin bir bölgeden diğerine taşınmasını destekler. Yalnızca birkaç bölgedeki bölge içindeki bölgeler arasında geçmeyi destekler. [Daha fazla bilgi edinin](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> Azure VM 'lerini farklı bir bölge bölgesindeki bir kullanılabilirlik bölgesine taşımak için artık [Azure Kaynak taşıyıcısı](../resource-mover/move-region-availability-zone.md)kullanmanızı öneririz. Kaynak taşıyıcısı genel önizlemede bulunur ve şunları sağlar:
+> - Kaynakları bölgeler arasında taşımak için tek bir hub.
+> - Daha az taşıma süresi ve karmaşıklığı. İhtiyacınız olan her şey tek bir konumda.
+> - Farklı türlerde Azure kaynaklarını taşımak için basit ve tutarlı bir deneyim.
+> - Taşımak istediğiniz kaynaklar arasında bağımlılıkları belirlemenin kolay bir yolu. Bu, ilgili kaynakları bir arada taşımanızı sağlar, böylece taşıma işleminden sonra her şeyin hedef bölgede beklendiği gibi çalışması gerekir.
+> - Taşıma işleminden sonra silmek istiyorsanız kaynak bölgedeki kaynakların otomatik olarak temizlenmesi.
+> - Edici. Bir taşımayı deneyebilir ve tam bir taşıma yapmak istemiyorsanız bu uygulamayı atabilirsiniz.
+
+
 
 ## <a name="check-prerequisites"></a>Önkoşulları denetleme
 

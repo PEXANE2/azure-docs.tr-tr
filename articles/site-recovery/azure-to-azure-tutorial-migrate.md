@@ -1,6 +1,6 @@
 ---
-title: Azure IaaS VM 'lerini Azure Site Recovery başka bir bölgeye taşıma
-description: Azure IaaS VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
+title: Azure VM 'lerini Azure Site Recovery farklı bir Azure bölgesine taşıma
+description: Azure VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425934"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006423"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
+# <a name="move-vms-to-another-azure-region"></a>VM 'Leri başka bir Azure bölgesine taşıma
 
-Mevcut Azure IaaS sanal makinelerinizi (VM) bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, mevcut sanal makinelerinizin güvenilirliğini ve kullanılabilirliğini artırmak, yönetilebilirlik düzeyini artırmak veya idare nedenleriyle taşımak isteyebilirsiniz. Daha fazla bilgi için bkz. [Azure VM taşımaya genel bakış](azure-to-azure-move-overview.md). 
+Mevcut Azure IaaS sanal makinelerinizi (VM) bir bölgeden diğerine taşımak isteyebileceğiniz senaryolar vardır. Örneğin, mevcut sanal makinelerinizin güvenilirliğini ve kullanılabilirliğini artırmak, yönetilebilirlik düzeyini artırmak veya idare nedenleriyle taşımak isteyebilirsiniz. Daha fazla bilgi için bkz. [Azure VM taşımaya genel bakış](azure-to-azure-move-overview.md). 
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için şirket içi makinelerin ve Azure VM 'lerinin olağanüstü durum kurtarma işlemlerini yönetmek ve düzenlemek için [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanabilirsiniz. Azure VM 'lerinin ikincil bir bölgeye taşınmasını yönetmek için Site Recovery de kullanabilirsiniz.
+Azure VM 'lerini ikincil bir bölgeye taşımak için [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanabilirsiniz.
 
-Bu öğreticide şunları yapacaksınız:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ Bu öğreticide şunları yapacaksınız:
 > * Verileri kopyalama ve çoğaltmayı etkinleştirme
 > * Yapılandırmayı test edin ve taşıma işlemini gerçekleştirin
 > * Kaynak bölgedeki kaynakları Sil
-> 
+
+
+> [!IMPORTANT]
+> Azure VM 'lerini başka bir bölgeye taşımak için artık [Azure Kaynak taşıyıcısı](../resource-mover/tutorial-move-region-virtual-machines.md)kullanmanızı öneririz. Kaynak taşıyıcısı genel önizlemede bulunur ve şunları sağlar:
+> - Kaynakları bölgeler arasında taşımak için tek bir hub.
+> - Daha az taşıma süresi ve karmaşıklığı. İhtiyacınız olan her şey tek bir konumda.
+> - Farklı türlerde Azure kaynaklarını taşımak için basit ve tutarlı bir deneyim.
+> - Taşımak istediğiniz kaynaklar arasında bağımlılıkları belirlemenin kolay bir yolu. Bu, ilgili kaynakları bir arada taşımanızı sağlar, böylece taşıma işleminden sonra her şeyin hedef bölgede beklendiği gibi çalışması gerekir.
+> - Taşıma işleminden sonra silmek istiyorsanız kaynak bölgedeki kaynakların otomatik olarak temizlenmesi.
+> - Edici. Bir taşımayı deneyebilir ve tam bir taşıma yapmak istemiyorsanız bu uygulamayı atabilirsiniz.
+
+
+
 > [!NOTE]
 > Bu öğreticide, Azure sanal makinelerini bir bölgeden diğerine nasıl taşıyacağınız gösterilmektedir. Bir kullanılabilirlik kümesindeki VM 'Leri farklı bir bölgedeki bölge sabitlenmiş VM 'lere taşıyarak kullanılabilirliği iyileştirmenize gerek varsa bkz. [Azure sanal makinelerini kullanılabilirlik alanları öğreticisine taşıma](move-azure-vms-avset-azone.md).
 

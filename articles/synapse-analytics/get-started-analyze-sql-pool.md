@@ -9,24 +9,26 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: e2e1d0479b8edacaae8816d74db061eeedb805a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 363f2934bbeec266c16711572620e03e69785f94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325228"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007205"
 ---
 # <a name="analyze-data-with-sql-pools"></a>SQL havuzlarıyla verileri çözümleme
 
 Azure SYNAPSE Analytics, SQL havuzu ile verileri çözümleme yeteneği sağlar. Bu öğreticide, SQL havuzunun analitik yeteneklerini araştırmak için NYC TAXI örnek verilerini kullanacaksınız.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>NYC TAXI örnek verilerini SQLDB1 veritabanına yükleme
+## <a name="link-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>NYC TAXI örnek verilerini SQLDB1 veritabanına bağlama
 
-1. SYNAPSE Studio 'da, en üstteki mavi menüsünde soru işareti (**?**) simgesini seçin.
-1. Başlarken **Getting started**  >  **hub 'ını**seçin.
+1. SYNAPSE Studio 'da sol taraftaki **veri** hub 'ına gidin.
+1. ' **+** A ve ardından **örneklere gözatamazsınız**' ı seçin. Bu işlem, **örnek merkezini** açar ve **veri kümeleri** sekmesini açar.
+1. **NYC taxı & Limousine Commission-sarı TAXI seyahat kayıtları**' nı seçin. Bu veri kümesi 1.500.000.000 satırdan fazla satır içerir.
+1. **Veri kümesi Ekle** 'ye tıklayın
+1. **Bağlı** **veri** merkezinde, **Azure Blob depolama > örnek veri kümeleri >** yeni bir veri kümesi görürsünüz nyc_tlc_yellow   
 1. **Sorgu örnek verisi**etiketli kartta, **SQLDB1**adlı SQL havuzunu seçin.
-1. **Sorgu verileri**' ni seçin. "Örnek verileri yükleme" bildirimi kısaca görüntülenir. SYNAPSE Studio 'nun en üstünde yer alan açık mavi bir durum çubuğu, verilerin SQLDB1 'e yüklendiğini gösterir.
-1. Durum çubuğu yeşile dönüşdikten sonra kapatın.
+
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>SQL havuzundaki NYC TAXI verilerini keşfet
 

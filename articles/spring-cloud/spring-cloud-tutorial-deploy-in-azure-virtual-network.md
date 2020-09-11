@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688462"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006440"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
 
@@ -24,7 +24,7 @@ Dağıtım şunları sunar:
 * Azure Spring, şirket içi veri merkezlerinde ve/veya diğer sanal ağlardaki Azure hizmetlerindeki sistemlerle bulut etkileşimi
 * Azure Spring Cloud için gelen ve giden ağ iletişimlerini denetlemek için müşterilerin güçleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 `Microsoft.AppPlatform` [Azure Portal kaynak sağlayıcısını kaydetme](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) yönergelerine göre veya şu az CLI komutunu çalıştırarak Azure yay bulut kaynak sağlayıcısını kaydetmeniz gerekir:
 
 ```azurecli
@@ -38,7 +38,7 @@ Azure yay bulut hizmeti örneğinizi dağıttığınız sanal ağın aşağıdak
 * **Alt ağlar**: sanal ağ, bir Azure yay bulut hizmeti örneğine adanmış iki alt ağ içermelidir: 
     * Biri hizmet çalışma zamanı için
     * Bir tane, Spring Boot mikro hizmet uygulamalarınız için. 
-    * Bu alt ağlar ve bir Azure yay bulut hizmeti örneği arasında bire bir ilişki vardır. Birden çok hizmet örneğini tek bir alt ağ üzerinde paylaşamazsınız. Dağıttığınız her hizmet örneği için yeni alt ağlar kullanmanız gerekir.
+    * Bu alt ağlar ve bir Azure yay bulut hizmeti örneği arasında bire bir ilişki vardır. Dağıttığınız her bir hizmet örneği için yeni bir alt ağ kullanmanız gerekir ve her alt ağ yalnızca tek bir hizmet örneği içerebilir.
 * **Adres alanı**: hizmet çalışma zamanı alt ağı için en fazla/28 blok ve diğer CIDR, Spring Boot mikro hizmet uygulamaları alt ağı için/24 ' e kadar bir CIDR bloğu.
 * **Yol tablosu**: alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
 
@@ -55,7 +55,7 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
+    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
 1. Ileri ' ye tıklayın **: IP adresleri >**. 
