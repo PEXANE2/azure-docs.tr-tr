@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079464"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024426"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Özel uç noktaları kullanarak verileri Azure Blob depolamadan bir SQL veritabanına güvenli bir şekilde kopyalama
 
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 * Kopyalama etkinliğiyle işlem hattı oluşturma.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
 * **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa, oluşturma adımları için bkz. [SQL veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) . *SQL veritabanı hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
@@ -57,7 +57,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 #### <a name="create-a-sink-sql-table"></a>Havuz SQL tablosu oluşturma
 
-1. SQL veritabanınızda **dbo.emp** tablosu oluşturmak için aşağıdaki SQL betiğini kullanın:
+SQL veritabanınızda **dbo.emp** tablosu oluşturmak için aşağıdaki SQL betiğini kullanın:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. Azure hizmetlerinin SQL Server’a erişmesine izin ver. Data Factory SQL Server 'a veri yazabilmesi için **Azure hizmetlerine erişime Izin ver** özelliğinin SQL Server **'da** etkinleştirildiğinden emin olun. Bu ayarı doğrulamak ve etkinleştirmek için **Azure SQL Server**  >  **genel bakış**  >  **sunucu güvenlik duvarını ayarla**' ya gidin. **Azure hizmetlerine erişime Izin ver** seçeneğini **Açık**olarak ayarlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
@@ -241,7 +239,7 @@ Bağlantıyı test ettiğinizde köprüyü seçmediyseniz yolu izleyin. Şimdi o
     1. Özel bağlantıyı onaylamak için [Bu bölümdeki](#approval-of-a-private-link-in-sql-server) yönergeleri izleyin.
     1. İletişim kutusuna geri dönün. **Bağlantıyı yeniden sına** ' yı seçin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
-1. Otomatik olarak **özelliği ayarla** iletişim kutusuna gider. **Tablo**’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
+1. Otomatik olarak **özelliği ayarla** iletişim kutusuna gider. **Tablo**’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
 
 1. İşlem hattının sekmesine gidin ve **Havuz veri kümesi**' nde **outputsqldataset** ' in seçili olduğunu doğrulayın.
 

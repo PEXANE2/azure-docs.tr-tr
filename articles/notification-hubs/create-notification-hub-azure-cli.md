@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761119"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024154"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Notification Hub 'ı oluşturma
 
@@ -29,37 +29,30 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Bildirim Hub 'ı oluşturur
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az --version`Yüklenen sürümü ve bağımlı kitaplıkları bulmak için ' i çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
+> [!IMPORTANT]
+> Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. Yüklü olan sürümü ve bağımlı kitaplıkları bulmak için `az --version` kodunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
+## <a name="install-the-azure-cli-extension"></a>Azure CLı uzantısını yükler
 
-1. CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+Azure CLI için uzantı başvurularıyla çalışırken önce uzantıyı yüklemeniz gerekir. Azure CLı uzantıları, çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar. Güncelleştirme ve kaldırma da dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
-    ```azurecli
-    az login
-    ```
+Notification Hubs için Azure CLı uzantısını yükler.
 
-    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+```azurecli
+az extension add --name notification-hub
+```
 
-2. Azure CLı için uzantı başvurularıyla çalışırken, önce uzantıyı yüklemeniz gerekir. Azure CLı uzantıları, henüz çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar. Güncelleştirme ve kaldırma dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-   Aşağıdaki komutu çalıştırarak [Notification Hubs uzantısını](/cli/azure/ext/notification-hub/notification-hub) yükler:
+Azure Notification Hubs, tüm Azure kaynakları gibi bir kaynak grubuna dağıtılmalıdır.  Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.  Kaynak grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager nedir?](/azure/azure-resource-manager/management/overview) .
 
-    ```azurecli
-    az extension add --name notification-hub
-   ```
+Bu hızlı başlangıç için, **spnhubrg** adlı bir kaynak grubunu aşağıdaki [az Group Create](/cli/azure/group#az-group-create) komutuyla **eastus** konumunda oluşturun.
 
-3. Bir kaynak grubu oluşturun.
-
-   Azure Notification Hubs, tüm Azure kaynakları gibi bir kaynak grubuna dağıtılmalıdır. Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.
-
-   Bu hızlı başlangıç için, _spnhubrg_ adlı bir kaynak grubunu aşağıdaki [az Group Create](/cli/azure/group#az-group-create) komutuyla _eastus_ konumunda oluşturun:
-
-   ```azurecli
-   az group create --name spnhubrg --location eastus
-   ```
+```azurecli
+az group create --name spnhubrg --location eastus
+```
 
 ## <a name="create-a-notification-hubs-namespace"></a>Notification Hubs ad alanı oluşturma
 
@@ -109,7 +102,7 @@ Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az
 
 2. Ad alanlarının bir listesini alın.
 
-   Yeni ad alanınız hakkındaki ayrıntıları görmek için [az Notification-Hub Namespace List](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) komutunu kullanın. `--resource-group`Bir abonelik için tüm ad alanlarını görmek istiyorsanız parametresi isteğe bağlıdır.
+   Yeni ad alanınız hakkındaki ayrıntıları görmek için [az Notification-Hub Namespace List](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) komutunu kullanın. `--resource-group`Bir abonelik için tüm ad alanlarını görmek istiyorsanız parametresi isteğe bağlıdır.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -135,7 +128,7 @@ Notification Hubs, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. `az
 
 3. Bildirim Hub 'larının listesini alın.
 
-   Azure CLı, yürütülen her komutla bir başarı veya hata iletisi döndürür; Bununla birlikte, Bildirim Hub 'larının bir listesini sorgulayabilmek yeniden kullanılır. [Az Notification-Hub List](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) komutu bu amaçla tasarlanmıştı.
+   Azure CLı, yürütülen her komutla bir başarı veya hata iletisi döndürür; Bununla birlikte, Bildirim Hub 'larının bir listesini sorgulayabilmek yeniden kullanılır. [Az Notification-Hub List](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) komutu bu amaçla tasarlanmıştı.
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
