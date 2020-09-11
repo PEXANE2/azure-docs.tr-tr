@@ -7,13 +7,16 @@ ms.date: 05/29/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom:
+- mvc
+- device-developer
+- iot-edge
+ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84417605"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018671"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza Azure IoT Edge bir cihaz ekleme
 
@@ -28,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Central IoT Edge cihaz oluşturma
 > * Bir Linux sanal makinesine sanal bir IoT Edge cihazı dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel uygulama **> özel uygulama** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md) hızlı başlangıcı ' nı doldurun.
 

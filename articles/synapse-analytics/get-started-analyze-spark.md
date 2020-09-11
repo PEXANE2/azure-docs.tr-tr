@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Spark ile Çözümle çalışmaya başlama'
-description: Bu öğreticide, Azure SYNAPSE Analytics 'i ayarlamaya ve kullanmaya yönelik temel adımları öğreneceksiniz.
+description: Bu öğreticide, Apache Spark ile verileri çözümlemeyi öğreneceksiniz
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,16 +9,30 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5c6b35c1d9f00cae8fc688569e3a491679900995
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101802"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017923"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>Spark kullanarak, blob depolamada NYC TAXI verilerini çözümleme
+
 Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz etmek için temel adımları öğreneceksiniz.
+
+1. **Bağlı**' ın altındaki **veri** hub 'ında Azure Blob Storage ' a sağ tıklayıp **> örnek veri kümeleri > Nyc_tlc_yellow** ve **Yeni Not defteri Seç** ' i seçin.
+1. Bu, aşağıdaki kod ile yeni bir not defteri oluşturur:
+    ```
+    from azureml.opendatasets import NycTlcYellow
+
+    data = NycTlcYellow()
+    data_df = data.to_spark_dataframe()
+    display(data_df.limit(10))
+    ```
+1. Not defteri 'nde, **Ekle** menüsünde bir Spark havuzu seçin
+1. Hücrede **Çalıştır** 'a tıklayın
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC TAXI verilerini Spark nyctaxi veritabanına yükleme
 

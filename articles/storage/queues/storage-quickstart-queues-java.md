@@ -4,16 +4,16 @@ description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyru�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319380"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015033"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -30,17 +30,17 @@ Java için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunl
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [API başvuru belgeleri](/java/api/overview/azure/storage-queue-readme)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Örnekler](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
+* [Java Development Kit (JDK)](/java/azure/jdk/) sürüm 8 veya üstü
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -161,10 +161,10 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki Java sınıflarını kullanın:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` sınıfı bir nesneyi yapılandırır ve başlatır `QueueClient` .
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessageıtem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` sınıf, bir kuyrukta [receivemessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` sınıfı bir nesneyi yapılandırır ve başlatır `QueueClient` .
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
+* [Queueclient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+* [Queuemessageıtem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` sınıf, bir kuyrukta [receivemessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -204,7 +204,7 @@ Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin
 > Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/naming-queues-and-metadata).
 
 
-[Queueclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) yöntemini çağırın.
+[Queueclient](/java/api/com.azure.storage.queue.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Create](/java/api/com.azure.storage.queue.queueclient.create) yöntemini çağırın.
 
 Bu kodu yönteminin sonuna ekleyin `main` :
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı, [SendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) metodunu çağırarak kuyruğa ileti ekler. Ayrıca, bir çağrıdan döndürülen [sendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) öğesini kaydeder `sendMessage` . Sonuç, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
+Aşağıdaki kod parçacığı, [SendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) metodunu çağırarak kuyruğa ileti ekler. Ayrıca, bir çağrıdan döndürülen [sendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) öğesini kaydeder `sendMessage` . Sonuç, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
 
 Bu kodu yönteminin sonuna ekleyin `main` :
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[PeekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peelkMessages`Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+[PeekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) yöntemini çağırarak kuyruktaki iletilere göz atın. `peelkMessages`Yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
 
 Bu kodu yönteminin sonuna ekleyin `main` :
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Updatemessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `updateMessage`Yöntemi, bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, `SendMessageResult` kodda daha önce kaydedilen öğesini kullanarak ILETI kimliğini ve pop alındı bilgisini geçirin. İleti KIMLIĞI ve pop alındısı hangi iletinin güncelleştirilecek olduğunu belirler.
+[Updatemessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `updateMessage`Yöntemi, bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, `SendMessageResult` kodda daha önce kaydedilen öğesini kullanarak ILETI kimliğini ve pop alındı bilgisini geçirin. İleti KIMLIĞI ve pop alındısı hangi iletinin güncelleştirilecek olduğunu belirler.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>Kuyruktaki iletileri alma ve silme
 
-[Receivemessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) yöntemini çağırarak önceden eklenmiş iletileri indirin. Örnek kod aynı zamanda iletileri alındıktan ve işlendikten sonra kuyruktan de siler. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
+[Receivemessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) yöntemini çağırarak önceden eklenmiş iletileri indirin. Örnek kod aynı zamanda iletileri alındıktan ve işlendikten sonra kuyruktan de siler. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
 
 Uygulama, `System.console().readLine();` iletileri almadan ve silmeden önce çağırarak kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Aşağıdaki kod, [silme](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
+Aşağıdaki kod, [silme](/java/api/com.azure.storage.queue.queueclient.delete) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
 
 Bu kodu yönteminin sonuna ekleyin `main` :
 
@@ -372,6 +372,6 @@ Bu hızlı başlangıçta, bir kuyruk oluşturmayı ve Java kodunu kullanarak bu
 Öğreticiler, örnekler, hızlı bir şekilde ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Java bulut geliştiricileri için Azure](https://docs.microsoft.com/azure/developer/java/)
+> [Java bulut geliştiricileri için Azure](/azure/developer/java/)
 
 * Daha fazla Azure kuyruk depolama örneği uygulaması görmek için [Azure kuyruk depolama SDK V12 Java istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)geçin.

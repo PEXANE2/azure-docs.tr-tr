@@ -9,26 +9,67 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 363f2934bbeec266c16711572620e03e69785f94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007205"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015509"
 ---
 # <a name="analyze-data-with-sql-pools"></a>SQL havuzlarıyla verileri çözümleme
 
 Azure SYNAPSE Analytics, SQL havuzu ile verileri çözümleme yeteneği sağlar. Bu öğreticide, SQL havuzunun analitik yeteneklerini araştırmak için NYC TAXI örnek verilerini kullanacaksınız.
 
-## <a name="link-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>NYC TAXI örnek verilerini SQLDB1 veritabanına bağlama
+## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC TAXI verilerini SQLDB1 'e yükleme
 
-1. SYNAPSE Studio 'da sol taraftaki **veri** hub 'ına gidin.
-1. ' **+** A ve ardından **örneklere gözatamazsınız**' ı seçin. Bu işlem, **örnek merkezini** açar ve **veri kümeleri** sekmesini açar.
-1. **NYC taxı & Limousine Commission-sarı TAXI seyahat kayıtları**' nı seçin. Bu veri kümesi 1.500.000.000 satırdan fazla satır içerir.
-1. **Veri kümesi Ekle** 'ye tıklayın
-1. **Bağlı** **veri** merkezinde, **Azure Blob depolama > örnek veri kümeleri >** yeni bir veri kümesi görürsünüz nyc_tlc_yellow   
-1. **Sorgu örnek verisi**etiketli kartta, **SQLDB1**adlı SQL havuzunu seçin.
+1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yeni SQL betiği oluşturun
+1. Aşağıdaki kodu girin:
+    ```
+    CREATE TABLE [dbo].[Trip]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
 
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    WITH
+    (
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
+    )
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
+    ```
+1. Bu betiğin çalıştırılması yaklaşık 1 dakika sürer. NYC TAXI verilerinin 2.000.000 satırlarını dbo adlı bir tabloya yükler **. Seyahat**
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>SQL havuzundaki NYC TAXI verilerini keşfet
 

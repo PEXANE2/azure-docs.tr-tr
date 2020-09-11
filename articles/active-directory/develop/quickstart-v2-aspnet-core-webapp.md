@@ -1,5 +1,6 @@
 ---
-title: Microsoft 'a ASP.NET Core Web Apps ile oturum açma ekleme-Microsoft Identity platform | Mavisi
+title: Web Apps ASP.NET Core için Microsoft 'a oturum açma ekleyin | Mavisi
+titleSuffix: Microsoft identity platform
 description: OpenID Connect kullanarak bir ASP.NET Core Web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: jmprieur
@@ -8,18 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e8cea18999bec34eba6630a96dca089fd4725af
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691335"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016358"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
+
 Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
@@ -37,18 +40,18 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-> 1. **Yeni kayıt**seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->    - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `AspNetCore-Quickstart` .
->    - **Yeniden yönlendirme URI 'si**Içinde, `https://localhost:44321/` **Kaydet**' i ekleyin ve seçin.
-> 1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Yeniden yönlendirme URI 'lerinde**, ekleyin `https://localhost:44321/signin-oidc` ve **Kaydet**' i seçin.
->    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:44321/signout-oidc` .
->    - **Örtük onay**'ın altında **Kimlik belirteçleri**'ni işaretleyin.
->    - **Kaydet**’i seçin.
+> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.
+> 1. Uygulamanız için bir **ad** girin (örneğin,) `AspNetCore-Quickstart` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Yeniden yönlendirme URI 'si** girin`https://localhost:44321/`
+> 1. **Kaydet**’i seçin.
+> 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+> 1. **Yeniden yönlendirme URI 'leri**altında **URI Ekle**' yi seçin ve ardından şunu girin`https://localhost:44321/signin-oidc`
+> 1. **Oturum kapatma URL 'si** girin`https://localhost:44321/signout-oidc`
+> 1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
+> 1. **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
@@ -62,12 +65,13 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 #### <a name="step-2-download-your-aspnet-core-project"></a>2. Adım: ASP.NET Core projenizi Indirin
 
 > [!div renderon="docs"]
-> [ASP.NET Core çözümünü indirin](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [ASP.NET Core çözümünü indirin](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1.zip)
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > Projeyi çalıştırın.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+
+> [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
+> [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
@@ -76,28 +80,35 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-aspnet-core-project"></a>3. Adım: ASP.NET Core projenizi çalıştırma
-> 1. ZIP dosyasını kök klasör içindeki bir yerel klasöre ayıklayın; Örneğin, **C:\Azure-Samples**
-> 1. Çözümü IDE 'niz içinde açın
-> 1. Dosyadaki **appsettings.js** düzenleyin. `ClientId`' İ kaydettiğiniz `ClientId` uygulamanın **uygulama (istemci) kimliği** değeri ile değerini bulun ve güncelleştirin.
+> #### <a name="step-3-configure-your-aspnet-core-project"></a>3. Adım: ASP.NET Core projenizi yapılandırma
+> 1. . Zip arşivini sürücünüzün köküne yakın bir yerel klasöre ayıklayın. Örneğin, *C:\Azure-Samples*.
+> 1. Visual Studio 2019 ' de çözümü açın.
+> 1. appsettings.jsdosya * üzerinde* açın ve aşağıdakileri değiştirin:
 >
 >    ```json
->    "ClientId": "Enter_the_Application_Id_here"
->    "TenantId": "Enter_the_Tenant_Info_Here"
+>    "ClientId": "Enter_the_Application_Id_here",
+>    "TenantId": "common",
 >    ```
-
-
-
-> [!div renderon="docs"]
-> Burada:
-> - `Enter_the_Application_Id_here` -Azure portal kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** . Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
-> - `Enter_the_Tenant_Info_Here` -Aşağıdaki seçeneklerden biridir:
->   - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
->   - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar** yaklaşımını destekliyorsa bu değeri `organizations` ile değiştirin
->   - Uygulamanız **Tüm Microsoft hesabı kullanıcıları** yaklaşımını destekliyorsa bu değeri `common` ile değiştirin
 >
-> > [!TIP]
-> > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
+>    - `Enter_the_Application_Id_here`Azure Portal kaydettiğiniz uygulamanın **uygulama (ISTEMCI) kimliğiyle** değiştirin. Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
+>    - `common`Aşağıdakilerden biriyle değiştirin:
+>       - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **Dizin (kiracı) kimliği** (GUID) veya **kiracı adı** (örneğin,) ile değiştirin `contoso.onmicrosoft.com` . Uygulamanın **genel bakış** sayfasında **Dizin (kiracı) kimliğini** bulabilirsiniz.
+>       - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar** yaklaşımını destekliyorsa bu değeri `organizations` ile değiştirin
+>       - Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri şu şekilde bırakın `common`
+>
+> Bu hızlı başlangıçta, dosyadaki *appsettings.js* başka bir değeri değiştirmeyin.
+>
+> #### <a name="step-4-build-and-run-the-application"></a>4. Adım: Uygulamayı derleme ve çalıştırma
+> 
+> Hata **ayıklamayı başlatmak**> **hata** ayıklama menüsünü seçerek veya anahtara basarak uygulamayı Visual Studio 'da derleyin ve çalıştırın `F5` .
+> 
+> Kimlik bilgileriniz istenir ve ardından uygulamanızın gerektirdiği izinleri onaylıyoruz. Onay isteminde **kabul et** ' i seçin.
+> 
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-01-consent.png" alt-text="> kullanıcıdan uygulamanın istediği izinleri gösteren onay iletişim kutusu":::
+> 
+> İstenen izinlere katıldıktan sonra uygulama, Azure Active Directory kimlik bilgilerinizi kullanarak başarıyla oturum açtığınızı gösterir.
+> 
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Çalışan Web uygulamasını ve oturum açan kullanıcıyı görüntüleyen Web tarayıcısı":::
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
@@ -108,64 +119,46 @@ Bu bölüm, kullanıcıların oturum açması için gereken koda genel bir bakı
 
 ### <a name="startup-class"></a>Başlangıç sınıfı
 
-*Microsoft. AspNetCore. Authentication* ara yazılımı, barındırma işlemi başlatıldığında yürütülen bir başlangıç sınıfı kullanır:
+*Microsoft. AspNetCore. Authentication* ara yazılımı, `Startup` barındırma işlemi başlatıldığında yürütülen bir sınıfı kullanır:
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-  services.Configure<CookiePolicyOptions>(options =>
+  public void ConfigureServices(IServiceCollection services)
   {
-    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-    options.CheckConsentNeeded = context => true;
-    options.MinimumSameSitePolicy = SameSiteMode.None;
-  });
+      services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
-  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
-          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-    options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
-
-    options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
-  });
-
-  services.AddMvc(options =>
-  {
-     var policy = new AuthorizationPolicyBuilder()
-                     .RequireAuthenticatedUser()
-                     .Build();
-     options.Filters.Add(new AuthorizeFilter(policy));
-  })
-  .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-}
+      services.AddControllersWithViews(options =>
+      {
+          var policy = new AuthorizationPolicyBuilder()
+              .RequireAuthenticatedUser()
+              .Build();
+          options.Filters.Add(new AuthorizeFilter(policy));
+      });
+      services.AddRazorPages()
+          .AddMicrosoftIdentityUI();
+  }
 ```
 
-Yöntemi, `AddAuthentication` hizmetini tarayıcı senaryolarında kullanılan ve kimlik doğrulama tabanlı kimlik doğrulaması ekleyecek şekilde yapılandırır ve bunu OpenID Connect olarak ayarlar.
+`AddAuthentication()`Yöntemi, hizmetini tarayıcı senaryolarında kullanılan ve kimlik doğrulama tabanlı kimlik doğrulaması ekleyecek şekilde yapılandırır ve bunu OpenID Connect olarak ayarlar.
 
-İçeren çizgi, `.AddAzureAd` uygulamanıza Microsoft Identity platform kimlik doğrulamasını ekler. Daha sonra Microsoft Identity platform uç noktası kullanılarak oturum açmak üzere yapılandırılmıştır.
+İçeren çizgi, `.AddMicrosoftIdentityWebApp` uygulamanıza Microsoft Identity platform kimlik doğrulaması ekler. Daha sonra `AzureAD` , yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktasını kullanarak oturum açmak için yapılandırılır:
 
-> |Konum | Açıklama |
-> |---------|---------|
-> | ClientId  | Azure portal kayıtlı uygulamadan uygulama (istemci) KIMLIĞI. |
-> | Yetkili | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle, bu `https://login.microsoftonline.com/{tenant}/v2.0` genel buluta yöneliktir; burada {Tenant} kiracınızın adı, KIRACı kimliğiniz veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |
-> | TokenValidationParameters | Belirteç doğrulaması için parametre listesi. Bu durumda, `ValidateIssuer` `false` kişisel veya iş veya okul hesaplarından oturum açma işlemlerini kabul edemeyeceğini belirtmek için olarak ayarlanır. |
+| *appsettings.js* anahtarda | Description                                                                                                                                                          |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
+| `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |
+| `TenantId`             | İş veya okul hesaplarıyla veya Microsoft kişisel hesaplarıyla kullanıcıların oturum açması için kiracınızın adı veya kiracı KIMLIĞI (GUID) veya *ortak* .                             |
 
-
-> [!NOTE]
-> Ayar `ValidateIssuer = false` , bu hızlı başlangıç için bir basitleştirmesi. Gerçek uygulamalarda, sertifikayı vereni doğrulamanız gerekir.
-> Bunun nasıl yapılacağını anlamak için örneklere bakın.
->
-> Ayrıca `Configure` iki önemli yöntem içeren yöntemine dikkat edin: `app.UseCookiePolicy()` ve `app.UseAuthentication()`
+`Configure()`Yöntemi, `app.UseCookiePolicy()` adlandırılmış işlevlerini etkinleştiren iki önemli yöntem içerir `app.UseAuthentication()` .
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    // more core
-    app.UseCookiePolicy();
+    // more code
     app.UseAuthentication();
-    // more core
+    app.UseAuthorization();
+    // more code
 }
 ```
 
@@ -177,7 +170,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni bir ASP.NET Core Web uygulamasına kimlik doğrulaması ekleme, Microsoft Graph ve diğer Microsoft API 'Lerinin nasıl çağrılacağını, kendi API 'lerinizi nasıl çağrılacağını, kimlik doğrulamasının nasıl yapılacağını, Ulusal bulutlarda Kullanıcı oturumunu nasıl kullanacağınızı veya sosyal kimlik ve daha fazlasını içeren bu ASP.NET Core öğreticisine ilişkin daha fazla bilgi edinmek için GitHub deposuna göz atın :
+Bu ASP.NET Core öğreticisini içeren GitHub deposu, nasıl yapılacağını gösteren yönergeler ve daha fazla kod örneği içerir:
+
+- Yeni bir ASP.NET Core Web uygulamasına kimlik doğrulaması ekleme
+- Microsoft Graph, diğer Microsoft API 'Lerini veya kendi Web API 'lerinizi çağırın
+- Yetkilendirme Ekle
+- Ulusal bulutlarda veya sosyal kimliklerle Kullanıcı oturum açma
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [GitHub 'da Web uygulaması öğreticileri ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

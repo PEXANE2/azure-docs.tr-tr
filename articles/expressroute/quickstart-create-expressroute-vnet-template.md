@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: 2bc4c2a3ee7f1a1dbd85d46e49ec27e5276de159
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237414"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016563"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak özel eşleme ile bir ExpressRoute devresi oluşturma
 
@@ -76,9 +76,9 @@ ExpressRoute ile ilgili daha fazla şablon bulmak için bkz. [Azure hızlı baş
 
     Kaynak grubu adı, **RG** eklenmiş proje adıdır.
 
-Şablonun dağıtılması yaklaşık 20 dakika sürer. Tamamlandığında, çıkış şuna benzerdir:
+    Şablonun dağıtılması yaklaşık 20 dakika sürer. Tamamlandığında, çıkış şuna benzerdir:
 
-:::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek olarak, Azure portal, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-portal.md).
 

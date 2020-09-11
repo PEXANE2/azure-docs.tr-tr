@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ae9891edc80aab5d3223686547dfef4273f8a921
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514637"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019164"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -63,7 +63,7 @@ az keyvault certificate download --file
 
 Daha fazla bilgi için [örnekleri ve parametre tanımlarını](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) görüntüleyin.
 
-Tüm sertifikayı (hem ortak hem de özel bölümlerinin) indirmek isterseniz, sertifikayı gizli olarak indirin.
+Sertifika olarak indirme, genel bölümü elde etmek anlamına gelir. Hem özel anahtar hem de genel meta verileri isterseniz, parolayı gizli olarak indirebilirsiniz.
 
 ```azurecli
 az keyvault secret download -–file {nameofcert.pfx}

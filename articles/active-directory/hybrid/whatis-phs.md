@@ -11,17 +11,17 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386360"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016597"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD ile parola karması eşitlemesi nedir?
 Parola karması eşitleme, karma kimlik gerçekleştirmek için kullanılan oturum açma yöntemlerinden biridir. Azure AD Connect, kullanıcının bir Kullanıcı parolasının karmasını, şirket içi Active Directory örneğinden bulut tabanlı bir Azure AD örneğine eşitler.
 
-Parola karması eşitleme, Azure AD Connect eşitleme tarafından uygulanan Dizin eşitleme özelliğinin bir uzantısıdır. Bu özelliği, Office 365 gibi Azure AD hizmetlerinde oturum açmak için kullanabilirsiniz. Şirket içi Active Directory örneğinde oturum açmak için kullandığınız parolayı kullanarak hizmette oturum açın.
+Parola karması eşitleme, Azure AD Connect eşitleme tarafından uygulanan Dizin eşitleme özelliğinin bir uzantısıdır. Bu özelliği, Microsoft 365 gibi Azure AD hizmetlerinde oturum açmak için kullanabilirsiniz. Şirket içi Active Directory örneğinde oturum açmak için kullandığınız parolayı kullanarak hizmette oturum açın.
 
 ![Azure AD Connect nedir?](./media/how-to-connect-password-hash-synchronization/arch1.png)
 

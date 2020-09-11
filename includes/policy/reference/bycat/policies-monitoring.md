@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8e0b244e0ba25ad253b4beeb0e0a707e66c39cef
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0c3896ca49a157928b7aea08ecf3b07485c173f7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483176"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90022365"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[Önizleme \] : denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |VM görüntüsü (OS) tanımlı listede değilse ve aracı yüklü değilse, VM 'Leri uyumsuz olarak bildirir. Destek güncelleştirildiğinden, işletim sistemi görüntülerinin listesi zaman içinde güncelleştirilir. |Auditınotexists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[Etkinlik günlüğü en az bir yıl bekletilecektir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Bu ilke, bekletme 365 gün veya süresiz olarak ayarlanmamışsa etkinlik günlüğünü denetler (bekletme günleri 0 olarak ayarlanır). |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
@@ -46,7 +46,6 @@ ms.locfileid: "89483176"
 |[Olay Hub 'ına Logic Apps için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1dae6c7-13f3-48ea-a149-ff8442661f60) |, Bu tanılama ayarlarının eksik olduğu Logic Apps bir bölgesel Olay Hub 'ına akışa Logic Apps yönelik tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogicApps_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Log Analytics çalışma alanına Logic Apps için tanılama ayarlarını dağıt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb889a06c-ec72-4b03-910a-cb169ee18721) |Bu tanılama ayarlarının eksik olduğu Logic Apps, bir bölgesel Log Analytics çalışma alanına akışa Logic Apps için tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogicApps_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
 |[Ağ güvenlik grupları için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9c29499-c1d1-4195-99bd-2ec9e3a9dc89) |Bu ilke, tanılama ayarlarını otomatik olarak ağ güvenlik gruplarına dağıtır. ' {StoragePrefixParameter} {NSGLocation} ' adlı bir depolama hesabı otomatik olarak oluşturulacak. |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForNSG_Deploy.json) |
-|[Kaynak özel kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc717fb0c-d118-4c43-ab3d-ece30ac81fb3) |Kaynağa özgü kategoriler için Log Analytics çalışma alanına akışa yönelik kurtarma hizmetleri Kasası için tanılama ayarlarını dağıtın. Kaynağa özgü kategorilerden herhangi biri etkinleştirilmemişse, yeni bir tanılama ayarı oluşturulur. |deployIfNotExists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/EnableRecoveryServiceVaultDiagnosticSetting_Backup_DeployIfNotExist.json) |
 |[Arama Hizmetleri için tanılama ayarlarını Olay Hub 'ına dağıt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d5da587-71bd-41f5-ac95-dd3330c2d58d) |Arama Hizmetleri için tanılama ayarlarını, bu Tanılama ayarları eksik olan herhangi bir arama hizmeti oluşturulduğunda veya güncelleştirilirken bölgesel bir olay hub 'ına akışa dağıtır. |DeployIfNotExists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Search_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Log Analytics çalışma alanına arama hizmetleri için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08ba64b8-738f-4918-9686-730d2ed79c7d) |Arama Hizmetleri için tanılama ayarlarını, bu Tanılama ayarları eksik olan herhangi bir arama hizmeti oluşturulduğunda veya güncelleştirilirken bölgesel bir Log Analytics çalışma alanına akışa dağıtır. |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Search_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
 |[Olay Hub 'ına Service Bus için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b51af03-9277-49a9-a3f8-1c69c9ff7403) |, Bu tanılama ayarlarının eksik olduğu Service Bus bir bölgesel Olay Hub 'ına akışa Service Bus yönelik tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ServiceBus_DeployDiagnosticLog_Deploy_EventHub.json) |

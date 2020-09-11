@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect ve Connect Health nedir? | Microsoft Belgeleri
-description: Şirket içi ortamınızı Azure AD ile senkronize etmek ve izlemek için kullanılan araçları açıklar.
+description: Şirket içi ortamınızı Azure AD ile senkronize etmek ve izlemek için kullanılan araçlar hakkında bilgi edinin.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278845"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018620"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect nedir?
 
@@ -35,7 +35,7 @@ Azure AD Connect, Microsoft'un karma kimlik hedeflerinizi karşılamak ve gerçe
 
 ## <a name="what-is-azure-ad-connect-health"></a>Azure AD Connect Health nedir?
 
-Azure Active Directory (Azure AD) Connect Health, şirket içi kimlik altyapınızın sağlam bir şekilde izlenmesini sağlar. Office 365 ve Microsoft Online Services ile güvenilir bir bağlantıyı korumanıza olanak sağlar.  Bu güvenilirlik, anahtar kimlik bileşenleriniz için izleme özellikleri sunarak elde edilir. Ayrıca, bu bileşenlerle ilgili önemli veri noktalarını kolayca erişilebilir hale getirir.
+Azure Active Directory (Azure AD) Connect Health, şirket içi kimlik altyapınızın sağlam bir şekilde izlenmesini sağlar. Microsoft 365 ve Microsoft Online Services ile güvenilir bir bağlantıyı korumanıza olanak sağlar.  Bu güvenilirlik, anahtar kimlik bileşenleriniz için izleme özellikleri sunarak elde edilir. Ayrıca, bu bileşenlerle ilgili önemli veri noktalarını kolayca erişilebilir hale getirir.
 
 Bilgiler, [Azure AD Connect Health Portalı](https://aka.ms/aadconnecthealth)'nda sunulur. Uyarıları, performans izlemeyi, kullanım analizlerini ve diğer bilgileri görüntülemek için Azure AD Connect Health portalını kullanın. Azure AD Connect Health, anahtar kimlik bileşenleriniz için aynı yerde tek sistem durumu odağı sağlar.
 
@@ -44,7 +44,7 @@ Bilgiler, [Azure AD Connect Health Portalı](https://aka.ms/aadconnecthealth)'nd
 ## <a name="why-use-azure-ad-connect"></a>Azure AD Connect neden kullanılır?
 Şirket içi dizinlerinizin Azure AD ile tümleştirilmesi, kullanıcılarınızın hem bulut kaynaklarına hem de şirket içi kaynaklara erişmesi için ortak bir kimlik oluşturarak daha üretken olmalarını sağlar. Kullanıcıların ve kuruluşların avantajlarından faydalanabilirsiniz:
 
-* Kullanıcılar, Office 365 gibi bulut hizmetlerine ve şirket içi uygulamalara erişmek için tek bir kimlik kullanabilir.
+* Kullanıcılar, Microsoft 365 gibi şirket içi uygulamalara ve bulut hizmetlerine erişmek için tek bir kimlik kullanabilir.
 * Eşitleme ve oturum açmaya yönelik kolay bir dağıtım deneyimi sağlamak için tek araç.
 * Senaryolarınız için en yeni işlevleri sağlar. Azure AD Connect DirSync ve Azure AD Eşitleme gibi kimlik tümleştirme araçlarının eski sürümlerini değiştirir. Daha fazla bilgi için bkz. [karma kimlik dizini tümleştirme araçları karşılaştırması](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
