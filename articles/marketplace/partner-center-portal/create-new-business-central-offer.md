@@ -3,16 +3,16 @@ title: Dynamics 365 Iş Merkezi teklifi oluşturma-Microsoft ticari Market
 description: İş Ortağı Merkezi 'nde Microsoft ticari marketi 'nde yeni bir Dynamics 365 Iş Merkezi teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Teklifinizi Azure Marketi 'nde veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817060"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646861"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central teklifi oluşturma
 
@@ -131,7 +131,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Açıklama
+9. Description
 10. Ekran görüntüleri/videolar
 
 ### <a name="name"></a>Name
@@ -142,7 +142,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -280,7 +280,7 @@ Test sürücünüzü ayarlamayı bitirdiğinizde devam etmeden önce **Taslağı
 
 Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
 
-### <a name="target-release"></a>Hedef yayın
+### <a name="target-release"></a>Hedef yayın sürümü
 
 Çözümünüzün hedeflediği Microsoft Dynamics Business 'ın hangi sürümü olduğunu belirtin: **geçerli**, **sonraki büyük**veya **sonraki küçük**. Bu bilgiler, çözümünüzü uygun şekilde test etmemize olanak sağlar.
 

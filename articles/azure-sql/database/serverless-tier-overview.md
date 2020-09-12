@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121366"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565098"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL veritabanı 'ndaki tek veritabanlarına yönelik sunucusuz işlem katm
 - **Minimum sanal çekirdekler** ve **maksimum sanal çekirdekler** , veritabanı için kullanılabilir işlem kapasitesi aralığını tanımlayan yapılandırılabilir parametrelerdir. Bellek ve GÇ sınırları belirtilen vCore aralığıyla orantılıdır.  
 - Otomatik **duraklatma gecikmesi** , veritabanının otomatik olarak duraklatılmadan önce devre dışı olması gereken süreyi tanımlayan yapılandırılabilir bir parametredir. Sonraki oturum açma veya diğer etkinlik gerçekleştiğinde veritabanı otomatik olarak sürdürülür.  Alternatif olarak, oto duraklamayı devre dışı bırakılabilir.
 
-### <a name="cost"></a>Maliyet
+### <a name="cost"></a>Cost
 
 - Sunucusuz bir veritabanının maliyeti, işlem maliyeti ve depolama maliyetinin özetidir.
 - İşlem kullanımı, yapılandırılan minimum ve maksimum limitlerin arasında olduğunda, işlem maliyeti sanal çekirdeği ve kullanılan belleği temel alır.
@@ -114,11 +114,12 @@ Aşağıdaki koşulların tümü, oto duraklatma gecikmesi süresince doğru olu
 
 İstenirse, oto duraklamayı devre dışı bırakmak için bir seçenek sağlanır.
 
-Aşağıdaki özellikler otomatik duraklamayı desteklemez, ancak otomatik ölçeklendirmeyi destekler.  Diğer bir deyişle, aşağıdaki özelliklerden herhangi biri kullanılırsa veritabanı, etkinlik dışı kalma süresi ne olursa olsun çevrimiçi kalır:
+Aşağıdaki özellikler otomatik duraklamayı desteklemez, ancak otomatik ölçeklendirmeyi destekler.  Aşağıdaki özelliklerden herhangi biri kullanılırsa, yeniden duraklatma devre dışı bırakılmalıdır ve veritabanı eylemsizlik süresi ne olursa olsun veritabanı çevrimiçi olarak kalır:
 
 - Coğrafi çoğaltma (etkin coğrafi çoğaltma ve otomatik yük devretme grupları).
 - Uzun süreli yedek saklama (LTR).
 - SQL Data Sync 'de kullanılan eşitleme veritabanı.  Eşitleme veritabanlarının aksine, hub ve üye veritabanları, oto duraklamayı destekler.
+- DNS diğer ad
 - Elastik Işlerde kullanılan iş veritabanı (Önizleme).
 
 Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto duraklatma geçici olarak engellenir.  Bu gibi durumlarda, hizmet güncelleştirmesi tamamlandıktan sonra yeniden duraklatma yeniden kullanılabilir duruma gelir.
@@ -127,7 +128,7 @@ Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmel
 
 Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeniden sürdürme tetiklenir:
 
-|Özellik|Oto özgeçmişi tetikleyicisi|
+|Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
 |---|---|
 |Kimlik doğrulama ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|

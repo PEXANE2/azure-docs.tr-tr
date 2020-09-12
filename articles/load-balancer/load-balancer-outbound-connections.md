@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706073"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438674"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -44,7 +44,7 @@ Azure Load Balancer, farklı mekanizmalarda giden bağlantı sağlar. Bu makaled
 
 Azure, PAT kullanılırken arka uç havuzunun boyutuna bağlı olarak kullanılabilir olan önceden ayrılmış SNAT bağlantı noktalarının sayısını belirlemede bir algoritma kullanır. Bir yük dengeleyiciyle ilişkili her genel IP adresi için, her IP Aktarım Protokolü için SNAT bağlantı noktaları olarak 64.000 bağlantı noktası bulunur. Aynı sayıda SNAT bağlantı noktası, sırasıyla UDP ve TCP için önceden ayrılır ve IP Aktarım Protokolü başına bağımsız olarak kullanılır.  Ancak, SNAT bağlantı noktası kullanımı, akışın UDP veya TCP olmasına bağlı olarak farklılık belirtir. Giden akışlar oluşturulduğunda, bu bağlantı noktaları dinamik olarak (önceden ayrılan sınıra kadar) ve akış kapandığında veya [boşta kalma zaman aşımları](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) gerçekleştiğinde serbest bırakılır. Bağlantı noktaları yalnızca akışları benzersiz hale getirmek için gerekliyse kullanılır.
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> Ayrılan varsayılan SNAT bağlantı noktaları
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> Ayrılan dinamik SNAT bağlantı noktaları
 
 Aşağıdaki tabloda, arka uç havuz boyutlarının katmanları için SNAT bağlantı noktası ön ayırmaları gösterilmektedir:
 
@@ -64,7 +64,7 @@ Arka uç havuzunuzun boyutunu değiştirmek, sağlanan akışlarınızdan bazıl
 
 ## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Giden bağlantılar senaryosuna genel bakış
 
-| Senaryo | Yöntem | IP protokolleri | Açıklama |
+| Senaryo | Yöntem | IP protokolleri | Description |
 |  --- | --- | --- | --- |
 |  1. genel IP adresine sahip VM (Azure Load Balancer ile veya olmayan) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ıCMP, ESP | Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. Bir VM 'ye atanan genel IP, 1:1 ilişkidir (1: çok) ve durum bilgisiz 1:1 NAT olarak uygulanır. |
 | 2. bir VM ile ilişkili genel Load Balancer (VM/örnek üzerinde genel IP adresi yok) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP | Bu senaryoda, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için Load Balancer kaynağın bir yük dengeleyici kuralıyla yapılandırılması gerekir. Bu kural yapılandırmasını tamamlamayın, Senaryo 3 ' te açıklanmaktadır. Durum araştırmasının başarılı olması için kuralın arka uç havuzunda çalışma dinleyicisi olması gerekmez. VM bir giden akış oluşturduğunda, Azure, giden akışın özel kaynak IP adresini SNAT aracılığıyla genel Load Balancer ön uç 'nin genel IP adresine çevirir. Yük dengeleyicinin ön uç genel IP adresinin kısa ömürlü bağlantı noktaları, VM 'ler tarafından kaynaklı bireysel akışları ayırt etmek için kullanılır. SNAT, giden akışlar oluşturulduğunda, [önceden ayrılmış kısa ömürlü bağlantı noktalarını](#preallocatedports) dinamik olarak kullanır. Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır. SNAT bağlantı noktaları, [varsayılan SNAT bağlantı noktaları ayrılmış tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır. |

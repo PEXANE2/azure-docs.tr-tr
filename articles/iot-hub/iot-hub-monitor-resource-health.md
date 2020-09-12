@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022148"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438415"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın
 
@@ -61,7 +61,7 @@ Bağlantılar kategorisi, cihaz bağlantısını ve bir IoT Hub 'ından olaylar�
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -352,7 +352,7 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu g
 
 Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. `properties`Cihazdan buluta gecikme süresini yakalamak için bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
 | **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
@@ -386,7 +386,7 @@ IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
 | **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
@@ -418,7 +418,7 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
 | **endpointType** | Dize | Yönlendirme uç noktasının türü |
@@ -426,7 +426,7 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 
 #### <a name="configurations"></a>Yapılandırmalar
 
-IoT Hub yapılandırma günlükleri, otomatik cihaz yönetimi özellik kümesi için olayları ve hataları izler.
+IoT Hub yapılandırma günlükleri otomatik cihaz yönetimi özellik kümesi için olayları ve hataları izler.
 
 ```json
 {
@@ -470,6 +470,42 @@ Cihaz akışları kategorisi, bireysel cihazlara gönderilen istek-yanıt etkile
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK sürümü
+
+Bazı işlemler nesnesine bir `sdkVersion` özellik döndürür `properties` . Bu işlemler için, bir cihaz veya arka uç uygulaması Azure IoT SDK 'Lardan birini kullanırken, bu özellik kullanılan SDK, SDK sürümü ve SDK 'nın çalıştığı platform hakkındaki bilgileri içerir. Aşağıdaki örnek, `sdkVersion` `deviceConnect` Node.js cihaz SDK 'sı kullanılırken bir işlem için yayılan özelliği gösterir: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"` . .NET (C#) SDK 'Sı için yayılan değere bir örnek aşağıda verilmiştir: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"` .
+
+Aşağıdaki tabloda farklı Azure IoT SDK 'Ları için kullanılan SDK adı gösterilmektedir:
+
+| SdkVersion özelliğinde SDK adı | Dil |
+|----------|----------|
+| .NET | .NET (C#) |
+| Microsoft. Azure. Devices | .NET (C#) hizmeti SDK 'Sı |
+| Microsoft. Azure. Devices. Client | .NET (C#) cihaz SDK 'Sı |
+| ıothubclient | C veya Python v1 (kullanım dışı) cihaz SDK 'Sı |
+| iothubserviceclient | C veya Python v1 (kullanım dışı) hizmet SDK 'Sı |
+| Azure-IoT-Device-ıothub-Kopyala | Python cihaz SDK 'Sı |
+| azure-iot-device | Node.js cihaz SDK 'Sı |
+| azure-iothub | Node.js hizmeti SDK 'Sı |
+| com. Microsoft. Azure. ıothub-Java-Client | Java cihaz SDK 'Sı |
+| com. Microsoft. Azure. ıothub. Service. SDK | Java hizmeti SDK 'Sı |
+| com. Microsoft. Azure. SDK. IoT. IoT-Device-Client | Java cihaz SDK 'Sı |
+| com. Microsoft. Azure. SDK. IoT. IoT-Service-Client | Java hizmeti SDK 'Sı |
+| C | Gömülü C |
+| C + (Osbasitleştirilmiş = Azure RTOS) | Azure RTOS |
+
+Tanılama günlüklerine yönelik sorgular gerçekleştirdiğinizde SDK sürüm özelliğini ayıklayabilirsiniz. Aşağıdaki sorgu, bağlantı olayları tarafından döndürülen özelliklerden SDK sürüm özelliğini (ve cihaz KIMLIĞI) ayıklar. Bu iki özellik, olay saati ve cihazın bağlandığı IoT Hub 'ın kaynak KIMLIĞI ile birlikte sonuçlara yazılır.
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs günlüklerini okuyun

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012494"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440363"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen veri platformları
 
@@ -53,7 +53,7 @@ SQL Server Management Studio çalıştırmak için program listesinde "SQL Serve
 
 Varsayılan olarak, varsayılan veritabanı örneğiyle veritabanı sunucusu otomatik olarak çalışır. SQL Server veritabanına yerel olarak erişmek için VM 'deki SQL Server Management Studio gibi araçları kullanabilirsiniz. Yerel yönetici hesaplarının, veritabanında Yönetici erişimi vardır.
 
-Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok dilde yazılan uygulamalardan SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı ile konuşmak için ODBC ve JDBC sürücülerle birlikte gelir.
+Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok dilde yazılan uygulamalardan SQL Server, Azure SQL veritabanları ve Azure SYNAPSE Analytics ile iletişim sağlamak için ODBC ve JDBC sürücülerle birlikte gelir.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM 'de nasıl yapılandırılır ve yüklenir? 
 

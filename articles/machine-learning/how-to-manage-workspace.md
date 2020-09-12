@@ -10,17 +10,17 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 1f68753e7b28163f3ec0c18c30cf5939e0bc5243
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179313"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649424"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure Portal [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.  Portal çalışma alanları ile çalışmaya başlamanın en kolay yoludur, ancak gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler değiştikçe, [Python kodu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) veya [vs Code uzantısı aracılığıyla](tutorial-setup-vscode-extension.md) [CLI kullanarak](reference-azure-machine-learning-cli.md)çalışma alanları oluşturabilir ve silebilirsiniz.
+Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure Portal [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.  Portal çalışma alanları ile çalışmaya başlamanın en kolay yoludur, ancak gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler değiştikçe, [Python kodu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) veya [vs Code uzantısı aracılığıyla](tutorial-setup-vscode-extension.md) [CLI kullanarak](reference-azure-machine-learning-cli.md)çalışma alanları oluşturabilir ve silebilirsiniz.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -85,7 +85,7 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
     > 
     > 1. [Azure Portal](https://portal.azure.com), çalışma alanını içeren kaynak grubunu seçin. Ardından __Privatelink.api.azureml.MS__adlı özel DNS bölgesi kaynağını seçin.
     > 2. __Ayarlar__' da, __sanal ağ bağlantıları__' nı seçin.
-    > 3. __Add (Ekle)__ seçeneğini belirleyin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
+    > 3. __Ekle__’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
     >
     > Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](/azure/private-link/private-endpoint-dns).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760609"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89324373"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -33,7 +33,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 * [Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma]
 * [Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma]
 * [VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma](../articles/virtual-machines/linux/scheduled-events.md)
-* [Her uygulama katmanını ayrı kullanılabilirlik kümelerine yapılandırma]
+* [Her uygulama katmanını ayrı kullanılabilirlik kümeleri halinde yapılandırma](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme]
 * [Veri merkezi düzeyindeki hatalardan korumak için kullanılabilirlik bölgelerini kullanma]
 
@@ -82,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> Bazı durumlarda, aynı Kullanılabilirlik alanındaki 2 sanal makine aynı FaultDomain öğesini paylaşılabilir. Bu, kullanılabilirlik kümesine gidip **hata etki alanı** sütunu denetleyerek onaylanır.
-> Bu, VM 'Leri dağıtma sırasında aşağıdaki sırayla neden olabilir:
-> - 1. VM 'yi dağıtma
-> - 1. VM 'yi durdur/serbest bırak
-> - 2. VM 'yi bu koşullarda dağıtın, 2. VM 'nin işletim sistemi diski, 1. VM ile aynı hata etki alanında oluşturulabilir ve bu nedenle 2. VM aynı FaultDomain etki alanına da eklenecektir. 
-> Bu sorundan kaçınmak için, dağıtımlar arasında VM 'Lerin durdurulması/serbest olmaması önerilir.
+> Belirli koşullarda, aynı Kullanılabilirlik kümesindeki iki VM bir hata etki alanını paylaşabilir. Kullanılabilirlik kümesine gidip **hata etki alanı** sütununu denetleyerek, paylaşılan bir hata etki alanını doğrulayabilirsiniz. Paylaşılan bir hata etki alanı, VM 'Leri dağıtırken aşağıdaki sıranın tamamlanmasına neden olmuş olabilir:
+> 1. İlk VM 'yi dağıtın.
+> 1. İlk VM 'yi durdurun/serbest bırakın.
+> 1. İkinci VM 'yi dağıtın.
+>
+> Bu koşullarda, ikinci VM 'nin işletim sistemi diski ilk VM ile aynı hata etki alanında oluşturulabilir, bu nedenle iki VM aynı hata etki alanında olur. Bu sorundan kaçınmak için, dağıtımlar arasında VM 'Leri durdurmanızı/serbest memenizi öneririz.
 
 VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal sabit disklerinin (VHD) [sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)olarak depolandığı depolama hesapları için aşağıdaki en iyi yöntemleri izleyin.
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514453"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462420"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Depolama Kaynaklarını C++ dilinde listeleme
 
@@ -185,7 +185,7 @@ Yavaş listeleme API 'Leri, 2.2.0 sürümündeki C++ için depolama Istemci kita
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makalede, C++ için depolama Istemci kitaplığındaki çeşitli nesnelere yönelik API 'Leri listelemek için farklı aşırı yüklemeler ele alınmıştır. Özetlersek:
+Bu makalede, C++ için depolama Istemci kitaplığındaki çeşitli nesnelere yönelik API 'Leri listelemek için farklı aşırı yüklemeler ele alınmıştır. Özetlemek gerekirse:
 
 * Zaman uyumsuz API 'Lerin birden çok iş parçacığı senaryosu altında kullanılması önemle önerilir.
 * Kesimli liste çoğu senaryo için önerilir.
@@ -200,5 +200,5 @@ Azure depolama ve C++ için Istemci kitaplığı hakkında daha fazla bilgi içi
 * [C++ ' dan Tablo Depolamayı kullanma](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [C++’tan Kuyruk Depolama kullanma](../storage-c-plus-plus-how-to-use-queues.md)
 * [C++ API belgeleri için Azure Storage Istemci kitaplığı.](https://azure.github.io/azure-storage-cpp/)
-* [Azure Depolama Ekibi Blogu](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [Azure depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/)

@@ -1,19 +1,19 @@
 ---
 title: Azure Site Recovery kullanarak bir dosya sunucusunu koruma
 description: Bu makalede Azure Site Recovery kullanarak bir dosya sunucusunu koruma adımları anlatılmaktadır
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: c4b6d583c2dd3d54c6201917a40fa6165efac18f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c88a7e78d37556f0f1f89e16154dc1808f24323
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131270"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425526"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak bir dosya sunucusunu koruma 
 
@@ -123,7 +123,7 @@ Aşağıdaki adımlar VMware VM'ye çoğaltmayı göstermektedir. Hyper-V VM'ye 
 1. Şirket içi makinelerin çoğaltması için [Azure kaynaklarını hazırlayın](tutorial-prepare-azure.md) .
 2. Şirket içi ağınız ile Azure ağı arasında siteler arası VPN bağlantısı kurun. 
 3. Şirket içi Active Directory ortamını genişletin.
-4. [Şirket içi VMware sunucuları hazırlayın](./vmware-azure-tutorial-prepare-on-premises.md).
+4. [Şirket Içi VMware sunucularını hazırlayın](./vmware-azure-tutorial-prepare-on-premises.md).
 5. Şirket içi VM’ler için Azure’da [olağanüstü durum kurtarmayı ayarlayın](./vmware-azure-tutorial.md).
 
 ## <a name="extend-dfsr-to-an-azure-iaas-virtual-machine"></a>DFSR'yi bir Azure IaaS sanal makinesi ile genişletme

@@ -1,6 +1,6 @@
 ---
-title: Terabaytlık verileri SQL veri ambarı 'na yükleme
-description: Azure Data Factory ile 15 dakika altında Azure SQL veri ambarı 'na 1 TB veri yüklenebileceğinizi gösterir.
+title: Azure SYNAPSE Analytics 'e terabayt verisi yükleme
+description: Azure Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB veri yüklenebileceğinizi gösterir
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5ce0cba68d4374d6a0403af28ec3f03920acf6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537607"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442488"
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB 'yi, 15 dakikadan kısa bir süre içinde Azure SQL veri ambarı 'na yükleyin Data Factory
+# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleyin
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory kullanarak Azure SQL veri ambarı 'na veri kopyalama](../connector-azure-sql-data-warehouse.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory kullanarak Azure SYNAPSE Analytics 'e veya Azure 'da veri kopyalama (eski ADıYLA SQL veri ambarı)](../connector-azure-sql-data-warehouse.md).
 
 
-[Azure SQL veri ambarı](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır.  Yüksek düzeyde paralel işleme (MPP) mimarisi üzerinde geliştirilen SQL veri ambarı, kurumsal veri ambarı iş yükleri için optimize edilmiştir.  Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
+[Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır.  Yüksek düzeyde paralel işleme (MPP) mimarisi üzerinde geliştirilen Azure SYNAPSE Analytics, kurumsal veri ambarı iş yükleri için optimize edilmiştir.  Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
 
-Azure SQL veri ambarı 'nı kullanmaya başlamak artık **Azure Data Factory**kullanmaktan çok daha kolay.  Azure Data Factory, bir SQL veri ambarını mevcut sisteminizdeki verilerle doldurmak ve SQL veri ambarını değerlendirirken ve analiz çözümlerinizi oluştururken değerli zamandan tasarruf etmek için kullanılabilen, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak Azure SQL veri ambarı 'na veri yükleme hakkında önemli avantajlar aşağıda verilmiştir:
+Azure SYNAPSE Analytics 'i kullanmaya başlamak artık **Azure Data Factory**kullanmaktan çok daha kolay.  Azure Data Factory, Azure SYNAPSE Analytics 'i mevcut sisteminizdeki verilerle doldurmak ve Azure SYNAPSE analizini değerlendirirken ve analiz çözümlerinizi oluştururken değerli zamandan tasarruf etmek için kullanılabilen, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yüklemenin başlıca avantajları aşağıda verilmiştir:
 
 * **Kolayca ayarlanır**: komut dosyası gerekmeden 5 adımlı sezgisel sihirbaz.
 * **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek.
 * **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır ve küresel hizmet varlığı, verilerinizin hiçbir şekilde Coğrafi sınırın dışına ayrılmamasını sağlar
-* **PolyBase kullanarak benzersiz olmayan performans** : PolyBase kullanarak Azure SQL veri ambarı 'na veri taşımanın en verimli yolu vardır. Hazırlama blobu özelliğini kullanarak, PolyBase 'in varsayılan olarak desteklediği Azure Blob depolama alanının yanı sıra tüm veri deposu türlerinden yüksek yük hızları elde edebilirsiniz.
+* **PolyBase kullanarak benzersiz olmayan performans** : PolyBase kullanarak Azure SYNAPSE Analytics 'e veri taşımanın en verimli yolu vardır. Hazırlama blobu özelliğini kullanarak, PolyBase 'in varsayılan olarak desteklediği Azure Blob depolama alanının yanı sıra tüm veri deposu türlerinden yüksek yük hızları elde edebilirsiniz.
 
-Bu makalede, Azure Blob depolama 'dan Azure SQL veri ambarı 'na 1,2 GB/sn 'lik aktarım hızına göre 1 TB 'lık verileri yüklemek için Data Factory kopyalama Sihirbazı 'Nın nasıl kullanılacağı gösterilmektedir.
+Bu makalede, Azure Blob depolama 'dan Azure SYNAPSE Analytics 'e 1,2 GB/sn 'lik aktarım hızına göre 1 TB 'lık verileri yüklemek için Data Factory kopyalama Sihirbazı 'Nın nasıl kullanılacağı gösterilmektedir.
 
-Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambarı 'na taşımaya yönelik adım adım yönergeler sağlanmaktadır.
+Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri taşımaya yönelik adım adım yönergeler sağlanmaktadır.
 
 > [!NOTE]
->  Azure SQL veri ambarı 'na/verilerine veri taşıma Data Factory özellikleri hakkında genel bilgi için, bkz. [Azure Data Factory makalesini kullanarak verileri Azure SQL veri ambarı 'Na taşıma](data-factory-azure-sql-data-warehouse-connector.md) .
+>  Azure SYNAPSE Analytics 'e/verilerine veri taşıma Data Factory özellikleri hakkında genel bilgi için, bkz. [Azure Data Factory makalesini kullanarak verileri Azure SYNAPSE Analytics 'e taşıyın](data-factory-azure-sql-data-warehouse-connector.md) .
 >
 > Visual Studio, PowerShell, vb. kullanarak işlem hatları da oluşturabilirsiniz. Bkz. [öğretici: Azure blobundan Azure SQL veritabanı 'na veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) Azure Data Factory ' de kopyalama etkinliğini kullanmaya yönelik adım adım yönergeler içeren hızlı bir yol.  
 >
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-account-create.md)bilgi edinin.
 * [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, `dbgen` veri kümesini oluşturmanıza yardımcı olan TPC-H Toolkit ' i kullanmanız gerekir.  `dbgen` [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp) kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelinde tablo yayma için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen.exe çalıştırın `lineitem` :
 
@@ -54,18 +54,18 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     Şimdi oluşturulan dosyaları Azure Blob 'a kopyalayın.  ADF kopyalamayı kullanarak nasıl yapılacağını öğrenmek için [Azure Data Factory kullanarak şirket içi bir dosya sistemine veri taşıma](data-factory-onprem-file-system-connector.md) bölümüne bakın.    
-* Azure SQL veri ambarı: Bu deneme, 6.000 DWUs ile oluşturulan Azure SQL veri ambarı 'na veri yükler
+* Azure SYNAPSE Analytics: Bu deneme, 6.000 DWUs ile oluşturulan Azure SYNAPSE Analytics 'e veri yükler
 
-    SQL veri ambarı veritabanı oluşturma hakkında ayrıntılı yönergeler için [Azure SQL veri ambarı oluşturma](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) bölümüne bakın.  PolyBase kullanarak SQL veri ambarı 'na en iyi olası yük performansını elde etmek için, performans ayarında 6.000 DWUs olan maksimum veri ambarı birimi (DWU) sayısını seçtik.
+    Azure SYNAPSE Analytics veritabanı oluşturma hakkında ayrıntılı yönergeler için [Azure SYNAPSE Analytics oluşturma](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) bölümüne bakın.  PolyBase kullanarak Azure SYNAPSE Analytics 'e en iyi olası yük performansını elde etmek için, performans ayarında 6.000 DWUs olan maksimum veri ambarı birimi (DWU) sayısını seçtik.
 
   > [!NOTE]
-  > Azure Blobundan yüklerken veri yükleme performansı, SQL veri ambarı 'nda yapılandırdığınız DWU sayısıyla doğrudan orantılıdır:
+  > Azure Blob 'dan yükleme yaparken, veri yükleme performansı, Azure SYNAPSE Analytics için yapılandırdığınız DWU sayısıyla doğrudan orantılıdır:
   >
-  > 1.000 DWU SQL veri ambarı 'na 1 TB yükleme, 87 dakika sürer (~ 200 MBps aktarım hızı) 1 TB 'yi 2.000 DWU SQL veri ambarı 'na yükleme, 1 TB 'yi 46 DWU SQL veri ambarı 'na yükleme 14 dakika sürer (~ 380 GBps aktarım hızı)
+  > 1.000 DWU 'da 1 TB 'a yükleme Azure SYNAPSE Analytics, 87 dakika (~ 200 MBps aktarım hızı), 2.000 DWU Azure SYNAPSE Analytics 'e 1 TB yükleme (~ 46 MBps aktarım hızı), 380 DWU Azure SYNAPSE Analytics 'e 1 TB yükleme
   >
   >
 
-    6.000 DWUs ile bir SQL veri ambarı oluşturmak için performans kaydırıcısını hemen sağa taşıyın:
+    6.000 DWUs ile bir Synapse SQL havuzu oluşturmak için, performans kaydırıcısını sağa doğru bir şekilde taşıyın:
 
     ![Performans kaydırıcı](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -77,10 +77,10 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
 
     ![Ölçek iletişim kutusu](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Bu deneme, kaynak sınıfını kullanarak verileri Azure SQL veri ambarı 'na yükler `xlargerc` .
+    Bu deneme, kaynak sınıfını kullanarak verileri Azure SYNAPSE Analytics 'e yükler `xlargerc` .
 
-    En iyi performansı elde etmek için, kaynak sınıfına ait olan bir SQL veri ambarı kullanıcısı kullanılarak kopyalama yapılması gerekir `xlargerc` .  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.  
-* Şu DDL ifadesini çalıştırarak Azure SQL veri ambarı veritabanında hedef tablo şeması oluşturun:
+    En iyi performansı elde etmek için, kaynak sınıfına ait olan bir Azure SYNAPSE Analytics kullanıcısı kullanılarak kopyalama yapılması gerekir `xlargerc` .  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.  
+* Şu DDL ifadesini çalıştırarak Azure SYNAPSE Analytics veritabanında hedef tablo şeması oluşturun:
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -165,13 +165,13 @@ Bu bölümde, 1 TB TPC-H satır öğesi dosyalarını içeren Azure Blob kaynağ
     ![Kopyalama Sihirbazı-dosya biçimi ayarları](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. Adım: hedefi yapılandırma
-Bu bölümde, `lineitem` Azure SQL veri ambarı veritabanında hedef: tablosunun nasıl yapılandırılacağı gösterilmektedir.
+Bu bölümde, `lineitem` Azure SYNAPSE Analytics veritabanında hedef: tablosunun nasıl yapılandırılacağı gösterilmektedir.
 
-1. Hedef depo olarak **Azure SQL veri ambarı** ' nı seçin ve **İleri**' ye tıklayın.
+1. Hedef depo olarak **Azure SYNAPSE Analytics** ' i seçin ve **İleri**' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef veri deposunu seçin](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure SQL veri ambarı için bağlantı bilgilerini girin.  Rolün üyesi olan kullanıcıyı belirttiğinizden emin olun `xlargerc` (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri**' ye tıklayın.
+2. Azure SYNAPSE Analytics için bağlantı bilgilerini girin.  Rolün üyesi olan kullanıcıyı belirttiğinizden emin olun `xlargerc` (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri**' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef bağlantı bilgileri](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -190,27 +190,27 @@ Bu bölümde, `lineitem` Azure SQL veri ambarı veritabanında hedef: tablosunun
 ## <a name="step-5-deploy-and-monitor-load-results"></a>5. Adım: yükleme sonuçlarını dağıtma ve izleme
 1. Dağıtmak için **son** düğmesine tıklayın.
 
-    ![Kopyalama Sihirbazı-Özet sayfası](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Kopyalama Sihirbazı-Özet sayfası 1](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
 2. Dağıtım tamamlandıktan sonra `Click here to monitor copy pipeline` kopyalama çalıştırması ilerlemesini izlemek için tıklayın. **Etkinlik pencereleri** listesinde oluşturduğunuz kopyalama işlem hattını seçin.
 
-    ![Kopyalama Sihirbazı-Özet sayfası](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![Kopyalama Sihirbazı-Özet sayfası 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
     Kaynak verileri okuma ve hedefe yazma, süre ve çalıştırmaya yönelik ortalama aktarım hızı dahil olmak üzere sağ panelde **etkinlik penceresi Gezgini** ' nde kopyalama çalıştırması ayrıntılarını görüntüleyebilirsiniz.
 
-    Aşağıdaki ekran görüntüsünden görebileceğiniz gibi, 1 TB 'yi Azure Blob depolama alanından SQL veri ambarı 'na kopyalamak 14 dakika sürer ve 1,22 GBps aktarım hızı etkin bir şekilde elde edilebilir!
+    Aşağıdaki ekran görüntüsünden görebileceğiniz gibi, Azure Blob depolama alanından 1 TB 'ın Azure SYNAPSE Analytics 'e kopyalanması 14 dakika sürer ve 1,22 GBps aktarım hızı etkin bir şekilde elde edilebilir!
 
     ![Kopyalama Sihirbazı-başarılı iletişim kutusu](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>Önerilen uygulamalar
-Azure SQL veri ambarı veritabanınızı çalıştırmaya yönelik birkaç en iyi yöntem aşağıda verilmiştir:
+## <a name="best-practices"></a>En iyi uygulamalar
+Azure SYNAPSE Analytics veritabanınızı çalıştırmaya yönelik birkaç en iyi yöntem aşağıda verilmiştir:
 
 * KÜMELENMIŞ bir COLUMNSTORE DIZININE yüklerken daha büyük bir kaynak sınıfı kullanın.
 * Daha verimli birleşimler için, varsayılan hepsini bir kez deneme dağıtımı yerine bir SELECT sütunuyla karma dağılımı kullanmayı düşünün.
 * Daha hızlı yük hızları için, geçici veriler için yığın kullanmayı düşünün.
-* Azure SQL veri ambarı 'nı yüklemeyi tamamladıktan sonra İstatistikler oluşturun.
+* Azure SYNAPSE Analytics 'e yüklemeyi bitirdikten sonra İstatistikler oluşturun.
 
-Ayrıntılar için bkz. [Azure SQL veri ambarı Için en iyi uygulamalar](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
+Ayrıntılar için bkz. [Azure SYNAPSE Analytics Için en iyi uygulamalar](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Data Factory kopyalama Sihirbazı](data-factory-copy-wizard.md) -Bu makalede kopyalama Sihirbazı hakkında ayrıntılar sağlanmaktadır.

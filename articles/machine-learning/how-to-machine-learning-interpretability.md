@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306409"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649439"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Bir makine öğrenimi modelinin açıklanması özelliğinin etkinleştirilmesi,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile yorumlenebilirlik
 
-Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)öğrenin)
+Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)öğrenin)
 
 * `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içeren ana paket.
 
@@ -69,9 +69,9 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
 ## <a name="supported-interpretability-techniques"></a>Desteklenen yorumlenebilirlik teknikleri
 
- `azureml-interpret`, eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
+ `azureml-interpret` , eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
 
-|Yorumlenebilirlik tekniği|Açıklama|Tür|
+|Yorumlenebilirlik tekniği|Description|Tür|
 |--|--|--------------------|
 |SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|
@@ -90,7 +90,7 @@ Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı başka bir S
 * Doğrusal modeller için LinearExplainer
 * Diğer tüm modeller için KernelExplainer
 
-`TabularExplainer`Ayrıca, doğrudan SHAP explainers üzerinde önemli özellikler ve performans iyileştirmeleri de yaptı:
+`TabularExplainer` Ayrıca, doğrudan SHAP explainers üzerinde önemli özellikler ve performans iyileştirmeleri de yaptı:
 
 * **Başlatma veri kümesinin Özeti**. Açıklama hızının en önemli olduğu durumlarda, başlatma veri kümesini özetliyoruz ve genel ve bireysel Özellik önem değerlerinin oluşturulmasını hızlandıran küçük bir temsilci örnekleri kümesi oluşturur.
 * **Değerlendirme verisi kümesini örnekleme**. Kullanıcı büyük bir değerlendirme örnekleri kümesi geçirirse ancak tamamen değerlendirilmek zorunda değilse, genel model açıklamalarının hesaplanmasını hızlandırmak için örnekleme parametresi true olarak ayarlanabilir.
@@ -121,4 +121,4 @@ Azure Machine Learning Işlem sırasında açıklamayı Uzaktan çalıştırabil
 
 - Modeller için [, hem](how-to-machine-learning-interpretability-aml.md) yerel olarak hem de uzaktan işlem kaynakları Azure Machine Learning için yorumlenebilirliği etkinleştirme konusuna bakın. 
 - Ek senaryolar için [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) bakın. 
-- Metin senaryoları için yorumlarla ilgileniyorsanız, NLP için yorumlamış teknikler için bkz. yorumlama [-metin](https://github.com/interpretml/interpret-text), ilgili bir açık kaynak deposu [yorumlamaya yönelik yorum-topluluk](https://github.com/interpretml/interpret-community/). `azureml.interpret`paket şu anda bu teknikleri desteklemez, ancak [metin sınıflandırmasına örnek bir not defteri](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)ile çalışmaya başlayın.
+- Metin senaryoları için yorumlarla ilgileniyorsanız, NLP için yorumlamış teknikler için bkz. yorumlama [-metin](https://github.com/interpretml/interpret-text), ilgili bir açık kaynak deposu [yorumlamaya yönelik yorum-topluluk](https://github.com/interpretml/interpret-community/). `azureml.interpret` paket şu anda bu teknikleri desteklemez, ancak [metin sınıflandırmasına örnek bir not defteri](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)ile çalışmaya başlayın.

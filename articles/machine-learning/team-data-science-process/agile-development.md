@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722110"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440295"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Veri bilimi projelerinin çevik geliştirmesi
 
@@ -42,7 +42,7 @@ TDSP sprint planlama çerçevesinde, sık kullanılan dört *iş öğesi* türü
 - **Özellik**: bir özellik proje katılımını karşılık gelir. Bir istemciye sahip farklı görevlendirmeler farklı özelliklerdir ve projenin farklı aşamalarını farklı özellikler olarak düşünmek en iyisidir. *\<ClientName>-\<EngagementName>* Özelliklerinizi adlandırmak için gibi bir şema seçerseniz, proje bağlamını kolayca tanıyabilir ve doğrudan adların kendilerini ayırt edebilirsiniz.
   
 - **Kullanıcı hikayesi**: Kullanıcı hikayeleri, bir özelliği uçtan uca tamamlayabilmeniz için gereken iş öğeleridir. Kullanıcı hikayeleri örnekleri şunları içerir:
-  - Veri al 
+  - Verileri alma 
   - Verileri inceleme 
   - Özellik Oluştur
   - Modelleri oluşturma
@@ -51,7 +51,7 @@ TDSP sprint planlama çerçevesinde, sık kullanılan dört *iş öğesi* türü
   
 - **Görev**: görevler, belirli bir kullanıcı hikayesini tamamlamaya yönelik yapılması gereken atanabilir iş öğeleridir. Örneğin, Kullanıcı hikayesinden *veri al* görevleri şu şekilde olabilir:
   - SQL Server kimlik bilgilerini al
-  - SQL veri ambarı 'na veri yükleme
+  - Azure SYNAPSE Analytics 'e veri yükleme
   
 - **Hata**: hatalar, var olan koddaki veya bir görevi tamamlaması için düzeltilmesi gereken belgelerdeki sorunlardır. Hatalar eksik iş öğelerinden kaynaklanıyorsa, bu kişiler Kullanıcı hikayeleri veya görevleri için de bu Işlemleri yapabilir. 
 
@@ -152,7 +152,7 @@ Veri bilimcileri, özellikleri, kullanıcı hikayelerini ve Işleri TDSP yaşam 
    1. **Ad**' ın altında, **Epic** ile *TDSP projelerini*değiştirin. 
    1. **Bu kapsam düzeyindeki iş öğesi türleri**altında **yeni iş öğesi türü**' nü seçin, *TDSP projesi*girin ve **Ekle**' yi seçin. 
    1. **Varsayılan iş öğesi türü**altında, açılır ve **TDSP projesi**' ni seçin. 
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
    
    ![Portföy biriktirme listesi düzeyini ayarla](./media/agile-development/13-rename.png)  
    

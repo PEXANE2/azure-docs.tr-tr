@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849107"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612800"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -71,7 +71,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Açıklama |  
+|Magic komutu |Dil | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
@@ -116,10 +116,10 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 
 |Diller| Sözdizimi vurgusu | Söz dizimi hata Işaretleyicisi  | Sözdizimi kodu tamamlama | Değişken kodu tamamlama| Sistem Işlevi kod tamamlama| Kullanıcı Işlevi kod tamamlama| Akıllı Girinti | Kod katlama|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
-|Spark (Scala)|Evet|Evet|Evet|Evet|-|-|-|Evet|
-|Mini SQL|Evet|Evet|-|-|-|-|-|-|
-|Spark için .NET (C#)|Evet|-|-|-|-|-|-|-|
+|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
+|Mini SQL|Yes|Yes|-|-|-|-|-|-|
+|Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
@@ -232,7 +232,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
 spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
@@ -349,7 +349,7 @@ Not defteri özelliklerinde, kaydetme sırasında hücre çıkışının eklenip
    ![Not defteri-Özellikler](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>MAGIC komutları
-Tanıdık Jupyıter Magic komutlarınızı Azure SYNAPSE Studio Not defterleri ' nde kullanabilirsiniz. Aşağıdaki listede geçerli olan MAGIC komutları olarak kontrol edin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için kullanım durumlarınızı GitHub 'da bize söyleyin.
+Tanıdık Jupyıter Magic komutlarınızı Azure SYNAPSE Studio Not defterleri ' nde kullanabilirsiniz. Aşağıdaki listede geçerli olan MAGIC komutları olarak kontrol edin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için [kullanım durumlarınızı GitHub 'da](https://github.com/MicrosoftDocs/azure-docs/issues/new) bize söyleyin.
 
 Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% Time It](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 

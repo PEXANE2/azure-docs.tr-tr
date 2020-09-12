@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 949118214851c3eceffd8c1d638a4093bdf7f366
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88748806"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304086"
 ---
 | Kaynak | Sınır |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "88748806"
 | Etiket anahtarı uzunluğu |512 |
 | Etiket değeri uzunluğu |256 |
 
-<sup>1</sup> 2020 Haziran 'dan başlayarak, sınıra yaklaşmanıza kadar dağıtımlar otomatik olarak geçmişten silinir. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
+<sup>1</sup> Sınıra yaklaşmanıza kadar dağıtımlar otomatik olarak geçmişten silinir. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
 
 #### <a name="template-limits"></a>Şablon sınırları
 

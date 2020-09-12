@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903332"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461553"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
@@ -102,7 +102,7 @@ Diğer bir yaygın model, akış veri ambarı olarak da adlandırılan gerçek z
 
 ## <a name="use-reference-data-for-enrichment"></a>Zenginleştirme için başvuru verilerini kullanma
 
-Veri zenginleştirme, genellikle ETL motorları için gereksinimdir. Azure Stream Analytics hem SQL veritabanı hem de Azure Blob depolama alanındaki [başvuru verileriyle](stream-analytics-use-reference-data.md) veri zenginleştirmesini destekler. Veri zenginleştirme, hem Azure Data Lake hem de SQL veri ambarı 'nda veri sahanlığı için yapılabilir.
+Veri zenginleştirme, genellikle ETL motorları için gereksinimdir. Azure Stream Analytics hem SQL veritabanı hem de Azure Blob depolama alanındaki [başvuru verileriyle](stream-analytics-use-reference-data.md) veri zenginleştirmesini destekler. Veri zenginleştirme, hem Azure Data Lake hem de Azure SYNAPSE Analytics 'te veri sahanlığı için yapılabilir.
 
 
 ![Veri zenginleştirme ile ASA çevrimdışı Analizi](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
@@ -115,7 +115,7 @@ Veri zenginleştirme, genellikle ETL motorları için gereksinimdir. Azure Strea
 
 ## <a name="how-to-monitor-asa-jobs"></a>ASA işlerini izleme
 
-Azure Stream Analytics bir iş, gelen olayları sürekli olarak gerçek zamanlı olarak işlemek için 24/7 çalıştırılabilir. Çalışma süresi garantisi, genel uygulamanın sistem durumu için önemlidir. Sektörün [% 99,9 kullanılabilirlik garantisi](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)sunan tek akış analizi hizmeti Stream Analytics, ancak yine de bir düzey süre kullanmaya devam edebilirsiniz. Yıl boyunca Stream Analytics, işlerin sistem durumunu yansıtmak için ölçümler, Günlükler ve iş durumları getirmiştir. Bunların hepsi Azure Izleyici hizmeti üzerinden ortaya çıkmış ve OMS 'ye daha fazla aktarılabilir. Daha fazla bilgi için bkz. [Stream Analytics iş Izlemeyi anlama ve sorguları izleme](stream-analytics-monitoring.md).
+Azure Stream Analytics bir iş, gelen olayları sürekli olarak gerçek zamanlı olarak işlemek için 24/7 çalıştırılabilir. Çalışma süresi garantisi, genel uygulamanın sistem durumu için önemlidir. Sektörün  [% 99,9 kullanılabilirlik garantisi](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)sunan tek akış analizi hizmeti Stream Analytics, ancak yine de bir düzey süre kullanmaya devam edebilirsiniz. Yıl boyunca Stream Analytics, işlerin sistem durumunu yansıtmak için ölçümler, Günlükler ve iş durumları getirmiştir. Bunların hepsi Azure Izleyici hizmeti üzerinden ortaya çıkmış ve OMS 'ye daha fazla aktarılabilir. Daha fazla bilgi için bkz. [Stream Analytics iş Izlemeyi anlama ve sorguları izleme](stream-analytics-monitoring.md).
 
 ![ASA izleme](media/stream-analytics-solution-patterns/monitoring.png)
 

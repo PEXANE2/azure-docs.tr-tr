@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285637"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612333"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi uygulamaları (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Sunucu başına tek bir NIC (küme düğümü) ve tek bir alt ağ kullanın. Azu
 
 İki düğümlü bir küme, [çekirdek kaynağı](/windows-server/storage/storage-spaces/understand-quorum)olmadan işlev yapabilse de, müşterilerin üretim desteği sağlamak için bir çekirdek kaynak kullanması kesinlikle gerekir. Küme doğrulaması, çekirdek kaynağı olmayan hiçbir kümeyi geçirmez. 
 
-Teknik olarak, üç düğümlü bir küme, çekirdek kaynağı olmadan tek bir düğüm kaybını (iki düğüme kadar) devam edebilir. Ancak küme iki düğüme geçtikten sonra, şu şekilde çalışma riski vardır: 
+Teknik olarak, üç düğümlü bir küme, çekirdek kaynağı olmadan tek bir düğüm kaybını (iki düğüme kadar) devam edebilir. Ancak küme iki düğüme geçtikten sonra, bir düğüm kaybı veya bir bölünmüş beyinme senaryosunu engellemek için bir iletişim hatası durumunda kümelenmiş kaynakların çevrimdışı duruma gelmesi riski vardır.
 
-- **Boş bölüm (Split beyde** Böl): sunucu, NIC veya anahtar sorunu nedeniyle küme düğümleri ağ üzerinde ayrılmaya neden olur. 
-- **Bölüm (amnean** ): bir düğüm kümeye katılır veya yeniden katılır ve küme grubunun sahipliğini veya bir küme rolünü uygun şekilde talep etmeye çalışır. 
-
-Çekirdek kaynağı, kümeyi bu sorunlardan biriyle korur. 
+Çekirdek kaynağı yapılandırmak, kümenin çevrimiçi olarak yalnızca bir düğüm çevrimiçi olarak devam etmesine izin verir.
 
 Aşağıdaki tabloda, bir Azure VM ile kullanılması önerilen sırada kullanılabilir olan çekirdek seçenekleri, disk tanığı tercih edilen seçim olarak listelenmektedir: 
 
 
 ||[Disk tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dosya paylaşımı tanığı](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Desteklenen işletim sistemi**| Tümü |Windows Server 2016 +| Windows Server 2012 +|
+|**Desteklenen işletim sistemi**| Tümü |Windows Server 2016 +| Tümü|
 
 
 
 
 ### <a name="disk-witness"></a>Disk tanığı
 
-Disk tanığı, küme kullanılabilir depolama grubundaki küçük bir kümelenmiş disktir. Bu disk yüksek oranda kullanılabilir ve düğümler arasında yük devredebilirler. Küme veritabanının bir kopyasını içerir ve genellikle 1 GB 'den daha az olan bir varsayılan boyuta sahiptir. Disk tanığı, bulut tanığı ve dosya paylaşma tanığının aksine, bir Azure VM için tercih edilen çekirdek seçenektir. 
+Disk tanığı, küme kullanılabilir depolama grubundaki küçük bir kümelenmiş disktir. Bu disk yüksek oranda kullanılabilir ve düğümler arasında yük devredebilirler. Küme veritabanının bir kopyasını içerir ve genellikle 1 GB 'den daha az olan bir varsayılan boyuta sahiptir. Disk tanığı, Azure Paylaşılan diskleri (veya paylaşılan SCSI, Iscsı veya Fiber Kanal SAN gibi paylaşılan disk çözümlerini) kullanan herhangi bir küme için tercih edilen çekirdek seçenektir.  Kümelenmiş paylaşılan birim bir disk tanığı olarak kullanılamaz.
 
 Disk tanığı olarak bir Azure Paylaşılan diski yapılandırın. 
 
@@ -95,8 +92,8 @@ Aşağıdaki tabloda HADR bağlantısı Supportability karşılaştırılır:
 
 | |**Sanal Ağ Adı (VNN)**  |**Dağıtılmış Ağ Adı (DNN)**  |
 |---------|---------|---------|
-|**En düşük işletim sistemi sürümü**| Windows Server 2012 | Windows Server 2016|
-|**En düşük SQL Server sürümü** |SQL Server 2012 |SQL Server 2019 CU2 UYGULAMAZSANıZ|
+|**En düşük işletim sistemi sürümü**| Tümü | Tümü |
+|**En düşük SQL Server sürümü** |Tümü |SQL Server 2019 CU2 UYGULAMAZSANıZ|
 |**Desteklenen HADR çözümü** | Yük devretme kümesi örneği <br/> Kullanılabilirlik grubu | Yük devretme kümesi örneği|
 
 
@@ -108,9 +105,9 @@ Yük dengeleyiciyi kullanırken hafif bir yük devretme gecikmesi vardır, çün
 
 Başlamak için, [FCI için Azure Load Balancer yapılandırmayı](hadr-vnn-azure-load-balancer-configure.md)öğrenin. 
 
-**Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
-**Desteklenen SQL sürümü**: SQL Server 2012 ve üzeri   
-**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu 
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü   
+**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ### <a name="distributed-network-name-dnn"></a>Dağıtılmış Ağ Adı (DNN)
@@ -138,9 +135,10 @@ Başlamak için bir [FCI için DNN kaynağını yapılandırmayı](hadr-distribu
 FCı veya kullanılabilirlik gruplarıyla çalışırken ve Azure sanal makinelerinde SQL Server aşağıdaki sınırlamaları göz önünde bulundurun. 
 
 ### <a name="msdtc"></a>MSDTC 
-Azure sanal makineleri, Windows Server 2019 üzerinde, kümelenmiş paylaşılan birimler (CSV) ve [Azure Standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
 
-Azure sanal makinelerinde, Windows Server 2016 veya öncesi için MSDTC desteklenmez çünkü:
+Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
+
+Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 
 - Kümelenmiş MSDTC kaynağı, paylaşılan depolama alanı kullanacak şekilde yapılandırılamaz. Windows Server 2016 ' de, bir MSDTC kaynağı oluşturursanız, depolama alanı kullanılabilir olsa bile, kullanılabilir bir paylaşılan depolama alanı göstermez. Bu sorun Windows Server 2019 ' de düzeltildi.
 - Temel yük dengeleyici RPC bağlantı noktalarını işlemez.

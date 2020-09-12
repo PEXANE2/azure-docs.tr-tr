@@ -4,12 +4,12 @@ description: Azure Container Instances içindeki kapsayıcı grupları hakkında
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583824"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612406"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı grupları
 
@@ -85,7 +85,7 @@ Bir kapsayıcı grubuna bağlamak için dış birimler belirtebilirsiniz. Destek
 
 Bu birimleri bir gruptaki tek kapsayıcılar içindeki belirli yollarla eşleyebilirsiniz. 
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 Çok Kapsayıcılı gruplar, tek bir işlevsel görevi az sayıda kapsayıcı görüntülerine bölmek istediğiniz durumlarda faydalıdır. Bu görüntüler daha sonra farklı takımlar tarafından teslim edilebilir ve ayrı kaynak gereksinimlerine sahip olabilir.
 
@@ -108,7 +108,7 @@ Azure Resource Manager şablonuyla çok kapsayıcılı bir kapsayıcı grubunu d
 
 <!-- LINKS - External -->
 [dcos-pod]: https://dcos.io/docs/1.10/deploying-services/pods/
-[kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/pod/
+[kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/
 
 <!-- LINKS - Internal -->
 [resource-manager template]: container-instances-multi-container-group.md

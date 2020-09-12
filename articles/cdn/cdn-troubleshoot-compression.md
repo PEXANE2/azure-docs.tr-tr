@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192517"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433679"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN dosya sıkıştırma sorunlarını giderme
 Bu makale, [CDN dosya sıkıştırması](cdn-improve-performance.md)ile ilgili sorunları gidermenize yardımcı olur.
@@ -111,8 +111,8 @@ Tarayıcınızın geliştirici araçlarını kullanarak, dosyanın istenen bölg
 
 Sıkıştırma için uygun olması için bir dosyanın aşağıdaki boyut gereksinimlerini karşılaması gerekir:
 
-* 128 bayttan büyük.
-* 1 MB 'tan küçük.
+* 128 bayttan büyük (Content-Length: 128)
+* 3 MB 'tan küçük
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Kaynak sunucudaki isteği bir **Via** üstbilgisi için denetleyin
 **VIA** http üstbilgisi, isteğin bir ara sunucu tarafından geçtiğini Web sunucusuna gösterir.  Microsoft IIS Web sunucuları varsayılan olarak istek bir **Via** üstbilgisi içerdiğinde yanıtları sıkıştırmaz.  Bu davranışı geçersiz kılmak için aşağıdakileri yapın:

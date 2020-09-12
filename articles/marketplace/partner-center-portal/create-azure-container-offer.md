@@ -3,16 +3,16 @@ title: Azure Container teklifi oluşturma-Azure Marketi
 description: Azure Marketi 'ne bir kapsayıcı teklifi oluşturmayı ve yayımlamayı öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815649"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649275"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Market'te Azure kapsayıcısı teklifi oluşturma
 
@@ -50,7 +50,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -151,7 +151,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

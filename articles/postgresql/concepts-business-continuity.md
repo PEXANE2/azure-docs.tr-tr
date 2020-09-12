@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: b14eba63d848b5f583e16b39f3ade6bd7e7ba83f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031209"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612026"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -19,7 +19,7 @@ Bu genel bakışta, PostgreSQL için Azure veritabanı 'nın iş sürekliliği v
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>İş sürekliliği sağlamak için kullanabileceğiniz özellikler
 
-PostgreSQL için Azure veritabanı otomatik yedeklemeleri ve kullanıcıların coğrafi geri yükleme başlatma özelliğini içeren iş sürekliliği özellikleri sağlar. Her birinin tahmini kurtarma süresi (ERT) ve olası veri kaybı için farklı özellikleri vardır. Bu seçenekleri anladıktan sonra aralarında seçim yapabilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
+PostgreSQL için Azure veritabanı otomatik yedeklemeleri ve kullanıcıların coğrafi geri yükleme başlatma özelliğini içeren iş sürekliliği özellikleri sağlar. Her birinin tahmini kurtarma süresi (ERT) ve olası veri kaybı için farklı özellikleri vardır. Tahmini kurtarma süresi (ERT), veritabanının geri yükleme/yük devretme isteğinden tam olarak işlevsel olması için tahmini bir süredir. Bu seçenekleri anladıktan sonra aralarında seçim yapabilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
 
 Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaştırılır:
 
@@ -45,7 +45,7 @@ Sunucunuzun bir kopyasını zaman içinde bilinen iyi bir noktada oluşturmak i�
 
 Bir seçenek, veri merkezi kesintisi olduğunda sunucunuzun çevrimiçi duruma gelmesini bekleyeyöneliktir. Bu, örneğin bir geliştirme ortamı gibi belirli bir süre için sunucunun çevrimdışı olmasını sağlayan uygulamalar için geçerlidir. Bir veri merkezinde kesinti olduğunda, kesintiden en son ne kadar süre sürdüğünü bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süredir ihtiyacınız yoksa işe yarar.
 
-## <a name="geo-restore"></a>Coğrafi Geri Yükleme
+## <a name="geo-restore"></a>Coğrafi geri yükleme
 
 Coğrafi geri yükleme özelliği, coğrafi olarak yedekli yedeklemeleri kullanarak sunucuyu geri yükler. Yedeklemeler, sunucunuzun [eşleştirilmiş bölgesinde](../best-practices-availability-paired-regions.md)barındırılır. Bu yedeklerden diğer bölgelere geri yükleme yapabilirsiniz. Coğrafi geri yükleme, yedeklemelerdeki verilerle yeni bir sunucu oluşturur. [Yedekleme ve geri yükleme kavramları makalesindeki](concepts-backup.md)coğrafi geri yükleme hakkında daha fazla bilgi edinin.
 

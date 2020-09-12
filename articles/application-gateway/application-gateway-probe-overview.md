@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: b613e89fbe29074160d83a96d2cd13505244994a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186732"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649067"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway sistem durumu izlemeye genel bakış
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 | --- | --- |
 | Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarları 'ndaki araştırmayı tanımlamak ve buna başvurmak için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Bu, ilişkilendirildiği arka uç HTTP ayarlarında tanımlanan protokolle eşleşmelidir|
-| Host |Araştırmanın gönderileceği ana bilgisayar adı. V1 SKU 'sunda bu değer yalnızca araştırma isteğinin ana bilgisayar üst bilgisi için kullanılacaktır. V2 SKU 'sunda, hem ana bilgisayar üstbilgisi hem de SNı olarak kullanılır |
+| Konak |Araştırmanın gönderileceği ana bilgisayar adı. V1 SKU 'sunda bu değer yalnızca araştırma isteğinin ana bilgisayar üst bilgisi için kullanılacaktır. V2 SKU 'sunda, hem ana bilgisayar üstbilgisi hem de SNı olarak kullanılır |
 | Yol |Araştırmanın göreli yolu. Geçerli bir yol '/' ile başlar |
 | Bağlantı noktası |Tanımlanmışsa, bu hedef bağlantı noktası olarak kullanılır. Aksi halde, ilişkili olduğu HTTP ayarlarıyla aynı bağlantı noktasını kullanır. Bu özellik yalnızca v2 SKU 'sunda kullanılabilir
 | Aralık |Saniye cinsinden yoklama aralığı. Bu değer, art arda iki yoklamalar arasındaki zaman aralığıdır |
@@ -98,7 +98,7 @@ Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında ge
 
 Ayrıca, giden Internet bağlantısı engellenmeyebilir ve **AzureLoadBalancer** etiketinden gelen trafiğe izin verilmelidir.
 
-Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
+Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-infrastructure.md#network-security-groups).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Application Gateway sistem durumu izleme hakkında bilgi aldıktan sonra, PowerShell ve Azure Resource Manager dağıtım modelini kullanarak Azure portal veya özel bir [sistem durumu araştırmasına](application-gateway-create-probe-ps.md) yönelik [özel bir sistem durumu araştırması](application-gateway-create-probe-portal.md) yapılandırabilirsiniz.

@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782762"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649604"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu kılavuzda, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
+Bu kılavuzda, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
 
 Otomatik makine öğrenimi denemeleri örneklerini görüntülemek için bkz. [öğretici: bir sınıflandırma modelini otomatik makine öğrenimi Ile eğitme](tutorial-auto-train-models.md) veya [bulutta otomatik makine öğrenimi Ile modeller eğitme](how-to-auto-train-remote.md).
 
@@ -31,13 +31,13 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 * Veri kaynağı, biçimler ve veri getirme
 * İşlem hedefini seçin: yerel veya uzak
 * Otomatik makine öğrenimi deneme ayarları
-* Otomatik makine öğrenimi denemesinin çalıştırın
+* Otomatik makine öğrenmesi denemesi çalıştırma
 * Model ölçümlerini keşfet
 * Modeli kaydetme ve dağıtma
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -46,7 +46,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
     SDK 'yı yüklemek için şunlardan birini yapabilirsiniz 
     * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği nedir?](concept-compute-instance.md#managing-a-compute-instance) . 
 
-    * [SDK 'yı kendiniz yüklemelisiniz](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
+    * [SDK 'yı kendiniz yüklemelisiniz](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçme
 
@@ -69,7 +69,7 @@ Eğitim verileri için gereksinimler:
 - Verilerin tablolu biçimde olması gerekir.
 - Tahmin edilecek değer, hedef sütun, verilerde olmalıdır.
 
-**Uzak denemeleri için**eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. Oto & lt ml, uzak bir işlem üzerinde çalışırken yalnızca [Azure Machine Learning Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) kabul eder. 
+**Uzak denemeleri için**eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. Oto & lt ml, uzak bir işlem üzerinde çalışırken yalnızca [Azure Machine Learning Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) kabul eder. 
 
 Azure Machine Learning veri kümeleri işlevleri şu şekilde sunar:
 
@@ -201,7 +201,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|

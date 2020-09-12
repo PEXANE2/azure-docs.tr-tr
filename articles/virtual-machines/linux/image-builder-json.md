@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869210"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378381"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -142,7 +142,7 @@ Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullana
 
 ## <a name="properties-source"></a>Özellikler: kaynak
 
-Image Builder Şu anda yalnızca HyperV oluşturma 1 görüntülerini ve VM 'Leri destekliyor, `source` bölüm, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
+`source`Bölümü, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir. Image Builder Şu anda yalnızca yerel olarak Hyper-V oluşturma (Gen1) 1 görüntülerini Azure Paylaşılan görüntü Galerisi 'ne (SıG) veya yönetilen görüntüye oluşturmayı destekler. Gen2 görüntüleri oluşturmak istiyorsanız, bir kaynak Gen2 görüntüsü kullanmanız ve VHD 'ye dağıtmanız gerekir. Bundan sonra, VHD 'den yönetilen bir görüntü oluşturmanız ve bunu bir Gen2 görüntüsü olarak SıG 'a eklemeniz gerekecektir.
 
 API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerektirir; şu anda üç tür vardır:
 - Platformımage-kaynak görüntünün Market görüntüsü olduğunu gösterdi.
@@ -571,7 +571,7 @@ Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tan�
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

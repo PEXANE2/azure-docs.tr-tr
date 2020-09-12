@@ -8,16 +8,16 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855943"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564911"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
-Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Sı .NET için geçerlidir (C#). .NET SDK ve genel olarak API 'Ler hakkında bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi veri düzlemi SDK 'sını tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilecektir.
+Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Ları .NET (C#) ve JavaScript içindir. Bu SDK 'Lar hakkında genel bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi veri düzlemi SDK 'sını tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilecektir.
 
 >[!NOTE]
 > Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, veri düzlemi yerine [Denetim düzlemi Swagger (Openapı) dosyasını](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) kullanarak bu makaledeki adımları izleyin.
@@ -57,7 +57,7 @@ Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları da
 
 Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
 
-Adımlar şunlardır:
+Adımlar aşağıdaki gibidir:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
 2. Proje adı olarak *Adtapi* kullanın

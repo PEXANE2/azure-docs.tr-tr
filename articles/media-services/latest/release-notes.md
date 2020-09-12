@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267519"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425645"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -38,13 +38,25 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+
+## <a name="august-2020"></a>Ağustos 2020
+
+### <a name="dynamic-encryption"></a>Dinamik şifreleme
+Eski PlayReady korumalı birlikte çalışabilen dosya biçimi (pff 1,1) şifrelemesi için destek artık dinamik Paketçde kullanılabilir. Bu, Microsoft tarafından yayımlanan Common Encryption standardının (CENC) erken taslaklarını uygulayan Samsung ve LG 'den eski akıllı TV kümelerine yönelik destek sağlar.  PFF 1,1 biçimi, daha önce Silverlight istemci kitaplığı tarafından desteklenen şifreleme biçimi olarak da bilinir. Bugün, bu şifreleme biçimi için yalnızca kullanım örneği senaryosu, yalnızca pff 1,1 şifrelemesiyle Kesintisiz Akış destekleyen bazı bölgelerde çok sayıda akıllı TV 'nin bulunduğu eski akıllı TV pazarını hedeflemelidir. 
+
+Yeni pff 1,1 şifreleme desteğini kullanmak için, akış bulucunun URL yolundaki şifreleme değerini ' pff ' olarak değiştirin. Daha fazla ayrıntı için [Content Protection genel bakış](content-protection-overview.md) bölümüne bakın.
+Örneğin: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PFF 1,1 desteği, Common Encryption erken "Silverlight" sürümünü uygulayan akıllı TV (Samsung, LG) için geriye dönük olarak uyumlu bir çözüm olarak sunulmaktadır. Yalnızca PlayReady şifrelemesi 'nin pff 1,1 sürümünü destekleyen 2009-2015 arasında sevk edilen eski Samsung veya LG akıllı televizyonlara yönelik destek için gereken pff biçiminin kullanılması önerilir. 
+
 ## <a name="july-2020"></a>Temmuz 2020
 
 ### <a name="live-transcriptions"></a>Canlı döküm
 
 Canlı döküm artık 19 dili ve 8 bölgeyi destekliyor.
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services ve Azure AD ile içeriğinizi koruma
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services ve Azure AD ile içeriğinizi koruma
 
 [Azure ad kullanarak uçtan uca içerik koruması](./azure-ad-content-protection.md)adlı bir öğretici yayımladık.
 
@@ -207,7 +219,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans iyileştirmeleri
+### <a name="performance-improvements"></a>Performans geliştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
@@ -398,6 +410,6 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel Bakış](media-services-overview.md)
+- [Genel bakış](media-services-overview.md)
 - [Media Services v3 belge güncelleştirmeleri](docs-release-notes.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

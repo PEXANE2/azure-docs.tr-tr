@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837219"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433628"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu için sanal ağ hizmet uç noktalarını ve kurallarını kullanın
 
@@ -106,7 +106,7 @@ PostgreSQL için Azure veritabanı 'nda, sanal ağ kuralları özelliği aşağ�
 
 - Sanal ağ kuralları yalnızca Azure Resource Manager sanal ağlar için geçerlidir; [klasik dağıtım modeli][arm-deployment-model-568f] ağlarına değil.
 
-- **Microsoft. SQL** Service etiketi kullanılarak PostgreSQL Için Azure veritabanı 'na sanal ağ hizmeti uç noktaları açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL Için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
+- **Microsoft. SQL** Service etiketi kullanılarak PostgreSQL Için Azure veritabanı 'na sanal ağ hizmeti uç noktaları açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL Için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eskı adıyla SQL veri ambarı).
 
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 

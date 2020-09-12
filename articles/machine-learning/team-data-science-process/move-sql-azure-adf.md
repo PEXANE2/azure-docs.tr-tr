@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092431"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440037"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
 
@@ -47,7 +47,7 @@ ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikle
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
 Bu öğreticide şunları kabul edersiniz:
 
 * Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
@@ -60,12 +60,12 @@ Bu öğreticide şunları kabul edersiniz:
 >
 >
 
-## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Verileri SQL Server örneğine yükleme
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> Verileri SQL Server örneğine yükleme
 Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC TAXI veri kümesi, Azure Blob Storage [NYC TAXI verilerinde](https://www.andresmh.com/nyctaxitrips/)bu gönderde belirtildiği gibi kullanılabilir. Verilerin iki dosyası vardır, seyahat ayrıntılarını içeren trip_data.csv dosyası ve her seyahat için ödenen tarifeli havayolu ayrıntılarını içeren trip_far.csv dosyası. Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 
 Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Data Factory oluşturma
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Azure Data Factory oluşturma
 Yeni bir Azure Data Factory ve [Azure Portal](https://portal.azure.com/) kaynak grubu oluşturma yönergeleri [Azure Data Factory oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Yeni ADF örneğini *adfdsp* olarak adlandırın ve kaynak grubunun adını *adfdsprg*olarak adlandırın.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime yükleyip yapılandırın
@@ -232,7 +232,7 @@ Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanım
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
+        "description" : "This pipeline has two activities: the first one copies data from SQL Server to Azure Blob, and the second one copies from Azure Blob to Azure Database Table",
         "activities":
         [
             {

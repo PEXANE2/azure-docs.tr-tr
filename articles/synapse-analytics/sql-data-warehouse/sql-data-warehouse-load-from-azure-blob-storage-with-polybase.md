@@ -1,5 +1,5 @@
 ---
-title: Contoso perakende verilerini bir Synapse SQL veri ambarına yükleme
+title: Contoso perakende verilerini SYNAPSE SQL 'e yükleme
 description: Contoso perakende verilerinden SYNAPSE SQL 'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanın.
 services: synapse-analytics
 author: kevinvngo
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213321"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461706"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso perakende verilerini SYNAPSE SQL 'e yükleme 
 
-Bu öğreticide, contoso perakende verilerinden bir Synapse SQL veri ambarına iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğreneceksiniz.
+Bu öğreticide, contoso perakende verilerinden SYNAPSE SQL 'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğreneceksiniz.
 
 Bu öğreticide şunları yapmanız gerekir:
 
@@ -30,11 +30,11 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiyi çalıştırmak için, SYNAPSE SQL veri ambarı zaten olan bir Azure hesabınızın olması gerekir. Sağlanmış bir veri ambarınız yoksa, bkz. [veri ambarı oluşturma ve sunucu düzeyinde güvenlik duvarı kuralı ayarlama](create-data-warehouse-portal.md).
+Bu öğreticiyi çalıştırmak için, zaten bir Synapse SQL 'e sahip bir Azure hesabınızın olması gerekir. Sağlanmış bir veri ambarınız yoksa, bkz. [veri ambarı oluşturma ve sunucu düzeyinde güvenlik duvarı kuralı ayarlama](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Veri kaynağını yapılandırma
 
-PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesnelerini kullanır. Dış nesne tanımları, SYNAPSE SQL veri ambarında depolanır. Veriler dışarıdan depolanır.
+PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesnelerini kullanır. Dış nesne tanımları SYNAPSE SQL 'de depolanır. Veriler dışarıdan depolanır.
 
 ## <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Columnstore sıkıştırmasını iyileştirme
 
-Varsayılan olarak, SYNAPSE SQL veri ambarı tabloyu kümelenmiş bir columnstore dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği farklı nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
+Varsayılan olarak, SYNAPSE SQL tabloyu kümelenmiş bir columnstore dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği farklı nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
 
 Bir yüklemeden sonra sorgu performansını ve columnstore sıkıştırmasını iyileştirmek için, columnstore dizinini tüm satırları sıkıştırmak üzere zorlamak için tabloyu yeniden derleyin.
 
@@ -340,7 +340,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 
 ## <a name="achievement-unlocked"></a>Başarı kilidi açıldı!
 
-Genel verileri veri ambarınıza başarıyla yüklesahipsiniz. Harika iş!
+Genel verileri veri ambarınıza başarıyla yüklesahipsiniz. Harika iş çıkardınız!
 
 Artık verilerinizi araştırmak için tabloları sorgulamaya başlayabilirsiniz. Her marka için toplam satışı öğrenmek için aşağıdaki sorguyu çalıştırın:
 

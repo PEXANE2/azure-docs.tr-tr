@@ -2,18 +2,18 @@
 title: Yük devretme VM 'si için ağ yapılandırmasını özelleştirme | Microsoft Docs
 description: Azure Site Recovery kullanarak Azure VM 'lerinin çoğaltmasında bir yük devretme sanal makinesi için ağ yapılandırmalarının özelleştirilmesine genel bir bakış sağlar.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135825"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426376"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
@@ -31,7 +31,7 @@ Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel k
 - [Genel IP](../virtual-network/public-ip-addresses.md)
 - Hem alt ağ hem de NIC için [ağ güvenlik grubu](../virtual-network/manage-network-security-group.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Kurtarma tarafı yapılandırmalarının önceden planlantığınızdan emin olun.
 - Ağ kaynaklarını önceden oluşturun. Azure Site Recovery hizmetin bu ayarları kabul edebilmesi ve yük devretme VM 'sinin bu ayarlara uyduğundan emin olması için bunu bir giriş olarak sağlayın.

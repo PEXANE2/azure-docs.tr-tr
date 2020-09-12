@@ -3,12 +3,12 @@ title: Sorgu dilini anlama
 description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerini, işleçlerini ve Azure Kaynak Graf ile kullanılabilir işlevleri açıklar.
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798559"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426410"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -26,12 +26,13 @@ Bu makalede kaynak Graph tarafından desteklenen dil bileşenleri ele alınmakta
 
 Kaynak Grafiği Azure Resource Manager kaynak türlerini ve bunların özelliklerini depolayan veriler için birkaç tablo sağlar. Bu tablolar, `join` `union` ilişkili kaynak türlerinden özellikleri almak için veya işleçleriyle birlikte kullanılabilir. Kaynak grafiğinde kullanılabilen tabloların listesi aşağıda verilmiştir:
 
-|Kaynak grafik tabloları |Açıklama |
+|Kaynak grafik tabloları |Description |
 |---|---|
 |Kaynaklar |Sorguda tanımlanmazsa varsayılan tablo. Çoğu Kaynak Yöneticisi kaynak türü ve özelliği burada bulunur. |
 |ResourceContainers |Abonelik (Önizleme-- `Microsoft.Resources/subscriptions` ) ve kaynak grubu ( `Microsoft.Resources/subscriptions/resourcegroups` ) kaynak türleri ve verileri içerir. |
 |Danışmanlaştırın kaynakları |İle _ilgili_ kaynakları içerir `Microsoft.Advisor` . |
 |AlertsManagementResources |İle _ilgili_ kaynakları içerir `Microsoft.AlertsManagement` . |
+|GuestConfigurationResources |İle _ilgili_ kaynakları içerir `Microsoft.GuestConfiguration` . |
 |HealthResources |İle _ilgili_ kaynakları içerir `Microsoft.ResourceHealth` . |
 |MaintenanceResources |İle _ilgili_ kaynakları içerir `Microsoft.Maintenance` . |
 |SecurityResources |İle _ilgili_ kaynakları içerir `Microsoft.Security` . |
@@ -120,7 +121,7 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 
 |KQL |Kaynak Grafiği örnek sorgusu |Notlar |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
+|[biriktirme](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
 |[ayrı](/azure/kusto/query/distinctoperator) |[Belirli bir diğer ad için farklı değerleri göster](../samples/starter.md#distinct-alias-values) | |
 |[genişletmeyi](/azure/kusto/query/extendoperator) |[Sanal makineleri işletim sistemi türüne göre sayma](../samples/starter.md#count-os) | |
 |[ayrılma](/azure/kusto/query/joinoperator) |[Abonelik adı olan Anahtar Kasası](../samples/advanced.md#join) |Birleşim türleri desteklenir: [ınnerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [soltouter](/azure/kusto/query/joinoperator#left-outer-join). `join`Tek bir sorgudaki 3 sınırı. Yayın katılımı gibi özel JOIN stratejilerine izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
@@ -135,14 +136,14 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 |[take](/azure/kusto/query/takeoperator) |[Tüm genel IP adreslerini listele](../samples/starter.md#list-publicip) |Eş anlamlısı `limit` |
 |[top](/azure/kusto/query/topoperator) |[Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster](../samples/starter.md#show-sorted) | |
 |[birleşim](/azure/kusto/query/unionoperator) |[İki sorgudan alınan sonuçları tek bir sonuç halinde birleştirin](../samples/advanced.md#unionresults) |Tek tablo izin verildi: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tablosu_. `union`Tek bir sorgudaki 3 Tag sınırı. `union`Bacak tablolarının benzer çözümüne izin verilmez. Tek bir tablo içinde veya _kaynaklar_ Ile _resourcecontainers_ tabloları arasında kullanılabilir. |
-|[konum](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
+|[where](/azure/kusto/query/whereoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>Sorgu kapsamı
 
 Kaynakları bir sorgu tarafından döndürülen aboneliklerin kapsamı, kaynak grafiğine erişme yöntemine bağlıdır. Azure CLı ve Azure PowerShell yetkili kullanıcının bağlamına göre isteğe dahil edilecek Aboneliklerin listesini doldurun. Abonelikler listesi, sırasıyla **abonelikler** ve **abonelik** parametreleriyle birlikte el ile tanımlanabilir.
 REST API ve diğer tüm SDK 'larda, kaynak dahil edilecek aboneliklerin listesi, isteğin bir parçası olarak açıkça tanımlanmalıdır.
 
-Bir **Önizleme**olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Bir yönetim grubu veya abonelik listesi tanımlanmamışsa, sorgu kapsamı kimliği doğrulanmış kullanıcının erişebileceği tüm kaynaklardır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır. Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId` , ile aynı anda kullanılamaz `subscriptions` .
+Bir **Önizleme**olarak REST API sürüm, `2020-04-01-preview` sorgunun kapsamını bir [yönetim grubuna](../../management-groups/overview.md)eklemek için bir özellik ekler. Bu önizleme API 'SI de abonelik özelliğini isteğe bağlı hale getirir. Bir yönetim grubu veya abonelik listesi tanımlanmamışsa, sorgu kapsamı, kimliği doğrulanmış kullanıcının erişebileceği [Azure Use](../../../lighthouse/concepts/azure-delegated-resource-management.md) Temsilcili kaynaklar dahil olmak üzere tüm kaynaklarıdır. Yeni `managementGroupId` özellik, yönetim grubunun adından farklı olan yönetim grubu kimliğini alır. Belirtildiğinde `managementGroupId` , belirtilen yönetim grubu hiyerarşisinde veya altında ilk 5000 aboneliklerden kaynaklar dahil edilir. `managementGroupId` , ile aynı anda kullanılamaz `subscriptions` .
 
 Örnek: ' myMG ' KIMLIĞIYLE ' My Management Group ' adlı Yönetim grubu hiyerarşisinde tüm kaynakları sorgulayın.
 

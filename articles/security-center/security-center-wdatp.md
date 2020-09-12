@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089711"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569093"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
 Azure Güvenlik Merkezi, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlamak için [Microsoft Defender Gelişmiş tehdit koruması (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) ile tümleşir.
+
+
+## <a name="availability"></a>Kullanılabilirlik
+
+|Görünüş|Ayrıntılar|
+|----|:----|
+|Yayın durumu:|**Genel kullanılabilirlik**|
+|Fiyat|Standart katmanı|
+|Desteklenen makineler:|![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
+|Gerekli roller ve izinler:|Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![No](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Güvenlik Merkezi 'ndeki Microsoft Defender ATP özellikleri
 
@@ -55,7 +68,7 @@ Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir M
 Yapılandırıldıktan sonra, verilerinizin depolandığı konumu değiştiremezsiniz. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
 
 
-## <a name="onboarding-servers-to-security-center"></a>Sunucuları Güvenlik Merkezi'ne ekleme 
+## <a name="onboard-servers-to-security-center"></a>Sunucuları güvenlik merkezi 'ne ekleme 
 
 Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne git** ' e tıklayarak sunucuları MICROSOFT Defender ATP sunucu ekleme işleminden ekleyin.
 

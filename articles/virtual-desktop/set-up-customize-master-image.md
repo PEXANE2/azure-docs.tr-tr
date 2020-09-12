@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009520"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433713"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -93,7 +93,7 @@ Yerel grup ilkesi aracılığıyla otomatik güncelleştirmeleri devre dışı b
 
 Otomatik güncelleştirmeleri devre dışı bırakmak için komut isteminde aşağıdaki komutu da çalıştırabilirsiniz.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
@@ -101,7 +101,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 Windows 10 bilgisayarları için bir başlangıç düzeni belirtmek üzere bu komutu çalıştırın.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
@@ -119,7 +119,7 @@ Saat dilimlerini yeniden yönlendirmek için:
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
@@ -132,7 +132,7 @@ Windows 10 Enterprise veya Windows 10 Enterprise çoklu oturum kullanan Windows 
 
 Ayrıca, aşağıdaki komutu çalıştırarak ayarı kayıt defteriyle değiştirebilirsiniz:
 
-```batch
+```cmd
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
@@ -153,19 +153,19 @@ Bu bölüm, uygulama ve işletim sistemi yapılandırmasını ele alır. Bu böl
 
 Windows 10 Enterprise çoklu oturumunda Telemetri verilerinin geri bildirim hub 'ı koleksiyonu için şu komutu çalıştırın:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 Watson kilitlenmelerini düzeltmek için aşağıdaki komutu çalıştırın:
 
-```batch
+```cmd
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
 5 k çözünürlük desteğini onarmak için kayıt defteri düzenleyicisine aşağıdaki komutları girin. Yan yana yığını etkinleştirebilmeniz için önce komutları çalıştırmanız gerekir.
 
-```batch
+```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f

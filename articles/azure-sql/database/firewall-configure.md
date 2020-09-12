@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ef46a0040ba767197028d170372a4a9edca9feee
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085115"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442721"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Azure SQL veritabanı veya *te yapılandırılmış MySQLServer*adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net*adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e (eskıden Azure SQL veri ambarı) başvurmak için kullanılır.
+Azure SQL veritabanı veya *te yapılandırılmış MySQLServer*adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net*adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) başvurmak için kullanılır.
 
 > [!IMPORTANT]
 > Bu *Makale,* *Azure SQL yönetilen örneği*için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](../managed-instance/connect-application-instance.md).
@@ -59,7 +59,7 @@ Mümkün olduğunda veritabanı düzeyinde IP güvenlik duvarı kuralları kulla
 > [!NOTE]
 > İş sürekliliği bağlamında taşınabilir veritabanları hakkında bilgi edinmek için bkz. [Olağanüstü durum kurtarma için kimlik doğrulama gereksinimleri](active-geo-replication-security-configure.md).
 
-## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Sunucu düzeyinde ve veritabanı düzeyinde IP güvenlik duvarı kurallarına karşılık
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Sunucu düzeyi ile veritabanı düzeyi IP güvenlik duvarı kurallarını karşılaştırma
 
 *Tek bir veritabanının kullanıcıları başka bir veritabanından tamamen yalıtılmalıdır mi?*
 
@@ -237,7 +237,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Güvenlik duvarı kurallarını Sil](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kurallarını kaldırır |
 | [Güvenlik duvarı kuralları al](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Sunucu | Sunucu düzeyi IP güvenlik duvarı kurallarını alır |
 
-## <a name="troubleshoot-the-database-firewall"></a>Veritabanı güvenlik duvarında sorun giderme
+## <a name="troubleshoot-the-database-firewall"></a>Veritabanı güvenlik duvarı sorunlarını giderme
 
 Azure SQL veritabanı erişimi, beklendiği gibi davranmazsa aşağıdaki noktaları göz önünde bulundurun.
 

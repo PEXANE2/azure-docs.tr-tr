@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079668"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425543"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -43,7 +43,7 @@ Kaynak oluşturma veya güncelleştirme istekleri önce Azure Ilkesi tarafından
 
 Kaynak sağlayıcı Kaynak Yöneticisi modundaki bir istek için bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eylemi gerekip gerekmediğini belirlemeyi değerlendirir.
 
-## <a name="append"></a>Ekle
+## <a name="append"></a>Ekleme
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
@@ -156,7 +156,8 @@ Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kay
   - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` . Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
+  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]` ya da `[field('fullName')]` bir alt kaynak için olmalıdır.
+    Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -277,7 +278,7 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
   - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve olmalıdır `[field('name')]` .
+  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]` ya da `[field('fullName')]` bir alt kaynak için olmalıdır.
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -568,7 +569,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|İşlem |Açıklama |
+|İşlem |Description |
 |-|-|
 |addOrReplace |Özellik veya etiket farklı bir değerle zaten var olsa bile, tanımlı özelliği veya etiketi ve değeri kaynağa ekler. |
 |Ekle |Kaynağa tanımlı özelliği veya etiketi ve değeri ekler. |

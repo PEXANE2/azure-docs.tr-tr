@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461710"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462369"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -100,12 +100,12 @@ Aşağıdaki tabloda, Ilerleme tehditleri listelenmekte ve Azure özelliklerini 
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu azaltmaları |
 | --- | --- | --- |
-| Kandırma | Kimlik Doğrulaması | HTTPS bağlantıları gerektir. |
-| İzinsiz Değişiklik | Bütünlük | TLS/SSL sertifikalarını doğrulayın. |
-| Kar | Red olmayan | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
+| Spoofing (Kimlik Sahtekarlığı) | Kimlik Doğrulaması | HTTPS bağlantıları gerektir. |
+| Tampering (Kurcalama) | Bütünlük | TLS/SSL sertifikalarını doğrulayın. |
+| Repudiation (İnkar) | İnkar edilemez | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
 | Bilgilerin açığa çıkması | Gizlilik | Bekleyen hassas verileri [hizmet sertifikaları](/rest/api/appservice/certificates)kullanarak şifreleyin. |
 | Hizmet reddi | Kullanılabilirlik | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. |
-| Ayrıcalık yükselmesi | Yetkilendirme | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)kullanın. |
+| Ayrıcalık yükseltme | Yetkilendirme | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)kullanın. |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service geliştirin
 [Azure App Service](/azure/app-service/overview) , herhangi bir platform veya cihaz için Web ve mobil uygulamalar oluşturmanıza ve bulutta veya şirket içinde her yerden verilere bağlanmanıza olanak tanıyan bir PaaS sunumudur. App Service, daha önce Azure Web siteleri ve Azure Mobile Services olarak ayrı olarak sunulan Web ve mobil özellikleri içerir. Ayrıca iş süreçlerini otomatikleştirmek ve bulut API'leri barındırmak için yeni özellikler içerir. Tek bir tümleşik hizmet olarak, App Service Web, mobil ve tümleştirme senaryolarına zengin bir özellik kümesi sunar.
@@ -151,10 +151,10 @@ Belirsizlik testi, bu verileri ayrıştırmak ve tüketmek üzere program arabir
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure PaaS dağıtımının güvenlik avantajlarına ve bulut uygulamalarına yönelik en iyi güvenlik uygulamalarına odaklandık. Ardından, belirli Azure hizmetlerini kullanarak PaaS Web ve mobil çözümlerinizi güvenli hale getirmek için önerilen uygulamaları öğrenin. Azure App Service, Azure SQL veritabanı ve Azure SQL veri ambarı ve Azure Storage ile başlayacağız. Diğer Azure hizmetleri için Önerilen uygulamalarla ilgili makaleler kullanılabilir hale geldiğinde, bağlantılar aşağıdaki listede verilmiştir:
+Bu makalede, Azure PaaS dağıtımının güvenlik avantajlarına ve bulut uygulamalarına yönelik en iyi güvenlik uygulamalarına odaklandık. Ardından, belirli Azure hizmetlerini kullanarak PaaS Web ve mobil çözümlerinizi güvenli hale getirmek için önerilen uygulamaları öğrenin. Azure App Service, Azure SQL veritabanı ve Azure SYNAPSE Analytics ve Azure Storage ile başlayacağız. Diğer Azure hizmetleri için Önerilen uygulamalarla ilgili makaleler kullanılabilir hale geldiğinde, bağlantılar aşağıdaki listede verilmiştir:
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL veritabanı ve Azure SQL veri ambarı](paas-applications-using-sql.md)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics](paas-applications-using-sql.md)
 - [Azure Depolama](paas-applications-using-storage.md)
 - Redis için Azure Önbelleği
 - Azure Service Bus
@@ -166,4 +166,4 @@ Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve 
 
 Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
 * Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ilesecure@microsoft.com
+* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ile secure@microsoft.com

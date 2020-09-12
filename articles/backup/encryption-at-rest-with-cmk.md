@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022420"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378296"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -66,7 +66,7 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
     ![Kimlik ayarları](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' e tıklayın.
+1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' i seçin.
 
 1. Kasadaki sistem tarafından atanan yönetilen kimlik olan bir nesne KIMLIĞI oluşturulur.
 
@@ -82,13 +82,13 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
     ![Anahtar izinleri atama](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. **Sorumlu Seç** ' e gidin ve ad veya yönetilen kimlik ' i kullanarak arama kutusunda kasanızı arayın. Bir kez daha olduktan sonra, kasayı seçin ve bölmenin en altında bulunan **Seç** ' e tıklayın.
+1. **Sorumlu Seç** ' e gidin ve ad veya yönetilen kimlik ' i kullanarak arama kutusunda kasanızı arayın. Bir kez daha olduktan sonra kasayı seçin ve bölmenin en altında bulunan **Seç** ' i seçin.
 
     ![Sorumlu seçin](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. İşiniz bittiğinde yeni erişim ilkesini eklemek için **Ekle** ' ye tıklayın.
+1. İşiniz bittiğinde yeni erişim ilkesini eklemek için **Ekle** ' yi seçin.
 
-1. Azure Key Vault erişim ilkesinde yapılan değişiklikleri kaydetmek için **Kaydet** ' e tıklayın.
+1. Azure Key Vault erişim ilkesinde yapılan değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
 
@@ -148,7 +148,7 @@ Anahtarı atamak için:
 
     ![Şifreleme ayarları](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. **Şifreleme ayarları**altında **Güncelleştir** ' e tıklayın.
+1. **Şifreleme ayarları**altında **Güncelleştir** ' i seçin.
 
 1. Şifreleme ayarları bölmesinde, **kendi anahtarınızı kullan** ' ı seçin ve aşağıdaki yollarla anahtarı belirtmek için devam edin. **Kullanmak istediğiniz anahtarın etkin durumda olan bir RSA 2048 anahtarı olduğundan emin olun.**
 
@@ -160,7 +160,7 @@ Anahtarı atamak için:
 
         ![Anahtar kasasından anahtar seçin](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**’i seçin.
 
 1. **Şifreleme anahtarı güncelleştirmesinin Ilerlemesi izleniyor:** Kurtarma Hizmetleri kasasındaki **etkinlik günlüğünü** kullanarak anahtar atamasının ilerlemesini izleyebilirsiniz. Durum yakında **başarılı**olarak değişmelidir. Artık kasanız, belirtilen anahtara sahip tüm verileri KEK olarak şifreler.
 

@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4221ed6a927d0c589407dc38b5371ad8a65d2174
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ce052fa80d8aa0d30d1de7268b82e727c952cab1
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054400"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648196"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Derleme scikit-Azure Machine Learning uygun ölçekte modeller öğrenin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,17 +26,17 @@ Bu makaledeki örnek betikler, ırikit-öğrenme için [Iris veri kümesini](htt
 
 Bir makine öğrenimi scikit-bir modeli baştan sona öğreniyor olun veya var olan bir modeli buluta getiriyor, elastik bulut bilgi işlem kaynaklarını kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
  - Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
 
-    - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
+    - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md)  .
     - Not defteri sunucusundaki örnekler eğitim klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveleri > scikit-> eğitim > tren-hyperparameter-ayarla-dağıt-with-sköğrenme** klasörü.
 
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
 
 ## <a name="set-up-the-experiment"></a>Denemeyi ayarlama
@@ -45,7 +45,7 @@ Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başla
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -62,7 +62,7 @@ Bu öğreticide, [burada](https://github.com/Azure/MachineLearningNotebooks/blob
 
 Notlar:
 - Belirtilen eğitim betiği, bazı ölçümlerin Azure ML çalıştırmak için betik içindeki nesnesini kullanarak nasıl günlüğe alınacağını gösterir `Run` .
-- Belirtilen eğitim betiği, işlevden örnek verileri kullanır `iris = datasets.load_iris()` .  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
+- Belirtilen eğitim betiği, işlevden örnek verileri kullanır  `iris = datasets.load_iris()` .  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
 
 ### <a name="define-your-environment"></a>Ortamınızı tanımlayın.
 
@@ -120,7 +120,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)kullanarak verilerinize erişin.
+> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)kullanarak verilerinize erişin.
 
 Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md). 
 
@@ -147,7 +147,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Aşağıdaki kodla modeli çalışma alanınıza kaydedin. , Ve parametrelerini belirterek,, `model_framework` `model_framework_version` ve `resource_configuration` , No-Code Model dağıtımı kullanılabilir hale gelir. Kod modeli dağıtımı, modelinizi kayıtlı modelden doğrudan bir Web hizmeti olarak dağıtmanızı sağlar ve [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) nesne, Web hizmeti için işlem kaynağını tanımlar.
+Aşağıdaki kodla modeli çalışma alanınıza kaydedin. , Ve parametrelerini belirterek,, `model_framework` `model_framework_version` ve `resource_configuration` , No-Code Model dağıtımı kullanılabilir hale gelir. Kod modeli dağıtımı, modelinizi kayıtlı modelden doğrudan bir Web hizmeti olarak dağıtmanızı sağlar ve [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py&preserve-view=true) nesne, Web hizmeti için işlem kaynağını tanımlar.
 
 ```Python
 from azureml.core import Model
@@ -166,7 +166,7 @@ Yeni Kaydolmakta olduğunuz model, eğitim için kullandığınız tahmin etmeks
 
 ### <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
 
-Geleneksel dağıtım yolu yerine, scikit-öğren için kod dışı dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Hiçbir kod modeli dağıtımı, yerleşik tüm scikit-öğrenme model türleri için desteklenmez. Modelinizi yukarıda gösterildiği gibi `model_framework` ,, ve parametreleriyle kaydederek, `model_framework_version` `resource_configuration` [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) modelinizi dağıtmak için yalnızca statik işlevi kullanabilirsiniz.
+Geleneksel dağıtım yolu yerine, scikit-öğren için kod dışı dağıtım özelliğini (Önizleme) de kullanabilirsiniz. Hiçbir kod modeli dağıtımı, yerleşik tüm scikit-öğrenme model türleri için desteklenmez. Modelinizi yukarıda gösterildiği gibi `model_framework` ,, ve parametreleriyle kaydederek, `model_framework_version` `resource_configuration` [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) modelinizi dağıtmak için yalnızca statik işlevi kullanabilirsiniz.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891870"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439753"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -61,7 +61,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 6. Microsoft iş ortağı ağı ' na katın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -278,5 +278,5 @@ Microsoft İş Ortağı Ağı, özel kaynaklara, programlara, araçlara ve bağl
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Azure AD oturum açma işlemlerini destekleyen uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](authentication-flows-app-scenarios.md).
+* [Bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Azure AD için kimlik doğrulama senaryoları](authentication-flows-app-scenarios.md)

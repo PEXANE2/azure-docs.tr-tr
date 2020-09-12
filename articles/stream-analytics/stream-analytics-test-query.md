@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043973"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612149"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
 
@@ -23,7 +23,7 @@ Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu te
 
 Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getir
 
 Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek için yerel bir dosyadaki örnek verileri kullanabilirsiniz.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
    
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
@@ -96,6 +96,21 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
    ![Seçili çıktıyı Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
 10. Tarayıcıda gösterilen sonuçları doğruladıktan sonra, işi **başlatabilirsiniz** .
+
+## <a name="limitations"></a>Sınırlamalar
+
+1.  Portal testinde zaman ilkesi desteklenmez:
+
+   * Sıra dışı: tüm gelen olaylar sıralanacaktır.
+   * Geç varış: Stream Analytics test için yalnızca varolan verileri kullanabilmesi için geç varış olayı olmayacaktır.
+   
+2.  C# UDF desteklenmez.
+
+3.  Tüm testler, bir akış birimi olan bir iş ile çalıştırılır.
+
+4.  Zaman aşımı boyutu bir dakikadır. Böylece pencere boyutu bir dakikadan büyük olan herhangi bir sorgu herhangi bir veri alamaz.
+
+5.  Machine Learning desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Stream Analytics kullanarak bir IoT çözümü oluşturun](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): Bu öğretici, ücretsiz olarak trafiği taklit edecek bir veri Oluşturucu ile uçtan uca bir çözüm oluşturmanıza kılavuzluk eder.

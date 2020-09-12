@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 874df2cc17e291cb6811ca07d01237f01b523860
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799115"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565047"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory Avrupa müşterileri için kimlik veri depolaması
-Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
+Kimlik verileri, Azure AD tarafından, Microsoft 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
 
 Avrupa 'da adres sağlayan müşteriler için Azure AD, Avrupa veri merkezlerindeki kimlik verilerinin çoğunu tutar. Bu belge, Azure AD Hizmetleri tarafından Avrupa dışında depolanan veriler hakkında bilgi sağlar.
 
@@ -30,11 +30,11 @@ Avrupa 'da adres sağlayan müşteriler için Azure AD, Avrupa veri merkezlerind
 - Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklarından geliyor. Buna ek olarak, cihaz satıcısına özgü hizmetler de oynatma halinde gelebilir ve bu hizmetler Avrupa dışında olabilir.
 - OATH kodları her zaman ABD'de doğrulanır. 
 
-Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](../authentication/howto-mfa-reporting-datacollection.md).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C ilke yapılandırma verileri ve anahtar kapsayıcıları ABD veri merkezlerinde depolanır. Bunlar Kullanıcı kişisel verilerini içermez. İlke yapılandırması hakkında daha fazla bilgi için [Azure Active Directory B2C: Yerleşik ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) makalesine bakın.
+Azure AD B2C ilke yapılandırma verileri ve anahtar kapsayıcıları ABD veri merkezlerinde depolanır. Bunlar Kullanıcı kişisel verilerini içermez. İlke yapılandırması hakkında daha fazla bilgi için [Azure Active Directory B2C: Yerleşik ilkeler](../../active-directory-b2c/user-flow-overview.md) makalesine bakın.
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,7 +50,7 @@ Azure AD DS, kullanıcı verilerini müşterinin seçtiği Azure Sanal Ağı ile
 - Uygulama için onaylanan Federasyon etki alanları listesi
 - Uygulamanın belirteç imzalama ortak anahtarı 
 
-Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz. [Federasyon: Exchange 2013 yardım](https://docs.microsoft.com/exchange/federation-exchange-2013-help) makalesi.
+Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz. [Federasyon: Exchange 2013 yardım](/exchange/federation-exchange-2013-help) makalesi.
 
 
 ## <a name="other-considerations"></a>Diğer önemli noktalar
@@ -61,12 +61,12 @@ Microsoft hizmetlerinin verileri depoladığı konumlar hakkında daha fazla bil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yukarıda açıklanan özellik ve işlevlerden herhangi biri hakkında daha fazla bilgi için şu makalelere bakın:
-- [Multi-Factor Authentication nedir?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
+- [Multi-Factor Authentication nedir?](../authentication/concept-mfa-howitworks.md)
 
-- [Azure AD self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)
+- [Azure AD self servis parola sıfırlama](../authentication/concept-sspr-howitworks.md)
 
-- [Azure Active Directory B2C nedir?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+- [Azure Active Directory B2C nedir?](../../active-directory-b2c/overview.md)
 
-- [Azure AD B2B işbirliği nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- [Azure AD B2B işbirliği nedir?](../external-identities/what-is-b2b.md)
 
-- [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)
+- [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/overview.md)

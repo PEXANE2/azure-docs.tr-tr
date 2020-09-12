@@ -2,19 +2,19 @@
 title: ARM şablonu test araç seti
 description: Şablonunuzda ARM şablonu test araç setinin nasıl çalıştırılacağını açıklar. Araç seti, önerilen uygulamalar uyguladıysanız görmenizi sağlar.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7b88096dfdd1c7fb3e2671a369132e75a8885b8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85256042"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439569"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM şablonu test araç setini kullanma
 
-[ARM şablonu test araç seti](https://aka.ms/arm-ttk) , şablonunuzun önerilen uygulamalar kullanıp kullanmadığını denetler. Şablonunuz Önerilen uygulamalarla uyumlu olmadığında, önerilen değişikliklerle ilgili uyarıların bir listesini döndürür. Test araç setini kullanarak, şablon geliştirmede yaygın sorunların nasıl önleneceğini öğrenebilirsiniz.
+[Azure Resource Manager (ARM) şablonu test araç seti](https://aka.ms/arm-ttk) , şablonunuzun önerilen uygulamalar kullanıp kullanmadığını denetler. Şablonunuz Önerilen uygulamalarla uyumlu olmadığında, önerilen değişikliklerle ilgili uyarıların bir listesini döndürür. Test araç setini kullanarak, şablon geliştirmede yaygın sorunların nasıl önleneceğini öğrenebilirsiniz.
 
 Test araç seti, [varsayılan testlerin bir kümesini](test-cases.md)sağlar. Bu sınamalar önerilerdir ancak gereksinimlerdir. Hangi testlerin hedeflerinizle ilgili olduğuna karar verebilir ve hangi testlerin çalıştırılacağını özelleştirebilirsiniz.
 
@@ -22,53 +22,103 @@ Bu makalede, test araç setinin nasıl çalıştırılacağı ve testlerin nası
 
 Araç seti, PowerShell veya CLı içindeki bir komuttan çalıştırılabilen bir PowerShell betikleri kümesidir.
 
-## <a name="download-test-toolkit"></a>Test araç setini indir
+## <a name="install-on-windows"></a>Windows’ta yükleme
 
-Test araç setini kullanmak için, betikleri içeren [depoyu](https://aka.ms/arm-ttk) çatalla kopyalayabilir ya da [en son. zip dosyasını indirebilirsiniz](https://aka.ms/arm-ttk-latest).
+1. Henüz PowerShell yoksa, [Windows 'A PowerShell 'i yükleyebilirsiniz](/powershell/scripting/install/installing-powershell-core-on-windows).
 
-Betiği çalıştırdığınız bilgisayarın yürütme ilkesine bağlı olarak, betikleri Internet 'ten çalıştırmaya yönelik bir hata alabilirsiniz. [Yürütme ilkesini](/powershell/module/microsoft.powershell.core/about/about_execution_policies) değiştirmeniz veya [betik dosyalarının engellemesini kaldırmanız](/powershell/module/microsoft.powershell.utility/unblock-file)gerekir.
+1. Test araç seti için [en son. zip dosyasını indirin](https://aka.ms/arm-ttk-latest) ve ayıklayın.
 
-## <a name="run-on-powershell"></a>PowerShell üzerinde Çalıştır
+1. PowerShell 'i başlatın.
 
-Testleri çalıştırmadan önce modülünü içeri aktarın.
+1. Test araç takımını ayıkladığınız klasöre gidin. Bu klasör içinde **ARM-TTK** klasörü ' ne gidin.
 
-```powershell
-Import-Module .\arm-ttk.psd1 # from the same directory as .\arm-ttk.psd1
-```
+1. [Yürütme ilkeniz](/powershell/module/microsoft.powershell.core/about/about_execution_policies) betikleri Internet 'ten engelliyorsa, betik dosyalarının engellemesini kaldırmanız gerekir. **ARM-TTK** klasöründe olduğunuzdan emin olun.
 
-**PowerShell**'de testleri çalıştırmak için aşağıdaki komutu kullanın:
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
 
-```powershell
-Test-AzTemplate -TemplatePath $TemplateFolder
-```
+1. Modülü içeri aktarın.
 
-## <a name="run-on-linux"></a>Linux üzerinde Çalıştır
+   ```powershell
+   Import-Module .\arm-ttk.psd1
+   ```
 
-Testleri çalıştırmadan önce [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux)'u çalıştırın.
+1. Testleri çalıştırmak için aşağıdaki komutu kullanın:
 
-Bash içindeki testleri **Linux** üzerinde çalıştırmak için aşağıdaki komutu kullanın:
+   ```powershell
+   Test-AzTemplate -TemplatePath \path\to\template
+   ```
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+## <a name="install-on-linux"></a>Linux'ta yükleme
 
-pwsh.exe testi de çalıştırabilirsiniz.
+1. Henüz PowerShell yoksa, [Linux 'Ta PowerShell 'i yükleyebilirsiniz](/powershell/scripting/install/installing-powershell-core-on-linux).
 
-## <a name="run-on-macos"></a>MacOS 'ta Çalıştır
+1. Test araç seti için [en son. zip dosyasını indirin](https://aka.ms/arm-ttk-latest) ve ayıklayın.
 
-Testleri çalıştırmadan önce [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-macos)'u çalıştırın. 
+1. PowerShell 'i başlatın.
 
-`coreutils` yükleme:
+   ```bash
+   pwsh
+   ```
 
-```bash
-brew install coreutils
-```
+1. Test araç takımını ayıkladığınız klasöre gidin. Bu klasör içinde **ARM-TTK** klasörü ' ne gidin.
 
-Testleri **MacOS**üzerinde çalıştırmak için aşağıdaki komutu kullanın:
+1. [Yürütme ilkeniz](/powershell/module/microsoft.powershell.core/about/about_execution_policies) betikleri Internet 'ten engelliyorsa, betik dosyalarının engellemesini kaldırmanız gerekir. **ARM-TTK** klasöründe olduğunuzdan emin olun.
 
-```bash
-Test-AzTemplate.sh -TemplatePath $TemplateFolder
-```
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Modülü içeri aktarın.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Testleri çalıştırmak için aşağıdaki komutu kullanın:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
+
+## <a name="install-on-macos"></a>macOS’ta yükleme
+
+1. Zaten PowerShell 'e sahip değilseniz, [macOS 'Ta PowerShell 'i yükleyebilirsiniz](/powershell/scripting/install/installing-powershell-core-on-macos).
+
+1. `coreutils` yükleme:
+
+   ```bash
+   brew install coreutils
+   ```
+
+1. Test araç seti için [en son. zip dosyasını indirin](https://aka.ms/arm-ttk-latest) ve ayıklayın.
+
+1. PowerShell 'i başlatın.
+
+   ```bash
+   pwsh
+   ```
+
+1. Test araç takımını ayıkladığınız klasöre gidin. Bu klasör içinde **ARM-TTK** klasörü ' ne gidin.
+
+1. [Yürütme ilkeniz](/powershell/module/microsoft.powershell.core/about/about_execution_policies) betikleri Internet 'ten engelliyorsa, betik dosyalarının engellemesini kaldırmanız gerekir. **ARM-TTK** klasöründe olduğunuzdan emin olun.
+
+   ```powershell
+   Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
+   ```
+
+1. Modülü içeri aktarın.
+
+   ```powershell
+   Import-Module ./arm-ttk.psd1
+   ```
+
+1. Testleri çalıştırmak için aşağıdaki komutu kullanın:
+
+   ```powershell
+   Test-AzTemplate -TemplatePath /path/to/template
+   ```
 
 ## <a name="result-format"></a>Sonuç biçimi
 
@@ -137,7 +187,7 @@ param(
 
 * $schema
 * contentVersion
-* parametreler
+* parameters
 * değişkenlerinin
 * kaynaklar
 * çıkışı

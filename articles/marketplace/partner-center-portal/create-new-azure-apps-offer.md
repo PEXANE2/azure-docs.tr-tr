@@ -3,16 +3,16 @@ title: Azure Uygulama teklifi oluşturma-Microsoft ticari Market
 description: Iş Ortağı Merkezi 'nde ticari Market portalında yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Azure uygulama teklifinizi Azure Market 'te veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815683"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646933"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -188,7 +188,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Açıklama
+8. Description
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
@@ -214,7 +214,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

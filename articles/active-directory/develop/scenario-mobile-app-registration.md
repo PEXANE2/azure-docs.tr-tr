@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047682"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442743"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
 
@@ -30,7 +30,7 @@ Mobil uygulamalarınızın desteklediği hesap türleri, etkinleştirmek istedi�
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Etkileşimli belirteç alımı için hedef kitle
 
-Çoğu mobil uygulama etkileşimli kimlik doğrulaması kullanır. Uygulamanız bu kimlik doğrulama biçimini kullanıyorsa, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)oturum açmasını sağlayabilirsiniz.
+Çoğu mobil uygulama etkileşimli kimlik doğrulaması kullanır. Uygulamanız bu kimlik doğrulama biçimini kullanıyorsa, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md)oturum açmasını sağlayabilirsiniz.
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Tümleşik Windows kimlik doğrulaması, Kullanıcı adı-parola ve B2C için hedef kitle
 

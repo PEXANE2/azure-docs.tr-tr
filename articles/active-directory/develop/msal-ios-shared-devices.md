@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0354010297942c3b9e18dc6f556cb0afa075ff5f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114923"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649092"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS cihazlar için paylaşılan cihaz modu
 
@@ -61,7 +61,7 @@ Cihazınızın paylaşılan cihaz modunu destekleyecek şekilde yapılandırılm
     - **Tür**: Redirect
     - **UZANTı kimliği**: com. Microsoft. azuyeniden kimlik doğrulayıcısının. ssoextension
     - **Takım Kimliği**: SGGM6D27TK
-    - **URL 'ler**:https://login.microsoftonline.com
+    - **URL 'ler**: https://login.microsoftonline.com
     - Yapılandırılacak ek veriler:
       - Anahtar: sharedDeviceMode
       - Tür: Boolean

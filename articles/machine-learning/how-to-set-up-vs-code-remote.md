@@ -1,7 +1,7 @@
 ---
-title: 'Etkileşimli hata ayıklama: VS Code & ML işlem örnekleri (Önizleme)'
+title: Visual Studio Code (Önizleme) içinde işlem örneğine bağlanma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ile kodunuzda etkileşimli olarak hata ayıklamada uzak VS Code ayarlayın.
+description: Visual Studio Code Azure Machine Learning bir işlem örneğine nasıl bağlanacağınızı öğrenin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,73 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 08/06/2020
-ms.openlocfilehash: 37d0ec0295d76f740b2e8bf70ae72f0c95e68d14
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/03/2020
+ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904488"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461570"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama (Önizleme)
+# <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
 
-Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde Visual Studio Code uzak uzantısının nasıl ayarlanacağını öğrenirsiniz, böylece VS Code **kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** .
+Bu makalede, Visual Studio Code kullanarak Azure Machine Learning bir işlem örneğine nasıl bağlanacağınızı öğreneceksiniz.
 
-* [Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar. 
+[Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar.
 
-* [Visual Studio Code uzak](https://code.visualstudio.com/docs/remote/remote-overview) Geliştirme, bir kapsayıcı, uzak makine veya Linux için Windows alt sistemi 'ni (WSL) tam özellikli bir geliştirme ortamı olarak kullanmanıza olanak tanır. 
+Visual Studio Code bir işlem örneğine bağlanmak için kullanabileceğiniz iki yol vardır:
 
-## <a name="prerequisite"></a>Önkoşul  
+* Uzak Jupyter Notebook sunucusu. Bu seçenek, bir işlem örneğini uzak Jupyter Notebook sunucusu olarak ayarlamanıza olanak tanır.
+* [Uzaktan geliştirme Visual Studio Code](https://code.visualstudio.com/docs/remote/remote-overview). Uzaktan geliştirme Visual Studio Code, Linux (WSL) için bir kapsayıcı, uzak makine veya Windows alt sistemini tam özellikli bir geliştirme ortamı olarak kullanmanıza olanak tanır.
 
-* SSH özellikli işlem örneği. Daha fazla bilgi için [bkz. işlem örneği oluşturma kılavuzu.](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#create).
-* Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yüklemelisiniz](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) . 
+## <a name="configure-compute-instance-as-remote-notebook-server"></a>İşlem örneğini uzak Not defteri sunucusu olarak yapılandırma
 
-> [!Note]
-> SSH komutunun yolda olması gerektiğinden, PuTTY Windows üzerinde desteklenmez. 
+Bir işlem örneğini uzak bir Jupyter Notebook sunucusu olarak yapılandırmak için birkaç önkoşul olması gerekir:
 
-## <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>İşlem örneğiniz için IP ve SSH bağlantı noktasını alın
+* Azure Machine Learning Visual Studio Code uzantısı. Daha fazla bilgi için [Azure Machine Learning Visual Studio Code uzantısı kurulum kılavuzuna](tutorial-setup-vscode-extension.md)bakın.
+* Azure Machine Learning çalışma alanı. Henüz bir tane yoksa [Yeni bir çalışma alanı oluşturmak için Azure Machine Learning Visual Studio Code uzantısını kullanın](how-to-manage-resources-vscode.md#create-a-workspace) .
+
+Bir işlem örneğine bağlanmak için:
+
+1. Visual Studio Code bir Jupyter Notebook açın.
+1. Tümleşik Not Defteri Deneyimi yüklendiğinde **Jupyter sunucusu**' nu seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure Machine Learning uzak Jupyter Not defteri sunucusu açılan menüsünü Başlat](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+
+    Alternatif olarak, komut paletini de kullanabilirsiniz:
+
+    1. Menü çubuğundan **görüntüle > komut paleti** ' ni seçerek komut paleti ' ni açın.
+    1. Metin kutusuna girin `Azure ML: Connect to Compute instance Jupyter server` .
+
+1. `Azure ML Compute Instances`Jupyıter sunucu seçenekleri listesinden seçin.
+1. Abonelikler listesinden aboneliğinizi seçin. Varsayılan Azure Machine Learning çalışma alanınızı daha önce yapılandırdıysanız, bu adım atlanır.
+1. Çalışma alanınızı seçin.
+1. Listeden işlem örneğinizi seçin. Bir tane yoksa, **yeni Azure ML işlem örneği oluştur** ' u seçin ve komut istemlerini izleyerek bir tane oluşturun.
+1. Değişikliklerin etkili olabilmesi için Visual Studio Code yeniden yüklemeniz gerekir.
+1. Bir Jupyter Notebook açın ve bir hücre çalıştırın.
+
+> [!IMPORTANT]
+> Bağlantıyı kurmak için bir hücre çalıştırmanız **gerekir** .
+
+Bu noktada, Jupyter Not defterinizde hücreleri çalıştırmaya devam edebilirsiniz.
+
+> [!TIP]
+> Ayrıca, Jupyıter benzeri kod hücrelerini içeren Python betik dosyalarıyla (. Kopyala) çalışabilirsiniz. Daha fazla bilgi için bkz. [Python etkileşimli belgelerine Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support-py).
+
+## <a name="configure-compute-instance-remote-development"></a>İşlem örneği uzaktan geliştirmeyi yapılandırma
+
+Tam özellikli bir uzaktan geliştirme deneyimi için birkaç önkoşul olması gerekir:
+
+* [Visual Studio Code uzak SSH uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
+* SSH özellikli işlem örneği. Daha fazla bilgi için [bkz. işlem örneği oluşturma kılavuzu](concept-compute-instance.md#create).
+
+> [!NOTE]
+> Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yüklemelisiniz](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) . SSH komutunun yolda olması gerektiğinden, PuTTY Windows üzerinde desteklenmez.
+
+### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>İşlem örneğiniz için IP ve SSH bağlantı noktasını alın
 
 1. Konumundaki Azure Machine Learning Studio 'ya gidin https://ml.azure.com/ .
-
 2. [Çalışma alanınızı](concept-workspace.md)seçin.
 1. **Işlem örnekleri** sekmesine tıklayın.
 1. **Uygulama URI 'si** sütununda, uzak işlem olarak kullanmak istediğiniz Işlem örneğinin **SSH** bağlantısına tıklayın. 
@@ -73,9 +112,9 @@ Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde Visual Studio 
    chmod 600 ~/.ssh/id_azmlcitest_rsa
    ```
 
-## <a name="add-instance-as-a-host"></a>Örneği konak olarak ekle
+### <a name="add-instance-as-a-host"></a>Örneği konak olarak ekle
 
-Dosyayı `~/.ssh/config` (Linux) veya `C:\Users<username>.ssh\config` (Windows) bir düzenleyicide açın ve şuna benzer yeni bir giriş ekleyin:
+Dosyayı `~/.ssh/config` (Linux) veya `C:\Users<username>.ssh\config` (Windows) bir düzenleyicide açın ve aşağıdaki içeriğe benzer şekilde yeni bir giriş ekleyin:
 
 ```
 Host azmlci1 
@@ -101,13 +140,9 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` .
 
-## <a name="connect-vs-code-to-the-instance"></a>Örneğe VS Code bağlama
+### <a name="connect-vs-code-to-the-instance"></a>Örneğe VS Code bağlama
 
-1. [Visual Studio Code 'ı yükler](https://code.visualstudio.com/).
-
-1. [Uzak SSH uzantısını yükler](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-
-1. SSH yapılandırmalarınızı göstermek için sol taraftaki uzaktan SSH simgesine tıklayın.
+1. SSH yapılandırmalarınızı göstermek için Visual Studio Code etkinlik çubuğundan uzak-SSH simgesine tıklayın.
 
 1. Yeni oluşturduğunuz SSH ana bilgisayar yapılandırmasına sağ tıklayın.
 

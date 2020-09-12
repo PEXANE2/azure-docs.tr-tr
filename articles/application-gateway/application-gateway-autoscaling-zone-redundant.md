@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273210"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649740"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -47,87 +47,7 @@ V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık 
 
 Her kapasite birimi, en fazla: 1 işlem birimi, 2500 kalıcı bağlantı ve 2,22 Mbps aktarım hızı ' ten oluşur.
 
-İşlem birimi Kılavuzu:
-
-- **Standard_v2** -her işlem BIRIMI, RSA 2048 BIT anahtar TLS sertifikası ile saniyede yaklaşık 50 bağlantı kapasitesine sahiptir.
-- **WAF_v2** -her işlem birimi,% 70-30 oranında 70 trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. WAF performansı şu anda yanıt boyutundan etkilenmez.
-
-> [!NOTE]
-> Her örnek şu anda yaklaşık 10 kapasite birimini destekleyebilir.
-> Bir işlem biriminin işleyebileceği isteklerin sayısı, TLS sertifikası anahtar boyutu, anahtar değişim algoritması, üst bilgi yeniden oluşturma gibi çeşitli ölçütlere ve WAF gelen istek boyutu durumuna bağlıdır. İşlem birimi başına istek hızını belirlemede uygulama testleri gerçekleştirmenizi öneririz. Hem Kapasite birimi hem de işlem birimi, faturalandırma başlamadan önce bir ölçüm olarak kullanılabilir hale getirilir.
-
-Aşağıdaki tabloda örnek fiyatlar gösterilmektedir ve yalnızca çizim amaçlıdır.
-
-**ABD Doğu fiyatlandırma**:
-
-|              SKU adı                             | Sabit fiyat ($/hr)  | Kapasite birim fiyatı ($/CU-hr)   |
-| ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0.36             | 0,0144                          |
-
-Daha fazla fiyatlandırma bilgisi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/application-gateway/). 
-
-**Örnek 1**
-
-Bir Application Gateway Standard_v2, el ile ölçekleme modunda, beş örnek sabit kapasiteye sahip otomatik ölçeklendirme olmadan sağlanır.
-
-Sabit fiyat = (saat) * $0,20 = $148,8 <br>
-Kapasite birimleri = 744 (saat) * her örnek için 10 Kapasite birimi * 5 örnek * Kapasite birimi başına $0,008 saat = $297,6
-
-Toplam Fiyat = $148,8 + $297,6 = $446,4
-
-**Örnek 2**
-
-Bir Application Gateway standard_v2, sıfır minimum örnek ve bu süre boyunca 25 yeni TLS bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
-
-Sabit fiyat = (saat) * $0,20 = $148,8
-
-Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işlem birimi/sn, 8.88/2.22 Kapasite birimi üretilen iş birimi) * $0,008 = 744 * 4 * 0,008 = $23,81
-
-Toplam Fiyat = $148.8 + 23.81 = $172,61
-
-Gördüğünüz gibi, tüm örnek için değil yalnızca dört Kapasite birimi için faturalandırılırsınız. 
-
-> [!NOTE]
-> Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
-
-
-**Örnek 3**
-
-Bir Application Gateway standard_v2, en az beş örnek içeren bir ayda sağlanır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
-
-Sabit fiyat = (saat) * $0,20 = $148,8
-
-Kapasite birim fiyatı = ünle (saatler) * en fazla (0/50 bağlantı için işlem birimi/sn, aktarım için 0/2.22 Kapasite birimi) * $0,008 = 744 * 50 * 0,008 = $297,60
-
-Toplam Fiyat = $148.80 + 297.60 = $446,4
-
-Bu durumda, hiçbir trafik olmasa bile beş örnek tümüyle faturalandırılırsınız.
-
-**Örnek 4**
-
-Bir Application Gateway standard_v2 en az beş örnek içeren bir ayda sağlanır, ancak bu kez ortalama 125 Mbps veri aktarımı ve saniyede 25 TLS bağlantı vardır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
-
-Sabit fiyat = (saat) * $0,20 = $148,8
-
-Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işlem birimi/sn, üretilen iş için 125/2.22 Kapasite birimi) * $0,008 = 744 * 57 * 0,008 = $339,26
-
-Toplam Fiyat = $148.80 + 339.26 = $488,06
-
-Bu durumda, tam beş örnek ve yedi Kapasite birimi (örneğin 7/10) için faturalandırılırsınız.  
-
-**Örnek 5**
-
-Bir ay için Application Gateway WAF_v2 sağlandı. Bu süre boyunca 25 yeni TLS bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı ve saniye başına 80 isteği alır. Bağlantıların kısa süreli olduğu varsayıldığında ve uygulama için işlem birimi hesaplaması işlem birimi başına 10 RPS 'yi destekliyorsa, fiyatlarınız şöyle olacaktır:
-
-Sabit fiyat = (saat) * $0,36 = $267,84
-
-Kapasite birim fiyatı = ünl (saatler) * en fazla (işlem birimi en fazla (bağlantı için 25/50/sn, 80/10 WAF RPS), 8.88/2.22 Kapasite birimi üretilen iş birimi) * $0,0144 = 744 * 8 * 0,0144 = $85,71
-
-Toplam Fiyat = $267,84 + $85,71 = $353,55
-
-> [!NOTE]
-> Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
+Daha fazla bilgi edinmek için bkz. [fiyatlandırmayı anlama](understanding-pricing.md).
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway ve WAF v2 ölçeklendiriliyor
 
@@ -148,7 +68,7 @@ Ancak, yeni bir örnek oluşturmak biraz zaman alabilir (altı veya yedi dakika 
 
 Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırılır.
 
-| Özellik                                           | V1 SKU 'SU   | v2 SKU 'SU   |
+| Öne çıkan özelliği                                           | V1 SKU 'SU   | v2 SKU 'SU   |
 | ------------------------------------------------- | -------- | -------- |
 | Otomatik ölçeklendirme                                       |          | &#x2713; |
 | Bölge yedekliliği                                   |          | &#x2713; |
@@ -180,7 +100,7 @@ Bu bölümde v1 SKU 'sundan farklı v2 SKU 'sunun özellikleri ve sınırlamalar
 |--|--|
 |Kimlik doğrulama sertifikası|Desteklenmez.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca TLS 'ye genel bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmez|
-|Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenir (belirli senaryolar). Önizleme aşamasında.<br> Desteklenen senaryolar hakkında daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
+|Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenir (belirli senaryolar). Önizleme aşamasında.<br> Desteklenen senaryolar hakkında daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-infrastructure.md#supported-user-defined-routes).|
 |Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Azure tanılama 'da performans günlükleri|Desteklenmez.<br>Azure ölçümleri kullanılmalıdır.|
 |Faturalandırma|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|

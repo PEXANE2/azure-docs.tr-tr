@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3621d0c22aa6f35fc845f449d07bce8dcf0ba1fa
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229557"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461893"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -638,6 +638,8 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 -   **Tümleştirme çalışma zamanları ve paylaşma**. Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'inizdeki tüm aşamalar arasında benzerdir. Data Factory, CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
 
 -   **Key Vault**. Bağlantı bilgileri Azure Key Vault depolanan bağlı hizmetleri kullandığınızda, farklı ortamlarda ayrı anahtar kasalarının tutulması önerilir. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı gizli dizi adlarını tutarsanız, tek şey yalnızca bir parametre olan Anahtar Kasası adı olduğundan, her bir bağlantı dizesini CI/CD ortamları arasında parametreleştirmek zorunda kalmazsınız.
+
+-  **Kaynak adlandırma** Şablon kısıtlamasını ARM yapmak için, kaynaklarınız adda boşluk içeriyorsa, dağıtımdaki sorunlar ortaya çıkabilir. Azure Data Factory ekibi, kaynaklar için boşluklar yerine ' _ ' veya '-' karakterlerini kullanmanızı öneriyor. Örneğin, ' Pipeline_1 ', ' Pipeline 1 ' üzerinden tercih edilen bir ad olabilir.
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 

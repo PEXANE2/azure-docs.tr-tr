@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319482"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647331"
 ---
-# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde, Machine Learning Web hizmeti ile Azure AD kimliğini kullanma
+# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service'de makine öğrenmesi web hizmetinizle Azure AD kimliğini kullanma
 
 Bu nasıl yapılır, Azure Kubernetes hizmetindeki dağıtılmış makine öğrenimi modelinize bir Azure Active Directory (AAD) kimliği atamayı öğrenirsiniz. [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) projesi, [yönetilen bir kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ve Kubernetes temel ÖĞELERINI kullanarak, uygulamaların AAD ile güvenli bir şekilde bulut kaynaklarına erişmesini sağlar. Bu, Web hizmetinizin kimlik bilgilerini eklemek veya belirteçleri doğrudan komut dosyanızın içinde yönetmek zorunda kalmadan Azure kaynaklarınıza güvenli bir şekilde erişmesini sağlar `score.py` . Bu makalede, Azure Kubernetes hizmet kümenizde bir Azure kimliği oluşturma ve kurma adımları açıklanmakta ve bu kimlik dağıtılan Web hizmetinize atanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
 - Komutunu kullanarak AKS kümenize erişin `kubectl` . Daha fazla bilgi için bkz [. kümeye bağlanma](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
 
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> Bu örnek, DefaultAzureCredential kullanır. Belirli bir erişim ilkesi kullanarak kimlik erişiminizin olması için bkz. [4. Bölüm: gizli dizi Azure Key Vault parolayı alma](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
+> Bu örnek, DefaultAzureCredential kullanır. Belirli bir erişim ilkesi kullanarak kimlik erişimi vermek için bkz. [Azure CLI kullanarak Key Vault erişim Ilkesi atama](/azure/key-vault/general/assign-access-policy-cli).
 
 ### <a name="access-blob-from-your-web-service"></a>Web hizmetinizden blob 'a erişin
 

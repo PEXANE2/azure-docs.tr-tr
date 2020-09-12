@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935560"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378372"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -349,3 +349,7 @@ Bu uyarıyı geçici olarak çözmek için, bu Blobun metin kodlamasının ne ol
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Uyarı: ' X ' Cosmos DB koleksiyonunun bir yavaş dizin oluşturma ilkesi vardır. Bazı veriler kaybolmuş olabilir
 
 [Yavaş](/azure/cosmos-db/index-policy#indexing-mode) dizin oluşturma ilkelerine sahip koleksiyonlar tutarlı bir şekilde sorgulanamaz, bu da dizin oluşturucunun verileri eksiktir. Bu uyarıyı geçici olarak çözmek için dizin oluşturma ilkenizi tutarlı olarak değiştirin.
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Uyarı: belge çok uzun sözcükler içeriyor (64 karakterden uzun). Bu sözcükler kesilmiş ve/veya güvenilir olmayan model tahminlerinin oluşmasına neden olabilir.
+
+Bu uyarı Metin Analizi hizmetinden geçirilir.  Bazı durumlarda, belgeniz uzun bir URL (büyük olasılıkla bir anahtar tümceciği veya itici yaklaşım, vb.) içerdiğinde bu uyarıyı yoksaymak güvenlidir.  Bir sözcük 64 karakterden uzun olduğunda, model tahminlerini etkileyebilecek 64 karaktere kısaltılacağını unutmayın.  

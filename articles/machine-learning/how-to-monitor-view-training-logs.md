@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005964"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649291"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -58,7 +58,7 @@ Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tam
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Not defteri pencere öğesini kullanarak izleme çalıştırmaları
 
-Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
+Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
 
 Çalıştırmanın tamamlanmasını beklerken Jupyıter pencere öğesini görüntüleyin.
     

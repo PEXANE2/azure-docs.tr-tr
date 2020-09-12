@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845706"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440210"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma
 Bu öğreticide, genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) Için Azure SYNAPSE Analytics 'i kullanarak bir makine öğrenimi modeli oluşturma ve dağıtma konusunda size kılavuzluk ederiz. Oluşturulan ikili sınıflandırma modeli, seyahat için bir tıp ödenip ödenmediğini tahmin eder.  Modeller birden çok Lass sınıflandırması (bir ipucu olup olmadığına bakılmaksızın) ve gerileme (ücretli ücret miktarları için dağıtım) içerir.
@@ -91,14 +91,14 @@ Azure veri bilimi ortamınızı ayarlamak için aşağıdaki adımları izleyin.
   * **Kapsayıcı adı** (verilerin Azure Blob depolamada depolanmasını istediğiniz)
 
 **Azure SYNAPSE Analytics örneğinizi sağlayın.**
-Azure SYNAPSE Analytics örneği sağlamak için [Azure Portal Azure SQL veri ambarı oluşturma ve sorgulama bölümündeki](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) belgeleri izleyin. Sonraki adımlarda kullanılacak aşağıdaki Azure SYNAPSE Analytics kimlik bilgileri üzerinde gösterimler olduğunuzdan emin olun.
+Azure SYNAPSE Analytics örneği sağlamak için [Azure Portal Azure SYNAPSE Analytics oluşturma ve sorgulama bölümündeki](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) belgeleri izleyin. Sonraki adımlarda kullanılacak aşağıdaki Azure SYNAPSE Analytics kimlik bilgileri üzerinde gösterimler olduğunuzdan emin olun.
 
 * **Sunucu adı**: \<server Name> . Database.Windows.net
 * **SQLDW (veritabanı) adı**
 * **Kullanıcı adı**
 * **Parola**
 
-**Visual Studio 'Yu ve SQL Server Veri Araçları 'yi yükleyip.** Yönergeler için bkz. [SQL Data Warehouse Için Visual Studio 2019 ile çalışmaya](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)başlama.
+**Visual Studio 'Yu ve SQL Server Veri Araçları 'yi yükleyip.** Yönergeler için bkz. [Azure SYNAPSE Analytics Için Visual Studio 2019 ile çalışmaya](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)başlama.
 
 **Visual Studio ile Azure SYNAPSE Analytics 'e bağlanın.** Yönergeler için bkz. Adım 1 & 2 [Azure SYNAPSE Analytics 'TE SQL Analytics 'e bağlanma](../../synapse-analytics/sql/connect-overview.md).
 
@@ -805,7 +805,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
 ![Çubuk çizim çıkışı][3]
 
-reservedStorageGb
+ve
 
 ```sql
 pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
@@ -966,7 +966,7 @@ Bu alıştırmada, Azure SYNAPSE Analytics 'te verileri araştırmış ve sunuyo
 
     ![Azure ML verileri Içeri aktarma][17]
 2. **Özellikler** panelinde **veri kaynağı** olarak **Azure SQL veritabanı** ' nı seçin.
-3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Karşılık gelen alana **veritabanı adını** girin.
 5. **Sunucu Kullanıcı hesabı adı**' na *SQL Kullanıcı adı* ' nı ve **sunucu Kullanıcı hesabı parolasıyla** *parolayı* girin.
 7. **Veritabanı sorgusu** düzenleme metin alanında, gerekli veritabanı alanlarını (Etiketler gibi hesaplanan alanlar da dahil olmak üzere) çıkaran sorguyu yapıştırın ve verileri istenen örnek boyutuna doğru örnekleyin.
@@ -1012,7 +1012,7 @@ Bu adım adım öğreticide yaptığımız şeyleri yeniden kaplamanız için, b
 ### <a name="license-information"></a>Lisans bilgileri
 Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla ayrıntı için GitHub 'daki örnek kodun dizinindeki LICENSE.txt dosyasını denetleyin.
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 - [AndrMonroy NYC TAXI gezi Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)
 - [NYC 'nin taxt verileri, Chris Whong 'a göre veri seyahat](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC Taxi ve Limousine Komisyonu araştırması ve Istatistikleri](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Modern Yedekleme Alanı kullanma
 description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu makalede, yedekleme sunucusu yüklemenizin nasıl yükseltileceği açıklanır.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825877"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378245"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -105,7 +105,7 @@ Modern Yedekleme Depolama Alanı kullanmak için koruma gruplarını güncelleş
 
    ![Üyenin korumasını durdur](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan, diskteki kurtarma noktalarını bırakmak ve ilişkilendirildikleri bekletme ilkesine göre sürelerinin dolmasına izin vermektir. **Tamam** düğmesine tıklayın.
+2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan, diskteki kurtarma noktalarını bırakmak ve ilişkilendirildikleri bekletme ilkesine göre sürelerinin dolmasına izin vermektir. **Tamam**’ı seçin.
 
    Kullanılan disk alanını hemen boş depolama havuzuna döndürmek istiyorsanız, bu üyeyle ilişkili yedekleme verilerini (ve kurtarma noktalarını) silmek için **diskte çoğaltmayı Sil** onay kutusunu seçin.
 

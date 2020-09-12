@@ -10,23 +10,23 @@ author: maxluk
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d7523f68f97250f71405f840a6a5e9fcf9fb2f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c25464444abe8b4bc274f71618c62a751143d594
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320879"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648289"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning [TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) sınıfını kullanarak [TensorFlow](https://www.tensorflow.org/overview) eğitim betiklerinizi ölçeklendirerek nasıl çalıştırabileceğiniz gösterilmektedir. Bu örnek, derin sinir ağı (DNN) kullanarak el ile yapılan rakamları sınıflandırmak için bir TensorFlow modeli kaydeder ve kaydettirir.
+Bu makalede, Azure Machine Learning [TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true) sınıfını kullanarak [TensorFlow](https://www.tensorflow.org/overview) eğitim betiklerinizi ölçeklendirerek nasıl çalıştırabileceğiniz gösterilmektedir. Bu örnek, derin sinir ağı (DNN) kullanarak el ile yapılan rakamları sınıflandırmak için bir TensorFlow modeli kaydeder ve kaydettirir.
 
 Baştan sona bir iş akışı modeli geliştirmenize veya [mevcut bir modeli](how-to-deploy-existing-model.md) buluta verdiğinize göre, üretim sınıfı modellerini derlemek, dağıtmak, sürüm ve izlemek üzere açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz.
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -37,9 +37,9 @@ Bu kodu şu ortamlardan birinde çalıştırın:
  
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
-    - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` '`utils.py`
+    - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` ' `utils.py`
      
     Ayrıca, bu kılavuzun tamamlanmış bir [Jupyter Notebook sürümünü](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) GitHub örnekleri sayfasından bulabilirsiniz. Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import TensorFlow
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -140,15 +140,15 @@ except ComputeTargetException:
 
 ## <a name="create-a-tensorflow-estimator"></a>TensorFlow tahmin aracı oluşturma
 
-[TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) , bir işlem hedefinde bir TensorFlow eğitim işi başlatmanın basit bir yolunu sağlar.
+[TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true) , bir işlem hedefinde bir TensorFlow eğitim işi başlatmanın basit bir yolunu sağlar.
 
-TensorFlow tahmin aracı, [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) herhangi bir çerçeveyi desteklemek için kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
+TensorFlow tahmin aracı, [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) herhangi bir çerçeveyi desteklemek için kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
 
 Eğitim betiğinizin çalışması için ek PIP veya Conda paketleri gerekiyorsa, bu paketlerin adlarını `pip_packages` ve bağımsız değişkenleri aracılığıyla geçirerek elde edilen Docker görüntüsüne yüklenmiş olmasını sağlayabilirsiniz `conda_packages` .
 
 
 > [!WARNING]
-> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)kullanarak verilerinize erişin.
+> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)kullanarak verilerinize erişin.
 
 
 ```python
@@ -175,7 +175,7 @@ Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [eğit
 
 ## <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Run nesnesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
+[Run nesnesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = exp.submit(est)
@@ -222,7 +222,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Dağıtılmış eğitim
 
-[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)Tahmin aracı Ayrıca CPU ve GPU kümelerinde dağıtılmış eğitimi destekler. Dağıtılmış TensorFlow işlerini kolayca çalıştırabilirsiniz ve Azure Machine Learning düzenleme sizin için yönetecektir.
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)Tahmin aracı Ayrıca CPU ve GPU kümelerinde dağıtılmış eğitimi destekler. Dağıtılmış TensorFlow işlerini kolayca çalıştırabilirsiniz ve Azure Machine Learning düzenleme sizin için yönetecektir.
 
 Azure Machine Learning, TensorFlow 'da iki dağıtılmış eğitim yöntemini destekler:
 
@@ -233,7 +233,7 @@ Azure Machine Learning, TensorFlow 'da iki dağıtılmış eğitim yöntemini de
 
 [Horovod](https://github.com/uber/horovod) , Uber tarafından geliştirilen dağıtılmış eğitime yönelik açık kaynaklı bir çerçevedir. Dağıtılmış GPU TensorFlow işlerinin kolay bir yolunu sunar.
 
-Horovod 'yi kullanmak için, [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) `distributed_training` TensorFlow oluşturucusunda parametresi için bir nesne belirtin. Bu parametre, eğitim betiğinizdeki kullanabileceğiniz Horovod kitaplığının yüklenmesini sağlar.
+Horovod 'yi kullanmak için, [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) `distributed_training` TensorFlow oluşturucusunda parametresi için bir nesne belirtin. Bu parametre, eğitim betiğinizdeki kullanabileceğiniz Horovod kitaplığının yüklenmesini sağlar.
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -256,7 +256,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 Ayrıca, parametre sunucu modelini kullanan [Yerel dağıtılmış TensorFlow](https://www.tensorflow.org/deploy/distributed)' u de çalıştırabilirsiniz. Bu yöntemde, bir parametre sunucuları ve çalışanları kümesi üzerinde eğitebilirsiniz. Çalışanlar, eğitim sırasında degradeleri hesaplar, ancak parametre sunucuları degradeleri toplar.
 
-Parameter Server metodunu kullanmak için, [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) `distributed_training` TensorFlow oluşturucusunda parametresi için bir nesne belirtin.
+Parameter Server metodunu kullanmak için, [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) `distributed_training` TensorFlow oluşturucusunda parametresi için bir nesne belirtin.
 
 ```Python
 from azureml.train.dnn import TensorFlow

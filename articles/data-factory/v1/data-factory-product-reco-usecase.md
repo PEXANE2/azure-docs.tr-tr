@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195881"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442403"
 ---
 # <a name="use-case---product-recommendations"></a>Kullanım örneği-ürün önerileri
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Bu paket hakkındaki ayrıntılar için bkz. [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) sayfası. Bu belgede, Azure kullanıcılarının Azure Data Factory ve diğer Cortana Intelligence bileşen hizmetlerini kullanarak zaten çözmesinin ve uyguladığı yaygın bir kullanım durumu açıklanır.
@@ -41,7 +41,7 @@ Son olarak, perakendecinin, genel ürün satışı ve çapraz satış tıklama s
 ## <a name="solution-overview"></a>Çözüme Genel Bakış
 Bu örnek kullanım örneği, [HDInsight](https://azure.microsoft.com/services/hdinsight/) ve [Power BI](https://powerbi.microsoft.com/)de dahil olmak üzere Azure Data Factory ve diğer Cortana Intelligence Bileşen Hizmetleri kullanılarak gerçek Azure kullanıcıları tarafından çözüldü ve uygulanmıştır.
 
-Çevrimiçi satıcı bir Azure Blob Mağazası, şirket içi SQL Server, Azure SQL veritabanı ve iş akışı boyunca veri depolama seçenekleri olarak ilişkisel bir veri reyonunu kullanır.  Blob deposu müşteri bilgilerini, müşteri davranış verilerini ve ürün bilgileri verilerini içerir. Ürün bilgileri verileri, ürün markası bilgilerini ve şirket içinde bir SQL veri ambarı 'nda depolanan bir ürün kataloğunu içerir. 
+Çevrimiçi satıcı bir Azure Blob Mağazası, şirket içi SQL Server, Azure SQL veritabanı ve iş akışı boyunca veri depolama seçenekleri olarak ilişkisel bir veri reyonunu kullanır.  Blob deposu müşteri bilgilerini, müşteri davranış verilerini ve ürün bilgileri verilerini içerir. Ürün bilgileri verileri, ürün marka bilgilerini ve şirket içinde Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) depolanan bir ürün kataloğunu içerir. 
 
 Tüm veriler, müşteri ilgi alanları ve eylemlerine bağlı olarak kişiselleştirilmiş öneriler sunmak üzere bir ürün öneri sistemine birleştirilir ve bu, Kullanıcı Web sitesinde katalogda bulunan ürünlere gözatacak. Müşteriler Ayrıca, herhangi bir kullanıcıyla ilgili olmayan genel Web sitesi kullanım desenlerine göre baktıkları ürünle ilgili ürünleri de görür.
 

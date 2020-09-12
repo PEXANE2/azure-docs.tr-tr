@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48e6d8870baad60c79cf392894db8b71003bb875
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277000"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440414"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake ile ölçeklenebilir veri bilimi: uçtan uca bir anlatım
 Bu izlenecek yol, bir ipucunun bir tarifeli havayolu tarafından ödenip ödenmediğini tahmin etmek üzere NYC TAXI seyahat ve tarifeli havayolu veri kümesinin bir örneği üzerinde veri keşif ve ikili sınıflandırma görevlerini yapmak için Azure Data Lake nasıl kullanacağınızı gösterir. [Ekip veri bilimi sürecinin](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), uçtan uca, veri alımı ile model eğitimi arasında ve ardından modeli yayımlayan bir Web hizmetinin dağıtımına ilişkin adımlarda size yol gösterir.
@@ -34,7 +34,7 @@ Bu teknolojiler Bu anlatımda kullanılır.
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) , veri bilimcilerinin herhangi bir boyut, şekil ve hızda veri depolamasını ve veri işleme, gelişmiş analiz ve makine öğrenimi modellemesini, uygun maliyetli bir şekilde yüksek ölçeklenebilirlik ile gerçekleştirmesini kolaylaştırmak için gereken tüm özellikleri içerir.   Yalnızca veri işlendiği zaman iş başına temelinde ödeme yaparsınız. Azure Data Lake Analytics, SQL 'in bildirim temelli yapısını, ölçeklenebilir bir dağıtılmış sorgu özelliği sağlamak üzere C# ' nin ifade gücünden oluşan bir dil olan U-SQL ' i içerir. Okuma sırasında şema uygulayarak yapılandırılmamış verileri işleyebilir, özel mantık ve Kullanıcı tanımlı işlevler (UDF 'ler) ekleyebilir ve ölçekte nasıl yürütülebilecek üzerinde ayrıntılı denetim sağlamak için genişletilebilirlik içerir. U-SQL ' ın arkasındaki tasarım felseı hakkında daha fazla bilgi için bkz. [Visual Studio blog gönderisi](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
-Data Lake Analytics Ayrıca Cortana Analytics Suite 'in önemli bir parçasıdır ve Azure SQL veri ambarı, Power BI ve Data Factory ile birlikte da geçerlidir. Bu birleşim, büyük bir bulut büyük veri ve gelişmiş analiz platformu sağlar.
+Data Lake Analytics Ayrıca Cortana Analytics Suite 'in önemli bir parçasıdır ve Azure SYNAPSE Analytics, Power BI ve Data Factory ile birlikte kullanılabilir. Bu birleşim, büyük bir bulut büyük veri ve gelişmiş analiz platformu sağlar.
 
 Bu izlenecek yol, veri bilimi işlem görevlerini tamamlamak için gereken önkoşulları ve kaynakları yüklemeyi açıklayarak başlar. Ardından, veri işleme adımlarını U-SQL kullanarak özetler ve tahmine dayalı modelleri derlemek ve dağıtmak için Azure Machine Learning Studio (klasik) ile Python ve Hive kullanımını göstererek sonlanır.
 
@@ -50,7 +50,7 @@ Azure Machine Learning Studio (klasik), tahmine dayalı modelleri derlemek ve da
 ### <a name="scripts"></a>Betikler
 Bu kılavuzda yalnızca asıl adımlar özetlenmiştir. Tam **U-SQL betiğini** ve **Jupyter Notebook** [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)' dan indirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu konulara başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * Azure aboneliği. Henüz bir tane yoksa, bkz. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
@@ -181,7 +181,7 @@ FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyct
 USING Extractors.Csv();
 ```
 
-İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile, ** \@ container_name. blob. Core. windows. net/blob_storage_account_name**kullanarak kaydedebilirsiniz.
+İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile,  ** \@ container_name. blob. Core. windows. net/blob_storage_account_name**kullanarak kaydedebilirsiniz.
 
 ```sql
 // change data types
@@ -512,7 +512,7 @@ from azureml import services
 ```
 
 ### <a name="read-in-the-data-from-blob"></a>Blobun veride okuma
-* Bağlantı dizesi
+* Bağlantı Dizesi
 
   ```text
   CONTAINERNAME = 'test1'
@@ -587,7 +587,7 @@ Burada, bir seyahati eğimli olup olmadığını tahmin etmek için bir ikili s�
   Y_train_pred = logit_fit.predict(X_train)
   ```
 
-    ![=](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
+    ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
 
 * Test veri kümesini Puanlama
 
@@ -613,14 +613,14 @@ Burada, bir seyahati eğimli olup olmadığını tahmin etmek için bir ikili s�
   print metrics.confusion_matrix(Y_test,Y_test_pred)
   ```
 
-    ![geç](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
+    ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web hizmeti API 'SI oluşturun ve Python 'da kullanın
 Derlendikten sonra makine öğrenimi modelini kullanıma almak istiyorsunuz. İkili lojistik modeli örnek olarak burada kullanılır. Yerel makinenizde scikit-öğren sürümünün 0.15.1 olduğundan emin olun (Azure Machine Learning Studio zaten en azından bu sürümde).
 
 * Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri**' ne tıklayın.
 
-    ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
   ```output
   workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -660,7 +660,7 @@ Derlendikten sonra makine öğrenimi modelini kullanıma almak istiyorsunuz. İk
   NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
   ```
 
-    ![C4](./media/data-lake-walkthrough/c4-call-API.PNG)
+    ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>2. seçenek: modelleri doğrudan Azure Machine Learning oluşturma ve dağıtma
 Azure Machine Learning Studio (klasik), doğrudan Azure Data Lake Storage verileri okuyabilir ve ardından modeller oluşturup dağıtmak için kullanılabilir. Bu yaklaşım Azure Data Lake Storage işaret eden bir Hive tablosu kullanır. Hive tablosu için ayrı bir Azure HDInsight kümesi sağlanması gerekir. 
@@ -756,7 +756,7 @@ Bu yönergeyi tamamlayarak, Azure Data Lake ' de ölçeklenebilir uçtan uca ç�
 ## <a name="whats-next"></a>Sırada ne var?
 [Ekip veri bilimi işlemi (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) için öğrenme yolu, gelişmiş analiz işlemindeki her adımı açıklayan konuların bağlantılarını sağlar. [Team Data Science işlem izlenecek yolları](walkthroughs.md) sayfasında, çeşitli tahmine dayalı analiz senaryolarında kaynakların ve hizmetlerin nasıl kullanılacağını gösteren bir dizi izlenecek yol vardır:
 
-* [Takım veri bilimi süreci: SQL veri ambarı kullanma](sqldw-walkthrough.md)
+* [Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma](sqldw-walkthrough.md)
 * [Team Data Science süreci: HDInsight Hadoop kümelerini kullanma](hive-walkthrough.md)
 * [Team Data Science Işlemi: SQL Server kullanma](sql-walkthrough.md)
 * [Azure HDInsight 'ta Spark kullanarak veri bilimi Işlemine genel bakış](spark-overview.md)

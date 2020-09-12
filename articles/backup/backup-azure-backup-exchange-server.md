@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM kullanarak bir Exchange Server 'ı Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889728"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378398"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM ile Azure Backup’a Exchange sunucusu yedekleme
 
@@ -24,7 +24,7 @@ DPM sunucusunu Azure Backup başarıyla kaydetmek için, System Center 2012 R2 D
 >
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, iş yüklerini korumak için Microsoft Azure Backup kullanmaya yönelik tüm [önkoşulların](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşılandığından emin olun. Bu Önkoşullar şunları içerir:
 
@@ -39,14 +39,14 @@ Devam etmeden önce, iş yüklerini korumak için Microsoft Azure Backup kullanm
 DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izleyin:
 
 1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. **Yönetim > aracıları** ' na tıklayarak aracıyı Exchange sunucusuna (DPM Yönetici Konsolu ' de Install > ' a tıklayın. Ayrıntılı adımlar için bkz. [DPM koruma aracısını yükler](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+2. **Yönetim > aracıları ' nı DPM Yönetici Konsolu >** ' i seçerek aracıyı Exchange sunucusuna yüklersiniz. Ayrıntılı adımlar için bkz. [DPM koruma aracısını yükler](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange Server için bir koruma grubu oluşturun
 
-1. DPM Yönetici Konsolu, **koruma**' yı ve ardından **yeni koruma grubu oluşturma** Sihirbazı 'nı açmak için araç şeridinde **Yeni** ' ye tıklayın.
-2. Sihirbazın **hoş geldiniz** ekranında **İleri**' ye tıklayın.
-3. **Koruma grubu türünü seçin** ekranında **sunucular** ' ı seçin ve **İleri**' ye tıklayın.
-4. Korumak istediğiniz Exchange Server veritabanını seçin ve **İleri**' ye tıklayın.
+1. DPM Yönetici Konsolu **koruma**' yı seçin ve ardından **yeni koruma grubu oluşturma** Sihirbazı 'nı açmak için araç şeridinde **Yeni** ' yi seçin.
+2. Sihirbazın **hoş geldiniz** ekranında **İleri**' yi seçin.
+3. **Koruma grubu türünü seçin** ekranında **sunucular** ' ı seçin ve ileri ' **yi**seçin.
+4. Korumak istediğiniz Exchange Server veritabanını seçin ve **İleri ' yi**seçin.
 
    > [!NOTE]
    > Exchange 2013 ' i koruyorsanız [exchange 2013 önkoşullarını](/system-center/dpm/back-up-exchange)kontrol edin.
@@ -62,7 +62,7 @@ DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izley
 
    * Disk kullanarak kısa vadeli koruma istiyorum.
    * Çevrimiçi koruma istiyorum.
-6. **İleri**’ye tıklayın.
+6. **İleri**’yi seçin.
 7. Exchange Server veritabanlarının bütünlüğünü denetlemek istiyorsanız **veri bütünlüğünü denetlemek Için Eseutil 'ı Çalıştır** seçeneğini belirleyin.
 
     Bu seçeneği belirledikten sonra, Exchange Server üzerinde **eseutil** komutu çalıştırılarak oluşturulan g/ç trafiğinden kaçınmak için, yedekleme TUTARLıLıK denetimi DPM sunucusunda çalıştırılır.
@@ -72,21 +72,21 @@ DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izley
    > ![Eseutil hatası](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. **İleri**’ye tıklayın.
-9. **Kopya yedeklemesi**için veritabanını seçin ve ardından **İleri**' ye tıklayın.
+8. **İleri**’yi seçin.
+9. **Kopya yedeklemesi**için veritabanını seçin ve ardından **İleri**' yi seçin.
 
    > [!NOTE]
    > Veritabanının en az bir DAG kopyası için "tam yedekleme" seçeneğini seçmezseniz Günlükler kesilmez.
    >
    >
-10. **Kısa vadeli yedekleme**için hedefleri yapılandırın ve ardından **İleri**' ye tıklayın.
-11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' ye tıklayın.
-12. DPM sunucusunun ilk çoğaltmayı oluşturma zamanını seçin ve ardından **İleri**' ye tıklayın.
-13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' ye tıklayın.
-14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örneğin:
+10. **Kısa vadeli yedekleme**için hedefleri yapılandırın ve ardından **İleri**' yi seçin.
+11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' yi seçin.
+12. DPM sunucusunun ilk çoğaltmayı oluşturma zamanını seçin ve ardından **İleri**' yi seçin.
+13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' yi seçin.
+14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' yi seçin. Örneğin:
 
     ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örneğin:
+15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' yi seçin. Örneğin:
 
     ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -94,21 +94,21 @@ DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izley
     > Çevrimiçi kurtarma noktaları hızlı tam kurtarma noktalarına dayalıdır. Bu nedenle, hızlı tam kurtarma noktası için belirtilen süreden sonra çevrimiçi kurtarma noktasını zamanlamanız gerekir.
     >
     >
-16. **Azure Backup**için bekletme ilkesini yapılandırın ve ardından **İleri**' ye tıklayın.
-17. Çevrimiçi çoğaltma seçeneğini belirleyin ve **İleri**' ye tıklayın.
+16. **Azure Backup**için bekletme ilkesini yapılandırın ve ardından **İleri**' yi seçin.
+17. Çevrimiçi çoğaltma seçeneğini belirleyin ve Ileri ' **yi**seçin.
 
     Büyük bir veritabanınız varsa, ağ üzerinden ilk yedeklemenin oluşturulması uzun zaman alabilir. Bu sorundan kaçınmak için çevrimdışı yedekleme oluşturabilirsiniz.  
 
     ![Çevrimiçi bekletme ilkesini belirtin](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. Ayarları onaylayın ve ardından **Grup Oluştur**' a tıklayın.
-19. **Kapat**’a tıklayın.
+18. Ayarları onaylayın ve ardından **Grup Oluştur**' u seçin.
+19. **Kapat**’ı seçin.
 
 ## <a name="recover-the-exchange-database"></a>Exchange veritabanını kurtarma
 
-1. Bir Exchange veritabanını kurtarmak için DPM Yönetici Konsolu **Kurtarma** ' ya tıklayın.
+1. Bir Exchange veritabanını kurtarmak için DPM Yönetici Konsolu **Kurtarma** ' yı seçin.
 2. Kurtarmak istediğiniz Exchange veritabanını bulun.
 3. *Kurtarma zamanı* açılır listesinden bir çevrimiçi kurtarma noktası seçin.
-4. **Kurtarma Sihirbazı 'nı**başlatmak için **kurtar** ' ı tıklatın.
+4. **Kurtarma Sihirbazı 'nı**başlatmak için **kurtar** ' ı seçin.
 
 Çevrimiçi kurtarma noktaları için beş kurtarma türü vardır:
 

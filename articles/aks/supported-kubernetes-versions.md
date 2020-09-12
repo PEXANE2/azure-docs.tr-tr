@@ -3,19 +3,19 @@ title: Azure Kubernetes Service'te desteklenen Kubernetes sürümleri
 description: Azure Kubernetes Service 'teki (AKS) Kubernetes sürüm destek ilkesini ve kümelerin yaşam döngüsünü anlayın
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144626"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565387"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
-Kubernetes topluluğu, her üç ayda bir ikincil sürümleri kabaca yayınlar. Bu sürümler yeni özellikler ve geliştirmeler içerir. Düzeltme Eki sürümleri daha sık (bazen haftalık) ve yalnızca küçük bir sürümde kritik hata düzeltmeleri için tasarlanmıştır. Bu düzeltme eki sürümleri, güvenlik açıklarına veya önemli hatalara yönelik düzeltmeler içerir.
+Kubernetes topluluğu, her üç ayda bir ikincil sürümleri kabaca yayınlar. Son olarak Kubernetes topluluğu, sürüm 1,19 ' den başlayarak, [her sürüm için destek penceresini 9 aydan 12 aya kadar artırmıştır](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). Bu sürümler yeni özellikler ve geliştirmeler içerir. Düzeltme Eki sürümleri daha sık (bazen haftalık) ve küçük bir sürüm içindeki kritik hata düzeltmeleri için tasarlanmıştır. Bu düzeltme eki sürümleri, güvenlik açıklarına veya önemli hatalara yönelik düzeltmeler içerir.
 
 ## <a name="kubernetes-versions"></a>Kubernetes sürümleri
 
@@ -41,8 +41,8 @@ Kullanıcılar, çalıştırdığı alt sürümün en son düzeltme eki sürüm�
 
 AKS, tüm SLO veya SLA ölçümlerine etkin bir sürüm olarak ve tüm bölgelerde kullanılabilir olduğunda, genel olarak kullanılabilen bir sürümü tanımlar. AKS, Kubernetes 'in üç GA sürümlerini destekler:
 
-* AKS içinde yayınlanan en son GA alt sürümü (N olarak adlandırılıyoruz). 
-* Önceki iki alt sürüm. 
+* AKS içinde yayınlanan en son GA alt sürümü (N olarak adlandırılıyoruz).
+* Önceki iki alt sürüm.
 * Desteklenen her bir alt sürüm ayrıca en fazla iki (2) kararlı düzeltme eki destekler.
 * AKS, açıkça etiketlenmiş ve [Önizleme hüküm ve koşullarına][preview-terms]tabi olan önizleme sürümlerini de destekleyebilir.
 
@@ -143,6 +143,10 @@ Son sürüm geçmişi için [buraya](https://en.wikipedia.org/wiki/Kubernetes#Hi
 \* Bekleyen yukarı akış Yayın tarihi onayı.
 
 ## <a name="faq"></a>SSS
+
+**Kubernetes sürümlerini desteklemeyi ne sıklıkta desteklemem gerekir?**
+
+Kubernetes 1,19 ile birlikte, [Açık kaynaklı topluluk, 1 yıla kadar destek genişletmiştir](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS, en azından yukarı akış taahhütleriyle eşleşen düzeltme eklerini ve desteği etkinleştirir. Bu, 1,19 üzerindeki AKS kümeleriyle başlayarak, desteklenen bir sürümde kalmak için yılda en az bir kez yükselteceksiniz. 1,18 veya altındaki sürümler için, destek penceresi 9 ayda bir kalır ve desteklenen bir sürümde devam etmek için her 9 ayda bir yükseltme gerektirir. Yeni sürümleri düzenli olarak test etmek ve Kubernetes içindeki en son kararlı geliştirmeleri yakalamak için daha yeni sürümlere yükseltmeye hazırlıklı olmak kesinlikle önerilir.
 
 **Bir Kullanıcı bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 

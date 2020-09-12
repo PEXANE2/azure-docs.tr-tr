@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028128"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440006"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
 
@@ -63,11 +63,11 @@ HDInsight’ta Spark kümesi oluşturduğunuzda, Spark yüklenmiş ve yapıland�
 Microsoft tarafından yapılan TDSP ekibi, tek bir Python ve diğer Scala kullanarak veri bilimi çözümleri oluşturmak için Azure HDInsight Spark kümelerinin nasıl kullanılacağına ilişkin iki uçtan uca izlenecek yol yayımladı. Azure HDInsight **Spark kümeleri**hakkında daha fazla bilgi için bkz. [genel bakış: hdınsight Linux üzerinde Apache Spark](../../hdinsight/spark/apache-spark-overview.md). Azure HDInsight Spark kümesinde **Python** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md). Azure HDInsight Spark kümesinde **Scala** kullanarak bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure 'da Scala ve Spark kullanan veri bilimi](scala-walkthrough.md). 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL veri ambarı, sağlama veya aşırı ödeme olmadan işlem kaynaklarını kolayca ve saniyeler içinde ölçeklendirmenize olanak tanır. Ayrıca, işlem kaynaklarının kullanımını duraklatmaya yönelik benzersiz seçeneği sunar ve böylece bulut maliyetlerinizi daha iyi yönetebilirsiniz. Ölçeklenebilir işlem kaynaklarını dağıtma özelliği, tüm verilerinizi Azure SQL veri ambarı 'na getirmeyi mümkün kılar. Depolama maliyetleri en düşük düzeydedir ve yalnızca çözümlemek istediğiniz veri kümelerinin bölümlerinde işlem gerçekleştirebilirsiniz. 
+Azure SYNAPSE Analytics, sağlama veya aşırı ödeme olmadan işlem kaynaklarını kolayca ve saniyeler içinde ölçeklendirmenize olanak tanır. Ayrıca, işlem kaynaklarının kullanımını duraklatmaya yönelik benzersiz seçeneği sunar ve böylece bulut maliyetlerinizi daha iyi yönetebilirsiniz. Ölçeklenebilir işlem kaynaklarını dağıtma özelliği, tüm verilerinizi Azure SYNAPSE Analytics 'e getirmeyi mümkün kılar. Depolama maliyetleri en düşük düzeydedir ve yalnızca çözümlemek istediğiniz veri kümelerinin bölümlerinde işlem gerçekleştirebilirsiniz. 
 
-Azure SQL veri ambarı hakkında daha fazla bilgi için bkz. [SQL veri ambarı](https://azure.microsoft.com/services/sql-data-warehouse) Web sitesi. SQL veri ambarı ile uçtan uca gelişmiş analiz çözümleri oluşturmayı öğrenmek için, bkz [: SQL veri ambarı 'nı kullanma](sqldw-walkthrough.md).
+Azure SYNAPSE Analytics hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](https://azure.microsoft.com/services/sql-data-warehouse) Web sitesi. Azure SYNAPSE Analytics ile uçtan uca gelişmiş analiz çözümleri oluşturmayı öğrenmek için bkz. [Team Data Science Process ın, Azure SYNAPSE Analytics kullanma](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

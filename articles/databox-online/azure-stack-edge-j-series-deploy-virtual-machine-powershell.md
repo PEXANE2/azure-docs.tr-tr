@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265720"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461723"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge GPU cihazınızda VM 'Leri dağıtma
 
@@ -185,7 +185,7 @@ Blob URI 'sini, [uç nokta adı çözümlemesi için konak dosyası değiştirme
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\>\<dnsdomain\>
 
 
-## <a name="install-certificates"></a>Sertifikaları yükler
+## <a name="install-certificates"></a>Sertifikaları yükleme
 
 *Https*kullanıyorsanız, cihazınıza uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme.
 
@@ -220,8 +220,8 @@ Karşıya yüklenen VHD 'den yönetilen disk oluşturun.
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
 Örnek bir çıktı aşağıda gösterilmiştir: 
-
-$DiskConfig = New-AzureRmDiskConfig-location DBELocal-CreateOption Import – SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -408,24 +408,39 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>Bir VM’ye bağlanma
 
-VM oluşturma sırasında geçirilen özel IP 'yi kullanarak VM 'ye bağlanın.
+Windows veya Linux VM oluşturup oluşturdığınıza bağlı olarak, bağlanma adımları farklı olabilir.
 
-IP adresiyle bağlantı kurmak için bir SSH oturumu açın.
+### <a name="connect-to-linux-vm"></a>Linux VM 'ye bağlanma
+
+Bir Linux sanal makinesine bağlanmak için bu adımları izleyin.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>Windows VM 'ye bağlanma
+
+Windows VM 'ye bağlanmak için aşağıdaki adımları izleyin.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-İstendiğinde, VM oluştururken kullandığınız parolayı belirtin.
+When prompted, provide the password that you used when creating the VM.
 
-SSH anahtarını sağlamanız gerekiyorsa, bu komutu kullanın.
+If you need to provide the SSH key, use this command.
 
-SSH-ı c:/kullanıcılar/yönetici/. ssh/id_rsa Administrator@5.5.41.236
+ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-VM oluşturma sırasında genel bir IP adresi kullandıysanız, bu IP 'yi sanal makineye bağlanmak için kullanabilirsiniz. Genel IP 'yi almak için: 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Bu durumda genel IP, sanal ağ arabirimi oluşturma sırasında geçirilen özel IP ile aynı olacaktır.
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>VM 'yi yönetme

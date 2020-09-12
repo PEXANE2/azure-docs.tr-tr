@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018339"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442658"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede, Azure Active Directory (Azure AD) çok faktörlü kimlik doğrulamasının (MFA) SQL Server Management Studio (SSMS) ile nasıl kullanılacağı gösterilmektedir. Azure AD MFA, SSMS veya SqlPackage.exe [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE ANALYTICS (eski adıyla Azure SQL veri ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile bağlantı kurulurken kullanılabilir. Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı Ile evrensel kimlik doğrulaması, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
+Bu makalede, Azure Active Directory (Azure AD) çok faktörlü kimlik doğrulamasının (MFA) SQL Server Management Studio (SSMS) ile nasıl kullanılacağı gösterilmektedir. Azure AD MFA, SSMS veya SqlPackage.exe [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile bağlantı kurulurken kullanılabilir. Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı Ile evrensel kimlik doğrulaması, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure Synapse (eski adıyla Azure SQL veri ambarı) veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanları barındıran [sunucuya](logical-servers.md) başvurmaktadır.
+> Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure Synapse (eski adıyla SQL veri ambarı) veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanları barındıran [sunucuya](logical-servers.md) başvurmaktadır.
 
 ## <a name="configuration-steps"></a>Yapılandırma adımları
 
@@ -52,7 +52,7 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak nasıl bağlanacağı göster
 
    ![MFA-kiracı-SSMS](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. **Seçenekler** ' i seçin ve **Seçenekler** iletişim kutusunda veritabanını belirtin. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com ), kutuyu denetlemeniz ve geçerlI ad etki alanı adını ya da KIRACı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md). Ardından **Bağlan**’a tıklayın.  
+4. **Seçenekler** ' i seçin ve **Seçenekler** iletişim kutusunda veritabanını belirtin. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com ), kutuyu denetlemeniz ve geçerlI ad etki alanı adını ya da KIRACı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve Azure SYNAPSE Analytics (MFA IÇIN SSMS desteği) Ile evrensel kimlik doğrulaması](../database/authentication-mfa-ssms-overview.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.
 
    ![2mfa-oturum açma](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

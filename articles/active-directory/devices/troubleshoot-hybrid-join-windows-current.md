@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268783"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433662"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 
@@ -99,7 +99,7 @@ Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gö
 
 #### <a name="workplacejoined--no"></a>Iş Placekatılacak: Hayır
 
-Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 ' un yıldönümü güncelleştirme sürümü (1607) kullanılırken hesap yok sayılır.
+Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 sürüm 1607 veya sonraki bir sürümü kullanılırken hesap yok sayılır.
 
 #### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585280"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461740"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -28,7 +28,7 @@ ms.locfileid: "77585280"
 
 Bu makalede, Azure Sentinel ile çalışma hakkında daha fazla bilgi almanıza yardımcı olabilecek kaynaklar listelenmektedir.
 
-Azure Logic Apps bağlayıcılar:<https://docs.microsoft.com/connectors/>
+Azure Logic Apps bağlayıcılar: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
@@ -68,7 +68,7 @@ Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz ger
 
 ## <a name="vendor-documentation"></a>Satıcı belgeleri
 
-| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantı**|
+| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantısının**|
 |----|----|----|
 | GitHub| Topluluk sayfasına erişmek için kullanılır| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
@@ -82,4 +82,4 @@ Sorularınızı Azure Sentinel için [Techcommunity alanına](https://techcommun
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](https://blogs.msdn.com/b/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.
+Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](https://docs.microsoft.com/archive/blogs/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.

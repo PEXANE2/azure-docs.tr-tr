@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553495"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442692"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics için uyarı oluşturma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "85553495"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) içindeki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir.
+Bu makalede, Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) veritabanları için uyarıların nasıl ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir.
 
 > [!NOTE]
 > Azure SQL yönetilen örneğe özgü yönergeler için bkz. [Azure SQL yönetilen örneği için uyarı oluşturma](../managed-instance/alerts-create.md).

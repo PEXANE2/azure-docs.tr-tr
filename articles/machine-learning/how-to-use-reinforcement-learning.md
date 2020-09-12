@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 97119f3ec370894183c4aee44ff8a5bd6e5ea93b
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650834"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647150"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -36,7 +36,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 
 Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
 
@@ -49,8 +49,8 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
  
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)yükler.
-    - [Azure MACHINE LEARNING rl SDK 'sını](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)yükler.
+    - [Azure MACHINE LEARNING rl SDK 'sını](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
     - Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak için sanal ağ [Kurulum Not defterini](https://aka.ms/azure-rl-env-setup) çalıştırın.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Pekiştirmeye dayalı Learning denemesi oluşturun
 
-Pekiştirmeye dayalı Learning çalıştırmanızı izlemek için bir [deneme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) oluşturun. Azure Machine Learning, denemeleri, çalışma günlüklerini, geçmişi, çıkışları ve daha fazlasını düzenlemek için ilgili denemelerin mantıksal koleksiyonlarıdır.
+Pekiştirmeye dayalı Learning çalıştırmanızı izlemek için bir [deneme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) oluşturun. Azure Machine Learning, denemeleri, çalışma günlüklerini, geçmişi, çıkışları ve daha fazlasını düzenlemek için ilgili denemelerin mantıksal koleksiyonlarıdır.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Pekiştirmeye dayalı Learning tahmin aracı oluşturma
 
-Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) ' ı nasıl kullanacağınızı öğreneceksiniz.
+Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) ' ı nasıl kullanacağınızı öğreneceksiniz.
 
 Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. Azure Machine Learning tahmin aracı modeli hakkında daha fazla bilgi için bkz. [Tahmini kullanarak modelleri eğitme](how-to-train-ml-models.md).
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) işlemi devam eden veya tamamlanmış işlerin çalıştırma geçmişini işler. 
+[Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) işlemi devam eden veya tamamlanmış işlerin çalıştırma geçmişini işler. 
 
 ```python
 run = exp.submit(config=rl_estimator)

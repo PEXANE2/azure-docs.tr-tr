@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846709"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649410"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)veya [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
+Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)veya [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynakları temizlemek için SILME isteklerini kullanma 
 > * Dağıtılan modellere puan vermek için anahtar tabanlı yetkilendirmeyi kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yönetici haklarına sahip olduğunuz bir **Azure aboneliği** . Bu tür bir aboneliğiniz yoksa [ücretsiz veya ücretli kişisel aboneliği](https://aka.ms/AMLFree) deneyin
 - Bir [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
