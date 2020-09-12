@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660917"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024156"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -18,8 +18,8 @@ Azure 'da, şirket içi ortamlarda ve diğer bulut ortamlarında Windows ve Linu
 
 Aşağıdaki yollarla VM 'Ler için Güncelleştirme Yönetimi etkinleştirebilirsiniz:
 
-* Azure [Otomasyonu hesabınızdan](update-mgmt-enable-automation-account.md) bir veya daha fazla Azure makinesi için.
-* Azure dışı makineler için el ile.
+* Azure [Otomasyonu hesabınızdan](update-mgmt-enable-automation-account.md) bir veya daha fazla Azure ve Azure dışı makine için.
+* Azure [Arc etkin sunucularla](../../azure-arc/servers/overview.md) (Önizleme) kayıtlı makineler veya sunucular dahil olmak üzere Azure dışı makineler için el ile.
 * Tek bir Azure VM için Azure portal sanal makine sayfasından. Bu senaryo, [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 'leri için kullanılabilir.
 * [Birden çok Azure VM](update-mgmt-enable-portal.md) Için Azure Portal sanal makineler sayfasında bunları seçerek.
 
@@ -40,21 +40,17 @@ Güncelleştirme Yönetimi tarafından yönetilen makineler, değerlendirme ger�
 * Otomasyon Karma Runbook Çalışanı
 * Windows makineleri için Microsoft Update veya Windows Server Update Services (WSUS)
 
-Aşağıdaki diyagramda, bir çalışma alanındaki tüm bağlı Windows Server ve Linux makinelerine nasıl Güncelleştirme Yönetimi değerlendirir ve güvenlik güncelleştirmelerinin uygulandığı gösterilmektedir:
+Aşağıdaki diyagramda, bir çalışma alanındaki tüm bağlı Windows Server ve Linux sunucularına nasıl Güncelleştirme Yönetimi değerlendirir ve güvenlik güncelleştirmelerinin uygulandığı gösterilmektedir:
 
 ![Güncelleştirme Yönetimi iş akışı](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
-Güncelleştirme Yönetimi, makineleri aynı kiracıda birden çok aboneliğe yerel olarak dağıtmak için kullanılabilir.
+Güncelleştirme Yönetimi, aynı kiracıda birden fazla abonelikteki makinelere yerel olarak dağıtmak için kullanılabilir.
 
-Bir paket yayımlandıktan sonra, düzeltme ekinin değerlendirme için Linux makinelere gösterilmesi 2 ile 3 saat sürer. Windows makinelerinde, düzeltme ekinin yayımlandıktan sonra değerlendirmesi göstermesi için 12-15 saat sürer.
-
-Bir makine güncelleştirme uyumluluğu taramasını tamamladıktan sonra, aracı bilgileri toplu olarak Azure Izleyici günlüklerine iletir. Bir Windows makinesinde, uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır.
+Bir paket yayımlandıktan sonra, düzeltme ekinin değerlendirme için Linux makinelere gösterilmesi 2 ile 3 saat sürer. Windows makinelerinde, düzeltme ekinin yayımlandıktan sonra değerlendirmesi göstermesi için 12-15 saat sürer. Bir makine, güncelleştirme uyumluluğu için bir tarama tamamladığında, aracı bilgileri toplu olarak Azure Izleyici günlüklerine iletir. Bir Windows makinesinde, uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır. Bir Linux makinesi için, uyumluluk taraması her saat varsayılan olarak gerçekleştirilir. Log Analytics Aracısı yeniden başlatılırsa, 15 dakika içinde bir uyumluluk taraması başlatılır.
 
 Tarama zamanlamasının yanı sıra, güncelleştirme uyumluluğu taraması, Log Analytics aracısının yeniden başlatılmasından sonra, güncelleştirme yüklemesinden önce ve güncelleştirme yüklemesinden sonra başlatılır.
 
-Bir Linux makinesi için, uyumluluk taraması her saat varsayılan olarak gerçekleştirilir. Log Analytics Aracısı yeniden başlatılırsa, 15 dakika içinde bir uyumluluk taraması başlatılır.
-
-Güncelleştirme Yönetimi, makinenin ne kadar güncel olduğunu, ile eşitlenecek şekilde yapılandırdığınız kaynağı temel alır. Windows makinesi WSUS 'e rapor verecek şekilde yapılandırıldıysa, WSUS Microsoft Update ile en son ne zaman eşitlendiğine bağlı olarak sonuçlar Microsoft Update gösterdiği gibi farklılık gösterebilir. Bu davranış, bir genel depoya değil yerel depoya raporlamak üzere yapılandırılmış Linux makineleri için aynıdır.
+Güncelleştirme Yönetimi, makinenin ne kadar güncel olduğunu, ile eşitlenecek şekilde yapılandırdığınız kaynağı temel alır. Windows makinesi [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) 'a (WSUS) rapor verecek şekilde YAPıLANDıRıLDıYSA, WSUS Microsoft Update ile en son ne zaman eşitlendiğine bağlı olarak sonuçlar Microsoft Update gösterdiği gibi farklılık gösterebilir. Bu davranış, bir genel depoya değil yerel depoya raporlamak üzere yapılandırılmış Linux makineleri için aynıdır.
 
 > [!NOTE]
 > Hizmete doğru bir şekilde raporlamak için, Güncelleştirme Yönetimi belirli URL 'Lerin ve bağlantı noktalarının etkinleştirilmesini gerektirir. Bu gereksinimler hakkında daha fazla bilgi edinmek için bkz. [ağ yapılandırması](../automation-hybrid-runbook-worker.md#network-planning).
@@ -166,17 +162,17 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
 Güncelleştirme Yönetimi, aşağıdaki kuralları kullanarak veriler için yönetilen makineleri tarar. Panonun yönetilen makinelerden güncelleştirilmiş verileri görüntülemesi 30 dakika ile 6 saat arasında sürebilir.
 
-* Her Windows makinesi-Güncelleştirme Yönetimi her makine için günde iki kez tarama yapar. Her 15 dakikada bir, durumun değişip değişmediğini belirlemede son güncelleştirme zamanı için Windows API 'sini sorgular. Durum değiştiyse Güncelleştirme Yönetimi bir uyumluluk taraması başlatır.
+* Her Windows makinesi-Güncelleştirme Yönetimi her makine için günde iki kez tarama yapar.
 
 * Her Linux makinesi Güncelleştirme Yönetimi her saat bir tarama yapar.
 
@@ -256,9 +252,10 @@ Yeni veya mevcut bir Otomasyon hesabına ve Azure Izleyici Log Analytics çalı�
 
 Güncelleştirme Yönetimi etkinleştirip yönetilecek makineleri seçebileceğiniz yollar şunlardır:
 
-* [Bir sanal makineden](update-mgmt-enable-vm.md)
-* [Birden çok makineye göz atmaya](update-mgmt-enable-portal.md)
+* [Bir Azure sanal makinesinden](update-mgmt-enable-vm.md)
+* [Birden çok Azure sanal makinesine göz atmaktan](update-mgmt-enable-portal.md)
 * [Bir Azure Otomasyonu hesabından](update-mgmt-enable-automation-account.md)
+* Yay etkin sunucular (Önizleme) veya Azure dışı makineler için [Log Analytics aracısını](../../azure-monitor/platform/log-analytics-agent.md) yükleyip [çalışma alanındaki makineleri](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) güncelleştirme yönetimi olarak etkinleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/04/2020
 ms.author: kgremban
-ms.openlocfilehash: 4078d7e6c20571db2387cfd138ecb325fc3469e7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 21fde76dc5791030a7afa280e00642119cbe464c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022097"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660040"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure IoT Edge çalışma zamanını x64, ARM32 veya ARM64 Linux ci
 > [!NOTE]
 > Linux yazılım depolarındaki paketler, her pakette bulunan lisans koşullarına tabidir (/usr/share/doc/*Package-Name*). Paketi kullanmadan önce lisans koşullarını okuyun. Paketi yüklemeniz ve kullanmanız, bu şartlarınızın kabul edildiğini oluşturur. Lisans koşullarını kabul etmiyorsanız, paketini kullanmayın.
 
-## <a name="install-iot-edge-and-container-runtimes"></a>IoT Edge ve kapsayıcı çalışma zamanlarını yükleyip
+## <a name="install-container-runtime-and-iot-edge"></a>Kapsayıcı çalışma zamanı ve IoT Edge yüklemesi
 
 Azure IoT Edge çalışma zamanının en son sürümünü cihazınıza yüklemek için aşağıdaki bölümleri kullanın.
 
@@ -272,7 +272,7 @@ Cihazınıza IoT Edge yükledikten sonra, çalıştırmayı görmeniz gereken te
 
 Kaynak kısıtlı cihazlarda, [sorun giderme kılavuzunda](troubleshoot.md)her yönerge Için *Optimizeforperformance* ortam değişkenini *false* olarak ayarlamanız kesinlikle önerilir.
 
-Bir proxy sunucusu olan ağınız, [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazınızı yapılandırma](how-to-configure-proxy-support.md)bölümündeki adımları uygulayın.
+Cihazınız IoT Hub bağlanamaz ve ağınızda bir ara sunucu varsa, [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazınızı yapılandırma](how-to-configure-proxy-support.md)bölümündeki adımları izleyin.
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Moby uyumluluğu için Linux çekirdeğini doğrulama
 
@@ -290,13 +290,15 @@ Bu komut, Moby çalışma zamanı tarafından kullanılan çekirdek özellikleri
 
 Tarafından kullanılamayan Azure IoT Edge çalışma zamanının belirli bir sürümünü yüklemek istiyorsanız bu bölümdeki adımları kullanın `apt-get install` . Microsoft paket listesi yalnızca sınırlı sayıda yeni sürümü ve alt sürümlerini içerir, bu nedenle bu adımlar daha eski bir sürüm veya sürüm adayı sürümü yüklemek isteyen herkese yöneliktir.
 
-Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge GitHub deposundan hedefleyebilirsiniz. Libiothsm ve IoT Edge güvenlik cini 'nı yüklemek için aşağıdaki adımları kullanın. [Bir kapsayıcı çalışma zamanı oluşturma](#install-a-container-runtime) bölümündeki adımları kullanarak Moby ALTYAPıSıNı ve CLI 'yi yükler.
+Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge GitHub deposundan hedefleyebilirsiniz. Libiothsm ve IoT Edge güvenlik cini 'nı yüklemek için aşağıdaki adımları kullanın.
 
-1. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
+1. Cihazınızın bir kapsayıcı altyapısı yüklü olarak hazırlandığından. Bir kapsayıcı altyapınız yoksa, bu makaledeki Microsoft deposunu kaydetme ve [MoIoT Edge](#install-container-runtime-and-iot-edge) by 'yi yüklemek için aşağıdaki adımları izleyin.
 
-2. Bu sürümün **varlıklar** bölümünü genişletin.
+2. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
 
-3. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
+3. Bu sürümün **varlıklar** bölümünü genişletin.
+
+4. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
 
    1. IoT Edge cihazınızın mimarisiyle eşleşen **libiothsm-STD** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
 

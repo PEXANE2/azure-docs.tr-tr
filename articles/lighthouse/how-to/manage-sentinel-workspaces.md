@@ -3,12 +3,12 @@ title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050820"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019742"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -65,7 +65,7 @@ Birden çok müşteri için Azure Sentinel kaynaklarını yönetiyorsanız, ayn�
 
 Azure ['Da Azure Izleyici çalışma kitapları](../../sentinel/overview.md#workbooks) , Öngörüler kazanmak için bağlı veri kaynaklarınızdan verileri görselleştirmenize ve izlemenize yardımcı olur. Azure Sentinel 'de yerleşik çalışma kitabı şablonlarını kullanabilir veya senaryolarınız için özel çalışma kitapları oluşturabilirsiniz.
 
-Çalışma kitaplarını yönetim kiracınızda dağıtabilir ve müşteri kiracılarında verileri izlemek ve sorgulamak için ölçekli panolar oluşturabilirsiniz. Daha fazla bilgi için bkz. [çapraz çalışma alanı izleme](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). Bazı yeteneklerin [birden çok çalışma alanı genelinde desteklenmediğini](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)unutmayın.
+Çalışma kitaplarını yönetim kiracınızda dağıtabilir ve müşteri kiracılarında verileri izlemek ve sorgulamak için ölçekli panolar oluşturabilirsiniz. Daha fazla bilgi için bkz. [çapraz çalışma alanı izleme](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
 
 Çalışma kitaplarını, bu müşteriye özgü senaryolar için yönettiğiniz tek bir kiracıya doğrudan da dağıtabilirsiniz.
 
@@ -76,8 +76,6 @@ Azure ['Da Azure Izleyici çalışma kitapları](../../sentinel/overview.md#work
 ## <a name="use-automation-for-cross-workspace-management"></a>Çoklu çalışma alanları yönetimi için Otomasyonu kullanma
 
 Otomasyonu, birden çok Azure Sentinel çalışma alanını yönetmek ve [sorguları](../../sentinel/hunting.md), PlayBook 'ları ve çalışma kitaplarını yapılandırmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Otomasyon kullanarak çapraz çalışma alanı yönetimi](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
-
-Bazı yeteneklerin [Şu anda birden çok çalışma alanı genelinde desteklenmediğini](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)unutmayın.
 
 ## <a name="manage-security-of-office-365-environments"></a>Office 365 ortamlarının güvenliğini yönetme
 

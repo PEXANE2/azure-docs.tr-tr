@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758253"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016852"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Bir Rigado basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulamanıza bağlama
 
-*Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
+*Bu makale, çözüm oluşturucuları için geçerlidir.*
 
 Bu makalede, bir çözüm Oluşturucusu olarak bir Rigado basamaklı 500 ağ geçidi cihazını Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklanmaktadır. 
 
@@ -51,7 +51,7 @@ Basamaklı 500 cihaz şablonu eklemek için:
 
 Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanızın **kapsam kimliğini** ve **birincil anahtarını** almanız gerekir. 
 
-1. Sol bölmedeki **Yönetim** ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
+1. Sol bölmedeki **Yönetim**  ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
 2. IoT Central uygulamanızın **kapsam kimliğini** bir yere getirin.
 ![Uygulama kapsamı KIMLIĞI](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
 3. Şimdi **anahtarları görüntüle** ' ye tıklayın ve **birincil anahtar** 
@@ -65,7 +65,7 @@ Cihaz internet 'e bağlandıktan sonra, Rigado, güvenli bir kanal aracılığı
 
 Bu güncelleştirme, IoT Central bağlantı ayrıntılarını Cascade 500 cihazına uygular ve aygıtlar listenizde görünür. 
 
-![Birincil Anahtar](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
+![Cihaz listesi](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
 Artık IoT Central uygulamanızda C500 cihazınızı kullanmaya hazırsınız!
 

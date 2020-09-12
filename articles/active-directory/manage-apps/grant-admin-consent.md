@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501023"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667604"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
@@ -25,22 +25,19 @@ Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kiracı genelinde yönetici onayı verme, [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)veya [bulut uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)olarak oturum açmanızı gerektirir.
 
 > [!IMPORTANT]
 > Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
 >
-> Microsoft Graph API 'SI için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
->
-
+> Microsoft Graph API 'sine uygulama izinleri için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
 
 > [!WARNING]
 > Bir uygulamaya kiracı genelinde yönetici onayı verilmesi, uygulamanın ve uygulamanın yayımcısının kuruluşunuzun verilerine erişmesini sağlar. İzin vermeden önce uygulamanın istediği izinleri dikkatle gözden geçirin.
 >
-> Microsoft Graph API 'SI için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
->
+> Microsoft Graph API 'sine uygulama izinleri için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal yönetici onayı verme
 
@@ -56,6 +53,9 @@ Uygulama kiracınızda zaten sağlanmış ise *Kurumsal uygulamalar* aracılığ
 4. **İzinler** ' i seçin ve ardından **yönetici izni ver**' e tıklayın.
 5. Uygulamanın gerektirdiği izinleri dikkatle gözden geçirin.
 6. Uygulamanın gerektirdiği izinleri kabul ediyorsanız izin verin. Aksi takdirde, **iptal** ' e tıklayın veya pencereyi kapatın.
+
+> [!WARNING]
+> **Kurumsal uygulamalar** aracılığıyla kiracı genelinde yönetici onayı verilmesi, daha önce kiracı genelinde verilen tüm izinleri iptal eder. Kullanıcıları kendi adına önceden vermiş olan izinler etkilenmez. 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>Uygulama kayıtları yönetici onayı verme
 
@@ -82,10 +82,13 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 burada:
 
-* `{client-id}`uygulamanın istemci KIMLIĞI (uygulama KIMLIĞI olarak da bilinir) olur.
-* `{tenant-id}`Kuruluşunuzun kiracı KIMLIĞI veya doğrulanmış herhangi bir etki alanı adıdır.
+* `{client-id}` uygulamanın istemci KIMLIĞI (uygulama KIMLIĞI olarak da bilinir) olur.
+* `{tenant-id}` Kuruluşunuzun kiracı KIMLIĞI veya doğrulanmış herhangi bir etki alanı adıdır.
 
 Her zaman olduğu gibi, izin vermeden önce uygulama isteklerinin izinlerini dikkatle gözden geçirin.
+
+> [!WARNING]
+> Bu URL aracılığıyla kiracı genelinde yönetici onayı verilmesi, daha önce kiracı genelinde verilen tüm izinleri iptal eder. Daha önce kullanıcılar tarafından kendi adına atanmış olan izinler etkilenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

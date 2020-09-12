@@ -5,17 +5,17 @@ description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işle
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319618"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661521"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
@@ -71,9 +71,12 @@ Bu bölümde, tahminleri yapmak için farklı bir veri kümesi belirtmek üzere 
    
     Parametre için bir ad girin veya varsayılan değeri kabul edin.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>Batch ınkoya sınırlama işlem hattınızı yayımlayın
+    > [!div class="mx-imgBorder"]
+    > ![Veri kümesini ardışık düzen parametresi olarak ayarla](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
 
-Şimdi de ınıri sınırlama işlem hattını dağıtmaya hazırsınız. Bu işlem hattı dağıtır ve başkalarının kullanması için kullanılabilir hale getirir.
+## <a name="publish-your-batch-inference-pipeline"></a>Toplu çıkarım ardışık düzen işlem hattınızı yayımlama
+
+Artık, çıkarım işlem hattını dağıtmaya hazırsınız demektir. Bu işlem hattı dağıtır ve başkalarının kullanması için kullanılabilir hale getirir.
 
 1. **Yayımla** düğmesini seçin.
 
@@ -126,9 +129,7 @@ Bu bölümde, bir el ile işlem hattı çalıştırması ayarlayacaksınız ve y
 
 Bir işlem hattının REST uç noktasını çalışma genel bakış panelinde bulabilirsiniz. Uç noktasını çağırarak, varsayılan yayımlanmış işlem hattını kullanıyor olursunuz.
 
-Yayımlanan **ardışık düzen sayfasında yayımlanmış** bir işlem hattını de kullanabilirsiniz. Yayımlanmış bir işlem hattı seçin ve bunun REST uç noktasını bulun. 
-
-![REST uç noktası ayrıntıları](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+Yayımlanan **ardışık düzen sayfasında yayımlanmış** bir işlem hattını de kullanabilirsiniz. Yayımlanmış bir işlem hattı seçin ve bunun REST uç noktasını, grafiğin sağında **yayınlanan ardışık düzen genel bakış** panelinde bulabilirsiniz. 
 
 REST çağrısı yapmak için bir OAuth 2,0 taşıyıcı türü kimlik doğrulama üst bilgisi gerekir. Çalışma alanınıza yönelik kimlik doğrulamasını ayarlama ve parametreli bir REST çağrısı yapma hakkında daha fazla ayrıntı için aşağıdaki [öğretici bölümüne](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) bakın.
 
@@ -142,7 +143,7 @@ Bir işlem hattını yayımladığınızda, bu uç nokta için yeni varsayılan 
 
 Ayrıca, uç noktanızın **yayınlanan ardışık düzen** sekmesinde yeni bir varsayılan işlem hattı da ayarlayabilirsiniz.
 
-![Varsayılan işlem hattını ayarla](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Yayımlanan ardışık düzen sayfasında varsayılan işlem hattını ayarla](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

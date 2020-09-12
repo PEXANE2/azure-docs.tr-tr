@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583659"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015968"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
 
@@ -105,7 +106,7 @@ Bir cihaz şablonunu sürüm için:
 1. **Cihaz şablonları** sayfasına gidin.
 1. Sürüm oluşturmaya çalıştığınız cihaz şablonunu seçin.
 1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. IoT Central, düzenleyebilmeniz için yeni bir ad önerir.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu görebilirsiniz. Değiştirmek istediğiniz arabirimlerin herhangi bir sürümünü kullanabilirsiniz.
 
 ## <a name="version-an-interface"></a>Bir arabirim sürümü
@@ -118,7 +119,7 @@ Bir arabirimi sürüm için:
 1. Taslak modunda olan cihaz şablonunu seçin.
 1. Sürüm ve düzenleme yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
 1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya düzenleyebilirsiniz.
 
 ## <a name="migrate-a-device-across-versions"></a>Bir cihazı sürümler arasında geçirme

@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2fd0269744c7ee49c72806e3cb0e1227035de4f0
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035714"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019181"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 
@@ -79,7 +79,7 @@ Blob veya kuyruk verilerine erişmeyi denediğinizde, Azure portal öncelikle **
 
 Azure AD hesabınızı kullanarak Azure portal blob veya kuyruk verilerine erişmek için, blob ve kuyruk verilerine erişim izinleriniz olmalıdır ve ayrıca Azure portal depolama hesabı kaynakları arasında gezinmek için izinlerinizin olması gerekir. Azure depolama tarafından sunulan yerleşik roller, blob ve kuyruk kaynaklarına erişim izni verir, ancak depolama hesabı kaynaklarına izin vermez. Bu nedenle, portala erişim, Ayrıca, depolama hesabı düzeyi veya daha yüksek olan [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü gibi Azure Resource Manager rolün atanmasını da gerektirir. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir. Azure AD hesabıyla Azure portal veri erişimi için kullanıcılara izin atama hakkında daha fazla bilgi için, bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](storage-auth-aad-rbac-portal.md)oluşturma.
 
-Azure portal, bir kapsayıcıya veya kuyruğa gittiğinizde hangi yetkilendirme şemasının kullanımda olduğunu gösterir. Portalda veri erişimi hakkında daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure Portal kullanma](storage-access-blobs-queues-portal.md).
+Azure portal, bir kapsayıcıya veya kuyruğa gittiğinizde hangi yetkilendirme şemasının kullanımda olduğunu gösterir. Portalda veri erişimi hakkında daha fazla bilgi için bkz. [Azure Portal blob verilerine erişim yetkisi verme](../blobs/authorize-blob-access-portal.md) ve [Azure Portal kuyruk verilerine erişim yetkisi verme seçme](../queues/authorize-queue-access-portal.md).
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell veya Azure CLı 'dan veri erişimi
 

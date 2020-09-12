@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2289ff37a0e524bc765163047608eb604c02372e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326520"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019810"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA Sertifikaları ile Cihaz Kimlik Doğrulaması
 
@@ -27,6 +27,8 @@ Bu makalede, IoT Hub bağlanan cihazların kimliğini doğrulamak için X. 509.4
 * IoT Hub için X. 509.952 CA sertifikasını kaydetme
 * X. 509.440 CA sertifikalarını kullanarak cihazları imzalama
 * X. 509.440 CA ile imzalanan cihazların kimliği nasıl doğrulanır
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Genel Bakış
 

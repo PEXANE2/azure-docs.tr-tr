@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e765422ebfce1a4328bac9a17edb8b581f87e6f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890923"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661714"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -54,7 +54,7 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 + Web 'de:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning Designer (Önizleme)](concept-designer.md) -yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir.
-+ Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)olan herhangi bir Python ortamında.
++ Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)olan herhangi bir Python ortamında.
 + [R (Önizleme) için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
 + Azure Machine Learning [CLI uzantısını](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanarak komut satırında
 + [Azure Machine Learning VS Code uzantısı](how-to-manage-resources-vscode.md#workspaces)
@@ -94,7 +94,7 @@ Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](over
 Çalışma alanı oluşturmanın birden çok yolu vardır:  
 
 * Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
-* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
+* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
 * Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-manage-resources-vscode.md#create-a-workspace)kullanın.
 

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079595"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661919"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,16 +135,16 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Etkinlik | Abonelik düzeyi kapsamı | Kaynak grubu düzeyi kapsamı | Çalışma alanı düzeyi kapsamı |
 | ----- | ----- | ----- | ----- |
 | Yeni çalışma alanı oluştur | Gerekli değil | Sahip veya katkıda bulunan | Yok (oluşturulduktan sonra sahip olur veya daha yüksek kapsam rolünü devralır) |
-| Çalışma alanının sürümünü Güncelleştir | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/write` |
-| Abonelik düzeyi Amlcompute kotası iste veya çalışma alanı düzeyi kotasını ayarla | Sahip veya katkıda bulunan veya özel rol </br>enlere`/locations/updateQuotas/action`</br> Abonelik kapsamında | Yetkilendirilmemiş | Yetkilendirilmemiş |
-| Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
-| Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
-| Herhangi bir türdeki çalışma gönderiliyor | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
-| AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| Çalışma alanının sürümünü Güncelleştir | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/write` |
+| Abonelik düzeyi Amlcompute kotası iste veya çalışma alanı düzeyi kotasını ayarla | Sahip veya katkıda bulunan veya özel rol </br>enlere `/locations/updateQuotas/action`</br> Abonelik kapsamında | Yetkilendirilmemiş | Yetkilendirilmemiş |
+| Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
+| Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
+| Herhangi bir türdeki çalışma gönderiliyor | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
-| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
-| Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol`Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`/workspaces/computes/write` |
+| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol `Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
 
 > [!TIP]
 > İlk kez çalışma alanı oluşturmaya çalışırken bir hata alırsanız, rolünüzün izin verdiğinden emin olun `Microsoft.MachineLearningServices/register/action` . Bu eylem, Azure aboneliğinize Azure Machine Learning kaynak sağlayıcısını kaydetmenizi sağlar.
@@ -429,6 +429,6 @@ Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kurumsal güvenliğe genel bakış](concept-enterprise-security.md)
-- [Bir sanal ağ içinde denemeleri ve çıkarımı/puanı güvenli bir şekilde çalıştırın](how-to-enable-virtual-network.md)
+- [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
 - [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)
 - [Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

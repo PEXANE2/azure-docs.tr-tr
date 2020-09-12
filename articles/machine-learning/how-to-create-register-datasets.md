@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: ae8dcc02618220750e2d15d815da4b36ea64da2d
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 6229686cda87a6dd65dfb9232f0e8ac550ba3750
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782201"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660503"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -35,7 +35,7 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
@@ -43,16 +43,16 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
-* Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), azureml veri kümesi paketini içerir.
+* Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), azureml veri kümesi paketini içerir.
 
     * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](concept-compute-instance.md#managing-a-compute-instance)oluşturun.
 
     **VEYA**
 
-    * Kendi Jupyter Not defteriniz üzerinde çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)SDK 'yı kendiniz de yüklersiniz.
+    * Kendi Jupyter Not defteriniz üzerinde çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)SDK 'yı kendiniz de yüklersiniz.
 
 > [!NOTE]
-> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7).
+> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py&preserve-view=true) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7).
 
 ## <a name="compute-size-guidance"></a>İşlem boyutu kılavuzu
 
@@ -68,7 +68,7 @@ Kullanıcıların eğitiminde nasıl tükettiği temel alınarak iki veri kümes
 
 ### <a name="filedataset"></a>Dosya veri kümesi
 
-Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten temizdir ve eğitim denemeleri 'de kullanıma hazırsanız, dosyaları dosya veri kümesi nesnesi olarak işlem dosyalarınıza [indirebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-vs-download) . 
+Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten temizdir ve eğitim denemeleri 'de kullanıma hazırsanız, dosyaları dosya veri kümesi nesnesi olarak işlem dosyalarınıza [indirebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-vs-download) . 
 
 Kaynak dosyalar herhangi bir biçimde olduğundan, derin öğrenme dahil olmak üzere daha geniş bir makine öğrenimi senaryosu sağlayan herhangi bir biçimde olduğundan, makine öğrenimi iş akışlarınız için dosya veri kümelerini öneririz.
 
@@ -76,7 +76,7 @@ Kaynak dosyalar herhangi bir biçimde olduğundan, derin öğrenme dahil olmak �
 
 ### <a name="tabulardataset"></a>TabularDataset
 
-[Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu sayede, not defterinizin ayrılmasına gerek kalmadan tanıdık veri hazırlama ve eğitim kitaplıklarıyla çalışabilmeniz için verileri bir Pandas veya Spark veri çerçevesine hazırlama yeteneği sağlar. `TabularDataset`. Csv,. tsv,. Parquet,. jsonl dosyalarından ve [SQL sorgu sonuçlarından](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)bir nesne oluşturabilirsiniz.
+[Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu sayede, not defterinizin ayrılmasına gerek kalmadan tanıdık veri hazırlama ve eğitim kitaplıklarıyla çalışabilmeniz için verileri bir Pandas veya Spark veri çerçevesine hazırlama yeteneği sağlar. `TabularDataset`. Csv,. tsv,. Parquet,. jsonl dosyalarından ve [SQL sorgu sonuçlarından](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#&preserve-view=truefrom-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)bir nesne oluşturabilirsiniz.
 
 Tabulardataset ile, verilerdeki bir sütundan veya bir zaman serisi nitelik sağlamak için yol deseninin verilerinin depolandığı her yerde bir zaman damgası belirtebilirsiniz. Bu belirtim zamana göre kolay ve etkili filtrelemeye olanak tanır. Bir örnek için, [NOAA Hava durumu verileri Içeren tablolu zaman serisiyle ılgılı API tanıtımı](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)bölümüne bakın.
 
@@ -87,7 +87,7 @@ Tabulardataset ile, verilerdeki bir sütundan veya bir zaman serisi nitelik sağ
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Bir sanal ağdaki veri kümelerine erişme
 
-Çalışma alanınız bir sanal ağda ise, veri kümesini doğrulamayı atlayacak şekilde yapılandırmanız gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](how-to-enable-virtual-network.md#use-datastores-and-datasets).
+Çalışma alanınız bir sanal ağda ise, veri kümesini doğrulamayı atlayacak şekilde yapılandırmanız gerekir. Bir sanal ağda veri depoları ve veri kümeleri kullanma hakkında daha fazla bilgi için bkz. [bir çalışma alanını ve ilişkili kaynakları güvenli hale getirme](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets).
 
 <a name="datasets-sdk"></a>
 
@@ -106,9 +106,9 @@ Python SDK ile bir [Azure veri deposundan](how-to-access-data.md) veri kümeleri
 
 ### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
-[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) `FileDatasetFactory` Dosyaları herhangi bir biçimde yüklemek ve kayıtsız bir dosya veri kümesi oluşturmak için sınıfındaki yöntemini kullanın. 
+[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) `FileDatasetFactory` Dosyaları herhangi bir biçimde yüklemek ve kayıtsız bir dosya veri kümesi oluşturmak için sınıfındaki yöntemini kullanın. 
 
-Depolama alanı bir sanal ağın veya güvenlik duvarının arkasındaysa, `validate=False` yöntebinizdeki parametreyi ayarlayın `from_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar. [Veri depolarını ve veri kümelerini bir sanal ağda](how-to-enable-virtual-network.md#use-datastores-and-datasets)kullanma hakkında daha fazla bilgi edinin.
+Depolama alanı bir sanal ağın veya güvenlik duvarının arkasındaysa, `validate=False` yöntebinizdeki parametreyi ayarlayın `from_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar. [Veri depolarını ve veri kümelerini bir sanal ağda kullanma](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)hakkında daha fazla bilgi edinin.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -125,7 +125,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) `TabularDatasetFactory` . Csv veya. tsv biçimindeki dosyaları okumak ve kayıtlı olmayan bir TabularDataset oluşturmak için sınıfındaki yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır. 
 
-Depolama alanı bir sanal ağın veya güvenlik duvarının arkasındaysa, `validate=False` yöntebinizdeki parametreyi ayarlayın `from_delimited_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar. [Veri depolarını ve veri kümelerini bir sanal ağda](how-to-enable-virtual-network.md#use-datastores-and-datasets)kullanma hakkında daha fazla bilgi edinin.
+Depolama alanı bir sanal ağın veya güvenlik duvarının arkasındaysa, `validate=False` yöntebinizdeki parametreyi ayarlayın `from_delimited_files()` . Bu, ilk doğrulama adımını atlar ve veri kümenizi bu güvenli dosyalardan oluşturmanıza da emin olmanızı sağlar. [Veri depolarını ve veri kümelerini bir sanal ağda](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)kullanma hakkında daha fazla bilgi edinin.
 
 Aşağıdaki kod, mevcut çalışma alanını ve istenen veri deposunu ada göre alır. Ardından `path` , yeni bir TabularDataset oluşturmak için veri deposunu ve dosya konumlarını parametreye geçirir `weather_ds` .
 
@@ -148,7 +148,7 @@ datastore_paths = [(datastore, 'weather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Varsayılan olarak, bir TabularDataset oluşturduğunuzda, sütun veri türleri otomatik olarak algılanır. Çıkarılan türler beklentilerinizle eşleşmiyorsa, aşağıdaki kodu kullanarak sütun türlerini belirtebilirsiniz. Parametresi `infer_column_type` yalnızca sınırlandırılmış dosyalardan oluşturulmuş veri kümeleri için geçerlidir. [Desteklenen veri türleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
+Varsayılan olarak, bir TabularDataset oluşturduğunuzda, sütun veri türleri otomatik olarak algılanır. Çıkarılan türler beklentilerinizle eşleşmiyorsa, aşağıdaki kodu kullanarak sütun türlerini belirtebilirsiniz. Parametresi `infer_column_type` yalnızca sınırlandırılmış dosyalardan oluşturulmuş veri kümeleri için geçerlidir. [Desteklenen veri türleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py&preserve-view=true).
 
 
 ```Python
@@ -200,7 +200,7 @@ dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet
 
-Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Çalışma alanınızda [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) başkalarıyla paylaşmak ve çalışma alanınızdaki denemeleri genelinde yeniden kullanmak için veri kümelerini çalışma alanınıza kaydetmek üzere yöntemini kullanın:
+Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Çalışma alanınızda [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#&preserve-view=trueregister-workspace--name--description-none--tags-none--create-new-version-false-) başkalarıyla paylaşmak ve çalışma alanınızdaki denemeleri genelinde yeniden kullanmak için veri kümelerini çalışma alanınıza kaydetmek üzere yöntemini kullanın:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
@@ -223,7 +223,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Veri kümenizin kaynağını seçmek için **veri kümesi oluştur** ' u seçin. Bu kaynak yerel dosyalar, bir veri deposu veya genel URL olabilir.
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
 1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin. 
-    1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Sanal ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md#machine-learning-studio)hakkında daha fazla bilgi edinin.
+    1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Bir sanal ağda veri kümeleri ve veri depoları kullanma](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)hakkında daha fazla bilgi edinin.
 1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
 1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-use-automated-ml-for-ml-models.md#profile)hakkında daha fazla bilgi edinin. 
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.

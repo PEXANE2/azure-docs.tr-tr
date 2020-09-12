@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323035"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019538"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub ile dosyaları karşıya yükleme
 
@@ -28,6 +28,8 @@ IoT Hub kendi kendine ileti almak yerine IoT Hub, ilişkili bir Azure depolama h
 Bir cihazdan IoT Hub bir dosyayı karşıya yüklemeden önce, bir [Azure depolama](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) hesabını onunla ilişkilendirerek hub 'ınızı yapılandırmanız gerekir.
 
 Cihazınız daha sonra karşıya yüklemeyi [başlatabilir](iot-hub-devguide-file-upload.md#initialize-a-file-upload) ve ardından yükleme tamamlandığında [IoT Hub 'ına bildirimde](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) bulunabilir. İsteğe bağlı olarak, bir cihaz karşıya yükleme işleminin tamamlandığını IoT Hub bildirimde bulunduğunda, hizmet bir [bildirim iletisi](iot-hub-devguide-file-upload.md#file-upload-notifications)oluşturabilir.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>Kullanılması gereken durumlar
 

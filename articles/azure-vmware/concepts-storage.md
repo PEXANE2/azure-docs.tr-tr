@@ -3,12 +3,12 @@ title: Kavramlar-depolama
 description: Azure VMware Çözüm önizleme özel bulutlarındaki anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752216"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024324"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Çözüm önizleme depolama kavramları
 
@@ -28,7 +28,7 @@ Küme ana bilgisayarlarındaki yerel depolama alanı, küme genelinde vSAN veri 
 
 ## <a name="data-at-rest-encryption"></a>Bekleyen veri şifrelemesi
 
-vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme çözümü KMS tabanlıdır ve anahtar yönetimi için vCenter işlemlerini destekler. Anahtarlar, HSM tabanlı bir Azure Key Vault ana anahtarı tarafından Sarmalanan şifreli olarak depolanır. Bir konak kümeden herhangi bir nedenden dolayı kaldırıldığında SSD 'Ler üzerindeki veriler hemen geçersiz kılınır.
+vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme çözümü KMS tabanlıdır ve anahtar yönetimi için vCenter işlemlerini destekler. Anahtar şifreleme anahtarları bir Azure Key Vault depolanır ve bir konak bir nedenle kümeden kaldırıldığında, SSD 'Ler üzerindeki veriler hemen geçersiz kılınır.
 
 ## <a name="scaling"></a>Ölçeklendirme
 

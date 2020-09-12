@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507527"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004281"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+### <a name="october-2020"></a>2020 Ekim
+
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+
+- Almanya Orta Batı: 51.116.240.0, 51.116.248.0
+
+Bu SQL ağ geçitleri, 12 Ekim 2020 ' de müşteri trafiğini kabul etmeye başlar. 
+
 ### <a name="september-2020"></a>Eylül 2020
 Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri, **15 eylül 2020**' de müşteri trafiğini kabul etmeye başlayacaktır:
 

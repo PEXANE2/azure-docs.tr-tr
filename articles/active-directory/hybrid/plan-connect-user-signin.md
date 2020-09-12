@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331260"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657149"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
 Azure Active Directory (Azure AD) Connect, kullanıcılarınızın aynı parolaları kullanarak hem bulutta hem de şirket içi kaynaklarda oturum açmalarına olanak tanır. Bu makalede, Azure AD 'de oturum açmak için kullanmak istediğiniz kimliği seçmenize yardımcı olmak üzere her bir kimlik modeli için temel kavramlar açıklanır.
@@ -47,9 +47,9 @@ Azure AD aşağıdaki kimlik doğrulama yöntemlerini destekler:
    * **Geçişli kimlik doğrulaması (PTA)** -Bu seçenek Parola karması eşitlemesine benzerdir, ancak güçlü güvenlik ve uyumluluk ilkelerine sahip kuruluşlar için şirket içi yazılım aracılarını kullanarak basit bir parola doğrulaması sağlar.
 * **Federasyon kimlik doğrulaması** -bu kimlik doğrulama yöntemini SEÇTIĞINIZDE Azure AD, kullanıcının oturum açma kimliğini doğrulamak için AD FS veya üçüncü taraf Federasyon sistemi gibi ayrı bir güvenilen kimlik doğrulama sistemine kimlik doğrulama işlemini kapatır. 
 
-Yalnızca Office 365, SaaS uygulamaları ve diğer Azure AD tabanlı kaynaklarda Kullanıcı oturumu açmayı etkinleştirmek isteyen çoğu kuruluş için varsayılan parola karması eşitleme seçeneğini öneririz.
+Yalnızca Kullanıcı oturumunu Microsoft 365, SaaS uygulamaları ve diğer Azure AD tabanlı kaynaklarla etkinleştirmek isteyen çoğu kuruluş için varsayılan parola karması eşitleme seçeneğini öneririz.
  
-Kimlik doğrulama yöntemi seçme hakkında ayrıntılı bilgi için bkz [. Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../../security/fundamentals/choose-ad-authn.md)
+Kimlik doğrulama yöntemi seçme hakkında ayrıntılı bilgi için bkz [. Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](./choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Parola karması eşitleme
 Parola karması eşitlemeyle, kullanıcı parolalarının karmaları şirket içi Active Directory Azure AD 'ye eşitlenir. Parolalar değiştirildiğinde veya şirket içinde sıfırlandığında, kullanıcılarınızın bulut kaynakları ve şirket içi kaynaklar için her zaman aynı parolayı kullanabilmesi için yeni parola karmaları hemen Azure AD ile eşitlenir. Parolalar hiçbir şekilde Azure AD 'ye gönderilmez veya Azure AD 'de açık metin olarak depolanmaz. Azure AD 'de self servis parola sıfırlama özelliğini etkinleştirmek için parola karma eşitlemesini parola geri yazma özelliğiyle birlikte kullanabilirsiniz.
@@ -139,12 +139,12 @@ Azure AD oturum açma sayfasında, şirket içi Active Directory için tanımlan
 Azure AD 'den özel etki alanlarının en son durumunu yeniden getirmek için Yenile düğmesine tıklayabilirsiniz.
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Azure AD 'de Kullanıcı asıl adı için özniteliği seçme
-UserPrincipalName özniteliği, kullanıcıların Azure AD 'de ve Office 365 ' de oturum açtıklarında kullandıkları özniteliktir. Kullanıcılar eşitlenmeden önce Azure AD 'de kullanılan etki alanlarını (UPN sonekleri olarak da bilinir) doğrulamanız gerekir.
+UserPrincipalName özniteliği, kullanıcıların Azure AD 'de oturum açtıklarında kullandıkları özniteliktir ve Microsoft 365. Kullanıcılar eşitlenmeden önce Azure AD 'de kullanılan etki alanlarını (UPN sonekleri olarak da bilinir) doğrulamanız gerekir.
 
 Varsayılan öznitelik userPrincipalName ' i tutmanız önemle tavsiye ederiz. Bu öznitelik yönlendirilemez ve doğrulanamazsa, oturum açma KIMLIĞINI tutan öznitelik olarak başka bir öznitelik (örneğin, e-posta) seçmek mümkündür. Bu, alternatif KIMLIK olarak bilinir. Alternatif KIMLIK özniteliği değeri, RFC 822 standardına uymalıdır. Oturum açma çözümü olarak hem parola SSO 'SU hem de Federasyon SSO 'SU ile alternatif bir KIMLIK kullanabilirsiniz.
 
 > [!NOTE]
-> Alternatif KIMLIK kullanılması tüm Office 365 iş yükleri ile uyumlu değildir. Daha fazla bilgi için bkz. [Alternatif Oturum Açma Kimliğini Yapılandırma](https://technet.microsoft.com/library/dn659436.aspx).
+> Alternatif KIMLIK kullanılması tüm Microsoft 365 iş yükleri ile uyumlu değildir. Daha fazla bilgi için bkz. [Alternatif Oturum Açma Kimliğini Yapılandırma](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 >
 >
 

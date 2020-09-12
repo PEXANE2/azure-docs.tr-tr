@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266978"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660283"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -33,7 +33,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 **VMware** | **Ayrıntılar**
 --- | ---
-**vCenter Server** | Keşfetmek ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5 veya 6,7 tarafından yönetilmelidir.
+**vCenter Server** | Keşfetmek ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5, 6,7 veya 7,0 tarafından yönetilmelidir.<br/><br/> Gereç içinde ESXi ana bilgisayar ayrıntıları sağlayarak VMware VM 'lerinin bulunması Şu anda desteklenmiyor.
 **İzinler** | Sunucu değerlendirmesi bulma ve değerlendirme için vCenter Server salt okuma hesabına ihtiyaç duyuyor.<br/><br/> Uygulama bulma veya bağımlılık görselleştirmesi yapmak istiyorsanız, **sanal makinelerin**  >  **Konuk işlemlerinde**ayrıcalıkların etkinleştirilmesi gerekir.
 
 ## <a name="vm-requirements"></a>VM gereksinimleri
@@ -89,7 +89,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **vCenter Server kimlik bilgileri** | Bağımlılık görselleştirmesine, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olması gerekir.
 **Windows VM izinleri** |  Bağımlılık analizi için, Azure geçişi gereci, Windows VM 'lerine erişmek için bir etki alanı yöneticisi hesabı veya yerel yönetici hesabı gerekir.
 **Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Linux hesabı** | Bağımlılık analizi için, Linux makinelerde Azure geçişi gereci, kök ayrıcalığına sahip bir kullanıcı hesabına ihtiyaç duyuyor.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
+**Linux hesabı** | Bağımlılık analizi için, Linux makinelerde Azure geçişi gereci, kök ayrıcalığına sahip bir kullanıcı hesabına ihtiyaç duyuyor.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE. Aşağıdaki komutları kullanarak bu özellikleri ayarlayın: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
 **Gerekli aracılar** | Çözümlemek istediğiniz makinelerde aracı gerekmez.
 **VMware araçları** | VMware araçları (10,2 ' den sonraki sürümler), çözümlemek istediğiniz her sanal makinede yüklü ve çalışır olmalıdır.
 

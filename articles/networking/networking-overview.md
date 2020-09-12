@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037261"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651728"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
 
@@ -38,7 +38,7 @@ Bu bölümde Azure kaynakları, şirket içi ağdan Azure kaynaklarına bağlant
 |[Azure DNS](#dns)|Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanlarını barındırır.|<p>[Azure DNS’te etki alanınızı barındırma](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Bir Web uygulaması için DNS kayıtları oluşturma](../dns/dns-web-sites-custom-domain.md)</p> <p>[Traffic Manager için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-tm.md)</p> <p>[Genel IP adresi için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-pip.md)</p> <p>[Bölge kaynak kaydı için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|TLS üzerinden Azure portal doğrudan sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı yapılandırın. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizde ortak bir IP adresi gerekmez|<p>[Azure Bastion konağı oluşturma](../bastion/bastion-create-host-portal.md)</p><p>[Linux VM 'ye SSH kullanarak bağlanma](../bastion/bastion-connect-vm-ssh.md)</p><p>[Windows VM 'ye RDP kullanarak bağlanma](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Sanal ağ NAT ağ geçidi](#nat)|Bir sanal makine için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturun.|<p>[NAT ağ geçidi oluşturma](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure eşleme hizmeti (Önizleme)](#azurepeeringservice)|Genel ağ üzerinden Microsoft bulutuna en iyi ve güvenilir yönlendirme için hizmet sağlayıcılarıyla işbirliği yapın.|<p>[Azure eşleme hizmetini Kaydet](../peering-service/azure-portal.md)</p>|
+|[Azure Eşleme Hizmeti](#azurepeeringservice)|Genel ağ üzerinden Microsoft bulutuna en iyi ve güvenilir yönlendirme için hizmet sağlayıcılarıyla işbirliği yapın.|<p>[Azure eşleme hizmetini Kaydet](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -83,7 +83,7 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 
 ![Sanal ağ NAT ağ geçidi](./media/networking-overview/flow-map.png)
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure eşleme hizmeti
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure eşleme hizmeti
 Azure eşleme hizmeti, Office 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştirir. Daha fazla bilgi için bkz. [Azure eşleme hizmeti nedir?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Uygulama koruma hizmetleri
@@ -99,7 +99,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 |[Sanal ağ hizmet uç noktaları](#serviceendpoints)|Bazı Azure hizmet kaynaklarına ağ erişimini bir sanal ağ alt ağıyla sınırlamanıza olanak sağlar|[PaaS kaynaklarına ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
 [Özel Bağlantı](#privatelink)|Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerini sanal ağınızdaki özel bir uç nokta üzerinden erişmenize izin vermez.|<p>[Özel uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)</p><p>[Özel Bağlantı hizmeti oluşturma](../private-link/create-private-link-service-portal.md)</p>|
 |||
-### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDOS Koruması 
+### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS koruması 
 [Azure DDoS koruması](../virtual-network/manage-ddos-protection.md) , en gelişmiş DDoS tehditlerine karşı karşı önlemler sağlar. Hizmet, uygulamanız ve sanal ağlarınızda dağıtılan kaynaklarınız için gelişmiş DDoS azaltma özellikleri sağlar. Ayrıca, Azure DDoS koruması kullanan müşterilerin, etkin bir saldırı sırasında DDoS uzmanlarını sağlamak için DDoS hızlı yanıt desteğine erişimi vardır.
 
 ![DDOS Koruması](./media/networking-overview/ddos-protection.png)

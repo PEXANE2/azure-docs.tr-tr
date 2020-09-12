@@ -1,5 +1,5 @@
 ---
-title: Studio 'da işlem kaynakları oluşturma
+title: Eğitim & dağıtımı oluşturma (Studio)
 titleSuffix: Azure Machine Learning
 description: Machine Learning için eğitim ve dağıtım işlem kaynakları (işlem hedefleri) oluşturmak için Studio 'yu kullanma
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147610"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661964"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetme
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -119,6 +119,9 @@ Küme oluşturma sırasında veya işlem kümesi ayrıntılarını düzenlediği
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>Çıkarım kümeleri
+
+> [!IMPORTANT]
+> Azure Machine Learning ile Azure Kubernetes hizmeti 'nin kullanılması birden çok yapılandırma seçeneği içerir. Ağ gibi bazı senaryolar ek kurulum ve yapılandırma gerektirir. Azure ML ile AKS kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesi oluşturma ve iliştirme](how-to-create-attach-kubernetes.md).
 
 Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturun veya ekleyin. AKS kümesini oluşturmak için [Yukarıdaki adımları](#portal-create) kullanın.  Daha sonra formu aşağıdaki gibi doldurun:
 

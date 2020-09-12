@@ -6,15 +6,15 @@ ms.author: viviali
 ms.date: 03/27/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b9cf8b862f77af833016d6aabb0ccae7bea8e24a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497435"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015985"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI'yı kullanarak cihaz bağlantısını izleme
 
@@ -24,9 +24,9 @@ Cihazlarınızın IoT Central gönderdiği iletileri görmek ve cihaz ikizi değ
 
 [Daha fazla bilgi için Azure CLı uzantıları başvurusunu ziyaret edin](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-+ Azure CLı yüklü ve sürüm 2.0.7 veya üzeri. Çalıştırarak Azure CLı 'nizin sürümünü denetleyin `az --version` . [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
++ Azure CLı yüklü ve sürüm 2.7.0 veya üzeri. Çalıştırarak Azure CLı 'nizin sürümünü denetleyin `az --version` . [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
 + Azure 'da bir IoT Central uygulamasına kullanıcı olarak eklenen bir iş veya okul hesabı.
 
 ## <a name="install-the-iot-central-extension"></a>IoT Central uzantısını yükler
@@ -43,7 +43,7 @@ az extension add --name azure-iot
 az --version
 ```
 
-Azure-IoT uzantısının 0.8.1 veya üzeri olduğunu görmeniz gerekir. Değilse, şunu çalıştırın:
+Azure-IoT uzantısının 0.9.9 veya üzeri olduğunu görmeniz gerekir. Değilse, şunu çalıştırın:
 
 ```azurecli
 az extension update --name azure-iot
@@ -68,14 +68,14 @@ az login
 Cihazlarınızdan IoT Central uygulamanıza gönderilen iletileri izleyin. Çıktı tüm üst bilgileri ve ek açıklamaları içerir.
 
 ```azurecli
-az iot central app monitor-events --app-id <app-id> --properties all
+az iot central diagnostics monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>Cihaz özelliklerini görüntüle
 Belirli bir cihaz için geçerli okuma ve okuma/yazma cihaz özelliklerini görüntüleyin.
 
 ```azurecli
-az iot central device-twin show --app-id <app-id> --device-id <device-id>
+az iot central device twin show --app-id <app-id> --device-id <device-id>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

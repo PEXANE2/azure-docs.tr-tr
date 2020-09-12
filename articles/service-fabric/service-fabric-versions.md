@@ -3,12 +3,12 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d6e9bbe3a1a99a8e4ee726cb88796dccb6f6ccbd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205893"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652053"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -47,6 +47,7 @@ Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri liste
 | 7.1.417.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.1.428.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 | 7.1.456.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+| 7.1.458.* | 7.0.466.* |Sürüm 4,1 ' den küçük veya buna eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -119,4 +120,5 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7,1 CU2 UYGULAMAZSANıZ | 7.1.428.9590 | 7.1.428.1 |
 | 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 

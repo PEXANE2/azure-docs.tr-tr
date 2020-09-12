@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c1c11d16be6bd5eb7381a811216323680fe74c08
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849378"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651807"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning modelinize ait hiper parametreleri ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,11 +46,11 @@ Her hiper parametre için tanımlanan değer aralığını inceleyerek hiper par
 
 ### <a name="types-of-hyperparameters"></a>Hiper parametre türleri
 
-Her hiper parametre ayrı veya sürekli olabilir ve bir [parametre ifadesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)tarafından tanımlanan değerlerin bir dağıtımına sahiptir.
+Her hiper parametre ayrı veya sürekli olabilir ve bir [parametre ifadesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py&preserve-view=true)tarafından tanımlanan değerlerin bir dağıtımına sahiptir.
 
 #### <a name="discrete-hyperparameters"></a>Ayrık hiper parametreler 
 
-Ayrık hiper parametreler, `choice` ayrık değerler arasında bir olarak belirtilir. `choice`şunları yapabilirsiniz:
+Ayrık hiper parametreler, `choice` ayrık değerler arasında bir olarak belirtilir. `choice` şunları yapabilirsiniz:
 
 * bir veya daha fazla virgülle ayrılmış değer
 * bir `range` nesne
@@ -68,19 +68,19 @@ Bu durumda, `batch_size` [16, 32, 64, 128] değerlerinden birini alır ve `numbe
 
 Gelişmiş ayrık hiper parametreler, bir dağıtım kullanılarak da belirtilebilir. Aşağıdaki dağıtımlar desteklenir:
 
-* `quniform(low, high, q)`-Round (Tekdüzen (düşük, yüksek)/q) * q gibi bir değer döndürür
-* `qloguniform(low, high, q)`-Round gibi bir değer döndürür (EXP (Tekdüzen (düşük, yüksek))/q) * q
-* `qnormal(mu, sigma, q)`-Round (normal (mu, Sigma)/q) * q gibi bir değer döndürür
-* `qlognormal(mu, sigma, q)`-Round (EXP (normal (mu, Sigma))/q) * q gibi bir değer döndürür
+* `quniform(low, high, q)` -Round (Tekdüzen (düşük, yüksek)/q) * q gibi bir değer döndürür
+* `qloguniform(low, high, q)` -Round gibi bir değer döndürür (EXP (Tekdüzen (düşük, yüksek))/q) * q
+* `qnormal(mu, sigma, q)` -Round (normal (mu, Sigma)/q) * q gibi bir değer döndürür
+* `qlognormal(mu, sigma, q)` -Round (EXP (normal (mu, Sigma))/q) * q gibi bir değer döndürür
 
 #### <a name="continuous-hyperparameters"></a>Sürekli hiper parametreler 
 
 Sürekli hiper parametreler, sürekli bir değer aralığında dağıtım olarak belirtilir. Desteklenen dağıtımlar şunları içerir:
 
-* `uniform(low, high)`-Düşük ve yüksek arasında eşit olarak dağıtılan bir değer döndürür
-* `loguniform(low, high)`-Return değerinin logaritması eşit olarak dağıtılabilmesi için, exp 'ye (Tekdüzen (düşük, yüksek) göre çizilen bir değer döndürür
-* `normal(mu, sigma)`-Normalde ortalama mu ve standart sapma sigma ile dağıtılan gerçek bir değer döndürür
-* `lognormal(mu, sigma)`-Return değerinin logaritması normal şekilde dağıtılabilmesi için, exp (normal (mu, Sigma) değerine göre çizilen bir değer döndürür
+* `uniform(low, high)` -Düşük ve yüksek arasında eşit olarak dağıtılan bir değer döndürür
+* `loguniform(low, high)` -Return değerinin logaritması eşit olarak dağıtılabilmesi için, exp 'ye (Tekdüzen (düşük, yüksek) göre çizilen bir değer döndürür
+* `normal(mu, sigma)` -Normalde ortalama mu ve standart sapma sigma ile dağıtılan gerçek bir değer döndürür
+* `lognormal(mu, sigma)` -Return değerinin logaritması normal şekilde dağıtılabilmesi için, exp (normal (mu, Sigma) değerine göre çizilen bir değer döndürür
 
 Parametre alanı tanımına bir örnek:
 
@@ -91,7 +91,7 @@ Parametre alanı tanımına bir örnek:
     }
 ```
 
-Bu kod, iki parametreli arama alanını tanımlar- `learning_rate` ve `keep_probability` . `learning_rate`, ortalama değeri 10 ve standart sapması 3 olan normal bir dağıtıma sahiptir. `keep_probability`, en az 0,05 değeri ve en fazla 0,1 değeri olan bir Tekdüzen dağıtımına sahiptir.
+Bu kod, iki parametreli arama alanını tanımlar- `learning_rate` ve `keep_probability` . `learning_rate` , ortalama değeri 10 ve standart sapması 3 olan normal bir dağıtıma sahiptir. `keep_probability` , en az 0,05 değeri ve en fazla 0,1 değeri olan bir Tekdüzen dağıtımına sahiptir.
 
 ### <a name="sampling-the-hyperparameter-space"></a>Hiper parametre alanını örnekleme
 
@@ -105,7 +105,7 @@ Ayrıca, hiper parametre alanı tanımı üzerinde kullanılacak parametre örne
 
 #### <a name="random-sampling"></a>Rastgele örnekleme
 
-Rastgele örnekleme içinde, hiper parametre değerleri tanımlanmış arama alanından rastgele seçilir. [Rastgele örnekleme](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py) , arama alanının hem ayrık hem de sürekli hiper parametreleri içermesini sağlar.
+Rastgele örnekleme içinde, hiper parametre değerleri tanımlanmış arama alanından rastgele seçilir. [Rastgele örnekleme](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py&preserve-view=true) , arama alanının hem ayrık hem de sürekli hiper parametreleri içermesini sağlar.
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
@@ -120,7 +120,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Kılavuz örnekleme
 
-[Grid örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) , tanımlanan arama alanındaki tüm uygun değerler üzerinde basit bir kılavuz araması gerçekleştirir. Yalnızca kullanılarak belirtilen ayarlama hiperparametreleri ile kullanılabilir `choice` . Örneğin, aşağıdaki alanda toplam altı örnek vardır:
+[Grid örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py&preserve-view=true) , tanımlanan arama alanındaki tüm uygun değerler üzerinde basit bir kılavuz araması gerçekleştirir. Yalnızca kullanılarak belirtilen ayarlama hiperparametreleri ile kullanılabilir `choice` . Örneğin, aşağıdaki alanda toplam altı örnek vardır:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -134,7 +134,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayes örneklemesi
 
-[Bayeme örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py) , bayeme iyileştirme algoritmasını temel alır ve bir sonraki örnek olarak hiper parametre değerlerinde akıllı seçimler yapar. Yeni örnek, bildirilen birincil ölçüyü arttıran şekilde, önceki örneklerin nasıl gerçekleştirildiğiyle ilgili örneği seçer.
+[Bayeme örneklemesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py&preserve-view=true) , bayeme iyileştirme algoritmasını temel alır ve bir sonraki örnek olarak hiper parametre değerlerinde akıllı seçimler yapar. Yeni örnek, bildirilen birincil ölçüyü arttıran şekilde, önceki örneklerin nasıl gerçekleştirildiğiyle ilgili örneği seçer.
 
 Bayeak örneklemesi kullandığınızda, eşzamanlı çalışan sayısı ayarlama işleminin verimliliği üzerinde bir etkiye sahiptir. Genellikle, daha küçük paralellik derecesi daha önce tamamlanmış çalışmalardan faydalan çalışma sayısını arttığı için, daha az sayıda eşzamanlı çalışma daha iyi örnekleme yakınsamasına neden olabilir.
 
@@ -157,7 +157,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a>Birincil ölçümü belirtin
 
-Hiperparameter ayarlama denemesinin [İyileştirilmek istediğiniz birincil ölçüyü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) belirtin. Her eğitim çalışması, birincil ölçüm için değerlendirilir. Kötü performanslı çalıştırmalar (birincil ölçümün erken sonlandırma ilkesi tarafından ayarlanan ölçütleri karşılamadığında) sonlandırılır. Birincil ölçüm adının yanı sıra, en iyi duruma getirme amacını da belirtirsiniz. birincil ölçümü en üst düzeye çıkarıp en aza indirmenize mi olursunuz.
+Hiperparameter ayarlama denemesinin [İyileştirilmek istediğiniz birincil ölçüyü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) belirtin. Her eğitim çalışması, birincil ölçüm için değerlendirilir. Kötü performanslı çalıştırmalar (birincil ölçümün erken sonlandırma ilkesi tarafından ayarlanan ölçütleri karşılamadığında) sonlandırılır. Birincil ölçüm adının yanı sıra, en iyi duruma getirme amacını da belirtirsiniz. birincil ölçümü en üst düzeye çıkarıp en aza indirmenize mi olursunuz.
 
 * `primary_metric_name`: Optimize edilecek birincil ölçümün adı. Birincil ölçümün adı, eğitim betiği tarafından günlüğe kaydedilen ölçüm adıyla tam olarak eşleşmelidir. Bkz. [hyperparameter ayarlama Için günlük ölçümleri](#log-metrics-for-hyperparameter-tuning).
 * `primary_metric_goal`: Ya da ya da `PrimaryMetricGoal.MAXIMIZE` , `PrimaryMetricGoal.MINIMIZE` çalıştırmalar değerlendirilirken birincil ölçümün büyütülmesini veya küçültülmeyeceğini belirler. 
@@ -187,7 +187,7 @@ Eğitim betiği, öğesini hesaplar `val_accuracy` ve birincil ölçüm olarak k
 
 <a name='specify-early-termination-policy'/>
 
-## <a name="specify-early-termination-policy"></a><a name="early-termination"></a>Erken sonlandırma ilkesini belirtin
+## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Erken sonlandırma ilkesini belirtin
 
 Erken sonlandırma ilkesiyle, kötü performanslı çalıştırmaları otomatik olarak sonlandırın. Sonlandırma, kaynakların kaynaklarını azaltır ve bunun yerine diğer parametre yapılandırmalarının incelenmesi için bu kaynakları kullanır.
 
@@ -200,9 +200,9 @@ Azure Machine Learning, aşağıdaki erken sonlandırma Ilkelerini destekler.
 
 ### <a name="bandit-policy"></a>Bandıt ilkesi
 
-[Bandıt](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) , bolluk faktörü/bolluk miktarına ve değerlendirme aralığına dayalı bir sonlandırma ilkesidir. İlke, birincil ölçümün belirtilen bolluk faktörü/bolluk miktarında değil, en iyi şekilde çalışan eğitim çalıştırmasına göre değil, tüm çalıştırmaları erken sonlandırır. Aşağıdaki yapılandırma parametrelerini alır:
+[Bandıt](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#&preserve-view=truedefinition) , bolluk faktörü/bolluk miktarına ve değerlendirme aralığına dayalı bir sonlandırma ilkesidir. İlke, birincil ölçümün belirtilen bolluk faktörü/bolluk miktarında değil, en iyi şekilde çalışan eğitim çalıştırmasına göre değil, tüm çalıştırmaları erken sonlandırır. Aşağıdaki yapılandırma parametrelerini alır:
 
-* `slack_factor`ya da `slack_amount` : en iyi yapan eğitim çalıştırmasına göre izin verilen bolluk. `slack_factor`izin verilen bolluğu bir oran olarak belirtir. `slack_amount`izin verilen bolluğu, bir oran yerine mutlak bir miktar olarak belirtir.
+* `slack_factor` ya da `slack_amount` : en iyi yapan eğitim çalıştırmasına göre izin verilen bolluk. `slack_factor` izin verilen bolluğu bir oran olarak belirtir. `slack_amount` izin verilen bolluğu, bir oran yerine mutlak bir miktar olarak belirtir.
 
     Örneğin, 10. aralığa uygulanan bir bandıt ilkesi düşünün. 10. aralıkta en iyi şekilde çalışan çalıştırmanın, birincil ölçümü en üst düzeye çıkarmak için bir hedef ile 0,8 birincil ölçüm raporladığını varsayın. İlke bir 0,2 ile belirtildiyse, `slack_factor` zaman aralığı 10 ' da en iyi ölçüm 0,66 ' den (0.8/(1 +)) daha az olan tüm eğitim çalıştırmaları `slack_factor` sonlandırılır. Bunun yerine, ilke 0,2 ile belirtilirse, `slack_amount` 10. Aralık üzerinde en iyi ölçüm 0,6 ' den (0,8-) daha az olan herhangi bir eğitim çalıştırması `slack_amount` sonlandırılır.
 * `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
@@ -218,7 +218,7 @@ Bu örnekte, ilk sonlandırma ilkesi, ölçümler raporlanırken, değerlendirme
 
 ### <a name="median-stopping-policy"></a>Ortanca ilke durduruluyor
 
-[Ortanca durdurma](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) , çalıştırmalar tarafından bildirilen birincil ölçümlerin çalışma ortalamaları temelinde erken sonlandırma ilkesidir. Bu ilke, tüm eğitim çalıştırmaları genelinde ortalama ortalamaları hesaplar ve performansı, çalışma ortalamaları ortancası 'nin orta değerinden daha zayıf olan çalıştırmaları sonlandırır. Bu ilke aşağıdaki yapılandırma parametrelerini alır:
+[Ortanca durdurma](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py&preserve-view=true) , çalıştırmalar tarafından bildirilen birincil ölçümlerin çalışma ortalamaları temelinde erken sonlandırma ilkesidir. Bu ilke, tüm eğitim çalıştırmaları genelinde ortalama ortalamaları hesaplar ve performansı, çalışma ortalamaları ortancası 'nin orta değerinden daha zayıf olan çalıştırmaları sonlandırır. Bu ilke aşağıdaki yapılandırma parametrelerini alır:
 * `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
 * `delay_evaluation`: belirtilen Aralık sayısı için (isteğe bağlı parametre) ilk ilke değerlendirmesini geciktirir.
 
@@ -232,7 +232,7 @@ Bu örnekte, erken sonlandırma ilkesi, değerlendirme aralığı 5 ' te başlay
 
 ### <a name="truncation-selection-policy"></a>Kesme seçim ilkesi
 
-[Kesme seçimi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) , her değerlendirme aralığında verilen en düşük performanslı çalıştırma yüzdesini iptal eder. Çalıştırmalar, birincil ölçümde performansına göre karşılaştırılır ve en düşük X% sonlandırılır. Aşağıdaki yapılandırma parametrelerini alır:
+[Kesme seçimi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py&preserve-view=true) , her değerlendirme aralığında verilen en düşük performanslı çalıştırma yüzdesini iptal eder. Çalıştırmalar, birincil ölçümde performansına göre karşılaştırılır ve en düşük X% sonlandırılır. Aşağıdaki yapılandırma parametrelerini alır:
 
 * `truncation_percentage`: her değerlendirme aralığında sonlandırmak için en düşük performanslı çalıştırmanın yüzdesi. 1 ile 99 arasında bir tamsayı değeri belirtin.
 * `evaluation_interval`: ilkeyi uygulama sıklığı (isteğe bağlı parametre).
@@ -291,7 +291,7 @@ Bu kod, tek seferde dört yapılandırmayı çalıştıran en fazla 20 toplam ç
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
 
-Tanımlı hiper parametre arama alanını, erken sonlandırma ilkesini, birincil ölçüyü ve Yukarıdaki bölümlerden kaynak ayırmayı kullanarak [hyperparameter ayarlama denemenizi yapılandırın](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) . Ayrıca, `estimator` örneklenmiş hiper parametrelerle çağrılacak bir sağlar. `estimator`Çalıştırdığınız eğitim betiğini, iş başına kaynakları (tek veya çok GPU) ve kullanılacak işlem hedefini açıklar. Hiper parametre ayarlama denemeniz için eşzamanlılık kullanılabilir kaynaklar üzerinde olduğundan, öğesinde belirtilen işlem hedefinin `estimator` istediğiniz eşzamanlılık için yeterli kaynaklara sahip olduğundan emin olun. (Estimators hakkında daha fazla bilgi için bkz. [modelleri eğitme](how-to-train-ml-models.md).)
+Tanımlı hiper parametre arama alanını, erken sonlandırma ilkesini, birincil ölçüyü ve Yukarıdaki bölümlerden kaynak ayırmayı kullanarak [hyperparameter ayarlama denemenizi yapılandırın](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) . Ayrıca, `estimator` örneklenmiş hiper parametrelerle çağrılacak bir sağlar. `estimator`Çalıştırdığınız eğitim betiğini, iş başına kaynakları (tek veya çok GPU) ve kullanılacak işlem hedefini açıklar. Hiper parametre ayarlama denemeniz için eşzamanlılık kullanılabilir kaynaklar üzerinde olduğundan, öğesinde belirtilen işlem hedefinin `estimator` istediğiniz eşzamanlılık için yeterli kaynaklara sahip olduğundan emin olun. (Estimators hakkında daha fazla bilgi için bkz. [modelleri eğitme](how-to-train-ml-models.md).)
 
 Hyperparameter ayarlama denemenizi yapılandırın:
 
@@ -308,7 +308,7 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
 
 ## <a name="submit-experiment"></a>Deneme gönder
 
-Hyperparameter ayarlama yapılandırmanızı tanımladıktan sonra [bir deneme iletin](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#submit-config--tags-none----kwargs-):
+Hyperparameter ayarlama yapılandırmanızı tanımladıktan sonra [bir deneme iletin](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -316,7 +316,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name`, hyperparameter ayarlama denemenize atadığınız addır ve `workspace` deneme oluşturmak istediğiniz çalışma alanıdır (denemeleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nasıl çalışır?](concept-azure-machine-learning-architecture.md))
+`experiment_name` , hyperparameter ayarlama denemenize atadığınız addır ve `workspace` deneme oluşturmak istediğiniz çalışma alanıdır (denemeleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nasıl çalışır?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Hyperparameter ayarlama denemenize sıcak bir başlangıç yapın (isteğe bağlı)
 
@@ -360,7 +360,7 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
 
 ## <a name="visualize-experiment"></a>Denemeyi görselleştirin
 
-Azure Machine Learning SDK, eğitim çalışmalarınızın ilerlemesini görselleştirtiren bir [Not defteri pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py) sağlar. Aşağıdaki kod parçacığı, bir Jupyter not defterinde tek bir yerde çalışan tüm hiperparameter ayarlamayı görselleştirir:
+Azure Machine Learning SDK, eğitim çalışmalarınızın ilerlemesini görselleştirtiren bir [Not defteri pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true) sağlar. Aşağıdaki kod parçacığı, bir Jupyter not defterinde tek bir yerde çalışan tüm hiperparameter ayarlamayı görselleştirir:
 
 ```Python
 from azureml.widgets import RunDetails
@@ -383,7 +383,7 @@ Azure Web portalındaki tüm hiperparameter ayarlama çalışmalarınızı da g�
 
 ## <a name="find-the-best-model"></a>En iyi modeli bulun
 
-Tüm hiper parametre ayarlama işlemi tamamlandıktan sonra, [en iyi şekilde çalışan yapılandırmayı](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) ve ilgili hiper parametre değerlerini belirtin:
+Tüm hiper parametre ayarlama işlemi tamamlandıktan sonra, [en iyi şekilde çalışan yapılandırmayı](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) ve ilgili hiper parametre değerlerini belirtin:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()

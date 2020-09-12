@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003533"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024069"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Kimlik doğrulaması için Azure Ön Uç API’lerini kullanma
 
 Bu bölümde, kimlik doğrulama ve oturum yönetimi için API 'yi nasıl kullanacağınızı anlayacağız.
 
 > [!CAUTION]
-Bu bölümde açıklanan işlevler, sunucu üzerinde REST çağrılarını dahili olarak sorun. Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. `SessionGeneralContext.HttpResponseCode`Bu örnekte üyenin değeri 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+> Bu bölümde açıklanan işlevler, sunucu üzerinde REST çağrılarını dahili olarak sorun. Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. `SessionGeneralContext.HttpResponseCode`Bu örnekte üyenin değeri 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
 
 
 ## <a name="azurefrontendaccountinfo"></a>Azurefrontendaccountınfo

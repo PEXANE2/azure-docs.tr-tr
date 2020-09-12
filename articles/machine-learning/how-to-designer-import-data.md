@@ -5,17 +5,17 @@ description: Çeşitli veri kaynaklarından verileri Azure Machine Learning tasa
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495380"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006993"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısına veri aktarma (Önizleme)
 
@@ -38,19 +38,28 @@ Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi o
 
 1. Kaydetmek istediğiniz verilerin çıkışı olan modülü seçin.
 
-1. Özellikler bölmesinde, **çıktılar**  >  **kayıt veri kümesi**' ni seçin.
+1. Özellikler bölmesinde, **çıktılar + Günlükler**  >  **kayıt veri kümesi**' ni seçin.
 
     ![Register DataSet seçeneğine nasıl gidebileceğiniz gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri kümesi** veya **tablo veri kümesi**olarak kaydetmeyi seçmeniz gerekir.
+
+ - **Dosya veri kümesi** , modülün çıkış klasörünü dosya veri kümesi olarak kaydeder. Çıktı klasörü, tasarımcı 'nın dahili olarak kullandığı bir veri dosyası ve meta dosyaları içerir. Tasarımcıda kayıtlı veri kümesini kullanmaya devam etmek istiyorsanız bu seçeneği belirleyin. 
+
+ - **Tablo veri kümesi** , yalnızca modülün çıkış veri dosyasını tablo veri kümesi olarak kaydeder. Bu biçim, örneğin otomatikleştirilmiş Machine Learning veya Python SDK 'Sı gibi diğer araçlarla kolayca tüketilebilir. Kayıtlı veri kümesini Tasarımcı dışında kullanmayı planlıyorsanız bu seçeneği belirleyin.  
+
+
+
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
-Kayıtlı veri kümeleriniz **, veri kümeleri veri kümeleri altında bulunan**modül paletinde bulunabilir  >  **My Datasets**. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını paletteki diğer modüllere bağlayın.
+Kayıtlı veri kümeleriniz, **veri kümeleri**altında modül paletinde bulunabilir. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını tuvaldeki diğer modüllere bağlayın. 
 
 ![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> Tasarımcı şu anda yalnızca [tablolu veri kümelerini](how-to-create-register-datasets.md#dataset-types)işlemeyi destekliyor. [Dosya veri kümelerini](how-to-create-register-datasets.md#dataset-types)kullanmak istiyorsanız Python ve R için kullanılabilen Azure Machine Learning SDK 'sını kullanın.
+> Tasarımcı [veri kümesi sürümü oluşturmayı](how-to-version-track-datasets.md)destekler. Veri kümesi modülünün Özellik panelinde veri kümesi sürümünü belirtin.
+
 
 ## <a name="import-data-using-the-import-data-module"></a>Verileri Içeri aktarma modülünü kullanarak içeri aktarma
 
@@ -94,7 +103,7 @@ Tasarlayıcıdaki modüller, işlem hedefinin boyutuyla sınırlıdır. Daha bü
 
 ## <a name="access-data-in-a-virtual-network"></a>Bir sanal ağdaki verilere erişme
 
-Çalışma alanınız bir sanal ağda ise, tasarımcıda verileri görselleştirmek için ek yapılandırma adımları gerçekleştirmeniz gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](how-to-enable-virtual-network.md#machine-learning-studio).
+Çalışma alanınız bir sanal ağda ise, tasarımcıda verileri görselleştirmek için ek yapılandırma adımları gerçekleştirmeniz gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

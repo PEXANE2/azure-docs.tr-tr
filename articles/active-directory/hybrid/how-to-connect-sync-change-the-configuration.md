@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357877"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662571"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -113,7 +113,7 @@ Her şey bekleniyorsa, zamanlayıcıyı yeniden etkinleştirebilirsiniz. PowerSh
 Önceki bölümde bir öznitelik akışında nasıl değişiklik yapılacağı açıklanmıştır. Bu bölümde bazı ek örnekler sağlanır. Eşitleme kuralını oluşturma adımları kısaltılmıştır, ancak önceki bölümde yer alarak tüm adımları bulabilirsiniz.
 
 ### <a name="use-an-attribute-other-than-the-default"></a>Varsayılan değer dışında bir öznitelik kullanın
-Bu fabrikam senaryosunda, yerel alfabede verilen ad, soyadı ve görünen ad için kullanılan bir orman vardır. Bu özniteliklerin Latin karakter temsili uzantı özniteliklerinde bulunabilir. Azure AD ve Office 365 ' de genel adres listesi oluşturmak için, kuruluş bunun yerine bu öznitelikleri kullanmak istiyor.
+Bu fabrikam senaryosunda, yerel alfabede verilen ad, soyadı ve görünen ad için kullanılan bir orman vardır. Bu özniteliklerin Latin karakter temsili uzantı özniteliklerinde bulunabilir. Azure AD 'de genel adres listesi oluşturmak ve Microsoft 365 için, kuruluş bunun yerine bu öznitelikleri kullanmak istiyor.
 
 Varsayılan yapılandırmayla, Yerel ormandaki bir nesne şöyle görünür:  
 ![Öznitelik akışı 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -265,11 +265,11 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
-    | Açıklama | *Bir açıklama girin* |  |
+    | Description | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
-    | Bağlantı türü | **Katıl** |  |
+    | Bağlantı türü | **Join** |  |
     | Önceliği | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. **Kapsam filtresi** sekmesine gidin ve aşağıdaki yan tümcesiyle **tek bir kapsam filtresi grubu** ekleyin:
@@ -307,11 +307,11 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
     | Name | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
-    | Açıklama | *Bir açıklama girin* ||
+    | Description | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
-    | Bağlantı türü | **Katıl** ||
+    | Bağlantı türü | **Join** ||
     | Önceliği | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren **tek bir kapsam filtresi grubu** ekleyin:
@@ -319,7 +319,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
-    | Cloudana kopyalı | Not QUAL | True |
+    | Cloudana kopyalı | Not QUAL | Doğru |
 
     Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerine uygulanacağını belirler. Bu örnekte, *Çıkış IÇIN ad – Kullanıcı kimliği* olmayan eşitleme kuralına göre aynı kapsam filtresini kullanırız. Eşitleme kuralının şirket içi Active Directory eşitlenmemiş Kullanıcı nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 

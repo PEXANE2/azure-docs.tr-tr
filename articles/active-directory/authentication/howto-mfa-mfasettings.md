@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179412"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023848"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -242,7 +242,10 @@ Azure Multi-Factor Authentication 'nin _güvenilir IP 'leri_ özelliği, TANıML
 
 Kuruluşunuz, şirket içi uygulamalara MFA sağlamak üzere NPS uzantısını dağıttığında, kaynak IP adresi her zaman kimlik doğrulama girişiminin akışa aldığı NPS sunucusu olacak şekilde görünür.
 
-| Azure AD kiracı türü | Güvenilen IP özelliği seçenekleri | |:---|:---| iki adımlı | Yönetilen | **Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. En fazla 50 güvenilen IP aralığı yapılandırılabilir. | | Federasyon | **Tüm Federasyon kullanıcıları**: kuruluşun içinden oturum açan tüm Federasyon kullanıcıları Multi-Factor Authentication 'ı atlayabilir. Kullanıcılar, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından verilen bir talep kullanarak doğrulamayı atlar.<br/>**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. |
+| Azure AD kiracı türü | Güvenilen IP özelliği seçenekleri |
+|:--- |:--- |
+| Yönetilen |**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. En fazla 50 güvenilen IP aralığı yapılandırılabilir.|
+| Federe |**Tüm Federasyon kullanıcıları**: kuruluşun içinden oturum açan tüm Federasyon kullanıcıları Multi-Factor Authentication 'ı atlayabilir. Kullanıcılar, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından verilen bir talep kullanarak doğrulamayı atlar.<br/>**Belırlı IP adresi aralığı**: Yöneticiler, şirket intranetinden oturum açan kullanıcılar için Multi-Factor Authentication 'ı atlayabilen bir IP adresleri aralığı belirtir. |
 
 Güvenilen IP atlama yalnızca şirket intraneti 'nin içinden işe yarar. **Tüm Federasyon kullanıcıları** seçeneğini belirlerseniz ve Kullanıcı şirket intranet dışından oturum açarsa, kullanıcının Multi-Factor Authentication kullanarak kimlik doğrulaması yapması gerekir. Kullanıcı bir AD FS talebi sunsa bile, işlem aynıdır.
 

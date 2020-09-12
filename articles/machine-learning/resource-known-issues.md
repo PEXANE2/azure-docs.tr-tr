@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230390"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651646"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -173,7 +173,9 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 > [!WARNING]
 > Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
 
-* **Azure Portal**: çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal **genel bakış** sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekiyorsa, doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidin ve çalışma alanı adını arayın.
+* **Azure Portal**: 
+  * SDK 'dan veya Azure portal bir Share bağlantısından çalışma alanınıza doğrudan giderseniz, içindeki abonelik bilgilerine sahip standart **genel bakış** sayfasını görüntüleyemezsiniz. Bu senaryoda, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemek için doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidin ve çalışma alanı adını arayın.
+  * Tüm varlıklar (veri kümeleri, denemeleri, hesaplar vb.) yalnızca [Azure Machine Learning Studio](https://ml.azure.com)'da kullanılabilir. Azure portal mevcut *değildir* .
 
 * **Azure Machine Learning Studio Web portalındaki desteklenen tarayıcılar**: işletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
   * Microsoft Edge (yeni Microsoft Edge, en son sürüm. Microsoft Edge eski değil)
@@ -239,7 +241,7 @@ Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
     1. **Veri kümesi izleyicileri** sekmesinde, çalışma durumunu denetlemek için denemeler bağlantısını seçin.  Bu bağlantı tablonun en sağında bulunur.
     1. Çalıştırma başarıyla tamamlanırsa, kaç ölçüm oluşturulduğunu veya bir uyarı mesajı olduğunu görmek için sürücü günlüklerini denetleyin.  Bir deneye tıkladıktan sonra **Çıkış + Günlükler** sekmesinde sürücü günlüklerini bulun.
 
-* SDK `backfill()` işlevi beklenen çıktıyı üretmiyorsa, bunun nedeni bir kimlik doğrulama sorunu olabilir.  Bu işleve geçirilecek bir işlem oluşturduğunuzda, kullanmayın `Run.get_context().experiment.workspace.compute_targets` .  Bunun yerine, bu işleve geçirdiğiniz işlem oluşturmak için aşağıdaki gibi [Serviceprincıpalauthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) kullanın `backfill()` : 
+* SDK `backfill()` işlevi beklenen çıktıyı üretmiyorsa, bunun nedeni bir kimlik doğrulama sorunu olabilir.  Bu işleve geçirilecek bir işlem oluşturduğunuzda, kullanmayın `Run.get_context().experiment.workspace.compute_targets` .  Bunun yerine, bu işleve geçirdiğiniz işlem oluşturmak için aşağıdaki gibi [Serviceprincıpalauthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) kullanın `backfill()` : 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -251,7 +253,7 @@ Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
    compute = ws.compute_targets.get("xxx")
    ```
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı
 
 * **Uzun süreli işlem hazırlama süresi:**
 
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özgü tahminler de sağlar. Bu tahmini kullanımı, çekirdek Framework bağımlılıklarının eğitim için kullanılan ortamda sizin adınıza yüklü olduğundan emin olur. Yukarıda açıklandığı gibi ek bağımlılıklar belirtme seçeneğiniz vardır. 
  
     Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
-    Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sköğren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+    Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [sköğren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
 
     > [!Note]
     > Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod kapatıldı**: "AbortedError: Horovod" ile karşılaşırsanız çoğu durumda, bu özel durum Horovod 'nin kapatılmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler adlandırılır `70_driver_logs` . Dağıtılmış eğitim söz konusu olduğunda, `_rank` günlükleri ayırt etmek daha kolay hale getirmek için günlük adlarının ' de sonlanmasını sağlayın. Horovod 'nin kapatılmasına neden olan hatayı tam olarak bulmak için, tüm günlük dosyalarını `Traceback` inceleyin ve driver_log dosyalarının sonundaki bölümüne bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
 
-* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
+* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
 
     Tek tek denemeleri veya çalıştırmaları kalıcı olarak silme işlemi şu anda desteklenmiyor. Çalışma alanı varlıklarını silme hakkında daha fazla bilgi için bkz. [Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme](how-to-export-delete-data.md).
 
@@ -337,6 +339,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
+ 
+* **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş ortalama kök kare hatasına geçiş yapabilirsiniz.
  
 * **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
  

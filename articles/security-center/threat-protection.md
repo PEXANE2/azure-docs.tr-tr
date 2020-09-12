@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e2f72cc0ea6851caaf5d0db2f17f8e16473d420e
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272510"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667557"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
@@ -25,7 +25,7 @@ Azure Güvenlik Merkezi 'nin tehdit koruması, ortamınız için kapsamlı savun
 
 * **Azure işlem kaynakları Için tehdit koruması**: Windows makineler, Linux makineleri, Azure App Service ve Azure kapsayıcıları
 
-* **Azure veri kaynakları Için tehdit koruması**: SQL VERITABANı ve SQL veri ambarı, Azure depolama ve Azure Cosmos DB
+* **Azure veri kaynakları Için tehdit koruması**: SQL veritabanı ve Azure SYNAPSE Analytics (eskı adıyla SQL veri ambarı), Azure depolama ve Azure Cosmos DB
 
 * **Azure hizmet katmanları Için tehdit koruması**: Azure ağ katmanı, Azure Yönetim katmanı (Azure Resource Manager) (Önizleme) ve Azure Key Vault (Önizleme)
 
@@ -119,7 +119,7 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 |Yayın durumu:|Genel olarak kullanılabilir|
 |Fiyat|Standart katmanı|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,19 +131,19 @@ App Service planları hakkında daha fazla bilgi için bkz. [App Service planlar
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>SQL veritabanı ve SQL veri ambarı için tehdit koruması <a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-azure-synapse-analytics-formerly-sql-data-warehouse"></a>SQL veritabanı ve Azure SYNAPSE Analytics için tehdit koruması (eski adıyla SQL veri ambarı) <a name="data-sql"></a>
 
 Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar.
 
 Şüpheli veritabanı etkinlikleri, olası güvenlik açıkları veya SQL ekleme saldırıları ve anormal veritabanı erişimi ve sorgu desenleri olduğunda uyarılar görürsünüz.
 
-Azure SQL veritabanı ve SQL için Gelişmiş tehdit koruması, Azure SQL veritabanı, Azure SQL yönetilen örnekleri, Azure SQL veri ambarı veritabanları ve Azure sanal makinelerinde SQL Server 'lar kapsayan gelişmiş SQL güvenlik özelliklerine yönelik [Gelişmiş veri güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Birleşik paketinin bir parçasıdır.
+Azure SQL veritabanı ve SQL için Gelişmiş tehdit koruması, Azure SQL veritabanı, Azure SQL yönetilen örnekleri, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) veritabanları ve Azure sanal makinelerinde SQL Server 'lar kapsayan gelişmiş SQL güvenlik özelliklerine yönelik [Gelişmiş veri güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Birleşik paketinin bir parçasıdır.
 
 Daha fazla bilgi için bkz.
 
 * [Azure SQL veritabanı için Gelişmiş tehdit korumasını etkinleştirme](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Azure sanal makinelerinde SQL Server 'lar için Gelişmiş tehdit korumasını etkinleştirme](security-center-iaas-advanced-data.md)
-* [SQL veritabanı ve SQL veri ambarı için tehdit koruması uyarılarının listesi](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [SQL veritabanı ve Azure SYNAPSE Analytics için tehdit koruması uyarılarının listesi (eski adıyla SQL veri ambarı)](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
@@ -155,7 +155,7 @@ Daha fazla bilgi için bkz.
 |----|:----|
 |Yayın durumu:|[BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)<br>[Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme)<br>[Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Önizleme)|
 |Fiyat|Standart katmanı|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -164,8 +164,6 @@ Daha fazla bilgi için bkz.
 Azure depolama için tehdit koruması, Azure depolama hesaplarınızdaki zararlı olabilecek etkinlikleri algılar. Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir.
 
 Bu koruma katmanı, güvenlik uzmanı olmanıza gerek *kalmadan* tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
-
-Depolama hesaplarınız korunuyor 
 
 ### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure Storage için tehdit koruması ne tür uyarılar sağlar?
 
@@ -204,7 +202,7 @@ Daha fazla bilgi için bkz.
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için tehdit koruması <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için tehdit koruması (Önizleme) <a name="cosmos-db"></a>
 
 Azure Cosmos DB uyarıları, Azure Cosmos DB hesaplarına erişmek veya bu hesaplara yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur.
 

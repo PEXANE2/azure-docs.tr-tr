@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936529"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006769"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -31,7 +31,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -106,7 +106,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örnek:
+    Örneğin:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -122,6 +122,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 ### <a name="user-secrets-and-other-configuration-providers"></a>Kullanıcı gizli dizileri ve diğer yapılandırma sağlayıcıları
 
 İzleme anahtarını ASP.NET Core Kullanıcı gizlilikleri içinde depolamak veya başka bir yapılandırma sağlayıcısından almak istiyorsanız, aşırı yüklemeyi bir `Microsoft.Extensions.Configuration.IConfiguration` parametresiyle kullanabilirsiniz. Örneğin, `services.AddApplicationInsightsTelemetry(Configuration);`.
+Microsoft. ApplicationInsights. AspNetCore Version [2.15.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)' den başlayarak, çağırma `services.AddApplicationInsightsTelemetry()` işlemi otomatik olarak uygulamanın içindeki izleme anahtarını okur `Microsoft.Extensions.Configuration.IConfiguration` . Açıkça sağlanması gerekmez `IConfiguration` .
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
@@ -158,17 +159,17 @@ Yukarıdaki adımlar, sunucu tarafı Telemetriyi toplamaya başlamanıza yardım
 
 1. İçinde ekleme `_ViewImports.cshtml` Ekle:
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. İçinde `_Layout.cshtml` , `HtmlHelper` bölümünün sonuna, `<head>` ancak diğer herhangi bir betikten önce ekleyin. Sayfadan herhangi bir özel JavaScript telemetrisini raporlamak istiyorsanız, bu kod parçacığına sonra ekleme:
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 Alternatif olarak, `FullScript` `ScriptBody` SDK v 2.14 ' den itibaren kullanılabilir. `<script>`Bir Içerik güvenlik ilkesi ayarlamak için etiketi kontrol etmeniz gerekiyorsa bunu kullanın:
 
 ```cshtml
@@ -183,7 +184,7 @@ Projeniz içermiyorsa `_Layout.cshtml` , [istemci tarafı izleme](./website-moni
 
 ## <a name="configure-the-application-insights-sdk"></a>Application Insights SDK 'sını yapılandırma
 
-Varsayılan yapılandırmayı değiştirmek için ASP.NET Core Application Insights SDK 'sını özelleştirebilirsiniz. Application Insights ASP.NET SDK kullanıcıları, kullanarak veya değiştirerek yapılandırma değiştirme konusunda bilgi sahibi olabilir `ApplicationInsights.config` `TelemetryConfiguration.Active` . Yapılandırmayı ASP.NET Core için farklı şekilde değiştirirsiniz. ASP.NET Core SDK 'sını uygulamaya ekleyin ve ASP.NET Core yerleşik [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection)eklentisini kullanarak yapılandırın. `ConfigureServices()` `Startup.cs` Başka türlü yönlendirilmediğiniz takdirde, sınıfınızın yönteminde neredeyse tüm yapılandırma değişikliklerini yapın. Aşağıdaki bölümler daha fazla bilgi sunar.
+Varsayılan yapılandırmayı değiştirmek için ASP.NET Core Application Insights SDK 'sını özelleştirebilirsiniz. Application Insights ASP.NET SDK kullanıcıları, kullanarak veya değiştirerek yapılandırma değiştirme konusunda bilgi sahibi olabilir `ApplicationInsights.config` `TelemetryConfiguration.Active` . ASP.NET Core için, siz de yönlendirilmediğiniz takdirde, neredeyse tüm yapılandırma değişiklikleri `ConfigureServices()` sınıfınızın yönteminde yapılır `Startup.cs` . Aşağıdaki bölümler daha fazla bilgi sunar.
 
 > [!NOTE]
 > ASP.NET Core uygulamalarda, değiştirme ile yapılandırmayı değiştirme `TelemetryConfiguration.Active` desteklenmez.
@@ -221,8 +222,25 @@ public void ConfigureServices(IServiceCollection services)
 |Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartbeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
 |Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
 |RequestCollectionOptions. TrackExceptions | Istek koleksiyonu modülü tarafından işlenmeyen özel durum izlemenin raporlamasını etkinleştirin/devre dışı bırakın. | NETSTANDARD 2.0'da false (özel durumlar Applicationınsightsloggerprovider ile izleniyor), aksi takdirde true.
+|EnableDiagnosticsTelemetryModule | Etkinleştir/devre dışı bırak `DiagnosticsTelemetryModule` . Bunu devre dışı bırakmak, aşağıdaki ayarların yoksayılmasına neden olur; `EnableHeartbeat`, `EnableAzureInstanceMetadataTelemetryModule`, `EnableAppServicesHeartbeatTelemetryModule` | true
 
 En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılandırılabilir ayarlar '](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) a bakın.
+
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0-Beta3 & için yapılandırma önerisi
+
+Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) ' den başlayarak, ' de sunulan her bir ayarı `ApplicationInsightsServiceOptions` , uygulamalar örneği kullanılarak ınstrumentationkey dahil olmak üzere yapılandırmak `IConfiguration` . Aşağıdaki örnekte gösterildiği gibi ayarların "ApplicationInsights" bölümünde olması gerekir. appsettings.jsüzerindeki aşağıdaki bölüm, izleme anahtarını yapılandırır ve ayrıca Uyarlamalı örnekleme ve performans sayacı toplamayı devre dışı bırakır.
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+Kullanılıyorsa `services.AddApplicationInsightsTelemetry(aiOptions)` , bu ayarları geçersiz kılar `Microsoft.Extensions.Configuration.IConfiguration` .
 
 ### <a name="sampling"></a>Örnekleme
 
@@ -473,4 +491,3 @@ En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakı
 * Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](./api-custom-events-metrics.md) .
 * Uygulamanızı dünyanın her yerindeki sürekli denetlemek için [kullanılabilirlik testlerini](./monitor-web-app-availability.md) kullanın.
 * [ASP.NET Core'da Bağımlılık Ekleme](/aspnet/core/fundamentals/dependency-injection)
-

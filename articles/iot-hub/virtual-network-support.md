@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272909"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018365"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -225,6 +225,8 @@ Artık özel Service Bus uç noktanız, hub 'ın sistem tarafından atanan kimli
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>Karşıya dosya yükleme için depolama hesaplarına çıkış bağlantısı
 
 IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir depolama hesabına dosya yüklemesine olanak tanır. Karşıya dosya yüklemeye izin vermek için, hem cihazların hem de IoT Hub depolama hesabına bağlantısı olması gerekir. Depolama hesabında güvenlik duvarı kısıtlamaları varsa, cihazların bağlantı kazanmak için desteklenen depolama hesabının mekanizmasından ( [Özel uç noktalar](../private-link/create-private-endpoint-storage-portal.md), [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)veya [doğrudan güvenlik duvarı yapılandırması](../storage/common/storage-network-security.md)dahil) birini kullanması gerekir. Benzer şekilde, depolama hesabında güvenlik duvarı kısıtlamaları varsa, IoT Hub, güvenilen Microsoft Hizmetleri özel durumu aracılığıyla depolama kaynağına erişmek üzere yapılandırılmalıdır. Bu amaçla, IoT Hub yönetilen bir kimliğe sahip olmalıdır. Yönetilen bir kimlik sağlandıktan sonra, depolama hesabınıza erişmek için hub 'ın kaynak kimliğine RBAC izni vermek üzere aşağıdaki adımları izleyin.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083693"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669755"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -48,18 +48,23 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 * Bulma durumu çalışıyorsa, uygulamanın sistem durumunu denetlemek için _Ölçümler ' e_gidin. Aşağıdaki ölçümleri inceleyin:
 
 
-  - `TomcatErrorCount`(_Tomcat. Global. Error_): tüm Spring Application özel durumları burada sayılır. Bu sayı büyükse, uygulama günlüklerinizi incelemek için Azure Log Analytics 'ye gidin.
+  - `TomcatErrorCount` (_Tomcat. Global. Error_): tüm Spring Application özel durumları burada sayılır. Bu sayı büyükse, uygulama günlüklerinizi incelemek için Azure Log Analytics 'ye gidin.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, `OutOfMemoryError` ayrılan *> kullanılan*belleği artırmayı denerse, *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin `-Xmx` .
+  - `AppMemoryMax` (_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, `OutOfMemoryError` ayrılan *> kullanılan*belleği artırmayı denerse, *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin `-Xmx` .
 
-  - `AppMemoryUsed`(_JVM. Memory. kullanılan_): uygulama tarafından şu anda kullanılmakta olan bellek miktarı (bayt cinsinden). Normal bir Java uygulaması için, bu ölçüm serisi, bellek kullanımı artmasıyla küçük artışlarla arttığı ve azaldıkça ve daha sonra model yinelenirse bir *testere dişi* modelini oluşturur. Bu ölçüm serisi, Java sanal makinesi içindeki çöp toplama işlemi nedeniyle, koleksiyon eylemlerinin testere dişi deseninin düştüğini gösterdiği yerdir.
+  - `AppMemoryUsed` (_JVM. Memory. kullanılan_): uygulama tarafından şu anda kullanılmakta olan bellek miktarı (bayt cinsinden). Normal bir Java uygulaması için, bu ölçüm serisi, bellek kullanımı artmasıyla küçük artışlarla arttığı ve azaldıkça ve daha sonra model yinelenirse bir *testere dişi* modelini oluşturur. Bu ölçüm serisi, Java sanal makinesi içindeki çöp toplama işlemi nedeniyle, koleksiyon eylemlerinin testere dişi deseninin düştüğini gösterdiği yerdir.
     
     Bu ölçüm, aşağıdaki gibi bellek sorunlarını belirlemenize yardımcı olmak için önemlidir:
     * Çok başındaki bir bellek patlaması.
     * Belirli bir mantık yolu için aşırı gerilim bellek ayırması.
     * Aşamalı bellek sızıntıları.
-
   Daha fazla bilgi için bkz. [ölçümler](spring-cloud-concept-metrics.md).
+  
+* Uygulama başlamazsa, uygulamanın geçerli JVM parametreleri olduğunu doğrulayın. JVM belleği çok yüksek ayarlandıysa, günlüklerinizin şu hata iletisi görünebilir:
+
+  >"gerekli bellek 2728741K, ayırma için kullanılabilir 2000M 'den büyük"
+
+
 
 Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 
@@ -138,7 +143,7 @@ Yoklama kesintiye uğrarsa, yine de şu komutu kullanarak derleme ve dağıtım 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Ancak, bir Azure yay bulut hizmeti örneğinin bir kaynak paketi için tek seferde yalnızca bir yapı işi tetikleyebileceğini unutmayın. Daha fazla bilgi için bkz. [Azure yay bulutu 'nda](spring-cloud-howto-staging-environment.md) [uygulama dağıtma](spring-cloud-quickstart-launch-app-portal.md) ve hazırlama ortamı ayarlama.
+Ancak, bir Azure yay bulut hizmeti örneğinin bir kaynak paketi için tek seferde yalnızca bir yapı işi tetikleyebileceğini unutmayın. Daha fazla bilgi için bkz. [Azure yay bulutu 'nda](spring-cloud-howto-staging-environment.md) [uygulama dağıtma](spring-cloud-quickstart.md) ve hazırlama ortamı ayarlama.
 
 ### <a name="my-application-cant-be-registered"></a>Uygulamam kaydedilemiyor
 
@@ -193,7 +198,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek uygulaman
 Adlı alt düğümü arayın `systemEnvironment` .  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
 
 > [!IMPORTANT]
-> Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasına bakın ve bu ortam değişkenini silin: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
+> Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasına bakın ve bu ortam değişkenini silin:  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Uygulamamın ölçütlerini veya günlüklerini bulamıyorum
 

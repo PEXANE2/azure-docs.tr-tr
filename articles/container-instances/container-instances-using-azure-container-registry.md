@@ -4,20 +4,19 @@ description: Azure Container Registry 'den kapsayıcı görüntülerini çekerek
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927445"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656990"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry’den Azure Container Instances’a dağıtma
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) , özel Docker kapsayıcı görüntülerini depolamak Için kullanılan Azure tabanlı, yönetilen bir kapsayıcı kayıt defteri hizmetidir. Bu makalede, Azure Container Instances dağıtım sırasında Azure Container Registry 'de depolanan kapsayıcı görüntülerinin nasıl çekeceğini açıklanmaktadır. Kayıt defteri erişimini yapılandırmak için önerilen bir yol, bir Azure Active Directory hizmet sorumlusu ve parolası oluşturmak ve oturum açma kimlik bilgilerini bir Azure anahtar kasasında depomaktır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 **Azure Container Registry**: Bu makaledeki adımları tamamlayabilmeniz Için bir Azure Container Registry 'ye ve kayıt defterinde en az bir kapsayıcı görüntüsüne ihtiyacınız vardır. Bir kayıt defterine ihtiyacınız varsa bkz. [Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-azure-cli.md).
 
@@ -31,6 +30,9 @@ Azure Container Registry ek [kimlik doğrulama seçenekleri](../container-regist
 
 > [!NOTE]
 > Aynı kapsayıcı grubunda yapılandırılmış bir [yönetilen kimlik](container-instances-managed-identity.md) kullanarak, kapsayıcı grubu dağıtımı sırasında görüntü çekmek için Azure Container Registry kimlik doğrulaması yapamazsınız.
+
+> [!NOTE]
+> Şu anda Azure sanal ağına dağıtılan [Azure Container Registry](../container-registry/container-registry-vnet.md) görüntüleri çekemiyorum.
 
 Aşağıdaki bölümde, bir Azure Anahtar Kasası ve hizmet sorumlusu oluşturursunuz ve hizmet sorumlusunun kimlik bilgilerini kasada depoladığınızda. 
 

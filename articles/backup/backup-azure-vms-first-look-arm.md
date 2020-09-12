@@ -3,12 +3,12 @@ title: VM ayarlarından bir Azure VM 'yi yedekleme
 description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden fazla Azure VM 'yi nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: a8d1c29c894663da76b5882ef7ba249356ba3e6d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531855"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667513"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
 
@@ -31,7 +31,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** ' i seçin, **sanal makineler**yazın ve ardından **sanal makineler**' i seçin.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde, **Yedekle**' yi seçin.
@@ -49,7 +49,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
        ![Yedekleme ilkesini seçme](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. **Yedeklemeyi Etkinleştir**’i seçin. Bu, yedekleme ilkesini VM ile ilişkilendirir.
+7. **Yedeklemeyi Etkinleştirme**’yi seçin. Bu, yedekleme ilkesini VM ile ilişkilendirir.
 
     ![Yedeklemeyi Etkinleştir düğmesi](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
@@ -76,7 +76,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasından yedekleme
 
-Azure Backup kurtarma hizmetleri Kasası ayarlayarak ve kasadaki yedeklemeyi etkinleştirerek Azure VM 'lerinin yedeklenmesini etkinleştirmek için bu makaledeki yönergeleri izleyin.
+Azure Backup kurtarma hizmetleri Kasası ayarlayarak ve kasadaki yedeklemeyi etkinleştirerek Azure VM 'lerinin yedeklenmesini etkinleştirmek için [Bu makaledeki](backup-azure-arm-vms-prepare.md) yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

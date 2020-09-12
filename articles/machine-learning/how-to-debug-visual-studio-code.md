@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1449114ad14ebbd064f95ad2853b516893ba4b12
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909927"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661688"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
@@ -26,7 +26,7 @@ Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. VS Code ve hata ayıklama GPY kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.
@@ -37,7 +37,7 @@ Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşim
   * Sanal ağdaki bir not defteri VM 'sinin Işlem örneği
   * VPN ya da ExpressRoute aracılığıyla sanal ağa özel ağ bağlantısı olan bir istemci makinesi.
 
-Azure Machine Learning ile bir Azure sanal ağı kullanma hakkında daha fazla bilgi için bkz. Azure [sanal ağ Içindeki güvenli Azure ML deneme ve çıkarım işleri](how-to-enable-virtual-network.md).
+Azure Machine Learning ile bir Azure sanal ağı kullanma hakkında daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
 
 > [!TIP]
 > Bir sanal ağın arkasında olmayan Azure Machine Learning kaynaklarıyla çalışabilseniz de sanal ağ kullanılması önerilir.
@@ -281,7 +281,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. VS Code ve hata ayıklama GPY kullanarak, Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
+> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
 
 Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın. İşlem örnekleriyle çalışırken Docker 'ın zaten yüklü olduğunu unutmayın.
 

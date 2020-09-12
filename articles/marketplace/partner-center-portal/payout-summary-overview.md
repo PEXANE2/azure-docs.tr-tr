@@ -1,27 +1,27 @@
 ---
-title: Ödeme özetine genel bakış-Azure Marketi
+title: Ödeme özetine genel bakış, Azure Marketi
 description: Ödeme Özeti, teklifiniz ile kazanabileceğiniz paradan ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479821"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006933"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
 [Ödeme Özeti](./payout-summary.md) , Microsoft ile kazandığınızı gösteren ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
 
-Azure Market 'te teklifler satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi hakkında daha fazla bilgi için bkz. [Azure Marketi Katılım İlkeleri](https://docs.microsoft.com/legal/marketplace/participation-policy) ve [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
+Azure Market 'te teklifler satmanız durumunda, ödeme özetinde başarılı ödemeler hakkındaki bilgileri de görürsünüz. Azure Marketi ödemesi hakkında daha fazla bilgi için bkz. ticari Market ve [Microsoft Publisher sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) ['nde ücretli alma](./get-paid.md) .
 
 > [!NOTE]
-> Ödemenizin uygun olması için, devam eden $50 [ödeme eşiğine](./payment-thresholds-methods-timeframes.md) ulaşmalıdır. Ödeme eşiği hakkında daha fazla bilgi için [Microsoft Azure Market Yayımcı Sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)' ne bakın.
+> Ödemenizin uygun olması için, devam eden $50 ödeme eşiğine ulaşmalıdır. Ayrıntılar için bkz. [Microsoft Publisher sözleşmesi](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 Ödeme ayrıntılarını görüntülemek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home) ' nde oturum açın ve ekranın sağ üst köşesindeki ödeme simgesini seçin:
 
@@ -45,7 +45,7 @@ Bunlar, ödeme raporuna erişmek için roller ve izinlerdir:
 
 ## <a name="payment-schedules"></a>Ödeme zamanlamaları
 
-Dönemleri, iş ortağı görünürlüğünü ve müşterinin bir kredi kartı veya fatura kullanması gibi ödeme zamanlamalarıyla ilgili bir tartışma için, ödeme **ayrıntıları** konusunun [ödeme zamanlamaları](./payout-policy-details.md#payment-schedules) bölümüne bakın.
+Dönemleri, iş ortağı görünürlüğünü ve müşterinin bir kredi kartı veya fatura kullanması dahil olmak üzere ödeme zamanlamalarıyla ilgili bir tartışma için, **ödeme ayrıntıları** makalesinin [ödeme zamanlamaları](./payout-policy-details.md#payment-schedules) bölümüne bakın.
 
 ## <a name="transaction-history-download-export"></a>İşlem geçmişi indirme dışarı aktarma
 

@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157951"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017107"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
-
-
-Bu makalede, Azure IoT Central uygulamanızdaki cihazları yönetmek için bir operatör olarak nasıl yapılacağı açıklanır. Bir işleç olarak şunları yapabilirsiniz:
+Bu makalede, bir operatör olarak Azure IoT Central uygulamanızdaki cihazları nasıl yöneteceğiniz açıklanmaktadır. Bir işleç olarak şunları yapabilirsiniz:
 
 - Azure IoT Central uygulamanıza bağlı cihazları görüntülemek, eklemek ve silmek için **cihazlar** sayfasını kullanın.
 - Cihazlarınızın güncel envanterini saklayın.
@@ -51,7 +49,7 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 1. **Benzetimli** geçişi **Açık** veya **kapalı**olarak açın. Gerçek bir cihaz, Azure IoT Central uygulamanıza bağlandığınız fiziksel bir cihaza yöneliktir. Sanal cihaz, Azure IoT Central tarafından sizin için oluşturulan örnek verilere sahiptir.
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 1. Bu cihaz artık cihaz listenizde bu şablon için görünüyor. Cihazın tüm görünümlerini içeren cihaz ayrıntıları sayfasını görmek için cihazı seçin.
 

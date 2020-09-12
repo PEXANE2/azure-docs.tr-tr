@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926958"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007052"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Bilişsel Arama hizmetinizi başka bir Azure bölgesine taşıyın
 
@@ -23,7 +23,13 @@ Bazen, müşteriler bir arama hizmetini başka bir bölgeye taşımayı ister. �
 > [!NOTE]
 > Azure portal, tüm hizmetlerin bir **şablonu dışarı aktar** komutu vardır. Azure Bilişsel Arama söz konusu olduğunda, bu komut bir hizmetin temel tanımını (ad, konum, katman, çoğaltma ve bölüm sayısı) üretir, ancak hizmetinizin içeriğini tanımaz, ya da anahtar, rol ya da Günlükler üzerinde devam etmez. Komut var olsa da, bir arama hizmeti taşımak için kullanılması önerilmez.
 
-## <a name="guidance-for-moving-a-service"></a>Hizmeti taşımaya yönelik kılavuz
+## <a name="prerequisites"></a>Ön koşullar
+
++ Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
+
++ Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
+
+## <a name="prepare-and-move"></a>Hazırlama ve taşıma
 
 1. Yalnızca Azure Bilişsel Arama daha fazlasını taşımanız gerekiyorsa, bir hizmetin yeniden konumlandırılmalarından tam etkileri anlamak için bağımlılıkları ve ilgili hizmetleri belirler.
 
@@ -41,7 +47,9 @@ Bazen, müşteriler bir arama hizmetini başka bir bölgeye taşımayı ister. �
 
 1. İstemci uygulamalarını ve test paketlerini yeni hizmet adı ve API anahtarlarını kullanacak şekilde güncelleştirin ve tüm uygulamaları test edin.
 
-1. Yeni hizmet tam olarak sınandıktan ve çalışır duruma getirildikten sonra eski hizmeti silin.
+## <a name="discard-or-clean-up"></a>Atma veya temizleme
+
+Yeni hizmet tam olarak sınandıktan ve çalışır duruma getirildikten sonra eski hizmeti silin. Hizmetin silinmesi, hizmetle ilişkili tüm içeriği otomatik olarak siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

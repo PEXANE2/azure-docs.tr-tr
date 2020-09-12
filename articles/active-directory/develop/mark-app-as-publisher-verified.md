@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477694"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006953"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>Uygulamanızı yayımcı doğrulandı olarak işaretleme (önizleme)
+# <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 
 Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcı Microsoft İş Ortağı Ağı (MPN) hesabını kullanarak kimliğini doğrulamıştır ve bu MPN hesabını uygulama kaydıyla ilişkilendirmiştir. Bu makalede [Yayımcı doğrulama (Önizleme)](publisher-verification-overview.md) sürecinin nasıl tamamlanacağı açıklanır.
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 Microsoft İş Ortağı Ağı (MPN) zaten kaydolduysanız ve [önkoşulları](publisher-verification-overview.md#requirements)karşıladıysanız, hemen kullanmaya başlayabilirsiniz: 
 
-1. Önizleme [uygulaması kayıt portalı](https://aka.ms/PublisherVerificationPreview)' na gidin.
+1. [Uygulama kayıt portalı](https://aka.ms/PublisherVerificationPreview)' na gidin.
 
 1. Bir uygulama seçin ve **marka**' e tıklayın. 
 
@@ -37,7 +37,7 @@ Microsoft İş Ortağı Ağı (MPN) zaten kaydolduysanız ve [önkoşulları](pu
 Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla ayrıntı için [genel bakış](publisher-verification-overview.md)bölümüne bakın.
 
 
-## <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcı doğrulandı olarak işaretleme
+## <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
 [Önkoşulları](publisher-verification-overview.md#requirements)karşıladığınızdan emin olun, sonra uygulamanızı yayımcı doğrulanmış olarak işaretlemek için aşağıdaki adımları izleyin.  
 
 1. Bir kuruluş (Azure AD) hesabıyla oturum açtığınızdan emin olun ve bu durumda, yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamalarda ve Iş Ortağı Merkezi 'nde MPN hesabında değişiklik yapma yetkisi vardır. 
@@ -46,7 +46,7 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
     - Iş Ortağı Merkezi 'nde bu kullanıcının şu rollere sahip olması gerekir: MPN Yöneticisi, hesaplar Yöneticisi veya genel yönetici (Bu, Azure AD 'de ana kopyalı bir paylaşılan roldür). 
 
-1. Uygulama kayıt portalının önizleme sürümüne gidin:  
+1. Uygulama kayıt portalına gidin:  
 
 1. Yayımcı doğrulanmış olarak işaretlemek istediğiniz uygulamaya tıklayın ve marka dikey penceresini açın. 
 

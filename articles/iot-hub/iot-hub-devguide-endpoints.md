@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323052"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019572"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -26,7 +26,7 @@ ms.locfileid: "87323052"
 
 ## <a name="iot-hub-names"></a>IoT Hub adları
 
-Kuruluşunuzun **genel bakış** sayfasında uç noktalarınızı barındıran IoT Hub 'ın ana bilgisayar adını bulabilirsiniz. Varsayılan olarak, bir IoT Hub 'ının DNS adı şöyle görünür: `{your iot hub name}.azure-devices.net` .
+Kuruluşunuzun  **genel bakış** sayfasında uç noktalarınızı barındıran IoT Hub 'ın ana bilgisayar adını bulabilirsiniz. Varsayılan olarak, bir IoT Hub 'ının DNS adı şöyle görünür: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Yerleşik IoT Hub uç noktaları listesi
 
@@ -55,6 +55,8 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
   * *Device ikizi özelliklerini alın ve güncelleştirin*. Cihaz, bu uç noktayı [Device ikizi](iot-hub-devguide-device-twins.md)'in özelliklerine erişmek için kullanır. HTTPS desteklenmez.
 
   * *Doğrudan yöntem Istekleri alın*. Bir cihaz, [doğrudan metodun](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu uç noktayı kullanır. HTTPS desteklenmez.
+
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 * **Hizmet uç noktaları**. Her IoT Hub 'ı, çözüm arka ucunun cihazlarınızla iletişim kurması için bir uç nokta kümesi sunar. Tek bir istisna ile bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) ve AMQP Over WebSockets protokolleri kullanılarak sunulur. Doğrudan yöntem çağırma uç noktası, HTTPS protokolü üzerinden sunulur.
   

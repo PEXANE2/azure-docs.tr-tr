@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82183509"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006900"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Aktarım Katmanı Güvenliği
 
@@ -21,8 +21,6 @@ Ortak küme uç noktası aracılığıyla HDInsight kümesine yapılan bağlant�
 
 Varsayılan olarak, Azure HDInsight kümeleri genel HTTPS uç noktalarında TLS 1,2 bağlantılarını ve geriye dönük uyumluluk için eski sürümleri kabul eder. Küme oluşturma sırasında, Azure portal veya Kaynak Yöneticisi şablonunu kullanarak ağ geçidi düğümlerinde desteklenen en düşük TLS sürümünü denetleyebilirsiniz. Portal için, küme oluşturma sırasında **güvenlik + ağ** sekmesinden TLS sürümünü seçin. Dağıtım zamanında bir Kaynak Yöneticisi şablonu için **Minsupportedtlsversion** özelliğini kullanın. Örnek bir şablon için bkz. [HDInsight en düşük TLS 1,2 hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Bu özellik üç değeri destekler: TLS 1.0 +, TLS 1.1 + ve TLS 1.2 + ' ya karşılık gelen "1,0", "1,1" ve "1,2".
 
-> [!IMPORTANT]
-> 30 Haziran 2020 ' den itibaren Azure HDInsight, tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümlerini zorlar. Tüm istemcilerinizin TLS 1,2 veya sonraki sürümlerini işlemeye hazırlanmasını öneririz. Daha fazla bilgi için bkz. [Azure HDıNSIGHT TLS 1,2 zorlama](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640132"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660342"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -24,7 +24,7 @@ Fiziksel sunucuları değerlendirmek için bir Azure geçişi projesi oluşturun
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 fiziksel sunucuyu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak bir proje, VMware VM 'leri ve Hyper-V VM 'lerini, her biri için değerlendirme sınırlarına kadar içerebilir.
-**Bulma** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
+**Keşfini** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -34,8 +34,8 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | **Windows:** Etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. <br/> Alternatif olarak, aşağıdaki komutları kullanarak gerekli yeteneklerin ayarlandığından emin olun. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk (/usr/sbin/Fdisk yoksa) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
-| **İşletim sistemi** | Windows Server 2003 ve SUSE Linux dışındaki tüm işletim sistemleri geçiş için değerlendirilenebilir. |
+| **İzinler**           | **Windows:** Etki alanına katılan makineler için bir etki alanı hesabı ve etki alanına katılmayan makineler için bir yerel hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: Uzaktan Yönetim Kullanıcıları, Performans İzleyicisi Kullanıcıları ve Performans Günlüğü Kullanıcıları. <br/><br/> **Linux:** Bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir. <br/> Alternatif olarak, aşağıdaki komutları kullanarak gerekli yeteneklerin ayarlandığından emin olun. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk (/usr/sbin/Fdisk yoksa) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
+| **İşletim sistemi** | Geçiş için tüm Windows ve Linux işletim sistemleri değerlendirilenebilir. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri

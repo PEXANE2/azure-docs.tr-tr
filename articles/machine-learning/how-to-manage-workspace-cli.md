@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167649"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661631"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,7 +155,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 * `--pe-vnet-name`: İçinde özel uç nokta oluşturmak için var olan sanal ağ.
 * `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. Varsayılan değer: `default`.
 
-Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md).
+Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md).
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Müşteri tarafından yönetilen anahtar ve yüksek iş etkisi çalışma alanı
 
@@ -190,7 +190,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 > [!IMPORTANT]
 > Var olan tüm kaynakları belirtmeniz gerekmez. Bir veya daha fazla belirtebilirsiniz. Örneğin, var olan bir depolama hesabı belirtebilirsiniz ve çalışma alanı diğer kaynakları oluşturur.
 
-+ **Azure depolama hesabı**:`az storage account show --name <storage-account-name> --query "id"`
++ **Azure depolama hesabı**: `az storage account show --name <storage-account-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve depolama hesabınızın KIMLIĞIDIR:
 
@@ -217,13 +217,13 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**:`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve anahtar kasanızın KIMLIĞIDIR:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve kapsayıcı kayıt defterinin KIMLIĞIDIR:
 

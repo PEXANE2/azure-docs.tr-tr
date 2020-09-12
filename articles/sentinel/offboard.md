@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77581693"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662018"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Azure Sentinel 'i çalışma alanınızdan kaldırma
 
@@ -48,13 +48,13 @@ Bağlantı kesilmesi tanımlandıktan sonra, çıkarma işlemi başlar.
 
 -   AWS
 
--   Microsoft Hizmetleri güvenlik uyarıları (Azure ATP, Cloud Discovery gölge BT raporlama, Azure AD Kimlik Koruması, Microsoft Defender ATP, Azure Güvenlik Merkezi) dahil Microsoft Cloud App Security
+-   Microsoft Hizmetleri güvenlik uyarıları: kimlik için Microsoft Defender (*eskiden Azure ATP*) Microsoft Cloud App Security, Cloud DISCOVERY gölge BT raporlaması, Azure AD kimlik koruması, uç nokta Için Microsoft Defender (*eski ADıYLA Microsoft Defender ATP*), Azure Defender (*Eski adıyla Azure Güvenlik Merkezi*)
 
 -   Tehdit Bilgisi
 
--   Ortak Güvenlik günlükleri (CEF tabanlı Günlükler, Barkcuda ve syslog dahil) (Azure Güvenlik Merkezi 'Ne sahipseniz, bu Günlükler toplanmaya devam eder.)
+-   Ortak Güvenlik günlükleri (CEF tabanlı Günlükler, Barkcuda ve syslog dahil) (Azure Defender kullanıyorsanız, bu Günlükler toplanmaya devam eder.)
 
--   Windows güvenlik olayları (Azure Güvenlik Merkezi 'Ne sahipseniz, bu Günlükler toplanmaya devam eder.)
+-   Windows güvenlik olayları (Azure Defender kullanıyorsanız, bu Günlükler toplanmaya devam eder.)
 
 İlk 48 saat içinde veri ve analitik kuralları (gerçek zamanlı Otomasyon yapılandırması dahil) artık Azure Sentinel 'de erişilebilir veya sorgulanabilir olmayacaktır.
 

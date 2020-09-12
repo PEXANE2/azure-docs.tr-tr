@@ -3,20 +3,20 @@ title: Azure ön kapı-önbelleğe alma | Microsoft Docs
 description: Bu makale, Azure ön kapısının arka uçlarınızın sistem durumunu nasıl izlediğini anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056967"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024290"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
 Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışı belirtir. Ön kapı modern bir Content Delivery Network (CDN) ve bunun yanı sıra dinamik site hızlandırma ve Yük Dengeleme ile aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
@@ -88,13 +88,22 @@ Bir varlık isteği sıkıştırmayı belirttiğinde ve istek bir önbellek isab
 - **Her benzersiz URL 'Yi önbelleğe al**: Bu modda, sorgu dizesi dahil olmak üzere benzersiz bir URL 'si olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir. Örneğin, için bir isteğin arka ucunun yanıtı, `www.example.ashx?q=test1` ön kapı ortamında önbelleğe alınır ve aynı sorgu dizesine sahip sonraki önbellekler için döndürülür. İçin bir istek `www.example.ashx?q=test2` , kendi yaşam süresi ayarıyla ayrı bir varlık olarak önbelleğe alınır.
 
 ## <a name="cache-purge"></a>Önbellek Temizleme
-Ön kapı, varlığın yaşam süresi (TTL) sona erene kadar varlıkları önbelleğe alacak. Varlığın TTL 'SI dolduktan sonra, bir istemci varlığı istediğinde, ön kapı ortamı, istemci isteğine yönelik yeni bir güncelleştirilmiş kopyasını alır ve mağaza önbelleği yeniler.
-</br>Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde ettiğinizden emin olmak için en iyi yöntem, varlıklarınızın her bir güncelleştirme için sürüm oluşturup yeni URL 'Ler olarak yayınlanmasına yöneliktir. Ön kapı, sonraki istemci istekleri için yeni varlıkları hemen alacak. Bazen önbelleğe alınmış içeriği tüm kenar düğümlerinden temizlemek ve bunları yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz. Bunun nedeni, Web uygulamanızdaki güncelleştirmeler veya hatalı bilgiler içeren varlıkları hızlıca güncelleştirmeniz olabilir.
 
-</br>Kenar düğümlerinden hangi varlıkları temizlemek istediğinizi seçin. Tüm varlıkları temizlemek istiyorsanız tümünü temizle onay kutusuna tıklayın. Aksi takdirde, yol metin kutusuna temizlemek istediğiniz her varlığın yolunu yazın. Aşağıdaki biçimler yolunda desteklenir.
-1. **Tek yol temizleme**: varlığın tam yolunu (protokol ve etki alanı olmadan), dosya uzantısıyla (örneğin,/resim/strasbourg.png;) belirterek tek tek varlıkları temizle
-2. **Joker karakter Temizleme**: yıldız işareti ( \* ) joker karakter olarak kullanılabilir. Bir uç nokta altındaki tüm klasörleri, alt klasörleri ve dosyaları yolda/ \* içinde siler ya da klasörü belirterek/ \* , örneğin,/resim/gibi belirli bir klasör altındaki tüm alt klasörleri ve dosyaları temizleyin \* .
-3. **Kök etki alanı temizleme**: yoldaki bitiş noktasının kökünü "/" ile temizleyin.
+Varlığın yaşam süresi (TTL) sona erene kadar ön kapı önbellekleri varlıkları. Varlığın TTL 'SI dolduktan sonra, bir istemci varlığı istediğinde, ön kapı ortamı, istemci isteğine servis vermek için varlığın yeni bir güncelleştirilmiş kopyasını alır ve önbelleği yeniler.
+
+Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde ettiğinizden emin olmak için en iyi yöntem, varlıklarınızın her bir güncelleştirme için sürüm oluşturup yeni URL 'Ler olarak yayınlanmasına yöneliktir. Ön kapı, sonraki istemci istekleri için yeni varlıkları hemen alacak. Bazen önbelleğe alınmış içeriği tüm kenar düğümlerinden temizlemek ve bunları yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz. Bunun nedeni, Web uygulamanızdaki güncelleştirmeler veya hatalı bilgiler içeren varlıkları hızlıca güncelleştirmeniz olabilir.
+
+Kenar düğümlerinden temizlemek istediğiniz varlıkları seçin. Tüm varlıkları temizlemek için **Tümünü Temizle**' yi seçin. Aksi takdirde, **yol**alanına temizlemek istediğiniz her varlığın yolunu girin.
+
+Bu biçimler, temizlenecek yolların listelerinde desteklenir:
+
+- **Tek yol temizleme**: bir varlığın tam yolunu (protokol ve etki alanı olmadan), dosya uzantısıyla (örneğin,/resim/strasbourg.png;) belirterek tek tek varlıkları temizleyin.
+- **Joker karakter Temizleme**: yıldız işareti ( \* ) joker karakter olarak kullanılabilir. Bir uç nokta altındaki tüm klasörleri, alt klasörleri ve dosyaları yolda/ \* içinde siler ya da klasörü belirterek/ \* , örneğin,/resim/gibi belirli bir klasör altındaki tüm alt klasörleri ve dosyaları temizleyin \* .
+- **Kök etki alanı temizleme**: yoldaki bitiş noktasının kökünü "/" ile temizleyin.
+
+> [!NOTE]
+> **Joker karakter etki alanlarını Temizleme**: Bu bölümde anlatıldığı gibi, temizleme için önbelleğe alınmış yollar belirtme, ön kapıla ilişkili herhangi bir joker karakter etki alanı için uygulanmaz. Şu anda joker etki alanlarını doğrudan temizlemeyi desteklemiyoruz. Belirli alt etki alanlarından yolları, bu hedefleyen alt etki alanını ve temizleme yolunu belirterek temizleyebilirsiniz. Örneğin, ön kapım varsa `*.contoso.com` , yazarak alt etki alanım varlıklarını temizlebilirim `foo.contoso.com` `foo.contoso.com/path/*` . Şu anda, temizleme içerik yolunda ana bilgisayar adlarının belirtilmesi, varsa joker karakter etki alanlarının alt etki alanları olarak kabul edilir.
+>
 
 Ön kapıda önbellek temizler, büyük/küçük harfe duyarsızdır. Bunlara ek olarak, sorgu dizesi belirsiz olur, yani bir URL 'nin temizlenmesi, tüm sorgu dizesi çeşitlemelerini temizler. 
 
@@ -102,7 +111,7 @@ Bir varlık isteği sıkıştırmayı belirttiğinde ve istek bir önbellek isab
 Bir öğenin önbellekte ne kadar süreyle depolanacağını anlamak için aşağıdaki üstbilgiler sırası kullanılır:</br>
 1. Cache-Control: s-maxage =\<seconds>
 2. Cache-Control: Max-Age =\<seconds>
-3. Bitiminden\<http-date>
+3. Bitiminden \<http-date>
 
 Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınacağını belirten Cache-Control yanıt üstbilgileri: No-Store kabul edilir. Ancak, aynı URL 'ye yönelik bir POP 'ta çok sayıda istek olduğunda, yanıt paylaşabilir. Cache-Control yoksa, varsayılan davranış, AFD 'ın X 'i 1 ila 3 gün arasında rastgele olarak seçtiğiniz X miktarı kadar önbelleğe alacak.
 

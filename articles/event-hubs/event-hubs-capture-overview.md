@@ -3,12 +3,12 @@ title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522134"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667446"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
@@ -132,7 +132,7 @@ Yakalama, ayrı olarak faturalandırılırken çıkış kotasını tüketmez.
 
 ## <a name="integration-with-event-grid"></a>Event Grid ile tümleştirme 
 
-Kaynağı olarak bir Event Hubs ad alanı ile Azure Event Grid aboneliği oluşturabilirsiniz. Aşağıdaki öğreticide, havuz olarak bir olay hub 'ı kaynak ve Azure Işlevleri uygulaması ile bir Event Grid aboneliği oluşturma: [Event Grid ve Azure işlevleri kullanılarak yakalanan Event Hubs VERILERI SQL veri ambarına işleme ve geçirme işlemleri](store-captured-data-data-warehouse.md)gösterilmektedir.
+Kaynağı olarak bir Event Hubs ad alanı ile Azure Event Grid aboneliği oluşturabilirsiniz. Aşağıdaki öğreticide, havuz olarak bir olay hub 'ı kaynak ve Azure Işlevleri uygulaması ile bir Event Grid aboneliği oluşturma: [Event Grid ve Azure işlevleri 'ni kullanarak bir Azure SYNAPSE analizinin işlenmesi ve Event Hubs geçirilmesi](store-captured-data-data-warehouse.md)gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Event Hubs yakalama, verileri Azure 'a almanın en kolay yoludur. Azure Data Lake, Azure Data Factory ve Azure HDInsight 'ı kullanarak, ihtiyacınız olan herhangi bir ölçekte dilediğiniz ölçekte, seçtiğiniz tanıdık araç ve platformları kullanarak toplu işlem ve diğer çözümlemeler yapabilirsiniz.
@@ -147,7 +147,7 @@ Azure portal ve Azure Resource Manager şablonunu kullanarak bu özelliği etkin
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

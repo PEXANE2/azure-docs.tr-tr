@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548875"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661860"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Eşitleme: Varsayılan yapılandırmayı anlama
 Bu makalede, kullanıma hazır yapılandırma kuralları açıklanmaktadır. Kuralları ve bu kuralların yapılandırmayı nasıl etkilediğini belgelemektedir. Ayrıca, Azure AD Connect eşitleme 'nin varsayılan yapılandırması boyunca size yol gösterir. Amaç, okuyucunun bildirim temelli sağlama adlı yapılandırma modelinin gerçek dünyada bir örnekte nasıl çalıştığını anlamaktır. Bu makalede, Yükleme Sihirbazı 'nı kullanarak Azure AD Connect eşitleme 'yi zaten yüklemiş ve yapılandırdığınız varsayılmaktadır.
@@ -148,7 +148,7 @@ Bu kural hazır olmayan bir kural olduğundan, kuralı açtığınızda bir uyar
 
 Eşitleme kuralında dört yapılandırma bölümü vardır: Açıklama, kapsam filtresi, JOIN kuralları ve dönüşümler.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 İlk bölüm, ad ve açıklama gibi temel bilgileri sağlar.
 
 ![Eşitleme kuralı Düzenleyicisi 'ndeki Açıklama sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -223,7 +223,7 @@ Artık yapılandırmanın farklı eşitleme kurallarıyla nasıl çalıştığı
 | Name | Yorum |
 |:--- |:--- |
 | AD 'den içinde – kullanıcı katılımı |Bağlayıcı alanı nesnelerini metaverse ile birleştirme kuralı. |
-| AD 'den-kullanıcıhesabı etkin |Azure AD ve Office 365 için oturum açma için gereken öznitelikler. Etkin hesaptan bu özniteliklerin olmasını istiyoruz. |
+| AD 'den-kullanıcıhesabı etkin |Azure AD 'de oturum açma ve Microsoft 365 için gereken öznitelikler. Etkin hesaptan bu özniteliklerin olmasını istiyoruz. |
 | AD 'den, Exchange 'den ortak Kullanıcı |Genel adres listesinde bulunan öznitelikler. Veri kalitesinin, kullanıcının posta kutusunu bulduğu ormanda en iyi şekilde olduğunu varsayıyoruz. |
 | AD 'den içinde – Kullanıcı ortak |Genel adres listesinde bulunan öznitelikler. Bir posta kutusu bulmadığımızda, diğer tüm birleştirilmiş nesneler öznitelik değerine katkıda bulunabilir. |
 | AD 'den içinde – Kullanıcı değişimi |Yalnızca Exchange algılanırsa mevcuttur. Tüm altyapı değişim özniteliklerini akar. |

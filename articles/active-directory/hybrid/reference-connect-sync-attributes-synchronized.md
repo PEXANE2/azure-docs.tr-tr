@@ -16,29 +16,29 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542238"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016087"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect eşitleme: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
 Öznitelikler, ilgili Azure AD uygulamasına göre gruplandırılır.
 
 ## <a name="attributes-to-synchronize"></a>Eşitleneceği öznitelikler
-Ortak bir soru, *eşitlenmesi gereken en düşük öznitelik listesidir*. Varsayılan ve önerilen yaklaşım, bulutta tam bir GAL (genel adres listesi) oluşturulabilir ve Office 365 iş yüklerindeki tüm özellikleri almak için varsayılan öznitelikleri tutmalıdır. Bazı durumlarda, bu öznitelikler gizli veya PII (kişisel olarak tanımlanabilir bilgiler) verilerini içerdiğinden, kuruluşunuzun buluta eşitlenmesini istemediğiniz bazı öznitelikler vardır:  
+Ortak bir soru, *eşitlenmesi gereken en düşük öznitelik listesidir*. Varsayılan ve önerilen yaklaşım, bulutta tam bir GAL (genel adres listesi) oluşturulabilir ve Microsoft 365 iş yüklerindeki tüm özellikleri almak için varsayılan öznitelikleri tutmalıdır. Bazı durumlarda, bu öznitelikler gizli kişisel veriler içerdiğinden, kuruluşunuzun buluta eşitlenmesini istemediğiniz bazı öznitelikler vardır, örneğin:  
 ![Hatalı öznitelikler](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve hassas veya PII verisi içerecek olan öznitelikleri tanımlayabilir ve eşitlenemez. Ardından [Azure AD uygulaması ve öznitelik filtreleme](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)kullanarak yükleme sırasında bu özniteliklerin seçimini kaldırın.
+Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel veriler içeren öznitelikleri tanımlayabilir ve eşitlenemez. Ardından [Azure AD uygulaması ve öznitelik filtreleme](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)kullanarak yükleme sırasında bu özniteliklerin seçimini kaldırın.
 
 > [!WARNING]
 > Özniteliklerin seçimini kaldırdığınızda, dikkatli olun ve yalnızca bu özniteliklerin eşitlenmesi kesinlikle gerekmez. Diğer özniteliklerin seçimini kaldırmak, özelliklerde olumsuz bir etkiye sahip olabilir.
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="microsoft-365-apps-for-enterprise"></a>Enterprise için Microsoft 365 uygulamalar
 | Öznitelik adı | Kullanıcı | Yorum |
 | --- |:---:| --- |
 | accountEnabled |X |Bir hesabın etkinleştirilip etkinleştirilmediğini tanımlar. |
@@ -375,7 +375,7 @@ Bu grup, genel bir iş yükü veya uygulama için gereken en az öznitelik olara
 * Yammer (yalnızca Kullanıcı tüketilecektir)
 * [SharePoint gibi kaynaklar tarafından sunulan karma Işletmeler arası (B2B) Şirket içi işbirliği senaryoları](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için kullanılmazsa kullanılabilecek bir öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesine sahiptir. Üçüncü taraf uygulamalara yönelik çoklu oturum açma veya sağlama, burada açıklanan özniteliklere ek olarak özniteliklerin eşitlenmesini gerektirir. Uygulama gereksinimleri, her bir uygulama için [SaaS uygulama öğreticisinde](../saas-apps/tutorial-list.md) açıklanmıştır.
+Bu grup, Azure AD dizini Microsoft 365, Dynamics veya Intune 'u desteklemek için kullanılmazsa kullanılabilecek bir öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesine sahiptir. Üçüncü taraf uygulamalara yönelik çoklu oturum açma veya sağlama, burada açıklanan özniteliklere ek olarak özniteliklerin eşitlenmesini gerektirir. Uygulama gereksinimleri, her bir uygulama için [SaaS uygulama öğreticisinde](../saas-apps/tutorial-list.md) açıklanmıştır.
 
 | Öznitelik adı | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |
@@ -397,7 +397,7 @@ Bu grup, Azure AD dizini Office 365, Dynamics veya Intune 'u desteklemek için k
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
 
 ## <a name="windows-10"></a>Windows 10
-Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri Azure AD 'ye eşitler. Senaryolar hakkında daha fazla bilgi için bkz. [Windows 10 deneyimleri için etki alanına katılmış cihazları Azure AD 'ye bağlama](../active-directory-azureadjoin-devices-group-policy.md). Bu öznitelikler her zaman eşitlenir ve Windows 10, bir uygulama olarak görünmez. Windows 10 etki alanına katılmış bir bilgisayar, userCertificate özniteliği doldurulmuş olarak tanımlanır.
+Windows 10 etki alanına katılmış bir bilgisayar (cihaz) bazı öznitelikleri Azure AD 'ye eşitler. Senaryolar hakkında daha fazla bilgi için bkz. [Windows 10 deneyimleri için etki alanına katılmış cihazları Azure AD 'ye bağlama](../devices/hybrid-azuread-join-plan.md). Bu öznitelikler her zaman eşitlenir ve Windows 10, bir uygulama olarak görünmez. Windows 10 etki alanına katılmış bir bilgisayar, userCertificate özniteliği doldurulmuş olarak tanımlanır.
 
 | Öznitelik adı | Cihaz | Yorum |
 | --- |:---:| --- |

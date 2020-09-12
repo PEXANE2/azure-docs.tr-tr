@@ -10,17 +10,17 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cad1c8b7250ddf1e675145e764abcc90b4db9d86
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018068"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661730"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) sorunlarını gidermeye ve hata ayıklamanıza öğrenirsiniz. 
+Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md) sorunlarını gidermeye ve hata ayıklamanıza öğrenirsiniz. 
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirm
 | İşlem hedefleri ile belirsiz hatalar | İşlem hedeflerini silmeyi ve yeniden oluşturmayı deneyin. İşlem hedeflerini yeniden oluşturmak hızlı bir şekilde yapılır ve bazı geçici sorunları çözebilir. |
 | İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, `allow_reuse` adımdaki parametre olarak ayarlanır `False` . |
 | İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştığından emin olmak için, her adımın kaynak kodu dizinlerinizi ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem `source_directory` hattı adımı nesnesi üzerinde parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve `source_directory` birden çok adım için aynı yolu kullanmadığınız emin olun. |
-
+| Eğitim dönemlerinde veya diğer döngü davranışından daha fazla ilerleyin | Günlük kaydı dahil olmak üzere herhangi bir dosya yazmayı ' den ' a geçmeyi deneyin `as_mount()` `as_upload()` . **Bağlama** modu, uzak bir sanallaştırılmış FileSystem kullanır ve her eklendiği zaman tüm dosyayı yükler. |
 
 ## <a name="debugging-techniques"></a>Hata ayıklama teknikleri
 
@@ -148,7 +148,7 @@ Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kalad
 1. Modülün sağ bölmesinde,  **çıktılar + Günlükler** sekmesine gidin.
 1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log.txt** seçin. Günlükleri yerel olarak da indirebilirsiniz.
 
-    ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)
+    ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)? View = Azure-ML-Kopyala&Preserve-View = true)? View = Azure-ML-Kopyala&Preserve-View = true)
 
 ### <a name="get-logs-from-pipeline-runs"></a>İşlem hattı çalıştırmalarından günlükleri al
 
@@ -174,6 +174,6 @@ Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azureml işlem hatları-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) paketi ve [azureml-işlem hatları-adımlar](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) PAKETIYLE ilgili yardım için SDK başvurusuna bakın.
+* [Azureml işlem hatları-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) paketi ve [azureml-işlem hatları-adımlar](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) PAKETIYLE ilgili yardım için SDK başvurusuna bakın.
 
 * [Tasarımcı özel durumları ve hata kodları](algorithm-module-reference/designer-error-codes.md)listesine bakın.

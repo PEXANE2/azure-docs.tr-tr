@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185409"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660425"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
     1. **Veri deposu ve dosya seçim formunu**açmak için **İleri ' yi** seçin. Bu formda veri kümenizin nereye yükleneceğini seçersiniz; Çalışma alanım ile otomatik olarak oluşturulan varsayılan depolama kapsayıcısı veya deneme için kullanmak istediğiniz bir depolama kapsayıcısı seçin. 
     
-        1. Verileriniz bir sanal ağın arkasındaysa, çalışma alanının verilerinize erişebildiğinden emin olmak için **doğrulamayı atla** işlevini etkinleştirmeniz gerekir. [Ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md#machine-learning-studio)hakkında daha fazla bilgi edinin. 
+        1. Verileriniz bir sanal ağın arkasındaysa, çalışma alanının verilerinize erişebildiğinden emin olmak için **doğrulamayı atla** işlevini etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md). 
     
     1. Veri kümeniz için veri dosyasını karşıya yüklemek üzere **Araştır** ' ı seçin. 
 
@@ -120,11 +120,14 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. **Görev türü ve ayarlar** formunda, görev türünü seçin: sınıflandırma, regresyon veya tahmin. Daha fazla bilgi için bkz. [desteklenen görev türleri](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) .
 
-    1. **Sınıflandırma**için, metin özelliklerini de kullanan derin öğrenmeyi de etkinleştirebilirsiniz.
+    1. **Sınıflandırma**için derin öğrenmeyi de etkinleştirebilirsiniz.
+    
+        Derin öğrenme etkinse, doğrulama _train_validation bölünmüş_ile sınırlıdır. [Doğrulama seçenekleri hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md).
+
 
     1. **Tahmin** için şunları yapabilirsiniz 
     
-        1. Derin öğrenmeyi etkinleştir
+        1. Derin öğrenmeyi etkinleştirin.
     
         1. *Zaman sütununu*seçin: Bu sütun kullanılacak saat verilerini içerir.
 
@@ -132,13 +135,13 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
-    Ek yapılandırmalar|Açıklama
+    Ek yapılandırmalar|Description
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#primary-metric).
-    En iyi modeli açıkla | Önerilen en iyi modelin explainability gösterilmesi için etkinleştirmek veya devre dışı bırakmak için seçin.
-    Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin.
+    En iyi modeli açıkla | Önerilen en iyi modelin açıklamalarını göstermek için etkinleştirmek veya devre dışı bırakmak için seçin. <br> Bu işlev, [belirli tahmin algoritmaları](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)için şu anda kullanılamıyor. 
+    Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin. <br><br> Algoritmaların izin verilmesi yalnızca [SDK denemeleri](how-to-configure-auto-train.md#supported-models)için kullanılabilir. <br> [Her görev türü için desteklenen modellere](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true)bakın.
     Çıkış ölçütü| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim işi süresi (saat)*: eğitim işinin ne kadar süreyle çalışmasına izin verme. <br> *Ölçüm puan eşiği*: tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
-    Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md#prerequisites).
+    Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. <br> [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Tahmin yalnızca k katlama çapraz doğrulamayı destekler.
     Eşzamanlılık| *Maksimum eşzamanlı yineleme*: eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak.
 
 1. Seçim Özelliği görüntüleme ayarları: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz, varsayılan özellikler uygulanır. Görünüm özelliği **ayarları** ' nda bu Varsayılanları değiştirebilir ve uygun şekilde özelleştirebilirsiniz. [Korturleri özelleştirmeyi](#customize-featurization)öğrenin. 
@@ -154,9 +157,9 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 >[!NOTE]
 > İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-İstatistik|Açıklama
+İstatistik|Description
 ------|------
-Özellik| Özetlenen sütunun adı.
+Öne çıkan özelliği| Özetlenen sütunun adı.
 Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
@@ -205,9 +208,9 @@ Denemenizi çalıştırmak için **son** ' u seçin. Denemeyi hazırlama işlemi
 
 ## <a name="deploy-your-model"></a>Modelinizi dağıtın
 
-En iyi modeli elde etmeniz durumunda, yeni verileri tahmin etmek için bunu bir Web hizmeti olarak dağıtmanız zaman alır.
+En iyi modeli belirledikten sonra yeni verilerle ilgili tahminde bulunmak için web hizmeti olarak dağıtabilirsiniz.
 
-Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
+Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
 
 1. Dağıtım için birkaç seçeneğiniz vardır. 
 
@@ -225,21 +228,21 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     Alan| Değer
     ----|----
     Ad| Dağıtımınız için benzersiz bir ad girin.
-    Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
+    Description| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
-    Kimlik doğrulamasını etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
+    Kimlik doğrulamayı etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
     Özel dağıtım varlıklarını kullanma| Kendi Puanlama betiğinizi ve ortam dosyanızı karşıya yüklemek istiyorsanız bu özelliği etkinleştirin. [Puanlama betikleri hakkında daha fazla bilgi edinin](how-to-deploy-and-where.md).
 
     >[!Important]
-    > Dosya adları 32 karakterden oluşmalıdır ve alfasayısal karakterlerle başlamalı ve bitmelidir. Arasına tire, alt çizgi, nokta ve alfasayısal karakterler içerebilir. Boşluklara izin verilmez.
+    > Dosya adları 32 karakterden oluşmalıdır ve alfasayısal karakterlerle başlamalı ve bitmelidir. Ad içinde kısa çizgi, alt çizgi, nokta ve alfasayısal karakterler kullanılabilir. Boşluk kullanılamaz.
 
-    *Gelişmiş* menü, [veri toplama](how-to-enable-app-insights.md) ve kaynak kullanımı ayarları gibi varsayılan dağıtım özelliklerini sunar. Bu Varsayılanları geçersiz kılmak istiyorsanız bu menüdeki bu ayarları yapın.
+    *Gelişmiş* menüsünde [veri toplama](how-to-enable-app-insights.md) ve kaynak kullanımı ayarları gibi varsayılan dağıtım özellikleri yer alır. Varsayılan değerleri değiştirmek için bu menüyü kullanabilirsiniz.
 
-1. **Dağıt**'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürebilir.
-    Dağıtım başladıktan sonra **model Özeti** sekmesi görüntülenir. Dağıtım **durumu** bölümünde dağıtım ilerlemesini inceleyin. 
+1. **Dağıt**'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürer.
+    Dağıtım başladıktan sonra **Model özeti** sekmesi görüntülenir. Dağıtımın ilerleme durumunu **Dağıtım durumu** bölümünde görebilirsiniz. 
 
-Artık tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır! [Power BI yerleşik Azure Machine Learning desteği '](how-to-consume-web-service.md#consume-the-service-from-power-bi)nden hizmeti sorgulayarak tahminleri test edebilirsiniz.
+Artık tahminde bulunmak için kullanabileceğiniz çalışan bir web hizmetiniz var! Hizmeti [Power BI'ın yerleşik Azure Machine Learning desteği](how-to-consume-web-service.md#consume-the-service-from-power-bi) ile sorgulayarak tahminleri test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

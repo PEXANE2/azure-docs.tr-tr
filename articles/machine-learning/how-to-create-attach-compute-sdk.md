@@ -1,5 +1,5 @@
 ---
-title: Python SDK ile işlem kaynakları oluşturma
+title: Eğitim & dağıtım (Python) oluşturma
 titleSuffix: Azure Machine Learning
 description: Makine öğrenimi için eğitim ve dağıtım işlem kaynakları (işlem hedefleri) oluşturmak için Python SDK Azure Machine Learning kullanın
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147627"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662545"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Python SDK ile model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -28,11 +28,15 @@ Bu makalede, işlem hedeflerini oluşturmak ve yönetmek için Python SDK Azure 
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
-* [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>Sınırlamalar
+
+Bu belgede listelenen senaryolardan bazıları __Önizleme__olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>İşlem hedefi nedir?
 
@@ -55,16 +59,33 @@ Bu işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
 * [Uzak sanal makineler](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>Çıkarımı için işlem hedefleri
+
+Çıkarımı gerçekleştirirken, Azure Machine Learning modeli ve onu kullanmak için gereken ilişkili kaynakları barındıran bir Docker kapsayıcısı oluşturur. Bu kapsayıcı daha sonra aşağıdaki dağıtım senaryolarından birinde kullanılır:
+
+* Gerçek zamanlı çıkarım için kullanılan bir __Web hizmeti__ olarak. Web hizmeti dağıtımları aşağıdaki işlem hedeflerinden birini kullanır:
+
+    * [Yerel bilgisayar](#local)
+    * [Azure Machine Learning işlem örneği](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Işlevleri (Önizleme). Azure Işlevlerine dağıtım, yalnızca Docker kapsayıcısını oluşturmak için Azure Machine Learning kullanır. Buradan Azure Işlevleri kullanılarak dağıtılır. Daha fazla bilgi için bkz. [Azure işlevlerine makine öğrenimi modeli dağıtma (Önizleme)](how-to-deploy-functions.md).
+
+* Düzenli aralıklarla veri toplu işlemleri işlemek için kullanılan bir __yığın çıkarım__ uç noktası olarak. Batch Inna, [Azure Machine Learning işlem kümesi](#amlcompute)kullanır.
+
+* Bir __IoT cihazına__ (Önizleme). IoT cihazına dağıtım, Docker kapsayıcısını oluşturmak için yalnızca Azure Machine Learning bağımlıdır. Buradan, Azure IoT Edge kullanılarak dağıtılır. Daha fazla bilgi için bkz. [IoT Edge modülü olarak dağıtma (Önizleme)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="local-computer"></a><a id="local"></a>Yerel bilgisayar
 
-Eğitim için yerel bilgisayarınızı kullandığınızda bir işlem hedefi oluşturmanız gerekmez.  Yalnızca yerel makinenizden [eğitim çalıştırmasını göndermeniz](how-to-set-up-training-targets.md) yeterlidir.
+**Eğitim**için yerel bilgisayarınızı kullandığınızda bir işlem hedefi oluşturmanız gerekmez.  Yalnızca yerel makinenizden [eğitim çalıştırmasını göndermeniz](how-to-set-up-training-targets.md) yeterlidir.
+
+Yerel bilgisayarınızı **çıkarım**Için kullandığınızda Docker 'ın yüklü olması gerekir. Dağıtımı gerçekleştirmek için Web hizmetinin kullanacağı bağlantı noktasını tanımlamak üzere [Localwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) kullanın. Ardından, [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi normal dağıtım sürecini kullanın.
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning işlem kümesi
 
 Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak sağlayan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilecek bir kaynak olarak çalışma alanı bölgeniz içinde oluşturulur. İşlem, bir iş gönderildiğinde otomatik olarak ölçeklendirilir ve bir Azure sanal ağına yerleştirilebilir. İşlem kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir [Docker kapsayıcısında](https://www.docker.com/why-docker)paketleyebilir.
 
-Eğitim sürecini buluttaki bir CPU veya GPU işlem düğümleri kümesi arasında dağıtmak için Azure Machine Learning Işlem kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Bir eğitim veya toplu çıkarım işlemini buluttaki bir CPU veya GPU işlem düğümleri kümesine dağıtmak için Azure Machine Learning Işlem kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
 Azure Machine Learning Işlem, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](how-to-manage-quotas.md).
 
@@ -87,7 +108,7 @@ Azure Machine Learning Işlem, çalıştırmalar arasında yeniden kullanılabil
 
     Ya da [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#portal-create)'da kalıcı bir Azure Machine Learning işlem kaynağı oluşturup ekleyebilirsiniz.
 
-Bu işlemi yaptıktan sonra, bir sonraki adım [eğitim çalıştırmasını göndermektedir](how-to-set-up-training-targets.md).
+Bu işlemi yaptıktan sonra, bir sonraki adım [eğitim çalıştırması](how-to-set-up-training-targets.md) veya [Batch çıkarımı çalıştırmak](how-to-use-parallel-run-step.md)içindir.
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> İşlem kümesi maliyetinizi düşürün
 
@@ -201,8 +222,15 @@ Bir işlem örneği, paralel olarak birden çok iş çalıştırabilir ve bir i�
         instance.wait_for_completion(show_output=True)
     ```
 
-Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalıştırmasını gönderdiniz](how-to-set-up-training-targets.md)
+İşlemi ve çalıştırmayı yapılandırdıktan sonra, bir sonraki adım, [eğitimin](how-to-set-up-training-targets.md) [bir model çalıştırması veya bir modelin bir modeli dağıtılması](how-to-deploy-local-container-notebook-vm.md).
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Örneği
+
+Azure Container Instances (acı), bir modeli dağıtırken dinamik olarak oluşturulur. Çalışma alanınıza başka hiçbir şekilde bir acı oluşturamaz veya ekleyemezsiniz. Daha fazla bilgi için bkz. [Azure Container Instances model dağıtma](how-to-deploy-azure-container-instance.md).
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Azure Kubernetes hizmeti (AKS) Azure Machine Learning ile kullanıldığında çeşitli yapılandırma seçeneklerine izin verir. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti oluşturma ve iliştirme](how-to-create-attach-kubernetes.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Uzak sanal makineler
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 Daha ayrıntılı bir örnek için GitHub 'daki [örnek bir not defteri](https://aka.ms/pl-adla) bölümüne bakın.
 
 > [!TIP]
-> Azure Machine Learning işlem hatları yalnızca Data Lake Analytics hesabının varsayılan veri deposunda depolanan verilerle çalışabilir. Üzerinde çalışmanız gereken veriler varsayılan olmayan bir depoda varsa, [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) verileri eğitimden önce kopyalamak için kullanabilirsiniz.
+> Azure Machine Learning işlem hatları yalnızca Data Lake Analytics hesabının varsayılan veri deposunda depolanan verilerle çalışabilir. Üzerinde çalışmanız gereken veriler varsayılan olmayan bir depoda varsa, [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) verileri eğitimden önce kopyalamak için kullanabilirsiniz.
 
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 

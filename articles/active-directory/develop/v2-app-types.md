@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121179"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015815"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -42,9 +42,9 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Tek sayfalı uygulamalar (JavaScript)
 
-Birçok modern uygulamanın, özellikle JavaScript 'te, genellikle angular, yanıt verme veya Vue gibi bir çerçeve ile yazılmış tek sayfalı bir uygulama ön ucu vardır. Microsoft Identity platform uç noktası, [OAuth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak bu uygulamaları destekler.
+Birçok modern uygulamanın, özellikle JavaScript 'te, genellikle angular, yanıt verme veya Vue gibi bir çerçeve ile yazılmış tek sayfalı bir uygulama ön ucu vardır. Microsoft Identity platform uç noktası, kimlik doğrulaması için [OpenID Connect](v2-protocols-oidc.md) protokolünü ve [OAuth 2,0 örtük verme akışını](v2-oauth2-implicit-grant-flow.md) veya yetkilendirme için daha yeni [OAUTH 2,0 yetkilendirme kodu + pkce akışını](v2-oauth2-auth-code-flow.md) kullanarak bu uygulamaları destekler (aşağıya bakın).
 
-Bu akışta, uygulama Microsoft Identity platform uç noktasından bir kod alır `authorize` ve bunları, siteler arası Web isteklerini kullanarak belirteçler ve yenileme belirteçleri için kullanın. Yenileme belirteci her 24 saatte bir dolar ve uygulamanın başka bir kod istemesi gerekir.
+Aşağıdaki akış diyagramı, uygulamanın Microsoft Identity platform uç noktasından bir kod aldığı `authorize` ve belirteçleri ve siteler arası Web istekleri kullanarak belirteçleri yenilediğini, OAuth 2,0 yetkilendirme kodu yetkisini (PKI CE ile ilgili ayrıntılarla birlikte) gösterir. Yenileme belirteci her 24 saatte bir dolar ve uygulamanın başka bir kod istemesi gerekir. Erişim belirtecinin yanı sıra, `id_token` istemci uygulamasına oturum açmış kullanıcıyı temsil eden bir, genellikle aynı Flow ve/veya ayrı bir OpenID Connect isteği aracılığıyla da istenir (burada gösterilmez).
 
 ![SPA uygulamaları için kod akışı](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 

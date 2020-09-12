@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386138"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660480"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidi yükleme
 
@@ -33,7 +33,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
   * Azure hesabınızın, gibi görünen bir iş hesabı veya okul hesabı olması gerekir `username@contoso.com` . Azure B2B (konuk) hesaplarını veya veya gibi kişisel Microsoft hesaplarını kullanamazsınız @hotmail.com @outlook.com .
 
     > [!NOTE]
-    > Office 365 teklifi için kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz gibi görünebilir `username@domain.onmicrosoft.com` . Hesabınız bir Azure AD kiracısında depolanıyor. Çoğu durumda, Azure hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
+    > Bir Microsoft 365 teklifine kaydolduysanız ve iş e-posta adresinizi sağlamadıysanız adresiniz şöyle görünebilir `username@domain.onmicrosoft.com` . Hesabınız bir Azure AD kiracısında depolanıyor. Çoğu durumda, Azure hesabınız için Kullanıcı asıl adı (UPN) e-posta adresiniz ile aynıdır.
 
     Microsoft hesabı ilişkili bir [Visual Studio standart aboneliğini](https://visualstudio.microsoft.com/vs/pricing/) kullanmak için, önce [bir Azure AD kiracısı oluşturun](../active-directory/develop/quickstart-create-new-tenant.md) veya varsayılan dizini kullanın. Dizine bir parolası olan bir kullanıcı ekleyin ve bu kullanıcıya Azure aboneliğinize erişim izni verin. Daha sonra bu Kullanıcı adı ve parolayla ağ geçidi yüklemesi sırasında oturum açabilirsiniz.
 
@@ -142,7 +142,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 Şirket içi veri ağ geçidi, bulut bağlantısı için [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) bağımlıdır ve ağ geçidinin ilişkili Azure bölgesine karşılık gelen giden bağlantıları kurar. İş ortamınız internet 'e erişmek için bir ara sunucu veya güvenlik duvarından geçtiğinde, bu kısıtlama şirket içi veri ağ geçidinin ağ geçidi bulut hizmetine bağlanmasını engelleyebilir ve Azure Service Bus. Ağ geçidinde, ayarlayabileceğiniz çeşitli iletişim ayarları vardır. Daha fazla bilgi için şu konulara bakın:
 
-* [Şirket içi veri ağ geçidi için iletişim ayarlarını ayarla](/data-integration/gateway/service-gateway-communication)
+* [Şirket içi veri ağ geçidi için iletişim ayarlarını yapılandırma](/data-integration/gateway/service-gateway-communication)
 * [Şirket içi veri ağ geçidi için ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
