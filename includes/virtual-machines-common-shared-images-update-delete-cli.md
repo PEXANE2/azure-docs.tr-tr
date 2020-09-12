@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 213fec9e7d9da56d34f79fee7e677b0e6bbd7a63
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188383"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304100"
 ---
 ## <a name="update-resources"></a>Kaynakları güncelleştirme
 
 Nelerin güncelleştirilemeyebilir hakkında bazı sınırlamalar vardır. Aşağıdaki öğeler güncelleştirilemeyebilir: 
 
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -65,6 +65,28 @@ az sig image-version update \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
    --add publishingProfile.targetRegions  name=eastus
+```
+
+Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını hariç tutmak için [az SIG Image-Version Update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=true
+```
+
+Bu örnek, *en son* görüntü için göz önünde bulundurulmakta olan bu görüntü sürümünü dahil etmek için [az SIG Image-Version Update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 'in nasıl kullanılacağını gösterir.
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=false
 ```
 
 ## <a name="delete-resources"></a>Kaynakları silme

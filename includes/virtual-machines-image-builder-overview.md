@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554895"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89304062"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -100,7 +100,7 @@ Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kulla
 Azure Image Builder, görüntüyü seçtiğiniz bölgelere dağıtır ve bu da ağ çıkış ücretleri doğuracaktır.
 
 ## <a name="hyper-v-generation"></a>Hyper-V oluşturma
-Şu anda bulunan görüntü Oluşturucu, Hyper-V nesil 1 görüntülerini ve VM 'Leri destekler.
+Image Builder Şu anda yalnızca yerel olarak Hyper-V oluşturma (Gen1) 1 görüntülerini Azure Paylaşılan görüntü Galerisi 'ne (SıG) veya yönetilen görüntüye oluşturmayı destekler. Gen2 görüntüleri oluşturmak istiyorsanız, bir kaynak Gen2 görüntüsü kullanmanız ve VHD 'ye dağıtmanız gerekir. Bundan sonra, VHD 'den yönetilen bir görüntü oluşturmanız ve bunu bir Gen2 görüntüsü olarak SıG 'a eklemeniz gerekecektir.
  
 ## <a name="next-steps"></a>Sonraki adımlar 
  

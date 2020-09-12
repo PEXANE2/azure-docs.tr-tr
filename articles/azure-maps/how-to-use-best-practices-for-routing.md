@@ -1,39 +1,41 @@
 ---
-title: Azure haritalar için en iyi uygulamalar Yönlendirme Hizmeti | Microsoft Azure haritaları
+title: Microsoft Azure Eşlemlerde Azure Maps Yönlendirme Hizmeti için en iyi yöntemler
 description: Microsoft Azure haritalardan Yönlendirme Hizmeti kullanarak her bir yolu yönlendirmeyi öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 03/11/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132220"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400798"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
 Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) , istenen her bir rota için tahmini varış zamanlarını (Etas) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri, haftanın istenen günü ve günün saati için tipik yol hızları gibi düşünün. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Kullanıcılar ayrıca, waltlar, bıyıva ve kamyonlar gibi ticari araçlar için özel yollar ve Ayrıntılar isteyebilir. Bu makalede, Azure haritalar [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)çağırmak için en iyi yöntemleri paylaşacağız ve nasıl yapılacağını öğreneceksiniz:
 
-* Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
-* Gerçek zamanlı ve geçmiş trafik verilerine göre geçmiş ve tahmin edilen seyahat sürelerini isteyin
-* Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
-* Kamyon gibi ticari bir araç için istek rotası
-* Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
-* Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
-* Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
-* Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
-* Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
+> [!div class="checklist"]
+> * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
+> * Gerçek zamanlı ve geçmiş trafik verilerine göre geçmiş ve tahmin edilen seyahat sürelerini isteyin
+> * Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
+> * Kamyon gibi ticari bir araç için istek rotası
+> * Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
+> * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
+> * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
+> * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
+> * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure Haritalar API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). Birincil anahtar, birincil abonelik anahtarı veya abonelik anahtarı olarak da bilinir.
+1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
-Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md). Yönlendirme Hizmeti kapsamı hakkında daha fazla bilgi için bkz. [yönlendirme kapsamı](routing-coverage.md).
+Yönlendirme Hizmeti kapsamı hakkında daha fazla bilgi için bkz. [yönlendirme kapsamı](routing-coverage.md).
 
 Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.postman.com/downloads/) kullanır, ancak HERHANGI bir API geliştirme ortamı seçebilirsiniz.
 
@@ -133,43 +135,23 @@ Varsayılan olarak, yönlendirme hizmeti bir koordinat dizisi döndürür. Yanı
 
 Aşağıdaki görüntüde `points` öğesi gösterilmektedir.
 
-<center>
-
-![nokta listesi](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
-
-</center>
+![Points öğesi](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
 
 `point`Yolun koordinatlarının listesini görmek için öğesini genişletin:
 
-<center>
-
-![nokta listesi](media/how-to-use-best-practices-for-routing/points-list-img.png)
-
-</center>
+![Genişletilmiş noktaları öğesi](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
 Yol yönleri API 'Leri, **Komutctionstype** parametresini belirterek kullanılabilecek farklı yönergelerin biçimlerini destekler. Kolay bilgisayar işlemeye yönelik yönergeleri biçimlendirmek için, **Komutctionstype = Coded**kullanın. Yönergeleri kullanıcı için metin olarak göstermek için **Komutctionstype = etiketli** ' i kullanın. Ayrıca, yönergelerin bazı öğelerinin işaretlendiği ve yönergedeki özel biçimlendirmeyle birlikte sunulan yönergeler metin olarak biçimlendirilebilir. Daha fazla bilgi için [desteklenen yönerge türleri listesine](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)bakın.
 
 Yönergeler istendiğinde, yanıt adlı yeni bir öğesi döndürür `guidance` . `guidance`Öğesi iki bilgi parçasını tutar: açma yönü ve özetlenen yönergeler.
 
-<center>
-
 ![Yönerge türü](media/how-to-use-best-practices-for-routing/instructions-type-img.png)
-
-</center>
 
 `instructions`Öğesi seyahat için geri dönüş yönlerini tutar ve `instructionGroups` özetlenmiş yönergeleri vardır. Her yönerge Özeti, birden çok yol kapsayan seyahat segmentini kapsar. API 'Ler, bir yolun bölümlerinin ayrıntılarını döndürebilir. Örneğin, bir trafik sıkıştı koordinat aralığı veya trafiğin geçerli hızı.
 
-<center>
-
 ![Açma yönergelerine göre aç](media/how-to-use-best-practices-for-routing/instructions-turn-by-turn-img.png)
 
-</center>
-
-<center>
-
 ![Özetlenen yönergeler](media/how-to-use-best-practices-for-routing/instructions-summary-img.png)
-
-</center>
 
 ## <a name="request-a-route-for-a-commercial-vehicle"></a>Ticari araç için rota isteme
 
@@ -185,11 +167,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Rota API 'SI, kamyonun boyutlarına ve tehlikeli çöp kutusu ile uyumlu yönler döndürür. Öğesini genişleterek yol yönergelerini okuyabilirsiniz `guidance` .
 
-<center>
-
 ![Sınıf 1 hazisatık ile kamyonu](media/how-to-use-best-practices-for-routing/truck-with-hazwaste-img.png)
-
-</center>
 
 ### <a name="sample-query"></a>Örnek sorgu
 
@@ -201,11 +179,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Aşağıdaki yanıt, sınıf 1 tehlikeli bir malzemeden daha az tehlikeli olan sınıf 9 tehlikeli bir malzeme taşıyan bir kamyon içindir. `guidance`Yönleri okumak için öğesini genişlettiğinizde, yönlerinin aynı olmadığına dikkat edin. Kamyonun Sınıf 1 tehlikeli malzemesini taşıyan daha fazla rota yönergesi bulunur.
 
-<center>
+
 
 ![Class 9 hazisatık ile kamyonu](media/how-to-use-best-practices-for-routing/truck-with-hazwaste9-img.png)
 
-</center>
+
 
 ## <a name="request-traffic-information-along-a-route"></a>Yol üzerinde trafik bilgilerini isteme
 
@@ -221,19 +199,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Yanıt, verilen koordinatlar boyunca trafik için uygun olan bölümleri içerir.
 
-<center>
-
-![trafik bölümleri](media/how-to-use-best-practices-for-routing/traffic-section-type-img.png)
-
-</center>
+![Trafik bölümleri](media/how-to-use-best-practices-for-routing/traffic-section-type-img.png)
 
 Bu seçenek, aşağıdaki görüntüde olduğu gibi, Haritayı işlerken bölümleri renklendirmek için kullanılabilir: 
 
-<center>
-
-![trafik bölümleri](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
-
-</center>
+![Haritada işlenen renkli bölümler](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
 ## <a name="calculate-and-optimize-a-multi-stop-route"></a>Çoklu durduran bir yolu hesapla ve iyileştirme
 
@@ -257,19 +227,13 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 Yanıt, 140.851 ölçüm olacak yol uzunluğunu açıklar ve bu yolu gezecek 9.991 saniye sürer.
 
-<center>
-
 ![İyileştirilmemiş yanıt](media/how-to-use-best-practices-for-routing/non-optimized-response-img.png)
-
-</center>
 
 Aşağıdaki görüntüde Bu sorgudan elde edilen yol gösterilmektedir. Bu yol, olası bir yoldur. Zamana veya mesafeye göre en iyi yol değildir.
 
-<center>
-
 ![İyileştirilmemiş görüntü](media/how-to-use-best-practices-for-routing/non-optimized-image-img.png)
 
-</center>
+
 
 Bu yol güzergah noktası sırası: 0, 1, 2, 3, 4, 5 ve 6.
 
@@ -283,19 +247,11 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 Yanıt, 91.814 ölçüm olacak yol uzunluğunu açıklar ve bu yolu gezecek 7.797 saniye sürer. API en iyileştirilmiş yolu döndürdüğünden, seyahat mesafesi ve seyahat süresinin ikisi de burada düşüktür.
 
-<center>
-
-![İyileştirilmemiş yanıt](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
-
-</center>
+![İyileştirilmiş yanıt](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
 
 Aşağıdaki görüntüde Bu sorgudan elde edilen yol gösterilmektedir.
 
-<center>
-
-![İyileştirilmemiş görüntü](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
-
-</center>
+![İyileştirilmiş görüntü](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
 
 En iyi yol şu Yön noktası sırasına sahiptir: 0, 5, 1, 2, 4, 3 ve 6.
 
@@ -315,11 +271,7 @@ Bir başvuru yolu için sıfır veya daha fazla alternatif yol hesaplamak üzere
 
 Aşağıdaki görüntüde, zaman ve mesafe için belirtilen Sapma limitleriyle alternatif yolların oluşturulmasına yönelik bir örnek verilmiştir.
 
-<center>
-
 ![Alternatif yollar](media/how-to-use-best-practices-for-routing/alternative-routes-img.png)
-
-</center>
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Yönlendirme hizmetini bir Web uygulamasında kullanma
 

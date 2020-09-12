@@ -3,20 +3,20 @@ title: Azure ön kapısı-URL yeniden yazma | Microsoft Docs
 description: Bu makale, yapılandırıldıysa Azure ön kapısının, yollarınız için URL yeniden yazma şeklini anlamanıza yardımcı olur.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471481"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398946"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL yeniden yazma (özel iletme yolu)
 Azure ön kapısı, arka uca iletme isteği oluştururken kullanılacak isteğe bağlı bir **özel Iletme yolu** yapılandırmanıza ızın vererek URL yeniden yazmayı destekler. Özel yönlendirme yolu sağlanmazsa Front Door varsayılan olarak yönlendirilen istekte kullanılan URL alanına gelen URL yolunu kopyalar. Yönlendirilen istekte kullanılan Konak üst bilgisi seçilen arka uç için yapılandırılmış olan değerdir. Ne yaptığını ve nasıl yapılandırabileceğinizi öğrenmek için [arka uç ana bilgisayar üst bilgisini](front-door-backend-pool.md#hostheader) okuyun.

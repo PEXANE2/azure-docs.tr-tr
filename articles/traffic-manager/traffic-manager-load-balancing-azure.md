@@ -3,7 +3,7 @@ title: Azure 'da Yük Dengeleme hizmetlerini kullanma | Microsoft Docs
 description: 'Bu öğreticide, Azure Yük Dengeleme portföyünü kullanarak nasıl senaryo oluşturacağınız gösterilmektedir: Traffic Manager, Application Gateway ve Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: rohink
-ms.openlocfilehash: c5667a03d127441a9a911ff4b8daba0b3b138e3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711757"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393078"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
@@ -39,7 +39,7 @@ Kavramsal düzeyde, bu hizmetlerin her biri, Yük Dengeleme hiyerarşisinde ayr�
 
   İstemci, Traffic Manager tarafından döndürülen uç noktaya doğrudan bağlanır. Azure Traffic Manager, bir uç noktanın sağlıksız olduğunu algılar ve sonra istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Traffic Manager belgelerine](traffic-manager-overview.md) bakın.
 * **Application Gateway** , uygulamanız Için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak uygulama teslim DENETLEYICISI (ADC) sağlar. Müşterilerin, CPU yoğun TLS sonlandırmasını uygulama ağ geçidine devrederek, Web grubu üretkenliğini iyileştirmelerine olanak tanır. Diğer katman 7 yönlendirme özellikleri, gelen trafik, tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı Yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden fazla Web sitesini barındırma olanağı içerir. Application Gateway, Internet 'e yönelik ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin bir birleşimi olarak yapılandırılabilir. Application Gateway tamamen Azure tarafından yönetilen, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
-* **Load Balancer** , tüm UDP ve TCP protokolleri için yüksek performanslı ve düşük gecikmeli katman 4 Yük Dengeleme hizmetleri sunan Azure Sdn yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
+* **Load Balancer** , tüm UDP ve TCP protokolleri için yüksek performanslı ve düşük gecikmeli katman 4 Yük Dengeleme hizmetleri sunan Azure Sdn yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak, gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
 
 ## <a name="scenario"></a>Senaryo
 
@@ -88,10 +88,10 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
    * **Örnek sayısı**: 2 ile 10 arasında bir değer olan örnek sayısı.
    * **Kaynak grubu**: Application Gateway 'i tutan kaynak grubu. Mevcut bir kaynak grubu veya yeni bir kaynak olabilir.
    * **Konum**: kaynak grubuyla aynı konum olan uygulama ağ geçidinin bölgesi. Sanal ağ ve genel IP ağ geçidiyle aynı konumda olması gerektiğinden konum önemlidir.
-3. **Tamam**'a tıklayın.
+3. **Tamam**’a tıklayın.
 4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel**hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
 5. Dinleyiciyi aşağıdaki seçeneklerden biriyle yapılandırın:
-    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**'a tıklayın.
+    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**’a tıklayın.
     * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/application-gateway-create-gateway-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma

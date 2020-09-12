@@ -3,13 +3,13 @@ title: Kavramlar-Azure Kubernetes hizmetlerinde (AKS) depolama
 description: Azure Kubernetes Service 'teki (AKS) birimler, kalıcı birimler, depolama sınıfları ve talepler dahil depolama hakkında bilgi edinin
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406971"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421161"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
 
@@ -32,8 +32,6 @@ Verileri depolamak ve almak için geleneksel birimler, Azure depolama tarafında
 
 - *Azure diskleri* , bir Kubernetes *veri diski* kaynağı oluşturmak için kullanılabilir. Diskler, yüksek performanslı SSD 'Ler tarafından desteklenen Azure Premium Depolama veya normal HDD 'Ler tarafından desteklenen Azure Standart depolama kullanabilir. Çoğu üretim ve geliştirme iş yükleri için Premium depolama kullanın. Azure diskleri *Readwriteonce*olarak bağlanır, bu nedenle yalnızca tek bir pod için kullanılabilir. Aynı anda birden çok dizin tarafından erişilebilen depolama birimlerinde Azure dosyalarını kullanın.
 - *Azure dosyaları* , Azure depolama hesabı tarafından desteklenen bir SMB 3,0 paylaşımının pods 'ye bağlanması için kullanılabilir. Dosyalar, verileri birden çok düğümde ve düğüm genelinde paylaşmanızı sağlar. Dosyalar, yüksek performanslı SSD 'Ler tarafından desteklenen normal HDD 'Ler veya Azure Premium Depolama tarafından desteklenen Azure Standart depolama alanını kullanabilir.
-> [!NOTE] 
-> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
 
 Kubernetes 'te birimler, bilgilerin saklanabileceği ve alınabileceği yalnızca geleneksel bir diskten fazlasını temsil edebilir. Kubernetes birimleri, kapsayıcılar tarafından kullanılmak üzere bir pod 'a veri eklemenin bir yolu olarak da kullanılabilir. Kubernetes 'te ortak ek birim türleri şunlardır:
 
@@ -55,12 +53,18 @@ PersistentVolume bir küme yöneticisi tarafından *statik* olarak veya Kubernet
 
 Premium ve standart gibi farklı depolama katmanlarını tanımlamak için bir *Storageclass*oluşturabilirsiniz. StorageClass Ayrıca *reclaimPolicy*tanımlar. Bu reclaimPolicy, Pod silindiğinde ve kalıcı birim artık gerekmiyorsa, temel alınan Azure depolama kaynağının davranışını denetler. Temel alınan depolama kaynağı silinebilir veya gelecekteki bir pod ile kullanım için korunabilir.
 
-AKS 'de ilk StorageClasses oluşturulur:
+AKS 'de, ağaç içi `StorageClasses` depolama eklentileri kullanılarak küme için dört başlangıç oluşturulur:
 
-- *varsayılan* -yönetilen bir disk oluşturmak Için Azure standartssd depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
-- *yönetilen-Premium* -yönetilen disk oluşturmak Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kendisini kullanan kalıcı birim silindiğinde temeldeki Azure diskinin silindiğini gösterir.
-- *azurefile* -Azure Standart depolamayı kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure dosya paylaşımının silindiğini gösterir.
-- *azurefile-Premium* -Azure dosya paylaşımının oluşturulması Için Azure Premium depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temeldeki Azure dosya paylaşımının silindiğini gösterir.
+- `default` -Yönetilen bir disk oluşturmak için Azure StandardSSD depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure diskinin silinmesini sağlar.
+- `managed-premium` -Yönetilen bir disk oluşturmak için Azure Premium depolama kullanır. Geri kazanma ilkesi, kendisini kullanan kalıcı birim silindiğinde temeldeki Azure diskinin silinmesini sağlar.
+- `azurefile` -Azure Standart depolama kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure dosya paylaşımının silinmesini sağlar.
+- `azurefile-premium` -Azure dosya paylaşımının oluşturulması için Azure Premium depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure dosya paylaşımının silinmesini sağlar.
+
+Yeni kapsayıcı depolama arabirimi (CSı) dış eklentilerini (Önizleme) kullanan kümeler için aşağıdaki ek `StorageClasses` oluşturulur:
+- `managed-csi` -Yönetilen bir disk oluşturmak için Azure Standartssd yerel olarak yedekli depolama (LRS) kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure diskinin silinmesini sağlar. Depolama sınıfı ayrıca kalıcı birimleri genişletilebilir olacak şekilde yapılandırır, yalnızca yeni boyutla kalıcı birim talebi düzenlemeniz gerekir.
+- `managed-csi-premium` -Yönetilen bir disk oluşturmak için Azure Premium yerel olarak yedekli depolama (LRS) kullanır. Geri kazanma ilkesi, kendisini kullanan kalıcı birim silindiğinde temeldeki Azure diskinin silinmesini sağlar. Benzer şekilde, bu depolama sınıfı kalıcı birimlerin genişletilmesini sağlar.
+- `azurefile-csi` -Azure Standart depolama kullanarak bir Azure dosya paylaşımının oluşturulmasını sağlar. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure dosya paylaşımının silinmesini sağlar.
+- `azurefile-csi-premium` -Azure dosya paylaşımının oluşturulması için Azure Premium depolama kullanır. Geri kazanma ilkesi, kullanılan kalıcı birim silindiğinde temel alınan Azure dosya paylaşımının silinmesini sağlar.
 
 Kalıcı birim için bir StorageClass belirtilmemişse, varsayılan StorageClass kullanılır. Kalıcı birimler istemek için gereken uygun depolama alanını kullanmaları için dikkatli olmanız gerekir. Kullanarak ek gereksinimler için bir StorageClass oluşturabilirsiniz `kubectl` . Aşağıdaki örnek, Premium yönetilen diskleri kullanır ve pod silindiğinde temel alınan Azure diskinin *korunması* gerektiğini belirtir:
 

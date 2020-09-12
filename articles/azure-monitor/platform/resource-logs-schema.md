@@ -3,13 +3,13 @@ title: Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları
 description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şemasını anlayın.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/15/2020
-ms.openlocfilehash: acd661467e90b4915daa2f3eb31f34fd350dc9f5
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: d0f78b858da51838aacd9e3be9b0a069918710a7
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226472"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421926"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -49,7 +49,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | Hizmet | Şema & belgeleri |
 | --- | --- |
 | Azure Active Directory | [Genel bakış](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Denetim günlüğü şeması](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) ve [oturum açma şeması](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Analysis Services | https://docs.microsoft.com/azure/analysis-services/analysis-services-logging |
+| Analysis Services | [Azure Analysis Services-tanılama günlüğü kurulumu](../../analysis-services/analysis-services-logging.md) |
 | API Management | [Kaynak günlüklerini API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | Uygulama Ağ Geçitleri |[Application Gateway için günlüğe kaydetme](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Otomasyonu |[Azure Otomasyonu için Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -60,12 +60,12 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | Cosmos DB | [Günlüğe kaydetme Azure Cosmos DB](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Azure Izleyici 'yi kullanarak veri fabrikalarını izleme](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics için günlüklere erişme](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[Azure Data Lake Store için günlüklere erişme](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Data Lake Storage |[Azure Data Lake Store için günlüklere erişme](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Azure Veri Gezgini | [Azure Veri Gezgini günlükleri](/azure/data-explorer/using-diagnostic-logs) |
 | MySQL için Azure Veritabanı | [MySQL için Azure veritabanı tanılama günlükleri](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | PostgreSQL için Azure Veritabanı | [PostgreSQL için Azure veritabanı günlükleri](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure Databricks | [Azure Databricks'te tanılama günlüğü](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
-| Digital Twins | [Dijital TWINS tanılamayı ayarlama](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
+| Azure Databricks | [Azure Databricks'te tanılama günlüğü](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Digital Twins | [Azure dijital TWINS tanılamayı ayarlama](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs günlükleri](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Şema kullanılamıyor. |
 | Azure Güvenlik Duvarı | Şema kullanılamıyor. |
@@ -78,7 +78,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure 'da Power BI Embedded için günlüğe kaydetme](/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
-| Arayın |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |

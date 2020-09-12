@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 215d31ee4797dd3e7eef88d3a6679f2256f0ffae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0ab9eb36e9d254c4dab5aed36ec6e9784f04d958
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225987"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400747"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Güvenlik temeli
 
@@ -947,11 +947,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 Key Vault oluşturma:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:
+Key Vault kimlik doğrulaması nasıl yapılır:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault erişim ilkesi atama:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

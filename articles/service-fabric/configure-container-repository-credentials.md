@@ -4,12 +4,12 @@ description: Kapsayıcı kayıt defterinden görüntü indirmek için depo kimli
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934987"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421433"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntülerini indirmek için uygulamanızın depo kimlik bilgilerini yapılandırma
 
@@ -83,6 +83,10 @@ Service Fabric daha sonra, bölümünün altındaki ClusterManifest içinde beli
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
+          },
+          {
+        "name": "DefaultMSIEndpointForTokenAuthentication",
+        "value": "URI"
           }
         ]
       },
@@ -117,6 +121,25 @@ Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirte�
 
     > [!NOTE]
     > True `UseDefaultRepositoryCredentials` olarak ayarlanan bayrak, `UseTokenAuthenticationCredentials` dağıtım sırasında hataya neden olur.
+
+### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Azure genel bulutu dışında belirteç kimlik bilgilerini kullanma
+
+Belirteç tabanlı kayıt defteri kimlik bilgilerini kullanırken, Service Fabric ACR 'ye sunmak üzere sanal makine adına bir belirteç getirir. Varsayılan olarak, Service Fabric hedef kitlesi Genel Azure bulut uç noktası olan bir belirteç ister. Azure Almanya veya Azure Kamu gibi başka bir bulut örneğine dağıtım yapıyorsanız, parametresinin varsayılanını geçersiz kılmanız gerekir `DefaultMSIEndpointForTokenAuthentication` . Özel bir ortama dağıtmayın, bu parametreyi geçersiz kılmayın. Bu şekilde, varsayılan değer olan
+
+```
+http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
+```
+
+ortamınız için uygun kaynak uç noktası ile. Örneğin, [Azure Almanya](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)için geçersiz kılma 
+
+```json
+{
+    "name": "DefaultMSIEndpointForTokenAuthentication",
+    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
+}
+```
+
+[Sanal makine ölçek kümesi belirteçlerini getirme hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

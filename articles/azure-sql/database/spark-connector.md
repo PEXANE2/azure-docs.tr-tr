@@ -10,22 +10,25 @@ ms.topic: conceptual
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
-ms.date: 09/25/2018
-ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 09/02/2020
+ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985509"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421314"
 ---
-# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark bağlayıcısını kullanarak gerçek zamanlı büyük veri analizlerini hızlandırma 
+# <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark bağlayıcısını kullanarak gerçek zamanlı büyük veri analizlerini hızlandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+
+> [!NOTE]
+> Eyl 2020 itibariyle bu bağlayıcı etkin bir şekilde korunmaz. Ancak, [SQL Server ve Azure SQL için Apache Spark Bağlayıcısı](https://docs.microsoft.com/sql/connect/spark/connector) artık Python ve R bağlamaları desteğiyle, verileri toplu olarak eklemeye yönelik daha kolay bir arabirim ve birçok başka geliştirmeler de kullanılabilmektedir. Bunun yerine yeni bağlayıcıyı değerlendirmenizi ve kullanmanızı kesinlikle öneririz. Eski bağlayıcı (Bu sayfa) hakkındaki bilgiler yalnızca arşiv amacıyla tutulur.
 
 Spark Bağlayıcısı, Azure SQL veritabanı, Azure SQL yönetilen örneği ve SQL Server Spark işleri için giriş veri kaynağı veya çıkış veri havuzu görevi gören veritabanlarını sağlar. Büyük veri analizindeki gerçek zamanlı hareketsel verileri kullanmanıza ve geçici sorgular veya raporlama sonuçlarını sürdürmeye olanak tanır. Yerleşik JDBC Bağlayıcısı ile karşılaştırıldığında bu bağlayıcı, veritabanınıza veri ekleme olanağı sunar. 10 kat ile 20 kat daha hızlı performans ile satır satır ekleme işlemini engelleyebilir. Spark Bağlayıcısı, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'ne bağlanmak için Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. böylece, Azure AD hesabınızı kullanarak veritabanınızı Azure Databricks bağlayabilirsiniz. Yerleşik JDBC Bağlayıcısı ile benzer arabirimler sağlar. Mevcut Spark işlerinizin bu yeni bağlayıcıyı kullanmak için geçirilmesi kolaydır.
 
 ## <a name="download-and-build-a-spark-connector"></a>Spark bağlayıcısını indirme ve derleme
 
-Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/Azure/azure-sqldb-spark) Spark bağlayıcısını indirin.
+Daha önce bu sayfadan bağlantılı olan eski bağlayıcının GitHub deposu etkin bir şekilde korunmaz. Bunun yerine, [Yeni bağlayıcıyı](https://github.com/microsoft/sql-spark-connector)değerlendirmenizi ve kullanmanızı kesinlikle öneririz.
 
 ### <a name="official-supported-versions"></a>Resmi desteklenen sürümler
 
@@ -35,8 +38,8 @@ Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/
 | Scala                                 | 2,10 veya üzeri            |
 | SQL Server için Microsoft JDBC sürücüsü  | 6,2 veya üzeri             |
 | Microsoft SQL Server                  | SQL Server 2008 veya üstü |
-| Azure SQL Veritabanı                    | Destekleniyor                |
-| Azure SQL Yönetilen Örnek            | Destekleniyor                |
+| Azure SQL Veritabanı                    | Desteklenir                |
+| Azure SQL Yönetilen Örnek            | Desteklenir                |
 
 Spark Bağlayıcısı, verileri Spark çalışan düğümleri ve veritabanları arasında taşımak için Microsoft JDBC sürücüsü SQL Server kullanır:
 

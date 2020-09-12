@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd095939009c39c48456d330f975303f06a841a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267539"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426104"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme
 
@@ -26,18 +26,18 @@ Azure aboneliğinin Azure Active Directory (Azure AD) ile bir güven ilişkisi v
 
 Birden çok abonelik aynı Azure AD dizinine güvenebilir. Her abonelik yalnızca tek bir dizine güvenebilir.
 
-Aboneliğinizin süresi dolarsa, abonelikle ilişkili diğer tüm kaynaklara erişiminizi kaybedersiniz. Ancak Azure AD dizini Azure 'da kalır. Farklı bir Azure aboneliği kullanarak dizini ilişkilendirebilir ve yönetebilirsiniz.
+Bir veya daha fazla Azure aboneliği, Azure hizmetlerine karşı güvenlik sorumluları ve cihazların kimliğini doğrulamak ve yetkilendirmek için bir Azure Active Directory (Azure AD) örneğiyle bir güven ilişkisi kurabilir.  Bir aboneliğin süresi dolarsa, Azure AD hizmeti 'nin güvenilir örneği kalır, ancak güvenlik sorumluları Azure kaynaklarına erişimi kaybeder.
 
-Varsayılan olarak, bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda, bir Azure AD kiracısı oluşturulur ve Kullanıcı genel Yöneticiler rolünün bir üyesi yapılır. Mevcut bir dizine abonelik eklediğinizde, genel yönetici rolüne atanmamıştır.
+Bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda yeni bir Azure AD kiracısı oluşturulur ve Kullanıcı genel yönetici rolünün bir üyesi yapılır. Ancak, bir aboneliğin sahibi aboneliğini mevcut bir kiracıya katıldığında, sahip genel yönetici rolüne atanmaz.
 
 Tüm kullanıcılarınızın kimlik doğrulaması için tek bir *giriş* dizini vardır. Kullanıcılarınız diğer dizinlerde da konuk olabilir. Azure AD 'de her bir kullanıcı için hem ev hem de Konuk dizinleri görebilirsiniz.
 
 > [!Important]
-> Bir aboneliği farklı bir dizinle ilişkilendirdiğinizde, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanılarak atanmış rollere sahip kullanıcılar erişimleri kaybeder. Hizmet Yöneticisi ve Ortak Yöneticiler dahil olmak üzere klasik abonelik yöneticileri de erişimi kaybeder.
+> Bir aboneliği farklı bir dizinle ilişkilendirdiğinizde, [Azure rol tabanlı erişim denetimi](../../role-based-access-control/role-assignments-portal.md) kullanılarak atanmış rollere sahip kullanıcılar erişimleri kaybeder. Hizmet Yöneticisi ve Ortak Yöneticiler dahil olmak üzere klasik abonelik yöneticileri de erişimi kaybeder.
 >
 > Abonelik farklı bir dizinle ilişkilendirildiğinde İlke Atamaları da abonelikten kaldırılır.
 >
-> Azure Kubernetes Service (AKS) kümenizi farklı bir aboneliğe taşımak veya küme sahibi aboneliği yeni bir kiracıya taşımak, kayıp rol atamaları ve hizmet sorumlusunun hakları nedeniyle kümenin işlevselliği kaybetmesine neden olur. AKS hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks)](https://docs.microsoft.com/azure/aks/).
+> Azure Kubernetes Service (AKS) kümenizi farklı bir aboneliğe taşımak veya küme sahibi aboneliği yeni bir kiracıya taşımak, kayıp rol atamaları ve hizmet sorumlusunun hakları nedeniyle kümenin işlevselliği kaybetmesine neden olur. AKS hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks)](../../aks/index.yml).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -55,7 +55,7 @@ Aboneliğinizi ilişkilendirebilmeniz veya ekleyebilmek için önce aşağıdaki
 - Şunları içeren bir hesap kullanarak oturum açın:
 
   - , Abonelik için bir [sahip](../../role-based-access-control/built-in-roles.md#owner) rolü atamasına sahiptir. Sahip rolünü atama hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
-  - Hem geçerli dizinde hem de yeni dizinde bulunur. Geçerli dizin abonelikle ilişkili. Yeni dizini abonelikle ilişkilendireceğiz. Başka bir dizine erişim elde etme hakkında daha fazla bilgi için, [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../b2b/add-users-administrator.md)bölümüne bakın.
+  - Hem geçerli dizinde hem de yeni dizinde bulunur. Geçerli dizin abonelikle ilişkili. Yeni dizini abonelikle ilişkilendireceğiz. Başka bir dizine erişim elde etme hakkında daha fazla bilgi için, [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../external-identities/add-users-administrator.md)bölümüne bakın.
 
 - Bir Azure bulut hizmeti sağlayıcıları (CSP) aboneliği (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), bir Microsoft Iç aboneliği (MS-AZR-0015P) veya Microsoft Imagine aboneliği (MS-AZR-0144P) kullandığınızdan emin olun.
 
@@ -81,7 +81,7 @@ Mevcut bir aboneliği Azure AD dizininizle ilişkilendirmek için şu adımları
 
    Her şeyin düzgün şekilde gösterilmesi birkaç saat sürebilir. Çok uzun sürüyor görünüyorsa **genel abonelik filtresini**kontrol edin. Taşınan aboneliğin gizlenmediğinden emin olun. Yeni dizini görmek için Azure portal oturumunuzu kapatıp yeniden açmanız gerekebilir.
 
-Abonelik dizininin değiştirilmesi, hizmet düzeyi bir işlemdir, bu nedenle Abonelik Faturalandırma sahipliğini etkilemez. Hesap Yöneticisi hala hizmet yöneticisini [Hesap merkezinden](https://account.azure.com/subscriptions)değiştirebilir. Özgün dizini silmek için, Abonelik Faturalandırma sahipliğini yeni bir hesap yöneticisine aktarmanız gerekir. Faturalama sahipliğini aktarma hakkında daha fazla bilgi edinmek için bkz. [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../../cost-management-billing/manage/billing-subscription-transfer.md).
+Abonelik dizininin değiştirilmesi, hizmet düzeyi bir işlemdir, bu nedenle Abonelik Faturalandırma sahipliğini etkilemez. Özgün dizini silmek için, Abonelik Faturalandırma sahipliğini yeni bir hesap yöneticisine aktarmanız gerekir. Faturalama sahipliğini aktarma hakkında daha fazla bilgi edinmek için bkz. [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../../cost-management-billing/manage/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>İlişkilendirme sonrası adımları
 

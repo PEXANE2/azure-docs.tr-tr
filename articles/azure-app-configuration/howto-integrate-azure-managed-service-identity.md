@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0525f305e130247fd88ee2858c79cbfd0a15283e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206838"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400849"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -73,7 +73,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
     ![Yönetilen kimlik ekleme](./media/add-managed-identity.png)
 
-1. İsteğe bağlı: Key Vault erişim vermek istiyorsanız, [yönetilen bir kimlikle Key Vault kimlik doğrulaması sağlama](https://docs.microsoft.com/azure/key-vault/managed-identity)bölümündeki yönergeleri izleyin.
+1. İsteğe bağlı: Key Vault erişim vermek istiyorsanız, [Key Vault erişim Ilkesi atama](/azure/key-vault/assign-access-policy-portal)bölümündeki yönergeleri izleyin.
 
 ## <a name="use-a-managed-identity"></a>Yönetilen kimlik kullanma
 

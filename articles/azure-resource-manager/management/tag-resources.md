@@ -4,12 +4,12 @@ description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenleme
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500002"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426002"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -579,7 +579,7 @@ Kaynak grubuna veya aboneliğe uygulanan Etiketler kaynaklar tarafından devral�
 
 Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
 
-[Azure Kaynak kullanımı ve ücret kartı API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
+[Azure Kaynak kullanımı ve ücret kartı API 'leri](../../cost-management-billing/manage/usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını Azure portal indirebilirsiniz. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
 REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 
@@ -591,7 +591,7 @@ Etiketler için aşağıdaki sınırlamalar geçerlidir:
 * Her kaynak, kaynak grubu ve abonelik en fazla 50 etiket adı/değer çiftine sahip olabilir. İzin verilen maksimum sayıdan daha fazla etiket uygulamanız gerekiyorsa, etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu veya abonelik, her birinin 50 etiket adı/değer çifti olan çok sayıda kaynak içerebilir.
 * Etiket adı 512 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır. Depolama hesapları için etiket adı 128 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır.
 * Etiketler, Cloud Services gibi klasik kaynaklara uygulanamaz.
-* Etiket adları şu karakterleri içeremez: `<` , `>` ,, `%` `&` , `\` , `?` ,`/`
+* Etiket adları şu karakterleri içeremez: `<` , `>` ,, `%` `&` , `\` , `?` , `/`
 
    > [!NOTE]
    > Şu anda Azure DNS bölgeleri ve Traffic Manager hizmetleri etiketinde boşluk kullanılmasına da izin vermez.

@@ -3,41 +3,39 @@ title: Azure haritalar için en iyi uygulamalar Arama Hizmeti | Microsoft Azure 
 description: Microsoft Azure haritalardan Arama Hizmeti kullanırken en iyi uygulamaları nasıl uygulayacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064269"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400713"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
 
 Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) , geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olmak için çeşitli yetenekler sunan API 'leri içerir. Örneğin,[benzer arama API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanıcıların bir adres veya ilgi noktası (POI) aramasını sağlar.
 
 Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulamalarının nasıl uygulanacağı açıklanır. Şunları öğrenirsiniz:
+> [!div class="checklist"]
+> * İlgili eşleşmeleri döndürmek için sorgular oluşturun
+> * Arama sonuçlarını sınırla
+> * Sonuç türleri arasındaki farkları öğrenin
+> * Adres Arama-Yanıt yapısını okuyun
 
-* İlgili eşleşmeleri döndürmek için sorgular oluşturun
-* Arama sonuçlarını sınırla
-* Sonuç türleri arasındaki farkları öğrenin
-* Adres Arama-Yanıt yapısını okuyun
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="prerequisites"></a>Önkoşullar
+1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
-Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
-
-Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
-
-> [!TIP]
-> Arama Hizmeti sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak REST API çağrıları oluşturabilirsiniz. İsterseniz dilediğiniz API geliştirme ortamını de kullanabilirsiniz.
+Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.postman.com/downloads/) kullanır, ancak HERHANGI bir API geliştirme ortamı seçebilirsiniz.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Kodlamayı adreslerine yönelik en iyi uygulamalar
 
-Azure haritalar Arama Hizmeti kullanarak tam veya kısmi bir adres aradığınızda, API arama sorgunuzun anahtar sözcüklerini okur. Ardından, adresin boylam ve enlem koordinatlarını döndürür. Bu işleme *geokodlamaya*denir. 
+Azure haritalar Arama Hizmeti kullanarak tam veya kısmi bir adres aradığınızda, API arama sorgunuzun anahtar sözcüklerini okur. Ardından, adresin boylam ve enlem koordinatlarını döndürür. Bu işleme *geokodlamaya*denir.
 
 Bir ülkede/bölgede kodlamayı özelliği, yol verilerinin kullanılabilirliğine ve coğrafi kodlama hizmetinin duyarlığına bağlıdır. Azure 'un coğrafi kodlama özelliklerini ülkeye veya bölgeye göre Maps hakkında daha fazla bilgi için bkz. [coğrafi kodlama kapsamı](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
@@ -79,9 +77,9 @@ Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure hari
 
 #### <a name="usage-examples"></a>Kullanım örnekleri
 
-* `idxSet=POI`-Yalnızca POI arama yapın. 
+* `idxSet=POI` -Yalnızca POI arama yapın. 
 
-* `idxSet=PAD,Addr`-Yalnızca adres arayın. `PAD`nokta adresini gösterir ve `Addr` adres aralığını gösterir.
+* `idxSet=PAD,Addr` -Yalnızca adres arayın. `PAD` nokta adresini gösterir ve `Addr` adres aralığını gösterir.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Coğrafya varlık türü için ters coğrafi kod ve filtre
 

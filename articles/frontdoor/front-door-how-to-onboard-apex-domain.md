@@ -2,17 +2,17 @@
 title: Var olan bir ön kapıya bir kök veya tepesinde etki alanı ekleme-Azure portal
 description: Azure portal kullanarak var olan bir ön kapıya bir kök veya tepesinde etki alanı eklemeyi öğrenin.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743601"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399605"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Front Door’unuza kök veya apex etki alanı ekleme
 Azure ön kapısı, özel etki alanlarını eklemek için etki alanı sahipliğini doğrulamak üzere CNAME kayıtlarını kullanır. Ayrıca, ön kapı, ön kapı profilinizle ilişkili ön uç IP adresini kullanıma sunmaz ve amaç Azure ön kapısına eklemek için tepesinde etki alanınızı bir IP adresiyle eşleyemezsiniz.

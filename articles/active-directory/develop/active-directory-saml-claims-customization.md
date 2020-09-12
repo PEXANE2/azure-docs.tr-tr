@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552841"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421467"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -54,9 +54,9 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 
 **Ad tanımlayıcı biçimi Seç** açılan menüsünde, aşağıdaki seçeneklerden birini seçebilirsiniz.
 
-| NameID biçimi | Açıklama |
+| NameID biçimi | Description |
 |---------------|-------------|
-| **Varsayılan** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
+| **Varsayılanını** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
 | **EmailAddress** | Microsoft Identity platformu, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Belirtilmemiş** | Microsoft Identity platform, NameID biçimi olarak belirtilmemiş olarak kullanılacak. |
@@ -88,11 +88,11 @@ Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (sta
 
 1. **Kaynak özniteliğinde** kuruluşunuza göre sabit değeri tırnak işareti olmadan girin ve **Kaydet**' e tıklayın.
 
-    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Kuruluş öznitelikleri & talepler bölümünde Azure portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. Sabit değer aşağıda gösterildiği gibi görüntülenecektir.
 
-    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Azure portal öznitelikleri & talepler bölümünü Düzenle](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Özel talepler-dönüşümler
 
@@ -121,7 +121,7 @@ Bir Kullanıcı özniteliğine dönüşüm uygulamak için:
 2. Dönüştürme açılan listesinden işlevi seçin. Seçili işleve bağlı olarak, dönüşümde değerlendirmek için parametreler ve sabit bir değer sağlamanız gerekir. Kullanılabilir işlevler hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 3. Birden çok dönüşüm uygulamak için **dönüştürme Ekle**' ye tıklayın. Bir talebe en fazla iki dönüşüm uygulayabilirsiniz. Örneğin, önce öğesinin e-posta önekini ayıklayabilirsiniz `user.mail` . Ardından, dizeyi büyük harfe getirin.
 
-   ![NameID (ad tanımlayıcı) değerini Düzenle](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![Birden çok talep dönüştürmesi](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 
@@ -129,8 +129,8 @@ Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 |----------|-------------|
 | **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, "joe_smith" yerine joe_smith@contoso.com ). |
 | **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, JOIN doğrulanmış bir etki alanıyla kısıtlıdır. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, joe_smith@contoso.com Kullanıcı tanımlayıcı değeri olarak e-postayı () seçer ve doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' ı seçerseniz, bu sonuç olarak olur joe_smith@contoso.onmicrosoft.com . |
-| **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
-| **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
+| **Toküçük ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
+| **Tobüyük ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
 | **Contains ()** | Giriş belirtilen değerle eşleşiyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, "" etki alanını içeriyorsa değerin kullanıcının e-posta adresi olduğu bir talep oluşturmak istiyorsanız @contoso.com , aksi takdirde Kullanıcı asıl adını çıkarmak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. email<br/>*Değer*: " @contoso.com "<br/>Parametre 2 (çıkış): User. email<br/>Parametre 3 (eşleşme yoksa çıkış): User. UserPrincipalName |
 | **EndWith ()** | Giriş belirtilen değerle sona ererse bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, çalışan KIMLIĞI "000" ile bitiyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak istersiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. EmployeeID<br/>*Değer*: "000"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
 | **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlıyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |

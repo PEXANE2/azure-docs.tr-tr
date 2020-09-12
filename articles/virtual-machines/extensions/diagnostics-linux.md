@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267862"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400696"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -70,7 +70,7 @@ Desteklenen dağıtımlar ve sürümler:
 * **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
 * **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
 * Henüz yoksa wget komutu: komutunu çalıştırın `sudo apt-get install wget` .
-* Mevcut bir Azure aboneliği ve içindeki mevcut bir depolama hesabı, verileri depolamak için.
+* Mevcut bir Azure aboneliği ve verilerin depolanması için mevcut bir genel amaçlı depolama hesabı.  Genel amaçlı depolama hesapları, gereken tablo depolamayı destekler.  BLOB depolama hesabı çalışmayacak.
 
 ### <a name="sample-installation"></a>Örnek yükleme
 
@@ -572,7 +572,7 @@ Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"conditi
 
 ## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 yükleme ve yapılandırma
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 

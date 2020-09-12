@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 3c0b0f9f39620996245614b53c7ec274ec965d5b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921207"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400764"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure depolama için sanal ağ hizmet uç noktası ilkeleri
 
@@ -122,7 +122,7 @@ Sanal ağlar ve Azure depolama hesapları aynı veya farklı aboneliklerde veya 
 - Sanal ağların hizmet uç noktası ilkesiyle aynı bölgede bulunması gerekir.
 - Hizmet uç noktası ilkesini bir alt ağa uygulayabilmeniz için, ilkede listelenen Azure hizmetleri için hizmet uç noktalarının yapılandırılmış olması gerekir.
 - Şirket içi ağınızdan Azure hizmetlerine yönelik trafik için hizmet uç noktası ilkelerini kullanamazsınız.
-- Azure yönetilen hizmetler şu anda uç nokta ilkelerini desteklemez. Bu, paylaşılan alt ağlara dağıtılan yönetilen Hizmetleri (örn. *Azure HDInsight, Azure Batch, Azure ekleme, Azure APplication Gateway, Azure VPN Gateway, Azure Güvenlik Duvarı*) veya ayrılmış alt ağlara (örn. *Azure App Service ortamı, Azure Redis Cache, Azure API Management, Azure SQL mı, klasik yönetilen hizmetler*) içerir.
+- Azure yönetilen hizmetler şu anda uç nokta ilkelerini desteklemez. Bu, paylaşılan alt ağlara dağıtılan yönetilen Hizmetleri (örn. *Azure HDInsight, Azure Batch, Azure ekleme, azure Application Gateway, azure VPN Gateway, Azure Güvenlik Duvarı*) ya da ayrılmış alt ağlara (örn. *Azure App Service ortamı, Azure Redis Cache, Azure API Management, Azure SQL mı, klasik yönetilen hizmetler*) içerir.
 
  > [!WARNING]
  > Sanal ağınıza dağıtılan Azure HDInsight gibi Azure hizmetleri, altyapı gereksinimlerinden dolayı Azure Depolama gibi diğer Azure hizmetlerine erişir. Uç nokta ilkesini belirli kaynaklarla kısıtlamak, sanal ağınızda dağıtılan Azure hizmetleri için bu altyapı kaynaklarına erişimi kesebilir.

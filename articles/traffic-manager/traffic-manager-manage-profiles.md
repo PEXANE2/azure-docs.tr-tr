@@ -3,7 +3,7 @@ title: Azure Traffic Manager profillerini yönetme| Microsoft Belgeleri
 description: Bu makale, bir Azure Traffic Manager profili oluşturmanıza, devre dışı bırakmanızı, etkinleştirmenize ve silmenize yardımcı olur.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: rohink
-ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711587"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392893"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Bir Azure Traffic Manager profilini yönetme
 
@@ -37,7 +37,7 @@ Azure portalını kullanarak bir Traffic Manager profili oluşturabilirsiniz. Pr
     3. **Abonelik** alanında bu profili hangi abonelik altında oluşturacağınızı seçin
     4. **Kaynak Grubu** alanında bu profilin yerleştirileceği yeni bir kaynak grubu oluşturun.
     5. **Kaynak grubu konumu** alanında kaynak grubunun konumunu seçin. Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılacak Traffic Manager profilini etkilemez.
-    6. **Oluştur**'a tıklayın.
+    6. **Oluştur**’a tıklayın.
     7. Traffic Manager profilinizin genel dağıtımı, tamamlandığında ilgili kaynak grubunda kaynaklardan biri olarak listelenir.
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Bir profili devre dışı bırakma, etkinleştirme veya silme
