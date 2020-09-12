@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5804dcc840eb666c1d43ea7d7ed7640b8f7ff371
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850704"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657433"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı 'Nı Azure Sentinel 'e bağlama
 
@@ -31,13 +31,13 @@ ms.locfileid: "87850704"
 > [!NOTE]
 > - Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 >
-> - Azure Sentinel ve Azure Güvenlik Merkezi aynı çalışma alanına toplanırsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Yine de etkinleştirdiyseniz, yinelenen verilere neden olmaz. 
+> - Azure Sentinel ve Azure Defender (eski adıyla Azure Güvenlik Merkezi) aynı çalışma alanına toplanıyorsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Yine de etkinleştirdiyseniz, yinelenen verilere neden olmaz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - İzlemek istediğiniz makinelerin bağlı olduğu çalışma alanı üzerinde okuma ve yazma izinlerinizin olması gerekir.
 
-- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
+- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi edinin](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>Bağlayıcıyı etkinleştirme 
 
@@ -47,37 +47,40 @@ ms.locfileid: "87850704"
 
 ### <a name="instructions-tab"></a>Yönergeler sekmesi
 
-- **Windows makineleriniz Azure 'da ise:**
+**Yönergeler** sekmesinde aşağıdaki adımları izleyin.
 
-    1. **Azure Windows sanal makinesine aracıyı yüklemeyi**seçin.
+- **Windows makineleriniz Azure 'da ise, şu adımları izleyin:**
 
-    1. Görüntülenen **Azure Windows sanal makineler Için yükleme & yükleme aracısı >** bağlantısını tıklatın.
+   1. **Azure Windows sanal makinesine aracıyı yüklemeyi**seçin.
+   
+   1. Görüntülenen **Azure Windows sanal makineler Için yükleme & yükleme aracısı >** bağlantısını tıklatın.
+   
+   1. **Sanal makineler** listesinde, Azure Sentinel 'de akışı yapmak istediğiniz Windows makinesini seçin. (Yalnızca Windows VM 'lerinin görüntülendiğinden emin olmak için işletim sistemi sütun filtresi ' nde **Windows** ' u seçebilirsiniz).
+   
+   1. Bu VM için açılan pencerede, **Bağlan**' a tıklayın.
+   
+   1. **Sanal makineler** bölmesine dönün ve bağlanmak istediğiniz diğer tüm VM 'ler için önceki iki adımı tekrarlayın. İşiniz bittiğinde **Windows Güvenlik Duvarı** bölmesine dönün.
 
-    1. **Sanal makineler** listesinde, Azure Sentinel 'de akışı yapmak istediğiniz Windows makinesini seçin. (Yalnızca Windows VM 'lerinin görüntülendiğinden emin olmak için işletim sistemi sütun filtresi ' nde **Windows** ' u seçebilirsiniz).
+- **Windows makineniz bir Azure VM değilse, şu adımları izleyin:**
+   
+   1. **Azure olmayan Windows makinesine aracıyı yüklemeyi**seçin.
+   
+   1. Görüntülenen **Azure olmayan Windows makineleri Için indirme & yükleme aracısı >** bağlantısını tıklatın.
+   
+   1. **Aracılar yönetimi** bölmesinde, gerektiğinde **Windows agent 'ı (64 bit) Indir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
+   
+   1. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtar** dizelerini bir metin dosyasına kopyalayın. Bu dosyayı ve indirilen yükleme dosyasını Windows makinenize kopyalayın. Yükleme dosyasını çalıştırın ve istendiğinde, yükleme sırasında metin dosyasına KIMLIĞI ve anahtar dizelerini girin.
+   
+   1. **Windows Güvenlik Duvarı** bölmesine geri dönün.
 
-    1. Bu VM için açılan pencerede, **Bağlan**' a tıklayın.
-
-    1. **Sanal makineler** bölmesine dönün ve bağlanmak istediğiniz diğer tüm VM 'ler için önceki iki adımı tekrarlayın. İşiniz bittiğinde **Windows Güvenlik Duvarı** bölmesine dönün.
-
-- **Windows makineniz bir Azure VM değilse:**
-
-    1. **Azure olmayan Windows makinesine aracıyı yüklemeyi**seçin.
-
-    1. Görüntülenen **Azure olmayan Windows makineleri Için indirme & yükleme aracısı >** bağlantısını tıklatın.
-
-    1. **Aracılar yönetimi** bölmesinde, gerektiğinde **Windows agent 'ı (64 bit) Indir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
-
-    1. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtar** dizelerini bir metin dosyasına kopyalayın. Bu dosyayı ve indirilen yükleme dosyasını Windows makinenize kopyalayın. Yükleme dosyasını çalıştırın ve istendiğinde, yükleme sırasında metin dosyasına KIMLIĞI ve anahtar dizelerini girin.
-
-    1. **Windows Güvenlik Duvarı** bölmesine geri dönün.
-
-1. **Çözümü yüklensin**' e tıklayın.
+**Yönergeler** sekmesindeki adımları tamamladıktan sonra **çözümü yüklensin**' e tıklayın.
 
 ### <a name="next-steps-tab"></a>Sonraki adımlar sekmesi
 
-- Windows Güvenlik Duvarı günlük verilerinize ilişkin Öngörüler almak için **Windows Güvenlik Duvarı** veri Bağlayıcısı ile birlikte sunulan önerilen çalışma kitaplarına ve sorgu örneklerine bakın.
+- Windows Güvenlik Duvarı günlük verilerinize ilişkin Öngörüler almak için, **Windows Güvenlik Duvarı** veri Bağlayıcısı ile birlikte sunulan önerilen çalışma kitaplarına ve sorgu örneklerine bakın.
 
 - **Günlüklerde**Windows Güvenlik Duvarı verilerini sorgulamak için, sorgu penceresine **WindowsFirewall** yazın.
+
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
  

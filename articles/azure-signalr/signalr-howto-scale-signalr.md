@@ -4,21 +4,21 @@ description: Azure portal veya Azure CLı aracılığıyla kapasiteyi eklemek ve
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500496"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595776"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR hizmet örneğini ölçeklendirme
 Bu makalede, Azure SignalR hizmeti örneğinizin nasıl ölçeklenmesi gösterilmektedir. Ölçeklendirme, ölçek artırma ve genişleme için iki senaryo vardır.
 
 * [Ölçeği artırma](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): daha fazla birim, bağlantı, ileti ve daha fazlasını öğrenin. Fiyatlandırma katmanını ücretsiz olarak standart olarak değiştirerek ölçeği değiştirmiş olursunuz.
-* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): SignalR birimlerinin sayısını artırın. Ölçeği 100 birim kadar genişletebilirsiniz.
+* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): SignalR birimlerinin sayısını artırın. Ölçeği 100 birim kadar genişletebilirsiniz. Tek bir SignalR hizmeti örneği için ölçekleme: 1, 2, 5, 10, 20, 50 ve 100 birim için seçilecek sınırlı birim seçenekleri vardır.
 
 Ölçek ayarlarının uygulanması birkaç dakika sürer. Nadir durumlarda, uygulanması yaklaşık 30 dakika sürebilir. Bunlar, kodunuzun değiştirilmesini veya sunucu uygulamanızı yeniden dağıtmanıza gerek kalmaz.
 

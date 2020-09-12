@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806430"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595912"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Uygulama ağ geçidi oluşturma ve HTTP üstbilgilerini yeniden yazma
 
@@ -20,15 +20,13 @@ Yeni [Otomatik ölçeklendirme ve bölgesel olarak yedekli uygulama ağ geçidi 
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
->
-> * Otomatik ölçeklendirme sanal ağı oluşturma
-> * Ayrılmış genel IP adresi oluşturma
-> * Uygulama ağ geçidi altyapınızı ayarlama
-> * Http üst bilgisi yeniden yazma kuralı yapılandırmanızı belirtin
-> * Otomatik ölçeklendirmeyi belirtme
-> * Uygulama ağ geçidi oluşturma
-> * Uygulama ağ geçidini test etme
+* Otomatik ölçeklendirme sanal ağı oluşturma
+* Ayrılmış genel IP adresi oluşturma
+* Uygulama ağ geçidi altyapınızı ayarlama
+* Http üst bilgisi yeniden yazma kuralı yapılandırmanızı belirtin
+* Otomatik ölçeklendirmeyi belirtme
+* Uygulama ağ geçidi oluşturma
+* Uygulama ağ geçidini test etme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

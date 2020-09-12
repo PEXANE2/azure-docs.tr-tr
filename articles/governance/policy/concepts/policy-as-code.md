@@ -3,12 +3,12 @@ title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047335"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651880"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -43,7 +43,9 @@ Bu dosya biçimlerine örnek olarak [Azure Policy GitHub](https://github.com/Azu
 
 Kod olarak Ilkenin önerilen genel iş akışı şu diyagram gibi görünür:
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Kod iş akışına genel bakış olarak ilke" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Ilkeyi, dağıtım için Oluştur ' dan test edilecek kod iş akışı kutuları olarak gösteren diyagram." border="false":::
+   Ilkeyi kod iş akışı kutuları olarak gösteren diyagram. İlke ve girişim tanımlarının oluşturulması için oluşturma içerir. Test, zorlama modu devre dışı olan atamayı kapsıyor. Uyumluluk durumu için bir ağ geçidi denetimi, izin verme ve kaynakları düzeltme atamalarına göre daha sonra yapılır.  Dağıtım, atama modu etkinken atamanın güncelleştirilmesini içerir.
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>İlke tanımları oluşturma ve güncelleştirme
 

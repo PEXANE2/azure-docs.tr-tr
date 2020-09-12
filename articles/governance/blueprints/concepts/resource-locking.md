@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051511"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651944"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -103,7 +103,7 @@ Atama kaldırıldığında, Azure şemaları tarafından oluşturulan kilitler k
 
 Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt [kaynaklarına reddetme izni reddetme eylemi](../../../role-based-access-control/deny-assignments.md) uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve Azure şemaları dışında şema kilidinin kaldırılmasını engeller.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Kaynak grubunda Blueprint reddetme ataması" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Bir kaynak grubu için erişim denetimi (I M) sayfasının ve atamaları reddetme sekmesinin ekran görüntüsü." border="false":::
 
 Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) aşağıdaki gibidir:
 

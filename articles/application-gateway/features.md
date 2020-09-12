@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067975"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651981"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway özellikleri
 
@@ -35,7 +35,7 @@ Application Gateway aşağıdaki özellikleri içerir:
 - [Websocket ve HTTP/2 trafiği](#websocket-and-http2-traffic)
 - [Bağlantı boşaltma](#connection-draining)
 - [Özel hata sayfaları](#custom-error-pages)
-- [HTTP üstbilgilerini ve URL 'YI yeniden yaz](#rewrite-http-headers-and-url)
+- [HTTP üst bilgilerini ve URL’sini yeniden yazma](#rewrite-http-headers-and-url)
 - [Boyutlandırma](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>Güvenli Yuva Katmanı (SSL/TLS) sonlandırma
@@ -83,13 +83,13 @@ Daha fazla bilgi için bkz. [URL yolu tabanlı yönlendirmeye genel bakış](url
 
 ## <a name="multiple-site-hosting"></a>Birden çok site barındırma
 
-Application Gateway ile, aynı uygulama ağ geçidinde birden fazla Web uygulaması için konak adına veya etki alanı adına göre yönlendirmeyi yapılandırabilirsiniz. Bir Application Gateway 'e en fazla 100 + web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin, üç etki alanı, contoso.com, fabrikam.com ve adatum.com, uygulama ağ geçidinin IP adresine işaret edin. Üç adet çok siteli dinleyici oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
+Application Gateway ile, aynı uygulama ağ geçidinde birden fazla Web uygulaması için konak adına veya etki alanı adına göre yönlendirmeyi yapılandırabilirsiniz. Bir uygulama ağ geçidine 100'den fazla web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin contoso.com, fabrikam.com ve adatum.com olmak üzere üç etki alanı, uygulama ağ geçidinin IP adresine işaret eder. Üç çoklu site dinleyicisi oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarına göre yapılandırabilirsiniz. 
 
 İstekleri `http://contoso.com` ContosoServerPool 'a yönlendirilir, `http://fabrikam.com` FabrikamServerPool 'a yönlendirilir ve bu şekilde devam eder.
 
 Benzer şekilde, aynı üst etki alanının iki alt etki alanı, aynı uygulama ağ geçidi dağıtımında barındırılabilir. Alt etki alanı kullanım örnekleri, tek bir uygulama ağ geçidi dağıtımında barındırılan `http://blog.contoso.com` ve `http://app.contoso.com` öğelerini içerebilir. Daha fazla bilgi için bkz. [birden çok site barındırma Application Gateway](multiple-site-overview.md).
 
-Ayrıca, çok siteli bir dinleyicide joker karakter ana bilgisayar adlarını ve dinleyici başına en fazla 5 ana bilgisayar adını tanımlayabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+Ayrıca çoklu site dinleyicisinde joker karakter ana bilgisayar adı tanımlayabilir ve bunu dinleyici başına en fazla 5 ana bilgisayar adı için yapabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
 ## <a name="redirection"></a>Yönlendirme
 
@@ -117,13 +117,13 @@ Application Gateway, WebSocket ve HTTP/2 protokolleri için yerel destek sağlar
 
 WebSocket ve HTTP/2 protokolleri, uzun süre çalışan bir TCP bağlantısı üzerinden bir sunucu ile bir istemci arasında tam çift yönlü iletişimi etkinleştirir. Bu, web sunucusu ile istemci arasında HTTP tabanlı uygulamalarda gerektiği gibi yoklama olmadan çift yönlü olabilen daha etkileşimli bir iletişime olanak sağlar. Bu protokollerin, HTTP 'den farklı olarak düşük bir yükü vardır ve birden çok istek/yanıt için aynı TCP bağlantısını daha verimli bir kaynak kullanımına neden olabilir. Bu protokoller, geleneksel HTTP bağlantı noktaları 80 ve 443 üzerinden çalışmak üzere tasarlanmıştır.
 
-Daha fazla bilgi için bkz. [WebSocket desteği](application-gateway-websocket.md) ve [http/2 desteği](configuration-overview.md#http2-support).
+Daha fazla bilgi için bkz. [WebSocket desteği](application-gateway-websocket.md) ve [http/2 desteği](configuration-listeners.md#http2-support).
 
 ## <a name="connection-draining"></a>Bağlantı boşaltma
 
 Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Application Gateway etkinleştirildikten sonra, bir arka uç havuzunun tüm kaydını kaldırmak örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir Kullanıcı yapılandırma değişikliği tarafından açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir. Bunun tek istisnası, ağ geçidi ile yönetilen oturum benzeşimi nedeniyle açıkça kaydı yapılmış olan ve kaydını kaldırmak örneklerine yönelik olarak devam eden kaydını kaldırmak örneklerine yönelik isteklerdir.
 
-Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#connection-draining).
+Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-http-settings.md#connection-draining).
 
 ## <a name="custom-error-pages"></a>Özel hata sayfaları
 
@@ -131,7 +131,7 @@ Application Gateway, varsayılan hata sayfalarını göstermek yerine özel hata
 
 Daha fazla bilgi için bkz. [özel hatalar](custom-error.md).
 
-## <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
+## <a name="rewrite-http-headers-and-url"></a>HTTP üst bilgilerini ve URL’sini yeniden yazma
 
 HTTP üstbilgileri, istemci ve sunucunun istek veya Yanıt ile ek bilgi geçmesine izin verir. Bu HTTP üstbilgilerini yeniden yazmak, aşağıdaki gibi çeşitli önemli senaryolar gerçekleştirmenize yardımcı olur:
 
@@ -139,15 +139,15 @@ HTTP üstbilgileri, istemci ve sunucunun istek veya Yanıt ile ek bilgi geçmesi
 - Hassas bilgileri açığa çıkartan yanıt üst bilgisi alanlarını kaldırma.
 - Üst bilgiler Için X-Iletilen bağlantı noktası bilgilerini yakdırın.
 
-Application Gateway ve WAF v2 SKU, HTTP isteği ve yanıt üst bilgilerini ekleme, kaldırma veya güncelleştirme özelliğini destekler, ancak istek ve yanıt paketleri istemci ile arka uç havuzları arasında hareket eder. Ayrıca, URL 'Leri, sorgu dizesi parametrelerini ve ana bilgisayar adını da yeniden yazabilirsiniz. URL yeniden yazma ve URL yol tabanlı yönlendirme sayesinde, yol eşlemesini yeniden değerlendir seçeneğini kullanarak, istekleri orijinal yola veya yeniden yazma yoluna göre arka uç havuzlarından birine yönlendirmenizi seçebilirsiniz. 
+Application Gateway ve WAF v2 SKU, istek ve yanıt paketleri istemci ile arka uç havuzları arasında gidip gelirken HTTP istek ve yanıt üst bilgileri eklemenize ya da mevcut bilgileri kaldırmanıza veya güncelleştirmenize olanak tanır. Ayrıca URL’leri, sorgu dizesi parametrelerini ve konak adını yeniden yazabilirsiniz. URL yeniden yazma ve URL tabanlı yeniden yönlendirmeyle, istekleri özgün yolu temel alan arka uç havuzlarından birine yönlendirebilir veya yol haritasını yeniden değerlendirme seçeneğini kullanarak yolu yeniden yazabilirsiniz. 
 
-Ayrıca, belirtilen üstbilgilerin veya URL 'nin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar ekleme özelliği de sağlar. Bu koşullar istek ve yanıt bilgilerini temel alır.
+Belirtilen üst bilgi ve URL’nin yalnızca belirli koşullar karşılandığında yeniden yazılmasını sağlamak için bu koşulları eklemenize de olanak tanır. Bu koşullar istek ve yanıt bilgilerine dayanır.
 
 Daha fazla bilgi için bkz. [http üst bilgilerini ve URL 'Yi yeniden yazma](rewrite-http-headers-url.md).
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md#pricing).
+Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2](application-gateway-autoscaling-zone-redundant.md) ve [fiyatlandırmayı anlama](understanding-pricing.md).
 
 Application Gateway standart üç boyutta sunulur: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 

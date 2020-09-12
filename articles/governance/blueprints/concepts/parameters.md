@@ -3,12 +3,12 @@ title: Dinamik şemaları oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051568"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651956"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -61,11 +61,11 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 1. Parametre seçeneklerine sahip şema öğesine eklenen yapılar, **Parameters** sütununda **doldurulmuş X/Y parametrelerini** görüntüler. Yapıt parametrelerini düzenlemek için yapıt satırını seçin.
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Şema tanımında şema parametreleri" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
 
-1. **Yapıtı Düzenle** sayfası, tıklanan yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre**yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
+1. **Yapıtı Düzenle** sayfası, seçilen yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre**yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Şema yapıtı üzerinde şema statik parametrelerini Yazdır" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir şema yapıtı üzerindeki statik parametrelerin ekran görüntüsü." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API statik parametreleri ayarlama
 
@@ -176,7 +176,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Şema ataması sırasında şema dinamik parametresi" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Şema ataması sırasında dinamik parametreleri ayarlamanın ekran görüntüsü." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Blob depolamada akışı değiştirme (Önizleme) | Microsoft Docs
+title: Azure Blob depolamada akışı değiştirme | Microsoft Docs
 description: Azure Blob depolamada değişiklik akışı günlüklerini ve bunların nasıl kullanılacağını öğrenin.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055440"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568243"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
+# <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob depolamada akış desteğini değiştirme
 
 Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
 
@@ -27,11 +27,11 @@ Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herh
 
 Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen senaryolar için uygundur. Örneğin, uygulamalar şunları yapabilir:
 
-  - İkincil bir dizini güncelleştirin, önbellek, arama motoru veya diğer içerik yönetimi senaryolarıyla eşitler.
+  - İkincil dizini güncelleştirme, önbellek ile eşitleme, arama motoru veya diğer içerik yönetim senaryoları.
   
-  - Bir akış veya toplu modda nesnelerinize gerçekleşen değişikliklere göre iş analizi öngörülerini ve ölçümlerini ayıklayın.
+  - Akış şeklinde veya toplu iş modunda nesnelerinize yapılan değişikliklere göre iş analizi içgörülerini ve ölçümlerini ayıklama.
   
-  - Şirket veri yönetimi için güvenlik, uyumluluk veya zeka için, nesnelerdeki değişiklikleri istediğiniz zaman boyunca depolayın, denetleyin ve çözümleyin.
+  - Kurumsal veri yönetimi için güvenlik, uyumluluk veya iş zekası amacıyla nesnelerinizde zaman içinde gerçekleşen değişiklikleri depolama, denetleme ve analiz etme.
 
   - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemeye, yansıtmaya veya çoğaltmaya yönelik çözümler oluşturun.
 
@@ -55,9 +55,6 @@ Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız ger
 - Değişiklik akışı, hesapta oluşan tüm kullanılabilir olaylar için *Tüm* değişiklikleri yakalar. İstemci uygulamaları, gereken şekilde olay türlerini filtreleyebilir. (Geçerli yayının [koşullarına](#conditions) bakın).
 
 - Yalnızca GPv2 ve BLOB depolama hesapları değişiklik akışını etkinleştirebilir. Premium blok Blobstorage hesapları ve hiyerarşik ad alanı etkinleştirilmiş hesaplar Şu anda desteklenmemektedir. GPv1 depolama hesapları desteklenmez, ancak kapalı kalma süresi olmadan GPv2 sürümüne yükseltilebilir. daha fazla bilgi için bkz. [GPv2 Storage hesabına yükseltme](../common/storage-account-upgrade.md) .
-
-> [!IMPORTANT]
-> Değişiklik akışı genel önizlemededir ve **Orta Batı ABD**, **Batı ABD 2**, **Fransa orta**, **Fransa Güney**, **Kanada Orta**ve **Kanada Doğu** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -85,10 +82,10 @@ PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
 
 2. ' I kapatın ve ardından PowerShell konsolunu yeniden açın.
 
-3. **Az. Storage** Preview modülünü yükler.
+3. **Az. Storage** modülünün sürüm 2.5.0 veya üstünü yükler.
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. Komutuyla Azure aboneliğinizde oturum açın `Connect-AzAccount` ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
@@ -289,43 +286,18 @@ Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Gr
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>Aboneliğinizi kaydetme (Önizleme)
-
-Değişiklik akışı yalnızca genel önizlemede olduğundan, özelliği kullanmak için aboneliğinizi kaydetmeniz gerekir.
-
-### <a name="register-by-using-powershell"></a>PowerShell kullanarak kaydetme
-
-Bir PowerShell konsolunda şu komutları çalıştırın:
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Azure CLı kullanarak kaydolun
-
-Azure Cloud Shell, şu komutları çalıştırın:
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Koşullar ve bilinen sorunlar (Önizleme)
+## <a name="conditions-and-known-issues"></a>Koşullar ve bilinen sorunlar
 
-Bu bölümde, değişiklik akışında geçerli genel önizlemede bulunan bilinen sorunlar ve koşullar açıklanmaktadır. 
-- Önizleme için, Orta Batı ABD, Batı ABD 2, Fransa Orta, Fransa Güney, Kanada Orta ve Kanada Doğu bölgelerinde depolama hesabınızın değişiklik akışını etkinleştirebilmeniz için önce [aboneliğinizi kaydetmeniz](#register) gerekir. 
-- Değişiklik akışı yalnızca oluşturma, güncelleştirme, silme ve kopyalama işlemlerini yakalar. Blob özelliği ve meta veri değişiklikleri de yakalanır. Ancak, Access Tier özelliği şu anda yakalanmaz. 
+Bu bölümde, değişiklik beslemenin geçerli sürümündeki bilinen sorunlar ve koşullar açıklanmaktadır. 
+
 - Değişiklik akışınızda tek bir değişikliğin değişiklik olay kayıtları birden çok kez görüntülenebilir.
 - Bunlara zaman tabanlı bekletme ilkesi ayarlayarak değişiklik akışı günlük dosyalarının yaşam süresini henüz yönetemezsiniz ve Blobları silemezsiniz.
 - `url`Günlük dosyasının özelliği şu anda her zaman boştur.
 - `LastConsumable`Dosyadaki segments.jsözelliği, değişiklik akışı 'nın sonlandıraldığı ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, özellikte doğru bir şekilde yakalanır `LastConsumable` .
 - Şu anda ListContainers API 'sini çağırdığınızda **$blobchangefeed** kapsayıcısını göremez ve kapsayıcı Azure portal veya Depolama Gezgini gösterilmez. Listblobları API 'sini doğrudan $blobchangefeed kapsayıcısında çağırarak içeriği görüntüleyebilirsiniz.
-- Daha önce bir [Hesap yük devretmesini](../common/storage-disaster-recovery-guidance.md) Başlatan depolama hesaplarında, günlük dosyası görünmediğinden ilgili sorunlar olabilir. Gelecekteki tüm hesap yük devretme işlemleri, önizleme sırasında günlük dosyasını da etkileyebilir.
+- Daha önce bir [Hesap yük devretmesini](../common/storage-disaster-recovery-guidance.md) Başlatan depolama hesaplarında, günlük dosyası görünmediğinden ilgili sorunlar olabilir. Gelecekteki tüm hesap yük devretme işlemleri günlük dosyasını da etkileyebilir.
 
 ## <a name="faq"></a>SSS
 

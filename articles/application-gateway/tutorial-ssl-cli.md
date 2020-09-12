@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502741"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595827"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLı kullanarak TLS sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
 
@@ -21,11 +21,10 @@ ms.locfileid: "87502741"
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Otomatik olarak imzalanan sertifika oluşturma
-> * Ağ ayarlama
-> * Sertifikalı bir uygulama ağ geçidi oluşturma
-> * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+* Otomatik olarak imzalanan sertifika oluşturma
+* Ağ ayarlama
+* Sertifikalı bir uygulama ağ geçidi oluşturma
+* Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
 İsterseniz, [Azure PowerShell](tutorial-ssl-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 

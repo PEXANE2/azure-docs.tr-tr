@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502773"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595871"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
@@ -22,13 +22,12 @@ Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden �
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Arka uç dinleyicileri oluşturma
-> * Yönlendirme kuralları oluşturma
-> * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
-> * Etki alanınızda bir CNAME kaydı oluşturma
+* Ağı ayarlama
+* Uygulama ağ geçidi oluşturma
+* Arka uç dinleyicileri oluşturma
+* Yönlendirme kuralları oluşturma
+* Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
+* Etki alanınızda bir CNAME kaydı oluşturma
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Çok siteli Application Gateway":::
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066362"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657388"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini denetleyen koşullu deyimler oluşturma
 
@@ -28,7 +28,7 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Bu makaledeki örneği izlemek için, Outlook.com veya Office 365 Outlook hesabıyla [Bu örnek mantıksal uygulamayı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md) .
+* Bu makaledeki örneği izlemek için [Bu örnek mantıksal uygulamayı](../logic-apps/quickstart-create-first-logic-app-workflow.md) bir Outlook.com hesabı ya da bir iş veya okul hesabıyla oluşturun.
 
 ## <a name="add-condition"></a>Koşul ekleme
 
@@ -40,7 +40,7 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
    ![Adımlar arasında eylem ekleme](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   İş akışınızın sonuna bir koşul eklemek istediğinizde, mantıksal uygulamanızın en altında **yeni adım** > **Eylem Ekle**' yi seçin.
+   İş akışınızın sonuna bir koşul eklemek istediğinizde, mantıksal uygulamanızın en altında  **yeni adım** > **Eylem Ekle**' yi seçin.
 
 1. Arama kutusuna filtreniz olarak "koşul" yazın. Şu eylemi seçin: **koşul denetimi**
 
@@ -108,7 +108,7 @@ Bir koşullu deyimin arkasındaki üst düzey kod tanımı aşağıda verilmişt
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.

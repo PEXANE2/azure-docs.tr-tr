@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d3de9dff2d3af99c720868d3342d39f8fb47e8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502775"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595887"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 
@@ -21,10 +21,9 @@ Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek 
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+* Ağı ayarlama
+* Uygulama ağ geçidi oluşturma
+* Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
 İsterseniz, [Azure PowerShell](tutorial-manage-web-traffic-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 

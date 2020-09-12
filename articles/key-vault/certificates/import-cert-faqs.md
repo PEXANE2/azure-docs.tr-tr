@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588830"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651850"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 
@@ -54,7 +54,7 @@ Sertifikayla ilgili erişim ilkeleri hakkında daha fazla bilgi için bkz. [Azur
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>"Hata türü: sertifika oluştururken çakışma" hatasını nasıl çözebilirim?
     
-Her sertifika adının benzersiz olması gerekir. Diğeri ile aynı ada sahip bir sertifika, geçici olarak silinmiş bir durumda olabilir. Ayrıca, Azure Key Vault [bir sertifikanın](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) oluşturulmasına göre, sertifika için belirtmeyi denediğiniz bir ada sahip anahtar kasasında başka bir anahtar veya gizli dizi varsa, sertifika oluşturma başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. 
+Her sertifika adının benzersiz olması gerekir. Aynı ada sahip bir sertifika, geçici olarak silinmiş bir durumda olabilir. Ayrıca, [bir sertifikanın](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)oluşturulmasına göre, yeni sertifika oluşturulduğunda aynı ada sahip bir adreslenebilir gizli dizi oluşturur. bu nedenle, sertifikanız için belirtmeye çalıştığınız ada sahip anahtar kasasında başka bir anahtar veya gizli dizi varsa, sertifika oluşturma başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. 
 
 Daha fazla bilgi için bkz. [sertifika silme işlemi](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 

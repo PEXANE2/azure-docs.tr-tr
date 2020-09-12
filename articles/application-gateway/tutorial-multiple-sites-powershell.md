@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525016"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595885"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma
 
@@ -22,13 +22,12 @@ Bir [uygulama ağ geçidi](overview.md) oluştururken Azure PowerShell’i [bird
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Arka uç dinleyicileri oluşturma
-> * Yönlendirme kuralları oluşturma
-> * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
-> * Etki alanınızda bir CNAME kaydı oluşturma
+* Ağı ayarlama
+* Uygulama ağ geçidi oluşturma
+* Arka uç dinleyicileri oluşturma
+* Yönlendirme kuralları oluşturma
+* Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
+* Etki alanınızda bir CNAME kaydı oluşturma
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Çok siteli Application Gateway":::
 
