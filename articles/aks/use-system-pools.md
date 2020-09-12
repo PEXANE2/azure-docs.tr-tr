@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949788"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647507"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -46,6 +46,7 @@ Sistem düğüm havuzları aşağıdaki kısıtlamalara sahiptir:
 * Sistem düğüm havuzları, en az 2 vCPU ve 4 GB bellek için bir VM SKU 'SU gerektirir.
 * Sistem düğüm havuzlarının [En düşük ve en yüksek değer formülünde Pod][maximum-pods]tarafından açıklandığı gibi en az 30 tane olması gerekir.
 * Spot düğüm havuzları, Kullanıcı düğümü havuzları gerektirir.
+* Ek bir sistem düğüm havuzu ekleme veya hangi düğüm havuzunun bir sistem düğüm havuzu olarak değiştirilmesi, sistem yığınlarını otomatik olarak *taşımayacak* . System Pod, bir Kullanıcı düğümü havuzuna değiştirseniz bile aynı düğüm havuzunda çalışmaya devam edebilir. Daha önce bir sistem düğüm havuzudur sistem Pod çalıştıran bir düğüm havuzunu siler veya ölçeklendirirseniz, bu sistem havuzları yeni sistem düğümü havuzuna tercih edilen zamanlamaya göre yeniden dağıtılır.
 
 Düğüm havuzlarıyla aşağıdaki işlemleri yapabilirsiniz:
 

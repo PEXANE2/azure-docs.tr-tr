@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6e6038e2c0aa4f6b41c4a4da9bde6e98555ceb31
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192122"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613568"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,6 +28,9 @@ ms.locfileid: "88192122"
 Azure sanal makinelerinde SQL Server, şirket içi donanımları yönetmek zorunda kalmadan bulutta SQL Server tam sürümlerini kullanmanıza olanak sağlar. SQL Server VM’leri, kullandıkça ödeme yaptığınızda lisanslama maliyetlerini de basitleştirir.
 
 Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../../../virtual-machines/windows/sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makineleri birçok farklı SQL Server iş yükleri için iyi bir seçenek yapar. 
+
+Azure SQL 'e yeni başladıysanız, derinlemesine Azure [SQL video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)Azure *VM 'sine genel bakış videosunu SQL Server* inceleyin:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> SQL Server VM 'Leri kullanmaya başlama
 
@@ -52,11 +55,11 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 
 Linux üzerinde SQL Server yapılandırdığınızda, veritabanı motoru paketini ve sonra gereksinimlerinize bağlı olarak birkaç isteğe bağlı paketi yüklersiniz. SQL Server için Linux sanal makine görüntüleri birçok paketi otomatik olarak sizin için yükler. Aşağıdaki tabloda her dağıtımda yüklenen paketler gösterilmektedir.
 
-| Dağıtım | [Veritabanı Altyapısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Araçlar](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Dağıtım | [Veritabanı altyapısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Araçlar](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Aracısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
-| SLES | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![hayır](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
-| Ubuntu | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![evet](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| RHEL | ![RHEL ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![SLES ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve araçlar](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
+| Ubuntu | ![Ubuntu ve veritabanı altyapısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu ve araçları](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu ve SQL Server Aracısı](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu ve tam metin araması](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu ve SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu ve HA eklentisi](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>İlgili ürün ve hizmetler
 

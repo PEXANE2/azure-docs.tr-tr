@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 23c2362d46a0b9bfe2fc2fbe31e00d0a42f80cfa
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: feab7755dea69a932fe40df59e0dd35f3f826553
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055456"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645828"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -32,7 +32,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 > [!NOTE]
 > Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 1 (canlı-video-analiz: 1) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
 
-## <a name="new-features"></a>Yeni özellikler 
+### <a name="new-features"></a>Yeni özellikler 
 
 * Artık, gRPC çerçevesini kullanarak IoT Edge ve özel uzantınız üzerinde canlı video analizi arasında yüksek veri içeriği aktarım performansı alabilirsiniz. Başlamak için [bunu](analyze-live-video-use-your-grpc-model-quickstart.md) inceleyin.
 * Canlı video analizinin daha geniş bölgesel dağıtımı ve yalnızca bulut hizmeti güncelleştirilmiştir.  
@@ -40,7 +40,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 * Hızlı [çalışmaya yönelik kurulum](https://aka.ms/lva-edge/setup-resources-for-samples) , yeni bölgelerin desteğiyle birlikte güncelleştirilmiştir.
     * Zaten kaynakları kuran herkes için eylem çağrısı yoktur
 
-## <a name="bug-fixes"></a>Hata düzeltmeleri 
+### <a name="bug-fixes"></a>Hata düzeltmeleri 
 
 * Kurulum betikindeki kullanım dışı bırakılmış bir Azure uzantısının kullanımını kaldırma
 

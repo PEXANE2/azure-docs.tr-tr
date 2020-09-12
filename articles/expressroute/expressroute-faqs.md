@@ -2,17 +2,17 @@
 title: SSS-Azure ExpressRoute | Microsoft Docs
 description: ExpressRoute SSS, desteklenen Azure Hizmetleri, maliyet, veri ve bağlantılar, SLA, sağlayıcılar ve konumlar, bant genişliği ve ek teknik ayrıntılar hakkında bilgiler içerir.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: jaredro
-ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537131"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566429"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -84,7 +84,7 @@ ExpressRoute devreniz Azure Microsoft eşlemesi için etkinleştirilirse, devre 
 
 **Destek**
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
 * Power BI-Azure bölgesel bir topluluk aracılığıyla kullanılabilir Power BI kiracınızın bölgesini bulma hakkında bilgi için [buraya](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) bakın.
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure küresel hizmetler topluluğu)
@@ -158,7 +158,7 @@ Yüksek [kullanılabilirlik ve olağanüstü](https://docs.microsoft.com/azure/e
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Microsoft eşlemesiyle yedeklilik nasıl uygulanır?
 
-Müşteriler, Azure depolama veya Azure SQL gibi Azure genel hizmetlerine erişmek için Microsoft eşlemesi kullanırken ve tek hata noktalarından kaçınmak üzere farklı eşleme konumlarında birden çok devreleri uygulayan müşterilerin yanı sıra, Office 365 için Microsoft eşlemesi kullanan müşteriler tarafından kesinlikle önerilir. Müşteriler her iki devrede aynı öneki verebilir ve şirket içi yolu belirlemede farklı ön [bekleyen olarak](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) kullanabilir ya da farklı ön ekleri duyurur.
+Müşteriler, Azure depolama veya Azure SQL gibi Azure genel hizmetlerine erişmek için Microsoft eşlemesi kullanırken ve tek hata noktalarından kaçınmak üzere farklı eşleme konumlarında birden çok devreler Microsoft 365 için Microsoft eşlemesi kullanan müşteriler tarafından kesinlikle önerilir. Müşteriler her iki devrede aynı öneki verebilir ve şirket içi yolu belirlemede farklı ön [bekleyen olarak](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) kullanabilir ya da farklı ön ekleri duyurur.
 
 Yüksek kullanılabilirlik için tasarlamak üzere [buraya](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) bakın.
 
@@ -217,13 +217,13 @@ Evet. Standart bir ExpressRoute bağlantı hattı üzerinde en fazla 10 sanal a�
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Sanal ağlar içeren birden çok Azure aboneliğiniz var. Ayrı aboneliklerdeki sanal ağlara tek bir ExpressRoute devresine bağlanabilir miyim?
 
-Evet. Tek bir ExpressRoute bağlantı hattını kullanarak, devre veya farklı aboneliklerle aynı abonelikte en fazla 10 sanal ağ bağlayabilirsiniz. Bu sınır, ExpressRoute Premium özelliği etkinleştirilerek artırılabilir.
+Evet. Tek bir ExpressRoute bağlantı hattını kullanarak, devre veya farklı aboneliklerle aynı abonelikte en fazla 10 sanal ağ bağlayabilirsiniz. Bu sınır, ExpressRoute Premium özelliği etkinleştirilerek artırılabilir. Adanmış devre için bağlantı ve bant genişliği ücretlerinin ExpressRoute bağlantı hattı sahibine uygulanacağını unutmayın; Tüm sanal ağlar aynı bant genişliğini paylaşır.
 
 Daha fazla bilgi için bkz. [birden çok abonelik arasında bir ExpressRoute devresini paylaşma](expressroute-howto-linkvnet-arm.md).
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Farklı Azure Active Directory kiracılar veya Kurumsal Anlaşma kayıtları ile ilişkili birden çok Azure aboneliğiniz var. Ayrı kiracılar ve kayıtlar 'daki sanal ağları aynı kiracı ya da kayıt içinde olmayan tek bir ExpressRoute devresine bağlanabilir miyim?
 
-Evet. ExpressRoute yetkilendirmeleri, ek yapılandırma gerekmeden abonelik, kiracı ve kayıt sınırlarını kapsayabilir. 
+Evet. ExpressRoute yetkilendirmeleri, ek yapılandırma gerekmeden abonelik, kiracı ve kayıt sınırlarını kapsayabilir. Adanmış devre için bağlantı ve bant genişliği ücretlerinin ExpressRoute bağlantı hattı sahibine uygulanacağını unutmayın; Tüm sanal ağlar aynı bant genişliğini paylaşır.
 
 Daha fazla bilgi için bkz. [birden çok abonelik arasında bir ExpressRoute devresini paylaşma](expressroute-howto-linkvnet-arm.md).
 
@@ -293,7 +293,7 @@ ExpressRoute Premium, aşağıdaki özelliklerin bir koleksiyonudur:
 
 * 4000 rotasındaki yönlendirme tablosu sınırı, özel eşleme için 10.000 rotalara kadar artar.
 * ExpressRoute bağlantı hattı üzerinde etkinleştirilenebilir VNET 'ler ve ExpressRoute Global Reach bağlantıları (varsayılan değer 10 ' dur). Daha fazla bilgi için bkz. [ExpressRoute limitleri](#limits) tablosu.
-* Office 365 bağlantısı
+* Microsoft 365 bağlantı
 * Microsoft Core ağı üzerinden genel bağlantı. Artık başka bir bölgedeki bir ExpressRoute bağlantı hattına sahip bir sanal ağı tek bir geopolitik bölgede bağlayabilirsiniz.<br>
     **Örnekler:**
 
@@ -344,43 +344,43 @@ ExpressRoute yerel Ayrıca kaynaklar üzerinde aynı sınırlara sahiptir (ör. 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute yerel olarak kullanılabilir ve hangi Azure bölgelerinin her eşleme konumu ile eşlenir?
 ExpressRoute yerel, bir veya iki Azure bölgesinin kapalı olduğu eşleme konumlarında kullanılabilir. Bu eyalet veya ülke/bölge içinde Azure bölgesinin olmadığı bir eşleme konumunda kullanılamaz. Lütfen [konumlar sayfasında](expressroute-locations-providers.md)tam eşlemelere bakın.  
 
-## <a name="expressroute-for-office-365"></a>Office 365 için ExpressRoute
+## <a name="expressroute-for-microsoft-365"></a>Microsoft 365 için ExpressRoute
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Office 365 hizmetlerine bağlanmak için bir ExpressRoute bağlantı hattı oluşturma Nasıl yaparım??
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-microsoft-365-services"></a>Microsoft 365 Services 'a bağlanmak için bir ExpressRoute bağlantı hattı oluşturma Nasıl yaparım??
 
 1. Gereksinimleri karşıladığınızdan emin olmak için [ExpressRoute önkoşulları sayfasını](expressroute-prerequisites.md) gözden geçirin.
 2. Bağlantı gereksinimlerinizin karşılandığından emin olmak için [ExpressRoute iş ortakları ve konumlar](expressroute-locations.md) makalesindeki hizmet sağlayıcılarının ve konumların listesini gözden geçirin.
-3. [Office 365 Için ağ planlama ve performans ayarlamayı](https://aka.ms/tune/)inceleyerek kapasite gereksinimlerinizi planlayın.
+3. [Microsoft 365 Için ağ planlama ve performans ayarlamayı](/microsoft-365/enterprise/network-planning-and-performance)inceleyerek kapasite gereksinimlerinizi planlayın.
 4. [Devre sağlama ve devre durumları için bağlantı ExpressRoute iş akışlarını](expressroute-workflows.md)ayarlamak üzere iş akışlarında listelenen adımları izleyin.
 
 > [!IMPORTANT]
-> Office 365 hizmetlerine bağlantı yapılandırırken ExpressRoute Premium eklentisini etkinleştirdiğinizden emin olun.
+> Microsoft 365 hizmetlerine bağlantı yapılandırırken ExpressRoute Premium eklentisini etkinleştirdiğinizden emin olun.
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Mevcut ExpressRoute bağlantı hattı Office 365 hizmetlerine yönelik bağlantıyı destekliyor mu?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>Mevcut ExpressRoute devremdeki Microsoft 365 hizmetlerine yönelik bağlantıyı destekliyor mu?
 
-Evet. Mevcut ExpressRoute bağlantı hattı, Office 365 hizmetlerine bağlantıyı destekleyecek şekilde yapılandırılabilir. Office 365 hizmetlerine bağlanmak için yeterli kapasiteye sahip olduğunuzdan ve Premium eklentisinin etkin olduğundan emin olun. [Office 365 Için ağ planlama ve performans ayarlaması](https://aka.ms/tune/) , bağlantı ihtiyaçlarınızı planlamanıza yardımcı olur. Ayrıca bkz. [bir ExpressRoute bağlantı hattı oluşturma ve değiştirme](expressroute-howto-circuit-classic.md).
+Evet. Mevcut ExpressRoute devreniz, Microsoft 365 hizmetlerine bağlantıyı destekleyecek şekilde yapılandırılabilir. Microsoft 365 hizmetlere bağlanmak için yeterli kapasiteye sahip olduğunuzdan ve Premium eklentisinin etkin olduğundan emin olun. [Microsoft 365 Için ağ planlama ve performans ayarlaması](/microsoft-365/enterprise/network-planning-and-performance) , bağlantı ihtiyaçlarınızı planlamanıza yardımcı olur. Ayrıca bkz. [bir ExpressRoute bağlantı hattı oluşturma ve değiştirme](expressroute-howto-circuit-classic.md).
 
-### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute bağlantısı üzerinden hangi Office 365 hizmetlerine erişilebilir?
+### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute bağlantısı üzerinden hangi Microsoft 365 hizmetlere erişilebiliyor?
 
-ExpressRoute üzerinde desteklenen hizmetlerin güncel listesi için [Office 365 URL 'leri ve IP adres aralıkları](https://aka.ms/o365endpoints) sayfasına bakın.
+ExpressRoute üzerinde desteklenen hizmetlerin güncel listesi için [Microsoft 365 URL 'leri ve IP adresi aralıkları](/microsoft-365/enterprise/urls-and-ip-address-ranges) sayfasını inceleyin.
 
-### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Office 365 hizmetleri maliyeti için ExpressRoute ne kadar sürer?
+### <a name="how-much-does-expressroute-for-microsoft-365-services-cost"></a>Microsoft 365 Services maliyeti için ExpressRoute ne kadar sürer?
 
-Office 365 Hizmetleri, Premium eklentisinin etkinleştirilmesini gerektirir. Maliyetler için [fiyatlandırma ayrıntıları sayfasına](https://azure.microsoft.com/pricing/details/expressroute/) bakın.
+Microsoft 365 Hizmetleri, Premium eklentisinin etkinleştirilmesini gerektirir. Maliyetler için [fiyatlandırma ayrıntıları sayfasına](https://azure.microsoft.com/pricing/details/expressroute/) bakın.
 
-### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Office 365 için ExpressRoute hangi bölgelerde desteklenir?
+### <a name="what-regions-is-expressroute-for-microsoft-365-supported-in"></a>' De desteklenen Microsoft 365 alanları ExpressRoute nedir?
 
 Bilgi için bkz. [ExpressRoute iş ortakları ve konumları](expressroute-locations.md) .
 
-### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Kuruluşum için ExpressRoute yapılandırılmış olsa bile Office 365 ' i Internet üzerinden erişebilir miyim?
+### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Kuruluşum için ExpressRoute yapılandırılmış olsa bile Microsoft 365 Internet üzerinden erişebilir miyim?
 
-Evet. Office 365 hizmet uç noktalarına, ExpressRoute ağınız için yapılandırılmış olsa bile Internet üzerinden erişilebilir. Konumunuzda bulunan ağ, ExpressRoute aracılığıyla Office 365 hizmetlerine bağlanacak şekilde yapılandırıldıysa kuruluşunuzun ağ ekibine başvurun.
+Evet. Ağınız için ExpressRoute yapılandırılmış olsa bile, hizmet uç noktalarına Microsoft 365 Internet üzerinden erişilebilir. Konumunuzda bulunan ağ, ExpressRoute aracılığıyla Microsoft 365 hizmetlerine bağlanmak üzere yapılandırılmışsa lütfen kuruluşunuzun ağ ekibine başvurun.
 
-### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute 'da Office 365 ağ trafiği için yüksek kullanılabilirliği nasıl planlayabilirim?
+### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute üzerinde Microsoft 365 ağ trafiği için yüksek kullanılabilirliği nasıl planlayabilirim?
 [Azure ExpressRoute Ile yüksek kullanılabilirlik ve yük devretme](https://aka.ms/erhighavailability) önerilerine bakın
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US kamu ExpressRoute devresi üzerinden Office 365 ABD kamu topluluğu (GCC) hizmetlerine erişebilir miyim?
@@ -395,11 +395,11 @@ Hiçbir yol görmezsiniz. Ön ek bildirilerini başlatmak için bağlantı hatt�
 
 ### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Microsoft eşlemesini etkinleştirdim ve şimdi Exchange Online 'ı seçiyorum, ancak bunu yapmak için yetkilendirilmediğini belirten bir hata veriyor.
 
-Rota filtreleri kullanılırken, tüm müşteriler Microsoft eşlemesini açabilir. Bununla birlikte, Office 365 hizmetlerini tüketmesi için yine de Office 365 ' den yetki almanız gerekir.
+Rota filtreleri kullanılırken, tüm müşteriler Microsoft eşlemesini açabilir. Ancak, Microsoft 365 hizmetleri 'ni kullanmak için yine de Microsoft 365 yetki almanız gerekir.
 
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>1 Ağustos 2017 ' den önce Microsoft eşlemeyi etkinleştirdim, yol filtrelerinden nasıl yararlanabilirim?
 
-Mevcut bağlantı hattı, Office 365 ön eklerini duyurarak devam edecektir. Aynı Microsoft eşlemesi üzerinden Azure genel ön ek bildirimleri eklemek istiyorsanız, bir rota filtresi oluşturabilir, tanıtılmak istediğiniz hizmetleri (ihtiyacınız olan Office 365 hizmetleri dahil) seçebilir ve filtreyi Microsoft eşlemenize ekleyebilirsiniz. Yönergeler için bkz. [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-powershell.md).
+Mevcut bağlantı hattı Microsoft 365 ön ekleri tanıtımak için devam edecektir. Aynı Microsoft eşlemesi üzerinden Azure genel ön ek bildirimleri eklemek istiyorsanız, bir rota filtresi oluşturabilir, tanıtılmak istediğiniz hizmetleri (ihtiyaç duyduğunuz Microsoft 365 hizmetleri dahil) seçebilir ve filtreyi Microsoft eşlemenize ekleyebilirsiniz. Yönergeler için bkz. [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Tek bir konumda Microsoft eşlemem var, şimdi bunu başka bir konumda etkinleştirmeye çalışıyorum ve herhangi bir ön ek görmüyorum.
 

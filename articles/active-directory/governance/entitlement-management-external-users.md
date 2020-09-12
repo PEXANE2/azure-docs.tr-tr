@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783867"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460873"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -105,7 +105,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Microsoft 365 Grubu Paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize Microsoft 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft 365 gruplarına konuk erişimini yönetme](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Dış kullanıcılara yönelik erişim paketlerinize Microsoft 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft 365 gruplarına konuk erişimini yönetme](/Microsoft 365/admin/create-groups/manage-guest-access-in-groups?view=Microsoft 365-worldwide#manage-groups-guest-access).
 
 - Dış kullanıcıların SharePoint Online sitesine ve bir Microsoft 365 grubuyla ilişkili kaynaklara erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 

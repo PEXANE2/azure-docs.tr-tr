@@ -1,20 +1,20 @@
 ---
 title: Ağlar için Azure Izleyici (Önizleme)
-description: Hiçbir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlayan ağ için Azure Izleyici 'ye hızlı bir genel bakış.
+description: Herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlayan ağ için Azure Izleyicisine hızlı bir genel bakış.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128684"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646557"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici (Önizleme)
-Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca barındırılan Web sitesi adını arayarak Web sitenizi barındıran kaynakları tanımlama gibi senaryoları etkinleştirerek Kaynak bağımlılıklarını tanımlamaya yardımcı olur.
+Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, barındırılan Web sitesi adını arayarak Web sitenizi barındıran kaynakları tanımlama gibi senaryoları etkinleştiren Kaynak bağımlılıklarını tanımlamaya yardımcı olur.
 
 Ağlara yönelik Azure Izleyici **'ye genel bakış** sayfası, ağ kaynaklarınızın envanterini görselleştirmenin yanı sıra kaynak sistem durumu ve uyarılarla ilgili daha kolay bir yol sağlar. Dört önemli işlevsel alana bölünmüştür:
 
@@ -30,7 +30,7 @@ Kaynak durumu ve Uyarılar görünümü, **abonelik**, **kaynak grubu** ve **kay
 
 Arama kutusu, kaynakları ve ilişkili kaynakları aramak için kullanılabilir. Örneğin, genel IP bir Application Gateway ilişkilendirilir. Genel IP DNS adını aramak, hem genel IP hem de ilişkili Application Gateway belirler.
 
-![Arayın](media/network-insights-overview/search.png)
+![Arama](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Kaynak Durumu ve metrik
@@ -52,11 +52,11 @@ Sağdaki **Uyarılar** Kılavuzu, tüm abonelikler genelinde seçili kaynaklar i
 
 ![Application Gateway görünümü](media/network-insights-overview/application-gateway.png)
 
-Application Gateway için **bağımlılık** görünümü, ön uç IP 'lerinin dinleyicileri, kuralları ve arka uç havuzunu nasıl bağladığınıza ilişkin basitleştirilmiş bir görünüm sağlar. Bağlanan kenarlar renk kodludur ve arka uç havuzu sistem durumuna göre ek ayrıntılar sağlar. Görünüm Ayrıca, VMSS ve VM örnekleri gibi tüm ilgili arka uç havuzlarının Application Gateway ölçümlerinin ve ölçümlerinin ayrıntılı bir görünümünü sağlar.
+Application Gateway için **bağımlılık** görünümü, ön uç IP 'lerinin dinleyicileri, kuralları ve arka uç havuzunu nasıl bağladığınıza ilişkin basitleştirilmiş bir görünüm sağlar. Bağlanan kenarlar renk kodludur ve arka uç havuzu sistem durumuna göre ek ayrıntılar sağlar. Görünüm aynı zamanda sanal makine ölçek kümesi ve sanal makine örnekleri gibi ilgili tüm arka uç havuzlarının Application Gateway ölçümlerinin ve ölçümlerinin ayrıntılı bir görünümünü sağlar.
 
 ![Bağımlılık görünümü](media/network-insights-overview/dependency-view.png)
 
-Bağımlılık grafiği yapılandırma ayarlarına kolay gezinme sağlar. Diğer işlevlere erişmek için bir arka uç havuzuna sağ tıklayın. Örneğin, arka uç havuzu bir sanal makine ise, bağlantı sorunlarını belirlemek için VM öngörülerine ve ağ Izleyicisi bağlantısına doğrudan erişebilirsiniz.
+Bağımlılık grafiği yapılandırma ayarlarına kolay gezinme sağlar. Diğer işlevlere erişmek için bir arka uç havuzuna sağ tıklayın. Örneğin, arka uç havuzu bir sanal makinedir, sorun gidermek ve bağlantı sorunlarını belirlemek için sanal makine öngörülerine ve ağ Izleyicisi bağlantısına doğrudan erişebilirsiniz.
 
 ![Bağımlılık Görünüm menüsü](media/network-insights-overview/dependency-view-menu.png)
 

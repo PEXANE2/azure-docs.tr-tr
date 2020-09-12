@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592296"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566645"
 ---
 # <a name="translator-30-detect"></a>Translator 3,0: algılama
 
@@ -35,7 +35,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>api-sürümü</td>
     <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` .</td>
@@ -46,7 +46,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -67,7 +67,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı bir String özelliği olan bir JSON nesnesidir `Text` . Dil algılama özelliği değeri için geçerlidir `Text` . Örnek bir istek gövdesi şöyle görünür:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı bir String özelliği olan bir JSON nesnesidir `Text` . Dil algılama özelliği değeri için geçerlidir `Text` . Dil otomatik algılama, daha uzun giriş metniyle daha iyi sonuç verir. Örnek bir istek gövdesi şöyle görünür:
 
 ```json
 [
@@ -78,7 +78,6 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 Aşağıdaki sınırlamalar geçerlidir:
 
 * Dizi en fazla 100 öğe içerebilir.
-* Bir dizi öğesinin metin değeri boşluk dahil 10.000 karakteri aşamaz.
 * İstekte bulunan metnin tamamı boşluk dahil 50.000 karakteri aşamaz.
 
 ## <a name="response-body"></a>Yanıt gövdesi
@@ -126,7 +125,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
@@ -139,7 +138,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>

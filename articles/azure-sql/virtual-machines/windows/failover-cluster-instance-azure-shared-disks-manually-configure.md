@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055269"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611792"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,7 +217,6 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Yalnızca Windows Server 2019 ' de 2019 SQL Server desteklenir. 
 - Yalnızca [basit yönetim MODUNDAKI](sql-vm-resource-provider-register.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

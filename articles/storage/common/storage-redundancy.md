@@ -10,12 +10,12 @@ ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871165"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658578"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -29,7 +29,7 @@ Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verir
 
 ## <a name="redundancy-in-the-primary-region"></a>Birincil bölgedeki artıklık
 
-Azure depolama hesabındaki veriler her zaman birincil bölgede üç kez çoğaltılır. Azure depolama, verilerinizin birincil bölgede nasıl çoğaltılacağı konusunda iki seçenek sunar:
+Azure depolama hesabındaki veriler her zaman birincil bölgede üç kez çoğaltılır. Azure Depolama, verilerinizin birincil bölgede çoğaltılmasına yönelik iki seçenek sunar:
 
 - **Yerel olarak yedekli depolama (LRS)** , verilerinizi, birincil bölgedeki tek bir fiziksel konum içinde zaman uyumlu olarak üç kez kopyalar. LRS, en az maliyetli çoğaltma seçeneğidir, ancak yüksek kullanılabilirlik gerektiren uygulamalar için önerilmez.
 - Bölgesel olarak **yedekli depolama (ZRS)** , verilerinizi, birincil bölgedeki üç Azure kullanılabilirlik bölgesi üzerinden eşzamanlı olarak kopyalar. Microsoft, yüksek kullanılabilirlik gerektiren uygulamalar için birincil bölgede ZRS kullanımını ve ayrıca bir ikincil bölgeye çoğaltmayı önerir.
@@ -49,7 +49,7 @@ LRS aşağıdaki senaryolar için iyi bir seçimdir:
 
 ### <a name="zone-redundant-storage"></a>Alanlar arası yedekli depolama
 
-Bölgesel olarak yedekli depolama (ZRS), Azure depolama verilerinizi birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak çoğaltır. Her kullanılabilirlik alanı, bağımsız güç, soğutma ve ağ ile ayrı bir fiziksel konumdur. ZRS, belirli bir yıl boyunca en az% 99,9999999999 (12 9 ' a) Azure depolama veri nesneleri için dayanıklılık sağlar.
+Bölgesel olarak yedekli depolama (ZRS), Azure depolama verilerinizi birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak çoğaltır. Her kullanılabilirlik alanı bağımsız enerji, soğutma ve ağ altyapısına sahip olan ayrı bir fiziksel konumu ifade eder. ZRS, belirli bir yıl boyunca en az% 99,9999999999 (12 9 ' a) Azure depolama veri nesneleri için dayanıklılık sağlar.
 
 ZRS ile, bir bölge kullanılamaz hale gelirse bile verilerinize hem okuma hem de yazma işlemleri için erişilebilir. Bir bölge kullanılamaz duruma gelirse Azure, DNS yeniden işaretleme gibi ağ güncelleştirmelerini alır. Güncelleştirmeler tamamlanmadan önce verilere erişmeniz durumunda bu güncelleştirmeler uygulamanızı etkileyebilir. ZRS için uygulama tasarlarken, üstel geri alma ile yeniden deneme ilkeleri uygulama da dahil olmak üzere geçici hata işleme için uygulamaları izleyin.
 
@@ -64,8 +64,8 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
 | Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
-| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
+| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
+| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -80,8 +80,8 @@ Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersini
 
 Azure depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek sunar:
 
-- **Coğrafi olarak yedekli depolama (GRS)** , LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
-- **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
+- **Coğrafi olarak yedekli depolama (GRS)**, LRS kullanarak verilerinizi birincil bölge içindeki tek bir fiziksel konumda eşzamanlı olarak üç kez kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar.
+- **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Ardından verilerinizi zaman uyumsuz şekilde ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 
 GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil bölge içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
 
@@ -94,7 +94,7 @@ Birincil bölge kullanılamaz duruma gelirse, ikincil bölgeye yük devretmek i�
 
 ### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
 
-Coğrafi olarak yedekli depolama (GRS), LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz bir şekilde birincil bölgeden yüzlerce mil olan ikincil bölgedeki tek bir fiziksel konuma kopyalar. GRS, belirli bir yıl boyunca en az% 99.99999999999999 (16 9) Azure depolama veri nesneleri için dayanıklılık sağlar.
+Coğrafi olarak yedekli depolama (GRS), LRS kullanarak verilerinizi birincil bölge içindeki tek bir fiziksel konumda eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz bir şekilde birincil bölgeden yüzlerce mil olan ikincil bölgedeki tek bir fiziksel konuma kopyalar. GRS, belirli bir yıl boyunca en az% 99.99999999999999 (16 9) Azure depolama veri nesneleri için dayanıklılık sağlar.
 
 İlk olarak birincil konuma bir yazma işlemi kaydedilir ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Veriler ikincil konuma yazıldığında, LRS kullanarak bu konumda da çoğaltılır.
 

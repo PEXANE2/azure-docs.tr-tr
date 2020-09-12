@@ -3,12 +3,12 @@ title: Portaldan mevcut bir atamayı güncelleştirme
 description: Azure 'da portaldan mevcut bir şema atamasını güncelleştirme mekanizması hakkında bilgi edinin.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051432"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651381"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Mevcut bir şema atamasını güncelleştirme
 
@@ -26,17 +26,17 @@ Bir şema atandığında, atama güncelleştirilebilen olabilir. Mevcut bir atam
 
 1. Planlar listesinde, BLUEPRINT atamasını seçin. Ardından, **atamayı Güncelleştir** DÜĞMESINI kullanın veya BLUEPRINT atamasını sağ tıklatın ve **atamayı Güncelleştir**' i seçin.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Mevcut bir şema atamasını güncelleştirme" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="' Atamayı Güncelleştir ' düğmesi vurgulanmış şekilde BLUEPRINT atama sayfasının ekran görüntüsü." border="false":::
 
 1. **Şema ata** sayfası, orijinal atamadan tüm değerlerle önceden doldurulmuş olarak yüklenir. **Şema tanım sürümünü**, **kilit atama** durumunu ve şema tanımında bulunan dinamik parametrelerden herhangi birini değiştirebilirsiniz. Değişiklik yapıldığında **ata** ' yı seçin.
 
 1. Güncelleştirilmiş atama ayrıntıları sayfasında, yeni durum ' a bakın. Bu örnekte, atamaya **kilitleme** ekledik.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Mevcut bir şema ataması güncelleştirildi-kilit modu değişti" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Kilit modunun değiştiğini gösteren güncelleştirilmiş bir şema atamasının ekran görüntüsü." border="false":::
 
 1. Açılan eklentiyi kullanarak diğer **atama işlemleriyle** ilgili ayrıntıları keşfedebilirsiniz. **Yönetilen kaynakların** tablosu seçili atama işlemine göre güncelleştirilir.
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Şema atamasının atama işlemleri" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Atama işlemlerini ve bunların durumunu gösteren güncelleştirilmiş bir şema atamasının ekran görüntüsü." border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Atamaları güncelleştirme kuralları
 

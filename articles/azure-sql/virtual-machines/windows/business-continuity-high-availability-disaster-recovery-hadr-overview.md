@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: b81af3e89a3226757c5bf7668a06701c35831072
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3b18582cdb34708c379725d361d1fcc5e608ae38
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962722"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462777"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -148,7 +148,7 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 * [SQL Server Native Client ile bağlantı dizesi anahtar sözcükleri kullanma](https://msdn.microsoft.com/library/ms130822.aspx)
 * [Istemcileri bir veritabanı yansıtma oturumuna bağlama (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Karma BT 'de kullanılabilirlik grubu dinleyicisine bağlanma](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
+* [Karma BT 'de kullanılabilirlik grubu dinleyicisine bağlanma](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [Kullanılabilirlik grubu dinleyicileri, Istemci bağlantısı ve uygulama yük devretmesi (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [Kullanılabilirlik gruplarıyla veritabanı yansıtma bağlantı dizelerini kullanma](https://technet.microsoft.com/library/hh213417.aspx)
 

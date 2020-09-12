@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357758"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658351"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma Azure Active Directory
 
@@ -53,22 +53,22 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 - Oturum açma Kullanıcı adı, şirket içi varsayılan Kullanıcı adı ( `userPrincipalName` ) veya Azure AD Connect () içinde yapılandırılmış başka bir öznitelik olabilir `Alternate ID` . Her iki kullanım çalışması da çalışır çünkü sorunsuz SSO, `securityIdentifier` Azure AD 'de karşılık gelen Kullanıcı nesnesini aramak Için Kerberos anahtarındaki talebi kullanır.
 - Sorunsuz SSO, fırsatçı bir özelliktir. Herhangi bir nedenle başarısız olursa, Kullanıcı oturum açma deneyimi normal davranışına geri döner. Yani, kullanıcının oturum açma sayfasında parolasını girmesi gerekir.
-- Bir uygulama (örneğin, `https://myapps.microsoft.com/contoso.com` ) bir `domain_hint` (OpenID Connect) veya `whr` (SAML) parametresini ilettiğinde, kiracınızı tanımlar veya `login_hint` Kullanıcı parametresini parametre olarak tanımlar, Azure AD oturum açma isteğinde kullanıcılar Kullanıcı adları veya parolalar girmeden otomatik olarak oturum açar.
+- Bir uygulama (örneğin,  `https://myapps.microsoft.com/contoso.com` ) bir `domain_hint` (OpenID Connect) veya `whr` (SAML) parametresini ilettiğinde, kiracınızı tanımlar veya `login_hint` Kullanıcı parametresini parametre olarak tanımlar, Azure AD oturum açma isteğinde kullanıcılar Kullanıcı adları veya parolalar girmeden otomatik olarak oturum açar.
 - Ayrıca, bir uygulama (örneğin, `https://contoso.sharepoint.com` ) Azure AD uç noktalarına kiracı olarak ayarlanan `https://login.microsoftonline.com/contoso.com/<..>` veya `https://login.microsoftonline.com/<tenant_ID>/<..>` Azure AD 'nin ortak uç noktası yerine, veya-olan bir olan oturum açma isteklerini gönderen bir sessiz oturum açma deneyimi alırlar `https://login.microsoftonline.com/common/<...>` .
 - Oturumu kapatma destekleniyor. Bu, kullanıcıların sorunsuz SSO 'yu otomatik olarak kullanarak oturum açmak yerine farklı bir Azure AD hesabı seçmesine olanak sağlar.
-- 16.0.8730. xxxx ve üzeri sürümleriyle Office 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
+- 16.0.8730. xxxx ve üzeri sürümleriyle birlikte Microsoft 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
 - Bu, Azure AD Connect aracılığıyla etkinleştirilebilir.
 - Bu, ücretsiz bir özelliktir ve Azure AD 'nin ücretli sürümlerinin kullanılmasını gerektirmez.
-- Kerberos kimlik doğrulaması yeteneğine sahip platformlar ve tarayıcılarda [modern kimlik doğrulamayı](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) destekleyen Web tarayıcı tabanlı Istemcilerde ve Office istemcilerinde desteklenir:
+- Kerberos kimlik doğrulaması yeteneğine sahip platformlar ve tarayıcılarda [modern kimlik doğrulamayı](/office365/enterprise/modern-auth-for-office-2013-and-2016) destekleyen Web tarayıcı tabanlı Istemcilerde ve Office istemcilerinde desteklenir:
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Evet|Yes|Evet\*\*\*|YOK
-|Windows 8.1|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows 8|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|YOK
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|YOK|Evet|Evet\*\*\*|YOK
-|Mac OS X|YOK|YOK|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
+|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
+|Windows 8.1|Yes\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 8|Yes\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Yes|Evet\*\*\*|Yok
+|Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
 \*Internet Explorer sürümleri 10 veya üzerini gerektirir
@@ -88,4 +88,3 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 - [**Sık sorulan sorular**](how-to-connect-sso-faq.md) -sık sorulan soruların yanıtları.
 - [**Sorun giderme**](tshoot-connect-sso.md) -özellikle ilgili yaygın sorunları çözmeyi öğrenin.
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -yeni özellik isteklerini dosyalama.
-

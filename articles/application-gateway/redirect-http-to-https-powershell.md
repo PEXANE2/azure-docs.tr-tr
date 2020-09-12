@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 0c1baa96c9093e02c54fb70949d1de0ddbda1bcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c65f143552aa14f9e309b68f484f9c0695e8dbd
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804333"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596071"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
 
@@ -20,12 +20,11 @@ Azure PowerShell, TLS/SSL sonlandırma sertifikasıyla bir [uygulama ağ geçidi
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Otomatik olarak imzalanan sertifika oluşturma
-> * Ağ ayarlama
-> * Sertifikalı bir uygulama ağ geçidi oluşturma
-> * Dinleyici ve yeniden yönlendirme kuralı ekleme
-> * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+* Otomatik olarak imzalanan sertifika oluşturma
+* Ağ ayarlama
+* Sertifikalı bir uygulama ağ geçidi oluşturma
+* Dinleyici ve yeniden yönlendirme kuralı ekleme
+* Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

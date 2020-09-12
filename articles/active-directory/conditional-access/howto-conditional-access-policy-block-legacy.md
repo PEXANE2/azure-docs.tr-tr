@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 18397ef76a4503bf79c4aaf286035d222bd84ba0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068635"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460448"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
@@ -26,19 +26,19 @@ Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Micro
 
 Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur. Bu ilke, yöneticilerin var olan kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor moduna](howto-conditional-access-insights-reporting.md) konur. Yöneticiler ilkenin bu şekilde uygulanmaları konusunda rahatsızsa, belirli gruplar ekleyerek ve diğerlerini dışlayarak dağıtımı **Açık** veya aşamalı olarak değiştirebilir.
 
-1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure portalında** genel yönetici olarak oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. Kendinizi kilitlenmesini engellemek için en az bir hesabı dışlayın. Herhangi bir hesabı dışlayamazsınız, bu ilkeyi oluşturabileceksiniz.
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemler**altında **tüm bulut uygulamaları**' nı seçin.
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Conditions**  >  **İstemci uygulamaları**Koşulları ' nın altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
-   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler**için kutuyu işaretleyin. Azure 'da Exchange ActiveSync koşullu erişim ilkesini dağıtmak için kullanıcının da genel yönetici olması gerekir.
-   1. **Bitti**'yi seçin.
+   1. Yalnızca **Exchange ActiveSync istemcileri** ve **diğer istemciler**için kutuyu işaretleyin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Erişim denetimleri**  >  **izni**' nın altında, **erişimi engelle**' yi seçin.
    1. **Seç**’i seçin.
 1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.

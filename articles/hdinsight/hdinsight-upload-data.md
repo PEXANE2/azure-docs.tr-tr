@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085880"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462573"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight 'ta Apache Hadoop işleri için veri yükleme
 
@@ -37,7 +37,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki yardımcı programl
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -68,7 +68,7 @@ veya
 
 `wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
-Dosyalarla çalışan diğer Hadoop komutlarının bir listesi için bkz.[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Dosyalarla çalışan diğer Hadoop komutlarının bir listesi için bkz. [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > Apache HBase kümelerinde, veri yazılırken kullanılan varsayılan blok boyutu 256 KB 'dir. Bu, HBase API 'Leri veya REST API 'Leri kullanırken iyi çalışırken, `hadoop` `hdfs dfs` ~ 12 GB 'den büyük verileri yazmak için veya komutlarını kullanarak bir hatayla sonuçlanır. Daha fazla bilgi için bkz. [BLOB üzerinde yazma için depolama özel durumu](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
@@ -88,7 +88,7 @@ Azure depolama ile çalışmak için grafik arabirimi sağlayan çeşitli uygula
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Azure Storage 'ı yerel sürücü olarak bağlama
 
-Bkz. [Azure Storage 'ı yerel sürücü olarak bağlama](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Bkz. [Azure Storage 'ı yerel sürücü olarak bağlama](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive).
 
 ## <a name="upload-using-services"></a>Hizmetleri kullanarak karşıya yükleme
 

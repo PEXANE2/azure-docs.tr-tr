@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950905"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660575"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için kimlik gereksinimlerini belirleme
 Karma kimlik çözümü tasarlamanın ilk adımı, bu çözümü kullanacak iş kuruluşunun gereksinimlerini belirlemektir.  Karma kimlik, bir destekleme rolü olarak başlar (kimlik doğrulaması sağlayarak diğer tüm bulut çözümlerini destekler) ve kullanıcılar için yeni iş yüklerinin kilidini açmak üzere yeni ve ilginç yetenekler sağlamak için üzerine gider.  Kullanıcılarınız için benimsemek istediğiniz bu iş yükleri veya hizmetler karma kimlik tasarımı için gereksinimleri dikte eder.  Bu hizmetlerin ve iş yüklerinin hem şirket içinde hem de bulutta karma kimlikle yararlanması gerekir.  
@@ -72,10 +72,10 @@ Ardından, kimlik Tümleştirme gereksinimlerini değerlendirmeniz gerekir. Bu d
   * Şirketiniz, SAML veya benzer Federasyon özellikleri kullanan şirket içi uygulamalara (yerleşik veya üçüncü taraf) sahiptir.
   * Akıllı kartlar aracılığıyla MFA. RSA SecurID, vb.
   * Aşağıdaki soruları ele alan istemci erişim kuralları:
-    1. İstemcinin IP adresine bağlı olarak Office 365 'e yönelik tüm dış erişimi engelleyebilir miyim?
-    2. Exchange ActiveSync dışında Office 365 'e yönelik tüm dış erişimi engelleyebilir miyim?
-    3. Tarayıcı tabanlı uygulamalar dışında (OWA, SPO) Office 365 ' e tüm dış erişimi engelleyebilir miyim
-    4. Belirlenen AD gruplarının üyeleri için Office 365 'e yönelik tüm dış erişimi engelleyebilir
+    1. Microsoft 365 için tüm dış erişimi, istemcinin IP adresine göre engelleyebilir miyim?
+    2. Exchange ActiveSync hariç Microsoft 365 tüm dış erişimi engelleyebilir miyim?
+    3. Tarayıcı tabanlı uygulamalar haricinde Microsoft 365 tüm dış erişimi engelleyebilir (OWA, SPO)
+    4. Belirtilen AD gruplarının üyeleri için Microsoft 365 tüm dış erişimi engelleyebilir miyim
 * Güvenlik/Denetim sorunları
 * Federal Kimlik doğrulamasında zaten mevcut yatırım
 * Kuruluşumuz, buluttaki etki alanı için hangi adı kullanır?

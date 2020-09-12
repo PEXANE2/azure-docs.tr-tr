@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490294"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483737"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
@@ -38,7 +38,7 @@ SQL havuzu için PolyBase ELT uygulamaya yönelik temel adımlar şunlardır:
 5. Verileri dönüştürün.
 6. Verileri üretim tablolarına ekleyin.
 
-Yükleme öğreticisi için bkz. [Azure Blob depolamadan Azure SQL veri ambarı 'na veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Yükleme öğreticisi için bkz. [Azure Blob depolama 'Dan Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 Daha fazla bilgi için bkz. [desenleri web günlüğü yükleme](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
 
@@ -50,7 +50,7 @@ Kaynak sisteminizden veri alma, depolama konumuna bağlıdır.  Amaç, verileri 
 
 PolyBase UTF-8 ve UTF-16 kodlamalı sınırlandırılmış metin dosyalarından veri yükler. Sınırlandırılmış metin dosyalarına ek olarak, bu dosya, RC dosyası, ORC ve Parquet Hadoop dosya biçimlerini yükler. PolyBase, gzip ve Snappy sıkıştırılmış dosyalarındaki verileri de yükleyebilir. PolyBase Şu anda genişletilmiş ASCII, sabit genişlikli biçim ve WinZip, JSON ve XML gibi iç içe geçmiş biçimleri desteklemez.
 
-SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. SQL DW veri türü eşlemesine Parquet şu şekildedir:
+SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. Parquet, Azure SYNAPSE Analytics veri türü eşlemesine aşağıdaki gibidir:
 
 | **Parquet veri türü** |                      **SQL veri türü**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -121,7 +121,7 @@ PolyBase ile veri yüklemek için, bu yükleme seçeneklerinden herhangi birini 
 - [T-SQL Ile PolyBase](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , verileriniz Azure Blob depolama veya Azure Data Lake Store olduğunda iyi bir şekilde çalışabilir. Bu, yükleme işlemi üzerinde en fazla denetim sağlar, ancak dış veri nesneleri tanımlamanızı da gerektirir. Diğer yöntemler, kaynak tablolarını hedef tablolarla eşleştirdiğinizde arka planda bu nesneleri tanımlar.  T-SQL yüklemelerini düzenlemek için Azure Data Factory, SSIS veya Azure işlevlerini kullanabilirsiniz.
 - [SSIS Ile PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , kaynak verileriniz SQL Server olduğunda iyi sonuç verir. SSIS, kaynağı hedef tablo eşlemelerine tanımlar ve ayrıca yükü düzenler. SSIS paketleriniz zaten varsa, yeni veri ambarı hedefle çalışacak şekilde paketleri değiştirebilirsiniz.
 - [Azure Data Factory (ADF) Ile PolyBase](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) başka bir düzenleme aracıdır.  İşlem hattını tanımlar ve işleri zamanlar.
-- [Azure Databricks Ile PolyBase,](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bir SQL veri ambarı tablosundan Databricks veri çerçevesine veri aktarır ve/veya databricks veri çerçevesindeki verileri PolyBase kullanarak bir SQL veri ambarı tablosuna yazar.
+- [Azure Databricks Ile PolyBase,](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verileri bir Azure SYNAPSE Analytics tablosundan Databricks veri çerçevesine aktarır ve/veya databricks veri çerçevesindeki verileri PolyBase kullanarak bir Azure SYNAPSE Analytics tablosuna yazar.
 
 ### <a name="non-polybase-loading-options"></a>PolyBase yükleme seçenekleri
 

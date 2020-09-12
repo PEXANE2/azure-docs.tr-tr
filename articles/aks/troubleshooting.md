@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056523"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460329"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -98,13 +98,17 @@ Uyarıların nedeni kümede RBAC 'nin etkinleştirilmiş ve panoya erişimi art�
 
 API sunucusuna bağlanmak için 22, 9000 ve 1194 bağlantı noktalarının açık olduğundan emin olun. `tunnelfront` `aks-link` Komutunu kullanarak *Kuto-System* ad alanında veya Pod 'ın çalışıp çalışmadığını denetleyin `kubectl get pods --namespace kube-system` . Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>`"tls: client offered only unsupported versions"`AKS API 'sine bağlanırken istemcimde alıyorum. Ne yapmalıyım?
+
+AKS 'de desteklenen en düşük TLS sürümü TLS 1,2 ' dir.
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Yükseltmeye veya ölçeklendirmeye çalışıyorum ve bir `"Changing property 'imageReference' is not allowed"` hata alıyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
 AKS kümesi içindeki aracı düğümlerinde bulunan etiketleri değiştirdiğiniz için bu hatayı alabilirsiniz. MC_ * kaynak grubundaki kaynakların etiketlerini ve diğer özelliklerini değiştirme veya silme, beklenmeyen sonuçlara neden olabilir. AKS kümesindeki MC_ * grubundaki kaynakları değiştirmek, hizmet düzeyi hedefini (SLO) keser.
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilinceye kadar çalışmayacak
 
-*Bu sorun giderme yardımı şuradan yönlendirilirhttps://aka.ms/aks-cluster-failed*
+*Bu sorun giderme yardımı şuradan yönlendirilir https://aka.ms/aks-cluster-failed*
 
 Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken oluşur. Daha önce başarısız olan işlemi yeniden denemeden önce kümenizin başarısız durumunu çözümlemek için aşağıdaki adımları izleyin:
 
@@ -115,7 +119,7 @@ Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken o
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum veya yükseltme başarısız oldu
 
-*Bu sorun giderme yardımı şuradan yönlendirilirhttps://aka.ms/aks-pending-upgrade*
+*Bu sorun giderme yardımı şuradan yönlendirilir https://aka.ms/aks-pending-upgrade*
 
  Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde işlemler sınırlıdır. 
 
@@ -176,9 +180,9 @@ Bu sorun için aşağıdaki geçici çözümleri kullanın:
 * Otomasyon betikleri kullanıyorsanız, hizmet sorumlusu oluşturma ve AKS kümesi oluşturma arasında zaman gecikmeleri ekleyin.
 * Azure portal kullanıyorsanız, oluşturma sırasında küme ayarlarına dönün ve birkaç dakika sonra doğrulama sayfasını yeniden deneyin.
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>`"AADSTS7000215: Invalid client secret is provided."`AKS API 'sini kullanırken alıyorum. Ne yapmalıyım?
 
-
-
+Bu, genellikle hizmet sorumlusu kimlik bilgilerinin süresi dolduğundan oluşur. [AKS kümesinin kimlik bilgilerini güncelleştirin.](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Çıkış trafiğini kısıtladıktan sonra hata alıyorum
 

@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b378fe3f01e6ef1d54a89341bbac3a26b9d6b33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a80681a641757d71288dfaee4c779121030a9db
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013155"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613600"
 ---
 # <a name="spatial-queries"></a>Uzamsal sorgular
 
@@ -112,6 +112,11 @@ Bir Isabet aşağıdaki özelliklere sahiptir:
 * ** `HitPosition` :** Ray 'un nesnenin kesişen bulunduğu dünya alanı konumu.
 * ** `HitNormal` :** Dünya alanı, kesişme konumundaki kafesin normal yüzeyi.
 * ** `DistanceToHit` :** Ray başlangıç konumundan hit 'e kadar olan uzaklık.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# RemoteManager. Rayroqueryasync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.raycastqueryasync)
+* [C++ RemoteManager:: Rayrosorgusqueryasync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#raycastqueryasync)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

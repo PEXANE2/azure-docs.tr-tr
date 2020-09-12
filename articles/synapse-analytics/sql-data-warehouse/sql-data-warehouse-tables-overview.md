@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798576"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460556"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tablo tasarlama
 
@@ -46,7 +46,7 @@ SQL havuzundaki tabloların organizasyonunu göstermek için, tablo adlarına ö
 
 | WideWorldImportersDW tablosu  | Tablo türü | SQL havuzu |
 |:-----|:-----|:------|:-----|
-| City | Boyut | wwi. DimCity |
+| Şehir | Boyut | wwi. DimCity |
 | Sipariş verme | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
@@ -111,7 +111,7 @@ Tablo kategorisi genellikle tabloyu dağıtmak için hangi seçeneğin tercih ve
 
 ## <a name="table-partitions"></a>Tablo bölümleri
 
-Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarında işlem depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Bölüm içindeki verilerle bir sorgu taramasını sınırlayan, Bölüm eliminasyon aracılığıyla sorgu performansını artırabilirsiniz. Ayrıca, verileri bölüm değiştirme aracılığıyla da koruyabilirsiniz. SQL veri ambarı 'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için bkz. [bölümleme kılavuzu](sql-data-warehouse-tables-partition.md).  Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyiminizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerde, mevcut verilerin üzerine yazarak Satışolgusuna geçiş yapar.
+Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarında işlem depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Bölüm içindeki verilerle bir sorgu taramasını sınırlayan, Bölüm eliminasyon aracılığıyla sorgu performansını artırabilirsiniz. Ayrıca, verileri bölüm değiştirme aracılığıyla da koruyabilirsiniz. Azure SYNAPSE Analytics 'teki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için bkz. [bölümleme kılavuzu](sql-data-warehouse-tables-partition.md).  Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyiminizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerde, mevcut verilerin üzerine yazarak Satışolgusuna geçiş yapar.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -144,7 +144,7 @@ BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de k
 
 Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Açıklama |
+| T-SQL ekstresi | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
 | [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Dış tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Store depolanır. |
@@ -294,9 +294,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 ### <a name="table-space-summary"></a>Tablo alanı Özeti
 

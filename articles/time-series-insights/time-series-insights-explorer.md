@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080701"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487309"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Gezgini
 
 Bu makalede Azure Time Series Insights Gen1 [Explorer Web uygulamasının](https://insights.timeseries.azure.com/)özellikleri ve seçenekleri açıklanmaktadır. Azure Time Series Insights Gezgini, hizmet tarafından sunulan güçlü veri görselleştirme yeteneklerini gösterir ve kendi ortamınız dahilinde erişilebilir.
 
-Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. 
+Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz.
 
 > [!TIP]
 > Tanıtım ortamında kılavuzlu bir tur için [Azure Time Series Insights hızlı](time-series-quickstart.md)başlangıcı makalesini okuyun.
@@ -37,7 +37,7 @@ Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip anali
 >[!NOTE]
 >Yukarıdaki <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Azure IoT çözüm Hızlandırıcısını kullanarak Azure Time Series Insights</a> kullanmaya başlama" videosunu yürütün.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
@@ -74,7 +74,7 @@ Olay kaynağınızı Azure Time Series Insights ortamınıza bağlama sırasınd
          |İşlem  |Desteklenen türler  |Notlar  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
-         |**=**, **!=**,**<>**     | **Dize**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
+         |**=**, **!=**, **<>**     | **Dize**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
          |**'NDAKI**     | **Dize**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |  Tüm işlenenler aynı türde veya **null** sabit olmalıdır.        |
          |**SILINDI**     | **Dize**        |  Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve **null** değerlerine izin verilmez.       |
 
@@ -108,7 +108,7 @@ Olay kaynağınızı Azure Time Series Insights ortamınıza bağlama sırasınd
 
 1. Belirli bir sorgudaki benzersiz veya anormal veri serisini hızlıca belirlemek için **ısı haritasını** ' i kullanın. Tek bir arama terimi, heatmap olarak görselleştirilir.
 
-    [![Gen1 Explorer ısı haritasını grafik](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Gezgin ısı haritasını grafik Time Series Insights ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Olayları araştırdığınızda veya sağ tıkladıktan sonra **Olaylar** paneli kullanılabilir hale getirilir. Burada, tüm ham olaylarınızı gözden geçirebilir ve olaylarınızı JSON veya CSV dosyaları olarak dışarı aktarabilirsiniz. Azure Time Series Insights tüm ham verileri depolar.
 

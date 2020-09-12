@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ec06fc23b147eb3e4a5922242aa922063f4172c
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038623"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514161"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleyin
 
 Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](container-security.md) açıklanan kapsayıcı güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Güvenlik açıkları için ARM tabanlı kapsayıcı kayıt defterlerinden tarama 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>Güvenlik açıkları için ARM tabanlı kapsayıcı kayıt defterlerinin taramasını yapın 
 
 1. Azure Container Registry görüntülerinizin güvenlik açığı taramasını etkinleştirmek için:
 
@@ -30,13 +30,13 @@ Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](contai
 
         Güvenlik Merkezi artık kayıt defterine gönderilen görüntüleri taramaya hazırdır. 
 
-        >[!NOTE]
-        >Bu özellik görüntü başına ücretlendirilir.
+      >[!NOTE]
+      >Bu özellik görüntü başına ücretlendirilir.
 
 
 1. Bir görüntünün taramasını tetiklemek için, Kayıt defterinize gönderin. 
 
-    Tarama tamamlandığında (genellikle yaklaşık 2 dakika sonra, ancak en fazla 15 dakika), bulgular aşağıdaki gibi güvenlik merkezi önerileri olarak kullanılabilir:
+    Tarama tamamlandığında (genellikle yaklaşık 2 dakika sonra, ancak 15 dakikaya kadar), bulgular Güvenlik Merkezi önerileri olarak kullanılabilir.
 
 1. Bulguları görüntülemek için **öneriler** sayfasına gidin. Sorun bulunursa aşağıdaki öneriyi görürsünüz:
 
@@ -86,7 +86,7 @@ Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](contai
     1. Güncelleştirilmiş görüntünün itildiği, tarandığı ve artık öneri içinde görünmediğinden emin olduğunuzda, "eski" savunmasız görüntüyü Kayıt defterinizden silin.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>Kapsayıcılarınızın Docker konaklarını sağlamlaştırma
+## <a name="harden-your-containers-docker-hosts"></a>Kapsayıcılarınızın Docker konaklarını sağlamlaştırın
 
 Güvenlik Merkezi, Docker konaklarınızın yapılandırmasını sürekli izler ve sektör standartlarını yansıtan güvenlik önerileri oluşturur.
 

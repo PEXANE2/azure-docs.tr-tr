@@ -1,6 +1,6 @@
 ---
 title: Anlık ileti hızlı başlangıç
-description: Sorunsuz ve Azure SQL veri ambarı ile hızlı bir şekilde çalışmaya başlayın.
+description: Çabam ve Azure SYNAPSE Analytics ile hızlıca çalışmaya başlayın.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208561"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485983"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Anlık ileti Azure SQL DW marketi teklif yüklemesi Kılavuzu
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Anlık ileti Azure SYNAPSE Analytics marketi teklif yüklemesi Kılavuzu
 
-Bu hızlı başlangıçta zaten SQL veri ambarı 'nın önceden var olan bir örneğine sahip olduğunuz varsayılır.
+Bu hızlı başlangıçta, önceden var olan Azure SYNAPSE Analytics örneğine sahip olduğunuz varsayılır.
 
-Azure Marketi 'nde çarpıcı anlık Ileti arayın ve SQL Data Warehouse 'a veri tümleştirme (hazırlandı) seçeneği için anlık ileti al seçeneğini belirleyin 
+Azure Marketi 'nde çarpıcı anlık Ileti araması yapın ve Azure SYNAPSE Analytics (hazırlandı) seçeneğinde veri tümleştirmesi için anlık ileti al ' ı seçin. 
 
 ![Anlık ileti al][install]
 
@@ -32,7 +32,7 @@ Her şeye, bir anlık ileti kümesi adı, parola ve yönetici parolasını göst
 
 Dağıtıldıktan sonra, \<VM Name> Azure Portal sağ masternode ' a tıklayın, Bağlan ' a tıklayın ve VM yerel hesabı 'nı kullanarak oturum açma 'yı kopyalayın 
 
-![SQL Data Warehouse 'a anlık ileti bağlama][connect]
+![Azure SYNAPSE Analytics 'e anlık ileti bağlama][connect]
 
 Sqljdbc42. jar dosyasını <https://www.microsoft.com/en-us/download/details.aspx?id=54671> Yerel makinenize indirin. 
 

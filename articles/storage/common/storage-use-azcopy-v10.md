@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423840"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485949"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -84,7 +84,7 @@ Yalnızca dosyaları indirmek istiyorsanız, [Depolama Blobu veri okuyucusunun](
 
 Dosyaları karşıya yüklemek isterseniz, bu rollerden birinin güvenlik sorumlusuna atandığını doğrulayın:
 
-- [Depolama Blobu veri Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
+- [Depolama Blob Verileri Katkıda Bulunanı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [Depolama Blobu veri sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
@@ -121,7 +121,7 @@ azcopy login --tenant-id=<tenant-id>
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 
@@ -158,7 +158,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
 ```azcopy
-azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id
+azcopy login --service-principal  --application-id application-id --tenant-id=tenant-id
 ```
 
 `<application-id>`Yer tutucusunu, hizmet sorumlusunun uygulama kaydının uygulama kimliğiyle değiştirin. `<tenant-id>`Yer tutucusunu, depolama hesabının ait olduğu kuruluşun KIRACı kimliğiyle değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin. 

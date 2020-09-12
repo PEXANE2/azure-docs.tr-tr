@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: bağlantı modelleri'
-description: Bu makalede, müşterinin ağı ile Microsoft Azure ve Office 365 hizmetleri arasındaki farklı bağlantı modları açıklanmaktadır. Müşteriler MPLS sağlayıcılarını, bulut değişimlerini ve Ethernet sağlayıcılarını kullanabilir.
+description: Müşterinin ağı, Microsoft Azure ve Microsoft 365 hizmetleri arasındaki bağlantıyı gözden geçirin. Müşteriler MPLS sağlayıcıları, bulut alışverişleri ve Ethernet kullanabilir.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f2a15b63e11d8ad93672a93fee4f327c47dd6277
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710465"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566475"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute bağlantı modelleri
 Şirket içi ağınız ile Microsoft bulut arasında üç yöntemle bağlantı oluşturabilirsiniz: [CloudExchange Ortak Yerleşim](#CloudExchange), [Noktadan Noktaya Ethernet Bağlantısı](#Ethernet) ve [Herhangi bir ağdan herhangi bir ağa (IPVPN) Bağlantı](#IPVPN). Bağlantı sağlayıcıları bir veya daha fazla bağlantı modeli sunabilir. Sizin için en iyi modeli seçmek için bağlantı sağlayıcınız ile çalışabilirsiniz.
@@ -26,8 +26,8 @@ Bulut değişimine sahip bir tesiste ortak yerleşime sahipseniz ortak yerleşim
 ## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Noktadan noktaya Ethernet bağlantıları
 Noktadan noktaya Ethernet bağlantıları üzerinden şirket içi veri merkezleri/ofislerinizi Microsoft bulutuna bağlayabilirsiniz. Noktadan noktaya Ethernet sağlayıcıları, siteniz ve Microsoft bulutu arasında Katman 2 bağlantıları veya yönetilen Katman 3 bağlantılarını sağlayabilir.
 
-## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Herhangi bir ağdan herhangi bir (ıPVPN) ağ
-WAN’ınızı Microsoft bulutu ile tümleştirebilirsiniz. IPVPN sağlayıcıları (genellikle MPLS VPN) şubeleriniz ve veri merkezleriniz arasında herhangi bir yerden herhangi bir yere bağlantı sunabilir. Herhangi diğer bir şube gibi görünmesi sağlamak için Microsoft bulutu ile WAN’ınız birbirine bağlanabilir.  WAN sağlayıcıları genel olarak yönetilen Katman 3 bağlantısı sağlar. ExpressRoute yetenekleri ve özellikleri yukarıdaki tüm bağlantı modelleri arasında aynıdır. 
+## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Herhangi bir ağdan herhangi bir ağa (IPVPN) modelindeki ağlar
+WAN’ınızı Microsoft bulutu ile tümleştirebilirsiniz. IPVPN sağlayıcıları (genellikle MPLS VPN) şubeleriniz ve veri merkezleriniz arasında herhangi bir yerden herhangi bir yere bağlantı sunabilir. Herhangi diğer bir şube gibi görünmesi sağlamak için Microsoft bulutu ile WAN’ınız birbirine bağlanabilir.  WAN sağlayıcıları genel olarak yönetilen Katman 3 bağlantısı sağlar. Yukarıdaki tüm bağlantı modellerinde ExpressRoute özellikleri aynıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * ExpressRoute bağlantıları ve yönlendirme etki alanları hakkında bilgi edinin. Bkz. [ExpressRoute bağlantı hatları ve etki alanlarını yönlendirme](expressroute-circuit-peerings.md).

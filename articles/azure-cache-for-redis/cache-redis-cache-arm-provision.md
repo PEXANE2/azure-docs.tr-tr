@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078427"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461247"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Reda için Azure önbelleği oluşturma
 
@@ -27,7 +27,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 ## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Bir depolama hesabı**: oluşturmak için bkz. [Azure depolama hesabı oluşturma](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template). Depolama hesabı, tanılama verileri için kullanılır.
+* **Bir depolama hesabı**: oluşturmak için bkz. [Azure depolama hesabı oluşturma](/azure/storage/common/storage-account-create?tabs=azure-portal). Depolama hesabı, tanılama verileri için kullanılır.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 Aşağıdaki kaynaklar şablonda tanımlanmıştır:
 
 * [Microsoft. Cache/Redsıs](/azure/templates/microsoft.cache/redis)
-* [Microsoft. Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft. Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 Yeni [Premium katmanının](cache-overview.md#service-tiers) Kaynak Yöneticisi şablonları da kullanılabilir.
 
@@ -66,7 +66,7 @@ En son şablonları denetlemek için bkz. [Azure hızlı başlangıç şablonlar
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Oluşturduğunuz redo önbelleğini açın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

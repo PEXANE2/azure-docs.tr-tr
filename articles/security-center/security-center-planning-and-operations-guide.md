@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833428"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461332"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.
@@ -40,7 +40,7 @@ Kuruluşunuzun büyüklüğüne ve yapısına bağlı olarak birçok kişi ve ek
 
 ![Roller](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örnek:
+Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örneğin:
 
 **Cem (İş Yükü Sahibi)**
 
@@ -237,4 +237,4 @@ Bu belgede, Güvenlik Merkezi benimsemeyi nasıl planlayacağınızı öğrendin
 * [Azure Güvenlik Merkezi 'Nde güvenlik sistem durumu izleme](security-center-monitoring.md) — Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi hakkında SSS](faq-general.md) — hizmeti kullanma hakkında sık sorulan soruları bulun.
-* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) : Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.
+* [Azure Güvenlik blogu](https://docs.microsoft.com/archive/blogs/azuresecurity/) : Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun.

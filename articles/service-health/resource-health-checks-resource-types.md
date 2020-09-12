@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230169"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660652"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -51,7 +51,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Yürütülen denetimler|
 |---|
-|<ul><li>Üretim yuvası dağıtımı tüm rol örneklerinde sağlıklı mı?</li><li>Rol tüm sanal makine örneklerinde sağlıklı mı?</li><li>Bulut hizmeti rolü içindeki her VM 'nin sistem durumu nedir?</li><li>Platform veya müşteri tarafından başlatılan işlem nedeniyle VM durumu değişikliği mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li></ul>|
+|<ul><li>Üretim yuvası dağıtımı tüm rol örneklerinde sağlıklı mı?</li><li>Rol tüm sanal makine örneklerinde sağlıklı mı?</li><li>Bulut hizmeti rolü içindeki her VM 'nin sistem durumu nedir?</li><li>Platform veya müşteri tarafından başlatılan işlem nedeniyle VM durumu değişikliği mı?</li><li>Konuk işletim sisteminin önyüklemesine tamamlandı mı?</li><li>Devam eden planlı bakım var mı?</li><li>Ana bilgisayar donanımı düşürüldü ve yakında başarısız olacak şekilde tahmin mi?</li><li>Yürütülen denetimler hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. biliveservices/hesapları
 |Yürütülen denetimler|

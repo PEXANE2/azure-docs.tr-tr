@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: asimetrik yönlendirme'
 description: Bu makalede, hedefe birden çok bağlantısı olan bir ağda asimetrik yönlendirmeye sahip olabileceğiniz sorunlar anlatılmaktadır.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74072150"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566543"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Birden çok ağ yoluyla Asimetrik yönlendirme
 Bu makalede, ağ kaynağı ile hedef arasında birden çok yol varsa iletme ve döndürme ağ trafiğinin nasıl farklı rotalar izleyebileceği açıklanmaktadır.
@@ -64,5 +64,5 @@ Asimetrik yönlendirme sorunlarını çözmenin bir başka yolu da SNAT kullanma
 ![Kaynak tabanlı NAT ağ yapılandırması](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Asimetrik yönlendirmenin algılanması
-Traceroute, ağ trafiğinizin beklenen yoldan gittiğinden emin olmanın en iyi yoludur. Şirket içi SMTP sunucunuzdan Microsoft’a giden trafiğin İnternet yolunu tercih etmesini bekliyorsanız, beklenen traceroute SMTP sunucusundan Office 365’e gider. Sonuç, ağınızdan çıkan trafiğin ExpressRoute’a değil, gerçekten de İnternet’e gittiğini doğrular.
+Traceroute, ağ trafiğinizin beklenen yoldan gittiğinden emin olmanın en iyi yoludur. Şirket içi SMTP sunucunuzdaki trafiği Internet yolunu alacak şekilde bekliyorsanız, beklenen izleme yolu SMTP sunucusundan Microsoft 365. Sonuç, ağınızdan çıkan trafiğin ExpressRoute’a değil, gerçekten de İnternet’e gittiğini doğrular.
 

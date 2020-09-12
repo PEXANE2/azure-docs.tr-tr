@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928573"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513958"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
 
@@ -51,7 +51,9 @@ Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [
 
 SignalR hizmetinden gönderilen iletileri işlemek için *SignalR tetikleme* bağlamasını kullanın. İstemciler ileti gönderir veya istemcileri bağlandığında veya bağlantısı kesildiğinde tetiklenebilir.
 
-Daha fazla bilgi için bkz. [ *SignalR tetikleyicisi* bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-trigger.md)
+Daha fazla bilgi için bkz. [ *SignalR tetikleyicisi* bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+Ayrıca, hizmetin istemciden gelen iletiyi tetikleyeceği şekilde işlev uç noktanızı bir yukarı akış olarak yapılandırmanız gerekir. Yukarı akışı yapılandırma hakkında daha fazla bilgi için lütfen bu [belgeye](concept-upstream.md)başvurun.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>İleti gönderme ve grup üyeliğini yönetme
 
@@ -69,7 +71,7 @@ SignalR 'nin bir "Hub" kavramı vardır. Her istemci bağlantısı ve Azure Işl
 
 Sınıf tabanlı model C# için ayrılmıştır. Sınıf tabanlı model ile tutarlı bir SignalR sunucu tarafı programlama deneyimine sahip olabilir. Aşağıdaki özelliklere sahiptir.
 
-* Daha az yapılandırma çalışıyor: sınıf adı olarak kullanılır `HubName` , yöntem adı olarak kullanılır `Event` ve `Category` Yöntem adına göre otomatik olarak karar verir.
+* Daha az yapılandırma işi: sınıf adı olarak kullanılır `HubName` , yöntem adı olarak kullanılır `Event` ve `Category` Yöntem adına göre otomatik olarak karar verilir.
 * Auto parametresi bağlama: ne `ParameterNames` de öznitelik `[SignalRParameter]` gerekli değildir. Parametreler, Azure Function yönteminin bağımsız değişkenlerine sırayla otomatik olarak bağlanır.
 * Uygun çıkış ve anlaşma deneyimi.
 
@@ -105,11 +107,11 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-Sınıf tabanlı modelin kullanmasını istediğiniz tüm işlevlerin **Serverlesshub**'dan devralan sınıfın yöntemi olması gerekir. Örnekteki sınıf adı `SignalRTestHub` hub adıdır.
+Sınıf tabanlı modelden yararlanmak isteyen tüm işlevlerin **Serverlesshub**'dan devralan sınıf yöntemi olması gerekir. Örnekteki sınıf adı `SignalRTestHub` hub adıdır.
 
 ### <a name="define-hub-method"></a>Hub yöntemini tanımla
 
-Tüm **hub yöntemlerinin bir**  özniteliğe sahip olması `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması **gerekir** . Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
+Tüm Hub yöntemlerinin bir **must** bağımsız değişkeni `InvocationContext` olarak düzenlenmiş `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması gerekir. Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
 
 Varsayılan olarak, `category=messages` Yöntem adı dışında aşağıdaki adlardan biridir:
 
@@ -202,7 +204,11 @@ SignalR istemci SDK 'sını kullanma hakkında daha fazla bilgi için, dilinize 
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>İstemciden hizmete ileti gönderme
 
-SignalR SDK 'Sı, istemci uygulamalarının bir SignalR hub 'ında arka uç mantığını çağırmasına izin verse de, Azure Işlevleri ile SignalR hizmetini kullandığınızda bu işlevsellik henüz desteklenmez. Azure Işlevleri 'ni çağırmak için HTTP isteklerini kullanın.
+SignalR kaynağınız için [yukarı akış](concept-upstream.md) yapılandırılmış ise, herhangi bir SignalR istemcisini kullanarak Istemciden Azure işlevlerinizi iletiler gönderebilirsiniz. JavaScript 'te bir örnek aşağıda verilmiştir:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Işlevleri yapılandırması
 

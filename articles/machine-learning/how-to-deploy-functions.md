@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff327372a0ec22ca6291615ca64f01a4aa5807be
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325806"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646229"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Azure Işlevlerinde bir işlev uygulaması olarak Azure Machine Learning bir mod
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Artık Azure Machine Learning, bu makine öğrenimi modellerini [Azure işlevlerine dağıtılabilecek](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)işlev uygulamalarına derlemek için Önizleme işlevselliğine sahiptir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -37,9 +37,9 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görün
     > [!IMPORTANT]
     > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
     >
-    > * `ws`-Azure Machine Learning çalışma alanınız.
-    > * `model`-Dağıtılacak kayıtlı model.
-    > * `inference_config`-Modelin çıkarım yapılandırması.
+    > * `ws` -Azure Machine Learning çalışma alanınız.
+    > * `model` -Dağıtılacak kayıtlı model.
+    > * `inference_config` -Modelin çıkarım yapılandırması.
     >
     > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
@@ -63,7 +63,7 @@ Giriş betiği hakkında daha fazla bilgi için bkz. [Puanlama kodu tanımlama](
 Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
-> Azure Işlevleri ile kullanmak üzere bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
+> Azure Işlevleri ile kullanmak üzere bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure Işlevlerine dağıtılan Docker görüntüsünü oluşturmak için, kullanarak ilgilendiğiniz tetikleyici için [azureml. contrib. Functions. Package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) veya belirli paket işlevini kullanın. Aşağıdaki kod parçacığı, model ve çıkarım yapılandırmasından bir blob tetikleyicisi ile nasıl yeni bir paket oluşturulacağını göstermektedir:
+Azure Işlevlerine dağıtılan Docker görüntüsünü oluşturmak için, kullanarak ilgilendiğiniz tetikleyici için [azureml. contrib. Functions. Package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) veya belirli paket işlevini kullanın. Aşağıdaki kod parçacığı, model ve çıkarım yapılandırmasından bir blob tetikleyicisi ile nasıl yeni bir paket oluşturulacağını göstermektedir:
 
 > [!NOTE]
 > Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config` çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
@@ -184,7 +184,7 @@ Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. �
     ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
-    İşlev uygulamasına sağlamak için bu bağlantı dizesini kaydedin. Daha sonra, şunu sorduğumuz zaman kullanacağız`<triggerConnectionString>`
+    İşlev uygulamasına sağlamak için bu bağlantı dizesini kaydedin. Daha sonra, şunu sorduğumuz zaman kullanacağız `<triggerConnectionString>`
 
 1. Depolama hesabındaki giriş ve çıkış için kapsayıcıları oluşturun. `<triggerConnectionString>`Daha önce döndürülen bağlantı dizesiyle değiştirin:
 
@@ -301,4 +301,4 @@ Blob tetikleyicilerini kullanma hakkında daha fazla bilgi için bkz. [Azure Blo
 * BLOB depolama, [Azure Blob depolama bağlamalarını](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)tetikler hakkında daha fazla bilgi edinin.
 * [Modelinizi Azure App Service Için dağıtın](how-to-deploy-app-service.md).
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
-* [API Başvurusu](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)
+* [API Başvurusu](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)

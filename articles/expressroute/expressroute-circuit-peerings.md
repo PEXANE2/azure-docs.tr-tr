@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: devreler ve eşleme'
 description: Bu sayfada ExpressRoute bağlantı hattı ve yönlendirme etki alanları/eşleme hakkında genel bir bakış sağlanır.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537029"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566509"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute devreleri ve eşleme
 
@@ -54,7 +54,7 @@ Bir sanal ağ içinde dağıtılan sanal makineler (IaaS) ve Cloud Services (Paa
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft çevrimiçi hizmetler bağlantısı (Office 365 ve Azure PaaS hizmetleri) Microsoft eşlemesi üzerinden gerçekleşir. Microsoft eşleme yönlendirme etki alanı aracılığıyla WAN ve Microsoft bulut hizmetleri arasında çift yönlü bağlantıyı etkinleştik. Yalnızca size veya bağlantı sağlayıcınıza ait olan genel IP adreslerinden Microsoft bulut hizmetlerine bağlanmanız gerekir ve tüm tanımlı kurallara uymalısınız. Daha fazla bilgi için bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md) sayfası.
+Microsoft çevrimiçi hizmetler (Microsoft 365 ve Azure PaaS Services) bağlantısı, Microsoft eşlemesi aracılığıyla oluşur. Microsoft eşleme yönlendirme etki alanı aracılığıyla WAN ve Microsoft bulut hizmetleri arasında çift yönlü bağlantıyı etkinleştik. Yalnızca size veya bağlantı sağlayıcınıza ait olan genel IP adreslerinden Microsoft bulut hizmetlerine bağlanmanız gerekir ve tüm tanımlı kurallara uymalısınız. Daha fazla bilgi için bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md) sayfası.
 
 Desteklenen hizmetler, maliyetler ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [SSS sayfasına](expressroute-faqs.md) bakın. Microsoft eşleme desteği sunan bağlantı sağlayıcılarının listesi hakkında bilgi için bkz. [ExpressRoute konumları](expressroute-locations.md) sayfası.
 

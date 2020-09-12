@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804662"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594277"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLı kullanarak dış yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
@@ -20,10 +20,9 @@ ms.locfileid: "84804662"
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Dinleyici ve yeniden yönlendirme kuralı oluşturma
-> * Uygulama ağ geçidi oluşturma
+* Ağı ayarlama
+* Dinleyici ve yeniden yönlendirme kuralı oluşturma
+* Uygulama ağ geçidi oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

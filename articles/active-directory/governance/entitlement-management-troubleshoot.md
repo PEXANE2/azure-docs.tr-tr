@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783340"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460805"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -47,7 +47,7 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 * Ekibin bir üyesini kaldırdığınızda, Microsoft 365 gruptan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](/microsoftteams/office-365-groups#group-membership).
 
-* Dizininizin birden çok coğrafi bölge için yapılandırılmadığından emin olun. Yetkilendirme yönetimi şu anda SharePoint Online için birden çok coğrafi konumu desteklemiyor. SharePoint Online sitelerinin yetkilendirme yönetimiyle idare edilmesi için varsayılan coğrafi konumda yer almaları gerekir. Daha fazla bilgi için bkz. [OneDrive ve SharePoint Online 'Daki çok coğrafi bölge özellikleri](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Dizininizin birden çok coğrafi bölge için yapılandırılmadığından emin olun. Yetkilendirme yönetimi şu anda SharePoint Online için birden çok coğrafi konumu desteklemiyor. SharePoint Online sitelerinin yetkilendirme yönetimiyle idare edilmesi için varsayılan coğrafi konumda yer almaları gerekir. Daha fazla bilgi için bkz. [OneDrive ve SharePoint Online 'Daki çok coğrafi bölge özellikleri](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Erişim paketleri
 

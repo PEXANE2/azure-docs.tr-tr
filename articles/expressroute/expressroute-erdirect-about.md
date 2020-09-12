@@ -2,17 +2,17 @@
 title: Azure ExpressRoute Direct hakkında
 description: Azure ExpressRoute Direct 'in temel özellikleri ve kullanılabilir SKU 'Lar ve teknik gereksinimler gibi ExpressRoute Direct 'e eklemek için gereken bilgiler hakkında bilgi edinin.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192348"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566407"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
@@ -44,7 +44,7 @@ ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydol
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute doğrudan devreleri
 
-Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
+Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Microsoft 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
 Her bir eşleme konumu Microsoft 'un küresel ağına erişebilir ve varsayılan olarak, coğrafi olmayan bir bölgedeki herhangi bir bölgeye erişebilir ve Premium bir devrenle tüm genel bölgelere erişebilir.  
 

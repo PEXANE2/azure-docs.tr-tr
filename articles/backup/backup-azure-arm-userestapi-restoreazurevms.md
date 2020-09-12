@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011200"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506687"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -31,7 +31,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Yanıtlar
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       Tamam  |
 
@@ -144,7 +144,7 @@ Herhangi bir geri yükleme işleminin tetiklenmesi [zaman uyumsuz bir işlemdir]
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Kabul edildi    |
 
@@ -216,7 +216,7 @@ Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyo
 
 Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -244,6 +244,30 @@ Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özel
 }
 ```
 
+### <a name="restore-disks-selectively"></a>Diskleri seçmeli olarak geri yükle
+
+[Diskleri seçmeli olarak yedekliyorsanız](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), geçerli yedeklenen disk listesi, [Kurtarma noktası özetinde](#select-recovery-point) ve [ayrıntılı yanıtta](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)sağlanır. Ayrıca, diskleri seçmeli olarak geri yükleyebilir ve [burada](selective-disk-backup-restore.md#selective-disk-restore)daha fazla ayrıntı sağlanır. Yedeklenen disklerin listesi arasında bir diski seçmeli olarak geri yüklemek için, kurtarma noktası yanıtından diskin LUN 'unu bulun ve aşağıdaki şekilde [Yukarıdaki istek gövdesine](#example-request) **Restoredisklunlist** özelliğini ekleyin.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
+```
+
 [Yukarıda](#responses)açıklandığı gibi yanıtı izlerken ve uzun süre çalışan iş tamamlandıktan sonra, diskler ve yedeklenen sanal makinenin ("VMConfig.jsüzerinde") yapılandırması belirtilen depolama hesabında mevcut olacaktır.
 
 ### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Yedeklenen bir sanal makinede bulunan diskleri değiştirme
@@ -254,7 +278,7 @@ Diskleri geri yükleme, kurtarma noktasından diskler oluşturduğunda, diskleri
 
 Azure VM yedeğinden bir disk değişikliği tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

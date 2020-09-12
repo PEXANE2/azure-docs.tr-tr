@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708850"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658731"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ Her örnek havuz, altında ayrı bir sanal küme oluşturur. Bir havuz içindeki
 - Örnek düzeyi limitlerinin yanı sıra, *örnek havuzu düzeyinde*uygulanan iki sınır de vardır:
   - Havuz başına toplam depolama boyutu (8 TB).
   - Havuz başına toplam veritabanı sayısı (100).
+- Örnek havuzunda dağıtılan örnekler için AAD Yöneticisi ayarlanamaz, bu nedenle AAD kimlik doğrulaması kullanılamaz.
 
 Toplam depolama alanı ayırma ve tüm örneklerde bulunan veritabanlarının sayısı, örnek havuzlarının açığa çıkarılan limitlere eşit veya ondan daha düşük olmalıdır.
 

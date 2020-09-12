@@ -3,12 +3,12 @@ title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958754"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651358"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
@@ -19,7 +19,7 @@ Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, *
 Azure Ilkesi, şablonu **Deployifnotexists** ilke tanımında çalıştırdığında, bu, [yönetilen bir kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)kullanılarak yapılır.
 Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Yönetilen Kimlik-eksik Roley" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 > [!IMPORTANT]
 > **Deployifnotexists** veya **MODIFY** tarafından değiştirilen bir kaynak ilke atamasının kapsamı dışındaysa veya şablon, ilke atamasının kapsamı dışında kaynaklardaki özelliklere erişirse, atamaya ait yönetilen kimliğe [el ile erişim izni](#manually-configure-the-managed-identity) verilmelidir veya düzeltme dağıtımı başarısız olur.
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Portal aracılığıyla tanımlı roller verme
 
-**Erişim denetimi (IAM)** kullanarak veya ilkeyi veya girişim atamasını düzenleyerek ve **Kaydet**' e tıklayarak, bir atamanın yönetilen kimliğine portalı kullanarak tanımlanmış rolleri vermenin iki yolu vardır.
+**Erişim denetimi (IAM)** kullanarak veya ilkeyi veya girişim atamasını düzenleyerek ve **Kaydet**' i seçerek, bir atamanın yönetilen kimliğine portalı kullanarak tanımlanmış rolleri vermenin iki yolu vardır.
 
 Atamanın yönetilen kimliğine bir rol eklemek için aşağıdaki adımları izleyin:
 
-1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
 1. Azure İlkesi sayfasının sol tarafından **Atamalar**'ı seçin.
 
-1. Yönetilen bir kimliğe sahip olan atamayı bulun ve ada tıklayın.
+1. Yönetilen bir kimliğe sahip olan atamayı bulun ve adı seçin.
 
 1. Düzenleme sayfasında **atama kimliği** özelliğini bulun. Atama KIMLIĞI şöyle bir şey olacaktır:
 
@@ -110,10 +110,10 @@ Atamanın yönetilen kimliğine bir rol eklemek için aşağıdaki adımları iz
 
 1. Rol tanımı el ile eklenmiş olması gereken kaynağa veya kaynak üst kapsayıcısına (kaynak grubu, abonelik, yönetim grubu) gidin.
 
-1. Kaynaklar sayfasındaki **erişim denetimi (IAM)** bağlantısına tıklayın ve erişim denetimi sayfasının en üstünde **+ rol ataması Ekle** ' ye tıklayın.
+1. Kaynaklar sayfasında **erişim denetimi (IAM)** bağlantısını seçin ve ardından erişim denetimi sayfasının en üstünde **+ rol ataması Ekle** ' yi seçin.
 
 1. İlke tanımındaki bir **Roledefinitionıds** ile eşleşen uygun rolü seçin.
-   ' Azure AD Kullanıcı, Grup veya uygulama ' için varsayılan değer olarak ayarlanan **ata erişimini** bırak. **Seç** kutusunda, daha önce bulunan atama kaynağı kimliğinin bölümünü yapıştırın veya yazın. Arama tamamlandığında, KIMLIK ' i seçmek için aynı ada sahip nesneye tıklayın ve **Kaydet**' e tıklayın.
+   ' Azure AD Kullanıcı, Grup veya uygulama ' için varsayılan değer olarak ayarlanan **ata erişimini** bırak. **Seç** kutusunda, daha önce bulunan atama kaynağı kimliğinin bölümünü yapıştırın veya yazın. Arama tamamlandıktan sonra KIMLIĞI seçmek için aynı ada sahip nesneyi seçin ve **Kaydet**' i seçin.
 
 ## <a name="create-a-remediation-task"></a>Düzeltme görevi oluşturma
 
@@ -123,32 +123,32 @@ Değerlendirme sırasında, **Deployifnotexists** veya **değişiklik** efektler
 
 Bir **Düzeltme görevi**oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Tüm hizmetlerde Ilke aramanın ekran görüntüsü." border="false":::
 
 1. Azure Ilkesi sayfasının sol tarafındaki **Düzeltme** ' yi seçin.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Ilke sayfasında düzeltme ' yi seçin" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Ilke sayfasındaki düzeltme düğümünün ekran görüntüsü." border="false":::
 
-1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Uyumlu olmayan kaynaklarla bir ilkeye tıklayın. **Yeni düzeltme görev** sayfası açılır.
+1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Uyumlu olmayan kaynaklarla bir ilke seçin. **Yeni düzeltme görev** sayfası açılır.
 
    > [!NOTE]
-   > **Düzeltme görevi** sayfasını açmak için alternatif bir yol, **Uyumluluk** sayfasında Ilkeyi bulup tıklattıktan sonra **Düzeltme görevi oluştur** düğmesine tıklamanız gerekir.
+   > **Düzeltme görevi** sayfasını açmak için alternatif bir yol, **Uyumluluk** sayfasında ilkeyi bulup seçmek ve sonra **Düzeltme görevi oluştur** düğmesini seçmesidir.
 
 1. **Yeni düzeltme görevi** sayfasında, ilkenin atandığı alt kaynakları (tek tek kaynak nesneleri dahil) seçmek için **kapsam** üç noktayı kullanarak düzeltmek üzere kaynakları filtreleyin. Ayrıca, kaynakları daha fazla filtrelemek için **konumlar açılan konumlarını** kullanın. Yalnızca tabloda listelenen kaynaklar düzeltilmeyecektir.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Düzelt-hangi kaynakların düzeltileceği seçin" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Düzeltme düğümünün ve düzeltileceği kaynak kılavuzunun ekran görüntüsü." border="false":::
 
-1. Kaynaklar filtrelendikten sonra düzeltme görevini başlatmak için **Düzelt**'e tıklayın. İlke uyumluluğu sayfası, görev ilerleme durumunun durumunu göstermek için **Düzeltme görevleri** sekmesinde açılır. Düzeltme görevi tarafından oluşturulan dağıtımlar hemen başlar.
+1. Kaynaklar, düzeltme ' i seçerek filtrelendiğinde, düzeltme görevini başlatın **.** İlke uyumluluğu sayfası, görev ilerleme durumunun durumunu göstermek için **Düzeltme görevleri** sekmesinde açılır. Düzeltme görevi tarafından oluşturulan dağıtımlar hemen başlar.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Düzeltme görevlerinin ilerlemesini düzelt" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Düzeltme görevleri sekmesinin ve mevcut düzeltme görevlerinin ilerleme durumunun ekran görüntüsü." border="false":::
 
-1. İlerleme hakkındaki ayrıntıları almak için ilke uyumluluğu sayfasından **Düzeltme görevi** ' ne tıklayın. Görev için kullanılan filtreleme, düzeltilen kaynakların bir listesi ile birlikte gösterilir.
+1. İlerleme hakkındaki ayrıntıları almak için ilke uyumluluğu sayfasından **Düzeltme görevi** ' ni seçin. Görev için kullanılan filtreleme, düzeltilen kaynakların bir listesi ile birlikte gösterilir.
 
-1. Düzeltme **görevi** sayfasında, düzeltme görevinin dağıtımını ya da kaynağını görüntülemek için bir kaynağa sağ tıklayın. Bir hata iletisi gibi ayrıntıları görmek için satırın sonunda **ilgili olaylar** ' a tıklayın.
+1. Düzeltme **görevi** sayfasında, düzeltme görevinin dağıtımını ya da kaynağını görüntülemek için bir kaynağa sağ tıklayın. Bir hata iletisi gibi ayrıntıları görmek için satırın sonunda **ilgili olaylar** ' ı seçin.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Düzelt-kaynak görev bağlam menüsü" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Görevi Düzelt sekmesindeki bir kaynağın bağlam menüsünün ekran görüntüsü." border="false":::
 
 Bir **Düzeltme görevi** aracılığıyla dağıtılan kaynaklar, ilke uyumluluğu sayfasındaki **dağıtılan kaynaklar** sekmesine eklenir.
 

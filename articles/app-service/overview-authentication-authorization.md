@@ -1,17 +1,17 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962834"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596048"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -149,11 +149,11 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-[Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)  
-[Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-App Service kimlik doğrulaması [ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md) 
- [Azure AppService EasyAuth (3. taraf)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
- .NET Core tümleştirmesi [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)  
+* [Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md)
+* [Azure AppService EasyAuth (3. taraf) .NET Core tümleştirmesi](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 

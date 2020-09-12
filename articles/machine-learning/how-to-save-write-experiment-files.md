@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: df254e0766a755754aabcfb8c98a8c140b43cb20
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144048"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650848"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ Bir [işlem hedefi](concept-compute-target.md)üzerinde eğitim çalıştırmala
 
 Bir işlem hedefi veya yerel makinenizde bir deneme başlamadan önce, kodunuzun çalışması gereken bağımlılık dosyaları ve veri dosyaları gibi gerekli dosyaların bu işlem hedefi için kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)kullanarak verilerinize erişin.
+Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)kullanarak verilerinize erişin.
 
 Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
 
 Bu nedenle şunları öneririz:
 
-* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
+* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
 
 * **Yalnızca birkaç veri dosyası ve bağımlılık betiklerine Ihtiyacınız varsa ve bir veri deposu kullanamaz,** dosyaları eğitim betiğinizle aynı klasör dizinine yerleştirin. Bu klasörü `source_directory` doğrudan eğitim betiğinizdeki veya eğitim betiğinizi çağıran kodda belirtin.
 
@@ -57,7 +57,7 @@ Deneme &nbsp; açıklaması|Depolama sınırı çözümü
 ---|---
 2000 'den az dosya & veri deposu kullanamaz| Anlık görüntü boyutu sınırını geçersiz kıl <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Bu işlem, dosyaların sayısına ve boyutuna bağlı olarak birkaç dakika sürebilir.
 Belirli komut dosyası dizini kullanılmalıdır| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
-İşlem hattı|Her adım için farklı bir alt dizin kullanın
+İşlem Hattı|Her adım için farklı bir alt dizin kullanın
 Jupyter Notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş bir alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
 
 ## <a name="where-to-write-files"></a>Dosyaların yazılacağı yer

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013648"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613753"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
@@ -28,8 +28,8 @@ Aşağıdaki görüntüler, farklı yüzeylerin yalnızca gök dokuyla aydınlat
 
 | Kablık  | 0                                        | 0.25                                          | 0.5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Metal olmayan  | ![Dielectric0](media/dielectric-0.png)   | ![Yeşilpointpark](media/dielectric-0.25.png)  | ![Yeşilpointpark](media/dielectric-0.5.png)  | ![Yeşilpointpark](media/dielectric-0.75.png)  | ![Yeşilpointpark](media/dielectric-1.png)  |
-| Metal      | ![Yeşilpointpark](media/metallic-0.png)  | ![Yeşilpointpark](media/metallic-0.25.png)    | ![Yeşilpointpark](media/metallic-0.5.png)    | ![Yeşilpointpark](media/metallic-0.75.png)    | ![Yeşilpointpark](media/metallic-1.png)    |
+| Metal olmayan  | ![Dielektrik, Kablık = 0](media/dielectric-0.png)   | ![Dielektrik, Kablık = 0,25](media/dielectric-0.25.png)  | ![Dielektrik, Kablık = 0,5](media/dielectric-0.5.png)  | ![Dielektrik, Kablık = 0.75](media/dielectric-0.75.png)  | ![Dielektrik, Kablık = 1](media/dielectric-1.png)  |
+| Metal      | ![Metal, Kablık = 0](media/metallic-0.png)  | ![Metal, Kablık = 0,25](media/metallic-0.25.png)    | ![Metal, Kablık = 0,5](media/metallic-0.5.png)    | ![Metal, Kablık = 0.75](media/metallic-0.75.png)    | ![Metal, Kablık = 1](media/metallic-1.png)    |
 
 Aydınlatma modeli hakkında daha fazla bilgi için bkz. [malzemeler](../../concepts/materials.md) bölümü.
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -119,22 +119,27 @@ Bir 2B dokusunu ortam haritası olarak kullanırken, görüntünün [küresel ko
 
 Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam haritası sağlar. Tüm yerleşik ortam haritaları cubemaps.
 
-|Tanımlayıcı                         | Açıklama                                              | Göstermektedir                                                      |
+|Tanımlayıcı                         | Description                                              | Göstermektedir                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Çeşitli Stripe ışıkları, parlak kapılı taban aydınlatma    | ![Oto Mağazası](media/autoshop.png)
-|builtin://BoilerRoom               | Parlak kapılı ışık ayarı, birden çok pencere ışıkları      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Orta hafif inkapılı varyingly renkli ışıklar  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Orta parlak çevresel salonu ışığı                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Açık Koyu karşıtlıklı karartma ınkapı ayarı              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Gündüz ortam odası ışığı, parlak pencere alanı ışığı     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Çok sayıda ışığı içeren koyu gece gök ve zemin   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Parlak güneş ve gölge karşıtlığı                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Orta zemin aydınlatma ile gök ışığı temizle            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Orta derecede değişen güneş ve gölge                         | ![Tearsofsteelköprüsü](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Akşam günlü ışığı, alacak                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Parlak, Lush-yeşil ve beyaz açık ton, soluk zemin | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Parlak çevresel zemin ışığı ile gündüz                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | TearsOfSteelBridge ile aynı                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Çeşitli Stripe ışıkları, parlak kapılı taban aydınlatma    | ![Bir nesneyi aydınlatmak için kullanılan Oto Shop ufuk kutusu](media/autoshop.png)
+|builtin://BoilerRoom               | Parlak kapılı ışık ayarı, birden çok pencere ışıkları      | ![BoilerRoom ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/boiler-room.png)
+|builtin://ColorfulStudio           | Orta hafif inkapılı varyingly renkli ışıklar  | ![Bir nesneyi aydınlatmak için kullanılan ColorfulStudio ufuk kutusu](media/colorful-studio.png)
+|builtin://Hangar                   | Orta parlak çevresel salonu ışığı                     | ![Bir nesneyi aydınlatmak için kullanılan SmallHangar ufuk kutusu](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Açık Koyu karşıtlıklı karartma ınkapı ayarı              | ![IndustrialPipeAndValve ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Gündüz ortam odası ışığı, parlak pencere alanı ışığı     | ![Lebombo ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/lebombo.png)
+|builtin://SataraNight              | Çok sayıda ışığı içeren koyu gece gök ve zemin   | ![SataraNight ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/satara-night.png)
+|builtin://SunnyVondelpark          | Parlak güneş ve gölge karşıtlığı                      | ![Bir nesneyi aydınlatmak için kullanılan SunnyVondelpark ufuk kutusu](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Orta zemin aydınlatma ile gök ışığı temizle            | ![Bir nesneyi aydınlatmak için kullanılan syferfonteın ufuk kutusu](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Orta derecede değişen güneş ve gölge                         | ![Bir nesneyi aydınlatmak için kullanılan TearsOfSteelBridge ufuk kutusu](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Akşam günlü ışığı, alacak                    | ![Bir nesneyi aydınlatmak için kullanılan VeniceSunset ufuk kutusu](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Parlak, Lush-yeşil ve beyaz açık ton, soluk zemin | ![WhippleCreekRegionalPark ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Parlak çevresel zemin ışığı ile gündüz                 | ![Bir nesneyi aydınlatmak için kullanılan WinterRiver ufuk kutusu](media/winter-river.png)
+|builtin://DefaultSky               | TearsOfSteelBridge ile aynı                               | ![Bir nesneyi aydınlatmak için kullanılan DefaultSky ufuk kutusu](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# RemoteManager. ufuk Reflectionsettings özelliği](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: ufuk Reflectionsettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

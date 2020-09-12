@@ -3,14 +3,12 @@ title: Statik giden IP 'yi yapılandırma
 description: Giriş ve çıkış için güvenlik duvarının genel IP adresini kullanan Azure Container Instances iş yükleri için Azure Güvenlik duvarını ve Kullanıcı tanımlı yolları yapılandırma
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023713"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566577"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Bir kapsayıcı grubuna giden ve gelen trafik için tek bir genel IP adresi yapılandırın
 

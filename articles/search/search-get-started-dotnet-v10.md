@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002445"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462097"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
 
@@ -27,12 +27,12 @@ Yeni çözümler için yeni Azure.Search.Documlar kitaplığını öneririz. Gir
 
 C# ' de Visual Studio ve [Microsoft. Azure. Search istemci kitaplıklarını](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturun. 
 
-Bu makalede, uygulamasının nasıl oluşturulacağı açıklanmaktadır. Ayrıca [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10).
+Bu makalede, uygulamasının nasıl oluşturulacağı açıklanmaktadır. Ayrıca [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10).
 
 > [!NOTE]
 > Bu makaledeki tanıtım kodu, basitlik için Azure Bilişsel Arama sürüm 10 .NET SDK 'sının zaman uyumlu yöntemlerini kullanır. Ancak, üretim senaryolarında bunları ölçeklenebilir ve hızlı bir şekilde korumak için kendi uygulamalarınızda zaman uyumsuz yöntemleri kullanmanızı öneririz. Örneğin, ve `CreateAsync` yerine ve kullanabilirsiniz `DeleteAsync` `Create` `Delete` .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -107,9 +107,9 @@ Bu adım, konsolda anlamlı bir çıktı üretmek için gereklidir. Sonuçlar ko
 
 1. Projenize iki boş sınıf tanımı ekleyin: Address.Methods.cs, Hotel.Methods.cs
 
-1. Address.Methods.cs ' de, varsayılan içeriğin üzerine aşağıdaki kodu, 1-25. [satırları](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)yazın.
+1. Address.Methods.cs ' de, varsayılan içeriğin üzerine aşağıdaki kodu, 1-25. [satırları](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)yazın.
 
-1. Hotel.Methods.cs ' de, [1-68 satırlarını](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)kopyalayın.
+1. Hotel.Methods.cs ' de, [1-68 satırlarını](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)kopyalayın.
 
 ## <a name="1---create-index"></a>1-Dizin oluşturma
 

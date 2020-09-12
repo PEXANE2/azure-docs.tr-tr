@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006304"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506636"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -41,7 +41,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |204 Içerik yok     |         |  Hiçbir içerik döndürülmeden Tamam      |
 |202 kabul edildi     |         |     Kabul edildi    |
@@ -104,7 +104,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-to-get-operation"></a>İşlemin yanıtlarını al
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       Tamam |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Korumalı bir öğe oluşturmak için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Korunabilir kaynak özellikleri         |
 
@@ -208,7 +208,7 @@ Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](../azure-re
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |    [Korunabilir kaynak](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  Tamam       |
 |202 kabul edildi     |         |     Kabul edildi    |
@@ -274,6 +274,35 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 Bu, korumanın VM için etkinleştirildiğini ve ilk yedeklemenin ilke zamanlaması uyarınca tetikleneceğini onaylar.
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Azure VM yedeklemesinde diskler dışarıda
+
+Azure Backup Ayrıca, Azure VM 'de bir disk alt kümesini seçmeli olarak yedeklemenin bir yolunu sağlar. Daha fazla ayrıntı [burada](selective-disk-backup-restore.md)verilmiştir. Korumayı etkinleştirme sırasında birkaç diski seçmeli olarak yedeklemek istiyorsanız, korumayı etkinleştirmek için aşağıdaki kod parçacığının [İstek gövdesi](#example-request-body)olması gerekir.
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+Yukarıdaki istek gövdesinde, yedeklenecek disklerin listesi Genişletilmiş Özellikler bölümünde verilmiştir.
+
+|Özellik  |Değer  |
+|---------|---------|
+|diskLunList     | Disk LUN listesi, *veri disklerinin LUN*'ların bir listesidir. **Işletim sistemi diski her zaman yedeklenir ve Bahsedilmek zorunda**değildir.        |
+|Ibılıst ıonlist     | LUN 'ların yedekleme sırasında dahil edilecek şekilde **doğru** olması gerekir. **Yanlış**ise, belirtilen LUN 'lar dışarıda bırakılır.         |
+
+Bu nedenle, gereksinim yalnızca işletim sistemi diskini yedeklemenizin, _Tüm_ veri disklerinin dışlanması gerekir. Daha kolay bir yol, hiçbir veri diski dahil edilmemelidir. Bu nedenle, disk LUN listesi boş olacak ve **ıbıary ıonlist** **doğru**olacaktır. Benzer şekilde, bir alt küme seçmenin ne kadar kolay olduğunu düşünün: birkaç disk her zaman dışlanmalı veya birkaç disk her zaman eklenmelidir. LUN listesini ve Boole değişkeni değerini uygun şekilde seçin.
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Korumalı bir Azure VM için isteğe bağlı yedekleme tetikleyin
 
 Yedekleme için bir Azure VM yapılandırıldıktan sonra yedeklemeler, ilke zamanlamaya göre gerçekleşir. Zamanlanan ilk yedeklemeyi bekleyebilir veya dilediğiniz zaman bir isteğe bağlı yedekleme tetikleyebilirsiniz. İsteğe bağlı yedeklemeler için bekletme, yedekleme ilkesinin saklama alanından ayrıdır ve belirli bir tarih-saat için belirtilebilir. Belirtilmemişse, isteğe bağlı yedekleme tetikleyicisinin günüyle 30 gün olduğu varsayılır.
@@ -294,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | [Iaasvmbackuprequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource özellikleri         |
 
@@ -319,7 +348,7 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Kabul edildi    |
 
@@ -389,7 +418,7 @@ Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge 
 
 VM 'nin koruduğu ilkeyi değiştirmek için, [Korumayı etkinleştirme](#enabling-protection-for-the-azure-vm)ile aynı biçimi kullanabilirsiniz. [İstek gövdesinde](#example-request-body) yenı ilke kimliğini sağlamanız ve isteği göndermesi yeterlidir. Örneğin: testVM ilkesini ' DefaultPolicy ' iken ' ProdPolicy ' olarak değiştirmek Için, istek gövdesinde ' ProdPolicy ' KIMLIĞINI sağlayın.
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ VM 'nin koruduğu ilkeyi değiştirmek için, [Korumayı etkinleştirme](#enabli
 ```
 
 Yanıt, [korumayı etkinleştirmek için](#responses-to-create-protected-item-operation) belirtilen biçimde olacaktır
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Azure VM koruması sırasında diskleri dışlama
+
+Azure VM zaten yedeklendiyse, koruma ilkesini değiştirerek yedeklenecek veya dışlanacak disklerin listesini belirtebilirsiniz. Aynı biçimde, [Korumayı etkinleştirme sırasında diskleri dışlayarak](#excluding-disks-in-azure-vm-backup) aynı biçimde hazırlamanız yeterlidir
+
+> [!IMPORTANT]
+> Yukarıdaki istek gövdesi her zaman, dışlanacak veya dahil edilecek veri disklerinin son kopyasıdır. Bu, önceki yapılandırmaya *eklemez* . Örneğin: korumayı ilk olarak "veri diski 1 hariç tut" olarak güncelleştirip "veri diski hariç tut" ile tekrarlarsanız, sonraki yedeklemelerde *yalnızca veri diski 2 hariç tutulur* ve veri diski 1 dahil edilir. Bu, sonraki yedeklemelere dahil edilecek/hariç tutulacak her zaman son liste olur.
+
+Dışlanan veya dahil edilen disklerin güncel listesini almak için [burada](https://docs.microsoft.com/rest/api/backup/protecteditems/get)bahsedilen korumalı öğe bilgilerini alın. Yanıt, veri diski LUN 'Ları listesini sağlar ve dahil edilip edilmediğini belirtir.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Korumayı durdurun, ancak mevcut verileri koruyun
 
@@ -439,7 +477,7 @@ Korumayı *silme* [işlemi zaman uyumsuz bir işlemdir](../azure-resource-manage
 
 Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 204 (NoContent) olarak iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 kabul edildi     |         |     Kabul edildi    |

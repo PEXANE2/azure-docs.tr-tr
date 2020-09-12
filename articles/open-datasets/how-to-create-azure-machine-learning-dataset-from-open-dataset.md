@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998084"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461519"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Azure açık veri kümeleri, tahmine dayalı çözümlerinizi zenginleştirmek v
 Açık veri kümeleri bulutta Microsoft Azure ve hem [Azure Machine Learning Python SDK](#create-datasets-with-the-sdk) hem de [Azure Machine Learning Studio](#create-datasets-with-the-studio)'ya dahil edilmiştir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede şunlar gerekir:
 
@@ -111,7 +111,7 @@ Ayrıca, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bili
 
     ![Veri kümesi seçin](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, **genel tatiller** veri kümesi için zaman aralığını bir yıla, ülke kodunu Ise yalnızca bizimle filtreleyerek filtreleyebilirsiniz. Alan açıklamaları ve tarih aralıkları gibi veri ayrıntıları için [Azure açık veri kümeleri kataloğuna](https://azure.microsoft.com/services/op[en-datasets/catalog/) bakın. **Oluştur**’u seçin.
+1. Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, **genel tatiller** veri kümesi için zaman aralığını bir yıla, ülke kodunu Ise yalnızca bizimle filtreleyerek filtreleyebilirsiniz. Alan açıklamaları ve tarih aralıkları gibi veri ayrıntıları için [Azure açık veri kümeleri kataloğuna](https://azure.microsoft.com/services/open-datasets/catalog) bakın. **Oluştur**’u seçin.
 
     ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

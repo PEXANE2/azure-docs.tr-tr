@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806488"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595953"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway App Service sorunlarını giderme
 
@@ -23,9 +23,8 @@ Azure App Service Azure Application Gateway ile arka uç hedefi olarak kullanıl
 
 Bu makalede, aşağıdaki sorunları nasıl giderebileceğinizi öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Uygulama Hizmeti URL 'SI, yeniden yönlendirme olduğunda tarayıcıda gösterilir.
-> * App Service ARRAffinity tanımlama bilgisi etki alanı, özgün ana bilgisayar yerine App Service ana bilgisayar adı, example.azurewebsites.net olarak ayarlanır.
+* Uygulama Hizmeti URL 'SI, yeniden yönlendirme olduğunda tarayıcıda gösterilir.
+* App Service ARRAffinity tanımlama bilgisi etki alanı, özgün ana bilgisayar yerine App Service ana bilgisayar adı, example.azurewebsites.net olarak ayarlanır.
 
 Bir arka uç uygulaması yeniden yönlendirme yanıtı gönderdiğinde, istemciyi arka uç uygulaması tarafından belirtilene göre farklı bir URL 'ye yönlendirmek isteyebilirsiniz. Bir uygulama hizmeti bir uygulama ağ geçidinin arkasında barındırılıyorsa ve istemcinin göreli yoluna yeniden yönlendirme yapması için bunu yapmak isteyebilirsiniz. Örnek, contoso.azurewebsites.net/path1 ile contoso.azurewebsites.net/path2 arasında bir yönlendirme örneğidir. 
 

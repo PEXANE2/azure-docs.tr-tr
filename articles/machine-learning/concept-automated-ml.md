@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652109"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658561"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -118,7 +118,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -174,7 +174,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. Bu özelliklerden bazıları yalnızca bir kurumsal çalışma alanında kullanılabilir.
 
-| Özellik                                                    | Uzak | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
+| Öne çıkan özelliği                                                    | Uzak | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | ✓                             |
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       | ✓                             |
@@ -204,9 +204,9 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
 ## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 'de oto ml
 
-Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar
+Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar:
 
-* Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
 
 * Sınırlı/kod deneyimi müşterileri için Azure Machine Learning Studio [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,9 +289,9 @@ Nasıl yapılır makaleleri, oto ml 'nin sunduğu işlevselliğe ek ayrıntı sa
 
 [Otomatik makine öğrenimi örnekleri Için GitHub Not defteri deposundaki](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)ayrıntılı kod örneklerini ve kullanım örneklerini gözden geçirin.
 
-### <a name="python-sdk-reference"></a>Python SDK başvurusu 
+### <a name="python-sdk-reference"></a>Python SDK başvurusu
 
-SDK Tasarım desenlerinin ve sınıf belirtimlerinizin uzmanlığınızı, [oto ml sınıfı başvuru belgeleriyle](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)deden çıkarır. 
+SDK Tasarım desenlerinin ve sınıf belirtimlerinizin uzmanlığınızı, [oto ml sınıfı başvuru belgeleriyle](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)deden çıkarır. 
 
 > [!Note]
 > Otomatik makine öğrenimi özellikleri, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) ve [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) gibi diğer Microsoft çözümlerinde de mevcuttur

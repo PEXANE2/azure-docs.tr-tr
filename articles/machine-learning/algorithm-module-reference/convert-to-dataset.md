@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456599"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646251"
 ---
 # <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
 
@@ -35,13 +35,13 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
 
 2. Veri kümesini çıkaran herhangi bir modüle bağlayın.   
 
-    Veriler [tablosal](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)olduğu sürece, veri kümesine dönüştürebilirsiniz. Bu, verileri [Içeri aktarma](import-data.md)yoluyla yüklenen verileri, [verileri el ile girerek](enter-data-manually.md)oluşturulan verileri veya [Dönüşüm uygulama](apply-transformation.md)aracılığıyla dönüştürülmüş veri kümelerini içerir.
+    Veriler [tablosal](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)olduğu sürece, veri kümesine dönüştürebilirsiniz. Bu, verileri [Içeri aktarma](import-data.md)yoluyla yüklenen verileri, [verileri el ile girerek](enter-data-manually.md)oluşturulan verileri veya [Dönüşüm uygulama](apply-transformation.md)aracılığıyla dönüştürülmüş veri kümelerini içerir.
 
 3.  **Eylem** açılan listesinde, veri kümesini kaydetmeden önce verilerde temizlik yapmak istediğinizi belirtin:  
   
     - **Hiçbiri**: verileri olduğu gibi kullanın.  
   
-    - **Setmissingvalue**: veri kümesindeki eksik bir değere belirli bir değer ayarlayın. Varsayılan yer tutucu, soru işareti karakteridir (?), ancak farklı bir değer girmek için **özel eksik değer** seçeneğini kullanabilirsiniz. Örneğin, **özel eksik değer**Için **TAXI** girerseniz, veri kümesindeki tüm **TAXI** örnekleri eksik değere değiştirilir.
+    - **Setmissingvalue**: veri kümesindeki eksik bir değere belirli bir değer ayarlayın. Varsayılan yer tutucu, soru işareti karakteridir (?), ancak farklı bir değer girmek için  **özel eksik değer** seçeneğini kullanabilirsiniz. Örneğin, **özel eksik değer**Için **TAXI** girerseniz, veri kümesindeki tüm **TAXI** örnekleri eksik değere değiştirilir.
   
     - **Replacevalues**: başka bir tam değer ile değiştirilmeleri için tek bir tam değer belirtmek için bu seçeneği kullanın. Eksik değerleri veya özel değerleri **değiştirme** yöntemini ayarlayarak değiştirebilirsiniz:
 

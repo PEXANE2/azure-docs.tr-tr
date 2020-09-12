@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71122739"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460125"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Başlayamayabilir bulut hizmeti rollerinin sorunlarını giderme
 İşte başlayamamasının başarısız olduğu Azure Cloud Services rolleriyle ilgili bazı yaygın sorunlar ve çözümler aşağıda verilmiştir.
@@ -77,7 +77,7 @@ Web sitesine gidildiğinde artık daha açık hata iletileri geri alınacaktır:
 * Açıklama: geçerli Web isteğinin yürütülmesi sırasında işlenmeyen bir özel durum oluştu. Hata ve kodun kaynaklandığı yer hakkında daha fazla bilgi için lütfen yığın izlemesini gözden geçirin.
 * Özel durum ayrıntıları: System. ıO. FIleNotFoundException: dosya veya derleme ' Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor.
 
-Örnek:
+Örneğin:
 
 !['/' Uygulamasında açık sunucu hatası](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -124,4 +124,4 @@ Tüm hataların düzeltilmediğini doğruladıktan sonra, **.NET 4 rolleri Için
 ## <a name="next-steps"></a>Sonraki adımlar
 Cloud Services için daha fazla [sorun giderme makalesini](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) görüntüleyin.
 
-Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme hakkında bilgi edinmek için bkz. [Kevin Williamson 'ın blog serisi](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme hakkında bilgi edinmek için bkz. [Kevin Williamson 'ın blog serisi](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

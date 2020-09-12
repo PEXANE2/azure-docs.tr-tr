@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 399689f3f7d07a6e77128037be6b7439e7bf5184
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88960029"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646609"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -80,7 +80,7 @@ Ağ Geçidi için gerekli VNet tümleştirmesini kullanamazsınız:
 
 Bir ağ geçidi oluşturmak için:
 
-1. Sanal ağınız için [bir ağ geçidi alt ağı oluşturun][creategatewaysubnet] .  
+1. Sanal ağınız için [bir ağ geçidi alt ağı oluşturun][creategatewaysubnet] .
 
 1. [VPN ağ geçidini oluşturun][creategateway]. Rota tabanlı VPN türü seçin.
 
@@ -102,8 +102,8 @@ Bölgesel VNet tümleştirme özelliğinin VNet 'iniz aracılığıyla şirket i
 
 > [!NOTE]
 > Ağ Geçidi gerekli VNet tümleştirme özelliği, bir uygulamayı ExpressRoute ağ geçidi olan bir VNet ile tümleştirmez. ExpressRoute ağ geçidi, birlikte [bulunma modunda][VPNERCoex]yapılandırılmış olsa bile, VNET tümleştirmesi çalışmaz. Bir ExpressRoute bağlantısı aracılığıyla kaynaklara erişmeniz gerekiyorsa, bölgesel VNet tümleştirme özelliğini veya VNet 'iniz üzerinde çalışan bir [App Service ortamı][ASE]kullanın.
-> 
-> 
+>
+>
 
 ### <a name="peering"></a>Eşleme
 
@@ -177,26 +177,27 @@ Bölgesel VNet tümleştirmesi için PowerShell desteği çok fazla kullanılabi
 
 ```azurepowershell
 # Parameters
-$sitename="myWebApp"
-$resourcegroupname="myRG"
-$VNetname="myVNet"
-$location="myRegion"
-$integrationsubnetname = "myIntegrationSubnet"
-$subscriptionID = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+$sitename = 'myWebApp'
+$resourcegroupname = 'myRG'
+$VNetname = 'myVNet'
+$location = 'myRegion'
+$integrationsubnetname = 'myIntegrationSubnet'
+$subscriptionID = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
 
 #Property array with the SubnetID
 $properties = @{
-      "subnetResourceId" = "/subscriptions/"+$subscriptionID+"/resourceGroups/"+$resourcegroupname+"/providers/Microsoft.Network/virtualNetworks/"+$VNetname+"/subnets/"+$integrationsubnetname;
-      }
-      
-#Creation of the VNet integration
-$resourceID = $sitename+"/VirtualNetwork"
-New-AzResource -ResourceName $resourceID `
--Location $location  `
--ResourceGroupName $resourcegroupname `
--ResourceType Microsoft.Web/sites/networkConfig `
--PropertyObject $properties 
+  subnetResourceId = "/subscriptions/$subscriptionID/resourceGroups/$resourcegroupname/providers/Microsoft.Network/virtualNetworks/$VNetname/subnets/$integrationsubnetname"
+}
 
+#Creation of the VNet integration
+$vNetParams = @{
+  ResourceName = "$sitename/VirtualNetwork"
+  Location = $location
+  ResourceGroupName = $resourcegroupname
+  ResourceType = 'Microsoft.Web/sites/networkConfig'
+  PropertyObject = $properties
+}
+New-AzResource @vNetParams
 ```
 
 

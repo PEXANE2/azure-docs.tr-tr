@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478017"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535781"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
@@ -45,7 +45,7 @@ Uygulamanızın hizmet koşulları ve gizlilik bildirimi belgeleri için bağlan
 | Geçerli şemalar | HTTP ve HTTPS<br/>HTTPS önerilir |
 | Uzunluk üst sınırı    | 2048 karakter                       |
 
-Örnekler: `https://myapp.com/terms-of-service` ve`https://myapp.com/privacy-statement`
+Örnekler: `https://myapp.com/terms-of-service` ve `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hizmet koşullarına ve gizlilik bildirimine bağlantılar ekleme
 
@@ -58,7 +58,7 @@ Hizmet koşulları ve gizlilik bildirimi hazırlandığı zaman, aşağıdaki y�
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portalını kullanma
 Azure portal aşağıdaki adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın, doğru azuread KIRACıSı (B2C değil) seçin.
 2. **Uygulama kayıtları** bölümüne gidin ve uygulamanızı seçin.
 3. **Marka** bölmesini açın.
 4. **Hizmet koşulları URL 'sini** ve **Gizlilik bildirimi URL 'si** alanlarını doldurun.
@@ -69,6 +69,11 @@ Azure portal aşağıdaki adımları izleyin.
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>JSON uygulama nesnesini kullanma
 
 JSON uygulama nesnesini doğrudan değiştirmeyi tercih ediyorsanız, uygulamanızın hizmet koşullarına ve gizlilik bildirimine yönelik bağlantıları dahil etmek için Azure portal veya uygulama kayıt portalındaki bildirim düzenleyicisini kullanabilirsiniz.
+
+1. **Uygulama kayıtları** bölümüne gidip uygulamanızı seçin.
+2. **Bildirim** bölmesini açın.
+3. CTRL + F, "ınformationalurls" araması yapın. Bilgileri girin.
+4. Yaptığınız değişiklikleri kaydedin.
 
 ```json
     "informationalUrls": { 
@@ -96,5 +101,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Bu alanlardan birine atadığınız önceden varolan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl` , `marketingUrl` ve`logoUrl`
+> * Bu alanlardan birine atadığınız önceden varolan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl` , `marketingUrl` ve `logoUrl`
 > * Microsoft Graph API yalnızca bir Azure AD hesabıyla oturum açtığınızda işe yarar. Kişisel Microsoft hesapları desteklenmez.

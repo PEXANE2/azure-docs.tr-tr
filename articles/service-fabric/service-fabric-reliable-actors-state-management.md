@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007800"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611715"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors durum yönetimi
 Reliable Actors hem mantığı hem de durumu kapsüllemek için tek iş parçacıklı nesnelerdir. Aktör Reliable Services çalıştığı için, aynı kalıcılık ve çoğaltma mekanizmalarını kullanarak durumu güvenilir bir şekilde koruyabilirler. Bu şekilde, aktörler hatalardan sonra, çöp toplamadan sonra yeniden etkinleştirme sonrasında veya kaynak Dengeleme ya da yükseltmeler nedeniyle bir kümedeki düğümler arasında taşındıktan sonra durumlarını kaybeder.
@@ -115,7 +115,7 @@ Bu, uygulamanızın performans ve kaynak kullanımı açısından önemlidir. Bi
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Aktörün yaşam döngüsünü doğru bir şekilde yönetin
 Aktör hizmetinin her bölümünde durum boyutunu yönetme hakkında açık ilkeniz olmalıdır. Aktör hizmetiniz sabit sayıda aktör içermelidir ve bunları mümkün olduğunca yeniden kullanır. Sürekli olarak yeni aktör oluşturuyorsanız, işleri ile işiniz bittiğinde silmeniz gerekir. Aktör çerçevesi, var olan her aktör hakkında bazı meta verileri depolar. Bir aktörün tüm durumunun silinmesi, bu aktör hakkındaki meta verileri kaldırmaz. Sistemde depolanan tüm bilgileri kaldırmak için aktör ( [aktörlerin ve bunların durumunu silme](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)konusuna bakın) silmeniz gerekir. Ek bir denetim olarak, aktör sayısının beklenen aralıkta olduğundan emin olmak için aktör hizmetini (bkz. [aktörleri numaralandırma](service-fabric-reliable-actors-enumerate.md)) bir kez sorgulayın.
  
-Bir aktör hizmetinin veritabanı dosyası boyutunun beklenen boyutun ötesinde arttığını görürseniz, yukarıdaki yönergeleri takip ettiğinizden emin olun. Bu yönergeleri takip ediyorsanız ve hala veritabanı dosya boyutu sorunları yaşıyorsanız, yardım almak için ürün ekibine [bir destek bileti açmanız](service-fabric-support.md) gerekir.
+Bir aktör hizmetinin veritabanı dosyası boyutunun beklenen boyutun ötesinde arttığını görürseniz, yukarıdaki yönergeleri takip ettiğinizden emin olun. Bu yönergeleri takip ediyorsanız ve veritabanı dosya boyutu sorunları yaşamaya devam ediyorsanız, yardım almak için ürün ekibine [bir destek bileti açmanız](service-fabric-support.md) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

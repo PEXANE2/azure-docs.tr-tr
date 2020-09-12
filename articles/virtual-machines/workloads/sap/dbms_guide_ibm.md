@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649621"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461970"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -56,7 +56,8 @@ Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için
 ### <a name="storage-configuration"></a>Depolama Yapılandırması
 SAP iş yükü için Azure Depolama türleri 'ne genel bakış için [Azure depolama TÜRLERI SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) yükleri makalesine başvurun. tüm veritabanı dosyaları Azure blok depolama 'nın bağlı disklerinde depolanmalıdır (Windows: NFFS, Linux: XFS, ext4 veya ext3). Aşağıdaki Azure hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
 
-* [Microsoft Azure dosya hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure dosya hizmeti](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskleri kullanarak, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için önemli noktalara](dbms_guide_general.md) yapılan DEYIMLER DB2 DBMS ile dağıtımlar için de geçerlidir.
@@ -71,7 +72,7 @@ Alternatif olarak, birden çok disk üzerinde bir büyük mantıksal cihaz oluş
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Ve dizinleriniz için DB2 depolama yollarını içeren diskler için `sapdata` `saptmp` , 512 kB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md)okunabilir.
 

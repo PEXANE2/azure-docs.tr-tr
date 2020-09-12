@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044252"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613414"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
 
@@ -155,7 +155,7 @@ Azure Resource Manager, Stream Analytics işinizin dağıtımını tamamen otoma
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Stream Analytics işi Power BI çalışma alanınıza erişmesine izin verin
 
-Stream Analytics işi oluşturuldığına göre, bir Power BI çalışma alanına erişim izni verilebilir.
+Stream Analytics işi oluşturuldığına göre, bir Power BI çalışma alanına erişim izni verilebilir. İş erişiminizi aldıktan sonra, kimliğin yayılması için birkaç dakika bekleyin.
 
 ### <a name="use-the-power-bi-ui"></a>Power BI Kullanıcı arabirimini kullanma
 

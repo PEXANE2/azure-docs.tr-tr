@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589053"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658348"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -37,7 +37,7 @@ Sorunsuz SSO ücretsiz bir özelliktir ve Azure AD 'nin bu sürümü kullanabilm
 
 **S: [Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [MICROSOFT Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)sorunsuz SSO bulunabilir mi?**
 
-Azure Kamu Bulutu için sorunsuz SSO vardır. Ayrıntılar için [Azure Kamu 'Nun karma kimlik konularını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)görüntüleyin.
+Azure Kamu Bulutu için sorunsuz SSO vardır. Ayrıntılar için [Azure Kamu 'Nun karma kimlik konularını](./reference-connect-government-cloud.md)görüntüleyin.
 
 **S: `domain_hint` sorunsuz SSO 'nun veya parametre özelliğinden yararlanan uygulamalar nelerdir `login_hint` ?**
 
@@ -62,11 +62,11 @@ Diğer uygulamaların sessiz oturum açma deneyimimizi kullanmasını istiyorsan
 
 **S: `Alternate ID` Kullanıcı adı yerine sorunsuz SSO Desteği `userPrincipalName` ister misiniz?**
 
-Evet. Sorunsuz SSO `Alternate ID` , [burada](how-to-connect-install-custom.md)gösterildiği gibi Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak destekler. Office 365 uygulamalarının hepsi desteklenmez `Alternate ID` . Destek bildirimiyle ilgili uygulamanın belgelerine bakın.
+Evet. Sorunsuz SSO `Alternate ID` , [burada](how-to-connect-install-custom.md)gösterildiği gibi Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak destekler. Tüm Microsoft 365 uygulamaları desteklenmez `Alternate ID` . Destek bildirimiyle ilgili uygulamanın belgelerine bakın.
 
-**S: [Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?**
+**S: [Azure AD JOIN](../devices/overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?**
 
-[Azure AD JOIN](../active-directory-azureadjoin-overview.md) , CIHAZLARı Azure AD 'ye KAYıTLıYSA kullanıcılara SSO sağlar. Bu cihazların etki alanına katılmış olması gerekmez. SSO, *birincil yenileme belirteçleri* veya *prts*'Ler kullanılarak sağlanır ve Kerberos değildir. Kullanıcı deneyimi Windows 10 cihazlarında en iyi şekilde kullanılır. SSO, Microsoft Edge tarayıcısında otomatik olarak gerçekleşir. Ayrıca, tarayıcı uzantısı kullanılarak Chrome üzerinde de kullanılabilir.
+[Azure AD JOIN](../devices/overview.md) , CIHAZLARı Azure AD 'ye KAYıTLıYSA kullanıcılara SSO sağlar. Bu cihazların etki alanına katılmış olması gerekmez. SSO, *birincil yenileme belirteçleri* veya *prts*'Ler kullanılarak sağlanır ve Kerberos değildir. Kullanıcı deneyimi Windows 10 cihazlarında en iyi şekilde kullanılır. SSO, Microsoft Edge tarayıcısında otomatik olarak gerçekleşir. Ayrıca, tarayıcı uzantısı kullanılarak Chrome üzerinde de kullanılabilir.
 
 Kiracınızda Azure AD JOIN ve sorunsuz SSO kullanabilirsiniz. Bu iki özellik tamamlayıcı bir özelliklerdir. Her iki özellik de açıksa, Azure AD birleştirmelerinin SSO 'SU sorunsuz SSO 'dan önceliklidir.
 
@@ -85,7 +85,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    **1. adım. Sorunsuz SSO 'nun etkinleştirildiği AD ormanları listesini alın**
 
-   1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+   1. İlk olarak, [Azure AD PowerShell](/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
@@ -130,7 +130,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    Azure AD Connect çalıştırdığınız şirket içi sunucuda aşağıdaki adımları çalıştırın:
 
-   1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+   1. İlk olarak, [Azure AD PowerShell](/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
@@ -145,7 +145,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    Azure AD Connect kullanarak sorunsuz SSO 'yu devre dışı bıraktığınız takdirde, aşağıdaki görevleri 1 ' den izleyin. Bunun yerine PowerShell kullanarak sorunsuz SSO 'yu devre dışı bırakırsanız, aşağıdaki görev 5 ' e atlayın.
 
-   1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+   1. İlk olarak, [Azure AD PowerShell](/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.

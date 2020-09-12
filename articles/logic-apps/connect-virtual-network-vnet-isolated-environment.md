@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/10/2020
+ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816669"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647551"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -44,7 +44,14 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
   > [!IMPORTANT]
   > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
 
-* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Sanal ağınızın, ortamınızda kaynak oluşturup dağıtmak için gereken dört *boş* alt ağ olması gerekir ve bağlayıcılar ve performans için önbelleğe alma gibi dahili Logic Apps bileşenleri tarafından kullanılır. Alt ağları önceden oluşturabilir veya aynı anda alt ağlar oluşturabilmeniz için ıSE oluşturmanız bitinceye kadar bekleyebilirsiniz. Ancak, alt ağlarınızı oluşturmadan önce [alt ağ gereksinimlerini](#create-subnet)gözden geçirin.
+* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Sanal ağınızın, ortamınızda kaynak oluşturup dağıtmak ve bu iç ve gizli bileşenler tarafından kullanılması için gereken dört *boş* alt ağı olmalıdır:
+
+  * Logic Apps Işlem
+  * İç App Service Ortamı (bağlayıcılar)
+  * İç API Management (bağlayıcılar)
+  * Önbelleğe alma ve performans için iç redin
+  
+  Alt ağları önceden oluşturabilir veya aynı anda alt ağlar oluşturabilmeniz için ıSE oluşturmanız bitinceye kadar bekleyebilirsiniz. Ancak, alt ağlarınızı oluşturmadan önce [alt ağ gereksinimlerini](#create-subnet)gözden geçirin.
 
   > [!IMPORTANT]
   >

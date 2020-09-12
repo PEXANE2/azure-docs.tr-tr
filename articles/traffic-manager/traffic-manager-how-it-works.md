@@ -3,7 +3,7 @@ title: Azure Traffic Manager nasıl çalışacaktır? | Microsoft Docs
 description: Bu makale, Web uygulamalarınızın yüksek performans ve kullanılabilirlik trafiğini Traffic Manager nasıl yönlendirdiğini anlamanıza yardımcı olur
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: rohink
-ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294862"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462641"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager nasıl kullanılır?
 
@@ -62,8 +62,8 @@ Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
     - Traffic Manager sistem durumu denetimleri tarafından belirlendiği şekilde, her uç noktanın geçerli sistem durumu. Daha fazla bilgi için bkz. [Traffic Manager uç nokta izleme](traffic-manager-monitoring.md).
     - Seçilen trafik-yönlendirme yöntemi. Daha fazla bilgi için bkz. [Traffic Manager yönlendirme yöntemleri](traffic-manager-routing-methods.md).
 
-5. Seçilen uç nokta, başka bir DNS CNAME kaydı olarak döndürülür. Bu durumda, contoso-us.cloudapp.net döndürüldüğünü varsayalım.
-6. Ardından, özyinelemeli DNS hizmeti ' cloudapp.net ' etki alanı için ad sunucularını bulur. ' Contoso-us.cloudapp.net ' DNS kaydını istemek için bu ad sunucularıyla iletişim kurar. ABD tabanlı hizmet uç noktasının IP adresini içeren bir DNS ' A ' kaydı döndürülür.
+5. Seçilen uç nokta, başka bir DNS CNAME kaydı olarak döndürülür. Bu durumda, contoso-eu.cloudapp.net döndürüldüğünü varsayalım.
+6. Ardından, özyinelemeli DNS hizmeti ' cloudapp.net ' etki alanı için ad sunucularını bulur. ' Contoso-eu.cloudapp.net ' DNS kaydını istemek için bu ad sunucularıyla iletişim kurar. AB tabanlı hizmet uç noktasının IP adresini içeren bir DNS ' A ' kaydı döndürülür.
 7. Özyinelemeli DNS hizmeti, sonuçları birleştirir ve istemciye tek bir DNS yanıtı döndürür.
 8. İstemci DNS sonuçlarını alır ve verilen IP adresine bağlanır. İstemci, Traffic Manager aracılığıyla değil, doğrudan uygulama hizmeti uç noktasına bağlanır. Bir HTTPS uç noktası olduğundan, istemci gerekli SSL/TLS el sıkışma işlemini gerçekleştirir ve ardından '/Login.aspx ' sayfası için bir HTTP GET isteği oluşturur.
 

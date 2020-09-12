@@ -5,14 +5,14 @@ author: navits09
 ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815428"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646689"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
 
@@ -53,7 +53,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak taslağı ise, [taslak teklifini siler](update-existing-offer.md#delete-a-draft-offer))
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -143,7 +143,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Açıklama
+10. Description
 11. Ekran görüntüleri/videolar
 
 ### <a name="name"></a>Name
@@ -160,7 +160,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795890"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613477"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -29,7 +29,9 @@ Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini ok
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinliği tarafından döndürülebilecek en büyük satır sayısı, en fazla 2 MB boyutunda 5.000. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
+Aşağıdaki veri kaynakları arama etkinliği için desteklenir. 
+
+Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı, boyutu 2 MB 'a kadar destekler. boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -110,7 +112,7 @@ Bu örnekte, işlem hattı iki etkinlik içerir: **arama** ve **kopyalama**. Kop
 Bu örnek yalnızca ilk satır için arama gösterir. Tüm satırları aramak ve sonuçları ForEach etkinliğiyle zincirlemek için [Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama](tutorial-bulk-copy.md)içindeki örneklere bakın.
 
 
-### <a name="pipeline"></a>İşlem hattı
+### <a name="pipeline"></a>İşlem Hattı
 
 - Arama etkinliği, Azure Blob depolama alanındaki bir konuma başvuran **Lookupdataset**öğesini kullanacak şekilde yapılandırılmıştır. Arama etkinliği, SQL tablosunun adını bu konumdaki bir JSON dosyasından okur. 
 - Kopyalama etkinliği, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. **SourceDataset** 'teki **TableName** özelliği, arama etkinliğinin çıktısını kullanacak şekilde yapılandırılmıştır. Kopyalama etkinliği, verileri SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum **Sinkdataset** özelliği tarafından belirtilir. 

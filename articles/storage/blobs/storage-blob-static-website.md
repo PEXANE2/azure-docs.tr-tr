@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432503"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486867"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Depolama'da statik web sitesi barındırma
 
-*$Web*adlı bir depolama kapsayıcısından doğrudan statik IÇERIK (HTML, CSS, JavaScript ve resim dosyaları) hizmeti sağlayabilirsiniz. İçeriğinizi Azure Storage 'da barındırmak, [Azure işlevleri](/azure/azure-functions/functions-overview) ve diğer hizmet olarak platform (PaaS) hizmetlerini içeren sunucusuz mimariler kullanmanıza olanak sağlar.
+*$Web*adlı bir depolama kapsayıcısından doğrudan statik IÇERIK (HTML, CSS, JavaScript ve resim dosyaları) hizmeti sağlayabilirsiniz. İçeriğinizi Azure Storage 'da barındırmak, [Azure işlevleri](/azure/azure-functions/functions-overview) ve diğer hizmet olarak platform (PaaS) hizmetlerini içeren sunucusuz mimariler kullanmanıza olanak sağlar. Azure Storage statik Web sitesi barındırma, bir Web sunucusunun içerik işlemesini gerektirmeyen durumlarda harika bir seçenektir.
+
+[App Service statik Web Apps](https://azure.microsoft.com/services/app-service/static/) , Azure Storage statik Web sitesi barındırma için harika bir alternatiftir ve ayrıca bir Web sunucusunun içerik işlemesini gerektirmeyen durumlarda de uygundur. App Service statik Web Apps, GitHub kaynağından genel dağıtıma kadar tam olarak yönetilen bir sürekli tümleştirme ve sürekli teslim (CI/CD) iş akışı sağlar.
+
+İçerik işlemek için bir Web sunucusuna ihtiyacınız varsa [Azure App Service](https://azure.microsoft.com/services/app-service/)kullanabilirsiniz.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Siteniz sunucu tarafı koduna bağımlıysa bunun yerine [Azure App Service](/azure/app-service/overview) kullanın.
-Genel amaçlı v2 standart depolama hesabı oluşturduğunuzdan emin olun. Statik Web siteleri diğer depolama hesabı türleri için kullanılamaz.
+> Genel amaçlı v2 standart depolama hesabı oluşturduğunuzdan emin olun. Statik Web siteleri diğer depolama hesabı türleri için kullanılamaz.
 
 ## <a name="setting-up-a-static-website"></a>Statik Web sitesi ayarlama
 
@@ -103,6 +106,11 @@ Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/sto
 Üstbilgileri statik Web sitesi özelliğinin bir parçası olarak yapılandırmanın bir yolu yoktur. Ancak üst bilgileri eklemek ve başlık değerlerini eklemek (veya üzerine yazmak) için Azure CDN kullanabilirsiniz. [Azure CDN Için standart kurallar altyapısı başvurusuna](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)bakın.
 
 Önbelleğe almayı denetlemek için üst bilgileri kullanmak istiyorsanız, bkz. önbelleğe alma [kurallarıyla denetim Azure CDN önbelleğe alma davranışı](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+
+## <a name="multi-region-website-hosting"></a>Çok bölgeli Web sitesi barındırma
+
+Bir Web sitesini birden çok coğrafi durumda barındırmak istiyorsanız, bölgesel önbelleğe alma için bir [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) kullanmanızı öneririz. Her bölgede farklı içerik sağlamak istiyorsanız [Azure ön kapısını](https://docs.microsoft.com/azure/frontdoor/) kullanın. Ayrıca yük devretme özellikleri de sağlar. Özel bir etki alanı kullanmayı planlıyorsanız [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) önerilmez. Azure depolama 'nın özel etki alanı adlarını doğrulama biçimi nedeniyle sorunlar oluşabilir.
+
 
 ## <a name="pricing"></a>Fiyatlandırma
 

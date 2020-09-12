@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke ihlalleri ve şema parametre işlevleri gibi şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
 ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557516"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651319"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -22,9 +22,9 @@ Birçok hata, bir kapsamda şema atamanın sonucu olacaktır. Bir atama başarı
 
 1. Sol taraftaki sayfadan **atanan** şemalar ' ı seçin ve başarısız atamayı bulmak için şema atamalarını filtrelemek için arama kutusunu kullanın. Ayrıca, tüm başarısız atamaları birlikte gruplanmış olarak görmek için Atamalar tablosunu **sağlama durumu** sütununa göre sıralayabilirsiniz.
 
-1. _Hatalı_ duruma sahip şema üzerine sol tıklayın veya sağ tıklayıp **atama ayrıntılarını görüntüle**' yi seçin.
+1. _Başarısız_ durumu olan şema ' i seçin veya sağ tıklayıp **atama ayrıntılarını görüntüle**' yi seçin.
 
-1. Atamanın başarısız olduğu kırmızı bir başlık, BLUEPRINT atama sayfasının en üstünde yer alan bir uyarı. Daha fazla ayrıntı edinmek için başlık üzerinde herhangi bir yere tıklayın.
+1. Atamanın başarısız olduğu kırmızı bir başlık, BLUEPRINT atama sayfasının en üstünde yer alan bir uyarı. Daha fazla ayrıntı edinmek için başlık üzerinde herhangi bir yeri seçin.
 
 Hatanın bir bütün olarak değil bir yapıtın neden olması yaygındır. Bir yapıt Key Vault oluşturursa ve Azure Ilkesi Key Vault oluşturmayı engelliyorsa, tüm atama başarısız olur.
 

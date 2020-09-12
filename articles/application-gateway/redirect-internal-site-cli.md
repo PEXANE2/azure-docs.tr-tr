@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0730148a3da41d0d72961ea521577fa370b183d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806813"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596099"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLı kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
@@ -21,12 +21,11 @@ ms.locfileid: "84806813"
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Dinleyici ve yeniden yönlendirme kuralı ekle
-> * Arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
-> * Etki alanınızda bir CNAME kaydı oluşturma
+* Ağı ayarlama
+* Uygulama ağ geçidi oluşturma
+* Dinleyici ve yeniden yönlendirme kuralı ekle
+* Arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+* Etki alanınızda bir CNAME kaydı oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

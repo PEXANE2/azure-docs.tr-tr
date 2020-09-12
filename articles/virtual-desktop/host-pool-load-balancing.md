@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu yük dengelemesi-Azure
 description: Windows sanal masaüstü ortamı için konak havuzu Yük Dengeleme yöntemleri hakkında bilgi edinin.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007446"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461128"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Ana bilgisayar havuzu yük dengeleme yöntemleri
 
@@ -34,7 +34,7 @@ Her konak havuzu, kendisine özgü bir tür yük dengelemeyi yalnızca bir tane 
 
 Enine ilk yük dengeleme yöntemi, bu senaryoya yönelik iyileştirmek için Kullanıcı bağlantılarını dağıtmanıza olanak tanır. Bu yöntem, havuza alınmış sanal masaüstü ortamlarına bağlanan kullanıcılar için en iyi deneyimi sağlamak isteyen kuruluşlar için idealdir.
 
-Enine ilk yöntem, yeni bağlantılara izin veren oturum ana bilgisayarlarını ilk kez sorgular. Daha sonra yöntemi, en az oturum sayısı olan oturum konağını seçer. Bir bağ varsa, yöntem sorgudaki ilk oturum konağını seçer.
+Enine ilk yöntem, yeni bağlantılara izin veren oturum ana bilgisayarlarını ilk kez sorgular. Daha sonra yöntemi, oturum ana bilgisayarlarının en az sayıda oturum ana bilgisayar kümesiyle rastgele olarak bir oturum konağını seçer. Örneğin, 11, 12, 13, 14, 15, 16, 17, 18 ve 19 oturumu olan dokuz makine varsa, oluşturduğunuz yeni bir oturum otomatik olarak ilk makineye gitmez. Bunun yerine, en düşük oturum sayısına (11, 12, 13, 14, 15) sahip ilk beş makinenin herhangi birine gidebilir.
 
 ## <a name="depth-first-load-balancing-method"></a>Derinlik-ilk yük dengeleme yöntemi
 

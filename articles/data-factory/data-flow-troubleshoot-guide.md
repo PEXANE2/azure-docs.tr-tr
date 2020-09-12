@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263478"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594161"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışları sorunlarını giderme
 
@@ -45,6 +45,8 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 - **İleti**: yayın birleşimi zaman aşımı hatası, yayın akışının hata ayıklama çalıştırmaları ve 300 saniye içinde iş çalıştırmaları sırasında 60 saniye içinde veri ürettiğinden emin olun
 - **Nedenler**: yayının hata ayıklama çalıştırmaları ve 300 saniye olarak iş çalıştırmaları sırasında varsayılan 60 saniye zaman aşımı süresi vardır. Yayın için seçilen akış, bu sınırın içinde veri üretmek için büyük görünüyor.
 - **Öneri**: JOIN, Exists ve Lookup için veri akışı dönüştürmelerinizin en iyileştirme sekmesini kontrol edin. Yayın için varsayılan seçenek "Auto" dır. Bu ayarlandıysa veya "fixed" altında yayın için sol veya sağ tarafını el ile ayarlıyorsanız, daha büyük bir Azure Integration Runtime yapılandırması ayarlayabilir veya yayını kapatabilirsiniz. Veri akışlarında en iyi performans için önerilen yaklaşım, Spark 'ın "Auto" kullanarak yayınmasına ve bellek için Iyileştirilmiş Azure IR kullanmasına izin vermedir.
+
+Hata ayıklama işlem hattı çalıştırmasıyla veri akışını bir hata ayıklama testi yürütmesinde yürütüyorsunuz, Bu koşulla daha sık karşılaşabilirsiniz. Bunun nedeni, ADF 'nin yayını daha hızlı bir hata ayıklama deneyimi sağlamak için yayın zaman aşımını 60 saniye olarak kısıtlar. Bunu tetiklenen bir çalıştırmadan 300 saniye zaman aşımıyla uzatmak isterseniz, veri akışı işlem hattı yürütme etkinliğinizdeki tanımlı Azure IR kullanmak için, etkinlik çalışma zamanı kullan > hata ayıkla seçeneğini kullanabilirsiniz.
 
 ### <a name="error-code-df-executor-conversion"></a>Hata kodu: DF-yürütücü-dönüştürme
 

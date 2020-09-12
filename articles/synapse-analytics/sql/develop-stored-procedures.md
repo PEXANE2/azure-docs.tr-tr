@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 294652a42d3b6a2468f024ce7ebdbdfc3615f9e1
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495004"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647867"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamları kullanma
 
 Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
 
-## <a name="what-to-expect"></a>Bekleneceğiniz
+## <a name="what-to-expect"></a>Beklentiler
 
 SQL havuzu SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
 
@@ -62,7 +62,7 @@ EXEC prc_nesting
 ```sql
 CREATE PROCEDURE prc_nesting_2
 AS
-EXEC sp_executesql 'SELECT 'another nest level'  -- This call is nest level 2
+EXEC sp_executesql N'SELECT ''another nest level'''  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146785"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651256"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -110,7 +110,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 ### <a name="estimators"></a>Tahmini
 
-Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı sınıfı kolayca çalışma yapılandırması oluşturmanıza olanak sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren).
+Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı sınıfı kolayca çalışma yapılandırması oluşturmanıza olanak sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren).
 
 Tahmini hakkında daha fazla bilgi için bkz. [tahmini ile ml modellerini eğitme](how-to-train-ml-models.md).
 
@@ -123,7 +123,9 @@ Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren diz
 
 ### <a name="logging"></a>Günlüğe Kaydetme
 
-Çözümünüzü geliştirirken, isteğe bağlı ölçümleri günlüğe kaydetmek için Python betikinizdeki Azure Machine Learning Python SDK 'sını kullanın. Çalıştırıldıktan sonra, çalıştırmanın dağıtmak istediğiniz modeli üretmediğini öğrenmek için ölçümleri sorgulayın.
+Azure Machine Learning, standart çalıştırma ölçümlerini sizin için otomatik olarak günlüğe kaydeder. Ancak, [isteğe bağlı ölçümleri günlüğe kaydetmek Için Python SDK 'sını](how-to-track-experiments.md)de kullanabilirsiniz.
+
+Günlüklerinizi görüntülemenin birden çok yolu vardır: çalışma durumunu gerçek zamanlı olarak izleme veya tamamlandığında sonuçları görüntüleme. Daha fazla bilgi için bkz. [ml çalıştırma günlüklerini izleme ve görüntüleme](how-to-monitor-view-training-logs.md).
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Otomatik ölçeklendirmeyi etkinleştirdiyseniz, Azure dağıtımınızı otomat
 
 Bir modeli Web hizmeti olarak dağıtmaya ilişkin bir örnek için, bkz. [Azure Container Instances bir görüntü sınıflandırma modeli dağıtma](tutorial-deploy-models-with-aml.md).
 
+#### <a name="real-time-endpoints"></a>Gerçek zamanlı uç noktalar
+
+Tasarımcı 'da (Önizleme) eğitilen bir model dağıttığınızda, [modeli gerçek zamanlı bir uç nokta olarak dağıtabilirsiniz](tutorial-designer-automobile-price-deploy.md). Gerçek zamanlı bir uç nokta, genellikle REST uç noktası aracılığıyla tek bir istek alır ve gerçek zamanlı bir tahmin döndürür. Bu, aynı anda birden çok değeri işleyen ve bir veri deposuna tamamlandığında sonuçları kaydeden toplu işleme karşıtlığına karşılık gelir.
+
+#### <a name="pipeline-endpoints"></a>Ardışık düzen uç noktaları
+
+Ardışık düzen uç noktaları, bir REST uç noktası aracılığıyla [ml](#ml-pipelines) işlem hattı program aracılığıyla aramanızı sağlar. Ardışık düzen uç noktaları, işlem hattı iş akışlarınızı otomatikleştirmenizi sağlar.
+
+Ardışık düzen uç noktası yayımlanmış işlem hatları koleksiyonudur. Bu mantıksal kuruluş aynı uç noktayı kullanarak birden çok işlem hattını yönetmenizi ve çağırmanızı sağlar. Bir ardışık düzen uç noktasındaki yayımlanan her bir ardışık düzen sürümlüdür. Uç nokta için varsayılan bir işlem hattı seçebilir veya REST çağrısında bir sürüm belirtebilirsiniz.
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT modülü uç noktaları
 
 Dağıtılan bir IoT modülü uç noktası, modelinizi ve ilişkili betiği ya da uygulamanızı ve ek bağımlılıkları içeren bir Docker kapsayıcısıdır. Bu modülleri, uç cihazlarda Azure IoT Edge kullanarak dağıtırsınız.
@@ -212,12 +225,13 @@ Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine
 
 ### <a name="studio"></a>Studio
 
-[Azure Machine Learning Studio](https://ml.azure.com) , çalışma alanınızdaki tüm yapıtların bir web görünümünü sağlar.  Veri kümelerinizin, denemeleri, işlem hatlarının, modellerinizin ve uç noktaların sonuçlarını ve ayrıntılarını görüntüleyebilirsiniz.  Ayrıca, Studio 'daki işlem kaynaklarını ve veri depolarını yönetebilirsiniz.
+[Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) , çalışma alanınızdaki tüm yapıtların bir web görünümünü sağlar.  Veri kümelerinizin, denemeleri, işlem hatlarının, modellerinizin ve uç noktaların sonuçlarını ve ayrıntılarını görüntüleyebilirsiniz.  Ayrıca, Studio 'daki işlem kaynaklarını ve veri depolarını yönetebilirsiniz.
 
-Ayrıca, Azure Machine Learning bir parçası olan etkileşimli araçlara de erişebilirsiniz:
+Ayrıca, Azure Machine Learning parçası olan etkileşimli araçlara de erişebilirsiniz:
 
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md)
 + [Otomatik makine öğrenimi](concept-automated-ml.md) için Web deneyimi
++ Tümleşik Jupyter Not defteri sunucularında kendi kodunuzu yazmak ve çalıştırmak için [not defterlerini Azure Machine Learning](how-to-run-jupyter-notebooks.md) .
 + Verilerinizi etiketleyerek projeler oluşturmak, yönetmek ve izlemek için [veri etiketleme projeleri](how-to-create-labeling-projects.md)
 
 ### <a name="programming-tools"></a>Programlama araçları
@@ -226,7 +240,7 @@ Ayrıca, Azure Machine Learning bir parçası olan etkileşimli araçlara de eri
 > Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
 > Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
++  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + Otomasyon için [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanın.
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.

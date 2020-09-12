@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 25879178930c80f1265470645808d9ee81acafa8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fcd59cb3bf42dc843387043d982e6c43d665784d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035136"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486850"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
@@ -97,13 +97,13 @@ Bu tablo, Gen1 'in yeteneklerini Gen2 ile karşılaştırır.
 |---|---|---|
 |Veri organizasyonu|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Dosya ve klasör desteği|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Kapsayıcı, dosya ve klasör desteği |
 |Coğrafi yedeklilik| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Kimlik Doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
-|Yetkilendirme|Yönetim- [RBAC](../../role-based-access-control/overview.md)<br>Veri – [ACL 'ler](data-lake-storage-access-control.md)|Yönetim – [RBAC](../../role-based-access-control/overview.md)<br>Veri [ACL 'leri](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
+|Kimlik doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Yetkilendirme|Yönetim- [RBAC](../../role-based-access-control/overview.md)<br>Veri – [ACL 'ler](data-lake-storage-access-control.md)|Yönetim – [RBAC](../../role-based-access-control/overview.md)<br>Veri  [ACL 'leri](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
 |Şifreleme – bekleyen veriler|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|
 |VNET desteği|[Sanal Ağ Tümleştirmesi](../../data-lake-store/data-lake-store-network-security.md)|[Hizmet uç noktaları](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Özel uç noktalar](../common/storage-private-endpoints.md)|
 |Geliştirici deneyimi|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Genel olarak kullanılabilir- [rest](/rest/api/storageservices/data-lake-storage-gen2), [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Genel Önizleme- [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Kaynak günlükleri|Klasik Günlükler<br>[Azure Izleyici tümleşik](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasik Günlükler](../common/storage-analytics-logging.md) -genel kullanıma sunuldu<br>Azure izleyici tümleştirmesi – zaman çizelgesi TBD|
-|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure SYNAPSE Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure SYNAPSE Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 

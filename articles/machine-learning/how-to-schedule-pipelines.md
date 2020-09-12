@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842969"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650808"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi işlem hatlarını zamanlayın
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Zamana dayalı zamanlama oluşturma
 
-`ScheduleRecurrence`Oluşturucunun, `frequency` Şu dizelerden biri olması gereken bir bağımsız değişkeni vardır: "Minute", "Hour", "Day", "Week" veya "month". Ayrıca `interval` , zamanlamanın ne kadar süre sonra geçmesi gerektiğini belirten bir tamsayı bağımsız değişkeni gerektirir `frequency` . İsteğe bağlı bağımsız değişkenler, [SCHEDULERECURRENCE SDK belgeleri](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)içinde açıklandığı gibi başlangıç zamanları hakkında daha fazla bilgi sağlar.
+`ScheduleRecurrence`Oluşturucunun, `frequency` Şu dizelerden biri olması gereken bir bağımsız değişkeni vardır: "Minute", "Hour", "Day", "Week" veya "month". Ayrıca `interval` , zamanlamanın ne kadar süre sonra geçmesi gerektiğini belirten bir tamsayı bağımsız değişkeni gerektirir `frequency` . İsteğe bağlı bağımsız değişkenler, [SCHEDULERECURRENCE SDK belgeleri](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true)içinde açıklandığı gibi başlangıç zamanları hakkında daha fazla bilgi sağlar.
 
 `Schedule`Her 15 dakikada bir çalışmayı başlatan bir oluştur:
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Dosya değişiklikleri tarafından tetiklenen işlem hatları, zaman tabanlı zamanlamalardan daha verimli olabilir. Örneğin, bir dosya değiştirildiğinde veya bir veri dizinine yeni bir dosya eklendiğinde ön işleme adımı yapmak isteyebilirsiniz. Veri deposundaki herhangi bir değişikliği veya veri deposu içindeki belirli bir dizin içindeki değişiklikleri izleyebilirsiniz. Belirli bir dizini izlemenize sonra, bu dizinin alt dizinlerindeki değişiklikler bir çalıştırmayı _tetiklemez_ .
 
-Bir dosya-reaktif oluşturmak için `Schedule` , `datastore` çağır [. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)çağrısında parametresini ayarlamanız gerekir. Bir klasörü izlemek için `path_on_datastore` bağımsız değişkenini ayarlayın.
+Bir dosya-reaktif oluşturmak için `Schedule` , `datastore` çağır [. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)çağrısında parametresini ayarlamanız gerekir. Bir klasörü izlemek için `path_on_datastore` bağımsız değişkenini ayarlayın.
 
 `polling_interval`Bağımsız değişkeni, veri deposunun değişiklikler için denetlenme sıklığını dakika cinsinden belirtmenize olanak tanır.
 
-İşlem hattı bir [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [pipelineparametresiyle](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)oluşturulmuşsa, bağımsız değişkenini ayarlayarak bu değişkeni değiştirilen dosyanın adı olarak ayarlayabilirsiniz `data_path_parameter_name` .
+İşlem hattı bir [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) [pipelineparametresiyle](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true)oluşturulmuşsa, bağımsız değişkenini ayarlayarak bu değişkeni değiştirilen dosyanın adı olarak ayarlayabilirsiniz `data_path_parameter_name` .
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")

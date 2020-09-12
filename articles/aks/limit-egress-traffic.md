@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003178"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594268"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -280,7 +280,7 @@ Biri, biri güvenlik duvarı için olmak üzere iki ayrı alt ağa sahip bir san
 
 Tüm kaynakları barındıracak bir kaynak grubu oluşturun.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ AKS kümesini ve Azure Güvenlik duvarını barındırmak için iki alt ağa sah
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Azure Güvenlik Duvarı gelen ve giden kuralları yapılandırılmalıdır. Güv
 
 Azure Güvenlik Duvarı ön uç adresi olarak kullanılacak standart SKU genel IP kaynağı oluşturun.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Azure Güvenlik duvarı oluşturmak için, CLI-uzantısını kaydedin.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ Daha önce oluşturulan IP adresi artık güvenlik duvarı ön ucunda atanabilir
 > Azure Güvenlik Duvarı 'na genel IP adresinin ayarlanması birkaç dakika sürebilir.
 > Ağ kurallarında FQDN 'yi devre dışı bırakmak için DNS proxy 'nin etkin olması gerekir. Güvenlik Duvarı etkinleştirildiğinde, bağlantı noktası 53 üzerinde dinleme yapılır ve DNS isteklerini yukarıda belirtilen DNS sunucusuna iletir. Bu, güvenlik duvarının bu FQDN 'yi otomatik olarak çevirisi için izin verir.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 
 Belirli bir alt ağla ilişkilendirilecek boş bir yol tablosu oluşturun. Yol tablosu, yukarıda oluşturulan Azure Güvenlik duvarı olarak bir sonraki atlamayı tanımlayacaktır. Her alt ağ ile ilişkili sıfır veya bir yol tablosu olabilir.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ Azure Güvenlik Duvarı hizmeti hakkında daha fazla bilgi edinmek için bkz. [A
 
 Kümeyi güvenlik duvarıyla ilişkilendirmek için, kümenin alt ağı için ayrılmış alt ağın yukarıda oluşturulan yol tablosuna başvurması gerekir. İlişki, kümenin alt ağının yol tablosunu güncelleştirmek için hem kümeyi hem de güvenlik duvarını tutan sanal ağa bir komut vererek yapılabilir.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ Artık bir AKS kümesi var olan sanal ağa dağıtılabilir. [Giden türü `user
 
 Hizmet sorumlusu, AKS tarafından küme kaynakları oluşturmak için kullanılır. Oluşturma zamanında geçirilen hizmet sorumlusu, AKS tarafından kullanılan depolama kaynakları, IP 'Ler ve yük dengeleyiciler gibi temel AKS kaynaklarını oluşturmak için kullanılır (Bunun yerine bir [yönetilen kimlik](use-managed-identity.md) de kullanabilirsiniz). Aşağıdaki uygun izinler verilmemişse, AKS kümesini sağlayamayacaksınız.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Şimdi, `APPID` `PASSWORD` önceki komut çıktısı tarafından otomatik olarak oluşturulan hizmet sorumlusu uygulama kimliği ve hizmet sorumlusu parolasıyla aşağıdaki ve altındaki öğesini değiştirin. AKS 'in bu kaynaklara kaynak dağıtabilmesi için, hizmet sorumlusu için izin vermek üzere VNET kaynak KIMLIĞINE başvuracağız.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ Alt ağda zaten bulunan UDR 'yi kullanmak için giden türünü tanımlayacaksı
 >
 > API sunucusu için [**YETKILENDIRILMIŞ IP aralıklarının**](api-server-authorized-ip-ranges.md) aks ÖZELLIĞI, API sunucusu erişimini yalnızca güvenlik duvarının genel uç noktasına sınırlamak için eklenebilir. Yetkili IP aralıkları özelliği diyagramda isteğe bağlı olarak gösterilir. API sunucusu erişimini sınırlamak için yetkilendirilmiş IP aralığı özelliğini etkinleştirirken, geliştirici araçlarınızın güvenlik duvarının sanal ağından bir sıçrama kutusu kullanması veya tüm geliştirici uç noktalarını yetkilendirilmiş IP aralığına eklemeniz gerekir.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  `kubectl`Yeni oluşturduğunuz Kubernetes kümenize bağlanmak üzere yapılandırmak için [az aks Get-Credentials] [az-aks-Get-Credentials] komutunu kullanın. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 Şunu çalıştırarak NAT kuralını ekleyin:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -772,7 +773,7 @@ AKS oylama uygulamasını görmeniz gerekir. Bu örnekte, güvenlik duvarı gene
 
 Azure kaynaklarını temizlemek için AKS kaynak grubunu silin.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

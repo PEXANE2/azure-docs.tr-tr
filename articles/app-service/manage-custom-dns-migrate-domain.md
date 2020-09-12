@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871403"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484316"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
 
@@ -21,7 +21,7 @@ Canlı bir siteyi ve DNS etki alanı adını App Service 'e geçirdiğinizde, bu
 
 DNS çözümlemesindeki kapalı kalma süresi konusunda endişelendiğinizde, bkz. [Azure App Service bir özel DNS adını eşleme](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır:
 
@@ -40,7 +40,7 @@ Bu nasıl yapılır:
 
 ### <a name="get-domain-verification-id"></a>Etki alanı doğrulama KIMLIĞINI al
 
-[Etki alanı doğrulama kimliğini al](app-service-web-tutorial-custom-domain.md#get-domain-verification-id)' da bulunan adımları izleyerek uygulamanızın etki alanı doğrulama kimliğini alın.
+[Etki alanı doğrulama kimliğini al](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)' da bulunan adımları izleyerek uygulamanızın etki alanı doğrulama kimliğini alın.
 
 ### <a name="create-domain-verification-record"></a>Etki alanı doğrulama kaydı oluştur
 
@@ -48,9 +48,9 @@ Etki alanı sahipliğini doğrulamak için, etki alanı doğrulaması için bir 
 
 | DNS kaydı örneği | TXT ana bilgisayar | TXT değeri |
 | - | - | - |
-| \@ Asıl | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| www (Sub) | _asuıd. www_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| \* liyorsa | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \@ Asıl | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| www (Sub) | _asuıd. www_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \* liyorsa | _asuıd_ | [Uygulamanız için etki alanı doğrulama KIMLIĞI](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türünü aklınızda bulabilirsiniz. App Service CNAME ve bir kayıtlardan eşleştirmeleri destekler.
 

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258783"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669615"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -41,7 +41,7 @@ IoT Edge cihazlar, bir Raspberry Pi 'den dizüstü bilgisayardan bir sunucu üze
 Üretimde her IoT Edge cihazda yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası daha sonra config. YAML dosyasındaki IoT Edge çalışma zamanına bildirilmiştir. Geliştirme ve test senaryoları için, config. YAML dosyasında hiçbir sertifika bildirilirse IoT Edge çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikaların son tarihi üç ay sonra sona erer ve üretim senaryolarında güvenli değildir. Üretim senaryolarında, kendi cihaz CA sertifikanızı otomatik olarak imzalanan bir sertifika yetkilisinden sağlamanız veya ticari bir sertifika yetkilisinden satın almanız gerekir.
 
 > [!NOTE]
-> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 Cihaz CA sertifikasının rolünü anlamak için bkz. [Azure IoT Edge sertifikaları nasıl kullanır](iot-edge-certs.md).
 
@@ -182,7 +182,7 @@ Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümle
 | IoT Edge çalışma zamanı kapsayıcısı | Docker Pull komutu |
 | --- | --- |
 | [Azure IoT Edge Aracısı](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge HUb 'ı](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge hub 'ı](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
 Ardından, edgeAgent ve edgeHub sistem modülleri için dosyadaki deployment.template.jsgörüntü başvurularını güncelleştirdiğinizden emin olun. `mcr.microsoft.com`Her iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
 
@@ -231,7 +231,7 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
 Bu güvenlik duvarı kurallarından bazıları Azure Container Registry devralınır. Daha fazla bilgi için bkz. [güvenlik duvarı arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırma](../container-registry/container-registry-firewall-access-rules.md).
 
 > [!NOTE]
-> Geri kalan ve veri uç noktaları arasında, **15 haziran 2020 '** den itibaren TUTARLı bir FQDN sağlamak Için, Microsoft Container Registry veri uç noktası şu `*.cdn.mscr.io` şekilde değişir`*.data.mcr.microsoft.com`  
+> Geri kalan ve veri uç noktaları arasında, **15 haziran 2020 '** den itibaren TUTARLı bir FQDN sağlamak Için, Microsoft Container Registry veri uç noktası şu `*.cdn.mscr.io` şekilde değişir `*.data.mcr.microsoft.com`  
 > Daha fazla bilgi için bkz. [Microsoft Container Registry istemci güvenlik duvarı kuralları yapılandırması](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
 Güvenlik duvarınızı ortak kapsayıcı kayıt defterlerine erişime izin verecek şekilde yapılandırmak istemiyorsanız, özel [kayıt defterinizde çalışma zamanı kapsayıcıları](#store-runtime-containers-in-your-private-registry)bölümünde açıklandığı gibi özel kapsayıcı kayıt defterinizde görüntüler saklayabilirsiniz.
@@ -276,7 +276,7 @@ Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyaları
 
 Bu bilgileri adlı bir dosyaya ekleyin (veya ekleyin) `daemon.json` ve cihaz platformunuzun doğru konumunu yerleştirin.
 
-| Platform | Location |
+| Platform | Konum |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
@@ -285,7 +285,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
 ```yml
 "createOptions": {
@@ -321,9 +321,9 @@ Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>Testleri ve CI/CD işlem hatlarını göz önünde bulundurun
 
-En verimli IoT Edge dağıtım senaryosu için, üretim dağıtımınızı test ve CI/CD işlem hatlarınız ile tümleştirmeyi düşünün. Azure IoT Edge, Azure DevOps dahil olmak üzere birden çok CI/CD platformunu destekler. Daha fazla bilgi için bkz. [Azure IoT Edge Için sürekli tümleştirme ve sürekli dağıtım](how-to-ci-cd.md).
+En verimli IoT Edge dağıtım senaryosu için, üretim dağıtımınızı test ve CI/CD işlem hatlarınız ile tümleştirmeyi düşünün. Azure IoT Edge, Azure DevOps dahil olmak üzere birden çok CI/CD platformunu destekler. Daha fazla bilgi için bkz. [Azure IoT Edge Için sürekli tümleştirme ve sürekli dağıtım](how-to-continuous-integration-continuous-deployment.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [IoT Edge otomatik dağıtım](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.
-* IoT Edge [sürekli tümleştirme ve sürekli dağıtımı](how-to-ci-cd.md)nasıl desteklediğine bakın.
+* IoT Edge [sürekli tümleştirme ve sürekli dağıtımı](how-to-continuous-integration-continuous-deployment.md)nasıl desteklediğine bakın.

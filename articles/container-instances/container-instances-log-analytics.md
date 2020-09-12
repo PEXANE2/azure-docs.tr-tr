@@ -3,13 +3,12 @@ title: Kaynak günlüklerini toplama & analiz etme
 description: Azure Izleyici günlüklerine Azure Container Instances içindeki kapsayıcı gruplarından kaynak günlükleri ve olay verileri gönderme hakkında bilgi edinin
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524021"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566679"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
@@ -24,7 +23,7 @@ Aşağıdaki bölümlerde, günlük özellikli bir kapsayıcı grubu oluşturma 
 > [!NOTE]
 > Şu anda, Linux kapsayıcı örneklerinden yalnızca Log Analytics olay verileri gönderebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 
@@ -107,7 +106,7 @@ Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için `ContainerIn
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  
-1. Aşağıdaki sorguyu yazın:`ContainerInstanceLog_CL | limit 50`
+1. Aşağıdaki sorguyu yazın: `ContainerInstanceLog_CL | limit 50`
 1. **Çalıştır** 'ı seçin
 
 Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak herhangi bir sonuç görmüyorsanız, birkaç dakika bekleyin ve sonra sorguyu yürütmek için **Çalıştır** düğmesini seçin. Varsayılan olarak, günlük girişleri **tablo** biçiminde görüntülenir. Daha sonra ayrı bir günlük girdisinin içeriğini görmek için bir satırı genişletebilirsiniz.
@@ -120,7 +119,7 @@ Ayrıca, Azure portal kapsayıcı örnekleri için olayları görüntüleyebilir
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  
-1. Aşağıdaki sorguyu yazın:`ContainerEvent_CL | limit 50`
+1. Aşağıdaki sorguyu yazın: `ContainerEvent_CL | limit 50`
 1. **Çalıştır** 'ı seçin
 
 Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak herhangi bir sonuç görmüyorsanız, birkaç dakika bekleyin ve sonra sorguyu yürütmek için **Çalıştır** düğmesini seçin. Varsayılan olarak, girdiler **tablo** biçiminde görüntülenir. Ardından, tek bir girdinin içeriğini görmek için bir satırı genişletebilirsiniz.

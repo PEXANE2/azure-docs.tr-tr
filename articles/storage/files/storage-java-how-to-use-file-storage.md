@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b1edc13888a42086cdcd3c3c7756491bd5f43241
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314484"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462607"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java ile Azure Dosyaları için geliştirme
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -230,6 +230,6 @@ Diğer Azure depolama API 'Leri hakkında daha fazla bilgi edinmek istiyorsanız
 * [Android için Azure depolama SDK 'Sı](https://github.com/azure/azure-storage-android)
 * [Azure Depolama İstemcisi SDK Başvurusu](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure Depolama Ekibi Blogu](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [AzCopy komut satırı yardımcı programıyla veri aktarma](../common/storage-use-azcopy.md)
 * [Azure Dosyaları sorunlarını giderme - Windows](storage-troubleshoot-windows-file-connection-problems.md)

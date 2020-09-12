@@ -11,12 +11,14 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732570"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462046"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -249,8 +251,8 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 
 | Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1`ve üzerinde `2` . |
-| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
+| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve üzerinde `2` . |
+| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca ' den `0` `100` (kapsamlı) değerlere izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -270,7 +272,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | ThrottledRequests | Kategori | Düzey | CorrelationId | Ort | Özellikler |
+| TimeGenerated | OperationName | Kategori | Düzey | CorrelationId | DurationMs | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |
@@ -307,10 +309,10 @@ Etkinleştirildikten sonra, IoT Hub için dağıtılmış izleme desteği şu ak
 
 1. IoT cihazında bir ileti oluşturulur.
 1. IoT cihazı, bu iletinin bir izleme bağlamı ile atanması gerektiğini (buluttan yardım ile) belirler.
-1. SDK ileti `tracestate` uygulaması özelliğine ileti oluşturma zaman damgasını içeren bir ekler.
+1. SDK ileti `tracestate` özelliğine ileti oluşturma zaman damgasını içeren bir ekler.
 1. IoT cihazı IoT Hub ileti gönderir.
 1. İleti, IoT Hub ağ geçidine ulaşır.
-1. IoT Hub `tracestate` ileti uygulama özelliklerinde öğesine bakar ve doğru biçimde olup olmadığını denetler.
+1. IoT Hub `tracestate` ileti özelliklerinde öğesine bakar ve doğru biçimde olup olmadığını denetler.
 1. Bu durumda, IoT Hub `trace-id` ileti için `span-id` "atlama" için genel olarak benzersiz bir işlem üretir ve bu dosyaları Azure izleyici tanılama günlüklerine kaydeder `DiagnosticIoTHubD2C` .
 1. İleti işleme tamamlandıktan sonra, IoT Hub bir tane oluşturur `span-id` ve işlem altında var olan ile birlikte günlüğe kaydeder `trace-id` `DiagnosticIoTHubIngress` .
 1. İleti için yönlendirme etkinleştirildiyse, IoT Hub özel uç noktaya yazar ve `span-id` Kategori altında aynı olan başka bir oturum açar `trace-id` `DiagnosticIoTHubEgress` .

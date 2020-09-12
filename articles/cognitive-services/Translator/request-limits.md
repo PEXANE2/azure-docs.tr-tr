@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903417"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566594"
 ---
 # <a name="request-limits-for-translator"></a>Çevirmen için istek sınırları
 
@@ -29,9 +29,9 @@ Aşağıdaki tabloda, çeviricisinin her bir işlemi için dizi öğesi ve karak
 
 | İşlem | Dizi öğesinin en büyük boyutu |    En fazla dizi öğesi sayısı |    En fazla Istek boyutu (karakter) |
 |:----|:----|:----|:----|
-| Çevirme | 10,000    | 100   | 10,000 |
+| Çeviri | 10,000    | 100   | 10,000 |
 | Karakter Dönüştürme | 5.000 | 10    | 5.000 |
-| Algılama | 10,000 | 100 |   50,000 |
+| Algılama | 50,000 | 100 |   50,000 |
 | BreakSentence | 50,000    | 100 | 50,000 |
 | Sözlük Arama| 100 |  10  | 1.000 |
 | Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|   2.000 |
@@ -71,7 +71,7 @@ Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel
 | İtalyanca | içerdiği | 800 |
 | Japonca | Sofya | 166 |
 | Portekizce | pt | 800 |
-| İspanyolca | es | 800 |
+| Spanish | es | 800 |
 | Tayca | 11 | 180 |
 
 > [!NOTE]

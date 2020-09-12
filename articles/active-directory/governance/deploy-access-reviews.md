@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011353"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461043"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -93,7 +93,7 @@ Erişim gözden geçirmeleriyle, büyük olasılıkla kuruluşunuzun içindeki a
 
 * BT **YÖNETIMI** BT altyapınızı yönetir ve bulut yatırımlarınızı ve hizmet olarak yazılım (SaaS) uygulamalarınızı yönetir. Bu takım şunları olacak:
 
-   * Office 365 ve Azure AD dahil altyapı ve uygulamalara ayrıcalıklı erişimi gözden geçirin.
+   * Microsoft 365 ve Azure AD dahil altyapı ve uygulamalara ayrıcalıklı erişimi gözden geçirin.
 
    * Güncel Erişim listelerini korumak için özel durum listeleri veya BT pilot projelerini korumak için kullanılan gruplar üzerinde erişim gözden geçirmeleri zamanlayın ve çalıştırın.
 
@@ -180,7 +180,7 @@ Kuruluşunuzun kaynaklarını Azure AD ile tümleştirdikten sonra (örneğin, k
 
 * [Çoklu oturum açma Için Azure AD ile tümleştirilmiş uygulamalar](../manage-apps/what-is-application-management.md) (SaaS, iş kolu gibi).
 
-* Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Microsoft ekipleri dahil olmak üzere Azure AD ile eşitlenmiş veya Azure AD 'de veya Office 365 ' de oluşturulmuştur).
+* Grup [üyeliği](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD ile eşitlenmiş veya Microsoft ekipleri dahil olmak üzere Azure AD 'de veya Microsoft 365 ile oluşturulmuş).
 
 * Kaynakları (gruplar, uygulamalar ve siteler), erişimi yönetmek için tek bir pakete gruplayan [erişim paketi](/azure/active-directory/governance/entitlement-management-overview) .
 
@@ -304,7 +304,7 @@ Erişim gözden geçirmeleri için aşağı kaydırmak üzere yaşam döngüsü 
 
 ## <a name="plan-access-reviews-for-groups"></a>Gruplar için erişim gözden geçirmeleri planlayın
 
-Erişim paketlerinin yanı sıra, Grup üyeliğini gözden geçirmek, erişimi yönetirken en etkili yoldur. Kaynaklara erişimin [güvenlik grupları veya Office 365 grupları](../fundamentals/active-directory-manage-groups.md)aracılığıyla atanmasını ve kullanıcıların erişim kazanmak için bu gruplara eklenmesini öneririz.
+Erişim paketlerinin yanı sıra, Grup üyeliğini gözden geçirmek, erişimi yönetirken en etkili yoldur. Kaynaklara erişimin [güvenlik grupları veya Microsoft 365 grupları](../fundamentals/active-directory-manage-groups.md)aracılığıyla atanmasını ve kullanıcıların erişim kazanmak için bu gruplara eklenmesini öneririz.
 
 Tek bir gruba, tüm uygun kaynaklara erişim verilebilir. Grup erişimini tek tek kaynaklara veya uygulamaları ve diğer kaynakları gruplandıran bir erişim paketine atayabilirsiniz. Bu yöntemde, her uygulamaya bir bireyin olmak yerine gruba erişimi inceleyebilirsiniz. 
 
@@ -322,9 +322,9 @@ Grup üyeliği şu şekilde incelenebilir:
 
 Kimin erişmesi gerektiğini bilmemiz için en iyi şekilde, Grup sahiplerinin üyeliği incelemesini öneririz. Grupların sahipliği, Grup türüyle farklılık gösterir:
 
-Office 365 ve Azure AD 'de oluşturulan grupların bir veya daha fazla iyi tanımlanmış sahibi vardır. Çoğu durumda, bu sahipler kimin erişimi olması gerektiğini öğrendikleri için kendi grupları için kusursuz gözden geçirenler yapar. 
+Microsoft 365 ve Azure AD 'de oluşturulan grupların bir veya daha fazla iyi tanımlanmış sahibi vardır. Çoğu durumda, bu sahipler kimin erişimi olması gerektiğini öğrendikleri için kendi grupları için kusursuz gözden geçirenler yapar. 
 
-Örneğin, Microsoft ekipleri, kullanıcılara SharePoint, Exchange, OneNote veya diğer Office 365 hizmetlerinde bulunan kaynaklara erişim izni vermek için temel yetkilendirme modeli olarak Office 365 gruplarını kullanır. Ekibin Oluşturucusu otomatik olarak bir sahip olur ve bu grubun üyeliklerine karşı test edilmesinden sorumludur. 
+Örneğin, Microsoft ekipleri kullanıcılara SharePoint, Exchange, OneNote veya diğer Microsoft 365 hizmetlerindeki kaynaklara erişim izni vermek için temel yetkilendirme modeli olarak Microsoft 365 gruplarını kullanır. Ekibin Oluşturucusu otomatik olarak bir sahip olur ve bu grubun üyeliklerine karşı test edilmesinden sorumludur. 
 
 Azure AD portalında veya Microsoft Graph aracılığıyla betik aracılığıyla el ile oluşturulan grupların sahip olması gerekmez. Bunları grubun "sahipler" bölümünde veya Graph aracılığıyla Azure AD portalı üzerinden tanımlamanızı öneririz.
 
@@ -403,7 +403,7 @@ Erişim gözden geçirmeleri, gözden geçirenlerin kullanıcıların hala bir r
 
 * Güvenlik Yöneticisi
 
-* Tüm Office 365 ve Dynamics Service yönetim rolleri
+* Tüm Microsoft 365 ve Dynamics Service yönetim rolleri
 
 Burada seçilen roller kalıcı ve uygun rolü içerir. 
 
@@ -419,7 +419,7 @@ Bir strateji ve Azure AD ile tümleştirilmiş kaynaklara erişimi gözden geçi
 
 Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine olanak sağlayabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | - |
 | [Erişim Incelemeleri oluşturma](entitlement-management-access-reviews-create.md)| Erişim paketi incelemelerini etkinleştirin. |
 | [Erişim gözden geçirmeleri gerçekleştirin](entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
@@ -433,7 +433,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 
 Çalışanlar ve konuklar için gruplara ve uygulamalara erişim ihtiyacı büyük olasılıkla zaman içinde değişir. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Grup üyeleri veya uygulama erişimi için erişim İncelemeleri oluşturabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | - |
 | [Erişim Incelemeleri oluşturma](create-access-review.md)| Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturun. |
 | [Erişim gözden geçirmeleri gerçekleştirin](perform-access-review.md)| Bir grubun veya bir uygulamaya erişimi olan kullanıcıların üyeleri için erişim gözden geçirmesi gerçekleştirin. |
@@ -450,7 +450,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD r
 
 Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri | Açıklama |
+| Nasıl yapılır makaleleri | Description |
 | - | - |
  [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
@@ -465,7 +465,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure Kayn
 
 Aşağıdaki bağlantılardaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Açıklama |
+| Nasıl yapılır makaleleri| Description |
 | - | -|
 | [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |

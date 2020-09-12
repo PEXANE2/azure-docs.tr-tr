@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903995"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566611"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>api-sürümü</td>
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>Kaynak</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. Kapsam kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceği hakkında bilgi edinin <code>translation</code> . <code>from</code>Parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><code>from</code> <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, parametresini, oto algılaması yerine kullanmanız gerekir.</td>
@@ -95,7 +95,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler şunlardır: <code>true</code> (varsayılan) veya <code>false</code> .<br/><br/><code>allowFallback=false</code>Çeviri yalnızca istek tarafından belirtilen için eğitilen sistemleri kullanması gerektiğini belirtir <code>category</code> . Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X->E ve E->Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code>özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir.
+    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler şunlardır: <code>true</code> (varsayılan) veya <code>false</code> .<br/><br/><code>allowFallback=false</code> Çeviri yalnızca istek tarafından belirtilen için eğitilen sistemleri kullanması gerektiğini belirtir <code>category</code> . Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X->E ve E->Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code> özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir.
 </td>
   </tr>
 </table> 
@@ -104,7 +104,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -174,7 +174,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     Tümce sınırları yalnızca istek parametresi olduğunda dahil edilir `includeSentenceLength` `true` .
 
-  * `sourceText`: Adlı tek bir dize özelliğine sahip bir nesne `text` , giriş metnini kaynak dilin varsayılan betiğine verir. `sourceText`özelliği yalnızca giriş, dilin normal betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş Arapça Latin betiğe yazılmışsa, `sourceText.text` aynı Arapça metin Arap betiğine dönüştürüldü.
+  * `sourceText`: Adlı tek bir dize özelliğine sahip bir nesne `text` , giriş metnini kaynak dilin varsayılan betiğine verir. `sourceText` özelliği yalnızca giriş, dilin normal betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş Arapça Latin betiğe yazılmışsa, `sourceText.text` aynı Arapça metin Arap betiğine dönüştürüldü.
 
 [Örnek bölümünde JSON](#examples) yanıtlarının örneği verilmiştir.
 
@@ -182,7 +182,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
     <tr>
     <td>X-RequestId</td>
     <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
@@ -199,7 +199,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>
@@ -280,7 +280,7 @@ Yanıt gövdesi:
     }
 ]
 ```
-Yanıt, önceki örnekteki yanıta benzerdir. Dil otomatik algılama işlemi istendiğinden yanıt, giriş metni için algılanan dille ilgili bilgiler de içerir. 
+Yanıt, önceki örnekteki yanıta benzerdir. Dil otomatik algılama işlemi istendiğinden yanıt, giriş metni için algılanan dille ilgili bilgiler de içerir. Dil otomatik algılama, daha uzun giriş metniyle daha iyi sonuç verir.
 
 ### <a name="translate-with-transliteration"></a>Alfabe ile çevir
 
@@ -391,7 +391,7 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   </tr>
 </table> 
 
-Örnek:
+Örneğin:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

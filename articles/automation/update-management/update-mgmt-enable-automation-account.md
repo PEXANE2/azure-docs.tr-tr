@@ -2,19 +2,19 @@
 title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 930861c61843c5963c83d8fa6dc1efdce20853f4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450881"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669502"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
-Bu makalede, ortamınızdaki VM 'Ler için [güncelleştirme yönetimi](update-mgmt-overview.md) özelliğini etkinleştirmek üzere otomasyon hesabınızı nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir.
+Bu makalede, [Azure Arc etkin sunucularla](../../azure-arc/servers/overview.md) (Önizleme) kayıtlı makineler veya sunucular dahil olmak üzere ortamınızdaki VM 'ler için [güncelleştirme yönetimi](update-mgmt-overview.md) özelliğini etkinleştirmek üzere otomasyon hesabınızı nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak mevcut bir Azure VM 'yi etkinleştirmeniz gerekir.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
@@ -23,9 +23,9 @@ Bu makalede, ortamınızdaki VM 'Ler için [güncelleştirme yönetimi](update-m
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
-* Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
+* Bir [Azure sanal makinesi](../../virtual-machines/windows/quick-create-portal.md)veya Arc etkin sunucularla (Önizleme) kayıtlı VM veya sunucu. Azure dışı VM 'Ler veya sunucular, Windows veya Linux için [Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) sahip olmalıdır ve otomasyon hesabına bağlı olan çalışma alanına rapor verebilir güncelleştirme yönetimi ' de etkinleştirilir. Aracı, Azure Arc ile [azure log ANALYTICS VM Uzantısı](../../azure-arc/servers/manage-vm-extensions.md) dağıtarak, Arc etkin sunuculara yüklenebilir.
 
-## <a name="sign-in-to-azure"></a>Azure’da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -65,16 +65,21 @@ Güncelleştirme Yönetimi etkinleştirilmesi için, çalışma alanınıza zate
 
     ![Kayıtlı aramalar](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek tek makineleri eklemek için denetimi devre dışı bırakır. Bu görev, raporlayan makinelerin tüm adlarını çalışma alanına kayıtlı bilgisayar grubu arama sorgusuna ekler. Seçildiğinde, bu eylem **makineleri Yönet** düğmesini devre dışı bırakır.
+3. Çalışma alanına rapor veren tüm kullanılabilir makineler için Güncelleştirme Yönetimi etkinleştirmek üzere makineleri Yönet sayfasında **kullanılabilir tüm makinelerde etkinleştir** ' i seçin. Bu eylem, tek tek makineleri eklemek için denetimi devre dışı bırakır. Bu görev, raporlayan makinelerin tüm adlarını çalışma alanına kayıtlı bilgisayar grubu arama sorgusuna ekler `MicrosoftDefaultComputerGroup` . Seçildiğinde, bu eylem **makineleri Yönet** düğmesini devre dışı bırakır.
 
-4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilmiş aramaları ve kapsam yapılandırmasını çalışma alanından siler ve çalışma alanına raporlama yapan tüm Azure ve Azure dışı makineler için özelliği açar. Seçildiğinde, bu eylem, hiçbir kapsam yapılandırması bulunmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
+4. Tüm kullanılabilir makineler ve gelecekteki makineler için özelliği etkinleştirmek üzere **tüm kullanılabilir ve gelecekteki makinelerde etkinleştir**' i seçin. Bu seçenek, kaydedilen arama ve kapsam yapılandırmasını çalışma alanından siler ve özelliğin, şu anda veya gelecekte olan tüm Azure dışı makineleri, çalışma alanına rapor olarak içermesini sağlar. Seçildiğinde, bu eylem, kullanılabilir kapsam yapılandırması olmadığından **makineleri Yönet** düğmesini kalıcı olarak devre dışı bırakır.
 
-5. Gerekirse, ilk kaydedilmiş aramaları yeniden ekleyerek kapsam yapılandırma işlemleri geri eklenebilir. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](update-mgmt-scope-configuration.md).
+    > [!NOTE]
+    > Bu seçenek Log Analytics içindeki kayıtlı aramaları ve kapsam yapılandırmasını sildiği için, bu seçeneği seçmeden önce Log Analytics çalışma alanındaki tüm silme kilitlerini kaldırmak önemlidir. Bunu yapmazsanız, bu seçenek yapılandırmaların kaldırılmasına neden olur ve bunları el ile kaldırmanız gerekir.
+
+5. Gerekirse, ilk kaydedilmiş arama sorgusunu yeniden ekleyerek kapsam yapılandırmalarının geri eklenmesini sağlayabilirsiniz. Daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](update-mgmt-scope-configuration.md).
 
 6. Bir veya daha fazla makine için özelliği etkinleştirmek üzere **Seçili makinelerde etkinleştir** ' i seçin ve her makinenin yanındaki **Ekle** ' yi seçin. Bu görev, seçilen makine adlarını, bu özellik için bilgisayar grubu kayıtlı arama sorgusuna ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](update-mgmt-manage-updates-for-vm.md).
+
+* Artık Güncelleştirme Yönetimi olan VM 'Leri veya sunucuları yönetmeniz gerekmiyorsa bkz. [güncelleştirme yönetimi VM 'leri kaldırma](update-mgmt-remove-vms.md).
 
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](../troubleshoot/update-management.md).

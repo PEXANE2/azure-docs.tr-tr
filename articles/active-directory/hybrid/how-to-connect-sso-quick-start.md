@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115762"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658745"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -40,7 +40,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
    - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden ** \* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
 
     >[!NOTE]
-    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) okuyun.
+    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](./reference-connect-version-history.md) okuyun.
 
 * **Desteklenen bir Azure AD Connect topolojisi kullanın**: [burada](plan-connect-topologies.md)açıklanan Azure AD Connect desteklenen topolojilerden birini kullandığınızdan emin olun.
 
@@ -51,9 +51,9 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
     * Azure AD Connect aracılığıyla Azure AD 'ye eşitliyorsanız.
     * Sorunsuz SSO için etkinleştirmek istediğiniz kullanıcıları içerir.
     
-* **Modern kimlik doğrulamasını etkinleştir**: Bu özelliğin çalışması için kiracınızda [modern kimlik doğrulamayı](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) etkinleştirmeniz gerekir.
+* **Modern kimlik doğrulamasını etkinleştir**: Bu özelliğin çalışması için kiracınızda [modern kimlik doğrulamayı](/office365/enterprise/modern-auth-for-office-2013-and-2016) etkinleştirmeniz gerekir.
 
-* **Office 365 istemcilerinin en son sürümlerini kullanın**: Office 365 Istemcileri (Outlook, Word, Excel ve diğerleri) ile sessiz oturum açma deneyimi almak için, kullanıcılarınızın 16.0.8730. xxxx veya üzeri sürümlerini kullanması gerekir.
+* **Microsoft 365 istemcilerinin en son sürümlerini kullanın**: Microsoft 365 Istemcileri (Outlook, Word, Excel ve diğerleri) ile sessiz bir oturum açma deneyimi almak için, kullanıcılarınızın 16.0.8730. xxxx veya üzeri sürümlerini kullanması gerekir.
 
 ## <a name="step-2-enable-the-feature"></a>2. Adım: özelliği etkinleştirme
 
@@ -132,7 +132,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
      Sonuç şuna benzer:
 
-     Değer adı:`https://autologon.microsoftazuread-sso.com`
+     Değer adı: `https://autologon.microsoftazuread-sso.com`
   
      Değer (veri): 1
 
@@ -187,11 +187,11 @@ MacOS çalıştıran makinenin AD 'ye katılmış olduğundan emin olun. MacOS c
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Kmıum temelinde Microsoft Edge (tüm platformlar)
 
-Ortamınızdaki [Authnegotiatedelegateallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) veya [authserverallowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini () da eklemediğinizden emin olun `https://autologon.microsoftazuread-sso.com` .
+Ortamınızdaki [Authnegotiatedelegateallowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) veya [authserverallowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) ilke ayarlarını geçersiz KıLDıYSANıZ, Azure AD 'nin URL 'sini () da eklemediğinizden emin olun `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Kmıum temelinde Microsoft Edge (macOS ve diğer Windows dışı platformlar)
 
-MacOS ve diğer Windows dışı platformlarda Kmıum 'u temel alan Microsoft Edge için, tümleşik kimlik listesine yönelik Azure AD URL 'sini izin verilenler listenize ekleme hakkında bilgi için, [Kmıum Ilke listesini temel alan Microsoft Edge](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) 'e bakın.
+MacOS ve diğer Windows dışı platformlarda Kmıum 'u temel alan Microsoft Edge için, tümleşik kimlik listesine yönelik Azure AD URL 'sini izin verilenler listenize ekleme hakkında bilgi için, [Kmıum Ilke listesini temel alan Microsoft Edge](/DeployEdge/microsoft-edge-policies#authserverallowlist) 'e bakın.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (tüm platformlar)
 
@@ -211,7 +211,7 @@ Sorunsuz SSO, Firefox ve Microsoft Edge tarayıcılarında özel göz atma modun
 
 Belirli bir kullanıcı için özelliği test etmek için aşağıdaki koşulların tümünün yerinde olduğundan emin olun:
   - Kullanıcı bir kurumsal cihazda oturum açar.
-  - Cihaz Active Directory etki alanına katıldı. Cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) _olması gerekmez_ .
+  - Cihaz Active Directory etki alanına katıldı. Cihazın [Azure AD 'ye katılmış](../devices/overview.md) _olması gerekmez_ .
   - Cihazın, şirket kablolu veya kablosuz ağ ya da VPN bağlantısı gibi bir uzaktan erişim bağlantısı aracılığıyla etki alanı denetleyicinize (DC) doğrudan bağlantısı vardır.
   - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](#step-3-roll-out-the-feature) sunulaştınız.
 

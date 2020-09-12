@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066528"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658200"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -69,7 +69,7 @@ Bu örnek, önceki birincil ve ikincil mantıksal uygulama örneklerini gösteri
 
 ## <a name="connections-to-resources"></a>Kaynaklarla bağlantı
 
-Azure Logic Apps, [yerleşik Tetikleyiciler ve eylemler](../connectors/apis-list.md) ile mantıksal uygulamanızın diğer uygulamalar, hizmetler, sistemler ve Azure depolama hesapları, SQL Server veritabanları, Office 365 Outlook e-posta hesapları gibi diğer kaynaklarla çalışmak için kullanabileceği yüzlerce yönetilen bağlayıcı sağlar. Mantıksal uygulamanızın bu kaynaklara erişmesi gerekiyorsa, bu kaynaklara erişimin kimliğini doğrulayan bağlantılar oluşturursunuz. Her bağlantı, belirli bir konumda bulunan ve diğer konumlardaki kaynaklar tarafından kullanılamayan ayrı bir Azure kaynağıdır.
+Azure Logic Apps, [yerleşik Tetikleyiciler ve eylemler](../connectors/apis-list.md) ile mantıksal uygulamanızın Azure depolama hesapları, SQL Server veritabanları, iş veya okul e-posta hesapları gibi diğer uygulamalarla ve diğer kaynaklarla çalışmak için kullanabileceği yüzlerce yönetilen bağlayıcı sağlar. Mantıksal uygulamanızın bu kaynaklara erişmesi gerekiyorsa, bu kaynaklara erişimin kimliğini doğrulayan bağlantılar oluşturursunuz. Her bağlantı, belirli bir konumda bulunan ve diğer konumlardaki kaynaklar tarafından kullanılamayan ayrı bir Azure kaynağıdır.
 
 Olağanüstü durum kurtarma stratejiniz için, mantıksal uygulama örneklerinize göre bağımlı kaynakların mevcut olduğu konumları göz önünde bulundurun:
 
@@ -100,9 +100,9 @@ Veri ağ geçidi kaynağı, mantıksal uygulama kaynağınız gibi bir konum vey
 
 Birincil ve ikincil konumlarınızı, bu konumlardaki mantıksal uygulama örneklerinizin bu rolleri oynayabilmesi için ayarlayabilirsiniz:
 
-| Birincil-ikincil rol | Açıklama |
+| Birincil-ikincil rol | Description |
 |------------------------|-------------|
-| *Etkin-etkin* | Her iki konumdaki birincil ve ikincil mantıksal uygulama örnekleri şu desenlerden birini izleyerek istekleri etkin bir şekilde işler: <p><p>- *Yük Dengeleme*: her iki örneğin, her bir örneğe bir uç nokta dinlemesi ve gerektiğinde trafiği yük dengelemesi sağlayabilirsiniz. <p>- *Rekabet tüketicileri*: örneklerin bir kuyruktan iletiler için rekabet etmesi için her iki örneğin birden rekabet eden tüketici işlevi görmesini sağlayabilirsiniz. Bir örnek başarısız olursa, diğer örnek iş yükünü devralır. |
+| *Aktif-aktif* | Her iki konumdaki birincil ve ikincil mantıksal uygulama örnekleri şu desenlerden birini izleyerek istekleri etkin bir şekilde işler: <p><p>- *Yük Dengeleme*: her iki örneğin, her bir örneğe bir uç nokta dinlemesi ve gerektiğinde trafiği yük dengelemesi sağlayabilirsiniz. <p>- *Rekabet tüketicileri*: örneklerin bir kuyruktan iletiler için rekabet etmesi için her iki örneğin birden rekabet eden tüketici işlevi görmesini sağlayabilirsiniz. Bir örnek başarısız olursa, diğer örnek iş yükünü devralır. |
 | *Aktif-pasif* | Birincil mantıksal uygulama örneği, ikincil örnek pasif iken (devre dışı veya etkin değil) tüm iş yükünü etkin bir şekilde işler. İkincil bir sinyal bekler veya hata nedeniyle, birincil kullanım dışı veya çalışmayan bir sinyal bekler ve iş yükünü etkin örnek olarak alır. |
 | Oluşturulmuştur | Bazı logic Apps etkin-etkin bir rol oynar, diğer Logic Apps ise aktif-pasif bir rol oynar. |
 |||

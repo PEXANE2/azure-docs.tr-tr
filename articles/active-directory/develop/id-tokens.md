@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795233"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646600"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -51,7 +51,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |-----|--------|-------------|
 |`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
@@ -62,7 +62,7 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, `groups` kullanıcıdan kullanıcının adı hakkında bilgi talep edebilir.
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |-----|--------|-------------|
 |`aud` |  Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. `id_tokens`' De hedef kitle, uygulamanızın Azure Portal uygulamanıza atanan uygulama kimliğidir. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 |`iss` |  Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Belirteç v 2.0 uç noktası tarafından verildiyse, URI sona ermeyecektir `/v2.0` .  Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -85,6 +85,8 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 'da verilir `id_tokens` . |
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
+|`hasgroups`|Boole|Varsa, her zaman true, kullanıcının en az bir grupta olduğunu belirten. Tam gruplar talebi, URI parçasını URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs için gruplar talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını () belirleyebilmek için Microsoft Graph API 'sini kullanması gerektiğini belirtir `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` .|
+|`groups:src1`|JSON nesnesi | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. Cwts için, talep yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak `groups` . <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Daha fazla bilgi için bkz. [Grup fazla kullanım talebi](#groups-overage-claim).|
 
 > [!NOTE]
 > V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm, istenen bitiş noktasına göre belirlenir. Mevcut uygulamalar muhtemelen Azure AD uç noktasını kullanırken, yeni uygulamalar v 2.0 "Microsoft Identity platform" uç noktasını kullanmalıdır.
@@ -102,6 +104,26 @@ Kullanıcı başına bilgileri doğru bir şekilde depolamak için, `sub` `oid` 
 > `idp`Kiracılar genelinde kullanıcıları ilişkilendirme girişiminde bir kullanıcı hakkındaki bilgileri depolamak için talebi kullanmayın.  `oid` `sub` Uygulamaların kiracılar genelinde kullanıcıları izleyemediğinden emin olmak için, bir kullanıcının kiracılar genelinde değişiklik yaptığı, tasarıma göre de bu çalışmaz.  
 >
 > Bir kullanıcının bir kiracıda bulunduğu ve başka bir kiracının kimliğini doğrulayan Konuk senaryolar, kullanıcıya hizmet için yepyeni bir kullanıcı gibi davranmalıdır.  Contoso kiracısındaki belgeleriniz ve ayrıcalıklarınız fabrikam kiracısında uygulanmamalıdır. Bu, kiracılar genelinde yanlışlıkla veri sızıntılarını engellemek açısından önemlidir.
+
+### <a name="groups-overage-claim"></a>Gruplar fazla kullanım talebi
+Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin olmak için, Azure AD, talebe dahil edilen nesne kimliklerinin sayısını sınırlar `groups` . Bir Kullanıcı fazla kullanım sınırından daha fazla grup üyesiyse (SAML belirteçleri için 150, JWT belirteçleri için 200), Azure AD, grup talebini belirteçte göstermez. Bunun yerine, belirtece, kullanıcının grup üyeliğini almak için Microsoft Graph API 'sini sorgulamak üzere uygulamayı gösteren bir fazla kullanım talebi içerir.
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 

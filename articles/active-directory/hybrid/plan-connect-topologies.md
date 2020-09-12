@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509101"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658505"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -29,7 +29,7 @@ Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme 
 
 Makalede resimler için gösterge aşağıda verilmiştir:
 
-| Açıklama | Sembol |
+| Description | Sembol |
 | --- | --- |
 | Şirket içi Active Directory ormanı |![Şirket içi Active Directory ormanı](./media/plan-connect-topologies/LegendAD1.png) |
 | Filtrelenmiş içeri aktarma ile şirket içi Active Directory |![Filtrelenmiş içeri aktarma ile Active Directory](./media/plan-connect-topologies/LegendAD2.png) |
@@ -117,15 +117,15 @@ Hesap-kaynak orman topolojisinde, etkin kullanıcı hesaplarına sahip bir veya 
 
 Bu senaryoda, bir (veya daha fazla) kaynak ormanı tüm hesap ormanlarına güvenir. Kaynak ormanı genellikle Exchange ve Lync ile genişletilmiş bir Active Directory şemasına sahiptir. Diğer paylaşılan hizmetlerle birlikte tüm Exchange ve Lync Hizmetleri bu ormanda bulunur. Kullanıcılar bu ormanda devre dışı bırakılmış bir kullanıcı hesabına sahiptir ve posta kutusu hesap ormanına bağlanır.
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 ve topoloji konuları
-Bazı Office 365 iş yükleri desteklenen topolojilerde belirli kısıtlamalara sahiptir:
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 ve topoloji konuları
+Bazı Microsoft 365 iş yükleri desteklenen topolojilerde belirli kısıtlamalara sahiptir:
 
 | İş Yükü | Kısıtlamalar |
 | --------- | --------- |
-| Exchange Online | Exchange Online tarafından desteklenen karma topolojiler hakkında daha fazla bilgi için bkz. [birden çok Active Directory ormanlı karma dağıtımlar](https://technet.microsoft.com/library/jj873754.aspx). |
-| Skype Kurumsal | Birden çok şirket içi orman kullandığınızda yalnızca hesap-kaynak orman topolojisi desteklenir. Daha fazla bilgi için bkz. [Skype Kurumsal Sunucu Için ortam gereksinimleri 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | Exchange Online tarafından desteklenen karma topolojiler hakkında daha fazla bilgi için bkz. [birden çok Active Directory ormanlı karma dağıtımlar](/Exchange/hybrid-deployment/hybrid-with-multiple-forests). |
+| Skype Kurumsal | Birden çok şirket içi orman kullandığınızda yalnızca hesap-kaynak orman topolojisi desteklenir. Daha fazla bilgi için bkz. [Skype Kurumsal Sunucu Için ortam gereksinimleri 2015](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements). |
 
-Daha büyük bir kuruluşunuz varsa, [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) özelliğini kullanmayı göz önünde bulundurmanız gerekir. Kullanıcının kaynaklarının bulunduğu veri merkezi bölgesinde tanımlamanızı sağlar.
+Daha büyük bir kurumunuzda [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) özelliğini kullanmayı göz önünde bulundurmanız gerekir. Kullanıcının kaynaklarının bulunduğu veri merkezi bölgesinde tanımlamanızı sağlar.
 
 ## <a name="staging-server"></a>Hazırlama sunucusu
 ![Bir topolojide hazırlama sunucusu](./media/plan-connect-topologies/MultiForestStaging.png)
@@ -165,7 +165,7 @@ Bu topoloji, aksi takdirde desteklenen senaryolarda aşağıdaki kısıtlamalara
 * Windows 10 cihazları yalnızca bir Azure AD kiracısı ile ilişkilendirilebilir.
 * Parola karması eşitleme ve doğrudan kimlik doğrulama için çoklu oturum açma (SSO) seçeneği yalnızca bir Azure AD kiracısı ile kullanılabilir.
 
-Birbirini dışlayan bir nesne kümesinin gereksinimi geri yazma için de geçerlidir. Tek bir şirket içi yapılandırma varsaydıklarından, bazı geri yazma özellikleri bu topolojide desteklenmez. Bu özellikler şunlardır:
+Birbirini dışlayan bir nesne kümesinin gereksinimi geri yazma için de geçerlidir. Tek bir şirket içi yapılandırma varsaydıklarından, bazı geri yazma özellikleri bu topolojide desteklenmez. Bu özellikler şunları içerir:
 
 * Varsayılan yapılandırma ile grup geri yazma.
 * Cihaz geri yazma.

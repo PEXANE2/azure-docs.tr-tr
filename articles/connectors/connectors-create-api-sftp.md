@@ -1,21 +1,22 @@
 ---
-title: SFTP hesabına Bağlan
-description: Azure Logic Apps kullanarak bir SFTP sunucusu için dosyaları izleyen, oluşturan, yöneten, gönderen ve alan görevleri ve işlemleri otomatikleştirin
+title: SFTP hesabına Bağlan (kullanım dışı)
+description: Azure Logic Apps kullanarak bir SFTP sunucusu için dosya izleme, oluşturma, yönetme, gönderme ve alma görevlerini ve işlemlerini otomatikleştirin
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789282"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651411"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Azure Logic Apps içinde SFTP dosyalarını izleme, oluşturma ve yönetme
 
 > [!IMPORTANT]
 > SFTP Bağlayıcısı kullanım dışı olduğundan lütfen [SFTP-SSH bağlayıcısını](../connectors/connectors-sftp-ssh.md) kullanın. Mantıksal uygulama Tasarımcısı 'nda artık SFTP Tetikleyicileri ve eylemleri seçemezsiniz.
@@ -33,7 +34,7 @@ SFTP sunucunuzdaki olayları izleyen ve çıktıyı diğer eylemler için kullan
 
 SFTP Bağlayıcısı yalnızca *50 MB veya daha küçük* olan dosyaları işler ve [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)'yi desteklemez. Daha büyük dosyalar için [SFTP-SSH bağlayıcısını](../connectors/connectors-sftp-ssh.md)kullanın. SFTP Bağlayıcısı ve SFTP-SSH Bağlayıcısı arasındaki farklar için SFTP-SSH makalesindeki SFTP [-SSH Ile SFTP karşılaştırması](../connectors/connectors-sftp-ssh.md#comparison) konusunu gözden geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -113,10 +114,6 @@ Bu tetikleyici bir SFTP sunucusunda dosya eklendiğinde veya değiştirildiğind
 ### <a name="sftp-action-get-content"></a>SFTP eylemi: içerik al
 
 Bu eylem, SFTP sunucusundaki bir dosyanın içeriğini alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin uyması gereken bir koşulu ekleyebilirsiniz. Koşul doğru ise, içeriği alan eylem çalıştırılabilir.
-
-## <a name="connector-reference"></a>Bağlayıcı başvurusu
-
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sftpconnector/)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

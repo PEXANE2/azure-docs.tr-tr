@@ -1,6 +1,6 @@
 ---
 title: Azure 'da PaaS veritabanlarının güvenliğini sağlama | Microsoft Docs
-description: 'PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamak için Azure SQL veritabanı ve SQL veri ambarı güvenlik en iyi uygulamaları hakkında bilgi edinin. '
+description: 'PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamak için Azure SQL veritabanı ve Azure SYNAPSE Analytics güvenlik en iyi uygulamaları hakkında bilgi edinin. '
 services: security
 documentationcenter: na
 author: techlake
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 9c821a8898b61517dd5d6c872c8516bad6db6968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012968"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462539"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure 'da PaaS veritabanlarını güvenli hale getirmek için en iyi yöntemler
 
-Bu makalede, hizmet olarak platform (PaaS) Web ve mobil uygulamalarınızın güvenliğini sağlamak için [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md) ve [SQL veri ambarı](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'nın en iyi güvenlik uygulamalarının bir koleksiyonunu tartıştık. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
+Bu makalede, hizmet olarak platform (PaaS) Web ve mobil uygulamalarınızın güvenliğini sağlamak için [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md) ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) güvenlik en iyi uygulamalarının bir koleksiyonunu tartıştık. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
 
-Azure SQL veritabanı ve SQL veri ambarı, internet tabanlı uygulamalarınız için bir ilişkisel veritabanı hizmeti sağlar. PaaS dağıtımında Azure SQL veritabanı ve SQL veri ambarı 'nı kullanırken uygulamalarınızın ve verilerinizin korunmasına yardımcı olan hizmetlere göz atalım:
+Azure SQL veritabanı ve Azure SYNAPSE Analytics, internet tabanlı uygulamalarınız için bir ilişkisel veritabanı hizmeti sağlar. PaaS dağıtımında Azure SQL veritabanı ve Azure SYNAPSE Analytics kullanırken uygulamalarınızın ve verilerinizin korunmasına yardımcı olan hizmetlere göz atalım:
 
 - Azure Active Directory kimlik doğrulaması (SQL Server kimlik doğrulaması yerine)
 - Azure SQL güvenlik duvarı
@@ -40,7 +40,7 @@ Azure SQL veritabanı, iki kimlik doğrulama türünden birini kullanacak şekil
 
 - **Azure Active Directory kimlik doğrulaması** , Azure Active Directory tarafından yönetilen kimlikleri kullanır ve yönetilen ve tümleşik etki alanları için desteklenir. Azure Active Directory kimlik doğrulaması kullanmak için, Azure AD kullanıcıları ve grupları 'nı yönetmeye izin verilen "Azure AD yöneticisi" adlı başka bir sunucu yöneticisi oluşturmanız gerekir. Bu yönetici normal bir sunucu yöneticisinin gerçekleştirebileceği tüm işlemleri yapabilir.
 
-[Azure Active Directory kimlik doğrulaması](../../active-directory/develop/authentication-scenarios.md) , Azure SQL VERITABANı ve SQL veri ambarı 'na Azure ACTIVE DIRECTORY (ad) kimlikleri kullanarak bağlanma mekanizmasıdır. Azure AD, veritabanı sunucularında Kullanıcı kimliklerinin kullanımını durdurabilmeniz için SQL Server kimlik doğrulaması için bir alternatif sağlar. Azure AD kimlik doğrulaması, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetmenize olanak sağlar. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır.  
+[Azure Active Directory kimlik doğrulaması](../../active-directory/develop/authentication-scenarios.md) , Azure ACTIVE DIRECTORY (ad) kimlikleri KULLANıLARAK Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e bağlanma mekanizmasıdır. Azure AD, veritabanı sunucularında Kullanıcı kimliklerinin kullanımını durdurabilmeniz için SQL Server kimlik doğrulaması için bir alternatif sağlar. Azure AD kimlik doğrulaması, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetmenize olanak sağlar. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>SQL kimlik doğrulaması yerine Azure AD kullanmanın avantajları
 
@@ -50,12 +50,12 @@ Azure SQL veritabanı, iki kimlik doğrulama türünden birini kullanacak şekil
 - , Veritabanı düzeyinde kimliklerin kimliğini doğrulamak için kapsanan veritabanı kullanıcılarını kullanır.
 - SQL veritabanı 'na bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
 - Etki alanı eşitlemesi olmadan yerel bir Azure AD için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) veya yerel kullanıcı/parola kimlik doğrulaması ile etki alanı Federasyonu destekler.
-- [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantılarını destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantılarını destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE Analytics Ile evrensel kimlik doğrulaması](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz.
 
-- [SQL veritabanı, yönetilen örnek veya SQL veri ambarı ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma](../../azure-sql/database/authentication-aad-overview.md)
-- [Azure SQL Veri Ambarı’nda kimlik doğrulama](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [SQL veritabanı, yönetilen örnek veya Azure SYNAPSE Analytics ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma](../../azure-sql/database/authentication-aad-overview.md)
+- [Azure SYNAPSE Analytics kimlik doğrulaması](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Azure AD kimlik doğrulaması kullanarak Azure SQL veritabanı için belirteç tabanlı kimlik doğrulama desteği](../../azure-sql/database/authentication-aad-overview.md)
 
 > [!NOTE]
@@ -69,12 +69,12 @@ SQL veritabanı varsayılan kaynak IP adresi kısıtlamaları, diğer abonelikle
 
 Azure SQL güvenlik duvarı ve IP kısıtlamaları hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Azure SQL veritabanı ve SQL veri ambarı erişim denetimi](../../azure-sql/database/logins-create-manage.md)
-- [Azure SQL Veritabanı ve SQL Veri Ambarı güvenlik duvarı kuralları](../../azure-sql/database/firewall-configure.md)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics erişim denetimi](../../azure-sql/database/logins-create-manage.md)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics güvenlik duvarı kuralları](../../azure-sql/database/firewall-configure.md)
 
 ## <a name="encrypt-data-at-rest"></a>Bekleyen verileri şifreleme
 
-[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) varsayılan olarak etkindir. TDE SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı verilerini ve günlük dosyalarını saydam bir şekilde şifreler. TDE, dosyalara veya yedeklemesine doğrudan erişim güvenliğinin aşılmasına karşı koruma sağlar. Bu, mevcut uygulamaları değiştirmeden bekleyen verileri şifrelemenizi sağlar. TDE her zaman etkin kalır; Ancak, bu, normal erişim yolunu kullanan bir saldırgan tarafından durdurulmaz. TDE, çeşitli sektörlerde sağlanan birçok yasalar, düzenleme ve kılavuzla uyum sağlar.
+[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) varsayılan olarak etkindir. TDE SQL Server, Azure SQL veritabanı ve Azure SYNAPSE Analytics verilerini ve günlük dosyalarını saydam bir şekilde şifreler. TDE, dosyalara veya yedeklemesine doğrudan erişim güvenliğinin aşılmasına karşı koruma sağlar. Bu, mevcut uygulamaları değiştirmeden bekleyen verileri şifrelemenizi sağlar. TDE her zaman etkin kalır; Ancak, bu, normal erişim yolunu kullanan bir saldırgan tarafından durdurulmaz. TDE, çeşitli sektörlerde sağlanan birçok yasalar, düzenleme ve kılavuzla uyum sağlar.
 
 Azure SQL, TDE ile ilgili önemli sorunları yönetir. TDE ile birlikte, kurtarılabilirlik sağlamak ve veritabanlarını taşırken, şirket içi özel dikkatli olunmalıdır. Daha karmaşık senaryolarda anahtarlar, Genişletilebilir anahtar yönetimi aracılığıyla Azure Key Vault içinde açıkça yönetilebilir. Bkz. [EKM kullanarak TDE SQL Server etkinleştirme](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). Bu ayrıca Azure Anahtar Kasası BYOK yeteneği aracılığıyla Kendi Anahtarını Getir (BYOK) sağlar.
 
@@ -86,7 +86,7 @@ Güvenli bir sistem tasarlama, gizli varlıkları şifreleme ve veritabanı sunu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamaya yönelik bir SQL veritabanı ve SQL veri ambarı güvenlik en iyi uygulamaları koleksiyonuna tanıtılmıştır. PaaS dağıtımlarınızın güvenliğini sağlama hakkında daha fazla bilgi edinmek için bkz.:
+Bu makale, PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamaya yönelik bir SQL veritabanı ve Azure SYNAPSE Analytics güvenlik en iyi uygulamaları koleksiyonuna tanıtılmıştır. PaaS dağıtımlarınızın güvenliğini sağlama hakkında daha fazla bilgi edinmek için bkz.:
 
 - [PaaS dağıtımlarının güvenliğini sağlama](paas-deployments.md)
 - [Azure Uygulama Hizmetleri 'ni kullanarak PaaS Web ve mobil uygulamalarının güvenliğini sağlama](paas-applications-using-app-services.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236123"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646544"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -105,7 +105,7 @@ Tek bir alt ağ hem v2 hem de v1 Application Gateway SKU 'Larını destekleyemez
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway V2 Kullanıcı tanımlı yolları (UDR) destekliyor mu?
 
-Evet, ancak yalnızca belirli senaryolar. Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).
+Evet, ancak yalnızca belirli senaryolar. Daha fazla bilgi için bkz. [Application Gateway altyapı yapılandırması](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Üst bilgiler için x-iletilmiş Application Gateway destekler mi?
 
@@ -136,7 +136,7 @@ Hayır. Application Gateway v2, kimlik doğrulama isteklerini henüz NTLM kimlik
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
 Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. 
 
-Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-overview.md#cookie-based-affinity) bakın.
+Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-http-settings.md#cookie-based-affinity) bakın.
 
 ## <a name="performance"></a>Performans
 
@@ -186,7 +186,7 @@ Hayır. Ancak diğer uygulama ağ geçitlerini alt ağda dağıtabilirsiniz.
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Application Gateway alt ağı Kullanıcı tanımlı yolları destekliyor mu?
 
-[Application Gateway alt ağında desteklenen Kullanıcı tanımlı yollara](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet)bakın.
+[Application Gateway alt ağında desteklenen Kullanıcı tanımlı yollara](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)bakın.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway sınırları nelerdir? Bu limitleri artırabilir miyim?
 
@@ -404,7 +404,7 @@ Application Gateway giriş denetleyicisi (AGIC), [azure Application Gateway](htt
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Kubernetes kullanan ile AKS kümelerim, AGIC ile çalışmıyor mu?
 
-AGIC, yol tablosu kaynağını Application Gateway alt ağıyla otomatik olarak ilişkilendirmeyi dener, ancak bu durum, AGIC 'ten izin olmaması nedeniyle başarısız olabilir. AGIC, yol tablosunu Application Gateway alt ağıyla ilişkilendiremez, AGIC günlüklerinde bir hata olacaktır. Bu durumda, AKS kümesi tarafından oluşturulan yol tablosunu Application Gateway alt ağına el ile ilişkilendirmeniz gerekir. Daha fazla bilgi için [buradaki](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)yönergelere bakın.
+AGIC, yol tablosu kaynağını Application Gateway alt ağıyla otomatik olarak ilişkilendirmeyi dener, ancak bu durum, AGIC 'ten izin olmaması nedeniyle başarısız olabilir. AGIC, yol tablosunu Application Gateway alt ağıyla ilişkilendiremez, AGIC günlüklerinde bir hata olacaktır. Bu durumda, AKS kümesi tarafından oluşturulan yol tablosunu Application Gateway alt ağına el ile ilişkilendirmeniz gerekir. Daha fazla bilgi için bkz. [desteklenen Kullanıcı tanımlı rotalar](configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>AKS kümemi ve Application Gateway ayrı sanal ağlarda bağlanabilir miyim? 
 

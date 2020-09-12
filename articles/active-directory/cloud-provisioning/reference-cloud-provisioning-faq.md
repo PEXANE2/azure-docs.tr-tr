@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518479"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658382"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect bulut sağlama SSS
 
@@ -74,7 +74,7 @@ Yapılandırmayı sildiğinizde, bulut sağlaması Azure AD 'de eşitlenmiş nes
 
 **S: Exchange hibrit 'in desteklenmediği ne anlama geliyor?**
 
-Exchange Karma Dağıtımı özelliği, Exchange posta kutularının hem şirket içinde hem de Office 365'te aynı anda var olmalarına olanak sağlar. Azure AD Connect, Azure AD'den belirli bir öznitelikler kümesini şirket içi dizininize geri eşitler.  Bulut sağlama Aracısı Şu anda bu öznitelikleri şirket içi dizininizle eşitlemez ve bu nedenle Azure AD Connect bir değiştirme olarak desteklenmez.
+Exchange karma dağıtımı özelliği, Exchange posta kutularının hem şirket içinde hem de Microsoft 365 birlikte bulunması için izin verir. Azure AD Connect, Azure AD'den belirli bir öznitelikler kümesini şirket içi dizininize geri eşitler.  Bulut sağlama Aracısı Şu anda bu öznitelikleri şirket içi dizininizle eşitlemez ve bu nedenle Azure AD Connect bir değiştirme olarak desteklenmez.
 
 **S: bulut sağlama aracısını Windows Server Core 'a yükleyebilir miyim?**
 

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8ab68ab4166ddf9e938648e6618ef37df6d998f0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505487"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460907"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -76,7 +76,7 @@ Temsilcinin ardından, pazarlama departmanı aşağıdaki tabloya benzer rollere
 
 Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki rolleri vardır.
 
-| Yetkilendirme Yönetimi rolü | Açıklama |
+| Yetkilendirme Yönetimi rolü | Description |
 | --- | --- |
 | Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
 | Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri veya kataloğun sahibi tarafından atanan bir kullanıcı. |
@@ -84,7 +84,7 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
 
-| Sağ | Açıklama |
+| Sağ | Description |
 | --- | --- |
 | Kişi | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
 | Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
@@ -116,11 +116,11 @@ Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceğ
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Kataloğa kaynak eklemek için gerekli roller
 
-Genel yönetici, bir katalogda herhangi bir grup (bulutta oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Office 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir.
+Genel yönetici, bir katalogda grup (bulut tarafından oluşturulan güvenlik grupları veya bulut tarafından oluşturulan Microsoft 365 grupları), uygulama veya SharePoint Online sitesi ekleyebilir veya kaldırabilir. Bir Kullanıcı Yöneticisi, Dizin rolüne atanabilir olarak yapılandırılmış bir grup dışında, bir katalogda grup veya uygulama ekleyebilir veya kaldırabilir.
 
 Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir kataloğa gruplar, uygulamalar veya SharePoint Online siteleri eklemek üzere, bu kullanıcının hem gerekli Azure AD dizin rolüne hem *de* Katalog sahibi yetkilendirme yönetimi rolüne sahip olması gerekir. Aşağıdaki tabloda, bir kataloğa kaynak eklemek için gereken rol birleşimleri listelenmektedir. Bir katalogdan kaynakları kaldırmak için aynı rollere sahip olmanız gerekir.
 
-| Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir | Office 365 grubu eklenebilir | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir |
+| Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir | Microsoft 365 grubu eklenebilir | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Kullanıcı yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -133,7 +133,7 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | Kullanıcı | Katalog sahibi | Yalnızca Grup sahibi ise | Yalnızca Grup sahibi ise | Yalnızca uygulama sahibi ise |  |
 
 > [!NOTE]
-> Bir Kullanıcı bir güvenlik grubu veya Office 365 Grubu eklerse, Grup rol atanabilir olamaz. Kullanıcı, erişim paketini oluştururken rol atanabilir bir grup eklerse, bu rol atanabilir grubun sahibi de olmalıdır. Daha fazla bilgi için başvuru [Azure Active Directory rol atanabilir bir grup oluşturun](../users-groups-roles/roles-groups-create-eligible.md).
+> Bir Kullanıcı bir güvenlik grubu veya Microsoft 365 Grubu eklerse, Grup rol atanabilir olamaz. Kullanıcı, erişim paketini oluştururken rol atanabilir bir grup eklerse, bu rol atanabilir grubun sahibi de olmalıdır. Daha fazla bilgi için başvuru [Azure Active Directory rol atanabilir bir grup oluşturun](../users-groups-roles/roles-groups-create-eligible.md).
 
 Bir görev için en düşük ayrıcalıklı rolü öğrenmek için, [Azure Active Directory ' de yönetici görevine göre yönetici rollerine](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)de başvurabilirsiniz.
 

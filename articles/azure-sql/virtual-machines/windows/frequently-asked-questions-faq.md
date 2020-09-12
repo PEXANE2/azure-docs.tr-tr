@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121451"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483754"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="images"></a><a id="images"></a>Yansımasını
+## <a name="images"></a><a id="images"></a> Yansımasını
 
 1. **SQL Server sanal makine galeri görüntüleri kullanılabilir?** 
 
@@ -164,6 +164,9 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
    Evet. SQL Server yükleme medyası **C** sürücüsündeki bir klasörde yer alır. Yeni SQL Server örnekleri eklemek veya makinedeki SQL Server diğer yüklü özelliklerini değiştirmek için bu konumdan **Setup.exe** çalıştırın. Otomatik yedekleme, otomatik düzeltme eki uygulama ve Azure Key Vault tümleştirme gibi bazı özelliklerin yalnızca varsayılan örneğe veya düzgün yapılandırılmış adlandırılmış bir örneğe göre çalışacağını unutmayın (bkz. soru 3). Azure Hibrit Avantajı veya **Kullandıkça Öde** lisans modeli [aracılığıyla yazılım güvencesi](licensing-model-azure-hybrid-benefit-ahb-change.md) kullanan müşteriler, ek lisanslama maliyetleri olmadan sanal makineye birden çok SQL Server örneğini yükleyebilir. Ek SQL Server örnekleri, doğru yapılandırılmadığı müddetçe sistem kaynaklarını zorlayabilir. 
 
+1. **Bir VM 'deki en fazla örnek sayısı nedir?**
+   2019 SQL Server SQL Server 2012, tek başına bir sunucuda [50 örneklerini](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) destekleyebilir. Bu, şirket içi Azure 'da ne olursa olsun aynı sınırlandırdır. Ortamınızı daha iyi hazırlama hakkında bilgi edinmek için [en iyi uygulamalar](performance-guidelines-best-practices.md#multiple-instances) bölümüne bakın. 
+
 1. **SQL Server'ın varsayılan örneğini kaldırabilir miyim?**
 
    Evet, ama bazı noktaları dikkate almalısınız. İlk olarak, SQL Server ilişkili faturalandırma VM 'nin lisans modeline bağlı olarak devam edebilir. İkincisi, önceki cevap ' de belirtildiği gibi, [SQL Server IaaS Aracısı uzantısına](sql-server-iaas-agent-extension-automate-management.md)güvenen özellikler vardır. IaaS uzantısını kaldırmadan varsayılan örneği de kaldırırsanız, uzantı varsayılan örneği aramaya devam eder ve olay günlüğü hataları oluşturabilir. Bu hatalar şu iki kaynaktan alınır: **Microsoft SQL Server kimlik bilgileri yönetimi** ve **ıaas Aracısı Microsoft SQL Server**. Hatalardan biri aşağıdakine benzer olabilir:
@@ -179,6 +182,9 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 1. **SQL Server'ı SQL Server VM'sinden tamamen kaldırabilir miyim?**
 
    Evet, ancak [SQL Server Azure VM 'leri Için fiyatlandırma Kılavuzu](pricing-guidance.md)' nda açıklandığı gibi SQL Server VM ücretlendirilmeye devam edersiniz. Artık SQL Server'a ihtiyacınız kalmadıysa yeni bir sanal makine dağıtabilir ve verilerle uygulamaları yeni sanal makineye geçirebilirsiniz. Ardından SQL Server sanal makinesini kaldırabilirsiniz.
+
+1. **Aynı VM'de birden çok örneği yönetmek için Azure portalını kullanabilir miyim?**
+   Hayır. Portal yönetimi, SQL Server IaaS Aracısı uzantısına dayanan SQL VM kaynak sağlayıcısı tarafından sağlanır. Bu nedenle, aynı sınırlamalar, kaynak sağlayıcısı uzantısı olarak da geçerlidir. Portal, doğru yapılandırıldığı sürece yalnızca bir varsayılan örneği veya bir adlandırılmış örneği yönetebilir. Daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](sql-server-iaas-agent-extension-automate-management.md) 
    
 ## <a name="updating-and-patching"></a>Güncelleştirme ve düzeltme eki uygulama
 

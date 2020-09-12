@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319635"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661622"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Eğitim işlem hattınızı yayımlayın.
 > * Modelinize yeni parametrelerle yeniden eğitme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
 * Bu nasıl yapılır serisinin 1. bölümünü, [tasarımcıda verileri dönüştürür](how-to-designer-transform-data.md).
@@ -41,7 +41,7 @@ Bu makalede ayrıca, tasarımcıda işlem hatları oluşturmak için temel bilgi
 
 ### <a name="sample-pipeline"></a>Örnek işlem hattı
 
-Bu makalede kullanılan işlem hattı, [örnek 3: gelir tahmini](samples-designer.md#classification)'nin değiştirilmiş bir sürümüdür. İşlem hattı, kendi verilerinizi kullanarak modellerinizi nasıl eğitekullanacağınızı göstermek için örnek veri kümesi yerine [veri alma](algorithm-module-reference/import-data.md) modülünü kullanır.
+Bu makalede kullanılan işlem hattı, tasarımcı giriş hattının örnek bir ardışık düzen [geliri tahmini](samples-designer.md#classification) sürümü olarak değiştirilmiştir. İşlem hattı, kendi verilerinizi kullanarak modellerinizi nasıl eğitekullanacağınızı göstermek için örnek veri kümesi yerine [veri alma](algorithm-module-reference/import-data.md) modülünü kullanır.
 
 ![Değiştirilen örnek işlem hattını, verileri Içeri aktarma modülünü vurgulama kutusuyla gösteren ekran görüntüsü](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -69,7 +69,7 @@ Bu makalede kullanılan işlem hattı, [örnek 3: gelir tahmini](samples-designe
    > [!NOTE]
    > İşlem hattı taslağınız başlığının yanındaki **Ayarlar** dişli simgesini seçerek işlem hattı parametrelerinizi inceleyebilir ve düzenleyebilirsiniz. 
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. İşlem hattı çalıştırmasını gönder.
 
@@ -83,7 +83,8 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
 1. Modelinizi **diğer çıkışlara** , çalışma günlükleri ile birlikte bulabilirsiniz.
 1. Alternatif olarak, **çıktıyı görüntüle** simgesini seçin. Buradan, doğrudan veri deposuna gitmek için iletişim kutusundaki yönergeyi izleyebilirsiniz. 
 
-![Eğitilen modelin nasıl indirileceği gösteren ekran görüntüsü](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![Eğitilen modelin nasıl indirileceği gösteren ekran görüntüsü](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Eğitim işlem hattı yayımlama
 
@@ -101,9 +102,9 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
 
 Artık yayımlanmış bir eğitim işlem hattına sahip olduğunuza göre, bunu kullanarak modelinize yeni verileri yeniden eğitebilirsiniz. Çalışan bir ardışık düzen uç noktasından veya programlama yoluyla çalışma gönderebilirsiniz.
 
-### <a name="submit-runs-by-using-the-designer"></a>Tasarımcıyı kullanarak çalıştırma gönderme
+### <a name="submit-runs-by-using-the-studio-portal"></a>Çalışmaları, Studio portalını kullanarak gönderme
 
-Tasarımcıdan bir parametreli işlem hattı çalıştırması göndermek için aşağıdaki adımları kullanın:
+Studio portalından parametreli bir işlem hattı çalıştırması göndermek için aşağıdaki adımları kullanın:
 
 1. Studio çalışma alanınızdaki **uç noktalar** sayfasına gidin.
 1. **Ardışık düzen uç noktaları** sekmesini seçin. Ardından, işlem hattı uç noktanızı seçin.
