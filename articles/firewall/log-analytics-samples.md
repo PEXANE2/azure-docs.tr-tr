@@ -1,20 +1,20 @@
 ---
-title: Azure Güvenlik Duvarı günlük Analizi örnekleri
+title: Azure Güvenlik Duvarı için Azure Izleyici günlükleri
 description: Azure Izleyici günlükleri, Azure Güvenlik duvarınızı analiz etmek için kullanılabilir. Örnek dosya, Azure Izleyici 'de Görünüm Tasarımcısı 'nda yerleşiktir.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76706015"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023882"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Güvenlik Duvarı günlük Analizi örnekleri
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Güvenlik Duvarı için Azure Izleyici günlükleri
 
 Aşağıdaki Azure Izleyici günlükleri örnekleri, Azure Güvenlik Duvarı günlüklerinizi analiz etmek için kullanılabilir. Örnek dosya, Azure Izleyici 'de Görünüm Tasarımcısı 'nda yerleşik olarak bulunur, [Azure izleyici 'Deki Görünüm Tasarımcısı](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) , görünüm tasarım kavramı hakkında daha fazla bilgi içerir.
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 Aşağıdaki günlük örnekleri, bir günlük girişinde içerilen verileri gösterir.
 
-![günlük girdisi](media/log-analytics-samples/log1.png)
+![günlük girdisi bir](media/log-analytics-samples/log1.png)
 
-![günlük girdisi](media/log-analytics-samples/log2.png)
+![iki günlük girdisi ](media/log-analytics-samples/log2.png)
 
-![günlük girdisi](media/log-analytics-samples/log3.png)
+![günlük girişi üç](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Güvenlik Duvarı izleme ve tanılama hakkında bilgi edinmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md).

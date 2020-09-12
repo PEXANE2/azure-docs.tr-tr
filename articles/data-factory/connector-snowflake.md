@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181893"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023865"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar tanesi içindeki verileri kopyalama ve dönüştürme
 
@@ -39,7 +39,7 @@ Kopyalama etkinliği için, bu kar tanesi bağlayıcı aşağıdaki işlevleri d
 
 Azure SYNAPSE Analytics çalışma alanını kullandığınızda kar tanesi havuz desteklenmez.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,11 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -409,8 +413,8 @@ Aşağıdaki tabloda, kar tanesi kaynağı tarafından desteklenen özellikler l
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Tablo | Giriş olarak tablo ' yı seçerseniz, veri akışı, satır içi veri kümesi kullanılırken kar tanesi veri kümesinde veya kaynak seçeneklerinde belirtilen tablodaki tüm verileri getirir. | No | Dize | *(yalnızca satır içi veri kümesi için)*<br>tableName<br>schemaName |
-| Sorgu | Giriş olarak Sorgula ' yı seçerseniz, kar grubundan veri getirmek için bir sorgu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar.<br>Şema, tablo ve sütun adları küçük harf içeriyorsa, sorgu gibi nesne tanımlayıcısını tırnak içine alarak tırnak işareti `select * from "schema"."myTable"` . | No | Dize | sorgu |
+| Tablo | Giriş olarak tablo ' yı seçerseniz, veri akışı, satır içi veri kümesi kullanılırken kar tanesi veri kümesinde veya kaynak seçeneklerinde belirtilen tablodaki tüm verileri getirir. | Hayır | Dize | *(yalnızca satır içi veri kümesi için)*<br>tableName<br>schemaName |
+| Sorgu | Giriş olarak Sorgula ' yı seçerseniz, kar grubundan veri getirmek için bir sorgu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar.<br>Şema, tablo ve sütun adları küçük harf içeriyorsa, sorgu gibi nesne tanımlayıcısını tırnak içine alarak tırnak işareti `select * from "schema"."myTable"` . | Hayır | Dize | sorgu |
 
 #### <a name="snowflake-source-script-examples"></a>Kar tanesi kaynak betiği örnekleri
 

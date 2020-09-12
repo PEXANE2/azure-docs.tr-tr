@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320483"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019912"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına
 
@@ -28,6 +28,8 @@ Bu makalede şunları açıklanmaktadır:
 * X. 509.440 CA tabanlı kimlik doğrulaması için üretim tedarik zinciri ayarlama
 
 * X. 509.440 CA ile imzalanan cihazların IoT Hub 'e bağlanması
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -63,13 +65,13 @@ Bu adımların nasıl yerine getirileceğini gösteren Ayrıntılar çeşitli hi
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>X. 509.440 CA sertifikası satın alma
 
-CA sertifikasının satın alınması iyi bilinen bir kök CA 'nın, Cihazlar bağlandığında IoT cihazlarının yasallığı için güvenilir bir üçüncü taraf görevi gören avantajına sahip olma avantajına sahiptir. IoT Hub ilk bağlantıdan sonra, şirket-X, üçüncü taraf ürün veya hizmetlerle etkileşim kurmak için akıllı X pencere öğesi istiyorsanız bu seçeneği seçer.
+CA sertifikasının satın alınması iyi bilinen bir kök CA 'nın, Cihazlar bağlandığında IoT cihazlarının yasallığı için güvenilir bir üçüncü taraf görevi gören avantajına sahip olma avantajına sahiptir. IoT Hub ilk bağlantıdan sonra, şirket-X, üçüncü taraf ürün veya hizmetleriyle etkileşim kurmak için akıllı X pencere öğesi istiyorsanız bu seçeneği seçer.
 
 X. 509.952 CA sertifikası satın almak için, şirket-X bir kök sertifika hizmetleri sağlayıcısı seçer. ' Kök CA ' ifadesi için bir internet araması iyi müşteri adayları elde eder. Kök CA, şirket-X ' i ortak/özel anahtar çiftinin nasıl oluşturulacağını ve hizmetleri için bir sertifika Imzalama Isteği (CSR) oluşturmayı yönlendirecektir. CSR, sertifika yetkilisinden bir sertifika için uygulama ile ilgili biçimsel bir işlemdir. Bu satınalmanın sonucu, yetkili sertifika olarak kullanılacak bir sertifikadır. X. 509.440 sertifikalarınızın kolaylaşmıştır 'e verildiğine göre, sertifika, IETF 'nin RFC 5280 standardına göre düzgün şekilde biçimlendirildi.
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>Otomatik olarak Imzalanan bir X. 509.440 CA sertifikası oluşturma
 
-Otomatik olarak Imzalanan bir X. 509.440 CA sertifikası oluşturma işlemi, kök sertifika yetkilisi gibi üçüncü taraf imzalayıcısı ile ilgili özel durum ile satın almaya benzer. Bizim örneğimizde, şirket-X kök sertifika yetkilisi yerine yetkili sertifikasını imzalayacaktır. Şirket-X, bir yetkili sertifika satın almaya hazırlanana kadar bu seçeneği test etmek için seçebilirler. Şirket-X, akıllı-X-pencere öğesinin IoT Hub dışındaki herhangi bir üçüncü taraf hizmete bağlanması amaçlanmamışsa, üretimde otomatik olarak imzalanan bir X. 509.440 CA sertifikası da kullanabilir.
+Otomatik olarak Imzalanan bir X. 509.952 CA sertifikası oluşturma işlemi, kök sertifika yetkilisi gibi üçüncü taraf bir imzalayan ile satın almaya benzer. Bizim örneğimizde, şirket-X kök sertifika yetkilisi yerine yetkili sertifikasını imzalayacaktır. Şirket-X, bir yetkili sertifika satın almaya hazırlanana kadar bu seçeneği test etmek için seçebilirler. Şirket-X, akıllı-X-pencere öğesinin IoT Hub dışındaki herhangi bir üçüncü taraf hizmete bağlanması amaçlanmamışsa, üretimde otomatik olarak imzalanan bir X. 509.440 CA sertifikası da kullanabilir.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>X. 509.440 sertifikasını kaydedin IoT Hub
 

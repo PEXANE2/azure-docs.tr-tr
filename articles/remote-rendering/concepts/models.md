@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021893"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023780"
 ---
 # <a name="models"></a>Modeller
 
@@ -28,7 +28,6 @@ Her varlıkta [bileşen](components.md) eklenmiş olabilir. En yaygın durumda, 
 Çalışma zamanı için model oluşturma, FBX ve GLTF gibi dosya biçimlerinden [giriş modellerini dönüştürerek](../how-tos/conversion/model-conversion.md) elde edilir. Dönüştürme işlemi, dokular, malzemeler ve kafesler gibi tüm kaynakları ayıklar ve bunları iyileştirilmiş çalışma zamanı biçimlerine dönüştürür. Ayrıca yapısal bilgileri ayıklar ve bunu ARR 'nin varlık/bileşen grafik yapısına dönüştürür.
 
 > [!IMPORTANT]
->
 > [Model dönüştürme](../how-tos/conversion/model-conversion.md) , [kafeslerin](meshes.md)oluşturmanın tek yoludur. Kafesler, çalışma zamanında varlıklar arasında paylaşılabilecek olsa da, bir modeli yükleme dışında çalışma zamanına bir ağ almanın başka bir yolu yoktur.
 
 ## <a name="loading-models"></a>Modeller yükleniyor
@@ -118,6 +117,13 @@ Daha sonra varlık hiyerarşisinde çapraz geçiş yapabilir ve varlıkları ve 
 
 > [!CAUTION]
 > ARR 'deki tüm *zaman uyumsuz* işlevler zaman uyumsuz işlem nesneleri döndürüyor. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi halde, C# çöp toplayıcı işlemi erken silebilir ve hiçbir şekilde bitmeyebilir. Yukarıdaki örnek kodda, *await* öğesinin kullanımı, model yüklemesi tamamlanana kadar ' loadOp ' yerel değişkeninin bir başvuru bulundurduğunu garanti eder. Ancak, bunun yerine *tamamlanmış* olayını kullanıyorsanız, zaman uyumsuz işlemi bir üye değişkeninde depolamanız gerekir.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# RemoteManager. LoadModelAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager. LoadModelFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager:: LoadModelAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager:: LoadModelFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

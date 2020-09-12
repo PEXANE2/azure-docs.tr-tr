@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030495"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017243"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
@@ -256,7 +256,7 @@ Umask, 007 olarak ayarlanan sabit bir değer Azure Data Lake Storage 2.. Bu değ
 | umask. owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
 | uımask. other         |    7         |   `RWX`      | Diğer bir deyişle, alt öğenin erişim ACL 'sindeki tüm izinleri kaldırın |
 
-Azure Data Lake Storage 2. tarafından kullanılan umask değeri, varsayılan ACL 'nin gösterdiği ne olursa olsun, **diğer** için varsayılan olarak yeni alt klasörlerde hiçbir şekilde iletilmediği anlamına gelir. 
+Azure Data Lake Storage 2. tarafından kullanılan umask değeri, ana dizinde varsayılan bir ACL tanımlanmadığı müddetçe, **diğer** için varsayılan olarak yeni alt klasörlerde hiçbir şekilde iletilmediği anlamına gelir. Bu durumda, umask etkin bir şekilde yok sayılır ve varsayılan ACL tarafından tanımlanan izinler alt öğeye uygulanır. 
 
 Aşağıdaki sözde kod, bir alt öğe için ACL 'Ler oluştururken umask 'in nasıl uygulanacağını gösterir.
 
@@ -328,7 +328,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 OID görüntülenir.
 
-Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID için uygun izinleri atamak için Depolama Gezgini **erişimi yönet** sayfasına gidin. **Kaydet**' i seçtiğinizden emin olun.
+Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID için uygun izinleri atamak için Depolama Gezgini **erişimi yönet** sayfasına gidin. **Kaydet**’i seçtiğinizden emin olun.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage 2. ACL 'Leri devralmayı destekliyor mu?
 

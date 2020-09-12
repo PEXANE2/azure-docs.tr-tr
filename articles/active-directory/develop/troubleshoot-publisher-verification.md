@@ -1,6 +1,6 @@
 ---
 title: Yayımcı doğrulama sorunlarını giderme-Microsoft Identity platform | Mavisi
-description: Microsoft Graph API 'Lerini çağırarak Microsoft Identity platform için yayımcı doğrulaması (Önizleme) sorunlarını nasıl giderebileceğinizi açıklar.
+description: Microsoft Graph API 'Leri çağırarak Microsoft Identity platform için yayımcı doğrulaması sorunlarını nasıl giderebileceğinizi açıklar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282985"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007562"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Yayımcı doğrulaması ile ilgili sorunları giderme (önizleme)
-İşlem tamamlanamıyorsanız veya [yayımcı doğrulaması (Önizleme)](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen bir davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
+# <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
+Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
 
 1. [Gereksinimleri](publisher-verification-overview.md#requirements) gözden geçirin ve tümünün karşılandıklarından emin olun.
 
@@ -62,7 +62,7 @@ ms.locfileid: "87282985"
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph API çağrısı yapma 
 
-Bir sorun yaşıyorsanız ancak kullanıcı arabiriminde neleri gördüğünüzü anlayacağınızı anlayamadığında, uygulama kayıt portalında gerçekleştirebileceğiniz işlemleri gerçekleştirmek için Microsoft Graph çağrılarını kullanarak daha fazla sorun giderme işlemi gerçekleştirmek yararlı olabilir. Önizleme aşamasında, bu API 'Ler yalnızca Microsoft Graph/Beta uç noktasında kullanılabilir olacaktır.  
+Bir sorun yaşıyorsanız ancak kullanıcı arabiriminde neleri gördüğünüzü anlayacağınızı anlayamadığında, uygulama kayıt portalında gerçekleştirebileceğiniz işlemleri gerçekleştirmek için Microsoft Graph çağrılarını kullanarak daha fazla sorun giderme işlemi gerçekleştirmek yararlı olabilir.
 
 Bu istekleri yapmanın en kolay yolu, [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)kullanmaktır. Ayrıca, [Postman](https://www.postman.com/)kullanma gibi diğer seçenekleri veya [bir Web Isteği çağırmak](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)için PowerShell 'i kullanmayı da düşünebilirsiniz.  
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210599"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669625"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
 
@@ -34,7 +34,7 @@ Aşağıdaki şekilde sertifikaların kullanımı IoT Edge gösterilmektedir. K�
 ![Tipik sertifika ilişkilerinin diyagramı](./media/iot-edge-certs/edgeCerts-general.png)
 
 > [!NOTE]
-> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor. Bu sınırlama, cihaz CA sertifikası, güven paketindeki tüm sertifikalar ve X. 509.440 sağlama yöntemleri için kullanılan cihaz KIMLIĞI sertifikaları için geçerlidir.
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2038 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor. Bu sınırlama, cihaz CA sertifikası, güven paketindeki tüm sertifikalar ve X. 509.440 sağlama yöntemleri için kullanılan cihaz KIMLIĞI sertifikaları için geçerlidir.
 
 ### <a name="certificate-authority"></a>Sertifika yetkilisi
 

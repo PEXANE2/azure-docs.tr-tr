@@ -4,15 +4,15 @@ description: Genişleme Azure Analysis Services sunucularını çoğaltın. Daha
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716937"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007715"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -41,6 +41,8 @@ Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzu
 * Eklenen çoğaltmaların gereksiz bir şekilde hidramasını önlemek için *genişleme işleminden önce* bir eşitleme gerçekleştirin. Aynı anda çalışan eşzamanlı eşitlemeye ve genişleme işlemlerine izin verilmez.
 
 * Hem işleme *hem* de genişleme işlemlerini otomatikleştirerek, öncelikle birincil sunucuda verilerin işlenmesi, sonra bir eşitleme gerçekleştirmesi ve sonra da genişleme işlemi gerçekleştirmeniz önemlidir. Bu sıra, QPU ve bellek kaynakları üzerinde en düşük etkiyi sağlar.
+
+* Genişleme işlemleri sırasında, birincil sunucu dahil olmak üzere sorgu havuzundaki tüm sunucular geçici olarak çevrimdışı.
 
 * Sorgu havuzunda çoğaltma olmadığında bile eşitlemeye izin verilir. Birincil sunucudaki bir işleme işlemindeki yeni verilerle bir veya daha fazla kopyaya ölçeklendirirseniz, eşitleme işlemini sorgu havuzunda çoğaltma olmadan gerçekleştirin ve ardından ölçeği ölçeklendirin. Ölçeklendirmeden önce eşitleme, yeni eklenen çoğaltmaların gereksiz bir şekilde yeniden alımını önler.
 
@@ -114,7 +116,7 @@ Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi 
 
 **Genel bakış** > model > **modeli eşitler**.
 
-![Genişleme kaydırıcısı](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Synchronize simgesi](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
@@ -131,7 +133,7 @@ Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi 
 Dönüş durum kodları:
 
 
-|Kod  |Açıklama  |
+|Kod  |Description  |
 |---------|---------|
 |-1     |  Geçersiz       |
 |0     | Yapan        |
