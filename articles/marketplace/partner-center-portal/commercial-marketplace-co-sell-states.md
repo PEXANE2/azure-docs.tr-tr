@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 04/01/2020
-ms.openlocfilehash: 7dd28ab23894988a1ee193f2f8d72cb83b7aafe8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/02/2020
+ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120526"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321489"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketi 'nde ortak satış eyalet ve eyalet kodları
 
@@ -53,7 +53,7 @@ Bu makalede, teklifinizin ortak satış sayfasında iletişim bilgilerini sağla
 | New Hampshire                       | ABD-NH     |
 | New Jersey                          | ABD-NJ     |
 | New Mexico                          | ABD-NM     |
-| New York                            | ABD-NY     |
+| New Yok                            | ABD-NY     |
 | North Carolina                      | ABD-NC     |
 | North Dakota                        | ABD-ND     |
 | Ohio                                | ABD-OH     |
@@ -78,7 +78,7 @@ Bu makalede, teklifinizin ortak satış sayfasında iletişim bilgilerini sağla
 | Kuzey Mariana Adaları            | ABD-MP     |
 | Porto Riko                         | ABD-PR     |
 | Birleşik Devletler küçük harici Adaları | ABD-UM    |
-| Virgin Adaları, ABD                 | ABD-VI    |
+| ABD Virgin Adaları                 | ABD-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>Kanada eyaletleri ve bölgeleri
 

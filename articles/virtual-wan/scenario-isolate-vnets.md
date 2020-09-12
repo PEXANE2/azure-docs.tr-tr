@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553402"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400050"
 ---
 # <a name="scenario-isolating-vnets"></a>Senaryo: VNET 'leri yalıtma
 
@@ -29,7 +29,7 @@ Bu senaryoda, belirli bir sanal ağ içindeki iş yükü yalıtılmış kalır v
 | Sanal ağlar     | &#8594;|           |     X    |
 | Dallar   | &#8594;|    X     |     X    |
 
-Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları) belirli bir trafik akışı için bir hedef ön eki (akışın "Kimden" tarafı, italik olan sütun başlıkları) öğrenip öğrenmediğini açıklar.
+Önceki tabloda bulunan hücrelerden her biri, bir sanal WAN bağlantısının (akışın "Kimden" tarafı, satır başlıkları), belirli bir trafik akışı için bir hedef ön eki (akışın "to" tarafında, italik olarak sütun üst bilgileri) öğrenip ("X" bağlantısının sanal WAN tarafından sağlandığı anlamına geldiğini açıklar.
 
 Bu bağlantı matrisi, iki yol tablosuna çeviren iki farklı satır deseni sunar. Sanal WAN zaten varsayılan bir yol tablosuna sahiptir, bu nedenle başka bir yol tablosu gerekecektir. Bu örnekte, yol tablosu **RT_VNET**olarak adı vereceğiz.
 
@@ -46,7 +46,7 @@ Yalnızca dalların yol tablosuna yayıldığından **RT_VNET**, bu, diğer VNET
 
 Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Bu senaryoyu yapılandırmak için aşağıdaki adımları göz önünde bulundurun:
 

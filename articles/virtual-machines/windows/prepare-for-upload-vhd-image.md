@@ -6,14 +6,14 @@ manager: dcscontentpm
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321744"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -28,73 +28,6 @@ Azure VM 'Leri için destek ilkesi hakkında daha fazla bilgi için bkz. [Azure 
 >
 > - Windows Server 2008 R2 ve üzeri Windows Server işletim sistemlerinin 64 bitlik sürümü. Azure 'da 32 bitlik bir işletim sistemi çalıştırma hakkında bilgi için bkz. [Azure VM 'lerde 32 bit işletim sistemleri Için destek](https://support.microsoft.com/help/4021388/).
 > - Azure Site Recovery veya Azure geçişi gibi iş yükünü geçirmek için herhangi bir olağanüstü durum kurtarma aracı kullanılacaksa, bu işlem, görüntüyü geçişten önce hazırlamak için konuk işletim sisteminde yine de gereklidir.
-
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Sanal diski sabit boyutlu bir VHD 'ye Dönüştür
-
-Sanal diskinizi Azure için gereken biçime dönüştürmek ve yeniden boyutlandırmak için bu bölümdeki yöntemlerden birini kullanın:
-
-1. Sanal disk dönüştürmeyi veya yeniden boyutlandırma işlemini çalıştırmadan önce VM 'yi yedekleyin.
-
-1. Windows VHD 'nin yerel sunucuda doğru şekilde çalıştığından emin olun. Azure 'a dönüştürmeyi veya karşıya yüklemeyi denemeden önce VM 'nin içindeki hataları çözün.
-
-1. Sanal diski fixed türüne dönüştürün.
-
-1. Sanal diski Azure gereksinimlerini karşılayacak şekilde yeniden boyutlandırın:
-
-   1. Azure 'daki diskler, 1 MiB hizalı bir sanal boyuta sahip olmalıdır. VHD 'niz 1 MIB 'nin bir kesri ise diski 1 MiB 'nin katlarından birine yeniden boyutlandırmanız gerekir. Bir MIB 'nin kesirleri olan diskler karşıya yüklenen VHD 'den görüntü oluştururken hatalara neden olur. Bunu doğrulamak için PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet ' i, Azure 'Da 1 MiB ve "Boyut" ve VHD altbilgisi için 512 bayta eşit olacak "Boyut" göstermek için kullanabilirsiniz.
-   
-   1. 1. nesil VM 'ye sahip işletim sistemi VHD 'SI için izin verilen en büyük boyut 2.048 GiB 'dir (2 TiB), 
-   1. Bir veri diskinin en büyük boyutu 32.767 GiB 'dir (32 TiB).
-
-> [!NOTE]
-> - Sabit bir diske dönüştürdükten sonra bir Windows işletim sistemi diski hazırlıyorsanız, gerekirse yeniden boyutlandırıyorsanız, diski kullanan bir VM oluşturun. Sanal makineyi başlatıp oturum açın ve bu makaledeki bölümlerle devam ederek karşıya yüklemeyi hazırlamayı tamamlayın.  
-> - Bir veri diski hazırlıyorsanız, bu bölüm ile durabilir ve diskinizi karşıya yüklemeye devam edebilirsiniz.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V Yöneticisi 'Ni kullanarak diski dönüştürme
-
-1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
-1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
-1. **Eylem Seç** sayfasında, Sonrakini **Dönüştür**' ü seçin  >  **Next**.
-1. VHDX 'ten dönüştürmek için, sonraki **VHD**'yi seçin  >  **Next**.
-1. Dinamik olarak genişleyen bir diskten dönüştürmek için, sonraki **sabit boyut**' u seçin  >  **Next**.
-1. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
-1. **Son**’u seçin.
-
-### <a name="use-powershell-to-convert-the-disk"></a>Diski dönüştürmek için PowerShell 'i kullanma
-
-PowerShell 'de [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak bir sanal diski dönüştürebilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
-
-Aşağıdaki örnek, diski VHDX 'ten VHD 'ye dönüştürür. Ayrıca, diski dinamik olarak genişleyen bir diskten sabit boyutlu bir diske dönüştürür.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-Bu örnekte, **yol** değerini dönüştürmek istediğiniz sanal sabit disk ile değiştirin. **DestinationPath** değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK disk biçiminden Dönüştür
-
-[VMDK dosya biçiminde](https://en.wikipedia.org/wiki/VMDK)bir Windows sanal makine görüntünüz varsa, vhd biçimine dönüştürmek Için [Microsoft Virtual Machine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497) kullanın. Daha fazla bilgi için bkz. [bir VMware VMDK 'Yi Hyper-V VHD 'ye dönüştürme](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
-
-### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için Hyper-V Yöneticisi 'Ni kullanma
-
-1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
-1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
-1. **Eylem Seç** sayfasında İleri **Genişlet**' i seçin  >  **Next**.
-1. **Sanal sabit diski bul** sayfasında, gib > yeni boyutunu **daha sonra**girin.
-1. **Son**’u seçin.
-
-### <a name="use-powershell-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için PowerShell 'i kullanma
-
-PowerShell 'de [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 'ini kullanarak bir sanal diski yeniden boyutlandırabilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa [buraya](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)tıklayın.
-
-Aşağıdaki örnek, Azure hizalama gereksinimini karşılamak için diski 100,5 MIB 'den 101 MiB 'ye yeniden boyutlandırır.
-
-```powershell
-Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
-```
-
-Bu örnekte **yolun** değerini, yeniden boyutlandırmak istediğiniz sanal sabit disk yolu ile değiştirin. **SizeBytes** değerini, disk için bayt cinsinden yeni boyutla değiştirin.
 
 ## <a name="system-file-checker"></a> Sistem Dosyası Denetleyicisi
 
@@ -138,7 +71,7 @@ SFC taraması tamamlandıktan sonra, Windows güncelleştirmelerini yükledikten
    netsh.exe winhttp reset proxy
    ```
 
-    VM 'nin belirli bir ara sunucu ile çalışması gerekiyorsa, sanal makinenin Azure 'a bağlanabilmesi için Azure IP adresi ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) için bir proxy özel durumu ekleyin:
+    VM 'nin belirli bir ara sunucu ile çalışması gerekiyorsa, sanal makinenin Azure 'a bağlanabilmesi için Azure IP adresi ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) için bir proxy özel durumu ekleyin:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -411,13 +344,13 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
 1. Windows 'un hala sağlıklı olduğundan ve RDP bağlantısı üzerinden erişilebildiğinden emin olmak için VM 'yi yeniden başlatın. Bu noktada, VM 'nin tamamen başlamasını sağlamak için yerel Hyper-V sunucunuzda bir VM oluşturmayı düşünün. Ardından, VM 'ye RDP aracılığıyla ulaşabildiğinizden emin olmak için test edin.
 
-1. Tüm ek aktarım sürücüsü arabirimi (TDı) filtrelerini kaldırın. Örneğin, TCP paketlerini veya ek güvenlik duvarlarını çözümleyen yazılımları kaldırın. Bu işlemi daha sonra gözden geçirmek için, VM 'yi Azure 'da dağıtıldıktan sonra yapabilirsiniz.
+1. Tüm ek aktarım sürücüsü arabirimi (TDı) filtrelerini kaldırın. Örneğin, TCP paketlerini veya ek güvenlik duvarlarını çözümleyen yazılımları kaldırın.
 
 1. Fiziksel bileşenlerle veya diğer sanallaştırma teknolojilerinde ilgili diğer üçüncü taraf yazılımı veya sürücüleri kaldırın.
 
 ### <a name="install-windows-updates"></a>Windows güncelleştirmelerini yükler
 
-İdeal olarak, makineyi *Düzeltme Eki düzeyinde*güncel tutmanız gerekir. Bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklendiğinden emin olun. En son güncelleştirmeleri almak için Windows Update geçmiş sayfalarına bakın: [Windows 10 ve Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 ve Windows Server 2012 R2](https://support.microsoft.com/help/4009470) ve [Windows 7 SP1 ve Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
+İdeal olarak, makinenin *düzeltme eki düzeyine*güncelleştirilmesini sağlamanız gerekir, bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklendiğinden emin olun. En son güncelleştirmeleri almak için Windows Update geçmiş sayfalarına bakın: [Windows 10 ve Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1, ve Windows Server 2012 R2](https://support.microsoft.com/help/4009470) ve Windows 7 SP1 ve WINDOWS Server [2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
 <br />
 
@@ -462,7 +395,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 > [!NOTE]
 > VM sağlama sırasında yanlışlıkla yeniden başlatmanın önüne geçmek için, tüm Windows Update yüklemelerinin bitmesini ve bekleyen güncelleştirme olmamasını güvence altına almayı öneririz. Bunu yapmanın bir yolu, komutu çalıştırmadan önce tüm olası Windows güncelleştirmelerini yüklemektir ve bir kez yeniden başlatılacak `sysprep.exe` .
 
-### <a name="determine-when-to-use-sysprep"></a>Sysprep 'in ne zaman kullanılacağını belirleme
+## <a name="determine-when-to-use-sysprep"></a>Sysprep 'in ne zaman kullanılacağını belirleme
 
 Sistem Hazırlama Aracı ( `sysprep.exe` ), bir Windows yüklemesini sıfırlamak için çalıştırabileceğiniz bir işlemdir.
 Sysprep tüm kişisel verileri kaldırarak ve birçok bileşeni sıfırlayarak "kutudan çıkar" deneyimi sağlar.
@@ -472,7 +405,7 @@ Genellikle, `sysprep.exe` belirli bir yapılandırmaya sahip olan birkaç diğer
 Bir diskten yalnızca bir VM oluşturmak için Sysprep 'i kullanmanız gerekmez. Bunun yerine, VM 'yi *özelleştirilmiş bir görüntüden*oluşturabilirsiniz. Özel bir diskten VM oluşturma hakkında daha fazla bilgi için, bkz:
 
 - [Özelleştirilmiş diskten VM oluşturma](create-vm-specialized.md)
-- [Özelleştirilmiş bir VHD diskinden VM oluşturma](./create-vm-specialized-portal.md)
+- [Özelleştirilmiş bir VHD diskinden VM oluşturma](/azure/virtual-machines/windows/create-vm-specialized-portal)
 
 Genelleştirilmiş bir görüntü oluşturmak için Sysprep 'i çalıştırmanız gerekir. Daha fazla bilgi için bkz. [Sysprep 'i kullanma: giriş](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
@@ -488,7 +421,6 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 
 1. Windows VM 'de oturum açın.
 1. Yönetici olarak bir PowerShell oturumu çalıştırın.
-1. Panther dizinini (C:\Windows\Panther) silin.
 1. Dizini olarak değiştirin `%windir%\system32\sysprep` . Ardından `sysprep.exe` komutunu çalıştırın.
 1. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **generalize** onay kutusunun seçildiğinden emin olun.
 
@@ -501,6 +433,73 @@ Artık VHD karşıya yüklenmeye hazırdır. Genelleştirilmiş bir diskten VM o
 
 >[!NOTE]
 > Özel bir *unattend.xml* dosyası desteklenmez. , [Microsoft-Windows-Shell-Setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *unattend.xml* dosyasına eklemek için yalnızca sınırlı destek sağlayan **additionalunattendcontent** özelliğini destekliyoruz. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Sanal diski sabit boyutlu bir VHD 'ye Dönüştür
+
+Sanal diskinizi Azure için gereken biçime dönüştürmek ve yeniden boyutlandırmak için bu bölümdeki yöntemlerden birini kullanın:
+
+1. Sanal disk dönüştürmeyi veya yeniden boyutlandırma işlemini çalıştırmadan önce VM 'yi yedekleyin.
+
+1. Windows VHD 'nin yerel sunucuda doğru şekilde çalıştığından emin olun. Azure 'a dönüştürmeyi veya karşıya yüklemeyi denemeden önce VM 'nin içindeki hataları çözün.
+
+1. Sanal diski fixed türüne dönüştürün.
+
+1. Sanal diski Azure gereksinimlerini karşılayacak şekilde yeniden boyutlandırın:
+
+   1. Azure 'daki diskler, 1 MiB hizalı bir sanal boyuta sahip olmalıdır. VHD 'niz 1 MIB 'nin bir kesri ise, diski 1 MiB 'nin katlarından birine yeniden boyutlandırmanız gerekir. Bir MIB 'nin kesirleri olan diskler karşıya yüklenen VHD 'den görüntü oluştururken hatalara neden olur. Boyutunu doğrulamak için, PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) cmdlet 'ini kullanarak, Azure 'Da 1 MiB ve "Boyut" ve VHD altbilgisi için 512 bayta eşit olacak "Boyut" ile aynı olacak "Boyut" i gösteren "Boyut" ı kullanabilirsiniz.
+   
+   1. 1. nesil VM 'ye sahip işletim sistemi VHD 'SI için izin verilen en büyük boyut 2.048 GiB 'dir (2 TiB), 
+   1. Bir veri diskinin en büyük boyutu 32.767 GiB 'dir (32 TiB).
+
+> [!NOTE]
+> - Sabit bir diske dönüştürdükten sonra bir Windows işletim sistemi diski hazırlıyorsanız, gerekirse yeniden boyutlandırıyorsanız, diski kullanan bir VM oluşturun. Sanal makineyi başlatıp oturum açın ve bu makaledeki bölümlerle devam ederek karşıya yüklemeyi hazırlamayı tamamlayın.  
+> - Bir veri diski hazırlıyorsanız, bu bölüm ile durabilir ve diskinizi karşıya yüklemeye devam edebilirsiniz.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V Yöneticisi 'Ni kullanarak diski dönüştürme
+
+1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
+1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
+1. **Eylem Seç** sayfasında, Sonrakini **Dönüştür**' ü seçin  >  **Next**.
+1. VHDX 'ten dönüştürmek için, sonraki **VHD**'yi seçin  >  **Next**.
+1. Dinamik olarak genişleyen bir diskten dönüştürmek için, sonraki **sabit boyut**' u seçin  >  **Next**.
+1. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
+1. **Son**’u seçin.
+
+### <a name="use-powershell-to-convert-the-disk"></a>Diski dönüştürmek için PowerShell 'i kullanma
+
+PowerShell 'de [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak bir sanal diski dönüştürebilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa bkz. [Hyper-V rolünü yükleme](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Aşağıdaki örnek, diski VHDX 'ten VHD 'ye dönüştürür. Ayrıca, diski dinamik olarak genişleyen bir diskten sabit boyutlu bir diske dönüştürür.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+Bu örnekte, **yol** değerini dönüştürmek istediğiniz sanal sabit disk ile değiştirin. **DestinationPath** değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için Hyper-V Yöneticisi 'Ni kullanma
+
+1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
+1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
+1. **Eylem Seç** sayfasında İleri **Genişlet**' i seçin  >  **Next**.
+1. **Sanal sabit diski bul** sayfasında, gib > yeni boyutunu **daha sonra**girin.
+1. **Son**’u seçin.
+
+### <a name="use-powershell-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için PowerShell 'i kullanma
+
+PowerShell 'de [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 'ini kullanarak bir sanal diski yeniden boyutlandırabilirsiniz. Bu cmdlet 'i yükleme hakkında bilgiye ihtiyacınız varsa bkz. [Hyper-V rolünü yükleme](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Aşağıdaki örnek, Azure hizalama gereksinimini karşılamak için diski 100,5 MIB 'den 101 MiB 'ye yeniden boyutlandırır.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+Bu örnekte **yolun** değerini, yeniden boyutlandırmak istediğiniz sanal sabit disk yolu ile değiştirin. **SizeBytes** değerini, disk için bayt cinsinden yeni boyutla değiştirin.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK disk biçiminden Dönüştür
+
+[VMDK dosya biçiminde](https://en.wikipedia.org/wiki/VMDK)bir Windows sanal makine görüntünüz varsa, VMDK 'yi dönüştürmek ve Azure 'a yüklemek Için [Azure geçişi](https://docs.microsoft.com/azure/migrate/server-migrate-overview) ' ni kullanabilirsiniz.
 
 ## <a name="complete-the-recommended-configurations"></a>Önerilen konfigürasyonları doldurun
 
@@ -520,4 +519,4 @@ Aşağıdaki ayarlar, VHD karşıya yüklemeyi etkilemez. Ancak, bunları yapıl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kaynak Yöneticisi dağıtımları için Azure 'a bir Windows VM görüntüsü yükleme](upload-generalized-managed.md)
-- [Azure Windows VM etkinleştirme sorunlarını giderme](../troubleshooting/troubleshoot-activation-problems.md)
+- [Azure Windows VM etkinleştirme sorunlarını giderme](troubleshoot-activation-problems.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723954"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400373"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>API Management hizmeti yapılandırmanızı Git kullanarak kaydetme ve yapılandırma
 
@@ -47,7 +47,7 @@ Bu makalede, hizmet yapılandırmanızı yönetmek için git 'in nasıl etkinle�
 
 ## <a name="access-git-configuration-in-your-service"></a>Hizmetinizdeki git yapılandırmasına erişin
 
-Git yapılandırma ayarlarınızı görüntülemek ve yapılandırmak için **güvenlik** menüsüne tıklayıp **yapılandırma deposu** sekmesine gidebilirsiniz.
+Git yapılandırma ayarlarınızı görüntülemek ve yapılandırmak için **dağıtım ve altyapı** menüsüne tıklayıp **Depo** sekmesine gidebilirsiniz.
 
 ![GIT 'i etkinleştir][api-management-enable-git]
 
@@ -62,7 +62,7 @@ REST API kullanarak git erişimini etkinleştirme veya devre dışı bırakma ha
 
 Depoyu kopyalamaya başlamadan önce ilk adım, hizmet yapılandırmasının geçerli durumunu depoya kaydetmesidir. **Depoya Kaydet ' e**tıklayın.
 
-Onay ekranında istediğiniz değişiklikleri yapın ve kaydetmek için **Tamam** ' ı tıklatın.
+Onay ekranında istediğiniz değişiklikleri yapın ve kaydetmek için **Kaydet** ' e tıklayın.
 
 Birkaç dakika sonra yapılandırma kaydedildikten sonra, son yapılandırma değişikliğinin tarih ve saati ve hizmet yapılandırması ile depo arasındaki son eşitleme dahil olmak üzere deponun yapılandırma durumu görüntülenir.
 
@@ -112,7 +112,7 @@ Depo klonlandığında, bunu yerel dosya sisteminizde görüntüleyebilir ve bir
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Yerel deponuzu en güncel hizmet örneği yapılandırmasıyla güncelleştirmek için
 
-Azure portal API Management hizmet Örneğinizde veya REST API kullanarak değişiklik yaparsanız, yerel deponuzu en son değişikliklerle güncelleştirebilmeniz için bu değişiklikleri depoya kaydetmeniz gerekir. Bunu yapmak için Azure portal yapılandırma **deposu** sekmesinde **yapılandırmayı depoya kaydet** ' e tıklayın ve ardından yerel deponuzda aşağıdaki komutu verin.
+Azure portal API Management hizmet Örneğinizde veya REST API kullanarak değişiklik yaparsanız, yerel deponuzu en son değişikliklerle güncelleştirebilmeniz için bu değişiklikleri depoya kaydetmeniz gerekir. Bunu yapmak için Azure portal **Depo** sekmesinde **depoya kaydet** ' e tıklayın ve ardından yerel deponuzda aşağıdaki komutu verin.
 
 ```
 git pull
@@ -198,7 +198,7 @@ Kök `api-management` klasör, `configuration.json` hizmet örneği hakkında a�
 }
 ```
 
-İlk dört ayar ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` ve), `UserRegistrationTermsConsentRequired` **güvenlik** bölümündeki **kimlikler** sekmesinde aşağıdaki ayarlarla eşlenir.
+İlk dört ayar ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` ve), `UserRegistrationTermsConsentRequired` **Geliştirici Portalı** bölümündeki **kimlikler** sekmesinde aşağıdaki ayarlarla eşlenir.
 
 | Kimlik ayarı | Eşleme |
 | --- | --- |
@@ -208,7 +208,7 @@ Kök `api-management` klasör, `configuration.json` hizmet örneği hakkında a�
 | UserRegistrationTermsConsentRequired |**Izin iste** onay kutusu |
 | Requireusersignınenabled |**Anonim kullanıcıları oturum açma sayfasına yeniden yönlendir** onay kutusu |
 
-Sonraki dört ayar ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` ve), `DelegationValidationKey` **güvenlik** bölümündeki **temsili** sekmesinde aşağıdaki ayarlarla eşlenir.
+Sonraki dört ayar ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` ve), `DelegationValidationKey` **Geliştirici Portalı** bölümündeki **temsili** sekmesinde aşağıdaki ayarlarla eşlenir.
 
 | Temsili ayarı | Eşleme |
 | --- | --- |

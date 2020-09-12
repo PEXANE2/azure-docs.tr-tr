@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230288"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400475"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Temelleri
 
@@ -411,7 +411,7 @@ Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama: http
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
 
-**Rehberlik**: ortamda şüpheli veya güvenli olmayan bir etkinlik oluştuğunda günlükler ve uyarılar oluşturmak için Azure ACTIVE DIRECTORY (AAD) PRIVILEGED IDENTITY Management (PIM) kullanın. Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için AAD risk algılamalarını kullanın. Ek günlük kaydı için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Izleyicisine gönderin ve eylem gruplarını kullanarak özel uyarı/bildirim yapılandırın.
+**Rehberlik**: ortamda şüpheli veya güvenli olmayan bir etkinlik oluştuğunda günlükler ve uyarılar oluşturmak için Azure Active Directory (Azure AD) PRIVILEGED IDENTITY Management (PIM) kullanın. Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın. Ek günlük kaydı için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Izleyicisine gönderin ve eylem gruplarını kullanarak özel uyarı/bildirim yapılandırın.
 
 Şüpheli etkinlik uyarıları oluşturmak için Azure Key Vault için Gelişmiş tehdit koruması 'nı (ATP) etkinleştirin.
 
@@ -445,7 +445,7 @@ Koşullu erişim Azure Active Directory konum koşulu nedir?: https://docs.micro
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (AAD) kullanın. Bu, gizli kaynakları yönetmek için rol tabanlı erişim denetimi (RBAC) sağlar.
+**Rehberlik**: Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Bu, gizli kaynakları yönetmek için rol tabanlı erişim denetimi (RBAC) sağlar.
 
  
 
@@ -460,7 +460,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-**Rehberlik**: Azure Key Vault yönetici rollerine sahip eski hesapları bulmaya yardımcı olması için Azure ACTIVE DIRECTORY (AAD) günlüklerini inceleyin. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek için AAD erişim incelemelerini kullanın, Azure Key Vault erişmek için kullanılabilecek kurumsal uygulamalara erişin ve rol atamalarına erişin. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişiminin her 90 gün gibi düzenli aralıklarla gözden geçirilmesi gerekir.
+**Rehberlik**: Azure Key Vault yönetici rollerine sahip eski hesapları bulmaya yardımcı olması için Azure Active Directory (Azure AD) günlüklerini inceleyin. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek için Azure AD erişim gözden geçirmeleri 'nı kullanın, Azure Key Vault erişmek için kullanılabilecek kurumsal uygulamalara erişin ve rol atamalarına erişin. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişiminin her 90 gün gibi düzenli aralıklarla gözden geçirilmesi gerekir.
 
 Raporları ve izleme belgelerini Azure Active Directory:
 
@@ -1009,11 +1009,15 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 Key Vault oluşturma:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama: 
+Key Vault kimlik doğrulaması nasıl yapılır:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault erişim ilkesi atama:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1025,16 +1029,13 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
   
 
-Azure yönetilen kimliklerle tümleştirme: 
+* [Azure yönetilen kimliklerle tümleştirme](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
+* [Key Vault oluşturma](quick-create-portal.md)
 
-Key Vault oluşturma: 
+* [Key Vault kimlik doğrulaması yapma](authentication.md)
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal    
-
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:  
-https://docs.microsoft.com/azure/key-vault/managed-identity
+* [Key Vault erişim ilkesi atama](assign-access-policy-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

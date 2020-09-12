@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/20/2017
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988076"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400169"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>İş ortağı VPN cihaz yapılandırmalarına genel bakış
 Bu makalede, Azure VPN ağ geçitlerine bağlanmak için şirket içi VPN cihazlarını yapılandırmaya ilişkin bir genel bakış sunulmaktadır. Aynı parametreleri kullanarak farklı şirket içi VPN cihaz yapılandırmalarına nasıl bağlanakullanacağınızı göstermek için örnek bir Azure sanal ağ ve VPN ağ geçidi kurulumu kullanılır.
@@ -43,7 +43,7 @@ Bu bölümde, önceki bölümlerde açıklanan örneklerin parametreleri listele
 | * Şirket içi BGP ASN         | 65050                        |
 | * Şirket içi BGP eşi IP 'si     | 10.52.255.254                |
 
-\*Yalnızca BGP için isteğe bağlı parametre.
+\* Yalnızca BGP için isteğe bağlı parametre.
 
 ### <a name="sample-powershell-script"></a>Örnek PowerShell betiği
 Bu bölüm, başlamanıza olanak sağlayan örnek bir betik sağlar. Ayrıntılı yönergeler için bkz. [PowerShell kullanarak S2S VPN bağlantısı oluşturma](vpn-gateway-create-site-to-site-rm-powershell.md).

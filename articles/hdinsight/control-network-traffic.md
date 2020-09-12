@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773415"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400203"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight 'ta ağ trafiğini denetleme
 
@@ -32,7 +32,11 @@ Ağ trafiğini denetlemek için **ağ güvenlik grupları** kullanmayı planlıy
 
 1. HDInsight için kullanmayı planladığınız Azure bölgesini belirler.
 
-2. Bölgeniz için HDInsight tarafından gereken hizmet etiketlerini belirler. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](hdinsight-service-tags.md).
+2. Bölgeniz için HDInsight tarafından gereken hizmet etiketlerini belirler. Bu hizmet etiketlerini almanın birden çok yolu vardır:
+    1. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketlerindeki](hdinsight-service-tags.md)yayımlanmış hizmet etiketleri listesine başvurun. 
+    2. Bölgeniz listede yoksa, bölgeniz için bir hizmet etiketi bulmak üzere [hizmet etiketi bulma API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 'sini kullanın.
+    3. API 'yi kullandıysanız, [hizmet etıketı json dosyasını](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) indirin ve istediğiniz bölgeyi arayın.
+
 
 3. HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
 
@@ -51,10 +55,6 @@ Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız v
 Zorlamalı tüneli ayarlama ile ilgilenen müşteriler [özel meta](./hdinsight-use-external-metadata-stores.md) veri kullanmalıdır ve küme alt ağından veya şirket içi ağdan bu özel meta veri bağlantısı için uygun bağlantıyı ayarlamanıza olanak sağlar.
 
 Azure Güvenlik Duvarı ile UDR kurulumunun bir örneğini görmek için bkz. [Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma](hdinsight-restrict-outbound-traffic.md).
-
-## <a name="required-ip-addresses"></a>Gerekli IP adresleri
-
-Trafiği denetlemek için ağ güvenlik grupları veya Kullanıcı tanımlı yollar kullanıyorsanız bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
 
 ## <a name="required-ports"></a>Gerekli bağlantı noktaları
 

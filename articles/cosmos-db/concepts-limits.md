@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400322"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -118,6 +118,7 @@ Kullandığınız API 'ye bağlı olarak bir Azure Cosmos kapsayıcısı bir kol
 | Dizin oluşturma ilkesindeki en fazla yol sayısı| 100 <sup>*</sup>|
 | Kapsayıcı başına en fazla benzersiz anahtar sayısı|( <sup>*</sup>|
 | Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k <sup>*</sup>|
+| En fazla TTL değeri |2147483647|
 
 <sup>*</sup> Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
 
@@ -136,6 +137,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 | En fazla özellik değeri uzunluğu | Pratik sınır yok |
 | En fazla dize özelliği değeri uzunluğu | Pratik sınır yok |
 | Maksimum sayısal Özellik değeri uzunluğu | IEEE754 çift duyarlıklı 64 bit |
+| En fazla TTL değeri |2147483647|
 
 Bölüm anahtarı ve KIMLIK değerleri için uzunluk kısıtlamaları ve 2 MB Toplam boyut kısıtlaması dışında, öğe yükleri üzerinde özellik sayısı ve iç içe geçme derinliği gibi kısıtlamalar yoktur. RU tüketimini azaltmak için büyük veya karmaşık öğe yapılarına sahip kapsayıcılar için dizin oluşturma İlkesi yapılandırmanız gerekebilir. Cosmos DB, gerçek dünyada bir örnek için bkz. [modelleme öğeleri](how-to-model-partition-example.md) ve büyük öğeleri yönetmek için desenler.
 

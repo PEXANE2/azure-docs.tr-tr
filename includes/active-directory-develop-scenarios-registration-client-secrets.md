@@ -1,44 +1,42 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Gizli istemci senaryosu giriş sayfaları için dosya ekleme (Daemon, Web uygulaması, Web API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/14/2020
 ms.author: jmprieur
-ms.custom: include file
-ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87103073"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436485"
 ---
-## <a name="register-secrets-or-certificates"></a>Gizli dizileri veya sertifikaları Kaydet
+## <a name="add-a-client-secret-or-certificate"></a>İstemci parolası veya sertifikası ekleme
 
-Tüm gizli istemci uygulamaları için bir gizli dizi veya sertifika kaydetmeniz gerekir. [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) etkileşimli deneyim aracılığıyla veya komut satırı araçlarını (PowerShell gibi) kullanarak uygulama gizli dizilerini kaydedebilirsiniz.
+Tüm gizli istemci uygulamaları gibi, Kullanıcı etkileşimi olmadan kendisi olarak kimlik doğrulaması yapabilmesi için uygulamanın *kimlik bilgileri* olarak davranacak bir gizli dizi veya sertifika eklemeniz gerekir.
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Uygulama kayıt portalını kullanarak istemci gizli dizilerini kaydetme
+[Azure Portal](#add-client-credentials-by-using-the-azure-portal) kullanarak veya [PowerShell](#add-client-credentials-by-using-powershell)gibi bir komut satırı aracı kullanarak, istemci uygulamanızın kaydına kimlik bilgileri ekleyebilirsiniz.
 
-İstemci kimlik bilgilerinin yönetimi, bir uygulama için **sertifikalar & gizli** diziler sayfasında gerçekleşir:
+### <a name="add-client-credentials-by-using-the-azure-portal"></a>Azure portal kullanarak istemci kimlik bilgilerini ekleme
 
-![Sertifikalar & gizlilikler sayfası](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+Gizli istemci uygulamanızın uygulama kaydına kimlik bilgileri eklemek için hızlı başlangıç: eklemek istediğiniz kimlik bilgisi türü için [Microsoft Identity platformu ile uygulama kaydetme](../articles/active-directory/develop/quickstart-register-app.md) ' daki adımları izleyin:
 
-- Azure portal uygulamanın kaydında **yeni istemci parolası** ' nı seçerek bir *istemci parolası* oluşturursunuz. Bir istemci gizli dizisi oluşturduğunuzda, **sertifikalar & gizlilikler** bölmesinden gitmeden önce gizli dizi dizesini kaydetmeniz _gerekir_ . Gizli dizi dizesi hiçbir şekilde yeniden görüntülenmiyor.
-- Uygulama kaydı sırasında sertifikayı karşıya yüklemek için **sertifikayı karşıya yükle** düğmesini kullanırsınız. Azure AD yalnızca uygulamada doğrudan kayıtlı olan sertifikaları destekler ve sertifika zincirlerini takip etmeyin.
+* [İstemci parolası ekleme](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
+* [Sertifika ekle](../articles/active-directory/develop/quickstart-register-app.md#add-a-certificate)
 
-Ayrıntılar için bkz [. hızlı başlangıç: Web API 'lerine erişmek için istemci uygulaması yapılandırma | Uygulamanıza kimlik bilgileri ekleyin](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+### <a name="add-client-credentials-by-using-powershell"></a>PowerShell kullanarak istemci kimlik bilgilerini ekleme
 
-### <a name="register-client-secrets-by-using-powershell"></a>İstemci gizli dizilerini PowerShell kullanarak kaydetme
+Alternatif olarak, PowerShell kullanarak uygulamanızı Microsoft Identity platformu ile kaydettiğinizde kimlik bilgilerini ekleyebilirsiniz.
 
-Alternatif olarak, komut satırı araçlarını kullanarak uygulamanızı Azure AD 'ye kaydedebilirsiniz. [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) örneği, BIR Azure AD uygulaması ile uygulama gizli dizisi veya sertifikasının nasıl kaydedileceği gösterilmektedir:
+GitHub 'daki [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) kod örneği, bir uygulama kaydedilirken uygulama gizli dizisi veya sertifikasının nasıl ekleneceğini gösterir:
 
-- Uygulama gizliliğini kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- Bir uygulama ile bir sertifikayı kaydetme hakkında ayrıntılı bilgi için bkz. [Appcreationscripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- PowerShell ile bir **istemci gizli anahtarı** ekleme hakkında ayrıntılı bilgi için bkz. [appcreationscripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- PowerShell ile bir **sertifika** ekleme hakkında ayrıntılı bilgi için bkz. [appcreationscripts-withcert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

@@ -3,20 +3,20 @@ title: Azure ön kapısı-uygulama katmanı güvenliği | Microsoft Docs
 description: Bu makale, Azure ön kapısının uygulamanızın arka uçlarınızın korunmasına ve güvenliğini sağlamanıza nasıl olanak sağladığını anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471804"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399948"
 ---
 # <a name="application-layer-security-with-front-door"></a>Ön kapılı uygulama katmanı güvenliği
 Azure ön kapısı, Web uygulamalarınızı ağ saldırılarına karşı korumak için Web uygulaması koruma yeteneği ve SQL ekleme veya siteler arası betik oluşturma (XSS) gibi yaygın web güvenlik açıklarını sağlar. Http (s) ön uçları için etkin, ön kapıların uygulama katmanı güvenliği küresel olarak dağıtılır ve her zaman açıktır, bu da arka uçınızdan uzakta olan Azure 'un ağ ucunda kötü amaçlı saldırıları durduruyor. Ön kapı, ek güvenlik ve performans iyileştirmesi sayesinde son kullanıcılarınıza hızlı ve güvenli Web deneyimleri sunar.

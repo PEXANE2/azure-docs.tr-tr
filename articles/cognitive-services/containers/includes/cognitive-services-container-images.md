@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: ac8e49c85147576e489b16a3a421c75d60ad4aee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff039d6d5879e036aecc63b46359d84673f84a0e
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104427"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424658"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
@@ -73,4 +73,5 @@ Aşağıdaki geçişli önizleme kapsayıcıları, kapsayıcı önizlemesi kayı
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=tts) | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ctts) | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ntts) | Sinir metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` |
 | [Sistem durumu için Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Sistem durumu için Metin Analizi | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |

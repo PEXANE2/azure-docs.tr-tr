@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816312"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440346"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -232,7 +232,7 @@ Aşağıdaki Azure Araçları sanal makineye yüklendi:
 * **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Masaüstü kısayol simgesinden Depolama Gezgini erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer**girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
 * **Azure kitaplıkları**: önceden yüklenmiş kitaplıkların bazıları aşağıda verilmiştir.
   
-  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kütüphaneden Azure depolama hizmetlerine, Azure Machine Learning ve Azure Cosmos DB (Azure 'da bir NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık olan pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), bir ODBC arabirimi kullanarak Python 'dan SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı 'na erişim sağlar. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Bu komutu hem Python 2,7 hem de 3,5 ortamlarında çalıştırmayı unutmayın.
+  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kütüphaneden Azure depolama hizmetlerine, Azure Machine Learning ve Azure Cosmos DB (Azure 'da bir NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık olan pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), bir ODBC arabirimi kullanarak Python 'dan SQL Server, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e erişim sağlar. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Bu komutu hem Python 2,7 hem de 3,5 ortamlarında çalıştırmayı unutmayın.
   * **R**: r 'deki Azure ile Ilgili kitaplıklar AZUREML ve rodbc.
   * **Java**: Azure Java KITAPLıKLARıNıN listesi VM 'de/dsvm/sdk/AzureSDKJava dizininde bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve yönetim API 'Leri, Azure Cosmos DB ve JDBC sürücülerdir.  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298623"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321676"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory kimlik ve erişim yönetimi işlemleri başvuru kılavuzu
 
@@ -45,14 +45,14 @@ Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahi
 
 #### <a name="assigning-owners-recommended-reading"></a>Okuma için önerilen sahipler atanıyor
 
-- [Azure Active Directory’de yönetici rolü atama](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure’da idare](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure’da idare](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Şirket içi kimlik eşitleme
 
 ### <a name="identify-and-resolve-synchronization-issues"></a>Eşitleme sorunlarını tanımla ve çözümle
 
-Microsoft, şirket içi ortamınızdaki sorunları, buluta eşitleme sorunlarına yol açacak şekilde iyi bir taban çizgisi ve öğrenmenizi önerir. [Iddüzeltmesini](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) ve [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) gibi otomatikleştirilmiş araçlar yüksek hacimli hatalı pozitif sonuçlar üretebileceğinden, hata durumunda bu nesneleri temizleyerek 100 günden daha uzun süredir ayrıldığımız eşitleme hatalarını tanımlamanızı öneririz. Uzun süreli çözümlenmemiş Eşitleme hataları, destek olayları oluşturabilir. [Eşitleme sırasında oluşan sorunları gidermek](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) , farklı eşitleme hatası türlerine genel bir bakış sağlar, bu hatalara neden olan olası senaryoların bazıları ve hataları gidermek için olası yollar sunar.
+Microsoft, şirket içi ortamınızdaki sorunları, buluta eşitleme sorunlarına yol açacak şekilde iyi bir taban çizgisi ve öğrenmenizi önerir. [Iddüzeltmesini](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) ve [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#why-use-azure-ad-connect-health) gibi otomatikleştirilmiş araçlar yüksek hacimli hatalı pozitif sonuçlar üretebileceğinden, hata durumunda bu nesneleri temizleyerek 100 günden daha uzun süredir ayrıldığımız eşitleme hatalarını tanımlamanızı öneririz. Uzun süreli çözümlenmemiş Eşitleme hataları, destek olayları oluşturabilir. [Eşitleme sırasında oluşan sorunları gidermek](../hybrid/tshoot-connect-sync-errors.md) , farklı eşitleme hatası türlerine genel bir bakış sağlar, bu hatalara neden olan olası senaryoların bazıları ve hataları gidermek için olası yollar sunar.
 
 ### <a name="azure-ad-connect-sync-configuration"></a>Azure AD Connect eşitleme yapılandırması
 
@@ -81,7 +81,7 @@ Hariç tutulacak nesne örnekleri şunlardır:
 > [!NOTE]
 > Tek bir insan kimliğinde, eski etki alanı geçişi, birleşme veya alım gibi bir türden birden fazla hesap sağlandıysa, yalnızca Kullanıcı tarafından kullanılan hesabı bir günlük esasına göre eşitlemeniz gerekir, örneğin, bilgisayarında oturum açmak için kullandıkları Özellikler.
 
-İdeal olarak, senkronize edilecek nesne sayısını ve kurallarda karmaşıklığın azaltılması arasında bir bakiyeye ulaşmak isteyeceksiniz. Genellikle, OU/kapsayıcı [filtrelemesi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) ve cloudfiltrelenmiş özniteliğiyle basit bir öznitelik eşlemesi arasında bir birleşim, etkili bir filtreleme birleşimidir.
+İdeal olarak, senkronize edilecek nesne sayısını ve kurallarda karmaşıklığın azaltılması arasında bir bakiyeye ulaşmak isteyeceksiniz. Genellikle, OU/kapsayıcı [filtrelemesi](../hybrid/how-to-connect-sync-configure-filtering.md) ve cloudfiltrelenmiş özniteliğiyle basit bir öznitelik eşlemesi arasında bir birleşim, etkili bir filtreleme birleşimidir.
 
 > [!IMPORTANT]
 > Üretimde grup filtrelemesi kullanıyorsanız, başka bir filtreleme yaklaşımına geçiş yapmanız gerekir.
@@ -105,7 +105,7 @@ Azure AD Connect sürümünüz altı aydan daha geride olursa en son sürüme y�
 
 #### <a name="source-anchor"></a>Kaynak bağlantısı
 
-[Kaynak Bağlayıcısı](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) olarak **MS-DS-ımlarnımlarguıd** kullanmak, ad etki alanı birleştirme/Temizleme, birleşmeler, alımlar ve divestitures içinde ortak olan ormanlar ve etki alanları arasında nesnelerin daha kolay bir şekilde geçirilmesini sağlar.
+[Kaynak Bağlayıcısı](../hybrid/plan-connect-design-concepts.md) olarak **MS-DS-ımlarnımlarguıd** kullanmak, ad etki alanı birleştirme/Temizleme, birleşmeler, alımlar ve divestitures içinde ortak olan ormanlar ve etki alanları arasında nesnelerin daha kolay bir şekilde geçirilmesini sağlar.
 
 Şu anda kaynak Bağlayıcısı olarak **Objectguıd** kullanıyorsanız, **MS-DS-ımlıo GUID**kullanarak geçiş yapmanızı öneririz.
 
@@ -138,7 +138,7 @@ Aşırı karmaşık kurallar kullanıyorsanız karmaşıklık için nedenleri ar
 
 ### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Microsoft bulut hizmetleri için grup tabanlı lisanslama
 
-Azure Active Directory, Microsoft bulut hizmetleri için [grup tabanlı lisanslama](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) aracılığıyla lisansların yönetimini kolaylaştırır. Bu şekilde, ıAM grup altyapısını ve bu grupların kurumlardaki uygun takımlara Temsilcili olarak yönetilmesini sağlar. Azure AD 'de grupların üyeliğini ayarlamak için çeşitli yollar vardır; örneğin:
+Azure Active Directory, Microsoft bulut hizmetleri için [grup tabanlı lisanslama](./active-directory-licensing-whatis-azure-portal.md) aracılığıyla lisansların yönetimini kolaylaştırır. Bu şekilde, ıAM grup altyapısını ve bu grupların kurumlardaki uygun takımlara Temsilcili olarak yönetilmesini sağlar. Azure AD 'de grupların üyeliğini ayarlamak için çeşitli yollar vardır; örneğin:
 
 - Şirket **içi gruplardan eşitlendiğinde** şirket içi dizinlerden, Office 365 ' de lisans atamak üzere genişletilebilen Grup Yönetimi işlemlerine sahip kuruluşlar için uygun olabilecek bir işlem olabilir.
 
@@ -157,26 +157,26 @@ Kullanıcılara hizmet planlarını tanımlamak için aşağıdaki yönergeleri 
 - İsteğe bağlı olarak, bir öznitelik kullanıcıları için paketleri tutacak şekilde tanımlanabilir.
 
 > [!IMPORTANT]
-> Azure AD 'de grup tabanlı lisanslama, Kullanıcı kavramını bir lisanslama hata durumunda sunmaktadır. Lisanslama hatalarıyla karşılaşırsanız, lisans atama sorunlarını hemen [belirleyip çözmeniz](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) gerekir.
+> Azure AD 'de grup tabanlı lisanslama, Kullanıcı kavramını bir lisanslama hata durumunda sunmaktadır. Lisanslama hatalarıyla karşılaşırsanız, lisans atama sorunlarını hemen [belirleyip çözmeniz](../users-groups-roles/licensing-groups-resolve-problems.md) gerekir.
 
 ![Otomatik olarak oluşturulan bilgisayar ekranı açıklamasının ekran görüntüsü](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Yaşam döngüsü yönetimi
 
-Şu anda [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) veya üçüncü taraf sistem gibi bir aracı kullanıyorsanız, bir şirket içi altyapıya bağlı olan, var olan araçtan atamayı boşaltmanız, grup tabanlı lisans uygulamanız ve [grupları](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups)temel alan bir grup yaşam döngüsü yönetimi tanımlamanız önerilir. Benzer şekilde, mevcut işleminiz kuruluştan ayrılmayan yeni çalışanlar veya çalışanlar için hesap içermiyorsa, dinamik gruplara dayalı olarak grup tabanlı lisanslama dağıtmanız ve bir grup üyeliği yaşam döngüsü tanımlamanız gerekir. Son olarak, grup tabanlı lisanslama yaşam döngüsü yönetimi olmayan şirket içi gruplara karşı dağıtılırsa, temsilci olarak sahiplik veya öznitelik tabanlı dinamik üyelik gibi özellikleri etkinleştirmek için bulut grupları kullanmayı göz önünde bulundurun.
+Şu anda [Microsoft Identity Manager](/microsoft-identity-manager/) veya üçüncü taraf sistem gibi bir aracı kullanıyorsanız, bir şirket içi altyapıya bağlı olan, var olan araçtan atamayı boşaltmanız, grup tabanlı lisans uygulamanız ve [grupları](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)temel alan bir grup yaşam döngüsü yönetimi tanımlamanız önerilir. Benzer şekilde, mevcut işleminiz kuruluştan ayrılmayan yeni çalışanlar veya çalışanlar için hesap içermiyorsa, dinamik gruplara dayalı olarak grup tabanlı lisanslama dağıtmanız ve bir grup üyeliği yaşam döngüsü tanımlamanız gerekir. Son olarak, grup tabanlı lisanslama yaşam döngüsü yönetimi olmayan şirket içi gruplara karşı dağıtılırsa, temsilci olarak sahiplik veya öznitelik tabanlı dinamik üyelik gibi özellikleri etkinleştirmek için bulut grupları kullanmayı göz önünde bulundurun.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>"Tüm kullanıcılar" grubu ile uygulamaların atanması
 
 Kaynak sahipleri, **tüm kullanıcılar** grubunun yalnızca **Kurumsal çalışanları** ve **konukları**gerçekten içerdiğinde **Kurumsal çalışanları** içerdiğini düşünmeyebilir. Sonuç olarak, uygulama ataması için **tüm kullanıcılar** grubunu kullanırken ve SharePoint içeriği veya uygulamalar gibi kaynaklara erişim verirken özel bir dikkatli olmanız gerekir.
 
 > [!IMPORTANT]
-> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları**dahil) kullanmak için olduğundan emin olun.
+> **Tüm kullanıcılar** grubu etkinleştirilir ve koşullu erişim ilkeleri, uygulama veya kaynak ataması için kullanılırsa, Konuk kullanıcıları dahil etmek istemiyorsanız [grubun güvenli hale](../external-identities/use-dynamic-groups.md) geldiğinden emin olun. Ayrıca, yalnızca **Kurumsal çalışanları** içeren grupları oluşturup atayarak lisanslama atamalarınızı düzeltmelisiniz. Öte yandan, **tüm kullanıcılar** grubunun etkin olduğunu ancak kaynaklara erişim izni vermek için kullanılmadığını fark ederseniz, kuruluşunuzun işletimsel kılavuzunun bu grubu kasıtlı olarak ( **Kurumsal çalışanları** ve **konukları**dahil) kullanmak için olduğundan emin olun.
 
 ### <a name="automated-user-provisioning-to-apps"></a>Uygulamalara otomatik Kullanıcı hazırlama
 
-Uygulamalara [Otomatik Kullanıcı hazırlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , birden çok sistemde tutarlı bir sağlama, sağlamayı kaldırma ve kimlik yaşam döngüsü oluşturmanın en iyi yoludur.
+Uygulamalara [Otomatik Kullanıcı hazırlama](../app-provisioning/user-provisioning.md) , birden çok sistemde tutarlı bir sağlama, sağlamayı kaldırma ve kimlik yaşam döngüsü oluşturmanın en iyi yoludur.
 
-Şu anda uygulamaları geçici bir şekilde temin ediyorsanız veya CSV dosyaları, JıT veya yaşam döngüsü yönetimine yönelik bir şirket içi çözüm gibi işlemleri kullanıyorsanız, desteklenen uygulamalar için Azure AD ile [uygulama sağlamayı uygulamanızı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) ve henüz Azure AD tarafından desteklenmeyen uygulamalar için tutarlı bir model tanımlamanızı öneririz.
+Şu anda uygulamaları geçici bir şekilde temin ediyorsanız veya CSV dosyaları, JıT veya yaşam döngüsü yönetimine yönelik bir şirket içi çözüm gibi işlemleri kullanıyorsanız, desteklenen uygulamalar için Azure AD ile [uygulama sağlamayı uygulamanızı](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) ve henüz Azure AD tarafından desteklenmeyen uygulamalar için tutarlı bir model tanımlamanızı öneririz.
 
 ![Azure AD sağlama hizmeti](./media/active-directory-ops-guide/active-directory-ops-img3.png)
 
@@ -184,12 +184,12 @@ Uygulamalara [Otomatik Kullanıcı hazırlama](https://docs.microsoft.com/azure/
 
 Kuruluşunuzdaki değişikliklerin hacminin anlaşılması ve tahmin edilebilir bir eşitleme süresi olması çok uzun sürmediğinden emin olmak önemlidir.
 
-[Varsayılan Delta eşitleme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) sıklığı 30 dakikadır. Delta eşitlemesi 30 dakikadan sürekli olarak sürüyorsa veya hazırlama ve üretimin Delta eşitleme performansı arasında önemli tutarsızlıklar varsa, [Azure AD Connect performansını etkileyen faktörleri](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors)araştırıp gözden geçirmeniz gerekir.
+[Varsayılan Delta eşitleme](../hybrid/how-to-connect-sync-feature-scheduler.md) sıklığı 30 dakikadır. Delta eşitlemesi 30 dakikadan sürekli olarak sürüyorsa veya hazırlama ve üretimin Delta eşitleme performansı arasında önemli tutarsızlıklar varsa, [Azure AD Connect performansını etkileyen faktörleri](../hybrid/plan-connect-performance-factors.md)araştırıp gözden geçirmeniz gerekir.
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect için önerilen okuma sorunlarını giderme
 
-- [Iddüzeltilme aracını kullanarak Dizin özniteliklerini Office 365 ile eşitleme için hazırlama-Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
-- [Azure AD Connect: eşitleme sırasında oluşan sorunları giderme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+- [Iddüzeltilme aracını kullanarak Dizin özniteliklerini Office 365 ile eşitleme için hazırlama-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect: eşitleme sırasında oluşan sorunları giderme](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Özet
 

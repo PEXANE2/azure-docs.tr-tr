@@ -1,28 +1,29 @@
 ---
-title: Konuşma hizmeti ile konuşma çevirisi
+title: Konuşma çevirisine genel bakış-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti, uygulamalarınıza, araçlara ve cihazlarınıza uçtan uca, gerçek zamanlı, çok dilli bir konuşma çevirisi eklemenizi sağlar. Aynı API hem konuşmayı konuşmaya hem de konuşmayı metne çevirmek için kullanılabilir.
+description: Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlarınıza uçtan uca, gerçek zamanlı, çok dilli bir konuşma çevirisi eklemenize olanak tanır. Aynı API hem konuşmayı konuşmaya hem de konuşmayı metne çevirmek için kullanılabilir. Bu makale, konuşma çevirisi hizmetinin avantajları ve özelliklerine genel bir bakış sunar.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: erhopf
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
+keywords: konuşma çevirisi
+ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055541"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401223"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmadan metne çevirisini sağlar. Konuşma SDK 'Sı ile uygulamalarınızın, araçların ve cihazlarınızın, sunulan ses için kaynak dökümlerini ve çeviri çıkışlarını erişimi vardır. Okuma tespit edildiğinde ve değişim sonuçları sentezleştirilmiş konuşmaya dönüştürülebileceğinden, geçici döküm ve çeviri sonuçları döndürülür.
+Bu genel bakışta, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmaya metin çevirisi sağlayan konuşma çevirisi hizmetinin avantajları ve özellikleri hakkında bilgi edinebilirsiniz. Konuşma SDK 'Sı ile uygulamalarınızın, araçların ve cihazlarınızın, sunulan ses için kaynak dökümlerini ve çeviri çıkışlarını erişimi vardır. Okuma tespit edildiğinde ve nihai sonuçlar sentezleştirilmiş konuşmaya dönüştürülebileceğinden, geçici döküm ve çeviri sonuçları döndürülür.
 
 Microsoft 'un çeviri altyapısı iki farklı yaklaşımdan desteklenir: istatistiksel makine çevirisi (SMT) ve sinir makine çevirisi (NMT). SMT, birkaç sözcük bağlamında mümkün olan en iyi çevirileri tahmin etmek için gelişmiş istatistiksel analizler kullanır. NMT ile, sözcükleri çevirmek için Tümcelerin tam bağlamını kullanarak daha doğru, doğal bir şekilde daha doğru, doğal bir çeviri sağlamak için sinir Networks kullanılır.
 
@@ -35,7 +36,7 @@ Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuş
 * Birden çok hedef dile çeviri desteği.
 * Ara tanıma ve çeviri sonuçları.
 
-## <a name="get-started"></a>Kullanmaya başlayın 
+## <a name="get-started"></a>başlarken 
 
 Konuşma çevirisi 'ni kullanmaya başlamak için [hızlı](get-started-speech-translation.md) başlangıca bakın. Konuşma çevirisi hizmeti, konuşma [SDK 'sı](speech-sdk.md) ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 

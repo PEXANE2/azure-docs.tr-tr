@@ -1,27 +1,29 @@
 ---
-title: Metin okuma-konuşma hizmeti
+title: Metinden konuşmaya genel bakış-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmetindeki metinden konuşmaya özelliği, uygulamalarınızın, araçlarınızın veya cihazların metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Önceden belirlenmiş sesler ' i seçin veya kendi özel sesinizi oluşturun.
+description: Konuşma hizmetindeki metinden konuşmaya özelliği, uygulamalarınızın, araçlarınızın veya cihazların metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Bu makale, metinden konuşmaya hizmetinin avantajları ve özelliklerine genel bir bakış sunar.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: Metinden konuşmaya
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167717"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401189"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazlarınızın metni insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için benzersiz özel bir ses oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve bir dizi dilde ve yerel ayara 5 sinir seste erişilebilir. Desteklenen seslerin, dillerin ve yerel ayarların tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
+Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlayan, metinden konuşmaya hizmetinin avantajları ve özellikleri hakkında bilgi edinebilirsiniz. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için benzersiz özel bir ses oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve bir dizi dilde ve yerel ayara 5 sinir seste erişilebilir. Desteklenen seslerin, dillerin ve yerel ayarların tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
 > [!NOTE]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.

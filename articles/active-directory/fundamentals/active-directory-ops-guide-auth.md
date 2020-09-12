@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80876301"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321727"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -48,8 +48,8 @@ Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahi
 
 #### <a name="owner-recommended-reading"></a>Sahibi tarafından önerilen okuma
 
-- [Azure Active Directory’de yönetici rolü atama](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure’da idare](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure Active Directory’de yönetici rolü atama](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure’da idare](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Kimlik bilgileri yönetimi
 
@@ -61,13 +61,13 @@ Giderilmesi gereken sorunu azaltmaya yönelik önerilen çözümü bulmak için 
 
 | Sorun | Öneri |
 | :- | :- |
-| Zayıf parolalara karşı koruma mekanizması yoktur | Azure AD [self servis parola sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) ve [parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) etkinleştirme |
-| Sızdırılan parolaları algılamaya yönelik bir mekanizma yok | Öngörüler kazanmak için [Parola karması eşitlemesini](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) etkinleştirin |
-| AD FS kullanma ve yönetilen kimlik doğrulamasına taşınamıyor | [AD FS Extranet akıllı kilitleme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ve/veya [Azure AD akıllı kilitleme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) 'yi etkinleştirme |
-| Parola ilkesi, uzunluk, birden çok karakter kümesi veya süre sonu gibi karmaşıklık tabanlı kurallar kullanır | [Önerilen Microsoft uygulamaları](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) için göz önünde bulundurun ve parola yönetimine yaklaşımınızı geçirin ve [Azure AD parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)dağıtın. |
-| Kullanıcılar Multi-Factor Authentication (MFA) kullanmak üzere kayıtlı değil | Kullanıcının kimliğini parolasıyla birlikte doğrulama mekanizması olarak kullanılabilmesi için [tüm kullanıcıların güvenlik bilgilerini kaydedin](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) |
-| Kullanıcı riskini temel alan parolaların iptali yoktur | SSPR kullanarak sızdırılan kimlik bilgilerinde parola değişikliklerini zorlamak için Azure AD [kimlik koruması Kullanıcı risk ilkelerini](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) dağıtma |
-| Tanınan IP adreslerinden gelen kötü amaçlı kimlik doğrulamasını korumak için akıllı kilitleme mekanizması yoktur | Parola karması eşitleme veya [geçişli kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) ile bulut tarafından yönetilen kimlik doğrulaması dağıtma |
+| Zayıf parolalara karşı koruma mekanizması yoktur | Azure AD [self servis parola sıfırlama (SSPR)](../authentication/concept-sspr-howitworks.md) ve [parola korumasını](../authentication/concept-password-ban-bad-on-premises.md) etkinleştirme |
+| Sızdırılan parolaları algılamaya yönelik bir mekanizma yok | Öngörüler kazanmak için [Parola karması eşitlemesini](../hybrid/how-to-connect-password-hash-synchronization.md) (PHS) etkinleştirin |
+| AD FS kullanma ve yönetilen kimlik doğrulamasına taşınamıyor | [AD FS Extranet akıllı kilitleme](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ve/veya [Azure AD akıllı kilitleme](../authentication/howto-password-smart-lockout.md) 'yi etkinleştirme |
+| Parola ilkesi, uzunluk, birden çok karakter kümesi veya süre sonu gibi karmaşıklık tabanlı kurallar kullanır | [Önerilen Microsoft uygulamaları](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) için göz önünde bulundurun ve parola yönetimine yaklaşımınızı geçirin ve [Azure AD parola korumasını](../authentication/concept-password-ban-bad.md)dağıtın. |
+| Kullanıcılar Multi-Factor Authentication (MFA) kullanmak üzere kayıtlı değil | Kullanıcının kimliğini parolasıyla birlikte doğrulama mekanizması olarak kullanılabilmesi için [tüm kullanıcıların güvenlik bilgilerini kaydedin](../identity-protection/howto-identity-protection-configure-mfa-policy.md) |
+| Kullanıcı riskini temel alan parolaların iptali yoktur | SSPR kullanarak sızdırılan kimlik bilgilerinde parola değişikliklerini zorlamak için Azure AD [kimlik koruması Kullanıcı risk ilkelerini](../identity-protection/howto-identity-protection-configure-risk-policies.md) dağıtma |
+| Tanınan IP adreslerinden gelen kötü amaçlı kimlik doğrulamasını korumak için akıllı kilitleme mekanizması yoktur | Parola karması eşitleme veya [geçişli kimlik doğrulaması](../hybrid/how-to-connect-pta-quick-start.md) (PTA) ile bulut tarafından yönetilen kimlik doğrulaması dağıtma |
 
 #### <a name="password-policies-recommended-reading"></a>Parola ilkelerinin okunması önerilir
 
@@ -77,19 +77,19 @@ Giderilmesi gereken sorunu azaltmaya yönelik önerilen çözümü bulmak için 
 
 Parolalarını değiştirmesi veya sıfırlaması gereken kullanıcılar, en büyük birim kaynaklarından ve yardım masası çağrılarının maliyetinden biridir. Maliyete ek olarak, Kullanıcı riskini azaltmak için parolayı bir araç olarak değiştirmek, kuruluşunuzun güvenlik duruşunu geliştirmekte olan temel bir adımdır.
 
-En azından Azure AD [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) ve şirket içi [parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) dağıtmanız önerilir:
+En azından Azure AD [self servis parola sıfırlama](../authentication/concept-sspr-howitworks.md) (SSPR) ve şirket içi [parola korumasını](../authentication/howto-password-ban-bad-on-premises-deploy.md) dağıtmanız önerilir:
 
 - Yardım Masası çağrılarını erteleme.
 - Geçici parolaların kullanımını değiştirin.
 - Şirket içi bir çözüme dayanan mevcut bir self servis parola yönetimi çözümünü değiştirin.
-- Kuruluşunuzdaki [zayıf parolaları kaldırın](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) .
+- Kuruluşunuzdaki [zayıf parolaları kaldırın](../authentication/concept-password-ban-bad.md) .
 
 > [!NOTE]
-> Azure AD Premium P2 aboneliği olan kuruluşlar için SSPR 'nin dağıtılması ve [kimlik koruması Kullanıcı risk ilkesinin](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)bir parçası olarak kullanılması önerilir.
+> Azure AD Premium P2 aboneliği olan kuruluşlar için SSPR 'nin dağıtılması ve [kimlik koruması Kullanıcı risk ilkesinin](../identity-protection/howto-identity-protection-configure-risk-policies.md)bir parçası olarak kullanılması önerilir.
 
 ### <a name="strong-credential-management"></a>Güçlü kimlik bilgisi yönetimi
 
-Kötü aktörlerin ortamınıza erişim kazanmasını engellemek için kendilerine göre parolalar yeterince güvenli değildir. En azından, ayrıcalıklı hesabı olan tüm kullanıcıların Multi-Factor Authentication (MFA) için etkinleştirilmesi gerekir. İdeal olarak, [Birleşik kayıt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) [deneyimini](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)kullanarak tüm kullanıcıların MFA ve SSPR 'ye kaydolması gerekir. Sonuç olarak, öngörülemeyen koşullar nedeniyle kilitleme riskini azaltmak için [esnekliği sağlamak](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls) üzere bir strateji benimsemenizi öneririz.
+Kötü aktörlerin ortamınıza erişim kazanmasını engellemek için kendilerine göre parolalar yeterince güvenli değildir. En azından, ayrıcalıklı hesabı olan tüm kullanıcıların Multi-Factor Authentication (MFA) için etkinleştirilmesi gerekir. İdeal olarak, [Birleşik kayıt](../authentication/concept-registration-mfa-sspr-combined.md) [deneyimini](../user-help/security-info-setup-signin.md)kullanarak tüm kullanıcıların MFA ve SSPR 'ye kaydolması gerekir. Sonuç olarak, öngörülemeyen koşullar nedeniyle kilitleme riskini azaltmak için [esnekliği sağlamak](../authentication/concept-resilient-controls.md) üzere bir strateji benimsemenizi öneririz.
 
 ![Birleşik Kullanıcı deneyimi akışı](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -127,7 +127,7 @@ Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekird
 
 Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini ve bunları Azure AD 'de yöneterek bu hedefi gerçekleştirebilirsiniz:
 
-- Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft uç noktası Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
+- Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft uç noktası Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
 - [Hibrit Azure AD katılımı](../devices/hybrid-azuread-join-managed-domains.md) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır. bu sayede, bulut ve şirket içi kaynaklarınız için aynı anda [koşullu erişimle](../conditional-access/overview.md)erişim sağlamanıza olanak tanır   .
 
 Bulutta kayıtlı olmayan, ancak koşullu erişim ilkeleri olmadan etki alanına katılmış Windows cihazlarına veya bulutta kayıtlı olan, etki alanına katılmış Windows cihazlarınız varsa, kayıtsız cihazları kaydetmeniz ve her iki durumda da, koşullu erişim ilkeleriniz üzerinde [bir denetim olarak karma Azure AD JOIN 'i kullanmanız](../conditional-access/require-managed-devices.md) gerekir.
@@ -141,11 +141,11 @@ Cihazları MDM veya Microsoft Intune ile yönetiyorsanız, ancak koşullu erişi
 #### <a name="device-trust-access-policies-recommended-reading"></a>Okuma için önerilen cihaz güven erişimi ilkeleri
 
 - [Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın](../devices/hybrid-azuread-join-plan.md)
-- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Kimlik ve cihaz erişim yapılandırmaları](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
-Windows 10 ' da, [iş Için Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) , bilgisayarlarda güçlü iki öğeli kimlik doğrulama ile parolaları değiştirir. Iş için Windows Hello, kullanıcılar için daha kolay bir MFA deneyimi sunar ve parolalarınızın parolasını azaltır. Windows 10 cihazlarını kullanıma almadıysanız veya yalnızca kısmen dağıttıysanız, Windows 10 ' a yükseltmenizi ve tüm cihazlarda [iş Için Windows Hello 'yu etkinleştirmenizi](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) öneririz.
+Windows 10 ' da, [iş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification) , bilgisayarlarda güçlü iki öğeli kimlik doğrulama ile parolaları değiştirir. Iş için Windows Hello, kullanıcılar için daha kolay bir MFA deneyimi sunar ve parolalarınızın parolasını azaltır. Windows 10 cihazlarını kullanıma almadıysanız veya yalnızca kısmen dağıttıysanız, Windows 10 ' a yükseltmenizi ve tüm cihazlarda [iş Için Windows Hello 'yu etkinleştirmenizi](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) öneririz.
 
 Parolasız kimlik doğrulama hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Active Directory ile parolalar olmadan bir dünya](../authentication/concept-authentication-passwordless.md)bölümüne bakın.
 
@@ -184,22 +184,22 @@ Son olarak, Azure AD uygulama galeriniz varsa ve Azure AD ile SSO 'yu destekleye
 - Kullanıcı özniteliklerinin uygulamalara erişimi tutarlı bir şekilde belirleyebilmesi halinde dinamik grupları tanımlayın.
 - [Azure AD erişim gözden geçirmeleri](../governance/access-reviews-overview.md)kullanarak uygulama erişimi için kullanılan gruplara kanıtlama uygulayın.
 
-Öte yandan, bireysel kullanıcılara atama yapan uygulamalar bulursanız, bu uygulamaların etrafında [idare](https://docs.microsoft.com/azure/active-directory/governance/index) uyguladığınızdan emin olun.
+Öte yandan, bireysel kullanıcılara atama yapan uygulamalar bulursanız, bu uygulamaların etrafında [idare](../governance/index.yml) uyguladığınızdan emin olun.
 
 #### <a name="assign-users-to-applications-recommended-reading"></a>Kullanıcıları okumak için önerilen uygulamalara atama
 
-- [Azure Active Directory bir uygulamaya Kullanıcı ve Grup atama](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
-- [Azure Active Directory 'de uygulama kayıt izinleri verme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
-- [Azure Active Directory gruplar için dinamik üyelik kuralları](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
+- [Azure Active Directory bir uygulamaya Kullanıcı ve Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+- [Azure Active Directory 'de uygulama kayıt izinleri verme](../users-groups-roles/roles-delegate-app-roles.md)
+- [Azure Active Directory gruplar için dinamik üyelik kuralları](../users-groups-roles/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Erişim ilkeleri
 
 ### <a name="named-locations"></a>Adlandırılmış konumlar
 
-Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) sayesinde, KURULUŞUNUZDA güvenilir IP adresi aralıklarını etiketleyebilir. Azure AD, aşağıdakileri yapmak için adlandırılmış konumları kullanır:
+Azure AD 'de [adlandırılmış konumlar](../reports-monitoring/quickstart-configure-named-locations.md) sayesinde, KURULUŞUNUZDA güvenilir IP adresi aralıklarını etiketleyebilir. Azure AD, aşağıdakileri yapmak için adlandırılmış konumları kullanır:
 
 - Risk olaylarında yanlış pozitif sonuçlar önleyin. Güvenilen bir ağ konumundan oturum açmak, kullanıcının oturum açma riskini azaltır.
-- [Konum tabanlı koşullu erişimi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)yapılandırın.
+- [Konum tabanlı koşullu erişimi](../reports-monitoring/quickstart-configure-named-locations.md)yapılandırın.
 
 ![Adlandırılmış konum](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -217,7 +217,7 @@ Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/activ
 
 Azure AD, her oturum açma ve Kullanıcı için riskleri hesaplayabilir. Erişim ilkelerinde bir ölçüt olarak riskin kullanılması daha iyi bir kullanıcı deneyimi sağlayabilir, örneğin, daha az kimlik doğrulama istemi ve daha iyi güvenlik, örneğin, yalnızca gerektiğinde kullanıcılara istem ve yanıt ve düzeltmeyi otomatikleştirin.
 
-![Oturum açma risk ilkesi](./media/active-directory-ops-guide/active-directory-ops-img11.png)
+![Oturum açma riski ilkesi](./media/active-directory-ops-guide/active-directory-ops-img11.png)
 
 Erişim ilkelerindeki risk kullanımını destekleyen Azure AD Premium P2 lisanslarınız zaten varsa, ancak kullanılmazlar, güvenlik duruşunuzda risk eklenmesini kesinlikle öneririz.
 
@@ -255,10 +255,10 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 
 #### <a name="conditional-access-recommended-reading"></a>Koşullu erişimin okunması önerilir
 
-- [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Azure Active Directory Koşullu erişim ayarları başvurusu](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
-- [Ortak koşullu erişim ilkeleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
+- [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](../conditional-access/best-practices.md)
+- [Kimlik ve cihaz erişim yapılandırmaları](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Azure Active Directory Koşullu erişim ayarları başvurusu](../conditional-access/concept-conditional-access-conditions.md)
+- [Sık kullanılan Koşullu Erişim İlkeleri](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>Erişim yüzeyi alanı
 
@@ -273,9 +273,9 @@ Eski kimlik doğrulaması, şunun gibi uygulamalar tarafından kullanılan kimli
 
 Saldırganlar bu protokolleri kesinlikle tercih ediyor-aslında yaklaşık [%100 parola spreyi saldırıları](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) eski kimlik doğrulama protokollerini kullanır! Saldırganlar, çok faktörlü kimlik doğrulaması ve cihaz kimlik doğrulaması gibi ek güvenlik sorunları için gereken etkileşimli oturum açmayı desteklemediğinden, eski kimlik doğrulama protokollerini kullanır.
 
-Ortamınızda eski kimlik doğrulama yaygın olarak kullanılıyorsa, eski istemcileri [modern kimlik doğrulamasını](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) destekleyen istemcilere en kısa sürede geçirmeyi planlamalısınız. Aynı belirteçte, bazı kullanıcılarınız zaten modern kimlik doğrulaması kullanıyor, ancak diğerleri eski kimlik doğrulamasını kullanmaya devam ediyorsa, eski kimlik doğrulama istemcilerini kilitlemek için aşağıdaki adımları uygulamanız gerekir:
+Ortamınızda eski kimlik doğrulama yaygın olarak kullanılıyorsa, eski istemcileri [modern kimlik doğrulamasını](/office365/enterprise/modern-auth-for-office-2013-and-2016) destekleyen istemcilere en kısa sürede geçirmeyi planlamalısınız. Aynı belirteçte, bazı kullanıcılarınız zaten modern kimlik doğrulaması kullanıyor, ancak diğerleri eski kimlik doğrulamasını kullanmaya devam ediyorsa, eski kimlik doğrulama istemcilerini kilitlemek için aşağıdaki adımları uygulamanız gerekir:
 
-1. Hala eski kimlik doğrulama ve plan düzeltmesini kullanan kullanıcıları tanımlamak için [oturum açma etkinlik raporlarını](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) kullanın:
+1. Hala eski kimlik doğrulama ve plan düzeltmesini kullanan kullanıcıları tanımlamak için [oturum açma etkinlik raporlarını](../reports-monitoring/concept-sign-ins.md) kullanın:
 
    a. Etkilenen kullanıcılara modern kimlik doğrulaması özellikli istemcileri yükseltin.
    
@@ -288,7 +288,7 @@ Ortamınızda eski kimlik doğrulama yaygın olarak kullanılıyorsa, eski istem
 
 #### <a name="legacy-authentication-recommended-reading"></a>Eski kimlik doğrulaması önerilir
 
-- [Exchange Server 'da posta kutularına POP3 veya ıMAP4 erişimini etkinleştirme veya devre dışı bırakma](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [Exchange Server 'da posta kutularına POP3 veya ıMAP4 erişimini etkinleştirme veya devre dışı bırakma](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
 
 ### <a name="consent-grants"></a>İzin verir
 
@@ -305,7 +305,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | Office 365 Exchange Online | Olduğundan. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
-| Microsoft Graph API’si | Mail. Read |
+| Microsoft Graph API | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
@@ -313,14 +313,14 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 
 |Kaynak | İzin |
 | :- | :- |
-| Microsoft Graph API’si| Directory. AccessAsUser. All |
+| Microsoft Graph API| Directory. AccessAsUser. All |
 | Azure REST API | user_impersonation |
 
-Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay iznini Algıla ve](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Sonra [Self-Service ' i tamamen kaldırın](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) ve [idare yordamları oluşturun](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Son olarak, uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerek duyulmadığında kaldırın.
+Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay iznini Algıla ve](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Sonra [Self-Service ' i tamamen kaldırın](../manage-apps/configure-user-consent.md) ve [idare yordamları oluşturun](../manage-apps/configure-admin-consent-workflow.md). Son olarak, uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerek duyulmadığında kaldırın.
 
 #### <a name="consent-grants-recommended-reading"></a>Onay, önerilen okumaya izin veriyor
 
-- [Microsoft Graph API izinleri](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API izinleri](/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Kullanıcı ve grup ayarları
 
@@ -328,7 +328,7 @@ Aşağıda açık bir işletme gereksinimi yoksa kilitlenebilen Kullanıcı ve g
 
 #### <a name="user-settings"></a>Kullanıcı ayarları
 
-- **Dış kullanıcılar** -dış Işbirliği, ekipler, Power BI, SharePoint Online ve Azure Information Protection gibi hizmetlerle kurumsal olarak şirket içinde gerçekleşebilir. Kullanıcı tarafından başlatılan dış işbirliğini denetlemek için açık kısıtlamalarınız varsa, [Azure AD yetkilendirme yönetimini](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) veya yardım masanıza gibi denetimli bir işlemi kullanarak dış kullanıcıları etkinleştirmeniz önerilir. Hizmetler için organik dış işbirliğine izin vermek istemiyorsanız, [üyelerin dış kullanıcıları tamamen davet](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations)edebilir. Alternatif olarak, dış Kullanıcı davetlerinde [belirli etki alanlarına da izin verebilir veya onları engelleyebilirsiniz](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) .
+- **Dış kullanıcılar** -dış Işbirliği, ekipler, Power BI, SharePoint Online ve Azure Information Protection gibi hizmetlerle kurumsal olarak şirket içinde gerçekleşebilir. Kullanıcı tarafından başlatılan dış işbirliğini denetlemek için açık kısıtlamalarınız varsa, [Azure AD yetkilendirme yönetimini](../governance/entitlement-management-overview.md) veya yardım masanıza gibi denetimli bir işlemi kullanarak dış kullanıcıları etkinleştirmeniz önerilir. Hizmetler için organik dış işbirliğine izin vermek istemiyorsanız, [üyelerin dış kullanıcıları tamamen davet](../external-identities/delegate-invitations.md)edebilir. Alternatif olarak, dış Kullanıcı davetlerinde [belirli etki alanlarına da izin verebilir veya onları engelleyebilirsiniz](../external-identities/allow-deny-list.md) .
 - **Uygulama kayıtları** -uygulama kayıtları etkinleştirildiğinde, son kullanıcılar uygulamaları kendi kendilerine ekleyebilir ve verilerine erişim verebilir. Uygulama kaydının tipik bir örneği, Outlook eklentilerini veya Alexa ve Siri gibi sesli yardımcıların kendi e-postalarını ve takvimini okumasını ya da kendi adına e-posta göndermesini sağlayan kullanıcılardır. Müşteri, uygulama kaydını kapatmaya karar verirse, INFOSEC ve ıAM ekipleri, uygulamaları bir yönetici hesabıyla kaydetmesi gerektiği ve büyük olasılıkla işlemi gerçekleştirmek için bir işlem tasarlamaya gerek duydukları özel durumların yönetimine (iş gereksinimlerine göre gereken uygulama kayıtları) dahil olmalıdır.
 - **Yönetim Portalı** -kuruluşlar Azure Portal Azure AD dikey penceresini kilitleyerek, yönetici olmayan Azure Portal Azure AD yönetimine erişemez ve karıştırılır. Erişimi kısıtlamak için Azure AD yönetim portalındaki Kullanıcı ayarlarına gidin:
 
@@ -343,33 +343,33 @@ Aşağıda açık bir işletme gereksinimi yoksa kilitlenebilen Kullanıcı ve g
 
 #### <a name="groups-recommended-reading"></a>Okumanız önerilen gruplar
 
-- [Azure Active Directory B2B işbirliği nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-- [Uygulamaları Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- [Azure Active Directory uygulamalar, izinler ve onay.](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
-- [Azure Active Directory içindeki kaynaklara erişimi yönetmek için grupları kullanma](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-- [Azure Active Directory içinde self servis uygulama erişim yönetimini ayarlama](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
+- [Azure Active Directory B2B işbirliği nedir?](../external-identities/what-is-b2b.md)
+- [Uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md)
+- [Azure Active Directory uygulamalar, izinler ve onay.](../develop/quickstart-register-app.md)
+- [Azure Active Directory içindeki kaynaklara erişimi yönetmek için grupları kullanma](./active-directory-manage-groups.md)
+- [Azure Active Directory içinde self servis uygulama erişim yönetimini ayarlama](../users-groups-roles/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Beklenmeyen konumlardan gelen trafik
 
-Saldırganlar dünyanın çeşitli parçalarından geliyor. Koşul olarak konum ile koşullu erişim ilkeleri kullanarak bu riski yönetin. Bir koşullu erişim ilkesinin [konum koşulu](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) , ' den oturum açmak için herhangi bir iş nedeni olmayan konumlara erişimi engellemenize olanak sağlar.
+Saldırganlar dünyanın çeşitli parçalarından geliyor. Koşul olarak konum ile koşullu erişim ilkeleri kullanarak bu riski yönetin. Bir koşullu erişim ilkesinin [konum koşulu](../conditional-access/location-condition.md) , ' den oturum açmak için herhangi bir iş nedeni olmayan konumlara erişimi engellemenize olanak sağlar.
 
 ![Yeni bir adlandırılmış konum oluştur](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-Varsa, bölgeler arasında erişim düzenlerini çözümlemek ve bulmak için bir güvenlik bilgileri ve olay yönetimi (SıEM) çözümü kullanın. SıEM ürünü kullanmıyorsanız veya Azure AD 'den kimlik doğrulama bilgilerini geri almaya memişse, bölgeler arasında erişim düzenlerini belirlemek için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) kullanmanızı öneririz.
+Varsa, bölgeler arasında erişim düzenlerini çözümlemek ve bulmak için bir güvenlik bilgileri ve olay yönetimi (SıEM) çözümü kullanın. SıEM ürünü kullanmıyorsanız veya Azure AD 'den kimlik doğrulama bilgilerini geri almaya memişse, bölgeler arasında erişim düzenlerini belirlemek için [Azure izleyici](../../azure-monitor/overview.md) kullanmanızı öneririz.
 
 ## <a name="access-usage"></a>Erişim kullanımı
 
 ### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>Azure AD günlükleri arşivlenmiş ve olay yanıt planlarıyla tümleşiktir
 
-Oturum açma etkinliğine erişim, Azure AD için denetimler ve risk olayları, sorun giderme, Kullanım Analizi ve adli araştırmalar açısından önemlidir. Azure AD, sınırlı saklama süresine sahip REST API 'Leri aracılığıyla bu kaynaklara erişim sağlar. Bir güvenlik bilgileri ve olay yönetimi (SıEM) sistemi veya eşdeğer arşivleme teknolojisi, denetim ve desteklenebilirlik için uzun süreli depolamaya yönelik bir anahtardır. Azure AD günlüklerinin uzun süreli depolanmasını etkinleştirmek için bunları mevcut SıEM çözümünüze eklemeniz veya [Azure izleyici](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor)'yi kullanmanız gerekir. Olay yanıt planlarınızın ve araştırmalarınızın bir parçası olarak kullanılabilen arşiv günlükleri.
+Oturum açma etkinliğine erişim, Azure AD için denetimler ve risk olayları, sorun giderme, Kullanım Analizi ve adli araştırmalar açısından önemlidir. Azure AD, sınırlı saklama süresine sahip REST API 'Leri aracılığıyla bu kaynaklara erişim sağlar. Bir güvenlik bilgileri ve olay yönetimi (SıEM) sistemi veya eşdeğer arşivleme teknolojisi, denetim ve desteklenebilirlik için uzun süreli depolamaya yönelik bir anahtardır. Azure AD günlüklerinin uzun süreli depolanmasını etkinleştirmek için bunları mevcut SıEM çözümünüze eklemeniz veya [Azure izleyici](../reports-monitoring/concept-activity-logs-azure-monitor.md)'yi kullanmanız gerekir. Olay yanıt planlarınızın ve araştırmalarınızın bir parçası olarak kullanılabilen arşiv günlükleri.
 
 #### <a name="logs-recommended-reading"></a>Günlük okuma önerilir
 
-- [Azure Active Directory Denetim API 'SI başvurusu](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
-- [Azure Active Directory oturum açma etkinliği rapor API 'SI başvurusu](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference)
-- [Sertifikalarla Azure AD Raporlama API’sini kullanarak veri alma](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
-- [Azure Active Directory Kimlik Koruması için Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
-- [Office 365 yönetimi etkinlik API 'SI başvurusu](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
+- [Azure Active Directory Denetim API 'SI başvurusu](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory oturum açma etkinliği rapor API 'SI başvurusu](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Sertifikalarla Azure AD Raporlama API’sini kullanarak veri alma](../reports-monitoring/tutorial-access-api-with-certificates.md)
+- [Azure Active Directory Kimlik Koruması için Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)
+- [Office 365 yönetimi etkinlik API 'SI başvurusu](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Azure Active Directory Power BI İçerik Paketi'ni kullanma](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Özet
