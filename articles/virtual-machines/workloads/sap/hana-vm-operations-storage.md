@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650477"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440703"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -88,7 +88,7 @@ Aşağıdaki Azure Premium disklerine yönelik önbelleğe alma önerileri, şun
 **Öneri: Bu gözlemlenen g/ç desenlerinin SAP HANA sonucu olarak, Azure Premium depolama kullanan farklı birimlerin önbelleğe alınması şöyle ayarlanmalıdır:**
 
 - **/Hana/Data** -önbelleğe alma veya okuma önbelleği yok
-- **/Hana/log** -önbelleğe alma-yazma hızlandırıcısı, No. ve Mv2-Series için özel durum; burada, okuma önbelleği olmadan etkinleştirilmelidir. 
+- **/Hana/log** -önbelleğe alma-Azure yazma Hızlandırıcısı etkinleştirilmesi gereken, d ve Mv2 serisi VM 'ler için özel durum 
 - **/Hana/Shared** -okuma önbelleği
 - **Işletim sistemi diski** -VM oluşturma sırasında Azure tarafından ayarlanan varsayılan önbelleğe alma işlemini değiştirmeyin
 
@@ -236,6 +236,10 @@ Bu yapılandırmada, **/Hana/Data** ve **/Hana/log** birimlerini ayrı tutmanız
 
 Öneriler genellikle bu makalenin önceki kısımlarında belirtilen SAP minimum gereksinimlerini aşır. Listelenen öneriler, SAP 'ye göre boyut önerileri ve farklı VM türlerinin sağladığı en fazla depolama hacmi arasında bir uzlaşmaya neden vardır.
 
+> [!NOTE]
+> Azure Ultra disk, bir diskin gigabayt kapasitesi başına en az 2 ıOPS zorlamaya zorlarken
+
+
 | VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data birimi | /Hana/Data g/ç verimlilik | /Hana/Data ıOPS | /Hana/log birimi | /Hana/log g/ç aktarım hızı | /Hana/log ıOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/sn | 200 GB | 400 MBps | 2,500 | 80 GB | 250 MB | 1.800 |
@@ -249,11 +253,11 @@ Bu yapılandırmada, **/Hana/Data** ve **/Hana/log** birimlerini ayrı tutmanız
 | M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2,500 |
 | M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2,500 |
 | M128s | 2.000 GiB | 2.000 MB/s |2.400 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2,500 | 
-| M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |7.000 | 512 GB | 250 MBps  | 2,500 | 
+| M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |9.600 | 512 GB | 250 MBps  | 2,500 | 
 | M208s_v2 | 2.850 GiB | 1.000 MB/s | 3.500 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2,500 | 
-| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 7.200 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2,500 | 
-| M416s_v2 | 5.700 GiB | 2.000 MB/s | 7.200 GB | 1.000 MBps | 9,000 | 512 GB | 400 MBps  | 4.000 | 
-| M416ms_v2 | 11.400 GiB | 2.000 MB/s | 14.400 GB | 1.500 MBps | 9,000 | 512 GB | 400 MBps  | 4.000 |   
+| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 7.200 GB | 750 MBps | 14.400 | 512 GB | 250 MBps  | 2,500 | 
+| M416s_v2 | 5.700 GiB | 2.000 MB/s | 7.200 GB | 1.000 MBps | 14.400 | 512 GB | 400 MBps  | 4.000 | 
+| M416ms_v2 | 11.400 GiB | 2.000 MB/s | 14.400 GB | 1.500 MBps | 28.800 | 512 GB | 400 MBps  | 4.000 |   
 
 **Listelenen değerlerin başlangıç noktası olması amaçlanmıştır ve gerçek taleplere göre değerlendirilmesi gerekir.** Azure Ultra disk 'in avantajı, ıOPS ve aktarım hızı değerlerinin, VM 'yi kapatma veya sisteme uygulanan iş yükünü durdurma gerekmeden uyarlanabilme gereği elde edilebilir.   
 
@@ -362,6 +366,6 @@ SAP ile sertifikalı olmayan ve bu nedenle [SAP HANA donanım dizininde](https:/
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure sanal makineleri Için yüksek kullanılabilirlik kılavuzu SAP HANA](./sap-hana-availability-overview.md).

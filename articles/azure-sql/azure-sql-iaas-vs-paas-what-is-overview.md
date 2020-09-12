@@ -1,6 +1,5 @@
 ---
 title: Azure SQL nedir?
-titleSuffix: " "
 description: "Azure SQL Services ailesi Hizmetleri içindeki farklı seçenekler hakkında bilgi edinin: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'de SQL Server."
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280860"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611826"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL, Azure bulutundaki SQL Server veritabanı altyapısını kullanan, yö
 Azure SQL tanıdık SQL Server altyapısından oluşturulmuştur. böylece uygulamaları kolayca geçirebilir ve öğrenolduğunuz araçları, dilleri ve kaynakları kullanmaya devam edebilirsiniz. Becerileriniz ve deneyiminiz buluta aktarılmalıdır, bu sayede zaten sahip olduğunuz değişikliklerle daha da fazlasını yapabilirsiniz. 
 
 Her bir ürünün, iş gereksinimleriniz için doğru seçeneği karşılamak üzere Microsoft 'un Azure SQL veri platformuna nasıl uyduğunu öğrenin. Maliyet tasarruflarının veya en düşük yönetimin önceliklendirmenize bakılmaksızın, bu makale, en çok ilgilendiğiniz iş gereksinimlerine göre hangi yaklaşımın elde eteceğine karar vermenize yardımcı olabilir.
+
+
+Azure SQL 'e yeni başladıysanız, derinlemesine Azure SQL [video serimizin](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL* videosunu inceleyin:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -115,7 +119,7 @@ Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliş
 | Şirket içi uygulama, Azure SQL veritabanı 'ndaki verilere erişebilir. | Azure Express Route veya VPN Gateway kullanarak şirket içi ortamınıza [yerel sanal ağ uygulama](managed-instance/vnet-existing-add-subnet.md) ve bağlantı. | SQL sanal makineler ile kısmen bulutta ve kısmen şirket içinde çalışan uygulamalarınız olabilir. Örneğin, şirket içi ağınızı ve Active Directory Etki Alanı'nı [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) üzerinden buluta genişletebilirsiniz. Karma bulut çözümleri hakkında daha fazla bilgi için bkz. [Şirket içi veri çözümlerini buluta genişletme](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
-## <a name="cost"></a>Maliyet
+## <a name="cost"></a>Cost
 
 İster nakit için, ister sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirketteki bir ekip olsun, sınırlı komik, genellikle veritabanlarınızı barındırmaya karar verirken birincil sürücü olur. Bu bölümde, Azure 'da Azure SQL hizmet ailesiyle ilişkili faturalandırma ve lisans temel bilgileri hakkında bilgi edineceksiniz.  Ayrıca toplam uygulama maliyetini hesaplama hakkında bilgi edineceksiniz.
 

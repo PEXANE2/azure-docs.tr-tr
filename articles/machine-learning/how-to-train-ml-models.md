@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146598"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650611"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahmin aracı kullanarak modelleri Azure Machine Learning eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146598"
 Azure Machine Learning, bir [RunConfiguration nesnesi](how-to-set-up-training-targets.md#whats-a-run-configuration) ve bir [ScriptRunConfig nesnesi](how-to-set-up-training-targets.md#submit)kullanarak eğitim betiğinizi [çeşitli işlem hedeflerine](how-to-set-up-training-targets.md)kolayca gönderebilirsiniz. Bu model size çok fazla esneklik ve en yüksek denetim sağlar.
 
 
-Tahmin aracı sınıfı, modellerinizi derin öğrenme ve pekiştirmeye dayalı öğrenme ile eğmenizi kolaylaştırır. Çalışma yapılandırmasını kolayca oluşturmanıza olanak tanıyan üst düzey bir soyutlama sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-öğren gibi) kullanarak eğitim betiğini, sizin yerel makineniz, Azure 'da tek bir VM veya Azure 'da bir GPU kümesi olsun, seçtiğiniz herhangi bir bilgi işlem hedefinde göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz. Pytorch, TensorFlow, Chainer ve pekiştirmeye dayalı Learning görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)ve [pekiştirmeye dayalı Learning](how-to-use-reinforcement-learning.md) tahmini 'ı da sağlar.
+Tahmin aracı sınıfı, modellerinizi derin öğrenme ve pekiştirmeye dayalı öğrenme ile eğmenizi kolaylaştırır. Çalışma yapılandırmasını kolayca oluşturmanıza olanak tanıyan üst düzey bir soyutlama sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-öğren gibi) kullanarak eğitim betiğini, sizin yerel makineniz, Azure 'da tek bir VM veya Azure 'da bir GPU kümesi olsun, seçtiğiniz herhangi bir bilgi işlem hedefinde göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) oluşturabilir ve kullanabilirsiniz. Pytorch, TensorFlow, Chainer ve pekiştirmeye dayalı Learning görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true)ve [pekiştirmeye dayalı Learning](how-to-use-reinforcement-learning.md) tahmini 'ı da sağlar.
 
 ## <a name="train-with-an-estimator"></a>Bir tahmin aracı ile eğitme
 
@@ -116,7 +116,7 @@ Parametre | Açıklama | Varsayılan
 `custom_docker_image`| Kullanmak istediğiniz görüntünün adı. Yalnızca ortak Docker depolarında (Bu durumda Docker Hub 'da) bulunan görüntüleri sağlayın. Özel bir Docker deposundan bir görüntü kullanmak için, oluşturucunun `environment_definition` parametresini kullanın.| `None`
 `node_count`| Eğitim işiniz için kullanılacak düğüm sayısı. | `1`
 `process_count_per_node`| Her düğümde çalıştırılacak işlem sayısı (veya "çalışanlar"). Bu durumda, `2` her bir düğümde bulunan GPU 'ları kullanırsınız.| `1`
-`distributed_training`| MPı arka ucunu kullanarak dağıtılmış eğitime başlatmaya yönelik [Mpiconation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) nesnesi.  | `None`
+`distributed_training`| MPı arka ucunu kullanarak dağıtılmış eğitime başlatmaya yönelik [Mpiconation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) nesnesi.  | `None`
 
 
 Son olarak, eğitim işini gönder:
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 Modeli eğittikten sonra, çalışma alanınıza kaydedebilir ve kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır.
 
-Aşağıdaki kodu çalıştırmak, modeli çalışma alanınıza kaydeder ve uzak işlem bağlamlarındaki veya dağıtım betiklerdeki ada göre başvuruda bulunmak için kullanılabilir hale gelir. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)Daha fazla bilgi ve ek parametreler için başvuru belgelerine bakın.
+Aşağıdaki kodu çalıştırmak, modeli çalışma alanınıza kaydeder ve uzak işlem bağlamlarındaki veya dağıtım betiklerdeki ada göre başvuruda bulunmak için kullanılabilir hale gelir. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)Daha fazla bilgi ve ek parametreler için başvuru belgelerine bakın.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

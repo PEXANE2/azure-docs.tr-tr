@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d7701e215011165ffef33353de7f9372b1142cf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248454"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440754"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory işlem hatları ve Etkinlikler
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -34,7 +34,7 @@ Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanız
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalamak için kopyalama etkinliği kullanabilirsiniz. Ardından bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanıp blob depolamadaki verileri işleyerek/dönüştürerek çıktı verileri üretebilirsiniz. Son olarak, ikinci bir kopyalama etkinliği kullanarak üzerinde iş zekası (BI) raporlama çözümlerinin oluşturulduğu bir Azure SQL Veri Ambarı’na çıktı verilerini kopyalayabilirsiniz.
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir görevi gerçekleştiren etkinliklerden oluşan mantıksal gruptur. İşlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalamak için kopyalama etkinliği kullanabilirsiniz. Ardından bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanıp blob depolamadaki verileri işleyerek/dönüştürerek çıktı verileri üretebilirsiniz. Son olarak, çıktı verilerini iş zekası (BI) raporlama çözümlerinin oluşturulduğu bir Azure SYNAPSE analizine (eski adıyla SQL veri ambarı) kopyalamak için ikinci bir kopyalama etkinliği kullanın.
 
 Bir etkinliğin sıfır veya sıfırdan çok giriş [veri kümesi](data-factory-create-datasets.md) olabilir ve her etkinlik bir veya birden çok çıkış [veri kümesi](data-factory-create-datasets.md) oluşturabilir. Aşağıdaki diyagramda, Data Factory içindeki işlem hattı, etkinlik ve veri kümesi arasındaki ilişki gösterilmektedir:
 
@@ -94,15 +94,15 @@ Bir işlem hattının JSON biçiminde nasıl tanımlandığına daha yakından b
 
 | Etiket | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi () ile başlamalıdır \_</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", " \* ", "%", "&", ":", " \\ "</li></ul> |Evet |
-| açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. |Evet |
-| etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinlikler JSON öğesiyle ilgili ayrıntılar için sonraki bölüme bakın. | Evet |
-| start | İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: `2016-10-14T16:32:41Z`. <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00` ", 6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |Hayır<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
-| end | İşlem hattının bitiş tarihi-saati. Belirtilmişse ISO biçiminde olmalıdır. Örneğin, `2016-10-14T17:32:41Z` <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00` 6 EST.<br/><br/>İşlem hattını süresiz olarak çalıştırmak için end özelliği değerini 9999-09-09 olarak ayarlayın. <br/><br/> İşlem hattı yalnızca başlangıç saati ve bitiş saati arasında etkindir. Başlangıç zamanından veya bitiş zamanından önce yürütülmez. İşlem hattı duraklatılmışsa, başlangıç ve bitiş zamanından bağımsız olarak yürütülmez. Bir işlem hattının çalışması için duraklatılmamalıdır. Azure Data Factory planlama ve yürütmenin nasıl çalıştığını anlamak için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) . |Hayır <br/><br/>Start özelliği için bir değer belirtirseniz, End özelliği için bir değer belirtmeniz gerekir.<br/><br/>**Start** özelliği için notlara bakın. |
-| isPaused | True olarak ayarlanırsa işlem hattı çalıştırılmaz. Bu, duraklatılmış durumda. Varsayılan değer = false. Bu özelliği, bir işlem hattını etkinleştirmek veya devre dışı bırakmak için kullanabilirsiniz. |Hayır |
-| pipelineMode | İşlem hattı için zamanlama çalıştırmaları yöntemi. İzin verilen değerler: zamanlanmış (varsayılan), Onetime.<br/><br/>' Zamanlanmış ', işlem hattının etkin döneme (başlangıç ve bitiş saati) göre belirli bir zaman aralığında çalıştığını gösterir. ' Onetime ', işlem hattının yalnızca bir kez çalışacağını gösterir. Her seferinde bir kez oluşturulduktan sonra bir süre işlem hattı değiştirilemez/güncelleştirilemez. Kerelik ayarı hakkında ayrıntılı bilgi için bkz. [kerelik işlem hattı](#onetime-pipeline) . |Hayır |
-| expirationTime | Oluşturulduktan sonra, [tek seferlik işlem hattının](#onetime-pipeline) geçerli olduğu ve sağlanması gereken süre. Etkin, başarısız veya bekleyen çalıştırmaları yoksa, işlem hattı süre sonu zamanına ulaştığında otomatik olarak silinir. Varsayılan değer:`"expirationTime": "3.00:00:00"`|Hayır |
-| veri kümeleri |İşlem hattında tanımlanan etkinlikler tarafından kullanılacak veri kümelerinin listesi. Bu özellik, bu işlem hattına özgü ve Veri Fabrikası içinde tanımlanmayan veri kümelerini tanımlamak için kullanılabilir. Bu işlem hattı içinde tanımlanan veri kümeleri yalnızca bu işlem hattı tarafından kullanılabilir ve paylaştırılamaz. Ayrıntılar için bkz. [kapsamlı veri kümeleri](data-factory-create-datasets.md#scoped-datasets) . |Hayır |
+| name |İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi () ile başlamalıdır \_</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", " \* ", "%", "&", ":", " \\ "</li></ul> |Yes |
+| açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. |Yes |
+| etkinlikler | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinlikler JSON öğesiyle ilgili ayrıntılar için sonraki bölüme bakın. | Yes |
+| start | İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: `2016-10-14T16:32:41Z`. <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00` ", 6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |No<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
+| end | İşlem hattının bitiş tarihi-saati. Belirtilmişse ISO biçiminde olmalıdır. Örnek: `2016-10-14T17:32:41Z` <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00-05:00` 6 EST.<br/><br/>İşlem hattını süresiz olarak çalıştırmak için end özelliği değerini 9999-09-09 olarak ayarlayın. <br/><br/> İşlem hattı yalnızca başlangıç saati ve bitiş saati arasında etkindir. Başlangıç zamanından veya bitiş zamanından önce yürütülmez. İşlem hattı duraklatılmışsa, başlangıç ve bitiş zamanından bağımsız olarak yürütülmez. Bir işlem hattının çalışması için duraklatılmamalıdır. Azure Data Factory planlama ve yürütmenin nasıl çalıştığını anlamak için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) . |No <br/><br/>Start özelliği için bir değer belirtirseniz, End özelliği için bir değer belirtmeniz gerekir.<br/><br/>**Start** özelliği için notlara bakın. |
+| isPaused | True olarak ayarlanırsa işlem hattı çalıştırılmaz. Bu, duraklatılmış durumda. Varsayılan değer = false. Bu özelliği, bir işlem hattını etkinleştirmek veya devre dışı bırakmak için kullanabilirsiniz. |No |
+| pipelineMode | İşlem hattı için zamanlama çalıştırmaları yöntemi. İzin verilen değerler: zamanlanmış (varsayılan), Onetime.<br/><br/>' Zamanlanmış ', işlem hattının etkin döneme (başlangıç ve bitiş saati) göre belirli bir zaman aralığında çalıştığını gösterir. ' Onetime ', işlem hattının yalnızca bir kez çalışacağını gösterir. Her seferinde bir kez oluşturulduktan sonra bir süre işlem hattı değiştirilemez/güncelleştirilemez. Kerelik ayarı hakkında ayrıntılı bilgi için bkz. [kerelik işlem hattı](#onetime-pipeline) . |No |
+| expirationTime | Oluşturulduktan sonra, [tek seferlik işlem hattının](#onetime-pipeline) geçerli olduğu ve sağlanması gereken süre. Etkin, başarısız veya bekleyen çalıştırmaları yoksa, işlem hattı süre sonu zamanına ulaştığında otomatik olarak silinir. Varsayılan değer: `"expirationTime": "3.00:00:00"`|No |
+| veri kümeleri |İşlem hattında tanımlanan etkinlikler tarafından kullanılacak veri kümelerinin listesi. Bu özellik, bu işlem hattına özgü ve Veri Fabrikası içinde tanımlanmayan veri kümelerini tanımlamak için kullanılabilir. Bu işlem hattı içinde tanımlanan veri kümeleri yalnızca bu işlem hattı tarafından kullanılabilir ve paylaştırılamaz. Ayrıntılar için bkz. [kapsamlı veri kümeleri](data-factory-create-datasets.md#scoped-datasets) . |No |
 
 ## <a name="activity-json"></a>Etkinlik JSON
 **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Her etkinlik aşağıdaki en üst düzey yapıya sahiptir:
@@ -132,20 +132,20 @@ Aşağıdaki tabloda, etkinlik JSON tanımındaki özellikler açıklamaktadır:
 
 | Etiket | Açıklama | Gerekli |
 | --- | --- | --- |
-| name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi () ile başlamalıdır \_</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \\ "</li></ul> |Evet |
-| açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin |Evet |
-| tür | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities) ve [veri dönüştürme etkinlikleri](#data-transformation-activities) bölümlerine bakın. |Evet |
-| girişi |Etkinlik tarafından kullanılan giriş tabloları<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Evet |
-| çıkışı |Etkinlik tarafından kullanılan çıkış tabloları.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Evet |
+| name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi () ile başlamalıdır \_</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \\ "</li></ul> |Yes |
+| açıklama | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin |Yes |
+| tür | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities) ve [veri dönüştürme etkinlikleri](#data-transformation-activities) bölümlerine bakın. |Yes |
+| girişi |Etkinlik tarafından kullanılan giriş tabloları<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
+| çıkışı |Etkinlik tarafından kullanılan çıkış tabloları.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Yes |
 | linkedServiceName |Etkinlik tarafından kullanılan bağlı hizmetin adı. <br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. |HDInsight etkinliği için Evet ve Azure Machine Learning Batch puanlama etkinliği <br/><br/>Diğer tümü için hayır |
-| typeProperties |**Typeproperties** bölümündeki özellikler etkinliğin türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır |
-| ilke |Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Belirtilmemişse, varsayılan ilkeler kullanılır. |Hayır |
-| scheduler | "Scheduler" özelliği, etkinlik için istenen zamanlamayı tanımlamak için kullanılır. Alt özellikleri, [bir veri kümesindeki kullanılabilirlik özelliğindeki](data-factory-create-datasets.md#dataset-availability)olanlarla aynıdır. |Hayır |
+| typeProperties |**Typeproperties** bölümündeki özellikler etkinliğin türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | No |
+| ilke |Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Belirtilmemişse, varsayılan ilkeler kullanılır. |No |
+| scheduler | "Scheduler" özelliği, etkinlik için istenen zamanlamayı tanımlamak için kullanılır. Alt özellikleri, [bir veri kümesindeki kullanılabilirlik özelliğindeki](data-factory-create-datasets.md#dataset-availability)olanlarla aynıdır. |No |
 
 ### <a name="policies"></a>İlkeler
 İlkeler, özellikle bir tablonun dilimi işlendiğinde bir etkinliğin çalışma zamanı davranışını etkiler. Aşağıdaki tabloda ayrıntılar verilmektedir.
 
-| Özellik | İzin verilen değerler | Varsayılan değer | Açıklama |
+| Özellik | İzin verilen değerler | Varsayılan değer | Description |
 | --- | --- | --- | --- |
 | eşzamanlılık |Tamsayı <br/><br/>En büyük değer: 10 |1 |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |İşlenmekte olan veri dilimlerinin sıralamasını belirler.<br/><br/>Örneğin, 2 dilimdeyse (4pm 'de bir diğeri, 5 pm 'de bir diğeri) ve her ikisi de yürütme bekleniyor. ExecutionPriorityOrder 'ı NewestFirst olarak ayarlarsanız, önce 5 PM 'deki dilim işlenir. Benzer şekilde, önce executionPriorityORder değerini Oldestolarak ayarlarsanız, 4 PM 'deki dilim işlenir. |

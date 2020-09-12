@@ -1,17 +1,17 @@
 ---
-title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
+title: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 description: Azure Kubernetes hizmetinde bir hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d23a0120aafb4dc3e6952b40959a20f9a3456614
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226888"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651570"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
+# <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 
 Azure Kubernetes Service (AKS) şablonunda hiper muhasebe dokusunu kullanarak Azure 'da bir hiper muhasebe doku Consortium ağı dağıtabilir ve yapılandırabilirsiniz.
 
@@ -334,7 +334,7 @@ Eş kuruluşa chaincode 'u yüklemek için aşağıdaki komutu çalıştırın.
 ```
 Komut, ortam değişkeninde ayarlanan eşdüzey kuruluşun tüm eşdüzey düğümlerine chaincode yükler `ORGNAME` . Kanalınıza iki veya daha fazla eş kurum varsa ve bunların tümüne chaincode yüklemek istiyorsanız, her eş kuruluş için bu komutu ayrı olarak çalıştırın.  
 
-Şu adımları uygulayın:  
+Şu adımları izleyin:  
 
 1.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg1` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  
 2.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg2` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  

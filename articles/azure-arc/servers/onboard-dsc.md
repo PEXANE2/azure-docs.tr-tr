@@ -3,12 +3,12 @@ title: Windows PowerShell DSC kullanarak bağlı makine aracısını yükler
 description: Bu makalede, Windows PowerShell DSC 'yi kullanarak Azure Arc etkin sunucularını (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213077"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565829"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC kullanarak bağlı makine aracısını yüklemek
 
@@ -82,7 +82,7 @@ Aracıyı yükledikten ve Azure Arc etkin sunucularına (Önizleme) bağlanacak 
 
 Bu kaynak, bir makine için uçtan uca yapılandırmayı temsil etmek üzere mevcut DSC yapılandırmalarına eklenebilir. Örneğin, bu kaynağı güvenli işletim sistemi ayarlarını ayarlayan bir yapılandırmaya eklemek isteyebilirsiniz.
 
-PowerShell Galerisi [Compsıteresource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modülü, yapılandırmaların birleştirilmesi için daha fazla basitleştirecek örnek yapılandırmanın [bileşik kaynağını](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) oluşturmak için kullanılabilir.
+PowerShell Galerisi bileşim [Teresource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modülü, yapılandırmaların birleştirilmesinin daha da basitleşmesi için örnek yapılandırmanın [bileşik kaynağını](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) oluşturmak üzere kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321505"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650730"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
@@ -24,14 +24,14 @@ Bu makalede, otomatik makine öğrenimi, otomatik ml, denemeleri için eğitim/d
 
 Azure Machine Learning ' de, birden çok ML modeli oluşturmak için, oto ml 'yi kullandığınızda, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak her bir alt çalıştırmanın ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. 
 
-Otomatik ml denemeleri model doğrulamasını otomatik olarak gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
+Otomatik ml denemeleri model doğrulamasını otomatik olarak gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
 
 Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)makalesine bakın. 
 
 > [!NOTE]
 > Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede,
 
@@ -47,7 +47,7 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 
 ## <a name="default--data-splits-and-cross-validation"></a>Varsayılan veri ayırır ve çapraz doğrulama
 
-Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
+Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

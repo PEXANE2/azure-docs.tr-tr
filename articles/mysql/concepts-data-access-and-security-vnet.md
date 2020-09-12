@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 371099610da129025f6683630b1824b8466b5aff
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 77980541049740c5f706d54d289472a076103137
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833020"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461910"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı ile Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -112,7 +112,7 @@ MySQL için Azure veritabanı 'nda, sanal ağ kuralları özelliği aşağıdaki
 
 - Sanal ağ kuralları yalnızca Azure Resource Manager sanal ağlar için geçerlidir; [klasik dağıtım modeli][arm-deployment-model-568f] ağlarına değil.
 
-- **Microsoft. SQL** Service etiketi kullanılarak MySQL Için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL Için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
+- **Microsoft. SQL** Service etiketi kullanılarak MySQL Için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eskı adıyla SQL veri ambarı).
 
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 

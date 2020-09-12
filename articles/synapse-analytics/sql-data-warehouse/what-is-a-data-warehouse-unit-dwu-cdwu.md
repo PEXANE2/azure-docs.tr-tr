@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374142"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461995"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
 
@@ -51,7 +51,7 @@ Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini
 Hizmet düzeyi hedefi (SLO), SQL havuzunuzun maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzu için hizmet düzeyleri, veri ambarı birimleri (DWU) ile ölçülür (örneğin, DW2000c).
 
 > [!NOTE]
-> Azure SQL veri ambarı Gen2, son zamanlarda 100 cDWU kadar düşük bilgi işlem katmanlarını desteklemek için ek ölçek özellikleri ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Azure SYNAPSE Analytics Gen2, en kısa süre önce işlem katmanlarını 100 cDWU olarak destekleyecek şekilde daha fazla ölçek özelliği ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 T-SQL ' de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
 
@@ -141,7 +141,7 @@ DWU 'ları değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Daha fazla bilgi için bkz. [SQL veri ambarı Için PowerShell cmdlet 'leri](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics Için PowerShell cmdlet 'leri](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Daha fazla REST API örnek için bkz. [SQL veri ambarı Için REST API 'leri](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Daha fazla REST API örnek için bkz. [Azure SYNAPSE Analytics Için REST API 'leri](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="check-status-of-dwu-changes"></a>DWU değişikliklerinin durumunu denetle
 

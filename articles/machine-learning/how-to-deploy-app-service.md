@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851367"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645613"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 > [!IMPORTANT]
 > Dağıtılan modelinizle kullanılan Puanlama verilerini veya Puanlama sonuçlarını günlüğe kaydetmek istiyorsanız, bunun yerine Azure Kubernetes hizmetine dağıtmanız gerekir. Daha fazla bilgi için bkz. [Üretim modellerinizde veri toplama](how-to-enable-data-collection.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -46,9 +46,9 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
     > [!IMPORTANT]
     > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
     >
-    > * `ws`-Azure Machine Learning çalışma alanınız.
-    > * `model`-Dağıtılacak kayıtlı model.
-    > * `inference_config`-Modelin çıkarım yapılandırması.
+    > * `ws` -Azure Machine Learning çalışma alanınız.
+    > * `model` -Dağıtılacak kayıtlı model.
+    > * `inference_config` -Modelin çıkarım yapılandırması.
     >
     > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
@@ -75,7 +75,7 @@ Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerek
 Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
-> Azure App Service ile kullanım için bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
+> Azure App Service ile kullanım için bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
+Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
 > [!NOTE]
 > Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config` çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).

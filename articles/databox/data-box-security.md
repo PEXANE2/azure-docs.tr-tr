@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483838"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565777"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -30,9 +30,13 @@ Microsoft Azure Data Box çözümü birbiriyle etkileşimde olan dört ana bile�
 - **Cihaza bağlı istemciler/konaklar** – Altyapınızda Data Box cihazına bağlanan ve korunması gereken verileri içeren istemciler.
 - **Bulut depolama** – Azure bulutunda verilerin depolandığı konum. Bu genellikle, oluşturduğunuz Azure Data Box kaynağına bağlanan depolama hesabıdır.
 
-Aşağıdaki diyagram, Azure Data Box çözümü aracılığıyla şirket içinden Azure’a veri akışını gösterir. Bu akış Data Box bir içeri aktarma siparişi içindir.
+Aşağıdaki diyagramda veri akışının Şirket içinden Azure 'a ve verilerin çözüm üzerinden akar gibi çeşitli güvenlik özelliklerinin Azure Data Box çözümü gösterilmektedir. Bu akış Data Box bir içeri aktarma siparişi içindir.
 
-![Data Box güvenliği](media/data-box-security/data-box-security-2.png)
+![Data Box içeri aktarma güvenliği](media/data-box-security/data-box-security-2.png)
+
+Aşağıdaki diyagramda Data Box dışa aktarma sırası verilmiştir.
+
+![Data Box dışarı aktarma güvenliği](media/data-box-security/data-box-security-3.png)
 
 Veriler bu çözüm üzerinden akar, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için şuraya gidin:
 

@@ -4,14 +4,14 @@ description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092499"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612073"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "87092499"
 
 ![Azure portal içindeki proje ayrıntıları sayfasının ekran görüntüsü](media/hpc-cache-create-basics.png)
 
-**Proje ayrıntıları**' nda, önbelleği barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [erişim](hpc-cache-prerequisites.md#azure-subscription) listesinde olduğundan emin olun.
+**Proje ayrıntıları**' nda, önbelleği barındıracak aboneliği ve kaynak grubunu seçin.<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
 
 **Hizmet Ayrıntıları**' nda, önbellek adını ve bu diğer öznitelikleri ayarlayın:
 

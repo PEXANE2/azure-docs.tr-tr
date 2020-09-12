@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163960"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650795"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
@@ -39,7 +39,7 @@ Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md
 
 1. Zaman serisi model değişkenleriniz ve kayıtlı sorgular tarafından kullanılan söz dizimini güncelleştirmek için gezgin tarafından istenir.
 
-    [![İstem](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![İsteme](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Bildirimi yanlışlıkla kapatırsanız, bildirim panelinde bulunabilir.
 
@@ -56,7 +56,7 @@ Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md
 
     [![Değişkenleri Güncelleştir](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. **Kaydedilmiş sorguları Güncelleştir**' e tıklayın. Bu araç, değişkenler güncelleştirildiği zaman sizi bilgilendirir.
+1. **Kaydedilmiş sorguları Güncelleştir**' e tıklayın. Bu araç, Kaydedilen sorgular güncelleştirildiği zaman sizi bilgilendirir.
 
     [![Kaydedilmiş sorguları Güncelleştir](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -86,7 +86,7 @@ Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullana
   - Örnek API 'Leri
     - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
-    - [Search](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
+    - [Ara](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
     - [Önerme](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Hiyerarşi API 'Leri
     - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
@@ -99,7 +99,7 @@ Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de ol
 
 - Türler API 'Leri
   - [Put Işlemi](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
-- API sorgula
+- Sorgu API'leri
   - [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)

@@ -4,12 +4,12 @@ description: Web uygulamanıza yönelik başarısız isteklerin hızında olağa
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420218"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565846"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
 [Application Insights](./app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
@@ -58,6 +58,7 @@ Uyarılar, özel makine öğrenimi algoritmız tarafından tetiklenir, bu nedenl
 * Son 20 dakikalık hata yüzdesinin son 40 dakikalık ve son yedi günün hızına bir karşılaştırması ve standart sapmanın X-Times ' i aşan önemli sapmaları aramak.
 * Uygulamanın istek hacmine/bağımlılıklara göre farklılık gösteren, en düşük hata yüzdesi için uyarlamalı sınır kullanma.
 * Sorun artık 8-24 saat için algılanmadıysa, tetiklenen uyarı İzleyicisi koşulunu otomatik olarak çözebilecek mantık vardır.
+  Note: geçerli tasarımda. Akıllı algılama uyarısı çözümlendiğinde bir bildirim veya eylem gönderilmez. Azure portal bir akıllı algılama uyarısının çözümlenmiş olup olmadığını kontrol edebilirsiniz.
 
 ## <a name="configure-alerts"></a>Uyarı yapılandırma
 

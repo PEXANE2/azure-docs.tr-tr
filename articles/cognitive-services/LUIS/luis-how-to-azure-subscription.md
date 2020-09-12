@@ -3,14 +3,14 @@ title: Yazma ve çalışma zamanı anahtarlarını kullanma-LUSıS
 description: Language Understanding (LUU) ilk kez kullandığınızda, yazma anahtarı oluşturmanız gerekmez. Uygulamayı yayımlamayı ve sonra çalışma zamanı uç noktanızı kullanmayı amaçlıyorsanız, çalışma zamanı anahtarını uygulamaya oluşturup atamanız gerekir.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496908"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565914"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -25,14 +25,18 @@ Yazma ve sorgu tahmini çalışma zamanı kaynakları, LUSıS uygulamanız ve ta
 
 LUSıS üç tür Azure kaynağına ve Azure olmayan bir kaynağa izin verir:
 
-|Anahtar|Amaç|Bilişsel hizmet`kind`|Bilişsel hizmet`type`|
+|Kaynak|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|Yazma anahtarı|Yazma, eğitim, yayımlama ve test etme ile uygulama verilerine erişin ve bunları yönetin. LUSıS uygulamalarını programlı olarak yazmak istiyorsanız bir LUSıS yazma anahtarı oluşturun.<br><br>Anahtarın amacı şunları yapmanıza `LUIS.Authoring` izin versağlamaktır:<br>* Eğitim ve yayımlama dahil Language Understanding uygulamaları ve modelleri program aracılığıyla yönetme<br> * [katkıda bulunan rolüne](#contributions-from-other-authors)kişi atayarak yazma kaynağına yönelik izinleri denetleyin.|`LUIS.Authoring`|`Cognitive Services`|
-|Sorgu tahmin anahtarı| Sorgu tahmini uç noktası istekleri. İstemci uygulamanızın, başlatıcı kaynak tarafından belirtilen 1.000 isteklerin ötesinde tahmin etmek için bir LUSıS tahmin anahtarı oluşturun. |`LUIS`|`Cognitive Services`|
+|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programya ya da LUSıS portalından yazmak istiyorsanız [BIR lusıs yazma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal) . Azure authroring kaynaklarınızı uygulamanıza bağlayabilmek için önce [Lue hesabınızı geçirmeniz](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) gerekir. Kişileri [katkıda bulunan rolüne](#contributions-from-other-authors)atayarak, yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman avi.<br> * **F0 yazma kaynağı** , 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz tahmin uç noktası isteği sağlar. |`LUIS.Authoring`|`Cognitive Services`|
+|Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin istekleri yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katmanlı bir karşı avalble vardır:<br> * Aylık 10.000 ücretsiz tahmin uç noktası isteği sağlayan **F0 tahmin kaynağı**<br> * Ücretli katman olan **S0 tahmini kaynağı** . [Fiyatlandırma ayrıntıları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Başlangıç/deneme kaynağı|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. Bu, önce TP LUL 'yi imzalarken Başlatıcı Kaynak seçeneğini belirlerseniz, ayrıştırılmış tarafından oluşturulur. Ancak, başlangıç anahtarı sonunda kullanım dışı bırakılır ve tüm LUYA kullanıcıları, [kendi hesaplarını geçirmelidir](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) ve bu uygulamaların bir yazma kaynağına bağlanması gerekir. Bu kaynak, yazma kaynağı gibi rol tabanlı erişim denetimi için izinler vermez. <br><br> Yazma kaynağı olarak, başlangıç kaynağı size 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz tahmin uç noktası isteği verir.|-|Azure kaynağı değil|
 |[Bilişsel hizmet hizmeti çoklu hizmet kaynak anahtarı](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUVE diğer desteklenen bilişsel hizmetler ile paylaşılan sorgu tahmini uç noktası istekleri.|`CognitiveServices`|`Cognitive Services`|
-|Başlangıç|LUıS portalı veya API 'Ler (SDK 'lar dahil) aracılığıyla ücretsiz yazma (rol tabanlı erişim denetimi olmadan), bir tarayıcı, API veya SDK aracılığıyla ayda ücretsiz 1.000 tahmin uç noktası istekleri|-|Azure kaynağı değil|
 
-Azure kaynak oluşturma işlemi tamamlandığında, anahtarı HALU portalında uygulamaya [atayın](#assign-a-resource-to-an-app) .
+
+> [!Note]
+> LUIN sağladığı iki tür F0 (ücretsiz katman) kaynağı vardır. Bir adet işlem ve tahmin işlemleri için bir tane. Tahmin işlemleri için ücretsiz kota kullanıyorsanız, F0 tahmin kaynağını kullanarak, size aylık 1000 tahmin işlemleri sağlayan yazma kaynağına değil, aylık 10.000 ücretsiz işlem sağlayan bir tahmine sahip olduğunuzdan emin olun.
+
+Azure kaynak oluşturma işlemi tamamlandığında, kaynağı LUı portalındaki uygulamaya [atayın](#assign-a-resource-to-an-app) .
 
 LUSıS uygulamalarını yayımlamak ve sorgulamak istediğiniz [bölgelerde](luis-reference-regions.md#publishing-regions) yazmak önemlidir.
 
@@ -111,7 +115,7 @@ Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir.
 |Sürüm içeri aktarılıyor||
 |Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
 |Modeli değiştir|
-|Yayımla|
+|Yayımlama|
 |[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
 |Eğitim|
 
@@ -173,8 +177,8 @@ Her kaynağı ayrı ayrı oluşturmak için [Azure CLI](https://docs.microsoft.c
 
 Kaynak `kind` :
 
-* Özgün`LUIS.Authoring`
-* Hızlı`LUIS`
+* Özgün `LUIS.Authoring`
+* Hızlı `LUIS`
 
 1. Azure CLı 'da oturum açın:
 
@@ -207,19 +211,23 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**'i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
-Aşağıdaki yordamla bir uygulamaya bir atayabilirsiniz.
+Azure aboneliğiniz yoksa, yeni bir kaynak atayamayacağınızı veya oluşturmayacağınızı lütfen unutmayın. İlk olarak bir [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/en-us/free/) oluşturmalı ve sonra portaldan yeni bir kaynak oluşturmak için lusıs 'e geri dönecaksınız.
 
-1. [Luo portalında](https://www.luis.ai)oturum açın, sonra **uygulamalarım** listesinden bir uygulama seçin.
-1. **Yönet-> Azure kaynakları** sayfasına gidin.
+Aşağıdaki yordamı kullanarak bir uygulamaya bir yazma veya tahmin kaynağı atayabilir veya oluşturabilirsiniz:
+
+1. [Luo portalında](https://www.luis.ai)oturum açın, sonra **uygulamalarım** listesinden bir uygulama seçin
+1. **> yönetme Azure kaynakları** sayfasına gidin
 
     ![Uygulamaya bir kaynak atamak için LUU portalında Manage-> Azure kaynaklarını seçin.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. Tahmin veya yazma kaynağı sekmesini seçin, ardından **tahmin kaynağı Ekle** veya **yazma kaynağı Ekle** düğmesini seçin.
-1. Doğru kaynağı bulmak için formdaki alanları seçin ve ardından **Kaydet**' i seçin.
+1. Tahmin veya yazma kaynağı sekmesini seçin ve ardından **tahmin kaynağı Ekle** veya **yazma kaynağı Ekle** düğmesini seçin
+1. Doğru kaynağı bulmak için formdaki alanları seçin ve ardından **Kaydet** ' i seçin.
+1. Mevcut bir kaynağınız yoksa, "yeni bir Lua kaynağı oluştur?" seçeneğini belirleyerek bir tane oluşturabilirsiniz. pencerenin alt kısmından
+
 
 ### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>LUO portalını kullanmadan sorgu tahmini çalışma zamanı kaynağı atama
 

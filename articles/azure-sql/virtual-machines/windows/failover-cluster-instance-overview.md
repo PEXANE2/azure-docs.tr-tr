@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653282"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611626"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
-|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
+|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -66,7 +66,7 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 **Avantajlar**: 
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) mimarisini olduğu gibi tutarken Azure 'a geçiş yapmak isteyen uygulamalar için faydalıdır. 
 - , SCSI kalıcı ayırmaları (SCSI PR) desteği nedeniyle kümelenmiş uygulamaları Azure 'a geçirebilirler. 
-- SQL Server 2019 için tüm SQL Server ve paylaşılan Azure Ultra Disk Depolama sürümleri için paylaşılan Azure Premium SSD destekler. 
+- , Paylaşılan Azure Premium SSD ve Azure Ultra Disk depolamayı destekler.
 - Paylaşılan bir depolama havuzu oluşturmak için tek bir paylaşılan disk kullanabilir veya birden çok paylaşılan disk oluşturabilirsiniz. 
 - FILESTREAM 'i destekler.
 
@@ -153,10 +153,11 @@ Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri için aşa
 
 Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Bu özellikler, aracı hafif yönetim modunda yeniden yüklendikten sonra SQL Server VM 'Ler için çalışmaz.
 
-### <a name="msdtc"></a>MSDTC   
-Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [Azure Standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)depolama Ile Windows Server 2019 üzerinde MSDTC 'yi destekler.
+### <a name="msdtc"></a>MSDTC 
 
-Azure sanal makinelerinde, Windows Server 2016 veya öncesi için MSDTC desteklenmez çünkü:
+Azure sanal makineleri, kümelenmiş paylaşılan birimler (CSV) ve [azure standart Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ya da Azure paylaşılan diskler kullanan SQL Server VM 'lerde depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler. 
+
+Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 
 - Kümelenmiş MSDTC kaynağı, paylaşılan depolama alanı kullanacak şekilde yapılandırılamaz. Windows Server 2016 ' de, bir MSDTC kaynağı oluşturursanız, depolama alanı kullanılabilir olsa bile, kullanılabilir bir paylaşılan depolama alanı göstermez. Bu sorun Windows Server 2019 ' de düzeltildi.
 - Temel yük dengeleyici RPC bağlantı noktalarını işlemez.
@@ -166,7 +167,7 @@ Azure sanal makinelerinde, Windows Server 2016 veya öncesi için MSDTC destekle
 
 [Küme yapılandırmalarının en iyi yöntemlerini](hadr-cluster-best-practices.md)gözden geçirin ve ardından [SQL Server VM FCI için hazırlayabilirsiniz](failover-cluster-instance-prepare-vm.md). 
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

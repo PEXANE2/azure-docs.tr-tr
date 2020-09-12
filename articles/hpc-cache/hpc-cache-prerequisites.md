@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100018"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613997"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -36,9 +36,9 @@ Belirli öneriler için bu makalenin geri kalanını okuyun.
 ## <a name="azure-subscription"></a>Azure aboneliği
 
 Ücretli bir abonelik önerilir.
-
+<!-- 
 > [!NOTE]
-> Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin Önbelleklerinden yüksek kaliteli yanıt verdiğini aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
@@ -143,7 +143,7 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
 
   * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
 
-* **Dizin erişimi:** `showmount`Depolama sisteminde komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
+* **Dizin erişimi:** `showmount` Depolama sisteminde komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
 
   > [!NOTE]
   > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, ' yi **etkinleştirmeyin `showmount` **. Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .

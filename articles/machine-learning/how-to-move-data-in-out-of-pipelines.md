@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230324"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650395"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -33,7 +33,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `PipelineData`
 
 > [!TIP]
-> Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
+> Ardışık düzen adımları arasında geçici verileri geçirmek ve işlem hattı çalıştırmalarından sonra verilerinizi sürdürmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de bulunur  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -42,7 +42,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-- [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
+- [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
 
 - Azure Machine Learning çalışma alanı.
   
@@ -61,7 +61,7 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Önceden var olan veriler için nesneleri kullanma 
 
-Bir işlem hattına veri almanın tercih edilen yolu bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) nesnesi kullanmaktır. `Dataset` nesneler, çalışma alanı genelinde kullanılabilir kalıcı verileri temsil eder.
+Bir işlem hattına veri almanın tercih edilen yolu bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) nesnesi kullanmaktır. `Dataset` nesneler, çalışma alanı genelinde kullanılabilir kalıcı verileri temsil eder.
 
 Nesneleri oluşturmak ve kaydettirmek için birçok yol vardır `Dataset` . Tablo veri kümeleri, bir veya daha fazla dosyada kullanılabilen sınırlandırılmış verilere yöneliktir. Dosya veri kümeleri, ikili veriler (örneğin, görüntüler) veya ayrıştırılacak veriler içindir. Nesneleri oluşturmanın en basit programlama yolları, `Dataset` çalışma alanı depolamada veya genel URL 'lerde Mevcut blobları kullanmaktır:
 
@@ -152,7 +152,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`Ara veriler için kullanın
 
-`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep` _both_ `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
+`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep` _both_ `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
 
 ```python
 
@@ -177,7 +177,8 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 ```
 
 > [!TIP]
-> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
+> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Kullanarak bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>`PipelineData`Eğitim adımının çıkışları olarak kullanın
 Ardışık `PythonScriptStep` yollarınızın içinde, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `PipelineData` .
@@ -192,7 +193,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-`PipelineData` `is_directory` ' I ' a ayarlanmış bağımsız değişkenle oluşturduysanız `True` , yalnızca çağrıyı gerçekleştirmek için yeterli olur `os.makedirs()` ve ardından yola beklediğiniz dosyaları yazmanız ücretsizdir. Daha ayrıntılı bilgi için bkz. [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) Reference belgeleri.
+`PipelineData` `is_directory` ' I ' a ayarlanmış bağımsız değişkenle oluşturduysanız `True` , yalnızca çağrıyı gerçekleştirmek için yeterli olur `os.makedirs()` ve ardından yola beklediğiniz dosyaları yazmanız ücretsizdir. Daha ayrıntılı bilgi için bkz. [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) Reference belgeleri.
 
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>`PipelineData`İlk olmayan adımlara giriş olarak oku
@@ -227,7 +228,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 Bir girdinin değeri, `PipelineData` önceki çıktının yoludur. 
 
 > [!TIP]
-> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
+> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Kullanarak bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 Daha önce gösterildiği gibi, ilk adım tek bir dosya yazdı, bu, şu şekilde görünebilir: 
 
@@ -249,7 +250,7 @@ step1_output_ds.register(name="processed_data", create_new_version=True)
 
 ```
 > [!TIP]
-> İşlem hattı çalıştırmalarınızın dışındaki ara verilerinizi kalıcı hale getiren gelişmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır `OutputFileDatasetConfig` . `OutputFileDatasetConfig` [SDK başvuru belgelerindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py)tasarım desenleri ve yöntemleri hakkında daha fazla bilgi edinin.
+> İşlem hattı çalıştırmalarınızın dışındaki ara verilerinizi kalıcı hale getiren gelişmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Kullanarak bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

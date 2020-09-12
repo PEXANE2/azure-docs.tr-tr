@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930681"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645584"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -32,7 +32,7 @@ Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız
 
 Bu üç seçenek hakkında daha fazla bilgi için bkz. [Azure dosyaları dağıtımı Için planlama](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -231,7 +231,7 @@ Depolama hesabı bir sanal ağ içinde yer alıyorsa ve bu komutu çağırdığ�
 > Dosya paylaşımınızın adı küçük harflerden oluşmalıdır. Dosya paylaşımlarını ve dosyaları adlandırma hakkında tüm ayrıntılar için bkz. [adlandırma ve başvuru paylaşımları, dizinler, dosyalar ve meta veriler](https://msdn.microsoft.com/library/azure/dn167011.aspx).
 
 ### <a name="create-a-hot-or-cool-file-share"></a>Sık erişimli veya seyrek erişimli dosya paylaşma oluşturma
-**Genel amaçlı v2 (GPv2) depolama hesabındaki** bir dosya paylaşımı, işlem için iyileştirilmiş, sık erişimli veya seyrek erişimli dosya paylaşımları (veya bir karışımı) içerebilir. İşlem için iyileştirilmiş paylaşımlar tüm Azure bölgelerinde kullanılabilir, ancak sık ve seyrek erişimli dosya paylaşımları yalnızca [bölgelerin bir alt kümesinde](storage-files-planning.md#storage-tiers)kullanılabilir. Azure PowerShell Preview modülünü veya Azure CLı kullanarak sık erişimli veya seyrek erişimli bir dosya paylaşma oluşturabilirsiniz. 
+**Genel amaçlı v2 (GPv2) depolama hesabı** , işlem için iyileştirilmiş, sık erişimli veya seyrek erişimli dosya paylaşımları (veya bir karışımı) içerebilir. İşlem için iyileştirilmiş paylaşımlar tüm Azure bölgelerinde kullanılabilir, ancak sık ve seyrek erişimli dosya paylaşımları yalnızca [bölgelerin bir alt kümesinde](storage-files-planning.md#storage-tiers)kullanılabilir. Azure PowerShell Preview modülünü veya Azure CLı kullanarak sık erişimli veya seyrek erişimli bir dosya paylaşma oluşturabilirsiniz. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal, sık ve seyrek dosya paylaşımları oluşturmayı veya var olan işlem için iyileştirilmiş dosya paylaşımlarını sık erişimli veya seyrek erişimli olarak taşımayı desteklemez. Lütfen PowerShell veya Azure CLı ile bir dosya paylaşma oluşturma yönergelerini görüntüleyin.

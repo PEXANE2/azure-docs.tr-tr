@@ -9,18 +9,18 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056387"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500139"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
 
 Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bileşenini bir Kubernetes kümesine dağıtma adımları açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 - Bir Kubernetes kümesi oluşturun.
@@ -63,7 +63,7 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 ## <a name="production-deployment-considerations"></a>Üretim dağıtımı konuları
 
 ### <a name="access-token"></a>Erişim belirteci
-Geçerli bir erişim belirteci olmadan, şirket içinde barındırılan bir ağ geçidi, ilişkili API Management hizmetinin uç noktasından yapılandırma verilerine erişemez ve bu verileri indiremez. Erişim belirteci en fazla 30 gün geçerli olabilir. Yeniden oluşturulması gerekir ve küme, süresi dolmadan önce el ile veya Otomasyon yoluyla, yeni bir belirteçle yapılandırılmalıdır. 
+Geçerli bir erişim belirteci olmadan, şirket içinde barındırılan bir ağ geçidi, ilişkili API Management hizmetinin uç noktasından yapılandırma verilerine erişemez ve bu verileri indiremez. Erişim belirteci en fazla 30 gün geçerli olabilir. Yeniden oluşturulması gerekir ve küme, süresi dolmadan önce el ile veya Otomasyon yoluyla, yeni bir belirteçle yapılandırılmalıdır.
 
 Belirteç yenilemeyi otomatikleştirdiğiniz zaman, yeni bir belirteç oluşturmak için [Bu YÖNETIM API işlemini](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) kullanın. Kubernetes gizliliklerini yönetme hakkında bilgi için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/configuration/secret).
 
@@ -106,6 +106,9 @@ DNS ad çözümlemesi, şirket içinde barındırılan bir ağ geçidinin Azure 
 Azure portal belirtilen YAML dosyası varsayılan [Clusterfirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) ilkesini uygular. Bu ilke, düğüm tarafından devralınan yukarı akış DNS sunucusuna iletilmek üzere küme DNS tarafından çözümlenemeyen ad çözümleme isteklerinin oluşmasına neden olur.
 
 Kubernetes 'de ad çözümleme hakkında bilgi edinmek için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). [DNS ilkesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) veya [DNS yapılandırmasını](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) , kuruluma uygun şekilde özelleştirmeyi düşünün.
+
+### <a name="external-traffic-policy"></a>Dış trafik ilkesi
+Service nesnesindeki Azure portal Sets alanında olarak belirtilen YAML dosyası `externalTrafficPolicy` [Service](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) `Local` . Bu, çağıran IP adresini ( [istek bağlamında](api-management-policy-expressions.md#ContextVariables)erişilebilir) korur ve çapraz düğüm yük dengelemesini devre dışı bırakır ve bunun neden olduğu ağ atlamalarını ortadan kaldırır. Bu ayarın, düğüm başına eşit olmayan ağ geçidi sayısı ile dağıtımlardaki trafiğin asimetrik dağıtımına neden olabileceğini unutmayın.
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Özel etki alanı adları ve SSL sertifikaları
 

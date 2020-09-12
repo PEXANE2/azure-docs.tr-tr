@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020295"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613921"
 ---
 # <a name="entities"></a>Varlıklar
 
@@ -21,7 +21,7 @@ Bir *varlık* , boşluk alanındaki taşınabilir bir nesneyi temsil eder ve uza
 
 Varlıkların bir konum, döndürme ve ölçeğe göre tanımlanan bir dönüşümü vardır. Kendilerine ait varlıkların herhangi bir observable işlevselliği yoktur. Bunun yerine, davranış, varlıklara eklenen bileşenler aracılığıyla eklenir. Örneğin, bir [CutPlaneComponent](../overview/features/cut-planes.md)  iliştirmek varlığın konumunda kesilmiş bir düzlem oluşturacaktır.
 
-Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen sıradüzenli dönüşümüdür. Örneğin, birden çok varlık paylaşılan bir üst varlığa alt öğe olarak eklendiğinde, bu varlıkların tümü uyum içinde taşınabilir, döndürülebilir ve üst varlığın dönüşümü değiştirilerek ölçekleniyor.
+Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen sıradüzenli dönüşümüdür. Örneğin, birden çok varlık paylaşılan bir üst varlığa alt öğe olarak eklendiğinde, bu varlıkların tümü uyum içinde taşınabilir, döndürülebilir ve üst varlığın dönüşümü değiştirilerek ölçekleniyor. Ayrıca, varlığın `enabled` durumu hiyerarşide tam bir alt grafik için görünürlük ve ışın yanıtlarını devre dışı bırakmak için kullanılabilir.
 
 Bir varlık kendi üst öğesine sahip olduğu anlamına gelir, yani üst öğe ile yok edildiğinde `Entity.Destroy()` , alt öğeleri ve tüm bağlı [Bileşenler](components.md). Bu nedenle, bir modelin sahne alanından kaldırılması `Destroy` , bir modelin kök düğümüne çağırarak `AzureSession.Actions.LoadModelAsync()` veya bunun SAS varyantı tarafından döndürülen bir şekilde gerçekleştirilir `AzureSession.Actions.LoadModelFromSASAsync()` .
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>Uzamsal sınırları sorgulama
 
 Sınır sorguları, bir varlığı kök olarak kullanan tam bir nesne hiyerarşisinde çalışan zaman uyumsuz çağrılardır. [Nesne sınırları](object-bounds.md)hakkında adanmış bölüme bakın.
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 Nesne herhangi bir meta veri tutmasa bile sorgu başarılı olur.
+
+## <a name="api-documentation"></a>API belgeleri
+
+* [C# varlık sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C++ varlık sınıfı](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

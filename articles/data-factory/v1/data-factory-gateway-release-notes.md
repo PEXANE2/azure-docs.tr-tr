@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194481"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490097"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi için sürüm notları
 > [!NOTE]
@@ -26,7 +26,7 @@ Modern veri tümleştirmesinin güçlüklerinden biri, verileri Şirket içinden
 
 Veri Yönetimi ağ geçidi ve nasıl kullanılacağı hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın:
 
-*  [Veri Yönetimi ağ geçidi](data-factory-data-management-gateway.md)
+*  [Veri Yönetimi Ağ Geçidi](data-factory-data-management-gateway.md)
 *  [Azure Data Factory kullanarak şirket içi ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md)
 
 
@@ -39,14 +39,14 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 ## <a name="earlier-versions"></a>Önceki sürümler
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Gelişmeleri
-- Tüm Azure IP adreslerini güvenlik duvarınızdan (gerekirse) daha fazla listelemek yerine, hizmet veri yoluna beyaz listeye DNS girdileri ekleyebilirsiniz. İlgili DNS girişini Azure portal (Data Factory-> ' Author ve Deploy '-> ' Gateway '-> "serviceUrls" (JSON) ile bulabilirsiniz
+- Güvenlik duvarınızdaki tüm Azure IP adreslerine izin vermek yerine hizmet veri yoluna izin vermek için DNS girdileri ekleyebilirsiniz (gerekirse). İlgili DNS girişini Azure portal (Data Factory-> ' Author ve Deploy '-> ' Gateway '-> "serviceUrls" (JSON) ile bulabilirsiniz
 - Bu, artık TLS doğrulamasını atlamanıza izin vererek otomatik olarak imzalanan ortak sertifikayı desteklemektedir.
 - Düzeltildi: güncelleştirme sırasında ağ geçidiyle çevrimdışı sorun (saat sapması nedeniyle)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Gelişmeleri
--   Güvenlik duvarınızdan tüm Azure IP adreslerini beyaz listeye almak yerine, Service Bus beyaz listeye DNS girişleri ekleyebilirsiniz (gerekirse). Diğer ayrıntıları burada bulabilirsiniz.
+-   Güvenlik duvarınızdaki tüm Azure IP adreslerine izin vermek yerine Service Bus izin vermek için DNS girdileri ekleyebilirsiniz (gerekirse). Burada daha fazla ayrıntı bulabilirsiniz.
 -   Artık Blok Blobu için desteklenen en büyük boyut olan 4,75 TB 'a kadar tek bir blok blobundan veri kopyalayabilirsiniz. (önceki sınır 195 GB idi).
 -   Düzeltildi: kopyalama etkinliği sırasında birkaç küçük dosyanın sıkıştırması kaldırılırken yetersiz bellek sorunu.
 -   Düzeltildi: belge DB 'den ıdempottik özelliğiyle SQL Server kopyalanırken Dizin aralık dışında bir sorun oluştu.
@@ -128,7 +128,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
     *  [Kod içermeyen kopyalama aracını](data-factory-copy-data-wizard-tutorial.md)kullanarak bir depolamadan veri kopyalayabilirsiniz. Bu özellik hakkında genel bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) .
 *  Veri Yönetimi ağ geçidini, verileri doğrudan bir SQL Server veritabanından Azure Machine Learning içine almak için kullanabilirsiniz.
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
     * Kod içermeyen kopyalama aracında SQL Server göre şemayı/önizlemeyi görüntüleme performansını artırabilirsiniz.
 
@@ -144,7 +144,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Otomatik güncelleştirme başarısız olursa, ağ geçidi yükleyicisi en yüksek üç kez otomatik güncellemeyi yeniden dener.
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
     * Kod içermeyen kopyalama senaryosunda şirket içi sunucudan büyük tabloları yükleme performansını geliştirir.
 
@@ -152,7 +152,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 
 *  Hata düzeltmeleri
 
@@ -164,41 +164,41 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 *  Güncelleştirme zamanlama süresini ayarlama yeteneği
 *  Otomatik güncelleştirmeyi değiştirme/kapatma için PowerShell betiği
 *  JSON biçimi desteği  
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Sorun giderme deneyimini geliştirme
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Şirket içi bir kaynak/havuz desteği
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656761"></a>1.6.5676.1
 
 *  Configuration Manager tanılama araçlarını destekleme
 *  Azure Data Factory için tablo veri kaynakları için destek tablosu sütunları
-*  Azure Data Factory için SQL DW 'yi destekleme
+*  Azure Data Factory için Azure SYNAPSE Analytics 'i destekleme
 *  Azure Data Factory için BlobSource ve FileSource 'da yeniden destek
 *  Azure Data Factory için Ikili kopya ile birlikte, BlobSink ve FileSink içindeki CopyBehavior, bir MergeFiles, PreserveHierarchy ve düzet hiyerarşisi desteği
 *  Azure Data Factory için etkinlik raporu kopyalama ilerlemesini destekleme
@@ -208,7 +208,7 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Azure Data Factory için ODBC veri kaynağı destek tablosu adı
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -229,13 +229,13 @@ Burada sürüm notlarını daha fazla sürdürmedik. En son sürüm notlarını 
 
 *  Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata ve Sybase) için beş ilişkisel veritabanını destekleme
 *  Sıkıştırma desteği (gzip ve söndür)
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Azure Data Factory için Oracle veri kaynağı desteği ekle
-*  Performans iyileştirmeleri
+*  Performans geliştirmeleri
 *  Hata düzeltmeleri
 
 ### <a name="1454921"></a>1.4.5492.1

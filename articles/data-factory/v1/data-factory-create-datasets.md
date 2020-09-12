@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 13ee8c5166e3b31ec186ca9aa2702d15de36e09f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ddb99fd7a7ce8265a6e9c63555cd6a226caacc4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522406"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440737"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (sürüm 1) veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,7 +32,7 @@ Bu makalede, veri kümelerinin ne olduğu, JSON biçiminde nasıl tanımlandığ
 > Data Factory yeni bir deyişle, genel bakış için bkz. [Azure Data Factory giriş](data-factory-introduction.md) . Veri fabrikaları oluşturmaya yönelik uygulamalı deneyimle karşılaşdıysanız, [veri dönüştürme öğreticisini](data-factory-build-your-first-pipeline.md) ve [veri taşıma öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)okuyarak daha iyi bir anlayışınız elde edebilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalamak için kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SQL veri ambarı 'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz. Bu işlem, en üst kısımdaki iş zekası (BI) raporlama çözümlerini oluşturulmuştur. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. [Azure Data Factory Işlem hatları ve etkinlikleri](data-factory-create-pipelines.md).
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. İşlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalamak için kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için ikinci bir kopyalama etkinliği kullanarak iş zekası (BI) raporlama çözümlerinin üzerine inşa edebilirsiniz. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. [Azure Data Factory Işlem hatları ve etkinlikleri](data-factory-create-pipelines.md).
 
 Bir etkinlik sıfır veya daha fazla giriş **veri kümesi**alabilir ve bir veya daha fazla çıkış veri kümesi oluşturabilir. Giriş veri kümesi, işlem hattındaki bir etkinliğin girişini temsil eder ve bir çıkış veri kümesi etkinliğin çıkışını temsil eder. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin, bir Azure blob veri kümesi, işlem hattının verileri okuması gereken blob kapsayıcısını ve BLOB depolama klasörünü belirtir.
 
@@ -141,7 +141,7 @@ Gördüğünüz gibi, bağlantılı hizmet bir SQL veritabanına nasıl bağlana
 > [!IMPORTANT]
 > Bir veri kümesi işlem hattı tarafından üretilmediği sürece, **dış**olarak işaretlenmelidir. Bu ayar genellikle bir işlem hattındaki ilk etkinliğin girişleri için geçerlidir.
 
-## <a name="dataset-type"></a><a name="Type"></a>Veri kümesi türü
+## <a name="dataset-type"></a><a name="Type"></a> Veri kümesi türü
 Veri kümesinin türü, kullandığınız veri deposuna bağlıdır. Data Factory tarafından desteklenen veri depolarının listesi için aşağıdaki tabloya bakın. Bu veri deposu için bağlı bir hizmet ve veri kümesi oluşturmayı öğrenmek için bir veri deposuna tıklayın.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

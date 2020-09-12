@@ -2,59 +2,42 @@
 title: 'Azure ExpressRoute: Global Reach kullanarak Microsoft Bulut bağlanma'
 description: Azure ExpressRoute Global Reach 'ın, şirket içi ağlarınızla özel bir ağ oluşturmak için ExpressRoute devreleri birbirine nasıl bağlayabileceğini öğrenin.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.author: cherylmc
-ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190753"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651500"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
-ExpressRoute, şirket içi ağlarınızın Microsoft Bulut 'e bağlanması için özel ve dayanıklı bir yoldur. Azure ve Office 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızlı bağlantıya sahip olabilir. Ancak, şube ofislerde doğrudan veri alışverişi yapılamaz. Diğer bir deyişle 10.0.1.0/24, 10.0.3.0/24 ve 10.0.4.0/24 ' e veri gönderebilir, ancak 10.0.2.0/24 ' e kadar DEĞILDIR.
+ExpressRoute, şirket içi ağlarınızı Microsoft Bulut bağlamak için özel ve dayanıklı bir yoldur. Azure ve Microsoft 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızda bağlantı sağlar. Ancak, şube ofisleri birbirine bağlanamaz ve verileri birbiriyle doğrudan gönderemez. Diğer bir deyişle, 10.0.1.0/24, verileri 10.0.3.0/24 ve 10.0.4.0/24 ağına gönderebilir, ancak 10.0.2.0/24 ağ 'a vermez.
 
-![koymadan][1]
+![Hızlı rota Global Reach ile bağlantılı olmayan devreleri gösteren diyagram.][1]
 
 **Expressroute Global Reach**ile, şirket içi ağlarınızla özel bir ağ oluşturmak Için ExpressRoute bağlantı devresine bir araya getirebilirsiniz. Yukarıdaki örnekte, ExpressRoute Global Reach eklenmesiyle, San Francisco Office (10.0.1.0/24), mevcut ExpressRoute devreleri ve Microsoft 'un küresel ağı aracılığıyla Londra Office (10.0.2.0/24) ile verileri doğrudan değiş tokuş edebilir. 
 
-![kullanılarak][2]
+![Express Route Global Reach ile birbirine bağlı devreleri gösteren diyagram.][2]
 
 ## <a name="use-case"></a>Kullanım örneği
 ExpressRoute Global Reach, hizmet sağlayıcınızın WAN uygulamasını tamamlamak ve şube ofislerinizi dünya çapında bağlamak üzere tasarlanmıştır. Örneğin, hizmet sağlayıcınız birincil olarak Birleşik Devletler ve tüm Dallarınızı ABD 'de bağlamışsa, ancak hizmet sağlayıcısı ExpressRoute Global Reach ile Japonya ve Hong Kong 'da çalışmazsa, bir yerel hizmet sağlayıcısıyla çalışabilirsiniz ve Microsoft, ExpressRoute 'u ve küresel ağımızı kullanarak ABD 'deki şubelerde buraya bağlayacaktır.
 
-![Kullanım örneği][3]
+![Express Route Global Reach için kullanım durumunu gösteren diyagram.][3]
 
 ## <a name="availability"></a>Kullanılabilirlik 
-ExpressRoute Global Reach Şu anda aşağıdaki konumlarda desteklenir.
+ExpressRoute Global Reach, ExpressRoute 'un şu anda desteklendiği birçok bölgede desteklenir. Desteklenen geçerli bölgeler için [ExpressRoute bağlantı sağlayıcılarına](expressroute-locations-providers.md#partners) başvurabilirsiniz. 
 
-* Avustralya
-* Kanada
-* Fransa
-* Almanya
-* Hong Kong ÖİB
-* İrlanda
-* Japonya
-* Güney Kore
-* Hollanda
-* Yeni Zelanda
-* Norveç
-* Singapur
-* İsveç
-* İsviçre
-* Birleşik Krallık
-* Birleşik Devletler
-
-ExpressRoute Devrelerinizin, yukarıdaki ülkelerde veya bölgede bulunan [ExpressRoute eşleme konumlarında](expressroute-locations.md) oluşturulması gerekir. [Farklı geopolitik bölgeler](expressroute-locations.md)arasında expressroute Global Reach etkinleştirmek için, Devrelerinizin PREMIUM SKU 'su olması gerekir.
+> [!NOTE] 
+> [Farklı geopolitik bölgeler](expressroute-locations-providers.md#locations)arasında expressroute Global Reach etkinleştirmek için, Devrelerinizin **Premium SKU 'su**olması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. [Global Reach SSS 'yi görüntüleyin](expressroute-faqs.md#globalreach)
-2. [Global Reach etkinleştirmeyi öğrenin](expressroute-howto-set-global-reach.md)
-3. [ExpressRoute bağlantı hattını sanal ağınıza bağlamayı öğrenin](expressroute-howto-linkvnet-arm.md)
-
+- [Sss Global Reach](expressroute-faqs.md#globalreach)görüntüleyin.
+- [Global Reach etkinleştirmeyi](expressroute-howto-set-global-reach.md)öğrenin.
+- [Sanal ağınıza bir ExpressRoute devresine bağlamayı](expressroute-howto-linkvnet-arm.md)öğrenin.
 
 <!--Image References-->
 [1]: ./media/expressroute-global-reach/1.png "Global erişim olmadan diyagram"

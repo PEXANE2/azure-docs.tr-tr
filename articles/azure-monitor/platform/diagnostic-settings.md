@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135445"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614042"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -43,7 +43,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | [Log Analytics çalışma alanı](design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](/azure/event-hubs/) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
@@ -100,7 +100,7 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
      - **Allölçümleri** bir kaynağın platform ölçümlerini Azure günlükleri deposuna, ancak günlük biçiminde yönlendirir. Bu ölçümler genellikle yalnızca Azure Izleyici ölçümleri zaman serisi veritabanına gönderilir. Bunları Azure Izleyici günlükleri deposuna gönderme (Log Analytics ile aranabilir), bunları diğer günlüklerde aramak için sorgular halinde tümleştirmenizi sağlar. Bu seçenek, tüm kaynak türleri için kullanılamayabilir. Destekleniyorsa, [Azure izleyici desteklenen ölçümler](metrics-supported.md) , hangi kaynak türleri için toplanan ölçümleri listeler.
 
        > [!NOTE]
-       > Bu makalenin önceki kısımlarında yer alarak ölçümleri Azure Izleyici günlüklerine yönlendirme için bkz. limitatation.  
+       > Bu makalenin önceki kısımlarında yer alarak ölçümleri Azure Izleyici günlüklerine yönlendirme için sınırlama konusuna bakın.  
 
 
      - **Günlükler** , kaynak türüne bağlı olarak kullanılabilir farklı kategorileri listeler. Bir hedefe yönlendirmek istediğiniz kategorileri kontrol edin.

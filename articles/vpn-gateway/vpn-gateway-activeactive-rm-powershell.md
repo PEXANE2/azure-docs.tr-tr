@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419912"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440788"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ağ geçitleri ile etkin-etkin S2S VPN bağlantılarını yapılandırma
 
@@ -411,7 +411,7 @@ Bu adımda, etkin-etkin modu etkinleştirir ve ağ geçidini güncelleştirebili
 
 * Bu adımı kullanarak eski SKU 'YU yeni SKU 'Lardan birine değiştiremezsiniz. Eski bir SKU 'yu yalnızca, desteklenen başka bir eski SKU için yeniden boyutlandırabilirsiniz. Örneğin, standart bir eski SKU olduğundan ve VpnGw1 geçerli bir SKU olduğundan, SKU 'YU standart olarak VpnGw1 (VpnGw1 etkin-etkin için desteklenir) olarak değiştiremezsiniz. SKU 'Ları boyutlandırma ve geçirme hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Geçerli bir SKU 'yu yeniden boyutlandırmak istiyorsanız, örneğin VpnGw1 to VpnGw3, SKU 'Lar aynı SKU ailesinden olduğundan bu adımı kullanabilirsiniz. Bunu yapmak için şu değeri kullanırsınız:```-GatewaySku VpnGw3```
+* Geçerli bir SKU 'yu yeniden boyutlandırmak istiyorsanız, örneğin VpnGw1 to VpnGw3, SKU 'Lar aynı SKU ailesinden olduğundan bu adımı kullanabilirsiniz. Bunu yapmak için şu değeri kullanırsınız: ```-GatewaySku VpnGw3```
 
 Bunu ortamınızda kullanırken, ağ geçidini yeniden boyutlandırmanıza gerek yoksa-GatewaySku belirtmeniz gerekmez. Bu adımda, PowerShell 'de ağ geçidi nesnesini gerçek güncelleştirmeyi tetikleyecek şekilde ayarlamanız gerektiğini unutmayın. Bu güncelleştirme, ağ geçidinizi yeniden boyutlandırsanız bile 30 ila 45 dakika sürebilir.
 

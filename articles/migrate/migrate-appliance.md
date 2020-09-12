@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927534"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514365"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -121,7 +121,7 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 graph.windows.net | Azure aboneliğinizde oturum açın.
 login.microsoftonline.us  | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
 management.usgovcloudapi.net | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
-dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
+*.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *. vault.usgovcloudapi.net | Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
 download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
@@ -180,7 +180,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Ad | kapsayıcı. GetType (). Ada
+Name | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -227,7 +227,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 **Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
-Ad  | Get-WindowsFeature  | Ad
+Name  | Get-WindowsFeature  | Name
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
@@ -237,7 +237,7 @@ Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çal�
 
 **Veriler**  | **Kayıt Defteri Konumu**  | **Key**
 --- | --- | ---
-Ad  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -248,7 +248,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 Veriler  | WMI sınıfı  | WMI sınıfı özelliği
 --- | --- | ---
-Ad  | Win32_operatingsystem  | Başlık
+Name  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 Veriler  | Komut
 --- | --- 
-Ad | RPM, dpkg-Query, Snap
+Name | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 **Veriler**  | **Komut** 
 --- | --- | ---
-Ad <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
 
@@ -507,7 +507,7 @@ Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız
 
 1. En son gereç hizmeti sürümlerini denetlemek için dosyadaki LatestComponents.js[indirin](https://aka.ms/latestapplianceservices) .
 2.    İndirdikten sonra dosyayı Not defteri 'nde LatestComponents.jsaçın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

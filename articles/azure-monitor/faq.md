@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782949"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569212"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
-Bu Microsoft SSS, Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir.
+Bu Microsoft SSS, Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Başka sorularınız varsa, [tartışma forumuna](https://docs.microsoft.com/answers/questions/topics/single/24223.html) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+
 
 ## <a name="general"></a>Genel
 
@@ -98,7 +99,7 @@ Sorgu [kapsamı](log-query/scope.md) belirli bir kaynağa ayarlandığında, **s
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Neden "Bu sorguyu etkinleştirmek için bu aboneliğin ' Microsoft. Insights ' kaynak sağlayıcısını Kaydet" ' I bir VM 'den Log Analytics açarken bu sorguyu etkinleştirmek istiyor musunuz? 
 Birçok kaynak sağlayıcısı otomatik olarak kaydedilir, ancak bazı kaynak sağlayıcılarını el ile kaydetmeniz gerekebilir. Kayıt kapsamı her zaman abonelik olur. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Bir VM 'den Log Analytics açarken neden erişim hatası mesajı alıyorum? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Log Analytics bir VM 'den açarken neden erişim hatası mesajı alıyorum? 
 VM günlüklerini görüntülemek için, VM günlüklerini depolayan çalışma alanları için okuma izni verilmesi gerekir. Bu durumlarda yöneticinizin Azure 'daki izinleri size vermesi gerekir.
 
 ## <a name="metrics"></a>Ölçümler
@@ -523,9 +524,54 @@ Ancak, bir uygulamanın Web sunucusunda sunucu tarafı izlemenin etkin olduğu d
 
 Bu senaryoda, ters proxy katmanında bir sorun olması nedeniyle istemciye bir 502 veya 503 yanıtı döndürülebilir ve bu, Application Insights tarafından kullanıma hazır olarak yakalanmaz. Bu katmandaki sorunları tespit etmenize yardımcı olmak için, günlüğü ters proxy 'nizden Log Analytics iletmek ve 502/503 yanıtlarını denetlemek için özel bir kural oluşturmanız gerekebilir. 502 ve 503 hatalarının yaygın nedenleri hakkında daha fazla bilgi edinmek için, ["502 hatalı Ağ Geçidi" ve "503 Service unavailable" için Azure App Service sorun giderme makalesine](../app-service/troubleshoot-http-502-http-503.md)başvurun.     
 
-## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 
-Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>Opentelemetri nedir?
+
+Observability için yeni bir açık kaynak standardı. Daha fazla bilgi edinin [https://opentelemetry.io/](https://opentelemetry.io/) .
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Microsoft/Azure Izleyici neden Opentelemetri 'e yatırım yapıyor?
+
+Müşterilerimize üç nedenden dolayı daha iyi hizmet sunduk:
+   1. Daha fazla müşteri senaryosu için desteği etkinleştirin.
+   2. Satıcı kilidi olmadan geçiş yapın.
+   3. Müşteri saydamlığını ve katılımı artırın.
+
+Ayrıca Microsoft 'un [Açık kaynaklı kaynağı benimseme](https://opensource.microsoft.com/)stratejisiyle de hizalanır.
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>Opentelemetri bana hangi ek değer veriyor?
+
+Yukarıdaki nedenlerin yanı sıra, Opentelemetri daha verimli bir şekilde ölçeklenebilir ve diller arasında tutarlı tasarım/yapılandırma sağlar.
+
+### <a name="how-can-i-test-out-opentelemetry"></a>Opentelemetriyi nasıl sınayabilirim?
+
+Azure Izleyici Application Insights erken benimseyen Community ' ye katmak için kaydolun [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) .
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>GA, Opentelemetri bağlamında ne anlama geliyor?
+
+Opentelemetri topluluğu, genel kullanıma açık ( [GA) tanımlar](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302). Bununla birlikte, Opentelemetriyi "GA", mevcut Application Insights SDK 'Ları ile özellik eşliği anlamına gelmez. Azure Izleyici, Opentelemetri SDK 'Ları özellik [ölçüsüne ulaşıncaya kadar ön toplanmış ölçümler](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics), [canlı ölçümler](app/live-stream.md), [Uyarlamalı örnekleme](app/sampling.md#adaptive-sampling), [Profil Oluşturucu](app/profiler-overview.md)ve [anlık görüntü hata ayıklayıcısı](app/snapshot-debugger.md) gibi özellikler gerektiren müşteriler için geçerli Application Insights SDK 'lerimizi önermeye devam edecektir.
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>Üretim ortamlarında önizleme derlemelerini kullanabilir miyim?
+
+Önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>Opentelemetri SDK 'Sı ve otomatik izleme arasındaki fark nedir?
+
+Opentelemetri belirtimi [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)'yi tanımlar. Kısacası, "SDK", uygulamanızın çeşitli bileşenleri genelinde telemetri verilerini toplayan dile özgü bir pakettir ve verileri bir dışarı aktarıcı aracılığıyla Azure Izleyici 'ye gönderir.
+
+Otomatik izleme kavramı (bazen bytecode ekleme, cosilss veya aracı tabanlı olarak adlandırılır), kodunuzu değiştirmeden uygulamanızı işaretleme özelliğine başvurur. Örneğin, daha fazla bilgi için [Opentelemetri Java otomatik Izleme Benioku dosyasına](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) göz atın.
+
+### <a name="whats-the-opentelemetry-collector"></a>Opentelemetri toplayıcısı nedir?
+
+Opentelemetri toplayıcısı, [GitHub Benioku](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)dosyasında açıklanmıştır. Şu anda Microsoft, Opentelemetri toplayıcısını kullanmaz ve Azure Izleyici Application Insights ' ye gönderen doğrudan dışarı aktarıcılar ' ne bağlıdır.
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus ve Opentelemetri arasındaki fark nedir?
+
+[Opencensus](https://opencensus.io/) , [opentelemetri](https://opentelemetry.io/)için precurcursor. Microsoft, dünya için tek bir Observability standardı olan Opentelemetri oluşturmak için [Opentracing](https://opentracing.io/) ve OpenCensus 'i birlikte getirmeye yardımcı oldu. Azure Izleyici 'nin geçerli [üretimi-önerilen Python SDK 'sı](app/opencensus-python.md) , OpenCensus 'a dayalıdır, ancak sonunda tüm Azure Izleyicisinin SDK 'Ları opentelemetri temelinde olacaktır.
+
+
+## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 
 ### <a name="health-feature-is-in-private-preview"></a>Sistem durumu özelliği özel önizlemede
 
@@ -660,12 +706,12 @@ Soruna ilişkin ayrıntılı bir bakış için aşağıdaki [GitHub bağlantıs�
 
 Bir AKS kümesi için Azure Izleyicisini etkinleştirdikten sonra, kümenin verilerini gönderdiği Log Analytics çalışma alanını sildiğinizde, kümeyi yükseltmeye çalışırken başarısız olur. Bu sorunu geçici olarak çözmek için, izlemeyi devre dışı bırakmanız ve ardından aboneliğinizdeki farklı bir geçerli çalışma alanına başvuruda bulunan yeniden etkinleştirmeniz gerekir. Küme yükseltmesini yeniden gerçekleştirmeye çalıştığınızda, başarıyla işlemeli ve tamamlanmalıdır.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Aracı için hangi bağlantı noktalarına ve etki alanlarına açık/beyaz listeye ihtiyacım var?
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Aracı için hangi bağlantı noktalarına ve etki alanlarına açık/izin vermem gerekir?
 
 Azure, Azure ABD kamu ve Azure Çin 21Vianet bulutları ile Kapsayıcılı aracı için gereken ara sunucu ve güvenlik duvarı yapılandırma bilgileri için [ağ güvenlik duvarı gereksinimlerine](insights/container-insights-onboard.md#network-firewall-requirements) bakın.
 
+
 ## <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
-Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Mevcut bir çalışma alanına ekleyebilir miyim?
 Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, VM'ler için Azure İzleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz, ancak [desteklenen bölgelerden](insights/vminsights-configure-workspace.md#supported-regions)birinde bulunur.

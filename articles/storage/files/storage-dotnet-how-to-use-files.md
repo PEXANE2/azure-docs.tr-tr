@@ -9,12 +9,12 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53f96d8988adfea6e14e3eb349276199afc444d7
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011540"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461927"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -71,7 +71,7 @@ Bu öğreticiyi tamamlayabilmeniz için projenizdeki bu paketlere başvurun:
 
   Bu paket, uygulamanızın çalıştığı her yerde yapılandırma dosyasında bir bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
-Her iki paketi de almak için NuGet kullanabilirsiniz. Şu adımları uygulayın:
+Her iki paketi de almak için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
 1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin. Sonra **Microsoft. Azure. Storage. blob**' u arayıp seçin ve ardından **Install**' ı seçin.
@@ -504,5 +504,5 @@ Azure dosyaları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın
 
 * [Azure dosya depolama genel kullanıma sunuldu](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Azure dosya depolama alanı içinde](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure dosyaları hizmetine giriş](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Microsoft Azure Dosyaları ile kalıcı bağlantılar](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Microsoft Azure dosyaları hizmetine giriş](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure Dosyaları ile kalıcı bağlantılar](https://docs.microsoft.com/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)

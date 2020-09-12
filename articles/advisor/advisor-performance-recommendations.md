@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653316"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651581"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -63,6 +63,8 @@ Danışman güncel [tablo istatistiklerine](../synapse-analytics/sql-data-wareho
 
 Advisor analizine, bir MySQL sunucusuna bağlanan uygulamanızın bağlantıları verimli bir şekilde yönetmediğinden emin olabilirsiniz. Bu durum gereksiz kaynak tüketimine ve genel uygulama gecikmesine neden olabilir. Bağlantı yönetimini geliştirmek için, kısa süreli bağlantıların sayısını azaltmanızı ve boşta kalmış gereksiz bağlantıları kaldırmanızı öneririz. Bu geliştirmeleri, ProxySQL gibi bir sunucu tarafı bağlantı havuzlayıcı yapılandırarak yapabilirsiniz.
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Geçerli İşlem Yönetimi SDK’sı sürümünüzü en son sürüme güncelleştirin
+Danışman, süresi geçmiş Işlem Yönetimi SDK sürümlerini kullanan işlemler içeren abonelikleri tanımlar. Bu durum, iş yüklerinizin güvenliğini ve performansını etkileyebilir ve bu nedenle, Advisor Işlem Yönetimi SDK 'sının en son sürümüne geçiş yapmanızı önerir. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics tablolarında önbellek kullanımını iyileştirmek üzere ölçeği büyütün
 
@@ -165,7 +167,7 @@ Bu öneri, yapılandırılmış olan önbelleğe alma süresinden (ilke) daha ö
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL geçici tablo boyutlandırmasını iyileştirerek performansı artırma
 Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi edinin](https://aka.ms/azure_mysql_tmp_table)
 
-## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtın
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtma
 Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme

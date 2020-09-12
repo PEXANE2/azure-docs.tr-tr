@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020363"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645650"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -147,7 +147,8 @@ Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluş
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Kamu 'da bağımlılık görselleştirmesi
 
-Azure geçişi, bağımlılık görselleştirme işlevselliği için Hizmet Eşlemesi bağımlıdır. Hizmet Eşlemesi Şu anda Azure Kamu 'da kullanılamadığından, bu işlev Azure Kamu 'da kullanılamaz.
+Aracı tabanlı bağımlılık analizi, Azure Kamu 'da desteklenmez. Lütfen aracısız bağımlılık analizini kullanın.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>Bağımlılıklar, aracı yüklendikten sonra gösterilmez
 
@@ -160,7 +161,7 @@ Windows VM 'Leri için:
 
     ![MMA durumu](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun.
+Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komutlarının başarılı olduğundan emin olun. Daha fazla sorun giderme kılavuzuna [bakın.](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -181,7 +182,6 @@ Azure geçişi sunucu değerlendirmesi ' nde, aracı tabanlı bağımlılık ana
 ## <a name="machines-show-install-agent"></a>Makineler "aracıyı yüklemeyi" gösterir
 
 Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçirdikten sonra makineler, aşağıdaki davranış nedeniyle "bağımlılıkları görüntüle" yerine "aracıyı yüklemek" eylemini gösterebilir:
-
 
 - Azure 'a geçiş yaptıktan sonra şirket içi makineler kapalıdır ve eşdeğer VM 'Ler Azure 'da kapalıdır. Bu makineler farklı bir MAC adresi edintir.
 - Makineler, şirket içi IP adresini elde etmeksizin, aynı zamanda farklı bir IP adresine sahip olabilir.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723852"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650624"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,17 +37,17 @@ Günlükler, hataları ve uyarıları tanılamanıza veya parametreler ve model 
 
 ## <a name="data-types"></a>Veri türleri
 
-Skaler değerler, listeler, tablolar, resimler, dizinler ve daha fazlası dahil olmak üzere birden çok veri türünü günlüğe kaydedebilirsiniz. Daha fazla bilgi ve farklı veri türleri için Python kodu örnekleri için, [sınıf başvurusunu çalıştırma sayfasına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)bakın.
+Skaler değerler, listeler, tablolar, resimler, dizinler ve daha fazlası dahil olmak üzere birden çok veri türünü günlüğe kaydedebilirsiniz. Daha fazla bilgi ve farklı veri türleri için Python kodu örnekleri için, [sınıf başvurusunu çalıştırma sayfasına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)bakın.
 
 ## <a name="interactive-logging-session"></a>Etkileşimli günlüğe kaydetme oturumu
 
-Etkileşimli günlük oturumları genellikle Not defteri ortamlarında kullanılır. [Deneme. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) yöntemi etkileşimli bir günlüğe kaydetme oturumu başlatır. Oturum sırasında günlüğe kaydedilen tüm ölçümler, denemenin içindeki çalıştırma kaydına eklenir. [Run. Completed ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) yöntemi oturumları sonlandırır ve çalıştırmayı tamamlandı olarak işaretler.
+Etkileşimli günlük oturumları genellikle Not defteri ortamlarında kullanılır. [Deneme. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) yöntemi etkileşimli bir günlüğe kaydetme oturumu başlatır. Oturum sırasında günlüğe kaydedilen tüm ölçümler, denemenin içindeki çalıştırma kaydına eklenir. [Run. Completed ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) yöntemi oturumları sonlandırır ve çalıştırmayı tamamlandı olarak işaretler.
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig günlükleri
 
-Bu bölümde, ScriptConfig çalıştırmaları içinde günlük kodu eklemeyi öğreneceksiniz. [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıfını, tekrarlanabilir çalıştırmalar için betikleri ve ortamları kapsüllemek için kullanabilirsiniz. Bu seçeneği, izleme için bir Visual jupi Not defteri pencere öğesini göstermek için de kullanabilirsiniz.
+Bu bölümde, ScriptConfig çalıştırmaları içinde günlük kodu eklemeyi öğreneceksiniz. [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) sınıfını, tekrarlanabilir çalıştırmalar için betikleri ve ortamları kapsüllemek için kullanabilirsiniz. Bu seçeneği, izleme için bir Visual jupi Not defteri pencere öğesini göstermek için de kullanabilirsiniz.
 
-Bu örnek, alfa değerleri üzerinde bir parametre tarama işlemi gerçekleştirir ve [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) yöntemini kullanarak sonuçları yakalar.
+Bu örnek, alfa değerleri üzerinde bir parametre tarama işlemi gerçekleştirir ve [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) yöntemini kullanarak sonuçları yakalar.
 
 1. Günlüğe kaydetme mantığını içeren bir eğitim betiği oluşturun `train.py` .
 

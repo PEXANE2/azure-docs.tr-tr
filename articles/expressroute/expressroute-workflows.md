@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: devre yapılandırma iş akışı'
 description: Bu sayfada ExpressRoute devreleri ve eşlemeleri yapılandırmak için iş akışı gösterilir
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814085"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565932"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Devre sağlama ve devre durumları için ExpressRoute iş akışları
 
@@ -86,7 +86,7 @@ Azure sanal ağı 'nda dağıtılan VM 'lere ve bulut hizmetlerine bağlanmak i�
 
 #### <a name="for-microsoft-peering"></a>Microsoft eşlemesi için
 
-Office 365 gibi Microsoft çevrimiçi hizmetler erişmek için bunu etkinleştirin. Ayrıca, tüm Azure PaaS hizmetlerine Microsoft eşlemesi üzerinden erişilebilir. Internet için kullandığınızdan Microsoft 'a bağlanmak için ayrı bir proxy/kenar kullandığınızdan emin olmanız gerekir. Hem ExpressRoute hem de Internet için aynı kenarı kullanmak asimetrik yönlendirmeye yol açabilir ve ağınız için bağlantı kesintilerine neden olur.
+Microsoft 365 gibi Microsoft çevrimiçi hizmetler erişmek için bunu etkinleştirin. Ayrıca, tüm Azure PaaS hizmetlerine Microsoft eşlemesi üzerinden erişilebilir. Internet için kullandığınızdan Microsoft 'a bağlanmak için ayrı bir proxy/kenar kullandığınızdan emin olmanız gerekir. Hem ExpressRoute hem de Internet için aynı kenarı kullanmak asimetrik yönlendirmeye yol açabilir ve ağınız için bağlantı kesintilerine neden olur.
 
 * Yol 1 (/30) için eşleme alt ağı-genel IP olmalıdır
 * Yol 2 (/30) için eşleme alt ağı-genel IP olmalıdır

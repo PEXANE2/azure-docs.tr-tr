@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022437"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458306"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
@@ -36,7 +36,6 @@ Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.vi
    > * Video Indexer için kaydolurken kullandığınız sağlayıcıyı kullanmanız gerekir.
    > * Kişisel Google ve Microsoft (Outlook/Live) hesapları yalnızca deneme hesapları için kullanılabilir. Azure'a bağlı hesaplar için Azure Active Directory gerekir.
    > * Her e-posta için yalnızca bir etkin hesap olabilir. Bir Kullanıcı, Google için ve daha sonraki bir adımda ile oturum açmaya çalışırsa, user@gmail.com user@gmail.com İkincisi bir hata sayfası görüntüleyecektir ve bu, kullanıcının zaten var olduğunu bildiriyor.
-
 2. Abone olun.
 
     [Ürünler](https://api-portal.videoindexer.ai/products) sekmesini seçin. Sonra yetkilendirme ve abone ol ' u seçin.
@@ -46,7 +45,7 @@ Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.vi
     > [!NOTE]
     > Yeni kullanıcılar otomatik olarak Yetkilendirme’ye abone edilir.
     
-    Abone olduktan sonra aboneliğinizi ve birincil ve ikincil anahtarlarınızı görebilirsiniz. Anahtarlar korunmalıdır. Anahtarlar yalnızca sunucu kodunuz tarafından kullanılmalıdır. İstemci tarafında (. js,. html vb.) kullanılamayacak.
+    Abone olduktan sonra, aboneliğinizi **ürünlerin**  ->  **yetkilendirmesi**altında bulabilirsiniz. Abonelik sayfasında, birincil ve ikincil anahtarları bulacaksınız. Anahtarlar korunmalıdır. Anahtarlar yalnızca sunucu kodunuz tarafından kullanılmalıdır. İstemci tarafında (. js,. html vb.) kullanılamayacak.
 
     ![Video Indexer geliştirici portalındaki abonelik ve anahtarlar](./media/video-indexer-use-apis/video-indexer-api03.png)
 

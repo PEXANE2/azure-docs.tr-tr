@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181655"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461842"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge GPU cihazını yönetme
 
@@ -22,7 +22,7 @@ Azure Stack Edge çözümü, verileri işlemenize ve ağ üzerinden Azure 'a gö
 Bu makale, cihazın PowerShell arabirimine ve bu arabirimi kullanarak gerçekleştirebileceğiniz görevlere nasıl bağlanabilirim. 
 
 
-## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanma
+## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanın
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -30,24 +30,24 @@ Bu makale, cihazın PowerShell arabirimine ve bu arabirimi kullanarak gerçekle�
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Sertifikayı karşıya yükleme
+<!--## Upload certificate
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Ayrıca, IoT Edge cihazınız ile bağlanabilir olan aşağı akış cihazları arasında güvenli bir bağlantı sağlamak için IoT Edge sertifikaları karşıya yükleyebilirsiniz. Yüklemeniz gereken üç IoT Edge sertifikası (*. pek* biçimi) vardır:
+You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
 
-- Kök CA sertifikası veya sahip CA
-- Cihaz CA sertifikası
-- Cihaz anahtarı sertifikası
+- Root CA certificate or the owner CA
+- Device CA certificate
+- Device key certificate
 
-Aşağıdaki örnek, IoT Edge sertifikaları yüklemek için bu cmdlet 'in kullanımını gösterir:
+The following example shows the usage of this cmdlet to install IoT Edge certificates:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Bu cmdlet 'i çalıştırdığınızda, ağ paylaşımının parolasını girmeniz istenir.
+When you run this cmdlet, you will be prompted to provide the password for the network share.
 
-Sertifikalar hakkında daha fazla bilgi için [Azure IoT Edge sertifikalara](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) gidin veya [bir ağ geçidine sertifika yüklemeyi](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)yapın.
+For more information on certificates, go to [Azure IoT Edge certificates](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) or [Install certificates on a gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).-->
 
 ## <a name="view-device-information"></a>Cihaz bilgilerini görüntüle
  
@@ -121,18 +121,45 @@ NVIDIA GPU 'larda çoklu Işlem hizmeti (MPS), her bir işin GPU kaynaklarının
     - `FullLogCollection`: Bu parametre, günlük paketinin tüm işlem günlüklerini içermesini sağlar. Varsayılan olarak, günlük paketi yalnızca bir Günlükler alt kümesi içerir.
 
 
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes Pod ve hizmet alt ağlarını değiştirme
+
+Azure Stack Edge cihazındaki Kubernetes varsayılan olarak, sırasıyla Pod ve hizmet için 172.27.0.0/16 ve 172.28.0.0/16 alt ağlarını kullanır. Bu alt ağlar ağınızda zaten kullanılıyorsa, `Set-HcsKubeClusterNetworkInfo` Bu alt ağları değiştirmek için cmdlet 'ini çalıştırabilirsiniz.
+
+Bu adımda, Kubernetes kümesi oluşturulduğundan Azure portal işlem yapılandırmadan önce bu yapılandırmayı gerçekleştirmek istiyorsunuz.
+
+1. Cihazın PowerShell arabirimine bağlanın.
+1. Cihazın PowerShell arabiriminden şunu çalıştırın:
+
+    `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
+
+    Öğesini <subnet details> kullanmak istediğiniz alt ağ aralığı ile değiştirin. 
+
+1. Bu komutu çalıştırdığınızda, `Get-HcsKubeClusterNetworkInfo` Pod ve hizmet alt ağlarının değiştiğini doğrulamak için komutunu kullanabilirsiniz.
+
+Bu komut için örnek bir çıktı aşağıda verilmiştir.
+
+```powershell
+[10.100.10.10]: PS>Set-HcsKubeClusterNetworkInfo -PodSubnet 10.96.0.1/16 -ServiceSubnet 10.97.0.1/16
+[10.100.10.10]: PS>Get-HcsKubeClusterNetworkInfo
+
+Id                                   PodSubnet    ServiceSubnet
+--                                   ---------    -------------
+6dbf23c3-f146-4d57-bdfc-76cad714cfd1 10.96.0.1/16 10.97.0.1/16
+[10.100.10.10]: PS>
+```
+
 
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>IoT Edge ilgili Kubernetes sorunlarını ayıklama
 
-Kubernetes kümesi oluşturulduğunda, `aseuser` bir sistem ad alanıyla ilişkili bir varsayılan kullanıcı `iotedge` da oluşturulur. IoT Edge ilgili herhangi bir sorunu ayıklamak için bu kullanıcı ve sistem ad alanını kullanabilirsiniz.  
+<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
 
-### <a name="create-config-file-for-system-namespace"></a>Sistem ad alanı için yapılandırma dosyası oluştur
+<!--### Create config file for system namespace
 
-Sorun gidermek için öncelikle `config` ad alanına karşılık gelen dosyayı `iotedge` ile oluşturun `aseuser` .
+To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
 
-Komutunu çalıştırın `Get-HcsKubernetesUserConfig -AseUser` ve çıktıyı `config` dosya (dosya uzantısı yok) olarak kaydedin. Dosyayı `.kube` yerel makinedeki Kullanıcı profilinizin klasörüne kaydedin.
+Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
 
-Komutun örnek çıktısı aşağıda verilmiştir `Get-HcsKubernetesUserConfig` .
+Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
 
 ```PowerShell
 [10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
@@ -158,11 +185,67 @@ users:
 
 [10.100.10.10]: PS>
 ```
+-->
+
+İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
+
+- `iotedge`Komutları kullanma. Bu komutlar, cihazınız için temel işlemler için kullanılabilir.
+- `kubectl`Komutları kullanma. Bu komutlar, cihazınız için kapsamlı bir işlem kümesi için kullanılabilir.
+
+Yukarıdaki komut kümesinden birini yürütmek için [PowerShell arabirimine bağlanmanız](#connect-to-the-powershell-interface)gerekir.
+
+### <a name="use-iotedge-commands"></a>`iotedge`Komutları kullanma
+
+Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `iotedge` işlevini kullanın.
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                           
+Usage: iotedge COMMAND
+
+Commands:
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
+
+|command  |Description |
+|---------|---------|
+|`list`     | Modülleri listeleme         |
+|`logs`     | Modülün günlüklerini getirme        |
+|`restart`     | Modülü durdurma ve yeniden başlatma         |
+
+
+Cihazınızda çalışan tüm modülleri listelemek için `iotedge list` komutunu kullanın.
+
+Bu komutun örnek bir çıktısı aşağıda verilmiştir. Bu komut tüm modülleri, ilişkili yapılandırmayı ve modüllerle ilişkili dış IP 'Leri listeler. Örneğin, Web **sunucusu** uygulamasına adresinden erişebilirsiniz `https://10.128.44.244` . 
+
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME                   STATUS  DESCRIPTION CONFIG                                             EXTERNAL-IP
+----                   ------  ----------- ------                                             -----
+gettingstartedwithgpus Running Up 10 days  mcr.microsoft.com/intelligentedge/solutions:latest
+iotedged               Running Up 10 days  azureiotedge/azureiotedge-iotedged:0.1.0-beta10    <none>
+edgehub                Running Up 10 days  mcr.microsoft.com/azureiotedge-hub:1.0             10.128.44.243
+edgeagent              Running Up 10 days  azureiotedge/azureiotedge-agent:0.1.0-beta10
+webserverapp           Running Up 10 days  nginx:stable                                       10.128.44.244
+
+[10.100.10.10]: PS>
+```
+
+
+### <a name="use-kubectl-commands"></a>Kubectl komutlarını kullanma
 
 İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, `kubectl` modülleri izlemek veya sorunlarını gidermek için tüm komutlar kullanılabilir. Kullanılabilir komutların bir listesini görmek için `kubectl --help` komut penceresinden komutunu çalıştırın.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
+
 kubectl controls the Kubernetes cluster manager.
 
 Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
@@ -187,7 +270,7 @@ C:\Users\myuser>
 Komutların kapsamlı bir listesi için `kubectl` [ `kubectl` yazdırılabilecek](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)sayfasına gidin.
 
 
-### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Kubernetes kümesi dışında kullanıma sunulan hizmet veya modülün IP 'yi almak için
+#### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Kubernetes kümesi dışında kullanıma sunulan hizmet veya modülün IP 'yi almak için
 
 Kubernetes dışında sunulan bir yük dengeleme hizmetinin veya modüllerinin IP 'sini almak için aşağıdaki komutu çalıştırın:
 
@@ -197,39 +280,53 @@ Aşağıda, Kubernetes kümesi dışında kullanıma sunulan tüm hizmetlerin ve
 
 
 ```powershell
-C:\Users\user>kubectl get svc -n iotedge
+[10.100.10.10]: PS>kubectl get svc -n iotedge
 NAME           TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                                       AGE
 edgehub        LoadBalancer   10.103.52.225   10.128.44.243   443:31987/TCP,5671:32336/TCP,8883:30618/TCP   34h
 iotedged       ClusterIP      10.107.236.20   <none>          35000/TCP,35001/TCP                           3d8h
 webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP                                16h
 
-C:\Users\user>
+[10.100.10.10]: PS>
 ```
 Dış IP sütunundaki IP adresi, hizmetin veya modülün dış uç noktasına karşılık gelir. Ayrıca, [Kubernetes panosundaki dış IP 'yi de alabilirsiniz](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules).
 
 
-### <a name="to-check-if-module-deployed-successfully"></a>Modülün başarıyla dağıtılıp dağıtılmadığını denetlemek için
+#### <a name="to-check-if-module-deployed-successfully"></a>Modülün başarıyla dağıtılıp dağıtılmadığını denetlemek için
 
-İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Bir Kubernetes Pod çalıştıran birden çok kapsayıcı olabilir. Bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını denetlemek için, komutunu çalıştırın `get pods` ve kapsayıcının (işlem modülüne karşılık gelen) çalışıp çalışmadığını denetleyin.
+İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Bir Kubernetes Pod çalıştıran birden çok kapsayıcı olabilir. 
+
+Bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını denetlemek için cihazın PowerShell arabirimine bağlanın.
+Komutunu çalıştırın `get pods` ve kapsayıcının (işlem modülüne karşılık gelen) çalışıp çalışmadığını denetleyin.
 
 Belirli bir ad alanında çalışan tüm yığınların listesini almak için aşağıdaki komutu çalıştırın:
 
 `get pods -n <namespace>`
 
+IoT Edge aracılığıyla dağıtılan modülleri denetlemek için şu komutu çalıştırın:
+
+`get pods -n iotedge`
+
 Aşağıda, ad alanında çalışan tüm yığınların örnek bir çıktısı verilmiştir `iotedge` .
 
 ```
-C:\Users\myuser>kubectl get pods -n iotedge
+[10.100.10.10]: PS>kubectl get pods -n iotedge
 NAME                        READY   STATUS    RESTARTS   AGE
 edgeagent-cf6d4ffd4-q5l2k   2/2     Running   0          20h
 edgehub-8c9dc8788-2mvwv     2/2     Running   0          56m
 filemove-66c49984b7-h8lxc   2/2     Running   0          56m
 iotedged-675d7f4b5f-9nml4   1/1     Running   0          20h
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
 Durum **durumu** , ad alanındaki tüm yığınların çalıştığını ve **Ready** öğesinin bir pod içinde dağıtılan kapsayıcıların sayısını belirtir. Yukarıdaki örnekte, tüm yığınların çalışıyor olması ve her bir yığından dağıtılan tüm modüllerin çalışıyor olması gerekir. 
+
+Azure Arc aracılığıyla dağıtılan modülleri denetlemek için şu komutu çalıştırın:
+
+`get pods -n azure-arc`
+
+Alternatif olarak, [IoT Edge veya Azure Arc dağıtımlarını görmek Için Kubernetes panosuna bağlanabilirsiniz](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status).
+
 
 Belirli bir ad alanı için belirli bir pod 'ın daha ayrıntılı bir çıktısı için aşağıdaki komutu çalıştırabilirsiniz:
 
@@ -238,7 +335,7 @@ Belirli bir ad alanı için belirli bir pod 'ın daha ayrıntılı bir çıktıs
 Örnek çıktı burada gösterilmiştir.
 
 ```
-C:\Users\myuser>kubectl describe pod filemove-66c49984b7 -n iotedge
+[10.100.10.10]: PS>kubectl describe pod filemove-66c49984b7 -n iotedge
 Name:           filemove-66c49984b7-h8lxc
 Namespace:      iotedge
 Priority:       0
@@ -295,12 +392,12 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:          <none>
 
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
 
-### <a name="to-get-container-logs"></a>Kapsayıcı günlüklerini almak için
+#### <a name="to-get-container-logs"></a>Kapsayıcı günlüklerini almak için
 
-Bir modülün günlüklerini almak için aşağıdaki komutu çalıştırın:
+Bir modülün günlüklerini almak için, cihazın PowerShell arabiriminden aşağıdaki komutu çalıştırın:
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
@@ -309,7 +406,7 @@ Bir modülün günlüklerini almak için aşağıdaki komutu çalıştırın:
 Aşağıda örnek bir çıktı verilmiştir. 
 
 ```
-C:\Users\myuser>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
+[10.100.10.10]: PS>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
 DEBUG 2020-05-14T20:40:42Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
 DEBUG 2020-05-14T20:40:44Z: loop process - 0 events, 0.000s
@@ -325,8 +422,10 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 05/14/2020 19:46:45: Info: Initializing with input: /home/input, output: /home/output, protocol: Amqp.
 05/14/2020 19:46:45: Info: IoT Hub module client initialized.
 
-C:\Users\myuser>
+[10.100.10.10]: PS>
 ```
+
+
 
 ## <a name="exit-the-remote-session"></a>Uzak oturumdan çık
 

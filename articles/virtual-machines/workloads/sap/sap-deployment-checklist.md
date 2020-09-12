@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651735"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650703"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -213,7 +213,7 @@ Bu aşamada, genellikle geliştirme sistemlerini, birim testi sistemlerini ve i�
 12. İş yükü geçerli olduğundan, sistemlerin kaynak tüketimini Azure 'da kaydedin. Bu tüketimi eski platformunuzun kayıtlarıyla karşılaştırın. Büyük farklarınızın olduğunu görürseniz gelecek dağıtımların sanal makine boyutunu ayarlayın. Sanal makinelerin boyutunu, depolamayı ve ağ bant genişliğini azaltdığınızda da azaltabileceğinizi aklınızda bulundurun.
     - [Azure'daki Windows sanal makinesi boyutları](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure’da Linux sanal makine boyutları](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Sistem kopyalama işlevselliği ve işlemleriyle denemeler yapın. Amaç, bir geliştirme sistemini veya test sistemini kopyalamanızı kolaylaştırırken, proje ekiplerinin hızla yeni sistemler alabilir. Bu görevler için [SAP](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) 'yi kullanmayı düşünün.
+13. Sistem kopyalama işlevselliği ve işlemleriyle denemeler yapın. Amaç, bir geliştirme sistemini veya test sistemini kopyalamanızı kolaylaştırırken, proje ekiplerinin hızla yeni sistemler alabilir. 
 14. Görevlerin ayrıldığınızdan emin olmak için takımınızın Azure rol tabanlı erişimini, izinlerini ve süreçlerini iyileştirin ve odaklanmak. Aynı zamanda, tüm takımların Azure altyapısında görevlerini gerçekleştirmesini sağlayın.
 15. Personelinizin bu görevleri yürütmesini sağlamak için yüksek kullanılabilirlik ve olağanüstü durum kurtarma yordamlarını uygulayın, test edin ve belgeleyin. Eksiklikleri belirleyip dağıtımlarınızla Tümleştirdiğiniz yeni Azure işlevlerini uyarlayın.
 

@@ -3,12 +3,12 @@ title: Girişim tanımlarında mevzuat uyumluluğu
 description: Access Control, yapılandırma yönetimi ve diğerleri gibi yasal etki alanına göre ilkeleri gruplandırmak için bir girişim tanımının nasıl kullanılacağını açıklar.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544630"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645526"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure Ilkesinde mevzuata uyumluluğu
 
@@ -33,18 +33,18 @@ Azure Güvenlik Merkezi panonuza özel bir mevzuat uyumluluk girişimi bağlamak
 
 Yeni bir sekme, sayfaya **denetimler** eklenir. Filtreleme, **Uyumluluk etki alanı** tarafından kullanılabilir ve Ilke tanımları `title` **policymetadata** nesnesinden alana göre gruplandırılır. Her satır, uyumluluk durumunu, onun parçası olan **Uyumluluk etki alanını** , sorumluluk bilgilerini ve bu **denetimi**ne kadar uyumlu olmayan ve uyumlu ilke tanımlarının olduğunu gösteren bir **denetimi** temsil eder.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="NıST SP 800-53 R4 yerleşik tanımına yönelik mevzuat uyumluluğuna genel bakış örneği.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="NıST SP 800-53 R4, uyumlu ve uyumlu olmayan denetimleri gösteren bir yerleşik tanım için mevzuat uyumluluğuna genel bakış ekran görüntüsü.":::
 
 Bir **Denetim** seçildiğinde, bu denetimle ilgili ayrıntıların bir sayfası açılır. **Genel bakış** , ve içindeki bilgileri `description` içerir `requirements` . **İlkeler** sekmesinin altında, bu **denetime**katkıda bulunan girişim içindeki tüm bireysel ilke tanımları vardır. **Kaynak uyumluluğu** sekmesi, görüntülenmekte olan **denetimin**üye ilkesi tarafından değerlendirilen her bir kaynağın ayrıntılı bir görünümünü sağlar.
 
 > [!NOTE]
 > Bir [statik](./definition-structure.md#type) ilke tanımı için **Microsoft tarafından yönetilen** bir değerlendirme türü kullanılır `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sistem ve Iletişim koruması etki alanının sınır koruma denetimindeki, mevzuat uyumluluk ilkesi tanımlarının bir örneği.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sınır koruma denetimi için mevzuat uyumluluk ayrıntılarının ekran görüntüsü.":::
 
 Aynı **Denetim** sayfasından, **kaynak uyumluluğu** sekmesine geçiş yapmak, bu **denetimin**ilke tanımlarının dahil olduğu tüm kaynakları gösterir. Ad, KIMLIK, uyumluluk durumu, kaynak türü ve konum için filtreler kullanılabilir.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sistem ve Iletişim koruması etki alanının sınır koruma denetimindeki ilke tanımlarından etkilenen, mevzuat uyumluluk kaynaklarının bir örneği.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sınır koruma denetimine kaynak uyumluluğuna ilişkin ekran görüntüsü.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK 'da mevzuata uyumluluğu
 

@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144796"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651508"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
+Bu makalede, [Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
 
 Düşük bir kod deneyimi için bkz. öğreticide, [Azure Machine Learning Studio](https://ml.azure.com/)'da otomatik makine öğrenimini kullanarak bir zaman serisi tahmin örneği için [otomatik makine öğrenimine sahip tahmin talebi](tutorial-automated-ml-forecast.md) .
 
@@ -32,7 +32,7 @@ Aşağıdaki örneklerde nasıl yapılacağı gösterilmektedir:
 * Bir nesnede belirli zaman serisi parametrelerini yapılandırma [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)
 * Zaman serisi verileriyle tahminleri çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> Bir modeli, gelecekteki değerleri tahmin etmek için eğitiminde, eğitiminde kullanılan tüm özelliklerin, tasarlanan ufklarınızın tahminleri çalıştırılırken kullanılabilir olmasını sağlayın. Örneğin, geçerli stok fiyatına yönelik bir özellik dahil olmak üzere bir talep tahmini oluştururken eğitim doğruluğunu büyük ölçüde artırabilirsiniz. Ancak, uzun bir ufuk ile tahmin yapmak istiyorsanız gelecekteki zaman serisi noktalarına karşılık gelen stok değerlerini doğru bir şekilde tahmin edemeyebilirsiniz ve model doğruluğu düşebilir.
+> Bir modeli, gelecekteki değerleri tahmin etmek için eğitiminde, eğitiminde kullanılan tüm özelliklerin, tasarlanan ufklarınızın tahminleri çalıştırılırken kullanılabilir olmasını sağlayın. <br> <br>Örneğin, geçerli stok fiyatına yönelik bir özellik dahil olmak üzere bir talep tahmini oluştururken eğitim doğruluğunu büyük ölçüde artırabilirsiniz. Ancak, uzun bir ufuk ile tahmin yapmak istiyorsanız gelecekteki zaman serisi noktalarına karşılık gelen stok değerlerini doğru bir şekilde tahmin edemeyebilirsiniz ve model doğruluğu düşebilir.
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 Doğrudan nesnede ayrı tren ve doğrulama kümeleri belirtebilirsiniz `AutoMLConfig` .   [Oto Mlconfig](#configure-experiment)hakkında daha fazla bilgi edinin.
 
-Zaman serisi tahmin için, karşılıklı **kaynak çapraz doğrulama (ROCV)** , eğitim ve doğrulama verilerini birlikte geçirdiğinizde otomatik olarak kullanılır ve çapraz doğrulama sayısını, `n_cross_validations` içindeki parametresiyle birlikte ayarlayın `AutoMLConfig` . ROCV, seriyi bir kaynak zaman noktası kullanarak eğitim ve doğrulama verilerine böler. Kaynak zamanda, çapraz doğrulama katlarını oluşturur. Bu strateji, zaman serisi veri bütünlüğünü korur ve veri sızıntısı riskini ortadan kaldırır
+Zaman serisi tahmin için, varsayılan olarak doğrulama için yalnızca **toplama kaynak çapraz doğrulama (ROCV)** kullanılır. Eğitim ve doğrulama verilerini birlikte geçirin ve çapraz doğrulama sayısını, `n_cross_validations` içindeki parametresiyle ayarlayın `AutoMLConfig` . ROCV, seriyi bir kaynak zaman noktası kullanarak eğitim ve doğrulama verilerine böler. Kaynak zamanda, çapraz doğrulama katlarını oluşturur. Bu strateji, zaman serisi veri bütünlüğünü korur ve veri sızıntısı riskini ortadan kaldırır
 
-![alternatif metin](./media/how-to-auto-train-forecast/ROCV.svg)
+![kaynak çapraz doğrulamayı toplama](./media/how-to-auto-train-forecast/ROCV.svg)
 
-Diğer çapraz doğrulama ve veri ayırma seçenekleri için bkz. [Data Split ve çapraz doğrulamayı, oto ml 'de yapılandırma](how-to-configure-cross-validation-data-splits.md).
+Ayrıca kendi doğrulama verilerinizi de getirebilirsiniz, [veri bölmelerini yapılandırma ve oto ml 'de çapraz doğrulama](how-to-configure-cross-validation-data-splits.md#provide-validation-data)konusunda daha fazla bilgi edinebilirsiniz.
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitting)için, oto ml 'nin çapraz doğrulamayı nasıl uyguladığı hakkında daha fazla bilgi edinin.
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak özellikle zaman serisi verileri için belirli bir özellik ve yapılandırma seçeneği mevcuttur. 
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak özellikle zaman serisi verileri için belirli bir özellik ve yapılandırma seçeneği mevcuttur. 
 
 ### <a name="featurization-steps"></a>Korturlama adımları
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-Denemeniz için Azure Machine Learning Studio kullanıyorsanız [nasıl yapılır makalesine](how-to-use-automated-ml-for-ml-models.md#customize-featurization)bakın.
+Denemeniz için Azure Machine Learning Studio kullanıyorsanız, bkz. [Studio 'da özelliği özelleştirme](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
 ### <a name="configuration-settings"></a>Yapılandırma ayarları
 
 Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. 
 
-Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) bakın.
+Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) bakın.
 
 | Parametre &nbsp; adı | Açıklama | Gerekli |
 |-------|-------|-------|
@@ -245,16 +245,19 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> SDK ile oluşturulan denemeleri için DNN 'yi etkinleştirdiğinizde, [en iyi model açıklamaları](how-to-machine-learning-interpretability-automl.md) devre dışı bırakılır.
+
 Azure Machine Learning Studio 'da oluşturulan bir oto ml denemesi için DNN 'yi etkinleştirmek için, [Studio nasıl yapılır ile ilgili görev türü ayarlarına](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)bakın.
+
 
 Otomatikleştirilen ML, kullanıcılara öneri sisteminin bir parçası olarak hem yerel zaman serisi hem de derin öğrenme modelleri sağlar. 
 
-Modeller| Açıklama | Avantajlar
+Modeller| Description | Yararları
 ----|----|---
 Prophet (Önizleme)|Prophet, önemli dönemsel etkileri ve geçmiş verilerin çeşitli mevsimlerine sahip zaman serisiyle en iyi şekilde çalışmaktadır. Bu modelden yararlanmak için kullanarak yerel olarak yüklemesini yapın `pip install fbprophet` . | Daha hızlı, güçlü ve aykırı verilere, eksik verilere ve zaman serinizdeki önemli değişikliklere göre doğru &.
 Otomatik-ARıMA (Önizleme)|Otomatik gerileme tümleşik hareketli ortalama (ARıMA), veriler sabit olduğunda en iyi şekilde çalışır. Bu, ortalama ve fark gibi istatistiksel özelliklerinin tüm küme üzerinde sabit olduğu anlamına gelir. Örneğin, bir para alanı çevirdiğinizde, bugün, yarın veya sonraki yılda bir değer çevirmenize bakılmaksızın kafa alma olasılığı %50 ' dir.| Sonraki değerleri tahmin etmek için geçmiş değerler kullanıldığından, tek değişkenli seriler için harika.
 Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden gelmek, verilerinizdeki doğrusal olmayan yerel ve küresel eğilimleri ve zaman serileri arasındaki ilişkileri yakalamak için tasarlanan bir sinir ağ modelidir.|Verilerinizdeki karmaşık eğilimleri kullanmaktan ve veri kümelerinin en büyük katına kolayca ölçeklenebilme özelliği.
-
 
 DNNs ile ilgili ayrıntılı kod örneği için [Beten oluşan üretim tahmin Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) görüntüleyin.
 
@@ -266,8 +269,7 @@ Genellikle, bir Forecaster 'ın en iyi bilgileri, hedefin en son değeridir.  He
 
 Tablo, pencere toplama uygulandığında ortaya çıkan özellik mühendisliğini gösterir. **En düşük, en yüksek** ve **Toplam** sütunları, tanımlanan ayarlara bağlı olarak üç ' un bir kayan penceresinde oluşturulur. Her satırda yeni bir hesaplanmış özellik bulunur, 8 Eylül 2017 ' i için zaman damgası söz konusu olduğunda, en yüksek, en düşük ve toplam değerleri 8 Eylül 2017 ' de (00:00:00-3:00:00:00) **talep değerleri** kullanılarak hesaplanır. Bu üç vardiya, geri kalan satırlara yönelik verileri doldurmaktır.
 
-![alternatif metin](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![hedef sıralı pencere](./media/how-to-auto-train-forecast/target-roll.svg)
 
 [Hedef sıralı pencere toplama özelliğinden](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)yararlanarak bir Python kod örneği görüntüleyin.
 
@@ -336,5 +338,8 @@ Aşağıdakiler dahil olmak üzere gelişmiş tahmin yapılandırmasına yöneli
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Otomatik makine öğrenimi ile denemeleri oluşturmayı öğrenmek için [öğreticiyi](tutorial-auto-train-models.md) izleyin.
-* Python başvuru belgeleri [için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) görüntüleyin.
+* [Bir modelin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
+* [Yorumlenebilirlik: otomatik makine öğrenimi (Önizleme) içindeki model açıklamaları](how-to-machine-learning-interpretability-automl.md)hakkında bilgi edinin. 
+* [Birçok model çözümü hızlandırıcısında](https://aka.ms/many-models), oto ml ile birden çok modeli eğitme hakkında bilgi edinin.
+* Otomatik makine öğrenimi ile denemeleri oluşturmaya yönelik uçtan uca bir örnek için [öğreticiyi](tutorial-auto-train-models.md) izleyin.
+

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 09/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520218"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611611"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -267,7 +267,7 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 uygulamanızı Azure AD B2C kaydetme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
@@ -354,7 +354,8 @@ Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 
 **Oturum aç** ' ı seçin ve Kullanıcı oturum açma ekranı ile karşılaşırsınız. Oturum açma sırasında, bir SAML onaylama işlemi örnek uygulamaya geri verilir.
 
-## <a name="enable-encypted-assertions"></a>Şifreli onayları etkinleştir
+## <a name="enable-encrypted-assertions-optional"></a>Şifreli onayları etkinleştir (Isteğe bağlı)
+
 Hizmet sağlayıcısına geri gönderilen SAML onayları şifrelemek için, Azure AD B2C hizmet sağlayıcıları ortak anahtar sertifikasını kullanacaktır. Ortak anahtar, yukarıdaki ["Samlmetadataurl"](#samlmetadataurl) bölümünde özetlenen SAML meta verilerinde, ' Encryption ' kullanımına sahip bir KeyDescriptor olarak bulunmalıdır.
 
 Aşağıda, bir kullanımı şifreleme olarak ayarlanmış olan SAML meta verisi KeyDescriptor örneği verilmiştir:
@@ -369,35 +370,50 @@ Aşağıda, bir kullanımı şifreleme olarak ayarlanmış olan SAML meta verisi
 </KeyDescriptor>
 ```
 
-Azure AD B2C şifreli onaylar göndermek üzere etkinleştirmek için, aşağıda gösterildiği gibi, bağlı olan taraf teknik profilinde **WantsEncryptedAssertion** meta veri öğesini true olarak ayarlayın;
+Azure AD B2C şifreli onaylar göndermek üzere etkinleştirmek için, **WantsEncryptedAssertion** meta veri öğesini `true` [bağlı olan taraf teknik profilinde](relyingparty.md#technicalprofile)olarak ayarlayın. SAML onayını şifrelemek için kullanılan algoritmayı da yapılandırabilirsiniz. Daha fazla bilgi için bkz. [bağlı olan taraf teknik profili meta verileri](relyingparty.md#metadata). 
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="contoso.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin_saml"
-  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
- ..
- ..
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="SAML2"/>
-      <Metadata>
-          <Item Key="WantsEncryptedAssertions">true</Item>
-      </Metadata>
-     ..
-     ..
-     ..
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
 ```
+
+## <a name="enable-identity-provider-initiated-flow-optional"></a>Kimlik sağlayıcısı tarafından başlatılan akışı etkinleştir (Isteğe bağlı)
+
+Kimlik sağlayıcısı tarafından başlatılan Flow 'da, oturum açma işlemi, hizmet sağlayıcısına (bağlı olan taraf uygulamanız) istenmeyen bir SAML yanıtı gönderen kimlik sağlayıcısı tarafından başlatılır (Azure AD B2C). Kimlik sağlayıcısı tarafından başlatılan akışı etkinleştirmek için, **ıdpınitiated Profileenabled** meta veri öğesini `true` [bağlı olan taraf teknik profilinde](relyingparty.md#technicalprofile)olarak ayarlayın.
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="IdpInitiatedProfileEnabled">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Kimlik sağlayıcısı tarafından başlatılan Flow aracılığıyla oturum açmak veya Kullanıcı kaydolmak için aşağıdaki URL 'YI kullanın:
+
+```
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+```
+
+Aşağıdaki değerleri değiştirin:
+
+* Kiracı adınızla kiracı **adı**
+* **ilke-** SAML bağlı olan taraf ilkesi adınızla adlandırın
 
 ## <a name="sample-policy"></a>Örnek ilke
 

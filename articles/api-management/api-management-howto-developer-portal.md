@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852166"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614055"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -31,9 +31,9 @@ Bu makalede, API Management 'de geliştirici portalının şirket içinde barın
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>Yeni geliştirici portalı, eski geliştirici portalı ile uyumsuzdur ve otomatik geçiş mümkün değildir. İçeriği (sayfalar, metin, medya dosyaları) el ile yeniden oluşturmanız ve yeni portalın görünümünü özelleştirmeniz gerekir. Rehberlik için [Geliştirici Portalı öğreticisine](api-management-howto-developer-portal-customize.md) bakın.
+> <a name="migrate-from-legacy"></a> Yeni geliştirici portalı, eski geliştirici portalı ile uyumsuzdur ve otomatik geçiş mümkün değildir. İçeriği (sayfalar, metin, medya dosyaları) el ile yeniden oluşturmanız ve yeni portalın görünümünü özelleştirmeniz gerekir. Rehberlik için [Geliştirici Portalı öğreticisine](api-management-howto-developer-portal-customize.md) bakın.
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Yönetilen ve şirket içinde barındırılan sürümler
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Yönetilen ve şirket içinde barındırılan sürümler
 
 Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
@@ -67,27 +67,27 @@ Medya dışında *Portal içeriği*, JSON belgeleri olarak ifade edilir.
 
 Portal, [Paperbits çerçevesinin](https://paperbits.io/)uyarbir çatalını temel alır. Özgün Paperbits işlevselliği, API Management özgü pencere öğeleri sağlamak üzere genişletilmiştir (örneğin, API 'lerin listesi, ürünlerin listesi) ve içeriği kaydetmek ve almak için bir bağlayıcı API Management.
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>Sık sorulan sorular
+## <a name="frequently-asked-questions"></a><a name="faq"></a> Sık sorulan sorular
 
 Bu bölümde, genel doğası olan geliştirici portalı hakkında sık sorulan soruları yanıtlarız. Şirket içinde barındırılan sürüme özgü sorular için [GitHub deposunun wiki bölümüne](https://github.com/Azure/api-management-developer-portal/wiki)bakın.
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Portalın önizleme sürümünden nasıl geçiş yapabilirim?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> Portalın önizleme sürümünden nasıl geçiş yapabilirim?
 
-Geliştirici portalının önizleme sürümünü kullanarak, API Management hizmetinizde önizleme içeriğini sağlamış olursunuz. Varsayılan içerik, daha iyi kullanıcı deneyimi için genel kullanıma sunulan sürümde önemli ölçüde değiştirilmiştir. Ayrıca yeni pencere öğeleri içerir.
+Geliştirici portalının önizleme sürümünü ilk kez başlattığınızda, API Management hizmetinizde varsayılan içeriğinin önizleme sürümünü sağlamış olursunuz. Varsayılan içerik, genel olarak kullanılabilen sürümde önemli ölçüde değiştirilmiştir. Örneğin, varsayılan içeriğin önizleme sürümü, oturum açma sayfalarında OAuth düğmeleri içermiyorsa, API 'Leri görüntülemek için farklı pencere öğeleri kullanır ve geliştirici portalı sayfalarını yapılandırmak için sınırlı yeteneklere bağımlıdır. İçerikte farklılıklar olsa da, geliştirici portalınızı her yayımladığınızda portalın altyapısı (temel pencere öğeleri dahil) otomatik olarak güncelleştirilir.
 
-Yönetilen sürümü kullanıyorsanız, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' ya tıklayarak portalın içeriğini sıfırlayın. Bu işlemin onaylanmasının, portalın tüm içeriğini kaldıracaksa ve yeni varsayılan içeriği sağlaması istenir. Portalın altyapısı, API Management hizmetinizde otomatik olarak güncelleştirilmiştir.
+Portalınızı içeriğin önizleme sürümüne göre büyük ölçüde özelleştirdiyseniz, bunu olduğu gibi kullanmaya devam edebilir ve yeni pencere öğelerini portalın sayfalarına el ile yerleştirebilirsiniz. Aksi takdirde, portalınızın içeriğini yeni varsayılan içerikle değiştirmeniz önerilir.
+
+Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' ya tıklayın. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız**.
 
 ![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
-Şirket içinde barındırılan sürümü kullanıyorsanız, `scripts/cleanup.bat` `scripts/generate.bat` mevcut içeriği kaldırmak ve yeni içerik sağlamak için GitHub deposundan ve ' yi kullanın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
+Şirket içinde barındırılan sürümü kullanıyorsanız, `scripts.v2/cleanup.bat` `scripts.v2/generate.bat` mevcut içeriği kaldırmak ve yeni içerik sağlamak için GitHub deposundan çalıştırma ve betikler çalıştırın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
 
-Portalın içeriğini sıfırlamak istemiyorsanız, sayfalarınızın tamamında yeni kullanılabilir pencere öğelerini kullanmayı düşünebilirsiniz. Mevcut pencere öğeleri, en son sürümlere otomatik olarak güncelleştirildi.
-
-Portalınız genel kullanılabilirlik duyurusu sonrasında sağlandıysa, yeni varsayılan içeriği zaten kullanıma hazır olmalıdır. Sizin tarafınızdan bir işlem yapılması gerekmez.
+İlk olarak, Kasım 2019 ' de genel kullanılabilirlik duyurusu sonrasında portala eriştiyseniz, yeni varsayılan içeriği zaten kullanıma hazır hale, başka bir eylem gerekli değildir.
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Portal eski portalın tüm özelliklerine sahip mi?
 
-Geliştirici portalı artık *uygulamaları* ve *sorunları*desteklememektedir.
+Geliştirici portalı artık *uygulamaları*, *sorunları*ve Facebook, Microsoft, Twitter ve Google as kimlik sağlayıcıları ile doğrudan tümleştirmeyi desteklememektedir (Bunun yerine Azure AD B2C kullanabilirsiniz).
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>Eski portalın kullanım dışı bırakılmış mi?
 
@@ -145,7 +145,7 @@ Temsilciyi ayarladıktan sonra değişikliklerin etkili olması için portalı y
 
 Çoğu yapılandırma değişikliği (örneğin, VNet, oturum açma ve ürün koşulları) [portalın yeniden yayımmesini](api-management-howto-developer-portal-customize.md#publish)gerektirir.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>Etkileşimli konsolu kullanırken CORS hatası alıyorum
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Etkileşimli konsolu kullanırken CORS hatası alıyorum
 
 Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [CORS ilkesi](api-management-cross-domain-policies.md#CORS) ekleyerek CORS sorununu çözün.
 
@@ -217,7 +217,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
 | Microsoft Edge              | Evet<sup>1</sup> |
-| Microsoft Internet Explorer | Hayır              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Evet<sup>1</sup> |
 
  <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>

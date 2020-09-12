@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180958"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513975"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -44,14 +44,14 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 1. Aşağıdaki klasörleri virüsten koruma taramayla hariç tutun:
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     `C:\` *Systemdrive*'larınızın harfiyle değiştirin.
 
 1. Bir VM içinde çalışan aşağıdaki üç işlemi virüsten koruma taramayla hariç tutun:
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. SQL, virüsten koruma programlarıyla çalışmak üzere bazı yönergeler de sunmaktadır. Ayrıntılar için [Bu makaleye](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) bakın.

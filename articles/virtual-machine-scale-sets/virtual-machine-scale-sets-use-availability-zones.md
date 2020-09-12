@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029323"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611913"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
 
@@ -22,13 +22,17 @@ Sanal makine ölçek kümelerinizi veri merkezi düzeyindeki hatalardan korumak 
 
 ## <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
 
-Bir ölçek kümesini API sürüm *2017-12-01*itibariyle bir veya daha fazla bölgeye dağıttığınızda, "en büyük yayma" veya "statik 5 hata etki alanı yayma" ile dağıtım seçeneğiniz vardır. Maksimum yayılmaları ile, ölçek kümesi sanal makinelerinizi her bölge içinde mümkün olduğunca çok hata etki alanı arasında yayar. Bu yayma, bölge başına beş veya daha fazla hata etki alanı üzerinde olabilir. "Statik 5 hata etki alanı yayma" ile, ölçek kümesi sanal makinelerinizi bölge başına tam olarak beş hata etki alanına yayar. Ölçek kümesi, ayırma isteğini karşılamak için bölge başına beş ayrı hata etki alanı bulamazsa, istek başarısız olur.
+Bir bölge (ZGen olmayan) ölçek kümesini API sürüm *2017-12-01*itibariyle bir veya daha fazla bölgeye dağıttığınızda, aşağıdaki kullanılabilirlik seçeneklerine sahip olursunuz:
+- Maksimum yayma (platformFaultDomainCount = 1)
+- Statik sabit yayma (platformFaultDomainCount = 5)
+- Depolama disk hata etki alanları ile hizalı olarak yayma (platforFaultDomainCount = 2 veya 3)
+
+Maksimum yayılmaları ile, ölçek kümesi sanal makinelerinizi her bölge içinde mümkün olduğunca çok hata etki alanı arasında yayar. Bu yayma, bölge başına beş veya daha fazla hata etki alanı üzerinde olabilir. Statik sabit yayılmaları ile, ölçek kümesi sanal makinelerinizi bölge başına tam olarak beş hata etki alanına yayar. Ölçek kümesi, ayırma isteğini karşılamak için bölge başına beş ayrı hata etki alanı bulamazsa, istek başarısız olur.
 
 Bu yaklaşım çoğu durumda en iyi yayılmasını sağladığından, **çoğu iş yükü için en fazla yayılmaya karşı dağıtım yapmanızı öneririz**. Çoğaltmalarının ayrı donanım yalıtımı birimlerine yayılması gerekiyorsa, Kullanılabilirlik Alanları arasında yayılmasını ve her bölgede en fazla yayılmasını öneririz.
 
-Maksimum yayılmaya sahip olarak, sanal makinelerin kaç hata etki alanından yayıldığına bakılmaksızın yalnızca bir hata etki alanını ölçek kümesi VM örneği görünümünde ve örnek meta verilerinde görürsünüz. Her bölge içindeki yayma örtük bir şekilde yapılır.
-
-En büyük yayılmayı kullanmak için *Platformfaultdomaincount* değerini *1*olarak ayarlayın. Statik beş hata etki alanı yayma kullanmak için *Platformfaultdomaincount* değerini *5*olarak ayarlayın. API sürüm *2017-12-01*' de *platformfaultdomaincount* , tek bölge ve çapraz bölge ölçek kümeleri için varsayılan olarak *1* ' dir. Şu anda bölgesel (ZGen olmayan) ölçek kümeleri için yalnızca statik beş hata etki alanı yayma desteklenir.
+> [!NOTE]
+> Maksimum yayılmaya sahip olarak, sanal makinelerin kaç hata etki alanından yayıldığına bakılmaksızın yalnızca bir hata etki alanını ölçek kümesi VM örneği görünümünde ve örnek meta verilerinde görürsünüz. Her bölge içindeki yayma örtük bir şekilde yapılır.
 
 ### <a name="placement-groups"></a>Yerleştirme grupları
 

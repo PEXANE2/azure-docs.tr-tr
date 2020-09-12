@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006494"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399999"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Senaryo: paylaşılan hizmetler sanal ağlarına yönlendirme
 
@@ -24,7 +24,7 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 
 ## <a name="design"></a><a name="design"></a>Tasarım
 
-Bu senaryonun gereksinimlerini özetlemek için bir bağlantı matrisi kullanabiliriz. Matriste her hücrede, belirli bir trafik akışı için bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları) bir hedef ön eki (akışın "to" tarafı, tablodaki sütun üst bilgileri) öğrenip öğrenmediğini açıklanmaktadır.
+Bu senaryonun gereksinimlerini özetlemek için bir bağlantı matrisi kullanabiliriz. Matriste her hücrede, belirli bir trafik akışı için bir sanal WAN bağlantısının (akışın "Kimden" tarafı, tablodaki satır başlıkları) bir hedef ön eki (akışın "to" tarafı, tablodaki sütun üst bilgileri) öğrenip öğrenmediğini açıklanmaktadır. Bir "X", bağlantının sanal WAN tarafından sağlandığı anlamına gelir:
 
 **Bağlantı matrisi**
 
@@ -55,7 +55,7 @@ Sonuç olarak, bu son tasarımdır:
 
 Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
-## <a name="workflow"></a><a name="workflow"></a>Akışıyla
+## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
 Senaryoyu yapılandırmak için aşağıdaki adımları göz önünde bulundurun:
 

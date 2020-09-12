@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 6662beec47d663f92e453f52d190e41518108b0d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191482"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458221"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage 1. ve Azure Blob depolamayı karşılaştırma
 
@@ -27,9 +27,9 @@ Bu makaledeki tabloda, büyük veri işlemenin bazı önemli yönleri üzerinde 
 | Yapı |Hiyerarşik dosya sistemi |Düz ad alanı olan nesne deposu |
 | API |HTTPS üzerinden REST API |HTTP/HTTPS üzerinden REST API |
 | Sunucu tarafı API 'SI |[Web, ile uyumlu REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob depolama REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Hadoop dosya sistemi Istemcisi |Evet |Evet |
+| Hadoop dosya sistemi Istemcisi |Yes |Yes |
 | Veri Işlemleri-kimlik doğrulama |[Azure Active Directory kimliklerine](../active-directory/develop/authentication-scenarios.md) göre |Paylaşılan gizli dizi- [hesap erişim anahtarlarına](../storage/common/storage-account-keys-manage.md) ve [paylaşılan erişim imzası anahtarlarına](../storage/common/storage-dotnet-shared-access-signature-part-1.md)göre. |
-| Veri Işlemleri-kimlik doğrulama protokolü |OAuth 2,0. Çağrılar, Azure Active Directory tarafından verilen geçerli bir JWT (JSON Web Token) içermelidir |Karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC). Çağrılar HTTP isteğinin bir parçası üzerinde Base64 kodlamalı bir SHA-256 karması içermelidir. |
+| Veri Işlemleri-kimlik doğrulama protokolü |[OpenID Connect](https://openid.net/connect/). Çağrılar, Azure Active Directory tarafından verilen geçerli bir JWT (JSON Web belirteci) içermelidir.|Karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC). Çağrılar HTTP isteğinin bir parçası üzerinde Base64 kodlamalı bir SHA-256 karması içermelidir. |
 | Veri Işlemleri-yetkilendirme |POSIX Access Control listeleri (ACL 'Ler).  Azure Active Directory kimlikleri temel alan ACL 'Ler dosya ve klasör düzeyinde ayarlanabilir. |Hesap düzeyinde yetkilendirme için – [hesap erişim anahtarlarını](../storage/common/storage-account-keys-manage.md) kullanın<br>Hesap, kapsayıcı veya blob yetkilendirmesi için- [paylaşılan erişim Imza anahtarlarını](../storage/common/storage-dotnet-shared-access-signature-part-1.md) kullanın |
 | Veri Işlemleri-denetim |Kullanılabileceğini. Bilgi için [buraya](data-lake-store-diagnostic-logs.md) bakın. |Kullanılabilir |
 | Bekleyen şifreleme verileri |<ul><li>Saydam, sunucu tarafı</li> <ul><li>Hizmet tarafından yönetilen anahtarlarla</li><li>Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtarlarla</li></ul></ul> |<ul><li>Saydam, sunucu tarafı</li> <ul><li>Hizmet tarafından yönetilen anahtarlarla</li><li>Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtarlarla (Önizleme)</li></ul><li>İstemci Tarafında Şifreleme</li></ul> |

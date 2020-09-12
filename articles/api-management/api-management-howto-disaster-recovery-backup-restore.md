@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830266"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458289"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -55,7 +55,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. API Management hizmeti örneğinizi içeren aboneliği kullanarak **Azure Active Directory** (Azure Active Directory > yönet/Uygulama kayıtları) **uygulama kayıtları** sekmesine gidin.
 
     > [!NOTE]
@@ -149,10 +149,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 burada:
 
--   `subscriptionId`-Yedeklemeye çalıştığınız API Management hizmeti tutan aboneliğin KIMLIĞI
--   `resourceGroupName`-Azure API Management hizmetinizin kaynak grubunun adı
--   `serviceName`-oluşturma sırasında belirtilen bir yedeği yaptığınız API Management hizmetin adı
--   `api-version`-ile Değiştir`2018-06-01-preview`
+-   `subscriptionId` -Yedeklemeye çalıştığınız API Management hizmeti tutan aboneliğin KIMLIĞI
+-   `resourceGroupName` -Azure API Management hizmetinizin kaynak grubunun adı
+-   `serviceName` -oluşturma sırasında belirtilen bir yedeği yaptığınız API Management hizmetin adı
+-   `api-version` -ile Değiştir `2018-06-01-preview`
 
 İsteğin gövdesinde, hedef Azure depolama hesabı adı, erişim anahtarı, blob kapsayıcısı adı ve yedekleme adı ' nı belirtin:
 
@@ -198,10 +198,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 burada:
 
--   `subscriptionId`-Bir yedeği geri yüklemekte olduğunuz API Management hizmetini tutan aboneliğin KIMLIĞI
--   `resourceGroupName`-bir yedeği geri yüklemekte olduğunuz Azure API Management hizmetini tutan kaynak grubunun adı
--   `serviceName`-Yükleme sırasında belirtilen API Management hizmetin adı
--   `api-version`-ile Değiştir`2018-06-01-preview`
+-   `subscriptionId` -Bir yedeği geri yüklemekte olduğunuz API Management hizmetini tutan aboneliğin KIMLIĞI
+-   `resourceGroupName` -bir yedeği geri yüklemekte olduğunuz Azure API Management hizmetini tutan kaynak grubunun adı
+-   `serviceName` -Yükleme sırasında belirtilen API Management hizmetin adı
+-   `api-version` -ile Değiştir `2018-06-01-preview`
 
 İsteğin gövdesinde, yedekleme dosyası konumunu belirtin. Diğer bir deyişle, Azure depolama hesabı adı, erişim anahtarı, blob kapsayıcısı adı ve yedekleme adını ekleyin:
 
@@ -234,7 +234,7 @@ Yedekleme/geri yükleme işleminin farklı talimatları için aşağıdaki kayna
 
 -   [Azure API Management hesaplarını çoğaltma](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Logic Apps ile API Management Yedekleme ve Geri Yükleme İşlemlerini Otomatikleştirme](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: yapılandırmayı](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) 
+-   [Azure API Management: yapılandırmayı](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
      yedekleme ve geri yükleme _Stuart tarafından ayrıntılı yaklaşım resmi kılavuzumuzu karşılamıyor ancak ilginç._
 
 [backup an api management service]: #step1
