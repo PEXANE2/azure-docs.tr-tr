@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194072"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005029"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -43,13 +43,13 @@ Aşağıdaki tabloda, Azure AD ile eşitlenen şirket içi AD DS hesapları içi
 
 Bir parola ilkesi, doğrudan Azure AD 'de oluşturulup yönetilen tüm kullanıcı hesaplarına uygulanır. Bu parola ilkesi değiştirilemez, ancak [Azure AD parola koruması için özel yasaklanmış parolalar yapılandırabilirsiniz](tutorial-configure-custom-password-protection.md).
 
-Parola ilkesi, Azure AD Connect kullanılarak şirket içi AD DS ortamından eşitlenen Kullanıcı hesaplarına uygulanmaz.
+Enforcecizpasswordpolicyforpasswordsyncedusers 'ı etkinleştirmediğiniz müddetçe, parola ilkesi, Azure AD Connect kullanılarak şirket içi AD DS ortamından eşitlenen Kullanıcı hesaplarına uygulanmaz.
 
 Aşağıdaki parola ilkesi seçenekleri tanımlanmıştır:
 
 | Özellik | Gereksinimler |
 | --- | --- |
-| İzin verilen karakterler |<ul><li>A – Z</li><li>a-z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \`~ " ( ) ;</li> <li>boş alan</li></ul> |
+| İzin verilen karakterler |<ul><li>A – Z</li><li>a-z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \` ~ " ( ) ;</li> <li>boş alan</li></ul> |
 | Karakterlere izin verilmiyor | Unicode karakterler. |
 | Parola kısıtlamaları |<ul><li>En az 8 karakter ve en fazla 256 karakter.</li><li>Aşağıdakilerden üç tanesi olmalıdır:<ul><li>Küçük harfli karakterler.</li><li>Büyük harfli karakterler.</li><li>Sayılar (0-9).</li><li>Semboller (önceki parola kısıtlamalarına bakın).</li></ul></li></ul> |
 | Parola süre sonu süresi (en fazla parola yaşı) |<ul><li>Varsayılan değer: **90** gün.</li><li>Değer, `Set-MsolPasswordPolicy` Windows PowerShell için Azure Active Directory modülünden cmdlet kullanılarak yapılandırılabilir.</li></ul> |

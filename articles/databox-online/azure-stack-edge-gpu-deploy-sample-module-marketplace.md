@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254653"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659957"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU cihazında Azure Marketi 'nden GPU özellikli IoT modülünü dağıtma
 
@@ -33,9 +33,7 @@ Bu makaledeki GPU örnek modülü,, GPU 'ya karşı CPU için örnek kodu PyTorc
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 - GPU etkin 1 düğümlü Azure Stack Edge cihazına erişirsiniz. Bu cihaz Azure 'da bir kaynakla etkinleştirildi. 
-- Bu cihazda işlem yapılandırdınız. 
-    - Öğreticideki adımları izleyin [: Azure Stack Edge cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
-    - Servis için göndermeden önce 
+- Bu cihazda işlem yapılandırdınız. Öğreticideki adımları izleyin [: Azure Stack Edge cihazınızda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Bir Windows istemcisinde aşağıdaki geliştirme kaynakları:
     - [Visual Studio Code](https://code.visualstudio.com/)  
     - [Visual Studio Code için Azure IoT Edge uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).   

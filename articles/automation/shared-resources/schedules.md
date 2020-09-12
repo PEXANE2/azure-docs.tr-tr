@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda zamanlamaları yönetme
 description: Bu makalede, Azure Otomasyonu 'nda bir zamanlamaya göre nasıl oluşturulacağı ve bunlarla çalışacakları açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/04/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187362"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004621"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
@@ -28,17 +24,17 @@ Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde za
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Zamanlamalara erişmek için kullanılan PowerShell cmdlet 'leri
 
-Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları oluşturur ve yönetir. Bunlar [az modüllerin](modules.md#az-modules)bir parçası olarak sevk ederler. 
+Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları oluşturur ve yönetir. Bunlar [az modüllerin](modules.md#az-modules)bir parçası olarak sevk ederler.
 
-| Cmdlet’ler | Açıklama |
+| Cmdlet’ler | Description |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlama alır. |
-| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Zamanlanan runbook 'ları alır. |
-| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Yeni bir zamanlama oluşturur. |
-| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'u bir zamanlamaya göre ilişkilendirir. |
-| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlamayı kaldırır. |
-| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Varolan bir zamanlamanın özelliklerini ayarlar. |
-| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'un bir zamanlamaya göre ilişkilendirmesini kaldırın. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Bir zamanlama alır. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Zamanlanan runbook 'ları alır. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) |Yeni bir zamanlama oluşturur. |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) |Bir runbook 'u bir zamanlamaya göre ilişkilendirir. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule) |Bir zamanlamayı kaldırır. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) |Varolan bir zamanlamanın özelliklerini ayarlar. |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook) |Bir runbook 'un bir zamanlamaya göre ilişkilendirmesini kaldırın. |
 
 ## <a name="create-a-schedule"></a>Zamanlama Oluştur
 
@@ -49,23 +45,33 @@ Runbook 'larınız için Azure portal veya PowerShell ile yeni bir zamanlama olu
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Azure portal yeni bir zamanlama oluşturun
 
-1. Azure portal Otomasyon hesabınızdan, sol taraftaki bölüm **paylaşılan kaynakları** altında **zamanlamalar** ' ı seçin.
-1. Sayfanın üst kısmında **bir zamanlama Ekle ' yi** seçin.
-1. **Yeni zamanlama** bölmesinde, bir ad girin ve isteğe bağlı olarak yeni zamanlama için bir açıklama girin.
-1. Zamanlamanın bir kez veya tekrardan **birini seçerek bir** kez mi yoksa yeniden oluşturma zamanlamasında mi çalışacağını **seçin.** Bir **kez**seçerseniz, bir başlangıç saati belirtip **Oluştur**' u seçin. **Yinelenen**seçeneğini belirlerseniz, bir başlangıç saati belirtin. **Her**zaman yineleme için, runbook 'un ne sıklıkta yinelenmesini istediğinizi seçin. Saatlik, gün, hafta veya aya göre seçin.
-    1. **Hafta**' yı seçerseniz, haftanın günleri arasından seçim yapmanız için sunulur. İstediğiniz kadar gün seçin. Zamanlamalarınızın ilk çalışması başlangıç zamanından sonra seçilen ilk günde olur. Örneğin, bir hafta sonu zamanlaması seçmek için Cumartesi ve Pazar ' ı seçin.
-    
-       ![Hafta sonu yinelenen zamanlama ayarlanıyor](../media/schedules/week-end-weekly-recurrence.png)
+1. Otomasyon hesabınızdan, sol taraftaki bölmede **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+2. **Zamanlamalar** sayfasında **zamanlama Ekle**' yi seçin.
+3. **Yeni zamanlama** sayfasında, bir ad girin ve isteğe bağlı olarak yeni zamanlama için bir açıklama girin.
 
-    2. **Ay**' yı seçerseniz, farklı seçenekler sunulur. **Aylık yineleme** seçeneği Için, **ay günler** veya **hafta günü**seçeneklerinden birini belirleyin. **Ay günler**' i seçerseniz, istediğiniz kadar gün seçim yapabilmeniz için bir takvim belirir. Geçerli ay içinde gerçekleşmeyen 31 gibi bir tarih seçerseniz, zamanlama çalıştırılmaz. Zamanlamanın son gün üzerinde çalışmasını istiyorsanız, **ayın son gününde Çalıştır**' ın altında **Evet** ' i seçin. **Hafta günleri**' ni seçerseniz, **yineleme her** seçeneği görüntülenir. **Birinci**, **ikinci**, **üçüncü**, **dördüncü**veya **son**' u seçin. Son olarak, tekrarlanacak bir gün seçin.
+    >[!NOTE]
+    >Otomasyon zamanlamaları Şu anda zamanlama adında özel karakterler kullanmayı desteklememektedir.
+    >
 
-       ![Ayın ilk, on beşinci ve son gününde aylık zamanlama](../media/schedules/monthly-first-fifteenth-last.png)
+4. Zamanlamanın bir **kez veya tekrarlı seçerek bir** **kez veya yeniden**oluşup oluşmadığını seçin. Bir **kez**seçerseniz, bir başlangıç saati belirtip **Oluştur**' u seçin. **Yinelenen**seçeneğini belirlerseniz, bir başlangıç saati belirtin. **Her**zaman yineleme için, runbook 'un ne sıklıkta yinelenmesini istediğinizi seçin. Saatlik, gün, hafta veya aya göre seçin.
 
-1. İşiniz bittiğinde **Oluştur**' u seçin.
+    * **Hafta**' yı seçerseniz, haftanın günleri arasından seçim yapmanız için sunulur. İstediğiniz kadar gün seçin. Zamanlamalarınızın ilk çalışması başlangıç zamanından sonra seçilen ilk günde olur. Örneğin, bir hafta sonu zamanlaması seçmek için Cumartesi ve Pazar ' ı seçin.
+
+    ![Hafta sonu yinelenen zamanlama ayarlanıyor](../media/schedules/week-end-weekly-recurrence.png)
+
+    * **Ay**' yı seçerseniz, farklı seçenekler sunulur. **Aylık yineleme** seçeneği Için, **ay günler** veya **hafta günü**seçeneklerinden birini belirleyin. **Ay günler**' i seçerseniz, istediğiniz kadar gün seçim yapabilmeniz için bir takvim belirir. Geçerli ay içinde gerçekleşmeyen 31 gibi bir tarih seçerseniz, zamanlama çalıştırılmaz. Zamanlamanın son gün üzerinde çalışmasını istiyorsanız, **ayın son gününde Çalıştır**' ın altında **Evet** ' i seçin. **Hafta günleri**' ni seçerseniz, **yineleme her** seçeneği görüntülenir. **Birinci**, **ikinci**, **üçüncü**, **dördüncü**veya **son**' u seçin. Son olarak, tekrarlanacak bir gün seçin.
+
+    ![Ayın ilk, on beşinci ve son gününde aylık zamanlama](../media/schedules/monthly-first-fifteenth-last.png)
+
+5. İşiniz bittiğinde **Oluştur**' u seçin.
 
 ### <a name="create-a-new-schedule-with-powershell"></a>PowerShell ile yeni bir zamanlama oluşturma
 
-Zamanlamalar oluşturmak için [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamanın başlangıç saatini ve çalışması gereken sıklığı belirtirsiniz. Aşağıdaki örneklerde birçok farklı zamanlama senaryosunun nasıl oluşturulacağı gösterilmektedir.
+Zamanlamalar oluşturmak için [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) cmdlet 'ini kullanın. Zamanlamanın başlangıç saatini ve çalışması gereken sıklığı belirtirsiniz. Aşağıdaki örneklerde birçok farklı zamanlama senaryosunun nasıl oluşturulacağı gösterilmektedir.
+
+>[!NOTE]
+>Otomasyon zamanlamaları Şu anda zamanlama adında özel karakterler kullanmayı desteklememektedir.
+>
 
 #### <a name="create-a-one-time-schedule"></a>Tek seferlik zamanlama oluşturma
 
@@ -128,7 +134,7 @@ Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelges
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell ile bir runbook 'a zamanlama bağlama
 
-Bir zamanlamayı bağlamak için [register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) cmdlet 'ini kullanın. Parametreler parametresiyle runbook’un parametreleri için değer belirtebilirsiniz. Parametre değerlerini belirtme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../start-runbooks.md).
+Bir zamanlamayı bağlamak için [register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) cmdlet 'ini kullanın. Parametreler parametresiyle runbook’un parametreleri için değer belirtebilirsiniz. Parametre değerlerini belirtme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../start-runbooks.md).
 Aşağıdaki örnek, parametreleri olan Azure Resource Manager cmdlet 'ini kullanarak bir zamanlamayı runbook 'a bağlamayı gösterir.
 
 ```azurepowershell-interactive
@@ -155,7 +161,7 @@ Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm ru
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Azure portal bir zamanlamayı devre dışı bırakma
 
-1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
 1. Ayrıntılar bölmesini açmak için bir zamanlamanın adını seçin.
 1. **Etkin özelliği** **Hayır**olarak değiştirin.
 
@@ -164,7 +170,7 @@ Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm ru
 
 ### <a name="disable-a-schedule-with-powershell"></a>PowerShell ile zamanlamayı devre dışı bırakma
 
-Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, parametre için false belirtin `IsEnabled` .
+Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, parametre için false belirtin `IsEnabled` .
 
 Aşağıdaki örnek, bir Azure Resource Manager cmdlet 'i kullanarak bir runbook için zamanlamanın nasıl devre dışı bırakılacağını gösterir.
 
@@ -181,13 +187,13 @@ Zamanlamalarınızı kaldırmaya hazırsanız Azure portal veya PowerShell kulla
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Azure portal kullanarak bir zamanlamayı kaldırma
 
-1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
-2. Ayrıntılar bölmesini açmak için bir zamanlamanın adına tıklayın.
+1. Otomasyon hesabınızda, sol taraftaki bölmede, **paylaşılan kaynaklar**altında **zamanlamalar** ' ı seçin.
+2. Ayrıntılar bölmesini açmak için bir zamanlamanın adını seçin.
 3. **Sil**'e tıklayın.
 
 ### <a name="remove-a-schedule-with-powershell"></a>PowerShell ile zamanlama kaldırma
 
-`Remove-AzAutomationSchedule`Varolan bir zamanlamayı silmek için cmdlet 'ini aşağıda gösterildiği gibi kullanabilirsiniz. 
+`Remove-AzAutomationSchedule`Varolan bir zamanlamayı silmek için cmdlet 'ini aşağıda gösterildiği gibi kullanabilirsiniz.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"

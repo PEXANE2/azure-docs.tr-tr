@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053176"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004791"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
@@ -34,7 +34,7 @@ Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Li
 uname -r
 ```
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**CIFS-utils paketinin yüklü olduğundan emin olun.**  
@@ -69,7 +69,7 @@ uname -r
 
 * **Azure komut satırı arabirimi 'nin (CLı) en son sürümü.** Azure CLı 'nın nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve işletim sisteminizi seçmek. PowerShell 6 + ' da Azure PowerShell modülünü kullanmayı tercih ederseniz, Azure CLı için aşağıdaki yönergeler sunulmaktadır.
 
-* **Bağlantı noktası 445 ' ün açık olduğundan emin olun**: SMB, TCP bağlantı noktası 445 üzerinden iletişim kurar. güvenlik duvarınızın istemci MAKINESINDEN gelen TCP 445 bağlantı noktalarını engelleyip engellemediğini denetleyin.  **-Resource-group><** değiştirin ve **depolama hesabınızı<>**
+* **Bağlantı noktası 445 ' ün açık olduğundan emin olun**: SMB, TCP bağlantı noktası 445 üzerinden iletişim kurar. güvenlik duvarınızın istemci MAKINESINDEN gelen TCP 445 bağlantı noktalarını engelleyip engellemediğini denetleyin.  `<your-resource-group>`Öğesini değiştirin ve `<your-storage-account>` sonra aşağıdaki betiği çalıştırın:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -98,7 +98,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 
 İsterseniz aynı Azure dosya paylaşımının birden çok bağlama noktasına bağlayabilirsiniz.
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure dosya paylaşımından isteğe bağlı olarak bağlama`mount`
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure dosya paylaşımından isteğe bağlı olarak bağlama `mount`
 1. **Bağlama noktası için bir klasör oluşturun**: `<your-resource-group>` , `<your-storage-account>` , ve ile `<your-file-share>` ortamınıza uygun bilgileri değiştirin:
 
     ```bash
@@ -114,6 +114,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 1. **Azure dosya paylaşımından bağlama için Mount komutunu kullanın**. Aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. `uid` `gid` Bağlama IÇIN Kullanıcı kimliğini ve grup kimliğini ayarlamak için ve bağlama seçeneklerini kullanabilirsiniz. Ayrıca, `dir_mode` `file_mode` istediğiniz gibi özel izinleri ayarlamak için ve kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) . 
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -133,7 +134,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 
 Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPath` paylaşımını çıkarmak için kullanabilirsiniz.
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>İle Azure dosya paylaşımının kalıcı bir bağlama noktası oluşturun`/etc/fstab`
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>İle Azure dosya paylaşımının kalıcı bir bağlama noktası oluşturun `/etc/fstab`
 1. **Bağlama noktası için bir klasör oluşturun**: bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur,, ve ile `<your-resource-group>` `<your-storage-account>` `<your-file-share>` ortamınıza uygun bilgileri alır:
 
     ```bash
@@ -176,6 +177,7 @@ Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPat
 1. Aşağıdaki **satırı ' ye `/etc/fstab` eklemek için aşağıdaki komutu kullanın **: aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. `uid` `gid` Bağlama IÇIN Kullanıcı kimliğini ve grup kimliğini ayarlamak için ve bağlama seçeneklerini kullanabilirsiniz. Ayrıca, `dir_mode` `file_mode` istediğiniz gibi özel izinleri ayarlamak için ve kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \

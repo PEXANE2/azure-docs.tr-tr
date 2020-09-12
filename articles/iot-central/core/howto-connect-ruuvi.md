@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758944"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016767"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Azure IoT Central uygulamanıza bir RuuviTag algılayıcısı bağlama
 
-*Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
+*Bu makale, çözüm oluşturucuları için geçerlidir.*
 
 Bu makalede, bir çözüm Oluşturucusu olarak, bir RuuviTag algılayıcısı Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklanmaktadır.
 
@@ -46,7 +46,7 @@ Azure IoT Central uygulama örneğinize bir RuuviTag algılayıcısı eklemek i�
 Bir RuuviTag cihaz şablonu eklemek için:
 
 1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni**: ![ yeni cihaz şablonu oluştur ](./media/howto-connect-ruuvi/devicetemplate-new.png) sayfası, ***özel şablon oluşturma*** veya ***önceden yapılandırılmış bir cihaz şablonu kullanma*** seçeneği sunar.
-1. Aşağıda gösterildiği gibi önceden yapılandırılmış cihaz şablonları listesinden RuuviTag cihaz şablonunu seçin: ![ RuuviTag cihaz şablonunu seçin](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Aşağıda gösterildiği gibi önceden yapılandırılmış cihaz şablonları listesinden RuuviTag cihaz şablonunu seçin:  ![ RuuviTag cihaz şablonunu seçin](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
 1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** .
 1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
 
@@ -69,10 +69,10 @@ Fiziksel bir RuuviTag cihazınız yoksa, Azure IoT Central uygulamanızda test i
 Benzetimli RuuviTag oluşturmak için:
 
 1. **Cihaz > RuuviTag**' ı seçin.
-1. **+ Yeni**seçeneğini belirleyin.
+1. **+ Yeni** seçeneğini belirleyin.
 1. Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**belirtin.  
 1. **Benzetimli** ayarı etkinleştirin.
-1. **Oluştur**'u seçin.  
+1. **Oluştur**’u seçin.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

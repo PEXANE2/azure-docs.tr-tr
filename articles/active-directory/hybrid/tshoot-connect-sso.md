@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355922"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016274"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz çoklu oturum açma sorunlarını giderme
 
@@ -29,7 +29,7 @@ Bu makale, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma (sorun
 - Birkaç durumda, sorunsuz SSO 'nun etkinleştirilmesi 30 dakikaya kadar sürebilir.
 - Kiracınızda sorunsuz SSO 'yu devre dışı bırakıp yeniden etkinleştirirseniz, kullanıcılar önbelleğe alınmış Kerberos biletleri, genellikle 10 saat için geçerli olan ve süresi dolana kadar çoklu oturum açma deneyimini almaz.
 - Sorunsuz SSO başarılı olursa Kullanıcı Oturumumu **açık tut**seçeneğini belirleme fırsatına sahip değildir. Bu davranış nedeniyle, [SharePoint ve OneDrive eşleme senaryoları](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) çalışmaz.
-- 16.0.8730. xxxx ve üzeri sürümleriyle Office 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. Diğer sürümler desteklenmez; Bu sürümlerde, kullanıcılar, oturum açmak için Kullanıcı adlarını girer, ancak parolalarını girmeyecektir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
+- 16.0.8730. xxxx ve üzeri sürümleriyle birlikte Microsoft 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. Diğer sürümler desteklenmez; Bu sürümlerde, kullanıcılar, oturum açmak için Kullanıcı adlarını girer, ancak parolalarını girmeyecektir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
 - Sorunsuz SSO, Firefox 'ta özel göz atma modunda çalışmaz.
 - Gelişmiş Korumalı Mod açıkken sorunsuz SSO Internet Explorer 'da çalışmaz.
 - Sorunsuz SSO, iOS ve Android 'de mobil tarayıcılarda çalışmaz.
@@ -74,9 +74,9 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 Sorunsuz SSO sorunlarını gidermek için aşağıdaki denetim listesini kullanın:
 
 - Azure AD Connect 'de sorunsuz SSO özelliğinin etkinleştirildiğinden emin olun. Özelliği etkinleştiremiyorum (örneğin, engellenen bir bağlantı noktası nedeniyle), tüm [önkoşulların](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) sağlandığından emin olun.
-- Kiracınızda [Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO 'yu etkinleştirdiyseniz, sorunun Azure AD JOIN ile olmadığından emin olun. Cihaz hem Azure AD hem de etki alanına katılmış olarak kayıtlıysa, Azure AD JOIN 'ten gelen SSO sorunsuz SSO 'dan önceliklidir. Azure AD JOIN 'ten SSO ile Kullanıcı, "Windows 'a bağlı" yazan bir oturum açma kutucuğu görür.
+- Kiracınızda [Azure AD JOIN](../devices/overview.md) ve sorunsuz SSO 'yu etkinleştirdiyseniz, sorunun Azure AD JOIN ile olmadığından emin olun. Cihaz hem Azure AD hem de etki alanına katılmış olarak kayıtlıysa, Azure AD JOIN 'ten gelen SSO sorunsuz SSO 'dan önceliklidir. Azure AD JOIN 'ten SSO ile Kullanıcı, "Windows 'a bağlı" yazan bir oturum açma kutucuğu görür.
 - Azure AD URL 'sinin ( `https://autologon.microsoftazuread-sso.com` ) Kullanıcının Intranet bölgesi ayarlarının bir parçası olduğundan emin olun.
-- Şirket cihazının Active Directory etki alanına katılmış olduğundan emin olun. Sorunsuz SSO 'nun çalışması için cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) _olması gerekmez_ .
+- Şirket cihazının Active Directory etki alanına katılmış olduğundan emin olun. Sorunsuz SSO 'nun çalışması için cihazın [Azure AD 'ye katılmış](../devices/overview.md) _olması gerekmez_ .
 - Kullanıcının cihazda Active Directory bir etki alanı hesabı aracılığıyla oturum açtığından emin olun.
 - Kullanıcı hesabının, sorunsuz SSO 'nun ayarlandığı bir Active Directory ormanına ait olduğundan emin olun.
 - Cihazın kurumsal ağa bağlı olduğundan emin olun.
@@ -106,7 +106,7 @@ Sorun giderme konusunda yardım olmadıysa, kiracınızdaki özelliği el ile s�
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1. Adım: sorunsuz SSO PowerShell modülünü Içeri aktarma
 
-1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+1. İlk olarak, [Azure AD PowerShell](/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
 2. `%programfiles%\Microsoft Azure Active Directory Connect`Klasöre gidin.
 3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
 

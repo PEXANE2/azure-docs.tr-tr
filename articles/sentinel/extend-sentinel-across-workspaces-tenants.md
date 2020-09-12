@@ -1,6 +1,6 @@
 ---
 title: Çalışma alanları ve kiracılar arasında Azure Sentinel 'i genişletme | Microsoft Docs
-description: MSSP hizmet sağlayıcıları için Azure Sentinel 'e birden çok kiracı ile çalışma.
+description: Azure Sentinel 'in analiz yeteneklerini çalışma alanları ve kiracılar arasında genişletme.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9e0fe46e0a7382c0adcfa1f1f781f282e9e77942
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519022"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019334"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -94,6 +94,13 @@ Bir işlev, yaygın olarak kullanılan bir UNION 'yi de basitleştirir. Örneği
 
 Sonra, ile başlayarak her iki çalışma alanı arasında bir sorgu yazabilirsiniz `unionSecurityEvent | where ...` .
 
+#### <a name="scheduled-alerts"></a>Zamanlanan uyarılar
+
+Çapraz çalışma alanı sorguları artık analiz kurallarında zamanlanan uyarılara dahil edilebilir ve aşağıdaki sınırlamalara tabidir:
+
+- 10 ' a kadar çalışma alanı tek bir sorguya dahil edilebilir.
+- Sorguda başvurulan her çalışma alanına Azure Sentinel 'in dağıtılması gerekir.
+
 > [!NOTE] 
 > Aynı sorgudaki birden çok çalışma alanını sorgulamak performansı etkileyebilir ve bu nedenle yalnızca mantık bu işlevi gerektirdiğinde önerilir.
 
@@ -121,13 +128,6 @@ Azure Sentinel, başlamanızı sağlamak için tasarlanan önceden yüklenmiş s
 Birden çok Azure Sentinel çalışma alanını yapılandırmak ve yönetmek için Azure Sentinel yönetim API 'sinin kullanımını otomatikleştirmeniz gerekir. Uyarı kuralları, arama sorguları, çalışma kitapları ve PlayBook 'lar dahil olmak üzere Azure Sentinel kaynaklarının dağıtımını otomatikleştirme hakkında daha fazla bilgi için bkz. [Azure Sentinel: API 'ler, tümleştirme ve yönetim Otomasyonu](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
 
 Ayrıca bkz. Azure [Sentinel 'ı kod olarak dağıtma ve yönetme](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) [ve Azure](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) ve özel bir GitHub deposundan kaynak dağıtma ve yapılandırma için birleştirilmiş, topluluk tarafından katkıda bulunulan bir yöntem. 
-
-
-## <a name="whats-not-supported-across-workspaces"></a>Çalışma alanları arasında ne desteklenmez?
-
-Çalışma alanları arasında aşağıdaki özellikler desteklenmez:
-
-- Zamanlanmış bir uyarı kuralı, bir çalışma alanı sorgusu kullanılarak çalışma alanları arasında çalıştırılamaz.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure açık Thouse kullanarak kiracılar genelinde çalışma alanlarını yönetme
 

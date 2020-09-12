@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-javascript
 - devx-track-csharp
-ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e1de8b5c35c2f62c65b2bdd4751df86127010ad
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017694"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015135"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -65,7 +65,7 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
 > [!NOTE]
 > Ayrıntılı bilgi için bkz. [izinler](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure IoT Hub, bir belirteci paylaşılan erişim ilkeleri ve kimlik kayıt defteri güvenlik kimlik bilgileri ile doğrulayarak uç noktalara erişim izni verir.
 
@@ -361,7 +361,12 @@ Desteklenen sertifikalar şunlardır:
 
 Bir cihaz, kimlik doğrulaması için bir X. 509.440 sertifikası veya güvenlik belirteci kullanabilir, ancak ikisini birden kullanamazsınız.
 
-Sertifika yetkilisini kullanarak kimlik doğrulaması hakkında daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](iot-hub-x509ca-overview.md).
+X. 509.440 CA kimlik doğrulamasını kullanan cihazlarda aşağıdaki işlev desteklenmez:
+
+* HTTPS, WebSockets üzerinden MQTT ve WebSockets protokolleri üzerinden AMQP.
+* Dosya karşıya yükleme (tüm protokoller).
+
+Sertifika yetkilisini kullanarak kimlik doğrulaması hakkında daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](iot-hub-x509ca-overview.md). IoT Hub 'ınıza bir sertifika yetkilisini karşıya yükleme ve doğrulama hakkında daha fazla bilgi için bkz. [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](iot-hub-security-x509-get-started.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Bir cihaza bir X. 509.440 sertifikası kaydetme
 

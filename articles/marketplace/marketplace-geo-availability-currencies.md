@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826778"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651009"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -20,7 +20,7 @@ ms.locfileid: "88826778"
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/bölge adı               |   ISO-2   |   Para Birimi   |
+|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -50,14 +50,14 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Kanada                              | CA        | CAD          |
 | Cayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
-| Arasında\**                            | CN        | YOK          |
+| Arasında\**                            | CN        | Yok          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
 | Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          |
 | Hırvatistan                             | HR        | EUR          |
 | Curaçao                             | FIILI        | USD          |
 | Kıbrıs                              | CY        | EUR          |
-| Çek Cumhuriyeti                      | CZ        | EUR          |
+| Czechia                      | CZ        | EUR          |
 | Danimarka                             | DK        | DKK          |
 | Dominik Cumhuriyeti                  | DO        | USD          |
 | Ekvador                             | EC        | USD          |
@@ -99,7 +99,6 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Litvanya                           | LT        | EUR          |
 | Lüksemburg                          | LU        | EUR          |
 | Makao ÖİB                           | MO        | USD          |
-| Kuzey Makedonya                     | MK        | USD          |
 | Malezya                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -115,6 +114,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Yeni Zelanda                         | NZ        | NZD          |
 | Nikaragua                           | NI        | USD          |
 | Nijerya                             | NG        | USD          |
+| Kuzey Makedonya                     | MK        | USD          |
 | Norveç                              | NO        | NOK          |
 | Umman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
@@ -166,7 +166,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Zimbabve                            | ZW        | USD          |
 |   |   |   |
 
-\* Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
+\* Brezilya 'daki müşteriler için, bulut çözümü sağlayıcıları (CSP) aracılığıyla commcercial marketi USD kullanır.
 
 \** Yalnızca ücretsiz ve KLG VM görüntüleri.
 
@@ -177,14 +177,16 @@ Tüm ücretli teklif türleri için ABD Doları cinsinden fiyatları girme veya 
 Yayımlamadan önce herhangi bir fiyatı ayarlamak için, fiyatlandırma elektronik tablosunu dışarı aktarın, değiştirin ve değişikliklerle karşıya yükleyin.
 
 > [!NOTE]
-> Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez. Fiyatları yayımlamadan önce fiyatların doğru olduğundan emin olmak için, fiyatlandırma elektronik tablosunu dışarı aktarın ve her pazardaki fiyatları gözden geçirin.
+> Planınızdaki bir pazar bedeli yayımlandıktan sonra değiştirilemez. Fiyatları yayımlamadan önce fiyatların doğru olduğundan emin olmak için, fiyatlandırma elektronik tablosunu dışarı aktarın ve her pazardaki fiyatları gözden geçirin.
 
 Teklifin fiyatı, her zaman müşterilerine yerel para birimiyle gösterilir. Iş Ortağı Merkezi 'nde seçtiğiniz fiyat, Iş Ortağı Merkezi 'nde fiyatı kaydettiğiniz zaman Döviz kura göre yerel müşteri para birimine dönüştürülür. Teklifinizi yeniden yayımlaymadığınız takdirde, çevrimiçi mağazalardaki müşterilere gösterilen fiyat değişmez.
 
 Microsoft, müşterilerden gelen ödemeleri yerel para birimiyle alır ve sizi yerel para biriminizde ödemez. Microsoft, satın alma gününün Döviz ücretini kullanarak müşterinin yerel para birimini yerel para birimine dönüştürür.
 
 > [!NOTE]
-> Microsoft, Microsoft hazine Exchange fiyatını kullanarak teklif fiyatlarını dönüştürür.
+> Microsoft, Microsoft hazine Exchange fiyatlarını kullanarak teklif fiyatlarını dönüştürür.
+
+[![Para birimi dönüştürme akışı.](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>API 'ye göre para birimi bilgilerini alma
 

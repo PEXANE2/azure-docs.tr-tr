@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6be2805cab1bcaadb7878be69399e14ffe59d7b0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563953"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659737"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
 
@@ -48,7 +48,7 @@ Cloud App Security dağıtılırsa ve verileriniz geri alıyorsa, uyarı veriler
 
 1. **Değişiklikleri Uygula**' ya tıklayın.
 
-1. Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
+1. Azure Defender 'daki uyarıların (eski adıyla Azure Güvenlik Merkezi) Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
 
 1. Log Analytics Cloud App Security uyarılar için ilgili şemayı kullanmak için, `SecurityAlert` sorgu penceresine yazın. Cloud Discovery logs şeması için, yazın `McasShadowItReporting` .
 

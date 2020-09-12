@@ -1,6 +1,6 @@
 ---
 title: Kuruluşlarımı Hesabım portalından yönetme-Azure AD
-description: Hesap portalımın kuruluşlar sayfasında iş veya okul hesabınıza bağlı kuruluşları görüntüleme ve bırakma.
+description: Hesabım portalının kuruluşlar sayfasından erişiminiz olan kuruluşları görüntüleme ve bırakma.
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798185"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005080"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Kuruluşlar sayfasından bağlı kuruluşları yönetin
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Erişim sahibi olduğunuz kuruluşları hesap portalından yönetme
 
-**Hesabım** portalının **kuruluşlar** sayfası, iş veya okul hesabınıza bağlı kuruluşları (genellikle kuruluşunuzun adı) yönetmenize yardımcı olur. **Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
+**Hesabım** portalının **organizasyonlar** sayfası, erişimi olan kuruluşları (genellikle kuruluşunuzun adı) yönetmenize yardımcı olur. **Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
 
 - **Ana kuruluş.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ana kuruluşunuzu bırakamazsınız.
 
@@ -30,7 +30,7 @@ ms.locfileid: "88798185"
 - **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
 >[!Important]
->Bu makale, bir iş veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
+>Bu makale, bir iş veya okul hesabı tarafından erişilen kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
@@ -44,7 +44,7 @@ ms.locfileid: "88798185"
 
     ![Kuruluşlar sayfası](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Diğer ilişkili kurumlarınızı gözden geçirerek hesabınıza bağlı tüm kuruluşları tanıdığınızdan emin olun.
+4. Erişiminiz olan tüm kuruluşları tanıdığınızdan emin olmak için diğer kurumlarınızı gözden geçirin.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
 

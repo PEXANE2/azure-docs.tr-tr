@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6b40130fb1d965abf76ba9ed1f6ebd45d94c8e01
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144847"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651018"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -23,7 +23,7 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Açıklama |
+    | Eğitim yöntemi | Description |
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için genel bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmanız. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Bir çalıştırma yapılandırması, eğitim betiğinizi ve bir işlem hedefini (eğitim ortamı) alabilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
@@ -42,13 +42,13 @@ Bu eğitim yöntemlerinin her biri, eğitim için farklı türlerde işlem kayna
 
 Python için Azure Machine Learning SDK, Azure Machine Learning ile makine öğrenimi iş akışları oluşturmanıza ve çalıştırmanıza olanak tanır. Etkileşimli bir Python oturumundan, Jupyıter not defterlerinden, Visual Studio Code veya başka bir IDE 'den hizmetle etkileşime geçebilirsiniz.
 
-* [Python için Azure Machine Learning SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [SDK’yı yükleme/güncelleştirme](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Python için Azure Machine Learning SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [SDK’yı yükleme/güncelleştirme](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning için bir geliştirme ortamı yapılandırma](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Yapılandırmayı Çalıştır
 
-Azure Machine Learning olan bir genel eğitim işi [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)kullanılarak tanımlanabilir. Çalışma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
+Azure Machine Learning olan bir genel eğitim işi [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)kullanılarak tanımlanabilir. Çalışma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
 
 Yerel bilgisayarınız için bir çalıştırma yapılandırması ile başlayabilir ve ardından gerektiğinde bulut tabanlı bir işlem hedefi için birine geçiş yapabilirsiniz. İşlem hedefini değiştirirken yalnızca kullandığınız çalıştırma yapılandırmasını değiştirirsiniz. Bir çalıştırma Ayrıca, eğitim işiyle ilgili olarak girişler, çıktılar ve Günlükler gibi bilgileri de günlüğe kaydeder.
 
@@ -123,7 +123,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 * [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
 * [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı
 
 Tasarımcı, Web tarayıcınızda bir sürükle ve bırak arabirimini kullanarak modelleri eğmenize imkan tanır.
 

@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381187"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014812"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Eşitleme’yi ve Azure Active Directory Eşitleme’yi yükseltme
-Azure AD Connect, size Azure AD ve Office 365 ile şirket içi dizininize bağlanmak için en iyi yolu sunmaktadır. Bu araçlar artık kullanım dışı olduğundan ve 13 Nisan 2017 itibariyle artık desteklenmediğinden, Windows Azure Active Directory Sync (DirSync) veya Azure AD Eşitleme Azure AD Connect yükseltmek için harika bir süredir.
+Azure AD Connect, şirket içi dizininizi Azure AD ve Microsoft 365 bağlamak için en iyi yoldur. Bu araçlar artık kullanım dışı olduğundan ve 13 Nisan 2017 itibariyle artık desteklenmediğinden, Windows Azure Active Directory Sync (DirSync) veya Azure AD Eşitleme Azure AD Connect yükseltmek için harika bir süredir.
 
-Kullanım dışı bırakılan iki kimlik eşitleme aracı, tek orman müşterileri (DirSync) ve çok ormanlı ve diğer gelişmiş müşteriler (Azure AD Eşitleme) için sunulmuştur. Bu eski araçlar, tüm senaryolar için kullanılabilen tek bir çözümle değiştirilmiştir: Azure AD Connect. Yeni senaryolar, özellik geliştirmeleri ve yeni senaryolar için destek sunar. Şirket içi kimlik verilerinizi Azure AD ve Office 365 ' e eşitlemeye devam edebilmek için Azure AD Connect yükseltmeniz önemle önerilir. Microsoft bu eski sürümlerin 31 Aralık 2017 ' den sonra çalışmasını garanti etmez.
+Kullanım dışı bırakılan iki kimlik eşitleme aracı, tek orman müşterileri (DirSync) ve çok ormanlı ve diğer gelişmiş müşteriler (Azure AD Eşitleme) için sunulmuştur. Bu eski araçlar, tüm senaryolar için kullanılabilen tek bir çözümle değiştirilmiştir: Azure AD Connect. Yeni senaryolar, özellik geliştirmeleri ve yeni senaryolar için destek sunar. Şirket içi kimlik verilerinizi Azure AD ve Microsoft 365 eşitlemeye devam edebilmek için, Azure AD Connect yükseltmeniz önemle önerilir. Microsoft bu eski sürümlerin 31 Aralık 2017 ' den sonra çalışmasını garanti etmez.
 
 DirSync 'in son sürümü 2014 Temmuz 'da yayımlanmıştır ve Azure AD Eşitleme son sürümü 2015 Mayıs ayında yayımlanmıştır.
 
@@ -56,7 +56,7 @@ DirSync 'ten Azure AD Connect yerinde yükseltme yapma hakkında bilgi almak ist
 >
 
 ## <a name="faq"></a>SSS
-**S: Azure ekibinden bir e-posta bildirimi aldım ve/veya Office 365 İleti merkezinden bir ileti aldım, ancak Bağlan kullanıyorum.**  
+**S: Azure ekibinden bir e-posta bildirimi ve/veya Microsoft 365 İleti merkezinden bir ileti aldım, ancak Bağlan kullanıyorum.**  
 Bildirim, 1,0 derleme numarası ile Azure AD Connect kullanılarak müşterilere de \* gönderilmiştir. 0 (1,1 öncesi sürüm kullanılarak). Microsoft, müşterilerin Azure AD Connect sürümleriyle güncel kalmasını öneriyor. 1,1 ' de sunulan [otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) özelliği, her zaman yeni bir Azure AD Connect sürümünün yüklü olmasını kolaylaştırır.
 
 **S: 2017 Nisan ' de DirSync/Azure AD Eşitleme çalışmayı durduracak mi?**  

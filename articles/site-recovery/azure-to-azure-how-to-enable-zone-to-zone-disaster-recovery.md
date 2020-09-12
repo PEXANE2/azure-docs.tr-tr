@@ -5,16 +5,16 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021656"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007800"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Kullanılabilirlik alanları arasında Azure VM olağanüstü durum kurtarmayı etkinleştirme
 
 Bu makalede, Azure sanal makinelerini aynı Azure bölgesindeki bir kullanılabilirlik bölgesinden diğerine çoğaltma, yük devretme ve yeniden çalışma işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -27,6 +27,8 @@ Site Recovery hizmeti, planlı ve plansız kesintiler sırasında iş uygulamala
 
 Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her bölgede bir veya daha fazla veri merkezi bulunur. 
 
+VM 'Leri farklı bir bölgedeki bir kullanılabilirlik bölgesine taşımak istiyorsanız, [Bu makaleyi gözden geçirin](../resource-mover/move-region-availability-zone.md).
+
 ## <a name="using-availability-zones-for-disaster-recovery"></a>Olağanüstü durum kurtarma için Kullanılabilirlik Alanları kullanma 
 
 Genellikle, Kullanılabilirlik Alanları yüksek kullanılabilirliğe sahip bir yapılandırmada VM dağıtmak için kullanılır. Doğal olağanüstü durum durumunda olağanüstü durum kurtarma çözümü olarak kullanılmak üzere birbirlerine çok yakın olabilirler.
@@ -37,7 +39,7 @@ Ancak bazı senaryolarda Kullanılabilirlik Alanları olağanüstü durum kurtar
 
 - Diğer birçok müşteri, karmaşık ağ altyapısına sahiptir ve ilişkili maliyet ve karmaşıklık nedeniyle ikincil bir bölgede yeniden oluşturmak istemiyor. Bölgeden bölgeye olağanüstü durum kurtarma, Kullanılabilirlik Alanları yapılandırmanın çok daha basit hale getirilmesi sırasında gereksiz ağ kavramlarından yararlandığından karmaşıklığı azaltır. Bu tür müşteriler basitlik ve olağanüstü durum kurtarma için Kullanılabilirlik Alanları da kullanabilir.
 
-- Aynı yasal vergi dairesi içinde eşleştirilmiş bir bölgesi olmayan bazı bölgelerde (örneğin, Güneydoğu Asya), bölge olağanüstü durum kurtarma çözümü, uygulamalarınız ve verileriniz platformlar arası sınırlar içermediğinden yasal uyumluluk sağlanmasına yardımcı olduğundan olağanüstü durum kurtarma çözümü olarak görev yapabilir. 
+- Aynı yasal vergi dairesi içinde eşleştirilmiş bir bölgesi olmayan bazı bölgelerde (örneğin, Güneydoğu Asya), bölge olağanüstü durum kurtarma çözümü, uygulamalarınız ve verileriniz ulusal sınırlar arasında hareket etmediğinden yasal uyumluluk sağlanmasına yardımcı olduğundan olağanüstü durum kurtarma çözümü olarak görev yapabilir. 
 
 - Bölgeden bölgeye olağanüstü durum kurtarma, Azure ile Azure olağanüstü durum kurtarma ile karşılaştırıldığında verilerin daha kısa uzaklıklarla çoğaltılmasını sağlar ve bu nedenle, daha düşük gecikme süresi ve sonuç olarak daha düşük RPO görebilirsiniz.
 
@@ -65,12 +67,12 @@ Yukarıda belirtildiği gibi, bölgeye karşı bölge olağanüstü durum kurtar
 
 Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan önce, sanal makinede etkinleştirilen diğer özelliklerin bölge olağanüstü durum kurtarma ile birlikte kullanılabildiğinden emin olmak önemlidir.
 
-|Özellik  | Support bildirisi  |
+|Öne çıkan özelliği  | Support bildirisi  |
 |---------|---------|
 |Klasik VM'ler   |     Desteklenmez    |
 |ARM VM 'Leri    |    Desteklenir    |
-|Azure disk şifrelemesi v1 (AAD ile çift geçiş)     |     Desteklenir |
-|Azure disk şifrelemesi v2 (AAD olmadan tek pass)    |    Desteklenir    |
+|Azure disk şifrelemesi v1 (Azure Active Directory (Azure AD) ile ikili geçiş)     |     Desteklenir   |
+|Azure disk şifrelemesi v2 (Azure AD olmadan tek pass)    |    Desteklenir    |
 |Yönetilmeyen diskler    |    Desteklenmez    |
 |Yönetilen diskler    |    Desteklenir    |
 |Müşteri tarafından yönetilen anahtarlar    |    Desteklenir    |
@@ -82,7 +84,7 @@ Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan �
 
 ### <a name="log-in"></a>Oturum açma
 
-Azure portal oturum açın.
+Azure portalında oturum açın.
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Azure sanal makinesi için çoğaltmayı etkinleştirme
 
@@ -119,7 +121,7 @@ Site Recovery Team ve Azure kapasite yönetimi ekibi, yeterli altyapı kapasites
 Bölgeden bölgeye olağanüstü durum kurtarma, Azure ile Azure olağanüstü durum kurtarma ile aynı işletim sistemlerini destekler. [Buradaki](./azure-to-azure-support-matrix.md)destek matrisine bakın.
 
 **5. kaynak ve hedef kaynak grupları aynı olabilir mi?**
-Hayır, farklı bir kaynak grubuna yük devretmeli.
+Hayır, farklı bir kaynak grubuna yük devretme yapmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607334"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007766"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -46,7 +46,7 @@ Daha fazla bilgi edinmek için [Market üzerinden satış nedeninin](https://par
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için bir listeleme ücreti var mı?
 
-Hayır, ticari Market 'teki teklifleri yayımlama maliyeti yoktur. Satışın küçük bir yüzdesini, işlem ücreti olarak tutduk ve Market 'e, platform yeniliklerine ve ticari Market işlemlerine yatırım yaptık. Bu işlem ücreti, [Azure IP ortak satış](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized teklifleri için azaltılır.
+Hayır, ticari Market 'teki teklifleri yayımlama maliyeti yoktur. Satışın küçük bir yüzdesini, işlem ücreti olarak tutduk ve Market 'e, platform yeniliklerine ve ticari Market işlemlerine yatırım yaptık. Bu işlem ücreti, [Azure IP ortak satış](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized teklifleri ve tek bir Microsoft ekipleri uygulamasıyla veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ile Ilişkili olan appsource 'Ta ücretli SaaS teklifleri için azaltılır.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'te bir yayımcı olmak Nasıl yaparım? Kaydolmak ister misiniz?
 
@@ -320,7 +320,7 @@ Başlamak için bazı kaynaklar aşağıda verilmiştir:
 Şu kaynakları öneriyoruz:
 
 - Microsoft Iş ortağı topluluğuna katmak için bkz. [Microsoft AppSource ve Azure Marketi](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222).
-- [Microsoft Commercial Market Insiders programı](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)hakkında bilgi edinin ve bunları birleştirin.
+- [Microsoft Commercial Market Insiders programı](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743)hakkında bilgi edinin ve bunları birleştirin.
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Iş Ortağı Merkezi hakkında nereden daha fazla bilgi edinebilirim?
 

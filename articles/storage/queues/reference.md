@@ -1,19 +1,19 @@
 ---
 title: Azure Kuyruk depolama başvurusu
-description: Azure depolama API başvurusunu, Benioku dosyalarını ve istemci kitaplığı paketlerini bulun.
+description: Azure kuyruk depolama API 'SI başvurusunu, Benioku dosyalarını ve istemci kitaplığı paketlerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976668"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014965"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Kuyruk depolama başvurusu
 
@@ -50,7 +50,7 @@ Aşağıdaki tabloda, Azure kuyruk depolaması Java API 'Leri için başvuru ve 
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Java için Azure depolama kuyruğu istemci kitaplığı](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-java) |
+| 12. x | [Java için Azure depolama kuyruğu istemci kitaplığı](/java/api/overview/azure/storage-queue-readme) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-java) |
 | 8.x | [com. Microsoft. Azure. Storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Hızlı başlangıç: Java V8 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
 ### <a name="storage-management"></a>Depolama yönetimi
@@ -67,8 +67,8 @@ Aşağıdaki tabloda, Azure kuyruk depolama Python API 'Leri için başvuru ve �
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/) | [Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python 'dan Azure kuyruk depolama v 2.1 kullanma](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/) | [Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python 'dan Azure kuyruk depolama v 2.1 kullanma](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 
@@ -77,7 +77,7 @@ Aşağıdaki tabloda, Azure kuyruk depolama JavaScript API 'Leri için başvuru 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [JavaScript için Azure depolama kuyruğu istemci kitaplığı](/javascript/api/overview/azure/storage-queue-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue) | [Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Node.jskuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Node.jskuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın ](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -89,7 +89,7 @@ Aşağıdaki tabloda, Azure kuyruk depolama REST API 'Leri için başvuru ve ör
 
 ### <a name="other-rest-reference"></a>Diğer REST başvurusu
 
-- [Azure Storage içeri aktarma-dışarı aktarma REST API](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
+- [Azure Storage içeri aktarma-dışarı aktarma REST API ](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
 
 ## <a name="other-languages-and-platforms"></a>Diğer diller ve platformlar
 
@@ -107,8 +107,9 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 
 | Sürüm | Platform |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x@@  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

@@ -1,20 +1,20 @@
 ---
-title: Azure dosyaları başvurusu
-description: Azure depolama API başvurusunu, Benioku dosyalarını ve istemci kitaplığı paketlerini bulun.
+title: Azure Dosyalar başvurusu
+description: Azure dosyaları API başvurusunu, Benioku dosyalarını ve istemci kitaplığı paketlerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527855"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014693"
 ---
-# <a name="azure-files-reference"></a>Azure dosyaları başvurusu
+# <a name="azure-files-reference"></a>Azure Dosyalar başvurusu
 
 Azure dosyaları API başvurusunu, kitaplık paketlerini, Benioku dosyalarını ve Başlarken makalelerini bulun.
 
@@ -22,7 +22,7 @@ Azure dosyaları API başvurusunu, kitaplık paketlerini, Benioku dosyalarını 
 
 Aşağıdaki tabloda, Azure dosyaları .NET API 'Leri için başvuru ve örnek belgeler listelenmektedir.
 
-|  Sürüm  | Başvuru belgeleri | Paket | Hızlı başlangıç |
+|  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [.NET için Azure dosyaları istemci kitaplığı V12](/dotnet/api/overview/azure/storage.files.shares-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11. x | [Microsoft. Azure. Storage. File ad alanı](/dotnet/api/microsoft.azure.storage.file) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-dotnet-how-to-use-files) |
@@ -47,7 +47,7 @@ Aşağıdaki tabloda Azure Storage veri taşıma .NET API 'Leri için başvuru b
 
 Aşağıdaki tabloda, Azure dosyaları Java API 'Leri için başvuru ve örnek belgeler listelenmektedir.
 
-|  Sürüm  | Başvuru belgeleri | Paket | Hızlı başlangıç |
+|  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Java için Azure dosyaları istemci kitaplığı](/java/api/overview/azure/storage-file-share-readme) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 8.x | [com. Microsoft. Azure. Storage. File](/java/api/com.microsoft.azure.storage.file) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-java-how-to-use-file-storage) |
@@ -64,16 +64,16 @@ Aşağıdaki tabloda, Azure Depolama Yönetimi Java API 'Leri için başvuru bel
 
 Aşağıdaki tabloda, Azure dosyaları Python API 'Leri için başvuru ve örnek belgeler listelenmektedir.
 
-|  Sürüm  | Başvuru belgeleri | Paket | Hızlı başlangıç |
+|  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Örnekler](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Örnekler](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 
 Aşağıdaki tabloda, Azure dosyaları JavaScript API 'Leri için başvuru ve örnek belgeler listelenmektedir.
 
-|  Sürüm  | Başvuru belgeleri | Paket | Hızlı başlangıç |
+|  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [JavaScript için Azure dosyaları istemci kitaplığı](/javascript/api/overview/azure/storage-file-share-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-file-share) | [Örnekler](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10. x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, Azure Files REST API 'Leri için başvuru ve örnek belgel
 
 ### <a name="other-rest-reference"></a>Diğer REST başvurusu
 
-- [Azure Storage içeri aktarma-dışarı aktarma REST API](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
+- [Azure Storage içeri aktarma-dışarı aktarma REST API ](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
 
 ## <a name="other-languages-and-platforms"></a>Diğer diller ve platformlar
 
@@ -106,9 +106,10 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 
 | Sürüm | Platform |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x@@  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 - [Azure CLI](/cli/azure/storage)

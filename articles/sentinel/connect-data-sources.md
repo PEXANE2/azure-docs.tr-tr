@@ -1,10 +1,10 @@
 ---
 title: Veri kaynaklarını Azure Sentinel 'e bağlama | Microsoft Docs
-description: Microsoft tehdit koruması, Microsoft 365 ve Office 365, Azure AD, ATP ve Cloud App Security gibi veri kaynaklarını Azure Sentinel 'e bağlamayı öğrenin.
+description: Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması), Microsoft 365 ve Office 365, Azure AD, ATP ve Cloud App Security gibi veri kaynaklarını Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,32 +13,31 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555506"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659629"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
-Azure Sentinel etkinleştirildikten sonra yapmanız gereken ilk şey, veri kaynaklarınızı bağlamak. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcıyla sunulan Microsoft tehdit koruması çözümleri, Microsoft 365 kaynakları (Office 365 dahil), Azure AD, Azure ATP, Microsoft Cloud App Security ve daha fazlasını içeren gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi (CEF), syslog veya REST API 'yi de kullanabilirsiniz.
+Azure Sentinel etkinleştirildikten sonra yapmanız gereken ilk şey, veri kaynaklarınızı bağlamak. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft 365 Defender (eski adıyla Microsoft tehdit koruması) çözümleri, Microsoft 365 kaynakları (Office 365 dahil), Azure AD, kimlik için Microsoft Defender (eskiden Azure ATP), Microsoft Cloud App Security ve daha fazlasını içeren gerçek zamanlı tümleştirme sağlar. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi (CEF), syslog veya REST API 'yi de kullanabilirsiniz.
 
 1. Menüsünde, **veri bağlayıcıları**' nı seçin. Bu sayfa, Azure Sentinel 'in sağladığı bağlayıcıların tam listesini ve bunların durumlarını görmenizi sağlar. Bağlanmak istediğiniz bağlayıcıyı seçin ve **bağlayıcı sayfasını aç**' ı seçin. 
 
-   ![Veri toplayıcılar](./media/collect-data/collect-data-page.png)
+   ![Veri bağlayıcıları Galerisi](./media/collect-data/collect-data-page.png)
 
 1. Belirli bağlayıcı sayfasında, tüm önkoşulları karşıladığınızdan emin olun ve verileri Azure Sentinel 'e bağlamak için yönergeleri izleyin. Günlüklerin Azure Sentinel ile eşitlenmeye başlaması biraz zaman alabilir. Bağlandıktan sonra, **alınan veri** grafiğindeki verilerin özetini ve veri türlerinin bağlantı durumunu görürsünüz.
 
-   ![Toplayıcıların bağlantısını yapın](./media/collect-data/opened-connector-page.png)
+   ![Veri bağlayıcıları yapılandırma](./media/collect-data/opened-connector-page.png)
   
 1. Belirli veri türü için Azure Sentinel 'in sağladığı kullanıma hazır içeriğin bir listesini almak için **sonraki adımlar** sekmesine tıklayın.
 
-   ![Veri toplayıcılar](./media/collect-data/data-insights.png)
+   ![Bağlayıcılar için sonraki adımlar](./media/collect-data/data-insights.png)
  
-
 ## <a name="data-connection-methods"></a>Veri bağlantısı yöntemleri
 
 Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklenir:
@@ -48,13 +47,13 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     - [Azure etkinliği](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) -denetim günlükleri ve oturum açma günlükleri
     - [Azure AD Kimlik Koruması](connect-azure-ad-Identity-protection.md)
-    - [Azure Gelişmiş Tehdit Koruması](connect-azure-atp.md)
+    - [Kimlik Için Microsoft Defender](connect-azure-atp.md) (eski adıyla Azure Gelişmiş tehdit koruması)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Güvenlik Merkezi](connect-azure-security-center.md)
+    - [Azure Defender](connect-azure-security-center.md) (eski adıyla Azure Güvenlik Merkezi)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Etki alanı adı sunucusu](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Uç nokta Için Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md) (eski adıyla Microsoft Defender Gelişmiş tehdit koruması)
     - [Microsoft web uygulaması güvenlik duvarı](connect-microsoft-waf.md)
     - [Windows güvenlik duvarı](connect-windows-firewall.md)
     - [Windows güvenlik olayları](connect-windows-security-events.md)
@@ -135,8 +134,8 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | Iletilen veri | [Kablo verilerini bağlama](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows güvenlik duvarını bağlama](connect-windows-firewall.md) | &#10003; | |
 | AADıP SecurityAlert  | [Azure AD Kimlik Koruması bağlantısı kurma](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Azure ATP'yi bağlama](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [Azure Güvenlik Merkezi’ni bağlama](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [Kimlik Için Microsoft Defender 'ı bağlama](connect-azure-atp.md) (eski ADıYLA Azure ATP) | &#10003; | |
+| ASC SecurityAlert  | [Azure Defender 'ı bağlama](connect-azure-security-center.md) (eski adıyla Azure Güvenlik Merkezi)  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security Bağlan](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (olay) | [Sysmon bağlama](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows olaylarını bağlama](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon ayrıştırıcısına ulaşın](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon koleksiyonu, sanal makinelerde varsayılan olarak yüklü değildir. Sysmon aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

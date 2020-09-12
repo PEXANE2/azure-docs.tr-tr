@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 08/12/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 38e7d349d8b77b53a19fdf360bd6db454907d4f9
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146921"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007817"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -64,7 +64,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 [Azure Backup](../../backup/index.yml):
 
-- Müşteri kiracılarında verileri yedekleme ve geri yükleme
+- [Şirket içi iş yüklerinden, Azure VM 'lerinden, Azure dosya paylaşımlarından ve daha fazlasına ait](../..//backup/backup-overview.md#what-can-i-back-up) müşteri verilerini yedekleyin ve geri yükleyin
 - Temsilci olan abonelikler için yedekleme öğelerinin (henüz yedekleme için yapılandırılmamış Azure kaynakları dahil) ve izleme bilgilerinin (işlerin ve uyarıların) işletimsel bilgilerini görüntülemeye yardımcı olması için [yedekleme Gezginini](../../backup/monitor-azure-backup-with-backup-explorer.md) kullanın. Yedekleme Gezgini Şu anda yalnızca Azure VM verileri için kullanılabilir.
 - Geçmiş eğilimleri izlemek, yedekleme depolama tüketimini analiz etmek ve yedeklemeleri denetlemek ve geri yüklemek için, temsilcili abonelikler arasında [yedekleme raporları](../../backup/configure-reports.md) kullanın.
 

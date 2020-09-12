@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257764"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007341"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -36,6 +36,7 @@ Sanal makine dikey penceresinde bulunan önyükleme tanılama seçeneği Azure p
 ## <a name="limitations"></a>Sınırlamalar
 - Önyükleme tanılaması yalnızca Azure Resource Manager VM 'Ler için kullanılabilir. 
 - Önyükleme tanılaması için Premium depolama hesabı kullanılıyorsa, önyükleme tanılaması Premium Depolama hesaplarını desteklemez `StorageAccountTypeNotSupported` . 
+- Yönetilen depolama hesapları, Kaynak Yöneticisi API sürümü "2020-06-01" ve üzeri sürümlerde desteklenir.
 - Azure seri konsol Şu anda önyükleme tanılaması için yönetilen bir depolama hesabıyla uyumsuz. [Azure seri konsolu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

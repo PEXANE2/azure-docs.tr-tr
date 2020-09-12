@@ -1,6 +1,6 @@
 ---
 title: Microsoft Bulut Almanya’da Azure AD Connect
-description: Azure AD Connect, şirket içi dizinlerinizi Azure Active Directory ile tümleştirir. Bu sayede Azure AD ile tümleşik Office 365, Azure ve SaaS uygulamaları için ortak bir kimlik oluşturabilirsiniz.
+description: Azure AD Connect, şirket içi dizinlerinizi Azure Active Directory ile tümleştirir. Bu, Azure AD ile tümleştirilmiş Microsoft 365, Azure ve SaaS uygulamaları için ortak bir kimlik sağlamanıza olanak tanır.
 keywords: Azure AD Connect’e giriş, Azure AD Connect’e genel bakış, Azure AD Connect nedir, active directory yükleme, Almanya, Black Forest
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 246f8326f7112825de98ee824cf4bab7952a7878
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60381250"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014597"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Bulut Almanya’da Azure AD Connect - Genel Önizleme
 ## <a name="introduction"></a>Giriş

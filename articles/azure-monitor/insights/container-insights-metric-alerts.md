@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları | Microsoft
 description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563373"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019895"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
 
@@ -18,7 +18,7 @@ Bu makale, deneyimi inceler ve bu uyarı kurallarını yapılandırma ve yönetm
 
 Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md) . Ölçüm uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçüm uyarıları](../platform/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakileri onaylayın:
 
@@ -106,7 +106,7 @@ Azure portal Azure Izleyici 'de ölçüm uyarılarını etkinleştirmek için bu
 
 Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için Azure Izleyici 'nin etkinleştirilmesi gösterilmektedir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Kapsayıcılar için Azure Izleyici ölçümleri Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
 
@@ -144,7 +144,7 @@ Temel adımlar aşağıdaki gibidir:
 
 2. Portal üzerinden özelleştirilmiş bir şablon dağıtmak için [Azure Portal](https://portal.azure.com) **kaynak oluştur** ' u seçin.
 
-3. **Şablon**araması yapın ve **şablon**' u seçin. dağıtmak.
+3. **Şablon**araması yapın ve ardından **şablon dağıtımı**' yi seçin.
 
 4. **Oluştur**’u seçin.
 

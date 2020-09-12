@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544674"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650292"
 ---
 # <a name="advanced-entry-script-authoring"></a>Gelişmiş giriş betiği yazma
 
 Bu makalede, özel kullanım durumları için giriş betikleri yazma gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, Azure Machine Learning ile dağıtmayı planladığınız eğitilen bir makine öğrenimi modeli zaten var. Model dağıtımı hakkında daha fazla bilgi edinmek için [Bu öğreticiye](how-to-deploy-and-where.md)bakın.
 
@@ -90,7 +90,7 @@ def run(data):
 ```
 
 
-## <a name="binary-ie-image-data"></a><a id="binary-data"></a>İkili (ör. resim) verileri
+## <a name="binary-ie-image-data"></a><a id="binary-data"></a> İkili (ör. resim) verileri
 
 Modeliniz bir görüntü gibi ikili verileri kabul ediyorsa, `score.py` dağıtımınız için kullanılan dosyayı ham http isteklerini kabul edecek şekilde değiştirmeniz gerekir. Ham verileri kabul etmek için, `AMLRequest` giriş betiğinizdeki sınıfını kullanın ve `@rawhttp` işleve dekoratör ekleyin `run()` .
 
@@ -260,7 +260,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
+Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
 
 Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya da hizmet dağıtımı sırasında yerleştirildiği yere karşılık gelir.
 
@@ -269,9 +269,9 @@ Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya
 * [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
-* [Web hizmetini Güncelleştir](how-to-deploy-update-web-service.md)
+* [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

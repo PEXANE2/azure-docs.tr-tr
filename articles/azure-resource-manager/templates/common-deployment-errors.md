@@ -3,13 +3,13 @@ title: Sık karşılaşılan dağıtım hatalarını giderme
 description: Azure 'a Azure Resource Manager kullanarak kaynak dağıtırken yaygın hataların nasıl çözümleneceğini açıklar.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 08/07/2020
-ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/09/2020
+ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008177"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650949"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager'la yaygın Azure dağıtım hatalarını giderme
 
@@ -75,7 +75,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | StorageAccountNotFound | Kullanmayı denediğiniz depolama hesabının aboneliğini, kaynak grubunu ve adını denetleyin. | |
 | SubnetsNotInSameVnet | Bir sanal makine yalnızca bir sanal ağa sahip olabilir. Çeşitli NIC 'ler dağıtıldığında aynı sanal ağa ait olduklarından emin olun. | [Birden çok NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotFound | Dağıtım için belirtilen aboneliğe erişilemiyor. Abonelik KIMLIĞI yanlış olabilir, şablonu dağıtmanın Kullanıcı aboneliğe dağıtmak için yeterli izinlere sahip değil veya abonelik KIMLIĞI yanlış biçimde. [Kapsamları genelinde dağıtmak](cross-scope-deployment.md)üzere iç içe dağıtımlar kullanılırken, aboneliğin GUID 'sini sağlayın. | |
-| SubscriptionNotRegistered | Ağ kaynaklarını dağıttığınızda, Microsoft. Network kaynak sağlayıcısı abonelikte otomatik olarak kaydedilir. Bazen otomatik kayıt zaman içinde tamamlanmaz. Bu aralıklı hatadan kaçınmak için, dağıtımdan önce Microsoft. Network kaynak sağlayıcısını kaydedin. | [Kaydı çözümle](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | Bir kaynak dağıtıldığında, aboneliğiniz için kaynak sağlayıcının kayıtlı olması gerekir. Dağıtım için bir Azure Resource Manager şablonu kullandığınızda, kaynak sağlayıcısı abonelikte otomatik olarak kaydedilir. Bazen otomatik kayıt zaman içinde tamamlanmaz. Bu aralıklı hatadan kaçınmak için, dağıtımdan önce kaynak sağlayıcısını kaydedin. | [Kaydı çözümle](error-register-resource-provider.md) |
 | Templateresourcecırculardependency | Gereksiz bağımlılıkları kaldırın. | [Döngüsel bağımlılıkları çözümle](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kapsam dağıtımı](cross-scope-deployment.md) |
 

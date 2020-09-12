@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256688"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014642"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -34,13 +34,13 @@ Microsoft, BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüze
 
 Daha fazla bilgi için bkz: 
 
-* [Yöneticiler gruplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Yöneticiler gruplarının güvenliğini sağlama](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Yerleşik yönetici hesaplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Yerleşik yönetici hesaplarının güvenliğini sağlama](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Saldırı yüzeylerini azaltarak güvenlik iyileştirmesi ve sürdürülebilirlik](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Saldırı yüzeylerini azaltarak güvenlik iyileştirmesi ve sürdürülebilirlik](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [Active Directory saldırı yüzeyini azaltma](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [Active Directory saldırı yüzeyini azaltma](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **S: Azure Active Directory (Azure AD) genel yöneticisinin iki öğeli kimlik doğrulaması (2FA) etkinse, yükleme işi yapılacak.**  
 Şubat 2016 Derlemeleriyle, bu senaryo desteklenir.
@@ -139,10 +139,10 @@ Hayır, Azure AD Connect saf IPv6 ortamını desteklemez.
 Hayır, NAT üzerinden Azure AD Connect kullanılması desteklenmez. 
 
 ## <a name="federation"></a>Federasyon
-**S: Office 365 sertifikamı yenilediğimi soran bir e-posta alırsanız ne yapmalıyım?**  
+**S: Microsoft 365 sertifikamı yenilediğimi soran bir e-posta aldığımda ne yapmalıyım?**  
 Sertifikayı yenileme hakkında rehberlik için bkz. [sertifikaları yenileme](how-to-connect-fed-o365-certs.md).
 
-**S: Office 365 bağlı olan taraf için "bağlı olan taraf otomatik olarak güncelleştir" kümesini aldım. Belirteç imzalama sertifikamın üzerine otomatik olarak kayıt yapması durumunda herhangi bir işlem yapmam gerekir mi?**  
+**S: Microsoft 365 bağlı olan taraf için "bağlı olan taraf otomatik olarak güncelleştir" kümesini aldım. Belirteç imzalama sertifikamın üzerine otomatik olarak kayıt yapması durumunda herhangi bir işlem yapmam gerekir mi?**  
 [Sertifikaları yenileme](how-to-connect-fed-o365-certs.md)makalesinde özetlenen kılavuzu kullanın.
 
 ## <a name="environment"></a>Ortam
@@ -152,17 +152,17 @@ Hayır. Sunucu adının değiştirilmesi, eşitleme altyapısının SQL veritaba
 **S: bir sonraki nesil şifreleme (NGC) eşitleme kuralları FIPS özellikli bir makinede destekleniyor mu?**  
 Hayır.  Bu, desteklenmeyen bir durumdur.
 
-**S. Azure portal eşitlenmiş bir cihazı (örneğin: HASıFATı) devre dışı bırakırsanız, neden yeniden etkinleştirilmiştir?**<br>
+**Ç. Azure portal eşitlenmiş bir cihazı (örneğin: HASıFATı) devre dışı bırakırsanız, neden yeniden etkinleştirilmiştir?**<br>
 Eşitlenmiş cihazlar şirket içinde yazılmış veya ana kopyalı olabilir. Eşitlenmiş bir cihaz şirket içinde etkinleştirilirse, daha önce bir yönetici tarafından devre dışı bırakılmış olsa bile Azure portal yeniden etkinleştirilebilir. Eşitlenmiş bir cihazı devre dışı bırakmak için, bilgisayar hesabını devre dışı bırakmak üzere şirket içi Active Directory kullanın.
 
-**Soru-cevap kullanıcılar için Office 365 veya Azure AD portalında Kullanıcı oturum açmayı engellediğimde, yeniden oturum açmak için neden engellenmemiş?**<br>
+**Ç. Eşitlenmiş kullanıcılar için Microsoft 365 veya Azure AD portalında Kullanıcı oturum açma 'yı engelsem, yeniden oturum açmak için neden engellenmemiş?**<br>
 Eşitlenen kullanıcılar şirket içinde yazılabilir veya ana kopyalı olabilir. Hesap şirket içinde etkinleştirilirse, yönetici tarafından yerleştirilmiş oturum açma bloğunun engellemesini kaldırabilir.
 
 ## <a name="identity-data"></a>Kimlik verileri
 **S: Azure AD 'deki userPrincipalName (UPN) özniteliği şirket içi UPN ile neden eşleşmiyor?**  
 Daha fazla bilgi için şu makalelere bakın:
 
-* [Office 365, Azure veya Intune 'daki Kullanıcı adları şirket içi UPN veya alternatif oturum açma KIMLIĞIYLE eşleşmez](https://support.microsoft.com/kb/2523192)
+* [Microsoft 365, Azure veya Intune 'daki Kullanıcı adları şirket içi UPN veya alternatif oturum açma KIMLIĞIYLE eşleşmez](https://support.microsoft.com/kb/2523192)
 * [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](https://support.microsoft.com/kb/2669550)
 
 Azure AD 'yi, eşitleme altyapısının [Azure AD Connect eşitleme hizmeti özellikleri](how-to-connect-syncservice-features.md)bölümünde açıklandığı gıbı, UPN 'yi güncelleştirmesine izin verecek şekilde de yapılandırabilirsiniz.
@@ -253,19 +253,19 @@ Evet, otomatik yükseltme Azure AD Connect Health de yükseltir.
 Evet, hazırlama modundaki bir Azure AD Connect sunucusunu otomatik olarak yükseltebilirsiniz.
 
 **S: otomatik yükseltme başarısız olursa ve Azure AD Connect sunucum başlamazsa, ne yapmam gerekir?**  
-Nadir durumlarda Azure AD Connect hizmeti, yükseltmeyi gerçekleştirdikten sonra başlatılmaz. Bu durumlarda, sunucuyu yeniden başlatmak genellikle sorunu düzeltir. Azure AD Connect hizmeti hala başlamazsa, bir destek bileti açın. Daha fazla bilgi için bkz. [Office 365 desteğiyle iletişim kurmak için hizmet Isteği oluşturma](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
+Nadir durumlarda Azure AD Connect hizmeti, yükseltmeyi gerçekleştirdikten sonra başlatılmaz. Bu durumlarda, sunucuyu yeniden başlatmak genellikle sorunu düzeltir. Azure AD Connect hizmeti hala başlamazsa, bir destek bileti açın. Daha fazla bilgi için bkz. [Microsoft 365 desteğe başvurmak için hizmet Isteği oluşturma](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support). 
 
 **S: Azure AD Connect daha yeni bir sürüme yükseltdiğimde risklerden emin değilim. Yükseltmeye yardım etmek için beni çağırabilir miyim?**  
-Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız varsa, [hizmet oluşturma isteği sırasında Office 365 desteği 'ne başvurmak için](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)bir destek bileti açın.
+Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız varsa, [Microsoft 365 desteğe başvurmak için hizmet Isteği oluşturma](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)sırasında bir destek bileti açın.
 
 ## <a name="operational-best-practice"></a>İşletimsel en iyi uygulama    
 Windows Server Active Directory ve Azure Active Directory arasında eşitleme yaparken uygulamanız gereken bazı en iyi uygulamalar aşağıda verilmiştir.
 
-**Eşitlenmiş tüm hesaplar için Multi-Factor Authentication Uygula** Azure Multi-Factor Authentication, kullanıcılar için basitlik sağlarken veri ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir. MFA hakkında daha fazla bilgi için buradan okuyabilirsiniz:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Eşitlenmiş tüm hesaplar için Multi-Factor Authentication Uygula** Azure Multi-Factor Authentication, kullanıcılar için basitlik sağlarken veri ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir. MFA hakkında daha fazla bilgi için buradan okuyabilirsiniz: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
-**Azure AD Connect sunucusu güvenlik yönergelerini izleyin** Azure AD Connect sunucusu kritik kimlik verileri içerir ve [Active Directory Yönetim Katmanı modelinde](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir. Lütfen [AADConnect sunucunuzun güvenliğini sağlamaya yönelik kılavuzlarımızı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)inceleyin.
+**Azure AD Connect sunucusu güvenlik yönergelerini izleyin** Azure AD Connect sunucusu kritik kimlik verileri içerir ve [Active Directory Yönetim Katmanı modelinde](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir. Lütfen [AADConnect sunucunuzun güvenliğini sağlamaya yönelik kılavuzlarımızı](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)inceleyin.
 
-**Sızdırılan kimlik bilgileri algılaması için PHS 'Yi etkinleştirin** Parola karması eşitleme, karma hesaplarınız için [sızdırılan kimlik bilgisi algılamayı](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) de mümkün hale getirmenizi. Microsoft, genel olarak kullanılabilen Kullanıcı adı/parola çiftlerini bulmak için koyu Web araştırmacıları ve yasalar zorlama kuruluşlarıyla birlikte çalışmaktadır. Bu çiftlerin herhangi biri kullanıcılarınızın kullanıcılarıyla eşleşiyorsa, ilişkili hesap yüksek riske taşınır. 
+**Sızdırılan kimlik bilgileri algılaması için PHS 'Yi etkinleştirin** Parola karması eşitleme, karma hesaplarınız için [sızdırılan kimlik bilgisi algılamayı](../identity-protection/concept-identity-protection-risks.md) de mümkün hale getirmenizi. Microsoft, genel olarak kullanılabilen Kullanıcı adı/parola çiftlerini bulmak için koyu Web araştırmacıları ve yasalar zorlama kuruluşlarıyla birlikte çalışmaktadır. Bu çiftlerin herhangi biri kullanıcılarınızın kullanıcılarıyla eşleşiyorsa, ilişkili hesap yüksek riske taşınır. 
 
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -275,11 +275,11 @@ Windows Server Active Directory ve Azure Active Directory arasında eşitleme ya
 
 * Azure AD Connect desteğiyle ilgili sık karşılaşılan sorunları gidermek için KB 'de teknik çözümler arayın.
 
-[Microsoft Q&Azure Active Directory için soru sayfası](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Microsoft Q&Azure Active Directory için soru sayfası](/answers/topics/azure-active-directory.html)
 
-* [Azure AD Community](https://docs.microsoft.com/answers/topics/azure-active-directory.html)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
+* [Azure AD Community](/answers/topics/azure-active-directory.html)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
 
-[Azure AD için destek alma](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Azure AD için destek alma](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **S: eşitleme adımı hatalarından sonra neden 6311 ve 6401 olaylarını görüyorum?**
 

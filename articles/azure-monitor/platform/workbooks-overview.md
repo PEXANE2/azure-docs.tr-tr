@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 18e757ccac56d2165a1b46bb73a698ac754177b7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799574"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657957"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
@@ -43,12 +43,13 @@ Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri t
 
 Çalışma kitapları, verilerinizi görselleştirmeye yönelik zengin bir özellik kümesi sağlar. Her görselleştirme türünün ayrıntılı örnekleri için aşağıdaki örnek bağlantılara başvurabilirsiniz:
 
-* [Metin](workbooks-visualizations.md#text)
-* [Grafikler](workbooks-visualizations.md#charts)
-* [Kılavuzlar](workbooks-visualizations.md#grids)
-* [Parça](workbooks-visualizations.md#tiles)
-* [Ağaçlarında](workbooks-visualizations.md#trees)
-* [Performansının](workbooks-visualizations.md#graphs)
+* [Metin](workbooks-text-visualizations.md)
+* [Grafikler](workbooks-chart-visualizations.md)
+* [Kılavuzlar](workbooks-grid-visualizations.md)
+* [Parça](workbooks-tile-visualizations.md)
+* [Ağaçlarında](workbooks-tree-visualizations.md)
+* [Performansının](workbooks-graph-visualizations.md)
+* [Bileşik çubuk](workbooks-composite-bar.md)
 
 ![Örnek çalışma kitabı görselleştirmeleri](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ Bu çalışma kitabı söz konusu olduğunda, deneyim etkileşimli olur. Bir abo
 
 ### <a name="editing-mode"></a>Düzen modu
 
-Bu çalışma kitabı şablonunun nasıl bir araya yerleştirileceğini anlamak için, **Düzenle**' ye tıklayarak düzenleme moduna geçiş yapmanız gerekir. 
+Bu çalışma kitabı şablonunun nasıl bir araya yerleştirileceğini anlamak için, **Düzenle**' ye tıklayarak düzenleme moduna geçiş yapmanız gerekir.
 
-![Uygulama hatası analiz şablonunun ekran görüntüsü](./media/workbooks-overview/edit.png)
+![Çalışma kitaplarındaki düzenleme düğmesinin ekran görüntüsü.](./media/workbooks-overview/edit.png)
 
 Düzenleme moduna geçtikten sonra, çalışma kitabınızın her bir yönüyle ilgili olarak doğru bir dizi **düzenleme** kutusu göründüğünü fark edersiniz.
 

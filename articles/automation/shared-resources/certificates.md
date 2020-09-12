@@ -2,23 +2,19 @@
 title: Azure Otomasyonu 'nda sertifikaları yönetme
 description: Bu makalede runbook 'ların ve DSC yapılandırmalarının erişimine yönelik sertifikalarla nasıl çalışılacağı açıklanmaktadır.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/02/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056286"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004706"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Otomasyonu 'nda sertifikaları yönetme
 
-Azure Otomasyonu, Azure Resource Manager kaynakları için [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak, sertifikaları runbook 'LAR ve DSC yapılandırmalarına göre güvenli bir şekilde depolar. Güvenli sertifika depolama, kimlik doğrulaması için sertifikaları kullanan runbook 'ları ve DSC yapılandırması oluşturmanızı veya bunları Azure ya da üçüncü taraf kaynaklarına eklemenizi sağlar.
+Azure Otomasyonu, Azure Resource Manager kaynakları için [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) cmdlet 'ini kullanarak, sertifikaları runbook 'LAR ve DSC yapılandırmalarına göre güvenli bir şekilde depolar. Güvenli sertifika depolama, kimlik doğrulaması için sertifikaları kullanan runbook 'ları ve DSC yapılandırması oluşturmanızı veya bunları Azure ya da üçüncü taraf kaynaklarına eklemenizi sağlar.
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak şifrelenir ve otomasyon 'da depolanır. Otomasyon, anahtarı sistem tarafından yönetilen Key Vault hizmetinde depolar. Güvenli bir varlık depolamadan önce, otomasyon anahtarı Key Vault ' den yükler ve ardından varlığı şifrelemek için onu kullanır. 
@@ -29,10 +25,10 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon sertifikaları olu�
 
 |Cmdlet |Açıklama|
 | --- | ---|
-|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Runbook veya DSC yapılandırmasında kullanılacak sertifikayla ilgili bilgileri alır. Sertifikayı yalnızca iç `Get-AutomationCertificate` cmdlet 'ini kullanarak alabilirsiniz.|
-|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Otomasyon 'da yeni bir sertifika oluşturur.|
-|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Bir sertifikayı otomatikleştirmeden kaldırır.|
-|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Sertifika dosyasını karşıya yükleme ve bir **. pfx** dosyası için parolayı ayarlama dahil olmak üzere var olan bir sertifikanın özelliklerini ayarlar.|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate)|Runbook veya DSC yapılandırmasında kullanılacak sertifikayla ilgili bilgileri alır. Sertifikayı yalnızca iç `Get-AutomationCertificate` cmdlet 'ini kullanarak alabilirsiniz.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)|Otomasyon 'da yeni bir sertifika oluşturur.|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate)|Bir sertifikayı otomatikleştirmeden kaldırır.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate)|Sertifika dosyasını karşıya yükleme ve bir **. pfx** dosyası için parolayı ayarlama dahil olmak üzere var olan bir sertifikanın özelliklerini ayarlar.|
 
 [Add-Azurecercertificateate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) cmdlet 'i, belirtilen bulut hizmeti için bir hizmet sertifikası yüklemek için de kullanılabilir.
 
@@ -40,7 +36,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon sertifikaları olu�
 
 Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda sertifikalara erişmek için kullanılır. Bu cmdlet, genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
 
-| İç cmdlet | Açıklama |
+| İç cmdlet | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Runbook veya DSC yapılandırmasında kullanmak için bir sertifika alır. [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) nesnesi döndürür.|
 
@@ -64,7 +60,8 @@ Yeni bir sertifika oluşturduğunuzda, Automation 'a bir. cer veya. pfx dosyası
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Azure portal yeni bir sertifika oluşturun
 
-1. Otomasyon hesabınızdan, **varlık**  >  **sertifikaları**  >  **sertifika ekle**' yi seçin.
+1. Otomasyon hesabınızdan, sol taraftaki bölmede **paylaşılan kaynak**altında **Sertifikalar** ' ı seçin.
+1. **Sertifikalar** sayfasında, **sertifika ekle**' yi seçin.
 1. **Ad** alanına sertifika için bir ad yazın.
 1. Bir **. cer** veya **. pfx** dosyasına gitmek Için, **sertifika dosyasını karşıya yükle**altında **bir dosya seç**' i seçin. Bir **. pfx** dosyası seçerseniz, bir parola belirtin ve verilemeyeceğini belirtin.
 1. Yeni sertifika varlığını kaydetmek için **Oluştur** ' u seçin.
@@ -127,7 +124,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>Sertifika Al
 
-Bir sertifikayı almak için iç `Get-AutomationCertificate` cmdlet 'ini kullanın. [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak sertifika varlığı hakkında bilgi döndürüyor, ancak sertifikanın kendisi değil.
+Bir sertifikayı almak için iç `Get-AutomationCertificate` cmdlet 'ini kullanın. [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) cmdlet 'ini kullanarak sertifika varlığı hakkında bilgi döndürüyor, ancak sertifikanın kendisi değil.
 
 ### <a name="textual-runbook-example"></a>Metinsel runbook örneği
 
@@ -147,7 +144,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 ![Tuvale sertifika ekleme ekranının ekran görüntüsü](../media/certificates/automation-certificate-add-to-canvas.png)
 
-Aşağıdaki görüntüde bir grafik runbook 'unda sertifika kullanmanın bir örneği gösterilmektedir. 
+Aşağıdaki görüntüde bir grafik runbook 'unda sertifika kullanmanın bir örneği gösterilmektedir.
 
 ![Grafik yazma örneğini örnek ekran görüntüsü](../media/certificates/graphical-runbook-add-certificate.png)
 
@@ -167,5 +164,4 @@ print cert
 
 * Sertifikalara erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
 * Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
-* DSC yapılandırmalarının ayrıntıları için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md). 
-
+* DSC yapılandırmalarının ayrıntıları için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation-dsc-overview.md).

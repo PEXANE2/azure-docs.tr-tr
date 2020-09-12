@@ -1,28 +1,25 @@
 ---
-title: Sorgu hızlandırma SQL dil başvurusu (Önizleme)
+title: Sorgu hızlandırma SQL dil başvurusu
 titleSuffix: Azure Storage
 description: Sorgu hızlandırma SQL söz dizimini nasıl kullanacağınızı öğrenin.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193401"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659565"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Sorgu hızlandırma SQL dil başvurusu (Önizleme)
+# <a name="query-acceleration-sql-language-reference"></a>Sorgu hızlandırma SQL dil başvurusu
 
 Sorgu hızlandırma, blob içerikleri üzerinde sorguları ifade etmek için ANSI SQL benzeri bir dili destekler.  Sorgu hızlandırma SQL diyalekti, desteklenen veri türleri, işleçler vb. sınırlı bir kümesi olan ANSI SQL 'nin bir alt kümesidir, ancak JSON gibi hiyerarşik yarı yapılandırılmış veri biçimleri üzerinde sorguları desteklemek için ANSI SQL 'de de genişletilir. 
-
-> [!NOTE]
-> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adls/qa-preview-signup)bakın. 
 
 ## <a name="select-syntax"></a>Sözdizimi Seç
 
@@ -66,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |ILIŞKIN|Zaman içinde bir nokta.                           |
 |BOOLEAN  |True veya false.                             |
 
-CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>İfadeler
 
@@ -80,15 +77,36 @@ CSV biçimli verilerde alanlara bir alt çizgi (_) karakteriyle önek olarak de 
 
 Aşağıdaki standart SQL işleçleri desteklenir:
 
-``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
+|İşleç|Açıklama|
+|--|--|
+|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |İki ifadenin eşitliğini karşılaştırır (bir karşılaştırma işleci).|
+|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Bir ifadenin başka bir ifadeye (karşılaştırma operatörü) eşit olup olmadığını sınar.|
+|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Eşit değildir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |Küçüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Küçüktür veya eşittir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |Büyüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır. |
+|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |İki ifadeyi daha büyük veya eşit (bir karşılaştırma operatörü) için karşılaştırır.|
+|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |İki sayı ekler. Bu ek aritmetik işleç Ayrıca bir tarihe kadar gün cinsinden bir sayı ekleyebilir.|
+|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |İki sayıyı çıkartır (aritmetik çıkarma işleci). |
+|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Bir sayıyı başka bir sayıya böler (aritmetik bölme işleci).|
+|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |İki ifadeyi çarpar (aritmetik çarpma işleci).|
+|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Bir sayının başka bir sayıya bölünen kalanını döndürür.|
+|['](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |İki tamsayı değeri arasında bit düzeyinde mantıksal ve işlem gerçekleştirir.|
+|[VEYA](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL deyimlerindeki ikili ifadelere çevrilmiş olarak belirtilen iki tamsayı değeri arasında bit düzeyinde mantıksal veya işlem gerçekleştirir.|
+|[BAŞLATıLMADı](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Boole girişi geçersiz kılar.|
+|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Bir veri türündeki bir ifadeyi bir diğerine dönüştürür.|
+|[ARALARıNDA](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Sınanacak aralığı belirtir.|
+|['NDAKI](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Belirtilen değerin alt sorgu veya listedeki herhangi bir değerle eşleşip eşleşmediğini belirler.|
+|[NULLıF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Belirtilen iki ifade eşitse null değeri döndürür.|
+|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Bağımsız değişkenleri sırayla değerlendirir ve başlangıçta NULL olarak değerlendirilmeyen ilk ifadenin geçerli değerini döndürür.|
 
-Bir işlecin sol ve sağ tarafındaki veri türleri farklıysa, otomatik dönüştürme burada belirtilen kurallara göre gerçekleştirilir: [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Bir işlecin sol ve sağ tarafındaki veri türleri farklıysa, otomatik dönüştürme burada belirtilen kurallara göre gerçekleştirilir: [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca çok küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
 ### <a name="casts"></a>Podcast
 
-Sorgu hızlandırma SQL dili, şu kurallara göre atama işlecini destekler: [veri türü dönüştürme (veritabanı altyapısı)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+Sorgu hızlandırma SQL dili, şu kurallara göre atama işlecini destekler: [veri türü dönüştürme (veritabanı altyapısı)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
@@ -96,7 +114,16 @@ Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca
 
 Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destekler:
 
-``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
+|İşlev|Açıklama|
+|--|--|
+|CHAR_LENGTH    | Dize ifadesinin karakter veri türünde olması halinde, dize ifadesinin karakter cinsinden uzunluğunu döndürür; Aksi takdirde, dize ifadesinin bayt cinsinden uzunluğunu döndürür (en küçük tamsayı, 8 ' den bölünen bit sayısından küçük değildir). (Bu işlev CHARACTER_LENGTH işleviyle aynıdır.)|
+|CHARACTER_LENGTH    |Dize ifadesinin karakter veri türünde olması halinde, dize ifadesinin karakter cinsinden uzunluğunu döndürür; Aksi takdirde, dize ifadesinin bayt cinsinden uzunluğunu döndürür (en küçük tamsayı, 8 ' den bölünen bit sayısından küçük değildir). (Bu işlev CHAR_LENGTH işleviyle aynıdır|
+|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir karakter ifadesi döndürür.|
+|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Küçük harfli karakter verisi büyük harfe dönüştürülmüş bir karakter ifadesi döndürür.|
+|[DIZEDEN](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |SQL Server bir karakter, ikili, metin veya resim ifadesinin bir parçasını döndürür.|
+|[KıRPMA](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Bir dizenin başından ve sonundan sonra char karakter (32) veya diğer belirtilen karakterleri kaldırır.|
+|LIDERI    |Description|
+|ARKASıNDA    |Description|
 
 İşte birkaç örnek:
 
@@ -108,16 +135,6 @@ Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destek
 |UPPER|``SELECT UPPER('AbCdEfG') from BlobStorage``|``ABCDEFG``|
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
-
-[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevi, bir model aramanıza yardımcı olur. Veri dizesinde arama yapmak için [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevini kullanan birkaç örnek aşağıda verilmiştir ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
-
-|Sorgu|Örnek|
-|--|--|
-|``SELECT _1, _2, _3 from BlobStorage where _2 LIKE 'a%'``|``abc,abd,cd\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a[bcd]c``|``abc,abd,cd\n``|
-|``SELECT _1 from BlobStorage where _2 LIKE '[^xyz]%'``|``abc\ntest\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a_``|``abc,abd,cd\n``|
-|``SELECT _2,_3 from BlobStorage where _3 LIKE '[g-h]_![[a-j]' Escape '!'``|``xc%d^e,gh[i\n``|
 
 ### <a name="date-functions"></a>Tarih işlevleri
 
@@ -133,14 +150,12 @@ Sorgu hızlandırma SQL dili, işlevin yıl, ay, gün, saat, dakika ve saniyeyi 
 
 Örnekler:
 
-```sql
-DATE_ADD(datepart, quantity, timestamp)
-DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+' ' SQL DATE_ADD (datepart, Quantity, timestamp) DATE_ADD (' dakika ', 1, CAST (' 2017-01-02T03:04:05.006 Z ' zaman DAMGASı olarak)
 ```
 
-#### <a name="date_diff-function"></a>DATE_DIFF işlevi
+#### DATE_DIFF function
 
-Sorgu hızlandırma SQL dili, işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler ``DATE_DIFF`` .
+The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -169,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar ``TO_STRING`` .
 
-|Biçim dizesi    |Çıktı                               |
+|Biçim dizesi    |Çıkış                               |
 |-----------------|-------------------------------------|
 |yy               |Yıl 2 basamak biçiminde – 1999 ' 99 ' olarak|
 |y                |4 basamaklı biçimde yıl               |
@@ -220,12 +235,12 @@ SELECT deyimi bir veya daha fazla İzdüşüm ifadesi ya da tek bir toplama ifad
 
 |İfade|Açıklama|
 |--|--|
-|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Koşul ifadesiyle eşleşen kayıt sayısını döndürür.|
-|[COUNT (ifade)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan kayıt sayısını döndürür.|
-|[AVERAGE (ifade)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan değerlerinin ortalamasını döndürür.|
-|[MIN (ifade)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan en küçük değerini döndürür.|
-|[Max (ifade](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |İfadenin null olmayan en büyük değerini döndürür.|
-|[SUM (ifade)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan tüm değerlerinin toplamını döndürür.|
+|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |Koşul ifadesiyle eşleşen kayıt sayısını döndürür.|
+|[COUNT (ifade)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |İfadenin null olmayan kayıt sayısını döndürür.|
+|[AVERAGE (ifade)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |İfadenin null olmayan değerlerinin ortalamasını döndürür.|
+|[MIN (ifade)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |İfadenin null olmayan en küçük değerini döndürür.|
+|[MAX (ifade](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |İfadenin null olmayan en büyük değerini döndürür.|
+|[SUM (ifade)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |İfadenin null olmayan tüm değerlerinin toplamını döndürür.|
 
 ### <a name="missing"></a>BULUNMAYAN
 
@@ -323,6 +338,6 @@ Her toplu işin içermesini istediğiniz bayt sayısını belirtmek için *split
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Data Lake Storage sorgu hızlandırma (Önizleme)](data-lake-storage-query-acceleration.md)
-- [Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)](data-lake-storage-query-acceleration-how-to.md)
+- [Azure Data Lake Storage sorgu hızlandırma](data-lake-storage-query-acceleration.md)
+- [Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md)
 

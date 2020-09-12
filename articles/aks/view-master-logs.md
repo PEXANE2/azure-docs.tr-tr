@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048287"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004876"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 Tanılama günlüklerinin etkinleştirilmesi ve gösterilmesi birkaç dakika sürebilir. Azure portal, AKS kümenize gidin ve sol taraftaki **Günlükler** ' i seçin. Görüntülenirse, *örnek sorgular* penceresini kapatın.
 
-
 Sol taraftaki **Günlükler**' i seçin. *Kuin-denetim* günlüklerini görüntülemek için metin kutusuna aşağıdaki sorguyu girin:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 Büyük olasılıkla çok sayıda günlük döndürülür. Önceki adımda oluşturulan NGıNX Pod hakkındaki günlükleri görüntülemek için sorguyu aşağı bağlamak üzere, aşağıdaki örnek sorguda gösterildiği gibi *NGINX* için arama yapmak üzere ek bir *WHERE* ifadesini ekleyin:
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-Ek günlükleri görüntülemek için, etkinleştirdiğiniz ek günlüklere bağlı olarak *Kategori* adı sorgusunu *Kuto-Controller-Manager* veya *Kuto-Scheduler*olarak güncelleştirebilirsiniz. Daha sonra, aradığınız olayları iyileştirmek için ek *WHERE* deyimleri kullanılabilir.
 
 Günlük verilerinizi sorgulama ve filtreleme hakkında daha fazla bilgi için bkz. [Log Analytics günlük araması ile toplanan verileri görüntüleme veya çözümleme][analyze-log-analytics].
 
 ## <a name="log-event-schema"></a>Olay şemasını günlüğe kaydet
 
-Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda her bir olay için kullanılan şemanın ayrıntıları verilmiştir:
+AKS aşağıdaki olayları günlüğe kaydeder:
 
-| Alan adı               | Açıklama |
-|--------------------------|-------------|
-| *RESOURCEID*             | Günlüğü üreten Azure kaynağı |
-| *ışınızda*                   | Günlüğün karşıya yüklendiği zaman damgası |
-| *alan*               | Günlüğü oluşturan kapsayıcı/bileşen adı |
-| *operationName*          | Her zaman *Microsoft. ContainerService/Managedkümeler/diagnosticLogs/Read* |
-| *Properties. log*         | Bileşenden alınan günlüğün tam metni |
-| *Properties. Stream*      | *stderr* veya *stdout* |
-| *Properties. Pod*         | Günlüğün geldiği Pod adı |
-| *Properties. Containerıd* | Bu günlüğün geldiği Docker kapsayıcısının KIMLIĞI |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [Containerımageınventory][log-schema-containerimageinventory]
+* [Containerınventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [Containernodeınventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [Sinyal][log-schema-heartbeat]
+* [Insightsölçümlerini][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [Kubenodeınventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Erişen][log-schema-perf]
 
 ## <a name="log-roles"></a>Günlük rolleri
 
@@ -131,3 +132,19 @@ Bu makalede, AKS kümenizdeki Kubernetes ana bileşenlerine yönelik günlükler
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

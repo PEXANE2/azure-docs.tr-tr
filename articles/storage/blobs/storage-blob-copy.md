@@ -1,55 +1,70 @@
 ---
-title: .NET-Azure Storage ile blob kopyalama
-description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızda bir blob kopyalamayı öğrenin.
+title: Azure depolama API 'Leriyle blob kopyalama
+description: Azure depolama istemci kitaplıklarını kullanarak bir Blobun nasıl kopyalanacağını öğrenin.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/20/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 144ad1a2f9d9b94deca1462d217aa16baca75846
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2c474ed4d4158356075f861c3c0d5ace69173255
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018901"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014659"
 ---
-# <a name="copy-a-blob-with-net"></a>.NET ile blob kopyalama
+# <a name="copy-a-blob-with-azure-storage-client-libraries"></a>Azure depolama istemci kitaplıklarıyla blob kopyalama
 
-Bu makalede, bir blob 'un Azure Storage hesabıyla nasıl kopyalanacağı gösterilmektedir. Ayrıca, zaman uyumsuz bir kopyalama işleminin nasıl iptal alınacağını gösterir. Örnek kod, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)'nı kullanır.
+Bu makalede, bir Azure depolama hesabındaki bir Blobun nasıl kopyalanacağı gösterilmektedir. Ayrıca, zaman uyumsuz bir kopyalama işleminin nasıl iptal alınacağını gösterir. Örnek kod, Azure depolama istemci kitaplıklarını kullanır.
 
 ## <a name="about-copying-blobs"></a>Blob 'ları kopyalama hakkında
 
-Aynı depolama hesabı içindeki bir blobu kopyaladığınızda, zaman uyumlu bir işlemdir. Hesaplar arasında kopyalama yaptığınızda zaman uyumsuz bir işlemdir. [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ve [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) yöntemleri, durumu denetlemek veya kopyalama işlemini durdurmak IÇIN kullanılan bir kopya kimliği değeri döndürür.
+Aynı depolama hesabı içindeki bir blobu kopyaladığınızda, zaman uyumlu bir işlemdir. Hesaplar arasında kopyalama yaptığınızda zaman uyumsuz bir işlemdir.
 
 Kopyalama işlemi için kaynak blobu bir Blok Blobu, bir ekleme blobu, Sayfa Blobu veya anlık görüntü olabilir. Hedef blobu zaten varsa, kaynak blobu ile aynı blob türünde olması gerekir. Var olan bir hedef Blobun üzerine yazılacak.
 
-Hedef blobu, bir kopyalama işlemi sürerken değiştirilemez. Hedef Blobun yalnızca bir adet bekleyen kopyalama blob işlemi olabilir. Diğer bir deyişle, bir blob birden çok bekleyen kopyalama işlemi için hedef olamaz.
+Hedef blobu, bir kopyalama işlemi sürerken değiştirilemez. Hedef Blobun yalnızca bir adet bekleyen kopyalama işlemi olabilir. Diğer bir deyişle, bir blob birden çok bekleyen kopyalama işlemi için hedef olamaz.
 
 Tüm kaynak Blobu veya dosya her zaman kopyalanır. Bir dizi bayt veya blok kümesi kopyalama desteklenmez.
 
 Blob kopyalandığında, sistem özellikleri hedef Blobun aynı değerlerle kopyalanır.
 
-Tüm blob türlerinde, kopyalama işleminin durumunu almak için hedef Blobun [CopyState. Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet) özelliğini kontrol edebilirsiniz. Kopyalama tamamlandığında son blob uygulanır.
-
 Kopyalama işlemi aşağıdaki formlardan herhangi birini gerçekleştirebilir:
 
-- Kaynak blobu, farklı bir ada sahip bir hedef bloba kopyalayabilirsiniz. Hedef blobu aynı blob türünde (blok, ekleme veya sayfa) var olan bir BLOB olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir BLOB olabilir.
-- Kaynak blobu, hedef blobu etkin bir şekilde değiştirerek aynı ada sahip bir hedef bloba kopyalayabilirsiniz. Bu tür bir kopyalama işlemi, kaydedilmemiş blokları kaldırır ve hedef Blobun meta verilerinin üzerine yazar.
-- Azure dosya hizmetindeki bir kaynak dosyayı hedef bloba kopyalayabilirsiniz. Hedef blobu varolan bir Blok Blobu olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir Blok Blobu olabilir. Dosyalardan sayfa bloblarına veya ekleme bloblarına kopyalama desteklenmez.
-- Bir anlık görüntüyü kendi temel blobundan kopyalayabilirsiniz. Bir anlık görüntüyü temel Blobun konumuna yükselterek bir blob 'un önceki bir sürümünü geri yükleyebilirsiniz.
-- Bir anlık görüntüyü hedef bloba farklı bir adla kopyalayabilirsiniz. Elde edilen hedef blobu anlık görüntü değil yazılabilir bir Blobun.
+- Kaynak blobunu, farklı bir ada sahip bir hedef bloba kopyalayın. Hedef blobu aynı blob türünde (blok, ekleme veya sayfa) var olan bir BLOB olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir BLOB olabilir.
+- Kaynak blobu, hedef blobu etkin bir şekilde değiştirerek aynı ada sahip bir hedef bloba kopyalayın. Bu tür bir kopyalama işlemi, kaydedilmemiş blokları kaldırır ve hedef Blobun meta verilerinin üzerine yazar.
+- Azure dosya hizmetindeki bir kaynak dosyayı hedef bloba kopyalayın. Hedef blobu varolan bir Blok Blobu olabilir veya kopyalama işlemi tarafından oluşturulan yeni bir Blok Blobu olabilir. Dosyalardan sayfa bloblarına veya ekleme bloblarına kopyalama desteklenmez.
+- Bir anlık görüntüyü temel blobunun üzerine kopyalayın. Bir anlık görüntüyü temel Blobun konumuna yükselterek bir blob 'un önceki bir sürümünü geri yükleyebilirsiniz.
+- Bir anlık görüntüyü hedef bloba farklı bir adla kopyalayın. Elde edilen hedef blobu anlık görüntü değil yazılabilir bir Blobun.
 
 ## <a name="copy-a-blob"></a>Blob kopyalama
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
 Bir blobu kopyalamak için aşağıdaki yöntemlerden birini çağırın:
 
-- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
-- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuri)
+- [StartCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuriasync)
 
-Aşağıdaki kod örneği, daha önce oluşturulan bir Blobun başvurusunu alır ve aynı kapsayıcıda yeni bir bloba kopyalar:
+`StartCopyFromUri`Ve `StartCopyFromUriAsync` yöntemleri kopyalama işlemi hakkında bilgi Içeren bir [Copyfromurioperation](/dotnet/api/azure.storage.blobs.models.copyfromurioperation) nesnesi döndürür.
+
+Aşağıdaki kod örneği, daha önce oluşturulmuş bir blobu temsil eden bir [Blobclient](/dotnet/api/azure.storage.blobs.blobclient) alır ve onu aynı kapsayıcıda yeni bir bloba kopyalar:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Bir blobu kopyalamak için aşağıdaki yöntemlerden birini çağırın:
+
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync)
+
+`StartCopy`Ve `StartCopyAsync` yöntemleri, durumu denetlemek veya kopyalama işlemini durdurmak için kullanılan BIR kopya kimliği değeri döndürür.
+
+Aşağıdaki kod örneği, daha önce oluşturulmuş bir Blobun başvurusunu alır ve aynı kapsayıcıda yeni bir bloba kopyalar:
 
 ```csharp
 private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
@@ -63,7 +78,8 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
         // Get a block blob from the container to use as the source.
         sourceBlob = container.ListBlobs().OfType<CloudBlockBlob>().FirstOrDefault();
 
-        // Lease the source blob for the copy operation to prevent another client from modifying it.
+        // Lease the source blob for the copy operation 
+        // to prevent another client from modifying it.
         // Specifying null for the lease interval creates an infinite lease.
         leaseId = await sourceBlob.AcquireLeaseAsync(null);
 
@@ -83,7 +99,6 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
             Console.WriteLine("Completion time: {0}", destBlob.CopyState.CompletionTime);
             Console.WriteLine("Bytes copied: {0}", destBlob.CopyState.BytesCopied.ToString());
             Console.WriteLine("Total bytes: {0}", destBlob.CopyState.TotalBytes.ToString());
-            Console.WriteLine();
         }
     }
     catch (StorageException e)
@@ -108,13 +123,37 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
-## <a name="abort-a-blob-copy-operation"></a>Blob kopyalama işlemini durdur
+# <a name="python-v12"></a>[Python V12](#tab/python)
 
-Bir kopyalama işleminin iptal edilmeden, blok Blobları, ekleme Blobları ve sayfa Blobları için sıfır uzunluğundaki hedef Blobun sonuçlanır. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ya da [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) çağrısında açıkça ayarlanmış olacak. Özgün meta verileri kopyalama öncesinde tutmak için, veya çağrılmadan önce hedef Blobun anlık görüntüsünü oluşturun `StartCopy` `StartCopyAsync` .
+Bir blobu kopyalamak için [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) yöntemini çağırın. `start_copy_from_url`Yöntemi, kopyalama işlemi hakkında bilgi içeren bir sözlük döndürür.
 
-Devam eden bir blob kopyalama işlemini iptal ettiğinizde, hedef Blobun [CopyState. Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) , [Copystatus. durduruldu](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)olarak ayarlanır.
+Aşağıdaki kod örneği, daha önce oluşturulmuş bir blobu temsil eden bir [Blobclient](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient) alır ve onu aynı kapsayıcıda yeni bir bloba kopyalar:
 
-[Abortcopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy?view=azure-dotnet) ve [Abortcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync?view=azure-dotnet) yöntemleri devam eden bir blob kopyalama işlemini iptal eder ve bir hedef Blobun sıfır uzunluğunda ve tam meta verilerle ayrılmaz.
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/copy_blob.py" id="Snippet_BlobCopy":::
+
+---
+
+## <a name="abort-a-copy-operation"></a>Kopyalama işlemini iptal et
+
+Bir kopyalama işleminin iptal edilmeden, sıfır uzunluğunda bir hedef Blobun sonucu oluşur. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya kopyalama işlemi sırasında açıkça ayarlanmış olacaktır. Özgün meta verileri kopyalama öncesinde tutmak için, kopyalama yöntemlerinden birini çağırmadan önce hedef Blobun anlık görüntüsünü oluşturun.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Kopyalama işleminin durumunu almak için hedef Blobun üzerindeki [Blobproperties. CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) özelliğini denetleyin. Kopyalama tamamlandığında son blob uygulanır.
+
+Bir kopyalama işlemini iptal ettiğinizde, hedef Blobun kopyalama durumu [Copystatus. durduruldu](/dotnet/api/microsoft.azure.storage.blob.copystatus)olarak ayarlanır.
+
+[Abortcopyfromuri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuri) ve [Abortcopyfromuriasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuriasync) yöntemleri devam eden bir kopyalama işlemini iptal eder.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Kopyalama işleminin durumunu almak için hedef Blobun [CopyState. Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status) özelliğini denetleyin. Kopyalama tamamlandığında son blob uygulanır.
+
+Bir kopyalama işlemini iptal ettiğinizde, hedef Blobun kopyalama durumu [Copystatus. durduruldu](/dotnet/api/microsoft.azure.storage.blob.copystatus)olarak ayarlanır.
+
+[Abortcopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy) ve [Abortcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync) yöntemleri devam eden bir kopyalama işlemini iptal eder.
 
 ```csharp
 // Fetch the destination blob's properties before checking the copy state.
@@ -128,7 +167,26 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 }
 ```
 
-[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Kopyalama işleminin durumunu almak için [get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-) yöntemi tarafından döndürülen [CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) sözlüğündeki "durum" girişini denetleyin. Kopyalama tamamlandığında son blob uygulanır.
+
+Bir kopyalama işlemini iptal ettiğinizde, [durum](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) "durduruldu" olarak ayarlanır.
+
+[Abort_copy](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#abort-copy-copy-id----kwargs-) yöntemi devam eden bir kopyalama işlemini iptal eder.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/copy_blob.py" id="Snippet_StopBlobCopy":::
+
+---
+
+## <a name="azure-sdks"></a>Azure SDK’ları
+
+Azure SDK 'Ları hakkında daha fazla bilgi alın:
+
+ - [.NET için Azure SDK](https://github.com/azure/azure-sdk-for-net)
+ - [Java için Azure SDK](https://github.com/azure/azure-sdk-for-java)
+ - [Python için Azure SDK](https://github.com/azure/azure-sdk-for-python)
+ - [JavaScript için Azure SDK](https://github.com/azure/azure-sdk-for-js)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
